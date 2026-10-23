@@ -2,7 +2,7 @@
 
 ## Capture sound
 
-- Local file: `Sources/Shotnix/Resources/capture.aiff`
+- Local file: `Sources/ShotStyle/Resources/capture.aiff`
 - Source: https://pixabay.com/sound-effects/technology-camera-13695/
 - Title: camera
 - Uploader: irinairinafomicheva

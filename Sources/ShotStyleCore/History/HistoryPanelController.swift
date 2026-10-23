@@ -1,0 +1,1434 @@
+import AppKit
+
+/// Floating panel showing all past captures in a grouped NSCollectionView.
+@MainActor
+final class HistoryPanelController: NSObject {
+
+    static let shared = HistoryPanelController()
+
+    private var panel: NSPanel?
+    private weak var historyManager: HistoryManager?
+    private(set) var collectionView: NSCollectionView?
+    private var emptyOverlay: NSView?
+    private var countLabel: NSTextField?
+    private var searchField: NSSearchField?
+    private var typeFilterButton: NSPopUpButton?
+    private var scrollView: NSScrollView?
+    private var nudgeBanner: NSView?
+    private var searchQuery = ""
+    /// nil = every capture type.
+    private(set) var typeFilter: CaptureType?
+    private var closeObserver: NSObjectProtocol?
+    private var historyObserver: NSObjectProtocol?
+
+    private struct Section {
+        let title: String
+        let items: [HistoryItem]
+    }
+
+    private var sections: [Section] = []
+
+    // MARK: - Show / Hide
+
+    func show(historyManager: HistoryManager) {
+        self.historyManager = historyManager
+        NSApp.ensureForegroundCapable()
+        NSApp.activate(ignoringOtherApps: true)
+        if let existing = panel {
+            existing.makeKeyAndOrderFront(nil)
+            reload()
+            return
+        }
+        let p = NSPanel(
+            contentRect: NSRect(x: 0, y: 0, width: 920, height: 640),
+            styleMask: [.titled, .closable, .resizable, .utilityWindow, .fullSizeContentView],
+            backing: .buffered,
+            defer: false
+        )
+        p.title = L("ShotStyle – Capture History")
+        p.titleVisibility = .hidden
+        p.titlebarAppearsTransparent = true
+        p.isOpaque = false
+        p.backgroundColor = .clear
+        p.isFloatingPanel = true
+        p.minSize = NSSize(width: 760, height: 520)
+        p.center()
+        p.contentView = buildContent(historyManager: historyManager)
+        p.alphaValue = 0
+        closeObserver = NotificationCenter.default.addObserver(
+            forName: NSWindow.willCloseNotification,
+            object: p,
+            queue: .main
+        ) { [weak self] notification in
+            Task { @MainActor in self?.panelDidClose(notification) }
+        }
+        // Live updates: new captures, deletes from the quick-access overlay,
+        // and undo-restores all reflow the open grid.
+        historyObserver = NotificationCenter.default.addObserver(
+            forName: .shotstyleHistoryDidChange,
+            object: nil,
+            queue: .main
+        ) { [weak self] _ in
+            Task { @MainActor in
+                self?.scheduleReload()
+            }
+        }
+        p.makeKeyAndOrderFront(nil)
+        // Arrow keys and Delete work on the grid straight away; typing
+        // (or ⌘F) moves into the search field.
+        p.makeFirstResponder(collectionView)
+        NSAnimationContext.runAnimationGroup { ctx in
+            ctx.duration = 0.2
+            ctx.timingFunction = CAMediaTimingFunction(name: .easeOut)
+            p.animator().alphaValue = 1
+        }
+        panel = p
+    }
+
+    // MARK: - Content
+
+    private func buildContent(historyManager: HistoryManager) -> NSView {
+        let container = HistoryStageView(frame: NSRect(x: 0, y: 0, width: 920, height: 640))
+
+        let header = NSView(frame: NSRect(x: 0, y: 532, width: 920, height: 108))
+        header.autoresizingMask = [.width, .minYMargin]
+
+        let eyebrow = NSTextField(labelWithString: L("SHOTSTYLE LIBRARY"))
+        eyebrow.font = .monospacedSystemFont(ofSize: 11, weight: .semibold)
+        eyebrow.textColor = NSColor.controlAccentColor.withAlphaComponent(0.92)
+        eyebrow.frame = NSRect(x: 28, y: 70, width: 240, height: 16)
+        header.addSubview(eyebrow)
+
+        let title = NSTextField(labelWithString: L("Capture History"))
+        title.font = .systemFont(ofSize: 26, weight: .bold)
+        title.textColor = NSColor.white.withAlphaComponent(0.94)
+        title.frame = NSRect(x: 28, y: 34, width: 360, height: 34)
+        header.addSubview(title)
+
+        let count = NSTextField(labelWithString: "")
+        count.font = .systemFont(ofSize: 12, weight: .medium)
+        count.textColor = NSColor.white.withAlphaComponent(0.48)
+        count.frame = NSRect(x: 30, y: 16, width: 560, height: 16)
+        header.addSubview(count)
+        countLabel = count
+
+        let clearBtn = HistoryActionButton(title: L("Clear All"), variant: .destructive, target: self, action: #selector(clearAll))
+        clearBtn.frame = NSRect(x: 770, y: 42, width: 118, height: 34)
+        clearBtn.autoresizingMask = [.minXMargin]
+        clearBtn.toolTip = L("Delete every saved capture")
+        header.addSubview(clearBtn)
+
+        // Capture-type filter, next to search.
+        let typeFilter = NSPopUpButton(frame: NSRect(x: 392, y: 44, width: 120, height: 30), pullsDown: false)
+        typeFilter.autoresizingMask = [.minXMargin]
+        typeFilter.appearance = NSAppearance(named: .darkAqua)
+        typeFilter.addItem(withTitle: L("All Captures"))
+        for type in CaptureType.allCases {
+            typeFilter.addItem(withTitle: type.title)
+            typeFilter.lastItem?.representedObject = type.rawValue
+        }
+        // Grows to the left when a language's longest kind needs more room
+        // than English, so no choice is cut off.
+        typeFilter.sizeToFit()
+        let filterWidth = max(120, ceil(typeFilter.frame.width))
+        typeFilter.frame = NSRect(x: 512 - filterWidth, y: 44, width: filterWidth, height: 30)
+        typeFilter.target = self
+        typeFilter.action = #selector(typeFilterChanged(_:))
+        typeFilter.toolTip = L("Show one kind of capture")
+        typeFilter.setAccessibilityLabel(L("Capture type"))
+        header.addSubview(typeFilter)
+        typeFilterButton = typeFilter
+
+        // Live text search: matches OCR-recognized text and the capture date.
+        let search = NSSearchField(frame: NSRect(x: 520, y: 44, width: 230, height: 30))
+        search.autoresizingMask = [.minXMargin]
+        search.placeholderString = L("Search text in captures")
+        search.font = .systemFont(ofSize: 13)
+        search.appearance = NSAppearance(named: .darkAqua)
+        search.focusRingType = .none
+        search.sendsWholeSearchString = false
+        search.sendsSearchStringImmediately = true
+        search.target = self
+        search.action = #selector(searchFieldChanged(_:))
+        search.delegate = self
+        header.addSubview(search)
+        searchField = search
+        container.addSubview(header)
+
+        // Collection view
+        let layout = NSCollectionViewFlowLayout()
+        layout.itemSize = NSSize(width: 190, height: 238)
+        layout.minimumInteritemSpacing = 10
+        layout.minimumLineSpacing = 16
+        layout.sectionInset = NSEdgeInsets(top: 8, left: 20, bottom: 24, right: 20)
+        layout.headerReferenceSize = NSSize(width: 920, height: 36)
+
+        let cv = HistoryCollectionView()
+        cv.collectionViewLayout = layout
+        cv.register(
+            HistoryCollectionItem.self,
+            forItemWithIdentifier: HistoryCollectionItem.identifier
+        )
+        cv.register(
+            HistorySectionHeader.self,
+            forSupplementaryViewOfKind: NSCollectionView.elementKindSectionHeader,
+            withIdentifier: HistorySectionHeader.identifier
+        )
+        cv.dataSource = self
+        cv.delegate = self
+        cv.backgroundColors = [.clear]
+        // Selection drives keyboard navigation, Delete, multi-select (⌘/⇧
+        // click), and multi-card drags to Finder.
+        cv.isSelectable = true
+        cv.allowsMultipleSelection = true
+        cv.allowsEmptySelection = true
+        cv.setDraggingSourceOperationMask(.copy, forLocal: false)
+        cv.onDelete = { [weak self] in self?.deleteSelection() }
+        cv.onOpen = { [weak self] in self?.editSelection() }
+        cv.onCopy = { [weak self] in self?.copySelection() }
+        cv.onType = { [weak self] event in self?.searchByTyping(event) ?? false }
+        cv.onFind = { [weak self] in self?.focusSearchField() }
+        cv.setAccessibilityLabel(L("Captures"))
+
+        // One-time "star us" line, only while the nudge is live (see StarNudge).
+        let bannerHeight: CGFloat = StarNudge.shouldShowInHistoryPanel ? Self.nudgeBannerHeight : 0
+        if bannerHeight > 0 {
+            let banner = buildNudgeBanner(frame: NSRect(x: 16, y: 524 - Self.nudgeBannerHeight + Self.nudgeBannerGap, width: 888, height: Self.nudgeBannerHeight - Self.nudgeBannerGap))
+            banner.autoresizingMask = [.width, .minYMargin]
+            container.addSubview(banner)
+            nudgeBanner = banner
+        }
+
+        let scroll = NSScrollView(frame: NSRect(x: 16, y: 16, width: 888, height: 508 - bannerHeight))
+        scroll.documentView = cv
+        scroll.hasVerticalScroller = true
+        scroll.autohidesScrollers = true
+        scroll.drawsBackground = false
+        scroll.backgroundColor = .clear
+        scroll.autoresizingMask = [.width, .height]
+        container.addSubview(scroll)
+
+        collectionView = cv
+        scrollView = scroll
+
+        // Empty state overlay
+        let empty = buildEmptyOverlay(frame: scroll.frame)
+        empty.autoresizingMask = [.width, .height]
+        container.addSubview(empty)
+        emptyOverlay = empty
+
+        buildSections()
+        updateHeader()
+        updateEmptyState()
+
+        return container
+    }
+
+    // MARK: - GitHub star nudge
+
+    private static let nudgeBannerHeight: CGFloat = 46
+    private static let nudgeBannerGap: CGFloat = 8
+
+    private func buildNudgeBanner(frame: NSRect) -> NSView {
+        let banner = HistoryNudgeBannerView(frame: frame)
+
+        let star = NSTextField(labelWithString: "★")
+        star.font = .systemFont(ofSize: 15, weight: .semibold)
+        star.textColor = NSColor.controlAccentColor
+        star.frame = NSRect(x: 16, y: 9, width: 20, height: 20)
+        banner.addSubview(star)
+
+        let message = NSTextField(labelWithString: L("Enjoying ShotStyle? Star it on GitHub so more people find it."))
+        message.font = .systemFont(ofSize: 13, weight: .medium)
+        message.textColor = NSColor.white.withAlphaComponent(0.88)
+        message.lineBreakMode = .byTruncatingTail
+        message.frame = NSRect(x: 40, y: 10, width: frame.width - 40 - 260, height: 18)
+        message.autoresizingMask = [.width]
+        banner.addSubview(message)
+
+        let dismiss = HistoryActionButton(title: L("Not now"), variant: .secondary, target: self, action: #selector(starNudgeDismissClicked))
+        dismiss.frame = NSRect(x: frame.width - 14 - 84, y: 5, width: 84, height: 28)
+        dismiss.autoresizingMask = [.minXMargin]
+        banner.addSubview(dismiss)
+
+        let starButton = HistoryActionButton(title: L("Star on GitHub"), variant: .primary, target: self, action: #selector(starNudgeStarClicked))
+        starButton.frame = NSRect(x: dismiss.frame.minX - 8 - 126, y: 5, width: 126, height: 28)
+        starButton.autoresizingMask = [.minXMargin]
+        banner.addSubview(starButton)
+
+        return banner
+    }
+
+    @objc private func starNudgeStarClicked() {
+        StarNudge.openRepository()
+        removeNudgeBanner()
+    }
+
+    @objc private func starNudgeDismissClicked() {
+        StarNudge.markDismissed()
+        removeNudgeBanner()
+    }
+
+    /// Fades the banner out and gives its row back to the grid.
+    private func removeNudgeBanner() {
+        guard let banner = nudgeBanner else { return }
+        nudgeBanner = nil
+        NSAnimationContext.runAnimationGroup({ ctx in
+            ctx.duration = 0.18
+            banner.animator().alphaValue = 0
+        }, completionHandler: { [weak self] in
+            Task { @MainActor in
+                banner.removeFromSuperview()
+                guard let self else { return }
+                for view in [self.scrollView, self.emptyOverlay] {
+                    guard let view else { continue }
+                    var frame = view.frame
+                    frame.size.height += Self.nudgeBannerHeight
+                    view.frame = frame
+                }
+            }
+        })
+    }
+
+    private func buildEmptyOverlay(frame: NSRect) -> NSView {
+        let overlay = NSView(frame: frame)
+
+        let stack = HistoryEmptyStateCard(frame: NSRect(x: 0, y: 0, width: 360, height: 190))
+
+        let icon = NSImageView(frame: NSRect(x: 150, y: 122, width: 60, height: 46))
+        if let symbolImg = NSImage(systemSymbolName: "camera.viewfinder", accessibilityDescription: nil) {
+            let config = NSImage.SymbolConfiguration(pointSize: 38, weight: .medium)
+            icon.image = symbolImg.withSymbolConfiguration(config)
+        }
+        icon.contentTintColor = NSColor.controlAccentColor.withAlphaComponent(0.86)
+        stack.addSubview(icon)
+
+        let title = NSTextField(labelWithString: L("No captures yet"))
+        title.font = .systemFont(ofSize: 18, weight: .bold)
+        title.textColor = NSColor.white.withAlphaComponent(0.92)
+        title.alignment = .center
+        title.frame = NSRect(x: 0, y: 88, width: 360, height: 24)
+        stack.addSubview(title)
+
+        let subtitle = NSTextField(labelWithString: Self.emptyStateHint(captureAreaShortcut: ShotStyleShortcut.captureArea.displayShortcut))
+        subtitle.font = .systemFont(ofSize: 13, weight: .medium)
+        subtitle.textColor = NSColor.white.withAlphaComponent(0.50)
+        subtitle.alignment = .center
+        subtitle.frame = NSRect(x: 24, y: 56, width: 312, height: 18)
+        stack.addSubview(subtitle)
+
+        let hint = NSTextField(labelWithString: L("Captured screenshots will appear here instantly"))
+        hint.font = .systemFont(ofSize: 12, weight: .regular)
+        hint.textColor = NSColor.white.withAlphaComponent(0.36)
+        hint.alignment = .center
+        hint.frame = NSRect(x: 24, y: 30, width: 312, height: 16)
+        stack.addSubview(hint)
+
+        stack.frame.origin = NSPoint(
+            x: (frame.width - stack.frame.width) / 2,
+            y: (frame.height - stack.frame.height) / 2
+        )
+        stack.autoresizingMask = [.minXMargin, .maxXMargin, .minYMargin, .maxYMargin]
+        overlay.addSubview(stack)
+
+        return overlay
+    }
+
+    private func updateEmptyState() {
+        // The "No captures yet" card only means truly empty history — a search
+        // with zero matches keeps the grid blank and explains itself in the
+        // count label instead.
+        emptyOverlay?.isHidden = !(historyManager?.items.isEmpty ?? true)
+        updateHeader()
+    }
+
+    private func updateHeader() {
+        countLabel?.stringValue = Self.headerText(
+            shown: sections.reduce(0) { $0 + $1.items.count },
+            total: historyManager?.items.count ?? 0,
+            query: trimmedSearchQuery,
+            filtered: typeFilter != nil
+        )
+    }
+
+    /// The line under the title. Whole sentences, so every language can order
+    /// its words (the type filter's own menu already names the type).
+    nonisolated static func headerText(shown: Int, total: Int, query: String, filtered: Bool) -> String {
+        if !query.isEmpty {
+            return shown == 0
+                ? L("No captures contain \u{201C}\(query)\u{201D}")
+                : L("\u{201C}\(query)\u{201D} found in \(shown) of \(total) captures")
+        }
+        if filtered {
+            return shown == 0 ? L("No captures of this type") : L("\(shown) of \(total) captures")
+        }
+        return shown == 0
+            ? L("No saved captures yet")
+            : L("\(shown) saved captures · drag any card to Finder · right-click for more actions")
+    }
+
+    /// Empty-state line naming the user's real Capture Area shortcut.
+    static func emptyStateHint(captureAreaShortcut: String?) -> String {
+        if let captureAreaShortcut {
+            return L("Press \(captureAreaShortcut) to take your first screenshot")
+        }
+        return L("Choose Capture Area in the ShotStyle menu to start")
+    }
+
+    // MARK: - Search
+
+    private var trimmedSearchQuery: String {
+        searchQuery.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+
+    /// Items to display: filtered by capture type, then — when there's a
+    /// query — a case- and diacritic-insensitive match against the OCR text
+    /// and the capture date string shown on the card.
+    private func filteredItems(in manager: HistoryManager) -> [HistoryItem] {
+        Self.filter(manager.items, query: trimmedSearchQuery, type: typeFilter)
+    }
+
+    static func filter(_ items: [HistoryItem], query: String, type: CaptureType?) -> [HistoryItem] {
+        let options: String.CompareOptions = [.caseInsensitive, .diacriticInsensitive]
+        return items.filter { item in
+            if let type, item.captureType != type { return false }
+            guard !query.isEmpty else { return true }
+            if let text = item.ocrText, text.range(of: query, options: options) != nil {
+                return true
+            }
+            let dateString = item.createdAt.formatted(date: .abbreviated, time: .shortened)
+            return dateString.range(of: query, options: options) != nil
+        }
+    }
+
+    @objc private func searchFieldChanged(_ sender: NSSearchField) {
+        applySearchQuery(sender.stringValue)
+    }
+
+    private func applySearchQuery(_ query: String) {
+        guard query != searchQuery else { return }
+        searchQuery = query
+        reload()
+    }
+
+    /// ⌘F on the grid.
+    func focusSearchField() {
+        guard let panel, let searchField else { return }
+        panel.makeFirstResponder(searchField)
+    }
+
+    /// Typing on the grid searches: the keys go on the end of the query,
+    /// through the text system so input methods and dead keys work.
+    func searchByTyping(_ event: NSEvent) -> Bool {
+        let typed = event.characters ?? ""
+        guard let panel, let searchField,
+              event.modifierFlags.intersection([.command, .control]).isEmpty,
+              event.specialKey == nil,
+              !typed.unicodeScalars.contains(where: { CharacterSet.controlCharacters.contains($0) || (0xF700...0xF8FF).contains($0.value) }),
+              !(searchField.stringValue.isEmpty && !typed.isEmpty && typed.allSatisfy(\.isWhitespace)),
+              panel.makeFirstResponder(searchField),
+              let editor = searchField.currentEditor() as? NSTextView
+        else { return false }
+        editor.setSelectedRange(NSRange(location: (editor.string as NSString).length, length: 0))
+        editor.keyDown(with: event)
+        applySearchQuery(searchField.stringValue)
+        return true
+    }
+
+    /// Down arrow in the search field: on to the results.
+    private func moveFocusToResults() -> Bool {
+        guard let panel, let collectionView, !sections.isEmpty, !sections[0].items.isEmpty else { return false }
+        panel.makeFirstResponder(collectionView)
+        if collectionView.selectionIndexPaths.isEmpty {
+            let first = IndexPath(item: 0, section: 0)
+            collectionView.selectItems(at: [first], scrollPosition: .nearestHorizontalEdge)
+        }
+        return true
+    }
+
+    @objc private func typeFilterChanged(_ sender: NSPopUpButton) {
+        setTypeFilter((sender.selectedItem?.representedObject as? String).flatMap(CaptureType.init(rawValue:)))
+    }
+
+    func setTypeFilter(_ type: CaptureType?) {
+        guard type != typeFilter else { return }
+        typeFilter = type
+        if let button = typeFilterButton {
+            let index = type.flatMap { CaptureType.allCases.firstIndex(of: $0) }.map { $0 + 1 } ?? 0
+            if button.indexOfSelectedItem != index { button.selectItem(at: index) }
+        }
+        reload()
+    }
+
+    // MARK: - Selection
+
+    /// Selected captures in grid order.
+    var selectedItems: [HistoryItem] {
+        guard let collectionView else { return [] }
+        return collectionView.selectionIndexPaths.sorted().compactMap(item(at:))
+    }
+
+    private func item(at indexPath: IndexPath) -> HistoryItem? {
+        guard indexPath.section < sections.count,
+              indexPath.item < sections[indexPath.section].items.count else { return nil }
+        return sections[indexPath.section].items[indexPath.item]
+    }
+
+    private func deleteSelection() {
+        let items = selectedItems
+        guard !items.isEmpty else { return }
+        deleteWithUndo(items)
+    }
+
+    private func editSelection() {
+        guard let manager = historyManager, let item = selectedItems.first else { return }
+        AnnotationWindowController.open(image: item.fullImage, historyItem: item, historyManager: manager)
+    }
+
+    private func copySelection() {
+        guard let item = selectedItems.first else { return }
+        copy(item)
+    }
+
+    /// Copies off the main thread and says so — the grid gives no other sign.
+    func copy(_ item: HistoryItem) {
+        ImageExporter.copyToClipboardAsync(image: item.fullImage) { [weak self] copied in
+            ToastWindow.show(message: copied ? L("✓ Copied to clipboard") : L("Could not copy this capture"), on: self?.panel?.screen)
+        }
+    }
+
+    // MARK: - Sections
+
+    private func buildSections() {
+        guard let manager = historyManager else { sections = []; return }
+        let calendar = Calendar.current
+        var today: [HistoryItem] = []
+        var yesterday: [HistoryItem] = []
+        var thisWeek: [HistoryItem] = []
+        var older: [HistoryItem] = []
+
+        for item in filteredItems(in: manager) {
+            if calendar.isDateInToday(item.createdAt) {
+                today.append(item)
+            } else if calendar.isDateInYesterday(item.createdAt) {
+                yesterday.append(item)
+            } else if let weekAgo = calendar.date(byAdding: .day, value: -7, to: Date()),
+                      item.createdAt > weekAgo {
+                thisWeek.append(item)
+            } else {
+                older.append(item)
+            }
+        }
+
+        sections = []
+        if !today.isEmpty { sections.append(Section(title: L("Today"), items: today)) }
+        if !yesterday.isEmpty { sections.append(Section(title: L("Yesterday"), items: yesterday)) }
+        if !thisWeek.isEmpty { sections.append(Section(title: L("This Week"), items: thisWeek)) }
+        if !older.isEmpty { sections.append(Section(title: L("Older"), items: older)) }
+    }
+
+    // MARK: - Reload
+
+    func reloadAfterDelete() {
+        reload()
+    }
+
+    private var reloadScheduled = false
+
+    /// Coalesces bursts of change notifications (undoing Clear All restores
+    /// every item individually, All Displays capture adds one per screen)
+    /// into a single grid rebuild on the next runloop tick.
+    private func scheduleReload() {
+        guard panel != nil, !reloadScheduled else { return }
+        reloadScheduled = true
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            self.reloadScheduled = false
+            guard self.panel != nil else { return }
+            self.reload()
+        }
+    }
+
+    private func reload() {
+        buildSections()
+        collectionView?.reloadData()
+        // A bare reloadData leaves NSCollectionViewFlowLayout's cached item and
+        // header frames (and the scroll content size) stale when the item or
+        // section count shrinks — the source of the corrupted grid after
+        // mid-grid deletes. Force a full layout pass so every tile reflows.
+        collectionView?.collectionViewLayout?.invalidateLayout()
+        updateEmptyState()
+    }
+
+    // MARK: - Delete + Undo
+
+    /// Deletes an item (moved to History/Trash/, not destroyed) and offers a
+    /// clickable undo toast that restores it to its original grid position.
+    func deleteWithUndo(_ item: HistoryItem) {
+        deleteWithUndo([item])
+    }
+
+    func deleteWithUndo(_ items: [HistoryItem]) {
+        guard let manager = historyManager, !items.isEmpty else { return }
+        // Undo restores lowest original position first so every item lands
+        // back where it was.
+        let order = Dictionary(uniqueKeysWithValues: manager.items.enumerated().map { ($1.id, $0) })
+        let ids = items.map(\.id).sorted { (order[$0] ?? 0) < (order[$1] ?? 0) }
+        // The manager's change notification reflows the grid — no manual reload.
+        manager.delete(items)
+        let actionName = items.count == 1 ? L("Delete Screenshot") : L("Delete Screenshots")
+        registerUndoRestoring(ids, actionName: actionName)
+        ToastWindow.show(
+            message: L("\(items.count) screenshots deleted — click or press ⌘Z to undo"),
+            duration: 5.0,
+            on: panel?.screen
+        ) { [weak self] in
+            self?.restore(ids, actionName: actionName)
+        }
+    }
+
+    /// Edit ▸ Undo (⌘Z) brings deleted captures back while History is open,
+    /// long after the toast is gone; Redo deletes them again.
+    private func registerUndoRestoring(_ ids: [UUID], actionName: String) {
+        guard let undoManager = panel?.undoManager else { return }
+        undoManager.registerUndo(withTarget: self) { controller in
+            controller.restore(ids, actionName: actionName)
+        }
+        undoManager.setActionName(actionName)
+    }
+
+    private func restore(_ ids: [UUID], actionName: String) {
+        guard let manager = historyManager else { return }
+        let restored = ids.compactMap { manager.restoreFromTrash(id: $0) }
+        guard !restored.isEmpty, let undoManager = panel?.undoManager else { return }
+        undoManager.registerUndo(withTarget: self) { controller in
+            controller.historyManager?.delete(restored)
+            controller.registerUndoRestoring(restored.map(\.id), actionName: actionName)
+        }
+        undoManager.setActionName(actionName)
+    }
+
+    // MARK: - Actions
+
+    @objc private func panelDidClose(_ notification: Notification) {
+        guard let closedWindow = notification.object as? NSWindow, closedWindow === panel else { return }
+        if let closeObserver {
+            NotificationCenter.default.removeObserver(closeObserver)
+            self.closeObserver = nil
+        }
+        if let historyObserver {
+            NotificationCenter.default.removeObserver(historyObserver)
+            self.historyObserver = nil
+        }
+        panel = nil
+        collectionView = nil
+        emptyOverlay = nil
+        countLabel = nil
+        searchField = nil
+        typeFilterButton = nil
+        scrollView = nil
+        nudgeBanner = nil
+        searchQuery = ""
+        typeFilter = nil
+        NSApp.restoreBackgroundOnlyActivationPolicyIfNeeded(excluding: closedWindow)
+    }
+
+    @objc private func clearAll() {
+        guard let manager = historyManager, !manager.items.isEmpty else { return }
+        let alert = NSAlert()
+        alert.messageText = L("Clear History?")
+        alert.informativeText = L("All captures are moved to ShotStyle’s trash and permanently deleted after \(7) days.")
+        alert.addButton(withTitle: L("Delete All"))
+        alert.addButton(withTitle: L("Cancel"))
+        guard alert.runModal() == .alertFirstButtonReturn else { return }
+        let ids = manager.items.map(\.id)
+        manager.deleteAll()
+        registerUndoRestoring(ids, actionName: L("Clear History"))
+        ToastWindow.show(
+            message: L("History cleared — click or press ⌘Z to undo"),
+            duration: 5.0,
+            on: panel?.screen
+        ) { [weak self] in
+            self?.restore(ids, actionName: L("Clear History"))
+        }
+    }
+}
+
+// MARK: - NSSearchFieldDelegate
+
+extension HistoryPanelController: NSSearchFieldDelegate {
+
+    /// Escape in the search field clears the query (and never bubbles up to
+    /// close the panel while there is text to clear).
+    func control(_ control: NSControl, textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
+        guard control === searchField else { return false }
+        switch commandSelector {
+        case #selector(NSResponder.cancelOperation(_:)):
+            searchField?.stringValue = ""
+            applySearchQuery("")
+            return true
+        case #selector(NSResponder.moveDown(_:)):
+            return moveFocusToResults()
+        default:
+            return false
+        }
+    }
+}
+
+// MARK: - NSCollectionViewDataSource
+
+extension HistoryPanelController: NSCollectionViewDataSource {
+
+    func numberOfSections(in collectionView: NSCollectionView) -> Int {
+        return max(sections.count, 1)
+    }
+
+    func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard !sections.isEmpty else { return 0 }
+        return sections[section].items.count
+    }
+
+    func collectionView(
+        _ collectionView: NSCollectionView,
+        itemForRepresentedObjectAt indexPath: IndexPath
+    ) -> NSCollectionViewItem {
+        let cell = collectionView.makeItem(
+            withIdentifier: HistoryCollectionItem.identifier,
+            for: indexPath
+        ) as! HistoryCollectionItem
+        guard indexPath.section < sections.count,
+              indexPath.item < sections[indexPath.section].items.count,
+              let manager = historyManager else { return cell }
+        let historyItem = sections[indexPath.section].items[indexPath.item]
+        cell.configure(with: historyItem, historyManager: manager)
+        return cell
+    }
+
+    func collectionView(
+        _ collectionView: NSCollectionView,
+        viewForSupplementaryElementOfKind kind: NSCollectionView.SupplementaryElementKind,
+        at indexPath: IndexPath
+    ) -> NSView {
+        let header = collectionView.makeSupplementaryView(
+            ofKind: kind,
+            withIdentifier: HistorySectionHeader.identifier,
+            for: indexPath
+        ) as! HistorySectionHeader
+        // Always configure: reused headers would otherwise keep a stale title
+        // after a delete empties their section.
+        let title = indexPath.section < sections.count ? sections[indexPath.section].title : ""
+        header.configure(title: title)
+        return header
+    }
+}
+
+// MARK: - NSCollectionViewDelegate + Drag
+
+extension HistoryPanelController: NSCollectionViewDelegate {
+
+    func collectionView(_ collectionView: NSCollectionView, canDragItemsAt indexPaths: Set<IndexPath>, with event: NSEvent) -> Bool {
+        true
+    }
+
+    /// Drags hand Finder the capture's own PNG — cloned (instant, Finder tags
+    /// and metadata kept), not re-encoded — named for when it was taken.
+    func collectionView(
+        _ collectionView: NSCollectionView,
+        pasteboardWriterForItemAt indexPath: IndexPath
+    ) -> (any NSPasteboardWriting)? {
+        guard let item = item(at: indexPath) else { return nil }
+        let name = dragFileName(for: item, among: selectedItems)
+        if let stored = historyManager?.storedImageURL(for: item),
+           let file = ImageExporter.dragFile(copying: stored, named: name) {
+            return file as NSURL
+        }
+        // The PNG is still being written (a capture from a moment ago):
+        // promise it and encode off the main thread when dropped. The
+        // provider holds its delegate weakly; userInfo keeps it alive.
+        let delegate = HistoryImageFilePromiseDelegate(image: item.fullImage, fileName: "\(name).png")
+        let provider = NSFilePromiseProvider(fileType: "public.png", delegate: delegate)
+        provider.userInfo = delegate
+        return provider
+    }
+
+    /// The capture-time name, numbered when several dragged captures share
+    /// the same second.
+    func dragFileName(for item: HistoryItem, among dragged: [HistoryItem]) -> String {
+        let name = ImageExporter.captureName(for: item.createdAt)
+        let twins = dragged.filter { ImageExporter.captureName(for: $0.createdAt) == name }
+        guard twins.count > 1, let position = twins.firstIndex(where: { $0.id == item.id }), position > 0 else { return name }
+        return "\(name) \(position + 1)"
+    }
+}
+
+private final class HistoryImageFilePromiseDelegate: NSObject, NSFilePromiseProviderDelegate, @unchecked Sendable {
+
+    private static let queue: OperationQueue = {
+        let queue = OperationQueue()
+        queue.name = "ShotStyle.HistoryFilePromise"
+        queue.maxConcurrentOperationCount = 1
+        queue.qualityOfService = .userInitiated
+        return queue
+    }()
+
+    private let image: NSImage
+    private let fileName: String
+
+    init(image: NSImage, fileName: String) {
+        self.image = image
+        self.fileName = fileName
+    }
+
+    func filePromiseProvider(_ filePromiseProvider: NSFilePromiseProvider, fileNameForType fileType: String) -> String {
+        fileName
+    }
+
+    func filePromiseProvider(_ filePromiseProvider: NSFilePromiseProvider, writePromiseTo url: URL, completionHandler handler: @escaping (Error?) -> Void) {
+        do {
+            guard let png = ImageExporter.pngData(from: image) else {
+                handler(ImageExporter.ExportError.pngEncodingFailed)
+                return
+            }
+            try png.write(to: url, options: .atomic)
+            HistoryManager.applyScreenshotMetadata(to: url.path, rect: nil)
+            handler(nil)
+        } catch {
+            handler(error)
+        }
+    }
+
+    func operationQueue(for filePromiseProvider: NSFilePromiseProvider) -> OperationQueue {
+        Self.queue
+    }
+}
+
+/// The grid's keyboard: Delete removes the selection (undoable), Return
+/// opens it in the editor, ⌘C copies it; arrows move the selection.
+@MainActor
+final class HistoryCollectionView: NSCollectionView {
+    var onDelete: (() -> Void)?
+    var onOpen: (() -> Void)?
+    var onCopy: (() -> Void)?
+    /// Keys that type text; true when they went to the search field.
+    var onType: ((NSEvent) -> Bool)?
+    var onFind: (() -> Void)?
+
+    override func performKeyEquivalent(with event: NSEvent) -> Bool {
+        // ⌘F, matched the way menus match it on any keyboard layout.
+        if event.type == .keyDown, ShortcutKeyMatching.latinLetter(for: event) == "f",
+           event.modifierFlags.intersection(.deviceIndependentFlagsMask).subtracting([.capsLock, .numericPad, .function]) == .command {
+            onFind?()
+            return true
+        }
+        return super.performKeyEquivalent(with: event)
+    }
+
+    override func keyDown(with event: NSEvent) {
+        switch event.keyCode {
+        case 51, 117: // Delete, Forward Delete
+            if !selectionIndexPaths.isEmpty { onDelete?(); return }
+        case 36, 76: // Return, Enter
+            if !selectionIndexPaths.isEmpty { onOpen?(); return }
+        case 53: // Escape clears the selection
+            if !selectionIndexPaths.isEmpty {
+                deselectAll(nil)
+                return
+            }
+        default:
+            if onType?(event) == true { return }
+        }
+        super.keyDown(with: event)
+    }
+
+    /// Edit → Copy (⌘C) arrives here through the responder chain.
+    @objc func copy(_ sender: Any?) {
+        onCopy?()
+    }
+}
+
+// MARK: - Collection View Item
+
+@MainActor
+/// NSImage is immutable once built; the box just carries a freshly decoded
+/// thumbnail across the detached-decode boundary without a Sendable warning.
+private struct SendableImageBox: @unchecked Sendable {
+    let image: NSImage
+    nonisolated init(_ image: NSImage) { self.image = image }
+}
+
+final class HistoryCollectionItem: NSCollectionViewItem {
+
+    static let identifier = NSUserInterfaceItemIdentifier("HistoryCollectionItem")
+
+    private var historyItem: HistoryItem?
+    private weak var historyManager: HistoryManager?
+    private var trackingArea: NSTrackingArea?
+    private let cardView = HistoryCaptureCardView()
+    private let previewWell = HistoryPreviewWellView()
+    private let thumbView = NSImageView()
+    private let dateLabel = NSTextField(labelWithString: "")
+    private let detailLabel = NSTextField(labelWithString: "")
+    private let copyBtn = HistoryActionButton(title: L("Copy"), variant: .secondary, target: nil, action: nil)
+    private let editBtn = HistoryActionButton(title: L("Edit"), variant: .primary, target: nil, action: nil)
+
+    override func loadView() {
+        let container = NSView(frame: NSRect(x: 0, y: 0, width: 190, height: 238))
+
+        cardView.frame = container.bounds
+        cardView.autoresizingMask = [.width, .height]
+        container.addSubview(cardView)
+
+        previewWell.frame = NSRect(x: 12, y: 70, width: 166, height: 140)
+        container.addSubview(previewWell)
+
+        thumbView.frame = previewWell.frame.insetBy(dx: 8, dy: 7)
+        thumbView.imageScaling = .scaleProportionallyUpOrDown
+        thumbView.wantsLayer = true
+        thumbView.layer?.cornerRadius = 10
+        thumbView.layer?.cornerCurve = .continuous
+        thumbView.layer?.masksToBounds = true
+        thumbView.layer?.allowsEdgeAntialiasing = true
+        thumbView.layer?.borderWidth = 0
+        thumbView.layer?.borderColor = NSColor.clear.cgColor
+        thumbView.layer?.backgroundColor = NSColor.clear.cgColor
+        container.addSubview(thumbView)
+
+        dateLabel.font = .monospacedDigitSystemFont(ofSize: 10.5, weight: .semibold)
+        dateLabel.textColor = NSColor.white.withAlphaComponent(0.78)
+        dateLabel.alignment = .left
+        dateLabel.lineBreakMode = .byTruncatingTail
+        dateLabel.frame = NSRect(x: 14, y: 48, width: 162, height: 15)
+        container.addSubview(dateLabel)
+
+        detailLabel.font = .systemFont(ofSize: 9.5, weight: .medium)
+        detailLabel.textColor = NSColor.white.withAlphaComponent(0.42)
+        detailLabel.alignment = .left
+        detailLabel.lineBreakMode = .byTruncatingTail
+        detailLabel.frame = NSRect(x: 14, y: 33, width: 162, height: 13)
+        container.addSubview(detailLabel)
+
+        let layout = Self.buttonLayout(copy: copyBtn.title, edit: editBtn.title)
+        let (copyWidth, editWidth) = (layout.copy, layout.edit)
+        copyBtn.font = .systemFont(ofSize: layout.fontSize, weight: .semibold)
+        editBtn.font = .systemFont(ofSize: layout.fontSize, weight: .semibold)
+        copyBtn.frame = NSRect(x: 14, y: 7, width: copyWidth, height: 24)
+        copyBtn.target = self
+        copyBtn.action = #selector(copyImage)
+        copyBtn.toolTip = L("Copy capture to clipboard")
+        container.addSubview(copyBtn)
+
+        editBtn.frame = NSRect(x: 14 + copyWidth + 14, y: 7, width: editWidth, height: 24)
+        editBtn.target = self
+        editBtn.action = #selector(editImage)
+        editBtn.toolTip = L("Open in annotation editor")
+        container.addSubview(editBtn)
+
+        self.view = container
+    }
+
+    /// Copy and Edit share the card's 148 pt: 74 each as designed, split by
+    /// need when a title wants more than that (Скопировать), and a little
+    /// smaller when both words together still don't fit (Скопіювати ·
+    /// Редагувати).
+    nonisolated static func buttonLayout(copy: String, edit: String) -> (copy: CGFloat, edit: CGFloat, fontSize: CGFloat) {
+        let sizes: [CGFloat] = [12, 11.5, 11, 10.5]
+        for size in sizes {
+            let font = NSFont.systemFont(ofSize: size, weight: .semibold)
+            let copyNeeds = TextFitting.width(of: copy, font: font) + 10
+            let editNeeds = TextFitting.width(of: edit, font: font) + 10
+            if size == 12, copyNeeds <= 74, editNeeds <= 74 { return (74, 74, 12) }
+            if copyNeeds + editNeeds <= 148 || size == sizes.last {
+                let spare = max(0, 148 - copyNeeds - editNeeds)
+                return (floor(copyNeeds + spare / 2), ceil(editNeeds + spare / 2), size)
+            }
+        }
+        return (74, 74, 12)
+    }
+
+    override var isSelected: Bool {
+        didSet { cardView.isSelected = isSelected }
+    }
+
+    func configure(with item: HistoryItem, historyManager: HistoryManager) {
+        self.historyItem = item
+        self.historyManager = historyManager
+        dateLabel.stringValue = item.createdAt.formatted(date: .abbreviated, time: .shortened)
+        cardView.isSelected = isSelected
+        let date = item.createdAt.formatted(date: .abbreviated, time: .shortened)
+        let kind = item.captureType?.title
+        thumbView.setAccessibilityLabel(kind.map { L("\($0) capture, \(date)") } ?? L("Capture, \(date)"))
+        thumbView.setAccessibilityRole(.image)
+        view.setAccessibilityElement(true)
+        view.setAccessibilityRole(.group)
+        view.setAccessibilityLabel(kind.map { L("\($0) capture from \(date)") } ?? L("Capture from \(date)"))
+        if let cached = historyManager.cachedThumbnail(for: item) {
+            thumbView.image = cached
+            detailLabel.stringValue = detailText(for: item, thumbnail: cached)
+        } else {
+            // Cache miss: decode off the main thread — synchronous disk
+            // decodes during cell population are what made scrolling a large
+            // history hitch. The card background stands in until it lands.
+            thumbView.image = nil
+            detailLabel.stringValue = detailText(for: item, thumbnail: nil)
+            let itemID = item.id
+            let path = item.thumbnailPath
+            Task { [weak self] in
+                guard let box = await Self.decodeThumbnail(atPath: path) else { return }
+                // Reuse guard: the cell may represent a different item by now —
+                // the decode still primed the cache for its own cell's turn.
+                guard let self, self.historyItem?.id == itemID else { return }
+                self.thumbView.image = box.image
+                self.detailLabel.stringValue = self.detailText(for: item, thumbnail: box.image)
+            }
+        }
+        setupTracking()
+    }
+
+    nonisolated private static func decodeThumbnail(atPath path: String) async -> SendableImageBox? {
+        await Task.detached(priority: .userInitiated) {
+            HistoryImageCache.loadThumbnailDecoded(for: path).map(SendableImageBox.init)
+        }.value
+    }
+
+    /// Recycled cells must start clean. Deleting the tile under the cursor
+    /// (the common right-click → Delete flow) removes the view before
+    /// `mouseExited` ever fires, so without this reset the reused cell keeps
+    /// the hover scale transform, shadow, and hovered card colors — the
+    /// visual corruption seen after mid-grid deletes.
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        historyItem = nil
+        thumbView.image = nil
+        thumbView.layer?.removeAllAnimations()
+        thumbView.layer?.transform = CATransform3DIdentity
+        thumbView.layer?.shadowOpacity = 0
+        cardView.isHovered = false
+        cardView.isSelected = false
+        previewWell.isHovered = false
+        cardView.alphaValue = 1
+        previewWell.alphaValue = 1
+    }
+
+    private func detailText(for item: HistoryItem, thumbnail: NSImage?) -> String {
+        // A stitched capture is taller than its selection; its size isn't the rect's.
+        if item.captureType == .scrolling { return L("Scrolling capture") }
+        let kind = item.captureType?.title ?? L("Saved")
+        // Sizes as plain digits (no thousands separator), like pixel sizes everywhere.
+        func pixels(_ value: CGFloat) -> String { String(Int(value.rounded())) }
+        if let rect = item.captureRect?.cgRect {
+            return L("\(kind) · \(pixels(rect.width)) × \(pixels(rect.height))")
+        }
+        // No stored rect: size comes from the thumbnail — but never decode one
+        // from disk here; the async load refreshes this label when it arrives.
+        guard let size = thumbnail?.size, size.width > 0, size.height > 0 else { return item.captureType == nil ? L("Saved capture") : kind }
+        return L("\(kind) · \(pixels(size.width)) × \(pixels(size.height)) image")
+    }
+
+    // MARK: Hover
+
+    private func setupTracking() {
+        if let old = trackingArea { view.removeTrackingArea(old) }
+        let area = NSTrackingArea(
+            rect: view.bounds,
+            options: [.activeAlways, .mouseEnteredAndExited],
+            owner: self
+        )
+        view.addTrackingArea(area)
+        trackingArea = area
+    }
+
+    override func mouseEntered(with event: NSEvent) {
+        NSAnimationContext.runAnimationGroup { ctx in
+            ctx.duration = 0.18
+            ctx.timingFunction = CAMediaTimingFunction(name: .easeOut)
+            cardView.animator().alphaValue = 1
+            previewWell.animator().alphaValue = 1
+            thumbView.animator().layer?.transform = CATransform3DMakeScale(1.014, 1.014, 1)
+        }
+        cardView.isHovered = true
+        previewWell.isHovered = true
+        thumbView.layer?.shadowColor = NSColor.black.cgColor
+        thumbView.layer?.shadowOpacity = 0.18
+        thumbView.layer?.shadowRadius = 10
+        thumbView.layer?.shadowOffset = CGSize(width: 0, height: -4)
+    }
+
+    override func mouseExited(with event: NSEvent) {
+        NSAnimationContext.runAnimationGroup { ctx in
+            ctx.duration = 0.2
+            thumbView.animator().layer?.transform = CATransform3DIdentity
+        }
+        cardView.isHovered = false
+        previewWell.isHovered = false
+        thumbView.layer?.shadowOpacity = 0
+    }
+
+    /// Double-click opens the editor; single clicks select (the collection
+    /// view handles those further up the responder chain).
+    override func mouseDown(with event: NSEvent) {
+        if event.clickCount == 2 {
+            editImage()
+            return
+        }
+        super.mouseDown(with: event)
+    }
+
+    // MARK: Context Menu
+
+    override func rightMouseDown(with event: NSEvent) {
+        guard historyItem != nil else { return }
+        ShotStyleContextMenu.show(
+            sections: [
+                ShotStyleMenuSection(id: "history.capture", title: L("Capture"), actions: [
+                    ShotStyleMenuAction(id: "history.copy", title: L("Copy"), symbolName: "doc.on.doc", role: .primary) { [weak self] in self?.copyImage() },
+                    ShotStyleMenuAction(id: "history.edit", title: L("Edit"), symbolName: "pencil") { [weak self] in self?.editImage() },
+                    ShotStyleMenuAction(id: "history.save", title: L("Save As…"), symbolName: "square.and.arrow.down") { [weak self] in self?.saveImage() },
+                    ShotStyleMenuAction(id: "history.pin", title: L("Pin to Screen"), symbolName: "pin") { [weak self] in self?.pinImage() },
+                ]),
+                ShotStyleMenuSection(id: "history.manage", title: L("Manage"), actions: [
+                    ShotStyleMenuAction(id: "history.delete", title: L("Delete"), symbolName: "trash", role: .destructive) { [weak self] in self?.deleteItem() },
+                ])
+            ],
+            at: event,
+            in: view
+        )
+    }
+
+    // MARK: Actions
+
+    @objc private func copyImage() {
+        guard let item = historyItem else { return }
+        HistoryPanelController.shared.copy(item)
+    }
+
+    @objc private func editImage() {
+        guard let item = historyItem, let manager = historyManager else { return }
+        AnnotationWindowController.open(image: item.fullImage, historyItem: item, historyManager: manager)
+    }
+
+    @objc private func saveImage() {
+        guard let item = historyItem else { return }
+        ImageExporter.saveWithPanel(image: item.fullImage, suggestedName: ImageExporter.captureName(for: item.createdAt))
+    }
+
+    @objc private func pinImage() {
+        guard let item = historyItem else { return }
+        // Pin back over the original capture location when the rect is known
+        PinnedWindow.pin(image: item.fullImage, at: item.captureRect?.cgRect)
+    }
+
+    @objc private func deleteItem() {
+        guard let item = historyItem else { return }
+        HistoryPanelController.shared.deleteWithUndo(item)
+    }
+}
+
+// MARK: - Section Header
+
+@MainActor
+final class HistorySectionHeader: NSView, NSCollectionViewElement {
+
+    static let identifier = NSUserInterfaceItemIdentifier("HistorySectionHeader")
+
+    private let label = NSTextField(labelWithString: "")
+
+    override init(frame: NSRect) {
+        super.init(frame: frame)
+        label.font = .systemFont(ofSize: 12, weight: .bold)
+        label.textColor = NSColor.white.withAlphaComponent(0.58)
+        label.frame = NSRect(x: 26, y: 7, width: 300, height: 18)
+        addSubview(label)
+    }
+
+    required init?(coder: NSCoder) { fatalError() }
+
+    func configure(title: String) {
+        label.stringValue = title.uppercased()
+    }
+}
+
+@MainActor
+private final class HistoryStageView: NSView {
+    override init(frame frameRect: NSRect) {
+        super.init(frame: frameRect)
+        wantsLayer = true
+    }
+
+    required init?(coder: NSCoder) { fatalError() }
+
+    override func draw(_ dirtyRect: NSRect) {
+        guard let context = NSGraphicsContext.current?.cgContext else { return }
+        let rect = bounds
+        let colorSpace = CGColorSpace(name: CGColorSpace.sRGB) ?? CGColorSpaceCreateDeviceRGB()
+        let colors = [ShotStyleColors.editorStageTop.cgColor, ShotStyleColors.editorStageBottom.cgColor] as CFArray
+
+        if let gradient = CGGradient(colorsSpace: colorSpace, colors: colors, locations: [0, 1]) {
+            context.drawLinearGradient(
+                gradient,
+                start: CGPoint(x: rect.midX, y: rect.maxY),
+                end: CGPoint(x: rect.midX, y: rect.minY),
+                options: []
+            )
+        } else {
+            ShotStyleColors.editorStageTop.setFill()
+            rect.fill()
+        }
+
+        drawGlow(in: context, color: NSColor.controlAccentColor.withAlphaComponent(0.14), center: CGPoint(x: rect.maxX * 0.78, y: rect.maxY + 12), radius: max(rect.width, rect.height) * 0.42)
+        drawGlow(in: context, color: NSColor.systemPurple.withAlphaComponent(0.12), center: CGPoint(x: rect.minX + rect.width * 0.18, y: rect.minY - 10), radius: max(rect.width, rect.height) * 0.38)
+    }
+
+    private func drawGlow(in context: CGContext, color: NSColor, center: CGPoint, radius: CGFloat) {
+        let colors = [color.cgColor, color.withAlphaComponent(0).cgColor] as CFArray
+        let colorSpace = color.cgColor.colorSpace ?? CGColorSpace(name: CGColorSpace.sRGB) ?? CGColorSpaceCreateDeviceRGB()
+        guard let gradient = CGGradient(colorsSpace: colorSpace, colors: colors, locations: [0, 1]) else { return }
+        context.drawRadialGradient(
+            gradient,
+            startCenter: center,
+            startRadius: 0,
+            endCenter: center,
+            endRadius: radius,
+            options: .drawsAfterEndLocation
+        )
+    }
+}
+
+@MainActor
+private final class HistoryPreviewWellView: NSView {
+    var isHovered = false { didSet { needsDisplay = true } }
+
+    override init(frame frameRect: NSRect) {
+        super.init(frame: frameRect)
+        wantsLayer = true
+        layer?.allowsEdgeAntialiasing = true
+    }
+
+    required init?(coder: NSCoder) { fatalError() }
+
+    override func draw(_ dirtyRect: NSRect) {
+        guard let context = NSGraphicsContext.current?.cgContext else { return }
+        context.setShouldAntialias(true)
+        context.setAllowsAntialiasing(true)
+
+        let rect = bounds.insetBy(dx: 0.5, dy: 0.5)
+        let path = CGPath(
+            roundedRect: rect,
+            cornerWidth: 14,
+            cornerHeight: 14,
+            transform: nil
+        )
+
+        context.addPath(path)
+        context.setFillColor(NSColor.black.withAlphaComponent(isHovered ? 0.20 : 0.15).cgColor)
+        context.fillPath()
+
+        context.addPath(path)
+        context.setStrokeColor(NSColor.white.withAlphaComponent(isHovered ? 0.08 : 0.045).cgColor)
+        context.setLineWidth(1)
+        context.strokePath()
+    }
+}
+
+@MainActor
+private final class HistoryCaptureCardView: NSView {
+    var isHovered = false { didSet { needsDisplay = true } }
+    var isSelected = false { didSet { needsDisplay = true } }
+
+    override init(frame frameRect: NSRect) {
+        super.init(frame: frameRect)
+        wantsLayer = true
+        layer?.allowsEdgeAntialiasing = true
+        layer?.shadowColor = NSColor.black.cgColor
+        layer?.shadowOpacity = 0.16
+        layer?.shadowRadius = 18
+        layer?.shadowOffset = CGSize(width: 0, height: -8)
+    }
+
+    required init?(coder: NSCoder) { fatalError() }
+
+    override func draw(_ dirtyRect: NSRect) {
+        guard let context = NSGraphicsContext.current?.cgContext else { return }
+        context.setShouldAntialias(true)
+        context.setAllowsAntialiasing(true)
+
+        let rect = bounds.insetBy(dx: 0.5, dy: 0.5)
+        let path = CGPath(
+            roundedRect: rect,
+            cornerWidth: 18,
+            cornerHeight: 18,
+            transform: nil
+        )
+
+        context.addPath(path)
+        context.setFillColor(NSColor(calibratedWhite: 0.045, alpha: isHovered || isSelected ? 0.94 : 0.86).cgColor)
+        context.fillPath()
+
+        // Selected: an accent ring, like Finder's icon selection.
+        if isSelected {
+            let ring = CGPath(roundedRect: bounds.insetBy(dx: 1.5, dy: 1.5), cornerWidth: 17, cornerHeight: 17, transform: nil)
+            context.addPath(ring)
+            context.setStrokeColor(NSColor.controlAccentColor.cgColor)
+            context.setLineWidth(3)
+            context.strokePath()
+            return
+        }
+        context.addPath(path)
+        context.setStrokeColor(NSColor.white.withAlphaComponent(isHovered ? 0.12 : 0.06).cgColor)
+        context.setLineWidth(1)
+        context.strokePath()
+    }
+}
+
+@MainActor
+/// Accent-tinted strip for the one-time GitHub star nudge.
+private final class HistoryNudgeBannerView: NSView {
+    override init(frame frameRect: NSRect) {
+        super.init(frame: frameRect)
+        wantsLayer = true
+    }
+
+    required init?(coder: NSCoder) { fatalError() }
+
+    override func draw(_ dirtyRect: NSRect) {
+        let rect = bounds.insetBy(dx: 0.5, dy: 0.5)
+        let path = NSBezierPath(roundedRect: rect, xRadius: 14, yRadius: 14)
+        NSColor.controlAccentColor.withAlphaComponent(0.12).setFill()
+        path.fill()
+        NSColor.controlAccentColor.withAlphaComponent(0.32).setStroke()
+        path.lineWidth = 1
+        path.stroke()
+    }
+}
+
+private final class HistoryEmptyStateCard: NSView {
+    override init(frame frameRect: NSRect) {
+        super.init(frame: frameRect)
+        wantsLayer = true
+        layer?.shadowColor = NSColor.black.cgColor
+        layer?.shadowOpacity = 0.24
+        layer?.shadowRadius = 30
+        layer?.shadowOffset = CGSize(width: 0, height: -14)
+    }
+
+    required init?(coder: NSCoder) { fatalError() }
+
+    override func draw(_ dirtyRect: NSRect) {
+        let rect = bounds.insetBy(dx: 1, dy: 1)
+        let path = NSBezierPath(roundedRect: rect, xRadius: 26, yRadius: 26)
+        NSColor.black.withAlphaComponent(0.26).setFill()
+        path.fill()
+        NSColor.white.withAlphaComponent(0.13).setStroke()
+        path.lineWidth = 1
+        path.stroke()
+    }
+}
+
+@MainActor
+private final class HistoryActionButton: NSButton {
+    enum Variant { case primary, secondary, destructive }
+
+    private let variant: Variant
+    private var trackingArea: NSTrackingArea?
+    private var isHovered = false
+
+    init(title: String, variant: Variant, target: AnyObject?, action: Selector?) {
+        self.variant = variant
+        super.init(frame: .zero)
+        self.title = title
+        self.target = target
+        self.action = action
+        configure()
+    }
+
+    required init?(coder: NSCoder) { fatalError() }
+
+    override func updateTrackingAreas() {
+        super.updateTrackingAreas()
+        if let trackingArea { removeTrackingArea(trackingArea) }
+        let area = NSTrackingArea(rect: bounds, options: [.activeAlways, .mouseEnteredAndExited], owner: self)
+        addTrackingArea(area)
+        trackingArea = area
+    }
+
+    override func mouseEntered(with event: NSEvent) {
+        isHovered = true
+        animateBackground(hoverColor)
+    }
+
+    override func mouseExited(with event: NSEvent) {
+        isHovered = false
+        animateBackground(baseColor)
+    }
+
+    /// NSButton tracks the click inside `super.mouseDown` and never gets
+    /// `mouseUp`, so the release look is restored when that returns.
+    override func mouseDown(with event: NSEvent) {
+        animateBackground(pressedColor)
+        if let layer { layer.transform = layer.scaledAboutCenter(0.97) }
+        super.mouseDown(with: event)
+        animateBackground(isHovered ? hoverColor : baseColor)
+        layer?.transform = CATransform3DIdentity
+    }
+
+    private func configure() {
+        isBordered = false
+        bezelStyle = .regularSquare
+        focusRingType = .none
+        font = .systemFont(ofSize: 12, weight: .semibold)
+        contentTintColor = textColor
+        wantsLayer = true
+        layer?.cornerRadius = 10
+        layer?.cornerCurve = .continuous
+        layer?.backgroundColor = baseColor
+        layer?.borderWidth = 1
+        layer?.borderColor = borderColor
+    }
+
+    private var baseColor: CGColor {
+        switch variant {
+        case .primary: return NSColor.white.withAlphaComponent(0.92).cgColor
+        case .secondary: return ShotStyleColors.editorActionBackground.cgColor
+        case .destructive: return NSColor.systemRed.withAlphaComponent(0.18).cgColor
+        }
+    }
+
+    private var hoverColor: CGColor {
+        switch variant {
+        case .primary: return NSColor.white.cgColor
+        case .secondary: return ShotStyleColors.cornerButtonHover.cgColor
+        case .destructive: return NSColor.systemRed.withAlphaComponent(0.27).cgColor
+        }
+    }
+
+    private var pressedColor: CGColor {
+        switch variant {
+        case .primary: return NSColor.white.withAlphaComponent(0.74).cgColor
+        case .secondary: return ShotStyleColors.cornerButtonPressed.cgColor
+        case .destructive: return NSColor.systemRed.withAlphaComponent(0.36).cgColor
+        }
+    }
+
+    private var borderColor: CGColor {
+        switch variant {
+        case .primary: return NSColor.white.withAlphaComponent(0.28).cgColor
+        case .secondary: return ShotStyleColors.editorDockBorder.cgColor
+        case .destructive: return NSColor.systemRed.withAlphaComponent(0.38).cgColor
+        }
+    }
+
+    private var textColor: NSColor {
+        switch variant {
+        case .primary: return NSColor.black.withAlphaComponent(0.88)
+        case .secondary: return NSColor.white.withAlphaComponent(0.84)
+        case .destructive: return NSColor.systemRed
+        }
+    }
+
+    private func animateBackground(_ color: CGColor) {
+        NSAnimationContext.runAnimationGroup { ctx in
+            ctx.duration = 0.16
+            ctx.allowsImplicitAnimation = true
+            self.layer?.backgroundColor = color
+        }
+    }
+}

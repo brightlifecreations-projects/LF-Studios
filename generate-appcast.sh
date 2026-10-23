@@ -9,25 +9,25 @@ if [ -f "$SCRIPT_DIR/.env.local" ]; then
     set +a
 fi
 
-DMG_PATH="${1:-${SHOTNIX_DMG_PATH:-}}"
-WEB_DIR="${SHOTNIX_WEB_DIR:-$SCRIPT_DIR/../shotnix-web}"
+DMG_PATH="${1:-${SHOTSTYLE_DMG_PATH:-}}"
+WEB_DIR="${SHOTSTYLE_WEB_DIR:-$SCRIPT_DIR/../shotstyle-web}"
 DOWNLOAD_DIR="$WEB_DIR/public/downloads"
-APPCAST_BIN="${SHOTNIX_GENERATE_APPCAST_BIN:-$SCRIPT_DIR/.build/artifacts/sparkle/Sparkle/bin/generate_appcast}"
-SPARKLE_ACCOUNT="${SHOTNIX_SPARKLE_ACCOUNT:-ed25519}"
-DOWNLOAD_URL_PREFIX="${SHOTNIX_DOWNLOAD_URL_PREFIX:-https://shotnix.com/downloads/}"
-RELEASE_NOTES_URL_PREFIX="${SHOTNIX_RELEASE_NOTES_URL_PREFIX:-https://shotnix.com/downloads/}"
+APPCAST_BIN="${SHOTSTYLE_GENERATE_APPCAST_BIN:-$SCRIPT_DIR/.build/artifacts/sparkle/Sparkle/bin/generate_appcast}"
+SPARKLE_ACCOUNT="${SHOTSTYLE_SPARKLE_ACCOUNT:-ed25519}"
+DOWNLOAD_URL_PREFIX="${SHOTSTYLE_DOWNLOAD_URL_PREFIX:-https://shotnix.com/downloads/}"
+RELEASE_NOTES_URL_PREFIX="${SHOTSTYLE_RELEASE_NOTES_URL_PREFIX:-https://shotnix.com/downloads/}"
 
 usage() {
     cat <<'EOF'
-Usage: bash generate-appcast.sh /path/to/Shotnix-v<version>-macOS.dmg
+Usage: bash generate-appcast.sh /path/to/ShotStyle-v<version>-macOS.dmg
 
-Copies the notarized DMG into shotnix-web/public/downloads, creates a matching
+Copies the notarized DMG into shotstyle-web/public/downloads, creates a matching
 Markdown release-notes file when needed, and runs Sparkle generate_appcast.
 
 Optional environment:
-  SHOTNIX_RELEASE_NOTES_FILE="/absolute/path/to/release-notes.md"
-  SHOTNIX_GENERATE_APPCAST_BIN="/absolute/path/to/generate_appcast"
-  SHOTNIX_SPARKLE_ACCOUNT="ed25519"
+  SHOTSTYLE_RELEASE_NOTES_FILE="/absolute/path/to/release-notes.md"
+  SHOTSTYLE_GENERATE_APPCAST_BIN="/absolute/path/to/generate_appcast"
+  SHOTSTYLE_SPARKLE_ACCOUNT="ed25519"
 EOF
 }
 
@@ -64,8 +64,8 @@ if [ "$(cd "$(dirname "$DMG_PATH")" && pwd)/$(basename "$DMG_PATH")" != "$(cd "$
 fi
 cp "$DMG_PATH" "$STAGING_DIR/$DMG_BASENAME"
 
-if [ -n "${SHOTNIX_RELEASE_NOTES_FILE:-}" ]; then
-    cp "$SHOTNIX_RELEASE_NOTES_FILE" "$NOTES_DEST"
+if [ -n "${SHOTSTYLE_RELEASE_NOTES_FILE:-}" ]; then
+    cp "$SHOTSTYLE_RELEASE_NOTES_FILE" "$NOTES_DEST"
 elif [ ! -f "$NOTES_DEST" ]; then
     echo "▶ Creating release notes from CHANGELOG.md…"
     awk '

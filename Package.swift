@@ -2,7 +2,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "Shotnix",
+    name: "ShotStyle",
     // English strings are the keys; translations live in
     // Localization/Localizable.xcstrings (see scripts/localize.py).
     defaultLocalization: "en",
@@ -17,28 +17,28 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "ShotnixCore",
+            name: "ShotStyleCore",
             dependencies: [
                 .product(name: "KeyboardShortcuts", package: "KeyboardShortcuts"),
                 .product(name: "Sparkle", package: "Sparkle"),
             ],
-            path: "Sources/ShotnixCore",
+            path: "Sources/ShotStyleCore",
             resources: [.process("Resources")]
         ),
         .executableTarget(
-            name: "Shotnix",
+            name: "ShotStyle",
             dependencies: [
-                "ShotnixCore",
+                "ShotStyleCore",
             ],
-            path: "Sources/Shotnix"
+            path: "Sources/ShotStyle"
         ),
         .testTarget(
-            name: "ShotnixCoreTests",
+            name: "ShotStyleCoreTests",
             dependencies: [
-                "ShotnixCore",
+                "ShotStyleCore",
                 .product(name: "KeyboardShortcuts", package: "KeyboardShortcuts"),
             ],
-            path: "Tests/ShotnixCoreTests"
+            path: "Tests/ShotStyleCoreTests"
         ),
     ]
 )

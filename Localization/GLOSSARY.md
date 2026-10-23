@@ -1,7 +1,7 @@
-# Shotnix localization glossary
+# ShotStyle localization glossary
 
-Shotnix is translated into German (de), French (fr), Simplified Chinese
-(zh-Hans), Russian (ru), Ukrainian (uk), and Japanese (ja). Use the words macOS itself uses, so Shotnix reads like part of the
+ShotStyle is translated into German (de), French (fr), Simplified Chinese
+(zh-Hans), Russian (ru), Ukrainian (uk), and Japanese (ja). Use the words macOS itself uses, so ShotStyle reads like part of the
 system. When a term isn't here, look at how Apple's own apps say it.
 
 ## How it works
@@ -17,7 +17,7 @@ system. When a term isn't here, look at how Apple's own apps say it.
 - `python3 scripts/localize.py` extracts the keys, merges the translations
   into `Localization/Localizable.xcstrings`, and compiles the `.lproj` files.
   `--check` must pass before anything ships.
-- When a folder of `Sources/ShotnixCore` is fully converted, add an empty
+- When a folder of `Sources/ShotStyleCore` is fully converted, add an empty
   marker file `Localization/areas/<Folder>`: a test then fails on any raw
   user-visible string there (mark a deliberate exception `// l10n-ignore`).
 - SwiftUI: write `Text(L("…"))`, `Button(L("…"))`, `.help(L("…"))`, so
@@ -48,7 +48,7 @@ German runs about 30% longer than English: prefer the shorter wording in
 buttons and toolbars. French spacing is applied by `scripts/localize.py`
 (a no-break space before `? ! : ;` and inside « »), so type ordinary spaces.
 
-Never translate: Shotnix, macOS, Mac, GIF, MP4, HEVC, PNG, JPEG, WebP, OCR,
+Never translate: ShotStyle, macOS, Mac, GIF, MP4, HEVC, PNG, JPEG, WebP, OCR,
 QR, fps, keyboard symbols (⌘ ⇧ ⌥ ⌃ ⎋ ↩), and file names.
 
 ## Terms
@@ -100,7 +100,7 @@ QR, fps, keyboard symbols (⌘ ⇧ ⌥ ⌃ ⎋ ↩), and file names.
 | delete | Löschen | Supprimer | 删除 |
 | done | Fertig | Terminé | 完成 |
 | close window | Fenster schließen | Fermer la fenêtre | 关闭窗口 |
-| quit Shotnix | Shotnix beenden | Quitter Shotnix | 退出 Shotnix |
+| quit ShotStyle | ShotStyle beenden | Quitter ShotStyle | 退出 ShotStyle |
 | settings | Einstellungen | Réglages | 设置 |
 | History | Verlauf | Historique | 历史记录 |
 | menu bar | Menüleiste | barre des menus | 菜单栏 |
@@ -155,7 +155,7 @@ from System Settings itself). German puts each name in „…“, Chinese in “
 
 Both run about 20% longer than English: keep buttons short. The script
 refuses a plural without all four forms. Dashes are spaced em dashes ( — ),
-the ellipsis is one character (…), and product names (Shotnix, Mac, macOS,
+the ellipsis is one character (…), and product names (ShotStyle, Mac, macOS,
 Finder, GIF, MP4…) stay in Latin letters and aren't declined.
 
 | English | Russian | Ukrainian |
@@ -189,7 +189,7 @@ Finder, GIF, MP4…) stay in Latin letters and aren't declined.
 | save / save as… | Сохранить / Сохранить как… | Зберегти / Зберегти як… |
 | cancel / delete / done | Отменить / Удалить / Готово | Скасувати / Видалити / Готово |
 | Show in Finder | Показать в Finder | Показати у Finder |
-| quit Shotnix | Завершить Shotnix | Завершити Shotnix |
+| quit ShotStyle | Завершить ShotStyle | Завершити ShotStyle |
 | settings | Настройки | Параметри |
 | menu bar | строка меню | смуга меню |
 | keyboard shortcut | сочетание клавиш | клавіатурне скорочення |
@@ -274,7 +274,7 @@ tables (AppKit, Screenshot, Preview, System Settings).
 | Buttons and menu items | a noun or a plain verb, as Apple's menus: `保存`, `キャンセル`, `書き出す…`, `取り消す`, `ウインドウを閉じる`, `Finderに表示` |
 | Punctuation | full-width `、。` and `（）`; half-width `?` and `!` (Apple writes `置き換えてもよろしいですか?`); a label colon is half-width with a space after (`最小: 10`) |
 | Quotes | names of things in “…” as Apple does (`“システム設定”`), not 「…」 |
-| Spacing | no space between Japanese and Latin letters or digits (`Shotnixを終了`, `10秒`, `GIFを書き出す`); keep the spaces inside Latin phrases (`QuickTime Player`) |
+| Spacing | no space between Japanese and Latin letters or digits (`ShotStyleを終了`, `10秒`, `GIFを書き出す`); keep the spaces inside Latin phrases (`QuickTime Player`) |
 | Menu paths | “…”＞“…” in sentences, as Apple's help does (`“システム設定”＞“プライバシーとセキュリティ”`); keep an arrow (→) only where the English key draws one as a symbol |
 | Plurals | one form only: give a plain string, like Chinese (`%lld件のスクリーンショット`) |
 | Counters | `%lld項目` (selected or deleted items, as Finder says), `%lld件` (captures in History), `%lld個` (zooms, clips, captions), `%lld箇所` (cuts, pauses), `%lld回` (clicks), `%lld秒`, `%lld分`, `%lld枚` (images) |
@@ -319,7 +319,7 @@ buttons to a word or two.
 | export (button) / Export… / export (noun) | 書き出す / 書き出す… / 書き出し |
 | cancel / delete / done / close | キャンセル / 削除 / 完了 / 閉じる |
 | Show in Finder | Finderに表示 |
-| quit Shotnix / About Shotnix | Shotnixを終了 / Shotnixについて |
+| quit ShotStyle / About ShotStyle | ShotStyleを終了 / ShotStyleについて |
 | settings / Settings… | 設定 / 設定… |
 | Settings tabs: General, Shortcuts, Screenshots, Recording, About | 一般 / ショートカット / スクリーンショット / 収録 / 情報 |
 | System Default (microphone, camera, language) | システムのデフォルト |

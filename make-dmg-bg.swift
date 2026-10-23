@@ -62,7 +62,7 @@ if let noiseImg = CGImage.createNoiseImage(width: Int(width), height: Int(height
 // Center of 128pt image is ~164pt from top.
 // CoreGraphics Y is from bottom: 400 - 164 = 236
 let arrowY: CGFloat = 236
-let text = "INSTALL SHOTNIX"
+let text = "INSTALL SHOTSTYLE"
 
 let font = NSFont.systemFont(ofSize: 11, weight: .bold)
 let attributes: [NSAttributedString.Key: Any] = [

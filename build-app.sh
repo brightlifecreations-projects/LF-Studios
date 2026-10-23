@@ -2,9 +2,9 @@
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-APP_NAME="Shotnix"
+APP_NAME="ShotStyle"
 APP_BUNDLE="$SCRIPT_DIR/$APP_NAME.app"
-ENTITLEMENTS="$SCRIPT_DIR/Shotnix.entitlements"
+ENTITLEMENTS="$SCRIPT_DIR/ShotStyle.entitlements"
 
 if [ -f "$SCRIPT_DIR/.env.local" ]; then
     set -a
@@ -12,10 +12,11 @@ if [ -f "$SCRIPT_DIR/.env.local" ]; then
     set +a
 fi
 
-SIGN_IDENTITY="${SHOTNIX_CODESIGN_IDENTITY:-Shotnix Local Dev}"
-TIMESTAMP_MODE="${SHOTNIX_CODESIGN_TIMESTAMP:-auto}"
-SPARKLE_PUBLIC_ED_KEY="${SHOTNIX_SPARKLE_PUBLIC_ED_KEY:-}"
-REQUIRE_SPARKLE_KEY="${SHOTNIX_REQUIRE_SPARKLE_KEY:-false}"
+# Default "-" = local ad-hoc signing (no certificate needed).
+SIGN_IDENTITY="${SHOTSTYLE_CODESIGN_IDENTITY:--}"
+TIMESTAMP_MODE="${SHOTSTYLE_CODESIGN_TIMESTAMP:-auto}"
+SPARKLE_PUBLIC_ED_KEY="${SHOTSTYLE_SPARKLE_PUBLIC_ED_KEY:-}"
+REQUIRE_SPARKLE_KEY="${SHOTSTYLE_REQUIRE_SPARKLE_KEY:-false}"
 
 echo "▶ Building $APP_NAME (release)…"
 cd "$SCRIPT_DIR"
@@ -39,7 +40,7 @@ cp "$SCRIPT_DIR/Info.plist" "$APP_BUNDLE/Contents/Info.plist"
 if [ -n "$SPARKLE_PUBLIC_ED_KEY" ]; then
     /usr/libexec/PlistBuddy -c "Set :SUPublicEDKey $SPARKLE_PUBLIC_ED_KEY" "$APP_BUNDLE/Contents/Info.plist"
 elif [[ "$REQUIRE_SPARKLE_KEY" =~ ^(1|true|yes|on)$ ]]; then
-    echo "✗ SHOTNIX_SPARKLE_PUBLIC_ED_KEY is required when SHOTNIX_REQUIRE_SPARKLE_KEY=true."
+    echo "✗ SHOTSTYLE_SPARKLE_PUBLIC_ED_KEY is required when SHOTSTYLE_REQUIRE_SPARKLE_KEY=true."
     echo "  Generate it with Sparkle's generate_keys tool and keep the private key out of git."
     exit 1
 else
@@ -47,8 +48,8 @@ else
 fi
 
 # Copy icon into bundle
-if [ -f "$SCRIPT_DIR/Branding/Shotnix.icns" ]; then
-    cp "$SCRIPT_DIR/Branding/Shotnix.icns" "$APP_BUNDLE/Contents/Resources/Shotnix.icns"
+if [ -f "$SCRIPT_DIR/Branding/ShotStyle.icns" ]; then
+    cp "$SCRIPT_DIR/Branding/ShotStyle.icns" "$APP_BUNDLE/Contents/Resources/ShotStyle.icns"
 fi
 
 if [ -f "$SCRIPT_DIR/PrivacyInfo.xcprivacy" ]; then
@@ -60,16 +61,16 @@ if [ -f "$SCRIPT_DIR/THIRD_PARTY_NOTICES.md" ]; then
 fi
 
 # The app's own languages (translated permission prompts). These .lproj folders
-# are also how macOS knows Shotnix is localized: it then lists Shotnix under
+# are also how macOS knows ShotStyle is localized: it then lists ShotStyle under
 # per-app languages and shows system panels in the same language. The app's
-# strings live in the ShotnixCore resource bundle (scripts/localize.py).
+# strings live in the ShotStyleCore resource bundle (scripts/localize.py).
 for lproj in "$SCRIPT_DIR"/Localization/Main/*.lproj; do
     [ -d "$lproj" ] && ditto "$lproj" "$APP_BUNDLE/Contents/Resources/$(basename "$lproj")"
 done
 # The app's strings, also in the main bundle: SwiftUI looks up plain
-# Text("…") literals there. L("…") reads the same files from the ShotnixCore
+# Text("…") literals there. L("…") reads the same files from the ShotStyleCore
 # resource bundle, which is also what tests see.
-for lproj in "$SCRIPT_DIR"/Sources/ShotnixCore/Resources/*.lproj; do
+for lproj in "$SCRIPT_DIR"/Sources/ShotStyleCore/Resources/*.lproj; do
     [ -d "$lproj" ] && ditto "$lproj" "$APP_BUNDLE/Contents/Resources/$(basename "$lproj")"
 done
 
@@ -104,7 +105,15 @@ if ! otool -l "$APP_BUNDLE/Contents/MacOS/$APP_NAME" | grep -q "@executable_path
 fi
 
 echo "Signing with $SIGN_IDENTITY..."
-SIGN_ARGS=(--force --deep --sign "$SIGN_IDENTITY" --options runtime --entitlements "$ENTITLEMENTS")
+if [ "$SIGN_IDENTITY" = "-" ]; then
+    # Local ad-hoc build: re-sign Sparkle with the same ad-hoc signature and skip
+    # the hardened runtime, whose library validation rejects mixed signatures
+    # (the app would crash at launch with "different Team IDs").
+    codesign --force --deep --sign - "$APP_BUNDLE/Contents/Frameworks/Sparkle.framework"
+    SIGN_ARGS=(--force --sign - --entitlements "$ENTITLEMENTS")
+else
+    SIGN_ARGS=(--force --deep --sign "$SIGN_IDENTITY" --options runtime --entitlements "$ENTITLEMENTS")
+fi
 
 case "$TIMESTAMP_MODE" in
     1|true|yes|on)
@@ -118,7 +127,7 @@ case "$TIMESTAMP_MODE" in
         fi
         ;;
     *)
-        echo "✗ Invalid SHOTNIX_CODESIGN_TIMESTAMP: $TIMESTAMP_MODE"
+        echo "✗ Invalid SHOTSTYLE_CODESIGN_TIMESTAMP: $TIMESTAMP_MODE"
         echo "  Use auto, true, or false."
         exit 1
         ;;
@@ -132,7 +141,7 @@ rm -rf "$APPS_DEST"
 cp -R "$APP_BUNDLE" "$APPS_DEST"
 
 echo ""
-echo "✓ Done!  Shotnix.app deployed to /Applications."
+echo "✓ Done!  ShotStyle.app deployed to /Applications."
 echo "  Launch it from /Applications."
 echo ""
 echo "  First launch: grant Screen Recording permission when prompted"

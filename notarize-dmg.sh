@@ -9,19 +9,19 @@ if [ -f "$SCRIPT_DIR/.env.local" ]; then
     set +a
 fi
 
-DMG_PATH="${1:-${SHOTNIX_DMG_PATH:-}}"
-NOTARY_PROFILE="${SHOTNIX_NOTARY_PROFILE:-}"
+DMG_PATH="${1:-${SHOTSTYLE_DMG_PATH:-}}"
+NOTARY_PROFILE="${SHOTSTYLE_NOTARY_PROFILE:-}"
 
 usage() {
     cat <<'EOF'
-Usage: bash notarize-dmg.sh /path/to/Shotnix.dmg
+Usage: bash notarize-dmg.sh /path/to/ShotStyle.dmg
 
 Required local setup, not committed to git:
   1. Install your Developer ID Application certificate in Keychain.
   2. Store notary credentials in Keychain:
-     xcrun notarytool store-credentials "ShotnixNotaryProfile"
+     xcrun notarytool store-credentials "ShotStyleNotaryProfile"
   3. Copy .env.example to .env.local and set:
-     SHOTNIX_NOTARY_PROFILE="ShotnixNotaryProfile"
+     SHOTSTYLE_NOTARY_PROFILE="ShotStyleNotaryProfile"
 
 This script submits the DMG to Apple's notary service, waits, staples the
 ticket, then validates the result. It does not store Apple credentials.
@@ -44,7 +44,7 @@ if [ ! -f "$DMG_PATH" ]; then
 fi
 
 if [ -z "$NOTARY_PROFILE" ]; then
-    echo "✗ SHOTNIX_NOTARY_PROFILE is not set."
+    echo "✗ SHOTSTYLE_NOTARY_PROFILE is not set."
     echo "  Copy .env.example to .env.local and set your Keychain profile name."
     exit 1
 fi

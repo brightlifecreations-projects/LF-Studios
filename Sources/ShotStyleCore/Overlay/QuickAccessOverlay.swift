@@ -1,0 +1,1066 @@
+import AppKit
+import CoreImage
+import QuartzCore
+
+/// Post-capture floating thumbnail with quick action buttons.
+/// Position and dismiss timeout are controlled via Preferences → Settings.
+@MainActor
+final class QuickAccessOverlay {
+
+    static func show(image: NSImage, historyItem: HistoryItem, historyManager: HistoryManager) {
+        let window = QuickAccessWindow(image: image, historyItem: historyItem, historyManager: historyManager)
+        window.show()
+    }
+
+    /// Post-save toast text: the file actually written, its folder, and the
+    /// reveal affordance hint.
+    static func savedMessage(for url: URL) -> String {
+        let folder = url.deletingLastPathComponent()
+        let folderName = FileManager.default.displayName(atPath: folder.path)
+        let destination = folderName.isEmpty ? folder.lastPathComponent : folderName
+        let file = url.lastPathComponent
+        return L("Saved \(file) to \(destination) — click to reveal in Finder")
+    }
+}
+
+/// Where post-capture thumbnails stack on a screen: a column rising from
+/// above the Dock line, never reaching under the menu bar.
+enum QuickAccessStackLayout {
+    /// Vertical gap between stacked thumbnails.
+    static let gap: CGFloat = 12
+    static let sideMargin: CGFloat = 36
+    /// Sits noticeably above the bottom edge (Dock line) — comfortable to
+    /// glance at without looking "docked" to the corner.
+    static let bottomMargin: CGFloat = 84
+    static let topMargin: CGFloat = 12
+    /// More than this per screen and the oldest card is dismissed.
+    static let maxCards = 5
+
+    /// Cards that fit between the Dock line and the menu bar — fewer than
+    /// five on a small screen.
+    static func capacity(visibleFrame: CGRect, cardHeight: CGFloat) -> Int {
+        let usable = visibleFrame.height - bottomMargin - topMargin
+        let fitting = Int(floor((usable + gap) / (cardHeight + gap)))
+        return max(1, min(maxCards, fitting))
+    }
+
+    /// Slot 0 is the anchor at the bottom (the oldest card).
+    static func origin(slot: Int, visibleFrame: CGRect, cardSize: CGSize, onLeft: Bool) -> CGPoint {
+        let x = onLeft ? visibleFrame.minX + sideMargin : visibleFrame.maxX - cardSize.width - sideMargin
+        let y = visibleFrame.minY + bottomMargin + CGFloat(slot) * (cardSize.height + gap)
+        let highest = visibleFrame.maxY - cardSize.height - topMargin
+        return CGPoint(x: x, y: max(visibleFrame.minY, min(y, highest)))
+    }
+}
+
+/// Non-activating panel: the overlay appears without stealing focus from the
+/// app the user is working in — they keep typing, the thumbnail just slides
+/// in. Keyboard shortcuts engage on hover, when the panel takes key status
+/// without activating the app (the Spotlight mechanism). Internal so tests
+/// can photograph it; the app opens it through `QuickAccessOverlay.show`.
+@MainActor
+final class QuickAccessWindow: NSPanel, ShotStyleCommandClosable {
+
+    /// Keep strong refs so ARC doesn't deallocate while visible.
+    private static var openWindows: [QuickAccessWindow] = []
+
+    private var dismissTimer: Timer?
+    private var keyMonitor: Any?
+    private var globalMouseMonitor: Any?
+    private var localMouseMonitor: Any?
+    private var scrollMonitor: Any?
+    private let historyItem: HistoryItem
+    private let historyManager: HistoryManager
+    private let image: NSImage
+    private var controlsOverlay: NSView?
+    private weak var timeoutProgressLayer: CALayer?
+    private var isHovered = false
+    private var mouseInsideOverlay = false
+    private var swipeAccumX: CGFloat = 0
+
+    init(image: NSImage, historyItem: HistoryItem, historyManager: HistoryManager) {
+        self.image = image
+        self.historyItem = historyItem
+        self.historyManager = historyManager
+
+        let thumbW: CGFloat = 240
+        let thumbH: CGFloat = 150
+        // Use an integer value so the controls overlay placed above it sits on an integer pixel boundary
+        // This prevents CoreAnimation from subpixel blending straight edges against the frosted glass.
+        let progressH: CGFloat = 2.0
+        let totalH = thumbH + progressH
+
+        super.init(
+            contentRect: NSRect(x: 0, y: 0, width: thumbW, height: totalH),
+            styleMask: [.borderless, .nonactivatingPanel],
+            backing: .buffered,
+            defer: false
+        )
+        isOpaque = false
+        backgroundColor = .clear
+        level = .floating
+        hasShadow = true
+        isMovableByWindowBackground = false
+        acceptsMouseMovedEvents = true
+        hidesOnDeactivate = false
+        collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary, .stationary]
+
+        buildContent(thumbW: thumbW, thumbH: thumbH, progressH: progressH, totalH: totalH)
+        positionOverlay()
+        installEventMonitors()
+    }
+
+    override var canBecomeKey: Bool { true }
+
+    func closeFromCommand() {
+        dismissAction()
+    }
+
+    // MARK: – Keyboard (direct override — works when window IS key)
+
+    override func keyDown(with event: NSEvent) {
+        guard !isClosing else { return }
+        _ = handleShortcut(event)
+    }
+
+    /// ⌘C / ⌘S / ⌘E / Esc. Letters go through ShortcutKeyMatching so they
+    /// work on Cyrillic, Greek, and other non-Latin layouts too.
+    private func handleShortcut(_ event: NSEvent) -> Bool {
+        if event.keyCode == 53 {
+            dismissAction()
+            return true
+        }
+        // Caps Lock (and the fn/keypad bits) don't change which shortcut it is.
+        guard event.modifierFlags.intersection(.deviceIndependentFlagsMask).subtracting([.capsLock, .function, .numericPad]) == .command else { return false }
+        switch ShortcutKeyMatching.latinLetter(for: event) {
+        case "c": copyAction()
+        case "s": saveAction()
+        case "e": editAction()
+        default: return false
+        }
+        return true
+    }
+
+    // MARK: – Event Monitors (bypass view hierarchy entirely)
+
+    private func installEventMonitors() {
+        // Keyboard: catches ⌘C/⌘S/⌘E/Escape at the app level — no key window needed
+        keyMonitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { [weak self] event in
+            guard let self, !self.isClosing else { return event }
+            // Only handle if mouse is over our window
+            guard self.frame.contains(NSEvent.mouseLocation) else { return event }
+            return self.handleShortcut(event) ? nil : event
+        }
+
+        // Global mouse: hover tracking while the app is inactive. On enter the
+        // nonactivating panel takes key status for ⌘C/⌘S/⌘E/Esc WITHOUT
+        // activating the app; on exit it hands keyboard focus straight back to
+        // whatever app the user is working in.
+        globalMouseMonitor = NSEvent.addGlobalMonitorForEvents(matching: [.mouseMoved, .leftMouseDragged]) { [weak self] _ in
+            guard let self, !self.isClosing else { return }
+            let inside = self.frame.contains(NSEvent.mouseLocation)
+            guard inside != self.mouseInsideOverlay else { return }
+            self.mouseInsideOverlay = inside
+            DispatchQueue.main.async {
+                self.setHovered(inside)
+                if inside {
+                    self.makeKeyAndOrderFront(nil)
+                    self.makeFirstResponder(self)
+                } else if self.isKeyWindow {
+                    // Ordering out drops key status back to the user's app;
+                    // both calls land in one transaction, so no visible blink.
+                    self.orderOut(nil)
+                    self.orderFrontRegardless()
+                }
+            }
+        }
+
+        // Local mouse: keeps window key while hovering + tracks hover state
+        localMouseMonitor = NSEvent.addLocalMonitorForEvents(matching: [.mouseMoved]) { [weak self] event in
+            guard let self, !self.isClosing else { return event }
+            let inside = self.frame.contains(NSEvent.mouseLocation)
+            self.setHovered(inside)
+            if inside && !self.isKeyWindow {
+                self.makeKey()
+            }
+            return event
+        }
+
+        // Swipe-to-dismiss: trackpad swipe toward nearest screen edge closes overlay
+        scrollMonitor = NSEvent.addLocalMonitorForEvents(matching: .scrollWheel) { [weak self] event in
+            guard let self, !self.isClosing else { return event }
+            guard self.frame.contains(NSEvent.mouseLocation) else { return event }
+
+            self.swipeAccumX += event.scrollingDeltaX
+            let threshold: CGFloat = 60
+            if abs(self.swipeAccumX) > threshold {
+                let direction = self.swipeAccumX > 0 ? CGFloat(1) : CGFloat(-1)
+                self.swipeAccumX = 0
+                self.swipeDismiss(direction: direction)
+                return nil
+            }
+            return event
+        }
+    }
+
+    private func removeEventMonitors() {
+        if let m = keyMonitor { NSEvent.removeMonitor(m); keyMonitor = nil }
+        if let m = globalMouseMonitor { NSEvent.removeMonitor(m); globalMouseMonitor = nil }
+        if let m = localMouseMonitor { NSEvent.removeMonitor(m); localMouseMonitor = nil }
+        if let m = scrollMonitor { NSEvent.removeMonitor(m); scrollMonitor = nil }
+    }
+
+    override func rightMouseDown(with event: NSEvent) {
+        guard let view = contentView else { return }
+        ShotStyleContextMenu.show(
+            sections: [
+                ShotStyleMenuSection(id: "quick.primary", title: L("Capture"), actions: [
+                    ShotStyleMenuAction(id: "quick.copy", title: L("Copy"), symbolName: "doc.on.doc", shortcut: "⌘C", role: .primary) { [weak self] in self?.copyAction() },
+                    ShotStyleMenuAction(id: "quick.copytext", title: L("Copy Text"), symbolName: "text.viewfinder") { [weak self] in self?.copyTextAction() },
+                    ShotStyleMenuAction(id: "quick.save", title: L("Save"), symbolName: "square.and.arrow.down", shortcut: "⌘S") { [weak self] in self?.saveAction() },
+                    ShotStyleMenuAction(id: "quick.edit", title: L("Edit"), symbolName: "pencil", shortcut: "⌘E") { [weak self] in self?.editAction() },
+                    ShotStyleMenuAction(id: "quick.pin", title: L("Pin"), symbolName: "pin") { [weak self] in self?.pinAction() },
+                ]),
+                ShotStyleMenuSection(id: "quick.manage", title: L("Manage"), actions: [
+                    ShotStyleMenuAction(id: "quick.delete", title: L("Delete"), symbolName: "trash", role: .destructive) { [weak self] in self?.deleteAction() },
+                    ShotStyleMenuAction(id: "quick.close", title: L("Close"), symbolName: "xmark") { [weak self] in self?.dismissAction() },
+                ])
+            ],
+            at: event,
+            in: view
+        )
+    }
+
+    /// Renders the capture scaled to FILL the given point size — center-
+    /// cropping overflow and upscaling small captures — with high-quality
+    /// interpolation. The GPU's default layer scaling softens small text;
+    /// pre-scaling on the CPU keeps UI captures (menus, dialogs) crisp.
+    /// Preserves the source's RGB color space so ICC-correct captures don't
+    /// shift. Falls back to the original image on any failure.
+    private func crispPreviewImage(for source: NSImage, filling size: NSSize) -> NSImage {
+        guard size.width > 1, size.height > 1, let cgImage = source.bestCGImage else { return source }
+        let scale = NSScreen.main?.backingScaleFactor ?? 2.0
+        let targetWidth = Int((size.width * scale).rounded())
+        let targetHeight = Int((size.height * scale).rounded())
+        guard targetWidth > 0, targetHeight > 0 else { return source }
+        let colorSpace = cgImage.colorSpace.flatMap { $0.model == .rgb ? $0 : nil }
+            ?? CGColorSpace(name: CGColorSpace.sRGB)!
+        guard let context = CGContext(
+            data: nil,
+            width: targetWidth,
+            height: targetHeight,
+            bitsPerComponent: 8,
+            bytesPerRow: 0,
+            space: colorSpace,
+            bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue
+        ) else { return source }
+        context.interpolationQuality = .high
+        let fillScale = max(CGFloat(targetWidth) / CGFloat(max(cgImage.width, 1)), CGFloat(targetHeight) / CGFloat(max(cgImage.height, 1)))
+        let drawWidth = CGFloat(cgImage.width) * fillScale
+        let drawHeight = CGFloat(cgImage.height) * fillScale
+        context.draw(cgImage, in: CGRect(
+            x: (CGFloat(targetWidth) - drawWidth) / 2,
+            y: (CGFloat(targetHeight) - drawHeight) / 2,
+            width: drawWidth,
+            height: drawHeight
+        ))
+        guard let scaled = context.makeImage() else { return source }
+        return NSImage(cgImage: scaled, size: size)
+    }
+
+    private func buildContent(thumbW: CGFloat, thumbH: CGFloat, progressH: CGFloat, totalH: CGFloat) {
+        let container = OverlayContentView(frame: NSRect(x: 0, y: 0, width: thumbW, height: totalH))
+        container.wantsLayer = true
+        container.layer?.cornerRadius = 12
+        container.layer?.cornerCurve = .continuous
+        container.layer?.masksToBounds = false
+        container.layer?.shadowColor = NSColor.black.cgColor
+        container.layer?.shadowOpacity = 0.55
+        container.layer?.shadowRadius = 30
+        container.layer?.shadowOffset = CGSize(width: 0, height: -10)
+        contentView = container
+
+        // Clip subviews so content respects corner radius while shadow remains visible
+        let clipView = NSView(frame: container.bounds)
+        clipView.wantsLayer = true
+        clipView.layer?.cornerRadius = 12
+        clipView.layer?.cornerCurve = .continuous
+        clipView.layer?.masksToBounds = true
+        // Subtle dark tint — frames content, visible at rounded corners and behind image
+        clipView.layer?.backgroundColor = ShotStyleColors.overlayTint.cgColor
+        container.addSubview(clipView)
+
+        // White border — primary edge definition on light wallpapers (shadow handles dark)
+        let borderView = PassthroughView(frame: container.bounds)
+        borderView.wantsLayer = true
+        borderView.layer?.cornerRadius = 12
+        borderView.layer?.cornerCurve = .continuous
+        borderView.layer?.borderWidth = 1.5
+        borderView.layer?.borderColor = ShotStyleColors.overlayBorder.cgColor
+        container.addSubview(borderView)
+
+        // Draggable thumbnail — drag to Finder/apps, double-click to annotate.
+        // Dark container fill goes on the thumb's own layer so letterbox bars
+        // read as a proper container without inserting an extra opaque subview
+        // that can interfere with hit-testing on the controls overlay above.
+        let thumbFrame = NSRect(x: 0, y: progressH, width: thumbW, height: thumbH)
+
+        // ── Full-bleed capture: fixed card size, and the
+        // screenshot scaled to FILL the entire card — center-cropped when the
+        // aspect differs, zoomed up when the capture is smaller than the
+        // card. Bold and instantly readable; the card's own rounded corners
+        // and border do all the framing.
+        let thumb = DraggableImageView(frame: thumbFrame)
+        thumb.image = crispPreviewImage(for: image, filling: thumbFrame.size)
+        thumb.imageScaling = .scaleProportionallyUpOrDown
+        thumb.imageAlignment = .alignCenter
+        thumb.wantsLayer = true
+        thumb.layer?.backgroundColor = ShotStyleColors.overlayContainerFill.cgColor
+        thumb.layer?.contentsScale = NSScreen.main?.backingScaleFactor ?? 2.0
+        thumb.dragImage = image
+        thumb.dragFileProvider = { [weak self] in self?.makeDragFile() }
+        thumb.setAccessibilityLabel(L("Screenshot thumbnail"))
+        thumb.setAccessibilityHelp(L("Double-click to edit, or drag into another app. Command-C copies, Command-S saves, Escape dismisses."))
+        thumb.onDoubleClick = { [weak self] in self?.editAction() }
+        thumb.onDragStarted = { [weak self] in self?.dismissTimer?.invalidate() }
+        thumb.onDragCompleted = { [weak self] in self?.animatedClose() }
+        clipView.addSubview(thumb)
+
+        // Controls overlay — frosted glass + corner circles + center pills
+        let controls = OverlayControlsView(frame: NSRect(x: 0, y: progressH, width: thumbW, height: thumbH))
+        controls.wantsLayer = true
+
+        // Frosted glass backdrop
+        let frost = NSVisualEffectView(frame: controls.bounds)
+        frost.material = .hudWindow
+        frost.blendingMode = .behindWindow
+        frost.state = .active
+        controls.addSubview(frost)
+
+        // ── Corner circles (28px glass buttons, all 4 corners) ──
+        let cSize: CGFloat = 28
+        let cMargin: CGFloat = 8
+        let cConfig = NSImage.SymbolConfiguration(pointSize: 12, weight: .medium)
+
+        let corners: [(String, String, Selector, CGFloat, CGFloat)] = [
+            ("pencil",  L("Edit"),   #selector(editAction),    cMargin,                   thumbH - cSize - cMargin),
+            ("xmark",   L("Close"),  #selector(dismissAction), thumbW - cSize - cMargin,  thumbH - cSize - cMargin),
+            ("trash",   L("Delete"), #selector(deleteAction),  cMargin,                   cMargin),
+            ("pin",     L("Pin"),    #selector(pinAction),     thumbW - cSize - cMargin,  cMargin),
+        ]
+        let screenScale = NSScreen.main?.backingScaleFactor ?? 2.0
+        for (icon, tip, sel, cx, cy) in corners {
+            let btn = OverlayCornerButton(frame: NSRect(x: cx, y: cy, width: cSize, height: cSize))
+            btn.image = NSImage(systemSymbolName: icon, accessibilityDescription: tip)?.withSymbolConfiguration(cConfig)
+            btn.bezelStyle = .regularSquare
+            btn.isBordered = false
+            btn.toolTip = tip
+            btn.target = self
+            btn.action = sel
+            btn.imageScaling = .scaleNone
+            btn.contentTintColor = .white
+            btn.wantsLayer = true
+            btn.layer?.contentsScale = screenScale
+            btn.layer?.cornerRadius = cSize / 2
+            btn.layer?.cornerCurve = .continuous
+            btn.layer?.backgroundColor = ShotStyleColors.cornerButtonBackground.cgColor
+            controls.addSubview(btn)
+        }
+
+        // ── Center pills (tight-fit white capsules) ──
+        let pillH: CGFloat = 28
+        let pills: [(String, String, Selector)] = [
+            (L("Copy"), L("Copy image to clipboard"), #selector(copyAction)),
+            (L("Save"), L("Save screenshot to disk"), #selector(saveAction)),
+            (L("Text"), L("Copy recognized text (OCR)"), #selector(copyTextAction)),
+        ]
+        let pillFont = NSFont.systemFont(ofSize: Self.pillFontSize(titles: pills.map(\.0), available: thumbW - 24), weight: .medium)
+        let pillAttrs: [NSAttributedString.Key: Any] = [
+            .foregroundColor: NSColor.black.withAlphaComponent(0.85),
+            .font: pillFont,
+        ]
+
+        // Measure each pill to fit text snugly. Longer words (Enregistrer)
+        // trade padding for room, so the row stays clear of the card's edges.
+        let textWidths = pills.map { title, _, _ in
+            ceil((title as NSString).size(withAttributes: pillAttrs).width)
+        }
+        let (pillPadding, pillGap) = Self.pillSpacing(textWidths: textWidths, available: thumbW - 24)
+        let pillWidths = textWidths.map { $0 + pillPadding }
+        let totalPillW = pillWidths.reduce(0, +) + CGFloat(pills.count - 1) * pillGap
+        let pillY = round((thumbH - pillH) / 2)
+        var pillCursorX = round((thumbW - totalPillW) / 2)
+
+        let retinaScale = NSScreen.main?.backingScaleFactor ?? 2.0
+        for (i, (title, tip, sel)) in pills.enumerated() {
+            let pw = pillWidths[i]
+            let pill = OverlayPillButton(frame: NSRect(x: pillCursorX, y: pillY, width: pw, height: pillH))
+            pill.attributedTitle = NSAttributedString(string: title, attributes: pillAttrs)
+            pill.toolTip = tip
+            pill.target = self
+            pill.action = sel
+            pill.layer?.contentsScale = retinaScale
+            pill.layer?.cornerRadius = pillH / 2
+            pill.layer?.cornerCurve = .continuous
+            pill.layer?.backgroundColor = ShotStyleColors.pillButtonBackground.cgColor
+            controls.addSubview(pill)
+            pillCursorX += pw + pillGap
+        }
+
+        controls.alphaValue = 0
+        clipView.addSubview(controls)
+        controlsOverlay = controls
+
+        // Progress bar at the very bottom — thin, bright accent line
+        let timeout = Settings.overlayTimeout
+        if timeout > 0 {
+            let progressBg = NSView(frame: NSRect(x: 0, y: 0, width: thumbW, height: progressH))
+            progressBg.wantsLayer = true
+            progressBg.layer?.backgroundColor = ShotStyleColors.progressBackground.cgColor
+            clipView.addSubview(progressBg)
+
+            let progressFill = NSView(frame: progressBg.bounds)
+            progressFill.wantsLayer = true
+            progressFill.layer?.backgroundColor = NSColor.controlAccentColor.cgColor
+            progressFill.layer?.anchorPoint = CGPoint(x: 0, y: 0.5)
+            progressFill.layer?.position = CGPoint(x: 0, y: progressH / 2)
+            progressBg.addSubview(progressFill)
+            timeoutProgressLayer = progressFill.layer
+
+            animateTimeoutProgress(duration: timeout)
+
+            dismissTimer = Timer.scheduledTimer(withTimeInterval: timeout, repeats: false) { [weak self] _ in
+                DispatchQueue.main.async { self?.animatedClose() }
+            }
+        }
+    }
+
+    /// The pills' title size: the design's 13 pt, or a little smaller (down to
+    /// 11) when the words don't fit `available` even at the tightest spacing
+    /// (Скопировать · Сохранить · Текст).
+    nonisolated static func pillFontSize(titles: [String], available: CGFloat) -> CGFloat {
+        let gaps = CGFloat(max(titles.count - 1, 0))
+        let room = available - CGFloat(titles.count) * 14 - gaps * 4
+        var size: CGFloat = 13
+        while size > 11 {
+            let font = NSFont.systemFont(ofSize: size, weight: .medium)
+            if titles.map({ TextFitting.width(of: $0, font: font) }).reduce(0, +) <= room { break }
+            size -= 0.5
+        }
+        return size
+    }
+
+    /// Padding inside each pill and the gap between them: the design's 28
+    /// and 8 while the row fits `available`, then less of each (down to 14
+    /// and 4) for longer words.
+    nonisolated static func pillSpacing(textWidths: [CGFloat], available: CGFloat) -> (padding: CGFloat, gap: CGFloat) {
+        let count = CGFloat(textWidths.count)
+        let gaps = CGFloat(max(textWidths.count - 1, 0))
+        let text = textWidths.reduce(0, +)
+        guard count > 0, text + count * 28 + gaps * 8 > available else { return (28, 8) }
+        let spare = max(0, available - text)
+        let padding = max(14, min(28, (spare - gaps * 4) / count))
+        let gap = gaps > 0 ? max(4, min(8, (spare - count * padding) / gaps)) : 0
+        return (padding, gap)
+    }
+
+    /// Shows the controls (and pauses the dismiss timer) while hovered.
+    func setHovered(_ hovered: Bool) {
+        guard hovered != isHovered else { return }
+        isHovered = hovered
+
+        // Pause/resume auto-dismiss timer on hover
+        if hovered {
+            dismissTimer?.invalidate()
+            timeoutProgressLayer?.removeAnimation(forKey: "timeoutProgress")
+        } else {
+            let remaining = Settings.overlayTimeout
+            if remaining > 0 {
+                animateTimeoutProgress(duration: remaining)
+                dismissTimer = Timer.scheduledTimer(withTimeInterval: remaining, repeats: false) { [weak self] _ in
+                    DispatchQueue.main.async { self?.animatedClose() }
+                }
+            }
+        }
+
+        NSAnimationContext.runAnimationGroup { ctx in
+            ctx.duration = 0.2
+            controlsOverlay?.animator().alphaValue = hovered ? 1 : 0
+        }
+    }
+
+    private func animateTimeoutProgress(duration: TimeInterval) {
+        guard let layer = timeoutProgressLayer else { return }
+        layer.removeAnimation(forKey: "timeoutProgress")
+        layer.transform = CATransform3DIdentity
+        let shrink = CABasicAnimation(keyPath: "transform.scale.x")
+        shrink.fromValue = 1.0
+        shrink.toValue = 0.0
+        shrink.duration = duration
+        shrink.timingFunction = CAMediaTimingFunction(name: .linear)
+        shrink.fillMode = .forwards
+        shrink.isRemovedOnCompletion = false
+        layer.add(shrink, forKey: "timeoutProgress")
+    }
+
+    /// Screen the capture was taken on — post-capture UI appears there instead
+    /// of whichever screen happens to be main, so it pops up where the user is
+    /// looking. Falls back to main for items without a stored capture rect.
+    private var captureScreen: NSScreen? {
+        if let rect = historyItem.captureRect?.cgRect,
+           let screen = NSScreen.screenContaining(rect: rect) {
+            return screen
+        }
+        return NSScreen.main
+    }
+
+    // MARK: – Stack layout (multiple captures pile into a column)
+
+    /// Origin for a given stack slot on this window's screen. Slot 0 is the
+    /// anchor at the bottom (the oldest card); new captures land on TOP of
+    /// the pile, and cards drop down a slot when one below them leaves.
+    private func slotOrigin(index: Int) -> NSPoint? {
+        guard let screen = captureScreen else { return nil }
+        return QuickAccessStackLayout.origin(slot: index, visibleFrame: screen.visibleFrame, cardSize: frame.size, onLeft: Settings.overlayOnLeft)
+    }
+
+    /// How many cards this window's screen can stack without the column
+    /// reaching the menu bar.
+    private var stackCapacity: Int {
+        guard let screen = captureScreen else { return QuickAccessStackLayout.maxCards }
+        return QuickAccessStackLayout.capacity(visibleFrame: screen.visibleFrame, cardHeight: frame.height)
+    }
+
+    private var screenKey: CGDirectDisplayID {
+        (captureScreen?.deviceDescription[NSDeviceDescriptionKey("NSScreenNumber")] as? CGDirectDisplayID) ?? 0
+    }
+
+    /// Slides every open card to its slot: oldest at the bottom anchor,
+    /// newer cards on top. Runs when a card leaves — the cards above drop
+    /// down into the freed space. (Arrivals don't move anyone: the newcomer
+    /// simply lands on top of the pile.)
+    private static func relayoutStacks(animated: Bool) {
+        let active = openWindows.filter { !$0.isClosing }
+        let byScreen = Dictionary(grouping: active, by: { $0.screenKey })
+
+        for (_, group) in byScreen {
+            // openWindows is oldest→newest; oldest keeps the bottom anchor.
+            for (index, window) in group.enumerated() {
+                guard let target = window.slotOrigin(index: index),
+                      window.frame.origin != target else { continue }
+                if animated {
+                    NSAnimationContext.runAnimationGroup({ ctx in
+                        ctx.duration = 0.35
+                        // Fast start, soft landing — the "drop" feel.
+                        ctx.timingFunction = CAMediaTimingFunction(controlPoints: 0.22, 1.0, 0.36, 1.0)
+                        // NSWindow only animates `frame` — animator().setFrameOrigin
+                        // is silently swallowed (not an animatable key).
+                        window.animator().setFrame(NSRect(origin: target, size: window.frame.size), display: true)
+                    }, completionHandler: {
+                        // A card that moved under (or away from) a stationary
+                        // cursor gets no mouse event — re-evaluate hover so
+                        // its dismiss timer pauses/resumes correctly.
+                        Task { @MainActor in
+                            guard !window.isClosing else { return }
+                            window.setHovered(window.frame.contains(NSEvent.mouseLocation))
+                        }
+                    })
+                } else {
+                    window.setFrameOrigin(target)
+                }
+            }
+        }
+    }
+
+    /// Keeps each screen's pile manageable — beyond the cap (fewer cards on
+    /// a small screen), the oldest card animates out (its history entry is
+    /// untouched).
+    private static func enforceStackLimit() {
+        let active = openWindows.filter { !$0.isClosing }
+        let byScreen = Dictionary(grouping: active, by: { $0.screenKey })
+        for (_, group) in byScreen {
+            let capacity = group.last?.stackCapacity ?? QuickAccessStackLayout.maxCards
+            guard group.count > capacity else { continue }
+            for window in group.prefix(group.count - capacity) {
+                window.animatedClose()
+            }
+        }
+    }
+
+    private func positionOverlay() {
+        // New captures land on top of the pile: my slot is however many
+        // cards are already stacked on this screen (self isn't in
+        // openWindows yet — show() appends after init).
+        let key = screenKey
+        let slot = Self.openWindows.filter { !$0.isClosing && $0.screenKey == key }.count
+        guard let origin = slotOrigin(index: slot) else { return }
+        // Start at final position (slide-up is handled by scale spring, not position offset)
+        setFrameOrigin(origin)
+        alphaValue = 0
+
+        // Order front WITHOUT activating or taking key — the user keeps typing
+        // in their app. Hover engages keyboard via the nonactivating panel.
+        orderFrontRegardless()
+        setHovered(frame.contains(NSEvent.mouseLocation))
+
+        // Scale entrance: start at 92% and spring to 100%
+        if let layer = contentView?.layer {
+            layer.anchorPoint = CGPoint(x: 0.5, y: 0)
+            layer.position = CGPoint(x: frame.width / 2, y: 0)
+
+            let scaleAnim = CASpringAnimation(keyPath: "transform.scale")
+            scaleAnim.fromValue = 0.92
+            scaleAnim.toValue = 1.0
+            scaleAnim.mass = 1.0
+            scaleAnim.stiffness = 300
+            scaleAnim.damping = 18
+            scaleAnim.initialVelocity = 0
+            scaleAnim.duration = scaleAnim.settlingDuration
+            scaleAnim.fillMode = .forwards
+            scaleAnim.isRemovedOnCompletion = false
+            layer.add(scaleAnim, forKey: "entranceScale")
+        }
+
+        // Fade in (scale spring handles the motion)
+        NSAnimationContext.runAnimationGroup { ctx in
+            ctx.duration = 0.3
+            ctx.timingFunction = CAMediaTimingFunction(name: .easeOut)
+            self.animator().alphaValue = 1
+        }
+    }
+
+    /// Swipe-dismiss: slide overlay off-screen toward the swipe direction
+    private func swipeDismiss(direction: CGFloat) {
+        guard !isClosing else { return }
+        isClosing = true
+        dismissTimer?.invalidate()
+        // Cards above drop down while this one slides away.
+        Self.relayoutStacks(animated: true)
+
+        let slideDistance: CGFloat = frame.width + 40
+        let targetX = frame.origin.x + (direction * slideDistance)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) { [weak self] in
+            self?.forceCleanup()
+        }
+
+        NSAnimationContext.runAnimationGroup({ ctx in
+            ctx.duration = 0.25
+            ctx.timingFunction = CAMediaTimingFunction(name: .easeIn)
+            self.animator().alphaValue = 0
+            // setFrame, not setFrameOrigin: origin alone isn't an animatable
+            // NSWindow key, so the slide silently never happened.
+            self.animator().setFrame(NSRect(x: targetX, y: self.frame.origin.y, width: self.frame.width, height: self.frame.height), display: true)
+        }, completionHandler: { [weak self] in
+            DispatchQueue.main.async { self?.forceCleanup() }
+        })
+    }
+
+    private var isClosing = false
+    private var skipPolicyReset = false
+
+    private func animatedClose() {
+        guard !isClosing else { return }
+        isClosing = true
+        dismissTimer?.invalidate()
+        // Cards above drop down while this one fades out.
+        Self.relayoutStacks(animated: true)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) { [weak self] in
+            self?.forceCleanup()
+        }
+
+        NSAnimationContext.runAnimationGroup({ ctx in
+            ctx.duration = 0.12
+            ctx.timingFunction = CAMediaTimingFunction(name: .easeIn)
+            
+            if let layer = self.contentView?.layer {
+                let scaleAnim = CABasicAnimation(keyPath: "transform.scale")
+                scaleAnim.toValue = 0.95
+                scaleAnim.duration = 0.12
+                scaleAnim.fillMode = .forwards
+                scaleAnim.isRemovedOnCompletion = false
+                layer.add(scaleAnim, forKey: "exitScale")
+            }
+            
+            self.animator().alphaValue = 0
+        }, completionHandler: { [weak self] in
+            DispatchQueue.main.async { self?.forceCleanup() }
+        })
+    }
+
+    private var didCleanup = false
+
+    private func forceCleanup() {
+        guard !didCleanup else { return }
+        didCleanup = true
+        removeEventMonitors()
+        orderOut(nil)
+        QuickAccessWindow.openWindows.removeAll { $0 === self }
+        // Idempotent safety net: close paths relayout at close start, but a
+        // window torn down without animating (e.g. app-level cleanup) still
+        // frees its slot for the cards above.
+        QuickAccessWindow.relayoutStacks(animated: true)
+        // Restore background-only policy so app doesn't appear in Cmd-Tab
+        // (skip when transitioning to another window like editor or pin)
+        if QuickAccessWindow.openWindows.isEmpty && !skipPolicyReset {
+            NSApp.restoreBackgroundOnlyActivationPolicyIfNeeded()
+        }
+    }
+
+    // MARK: – Actions
+
+    @objc private func copyAction() {
+        // The encode runs off the main thread; the checkmark waits for it.
+        ImageExporter.copyToClipboardAsync(image: image) { [weak self] copied in
+            guard let self, !self.isClosing else { return }
+            guard copied else {
+                ToastWindow.show(message: L("Could not copy the screenshot"), on: self.captureScreen)
+                return
+            }
+            self.showConfirmation(icon: "checkmark") { [weak self] in self?.animatedClose() }
+        }
+    }
+
+    @objc private func saveAction() {
+        let directory = URL(fileURLWithPath: Settings.autoSaveLocation, isDirectory: true)
+        ImageExporter.autoSave(image: image, in: directory) { [weak self] result in
+            guard let self else { return }
+            switch result {
+            case .failure(let error):
+                ToastWindow.show(
+                    message: ImageExporter.autoSaveFailureMessage(for: error, directory: directory),
+                    duration: 6,
+                    on: self.captureScreen,
+                    action: { PreferencesWindowController.shared.show(tab: .screenshots) }
+                )
+            case .success(let savedURL):
+                self.showConfirmation(icon: "checkmark") { [weak self] in
+                    guard let self else { return }
+                    self.animatedClose()
+                    // Clickable toast — reveals the file actually written (its
+                    // name may have gained " 2", or .png for an unwritable WebP).
+                    ToastWindow.show(
+                        message: QuickAccessOverlay.savedMessage(for: savedURL),
+                        duration: 3.0,
+                        on: self.captureScreen,
+                        action: { NSWorkspace.shared.activateFileViewerSelecting([savedURL]) }
+                    )
+                }
+            }
+        }
+    }
+
+    /// The drag hands over the history PNG itself (a clone: instant, tags and
+    /// metadata intact) named for when the capture was taken. Only a drag in
+    /// the split second before that file lands encodes a fresh copy.
+    private func makeDragFile() -> URL? {
+        let name = ImageExporter.captureName(for: historyItem.createdAt)
+        if let stored = historyManager.storedImageURL(for: historyItem) {
+            return ImageExporter.dragFile(copying: stored, named: name)
+        }
+        guard let png = ImageExporter.pngData(from: image) else { return nil }
+        return ImageExporter.dragFile(data: png, named: name)
+    }
+
+    @objc private func copyTextAction() {
+        Task { [weak self] in
+            guard let self else { return }
+            do {
+                let result = try await OCREngine.recognize(in: self.image)
+                // Only touch the pasteboard when there is actual text —
+                // never clobber the user's clipboard for an empty result.
+                if result.isEmpty {
+                    ToastWindow.show(message: L("No text found in this selection"), on: self.captureScreen)
+                } else {
+                    NSPasteboard.general.clearContents()
+                    NSPasteboard.general.setString(result.text, forType: .string)
+                    OCRResultWindow.showCopiedToast(for: result, on: self.captureScreen)
+                    self.animatedClose()
+                }
+            } catch {
+                print("[ShotStyle] OCR failed: \(error)")
+                ToastWindow.show(message: L("Text recognition failed"), on: self.captureScreen)
+            }
+        }
+    }
+
+    /// Flash a confirmation icon over the thumbnail before closing
+    private func showConfirmation(icon: String, then completion: @escaping () -> Void) {
+        guard let clip = contentView?.subviews.first else { completion(); return }
+        let size: CGFloat = 36
+        let badge = NSImageView(frame: NSRect(
+            x: (clip.bounds.width - size) / 2,
+            y: (clip.bounds.height - size) / 2,
+            width: size, height: size
+        ))
+        let config = NSImage.SymbolConfiguration(pointSize: 24, weight: .bold)
+        badge.image = NSImage(systemSymbolName: icon, accessibilityDescription: nil)?.withSymbolConfiguration(config)
+        badge.contentTintColor = .white
+        badge.wantsLayer = true
+        badge.layer?.backgroundColor = NSColor.black.withAlphaComponent(0.5).cgColor
+        badge.layer?.cornerRadius = size / 2
+        badge.layer?.cornerCurve = .continuous
+        badge.alphaValue = 0
+        let popStart = badge.layer?.scaledAboutCenter(0.7) ?? CATransform3DIdentity
+        badge.layer?.transform = popStart
+        clip.addSubview(badge)
+
+        NSAnimationContext.runAnimationGroup({ ctx in
+            ctx.duration = 0.12
+            ctx.timingFunction = CAMediaTimingFunction(name: .easeOut)
+            badge.animator().alphaValue = 1
+            
+            // Pops from its center (a plain scale grows from a corner).
+            let scaleAnim = CABasicAnimation(keyPath: "transform")
+            scaleAnim.fromValue = NSValue(caTransform3D: popStart)
+            scaleAnim.toValue = NSValue(caTransform3D: CATransform3DIdentity)
+            scaleAnim.duration = 0.12
+            badge.layer?.add(scaleAnim, forKey: "pop")
+            badge.layer?.transform = CATransform3DIdentity
+        }, completionHandler: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                completion()
+            }
+        })
+    }
+
+    @objc private func editAction() {
+        skipPolicyReset = true
+        animatedClose()
+        // Open after a short delay so cleanup doesn't kill activation
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) { [image, historyItem, historyManager] in
+            AnnotationWindowController.open(image: image, historyItem: historyItem, historyManager: historyManager)
+        }
+    }
+
+    @objc private func pinAction() {
+        skipPolicyReset = true
+        showConfirmation(icon: "pin") { [weak self] in
+            guard let self else { return }
+            self.animatedClose()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) { [image = self.image, rect = self.historyItem.captureRect?.cgRect] in
+                PinnedWindow.pin(image: image, at: rect)
+            }
+        }
+    }
+
+    @objc private func deleteAction() {
+        historyManager.delete(historyItem)
+        animatedClose()
+    }
+
+    @objc private func dismissAction() {
+        animatedClose()
+    }
+
+    func show() {
+        QuickAccessWindow.openWindows.append(self)
+        // The newcomer already sits on top of the pile (positionOverlay put
+        // it there); nobody else moves on arrival.
+        Self.relayoutStacks(animated: true)
+        Self.enforceStackLimit()
+        // VoiceOver users otherwise get no sign the capture happened.
+        NSAccessibility.post(
+            element: self,
+            notification: .announcementRequested,
+            userInfo: [.announcement: L("Screenshot captured"), .priority: NSAccessibilityPriorityLevel.medium.rawValue]
+        )
+    }
+}
+
+// MARK: – Draggable thumbnail (drag-and-drop to Finder and other apps)
+
+@MainActor
+private final class DraggableImageView: NSImageView, NSDraggingSource {
+
+    var dragImage: NSImage?
+    /// Supplies the file handed to the drag (see ImageExporter.dragFile).
+    var dragFileProvider: (() -> URL?)?
+    var onDoubleClick: (() -> Void)?
+    var onDragStarted: (() -> Void)?
+    var onDragCompleted: (() -> Void)?
+
+    private var dragOrigin: NSPoint?
+
+    override func acceptsFirstMouse(for event: NSEvent?) -> Bool { true }
+    override var mouseDownCanMoveWindow: Bool { false }
+
+    override func mouseDown(with event: NSEvent) {
+        if event.clickCount == 2 {
+            onDoubleClick?()
+            return
+        }
+        dragOrigin = event.locationInWindow
+    }
+
+    override func mouseDragged(with event: NSEvent) {
+        guard let origin = dragOrigin, let dragImg = dragImage else { return }
+        let current = event.locationInWindow
+        let dx = abs(current.x - origin.x)
+        let dy = abs(current.y - origin.y)
+        guard dx > 3 || dy > 3 else { return }
+
+        dragOrigin = nil
+
+        guard let fileURL = dragFileProvider?() else { return }
+
+        onDragStarted?()
+
+        let item = NSDraggingItem(pasteboardWriter: fileURL as NSURL)
+        item.setDraggingFrame(bounds, contents: dragImg)
+        beginDraggingSession(with: [item], event: event, source: self)
+    }
+
+    nonisolated func draggingSession(_ session: NSDraggingSession, sourceOperationMaskFor context: NSDraggingContext) -> NSDragOperation {
+        .copy
+    }
+
+    nonisolated func draggingSession(_ session: NSDraggingSession, endedAt screenPoint: NSPoint, operation: NSDragOperation) {
+        DispatchQueue.main.async { [weak self] in
+            self?.onDragCompleted?()
+        }
+    }
+}
+
+// MARK: – Content view that accepts first mouse + right-click
+
+@MainActor
+private final class OverlayContentView: NSView {
+    override func acceptsFirstMouse(for event: NSEvent?) -> Bool { true }
+    override var acceptsFirstResponder: Bool { true }
+    override var mouseDownCanMoveWindow: Bool { false }
+}
+
+@MainActor
+private final class PassthroughView: NSView {
+    override func hitTest(_ point: NSPoint) -> NSView? { nil }
+    override var mouseDownCanMoveWindow: Bool { false }
+}
+
+@MainActor
+private final class OverlayControlsView: NSView {
+    override var mouseDownCanMoveWindow: Bool { false }
+
+    override func hitTest(_ point: NSPoint) -> NSView? {
+        guard let hit = super.hitTest(point) else { return nil }
+        if hit === self || hit is NSVisualEffectView { return nil }
+        return hit
+    }
+}
+
+// MARK: – Corner button (glass circle, secondary action)
+
+@MainActor
+private final class OverlayCornerButton: NSButton {
+
+    private var trackingArea: NSTrackingArea?
+    private var isHovered = false
+
+    // Let the first click land on the button even if the overlay window
+    // isn't key yet — otherwise the first click just activates the window
+    // and the user has to click twice for anything to happen.
+    override func acceptsFirstMouse(for event: NSEvent?) -> Bool { true }
+
+    // Suppress the default AppKit focus-ring line that paints under the
+    // button when it becomes first responder.
+    override var focusRingType: NSFocusRingType {
+        get { .none }
+        set { _ = newValue }
+    }
+
+    override func updateTrackingAreas() {
+        super.updateTrackingAreas()
+        if let old = trackingArea { removeTrackingArea(old) }
+        let area = NSTrackingArea(rect: bounds, options: [.activeAlways, .mouseEnteredAndExited], owner: self)
+        addTrackingArea(area)
+        trackingArea = area
+    }
+
+    override func mouseEntered(with event: NSEvent) {
+        isHovered = true
+        layer?.backgroundColor = ShotStyleColors.cornerButtonHover.cgColor
+    }
+
+    override func mouseExited(with event: NSEvent) {
+        isHovered = false
+        layer?.backgroundColor = ShotStyleColors.cornerButtonBackground.cgColor
+    }
+
+    /// Presses in about its center. NSButton tracks the click inside
+    /// `super.mouseDown` and never gets `mouseUp`, so the spring back runs
+    /// when that returns.
+    override func mouseDown(with event: NSEvent) {
+        layer?.backgroundColor = ShotStyleColors.cornerButtonPressed.cgColor
+        guard let layer else { return super.mouseDown(with: event) }
+        let pressed = layer.scaledAboutCenter(0.92)
+        layer.transform = pressed
+        NSHapticFeedbackManager.defaultPerformer.perform(.generic, performanceTime: .default)
+        super.mouseDown(with: event)
+        let spring = CASpringAnimation(keyPath: "transform")
+        spring.fromValue = NSValue(caTransform3D: pressed)
+        spring.toValue = NSValue(caTransform3D: CATransform3DIdentity)
+        spring.mass = 1.0
+        spring.stiffness = 300
+        spring.damping = 15
+        spring.initialVelocity = 0
+        spring.duration = spring.settlingDuration
+        layer.add(spring, forKey: "bounceBack")
+        layer.transform = CATransform3DIdentity
+        layer.backgroundColor = isHovered
+            ? ShotStyleColors.cornerButtonHover.cgColor
+            : ShotStyleColors.cornerButtonBackground.cgColor
+    }
+}
+
+@MainActor
+private final class OverlayPillButton: NSButton {
+    private var trackingArea: NSTrackingArea?
+    private var isHovered = false
+
+    override init(frame: NSRect) {
+        super.init(frame: frame)
+        wantsLayer = true
+        isBordered = false
+        bezelStyle = .regularSquare
+        setButtonType(.momentaryChange)
+        alignment = .center
+    }
+
+    required init?(coder: NSCoder) { fatalError() }
+
+    override func acceptsFirstMouse(for event: NSEvent?) -> Bool { true }
+    override var mouseDownCanMoveWindow: Bool { false }
+
+    override var focusRingType: NSFocusRingType {
+        get { .none }
+        set { _ = newValue }
+    }
+
+    override func updateTrackingAreas() {
+        super.updateTrackingAreas()
+        if let old = trackingArea { removeTrackingArea(old) }
+        let area = NSTrackingArea(rect: bounds, options: [.activeAlways, .mouseEnteredAndExited], owner: self)
+        addTrackingArea(area)
+        trackingArea = area
+    }
+
+    override func mouseEntered(with event: NSEvent) {
+        isHovered = true
+        layer?.backgroundColor = ShotStyleColors.pillButtonHover.cgColor
+    }
+
+    override func mouseExited(with event: NSEvent) {
+        isHovered = false
+        layer?.backgroundColor = ShotStyleColors.pillButtonBackground.cgColor
+    }
+
+    override func mouseDown(with event: NSEvent) {
+        layer?.backgroundColor = ShotStyleColors.pillButtonPressed.cgColor
+        NSHapticFeedbackManager.defaultPerformer.perform(.generic, performanceTime: .default)
+        super.mouseDown(with: event)
+        layer?.backgroundColor = isHovered
+            ? ShotStyleColors.pillButtonHover.cgColor
+            : ShotStyleColors.pillButtonBackground.cgColor
+    }
+}
