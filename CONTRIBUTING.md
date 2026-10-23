@@ -13,7 +13,7 @@ Thanks for your interest in contributing! Here's how to get started.
 ## Development Setup
 
 ```bash
-git clone https://github.com/Prateek-BLC/ShotStyle.git
+git clone https://github.com/brightlifecreations-projects/ShotStyle.git
 cd ShotStyle
 swift build          # Debug build
 bash build-app.sh    # Full .app bundle (release + icon + codesign)
@@ -33,7 +33,7 @@ No Xcode project — everything builds from the terminal via Swift Package Manag
 
 ## What We're Looking For
 
-Check the [Roadmap](README.md#roadmap) for planned features. Bug fixes, performance improvements, and accessibility enhancements are always welcome.
+Check the [Roadmap](ROADMAP.md) for planned features. Bug fixes, performance improvements, and accessibility enhancements are always welcome.
 
 ## License
 
