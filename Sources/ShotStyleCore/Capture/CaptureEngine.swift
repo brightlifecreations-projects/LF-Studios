@@ -1360,7 +1360,7 @@ private final class RecordingWindowChooserWindow: NSWindow {
     func show() {
         Self.openWindows.append(self)
         positionChooser()
-        NSApp.ensureForegroundCapable()
+        NSApp.ensureForegroundCapable(forCapture: true)
         NSApp.activate(ignoringOtherApps: true)
         alphaValue = 0
         orderFrontRegardless()
@@ -1759,7 +1759,7 @@ private final class RecordingScreenChooserWindow: NSWindow {
     func show() {
         Self.openWindows.append(self)
         positionChooser()
-        NSApp.ensureForegroundCapable()
+        NSApp.ensureForegroundCapable(forCapture: true)
         NSApp.activate(ignoringOtherApps: true)
         alphaValue = 0
         orderFrontRegardless()
@@ -2105,7 +2105,7 @@ final class RecordingControlsWindow: NSWindow {
     func show() {
         Self.openWindows.append(self)
         positionPanel()
-        NSApp.ensureForegroundCapable()
+        NSApp.ensureForegroundCapable(forCapture: true)
         NSApp.activate(ignoringOtherApps: true)
         alphaValue = 0
         orderFrontRegardless()

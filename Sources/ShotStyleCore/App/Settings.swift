@@ -308,16 +308,7 @@ enum Settings {
     }
 
     static var latestRecordingURL: URL? {
-        let directories = Array(Set([
-            autoSaveLocation,
-            defaultAutoSaveLocation,
-        ]))
-
-        return directories
-            .compactMap { latestRecordingURL(in: URL(fileURLWithPath: $0, isDirectory: true)) }
-            .max { lhs, rhs in
-                modificationDate(for: lhs) < modificationDate(for: rhs)
-            }
+        recordingURLs.first
     }
 
     static var resolvedLastRecordingURL: URL? {
@@ -329,21 +320,35 @@ enum Settings {
         return latestRecordingURL
     }
 
-    private static func latestRecordingURL(in directory: URL) -> URL? {
+    /// ShotStyle's recordings in the save folders (and the last one opened,
+    /// wherever it is), newest first.
+    static var recordingURLs: [URL] {
+        let directories = Array(Set([
+            autoSaveLocation,
+            defaultAutoSaveLocation,
+        ]))
+        var urls = directories.flatMap { recordingURLs(in: URL(fileURLWithPath: $0, isDirectory: true)) }
+        if let lastRecordingURL, !urls.contains(where: { $0.standardizedFileURL == lastRecordingURL.standardizedFileURL }) {
+            urls.append(lastRecordingURL)
+        }
+        return urls.sorted { modificationDate(for: $0) > modificationDate(for: $1) }
+    }
+
+    private static func recordingURLs(in directory: URL) -> [URL] {
         guard let urls = try? FileManager.default.contentsOfDirectory(
             at: directory,
             includingPropertiesForKeys: [.contentModificationDateKey, .isRegularFileKey],
             options: [.skipsHiddenFiles]
         ) else {
-            return nil
+            return []
         }
 
         // The actual last-recording URL is persisted via lastRecordingPath when
-        // a recording finishes; this fallback is best-effort recovery. Match the
-        // legacy "ShotStyle " prefix plus the current template's static leading
+        // a recording finishes; the rest is found by name. Match the legacy
+        // "ShotStyle " prefix plus the current template's static leading
         // segment so unrelated .mp4 files in the save folder (e.g. downloads)
         // are never mistaken for a ShotStyle recording. If the template starts
-        // with a token (no static prefix), the fallback simply finds nothing.
+        // with a token (no static prefix), only "ShotStyle " names match.
         let templatePrefix = String(filenameTemplate.prefix(while: { $0 != "%" })).trimmingCharacters(in: .whitespaces)
         return urls
             .filter { url in
@@ -354,9 +359,6 @@ enum Settings {
             }
             .filter { url in
                 (try? url.resourceValues(forKeys: [.isRegularFileKey]).isRegularFile) == true
-            }
-            .max { lhs, rhs in
-                modificationDate(for: lhs) < modificationDate(for: rhs)
             }
     }
 

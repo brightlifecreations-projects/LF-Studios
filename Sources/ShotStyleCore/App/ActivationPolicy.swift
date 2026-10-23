@@ -3,6 +3,8 @@ import AppKit
 @MainActor
 extension NSApplication {
     func restoreBackgroundOnlyActivationPolicyIfNeeded(excluding closingWindow: NSWindow? = nil) {
+        // A capture overlay closed: the Home window comes back.
+        defer { HomeWindowController.returnAfterCapture() }
         // Never drop to background while an editor is open (even minimized) — it must keep its
         // Dock icon / ⌘-Tab entry so the user can return to it. See `ShotStyleEditorActivation`.
         if VideoDemoEditorWindowController.hasOpenEditors || AnnotationWindowController.hasOpenEditors {
@@ -22,15 +24,22 @@ extension NSApplication {
             return
         }
 
-        setActivationPolicy(.prohibited)
+        // ShotStyle is a regular app (Dock icon, ⌘-Tab) and stays one; with
+        // nothing left on screen it steps back so the app the user came from
+        // gets focus again.
+        if isActive { deactivate() }
     }
 
-    /// Lets a menu-bar-only ShotStyle show transient UI (menu, capture
-    /// overlay, panels). Never demotes a regular app — while an editor is
-    /// open that would hide its Dock icon and drop it behind other apps.
-    func ensureForegroundCapable() {
-        if activationPolicy() == .prohibited {
-            setActivationPolicy(.accessory)
+    /// Makes sure ShotStyle can come to the front for transient UI (menu,
+    /// capture overlay, panels): it always runs as a regular app. For a
+    /// capture, the Home window steps aside first: activating ShotStyle would
+    /// otherwise bring it in front of what the user is about to capture.
+    func ensureForegroundCapable(forCapture: Bool = false) {
+        if forCapture {
+            HomeWindowController.stepAsideForCapture()
+        }
+        if activationPolicy() != .regular {
+            setActivationPolicy(.regular)
         }
     }
 
@@ -55,21 +64,16 @@ extension NSApplication {
 }
 
 
-/// Coordinates the Dock-icon presence across both editors. While a photo or video editor window is
-/// open, ShotStyle runs as a regular app (Dock icon + ⌘-Tab) so the user can always return to it;
-/// once the last editor of either kind closes, it drops back to accessory (menu-bar-only).
+/// Keeps ShotStyle a regular app (Dock icon + ⌘-Tab) and holds the foreground
+/// between pressing Stop and the video editor opening.
 @MainActor
 enum ShotStyleEditorActivation {
     /// Set between pressing Stop and the editor opening.
     private(set) static var isHoldingForeground = false
 
     static func sync() {
-        let editing = VideoDemoEditorWindowController.hasOpenEditors
-            || AnnotationWindowController.hasOpenEditors
-            || isHoldingForeground
-        let policy: NSApplication.ActivationPolicy = editing ? .regular : .accessory
-        if NSApp.activationPolicy() != policy {
-            NSApp.setActivationPolicy(policy)
+        if NSApp.activationPolicy() != .regular {
+            NSApp.setActivationPolicy(.regular)
         }
     }
 
@@ -89,9 +93,8 @@ enum ShotStyleEditorActivation {
         if VideoDemoEditorWindowController.hasOpenEditors || AnnotationWindowController.hasOpenEditors {
             sync()
         } else {
-            // No editor after all (the save failed): menu-bar only again,
-            // and fully background when nothing is on screen.
-            if NSApp.activationPolicy() == .regular { NSApp.setActivationPolicy(.accessory) }
+            // No editor after all (the save failed): step back when nothing
+            // is on screen.
             NSApp.restoreBackgroundOnlyActivationPolicyIfNeeded()
         }
     }

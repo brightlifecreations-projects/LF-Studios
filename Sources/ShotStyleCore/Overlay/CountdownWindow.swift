@@ -55,7 +55,7 @@ final class CountdownWindow: NSWindow {
     override var canBecomeKey: Bool { true }
 
     func start() {
-        NSApp.ensureForegroundCapable()
+        NSApp.ensureForegroundCapable(forCapture: true)
         NSApp.activate(ignoringOtherApps: true)
         updateNumber(animated: false)
         alphaValue = 0

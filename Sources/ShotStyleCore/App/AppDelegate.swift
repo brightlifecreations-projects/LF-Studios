@@ -16,15 +16,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private var recordingIndicatorTimer: Timer?
     private var idleStatusIcon: NSImage?
 
-    // Clicking the Dock icon (shown while an editor is open) restores a buried or minimized editor.
+    // Clicking the Dock icon with nothing on screen opens the Home window.
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows: Bool) -> Bool {
         if !hasVisibleWindows {
-            if VideoDemoEditorWindowController.hasOpenEditors {
-                VideoDemoEditorWindowController.bringOpenEditorsToFront()
-            }
-            if AnnotationWindowController.hasOpenEditors {
-                AnnotationWindowController.bringOpenEditorsToFront()
-            }
+            HomeWindowController.show()
         }
         // Escape hatch: the status item is the app's only entry point. While it
         // is hidden, launching ShotStyle again (Finder, Spotlight, Launchpad)
@@ -75,6 +70,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     /// Quitting is certain now: when it's a restart (a new language or a new
     /// permission), the new ShotStyle starts, and waits for this one to exit.
+    /// Closing the Home window keeps ShotStyle running in the menu bar.
+    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+        false
+    }
+
     func applicationWillTerminate(_ notification: Notification) {
         CrashReporter.endSession()
         AppRelaunch.launchNewInstanceIfRestarting()
@@ -103,6 +103,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         captureEngine.recordingFinishedHandler = { finished in
             let url = finished.url
             Settings.lastRecordingPath = url.path
+            NotificationCenter.default.post(name: .shotstyleRecordingsDidChange, object: nil)
             let openEditor = {
                 DispatchQueue.main.async {
                     guard FileManager.default.fileExists(atPath: url.path) else {
@@ -124,6 +125,14 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         }
         hotkeyManager = HotkeyManager()
         historyManager = HistoryManager()
+        HomeWindowController.configure(historyManager: historyManager, actions: HomeActions(
+            newRecording: { [weak self] in self?.recordArea() },
+            takeScreenshot: { [weak self] in self?.captureArea() },
+            scrollCapture: { [weak self] in self?.captureScrolling() },
+            openVideo: { [weak self] in self?.openVideoEditor() }
+        ))
+        // Before anything else reads the launch event.
+        let launchedAsLoginItem = Self.launchedAsLoginItem
         setupMainMenu()
         setupStatusItem()
         registerHotkeys()
@@ -163,6 +172,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
                     : L("ShotStyle lives here — setup continues next launch")
                 ToastWindow.show(message: message, duration: 4.0, anchorView: button)
             }
+            HomeWindowController.show()
         }
         if !welcomeController.showIfNeeded(onClose: welcomeCloseHandler) {
             promptForNativeShortcuts()
@@ -177,8 +187,17 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             // restart for a new language, Settings comes back where it was.
             if !Settings.showMenuBarIcon || AppRelaunch.reopensSettings() {
                 PreferencesWindowController.shared.show(tab: .general)
+            } else if !launchedAsLoginItem {
+                HomeWindowController.show()
             }
         }
+    }
+
+    /// Started by macOS at login: stay in the menu bar instead of opening Home.
+    private static var launchedAsLoginItem: Bool {
+        guard let event = NSAppleEventManager.shared().currentAppleEvent,
+              event.eventID == kAEOpenApplication else { return false }
+        return event.paramDescriptor(forKeyword: keyAEPropData)?.enumCodeValue == keyAELaunchedAsLogInItem
     }
 
     // MARK: – Recording indicator
@@ -365,6 +384,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
         let appMenuItem = NSMenuItem()
         let appMenu = NSMenu(title: "ShotStyle") // l10n-ignore
+        appMenu.addItem(menuItem(L("ShotStyle Home"), action: #selector(openHome), key: "0", modifiers: [.command]))
         let preferencesItem = NSMenuItem(title: L("Settings…"), action: #selector(openPreferences), keyEquivalent: ",")
         preferencesItem.target = self
         appMenu.addItem(preferencesItem)
@@ -424,6 +444,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         windowMenu.addItem(responderMenuItem(L("Zoom"), action: #selector(NSWindow.performZoom(_:)), key: ""))
         windowMenu.addItem(NSMenuItem.separator())
         windowMenu.addItem(responderMenuItem(L("Bring All to Front"), action: #selector(NSApplication.arrangeInFront(_:)), key: ""))
+        windowMenu.addItem(NSMenuItem.separator())
+        windowMenu.addItem(menuItem(L("ShotStyle Home"), action: #selector(openHome), key: "", modifiers: []))
         windowMenuItem.submenu = windowMenu
         mainMenu.addItem(windowMenuItem)
         NSApp.windowsMenu = windowMenu
@@ -550,6 +572,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         AnnotationWindowController.open(image: last.fullImage, historyItem: last, historyManager: historyManager)
     }
     @objc func openHistory()         { HistoryPanelController.shared.show(historyManager: historyManager) }
+    @objc func openHome()            { HomeWindowController.show() }
     @objc func toggleDesktopIcons()  { DesktopIconsManager.toggle() }
     @objc func openPreferences()     { PreferencesWindowController.shared.show(tab: .general) }
     @objc func openShortcutsPreferences() { PreferencesWindowController.shared.show(tab: .shortcuts) }
@@ -748,6 +771,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             ]),
             ShotStyleMenuSection(id: "utility", title: L("Utility"), actions: {
                 var utilityActions = [
+                    action(id: "utility.home", title: L("ShotStyle Home"), symbol: "house") { [weak self] in self?.openHome() },
                     action(id: "utility.history", title: L("Open History"), symbol: "clock.arrow.circlepath") { [weak self] in self?.openHistory() },
                 ]
                 // Editor-window rows only exist while an editor is open —
