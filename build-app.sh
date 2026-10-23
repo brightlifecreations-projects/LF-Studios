@@ -47,7 +47,18 @@ else
     echo "⚠ Sparkle public key not set; update checks will be disabled in this build."
 fi
 
-# Copy icon into bundle
+# Build the icon from Branding/ShotStyle_Icon.png (1024×1024), then copy it into the bundle
+ICON_PNG="$SCRIPT_DIR/Branding/ShotStyle_Icon.png"
+if [ -f "$ICON_PNG" ]; then
+    ICONSET="$(mktemp -d)/ShotStyle.iconset"
+    mkdir -p "$ICONSET"
+    for size in 16 32 128 256 512; do
+        sips -z $size $size "$ICON_PNG" --out "$ICONSET/icon_${size}x${size}.png" >/dev/null
+        sips -z $((size * 2)) $((size * 2)) "$ICON_PNG" --out "$ICONSET/icon_${size}x${size}@2x.png" >/dev/null
+    done
+    iconutil -c icns "$ICONSET" -o "$SCRIPT_DIR/Branding/ShotStyle.icns"
+    rm -rf "$(dirname "$ICONSET")"
+fi
 if [ -f "$SCRIPT_DIR/Branding/ShotStyle.icns" ]; then
     cp "$SCRIPT_DIR/Branding/ShotStyle.icns" "$APP_BUNDLE/Contents/Resources/ShotStyle.icns"
 fi
