@@ -1,4 +1,4 @@
-# Contributing to Shotnix
+# Contributing to ShotStyle
 
 Thanks for your interest in contributing! Here's how to get started.
 
@@ -13,8 +13,8 @@ Thanks for your interest in contributing! Here's how to get started.
 ## Development Setup
 
 ```bash
-git clone https://github.com/OMARVII/Shotnix.git
-cd Shotnix
+git clone https://github.com/Prateek-BLC/ShotStyle.git
+cd ShotStyle
 swift build          # Debug build
 bash build-app.sh    # Full .app bundle (release + icon + codesign)
 ```
