@@ -1065,7 +1065,7 @@ struct RecordingSettingsView: View {
 }
 
 struct AboutSettingsView: View {
-    let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "0.27.2"
+    let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0.0"
     
     var body: some View {
         PreferencesPane {
@@ -1412,20 +1412,24 @@ struct AboutSettingsView: View {
                 }
                 .buttonStyle(.link)
                 .font(.system(size: 11, weight: .medium))
-                Text(L("© 2026 Shotnix Contributors"))
-                    .font(.system(size: 11, weight: .medium))
-                    .foregroundStyle(Color.white.opacity(0.42))
+                HStack(spacing: 6) {
+                    Text(L("© 2026 Shotnix Contributors"))
+                    Text(verbatim: "·")
+                    Text(L("© 2026 Bright Life Creations"))
+                }
+                .font(.system(size: 11, weight: .medium))
+                .foregroundStyle(Color.white.opacity(0.42))
                 Text(L("MIT License — Free and open source"))
                     .font(.system(size: 10, weight: .medium))
                     .foregroundStyle(Color.white.opacity(0.36))
 
                 HStack(spacing: 8) {
                     AboutLinkButton(title: "GitHub") { // l10n-ignore: a name
-                        openURL("https://github.com/Prateek-BLC/ShotStyle")
+                        openURL("https://github.com/brightlifecreations-projects/ShotStyle")
                     }
 
                     AboutLinkButton(title: L("Report Issue")) {
-                        openURL("https://github.com/Prateek-BLC/ShotStyle/issues/new")
+                        openURL("https://github.com/brightlifecreations-projects/ShotStyle/issues/new")
                     }
                 }
                 .frame(maxWidth: 378)
