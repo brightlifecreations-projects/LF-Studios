@@ -1080,6 +1080,9 @@ struct AboutSettingsView: View {
                     Text(verbatim: "ShotStyle")
                         .font(.system(size: 22, weight: .bold))
                         .foregroundStyle(Color.white.opacity(0.94))
+                    Text(L("Screenshots, screen recordings and video editing for your Mac"))
+                        .font(.system(size: 12, weight: .medium))
+                        .foregroundStyle(Color.white.opacity(0.62))
                     Text(L("Version \(version)"))
                         .font(.system(size: 12, weight: .semibold))
                         .foregroundStyle(Color.white.opacity(0.48))
@@ -1404,6 +1407,11 @@ struct AboutSettingsView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             
             VStack(spacing: 8) {
+                Button(L("Based on Shotnix (MIT License)")) {
+                    openURL("https://github.com/OMARVII/Shotnix")
+                }
+                .buttonStyle(.link)
+                .font(.system(size: 11, weight: .medium))
                 Text(L("© 2026 Shotnix Contributors"))
                     .font(.system(size: 11, weight: .medium))
                     .foregroundStyle(Color.white.opacity(0.42))
@@ -1411,38 +1419,13 @@ struct AboutSettingsView: View {
                     .font(.system(size: 10, weight: .medium))
                     .foregroundStyle(Color.white.opacity(0.36))
 
-                VStack(spacing: 8) {
-                    HStack(spacing: 8) {
-                        AboutLinkButton(title: L("Website")) {
-                            openURL("https://shotnix.com/")
-                        }
-
-                        AboutLinkButton(title: L("Support")) {
-                            openURL("https://shotnix.com/support")
-                        }
-
-                        AboutLinkButton(title: "GitHub") { // l10n-ignore: a name
-                            openURL("https://github.com/OMARVII/Shotnix")
-                        }
+                HStack(spacing: 8) {
+                    AboutLinkButton(title: "GitHub") { // l10n-ignore: a name
+                        openURL("https://github.com/Prateek-BLC/ShotStyle")
                     }
 
-                    HStack(spacing: 8) {
-                        AboutLinkButton(title: L("Privacy Policy")) {
-                            openURL("https://shotnix.com/privacy")
-                        }
-
-                        AboutLinkButton(title: L("Report Issue")) {
-                            openURL("https://github.com/OMARVII/Shotnix/issues/new")
-                        }
-
-                        // The developer's X profile, where new versions are
-                        // shown first: a mark like the others, not an ask.
-                        AboutLinkButton(help: "@OmarKhaledVII", action: { openURL("https://x.com/OmarKhaledVII") }) { // l10n-ignore: a name
-                            XMark()
-                                .fill(style: FillStyle(eoFill: true))
-                                .frame(width: 11, height: 11)
-                                .accessibilityLabel(Text(verbatim: "X")) // l10n-ignore: a name
-                        }
+                    AboutLinkButton(title: L("Report Issue")) {
+                        openURL("https://github.com/Prateek-BLC/ShotStyle/issues/new")
                     }
                 }
                 .frame(maxWidth: 378)
@@ -1493,24 +1476,5 @@ private struct AboutLinkButton<Label: View>: View {
         )
         .contentShape(RoundedRectangle(cornerRadius: 7, style: .continuous))
         .help(help)
-    }
-}
-
-/// The X logo, drawn from its 24-point outline (fill it even-odd).
-private struct XMark: Shape {
-    func path(in rect: CGRect) -> Path {
-        let scale = min(rect.width, rect.height) / 24
-        let origin = CGPoint(x: rect.midX - 12 * scale, y: rect.midY - 12 * scale)
-        func point(_ x: CGFloat, _ y: CGFloat) -> CGPoint { CGPoint(x: origin.x + x * scale, y: origin.y + y * scale) }
-        var path = Path()
-        path.addLines([
-            point(18.901, 1.153), point(22.581, 1.153), point(14.541, 10.343), point(24, 22.846),
-            point(16.594, 22.846), point(10.794, 15.262), point(4.156, 22.846), point(0.474, 22.846),
-            point(9.074, 13.016), point(0, 1.154), point(7.594, 1.154), point(12.837, 8.086),
-        ])
-        path.closeSubpath()
-        path.addLines([point(17.61, 20.644), point(19.649, 20.644), point(6.486, 3.24), point(4.298, 3.24)])
-        path.closeSubpath()
-        return path
     }
 }

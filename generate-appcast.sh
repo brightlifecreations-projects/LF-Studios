@@ -10,19 +10,20 @@ if [ -f "$SCRIPT_DIR/.env.local" ]; then
 fi
 
 DMG_PATH="${1:-${SHOTSTYLE_DMG_PATH:-}}"
-WEB_DIR="${SHOTSTYLE_WEB_DIR:-$SCRIPT_DIR/../shotstyle-web}"
-DOWNLOAD_DIR="$WEB_DIR/public/downloads"
+DOWNLOAD_DIR="${SHOTSTYLE_RELEASE_DIR:-$SCRIPT_DIR/release}"
 APPCAST_BIN="${SHOTSTYLE_GENERATE_APPCAST_BIN:-$SCRIPT_DIR/.build/artifacts/sparkle/Sparkle/bin/generate_appcast}"
 SPARKLE_ACCOUNT="${SHOTSTYLE_SPARKLE_ACCOUNT:-ed25519}"
-DOWNLOAD_URL_PREFIX="${SHOTSTYLE_DOWNLOAD_URL_PREFIX:-https://shotnix.com/downloads/}"
-RELEASE_NOTES_URL_PREFIX="${SHOTSTYLE_RELEASE_NOTES_URL_PREFIX:-https://shotnix.com/downloads/}"
+DOWNLOAD_URL_PREFIX="${SHOTSTYLE_DOWNLOAD_URL_PREFIX:-https://github.com/Prateek-BLC/ShotStyle/releases/latest/download/}"
+RELEASE_NOTES_URL_PREFIX="${SHOTSTYLE_RELEASE_NOTES_URL_PREFIX:-https://github.com/Prateek-BLC/ShotStyle/releases/latest/download/}"
 
 usage() {
     cat <<'EOF'
 Usage: bash generate-appcast.sh /path/to/ShotStyle-v<version>-macOS.dmg
 
-Copies the notarized DMG into shotstyle-web/public/downloads, creates a matching
-Markdown release-notes file when needed, and runs Sparkle generate_appcast.
+Copies the notarized DMG into ./release, creates a matching Markdown
+release-notes file when needed, and runs Sparkle generate_appcast. Upload the
+DMG, the .md notes and appcast.xml to the latest GitHub release: the app's
+feed is https://github.com/Prateek-BLC/ShotStyle/releases/latest/download/appcast.xml
 
 Optional environment:
   SHOTSTYLE_RELEASE_NOTES_FILE="/absolute/path/to/release-notes.md"
@@ -58,7 +59,7 @@ cleanup() {
 }
 trap cleanup EXIT
 
-echo "▶ Copying notarized DMG into website downloads…"
+echo "▶ Copying notarized DMG into $DOWNLOAD_DIR…"
 if [ "$(cd "$(dirname "$DMG_PATH")" && pwd)/$(basename "$DMG_PATH")" != "$(cd "$(dirname "$ARCHIVE_DEST")" && pwd)/$(basename "$ARCHIVE_DEST")" ]; then
     cp "$DMG_PATH" "$ARCHIVE_DEST"
 fi
@@ -84,7 +85,7 @@ echo "▶ Generating Sparkle appcast…"
     --maximum-versions 0 \
     --download-url-prefix "$DOWNLOAD_URL_PREFIX" \
     --release-notes-url-prefix "$RELEASE_NOTES_URL_PREFIX" \
-    --link "https://shotnix.com/" \
+    --link "https://github.com/Prateek-BLC/ShotStyle" \
     "$STAGING_DIR"
 
 if [ ! -f "$STAGING_DIR/appcast.xml" ]; then
@@ -95,3 +96,4 @@ fi
 cp "$STAGING_DIR/appcast.xml" "$DOWNLOAD_DIR/appcast.xml"
 
 echo "✓ Appcast ready: $DOWNLOAD_DIR/appcast.xml"
+echo "  Upload $DMG_BASENAME, ${DMG_BASENAME%.*}.md and appcast.xml to the latest GitHub release."

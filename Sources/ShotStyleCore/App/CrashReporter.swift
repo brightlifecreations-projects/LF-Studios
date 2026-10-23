@@ -2,13 +2,12 @@ import AppKit
 import Darwin
 
 /// After ShotStyle crashed, or macOS closed it for running out of memory, the
-/// next launch offers to send a report: by email with macOS's crash report
-/// attached, or as a GitHub issue. Nothing leaves the Mac unless the person
-/// sends it themselves, and normal quits, updates and restarts never ask.
+/// next launch offers to send a report as a GitHub issue, with macOS's crash
+/// report ready to attach. Nothing leaves the Mac unless the person sends it
+/// themselves, and normal quits, updates and restarts never ask.
 @MainActor
 enum CrashReporter {
-    static let supportEmail = "support@shotnix.com"
-    static let issuesURL = URL(string: "https://github.com/OMARVII/Shotnix/issues/new")!
+    static let issuesURL = URL(string: "https://github.com/Prateek-BLC/ShotStyle/issues/new")!
 
     private static let sessionKey = "crashReporterSession"
     private static let handledKey = "crashReporterHandledIncidents"
@@ -100,8 +99,7 @@ enum CrashReporter {
             defaults.set(Array(handled.suffix(50)), forKey: handledKey)
         }
         switch response {
-        case .alertFirstButtonReturn: sendEmail(reason)
-        case .alertSecondButtonReturn: openIssue(reason)
+        case .alertFirstButtonReturn: openIssue(reason)
         default: break
         }
         NSApp.restoreBackgroundOnlyActivationPolicyIfNeeded()
@@ -117,7 +115,6 @@ enum CrashReporter {
         }
         alert.informativeText = L("A report helps fix this. You'll see everything before it's sent, and it never includes your screenshots or recordings.")
         alert.alertStyle = .informational
-        alert.addButton(withTitle: L("Send by Email…"))
         alert.addButton(withTitle: L("Report on GitHub"))
         alert.addButton(withTitle: L("Not Now"))
         alert.showsSuppressionButton = true
@@ -127,24 +124,6 @@ enum CrashReporter {
 
     // MARK: Sending
 
-    private static func sendEmail(_ reason: CrashPromptReason) {
-        let summary = CrashReportSummary(reason: reason)
-        let attachment = savedReport(reason)
-        let items: [Any] = [summary.emailBody] + (attachment.map { [$0] } ?? [])
-        if let service = NSSharingService(named: .composeEmail), service.canPerform(withItems: items) {
-            service.recipients = [supportEmail]
-            service.subject = summary.subject
-            service.perform(withItems: items)
-            return
-        }
-        // No mail app set up for sharing: a plain mailto link, with the whole
-        // report on the clipboard to paste.
-        NSPasteboard.general.clearContents()
-        NSPasteboard.general.setString(summary.fullText, forType: .string)
-        if let url = summary.mailtoURL(to: supportEmail) { NSWorkspace.shared.open(url) }
-        ToastWindow.show(message: L("The full report is on your clipboard. Paste it into the email."), duration: 6)
-    }
-
     private static func openIssue(_ reason: CrashPromptReason) {
         let summary = CrashReportSummary(reason: reason)
         if let url = summary.issueURL(base: issuesURL) { NSWorkspace.shared.open(url) }
@@ -153,8 +132,8 @@ enum CrashReporter {
         ToastWindow.show(message: L("To attach the full report, drag it from Finder onto the GitHub page."), duration: 7)
     }
 
-    /// The crash report, home folder hidden, as a .txt file GitHub and mail
-    /// accept as an attachment.
+    /// The crash report, home folder hidden, as a .txt file GitHub accepts
+    /// as an attachment.
     private static func savedReport(_ reason: CrashPromptReason) -> URL? {
         guard case .crash(let report) = reason else { return nil }
         let folder = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
@@ -417,18 +396,6 @@ struct CrashReportSummary {
             URLQueryItem(name: "body", value: String(body.prefix(2_000))),
         ]
         return components?.url
-    }
-
-    /// A mailto link holds the summary only: mail apps cut long links short.
-    func mailtoURL(to address: String) -> URL? {
-        var components = URLComponents()
-        components.scheme = "mailto"
-        components.path = address
-        components.queryItems = [
-            URLQueryItem(name: "subject", value: subject),
-            URLQueryItem(name: "body", value: String(emailBody.prefix(1_500))),
-        ]
-        return components.url
     }
 
     private static func stamp(_ date: Date) -> String {

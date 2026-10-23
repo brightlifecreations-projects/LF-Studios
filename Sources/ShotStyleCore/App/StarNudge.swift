@@ -9,7 +9,7 @@ import AppKit
 /// dismisses it. Neither surface ever comes back after either choice.
 /// Nothing leaves the Mac; the count and state live in UserDefaults.
 enum StarNudge {
-    static let repositoryURL = URL(string: "https://github.com/OMARVII/Shotnix")!
+    static let repositoryURL = URL(string: "https://github.com/Prateek-BLC/ShotStyle")!
     static let captureThreshold = 10
 
     enum State: String {

@@ -3,6 +3,8 @@ import Sparkle
 
 @MainActor
 final class AppUpdateController: NSObject, SPUUpdaterDelegate {
+    /// Where "Check for Updates" goes while Sparkle isn't set up.
+    static let releasesURL = URL(string: "https://github.com/Prateek-BLC/ShotStyle/releases")!
     private var updaterController: SPUStandardUpdaterController?
 
     override init() {
@@ -44,11 +46,15 @@ final class AppUpdateController: NSObject, SPUUpdaterDelegate {
     private let quietInstaller = QuietUpdateInstaller()
 
     var canCheckForUpdates: Bool {
-        updaterController?.updater.canCheckForUpdates ?? false
+        updaterController?.updater.canCheckForUpdates ?? true
     }
 
     func checkForUpdates(_ sender: Any?) {
-        updaterController?.checkForUpdates(sender)
+        guard let updaterController else {
+            NSWorkspace.shared.open(Self.releasesURL)
+            return
+        }
+        updaterController.checkForUpdates(sender)
     }
 }
 

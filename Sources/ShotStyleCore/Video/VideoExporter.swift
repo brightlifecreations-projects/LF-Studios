@@ -898,7 +898,7 @@ enum VideoEndCard {
         ])
         let titleSize = title.size()
         title.draw(at: CGPoint(x: size.width / 2 - titleSize.width / 2, y: size.height / 2 - 70 * unit - rise))
-        let link = NSAttributedString(string: "shotnix.com — free & open source", attributes: [ // l10n-ignore
+        let link = NSAttributedString(string: "github.com/Prateek-BLC/ShotStyle", attributes: [ // l10n-ignore
             .font: NSFont.systemFont(ofSize: 26 * unit, weight: .semibold),
             .foregroundColor: NSColor.white.withAlphaComponent(0.72),
         ])

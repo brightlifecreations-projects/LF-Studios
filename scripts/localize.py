@@ -203,7 +203,7 @@ def problems_in(catalog):
         english = entry.get("localizations", {}).get("en")
         if english:
             for text in values_of(catalog_value(english)):
-                if not specifiers(text) <= expected:
+                if specifiers(text) - expected:  # not <= expected, before Python 3.10
                     problems.append(f"{key!r} (en): placeholders {dict(specifiers(text))} don't match {dict(expected)}")
         for language in LANGUAGES:
             unit = entry.get("localizations", {}).get(language)
@@ -220,7 +220,7 @@ def problems_in(catalog):
             for text in values_of(value):
                 found = specifiers(text)
                 if plural:
-                    ok = found <= expected
+                    ok = not (found - expected)  # found <= expected, before Python 3.10
                 else:
                     ok = found == expected
                 if not ok:

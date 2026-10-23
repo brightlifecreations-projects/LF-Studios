@@ -110,7 +110,7 @@ final class CrashReporterTests: XCTestCase {
         XCTAssertEqual(CrashReportFile.redacted(text, home: "/Users/alice", user: "alice"), "~/Library/ShotStyle crashed for user")
     }
 
-    func testIssueAndMailLinksStayShortEnoughToOpen() throws {
+    func testIssueLinksStayShortEnoughToOpen() throws {
         var crash = try XCTUnwrap(CrashReportFile.parse(report(), url: URL(fileURLWithPath: "/tmp/a.ips"), bundleID: bundleID))
         crash = CrashReportFile(url: crash.url, incident: crash.incident, date: crash.date, appVersion: crash.appVersion, build: crash.build, osVersion: crash.osVersion,
                                 model: crash.model, exception: crash.exception, messages: Array(repeating: String(repeating: "m", count: 3_000), count: 5),
@@ -118,9 +118,7 @@ final class CrashReporterTests: XCTestCase {
         let summary = CrashReportSummary(reason: .crash(crash))
         let issue = try XCTUnwrap(summary.issueURL(base: CrashReporter.issuesURL))
         XCTAssertLessThan(issue.absoluteString.count, 8_000, "GitHub refuses very long links")
-        XCTAssertTrue(issue.absoluteString.hasPrefix("https://github.com/OMARVII/Shotnix/issues/new?title="))
-        let mail = try XCTUnwrap(summary.mailtoURL(to: CrashReporter.supportEmail))
-        XCTAssertTrue(mail.absoluteString.hasPrefix("mailto:support@shotnix.com?subject="))
+        XCTAssertTrue(issue.absoluteString.hasPrefix("https://github.com/Prateek-BLC/ShotStyle/issues/new?title="))
         XCTAssertTrue(summary.fullText.contains("----- macOS crash report -----"))
     }
 
