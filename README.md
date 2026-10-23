@@ -7,7 +7,7 @@
 **Screenshots, screen recordings and video editing for your Mac.**<br/>
 A native macOS menu-bar app. No account, no cloud: your captures stay on your Mac.
 
-[Download](https://github.com/Prateek-BLC/ShotStyle/releases/latest) · [What’s new](CHANGELOG.md) · [Report an issue](https://github.com/Prateek-BLC/ShotStyle/issues/new)
+[Download](https://github.com/brightlifecreations-projects/ShotStyle/releases/latest) · [What’s new](CHANGELOG.md) · [Report an issue](https://github.com/brightlifecreations-projects/ShotStyle/issues/new)
 
 <sub>Based on [Shotnix](https://github.com/OMARVII/Shotnix) (MIT License).</sub>
 
@@ -40,7 +40,7 @@ ShotStyle is available in English, Deutsch, Français, 简体中文, Русск�
 
 ### From a release
 
-1. Download the latest `.dmg` from [Releases](https://github.com/Prateek-BLC/ShotStyle/releases/latest).
+1. Download the latest `.dmg` from [Releases](https://github.com/brightlifecreations-projects/ShotStyle/releases/latest).
 2. Open it and drag **ShotStyle** to your Applications folder.
 3. Grant **Screen Recording** permission when macOS asks.
 
@@ -49,7 +49,7 @@ ShotStyle is available in English, Deutsch, Français, 简体中文, Русск�
 Requirements: macOS 13+, Swift 5.9+ (the Xcode Command Line Tools are enough).
 
 ```bash
-git clone https://github.com/Prateek-BLC/ShotStyle.git
+git clone https://github.com/brightlifecreations-projects/ShotStyle.git
 cd ShotStyle
 bash build-app.sh
 ```
