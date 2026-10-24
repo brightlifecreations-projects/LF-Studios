@@ -24,6 +24,15 @@ elif security find-certificate -c "$LOCAL_IDENTITY" >/dev/null 2>&1; then
 else
     SIGN_IDENTITY="-"
 fi
+
+ADHOC_WARNING='⚠ No "ShotStyle Local Signing" certificate: signing ad-hoc.
+  macOS will forget the Screen Recording and Accessibility permissions on
+  every rebuild (ShotStyle asks again and recording stays blocked).
+  Fix it once on this Mac: bash scripts/setup-signing.sh'
+if [ "$SIGN_IDENTITY" = "-" ]; then
+    echo "$ADHOC_WARNING"
+    echo ""
+fi
 TIMESTAMP_MODE="${SHOTSTYLE_CODESIGN_TIMESTAMP:-auto}"
 SPARKLE_PUBLIC_ED_KEY="${SHOTSTYLE_SPARKLE_PUBLIC_ED_KEY:-}"
 REQUIRE_SPARKLE_KEY="${SHOTSTYLE_REQUIRE_SPARKLE_KEY:-false}"
@@ -168,3 +177,7 @@ echo "  Launch it from /Applications."
 echo ""
 echo "  First launch: grant Screen Recording permission when prompted"
 echo "  (System Settings → Privacy & Security → Screen Recording)"
+if [ "$SIGN_IDENTITY" = "-" ]; then
+    echo ""
+    echo "$ADHOC_WARNING"
+fi

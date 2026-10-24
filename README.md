@@ -46,15 +46,25 @@ ShotStyle is available in English, Deutsch, Français, 简体中文, Русск�
 
 ### Build from source
 
-Requirements: macOS 13+, Swift 5.9+ (the Xcode Command Line Tools are enough).
+Requirements: macOS 13+, Swift 5.9+. The Xcode Command Line Tools are enough to build; running the tests (`swift test`) needs full Xcode.
 
 ```bash
 git clone https://github.com/brightlifecreations-projects/ShotStyle.git
 cd ShotStyle
+bash scripts/setup-signing.sh   # once per Mac
 bash build-app.sh
 ```
 
-This builds a release binary, assembles and signs the app bundle, and copies `ShotStyle.app` to `/Applications`. Run the tests with `swift test`.
+`build-app.sh` builds a release binary, assembles and signs the app bundle, and copies `ShotStyle.app` to `/Applications`. Open it and allow Screen Recording and Accessibility when macOS asks, then quit and reopen it once.
+
+**Why the setup script:** macOS remembers those permissions for an app's signature. `scripts/setup-signing.sh` creates a self-signed "ShotStyle Local Signing" certificate in your login keychain (it stays on your Mac), and `build-app.sh` signs every build with it, so your permissions survive rebuilds. Without it, builds are signed ad-hoc: each rebuild looks like a new app, ShotStyle asks for the permissions again, and recording stays blocked until you grant them. The build prints a warning when that happens.
+
+**ShotStyle keeps asking for permissions?** Clear the entries left over from earlier builds, then open ShotStyle and allow them again:
+
+```bash
+tccutil reset ScreenCapture com.shotstyle.app
+tccutil reset Accessibility com.shotstyle.app
+```
 
 ## Default shortcuts
 

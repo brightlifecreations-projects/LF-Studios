@@ -15,11 +15,15 @@ Thanks for your interest in contributing! Here's how to get started.
 ```bash
 git clone https://github.com/brightlifecreations-projects/ShotStyle.git
 cd ShotStyle
-swift build          # Debug build
-bash build-app.sh    # Full .app bundle (release + icon + codesign)
+bash scripts/setup-signing.sh   # once per Mac: a local signing certificate
+swift build                     # Debug build
+bash build-app.sh               # Full .app bundle (release + icon + codesign)
+swift test                      # Needs full Xcode (XCTest)
 ```
 
-**Requirements:** macOS 13+, Swift 5.9+
+**Requirements:** macOS 13+, Swift 5.9+. Full Xcode to run the tests.
+
+**Run `scripts/setup-signing.sh` once on each Mac.** It creates a self-signed "ShotStyle Local Signing" certificate in your login keychain, and `build-app.sh` signs with it, so macOS keeps the Screen Recording and Accessibility permissions across rebuilds. Without it, every rebuild is signed ad-hoc, macOS treats it as a new app, and recording is blocked until you grant the permissions again. If ShotStyle keeps asking, run `tccutil reset ScreenCapture com.shotstyle.app` and `tccutil reset Accessibility com.shotstyle.app`, then grant them once more. Never commit or share the certificate: everyone makes their own.
 
 No Xcode project — everything builds from the terminal via Swift Package Manager.
 
