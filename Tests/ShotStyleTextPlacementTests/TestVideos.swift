@@ -12,6 +12,47 @@ enum TestVideos {
     /// A recording of `seconds` at `size`: a dark field with moving colored
     /// bars, so the picture is never flat.
     static func writeBars(to url: URL, size: CGSize = CGSize(width: 1280, height: 720), seconds: Int = 3, fps: Int = 30) async throws {
+        try await writeVideo(to: url, size: size, seconds: seconds, fps: fps) { context, frame in
+            let width = Int(size.width)
+            context.setFillColor(CGColor(red: 0.16, green: 0.2, blue: 0.32, alpha: 1))
+            context.fill(CGRect(origin: .zero, size: size))
+            for bar in 0..<6 {
+                let hue = CGFloat(bar) / 6
+                context.setFillColor(CGColor(red: 0.5 + 0.4 * cos(hue * 6.28), green: 0.5 + 0.4 * cos(hue * 6.28 + 2.1), blue: 0.5 + 0.4 * cos(hue * 6.28 + 4.2), alpha: 1))
+                context.fill(CGRect(x: CGFloat((bar * width / 6 + frame * 6) % (width + 200)) - 200, y: CGFloat(bar) * size.height / 6.5 + 30, width: 200, height: size.height / 10))
+            }
+        }
+    }
+
+    /// A camera picture in four solid quadrants (y down): red top left,
+    /// green top right, blue bottom left, yellow bottom right.
+    static func writeQuadrants(to url: URL, size: CGSize = CGSize(width: 640, height: 480), seconds: Int = 3, fps: Int = 30) async throws {
+        try await writeVideo(to: url, size: size, seconds: seconds, fps: fps) { context, _ in
+            drawQuadrants(context, size: size)
+        }
+    }
+
+    static let quadrantColors: [(r: Double, g: Double, b: Double)] = [(0.9, 0.1, 0.1), (0.1, 0.8, 0.2), (0.15, 0.25, 0.9), (0.95, 0.85, 0.1)]
+
+    /// CGContext is y up: the top quadrants are drawn at the top.
+    static func drawQuadrants(_ context: CGContext, size: CGSize) {
+        let w = size.width / 2, h = size.height / 2
+        let boxes = [CGRect(x: 0, y: h, width: w, height: h), CGRect(x: w, y: h, width: w, height: h), CGRect(x: 0, y: 0, width: w, height: h), CGRect(x: w, y: 0, width: w, height: h)]
+        for (box, color) in zip(boxes, quadrantColors) {
+            context.setFillColor(CGColor(red: color.r, green: color.g, blue: color.b, alpha: 1))
+            context.fill(box)
+        }
+    }
+
+    /// The quadrant picture as an image, for the renderer's camera input.
+    static func quadrantImage(size: CGSize = CGSize(width: 640, height: 480)) -> CIImage {
+        let context = CGContext(data: nil, width: Int(size.width), height: Int(size.height), bitsPerComponent: 8, bytesPerRow: 0, space: CGColorSpace(name: CGColorSpace.sRGB)!, bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue)!
+        drawQuadrants(context, size: size)
+        return CIImage(cgImage: context.makeImage()!)
+    }
+
+    /// An H.264 movie; `draw` paints each frame (CGContext, y up).
+    static func writeVideo(to url: URL, size: CGSize, seconds: Int, fps: Int, draw: (CGContext, Int) -> Void) async throws {
         let width = Int(size.width), height = Int(size.height)
         try? FileManager.default.removeItem(at: url)
         let writer = try AVAssetWriter(outputURL: url, fileType: .mp4)
@@ -29,19 +70,26 @@ enum TestVideos {
             let pixels = try #require(buffer)
             CVPixelBufferLockBaseAddress(pixels, [])
             let context = try #require(CGContext(data: CVPixelBufferGetBaseAddress(pixels), width: width, height: height, bitsPerComponent: 8, bytesPerRow: CVPixelBufferGetBytesPerRow(pixels), space: CGColorSpaceCreateDeviceRGB(), bitmapInfo: CGImageAlphaInfo.premultipliedFirst.rawValue | CGBitmapInfo.byteOrder32Little.rawValue))
-            context.setFillColor(CGColor(red: 0.16, green: 0.2, blue: 0.32, alpha: 1))
-            context.fill(CGRect(x: 0, y: 0, width: width, height: height))
-            for bar in 0..<6 {
-                let hue = CGFloat(bar) / 6
-                context.setFillColor(CGColor(red: 0.5 + 0.4 * cos(hue * 6.28), green: 0.5 + 0.4 * cos(hue * 6.28 + 2.1), blue: 0.5 + 0.4 * cos(hue * 6.28 + 4.2), alpha: 1))
-                context.fill(CGRect(x: CGFloat((bar * width / 6 + frame * 6) % (width + 200)) - 200, y: CGFloat(bar) * size.height / 6.5 + 30, width: 200, height: size.height / 10))
-            }
+            draw(context, frame)
             CVPixelBufferUnlockBaseAddress(pixels, [])
             adaptor.append(pixels, withPresentationTime: CMTime(value: CMTimeValue(frame), timescale: CMTimeScale(fps)))
         }
         input.markAsFinished()
         await writer.finishWriting()
         #expect(writer.status == .completed)
+    }
+
+    /// The color (0…1) of one output pixel, top-left origin.
+    static func pixel(_ bytes: [UInt8], width: Int, x: Int, y: Int) -> (r: Double, g: Double, b: Double) {
+        let i = (y * width + x) * 4
+        return (Double(bytes[i]) / 255, Double(bytes[i + 1]) / 255, Double(bytes[i + 2]) / 255)
+    }
+
+    /// Whether two colors match; the default tolerance absorbs the
+    /// renderer's color management (a drawn 0.9/0.1/0.1 red comes out
+    /// about 0.93/0.2/0.13) and still tells the quadrants apart.
+    static func close(_ a: (r: Double, g: Double, b: Double), _ b: (r: Double, g: Double, b: Double), within tolerance: Double = 0.16) -> Bool {
+        abs(a.r - b.r) < tolerance && abs(a.g - b.g) < tolerance && abs(a.b - b.b) < tolerance
     }
 
     /// Editor data the exporter keeps goes to a scratch folder.

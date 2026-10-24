@@ -631,6 +631,7 @@ struct VideoKeyboardSection: View {
 
 struct VideoCameraInspector: View {
     @ObservedObject var model: VideoEditorModel
+    @State private var cropPicture: NSImage?
 
     private func binding<T>(_ keyPath: WritableKeyPath<VideoWebcamSettings, T>, coalesce: String? = nil) -> Binding<T> {
         Binding(get: { model.project.webcam[keyPath: keyPath] }, set: { value in model.setStyle(coalesce: coalesce) { $0.webcam[keyPath: keyPath] = value } })
@@ -669,7 +670,8 @@ struct VideoCameraInspector: View {
             } else {
                 VideoInspectorSection(L("Camera")) {
                     VideoToggleRow(title: L("Show camera"), isOn: binding(\.visible))
-                    VideoSegmented(options: VideoWebcamSettings.Shape.allCases.map { ($0, $0.title) }, selection: binding(\.shape))
+                    // A shape is also a corner preset: picking one resets the roundness.
+                    VideoSegmented(options: VideoWebcamSettings.Shape.allCases.map { ($0, $0.title) }, selection: Binding(get: { model.project.webcam.shape }, set: { shape in model.setStyle { $0.webcam.shape = shape; $0.webcam.roundness = nil } }))
                     HStack(spacing: 10) {
                         Text(L("Behind you"))
                             .font(.system(size: 12, weight: .medium))
@@ -694,6 +696,8 @@ struct VideoCameraInspector: View {
                     )
                 }
                 .disabled(false)
+
+                cameraLook
 
                 VideoInspectorSection(L("Position")) {
                     VideoAnchorPicker(selection: binding(\.anchor))
@@ -739,6 +743,80 @@ struct VideoCameraInspector: View {
                     }
                     .buttonStyle(VideoSecondaryButtonStyle())
                 }
+            }
+        }
+    }
+}
+
+extension VideoCameraInspector {
+    /// Crop, roundness, border, and shadow (VideoCameraCropSheet.swift).
+    @ViewBuilder
+    var cameraLook: some View {
+        let webcam = model.project.webcam
+        VideoInspectorSection(L("Look")) {
+            HStack(spacing: 8) {
+                Button {
+                    cropPicture = model.cameraStill()
+                    if cropPicture == nil { model.showNotice(L("Move the playhead to where the camera shows, then crop"), symbol: "video") }
+                } label: {
+                    Label(webcam.effectiveCrop == nil ? L("Crop…") : L("Edit Crop…"), systemImage: "crop")
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(VideoSecondaryButtonStyle())
+                if webcam.effectiveCrop != nil {
+                    Button(L("Reset Crop")) { model.setStyle { $0.webcam.crop = nil } }
+                        .buttonStyle(VideoSecondaryButtonStyle())
+                }
+            }
+            VideoSliderRow(
+                title: L("Roundness"),
+                value: Binding(get: { webcam.effectiveRoundness }, set: { value in model.setStyle(coalesce: "webcam-roundness") { $0.webcam.roundness = value } }),
+                range: 0...1,
+                defaultValue: webcam.shape.roundness,
+                format: { VideoEditorFormat.percent($0) },
+                detail: L("From sharp corners to a circle"),
+                onEditingEnded: { model.endGesture() }
+            )
+            .disabled(webcam.shape == .cutout)
+            VideoToggleRow(
+                title: L("Border"),
+                isOn: Binding(get: { webcam.border != nil }, set: { on in model.setStyle { $0.webcam.border = on ? ($0.webcam.border ?? .standard) : nil } })
+            )
+            .disabled(webcam.shape == .cutout)
+            if let border = webcam.border, webcam.shape != .cutout {
+                HStack(spacing: 10) {
+                    Text(L("Color"))
+                        .font(.system(size: 12, weight: .medium))
+                        .foregroundStyle(VideoEditorTheme.textPrimary)
+                    Spacer()
+                    ColorPicker("", selection: Binding(get: { Color(nsColor: border.color.nsColor) }, set: { color in
+                        let rgba = VideoRGBA(nsColor: NSColor(color))
+                        model.setStyle(coalesce: "webcam-border-color") { $0.webcam.border?.color = rgba }
+                    }), supportsOpacity: false)
+                    .labelsHidden()
+                }
+                VideoSliderRow(
+                    title: L("Thickness"),
+                    value: Binding(get: { border.width }, set: { value in model.setStyle(coalesce: "webcam-border-width") { $0.webcam.border?.width = value } }),
+                    range: VideoWebcamSettings.Border.widthRange,
+                    defaultValue: VideoWebcamSettings.Border.standard.width,
+                    format: { VideoEditorFormat.percent(($0 - VideoWebcamSettings.Border.widthRange.lowerBound) / (VideoWebcamSettings.Border.widthRange.upperBound - VideoWebcamSettings.Border.widthRange.lowerBound)) },
+                    onEditingEnded: { model.endGesture() }
+                )
+            }
+            VideoSliderRow(
+                title: L("Shadow"),
+                value: Binding(get: { webcam.shadowStrength ?? VideoWebcamSettings.defaultShadowStrength }, set: { value in model.setStyle(coalesce: "webcam-shadow") { $0.webcam.shadowStrength = value } }),
+                range: 0...1,
+                defaultValue: VideoWebcamSettings.defaultShadowStrength,
+                format: { VideoEditorFormat.percent($0) },
+                onEditingEnded: { model.endGesture() }
+            )
+        }
+        .disabled(!webcam.visible)
+        .sheet(isPresented: Binding(get: { cropPicture != nil }, set: { if !$0 { cropPicture = nil } })) {
+            if let cropPicture {
+                VideoCameraCropSheet(model: model, picture: cropPicture)
             }
         }
     }

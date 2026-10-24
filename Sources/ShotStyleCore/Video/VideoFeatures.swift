@@ -64,6 +64,17 @@ struct VideoWebcamSettings: Codable, Equatable {
             }
         }
 
+        /// The corners each shape has (0 sharp … 1 a circle), matching
+        /// what it was drawn with before roundness was adjustable.
+        var roundness: Double {
+            switch self {
+            case .circle: return 1
+            case .square: return 0.44
+            case .rectangle: return 0.24
+            case .cutout: return 0
+            }
+        }
+
         /// Width / height.
         var aspect: CGFloat {
             switch self {
@@ -103,13 +114,47 @@ struct VideoWebcamSettings: Codable, Equatable {
     /// The bubble gets out of the way while the screen is zoomed in.
     var shrinkWhenZoomed = true
     var backdrop: Backdrop = .original
+    /// The part of the camera picture that's shown, normalized with y down
+    /// on the unmirrored picture (nil: all of it).
+    var crop: VideoCropRect?
+    /// 0 sharp corners … 1 a full circle (nil: the shape's own corners).
+    var roundness: Double?
+    /// A colored edge around the bubble (nil: the thin light rim).
+    var border: Border?
+    /// 0 no shadow … 1 strong (nil: the usual soft shadow, 0.5).
+    var shadowStrength: Double?
+
+    struct Border: Codable, Equatable {
+        var color: VideoRGBA
+        /// Thickness as a fraction of the output's short side.
+        var width: Double
+
+        static let widthRange: ClosedRange<Double> = 0.002...0.02
+        static let standard = Border(color: VideoRGBA(1, 1, 1), width: 0.006)
+    }
+
+    static let defaultShadowStrength = 0.5
 
     /// Person segmentation is needed for this look.
     var needsPersonMask: Bool { shape == .cutout || backdrop != .original }
 
+    /// The roundness the bubble has now, set or from its shape (0…1).
+    var effectiveRoundness: Double {
+        if let roundness { return min(max(roundness, 0), 1) }
+        return shape.roundness
+    }
+
+    /// The crop, kept inside the picture and at least a sliver big (nil when
+    /// it's the whole picture).
+    var effectiveCrop: VideoCropRect? {
+        guard let crop else { return nil }
+        let kept = crop.normalized
+        return kept.isFull ? nil : kept
+    }
+
     init() {}
 
-    private enum CodingKeys: String, CodingKey { case visible, size, anchor, shape, mirror, shrinkWhenZoomed, backdrop }
+    private enum CodingKeys: String, CodingKey { case visible, size, anchor, shape, mirror, shrinkWhenZoomed, backdrop, crop, roundness, border, shadowStrength }
 
     init(from decoder: Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
@@ -121,6 +166,10 @@ struct VideoWebcamSettings: Codable, Equatable {
         mirror = try c.decodeIfPresent(Bool.self, forKey: .mirror) ?? d.mirror
         shrinkWhenZoomed = try c.decodeIfPresent(Bool.self, forKey: .shrinkWhenZoomed) ?? d.shrinkWhenZoomed
         backdrop = (try? c.decode(Backdrop.self, forKey: .backdrop)) ?? d.backdrop
+        crop = try? c.decodeIfPresent(VideoCropRect.self, forKey: .crop)
+        roundness = (try? c.decodeIfPresent(Double.self, forKey: .roundness)).flatMap { $0 }.map { min(max($0, 0), 1) }
+        border = try? c.decodeIfPresent(Border.self, forKey: .border)
+        shadowStrength = (try? c.decodeIfPresent(Double.self, forKey: .shadowStrength)).flatMap { $0 }.map { min(max($0, 0), 1) }
     }
 }
 

@@ -1330,13 +1330,23 @@ final class VideoFrameRenderer {
         return CGRect(x: x.rounded(), y: (outputSize.height - yFromTop - height).rounded(), width: width.rounded(), height: height.rounded())
     }
 
+    /// The bubble's corners: its roundness (set, or its shape's) of a
+    /// full circle.
     static func webcamCornerRadius(_ settings: VideoWebcamSettings, rect: CGRect) -> CGFloat {
-        switch settings.shape {
-        case .circle: return min(rect.width, rect.height) / 2
-        case .square: return rect.height * 0.22
-        case .rectangle: return rect.height * 0.12
-        case .cutout: return 0
-        }
+        guard settings.shape != .cutout else { return 0 }
+        return CGFloat(settings.effectiveRoundness) * min(rect.width, rect.height) / 2
+    }
+
+    /// The part of `extent` the camera's crop keeps (CIImage coordinates,
+    /// y up); the whole extent without a crop.
+    static func webcamCropRegion(_ settings: VideoWebcamSettings, extent: CGRect) -> CGRect {
+        guard let crop = settings.effectiveCrop else { return extent }
+        return CGRect(
+            x: extent.minX + CGFloat(crop.x) * extent.width,
+            y: extent.minY + CGFloat(1 - crop.y - crop.height) * extent.height,
+            width: CGFloat(crop.width) * extent.width,
+            height: CGFloat(crop.height) * extent.height
+        )
     }
 
     static func lerp(_ a: CGRect, _ b: CGRect, _ t: CGFloat) -> CGRect {
@@ -1370,14 +1380,17 @@ final class VideoFrameRenderer {
     private func placedCamera(_ camera: CameraPicture, in rect: CGRect, plan: VideoRenderPlan, k: CGFloat) -> (picture: CIImage, person: CIImage?) {
         let frame = camera.frame
         let extent = frame.extent
-        var transform = CGAffineTransform(translationX: -extent.minX, y: -extent.minY)
+        // The cropped part fills the bubble; the person mask (below) goes
+        // through the same transform, so it stays on the person.
+        let region = Self.webcamCropRegion(camera.settings, extent: extent)
+        var transform = CGAffineTransform(translationX: -region.minX, y: -region.minY)
         if camera.settings.mirror {
-            transform = transform.concatenating(CGAffineTransform(scaleX: -1, y: 1).translatedBy(x: -extent.width, y: 0))
+            transform = transform.concatenating(CGAffineTransform(scaleX: -1, y: 1).translatedBy(x: -region.width, y: 0))
         }
-        let scale = max(rect.width / max(extent.width, 1), rect.height / max(extent.height, 1))
+        let scale = max(rect.width / max(region.width, 1), rect.height / max(region.height, 1))
         transform = transform
             .concatenating(CGAffineTransform(scaleX: scale, y: scale))
-            .concatenating(CGAffineTransform(translationX: rect.midX - extent.width * scale / 2, y: rect.midY - extent.height * scale / 2))
+            .concatenating(CGAffineTransform(translationX: rect.midX - region.width * scale / 2, y: rect.midY - region.height * scale / 2))
         var picture = frame.transformed(by: transform)
         if scale < 0.8 { picture = picture.samplingLinear() }
         picture = picture.cropped(to: rect)
@@ -1416,6 +1429,9 @@ final class VideoFrameRenderer {
         guard rect.width > 2, rect.height > 2, look.opacity > 0.001 else { return scene }
         let shortSide = min(outputSize.width, outputSize.height)
         let placed = placedCamera(camera, in: rect, plan: plan, k: k)
+        var look = look
+        // The Shadow slider: 0.5 is the usual soft shadow, 1 twice as strong.
+        look.shadow *= 2 * (camera.settings.shadowStrength ?? VideoWebcamSettings.defaultShadowStrength)
 
         if look.cutout, let person = placed.person {
             // Just you: the picture where the mask is, a soft shadow below.
@@ -1441,12 +1457,19 @@ final class VideoFrameRenderer {
         let card = placed.picture.applyingFilter("CISourceInCompositing", parameters: [kCIInputBackgroundImageKey: mask])
         var layer = card
         if look.shadow > 0.01 {
-            let shadowOffset = shortSide * 0.008
-            let shadow = roundedRect(rect.offsetBy(dx: 0, dy: -shadowOffset), radius: radius, color: CIColor(red: 0, green: 0, blue: 0, alpha: CGFloat(0.4 * look.shadow)))
-                .applyingGaussianBlur(sigma: Double(shortSide * 0.014))
+            let shadowOffset = shortSide * 0.008 * CGFloat(max(1, look.shadow))
+            let shadow = roundedRect(rect.offsetBy(dx: 0, dy: -shadowOffset), radius: radius, color: CIColor(red: 0, green: 0, blue: 0, alpha: CGFloat(min(0.4 * look.shadow, 0.85))))
+                .applyingGaussianBlur(sigma: Double(shortSide * 0.014 * CGFloat(max(1, look.shadow))))
             layer = card.composited(over: shadow)
         }
-        if look.rim > 0.01 {
+        if let border = camera.settings.border, look.rim > 0.01 {
+            // A border of its own, fading like the rim does into a layout.
+            let width = max(1, shortSide * CGFloat(min(max(border.width, VideoWebcamSettings.Border.widthRange.lowerBound), VideoWebcamSettings.Border.widthRange.upperBound)))
+            let color = CIColor(red: border.color.r, green: border.color.g, blue: border.color.b, alpha: CGFloat(border.color.a * look.rim))
+            let outer = roundedRect(rect, radius: radius, color: color)
+            let inner = roundedRect(rect.insetBy(dx: width, dy: width), radius: max(radius - width, 0), color: CIColor.white)
+            layer = outer.applyingFilter("CISourceOutCompositing", parameters: [kCIInputBackgroundImageKey: inner]).composited(over: layer)
+        } else if look.rim > 0.01 {
             let rim = max(1.5, shortSide * 0.0028)
             let outer = roundedRect(rect, radius: radius, color: CIColor(red: 1, green: 1, blue: 1, alpha: CGFloat(0.85 * look.rim)))
             let inner = roundedRect(rect.insetBy(dx: rim, dy: rim), radius: max(radius - rim, 0), color: CIColor.white)
