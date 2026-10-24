@@ -349,6 +349,46 @@ extension VideoEditorModel {
         }
     }
 
+    // MARK: Where captions and the shortcut keys sit (VideoTextPlacement.swift)
+
+    /// Every caption without a spot of its own (nil: the Top/Bottom preset).
+    func moveCaptions(to placement: VideoTextPlacement?, coalesce: String? = nil) {
+        mutate(coalesce: coalesce, label: "Move Captions") { $0.placeAllCaptions(at: placement) }
+    }
+
+    /// One caption only (nil: it follows the others again).
+    func moveCaption(_ id: UUID, to placement: VideoTextPlacement?, coalesce: String? = nil) {
+        mutate(coalesce: coalesce, label: "Move Caption") { $0.placeCaption(id, at: placement) }
+    }
+
+    func resetCaptionPosition() {
+        mutate(label: "Move Captions") { $0.resetCaptionPlacement() }
+    }
+
+    func resetCaptionPosition(_ id: UUID) {
+        moveCaption(id, to: nil)
+    }
+
+    func applyCaptionPositionToAll(from id: UUID) {
+        mutate(label: "Move Captions") { $0.applyCaptionPlacementToAll(from: id) }
+    }
+
+    func setCaptionPreset(_ position: VideoTextPosition) {
+        mutate(label: "Caption Style") { $0.setCaptionPreset(position) }
+    }
+
+    func moveKeystrokes(to placement: VideoTextPlacement?, coalesce: String? = nil) {
+        mutate(coalesce: coalesce, label: "Move Shortcuts") { $0.placeKeystrokes(at: placement) }
+    }
+
+    func resetKeystrokePosition() {
+        mutate(label: "Move Shortcuts") { $0.resetKeystrokePlacement() }
+    }
+
+    func setKeystrokePreset(_ position: VideoTextPosition) {
+        mutate(label: "Shortcut Style") { $0.setKeystrokePreset(position) }
+    }
+
     /// File ▸ Save Subtitles and the command palette (VideoCaptionStyles.swift).
     func exportSRT() {
         exportSubtitles(.srt)

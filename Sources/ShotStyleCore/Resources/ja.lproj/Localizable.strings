@@ -306,6 +306,8 @@
 	<string>切り取りを適用</string>
 	<key>Apply the crop (Return)</key>
 	<string>切り取りを適用（Returnキー）</string>
+	<key>Apply this position to all captions</key>
+	<string>この位置をすべての字幕に適用</string>
 	<key>Apply to all zooms</key>
 	<string>すべてのズームに適用</string>
 	<key>Aqua Marble</key>
@@ -472,6 +474,8 @@
 	<string>字幕を削除しました</string>
 	<key>Caption style %@</key>
 	<string>字幕のスタイル: %@</string>
+	<key>Caption — drag to move it, right-click for more</key>
+	<string>字幕: ドラッグで移動、右クリックでその他の操作</string>
 	<key>Caption “%@”</key>
 	<string>字幕“%@”</string>
 	<key>Captions</key>
@@ -810,6 +814,8 @@
 	<string>カスタムカラー</string>
 	<key>Custom color #%@</key>
 	<string>カスタムカラー #%@</string>
+	<key>Custom position</key>
+	<string>カスタム位置</string>
 	<key>Custom: %@</key>
 	<string>カスタム: %@</string>
 	<key>Custom…</key>
@@ -922,6 +928,8 @@
 	<string>ダブルクリックで収録をFinderに表示</string>
 	<key>Downloading the language model…</key>
 	<string>言語モデルをダウンロード中…</string>
+	<key>Drag captions on the preview to place them anywhere</key>
+	<string>プレビューで字幕をドラッグすると、好きな位置に配置できます</string>
 	<key>Drag edges or corners to resize  ·  Arrow keys nudge (⇧ ×10)  ·  Return captures  ·  Esc cancels</key>
 	<string>端または角をドラッグしてサイズを変更  ·  矢印キーで微調整（⇧で×10）  ·  Returnキーで取り込む  ·  Escキーでキャンセル</string>
 	<key>Drag it on the preview to move it; drag a corner to resize. Its bar on the timeline sets when it shows.</key>
@@ -938,6 +946,8 @@
 	<string>プレビュー上で、見られたくない部分に枠をドラッグして重ねます。ぼかしはズームに追従し、バーの終わりまで表示されます。</string>
 	<key>Drag the frame on the preview to aim; drag its corners to zoom in or out.</key>
 	<string>プレビュー上で枠をドラッグして位置を指定し、角をドラッグしてズームイン/ズームアウトします。</string>
+	<key>Drag the keys on the preview to place them anywhere</key>
+	<string>プレビューでキーをドラッグすると、好きな位置に配置できます</string>
 	<key>Drag the spot on the preview; drag a corner to resize it. Everything around it dims while its bar on the timeline runs.</key>
 	<string>プレビュー上でスポットをドラッグし、角をドラッグしてサイズを変更します。タイムライン上のバーの間は、その周囲がすべて暗くなります。</string>
 	<key>Drag to capture  ·  Hold ⇧ as you let go to adjust first  ·  Space moves  ·  Esc cancels</key>
@@ -2130,6 +2140,10 @@
 	<string>矢印の移動をやり直す</string>
 	<key>Redo Move Blur</key>
 	<string>ぼかしの移動をやり直す</string>
+	<key>Redo Move Caption</key>
+	<string>字幕の移動をやり直す</string>
+	<key>Redo Move Captions</key>
+	<string>字幕全体の移動をやり直す</string>
 	<key>Redo Move Click</key>
 	<string>クリックの移動をやり直す</string>
 	<key>Redo Move Clip</key>
@@ -2140,6 +2154,8 @@
 	<string>画像の移動をやり直す</string>
 	<key>Redo Move Recording</key>
 	<string>収録の移動をやり直す</string>
+	<key>Redo Move Shortcuts</key>
+	<string>ショートカットの移動をやり直す</string>
 	<key>Redo Move Spotlight</key>
 	<string>スポットライトの移動をやり直す</string>
 	<key>Redo Move Text</key>
@@ -2308,6 +2324,10 @@
 	<string>デフォルトに戻す</string>
 	<key>Reset crop</key>
 	<string>切り取りをリセット</string>
+	<key>Reset position</key>
+	<string>位置をリセット</string>
+	<key>Reset to default position</key>
+	<string>デフォルトの位置に戻す</string>
 	<key>Reset to the ShotStyle Look</key>
 	<string>ShotStyleの標準スタイルに戻す</string>
 	<key>Reset to the ShotStyle look</key>
@@ -2554,6 +2574,8 @@
 	<string>ショートカットの競合が検出されました</string>
 	<key>Shortcut hidden</key>
 	<string>ショートカットを非表示にしました</string>
+	<key>Shortcut keys — drag to move them, right-click to reset</key>
+	<string>ショートカットキー: ドラッグで移動、右クリックでリセット</string>
 	<key>Shortcuts</key>
 	<string>ショートカット</string>
 	<key>Shorten %lld pauses</key>
@@ -3188,6 +3210,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>矢印の移動を取り消す</string>
 	<key>Undo Move Blur</key>
 	<string>ぼかしの移動を取り消す</string>
+	<key>Undo Move Caption</key>
+	<string>字幕の移動を取り消す</string>
+	<key>Undo Move Captions</key>
+	<string>字幕全体の移動を取り消す</string>
 	<key>Undo Move Click</key>
 	<string>クリックの移動を取り消す</string>
 	<key>Undo Move Clip</key>
@@ -3198,6 +3224,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>画像の移動を取り消す</string>
 	<key>Undo Move Recording</key>
 	<string>収録の移動を取り消す</string>
+	<key>Undo Move Shortcuts</key>
+	<string>ショートカットの移動を取り消す</string>
 	<key>Undo Move Spotlight</key>
 	<string>スポットライトの移動を取り消す</string>
 	<key>Undo Move Text</key>

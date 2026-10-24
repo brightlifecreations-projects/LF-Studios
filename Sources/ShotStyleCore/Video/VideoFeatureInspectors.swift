@@ -280,7 +280,10 @@ struct VideoCaptionsInspector: View {
                         VideoSegmented(options: VideoTextSize.allCases.map { ($0, $0.title) }, selection: binding(\.size))
                     }
                     labeled(L("Position")) {
-                        VideoSegmented(options: VideoTextPosition.allCases.map { ($0, $0.title) }, selection: binding(\.position))
+                        VideoSegmented(options: VideoTextPosition.allCases.map { ($0, $0.title) }, selection: Binding(get: { style.position }, set: { model.setCaptionPreset($0) }))
+                    }
+                    VideoPlacementRow(isCustom: style.placement != nil, hint: L("Drag captions on the preview to place them anywhere")) {
+                        model.resetCaptionPosition()
                     }
                 }
                 .disabled(model.captionJob != nil)
@@ -489,12 +492,25 @@ private struct VideoCaptionRow: View {
             }
             .buttonStyle(.plain)
             .help(L("Jump here"))
-            TextField(L("Caption"), text: Binding(get: { line.text }, set: { model.updateCaption(line.id, text: $0) }), axis: .vertical)
-                .textFieldStyle(.plain)
-                .font(.system(size: 12))
-                .foregroundStyle(VideoEditorTheme.textPrimary)
-                .lineLimit(1...4)
-                .onSubmit { model.endGesture() }
+            VStack(alignment: .leading, spacing: 5) {
+                TextField(L("Caption"), text: Binding(get: { line.text }, set: { model.updateCaption(line.id, text: $0) }), axis: .vertical)
+                    .textFieldStyle(.plain)
+                    .font(.system(size: 12))
+                    .foregroundStyle(VideoEditorTheme.textPrimary)
+                    .lineLimit(1...4)
+                    .onSubmit { model.endGesture() }
+                if line.placement != nil {
+                    VideoCustomPositionBadge()
+                }
+                if isSelected, line.placement != nil {
+                    HStack(spacing: 6) {
+                        Button(L("Reset to default position")) { model.resetCaptionPosition(line.id) }
+                        Button(L("Apply this position to all captions")) { model.applyCaptionPositionToAll(from: line.id) }
+                    }
+                    .buttonStyle(VideoSecondaryButtonStyle())
+                    .controlSize(.small)
+                }
+            }
             if hovering {
                 Button {
                     model.deleteCaption(line.id)
@@ -517,6 +533,46 @@ private struct VideoCaptionRow: View {
         )
         .contentShape(Rectangle())
         .onHover { hovering = $0 }
+    }
+}
+
+// MARK: - Custom positions (VideoTextPlacement.swift)
+
+/// Marks a caption that has a spot of its own.
+struct VideoCustomPositionBadge: View {
+    var body: some View {
+        Label(L("Custom position"), systemImage: "arrow.up.and.down.and.arrow.left.and.right")
+            .font(.system(size: 9.5, weight: .semibold))
+            .foregroundStyle(VideoEditorTheme.caption)
+            .padding(.horizontal, 6)
+            .padding(.vertical, 2)
+            .background(Capsule().fill(VideoEditorTheme.caption.opacity(0.16)))
+            .fixedSize()
+    }
+}
+
+/// Under the Top/Bottom presets: how to move the layer by hand, or a way
+/// back once it's been moved.
+private struct VideoPlacementRow: View {
+    let isCustom: Bool
+    let hint: String
+    let reset: () -> Void
+
+    var body: some View {
+        if isCustom {
+            HStack(spacing: 8) {
+                VideoCustomPositionBadge()
+                Spacer(minLength: 0)
+                Button(L("Reset position"), action: reset)
+                    .buttonStyle(VideoSecondaryButtonStyle())
+                    .controlSize(.small)
+            }
+        } else {
+            Text(hint)
+                .font(.system(size: 10.5))
+                .foregroundStyle(VideoEditorTheme.textTertiary)
+                .fixedSize(horizontal: false, vertical: true)
+        }
     }
 }
 
@@ -559,7 +615,11 @@ struct VideoKeyboardSection: View {
                         .font(.system(size: 12, weight: .medium))
                         .foregroundStyle(VideoEditorTheme.textPrimary)
                         .frame(width: VideoEditorTheme.rowTitleWidth([L("Size"), L("Position")]), alignment: .leading)
-                    VideoSegmented(options: VideoTextPosition.allCases.map { ($0, $0.title) }, selection: binding(\.position))
+                    VideoSegmented(options: VideoTextPosition.allCases.map { ($0, $0.title) }, selection: Binding(get: { model.project.keystrokeStyle.position }, set: { model.setKeystrokePreset($0) }))
+                }
+                .disabled(!model.project.keystrokeStyle.visible)
+                VideoPlacementRow(isCustom: model.project.keystrokeStyle.placement != nil, hint: L("Drag the keys on the preview to place them anywhere")) {
+                    model.resetKeystrokePosition()
                 }
                 .disabled(!model.project.keystrokeStyle.visible)
             }

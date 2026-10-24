@@ -212,6 +212,12 @@
     "fr" : "S’applique à chaque coupe. Cliquez sur le repère d’une coupe dans la timeline, ou sélectionnez un clip, pour en choisir une pour cette coupe uniquement.",
     "zh-Hans" : "应用于每个剪切点。点按时间线上剪切点的标记或选择一个片段，可单独为该剪切点选择转场。"
   },
+  "Apply this position to all captions" : {
+    "comment" : "Selected caption: its spot becomes every caption's",
+    "de" : "Diese Position für alle Untertitel übernehmen",
+    "fr" : "Appliquer cette position à tous les sous-titres",
+    "zh-Hans" : "将此位置应用到所有字幕"
+  },
   "Arrow" : {
     "de" : "Pfeil",
     "fr" : "Flèche",
@@ -368,6 +374,12 @@
     "de" : "Untertitelstil %@",
     "fr" : "Style de sous-titres %@",
     "zh-Hans" : "字幕样式：%@"
+  },
+  "Caption — drag to move it, right-click for more" : {
+    "comment" : "Tooltip on the caption over the preview",
+    "de" : "Untertitel – ziehen zum Bewegen, Rechtsklick für mehr",
+    "fr" : "Sous-titre — faites-le glisser pour le déplacer, clic droit pour plus d’options",
+    "zh-Hans" : "字幕 — 拖移可移动，右键点按查看更多"
   },
   "Captions" : {
     "de" : "Untertitel",
@@ -655,6 +667,12 @@
     "fr" : "Net et compact — le meilleur choix par défaut",
     "zh-Hans" : "清晰且紧凑 — 最佳默认选项"
   },
+  "Custom position" : {
+    "comment" : "Badge: this caption (or the keys) was moved by hand",
+    "de" : "Eigene Position",
+    "fr" : "Position personnalisée",
+    "zh-Hans" : "自定位置"
+  },
   "Cut %lld words — ⌘Z to undo" : {
     "de" : {
       "one" : "%lld Wort herausgeschnitten – ⌘Z zum Widerrufen",
@@ -720,6 +738,18 @@
     "de" : "Sprachmodell wird geladen …",
     "fr" : "Téléchargement du modèle de langue…",
     "zh-Hans" : "正在下载语言模型…"
+  },
+  "Drag captions on the preview to place them anywhere" : {
+    "comment" : "Hint under the caption Position presets",
+    "de" : "Zieh Untertitel in der Vorschau an eine beliebige Stelle",
+    "fr" : "Faites glisser les sous-titres dans l’aperçu pour les placer où vous voulez",
+    "zh-Hans" : "在预览中拖移字幕，即可放到任意位置"
+  },
+  "Drag the keys on the preview to place them anywhere" : {
+    "comment" : "Hint under the shortcut keys Position presets",
+    "de" : "Zieh die Tasten in der Vorschau an eine beliebige Stelle",
+    "fr" : "Faites glisser les touches dans l’aperçu pour les placer où vous voulez",
+    "zh-Hans" : "在预览中拖移按键，即可放到任意位置"
   },
   "Drag to move; drag a corner to resize" : {
     "de" : "Zum Bewegen ziehen; zum Ändern der Größe an einer Ecke ziehen",
@@ -1537,6 +1567,21 @@
     "fr" : "Rectangle",
     "zh-Hans" : "矩形"
   },
+  "Redo Move Caption" : {
+    "de" : "Verschieben des Untertitels wiederholen",
+    "fr" : "Rétablir le déplacement du sous-titre",
+    "zh-Hans" : "重做移动字幕"
+  },
+  "Redo Move Captions" : {
+    "de" : "Verschieben der Untertitel wiederholen",
+    "fr" : "Rétablir le déplacement des sous-titres",
+    "zh-Hans" : "重做移动所有字幕"
+  },
+  "Redo Move Shortcuts" : {
+    "de" : "Verschieben der Kurzbefehle wiederholen",
+    "fr" : "Rétablir le déplacement des raccourcis",
+    "zh-Hans" : "重做移动快捷键"
+  },
   "Reels, TikTok, Shorts" : {
     "de" : "Reels, TikTok, Shorts",
     "fr" : "Reels, TikTok, Shorts",
@@ -1652,6 +1697,18 @@
     "de" : "Ersetzen …",
     "fr" : "Remplacer…",
     "zh-Hans" : "替换…"
+  },
+  "Reset position" : {
+    "comment" : "Back to the Bottom preset",
+    "de" : "Position zurücksetzen",
+    "fr" : "Réinitialiser la position",
+    "zh-Hans" : "重置位置"
+  },
+  "Reset to default position" : {
+    "comment" : "Selected caption: follows the other captions again",
+    "de" : "Auf Standardposition zurücksetzen",
+    "fr" : "Rétablir la position par défaut",
+    "zh-Hans" : "恢复默认位置"
   },
   "Resolution" : {
     "de" : "Auflösung",
@@ -1779,6 +1836,12 @@
     "de" : "Kurzbefehl ausgeblendet",
     "fr" : "Raccourci masqué",
     "zh-Hans" : "已隐藏快捷键"
+  },
+  "Shortcut keys — drag to move them, right-click to reset" : {
+    "comment" : "Tooltip on the keycaps over the preview",
+    "de" : "Kurzbefehltasten – ziehen zum Bewegen, Rechtsklick zum Zurücksetzen",
+    "fr" : "Touches de raccourci — faites-les glisser pour les déplacer, clic droit pour réinitialiser",
+    "zh-Hans" : "快捷键按键 — 拖移可移动，右键点按可重置"
   },
   "Shortened %lld pauses — %@ shorter" : {
     "de" : {
@@ -2236,6 +2299,21 @@
     "de" : "Unter der Stimme",
     "fr" : "Sous la voix",
     "zh-Hans" : "人声时音量"
+  },
+  "Undo Move Caption" : {
+    "de" : "Verschieben des Untertitels widerrufen",
+    "fr" : "Annuler le déplacement du sous-titre",
+    "zh-Hans" : "撤销移动字幕"
+  },
+  "Undo Move Captions" : {
+    "de" : "Verschieben der Untertitel widerrufen",
+    "fr" : "Annuler le déplacement des sous-titres",
+    "zh-Hans" : "撤销移动所有字幕"
+  },
+  "Undo Move Shortcuts" : {
+    "de" : "Verschieben der Kurzbefehle widerrufen",
+    "fr" : "Annuler le déplacement des raccourcis",
+    "zh-Hans" : "撤销移动快捷键"
   },
   "Video copied" : {
     "de" : "Video kopiert",

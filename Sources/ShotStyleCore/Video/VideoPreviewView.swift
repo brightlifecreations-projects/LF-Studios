@@ -14,6 +14,8 @@ final class VideoPreviewRenderer: NSObject, MTKViewDelegate {
     private let queue: MTLCommandQueue?
     private let context: CIContext
     private let renderer = VideoFrameRenderer()
+    /// Where the live frame put the caption and the keys (their drag handles).
+    let textLayout = VideoTextLayoutStore()
     private var lastBuffer: CVPixelBuffer?
     private var lastBufferTime: Double = 0
     /// The camera frame composed with `lastBuffer` (kept so a missed lookup
@@ -120,7 +122,12 @@ final class VideoPreviewRenderer: NSObject, MTKViewDelegate {
         if !model.isCropping, model.trimPeekSourceTime == nil {
             options.transitionFrame = model.heldFrame(at: time)
         }
-        return renderer.render(source: source, timelineTime: time, plan: model.plan, outputSize: size, options: options)
+        options.recordsTextLayout = true
+        let image = renderer.render(source: source, timelineTime: time, plan: model.plan, outputSize: size, options: options)
+        if renderer.textLayout != textLayout.layout {
+            textLayout.layout = renderer.textLayout
+        }
+        return image
     }
 
     /// The annotation being edited while paused — shown fully, fades aside.
@@ -263,7 +270,7 @@ struct VideoStageView: View {
                     VideoCropOverlay(model: model, viewSize: fitted)
                         .frame(width: fitted.width, height: fitted.height)
                 } else {
-                    VideoStageInteractionLayer(model: model, clock: model.clock, viewSize: fitted)
+                    VideoStageInteractionLayer(model: model, clock: model.clock, textLayout: model.previewRenderer.textLayout, viewSize: fitted)
                         .frame(width: fitted.width, height: fitted.height)
                 }
             }
@@ -284,6 +291,7 @@ struct VideoStageView: View {
 struct VideoStageInteractionLayer: View {
     @ObservedObject var model: VideoEditorModel
     @ObservedObject var clock: VideoDemoPlaybackClock
+    @ObservedObject var textLayout: VideoTextLayoutStore
     let viewSize: CGSize
 
     @State private var aimOrigin: (id: UUID, centerX: Double, centerY: Double, scale: Double)?
@@ -353,6 +361,11 @@ struct VideoStageInteractionLayer: View {
             // camera, side by side, or hidden stretch).
             if let webcam = model.plan.webcam, webcam.visible, !model.isAimingZoom, model.plan.cameraLayout(at: clock.time) == nil, model.plan.hasCameraFootage(at: clock.time) {
                 webcamHandle(webcam)
+            }
+
+            // Captions and shortcut keys, dragged anywhere (VideoTextHandles.swift).
+            if !model.isPlaying, !model.isAimingZoom {
+                VideoTextHandles(model: model, layout: textLayout.layout, viewSize: viewSize)
             }
         }
         .frame(width: viewSize.width, height: viewSize.height, alignment: .topLeading)

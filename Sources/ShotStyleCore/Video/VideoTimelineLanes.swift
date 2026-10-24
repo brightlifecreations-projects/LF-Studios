@@ -181,6 +181,8 @@ struct VideoCaptionLane: View, Equatable {
         let start: Double
         let end: Double
         let text: String
+        /// Moved on its own (a mark at the chip's end).
+        var hasOwnPlacement = false
     }
 
     let items: [Item]
@@ -237,9 +239,17 @@ struct VideoCaptionLane: View, Equatable {
                 let path = Path(roundedRect: frame, cornerRadius: 6, style: .continuous)
                 context.fill(path, with: .color(VideoEditorTheme.caption.opacity(selected ? 0.85 : 0.34)))
                 context.stroke(path, with: .color(.white.opacity(selected ? 0.95 : 0.12)), lineWidth: selected ? 1.5 : 1)
+                // A caption with its own spot on the frame (VideoTextPlacement.swift).
+                let marked = item.hasOwnPlacement && frame.width > 40
+                if marked {
+                    context.draw(
+                        Text(Image(systemName: "arrow.up.and.down.and.arrow.left.and.right")).font(.system(size: 8, weight: .bold)).foregroundColor(.white.opacity(0.9)),
+                        at: CGPoint(x: frame.maxX - 9, y: frame.midY)
+                    )
+                }
                 if frame.width > 26 {
                     var inner = context
-                    inner.clip(to: Path(frame.insetBy(dx: 5, dy: 0)))
+                    inner.clip(to: Path(frame.insetBy(dx: 5, dy: 0).divided(atDistance: marked ? 12 : 0, from: .maxXEdge).remainder))
                     inner.draw(
                         Text(item.text).font(.system(size: 10, weight: .medium)).foregroundColor(.white.opacity(selected ? 1 : 0.88)),
                         at: CGPoint(x: frame.minX + 6, y: frame.midY),

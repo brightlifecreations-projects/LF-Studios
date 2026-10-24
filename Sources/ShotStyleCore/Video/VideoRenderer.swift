@@ -245,14 +245,17 @@ final class VideoRenderPlan: @unchecked Sendable {
         let words: [VideoCaptionWord]
         /// Where it actually plays (apart when clips were moved around).
         var ranges: [ClosedRange<Double>]
+        /// Its own spot on the frame (nil: where every caption goes).
+        var placement: VideoTextPlacement?
 
-        init(id: UUID, start: Double, end: Double, text: String, words: [VideoCaptionWord], ranges: [ClosedRange<Double>]? = nil) {
+        init(id: UUID, start: Double, end: Double, text: String, words: [VideoCaptionWord], ranges: [ClosedRange<Double>]? = nil, placement: VideoTextPlacement? = nil) {
             self.id = id
             self.start = start
             self.end = end
             self.text = text
             self.words = words
             self.ranges = ranges ?? [start...end]
+            self.placement = placement
         }
 
         func range(at time: Double) -> ClosedRange<Double>? { VideoRenderPlan.range(in: ranges, at: time, upperOpen: true) }
@@ -512,7 +515,7 @@ final class VideoRenderPlan: @unchecked Sendable {
                 text = translated
                 words = []
             }
-            return Caption(id: line.id, start: first.lowerBound, end: last.upperBound, text: text, words: words, ranges: ranges)
+            return Caption(id: line.id, start: first.lowerBound, end: last.upperBound, text: text, words: words, ranges: ranges, placement: line.placement)
         }
     }
 
@@ -566,7 +569,14 @@ final class VideoFrameRenderer {
         var transitionFrame: CIImage?
         /// Skip cards, transitions, and fades (a held side of a dissolve).
         var skipFinish = false
+        /// Keep where the caption and the keys were drawn in `textLayout`
+        /// (the preview's drag handles).
+        var recordsTextLayout = false
     }
+
+    /// Where the last frame drawn with `recordsTextLayout` put the caption
+    /// and the shortcut keys.
+    private(set) var textLayout = VideoTextLayout()
 
     private struct BackgroundKey: Equatable {
         let background: VideoBackground
@@ -800,7 +810,7 @@ final class VideoFrameRenderer {
             }
         }
         scene = drawImages(on: scene, plan: plan, outputSize: outputSize, time: timelineTime, options: options)
-        scene = drawTextLayers(on: scene, plan: plan, outputSize: outputSize, timelineTime: timelineTime, sourceTime: sourceTime, avoid: avoid, avoidWeight: avoidWeight)
+        scene = drawTextLayers(on: scene, plan: plan, outputSize: outputSize, timelineTime: timelineTime, sourceTime: sourceTime, avoid: avoid, avoidWeight: avoidWeight, options: options)
         return scene
     }
 
@@ -1229,20 +1239,29 @@ final class VideoFrameRenderer {
 
     // MARK: Captions and shortcuts
 
-    private func drawTextLayers(on scene: CIImage, plan: VideoRenderPlan, outputSize: CGSize, timelineTime: Double, sourceTime: Double, avoid: CGRect?, avoidWeight: CGFloat = 1) -> CIImage {
+    private func drawTextLayers(on scene: CIImage, plan: VideoRenderPlan, outputSize: CGSize, timelineTime: Double, sourceTime: Double, avoid: CGRect?, avoidWeight: CGFloat = 1, options: Options) -> CIImage {
         var output = scene
         let shortSide = min(outputSize.width, outputSize.height)
-        let margin = (shortSide * 0.055).rounded()
+        let margin = VideoTextPlacementGeometry.margin(outputSize: outputSize)
         let spacing = (shortSide * 0.016).rounded()
         // Distance used from each edge so layers on the same edge stack.
         var usedBottom = margin
         var usedTop = margin
+        var layout = VideoTextLayout()
 
-        func place(_ image: CIImage, position: VideoTextPosition, opacity: Double, pop: CGFloat) {
+        /// Draws `image` and returns its box (top-left origin, before the pop).
+        @discardableResult
+        func place(_ image: CIImage, position: VideoTextPosition, placement: VideoTextPlacement?, opacity: Double, pop: CGFloat) -> CGRect {
             let size = image.extent.size
-            let x = ((outputSize.width - size.width) / 2).rounded()
+            var x = ((outputSize.width - size.width) / 2).rounded()
             var y: CGFloat
-            if position == .bottom {
+            if let placement {
+                // Moved by hand: exactly there, kept inside the frame, and
+                // out of the presets' stacking.
+                let box = VideoTextPlacementGeometry.rect(size: size, placement: placement, outputSize: outputSize)
+                x = box.minX.rounded()
+                y = outputSize.height - box.maxY
+            } else if position == .bottom {
                 y = usedBottom
                 // Step above the camera bubble rather than run under it.
                 if let avoid, avoidWeight > 0.001, CGRect(x: x, y: y, width: size.width, height: size.height).intersects(avoid.insetBy(dx: -spacing, dy: -spacing)) {
@@ -1264,12 +1283,14 @@ final class VideoFrameRenderer {
                     .concatenating(CGAffineTransform(translationX: center.x, y: center.y)))
             }
             output = faded(placed, opacity).composited(over: output)
+            return CGRect(x: x, y: outputSize.height - y.rounded() - size.height, width: size.width, height: size.height)
         }
 
         if plan.captionStyle.visible, let caption = plan.caption(at: timelineTime), let range = caption.range(at: timelineTime) {
             let opacity = Self.fade(time: timelineTime, start: range.lowerBound, end: range.upperBound, fadeIn: 0.08, fadeOut: 0.12)
             if opacity > 0.001, let image = captionImage(caption, style: plan.captionStyle, sourceTime: sourceTime, outputSize: outputSize) {
-                place(image, position: plan.captionStyle.position, opacity: opacity, pop: 1)
+                let box = place(image, position: plan.captionStyle.position, placement: caption.placement ?? plan.captionStyle.placement, opacity: opacity, pop: 1)
+                layout.caption = VideoTextLayout.Box(rect: box, outputSize: outputSize, captionID: caption.id)
             }
         }
 
@@ -1280,8 +1301,12 @@ final class VideoFrameRenderer {
             let t = min(max(sincePress / 0.16, 0), 1)
             let pop = CGFloat(0.9 + 0.1 * VideoCameraEasing.spring(t))
             if opacity > 0.001, let image = keystrokeImage(stroke.keys, count: stroke.pressCount(at: timelineTime), style: plan.keystrokeStyle, outputSize: outputSize) {
-                place(image, position: plan.keystrokeStyle.position, opacity: opacity, pop: pop)
+                let box = place(image, position: plan.keystrokeStyle.position, placement: plan.keystrokeStyle.placement, opacity: opacity, pop: pop)
+                layout.keys = VideoTextLayout.Box(rect: box, outputSize: outputSize, captionID: nil)
             }
+        }
+        if options.recordsTextLayout {
+            textLayout = layout
         }
         return output
     }

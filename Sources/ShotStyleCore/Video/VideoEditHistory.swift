@@ -273,6 +273,8 @@ extension VideoEditDescription {
         case "Delete Captions": return (L("Undo Delete Captions"), L("Redo Delete Captions"))
         case "Edit Caption": return (L("Undo Edit Caption"), L("Redo Edit Caption"))
         case "Caption Style": return (L("Undo Caption Style"), L("Redo Caption Style"))
+        case "Move Caption": return (L("Undo Move Caption"), L("Redo Move Caption"))
+        case "Move Captions": return (L("Undo Move Captions"), L("Redo Move Captions"))
         // Camera layouts.
         case "Add Camera Layout": return (L("Undo Add Camera Layout"), L("Redo Add Camera Layout"))
         case "Add Camera Layouts": return (L("Undo Add Camera Layouts"), L("Redo Add Camera Layouts"))
@@ -290,6 +292,7 @@ extension VideoEditDescription {
         case "Hide Shortcut": return (L("Undo Hide Shortcut"), L("Redo Hide Shortcut"))
         case "Shortcuts": return (L("Undo Shortcuts"), L("Redo Shortcuts"))
         case "Shortcut Style": return (L("Undo Shortcut Style"), L("Redo Shortcut Style"))
+        case "Move Shortcuts": return (L("Undo Move Shortcuts"), L("Redo Move Shortcuts"))
         // The look.
         case "Crop": return (L("Undo Crop"), L("Redo Crop"))
         case "Mute Video": return (L("Undo Mute Video"), L("Redo Mute Video"))

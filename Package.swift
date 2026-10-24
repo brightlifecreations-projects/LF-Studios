@@ -40,5 +40,11 @@ let package = Package(
             ],
             path: "Tests/ShotStyleCoreTests"
         ),
+        // Swift Testing (runs with `swift test` next to the XCTest suite).
+        .testTarget(
+            name: "ShotStyleTextPlacementTests",
+            dependencies: ["ShotStyleCore"],
+            path: "Tests/ShotStyleTextPlacementTests"
+        ),
     ]
 )

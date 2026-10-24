@@ -325,7 +325,7 @@ struct VideoTimelineSurface: View {
                 if !model.project.overlayEffects.isEmpty { overlayLanes }
                 if !model.project.captions.isEmpty {
                     VideoCaptionLane(
-                        items: model.plan.captions.map { VideoCaptionLane.Item(id: $0.id, start: $0.start, end: $0.end, text: $0.text) },
+                        items: model.plan.captions.map { VideoCaptionLane.Item(id: $0.id, start: $0.start, end: $0.end, text: $0.text, hasOwnPlacement: $0.placement != nil) },
                         selectedIDs: model.selectedIDs { if case .caption(let id) = $0 { return id } else { return nil } },
                         geometry: geometry,
                         model: model,

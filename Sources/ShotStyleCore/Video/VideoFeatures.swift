@@ -204,13 +204,17 @@ struct VideoCaptionLine: Codable, Equatable, Identifiable {
     var text: String
     /// Word timings for highlighting; dropped when the text is edited.
     var words: [VideoCaptionWord]
+    /// This caption's own spot (nil: where every caption goes). Optional,
+    /// so projects saved before it existed still open.
+    var placement: VideoTextPlacement?
 
-    init(id: UUID = UUID(), start: Double, end: Double, text: String, words: [VideoCaptionWord] = []) {
+    init(id: UUID = UUID(), start: Double, end: Double, text: String, words: [VideoCaptionWord] = [], placement: VideoTextPlacement? = nil) {
         self.id = id
         self.start = start
         self.end = end
         self.text = text
         self.words = words
+        self.placement = placement
     }
 }
 
@@ -246,6 +250,9 @@ struct VideoCaptionStyle: Codable, Equatable {
     var visible = true
     var size: VideoTextSize = .medium
     var position: VideoTextPosition = .bottom
+    /// Where every caption goes once dragged on the preview (nil: stacked at
+    /// `position`).
+    var placement: VideoTextPlacement?
     /// Brightens each word as it's spoken.
     var highlightWords = true
     /// The look (see VideoCaptionStyles.swift).
@@ -255,7 +262,7 @@ struct VideoCaptionStyle: Codable, Equatable {
 
     init() {}
 
-    private enum CodingKeys: String, CodingKey { case visible, size, position, highlightWords, preset, highlightColor }
+    private enum CodingKeys: String, CodingKey { case visible, size, position, placement, highlightWords, preset, highlightColor }
 
     init(from decoder: Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
@@ -263,6 +270,7 @@ struct VideoCaptionStyle: Codable, Equatable {
         visible = try c.decodeIfPresent(Bool.self, forKey: .visible) ?? d.visible
         size = (try? c.decode(VideoTextSize.self, forKey: .size)) ?? d.size
         position = (try? c.decode(VideoTextPosition.self, forKey: .position)) ?? d.position
+        placement = try? c.decodeIfPresent(VideoTextPlacement.self, forKey: .placement)
         highlightWords = try c.decodeIfPresent(Bool.self, forKey: .highlightWords) ?? d.highlightWords
         preset = (try? c.decode(VideoCaptionPreset.self, forKey: .preset)) ?? d.preset
         highlightColor = try? c.decodeIfPresent(VideoRGBA.self, forKey: .highlightColor)
@@ -289,10 +297,13 @@ struct VideoKeystrokeStyle: Codable, Equatable {
     var visible = true
     var size: VideoTextSize = .medium
     var position: VideoTextPosition = .bottom
+    /// Where the keys go once dragged on the preview (nil: stacked at
+    /// `position`).
+    var placement: VideoTextPlacement?
 
     init() {}
 
-    private enum CodingKeys: String, CodingKey { case visible, size, position }
+    private enum CodingKeys: String, CodingKey { case visible, size, position, placement }
 
     init(from decoder: Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
@@ -300,6 +311,7 @@ struct VideoKeystrokeStyle: Codable, Equatable {
         visible = try c.decodeIfPresent(Bool.self, forKey: .visible) ?? d.visible
         size = (try? c.decode(VideoTextSize.self, forKey: .size)) ?? d.size
         position = (try? c.decode(VideoTextPosition.self, forKey: .position)) ?? d.position
+        placement = try? c.decodeIfPresent(VideoTextPlacement.self, forKey: .placement)
     }
 }
 
