@@ -3,7 +3,9 @@ set -e
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 APP_NAME="ShotStyle"
-APP_BUNDLE="$SCRIPT_DIR/$APP_NAME.app"
+# Assembled inside .build, in a .noindex folder: Spotlight skips it, so
+# only the copy in /Applications shows up as an app.
+APP_BUNDLE="$SCRIPT_DIR/.build/app.noindex/$APP_NAME.app"
 ENTITLEMENTS="$SCRIPT_DIR/ShotStyle.entitlements"
 
 if [ -f "$SCRIPT_DIR/.env.local" ]; then
