@@ -482,10 +482,13 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
         statusItem.isVisible = Settings.showMenuBarIcon
         guard let button = statusItem.button else { return }
+        // The ShotStyle mark as a template (Resources/MenuBarIcon.png, @2x),
+        // so macOS tints it like every other menu bar icon.
         let config = NSImage.SymbolConfiguration(pointSize: 14, weight: .medium, scale: .medium)
-        let icon = NSImage(systemSymbolName: "crop", accessibilityDescription: "ShotStyle")?
-            .withSymbolConfiguration(config)
+        let icon = ShotStyleResources.bundle?.image(forResource: "MenuBarIcon")
+            ?? NSImage(systemSymbolName: "crop", accessibilityDescription: "ShotStyle")?.withSymbolConfiguration(config)
         icon?.isTemplate = true
+        icon?.accessibilityDescription = "ShotStyle" // l10n-ignore: a name
         idleStatusIcon = icon
         button.image = icon
         button.target = self
