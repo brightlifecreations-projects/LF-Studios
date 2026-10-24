@@ -289,11 +289,12 @@ struct ShotStyleCommandCenterView: View {
 
     private var header: some View {
         HStack(spacing: 10) {
-            Image(systemName: "crop")
-                .font(.system(size: 16, weight: .semibold))
-                .foregroundStyle(.tint)
-                .frame(width: 28, height: 28)
-                .background(.white.opacity(0.08), in: RoundedRectangle(cornerRadius: 8, style: .continuous))
+            // The app icon (Branding/ShotStyle_Icon.png), like the Home window's sidebar.
+            Image(nsImage: NSApp.applicationIconImage)
+                .resizable()
+                .interpolation(.high)
+                .frame(width: 34, height: 34)
+                .accessibilityHidden(true)
 
             VStack(alignment: .leading, spacing: 1) {
                 Text(verbatim: "ShotStyle")
