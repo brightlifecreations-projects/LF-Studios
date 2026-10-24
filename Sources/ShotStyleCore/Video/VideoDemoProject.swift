@@ -189,6 +189,8 @@ struct VideoDemoOverlayEffect: Codable, Equatable, Identifiable {
     var image: VideoOverlayImage?
     /// How strongly a blur hides what's under it, 0.1–1 (nil: fully).
     var strength: Double?
+    /// A text annotation's typeface (VideoFonts.swift).
+    var font: VideoFontChoice?
 
     init(
         id: UUID = UUID(),
@@ -243,6 +245,7 @@ struct VideoDemoOverlayEffect: Codable, Equatable, Identifiable {
         shape = try? container.decodeIfPresent(VideoOverlayShape.self, forKey: .shape)
         image = try? container.decodeIfPresent(VideoOverlayImage.self, forKey: .image)
         strength = try? container.decodeIfPresent(Double.self, forKey: .strength)
+        font = try? container.decodeIfPresent(VideoFontChoice.self, forKey: .font)
     }
 }
 
@@ -1202,7 +1205,8 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
             cursor: cursor,
             webcam: webcam,
             captionStyle: captionStyle,
-            keystrokeStyle: keystrokeStyle
+            keystrokeStyle: keystrokeStyle,
+            titleFont: cards.font
         )
     }
 
@@ -1225,6 +1229,7 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
         webcam = style.webcam
         captionStyle = style.captionStyle
         keystrokeStyle = style.keystrokeStyle
+        cards.font = style.titleFont
     }
 }
 
@@ -1448,6 +1453,8 @@ struct VideoStylePreset: Codable, Equatable {
     var webcam: VideoWebcamSettings = VideoWebcamSettings()
     var captionStyle: VideoCaptionStyle = VideoCaptionStyle()
     var keystrokeStyle: VideoKeystrokeStyle = VideoKeystrokeStyle()
+    /// The title cards' typeface (captions and keys carry theirs).
+    var titleFont: VideoFontChoice?
 
     /// The built-in ShotStyle look.
     static let factory = VideoStylePreset(
@@ -1496,7 +1503,7 @@ struct VideoStylePreset: Codable, Equatable {
 extension VideoStylePreset {
     private enum CodingKeys: String, CodingKey {
         case aspectPreset, background, backgroundBlur, padding, cornerRadius, shadow, outline
-        case zoomSpeed, defaultZoomScale, motionBlur, cursor, webcam, captionStyle, keystrokeStyle
+        case zoomSpeed, defaultZoomScale, motionBlur, cursor, webcam, captionStyle, keystrokeStyle, titleFont
     }
 
     /// Looks saved before a field existed still load.
@@ -1517,5 +1524,6 @@ extension VideoStylePreset {
         webcam = (try? c.decode(VideoWebcamSettings.self, forKey: .webcam)) ?? f.webcam
         captionStyle = (try? c.decode(VideoCaptionStyle.self, forKey: .captionStyle)) ?? f.captionStyle
         keystrokeStyle = (try? c.decode(VideoKeystrokeStyle.self, forKey: .keystrokeStyle)) ?? f.keystrokeStyle
+        titleFont = try? c.decodeIfPresent(VideoFontChoice.self, forKey: .titleFont)
     }
 }

@@ -158,6 +158,8 @@
 	<string>大きなGIFです。約%@で、作成に%@のメモリが必要です。サイズを小さくするか、fpsを下げるか、MP4にすると軽くなります。</string>
 	<key>A clean picture plus a subtitles file to upload.</key>
 	<string>映像には字幕を入れず、アップロード用の字幕ファイルを別に保存します。</string>
+	<key>A contrasting edge around the letters</key>
+	<string>文字の周りにコントラストのある縁取り</string>
 	<key>A cut — click to add a transition</key>
 	<string>つなぎ目: クリックしてトランジションを追加</string>
 	<key>A file with that name is in the way. Pick another name and export again.</key>
@@ -168,6 +170,8 @@
 	<string>レポートはこの問題の修正に役立ちます。送信前にすべての内容を確認でき、スクリーンショットや収録したビデオが含まれることはありません。</string>
 	<key>A second caption track you can show, burn in, or save as subtitles. Translated on this Mac — nothing is uploaded.</key>
 	<string>表示、焼き付け、字幕ファイルとしての保存ができる2つ目の字幕トラックです。このMac上で翻訳されるため、何もアップロードされません。</string>
+	<key>A soft shadow under the letters</key>
+	<string>文字の下にやわらかい影</string>
 	<key>A song under the whole video — it loops to fill, fades in and out, and dips while you talk. Use music you have the rights to.</key>
 	<string>ビデオ全体に曲を流します。長さに合わせてループし、フェードイン/フェードアウトして、話している間は音量が下がります。使用する権利のある音楽を使ってください。</string>
 	<key>A subtitles file for YouTube and web players (.srt), or for the web (.vtt) — follows your cuts</key>
@@ -194,6 +198,8 @@
 	<string>ぼかしを追加</string>
 	<key>Add Caption Line at Playhead</key>
 	<string>再生ヘッドの位置に字幕の行を追加</string>
+	<key>Add Font File…</key>
+	<string>フォントファイルを追加…</string>
 	<key>Add Highlight</key>
 	<string>ハイライトを追加</string>
 	<key>Add Image or Logo…</key>
@@ -234,6 +240,10 @@
 	<string>再生ヘッドの位置に“%@”を追加</string>
 	<key>Added %@ — %@</key>
 	<string>“%@”を追加しました（%@）</string>
+	<key>Added to ShotStyle</key>
+	<string>ShotStyleに追加済み</string>
+	<key>Added “%@”</key>
+	<string>“%@”を追加しました</string>
 	<key>Adjust to move it half a second</key>
 	<string>調整すると0.5秒ずつ移動します</string>
 	<key>Advanced Tools</key>
@@ -416,6 +426,10 @@
 	<string>右下</string>
 	<key>Bring All to Front</key>
 	<string>すべてを手前に移動</string>
+	<key>Built-in</key>
+	<string>内蔵</string>
+	<key>Built-in (San Francisco)</key>
+	<string>内蔵（San Francisco）</string>
 	<key>Burn captions into the video</key>
 	<string>字幕をビデオに焼き付ける</string>
 	<key>Call</key>
@@ -558,6 +572,8 @@
 	<string>ShotStyleのメニューから“範囲を取り込む”を選択して始めましょう</string>
 	<key>Choose Image…</key>
 	<string>画像を選択…</string>
+	<key>Choose a .ttf or .otf font. ShotStyle keeps its own copy, so it keeps working if the file is deleted.</key>
+	<string>.ttfまたは.otfのフォントを選択してください。ShotStyleは独自のコピーを保持するため、ファイルが削除されても使い続けられます。</string>
 	<key>Choose a language</key>
 	<string>言語を選択</string>
 	<key>Choose a logo, watermark, or screenshot to place on the video</key>
@@ -1186,6 +1202,8 @@
 	<string>ポインタに追従</string>
 	<key>Follows cursor</key>
 	<string>ポインタに追従</string>
+	<key>Font</key>
+	<string>フォント</string>
 	<key>Forever</key>
 	<string>無期限</string>
 	<key>Format</key>
@@ -1814,6 +1832,8 @@
 	<string>アウト点を早める</string>
 	<key>Out later</key>
 	<string>アウト点を遅らせる</string>
+	<key>Outline</key>
+	<string>縁取り</string>
 	<key>Outro</key>
 	<string>エンディング</string>
 	<key>Outro card</key>
@@ -2958,6 +2978,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>そのディスプレイまたはウインドウは使用できなくなりました。</string>
 	<key>That drive is read-only. Pick another place to save, then export again.</key>
 	<string>そのドライブは読み出し専用です。別の保存場所を選択してから、もう一度書き出してください。</string>
+	<key>That file isn't a font ShotStyle can use</key>
+	<string>このファイルはShotStyleで使えるフォントではありません</string>
 	<key>That isn't a ShotStyle presets file</key>
 	<string>ShotStyleのプリセットファイルではありません</string>
 	<key>That part is only a title card — include a moment of the video to export it.</key>
@@ -3458,6 +3480,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>警告</string>
 	<key>Web</key>
 	<string>Web</string>
+	<key>Weight</key>
+	<string>ウエイト</string>
 	<key>Welcome</key>
 	<string>ようこそ</string>
 	<key>Welcome to ShotStyle</key>
@@ -3666,6 +3690,10 @@ Appleのショートカットは、“システム設定”＞“キーボード
 	<string>“%@”を読み込めません。破損しているか、保存中か、このMacで再生できない形式の可能性があります。このビデオから削除するか（“スタイル”＞“収録したビデオ”）、正常なコピーを同じ場所に置いてから、もう一度書き出してください。</string>
 	<key>“%@” found in %lld of %lld captures</key>
 	<string>%3$lld件中%2$lld件のスクリーンショットで“%1$@”が見つかりました</string>
+	<key>“%@” isn't on this Mac — showing the built-in font. Install it, or add its file with Add Font File…</key>
+	<string>“%@”はこのMacにないため、内蔵フォントを表示しています。インストールするか、「フォントファイルを追加…」でファイルを追加してください。</string>
+	<key>“%@” isn't on this Mac — using the built-in font</key>
+	<string>“%@”はこのMacにないため、内蔵フォントを使用しています</string>
 	<key>“Made with ShotStyle” end card (2s)</key>
 	<string>“Made with ShotStyle”エンドカード（2秒）</string>
 	<key>• %lld small notes about recordings that are gone</key>

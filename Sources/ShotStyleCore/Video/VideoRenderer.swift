@@ -903,8 +903,8 @@ final class VideoFrameRenderer {
         }
         var layer = base
         let dark = VideoTitleCardRenderer.usesDarkInk(plan.background)
-        let textKey = "card-\(card.title.hashValue)-\(card.subtitle.hashValue)-\(dark)-\(Int(outputSize.width))x\(Int(outputSize.height))"
-        if let text = cached(textKey, make: { VideoTitleCardRenderer.text(title: card.title, subtitle: card.subtitle, darkInk: dark, size: outputSize) }) {
+        let textKey = "card-\(card.title.hashValue)-\(card.subtitle.hashValue)-\(dark)-\(Int(outputSize.width))x\(Int(outputSize.height))-\(plan.cards.font?.cacheKey ?? "")"
+        if let text = cached(textKey, make: { VideoTitleCardRenderer.text(title: card.title, subtitle: card.subtitle, darkInk: dark, size: outputSize, font: plan.cards.font) }) {
             // The words rise into place and fade in.
             let appear = VideoTitleCardRenderer.appear(elapsed)
             let unit = min(outputSize.width, outputSize.height) / 1080
@@ -1091,7 +1091,7 @@ final class VideoFrameRenderer {
             let hole = effect.shape == .ellipse ? ellipseMask(rect, feather: 3 * unit) : roundedRect(rect, radius: 12 * unit, color: CIColor.white)
             return dim.applyingFilter("CISourceOutCompositing", parameters: [kCIInputBackgroundImageKey: hole]).composited(over: scene)
         case .text:
-            guard let image = textImage(effect.text, box: rect.size, unit: unit, background: effect.resolvedColor) else { return scene }
+            guard let image = textImage(effect.text, box: rect.size, unit: unit, background: effect.resolvedColor, font: effect.font) else { return scene }
             let x = rect.midX - image.extent.width / 2
             let y = rect.midY - image.extent.height / 2
             return faded(image, opacity).transformed(by: CGAffineTransform(translationX: x.rounded(), y: y.rounded())).composited(over: scene)
@@ -1182,12 +1182,12 @@ final class VideoFrameRenderer {
         return image.map { ($0, origin) }
     }
 
-    private func textImage(_ text: String, box: CGSize, unit: CGFloat, background: VideoRGBA) -> CIImage? {
+    private func textImage(_ text: String, box: CGSize, unit: CGFloat, background: VideoRGBA, font choice: VideoFontChoice?) -> CIImage? {
         let content = text.isEmpty ? " " : text
         let fontSize = max(min(box.height * 0.46, 64 * unit), 8)
-        let key = "text-\(content.hashValue)-\(Int(fontSize * 4))-\(Int(box.width))-\(background.hashValue)"
+        let key = "text-\(content.hashValue)-\(Int(fontSize * 4))-\(Int(box.width))-\(background.hashValue)-\(choice?.cacheKey ?? "")"
         return cached(key) {
-            let font = NSFont.systemFont(ofSize: fontSize, weight: .semibold)
+            let font = VideoFonts.font(choice, size: fontSize, defaultWeight: .semibold)
             let paragraph = NSMutableParagraphStyle()
             paragraph.alignment = .center
             paragraph.lineBreakMode = .byTruncatingTail
@@ -1231,7 +1231,7 @@ final class VideoFrameRenderer {
             let graphics = NSGraphicsContext(cgContext: context, flipped: false)
             NSGraphicsContext.saveGraphicsState()
             NSGraphicsContext.current = graphics
-            attributed.draw(with: CGRect(x: padX, y: padY, width: CGFloat(width) - padX * 2, height: bounds.height), options: [.usesLineFragmentOrigin, .usesFontLeading])
+            VideoFonts.draw(attributed, in: CGRect(x: padX, y: padY, width: CGFloat(width) - padX * 2, height: bounds.height), options: [.usesLineFragmentOrigin, .usesFontLeading], choice: choice, fontSize: fontSize, ink: ink)
             NSGraphicsContext.restoreGraphicsState()
             return context.makeImage().map { CIImage(cgImage: $0) }
         }
@@ -1546,7 +1546,7 @@ final class VideoFrameRenderer {
         let maxWidth = (outputSize.width * 0.82).rounded()
         let highlight = style.highlightWords && !caption.words.isEmpty
         let spoken = highlight ? (caption.words.lastIndex { $0.start <= sourceTime + 0.02 } ?? -1) : -1
-        let look = "\(style.preset.rawValue)-\(style.highlightColor.map { "\($0.r)-\($0.g)-\($0.b)" } ?? "")"
+        let look = "\(style.preset.rawValue)-\(style.highlightColor.map { "\($0.r)-\($0.g)-\($0.b)" } ?? "")-\(style.font?.cacheKey ?? "")"
         let key = "caption-\(caption.id)-\(caption.text.hashValue)-\(highlight)-\(spoken)-\(Int(fontSize))-\(Int(maxWidth))-\(look)"
         return cached(key) {
             VideoCaptionDrawing.image(
@@ -1564,9 +1564,9 @@ final class VideoFrameRenderer {
     private func keystrokeImage(_ keys: [String], count: Int, style: VideoKeystrokeStyle, outputSize: CGSize) -> CIImage? {
         let shortSide = min(outputSize.width, outputSize.height)
         let fontSize = max((style.size.scale * shortSide).rounded(), 9)
-        let key = "keys-\(keys.joined(separator: "\u{1}"))-\(count)-\(Int(fontSize))"
+        let key = "keys-\(keys.joined(separator: "\u{1}"))-\(count)-\(Int(fontSize))-\(style.font?.cacheKey ?? "")"
         return cached(key) {
-            let font = NSFont.systemFont(ofSize: fontSize, weight: .semibold)
+            let font = VideoFonts.font(style.font, size: fontSize, defaultWeight: .semibold)
             let labels = keys.map { NSAttributedString(string: $0, attributes: [.font: font, .foregroundColor: NSColor.white]) }
             let counter = count > 1
                 ? NSAttributedString(string: "×\(count)", attributes: [.font: font, .foregroundColor: NSColor.white.withAlphaComponent(0.72)])
@@ -1615,7 +1615,8 @@ final class VideoFrameRenderer {
                 context.setLineWidth(1)
                 context.strokePath()
                 let size = label.size()
-                label.draw(at: CGPoint(x: (face.midX - size.width / 2).rounded(), y: (face.midY - size.height / 2 + font.descender * 0.1).rounded()))
+                let at = CGPoint(x: (face.midX - size.width / 2).rounded(), y: (face.midY - size.height / 2 + font.descender * 0.1).rounded())
+                VideoFonts.draw(label, in: CGRect(origin: at, size: CGSize(width: ceil(size.width) + 1, height: ceil(size.height))), options: [.usesLineFragmentOrigin, .usesFontLeading], choice: style.font, fontSize: fontSize, ink: .white)
                 x += capWidth + gap
             }
             if let counter {

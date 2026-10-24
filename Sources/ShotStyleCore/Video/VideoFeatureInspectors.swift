@@ -276,6 +276,7 @@ struct VideoCaptionsInspector: View {
                     VideoToggleRow(title: L("Highlight words"), detail: L("Words light up as they're spoken"), isOn: binding(\.highlightWords))
                     // Caption looks (VideoCaptionStyles.swift).
                     VideoCaptionPresetPicker(model: model)
+                    VideoFontPicker(model: model, choice: binding(\.font))
                     labeled(L("Size")) {
                         VideoSegmented(options: VideoTextSize.allCases.map { ($0, $0.title) }, selection: binding(\.size))
                     }
@@ -610,6 +611,8 @@ struct VideoKeyboardSection: View {
                     VideoSegmented(options: VideoTextSize.allCases.map { ($0, $0.title) }, selection: binding(\.size))
                 }
                 .disabled(!model.project.keystrokeStyle.visible)
+                VideoFontPicker(model: model, choice: binding(\.font))
+                    .disabled(!model.project.keystrokeStyle.visible)
                 HStack(spacing: 10) {
                     Text(L("Position"))
                         .font(.system(size: 12, weight: .medium))

@@ -86,7 +86,9 @@ enum VideoCaptionDrawing {
     /// every word in full ink (no word timings, or highlighting off).
     static func image(text: String, words: [String], spoken: Int?, style: VideoCaptionStyle, fontSize: CGFloat, maxWidth: CGFloat) -> CGImage? {
         let preset = style.preset
-        let font = NSFont.systemFont(ofSize: fontSize, weight: preset.weight)
+        // The chosen typeface (VideoFonts.swift), in the look's weight
+        // unless one is picked.
+        let font = VideoFonts.font(style.font, size: fontSize, defaultWeight: preset.weight)
         let paragraph = NSMutableParagraphStyle()
         paragraph.alignment = .center
         paragraph.lineBreakMode = .byWordWrapping
@@ -159,12 +161,13 @@ enum VideoCaptionDrawing {
             tag.fill()
         }
 
-        switch preset {
-        case .outline:
-            // A black outline under full-weight fill (the stroke centers on
-            // the glyph edge, so drawing it first keeps the fill crisp).
+        // A black outline under full-weight fill (the stroke centers on the
+        // glyph edge, so drawing it first keeps the fill crisp): the Bold
+        // outline look's, or the font's Outline option.
+        let strokeWidth: CGFloat? = preset == .outline ? 15 : (style.font?.outline == true ? 12 : nil)
+        if let strokeWidth {
             let stroke = NSMutableAttributedString(attributedString: content)
-            stroke.addAttributes([.strokeColor: NSColor.black, .strokeWidth: 15.0, .foregroundColor: NSColor.black], range: NSRange(location: 0, length: stroke.length))
+            stroke.addAttributes([.strokeColor: NSColor.black, .strokeWidth: strokeWidth, .foregroundColor: NSColor.black], range: NSRange(location: 0, length: stroke.length))
             let strokeStorage = NSTextStorage(attributedString: stroke)
             let strokeLayout = NSLayoutManager()
             let strokeContainer = NSTextContainer(size: container.size)
@@ -172,6 +175,8 @@ enum VideoCaptionDrawing {
             strokeLayout.addTextContainer(strokeContainer)
             strokeStorage.addLayoutManager(strokeLayout)
             strokeLayout.drawGlyphs(forGlyphRange: strokeLayout.glyphRange(for: strokeContainer), at: origin)
+        }
+        switch preset {
         case .minimal, .highlight:
             let shadow = NSShadow()
             shadow.shadowColor = NSColor.black.withAlphaComponent(preset == .minimal ? 0.8 : 0.55)
@@ -179,8 +184,10 @@ enum VideoCaptionDrawing {
             // Shadow offsets ignore the flip: negative is down.
             shadow.shadowOffset = NSSize(width: 0, height: -fontSize * 0.04)
             shadow.set()
-        case .classic:
-            break
+        case .classic, .outline:
+            if style.font?.shadow == true {
+                VideoFonts.shadow(fontSize: fontSize).set()
+            }
         }
         layout.drawGlyphs(forGlyphRange: glyphs, at: origin)
         NSGraphicsContext.restoreGraphicsState()

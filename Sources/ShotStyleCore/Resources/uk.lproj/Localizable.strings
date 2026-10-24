@@ -104,6 +104,8 @@
 	<string>Великий GIF — приблизно %@, і для створення потрібно %@ пам’яті. Менший розмір, менше fps або MP4 — легший варіант.</string>
 	<key>A clean picture plus a subtitles file to upload.</key>
 	<string>Чисте зображення плюс файл субтитрів для вивантаження.</string>
+	<key>A contrasting edge around the letters</key>
+	<string>Контрастний контур навколо літер</string>
 	<key>A cut — click to add a transition</key>
 	<string>Склейка — клацніть, щоб додати перехід</string>
 	<key>A file with that name is in the way. Pick another name and export again.</key>
@@ -114,6 +116,8 @@
 	<string>Звіт допоможе це виправити. Ви побачите його повністю перед надсиланням, і він ніколи не містить ваших знімків екрана чи записів.</string>
 	<key>A second caption track you can show, burn in, or save as subtitles. Translated on this Mac — nothing is uploaded.</key>
 	<string>Друга доріжка субтитрів, яку можна показати, вшити у відео чи зберегти як файл субтитрів. Перекладається на цьому Mac — нічого не вивантажується.</string>
+	<key>A soft shadow under the letters</key>
+	<string>М’яка тінь під літерами</string>
 	<key>A song under the whole video — it loops to fill, fades in and out, and dips while you talk. Use music you have the rights to.</key>
 	<string>Трек під усім відео — він повторюється до кінця, плавно з’являється й згасає та стишується, коли ви говорите. Використовуйте музику, на яку маєте права.</string>
 	<key>A subtitles file for YouTube and web players (.srt), or for the web (.vtt) — follows your cuts</key>
@@ -140,6 +144,8 @@
 	<string>Додати розмиття</string>
 	<key>Add Caption Line at Playhead</key>
 	<string>Додати рядок субтитрів на покажчику відтворення</string>
+	<key>Add Font File…</key>
+	<string>Додати файл шрифту…</string>
 	<key>Add Highlight</key>
 	<string>Додати виділення</string>
 	<key>Add Image or Logo…</key>
@@ -180,6 +186,10 @@
 	<string>Додати «%@» на покажчику відтворення</string>
 	<key>Added %@ — %@</key>
 	<string>Додано «%@» — %@</string>
+	<key>Added to ShotStyle</key>
+	<string>Додані в ShotStyle</string>
+	<key>Added “%@”</key>
+	<string>Шрифт «%@» додано</string>
 	<key>Adjust to move it half a second</key>
 	<string>Регулюйте, щоб зсунути на пів секунди</string>
 	<key>Advanced Tools</key>
@@ -356,6 +366,10 @@
 	<string>Унизу праворуч</string>
 	<key>Bring All to Front</key>
 	<string>Вивести все на передній план</string>
+	<key>Built-in</key>
+	<string>Вбудований</string>
+	<key>Built-in (San Francisco)</key>
+	<string>Вбудований (San Francisco)</string>
 	<key>Burn captions into the video</key>
 	<string>Вшити субтитри у відео</string>
 	<key>Call</key>
@@ -496,6 +510,8 @@
 	<string>Щоб почати, виберіть «Зняти область» у меню ShotStyle</string>
 	<key>Choose Image…</key>
 	<string>Вибрати зображення…</string>
+	<key>Choose a .ttf or .otf font. ShotStyle keeps its own copy, so it keeps working if the file is deleted.</key>
+	<string>Виберіть шрифт .ttf або .otf. ShotStyle збереже власну копію, тож шрифт працюватиме, навіть якщо файл видалити.</string>
 	<key>Choose a language</key>
 	<string>Виберіть мову</string>
 	<key>Choose a logo, watermark, or screenshot to place on the video</key>
@@ -1116,6 +1132,8 @@
 	<string>Стежити за курсором</string>
 	<key>Follows cursor</key>
 	<string>Стежить за курсором</string>
+	<key>Font</key>
+	<string>Шрифт</string>
 	<key>Forever</key>
 	<string>Назавжди</string>
 	<key>Format</key>
@@ -1722,6 +1740,8 @@
 	<string>Кінець раніше</string>
 	<key>Out later</key>
 	<string>Кінець пізніше</string>
+	<key>Outline</key>
+	<string>Контур</string>
 	<key>Outro</key>
 	<string>Завершення</string>
 	<key>Outro card</key>
@@ -2832,6 +2852,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Цей дисплей або вікно більше не доступні.</string>
 	<key>That drive is read-only. Pick another place to save, then export again.</key>
 	<string>Цей диск доступний лише для читання. Виберіть інше місце для збереження й експортуйте ще раз.</string>
+	<key>That file isn't a font ShotStyle can use</key>
+	<string>Цей файл не є шрифтом, який може використовувати ShotStyle</string>
 	<key>That isn't a ShotStyle presets file</key>
 	<string>Це не файл стилів ShotStyle</string>
 	<key>That part is only a title card — include a moment of the video to export it.</key>
@@ -3326,6 +3348,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Попередження</string>
 	<key>Web</key>
 	<string>Веб</string>
+	<key>Weight</key>
+	<string>Насиченість</string>
 	<key>Welcome</key>
 	<string>Вітаємо</string>
 	<key>Welcome to ShotStyle</key>
@@ -3528,6 +3552,10 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>Не вдається прочитати «%@» — можливо, файл пошкоджено, він ще зберігається або має формат, який цей Mac не відтворює. Вилучіть його з цього відео (Стиль → Записи) або замініть робочою копією, а потім експортуйте ще раз.</string>
 	<key>“%@” found in %lld of %lld captures</key>
 	<string>«%@» знайдено в %lld з %lld знімків</string>
+	<key>“%@” isn't on this Mac — showing the built-in font. Install it, or add its file with Add Font File…</key>
+	<string>Шрифту «%@» немає на цьому Mac — показано вбудований шрифт. Установіть його або додайте файл через «Додати файл шрифту…».</string>
+	<key>“%@” isn't on this Mac — using the built-in font</key>
+	<string>Шрифту «%@» немає на цьому Mac — використовується вбудований шрифт</string>
 	<key>“Made with ShotStyle” end card (2s)</key>
 	<string>кінцева заставка «Made with ShotStyle» (2 с)</string>
 	<key>⇧-drag</key>

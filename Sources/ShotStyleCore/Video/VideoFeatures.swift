@@ -308,10 +308,12 @@ struct VideoCaptionStyle: Codable, Equatable {
     var preset: VideoCaptionPreset = .classic
     /// The spoken word's color (nil: the look's own).
     var highlightColor: VideoRGBA?
+    /// Typeface (VideoFonts.swift); nil: the look's own.
+    var font: VideoFontChoice?
 
     init() {}
 
-    private enum CodingKeys: String, CodingKey { case visible, size, position, placement, highlightWords, preset, highlightColor }
+    private enum CodingKeys: String, CodingKey { case visible, size, position, placement, highlightWords, preset, highlightColor, font }
 
     init(from decoder: Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
@@ -323,6 +325,7 @@ struct VideoCaptionStyle: Codable, Equatable {
         highlightWords = try c.decodeIfPresent(Bool.self, forKey: .highlightWords) ?? d.highlightWords
         preset = (try? c.decode(VideoCaptionPreset.self, forKey: .preset)) ?? d.preset
         highlightColor = try? c.decodeIfPresent(VideoRGBA.self, forKey: .highlightColor)
+        font = try? c.decodeIfPresent(VideoFontChoice.self, forKey: .font)
     }
 }
 
@@ -349,10 +352,12 @@ struct VideoKeystrokeStyle: Codable, Equatable {
     /// Where the keys go once dragged on the preview (nil: stacked at
     /// `position`).
     var placement: VideoTextPlacement?
+    /// Typeface for the key labels (VideoFonts.swift).
+    var font: VideoFontChoice?
 
     init() {}
 
-    private enum CodingKeys: String, CodingKey { case visible, size, position, placement }
+    private enum CodingKeys: String, CodingKey { case visible, size, position, placement, font }
 
     init(from decoder: Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
@@ -361,6 +366,7 @@ struct VideoKeystrokeStyle: Codable, Equatable {
         size = (try? c.decode(VideoTextSize.self, forKey: .size)) ?? d.size
         position = (try? c.decode(VideoTextPosition.self, forKey: .position)) ?? d.position
         placement = try? c.decodeIfPresent(VideoTextPlacement.self, forKey: .placement)
+        font = try? c.decodeIfPresent(VideoFontChoice.self, forKey: .font)
     }
 }
 

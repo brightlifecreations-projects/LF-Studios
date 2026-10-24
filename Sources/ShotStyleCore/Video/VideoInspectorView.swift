@@ -1212,6 +1212,7 @@ struct VideoSelectionInspector: View {
                     format: { "\(Int($0.rounded()))" },
                     onEditingEnded: { model.endGesture() }
                 )
+                VideoFontPicker(model: model, choice: Binding(get: { overlay.font }, set: { font in model.updateOverlay(overlay.id) { $0.font = font } }))
             }
         }
         if overlay.kind.hasColor {

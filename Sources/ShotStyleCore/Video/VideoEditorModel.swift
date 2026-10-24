@@ -532,6 +532,11 @@ final class VideoEditorModel: ObservableObject {
             } else if restoredDraft {
                 showNotice(L("Picked up where you left off"), symbol: "clock.arrow.circlepath")
             }
+            // A font this project uses isn't here: the built-in one stands in
+            // (VideoFonts.swift); the font pickers say which.
+            if let missing = missingFontFamilies.first {
+                showNotice(L("“\(missing)” isn't on this Mac — using the built-in font"), symbol: "exclamationmark.triangle.fill", duration: 5)
+            }
             Task { await loadThumbnails() }
             Task { await loadWaveform() }
             if project.audio.enhanceVoice {

@@ -53,18 +53,21 @@ struct VideoTitleCard: Codable, Equatable {
 struct VideoTitleCards: Codable, Equatable {
     var intro = VideoTitleCard()
     var outro = VideoTitleCard()
+    /// Typeface for both cards (VideoFonts.swift).
+    var font: VideoFontChoice?
 
     init(intro: VideoTitleCard = VideoTitleCard(), outro: VideoTitleCard = VideoTitleCard()) {
         self.intro = intro
         self.outro = outro
     }
 
-    private enum CodingKeys: String, CodingKey { case intro, outro }
+    private enum CodingKeys: String, CodingKey { case intro, outro, font }
 
     init(from decoder: Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
         intro = (try? c.decode(VideoTitleCard.self, forKey: .intro)) ?? VideoTitleCard()
         outro = (try? c.decode(VideoTitleCard.self, forKey: .outro)) ?? VideoTitleCard()
+        font = try? c.decodeIfPresent(VideoFontChoice.self, forKey: .font)
     }
 }
 
@@ -112,7 +115,7 @@ enum VideoTitleCardRenderer {
     }
 
     /// Title and subtitle on transparency, laid out for a `size` frame.
-    static func text(title: String, subtitle: String, darkInk: Bool, size: CGSize) -> CIImage? {
+    static func text(title: String, subtitle: String, darkInk: Bool, size: CGSize, font: VideoFontChoice? = nil) -> CIImage? {
         let width = Int(size.width)
         let height = Int(size.height)
         let trimmedTitle = title.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -130,7 +133,7 @@ enum VideoTitleCardRenderer {
         var titleText: NSAttributedString?
         if !trimmedTitle.isEmpty {
             titleText = NSAttributedString(string: trimmedTitle, attributes: [
-                .font: NSFont.systemFont(ofSize: 84 * unit, weight: .bold),
+                .font: VideoFonts.font(font, size: 84 * unit, defaultWeight: .bold),
                 .foregroundColor: ink,
                 .paragraphStyle: paragraph,
                 .kern: -0.6 * unit,
@@ -139,7 +142,8 @@ enum VideoTitleCardRenderer {
         var subtitleText: NSAttributedString?
         if !trimmedSubtitle.isEmpty {
             subtitleText = NSAttributedString(string: trimmedSubtitle, attributes: [
-                .font: NSFont.systemFont(ofSize: 38 * unit, weight: .semibold),
+                // The same family, a step lighter than the title.
+                .font: VideoFonts.font(font.map { VideoFontChoice(family: $0.family) }, size: 38 * unit, defaultWeight: .semibold),
                 .foregroundColor: ink.withAlphaComponent(0.74),
                 .paragraphStyle: paragraph,
             ])
@@ -165,12 +169,12 @@ enum VideoTitleCardRenderer {
         }
         if let titleText {
             let rect = CGRect(x: (size.width - maxWidth) / 2, y: top - ceil(titleBounds.height), width: maxWidth, height: ceil(titleBounds.height))
-            titleText.draw(with: rect, options: options)
+            VideoFonts.draw(titleText, in: rect, options: options, choice: font, fontSize: 84 * unit, ink: ink)
         }
         if let subtitleText {
             let y = top - ceil(titleBounds.height) - gap - ceil(subtitleBounds.height)
             let rect = CGRect(x: (size.width - maxWidth) / 2, y: y, width: maxWidth, height: ceil(subtitleBounds.height))
-            subtitleText.draw(with: rect, options: options)
+            VideoFonts.draw(subtitleText, in: rect, options: options, choice: font, fontSize: 38 * unit, ink: ink)
         }
         NSGraphicsContext.restoreGraphicsState()
         return context.makeImage().map { CIImage(cgImage: $0) }
@@ -262,6 +266,8 @@ struct VideoTitleCardsSection: View {
                 keyPath: \.outro,
                 setEnabled: model.setOutroEnabled
             )
+            Rectangle().fill(VideoEditorTheme.hairline).frame(height: 1)
+            VideoFontPicker(model: model, choice: Binding(get: { model.project.cards.font }, set: { font in model.setStyle { $0.cards.font = font } }))
             Text(L("Cards use your background, and the timeline grows to fit them. The “Made with ShotStyle” end card is separate — it's in the export options."))
                 .font(.system(size: 10.5))
                 .foregroundStyle(VideoEditorTheme.textTertiary)

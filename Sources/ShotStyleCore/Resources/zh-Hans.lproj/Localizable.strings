@@ -158,6 +158,8 @@
 	<string>这个 GIF 很大 — 约 %@，生成时需要 %@ 内存。更小的尺寸、更少的 fps 或 MP4 会更轻量。</string>
 	<key>A clean picture plus a subtitles file to upload.</key>
 	<string>画面不含字幕，另附可上传的字幕文件。</string>
+	<key>A contrasting edge around the letters</key>
+	<string>字母周围的对比描边</string>
 	<key>A cut — click to add a transition</key>
 	<string>硬切 — 点按以添加转场</string>
 	<key>A file with that name is in the way. Pick another name and export again.</key>
@@ -168,6 +170,8 @@
 	<string>报告有助于修复这个问题。发送前你会看到全部内容，报告绝不会包含你的截屏或录制内容。</string>
 	<key>A second caption track you can show, burn in, or save as subtitles. Translated on this Mac — nothing is uploaded.</key>
 	<string>第二条字幕轨道，可显示、嵌入视频或存储为字幕文件。在这台 Mac 上翻译 — 不会上传任何内容。</string>
+	<key>A soft shadow under the letters</key>
+	<string>字母下方的柔和阴影</string>
 	<key>A song under the whole video — it loops to fill, fades in and out, and dips while you talk. Use music you have the rights to.</key>
 	<string>为整段视频配上一首歌 — 可循环填满、淡入淡出，并在你说话时降低音量。请使用你拥有版权的音乐。</string>
 	<key>A subtitles file for YouTube and web players (.srt), or for the web (.vtt) — follows your cuts</key>
@@ -194,6 +198,8 @@
 	<string>添加模糊</string>
 	<key>Add Caption Line at Playhead</key>
 	<string>在播放头处添加字幕行</string>
+	<key>Add Font File…</key>
+	<string>添加字体文件…</string>
 	<key>Add Highlight</key>
 	<string>添加高亮</string>
 	<key>Add Image or Logo…</key>
@@ -234,6 +240,10 @@
 	<string>在播放头处添加“%@”</string>
 	<key>Added %@ — %@</key>
 	<string>已添加 %@ — %@</string>
+	<key>Added to ShotStyle</key>
+	<string>已添加到 ShotStyle</string>
+	<key>Added “%@”</key>
+	<string>已添加“%@”</string>
 	<key>Adjust to move it half a second</key>
 	<string>调整可将其移动半秒</string>
 	<key>Advanced Tools</key>
@@ -416,6 +426,10 @@
 	<string>右下</string>
 	<key>Bring All to Front</key>
 	<string>前置全部窗口</string>
+	<key>Built-in</key>
+	<string>内置</string>
+	<key>Built-in (San Francisco)</key>
+	<string>内置（San Francisco）</string>
 	<key>Burn captions into the video</key>
 	<string>将字幕嵌入视频</string>
 	<key>Call</key>
@@ -558,6 +572,8 @@
 	<string>在 ShotStyle 菜单中选择“捕捉区域”即可开始</string>
 	<key>Choose Image…</key>
 	<string>选择图像…</string>
+	<key>Choose a .ttf or .otf font. ShotStyle keeps its own copy, so it keeps working if the file is deleted.</key>
+	<string>选择 .ttf 或 .otf 字体。ShotStyle 会保留自己的副本，因此即使文件被删除也能继续使用。</string>
 	<key>Choose a language</key>
 	<string>选择语言</string>
 	<key>Choose a logo, watermark, or screenshot to place on the video</key>
@@ -1186,6 +1202,8 @@
 	<string>跟随指针</string>
 	<key>Follows cursor</key>
 	<string>跟随指针</string>
+	<key>Font</key>
+	<string>字体</string>
 	<key>Forever</key>
 	<string>永久</string>
 	<key>Format</key>
@@ -1814,6 +1832,8 @@
 	<string>出点提前</string>
 	<key>Out later</key>
 	<string>出点延后</string>
+	<key>Outline</key>
+	<string>描边</string>
 	<key>Outro</key>
 	<string>片尾</string>
 	<key>Outro card</key>
@@ -2958,6 +2978,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>该显示器或窗口已不可用。</string>
 	<key>That drive is read-only. Pick another place to save, then export again.</key>
 	<string>该磁盘为只读。请选择其他存储位置，然后重新导出。</string>
+	<key>That file isn't a font ShotStyle can use</key>
+	<string>该文件不是 ShotStyle 可以使用的字体</string>
 	<key>That isn't a ShotStyle presets file</key>
 	<string>这不是 ShotStyle 预设文件</string>
 	<key>That part is only a title card — include a moment of the video to export it.</key>
@@ -3458,6 +3480,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>警告</string>
 	<key>Web</key>
 	<string>网页</string>
+	<key>Weight</key>
+	<string>字重</string>
 	<key>Welcome</key>
 	<string>欢迎</string>
 	<key>Welcome to ShotStyle</key>
@@ -3666,6 +3690,10 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>无法读取“%@” — 它可能已损坏、仍在存储中，或采用了这台 Mac 无法播放的格式。请将其从此视频中移除（“样式”→“录制内容”），或用可正常使用的副本替换，然后重新导出。</string>
 	<key>“%@” found in %lld of %lld captures</key>
 	<string>在 %2$lld 张截屏中找到“%1$@”（共 %3$lld 张）</string>
+	<key>“%@” isn't on this Mac — showing the built-in font. Install it, or add its file with Add Font File…</key>
+	<string>此 Mac 上没有“%@”，正在显示内置字体。请安装该字体，或使用“添加字体文件…”添加它的文件。</string>
+	<key>“%@” isn't on this Mac — using the built-in font</key>
+	<string>此 Mac 上没有“%@”，正在使用内置字体</string>
 	<key>“Made with ShotStyle” end card (2s)</key>
 	<string>“Made with ShotStyle”结尾画面（2 秒）</string>
 	<key>• %lld small notes about recordings that are gone</key>
