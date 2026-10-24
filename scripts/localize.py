@@ -96,7 +96,9 @@ def extract_keys():
         sys.stderr.write(result.stdout[-4000:] + result.stderr[-4000:])
         sys.exit("✗ Extraction build failed")
     keys = {}
-    for path in glob.glob(os.path.join(strings_dir, "**", "*.stringsdata"), recursive=True):
+    # The Command Line Tools write them to `strings_dir`; Xcode's build
+    # system ignores the path and leaves them next to the object files.
+    for path in glob.glob(os.path.join(SCRATCH, "**", "*.stringsdata"), recursive=True):
         data = json.load(open(path, encoding="utf-8"))
         source = data.get("source", "")
         if not os.path.realpath(source).startswith(os.path.realpath(SOURCES)):

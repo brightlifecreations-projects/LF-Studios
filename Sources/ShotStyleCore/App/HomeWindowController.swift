@@ -257,7 +257,10 @@ final class HomeModel: ObservableObject {
         stepAside(comesBack)
         // A beat for the window to leave the screen before the capture
         // overlay looks at it.
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15, execute: action)
+        Task { @MainActor in
+            try? await Task.sleep(nanoseconds: 150_000_000)
+            action()
+        }
     }
 
     func open(_ project: HomeProject) {
@@ -320,8 +323,9 @@ final class HomeModel: ObservableObject {
             // History writes a new capture's file in the background: until
             // it's there, show the thumbnail and look again in a moment.
             if loaded.fileSize == nil, attempt < 5 {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
-                    self?.loadDetailsIfNeeded(current, attempt: attempt + 1)
+                Task { @MainActor in
+                    try? await Task.sleep(nanoseconds: 1_000_000_000)
+                    self.loadDetailsIfNeeded(current, attempt: attempt + 1)
                 }
                 if loaded.thumbnail == nil { return }
             }

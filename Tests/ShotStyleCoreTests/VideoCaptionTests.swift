@@ -216,7 +216,7 @@ extension VideoCaptionTests {
         }
         XCTAssertTrue(lines.contains { $0.text.hasSuffix("紹介します。") }, "a sentence ends its line: \(lines.map(\.text))")
         XCTAssertEqual(VideoCaptionBuilder.width(of: [VideoCaptionWord(text: "Open", start: 0, end: 1), VideoCaptionWord(text: "it", start: 1, end: 2)]), 7)
-        XCTAssertEqual(VideoCaptionBuilder.width(of: [VideoCaptionWord(text: "用", start: 0, end: 1), VideoCaptionWord(text: "ShotStyle", start: 1, end: 2), VideoCaptionWord(text: "录制", start: 2, end: 3)]), 2 + 1 + 7 + 1 + 4)
+        XCTAssertEqual(VideoCaptionBuilder.width(of: [VideoCaptionWord(text: "用", start: 0, end: 1), VideoCaptionWord(text: "ShotStyle", start: 1, end: 2), VideoCaptionWord(text: "录制", start: 2, end: 3)]), 2 + 1 + 9 + 1 + 4)
     }
 
     func testRecognizedStretchesJoinUp() {
