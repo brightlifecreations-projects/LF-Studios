@@ -2,6 +2,9 @@
   "%@ (This Mac)" : {
     "ja" : "%@（このMac）"
   },
+  "%@ (default)" : {
+    "ja" : "%@（デフォルト）"
+  },
   "%@ (⇧⌘Z)" : {
     "ja" : "%@（⇧⌘Z）"
   },
@@ -161,6 +164,9 @@
   "Appearance" : {
     "ja" : "外観"
   },
+  "Applied “%@”" : {
+    "ja" : "“%@”を適用しました"
+  },
   "Apply to all zooms" : {
     "ja" : "すべてのズームに適用"
   },
@@ -317,6 +323,9 @@
   "Couldn't open this video" : {
     "ja" : "このビデオを開けませんでした"
   },
+  "Couldn't save the presets file" : {
+    "ja" : "プリセットファイルを保存できませんでした"
+  },
   "Crop" : {
     "ja" : "切り取り"
   },
@@ -344,6 +353,9 @@
   "Custom color" : {
     "ja" : "カスタムカラー"
   },
+  "Custom look" : {
+    "ja" : "カスタムの外観"
+  },
   "Cut filler words like um and uh" : {
     "ja" : "えー、あのーなどのフィラーをカット"
   },
@@ -367,6 +379,12 @@
   },
   "Delete selection (⌫)" : {
     "ja" : "選択項目を削除（⌫）"
+  },
+  "Delete “%@”?" : {
+    "ja" : "“%@”を削除しますか？"
+  },
+  "Delete…" : {
+    "ja" : "削除…"
   },
   "Deselect / close" : {
     "ja" : "選択解除/閉じる"
@@ -440,6 +458,9 @@
   "Edge highlight" : {
     "ja" : "縁取り"
   },
+  "Edit Presets" : {
+    "ja" : "プリセットを編集"
+  },
   "Edit by text" : {
     "ja" : "テキストで編集"
   },
@@ -473,8 +494,14 @@
   "Export (⌘E)" : {
     "ja" : "書き出す（⌘E）"
   },
+  "Export Presets…" : {
+    "ja" : "プリセットを書き出す…"
+  },
   "Export Video…" : {
     "ja" : "ビデオを書き出す…"
+  },
+  "Exported %lld presets" : {
+    "ja" : "%lld件のプリセットを書き出しました"
   },
   "Exports at the level video sites expect (−16 LUFS) without clipping" : {
     "ja" : "動画サイトが想定するレベル（−16 LUFS）で、音割れせずに書き出します"
@@ -592,6 +619,18 @@
   },
   "Image" : {
     "ja" : "画像"
+  },
+  "Import Presets…" : {
+    "ja" : "プリセットを読み込む…"
+  },
+  "Imported %lld presets" : {
+    "ja" : "%lld件のプリセットを読み込みました"
+  },
+  "Imported Preset" : {
+    "ja" : "読み込んだプリセット"
+  },
+  "Include aspect ratio (%@)" : {
+    "ja" : "アスペクト比を含める（%@）"
   },
   "Inspector tabs" : {
     "ja" : "インスペクタのタブ"
@@ -722,11 +761,29 @@
   "Mute video" : {
     "ja" : "ビデオを消音"
   },
+  "My Look" : {
+    "ja" : "マイスタイル"
+  },
+  "My Preset" : {
+    "ja" : "マイプリセット"
+  },
   "Never switch to the text beam or the hand" : {
     "ja" : "Iビームや手の形のポインタに切り替えません"
   },
   "New recordings use this look" : {
     "ja" : "新しい収録にはこのスタイルが使われます"
+  },
+  "New recordings use “%@”" : {
+    "ja" : "新しい収録では“%@”を使用"
+  },
+  "New recordings will use the ShotStyle look" : {
+    "ja" : "新しい収録ではShotStyleスタイルを使用します"
+  },
+  "New recordings will use the built-in ShotStyle look instead. Videos that use this preset keep their look." : {
+    "ja" : "新しい収録では内蔵のShotStyleスタイルが使われます。このプリセットを使っているビデオの外観はそのままです。"
+  },
+  "New recordings will use “%@”" : {
+    "ja" : "新しい収録では“%@”を使用します"
   },
   "New zooms" : {
     "ja" : "新しいズーム"
@@ -754,6 +811,9 @@
   },
   "No pauses to shorten" : {
     "ja" : "短縮できる無音部分はありません"
+  },
+  "No presets yet" : {
+    "ja" : "プリセットはまだありません"
   },
   "No ums" : {
     "ja" : "フィラーなし"
@@ -836,6 +896,9 @@
   "Preparing your video…" : {
     "ja" : "ビデオを準備中…"
   },
+  "Presets" : {
+    "ja" : "プリセット"
+  },
   "Pressed at %@. Press ⌫ to hide it from the video — handy for a stray ⌘Tab." : {
     "ja" : "%@に押されました。⌫を押すとビデオで非表示になります。誤って押した⌘Tabなどを隠すのに便利です。"
   },
@@ -913,6 +976,9 @@
   },
   "Redo Annotations" : {
     "ja" : "注釈の変更をやり直す"
+  },
+  "Redo Apply Preset" : {
+    "ja" : "プリセットの適用をやり直す"
   },
   "Redo Arrow Style" : {
     "ja" : "矢印のスタイル変更をやり直す"
@@ -1247,6 +1313,15 @@
   "Removes jitter, keeps it snappy." : {
     "ja" : "ぶれを取り除き、きびきびとした動きを保ちます。"
   },
+  "Rename" : {
+    "ja" : "名称変更"
+  },
+  "Rename Preset" : {
+    "ja" : "プリセットの名称を変更"
+  },
+  "Rename…" : {
+    "ja" : "名称変更…"
+  },
   "Reset" : {
     "ja" : "リセット"
   },
@@ -1277,6 +1352,15 @@
   "Save Subtitles (.srt)…" : {
     "ja" : "字幕を保存（.srt）…"
   },
+  "Save as Preset" : {
+    "ja" : "プリセットとして保存"
+  },
+  "Save as Preset…" : {
+    "ja" : "プリセットとして保存…"
+  },
+  "Saved preset “%@”" : {
+    "ja" : "プリセット“%@”を保存しました"
+  },
   "Saves %@ — only silences where nothing happens on screen" : {
     "ja" : "%@短縮。画面上で何も起きていない無音部分だけが対象です"
   },
@@ -1285,6 +1369,9 @@
   },
   "Saves the background, frame, cursor, and zoom style." : {
     "ja" : "背景、枠、ポインタ、ズームのスタイルを保存します。"
+  },
+  "Saves the background, frame, cursor, zoom, captions, keys, and camera bubble. Apply it to any video from the Presets menu." : {
+    "ja" : "背景、フレーム、ポインタ、ズーム、字幕、キー、カメラの吹き出しを保存します。「プリセット」メニューから任意のビデオに適用できます。"
   },
   "Search commands" : {
     "ja" : "コマンドを検索"
@@ -1310,6 +1397,9 @@
   "Selected part" : {
     "ja" : "選択した部分"
   },
+  "Set as Default for New Recordings" : {
+    "ja" : "新しい収録のデフォルトに設定"
+  },
   "Shadow" : {
     "ja" : "シャドウ"
   },
@@ -1330,6 +1420,9 @@
   },
   "Shortens every silence over a second (this video has no ShotStyle pointer data to spot what happens on screen)" : {
     "ja" : "1秒を超える無音部分をすべて短縮します（このビデオにはShotStyleのポインタデータがないため、画面上の動きを判別できません）"
+  },
+  "ShotStyle Presets" : {
+    "ja" : "ShotStyleプリセット"
   },
   "ShotStyle is still cleaning up the voice" : {
     "ja" : "ShotStyleはまだ声を補正しています"
@@ -1463,6 +1556,9 @@
   "Stop Enhancing Voice" : {
     "ja" : "声の補正を停止"
   },
+  "Stop Using for New Recordings" : {
+    "ja" : "新しい収録での使用をやめる"
+  },
   "Stop and Close" : {
     "ja" : "停止して閉じる"
   },
@@ -1483,6 +1579,9 @@
   },
   "Text “%@”" : {
     "ja" : "テキスト“%@”"
+  },
+  "That isn't a ShotStyle presets file" : {
+    "ja" : "ShotStyleのプリセットファイルではありません"
   },
   "The camera keeps your cursor in view and glides after it." : {
     "ja" : "カメラがポインタを画面内にとらえ、滑らかに追いかけます。"
@@ -1633,6 +1732,9 @@
   },
   "Undo Annotations" : {
     "ja" : "注釈の変更を取り消す"
+  },
+  "Undo Apply Preset" : {
+    "ja" : "プリセットの適用を取り消す"
   },
   "Undo Arrow Style" : {
     "ja" : "矢印のスタイル変更を取り消す"
@@ -1931,6 +2033,12 @@
   "Unmute the preview (M)" : {
     "ja" : "プレビューの消音を解除（M）"
   },
+  "Update with Current Style" : {
+    "ja" : "現在のスタイルで更新"
+  },
+  "Updated “%@”" : {
+    "ja" : "“%@”を更新しました"
+  },
   "Use This Look for New Recordings" : {
     "ja" : "このスタイルを新しい収録に使用"
   },
@@ -1945,6 +2053,9 @@
   },
   "Video preview" : {
     "ja" : "ビデオのプレビュー"
+  },
+  "Videos that use this preset keep their look." : {
+    "ja" : "このプリセットを使っているビデオの外観はそのままです。"
   },
   "Voice" : {
     "ja" : "声"

@@ -6,6 +6,8 @@
 	<string>%@（%@）</string>
 	<key>%@ (This Mac)</key>
 	<string>%@（このMac）</string>
+	<key>%@ (default)</key>
+	<string>%@（デフォルト）</string>
 	<key>%@ (edited)</key>
 	<string>%@（編集済み）</string>
 	<key>%@ (original)</key>
@@ -296,6 +298,8 @@
 	<string>⌘⇧3/4/5はまだAppleのスクリーンショット用ショートカットに使われているため、二重に取り込まれることがあります。</string>
 	<key>Apple's shortcuts are out of the way.</key>
 	<string>Appleのショートカットと競合しません。</string>
+	<key>Applied “%@”</key>
+	<string>“%@”を適用しました</string>
 	<key>Applies at every cut. Click a cut's marker on the timeline, or select a clip, to choose one for that cut only.</key>
 	<string>すべてのつなぎ目に適用されます。1つのつなぎ目だけに設定するには、タイムライン上のつなぎ目のマーカーをクリックするか、クリップを選択します。</string>
 	<key>Apply</key>
@@ -770,6 +774,8 @@
 	<string>収録を読み込めませんでした。ファイルがまだあるか確認してから、もう一度書き出してください。</string>
 	<key>Couldn't save the captions file</key>
 	<string>字幕ファイルを保存できませんでした</string>
+	<key>Couldn't save the presets file</key>
+	<string>プリセットファイルを保存できませんでした</string>
 	<key>Couldn't save the screenshot to %@. Click to check the save folder.</key>
 	<string>スクリーンショットを“%@”に保存できませんでした。クリックして保存先フォルダを確認してください。</string>
 	<key>Couldn't save the screenshot: ShotStyle can't write to %@. Click to choose another save folder.</key>
@@ -814,6 +820,8 @@
 	<string>カスタムカラー</string>
 	<key>Custom color #%@</key>
 	<string>カスタムカラー #%@</string>
+	<key>Custom look</key>
+	<string>カスタムの外観</string>
 	<key>Custom position</key>
 	<string>カスタム位置</string>
 	<key>Custom: %@</key>
@@ -862,10 +870,14 @@
 	<string>選択項目を削除</string>
 	<key>Delete selection (⌫)</key>
 	<string>選択項目を削除（⌫）</string>
+	<key>Delete “%@”?</key>
+	<string>“%@”を削除しますか？</string>
 	<key>Deleted captures waiting in History's trash and files no capture uses are removed for good, along with %lld captures past your History limit. The rest of your history stays.</key>
 	<string>履歴のゴミ箱にある削除済みのスクリーンショットと、どのスクリーンショットにも使われていないファイルが、履歴の上限を超えた%lld件のスクリーンショットとともに完全に削除されます。そのほかの履歴は残ります。</string>
 	<key>Deleted captures waiting in History's trash and files no capture uses are removed for good. The captures in your history stay.</key>
 	<string>履歴のゴミ箱にある削除済みのスクリーンショットと、どのスクリーンショットにも使われていないファイルが完全に削除されます。履歴内のスクリーンショットは残ります。</string>
+	<key>Delete…</key>
+	<string>削除…</string>
 	<key>Deselect / close</key>
 	<string>選択解除/閉じる</string>
 	<key>Desert Violet</key>
@@ -988,6 +1000,8 @@
 	<string>編集</string>
 	<key>Edit Last Recording</key>
 	<string>最後の収録を編集</string>
+	<key>Edit Presets</key>
+	<string>プリセットを編集</string>
 	<key>Edit Video</key>
 	<string>ビデオを編集</string>
 	<key>Edit by text</key>
@@ -1070,6 +1084,8 @@
 	<string>書き出す（⌘E）</string>
 	<key>Export Format</key>
 	<string>書き出しフォーマット</string>
+	<key>Export Presets…</key>
+	<string>プリセットを書き出す…</string>
 	<key>Export Video…</key>
 	<string>ビデオを書き出す…</string>
 	<key>Export and put the file on the clipboard — paste it into Slack, Mail, or Finder</key>
@@ -1086,6 +1102,8 @@
 	<string>書き出し: %@</string>
 	<key>Exported</key>
 	<string>書き出しました</string>
+	<key>Exported %lld presets</key>
+	<string>%lld件のプリセットを書き出しました</string>
 	<key>Exported without Enhance voice — it couldn't finish.</key>
 	<string>“声を補正”を完了できなかったため、補正なしで書き出しました。</string>
 	<key>Exported · %@</key>
@@ -1292,6 +1310,12 @@
 	<string>ぼかしとモザイクで下の内容を隠す強さ</string>
 	<key>Image</key>
 	<string>画像</string>
+	<key>Import Presets…</key>
+	<string>プリセットを読み込む…</string>
+	<key>Imported %lld presets</key>
+	<string>%lld件のプリセットを読み込みました</string>
+	<key>Imported Preset</key>
+	<string>読み込んだプリセット</string>
 	<key>In</key>
 	<string>イン点</string>
 	<key>In &amp; out</key>
@@ -1300,6 +1324,8 @@
 	<string>イン点を早める</string>
 	<key>In later</key>
 	<string>イン点を遅らせる</string>
+	<key>Include aspect ratio (%@)</key>
+	<string>アスペクト比を含める（%@）</string>
 	<key>Includes: %@</key>
 	<string>内容: %@</string>
 	<key>Inspector tabs</key>
@@ -1564,6 +1590,10 @@
 	<string>ビデオを消音</string>
 	<key>Mute video is on (Audio tab) — this export will have no sound.</key>
 	<string>“ビデオを消音”がオンになっているため（“オーディオ”タブ）、書き出したビデオにはサウンドが入りません。</string>
+	<key>My Look</key>
+	<string>マイスタイル</string>
+	<key>My Preset</key>
+	<string>マイプリセット</string>
 	<key>Nebula</key>
 	<string>星雲</string>
 	<key>Needed to capture the screen. macOS will ask once.</key>
@@ -1580,8 +1610,14 @@
 	<string>新しい字幕</string>
 	<key>New recording</key>
 	<string>新規収録</string>
-	<key>New recordings use this look</key>
-	<string>新しい収録にはこのスタイルが使われます</string>
+	<key>New recordings use “%@”</key>
+	<string>新しい収録では“%@”を使用</string>
+	<key>New recordings will use the ShotStyle look</key>
+	<string>新しい収録ではShotStyleスタイルを使用します</string>
+	<key>New recordings will use the built-in ShotStyle look instead. Videos that use this preset keep their look.</key>
+	<string>新しい収録では内蔵のShotStyleスタイルが使われます。このプリセットを使っているビデオの外観はそのままです。</string>
+	<key>New recordings will use “%@”</key>
+	<string>新しい収録では“%@”を使用します</string>
 	<key>New screenshots are copied automatically. Turn this off if you only want to use the overlay or history actions.</key>
 	<string>新しいスクリーンショットは自動的にコピーされます。サムネールや履歴の操作だけを使いたい場合はオフにしてください。</string>
 	<key>New zooms</key>
@@ -1638,6 +1674,8 @@
 	<string>音楽なし</string>
 	<key>No pauses to shorten</key>
 	<string>短縮できる無音部分はありません</string>
+	<key>No presets yet</key>
+	<string>プリセットはまだありません</string>
 	<key>No projects match your search</key>
 	<string>検索に一致するプロジェクトはありません</string>
 	<key>No recordable windows found</key>
@@ -1876,6 +1914,8 @@
 	<string>準備中…</string>
 	<key>Preset</key>
 	<string>プリセット</string>
+	<key>Presets</key>
+	<string>プリセット</string>
 	<key>Press</key>
 	<string>押し込み</string>
 	<key>Press %@ anytime — or try it right now.</key>
@@ -2046,6 +2086,8 @@
 	<string>注釈の変更をやり直す</string>
 	<key>Redo Annotations</key>
 	<string>注釈の変更をやり直す</string>
+	<key>Redo Apply Preset</key>
+	<string>プリセットの適用をやり直す</string>
 	<key>Redo Arrow Style</key>
 	<string>矢印のスタイル変更をやり直す</string>
 	<key>Redo Aspect Ratio</key>
@@ -2304,6 +2346,12 @@
 	<string>背景ノイズやハムノイズを除去し、音量を均一にします。処理はこのMac上で行われます</string>
 	<key>Removes jitter, keeps it snappy.</key>
 	<string>ぶれを取り除き、きびきびとした動きを保ちます。</string>
+	<key>Rename</key>
+	<string>名称変更</string>
+	<key>Rename Preset</key>
+	<string>プリセットの名称を変更</string>
+	<key>Rename…</key>
+	<string>名称変更…</string>
 	<key>Rendering for the clipboard… %lld%%</key>
 	<string>クリップボード用にレンダリング中…%lld%%</string>
 	<key>Rendering, then copying to your clipboard</key>
@@ -2329,8 +2377,6 @@
 	<key>Reset to default position</key>
 	<string>デフォルトの位置に戻す</string>
 	<key>Reset to the ShotStyle Look</key>
-	<string>ShotStyleの標準スタイルに戻す</string>
-	<key>Reset to the ShotStyle look</key>
 	<string>ShotStyleの標準スタイルに戻す</string>
 	<key>Resize</key>
 	<string>サイズを変更</string>
@@ -2424,6 +2470,10 @@
 	<string>字幕を保存（.srt）…</string>
 	<key>Save Subtitles (.vtt)…</key>
 	<string>字幕を保存（.vtt）…</string>
+	<key>Save as Preset</key>
+	<string>プリセットとして保存</string>
+	<key>Save as Preset…</key>
+	<string>プリセットとして保存…</string>
 	<key>Save automatically</key>
 	<string>自動的に保存</string>
 	<key>Save changes to this screenshot?</key>
@@ -2440,6 +2490,8 @@
 	<string>“%1$@”を“%2$@”に保存しました。クリックするとFinderに表示します</string>
 	<key>Saved capture</key>
 	<string>保存済みのスクリーンショット</string>
+	<key>Saved preset “%@”</key>
+	<string>プリセット“%@”を保存しました</string>
 	<key>Saved to %@: %@</key>
 	<string>“%@”に保存しました: %@</string>
 	<key>Saved — new recordings will use this look</key>
@@ -2448,8 +2500,8 @@
 	<string>%@短縮。画面上で何も起きていない無音部分だけが対象です</string>
 	<key>Saves %@ — silences where the pointer rests and nothing is clicked or pressed (this older recording can't see typing)</key>
 	<string>%@短縮。ポインタが止まっていて、クリックもキー操作もない無音部分が対象です（この古い収録では入力を検出できません）</string>
-	<key>Saves the background, frame, cursor, and zoom style.</key>
-	<string>背景、枠、ポインタ、ズームのスタイルを保存します。</string>
+	<key>Saves the background, frame, cursor, zoom, captions, keys, and camera bubble. Apply it to any video from the Presets menu.</key>
+	<string>背景、フレーム、ポインタ、ズーム、字幕、キー、カメラの吹き出しを保存します。「プリセット」メニューから任意のビデオに適用できます。</string>
 	<key>Save…</key>
 	<string>保存…</string>
 	<key>Saving captures to History</key>
@@ -2548,6 +2600,8 @@
 	<string>イン点を再生ヘッドの位置に設定</string>
 	<key>Set Out to Playhead</key>
 	<string>アウト点を再生ヘッドの位置に設定</string>
+	<key>Set as Default for New Recordings</key>
+	<string>新しい収録のデフォルトに設定</string>
 	<key>Set the in point to the playhead (%@)</key>
 	<string>イン点を再生ヘッドの位置（%@）に設定</string>
 	<key>Set the out point to the playhead (%@)</key>
@@ -2590,6 +2644,8 @@
 	<string>ShotStyleホーム</string>
 	<key>ShotStyle Preferences</key>
 	<string>ShotStyleの設定</string>
+	<key>ShotStyle Presets</key>
+	<string>ShotStyleプリセット</string>
 	<key>ShotStyle can't open this file</key>
 	<string>ShotStyleではこのファイルを開けません</string>
 	<key>ShotStyle can't save to that folder. Pick another place, like Desktop or Movies, and export again.</key>
@@ -2802,6 +2858,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>声の補正を停止</string>
 	<key>Stop Recording</key>
 	<string>収録を停止</string>
+	<key>Stop Using for New Recordings</key>
+	<string>新しい収録での使用をやめる</string>
 	<key>Stop and Close</key>
 	<string>停止して閉じる</string>
 	<key>Stop recording</key>
@@ -2884,6 +2942,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>そのディスプレイまたはウインドウは使用できなくなりました。</string>
 	<key>That drive is read-only. Pick another place to save, then export again.</key>
 	<string>そのドライブは読み出し専用です。別の保存場所を選択してから、もう一度書き出してください。</string>
+	<key>That isn't a ShotStyle presets file</key>
+	<string>ShotStyleのプリセットファイルではありません</string>
 	<key>That part is only a title card — include a moment of the video to export it.</key>
 	<string>その部分はタイトルカードだけです。書き出すにはビデオの一部を含めてください。</string>
 	<key>That part of the timeline is only a title card. Include a moment of the video in the range, then export again.</key>
@@ -3116,6 +3176,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>注釈の変更を取り消す</string>
 	<key>Undo Annotations</key>
 	<string>注釈の変更を取り消す</string>
+	<key>Undo Apply Preset</key>
+	<string>プリセットの適用を取り消す</string>
 	<key>Undo Arrow Style</key>
 	<string>矢印のスタイル変更を取り消す</string>
 	<key>Undo Aspect Ratio</key>
@@ -3322,14 +3384,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>プレビューの消音を解除</string>
 	<key>Unmute the preview (M)</key>
 	<string>プレビューの消音を解除（M）</string>
+	<key>Update with Current Style</key>
+	<string>現在のスタイルで更新</string>
+	<key>Updated “%@”</key>
+	<string>“%@”を更新しました</string>
 	<key>Updates</key>
 	<string>アップデート</string>
 	<key>Upload Custom Image</key>
 	<string>カスタム画像を選択</string>
 	<key>Use This Look for New Recordings</key>
 	<string>このスタイルを新しい収録に使用</string>
-	<key>Use for new recordings</key>
-	<string>新しい収録に使用</string>
 	<key>Use this color</key>
 	<string>このカラーを使用</string>
 	<key>Use this level for every zoom</key>
@@ -3354,6 +3418,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ビデオを書き出しました</string>
 	<key>Video preview</key>
 	<string>ビデオのプレビュー</string>
+	<key>Videos that use this preset keep their look.</key>
+	<string>このプリセットを使っているビデオの外観はそのままです。</string>
 	<key>Violet</key>
 	<string>バイオレット</string>
 	<key>Violet Bloom</key>
@@ -3440,8 +3506,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ディスクがいっぱいです。空き容量を増やす（ゴミ箱を空にする、古い収録を削除するなど）か、別のドライブに書き出してから、もう一度お試しください。</string>
 	<key>Your edits will be lost if you close without saving or copying them.</key>
 	<string>保存またはコピーせずに閉じると、編集内容は失われます。</string>
-	<key>Your look</key>
-	<string>自分のスタイル</string>
 	<key>Your microphone</key>
 	<string>マイク</string>
 	<key>Your narration can become captions — then cut the video by editing its words.</key>

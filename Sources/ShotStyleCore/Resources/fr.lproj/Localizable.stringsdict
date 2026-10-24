@@ -562,6 +562,22 @@
 			<string>Les captures supprimées en attente dans la corbeille de l’historique et les fichiers qu’aucune capture n’utilise sont définitivement supprimés, ainsi que %lld captures au-delà de la limite de votre historique. Le reste de votre historique est conservé.</string>
 		</dict>
 	</dict>
+	<key>Exported %lld presets</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>one</key>
+			<string>%lld préréglage exporté</string>
+			<key>other</key>
+			<string>%lld préréglages exportés</string>
+		</dict>
+	</dict>
 	<key>Freed %@ (%lld files)</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -608,6 +624,22 @@
 			<string>L’historique occupe … (%lld capture)</string>
 			<key>other</key>
 			<string>L’historique occupe … (%lld captures)</string>
+		</dict>
+	</dict>
+	<key>Imported %lld presets</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>one</key>
+			<string>%lld préréglage importé</string>
+			<key>other</key>
+			<string>%lld préréglages importés</string>
 		</dict>
 	</dict>
 	<key>Keeping 30 days removes %lld older captures from History now. This can't be undone.</key>

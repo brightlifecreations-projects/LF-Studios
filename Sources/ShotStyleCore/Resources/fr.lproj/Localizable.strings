@@ -6,6 +6,8 @@
 	<string>%@ (%@)</string>
 	<key>%@ (This Mac)</key>
 	<string>%@ (ce Mac)</string>
+	<key>%@ (default)</key>
+	<string>%@ (par défaut)</string>
 	<key>%@ (edited)</key>
 	<string>%@ (modifié)</string>
 	<key>%@ (original)</key>
@@ -238,6 +240,8 @@
 	<string>Les raccourcis de capture d’Apple utilisent encore ⌘⇧3/4/5 — les captures peuvent se déclencher deux fois.</string>
 	<key>Apple's shortcuts are out of the way.</key>
 	<string>Les raccourcis d’Apple ne gênent plus.</string>
+	<key>Applied “%@”</key>
+	<string>« %@ » appliqué</string>
 	<key>Applies at every cut. Click a cut's marker on the timeline, or select a clip, to choose one for that cut only.</key>
 	<string>S’applique à chaque coupe. Cliquez sur le repère d’une coupe dans la timeline, ou sélectionnez un clip, pour en choisir une pour cette coupe uniquement.</string>
 	<key>Apply</key>
@@ -706,6 +710,8 @@
 	<string>Impossible de lire l’enregistrement. Vérifiez que son fichier est toujours là, puis exportez à nouveau.</string>
 	<key>Couldn't save the captions file</key>
 	<string>Impossible d’enregistrer le fichier de sous-titres</string>
+	<key>Couldn't save the presets file</key>
+	<string>Impossible d’enregistrer le fichier de préréglages</string>
 	<key>Couldn't save the screenshot to %@. Click to check the save folder.</key>
 	<string>Impossible d’enregistrer la capture dans « %@ ». Cliquez pour vérifier le dossier d’enregistrement.</string>
 	<key>Couldn't save the screenshot: ShotStyle can't write to %@. Click to choose another save folder.</key>
@@ -750,6 +756,8 @@
 	<string>Couleur personnalisée</string>
 	<key>Custom color #%@</key>
 	<string>Couleur personnalisée #%@</string>
+	<key>Custom look</key>
+	<string>Style personnalisé</string>
 	<key>Custom position</key>
 	<string>Position personnalisée</string>
 	<key>Custom: %@</key>
@@ -794,8 +802,12 @@
 	<string>Supprimer la sélection</string>
 	<key>Delete selection (⌫)</key>
 	<string>Supprimer la sélection (⌫)</string>
+	<key>Delete “%@”?</key>
+	<string>Supprimer « %@ » ?</string>
 	<key>Deleted captures waiting in History's trash and files no capture uses are removed for good. The captures in your history stay.</key>
 	<string>Les captures supprimées en attente dans la corbeille de l’historique et les fichiers qu’aucune capture n’utilise sont définitivement supprimés. Les captures de votre historique sont conservées.</string>
+	<key>Delete…</key>
+	<string>Supprimer…</string>
 	<key>Deselect / close</key>
 	<string>Désélectionner/fermer</string>
 	<key>Desert Violet</key>
@@ -918,6 +930,8 @@
 	<string>Modifier</string>
 	<key>Edit Last Recording</key>
 	<string>Modifier le dernier enregistrement</string>
+	<key>Edit Presets</key>
+	<string>Modifier les préréglages</string>
 	<key>Edit Video</key>
 	<string>Modifier la vidéo</string>
 	<key>Edit by text</key>
@@ -1000,6 +1014,8 @@
 	<string>Exporter (⌘E)</string>
 	<key>Export Format</key>
 	<string>Format d’exportation</string>
+	<key>Export Presets…</key>
+	<string>Exporter les préréglages…</string>
 	<key>Export Video…</key>
 	<string>Exporter la vidéo…</string>
 	<key>Export and put the file on the clipboard — paste it into Slack, Mail, or Finder</key>
@@ -1216,6 +1232,10 @@
 	<string>Degré de masquage du flou et de la pixélisation</string>
 	<key>Image</key>
 	<string>Image</string>
+	<key>Import Presets…</key>
+	<string>Importer des préréglages…</string>
+	<key>Imported Preset</key>
+	<string>Préréglage importé</string>
 	<key>In</key>
 	<string>Entrée</string>
 	<key>In &amp; out</key>
@@ -1224,6 +1244,8 @@
 	<string>Entrée plus tôt</string>
 	<key>In later</key>
 	<string>Entrée plus tard</string>
+	<key>Include aspect ratio (%@)</key>
+	<string>Inclure le format (%@)</string>
 	<key>Includes: %@</key>
 	<string>Contenu : %@</string>
 	<key>Inspector tabs</key>
@@ -1474,6 +1496,10 @@
 	<string>Couper le son de la vidéo</string>
 	<key>Mute video is on (Audio tab) — this export will have no sound.</key>
 	<string>Couper le son de la vidéo est activé (onglet Audio) — cette exportation n’aura pas de son.</string>
+	<key>My Look</key>
+	<string>Mon style</string>
+	<key>My Preset</key>
+	<string>Mon préréglage</string>
 	<key>Nebula</key>
 	<string>Nébuleuse</string>
 	<key>Needed to capture the screen. macOS will ask once.</key>
@@ -1490,8 +1516,14 @@
 	<string>Nouveau sous-titre</string>
 	<key>New recording</key>
 	<string>Nouvel enregistrement</string>
-	<key>New recordings use this look</key>
-	<string>Les nouveaux enregistrements utilisent ce style</string>
+	<key>New recordings use “%@”</key>
+	<string>Les nouveaux enregistrements utilisent « %@ »</string>
+	<key>New recordings will use the ShotStyle look</key>
+	<string>Les nouveaux enregistrements utiliseront le style ShotStyle</string>
+	<key>New recordings will use the built-in ShotStyle look instead. Videos that use this preset keep their look.</key>
+	<string>Les nouveaux enregistrements utiliseront le style ShotStyle intégré. Les vidéos qui utilisent ce préréglage gardent leur style.</string>
+	<key>New recordings will use “%@”</key>
+	<string>Les nouveaux enregistrements utiliseront « %@ »</string>
 	<key>New screenshots are copied automatically. Turn this off if you only want to use the overlay or history actions.</key>
 	<string>Les nouvelles captures sont copiées automatiquement. Désactivez cette option si vous préférez passer par la vignette ou l’historique.</string>
 	<key>New zooms</key>
@@ -1548,6 +1580,8 @@
 	<string>Aucune musique</string>
 	<key>No pauses to shorten</key>
 	<string>Aucune pause à raccourcir</string>
+	<key>No presets yet</key>
+	<string>Aucun préréglage pour l’instant</string>
 	<key>No projects match your search</key>
 	<string>Aucun projet ne correspond à votre recherche</string>
 	<key>No recordable windows found</key>
@@ -1784,6 +1818,8 @@
 	<string>Préparation…</string>
 	<key>Preset</key>
 	<string>Préréglage</string>
+	<key>Presets</key>
+	<string>Préréglages</string>
 	<key>Press</key>
 	<string>Pression</string>
 	<key>Press %@ anytime — or try it right now.</key>
@@ -1952,6 +1988,8 @@
 	<string>Rétablir la modification de l’annotation</string>
 	<key>Redo Annotations</key>
 	<string>Rétablir la modification des annotations</string>
+	<key>Redo Apply Preset</key>
+	<string>Rétablir l’application du préréglage</string>
 	<key>Redo Arrow Style</key>
 	<string>Rétablir la modification du style de la flèche</string>
 	<key>Redo Aspect Ratio</key>
@@ -2196,6 +2234,12 @@
 	<string>Supprime le bruit de fond et le ronflement, et égalise votre niveau — traité sur ce Mac</string>
 	<key>Removes jitter, keeps it snappy.</key>
 	<string>Supprime les tremblements, reste réactif.</string>
+	<key>Rename</key>
+	<string>Renommer</string>
+	<key>Rename Preset</key>
+	<string>Renommer le préréglage</string>
+	<key>Rename…</key>
+	<string>Renommer…</string>
 	<key>Rendering for the clipboard… %lld%%</key>
 	<string>Rendu pour le presse-papiers… %lld %%</string>
 	<key>Rendering, then copying to your clipboard</key>
@@ -2221,8 +2265,6 @@
 	<key>Reset to default position</key>
 	<string>Rétablir la position par défaut</string>
 	<key>Reset to the ShotStyle Look</key>
-	<string>Rétablir le style ShotStyle</string>
-	<key>Reset to the ShotStyle look</key>
 	<string>Rétablir le style ShotStyle</string>
 	<key>Resize</key>
 	<string>Redimensionner</string>
@@ -2312,6 +2354,10 @@
 	<string>Enregistrer les sous-titres (.srt)…</string>
 	<key>Save Subtitles (.vtt)…</key>
 	<string>Enregistrer les sous-titres (.vtt)…</string>
+	<key>Save as Preset</key>
+	<string>Enregistrer comme préréglage</string>
+	<key>Save as Preset…</key>
+	<string>Enregistrer comme préréglage…</string>
 	<key>Save automatically</key>
 	<string>Enregistrer automatiquement</string>
 	<key>Save changes to this screenshot?</key>
@@ -2328,6 +2374,8 @@
 	<string>%1$@ enregistré dans %2$@ — cliquez pour l’afficher dans le Finder</string>
 	<key>Saved capture</key>
 	<string>Capture enregistrée</string>
+	<key>Saved preset “%@”</key>
+	<string>Préréglage « %@ » enregistré</string>
 	<key>Saved to %@: %@</key>
 	<string>Enregistré dans « %@ » : %@</string>
 	<key>Saved — new recordings will use this look</key>
@@ -2336,8 +2384,8 @@
 	<string>Gagne %@ — uniquement les silences où rien ne se passe à l’écran</string>
 	<key>Saves %@ — silences where the pointer rests and nothing is clicked or pressed (this older recording can't see typing)</key>
 	<string>Gagne %@ — silences où le pointeur est immobile et où rien n’est cliqué ni pressé (cet ancien enregistrement ne détecte pas la saisie)</string>
-	<key>Saves the background, frame, cursor, and zoom style.</key>
-	<string>Enregistre l’arrière-plan, le cadre, le pointeur et le style de zoom.</string>
+	<key>Saves the background, frame, cursor, zoom, captions, keys, and camera bubble. Apply it to any video from the Presets menu.</key>
+	<string>Enregistre l’arrière-plan, le cadre, le pointeur, le zoom, les sous-titres, les touches et la bulle de la caméra. Appliquez-le à n’importe quelle vidéo depuis le menu Préréglages.</string>
 	<key>Save…</key>
 	<string>Enregistrer…</string>
 	<key>Saving captures to History</key>
@@ -2432,6 +2480,8 @@
 	<string>Placer le point d’entrée sur la tête de lecture</string>
 	<key>Set Out to Playhead</key>
 	<string>Placer le point de sortie sur la tête de lecture</string>
+	<key>Set as Default for New Recordings</key>
+	<string>Utiliser par défaut pour les nouveaux enregistrements</string>
 	<key>Set the in point to the playhead (%@)</key>
 	<string>Placer le point d’entrée sur la tête de lecture (%@)</string>
 	<key>Set the out point to the playhead (%@)</key>
@@ -2470,6 +2520,8 @@
 	<string>Accueil ShotStyle</string>
 	<key>ShotStyle Preferences</key>
 	<string>Réglages de ShotStyle</string>
+	<key>ShotStyle Presets</key>
+	<string>Préréglages ShotStyle</string>
 	<key>ShotStyle can't open this file</key>
 	<string>ShotStyle ne peut pas ouvrir ce fichier</string>
 	<key>ShotStyle can't save to that folder. Pick another place, like Desktop or Movies, and export again.</key>
@@ -2678,6 +2730,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Arrêter l’amélioration de la voix</string>
 	<key>Stop Recording</key>
 	<string>Arrêter l’enregistrement</string>
+	<key>Stop Using for New Recordings</key>
+	<string>Ne plus utiliser pour les nouveaux enregistrements</string>
 	<key>Stop and Close</key>
 	<string>Arrêter et fermer</string>
 	<key>Stop recording</key>
@@ -2760,6 +2814,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Cet écran ou cette fenêtre n’est plus disponible.</string>
 	<key>That drive is read-only. Pick another place to save, then export again.</key>
 	<string>Ce disque est en lecture seule. Choisissez un autre emplacement, puis exportez à nouveau.</string>
+	<key>That isn't a ShotStyle presets file</key>
+	<string>Ce n’est pas un fichier de préréglages ShotStyle</string>
 	<key>That part is only a title card — include a moment of the video to export it.</key>
 	<string>Cette partie n’est qu’un carton de titre — incluez un moment de la vidéo pour l’exporter.</string>
 	<key>That part of the timeline is only a title card. Include a moment of the video in the range, then export again.</key>
@@ -2990,6 +3046,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Annuler la modification de l’annotation</string>
 	<key>Undo Annotations</key>
 	<string>Annuler la modification des annotations</string>
+	<key>Undo Apply Preset</key>
+	<string>Annuler l’application du préréglage</string>
 	<key>Undo Arrow Style</key>
 	<string>Annuler la modification du style de la flèche</string>
 	<key>Undo Aspect Ratio</key>
@@ -3192,14 +3250,16 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Réactiver le son de l’aperçu</string>
 	<key>Unmute the preview (M)</key>
 	<string>Réactiver le son de l’aperçu (M)</string>
+	<key>Update with Current Style</key>
+	<string>Mettre à jour avec le style actuel</string>
+	<key>Updated “%@”</key>
+	<string>« %@ » mis à jour</string>
 	<key>Updates</key>
 	<string>Mises à jour</string>
 	<key>Upload Custom Image</key>
 	<string>Choisir une image personnalisée</string>
 	<key>Use This Look for New Recordings</key>
 	<string>Utiliser ce style pour les nouveaux enregistrements</string>
-	<key>Use for new recordings</key>
-	<string>Utiliser par défaut</string>
 	<key>Use this color</key>
 	<string>Utiliser cette couleur</string>
 	<key>Use this level for every zoom</key>
@@ -3224,6 +3284,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Vidéo exportée</string>
 	<key>Video preview</key>
 	<string>Aperçu vidéo</string>
+	<key>Videos that use this preset keep their look.</key>
+	<string>Les vidéos qui utilisent ce préréglage gardent leur style.</string>
 	<key>Violet</key>
 	<string>Violet</string>
 	<key>Violet Bloom</key>
@@ -3304,8 +3366,6 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Votre disque est plein. Libérez de l’espace (videz la corbeille, supprimez d’anciens enregistrements) ou exportez vers un autre disque, puis réessayez.</string>
 	<key>Your edits will be lost if you close without saving or copying them.</key>
 	<string>Vos modifications seront perdues si vous fermez sans les enregistrer ni les copier.</string>
-	<key>Your look</key>
-	<string>Votre style</string>
 	<key>Your microphone</key>
 	<string>Votre micro</string>
 	<key>Your narration can become captions — then cut the video by editing its words.</key>

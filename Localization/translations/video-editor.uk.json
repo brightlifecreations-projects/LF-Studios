@@ -2,6 +2,9 @@
   "%@ (This Mac)" : {
     "uk" : "%@ (цей Mac)"
   },
+  "%@ (default)" : {
+    "uk" : "%@ (типовий)"
+  },
   "%@ (⇧⌘Z)" : {
     "uk" : "%@ (⇧⌘Z)"
   },
@@ -216,6 +219,9 @@
   "Appearance" : {
     "uk" : "Вигляд"
   },
+  "Applied “%@”" : {
+    "uk" : "Застосовано: «%@»"
+  },
   "Apply to all zooms" : {
     "uk" : "Застосувати до всіх наближень"
   },
@@ -372,6 +378,9 @@
   "Couldn't open this video" : {
     "uk" : "Не вдалося відкрити це відео"
   },
+  "Couldn't save the presets file" : {
+    "uk" : "Не вдалося зберегти файл стилів"
+  },
   "Crop" : {
     "uk" : "Обрізання"
   },
@@ -399,6 +408,9 @@
   "Custom color" : {
     "uk" : "Власний колір"
   },
+  "Custom look" : {
+    "uk" : "Власний стиль"
+  },
   "Cut filler words like um and uh" : {
     "uk" : "Вирізати слова-паразити на кшталт «е-е» та «м-м»"
   },
@@ -422,6 +434,12 @@
   },
   "Delete selection (⌫)" : {
     "uk" : "Видалити вибране (⌫)"
+  },
+  "Delete “%@”?" : {
+    "uk" : "Видалити «%@»?"
+  },
+  "Delete…" : {
+    "uk" : "Видалити…"
   },
   "Deselect / close" : {
     "uk" : "Зняти вибір/закрити"
@@ -495,6 +513,9 @@
   "Edge highlight" : {
     "uk" : "Окантовка"
   },
+  "Edit Presets" : {
+    "uk" : "Змінити стилі"
+  },
   "Edit by text" : {
     "uk" : "Монтаж за текстом"
   },
@@ -528,8 +549,19 @@
   "Export (⌘E)" : {
     "uk" : "Експортувати (⌘E)"
   },
+  "Export Presets…" : {
+    "uk" : "Експортувати стилі…"
+  },
   "Export Video…" : {
     "uk" : "Експортувати відео…"
+  },
+  "Exported %lld presets" : {
+    "uk" : {
+      "few" : "Експортовано %lld стилі",
+      "many" : "Експортовано %lld стилів",
+      "one" : "Експортовано %lld стиль",
+      "other" : "Експортовано %lld стилю"
+    }
   },
   "Exports at the level video sites expect (−16 LUFS) without clipping" : {
     "uk" : "Експортує з рівнем, якого очікують відеосайти (−16 LUFS), без перевантаження"
@@ -647,6 +679,23 @@
   },
   "Image" : {
     "uk" : "Зображення"
+  },
+  "Import Presets…" : {
+    "uk" : "Імпортувати стилі…"
+  },
+  "Imported %lld presets" : {
+    "uk" : {
+      "few" : "Імпортовано %lld стилі",
+      "many" : "Імпортовано %lld стилів",
+      "one" : "Імпортовано %lld стиль",
+      "other" : "Імпортовано %lld стилю"
+    }
+  },
+  "Imported Preset" : {
+    "uk" : "Імпортований стиль"
+  },
+  "Include aspect ratio (%@)" : {
+    "uk" : "Включити співвідношення сторін (%@)"
   },
   "Inspector tabs" : {
     "uk" : "Вкладки інспектора"
@@ -777,11 +826,29 @@
   "Mute video" : {
     "uk" : "Вимкнути звук відео"
   },
+  "My Look" : {
+    "uk" : "Мій стиль"
+  },
+  "My Preset" : {
+    "uk" : "Мій набір"
+  },
   "Never switch to the text beam or the hand" : {
     "uk" : "Ніколи не перемикати на текстовий курсор чи руку"
   },
   "New recordings use this look" : {
     "uk" : "Нові записи мають такий вигляд"
+  },
+  "New recordings use “%@”" : {
+    "uk" : "Нові записи використовують «%@»"
+  },
+  "New recordings will use the ShotStyle look" : {
+    "uk" : "Нові записи будуть у стилі ShotStyle"
+  },
+  "New recordings will use the built-in ShotStyle look instead. Videos that use this preset keep their look." : {
+    "uk" : "Нові записи використовуватимуть вбудований стиль ShotStyle. Відео з цим стилем збережуть свій вигляд."
+  },
+  "New recordings will use “%@”" : {
+    "uk" : "Нові записи використовуватимуть «%@»"
   },
   "New zooms" : {
     "uk" : "Нові наближення"
@@ -809,6 +876,9 @@
   },
   "No pauses to shorten" : {
     "uk" : "Немає пауз для скорочення"
+  },
+  "No presets yet" : {
+    "uk" : "Стилів поки немає"
   },
   "No ums" : {
     "uk" : "Немає слів-паразитів"
@@ -896,6 +966,9 @@
   "Preparing your video…" : {
     "uk" : "Підготовка відео…"
   },
+  "Presets" : {
+    "uk" : "Стилі"
+  },
   "Pressed at %@. Press ⌫ to hide it from the video — handy for a stray ⌘Tab." : {
     "uk" : "Натиснуто на %@. Натисніть ⌫, щоб сховати його з відео, — зручно для випадкового ⌘Tab."
   },
@@ -973,6 +1046,9 @@
   },
   "Redo Annotations" : {
     "uk" : "Повторити зміни розмітки"
+  },
+  "Redo Apply Preset" : {
+    "uk" : "Повторити застосування стилю"
   },
   "Redo Arrow Style" : {
     "uk" : "Повторити зміну стилю стрілки"
@@ -1332,6 +1408,15 @@
   "Removes jitter, keeps it snappy." : {
     "uk" : "Прибирає тремтіння, зберігаючи жвавість."
   },
+  "Rename" : {
+    "uk" : "Перейменувати"
+  },
+  "Rename Preset" : {
+    "uk" : "Перейменувати стиль"
+  },
+  "Rename…" : {
+    "uk" : "Перейменувати…"
+  },
   "Reset" : {
     "uk" : "Скинути"
   },
@@ -1362,6 +1447,15 @@
   "Save Subtitles (.srt)…" : {
     "uk" : "Зберегти субтитри (.srt)…"
   },
+  "Save as Preset" : {
+    "uk" : "Зберегти як стиль"
+  },
+  "Save as Preset…" : {
+    "uk" : "Зберегти як стиль…"
+  },
+  "Saved preset “%@”" : {
+    "uk" : "Стиль «%@» збережено"
+  },
   "Saves %@ — only silences where nothing happens on screen" : {
     "uk" : "Заощаджує %@ — лише тиша, коли на екрані нічого не відбувається"
   },
@@ -1370,6 +1464,9 @@
   },
   "Saves the background, frame, cursor, and zoom style." : {
     "uk" : "Зберігає тло, рамку, курсор і стиль наближення."
+  },
+  "Saves the background, frame, cursor, zoom, captions, keys, and camera bubble. Apply it to any video from the Presets menu." : {
+    "uk" : "Зберігає фон, рамку, вказівник, наближення, субтитри, клавіші та віконце камери. Застосовуйте його до будь-якого відео з меню «Стилі»."
   },
   "Search commands" : {
     "uk" : "Шукати команди"
@@ -1394,6 +1491,9 @@
   },
   "Selected part" : {
     "uk" : "Вибрана частина"
+  },
+  "Set as Default for New Recordings" : {
+    "uk" : "Використовувати для нових записів"
   },
   "Shadow" : {
     "uk" : "Тінь"
@@ -1420,6 +1520,9 @@
   },
   "Shortens every silence over a second (this video has no ShotStyle pointer data to spot what happens on screen)" : {
     "uk" : "Скорочує кожну тишу, довшу за секунду (у цьому відео немає даних курсора ShotStyle, щоб розпізнати, що відбувається на екрані)"
+  },
+  "ShotStyle Presets" : {
+    "uk" : "Стилі ShotStyle"
   },
   "ShotStyle is still cleaning up the voice" : {
     "uk" : "ShotStyle ще очищає голос"
@@ -1553,6 +1656,9 @@
   "Stop Enhancing Voice" : {
     "uk" : "Зупинити покращення голосу"
   },
+  "Stop Using for New Recordings" : {
+    "uk" : "Не використовувати для нових записів"
+  },
   "Stop and Close" : {
     "uk" : "Зупинити й закрити"
   },
@@ -1573,6 +1679,9 @@
   },
   "Text “%@”" : {
     "uk" : "Текст «%@»"
+  },
+  "That isn't a ShotStyle presets file" : {
+    "uk" : "Це не файл стилів ShotStyle"
   },
   "The camera keeps your cursor in view and glides after it." : {
     "uk" : "Камера тримає курсор у кадрі й плавно стежить за ним."
@@ -1723,6 +1832,9 @@
   },
   "Undo Annotations" : {
     "uk" : "Відмінити зміни розмітки"
+  },
+  "Undo Apply Preset" : {
+    "uk" : "Відмінити застосування стилю"
   },
   "Undo Arrow Style" : {
     "uk" : "Відмінити зміну стилю стрілки"
@@ -2031,6 +2143,12 @@
   "Unmute the preview (M)" : {
     "uk" : "Увімкнути звук перегляду (M)"
   },
+  "Update with Current Style" : {
+    "uk" : "Оновити за поточним виглядом"
+  },
+  "Updated “%@”" : {
+    "uk" : "«%@» оновлено"
+  },
   "Use This Look for New Recordings" : {
     "uk" : "Використовувати цей стиль для нових записів"
   },
@@ -2045,6 +2163,9 @@
   },
   "Video preview" : {
     "uk" : "Перегляд відео"
+  },
+  "Videos that use this preset keep their look." : {
+    "uk" : "Відео з цим стилем збережуть свій вигляд."
   },
   "Voice" : {
     "uk" : "Голос"

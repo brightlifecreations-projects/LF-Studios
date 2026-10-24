@@ -149,6 +149,9 @@ struct VideoBackgroundInspector: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 22) {
+            // Saved looks (VideoStylePresetsMenu.swift).
+            VideoStylePresetsSection(model: model)
+
             VideoInspectorSection(L("Background"), trailing: {
                 Button {
                     model.shuffleBackground()
@@ -220,34 +223,6 @@ struct VideoBackgroundInspector: View {
             VideoTitleCardsSection(model: model)
             VideoTransitionsSection(model: model)
             VideoSourcesSection(model: model)
-
-            VideoInspectorSection(L("Your look")) {
-                if model.styleMatchesDefault {
-                    Label(L("New recordings use this look"), systemImage: "checkmark.seal.fill")
-                        .font(.system(size: 11.5, weight: .semibold))
-                        .foregroundStyle(Color.green.opacity(0.9))
-                }
-                HStack(spacing: 8) {
-                    Button {
-                        model.saveStyleAsDefault()
-                    } label: {
-                        Text(L("Use for new recordings"))
-                            .frame(maxWidth: .infinity)
-                    }
-                    .buttonStyle(VideoSecondaryButtonStyle())
-                    .disabled(model.styleMatchesDefault)
-                    Button {
-                        model.resetStyle()
-                    } label: {
-                        Image(systemName: "arrow.counterclockwise")
-                    }
-                    .buttonStyle(VideoSecondaryButtonStyle())
-                    .help(L("Reset to the ShotStyle look"))
-                }
-                Text(L("Saves the background, frame, cursor, and zoom style."))
-                    .font(.system(size: 10.5))
-                    .foregroundStyle(VideoEditorTheme.textTertiary)
-            }
         }
         .onAppear { kind = Self.kind(of: project.background) }
         // The dice, undo, or a reset can change it from outside.

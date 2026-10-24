@@ -2,6 +2,9 @@
   "%@ (This Mac)" : {
     "ru" : "%@ (этот Mac)"
   },
+  "%@ (default)" : {
+    "ru" : "%@ (по умолчанию)"
+  },
   "%@ (⇧⌘Z)" : {
     "ru" : "%@ (⇧⌘Z)"
   },
@@ -221,6 +224,9 @@
   "Appearance" : {
     "ru" : "Оформление"
   },
+  "Applied “%@”" : {
+    "ru" : "Применено: «%@»"
+  },
   "Apply to all zooms" : {
     "ru" : "Применить ко всем увеличениям"
   },
@@ -377,6 +383,9 @@
   "Couldn't open this video" : {
     "ru" : "Не удалось открыть это видео"
   },
+  "Couldn't save the presets file" : {
+    "ru" : "Не удалось сохранить файл стилей"
+  },
   "Crop" : {
     "ru" : "Обрезка"
   },
@@ -404,6 +413,9 @@
   "Custom color" : {
     "ru" : "Свой цвет"
   },
+  "Custom look" : {
+    "ru" : "Свой стиль"
+  },
   "Cut filler words like um and uh" : {
     "ru" : "Вырезать слова-паразиты вроде «э-э» и «м-м»"
   },
@@ -427,6 +439,12 @@
   },
   "Delete selection (⌫)" : {
     "ru" : "Удалить выбранное (⌫)"
+  },
+  "Delete “%@”?" : {
+    "ru" : "Удалить «%@»?"
+  },
+  "Delete…" : {
+    "ru" : "Удалить…"
   },
   "Deselect / close" : {
     "ru" : "Снять выделение / закрыть"
@@ -500,6 +518,9 @@
   "Edge highlight" : {
     "ru" : "Обводка"
   },
+  "Edit Presets" : {
+    "ru" : "Изменить стили"
+  },
   "Edit by text" : {
     "ru" : "Монтаж по тексту"
   },
@@ -533,8 +554,19 @@
   "Export (⌘E)" : {
     "ru" : "Экспорт (⌘E)"
   },
+  "Export Presets…" : {
+    "ru" : "Экспортировать стили…"
+  },
   "Export Video…" : {
     "ru" : "Экспортировать видео…"
+  },
+  "Exported %lld presets" : {
+    "ru" : {
+      "few" : "Экспортировано %lld стиля",
+      "many" : "Экспортировано %lld стилей",
+      "one" : "Экспортирован %lld стиль",
+      "other" : "Экспортировано %lld стиля"
+    }
   },
   "Exports at the level video sites expect (−16 LUFS) without clipping" : {
     "ru" : "Экспорт с уровнем громкости для видеосайтов (−16 LUFS) без перегрузки"
@@ -652,6 +684,23 @@
   },
   "Image" : {
     "ru" : "Изображение"
+  },
+  "Import Presets…" : {
+    "ru" : "Импортировать стили…"
+  },
+  "Imported %lld presets" : {
+    "ru" : {
+      "few" : "Импортировано %lld стиля",
+      "many" : "Импортировано %lld стилей",
+      "one" : "Импортирован %lld стиль",
+      "other" : "Импортировано %lld стиля"
+    }
+  },
+  "Imported Preset" : {
+    "ru" : "Импортированный стиль"
+  },
+  "Include aspect ratio (%@)" : {
+    "ru" : "Включить соотношение сторон (%@)"
   },
   "Inspector tabs" : {
     "ru" : "Вкладки инспектора"
@@ -782,11 +831,29 @@
   "Mute video" : {
     "ru" : "Выключить звук видео"
   },
+  "My Look" : {
+    "ru" : "Мой стиль"
+  },
+  "My Preset" : {
+    "ru" : "Мой набор"
+  },
   "Never switch to the text beam or the hand" : {
     "ru" : "Не превращаться в текстовый курсор или руку"
   },
   "New recordings use this look" : {
     "ru" : "Новые записи используют этот стиль"
+  },
+  "New recordings use “%@”" : {
+    "ru" : "Новые записи используют «%@»"
+  },
+  "New recordings will use the ShotStyle look" : {
+    "ru" : "Новые записи будут в стиле ShotStyle"
+  },
+  "New recordings will use the built-in ShotStyle look instead. Videos that use this preset keep their look." : {
+    "ru" : "Новые записи будут использовать встроенный стиль ShotStyle. Видео с этим стилем сохранят свой вид."
+  },
+  "New recordings will use “%@”" : {
+    "ru" : "Новые записи будут использовать «%@»"
   },
   "New zooms" : {
     "ru" : "Новые увеличения"
@@ -814,6 +881,9 @@
   },
   "No pauses to shorten" : {
     "ru" : "Нет пауз для сокращения"
+  },
+  "No presets yet" : {
+    "ru" : "Стилей пока нет"
   },
   "No ums" : {
     "ru" : "Нет слов-паразитов"
@@ -901,6 +971,9 @@
   "Preparing your video…" : {
     "ru" : "Подготовка видео…"
   },
+  "Presets" : {
+    "ru" : "Стили"
+  },
   "Pressed at %@. Press ⌫ to hide it from the video — handy for a stray ⌘Tab." : {
     "ru" : "Нажато в %@. Нажмите ⌫, чтобы скрыть его в видео, — удобно для случайного ⌘Tab."
   },
@@ -978,6 +1051,9 @@
   },
   "Redo Annotations" : {
     "ru" : "Повторить изменение элементов разметки"
+  },
+  "Redo Apply Preset" : {
+    "ru" : "Повторить применение стиля"
   },
   "Redo Arrow Style" : {
     "ru" : "Повторить изменение стиля стрелки"
@@ -1337,6 +1413,15 @@
   "Removes jitter, keeps it snappy." : {
     "ru" : "Убирает дрожание, сохраняя отзывчивость."
   },
+  "Rename" : {
+    "ru" : "Переименовать"
+  },
+  "Rename Preset" : {
+    "ru" : "Переименовать стиль"
+  },
+  "Rename…" : {
+    "ru" : "Переименовать…"
+  },
   "Reset" : {
     "ru" : "Сбросить"
   },
@@ -1367,6 +1452,15 @@
   "Save Subtitles (.srt)…" : {
     "ru" : "Сохранить субтитры (.srt)…"
   },
+  "Save as Preset" : {
+    "ru" : "Сохранить как стиль"
+  },
+  "Save as Preset…" : {
+    "ru" : "Сохранить как стиль…"
+  },
+  "Saved preset “%@”" : {
+    "ru" : "Стиль «%@» сохранён"
+  },
   "Saves %@ — only silences where nothing happens on screen" : {
     "ru" : "Экономит %@ — только паузы, когда на экране ничего не происходит"
   },
@@ -1375,6 +1469,9 @@
   },
   "Saves the background, frame, cursor, and zoom style." : {
     "ru" : "Сохраняет фон, рамку, указатель и стиль увеличения."
+  },
+  "Saves the background, frame, cursor, zoom, captions, keys, and camera bubble. Apply it to any video from the Presets menu." : {
+    "ru" : "Сохраняет фон, рамку, указатель, приближение, субтитры, клавиши и окошко камеры. Применяйте его к любому видео из меню «Стили»."
   },
   "Search commands" : {
     "ru" : "Поиск команд"
@@ -1399,6 +1496,9 @@
   },
   "Selected part" : {
     "ru" : "Выбранный фрагмент"
+  },
+  "Set as Default for New Recordings" : {
+    "ru" : "Использовать для новых записей"
   },
   "Shadow" : {
     "ru" : "Тень"
@@ -1425,6 +1525,9 @@
   },
   "Shortens every silence over a second (this video has no ShotStyle pointer data to spot what happens on screen)" : {
     "ru" : "Сокращает каждую паузу длиннее секунды (в этом видео нет данных указателя ShotStyle, чтобы понять, что происходит на экране)"
+  },
+  "ShotStyle Presets" : {
+    "ru" : "Стили ShotStyle"
   },
   "ShotStyle is still cleaning up the voice" : {
     "ru" : "ShotStyle еще очищает голос"
@@ -1558,6 +1661,9 @@
   "Stop Enhancing Voice" : {
     "ru" : "Выключить улучшение голоса"
   },
+  "Stop Using for New Recordings" : {
+    "ru" : "Не использовать для новых записей"
+  },
   "Stop and Close" : {
     "ru" : "Остановить и закрыть"
   },
@@ -1578,6 +1684,9 @@
   },
   "Text “%@”" : {
     "ru" : "Текст «%@»"
+  },
+  "That isn't a ShotStyle presets file" : {
+    "ru" : "Это не файл стилей ShotStyle"
   },
   "The camera keeps your cursor in view and glides after it." : {
     "ru" : "Камера держит указатель в кадре и плавно следует за ним."
@@ -1728,6 +1837,9 @@
   },
   "Undo Annotations" : {
     "ru" : "Отменить изменение элементов разметки"
+  },
+  "Undo Apply Preset" : {
+    "ru" : "Отменить применение стиля"
   },
   "Undo Arrow Style" : {
     "ru" : "Отменить изменение стиля стрелки"
@@ -2036,6 +2148,12 @@
   "Unmute the preview (M)" : {
     "ru" : "Включить звук предпросмотра (M)"
   },
+  "Update with Current Style" : {
+    "ru" : "Обновить по текущему виду"
+  },
+  "Updated “%@”" : {
+    "ru" : "«%@» обновлён"
+  },
   "Use This Look for New Recordings" : {
     "ru" : "Использовать этот стиль для новых записей"
   },
@@ -2050,6 +2168,9 @@
   },
   "Video preview" : {
     "ru" : "Предпросмотр видео"
+  },
+  "Videos that use this preset keep their look." : {
+    "ru" : "Видео с этим стилем сохранят свой вид."
   },
   "Voice" : {
     "ru" : "Голос"

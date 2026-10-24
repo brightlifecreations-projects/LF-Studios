@@ -6,6 +6,8 @@
 	<string>%@ (%@)</string>
 	<key>%@ (This Mac)</key>
 	<string>%@ (цей Mac)</string>
+	<key>%@ (default)</key>
+	<string>%@ (типовий)</string>
 	<key>%@ (edited)</key>
 	<string>%@ (змінено)</string>
 	<key>%@ (original)</key>
@@ -240,6 +242,8 @@
 	<string>Скорочення Apple для знімків екрана досі займають ⌘⇧3/4/5 — знімки можуть спрацьовувати двічі.</string>
 	<key>Apple's shortcuts are out of the way.</key>
 	<string>Скорочення Apple більше не заважають.</string>
+	<key>Applied “%@”</key>
+	<string>Застосовано: «%@»</string>
 	<key>Applies at every cut. Click a cut's marker on the timeline, or select a clip, to choose one for that cut only.</key>
 	<string>Застосовується до кожної склейки. Клацніть позначку склейки на шкалі часу або виберіть кліп, щоб вибрати перехід лише для цієї склейки.</string>
 	<key>Apply</key>
@@ -708,6 +712,8 @@
 	<string>Не вдалося прочитати запис. Перевірте, чи його файл досі на місці, а потім експортуйте ще раз.</string>
 	<key>Couldn't save the captions file</key>
 	<string>Не вдалося зберегти файл субтитрів</string>
+	<key>Couldn't save the presets file</key>
+	<string>Не вдалося зберегти файл стилів</string>
 	<key>Couldn't save the screenshot to %@. Click to check the save folder.</key>
 	<string>Не вдалося зберегти знімок екрана в «%@». Клацніть, щоб перевірити папку збереження.</string>
 	<key>Couldn't save the screenshot: ShotStyle can't write to %@. Click to choose another save folder.</key>
@@ -752,6 +758,8 @@
 	<string>Власний колір</string>
 	<key>Custom color #%@</key>
 	<string>Власний колір #%@</string>
+	<key>Custom look</key>
+	<string>Власний стиль</string>
 	<key>Custom position</key>
 	<string>Власна позиція</string>
 	<key>Custom: %@</key>
@@ -796,8 +804,12 @@
 	<string>Видалити вибране</string>
 	<key>Delete selection (⌫)</key>
 	<string>Видалити вибране (⌫)</string>
+	<key>Delete “%@”?</key>
+	<string>Видалити «%@»?</string>
 	<key>Deleted captures waiting in History's trash and files no capture uses are removed for good. The captures in your history stay.</key>
 	<string>Видалені знімки з кошика історії та файли, яких не використовує жоден знімок, буде вилучено назавжди. Знімки в історії залишаться.</string>
+	<key>Delete…</key>
+	<string>Видалити…</string>
 	<key>Deselect / close</key>
 	<string>Зняти вибір/закрити</string>
 	<key>Desert Violet</key>
@@ -920,6 +932,8 @@
 	<string>Редагувати</string>
 	<key>Edit Last Recording</key>
 	<string>Редагувати останній запис</string>
+	<key>Edit Presets</key>
+	<string>Змінити стилі</string>
 	<key>Edit Video</key>
 	<string>Редагувати відео</string>
 	<key>Edit by text</key>
@@ -1002,6 +1016,8 @@
 	<string>Експортувати (⌘E)</string>
 	<key>Export Format</key>
 	<string>Формат експорту</string>
+	<key>Export Presets…</key>
+	<string>Експортувати стилі…</string>
 	<key>Export Video…</key>
 	<string>Експортувати відео…</string>
 	<key>Export and put the file on the clipboard — paste it into Slack, Mail, or Finder</key>
@@ -1218,6 +1234,10 @@
 	<string>Наскільки сильно розмиття й пікселізація приховують вміст під ними</string>
 	<key>Image</key>
 	<string>Зображення</string>
+	<key>Import Presets…</key>
+	<string>Імпортувати стилі…</string>
+	<key>Imported Preset</key>
+	<string>Імпортований стиль</string>
 	<key>In</key>
 	<string>Початок</string>
 	<key>In &amp; out</key>
@@ -1226,6 +1246,8 @@
 	<string>Початок раніше</string>
 	<key>In later</key>
 	<string>Початок пізніше</string>
+	<key>Include aspect ratio (%@)</key>
+	<string>Включити співвідношення сторін (%@)</string>
 	<key>Includes: %@</key>
 	<string>Містить: %@</string>
 	<key>Inspector tabs</key>
@@ -1476,6 +1498,10 @@
 	<string>Вимкнути звук відео</string>
 	<key>Mute video is on (Audio tab) — this export will have no sound.</key>
 	<string>Увімкнено «Вимкнути звук відео» (вкладка «Аудіо») — цей експорт буде без звуку.</string>
+	<key>My Look</key>
+	<string>Мій стиль</string>
+	<key>My Preset</key>
+	<string>Мій набір</string>
 	<key>Nebula</key>
 	<string>Туманність</string>
 	<key>Needed to capture the screen. macOS will ask once.</key>
@@ -1492,8 +1518,14 @@
 	<string>Новий субтитр</string>
 	<key>New recording</key>
 	<string>Новий запис</string>
-	<key>New recordings use this look</key>
-	<string>Нові записи мають такий вигляд</string>
+	<key>New recordings use “%@”</key>
+	<string>Нові записи використовують «%@»</string>
+	<key>New recordings will use the ShotStyle look</key>
+	<string>Нові записи будуть у стилі ShotStyle</string>
+	<key>New recordings will use the built-in ShotStyle look instead. Videos that use this preset keep their look.</key>
+	<string>Нові записи використовуватимуть вбудований стиль ShotStyle. Відео з цим стилем збережуть свій вигляд.</string>
+	<key>New recordings will use “%@”</key>
+	<string>Нові записи використовуватимуть «%@»</string>
 	<key>New screenshots are copied automatically. Turn this off if you only want to use the overlay or history actions.</key>
 	<string>Нові знімки екрана копіюються автоматично. Вимкніть це, якщо хочете користуватися лише мініатюрою чи діями в історії.</string>
 	<key>New zooms</key>
@@ -1550,6 +1582,8 @@
 	<string>Без музики</string>
 	<key>No pauses to shorten</key>
 	<string>Немає пауз для скорочення</string>
+	<key>No presets yet</key>
+	<string>Стилів поки немає</string>
 	<key>No projects match your search</key>
 	<string>Немає проєктів, що відповідають запиту</string>
 	<key>No recordable windows found</key>
@@ -1786,6 +1820,8 @@
 	<string>Підготовка…</string>
 	<key>Preset</key>
 	<string>Шаблон</string>
+	<key>Presets</key>
+	<string>Стилі</string>
 	<key>Press</key>
 	<string>Натиск</string>
 	<key>Press %@ anytime — or try it right now.</key>
@@ -1954,6 +1990,8 @@
 	<string>Повторити зміну розмітки</string>
 	<key>Redo Annotations</key>
 	<string>Повторити зміни розмітки</string>
+	<key>Redo Apply Preset</key>
+	<string>Повторити застосування стилю</string>
 	<key>Redo Arrow Style</key>
 	<string>Повторити зміну стилю стрілки</string>
 	<key>Redo Aspect Ratio</key>
@@ -2198,6 +2236,12 @@
 	<string>Прибирає фоновий шум і гудіння та вирівнює рівень — обробка на цьому Mac</string>
 	<key>Removes jitter, keeps it snappy.</key>
 	<string>Прибирає тремтіння, зберігаючи жвавість.</string>
+	<key>Rename</key>
+	<string>Перейменувати</string>
+	<key>Rename Preset</key>
+	<string>Перейменувати стиль</string>
+	<key>Rename…</key>
+	<string>Перейменувати…</string>
 	<key>Rendering for the clipboard… %lld%%</key>
 	<string>Рендеринг для буфера обміну… %lld%%</string>
 	<key>Rendering, then copying to your clipboard</key>
@@ -2223,8 +2267,6 @@
 	<key>Reset to default position</key>
 	<string>Повернути типову позицію</string>
 	<key>Reset to the ShotStyle Look</key>
-	<string>Скинути до стилю ShotStyle</string>
-	<key>Reset to the ShotStyle look</key>
 	<string>Скинути до стилю ShotStyle</string>
 	<key>Resize</key>
 	<string>Змінити розмір</string>
@@ -2314,6 +2356,10 @@
 	<string>Зберегти субтитри (.srt)…</string>
 	<key>Save Subtitles (.vtt)…</key>
 	<string>Зберегти субтитри (.vtt)…</string>
+	<key>Save as Preset</key>
+	<string>Зберегти як стиль</string>
+	<key>Save as Preset…</key>
+	<string>Зберегти як стиль…</string>
 	<key>Save automatically</key>
 	<string>Зберігати автоматично</string>
 	<key>Save changes to this screenshot?</key>
@@ -2330,6 +2376,8 @@
 	<string>«%1$@» збережено в «%2$@» — клацніть, щоб показати у Finder</string>
 	<key>Saved capture</key>
 	<string>Збережений знімок</string>
+	<key>Saved preset “%@”</key>
+	<string>Стиль «%@» збережено</string>
 	<key>Saved to %@: %@</key>
 	<string>Збережено в «%@»: %@</string>
 	<key>Saved — new recordings will use this look</key>
@@ -2338,8 +2386,8 @@
 	<string>Заощаджує %@ — лише тиша, коли на екрані нічого не відбувається</string>
 	<key>Saves %@ — silences where the pointer rests and nothing is clicked or pressed (this older recording can't see typing)</key>
 	<string>Заощаджує %@ — тиша, коли курсор нерухомий і нічого не клацають і не натискають (цей старіший запис не бачить введення тексту)</string>
-	<key>Saves the background, frame, cursor, and zoom style.</key>
-	<string>Зберігає тло, рамку, курсор і стиль наближення.</string>
+	<key>Saves the background, frame, cursor, zoom, captions, keys, and camera bubble. Apply it to any video from the Presets menu.</key>
+	<string>Зберігає фон, рамку, вказівник, наближення, субтитри, клавіші та віконце камери. Застосовуйте його до будь-якого відео з меню «Стилі».</string>
 	<key>Save…</key>
 	<string>Зберегти…</string>
 	<key>Saving captures to History</key>
@@ -2434,6 +2482,8 @@
 	<string>Встановити початок на покажчику відтворення</string>
 	<key>Set Out to Playhead</key>
 	<string>Встановити кінець на покажчику відтворення</string>
+	<key>Set as Default for New Recordings</key>
+	<string>Використовувати для нових записів</string>
 	<key>Set the in point to the playhead (%@)</key>
 	<string>Встановити початок на покажчику відтворення (%@)</string>
 	<key>Set the out point to the playhead (%@)</key>
@@ -2472,6 +2522,8 @@
 	<string>Головна ShotStyle</string>
 	<key>ShotStyle Preferences</key>
 	<string>Параметри ShotStyle</string>
+	<key>ShotStyle Presets</key>
+	<string>Стилі ShotStyle</string>
 	<key>ShotStyle can't open this file</key>
 	<string>ShotStyle не може відкрити цей файл</string>
 	<key>ShotStyle can't save to that folder. Pick another place, like Desktop or Movies, and export again.</key>
@@ -2680,6 +2732,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Зупинити покращення голосу</string>
 	<key>Stop Recording</key>
 	<string>Зупинити запис</string>
+	<key>Stop Using for New Recordings</key>
+	<string>Не використовувати для нових записів</string>
 	<key>Stop and Close</key>
 	<string>Зупинити й закрити</string>
 	<key>Stop recording</key>
@@ -2762,6 +2816,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Цей дисплей або вікно більше не доступні.</string>
 	<key>That drive is read-only. Pick another place to save, then export again.</key>
 	<string>Цей диск доступний лише для читання. Виберіть інше місце для збереження й експортуйте ще раз.</string>
+	<key>That isn't a ShotStyle presets file</key>
+	<string>Це не файл стилів ShotStyle</string>
 	<key>That part is only a title card — include a moment of the video to export it.</key>
 	<string>Ця частина — лише заставка: додайте момент відео, щоб її експортувати.</string>
 	<key>That part of the timeline is only a title card. Include a moment of the video in the range, then export again.</key>
@@ -2992,6 +3048,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Відмінити зміну розмітки</string>
 	<key>Undo Annotations</key>
 	<string>Відмінити зміни розмітки</string>
+	<key>Undo Apply Preset</key>
+	<string>Відмінити застосування стилю</string>
 	<key>Undo Arrow Style</key>
 	<string>Відмінити зміну стилю стрілки</string>
 	<key>Undo Aspect Ratio</key>
@@ -3194,14 +3252,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Увімкнути звук перегляду</string>
 	<key>Unmute the preview (M)</key>
 	<string>Увімкнути звук перегляду (M)</string>
+	<key>Update with Current Style</key>
+	<string>Оновити за поточним виглядом</string>
+	<key>Updated “%@”</key>
+	<string>«%@» оновлено</string>
 	<key>Updates</key>
 	<string>Оновлення</string>
 	<key>Upload Custom Image</key>
 	<string>Вибрати власне зображення</string>
 	<key>Use This Look for New Recordings</key>
 	<string>Використовувати цей стиль для нових записів</string>
-	<key>Use for new recordings</key>
-	<string>Для нових записів</string>
 	<key>Use this color</key>
 	<string>Використати цей колір</string>
 	<key>Use this level for every zoom</key>
@@ -3226,6 +3286,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Відео експортовано</string>
 	<key>Video preview</key>
 	<string>Перегляд відео</string>
+	<key>Videos that use this preset keep their look.</key>
+	<string>Відео з цим стилем збережуть свій вигляд.</string>
 	<key>Violet</key>
 	<string>Фіалковий</string>
 	<key>Violet Bloom</key>
@@ -3306,8 +3368,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Диск заповнено. Звільніть місце (очистіть Кошик, видаліть старі записи) або експортуйте на інший диск, а потім спробуйте ще раз.</string>
 	<key>Your edits will be lost if you close without saving or copying them.</key>
 	<string>Якщо закрити, не зберігши й не скопіювавши зміни, їх буде втрачено.</string>
-	<key>Your look</key>
-	<string>Ваш стиль</string>
 	<key>Your microphone</key>
 	<string>Ваш мікрофон</string>
 	<key>Your narration can become captions — then cut the video by editing its words.</key>

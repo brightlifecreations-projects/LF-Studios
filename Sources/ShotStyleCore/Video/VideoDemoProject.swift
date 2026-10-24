@@ -764,8 +764,10 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
             keystrokeStyle: VideoKeystrokeStyle(),
             crop: .full
         )
-        if let style = VideoStylePreset.savedDefault {
-            project.apply(style: style)
+        // The default preset (Style ▸ Presets), its aspect ratio only when
+        // it includes one.
+        if let preset = VideoStylePreset.savedDefaultPreset {
+            project.apply(preset: preset)
         }
         return project
     }
@@ -1447,8 +1449,6 @@ struct VideoStylePreset: Codable, Equatable {
     var captionStyle: VideoCaptionStyle = VideoCaptionStyle()
     var keystrokeStyle: VideoKeystrokeStyle = VideoKeystrokeStyle()
 
-    private static let defaultsKey = "videoDefaultStylePreset"
-
     /// The built-in ShotStyle look.
     static let factory = VideoStylePreset(
         aspectPreset: .widescreen,
@@ -1467,19 +1467,29 @@ struct VideoStylePreset: Codable, Equatable {
         keystrokeStyle: VideoKeystrokeStyle()
     )
 
-    static var savedDefault: VideoStylePreset? {
-        guard let data = UserDefaults.standard.data(forKey: defaultsKey) else { return nil }
-        return try? JSONDecoder().decode(VideoStylePreset.self, from: data)
+    /// The preset new recordings start from (VideoStylePresets.swift).
+    static var savedDefaultPreset: VideoNamedStylePreset? {
+        VideoStylePresetStore.load(root: VideoStorageLocation.root).defaultPreset
     }
 
+    static var savedDefault: VideoStylePreset? { savedDefaultPreset?.style }
+
+    /// This look for new recordings: the default preset takes it (one is
+    /// made, "My Look", when there's none); nil: the built-in look again.
     static func saveAsDefault(_ preset: VideoStylePreset?) {
-        guard let preset else {
-            UserDefaults.standard.removeObject(forKey: defaultsKey)
-            return
+        let root = VideoStorageLocation.root
+        var library = VideoStylePresetStore.load(root: root)
+        if let preset {
+            if let id = library.defaultID {
+                library.update(id, with: preset)
+            } else {
+                let mine = library.add(name: L("My Look"), style: preset, includesAspectRatio: true)
+                library.setDefault(mine.id)
+            }
+        } else {
+            library.setDefault(nil)
         }
-        if let data = try? JSONEncoder().encode(preset) {
-            UserDefaults.standard.set(data, forKey: defaultsKey)
-        }
+        _ = VideoStylePresetStore.save(library, root: root)
     }
 }
 

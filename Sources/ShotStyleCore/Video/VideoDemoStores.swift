@@ -7,9 +7,22 @@ enum VideoStorageLocation {
     nonisolated(unsafe) static var overrideRoot: URL?
 
     static var root: URL {
-        overrideRoot ?? FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first
+        if let overrideRoot { return overrideRoot }
+        // Under `swift test` nothing reads or writes the user's own data
+        // (drafts, presets…), even in tests that don't set a root.
+        if isRunningTests { return testRoot }
+        return FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first
             ?? FileManager.default.temporaryDirectory
     }
+
+    private static let isRunningTests = NSClassFromString("XCTestCase") != nil
+        || ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
+
+    private static let testRoot: URL = {
+        let root = FileManager.default.temporaryDirectory.appendingPathComponent("shotstyle-test-storage", isDirectory: true)
+        try? FileManager.default.createDirectory(at: root, withIntermediateDirectories: true)
+        return root
+    }()
 }
 
 /// How the editor recognises a video file across renames and moves: a

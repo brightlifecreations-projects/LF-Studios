@@ -6,6 +6,8 @@
 	<string>%@ (%@)</string>
 	<key>%@ (This Mac)</key>
 	<string>%@ (этот Mac)</string>
+	<key>%@ (default)</key>
+	<string>%@ (по умолчанию)</string>
 	<key>%@ (edited)</key>
 	<string>%@ (изменено)</string>
 	<key>%@ (original)</key>
@@ -238,6 +240,8 @@
 	<string>⌘⇧3/4/5 по-прежнему заняты сочетаниями Apple для снимков экрана — снимок может сработать дважды.</string>
 	<key>Apple's shortcuts are out of the way.</key>
 	<string>Сочетания клавиш Apple больше не мешают.</string>
+	<key>Applied “%@”</key>
+	<string>Применено: «%@»</string>
 	<key>Applies at every cut. Click a cut's marker on the timeline, or select a clip, to choose one for that cut only.</key>
 	<string>Применяется к каждой склейке. Чтобы выбрать переход только для одной склейки, нажмите ее метку на шкале времени или выберите клип.</string>
 	<key>Apply</key>
@@ -706,6 +710,8 @@
 	<string>Не удалось прочитать запись. Проверьте, на месте ли ее файл, и экспортируйте снова.</string>
 	<key>Couldn't save the captions file</key>
 	<string>Не удалось сохранить файл субтитров</string>
+	<key>Couldn't save the presets file</key>
+	<string>Не удалось сохранить файл стилей</string>
 	<key>Couldn't save the screenshot to %@. Click to check the save folder.</key>
 	<string>Не удалось сохранить снимок экрана в папку «%@». Нажмите, чтобы проверить папку для сохранения.</string>
 	<key>Couldn't save the screenshot: ShotStyle can't write to %@. Click to choose another save folder.</key>
@@ -750,6 +756,8 @@
 	<string>Свой цвет</string>
 	<key>Custom color #%@</key>
 	<string>Свой цвет #%@</string>
+	<key>Custom look</key>
+	<string>Свой стиль</string>
 	<key>Custom position</key>
 	<string>Своё положение</string>
 	<key>Custom: %@</key>
@@ -794,8 +802,12 @@
 	<string>Удалить выбранное</string>
 	<key>Delete selection (⌫)</key>
 	<string>Удалить выбранное (⌫)</string>
+	<key>Delete “%@”?</key>
+	<string>Удалить «%@»?</string>
 	<key>Deleted captures waiting in History's trash and files no capture uses are removed for good. The captures in your history stay.</key>
 	<string>Снимки из корзины истории и файлы, которые не использует ни один снимок, будут удалены безвозвратно. Снимки в истории сохранятся.</string>
+	<key>Delete…</key>
+	<string>Удалить…</string>
 	<key>Deselect / close</key>
 	<string>Снять выделение / закрыть</string>
 	<key>Desert Violet</key>
@@ -918,6 +930,8 @@
 	<string>Правка</string>
 	<key>Edit Last Recording</key>
 	<string>Редактировать последнюю запись</string>
+	<key>Edit Presets</key>
+	<string>Изменить стили</string>
 	<key>Edit Video</key>
 	<string>Редактировать видео</string>
 	<key>Edit by text</key>
@@ -1000,6 +1014,8 @@
 	<string>Экспорт (⌘E)</string>
 	<key>Export Format</key>
 	<string>Формат экспорта</string>
+	<key>Export Presets…</key>
+	<string>Экспортировать стили…</string>
 	<key>Export Video…</key>
 	<string>Экспортировать видео…</string>
 	<key>Export and put the file on the clipboard — paste it into Slack, Mail, or Finder</key>
@@ -1216,6 +1232,10 @@
 	<string>Насколько сильно размытие и пикселизация скрывают содержимое</string>
 	<key>Image</key>
 	<string>Изображение</string>
+	<key>Import Presets…</key>
+	<string>Импортировать стили…</string>
+	<key>Imported Preset</key>
+	<string>Импортированный стиль</string>
 	<key>In</key>
 	<string>Начало</string>
 	<key>In &amp; out</key>
@@ -1224,6 +1244,8 @@
 	<string>Начало раньше</string>
 	<key>In later</key>
 	<string>Начало позже</string>
+	<key>Include aspect ratio (%@)</key>
+	<string>Включить соотношение сторон (%@)</string>
 	<key>Includes: %@</key>
 	<string>Включает: %@</string>
 	<key>Inspector tabs</key>
@@ -1474,6 +1496,10 @@
 	<string>Выключить звук видео</string>
 	<key>Mute video is on (Audio tab) — this export will have no sound.</key>
 	<string>Звук видео выключен (вкладка «Аудио») — экспорт будет без звука.</string>
+	<key>My Look</key>
+	<string>Мой стиль</string>
+	<key>My Preset</key>
+	<string>Мой набор</string>
 	<key>Nebula</key>
 	<string>Туманность</string>
 	<key>Needed to capture the screen. macOS will ask once.</key>
@@ -1490,8 +1516,14 @@
 	<string>Новый субтитр</string>
 	<key>New recording</key>
 	<string>Новая запись</string>
-	<key>New recordings use this look</key>
-	<string>Новые записи используют этот стиль</string>
+	<key>New recordings use “%@”</key>
+	<string>Новые записи используют «%@»</string>
+	<key>New recordings will use the ShotStyle look</key>
+	<string>Новые записи будут в стиле ShotStyle</string>
+	<key>New recordings will use the built-in ShotStyle look instead. Videos that use this preset keep their look.</key>
+	<string>Новые записи будут использовать встроенный стиль ShotStyle. Видео с этим стилем сохранят свой вид.</string>
+	<key>New recordings will use “%@”</key>
+	<string>Новые записи будут использовать «%@»</string>
 	<key>New screenshots are copied automatically. Turn this off if you only want to use the overlay or history actions.</key>
 	<string>Новые снимки копируются автоматически. Выключите, если хотите пользоваться только миниатюрой или действиями в истории.</string>
 	<key>New zooms</key>
@@ -1548,6 +1580,8 @@
 	<string>Без музыки</string>
 	<key>No pauses to shorten</key>
 	<string>Нет пауз для сокращения</string>
+	<key>No presets yet</key>
+	<string>Стилей пока нет</string>
 	<key>No projects match your search</key>
 	<string>Нет проектов, соответствующих запросу</string>
 	<key>No recordable windows found</key>
@@ -1784,6 +1818,8 @@
 	<string>Подготовка…</string>
 	<key>Preset</key>
 	<string>Вариант</string>
+	<key>Presets</key>
+	<string>Стили</string>
 	<key>Press</key>
 	<string>Нажим</string>
 	<key>Press %@ anytime — or try it right now.</key>
@@ -1952,6 +1988,8 @@
 	<string>Повторить изменение элемента разметки</string>
 	<key>Redo Annotations</key>
 	<string>Повторить изменение элементов разметки</string>
+	<key>Redo Apply Preset</key>
+	<string>Повторить применение стиля</string>
 	<key>Redo Arrow Style</key>
 	<string>Повторить изменение стиля стрелки</string>
 	<key>Redo Aspect Ratio</key>
@@ -2196,6 +2234,12 @@
 	<string>Убирает фоновый шум и гул и выравнивает громкость — обработка на этом Mac</string>
 	<key>Removes jitter, keeps it snappy.</key>
 	<string>Убирает дрожание, сохраняя отзывчивость.</string>
+	<key>Rename</key>
+	<string>Переименовать</string>
+	<key>Rename Preset</key>
+	<string>Переименовать стиль</string>
+	<key>Rename…</key>
+	<string>Переименовать…</string>
 	<key>Rendering for the clipboard… %lld%%</key>
 	<string>Рендеринг для буфера обмена… %lld %%</string>
 	<key>Rendering, then copying to your clipboard</key>
@@ -2221,8 +2265,6 @@
 	<key>Reset to default position</key>
 	<string>Вернуть положение по умолчанию</string>
 	<key>Reset to the ShotStyle Look</key>
-	<string>Вернуть стиль ShotStyle</string>
-	<key>Reset to the ShotStyle look</key>
 	<string>Вернуть стиль ShotStyle</string>
 	<key>Resize</key>
 	<string>Изменить размер</string>
@@ -2312,6 +2354,10 @@
 	<string>Сохранить субтитры (.srt)…</string>
 	<key>Save Subtitles (.vtt)…</key>
 	<string>Сохранить субтитры (.vtt)…</string>
+	<key>Save as Preset</key>
+	<string>Сохранить как стиль</string>
+	<key>Save as Preset…</key>
+	<string>Сохранить как стиль…</string>
 	<key>Save automatically</key>
 	<string>Сохранять автоматически</string>
 	<key>Save changes to this screenshot?</key>
@@ -2328,6 +2374,8 @@
 	<string>Файл «%@» сохранен в папку «%@» — нажмите, чтобы показать в Finder</string>
 	<key>Saved capture</key>
 	<string>Сохраненный снимок</string>
+	<key>Saved preset “%@”</key>
+	<string>Стиль «%@» сохранён</string>
 	<key>Saved to %@: %@</key>
 	<string>Сохранено в папку «%@»: %@</string>
 	<key>Saved — new recordings will use this look</key>
@@ -2336,8 +2384,8 @@
 	<string>Экономит %@ — только паузы, когда на экране ничего не происходит</string>
 	<key>Saves %@ — silences where the pointer rests and nothing is clicked or pressed (this older recording can't see typing)</key>
 	<string>Экономит %@ — паузы, когда указатель неподвижен и ничего не нажимается (в этой старой записи не виден набор текста)</string>
-	<key>Saves the background, frame, cursor, and zoom style.</key>
-	<string>Сохраняет фон, рамку, указатель и стиль увеличения.</string>
+	<key>Saves the background, frame, cursor, zoom, captions, keys, and camera bubble. Apply it to any video from the Presets menu.</key>
+	<string>Сохраняет фон, рамку, указатель, приближение, субтитры, клавиши и окошко камеры. Применяйте его к любому видео из меню «Стили».</string>
 	<key>Save…</key>
 	<string>Сохранить…</string>
 	<key>Saving captures to History</key>
@@ -2432,6 +2480,8 @@
 	<string>Задать начало по указателю воспроизведения</string>
 	<key>Set Out to Playhead</key>
 	<string>Задать конец по указателю воспроизведения</string>
+	<key>Set as Default for New Recordings</key>
+	<string>Использовать для новых записей</string>
 	<key>Set the in point to the playhead (%@)</key>
 	<string>Задать начало по указателю воспроизведения (%@)</string>
 	<key>Set the out point to the playhead (%@)</key>
@@ -2470,6 +2520,8 @@
 	<string>Главная ShotStyle</string>
 	<key>ShotStyle Preferences</key>
 	<string>Настройки ShotStyle</string>
+	<key>ShotStyle Presets</key>
+	<string>Стили ShotStyle</string>
 	<key>ShotStyle can't open this file</key>
 	<string>ShotStyle не может открыть этот файл</string>
 	<key>ShotStyle can't save to that folder. Pick another place, like Desktop or Movies, and export again.</key>
@@ -2678,6 +2730,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Выключить улучшение голоса</string>
 	<key>Stop Recording</key>
 	<string>Остановить запись</string>
+	<key>Stop Using for New Recordings</key>
+	<string>Не использовать для новых записей</string>
 	<key>Stop and Close</key>
 	<string>Остановить и закрыть</string>
 	<key>Stop recording</key>
@@ -2760,6 +2814,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Этот дисплей или окно больше недоступны.</string>
 	<key>That drive is read-only. Pick another place to save, then export again.</key>
 	<string>Этот диск доступен только для чтения. Выберите другое место для сохранения и экспортируйте снова.</string>
+	<key>That isn't a ShotStyle presets file</key>
+	<string>Это не файл стилей ShotStyle</string>
 	<key>That part is only a title card — include a moment of the video to export it.</key>
 	<string>Этот фрагмент — только титр. Включите в него часть видео, чтобы экспортировать.</string>
 	<key>That part of the timeline is only a title card. Include a moment of the video in the range, then export again.</key>
@@ -2990,6 +3046,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Отменить изменение элемента разметки</string>
 	<key>Undo Annotations</key>
 	<string>Отменить изменение элементов разметки</string>
+	<key>Undo Apply Preset</key>
+	<string>Отменить применение стиля</string>
 	<key>Undo Arrow Style</key>
 	<string>Отменить изменение стиля стрелки</string>
 	<key>Undo Aspect Ratio</key>
@@ -3192,14 +3250,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Включить звук предпросмотра</string>
 	<key>Unmute the preview (M)</key>
 	<string>Включить звук предпросмотра (M)</string>
+	<key>Update with Current Style</key>
+	<string>Обновить по текущему виду</string>
+	<key>Updated “%@”</key>
+	<string>«%@» обновлён</string>
 	<key>Updates</key>
 	<string>Обновления</string>
 	<key>Upload Custom Image</key>
 	<string>Выбрать свое изображение</string>
 	<key>Use This Look for New Recordings</key>
 	<string>Использовать этот стиль для новых записей</string>
-	<key>Use for new recordings</key>
-	<string>Использовать для новых записей</string>
 	<key>Use this color</key>
 	<string>Использовать этот цвет</string>
 	<key>Use this level for every zoom</key>
@@ -3224,6 +3284,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Видео экспортировано</string>
 	<key>Video preview</key>
 	<string>Предпросмотр видео</string>
+	<key>Videos that use this preset keep their look.</key>
+	<string>Видео с этим стилем сохранят свой вид.</string>
 	<key>Violet</key>
 	<string>Фиалка</string>
 	<key>Violet Bloom</key>
@@ -3304,8 +3366,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Диск заполнен. Освободите место (очистите Корзину, удалите старые записи) или экспортируйте на другой диск и повторите попытку.</string>
 	<key>Your edits will be lost if you close without saving or copying them.</key>
 	<string>Ваши изменения будут потеряны, если закрыть окно, не сохранив и не скопировав их.</string>
-	<key>Your look</key>
-	<string>Ваш стиль</string>
 	<key>Your microphone</key>
 	<string>Ваш микрофон</string>
 	<key>Your narration can become captions — then cut the video by editing its words.</key>

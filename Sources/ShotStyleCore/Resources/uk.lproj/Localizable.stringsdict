@@ -682,6 +682,26 @@
 			<string>Видалені знімки з кошика історії та файли, яких не використовує жоден знімок, буде вилучено назавжди, а разом із ними — %lld знімка понад обмеження історії. Решта історії залишиться.</string>
 		</dict>
 	</dict>
+	<key>Exported %lld presets</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>few</key>
+			<string>Експортовано %lld стилі</string>
+			<key>many</key>
+			<string>Експортовано %lld стилів</string>
+			<key>one</key>
+			<string>Експортовано %lld стиль</string>
+			<key>other</key>
+			<string>Експортовано %lld стилю</string>
+		</dict>
+	</dict>
 	<key>Freed %@ (%lld files)</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -740,6 +760,26 @@
 			<string>Історія займає … (%lld знімок)</string>
 			<key>other</key>
 			<string>Історія займає … (%lld знімка)</string>
+		</dict>
+	</dict>
+	<key>Imported %lld presets</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>few</key>
+			<string>Імпортовано %lld стилі</string>
+			<key>many</key>
+			<string>Імпортовано %lld стилів</string>
+			<key>one</key>
+			<string>Імпортовано %lld стиль</string>
+			<key>other</key>
+			<string>Імпортовано %lld стилю</string>
 		</dict>
 	</dict>
 	<key>Keeping 30 days removes %lld older captures from History now. This can't be undone.</key>

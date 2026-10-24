@@ -6,6 +6,8 @@
 	<string>%@（%@）</string>
 	<key>%@ (This Mac)</key>
 	<string>%@（这台 Mac）</string>
+	<key>%@ (default)</key>
+	<string>%@（默认）</string>
 	<key>%@ (edited)</key>
 	<string>%@（已编辑）</string>
 	<key>%@ (original)</key>
@@ -296,6 +298,8 @@
 	<string>Apple 的截屏快捷键仍占用 ⌘⇧3/4/5 — 可能会重复截屏。</string>
 	<key>Apple's shortcuts are out of the way.</key>
 	<string>Apple 的快捷键已不再冲突。</string>
+	<key>Applied “%@”</key>
+	<string>已应用“%@”</string>
 	<key>Applies at every cut. Click a cut's marker on the timeline, or select a clip, to choose one for that cut only.</key>
 	<string>应用于每个剪切点。点按时间线上剪切点的标记或选择一个片段，可单独为该剪切点选择转场。</string>
 	<key>Apply</key>
@@ -770,6 +774,8 @@
 	<string>无法读取录制内容。请确认其文件仍然存在，然后重新导出。</string>
 	<key>Couldn't save the captions file</key>
 	<string>无法存储字幕文件</string>
+	<key>Couldn't save the presets file</key>
+	<string>无法存储预设文件</string>
 	<key>Couldn't save the screenshot to %@. Click to check the save folder.</key>
 	<string>无法将截屏存储到“%@”。点按以检查存储文件夹。</string>
 	<key>Couldn't save the screenshot: ShotStyle can't write to %@. Click to choose another save folder.</key>
@@ -814,6 +820,8 @@
 	<string>自定颜色</string>
 	<key>Custom color #%@</key>
 	<string>自定颜色 #%@</string>
+	<key>Custom look</key>
+	<string>自定外观</string>
 	<key>Custom position</key>
 	<string>自定位置</string>
 	<key>Custom: %@</key>
@@ -862,10 +870,14 @@
 	<string>删除所选内容</string>
 	<key>Delete selection (⌫)</key>
 	<string>删除所选内容（⌫）</string>
+	<key>Delete “%@”?</key>
+	<string>要删除“%@”吗？</string>
 	<key>Deleted captures waiting in History's trash and files no capture uses are removed for good, along with %lld captures past your History limit. The rest of your history stays.</key>
 	<string>历史记录废纸篓中已删除的截屏、不再被任何截屏使用的文件，以及超出历史记录保留限制的 %lld 张截屏将被永久移除。其余历史记录会保留。</string>
 	<key>Deleted captures waiting in History's trash and files no capture uses are removed for good. The captures in your history stay.</key>
 	<string>历史记录废纸篓中已删除的截屏以及不再被任何截屏使用的文件将被永久移除。历史记录中的截屏会保留。</string>
+	<key>Delete…</key>
+	<string>删除…</string>
 	<key>Deselect / close</key>
 	<string>取消选择/关闭</string>
 	<key>Desert Violet</key>
@@ -988,6 +1000,8 @@
 	<string>编辑</string>
 	<key>Edit Last Recording</key>
 	<string>编辑上一段录制内容</string>
+	<key>Edit Presets</key>
+	<string>编辑预设</string>
 	<key>Edit Video</key>
 	<string>编辑视频</string>
 	<key>Edit by text</key>
@@ -1070,6 +1084,8 @@
 	<string>导出（⌘E）</string>
 	<key>Export Format</key>
 	<string>导出格式</string>
+	<key>Export Presets…</key>
+	<string>导出预设…</string>
 	<key>Export Video…</key>
 	<string>导出视频…</string>
 	<key>Export and put the file on the clipboard — paste it into Slack, Mail, or Finder</key>
@@ -1086,6 +1102,8 @@
 	<string>导出：%@</string>
 	<key>Exported</key>
 	<string>已导出</string>
+	<key>Exported %lld presets</key>
+	<string>已导出 %lld 个预设</string>
 	<key>Exported without Enhance voice — it couldn't finish.</key>
 	<string>已在未“增强人声”的情况下导出 — 增强未能完成。</string>
 	<key>Exported · %@</key>
@@ -1292,6 +1310,12 @@
 	<string>模糊和像素化遮盖下方内容的程度</string>
 	<key>Image</key>
 	<string>图像</string>
+	<key>Import Presets…</key>
+	<string>导入预设…</string>
+	<key>Imported %lld presets</key>
+	<string>已导入 %lld 个预设</string>
+	<key>Imported Preset</key>
+	<string>导入的预设</string>
 	<key>In</key>
 	<string>入点</string>
 	<key>In &amp; out</key>
@@ -1300,6 +1324,8 @@
 	<string>入点提前</string>
 	<key>In later</key>
 	<string>入点延后</string>
+	<key>Include aspect ratio (%@)</key>
+	<string>包括宽高比（%@）</string>
 	<key>Includes: %@</key>
 	<string>包含：%@</string>
 	<key>Inspector tabs</key>
@@ -1564,6 +1590,10 @@
 	<string>视频静音</string>
 	<key>Mute video is on (Audio tab) — this export will have no sound.</key>
 	<string>“视频静音”已打开（“音频”标签页）— 此导出将没有声音。</string>
+	<key>My Look</key>
+	<string>我的外观</string>
+	<key>My Preset</key>
+	<string>我的预设</string>
 	<key>Nebula</key>
 	<string>星云</string>
 	<key>Needed to capture the screen. macOS will ask once.</key>
@@ -1580,8 +1610,14 @@
 	<string>新字幕</string>
 	<key>New recording</key>
 	<string>新录制</string>
-	<key>New recordings use this look</key>
-	<string>新录制内容会使用此风格</string>
+	<key>New recordings use “%@”</key>
+	<string>新录制内容使用“%@”</string>
+	<key>New recordings will use the ShotStyle look</key>
+	<string>新录制内容将使用 ShotStyle 外观</string>
+	<key>New recordings will use the built-in ShotStyle look instead. Videos that use this preset keep their look.</key>
+	<string>新录制内容将改用内置的 ShotStyle 外观。使用此预设的视频会保留其外观。</string>
+	<key>New recordings will use “%@”</key>
+	<string>新录制内容将使用“%@”</string>
 	<key>New screenshots are copied automatically. Turn this off if you only want to use the overlay or history actions.</key>
 	<string>新截屏会自动拷贝。如果只想使用缩略图或历史记录中的操作，请关闭此选项。</string>
 	<key>New zooms</key>
@@ -1638,6 +1674,8 @@
 	<string>没有音乐</string>
 	<key>No pauses to shorten</key>
 	<string>没有可缩短的停顿</string>
+	<key>No presets yet</key>
+	<string>还没有预设</string>
 	<key>No projects match your search</key>
 	<string>没有符合搜索条件的项目</string>
 	<key>No recordable windows found</key>
@@ -1876,6 +1914,8 @@
 	<string>正在准备…</string>
 	<key>Preset</key>
 	<string>预设</string>
+	<key>Presets</key>
+	<string>预设</string>
 	<key>Press</key>
 	<string>按压</string>
 	<key>Press %@ anytime — or try it right now.</key>
@@ -2046,6 +2086,8 @@
 	<string>重做标注更改</string>
 	<key>Redo Annotations</key>
 	<string>重做标注更改</string>
+	<key>Redo Apply Preset</key>
+	<string>重做应用预设</string>
 	<key>Redo Arrow Style</key>
 	<string>重做箭头样式更改</string>
 	<key>Redo Aspect Ratio</key>
@@ -2304,6 +2346,12 @@
 	<string>去除背景噪音和嗡嗡声，并平衡你的音量 — 在这台 Mac 上处理</string>
 	<key>Removes jitter, keeps it snappy.</key>
 	<string>去除抖动，保持灵敏。</string>
+	<key>Rename</key>
+	<string>重新命名</string>
+	<key>Rename Preset</key>
+	<string>重新命名预设</string>
+	<key>Rename…</key>
+	<string>重新命名…</string>
 	<key>Rendering for the clipboard… %lld%%</key>
 	<string>正在为剪贴板渲染…%lld%%</string>
 	<key>Rendering, then copying to your clipboard</key>
@@ -2329,8 +2377,6 @@
 	<key>Reset to default position</key>
 	<string>恢复默认位置</string>
 	<key>Reset to the ShotStyle Look</key>
-	<string>恢复为 ShotStyle 风格</string>
-	<key>Reset to the ShotStyle look</key>
 	<string>恢复为 ShotStyle 风格</string>
 	<key>Resize</key>
 	<string>调整大小</string>
@@ -2424,6 +2470,10 @@
 	<string>存储字幕（.srt）…</string>
 	<key>Save Subtitles (.vtt)…</key>
 	<string>存储字幕（.vtt）…</string>
+	<key>Save as Preset</key>
+	<string>存储为预设</string>
+	<key>Save as Preset…</key>
+	<string>存储为预设…</string>
 	<key>Save automatically</key>
 	<string>自动存储</string>
 	<key>Save changes to this screenshot?</key>
@@ -2440,6 +2490,8 @@
 	<string>已将“%1$@”存储到“%2$@” — 点按以在“访达”中显示</string>
 	<key>Saved capture</key>
 	<string>已存储的截屏</string>
+	<key>Saved preset “%@”</key>
+	<string>已存储预设“%@”</string>
 	<key>Saved to %@: %@</key>
 	<string>已存储到“%@”：%@</string>
 	<key>Saved — new recordings will use this look</key>
@@ -2448,8 +2500,8 @@
 	<string>节省 %@ — 仅限屏幕上无任何动静的静音部分</string>
 	<key>Saves %@ — silences where the pointer rests and nothing is clicked or pressed (this older recording can't see typing)</key>
 	<string>节省 %@ — 指针静止且没有点按或按键的静音部分（这个较早的录制内容无法识别打字）</string>
-	<key>Saves the background, frame, cursor, and zoom style.</key>
-	<string>会存储背景、边框、指针和缩放样式。</string>
+	<key>Saves the background, frame, cursor, zoom, captions, keys, and camera bubble. Apply it to any video from the Presets menu.</key>
+	<string>存储背景、边框、指针、缩放、字幕、按键和摄像头气泡。可从“预设”菜单将其应用到任何视频。</string>
 	<key>Save…</key>
 	<string>存储…</string>
 	<key>Saving captures to History</key>
@@ -2548,6 +2600,8 @@
 	<string>将入点设为播放头位置</string>
 	<key>Set Out to Playhead</key>
 	<string>将出点设为播放头位置</string>
+	<key>Set as Default for New Recordings</key>
+	<string>设为新录制内容的默认设置</string>
 	<key>Set the in point to the playhead (%@)</key>
 	<string>将入点设为播放头位置（%@）</string>
 	<key>Set the out point to the playhead (%@)</key>
@@ -2590,6 +2644,8 @@
 	<string>ShotStyle 主页</string>
 	<key>ShotStyle Preferences</key>
 	<string>ShotStyle 设置</string>
+	<key>ShotStyle Presets</key>
+	<string>ShotStyle 预设</string>
 	<key>ShotStyle can't open this file</key>
 	<string>ShotStyle 无法打开此文件</string>
 	<key>ShotStyle can't save to that folder. Pick another place, like Desktop or Movies, and export again.</key>
@@ -2802,6 +2858,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>停止增强人声</string>
 	<key>Stop Recording</key>
 	<string>停止录制</string>
+	<key>Stop Using for New Recordings</key>
+	<string>不再用于新录制内容</string>
 	<key>Stop and Close</key>
 	<string>停止并关闭</string>
 	<key>Stop recording</key>
@@ -2884,6 +2942,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>该显示器或窗口已不可用。</string>
 	<key>That drive is read-only. Pick another place to save, then export again.</key>
 	<string>该磁盘为只读。请选择其他存储位置，然后重新导出。</string>
+	<key>That isn't a ShotStyle presets file</key>
+	<string>这不是 ShotStyle 预设文件</string>
 	<key>That part is only a title card — include a moment of the video to export it.</key>
 	<string>这部分只有标题卡 — 请包含视频的一部分才能导出。</string>
 	<key>That part of the timeline is only a title card. Include a moment of the video in the range, then export again.</key>
@@ -3116,6 +3176,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销标注更改</string>
 	<key>Undo Annotations</key>
 	<string>撤销标注更改</string>
+	<key>Undo Apply Preset</key>
+	<string>撤销应用预设</string>
 	<key>Undo Arrow Style</key>
 	<string>撤销箭头样式更改</string>
 	<key>Undo Aspect Ratio</key>
@@ -3322,14 +3384,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>取消预览静音</string>
 	<key>Unmute the preview (M)</key>
 	<string>取消预览静音（M）</string>
+	<key>Update with Current Style</key>
+	<string>用当前样式更新</string>
+	<key>Updated “%@”</key>
+	<string>已更新“%@”</string>
 	<key>Updates</key>
 	<string>更新</string>
 	<key>Upload Custom Image</key>
 	<string>选取自定图像</string>
 	<key>Use This Look for New Recordings</key>
 	<string>为新录制内容使用此风格</string>
-	<key>Use for new recordings</key>
-	<string>用于新录制内容</string>
 	<key>Use this color</key>
 	<string>使用此颜色</string>
 	<key>Use this level for every zoom</key>
@@ -3354,6 +3418,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>已导出视频</string>
 	<key>Video preview</key>
 	<string>视频预览</string>
+	<key>Videos that use this preset keep their look.</key>
+	<string>使用此预设的视频会保留其外观。</string>
 	<key>Violet</key>
 	<string>紫罗兰</string>
 	<key>Violet Bloom</key>
@@ -3440,8 +3506,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>你的磁盘已满。请释放一些空间（清倒废纸篓、删除旧的录制内容）或导出到其他磁盘，然后重试。</string>
 	<key>Your edits will be lost if you close without saving or copying them.</key>
 	<string>如果关闭前不存储或拷贝，你的编辑将会丢失。</string>
-	<key>Your look</key>
-	<string>你的风格</string>
 	<key>Your microphone</key>
 	<string>你的麦克风</string>
 	<key>Your narration can become captions — then cut the video by editing its words.</key>

@@ -305,6 +305,7 @@ extension VideoEditDescription {
         case "Camera Change": return (L("Undo Camera Change"), L("Redo Camera Change"))
         case "Style Change": return (L("Undo Style Change"), L("Redo Style Change"))
         case "Reset Look": return (L("Undo Reset Look"), L("Redo Reset Look"))
+        case "Apply Preset": return (L("Undo Apply Preset"), L("Redo Apply Preset"))
         default: return nil
         }
     }
