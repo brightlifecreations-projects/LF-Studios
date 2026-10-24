@@ -12,8 +12,18 @@ if [ -f "$SCRIPT_DIR/.env.local" ]; then
     set +a
 fi
 
-# Default "-" = local ad-hoc signing (no certificate needed).
-SIGN_IDENTITY="${SHOTSTYLE_CODESIGN_IDENTITY:--}"
+# Default: the "ShotStyle Local Signing" certificate when the keychain has
+# one, else "-" (ad-hoc, no certificate needed). Ad-hoc builds get a new
+# identity on every build, so macOS forgets the Screen Recording and
+# Accessibility permissions each time; a fixed local certificate keeps them.
+LOCAL_IDENTITY="ShotStyle Local Signing"
+if [ -n "${SHOTSTYLE_CODESIGN_IDENTITY:-}" ]; then
+    SIGN_IDENTITY="$SHOTSTYLE_CODESIGN_IDENTITY"
+elif security find-certificate -c "$LOCAL_IDENTITY" >/dev/null 2>&1; then
+    SIGN_IDENTITY="$LOCAL_IDENTITY"
+else
+    SIGN_IDENTITY="-"
+fi
 TIMESTAMP_MODE="${SHOTSTYLE_CODESIGN_TIMESTAMP:-auto}"
 SPARKLE_PUBLIC_ED_KEY="${SHOTSTYLE_SPARKLE_PUBLIC_ED_KEY:-}"
 REQUIRE_SPARKLE_KEY="${SHOTSTYLE_REQUIRE_SPARKLE_KEY:-false}"
@@ -116,12 +126,13 @@ if ! otool -l "$APP_BUNDLE/Contents/MacOS/$APP_NAME" | grep -q "@executable_path
 fi
 
 echo "Signing with $SIGN_IDENTITY..."
-if [ "$SIGN_IDENTITY" = "-" ]; then
-    # Local ad-hoc build: re-sign Sparkle with the same ad-hoc signature and skip
-    # the hardened runtime, whose library validation rejects mixed signatures
-    # (the app would crash at launch with "different Team IDs").
-    codesign --force --deep --sign - "$APP_BUNDLE/Contents/Frameworks/Sparkle.framework"
-    SIGN_ARGS=(--force --sign - --entitlements "$ENTITLEMENTS")
+if [ "$SIGN_IDENTITY" = "-" ] || [ "$SIGN_IDENTITY" = "$LOCAL_IDENTITY" ]; then
+    # Local build (ad-hoc or the local certificate, neither has a Team ID):
+    # re-sign Sparkle with the same signature and skip the hardened runtime,
+    # whose library validation rejects mixed signatures (the app would crash
+    # at launch with "different Team IDs").
+    codesign --force --deep --sign "$SIGN_IDENTITY" "$APP_BUNDLE/Contents/Frameworks/Sparkle.framework"
+    SIGN_ARGS=(--force --sign "$SIGN_IDENTITY" --entitlements "$ENTITLEMENTS")
 else
     SIGN_ARGS=(--force --deep --sign "$SIGN_IDENTITY" --options runtime --entitlements "$ENTITLEMENTS")
 fi
