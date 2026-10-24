@@ -44,6 +44,21 @@ ShotStyle is available in English, Deutsch, Français, 简体中文, Русск�
 2. Open it and drag **ShotStyle** to your Applications folder.
 3. Grant **Screen Recording** permission when macOS asks.
 
+### Download the app
+
+No Xcode needed: GitHub builds a ready-made `ShotStyle.zip` (Apple Silicon and Intel) for every `v…` tag, attached to its [release](https://github.com/brightlifecreations-projects/ShotStyle/releases). Builds started by hand are under [Actions ▸ Release app](https://github.com/brightlifecreations-projects/ShotStyle/actions/workflows/release.yml): open a run and download **ShotStyle** under Artifacts.
+
+1. Unzip `ShotStyle.zip` (an Actions download is a zip around it, so unzip twice).
+2. Drag **ShotStyle** to your Applications folder.
+3. This build isn't notarized, so once, in Terminal, run:
+
+   ```bash
+   xattr -dr com.apple.quarantine /Applications/ShotStyle.app
+   ```
+
+4. Open ShotStyle.
+5. Allow **Screen Recording** when macOS asks, then quit and reopen ShotStyle.
+
 ### Build from source
 
 Requirements: macOS 13+, Swift 5.9+. The Xcode Command Line Tools are enough to build; running the tests (`swift test`) needs full Xcode.

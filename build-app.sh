@@ -38,13 +38,43 @@ fi
 TIMESTAMP_MODE="${SHOTSTYLE_CODESIGN_TIMESTAMP:-auto}"
 SPARKLE_PUBLIC_ED_KEY="${SHOTSTYLE_SPARKLE_PUBLIC_ED_KEY:-}"
 REQUIRE_SPARKLE_KEY="${SHOTSTYLE_REQUIRE_SPARKLE_KEY:-false}"
+# SHOTSTYLE_UNIVERSAL=true builds for Apple Silicon and Intel (the release
+# workflow does this); the default builds for this Mac only.
+UNIVERSAL="${SHOTSTYLE_UNIVERSAL:-false}"
+# SHOTSTYLE_INSTALL=false leaves the app in .build/app.noindex instead of
+# copying it to /Applications.
+INSTALL="${SHOTSTYLE_INSTALL:-true}"
 
-echo "▶ Building $APP_NAME (release)…"
 cd "$SCRIPT_DIR"
-swift build -c release 2>&1
-BUILD_DIR="$(swift build -c release --show-bin-path)"
+if [[ "$UNIVERSAL" =~ ^(1|true|yes|on)$ ]]; then
+    # One build per architecture, then lipo: a single --arch keeps SwiftPM's
+    # usual build layout, so resource bundles and Sparkle are the same as in
+    # a normal build (two --arch flags at once switch to a different builder).
+    ARCH_BINARIES=()
+    BUILD_DIR=""
+    for arch in arm64 x86_64; do
+        echo "▶ Building $APP_NAME (release, $arch)…"
+        swift build -c release --arch "$arch" 2>&1
+        ARCH_DIR="$(swift build -c release --arch "$arch" --show-bin-path)"
+        if [ ! -f "$ARCH_DIR/$APP_NAME" ]; then
+            echo "✗ Build failed — binary not found at $ARCH_DIR/$APP_NAME"
+            exit 1
+        fi
+        ARCH_BINARIES+=("$ARCH_DIR/$APP_NAME")
+        # Resource bundles and Sparkle.framework come from the first build.
+        [ -n "$BUILD_DIR" ] || BUILD_DIR="$ARCH_DIR"
+    done
+    BINARY="$SCRIPT_DIR/.build/universal/$APP_NAME"
+    mkdir -p "$(dirname "$BINARY")"
+    lipo -create "${ARCH_BINARIES[@]}" -output "$BINARY"
+    echo "  Architectures: $(lipo -archs "$BINARY")"
+else
+    echo "▶ Building $APP_NAME (release)…"
+    swift build -c release 2>&1
+    BUILD_DIR="$(swift build -c release --show-bin-path)"
+    BINARY="$BUILD_DIR/$APP_NAME"
+fi
 
-BINARY="$BUILD_DIR/$APP_NAME"
 if [ ! -f "$BINARY" ]; then
     echo "✗ Build failed — binary not found at $BINARY"
     exit 1
@@ -167,6 +197,12 @@ case "$TIMESTAMP_MODE" in
 esac
 
 codesign "${SIGN_ARGS[@]}" "$APP_BUNDLE"
+
+if [[ ! "$INSTALL" =~ ^(1|true|yes|on)$ ]]; then
+    echo ""
+    echo "✓ Done!  ShotStyle.app is at $APP_BUNDLE"
+    exit 0
+fi
 
 echo "▶ Copying to /Applications…"
 APPS_DEST="/Applications/$APP_NAME.app"
