@@ -298,6 +298,11 @@ final class VideoEditorModel: ObservableObject {
     let media = VideoEditorMedia()
     lazy var previewRenderer = VideoPreviewRenderer(model: self)
     let recording: VideoDemoRecordingMetadata?
+    /// The `.shotstyle` project this edit was opened from or saved to
+    /// (VideoProjectFiles.swift); nil: just the recording's own edit.
+    @Published var projectFileURL: URL?
+    @Published var projectMediaMode: VideoProjectDocument.MediaMode?
+    @Published var isSavingProject = false
     private let sourceBookmark: Data?
     let artwork: VideoCursorArtwork
     private(set) var plan: VideoRenderPlan

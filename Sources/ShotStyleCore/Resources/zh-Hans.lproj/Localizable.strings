@@ -574,6 +574,8 @@
 	<string>选择图像…</string>
 	<key>Choose a .ttf or .otf font. ShotStyle keeps its own copy, so it keeps working if the file is deleted.</key>
 	<string>选择 .ttf 或 .otf 字体。ShotStyle 会保留自己的副本，因此即使文件被删除也能继续使用。</string>
+	<key>Choose a ShotStyle project</key>
+	<string>选择 ShotStyle 项目</string>
 	<key>Choose a language</key>
 	<string>选择语言</string>
 	<key>Choose a logo, watermark, or screenshot to place on the video</key>
@@ -782,6 +784,8 @@
 	<string>无法打开该视频 — %@</string>
 	<key>Couldn't open this video</key>
 	<string>无法打开此视频</string>
+	<key>Couldn't open “%@”</key>
+	<string>无法打开“%@”</string>
 	<key>Couldn't prepare the video. Export again; if it keeps happening, restart ShotStyle.</key>
 	<string>无法准备视频。请重新导出；如果问题仍然存在，请重新启动 ShotStyle。</string>
 	<key>Couldn't read that audio file</key>
@@ -794,6 +798,8 @@
 	<string>无法存储字幕文件</string>
 	<key>Couldn't save the presets file</key>
 	<string>无法存储预设文件</string>
+	<key>Couldn't save the project — check there's room on the disk</key>
+	<string>无法存储项目 — 请检查磁盘空间是否足够</string>
 	<key>Couldn't save the screenshot to %@. Click to check the save folder.</key>
 	<string>无法将截屏存储到“%@”。点按以检查存储文件夹。</string>
 	<key>Couldn't save the screenshot: ShotStyle can't write to %@. Click to choose another save folder.</key>
@@ -1356,6 +1362,8 @@
 	<string>入点延后</string>
 	<key>Include aspect ratio (%@)</key>
 	<string>包括宽高比（%@）</string>
+	<key>Include media (works on any Mac)</key>
+	<string>包含媒体（在任何 Mac 上都可用）</string>
 	<key>Includes: %@</key>
 	<string>包含：%@</string>
 	<key>Inspector tabs</key>
@@ -1378,10 +1386,14 @@
 	<string>片头卡，%@ 至 %@</string>
 	<key>Iris</key>
 	<string>鸢尾</string>
+	<key>It isn't a ShotStyle project, or it's damaged.</key>
+	<string>它不是 ShotStyle 项目，或者已损坏。</string>
 	<key>It may be damaged, still being saved, or in a format this Mac can't play. MP4 and MOV videos work best.</key>
 	<string>该文件可能已损坏、仍在存储中，或采用了这台 Mac 无法播放的格式。MP4 和 MOV 视频效果最佳。</string>
 	<key>It only has sound, or nothing at all. ShotStyle edits screen recordings and other videos.</key>
 	<string>该文件只有声音，或者什么都没有。ShotStyle 可编辑屏幕录制和其他视频。</string>
+	<key>It was edited after the project was saved. Open those newer edits, or the project as it was saved?</key>
+	<string>项目存储后，它又经过了编辑。要打开较新的编辑，还是打开存储时的项目？</string>
 	<key>It was moved, renamed, or deleted. Open it from where it is now.</key>
 	<string>它已被移动、重新命名或删除。请从它现在的位置打开。</string>
 	<key>It was recorded into the pixels, so it can't be resized or smoothed. New recordings capture an editable cursor by default (Settings → Recording).</key>
@@ -1478,6 +1490,8 @@
 	<string>找到链接二维码</string>
 	<key>Link copied</key>
 	<string>已拷贝链接</string>
+	<key>Link to media (small, this Mac only)</key>
+	<string>链接到媒体（体积小，仅限此 Mac）</string>
 	<key>Links</key>
 	<string>链接</string>
 	<key>Links (%lld of %lld)</key>
@@ -1510,6 +1524,8 @@
 	<string>已达到最大长度</string>
 	<key>Meadow</key>
 	<string>草地</string>
+	<key>Media:</key>
+	<string>媒体：</string>
 	<key>Medium</key>
 	<string>中</string>
 	<key>Menu Bar</key>
@@ -1788,8 +1804,14 @@
 	<string>打开链接</string>
 	<key>Open Messages</key>
 	<string>打开“信息”</string>
+	<key>Open Newer Edits</key>
+	<string>打开较新的编辑</string>
 	<key>Open Privacy Settings</key>
 	<string>打开“隐私与安全性”</string>
+	<key>Open Project as Saved</key>
+	<string>打开存储时的项目</string>
+	<key>Open Project…</key>
+	<string>打开项目…</string>
 	<key>Open Recording Settings…</key>
 	<string>打开录制设置…</string>
 	<key>Open Settings</key>
@@ -1800,6 +1822,8 @@
 	<string>请打开“系统设置”→“键盘”→“键盘快捷键”→“截屏”，然后手动关闭截屏快捷键。</string>
 	<key>Open Video Editor</key>
 	<string>打开视频编辑器</string>
+	<key>Open a .shotstyle project</key>
+	<string>打开 .shotstyle 项目</string>
 	<key>Open editor after recording</key>
 	<string>录制后打开编辑器</string>
 	<key>Open in annotation editor</key>
@@ -2500,6 +2524,10 @@
 	<string>存储文件夹</string>
 	<key>Save Location</key>
 	<string>存储位置</string>
+	<key>Save Project</key>
+	<string>存储项目</string>
+	<key>Save Project As…</key>
+	<string>项目存储为…</string>
 	<key>Save Subtitles</key>
 	<string>存储字幕</string>
 	<key>Save Subtitles (.srt)…</key>
@@ -2524,6 +2552,8 @@
 	<string>已存储 %@</string>
 	<key>Saved %@ to %@ — click to reveal in Finder</key>
 	<string>已将“%1$@”存储到“%2$@” — 点按以在“访达”中显示</string>
+	<key>Saved by a newer ShotStyle — some settings may not show</key>
+	<string>由较新版本的 ShotStyle 存储，某些设置可能不会显示</string>
 	<key>Saved capture</key>
 	<string>已存储的截屏</string>
 	<key>Saved preset “%@”</key>
@@ -2532,6 +2562,8 @@
 	<string>已存储到“%@”：%@</string>
 	<key>Saved — new recordings will use this look</key>
 	<string>已存储 — 新录制内容将使用此风格</string>
+	<key>Saved “%@”</key>
+	<string>已存储“%@”</string>
 	<key>Saves %@ — only silences where nothing happens on screen</key>
 	<string>节省 %@ — 仅限屏幕上无任何动静的静音部分</string>
 	<key>Saves %@ — silences where the pointer rests and nothing is clicked or pressed (this older recording can't see typing)</key>
@@ -2542,6 +2574,8 @@
 	<string>存储…</string>
 	<key>Saving captures to History</key>
 	<string>正在将截屏存储到历史记录</string>
+	<key>Saving project…</key>
+	<string>正在存储项目…</string>
 	<key>Saving the last recording…</key>
 	<string>正在存储上一段录制内容…</string>
 	<key>Saving the recording</key>
@@ -3012,6 +3046,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>图片文件已不存在 — 请使用“替换”重新选择。</string>
 	<key>The recording couldn't be finished — saved the first %@.</key>
 	<string>录制无法完成 — 已存储前 %@。</string>
+	<key>The recording for “%@” is missing</key>
+	<string>“%@”的录制内容不见了</string>
 	<key>The recording's file can't be found — it may have been moved or deleted. Put it back and export again.</key>
 	<string>找不到录制内容的文件 — 它可能已被移动或删除。请将它放回原处，然后重新导出。</string>
 	<key>The save panel did not return a destination. Please try saving again.</key>
@@ -3058,6 +3094,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>本周</string>
 	<key>This list</key>
 	<string>此列表</string>
+	<key>This recording has newer edits than “%@”</key>
+	<string>此录制内容的编辑比“%@”更新</string>
 	<key>This recording has no sound</key>
 	<string>此录制内容没有声音</string>
 	<key>This recording has no sound to transcribe. You can still type captions yourself.</key>
@@ -3690,6 +3728,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>无法读取“%@” — 它可能已损坏、仍在存储中，或采用了这台 Mac 无法播放的格式。请将其从此视频中移除（“样式”→“录制内容”），或用可正常使用的副本替换，然后重新导出。</string>
 	<key>“%@” found in %lld of %lld captures</key>
 	<string>在 %2$lld 张截屏中找到“%1$@”（共 %3$lld 张）</string>
+	<key>“%@” isn't at %@ anymore. Put it back, or save the project with Include Media next time so it carries its own copy.</key>
+	<string>“%1$@”已不在 %2$@ 中。请将它放回原处，或下次存储项目时选择“包含媒体”，让项目带上自己的副本。</string>
 	<key>“%@” isn't on this Mac — showing the built-in font. Install it, or add its file with Add Font File…</key>
 	<string>此 Mac 上没有“%@”，正在显示内置字体。请安装该字体，或使用“添加字体文件…”添加它的文件。</string>
 	<key>“%@” isn't on this Mac — using the built-in font</key>

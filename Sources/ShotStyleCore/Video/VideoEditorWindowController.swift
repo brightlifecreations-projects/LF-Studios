@@ -20,14 +20,36 @@ final class VideoDemoEditorWindowController: NSWindowController, NSWindowDelegat
     }
 
     static func open(videoURL: URL) {
+        open(videoURL: videoURL, projectFile: nil, mode: nil)
+    }
+
+    /// `projectFile`: the `.shotstyle` project it's opened from; ⌘S saves
+    /// back to it.
+    static func open(videoURL: URL, projectFile: URL?, mode: VideoProjectDocument.MediaMode?) {
         let sourceURL = canonicalVideoURL(videoURL)
+        let controller: VideoDemoEditorWindowController
         if let existing = openControllers.first(where: { $0.sourceURL == sourceURL }) {
-            existing.bringEditorToFront()
-            return
+            controller = existing
+        } else {
+            controller = VideoDemoEditorWindowController(videoURL: sourceURL)
+            openControllers.append(controller)
         }
-        let controller = VideoDemoEditorWindowController(videoURL: sourceURL)
-        openControllers.append(controller)
+        if let projectFile {
+            controller.model.projectFileURL = projectFile
+            controller.model.projectMediaMode = mode
+            controller.window?.title = projectFile.deletingPathExtension().lastPathComponent
+            controller.window?.representedURL = projectFile
+        }
         controller.bringEditorToFront()
+    }
+
+    static func saveActiveProject(as saveAs: Bool) {
+        guard let controller = frontController() else { return }
+        controller.model.saveProject(as: saveAs)
+        if let url = controller.model.projectFileURL {
+            controller.window?.title = url.deletingPathExtension().lastPathComponent
+            controller.window?.representedURL = url
+        }
     }
 
     static func bringOpenEditorsToFront() {
@@ -188,9 +210,10 @@ final class VideoDemoEditorWindowController: NSWindowController, NSWindowDelegat
     func windowDidBecomeKey(_ notification: Notification) {
         Self.openControllers.removeAll { $0 === self }
         Self.openControllers.append(self)
-        // Renamed in Finder meanwhile: the title and exports follow.
+        // Renamed in Finder meanwhile: the title and exports follow. A
+        // project's window is titled after the project.
         model.followRenamedRecording()
-        window?.title = model.project.sourceURL.deletingPathExtension().lastPathComponent
+        window?.title = (model.projectFileURL ?? model.project.sourceURL).deletingPathExtension().lastPathComponent
     }
 
     func windowDidResignKey(_ notification: Notification) {

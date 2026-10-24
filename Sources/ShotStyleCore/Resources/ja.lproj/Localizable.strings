@@ -574,6 +574,8 @@
 	<string>画像を選択…</string>
 	<key>Choose a .ttf or .otf font. ShotStyle keeps its own copy, so it keeps working if the file is deleted.</key>
 	<string>.ttfまたは.otfのフォントを選択してください。ShotStyleは独自のコピーを保持するため、ファイルが削除されても使い続けられます。</string>
+	<key>Choose a ShotStyle project</key>
+	<string>ShotStyleプロジェクトを選択</string>
 	<key>Choose a language</key>
 	<string>言語を選択</string>
 	<key>Choose a logo, watermark, or screenshot to place on the video</key>
@@ -782,6 +784,8 @@
 	<string>そのビデオを開けませんでした。%@</string>
 	<key>Couldn't open this video</key>
 	<string>このビデオを開けませんでした</string>
+	<key>Couldn't open “%@”</key>
+	<string>“%@”を開けませんでした</string>
 	<key>Couldn't prepare the video. Export again; if it keeps happening, restart ShotStyle.</key>
 	<string>ビデオを準備できませんでした。もう一度書き出してください。問題が続く場合は、ShotStyleを再起動してください。</string>
 	<key>Couldn't read that audio file</key>
@@ -794,6 +798,8 @@
 	<string>字幕ファイルを保存できませんでした</string>
 	<key>Couldn't save the presets file</key>
 	<string>プリセットファイルを保存できませんでした</string>
+	<key>Couldn't save the project — check there's room on the disk</key>
+	<string>プロジェクトを保存できませんでした。ディスクの空き容量を確認してください</string>
 	<key>Couldn't save the screenshot to %@. Click to check the save folder.</key>
 	<string>スクリーンショットを“%@”に保存できませんでした。クリックして保存先フォルダを確認してください。</string>
 	<key>Couldn't save the screenshot: ShotStyle can't write to %@. Click to choose another save folder.</key>
@@ -1356,6 +1362,8 @@
 	<string>イン点を遅らせる</string>
 	<key>Include aspect ratio (%@)</key>
 	<string>アスペクト比を含める（%@）</string>
+	<key>Include media (works on any Mac)</key>
+	<string>メディアを含める（どのMacでも使えます）</string>
 	<key>Includes: %@</key>
 	<string>内容: %@</string>
 	<key>Inspector tabs</key>
@@ -1378,10 +1386,14 @@
 	<string>オープニングカード、%@から%@</string>
 	<key>Iris</key>
 	<string>アイリス</string>
+	<key>It isn't a ShotStyle project, or it's damaged.</key>
+	<string>ShotStyleのプロジェクトではないか、破損しています。</string>
 	<key>It may be damaged, still being saved, or in a format this Mac can't play. MP4 and MOV videos work best.</key>
 	<string>ファイルが破損しているか、保存中か、このMacで再生できない形式の可能性があります。MP4やMOVのビデオが最適です。</string>
 	<key>It only has sound, or nothing at all. ShotStyle edits screen recordings and other videos.</key>
 	<string>サウンドだけのファイルか、空のファイルです。ShotStyleで編集できるのは画面収録やその他のビデオです。</string>
+	<key>It was edited after the project was saved. Open those newer edits, or the project as it was saved?</key>
+	<string>プロジェクトの保存後に編集されています。新しい編集を開きますか？それとも保存時のプロジェクトを開きますか？</string>
 	<key>It was moved, renamed, or deleted. Open it from where it is now.</key>
 	<string>移動、名前変更、または削除された可能性があります。現在の場所から開いてください。</string>
 	<key>It was recorded into the pixels, so it can't be resized or smoothed. New recordings capture an editable cursor by default (Settings → Recording).</key>
@@ -1478,6 +1490,8 @@
 	<string>リンクのQRコードが見つかりました</string>
 	<key>Link copied</key>
 	<string>リンクをコピーしました</string>
+	<key>Link to media (small, this Mac only)</key>
+	<string>メディアにリンク（小さい、このMacのみ）</string>
 	<key>Links</key>
 	<string>リンク</string>
 	<key>Links (%lld of %lld)</key>
@@ -1510,6 +1524,8 @@
 	<string>最大の長さに達しました</string>
 	<key>Meadow</key>
 	<string>草原</string>
+	<key>Media:</key>
+	<string>メディア：</string>
 	<key>Medium</key>
 	<string>中</string>
 	<key>Menu Bar</key>
@@ -1788,8 +1804,14 @@
 	<string>リンクを開く</string>
 	<key>Open Messages</key>
 	<string>“メッセージ”を開く</string>
+	<key>Open Newer Edits</key>
+	<string>新しい編集を開く</string>
 	<key>Open Privacy Settings</key>
 	<string>“プライバシーとセキュリティ”を開く</string>
+	<key>Open Project as Saved</key>
+	<string>保存時のプロジェクトを開く</string>
+	<key>Open Project…</key>
+	<string>プロジェクトを開く…</string>
 	<key>Open Recording Settings…</key>
 	<string>収録設定を開く…</string>
 	<key>Open Settings</key>
@@ -1800,6 +1822,8 @@
 	<string>“システム設定”＞“キーボード”＞“キーボードショートカット…”＞“スクリーンショット”を開き、スクリーンショット用のショートカットを手動でオフにしてください。</string>
 	<key>Open Video Editor</key>
 	<string>ビデオエディタを開く</string>
+	<key>Open a .shotstyle project</key>
+	<string>.shotstyleプロジェクトを開く</string>
 	<key>Open editor after recording</key>
 	<string>収録後にエディタを開く</string>
 	<key>Open in annotation editor</key>
@@ -2500,6 +2524,10 @@
 	<string>保存先フォルダ</string>
 	<key>Save Location</key>
 	<string>保存場所</string>
+	<key>Save Project</key>
+	<string>プロジェクトを保存</string>
+	<key>Save Project As…</key>
+	<string>プロジェクトを別名で保存…</string>
 	<key>Save Subtitles</key>
 	<string>字幕を保存</string>
 	<key>Save Subtitles (.srt)…</key>
@@ -2524,6 +2552,8 @@
 	<string>“%@”を保存しました</string>
 	<key>Saved %@ to %@ — click to reveal in Finder</key>
 	<string>“%1$@”を“%2$@”に保存しました。クリックするとFinderに表示します</string>
+	<key>Saved by a newer ShotStyle — some settings may not show</key>
+	<string>新しいバージョンのShotStyleで保存されています。一部の設定は表示されない場合があります</string>
 	<key>Saved capture</key>
 	<string>保存済みのスクリーンショット</string>
 	<key>Saved preset “%@”</key>
@@ -2532,6 +2562,8 @@
 	<string>“%@”に保存しました: %@</string>
 	<key>Saved — new recordings will use this look</key>
 	<string>保存しました。新しい収録にはこのスタイルが使われます</string>
+	<key>Saved “%@”</key>
+	<string>“%@”を保存しました</string>
 	<key>Saves %@ — only silences where nothing happens on screen</key>
 	<string>%@短縮。画面上で何も起きていない無音部分だけが対象です</string>
 	<key>Saves %@ — silences where the pointer rests and nothing is clicked or pressed (this older recording can't see typing)</key>
@@ -2542,6 +2574,8 @@
 	<string>保存…</string>
 	<key>Saving captures to History</key>
 	<string>スクリーンショットを履歴に保存中</string>
+	<key>Saving project…</key>
+	<string>プロジェクトを保存中…</string>
 	<key>Saving the last recording…</key>
 	<string>前回の収録を保存中…</string>
 	<key>Saving the recording</key>
@@ -3012,6 +3046,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>画像のファイルが見つかりません。“置き換える”でもう一度選択してください。</string>
 	<key>The recording couldn't be finished — saved the first %@.</key>
 	<string>収録を完了できませんでした。最初の%@を保存しました。</string>
+	<key>The recording for “%@” is missing</key>
+	<string>“%@”の収録ファイルが見つかりません</string>
 	<key>The recording's file can't be found — it may have been moved or deleted. Put it back and export again.</key>
 	<string>収録のファイルが見つかりません。移動または削除された可能性があります。元の場所に戻してから、もう一度書き出してください。</string>
 	<key>The save panel did not return a destination. Please try saving again.</key>
@@ -3058,6 +3094,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>今週</string>
 	<key>This list</key>
 	<string>この一覧</string>
+	<key>This recording has newer edits than “%@”</key>
+	<string>この収録には“%@”より新しい編集があります</string>
 	<key>This recording has no sound</key>
 	<string>この収録にはサウンドがありません</string>
 	<key>This recording has no sound to transcribe. You can still type captions yourself.</key>
@@ -3690,6 +3728,8 @@ Appleのショートカットは、“システム設定”＞“キーボード
 	<string>“%@”を読み込めません。破損しているか、保存中か、このMacで再生できない形式の可能性があります。このビデオから削除するか（“スタイル”＞“収録したビデオ”）、正常なコピーを同じ場所に置いてから、もう一度書き出してください。</string>
 	<key>“%@” found in %lld of %lld captures</key>
 	<string>%3$lld件中%2$lld件のスクリーンショットで“%1$@”が見つかりました</string>
+	<key>“%@” isn't at %@ anymore. Put it back, or save the project with Include Media next time so it carries its own copy.</key>
+	<string>“%1$@”は%2$@にありません。元に戻すか、次回は「メディアを含める」で保存して、プロジェクトに独自のコピーを持たせてください。</string>
 	<key>“%@” isn't on this Mac — showing the built-in font. Install it, or add its file with Add Font File…</key>
 	<string>“%@”はこのMacにないため、内蔵フォントを表示しています。インストールするか、「フォントファイルを追加…」でファイルを追加してください。</string>
 	<key>“%@” isn't on this Mac — using the built-in font</key>

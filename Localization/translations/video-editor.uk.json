@@ -321,6 +321,9 @@
   "Choose Image…" : {
     "uk" : "Вибрати зображення…"
   },
+  "Choose a ShotStyle project" : {
+    "uk" : "Виберіть проєкт ShotStyle"
+  },
   "Cleaning up your voice…" : {
     "uk" : "Очищення голосу…"
   },
@@ -378,8 +381,14 @@
   "Couldn't open this video" : {
     "uk" : "Не вдалося відкрити це відео"
   },
+  "Couldn't open “%@”" : {
+    "uk" : "Не вдалося відкрити «%@»"
+  },
   "Couldn't save the presets file" : {
     "uk" : "Не вдалося зберегти файл стилів"
+  },
+  "Couldn't save the project — check there's room on the disk" : {
+    "uk" : "Не вдалося зберегти проєкт — перевірте, чи є місце на диску"
   },
   "Crop" : {
     "uk" : "Обрізання"
@@ -697,6 +706,9 @@
   "Include aspect ratio (%@)" : {
     "uk" : "Включити співвідношення сторін (%@)"
   },
+  "Include media (works on any Mac)" : {
+    "uk" : "Включити медіафайли (працює на будь-якому Mac)"
+  },
   "Inspector tabs" : {
     "uk" : "Вкладки інспектора"
   },
@@ -711,6 +723,12 @@
   },
   "Intro card, %@ to %@" : {
     "uk" : "Вступна заставка, від %@ до %@"
+  },
+  "It isn't a ShotStyle project, or it's damaged." : {
+    "uk" : "Це не проєкт ShotStyle, або його пошкоджено."
+  },
+  "It was edited after the project was saved. Open those newer edits, or the project as it was saved?" : {
+    "uk" : "Його змінили після збереження проєкту. Відкрити ці новіші правки чи проєкт у збереженому вигляді?"
   },
   "It was recorded into the pixels, so it can't be resized or smoothed. New recordings capture an editable cursor by default (Settings → Recording)." : {
     "uk" : "Його записано просто в зображення, тому не можна змінити розмір чи згладити. Нові записи типово містять редагований курсор (Параметри → Запис)."
@@ -760,11 +778,17 @@
   "Lines · %lld" : {
     "uk" : "Рядки · %lld"
   },
+  "Link to media (small, this Mac only)" : {
+    "uk" : "Посилання на медіафайли (мало місця, лише цей Mac)"
+  },
   "Listens on this Mac — nothing is uploaded" : {
     "uk" : "Слухає на цьому Mac — нічого не вивантажується"
   },
   "Look" : {
     "uk" : "Вигляд"
+  },
+  "Media:" : {
+    "uk" : "Медіафайли:"
   },
   "Mirror" : {
     "uk" : "Віддзеркалити"
@@ -892,11 +916,23 @@
   "Open Another Video…" : {
     "uk" : "Відкрити інше відео…"
   },
+  "Open Newer Edits" : {
+    "uk" : "Відкрити новіші правки"
+  },
   "Open Privacy Settings" : {
     "uk" : "Відкрити «Приватність і безпека»"
   },
+  "Open Project as Saved" : {
+    "uk" : "Відкрити збережений проєкт"
+  },
+  "Open Project…" : {
+    "uk" : "Відкрити проєкт…"
+  },
   "Open Recording Settings…" : {
     "uk" : "Відкрити параметри запису…"
+  },
+  "Open a .shotstyle project" : {
+    "uk" : "Відкрити проєкт .shotstyle"
   },
   "Opens its title and length in Style" : {
     "uk" : "Відкриває назву й тривалість у вкладці «Стиль»"
@@ -1444,6 +1480,12 @@
   "Roundness" : {
     "uk" : "Заокруглення"
   },
+  "Save Project" : {
+    "uk" : "Зберегти проєкт"
+  },
+  "Save Project As…" : {
+    "uk" : "Зберегти проєкт як…"
+  },
   "Save Subtitles (.srt)…" : {
     "uk" : "Зберегти субтитри (.srt)…"
   },
@@ -1453,8 +1495,14 @@
   "Save as Preset…" : {
     "uk" : "Зберегти як стиль…"
   },
+  "Saved by a newer ShotStyle — some settings may not show" : {
+    "uk" : "Збережено новішою версією ShotStyle — деякі налаштування можуть не відображатися"
+  },
   "Saved preset “%@”" : {
     "uk" : "Стиль «%@» збережено"
+  },
+  "Saved “%@”" : {
+    "uk" : "«%@» збережено"
   },
   "Saves %@ — only silences where nothing happens on screen" : {
     "uk" : "Заощаджує %@ — лише тиша, коли на екрані нічого не відбувається"
@@ -1467,6 +1515,9 @@
   },
   "Saves the background, frame, cursor, zoom, captions, keys, and camera bubble. Apply it to any video from the Presets menu." : {
     "uk" : "Зберігає фон, рамку, вказівник, наближення, субтитри, клавіші та віконце камери. Застосовуйте його до будь-якого відео з меню «Стилі»."
+  },
+  "Saving project…" : {
+    "uk" : "Збереження проєкту…"
   },
   "Search commands" : {
     "uk" : "Шукати команди"
@@ -1689,11 +1740,17 @@
   "The cursor is part of this video" : {
     "uk" : "Курсор — частина цього відео"
   },
+  "The recording for “%@” is missing" : {
+    "uk" : "Запис для «%@» не знайдено"
+  },
   "Thickness" : {
     "uk" : "Товщина"
   },
   "This list" : {
     "uk" : "Цей список"
+  },
+  "This recording has newer edits than “%@”" : {
+    "uk" : "У цьому записі є правки новіші, ніж у «%@»"
   },
   "This recording has no sound" : {
     "uk" : "У цьому записі немає звуку"
@@ -2304,6 +2361,9 @@
   },
   "· follows cursor" : {
     "uk" : "· за курсором"
+  },
+  "“%@” isn't at %@ anymore. Put it back, or save the project with Include Media next time so it carries its own copy." : {
+    "uk" : "«%1$@» більше немає в %2$@. Поверніть файл на місце або наступного разу збережіть проєкт із параметром «Включити медіафайли», щоб у ньому була власна копія."
   },
   "⇧-drag" : {
     "uk" : "⇧-тягнути"

@@ -510,6 +510,8 @@
 	<string>Choisir une image…</string>
 	<key>Choose a .ttf or .otf font. ShotStyle keeps its own copy, so it keeps working if the file is deleted.</key>
 	<string>Choisissez une police .ttf ou .otf. ShotStyle en garde sa propre copie, qui continue de fonctionner si le fichier est supprimé.</string>
+	<key>Choose a ShotStyle project</key>
+	<string>Choisissez un projet ShotStyle</string>
 	<key>Choose a language</key>
 	<string>Choisir une langue</string>
 	<key>Choose a logo, watermark, or screenshot to place on the video</key>
@@ -718,6 +720,8 @@
 	<string>Impossible d’ouvrir cette vidéo — %@</string>
 	<key>Couldn't open this video</key>
 	<string>Impossible d’ouvrir cette vidéo</string>
+	<key>Couldn't open “%@”</key>
+	<string>Impossible d’ouvrir « %@ »</string>
 	<key>Couldn't prepare the video. Export again; if it keeps happening, restart ShotStyle.</key>
 	<string>Impossible de préparer la vidéo. Exportez à nouveau ; si le problème persiste, redémarrez ShotStyle.</string>
 	<key>Couldn't read that audio file</key>
@@ -730,6 +734,8 @@
 	<string>Impossible d’enregistrer le fichier de sous-titres</string>
 	<key>Couldn't save the presets file</key>
 	<string>Impossible d’enregistrer le fichier de préréglages</string>
+	<key>Couldn't save the project — check there's room on the disk</key>
+	<string>Impossible d’enregistrer le projet : vérifiez qu’il reste de la place sur le disque</string>
 	<key>Couldn't save the screenshot to %@. Click to check the save folder.</key>
 	<string>Impossible d’enregistrer la capture dans « %@ ». Cliquez pour vérifier le dossier d’enregistrement.</string>
 	<key>Couldn't save the screenshot: ShotStyle can't write to %@. Click to choose another save folder.</key>
@@ -1276,6 +1282,8 @@
 	<string>Entrée plus tard</string>
 	<key>Include aspect ratio (%@)</key>
 	<string>Inclure le format (%@)</string>
+	<key>Include media (works on any Mac)</key>
+	<string>Inclure les médias (fonctionne sur tout Mac)</string>
 	<key>Includes: %@</key>
 	<string>Contenu : %@</string>
 	<key>Inspector tabs</key>
@@ -1298,10 +1306,14 @@
 	<string>Carton d’intro, de %@ à %@</string>
 	<key>Iris</key>
 	<string>Iris</string>
+	<key>It isn't a ShotStyle project, or it's damaged.</key>
+	<string>Ce n’est pas un projet ShotStyle, ou il est endommagé.</string>
 	<key>It may be damaged, still being saved, or in a format this Mac can't play. MP4 and MOV videos work best.</key>
 	<string>Le fichier est peut-être endommagé, encore en cours d’enregistrement, ou dans un format que ce Mac ne peut pas lire. Les vidéos MP4 et MOV fonctionnent le mieux.</string>
 	<key>It only has sound, or nothing at all. ShotStyle edits screen recordings and other videos.</key>
 	<string>Le fichier ne contient que du son, ou rien du tout. ShotStyle modifie les enregistrements de l’écran et les autres vidéos.</string>
+	<key>It was edited after the project was saved. Open those newer edits, or the project as it was saved?</key>
+	<string>Il a été modifié après l’enregistrement du projet. Ouvrir ces modifications plus récentes, ou le projet tel qu’il a été enregistré ?</string>
 	<key>It was moved, renamed, or deleted. Open it from where it is now.</key>
 	<string>Elle a été déplacée, renommée ou supprimée. Ouvrez-la depuis son emplacement actuel.</string>
 	<key>It was recorded into the pixels, so it can't be resized or smoothed. New recordings capture an editable cursor by default (Settings → Recording).</key>
@@ -1384,6 +1396,8 @@
 	<string>Code QR avec lien détecté</string>
 	<key>Link copied</key>
 	<string>Lien copié</string>
+	<key>Link to media (small, this Mac only)</key>
+	<string>Lier aux médias (léger, ce Mac uniquement)</string>
 	<key>Links</key>
 	<string>Liens</string>
 	<key>Links (%lld of %lld)</key>
@@ -1416,6 +1430,8 @@
 	<string>Longueur maximale atteinte</string>
 	<key>Meadow</key>
 	<string>Prairie</string>
+	<key>Media:</key>
+	<string>Médias :</string>
 	<key>Medium</key>
 	<string>Moyenne</string>
 	<key>Menu Bar</key>
@@ -1694,8 +1710,14 @@
 	<string>Ouvrir le lien</string>
 	<key>Open Messages</key>
 	<string>Ouvrir Messages</string>
+	<key>Open Newer Edits</key>
+	<string>Ouvrir les modifications récentes</string>
 	<key>Open Privacy Settings</key>
 	<string>Ouvrir Confidentialité et sécurité</string>
+	<key>Open Project as Saved</key>
+	<string>Ouvrir le projet enregistré</string>
+	<key>Open Project…</key>
+	<string>Ouvrir un projet…</string>
 	<key>Open Recording Settings…</key>
 	<string>Ouvrir les réglages d’enregistrement…</string>
 	<key>Open Settings</key>
@@ -1706,6 +1728,8 @@
 	<string>Ouvrez Réglages Système → Clavier → Raccourcis clavier → Captures d’écran et désactivez manuellement les raccourcis de capture.</string>
 	<key>Open Video Editor</key>
 	<string>Ouvrir l’éditeur vidéo</string>
+	<key>Open a .shotstyle project</key>
+	<string>Ouvrir un projet .shotstyle</string>
 	<key>Open editor after recording</key>
 	<string>Ouvrir l’éditeur après l’enregistrement</string>
 	<key>Open in annotation editor</key>
@@ -2384,6 +2408,10 @@
 	<string>Dossier d’enregistrement</string>
 	<key>Save Location</key>
 	<string>Emplacement d’enregistrement</string>
+	<key>Save Project</key>
+	<string>Enregistrer le projet</string>
+	<key>Save Project As…</key>
+	<string>Enregistrer le projet sous…</string>
 	<key>Save Subtitles</key>
 	<string>Enregistrer les sous-titres</string>
 	<key>Save Subtitles (.srt)…</key>
@@ -2408,6 +2436,8 @@
 	<string>%@ enregistré</string>
 	<key>Saved %@ to %@ — click to reveal in Finder</key>
 	<string>%1$@ enregistré dans %2$@ — cliquez pour l’afficher dans le Finder</string>
+	<key>Saved by a newer ShotStyle — some settings may not show</key>
+	<string>Enregistré par une version plus récente de ShotStyle : certains réglages peuvent ne pas apparaître</string>
 	<key>Saved capture</key>
 	<string>Capture enregistrée</string>
 	<key>Saved preset “%@”</key>
@@ -2416,6 +2446,8 @@
 	<string>Enregistré dans « %@ » : %@</string>
 	<key>Saved — new recordings will use this look</key>
 	<string>Enregistré — les nouveaux enregistrements utiliseront ce style</string>
+	<key>Saved “%@”</key>
+	<string>« %@ » enregistré</string>
 	<key>Saves %@ — only silences where nothing happens on screen</key>
 	<string>Gagne %@ — uniquement les silences où rien ne se passe à l’écran</string>
 	<key>Saves %@ — silences where the pointer rests and nothing is clicked or pressed (this older recording can't see typing)</key>
@@ -2426,6 +2458,8 @@
 	<string>Enregistrer…</string>
 	<key>Saving captures to History</key>
 	<string>Ajout des captures à l’historique</string>
+	<key>Saving project…</key>
+	<string>Enregistrement du projet…</string>
 	<key>Saving the last recording…</key>
 	<string>Finalisation du dernier enregistrement…</string>
 	<key>Saving the recording</key>
@@ -2884,6 +2918,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Le fichier de l’image a disparu — choisissez-le à nouveau avec Remplacer.</string>
 	<key>The recording couldn't be finished — saved the first %@.</key>
 	<string>L’enregistrement n’a pas pu être finalisé — le début (%@) a été sauvegardé.</string>
+	<key>The recording for “%@” is missing</key>
+	<string>L’enregistrement de « %@ » est introuvable</string>
 	<key>The recording's file can't be found — it may have been moved or deleted. Put it back and export again.</key>
 	<string>Le fichier de l’enregistrement est introuvable — il a peut-être été déplacé ou supprimé. Remettez-le en place, puis exportez à nouveau.</string>
 	<key>The save panel did not return a destination. Please try saving again.</key>
@@ -2930,6 +2966,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Cette semaine</string>
 	<key>This list</key>
 	<string>Cette liste</string>
+	<key>This recording has newer edits than “%@”</key>
+	<string>Cet enregistrement a des modifications plus récentes que « %@ »</string>
 	<key>This recording has no sound</key>
 	<string>Cet enregistrement n’a pas de son</string>
 	<key>This recording has no sound to transcribe. You can still type captions yourself.</key>
@@ -3550,6 +3588,8 @@ Vous pouvez réactiver les raccourcis d’Apple à tout moment dans Réglages Sy
 	<string>« %@ » ne peut pas être lu — il est peut-être endommagé, encore en cours d’enregistrement, ou dans un format que ce Mac ne peut pas lire. Retirez-le de cette vidéo (Style → Enregistrements), ou remplacez-le par une copie qui fonctionne, puis exportez à nouveau.</string>
 	<key>“%@” found in %lld of %lld captures</key>
 	<string>« %1$@ » trouvé dans %2$lld sur %3$lld captures</string>
+	<key>“%@” isn't at %@ anymore. Put it back, or save the project with Include Media next time so it carries its own copy.</key>
+	<string>« %1$@ » n’est plus dans %2$@. Remettez-le en place, ou enregistrez le projet avec Inclure les médias la prochaine fois pour qu’il emporte sa propre copie.</string>
 	<key>“%@” isn't on this Mac — showing the built-in font. Install it, or add its file with Add Font File…</key>
 	<string>« %@ » n’est pas sur ce Mac : la police intégrée est affichée. Installez-la ou ajoutez son fichier avec Ajouter un fichier de police…</string>
 	<key>“%@” isn't on this Mac — using the built-in font</key>

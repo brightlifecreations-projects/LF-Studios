@@ -326,6 +326,9 @@
   "Choose Image…" : {
     "ru" : "Выбрать изображение…"
   },
+  "Choose a ShotStyle project" : {
+    "ru" : "Выберите проект ShotStyle"
+  },
   "Cleaning up your voice…" : {
     "ru" : "Очистка голоса…"
   },
@@ -383,8 +386,14 @@
   "Couldn't open this video" : {
     "ru" : "Не удалось открыть это видео"
   },
+  "Couldn't open “%@”" : {
+    "ru" : "Не удалось открыть «%@»"
+  },
   "Couldn't save the presets file" : {
     "ru" : "Не удалось сохранить файл стилей"
+  },
+  "Couldn't save the project — check there's room on the disk" : {
+    "ru" : "Не удалось сохранить проект — проверьте, есть ли место на диске"
   },
   "Crop" : {
     "ru" : "Обрезка"
@@ -702,6 +711,9 @@
   "Include aspect ratio (%@)" : {
     "ru" : "Включить соотношение сторон (%@)"
   },
+  "Include media (works on any Mac)" : {
+    "ru" : "Включить медиафайлы (работает на любом Mac)"
+  },
   "Inspector tabs" : {
     "ru" : "Вкладки инспектора"
   },
@@ -716,6 +728,12 @@
   },
   "Intro card, %@ to %@" : {
     "ru" : "Начальный титр, с %@ до %@"
+  },
+  "It isn't a ShotStyle project, or it's damaged." : {
+    "ru" : "Это не проект ShotStyle, или он повреждён."
+  },
+  "It was edited after the project was saved. Open those newer edits, or the project as it was saved?" : {
+    "ru" : "Его изменили после сохранения проекта. Открыть эти более новые правки или проект в сохранённом виде?"
   },
   "It was recorded into the pixels, so it can't be resized or smoothed. New recordings capture an editable cursor by default (Settings → Recording)." : {
     "ru" : "Он записан прямо в изображение, поэтому нельзя изменить его размер или сгладить его. Новые записи по умолчанию сохраняют редактируемый указатель (Настройки → Запись)."
@@ -765,11 +783,17 @@
   "Lines · %lld" : {
     "ru" : "Строки · %lld"
   },
+  "Link to media (small, this Mac only)" : {
+    "ru" : "Ссылки на медиафайлы (мало места, только этот Mac)"
+  },
   "Listens on this Mac — nothing is uploaded" : {
     "ru" : "Работает на этом Mac — ничего не отправляется в сеть"
   },
   "Look" : {
     "ru" : "Вид"
+  },
+  "Media:" : {
+    "ru" : "Медиафайлы:"
   },
   "Mirror" : {
     "ru" : "Зеркальное отражение"
@@ -897,11 +921,23 @@
   "Open Another Video…" : {
     "ru" : "Открыть другое видео…"
   },
+  "Open Newer Edits" : {
+    "ru" : "Открыть новые правки"
+  },
   "Open Privacy Settings" : {
     "ru" : "Открыть настройки конфиденциальности"
   },
+  "Open Project as Saved" : {
+    "ru" : "Открыть сохранённый проект"
+  },
+  "Open Project…" : {
+    "ru" : "Открыть проект…"
+  },
   "Open Recording Settings…" : {
     "ru" : "Открыть настройки записи…"
+  },
+  "Open a .shotstyle project" : {
+    "ru" : "Открыть проект .shotstyle"
   },
   "Opens its title and length in Style" : {
     "ru" : "Открывает его название и длительность во вкладке «Стиль»"
@@ -1449,6 +1485,12 @@
   "Roundness" : {
     "ru" : "Скругление"
   },
+  "Save Project" : {
+    "ru" : "Сохранить проект"
+  },
+  "Save Project As…" : {
+    "ru" : "Сохранить проект как…"
+  },
   "Save Subtitles (.srt)…" : {
     "ru" : "Сохранить субтитры (.srt)…"
   },
@@ -1458,8 +1500,14 @@
   "Save as Preset…" : {
     "ru" : "Сохранить как стиль…"
   },
+  "Saved by a newer ShotStyle — some settings may not show" : {
+    "ru" : "Сохранено более новой версией ShotStyle — некоторые настройки могут не отображаться"
+  },
   "Saved preset “%@”" : {
     "ru" : "Стиль «%@» сохранён"
+  },
+  "Saved “%@”" : {
+    "ru" : "«%@» сохранён"
   },
   "Saves %@ — only silences where nothing happens on screen" : {
     "ru" : "Экономит %@ — только паузы, когда на экране ничего не происходит"
@@ -1472,6 +1520,9 @@
   },
   "Saves the background, frame, cursor, zoom, captions, keys, and camera bubble. Apply it to any video from the Presets menu." : {
     "ru" : "Сохраняет фон, рамку, указатель, приближение, субтитры, клавиши и окошко камеры. Применяйте его к любому видео из меню «Стили»."
+  },
+  "Saving project…" : {
+    "ru" : "Сохранение проекта…"
   },
   "Search commands" : {
     "ru" : "Поиск команд"
@@ -1694,11 +1745,17 @@
   "The cursor is part of this video" : {
     "ru" : "Указатель — часть этого видео"
   },
+  "The recording for “%@” is missing" : {
+    "ru" : "Запись для «%@» не найдена"
+  },
   "Thickness" : {
     "ru" : "Толщина"
   },
   "This list" : {
     "ru" : "Этот список"
+  },
+  "This recording has newer edits than “%@”" : {
+    "ru" : "В этой записи есть правки новее, чем в «%@»"
   },
   "This recording has no sound" : {
     "ru" : "В этой записи нет звука"
@@ -2309,6 +2366,9 @@
   },
   "· follows cursor" : {
     "ru" : "· за указателем"
+  },
+  "“%@” isn't at %@ anymore. Put it back, or save the project with Include Media next time so it carries its own copy." : {
+    "ru" : "«%1$@» больше нет в %2$@. Верните файл на место или в следующий раз сохраните проект с параметром «Включить медиафайлы», чтобы в нём была своя копия."
   },
   "⇧-drag" : {
     "ru" : "⇧ + тянуть"

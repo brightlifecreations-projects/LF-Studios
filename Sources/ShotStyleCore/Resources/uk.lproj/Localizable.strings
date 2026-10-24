@@ -512,6 +512,8 @@
 	<string>Вибрати зображення…</string>
 	<key>Choose a .ttf or .otf font. ShotStyle keeps its own copy, so it keeps working if the file is deleted.</key>
 	<string>Виберіть шрифт .ttf або .otf. ShotStyle збереже власну копію, тож шрифт працюватиме, навіть якщо файл видалити.</string>
+	<key>Choose a ShotStyle project</key>
+	<string>Виберіть проєкт ShotStyle</string>
 	<key>Choose a language</key>
 	<string>Виберіть мову</string>
 	<key>Choose a logo, watermark, or screenshot to place on the video</key>
@@ -720,6 +722,8 @@
 	<string>Не вдалося відкрити відео — %@</string>
 	<key>Couldn't open this video</key>
 	<string>Не вдалося відкрити це відео</string>
+	<key>Couldn't open “%@”</key>
+	<string>Не вдалося відкрити «%@»</string>
 	<key>Couldn't prepare the video. Export again; if it keeps happening, restart ShotStyle.</key>
 	<string>Не вдалося підготувати відео. Експортуйте ще раз; якщо це повторюється, перезапустіть ShotStyle.</string>
 	<key>Couldn't read that audio file</key>
@@ -732,6 +736,8 @@
 	<string>Не вдалося зберегти файл субтитрів</string>
 	<key>Couldn't save the presets file</key>
 	<string>Не вдалося зберегти файл стилів</string>
+	<key>Couldn't save the project — check there's room on the disk</key>
+	<string>Не вдалося зберегти проєкт — перевірте, чи є місце на диску</string>
 	<key>Couldn't save the screenshot to %@. Click to check the save folder.</key>
 	<string>Не вдалося зберегти знімок екрана в «%@». Клацніть, щоб перевірити папку збереження.</string>
 	<key>Couldn't save the screenshot: ShotStyle can't write to %@. Click to choose another save folder.</key>
@@ -1278,6 +1284,8 @@
 	<string>Початок пізніше</string>
 	<key>Include aspect ratio (%@)</key>
 	<string>Включити співвідношення сторін (%@)</string>
+	<key>Include media (works on any Mac)</key>
+	<string>Включити медіафайли (працює на будь-якому Mac)</string>
 	<key>Includes: %@</key>
 	<string>Містить: %@</string>
 	<key>Inspector tabs</key>
@@ -1300,10 +1308,14 @@
 	<string>Вступна заставка, від %@ до %@</string>
 	<key>Iris</key>
 	<string>Ірис</string>
+	<key>It isn't a ShotStyle project, or it's damaged.</key>
+	<string>Це не проєкт ShotStyle, або його пошкоджено.</string>
 	<key>It may be damaged, still being saved, or in a format this Mac can't play. MP4 and MOV videos work best.</key>
 	<string>Можливо, файл пошкоджено, він ще зберігається або має формат, який цей Mac не відтворює. Найкраще працюють відео MP4 і MOV.</string>
 	<key>It only has sound, or nothing at all. ShotStyle edits screen recordings and other videos.</key>
 	<string>Він містить лише звук або взагалі нічого. ShotStyle редагує записи екрана та інші відео.</string>
+	<key>It was edited after the project was saved. Open those newer edits, or the project as it was saved?</key>
+	<string>Його змінили після збереження проєкту. Відкрити ці новіші правки чи проєкт у збереженому вигляді?</string>
 	<key>It was moved, renamed, or deleted. Open it from where it is now.</key>
 	<string>Його переміщено, перейменовано чи видалено. Відкрийте його з нового місця.</string>
 	<key>It was recorded into the pixels, so it can't be resized or smoothed. New recordings capture an editable cursor by default (Settings → Recording).</key>
@@ -1386,6 +1398,8 @@
 	<string>Знайдено QR-код із посиланням</string>
 	<key>Link copied</key>
 	<string>Посилання скопійовано</string>
+	<key>Link to media (small, this Mac only)</key>
+	<string>Посилання на медіафайли (мало місця, лише цей Mac)</string>
 	<key>Links</key>
 	<string>Посилання</string>
 	<key>Links (%lld of %lld)</key>
@@ -1418,6 +1432,8 @@
 	<string>Досягнуто максимальної довжини</string>
 	<key>Meadow</key>
 	<string>Луг</string>
+	<key>Media:</key>
+	<string>Медіафайли:</string>
 	<key>Medium</key>
 	<string>Середній</string>
 	<key>Menu Bar</key>
@@ -1696,8 +1712,14 @@
 	<string>Відкрити посилання</string>
 	<key>Open Messages</key>
 	<string>Відкрити Повідомлення</string>
+	<key>Open Newer Edits</key>
+	<string>Відкрити новіші правки</string>
 	<key>Open Privacy Settings</key>
 	<string>Відкрити «Приватність і безпека»</string>
+	<key>Open Project as Saved</key>
+	<string>Відкрити збережений проєкт</string>
+	<key>Open Project…</key>
+	<string>Відкрити проєкт…</string>
 	<key>Open Recording Settings…</key>
 	<string>Відкрити параметри запису…</string>
 	<key>Open Settings</key>
@@ -1708,6 +1730,8 @@
 	<string>Відкрийте Системні параметри → Клавіатура → Клавіатурні скорочення → Знімки екрана й вимкніть скорочення для знімків екрана вручну.</string>
 	<key>Open Video Editor</key>
 	<string>Відкрити відеоредактор</string>
+	<key>Open a .shotstyle project</key>
+	<string>Відкрити проєкт .shotstyle</string>
 	<key>Open editor after recording</key>
 	<string>Відкривати редактор після запису</string>
 	<key>Open in annotation editor</key>
@@ -2386,6 +2410,10 @@
 	<string>Папка збереження</string>
 	<key>Save Location</key>
 	<string>Місце збереження</string>
+	<key>Save Project</key>
+	<string>Зберегти проєкт</string>
+	<key>Save Project As…</key>
+	<string>Зберегти проєкт як…</string>
 	<key>Save Subtitles</key>
 	<string>Зберегти субтитри</string>
 	<key>Save Subtitles (.srt)…</key>
@@ -2410,6 +2438,8 @@
 	<string>Збережено «%@»</string>
 	<key>Saved %@ to %@ — click to reveal in Finder</key>
 	<string>«%1$@» збережено в «%2$@» — клацніть, щоб показати у Finder</string>
+	<key>Saved by a newer ShotStyle — some settings may not show</key>
+	<string>Збережено новішою версією ShotStyle — деякі налаштування можуть не відображатися</string>
 	<key>Saved capture</key>
 	<string>Збережений знімок</string>
 	<key>Saved preset “%@”</key>
@@ -2418,6 +2448,8 @@
 	<string>Збережено в «%@»: %@</string>
 	<key>Saved — new recordings will use this look</key>
 	<string>Збережено — нові записи матимуть такий стиль</string>
+	<key>Saved “%@”</key>
+	<string>«%@» збережено</string>
 	<key>Saves %@ — only silences where nothing happens on screen</key>
 	<string>Заощаджує %@ — лише тиша, коли на екрані нічого не відбувається</string>
 	<key>Saves %@ — silences where the pointer rests and nothing is clicked or pressed (this older recording can't see typing)</key>
@@ -2428,6 +2460,8 @@
 	<string>Зберегти…</string>
 	<key>Saving captures to History</key>
 	<string>Збереження знімків в історію</string>
+	<key>Saving project…</key>
+	<string>Збереження проєкту…</string>
 	<key>Saving the last recording…</key>
 	<string>Збереження останнього запису…</string>
 	<key>Saving the recording</key>
@@ -2886,6 +2920,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Файл зображення зник — виберіть його знову за допомогою «Замінити».</string>
 	<key>The recording couldn't be finished — saved the first %@.</key>
 	<string>Не вдалося завершити запис — збережено перші %@.</string>
+	<key>The recording for “%@” is missing</key>
+	<string>Запис для «%@» не знайдено</string>
 	<key>The recording's file can't be found — it may have been moved or deleted. Put it back and export again.</key>
 	<string>Не вдається знайти файл запису — можливо, його переміщено чи видалено. Поверніть його на місце й експортуйте ще раз.</string>
 	<key>The save panel did not return a destination. Please try saving again.</key>
@@ -2932,6 +2968,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Цього тижня</string>
 	<key>This list</key>
 	<string>Цей список</string>
+	<key>This recording has newer edits than “%@”</key>
+	<string>У цьому записі є правки новіші, ніж у «%@»</string>
 	<key>This recording has no sound</key>
 	<string>У цьому записі немає звуку</string>
 	<key>This recording has no sound to transcribe. You can still type captions yourself.</key>
@@ -3552,6 +3590,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>Не вдається прочитати «%@» — можливо, файл пошкоджено, він ще зберігається або має формат, який цей Mac не відтворює. Вилучіть його з цього відео (Стиль → Записи) або замініть робочою копією, а потім експортуйте ще раз.</string>
 	<key>“%@” found in %lld of %lld captures</key>
 	<string>«%@» знайдено в %lld з %lld знімків</string>
+	<key>“%@” isn't at %@ anymore. Put it back, or save the project with Include Media next time so it carries its own copy.</key>
+	<string>«%1$@» більше немає в %2$@. Поверніть файл на місце або наступного разу збережіть проєкт із параметром «Включити медіафайли», щоб у ньому була власна копія.</string>
 	<key>“%@” isn't on this Mac — showing the built-in font. Install it, or add its file with Add Font File…</key>
 	<string>Шрифту «%@» немає на цьому Mac — показано вбудований шрифт. Установіть його або додайте файл через «Додати файл шрифту…».</string>
 	<key>“%@” isn't on this Mac — using the built-in font</key>

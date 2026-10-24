@@ -510,6 +510,8 @@
 	<string>Выбрать изображение…</string>
 	<key>Choose a .ttf or .otf font. ShotStyle keeps its own copy, so it keeps working if the file is deleted.</key>
 	<string>Выберите шрифт .ttf или .otf. ShotStyle сохранит свою копию, и шрифт продолжит работать, даже если файл удалить.</string>
+	<key>Choose a ShotStyle project</key>
+	<string>Выберите проект ShotStyle</string>
 	<key>Choose a language</key>
 	<string>Выберите язык</string>
 	<key>Choose a logo, watermark, or screenshot to place on the video</key>
@@ -718,6 +720,8 @@
 	<string>Не удалось открыть видео — %@</string>
 	<key>Couldn't open this video</key>
 	<string>Не удалось открыть это видео</string>
+	<key>Couldn't open “%@”</key>
+	<string>Не удалось открыть «%@»</string>
 	<key>Couldn't prepare the video. Export again; if it keeps happening, restart ShotStyle.</key>
 	<string>Не удалось подготовить видео. Экспортируйте снова; если ошибка повторится, перезапустите ShotStyle.</string>
 	<key>Couldn't read that audio file</key>
@@ -730,6 +734,8 @@
 	<string>Не удалось сохранить файл субтитров</string>
 	<key>Couldn't save the presets file</key>
 	<string>Не удалось сохранить файл стилей</string>
+	<key>Couldn't save the project — check there's room on the disk</key>
+	<string>Не удалось сохранить проект — проверьте, есть ли место на диске</string>
 	<key>Couldn't save the screenshot to %@. Click to check the save folder.</key>
 	<string>Не удалось сохранить снимок экрана в папку «%@». Нажмите, чтобы проверить папку для сохранения.</string>
 	<key>Couldn't save the screenshot: ShotStyle can't write to %@. Click to choose another save folder.</key>
@@ -1276,6 +1282,8 @@
 	<string>Начало позже</string>
 	<key>Include aspect ratio (%@)</key>
 	<string>Включить соотношение сторон (%@)</string>
+	<key>Include media (works on any Mac)</key>
+	<string>Включить медиафайлы (работает на любом Mac)</string>
 	<key>Includes: %@</key>
 	<string>Включает: %@</string>
 	<key>Inspector tabs</key>
@@ -1298,10 +1306,14 @@
 	<string>Начальный титр, с %@ до %@</string>
 	<key>Iris</key>
 	<string>Ирис</string>
+	<key>It isn't a ShotStyle project, or it's damaged.</key>
+	<string>Это не проект ShotStyle, или он повреждён.</string>
 	<key>It may be damaged, still being saved, or in a format this Mac can't play. MP4 and MOV videos work best.</key>
 	<string>Возможно, файл поврежден, еще сохраняется или имеет формат, который этот Mac не может воспроизвести. Лучше всего подходят видео MP4 и MOV.</string>
 	<key>It only has sound, or nothing at all. ShotStyle edits screen recordings and other videos.</key>
 	<string>В нем есть только звук или вообще ничего. ShotStyle редактирует записи экрана и другие видео.</string>
+	<key>It was edited after the project was saved. Open those newer edits, or the project as it was saved?</key>
+	<string>Его изменили после сохранения проекта. Открыть эти более новые правки или проект в сохранённом виде?</string>
 	<key>It was moved, renamed, or deleted. Open it from where it is now.</key>
 	<string>Файл был перемещен, переименован или удален. Откройте его из нового места.</string>
 	<key>It was recorded into the pixels, so it can't be resized or smoothed. New recordings capture an editable cursor by default (Settings → Recording).</key>
@@ -1384,6 +1396,8 @@
 	<string>Найден QR-код со ссылкой</string>
 	<key>Link copied</key>
 	<string>Ссылка скопирована</string>
+	<key>Link to media (small, this Mac only)</key>
+	<string>Ссылки на медиафайлы (мало места, только этот Mac)</string>
 	<key>Links</key>
 	<string>Ссылки</string>
 	<key>Links (%lld of %lld)</key>
@@ -1416,6 +1430,8 @@
 	<string>Достигнута максимальная длина</string>
 	<key>Meadow</key>
 	<string>Луг</string>
+	<key>Media:</key>
+	<string>Медиафайлы:</string>
 	<key>Medium</key>
 	<string>Средний</string>
 	<key>Menu Bar</key>
@@ -1694,8 +1710,14 @@
 	<string>Открыть ссылку</string>
 	<key>Open Messages</key>
 	<string>Открыть Сообщения</string>
+	<key>Open Newer Edits</key>
+	<string>Открыть новые правки</string>
 	<key>Open Privacy Settings</key>
 	<string>Открыть настройки конфиденциальности</string>
+	<key>Open Project as Saved</key>
+	<string>Открыть сохранённый проект</string>
+	<key>Open Project…</key>
+	<string>Открыть проект…</string>
 	<key>Open Recording Settings…</key>
 	<string>Открыть настройки записи…</string>
 	<key>Open Settings</key>
@@ -1706,6 +1728,8 @@
 	<string>Откройте Системные настройки → Клавиатура → Сочетания клавиш → Снимки экрана и выключите сочетания клавиш для снимков экрана вручную.</string>
 	<key>Open Video Editor</key>
 	<string>Открыть видеоредактор</string>
+	<key>Open a .shotstyle project</key>
+	<string>Открыть проект .shotstyle</string>
 	<key>Open editor after recording</key>
 	<string>Открывать редактор после записи</string>
 	<key>Open in annotation editor</key>
@@ -2384,6 +2408,10 @@
 	<string>Папка для сохранения</string>
 	<key>Save Location</key>
 	<string>Место сохранения</string>
+	<key>Save Project</key>
+	<string>Сохранить проект</string>
+	<key>Save Project As…</key>
+	<string>Сохранить проект как…</string>
 	<key>Save Subtitles</key>
 	<string>Сохранить субтитры</string>
 	<key>Save Subtitles (.srt)…</key>
@@ -2408,6 +2436,8 @@
 	<string>Сохранено: %@</string>
 	<key>Saved %@ to %@ — click to reveal in Finder</key>
 	<string>Файл «%@» сохранен в папку «%@» — нажмите, чтобы показать в Finder</string>
+	<key>Saved by a newer ShotStyle — some settings may not show</key>
+	<string>Сохранено более новой версией ShotStyle — некоторые настройки могут не отображаться</string>
 	<key>Saved capture</key>
 	<string>Сохраненный снимок</string>
 	<key>Saved preset “%@”</key>
@@ -2416,6 +2446,8 @@
 	<string>Сохранено в папку «%@»: %@</string>
 	<key>Saved — new recordings will use this look</key>
 	<string>Сохранено — новые записи будут использовать этот стиль</string>
+	<key>Saved “%@”</key>
+	<string>«%@» сохранён</string>
 	<key>Saves %@ — only silences where nothing happens on screen</key>
 	<string>Экономит %@ — только паузы, когда на экране ничего не происходит</string>
 	<key>Saves %@ — silences where the pointer rests and nothing is clicked or pressed (this older recording can't see typing)</key>
@@ -2426,6 +2458,8 @@
 	<string>Сохранить…</string>
 	<key>Saving captures to History</key>
 	<string>Сохранение снимков в историю</string>
+	<key>Saving project…</key>
+	<string>Сохранение проекта…</string>
 	<key>Saving the last recording…</key>
 	<string>Сохранение последней записи…</string>
 	<key>Saving the recording</key>
@@ -2884,6 +2918,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Файл изображения пропал — выберите его снова с помощью «Заменить».</string>
 	<key>The recording couldn't be finished — saved the first %@.</key>
 	<string>Не удалось завершить запись — сохранены первые %@.</string>
+	<key>The recording for “%@” is missing</key>
+	<string>Запись для «%@» не найдена</string>
 	<key>The recording's file can't be found — it may have been moved or deleted. Put it back and export again.</key>
 	<string>Файл записи не найден — возможно, его переместили или удалили. Верните его на место и экспортируйте снова.</string>
 	<key>The save panel did not return a destination. Please try saving again.</key>
@@ -2930,6 +2966,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>На этой неделе</string>
 	<key>This list</key>
 	<string>Этот список</string>
+	<key>This recording has newer edits than “%@”</key>
+	<string>В этой записи есть правки новее, чем в «%@»</string>
 	<key>This recording has no sound</key>
 	<string>В этой записи нет звука</string>
 	<key>This recording has no sound to transcribe. You can still type captions yourself.</key>
@@ -3550,6 +3588,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>Не удается прочитать «%@» — возможно, файл поврежден, еще сохраняется или имеет формат, который этот Mac не может воспроизвести. Удалите его из этого видео (Стиль → Записи) или замените рабочей копией и экспортируйте снова.</string>
 	<key>“%@” found in %lld of %lld captures</key>
 	<string>Снимков с «%@»: %lld из %lld</string>
+	<key>“%@” isn't at %@ anymore. Put it back, or save the project with Include Media next time so it carries its own copy.</key>
+	<string>«%1$@» больше нет в %2$@. Верните файл на место или в следующий раз сохраните проект с параметром «Включить медиафайлы», чтобы в нём была своя копия.</string>
 	<key>“%@” isn't on this Mac — showing the built-in font. Install it, or add its file with Add Font File…</key>
 	<string>Шрифта «%@» нет на этом Mac — показан встроенный шрифт. Установите его или добавьте файл через «Добавить файл шрифта…».</string>
 	<key>“%@” isn't on this Mac — using the built-in font</key>

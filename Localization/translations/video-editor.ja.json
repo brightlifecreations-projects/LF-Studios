@@ -266,6 +266,9 @@
   "Choose Image…" : {
     "ja" : "画像を選択…"
   },
+  "Choose a ShotStyle project" : {
+    "ja" : "ShotStyleプロジェクトを選択"
+  },
   "Cleaning up your voice…" : {
     "ja" : "声を補正中…"
   },
@@ -323,8 +326,14 @@
   "Couldn't open this video" : {
     "ja" : "このビデオを開けませんでした"
   },
+  "Couldn't open “%@”" : {
+    "ja" : "“%@”を開けませんでした"
+  },
   "Couldn't save the presets file" : {
     "ja" : "プリセットファイルを保存できませんでした"
+  },
+  "Couldn't save the project — check there's room on the disk" : {
+    "ja" : "プロジェクトを保存できませんでした。ディスクの空き容量を確認してください"
   },
   "Crop" : {
     "ja" : "切り取り"
@@ -632,6 +641,9 @@
   "Include aspect ratio (%@)" : {
     "ja" : "アスペクト比を含める（%@）"
   },
+  "Include media (works on any Mac)" : {
+    "ja" : "メディアを含める（どのMacでも使えます）"
+  },
   "Inspector tabs" : {
     "ja" : "インスペクタのタブ"
   },
@@ -646,6 +658,12 @@
   },
   "Intro card, %@ to %@" : {
     "ja" : "オープニングカード、%@から%@"
+  },
+  "It isn't a ShotStyle project, or it's damaged." : {
+    "ja" : "ShotStyleのプロジェクトではないか、破損しています。"
+  },
+  "It was edited after the project was saved. Open those newer edits, or the project as it was saved?" : {
+    "ja" : "プロジェクトの保存後に編集されています。新しい編集を開きますか？それとも保存時のプロジェクトを開きますか？"
   },
   "It was recorded into the pixels, so it can't be resized or smoothed. New recordings capture an editable cursor by default (Settings → Recording)." : {
     "ja" : "ポインタが映像に焼き込まれているため、サイズの変更や滑らかにする処理はできません。新しい収録では、デフォルトで編集可能なポインタが記録されます（“設定”＞“収録”）。"
@@ -695,11 +713,17 @@
   "Lines · %lld" : {
     "ja" : "字幕の行 · %lld"
   },
+  "Link to media (small, this Mac only)" : {
+    "ja" : "メディアにリンク（小さい、このMacのみ）"
+  },
   "Listens on this Mac — nothing is uploaded" : {
     "ja" : "このMac上で聞き取ります。何もアップロードされません"
   },
   "Look" : {
     "ja" : "スタイル"
+  },
+  "Media:" : {
+    "ja" : "メディア："
   },
   "Mirror" : {
     "ja" : "左右反転"
@@ -827,11 +851,23 @@
   "Open Another Video…" : {
     "ja" : "別のビデオを開く…"
   },
+  "Open Newer Edits" : {
+    "ja" : "新しい編集を開く"
+  },
   "Open Privacy Settings" : {
     "ja" : "“プライバシーとセキュリティ”を開く"
   },
+  "Open Project as Saved" : {
+    "ja" : "保存時のプロジェクトを開く"
+  },
+  "Open Project…" : {
+    "ja" : "プロジェクトを開く…"
+  },
   "Open Recording Settings…" : {
     "ja" : "収録設定を開く…"
+  },
+  "Open a .shotstyle project" : {
+    "ja" : ".shotstyleプロジェクトを開く"
   },
   "Opens its title and length in Style" : {
     "ja" : "“スタイル”にタイトルと長さの設定を表示します"
@@ -1349,6 +1385,12 @@
   "Roundness" : {
     "ja" : "角の丸み"
   },
+  "Save Project" : {
+    "ja" : "プロジェクトを保存"
+  },
+  "Save Project As…" : {
+    "ja" : "プロジェクトを別名で保存…"
+  },
   "Save Subtitles (.srt)…" : {
     "ja" : "字幕を保存（.srt）…"
   },
@@ -1358,8 +1400,14 @@
   "Save as Preset…" : {
     "ja" : "プリセットとして保存…"
   },
+  "Saved by a newer ShotStyle — some settings may not show" : {
+    "ja" : "新しいバージョンのShotStyleで保存されています。一部の設定は表示されない場合があります"
+  },
   "Saved preset “%@”" : {
     "ja" : "プリセット“%@”を保存しました"
+  },
+  "Saved “%@”" : {
+    "ja" : "“%@”を保存しました"
   },
   "Saves %@ — only silences where nothing happens on screen" : {
     "ja" : "%@短縮。画面上で何も起きていない無音部分だけが対象です"
@@ -1372,6 +1420,9 @@
   },
   "Saves the background, frame, cursor, zoom, captions, keys, and camera bubble. Apply it to any video from the Presets menu." : {
     "ja" : "背景、フレーム、ポインタ、ズーム、字幕、キー、カメラの吹き出しを保存します。「プリセット」メニューから任意のビデオに適用できます。"
+  },
+  "Saving project…" : {
+    "ja" : "プロジェクトを保存中…"
   },
   "Search commands" : {
     "ja" : "コマンドを検索"
@@ -1589,11 +1640,17 @@
   "The cursor is part of this video" : {
     "ja" : "このビデオではポインタが映像に焼き込まれています"
   },
+  "The recording for “%@” is missing" : {
+    "ja" : "“%@”の収録ファイルが見つかりません"
+  },
   "Thickness" : {
     "ja" : "太さ"
   },
   "This list" : {
     "ja" : "この一覧"
+  },
+  "This recording has newer edits than “%@”" : {
+    "ja" : "この収録には“%@”より新しい編集があります"
   },
   "This recording has no sound" : {
     "ja" : "この収録にはサウンドがありません"
@@ -2194,6 +2251,9 @@
   },
   "· follows cursor" : {
     "ja" : "· ポインタに追従"
+  },
+  "“%@” isn't at %@ anymore. Put it back, or save the project with Include Media next time so it carries its own copy." : {
+    "ja" : "“%1$@”は%2$@にありません。元に戻すか、次回は「メディアを含める」で保存して、プロジェクトに独自のコピーを持たせてください。"
   },
   "⇧-drag" : {
     "ja" : "⇧ドラッグ"

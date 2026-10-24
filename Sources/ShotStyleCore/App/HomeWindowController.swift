@@ -158,6 +158,8 @@ struct HomeProject: Identifiable {
     enum Kind {
         case recording(URL)
         case screenshot(HistoryItem)
+        /// A saved `.shotstyle` project (VideoProjectFiles.swift).
+        case projectFile(URL)
     }
 
     let id: String
@@ -170,6 +172,20 @@ struct HomeProject: Identifiable {
     var isRecording: Bool {
         if case .recording = kind { return true }
         return false
+    }
+
+    var isProjectFile: Bool {
+        if case .projectFile = kind { return true }
+        return false
+    }
+
+    /// The badge on its card.
+    var symbol: String {
+        switch kind {
+        case .recording: return "video.fill"
+        case .screenshot: return "photo.fill"
+        case .projectFile: return "doc.fill"
+        }
     }
 }
 
@@ -211,8 +227,8 @@ final class HomeModel: ObservableObject {
     var visibleProjects: [HomeProject] {
         let inSection: [HomeProject]
         switch section {
-        case .recordings: inSection = projects.filter(\.isRecording)
-        case .screenshots: inSection = projects.filter { !$0.isRecording }
+        case .recordings: inSection = projects.filter { $0.isRecording || $0.isProjectFile }
+        case .screenshots: inSection = projects.filter { !$0.isRecording && !$0.isProjectFile }
         case .home, .settings: inSection = projects
         }
         let terms = query.split(separator: " ").map(String.init)
@@ -242,7 +258,16 @@ final class HomeModel: ObservableObject {
                 searchText: [name, item.ocrText ?? ""].joined(separator: " ")
             )
         }
-        projects = (recordings + screenshots).sorted { $0.date > $1.date }
+        let projectFiles = VideoProjectRecents.load().map { url in
+            HomeProject(
+                id: "project:" + url.standardizedFileURL.path,
+                kind: .projectFile(url),
+                name: url.deletingPathExtension().lastPathComponent,
+                date: Self.modificationDate(of: VideoProjectPackage.manifestURL(url)),
+                searchText: url.deletingPathExtension().lastPathComponent
+            )
+        }
+        projects = (projectFiles + recordings + screenshots).sorted { $0.date > $1.date }
         let ids = Set(projects.map(\.id))
         details = details.filter { ids.contains($0.key) }
         projects.forEach(loadDetailsIfNeeded)
@@ -270,6 +295,8 @@ final class HomeModel: ObservableObject {
             VideoDemoEditorWindowController.open(videoURL: url)
         case .screenshot(let item):
             AnnotationWindowController.open(image: item.fullImage, historyItem: item, historyManager: historyManager)
+        case .projectFile(let url):
+            VideoProjectOpener.open(url)
         }
     }
 
@@ -280,12 +307,14 @@ final class HomeModel: ObservableObject {
         case .screenshot(let item):
             let url = historyManager.storedImageURL(for: item) ?? URL(fileURLWithPath: item.imagePath)
             NSWorkspace.shared.activateFileViewerSelecting([url])
+        case .projectFile(let url):
+            NSWorkspace.shared.activateFileViewerSelecting([url])
         }
     }
 
     func delete(_ project: HomeProject) {
         switch project.kind {
-        case .recording(let url):
+        case .recording(let url), .projectFile(let url):
             do {
                 try FileManager.default.trashItem(at: url, resultingItemURL: nil)
                 if Settings.lastRecordingPath == url.path { Settings.lastRecordingPath = "" }
@@ -317,6 +346,8 @@ final class HomeModel: ObservableObject {
                 loaded = await Self.recordingDetails(url)
             case .screenshot(let item):
                 loaded = await Task.detached(priority: .utility) { Self.screenshotDetails(item) }.value
+            case .projectFile(let url):
+                loaded = await Self.projectFileDetails(url)
             }
             loading.remove(id)
             guard let current = projects.first(where: { $0.id == id }) else { return }
@@ -331,6 +362,25 @@ final class HomeModel: ObservableObject {
             }
             details[id] = loaded
         }
+    }
+
+    /// A project's card: its recording's frame and length, the package's
+    /// size on disk.
+    nonisolated private static func projectFileDetails(_ url: URL) async -> HomeProjectDetails {
+        let primary = await Task.detached(priority: .utility) { (try? VideoProjectPackage.open(url))?.contents.project.sourceURL }.value
+        var details = HomeProjectDetails()
+        if let primary, FileManager.default.fileExists(atPath: primary.path) {
+            details = await recordingDetails(primary)
+        }
+        details.fileSize = await Task.detached(priority: .utility) { () -> Int64 in
+            let files = FileManager.default.enumerator(at: url, includingPropertiesForKeys: [.fileSizeKey])
+            var total: Int64 = 0
+            while let file = files?.nextObject() as? URL {
+                total += Int64((try? file.resourceValues(forKeys: [.fileSizeKey]).fileSize) ?? 0)
+            }
+            return total
+        }.value
+        return details
     }
 
     nonisolated private static func recordingDetails(_ url: URL) async -> HomeProjectDetails {
@@ -508,6 +558,15 @@ private struct HomeLibraryView: View {
                 .font(.system(size: 26, weight: .bold))
                 .foregroundStyle(Color.white.opacity(0.95))
             Spacer()
+            Button {
+                VideoProjectOpener.chooseAndOpen()
+            } label: {
+                Label(L("Open Project…"), systemImage: "folder")
+                    .font(.system(size: 12.5, weight: .semibold))
+            }
+            .buttonStyle(.plain)
+            .foregroundStyle(Color.white.opacity(0.8))
+            .help(L("Open a .shotstyle project"))
             HomeSearchField(text: $model.query)
                 .frame(width: 260)
         }
@@ -703,14 +762,14 @@ private struct HomeProjectCard: View {
                         .resizable()
                         .scaledToFill()
                 } else {
-                    Image(systemName: project.isRecording ? "video" : "photo")
+                    Image(systemName: project.isRecording || project.isProjectFile ? "video" : "photo")
                         .font(.system(size: 24))
                         .foregroundStyle(Color.white.opacity(0.25))
                 }
             }
             .clipShape(RoundedRectangle(cornerRadius: 9, style: .continuous))
             .overlay(alignment: .topLeading) {
-                Image(systemName: project.isRecording ? "video.fill" : "photo.fill")
+                Image(systemName: project.symbol)
                     .font(.system(size: 10, weight: .bold))
                     .foregroundStyle(.white)
                     .padding(6)

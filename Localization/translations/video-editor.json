@@ -575,6 +575,11 @@
     "fr" : "Choisir une image…",
     "zh-Hans" : "选择图像…"
   },
+  "Choose a ShotStyle project" : {
+    "de" : "Wähle ein ShotStyle-Projekt",
+    "fr" : "Choisissez un projet ShotStyle",
+    "zh-Hans" : "选择 ShotStyle 项目"
+  },
   "Cleaning up your voice…" : {
     "de" : "Deine Stimme wird bereinigt …",
     "fr" : "Nettoyage de votre voix…",
@@ -672,10 +677,20 @@
     "fr" : "Impossible d’ouvrir cette vidéo",
     "zh-Hans" : "无法打开此视频"
   },
+  "Couldn't open “%@”" : {
+    "de" : "„%@“ konnte nicht geöffnet werden",
+    "fr" : "Impossible d’ouvrir « %@ »",
+    "zh-Hans" : "无法打开“%@”"
+  },
   "Couldn't save the presets file" : {
     "de" : "Die Voreinstellungsdatei konnte nicht gesichert werden",
     "fr" : "Impossible d’enregistrer le fichier de préréglages",
     "zh-Hans" : "无法存储预设文件"
+  },
+  "Couldn't save the project — check there's room on the disk" : {
+    "de" : "Das Projekt konnte nicht gesichert werden – prüfe, ob auf dem Datenträger genug Platz ist",
+    "fr" : "Impossible d’enregistrer le projet : vérifiez qu’il reste de la place sur le disque",
+    "zh-Hans" : "无法存储项目 — 请检查磁盘空间是否足够"
   },
   "Crop" : {
     "comment" : "Toolbar button: crop the recording",
@@ -1220,6 +1235,12 @@
     "fr" : "Inclure le format (%@)",
     "zh-Hans" : "包括宽高比（%@）"
   },
+  "Include media (works on any Mac)" : {
+    "comment" : "Save Project option: copy the media into the project",
+    "de" : "Medien einschließen (funktioniert auf jedem Mac)",
+    "fr" : "Inclure les médias (fonctionne sur tout Mac)",
+    "zh-Hans" : "包含媒体（在任何 Mac 上都可用）"
+  },
   "Inspector tabs" : {
     "de" : "Inspektor-Tabs",
     "fr" : "Onglets de l’inspecteur",
@@ -1246,6 +1267,16 @@
     "de" : "Intro-Karte, %@ bis %@",
     "fr" : "Carton d’intro, de %@ à %@",
     "zh-Hans" : "片头卡，%@ 至 %@"
+  },
+  "It isn't a ShotStyle project, or it's damaged." : {
+    "de" : "Es ist kein ShotStyle-Projekt oder es ist beschädigt.",
+    "fr" : "Ce n’est pas un projet ShotStyle, ou il est endommagé.",
+    "zh-Hans" : "它不是 ShotStyle 项目，或者已损坏。"
+  },
+  "It was edited after the project was saved. Open those newer edits, or the project as it was saved?" : {
+    "de" : "Sie wurde nach dem Sichern des Projekts bearbeitet. Die neueren Änderungen öffnen oder das Projekt, wie es gesichert wurde?",
+    "fr" : "Il a été modifié après l’enregistrement du projet. Ouvrir ces modifications plus récentes, ou le projet tel qu’il a été enregistré ?",
+    "zh-Hans" : "项目存储后，它又经过了编辑。要打开较新的编辑，还是打开存储时的项目？"
   },
   "It was recorded into the pixels, so it can't be resized or smoothed. New recordings capture an editable cursor by default (Settings → Recording)." : {
     "de" : "Er wurde direkt ins Bild aufgezeichnet und lässt sich daher nicht vergrößern oder glätten. Neue Aufnahmen zeichnen standardmäßig einen bearbeitbaren Zeiger auf („Einstellungen“ → „Aufzeichnung“).",
@@ -1328,6 +1359,12 @@
     "fr" : "Lignes · %lld",
     "zh-Hans" : "字幕行 · %lld"
   },
+  "Link to media (small, this Mac only)" : {
+    "comment" : "Save Project option: keep paths to the media",
+    "de" : "Auf Medien verweisen (klein, nur dieser Mac)",
+    "fr" : "Lier aux médias (léger, ce Mac uniquement)",
+    "zh-Hans" : "链接到媒体（体积小，仅限此 Mac）"
+  },
   "Listens on this Mac — nothing is uploaded" : {
     "de" : "Hört auf diesem Mac zu – nichts wird hochgeladen",
     "fr" : "L’écoute se fait sur ce Mac — rien n’est envoyé",
@@ -1338,6 +1375,11 @@
     "de" : "Aussehen",
     "fr" : "Apparence",
     "zh-Hans" : "外观"
+  },
+  "Media:" : {
+    "de" : "Medien:",
+    "fr" : "Médias :",
+    "zh-Hans" : "媒体："
   },
   "Mirror" : {
     "de" : "Spiegeln",
@@ -1553,15 +1595,35 @@
     "fr" : "Ouvrir une autre vidéo…",
     "zh-Hans" : "打开其他视频…"
   },
+  "Open Newer Edits" : {
+    "de" : "Neuere Änderungen öffnen",
+    "fr" : "Ouvrir les modifications récentes",
+    "zh-Hans" : "打开较新的编辑"
+  },
   "Open Privacy Settings" : {
     "de" : "„Datenschutz & Sicherheit“ öffnen",
     "fr" : "Ouvrir Confidentialité et sécurité",
     "zh-Hans" : "打开“隐私与安全性”"
   },
+  "Open Project as Saved" : {
+    "de" : "Projekt wie gesichert öffnen",
+    "fr" : "Ouvrir le projet enregistré",
+    "zh-Hans" : "打开存储时的项目"
+  },
+  "Open Project…" : {
+    "de" : "Projekt öffnen …",
+    "fr" : "Ouvrir un projet…",
+    "zh-Hans" : "打开项目…"
+  },
   "Open Recording Settings…" : {
     "de" : "Aufzeichnungseinstellungen öffnen …",
     "fr" : "Ouvrir les réglages d’enregistrement…",
     "zh-Hans" : "打开录制设置…"
+  },
+  "Open a .shotstyle project" : {
+    "de" : "Ein .shotstyle-Projekt öffnen",
+    "fr" : "Ouvrir un projet .shotstyle",
+    "zh-Hans" : "打开 .shotstyle 项目"
   },
   "Opens its title and length in Style" : {
     "de" : "Öffnet Titel und Länge in „Stil“",
@@ -2495,6 +2557,16 @@
     "fr" : "Arrondi",
     "zh-Hans" : "圆角"
   },
+  "Save Project" : {
+    "de" : "Projekt sichern",
+    "fr" : "Enregistrer le projet",
+    "zh-Hans" : "存储项目"
+  },
+  "Save Project As…" : {
+    "de" : "Projekt sichern unter …",
+    "fr" : "Enregistrer le projet sous…",
+    "zh-Hans" : "项目存储为…"
+  },
   "Save Subtitles (.srt)…" : {
     "de" : "Untertitel sichern (.srt) …",
     "fr" : "Enregistrer les sous-titres (.srt)…",
@@ -2510,10 +2582,21 @@
     "fr" : "Enregistrer comme préréglage…",
     "zh-Hans" : "存储为预设…"
   },
+  "Saved by a newer ShotStyle — some settings may not show" : {
+    "de" : "Von einer neueren ShotStyle-Version gesichert – manche Einstellungen werden eventuell nicht angezeigt",
+    "fr" : "Enregistré par une version plus récente de ShotStyle : certains réglages peuvent ne pas apparaître",
+    "zh-Hans" : "由较新版本的 ShotStyle 存储，某些设置可能不会显示"
+  },
   "Saved preset “%@”" : {
     "de" : "Voreinstellung „%@“ gesichert",
     "fr" : "Préréglage « %@ » enregistré",
     "zh-Hans" : "已存储预设“%@”"
+  },
+  "Saved “%@”" : {
+    "comment" : "Notice after saving a project",
+    "de" : "„%@“ gesichert",
+    "fr" : "« %@ » enregistré",
+    "zh-Hans" : "已存储“%@”"
   },
   "Saves %@ — only silences where nothing happens on screen" : {
     "de" : "Spart %@ – nur Stille, in der auf dem Bildschirm nichts passiert",
@@ -2534,6 +2617,11 @@
     "de" : "Sichert Hintergrund, Rahmen, Zeiger, Zoom, Untertitel, Tasten und Kamerablase. Wende sie über das Menü „Voreinstellungen“ auf jedes Video an.",
     "fr" : "Enregistre l’arrière-plan, le cadre, le pointeur, le zoom, les sous-titres, les touches et la bulle de la caméra. Appliquez-le à n’importe quelle vidéo depuis le menu Préréglages.",
     "zh-Hans" : "存储背景、边框、指针、缩放、字幕、按键和摄像头气泡。可从“预设”菜单将其应用到任何视频。"
+  },
+  "Saving project…" : {
+    "de" : "Projekt wird gesichert …",
+    "fr" : "Enregistrement du projet…",
+    "zh-Hans" : "正在存储项目…"
   },
   "Search commands" : {
     "de" : "Befehle suchen",
@@ -2913,6 +3001,11 @@
     "fr" : "Le pointeur fait partie de cette vidéo",
     "zh-Hans" : "指针已录入此视频"
   },
+  "The recording for “%@” is missing" : {
+    "de" : "Die Aufnahme für „%@“ fehlt",
+    "fr" : "L’enregistrement de « %@ » est introuvable",
+    "zh-Hans" : "“%@”的录制内容不见了"
+  },
   "Thickness" : {
     "de" : "Stärke",
     "fr" : "Épaisseur",
@@ -2922,6 +3015,11 @@
     "de" : "Diese Liste",
     "fr" : "Cette liste",
     "zh-Hans" : "此列表"
+  },
+  "This recording has newer edits than “%@”" : {
+    "de" : "Diese Aufnahme hat neuere Änderungen als „%@“",
+    "fr" : "Cet enregistrement a des modifications plus récentes que « %@ »",
+    "zh-Hans" : "此录制内容的编辑比“%@”更新"
   },
   "This recording has no sound" : {
     "de" : "Diese Aufnahme hat keinen Ton",
@@ -3954,6 +4052,11 @@
     "de" : "· folgt dem Zeiger",
     "fr" : "· suit le pointeur",
     "zh-Hans" : "· 跟随指针"
+  },
+  "“%@” isn't at %@ anymore. Put it back, or save the project with Include Media next time so it carries its own copy." : {
+    "de" : "„%1$@“ ist nicht mehr unter %2$@. Lege die Datei zurück oder sichere das Projekt beim nächsten Mal mit „Medien einschließen“, damit es eine eigene Kopie enthält.",
+    "fr" : "« %1$@ » n’est plus dans %2$@. Remettez-le en place, ou enregistrez le projet avec Inclure les médias la prochaine fois pour qu’il emporte sa propre copie.",
+    "zh-Hans" : "“%1$@”已不在 %2$@ 中。请将它放回原处，或下次存储项目时选择“包含媒体”，让项目带上自己的副本。"
   },
   "⇧-drag" : {
     "comment" : "Drag with Shift held (keep the symbol)",

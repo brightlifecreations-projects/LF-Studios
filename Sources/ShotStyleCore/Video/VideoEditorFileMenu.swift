@@ -8,12 +8,29 @@ final class VideoEditorFileMenu: NSObject, NSMenuDelegate, NSMenuItemValidation 
     static let shared = VideoEditorFileMenu()
 
     private weak var exportItem: NSMenuItem?
+    private weak var saveProjectItem: NSMenuItem?
+    private weak var saveProjectAsItem: NSMenuItem?
     private let recentMenu = NSMenu(title: L("Recent Exports"))
     private var keyWindowObserver: NSObjectProtocol?
 
     /// Adds the editor's items to `menu` as their own section.
     func addItems(to menu: NSMenu) {
         if !menu.items.isEmpty { menu.addItem(.separator()) }
+        // Projects (VideoProjectFiles.swift): Open from anywhere; Save while
+        // a video editor is in front.
+        let open = NSMenuItem(title: L("Open Project…"), action: #selector(openProject(_:)), keyEquivalent: "o")
+        open.keyEquivalentModifierMask = [.command]
+        open.target = self
+        menu.addItem(open)
+        let save = NSMenuItem(title: L("Save Project"), action: #selector(saveProject(_:)), keyEquivalent: "")
+        save.target = self
+        menu.addItem(save)
+        saveProjectItem = save
+        let saveAs = NSMenuItem(title: L("Save Project As…"), action: #selector(saveProjectAs(_:)), keyEquivalent: "")
+        saveAs.target = self
+        menu.addItem(saveAs)
+        saveProjectAsItem = saveAs
+        menu.addItem(.separator())
         let export = NSMenuItem(title: L("Export Video…"), action: #selector(exportVideo(_:)), keyEquivalent: "")
         export.target = self
         menu.addItem(export)
@@ -37,8 +54,27 @@ final class VideoEditorFileMenu: NSObject, NSMenuDelegate, NSMenuItemValidation 
     }
 
     private func updateKeyEquivalent() {
-        exportItem?.keyEquivalent = VideoDemoEditorWindowController.keyModel == nil ? "" : "e"
+        let editing = VideoDemoEditorWindowController.keyModel != nil
+        exportItem?.keyEquivalent = editing ? "e" : ""
         exportItem?.keyEquivalentModifierMask = [.command]
+        // ⌘S is the screenshot editor's Save elsewhere: only claimed here
+        // while a video editor is in front.
+        saveProjectItem?.keyEquivalent = editing ? "s" : ""
+        saveProjectItem?.keyEquivalentModifierMask = [.command]
+        saveProjectAsItem?.keyEquivalent = editing ? "S" : ""
+        saveProjectAsItem?.keyEquivalentModifierMask = [.command, .shift]
+    }
+
+    @objc func openProject(_ sender: Any?) {
+        VideoProjectOpener.chooseAndOpen()
+    }
+
+    @objc func saveProject(_ sender: Any?) {
+        VideoDemoEditorWindowController.saveActiveProject(as: false)
+    }
+
+    @objc func saveProjectAs(_ sender: Any?) {
+        VideoDemoEditorWindowController.saveActiveProject(as: true)
     }
 
     @objc func exportVideo(_ sender: Any?) {
@@ -60,6 +96,8 @@ final class VideoEditorFileMenu: NSObject, NSMenuDelegate, NSMenuItemValidation 
         case #selector(exportVideo(_:)): return model?.isReady == true && model?.isCropping == false
         case #selector(saveSubtitles(_:)): return model.map { !$0.project.captions.isEmpty } ?? false
         case #selector(revealExport(_:)): return true
+        case #selector(openProject(_:)): return true
+        case #selector(saveProject(_:)), #selector(saveProjectAs(_:)): return model?.isReady == true && model?.isSavingProject == false
         default: return true
         }
     }

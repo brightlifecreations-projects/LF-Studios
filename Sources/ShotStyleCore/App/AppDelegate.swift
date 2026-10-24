@@ -37,6 +37,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     /// Videos dropped on the app (Finder "Open With", `open -a ShotStyle`)
     /// open straight in the video editor.
     func application(_ application: NSApplication, open urls: [URL]) {
+        // A double-clicked .shotstyle project (VideoProjectFiles.swift).
+        for project in urls where project.pathExtension.lowercased() == VideoProjectDocument.fileExtension {
+            VideoProjectOpener.open(project)
+        }
         let videos = urls.filter { ["mp4", "mov", "m4v"].contains($0.pathExtension.lowercased()) }
         for url in videos {
             Settings.lastRecordingPath = url.path
