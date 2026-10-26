@@ -6,7 +6,7 @@ import Foundation
 // along the timeline, the running timecode and the pause icon, as the editor
 // looks during playback. scripts/readme-hero.sh runs it and encodes the result.
 //
-// usage: readme-hero <shotstyle-editor-frame.png> <demo-frames-dir> <out-dir> <width> [fps]
+// usage: readme-hero <lfstudios-editor-frame.png> <demo-frames-dir> <out-dir> <width> [fps]
 // Geometry is in points of the 1512 × 944 window, as measured by
 // scripts/website-editor-demo.py.
 

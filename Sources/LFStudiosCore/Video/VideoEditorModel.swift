@@ -1,0 +1,2224 @@
+import AppKit
+import AVFoundation
+import SwiftUI
+
+struct VideoTimelineThumbnail: Identifiable {
+    let id = UUID()
+    /// Source seconds.
+    let time: Double
+    let image: NSImage
+
+    /// A filmstrip in one pass through the recording: one decoder for all
+    /// the pictures, where a picture at a time opened one each (160 for a
+    /// long recording). `offset` moves them onto the source axis.
+    static func generate(with generator: AVAssetImageGenerator, at times: [Double], offset: Double = 0) async -> [VideoTimelineThumbnail] {
+        let requests = times.map { CMTime(seconds: $0, preferredTimescale: 600) }
+        let requested = Dictionary(zip(requests.map(\.value), times), uniquingKeysWith: { first, _ in first })
+        var thumbnails: [VideoTimelineThumbnail] = []
+        for await result in generator.images(for: requests) {
+            guard let image = try? result.image else { continue }
+            let time = requested[result.requestedTime.convertScale(600, method: .roundHalfAwayFromZero).value] ?? result.requestedTime.seconds
+            thumbnails.append(VideoTimelineThumbnail(time: offset + time, image: NSImage(cgImage: image, size: NSSize(width: image.width, height: image.height))))
+        }
+        return thumbnails.sorted { $0.time < $1.time }
+    }
+}
+
+/// Peak envelope of the recording's audio (all tracks mixed), in SOURCE time.
+struct VideoWaveform {
+    static let bucketsPerSecond = 50.0
+    let peaks: [Float]
+    /// At or below this, the sound counts as silence: well under speech,
+    /// above the room's steady noise.
+    let quiet: Float
+
+    init(peaks: [Float]) {
+        self.peaks = peaks
+        let sorted = peaks.sorted()
+        func percentile(_ fraction: Double) -> Float {
+            sorted.isEmpty ? 0 : sorted[min(Int(Double(sorted.count) * fraction), sorted.count - 1)]
+        }
+        let floor = percentile(0.1)
+        let loud = percentile(0.9)
+        quiet = min(loud * 0.15, max(floor * 2.5, loud * 0.03, 0.001))
+    }
+
+    func peak(from start: Double, to end: Double) -> Float {
+        guard !peaks.isEmpty, end > start else { return 0 }
+        let a = max(Int(start * Self.bucketsPerSecond), 0)
+        let b = min(Int(end * Self.bucketsPerSecond) + 1, peaks.count)
+        guard a < b else { return 0 }
+        var value: Float = 0
+        for index in a..<b { value = max(value, peaks[index]) }
+        return value
+    }
+}
+
+struct VideoDemoTimelineRange: Equatable, Identifiable {
+    var id: String { "\(start)-\(end)" }
+    var start: Double
+    var end: Double
+
+    var normalized: VideoDemoTimelineRange {
+        VideoDemoTimelineRange(start: min(start, end), end: max(start, end))
+    }
+
+    var duration: Double { max(end - start, 0) }
+}
+
+/// Changes only when something DRAWN on the timeline changes (clips,
+/// zooms, annotations, clicks, captions, shortcuts, selection, zoom level)
+/// — style edits like padding or backgrounds never re-render its lanes.
+@MainActor
+final class VideoTimelineState: ObservableObject {
+    @Published private(set) var revision = 0
+
+    func bump() { revision &+= 1 }
+}
+
+struct VideoEditorNotice: Equatable, Identifiable {
+    let id = UUID()
+    let message: String
+    let symbol: String
+}
+
+/// Why a video couldn't be opened, in words people can act on (the
+/// system's own message is kept as the small print).
+struct VideoLoadFailure: Equatable {
+    enum Kind: Equatable {
+        case missing
+        case noVideo
+        case unreadable
+    }
+
+    let kind: Kind
+    let detail: String
+
+    static func classify(_ error: Error, url: URL) -> VideoLoadFailure {
+        let detail = error.localizedDescription
+        if !FileManager.default.fileExists(atPath: url.path) { return VideoLoadFailure(kind: .missing, detail: detail) }
+        if case VideoDemoExportError.missingVideoTrack = error { return VideoLoadFailure(kind: .noVideo, detail: detail) }
+        return VideoLoadFailure(kind: .unreadable, detail: detail)
+    }
+
+    var title: String {
+        switch kind {
+        case .missing: return L("This video isn't there anymore")
+        case .noVideo: return L("There's no video in this file")
+        case .unreadable: return L("LF Studios can't open this file")
+        }
+    }
+
+    var message: String {
+        switch kind {
+        case .missing: return L("It was moved, renamed, or deleted. Open it from where it is now.")
+        case .noVideo: return L("It only has sound, or nothing at all. LF Studios edits screen recordings and other videos.")
+        case .unreadable: return L("It may be damaged, still being saved, or in a format this Mac can't play. MP4 and MOV videos work best.")
+        }
+    }
+}
+
+@MainActor
+final class VideoEditorModel: ObservableObject {
+    enum Selection: Equatable {
+        case none
+        case zoom(UUID)
+        case clip(UUID)
+        case overlay(UUID)
+        case click(UUID)
+        case caption(UUID)
+        case keystroke(UUID)
+        case cameraLayout(UUID)
+        case range(VideoDemoTimelineRange)
+    }
+
+    enum InspectorTab: String, CaseIterable, Identifiable {
+        case background
+        case cursor
+        case zoom
+        case camera
+        case captions
+        case audio
+
+        var id: String { rawValue }
+        var title: String {
+            switch self {
+            case .background: return L("Style")
+            case .cursor: return L("Cursor")
+            case .zoom: return L("Zoom")
+            case .camera: return L("Camera")
+            case .captions: return L("Captions")
+            case .audio: return L("Audio")
+            }
+        }
+        var help: String {
+            switch self {
+            case .background: return L("Background, padding, corners, shadow")
+            case .cursor: return L("Cursor, clicks, and keyboard shortcuts")
+            case .zoom: return L("Zoom moves")
+            case .camera: return L("Camera bubble")
+            case .captions: return L("Captions from your narration — and cut the video by editing its words")
+            case .audio: return L("Sound")
+            }
+        }
+        var symbol: String {
+            switch self {
+            case .background: return "photo.on.rectangle.angled"
+            case .cursor: return "cursorarrow.motionlines"
+            case .zoom: return "plus.magnifyingglass"
+            case .camera: return "person.crop.circle"
+            case .captions: return "text.quote"
+            case .audio: return "speaker.wave.2.fill"
+            }
+        }
+    }
+
+    enum ExportPhase: Equatable {
+        case idle
+        /// An export that holds the editor until it ends. Exports run in the
+        /// background now (`.exporting`), so nothing holds it: the editor's
+        /// keys keep working — Esc hides the sheet.
+        case running(progress: Double, started: Date, destination: URL, toClipboard: Bool)
+        /// A background export the sheet is following.
+        case exporting(progress: Double, started: Date, destination: URL, toClipboard: Bool)
+        case finished(url: URL, bytes: Int64, copied: Bool)
+        case failed(String)
+    }
+
+    // MARK: State
+
+    @Published var project: VideoDemoProject {
+        didSet { projectDidChange(from: oldValue) }
+    }
+    @Published private(set) var sourceDuration: Double = 0
+    @Published private(set) var sourceFrameRate: Double = 60
+    @Published private(set) var hasAudio = false
+    /// The recording came with camera footage that's still on disk.
+    @Published private(set) var hasWebcamFootage = false
+    /// Lining up the imported camera video by sound.
+    @Published var isSyncingCamera = false
+    /// The camera footage being loaded after it changed.
+    var cameraLoad: Task<Void, Never>?
+    /// What each of the recording's audio tracks carries.
+    @Published private(set) var audioKinds: [VideoAudioKind] = []
+    /// Voice enhancement progress, 0…1 (nil when idle).
+    @Published var voiceJob: Double?
+    @Published var voiceError: String?
+    var voiceTask: Task<Bool, Never>?
+    @Published private(set) var isReady = false
+    @Published var loadError: String?
+    @Published private(set) var loadFailure: VideoLoadFailure?
+    /// Closes this editor's window (set by the window controller).
+    var closeEditor: (() -> Void)?
+    @Published var selection: Selection = .none {
+        didSet {
+            // Picking something on its own (even one already picked) drops
+            // the others.
+            if !keepsExtraSelection, !extraSelection.isEmpty { extraSelection = [] }
+            guard selection != oldValue else { return }
+            previewRenderer.invalidate()
+            refreshTimeline()
+        }
+    }
+    /// Picked along with `selection` (⇧- or ⌘-click on the timeline): they
+    /// delete and move together.
+    @Published var extraSelection: [Selection] = [] {
+        didSet { refreshTimeline() }
+    }
+    /// Set while the lead item changes without dropping the others.
+    var keepsExtraSelection = false
+    /// Names the next undo step (a group move made of many small edits).
+    var pendingUndoLabel: String?
+    /// Where each selected item was when a group move began.
+    var groupMoveOrigins: [(item: Selection, start: Double, end: Double)] = []
+    @Published var inspectorTab: InspectorTab = .background
+    @Published private(set) var isPlaying = false
+    /// Silences the editor's player only — never the export (M, or the
+    /// speaker next to the timeline scale).
+    @Published var previewMuted = false {
+        didSet { playback.player.isMuted = previewMuted }
+    }
+    @Published var timelineZoom: Double = 1 {
+        didSet { refreshTimeline() }
+    }
+    /// Width of the timeline's lanes on screen (the surface keeps it up to
+    /// date) — how far it can zoom depends on it.
+    var timelineViewportWidth: CGFloat = 1000
+    /// Where the next timeline zoom stays put: a moment and where it sits
+    /// in the visible strip (nil: the playhead, wherever it is).
+    var pendingZoomAnchor: (time: Double, viewportX: CGFloat)?
+    @Published var isCommandPalettePresented = false
+    @Published var isExportPresented = false
+    @Published var isShortcutsPresented = false
+    @Published var exportSettings = VideoExportSettings.fromSettings
+    @Published var exportPhase: ExportPhase = .idle
+    @Published private(set) var thumbnails: [VideoTimelineThumbnail] = [] {
+        didSet { refreshTimeline() }
+    }
+    @Published private(set) var waveform: VideoWaveform? {
+        didSet { refreshTimeline() }
+    }
+    @Published var notice: VideoEditorNotice?
+    @Published private(set) var canUndo = false
+    @Published private(set) var canRedo = false
+    @Published private(set) var restoredDraft = false
+    /// While a clip edge is dragged the preview shows this SOURCE moment.
+    @Published private(set) var trimPeekSourceTime: Double?
+    /// While trimming, the timeline keeps its scale so the edge stays under
+    /// the pointer instead of the whole strip re-fitting mid-drag.
+    @Published private(set) var layoutDurationLock: Double? {
+        didSet { refreshTimeline() }
+    }
+    /// Crop mode: the preview shows the whole recording with a crop frame.
+    @Published var isCropping = false
+    var cropBeforeEditing: VideoCropRect?
+    var projectBeforeCrop: VideoDemoProject?
+    var undoDepthBeforeCrop = 0
+    /// Bumped to put the cursor in the selected text annotation's field
+    /// (double-click the text on the preview).
+    @Published var textEditRequest = 0
+    /// ⌘F: the transcript takes focus with its find bar open (cleared once
+    /// it has).
+    @Published var wantsTranscriptFind = false
+    @Published var cropAspect: VideoCropAspect = .free
+    /// Caption generation in progress or failed (nil when idle).
+    @Published var captionJob: VideoCaptionJob?
+    @Published var captionLanguage: String = Settings.videoCaptionLanguage {
+        didSet { Settings.videoCaptionLanguage = captionLanguage }
+    }
+    @Published var captionLanguages: [VideoCaptionTranscriber.Language] = []
+    var captionTask: Task<Void, Never>?
+    var captionToken: UUID?
+    /// Running work that quitting has to ask about (each export registers
+    /// itself with the queue, VideoExportJobs.swift).
+    var captionQuitToken: AppTermination.Token?
+    var voiceQuitToken: AppTermination.Token?
+
+    let clock = VideoDemoPlaybackClock()
+    let timelineState = VideoTimelineState()
+    private var timelineSignature: TimelineSignature?
+    let playback = VideoPlaybackController()
+    /// Music, click sound, added recordings… (VideoEditorMedia.swift).
+    let media = VideoEditorMedia()
+    lazy var previewRenderer = VideoPreviewRenderer(model: self)
+    let recording: VideoDemoRecordingMetadata?
+    /// The `.lfstudios` project this edit was opened from or saved to
+    /// (VideoProjectFiles.swift); nil: just the recording's own edit.
+    @Published var projectFileURL: URL?
+    @Published var projectMediaMode: VideoProjectDocument.MediaMode?
+    @Published var isSavingProject = false
+    private let sourceBookmark: Data?
+    let artwork: VideoCursorArtwork
+    private(set) var plan: VideoRenderPlan
+    private(set) var segments: [VideoDemoTimelineSegment] = [] {
+        didSet { segmentsBySource = segments.sorted { $0.clip.sourceStart < $1.clip.sourceStart } }
+    }
+    /// The clips in recording order, for binary searches ("is this moment
+    /// still in the video, and where?") on long, heavily cut takes.
+    private(set) var segmentsBySource: [VideoDemoTimelineSegment] = []
+
+    private var undoStack: [UndoStep] = []
+    private var redoStack: [UndoStep] = []
+    private var lastCoalesceKey: String?
+    private var lastMutation = Date.distantPast
+    private var autosaveWork: DispatchWorkItem?
+    private var noticeWork: DispatchWorkItem?
+    private var cursorTrackCache: (key: CursorTrackKey, track: VideoCursorTrack?)?
+    private var cameraTrackCache: (key: CameraTrackKey, track: VideoCameraTrack)?
+    private var reframeCache: (key: CameraTrackKey, fraction: CGFloat, reframe: VideoReframe)?
+    private var transcriptCache: (captions: [VideoCaptionLine], language: String?, words: [VideoTranscriptWord])?
+    /// Dropped whenever the pointer path, clicks, shortcuts, or recordings
+    /// change (or an added recording's own data arrives).
+    var activityCache: (key: [Int], times: [Double])?
+
+    /// When something happens on screen (pointer moves, clicks, shortcuts,
+    /// typing and scrolling when the recording saw the screen change).
+    var activityTimes: [Double] {
+        let screen = screenActivityOnAxis
+        let key = [project.cursorSamples.count, project.clickEvents.count, project.keystrokes.count, screen?.count ?? -1]
+        if let cache = activityCache, cache.key == key { return cache.times }
+        let times = VideoTranscript.activityTimes(cursor: project.cursorSamples, clicks: project.clickEvents, keystrokes: project.keystrokes, screen: screen)
+        activityCache = (key, times)
+        return times
+    }
+
+    /// Whether the recording knows when its screen changed (older ones
+    /// only have the pointer, clicks, and shortcuts to go by).
+    var seesScreenChanges: Bool { recording?.screenActivity != nil }
+
+    /// Every spoken word (from the captions), in time order.
+    var transcriptWords: [VideoTranscriptWord] {
+        // Transcripts from before the language was saved: the language
+        // chosen for captions, else the Mac's own.
+        let language = project.transcriptLanguage ?? (captionLanguage.isEmpty ? Locale.current.identifier(.bcp47) : captionLanguage)
+        if let cache = transcriptCache, cache.captions == project.captions, cache.language == language { return cache.words }
+        let words = VideoTranscript.words(from: project.captions, language: language)
+        transcriptCache = (project.captions, language, words)
+        return words
+    }
+    private var shuttleRate: Float = 1
+    private var didLoad = false
+    /// A clip edge is being dragged: the player waits for the drag to end.
+    private var holdsPlayerRebuild = false
+    private nonisolated(unsafe) var terminationObserver: NSObjectProtocol?
+
+    /// Everything the camera path depends on — captions, shortcuts,
+    /// annotations, and most style changes leave it alone.
+    private struct CameraTrackKey: Equatable {
+        let regions: [VideoZoomRegion]
+        let timings: [VideoPlaybackController.EditStructure.Timing]
+        let speed: VideoZoomSpeed
+        let stage: CGRect
+        let crop: VideoCropRect
+        let cursorTrack: ObjectIdentifier?
+    }
+
+    private struct TimelineSignature: Equatable {
+        let segments: [VideoDemoTimelineSegment]
+        let zooms: [VideoZoomRegion]
+        let overlays: [VideoDemoOverlayEffect]
+        let clicks: [VideoDemoClickEvent]
+        let captions: [VideoCaptionLine]
+        let keystrokes: [VideoKeystrokeEvent]
+        let keystrokesVisible: Bool
+        let cameraLayouts: [VideoCameraLayoutRegion]
+        let selection: Selection
+        let extraSelection: [Selection]
+        let zoom: Double
+        let lock: Double?
+        let thumbnails: Int
+        let waveform: Int
+        let sourceSize: CGSize
+        let extras: VideoTimelineExtrasSignature
+    }
+
+    /// Bumps the timeline's revision when anything it draws changed.
+    func refreshTimeline() {
+        let signature = TimelineSignature(
+            segments: segments,
+            zooms: project.zoomRegions,
+            overlays: project.overlayEffects,
+            clicks: project.clickEvents,
+            captions: project.captions,
+            keystrokes: project.keystrokes,
+            keystrokesVisible: project.keystrokeStyle.visible,
+            cameraLayouts: hasWebcamFootage ? project.cameraLayouts : [],
+            selection: selection,
+            extraSelection: extraSelection,
+            zoom: timelineZoom,
+            lock: layoutDurationLock,
+            thumbnails: thumbnails.count,
+            waveform: waveform?.peaks.count ?? -1,
+            sourceSize: project.sourceSize,
+            extras: timelineExtrasSignature
+        )
+        guard signature != timelineSignature else { return }
+        timelineSignature = signature
+        timelineState.bump()
+    }
+
+    private struct CursorTrackKey: Equatable {
+        let sampleCount: Int
+        let firstSample: Double
+        let lastSample: Double
+        let clicks: [VideoDemoClickEvent]
+        let smoothing: VideoCursorSettings.Smoothing
+        let hideWhenIdle: Bool
+        let tidyEnding: Bool
+        let crop: VideoCropRect
+        let duration: Double
+        var sources: [VideoProjectSource] = []
+    }
+
+    init(videoURL: URL) {
+        // Opened from where it is now: its data points here (VideoDataCleanup).
+        let recording = VideoDemoSidecarStore.load(for: videoURL).map { VideoDemoSidecarStore.recordLocation(of: $0, for: videoURL) }
+        self.recording = recording
+        sourceBookmark = try? videoURL.bookmarkData(options: [.minimalBookmark], includingResourceValuesForKeys: nil, relativeTo: nil)
+        artwork = VideoCursorArtwork(metadata: recording)
+        var project = VideoDemoProject.make(sourceURL: videoURL)
+        if let recording {
+            project.apply(metadata: recording)
+        }
+        self.project = project
+        plan = VideoRenderPlan(project: project, sourceDuration: 0, artwork: artwork, pointPixelScale: recording?.pointPixelScale, cursorTrack: nil, camera: .identity)
+
+        playback.onTick = { [weak self] time in
+            guard let self else { return }
+            // While paused and scrubbing, the player reports each finished
+            // seek — an older spot than the playhead already shows.
+            guard self.isPlaying || !self.playback.isSeeking else { return }
+            if self.clock.time != time { self.clock.time = time }
+            if self.isPlaying { self.previewRenderer.invalidate() }
+        }
+        playback.onPlayingChanged = { [weak self] playing in
+            guard let self else { return }
+            self.isPlaying = playing
+            if !playing { self.shuttleRate = 1 }
+            self.updatePreviewQuality()
+            self.previewRenderer.invalidate()
+        }
+        // Quitting skips the window's close: the last edits (autosave waits
+        // a moment) are written now.
+        terminationObserver = NotificationCenter.default.addObserver(forName: NSApplication.willTerminateNotification, object: nil, queue: .main) { [weak self] _ in
+            MainActor.assumeIsolated { self?.saveDraftNow() }
+        }
+    }
+
+    deinit {
+        if let terminationObserver { NotificationCenter.default.removeObserver(terminationObserver) }
+    }
+
+    // MARK: Loading
+
+    func load() async {
+        guard !didLoad else { return }
+        didLoad = true
+        do {
+            let source = try await playback.load(url: project.sourceURL)
+            sourceDuration = source.duration
+            sourceFrameRate = source.frameRate
+            hasAudio = !source.audio.isEmpty
+            audioKinds = VideoAudioKind.resolve(recorded: recording?.audioTracks, channelCounts: source.audioChannelCounts)
+            playback.setAudioSources(VideoAudioSource.sources(from: source, kinds: audioKinds))
+
+            var loaded = project
+            var isFresh = false
+            // The store only hands back this file's own draft (moved or
+            // renamed files included; copies and replaced files excluded).
+            if let draft = VideoDemoDraftStore.load(for: project.sourceURL) {
+                loaded = draft.project
+                // The file may have moved since: this is where it is now.
+                loaded.sourcePath = project.sourcePath
+                // Drafts leave the (read-only) pointer path in the sidecar.
+                if loaded.cursorSamples.isEmpty, let recording {
+                    loaded.cursorSamples = recording.cursorSamples
+                }
+                restoredDraft = true
+            } else {
+                isFresh = recording != nil
+            }
+            loaded.sourceWidth = Double(source.size.width)
+            loaded.sourceHeight = Double(source.size.height)
+            if !restoredDraft, loaded.sourceHeight > loaded.sourceWidth * 1.1,
+               loaded.aspectPreset == .widescreen || loaded.aspectPreset == .classic {
+                // A tall recording in a wide frame would be a sliver.
+                loaded.aspectPreset = .source
+            }
+            // Added recordings extend the source axis past this one.
+            let total = loaded.sourceAxisDuration ?? source.duration
+            sourceDuration = total
+            if loaded.trimEnd <= 0 || loaded.trimEnd > total {
+                loaded.trimEnd = total
+            }
+            loaded.ensureTimeline(totalDuration: total)
+
+            // A fresh recording opens already produced.
+            if isFresh, Settings.autoZoomNewRecordings, loaded.zoomRegions.isEmpty, !loaded.clickEvents.isEmpty {
+                loaded.zoomRegions = VideoAutoZoomPlanner.regions(
+                    clicks: loaded.clicksInsideCrop,
+                    cursorSamples: loaded.cursorSamples,
+                    segments: loaded.timelineSegments(totalDuration: source.duration),
+                    scale: loaded.defaultZoomScale,
+                    speed: loaded.zoomSpeed
+                )
+            }
+            if restoredDraft { restoreKeptHistory(for: loaded) }
+            // Imported camera footage first, else the recorded camera.
+            loaded.relocateImportedCamera()
+            if let webcam = loaded.activeCamera(recorded: webcamRecording), loaded.importedCamera.map({ $0.resolved() != nil }) ?? true,
+               let camera = await VideoCameraSource.load(webcam) {
+                playback.setCamera(camera)
+                hasWebcamFootage = true
+            }
+            project = loaded
+            if hasWebcamFootage {
+                playback.cameraStore.setFindsPerson(project.webcam.needsPersonMask)
+            }
+            isReady = true
+            playback.apply(segments: segments, audio: project.audio, keepSourceTime: nil, extras: editExtras)
+            playback.seek(to: 0, fast: false)
+            saveDraftNow()
+            if isFresh, !project.zoomRegions.isEmpty {
+                showNotice(L("Auto zoom applied — \(project.zoomRegions.count) zooms follow your clicks"), symbol: "sparkles")
+            } else if restoredDraft {
+                showNotice(L("Picked up where you left off"), symbol: "clock.arrow.circlepath")
+            }
+            // A font this project uses isn't here: the built-in one stands in
+            // (VideoFonts.swift); the font pickers say which.
+            if let missing = missingFontFamilies.first {
+                showNotice(L("“\(missing)” isn't on this Mac — using the built-in font"), symbol: "exclamationmark.triangle.fill", duration: 5)
+            }
+            Task { await loadThumbnails() }
+            Task { await loadWaveform() }
+            if project.audio.enhanceVoice {
+                enhanceVoiceChanged()
+            }
+            Task { await prepareMedia() }
+        } catch {
+            loadError = error.localizedDescription
+            loadFailure = VideoLoadFailure.classify(error, url: project.sourceURL)
+        }
+    }
+
+    // MARK: Project changes
+
+    private func projectDidChange(from old: VideoDemoProject) {
+        // Added recordings set the source axis's length (right away, so no
+        // edit ever lays clips out against the old one).
+        if let axis = project.sourceAxisDuration, abs(axis - sourceDuration) > 0.0005 {
+            sourceDuration = axis
+        } else if project.sources.isEmpty, !old.sources.isEmpty, let primary = playback.source?.duration {
+            sourceDuration = primary
+        }
+        let oldSegments = segments
+        segments = project.timelineSegments(totalDuration: sourceDuration)
+        refreshTimeline()
+        // What Shorten Pauses and Speed Up Idle read (cheap when unchanged:
+        // the arrays share storage).
+        if old.cursorSamples != project.cursorSamples || old.clickEvents != project.clickEvents
+            || old.keystrokes != project.keystrokes || old.sources != project.sources {
+            activityCache = nil
+        }
+        if isReady, old.audio.enhanceVoice != project.audio.enhanceVoice {
+            enhanceVoiceChanged()
+        }
+        if isReady, hasWebcamFootage, old.webcam.needsPersonMask != project.webcam.needsPersonMask {
+            if playback.cameraStore.setFindsPerson(project.webcam.needsPersonMask) {
+                playback.refreshCurrentFrame()
+            }
+        }
+        // Cropping previews the raw recording: the plan (pointer path,
+        // camera) is rebuilt once the crop is done, not on every drag.
+        if !isCropping { rebuildPlan() }
+        validateSelection(keepingRange: true)
+        mediaDidChange(from: old)
+        if old.importedCamera != project.importedCamera { cameraFootageDidChange(from: old.importedCamera) }
+        if isReady {
+            // A clip edge being dragged rebuilds the player once, at the end
+            // (the preview shows the edge from a still meanwhile).
+            if !holdsPlayerRebuild {
+                // Stay on the same moment of the recording — read through the
+                // cut list it was on (a speed change or cut before the playhead
+                // moves that moment along the timeline).
+                let keepSource = VideoDemoProject.sourceTime(forTimelineTime: clock.time, segments: oldSegments.isEmpty ? segments : oldSegments)
+                // The playhead follows that moment to its new place on the
+                // timeline (paused, the player won't report the move).
+                if let moved = playback.apply(segments: segments, audio: project.audio, keepSourceTime: keepSource, extras: editExtras), !isPlaying {
+                    clock.time = moved
+                }
+            }
+            scheduleAutosave()
+        }
+        previewRenderer.invalidate()
+    }
+
+    /// After cropping: bring the plan up to date in one go.
+    func refreshPlan() {
+        rebuildPlan()
+        previewRenderer.invalidate()
+    }
+
+    /// Steps back to an earlier project as if the edits since `depth` undo
+    /// steps never happened (a cancelled crop): no extra undo step.
+    func discardEdits(restoring snapshot: VideoDemoProject, undoDepth depth: Int) {
+        undoStack = Array(undoStack.prefix(depth))
+        redoStack.removeAll()
+        lastCoalesceKey = nil
+        project = snapshot
+        canUndo = !undoStack.isEmpty
+        canRedo = false
+    }
+
+    var undoDepth: Int { undoStack.count }
+
+    private func rebuildPlan() {
+        let key = CursorTrackKey(
+            sampleCount: project.cursorSamples.count,
+            firstSample: project.cursorSamples.first?.time ?? 0,
+            lastSample: project.cursorSamples.last?.time ?? 0,
+            clicks: project.clickEvents,
+            smoothing: project.cursor.smoothing,
+            hideWhenIdle: project.cursor.hideWhenIdle,
+            tidyEnding: project.cursor.tidyEnding,
+            crop: project.crop.normalized,
+            duration: sourceDuration,
+            sources: project.sources
+        )
+        let cursorTrack: VideoCursorTrack?
+        if let cache = cursorTrackCache, cache.key == key {
+            cursorTrack = cache.track
+        } else {
+            // Several recordings: each one's own pointer path, joined up.
+            cursorTrack = VideoSourcesPointer.cursorTrack(project: project, duration: sourceDuration)
+            cursorTrackCache = (key, cursorTrack)
+        }
+        // Reframing renders the recording's own shape, then crops a moving
+        // window: the camera path is built for that landscape scene.
+        let layoutProject = project.reframeActive ? project.reframeScene() : project
+        let canvas = layoutProject.canvasSize()
+        let stage = layoutProject.stageRect(in: canvas)
+        let normalizedStage = CGRect(x: stage.minX / canvas.width, y: stage.minY / canvas.height, width: stage.width / canvas.width, height: stage.height / canvas.height)
+        let cameraKey = CameraTrackKey(
+            regions: project.zoomRegions,
+            timings: segments.map { .init(start: $0.clip.sourceStart, end: $0.clip.sourceEnd, speed: $0.clip.normalizedSpeed) },
+            speed: project.zoomSpeed,
+            stage: normalizedStage,
+            crop: project.crop.normalized,
+            cursorTrack: cursorTrack.map(ObjectIdentifier.init)
+        )
+        let camera: VideoCameraTrack
+        if let cache = cameraTrackCache, cache.key == cameraKey {
+            camera = cache.track
+        } else {
+            camera = VideoCameraTrack.build(
+                regions: project.zoomRegions,
+                segments: segments,
+                timelineDuration: project.outputDuration(segments: segments),
+                speed: project.zoomSpeed,
+                stage: normalizedStage,
+                crop: project.crop.normalized,
+                cursor: cursorTrack.map { track in { track.visiblePosition(at: $0) } }
+            )
+            cameraTrackCache = (cameraKey, camera)
+        }
+        let outputCanvas = project.canvasSize()
+        var reframe: VideoReframe?
+        if project.reframeActive,
+           let fraction = VideoReframe.windowFraction(outputAspect: outputCanvas.width / max(outputCanvas.height, 1), sceneAspect: canvas.width / max(canvas.height, 1)) {
+            if let cache = reframeCache, cache.key == cameraKey, cache.fraction == fraction {
+                reframe = cache.reframe
+            } else {
+                let built = VideoReframe.build(
+                    windowFraction: fraction,
+                    camera: camera,
+                    cursorTrack: cursorTrack,
+                    segments: segments,
+                    canvas: canvas,
+                    stage: stage,
+                    crop: project.crop.normalized,
+                    duration: project.outputDuration(segments: segments)
+                )
+                reframeCache = (cameraKey, fraction, built)
+                reframe = built
+            }
+        }
+        plan = VideoRenderPlan(
+            project: layoutProject,
+            sourceDuration: sourceDuration,
+            artwork: planArtwork,
+            pointPixelScale: recording?.pointPixelScale ?? project.sources.compactMap(\.pointPixelScale).first,
+            cursorTrack: cursorTrack,
+            camera: camera,
+            hasWebcam: hasWebcamFootage,
+            outputCanvasSize: outputCanvas,
+            reframe: reframe
+        )
+        if !plan.transitions.isEmpty { prefetchHeldFrames() }
+    }
+
+    // MARK: Undo
+
+    /// One step back: the project before an edit, and what the edit was
+    /// ("Delete Zoom").
+    struct UndoStep {
+        var project: VideoDemoProject
+        var label: String
+    }
+
+    /// Every edit goes through here. `coalesce` merges a continuous gesture
+    /// (a slider drag, a block drag) into ONE undo step. `label` names it
+    /// for the undo message (worked out from the change when not given).
+    func mutate(coalesce key: String? = nil, label: String? = nil, _ change: (inout VideoDemoProject) -> Void) {
+        var next = project
+        change(&next)
+        guard next != project else { return }
+        let now = Date()
+        if key == nil || key != lastCoalesceKey || now.timeIntervalSince(lastMutation) > 1.5 {
+            undoStack.append(UndoStep(project: project, label: label ?? pendingUndoLabel ?? VideoEditDescription.describe(from: project, to: next)))
+            pendingUndoLabel = nil
+            if undoStack.count > 300 { undoStack.removeFirst() }
+            redoStack.removeAll()
+        }
+        lastCoalesceKey = key
+        lastMutation = now
+        project = next
+        canUndo = !undoStack.isEmpty
+        canRedo = false
+    }
+
+    /// Ends a coalesced gesture so the next edit starts a new undo step.
+    func endGesture() {
+        lastCoalesceKey = nil
+    }
+
+    /// Something is being dragged (a slider, a clip edge, the playhead).
+    var isGestureInProgress: Bool {
+        (lastCoalesceKey != nil && Date().timeIntervalSince(lastMutation) < 1.5) || holdsPlayerRebuild || isScrubbing || layoutDurationLock != nil
+    }
+
+    /// What ⌘Z would undo, and ⇧⌘Z redo.
+    var undoLabel: String? { undoStack.last?.label }
+    var redoLabel: String? { redoStack.last?.label }
+
+    func undo() {
+        guard let step = undoStack.popLast() else { return }
+        redoStack.append(UndoStep(project: project, label: step.label))
+        lastCoalesceKey = nil
+        project = step.project
+        validateSelection()
+        canUndo = !undoStack.isEmpty
+        canRedo = true
+        showNotice(VideoEditDescription.undoTitle(step.label), symbol: "arrow.uturn.backward")
+    }
+
+    func redo() {
+        guard let step = redoStack.popLast() else { return }
+        undoStack.append(UndoStep(project: project, label: step.label))
+        lastCoalesceKey = nil
+        project = step.project
+        validateSelection()
+        canUndo = true
+        canRedo = !redoStack.isEmpty
+        showNotice(VideoEditDescription.redoTitle(step.label), symbol: "arrow.uturn.forward")
+    }
+
+    // MARK: Undo across reopening
+
+    private struct KeptHistory {
+        let project: VideoDemoProject
+        let undo: [UndoStep]
+        let redo: [UndoStep]
+    }
+
+    /// Undo and redo of editors closed this session, by recording: open
+    /// the video again (before quitting) and ⌘Z still steps back.
+    private static var keptHistory: [String: KeptHistory] = [:]
+    private static var keptHistoryOrder: [String] = []
+
+    private var historyKey: String { VideoFileIdentity.canonicalURL(project.sourceURL).path }
+
+    /// Pictures and songs this editor's project, undo, and redo use.
+    func assetPathsInHistory() -> Set<String> {
+        var paths = project.assetPaths
+        for step in undoStack + redoStack { paths.formUnion(step.project.assetPaths) }
+        return paths
+    }
+
+    /// Pictures and songs closed editors' kept undo history uses.
+    static func keptHistoryAssetPaths() -> Set<String> {
+        var paths = Set<String>()
+        for kept in keptHistory.values {
+            paths.formUnion(kept.project.assetPaths)
+            for step in kept.undo + kept.redo { paths.formUnion(step.project.assetPaths) }
+        }
+        return paths
+    }
+
+    private func keepHistoryForSession() {
+        guard isReady, !undoStack.isEmpty || !redoStack.isEmpty else { return }
+        let key = historyKey
+        Self.keptHistory[key] = KeptHistory(project: project, undo: undoStack, redo: redoStack)
+        Self.keptHistoryOrder.removeAll { $0 == key }
+        Self.keptHistoryOrder.append(key)
+        while Self.keptHistoryOrder.count > 12 {
+            Self.keptHistory.removeValue(forKey: Self.keptHistoryOrder.removeFirst())
+        }
+    }
+
+    /// The history kept when this recording's editor closed, if the draft
+    /// it reopens with is still exactly what it closed with.
+    private func restoreKeptHistory(for opened: VideoDemoProject) {
+        guard let kept = Self.keptHistory[VideoFileIdentity.canonicalURL(opened.sourceURL).path], kept.project == opened else { return }
+        undoStack = kept.undo
+        redoStack = kept.redo
+        canUndo = !undoStack.isEmpty
+        canRedo = !redoStack.isEmpty
+    }
+
+    func validateSelection(keepingRange: Bool = false) {
+        validateExtraSelection()
+        switch selection {
+        case .zoom(let id) where !project.zoomRegions.contains(where: { $0.id == id }),
+             .overlay(let id) where !project.overlayEffects.contains(where: { $0.id == id }),
+             .click(let id) where !project.clickEvents.contains(where: { $0.id == id }),
+             .caption(let id) where !project.captions.contains(where: { $0.id == id }),
+             .keystroke(let id) where !project.keystrokes.contains(where: { $0.id == id }),
+             .cameraLayout(let id) where !project.cameraLayouts.contains(where: { $0.id == id }),
+             .clip(let id) where !project.timelineClips.contains(where: { $0.id == id }):
+            selection = .none
+        case .range where !keepingRange:
+            selection = .none
+        default:
+            break
+        }
+    }
+
+    // MARK: Time mapping
+
+    /// The clips plus the intro and outro cards.
+    var timelineDuration: Double { project.outputDuration(segments: segments) }
+
+    func sourceTime(forTimeline time: Double) -> Double {
+        VideoDemoProject.sourceTime(forTimelineTime: time, segments: segments)
+    }
+
+    /// A timeline window as a stretch of the recording: from where `start`
+    /// plays (on a cut, the clip after it), on through the clips that follow
+    /// it in the recording's own order. A clip moved out of order ends it —
+    /// otherwise the stretch would run backwards or over other clips.
+    func sourceWindow(timelineStart: Double, timelineEnd: Double) -> ClosedRange<Double> {
+        let segments = self.segments
+        guard let first = segments.first, let last = segments.last else { return timelineStart...max(timelineEnd, timelineStart) }
+        let start = min(max(timelineStart, first.timelineStart), last.timelineEnd)
+        let end = max(timelineEnd, start)
+        var index = segments.firstIndex { start >= $0.timelineStart - 0.0005 && start < $0.timelineEnd - 0.0005 } ?? (segments.count - 1)
+        let sourceStart = segments[index].sourceTime(forTimelineTime: start)
+        while index + 1 < segments.count, end > segments[index].timelineEnd + 0.0005,
+              segments[index + 1].clip.sourceStart >= segments[index].clip.sourceEnd - 0.0005 {
+            index += 1
+        }
+        let sourceEnd = segments[index].sourceTime(forTimelineTime: min(end, segments[index].timelineEnd))
+        return sourceStart...max(sourceEnd, sourceStart)
+    }
+
+    /// The whole recording the timeline uses, whatever order its clips are in.
+    var sourceSpanOnTimeline: ClosedRange<Double>? {
+        guard let start = segments.map(\.clip.sourceStart).min(), let end = segments.map(\.clip.sourceEnd).max() else { return nil }
+        return start...max(end, start)
+    }
+
+    /// The moment of the recording something new at the playhead starts
+    /// from. On a cut that's the frame after it — the one on screen — not
+    /// the last frame of the material before it.
+    func placementSourceTime(forTimeline time: Double) -> Double {
+        if let next = segments.first(where: { abs($0.timelineStart - time) < 0.001 }) {
+            return next.clip.sourceStart
+        }
+        return sourceTime(forTimeline: time)
+    }
+
+    func timelineTime(forSource time: Double) -> Double? {
+        segment(containingSource: time)?.timelineTime(forSourceTime: time)
+    }
+
+    /// The clip that plays this moment of the recording (binary search; the
+    /// first in timeline order where two clips meet).
+    func segment(containingSource time: Double) -> VideoDemoTimelineSegment? {
+        let sorted = segmentsBySource
+        var low = 0
+        var high = sorted.count
+        // First clip that ends at or after `time`.
+        while low < high {
+            let mid = (low + high) / 2
+            if sorted[mid].clip.sourceEnd < time { low = mid + 1 } else { high = mid }
+        }
+        var found: VideoDemoTimelineSegment?
+        var index = low
+        while index < sorted.count, sorted[index].clip.sourceStart <= time {
+            if sorted[index].contains(sourceTime: time), found.map({ sorted[index].timelineStart < $0.timelineStart }) ?? true {
+                found = sorted[index]
+            }
+            index += 1
+        }
+        return found
+    }
+
+    func segment(atTimeline time: Double) -> VideoDemoTimelineSegment? {
+        segments.first { time >= $0.timelineStart - 0.0001 && time <= $0.timelineEnd + 0.0001 }
+    }
+
+    /// Camera at a timeline moment (for preview handles).
+    func cameraState(at time: Double) -> VideoCameraState {
+        plan.camera.state(at: time)
+    }
+
+    // MARK: Timeline scale
+
+    /// Zoomed all the way in, a second is 150 points on any length of
+    /// recording (a 30-minute take can be trimmed frame by frame too).
+    var maxTimelineZoom: Double {
+        max(40, timelineDuration * 150 / Double(max(timelineViewportWidth, 100)))
+    }
+
+    /// = / − and the buttons: in or out around the playhead.
+    func zoomTimeline(by factor: Double) {
+        timelineZoom = min(max(timelineZoom * factor, 1), maxTimelineZoom)
+    }
+
+    // MARK: Transport
+
+    func togglePlay() {
+        shuttleRate = 1
+        if isPlaying {
+            playback.pause()
+        } else {
+            if case .zoom = selection, isAimingZoom { selection = .none }
+            playback.play()
+        }
+    }
+
+    func pause() {
+        playback.pause()
+    }
+
+    func seek(to time: Double, fast: Bool = false) {
+        let target = min(max(time, 0), timelineDuration)
+        clock.time = target
+        // Fast seeks come while the playhead is dragged; the exact one on
+        // release ends it.
+        isScrubbing = fast
+        updatePreviewQuality()
+        playback.seek(to: target, fast: fast)
+        previewRenderer.invalidate()
+    }
+
+    /// The playhead is being dragged.
+    private(set) var isScrubbing = false
+
+    /// 4K and bigger recordings.
+    var hasLargeSource: Bool { project.sourceWidth * project.sourceHeight >= 3840 * 2160 * 0.9 }
+
+    /// While a big recording plays or scrubs, the preview draws in draft
+    /// quality from smaller frames; the paused frame is full quality.
+    var previewPrefersSpeed: Bool { hasLargeSource && (isPlaying || isScrubbing) }
+
+    func updatePreviewQuality() {
+        playback.setUsesSmallFrames(previewPrefersSpeed)
+    }
+
+    func step(frames: Int) {
+        playback.pause()
+        seek(to: clock.time + Double(frames) / max(sourceFrameRate, 24))
+    }
+
+    func jump(by seconds: Double) {
+        seek(to: clock.time + seconds)
+    }
+
+    /// L in J/K/L: play, then 2x, 4x on repeated presses.
+    func shuttleForward() {
+        if isPlaying {
+            shuttleRate = min(shuttleRate * 2, 4)
+            playback.setRate(shuttleRate)
+            showNotice(L("Playing \(Int(shuttleRate))×"), symbol: "forward.fill")
+        } else {
+            playback.play()
+        }
+    }
+
+    /// J: step back a second (reverse playback of long-GOP video is choppy).
+    func shuttleBackward() {
+        playback.pause()
+        jump(by: -1)
+    }
+
+    // MARK: Clips
+
+    var selectedClipID: UUID? {
+        if case .clip(let id) = selection { return id }
+        return nil
+    }
+
+    func selectClip(_ id: UUID) {
+        selection = .clip(id)
+    }
+
+    func splitAtPlayhead() {
+        let time = clock.time
+        guard let segment = segment(atTimeline: time) else { return }
+        let sourceTime = segment.sourceTime(forTimelineTime: time)
+        var newID: UUID?
+        mutate { project in
+            newID = project.splitClip(atSourceTime: sourceTime, totalDuration: sourceDuration)
+        }
+        if let newID {
+            selection = .clip(newID)
+            showNotice(L("Clip split"), symbol: "scissors")
+        } else {
+            showNotice(L("Move the playhead inside a clip to split"), symbol: "scissors")
+        }
+    }
+
+    func deleteClip(_ id: UUID) {
+        guard segments.count > 1 else {
+            showNotice(L("A video needs at least one clip"), symbol: "exclamationmark.triangle")
+            return
+        }
+        let anchor = segments.first(where: { $0.id == id })?.timelineStart ?? clock.time
+        var next: UUID?
+        mutate { project in
+            next = project.deleteClip(id: id, totalDuration: sourceDuration)
+        }
+        selection = next.map { .clip($0) } ?? .none
+        seek(to: min(anchor, max(timelineDuration - 0.01, 0)))
+        showNotice(L("Clip removed — ⌘Z to undo"), symbol: "trash")
+    }
+
+    func deleteRange(_ range: VideoDemoTimelineRange) {
+        let normalized = range.normalized
+        var next: UUID?
+        mutate(label: "Cut") { project in
+            next = project.deleteTimelineRange(start: normalized.start, end: normalized.end, totalDuration: sourceDuration)
+        }
+        if next == nil {
+            showNotice(L("A video needs at least one clip"), symbol: "exclamationmark.triangle")
+            return
+        }
+        selection = .none
+        seek(to: min(normalized.start, max(timelineDuration - 0.01, 0)))
+        showNotice(L("Removed \(Self.format(normalized.duration)) — ⌘Z to undo"), symbol: "scissors")
+    }
+
+    // MARK: Range actions
+
+    /// The recording spans a timeline range covers (one per clip it crosses).
+    func sourcePieces(of range: VideoDemoTimelineRange) -> [ClosedRange<Double>] {
+        let normalized = range.normalized
+        return segments.compactMap { segment in
+            let start = max(normalized.start, segment.timelineStart)
+            let end = min(normalized.end, segment.timelineEnd)
+            guard end - start > 0.01 else { return nil }
+            return segment.sourceTime(forTimelineTime: start)...segment.sourceTime(forTimelineTime: end)
+        }
+    }
+
+    /// Changes just the selected part (speed, sound): its clips split at the
+    /// range's edges, and the range follows the same material afterwards.
+    func applyToRange(_ range: VideoDemoTimelineRange, label: String, _ change: (inout VideoDemoTimelineClip) -> Void) {
+        let pieces = sourcePieces(of: range)
+        guard !pieces.isEmpty else { return }
+        mutate(label: label) { project in
+            for piece in pieces {
+                _ = project.splitClip(atSourceTime: piece.lowerBound, totalDuration: sourceDuration)
+                _ = project.splitClip(atSourceTime: piece.upperBound, totalDuration: sourceDuration)
+                // Edges too close to a clip's own edge to split there: that
+                // whole clip counts as inside.
+                let slack = VideoDemoProject.minimumClipDuration
+                for clip in project.normalizedTimelineClips(totalDuration: sourceDuration)
+                where clip.sourceStart >= piece.lowerBound - slack && clip.sourceEnd <= piece.upperBound + slack {
+                    _ = project.updateClip(id: clip.id, totalDuration: sourceDuration, update: change)
+                }
+            }
+        }
+        let spans = pieces.flatMap { VideoDemoProject.timelineRanges(sourceStart: $0.lowerBound, sourceEnd: $0.upperBound, segments: segments) }
+        if let first = spans.map(\.lowerBound).min(), let last = spans.map(\.upperBound).max() {
+            selection = .range(VideoDemoTimelineRange(start: first, end: last))
+        }
+    }
+
+    /// The clips a range crosses.
+    private func segments(in range: VideoDemoTimelineRange) -> [VideoDemoTimelineSegment] {
+        let normalized = range.normalized
+        return segments.filter { min(normalized.end, $0.timelineEnd) - max(normalized.start, $0.timelineStart) > 0.01 }
+    }
+
+    /// The speed the whole range plays at (nil when its clips differ).
+    func rangeSpeed(_ range: VideoDemoTimelineRange) -> Double? {
+        let speeds = Set(segments(in: range).map { ($0.clip.normalizedSpeed * 100).rounded() / 100 })
+        return speeds.count == 1 ? speeds.first : nil
+    }
+
+    func rangeIsMuted(_ range: VideoDemoTimelineRange) -> Bool {
+        let crossed = segments(in: range)
+        return !crossed.isEmpty && crossed.allSatisfy(\.clip.muted)
+    }
+
+    func setRangeSpeed(_ range: VideoDemoTimelineRange, _ speed: Double) {
+        applyToRange(range, label: "Speed Change") { $0.speed = speed }
+    }
+
+    func toggleRangeMute(_ range: VideoDemoTimelineRange) {
+        let muted = rangeIsMuted(range)
+        applyToRange(range, label: muted ? "Unmute Part" : "Mute Part") { $0.muted = !muted }
+    }
+
+    func setClipSpeed(_ id: UUID, _ speed: Double) {
+        mutate(coalesce: "speed-\(id)") { project in
+            _ = project.updateClip(id: id, totalDuration: sourceDuration) { $0.speed = speed }
+        }
+    }
+
+    func setClipMuted(_ id: UUID, _ muted: Bool) {
+        mutate { project in
+            _ = project.updateClip(id: id, totalDuration: sourceDuration) { $0.muted = muted }
+        }
+    }
+
+    func setClipFade(_ id: UUID, fadeIn: Double? = nil, fadeOut: Double? = nil) {
+        mutate(coalesce: "fade-\(id)") { project in
+            _ = project.updateClip(id: id, totalDuration: sourceDuration) { clip in
+                if let fadeIn { clip.fadeIn = fadeIn }
+                if let fadeOut { clip.fadeOut = fadeOut }
+            }
+        }
+    }
+
+    /// Live clip-edge trim. `sourceTime` is the new edge; the preview peeks
+    /// at it while dragging.
+    func trimClip(_ id: UUID, leading: Bool, toSource sourceTime: Double) {
+        if layoutDurationLock == nil { layoutDurationLock = timelineDuration }
+        holdsPlayerRebuild = true
+        mutate(coalesce: "trim-\(id)-\(leading)") { project in
+            if leading {
+                _ = project.trimClip(id: id, sourceStart: sourceTime, totalDuration: sourceDuration)
+            } else {
+                _ = project.trimClip(id: id, sourceEnd: sourceTime, totalDuration: sourceDuration)
+            }
+        }
+        if let clip = project.timelineClips.first(where: { $0.id == id }) {
+            trimPeekSourceTime = leading ? clip.sourceStart : max(clip.sourceEnd - 0.02, clip.sourceStart)
+        }
+        previewRenderer.invalidate()
+    }
+
+    func endTrim(_ id: UUID, leading: Bool) {
+        endGesture()
+        trimPeekSourceTime = nil
+        layoutDurationLock = nil
+        if holdsPlayerRebuild {
+            holdsPlayerRebuild = false
+            playback.apply(segments: segments, audio: project.audio, keepSourceTime: nil, extras: editExtras)
+        }
+        if let segment = segments.first(where: { $0.id == id }) {
+            seek(to: leading ? segment.timelineStart : max(segment.timelineEnd - 0.02, segment.timelineStart))
+        }
+    }
+
+    func trimSelectedClipToPlayhead(leading: Bool) {
+        let time = clock.time
+        // The selected clip, when the playhead is in it; else the clip the
+        // playhead is in — on a cut, the one after it for "starts here" and
+        // the one before it for "ends here".
+        let selected = selectedClipID.flatMap { id in
+            segments.first { $0.id == id && time >= $0.timelineStart - 0.001 && time <= $0.timelineEnd + 0.001 }
+        }
+        let underPlayhead = leading
+            ? segments.first { time >= $0.timelineStart - 0.001 && time < $0.timelineEnd - 0.001 }
+            : segments.first { time > $0.timelineStart + 0.001 && time <= $0.timelineEnd + 0.001 }
+        guard let segment = selected ?? underPlayhead else { return }
+        let sourceTime = segment.sourceTime(forTimelineTime: time)
+        mutate { project in
+            if leading {
+                _ = project.trimClip(id: segment.id, sourceStart: sourceTime, totalDuration: sourceDuration)
+            } else {
+                _ = project.trimClip(id: segment.id, sourceEnd: sourceTime, totalDuration: sourceDuration)
+            }
+        }
+        selection = .clip(segment.id)
+        showNotice(leading ? L("Clip now starts here") : L("Clip now ends here"), symbol: leading ? "arrow.left.to.line" : "arrow.right.to.line")
+    }
+
+    /// Material cut between two clips (or before the first / after the last).
+    struct CutGap: Identifiable {
+        var id: String { "\(afterClip?.uuidString ?? "start")-\(sourceStart)" }
+        let timelineTime: Double
+        let sourceStart: Double
+        let sourceEnd: Double
+        let afterClip: UUID?
+        var duration: Double { sourceEnd - sourceStart }
+
+        /// Runs of gaps whose markers sit within `spacing` timeline seconds
+        /// of each other.
+        static func grouped(_ gaps: [CutGap], within spacing: Double) -> [[CutGap]] {
+            var groups: [[CutGap]] = []
+            for gap in gaps.sorted(by: { $0.timelineTime < $1.timelineTime }) {
+                if let last = groups.last?.last, gap.timelineTime - last.timelineTime < spacing {
+                    groups[groups.count - 1].append(gap)
+                } else {
+                    groups.append([gap])
+                }
+            }
+            return groups
+        }
+    }
+
+    /// Parts of the recording no clip plays, each marked where restoring it
+    /// would bring it back: after the clip that ends where it starts (clips
+    /// may be in any order on the timeline).
+    var cutGaps: [CutGap] {
+        var gaps: [CutGap] = []
+        let bySource = segmentsBySource
+        guard let first = bySource.first, let last = bySource.last else { return gaps }
+        if first.clip.sourceStart > 0.05 {
+            gaps.append(CutGap(timelineTime: first.timelineStart, sourceStart: 0, sourceEnd: first.clip.sourceStart, afterClip: nil))
+        }
+        for (a, b) in zip(bySource, bySource.dropFirst()) where b.clip.sourceStart - a.clip.sourceEnd > 0.05 {
+            gaps.append(CutGap(timelineTime: a.timelineEnd, sourceStart: a.clip.sourceEnd, sourceEnd: b.clip.sourceStart, afterClip: a.id))
+        }
+        if sourceDuration - last.clip.sourceEnd > 0.05 {
+            gaps.append(CutGap(timelineTime: last.timelineEnd, sourceStart: last.clip.sourceEnd, sourceEnd: sourceDuration, afterClip: last.id))
+        }
+        return gaps
+    }
+
+    /// Puts removed material back (the neighbouring clip grows over it, and
+    /// merges with the next one when they meet again).
+    func restore(_ gap: CutGap) {
+        mutate(label: "Restore Cut") { project in
+            project.restoreSourceRange(gap.sourceStart...gap.sourceEnd, totalDuration: sourceDuration)
+        }
+        showNotice(L("Restored \(Self.format(gap.duration))"), symbol: "arrow.uturn.backward")
+    }
+
+    /// Moves a clip to another place in the video.
+    func moveClip(_ id: UUID, toIndex index: Int) {
+        var moved = false
+        mutate(label: "Move Clip") { moved = $0.moveClip(id: id, toIndex: index, totalDuration: sourceDuration) }
+        guard moved else { return }
+        selection = .clip(id)
+        if let segment = segments.first(where: { $0.id == id }) { seek(to: segment.timelineStart) }
+        showNotice(L("Clip moved — ⌘Z to undo"), symbol: "arrow.left.arrow.right")
+    }
+
+    /// Several cuts back at once (one undo step).
+    func restore(_ gaps: [CutGap]) {
+        guard !gaps.isEmpty else { return }
+        mutate(label: "Restore Cuts") { project in
+            for gap in gaps {
+                project.restoreSourceRange(gap.sourceStart...gap.sourceEnd, totalDuration: sourceDuration)
+            }
+        }
+        let total = gaps.reduce(0) { $0 + $1.duration }
+        showNotice(L("Restored \(gaps.count) cuts — \(Self.format(total))"), symbol: "arrow.uturn.backward")
+    }
+
+    // MARK: Zooms
+
+    var selectedZoomID: UUID? {
+        if case .zoom(let id) = selection { return id }
+        return nil
+    }
+
+    var selectedZoom: VideoZoomRegion? {
+        selectedZoomID.flatMap { id in project.zoomRegions.first { $0.id == id } }
+    }
+
+    /// Paused with a manual zoom selected: the preview shows the whole frame
+    /// with a draggable target rectangle.
+    var isAimingZoom: Bool {
+        guard !isPlaying, let zoom = selectedZoom else { return false }
+        return !zoom.followsCursor
+    }
+
+    /// Timeline ranges occupied by zoom regions (for placement and drawing).
+    func zoomTimelineRange(_ region: VideoZoomRegion) -> ClosedRange<Double>? {
+        let ranges = VideoDemoProject.timelineRanges(sourceStart: region.start, sourceEnd: region.end, segments: segments)
+        guard let first = ranges.first, let last = ranges.last else { return nil }
+        return first.lowerBound...last.upperBound
+    }
+
+    /// Free space around `time` on the zoom track.
+    func zoomGap(around time: Double) -> ClosedRange<Double> {
+        var lower = 0.0
+        var upper = timelineDuration
+        for region in project.zoomRegions {
+            guard let range = zoomTimelineRange(region) else { continue }
+            if range.upperBound <= time { lower = max(lower, range.upperBound) }
+            if range.lowerBound >= time { upper = min(upper, range.lowerBound) }
+            if range.contains(time) { return time...time }
+        }
+        return lower...max(lower, upper)
+    }
+
+    /// Times a dragged edge likes to land on (timeline seconds): the
+    /// playhead, clip boundaries, clicks and shortcuts, and the edges of
+    /// every zoom, annotation, caption, and camera layout but the ones being
+    /// dragged.
+    func snapTargets(excluding ids: Set<UUID>) -> [Double] {
+        var targets: [Double] = [0, timelineDuration, clock.time]
+        for segment in segments {
+            targets.append(segment.timelineStart)
+            targets.append(segment.timelineEnd)
+        }
+        for click in project.clickEvents where !ids.contains(click.id) {
+            if let time = timelineTime(forSource: click.time) { targets.append(time) }
+        }
+        for keystroke in plan.keystrokes { targets.append(keystroke.start) }
+        for region in project.zoomRegions where !ids.contains(region.id) {
+            if let range = zoomTimelineRange(region) {
+                targets.append(range.lowerBound)
+                targets.append(range.upperBound)
+            }
+        }
+        for overlay in plan.overlays where !ids.contains(overlay.effect.id) {
+            targets.append(overlay.start)
+            targets.append(overlay.end)
+        }
+        for caption in plan.captions where !ids.contains(caption.id) {
+            targets.append(caption.start)
+            targets.append(caption.end)
+        }
+        for span in cameraLayoutSpans where !ids.contains(span.region.id) {
+            targets.append(span.start)
+            targets.append(span.end)
+        }
+        return targets
+    }
+
+    @discardableResult
+    func addZoom(at time: Double, length: Double = 3) -> UUID? {
+        let gap = zoomGap(around: time)
+        guard gap.upperBound - gap.lowerBound >= VideoZoomRegion.minimumDuration else {
+            showNotice(L("There's already a zoom here"), symbol: "plus.magnifyingglass")
+            return nil
+        }
+        var start = max(time - 0.2, gap.lowerBound)
+        var end = min(start + length, gap.upperBound)
+        if end - start < min(length, 1.2) {
+            start = max(gap.lowerBound, end - length)
+            end = min(gap.upperBound, start + length)
+        }
+        let window = sourceWindow(timelineStart: start, timelineEnd: end)
+        let sourceStart = window.lowerBound
+        let sourceEnd = window.upperBound
+        guard sourceEnd - sourceStart >= VideoZoomRegion.minimumDuration else { return nil }
+        // Aim where the pointer is, when we know it.
+        let pointer = plan.cursorTrack?.visiblePosition(at: sourceTime(forTimeline: min(start + 0.6, end)))
+        let region = VideoZoomRegion(
+            start: sourceStart,
+            end: sourceEnd,
+            scale: project.defaultZoomScale,
+            followsCursor: plan.cursorTrack != nil,
+            focusX: pointer.map { Double($0.x) } ?? 0.5,
+            focusY: pointer.map { Double($0.y) } ?? 0.5
+        )
+        mutate { project in
+            project.zoomRegions.append(region)
+            project.zoomRegions.sort { $0.start < $1.start }
+        }
+        selection = .zoom(region.id)
+        return region.id
+    }
+
+    func updateZoom(_ id: UUID, coalesce: String? = nil, _ change: (inout VideoZoomRegion) -> Void) {
+        mutate(coalesce: coalesce) { project in
+            guard let index = project.zoomRegions.firstIndex(where: { $0.id == id }) else { return }
+            change(&project.zoomRegions[index])
+            project.zoomRegions[index].scale = min(max(project.zoomRegions[index].scale, VideoZoomRegion.scaleRange.lowerBound), VideoZoomRegion.scaleRange.upperBound)
+            project.zoomRegions[index].focusX = min(max(project.zoomRegions[index].focusX, 0), 1)
+            project.zoomRegions[index].focusY = min(max(project.zoomRegions[index].focusY, 0), 1)
+            project.zoomRegions[index].isAuto = false
+        }
+    }
+
+    /// Moves / resizes a zoom in timeline seconds, never overlapping its
+    /// neighbours.
+    func setZoomWindow(_ id: UUID, start: Double, end: Double, coalesce: String) {
+        let others = project.zoomRegions.filter { $0.id != id }.compactMap { zoomTimelineRange($0) }
+        guard let current = project.zoomRegions.first(where: { $0.id == id }).flatMap({ zoomTimelineRange($0) }) else { return }
+        let lowerLimit = others.filter { $0.upperBound <= current.lowerBound + 0.001 }.map(\.upperBound).max() ?? 0
+        let upperLimit = others.filter { $0.lowerBound >= current.upperBound - 0.001 }.map(\.lowerBound).min() ?? timelineDuration
+        var newStart = max(start, lowerLimit)
+        var newEnd = min(end, upperLimit)
+        if newEnd - newStart < VideoZoomRegion.minimumDuration {
+            if start != current.lowerBound && end != current.upperBound {
+                // Moving: keep the length.
+                let length = current.upperBound - current.lowerBound
+                newStart = min(max(start, lowerLimit), upperLimit - length)
+                newEnd = newStart + length
+            } else if start != current.lowerBound {
+                newStart = newEnd - VideoZoomRegion.minimumDuration
+            } else {
+                newEnd = newStart + VideoZoomRegion.minimumDuration
+            }
+        }
+        let window = sourceWindow(timelineStart: newStart, timelineEnd: newEnd)
+        let sourceStart = window.lowerBound
+        let sourceEnd = window.upperBound
+        updateZoom(id, coalesce: coalesce) { region in
+            region.start = sourceStart
+            region.end = max(sourceEnd, sourceStart + VideoZoomRegion.minimumDuration)
+        }
+    }
+
+    func deleteZoom(_ id: UUID) {
+        mutate { project in
+            project.zoomRegions.removeAll { $0.id == id }
+        }
+        if selection == .zoom(id) { selection = .none }
+        showNotice(L("Zoom removed — ⌘Z to undo"), symbol: "trash")
+    }
+
+    /// Back to the recording as it was made: every edit goes (one undo
+    /// brings them all back).
+    func startOver() {
+        let alert = NSAlert()
+        alert.messageText = L("Start over from the original recording?")
+        alert.informativeText = project.hasAppendedSources
+            ? L("Every cut, zoom, annotation, caption, and style change on this video is removed — the recordings you added stay. You can undo this.")
+            : L("Every cut, zoom, annotation, caption, and style change on this video is removed. You can undo this.")
+        alert.addButton(withTitle: L("Start Over"))
+        alert.addButton(withTitle: L("Cancel"))
+        guard alert.runModal() == .alertFirstButtonReturn else { return }
+        Task {
+            // Every added recording's own data first (read off the main thread).
+            await loadAppendedMetadata()
+            resetToOriginal()
+        }
+    }
+
+    /// Start Over without asking. Edits go; added recordings stay.
+    func resetToOriginal() {
+        let primaryDuration = project.sources.first(where: \.isPrimary)?.duration ?? sourceDuration
+        var fresh = VideoDemoProject.make(sourceURL: project.sourceURL, duration: primaryDuration, sourceSize: project.sourceSize)
+        if let recording { fresh.apply(metadata: recording) }
+        fresh.sourceWidth = project.sourceWidth
+        fresh.sourceHeight = project.sourceHeight
+        fresh.ensureTimeline(totalDuration: primaryDuration)
+        restoreAddedRecordings(into: &fresh)
+        let total = fresh.sourceAxisDuration ?? primaryDuration
+        if fresh.sourceHeight > fresh.sourceWidth * 1.1, fresh.aspectPreset == .widescreen || fresh.aspectPreset == .classic {
+            fresh.aspectPreset = .source
+        }
+        if recording != nil, Settings.autoZoomNewRecordings, !fresh.clickEvents.isEmpty {
+            fresh.zoomRegions = VideoAutoZoomPlanner.regions(
+                clicks: fresh.clicksInsideCrop,
+                cursorSamples: fresh.cursorSamples,
+                segments: fresh.timelineSegments(totalDuration: total),
+                scale: fresh.defaultZoomScale,
+                speed: fresh.zoomSpeed
+            )
+        }
+        selection = .none
+        mutate(label: "Start Over") { $0 = fresh }
+        endGesture()
+        showNotice(L("Back to the original recording — ⌘Z to undo"), symbol: "arrow.counterclockwise")
+    }
+
+    /// A copy of an annotation, nudged so both are visible, on top.
+    func duplicateOverlay(_ id: UUID) {
+        guard let original = project.overlayEffects.first(where: { $0.id == id }) else { return }
+        var copy = original
+        copy.id = UUID()
+        copy.x = min(original.x + 0.03, 0.98)
+        copy.y = min(original.y + 0.03, 0.98)
+        copy.refitArrowEnds(from: original)
+        let overlapping = project.overlayEffects.filter { $0.time < copy.time + copy.duration && $0.time + $0.duration > copy.time }
+        copy.layer = (overlapping.map(\.layer).max() ?? -1) + 1
+        mutate { project in
+            project.overlayEffects.append(copy)
+            project.overlayEffects = VideoDemoProject.normalizedEffectLayers(project.overlayEffects)
+        }
+        selection = .overlay(copy.id)
+        showNotice(L("Duplicated"), symbol: "plus.square.on.square")
+    }
+
+    func duplicateZoom(_ id: UUID) {
+        guard let region = project.zoomRegions.first(where: { $0.id == id }),
+              let range = zoomTimelineRange(region) else { return }
+        let length = range.upperBound - range.lowerBound
+        let gap = zoomGap(around: range.upperBound + 0.01)
+        guard gap.upperBound - gap.lowerBound >= length * 0.5 else {
+            showNotice(L("No room after this zoom"), symbol: "plus.square.on.square")
+            return
+        }
+        let start = gap.lowerBound + 0.1
+        let end = min(start + length, gap.upperBound)
+        var copy = region
+        copy.id = UUID()
+        let window = sourceWindow(timelineStart: start, timelineEnd: end)
+        copy.start = window.lowerBound
+        copy.end = max(window.upperBound, window.lowerBound + VideoZoomRegion.minimumDuration)
+        copy.isAuto = false
+        mutate { project in
+            project.zoomRegions.append(copy)
+            project.zoomRegions.sort { $0.start < $1.start }
+        }
+        selection = .zoom(copy.id)
+    }
+
+    func applyZoomScaleToAll(_ scale: Double) {
+        mutate(label: "Zoom Level for All") { project in
+            for index in project.zoomRegions.indices {
+                project.zoomRegions[index].scale = scale
+            }
+            project.defaultZoomScale = scale
+        }
+        showNotice(L("All zooms set to \(Self.formatScale(scale))"), symbol: "plus.magnifyingglass")
+    }
+
+    func autoZoom() {
+        let generated = VideoAutoZoomPlanner.regions(
+            clicks: project.clicksInsideCrop,
+            cursorSamples: project.cursorSamples,
+            segments: segments,
+            scale: project.defaultZoomScale,
+            speed: project.zoomSpeed
+        )
+        guard !generated.isEmpty else {
+            showNotice(project.clickEvents.isEmpty ? L("No clicks were recorded — add zooms by hand") : L("No clicks left on the timeline"), symbol: "sparkles")
+            return
+        }
+        mutate(label: "Auto Zoom") { project in
+            let manual = project.zoomRegions.filter { !$0.isAuto }
+            // Keep hand-made zooms; drop generated ones that would overlap them.
+            let kept = generated.filter { candidate in
+                !manual.contains { $0.start < candidate.end && $0.end > candidate.start }
+            }
+            project.zoomRegions = (manual + kept).sorted { $0.start < $1.start }
+        }
+        selection = .none
+        showNotice(L("Auto zoom — \(project.zoomRegions.count) zooms"), symbol: "sparkles")
+    }
+
+    func removeAllZooms() {
+        guard !project.zoomRegions.isEmpty else { return }
+        let count = project.zoomRegions.count
+        mutate(label: "Remove All Zooms") { project in
+            project.zoomRegions.removeAll()
+        }
+        if case .zoom = selection { selection = .none }
+        showNotice(L("Removed \(count) zooms — ⌘Z to undo"), symbol: "trash")
+    }
+
+    // MARK: Overlays
+
+    var selectedOverlay: VideoDemoOverlayEffect? {
+        if case .overlay(let id) = selection {
+            return project.overlayEffects.first { $0.id == id }
+        }
+        return nil
+    }
+
+    func addOverlay(_ kind: VideoDemoOverlayEffectKind) {
+        // A picture needs a file first (VideoImageOverlays.swift).
+        guard kind != .image else { return chooseImageOverlay() }
+        let time = clock.time
+        let window = sourceWindow(timelineStart: time, timelineEnd: min(time + (kind == .blur ? 4 : 3), timelineDuration))
+        let sourceStart = window.lowerBound
+        let sourceEnd = window.upperBound
+        var effect = VideoDemoOverlayEffect(
+            kind: kind,
+            time: sourceStart,
+            duration: max(sourceEnd - sourceStart, 0.5),
+            x: 0.5,
+            y: kind == .text ? 0.14 : 0.5,
+            width: kind == .text ? 0.5 : (kind == .arrow ? 0.18 : 0.3),
+            height: kind == .text ? 0.09 : (kind == .arrow ? 0.18 : (kind == .spotlight ? 0.3 : 0.2)),
+            // A placeholder the user types over: in their language.
+            text: kind == .text ? L("Your text") : kind.title,
+            color: VideoOverlayStyleMemory.color(for: kind),
+            thickness: VideoOverlayStyleMemory.thickness(for: kind)
+        )
+        if kind == .spotlight { effect.shape = VideoOverlayStyleMemory.shape }
+        if kind == .blur { effect.strength = VideoOverlayStyleMemory.blurStrength }
+        // Land where it can be seen: zooms and vertical reframing show only
+        // part of the frame, so place (and if needed shrink) it inside that.
+        let visible = visibleRegion(at: time)
+        effect.width = min(effect.width, Double(visible.width) * 0.9)
+        effect.height = min(effect.height, Double(visible.height) * 0.9)
+        // Text goes near the top: captions, keycaps, and the camera bubble
+        // live at the bottom.
+        var center = CGPoint(x: visible.midX, y: kind == .text ? visible.minY + visible.height * 0.14 : visible.midY)
+        if kind != .text, let raw = plan.cursorTrack?.visiblePosition(at: sourceStart) {
+            // Annotations live in the (cropped) frame's coordinates.
+            let pointer = project.crop.normalized.map(raw)
+            if visible.insetBy(dx: visible.width * 0.05, dy: visible.height * 0.05).contains(pointer) {
+                center = pointer
+                if kind == .arrow {
+                    // The head (top right) lands just beside the pointer.
+                    center.x -= CGFloat(effect.width / 2) - visible.width * 0.02
+                    center.y += CGFloat(effect.height / 2) + visible.height * 0.03
+                }
+            }
+        }
+        let halfWidth = CGFloat(effect.width / 2)
+        let halfHeight = CGFloat(effect.height / 2)
+        effect.x = Double(min(max(center.x, visible.minX + halfWidth), visible.maxX - halfWidth))
+        effect.y = Double(min(max(center.y, visible.minY + halfHeight), visible.maxY - halfHeight))
+        if kind == .arrow {
+            // Saved ends: it can be turned to point any way.
+            let points = effect.arrowPoints
+            effect.setArrow(tail: points.tail, head: points.head)
+        }
+        // New annotations stack ON TOP of anything they overlap: a higher
+        // lane on the timeline, drawn in front in the video.
+        let overlapping = project.overlayEffects.filter {
+            $0.time < effect.time + effect.duration && $0.time + $0.duration > effect.time
+        }
+        effect.layer = (overlapping.map(\.layer).max() ?? -1) + 1
+        mutate { project in
+            project.overlayEffects.append(effect)
+            project.overlayEffects = VideoDemoProject.normalizedEffectLayers(project.overlayEffects)
+        }
+        selection = .overlay(effect.id)
+    }
+
+    /// The part of the frame on screen at a timeline moment, in annotation
+    /// coordinates (0…1 across the cropped recording): zooms and vertical
+    /// reframing show only some of it.
+    func visibleRegion(at time: Double) -> CGRect {
+        let whole = CGRect(x: 0, y: 0, width: 1, height: 1)
+        let canvas = plan.canvasSize
+        let stage = (project.reframeActive ? project.reframeScene() : project).stageRect(in: canvas)
+        guard canvas.width > 0, canvas.height > 0, stage.width > 0, stage.height > 0 else { return whole }
+        var window = cameraState(at: time).window(in: canvas)
+        if let reframe = plan.reframe {
+            // The output is a window across the (camera's) scene.
+            let fraction = reframe.windowFraction
+            let origin = min(max(reframe.center(at: time) - fraction / 2, 0), 1 - fraction)
+            window = CGRect(x: window.minX + window.width * origin, y: window.minY, width: window.width * fraction, height: window.height)
+        }
+        let region = CGRect(
+            x: (window.minX - stage.minX) / stage.width,
+            y: (window.minY - stage.minY) / stage.height,
+            width: window.width / stage.width,
+            height: window.height / stage.height
+        ).intersection(whole)
+        return region.width > 0.05 && region.height > 0.05 ? region : whole
+    }
+
+    func updateOverlay(_ id: UUID, coalesce: String? = nil, _ change: (inout VideoDemoOverlayEffect) -> Void) {
+        mutate(coalesce: coalesce) { project in
+            guard let index = project.overlayEffects.firstIndex(where: { $0.id == id }) else { return }
+            let old = project.overlayEffects[index]
+            change(&project.overlayEffects[index])
+            var effect = project.overlayEffects[index]
+            effect.width = min(max(effect.width, 0.04), 1)
+            effect.height = min(max(effect.height, 0.03), 1)
+            effect.x = min(max(effect.x, 0.02), 0.98)
+            effect.y = min(max(effect.y, 0.02), 0.98)
+            effect.duration = max(effect.duration, 0.2)
+            // A moved or resized arrow takes its ends along.
+            effect.refitArrowEnds(from: old)
+            project.overlayEffects[index] = effect
+        }
+    }
+
+    /// Text size in canvas points (a 1080-tall frame's): it follows the
+    /// box's height, so the size control sets that and keeps the width.
+    func textSize(of effect: VideoDemoOverlayEffect) -> Double {
+        let stage = (project.reframeActive ? project.reframeScene() : project).stageRect(in: plan.canvasSize)
+        return min(Double(stage.height) * effect.height * Self.textSizePerBoxHeight, 64)
+    }
+
+    func setTextSize(_ size: Double, of id: UUID) {
+        let stage = (project.reframeActive ? project.reframeScene() : project).stageRect(in: plan.canvasSize)
+        guard stage.height > 0 else { return }
+        updateOverlay(id, coalesce: "text-size-\(id)") { effect in
+            effect.height = size / Self.textSizePerBoxHeight / Double(stage.height)
+        }
+    }
+
+    /// The renderer draws text at 0.46 of its box's height (at most 64).
+    static let textSizePerBoxHeight = 0.46
+
+    func setOverlayWindow(_ id: UUID, start: Double, end: Double, coalesce: String) {
+        let safeStart = min(max(start, 0), max(timelineDuration - 0.2, 0))
+        let safeEnd = min(max(end, safeStart + 0.2), timelineDuration)
+        let window = sourceWindow(timelineStart: safeStart, timelineEnd: safeEnd)
+        let sourceStart = window.lowerBound
+        let sourceEnd = window.upperBound
+        updateOverlay(id, coalesce: coalesce) { effect in
+            effect.time = sourceStart
+            effect.duration = max(sourceEnd - sourceStart, 0.2)
+        }
+    }
+
+    func setOverlayLayer(_ id: UUID, layer: Int, coalesce: String) {
+        updateOverlay(id, coalesce: coalesce) { effect in
+            effect.layer = min(max(layer, 0), 7)
+        }
+    }
+
+    /// Settles lanes after a pill drag.
+    func finishOverlayDrag() {
+        endGesture()
+        let normalized = VideoDemoProject.normalizedEffectLayers(project.overlayEffects)
+        if normalized != project.overlayEffects {
+            // Part of the same gesture's undo step.
+            var next = project
+            next.overlayEffects = normalized
+            project = next
+        }
+    }
+
+    func deleteOverlay(_ id: UUID) {
+        mutate { project in
+            project.overlayEffects.removeAll { $0.id == id }
+            project.overlayEffects = VideoDemoProject.normalizedEffectLayers(project.overlayEffects)
+        }
+        if selection == .overlay(id) { selection = .none }
+        showNotice(L("Removed — ⌘Z to undo"), symbol: "trash")
+    }
+
+    // MARK: Clicks
+
+    func moveClick(_ id: UUID, toTimeline time: Double, coalesce: String? = nil) {
+        let sourceTime = sourceTime(forTimeline: min(max(time, 0), timelineDuration))
+        mutate(coalesce: coalesce ?? "click-\(id)") { project in
+            guard let index = project.clickEvents.firstIndex(where: { $0.id == id }) else { return }
+            let press = project.clickEvents[index].pressDuration
+            project.clickEvents[index].time = sourceTime
+            project.clickEvents[index].endTime = sourceTime + press
+            project.clickEvents.sort { $0.time < $1.time }
+        }
+    }
+
+    func deleteClick(_ id: UUID) {
+        mutate { project in
+            project.clickEvents.removeAll { $0.id == id }
+        }
+        if selection == .click(id) { selection = .none }
+        showNotice(L("Click removed — ⌘Z to undo"), symbol: "trash")
+    }
+
+    // MARK: Delete / Escape
+
+    func deleteSelection() {
+        if !extraSelection.isEmpty {
+            deleteSelectedItems()
+            return
+        }
+        switch selection {
+        case .none:
+            break
+        case .zoom(let id):
+            deleteZoom(id)
+        case .overlay(let id):
+            deleteOverlay(id)
+        case .click(let id):
+            deleteClick(id)
+        case .caption(let id):
+            deleteCaption(id)
+        case .keystroke(let id):
+            deleteKeystroke(id)
+        case .cameraLayout(let id):
+            deleteCameraLayout(id)
+        case .clip(let id):
+            deleteClip(id)
+        case .range(let range):
+            deleteRange(range)
+        }
+    }
+
+    // MARK: Style
+
+    func setStyle(coalesce key: String? = nil, _ change: (inout VideoDemoProject) -> Void) {
+        mutate(coalesce: key, change)
+    }
+
+    func saveStyleAsDefault() {
+        VideoStylePreset.saveAsDefault(project.style)
+        showNotice(L("Saved — new recordings will use this look"), symbol: "checkmark.circle.fill")
+    }
+
+    /// Back to the built-in LF Studios look.
+    func resetStyle() {
+        mutate(label: "Reset Look") { project in
+            project.apply(style: .factory)
+        }
+        showNotice(L("Back to the LF Studios look"), symbol: "arrow.counterclockwise")
+    }
+
+    var styleMatchesDefault: Bool {
+        guard let saved = VideoStylePreset.savedDefault else { return false }
+        return saved == project.style
+    }
+
+    func chooseBackgroundImage() {
+        let panel = NSOpenPanel()
+        panel.canChooseFiles = true
+        panel.canChooseDirectories = false
+        panel.allowsMultipleSelection = false
+        panel.allowedContentTypes = [.image]
+        guard panel.runModal() == .OK, let url = panel.url else { return }
+        setStyle { $0.background = .image(url.path) }
+    }
+
+    func shuffleBackground() {
+        let options = VideoBackgroundCatalog.wallpapers.map { VideoBackground.wallpaper($0.id) }
+            + VideoBackgroundCatalog.pickerGradients.map { VideoBackground.gradient($0.id) }
+        let choices = options.filter { $0 != project.background }
+        guard let pick = choices.randomElement() else { return }
+        setStyle { $0.background = pick }
+    }
+
+    // MARK: Idle speed-up
+
+    /// Stretches of the recording where nothing happens: the pointer is
+    /// still, nobody clicks or presses a shortcut, the screen isn't
+    /// changing (typing, scrolling), and it's quiet. Source seconds.
+    func idleRanges(minimum: Double = 2.5) -> [ClosedRange<Double>] {
+        guard sourceDuration > 0 else { return [] }
+        var activity = VideoTranscript.activityTimes(
+            cursor: project.cursorSamples,
+            clicks: project.clickEvents,
+            keystrokes: project.keystrokes,
+            screen: screenActivityOnAxis,
+            pointerStep: 0.002
+        )
+        if let waveform, !waveform.peaks.isEmpty {
+            let loud: Float = 0.06
+            for (index, peak) in waveform.peaks.enumerated() where peak > loud && index % 5 == 0 {
+                activity.append(Double(index) / VideoWaveform.bucketsPerSecond)
+            }
+        }
+        activity.sort()
+        var ranges: [ClosedRange<Double>] = []
+        var last = 0.0
+        let margin = 0.5
+        for time in activity + [sourceDuration] {
+            if time - last >= minimum + margin * 2 {
+                ranges.append((last + margin)...(time - margin))
+            }
+            last = max(last, time)
+        }
+        // Added videos without pointer data are never "idle".
+        return project.limitedToPointerCoverage(ranges)
+    }
+
+    func speedUpIdle(speed: Double = 8) {
+        // Without the pointer's path (or the screen's changes) there's no
+        // telling a quiet screen from a busy one — it would speed up
+        // everything.
+        guard !project.cursorSamples.isEmpty || seesScreenChanges else {
+            showNotice(L("Speed Up Idle works on LF Studios recordings — it watches the pointer"), symbol: "hare")
+            return
+        }
+        let ranges = idleRanges()
+        guard !ranges.isEmpty else {
+            showNotice(L("No idle moments found — nice and tight"), symbol: "hare")
+            return
+        }
+        var saved = 0.0
+        mutate(label: "Speed Up Idle") { project in
+            for range in ranges {
+                // Only speed up material still on the timeline at 1×.
+                _ = project.splitClip(atSourceTime: range.lowerBound, totalDuration: sourceDuration)
+                _ = project.splitClip(atSourceTime: range.upperBound, totalDuration: sourceDuration)
+                let clips = project.normalizedTimelineClips(totalDuration: sourceDuration)
+                for clip in clips where clip.sourceStart >= range.lowerBound - 0.001 && clip.sourceEnd <= range.upperBound + 0.001 && abs(clip.normalizedSpeed - 1) < 0.01 {
+                    _ = project.updateClip(id: clip.id, totalDuration: sourceDuration) { $0.speed = speed; $0.muted = true }
+                    saved += clip.sourceDuration * (1 - 1 / speed)
+                }
+            }
+        }
+        let savedTime = Self.format(saved)
+        if seesScreenChanges {
+            showNotice(L("Sped up \(ranges.count) idle moments — saved \(savedTime)"), symbol: "hare.fill")
+        } else {
+            // Recordings from before the recorder watched the screen can't
+            // tell typing from waiting.
+            showNotice(L("Sped up \(ranges.count) idle moments — saved \(savedTime) · check any typing"), symbol: "hare.fill", duration: 4)
+        }
+    }
+
+    // MARK: Notices
+
+    /// A short message where the user is looking (over the export sheet
+    /// while it's up). Warnings stay up longer.
+    func showNotice(_ message: String, symbol: String = "info.circle", duration: Double = 2.4) {
+        noticeWork?.cancel()
+        withAnimation(.spring(response: 0.3, dampingFraction: 0.86)) {
+            notice = VideoEditorNotice(message: message, symbol: symbol)
+        }
+        let work = DispatchWorkItem { [weak self] in
+            withAnimation(.easeOut(duration: 0.25)) { self?.notice = nil }
+        }
+        noticeWork = work
+        DispatchQueue.main.asyncAfter(deadline: .now() + duration, execute: work)
+    }
+
+    // MARK: Autosave
+
+    private func scheduleAutosave() {
+        autosaveWork?.cancel()
+        let work = DispatchWorkItem { [weak self] in
+            MainActor.assumeIsolated { self?.saveDraftNow() }
+        }
+        autosaveWork = work
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8, execute: work)
+    }
+
+    func saveDraftNow() {
+        guard isReady else { return }
+        autosaveWork?.cancel()
+        autosaveWork = nil
+        var draft = project
+        // The pointer path can't be edited and lives in the recording's
+        // sidecar — keeping it out makes autosave instant on long takes.
+        if let recording, recording.cursorSamples == draft.cursorSamples {
+            draft.cursorSamples = []
+        }
+        VideoDemoDraftStore.save(draft, for: draft.sourceURL)
+    }
+
+    /// Export, the command palette, or the shortcut sheet is up: edits
+    /// behind it (undo) stay put.
+    var hasOverlayOpen: Bool { isExportPresented || isCommandPalettePresented || isShortcutsPresented }
+
+    /// Something that shouldn't be dropped silently by closing the window,
+    /// as the title of the "close anyway?" question: a whole sentence, so
+    /// every language can word it. (Exports carry on in the background:
+    /// they work from a snapshot.)
+    var runningJobTitle: String? {
+        if captionTask != nil { return L("LF Studios is still transcribing") }
+        if voiceJob != nil { return L("LF Studios is still cleaning up the voice") }
+        return nil
+    }
+
+    /// The window closed: nothing keeps working (or writing to the
+    /// clipboard) unseen — except exports, which finish and say so.
+    func stop() {
+        playback.pause()
+        cancelCaptions()
+        voiceTask?.cancel()
+        // Nothing left running asks about the quit (or holds an update).
+        endVoiceQuitToken()
+        saveDraftNow()
+        keepHistoryForSession()
+        VideoExportQueue.shared.editorClosed(sourcePath: project.sourcePath)
+    }
+
+    // MARK: Export
+
+    var exportCanvas: CGSize { project.canvasSize() }
+
+    /// Exports queue up and run in the background (VideoExportJobs.swift).
+    func beginExport(toClipboard: Bool, range: VideoExportRange = .whole) {
+        followRenamedRecording()
+        let settings = exportSettings
+        settings.saveAsDefaults()
+        let destination: URL
+        if toClipboard {
+            let folder = FileManager.default.temporaryDirectory.appendingPathComponent("LF Studios Exports", isDirectory: true)
+            try? FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
+            destination = folder.appendingPathComponent("\(exportBaseName).\(settings.fileExtension)")
+        } else {
+            let panel = NSSavePanel()
+            panel.allowedContentTypes = settings.format == .gif ? [.gif] : [.mpeg4Movie]
+            panel.canCreateDirectories = true
+            panel.nameFieldStringValue = "\(exportBaseName).\(settings.fileExtension)"
+            panel.directoryURL = URL(fileURLWithPath: Settings.autoSaveLocation, isDirectory: true)
+            guard panel.runModal() == .OK, let url = panel.url else { return }
+            destination = url
+        }
+        enqueueExport(to: destination, settings: settings, toClipboard: toClipboard, range: range)
+    }
+
+    /// The recording's name as it is now (renamed in Finder while open
+    /// included).
+    var recordingName: String { currentSourceURL.deletingPathExtension().lastPathComponent }
+
+    /// One name for everything made from this recording — the video and
+    /// its subtitles side by side ("Demo (edited).mp4", "Demo (edited).srt",
+    /// which players pair up) — never the recording's own file name.
+    var exportBaseName: String { L("\(recordingName) (edited)") }
+
+    /// Where the recording is now: a bookmark follows it through renames
+    /// and moves.
+    var currentSourceURL: URL {
+        var stale = false
+        guard let sourceBookmark,
+              let url = try? URL(resolvingBookmarkData: sourceBookmark, options: [.withoutUI, .withoutMounting], relativeTo: nil, bookmarkDataIsStale: &stale) else { return project.sourceURL }
+        return url.standardizedFileURL
+    }
+
+    /// A recording renamed or moved while it's open: the project (and its
+    /// undo history) points at where it is now, so exports can read it.
+    func followRenamedRecording() {
+        let current = currentSourceURL
+        guard VideoFileIdentity.canonicalURL(current) != VideoFileIdentity.canonicalURL(project.sourceURL),
+              FileManager.default.fileExists(atPath: current.path) else { return }
+        func moved(_ snapshot: VideoDemoProject) -> VideoDemoProject {
+            var copy = snapshot
+            copy.sourcePath = current.path
+            return copy
+        }
+        undoStack = undoStack.map { UndoStep(project: moved($0.project), label: $0.label) }
+        redoStack = redoStack.map { UndoStep(project: moved($0.project), label: $0.label) }
+        project = moved(project)
+    }
+
+    func cancelExport() {
+        cancelLatestExport()
+    }
+
+    /// Closes the export sheet; a finished or failed export is cleared so
+    /// the next ⌘E starts on the options.
+    func closeExportSheet() {
+        withAnimation(.easeOut(duration: 0.15)) {
+            isExportPresented = false
+        }
+        if case .running = exportPhase { return }
+        exportPhase = .idle
+    }
+
+    func revealExport(_ url: URL) {
+        NSWorkspace.shared.activateFileViewerSelecting([url])
+    }
+
+    func openExport(_ url: URL) {
+        NSWorkspace.shared.open(url)
+    }
+
+    func copyExport(_ url: URL) {
+        NSPasteboard.general.clearContents()
+        NSPasteboard.general.writeObjects([url as NSURL])
+        showNotice(L("Copied — paste it anywhere"), symbol: "doc.on.doc")
+    }
+
+    func revealSource() {
+        NSWorkspace.shared.activateFileViewerSelecting([project.sourceURL])
+    }
+
+    /// Copies the frame under the playhead (as rendered) to the clipboard.
+    func copyCurrentFrame() {
+        let size = exportSettings.outputSize(canvas: project.canvasSize())
+        guard let image = previewRenderer.snapshot(size: size) else { return }
+        NSPasteboard.general.clearContents()
+        NSPasteboard.general.writeObjects([image])
+        showNotice(L("Frame copied"), symbol: "photo.on.rectangle")
+    }
+
+    // MARK: Thumbnails & waveform
+
+    /// Added or removed recordings change the source axis (and may bring
+    /// sound or camera footage of their own).
+    func applySourceDuration(_ duration: Double, hasAudio: Bool, hasCamera: Bool? = nil) {
+        if abs(sourceDuration - duration) > 0.0005 {
+            sourceDuration = duration
+            segments = project.timelineSegments(totalDuration: duration)
+            refreshTimeline()
+        }
+        if self.hasAudio != hasAudio { self.hasAudio = hasAudio }
+        if let hasCamera, hasWebcamFootage != hasCamera {
+            hasWebcamFootage = hasCamera
+            // An added recording's camera gets the same background looks.
+            if hasCamera { playback.cameraStore.setFindsPerson(project.webcam.needsPersonMask) }
+        }
+    }
+
+    /// Filmstrip and waveform across every recording.
+    func applyTimelineMedia(thumbnails: [VideoTimelineThumbnail], waveform: VideoWaveform?) {
+        self.thumbnails = thumbnails
+        if let waveform { self.waveform = waveform }
+    }
+
+    private func loadThumbnails() async {
+        let url = project.sourceURL
+        let duration = sourceDuration
+        // Several recordings load their filmstrip together (VideoEditorMedia).
+        guard duration > 0, !project.hasAppendedSources else { return }
+        let count = min(max(Int(duration / 1.2), 12), 160)
+        let times = (0..<count).map { duration * (Double($0) + 0.5) / Double(count) }
+        let images = await Task.detached(priority: .utility) { () -> [VideoTimelineThumbnail] in
+            let generator = AVAssetImageGenerator(asset: AVURLAsset(url: url))
+            generator.appliesPreferredTrackTransform = true
+            generator.maximumSize = CGSize(width: 320, height: 200)
+            generator.requestedTimeToleranceBefore = CMTime(value: 1, timescale: 2)
+            generator.requestedTimeToleranceAfter = CMTime(value: 1, timescale: 2)
+            return await VideoTimelineThumbnail.generate(with: generator, at: times)
+        }.value
+        thumbnails = images
+    }
+
+    private func loadWaveform() async {
+        let url = project.sourceURL
+        guard !project.hasAppendedSources else { return }
+        let peaks = await Task.detached(priority: .utility) { () -> [Float]? in
+            let asset = AVURLAsset(url: url)
+            guard let tracks = try? await asset.loadTracks(withMediaType: .audio), !tracks.isEmpty,
+                  let reader = try? AVAssetReader(asset: asset) else { return nil }
+            let output = AVAssetReaderAudioMixOutput(audioTracks: tracks, audioSettings: [
+                AVFormatIDKey: kAudioFormatLinearPCM,
+                AVSampleRateKey: 8_000,
+                AVNumberOfChannelsKey: 1,
+                AVLinearPCMBitDepthKey: 32,
+                AVLinearPCMIsFloatKey: true,
+                AVLinearPCMIsBigEndianKey: false,
+                AVLinearPCMIsNonInterleaved: false,
+            ])
+            guard reader.canAdd(output) else { return nil }
+            reader.add(output)
+            guard reader.startReading() else { return nil }
+            let samplesPerBucket = Int(8_000 / VideoWaveform.bucketsPerSecond)
+            var peaks: [Float] = []
+            var current: Float = 0
+            var counted = 0
+            output.forEachSampleBuffer { buffer in
+                guard let block = CMSampleBufferGetDataBuffer(buffer) else { return false }
+                var length = 0
+                var pointer: UnsafeMutablePointer<Int8>?
+                guard CMBlockBufferGetDataPointer(block, atOffset: 0, lengthAtOffsetOut: nil, totalLengthOut: &length, dataPointerOut: &pointer) == noErr,
+                      let pointer else { return true }
+                let count = length / MemoryLayout<Float>.size
+                pointer.withMemoryRebound(to: Float.self, capacity: count) { floats in
+                    for index in 0..<count {
+                        current = max(current, abs(floats[index]))
+                        counted += 1
+                        if counted >= samplesPerBucket {
+                            peaks.append(current)
+                            current = 0
+                            counted = 0
+                        }
+                    }
+                }
+                return true
+            }
+            if counted > 0 { peaks.append(current) }
+            // Normalize so quiet recordings still read.
+            let top = peaks.max() ?? 0
+            guard top > 0.0001 else { return peaks }
+            let gain = min(1 / top, 4)
+            return peaks.map { min($0 * gain, 1) }
+        }.value
+        if let peaks {
+            waveform = VideoWaveform(peaks: peaks)
+        }
+    }
+
+    // MARK: Formatting
+
+    /// "4.2s", "42s", "1:05": seconds the way the language writes them
+    /// ("4,2 s", "4.2 秒"); a minute or more is a timecode, kept plain.
+    static func format(_ seconds: Double) -> String {
+        let safe = max(seconds, 0)
+        if safe < 10 { return formatTenths(safe) }
+        if safe < 60 { return L("\(decimal(safe, digits: 0))s") }
+        return String(format: "%d:%02d", Int(safe) / 60, Int(safe) % 60)
+    }
+
+    /// "1.5s", always to the tenth (fades and lengths set in tenths).
+    static func formatTenths(_ seconds: Double) -> String {
+        L("\(decimal(max(seconds, 0), digits: 1))s")
+    }
+
+    /// A number with the decimal mark of the language the text is in
+    /// (English "4.2" on any Mac, German and French "4,2").
+    private static func decimal(_ value: Double, digits: Int) -> String {
+        value.formatted(.number.precision(.fractionLength(digits)).grouping(.never).locale(Locale(identifier: textLanguage)))
+    }
+
+    /// The language L(…) shows ("en", "de", "zh-hans"): the one tests
+    /// picked (an .lproj folder), else the one macOS chose for LF Studios.
+    private static var textLanguage: String {
+        let bundle = L10n.bundle
+        if bundle.bundleURL.pathExtension == "lproj" { return bundle.bundleURL.deletingPathExtension().lastPathComponent }
+        return bundle.preferredLocalizations.first ?? "en"
+    }
+
+    /// "35%" (a slider's level) — "35 %" where the language spaces it.
+    static func formatPercent(_ fraction: Double) -> String {
+        L("\(Int((fraction * 100).rounded()))%")
+    }
+
+    static func timecode(_ seconds: Double) -> String {
+        let safe = max(seconds, 0)
+        let minutes = Int(safe) / 60
+        let whole = Int(safe) % 60
+        let tenths = Int((safe - Double(Int(safe))) * 10)
+        return String(format: "%d:%02d.%d", minutes, whole, tenths)
+    }
+
+    /// "2×", "1.5×" ("1,5×" in German and French).
+    static func formatScale(_ scale: Double) -> String {
+        decimal(scale, digits: abs(scale - scale.rounded()) < 0.05 ? 0 : 1) + "×"
+    }
+
+    static func formatBytes(_ bytes: Int64) -> String {
+        ByteCountFormatter.string(fromByteCount: bytes, countStyle: .file)
+    }
+}

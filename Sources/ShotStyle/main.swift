@@ -1,3 +1,0 @@
-import ShotStyleCore
-
-ShotStyleApp.run()

@@ -16,13 +16,13 @@ concurrency:
 
 jobs:
   app:
-    name: Build ShotStyle.app
-    # Same runner as CI: ShotStyle builds against the macOS 26 SDK.
+    name: "Build LF Studios.app"
+    # Same runner as CI: LF Studios builds against the macOS 26 SDK.
     runs-on: macos-26
     timeout-minutes: 90
 
     steps:
-      - name: Check out ShotStyle
+      - name: Check out LF Studios
         uses: actions/checkout@v6
 
       - name: Show the toolchain
@@ -32,28 +32,28 @@ jobs:
       # left in .build/app.noindex instead of being copied to /Applications.
       - name: Build the app
         env:
-          SHOTSTYLE_CODESIGN_IDENTITY: "-"
-          SHOTSTYLE_UNIVERSAL: "true"
-          SHOTSTYLE_INSTALL: "false"
+          LFSTUDIOS_CODESIGN_IDENTITY: "-"
+          LFSTUDIOS_UNIVERSAL: "true"
+          LFSTUDIOS_INSTALL: "false"
         run: bash build-app.sh
 
       - name: Check the app
         run: |
-          APP=.build/app.noindex/ShotStyle.app
-          lipo -archs "$APP/Contents/MacOS/ShotStyle"
+          APP=".build/app.noindex/LF Studios.app"
+          lipo -archs "$APP/Contents/MacOS/LFStudios"
           codesign --verify --deep --strict --verbose=2 "$APP"
           test -d "$APP/Contents/Frameworks/Sparkle.framework"
-          test -d "$APP/Contents/Resources/ShotStyle_ShotStyleCore.bundle"
+          test -d "$APP/Contents/Resources/LFStudios_LFStudiosCore.bundle"
 
       - name: Zip the app
         working-directory: .build/app.noindex
-        run: ditto -c -k --keepParent ShotStyle.app "$GITHUB_WORKSPACE/ShotStyle.zip"
+        run: ditto -c -k --keepParent "LF Studios.app" "$GITHUB_WORKSPACE/LF-Studios.zip"
 
       - name: Upload the zip as a workflow artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ShotStyle
-          path: ShotStyle.zip
+          name: LF Studios
+          path: LF-Studios.zip
           if-no-files-found: error
 
       - name: Attach the zip to a GitHub Release
@@ -65,24 +65,24 @@ jobs:
           cat > release-notes.md <<'EOF'
           ## Install
 
-          1. Download **ShotStyle.zip** below and unzip it.
-          2. Drag **ShotStyle** to your Applications folder.
+          1. Download **LF-Studios.zip** below and unzip it.
+          2. Drag **LF Studios** to your Applications folder.
           3. This build isn't notarized by Apple, so once, in Terminal, run:
 
              ```
-             xattr -dr com.apple.quarantine /Applications/ShotStyle.app
+             xattr -dr com.apple.quarantine "/Applications/LF Studios.app"
              ```
 
-          4. Open ShotStyle.
-          5. Allow **Screen Recording** when macOS asks (System Settings → Privacy & Security → Screen Recording), then quit and reopen ShotStyle.
+          4. Open LF Studios.
+          5. Allow **Screen Recording** when macOS asks (System Settings → Privacy & Security → Screen Recording), then quit and reopen LF Studios.
 
           Runs on Apple Silicon and Intel Macs with macOS 13 or later.
           EOF
           if gh release view "$TAG" >/dev/null 2>&1; then
-            gh release upload "$TAG" ShotStyle.zip --clobber
+            gh release upload "$TAG" LF-Studios.zip --clobber
           else
-            gh release create "$TAG" ShotStyle.zip \
-              --title "ShotStyle $TAG" \
+            gh release create "$TAG" LF-Studios.zip \
+              --title "LF Studios $TAG" \
               --notes-file release-notes.md \
               --verify-tag
           fi

@@ -2,7 +2,7 @@
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-APP_NAME="ShotStyle"
+APP_NAME="LF Studios"
 # Assembled inside .build, in a .noindex folder: Spotlight skips it, so
 # only the copy in /Applications shows up as an app.
 APP_PATH="$SCRIPT_DIR/.build/app.noindex/$APP_NAME.app"
@@ -13,7 +13,7 @@ if [ -f "$SCRIPT_DIR/.env.local" ]; then
     set +a
 fi
 
-SIGN_IDENTITY="${SHOTSTYLE_CODESIGN_IDENTITY:-}"
+SIGN_IDENTITY="${LFSTUDIOS_CODESIGN_IDENTITY:-}"
 
 if [ ! -d "$APP_PATH" ]; then
     echo "Error: $APP_PATH not found. Run build-app.sh first."
@@ -21,8 +21,8 @@ if [ ! -d "$APP_PATH" ]; then
 fi
 
 VERSION=$(defaults read "$APP_PATH/Contents/Info.plist" CFBundleShortVersionString)
-PUBLIC_VERSION="${SHOTSTYLE_PUBLIC_VERSION:-$VERSION}"
-DMG_NAME="$APP_NAME-v$PUBLIC_VERSION-macOS"
+PUBLIC_VERSION="${LFSTUDIOS_PUBLIC_VERSION:-$VERSION}"
+DMG_NAME="${APP_NAME// /-}-v$PUBLIC_VERSION-macOS"
 DMG_PATH="$SCRIPT_DIR/$DMG_NAME.dmg"
 
 RW_DMG_PATH="$SCRIPT_DIR/rw.$$.$DMG_NAME.dmg"
@@ -68,8 +68,8 @@ if [ -f "$BG_PATH" ]; then
     cp "$BG_PATH" "$MOUNT_DIR/.background/$(basename "$BG_PATH")"
 fi
 
-if [ -f "$SCRIPT_DIR/Branding/ShotStyle.icns" ]; then
-    cp "$SCRIPT_DIR/Branding/ShotStyle.icns" "$MOUNT_DIR/.VolumeIcon.icns"
+if [ -f "$SCRIPT_DIR/Branding/LFStudios.icns" ]; then
+    cp "$SCRIPT_DIR/Branding/LFStudios.icns" "$MOUNT_DIR/.VolumeIcon.icns"
     if command -v SetFile >/dev/null 2>&1; then
         SetFile -c icnC "$MOUNT_DIR/.VolumeIcon.icns" || true
         SetFile -a C "$MOUNT_DIR" || true

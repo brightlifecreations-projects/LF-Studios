@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.0] - Unreleased
+
+### Changed
+- **ShotStyle is now LF Studios.** The app, its menus and windows, Settings, permission prompts, About, and the "Made with LF Studios" end card all carry the new name, in every language. The app is "LF Studios" in Applications.
+- **Your things come along.** The first time LF Studios opens on a Mac that used ShotStyle, it copies over your settings, shortcuts, style presets, added fonts, capture history, recordings' edits and data, and recent projects, and says so once. ShotStyle's own copy stays untouched, so nothing is lost if you keep the old app for a while. Recordings named "ShotStyle …" still show up in Home.
+- **Old files still open.** New projects save as ".lfstudios" and presets as ".lfstudiospresets"; ".shotstyle" projects and ".shotstylepresets" files open just as before, by double-click too.
+- macOS asks once for Screen Recording (and Accessibility) for LF Studios, since it sees a new app.
+
 ## [1.0.0] - 2026-10-26
 
 The first release of ShotStyle, based on Shotnix 0.27.2 (MIT License). Shotnix's

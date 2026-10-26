@@ -10,13 +10,13 @@ on:
 jobs:
   swift:
     name: Swift package
-    # macOS 26: ShotStyle builds against the macOS 26 SDK (SpeechAnalyzer for
+    # macOS 26: LF Studios builds against the macOS 26 SDK (SpeechAnalyzer for
     # captions), as releases do; the macOS 15 SDK can't compile it.
     runs-on: macos-26
     timeout-minutes: 45
 
     steps:
-      - name: Check out ShotStyle
+      - name: Check out LF Studios
         uses: actions/checkout@v6
 
       - name: Show the toolchain
