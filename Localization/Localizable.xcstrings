@@ -779,6 +779,88 @@
         }
       }
     },
+    "%@ s after the recording" : {
+      "comment" : "Camera offset, e.g. “0.70 s after the recording”",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ s nach der Aufnahme"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ s après l’enregistrement"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "収録の%@秒後"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "через %@ с после записи"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "через %@ с після запису"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "比录制内容晚 %@ 秒"
+          }
+        }
+      }
+    },
+    "%@ s before the recording" : {
+      "comment" : "Camera offset, e.g. “1.20 s before the recording”",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ s vor der Aufnahme"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ s avant l’enregistrement"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "収録の%@秒前"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "за %@ с до записи"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "за %@ с до запису"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "比录制内容早 %@ 秒"
+          }
+        }
+      }
+    },
     "%@ speed" : {
       "comment" : "VoiceOver: a playback speed such as 2×",
       "localizations" : {
@@ -5433,6 +5515,7 @@
         }
       }
     },
+    "0.00" : {},
     "0.1s earlier" : {
       "localizations" : {
         "de" : {
@@ -6993,6 +7076,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "在播放头处添加模糊（B）"
+          }
+        }
+      }
+    },
+    "Add camera video…" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kameravideo hinzufügen …"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouter une vidéo de caméra…"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カメラ映像を追加…"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавить видео с камеры…"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Додати відео з камери…"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "添加摄像头视频…"
           }
         }
       }
@@ -11745,6 +11868,46 @@
         }
       }
     },
+    "Camera earlier by %@ s" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kamera %@ s früher"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Caméra %@ s plus tôt"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カメラを%@秒早く"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Камера на %@ с раньше"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Камера на %@ с раніше"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "摄像头提前 %@ 秒"
+          }
+        }
+      }
+    },
     "Camera follows your cursor" : {
       "localizations" : {
         "de" : {
@@ -11901,6 +12064,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "隐藏摄像头"
+          }
+        }
+      }
+    },
+    "Camera later by %@ s" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kamera %@ s später"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Caméra %@ s plus tard"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カメラを%@秒遅く"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Камера на %@ с позже"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Камера на %@ с пізніше"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "摄像头延后 %@ 秒"
           }
         }
       }
@@ -12186,6 +12389,247 @@
         }
       }
     },
+    "Camera video" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kameravideo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vidéo de caméra"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カメラ映像"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Видео с камеры"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Відео з камери"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "摄像头视频"
+          }
+        }
+      }
+    },
+    "Camera video missing" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kameravideo fehlt"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vidéo de caméra introuvable"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カメラ映像が見つかりません"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Видео с камеры не найдено"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Відео з камери не знайдено"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "摄像头视频不见了"
+          }
+        }
+      }
+    },
+    "Camera video removed — ⌘Z to undo" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kameravideo entfernt – ⌘Z zum Widerrufen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vidéo de caméra supprimée — ⌘Z pour annuler"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カメラ映像を削除しました — ⌘Zで取り消し"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Видео с камеры удалено — ⌘Z, чтобы отменить"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Відео з камери вилучено — ⌘Z, щоб скасувати"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已移除摄像头视频 — 按 ⌘Z 撤销"
+          }
+        }
+      }
+    },
+    "Camera video — drag to line it up with the recording" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kameravideo – ziehen, um es an der Aufnahme auszurichten"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vidéo de caméra — faites-la glisser pour l’aligner sur l’enregistrement"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カメラ映像 — ドラッグして収録に合わせます"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Видео с камеры — перетащите, чтобы совместить с записью"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Відео з камери — перетягніть, щоб узгодити із записом"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "摄像头视频 — 拖动以与录制内容对齐"
+          }
+        }
+      }
+    },
+    "Camera video “%@”, %@" : {
+      "comment" : "VoiceOver: the file name, then the offset",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kameravideo „%1$@“, %2$@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vidéo de caméra « %1$@ », %2$@"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カメラ映像“%1$@”、%2$@"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Видео с камеры «%1$@», %2$@"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Відео з камери «%1$@», %2$@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "摄像头视频“%1$@”，%2$@"
+          }
+        }
+      }
+    },
+    "Camera video: %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kameravideo: %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vidéo de caméra : %@"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カメラ映像：%@"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Видео с камеры: %@"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Відео з камери: %@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "摄像头视频：%@"
+          }
+        }
+      }
+    },
     "Camera — drag to move it, click for options" : {
       "localizations" : {
         "de" : {
@@ -12222,6 +12666,86 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "摄像头 — 拖移可移动，点按可查看选项"
+          }
+        }
+      }
+    },
+    "Can't sync — the recording or the camera video has no sound" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Synchronisieren nicht möglich – die Aufnahme oder das Kameravideo hat keinen Ton"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Synchronisation impossible : l’enregistrement ou la vidéo de caméra n’a pas de son"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "同期できません — 収録またはカメラ映像に音声がありません"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удалось синхронизировать — у записи или видео с камеры нет звука"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не вдалося синхронізувати — запис або відео з камери не має звуку"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无法同步 — 录制内容或摄像头视频没有声音"
+          }
+        }
+      }
+    },
+    "Can't sync — their sound doesn't match clearly enough. Set the offset by hand." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Synchronisieren nicht möglich – der Ton passt nicht deutlich genug zusammen. Lege den Versatz von Hand fest."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Synchronisation impossible : leurs sons ne correspondent pas assez nettement. Réglez le décalage à la main."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "同期できません — 音声が十分に一致しません。オフセットを手動で設定してください。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удалось синхронизировать — звук совпадает недостаточно чётко. Задайте сдвиг вручную."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не вдалося синхронізувати — звук збігається недостатньо чітко. Задайте зсув вручну."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无法同步 — 两者的声音匹配得不够清楚。请手动设置偏移。"
           }
         }
       }
@@ -14642,6 +15166,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "选择显示器"
+          }
+        }
+      }
+    },
+    "Choose the camera video to show in the bubble" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wähle das Kameravideo für die Blase"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choisissez la vidéo de caméra à afficher dans la bulle"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "バブルに表示するカメラ映像を選択"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выберите видео с камеры для пузыря"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Виберіть відео з камери для бульбашки"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择要在气泡中显示的摄像头视频"
           }
         }
       }
@@ -26967,6 +27531,46 @@
         }
       }
     },
+    "Filmed yourself on a phone or camera? Add that video and it shows in the bubble, lined up by sound." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mit dem iPhone oder einer Kamera gefilmt? Füge das Video hinzu – es erscheint in der Blase, am Ton ausgerichtet."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous vous êtes filmé avec un téléphone ou une caméra ? Ajoutez cette vidéo : elle s’affiche dans la bulle, alignée par le son."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スマートフォンやカメラで自分を撮影しましたか？その映像を追加すると、音声で合わせてバブルに表示されます。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Снимали себя на телефон или камеру? Добавьте это видео — оно появится в пузыре, совмещённое по звуку."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Знімали себе на телефон чи камеру? Додайте це відео — воно з’явиться в бульбашці, узгоджене за звуком."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "用手机或相机拍了自己？添加该视频，它会显示在气泡中，并按声音对齐。"
+          }
+        }
+      }
+    },
     "Find in Transcript" : {
       "localizations" : {
         "de" : {
@@ -27043,6 +27647,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "在文字稿中查找"
+          }
+        }
+      }
+    },
+    "Find “%@”" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "„%@“ suchen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trouver « %@ »"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%@”を探す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Найти «%@»"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Знайти «%@»"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "查找“%@”"
           }
         }
       }
@@ -33865,6 +34509,46 @@
         }
       }
     },
+    "Lines the camera up by the sound both recorded. Or drag the camera strip on the timeline." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Richtet die Kamera am Ton aus, den beide aufgenommen haben. Oder ziehe den Kamerastreifen in der Timeline."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aligne la caméra grâce au son enregistré par les deux. Ou faites glisser la bande de la caméra dans la timeline."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "両方に録音された音声でカメラを合わせます。タイムラインのカメラのバーをドラッグしても合わせられます。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Совмещает камеру по звуку, записанному обоими. Или перетащите полосу камеры на таймлайне."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Узгоджує камеру за звуком, записаним обома. Або перетягніть смугу камери на таймлайні."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "根据两者录下的声音对齐摄像头。也可以在时间线上拖动摄像头条。"
+          }
+        }
+      }
+    },
     "Lines · %lld" : {
       "comment" : "Section title with the number of caption lines",
       "localizations" : {
@@ -34225,6 +34909,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "在这台 Mac 上识别 — 不会上传任何内容"
+          }
+        }
+      }
+    },
+    "Locate…" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suchen …"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Localiser…"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "場所を指定…"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Найти…"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Знайти…"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "查找…"
           }
         }
       }
@@ -39807,6 +40531,47 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "关闭"
+          }
+        }
+      }
+    },
+    "Offset" : {
+      "comment" : "How far the camera video is shifted against the recording",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versatz"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Décalage"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オフセット"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сдвиг"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зсув"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "偏移"
           }
         }
       }
@@ -46683,6 +47448,46 @@
         }
       }
     },
+    "Redo Add Camera Video" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kameravideo hinzufügen wiederholen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rétablir l’ajout de la vidéo de caméra"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カメラ映像の追加をやり直す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторить добавление видео с камеры"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторити додавання відео з камери"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重做添加摄像头视频"
+          }
+        }
+      }
+    },
     "Redo Add Caption" : {
       "localizations" : {
         "de" : {
@@ -47679,6 +48484,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "重做摄像头布局更改"
+          }
+        }
+      }
+    },
+    "Redo Camera Offset" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kameraversatz wiederholen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rétablir le décalage de la caméra"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カメラのオフセットをやり直す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторить сдвиг камеры"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторити зсув камери"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重做摄像头偏移"
           }
         }
       }
@@ -50025,6 +50870,46 @@
         }
       }
     },
+    "Redo Remove Camera Video" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kameravideo entfernen wiederholen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rétablir la suppression de la vidéo de caméra"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カメラ映像の削除をやり直す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторить удаление видео с камеры"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторити вилучення відео з камери"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重做移除摄像头视频"
+          }
+        }
+      }
+    },
     "Redo Remove Captions" : {
       "localizations" : {
         "de" : {
@@ -50261,6 +51146,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "重做移除语气词"
+          }
+        }
+      }
+    },
+    "Redo Replace Camera Video" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kameravideo ersetzen wiederholen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rétablir le remplacement de la vidéo de caméra"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カメラ映像の置き換えをやり直す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторить замену видео с камеры"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторити заміну відео з камери"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重做替换摄像头视频"
           }
         }
       }
@@ -58185,6 +59110,46 @@
         }
       }
     },
+    "Seconds the camera video starts after the recording (negative: before)" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sekunden, die das Kameravideo nach der Aufnahme beginnt (negativ: davor)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Secondes entre le début de l’enregistrement et celui de la vidéo de caméra (négatif : avant)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カメラ映像が収録より何秒後に始まるか（マイナス：前）"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Через сколько секунд после записи начинается видео с камеры (отрицательное — раньше)"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Через скільки секунд після запису починається відео з камери (від’ємне — раніше)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "摄像头视频比录制内容晚开始的秒数（负数：更早）"
+          }
+        }
+      }
+    },
     "Security" : {
       "localizations" : {
         "de" : {
@@ -61015,6 +61980,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "显示视频编辑器"
+          }
+        }
+      }
+    },
+    "Show a video from a phone or camera instead of the recorded camera, lined up by sound." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeige statt der aufgenommenen Kamera ein Video von einem Telefon oder einer Kamera, am Ton ausgerichtet."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Affichez une vidéo d’un téléphone ou d’une caméra à la place de la caméra enregistrée, alignée par le son."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "収録したカメラの代わりに、スマートフォンやカメラの映像を音声で合わせて表示します。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Показывать видео с телефона или камеры вместо записанной камеры, совмещённое по звуку."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Показувати відео з телефона чи камери замість записаної камери, узгоджене за звуком."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "显示来自手机或相机的视频来代替录制的摄像头画面，并按声音对齐。"
           }
         }
       }
@@ -64894,6 +65899,87 @@
         }
       }
     },
+    "Sync by Sound" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Am Ton ausrichten"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Synchroniser par le son"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "音声で同期"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Синхронизировать по звуку"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Синхронізувати за звуком"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "按声音同步"
+          }
+        }
+      }
+    },
+    "Synced by sound — the camera starts %@" : {
+      "comment" : "%@ is e.g. “0.70 s after the recording”",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Am Ton ausgerichtet – die Kamera beginnt %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Synchronisé par le son — la caméra commence %@"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "音声で同期しました — カメラの開始は%@"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Синхронизировано по звуку — камера начинается %@"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Синхронізовано за звуком — камера починається %@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已按声音同步 — 摄像头开始于%@"
+          }
+        }
+      }
+    },
     "System Default" : {
       "comment" : "The Mac's default microphone or camera",
       "localizations" : {
@@ -66136,6 +67222,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "时间线的这部分只有标题卡。请在范围中包含视频的一部分，然后重新导出。"
+          }
+        }
+      }
+    },
+    "That video has no picture to show" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dieses Video hat kein Bild"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cette vidéo n’a pas d’image à afficher"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この映像には表示できる画像がありません"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "В этом видео нет изображения"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "У цьому відео немає зображення"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "该视频没有可显示的画面"
           }
         }
       }
@@ -70238,6 +71364,46 @@
         }
       }
     },
+    "Undo Add Camera Video" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kameravideo hinzufügen widerrufen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler l’ajout de la vidéo de caméra"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カメラ映像の追加を取り消す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отменить добавление видео с камеры"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скасувати додавання відео з камери"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "撤销添加摄像头视频"
+          }
+        }
+      }
+    },
     "Undo Add Caption" : {
       "localizations" : {
         "de" : {
@@ -71234,6 +72400,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "撤销摄像头布局更改"
+          }
+        }
+      }
+    },
+    "Undo Camera Offset" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kameraversatz widerrufen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler le décalage de la caméra"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カメラのオフセットを取り消す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отменить сдвиг камеры"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скасувати зсув камери"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "撤销摄像头偏移"
           }
         }
       }
@@ -73580,6 +74786,46 @@
         }
       }
     },
+    "Undo Remove Camera Video" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kameravideo entfernen widerrufen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler la suppression de la vidéo de caméra"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カメラ映像の削除を取り消す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отменить удаление видео с камеры"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скасувати вилучення відео з камери"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "撤销移除摄像头视频"
+          }
+        }
+      }
+    },
     "Undo Remove Captions" : {
       "localizations" : {
         "de" : {
@@ -73816,6 +75062,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "撤销移除语气词"
+          }
+        }
+      }
+    },
+    "Undo Replace Camera Video" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kameravideo ersetzen widerrufen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler le remplacement de la vidéo de caméra"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カメラ映像の置き換えを取り消す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отменить замену видео с камеры"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скасувати заміну відео з камери"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "撤销替换摄像头视频"
           }
         }
       }
@@ -79188,6 +80474,47 @@
         }
       }
     },
+    "in step with the recording" : {
+      "comment" : "Camera offset of zero",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "gleichzeitig mit der Aufnahme"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "en même temps que l’enregistrement"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "収録と同時"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "одновременно с записью"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "одночасно із записом"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "与录制内容同步"
+          }
+        }
+      }
+    },
     "intro card" : {
       "localizations" : {
         "de" : {
@@ -79788,6 +81115,47 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "指针"
+          }
+        }
+      }
+    },
+    "s" : {
+      "comment" : "Unit after the camera offset field: seconds",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "s"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "s"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "秒"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "с"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "с"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "秒"
           }
         }
       }
@@ -80754,6 +82122,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "“%1$@”已不在 %2$@ 中。请将它放回原处，或下次存储项目时选择“包含媒体”，让项目带上自己的副本。"
+          }
+        }
+      }
+    },
+    "“%@” isn't in %@ anymore. Locate it to get the camera back." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "„%1$@“ ist nicht mehr in %2$@. Suche die Datei, um die Kamera zurückzubekommen."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "« %1$@ » n’est plus dans %2$@. Localisez-le pour récupérer la caméra."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%1$@”は%2$@にありません。場所を指定するとカメラが戻ります。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "«%1$@» больше нет в %2$@. Найдите файл, чтобы вернуть камеру."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "«%1$@» більше немає в %2$@. Знайдіть файл, щоб повернути камеру."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%1$@”已不在 %2$@ 中。找到它即可恢复摄像头画面。"
           }
         }
       }

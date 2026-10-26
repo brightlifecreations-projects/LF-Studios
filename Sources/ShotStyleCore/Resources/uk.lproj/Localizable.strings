@@ -40,6 +40,10 @@
 	<string>%@ пт</string>
 	<key>%@ quality · %@</key>
 	<string>Якість: %@ · %@</string>
+	<key>%@ s after the recording</key>
+	<string>через %@ с після запису</string>
+	<key>%@ s before the recording</key>
+	<string>за %@ с до запису</string>
 	<key>%@ speed</key>
 	<string>швидкість %@</string>
 	<key>%@ transition</key>
@@ -172,6 +176,8 @@
 	<string>Додати стрілку на покажчику відтворення (A)</string>
 	<key>Add blur at the playhead (B)</key>
 	<string>Додати розмиття на покажчику відтворення (B)</string>
+	<key>Add camera video…</key>
+	<string>Додати відео з камери…</string>
 	<key>Add highlight at the playhead (H)</key>
 	<string>Додати виділення на покажчику відтворення (H)</string>
 	<key>Add image at the playhead</key>
@@ -392,6 +398,8 @@
 	<string>Камеру від’єднано.</string>
 	<key>Camera disconnected. The recording continues without it.</key>
 	<string>Камеру від’єднано. Запис триває без неї.</string>
+	<key>Camera earlier by %@ s</key>
+	<string>Камера на %@ с раніше</string>
 	<key>Camera follows your cursor</key>
 	<string>Камера стежить за курсором</string>
 	<key>Camera footage is missing</key>
@@ -400,6 +408,8 @@
 	<string>Відео з камери, очищений голос, чернетки й експорти в буфер обміну</string>
 	<key>Camera hidden</key>
 	<string>Камеру сховано</string>
+	<key>Camera later by %@ s</key>
+	<string>Камера на %@ с пізніше</string>
 	<key>Camera layout</key>
 	<string>Макет камери</string>
 	<key>Camera layout removed</key>
@@ -414,8 +424,24 @@
 	<string>Перегляд камери</string>
 	<key>Camera stopped</key>
 	<string>Збій камери</string>
+	<key>Camera video</key>
+	<string>Відео з камери</string>
+	<key>Camera video missing</key>
+	<string>Відео з камери не знайдено</string>
+	<key>Camera video removed — ⌘Z to undo</key>
+	<string>Відео з камери вилучено — ⌘Z, щоб скасувати</string>
+	<key>Camera video — drag to line it up with the recording</key>
+	<string>Відео з камери — перетягніть, щоб узгодити із записом</string>
+	<key>Camera video “%@”, %@</key>
+	<string>Відео з камери «%1$@», %2$@</string>
+	<key>Camera video: %@</key>
+	<string>Відео з камери: %@</string>
 	<key>Camera — drag to move it, click for options</key>
 	<string>Камера — перетягніть, щоб перемістити, клацніть, щоб побачити параметри</string>
+	<key>Can't sync — the recording or the camera video has no sound</key>
+	<string>Не вдалося синхронізувати — запис або відео з камери не має звуку</string>
+	<key>Can't sync — their sound doesn't match clearly enough. Set the offset by hand.</key>
+	<string>Не вдалося синхронізувати — звук збігається недостатньо чітко. Задайте зсув вручну.</string>
 	<key>Cancel</key>
 	<string>Скасувати</string>
 	<key>Cancel Recording</key>
@@ -530,6 +556,8 @@
 	<string>Вибрати папку</string>
 	<key>Choose screen</key>
 	<string>Вибрати екран</string>
+	<key>Choose the camera video to show in the bubble</key>
+	<string>Виберіть відео з камери для бульбашки</string>
 	<key>Choose what happens immediately after taking a screenshot.</key>
 	<string>Виберіть, що відбувається одразу після створення знімка екрана.</string>
 	<key>Choose window</key>
@@ -1118,10 +1146,14 @@
 	<string>Заповнений заокруглений прямокутник</string>
 	<key>Filling the frame — the view follows your cursor</key>
 	<string>Кадр заповнено — вигляд стежить за курсором</string>
+	<key>Filmed yourself on a phone or camera? Add that video and it shows in the bubble, lined up by sound.</key>
+	<string>Знімали себе на телефон чи камеру? Додайте це відео — воно з’явиться в бульбашці, узгоджене за звуком.</string>
 	<key>Find in Transcript</key>
 	<string>Знайти в розшифровці</string>
 	<key>Find in the transcript</key>
 	<string>Знайти в розшифровці</string>
+	<key>Find “%@”</key>
+	<string>Знайти «%@»</string>
 	<key>Finish and Quit</key>
 	<string>Дочекатися й завершити</string>
 	<key>Finish or cancel the current recording setup</key>
@@ -1390,6 +1422,8 @@
 	<string>Товщина лінії</string>
 	<key>Linen</key>
 	<string>Льон</string>
+	<key>Lines the camera up by the sound both recorded. Or drag the camera strip on the timeline.</key>
+	<string>Узгоджує камеру за звуком, записаним обома. Або перетягніть смугу камери на таймлайні.</string>
 	<key>Lines · %lld</key>
 	<string>Рядки · %lld</string>
 	<key>Link</key>
@@ -1408,6 +1442,8 @@
 	<string>Слухання…</string>
 	<key>Listens on this Mac — nothing is uploaded</key>
 	<string>Слухає на цьому Mac — нічого не вивантажується</string>
+	<key>Locate…</key>
+	<string>Знайти…</string>
 	<key>Look</key>
 	<string>Вигляд</string>
 	<key>Loop to fill</key>
@@ -1686,6 +1722,8 @@
 	<string>Від ширини кадру.</string>
 	<key>Off</key>
 	<string>Вимкнено</string>
+	<key>Offset</key>
+	<string>Зсув</string>
 	<key>Older</key>
 	<string>Раніше</string>
 	<key>On your clipboard · %@</key>
@@ -2016,6 +2054,8 @@
 	<string>Повторити додавання макета камери</string>
 	<key>Redo Add Camera Layouts</key>
 	<string>Повторити додавання макетів камери</string>
+	<key>Redo Add Camera Video</key>
+	<string>Повторити додавання відео з камери</string>
 	<key>Redo Add Caption</key>
 	<string>Повторити додавання субтитру</string>
 	<key>Redo Add Captions</key>
@@ -2066,6 +2106,8 @@
 	<string>Повторити зміну макета камери</string>
 	<key>Redo Camera Layouts</key>
 	<string>Повторити зміну макетів камери</string>
+	<key>Redo Camera Offset</key>
+	<string>Повторити зсув камери</string>
 	<key>Redo Caption Style</key>
 	<string>Повторити зміну стилю субтитрів</string>
 	<key>Redo Caption Translation</key>
@@ -2170,6 +2212,8 @@
 	<string>Повторити вимкнення звуку відео</string>
 	<key>Redo Remove All Zooms</key>
 	<string>Повторити вилучення всіх наближень</string>
+	<key>Redo Remove Camera Video</key>
+	<string>Повторити вилучення відео з камери</string>
 	<key>Redo Remove Captions</key>
 	<string>Повторити вилучення субтитрів</string>
 	<key>Redo Remove Intro Card</key>
@@ -2182,6 +2226,8 @@
 	<string>Повторити вилучення запису</string>
 	<key>Redo Remove Ums</key>
 	<string>Повторити вилучення слів-паразитів</string>
+	<key>Redo Replace Camera Video</key>
+	<string>Повторити заміну відео з камери</string>
 	<key>Redo Replace Music</key>
 	<string>Повторити заміну музики</string>
 	<key>Redo Reset Look</key>
@@ -2518,6 +2564,8 @@
 	<string>Шукати проєкти</string>
 	<key>Search text in captures</key>
 	<string>Шукати текст у знімках</string>
+	<key>Seconds the camera video starts after the recording (negative: before)</key>
+	<string>Через скільки секунд після запису починається відео з камери (від’ємне — раніше)</string>
 	<key>Security</key>
 	<string>Безпека</string>
 	<key>Select</key>
@@ -2652,6 +2700,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Показати запис у Finder</string>
 	<key>Show Video Editor</key>
 	<string>Показати відеоредактор</string>
+	<key>Show a video from a phone or camera instead of the recorded camera, lined up by sound.</key>
+	<string>Показувати відео з телефона чи камери замість записаної камери, узгоджене за звуком.</string>
 	<key>Show background</key>
 	<string>Показувати тло</string>
 	<key>Show camera</key>
@@ -2832,6 +2882,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Поміняти місцями вістря й хвіст стрілки</string>
 	<key>Switch the camera to full screen for talking points, or put it side by side with the screen — at the playhead. Each shows on the Camera lane.</key>
 	<string>Перемикайте камеру на весь кадр для ключових думок або ставте її поруч з екраном — на покажчику відтворення. Кожна зміна з’являється на доріжці «Камера».</string>
+	<key>Sync by Sound</key>
+	<string>Синхронізувати за звуком</string>
+	<key>Synced by sound — the camera starts %@</key>
+	<string>Синхронізовано за звуком — камера починається %@</string>
 	<key>System Default</key>
 	<string>Як у системі</string>
 	<key>System Default (%@)</key>
@@ -2894,6 +2948,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Ця частина — лише заставка: додайте момент відео, щоб її експортувати.</string>
 	<key>That part of the timeline is only a title card. Include a moment of the video in the range, then export again.</key>
 	<string>Ця частина шкали часу — лише заставка. Додайте до діапазону момент відео, а потім експортуйте ще раз.</string>
+	<key>That video has no picture to show</key>
+	<string>У цьому відео немає зображення</string>
 	<key>That video is empty</key>
 	<string>Це відео порожнє</string>
 	<key>That window closed before recording could start.</key>
@@ -3092,6 +3148,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Відмінити додавання макета камери</string>
 	<key>Undo Add Camera Layouts</key>
 	<string>Відмінити додавання макетів камери</string>
+	<key>Undo Add Camera Video</key>
+	<string>Скасувати додавання відео з камери</string>
 	<key>Undo Add Caption</key>
 	<string>Відмінити додавання субтитру</string>
 	<key>Undo Add Captions</key>
@@ -3142,6 +3200,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Відмінити зміну макета камери</string>
 	<key>Undo Camera Layouts</key>
 	<string>Відмінити зміну макетів камери</string>
+	<key>Undo Camera Offset</key>
+	<string>Скасувати зсув камери</string>
 	<key>Undo Caption Style</key>
 	<string>Відмінити зміну стилю субтитрів</string>
 	<key>Undo Caption Translation</key>
@@ -3246,6 +3306,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Відмінити вимкнення звуку відео</string>
 	<key>Undo Remove All Zooms</key>
 	<string>Відмінити вилучення всіх наближень</string>
+	<key>Undo Remove Camera Video</key>
+	<string>Скасувати вилучення відео з камери</string>
 	<key>Undo Remove Captions</key>
 	<string>Відмінити вилучення субтитрів</string>
 	<key>Undo Remove Intro Card</key>
@@ -3258,6 +3320,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Відмінити вилучення запису</string>
 	<key>Undo Remove Ums</key>
 	<string>Відмінити вилучення слів-паразитів</string>
+	<key>Undo Replace Camera Video</key>
+	<string>Скасувати заміну відео з камери</string>
 	<key>Undo Replace Music</key>
 	<string>Відмінити заміну музики</string>
 	<key>Undo Reset Look</key>
@@ -3506,6 +3570,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>експортувати</string>
 	<key>follows the cursor</key>
 	<string>стежить за курсором</string>
+	<key>in step with the recording</key>
+	<string>одночасно із записом</string>
 	<key>intro card</key>
 	<string>вступна заставка</string>
 	<key>loops</key>
@@ -3544,6 +3610,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>відтворити</string>
 	<key>pointer</key>
 	<string>курсор</string>
+	<key>s</key>
+	<string>с</string>
 	<key>select a part to cut</key>
 	<string>вибрати частину для вирізання</string>
 	<key>select it</key>
@@ -3592,6 +3660,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>«%@» знайдено в %lld з %lld знімків</string>
 	<key>“%@” isn't at %@ anymore. Put it back, or save the project with Include Media next time so it carries its own copy.</key>
 	<string>«%1$@» більше немає в %2$@. Поверніть файл на місце або наступного разу збережіть проєкт із параметром «Включити медіафайли», щоб у ньому була власна копія.</string>
+	<key>“%@” isn't in %@ anymore. Locate it to get the camera back.</key>
+	<string>«%1$@» більше немає в %2$@. Знайдіть файл, щоб повернути камеру.</string>
 	<key>“%@” isn't on this Mac — showing the built-in font. Install it, or add its file with Add Font File…</key>
 	<string>Шрифту «%@» немає на цьому Mac — показано вбудований шрифт. Установіть його або додайте файл через «Додати файл шрифту…».</string>
 	<key>“%@” isn't on this Mac — using the built-in font</key>

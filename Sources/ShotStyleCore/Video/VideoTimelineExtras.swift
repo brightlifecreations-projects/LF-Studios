@@ -45,9 +45,10 @@ extension VideoEditorModel {
 }
 
 extension VideoTimelineMetrics {
-    /// Lanes under the clips (music) — 0 when there are none.
+    /// Lanes under the clips (imported camera footage, music) — 0 when
+    /// there are none.
     static func bottomLanesHeight(_ project: VideoDemoProject) -> CGFloat {
-        project.music == nil ? 0 : gap + musicLaneHeight
+        (project.importedCamera == nil ? 0 : gap + cameraFootageLaneHeight) + (project.music == nil ? 0 : gap + musicLaneHeight)
     }
 }
 
@@ -76,6 +77,11 @@ struct VideoTimelineExtrasLayer: View {
                 VideoSourceBoundaryMarkers(boundaries: boundaries, geometry: geometry, clipTop: clipTop)
             }
             VideoTransitionMarkers(model: model, geometry: geometry, clipTop: clipTop)
+            if let camera = project.importedCamera {
+                VideoCameraFootageLane(camera: camera, spans: model.cameraFootageSpans(offset: camera.offset), geometry: geometry, model: model)
+                    .equatable()
+                    .offset(y: clipTop + M.clipTrackHeight + M.gap)
+            }
             if let music = project.music {
                 VideoMusicLane(
                     music: music,
@@ -86,7 +92,7 @@ struct VideoTimelineExtrasLayer: View {
                     model: model
                 )
                 .equatable()
-                .offset(y: clipTop + M.clipTrackHeight + M.gap)
+                .offset(y: clipTop + M.clipTrackHeight + M.gap + (project.importedCamera == nil ? 0 : M.cameraFootageLaneHeight + M.gap))
             }
         }
     }

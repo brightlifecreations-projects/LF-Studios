@@ -148,6 +148,7 @@ struct VideoProjectContents {
             map(&project.sources[index].path)
             if project.sources[index].webcam != nil { map(&project.sources[index].webcam!.path) }
         }
+        if project.importedCamera != nil { map(&project.importedCamera!.path) }
         if project.music != nil { map(&project.music!.path) }
         for index in project.overlayEffects.indices where project.overlayEffects[index].image != nil {
             map(&project.overlayEffects[index].image!.path)
@@ -252,6 +253,7 @@ enum VideoProjectPackage {
         if mode == .included {
             stored.mapPaths { references[$0] ?? $0 }
             for index in stored.project.sources.indices { stored.project.sources[index].bookmark = nil }
+            stored.project.importedCamera?.bookmark = nil
         }
 
         // Fonts added to ShotStyle that the project uses travel with it.

@@ -29,6 +29,11 @@ enum VideoEditDescription {
         if old.aspectPreset != new.aspectPreset || old.reframe != new.reframe { return "Aspect Ratio" }
         if old.background != new.background || old.backgroundBlur != new.backgroundBlur { return "Background" }
         if old.cursor != new.cursor { return "Cursor Change" }
+        if old.importedCamera != new.importedCamera {
+            guard let before = old.importedCamera else { return "Add Camera Video" }
+            guard let after = new.importedCamera else { return "Remove Camera Video" }
+            return before.path == after.path ? "Camera Offset" : "Replace Camera Video"
+        }
         if old.webcam != new.webcam { return "Camera Change" }
         if old.captionStyle != new.captionStyle { return "Caption Style" }
         if old.keystrokeStyle != new.keystrokeStyle { return "Shortcut Style" }
@@ -306,6 +311,10 @@ extension VideoEditDescription {
         case "Style Change": return (L("Undo Style Change"), L("Redo Style Change"))
         case "Reset Look": return (L("Undo Reset Look"), L("Redo Reset Look"))
         case "Apply Preset": return (L("Undo Apply Preset"), L("Redo Apply Preset"))
+        case "Add Camera Video": return (L("Undo Add Camera Video"), L("Redo Add Camera Video"))
+        case "Replace Camera Video": return (L("Undo Replace Camera Video"), L("Redo Replace Camera Video"))
+        case "Remove Camera Video": return (L("Undo Remove Camera Video"), L("Redo Remove Camera Video"))
+        case "Camera Offset": return (L("Undo Camera Offset"), L("Redo Camera Offset"))
         default: return nil
         }
     }

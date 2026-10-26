@@ -40,6 +40,10 @@
 	<string>%@ pt</string>
 	<key>%@ quality · %@</key>
 	<string>Qualité : %@ · %@</string>
+	<key>%@ s after the recording</key>
+	<string>%@ s après l’enregistrement</string>
+	<key>%@ s before the recording</key>
+	<string>%@ s avant l’enregistrement</string>
 	<key>%@ speed</key>
 	<string>vitesse %@</string>
 	<key>%@ transition</key>
@@ -168,6 +172,8 @@
 	<string>Ajouter une flèche à la tête de lecture (A)</string>
 	<key>Add blur at the playhead (B)</key>
 	<string>Ajouter un flou à la tête de lecture (B)</string>
+	<key>Add camera video…</key>
+	<string>Ajouter une vidéo de caméra…</string>
 	<key>Add highlight at the playhead (H)</key>
 	<string>Ajouter un surlignage à la tête de lecture (H)</string>
 	<key>Add image at the playhead</key>
@@ -390,6 +396,8 @@
 	<string>Caméra déconnectée.</string>
 	<key>Camera disconnected. The recording continues without it.</key>
 	<string>Caméra déconnectée. L’enregistrement continue sans elle.</string>
+	<key>Camera earlier by %@ s</key>
+	<string>Caméra %@ s plus tôt</string>
 	<key>Camera follows your cursor</key>
 	<string>La caméra suit votre pointeur</string>
 	<key>Camera footage is missing</key>
@@ -398,6 +406,8 @@
 	<string>Séquences de caméra, voix nettoyée, brouillons et exportations pour le presse-papiers</string>
 	<key>Camera hidden</key>
 	<string>Caméra masquée</string>
+	<key>Camera later by %@ s</key>
+	<string>Caméra %@ s plus tard</string>
 	<key>Camera layout</key>
 	<string>Disposition de la caméra</string>
 	<key>Camera layout removed</key>
@@ -412,8 +422,24 @@
 	<string>Aperçu de la caméra</string>
 	<key>Camera stopped</key>
 	<string>Caméra arrêtée</string>
+	<key>Camera video</key>
+	<string>Vidéo de caméra</string>
+	<key>Camera video missing</key>
+	<string>Vidéo de caméra introuvable</string>
+	<key>Camera video removed — ⌘Z to undo</key>
+	<string>Vidéo de caméra supprimée — ⌘Z pour annuler</string>
+	<key>Camera video — drag to line it up with the recording</key>
+	<string>Vidéo de caméra — faites-la glisser pour l’aligner sur l’enregistrement</string>
+	<key>Camera video “%@”, %@</key>
+	<string>Vidéo de caméra « %1$@ », %2$@</string>
+	<key>Camera video: %@</key>
+	<string>Vidéo de caméra : %@</string>
 	<key>Camera — drag to move it, click for options</key>
 	<string>Caméra — faites-la glisser pour la déplacer, cliquez pour les options</string>
+	<key>Can't sync — the recording or the camera video has no sound</key>
+	<string>Synchronisation impossible : l’enregistrement ou la vidéo de caméra n’a pas de son</string>
+	<key>Can't sync — their sound doesn't match clearly enough. Set the offset by hand.</key>
+	<string>Synchronisation impossible : leurs sons ne correspondent pas assez nettement. Réglez le décalage à la main.</string>
 	<key>Cancel</key>
 	<string>Annuler</string>
 	<key>Cancel Recording</key>
@@ -528,6 +554,8 @@
 	<string>Choisir un dossier</string>
 	<key>Choose screen</key>
 	<string>Choisir un écran</string>
+	<key>Choose the camera video to show in the bubble</key>
+	<string>Choisissez la vidéo de caméra à afficher dans la bulle</string>
 	<key>Choose what happens immediately after taking a screenshot.</key>
 	<string>Choisissez ce qui se passe juste après une capture d’écran.</string>
 	<key>Choose window</key>
@@ -1116,10 +1144,14 @@
 	<string>Rectangle arrondi plein</string>
 	<key>Filling the frame — the view follows your cursor</key>
 	<string>Le cadre est rempli — la vue suit votre pointeur</string>
+	<key>Filmed yourself on a phone or camera? Add that video and it shows in the bubble, lined up by sound.</key>
+	<string>Vous vous êtes filmé avec un téléphone ou une caméra ? Ajoutez cette vidéo : elle s’affiche dans la bulle, alignée par le son.</string>
 	<key>Find in Transcript</key>
 	<string>Rechercher dans la transcription</string>
 	<key>Find in the transcript</key>
 	<string>Rechercher dans la transcription</string>
+	<key>Find “%@”</key>
+	<string>Trouver « %@ »</string>
 	<key>Finish and Quit</key>
 	<string>Terminer et quitter</string>
 	<key>Finish or cancel the current recording setup</key>
@@ -1388,6 +1420,8 @@
 	<string>Épaisseur du trait</string>
 	<key>Linen</key>
 	<string>Lin</string>
+	<key>Lines the camera up by the sound both recorded. Or drag the camera strip on the timeline.</key>
+	<string>Aligne la caméra grâce au son enregistré par les deux. Ou faites glisser la bande de la caméra dans la timeline.</string>
 	<key>Lines · %lld</key>
 	<string>Lignes · %lld</string>
 	<key>Link</key>
@@ -1406,6 +1440,8 @@
 	<string>Écoute…</string>
 	<key>Listens on this Mac — nothing is uploaded</key>
 	<string>L’écoute se fait sur ce Mac — rien n’est envoyé</string>
+	<key>Locate…</key>
+	<string>Localiser…</string>
 	<key>Look</key>
 	<string>Apparence</string>
 	<key>Loop to fill</key>
@@ -1684,6 +1720,8 @@
 	<string>De la largeur du cadre.</string>
 	<key>Off</key>
 	<string>Désactivé</string>
+	<key>Offset</key>
+	<string>Décalage</string>
 	<key>Older</key>
 	<string>Plus ancien</string>
 	<key>On your clipboard · %@</key>
@@ -2014,6 +2052,8 @@
 	<string>Rétablir l’ajout de la disposition de caméra</string>
 	<key>Redo Add Camera Layouts</key>
 	<string>Rétablir l’ajout des dispositions de caméra</string>
+	<key>Redo Add Camera Video</key>
+	<string>Rétablir l’ajout de la vidéo de caméra</string>
 	<key>Redo Add Caption</key>
 	<string>Rétablir l’ajout du sous-titre</string>
 	<key>Redo Add Captions</key>
@@ -2064,6 +2104,8 @@
 	<string>Rétablir la modification de la disposition de caméra</string>
 	<key>Redo Camera Layouts</key>
 	<string>Rétablir la modification des dispositions de caméra</string>
+	<key>Redo Camera Offset</key>
+	<string>Rétablir le décalage de la caméra</string>
 	<key>Redo Caption Style</key>
 	<string>Rétablir la modification du style des sous-titres</string>
 	<key>Redo Caption Translation</key>
@@ -2168,6 +2210,8 @@
 	<string>Rétablir la coupure du son de la vidéo</string>
 	<key>Redo Remove All Zooms</key>
 	<string>Rétablir la suppression de tous les zooms</string>
+	<key>Redo Remove Camera Video</key>
+	<string>Rétablir la suppression de la vidéo de caméra</string>
 	<key>Redo Remove Captions</key>
 	<string>Rétablir la suppression des sous-titres</string>
 	<key>Redo Remove Intro Card</key>
@@ -2180,6 +2224,8 @@
 	<string>Rétablir la suppression de l’enregistrement</string>
 	<key>Redo Remove Ums</key>
 	<string>Rétablir la suppression des mots de remplissage</string>
+	<key>Redo Replace Camera Video</key>
+	<string>Rétablir le remplacement de la vidéo de caméra</string>
 	<key>Redo Replace Music</key>
 	<string>Rétablir le remplacement de la musique</string>
 	<key>Redo Reset Look</key>
@@ -2516,6 +2562,8 @@
 	<string>Rechercher des projets</string>
 	<key>Search text in captures</key>
 	<string>Rechercher du texte dans les captures</string>
+	<key>Seconds the camera video starts after the recording (negative: before)</key>
+	<string>Secondes entre le début de l’enregistrement et celui de la vidéo de caméra (négatif : avant)</string>
 	<key>Security</key>
 	<string>Sécurité</string>
 	<key>Select</key>
@@ -2650,6 +2698,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Afficher l’enregistrement dans le Finder</string>
 	<key>Show Video Editor</key>
 	<string>Afficher l’éditeur vidéo</string>
+	<key>Show a video from a phone or camera instead of the recorded camera, lined up by sound.</key>
+	<string>Affichez une vidéo d’un téléphone ou d’une caméra à la place de la caméra enregistrée, alignée par le son.</string>
 	<key>Show background</key>
 	<string>Afficher l’arrière-plan</string>
 	<key>Show camera</key>
@@ -2830,6 +2880,10 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Intervertir la pointe et la queue de la flèche</string>
 	<key>Switch the camera to full screen for talking points, or put it side by side with the screen — at the playhead. Each shows on the Camera lane.</key>
 	<string>Passez la caméra en plein écran pour les points clés, ou placez-la côte à côte avec l’écran — à la tête de lecture. Chaque changement apparaît sur la piste Caméra.</string>
+	<key>Sync by Sound</key>
+	<string>Synchroniser par le son</string>
+	<key>Synced by sound — the camera starts %@</key>
+	<string>Synchronisé par le son — la caméra commence %@</string>
 	<key>System Default</key>
 	<string>Par défaut du système</string>
 	<key>System Default (%@)</key>
@@ -2892,6 +2946,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Cette partie n’est qu’un carton de titre — incluez un moment de la vidéo pour l’exporter.</string>
 	<key>That part of the timeline is only a title card. Include a moment of the video in the range, then export again.</key>
 	<string>Cette partie de la timeline n’est qu’un carton de titre. Incluez un moment de la vidéo dans la plage, puis exportez à nouveau.</string>
+	<key>That video has no picture to show</key>
+	<string>Cette vidéo n’a pas d’image à afficher</string>
 	<key>That video is empty</key>
 	<string>Cette vidéo est vide</string>
 	<key>That window closed before recording could start.</key>
@@ -3090,6 +3146,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Annuler l’ajout de la disposition de caméra</string>
 	<key>Undo Add Camera Layouts</key>
 	<string>Annuler l’ajout des dispositions de caméra</string>
+	<key>Undo Add Camera Video</key>
+	<string>Annuler l’ajout de la vidéo de caméra</string>
 	<key>Undo Add Caption</key>
 	<string>Annuler l’ajout du sous-titre</string>
 	<key>Undo Add Captions</key>
@@ -3140,6 +3198,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Annuler la modification de la disposition de caméra</string>
 	<key>Undo Camera Layouts</key>
 	<string>Annuler la modification des dispositions de caméra</string>
+	<key>Undo Camera Offset</key>
+	<string>Annuler le décalage de la caméra</string>
 	<key>Undo Caption Style</key>
 	<string>Annuler la modification du style des sous-titres</string>
 	<key>Undo Caption Translation</key>
@@ -3244,6 +3304,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Annuler la coupure du son de la vidéo</string>
 	<key>Undo Remove All Zooms</key>
 	<string>Annuler la suppression de tous les zooms</string>
+	<key>Undo Remove Camera Video</key>
+	<string>Annuler la suppression de la vidéo de caméra</string>
 	<key>Undo Remove Captions</key>
 	<string>Annuler la suppression des sous-titres</string>
 	<key>Undo Remove Intro Card</key>
@@ -3256,6 +3318,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Annuler la suppression de l’enregistrement</string>
 	<key>Undo Remove Ums</key>
 	<string>Annuler la suppression des mots de remplissage</string>
+	<key>Undo Replace Camera Video</key>
+	<string>Annuler le remplacement de la vidéo de caméra</string>
 	<key>Undo Replace Music</key>
 	<string>Annuler le remplacement de la musique</string>
 	<key>Undo Reset Look</key>
@@ -3504,6 +3568,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>exporter</string>
 	<key>follows the cursor</key>
 	<string>suit le pointeur</string>
+	<key>in step with the recording</key>
+	<string>en même temps que l’enregistrement</string>
 	<key>intro card</key>
 	<string>carton d’intro</string>
 	<key>loops</key>
@@ -3542,6 +3608,8 @@ Vous pouvez réactiver les raccourcis d’Apple à tout moment dans Réglages Sy
 	<string>lire</string>
 	<key>pointer</key>
 	<string>pointeur</string>
+	<key>s</key>
+	<string>s</string>
 	<key>select a part to cut</key>
 	<string>choisir un passage à couper</string>
 	<key>select it</key>
@@ -3590,6 +3658,8 @@ Vous pouvez réactiver les raccourcis d’Apple à tout moment dans Réglages Sy
 	<string>« %1$@ » trouvé dans %2$lld sur %3$lld captures</string>
 	<key>“%@” isn't at %@ anymore. Put it back, or save the project with Include Media next time so it carries its own copy.</key>
 	<string>« %1$@ » n’est plus dans %2$@. Remettez-le en place, ou enregistrez le projet avec Inclure les médias la prochaine fois pour qu’il emporte sa propre copie.</string>
+	<key>“%@” isn't in %@ anymore. Locate it to get the camera back.</key>
+	<string>« %1$@ » n’est plus dans %2$@. Localisez-le pour récupérer la caméra.</string>
 	<key>“%@” isn't on this Mac — showing the built-in font. Install it, or add its file with Add Font File…</key>
 	<string>« %@ » n’est pas sur ce Mac : la police intégrée est affichée. Installez-la ou ajoutez son fichier avec Ajouter un fichier de police…</string>
 	<key>“%@” isn't on this Mac — using the built-in font</key>

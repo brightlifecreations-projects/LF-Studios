@@ -195,6 +195,10 @@ final class VideoEditorModel: ObservableObject {
     @Published private(set) var hasAudio = false
     /// The recording came with camera footage that's still on disk.
     @Published private(set) var hasWebcamFootage = false
+    /// Lining up the imported camera video by sound.
+    @Published var isSyncingCamera = false
+    /// The camera footage being loaded after it changed.
+    var cameraLoad: Task<Void, Never>?
     /// What each of the recording's audio tracks carries.
     @Published private(set) var audioKinds: [VideoAudioKind] = []
     /// Voice enhancement progress, 0…1 (nil when idle).
@@ -472,10 +476,6 @@ final class VideoEditorModel: ObservableObject {
         didLoad = true
         do {
             let source = try await playback.load(url: project.sourceURL)
-            if let webcam = webcamRecording, let camera = await VideoCameraSource.load(webcam) {
-                playback.setCamera(camera)
-                hasWebcamFootage = true
-            }
             sourceDuration = source.duration
             sourceFrameRate = source.frameRate
             hasAudio = !source.audio.isEmpty
@@ -524,6 +524,13 @@ final class VideoEditorModel: ObservableObject {
                 )
             }
             if restoredDraft { restoreKeptHistory(for: loaded) }
+            // Imported camera footage first, else the recorded camera.
+            loaded.relocateImportedCamera()
+            if let webcam = loaded.activeCamera(recorded: webcamRecording), loaded.importedCamera.map({ $0.resolved() != nil }) ?? true,
+               let camera = await VideoCameraSource.load(webcam) {
+                playback.setCamera(camera)
+                hasWebcamFootage = true
+            }
             project = loaded
             if hasWebcamFootage {
                 playback.cameraStore.setFindsPerson(project.webcam.needsPersonMask)
@@ -586,6 +593,7 @@ final class VideoEditorModel: ObservableObject {
         if !isCropping { rebuildPlan() }
         validateSelection(keepingRange: true)
         mediaDidChange(from: old)
+        if old.importedCamera != project.importedCamera { cameraFootageDidChange(from: old.importedCamera) }
         if isReady {
             // A clip edge being dragged rebuilds the player once, at the end
             // (the preview shows the edge from a still meanwhile).

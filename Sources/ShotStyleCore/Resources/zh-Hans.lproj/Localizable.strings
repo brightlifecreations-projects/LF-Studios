@@ -40,6 +40,10 @@
 	<string>%@ 磅</string>
 	<key>%@ quality · %@</key>
 	<string>%@质量 · %@</string>
+	<key>%@ s after the recording</key>
+	<string>比录制内容晚 %@ 秒</string>
+	<key>%@ s before the recording</key>
+	<string>比录制内容早 %@ 秒</string>
 	<key>%@ speed</key>
 	<string>速度 %@</string>
 	<key>%@ transition</key>
@@ -226,6 +230,8 @@
 	<string>在播放头处添加箭头（A）</string>
 	<key>Add blur at the playhead (B)</key>
 	<string>在播放头处添加模糊（B）</string>
+	<key>Add camera video…</key>
+	<string>添加摄像头视频…</string>
 	<key>Add highlight at the playhead (H)</key>
 	<string>在播放头处添加高亮（H）</string>
 	<key>Add image at the playhead</key>
@@ -452,6 +458,8 @@
 	<string>摄像头已断开连接。</string>
 	<key>Camera disconnected. The recording continues without it.</key>
 	<string>摄像头已断开连接。录制将继续，但不含摄像头画面。</string>
+	<key>Camera earlier by %@ s</key>
+	<string>摄像头提前 %@ 秒</string>
 	<key>Camera follows your cursor</key>
 	<string>镜头跟随你的指针</string>
 	<key>Camera footage is missing</key>
@@ -460,6 +468,8 @@
 	<string>摄像头素材、清理后的人声、草稿和剪贴板导出</string>
 	<key>Camera hidden</key>
 	<string>隐藏摄像头</string>
+	<key>Camera later by %@ s</key>
+	<string>摄像头延后 %@ 秒</string>
 	<key>Camera layout</key>
 	<string>摄像头布局</string>
 	<key>Camera layout removed</key>
@@ -474,8 +484,24 @@
 	<string>摄像头预览</string>
 	<key>Camera stopped</key>
 	<string>摄像头已停止</string>
+	<key>Camera video</key>
+	<string>摄像头视频</string>
+	<key>Camera video missing</key>
+	<string>摄像头视频不见了</string>
+	<key>Camera video removed — ⌘Z to undo</key>
+	<string>已移除摄像头视频 — 按 ⌘Z 撤销</string>
+	<key>Camera video — drag to line it up with the recording</key>
+	<string>摄像头视频 — 拖动以与录制内容对齐</string>
+	<key>Camera video “%@”, %@</key>
+	<string>摄像头视频“%1$@”，%2$@</string>
+	<key>Camera video: %@</key>
+	<string>摄像头视频：%@</string>
 	<key>Camera — drag to move it, click for options</key>
 	<string>摄像头 — 拖移可移动，点按可查看选项</string>
+	<key>Can't sync — the recording or the camera video has no sound</key>
+	<string>无法同步 — 录制内容或摄像头视频没有声音</string>
+	<key>Can't sync — their sound doesn't match clearly enough. Set the offset by hand.</key>
+	<string>无法同步 — 两者的声音匹配得不够清楚。请手动设置偏移。</string>
 	<key>Cancel</key>
 	<string>取消</string>
 	<key>Cancel Recording</key>
@@ -592,6 +618,8 @@
 	<string>选择文件夹</string>
 	<key>Choose screen</key>
 	<string>选择显示器</string>
+	<key>Choose the camera video to show in the bubble</key>
+	<string>选择要在气泡中显示的摄像头视频</string>
 	<key>Choose what happens immediately after taking a screenshot.</key>
 	<string>选择截屏后立即执行的操作。</string>
 	<key>Choose window</key>
@@ -1188,10 +1216,14 @@
 	<string>实心圆角矩形</string>
 	<key>Filling the frame — the view follows your cursor</key>
 	<string>正在填满画面 — 视图会跟随你的指针</string>
+	<key>Filmed yourself on a phone or camera? Add that video and it shows in the bubble, lined up by sound.</key>
+	<string>用手机或相机拍了自己？添加该视频，它会显示在气泡中，并按声音对齐。</string>
 	<key>Find in Transcript</key>
 	<string>在文字稿中查找</string>
 	<key>Find in the transcript</key>
 	<string>在文字稿中查找</string>
+	<key>Find “%@”</key>
+	<string>查找“%@”</string>
 	<key>Finish and Quit</key>
 	<string>完成后退出</string>
 	<key>Finish or cancel the current recording setup</key>
@@ -1482,6 +1514,8 @@
 	<string>线条粗细</string>
 	<key>Linen</key>
 	<string>亚麻</string>
+	<key>Lines the camera up by the sound both recorded. Or drag the camera strip on the timeline.</key>
+	<string>根据两者录下的声音对齐摄像头。也可以在时间线上拖动摄像头条。</string>
 	<key>Lines · %lld</key>
 	<string>字幕行 · %lld</string>
 	<key>Link</key>
@@ -1500,6 +1534,8 @@
 	<string>正在聆听…</string>
 	<key>Listens on this Mac — nothing is uploaded</key>
 	<string>在这台 Mac 上识别 — 不会上传任何内容</string>
+	<key>Locate…</key>
+	<string>查找…</string>
 	<key>Look</key>
 	<string>外观</string>
 	<key>Loop to fill</key>
@@ -1778,6 +1814,8 @@
 	<string>相对于画面宽度。</string>
 	<key>Off</key>
 	<string>关闭</string>
+	<key>Offset</key>
+	<string>偏移</string>
 	<key>Older</key>
 	<string>更早</string>
 	<key>On your clipboard · %@</key>
@@ -2112,6 +2150,8 @@
 	<string>重做添加摄像头布局</string>
 	<key>Redo Add Camera Layouts</key>
 	<string>重做添加摄像头布局</string>
+	<key>Redo Add Camera Video</key>
+	<string>重做添加摄像头视频</string>
 	<key>Redo Add Caption</key>
 	<string>重做添加字幕</string>
 	<key>Redo Add Captions</key>
@@ -2162,6 +2202,8 @@
 	<string>重做摄像头布局更改</string>
 	<key>Redo Camera Layouts</key>
 	<string>重做摄像头布局更改</string>
+	<key>Redo Camera Offset</key>
+	<string>重做摄像头偏移</string>
 	<key>Redo Caption Style</key>
 	<string>重做字幕样式更改</string>
 	<key>Redo Caption Translation</key>
@@ -2270,6 +2312,8 @@
 	<string>重做视频静音</string>
 	<key>Redo Remove All Zooms</key>
 	<string>重做移除所有缩放</string>
+	<key>Redo Remove Camera Video</key>
+	<string>重做移除摄像头视频</string>
 	<key>Redo Remove Captions</key>
 	<string>重做移除字幕</string>
 	<key>Redo Remove Intro Card</key>
@@ -2282,6 +2326,8 @@
 	<string>重做移除录制内容</string>
 	<key>Redo Remove Ums</key>
 	<string>重做移除语气词</string>
+	<key>Redo Replace Camera Video</key>
+	<string>重做替换摄像头视频</string>
 	<key>Redo Replace Music</key>
 	<string>重做替换音乐</string>
 	<key>Redo Reset Look</key>
@@ -2636,6 +2682,8 @@
 	<string>搜索项目</string>
 	<key>Search text in captures</key>
 	<string>搜索截屏中的文字</string>
+	<key>Seconds the camera video starts after the recording (negative: before)</key>
+	<string>摄像头视频比录制内容晚开始的秒数（负数：更早）</string>
 	<key>Security</key>
 	<string>安全性</string>
 	<key>Select</key>
@@ -2774,6 +2822,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>在“访达”中显示录制内容</string>
 	<key>Show Video Editor</key>
 	<string>显示视频编辑器</string>
+	<key>Show a video from a phone or camera instead of the recorded camera, lined up by sound.</key>
+	<string>显示来自手机或相机的视频来代替录制的摄像头画面，并按声音对齐。</string>
 	<key>Show background</key>
 	<string>显示背景</string>
 	<key>Show camera</key>
@@ -2958,6 +3008,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>交换箭头的头尾</string>
 	<key>Switch the camera to full screen for talking points, or put it side by side with the screen — at the playhead. Each shows on the Camera lane.</key>
 	<string>在播放头处将摄像头切换为全屏以讲解要点，或与屏幕并排显示。每次切换都会显示在“摄像头”轨道上。</string>
+	<key>Sync by Sound</key>
+	<string>按声音同步</string>
+	<key>Synced by sound — the camera starts %@</key>
+	<string>已按声音同步 — 摄像头开始于%@</string>
 	<key>System Default</key>
 	<string>系统默认</string>
 	<key>System Default (%@)</key>
@@ -3020,6 +3074,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>这部分只有标题卡 — 请包含视频的一部分才能导出。</string>
 	<key>That part of the timeline is only a title card. Include a moment of the video in the range, then export again.</key>
 	<string>时间线的这部分只有标题卡。请在范围中包含视频的一部分，然后重新导出。</string>
+	<key>That video has no picture to show</key>
+	<string>该视频没有可显示的画面</string>
 	<key>That video is empty</key>
 	<string>该视频为空</string>
 	<key>That window closed before recording could start.</key>
@@ -3220,6 +3276,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销添加摄像头布局</string>
 	<key>Undo Add Camera Layouts</key>
 	<string>撤销添加摄像头布局</string>
+	<key>Undo Add Camera Video</key>
+	<string>撤销添加摄像头视频</string>
 	<key>Undo Add Caption</key>
 	<string>撤销添加字幕</string>
 	<key>Undo Add Captions</key>
@@ -3270,6 +3328,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销摄像头布局更改</string>
 	<key>Undo Camera Layouts</key>
 	<string>撤销摄像头布局更改</string>
+	<key>Undo Camera Offset</key>
+	<string>撤销摄像头偏移</string>
 	<key>Undo Caption Style</key>
 	<string>撤销字幕样式更改</string>
 	<key>Undo Caption Translation</key>
@@ -3378,6 +3438,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销视频静音</string>
 	<key>Undo Remove All Zooms</key>
 	<string>撤销移除所有缩放</string>
+	<key>Undo Remove Camera Video</key>
+	<string>撤销移除摄像头视频</string>
 	<key>Undo Remove Captions</key>
 	<string>撤销移除字幕</string>
 	<key>Undo Remove Intro Card</key>
@@ -3390,6 +3452,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销移除录制内容</string>
 	<key>Undo Remove Ums</key>
 	<string>撤销移除语气词</string>
+	<key>Undo Replace Camera Video</key>
+	<string>撤销替换摄像头视频</string>
 	<key>Undo Replace Music</key>
 	<string>撤销替换音乐</string>
 	<key>Undo Reset Look</key>
@@ -3644,6 +3708,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>导出</string>
 	<key>follows the cursor</key>
 	<string>跟随指针</string>
+	<key>in step with the recording</key>
+	<string>与录制内容同步</string>
 	<key>intro card</key>
 	<string>片头卡</string>
 	<key>loops</key>
@@ -3682,6 +3748,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>播放</string>
 	<key>pointer</key>
 	<string>指针</string>
+	<key>s</key>
+	<string>秒</string>
 	<key>select a part to cut</key>
 	<string>选择要剪掉的部分</string>
 	<key>select it</key>
@@ -3730,6 +3798,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>在 %2$lld 张截屏中找到“%1$@”（共 %3$lld 张）</string>
 	<key>“%@” isn't at %@ anymore. Put it back, or save the project with Include Media next time so it carries its own copy.</key>
 	<string>“%1$@”已不在 %2$@ 中。请将它放回原处，或下次存储项目时选择“包含媒体”，让项目带上自己的副本。</string>
+	<key>“%@” isn't in %@ anymore. Locate it to get the camera back.</key>
+	<string>“%1$@”已不在 %2$@ 中。找到它即可恢复摄像头画面。</string>
 	<key>“%@” isn't on this Mac — showing the built-in font. Install it, or add its file with Add Font File…</key>
 	<string>此 Mac 上没有“%@”，正在显示内置字体。请安装该字体，或使用“添加字体文件…”添加它的文件。</string>
 	<key>“%@” isn't on this Mac — using the built-in font</key>

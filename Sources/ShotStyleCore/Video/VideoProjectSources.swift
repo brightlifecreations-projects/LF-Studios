@@ -821,12 +821,14 @@ extension VideoEditorModel {
     /// (their own data was read when they were loaded).
     func restoreAddedRecordings(into fresh: inout VideoDemoProject) {
         fresh.restoreSources(from: project, metadata: media.appendedMetadata)
+        // So does camera footage added from elsewhere.
+        fresh.importedCamera = project.importedCamera
     }
 
     /// Camera footage anywhere in the video — this recording's or an added
     /// one's (the Camera tab works with either).
     var hasCameraInAnyRecording: Bool {
-        webcamRecording != nil || hasWebcamFootage || project.sources.contains { source in
+        webcamRecording != nil || hasWebcamFootage || project.importedCamera != nil || project.sources.contains { source in
             !source.isPrimary && (source.webcam.map { FileManager.default.fileExists(atPath: $0.path) } ?? false)
         }
     }

@@ -40,6 +40,10 @@
 	<string>%@pt</string>
 	<key>%@ quality · %@</key>
 	<string>品質: %@ · %@</string>
+	<key>%@ s after the recording</key>
+	<string>収録の%@秒後</string>
+	<key>%@ s before the recording</key>
+	<string>収録の%@秒前</string>
 	<key>%@ speed</key>
 	<string>速度%@</string>
 	<key>%@ transition</key>
@@ -226,6 +230,8 @@
 	<string>再生ヘッドの位置に矢印を追加（A）</string>
 	<key>Add blur at the playhead (B)</key>
 	<string>再生ヘッドの位置にぼかしを追加（B）</string>
+	<key>Add camera video…</key>
+	<string>カメラ映像を追加…</string>
 	<key>Add highlight at the playhead (H)</key>
 	<string>再生ヘッドの位置にハイライトを追加（H）</string>
 	<key>Add image at the playhead</key>
@@ -452,6 +458,8 @@
 	<string>カメラの接続が解除されました。</string>
 	<key>Camera disconnected. The recording continues without it.</key>
 	<string>カメラの接続が解除されました。カメラなしで収録を続けます。</string>
+	<key>Camera earlier by %@ s</key>
+	<string>カメラを%@秒早く</string>
 	<key>Camera follows your cursor</key>
 	<string>カメラがポインタに追従</string>
 	<key>Camera footage is missing</key>
@@ -460,6 +468,8 @@
 	<string>カメラ映像、補正済みの声、下書き、クリップボード用の書き出し</string>
 	<key>Camera hidden</key>
 	<string>カメラ非表示</string>
+	<key>Camera later by %@ s</key>
+	<string>カメラを%@秒遅く</string>
 	<key>Camera layout</key>
 	<string>カメラのレイアウト</string>
 	<key>Camera layout removed</key>
@@ -474,8 +484,24 @@
 	<string>カメラのプレビュー</string>
 	<key>Camera stopped</key>
 	<string>カメラ停止</string>
+	<key>Camera video</key>
+	<string>カメラ映像</string>
+	<key>Camera video missing</key>
+	<string>カメラ映像が見つかりません</string>
+	<key>Camera video removed — ⌘Z to undo</key>
+	<string>カメラ映像を削除しました — ⌘Zで取り消し</string>
+	<key>Camera video — drag to line it up with the recording</key>
+	<string>カメラ映像 — ドラッグして収録に合わせます</string>
+	<key>Camera video “%@”, %@</key>
+	<string>カメラ映像“%1$@”、%2$@</string>
+	<key>Camera video: %@</key>
+	<string>カメラ映像：%@</string>
 	<key>Camera — drag to move it, click for options</key>
 	<string>カメラ: ドラッグで移動、クリックでオプションを表示</string>
+	<key>Can't sync — the recording or the camera video has no sound</key>
+	<string>同期できません — 収録またはカメラ映像に音声がありません</string>
+	<key>Can't sync — their sound doesn't match clearly enough. Set the offset by hand.</key>
+	<string>同期できません — 音声が十分に一致しません。オフセットを手動で設定してください。</string>
 	<key>Cancel</key>
 	<string>キャンセル</string>
 	<key>Cancel Recording</key>
@@ -592,6 +618,8 @@
 	<string>フォルダを選択</string>
 	<key>Choose screen</key>
 	<string>ディスプレイを選択</string>
+	<key>Choose the camera video to show in the bubble</key>
+	<string>バブルに表示するカメラ映像を選択</string>
 	<key>Choose what happens immediately after taking a screenshot.</key>
 	<string>スクリーンショットを撮った直後の動作を選択します。</string>
 	<key>Choose window</key>
@@ -1188,10 +1216,14 @@
 	<string>塗りつぶした角丸長方形</string>
 	<key>Filling the frame — the view follows your cursor</key>
 	<string>画面いっぱいに表示します。ポインタに合わせて表示範囲が動きます</string>
+	<key>Filmed yourself on a phone or camera? Add that video and it shows in the bubble, lined up by sound.</key>
+	<string>スマートフォンやカメラで自分を撮影しましたか？その映像を追加すると、音声で合わせてバブルに表示されます。</string>
 	<key>Find in Transcript</key>
 	<string>文字起こし内を検索</string>
 	<key>Find in the transcript</key>
 	<string>文字起こし内を検索</string>
+	<key>Find “%@”</key>
+	<string>“%@”を探す</string>
 	<key>Finish and Quit</key>
 	<string>完了してから終了</string>
 	<key>Finish or cancel the current recording setup</key>
@@ -1482,6 +1514,8 @@
 	<string>線の幅</string>
 	<key>Linen</key>
 	<string>リネン</string>
+	<key>Lines the camera up by the sound both recorded. Or drag the camera strip on the timeline.</key>
+	<string>両方に録音された音声でカメラを合わせます。タイムラインのカメラのバーをドラッグしても合わせられます。</string>
 	<key>Lines · %lld</key>
 	<string>字幕の行 · %lld</string>
 	<key>Link</key>
@@ -1500,6 +1534,8 @@
 	<string>聞き取り中…</string>
 	<key>Listens on this Mac — nothing is uploaded</key>
 	<string>このMac上で聞き取ります。何もアップロードされません</string>
+	<key>Locate…</key>
+	<string>場所を指定…</string>
 	<key>Look</key>
 	<string>スタイル</string>
 	<key>Loop to fill</key>
@@ -1778,6 +1814,8 @@
 	<string>ビデオの幅に対する割合です。</string>
 	<key>Off</key>
 	<string>オフ</string>
+	<key>Offset</key>
+	<string>オフセット</string>
 	<key>Older</key>
 	<string>それ以前</string>
 	<key>On your clipboard · %@</key>
@@ -2112,6 +2150,8 @@
 	<string>カメラのレイアウトの追加をやり直す</string>
 	<key>Redo Add Camera Layouts</key>
 	<string>カメラのレイアウトの追加をやり直す</string>
+	<key>Redo Add Camera Video</key>
+	<string>カメラ映像の追加をやり直す</string>
 	<key>Redo Add Caption</key>
 	<string>字幕の追加をやり直す</string>
 	<key>Redo Add Captions</key>
@@ -2162,6 +2202,8 @@
 	<string>カメラのレイアウトの変更をやり直す</string>
 	<key>Redo Camera Layouts</key>
 	<string>カメラのレイアウトの変更をやり直す</string>
+	<key>Redo Camera Offset</key>
+	<string>カメラのオフセットをやり直す</string>
 	<key>Redo Caption Style</key>
 	<string>字幕のスタイル変更をやり直す</string>
 	<key>Redo Caption Translation</key>
@@ -2270,6 +2312,8 @@
 	<string>ビデオの消音をやり直す</string>
 	<key>Redo Remove All Zooms</key>
 	<string>すべてのズームの削除をやり直す</string>
+	<key>Redo Remove Camera Video</key>
+	<string>カメラ映像の削除をやり直す</string>
 	<key>Redo Remove Captions</key>
 	<string>字幕の削除をやり直す</string>
 	<key>Redo Remove Intro Card</key>
@@ -2282,6 +2326,8 @@
 	<string>収録の削除をやり直す</string>
 	<key>Redo Remove Ums</key>
 	<string>フィラーの削除をやり直す</string>
+	<key>Redo Replace Camera Video</key>
+	<string>カメラ映像の置き換えをやり直す</string>
 	<key>Redo Replace Music</key>
 	<string>音楽の置き換えをやり直す</string>
 	<key>Redo Reset Look</key>
@@ -2636,6 +2682,8 @@
 	<string>プロジェクトを検索</string>
 	<key>Search text in captures</key>
 	<string>スクリーンショット内のテキストを検索</string>
+	<key>Seconds the camera video starts after the recording (negative: before)</key>
+	<string>カメラ映像が収録より何秒後に始まるか（マイナス：前）</string>
 	<key>Security</key>
 	<string>セキュリティ</string>
 	<key>Select</key>
@@ -2774,6 +2822,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>収録をFinderに表示</string>
 	<key>Show Video Editor</key>
 	<string>ビデオエディタを表示</string>
+	<key>Show a video from a phone or camera instead of the recorded camera, lined up by sound.</key>
+	<string>収録したカメラの代わりに、スマートフォンやカメラの映像を音声で合わせて表示します。</string>
 	<key>Show background</key>
 	<string>背景を表示</string>
 	<key>Show camera</key>
@@ -2958,6 +3008,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>矢印の先端と始点を入れ替える</string>
 	<key>Switch the camera to full screen for talking points, or put it side by side with the screen — at the playhead. Each shows on the Camera lane.</key>
 	<string>再生ヘッドの位置で、カメラを全面に切り替えて要点を話したり、画面と横並びにしたりできます。切り替えはそれぞれ“カメラ”トラックに表示されます。</string>
+	<key>Sync by Sound</key>
+	<string>音声で同期</string>
+	<key>Synced by sound — the camera starts %@</key>
+	<string>音声で同期しました — カメラの開始は%@</string>
 	<key>System Default</key>
 	<string>システムのデフォルト</string>
 	<key>System Default (%@)</key>
@@ -3020,6 +3074,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>その部分はタイトルカードだけです。書き出すにはビデオの一部を含めてください。</string>
 	<key>That part of the timeline is only a title card. Include a moment of the video in the range, then export again.</key>
 	<string>タイムラインのその部分はタイトルカードだけです。範囲にビデオの一部を含めてから、もう一度書き出してください。</string>
+	<key>That video has no picture to show</key>
+	<string>この映像には表示できる画像がありません</string>
 	<key>That video is empty</key>
 	<string>そのビデオは空です</string>
 	<key>That window closed before recording could start.</key>
@@ -3220,6 +3276,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>カメラのレイアウトの追加を取り消す</string>
 	<key>Undo Add Camera Layouts</key>
 	<string>カメラのレイアウトの追加を取り消す</string>
+	<key>Undo Add Camera Video</key>
+	<string>カメラ映像の追加を取り消す</string>
 	<key>Undo Add Caption</key>
 	<string>字幕の追加を取り消す</string>
 	<key>Undo Add Captions</key>
@@ -3270,6 +3328,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>カメラのレイアウトの変更を取り消す</string>
 	<key>Undo Camera Layouts</key>
 	<string>カメラのレイアウトの変更を取り消す</string>
+	<key>Undo Camera Offset</key>
+	<string>カメラのオフセットを取り消す</string>
 	<key>Undo Caption Style</key>
 	<string>字幕のスタイル変更を取り消す</string>
 	<key>Undo Caption Translation</key>
@@ -3378,6 +3438,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ビデオの消音を取り消す</string>
 	<key>Undo Remove All Zooms</key>
 	<string>すべてのズームの削除を取り消す</string>
+	<key>Undo Remove Camera Video</key>
+	<string>カメラ映像の削除を取り消す</string>
 	<key>Undo Remove Captions</key>
 	<string>字幕の削除を取り消す</string>
 	<key>Undo Remove Intro Card</key>
@@ -3390,6 +3452,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>収録の削除を取り消す</string>
 	<key>Undo Remove Ums</key>
 	<string>フィラーの削除を取り消す</string>
+	<key>Undo Replace Camera Video</key>
+	<string>カメラ映像の置き換えを取り消す</string>
 	<key>Undo Replace Music</key>
 	<string>音楽の置き換えを取り消す</string>
 	<key>Undo Reset Look</key>
@@ -3644,6 +3708,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>書き出す</string>
 	<key>follows the cursor</key>
 	<string>ポインタに追従</string>
+	<key>in step with the recording</key>
+	<string>収録と同時</string>
 	<key>intro card</key>
 	<string>オープニングカード</string>
 	<key>loops</key>
@@ -3682,6 +3748,8 @@ Appleのショートカットは、“システム設定”＞“キーボード
 	<string>再生</string>
 	<key>pointer</key>
 	<string>ポインタ</string>
+	<key>s</key>
+	<string>秒</string>
 	<key>select a part to cut</key>
 	<string>カットする部分を選択</string>
 	<key>select it</key>
@@ -3730,6 +3798,8 @@ Appleのショートカットは、“システム設定”＞“キーボード
 	<string>%3$lld件中%2$lld件のスクリーンショットで“%1$@”が見つかりました</string>
 	<key>“%@” isn't at %@ anymore. Put it back, or save the project with Include Media next time so it carries its own copy.</key>
 	<string>“%1$@”は%2$@にありません。元に戻すか、次回は「メディアを含める」で保存して、プロジェクトに独自のコピーを持たせてください。</string>
+	<key>“%@” isn't in %@ anymore. Locate it to get the camera back.</key>
+	<string>“%1$@”は%2$@にありません。場所を指定するとカメラが戻ります。</string>
 	<key>“%@” isn't on this Mac — showing the built-in font. Install it, or add its file with Add Font File…</key>
 	<string>“%@”はこのMacにないため、内蔵フォントを表示しています。インストールするか、「フォントファイルを追加…」でファイルを追加してください。</string>
 	<key>“%@” isn't on this Mac — using the built-in font</key>

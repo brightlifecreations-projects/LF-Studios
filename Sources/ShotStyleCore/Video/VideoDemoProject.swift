@@ -691,6 +691,9 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
     var webcam: VideoWebcamSettings
     /// Where the camera switches to full screen, side by side, or hides.
     var cameraLayouts: [VideoCameraLayoutRegion] = []
+    /// Camera footage filmed apart from the recording; shown instead of the
+    /// recorded camera (VideoImportedCamera.swift).
+    var importedCamera: VideoImportedCamera?
     /// Narrow outputs (9:16, 4:5, 1:1) fill the frame and pan with the
     /// pointer instead of letterboxing the recording.
     var reframe = false
@@ -1241,7 +1244,7 @@ extension VideoDemoProject {
         case aspectPreset, background, backgroundBlur, padding, cornerRadius, shadow, outline
         case zoomRegions, zoomSpeed, defaultZoomScale, motionBlur
         case overlayEffects, cursorSamples, clickEvents, nativeCursorVisible, cursor, audio
-        case webcam, cameraLayouts, reframe, captions, transcriptLanguage, captionStyle, keystrokes, keystrokeStyle, crop
+        case webcam, cameraLayouts, importedCamera, reframe, captions, transcriptLanguage, captionStyle, keystrokes, keystrokeStyle, crop
         case cards, music, clickSounds, transitions, captionTracks, sources, imageOverlayEffects
         // Legacy (v1) keys
         case backgroundPreset, customBackgroundPath, stageInset, shadowStrength, zoomKeyframes
@@ -1270,6 +1273,7 @@ extension VideoDemoProject {
         version = Self.currentVersion
         webcam = (try? container.decode(VideoWebcamSettings.self, forKey: .webcam)) ?? VideoWebcamSettings()
         cameraLayouts = (try? container.decode([VideoCameraLayoutRegion].self, forKey: .cameraLayouts)) ?? []
+        importedCamera = try? container.decodeIfPresent(VideoImportedCamera.self, forKey: .importedCamera)
         reframe = try container.decodeIfPresent(Bool.self, forKey: .reframe) ?? false
         captions = (try? container.decode([VideoCaptionLine].self, forKey: .captions)) ?? []
         transcriptLanguage = try? container.decodeIfPresent(String.self, forKey: .transcriptLanguage)
@@ -1368,6 +1372,7 @@ extension VideoDemoProject {
         try container.encode(audio, forKey: .audio)
         try container.encode(webcam, forKey: .webcam)
         try container.encode(cameraLayouts, forKey: .cameraLayouts)
+        try container.encodeIfPresent(importedCamera, forKey: .importedCamera)
         try container.encode(reframe, forKey: .reframe)
         try container.encode(captions, forKey: .captions)
         try container.encodeIfPresent(transcriptLanguage, forKey: .transcriptLanguage)

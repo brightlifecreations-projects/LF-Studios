@@ -408,13 +408,30 @@ final class VideoRenderPlan: @unchecked Sendable {
         fadeOut = min(max(project.transitions.fadeOut, 0), VideoTransitionSettings.fadeRange.upperBound)
         fullSourceAspect = project.sourceWidth > 0 && project.sourceHeight > 0 ? CGFloat(project.sourceWidth / project.sourceHeight) : 16 / 9
         fitsMismatchedFrames = project.hasAppendedSources
+        // Imported camera footage shows only while it runs (it may start
+        // after the recording, or end before it).
+        let imported = project.importedCamera.flatMap { camera in
+            camera.resolved() == nil ? nil : (max(camera.offset, 0), camera.offset + camera.duration)
+        }
         if project.hasAppendedSources {
             // Only recordings that brought camera footage show the bubble.
             let segments = self.segments
             // (`hasWebcam` may come from an added recording's camera alone.)
-            cameraCoverage = project.sources.filter { $0.webcam != nil && (hasWebcam || !$0.isPrimary) }.flatMap {
-                VideoDemoProject.timelineRanges(sourceStart: $0.offset, sourceEnd: $0.end, segments: segments)
+            cameraCoverage = project.sources.filter { source in
+                guard source.isPrimary else { return source.webcam != nil }
+                return hasWebcam && (project.importedCamera == nil ? source.webcam != nil : imported != nil)
+            }.flatMap { source -> [ClosedRange<Double>] in
+                var start = source.offset, end = source.end
+                if source.isPrimary, let imported {
+                    start = max(start, imported.0)
+                    end = min(end, imported.1)
+                }
+                return end > start ? VideoDemoProject.timelineRanges(sourceStart: start, sourceEnd: end, segments: segments) : []
             }
+        } else if project.importedCamera != nil {
+            // (Missing from disk: none.)
+            let segments = self.segments
+            cameraCoverage = imported.map { $0.1 > $0.0 ? VideoDemoProject.timelineRanges(sourceStart: $0.0, sourceEnd: $0.1, segments: segments) : [] } ?? []
         } else if cards.intro.enabled || cards.outro.enabled {
             cameraCoverage = [introEnd...outroStart]
         } else {

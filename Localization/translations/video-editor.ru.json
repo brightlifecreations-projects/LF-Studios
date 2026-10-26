@@ -20,6 +20,12 @@
   "%@ of recording plays in %@." : {
     "ru" : "%@ записи воспроизводится за %@."
   },
+  "%@ s after the recording" : {
+    "ru" : "через %@ с после записи"
+  },
+  "%@ s before the recording" : {
+    "ru" : "за %@ с до записи"
+  },
   "%@ speed" : {
     "ru" : "скорость %@"
   },
@@ -179,6 +185,9 @@
   "Add blur at the playhead (B)" : {
     "ru" : "Добавить размытие у указателя воспроизведения (B)"
   },
+  "Add camera video…" : {
+    "ru" : "Добавить видео с камеры…"
+  },
   "Add highlight at the playhead (H)" : {
     "ru" : "Добавить выделение у указателя воспроизведения (H)"
   },
@@ -284,11 +293,17 @@
   "Camera bubble" : {
     "ru" : "Окошко камеры"
   },
+  "Camera earlier by %@ s" : {
+    "ru" : "Камера на %@ с раньше"
+  },
   "Camera follows your cursor" : {
     "ru" : "Камера следует за указателем"
   },
   "Camera footage is missing" : {
     "ru" : "Запись с камеры не найдена"
+  },
+  "Camera later by %@ s" : {
+    "ru" : "Камера на %@ с позже"
   },
   "Camera layout" : {
     "ru" : "Расположение камеры"
@@ -302,8 +317,32 @@
   "Camera layouts — drag to move, drag an edge to retime, click to change" : {
     "ru" : "Расположения камеры — перетяните, чтобы сдвинуть; тяните за край, чтобы изменить длительность; нажмите, чтобы сменить"
   },
+  "Camera video" : {
+    "ru" : "Видео с камеры"
+  },
+  "Camera video missing" : {
+    "ru" : "Видео с камеры не найдено"
+  },
+  "Camera video removed — ⌘Z to undo" : {
+    "ru" : "Видео с камеры удалено — ⌘Z, чтобы отменить"
+  },
+  "Camera video — drag to line it up with the recording" : {
+    "ru" : "Видео с камеры — перетащите, чтобы совместить с записью"
+  },
+  "Camera video “%@”, %@" : {
+    "ru" : "Видео с камеры «%1$@», %2$@"
+  },
+  "Camera video: %@" : {
+    "ru" : "Видео с камеры: %@"
+  },
   "Camera — drag to move it, click for options" : {
     "ru" : "Камера — перетяните, чтобы переместить; нажмите, чтобы открыть параметры"
+  },
+  "Can't sync — the recording or the camera video has no sound" : {
+    "ru" : "Не удалось синхронизировать — у записи или видео с камеры нет звука"
+  },
+  "Can't sync — their sound doesn't match clearly enough. Set the offset by hand." : {
+    "ru" : "Не удалось синхронизировать — звук совпадает недостаточно чётко. Задайте сдвиг вручную."
   },
   "Caption" : {
     "ru" : "Субтитр"
@@ -328,6 +367,9 @@
   },
   "Choose a ShotStyle project" : {
     "ru" : "Выберите проект ShotStyle"
+  },
+  "Choose the camera video to show in the bubble" : {
+    "ru" : "Выберите видео с камеры для пузыря"
   },
   "Cleaning up your voice…" : {
     "ru" : "Очистка голоса…"
@@ -604,11 +646,17 @@
   "Fill the Frame, Follow the Cursor" : {
     "ru" : "Заполнить кадр и следовать за указателем"
   },
+  "Filmed yourself on a phone or camera? Add that video and it shows in the bubble, lined up by sound." : {
+    "ru" : "Снимали себя на телефон или камеру? Добавьте это видео — оно появится в пузыре, совмещённое по звуку."
+  },
   "Find in Transcript" : {
     "ru" : "Найти в расшифровке"
   },
   "Find in the transcript" : {
     "ru" : "Найти в расшифровке"
+  },
+  "Find “%@”" : {
+    "ru" : "Найти «%@»"
   },
   "Flip like a selfie" : {
     "ru" : "Отразить, как на селфи"
@@ -780,6 +828,9 @@
   "Level" : {
     "ru" : "Уровень"
   },
+  "Lines the camera up by the sound both recorded. Or drag the camera strip on the timeline." : {
+    "ru" : "Совмещает камеру по звуку, записанному обоими. Или перетащите полосу камеры на таймлайне."
+  },
   "Lines · %lld" : {
     "ru" : "Строки · %lld"
   },
@@ -788,6 +839,9 @@
   },
   "Listens on this Mac — nothing is uploaded" : {
     "ru" : "Работает на этом Mac — ничего не отправляется в сеть"
+  },
+  "Locate…" : {
+    "ru" : "Найти…"
   },
   "Look" : {
     "ru" : "Вид"
@@ -918,6 +972,9 @@
   "Not for this video" : {
     "ru" : "Не для этого видео"
   },
+  "Offset" : {
+    "ru" : "Сдвиг"
+  },
   "Open Another Video…" : {
     "ru" : "Открыть другое видео…"
   },
@@ -1040,6 +1097,9 @@
   "Redo Add Camera Layouts" : {
     "ru" : "Повторить добавление расположений камеры"
   },
+  "Redo Add Camera Video" : {
+    "ru" : "Повторить добавление видео с камеры"
+  },
   "Redo Add Caption" : {
     "ru" : "Повторить добавление субтитра"
   },
@@ -1114,6 +1174,9 @@
   },
   "Redo Camera Layouts" : {
     "ru" : "Повторить изменение расположений камеры"
+  },
+  "Redo Camera Offset" : {
+    "ru" : "Повторить сдвиг камеры"
   },
   "Redo Caption Style" : {
     "ru" : "Повторить изменение стиля субтитров"
@@ -1278,6 +1341,9 @@
   "Redo Remove All Zooms" : {
     "ru" : "Повторить удаление всех увеличений"
   },
+  "Redo Remove Camera Video" : {
+    "ru" : "Повторить удаление видео с камеры"
+  },
   "Redo Remove Captions" : {
     "ru" : "Повторить удаление всех субтитров"
   },
@@ -1295,6 +1361,9 @@
   },
   "Redo Remove Ums" : {
     "ru" : "Повторить удаление слов-паразитов"
+  },
+  "Redo Replace Camera Video" : {
+    "ru" : "Повторить замену видео с камеры"
   },
   "Redo Replace Music" : {
     "ru" : "Повторить замену музыки"
@@ -1527,6 +1596,9 @@
   "Search commands" : {
     "ru" : "Поиск команд"
   },
+  "Seconds the camera video starts after the recording (negative: before)" : {
+    "ru" : "Через сколько секунд после записи начинается видео с камеры (отрицательное — раньше)"
+  },
   "Select a clip on the timeline to mute it or fade it in and out." : {
     "ru" : "Выберите клип на шкале времени, чтобы выключить его звук или настроить нарастание и затухание."
   },
@@ -1603,6 +1675,9 @@
   },
   "Show Recording in Finder" : {
     "ru" : "Показать запись в Finder"
+  },
+  "Show a video from a phone or camera instead of the recorded camera, lined up by sound." : {
+    "ru" : "Показывать видео с телефона или камеры вместо записанной камеры, совмещённое по звуку."
   },
   "Show background" : {
     "ru" : "Показать фон"
@@ -1727,6 +1802,12 @@
   "Switch the camera to full screen for talking points, or put it side by side with the screen — at the playhead. Each shows on the Camera lane." : {
     "ru" : "Переключите камеру на весь кадр для ключевых моментов или поставьте ее рядом с экраном — у указателя воспроизведения. Каждое переключение отображается на дорожке «Камера»."
   },
+  "Sync by Sound" : {
+    "ru" : "Синхронизировать по звуку"
+  },
+  "Synced by sound — the camera starts %@" : {
+    "ru" : "Синхронизировано по звуку — камера начинается %@"
+  },
   "Tag color" : {
     "ru" : "Цвет плашки"
   },
@@ -1738,6 +1819,9 @@
   },
   "That isn't a ShotStyle presets file" : {
     "ru" : "Это не файл стилей ShotStyle"
+  },
+  "That video has no picture to show" : {
+    "ru" : "В этом видео нет изображения"
   },
   "The camera keeps your cursor in view and glides after it." : {
     "ru" : "Камера держит указатель в кадре и плавно следует за ним."
@@ -1847,6 +1931,9 @@
   "Undo Add Camera Layouts" : {
     "ru" : "Отменить добавление расположений камеры"
   },
+  "Undo Add Camera Video" : {
+    "ru" : "Отменить добавление видео с камеры"
+  },
   "Undo Add Caption" : {
     "ru" : "Отменить добавление субтитра"
   },
@@ -1921,6 +2008,9 @@
   },
   "Undo Camera Layouts" : {
     "ru" : "Отменить изменение расположений камеры"
+  },
+  "Undo Camera Offset" : {
+    "ru" : "Отменить сдвиг камеры"
   },
   "Undo Caption Style" : {
     "ru" : "Отменить изменение стиля субтитров"
@@ -2085,6 +2175,9 @@
   "Undo Remove All Zooms" : {
     "ru" : "Отменить удаление всех увеличений"
   },
+  "Undo Remove Camera Video" : {
+    "ru" : "Отменить удаление видео с камеры"
+  },
   "Undo Remove Captions" : {
     "ru" : "Отменить удаление всех субтитров"
   },
@@ -2102,6 +2195,9 @@
   },
   "Undo Remove Ums" : {
     "ru" : "Отменить удаление слов-паразитов"
+  },
+  "Undo Replace Camera Video" : {
+    "ru" : "Отменить замену видео с камеры"
   },
   "Undo Replace Music" : {
     "ru" : "Отменить замену музыки"
@@ -2322,6 +2418,9 @@
   "follows the cursor" : {
     "ru" : "следует за указателем"
   },
+  "in step with the recording" : {
+    "ru" : "одновременно с записью"
+  },
   "loops" : {
     "ru" : "повторяется"
   },
@@ -2333,6 +2432,9 @@
   },
   "play" : {
     "ru" : "воспроизвести"
+  },
+  "s" : {
+    "ru" : "с"
   },
   "select a part to cut" : {
     "ru" : "выделить фрагмент для вырезания"
@@ -2369,6 +2471,9 @@
   },
   "“%@” isn't at %@ anymore. Put it back, or save the project with Include Media next time so it carries its own copy." : {
     "ru" : "«%1$@» больше нет в %2$@. Верните файл на место или в следующий раз сохраните проект с параметром «Включить медиафайлы», чтобы в нём была своя копия."
+  },
+  "“%@” isn't in %@ anymore. Locate it to get the camera back." : {
+    "ru" : "«%1$@» больше нет в %2$@. Найдите файл, чтобы вернуть камеру."
   },
   "⇧-drag" : {
     "ru" : "⇧ + тянуть"
