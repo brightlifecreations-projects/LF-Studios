@@ -20,6 +20,12 @@
   "%@ of recording plays in %@." : {
     "ja" : "収録の%@を%@で再生します。"
   },
+  "%@ s after the recording" : {
+    "ja" : "収録の%@秒後"
+  },
+  "%@ s before the recording" : {
+    "ja" : "収録の%@秒前"
+  },
   "%@ speed" : {
     "ja" : "速度%@"
   },
@@ -118,6 +124,9 @@
   },
   "Add blur at the playhead (B)" : {
     "ja" : "再生ヘッドの位置にぼかしを追加（B）"
+  },
+  "Add camera video…" : {
+    "ja" : "カメラ映像を追加…"
   },
   "Add highlight at the playhead (H)" : {
     "ja" : "再生ヘッドの位置にハイライトを追加（H）"
@@ -224,11 +233,17 @@
   "Camera bubble" : {
     "ja" : "カメラのワイプ"
   },
+  "Camera earlier by %@ s" : {
+    "ja" : "カメラを%@秒早く"
+  },
   "Camera follows your cursor" : {
     "ja" : "カメラがポインタに追従"
   },
   "Camera footage is missing" : {
     "ja" : "カメラ映像が見つかりません"
+  },
+  "Camera later by %@ s" : {
+    "ja" : "カメラを%@秒遅く"
   },
   "Camera layout" : {
     "ja" : "カメラのレイアウト"
@@ -242,8 +257,32 @@
   "Camera layouts — drag to move, drag an edge to retime, click to change" : {
     "ja" : "カメラのレイアウト: ドラッグで移動、端をドラッグで長さを変更、クリックで変更"
   },
+  "Camera video" : {
+    "ja" : "カメラ映像"
+  },
+  "Camera video missing" : {
+    "ja" : "カメラ映像が見つかりません"
+  },
+  "Camera video removed — ⌘Z to undo" : {
+    "ja" : "カメラ映像を削除しました — ⌘Zで取り消し"
+  },
+  "Camera video — drag to line it up with the recording" : {
+    "ja" : "カメラ映像 — ドラッグして収録に合わせます"
+  },
+  "Camera video “%@”, %@" : {
+    "ja" : "カメラ映像“%1$@”、%2$@"
+  },
+  "Camera video: %@" : {
+    "ja" : "カメラ映像：%@"
+  },
   "Camera — drag to move it, click for options" : {
     "ja" : "カメラ: ドラッグで移動、クリックでオプションを表示"
+  },
+  "Can't sync — the recording or the camera video has no sound" : {
+    "ja" : "同期できません — 収録またはカメラ映像に音声がありません"
+  },
+  "Can't sync — their sound doesn't match clearly enough. Set the offset by hand." : {
+    "ja" : "同期できません — 音声が十分に一致しません。オフセットを手動で設定してください。"
   },
   "Caption" : {
     "ja" : "字幕"
@@ -268,6 +307,9 @@
   },
   "Choose a ShotStyle project" : {
     "ja" : "ShotStyleプロジェクトを選択"
+  },
+  "Choose the camera video to show in the bubble" : {
+    "ja" : "バブルに表示するカメラ映像を選択"
   },
   "Cleaning up your voice…" : {
     "ja" : "声を補正中…"
@@ -539,11 +581,17 @@
   "Fill the Frame, Follow the Cursor" : {
     "ja" : "画面いっぱいに表示してポインタに追従"
   },
+  "Filmed yourself on a phone or camera? Add that video and it shows in the bubble, lined up by sound." : {
+    "ja" : "スマートフォンやカメラで自分を撮影しましたか？その映像を追加すると、音声で合わせてバブルに表示されます。"
+  },
   "Find in Transcript" : {
     "ja" : "文字起こし内を検索"
   },
   "Find in the transcript" : {
     "ja" : "文字起こし内を検索"
+  },
+  "Find “%@”" : {
+    "ja" : "“%@”を探す"
   },
   "Flip like a selfie" : {
     "ja" : "自撮りと同じ向きにします"
@@ -710,6 +758,9 @@
   "Level" : {
     "ja" : "倍率"
   },
+  "Lines the camera up by the sound both recorded. Or drag the camera strip on the timeline." : {
+    "ja" : "両方に録音された音声でカメラを合わせます。タイムラインのカメラのバーをドラッグしても合わせられます。"
+  },
   "Lines · %lld" : {
     "ja" : "字幕の行 · %lld"
   },
@@ -718,6 +769,9 @@
   },
   "Listens on this Mac — nothing is uploaded" : {
     "ja" : "このMac上で聞き取ります。何もアップロードされません"
+  },
+  "Locate…" : {
+    "ja" : "場所を指定…"
   },
   "Look" : {
     "ja" : "スタイル"
@@ -848,6 +902,9 @@
   "Not for this video" : {
     "ja" : "このビデオでは使用しない"
   },
+  "Offset" : {
+    "ja" : "オフセット"
+  },
   "Open Another Video…" : {
     "ja" : "別のビデオを開く…"
   },
@@ -965,6 +1022,9 @@
   "Redo Add Camera Layouts" : {
     "ja" : "カメラのレイアウトの追加をやり直す"
   },
+  "Redo Add Camera Video" : {
+    "ja" : "カメラ映像の追加をやり直す"
+  },
   "Redo Add Caption" : {
     "ja" : "字幕の追加をやり直す"
   },
@@ -1039,6 +1099,9 @@
   },
   "Redo Camera Layouts" : {
     "ja" : "カメラのレイアウトの変更をやり直す"
+  },
+  "Redo Camera Offset" : {
+    "ja" : "カメラのオフセットをやり直す"
   },
   "Redo Caption Style" : {
     "ja" : "字幕のスタイル変更をやり直す"
@@ -1193,6 +1256,9 @@
   "Redo Remove All Zooms" : {
     "ja" : "すべてのズームの削除をやり直す"
   },
+  "Redo Remove Camera Video" : {
+    "ja" : "カメラ映像の削除をやり直す"
+  },
   "Redo Remove Captions" : {
     "ja" : "字幕の削除をやり直す"
   },
@@ -1210,6 +1276,9 @@
   },
   "Redo Remove Ums" : {
     "ja" : "フィラーの削除をやり直す"
+  },
+  "Redo Replace Camera Video" : {
+    "ja" : "カメラ映像の置き換えをやり直す"
   },
   "Redo Replace Music" : {
     "ja" : "音楽の置き換えをやり直す"
@@ -1427,6 +1496,9 @@
   "Search commands" : {
     "ja" : "コマンドを検索"
   },
+  "Seconds the camera video starts after the recording (negative: before)" : {
+    "ja" : "カメラ映像が収録より何秒後に始まるか（マイナス：前）"
+  },
   "Select a clip on the timeline to mute it or fade it in and out." : {
     "ja" : "タイムラインでクリップを選択すると、消音やフェードイン/フェードアウトを設定できます。"
   },
@@ -1498,6 +1570,9 @@
   },
   "Show Recording in Finder" : {
     "ja" : "収録をFinderに表示"
+  },
+  "Show a video from a phone or camera instead of the recorded camera, lined up by sound." : {
+    "ja" : "収録したカメラの代わりに、スマートフォンやカメラの映像を音声で合わせて表示します。"
   },
   "Show background" : {
     "ja" : "背景を表示"
@@ -1622,6 +1697,12 @@
   "Switch the camera to full screen for talking points, or put it side by side with the screen — at the playhead. Each shows on the Camera lane." : {
     "ja" : "再生ヘッドの位置で、カメラを全面に切り替えて要点を話したり、画面と横並びにしたりできます。切り替えはそれぞれ“カメラ”トラックに表示されます。"
   },
+  "Sync by Sound" : {
+    "ja" : "音声で同期"
+  },
+  "Synced by sound — the camera starts %@" : {
+    "ja" : "音声で同期しました — カメラの開始は%@"
+  },
   "Tag color" : {
     "ja" : "背景のカラー"
   },
@@ -1633,6 +1714,9 @@
   },
   "That isn't a ShotStyle presets file" : {
     "ja" : "ShotStyleのプリセットファイルではありません"
+  },
+  "That video has no picture to show" : {
+    "ja" : "この映像には表示できる画像がありません"
   },
   "The camera keeps your cursor in view and glides after it." : {
     "ja" : "カメラがポインタを画面内にとらえ、滑らかに追いかけます。"
@@ -1742,6 +1826,9 @@
   "Undo Add Camera Layouts" : {
     "ja" : "カメラのレイアウトの追加を取り消す"
   },
+  "Undo Add Camera Video" : {
+    "ja" : "カメラ映像の追加を取り消す"
+  },
   "Undo Add Caption" : {
     "ja" : "字幕の追加を取り消す"
   },
@@ -1816,6 +1903,9 @@
   },
   "Undo Camera Layouts" : {
     "ja" : "カメラのレイアウトの変更を取り消す"
+  },
+  "Undo Camera Offset" : {
+    "ja" : "カメラのオフセットを取り消す"
   },
   "Undo Caption Style" : {
     "ja" : "字幕のスタイル変更を取り消す"
@@ -1970,6 +2060,9 @@
   "Undo Remove All Zooms" : {
     "ja" : "すべてのズームの削除を取り消す"
   },
+  "Undo Remove Camera Video" : {
+    "ja" : "カメラ映像の削除を取り消す"
+  },
   "Undo Remove Captions" : {
     "ja" : "字幕の削除を取り消す"
   },
@@ -1987,6 +2080,9 @@
   },
   "Undo Remove Ums" : {
     "ja" : "フィラーの削除を取り消す"
+  },
+  "Undo Replace Camera Video" : {
+    "ja" : "カメラ映像の置き換えを取り消す"
   },
   "Undo Replace Music" : {
     "ja" : "音楽の置き換えを取り消す"
@@ -2207,6 +2303,9 @@
   "follows the cursor" : {
     "ja" : "ポインタに追従"
   },
+  "in step with the recording" : {
+    "ja" : "収録と同時"
+  },
   "loops" : {
     "ja" : "ループ再生"
   },
@@ -2218,6 +2317,9 @@
   },
   "play" : {
     "ja" : "再生"
+  },
+  "s" : {
+    "ja" : "秒"
   },
   "select a part to cut" : {
     "ja" : "カットする部分を選択"
@@ -2254,6 +2356,9 @@
   },
   "“%@” isn't at %@ anymore. Put it back, or save the project with Include Media next time so it carries its own copy." : {
     "ja" : "“%1$@”は%2$@にありません。元に戻すか、次回は「メディアを含める」で保存して、プロジェクトに独自のコピーを持たせてください。"
+  },
+  "“%@” isn't in %@ anymore. Locate it to get the camera back." : {
+    "ja" : "“%1$@”は%2$@にありません。場所を指定するとカメラが戻ります。"
   },
   "⇧-drag" : {
     "ja" : "⇧ドラッグ"

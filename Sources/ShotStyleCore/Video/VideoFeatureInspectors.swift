@@ -660,6 +660,7 @@ struct VideoCameraInspector: View {
                         .buttonStyle(VideoSecondaryButtonStyle())
                     }
                 }
+                VideoCameraVideoSection(model: model)
             } else if !model.hasCameraInAnyRecording {
                 VideoCard {
                     Label(L("No camera in this recording"), systemImage: "video.slash")
@@ -670,7 +671,10 @@ struct VideoCameraInspector: View {
                         .foregroundStyle(VideoEditorTheme.textSecondary)
                         .fixedSize(horizontal: false, vertical: true)
                 }
+                VideoCameraVideoSection(model: model)
             } else {
+                VideoCameraVideoSection(model: model)
+
                 VideoInspectorSection(L("Camera")) {
                     VideoToggleRow(title: L("Show camera"), isOn: binding(\.visible))
                     // A shape is also a corner preset: picking one resets the roundness.

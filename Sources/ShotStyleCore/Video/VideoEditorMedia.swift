@@ -414,7 +414,8 @@ extension VideoEditorModel {
             voice: project.music?.ducking == true ? voiceTimelineRanges : [],
             cards: project.cards,
             transitions: project.transitions,
-            sources: project.sources
+            sources: project.sources,
+            importedCamera: project.importedCamera
         )
     }
 }
@@ -426,6 +427,7 @@ struct VideoTimelineExtrasSignature: Equatable {
     let cards: VideoTitleCards
     let transitions: VideoTransitionSettings
     let sources: [VideoProjectSource]
+    let importedCamera: VideoImportedCamera?
 }
 
 enum VideoMusicDucking {

@@ -41,6 +41,18 @@
     "fr" : "%@ d’enregistrement lus en %@.",
     "zh-Hans" : "%@ 的录制内容在 %@ 内播完。"
   },
+  "%@ s after the recording" : {
+    "comment" : "Camera offset, e.g. “0.70 s after the recording”",
+    "de" : "%@ s nach der Aufnahme",
+    "fr" : "%@ s après l’enregistrement",
+    "zh-Hans" : "比录制内容晚 %@ 秒"
+  },
+  "%@ s before the recording" : {
+    "comment" : "Camera offset, e.g. “1.20 s before the recording”",
+    "de" : "%@ s vor der Aufnahme",
+    "fr" : "%@ s avant l’enregistrement",
+    "zh-Hans" : "比录制内容早 %@ 秒"
+  },
   "%@ speed" : {
     "comment" : "VoiceOver: a playback speed such as 2×",
     "de" : "Tempo %@",
@@ -319,6 +331,11 @@
     "fr" : "Ajouter un flou à la tête de lecture (B)",
     "zh-Hans" : "在播放头处添加模糊（B）"
   },
+  "Add camera video…" : {
+    "de" : "Kameravideo hinzufügen …",
+    "fr" : "Ajouter une vidéo de caméra…",
+    "zh-Hans" : "添加摄像头视频…"
+  },
   "Add highlight at the playhead (H)" : {
     "de" : "Markierung an der Abspielposition hinzufügen (H)",
     "fr" : "Ajouter un surlignage à la tête de lecture (H)",
@@ -503,6 +520,11 @@
     "fr" : "Bulle de caméra",
     "zh-Hans" : "摄像头气泡"
   },
+  "Camera earlier by %@ s" : {
+    "de" : "Kamera %@ s früher",
+    "fr" : "Caméra %@ s plus tôt",
+    "zh-Hans" : "摄像头提前 %@ 秒"
+  },
   "Camera follows your cursor" : {
     "de" : "Kamera folgt deinem Zeiger",
     "fr" : "La caméra suit votre pointeur",
@@ -512,6 +534,11 @@
     "de" : "Kameraaufnahme fehlt",
     "fr" : "Les images de la caméra sont introuvables",
     "zh-Hans" : "摄像头画面缺失"
+  },
+  "Camera later by %@ s" : {
+    "de" : "Kamera %@ s später",
+    "fr" : "Caméra %@ s plus tard",
+    "zh-Hans" : "摄像头延后 %@ 秒"
   },
   "Camera layout" : {
     "de" : "Kameralayout",
@@ -533,10 +560,51 @@
     "fr" : "Dispositions de caméra — faites glisser pour déplacer, un bord pour ajuster la durée, cliquez pour changer",
     "zh-Hans" : "摄像头布局 — 拖移可移动，拖移边缘可调整时间，点按可更改"
   },
+  "Camera video" : {
+    "de" : "Kameravideo",
+    "fr" : "Vidéo de caméra",
+    "zh-Hans" : "摄像头视频"
+  },
+  "Camera video missing" : {
+    "de" : "Kameravideo fehlt",
+    "fr" : "Vidéo de caméra introuvable",
+    "zh-Hans" : "摄像头视频不见了"
+  },
+  "Camera video removed — ⌘Z to undo" : {
+    "de" : "Kameravideo entfernt – ⌘Z zum Widerrufen",
+    "fr" : "Vidéo de caméra supprimée — ⌘Z pour annuler",
+    "zh-Hans" : "已移除摄像头视频 — 按 ⌘Z 撤销"
+  },
+  "Camera video — drag to line it up with the recording" : {
+    "de" : "Kameravideo – ziehen, um es an der Aufnahme auszurichten",
+    "fr" : "Vidéo de caméra — faites-la glisser pour l’aligner sur l’enregistrement",
+    "zh-Hans" : "摄像头视频 — 拖动以与录制内容对齐"
+  },
+  "Camera video “%@”, %@" : {
+    "comment" : "VoiceOver: the file name, then the offset",
+    "de" : "Kameravideo „%1$@“, %2$@",
+    "fr" : "Vidéo de caméra « %1$@ », %2$@",
+    "zh-Hans" : "摄像头视频“%1$@”，%2$@"
+  },
+  "Camera video: %@" : {
+    "de" : "Kameravideo: %@",
+    "fr" : "Vidéo de caméra : %@",
+    "zh-Hans" : "摄像头视频：%@"
+  },
   "Camera — drag to move it, click for options" : {
     "de" : "Kamera – ziehen zum Bewegen, klicken für Optionen",
     "fr" : "Caméra — faites-la glisser pour la déplacer, cliquez pour les options",
     "zh-Hans" : "摄像头 — 拖移可移动，点按可查看选项"
+  },
+  "Can't sync — the recording or the camera video has no sound" : {
+    "de" : "Synchronisieren nicht möglich – die Aufnahme oder das Kameravideo hat keinen Ton",
+    "fr" : "Synchronisation impossible : l’enregistrement ou la vidéo de caméra n’a pas de son",
+    "zh-Hans" : "无法同步 — 录制内容或摄像头视频没有声音"
+  },
+  "Can't sync — their sound doesn't match clearly enough. Set the offset by hand." : {
+    "de" : "Synchronisieren nicht möglich – der Ton passt nicht deutlich genug zusammen. Lege den Versatz von Hand fest.",
+    "fr" : "Synchronisation impossible : leurs sons ne correspondent pas assez nettement. Réglez le décalage à la main.",
+    "zh-Hans" : "无法同步 — 两者的声音匹配得不够清楚。请手动设置偏移。"
   },
   "Caption" : {
     "comment" : "One caption line",
@@ -579,6 +647,11 @@
     "de" : "Wähle ein ShotStyle-Projekt",
     "fr" : "Choisissez un projet ShotStyle",
     "zh-Hans" : "选择 ShotStyle 项目"
+  },
+  "Choose the camera video to show in the bubble" : {
+    "de" : "Wähle das Kameravideo für die Blase",
+    "fr" : "Choisissez la vidéo de caméra à afficher dans la bulle",
+    "zh-Hans" : "选择要在气泡中显示的摄像头视频"
   },
   "Cleaning up your voice…" : {
     "de" : "Deine Stimme wird bereinigt …",
@@ -1049,6 +1122,11 @@
     "fr" : "Remplir le cadre et suivre le pointeur",
     "zh-Hans" : "填满画面并跟随指针"
   },
+  "Filmed yourself on a phone or camera? Add that video and it shows in the bubble, lined up by sound." : {
+    "de" : "Mit dem iPhone oder einer Kamera gefilmt? Füge das Video hinzu – es erscheint in der Blase, am Ton ausgerichtet.",
+    "fr" : "Vous vous êtes filmé avec un téléphone ou une caméra ? Ajoutez cette vidéo : elle s’affiche dans la bulle, alignée par le son.",
+    "zh-Hans" : "用手机或相机拍了自己？添加该视频，它会显示在气泡中，并按声音对齐。"
+  },
   "Find in Transcript" : {
     "de" : "Im Transkript suchen",
     "fr" : "Rechercher dans la transcription",
@@ -1058,6 +1136,11 @@
     "de" : "Im Transkript suchen",
     "fr" : "Rechercher dans la transcription",
     "zh-Hans" : "在文字稿中查找"
+  },
+  "Find “%@”" : {
+    "de" : "„%@“ suchen",
+    "fr" : "Trouver « %@ »",
+    "zh-Hans" : "查找“%@”"
   },
   "Flip like a selfie" : {
     "de" : "Wie ein Selfie umdrehen",
@@ -1353,6 +1436,11 @@
     "fr" : "Niveau",
     "zh-Hans" : "级别"
   },
+  "Lines the camera up by the sound both recorded. Or drag the camera strip on the timeline." : {
+    "de" : "Richtet die Kamera am Ton aus, den beide aufgenommen haben. Oder ziehe den Kamerastreifen in der Timeline.",
+    "fr" : "Aligne la caméra grâce au son enregistré par les deux. Ou faites glisser la bande de la caméra dans la timeline.",
+    "zh-Hans" : "根据两者录下的声音对齐摄像头。也可以在时间线上拖动摄像头条。"
+  },
   "Lines · %lld" : {
     "comment" : "Section title with the number of caption lines",
     "de" : "Zeilen · %lld",
@@ -1369,6 +1457,11 @@
     "de" : "Hört auf diesem Mac zu – nichts wird hochgeladen",
     "fr" : "L’écoute se fait sur ce Mac — rien n’est envoyé",
     "zh-Hans" : "在这台 Mac 上识别 — 不会上传任何内容"
+  },
+  "Locate…" : {
+    "de" : "Suchen …",
+    "fr" : "Localiser…",
+    "zh-Hans" : "查找…"
   },
   "Look" : {
     "comment" : "Section: how captions look",
@@ -1590,6 +1683,12 @@
     "fr" : "Pas pour cette vidéo",
     "zh-Hans" : "此视频不需要"
   },
+  "Offset" : {
+    "comment" : "How far the camera video is shifted against the recording",
+    "de" : "Versatz",
+    "fr" : "Décalage",
+    "zh-Hans" : "偏移"
+  },
   "Open Another Video…" : {
     "de" : "Anderes Video öffnen …",
     "fr" : "Ouvrir une autre vidéo…",
@@ -1799,6 +1898,11 @@
     "fr" : "Rétablir l’ajout des dispositions de caméra",
     "zh-Hans" : "重做添加摄像头布局"
   },
+  "Redo Add Camera Video" : {
+    "de" : "Kameravideo hinzufügen wiederholen",
+    "fr" : "Rétablir l’ajout de la vidéo de caméra",
+    "zh-Hans" : "重做添加摄像头视频"
+  },
   "Redo Add Caption" : {
     "de" : "Hinzufügen des Untertitels wiederholen",
     "fr" : "Rétablir l’ajout du sous-titre",
@@ -1923,6 +2027,11 @@
     "de" : "Änderung der Kameralayouts wiederholen",
     "fr" : "Rétablir la modification des dispositions de caméra",
     "zh-Hans" : "重做摄像头布局更改"
+  },
+  "Redo Camera Offset" : {
+    "de" : "Kameraversatz wiederholen",
+    "fr" : "Rétablir le décalage de la caméra",
+    "zh-Hans" : "重做摄像头偏移"
   },
   "Redo Caption Style" : {
     "de" : "Änderung des Untertitelstils wiederholen",
@@ -2201,6 +2310,11 @@
     "fr" : "Rétablir la suppression de tous les zooms",
     "zh-Hans" : "重做移除所有缩放"
   },
+  "Redo Remove Camera Video" : {
+    "de" : "Kameravideo entfernen wiederholen",
+    "fr" : "Rétablir la suppression de la vidéo de caméra",
+    "zh-Hans" : "重做移除摄像头视频"
+  },
   "Redo Remove Captions" : {
     "de" : "Entfernen der Untertitel wiederholen",
     "fr" : "Rétablir la suppression des sous-titres",
@@ -2230,6 +2344,11 @@
     "de" : "Entfernen der Füllwörter wiederholen",
     "fr" : "Rétablir la suppression des mots de remplissage",
     "zh-Hans" : "重做移除语气词"
+  },
+  "Redo Replace Camera Video" : {
+    "de" : "Kameravideo ersetzen wiederholen",
+    "fr" : "Rétablir le remplacement de la vidéo de caméra",
+    "zh-Hans" : "重做替换摄像头视频"
   },
   "Redo Replace Music" : {
     "de" : "Ersetzen der Musik wiederholen",
@@ -2628,6 +2747,11 @@
     "fr" : "Rechercher des commandes",
     "zh-Hans" : "搜索命令"
   },
+  "Seconds the camera video starts after the recording (negative: before)" : {
+    "de" : "Sekunden, die das Kameravideo nach der Aufnahme beginnt (negativ: davor)",
+    "fr" : "Secondes entre le début de l’enregistrement et celui de la vidéo de caméra (négatif : avant)",
+    "zh-Hans" : "摄像头视频比录制内容晚开始的秒数（负数：更早）"
+  },
   "Select a clip on the timeline to mute it or fade it in and out." : {
     "de" : "Wähle einen Clip in der Zeitleiste aus, um ihn stummzuschalten oder ein- und auszublenden.",
     "fr" : "Sélectionnez un clip dans la timeline pour couper son son ou lui appliquer un fondu.",
@@ -2760,6 +2884,11 @@
     "de" : "Aufnahme im Finder zeigen",
     "fr" : "Afficher l’enregistrement dans le Finder",
     "zh-Hans" : "在“访达”中显示录制内容"
+  },
+  "Show a video from a phone or camera instead of the recorded camera, lined up by sound." : {
+    "de" : "Zeige statt der aufgenommenen Kamera ein Video von einem Telefon oder einer Kamera, am Ton ausgerichtet.",
+    "fr" : "Affichez une vidéo d’un téléphone ou d’une caméra à la place de la caméra enregistrée, alignée par le son.",
+    "zh-Hans" : "显示来自手机或相机的视频来代替录制的摄像头画面，并按声音对齐。"
   },
   "Show background" : {
     "de" : "Hintergrund zeigen",
@@ -2970,6 +3099,17 @@
     "fr" : "Passez la caméra en plein écran pour les points clés, ou placez-la côte à côte avec l’écran — à la tête de lecture. Chaque changement apparaît sur la piste Caméra.",
     "zh-Hans" : "在播放头处将摄像头切换为全屏以讲解要点，或与屏幕并排显示。每次切换都会显示在“摄像头”轨道上。"
   },
+  "Sync by Sound" : {
+    "de" : "Am Ton ausrichten",
+    "fr" : "Synchroniser par le son",
+    "zh-Hans" : "按声音同步"
+  },
+  "Synced by sound — the camera starts %@" : {
+    "comment" : "%@ is e.g. “0.70 s after the recording”",
+    "de" : "Am Ton ausgerichtet – die Kamera beginnt %@",
+    "fr" : "Synchronisé par le son — la caméra commence %@",
+    "zh-Hans" : "已按声音同步 — 摄像头开始于%@"
+  },
   "Tag color" : {
     "comment" : "The color of the box behind a text annotation",
     "de" : "Hintergrundfarbe",
@@ -2990,6 +3130,11 @@
     "de" : "Das ist keine ShotStyle-Voreinstellungsdatei",
     "fr" : "Ce n’est pas un fichier de préréglages ShotStyle",
     "zh-Hans" : "这不是 ShotStyle 预设文件"
+  },
+  "That video has no picture to show" : {
+    "de" : "Dieses Video hat kein Bild",
+    "fr" : "Cette vidéo n’a pas d’image à afficher",
+    "zh-Hans" : "该视频没有可显示的画面"
   },
   "The camera keeps your cursor in view and glides after it." : {
     "de" : "Die Kamera behält deinen Zeiger im Bild und gleitet ihm nach.",
@@ -3173,6 +3318,11 @@
     "fr" : "Annuler l’ajout des dispositions de caméra",
     "zh-Hans" : "撤销添加摄像头布局"
   },
+  "Undo Add Camera Video" : {
+    "de" : "Kameravideo hinzufügen widerrufen",
+    "fr" : "Annuler l’ajout de la vidéo de caméra",
+    "zh-Hans" : "撤销添加摄像头视频"
+  },
   "Undo Add Caption" : {
     "de" : "Hinzufügen des Untertitels widerrufen",
     "fr" : "Annuler l’ajout du sous-titre",
@@ -3297,6 +3447,11 @@
     "de" : "Änderung der Kameralayouts widerrufen",
     "fr" : "Annuler la modification des dispositions de caméra",
     "zh-Hans" : "撤销摄像头布局更改"
+  },
+  "Undo Camera Offset" : {
+    "de" : "Kameraversatz widerrufen",
+    "fr" : "Annuler le décalage de la caméra",
+    "zh-Hans" : "撤销摄像头偏移"
   },
   "Undo Caption Style" : {
     "de" : "Änderung des Untertitelstils widerrufen",
@@ -3575,6 +3730,11 @@
     "fr" : "Annuler la suppression de tous les zooms",
     "zh-Hans" : "撤销移除所有缩放"
   },
+  "Undo Remove Camera Video" : {
+    "de" : "Kameravideo entfernen widerrufen",
+    "fr" : "Annuler la suppression de la vidéo de caméra",
+    "zh-Hans" : "撤销移除摄像头视频"
+  },
   "Undo Remove Captions" : {
     "de" : "Entfernen der Untertitel widerrufen",
     "fr" : "Annuler la suppression des sous-titres",
@@ -3604,6 +3764,11 @@
     "de" : "Entfernen der Füllwörter widerrufen",
     "fr" : "Annuler la suppression des mots de remplissage",
     "zh-Hans" : "撤销移除语气词"
+  },
+  "Undo Replace Camera Video" : {
+    "de" : "Kameravideo ersetzen widerrufen",
+    "fr" : "Annuler le remplacement de la vidéo de caméra",
+    "zh-Hans" : "撤销替换摄像头视频"
   },
   "Undo Replace Music" : {
     "de" : "Ersetzen der Musik widerrufen",
@@ -3976,6 +4141,12 @@
     "fr" : "suit le pointeur",
     "zh-Hans" : "跟随指针"
   },
+  "in step with the recording" : {
+    "comment" : "Camera offset of zero",
+    "de" : "gleichzeitig mit der Aufnahme",
+    "fr" : "en même temps que l’enregistrement",
+    "zh-Hans" : "与录制内容同步"
+  },
   "loops" : {
     "de" : "wiederholt sich",
     "fr" : "en boucle",
@@ -3996,6 +4167,12 @@
     "de" : "abspielen",
     "fr" : "lire",
     "zh-Hans" : "播放"
+  },
+  "s" : {
+    "comment" : "Unit after the camera offset field: seconds",
+    "de" : "s",
+    "fr" : "s",
+    "zh-Hans" : "秒"
   },
   "select a part to cut" : {
     "de" : "Abschnitt zum Schneiden wählen",
@@ -4057,6 +4234,11 @@
     "de" : "„%1$@“ ist nicht mehr unter %2$@. Lege die Datei zurück oder sichere das Projekt beim nächsten Mal mit „Medien einschließen“, damit es eine eigene Kopie enthält.",
     "fr" : "« %1$@ » n’est plus dans %2$@. Remettez-le en place, ou enregistrez le projet avec Inclure les médias la prochaine fois pour qu’il emporte sa propre copie.",
     "zh-Hans" : "“%1$@”已不在 %2$@ 中。请将它放回原处，或下次存储项目时选择“包含媒体”，让项目带上自己的副本。"
+  },
+  "“%@” isn't in %@ anymore. Locate it to get the camera back." : {
+    "de" : "„%1$@“ ist nicht mehr in %2$@. Suche die Datei, um die Kamera zurückzubekommen.",
+    "fr" : "« %1$@ » n’est plus dans %2$@. Localisez-le pour récupérer la caméra.",
+    "zh-Hans" : "“%1$@”已不在 %2$@ 中。找到它即可恢复摄像头画面。"
   },
   "⇧-drag" : {
     "comment" : "Drag with Shift held (keep the symbol)",

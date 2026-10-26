@@ -20,6 +20,12 @@
   "%@ of recording plays in %@." : {
     "uk" : "%@ запису відтворюється за %@."
   },
+  "%@ s after the recording" : {
+    "uk" : "через %@ с після запису"
+  },
+  "%@ s before the recording" : {
+    "uk" : "за %@ с до запису"
+  },
   "%@ speed" : {
     "uk" : "швидкість %@"
   },
@@ -174,6 +180,9 @@
   "Add blur at the playhead (B)" : {
     "uk" : "Додати розмиття на покажчику відтворення (B)"
   },
+  "Add camera video…" : {
+    "uk" : "Додати відео з камери…"
+  },
   "Add highlight at the playhead (H)" : {
     "uk" : "Додати виділення на покажчику відтворення (H)"
   },
@@ -279,11 +288,17 @@
   "Camera bubble" : {
     "uk" : "Бульбашка камери"
   },
+  "Camera earlier by %@ s" : {
+    "uk" : "Камера на %@ с раніше"
+  },
   "Camera follows your cursor" : {
     "uk" : "Камера стежить за курсором"
   },
   "Camera footage is missing" : {
     "uk" : "Відео з камери відсутнє"
+  },
+  "Camera later by %@ s" : {
+    "uk" : "Камера на %@ с пізніше"
   },
   "Camera layout" : {
     "uk" : "Макет камери"
@@ -297,8 +312,32 @@
   "Camera layouts — drag to move, drag an edge to retime, click to change" : {
     "uk" : "Макети камери — перетягуйте, щоб перемістити, тягніть край, щоб змінити тривалість, клацніть, щоб вибрати інший"
   },
+  "Camera video" : {
+    "uk" : "Відео з камери"
+  },
+  "Camera video missing" : {
+    "uk" : "Відео з камери не знайдено"
+  },
+  "Camera video removed — ⌘Z to undo" : {
+    "uk" : "Відео з камери вилучено — ⌘Z, щоб скасувати"
+  },
+  "Camera video — drag to line it up with the recording" : {
+    "uk" : "Відео з камери — перетягніть, щоб узгодити із записом"
+  },
+  "Camera video “%@”, %@" : {
+    "uk" : "Відео з камери «%1$@», %2$@"
+  },
+  "Camera video: %@" : {
+    "uk" : "Відео з камери: %@"
+  },
   "Camera — drag to move it, click for options" : {
     "uk" : "Камера — перетягніть, щоб перемістити, клацніть, щоб побачити параметри"
+  },
+  "Can't sync — the recording or the camera video has no sound" : {
+    "uk" : "Не вдалося синхронізувати — запис або відео з камери не має звуку"
+  },
+  "Can't sync — their sound doesn't match clearly enough. Set the offset by hand." : {
+    "uk" : "Не вдалося синхронізувати — звук збігається недостатньо чітко. Задайте зсув вручну."
   },
   "Caption" : {
     "uk" : "Субтитр"
@@ -323,6 +362,9 @@
   },
   "Choose a ShotStyle project" : {
     "uk" : "Виберіть проєкт ShotStyle"
+  },
+  "Choose the camera video to show in the bubble" : {
+    "uk" : "Виберіть відео з камери для бульбашки"
   },
   "Cleaning up your voice…" : {
     "uk" : "Очищення голосу…"
@@ -599,11 +641,17 @@
   "Fill the Frame, Follow the Cursor" : {
     "uk" : "Заповнити кадр і стежити за курсором"
   },
+  "Filmed yourself on a phone or camera? Add that video and it shows in the bubble, lined up by sound." : {
+    "uk" : "Знімали себе на телефон чи камеру? Додайте це відео — воно з’явиться в бульбашці, узгоджене за звуком."
+  },
   "Find in Transcript" : {
     "uk" : "Знайти в розшифровці"
   },
   "Find in the transcript" : {
     "uk" : "Знайти в розшифровці"
+  },
+  "Find “%@”" : {
+    "uk" : "Знайти «%@»"
   },
   "Flip like a selfie" : {
     "uk" : "Віддзеркалити, як селфі"
@@ -775,6 +823,9 @@
   "Level" : {
     "uk" : "Рівень"
   },
+  "Lines the camera up by the sound both recorded. Or drag the camera strip on the timeline." : {
+    "uk" : "Узгоджує камеру за звуком, записаним обома. Або перетягніть смугу камери на таймлайні."
+  },
   "Lines · %lld" : {
     "uk" : "Рядки · %lld"
   },
@@ -783,6 +834,9 @@
   },
   "Listens on this Mac — nothing is uploaded" : {
     "uk" : "Слухає на цьому Mac — нічого не вивантажується"
+  },
+  "Locate…" : {
+    "uk" : "Знайти…"
   },
   "Look" : {
     "uk" : "Вигляд"
@@ -913,6 +967,9 @@
   "Not for this video" : {
     "uk" : "Не для цього відео"
   },
+  "Offset" : {
+    "uk" : "Зсув"
+  },
   "Open Another Video…" : {
     "uk" : "Відкрити інше відео…"
   },
@@ -1035,6 +1092,9 @@
   "Redo Add Camera Layouts" : {
     "uk" : "Повторити додавання макетів камери"
   },
+  "Redo Add Camera Video" : {
+    "uk" : "Повторити додавання відео з камери"
+  },
   "Redo Add Caption" : {
     "uk" : "Повторити додавання субтитру"
   },
@@ -1109,6 +1169,9 @@
   },
   "Redo Camera Layouts" : {
     "uk" : "Повторити зміну макетів камери"
+  },
+  "Redo Camera Offset" : {
+    "uk" : "Повторити зсув камери"
   },
   "Redo Caption Style" : {
     "uk" : "Повторити зміну стилю субтитрів"
@@ -1273,6 +1336,9 @@
   "Redo Remove All Zooms" : {
     "uk" : "Повторити вилучення всіх наближень"
   },
+  "Redo Remove Camera Video" : {
+    "uk" : "Повторити вилучення відео з камери"
+  },
   "Redo Remove Captions" : {
     "uk" : "Повторити вилучення субтитрів"
   },
@@ -1290,6 +1356,9 @@
   },
   "Redo Remove Ums" : {
     "uk" : "Повторити вилучення слів-паразитів"
+  },
+  "Redo Replace Camera Video" : {
+    "uk" : "Повторити заміну відео з камери"
   },
   "Redo Replace Music" : {
     "uk" : "Повторити заміну музики"
@@ -1522,6 +1591,9 @@
   "Search commands" : {
     "uk" : "Шукати команди"
   },
+  "Seconds the camera video starts after the recording (negative: before)" : {
+    "uk" : "Через скільки секунд після запису починається відео з камери (від’ємне — раніше)"
+  },
   "Select a clip on the timeline to mute it or fade it in and out." : {
     "uk" : "Виберіть кліп на шкалі часу, щоб вимкнути його звук або додати плавну появу й зникнення."
   },
@@ -1598,6 +1670,9 @@
   },
   "Show Recording in Finder" : {
     "uk" : "Показати запис у Finder"
+  },
+  "Show a video from a phone or camera instead of the recorded camera, lined up by sound." : {
+    "uk" : "Показувати відео з телефона чи камери замість записаної камери, узгоджене за звуком."
   },
   "Show background" : {
     "uk" : "Показувати тло"
@@ -1722,6 +1797,12 @@
   "Switch the camera to full screen for talking points, or put it side by side with the screen — at the playhead. Each shows on the Camera lane." : {
     "uk" : "Перемикайте камеру на весь кадр для ключових думок або ставте її поруч з екраном — на покажчику відтворення. Кожна зміна з’являється на доріжці «Камера»."
   },
+  "Sync by Sound" : {
+    "uk" : "Синхронізувати за звуком"
+  },
+  "Synced by sound — the camera starts %@" : {
+    "uk" : "Синхронізовано за звуком — камера починається %@"
+  },
   "Tag color" : {
     "uk" : "Колір плашки"
   },
@@ -1733,6 +1814,9 @@
   },
   "That isn't a ShotStyle presets file" : {
     "uk" : "Це не файл стилів ShotStyle"
+  },
+  "That video has no picture to show" : {
+    "uk" : "У цьому відео немає зображення"
   },
   "The camera keeps your cursor in view and glides after it." : {
     "uk" : "Камера тримає курсор у кадрі й плавно стежить за ним."
@@ -1842,6 +1926,9 @@
   "Undo Add Camera Layouts" : {
     "uk" : "Відмінити додавання макетів камери"
   },
+  "Undo Add Camera Video" : {
+    "uk" : "Скасувати додавання відео з камери"
+  },
   "Undo Add Caption" : {
     "uk" : "Відмінити додавання субтитру"
   },
@@ -1916,6 +2003,9 @@
   },
   "Undo Camera Layouts" : {
     "uk" : "Відмінити зміну макетів камери"
+  },
+  "Undo Camera Offset" : {
+    "uk" : "Скасувати зсув камери"
   },
   "Undo Caption Style" : {
     "uk" : "Відмінити зміну стилю субтитрів"
@@ -2080,6 +2170,9 @@
   "Undo Remove All Zooms" : {
     "uk" : "Відмінити вилучення всіх наближень"
   },
+  "Undo Remove Camera Video" : {
+    "uk" : "Скасувати вилучення відео з камери"
+  },
   "Undo Remove Captions" : {
     "uk" : "Відмінити вилучення субтитрів"
   },
@@ -2097,6 +2190,9 @@
   },
   "Undo Remove Ums" : {
     "uk" : "Відмінити вилучення слів-паразитів"
+  },
+  "Undo Replace Camera Video" : {
+    "uk" : "Скасувати заміну відео з камери"
   },
   "Undo Replace Music" : {
     "uk" : "Відмінити заміну музики"
@@ -2317,6 +2413,9 @@
   "follows the cursor" : {
     "uk" : "стежить за курсором"
   },
+  "in step with the recording" : {
+    "uk" : "одночасно із записом"
+  },
   "loops" : {
     "uk" : "повторюється"
   },
@@ -2328,6 +2427,9 @@
   },
   "play" : {
     "uk" : "відтворити"
+  },
+  "s" : {
+    "uk" : "с"
   },
   "select a part to cut" : {
     "uk" : "вибрати частину для вирізання"
@@ -2364,6 +2466,9 @@
   },
   "“%@” isn't at %@ anymore. Put it back, or save the project with Include Media next time so it carries its own copy." : {
     "uk" : "«%1$@» більше немає в %2$@. Поверніть файл на місце або наступного разу збережіть проєкт із параметром «Включити медіафайли», щоб у ньому була власна копія."
+  },
+  "“%@” isn't in %@ anymore. Locate it to get the camera back." : {
+    "uk" : "«%1$@» більше немає в %2$@. Знайдіть файл, щоб повернути камеру."
   },
   "⇧-drag" : {
     "uk" : "⇧-тягнути"

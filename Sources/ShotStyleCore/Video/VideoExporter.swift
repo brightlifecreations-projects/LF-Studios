@@ -66,8 +66,9 @@ enum VideoDemoExporter {
         let segments = project.timelineSegments(totalDuration: total)
         guard !segments.isEmpty else { throw VideoDemoExportError.invalidTrim }
 
+        project.relocateImportedCamera()
         var camera: VideoCameraSource?
-        if let webcam = recording?.webcam, project.webcam.visible {
+        if let webcam = project.activeCamera(recorded: recording?.webcam), project.webcam.visible {
             camera = await VideoCameraSource.load(webcam)
         }
         let kinds = VideoAudioKind.resolve(recorded: recording?.audioTracks, channelCounts: source.audioChannelCounts)
