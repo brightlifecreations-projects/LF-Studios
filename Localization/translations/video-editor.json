@@ -1,4 +1,10 @@
 {
+  " — %@ free there" : {
+    "comment" : "Appended to “12 files, about 3 GB”",
+    "de" : " – %@ frei",
+    "fr" : " — %@ libres à cet endroit",
+    "zh-Hans" : " — 那里有 %@ 可用空间"
+  },
   "%@ (This Mac)" : {
     "comment" : "Caption language menu: the Mac's own language",
     "de" : "%@ (dieser Mac)",
@@ -64,6 +70,18 @@
     "de" : "%@ – %@",
     "fr" : "%@ — %@",
     "zh-Hans" : "%@ — %@"
+  },
+  "%@ — about %lld min left" : {
+    "comment" : "%@ is a percentage",
+    "de" : "%1$@ – noch etwa %2$lld Min.",
+    "fr" : "%1$@ — environ %2$lld min restantes",
+    "zh-Hans" : "%1$@ — 大约还剩 %2$lld 分钟"
+  },
+  "%@ — about a minute left" : {
+    "comment" : "%@ is a percentage",
+    "de" : "%@ – noch etwa eine Minute",
+    "fr" : "%@ — environ une minute restante",
+    "zh-Hans" : "%@ — 大约还剩一分钟"
   },
   "%lld annotations" : {
     "de" : {
@@ -166,6 +184,11 @@
       "other" : "%lld coupes, %@ en moins"
     },
     "zh-Hans" : "%lld 处剪除，共移除 %@"
+  },
+  "%lld files, about %@" : {
+    "de" : "%1$lld Dateien, etwa %2$@",
+    "fr" : "%1$lld fichiers, environ %2$@",
+    "zh-Hans" : "%1$lld 个文件，约 %2$@"
   },
   "%lld parts" : {
     "de" : {
@@ -393,6 +416,11 @@
     "fr" : "Toutes les commandes (⌘K)",
     "zh-Hans" : "所有命令（⌘K）"
   },
+  "All files" : {
+    "de" : "Alle Dateien",
+    "fr" : "Tous les fichiers",
+    "zh-Hans" : "所有文件"
+  },
   "Always show the arrow" : {
     "de" : "Immer den Pfeil zeigen",
     "fr" : "Toujours afficher la flèche",
@@ -493,6 +521,11 @@
     "fr" : "Derrière vous",
     "zh-Hans" : "身后"
   },
+  "Best (ProRes 422 HQ)" : {
+    "de" : "Beste (ProRes 422 HQ)",
+    "fr" : "Meilleure (ProRes 422 HQ)",
+    "zh-Hans" : "最佳（ProRes 422 HQ）"
+  },
   "Blur" : {
     "comment" : "An annotation that blurs what is under it (its kind, and its settings section)",
     "de" : "Weichzeichnen",
@@ -580,6 +613,16 @@
     "fr" : "Vidéo de caméra — faites-la glisser pour l’aligner sur l’enregistrement",
     "zh-Hans" : "摄像头视频 — 拖动以与录制内容对齐"
   },
+  "Camera video “%@” — none of it is in the edit" : {
+    "de" : "Kameravideo „%@“ – nichts davon ist im Schnitt",
+    "fr" : "Vidéo de caméra « %@ » — aucune partie n’est dans le montage",
+    "zh-Hans" : "摄像头视频“%@” — 剪辑中没有用到它的任何部分"
+  },
+  "Camera video “%@” — the file is missing" : {
+    "de" : "Kameravideo „%@“ – die Datei fehlt",
+    "fr" : "Vidéo de caméra « %@ » — le fichier est introuvable",
+    "zh-Hans" : "摄像头视频“%@” — 文件不见了"
+  },
   "Camera video “%@”, %@" : {
     "comment" : "VoiceOver: the file name, then the offset",
     "de" : "Kameravideo „%1$@“, %2$@",
@@ -605,6 +648,11 @@
     "de" : "Synchronisieren nicht möglich – der Ton passt nicht deutlich genug zusammen. Lege den Versatz von Hand fest.",
     "fr" : "Synchronisation impossible : leurs sons ne correspondent pas assez nettement. Réglez le décalage à la main.",
     "zh-Hans" : "无法同步 — 两者的声音匹配得不够清楚。请手动设置偏移。"
+  },
+  "Cancelled — the partly made folder was removed" : {
+    "de" : "Abgebrochen – der halb fertige Ordner wurde entfernt",
+    "fr" : "Annulé — le dossier en partie créé a été supprimé",
+    "zh-Hans" : "已取消 — 已删除做了一半的文件夹"
   },
   "Caption" : {
     "comment" : "One caption line",
@@ -643,6 +691,11 @@
     "fr" : "Choisir une image…",
     "zh-Hans" : "选择图像…"
   },
+  "Choose Location…" : {
+    "de" : "Ort wählen …",
+    "fr" : "Choisir l’emplacement…",
+    "zh-Hans" : "选择位置…"
+  },
   "Choose an LF Studios project" : {
     "de" : "Wähle ein LF-Studios-Projekt",
     "fr" : "Choisissez un projet LF Studios",
@@ -652,6 +705,11 @@
     "de" : "Wähle das Kameravideo für die Blase",
     "fr" : "Choisissez la vidéo de caméra à afficher dans la bulle",
     "zh-Hans" : "选择要在气泡中显示的摄像头视频"
+  },
+  "Choose where to put the handoff folder — any folder or drive" : {
+    "de" : "Wähle, wohin der Übergabeordner soll – jeder Ordner oder jedes Laufwerk",
+    "fr" : "Choisissez où placer le dossier de transmission — n’importe quel dossier ou disque",
+    "zh-Hans" : "选择交付文件夹的存放位置 — 任意文件夹或磁盘均可"
   },
   "Cleaning up your voice…" : {
     "de" : "Deine Stimme wird bereinigt …",
@@ -705,6 +763,11 @@
     "fr" : "Le clip commence/finit ici",
     "zh-Hans" : "片段从此处开始/结束"
   },
+  "Clips" : {
+    "de" : "Clips",
+    "fr" : "Clips",
+    "zh-Hans" : "片段"
+  },
   "Close" : {
     "de" : "Schließen",
     "fr" : "Fermer",
@@ -745,6 +808,16 @@
     "fr" : "Copier l’image actuelle",
     "zh-Hans" : "拷贝当前帧"
   },
+  "Couldn't create the handoff folder — %@" : {
+    "de" : "Der Übergabeordner konnte nicht erstellt werden – %@",
+    "fr" : "Impossible de créer le dossier de transmission — %@",
+    "zh-Hans" : "无法创建交付文件夹 — %@"
+  },
+  "Couldn't finish the file" : {
+    "de" : "Die Datei konnte nicht abgeschlossen werden",
+    "fr" : "Impossible de terminer le fichier",
+    "zh-Hans" : "无法完成该文件"
+  },
   "Couldn't open this video" : {
     "de" : "Dieses Video konnte nicht geöffnet werden",
     "fr" : "Impossible d’ouvrir cette vidéo",
@@ -755,6 +828,26 @@
     "fr" : "Impossible d’ouvrir « %@ »",
     "zh-Hans" : "无法打开“%@”"
   },
+  "Couldn't prepare the sound" : {
+    "de" : "Der Ton konnte nicht vorbereitet werden",
+    "fr" : "Impossible de préparer le son",
+    "zh-Hans" : "无法准备声音"
+  },
+  "Couldn't prepare the video" : {
+    "de" : "Das Video konnte nicht vorbereitet werden",
+    "fr" : "Impossible de préparer la vidéo",
+    "zh-Hans" : "无法准备视频"
+  },
+  "Couldn't read the sound" : {
+    "de" : "Der Ton konnte nicht gelesen werden",
+    "fr" : "Impossible de lire le son",
+    "zh-Hans" : "无法读取声音"
+  },
+  "Couldn't read the video" : {
+    "de" : "Das Video konnte nicht gelesen werden",
+    "fr" : "Impossible de lire la vidéo",
+    "zh-Hans" : "无法读取视频"
+  },
   "Couldn't save the presets file" : {
     "de" : "Die Voreinstellungsdatei konnte nicht gesichert werden",
     "fr" : "Impossible d’enregistrer le fichier de préréglages",
@@ -764,6 +857,32 @@
     "de" : "Das Projekt konnte nicht gesichert werden – prüfe, ob auf dem Datenträger genug Platz ist",
     "fr" : "Impossible d’enregistrer le projet : vérifiez qu’il reste de la place sur le disque",
     "zh-Hans" : "无法存储项目 — 请检查磁盘空间是否足够"
+  },
+  "Couldn't start writing" : {
+    "de" : "Das Schreiben konnte nicht starten",
+    "fr" : "Impossible de commencer l’écriture",
+    "zh-Hans" : "无法开始写入"
+  },
+  "Couldn't write a frame" : {
+    "de" : "Ein Bild konnte nicht geschrieben werden",
+    "fr" : "Impossible d’écrire une image",
+    "zh-Hans" : "无法写入一帧"
+  },
+  "Create Handoff" : {
+    "de" : "Übergabe erstellen",
+    "fr" : "Créer la transmission",
+    "zh-Hans" : "创建交付"
+  },
+  "Creative Handoff" : {
+    "comment" : "Feature name: every part of a video project as separate files for another editor",
+    "de" : "Kreative Übergabe",
+    "fr" : "Transmission créative",
+    "zh-Hans" : "创意交付"
+  },
+  "Creative Handoff…" : {
+    "de" : "Kreative Übergabe …",
+    "fr" : "Transmission créative…",
+    "zh-Hans" : "创意交付…"
   },
   "Crop" : {
     "comment" : "Toolbar button: crop the recording",
@@ -1036,6 +1155,21 @@
     "fr" : "Égaliser le volume sonore",
     "zh-Hans" : "统一响度"
   },
+  "Every file starts at the same moment and is as long as the others: drop them all at 0:00 and they play in sync, the camera too." : {
+    "de" : "Jede Datei beginnt im selben Moment und ist so lang wie die anderen: Lege alle bei 0:00 ab, und sie laufen synchron – die Kamera auch.",
+    "fr" : "Chaque fichier commence au même instant et dure autant que les autres : placez-les tous à 0:00 et ils sont synchronisés, la caméra aussi.",
+    "zh-Hans" : "每个文件都从同一时刻开始、时长相同：全部放在 0:00，它们就会同步播放，摄像头也一样。"
+  },
+  "Every part of this video as its own file — screen, camera, sound, captions, the finished video, and a timeline for editing apps (⇧⌘E)" : {
+    "de" : "Jeder Teil dieses Videos als eigene Datei – Bildschirm, Kamera, Ton, Untertitel, das fertige Video und eine Timeline für Schnittprogramme (⇧⌘E)",
+    "fr" : "Chaque partie de cette vidéo dans son propre fichier — écran, caméra, son, sous-titres, la vidéo finale et une timeline pour les logiciels de montage (⇧⌘E)",
+    "zh-Hans" : "把这个视频的每个部分都存为单独的文件 — 屏幕、摄像头、声音、字幕、成品视频，以及剪辑软件用的时间线（⇧⌘E）"
+  },
+  "Every part of this video as its own file, in a new folder — for another editor or editing app." : {
+    "de" : "Jeder Teil dieses Videos als eigene Datei in einem neuen Ordner – für eine andere Person im Schnitt oder ein Schnittprogramm.",
+    "fr" : "Chaque partie de cette vidéo dans son propre fichier, dans un nouveau dossier — pour un autre monteur ou logiciel de montage.",
+    "zh-Hans" : "把这个视频的每个部分都作为单独的文件放进一个新文件夹 — 交给其他剪辑师或剪辑软件。"
+  },
   "Exactly as recorded." : {
     "de" : "Genau wie aufgezeichnet.",
     "fr" : "Exactement comme enregistré.",
@@ -1077,6 +1211,11 @@
     },
     "zh-Hans" : "已导出 %lld 个预设"
   },
+  "Exported with your export settings" : {
+    "de" : "Mit deinen Exporteinstellungen exportiert",
+    "fr" : "Exportée avec vos réglages d’exportation",
+    "zh-Hans" : "按你的导出设置导出"
+  },
   "Exports at the level video sites expect (−16 LUFS) without clipping" : {
     "de" : "Exportiert mit dem Pegel, den Videoportale erwarten (−16 LUFS), ohne Übersteuerung",
     "fr" : "Exporte au niveau attendu par les sites vidéo (−16 LUFS), sans saturation",
@@ -1116,6 +1255,16 @@
     "de" : "Momente, in denen nichts passiert, im Zeitraffer zeigen",
     "fr" : "Accélérer les moments où rien ne se passe",
     "zh-Hans" : "快进没有动静的时刻"
+  },
+  "File %lld of %lld: %@" : {
+    "de" : "Datei %1$lld von %2$lld: %3$@",
+    "fr" : "Fichier %1$lld sur %2$lld : %3$@",
+    "zh-Hans" : "第 %1$lld 个文件，共 %2$lld 个：%3$@"
+  },
+  "Files are copied as they are wherever they can be. Only what has to change — clips cut to your edit, a camera with its background removed — is re-encoded to ProRes." : {
+    "de" : "Dateien werden, wo immer es geht, unverändert kopiert. Nur was sich ändern muss – auf deinen Schnitt gekürzte Clips, eine Kamera ohne Hintergrund – wird in ProRes neu codiert.",
+    "fr" : "Les fichiers sont copiés tels quels partout où c’est possible. Seul ce qui doit changer — les clips coupés selon votre montage, une caméra sans arrière-plan — est réencodé en ProRes.",
+    "zh-Hans" : "能原样复制的文件都会原样复制。只有必须改变的内容 — 按你的剪辑裁剪的片段、去除了背景的摄像头画面 — 才会重新编码为 ProRes。"
   },
   "Fill the Frame, Follow the Cursor" : {
     "de" : "Bild füllen und dem Zeiger folgen",
@@ -1162,6 +1311,11 @@
     "fr" : "Suit le pointeur",
     "zh-Hans" : "跟随指针"
   },
+  "For Final Cut Pro, DaVinci Resolve, and Adobe Premiere Pro" : {
+    "de" : "Für Final Cut Pro, DaVinci Resolve und Adobe Premiere Pro",
+    "fr" : "Pour Final Cut Pro, DaVinci Resolve et Adobe Premiere Pro",
+    "zh-Hans" : "用于 Final Cut Pro、DaVinci Resolve 和 Adobe Premiere Pro"
+  },
   "Frame" : {
     "comment" : "Section: padding, roundness, and shadow around the video",
     "de" : "Rahmen",
@@ -1204,6 +1358,11 @@
     "fr" : "Plein cadre (sans arrière-plan)",
     "zh-Hans" : "全画面（无背景）"
   },
+  "Full original files" : {
+    "de" : "Vollständige Originale",
+    "fr" : "Fichiers originaux complets",
+    "zh-Hans" : "完整原始文件"
+  },
   "Full-Camera Intro and Outro" : {
     "de" : "Intro und Outro mit Kamera im Vollbild",
     "fr" : "Intro et fin avec caméra en plein écran",
@@ -1238,6 +1397,27 @@
     "de" : "Farbverlauf",
     "fr" : "Dégradé",
     "zh-Hans" : "渐变"
+  },
+  "Handoff didn't finish" : {
+    "de" : "Übergabe nicht fertig geworden",
+    "fr" : "La transmission n’a pas abouti",
+    "zh-Hans" : "交付未完成"
+  },
+  "Handoff ready — show it" : {
+    "de" : "Übergabe fertig – anzeigen",
+    "fr" : "Transmission prête — l’afficher",
+    "zh-Hans" : "交付已就绪 — 查看"
+  },
+  "Handoff — %@" : {
+    "comment" : "%@ is the progress, e.g. “40%”",
+    "de" : "Übergabe – %@",
+    "fr" : "Transmission — %@",
+    "zh-Hans" : "交付 — %@"
+  },
+  "Handoff — getting ready" : {
+    "de" : "Übergabe – wird vorbereitet",
+    "fr" : "Transmission — préparation",
+    "zh-Hans" : "交付 — 正在准备"
   },
   "Hide" : {
     "de" : "Ausblenden",
@@ -1312,6 +1492,11 @@
     "fr" : "Préréglage importé",
     "zh-Hans" : "导入的预设"
   },
+  "Include a timeline for editing apps" : {
+    "de" : "Timeline für Schnittprogramme beilegen",
+    "fr" : "Inclure une timeline pour les logiciels de montage",
+    "zh-Hans" : "附带剪辑软件用的时间线"
+  },
   "Include aspect ratio (%@)" : {
     "comment" : "Save as Preset checkbox; %@ is the ratio, e.g. 16:9",
     "de" : "Seitenverhältnis einbeziehen (%@)",
@@ -1323,6 +1508,11 @@
     "de" : "Medien einschließen (funktioniert auf jedem Mac)",
     "fr" : "Inclure les médias (fonctionne sur tout Mac)",
     "zh-Hans" : "包含媒体（在任何 Mac 上都可用）"
+  },
+  "Include the finished video" : {
+    "de" : "Fertiges Video beilegen",
+    "fr" : "Inclure la vidéo finale",
+    "zh-Hans" : "附带成品视频"
   },
   "Inspector tabs" : {
     "de" : "Inspektor-Tabs",
@@ -1365,6 +1555,11 @@
     "de" : "Er wurde direkt ins Bild aufgezeichnet und lässt sich daher nicht vergrößern oder glätten. Neue Aufnahmen zeichnen standardmäßig einen bearbeitbaren Zeiger auf („Einstellungen“ → „Aufzeichnung“).",
     "fr" : "Il a été enregistré dans l’image : impossible de le redimensionner ou de le lisser. Les nouveaux enregistrements capturent par défaut un pointeur modifiable (Réglages → Enregistrement).",
     "zh-Hans" : "指针已录入画面像素中，因此无法调整大小或平滑处理。新录制内容默认会捕捉可编辑的指针（“设置”→“录制”）。"
+  },
+  "It won't fit there. Choose another location, or pick Smaller files." : {
+    "de" : "Dort ist nicht genug Platz. Wähle einen anderen Ort oder „Kleinere Dateien“.",
+    "fr" : "Il n’y a pas assez de place. Choisissez un autre emplacement ou « Fichiers plus légers ».",
+    "zh-Hans" : "那里放不下。请选择其他位置，或选择“较小的文件”。"
   },
   "Jump here" : {
     "de" : "Hierher springen",
@@ -1447,6 +1642,11 @@
     "fr" : "Dispositions",
     "zh-Hans" : "布局"
   },
+  "Left out:" : {
+    "de" : "Weggelassen:",
+    "fr" : "Non inclus :",
+    "zh-Hans" : "未包含："
+  },
   "Letterbox Instead of Following the Cursor" : {
     "de" : "Mit Rändern einpassen statt dem Zeiger folgen",
     "fr" : "Ajouter des bandes au lieu de suivre le pointeur",
@@ -1456,6 +1656,11 @@
     "de" : "Stufe",
     "fr" : "Niveau",
     "zh-Hans" : "级别"
+  },
+  "Line everything up" : {
+    "de" : "Alles ausrichten",
+    "fr" : "Tout aligner",
+    "zh-Hans" : "全部对齐"
   },
   "Lines the camera up by the sound both recorded. Or drag the camera strip on the timeline." : {
     "de" : "Richtet die Kamera am Ton aus, den beide aufgenommen haben. Oder ziehe den Kamerastreifen in der Timeline.",
@@ -1556,6 +1761,11 @@
     "de" : "Musik „%@“",
     "fr" : "Musique « %@ »",
     "zh-Hans" : "音乐“%@”"
+  },
+  "Music “%@” — the file is missing" : {
+    "de" : "Musik „%@“ – die Datei fehlt",
+    "fr" : "Musique « %@ » — le fichier est introuvable",
+    "zh-Hans" : "音乐“%@” — 文件不见了"
   },
   "Mute Clip" : {
     "de" : "Clip stummschalten",
@@ -1674,6 +1884,11 @@
     "fr" : "Aucune donnée de pointeur dans cette vidéo",
     "zh-Hans" : "此视频中没有指针数据"
   },
+  "No location chosen" : {
+    "de" : "Kein Ort gewählt",
+    "fr" : "Aucun emplacement choisi",
+    "zh-Hans" : "尚未选择位置"
+  },
   "No music" : {
     "de" : "Keine Musik",
     "fr" : "Aucune musique",
@@ -1698,6 +1913,11 @@
     "de" : "Keine in dieser Aufnahme. Aktiviere „Tastaturkurzbefehle anzeigen“ in „Einstellungen“ → „Aufzeichnung“, dann erscheint jeder ⌘-Kurzbefehl, den du drückst, als Tastenkappe. Normales Tippen wird nie aufgezeichnet.",
     "fr" : "Aucun dans cet enregistrement. Activez « Afficher les raccourcis clavier » dans Réglages → Enregistrement : chaque raccourci ⌘ que vous utilisez apparaît sous forme de touches. La saisie ordinaire n’est jamais enregistrée.",
     "zh-Hans" : "此录制内容中没有。在“设置”→“录制”中打开“显示快捷键”后，你按下的每个 ⌘ 快捷键都会以按键形式显示。普通打字永远不会被录制。"
+  },
+  "Not enough space: the handoff needs about %@ and %@ is free there." : {
+    "de" : "Nicht genug Platz: Die Übergabe braucht etwa %1$@, frei sind dort %2$@.",
+    "fr" : "Pas assez de place : la transmission demande environ %1$@ et il reste %2$@ à cet endroit.",
+    "zh-Hans" : "空间不足：交付大约需要 %1$@，那里只有 %2$@ 可用。"
   },
   "Not for this video" : {
     "de" : "Nicht für dieses Video",
@@ -1796,6 +2016,11 @@
     "de" : "Pausieren (Leertaste)",
     "fr" : "Pause (Espace)",
     "zh-Hans" : "暂停（空格键）"
+  },
+  "Picture “%@” — the file is missing" : {
+    "de" : "Bild „%@“ – die Datei fehlt",
+    "fr" : "Image « %@ » — le fichier est introuvable",
+    "zh-Hans" : "图片“%@” — 文件不见了"
   },
   "Placement" : {
     "de" : "Platzierung",
@@ -2763,6 +2988,11 @@
     "fr" : "Enregistrement du projet…",
     "zh-Hans" : "正在存储项目…"
   },
+  "Screen recording “%@” — the file is missing" : {
+    "de" : "Bildschirmaufnahme „%@“ – die Datei fehlt",
+    "fr" : "Enregistrement d’écran « %@ » — le fichier est introuvable",
+    "zh-Hans" : "屏幕录制“%@” — 文件不见了"
+  },
   "Search commands" : {
     "de" : "Befehle suchen",
     "fr" : "Rechercher des commandes",
@@ -2981,6 +3211,11 @@
     "fr" : "Ignore le déplacement rapide vers le bouton Arrêter à la fin",
     "zh-Hans" : "略过结尾时快速移向“停止”按钮的动作"
   },
+  "Smaller files (ProRes 422)" : {
+    "de" : "Kleinere Dateien (ProRes 422)",
+    "fr" : "Fichiers plus légers (ProRes 422)",
+    "zh-Hans" : "较小的文件（ProRes 422）"
+  },
   "Soft streaks on fast moves" : {
     "de" : "Weiche Schlieren bei schnellen Bewegungen",
     "fr" : "Traînées douces sur les mouvements rapides",
@@ -3146,15 +3381,35 @@
     "fr" : "Le pointeur fait partie de cette vidéo",
     "zh-Hans" : "指针已录入此视频"
   },
+  "The handoff is ready" : {
+    "de" : "Die Übergabe ist fertig",
+    "fr" : "La transmission est prête",
+    "zh-Hans" : "交付已就绪"
+  },
   "The recording for “%@” is missing" : {
     "de" : "Die Aufnahme für „%@“ fehlt",
     "fr" : "L’enregistrement de « %@ » est introuvable",
     "zh-Hans" : "“%@”的录制内容不见了"
   },
+  "The video has no picture" : {
+    "de" : "Das Video hat kein Bild",
+    "fr" : "La vidéo n’a pas d’image",
+    "zh-Hans" : "该视频没有画面"
+  },
+  "There's nothing to write" : {
+    "de" : "Es gibt nichts zu schreiben",
+    "fr" : "Il n’y a rien à écrire",
+    "zh-Hans" : "没有可写入的内容"
+  },
   "Thickness" : {
     "de" : "Stärke",
     "fr" : "Épaisseur",
     "zh-Hans" : "粗细"
+  },
+  "This Mac has no ProRes chip, so the re-encoded files take a while — the progress shows how long." : {
+    "de" : "Dieser Mac hat keinen ProRes-Chip, die neu codierten Dateien dauern deshalb eine Weile – der Fortschritt zeigt, wie lange.",
+    "fr" : "Ce Mac n’a pas de puce ProRes : les fichiers réencodés prennent un moment — la progression indique combien de temps.",
+    "zh-Hans" : "这台 Mac 没有 ProRes 芯片，重新编码的文件需要一些时间 — 进度会显示要多久。"
   },
   "This list" : {
     "de" : "Diese Liste",
@@ -3251,6 +3506,11 @@
     "de" : "Clipanfang auf die Abspielposition trimmen (I)",
     "fr" : "Ajuster le début du clip à la tête de lecture (I)",
     "zh-Hans" : "将片段开头修剪到播放头（I）"
+  },
+  "Trimmed to my edit" : {
+    "de" : "Auf meinen Schnitt gekürzt",
+    "fr" : "Coupés selon mon montage",
+    "zh-Hans" : "按我的剪辑裁剪"
   },
   "Try Again" : {
     "de" : "Erneut versuchen",
@@ -4005,6 +4265,11 @@
     "de" : "Wörter leuchten auf, während sie gesprochen werden",
     "fr" : "Les mots s’allument au fil de la parole",
     "zh-Hans" : "说到哪个词，哪个词就会亮起"
+  },
+  "You can close this — the handoff keeps going." : {
+    "de" : "Du kannst das schließen – die Übergabe läuft weiter.",
+    "fr" : "Vous pouvez fermer ceci — la transmission continue.",
+    "zh-Hans" : "你可以关闭这个 — 交付会继续进行。"
   },
   "Your look" : {
     "comment" : "Section: the background, frame, cursor, and zoom style saved for new recordings",

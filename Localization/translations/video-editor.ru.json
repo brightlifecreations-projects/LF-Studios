@@ -1,4 +1,7 @@
 {
+  " — %@ free there" : {
+    "ru" : " — там свободно %@"
+  },
   "%@ (This Mac)" : {
     "ru" : "%@ (этот Mac)"
   },
@@ -31,6 +34,12 @@
   },
   "%@ — %@" : {
     "ru" : "%@ — %@"
+  },
+  "%@ — about %lld min left" : {
+    "ru" : "%1$@ — осталось около %2$lld мин"
+  },
+  "%@ — about a minute left" : {
+    "ru" : "%@ — осталось около минуты"
   },
   "%lld annotations" : {
     "ru" : {
@@ -87,6 +96,9 @@
       "one" : "%lld вырезанный фрагмент, удалено %@",
       "other" : "%lld вырезанного фрагмента, удалено %@"
     }
+  },
+  "%lld files, about %@" : {
+    "ru" : "Файлов: %1$lld, около %2$@"
   },
   "%lld parts" : {
     "ru" : {
@@ -221,6 +233,9 @@
   "All commands (⌘K)" : {
     "ru" : "Все команды (⌘K)"
   },
+  "All files" : {
+    "ru" : "Все файлы"
+  },
   "Always show the arrow" : {
     "ru" : "Всегда показывать стрелку"
   },
@@ -278,6 +293,9 @@
   "Behind you" : {
     "ru" : "Позади вас"
   },
+  "Best (ProRes 422 HQ)" : {
+    "ru" : "Лучшее (ProRes 422 HQ)"
+  },
   "Blur" : {
     "ru" : "Размытие"
   },
@@ -329,6 +347,12 @@
   "Camera video — drag to line it up with the recording" : {
     "ru" : "Видео с камеры — перетащите, чтобы совместить с записью"
   },
+  "Camera video “%@” — none of it is in the edit" : {
+    "ru" : "Видео с камеры «%@» — ни один фрагмент не попал в монтаж"
+  },
+  "Camera video “%@” — the file is missing" : {
+    "ru" : "Видео с камеры «%@» — файл не найден"
+  },
   "Camera video “%@”, %@" : {
     "ru" : "Видео с камеры «%1$@», %2$@"
   },
@@ -343,6 +367,9 @@
   },
   "Can't sync — their sound doesn't match clearly enough. Set the offset by hand." : {
     "ru" : "Не удалось синхронизировать — звук совпадает недостаточно чётко. Задайте сдвиг вручную."
+  },
+  "Cancelled — the partly made folder was removed" : {
+    "ru" : "Отменено — недоделанная папка удалена"
   },
   "Caption" : {
     "ru" : "Субтитр"
@@ -365,11 +392,17 @@
   "Choose Image…" : {
     "ru" : "Выбрать изображение…"
   },
+  "Choose Location…" : {
+    "ru" : "Выбрать место…"
+  },
   "Choose an LF Studios project" : {
     "ru" : "Выберите проект LF Studios"
   },
   "Choose the camera video to show in the bubble" : {
     "ru" : "Выберите видео с камеры для пузыря"
+  },
+  "Choose where to put the handoff folder — any folder or drive" : {
+    "ru" : "Выберите, куда положить папку для передачи — любая папка или диск"
   },
   "Cleaning up your voice…" : {
     "ru" : "Очистка голоса…"
@@ -401,6 +434,9 @@
   "Clip starts / ends here" : {
     "ru" : "Клип начинается / заканчивается здесь"
   },
+  "Clips" : {
+    "ru" : "Клипы"
+  },
   "Close" : {
     "ru" : "Закрыть"
   },
@@ -425,17 +461,50 @@
   "Copy current frame" : {
     "ru" : "Скопировать текущий кадр"
   },
+  "Couldn't create the handoff folder — %@" : {
+    "ru" : "Не удалось создать папку для передачи — %@"
+  },
+  "Couldn't finish the file" : {
+    "ru" : "Не удалось завершить файл"
+  },
   "Couldn't open this video" : {
     "ru" : "Не удалось открыть это видео"
   },
   "Couldn't open “%@”" : {
     "ru" : "Не удалось открыть «%@»"
   },
+  "Couldn't prepare the sound" : {
+    "ru" : "Не удалось подготовить звук"
+  },
+  "Couldn't prepare the video" : {
+    "ru" : "Не удалось подготовить видео"
+  },
+  "Couldn't read the sound" : {
+    "ru" : "Не удалось прочитать звук"
+  },
+  "Couldn't read the video" : {
+    "ru" : "Не удалось прочитать видео"
+  },
   "Couldn't save the presets file" : {
     "ru" : "Не удалось сохранить файл стилей"
   },
   "Couldn't save the project — check there's room on the disk" : {
     "ru" : "Не удалось сохранить проект — проверьте, есть ли место на диске"
+  },
+  "Couldn't start writing" : {
+    "ru" : "Не удалось начать запись"
+  },
+  "Couldn't write a frame" : {
+    "ru" : "Не удалось записать кадр"
+  },
+  "Create Handoff" : {
+    "ru" : "Создать передачу"
+  },
+  "Creative Handoff" : {
+    "ru" : "Творческая передача"
+  },
+  "Creative Handoff…" : {
+    "ru" : "Творческая передача…"
   },
   "Crop" : {
     "ru" : "Обрезка"
@@ -596,6 +665,15 @@
   "Even out loudness" : {
     "ru" : "Выравнивание громкости"
   },
+  "Every file starts at the same moment and is as long as the others: drop them all at 0:00 and they play in sync, the camera too." : {
+    "ru" : "Каждый файл начинается в один момент и такой же длины, как остальные: положите все на 0:00 — и они идут синхронно, камера тоже."
+  },
+  "Every part of this video as its own file — screen, camera, sound, captions, the finished video, and a timeline for editing apps (⇧⌘E)" : {
+    "ru" : "Каждая часть этого видео отдельным файлом — экран, камера, звук, субтитры, готовое видео и таймлайн для программ монтажа (⇧⌘E)"
+  },
+  "Every part of this video as its own file, in a new folder — for another editor or editing app." : {
+    "ru" : "Каждая часть этого видео отдельным файлом в новой папке — для другого монтажёра или программы монтажа."
+  },
   "Exactly as recorded." : {
     "ru" : "Точно как в записи."
   },
@@ -618,6 +696,9 @@
       "one" : "Экспортирован %lld стиль",
       "other" : "Экспортировано %lld стиля"
     }
+  },
+  "Exported with your export settings" : {
+    "ru" : "Экспортируется с вашими настройками экспорта"
   },
   "Exports at the level video sites expect (−16 LUFS) without clipping" : {
     "ru" : "Экспорт с уровнем громкости для видеосайтов (−16 LUFS) без перегрузки"
@@ -642,6 +723,12 @@
   },
   "Fast-forward moments where nothing happens" : {
     "ru" : "Ускорить моменты, где ничего не происходит"
+  },
+  "File %lld of %lld: %@" : {
+    "ru" : "Файл %1$lld из %2$lld: %3$@"
+  },
+  "Files are copied as they are wherever they can be. Only what has to change — clips cut to your edit, a camera with its background removed — is re-encoded to ProRes." : {
+    "ru" : "Где возможно, файлы копируются как есть. В ProRes перекодируется только то, что должно измениться: клипы, обрезанные по вашему монтажу, и камера без фона."
   },
   "Fill the Frame, Follow the Cursor" : {
     "ru" : "Заполнить кадр и следовать за указателем"
@@ -670,6 +757,9 @@
   "Follows cursor" : {
     "ru" : "За указателем"
   },
+  "For Final Cut Pro, DaVinci Resolve, and Adobe Premiere Pro" : {
+    "ru" : "Для Final Cut Pro, DaVinci Resolve и Adobe Premiere Pro"
+  },
   "Frame" : {
     "ru" : "Рамка"
   },
@@ -694,6 +784,9 @@
   "Full frame (no background)" : {
     "ru" : "Весь кадр (без фона)"
   },
+  "Full original files" : {
+    "ru" : "Исходные файлы целиком"
+  },
   "Full-Camera Intro and Outro" : {
     "ru" : "Вступление и концовка с камерой на весь кадр"
   },
@@ -714,6 +807,18 @@
   },
   "Gradient" : {
     "ru" : "Градиент"
+  },
+  "Handoff didn't finish" : {
+    "ru" : "Передача не завершена"
+  },
+  "Handoff ready — show it" : {
+    "ru" : "Передача готова — показать"
+  },
+  "Handoff — %@" : {
+    "ru" : "Передача — %@"
+  },
+  "Handoff — getting ready" : {
+    "ru" : "Передача — подготовка"
   },
   "Hide" : {
     "ru" : "Скрыть"
@@ -756,11 +861,17 @@
   "Imported Preset" : {
     "ru" : "Импортированный стиль"
   },
+  "Include a timeline for editing apps" : {
+    "ru" : "Добавить таймлайн для программ монтажа"
+  },
   "Include aspect ratio (%@)" : {
     "ru" : "Включить соотношение сторон (%@)"
   },
   "Include media (works on any Mac)" : {
     "ru" : "Включить медиафайлы (работает на любом Mac)"
+  },
+  "Include the finished video" : {
+    "ru" : "Добавить готовое видео"
   },
   "Inspector tabs" : {
     "ru" : "Вкладки инспектора"
@@ -785,6 +896,9 @@
   },
   "It was recorded into the pixels, so it can't be resized or smoothed. New recordings capture an editable cursor by default (Settings → Recording)." : {
     "ru" : "Он записан прямо в изображение, поэтому нельзя изменить его размер или сгладить его. Новые записи по умолчанию сохраняют редактируемый указатель (Настройки → Запись)."
+  },
+  "It won't fit there. Choose another location, or pick Smaller files." : {
+    "ru" : "Там не хватит места. Выберите другое место или «Файлы поменьше»."
   },
   "Jump here" : {
     "ru" : "Перейти сюда"
@@ -813,6 +927,18 @@
   "Keys on screen" : {
     "ru" : "Клавиши на экране"
   },
+  "LF Studios Presets" : {
+    "ru" : "Стили LF Studios"
+  },
+  "LF Studios is still cleaning up the voice" : {
+    "ru" : "LF Studios еще очищает голос"
+  },
+  "LF Studios is still transcribing" : {
+    "ru" : "LF Studios еще расшифровывает речь"
+  },
+  "LF Studios listens to the recording right on this Mac — nothing is uploaded. Then cut the video by deleting words, remove ums and long pauses in one click, and add captions." : {
+    "ru" : "LF Studios слушает запись прямо на этом Mac — ничего не отправляется в сеть. Затем можно монтировать видео, удаляя слова, одним нажатием убрать слова-паразиты и долгие паузы и добавить субтитры."
+  },
   "Language" : {
     "ru" : "Язык"
   },
@@ -822,11 +948,17 @@
   "Layouts" : {
     "ru" : "Расположения"
   },
+  "Left out:" : {
+    "ru" : "Не вошло:"
+  },
   "Letterbox Instead of Following the Cursor" : {
     "ru" : "Вписать с полосами вместо следования за указателем"
   },
   "Level" : {
     "ru" : "Уровень"
+  },
+  "Line everything up" : {
+    "ru" : "Выровнять всё"
   },
   "Lines the camera up by the sound both recorded. Or drag the camera strip on the timeline." : {
     "ru" : "Совмещает камеру по звуку, записанному обоими. Или перетащите полосу камеры на таймлайне."
@@ -884,6 +1016,9 @@
   },
   "Music “%@”" : {
     "ru" : "Музыка «%@»"
+  },
+  "Music “%@” — the file is missing" : {
+    "ru" : "Музыка «%@» — файл не найден"
   },
   "Mute Clip" : {
     "ru" : "Выключить звук клипа"
@@ -954,6 +1089,9 @@
   "No cursor data in this video" : {
     "ru" : "В этом видео нет данных указателя"
   },
+  "No location chosen" : {
+    "ru" : "Место не выбрано"
+  },
   "No music" : {
     "ru" : "Без музыки"
   },
@@ -968,6 +1106,9 @@
   },
   "None in this recording. Turn on “Show keyboard shortcuts” in Settings → Recording and every ⌘ shortcut you press appears as keycaps. Plain typing is never recorded." : {
     "ru" : "В этой записи их нет. Включите «Показывать сочетания клавиш» в разделе Настройки → Запись, и каждое нажатое сочетание с ⌘ появится в виде клавиш. Обычный набор текста никогда не записывается."
+  },
+  "Not enough space: the handoff needs about %@ and %@ is free there." : {
+    "ru" : "Не хватает места: для передачи нужно около %1$@, а там свободно %2$@."
   },
   "Not for this video" : {
     "ru" : "Не для этого видео"
@@ -1025,6 +1166,9 @@
   },
   "Pause (Space)" : {
     "ru" : "Пауза (пробел)"
+  },
+  "Picture “%@” — the file is missing" : {
+    "ru" : "Изображение «%@» — файл не найден"
   },
   "Placement" : {
     "ru" : "Размещение"
@@ -1593,6 +1737,9 @@
   "Saving project…" : {
     "ru" : "Сохранение проекта…"
   },
+  "Screen recording “%@” — the file is missing" : {
+    "ru" : "Запись экрана «%@» — файл не найден"
+  },
   "Search commands" : {
     "ru" : "Поиск команд"
   },
@@ -1648,18 +1795,6 @@
   },
   "Shortens every silence over a second (this video has no LF Studios pointer data to spot what happens on screen)" : {
     "ru" : "Сокращает каждую паузу длиннее секунды (в этом видео нет данных указателя LF Studios, чтобы понять, что происходит на экране)"
-  },
-  "LF Studios Presets" : {
-    "ru" : "Стили LF Studios"
-  },
-  "LF Studios is still cleaning up the voice" : {
-    "ru" : "LF Studios еще очищает голос"
-  },
-  "LF Studios is still transcribing" : {
-    "ru" : "LF Studios еще расшифровывает речь"
-  },
-  "LF Studios listens to the recording right on this Mac — nothing is uploaded. Then cut the video by deleting words, remove ums and long pauses in one click, and add captions." : {
-    "ru" : "LF Studios слушает запись прямо на этом Mac — ничего не отправляется в сеть. Затем можно монтировать видео, удаляя слова, одним нажатием убрать слова-паразиты и долгие паузы и добавить субтитры."
   },
   "Show Background" : {
     "ru" : "Показать фон"
@@ -1732,6 +1867,9 @@
   },
   "Skips the dash to the Stop button at the end" : {
     "ru" : "Пропускает рывок к кнопке «Остановить» в конце"
+  },
+  "Smaller files (ProRes 422)" : {
+    "ru" : "Файлы поменьше (ProRes 422)"
   },
   "Soft streaks on fast moves" : {
     "ru" : "Мягкие шлейфы при быстрых движениях"
@@ -1829,11 +1967,23 @@
   "The cursor is part of this video" : {
     "ru" : "Указатель — часть этого видео"
   },
+  "The handoff is ready" : {
+    "ru" : "Передача готова"
+  },
   "The recording for “%@” is missing" : {
     "ru" : "Запись для «%@» не найдена"
   },
+  "The video has no picture" : {
+    "ru" : "В видео нет изображения"
+  },
+  "There's nothing to write" : {
+    "ru" : "Нечего записывать"
+  },
   "Thickness" : {
     "ru" : "Толщина"
+  },
+  "This Mac has no ProRes chip, so the re-encoded files take a while — the progress shows how long." : {
+    "ru" : "В этом Mac нет чипа ProRes, поэтому перекодирование займёт время — сколько, покажет индикатор."
   },
   "This list" : {
     "ru" : "Этот список"
@@ -1891,6 +2041,9 @@
   },
   "Trim the clip's start to the playhead (I)" : {
     "ru" : "Подрезать начало клипа по указателю воспроизведения (I)"
+  },
+  "Trimmed to my edit" : {
+    "ru" : "Обрезать по моему монтажу"
   },
   "Try Again" : {
     "ru" : "Повторить попытку"
@@ -2339,6 +2492,9 @@
   },
   "Words light up as they're spoken" : {
     "ru" : "Слова подсвечиваются по мере произнесения"
+  },
+  "You can close this — the handoff keeps going." : {
+    "ru" : "Это можно закрыть — передача продолжится."
   },
   "Your look" : {
     "ru" : "Ваш стиль"

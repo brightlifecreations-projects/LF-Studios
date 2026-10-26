@@ -23,6 +23,10 @@ final class VideoDemoEditorWindowController: NSWindowController, NSWindowDelegat
         open(videoURL: videoURL, projectFile: nil, mode: nil)
     }
 
+    /// Set before opening from Home's (or History's) "Creative Handoff…":
+    /// the editor that opens next shows the dialog once it's loaded.
+    static var handoffOnNextOpen = false
+
     /// `projectFile`: the `.lfstudios` project it's opened from; ⌘S saves
     /// back to it.
     static func open(videoURL: URL, projectFile: URL?, mode: VideoProjectDocument.MediaMode?) {
@@ -41,6 +45,10 @@ final class VideoDemoEditorWindowController: NSWindowController, NSWindowDelegat
             controller.window?.representedURL = projectFile
         }
         controller.bringEditorToFront()
+        if handoffOnNextOpen {
+            handoffOnNextOpen = false
+            controller.model.showCreativeHandoffWhenReady()
+        }
     }
 
     static func saveActiveProject(as saveAs: Bool) {

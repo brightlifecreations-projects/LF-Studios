@@ -249,6 +249,11 @@ final class VideoEditorModel: ObservableObject {
     var pendingZoomAnchor: (time: Double, viewportX: CGFloat)?
     @Published var isCommandPalettePresented = false
     @Published var isExportPresented = false
+    /// Creative Handoff's dialog, and the handoff being written.
+    @Published var isHandoffPresented = false
+    @Published var handoffJob: VideoHandoffJob?
+    /// Opened for a handoff: the dialog shows once the video has loaded.
+    var handoffWhenReady = false
     @Published var isShortcutsPresented = false
     @Published var exportSettings = VideoExportSettings.fromSettings
     @Published var exportPhase: ExportPhase = .idle
@@ -536,6 +541,10 @@ final class VideoEditorModel: ObservableObject {
                 playback.cameraStore.setFindsPerson(project.webcam.needsPersonMask)
             }
             isReady = true
+            if handoffWhenReady {
+                handoffWhenReady = false
+                showCreativeHandoff()
+            }
             playback.apply(segments: segments, audio: project.audio, keepSourceTime: nil, extras: editExtras)
             playback.seek(to: 0, fast: false)
             saveDraftNow()
@@ -1947,7 +1956,7 @@ final class VideoEditorModel: ObservableObject {
 
     /// Export, the command palette, or the shortcut sheet is up: edits
     /// behind it (undo) stay put.
-    var hasOverlayOpen: Bool { isExportPresented || isCommandPalettePresented || isShortcutsPresented }
+    var hasOverlayOpen: Bool { isExportPresented || isHandoffPresented || isCommandPalettePresented || isShortcutsPresented }
 
     /// Something that shouldn't be dropped silently by closing the window,
     /// as the title of the "close anyway?" question: a whole sentence, so

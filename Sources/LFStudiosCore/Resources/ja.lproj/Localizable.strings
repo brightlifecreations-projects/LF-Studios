@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key> — %@ free there</key>
+	<string> — 保存先の空き容量 %@</string>
 	<key>%@ (%@)</key>
 	<string>%@（%@）</string>
 	<key>%@ (This Mac)</key>
@@ -64,6 +66,10 @@
 	<string>%@（%@）</string>
 	<key>%@ — LF Studios lives in your menu bar</key>
 	<string>%@。LF Studiosはメニューバーにあります</string>
+	<key>%@ — about %lld min left</key>
+	<string>%1$@ — 残り約%2$lld分</string>
+	<key>%@ — about a minute left</key>
+	<string>%@ — 残り約1分</string>
 	<key>%@ — click to change</key>
 	<string>%@: クリックして変更</string>
 	<key>%@ → %@ — the part you ⇧-dragged on the timeline</key>
@@ -106,6 +112,8 @@
 	<string>%lld日</string>
 	<key>%lld email addresses</key>
 	<string>%lld件のメールアドレス</string>
+	<key>%lld files, about %@</key>
+	<string>%1$lld個のファイル、約%2$@</string>
 	<key>%lld lines</key>
 	<string>%lld行</string>
 	<key>%lld lines changed since translating</key>
@@ -272,6 +280,8 @@
 	<string>すべてのコマンド（⌘K）</string>
 	<key>All configured</key>
 	<string>すべて設定済み</string>
+	<key>All files</key>
+	<string>すべてのファイル</string>
 	<key>All zooms set to %@</key>
 	<string>すべてのズームを%@に設定しました</string>
 	<key>Allow Access…</key>
@@ -402,6 +412,8 @@
 	<string>動作</string>
 	<key>Behind you</key>
 	<string>背後</string>
+	<key>Best (ProRes 422 HQ)</key>
+	<string>最高（ProRes 422 HQ）</string>
 	<key>Between clips</key>
 	<string>クリップ間</string>
 	<key>Black</key>
@@ -492,6 +504,10 @@
 	<string>カメラ映像を削除しました — ⌘Zで取り消し</string>
 	<key>Camera video — drag to line it up with the recording</key>
 	<string>カメラ映像 — ドラッグして収録に合わせます</string>
+	<key>Camera video “%@” — none of it is in the edit</key>
+	<string>カメラ映像“%@” — 編集に含まれる部分がありません</string>
+	<key>Camera video “%@” — the file is missing</key>
+	<string>カメラ映像“%@” — ファイルが見つかりません</string>
 	<key>Camera video “%@”, %@</key>
 	<string>カメラ映像“%1$@”、%2$@</string>
 	<key>Camera video: %@</key>
@@ -512,6 +528,8 @@
 	<string>この書き出しをキャンセル</string>
 	<key>Cancelled</key>
 	<string>キャンセルしました</string>
+	<key>Cancelled — the partly made folder was removed</key>
+	<string>キャンセルしました — 作りかけのフォルダは削除しました</string>
 	<key>Canyon Silk</key>
 	<string>峡谷のシルク</string>
 	<key>Caption</key>
@@ -598,6 +616,8 @@
 	<string>LF Studiosのメニューから“範囲を取り込む”を選択して始めましょう</string>
 	<key>Choose Image…</key>
 	<string>画像を選択…</string>
+	<key>Choose Location…</key>
+	<string>場所を選択…</string>
 	<key>Choose a .ttf or .otf font. LF Studios keeps its own copy, so it keeps working if the file is deleted.</key>
 	<string>.ttfまたは.otfのフォントを選択してください。LF Studiosは独自のコピーを保持するため、ファイルが削除されても使い続けられます。</string>
 	<key>Choose a language</key>
@@ -622,6 +642,8 @@
 	<string>バブルに表示するカメラ映像を選択</string>
 	<key>Choose what happens immediately after taking a screenshot.</key>
 	<string>スクリーンショットを撮った直後の動作を選択します。</string>
+	<key>Choose where to put the handoff folder — any folder or drive</key>
+	<string>受け渡し用フォルダの保存先を選択 — どのフォルダやドライブでも構いません</string>
 	<key>Choose window</key>
 	<string>ウインドウを選択</string>
 	<key>Choose...</key>
@@ -706,6 +728,8 @@
 	<string>ここをクリップの開始/終了位置に</string>
 	<key>Clipboard</key>
 	<string>クリップボード</string>
+	<key>Clips</key>
+	<string>クリップ</string>
 	<key>Close</key>
 	<string>閉じる</string>
 	<key>Close (Esc)</key>
@@ -800,8 +824,12 @@
 	<string>スクリーンショットをコピーできませんでした。もう一度試すか、代わりに保存してください。</string>
 	<key>Couldn't create the GIF file. Check that you can save to that folder, then export again.</key>
 	<string>GIFファイルを作成できませんでした。そのフォルダに保存できるか確認してから、もう一度書き出してください。</string>
+	<key>Couldn't create the handoff folder — %@</key>
+	<string>受け渡し用フォルダを作成できませんでした — %@</string>
 	<key>Couldn't create the video file.</key>
 	<string>ビデオファイルを作成できませんでした。</string>
+	<key>Couldn't finish the file</key>
+	<string>ファイルを完成できませんでした</string>
 	<key>Couldn't make captions</key>
 	<string>字幕を作成できませんでした</string>
 	<key>Couldn't make the click sound. Turn off Click sounds (Audio tab), then export again.</key>
@@ -814,6 +842,10 @@
 	<string>このビデオを開けませんでした</string>
 	<key>Couldn't open “%@”</key>
 	<string>“%@”を開けませんでした</string>
+	<key>Couldn't prepare the sound</key>
+	<string>音声を準備できませんでした</string>
+	<key>Couldn't prepare the video</key>
+	<string>ビデオを準備できませんでした</string>
 	<key>Couldn't prepare the video. Export again; if it keeps happening, restart LF Studios.</key>
 	<string>ビデオを準備できませんでした。もう一度書き出してください。問題が続く場合は、LF Studiosを再起動してください。</string>
 	<key>Couldn't read that audio file</key>
@@ -822,6 +854,10 @@
 	<string>GIF用に収録を読み込めませんでした。短い部分を書き出すか、MP4を選択してください。</string>
 	<key>Couldn't read the recording. Check that its file is still there, then export again.</key>
 	<string>収録を読み込めませんでした。ファイルがまだあるか確認してから、もう一度書き出してください。</string>
+	<key>Couldn't read the sound</key>
+	<string>音声を読み込めませんでした</string>
+	<key>Couldn't read the video</key>
+	<string>ビデオを読み込めませんでした</string>
 	<key>Couldn't save the captions file</key>
 	<string>字幕ファイルを保存できませんでした</string>
 	<key>Couldn't save the presets file</key>
@@ -840,14 +876,24 @@
 	<string>ビデオエンコーダを設定できませんでした。H.264か低い解像度を選択してから、もう一度書き出してください。</string>
 	<key>Couldn't start the export. Export again; if it keeps happening, restart LF Studios.</key>
 	<string>書き出しを開始できませんでした。もう一度書き出してください。問題が続く場合は、LF Studiosを再起動してください。</string>
+	<key>Couldn't start writing</key>
+	<string>書き込みを開始できませんでした</string>
 	<key>Couldn't translate (%@). Try again, or pick another language.</key>
 	<string>翻訳できませんでした（%@）。もう一度試すか、別の言語を選択してください。</string>
+	<key>Couldn't write a frame</key>
+	<string>フレームを書き込めませんでした</string>
 	<key>Couldn't write the GIF. Check that there's free space, or export a shorter part.</key>
 	<string>GIFを書き込めませんでした。空き容量があるか確認するか、短い部分を書き出してください。</string>
 	<key>Couldn't write the video. Check that there's free space and that you can save to that folder, then export again.</key>
 	<string>ビデオを書き込めませんでした。空き容量があり、そのフォルダに保存できるか確認してから、もう一度書き出してください。</string>
 	<key>Countdown</key>
 	<string>カウントダウン</string>
+	<key>Create Handoff</key>
+	<string>受け渡しを作成</string>
+	<key>Creative Handoff</key>
+	<string>クリエイティブ受け渡し</string>
+	<key>Creative Handoff…</key>
+	<string>クリエイティブ受け渡し…</string>
 	<key>Crimson Ridge</key>
 	<string>深紅の尾根</string>
 	<key>Crisp and compact — the best default</key>
@@ -1134,6 +1180,12 @@
 	<string>このビデオのカット、ズーム、注釈、字幕、スタイルの変更がすべて削除されます。追加した収録はそのまま残ります。この操作は取り消せます。</string>
 	<key>Every cut, zoom, annotation, caption, and style change on this video is removed. You can undo this.</key>
 	<string>このビデオのカット、ズーム、注釈、字幕、スタイルの変更がすべて削除されます。この操作は取り消せます。</string>
+	<key>Every file starts at the same moment and is as long as the others: drop them all at 0:00 and they play in sync, the camera too.</key>
+	<string>すべてのファイルが同じ瞬間に始まり、同じ長さになります。全部を0:00に置けば同期して再生されます。カメラも同様です。</string>
+	<key>Every part of this video as its own file — screen, camera, sound, captions, the finished video, and a timeline for editing apps (⇧⌘E)</key>
+	<string>このビデオのすべての要素を個別のファイルに — 画面、カメラ、音声、字幕、完成したビデオ、編集アプリ用のタイムライン（⇧⌘E）</string>
+	<key>Every part of this video as its own file, in a new folder — for another editor or editing app.</key>
+	<string>このビデオのすべての要素を個別のファイルとして新しいフォルダに — 別の編集者や編集アプリに渡すために。</string>
 	<key>Every sound level is at 0 (Audio tab) — this export will have no sound.</key>
 	<string>すべての音量が0になっているため（“オーディオ”タブ）、書き出したビデオにはサウンドが入りません。</string>
 	<key>Everything is ready</key>
@@ -1166,6 +1218,8 @@
 	<string>書き出しました</string>
 	<key>Exported %lld presets</key>
 	<string>%lld件のプリセットを書き出しました</string>
+	<key>Exported with your export settings</key>
+	<string>書き出し設定で書き出します</string>
 	<key>Exported without Enhance voice — it couldn't finish.</key>
 	<string>“声を補正”を完了できなかったため、補正なしで書き出しました。</string>
 	<key>Exported · %@</key>
@@ -1204,10 +1258,14 @@
 	<string>動きのない区間を早送り</string>
 	<key>File</key>
 	<string>ファイル</string>
+	<key>File %lld of %lld: %@</key>
+	<string>%2$lld個中%1$lld個目のファイル：%3$@</string>
 	<key>File Name</key>
 	<string>ファイル名</string>
 	<key>File not found</key>
 	<string>ファイルが見つかりません</string>
+	<key>Files are copied as they are wherever they can be. Only what has to change — clips cut to your edit, a camera with its background removed — is re-encoded to ProRes.</key>
+	<string>可能な限りファイルはそのままコピーします。変更が必要なもの（編集に合わせてカットしたクリップ、背景を削除したカメラ）だけをProResに再エンコードします。</string>
 	<key>Fill the Frame, Follow the Cursor</key>
 	<string>画面いっぱいに表示してポインタに追従</string>
 	<key>Filled Rectangle</key>
@@ -1244,6 +1302,8 @@
 	<string>ポインタに追従</string>
 	<key>Font</key>
 	<string>フォント</string>
+	<key>For Final Cut Pro, DaVinci Resolve, and Adobe Premiere Pro</key>
+	<string>Final Cut Pro、DaVinci Resolve、Adobe Premiere Pro用</string>
 	<key>Forever</key>
 	<string>無期限</string>
 	<key>Format</key>
@@ -1284,6 +1344,8 @@
 	<string>オープニングとエンディングをカメラ全面に</string>
 	<key>Full frame (no background)</key>
 	<string>全面表示（背景なし）</string>
+	<key>Full original files</key>
+	<string>元のファイル全体</string>
 	<key>Full screen: %@</key>
 	<string>画面全体: %@</string>
 	<key>Full-Camera Intro and Outro</key>
@@ -1318,6 +1380,14 @@
 	<string>グラファイト</string>
 	<key>Green</key>
 	<string>グリーン</string>
+	<key>Handoff didn't finish</key>
+	<string>受け渡しが完了しませんでした</string>
+	<key>Handoff ready — show it</key>
+	<string>受け渡しの準備ができました — 表示</string>
+	<key>Handoff — %@</key>
+	<string>受け渡し — %@</string>
+	<key>Handoff — getting ready</key>
+	<string>受け渡し — 準備中</string>
 	<key>Hard Cuts Between Clips</key>
 	<string>クリップ間をカットでつなぐ</string>
 	<key>Hard cut</key>
@@ -1394,10 +1464,14 @@
 	<string>イン点を早める</string>
 	<key>In later</key>
 	<string>イン点を遅らせる</string>
+	<key>Include a timeline for editing apps</key>
+	<string>編集アプリ用のタイムラインを含める</string>
 	<key>Include aspect ratio (%@)</key>
 	<string>アスペクト比を含める（%@）</string>
 	<key>Include media (works on any Mac)</key>
 	<string>メディアを含める（どのMacでも使えます）</string>
+	<key>Include the finished video</key>
+	<string>完成したビデオを含める</string>
 	<key>Includes: %@</key>
 	<string>内容: %@</string>
 	<key>Inspector tabs</key>
@@ -1432,6 +1506,8 @@
 	<string>移動、名前変更、または削除された可能性があります。現在の場所から開いてください。</string>
 	<key>It was recorded into the pixels, so it can't be resized or smoothed. New recordings capture an editable cursor by default (Settings → Recording).</key>
 	<string>ポインタが映像に焼き込まれているため、サイズの変更や滑らかにする処理はできません。新しい収録では、デフォルトで編集可能なポインタが記録されます（“設定”＞“収録”）。</string>
+	<key>It won't fit there. Choose another location, or pick Smaller files.</key>
+	<string>保存先の空き容量が足りません。別の場所を選ぶか、「小さいファイル」を選んでください。</string>
 	<key>JPEG Quality</key>
 	<string>JPEGの品質</string>
 	<key>Jump here</key>
@@ -1546,6 +1622,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>レイアウト</string>
 	<key>Left</key>
 	<string>左</string>
+	<key>Left out:</key>
+	<string>含まれなかったもの：</string>
 	<key>Length</key>
 	<string>長さ</string>
 	<key>Letterbox Instead of Following the Cursor</key>
@@ -1560,6 +1638,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ライムシグナル</string>
 	<key>Line</key>
 	<string>線</string>
+	<key>Line everything up</key>
+	<string>すべてそろえる</string>
 	<key>Line width</key>
 	<string>線の幅</string>
 	<key>Linen</key>
@@ -1706,6 +1786,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>音楽: クリックして音量、フェード、話している間の音量を変更</string>
 	<key>Music “%@”</key>
 	<string>音楽“%@”</string>
+	<key>Music “%@” — the file is missing</key>
+	<string>音楽“%@” — ファイルが見つかりません</string>
 	<key>Mute Clip</key>
 	<string>クリップを消音</string>
 	<key>Mute preview</key>
@@ -1798,6 +1880,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>このビデオにはポインタのデータがありません</string>
 	<key>No idle moments found — nice and tight</key>
 	<string>動きのない区間は見つかりませんでした。テンポは良好です</string>
+	<key>No location chosen</key>
+	<string>場所が選択されていません</string>
 	<key>No long pauses to shorten</key>
 	<string>短縮できる長い無音部分はありません</string>
 	<key>No microphone connected</key>
@@ -1844,6 +1928,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>この収録に必要なディスクの空き領域が足りません。約%@の空き領域が必要ですが、使用可能なのは%@です。空き領域を増やしてから、もう一度お試しください。</string>
 	<key>Not enough free disk space for this recording: it needs about %@ free, and %@ is available. Free up space, or choose Balanced quality or 30 fps.</key>
 	<string>この収録に必要なディスクの空き領域が足りません。約%@の空き領域が必要ですが、使用可能なのは%@です。空き領域を増やすか、品質“標準”または30 fpsを選択してください。</string>
+	<key>Not enough space: the handoff needs about %@ and %@ is free there.</key>
+	<string>空き容量が足りません：受け渡しには約%1$@が必要ですが、保存先の空きは%2$@です。</string>
 	<key>Not for this video</key>
 	<string>このビデオでは使用しない</string>
 	<key>Not now</key>
@@ -1996,6 +2082,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>電話番号のQRコードが見つかりました</string>
 	<key>Picked up where you left off</key>
 	<string>前回の続きから再開しました</string>
+	<key>Picture “%@” — the file is missing</key>
+	<string>画像“%@” — ファイルが見つかりません</string>
 	<key>Pin</key>
 	<string>画面に固定</string>
 	<key>Pin to Screen</key>
@@ -2688,6 +2776,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>画面収録のアクセス許可が必要です</string>
 	<key>Screen recording didn't start in time. Try again.</key>
 	<string>画面収録が時間内に開始されませんでした。もう一度お試しください。</string>
+	<key>Screen recording “%@” — the file is missing</key>
+	<string>画面収録“%@” — ファイルが見つかりません</string>
 	<key>Screenshot Editor</key>
 	<string>スクリーンショットエディタ</string>
 	<key>Screenshot canvas</key>
@@ -2894,6 +2984,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ゆっくり</string>
 	<key>Small</key>
 	<string>小</string>
+	<key>Smaller files (ProRes 422)</key>
+	<string>小さいファイル（ProRes 422）</string>
 	<key>Smallest files, great for docs and chat</key>
 	<string>ファイルが最も小さく、ドキュメントやチャットに最適</string>
 	<key>Smooth</key>
@@ -3098,6 +3190,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>書き出しはバックグラウンドで続行されます（Esc）</string>
 	<key>The export stopped unexpectedly (%@). Try again — if it keeps happening, export at a lower resolution or in H.264.</key>
 	<string>書き出しが予期せず停止しました（%@）。もう一度お試しください。問題が続く場合は、低い解像度またはH.264で書き出してください。</string>
+	<key>The handoff is ready</key>
+	<string>受け渡しの準備ができました</string>
 	<key>The menu bar icon is LF Studios' main entry point. While it is hidden, open LF Studios again from Finder, Launchpad, or Spotlight to bring these Preferences back.</key>
 	<string>メニューバーのアイコンはLF Studiosを使うための主な入り口です。非表示の間にこの設定を再び開くには、Finder、Launchpad、またはSpotlightからLF Studiosをもう一度開いてください。</string>
 	<key>The microphone couldn't start, so this recording has no mic.</key>
@@ -3128,6 +3222,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>タイムラインが空です。クリップを復元してから、もう一度書き出してください。</string>
 	<key>The video encoder is busy — another app may be recording or exporting. Wait a moment and try again, or choose H.264.</key>
 	<string>ビデオエンコーダが使用中です。別のアプリが収録中または書き出し中の可能性があります。しばらく待ってからもう一度試すか、H.264を選択してください。</string>
+	<key>The video has no picture</key>
+	<string>ビデオに映像がありません</string>
 	<key>The video's own recording can't be removed</key>
 	<string>このビデオ自体の収録は削除できません</string>
 	<key>The voice track is empty, so there's nothing to clean up. Turn off Enhance voice to keep the original sound.</key>
@@ -3144,6 +3240,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ここにはすでにズームがあります</string>
 	<key>There's no video in this file</key>
 	<string>このファイルにはビデオがありません</string>
+	<key>There's nothing to write</key>
+	<string>書き込むものがありません</string>
 	<key>Thickness</key>
 	<string>太さ</string>
 	<key>Thin</key>
@@ -3152,6 +3250,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>このGIFはサイズに対して長すぎます。約%@のメモリが必要です。サイズやフレームレートを下げるか、ビデオの一部を書き出すか、MP4を選択してください。</string>
 	<key>This Mac can't translate between these languages. Pick another language.</key>
 	<string>このMacではこれらの言語間で翻訳できません。別の言語を選択してください。</string>
+	<key>This Mac has no ProRes chip, so the re-encoded files take a while — the progress shows how long.</key>
+	<string>このMacにはProResチップがないため、再エンコードするファイルには時間がかかります。進行状況に所要時間が表示されます。</string>
 	<key>This Week</key>
 	<string>今週</string>
 	<key>This list</key>
@@ -3246,6 +3346,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>クリップの最後を再生ヘッドの位置までトリミング（O）</string>
 	<key>Trim the clip's start to the playhead (I)</key>
 	<string>クリップの最初を再生ヘッドの位置までトリミング（I）</string>
+	<key>Trimmed to my edit</key>
+	<string>編集に合わせてカット</string>
 	<key>Try Again</key>
 	<string>再試行</string>
 	<key>Try it right now — Capture Area is also in the menu bar.</key>
@@ -3628,6 +3730,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>はい</string>
 	<key>Yesterday</key>
 	<string>昨日</string>
+	<key>You can close this — the handoff keeps going.</key>
+	<string>閉じても大丈夫です — 受け渡しは続きます。</string>
 	<key>You have unsaved edits in %lld screenshots.</key>
 	<string>%lld件のスクリーンショットに未保存の編集があります。</string>
 	<key>You're all set — LF Studios lives here</key>

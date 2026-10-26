@@ -33,6 +33,16 @@ struct HistoryItem: Codable, Identifiable {
     /// Raw CaptureType. Stored as a String, not the enum, so an index written
     /// by a newer version with a type this one doesn't know still decodes.
     var captureTypeRaw: String? = nil
+    /// A screen recording kept in History (History holds screenshots for
+    /// now; once it lists recordings, they set this and get Creative Handoff
+    /// in their menu). Optional, so older index.json files still decode.
+    var recordingPath: String? = nil
+
+    /// The recording this entry is, when it's still on disk.
+    var recordingURL: URL? {
+        guard let recordingPath, FileManager.default.fileExists(atPath: recordingPath) else { return nil }
+        return URL(fileURLWithPath: recordingPath)
+    }
 
     var captureType: CaptureType? { captureTypeRaw.flatMap(CaptureType.init(rawValue:)) }
 

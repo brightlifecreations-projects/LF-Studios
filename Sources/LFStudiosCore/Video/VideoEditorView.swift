@@ -78,6 +78,22 @@ struct VideoEditorRootView: View {
                     .transition(.opacity)
                     .accessibilityAddTraits(.isModal)
             }
+            if model.isHandoffPresented {
+                VideoHandoffSheet(model: model)
+                    .transition(.opacity)
+                    .accessibilityAddTraits(.isModal)
+            } else if let job = model.handoffJob {
+                // Closed while it's writing: its progress, bottom left.
+                VStack {
+                    Spacer()
+                    HStack {
+                        VideoHandoffPill(job: job, model: model)
+                        Spacer()
+                    }
+                }
+                .padding(.leading, 18)
+                .padding(.bottom, timelineHeight(windowHeight: height) + 14)
+            }
             if model.isCommandPalettePresented {
                 VideoCommandPalette(model: model)
                     .transition(.opacity)
@@ -433,6 +449,16 @@ extension VideoEditorModel {
 
         // Modal surfaces first. Undo never reaches the edit behind them.
         let isUndoKey = key == "z" && (modifiers == [.command] || modifiers == [.command, .shift])
+        if isHandoffPresented {
+            // Escape closes the dialog; a running handoff keeps going.
+            if code == 53 {
+                closeCreativeHandoff()
+                return true
+            }
+            // Like the export dialog: its own buttons get Return, Tab, Space, arrows.
+            if [36, 76, 48, 49, 123, 124, 125, 126].contains(code) { return false }
+            return modifiers.isEmpty || isUndoKey
+        }
         if isExportPresented {
             if code == 53, !isExporting {
                 closeExportSheet()

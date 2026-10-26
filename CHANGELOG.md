@@ -2,6 +2,16 @@
 
 ## [1.1.0] - Unreleased
 
+### Added
+- **Creative Handoff.** File ▸ Creative Handoff… (⇧⌘E), the export dialog, or a recording's right-click menu in Home saves every part of a video as its own file, in a new folder wherever you choose (named "<Project> – Handoff <date>"):
+  - the screen clips, the camera (recorded or added), the microphone and the Mac's sound as separate WAVs, and the music,
+  - pictures, captions (.srt, with the translated track), the finished video, the pointer path, clicks and keys as JSON, and the fonts the project uses,
+  - a timeline for Final Cut Pro and DaVinci Resolve (.fcpxml) and for Adobe Premiere Pro (.xml),
+  - and a README.txt that lists every file, its length, frame rate, and start, and whether it's an untouched original or re-encoded.
+- **Line everything up** (on by default) makes every file start at the same moment and run the same length, the camera's offset included, so an editor drops them all at 0:00 and they're in sync. Pick "Trimmed to my edit" or "Full original files".
+- **Quality first.** Files are copied as they are wherever they can be; only clips cut to your edit and a camera with its background removed are re-encoded, to ProRes 422 HQ (or ProRes 422 with "Smaller files"). A camera with its background removed comes as ProRes 4444 with transparency, ready to place over anything.
+- The handoff checks the free space first, runs in the background with progress for each file (and how long is left on Macs that encode ProRes slowly), skips and lists anything missing, and Cancel removes the half-made folder. When it's done, Reveal in Finder opens it.
+
 ### Changed
 - **ShotStyle is now LF Studios.** The app, its menus and windows, Settings, permission prompts, About, and the "Made with LF Studios" end card all carry the new name, in every language. The app is "LF Studios" in Applications.
 - **Your things come along.** The first time LF Studios opens on a Mac that used ShotStyle, it copies over your settings, shortcuts, style presets, added fonts, capture history, recordings' edits and data, and recent projects, and says so once. ShotStyle's own copy stays untouched, so nothing is lost if you keep the old app for a while. Recordings named "ShotStyle …" still show up in Home.
