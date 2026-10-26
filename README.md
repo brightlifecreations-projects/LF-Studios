@@ -38,39 +38,39 @@ ShotStyle is available in English, Deutsch, Français, 简体中文, Русск�
 
 ## Install
 
-### From a release
-
-1. Download the latest `.dmg` from [Releases](https://github.com/brightlifecreations-projects/ShotStyle/releases/latest).
-2. Open it and drag **ShotStyle** to your Applications folder.
-3. Grant **Screen Recording** permission when macOS asks.
-
 ### Download the app
 
-No Xcode needed: GitHub builds a ready-made `ShotStyle.zip` (Apple Silicon and Intel) for every `v…` tag, attached to its [release](https://github.com/brightlifecreations-projects/ShotStyle/releases). Builds started by hand are under [Actions ▸ Release app](https://github.com/brightlifecreations-projects/ShotStyle/actions/workflows/release.yml): open a run and download **ShotStyle** under Artifacts.
+Get **ShotStyle.zip** from the [Releases page](https://github.com/brightlifecreations-projects/ShotStyle/releases/latest). It runs on Apple Silicon and Intel Macs with macOS 13 or later.
 
-1. Unzip `ShotStyle.zip` (an Actions download is a zip around it, so unzip twice).
+1. Unzip `ShotStyle.zip`.
 2. Drag **ShotStyle** to your Applications folder.
-3. This build isn't notarized, so once, in Terminal, run:
+3. ShotStyle isn't notarized by Apple yet, so run this once in Terminal:
 
    ```bash
    xattr -dr com.apple.quarantine /Applications/ShotStyle.app
    ```
 
 4. Open ShotStyle.
-5. Allow **Screen Recording** when macOS asks, then quit and reopen ShotStyle.
+5. Allow **Screen Recording** when macOS asks (and **Accessibility** if it asks for that too).
+6. Quit ShotStyle and open it again once, so the permissions take effect.
 
 ### Build from source
 
-Requirements: macOS 13+, Swift 5.9+. The Xcode Command Line Tools are enough to build; running the tests (`swift test`) needs full Xcode.
+Requirements: macOS 13 or later, and either full **Xcode** (recommended, from the App Store) or the Xcode Command Line Tools with the **macOS 26 SDK**. Running the tests (`swift test`) needs full Xcode.
 
 ```bash
 git clone https://github.com/brightlifecreations-projects/ShotStyle.git
 cd ShotStyle
 bash scripts/setup-signing.sh   # once per Mac
-bash build-app.sh
+bash build-app.sh               # add --universal for Apple Silicon + Intel
 ```
 
 `build-app.sh` builds a release binary, assembles and signs the app bundle, and copies `ShotStyle.app` to `/Applications`. Open it and allow Screen Recording and Accessibility when macOS asks, then quit and reopen it once.
+
+- **Command Line Tools only:** if the newest SDK needs Xcode's macro plugins, the build retries with an installed macOS 26 SDK by itself. If none works, it tells you to install Xcode from the App Store.
+- **Options:**
+  - `--universal` builds one app for both Apple Silicon and Intel Macs.
+  - `--no-install` leaves the app in `.build/app.noindex` instead of copying it to `/Applications`.
 
 **Why the setup script:** macOS remembers those permissions for an app's signature. `scripts/setup-signing.sh` creates a self-signed "ShotStyle Local Signing" certificate in your login keychain (it stays on your Mac), and `build-app.sh` signs every build with it, so your permissions survive rebuilds. Without it, builds are signed ad-hoc: each rebuild looks like a new app, ShotStyle asks for the permissions again, and recording stays blocked until you grant them. The build prints a warning when that happens.
 
@@ -80,6 +80,16 @@ bash build-app.sh
 tccutil reset ScreenCapture com.shotstyle.app
 tccutil reset Accessibility com.shotstyle.app
 ```
+
+## Contributing without Xcode
+
+You don't need a Mac with Xcode to change ShotStyle:
+
+1. Open the repository in [claude.ai/code](https://claude.ai/code), or in Claude Code on any computer, and make the change there. Don't build or run it: cloud sessions and Macs without Xcode can't build ShotStyle.
+2. Push your work to a new branch.
+3. Open a pull request into `main` and describe what changed.
+
+The owner builds and tests the pull request on a Mac, merges it, and publishes a release with `scripts/publish-release.sh`.
 
 ## Default shortcuts
 

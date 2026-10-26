@@ -2,6 +2,22 @@
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+
+# Options: --universal builds one app for Apple Silicon and Intel Macs (the
+# same as SHOTSTYLE_UNIVERSAL=true); --no-install leaves it in
+# .build/app.noindex (SHOTSTYLE_INSTALL=false).
+for arg in "$@"; do
+    case "$arg" in
+        --universal) SHOTSTYLE_UNIVERSAL=true ;;
+        --no-install) SHOTSTYLE_INSTALL=false ;;
+        -h|--help)
+            echo "Usage: bash build-app.sh [--universal] [--no-install]"
+            echo "  --universal   one app for Apple Silicon and Intel Macs"
+            echo "  --no-install  leave the app in .build/app.noindex"
+            exit 0 ;;
+        *) echo "✗ Unknown option: $arg (see --help)"; exit 2 ;;
+    esac
+done
 APP_NAME="ShotStyle"
 # Assembled inside .build, in a .noindex folder: Spotlight skips it, so
 # only the copy in /Applications shows up as an app.
@@ -46,6 +62,62 @@ UNIVERSAL="${SHOTSTYLE_UNIVERSAL:-false}"
 INSTALL="${SHOTSTYLE_INSTALL:-true}"
 
 cd "$SCRIPT_DIR"
+
+# With only the Command Line Tools, the newest SDK can need macro plugins
+# (SwiftUIMacros) that only full Xcode ships. Then the build is retried with
+# an installed macOS 26 SDK; if none works, it says to install Xcode.
+BUILD_LOG="$SCRIPT_DIR/.build/build-app.log"
+mkdir -p "$SCRIPT_DIR/.build"
+
+macro_failure() {
+    grep -qE "SwiftUIMacros|PreviewsMacros|external macro implementation|plugin for module '.*Macros'" "$BUILD_LOG"
+}
+
+# Other macOS 26 SDKs installed with the Command Line Tools, newest first,
+# skipping the one that just failed.
+fallback_sdks() {
+    local current
+    current="$(xcrun --sdk macosx --show-sdk-path 2>/dev/null || true)"
+    for dir in "$(xcode-select -p 2>/dev/null)/SDKs" /Library/Developer/CommandLineTools/SDKs; do
+        [ -d "$dir" ] || continue
+        ls -d "$dir"/MacOSX26*.sdk 2>/dev/null | sort -rV
+    done | while read -r sdk; do
+        [ "$(cd "$sdk" && pwd -P)" = "$(cd "$current" 2>/dev/null && pwd -P)" ] || echo "$sdk"
+    done | awk '!seen[$0]++'
+}
+
+no_sdk_works() {
+    echo ""
+    echo "✗ ShotStyle can't be built with the tools on this Mac."
+    echo "  The macOS SDK needs the macro plugins that come with full Xcode."
+    echo "  Install Xcode from the App Store, open it once, then run:"
+    echo "    sudo xcode-select -s /Applications/Xcode.app/Contents/Developer"
+    echo "  and build again with: bash build-app.sh"
+    exit 1
+}
+
+# swift build "$@", retried with another macOS 26 SDK after a macro failure.
+release_build() {
+    if swift build -c release "$@" 2>&1 | tee "$BUILD_LOG"; [ "${PIPESTATUS[0]}" -eq 0 ]; then
+        return 0
+    fi
+    macro_failure || exit 1
+    if [ -n "${SDKROOT:-}" ]; then no_sdk_works; fi
+    while read -r sdk; do
+        [ -n "$sdk" ] || continue
+        echo ""
+        echo "▶ The newest SDK needs Xcode's macro plugins — trying $(basename "$sdk")…"
+        if SDKROOT="$sdk" swift build -c release "$@" 2>&1 | tee "$BUILD_LOG"; [ "${PIPESTATUS[0]}" -eq 0 ]; then
+            # Every later build (the other architecture, --show-bin-path)
+            # uses the same SDK.
+            export SDKROOT="$sdk"
+            return 0
+        fi
+        macro_failure || exit 1
+    done < <(fallback_sdks)
+    no_sdk_works
+}
+
 if [[ "$UNIVERSAL" =~ ^(1|true|yes|on)$ ]]; then
     # One build per architecture, then lipo: a single --arch keeps SwiftPM's
     # usual build layout, so resource bundles and Sparkle are the same as in
@@ -54,7 +126,7 @@ if [[ "$UNIVERSAL" =~ ^(1|true|yes|on)$ ]]; then
     BUILD_DIR=""
     for arch in arm64 x86_64; do
         echo "▶ Building $APP_NAME (release, $arch)…"
-        swift build -c release --arch "$arch" 2>&1
+        release_build --arch "$arch"
         ARCH_DIR="$(swift build -c release --arch "$arch" --show-bin-path)"
         if [ ! -f "$ARCH_DIR/$APP_NAME" ]; then
             echo "✗ Build failed — binary not found at $ARCH_DIR/$APP_NAME"
@@ -70,7 +142,7 @@ if [[ "$UNIVERSAL" =~ ^(1|true|yes|on)$ ]]; then
     echo "  Architectures: $(lipo -archs "$BINARY")"
 else
     echo "▶ Building $APP_NAME (release)…"
-    swift build -c release 2>&1
+    release_build
     BUILD_DIR="$(swift build -c release --show-bin-path)"
     BINARY="$BUILD_DIR/$APP_NAME"
 fi

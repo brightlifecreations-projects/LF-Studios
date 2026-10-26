@@ -1,10 +1,10 @@
 name: Release app
 
+# Manual only (Actions → Release app → Run workflow). Releases are
+# normally published from the owner's Mac with scripts/publish-release.sh,
+# which uses no GitHub minutes; a v* tag no longer starts this workflow.
 on:
   workflow_dispatch:
-  push:
-    tags:
-      - "v*"
 
 # Creating a GitHub Release needs write access to the repository contents.
 permissions:

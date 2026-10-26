@@ -1,10 +1,11 @@
 name: Trusty 1.0 CI
 
+# Only for pull requests and when started by hand (Actions → Run workflow):
+# macOS runners use GitHub's Mac minutes, and pushes to main were already
+# built in their pull request or on the owner's Mac.
 on:
   pull_request:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   swift:
