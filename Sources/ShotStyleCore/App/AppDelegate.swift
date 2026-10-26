@@ -91,6 +91,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         // Before anything that could crash: the next launch can tell a crash
         // from a normal quit.
         CrashReporter.startSession()
+        // Before the first window: the look the user picked.
+        AppAppearance.apply()
         Settings.migrateOnboardingFlagIfNeeded()
         // Before the welcome window marks this install as launched.
         Settings.migrateCaptureSettingsIfNeeded()

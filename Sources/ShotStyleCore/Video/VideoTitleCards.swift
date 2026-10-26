@@ -309,7 +309,7 @@ struct VideoTitleCardsSection: View {
             .font(.system(size: 12.5, weight: .medium))
             .padding(.horizontal, 8)
             .frame(height: 28)
-            .background(RoundedRectangle(cornerRadius: 7, style: .continuous).fill(Color.black.opacity(0.3)))
+            .background(RoundedRectangle(cornerRadius: 7, style: .continuous).fill(VideoEditorTheme.well))
             .overlay(RoundedRectangle(cornerRadius: 7, style: .continuous).strokeBorder(VideoEditorTheme.cardStroke, lineWidth: 1))
             .onSubmit { model.endGesture() }
     }

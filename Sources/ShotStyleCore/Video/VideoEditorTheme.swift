@@ -1,19 +1,70 @@
 import AppKit
 import SwiftUI
 
-/// The editor's dark, content-first palette.
+extension Color {
+    /// One color for the dark look and one for the light look, picked by
+    /// the appearance the view is drawn in (Settings → General → Appearance).
+    static func adaptive(dark: NSColor, light: NSColor) -> Color {
+        Color(nsColor: .adaptive(dark: dark, light: light))
+    }
+}
+
+extension NSColor {
+    static func adaptive(dark: NSColor, light: NSColor) -> NSColor {
+        NSColor(name: nil) { appearance in
+            appearance.bestMatch(from: [.darkAqua, .aqua]) == .darkAqua ? dark : light
+        }
+    }
+}
+
+/// The editor's content-first palette, dark or light. The video itself
+/// never uses it: the renderer has its own colors.
 enum VideoEditorTheme {
-    static let window = Color(red: 0.047, green: 0.047, blue: 0.055)
-    static let stage = Color(red: 0.035, green: 0.035, blue: 0.043)
-    static let panel = Color(red: 0.075, green: 0.075, blue: 0.086)
-    static let card = Color.white.opacity(0.045)
-    static let cardHover = Color.white.opacity(0.075)
-    static let cardStroke = Color.white.opacity(0.075)
-    static let hairline = Color.white.opacity(0.07)
-    static let textPrimary = Color.white.opacity(0.93)
-    static let textSecondary = Color.white.opacity(0.58)
+    static let window = Color.adaptive(dark: NSColor(srgbRed: 0.047, green: 0.047, blue: 0.055, alpha: 1), light: NSColor(srgbRed: 0.925, green: 0.925, blue: 0.937, alpha: 1))
+    static let stage = Color.adaptive(dark: NSColor(srgbRed: 0.035, green: 0.035, blue: 0.043, alpha: 1), light: NSColor(srgbRed: 0.878, green: 0.882, blue: 0.898, alpha: 1))
+    static let panel = Color.adaptive(dark: NSColor(srgbRed: 0.075, green: 0.075, blue: 0.086, alpha: 1), light: NSColor(srgbRed: 0.976, green: 0.976, blue: 0.98, alpha: 1))
+    /// What chrome is drawn in: white on the dark look, black on the light
+    /// one (fills and lines use it faintly).
+    static let ink = Color.adaptive(dark: .white, light: .black)
+    static let card = Color.adaptive(dark: NSColor.white.withAlphaComponent(0.045), light: NSColor.black.withAlphaComponent(0.04))
+    static let cardHover = Color.adaptive(dark: NSColor.white.withAlphaComponent(0.075), light: NSColor.black.withAlphaComponent(0.065))
+    static let cardStroke = Color.adaptive(dark: NSColor.white.withAlphaComponent(0.075), light: NSColor.black.withAlphaComponent(0.1))
+    static let hairline = Color.adaptive(dark: NSColor.white.withAlphaComponent(0.07), light: NSColor.black.withAlphaComponent(0.1))
+    /// A recessed field (segmented controls, text fields).
+    static let well = Color.adaptive(dark: NSColor.black.withAlphaComponent(0.28), light: NSColor.black.withAlphaComponent(0.055))
+    /// The selected segment, a hovered row.
+    static let selectedFill = Color.adaptive(dark: NSColor.white.withAlphaComponent(0.14), light: NSColor.white)
+    static let textPrimary = Color.adaptive(dark: NSColor.white.withAlphaComponent(0.93), light: NSColor.black.withAlphaComponent(0.88))
+    static let textSecondary = Color.adaptive(dark: NSColor.white.withAlphaComponent(0.58), light: NSColor.black.withAlphaComponent(0.62))
     /// Helper text: still readable on the panel (about 5:1).
-    static let textTertiary = Color.white.opacity(0.5)
+    static let textTertiary = Color.adaptive(dark: NSColor.white.withAlphaComponent(0.5), light: NSColor.black.withAlphaComponent(0.55))
+    /// Floating panels inside the editor (⌘K, the shortcuts list).
+    static let popover = Color.adaptive(dark: NSColor(white: 0.11, alpha: 1), light: NSColor(white: 0.995, alpha: 1))
+    /// The tools dock over the stage.
+    static let dock = Color.adaptive(dark: NSColor(srgbRed: 0.1, green: 0.1, blue: 0.115, alpha: 0.94), light: NSColor(white: 1, alpha: 0.96))
+    /// Tips and suggestions floating over the stage.
+    static let floatingPill = Color.adaptive(dark: NSColor.black.withAlphaComponent(0.72), light: NSColor(white: 1, alpha: 0.94))
+    /// Shadows read softer on the light look.
+    static let shadow = Color.adaptive(dark: NSColor.black.withAlphaComponent(0.45), light: NSColor.black.withAlphaComponent(0.14))
+    /// Text on a timeline pill: white on the dark look; on the light one
+    /// the pills are pale, so it's dark.
+    static func laneText(_ opacity: Double = 0.92) -> Color {
+        Color.adaptive(dark: NSColor.white.withAlphaComponent(opacity), light: NSColor.black.withAlphaComponent(min(opacity, 0.86)))
+    }
+    /// A timeline pill's edge, strong when it's selected.
+    static func laneStroke(selected: Bool) -> Color {
+        selected
+            ? Color.adaptive(dark: NSColor.white.withAlphaComponent(0.95), light: NSColor.black.withAlphaComponent(0.72))
+            : Color.adaptive(dark: NSColor.white.withAlphaComponent(0.13), light: NSColor.black.withAlphaComponent(0.12))
+    }
+    /// Warnings and failures.
+    static let warning = Color.adaptive(dark: NSColor(srgbRed: 1, green: 0.58, blue: 0.52, alpha: 1), light: NSColor(srgbRed: 0.78, green: 0.2, blue: 0.13, alpha: 1))
+    /// `ink` for AppKit text (the transcript).
+    static func inkNS(_ alpha: CGFloat) -> NSColor {
+        .adaptive(dark: NSColor.white.withAlphaComponent(alpha), light: NSColor.black.withAlphaComponent(min(alpha, 0.88)))
+    }
+    /// Red text for Delete and Remove.
+    static let destructive = Color.adaptive(dark: NSColor(srgbRed: 1, green: 0.47, blue: 0.47, alpha: 1), light: NSColor(srgbRed: 0.8, green: 0.13, blue: 0.13, alpha: 1))
     static let zoom = Color(red: 0.43, green: 0.39, blue: 1.0)
     static let clip = Color(red: 0.94, green: 0.58, blue: 0.2)
     static let playhead = Color(red: 1.0, green: 0.31, blue: 0.43)
@@ -74,14 +125,14 @@ struct VideoToolButtonStyle: ButtonStyle {
 
         private var foreground: Color {
             guard isEnabled else { return VideoEditorTheme.textTertiary }
-            if destructive { return Color(red: 1, green: 0.45, blue: 0.45) }
+            if destructive { return VideoEditorTheme.destructive }
             return VideoEditorTheme.textPrimary
         }
 
         private var background: Color {
-            if prominent { return Color.white.opacity(configuration.isPressed ? 0.2 : (hovered ? 0.16 : 0.11)) }
-            if configuration.isPressed { return Color.white.opacity(0.14) }
-            return hovered && isEnabled ? Color.white.opacity(0.08) : Color.clear
+            if prominent { return VideoEditorTheme.ink.opacity(configuration.isPressed ? 0.2 : (hovered ? 0.16 : 0.11)) }
+            if configuration.isPressed { return VideoEditorTheme.ink.opacity(0.14) }
+            return hovered && isEnabled ? VideoEditorTheme.ink.opacity(0.08) : Color.clear
         }
     }
 }
@@ -98,17 +149,17 @@ struct VideoPrimaryButtonStyle: ButtonStyle {
         var body: some View {
             configuration.label
                 .font(.system(size: 13, weight: .semibold))
-                .foregroundStyle(.white.opacity(isEnabled ? 1 : 0.45))
+                .foregroundStyle(isEnabled ? Color.white : VideoEditorTheme.textTertiary)
                 .padding(.horizontal, 14)
                 .frame(height: 30)
                 .background(
                     RoundedRectangle(cornerRadius: 8, style: .continuous)
-                        .fill(isEnabled ? VideoEditorTheme.primary : Color.white.opacity(0.08))
+                        .fill(isEnabled ? VideoEditorTheme.primary : VideoEditorTheme.ink.opacity(0.08))
                         .brightness(configuration.isPressed ? -0.08 : 0)
                 )
                 .overlay(
                     RoundedRectangle(cornerRadius: 8, style: .continuous)
-                        .strokeBorder(Color.white.opacity(isEnabled ? 0.18 : 0.06), lineWidth: 1)
+                        .strokeBorder(isEnabled ? Color.white.opacity(0.18) : VideoEditorTheme.cardStroke, lineWidth: 1)
                 )
                 .shadow(color: VideoEditorTheme.primary.opacity(isEnabled ? 0.35 : 0), radius: 8, y: 2)
                 .scaleEffect(configuration.isPressed ? 0.98 : 1)
@@ -132,12 +183,12 @@ struct VideoSecondaryButtonStyle: ButtonStyle {
         var body: some View {
             configuration.label
                 .font(.system(size: 12, weight: .semibold))
-                .foregroundStyle(isEnabled ? (destructive ? Color(red: 1, green: 0.47, blue: 0.47) : VideoEditorTheme.textPrimary) : VideoEditorTheme.textTertiary)
+                .foregroundStyle(isEnabled ? (destructive ? VideoEditorTheme.destructive : VideoEditorTheme.textPrimary) : VideoEditorTheme.textTertiary)
                 .padding(.horizontal, 12)
                 .frame(minHeight: 28)
                 .background(
                     RoundedRectangle(cornerRadius: 7, style: .continuous)
-                        .fill(Color.white.opacity(configuration.isPressed ? 0.14 : (hovered && isEnabled ? 0.1 : 0.06)))
+                        .fill(VideoEditorTheme.ink.opacity(configuration.isPressed ? 0.14 : (hovered && isEnabled ? 0.1 : 0.06)))
                 )
                 .overlay(
                     RoundedRectangle(cornerRadius: 7, style: .continuous)
@@ -283,7 +334,7 @@ struct VideoSegmented<Value: Hashable>: View {
                         .frame(height: 24)
                         .background(
                             RoundedRectangle(cornerRadius: 6, style: .continuous)
-                                .fill(selected ? Color.white.opacity(0.14) : Color.clear)
+                                .fill(selected ? VideoEditorTheme.selectedFill : Color.clear)
                         )
                         .contentShape(Rectangle())
                 }
@@ -296,7 +347,7 @@ struct VideoSegmented<Value: Hashable>: View {
         .padding(2)
         .background(
             RoundedRectangle(cornerRadius: 8, style: .continuous)
-                .fill(Color.black.opacity(0.28))
+                .fill(VideoEditorTheme.well)
         )
         .overlay(
             RoundedRectangle(cornerRadius: 8, style: .continuous)

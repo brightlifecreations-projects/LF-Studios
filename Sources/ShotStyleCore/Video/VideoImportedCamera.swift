@@ -274,7 +274,7 @@ struct VideoCameraVideoSection: View {
                         .multilineTextAlignment(.trailing)
                         .padding(.horizontal, 6)
                         .frame(width: 64, height: 26)
-                        .background(RoundedRectangle(cornerRadius: 6, style: .continuous).fill(Color.black.opacity(0.3)))
+                        .background(RoundedRectangle(cornerRadius: 6, style: .continuous).fill(VideoEditorTheme.well))
                         .overlay(RoundedRectangle(cornerRadius: 6, style: .continuous).strokeBorder(VideoEditorTheme.cardStroke, lineWidth: 1))
                         .focused($editingOffset)
                         .onSubmit(commitOffset)
@@ -400,7 +400,7 @@ struct VideoCameraFootageLane: View, Equatable {
             // the offset field).
             let label = (Text(Image(systemName: "video.fill")) + Text(verbatim: " \(camera.name)  \(VideoCameraVideoSection.signed(offset))"))
                 .font(.system(size: 10, weight: .semibold))
-                .foregroundColor(.white.opacity(0.92))
+                .foregroundColor(VideoEditorTheme.laneText(0.92))
             guard !shown.isEmpty else {
                 // Wholly outside the video: still there to drag back.
                 let frame = CGRect(x: geometry.x(0) + 1, y: 0.5, width: max(geometry.width - M.inset * 2 - 2, 10), height: size.height - 1)

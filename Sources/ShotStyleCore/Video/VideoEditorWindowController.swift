@@ -128,8 +128,8 @@ final class VideoDemoEditorWindowController: NSWindowController, NSWindowDelegat
         window.title = sourceURL.deletingPathExtension().lastPathComponent
         window.titleVisibility = .hidden
         window.titlebarAppearsTransparent = true
-        window.appearance = NSAppearance(named: .darkAqua)
-        window.backgroundColor = NSColor(red: 0.047, green: 0.047, blue: 0.055, alpha: 1)
+        // Follows Settings → General → Appearance.
+        window.backgroundColor = .adaptive(dark: NSColor(srgbRed: 0.047, green: 0.047, blue: 0.055, alpha: 1), light: NSColor(srgbRed: 0.925, green: 0.925, blue: 0.937, alpha: 1))
         window.minSize = NSSize(width: 1080, height: 700)
         window.collectionBehavior = [.managed, .moveToActiveSpace, .fullScreenPrimary]
         window.isReleasedWhenClosed = false

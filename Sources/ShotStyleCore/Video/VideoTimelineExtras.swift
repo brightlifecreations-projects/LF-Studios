@@ -101,18 +101,18 @@ struct VideoTimelineExtrasLayer: View {
         let width = max(CGFloat(end - start) * geometry.pointsPerSecond - 2, 8)
         return ZStack(alignment: .leading) {
             RoundedRectangle(cornerRadius: 8, style: .continuous)
-                .fill(LinearGradient(colors: [VideoEditorTheme.card.opacity(1), Color.white.opacity(0.1)], startPoint: .top, endPoint: .bottom))
+                .fill(LinearGradient(colors: [VideoEditorTheme.card.opacity(1), VideoEditorTheme.ink.opacity(0.1)], startPoint: .top, endPoint: .bottom))
             RoundedRectangle(cornerRadius: 8, style: .continuous)
-                .strokeBorder(Color.white.opacity(0.28), style: StrokeStyle(lineWidth: 1, dash: [4, 3]))
+                .strokeBorder(VideoEditorTheme.ink.opacity(0.3), style: StrokeStyle(lineWidth: 1, dash: [4, 3]))
             if width > 46 {
                 VStack(alignment: .leading, spacing: 2) {
                     Label(isIntro ? L("Intro") : L("Outro"), systemImage: "textformat.size")
                         .font(.system(size: 10, weight: .bold))
-                        .foregroundStyle(.white.opacity(0.9))
+                        .foregroundStyle(VideoEditorTheme.textPrimary)
                     if width > 90, !card.title.isEmpty {
                         Text(card.title)
                             .font(.system(size: 10, weight: .medium))
-                            .foregroundStyle(.white.opacity(0.65))
+                            .foregroundStyle(VideoEditorTheme.textSecondary)
                     }
                 }
                 .lineLimit(1)

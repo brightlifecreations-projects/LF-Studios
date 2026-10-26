@@ -1342,6 +1342,8 @@ private final class RecordingWindowChooserWindow: NSWindow {
         self.selectHandler = selectHandler
         self.closeHandler = closeHandler
         super.init(contentRect: NSRect(x: 0, y: 0, width: Self.panelWidth, height: Self.panelHeight), styleMask: [.borderless], backing: .buffered, defer: false)
+        // Floating over any screen: always the dark look.
+        appearance = AppAppearance.overlay
 
         isOpaque = false
         backgroundColor = .clear
@@ -1741,6 +1743,8 @@ private final class RecordingScreenChooserWindow: NSWindow {
         let rowCount = screens.count + (allDisplaysHandler == nil ? 0 : 1)
         let height = Self.headerHeight + CGFloat(rowCount) * Self.rowStride + Self.bottomPadding
         super.init(contentRect: NSRect(x: 0, y: 0, width: Self.panelWidth, height: height), styleMask: [.borderless], backing: .buffered, defer: false)
+        // Floating over any screen: always the dark look.
+        appearance = AppAppearance.overlay
 
         isOpaque = false
         backgroundColor = .clear
@@ -2086,6 +2090,8 @@ final class RecordingControlsWindow: NSWindow {
             backing: .buffered,
             defer: false
         )
+        // Floating over any screen: always the dark look.
+        appearance = AppAppearance.overlay
 
         isOpaque = false
         backgroundColor = .clear
