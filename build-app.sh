@@ -132,14 +132,22 @@ if [[ "$UNIVERSAL" =~ ^(1|true|yes|on)$ ]]; then
             echo "✗ Build failed — binary not found at $ARCH_DIR/$APP_NAME"
             exit 1
         fi
-        ARCH_BINARIES+=("$ARCH_DIR/$APP_NAME")
+        # Copied aside right away: newer SwiftPM builds every architecture
+        # into the same Products folder, so the next build overwrites it.
+        mkdir -p "$SCRIPT_DIR/.build/universal"
+        cp "$ARCH_DIR/$APP_NAME" "$SCRIPT_DIR/.build/universal/$APP_NAME-$arch"
+        ARCH_BINARIES+=("$SCRIPT_DIR/.build/universal/$APP_NAME-$arch")
         # Resource bundles and Sparkle.framework come from the first build.
         [ -n "$BUILD_DIR" ] || BUILD_DIR="$ARCH_DIR"
     done
     BINARY="$SCRIPT_DIR/.build/universal/$APP_NAME"
-    mkdir -p "$(dirname "$BINARY")"
     lipo -create "${ARCH_BINARIES[@]}" -output "$BINARY"
-    echo "  Architectures: $(lipo -archs "$BINARY")"
+    ARCHS="$(lipo -archs "$BINARY")"
+    echo "  Architectures: $ARCHS"
+    if [[ "$ARCHS" != *arm64* || "$ARCHS" != *x86_64* ]]; then
+        echo "✗ The universal binary is missing an architecture ($ARCHS)"
+        exit 1
+    fi
 else
     echo "▶ Building $APP_NAME (release)…"
     release_build
