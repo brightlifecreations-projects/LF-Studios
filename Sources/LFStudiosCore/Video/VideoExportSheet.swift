@@ -252,6 +252,14 @@ struct VideoExportSheet: View {
                 .keyboardShortcut(.defaultAction)
                 .disabled(!canExport)
             }
+            Button {
+                model.showCreativeHandoff()
+            } label: {
+                Label(L("Creative Handoff…"), systemImage: "shippingbox")
+                    .frame(maxWidth: .infinity)
+            }
+            .buttonStyle(VideoSecondaryButtonStyle())
+            .help(L("Every part of this video as its own file — screen, camera, sound, captions, the finished video, and a timeline for editing apps (⇧⌘E)"))
         }
     }
 

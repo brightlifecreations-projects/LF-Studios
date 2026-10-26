@@ -147,6 +147,16 @@ final class AppearanceSnapshotTests: XCTestCase {
         try await render(VideoEditorRootView(model: model), size: CGSize(width: 1512, height: 944), name: "editor-cropping")
     }
 
+    func testRenderCreativeHandoffInBothLooks() async throws {
+        let model = try await demoModel(camera: true)
+        furnish(model)
+        model.isHandoffPresented = true
+        try await render(VideoHandoffSheet(model: model), size: CGSize(width: 900, height: 820), name: "handoff-dialog")
+        let job = VideoHandoffJob()
+        model.handoffJob = job
+        try await render(VideoHandoffSheet(model: model), size: CGSize(width: 900, height: 420), name: "handoff-preparing")
+    }
+
     func testRenderTheEditorWithoutACameraInBothLooks() async throws {
         let model = try await demoModel()
         model.inspectorTab = .camera

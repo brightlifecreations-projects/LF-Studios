@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key> — %@ free there</key>
+	<string> – %@ frei</string>
 	<key>%@ (%@)</key>
 	<string>%@ (%@)</string>
 	<key>%@ (This Mac)</key>
@@ -64,6 +66,10 @@
 	<string>%@ – %@</string>
 	<key>%@ — LF Studios lives in your menu bar</key>
 	<string>%@ – LF Studios findest du in der Menüleiste</string>
+	<key>%@ — about %lld min left</key>
+	<string>%1$@ – noch etwa %2$lld Min.</string>
+	<key>%@ — about a minute left</key>
+	<string>%@ – noch etwa eine Minute</string>
 	<key>%@ — click to change</key>
 	<string>%@ – zum Ändern klicken</string>
 	<key>%@ → %@ — the part you ⇧-dragged on the timeline</key>
@@ -80,6 +86,8 @@
 	<string>nur %@–%@</string>
 	<key>%lld captions</key>
 	<string>%lld Untertitel</string>
+	<key>%lld files, about %@</key>
+	<string>%1$lld Dateien, etwa %2$@</string>
 	<key>%lld of %lld captures</key>
 	<string>%lld von %lld Bildschirmfotos</string>
 	<key>%lld px · Esc or Done finishes</key>
@@ -220,6 +228,8 @@
 	<string>Alle Befehle (⌘K)</string>
 	<key>All configured</key>
 	<string>Alle eingerichtet</string>
+	<key>All files</key>
+	<string>Alle Dateien</string>
 	<key>All zooms set to %@</key>
 	<string>Alle Zooms auf %@ gesetzt</string>
 	<key>Allow Access…</key>
@@ -346,6 +356,8 @@
 	<string>Verhalten</string>
 	<key>Behind you</key>
 	<string>Hinter dir</string>
+	<key>Best (ProRes 422 HQ)</key>
+	<string>Beste (ProRes 422 HQ)</string>
 	<key>Between clips</key>
 	<string>Zwischen Clips</string>
 	<key>Black</key>
@@ -436,6 +448,10 @@
 	<string>Kameravideo entfernt – ⌘Z zum Widerrufen</string>
 	<key>Camera video — drag to line it up with the recording</key>
 	<string>Kameravideo – ziehen, um es an der Aufnahme auszurichten</string>
+	<key>Camera video “%@” — none of it is in the edit</key>
+	<string>Kameravideo „%@“ – nichts davon ist im Schnitt</string>
+	<key>Camera video “%@” — the file is missing</key>
+	<string>Kameravideo „%@“ – die Datei fehlt</string>
 	<key>Camera video “%@”, %@</key>
 	<string>Kameravideo „%1$@“, %2$@</string>
 	<key>Camera video: %@</key>
@@ -456,6 +472,8 @@
 	<string>Diesen Export abbrechen</string>
 	<key>Cancelled</key>
 	<string>Abgebrochen</string>
+	<key>Cancelled — the partly made folder was removed</key>
+	<string>Abgebrochen – der halb fertige Ordner wurde entfernt</string>
 	<key>Canyon Silk</key>
 	<string>Canyonseide</string>
 	<key>Caption</key>
@@ -540,6 +558,8 @@
 	<string>Wähle „Bereich aufnehmen“ im LF-Studios-Menü, um loszulegen</string>
 	<key>Choose Image…</key>
 	<string>Bild auswählen …</string>
+	<key>Choose Location…</key>
+	<string>Ort wählen …</string>
 	<key>Choose a .ttf or .otf font. LF Studios keeps its own copy, so it keeps working if the file is deleted.</key>
 	<string>Wähle eine .ttf- oder .otf-Schrift. LF Studios behält eine eigene Kopie, damit sie auch funktioniert, wenn die Datei gelöscht wird.</string>
 	<key>Choose a language</key>
@@ -564,6 +584,8 @@
 	<string>Wähle das Kameravideo für die Blase</string>
 	<key>Choose what happens immediately after taking a screenshot.</key>
 	<string>Lege fest, was direkt nach einem Bildschirmfoto passiert.</string>
+	<key>Choose where to put the handoff folder — any folder or drive</key>
+	<string>Wähle, wohin der Übergabeordner soll – jeder Ordner oder jedes Laufwerk</string>
 	<key>Choose window</key>
 	<string>Fenster wählen</string>
 	<key>Choose...</key>
@@ -648,6 +670,8 @@
 	<string>Clip beginnt/endet hier</string>
 	<key>Clipboard</key>
 	<string>Zwischenablage</string>
+	<key>Clips</key>
+	<string>Clips</string>
 	<key>Close</key>
 	<string>Schließen</string>
 	<key>Close (Esc)</key>
@@ -742,8 +766,12 @@
 	<string>Das Bildschirmfoto konnte nicht kopiert werden. Versuche es erneut oder sichere es stattdessen.</string>
 	<key>Couldn't create the GIF file. Check that you can save to that folder, then export again.</key>
 	<string>Die GIF-Datei konnte nicht erstellt werden. Prüfe, ob du in diesem Ordner sichern darfst, und exportiere erneut.</string>
+	<key>Couldn't create the handoff folder — %@</key>
+	<string>Der Übergabeordner konnte nicht erstellt werden – %@</string>
 	<key>Couldn't create the video file.</key>
 	<string>Die Videodatei konnte nicht erstellt werden.</string>
+	<key>Couldn't finish the file</key>
+	<string>Die Datei konnte nicht abgeschlossen werden</string>
 	<key>Couldn't make captions</key>
 	<string>Untertitel konnten nicht erstellt werden</string>
 	<key>Couldn't make the click sound. Turn off Click sounds (Audio tab), then export again.</key>
@@ -756,6 +784,10 @@
 	<string>Dieses Video konnte nicht geöffnet werden</string>
 	<key>Couldn't open “%@”</key>
 	<string>„%@“ konnte nicht geöffnet werden</string>
+	<key>Couldn't prepare the sound</key>
+	<string>Der Ton konnte nicht vorbereitet werden</string>
+	<key>Couldn't prepare the video</key>
+	<string>Das Video konnte nicht vorbereitet werden</string>
 	<key>Couldn't prepare the video. Export again; if it keeps happening, restart LF Studios.</key>
 	<string>Das Video konnte nicht vorbereitet werden. Exportiere erneut; wenn das weiterhin passiert, starte LF Studios neu.</string>
 	<key>Couldn't read that audio file</key>
@@ -764,6 +796,10 @@
 	<string>Die Aufnahme konnte für das GIF nicht gelesen werden. Exportiere einen kürzeren Teil oder wähle MP4.</string>
 	<key>Couldn't read the recording. Check that its file is still there, then export again.</key>
 	<string>Die Aufnahme konnte nicht gelesen werden. Prüfe, ob die Datei noch vorhanden ist, und exportiere erneut.</string>
+	<key>Couldn't read the sound</key>
+	<string>Der Ton konnte nicht gelesen werden</string>
+	<key>Couldn't read the video</key>
+	<string>Das Video konnte nicht gelesen werden</string>
 	<key>Couldn't save the captions file</key>
 	<string>Die Untertiteldatei konnte nicht gesichert werden</string>
 	<key>Couldn't save the presets file</key>
@@ -782,14 +818,24 @@
 	<string>Der Video-Encoder konnte nicht eingerichtet werden. Wähle H.264 oder eine niedrigere Auflösung und exportiere erneut.</string>
 	<key>Couldn't start the export. Export again; if it keeps happening, restart LF Studios.</key>
 	<string>Der Export konnte nicht gestartet werden. Exportiere erneut; wenn das weiterhin passiert, starte LF Studios neu.</string>
+	<key>Couldn't start writing</key>
+	<string>Das Schreiben konnte nicht starten</string>
 	<key>Couldn't translate (%@). Try again, or pick another language.</key>
 	<string>Übersetzung fehlgeschlagen (%@). Versuche es erneut oder wähle eine andere Sprache.</string>
+	<key>Couldn't write a frame</key>
+	<string>Ein Bild konnte nicht geschrieben werden</string>
 	<key>Couldn't write the GIF. Check that there's free space, or export a shorter part.</key>
 	<string>Das GIF konnte nicht geschrieben werden. Prüfe, ob genug Speicherplatz frei ist, oder exportiere einen kürzeren Teil.</string>
 	<key>Couldn't write the video. Check that there's free space and that you can save to that folder, then export again.</key>
 	<string>Das Video konnte nicht geschrieben werden. Prüfe, ob genug Speicherplatz frei ist und du in diesem Ordner sichern darfst, und exportiere erneut.</string>
 	<key>Countdown</key>
 	<string>Countdown</string>
+	<key>Create Handoff</key>
+	<string>Übergabe erstellen</string>
+	<key>Creative Handoff</key>
+	<string>Kreative Übergabe</string>
+	<key>Creative Handoff…</key>
+	<string>Kreative Übergabe …</string>
 	<key>Crimson Ridge</key>
 	<string>Purpurgrat</string>
 	<key>Crisp and compact — the best default</key>
@@ -1070,6 +1116,12 @@
 	<string>Alle Schnitte, Zooms, Beschriftungen, Untertitel und Stiländerungen an diesem Video werden entfernt – hinzugefügte Aufnahmen bleiben erhalten. Du kannst das widerrufen.</string>
 	<key>Every cut, zoom, annotation, caption, and style change on this video is removed. You can undo this.</key>
 	<string>Alle Schnitte, Zooms, Beschriftungen, Untertitel und Stiländerungen an diesem Video werden entfernt. Du kannst das widerrufen.</string>
+	<key>Every file starts at the same moment and is as long as the others: drop them all at 0:00 and they play in sync, the camera too.</key>
+	<string>Jede Datei beginnt im selben Moment und ist so lang wie die anderen: Lege alle bei 0:00 ab, und sie laufen synchron – die Kamera auch.</string>
+	<key>Every part of this video as its own file — screen, camera, sound, captions, the finished video, and a timeline for editing apps (⇧⌘E)</key>
+	<string>Jeder Teil dieses Videos als eigene Datei – Bildschirm, Kamera, Ton, Untertitel, das fertige Video und eine Timeline für Schnittprogramme (⇧⌘E)</string>
+	<key>Every part of this video as its own file, in a new folder — for another editor or editing app.</key>
+	<string>Jeder Teil dieses Videos als eigene Datei in einem neuen Ordner – für eine andere Person im Schnitt oder ein Schnittprogramm.</string>
 	<key>Every sound level is at 0 (Audio tab) — this export will have no sound.</key>
 	<string>Alle Lautstärken stehen auf 0 (Tab „Audio“) – dieser Export hat keinen Ton.</string>
 	<key>Everything is ready</key>
@@ -1100,6 +1152,8 @@
 	<string>Export: %@</string>
 	<key>Exported</key>
 	<string>Exportiert</string>
+	<key>Exported with your export settings</key>
+	<string>Mit deinen Exporteinstellungen exportiert</string>
 	<key>Exported without Enhance voice — it couldn't finish.</key>
 	<string>Ohne „Stimme verbessern“ exportiert – die Bereinigung wurde nicht fertig.</string>
 	<key>Exported · %@</key>
@@ -1138,10 +1192,14 @@
 	<string>Momente, in denen nichts passiert, im Zeitraffer zeigen</string>
 	<key>File</key>
 	<string>Ablage</string>
+	<key>File %lld of %lld: %@</key>
+	<string>Datei %1$lld von %2$lld: %3$@</string>
 	<key>File Name</key>
 	<string>Dateiname</string>
 	<key>File not found</key>
 	<string>Datei nicht gefunden</string>
+	<key>Files are copied as they are wherever they can be. Only what has to change — clips cut to your edit, a camera with its background removed — is re-encoded to ProRes.</key>
+	<string>Dateien werden, wo immer es geht, unverändert kopiert. Nur was sich ändern muss – auf deinen Schnitt gekürzte Clips, eine Kamera ohne Hintergrund – wird in ProRes neu codiert.</string>
 	<key>Fill the Frame, Follow the Cursor</key>
 	<string>Bild füllen und dem Zeiger folgen</string>
 	<key>Filled Rectangle</key>
@@ -1178,6 +1236,8 @@
 	<string>Folgt dem Zeiger</string>
 	<key>Font</key>
 	<string>Schrift</string>
+	<key>For Final Cut Pro, DaVinci Resolve, and Adobe Premiere Pro</key>
+	<string>Für Final Cut Pro, DaVinci Resolve und Adobe Premiere Pro</string>
 	<key>Forever</key>
 	<string>Für immer</string>
 	<key>Format</key>
@@ -1216,6 +1276,8 @@
 	<string>Kamera im Vollbild für Intro &amp; Outro</string>
 	<key>Full frame (no background)</key>
 	<string>Ganzes Bild (ohne Hintergrund)</string>
+	<key>Full original files</key>
+	<string>Vollständige Originale</string>
 	<key>Full screen: %@</key>
 	<string>Vollbild: %@</string>
 	<key>Full-Camera Intro and Outro</key>
@@ -1250,6 +1312,14 @@
 	<string>Graphit</string>
 	<key>Green</key>
 	<string>Grün</string>
+	<key>Handoff didn't finish</key>
+	<string>Übergabe nicht fertig geworden</string>
+	<key>Handoff ready — show it</key>
+	<string>Übergabe fertig – anzeigen</string>
+	<key>Handoff — %@</key>
+	<string>Übergabe – %@</string>
+	<key>Handoff — getting ready</key>
+	<string>Übergabe – wird vorbereitet</string>
 	<key>Hard Cuts Between Clips</key>
 	<string>Harte Schnitte zwischen Clips</string>
 	<key>Hard cut</key>
@@ -1320,10 +1390,14 @@
 	<string>Start früher</string>
 	<key>In later</key>
 	<string>Start später</string>
+	<key>Include a timeline for editing apps</key>
+	<string>Timeline für Schnittprogramme beilegen</string>
 	<key>Include aspect ratio (%@)</key>
 	<string>Seitenverhältnis einbeziehen (%@)</string>
 	<key>Include media (works on any Mac)</key>
 	<string>Medien einschließen (funktioniert auf jedem Mac)</string>
+	<key>Include the finished video</key>
+	<string>Fertiges Video beilegen</string>
 	<key>Includes: %@</key>
 	<string>Enthält: %@</string>
 	<key>Inspector tabs</key>
@@ -1358,6 +1432,8 @@
 	<string>Es wurde bewegt, umbenannt oder gelöscht. Öffne es an seinem aktuellen Ort.</string>
 	<key>It was recorded into the pixels, so it can't be resized or smoothed. New recordings capture an editable cursor by default (Settings → Recording).</key>
 	<string>Er wurde direkt ins Bild aufgezeichnet und lässt sich daher nicht vergrößern oder glätten. Neue Aufnahmen zeichnen standardmäßig einen bearbeitbaren Zeiger auf („Einstellungen“ → „Aufzeichnung“).</string>
+	<key>It won't fit there. Choose another location, or pick Smaller files.</key>
+	<string>Dort ist nicht genug Platz. Wähle einen anderen Ort oder „Kleinere Dateien“.</string>
 	<key>JPEG Quality</key>
 	<string>JPEG-Qualität</string>
 	<key>Jump here</key>
@@ -1458,6 +1534,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Layouts</string>
 	<key>Left</key>
 	<string>Links</string>
+	<key>Left out:</key>
+	<string>Weggelassen:</string>
 	<key>Length</key>
 	<string>Dauer</string>
 	<key>Letterbox Instead of Following the Cursor</key>
@@ -1472,6 +1550,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Limettensignal</string>
 	<key>Line</key>
 	<string>Linie</string>
+	<key>Line everything up</key>
+	<string>Alles ausrichten</string>
 	<key>Line width</key>
 	<string>Linienstärke</string>
 	<key>Linen</key>
@@ -1618,6 +1698,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Musik – klicken, um Lautstärke, Blenden und Absenkung zu ändern</string>
 	<key>Music “%@”</key>
 	<string>Musik „%@“</string>
+	<key>Music “%@” — the file is missing</key>
+	<string>Musik „%@“ – die Datei fehlt</string>
 	<key>Mute Clip</key>
 	<string>Clip stummschalten</string>
 	<key>Mute preview</key>
@@ -1710,6 +1792,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Keine Zeigerdaten in diesem Video</string>
 	<key>No idle moments found — nice and tight</key>
 	<string>Keine Leerlaufphasen gefunden – schön straff</string>
+	<key>No location chosen</key>
+	<string>Kein Ort gewählt</string>
 	<key>No long pauses to shorten</key>
 	<string>Keine langen Pausen zum Kürzen</string>
 	<key>No microphone connected</key>
@@ -1756,6 +1840,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Nicht genug Speicherplatz für diese Aufzeichnung: Benötigt werden etwa %@, frei sind %@. Gib etwas Speicherplatz frei und versuche es erneut.</string>
 	<key>Not enough free disk space for this recording: it needs about %@ free, and %@ is available. Free up space, or choose Balanced quality or 30 fps.</key>
 	<string>Nicht genug Speicherplatz für diese Aufzeichnung: Benötigt werden etwa %@, frei sind %@. Gib Speicherplatz frei oder wähle die Qualität „Ausgewogen“ oder 30 fps.</string>
+	<key>Not enough space: the handoff needs about %@ and %@ is free there.</key>
+	<string>Nicht genug Platz: Die Übergabe braucht etwa %1$@, frei sind dort %2$@.</string>
 	<key>Not for this video</key>
 	<string>Nicht für dieses Video</string>
 	<key>Not now</key>
@@ -1908,6 +1994,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>QR-Code mit Telefonnummer gefunden</string>
 	<key>Picked up where you left off</key>
 	<string>Weiter, wo du aufgehört hast</string>
+	<key>Picture “%@” — the file is missing</key>
+	<string>Bild „%@“ – die Datei fehlt</string>
 	<key>Pin</key>
 	<string>Anheften</string>
 	<key>Pin to Screen</key>
@@ -2578,6 +2666,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Berechtigung für Bildschirmaufnahme erforderlich</string>
 	<key>Screen recording didn't start in time. Try again.</key>
 	<string>Die Bildschirmaufnahme hat nicht rechtzeitig begonnen. Versuche es erneut.</string>
+	<key>Screen recording “%@” — the file is missing</key>
+	<string>Bildschirmaufnahme „%@“ – die Datei fehlt</string>
 	<key>Screenshot Editor</key>
 	<string>Bildschirmfoto-Editor</string>
 	<key>Screenshot canvas</key>
@@ -2776,6 +2866,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Langsam</string>
 	<key>Small</key>
 	<string>Klein</string>
+	<key>Smaller files (ProRes 422)</key>
+	<string>Kleinere Dateien (ProRes 422)</string>
 	<key>Smallest files, great for docs and chat</key>
 	<string>Kleinste Dateien, ideal für Dokumente und Chats</string>
 	<key>Smooth</key>
@@ -2976,6 +3068,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Der Export läuft im Hintergrund weiter (Esc)</string>
 	<key>The export stopped unexpectedly (%@). Try again — if it keeps happening, export at a lower resolution or in H.264.</key>
 	<string>Der Export wurde unerwartet beendet (%@). Versuche es erneut – wenn das weiterhin passiert, exportiere mit niedrigerer Auflösung oder in H.264.</string>
+	<key>The handoff is ready</key>
+	<string>Die Übergabe ist fertig</string>
 	<key>The menu bar icon is LF Studios' main entry point. While it is hidden, open LF Studios again from Finder, Launchpad, or Spotlight to bring these Preferences back.</key>
 	<string>Über das Symbol in der Menüleiste erreichst du LF Studios. Solange es ausgeblendet ist, öffne LF Studios erneut über den Finder, das Launchpad oder Spotlight, um diese Einstellungen wieder aufzurufen.</string>
 	<key>The microphone couldn't start, so this recording has no mic.</key>
@@ -3006,6 +3100,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Die Zeitleiste ist leer. Stelle einen Clip wieder her und exportiere erneut.</string>
 	<key>The video encoder is busy — another app may be recording or exporting. Wait a moment and try again, or choose H.264.</key>
 	<string>Der Video-Encoder ist belegt – eventuell zeichnet oder exportiert gerade eine andere App. Warte einen Moment und versuche es erneut, oder wähle H.264.</string>
+	<key>The video has no picture</key>
+	<string>Das Video hat kein Bild</string>
 	<key>The video's own recording can't be removed</key>
 	<string>Die eigene Aufnahme des Videos kann nicht entfernt werden</string>
 	<key>The voice track is empty, so there's nothing to clean up. Turn off Enhance voice to keep the original sound.</key>
@@ -3022,6 +3118,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Hier gibt es bereits einen Zoom</string>
 	<key>There's no video in this file</key>
 	<string>Diese Datei enthält kein Video</string>
+	<key>There's nothing to write</key>
+	<string>Es gibt nichts zu schreiben</string>
 	<key>Thickness</key>
 	<string>Stärke</string>
 	<key>Thin</key>
@@ -3030,6 +3128,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Dieses GIF ist für seine Größe zu lang – es bräuchte etwa %@ Arbeitsspeicher. Wähle eine kleinere Größe oder weniger Bilder pro Sekunde, exportiere einen Teil des Videos oder wähle MP4.</string>
 	<key>This Mac can't translate between these languages. Pick another language.</key>
 	<string>Dieser Mac kann nicht zwischen diesen Sprachen übersetzen. Wähle eine andere Sprache.</string>
+	<key>This Mac has no ProRes chip, so the re-encoded files take a while — the progress shows how long.</key>
+	<string>Dieser Mac hat keinen ProRes-Chip, die neu codierten Dateien dauern deshalb eine Weile – der Fortschritt zeigt, wie lange.</string>
 	<key>This Week</key>
 	<string>Diese Woche</string>
 	<key>This list</key>
@@ -3122,6 +3222,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Clipende auf die Abspielposition trimmen (O)</string>
 	<key>Trim the clip's start to the playhead (I)</key>
 	<string>Clipanfang auf die Abspielposition trimmen (I)</string>
+	<key>Trimmed to my edit</key>
+	<string>Auf meinen Schnitt gekürzt</string>
 	<key>Try Again</key>
 	<string>Erneut versuchen</string>
 	<key>Try it right now — Capture Area is also in the menu bar.</key>
@@ -3500,6 +3602,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Ja</string>
 	<key>Yesterday</key>
 	<string>Gestern</string>
+	<key>You can close this — the handoff keeps going.</key>
+	<string>Du kannst das schließen – die Übergabe läuft weiter.</string>
 	<key>You're all set — LF Studios lives here</key>
 	<string>Alles bereit – LF Studios findest du hier</string>
 	<key>YouTube, presentations</key>

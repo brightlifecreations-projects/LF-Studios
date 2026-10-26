@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key> — %@ free there</key>
+	<string> — там свободно %@</string>
 	<key>%@ (%@)</key>
 	<string>%@ (%@)</string>
 	<key>%@ (This Mac)</key>
@@ -64,6 +66,10 @@
 	<string>%@ — %@</string>
 	<key>%@ — LF Studios lives in your menu bar</key>
 	<string>%@ — LF Studios находится в строке меню</string>
+	<key>%@ — about %lld min left</key>
+	<string>%1$@ — осталось около %2$lld мин</string>
+	<key>%@ — about a minute left</key>
+	<string>%@ — осталось около минуты</string>
 	<key>%@ — click to change</key>
 	<string>%@ — нажмите, чтобы изменить</string>
 	<key>%@ → %@ — the part you ⇧-dragged on the timeline</key>
@@ -76,6 +82,8 @@
 	<string>%@ с</string>
 	<key>%@–%@ only</key>
 	<string>только %@–%@</string>
+	<key>%lld files, about %@</key>
+	<string>Файлов: %1$lld, около %2$@</string>
 	<key>%lld of %lld captures</key>
 	<string>Снимков: %lld из %lld</string>
 	<key>%lld px · Esc or Done finishes</key>
@@ -214,6 +222,8 @@
 	<string>Все команды (⌘K)</string>
 	<key>All configured</key>
 	<string>Все настроено</string>
+	<key>All files</key>
+	<string>Все файлы</string>
 	<key>All zooms set to %@</key>
 	<string>Для всех увеличений задано %@</string>
 	<key>Allow Access…</key>
@@ -340,6 +350,8 @@
 	<string>Поведение</string>
 	<key>Behind you</key>
 	<string>Позади вас</string>
+	<key>Best (ProRes 422 HQ)</key>
+	<string>Лучшее (ProRes 422 HQ)</string>
 	<key>Between clips</key>
 	<string>Между клипами</string>
 	<key>Black</key>
@@ -430,6 +442,10 @@
 	<string>Видео с камеры удалено — ⌘Z, чтобы отменить</string>
 	<key>Camera video — drag to line it up with the recording</key>
 	<string>Видео с камеры — перетащите, чтобы совместить с записью</string>
+	<key>Camera video “%@” — none of it is in the edit</key>
+	<string>Видео с камеры «%@» — ни один фрагмент не попал в монтаж</string>
+	<key>Camera video “%@” — the file is missing</key>
+	<string>Видео с камеры «%@» — файл не найден</string>
 	<key>Camera video “%@”, %@</key>
 	<string>Видео с камеры «%1$@», %2$@</string>
 	<key>Camera video: %@</key>
@@ -450,6 +466,8 @@
 	<string>Отменить этот экспорт</string>
 	<key>Cancelled</key>
 	<string>Отменено</string>
+	<key>Cancelled — the partly made folder was removed</key>
+	<string>Отменено — недоделанная папка удалена</string>
 	<key>Canyon Silk</key>
 	<string>Шелк каньона</string>
 	<key>Caption</key>
@@ -534,6 +552,8 @@
 	<string>Чтобы начать, выберите «Снять область» в меню LF Studios</string>
 	<key>Choose Image…</key>
 	<string>Выбрать изображение…</string>
+	<key>Choose Location…</key>
+	<string>Выбрать место…</string>
 	<key>Choose a .ttf or .otf font. LF Studios keeps its own copy, so it keeps working if the file is deleted.</key>
 	<string>Выберите шрифт .ttf или .otf. LF Studios сохранит свою копию, и шрифт продолжит работать, даже если файл удалить.</string>
 	<key>Choose a language</key>
@@ -558,6 +578,8 @@
 	<string>Выберите видео с камеры для пузыря</string>
 	<key>Choose what happens immediately after taking a screenshot.</key>
 	<string>Выберите, что происходит сразу после снимка экрана.</string>
+	<key>Choose where to put the handoff folder — any folder or drive</key>
+	<string>Выберите, куда положить папку для передачи — любая папка или диск</string>
 	<key>Choose window</key>
 	<string>Выбрать окно</string>
 	<key>Choose...</key>
@@ -642,6 +664,8 @@
 	<string>Клип начинается / заканчивается здесь</string>
 	<key>Clipboard</key>
 	<string>Буфер обмена</string>
+	<key>Clips</key>
+	<string>Клипы</string>
 	<key>Close</key>
 	<string>Закрыть</string>
 	<key>Close (Esc)</key>
@@ -736,8 +760,12 @@
 	<string>Не удалось скопировать снимок экрана. Повторите попытку или сохраните его.</string>
 	<key>Couldn't create the GIF file. Check that you can save to that folder, then export again.</key>
 	<string>Не удалось создать файл GIF. Проверьте, можно ли сохранять в эту папку, и экспортируйте снова.</string>
+	<key>Couldn't create the handoff folder — %@</key>
+	<string>Не удалось создать папку для передачи — %@</string>
 	<key>Couldn't create the video file.</key>
 	<string>Не удалось создать видеофайл.</string>
+	<key>Couldn't finish the file</key>
+	<string>Не удалось завершить файл</string>
 	<key>Couldn't make captions</key>
 	<string>Не удалось создать субтитры</string>
 	<key>Couldn't make the click sound. Turn off Click sounds (Audio tab), then export again.</key>
@@ -750,6 +778,10 @@
 	<string>Не удалось открыть это видео</string>
 	<key>Couldn't open “%@”</key>
 	<string>Не удалось открыть «%@»</string>
+	<key>Couldn't prepare the sound</key>
+	<string>Не удалось подготовить звук</string>
+	<key>Couldn't prepare the video</key>
+	<string>Не удалось подготовить видео</string>
 	<key>Couldn't prepare the video. Export again; if it keeps happening, restart LF Studios.</key>
 	<string>Не удалось подготовить видео. Экспортируйте снова; если ошибка повторится, перезапустите LF Studios.</string>
 	<key>Couldn't read that audio file</key>
@@ -758,6 +790,10 @@
 	<string>Не удалось прочитать запись для GIF. Попробуйте экспортировать фрагмент покороче или выберите MP4.</string>
 	<key>Couldn't read the recording. Check that its file is still there, then export again.</key>
 	<string>Не удалось прочитать запись. Проверьте, на месте ли ее файл, и экспортируйте снова.</string>
+	<key>Couldn't read the sound</key>
+	<string>Не удалось прочитать звук</string>
+	<key>Couldn't read the video</key>
+	<string>Не удалось прочитать видео</string>
 	<key>Couldn't save the captions file</key>
 	<string>Не удалось сохранить файл субтитров</string>
 	<key>Couldn't save the presets file</key>
@@ -776,14 +812,24 @@
 	<string>Не удалось настроить видеокодер. Выберите H.264 или более низкое разрешение и экспортируйте снова.</string>
 	<key>Couldn't start the export. Export again; if it keeps happening, restart LF Studios.</key>
 	<string>Не удалось начать экспорт. Экспортируйте снова; если ошибка повторится, перезапустите LF Studios.</string>
+	<key>Couldn't start writing</key>
+	<string>Не удалось начать запись</string>
 	<key>Couldn't translate (%@). Try again, or pick another language.</key>
 	<string>Не удалось перевести (%@). Повторите попытку или выберите другой язык.</string>
+	<key>Couldn't write a frame</key>
+	<string>Не удалось записать кадр</string>
 	<key>Couldn't write the GIF. Check that there's free space, or export a shorter part.</key>
 	<string>Не удалось записать GIF. Проверьте, есть ли свободное место, или экспортируйте фрагмент покороче.</string>
 	<key>Couldn't write the video. Check that there's free space and that you can save to that folder, then export again.</key>
 	<string>Не удалось записать видео. Проверьте, есть ли свободное место и можно ли сохранять в эту папку, и экспортируйте снова.</string>
 	<key>Countdown</key>
 	<string>Обратный отсчет</string>
+	<key>Create Handoff</key>
+	<string>Создать передачу</string>
+	<key>Creative Handoff</key>
+	<string>Творческая передача</string>
+	<key>Creative Handoff…</key>
+	<string>Творческая передача…</string>
 	<key>Crimson Ridge</key>
 	<string>Багряный хребет</string>
 	<key>Crisp and compact — the best default</key>
@@ -1064,6 +1110,12 @@
 	<string>Все вырезки, увеличения, разметка, субтитры и изменения стиля в этом видео будут удалены — добавленные записи останутся. Это действие можно отменить.</string>
 	<key>Every cut, zoom, annotation, caption, and style change on this video is removed. You can undo this.</key>
 	<string>Все вырезки, увеличения, разметка, субтитры и изменения стиля в этом видео будут удалены. Это действие можно отменить.</string>
+	<key>Every file starts at the same moment and is as long as the others: drop them all at 0:00 and they play in sync, the camera too.</key>
+	<string>Каждый файл начинается в один момент и такой же длины, как остальные: положите все на 0:00 — и они идут синхронно, камера тоже.</string>
+	<key>Every part of this video as its own file — screen, camera, sound, captions, the finished video, and a timeline for editing apps (⇧⌘E)</key>
+	<string>Каждая часть этого видео отдельным файлом — экран, камера, звук, субтитры, готовое видео и таймлайн для программ монтажа (⇧⌘E)</string>
+	<key>Every part of this video as its own file, in a new folder — for another editor or editing app.</key>
+	<string>Каждая часть этого видео отдельным файлом в новой папке — для другого монтажёра или программы монтажа.</string>
 	<key>Every sound level is at 0 (Audio tab) — this export will have no sound.</key>
 	<string>Все уровни звука на нуле (вкладка «Аудио») — экспорт будет без звука.</string>
 	<key>Everything is ready</key>
@@ -1094,6 +1146,8 @@
 	<string>Экспорт: %@</string>
 	<key>Exported</key>
 	<string>Экспортировано</string>
+	<key>Exported with your export settings</key>
+	<string>Экспортируется с вашими настройками экспорта</string>
 	<key>Exported without Enhance voice — it couldn't finish.</key>
 	<string>Экспортировано без улучшения голоса — обработка не завершилась.</string>
 	<key>Exported · %@</key>
@@ -1132,10 +1186,14 @@
 	<string>Ускорить моменты, где ничего не происходит</string>
 	<key>File</key>
 	<string>Файл</string>
+	<key>File %lld of %lld: %@</key>
+	<string>Файл %1$lld из %2$lld: %3$@</string>
 	<key>File Name</key>
 	<string>Имя файла</string>
 	<key>File not found</key>
 	<string>Файл не найден</string>
+	<key>Files are copied as they are wherever they can be. Only what has to change — clips cut to your edit, a camera with its background removed — is re-encoded to ProRes.</key>
+	<string>Где возможно, файлы копируются как есть. В ProRes перекодируется только то, что должно измениться: клипы, обрезанные по вашему монтажу, и камера без фона.</string>
 	<key>Fill the Frame, Follow the Cursor</key>
 	<string>Заполнить кадр и следовать за указателем</string>
 	<key>Filled Rectangle</key>
@@ -1172,6 +1230,8 @@
 	<string>За указателем</string>
 	<key>Font</key>
 	<string>Шрифт</string>
+	<key>For Final Cut Pro, DaVinci Resolve, and Adobe Premiere Pro</key>
+	<string>Для Final Cut Pro, DaVinci Resolve и Adobe Premiere Pro</string>
 	<key>Forever</key>
 	<string>Бессрочно</string>
 	<key>Format</key>
@@ -1210,6 +1270,8 @@
 	<string>Весь кадр во вступлении и концовке</string>
 	<key>Full frame (no background)</key>
 	<string>Весь кадр (без фона)</string>
+	<key>Full original files</key>
+	<string>Исходные файлы целиком</string>
 	<key>Full screen: %@</key>
 	<string>Весь экран: %@</string>
 	<key>Full-Camera Intro and Outro</key>
@@ -1244,6 +1306,14 @@
 	<string>Графитовый</string>
 	<key>Green</key>
 	<string>Зеленый</string>
+	<key>Handoff didn't finish</key>
+	<string>Передача не завершена</string>
+	<key>Handoff ready — show it</key>
+	<string>Передача готова — показать</string>
+	<key>Handoff — %@</key>
+	<string>Передача — %@</string>
+	<key>Handoff — getting ready</key>
+	<string>Передача — подготовка</string>
 	<key>Hard Cuts Between Clips</key>
 	<string>Жесткие склейки между клипами</string>
 	<key>Hard cut</key>
@@ -1314,10 +1384,14 @@
 	<string>Начало раньше</string>
 	<key>In later</key>
 	<string>Начало позже</string>
+	<key>Include a timeline for editing apps</key>
+	<string>Добавить таймлайн для программ монтажа</string>
 	<key>Include aspect ratio (%@)</key>
 	<string>Включить соотношение сторон (%@)</string>
 	<key>Include media (works on any Mac)</key>
 	<string>Включить медиафайлы (работает на любом Mac)</string>
+	<key>Include the finished video</key>
+	<string>Добавить готовое видео</string>
 	<key>Includes: %@</key>
 	<string>Включает: %@</string>
 	<key>Inspector tabs</key>
@@ -1352,6 +1426,8 @@
 	<string>Файл был перемещен, переименован или удален. Откройте его из нового места.</string>
 	<key>It was recorded into the pixels, so it can't be resized or smoothed. New recordings capture an editable cursor by default (Settings → Recording).</key>
 	<string>Он записан прямо в изображение, поэтому нельзя изменить его размер или сгладить его. Новые записи по умолчанию сохраняют редактируемый указатель (Настройки → Запись).</string>
+	<key>It won't fit there. Choose another location, or pick Smaller files.</key>
+	<string>Там не хватит места. Выберите другое место или «Файлы поменьше».</string>
 	<key>JPEG Quality</key>
 	<string>Качество JPEG</string>
 	<key>Jump here</key>
@@ -1452,6 +1528,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Расположения</string>
 	<key>Left</key>
 	<string>Слева</string>
+	<key>Left out:</key>
+	<string>Не вошло:</string>
 	<key>Length</key>
 	<string>Длительность</string>
 	<key>Letterbox Instead of Following the Cursor</key>
@@ -1466,6 +1544,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Лаймовый сигнал</string>
 	<key>Line</key>
 	<string>Линия</string>
+	<key>Line everything up</key>
+	<string>Выровнять всё</string>
 	<key>Line width</key>
 	<string>Толщина линии</string>
 	<key>Linen</key>
@@ -1612,6 +1692,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Музыка — нажмите, чтобы изменить громкость, нарастание, затухание и приглушение</string>
 	<key>Music “%@”</key>
 	<string>Музыка «%@»</string>
+	<key>Music “%@” — the file is missing</key>
+	<string>Музыка «%@» — файл не найден</string>
 	<key>Mute Clip</key>
 	<string>Выключить звук клипа</string>
 	<key>Mute preview</key>
@@ -1704,6 +1786,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>В этом видео нет данных указателя</string>
 	<key>No idle moments found — nice and tight</key>
 	<string>Простоев не найдено — все плотно</string>
+	<key>No location chosen</key>
+	<string>Место не выбрано</string>
 	<key>No long pauses to shorten</key>
 	<string>Нет длинных пауз для сокращения</string>
 	<key>No microphone connected</key>
@@ -1750,6 +1834,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Недостаточно места на диске для этой записи: нужно около %@, а свободно %@. Освободите место и повторите попытку.</string>
 	<key>Not enough free disk space for this recording: it needs about %@ free, and %@ is available. Free up space, or choose Balanced quality or 30 fps.</key>
 	<string>Недостаточно места на диске для этой записи: нужно около %@, а свободно %@. Освободите место или выберите качество «Среднее» либо 30 fps.</string>
+	<key>Not enough space: the handoff needs about %@ and %@ is free there.</key>
+	<string>Не хватает места: для передачи нужно около %1$@, а там свободно %2$@.</string>
 	<key>Not for this video</key>
 	<string>Не для этого видео</string>
 	<key>Not now</key>
@@ -1902,6 +1988,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Найден QR-код с номером телефона</string>
 	<key>Picked up where you left off</key>
 	<string>Продолжаем с того места, где вы остановились</string>
+	<key>Picture “%@” — the file is missing</key>
+	<string>Изображение «%@» — файл не найден</string>
 	<key>Pin</key>
 	<string>Закрепить</string>
 	<key>Pin to Screen</key>
@@ -2572,6 +2660,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Нужно разрешение на запись экрана</string>
 	<key>Screen recording didn't start in time. Try again.</key>
 	<string>Запись экрана не началась вовремя. Повторите попытку.</string>
+	<key>Screen recording “%@” — the file is missing</key>
+	<string>Запись экрана «%@» — файл не найден</string>
 	<key>Screenshot Editor</key>
 	<string>Редактор снимков</string>
 	<key>Screenshot canvas</key>
@@ -2770,6 +2860,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Медленно</string>
 	<key>Small</key>
 	<string>Маленький</string>
+	<key>Smaller files (ProRes 422)</key>
+	<string>Файлы поменьше (ProRes 422)</string>
 	<key>Smallest files, great for docs and chat</key>
 	<string>Самые маленькие файлы — для документов и чатов</string>
 	<key>Smooth</key>
@@ -2970,6 +3062,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Экспорт продолжится в фоне (Esc)</string>
 	<key>The export stopped unexpectedly (%@). Try again — if it keeps happening, export at a lower resolution or in H.264.</key>
 	<string>Экспорт неожиданно остановился (%@). Повторите попытку — если ошибка повторится, экспортируйте в более низком разрешении или в H.264.</string>
+	<key>The handoff is ready</key>
+	<string>Передача готова</string>
 	<key>The menu bar icon is LF Studios' main entry point. While it is hidden, open LF Studios again from Finder, Launchpad, or Spotlight to bring these Preferences back.</key>
 	<string>Значок в строке меню — основной способ открыть LF Studios. Пока он скрыт, чтобы вернуться к этим настройкам, снова откройте LF Studios из Finder, Launchpad или Spotlight.</string>
 	<key>The microphone couldn't start, so this recording has no mic.</key>
@@ -3000,6 +3094,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Шкала времени пуста. Восстановите клип и экспортируйте снова.</string>
 	<key>The video encoder is busy — another app may be recording or exporting. Wait a moment and try again, or choose H.264.</key>
 	<string>Видеокодер занят — возможно, другое приложение записывает или экспортирует видео. Подождите немного и повторите попытку или выберите H.264.</string>
+	<key>The video has no picture</key>
+	<string>В видео нет изображения</string>
 	<key>The video's own recording can't be removed</key>
 	<string>Исходную запись видео удалить нельзя</string>
 	<key>The voice track is empty, so there's nothing to clean up. Turn off Enhance voice to keep the original sound.</key>
@@ -3016,6 +3112,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Здесь уже есть увеличение</string>
 	<key>There's no video in this file</key>
 	<string>В этом файле нет видео</string>
+	<key>There's nothing to write</key>
+	<string>Нечего записывать</string>
 	<key>Thickness</key>
 	<string>Толщина</string>
 	<key>Thin</key>
@@ -3024,6 +3122,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Этот GIF слишком длинный для такого размера — понадобится около %@ памяти. Выберите меньший размер или меньше кадров в секунду, экспортируйте часть видео или выберите MP4.</string>
 	<key>This Mac can't translate between these languages. Pick another language.</key>
 	<string>Этот Mac не может переводить между этими языками. Выберите другой язык.</string>
+	<key>This Mac has no ProRes chip, so the re-encoded files take a while — the progress shows how long.</key>
+	<string>В этом Mac нет чипа ProRes, поэтому перекодирование займёт время — сколько, покажет индикатор.</string>
 	<key>This Week</key>
 	<string>На этой неделе</string>
 	<key>This list</key>
@@ -3116,6 +3216,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Подрезать конец клипа по указателю воспроизведения (O)</string>
 	<key>Trim the clip's start to the playhead (I)</key>
 	<string>Подрезать начало клипа по указателю воспроизведения (I)</string>
+	<key>Trimmed to my edit</key>
+	<string>Обрезать по моему монтажу</string>
 	<key>Try Again</key>
 	<string>Повторить попытку</string>
 	<key>Try it right now — Capture Area is also in the menu bar.</key>
@@ -3494,6 +3596,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Да</string>
 	<key>Yesterday</key>
 	<string>Вчера</string>
+	<key>You can close this — the handoff keeps going.</key>
+	<string>Это можно закрыть — передача продолжится.</string>
 	<key>You're all set — LF Studios lives here</key>
 	<string>Все готово — LF Studios находится здесь</string>
 	<key>YouTube, presentations</key>

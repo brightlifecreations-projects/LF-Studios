@@ -1,4 +1,7 @@
 {
+  " — %@ free there" : {
+    "ja" : " — 保存先の空き容量 %@"
+  },
   "%@ (This Mac)" : {
     "ja" : "%@（このMac）"
   },
@@ -32,6 +35,12 @@
   "%@ — %@" : {
     "ja" : "%@（%@）"
   },
+  "%@ — about %lld min left" : {
+    "ja" : "%1$@ — 残り約%2$lld分"
+  },
+  "%@ — about a minute left" : {
+    "ja" : "%@ — 残り約1分"
+  },
   "%lld annotations" : {
     "ja" : "%lld個の注釈"
   },
@@ -52,6 +61,9 @@
   },
   "%lld cuts, %@ removed" : {
     "ja" : "%lld箇所のカット、計%@を削除"
+  },
+  "%lld files, about %@" : {
+    "ja" : "%1$lld個のファイル、約%2$@"
   },
   "%lld parts" : {
     "ja" : "%lld箇所"
@@ -161,6 +173,9 @@
   "All commands (⌘K)" : {
     "ja" : "すべてのコマンド（⌘K）"
   },
+  "All files" : {
+    "ja" : "すべてのファイル"
+  },
   "Always show the arrow" : {
     "ja" : "常に矢印を表示"
   },
@@ -218,6 +233,9 @@
   "Behind you" : {
     "ja" : "背後"
   },
+  "Best (ProRes 422 HQ)" : {
+    "ja" : "最高（ProRes 422 HQ）"
+  },
   "Blur" : {
     "ja" : "ぼかし"
   },
@@ -269,6 +287,12 @@
   "Camera video — drag to line it up with the recording" : {
     "ja" : "カメラ映像 — ドラッグして収録に合わせます"
   },
+  "Camera video “%@” — none of it is in the edit" : {
+    "ja" : "カメラ映像“%@” — 編集に含まれる部分がありません"
+  },
+  "Camera video “%@” — the file is missing" : {
+    "ja" : "カメラ映像“%@” — ファイルが見つかりません"
+  },
   "Camera video “%@”, %@" : {
     "ja" : "カメラ映像“%1$@”、%2$@"
   },
@@ -283,6 +307,9 @@
   },
   "Can't sync — their sound doesn't match clearly enough. Set the offset by hand." : {
     "ja" : "同期できません — 音声が十分に一致しません。オフセットを手動で設定してください。"
+  },
+  "Cancelled — the partly made folder was removed" : {
+    "ja" : "キャンセルしました — 作りかけのフォルダは削除しました"
   },
   "Caption" : {
     "ja" : "字幕"
@@ -305,11 +332,17 @@
   "Choose Image…" : {
     "ja" : "画像を選択…"
   },
+  "Choose Location…" : {
+    "ja" : "場所を選択…"
+  },
   "Choose an LF Studios project" : {
     "ja" : "LF Studiosプロジェクトを選択"
   },
   "Choose the camera video to show in the bubble" : {
     "ja" : "バブルに表示するカメラ映像を選択"
+  },
+  "Choose where to put the handoff folder — any folder or drive" : {
+    "ja" : "受け渡し用フォルダの保存先を選択 — どのフォルダやドライブでも構いません"
   },
   "Cleaning up your voice…" : {
     "ja" : "声を補正中…"
@@ -341,6 +374,9 @@
   "Clip starts / ends here" : {
     "ja" : "ここをクリップの開始/終了位置に"
   },
+  "Clips" : {
+    "ja" : "クリップ"
+  },
   "Close" : {
     "ja" : "閉じる"
   },
@@ -365,17 +401,50 @@
   "Copy current frame" : {
     "ja" : "現在のフレームをコピー"
   },
+  "Couldn't create the handoff folder — %@" : {
+    "ja" : "受け渡し用フォルダを作成できませんでした — %@"
+  },
+  "Couldn't finish the file" : {
+    "ja" : "ファイルを完成できませんでした"
+  },
   "Couldn't open this video" : {
     "ja" : "このビデオを開けませんでした"
   },
   "Couldn't open “%@”" : {
     "ja" : "“%@”を開けませんでした"
   },
+  "Couldn't prepare the sound" : {
+    "ja" : "音声を準備できませんでした"
+  },
+  "Couldn't prepare the video" : {
+    "ja" : "ビデオを準備できませんでした"
+  },
+  "Couldn't read the sound" : {
+    "ja" : "音声を読み込めませんでした"
+  },
+  "Couldn't read the video" : {
+    "ja" : "ビデオを読み込めませんでした"
+  },
   "Couldn't save the presets file" : {
     "ja" : "プリセットファイルを保存できませんでした"
   },
   "Couldn't save the project — check there's room on the disk" : {
     "ja" : "プロジェクトを保存できませんでした。ディスクの空き容量を確認してください"
+  },
+  "Couldn't start writing" : {
+    "ja" : "書き込みを開始できませんでした"
+  },
+  "Couldn't write a frame" : {
+    "ja" : "フレームを書き込めませんでした"
+  },
+  "Create Handoff" : {
+    "ja" : "受け渡しを作成"
+  },
+  "Creative Handoff" : {
+    "ja" : "クリエイティブ受け渡し"
+  },
+  "Creative Handoff…" : {
+    "ja" : "クリエイティブ受け渡し…"
   },
   "Crop" : {
     "ja" : "切り取り"
@@ -536,6 +605,15 @@
   "Even out loudness" : {
     "ja" : "音量を均一化"
   },
+  "Every file starts at the same moment and is as long as the others: drop them all at 0:00 and they play in sync, the camera too." : {
+    "ja" : "すべてのファイルが同じ瞬間に始まり、同じ長さになります。全部を0:00に置けば同期して再生されます。カメラも同様です。"
+  },
+  "Every part of this video as its own file — screen, camera, sound, captions, the finished video, and a timeline for editing apps (⇧⌘E)" : {
+    "ja" : "このビデオのすべての要素を個別のファイルに — 画面、カメラ、音声、字幕、完成したビデオ、編集アプリ用のタイムライン（⇧⌘E）"
+  },
+  "Every part of this video as its own file, in a new folder — for another editor or editing app." : {
+    "ja" : "このビデオのすべての要素を個別のファイルとして新しいフォルダに — 別の編集者や編集アプリに渡すために。"
+  },
   "Exactly as recorded." : {
     "ja" : "収録したままの動きです。"
   },
@@ -553,6 +631,9 @@
   },
   "Exported %lld presets" : {
     "ja" : "%lld件のプリセットを書き出しました"
+  },
+  "Exported with your export settings" : {
+    "ja" : "書き出し設定で書き出します"
   },
   "Exports at the level video sites expect (−16 LUFS) without clipping" : {
     "ja" : "動画サイトが想定するレベル（−16 LUFS）で、音割れせずに書き出します"
@@ -577,6 +658,12 @@
   },
   "Fast-forward moments where nothing happens" : {
     "ja" : "動きのない区間を早送り"
+  },
+  "File %lld of %lld: %@" : {
+    "ja" : "%2$lld個中%1$lld個目のファイル：%3$@"
+  },
+  "Files are copied as they are wherever they can be. Only what has to change — clips cut to your edit, a camera with its background removed — is re-encoded to ProRes." : {
+    "ja" : "可能な限りファイルはそのままコピーします。変更が必要なもの（編集に合わせてカットしたクリップ、背景を削除したカメラ）だけをProResに再エンコードします。"
   },
   "Fill the Frame, Follow the Cursor" : {
     "ja" : "画面いっぱいに表示してポインタに追従"
@@ -605,6 +692,9 @@
   "Follows cursor" : {
     "ja" : "ポインタに追従"
   },
+  "For Final Cut Pro, DaVinci Resolve, and Adobe Premiere Pro" : {
+    "ja" : "Final Cut Pro、DaVinci Resolve、Adobe Premiere Pro用"
+  },
   "Frame" : {
     "ja" : "枠"
   },
@@ -629,6 +719,9 @@
   "Full frame (no background)" : {
     "ja" : "全面表示（背景なし）"
   },
+  "Full original files" : {
+    "ja" : "元のファイル全体"
+  },
   "Full-Camera Intro and Outro" : {
     "ja" : "オープニングとエンディングをカメラ全面に"
   },
@@ -649,6 +742,18 @@
   },
   "Gradient" : {
     "ja" : "グラデーション"
+  },
+  "Handoff didn't finish" : {
+    "ja" : "受け渡しが完了しませんでした"
+  },
+  "Handoff ready — show it" : {
+    "ja" : "受け渡しの準備ができました — 表示"
+  },
+  "Handoff — %@" : {
+    "ja" : "受け渡し — %@"
+  },
+  "Handoff — getting ready" : {
+    "ja" : "受け渡し — 準備中"
   },
   "Hide" : {
     "ja" : "非表示にする"
@@ -686,11 +791,17 @@
   "Imported Preset" : {
     "ja" : "読み込んだプリセット"
   },
+  "Include a timeline for editing apps" : {
+    "ja" : "編集アプリ用のタイムラインを含める"
+  },
   "Include aspect ratio (%@)" : {
     "ja" : "アスペクト比を含める（%@）"
   },
   "Include media (works on any Mac)" : {
     "ja" : "メディアを含める（どのMacでも使えます）"
+  },
+  "Include the finished video" : {
+    "ja" : "完成したビデオを含める"
   },
   "Inspector tabs" : {
     "ja" : "インスペクタのタブ"
@@ -715,6 +826,9 @@
   },
   "It was recorded into the pixels, so it can't be resized or smoothed. New recordings capture an editable cursor by default (Settings → Recording)." : {
     "ja" : "ポインタが映像に焼き込まれているため、サイズの変更や滑らかにする処理はできません。新しい収録では、デフォルトで編集可能なポインタが記録されます（“設定”＞“収録”）。"
+  },
+  "It won't fit there. Choose another location, or pick Smaller files." : {
+    "ja" : "保存先の空き容量が足りません。別の場所を選ぶか、「小さいファイル」を選んでください。"
   },
   "Jump here" : {
     "ja" : "ここに移動"
@@ -743,6 +857,18 @@
   "Keys on screen" : {
     "ja" : "キー表示"
   },
+  "LF Studios Presets" : {
+    "ja" : "LF Studiosプリセット"
+  },
+  "LF Studios is still cleaning up the voice" : {
+    "ja" : "LF Studiosはまだ声を補正しています"
+  },
+  "LF Studios is still transcribing" : {
+    "ja" : "LF Studiosはまだ文字起こしをしています"
+  },
+  "LF Studios listens to the recording right on this Mac — nothing is uploaded. Then cut the video by deleting words, remove ums and long pauses in one click, and add captions." : {
+    "ja" : "LF StudiosはこのMac上で収録を聞き取ります。何もアップロードされません。そのあと、単語を削除してビデオをカットしたり、フィラーや長い無音をワンクリックで削除したり、字幕を追加したりできます。"
+  },
   "Language" : {
     "ja" : "言語"
   },
@@ -752,11 +878,17 @@
   "Layouts" : {
     "ja" : "レイアウト"
   },
+  "Left out:" : {
+    "ja" : "含まれなかったもの："
+  },
   "Letterbox Instead of Following the Cursor" : {
     "ja" : "ポインタに追従せずレターボックスで表示"
   },
   "Level" : {
     "ja" : "倍率"
+  },
+  "Line everything up" : {
+    "ja" : "すべてそろえる"
   },
   "Lines the camera up by the sound both recorded. Or drag the camera strip on the timeline." : {
     "ja" : "両方に録音された音声でカメラを合わせます。タイムラインのカメラのバーをドラッグしても合わせられます。"
@@ -814,6 +946,9 @@
   },
   "Music “%@”" : {
     "ja" : "音楽“%@”"
+  },
+  "Music “%@” — the file is missing" : {
+    "ja" : "音楽“%@” — ファイルが見つかりません"
   },
   "Mute Clip" : {
     "ja" : "クリップを消音"
@@ -884,6 +1019,9 @@
   "No cursor data in this video" : {
     "ja" : "このビデオにはポインタのデータがありません"
   },
+  "No location chosen" : {
+    "ja" : "場所が選択されていません"
+  },
   "No music" : {
     "ja" : "音楽なし"
   },
@@ -898,6 +1036,9 @@
   },
   "None in this recording. Turn on “Show keyboard shortcuts” in Settings → Recording and every ⌘ shortcut you press appears as keycaps. Plain typing is never recorded." : {
     "ja" : "この収録にはありません。“設定”＞“収録”で“キーボードショートカットを表示”をオンにすると、押した⌘ショートカットがすべてキーキャップで表示されます。通常の文字入力が記録されることはありません。"
+  },
+  "Not enough space: the handoff needs about %@ and %@ is free there." : {
+    "ja" : "空き容量が足りません：受け渡しには約%1$@が必要ですが、保存先の空きは%2$@です。"
   },
   "Not for this video" : {
     "ja" : "このビデオでは使用しない"
@@ -955,6 +1096,9 @@
   },
   "Pause (Space)" : {
     "ja" : "一時停止（スペース）"
+  },
+  "Picture “%@” — the file is missing" : {
+    "ja" : "画像“%@” — ファイルが見つかりません"
   },
   "Placement" : {
     "ja" : "配置"
@@ -1493,6 +1637,9 @@
   "Saving project…" : {
     "ja" : "プロジェクトを保存中…"
   },
+  "Screen recording “%@” — the file is missing" : {
+    "ja" : "画面収録“%@” — ファイルが見つかりません"
+  },
   "Search commands" : {
     "ja" : "コマンドを検索"
   },
@@ -1543,18 +1690,6 @@
   },
   "Shortens every silence over a second (this video has no LF Studios pointer data to spot what happens on screen)" : {
     "ja" : "1秒を超える無音部分をすべて短縮します（このビデオにはLF Studiosのポインタデータがないため、画面上の動きを判別できません）"
-  },
-  "LF Studios Presets" : {
-    "ja" : "LF Studiosプリセット"
-  },
-  "LF Studios is still cleaning up the voice" : {
-    "ja" : "LF Studiosはまだ声を補正しています"
-  },
-  "LF Studios is still transcribing" : {
-    "ja" : "LF Studiosはまだ文字起こしをしています"
-  },
-  "LF Studios listens to the recording right on this Mac — nothing is uploaded. Then cut the video by deleting words, remove ums and long pauses in one click, and add captions." : {
-    "ja" : "LF StudiosはこのMac上で収録を聞き取ります。何もアップロードされません。そのあと、単語を削除してビデオをカットしたり、フィラーや長い無音をワンクリックで削除したり、字幕を追加したりできます。"
   },
   "Show Background" : {
     "ja" : "背景を表示"
@@ -1627,6 +1762,9 @@
   },
   "Skips the dash to the Stop button at the end" : {
     "ja" : "最後の“停止”ボタンへの素早い移動を省きます"
+  },
+  "Smaller files (ProRes 422)" : {
+    "ja" : "小さいファイル（ProRes 422）"
   },
   "Soft streaks on fast moves" : {
     "ja" : "速い動きにやわらかな残像を付けます"
@@ -1724,11 +1862,23 @@
   "The cursor is part of this video" : {
     "ja" : "このビデオではポインタが映像に焼き込まれています"
   },
+  "The handoff is ready" : {
+    "ja" : "受け渡しの準備ができました"
+  },
   "The recording for “%@” is missing" : {
     "ja" : "“%@”の収録ファイルが見つかりません"
   },
+  "The video has no picture" : {
+    "ja" : "ビデオに映像がありません"
+  },
+  "There's nothing to write" : {
+    "ja" : "書き込むものがありません"
+  },
   "Thickness" : {
     "ja" : "太さ"
+  },
+  "This Mac has no ProRes chip, so the re-encoded files take a while — the progress shows how long." : {
+    "ja" : "このMacにはProResチップがないため、再エンコードするファイルには時間がかかります。進行状況に所要時間が表示されます。"
   },
   "This list" : {
     "ja" : "この一覧"
@@ -1786,6 +1936,9 @@
   },
   "Trim the clip's start to the playhead (I)" : {
     "ja" : "クリップの最初を再生ヘッドの位置までトリミング（I）"
+  },
+  "Trimmed to my edit" : {
+    "ja" : "編集に合わせてカット"
   },
   "Try Again" : {
     "ja" : "再試行"
@@ -2224,6 +2377,9 @@
   },
   "Words light up as they're spoken" : {
     "ja" : "話している単語がハイライトされます"
+  },
+  "You can close this — the handoff keeps going." : {
+    "ja" : "閉じても大丈夫です — 受け渡しは続きます。"
   },
   "Your look" : {
     "ja" : "自分のスタイル"

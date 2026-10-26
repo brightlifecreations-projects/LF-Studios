@@ -1091,6 +1091,7 @@ final class HistoryCollectionItem: NSCollectionViewItem {
                     LFStudiosMenuAction(id: "history.save", title: L("Save As…"), symbolName: "square.and.arrow.down") { [weak self] in self?.saveImage() },
                     LFStudiosMenuAction(id: "history.pin", title: L("Pin to Screen"), symbolName: "pin") { [weak self] in self?.pinImage() },
                 ]),
+            ] + Self.recordingSections(for: historyItem) + [
                 LFStudiosMenuSection(id: "history.manage", title: L("Manage"), actions: [
                     LFStudiosMenuAction(id: "history.delete", title: L("Delete"), symbolName: "trash", role: .destructive) { [weak self] in self?.deleteItem() },
                 ])
@@ -1098,6 +1099,18 @@ final class HistoryCollectionItem: NSCollectionViewItem {
             at: event,
             in: view
         )
+    }
+
+    /// A recording's own actions (none for screenshots): Creative Handoff
+    /// opens it in the video editor with the handoff dialog.
+    static func recordingSections(for item: HistoryItem?) -> [LFStudiosMenuSection] {
+        guard let url = item?.recordingURL else { return [] }
+        return [LFStudiosMenuSection(id: "history.recording", title: L("Recording"), actions: [
+            LFStudiosMenuAction(id: "history.handoff", title: L("Creative Handoff…"), symbolName: "shippingbox") {
+                VideoDemoEditorWindowController.handoffOnNextOpen = true
+                VideoDemoEditorWindowController.open(videoURL: url)
+            },
+        ])]
     }
 
     // MARK: Actions

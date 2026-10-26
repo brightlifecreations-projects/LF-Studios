@@ -10,6 +10,7 @@ final class VideoEditorFileMenu: NSObject, NSMenuDelegate, NSMenuItemValidation 
     private weak var exportItem: NSMenuItem?
     private weak var saveProjectItem: NSMenuItem?
     private weak var saveProjectAsItem: NSMenuItem?
+    private weak var handoffItem: NSMenuItem?
     private let recentMenu = NSMenu(title: L("Recent Exports"))
     private var keyWindowObserver: NSObjectProtocol?
 
@@ -35,6 +36,11 @@ final class VideoEditorFileMenu: NSObject, NSMenuDelegate, NSMenuItemValidation 
         export.target = self
         menu.addItem(export)
         exportItem = export
+        // Every part of the video as its own file (VideoHandoffSheet.swift).
+        let handoff = NSMenuItem(title: L("Creative Handoff…"), action: #selector(creativeHandoff(_:)), keyEquivalent: "")
+        handoff.target = self
+        menu.addItem(handoff)
+        handoffItem = handoff
         let subtitles = NSMenuItem(title: L("Save Subtitles (.srt)…"), action: #selector(saveSubtitles(_:)), keyEquivalent: "")
         subtitles.target = self
         menu.addItem(subtitles)
@@ -63,6 +69,8 @@ final class VideoEditorFileMenu: NSObject, NSMenuDelegate, NSMenuItemValidation 
         saveProjectItem?.keyEquivalentModifierMask = [.command]
         saveProjectAsItem?.keyEquivalent = editing ? "S" : ""
         saveProjectAsItem?.keyEquivalentModifierMask = [.command, .shift]
+        handoffItem?.keyEquivalent = editing ? "E" : ""
+        handoffItem?.keyEquivalentModifierMask = [.command, .shift]
     }
 
     @objc func openProject(_ sender: Any?) {
@@ -81,6 +89,10 @@ final class VideoEditorFileMenu: NSObject, NSMenuDelegate, NSMenuItemValidation 
         VideoDemoEditorWindowController.exportActive()
     }
 
+    @objc func creativeHandoff(_ sender: Any?) {
+        VideoDemoEditorWindowController.keyModel?.showCreativeHandoff()
+    }
+
     @objc func saveSubtitles(_ sender: Any?) {
         VideoDemoEditorWindowController.saveActiveSubtitles()
     }
@@ -93,7 +105,7 @@ final class VideoEditorFileMenu: NSObject, NSMenuDelegate, NSMenuItemValidation 
     func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
         let model = VideoDemoEditorWindowController.keyModel
         switch menuItem.action {
-        case #selector(exportVideo(_:)): return model?.isReady == true && model?.isCropping == false
+        case #selector(exportVideo(_:)), #selector(creativeHandoff(_:)): return model?.isReady == true && model?.isCropping == false
         case #selector(saveSubtitles(_:)): return model.map { !$0.project.captions.isEmpty } ?? false
         case #selector(revealExport(_:)): return true
         case #selector(openProject(_:)): return true

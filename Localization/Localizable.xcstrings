@@ -2,6 +2,47 @@
   "sourceLanguage" : "en",
   "strings" : {
     "" : {},
+    " — %@ free there" : {
+      "comment" : "Appended to “12 files, about 3 GB”",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " – %@ frei"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " — %@ libres à cet endroit"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " — 保存先の空き容量 %@"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " — там свободно %@"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " — там вільно %@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " — 那里有 %@ 可用空间"
+          }
+        }
+      }
+    },
     "%@ %@" : {},
     "%@ (%@)" : {
       "comment" : "Tool tooltip: its name, then its key",
@@ -1265,6 +1306,88 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ — LF Studios 位于菜单栏中"
+          }
+        }
+      }
+    },
+    "%@ — about %lld min left" : {
+      "comment" : "%@ is a percentage",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ – noch etwa %2$lld Min."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ — environ %2$lld min restantes"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ — 残り約%2$lld分"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ — осталось около %2$lld мин"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ — лишилося близько %2$lld хв"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ — 大约还剩 %2$lld 分钟"
+          }
+        }
+      }
+    },
+    "%@ — about a minute left" : {
+      "comment" : "%@ is a percentage",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ – noch etwa eine Minute"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ — environ une minute restante"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ — 残り約1分"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ — осталось около минуты"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ — лишилося близько хвилини"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ — 大约还剩一分钟"
           }
         }
       }
@@ -3394,6 +3517,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%lld 个电子邮件地址"
+          }
+        }
+      }
+    },
+    "%lld files, about %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld Dateien, etwa %2$@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld fichiers, environ %2$@"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld個のファイル、約%2$@"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Файлов: %1$lld, около %2$@"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Файлів: %1$lld, близько %2$@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld 个文件，约 %2$@"
           }
         }
       }
@@ -7948,6 +8111,46 @@
         }
       }
     },
+    "All files" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle Dateien"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tous les fichiers"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "すべてのファイル"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Все файлы"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Усі файли"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "所有文件"
+          }
+        }
+      }
+    },
     "All zooms set to %@" : {
       "localizations" : {
         "de" : {
@@ -10742,6 +10945,46 @@
         }
       }
     },
+    "Best (ProRes 422 HQ)" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beste (ProRes 422 HQ)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meilleure (ProRes 422 HQ)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最高（ProRes 422 HQ）"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Лучшее (ProRes 422 HQ)"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Найкраща (ProRes 422 HQ)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最佳（ProRes 422 HQ）"
+          }
+        }
+      }
+    },
     "Between clips" : {
       "localizations" : {
         "de" : {
@@ -12549,6 +12792,86 @@
         }
       }
     },
+    "Camera video “%@” — none of it is in the edit" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kameravideo „%@“ – nichts davon ist im Schnitt"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vidéo de caméra « %@ » — aucune partie n’est dans le montage"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カメラ映像“%@” — 編集に含まれる部分がありません"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Видео с камеры «%@» — ни один фрагмент не попал в монтаж"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Відео з камери «%@» — жоден фрагмент не потрапив у монтаж"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "摄像头视频“%@” — 剪辑中没有用到它的任何部分"
+          }
+        }
+      }
+    },
+    "Camera video “%@” — the file is missing" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kameravideo „%@“ – die Datei fehlt"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vidéo de caméra « %@ » — le fichier est introuvable"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カメラ映像“%@” — ファイルが見つかりません"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Видео с камеры «%@» — файл не найден"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Відео з камери «%@» — файл не знайдено"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "摄像头视频“%@” — 文件不见了"
+          }
+        }
+      }
+    },
     "Camera video “%@”, %@" : {
       "comment" : "VoiceOver: the file name, then the offset",
       "localizations" : {
@@ -12947,6 +13270,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "已取消"
+          }
+        }
+      }
+    },
+    "Cancelled — the partly made folder was removed" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abgebrochen – der halb fertige Ordner wurde entfernt"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annulé — le dossier en partie créé a été supprimé"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キャンセルしました — 作りかけのフォルダは削除しました"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отменено — недоделанная папка удалена"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скасовано — недороблену папку вилучено"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已取消 — 已删除做了一半的文件夹"
           }
         }
       }
@@ -14770,6 +15133,46 @@
         }
       }
     },
+    "Choose Location…" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ort wählen …"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choisir l’emplacement…"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "場所を選択…"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выбрать место…"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вибрати місце…"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择位置…"
+          }
+        }
+      }
+    },
     "Choose a .ttf or .otf font. LF Studios keeps its own copy, so it keeps working if the file is deleted." : {
       "localizations" : {
         "de" : {
@@ -15246,6 +15649,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "选择截屏后立即执行的操作。"
+          }
+        }
+      }
+    },
+    "Choose where to put the handoff folder — any folder or drive" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wähle, wohin der Übergabeordner soll – jeder Ordner oder jedes Laufwerk"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choisissez où placer le dossier de transmission — n’importe quel dossier ou disque"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "受け渡し用フォルダの保存先を選択 — どのフォルダやドライブでも構いません"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выберите, куда положить папку для передачи — любая папка или диск"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Виберіть, куди покласти папку для передавання — будь-яка папка чи диск"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择交付文件夹的存放位置 — 任意文件夹或磁盘均可"
           }
         }
       }
@@ -16930,6 +17373,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "剪贴板"
+          }
+        }
+      }
+    },
+    "Clips" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clips"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clips"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "クリップ"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Клипы"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кліпи"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "片段"
           }
         }
       }
@@ -18819,6 +19302,46 @@
         }
       }
     },
+    "Couldn't create the handoff folder — %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Übergabeordner konnte nicht erstellt werden – %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossible de créer le dossier de transmission — %@"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "受け渡し用フォルダを作成できませんでした — %@"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удалось создать папку для передачи — %@"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не вдалося створити папку для передавання — %@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无法创建交付文件夹 — %@"
+          }
+        }
+      }
+    },
     "Couldn't create the video file." : {
       "localizations" : {
         "de" : {
@@ -18855,6 +19378,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "无法创建视频文件。"
+          }
+        }
+      }
+    },
+    "Couldn't finish the file" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Datei konnte nicht abgeschlossen werden"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossible de terminer le fichier"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ファイルを完成できませんでした"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удалось завершить файл"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не вдалося завершити файл"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无法完成该文件"
           }
         }
       }
@@ -19099,6 +19662,86 @@
         }
       }
     },
+    "Couldn't prepare the sound" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Ton konnte nicht vorbereitet werden"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossible de préparer le son"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "音声を準備できませんでした"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удалось подготовить звук"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не вдалося підготувати звук"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无法准备声音"
+          }
+        }
+      }
+    },
+    "Couldn't prepare the video" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das Video konnte nicht vorbereitet werden"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossible de préparer la vidéo"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ビデオを準備できませんでした"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удалось подготовить видео"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не вдалося підготувати відео"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无法准备视频"
+          }
+        }
+      }
+    },
     "Couldn't prepare the video. Export again; if it keeps happening, restart LF Studios." : {
       "localizations" : {
         "de" : {
@@ -19255,6 +19898,86 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "无法读取录制内容。请确认其文件仍然存在，然后重新导出。"
+          }
+        }
+      }
+    },
+    "Couldn't read the sound" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Ton konnte nicht gelesen werden"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossible de lire le son"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "音声を読み込めませんでした"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удалось прочитать звук"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не вдалося прочитати звук"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无法读取声音"
+          }
+        }
+      }
+    },
+    "Couldn't read the video" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das Video konnte nicht gelesen werden"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossible de lire la vidéo"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ビデオを読み込めませんでした"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удалось прочитать видео"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не вдалося прочитати відео"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无法读取视频"
           }
         }
       }
@@ -19620,6 +20343,46 @@
         }
       }
     },
+    "Couldn't start writing" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das Schreiben konnte nicht starten"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossible de commencer l’écriture"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "書き込みを開始できませんでした"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удалось начать запись"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не вдалося почати запис"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无法开始写入"
+          }
+        }
+      }
+    },
     "Couldn't translate (%@). Try again, or pick another language." : {
       "localizations" : {
         "de" : {
@@ -19656,6 +20419,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "无法翻译（%@）。请重试，或选择其他语言。"
+          }
+        }
+      }
+    },
+    "Couldn't write a frame" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ein Bild konnte nicht geschrieben werden"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossible d’écrire une image"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "フレームを書き込めませんでした"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удалось записать кадр"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не вдалося записати кадр"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无法写入一帧"
           }
         }
       }
@@ -19776,6 +20579,127 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "倒计时"
+          }
+        }
+      }
+    },
+    "Create Handoff" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Übergabe erstellen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Créer la transmission"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "受け渡しを作成"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Создать передачу"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Створити передавання"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "创建交付"
+          }
+        }
+      }
+    },
+    "Creative Handoff" : {
+      "comment" : "Feature name: every part of a video project as separate files for another editor",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kreative Übergabe"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transmission créative"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "クリエイティブ受け渡し"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Творческая передача"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Творче передавання"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "创意交付"
+          }
+        }
+      }
+    },
+    "Creative Handoff…" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kreative Übergabe …"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transmission créative…"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "クリエイティブ受け渡し…"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Творческая передача…"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Творче передавання…"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "创意交付…"
           }
         }
       }
@@ -25799,6 +26723,126 @@
         }
       }
     },
+    "Every file starts at the same moment and is as long as the others: drop them all at 0:00 and they play in sync, the camera too." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jede Datei beginnt im selben Moment und ist so lang wie die anderen: Lege alle bei 0:00 ab, und sie laufen synchron – die Kamera auch."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chaque fichier commence au même instant et dure autant que les autres : placez-les tous à 0:00 et ils sont synchronisés, la caméra aussi."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "すべてのファイルが同じ瞬間に始まり、同じ長さになります。全部を0:00に置けば同期して再生されます。カメラも同様です。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Каждый файл начинается в один момент и такой же длины, как остальные: положите все на 0:00 — и они идут синхронно, камера тоже."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кожен файл починається в одну мить і такої ж довжини, як інші: покладіть усі на 0:00 — і вони йдуть синхронно, камера теж."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "每个文件都从同一时刻开始、时长相同：全部放在 0:00，它们就会同步播放，摄像头也一样。"
+          }
+        }
+      }
+    },
+    "Every part of this video as its own file — screen, camera, sound, captions, the finished video, and a timeline for editing apps (⇧⌘E)" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jeder Teil dieses Videos als eigene Datei – Bildschirm, Kamera, Ton, Untertitel, das fertige Video und eine Timeline für Schnittprogramme (⇧⌘E)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chaque partie de cette vidéo dans son propre fichier — écran, caméra, son, sous-titres, la vidéo finale et une timeline pour les logiciels de montage (⇧⌘E)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このビデオのすべての要素を個別のファイルに — 画面、カメラ、音声、字幕、完成したビデオ、編集アプリ用のタイムライン（⇧⌘E）"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Каждая часть этого видео отдельным файлом — экран, камера, звук, субтитры, готовое видео и таймлайн для программ монтажа (⇧⌘E)"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кожна частина цього відео окремим файлом — екран, камера, звук, субтитри, готове відео й таймлайн для програм монтажу (⇧⌘E)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "把这个视频的每个部分都存为单独的文件 — 屏幕、摄像头、声音、字幕、成品视频，以及剪辑软件用的时间线（⇧⌘E）"
+          }
+        }
+      }
+    },
+    "Every part of this video as its own file, in a new folder — for another editor or editing app." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jeder Teil dieses Videos als eigene Datei in einem neuen Ordner – für eine andere Person im Schnitt oder ein Schnittprogramm."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chaque partie de cette vidéo dans son propre fichier, dans un nouveau dossier — pour un autre monteur ou logiciel de montage."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このビデオのすべての要素を個別のファイルとして新しいフォルダに — 別の編集者や編集アプリに渡すために。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Каждая часть этого видео отдельным файлом в новой папке — для другого монтажёра или программы монтажа."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кожна частина цього відео окремим файлом у новій папці — для іншого монтажера чи програми монтажу."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "把这个视频的每个部分都作为单独的文件放进一个新文件夹 — 交给其他剪辑师或剪辑软件。"
+          }
+        }
+      }
+    },
     "Every sound level is at 0 (Audio tab) — this export will have no sound." : {
       "localizations" : {
         "de" : {
@@ -26526,6 +27570,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "已导出 %lld 个预设"
+          }
+        }
+      }
+    },
+    "Exported with your export settings" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mit deinen Exporteinstellungen exportiert"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exportée avec vos réglages d’exportation"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "書き出し設定で書き出します"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Экспортируется с вашими настройками экспорта"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Експортується з вашими налаштуваннями експорту"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "按你的导出设置导出"
           }
         }
       }
@@ -27292,6 +28376,46 @@
         }
       }
     },
+    "File %lld of %lld: %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datei %1$lld von %2$lld: %3$@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fichier %1$lld sur %2$lld : %3$@"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%2$lld個中%1$lld個目のファイル：%3$@"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Файл %1$lld из %2$lld: %3$@"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Файл %1$lld з %2$lld: %3$@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "第 %1$lld 个文件，共 %2$lld 个：%3$@"
+          }
+        }
+      }
+    },
     "File Name" : {
       "localizations" : {
         "de" : {
@@ -27368,6 +28492,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "找不到文件"
+          }
+        }
+      }
+    },
+    "Files are copied as they are wherever they can be. Only what has to change — clips cut to your edit, a camera with its background removed — is re-encoded to ProRes." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dateien werden, wo immer es geht, unverändert kopiert. Nur was sich ändern muss – auf deinen Schnitt gekürzte Clips, eine Kamera ohne Hintergrund – wird in ProRes neu codiert."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les fichiers sont copiés tels quels partout où c’est possible. Seul ce qui doit changer — les clips coupés selon votre montage, une caméra sans arrière-plan — est réencodé en ProRes."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "可能な限りファイルはそのままコピーします。変更が必要なもの（編集に合わせてカットしたクリップ、背景を削除したカメラ）だけをProResに再エンコードします。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Где возможно, файлы копируются как есть. В ProRes перекодируется только то, что должно измениться: клипы, обрезанные по вашему монтажу, и камера без фона."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Де можливо, файли копіюються як є. У ProRes перекодовується лише те, що має змінитися: кліпи, обрізані за вашим монтажем, і камера без тла."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "能原样复制的文件都会原样复制。只有必须改变的内容 — 按你的剪辑裁剪的片段、去除了背景的摄像头画面 — 才会重新编码为 ProRes。"
           }
         }
       }
@@ -28089,6 +29253,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "字体"
+          }
+        }
+      }
+    },
+    "For Final Cut Pro, DaVinci Resolve, and Adobe Premiere Pro" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Für Final Cut Pro, DaVinci Resolve und Adobe Premiere Pro"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pour Final Cut Pro, DaVinci Resolve et Adobe Premiere Pro"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Final Cut Pro、DaVinci Resolve、Adobe Premiere Pro用"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Для Final Cut Pro, DaVinci Resolve и Adobe Premiere Pro"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Для Final Cut Pro, DaVinci Resolve і Adobe Premiere Pro"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "用于 Final Cut Pro、DaVinci Resolve 和 Adobe Premiere Pro"
           }
         }
       }
@@ -28987,6 +30191,46 @@
         }
       }
     },
+    "Full original files" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vollständige Originale"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fichiers originaux complets"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "元のファイル全体"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Исходные файлы целиком"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вихідні файли повністю"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "完整原始文件"
+          }
+        }
+      }
+    },
     "Full screen: %@" : {
       "comment" : "Settings: estimated size of a full-screen recording",
       "localizations" : {
@@ -29664,6 +30908,167 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "绿色"
+          }
+        }
+      }
+    },
+    "Handoff didn't finish" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Übergabe nicht fertig geworden"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La transmission n’a pas abouti"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "受け渡しが完了しませんでした"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Передача не завершена"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Передавання не завершено"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "交付未完成"
+          }
+        }
+      }
+    },
+    "Handoff ready — show it" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Übergabe fertig – anzeigen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transmission prête — l’afficher"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "受け渡しの準備ができました — 表示"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Передача готова — показать"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Передавання готове — показати"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "交付已就绪 — 查看"
+          }
+        }
+      }
+    },
+    "Handoff — %@" : {
+      "comment" : "%@ is the progress, e.g. “40%”",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Übergabe – %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transmission — %@"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "受け渡し — %@"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Передача — %@"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Передавання — %@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "交付 — %@"
+          }
+        }
+      }
+    },
+    "Handoff — getting ready" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Übergabe – wird vorbereitet"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transmission — préparation"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "受け渡し — 準備中"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Передача — подготовка"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Передавання — підготовка"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "交付 — 正在准备"
           }
         }
       }
@@ -31471,6 +32876,46 @@
         }
       }
     },
+    "Include a timeline for editing apps" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Timeline für Schnittprogramme beilegen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inclure une timeline pour les logiciels de montage"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "編集アプリ用のタイムラインを含める"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавить таймлайн для программ монтажа"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Додати таймлайн для програм монтажу"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "附带剪辑软件用的时间线"
+          }
+        }
+      }
+    },
     "Include aspect ratio (%@)" : {
       "comment" : "Save as Preset checkbox; %@ is the ratio, e.g. 16:9",
       "localizations" : {
@@ -31549,6 +32994,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "包含媒体（在任何 Mac 上都可用）"
+          }
+        }
+      }
+    },
+    "Include the finished video" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fertiges Video beilegen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inclure la vidéo finale"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "完成したビデオを含める"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавить готовое видео"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Додати готове відео"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "附带成品视频"
           }
         }
       }
@@ -32231,6 +33716,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "指针已录入画面像素中，因此无法调整大小或平滑处理。新录制内容默认会捕捉可编辑的指针（“设置”→“录制”）。"
+          }
+        }
+      }
+    },
+    "It won't fit there. Choose another location, or pick Smaller files." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dort ist nicht genug Platz. Wähle einen anderen Ort oder „Kleinere Dateien“."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il n’y a pas assez de place. Choisissez un autre emplacement ou « Fichiers plus légers »."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "保存先の空き容量が足りません。別の場所を選ぶか、「小さいファイル」を選んでください。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Там не хватит места. Выберите другое место или «Файлы поменьше»."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Там не вистачить місця. Виберіть інше місце або «Менші файли»."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "那里放不下。请选择其他位置，或选择“较小的文件”。"
           }
         }
       }
@@ -35035,6 +36560,46 @@
         }
       }
     },
+    "Left out:" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weggelassen:"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non inclus :"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "含まれなかったもの："
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не вошло:"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не ввійшло:"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未包含："
+          }
+        }
+      }
+    },
     "Length" : {
       "localizations" : {
         "de" : {
@@ -35313,6 +36878,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "直线"
+          }
+        }
+      }
+    },
+    "Line everything up" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alles ausrichten"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tout aligner"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "すべてそろえる"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выровнять всё"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вирівняти все"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "全部对齐"
           }
         }
       }
@@ -38252,6 +39857,46 @@
         }
       }
     },
+    "Music “%@” — the file is missing" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Musik „%@“ – die Datei fehlt"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Musique « %@ » — le fichier est introuvable"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "音楽“%@” — ファイルが見つかりません"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Музыка «%@» — файл не найден"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Музика «%@» — файл не знайдено"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "音乐“%@” — 文件不见了"
+          }
+        }
+      }
+    },
     "Mute Clip" : {
       "localizations" : {
         "de" : {
@@ -40097,6 +41742,46 @@
         }
       }
     },
+    "No location chosen" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kein Ort gewählt"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucun emplacement choisi"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "場所が選択されていません"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Место не выбрано"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Місце не вибрано"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "尚未选择位置"
+          }
+        }
+      }
+    },
     "No long pauses to shorten" : {
       "localizations" : {
         "de" : {
@@ -41018,6 +42703,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "磁盘空间不足，无法进行此录制：大约需要 %@ 可用空间，当前可用 %@。请释放空间，或选择“均衡”质量或 30 fps。"
+          }
+        }
+      }
+    },
+    "Not enough space: the handoff needs about %@ and %@ is free there." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nicht genug Platz: Die Übergabe braucht etwa %1$@, frei sind dort %2$@."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pas assez de place : la transmission demande environ %1$@ et il reste %2$@ à cet endroit."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "空き容量が足りません：受け渡しには約%1$@が必要ですが、保存先の空きは%2$@です。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не хватает места: для передачи нужно около %1$@, а там свободно %2$@."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не вистачає місця: для передавання потрібно близько %1$@, а там вільно %2$@."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "空间不足：交付大约需要 %1$@，那里只有 %2$@ 可用。"
           }
         }
       }
@@ -44074,6 +45799,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "已从你上次停下的地方继续"
+          }
+        }
+      }
+    },
+    "Picture “%@” — the file is missing" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bild „%@“ – die Datei fehlt"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Image « %@ » — le fichier est introuvable"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "画像“%@” — ファイルが見つかりません"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Изображение «%@» — файл не найден"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зображення «%@» — файл не знайдено"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "图片“%@” — 文件不见了"
           }
         }
       }
@@ -58931,6 +60696,46 @@
         }
       }
     },
+    "Screen recording “%@” — the file is missing" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bildschirmaufnahme „%@“ – die Datei fehlt"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enregistrement d’écran « %@ » — le fichier est introuvable"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "画面収録“%@” — ファイルが見つかりません"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Запись экрана «%@» — файл не найден"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Запис екрана «%@» — файл не знайдено"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "屏幕录制“%@” — 文件不见了"
+          }
+        }
+      }
+    },
     "Screenshot Editor" : {
       "localizations" : {
         "de" : {
@@ -63430,6 +65235,46 @@
         }
       }
     },
+    "Smaller files (ProRes 422)" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kleinere Dateien (ProRes 422)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fichiers plus légers (ProRes 422)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "小さいファイル（ProRes 422）"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Файлы поменьше (ProRes 422)"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Менші файли (ProRes 422)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "较小的文件（ProRes 422）"
+          }
+        }
+      }
+    },
     "Smallest files, great for docs and chat" : {
       "localizations" : {
         "de" : {
@@ -67709,6 +69554,46 @@
         }
       }
     },
+    "The handoff is ready" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Übergabe ist fertig"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La transmission est prête"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "受け渡しの準備ができました"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Передача готова"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Передавання готове"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "交付已就绪"
+          }
+        }
+      }
+    },
     "The menu bar icon is LF Studios' main entry point. While it is hidden, open LF Studios again from Finder, Launchpad, or Spotlight to bring these Preferences back." : {
       "localizations" : {
         "de" : {
@@ -68310,6 +70195,46 @@
         }
       }
     },
+    "The video has no picture" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das Video hat kein Bild"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La vidéo n’a pas d’image"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ビデオに映像がありません"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "В видео нет изображения"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "У відео немає зображення"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "该视频没有画面"
+          }
+        }
+      }
+    },
     "The video's own recording can't be removed" : {
       "localizations" : {
         "de" : {
@@ -68630,6 +70555,46 @@
         }
       }
     },
+    "There's nothing to write" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Es gibt nichts zu schreiben"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il n’y a rien à écrire"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "書き込むものがありません"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нечего записывать"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нічого записувати"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "没有可写入的内容"
+          }
+        }
+      }
+    },
     "Thickness" : {
       "localizations" : {
         "de" : {
@@ -68786,6 +70751,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "这台 Mac 无法在这两种语言之间翻译。请选择其他语言。"
+          }
+        }
+      }
+    },
+    "This Mac has no ProRes chip, so the re-encoded files take a while — the progress shows how long." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dieser Mac hat keinen ProRes-Chip, die neu codierten Dateien dauern deshalb eine Weile – der Fortschritt zeigt, wie lange."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ce Mac n’a pas de puce ProRes : les fichiers réencodés prennent un moment — la progression indique combien de temps."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このMacにはProResチップがないため、再エンコードするファイルには時間がかかります。進行状況に所要時間が表示されます。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "В этом Mac нет чипа ProRes, поэтому перекодирование займёт время — сколько, покажет индикатор."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "У цьому Mac немає чипа ProRes, тож перекодування забере час — скільки, покаже індикатор."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "这台 Mac 没有 ProRes 芯片，重新编码的文件需要一些时间 — 进度会显示要多久。"
           }
         }
       }
@@ -70762,6 +72767,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "将片段开头修剪到播放头（I）"
+          }
+        }
+      }
+    },
+    "Trimmed to my edit" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auf meinen Schnitt gekürzt"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Coupés selon mon montage"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "編集に合わせてカット"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обрезать по моему монтажу"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обрізати за моїм монтажем"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "按我的剪辑裁剪"
           }
         }
       }
@@ -78599,6 +80644,46 @@
         }
       }
     },
+    "You can close this — the handoff keeps going." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du kannst das schließen – die Übergabe läuft weiter."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous pouvez fermer ceci — la transmission continue."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "閉じても大丈夫です — 受け渡しは続きます。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Это можно закрыть — передача продолжится."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Це можна закрити — передавання триватиме."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你可以关闭这个 — 交付会继续进行。"
+          }
+        }
+      }
+    },
     "You have unsaved edits in %lld screenshots." : {
       "localizations" : {
         "de" : {
@@ -82490,6 +84575,7 @@
         }
       }
     },
+    "• %@" : {},
     "• %lld small notes about recordings that are gone" : {
       "localizations" : {
         "de" : {

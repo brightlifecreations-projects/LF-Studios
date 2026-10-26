@@ -1,4 +1,7 @@
 {
+  " — %@ free there" : {
+    "uk" : " — там вільно %@"
+  },
   "%@ (This Mac)" : {
     "uk" : "%@ (цей Mac)"
   },
@@ -31,6 +34,12 @@
   },
   "%@ — %@" : {
     "uk" : "%@ — %@"
+  },
+  "%@ — about %lld min left" : {
+    "uk" : "%1$@ — лишилося близько %2$lld хв"
+  },
+  "%@ — about a minute left" : {
+    "uk" : "%@ — лишилося близько хвилини"
   },
   "%lld annotations" : {
     "uk" : {
@@ -87,6 +96,9 @@
       "one" : "%lld вирізаний фрагмент, вилучено %@",
       "other" : "%lld вирізаного фрагмента, вилучено %@"
     }
+  },
+  "%lld files, about %@" : {
+    "uk" : "Файлів: %1$lld, близько %2$@"
   },
   "%lld parts" : {
     "uk" : {
@@ -216,6 +228,9 @@
   "All commands (⌘K)" : {
     "uk" : "Усі команди (⌘K)"
   },
+  "All files" : {
+    "uk" : "Усі файли"
+  },
   "Always show the arrow" : {
     "uk" : "Завжди показувати стрілку"
   },
@@ -273,6 +288,9 @@
   "Behind you" : {
     "uk" : "Позаду вас"
   },
+  "Best (ProRes 422 HQ)" : {
+    "uk" : "Найкраща (ProRes 422 HQ)"
+  },
   "Blur" : {
     "uk" : "Розмиття"
   },
@@ -324,6 +342,12 @@
   "Camera video — drag to line it up with the recording" : {
     "uk" : "Відео з камери — перетягніть, щоб узгодити із записом"
   },
+  "Camera video “%@” — none of it is in the edit" : {
+    "uk" : "Відео з камери «%@» — жоден фрагмент не потрапив у монтаж"
+  },
+  "Camera video “%@” — the file is missing" : {
+    "uk" : "Відео з камери «%@» — файл не знайдено"
+  },
   "Camera video “%@”, %@" : {
     "uk" : "Відео з камери «%1$@», %2$@"
   },
@@ -338,6 +362,9 @@
   },
   "Can't sync — their sound doesn't match clearly enough. Set the offset by hand." : {
     "uk" : "Не вдалося синхронізувати — звук збігається недостатньо чітко. Задайте зсув вручну."
+  },
+  "Cancelled — the partly made folder was removed" : {
+    "uk" : "Скасовано — недороблену папку вилучено"
   },
   "Caption" : {
     "uk" : "Субтитр"
@@ -360,11 +387,17 @@
   "Choose Image…" : {
     "uk" : "Вибрати зображення…"
   },
+  "Choose Location…" : {
+    "uk" : "Вибрати місце…"
+  },
   "Choose an LF Studios project" : {
     "uk" : "Виберіть проєкт LF Studios"
   },
   "Choose the camera video to show in the bubble" : {
     "uk" : "Виберіть відео з камери для бульбашки"
+  },
+  "Choose where to put the handoff folder — any folder or drive" : {
+    "uk" : "Виберіть, куди покласти папку для передавання — будь-яка папка чи диск"
   },
   "Cleaning up your voice…" : {
     "uk" : "Очищення голосу…"
@@ -396,6 +429,9 @@
   "Clip starts / ends here" : {
     "uk" : "Кліп починається/закінчується тут"
   },
+  "Clips" : {
+    "uk" : "Кліпи"
+  },
   "Close" : {
     "uk" : "Закрити"
   },
@@ -420,17 +456,50 @@
   "Copy current frame" : {
     "uk" : "Скопіювати поточний кадр"
   },
+  "Couldn't create the handoff folder — %@" : {
+    "uk" : "Не вдалося створити папку для передавання — %@"
+  },
+  "Couldn't finish the file" : {
+    "uk" : "Не вдалося завершити файл"
+  },
   "Couldn't open this video" : {
     "uk" : "Не вдалося відкрити це відео"
   },
   "Couldn't open “%@”" : {
     "uk" : "Не вдалося відкрити «%@»"
   },
+  "Couldn't prepare the sound" : {
+    "uk" : "Не вдалося підготувати звук"
+  },
+  "Couldn't prepare the video" : {
+    "uk" : "Не вдалося підготувати відео"
+  },
+  "Couldn't read the sound" : {
+    "uk" : "Не вдалося прочитати звук"
+  },
+  "Couldn't read the video" : {
+    "uk" : "Не вдалося прочитати відео"
+  },
   "Couldn't save the presets file" : {
     "uk" : "Не вдалося зберегти файл стилів"
   },
   "Couldn't save the project — check there's room on the disk" : {
     "uk" : "Не вдалося зберегти проєкт — перевірте, чи є місце на диску"
+  },
+  "Couldn't start writing" : {
+    "uk" : "Не вдалося почати запис"
+  },
+  "Couldn't write a frame" : {
+    "uk" : "Не вдалося записати кадр"
+  },
+  "Create Handoff" : {
+    "uk" : "Створити передавання"
+  },
+  "Creative Handoff" : {
+    "uk" : "Творче передавання"
+  },
+  "Creative Handoff…" : {
+    "uk" : "Творче передавання…"
   },
   "Crop" : {
     "uk" : "Обрізання"
@@ -591,6 +660,15 @@
   "Even out loudness" : {
     "uk" : "Вирівняти гучність"
   },
+  "Every file starts at the same moment and is as long as the others: drop them all at 0:00 and they play in sync, the camera too." : {
+    "uk" : "Кожен файл починається в одну мить і такої ж довжини, як інші: покладіть усі на 0:00 — і вони йдуть синхронно, камера теж."
+  },
+  "Every part of this video as its own file — screen, camera, sound, captions, the finished video, and a timeline for editing apps (⇧⌘E)" : {
+    "uk" : "Кожна частина цього відео окремим файлом — екран, камера, звук, субтитри, готове відео й таймлайн для програм монтажу (⇧⌘E)"
+  },
+  "Every part of this video as its own file, in a new folder — for another editor or editing app." : {
+    "uk" : "Кожна частина цього відео окремим файлом у новій папці — для іншого монтажера чи програми монтажу."
+  },
   "Exactly as recorded." : {
     "uk" : "Точно як записано."
   },
@@ -613,6 +691,9 @@
       "one" : "Експортовано %lld стиль",
       "other" : "Експортовано %lld стилю"
     }
+  },
+  "Exported with your export settings" : {
+    "uk" : "Експортується з вашими налаштуваннями експорту"
   },
   "Exports at the level video sites expect (−16 LUFS) without clipping" : {
     "uk" : "Експортує з рівнем, якого очікують відеосайти (−16 LUFS), без перевантаження"
@@ -637,6 +718,12 @@
   },
   "Fast-forward moments where nothing happens" : {
     "uk" : "Прискорювати моменти, коли нічого не відбувається"
+  },
+  "File %lld of %lld: %@" : {
+    "uk" : "Файл %1$lld з %2$lld: %3$@"
+  },
+  "Files are copied as they are wherever they can be. Only what has to change — clips cut to your edit, a camera with its background removed — is re-encoded to ProRes." : {
+    "uk" : "Де можливо, файли копіюються як є. У ProRes перекодовується лише те, що має змінитися: кліпи, обрізані за вашим монтажем, і камера без тла."
   },
   "Fill the Frame, Follow the Cursor" : {
     "uk" : "Заповнити кадр і стежити за курсором"
@@ -665,6 +752,9 @@
   "Follows cursor" : {
     "uk" : "Стежить за курсором"
   },
+  "For Final Cut Pro, DaVinci Resolve, and Adobe Premiere Pro" : {
+    "uk" : "Для Final Cut Pro, DaVinci Resolve і Adobe Premiere Pro"
+  },
   "Frame" : {
     "uk" : "Рамка"
   },
@@ -689,6 +779,9 @@
   "Full frame (no background)" : {
     "uk" : "Весь кадр (без тла)"
   },
+  "Full original files" : {
+    "uk" : "Вихідні файли повністю"
+  },
   "Full-Camera Intro and Outro" : {
     "uk" : "Вступ і завершення лише з камерою"
   },
@@ -709,6 +802,18 @@
   },
   "Gradient" : {
     "uk" : "Градієнт"
+  },
+  "Handoff didn't finish" : {
+    "uk" : "Передавання не завершено"
+  },
+  "Handoff ready — show it" : {
+    "uk" : "Передавання готове — показати"
+  },
+  "Handoff — %@" : {
+    "uk" : "Передавання — %@"
+  },
+  "Handoff — getting ready" : {
+    "uk" : "Передавання — підготовка"
   },
   "Hide" : {
     "uk" : "Сховати"
@@ -751,11 +856,17 @@
   "Imported Preset" : {
     "uk" : "Імпортований стиль"
   },
+  "Include a timeline for editing apps" : {
+    "uk" : "Додати таймлайн для програм монтажу"
+  },
   "Include aspect ratio (%@)" : {
     "uk" : "Включити співвідношення сторін (%@)"
   },
   "Include media (works on any Mac)" : {
     "uk" : "Включити медіафайли (працює на будь-якому Mac)"
+  },
+  "Include the finished video" : {
+    "uk" : "Додати готове відео"
   },
   "Inspector tabs" : {
     "uk" : "Вкладки інспектора"
@@ -780,6 +891,9 @@
   },
   "It was recorded into the pixels, so it can't be resized or smoothed. New recordings capture an editable cursor by default (Settings → Recording)." : {
     "uk" : "Його записано просто в зображення, тому не можна змінити розмір чи згладити. Нові записи типово містять редагований курсор (Параметри → Запис)."
+  },
+  "It won't fit there. Choose another location, or pick Smaller files." : {
+    "uk" : "Там не вистачить місця. Виберіть інше місце або «Менші файли»."
   },
   "Jump here" : {
     "uk" : "Перейти сюди"
@@ -808,6 +922,18 @@
   "Keys on screen" : {
     "uk" : "Клавіші на екрані"
   },
+  "LF Studios Presets" : {
+    "uk" : "Стилі LF Studios"
+  },
+  "LF Studios is still cleaning up the voice" : {
+    "uk" : "LF Studios ще очищає голос"
+  },
+  "LF Studios is still transcribing" : {
+    "uk" : "LF Studios ще розшифровує мовлення"
+  },
+  "LF Studios listens to the recording right on this Mac — nothing is uploaded. Then cut the video by deleting words, remove ums and long pauses in one click, and add captions." : {
+    "uk" : "LF Studios слухає запис просто на цьому Mac — нічого не вивантажується. Потім монтуйте відео, видаляючи слова, одним клацанням вилучайте слова-паразити й довгі паузи та додавайте субтитри."
+  },
   "Language" : {
     "uk" : "Мова"
   },
@@ -817,11 +943,17 @@
   "Layouts" : {
     "uk" : "Макети"
   },
+  "Left out:" : {
+    "uk" : "Не ввійшло:"
+  },
   "Letterbox Instead of Following the Cursor" : {
     "uk" : "Вписати з полями замість стеження за курсором"
   },
   "Level" : {
     "uk" : "Рівень"
+  },
+  "Line everything up" : {
+    "uk" : "Вирівняти все"
   },
   "Lines the camera up by the sound both recorded. Or drag the camera strip on the timeline." : {
     "uk" : "Узгоджує камеру за звуком, записаним обома. Або перетягніть смугу камери на таймлайні."
@@ -879,6 +1011,9 @@
   },
   "Music “%@”" : {
     "uk" : "Музика «%@»"
+  },
+  "Music “%@” — the file is missing" : {
+    "uk" : "Музика «%@» — файл не знайдено"
   },
   "Mute Clip" : {
     "uk" : "Вимкнути звук кліпу"
@@ -949,6 +1084,9 @@
   "No cursor data in this video" : {
     "uk" : "У цьому відео немає даних курсора"
   },
+  "No location chosen" : {
+    "uk" : "Місце не вибрано"
+  },
   "No music" : {
     "uk" : "Без музики"
   },
@@ -963,6 +1101,9 @@
   },
   "None in this recording. Turn on “Show keyboard shortcuts” in Settings → Recording and every ⌘ shortcut you press appears as keycaps. Plain typing is never recorded." : {
     "uk" : "У цьому записі їх немає. Увімкніть «Показувати клавіатурні скорочення» в розділі Параметри → Запис, і кожне натиснуте скорочення з ⌘ з’являтиметься у вигляді клавіш. Звичайне введення тексту ніколи не записується."
+  },
+  "Not enough space: the handoff needs about %@ and %@ is free there." : {
+    "uk" : "Не вистачає місця: для передавання потрібно близько %1$@, а там вільно %2$@."
   },
   "Not for this video" : {
     "uk" : "Не для цього відео"
@@ -1020,6 +1161,9 @@
   },
   "Pause (Space)" : {
     "uk" : "Пауза (пробіл)"
+  },
+  "Picture “%@” — the file is missing" : {
+    "uk" : "Зображення «%@» — файл не знайдено"
   },
   "Placement" : {
     "uk" : "Розташування"
@@ -1588,6 +1732,9 @@
   "Saving project…" : {
     "uk" : "Збереження проєкту…"
   },
+  "Screen recording “%@” — the file is missing" : {
+    "uk" : "Запис екрана «%@» — файл не знайдено"
+  },
   "Search commands" : {
     "uk" : "Шукати команди"
   },
@@ -1643,18 +1790,6 @@
   },
   "Shortens every silence over a second (this video has no LF Studios pointer data to spot what happens on screen)" : {
     "uk" : "Скорочує кожну тишу, довшу за секунду (у цьому відео немає даних курсора LF Studios, щоб розпізнати, що відбувається на екрані)"
-  },
-  "LF Studios Presets" : {
-    "uk" : "Стилі LF Studios"
-  },
-  "LF Studios is still cleaning up the voice" : {
-    "uk" : "LF Studios ще очищає голос"
-  },
-  "LF Studios is still transcribing" : {
-    "uk" : "LF Studios ще розшифровує мовлення"
-  },
-  "LF Studios listens to the recording right on this Mac — nothing is uploaded. Then cut the video by deleting words, remove ums and long pauses in one click, and add captions." : {
-    "uk" : "LF Studios слухає запис просто на цьому Mac — нічого не вивантажується. Потім монтуйте відео, видаляючи слова, одним клацанням вилучайте слова-паразити й довгі паузи та додавайте субтитри."
   },
   "Show Background" : {
     "uk" : "Показати тло"
@@ -1727,6 +1862,9 @@
   },
   "Skips the dash to the Stop button at the end" : {
     "uk" : "Пропускає ривок до кнопки «Зупинити» наприкінці"
+  },
+  "Smaller files (ProRes 422)" : {
+    "uk" : "Менші файли (ProRes 422)"
   },
   "Soft streaks on fast moves" : {
     "uk" : "М’які шлейфи під час швидких рухів"
@@ -1824,11 +1962,23 @@
   "The cursor is part of this video" : {
     "uk" : "Курсор — частина цього відео"
   },
+  "The handoff is ready" : {
+    "uk" : "Передавання готове"
+  },
   "The recording for “%@” is missing" : {
     "uk" : "Запис для «%@» не знайдено"
   },
+  "The video has no picture" : {
+    "uk" : "У відео немає зображення"
+  },
+  "There's nothing to write" : {
+    "uk" : "Нічого записувати"
+  },
   "Thickness" : {
     "uk" : "Товщина"
+  },
+  "This Mac has no ProRes chip, so the re-encoded files take a while — the progress shows how long." : {
+    "uk" : "У цьому Mac немає чипа ProRes, тож перекодування забере час — скільки, покаже індикатор."
   },
   "This list" : {
     "uk" : "Цей список"
@@ -1886,6 +2036,9 @@
   },
   "Trim the clip's start to the playhead (I)" : {
     "uk" : "Підрізати початок кліпу до покажчика відтворення (I)"
+  },
+  "Trimmed to my edit" : {
+    "uk" : "Обрізати за моїм монтажем"
   },
   "Try Again" : {
     "uk" : "Спробувати ще раз"
@@ -2334,6 +2487,9 @@
   },
   "Words light up as they're spoken" : {
     "uk" : "Слова підсвічуються, коли їх вимовляють"
+  },
+  "You can close this — the handoff keeps going." : {
+    "uk" : "Це можна закрити — передавання триватиме."
   },
   "Your look" : {
     "uk" : "Ваш стиль"

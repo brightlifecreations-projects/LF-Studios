@@ -299,6 +299,13 @@ final class HomeModel: ObservableObject {
         }
     }
 
+    /// Opens the recording (or project) and its Creative Handoff dialog.
+    func handoff(_ project: HomeProject) {
+        guard project.isRecording || project.isProjectFile else { return }
+        VideoDemoEditorWindowController.handoffOnNextOpen = true
+        open(project)
+    }
+
     func showInFinder(_ project: HomeProject) {
         switch project.kind {
         case .recording(let url):
@@ -616,6 +623,9 @@ private struct HomeLibraryView: View {
                             .contextMenu {
                                 Button(L("Open")) { model.open(project) }
                                 Button(L("Show in Finder")) { model.showInFinder(project) }
+                                if project.isRecording || project.isProjectFile {
+                                    Button(L("Creative Handoff…")) { model.handoff(project) }
+                                }
                                 Divider()
                                 Button(L("Delete"), role: .destructive) { model.delete(project) }
                             }

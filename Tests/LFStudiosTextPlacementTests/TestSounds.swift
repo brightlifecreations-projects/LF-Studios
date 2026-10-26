@@ -39,6 +39,68 @@ enum TestSounds {
         try file.write(from: buffer)
     }
 
+    /// `video`'s picture with several sound tracks (in order), as one movie.
+    static func mux(video: URL, audio tracks: [URL], to url: URL) async throws {
+        try? FileManager.default.removeItem(at: url)
+        let composition = AVMutableComposition()
+        let picture = AVURLAsset(url: video)
+        let videoTrack = try #require(try await picture.loadTracks(withMediaType: .video).first)
+        let duration = try await picture.load(.duration)
+        let v = try #require(composition.addMutableTrack(withMediaType: .video, preferredTrackID: kCMPersistentTrackID_Invalid))
+        try v.insertTimeRange(CMTimeRange(start: .zero, duration: duration), of: videoTrack, at: .zero)
+        for audio in tracks {
+            let sound = AVURLAsset(url: audio)
+            let audioTrack = try #require(try await sound.loadTracks(withMediaType: .audio).first)
+            let audioDuration = try await sound.load(.duration)
+            let a = try #require(composition.addMutableTrack(withMediaType: .audio, preferredTrackID: kCMPersistentTrackID_Invalid))
+            try a.insertTimeRange(CMTimeRange(start: .zero, duration: CMTimeMinimum(duration, audioDuration)), of: audioTrack, at: .zero)
+        }
+        let session = try #require(AVAssetExportSession(asset: composition, presetName: AVAssetExportPresetPassthrough))
+        try await session.export(to: url, as: .mov)
+    }
+
+    /// Stereo samples (the same in both channels) as an .m4a.
+    static func writeStereo(_ samples: [Float], to url: URL, rate: Double = sampleRate) throws {
+        try? FileManager.default.removeItem(at: url)
+        let format = try #require(AVAudioFormat(standardFormatWithSampleRate: rate, channels: 2))
+        let file = try AVAudioFile(forWriting: url, settings: [AVFormatIDKey: kAudioFormatMPEG4AAC, AVSampleRateKey: rate, AVNumberOfChannelsKey: 2, AVEncoderBitRateKey: 192_000])
+        let buffer = try #require(AVAudioPCMBuffer(pcmFormat: format, frameCapacity: AVAudioFrameCount(samples.count)))
+        buffer.frameLength = AVAudioFrameCount(samples.count)
+        for channel in 0..<2 {
+            samples.withUnsafeBufferPointer { buffer.floatChannelData![channel].update(from: $0.baseAddress!, count: samples.count) }
+        }
+        try file.write(from: buffer)
+    }
+
+    /// Mono samples of a WAV or other sound file, at `rate`.
+    static func read(_ url: URL, rate: Double = 48_000) throws -> [Float] {
+        let file = try AVAudioFile(forReading: url, commonFormat: .pcmFormatFloat32, interleaved: false)
+        let buffer = try #require(AVAudioPCMBuffer(pcmFormat: file.processingFormat, frameCapacity: AVAudioFrameCount(file.length)))
+        try file.read(into: buffer)
+        let channel = buffer.floatChannelData![0]
+        return Array(UnsafeBufferPointer(start: channel, count: Int(buffer.frameLength)))
+    }
+
+    /// Where loud stretches start (seconds), at least `gap` apart.
+    static func onsets(_ samples: [Float], rate: Double = 48_000, threshold: Float = 0.1, gap: Double = 0.2) -> [Double] {
+        var onsets: [Double] = []
+        var last = -Double.infinity
+        let window = Int(rate * 0.005)
+        var i = 0
+        while i + window < samples.count {
+            var peak: Float = 0
+            for j in i..<(i + window) { peak = max(peak, abs(samples[j])) }
+            let t = Double(i) / rate
+            if peak > threshold, t - last > gap {
+                onsets.append(t)
+                last = t
+            }
+            if peak > threshold { last = t }
+            i += window
+        }
+        return onsets
+    }
+
     /// `video`'s picture with `audio`'s sound, as one movie.
     static func mux(video: URL, audio: URL, to url: URL) async throws {
         try? FileManager.default.removeItem(at: url)

@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key> — %@ free there</key>
+	<string> — 那里有 %@ 可用空间</string>
 	<key>%@ (%@)</key>
 	<string>%@（%@）</string>
 	<key>%@ (This Mac)</key>
@@ -64,6 +66,10 @@
 	<string>%@ — %@</string>
 	<key>%@ — LF Studios lives in your menu bar</key>
 	<string>%@ — LF Studios 位于菜单栏中</string>
+	<key>%@ — about %lld min left</key>
+	<string>%1$@ — 大约还剩 %2$lld 分钟</string>
+	<key>%@ — about a minute left</key>
+	<string>%@ — 大约还剩一分钟</string>
 	<key>%@ — click to change</key>
 	<string>%@ — 点按以更改</string>
 	<key>%@ → %@ — the part you ⇧-dragged on the timeline</key>
@@ -106,6 +112,8 @@
 	<string>%lld 天</string>
 	<key>%lld email addresses</key>
 	<string>%lld 个电子邮件地址</string>
+	<key>%lld files, about %@</key>
+	<string>%1$lld 个文件，约 %2$@</string>
 	<key>%lld lines</key>
 	<string>%lld 行</string>
 	<key>%lld lines changed since translating</key>
@@ -272,6 +280,8 @@
 	<string>所有命令（⌘K）</string>
 	<key>All configured</key>
 	<string>全部已设置</string>
+	<key>All files</key>
+	<string>所有文件</string>
 	<key>All zooms set to %@</key>
 	<string>所有缩放已设为 %@</string>
 	<key>Allow Access…</key>
@@ -402,6 +412,8 @@
 	<string>行为</string>
 	<key>Behind you</key>
 	<string>身后</string>
+	<key>Best (ProRes 422 HQ)</key>
+	<string>最佳（ProRes 422 HQ）</string>
 	<key>Between clips</key>
 	<string>片段之间</string>
 	<key>Black</key>
@@ -492,6 +504,10 @@
 	<string>已移除摄像头视频 — 按 ⌘Z 撤销</string>
 	<key>Camera video — drag to line it up with the recording</key>
 	<string>摄像头视频 — 拖动以与录制内容对齐</string>
+	<key>Camera video “%@” — none of it is in the edit</key>
+	<string>摄像头视频“%@” — 剪辑中没有用到它的任何部分</string>
+	<key>Camera video “%@” — the file is missing</key>
+	<string>摄像头视频“%@” — 文件不见了</string>
 	<key>Camera video “%@”, %@</key>
 	<string>摄像头视频“%1$@”，%2$@</string>
 	<key>Camera video: %@</key>
@@ -512,6 +528,8 @@
 	<string>取消此导出</string>
 	<key>Cancelled</key>
 	<string>已取消</string>
+	<key>Cancelled — the partly made folder was removed</key>
+	<string>已取消 — 已删除做了一半的文件夹</string>
 	<key>Canyon Silk</key>
 	<string>峡谷丝绸</string>
 	<key>Caption</key>
@@ -598,6 +616,8 @@
 	<string>在 LF Studios 菜单中选择“捕捉区域”即可开始</string>
 	<key>Choose Image…</key>
 	<string>选择图像…</string>
+	<key>Choose Location…</key>
+	<string>选择位置…</string>
 	<key>Choose a .ttf or .otf font. LF Studios keeps its own copy, so it keeps working if the file is deleted.</key>
 	<string>选择 .ttf 或 .otf 字体。LF Studios 会保留自己的副本，因此即使文件被删除也能继续使用。</string>
 	<key>Choose a language</key>
@@ -622,6 +642,8 @@
 	<string>选择要在气泡中显示的摄像头视频</string>
 	<key>Choose what happens immediately after taking a screenshot.</key>
 	<string>选择截屏后立即执行的操作。</string>
+	<key>Choose where to put the handoff folder — any folder or drive</key>
+	<string>选择交付文件夹的存放位置 — 任意文件夹或磁盘均可</string>
 	<key>Choose window</key>
 	<string>选择窗口</string>
 	<key>Choose...</key>
@@ -706,6 +728,8 @@
 	<string>片段从此处开始/结束</string>
 	<key>Clipboard</key>
 	<string>剪贴板</string>
+	<key>Clips</key>
+	<string>片段</string>
 	<key>Close</key>
 	<string>关闭</string>
 	<key>Close (Esc)</key>
@@ -800,8 +824,12 @@
 	<string>无法拷贝截屏。请重试，或改为存储。</string>
 	<key>Couldn't create the GIF file. Check that you can save to that folder, then export again.</key>
 	<string>无法创建 GIF 文件。请确认你可以存储到该文件夹，然后重新导出。</string>
+	<key>Couldn't create the handoff folder — %@</key>
+	<string>无法创建交付文件夹 — %@</string>
 	<key>Couldn't create the video file.</key>
 	<string>无法创建视频文件。</string>
+	<key>Couldn't finish the file</key>
+	<string>无法完成该文件</string>
 	<key>Couldn't make captions</key>
 	<string>无法生成字幕</string>
 	<key>Couldn't make the click sound. Turn off Click sounds (Audio tab), then export again.</key>
@@ -814,6 +842,10 @@
 	<string>无法打开此视频</string>
 	<key>Couldn't open “%@”</key>
 	<string>无法打开“%@”</string>
+	<key>Couldn't prepare the sound</key>
+	<string>无法准备声音</string>
+	<key>Couldn't prepare the video</key>
+	<string>无法准备视频</string>
 	<key>Couldn't prepare the video. Export again; if it keeps happening, restart LF Studios.</key>
 	<string>无法准备视频。请重新导出；如果问题仍然存在，请重新启动 LF Studios。</string>
 	<key>Couldn't read that audio file</key>
@@ -822,6 +854,10 @@
 	<string>无法读取录制内容来生成 GIF。请尝试导出较短的部分，或选择 MP4。</string>
 	<key>Couldn't read the recording. Check that its file is still there, then export again.</key>
 	<string>无法读取录制内容。请确认其文件仍然存在，然后重新导出。</string>
+	<key>Couldn't read the sound</key>
+	<string>无法读取声音</string>
+	<key>Couldn't read the video</key>
+	<string>无法读取视频</string>
 	<key>Couldn't save the captions file</key>
 	<string>无法存储字幕文件</string>
 	<key>Couldn't save the presets file</key>
@@ -840,14 +876,24 @@
 	<string>无法设置视频编码器。请选择 H.264 或更低的分辨率，然后重新导出。</string>
 	<key>Couldn't start the export. Export again; if it keeps happening, restart LF Studios.</key>
 	<string>无法开始导出。请重新导出；如果问题仍然存在，请重新启动 LF Studios。</string>
+	<key>Couldn't start writing</key>
+	<string>无法开始写入</string>
 	<key>Couldn't translate (%@). Try again, or pick another language.</key>
 	<string>无法翻译（%@）。请重试，或选择其他语言。</string>
+	<key>Couldn't write a frame</key>
+	<string>无法写入一帧</string>
 	<key>Couldn't write the GIF. Check that there's free space, or export a shorter part.</key>
 	<string>无法写入 GIF。请确认有足够的可用空间，或导出较短的部分。</string>
 	<key>Couldn't write the video. Check that there's free space and that you can save to that folder, then export again.</key>
 	<string>无法写入视频。请确认有足够的可用空间且你可以存储到该文件夹，然后重新导出。</string>
 	<key>Countdown</key>
 	<string>倒计时</string>
+	<key>Create Handoff</key>
+	<string>创建交付</string>
+	<key>Creative Handoff</key>
+	<string>创意交付</string>
+	<key>Creative Handoff…</key>
+	<string>创意交付…</string>
 	<key>Crimson Ridge</key>
 	<string>绯红山脊</string>
 	<key>Crisp and compact — the best default</key>
@@ -1134,6 +1180,12 @@
 	<string>此视频上的所有剪切、缩放、标注、字幕和样式更改都会被移除 — 你添加的录制内容会保留。你可以撤销此操作。</string>
 	<key>Every cut, zoom, annotation, caption, and style change on this video is removed. You can undo this.</key>
 	<string>此视频上的所有剪切、缩放、标注、字幕和样式更改都会被移除。你可以撤销此操作。</string>
+	<key>Every file starts at the same moment and is as long as the others: drop them all at 0:00 and they play in sync, the camera too.</key>
+	<string>每个文件都从同一时刻开始、时长相同：全部放在 0:00，它们就会同步播放，摄像头也一样。</string>
+	<key>Every part of this video as its own file — screen, camera, sound, captions, the finished video, and a timeline for editing apps (⇧⌘E)</key>
+	<string>把这个视频的每个部分都存为单独的文件 — 屏幕、摄像头、声音、字幕、成品视频，以及剪辑软件用的时间线（⇧⌘E）</string>
+	<key>Every part of this video as its own file, in a new folder — for another editor or editing app.</key>
+	<string>把这个视频的每个部分都作为单独的文件放进一个新文件夹 — 交给其他剪辑师或剪辑软件。</string>
 	<key>Every sound level is at 0 (Audio tab) — this export will have no sound.</key>
 	<string>所有音量都为 0（“音频”标签页）— 此导出将没有声音。</string>
 	<key>Everything is ready</key>
@@ -1166,6 +1218,8 @@
 	<string>已导出</string>
 	<key>Exported %lld presets</key>
 	<string>已导出 %lld 个预设</string>
+	<key>Exported with your export settings</key>
+	<string>按你的导出设置导出</string>
 	<key>Exported without Enhance voice — it couldn't finish.</key>
 	<string>已在未“增强人声”的情况下导出 — 增强未能完成。</string>
 	<key>Exported · %@</key>
@@ -1204,10 +1258,14 @@
 	<string>快进没有动静的时刻</string>
 	<key>File</key>
 	<string>文件</string>
+	<key>File %lld of %lld: %@</key>
+	<string>第 %1$lld 个文件，共 %2$lld 个：%3$@</string>
 	<key>File Name</key>
 	<string>文件名</string>
 	<key>File not found</key>
 	<string>找不到文件</string>
+	<key>Files are copied as they are wherever they can be. Only what has to change — clips cut to your edit, a camera with its background removed — is re-encoded to ProRes.</key>
+	<string>能原样复制的文件都会原样复制。只有必须改变的内容 — 按你的剪辑裁剪的片段、去除了背景的摄像头画面 — 才会重新编码为 ProRes。</string>
 	<key>Fill the Frame, Follow the Cursor</key>
 	<string>填满画面并跟随指针</string>
 	<key>Filled Rectangle</key>
@@ -1244,6 +1302,8 @@
 	<string>跟随指针</string>
 	<key>Font</key>
 	<string>字体</string>
+	<key>For Final Cut Pro, DaVinci Resolve, and Adobe Premiere Pro</key>
+	<string>用于 Final Cut Pro、DaVinci Resolve 和 Adobe Premiere Pro</string>
 	<key>Forever</key>
 	<string>永久</string>
 	<key>Format</key>
@@ -1284,6 +1344,8 @@
 	<string>片头和片尾使用全屏摄像头</string>
 	<key>Full frame (no background)</key>
 	<string>全画面（无背景）</string>
+	<key>Full original files</key>
+	<string>完整原始文件</string>
 	<key>Full screen: %@</key>
 	<string>全屏：%@</string>
 	<key>Full-Camera Intro and Outro</key>
@@ -1318,6 +1380,14 @@
 	<string>石墨</string>
 	<key>Green</key>
 	<string>绿色</string>
+	<key>Handoff didn't finish</key>
+	<string>交付未完成</string>
+	<key>Handoff ready — show it</key>
+	<string>交付已就绪 — 查看</string>
+	<key>Handoff — %@</key>
+	<string>交付 — %@</string>
+	<key>Handoff — getting ready</key>
+	<string>交付 — 正在准备</string>
 	<key>Hard Cuts Between Clips</key>
 	<string>片段之间硬切</string>
 	<key>Hard cut</key>
@@ -1394,10 +1464,14 @@
 	<string>入点提前</string>
 	<key>In later</key>
 	<string>入点延后</string>
+	<key>Include a timeline for editing apps</key>
+	<string>附带剪辑软件用的时间线</string>
 	<key>Include aspect ratio (%@)</key>
 	<string>包括宽高比（%@）</string>
 	<key>Include media (works on any Mac)</key>
 	<string>包含媒体（在任何 Mac 上都可用）</string>
+	<key>Include the finished video</key>
+	<string>附带成品视频</string>
 	<key>Includes: %@</key>
 	<string>包含：%@</string>
 	<key>Inspector tabs</key>
@@ -1432,6 +1506,8 @@
 	<string>它已被移动、重新命名或删除。请从它现在的位置打开。</string>
 	<key>It was recorded into the pixels, so it can't be resized or smoothed. New recordings capture an editable cursor by default (Settings → Recording).</key>
 	<string>指针已录入画面像素中，因此无法调整大小或平滑处理。新录制内容默认会捕捉可编辑的指针（“设置”→“录制”）。</string>
+	<key>It won't fit there. Choose another location, or pick Smaller files.</key>
+	<string>那里放不下。请选择其他位置，或选择“较小的文件”。</string>
 	<key>JPEG Quality</key>
 	<string>JPEG 质量</string>
 	<key>Jump here</key>
@@ -1546,6 +1622,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>布局</string>
 	<key>Left</key>
 	<string>左侧</string>
+	<key>Left out:</key>
+	<string>未包含：</string>
 	<key>Length</key>
 	<string>时长</string>
 	<key>Letterbox Instead of Following the Cursor</key>
@@ -1560,6 +1638,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>青柠信号</string>
 	<key>Line</key>
 	<string>直线</string>
+	<key>Line everything up</key>
+	<string>全部对齐</string>
 	<key>Line width</key>
 	<string>线条粗细</string>
 	<key>Linen</key>
@@ -1706,6 +1786,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>音乐 — 点按以更改音量、淡入淡出和人声时的降低</string>
 	<key>Music “%@”</key>
 	<string>音乐“%@”</string>
+	<key>Music “%@” — the file is missing</key>
+	<string>音乐“%@” — 文件不见了</string>
 	<key>Mute Clip</key>
 	<string>将片段静音</string>
 	<key>Mute preview</key>
@@ -1798,6 +1880,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>此视频中没有指针数据</string>
 	<key>No idle moments found — nice and tight</key>
 	<string>未发现空闲片段 — 节奏紧凑</string>
+	<key>No location chosen</key>
+	<string>尚未选择位置</string>
 	<key>No long pauses to shorten</key>
 	<string>没有需要缩短的长停顿</string>
 	<key>No microphone connected</key>
@@ -1844,6 +1928,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>磁盘空间不足，无法进行此录制：大约需要 %@ 可用空间，当前可用 %@。请释放一些空间后重试。</string>
 	<key>Not enough free disk space for this recording: it needs about %@ free, and %@ is available. Free up space, or choose Balanced quality or 30 fps.</key>
 	<string>磁盘空间不足，无法进行此录制：大约需要 %@ 可用空间，当前可用 %@。请释放空间，或选择“均衡”质量或 30 fps。</string>
+	<key>Not enough space: the handoff needs about %@ and %@ is free there.</key>
+	<string>空间不足：交付大约需要 %1$@，那里只有 %2$@ 可用。</string>
 	<key>Not for this video</key>
 	<string>此视频不需要</string>
 	<key>Not now</key>
@@ -1996,6 +2082,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>找到电话二维码</string>
 	<key>Picked up where you left off</key>
 	<string>已从你上次停下的地方继续</string>
+	<key>Picture “%@” — the file is missing</key>
+	<string>图片“%@” — 文件不见了</string>
 	<key>Pin</key>
 	<string>贴到屏幕</string>
 	<key>Pin to Screen</key>
@@ -2688,6 +2776,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>需要屏幕录制权限</string>
 	<key>Screen recording didn't start in time. Try again.</key>
 	<string>屏幕录制未能及时开始。请重试。</string>
+	<key>Screen recording “%@” — the file is missing</key>
+	<string>屏幕录制“%@” — 文件不见了</string>
 	<key>Screenshot Editor</key>
 	<string>截屏编辑器</string>
 	<key>Screenshot canvas</key>
@@ -2894,6 +2984,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>慢速</string>
 	<key>Small</key>
 	<string>小</string>
+	<key>Smaller files (ProRes 422)</key>
+	<string>较小的文件（ProRes 422）</string>
 	<key>Smallest files, great for docs and chat</key>
 	<string>文件最小，适合文档和聊天</string>
 	<key>Smooth</key>
@@ -3098,6 +3190,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>导出会在后台继续（Esc）</string>
 	<key>The export stopped unexpectedly (%@). Try again — if it keeps happening, export at a lower resolution or in H.264.</key>
 	<string>导出意外停止（%@）。请重试 — 如果问题仍然存在，请以较低分辨率或 H.264 格式导出。</string>
+	<key>The handoff is ready</key>
+	<string>交付已就绪</string>
 	<key>The menu bar icon is LF Studios' main entry point. While it is hidden, open LF Studios again from Finder, Launchpad, or Spotlight to bring these Preferences back.</key>
 	<string>菜单栏图标是 LF Studios 的主要入口。隐藏后，可从“访达”、“启动台”或“聚焦”再次打开 LF Studios 来重新显示这些设置。</string>
 	<key>The microphone couldn't start, so this recording has no mic.</key>
@@ -3128,6 +3222,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>时间线为空。请恢复一个片段，然后重新导出。</string>
 	<key>The video encoder is busy — another app may be recording or exporting. Wait a moment and try again, or choose H.264.</key>
 	<string>视频编码器正忙 — 可能有其他 App 正在录制或导出。请稍候再试，或选择 H.264。</string>
+	<key>The video has no picture</key>
+	<string>该视频没有画面</string>
 	<key>The video's own recording can't be removed</key>
 	<string>无法移除视频本身的录制内容</string>
 	<key>The voice track is empty, so there's nothing to clean up. Turn off Enhance voice to keep the original sound.</key>
@@ -3144,6 +3240,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>这里已有缩放</string>
 	<key>There's no video in this file</key>
 	<string>此文件中没有视频</string>
+	<key>There's nothing to write</key>
+	<string>没有可写入的内容</string>
 	<key>Thickness</key>
 	<string>粗细</string>
 	<key>Thin</key>
@@ -3152,6 +3250,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>这个 GIF 相对其尺寸过长 — 大约需要 %@ 内存。请选择更小的尺寸或更低的帧率、导出视频的一部分，或选择 MP4。</string>
 	<key>This Mac can't translate between these languages. Pick another language.</key>
 	<string>这台 Mac 无法在这两种语言之间翻译。请选择其他语言。</string>
+	<key>This Mac has no ProRes chip, so the re-encoded files take a while — the progress shows how long.</key>
+	<string>这台 Mac 没有 ProRes 芯片，重新编码的文件需要一些时间 — 进度会显示要多久。</string>
 	<key>This Week</key>
 	<string>本周</string>
 	<key>This list</key>
@@ -3246,6 +3346,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>将片段结尾修剪到播放头（O）</string>
 	<key>Trim the clip's start to the playhead (I)</key>
 	<string>将片段开头修剪到播放头（I）</string>
+	<key>Trimmed to my edit</key>
+	<string>按我的剪辑裁剪</string>
 	<key>Try Again</key>
 	<string>重试</string>
 	<key>Try it right now — Capture Area is also in the menu bar.</key>
@@ -3628,6 +3730,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>是</string>
 	<key>Yesterday</key>
 	<string>昨天</string>
+	<key>You can close this — the handoff keeps going.</key>
+	<string>你可以关闭这个 — 交付会继续进行。</string>
 	<key>You have unsaved edits in %lld screenshots.</key>
 	<string>你有 %lld 张截屏的编辑尚未存储。</string>
 	<key>You're all set — LF Studios lives here</key>
