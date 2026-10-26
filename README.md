@@ -1,8 +1,8 @@
 <div align="center">
 
-<img src="Branding/ShotStyle_Icon.png" width="128" alt="ShotStyle icon" />
+<img src="Branding/LFStudios_Icon.png" width="128" alt="LF Studios icon" />
 
-# ShotStyle
+# LF Studios
 
 **Screenshots, screen recordings and video editing for your Mac.**<br/>
 A native macOS menu-bar app. No account, no cloud: your captures stay on your Mac.
@@ -15,7 +15,7 @@ A native macOS menu-bar app. No account, no cloud: your captures stay on your Ma
 
 ## What it does
 
-<img src="assets/readme/screenshot-editor.jpg" width="100%" alt="The ShotStyle screenshot editor: a dashboard screenshot on a gradient backdrop with a spotlight on the chart, a callout, numbered steps, and an arrow." />
+<img src="assets/readme/screenshot-editor.jpg" width="100%" alt="The LF Studios screenshot editor: a dashboard screenshot on a gradient backdrop with a spotlight on the chart, a callout, numbered steps, and an arrow." />
 
 **Screenshots**
 
@@ -32,27 +32,27 @@ A native macOS menu-bar app. No account, no cloud: your captures stay on your Ma
 - Add captions from your narration (made on your Mac), music, title cards, transitions, logos and image overlays.
 - Export MP4 up to 4K at 60 fps, or GIF.
 
-<img src="assets/readme/recording-bar.png" width="100%" alt="The ShotStyle recording bar: area, audio, microphone, pointer, camera and shortcut toggles, quality and frame rate, and the record button." />
+<img src="assets/readme/recording-bar.png" width="100%" alt="The LF Studios recording bar: area, audio, microphone, pointer, camera and shortcut toggles, quality and frame rate, and the record button." />
 
-ShotStyle is available in English, Deutsch, Français, 简体中文, Русский, Українська and 日本語.
+LF Studios is available in English, Deutsch, Français, 简体中文, Русский, Українська and 日本語.
 
 ## Install
 
 ### Download the app
 
-Get **ShotStyle.zip** from the [Releases page](https://github.com/brightlifecreations-projects/ShotStyle/releases/latest). It runs on Apple Silicon and Intel Macs with macOS 13 or later.
+Get **LF-Studios.zip** from the [Releases page](https://github.com/brightlifecreations-projects/ShotStyle/releases/latest). It runs on Apple Silicon and Intel Macs with macOS 13 or later.
 
-1. Unzip `ShotStyle.zip`.
-2. Drag **ShotStyle** to your Applications folder.
-3. ShotStyle isn't notarized by Apple yet, so run this once in Terminal:
+1. Unzip `LF-Studios.zip`.
+2. Drag **LF Studios** to your Applications folder.
+3. LF Studios isn't notarized by Apple yet, so run this once in Terminal:
 
    ```bash
-   xattr -dr com.apple.quarantine /Applications/ShotStyle.app
+   xattr -dr com.apple.quarantine "/Applications/LF Studios.app"
    ```
 
-4. Open ShotStyle.
+4. Open LF Studios.
 5. Allow **Screen Recording** when macOS asks (and **Accessibility** if it asks for that too).
-6. Quit ShotStyle and open it again once, so the permissions take effect.
+6. Quit LF Studios and open it again once, so the permissions take effect.
 
 ### Build from source
 
@@ -60,32 +60,32 @@ Requirements: macOS 13 or later, and either full **Xcode** (recommended, from th
 
 ```bash
 git clone https://github.com/brightlifecreations-projects/ShotStyle.git
-cd ShotStyle
+cd LF Studios
 bash scripts/setup-signing.sh   # once per Mac
 bash build-app.sh               # add --universal for Apple Silicon + Intel
 ```
 
-`build-app.sh` builds a release binary, assembles and signs the app bundle, and copies `ShotStyle.app` to `/Applications`. Open it and allow Screen Recording and Accessibility when macOS asks, then quit and reopen it once.
+`build-app.sh` builds a release binary, assembles and signs the app bundle, and copies `LF Studios.app` to `/Applications`. Open it and allow Screen Recording and Accessibility when macOS asks, then quit and reopen it once.
 
 - **Command Line Tools only:** if the newest SDK needs Xcode's macro plugins, the build retries with an installed macOS 26 SDK by itself. If none works, it tells you to install Xcode from the App Store.
 - **Options:**
   - `--universal` builds one app for both Apple Silicon and Intel Macs.
   - `--no-install` leaves the app in `.build/app.noindex` instead of copying it to `/Applications`.
 
-**Why the setup script:** macOS remembers those permissions for an app's signature. `scripts/setup-signing.sh` creates a self-signed "ShotStyle Local Signing" certificate in your login keychain (it stays on your Mac), and `build-app.sh` signs every build with it, so your permissions survive rebuilds. Without it, builds are signed ad-hoc: each rebuild looks like a new app, ShotStyle asks for the permissions again, and recording stays blocked until you grant them. The build prints a warning when that happens.
+**Why the setup script:** macOS remembers those permissions for an app's signature. `scripts/setup-signing.sh` creates a self-signed "ShotStyle Local Signing" certificate in your login keychain (it stays on your Mac), and `build-app.sh` signs every build with it, so your permissions survive rebuilds. Without it, builds are signed ad-hoc: each rebuild looks like a new app, LF Studios asks for the permissions again, and recording stays blocked until you grant them. The build prints a warning when that happens.
 
-**ShotStyle keeps asking for permissions?** Clear the entries left over from earlier builds, then open ShotStyle and allow them again:
+**LF Studios keeps asking for permissions?** Clear the entries left over from earlier builds, then open LF Studios and allow them again:
 
 ```bash
-tccutil reset ScreenCapture com.shotstyle.app
-tccutil reset Accessibility com.shotstyle.app
+tccutil reset ScreenCapture com.lfstudios.app
+tccutil reset Accessibility com.lfstudios.app
 ```
 
 ## Contributing without Xcode
 
-You don't need a Mac with Xcode to change ShotStyle:
+You don't need a Mac with Xcode to change LF Studios:
 
-1. Open the repository in [claude.ai/code](https://claude.ai/code), or in Claude Code on any computer, and make the change there. Don't build or run it: cloud sessions and Macs without Xcode can't build ShotStyle.
+1. Open the repository in [claude.ai/code](https://claude.ai/code), or in Claude Code on any computer, and make the change there. Don't build or run it: cloud sessions and Macs without Xcode can't build LF Studios.
 2. Push your work to a new branch.
 3. Open a pull request into `main` and describe what changed.
 
@@ -105,7 +105,7 @@ Everything else (scrolling capture, OCR, timed capture, recording) can be assign
 
 ## Privacy
 
-ShotStyle has no account, no analytics and no cloud. macOS asks before ShotStyle can use:
+LF Studios has no account, no analytics and no cloud. macOS asks before LF Studios can use:
 
 - **Screen Recording:** to take screenshots and recordings.
 - **Microphone and Camera:** only when you turn them on for a recording.
@@ -114,12 +114,12 @@ ShotStyle has no account, no analytics and no cloud. macOS asks before ShotStyle
 
 ## Project layout
 
-ShotStyle is a Swift Package Manager project with no `.xcodeproj`. The executable is a thin wrapper around the testable `ShotStyleCore` library.
+LF Studios is a Swift Package Manager project with no `.xcodeproj`. The executable is a thin wrapper around the testable `LFStudiosCore` library.
 
 ```
 Sources/
-├── ShotStyle/         Executable entry point
-└── ShotStyleCore/
+├── LF Studios/         Executable entry point
+└── LFStudiosCore/
     ├── App/           App lifecycle, menu bar, settings, updates
     ├── Capture/       Screenshot and recording engine (ScreenCaptureKit)
     ├── Annotation/    Screenshot editor
@@ -136,4 +136,4 @@ Dependencies: [KeyboardShortcuts](https://github.com/sindresorhus/KeyboardShortc
 
 ## Credits and license
 
-ShotStyle is based on [Shotnix](https://github.com/OMARVII/Shotnix) by the Shotnix Contributors, used under the MIT License. ShotStyle is released under the same [MIT License](LICENSE). Third-party asset notices are in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+LF Studios is based on [Shotnix](https://github.com/OMARVII/Shotnix) by the Shotnix Contributors, used under the MIT License. LF Studios is released under the same [MIT License](LICENSE). Third-party asset notices are in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).

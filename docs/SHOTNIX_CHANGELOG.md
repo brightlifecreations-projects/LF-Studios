@@ -1,8 +1,9 @@
 # Shotnix changelog
 
 The history of [Shotnix](https://github.com/OMARVII/Shotnix), the MIT-licensed
-app ShotStyle is based on, up to the version ShotStyle 1.0.0 started from
-(0.27.2). ShotStyle's own changes are in [CHANGELOG.md](../CHANGELOG.md).
+app LF Studios (called ShotStyle until 1.1.0) is based on, up to the version
+ShotStyle 1.0.0 started from (0.27.2). LF Studios' own changes are in
+[CHANGELOG.md](../CHANGELOG.md).
 
 ## [0.27.2-beta] - 2026-10-20
 

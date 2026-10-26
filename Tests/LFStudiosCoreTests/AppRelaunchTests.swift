@@ -1,0 +1,74 @@
+import AppKit
+import XCTest
+@testable import LFStudiosCore
+
+/// Restarting for a new language: the new LF Studios starts only once quitting
+/// is certain, a cancelled quit leaves nothing behind, and the new one waits
+/// for the old one to exit. `terminate` stands in for NSApp.terminate(_:),
+/// which returns only when the quit is cancelled.
+@MainActor
+final class AppRelaunchTests: XCTestCase {
+    func testTheNewLFStudiosStartsOnlyOnceQuittingIsCertain() throws {
+        var launches: [NSWorkspace.OpenConfiguration] = []
+        AppRelaunch.quitThenRelaunch {
+            XCTAssertTrue(AppRelaunch.isRestarting)
+            XCTAssertTrue(launches.isEmpty, "nothing starts while the quit can still be cancelled")
+            // Nothing cancelled: NSApplication calls applicationWillTerminate, then exits.
+            AppRelaunch.launchNewInstanceIfRestarting { launches.append($0) }
+        }
+        XCTAssertEqual(launches.count, 1)
+        let configuration = try XCTUnwrap(launches.first)
+        XCTAssertTrue(configuration.createsNewApplicationInstance, "a second process, not this one brought forward")
+        XCTAssertEqual(configuration.arguments, ["--relaunched-from", String(ProcessInfo.processInfo.processIdentifier)])
+    }
+
+    func testOnlyALanguageSwitchReopensSettings() throws {
+        var launches: [NSWorkspace.OpenConfiguration] = []
+        AppRelaunch.quitThenRelaunch(reopeningSettings: true) { AppRelaunch.launchNewInstanceIfRestarting { launches.append($0) } }
+        AppRelaunch.quitThenRelaunch { AppRelaunch.launchNewInstanceIfRestarting { launches.append($0) } }
+        let pid = String(ProcessInfo.processInfo.processIdentifier)
+        XCTAssertEqual(launches.map(\.arguments), [["--relaunched-from", pid, "--reopen-settings"], ["--relaunched-from", pid]], "Quit & Reopen for a permission just reopens")
+        XCTAssertTrue(AppRelaunch.reopensSettings(in: ["LFStudios", "--relaunched-from", "4242", "--reopen-settings"]))
+        XCTAssertFalse(AppRelaunch.reopensSettings(in: ["LFStudios", "--relaunched-from", "4242"]))
+        XCTAssertFalse(AppRelaunch.reopensSettings(in: ["LF Studios", "--reopen-settings"]), "only a restart")
+    }
+
+    func testACancelledQuitLeavesNoRestartBehind() {
+        AppRelaunch.quitThenRelaunch {
+            // Cancel or Keep Working: terminate returns and LF Studios keeps running.
+        }
+        XCTAssertFalse(AppRelaunch.isRestarting)
+        var launched = false
+        AppRelaunch.launchNewInstanceIfRestarting { _ in launched = true }
+        XCTAssertFalse(launched, "a later quit stays a quit")
+    }
+
+    func testAnOrdinaryQuitDoesntRelaunch() {
+        var launched = false
+        AppRelaunch.launchNewInstanceIfRestarting { _ in launched = true }
+        XCTAssertFalse(launched)
+    }
+
+    func testTheNewLFStudiosKnowsWhichOneItReplaces() {
+        XCTAssertNil(AppRelaunch.previousInstance(in: ["/Applications/LF Studios.app/Contents/MacOS/LFStudios"]), "an ordinary launch")
+        XCTAssertEqual(AppRelaunch.previousInstance(in: ["LFStudios", "--relaunched-from", "4242"]), 4242)
+        XCTAssertNil(AppRelaunch.previousInstance(in: ["LFStudios", "--relaunched-from"]))
+        XCTAssertNil(AppRelaunch.previousInstance(in: ["LFStudios", "--relaunched-from", "0"]), "never a process group")
+        XCTAssertNil(AppRelaunch.previousInstance(in: ["LFStudios", "--relaunched-from", "LF Studios"]))
+    }
+
+    func testTheNewLFStudiosWaitsWhileThePreviousOneRuns() {
+        let running = String(ProcessInfo.processInfo.processIdentifier)
+        var start = Date()
+        AppRelaunch.waitForPreviousInstance(in: ["LFStudios", "--relaunched-from", running], timeout: 0.3)
+        XCTAssertGreaterThanOrEqual(Date().timeIntervalSince(start), 0.3, "still running: waits until the timeout")
+
+        start = Date()
+        AppRelaunch.waitForPreviousInstance(in: ["LFStudios", "--relaunched-from", "99999999"], timeout: 5)
+        XCTAssertLessThan(Date().timeIntervalSince(start), 0.5, "already gone: goes on at once")
+
+        start = Date()
+        AppRelaunch.waitForPreviousInstance(in: ["LF Studios"], timeout: 5)
+        XCTAssertLessThan(Date().timeIntervalSince(start), 0.5, "an ordinary launch doesn't wait")
+    }
+}

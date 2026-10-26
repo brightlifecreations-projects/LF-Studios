@@ -4,12 +4,12 @@ set -e
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 # Options: --universal builds one app for Apple Silicon and Intel Macs (the
-# same as SHOTSTYLE_UNIVERSAL=true); --no-install leaves it in
-# .build/app.noindex (SHOTSTYLE_INSTALL=false).
+# same as LFSTUDIOS_UNIVERSAL=true); --no-install leaves it in
+# .build/app.noindex (LFSTUDIOS_INSTALL=false).
 for arg in "$@"; do
     case "$arg" in
-        --universal) SHOTSTYLE_UNIVERSAL=true ;;
-        --no-install) SHOTSTYLE_INSTALL=false ;;
+        --universal) LFSTUDIOS_UNIVERSAL=true ;;
+        --no-install) LFSTUDIOS_INSTALL=false ;;
         -h|--help)
             echo "Usage: bash build-app.sh [--universal] [--no-install]"
             echo "  --universal   one app for Apple Silicon and Intel Macs"
@@ -18,11 +18,14 @@ for arg in "$@"; do
         *) echo "✗ Unknown option: $arg (see --help)"; exit 2 ;;
     esac
 done
-APP_NAME="ShotStyle"
+# The app as people see it ("LF Studios.app") and the Swift product and
+# executable inside it (no space).
+APP_NAME="LF Studios"
+PRODUCT="LFStudios"
 # Assembled inside .build, in a .noindex folder: Spotlight skips it, so
 # only the copy in /Applications shows up as an app.
 APP_BUNDLE="$SCRIPT_DIR/.build/app.noindex/$APP_NAME.app"
-ENTITLEMENTS="$SCRIPT_DIR/ShotStyle.entitlements"
+ENTITLEMENTS="$SCRIPT_DIR/LFStudios.entitlements"
 
 if [ -f "$SCRIPT_DIR/.env.local" ]; then
     set -a
@@ -35,8 +38,8 @@ fi
 # identity on every build, so macOS forgets the Screen Recording and
 # Accessibility permissions each time; a fixed local certificate keeps them.
 LOCAL_IDENTITY="ShotStyle Local Signing"
-if [ -n "${SHOTSTYLE_CODESIGN_IDENTITY:-}" ]; then
-    SIGN_IDENTITY="$SHOTSTYLE_CODESIGN_IDENTITY"
+if [ -n "${LFSTUDIOS_CODESIGN_IDENTITY:-}" ]; then
+    SIGN_IDENTITY="$LFSTUDIOS_CODESIGN_IDENTITY"
 elif security find-certificate -c "$LOCAL_IDENTITY" >/dev/null 2>&1; then
     SIGN_IDENTITY="$LOCAL_IDENTITY"
 else
@@ -45,21 +48,21 @@ fi
 
 ADHOC_WARNING='⚠ No "ShotStyle Local Signing" certificate: signing ad-hoc.
   macOS will forget the Screen Recording and Accessibility permissions on
-  every rebuild (ShotStyle asks again and recording stays blocked).
+  every rebuild (LF Studios asks again and recording stays blocked).
   Fix it once on this Mac: bash scripts/setup-signing.sh'
 if [ "$SIGN_IDENTITY" = "-" ]; then
     echo "$ADHOC_WARNING"
     echo ""
 fi
-TIMESTAMP_MODE="${SHOTSTYLE_CODESIGN_TIMESTAMP:-auto}"
-SPARKLE_PUBLIC_ED_KEY="${SHOTSTYLE_SPARKLE_PUBLIC_ED_KEY:-}"
-REQUIRE_SPARKLE_KEY="${SHOTSTYLE_REQUIRE_SPARKLE_KEY:-false}"
-# SHOTSTYLE_UNIVERSAL=true builds for Apple Silicon and Intel (the release
+TIMESTAMP_MODE="${LFSTUDIOS_CODESIGN_TIMESTAMP:-auto}"
+SPARKLE_PUBLIC_ED_KEY="${LFSTUDIOS_SPARKLE_PUBLIC_ED_KEY:-}"
+REQUIRE_SPARKLE_KEY="${LFSTUDIOS_REQUIRE_SPARKLE_KEY:-false}"
+# LFSTUDIOS_UNIVERSAL=true builds for Apple Silicon and Intel (the release
 # workflow does this); the default builds for this Mac only.
-UNIVERSAL="${SHOTSTYLE_UNIVERSAL:-false}"
-# SHOTSTYLE_INSTALL=false leaves the app in .build/app.noindex instead of
+UNIVERSAL="${LFSTUDIOS_UNIVERSAL:-false}"
+# LFSTUDIOS_INSTALL=false leaves the app in .build/app.noindex instead of
 # copying it to /Applications.
-INSTALL="${SHOTSTYLE_INSTALL:-true}"
+INSTALL="${LFSTUDIOS_INSTALL:-true}"
 
 cd "$SCRIPT_DIR"
 
@@ -88,7 +91,7 @@ fallback_sdks() {
 
 no_sdk_works() {
     echo ""
-    echo "✗ ShotStyle can't be built with the tools on this Mac."
+    echo "✗ LF Studios can't be built with the tools on this Mac."
     echo "  The macOS SDK needs the macro plugins that come with full Xcode."
     echo "  Install Xcode from the App Store, open it once, then run:"
     echo "    sudo xcode-select -s /Applications/Xcode.app/Contents/Developer"
@@ -128,19 +131,19 @@ if [[ "$UNIVERSAL" =~ ^(1|true|yes|on)$ ]]; then
         echo "▶ Building $APP_NAME (release, $arch)…"
         release_build --arch "$arch"
         ARCH_DIR="$(swift build -c release --arch "$arch" --show-bin-path)"
-        if [ ! -f "$ARCH_DIR/$APP_NAME" ]; then
-            echo "✗ Build failed — binary not found at $ARCH_DIR/$APP_NAME"
+        if [ ! -f "$ARCH_DIR/$PRODUCT" ]; then
+            echo "✗ Build failed — binary not found at $ARCH_DIR/$PRODUCT"
             exit 1
         fi
         # Copied aside right away: newer SwiftPM builds every architecture
         # into the same Products folder, so the next build overwrites it.
         mkdir -p "$SCRIPT_DIR/.build/universal"
-        cp "$ARCH_DIR/$APP_NAME" "$SCRIPT_DIR/.build/universal/$APP_NAME-$arch"
-        ARCH_BINARIES+=("$SCRIPT_DIR/.build/universal/$APP_NAME-$arch")
+        cp "$ARCH_DIR/$PRODUCT" "$SCRIPT_DIR/.build/universal/$PRODUCT-$arch"
+        ARCH_BINARIES+=("$SCRIPT_DIR/.build/universal/$PRODUCT-$arch")
         # Resource bundles and Sparkle.framework come from the first build.
         [ -n "$BUILD_DIR" ] || BUILD_DIR="$ARCH_DIR"
     done
-    BINARY="$SCRIPT_DIR/.build/universal/$APP_NAME"
+    BINARY="$SCRIPT_DIR/.build/universal/$PRODUCT"
     lipo -create "${ARCH_BINARIES[@]}" -output "$BINARY"
     ARCHS="$(lipo -archs "$BINARY")"
     echo "  Architectures: $ARCHS"
@@ -152,7 +155,7 @@ else
     echo "▶ Building $APP_NAME (release)…"
     release_build
     BUILD_DIR="$(swift build -c release --show-bin-path)"
-    BINARY="$BUILD_DIR/$APP_NAME"
+    BINARY="$BUILD_DIR/$PRODUCT"
 fi
 
 if [ ! -f "$BINARY" ]; then
@@ -165,33 +168,33 @@ rm -rf "$APP_BUNDLE"
 mkdir -p "$APP_BUNDLE/Contents/MacOS"
 mkdir -p "$APP_BUNDLE/Contents/Resources"
 
-cp "$BINARY"              "$APP_BUNDLE/Contents/MacOS/$APP_NAME"
+cp "$BINARY"              "$APP_BUNDLE/Contents/MacOS/$PRODUCT"
 cp "$SCRIPT_DIR/Info.plist" "$APP_BUNDLE/Contents/Info.plist"
 
 if [ -n "$SPARKLE_PUBLIC_ED_KEY" ]; then
     /usr/libexec/PlistBuddy -c "Set :SUPublicEDKey $SPARKLE_PUBLIC_ED_KEY" "$APP_BUNDLE/Contents/Info.plist"
 elif [[ "$REQUIRE_SPARKLE_KEY" =~ ^(1|true|yes|on)$ ]]; then
-    echo "✗ SHOTSTYLE_SPARKLE_PUBLIC_ED_KEY is required when SHOTSTYLE_REQUIRE_SPARKLE_KEY=true."
+    echo "✗ LFSTUDIOS_SPARKLE_PUBLIC_ED_KEY is required when LFSTUDIOS_REQUIRE_SPARKLE_KEY=true."
     echo "  Generate it with Sparkle's generate_keys tool and keep the private key out of git."
     exit 1
 else
     echo "⚠ Sparkle public key not set; update checks will be disabled in this build."
 fi
 
-# Build the icon from Branding/ShotStyle_Icon.png (1024×1024), then copy it into the bundle
-ICON_PNG="$SCRIPT_DIR/Branding/ShotStyle_Icon.png"
+# Build the icon from Branding/LFStudios_Icon.png (1024×1024), then copy it into the bundle
+ICON_PNG="$SCRIPT_DIR/Branding/LFStudios_Icon.png"
 if [ -f "$ICON_PNG" ]; then
-    ICONSET="$(mktemp -d)/ShotStyle.iconset"
+    ICONSET="$(mktemp -d)/$PRODUCT.iconset"
     mkdir -p "$ICONSET"
     for size in 16 32 128 256 512; do
         sips -z $size $size "$ICON_PNG" --out "$ICONSET/icon_${size}x${size}.png" >/dev/null
         sips -z $((size * 2)) $((size * 2)) "$ICON_PNG" --out "$ICONSET/icon_${size}x${size}@2x.png" >/dev/null
     done
-    iconutil -c icns "$ICONSET" -o "$SCRIPT_DIR/Branding/ShotStyle.icns"
+    iconutil -c icns "$ICONSET" -o "$SCRIPT_DIR/Branding/$PRODUCT.icns"
     rm -rf "$(dirname "$ICONSET")"
 fi
-if [ -f "$SCRIPT_DIR/Branding/ShotStyle.icns" ]; then
-    cp "$SCRIPT_DIR/Branding/ShotStyle.icns" "$APP_BUNDLE/Contents/Resources/ShotStyle.icns"
+if [ -f "$SCRIPT_DIR/Branding/$PRODUCT.icns" ]; then
+    cp "$SCRIPT_DIR/Branding/$PRODUCT.icns" "$APP_BUNDLE/Contents/Resources/$PRODUCT.icns"
 fi
 
 if [ -f "$SCRIPT_DIR/PrivacyInfo.xcprivacy" ]; then
@@ -203,23 +206,23 @@ if [ -f "$SCRIPT_DIR/THIRD_PARTY_NOTICES.md" ]; then
 fi
 
 # The app's own languages (translated permission prompts). These .lproj folders
-# are also how macOS knows ShotStyle is localized: it then lists ShotStyle under
+# are also how macOS knows LF Studios is localized: it then lists LF Studios under
 # per-app languages and shows system panels in the same language. The app's
-# strings live in the ShotStyleCore resource bundle (scripts/localize.py).
+# strings live in the LFStudiosCore resource bundle (scripts/localize.py).
 for lproj in "$SCRIPT_DIR"/Localization/Main/*.lproj; do
     [ -d "$lproj" ] && ditto "$lproj" "$APP_BUNDLE/Contents/Resources/$(basename "$lproj")"
 done
 # The app's strings, also in the main bundle: SwiftUI looks up plain
-# Text("…") literals there. L("…") reads the same files from the ShotStyleCore
+# Text("…") literals there. L("…") reads the same files from the LFStudiosCore
 # resource bundle, which is also what tests see.
-for lproj in "$SCRIPT_DIR"/Sources/ShotStyleCore/Resources/*.lproj; do
+for lproj in "$SCRIPT_DIR"/Sources/LFStudiosCore/Resources/*.lproj; do
     [ -d "$lproj" ] && ditto "$lproj" "$APP_BUNDLE/Contents/Resources/$(basename "$lproj")"
 done
 
 # Copy SPM-generated resource bundles (capture sound, KeyboardShortcuts localizations, etc.)
 while IFS= read -r bundle; do
     bundle_name="$(basename "$bundle")"
-    if [ "$bundle_name" = "${APP_NAME}_${APP_NAME}.bundle" ]; then
+    if [ "$bundle_name" = "${PRODUCT}_${PRODUCT}.bundle" ]; then
         continue
     fi
     ditto "$bundle" "$APP_BUNDLE/Contents/Resources/$bundle_name"
@@ -234,14 +237,14 @@ fi
 echo "▶ Embedding Sparkle.framework…"
 mkdir -p "$APP_BUNDLE/Contents/Frameworks"
 ditto "$SPARKLE_FRAMEWORK" "$APP_BUNDLE/Contents/Frameworks/Sparkle.framework"
-install_name_tool -add_rpath "@executable_path/../Frameworks" "$APP_BUNDLE/Contents/MacOS/$APP_NAME" 2>/dev/null || true
+install_name_tool -add_rpath "@executable_path/../Frameworks" "$APP_BUNDLE/Contents/MacOS/$PRODUCT" 2>/dev/null || true
 
-if ! otool -L "$APP_BUNDLE/Contents/MacOS/$APP_NAME" | grep -q "@rpath/Sparkle.framework"; then
+if ! otool -L "$APP_BUNDLE/Contents/MacOS/$PRODUCT" | grep -q "@rpath/Sparkle.framework"; then
     echo "✗ Built binary is not linked against Sparkle.framework"
     exit 1
 fi
 
-if ! otool -l "$APP_BUNDLE/Contents/MacOS/$APP_NAME" | grep -q "@executable_path/../Frameworks"; then
+if ! otool -l "$APP_BUNDLE/Contents/MacOS/$PRODUCT" | grep -q "@executable_path/../Frameworks"; then
     echo "✗ Built binary is missing @executable_path/../Frameworks rpath"
     exit 1
 fi
@@ -270,7 +273,7 @@ case "$TIMESTAMP_MODE" in
         fi
         ;;
     *)
-        echo "✗ Invalid SHOTSTYLE_CODESIGN_TIMESTAMP: $TIMESTAMP_MODE"
+        echo "✗ Invalid LFSTUDIOS_CODESIGN_TIMESTAMP: $TIMESTAMP_MODE"
         echo "  Use auto, true, or false."
         exit 1
         ;;
@@ -280,7 +283,7 @@ codesign "${SIGN_ARGS[@]}" "$APP_BUNDLE"
 
 if [[ ! "$INSTALL" =~ ^(1|true|yes|on)$ ]]; then
     echo ""
-    echo "✓ Done!  ShotStyle.app is at $APP_BUNDLE"
+    echo "✓ Done!  LF Studios.app is at $APP_BUNDLE"
     exit 0
 fi
 
@@ -290,7 +293,7 @@ rm -rf "$APPS_DEST"
 cp -R "$APP_BUNDLE" "$APPS_DEST"
 
 echo ""
-echo "✓ Done!  ShotStyle.app deployed to /Applications."
+echo "✓ Done!  LF Studios.app deployed to /Applications."
 echo "  Launch it from /Applications."
 echo ""
 echo "  First launch: grant Screen Recording permission when prompted"

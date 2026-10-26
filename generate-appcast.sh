@@ -9,16 +9,16 @@ if [ -f "$SCRIPT_DIR/.env.local" ]; then
     set +a
 fi
 
-DMG_PATH="${1:-${SHOTSTYLE_DMG_PATH:-}}"
-DOWNLOAD_DIR="${SHOTSTYLE_RELEASE_DIR:-$SCRIPT_DIR/release}"
-APPCAST_BIN="${SHOTSTYLE_GENERATE_APPCAST_BIN:-$SCRIPT_DIR/.build/artifacts/sparkle/Sparkle/bin/generate_appcast}"
-SPARKLE_ACCOUNT="${SHOTSTYLE_SPARKLE_ACCOUNT:-ed25519}"
-DOWNLOAD_URL_PREFIX="${SHOTSTYLE_DOWNLOAD_URL_PREFIX:-https://github.com/brightlifecreations-projects/ShotStyle/releases/latest/download/}"
-RELEASE_NOTES_URL_PREFIX="${SHOTSTYLE_RELEASE_NOTES_URL_PREFIX:-https://github.com/brightlifecreations-projects/ShotStyle/releases/latest/download/}"
+DMG_PATH="${1:-${LFSTUDIOS_DMG_PATH:-}}"
+DOWNLOAD_DIR="${LFSTUDIOS_RELEASE_DIR:-$SCRIPT_DIR/release}"
+APPCAST_BIN="${LFSTUDIOS_GENERATE_APPCAST_BIN:-$SCRIPT_DIR/.build/artifacts/sparkle/Sparkle/bin/generate_appcast}"
+SPARKLE_ACCOUNT="${LFSTUDIOS_SPARKLE_ACCOUNT:-ed25519}"
+DOWNLOAD_URL_PREFIX="${LFSTUDIOS_DOWNLOAD_URL_PREFIX:-https://github.com/brightlifecreations-projects/ShotStyle/releases/latest/download/}"
+RELEASE_NOTES_URL_PREFIX="${LFSTUDIOS_RELEASE_NOTES_URL_PREFIX:-https://github.com/brightlifecreations-projects/ShotStyle/releases/latest/download/}"
 
 usage() {
     cat <<'EOF'
-Usage: bash generate-appcast.sh /path/to/ShotStyle-v<version>-macOS.dmg
+Usage: bash generate-appcast.sh /path/to/LF Studios-v<version>-macOS.dmg
 
 Copies the notarized DMG into ./release, creates a matching Markdown
 release-notes file when needed, and runs Sparkle generate_appcast. Upload the
@@ -26,9 +26,9 @@ DMG, the .md notes and appcast.xml to the latest GitHub release: the app's
 feed is https://github.com/brightlifecreations-projects/ShotStyle/releases/latest/download/appcast.xml
 
 Optional environment:
-  SHOTSTYLE_RELEASE_NOTES_FILE="/absolute/path/to/release-notes.md"
-  SHOTSTYLE_GENERATE_APPCAST_BIN="/absolute/path/to/generate_appcast"
-  SHOTSTYLE_SPARKLE_ACCOUNT="ed25519"
+  LFSTUDIOS_RELEASE_NOTES_FILE="/absolute/path/to/release-notes.md"
+  LFSTUDIOS_GENERATE_APPCAST_BIN="/absolute/path/to/generate_appcast"
+  LFSTUDIOS_SPARKLE_ACCOUNT="ed25519"
 EOF
 }
 
@@ -65,8 +65,8 @@ if [ "$(cd "$(dirname "$DMG_PATH")" && pwd)/$(basename "$DMG_PATH")" != "$(cd "$
 fi
 cp "$DMG_PATH" "$STAGING_DIR/$DMG_BASENAME"
 
-if [ -n "${SHOTSTYLE_RELEASE_NOTES_FILE:-}" ]; then
-    cp "$SHOTSTYLE_RELEASE_NOTES_FILE" "$NOTES_DEST"
+if [ -n "${LFSTUDIOS_RELEASE_NOTES_FILE:-}" ]; then
+    cp "$LFSTUDIOS_RELEASE_NOTES_FILE" "$NOTES_DEST"
 elif [ ! -f "$NOTES_DEST" ]; then
     echo "▶ Creating release notes from CHANGELOG.md…"
     awk '

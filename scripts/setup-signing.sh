@@ -1,5 +1,5 @@
 #!/bin/bash
-# One-time setup on each Mac that builds ShotStyle.
+# One-time setup on each Mac that builds LF Studios.
 #
 #   bash scripts/setup-signing.sh
 #
@@ -15,12 +15,12 @@
 # It's only good for signing your own local builds, not for distributing the
 # app. Remove it any time in Keychain Access.
 #
-# Optional: SHOTSTYLE_SIGNING_KEYCHAIN=/path/to.keychain-db puts it in
+# Optional: LFSTUDIOS_SIGNING_KEYCHAIN=/path/to.keychain-db puts it in
 # another keychain instead (used to test this script).
 set -euo pipefail
 
 NAME="ShotStyle Local Signing"
-KEYCHAIN="${SHOTSTYLE_SIGNING_KEYCHAIN:-$HOME/Library/Keychains/login.keychain-db}"
+KEYCHAIN="${LFSTUDIOS_SIGNING_KEYCHAIN:-$HOME/Library/Keychains/login.keychain-db}"
 # The system LibreSSL: a Homebrew OpenSSL 3 writes .p12 files that macOS's
 # `security import` can't read without extra flags.
 OPENSSL=/usr/bin/openssl
@@ -62,10 +62,10 @@ cat <<EOF
 
 Next:
   1. bash build-app.sh        (now signs with "$NAME")
-  2. Open ShotStyle and allow Screen Recording and Accessibility when asked,
+  2. Open LF Studios and allow Screen Recording and Accessibility when asked,
      then quit and reopen it once. From now on, rebuilds keep them.
 
-If ShotStyle keeps asking (permissions left over from earlier ad-hoc builds):
-  tccutil reset ScreenCapture com.shotstyle.app
-  tccutil reset Accessibility com.shotstyle.app
+If LF Studios keeps asking (permissions left over from earlier ad-hoc builds):
+  tccutil reset ScreenCapture com.lfstudios.app
+  tccutil reset Accessibility com.lfstudios.app
 EOF

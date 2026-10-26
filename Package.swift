@@ -2,7 +2,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "ShotStyle",
+    name: "LFStudios",
     // English strings are the keys; translations live in
     // Localization/Localizable.xcstrings (see scripts/localize.py).
     defaultLocalization: "en",
@@ -17,34 +17,34 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "ShotStyleCore",
+            name: "LFStudiosCore",
             dependencies: [
                 .product(name: "KeyboardShortcuts", package: "KeyboardShortcuts"),
                 .product(name: "Sparkle", package: "Sparkle"),
             ],
-            path: "Sources/ShotStyleCore",
+            path: "Sources/LFStudiosCore",
             resources: [.process("Resources")]
         ),
         .executableTarget(
-            name: "ShotStyle",
+            name: "LFStudios",
             dependencies: [
-                "ShotStyleCore",
+                "LFStudiosCore",
             ],
-            path: "Sources/ShotStyle"
+            path: "Sources/LFStudios"
         ),
         .testTarget(
-            name: "ShotStyleCoreTests",
+            name: "LFStudiosCoreTests",
             dependencies: [
-                "ShotStyleCore",
+                "LFStudiosCore",
                 .product(name: "KeyboardShortcuts", package: "KeyboardShortcuts"),
             ],
-            path: "Tests/ShotStyleCoreTests"
+            path: "Tests/LFStudiosCoreTests"
         ),
         // Swift Testing (runs with `swift test` next to the XCTest suite).
         .testTarget(
-            name: "ShotStyleTextPlacementTests",
-            dependencies: ["ShotStyleCore"],
-            path: "Tests/ShotStyleTextPlacementTests"
+            name: "LFStudiosTextPlacementTests",
+            dependencies: ["LFStudiosCore"],
+            path: "Tests/LFStudiosTextPlacementTests"
         ),
     ]
 )

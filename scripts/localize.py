@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Keeps ShotStyle's String Catalog in step with the code, and compiles it.
+"""Keeps LF Studios' String Catalog in step with the code, and compiles it.
 
     python3 scripts/localize.py          # sync + compile (writes files)
     python3 scripts/localize.py --check  # verify only; exits 1 on problems
     python3 scripts/localize.py --clean  # rebuild the extraction from scratch
 
 What it does:
-1. Builds ShotStyleCore with the compiler's string extraction (in its own
+1. Builds LFStudiosCore with the compiler's string extraction (in its own
    scratch folder, so the normal build isn't invalidated). Every `L("…")`
    call becomes a key, exactly as Foundation will look it up ("%lld captures").
 2. Writes Localization/Localizable.xcstrings: every extracted key, English as
@@ -15,7 +15,7 @@ What it does:
    on different areas never conflicts). Keys the code no longer uses are
    dropped.
 3. Compiles the catalog with Apple's xcstringstool into
-   Sources/ShotStyleCore/Resources/<language>.lproj, and writes the main
+   Sources/LFStudiosCore/Resources/<language>.lproj, and writes the main
    bundle's InfoPlist.strings (Localization/Main/<language>.lproj) from
    Localization/InfoPlist.json.
 
@@ -54,8 +54,8 @@ CATALOG = os.path.join(LOCALIZATION, "Localizable.xcstrings")
 TRANSLATIONS = os.path.join(LOCALIZATION, "translations")
 INFOPLIST_SOURCE = os.path.join(LOCALIZATION, "InfoPlist.json")
 MAIN_LPROJ = os.path.join(LOCALIZATION, "Main")
-RESOURCES = os.path.join(ROOT, "Sources", "ShotStyleCore", "Resources")
-SOURCES = os.path.join(ROOT, "Sources", "ShotStyleCore")
+RESOURCES = os.path.join(ROOT, "Sources", "LFStudiosCore", "Resources")
+SOURCES = os.path.join(ROOT, "Sources", "LFStudiosCore")
 SCRATCH = os.path.join(ROOT, ".build", "l10n")
 LANGUAGES = ["de", "fr", "zh-Hans", "ru", "uk", "ja"]
 # Plural forms each language needs for whole numbers (CLDR). Russian and
@@ -79,7 +79,7 @@ def specifiers(text):
 
 
 def extract_keys():
-    """Every localized string in ShotStyleCore, from the compiler: key -> comment."""
+    """Every localized string in LFStudiosCore, from the compiler: key -> comment."""
     # Kept between runs: an incremental build only re-emits the files it
     # recompiles, and each file's data replaces its previous run's.
     strings_dir = os.path.join(SCRATCH, "strings")
@@ -87,7 +87,7 @@ def extract_keys():
         shutil.rmtree(SCRATCH, ignore_errors=True)
     os.makedirs(strings_dir, exist_ok=True)
     command = [
-        "swift", "build", "--target", "ShotStyleCore", "--scratch-path", SCRATCH,
+        "swift", "build", "--target", "LFStudiosCore", "--scratch-path", SCRATCH,
         "-Xswiftc", "-emit-localized-strings",
         "-Xswiftc", "-emit-localized-strings-path", "-Xswiftc", strings_dir,
     ]
@@ -298,7 +298,7 @@ def main():
             for name in lproj_dirs(RESOURCES):
                 shutil.copytree(os.path.join(RESOURCES, name), os.path.join(committed, name))
             if not same_tree(compiled, committed):
-                stale.append("Sources/ShotStyleCore/Resources/*.lproj")
+                stale.append("Sources/LFStudiosCore/Resources/*.lproj")
             if not os.path.isdir(MAIN_LPROJ) or not same_tree(main_lproj, MAIN_LPROJ):
                 stale.append("Localization/Main")
             for problem in problems:

@@ -1,7 +1,7 @@
 #!/bin/bash
-# Publishes a ShotStyle release from this Mac (no GitHub Actions minutes):
+# Publishes an LF Studios release from this Mac (no GitHub Actions minutes):
 # sets the version, builds one app for Apple Silicon and Intel, zips it, and
-# creates a GitHub Release with ShotStyle.zip and install steps.
+# creates a GitHub Release with LF-Studios.zip and install steps.
 #
 #   bash scripts/publish-release.sh 1.0.1
 #   bash scripts/publish-release.sh          # asks for the version
@@ -13,7 +13,7 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 PLIST="$ROOT/Info.plist"
 CHANGELOG="$ROOT/CHANGELOG.md"
-APP="$ROOT/.build/app.noindex/ShotStyle.app"
+APP="$ROOT/.build/app.noindex/LF Studios.app"
 DIST="$ROOT/.build/release-dist"
 REPO_URL="https://github.com/brightlifecreations-projects/ShotStyle"
 
@@ -79,16 +79,16 @@ fi
 # "## [1.0.0] - Unreleased" becomes "## [1.0.0] - 2026-10-26".
 sed -i '' -E "s/^## \[${VERSION}\] - Unreleased$/## [${VERSION}] - $TODAY/" "$CHANGELOG"
 if [ -n "$(git status --porcelain --untracked-files=no)" ]; then
-    git commit -q -am "ShotStyle ${VERSION}"
+    git commit -q -am "LF Studios ${VERSION}"
     git push -q origin main
-    echo "▶ Committed and pushed “ShotStyle ${VERSION}”"
+    echo "▶ Committed and pushed “LF Studios ${VERSION}”"
 fi
 
 # MARK: Build and zip
 
 echo "▶ Building the universal app (Apple Silicon + Intel)…"
 bash "$ROOT/build-app.sh" --universal --no-install
-ARCHS="$(lipo -archs "$APP/Contents/MacOS/ShotStyle")"
+ARCHS="$(lipo -archs "$APP/Contents/MacOS/LFStudios")"
 [[ "${ARCHS}" == *arm64* && "${ARCHS}" == *x86_64* ]] || fail "The app isn't universal (${ARCHS})."
 BUILT="$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$APP/Contents/Info.plist")"
 [ "${BUILT}" = "${VERSION}" ] || fail "The app says version ${BUILT}, not ${VERSION}."
@@ -96,8 +96,8 @@ codesign --verify --deep --strict "$APP" || fail "The app's signature doesn't ve
 
 rm -rf "$DIST"
 mkdir -p "$DIST"
-ditto -c -k --keepParent "$APP" "$DIST/ShotStyle.zip"
-echo "▶ Zipped: $DIST/ShotStyle.zip ($(du -h "$DIST/ShotStyle.zip" | cut -f1))"
+ditto -c -k --keepParent "$APP" "$DIST/LF-Studios.zip"
+echo "▶ Zipped: $DIST/LF Studios.zip ($(du -h "$DIST/LF-Studios.zip" | cut -f1))"
 
 # MARK: Release notes
 
@@ -106,15 +106,15 @@ NOTES="$DIST/notes.md"
     cat <<'EOF'
 ## Install
 
-1. Download **ShotStyle.zip** below and unzip it.
-2. Drag **ShotStyle** into your **Applications** folder.
-3. Open **Terminal** and run this once (ShotStyle isn't notarized by Apple yet, so macOS blocks it until you do):
+1. Download **LF-Studios.zip** below and unzip it.
+2. Drag **LF Studios** into your **Applications** folder.
+3. Open **Terminal** and run this once (LF Studios isn't notarized by Apple yet, so macOS blocks it until you do):
    ```
-   xattr -dr com.apple.quarantine /Applications/ShotStyle.app
+   xattr -dr com.apple.quarantine "/Applications/LF Studios.app"
    ```
-4. Open ShotStyle.
+4. Open LF Studios.
 5. When macOS asks, allow **Screen Recording** (System Settings → Privacy & Security → Screen Recording), and **Accessibility** if it asks for that too.
-6. Quit ShotStyle and open it again once, so the permissions take effect.
+6. Quit LF Studios and open it again once, so the permissions take effect.
 
 Works on Apple Silicon and Intel Macs with macOS 13 or later.
 
@@ -132,9 +132,9 @@ EOF
 # MARK: Publish
 
 echo "▶ Publishing ${TAG}…"
-"$GH" release create "${TAG}" "$DIST/ShotStyle.zip" \
+"$GH" release create "${TAG}" "$DIST/LF-Studios.zip" \
     --target "$(git rev-parse HEAD)" \
-    --title "ShotStyle ${VERSION}" \
+    --title "LF Studios ${VERSION}" \
     --notes-file "$NOTES"
 echo ""
 echo "✓ Published: $REPO_URL/releases/tag/${TAG}"
