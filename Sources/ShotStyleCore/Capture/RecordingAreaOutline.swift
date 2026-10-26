@@ -16,6 +16,8 @@ final class RecordingAreaOutlineWindow: NSPanel {
         let frame = rect.insetBy(dx: -inset, dy: -inset)
         outline = RecordingAreaOutlineView(frame: NSRect(origin: .zero, size: frame.size))
         super.init(contentRect: frame, styleMask: [.borderless, .nonactivatingPanel], backing: .buffered, defer: false)
+        // Floating over any screen: always the dark look.
+        appearance = AppAppearance.overlay
         isOpaque = false
         backgroundColor = .clear
         hasShadow = false

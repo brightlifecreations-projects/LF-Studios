@@ -164,6 +164,8 @@ private final class SelectionOverlayWindow: NSWindow {
             backing: .buffered,
             defer: false
         )
+        // Floating over any screen: always the dark look.
+        appearance = AppAppearance.overlay
         isOpaque = false
         backgroundColor = .clear
         level = .screenSaver

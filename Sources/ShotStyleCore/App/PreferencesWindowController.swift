@@ -94,7 +94,7 @@ struct PreferencesRootView: View {
                 PreferencesTabStrip(selectedTab: $selection.selectedTab)
 
                 Divider()
-                    .overlay(Color.white.opacity(0.08))
+                    .overlay(ShotStyleTheme.ink.opacity(0.08))
 
                 Group {
                     switch selection.selectedTab {
@@ -114,7 +114,6 @@ struct PreferencesRootView: View {
             }
         }
         .frame(minWidth: 520, idealWidth: 560, minHeight: 520, idealHeight: 620)
-        .preferredColorScheme(.dark)
     }
 }
 
@@ -140,7 +139,7 @@ struct PreferencesTabStrip: View {
             .position(x: proxy.size.width / 2, y: 46)
         }
         .frame(height: 86)
-        .background(Color.black.opacity(0.12))
+        .background(ShotStyleTheme.shade(0.12))
     }
 
     /// 74 pt per tab as designed. When a translated title needs more, every
@@ -174,11 +173,11 @@ private struct PreferencesTabButton: View {
                     .lineLimit(1)
                     .minimumScaleFactor(0.8)
             }
-            .foregroundStyle(isSelected ? Color.accentColor : Color.white.opacity(0.62))
+            .foregroundStyle(isSelected ? Color.accentColor : ShotStyleTheme.ink.opacity(0.62))
             .frame(width: width, height: 56)
             .background(
                 RoundedRectangle(cornerRadius: 10, style: .continuous)
-                    .fill(isSelected ? Color.white.opacity(0.08) : Color.clear)
+                    .fill(isSelected ? ShotStyleTheme.ink.opacity(0.08) : Color.clear)
             )
             .overlay(
                 RoundedRectangle(cornerRadius: 10, style: .continuous)
@@ -230,13 +229,13 @@ private struct PreferencesPaneWithFooter<Content: View, Footer: View>: View {
             }
 
             Divider()
-                .overlay(Color.white.opacity(0.08))
+                .overlay(ShotStyleTheme.ink.opacity(0.08))
 
             footer
                 .padding(.horizontal, 22)
                 .padding(.vertical, 14)
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .background(Color.black.opacity(0.18))
+                .background(ShotStyleTheme.shade(0.18))
         }
     }
 }
@@ -254,16 +253,16 @@ struct PreferenceSection<Content: View>: View {
         VStack(alignment: .leading, spacing: 10) {
             Text(title)
                 .font(.system(size: 13, weight: .bold))
-                .foregroundStyle(Color.white.opacity(0.86))
+                .foregroundStyle(ShotStyleTheme.ink.opacity(0.86))
 
             VStack(spacing: 0) {
                 content
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-            .background(Color.white.opacity(0.055), in: RoundedRectangle(cornerRadius: 10, style: .continuous))
+            .background(ShotStyleTheme.ink.opacity(0.055), in: RoundedRectangle(cornerRadius: 10, style: .continuous))
             .overlay(
                 RoundedRectangle(cornerRadius: 10, style: .continuous)
-                    .stroke(Color.white.opacity(0.08), lineWidth: 1)
+                    .stroke(ShotStyleTheme.ink.opacity(0.08), lineWidth: 1)
             )
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -286,13 +285,13 @@ struct PreferenceRow<Trailing: View>: View {
             VStack(alignment: .leading, spacing: 2) {
                 Text(title)
                     .font(.system(size: 13, weight: .semibold))
-                    .foregroundStyle(Color.white.opacity(0.88))
+                    .foregroundStyle(ShotStyleTheme.ink.opacity(0.88))
                     .lineLimit(1)
 
                 if let detail {
                     Text(detail)
                         .font(.system(size: 11, weight: .medium))
-                        .foregroundStyle(Color.white.opacity(0.45))
+                        .foregroundStyle(ShotStyleTheme.ink.opacity(0.45))
                         .lineLimit(1)
                         .truncationMode(.middle)
                 }
@@ -311,7 +310,7 @@ struct PreferenceRow<Trailing: View>: View {
 struct PreferenceDivider: View {
     var body: some View {
         Divider()
-            .overlay(Color.white.opacity(0.08))
+            .overlay(ShotStyleTheme.ink.opacity(0.08))
             .padding(.leading, 12)
     }
 }
@@ -322,7 +321,7 @@ struct PreferenceFootnote: View {
     var body: some View {
         Text(text)
             .font(.system(size: 11, weight: .medium))
-            .foregroundStyle(Color.white.opacity(0.45))
+            .foregroundStyle(ShotStyleTheme.ink.opacity(0.45))
             .fixedSize(horizontal: false, vertical: true)
             .padding(.horizontal, 2)
     }
@@ -365,18 +364,18 @@ struct PreferenceMenuSelector<Value: Hashable>: View {
 
                 Image(systemName: "chevron.up.chevron.down")
                     .font(.system(size: 10, weight: .bold))
-                    .foregroundStyle(Color.white.opacity(isEnabled ? 0.44 : 0.22))
+                    .foregroundStyle(ShotStyleTheme.ink.opacity(isEnabled ? 0.44 : 0.22))
             }
-            .foregroundStyle(Color.white.opacity(isEnabled ? 0.86 : 0.34))
+            .foregroundStyle(ShotStyleTheme.ink.opacity(isEnabled ? 0.86 : 0.34))
             .padding(.horizontal, 10)
             .frame(width: width, height: 28)
             .background(
                 RoundedRectangle(cornerRadius: 8, style: .continuous)
-                    .fill(Color.white.opacity(isEnabled ? 0.08 : 0.045))
+                    .fill(ShotStyleTheme.ink.opacity(isEnabled ? 0.08 : 0.045))
             )
             .overlay(
                 RoundedRectangle(cornerRadius: 8, style: .continuous)
-                    .stroke(Color.white.opacity(isEnabled ? 0.10 : 0.05), lineWidth: 1)
+                    .stroke(ShotStyleTheme.ink.opacity(isEnabled ? 0.10 : 0.05), lineWidth: 1)
             )
         }
         .buttonStyle(.plain)
@@ -411,7 +410,7 @@ struct PreferenceSegmentedSelector<Value: Hashable>: View {
                         .lineLimit(1)
                         .frame(maxWidth: .infinity)
                         .frame(height: 24)
-                        .foregroundStyle(option.value == selection ? Color.white : Color.white.opacity(0.58))
+                        .foregroundStyle(option.value == selection ? Color.white : ShotStyleTheme.ink.opacity(0.58))
                         .background(
                             RoundedRectangle(cornerRadius: 6, style: .continuous)
                                 .fill(option.value == selection ? Color.accentColor.opacity(0.95) : Color.clear)
@@ -422,10 +421,10 @@ struct PreferenceSegmentedSelector<Value: Hashable>: View {
         }
         .padding(2)
         .frame(width: width, height: 28)
-        .background(Color.white.opacity(0.07), in: RoundedRectangle(cornerRadius: 8, style: .continuous))
+        .background(ShotStyleTheme.ink.opacity(0.07), in: RoundedRectangle(cornerRadius: 8, style: .continuous))
         .overlay(
             RoundedRectangle(cornerRadius: 8, style: .continuous)
-                .stroke(Color.white.opacity(0.10), lineWidth: 1)
+                .stroke(ShotStyleTheme.ink.opacity(0.10), lineWidth: 1)
         )
     }
 }
@@ -439,6 +438,7 @@ struct GeneralSettingsView: View {
     @AppStorage("overlayOnLeft") var overlayOnLeft = true
     @AppStorage("overlayTimeout") var overlayTimeout: Double = 6.0
     
+    @AppStorage(AppAppearance.key) var appearance: AppAppearance = .system
     @State private var launchAtLogin = SMAppService.mainApp.status == .enabled
     @State private var language = AppLanguage().choice
 
@@ -467,6 +467,19 @@ struct GeneralSettingsView: View {
             }
 
             PreferenceFootnote(text: L("ShotStyle restarts to switch languages. You can also set it in System Settings → General → Language & Region → Applications."))
+
+            PreferenceSection(L("Appearance")) {
+                PreferenceRow(L("Appearance")) {
+                    PreferenceSegmentedSelector(
+                        selection: Binding(get: { appearance }, set: { choice in
+                            appearance = choice
+                            AppAppearance.apply(choice)
+                        }),
+                        options: AppAppearance.allCases.map { PreferenceOption(value: $0, title: $0.title) },
+                        width: 260
+                    )
+                }
+            }
 
             PreferenceSection(L("Startup")) {
                 PreferenceRow(L("Launch ShotStyle at login")) {
@@ -655,7 +668,7 @@ private struct ShortcutSection: View {
         VStack(alignment: .leading, spacing: 10) {
             Text(title)
                 .font(.system(size: 13, weight: .bold))
-                .foregroundStyle(Color.white.opacity(0.86))
+                .foregroundStyle(ShotStyleTheme.ink.opacity(0.86))
 
             VStack(spacing: 0) {
                 ForEach(shortcuts) { shortcut in
@@ -664,16 +677,16 @@ private struct ShortcutSection: View {
                     if shortcut.id != shortcuts.last?.id {
                         Divider()
                             .padding(.leading, 14)
-                            .overlay(Color.white.opacity(0.08))
+                            .overlay(ShotStyleTheme.ink.opacity(0.08))
                     }
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-            .background(Color.white.opacity(0.055))
+            .background(ShotStyleTheme.ink.opacity(0.055))
             .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
             .overlay(
                 RoundedRectangle(cornerRadius: 10, style: .continuous)
-                    .stroke(Color.white.opacity(0.08), lineWidth: 1)
+                    .stroke(ShotStyleTheme.ink.opacity(0.08), lineWidth: 1)
             )
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -687,7 +700,7 @@ private struct ShortcutRecorderRow: View {
         HStack(spacing: 12) {
             Text(shortcut.title)
                 .font(.system(size: 13, weight: .medium))
-                .foregroundStyle(Color.white.opacity(0.88))
+                .foregroundStyle(ShotStyleTheme.ink.opacity(0.88))
                 .lineLimit(1)
                 .frame(maxWidth: .infinity, alignment: .leading)
 
@@ -740,7 +753,7 @@ struct ScreenshotsSettingsView: View {
 
                             Text(L("\(Int(jpegQuality * 100))%"))
                                 .font(.system(size: 12, weight: .semibold, design: .monospaced))
-                                .foregroundStyle(Color.white.opacity(0.56))
+                                .foregroundStyle(ShotStyleTheme.ink.opacity(0.56))
                                 .frame(width: 38, alignment: .trailing)
                         }
                     }
@@ -810,16 +823,16 @@ struct ScreenshotsSettingsView: View {
                     TextField("", text: $filenameTemplate, prompt: Text(Settings.defaultFilenameTemplate))
                         .textFieldStyle(.plain)
                         .font(.system(size: 12, weight: .semibold))
-                        .foregroundStyle(Color.white.opacity(0.86))
+                        .foregroundStyle(ShotStyleTheme.ink.opacity(0.86))
                         .padding(.horizontal, 10)
                         .frame(width: 230, height: 28)
                         .background(
                             RoundedRectangle(cornerRadius: 8, style: .continuous)
-                                .fill(Color.white.opacity(0.08))
+                                .fill(ShotStyleTheme.ink.opacity(0.08))
                         )
                         .overlay(
                             RoundedRectangle(cornerRadius: 8, style: .continuous)
-                                .stroke(Color.white.opacity(0.10), lineWidth: 1)
+                                .stroke(ShotStyleTheme.ink.opacity(0.10), lineWidth: 1)
                         )
                 }
 
@@ -828,7 +841,7 @@ struct ScreenshotsSettingsView: View {
                 PreferenceRow(L("Preview")) {
                     Text(filenamePreview)
                         .font(.system(size: 11, weight: .semibold, design: .monospaced))
-                        .foregroundStyle(Color.white.opacity(0.56))
+                        .foregroundStyle(ShotStyleTheme.ink.opacity(0.56))
                         .lineLimit(1)
                         .truncationMode(.middle)
                 }
@@ -1079,13 +1092,13 @@ struct AboutSettingsView: View {
                 VStack(alignment: .leading, spacing: 4) {
                     Text(verbatim: "ShotStyle")
                         .font(.system(size: 22, weight: .bold))
-                        .foregroundStyle(Color.white.opacity(0.94))
+                        .foregroundStyle(ShotStyleTheme.ink.opacity(0.94))
                     Text(L("Screenshots, screen recordings and video editing for your Mac"))
                         .font(.system(size: 12, weight: .medium))
-                        .foregroundStyle(Color.white.opacity(0.62))
+                        .foregroundStyle(ShotStyleTheme.ink.opacity(0.62))
                     Text(L("Version \(version)"))
                         .font(.system(size: 12, weight: .semibold))
-                        .foregroundStyle(Color.white.opacity(0.48))
+                        .foregroundStyle(ShotStyleTheme.ink.opacity(0.48))
                 }
 
                 Spacer(minLength: 12)
@@ -1098,16 +1111,16 @@ struct AboutSettingsView: View {
             }
             .padding(14)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .background(Color.white.opacity(0.055), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+            .background(ShotStyleTheme.ink.opacity(0.055), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
             .overlay(
                 RoundedRectangle(cornerRadius: 12, style: .continuous)
-                    .stroke(Color.white.opacity(0.08), lineWidth: 1)
+                    .stroke(ShotStyleTheme.ink.opacity(0.08), lineWidth: 1)
             )
             
             VStack(alignment: .leading, spacing: 8) {
                 Text(L("What's New"))
                     .font(.system(size: 13, weight: .bold))
-                    .foregroundStyle(Color.white.opacity(0.86))
+                    .foregroundStyle(ShotStyleTheme.ink.opacity(0.86))
                 
                 ScrollView {
                     // The release notes stay in English (l10n-ignore); everything around them is localized.
@@ -1393,14 +1406,14 @@ struct AboutSettingsView: View {
                     • Full settings window
                     """)
                     .font(.system(size: 12))
-                    .foregroundStyle(Color.white.opacity(0.72))
+                    .foregroundStyle(ShotStyleTheme.ink.opacity(0.72))
                     .padding(10)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 }
-                .background(Color.white.opacity(0.055), in: RoundedRectangle(cornerRadius: 10, style: .continuous))
+                .background(ShotStyleTheme.ink.opacity(0.055), in: RoundedRectangle(cornerRadius: 10, style: .continuous))
                 .overlay(
                     RoundedRectangle(cornerRadius: 10, style: .continuous)
-                        .stroke(Color.white.opacity(0.08), lineWidth: 1)
+                        .stroke(ShotStyleTheme.ink.opacity(0.08), lineWidth: 1)
                 )
                 .frame(height: 220)
             }
@@ -1418,10 +1431,10 @@ struct AboutSettingsView: View {
                     Text(L("© 2026 Bright Life Creations"))
                 }
                 .font(.system(size: 11, weight: .medium))
-                .foregroundStyle(Color.white.opacity(0.42))
+                .foregroundStyle(ShotStyleTheme.ink.opacity(0.42))
                 Text(L("MIT License — Free and open source"))
                     .font(.system(size: 10, weight: .medium))
-                    .foregroundStyle(Color.white.opacity(0.36))
+                    .foregroundStyle(ShotStyleTheme.ink.opacity(0.36))
 
                 HStack(spacing: 8) {
                     AboutLinkButton(title: "GitHub") { // l10n-ignore: a name
@@ -1472,11 +1485,11 @@ private struct AboutLinkButton<Label: View>: View {
                 .frame(height: 26)
         }
         .buttonStyle(.plain)
-        .foregroundStyle(Color.white.opacity(0.82))
-        .background(Color.white.opacity(0.075), in: RoundedRectangle(cornerRadius: 7, style: .continuous))
+        .foregroundStyle(ShotStyleTheme.ink.opacity(0.82))
+        .background(ShotStyleTheme.ink.opacity(0.075), in: RoundedRectangle(cornerRadius: 7, style: .continuous))
         .overlay(
             RoundedRectangle(cornerRadius: 7, style: .continuous)
-                .stroke(Color.white.opacity(0.08), lineWidth: 1)
+                .stroke(ShotStyleTheme.ink.opacity(0.08), lineWidth: 1)
         )
         .contentShape(RoundedRectangle(cornerRadius: 7, style: .continuous))
         .help(help)

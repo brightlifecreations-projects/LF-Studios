@@ -67,7 +67,6 @@ final class HomeWindowController: NSWindowController, NSWindowDelegate {
         window.titleVisibility = .hidden
         window.titlebarAppearsTransparent = true
         window.backgroundColor = HomeColors.windowBackground
-        window.appearance = NSAppearance(named: .darkAqua)
         window.setContentSize(NSSize(width: 1120, height: 740))
         window.minSize = NSSize(width: 880, height: 580)
         window.isReleasedWhenClosed = false
@@ -426,12 +425,16 @@ final class HomeModel: ObservableObject {
 // MARK: - Views
 
 enum HomeColors {
-    static let windowBackground = NSColor(calibratedRed: 0.055, green: 0.058, blue: 0.07, alpha: 1)
-    static let sidebar = Color(nsColor: NSColor(calibratedRed: 0.075, green: 0.078, blue: 0.094, alpha: 1))
+    static let windowBackground = NSColor.adaptive(dark: NSColor(calibratedRed: 0.055, green: 0.058, blue: 0.07, alpha: 1), light: NSColor(srgbRed: 0.965, green: 0.965, blue: 0.972, alpha: 1))
+    static let sidebar = Color.adaptive(dark: NSColor(calibratedRed: 0.075, green: 0.078, blue: 0.094, alpha: 1), light: NSColor(srgbRed: 0.918, green: 0.918, blue: 0.93, alpha: 1))
     static let content = Color(nsColor: windowBackground)
-    static let card = Color.white.opacity(0.055)
-    static let cardHover = Color.white.opacity(0.09)
-    static let stroke = Color.white.opacity(0.08)
+    /// Text and icons: white on the dark look, black on the light one.
+    static let ink = Color.adaptive(dark: .white, light: .black)
+    static let card = Color.adaptive(dark: NSColor.white.withAlphaComponent(0.055), light: NSColor.white)
+    static let cardHover = Color.adaptive(dark: NSColor.white.withAlphaComponent(0.09), light: NSColor.black.withAlphaComponent(0.04))
+    static let stroke = Color.adaptive(dark: NSColor.white.withAlphaComponent(0.08), light: NSColor.black.withAlphaComponent(0.1))
+    /// Behind a thumbnail that hasn't loaded.
+    static let placeholder = Color.adaptive(dark: NSColor.black.withAlphaComponent(0.35), light: NSColor.black.withAlphaComponent(0.06))
     /// The logo's orange → pink → purple.
     static let brand = LinearGradient(
         colors: [
@@ -466,7 +469,6 @@ struct HomeRootView: View {
         }
         .ignoresSafeArea()
         .frame(minWidth: 880, minHeight: 580)
-        .preferredColorScheme(.dark)
     }
 }
 
@@ -481,7 +483,7 @@ private struct HomeSidebar: View {
                     .frame(width: 30, height: 30)
                 Text(verbatim: "ShotStyle")
                     .font(.system(size: 16, weight: .bold))
-                    .foregroundStyle(Color.white.opacity(0.94))
+                    .foregroundStyle(HomeColors.ink.opacity(0.94))
             }
             .padding(.horizontal, 10)
             .padding(.top, 48)
@@ -516,12 +518,12 @@ private struct HomeSidebarButton: View {
                     .font(.system(size: 13, weight: .semibold))
                 Spacer(minLength: 0)
             }
-            .foregroundStyle(Color.white.opacity(isSelected ? 0.96 : 0.66))
+            .foregroundStyle(HomeColors.ink.opacity(isSelected ? 0.96 : 0.66))
             .padding(.horizontal, 10)
             .frame(height: 34)
             .background(
                 RoundedRectangle(cornerRadius: 8, style: .continuous)
-                    .fill(isSelected ? Color.white.opacity(0.11) : (isHovering ? Color.white.opacity(0.05) : .clear))
+                    .fill(isSelected ? HomeColors.ink.opacity(0.11) : (isHovering ? HomeColors.ink.opacity(0.05) : .clear))
             )
             .contentShape(Rectangle())
         }
@@ -556,7 +558,7 @@ private struct HomeLibraryView: View {
         HStack(spacing: 16) {
             Text(model.section.title)
                 .font(.system(size: 26, weight: .bold))
-                .foregroundStyle(Color.white.opacity(0.95))
+                .foregroundStyle(HomeColors.ink.opacity(0.95))
             Spacer()
             Button {
                 VideoProjectOpener.chooseAndOpen()
@@ -565,7 +567,7 @@ private struct HomeLibraryView: View {
                     .font(.system(size: 12.5, weight: .semibold))
             }
             .buttonStyle(.plain)
-            .foregroundStyle(Color.white.opacity(0.8))
+            .foregroundStyle(HomeColors.ink.opacity(0.8))
             .help(L("Open a .shotstyle project"))
             HomeSearchField(text: $model.query)
                 .frame(width: 260)
@@ -598,10 +600,10 @@ private struct HomeLibraryView: View {
             HStack(alignment: .firstTextBaseline, spacing: 8) {
                 Text(L("Projects"))
                     .font(.system(size: 17, weight: .bold))
-                    .foregroundStyle(Color.white.opacity(0.92))
+                    .foregroundStyle(HomeColors.ink.opacity(0.92))
                 Text(verbatim: "\(projects.count)")
                     .font(.system(size: 13, weight: .semibold))
-                    .foregroundStyle(Color.white.opacity(0.4))
+                    .foregroundStyle(HomeColors.ink.opacity(0.4))
             }
 
             if projects.isEmpty {
@@ -631,7 +633,7 @@ private struct HomeSearchField: View {
         HStack(spacing: 7) {
             Image(systemName: "magnifyingglass")
                 .font(.system(size: 12, weight: .semibold))
-                .foregroundStyle(Color.white.opacity(0.45))
+                .foregroundStyle(HomeColors.ink.opacity(0.45))
             TextField(L("Search projects"), text: $text)
                 .textFieldStyle(.plain)
                 .font(.system(size: 13))
@@ -640,7 +642,7 @@ private struct HomeSearchField: View {
                     text = ""
                 } label: {
                     Image(systemName: "xmark.circle.fill")
-                        .foregroundStyle(Color.white.opacity(0.45))
+                        .foregroundStyle(HomeColors.ink.opacity(0.45))
                 }
                 .buttonStyle(.plain)
                 .help(L("Clear"))
@@ -648,7 +650,7 @@ private struct HomeSearchField: View {
         }
         .padding(.horizontal, 10)
         .frame(height: 30)
-        .background(Color.white.opacity(0.07), in: RoundedRectangle(cornerRadius: 8, style: .continuous))
+        .background(HomeColors.ink.opacity(0.07), in: RoundedRectangle(cornerRadius: 8, style: .continuous))
         .overlay(RoundedRectangle(cornerRadius: 8, style: .continuous).stroke(HomeColors.stroke, lineWidth: 1))
     }
 }
@@ -701,11 +703,11 @@ private struct HomeActionCard: View {
             VStack(alignment: .leading, spacing: 0) {
                 Image(systemName: symbol)
                     .font(.system(size: 22, weight: .semibold))
-                    .foregroundStyle(Color.white.opacity(0.9))
+                    .foregroundStyle(HomeColors.ink.opacity(0.9))
                 Spacer(minLength: 8)
                 Text(title)
                     .font(.system(size: 13, weight: .semibold))
-                    .foregroundStyle(Color.white.opacity(0.9))
+                    .foregroundStyle(HomeColors.ink.opacity(0.9))
                     .lineLimit(2)
                     .multilineTextAlignment(.leading)
             }
@@ -731,16 +733,16 @@ private struct HomeProjectCard: View {
             VStack(alignment: .leading, spacing: 3) {
                 Text(project.name)
                     .font(.system(size: 13, weight: .semibold))
-                    .foregroundStyle(Color.white.opacity(0.92))
+                    .foregroundStyle(HomeColors.ink.opacity(0.92))
                     .lineLimit(1)
                     .truncationMode(.middle)
                 Text(project.date.formatted(date: .abbreviated, time: .shortened))
                     .font(.system(size: 11, weight: .medium))
-                    .foregroundStyle(Color.white.opacity(0.48))
+                    .foregroundStyle(HomeColors.ink.opacity(0.48))
                     .lineLimit(1)
                 Text(verbatim: metadata)
                     .font(.system(size: 11, weight: .medium))
-                    .foregroundStyle(Color.white.opacity(0.48))
+                    .foregroundStyle(HomeColors.ink.opacity(0.48))
                     .lineLimit(1)
             }
             .padding(.horizontal, 2)
@@ -754,7 +756,7 @@ private struct HomeProjectCard: View {
     }
 
     private var thumbnail: some View {
-        Color.black.opacity(0.35)
+        HomeColors.placeholder
             .aspectRatio(16 / 10, contentMode: .fit)
             .overlay {
                 if let image = details?.thumbnail {
@@ -764,7 +766,7 @@ private struct HomeProjectCard: View {
                 } else {
                     Image(systemName: project.isRecording || project.isProjectFile ? "video" : "photo")
                         .font(.system(size: 24))
-                        .foregroundStyle(Color.white.opacity(0.25))
+                        .foregroundStyle(HomeColors.ink.opacity(0.25))
                 }
             }
             .clipShape(RoundedRectangle(cornerRadius: 9, style: .continuous))
@@ -819,10 +821,10 @@ private struct HomeEmptyState: View {
         VStack(spacing: 10) {
             Image(systemName: isSearching ? "magnifyingglass" : "square.stack.3d.up")
                 .font(.system(size: 30))
-                .foregroundStyle(Color.white.opacity(0.3))
+                .foregroundStyle(HomeColors.ink.opacity(0.3))
             Text(isSearching ? L("No projects match your search") : L("Your recordings and screenshots will appear here"))
                 .font(.system(size: 13, weight: .medium))
-                .foregroundStyle(Color.white.opacity(0.5))
+                .foregroundStyle(HomeColors.ink.opacity(0.5))
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical, 60)

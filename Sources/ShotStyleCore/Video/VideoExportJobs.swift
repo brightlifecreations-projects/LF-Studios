@@ -615,8 +615,7 @@ struct VideoExportToolbarStatus: View {
                 .popover(isPresented: $showsList, arrowEdge: .bottom) {
                     VideoExportJobsPill(model: model)
                         .padding(10)
-                        .background(Color(white: 0.12))
-                        .environment(\.colorScheme, .dark)
+                        .background(VideoEditorTheme.panel)
                 }
         }
     }
@@ -642,10 +641,10 @@ private struct VideoExportStatusChip: View {
                             .font(.system(size: 10, weight: .bold))
                             .padding(.horizontal, 5)
                             .frame(height: 16)
-                            .background(Capsule().fill(Color.white.opacity(0.14)))
+                            .background(Capsule().fill(VideoEditorTheme.ink.opacity(0.12)))
                     }
                 }
-                .foregroundStyle(isFailed ? Color(red: 1, green: 0.62, blue: 0.55) : VideoEditorTheme.textPrimary)
+                .foregroundStyle(isFailed ? VideoEditorTheme.warning : VideoEditorTheme.textPrimary)
                 .padding(.leading, 9)
                 .padding(.trailing, 4)
                 .frame(height: 28)
@@ -657,7 +656,7 @@ private struct VideoExportStatusChip: View {
             actions
         }
         .padding(.trailing, 2)
-        .background(RoundedRectangle(cornerRadius: 7, style: .continuous).fill(Color.white.opacity(0.06)))
+        .background(RoundedRectangle(cornerRadius: 7, style: .continuous).fill(VideoEditorTheme.ink.opacity(0.06)))
         .fixedSize()
     }
 
@@ -694,9 +693,9 @@ private struct VideoExportStatusChip: View {
         case .failed:
             Image(systemName: "exclamationmark.triangle.fill").foregroundStyle(Color.orange).font(.system(size: 13))
         case .cancelled:
-            Image(systemName: "xmark.circle").foregroundStyle(Color.white.opacity(0.6)).font(.system(size: 13))
+            Image(systemName: "xmark.circle").foregroundStyle(VideoEditorTheme.textSecondary).font(.system(size: 13))
         case .queued:
-            Image(systemName: "clock").foregroundStyle(Color.white.opacity(0.7)).font(.system(size: 12))
+            Image(systemName: "clock").foregroundStyle(VideoEditorTheme.textSecondary).font(.system(size: 12))
         case .enhancingVoice(let value), .running(.balancingLoudness(let value)), .running(.rendering(let value)):
             ring(value)
         case .running(.preparing):
@@ -706,7 +705,7 @@ private struct VideoExportStatusChip: View {
 
     private func ring(_ value: Double) -> some View {
         ZStack {
-            Circle().stroke(Color.white.opacity(0.18), lineWidth: 2.5)
+            Circle().stroke(VideoEditorTheme.ink.opacity(0.18), lineWidth: 2.5)
             Circle()
                 .trim(from: 0, to: min(max(value, 0.03), 1))
                 .stroke(Color.accentColor, style: StrokeStyle(lineWidth: 2.5, lineCap: .round))

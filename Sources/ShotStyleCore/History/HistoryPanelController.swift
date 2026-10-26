@@ -87,6 +87,14 @@ final class HistoryPanelController: NSObject {
 
     // MARK: - Content
 
+    /// The panel's content, built without showing it (snapshot tests).
+    func makeContent(historyManager: HistoryManager) -> NSView {
+        self.historyManager = historyManager
+        let content = buildContent(historyManager: historyManager)
+        reload()
+        return content
+    }
+
     private func buildContent(historyManager: HistoryManager) -> NSView {
         let container = HistoryStageView(frame: NSRect(x: 0, y: 0, width: 920, height: 640))
 
@@ -101,13 +109,13 @@ final class HistoryPanelController: NSObject {
 
         let title = NSTextField(labelWithString: L("Capture History"))
         title.font = .systemFont(ofSize: 26, weight: .bold)
-        title.textColor = NSColor.white.withAlphaComponent(0.94)
+        title.textColor = HistoryColors.ink(0.94)
         title.frame = NSRect(x: 28, y: 34, width: 360, height: 34)
         header.addSubview(title)
 
         let count = NSTextField(labelWithString: "")
         count.font = .systemFont(ofSize: 12, weight: .medium)
-        count.textColor = NSColor.white.withAlphaComponent(0.48)
+        count.textColor = HistoryColors.ink(0.48)
         count.frame = NSRect(x: 30, y: 16, width: 560, height: 16)
         header.addSubview(count)
         countLabel = count
@@ -121,7 +129,6 @@ final class HistoryPanelController: NSObject {
         // Capture-type filter, next to search.
         let typeFilter = NSPopUpButton(frame: NSRect(x: 392, y: 44, width: 120, height: 30), pullsDown: false)
         typeFilter.autoresizingMask = [.minXMargin]
-        typeFilter.appearance = NSAppearance(named: .darkAqua)
         typeFilter.addItem(withTitle: L("All Captures"))
         for type in CaptureType.allCases {
             typeFilter.addItem(withTitle: type.title)
@@ -144,7 +151,6 @@ final class HistoryPanelController: NSObject {
         search.autoresizingMask = [.minXMargin]
         search.placeholderString = L("Search text in captures")
         search.font = .systemFont(ofSize: 13)
-        search.appearance = NSAppearance(named: .darkAqua)
         search.focusRingType = .none
         search.sendsWholeSearchString = false
         search.sendsSearchStringImmediately = true
@@ -240,7 +246,7 @@ final class HistoryPanelController: NSObject {
 
         let message = NSTextField(labelWithString: L("Enjoying ShotStyle? Star it on GitHub so more people find it."))
         message.font = .systemFont(ofSize: 13, weight: .medium)
-        message.textColor = NSColor.white.withAlphaComponent(0.88)
+        message.textColor = HistoryColors.ink(0.88)
         message.lineBreakMode = .byTruncatingTail
         message.frame = NSRect(x: 40, y: 10, width: frame.width - 40 - 260, height: 18)
         message.autoresizingMask = [.width]
@@ -305,21 +311,21 @@ final class HistoryPanelController: NSObject {
 
         let title = NSTextField(labelWithString: L("No captures yet"))
         title.font = .systemFont(ofSize: 18, weight: .bold)
-        title.textColor = NSColor.white.withAlphaComponent(0.92)
+        title.textColor = HistoryColors.ink(0.92)
         title.alignment = .center
         title.frame = NSRect(x: 0, y: 88, width: 360, height: 24)
         stack.addSubview(title)
 
         let subtitle = NSTextField(labelWithString: Self.emptyStateHint(captureAreaShortcut: ShotStyleShortcut.captureArea.displayShortcut))
         subtitle.font = .systemFont(ofSize: 13, weight: .medium)
-        subtitle.textColor = NSColor.white.withAlphaComponent(0.50)
+        subtitle.textColor = HistoryColors.ink(0.50)
         subtitle.alignment = .center
         subtitle.frame = NSRect(x: 24, y: 56, width: 312, height: 18)
         stack.addSubview(subtitle)
 
         let hint = NSTextField(labelWithString: L("Captured screenshots will appear here instantly"))
         hint.font = .systemFont(ofSize: 12, weight: .regular)
-        hint.textColor = NSColor.white.withAlphaComponent(0.36)
+        hint.textColor = HistoryColors.ink(0.36)
         hint.alignment = .center
         hint.frame = NSRect(x: 24, y: 30, width: 312, height: 16)
         stack.addSubview(hint)
@@ -894,14 +900,14 @@ final class HistoryCollectionItem: NSCollectionViewItem {
         container.addSubview(thumbView)
 
         dateLabel.font = .monospacedDigitSystemFont(ofSize: 10.5, weight: .semibold)
-        dateLabel.textColor = NSColor.white.withAlphaComponent(0.78)
+        dateLabel.textColor = HistoryColors.ink(0.78)
         dateLabel.alignment = .left
         dateLabel.lineBreakMode = .byTruncatingTail
         dateLabel.frame = NSRect(x: 14, y: 48, width: 162, height: 15)
         container.addSubview(dateLabel)
 
         detailLabel.font = .systemFont(ofSize: 9.5, weight: .medium)
-        detailLabel.textColor = NSColor.white.withAlphaComponent(0.42)
+        detailLabel.textColor = HistoryColors.ink(0.42)
         detailLabel.alignment = .left
         detailLabel.lineBreakMode = .byTruncatingTail
         detailLabel.frame = NSRect(x: 14, y: 33, width: 162, height: 13)
@@ -1135,7 +1141,7 @@ final class HistorySectionHeader: NSView, NSCollectionViewElement {
     override init(frame: NSRect) {
         super.init(frame: frame)
         label.font = .systemFont(ofSize: 12, weight: .bold)
-        label.textColor = NSColor.white.withAlphaComponent(0.58)
+        label.textColor = HistoryColors.ink(0.58)
         label.frame = NSRect(x: 26, y: 7, width: 300, height: 18)
         addSubview(label)
     }
@@ -1160,7 +1166,7 @@ private final class HistoryStageView: NSView {
         guard let context = NSGraphicsContext.current?.cgContext else { return }
         let rect = bounds
         let colorSpace = CGColorSpace(name: CGColorSpace.sRGB) ?? CGColorSpaceCreateDeviceRGB()
-        let colors = [ShotStyleColors.editorStageTop.cgColor, ShotStyleColors.editorStageBottom.cgColor] as CFArray
+        let colors = [HistoryColors.stageTop.cgColor, HistoryColors.stageBottom.cgColor] as CFArray
 
         if let gradient = CGGradient(colorsSpace: colorSpace, colors: colors, locations: [0, 1]) {
             context.drawLinearGradient(
@@ -1170,7 +1176,7 @@ private final class HistoryStageView: NSView {
                 options: []
             )
         } else {
-            ShotStyleColors.editorStageTop.setFill()
+            HistoryColors.stageTop.setFill()
             rect.fill()
         }
 
@@ -1219,11 +1225,11 @@ private final class HistoryPreviewWellView: NSView {
         )
 
         context.addPath(path)
-        context.setFillColor(NSColor.black.withAlphaComponent(isHovered ? 0.20 : 0.15).cgColor)
+        context.setFillColor(HistoryColors.well(hovered: isHovered).cgColor)
         context.fillPath()
 
         context.addPath(path)
-        context.setStrokeColor(NSColor.white.withAlphaComponent(isHovered ? 0.08 : 0.045).cgColor)
+        context.setStrokeColor(HistoryColors.ink(isHovered ? 0.08 : 0.045).cgColor)
         context.setLineWidth(1)
         context.strokePath()
     }
@@ -1260,7 +1266,7 @@ private final class HistoryCaptureCardView: NSView {
         )
 
         context.addPath(path)
-        context.setFillColor(NSColor(calibratedWhite: 0.045, alpha: isHovered || isSelected ? 0.94 : 0.86).cgColor)
+        context.setFillColor(HistoryColors.card(raised: isHovered || isSelected).cgColor)
         context.fillPath()
 
         // Selected: an accent ring, like Finder's icon selection.
@@ -1273,7 +1279,7 @@ private final class HistoryCaptureCardView: NSView {
             return
         }
         context.addPath(path)
-        context.setStrokeColor(NSColor.white.withAlphaComponent(isHovered ? 0.12 : 0.06).cgColor)
+        context.setStrokeColor(HistoryColors.ink(isHovered ? 0.12 : 0.07).cgColor)
         context.setLineWidth(1)
         context.strokePath()
     }
@@ -1315,9 +1321,9 @@ private final class HistoryEmptyStateCard: NSView {
     override func draw(_ dirtyRect: NSRect) {
         let rect = bounds.insetBy(dx: 1, dy: 1)
         let path = NSBezierPath(roundedRect: rect, xRadius: 26, yRadius: 26)
-        NSColor.black.withAlphaComponent(0.26).setFill()
+        HistoryColors.emptyCard.setFill()
         path.fill()
-        NSColor.white.withAlphaComponent(0.13).setStroke()
+        HistoryColors.ink(0.13).setStroke()
         path.lineWidth = 1
         path.stroke()
     }
@@ -1386,42 +1392,56 @@ private final class HistoryActionButton: NSButton {
 
     private var baseColor: CGColor {
         switch variant {
-        case .primary: return NSColor.white.withAlphaComponent(0.92).cgColor
-        case .secondary: return ShotStyleColors.editorActionBackground.cgColor
-        case .destructive: return NSColor.systemRed.withAlphaComponent(0.18).cgColor
+        case .primary: return resolved(.adaptive(dark: NSColor.white.withAlphaComponent(0.92), light: NSColor.black.withAlphaComponent(0.84)))
+        case .secondary: return resolved(ShotStyleColors.editorActionBackground)
+        case .destructive: return resolved(NSColor.systemRed.withAlphaComponent(0.18))
         }
     }
 
     private var hoverColor: CGColor {
         switch variant {
-        case .primary: return NSColor.white.cgColor
-        case .secondary: return ShotStyleColors.cornerButtonHover.cgColor
-        case .destructive: return NSColor.systemRed.withAlphaComponent(0.27).cgColor
+        case .primary: return resolved(.adaptive(dark: .white, light: NSColor.black.withAlphaComponent(0.94)))
+        case .secondary: return resolved(ShotStyleColors.cornerButtonHover)
+        case .destructive: return resolved(NSColor.systemRed.withAlphaComponent(0.27))
         }
     }
 
     private var pressedColor: CGColor {
         switch variant {
-        case .primary: return NSColor.white.withAlphaComponent(0.74).cgColor
-        case .secondary: return ShotStyleColors.cornerButtonPressed.cgColor
-        case .destructive: return NSColor.systemRed.withAlphaComponent(0.36).cgColor
+        case .primary: return resolved(.adaptive(dark: NSColor.white.withAlphaComponent(0.74), light: NSColor.black.withAlphaComponent(0.7)))
+        case .secondary: return resolved(ShotStyleColors.cornerButtonPressed)
+        case .destructive: return resolved(NSColor.systemRed.withAlphaComponent(0.36))
         }
     }
 
     private var borderColor: CGColor {
         switch variant {
-        case .primary: return NSColor.white.withAlphaComponent(0.28).cgColor
-        case .secondary: return ShotStyleColors.editorDockBorder.cgColor
-        case .destructive: return NSColor.systemRed.withAlphaComponent(0.38).cgColor
+        case .primary: return resolved(.adaptive(dark: NSColor.white.withAlphaComponent(0.28), light: NSColor.black.withAlphaComponent(0.2)))
+        case .secondary: return resolved(.adaptive(dark: NSColor.white.withAlphaComponent(0.18), light: NSColor.black.withAlphaComponent(0.12)))
+        case .destructive: return resolved(NSColor.systemRed.withAlphaComponent(0.38))
         }
     }
 
     private var textColor: NSColor {
         switch variant {
-        case .primary: return NSColor.black.withAlphaComponent(0.88)
-        case .secondary: return NSColor.white.withAlphaComponent(0.84)
+        case .primary: return .adaptive(dark: NSColor.black.withAlphaComponent(0.88), light: .white)
+        case .secondary: return HistoryColors.ink(0.84)
         case .destructive: return NSColor.systemRed
         }
+    }
+
+    /// Layer colors are fixed values: resolved in this button's look, and
+    /// again when the look changes (Settings → Appearance).
+    private func resolved(_ color: NSColor) -> CGColor {
+        var value = color.cgColor
+        effectiveAppearance.performAsCurrentDrawingAppearance { value = color.cgColor }
+        return value
+    }
+
+    override func viewDidChangeEffectiveAppearance() {
+        super.viewDidChangeEffectiveAppearance()
+        layer?.backgroundColor = isHovered ? hoverColor : baseColor
+        layer?.borderColor = borderColor
     }
 
     private func animateBackground(_ color: CGColor) {
@@ -1430,5 +1450,25 @@ private final class HistoryActionButton: NSButton {
             ctx.allowsImplicitAnimation = true
             self.layer?.backgroundColor = color
         }
+    }
+}
+
+/// History's colors in the dark and the light look.
+private enum HistoryColors {
+    /// Text and lines: white on the dark look, black on the light one.
+    static func ink(_ alpha: CGFloat) -> NSColor {
+        .adaptive(dark: NSColor.white.withAlphaComponent(alpha), light: NSColor.black.withAlphaComponent(min(alpha * 1.02, 1)))
+    }
+
+    static let stageTop = NSColor.adaptive(dark: NSColor(calibratedRed: 0.045, green: 0.049, blue: 0.062, alpha: 1), light: NSColor(srgbRed: 0.955, green: 0.955, blue: 0.965, alpha: 1))
+    static let stageBottom = NSColor.adaptive(dark: NSColor(calibratedRed: 0.105, green: 0.096, blue: 0.13, alpha: 1), light: NSColor(srgbRed: 0.91, green: 0.905, blue: 0.93, alpha: 1))
+    static let emptyCard = NSColor.adaptive(dark: NSColor.black.withAlphaComponent(0.26), light: NSColor.white.withAlphaComponent(0.85))
+
+    static func card(raised: Bool) -> NSColor {
+        .adaptive(dark: NSColor(calibratedWhite: 0.045, alpha: raised ? 0.94 : 0.86), light: NSColor(white: 1, alpha: raised ? 1 : 0.92))
+    }
+
+    static func well(hovered: Bool) -> NSColor {
+        .adaptive(dark: NSColor.black.withAlphaComponent(hovered ? 0.2 : 0.15), light: NSColor.black.withAlphaComponent(hovered ? 0.07 : 0.045))
     }
 }

@@ -12,7 +12,6 @@ struct VideoEditorRootView: View {
         .background(VideoEditorTheme.window)
         .background(VideoKeyboardBridge(model: model).frame(width: 0, height: 0))
         .ignoresSafeArea()
-        .environment(\.colorScheme, .dark)
         .task { await model.load() }
     }
 
@@ -165,7 +164,7 @@ struct VideoEditorToolbar: View {
                         .font(.system(size: 12, weight: .semibold))
                         .padding(.horizontal, 8)
                         .frame(height: 28)
-                        .background(RoundedRectangle(cornerRadius: 7, style: .continuous).fill(model.isCropping ? Color.accentColor.opacity(0.35) : Color.white.opacity(0.06)))
+                        .background(RoundedRectangle(cornerRadius: 7, style: .continuous).fill(model.isCropping ? Color.accentColor.opacity(0.35) : VideoEditorTheme.ink.opacity(0.06)))
                 }
                 .buttonStyle(.plain)
                 .help(L("Crop the recording — trim away toolbars or empty space"))
@@ -267,7 +266,7 @@ struct VideoEditorToolbar: View {
         .fixedSize()
         .padding(.horizontal, 8)
         .frame(height: 28)
-        .background(RoundedRectangle(cornerRadius: 7, style: .continuous).fill(Color.white.opacity(0.06)))
+        .background(RoundedRectangle(cornerRadius: 7, style: .continuous).fill(VideoEditorTheme.ink.opacity(0.06)))
         .help(L("Aspect ratio"))
     }
 }
@@ -620,7 +619,7 @@ struct VideoCommandPalette: View {
                                 }
                                 .padding(.horizontal, 12)
                                 .frame(height: 34)
-                                .background(RoundedRectangle(cornerRadius: 7, style: .continuous).fill(index == highlighted ? Color.white.opacity(0.1) : Color.clear))
+                                .background(RoundedRectangle(cornerRadius: 7, style: .continuous).fill(index == highlighted ? VideoEditorTheme.ink.opacity(0.08) : Color.clear))
                                 .contentShape(Rectangle())
                             }
                             .buttonStyle(.plain)
@@ -632,9 +631,9 @@ struct VideoCommandPalette: View {
                 .frame(maxHeight: 360)
             }
             .frame(width: 520)
-            .background(RoundedRectangle(cornerRadius: 14, style: .continuous).fill(Color(white: 0.11)))
-            .overlay(RoundedRectangle(cornerRadius: 14, style: .continuous).strokeBorder(Color.white.opacity(0.12), lineWidth: 1))
-            .shadow(color: .black.opacity(0.5), radius: 30, y: 16)
+            .background(RoundedRectangle(cornerRadius: 14, style: .continuous).fill(VideoEditorTheme.popover))
+            .overlay(RoundedRectangle(cornerRadius: 14, style: .continuous).strokeBorder(VideoEditorTheme.cardStroke, lineWidth: 1))
+            .shadow(color: VideoEditorTheme.shadow, radius: 30, y: 16)
             .padding(.top, 90)
         }
         .onAppear {
@@ -894,9 +893,9 @@ struct VideoShortcutsSheet: View {
         }
         .frame(width: 2 * columnWidth + 28)
         .padding(24)
-        .background(RoundedRectangle(cornerRadius: 16, style: .continuous).fill(Color(white: 0.11)))
-        .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous).strokeBorder(Color.white.opacity(0.12), lineWidth: 1))
-        .shadow(color: .black.opacity(0.5), radius: 30, y: 16)
+        .background(RoundedRectangle(cornerRadius: 16, style: .continuous).fill(VideoEditorTheme.popover))
+        .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous).strokeBorder(VideoEditorTheme.cardStroke, lineWidth: 1))
+        .shadow(color: VideoEditorTheme.shadow, radius: 30, y: 16)
     }
 }
 
@@ -956,9 +955,9 @@ struct VideoTranscribeSuggestion: View {
         .padding(.vertical, 7)
         .background {
             if wraps {
-                RoundedRectangle(cornerRadius: 18, style: .continuous).fill(Color.black.opacity(0.72))
+                RoundedRectangle(cornerRadius: 18, style: .continuous).fill(VideoEditorTheme.floatingPill)
             } else {
-                Capsule().fill(Color.black.opacity(0.72))
+                Capsule().fill(VideoEditorTheme.floatingPill)
             }
         }
         .overlay {
@@ -1086,10 +1085,10 @@ struct VideoToolDock: View {
         .padding(5)
         .background(
             RoundedRectangle(cornerRadius: 16, style: .continuous)
-                .fill(Color(red: 0.1, green: 0.1, blue: 0.115).opacity(0.94))
+                .fill(VideoEditorTheme.dock)
         )
-        .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous).strokeBorder(Color.white.opacity(0.1), lineWidth: 1))
-        .shadow(color: .black.opacity(0.45), radius: 14, y: 6)
+        .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous).strokeBorder(VideoEditorTheme.cardStroke, lineWidth: 1))
+        .shadow(color: VideoEditorTheme.shadow, radius: 14, y: 6)
         .accessibilityElement(children: .contain)
         .accessibilityLabel(L("Tools"))
     }
@@ -1097,7 +1096,7 @@ struct VideoToolDock: View {
     private func group<Content: View>(@ViewBuilder _ content: () -> Content) -> some View {
         HStack(spacing: 2) { content() }
             .padding(3)
-            .background(RoundedRectangle(cornerRadius: 12, style: .continuous).fill(Color.white.opacity(0.05)))
+            .background(RoundedRectangle(cornerRadius: 12, style: .continuous).fill(VideoEditorTheme.ink.opacity(0.05)))
     }
 }
 
@@ -1128,7 +1127,7 @@ struct VideoDockButton: View {
             .frame(height: 42)
             .background(
                 RoundedRectangle(cornerRadius: 9, style: .continuous)
-                    .fill(active ? tint.opacity(0.22) : (hovered ? Color.white.opacity(0.08) : Color.clear))
+                    .fill(active ? tint.opacity(0.22) : (hovered ? VideoEditorTheme.ink.opacity(0.08) : Color.clear))
             )
             .contentShape(Rectangle())
         }
@@ -1212,8 +1211,8 @@ struct VideoTipsBar: View {
         .font(.system(size: 11.5, weight: .medium))
         .padding(.horizontal, 14)
         .padding(.vertical, 8)
-        .background(Capsule().fill(Color.black.opacity(0.72)))
-        .overlay(Capsule().strokeBorder(Color.white.opacity(0.1), lineWidth: 1))
+        .background(Capsule().fill(VideoEditorTheme.floatingPill))
+        .overlay(Capsule().strokeBorder(VideoEditorTheme.cardStroke, lineWidth: 1))
         .accessibilityElement(children: .contain)
         .accessibilityLabel(L("Tips"))
     }
@@ -1226,7 +1225,7 @@ struct VideoTipsBar: View {
                 .fixedSize()
                 .padding(.horizontal, 6)
                 .padding(.vertical, 2)
-                .background(RoundedRectangle(cornerRadius: 4).fill(Color.white.opacity(0.12)))
+                .background(RoundedRectangle(cornerRadius: 4).fill(VideoEditorTheme.ink.opacity(0.1)))
             Text(action)
                 .foregroundStyle(VideoEditorTheme.textSecondary)
                 .fixedSize()

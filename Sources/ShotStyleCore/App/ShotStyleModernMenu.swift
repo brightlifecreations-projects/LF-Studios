@@ -308,7 +308,7 @@ struct ShotStyleCommandCenterView: View {
         }
         .padding(.horizontal, 14)
         .padding(.vertical, 12)
-        .background(.black.opacity(0.12))
+        .background(ShotStyleTheme.shade(0.12))
     }
 
     private var attentionRows: [ShotStyleHealthRow] {
@@ -390,8 +390,8 @@ private struct ShotStyleCommandFooter: View {
                     Image(systemName: action.symbolName)
                         .font(.system(size: 12, weight: .semibold))
                         .frame(width: 28, height: 28)
-                        .foregroundStyle(action.isEnabled ? Color.white.opacity(0.82) : Color.white.opacity(0.28))
-                        .background(Color.white.opacity(action.isEnabled ? 0.075 : 0.035), in: RoundedRectangle(cornerRadius: 8, style: .continuous))
+                        .foregroundStyle(action.isEnabled ? ShotStyleTheme.ink.opacity(0.82) : ShotStyleTheme.ink.opacity(0.28))
+                        .background(ShotStyleTheme.ink.opacity(action.isEnabled ? 0.075 : 0.035), in: RoundedRectangle(cornerRadius: 8, style: .continuous))
                 }
                 .buttonStyle(.plain)
                 .disabled(!action.isEnabled)
@@ -403,7 +403,7 @@ private struct ShotStyleCommandFooter: View {
             if let versionText {
                 Text(versionText)
                     .font(.system(size: 10, weight: .semibold))
-                    .foregroundStyle(Color.white.opacity(0.42))
+                    .foregroundStyle(ShotStyleTheme.ink.opacity(0.42))
                     .lineLimit(1)
             }
 
@@ -424,10 +424,10 @@ private struct ShotStyleCommandFooter: View {
         }
         .padding(.horizontal, 12)
         .padding(.vertical, 10)
-        .background(Color.black.opacity(0.18))
+        .background(ShotStyleTheme.shade(0.18))
         .overlay(alignment: .top) {
             Rectangle()
-                .fill(Color.white.opacity(0.08))
+                .fill(ShotStyleTheme.ink.opacity(0.08))
                 .frame(height: 1)
         }
     }
@@ -610,19 +610,19 @@ private struct ShotStyleMenuActionRow: View {
     private var iconBackground: Color {
         if action.role == .destructive { return Color(NSColor.systemRed).opacity(0.15) }
         if isPrimary { return Color.accentColor.opacity(0.18) }
-        return Color.white.opacity(0.07)
+        return ShotStyleTheme.ink.opacity(0.07)
     }
 
     private var rowBackground: Color {
         if isPrimary && active { return Color.accentColor.opacity(0.16) }
         if isPrimary { return Color.accentColor.opacity(0.09) }
-        if active { return Color.white.opacity(0.12) }
-        return Color.white.opacity(0.045)
+        if active { return ShotStyleTheme.ink.opacity(0.12) }
+        return ShotStyleTheme.ink.opacity(0.045)
     }
 
     private var rowBorder: Color {
         if isPrimary { return Color.accentColor.opacity(active ? 0.34 : 0.22) }
-        return Color.white.opacity(active ? 0.08 : 0.035)
+        return ShotStyleTheme.ink.opacity(active ? 0.08 : 0.035)
     }
 
     private var rowHeight: CGFloat {
@@ -701,7 +701,9 @@ private struct ShotStyleHealthTile: View {
     private var color: Color {
         switch row.state {
         case .ok: return Color(NSColor.systemGreen)
-        case .warning: return Color(NSColor.systemYellow)
+        // Yellow on the dark look; a deeper amber on the light one, so it
+        // reads on its pale row.
+        case .warning: return Color.adaptive(dark: .systemYellow, light: NSColor(srgbRed: 0.66, green: 0.43, blue: 0.0, alpha: 1))
         case .issue: return Color(NSColor.systemRed)
         case .info: return .accentColor
         }
@@ -750,8 +752,8 @@ struct ShotStyleHUDBackground: View {
             VisualEffectView(material: .hudWindow, blendingMode: .behindWindow)
             LinearGradient(
                 colors: [
-                    Color(NSColor(calibratedRed: 0.045, green: 0.049, blue: 0.062, alpha: 0.96)),
-                    Color(NSColor(calibratedRed: 0.105, green: 0.096, blue: 0.13, alpha: 0.96))
+                    ShotStyleTheme.backdropTop,
+                    ShotStyleTheme.backdropBottom
                 ],
                 startPoint: .top,
                 endPoint: .bottom

@@ -48,9 +48,9 @@ struct VideoExportSheet: View {
                 }
             }
             .frame(width: 480)
-            .background(RoundedRectangle(cornerRadius: 16, style: .continuous).fill(Color(white: 0.105)))
-            .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous).strokeBorder(Color.white.opacity(0.12), lineWidth: 1))
-            .shadow(color: .black.opacity(0.55), radius: 40, y: 20)
+            .background(RoundedRectangle(cornerRadius: 16, style: .continuous).fill(VideoEditorTheme.popover))
+            .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous).strokeBorder(VideoEditorTheme.cardStroke, lineWidth: 1))
+            .shadow(color: VideoEditorTheme.shadow, radius: 40, y: 20)
             .overlay(alignment: .top) { VideoOverlayNotice(model: model) }
             // Room above for the message that sits over the sheet.
             .padding(.top, 52)
@@ -401,7 +401,7 @@ struct VideoExportSheet: View {
             }
         }
         .padding(12)
-        .background(RoundedRectangle(cornerRadius: 9, style: .continuous).fill(Color.black.opacity(0.28)))
+        .background(RoundedRectangle(cornerRadius: 9, style: .continuous).fill(VideoEditorTheme.well))
     }
 
     private func contents(endCard: Bool) -> String {
@@ -428,7 +428,7 @@ struct VideoExportSheet: View {
         let memory = VideoEditorModel.formatBytes(working)
         if working > VideoExportSettings.gifMemoryLimit {
             // A GIF keeps every frame in memory until it's written.
-            warning(L("Too long for a GIF at this size — it would need about \(memory) of memory. Make it lighter, export a part, or choose MP4."), color: Color(red: 1, green: 0.55, blue: 0.5))
+            warning(L("Too long for a GIF at this size — it would need about \(memory) of memory. Make it lighter, export a part, or choose MP4."), color: VideoEditorTheme.warning)
             lighterButton
         } else if working > 1_500_000_000 || estimate > 40_000_000 {
             let size = VideoEditorModel.formatBytes(estimate)
@@ -582,7 +582,7 @@ struct VideoExportSheet: View {
         VStack(alignment: .leading, spacing: 14) {
             Label(message, systemImage: "exclamationmark.triangle.fill")
                 .font(.system(size: 12))
-                .foregroundStyle(Color(red: 1, green: 0.55, blue: 0.5))
+                .foregroundStyle(VideoEditorTheme.warning)
                 .fixedSize(horizontal: false, vertical: true)
             HStack(spacing: 8) {
                 Button { model.exportPhase = .idle } label: {

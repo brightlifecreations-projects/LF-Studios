@@ -341,7 +341,7 @@ struct VideoCaptionPresetPicker: View {
                     .foregroundStyle(selected ? VideoEditorTheme.textPrimary : VideoEditorTheme.textSecondary)
             }
             .padding(4)
-            .background(RoundedRectangle(cornerRadius: 9, style: .continuous).fill(selected ? Color.white.opacity(0.09) : Color.clear))
+            .background(RoundedRectangle(cornerRadius: 9, style: .continuous).fill(selected ? VideoEditorTheme.ink.opacity(0.08) : Color.clear))
             .overlay(RoundedRectangle(cornerRadius: 9, style: .continuous).strokeBorder(selected ? Color.accentColor : VideoEditorTheme.cardStroke, lineWidth: selected ? 1.5 : 1))
             .contentShape(Rectangle())
         }
@@ -358,9 +358,9 @@ struct VideoCaptionPresetPicker: View {
             Circle()
                 .fill(Color(nsColor: color.nsColor))
                 .frame(width: 16, height: 16)
-                .overlay(Circle().strokeBorder(Color.white.opacity(0.25), lineWidth: 1))
+                .overlay(Circle().strokeBorder(VideoEditorTheme.ink.opacity(0.25), lineWidth: 1))
                 .padding(2)
-                .overlay(Circle().strokeBorder(selected ? Color.white : Color.clear, lineWidth: 1.5))
+                .overlay(Circle().strokeBorder(selected ? VideoEditorTheme.ink : Color.clear, lineWidth: 1.5))
         }
         .buttonStyle(.plain)
         .accessibilityLabel(L("Highlight color"))
@@ -409,7 +409,7 @@ struct VideoSubtitlesButton: View {
         .menuStyle(.borderlessButton)
         .padding(.horizontal, 12)
         .frame(minHeight: 28)
-        .background(RoundedRectangle(cornerRadius: 7, style: .continuous).fill(Color.white.opacity(0.06)))
+        .background(RoundedRectangle(cornerRadius: 7, style: .continuous).fill(VideoEditorTheme.ink.opacity(0.06)))
         .overlay(RoundedRectangle(cornerRadius: 7, style: .continuous).strokeBorder(VideoEditorTheme.cardStroke, lineWidth: 1))
         .help(L("A subtitles file for YouTube and web players (.srt), or for the web (.vtt) — follows your cuts"))
     }

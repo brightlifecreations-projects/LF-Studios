@@ -465,7 +465,7 @@ struct VideoTimelineSurface: View {
     private var zoomTrack: some View {
         ZStack(alignment: .topLeading) {
             RoundedRectangle(cornerRadius: 8, style: .continuous)
-                .fill(Color.white.opacity(0.035))
+                .fill(VideoEditorTheme.ink.opacity(0.035))
                 .frame(width: contentWidth, height: M.zoomTrackHeight)
                 .offset(x: M.inset)
                 .onTapGesture { location in
@@ -801,12 +801,12 @@ struct VideoTimelineSurface: View {
         // The pill wears the annotation's own color, so the two match up.
         let custom = effect.color.flatMap { $0.a > 0.1 && effect.kind.hasColor ? $0 : nil }
         let tint = custom.map { Color(nsColor: $0.withAlpha(1).nsColor) } ?? VideoEditorTheme.overlayTint(effect.kind)
-        let ink: Color = (custom?.luminance ?? 0) > 0.62 ? Color.black.opacity(0.8) : .white
+        let ink: Color = (custom?.luminance ?? 0) > 0.62 ? Color.black.opacity(0.8) : VideoEditorTheme.laneText(1)
         return ZStack {
             RoundedRectangle(cornerRadius: 7, style: .continuous)
                 .fill(tint.opacity(selected ? 0.9 : 0.62))
             RoundedRectangle(cornerRadius: 7, style: .continuous)
-                .strokeBorder(Color.white.opacity(selected ? 0.95 : 0.14), lineWidth: selected ? 1.5 : 1)
+                .strokeBorder(VideoEditorTheme.laneStroke(selected: selected), lineWidth: selected ? 1.5 : 1)
             HStack(spacing: 4) {
                 Image(systemName: effect.kind.icon)
                     .font(.system(size: 9.5, weight: .bold))
@@ -1223,11 +1223,11 @@ struct VideoTimelineRuler: View {
                 let x = inset + CGFloat(t) * pointsPerSecond
                 let isMajor = abs((t / major).rounded() * major - t) < 0.0001
                 let height: CGFloat = isMajor ? 8 : 4
-                context.fill(Path(CGRect(x: x, y: size.height - height, width: 1, height: height)), with: .color(Color.white.opacity(isMajor ? 0.35 : 0.14)))
+                context.fill(Path(CGRect(x: x, y: size.height - height, width: 1, height: height)), with: .color(VideoEditorTheme.ink.opacity(isMajor ? 0.35 : 0.16)))
                 if isMajor {
                     let label = context.resolve(Text(Self.label(t, step: major))
                         .font(.system(size: 9.5, weight: .semibold, design: .monospaced))
-                        .foregroundColor(Color.white.opacity(0.45)))
+                        .foregroundColor(VideoEditorTheme.textTertiary))
                     // The first label clears the playhead's knob; the last
                     // one is skipped rather than cut off.
                     let labelX = t == 0 ? x + 9 : x + 3

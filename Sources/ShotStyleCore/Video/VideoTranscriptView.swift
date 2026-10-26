@@ -122,8 +122,8 @@ struct VideoTranscriptEditor: NSViewRepresentable {
                         slot += 1
                         text.append(NSAttributedString(string: " ⏸ \(VideoEditorModel.format(gap)) ", attributes: [
                             .font: Self.pauseFont,
-                            .foregroundColor: NSColor.white.withAlphaComponent(pauseIncluded ? 0.55 : 0.25),
-                            .backgroundColor: NSColor.white.withAlphaComponent(pauseIncluded ? 0.1 : 0.04),
+                            .foregroundColor: VideoEditorTheme.inkNS(pauseIncluded ? 0.55 : 0.25),
+                            .backgroundColor: VideoEditorTheme.inkNS(pauseIncluded ? 0.1 : 0.04),
                             .shotstylePause: index,
                             .strikethroughStyle: pauseIncluded ? 0 : NSUnderlineStyle.single.rawValue,
                         ]))
@@ -138,12 +138,12 @@ struct VideoTranscriptEditor: NSViewRepresentable {
                 slot += 1
                 var attributes: [NSAttributedString.Key: Any] = [
                     .font: Self.font,
-                    .foregroundColor: NSColor.white.withAlphaComponent(isIncluded ? 0.9 : 0.3),
+                    .foregroundColor: VideoEditorTheme.inkNS(isIncluded ? 0.9 : 0.3),
                     .shotstyleWord: index,
                 ]
                 if !isIncluded {
                     attributes[.strikethroughStyle] = NSUnderlineStyle.single.rawValue
-                    attributes[.strikethroughColor] = NSColor.white.withAlphaComponent(0.45)
+                    attributes[.strikethroughColor] = VideoEditorTheme.inkNS(0.45)
                 } else if word.isFiller {
                     attributes[.underlineStyle] = NSUnderlineStyle.single.rawValue | NSUnderlineStyle.patternDot.rawValue
                     attributes[.underlineColor] = NSColor.systemOrange
