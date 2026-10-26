@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.0.0] - Unreleased
+## [1.0.0] - 2026-10-26
 
 The first release of ShotStyle, based on Shotnix 0.27.2 (MIT License). Shotnix's
 own history is in [docs/SHOTNIX_CHANGELOG.md](docs/SHOTNIX_CHANGELOG.md).
