@@ -4,38 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
-	<key>CFBundleLocalizations</key>
-	<array>
-		<string>en</string>
-		<string>de</string>
-		<string>fr</string>
-		<string>zh-Hans</string>
-		<string>ru</string>
-		<string>uk</string>
-		<string>ja</string>
-	</array>
 	<key>CFBundleDisplayName</key>
 	<string>LF Studios</string>
-	<key>CFBundleExecutable</key>
-	<string>LFStudios</string>
-	<key>CFBundleIconFile</key>
-	<string>LFStudios</string>
-	<key>CFBundleIdentifier</key>
-	<string>com.lfstudios.app</string>
-	<key>CFBundleInfoDictionaryVersion</key>
-	<string>6.0</string>
-	<key>CFBundleName</key>
-	<string>LF Studios</string>
-	<key>CFBundlePackageType</key>
-	<string>APPL</string>
-	<key>CFBundleShortVersionString</key>
-	<string>1.0.0</string>
-	<key>CFBundleSupportedPlatforms</key>
-	<array>
-		<string>MacOSX</string>
-	</array>
-	<key>CFBundleVersion</key>
-	<string>1</string>
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
@@ -59,12 +29,12 @@
 			<string>Editor</string>
 			<key>LSHandlerRank</key>
 			<string>Owner</string>
-			<key>LSTypeIsPackage</key>
-			<true/>
 			<key>LSItemContentTypes</key>
 			<array>
 				<string>com.lfstudios.project</string>
 			</array>
+			<key>LSTypeIsPackage</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>CFBundleTypeName</key>
@@ -73,12 +43,12 @@
 			<string>Editor</string>
 			<key>LSHandlerRank</key>
 			<string>Owner</string>
-			<key>LSTypeIsPackage</key>
-			<true/>
 			<key>LSItemContentTypes</key>
 			<array>
 				<string>com.shotstyle.project</string>
 			</array>
+			<key>LSTypeIsPackage</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>CFBundleTypeName</key>
@@ -94,22 +64,70 @@
 			</array>
 		</dict>
 	</array>
+	<key>CFBundleExecutable</key>
+	<string>LFStudios</string>
+	<key>CFBundleIconFile</key>
+	<string>LFStudios</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.lfstudios.app</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>en</string>
+		<string>de</string>
+		<string>fr</string>
+		<string>zh-Hans</string>
+		<string>ru</string>
+		<string>uk</string>
+		<string>ja</string>
+	</array>
+	<key>CFBundleName</key>
+	<string>LF Studios</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.1.0</string>
+	<key>CFBundleSupportedPlatforms</key>
+	<array>
+		<string>MacOSX</string>
+	</array>
+	<key>CFBundleVersion</key>
+	<string>2</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>13.0</string>
+	<key>NSCameraUsageDescription</key>
+	<string>LF Studios records your camera alongside the screen when you turn the camera on for a recording.</string>
 	<key>NSHighResolutionCapable</key>
 	<true/>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright © 2026 Shotnix Contributors. © 2026 Bright Life Creations. MIT License.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>LF Studios needs microphone access when you enable microphone audio for screen recordings.</string>
+	<key>NSPrincipalClass</key>
+	<string>NSApplication</string>
+	<key>NSScreenCaptureUsageDescription</key>
+	<string>LF Studios needs screen recording permission to capture screenshots and screen recordings.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>LF Studios transcribes your recordings on this Mac to create captions.</string>
+	<key>NSSupportsAutomaticGraphicsSwitching</key>
+	<true/>
+	<key>SUFeedURL</key>
+	<string>https://github.com/brightlifecreations-projects/ShotStyle/releases/latest/download/appcast.xml</string>
+	<key>SUPublicEDKey</key>
+	<string>SET_SPARKLE_PUBLIC_ED_KEY_IN_RELEASE_BUILD</string>
 	<key>UTExportedTypeDeclarations</key>
 	<array>
 		<dict>
-			<key>UTTypeIdentifier</key>
-			<string>com.lfstudios.project</string>
-			<key>UTTypeDescription</key>
-			<string>LF Studios Project</string>
 			<key>UTTypeConformsTo</key>
 			<array>
 				<string>com.apple.package</string>
 				<string>public.composite-content</string>
 			</array>
+			<key>UTTypeDescription</key>
+			<string>LF Studios Project</string>
+			<key>UTTypeIdentifier</key>
+			<string>com.lfstudios.project</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
@@ -119,14 +137,14 @@
 			</dict>
 		</dict>
 		<dict>
-			<key>UTTypeIdentifier</key>
-			<string>com.lfstudios.presets</string>
-			<key>UTTypeDescription</key>
-			<string>LF Studios Style Presets</string>
 			<key>UTTypeConformsTo</key>
 			<array>
 				<string>public.json</string>
 			</array>
+			<key>UTTypeDescription</key>
+			<string>LF Studios Style Presets</string>
+			<key>UTTypeIdentifier</key>
+			<string>com.lfstudios.presets</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
@@ -136,19 +154,18 @@
 			</dict>
 		</dict>
 	</array>
-	<!-- Files saved by ShotStyle, the app's earlier name: they still open. -->
 	<key>UTImportedTypeDeclarations</key>
 	<array>
 		<dict>
-			<key>UTTypeIdentifier</key>
-			<string>com.shotstyle.project</string>
-			<key>UTTypeDescription</key>
-			<string>ShotStyle Project</string>
 			<key>UTTypeConformsTo</key>
 			<array>
 				<string>com.apple.package</string>
 				<string>public.composite-content</string>
 			</array>
+			<key>UTTypeDescription</key>
+			<string>ShotStyle Project</string>
+			<key>UTTypeIdentifier</key>
+			<string>com.shotstyle.project</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
@@ -158,14 +175,14 @@
 			</dict>
 		</dict>
 		<dict>
-			<key>UTTypeIdentifier</key>
-			<string>com.shotstyle.presets</string>
-			<key>UTTypeDescription</key>
-			<string>ShotStyle Style Presets</string>
 			<key>UTTypeConformsTo</key>
 			<array>
 				<string>public.json</string>
 			</array>
+			<key>UTTypeDescription</key>
+			<string>ShotStyle Style Presets</string>
+			<key>UTTypeIdentifier</key>
+			<string>com.shotstyle.presets</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
@@ -175,23 +192,5 @@
 			</dict>
 		</dict>
 	</array>
-	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2026 Shotnix Contributors. © 2026 Bright Life Creations. MIT License.</string>
-	<key>NSCameraUsageDescription</key>
-	<string>LF Studios records your camera alongside the screen when you turn the camera on for a recording.</string>
-	<key>NSSpeechRecognitionUsageDescription</key>
-	<string>LF Studios transcribes your recordings on this Mac to create captions.</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>LF Studios needs microphone access when you enable microphone audio for screen recordings.</string>
-	<key>NSPrincipalClass</key>
-	<string>NSApplication</string>
-	<key>NSScreenCaptureUsageDescription</key>
-	<string>LF Studios needs screen recording permission to capture screenshots and screen recordings.</string>
-	<key>NSSupportsAutomaticGraphicsSwitching</key>
-	<true/>
-	<key>SUFeedURL</key>
-	<string>https://github.com/brightlifecreations-projects/ShotStyle/releases/latest/download/appcast.xml</string>
-	<key>SUPublicEDKey</key>
-	<string>SET_SPARKLE_PUBLIC_ED_KEY_IN_RELEASE_BUILD</string>
 </dict>
 </plist>

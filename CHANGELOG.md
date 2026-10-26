@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.1.0] - Unreleased
+## [1.1.0] - 2026-10-26
 
 ### Added
 - **Creative Handoff.** File ▸ Creative Handoff… (⇧⌘E), the export dialog, or a recording's right-click menu in Home saves every part of a video as its own file, in a new folder wherever you choose (named "<Project> – Handoff <date>"):
