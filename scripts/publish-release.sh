@@ -97,7 +97,7 @@ codesign --verify --deep --strict "$APP" || fail "The app's signature doesn't ve
 rm -rf "$DIST"
 mkdir -p "$DIST"
 ditto -c -k --keepParent "$APP" "$DIST/LF-Studios.zip"
-echo "▶ Zipped: $DIST/LF Studios.zip ($(du -h "$DIST/LF-Studios.zip" | cut -f1))"
+echo "▶ Zipped: $DIST/LF-Studios.zip ($(du -h "$DIST/LF-Studios.zip" | cut -f1))"
 
 # MARK: Release notes
 
