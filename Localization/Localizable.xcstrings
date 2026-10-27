@@ -1186,6 +1186,46 @@
         }
       }
     },
+    "%@ × %@ doesn't fit on this display" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ × %@ passt nicht auf diesen Bildschirm"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ × %@ ne tient pas sur cet écran"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ × %@はこのディスプレイに収まりません"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ × %@ не помещается на этом экране"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ × %@ не вміщається на цьому екрані"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ × %@ 在这台显示器上放不下"
+          }
+        }
+      }
+    },
     "%@ × %@ px" : {
       "comment" : "A display's size in pixels",
       "localizations" : {
@@ -1223,6 +1263,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ × %@ 像素"
+          }
+        }
+      }
+    },
+    "%@ × %@ — window %@ × %@ on this display" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ × %@ – Fenster %@ × %@ auf diesem Bildschirm"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ × %@ — fenêtre de %@ × %@ sur cet écran"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ × %@ — このディスプレイではウインドウ%@ × %@"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ × %@ — окно %@ × %@ на этом экране"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ × %@ — вікно %@ × %@ на цьому екрані"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ × %@ — 在这台显示器上窗口为 %@ × %@"
           }
         }
       }
@@ -1427,6 +1507,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ — 点按以更改"
+          }
+        }
+      }
+    },
+    "%@ — click to jump here, double-click to rename" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ – klicken, um hierhin zu springen, doppelklicken zum Umbenennen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ — cliquez pour y aller, double-cliquez pour renommer"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ — クリックでここへ移動、ダブルクリックで名前を変更"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ — нажмите, чтобы перейти сюда, дважды нажмите, чтобы переименовать"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ — клацніть, щоб перейти сюди, двічі клацніть, щоб перейменувати"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ — 点按跳到这里，连按两次重新命名"
           }
         }
       }
@@ -2736,6 +2856,136 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%lld 条字幕"
+          }
+        }
+      }
+    },
+    "%lld chapters — players like QuickTime Player list them, and so do editing apps" : {
+      "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Kapitel – Player wie QuickTime Player zeigen es an, Schnittprogramme auch"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Kapitel – Player wie QuickTime Player zeigen sie an, Schnittprogramme auch"
+                }
+              }
+            }
+          }
+        },
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld chapter — players like QuickTime Player list it, and so do editing apps"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld chapters — players like QuickTime Player list them, and so do editing apps"
+                }
+              }
+            }
+          }
+        },
+        "fr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld chapitre — les lecteurs comme QuickTime Player l’affichent, et les logiciels de montage aussi"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld chapitres — les lecteurs comme QuickTime Player les affichent, et les logiciels de montage aussi"
+                }
+              }
+            }
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld個のチャプター — QuickTime Playerなどのプレーヤーや編集アプリで一覧表示されます"
+          }
+        },
+        "ru" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld главы — их показывают плееры вроде QuickTime Player и программы для монтажа"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld глав — их показывают плееры вроде QuickTime Player и программы для монтажа"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld глава — её показывают плееры вроде QuickTime Player и программы для монтажа"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld главы — их показывают плееры вроде QuickTime Player и программы для монтажа"
+                }
+              }
+            }
+          }
+        },
+        "uk" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld розділи — їх показують програвачі на кшталт QuickTime Player і програми для монтажу"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld розділів — їх показують програвачі на кшталт QuickTime Player і програми для монтажу"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld розділ — його показують програвачі на кшталт QuickTime Player і програми для монтажу"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld розділу — їх показують програвачі на кшталт QuickTime Player і програми для монтажу"
+                }
+              }
+            }
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld 个章节 — QuickTime Player 等播放器和剪辑软件都会列出"
           }
         }
       }
@@ -6120,6 +6370,86 @@
         }
       }
     },
+    "A short button column, a pill button by the caption, a search bar at the top" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eine kurze Knopfspalte, ein runder Knopf beim Bildtext, oben ein Suchfeld"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Une courte colonne de boutons, un bouton arrondi près de la légende, une barre de recherche en haut"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "短いボタン列、キャプション横のピル型ボタン、上部の検索バー"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Короткий столбец кнопок, кнопка-капсула у подписи, строка поиска вверху"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Короткий стовпчик кнопок, кнопка-капсула біля підпису, рядок пошуку вгорі"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一列较短的按钮、说明文字旁的胶囊按钮、顶部的搜索栏"
+          }
+        }
+      }
+    },
+    "A soft inner edge instead of a shadow below" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ein weicher innerer Rand statt eines Schattens darunter"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un bord intérieur doux au lieu d’une ombre en dessous"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下に落ちる影の代わりに、内側のやわらかな縁"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Мягкий внутренний край вместо тени снизу"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "М’який внутрішній край замість тіні знизу"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "柔和的内边缘，而不是下方的阴影"
+          }
+        }
+      }
+    },
     "A soft shadow under the letters" : {
       "localizations" : {
         "de" : {
@@ -6240,6 +6570,46 @@
         }
       }
     },
+    "A taller button column, a spinning-disc spot, a bottom navigation bar" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eine höhere Knopfspalte, ein Platz für eine drehende Scheibe, unten eine Navigationsleiste"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Une colonne de boutons plus haute, l’emplacement d’un disque qui tourne, une barre de navigation en bas"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "背の高いボタン列、回転するディスクの位置、下部のナビゲーションバー"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Более высокий столбец кнопок, место для вращающегося диска, панель навигации внизу"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вищий стовпчик кнопок, місце для диска, що обертається, панель навігації внизу"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一列更高的按钮、旋转唱片的位置、底部导航栏"
+          }
+        }
+      }
+    },
     "A video needs at least one clip" : {
       "localizations" : {
         "de" : {
@@ -6276,6 +6646,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "视频至少需要一个片段"
+          }
+        }
+      }
+    },
+    "A window that size would be bigger than the screen. The largest of the same shape that fits is %@ × %@." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ein so großes Fenster wäre größer als der Bildschirm. Die größte passende Größe mit derselben Form ist %@ × %@."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Une fenêtre de cette taille serait plus grande que l’écran. La plus grande taille de même forme qui tient est %@ × %@."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このサイズのウインドウは画面より大きくなります。同じ形で収まる最大のサイズは%@ × %@です。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Окно такого размера больше экрана. Самый большой размер той же формы, который помещается, — %@ × %@."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вікно такого розміру більше за екран. Найбільший розмір тієї ж форми, що вміщається, — %@ × %@."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "这么大的窗口会超出屏幕。能放下的同比例最大尺寸是 %@ × %@。"
           }
         }
       }
@@ -6842,6 +7252,86 @@
         }
       }
     },
+    "Add Marker" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marker setzen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouter un marqueur"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マーカーを追加"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавить маркер"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Додати маркер"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "添加标记"
+          }
+        }
+      }
+    },
+    "Add Marker While Recording" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marker beim Aufzeichnen setzen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouter un marqueur pendant l’enregistrement"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "収録中にマーカーを追加"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавить маркер во время записи"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Додати маркер під час запису"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "录制时添加标记"
+          }
+        }
+      }
+    },
     "Add Music…" : {
       "localizations" : {
         "de" : {
@@ -7082,6 +7572,166 @@
         }
       }
     },
+    "Add a marker" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marker setzen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouter un marqueur"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マーカーを追加"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавить маркер"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Додати маркер"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "添加标记"
+          }
+        }
+      }
+    },
+    "Add a marker (%@)" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marker setzen (%@)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouter un marqueur (%@)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マーカーを追加（%@）"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавить маркер (%@)"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Додати маркер (%@)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "添加标记（%@）"
+          }
+        }
+      }
+    },
+    "Add a marker at the playhead — markers become chapters" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marker an der Abspielposition setzen – Marker werden zu Kapiteln"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouter un marqueur à la tête de lecture — les marqueurs deviennent des chapitres"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "再生ヘッドの位置にマーカーを追加 — マーカーはチャプターになります"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавить маркер у указателя воспроизведения — маркеры становятся главами"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Додати маркер на покажчику відтворення — маркери стають розділами"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在播放头处添加标记 — 标记会成为章节"
+          }
+        }
+      }
+    },
+    "Add a marker — set a shortcut in Settings → Shortcuts" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marker setzen – einen Kurzbefehl legst du unter „Einstellungen“ → „Kurzbefehle“ fest"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouter un marqueur — définissez un raccourci dans Réglages → Raccourcis"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マーカーを追加 — ショートカットは“設定”＞“ショートカット”で設定できます"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавить маркер — сочетание клавиш задаётся в разделе Настройки → Сочетания"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Додати маркер — скорочення можна задати в Параметри → Скорочення"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "添加标记 — 可在“设置”→“快捷键”中设定快捷键"
+          }
+        }
+      }
+    },
     "Add a zoom at the playhead (Z)" : {
       "localizations" : {
         "de" : {
@@ -7282,6 +7932,46 @@
         }
       }
     },
+    "Add chapters from markers" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kapitel aus Markern hinzufügen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouter des chapitres à partir des marqueurs"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マーカーからチャプターを追加"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавить главы по маркерам"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Додати розділи з маркерів"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "根据标记添加章节"
+          }
+        }
+      }
+    },
     "Add highlight at the playhead (H)" : {
       "localizations" : {
         "de" : {
@@ -7358,6 +8048,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "在播放头处添加图像"
+          }
+        }
+      }
+    },
+    "Add markers first — each one starts a chapter" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Setze zuerst Marker – jeder beginnt ein Kapitel"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajoutez d’abord des marqueurs — chacun commence un chapitre"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "まずマーカーを追加してください — マーカーごとにチャプターが始まります"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сначала добавьте маркеры — с каждого начинается глава"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Спершу додайте маркери — з кожного починається розділ"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请先添加标记 — 每个标记开始一个章节"
           }
         }
       }
@@ -8470,6 +9200,86 @@
         }
       }
     },
+    "Angle" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Winkel"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Angle"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "角度"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Угол"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кут"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "角度"
+          }
+        }
+      }
+    },
+    "Angle, distance, softness, opacity, color, and an inner edge" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Winkel, Abstand, Weichheit, Deckkraft, Farbe und ein innerer Rand"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Angle, distance, douceur, opacité, couleur et bord intérieur"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "角度、距離、ぼかし、不透明度、色、内側の縁"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Угол, расстояние, мягкость, непрозрачность, цвет и внутренний край"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кут, відстань, м’якість, непрозорість, колір і внутрішній край"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "角度、距离、柔和度、不透明度、颜色和内边缘"
+          }
+        }
+      }
+    },
     "Annotate Last Screenshot" : {
       "localizations" : {
         "de" : {
@@ -8948,6 +9758,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "已恢复 Apple 截屏快捷键。"
+          }
+        }
+      }
+    },
+    "Apple's editing format: big files that keep every detail, for Final Cut Pro, Premiere Pro, and DaVinci Resolve" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apples Format für den Schnitt: große Dateien, die jedes Detail behalten – für Final Cut Pro, Premiere Pro und DaVinci Resolve"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le format de montage d’Apple : de gros fichiers qui gardent tous les détails, pour Final Cut Pro, Premiere Pro et DaVinci Resolve"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appleの編集用フォーマット：細部まで残る大きなファイルで、Final Cut Pro、Premiere Pro、DaVinci Resolveに向いています"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Формат Apple для монтажа: большие файлы, в которых сохраняется каждая деталь, — для Final Cut Pro, Premiere Pro и DaVinci Resolve"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Формат Apple для монтажу: великі файли, що зберігають кожну деталь, — для Final Cut Pro, Premiere Pro і DaVinci Resolve"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple 的剪辑格式：文件较大，保留所有细节，适用于 Final Cut Pro、Premiere Pro 和 DaVinci Resolve"
           }
         }
       }
@@ -11854,6 +12704,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "将字幕嵌入视频"
+          }
+        }
+      }
+    },
+    "Buttons on the right, caption bottom-left, tabs at the top" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Knöpfe rechts, Bildtext unten links, Tabs oben"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Boutons à droite, légende en bas à gauche, onglets en haut"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ボタンは右、キャプションは左下、タブは上"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кнопки справа, подпись слева внизу, вкладки вверху"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кнопки праворуч, підпис ліворуч унизу, вкладки вгорі"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "按钮在右侧，说明文字在左下，标签页在顶部"
           }
         }
       }
@@ -15076,6 +15966,126 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "居中"
+          }
+        }
+      }
+    },
+    "Chapters" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kapitel"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chapitres"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "チャプター"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Главы"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Розділи"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "章节"
+          }
+        }
+      }
+    },
+    "Chapters as text (“0:00 Start”) for a YouTube description" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kapitel als Text („0:00 Start“) für eine YouTube-Beschreibung"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les chapitres en texte (« 0:00 Début ») pour une description YouTube"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "YouTubeの説明欄用のチャプターテキスト（“0:00 スタート”）"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Главы текстом («0:00 Начало») для описания на YouTube"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Розділи текстом («0:00 Початок») для опису на YouTube"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "章节文本（“0:00 开始”），用于 YouTube 视频说明"
+          }
+        }
+      }
+    },
+    "Chapters copied — paste them into the video's description" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kapitel kopiert – füge sie in die Beschreibung des Videos ein"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chapitres copiés — collez-les dans la description de la vidéo"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "チャプターをコピーしました — ビデオの説明欄にペーストしてください"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Главы скопированы — вставьте их в описание видео"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Розділи скопійовано — вставте їх в опис відео"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已拷贝章节 — 请粘贴到视频说明中"
           }
         }
       }
@@ -18329,6 +19339,46 @@
         }
       }
     },
+    "Copy Chapters" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kapitel kopieren"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copier les chapitres"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "チャプターをコピー"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скопировать главы"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скопіювати розділи"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "拷贝章节"
+          }
+        }
+      }
+    },
     "Copy Current Frame" : {
       "localizations" : {
         "de" : {
@@ -19487,6 +20537,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "无法创建视频文件。"
+          }
+        }
+      }
+    },
+    "Couldn't find that window to resize it. Choose it again and try once more." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das Fenster wurde nicht gefunden. Wähle es noch einmal aus und versuche es erneut."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossible de trouver cette fenêtre pour la redimensionner. Choisissez-la à nouveau et réessayez."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サイズを変更するウインドウが見つかりませんでした。もう一度選んでからやり直してください。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удалось найти окно, чтобы изменить его размер. Выберите его снова и попробуйте ещё раз."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не вдалося знайти вікно, щоб змінити його розмір. Виберіть його знову й спробуйте ще раз."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "找不到要调整大小的窗口。请重新选择后再试一次。"
           }
         }
       }
@@ -21299,6 +22389,46 @@
         }
       }
     },
+    "Custom Size…" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eigene Größe …"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taille personnalisée…"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カスタムサイズ…"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Другой размер…"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Власний розмір…"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自定大小…"
+          }
+        }
+      }
+    },
     "Custom color" : {
       "localizations" : {
         "de" : {
@@ -22321,6 +23451,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "删除片段"
+          }
+        }
+      }
+    },
+    "Delete Marker" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marker löschen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supprimer le marqueur"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マーカーを削除"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалить маркер"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Видалити маркер"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "删除标记"
           }
         }
       }
@@ -23617,6 +24787,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "片段之间叠化"
+          }
+        }
+      }
+    },
+    "Distance" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abstand"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Distance"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "距離"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Расстояние"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Відстань"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "距离"
           }
         }
       }
@@ -26471,6 +27681,46 @@
         }
       }
     },
+    "Enter a width and a height from %@ to %@ pixels." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gib eine Breite und eine Höhe von %@ bis %@ Pixeln ein."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saisissez une largeur et une hauteur de %@ à %@ pixels."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "幅と高さを%@〜%@ピクセルで入力してください。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Введите ширину и высоту от %@ до %@ пикселей."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Введіть ширину й висоту від %@ до %@ пікселів."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请输入 %@ 到 %@ 像素之间的宽度和高度。"
+          }
+        }
+      }
+    },
     "Esc" : {
       "comment" : "The Escape key",
       "localizations" : {
@@ -29005,6 +30255,46 @@
         }
       }
     },
+    "Fine-tune shadow" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schatten feinjustieren"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Régler l’ombre en détail"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "シャドウを細かく調整"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Точная настройка тени"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Точне налаштування тіні"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "微调阴影"
+          }
+        }
+      }
+    },
     "Finish and Quit" : {
       "localizations" : {
         "de" : {
@@ -30340,6 +31630,46 @@
         }
       }
     },
+    "Full rail" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Volle Leiste"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Colonne complète"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "フルレール"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Полная панель"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повна панель"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "完整按钮栏"
+          }
+        }
+      }
+    },
     "Full screen: %@" : {
       "comment" : "Settings: estimated size of a full-screen recording",
       "localizations" : {
@@ -30697,6 +32027,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "冰川"
+          }
+        }
+      }
+    },
+    "Glide time" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gleitdauer"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Durée du retour"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "戻る時間"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Время возврата"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Час повернення"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "滑回时长"
           }
         }
       }
@@ -31304,6 +32674,46 @@
         }
       }
     },
+    "Height" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Höhe"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hauteur"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "高さ"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Высота"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Висота"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "高度"
+          }
+        }
+      }
+    },
     "Hidden" : {
       "comment" : "Camera layout, short form of “Camera hidden”",
       "localizations" : {
@@ -31502,6 +32912,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "隐藏图标"
+          }
+        }
+      }
+    },
+    "Hide Phone Overlay" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Handy-Overlay ausblenden"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Masquer la surimpression du téléphone"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スマートフォンのオーバーレイを隠す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скрыть наложение телефона"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сховати накладення телефона"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "隐藏手机界面叠层"
           }
         }
       }
@@ -33183,6 +34633,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "包含：%@"
+          }
+        }
+      }
+    },
+    "Inset" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Innen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Intérieure"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "内側"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Внутренняя"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Внутрішня"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "内阴影"
           }
         }
       }
@@ -36669,6 +38159,46 @@
         }
       }
     },
+    "Leaves out the background: the video, its rounded corners and shadow, and a cut-out camera sit on transparency, ready to place over anything" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lässt den Hintergrund weg: Das Video mit seinen abgerundeten Ecken und dem Schatten und eine freigestellte Kamera liegen auf Transparenz – bereit, über alles gelegt zu werden"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Retire l’arrière-plan : la vidéo, ses coins arrondis et son ombre, et une caméra détourée reposent sur de la transparence, prêtes à être posées sur n’importe quoi"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "背景を省きます：ビデオとその角丸・シャドウ、切り抜いたカメラが透明の上に置かれ、何の上にも重ねられます"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Без фона: видео с его скруглёнными углами и тенью и вырезанная камера лежат на прозрачности — их можно наложить на что угодно"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Без тла: відео з його заокругленими кутами й тінню та вирізана камера лежать на прозорості — їх можна накласти на будь-що"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "去掉背景：视频及其圆角和阴影，以及抠出的摄像头画面都位于透明层上，可叠放在任何内容之上"
+          }
+        }
+      }
+    },
     "Left" : {
       "localizations" : {
         "de" : {
@@ -36947,6 +38477,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "浅色"
+          }
+        }
+      }
+    },
+    "Like ProRes 422 with even more detail, for color grading and effects — about half again as big" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wie ProRes 422 mit noch mehr Detail, für Farbkorrektur und Effekte – etwa anderthalbmal so groß"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comme ProRes 422 avec encore plus de détails, pour l’étalonnage et les effets — environ une fois et demie plus gros"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ProRes 422よりさらに細部が残り、カラーグレーディングやエフェクトに向いています — サイズは約1.5倍"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Как ProRes 422, но ещё детальнее — для цветокоррекции и эффектов; файлы примерно в полтора раза больше"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Як ProRes 422, але ще детальніше — для кольорокорекції та ефектів; файли приблизно в півтора раза більші"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "与 ProRes 422 相似但细节更丰富，适合调色和特效 — 文件约大一半"
           }
         }
       }
@@ -37636,6 +39206,46 @@
         }
       }
     },
+    "Loop" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schleife"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Boucle"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ループ"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зацикливание"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зациклення"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "循环"
+          }
+        }
+      }
+    },
     "Loop to fill" : {
       "localizations" : {
         "de" : {
@@ -37873,6 +39483,166 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "管理"
+          }
+        }
+      }
+    },
+    "Marker" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marker"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marqueur"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マーカー"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Маркер"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Маркер"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "标记"
+          }
+        }
+      }
+    },
+    "Marker %lld" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marker %lld"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marqueur %lld"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マーカー%lld"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Маркер %lld"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Маркер %lld"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "标记 %lld"
+          }
+        }
+      }
+    },
+    "Marker name" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name des Markers"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nom du marqueur"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マーカー名"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Название маркера"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Назва маркера"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "标记名称"
+          }
+        }
+      }
+    },
+    "Marker: %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marker: %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marqueur : %@"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マーカー：%@"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Маркер: %@"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Маркер: %@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "标记：%@"
           }
         }
       }
@@ -40604,6 +42374,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "截取屏幕需要此权限。macOS 只会询问一次。"
+          }
+        }
+      }
+    },
+    "Needs a cursor LF Studios draws — this one is part of the video" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Braucht einen Zeiger, den LF Studios zeichnet – dieser ist Teil des Videos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nécessite un pointeur dessiné par LF Studios — celui-ci fait partie de la vidéo"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LF Studiosが描くポインタが必要です — このポインタはビデオの一部です"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нужен указатель, который рисует LF Studios, — этот является частью видео"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Потрібен курсор, який малює LF Studios, — цей є частиною відео"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "需要由 LF Studios 绘制的指针 — 这个指针是视频画面的一部分"
           }
         }
       }
@@ -45792,6 +47602,46 @@
         }
       }
     },
+    "Phone overlay" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Handy-Overlay"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Surimpression du téléphone"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スマートフォンのオーバーレイ"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Наложение телефона"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Накладення телефона"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "手机界面叠层"
+          }
+        }
+      }
+    },
     "Pick a preset as My Style (Presets ▸ Edit Presets ▸ Use as My Style), then one click puts it on any video." : {
       "localizations" : {
         "de" : {
@@ -47483,6 +49333,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "预览"
+          }
+        }
+      }
+    },
+    "Preview how a phone app's buttons and captions sit over this video, with the covered parts shaded — never in the export" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeigt in der Vorschau, wie die Knöpfe und Texte einer Handy-App über diesem Video liegen, die verdeckten Teile abgedunkelt – nie im Export"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prévisualisez comment les boutons et les textes d’une app de téléphone se placent sur cette vidéo, avec les parties couvertes ombrées — jamais dans l’export"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スマートフォンのアプリのボタンや文字がこのビデオにどう重なるかをプレビューし、隠れる部分を暗く表示します — 書き出しには入りません"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Показывает, как кнопки и подписи приложения на телефоне лягут поверх этого видео, а закрытые места затемняет — в экспорт не попадает"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Показує, як кнопки й підписи застосунку на телефоні ляжуть поверх цього відео, а закриті місця затемнює — в експорт не потрапляє"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "预览手机应用的按钮和文字如何叠在视频上，并将被遮挡的部分加暗 — 不会出现在导出内容中"
           }
         }
       }
@@ -50490,6 +52380,46 @@
         }
       }
     },
+    "Redo Add Marker" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Setzen des Markers wiederholen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rétablir l’ajout du marqueur"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マーカーの追加をやり直す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторить добавление маркера"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторити додавання маркера"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重做添加标记"
+          }
+        }
+      }
+    },
     "Redo Add Music" : {
       "localizations" : {
         "de" : {
@@ -52421,6 +54351,46 @@
         }
       }
     },
+    "Redo Delete Marker" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Löschen des Markers wiederholen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rétablir la suppression du marqueur"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マーカーの削除をやり直す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторить удаление маркера"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторити видалення маркера"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重做删除标记"
+          }
+        }
+      }
+    },
     "Redo Delete Spotlight" : {
       "localizations" : {
         "de" : {
@@ -52897,6 +54867,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "重做摄像头片头和片尾"
+          }
+        }
+      }
+    },
+    "Redo Markers" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Änderung der Marker wiederholen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rétablir la modification des marqueurs"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マーカーの変更をやり直す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторить изменение маркеров"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторити зміну маркерів"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重做标记更改"
           }
         }
       }
@@ -53992,6 +56002,46 @@
         }
       }
     },
+    "Redo Rename Marker" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Umbenennen des Markers wiederholen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rétablir le changement de nom du marqueur"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マーカー名の変更をやり直す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторить переименование маркера"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторити перейменування маркера"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重做重新命名标记"
+          }
+        }
+      }
+    },
     "Redo Replace Camera Video" : {
       "localizations" : {
         "de" : {
@@ -54668,6 +56718,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "重做分割"
+          }
+        }
+      }
+    },
+    "Redo Split at Markers" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Teilen an den Markern wiederholen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rétablir la scission aux marqueurs"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マーカー位置での分割をやり直す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторить разделение по маркерам"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторити розділення за маркерами"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重做在标记处分割"
           }
         }
       }
@@ -56966,6 +59056,46 @@
         }
       }
     },
+    "Rename Marker…" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marker umbenennen …"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Renommer le marqueur…"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マーカー名を変更…"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Переименовать маркер…"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Перейменувати маркер…"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重新命名标记…"
+          }
+        }
+      }
+    },
     "Rename Preset" : {
       "localizations" : {
         "de" : {
@@ -57651,6 +59781,86 @@
         }
       }
     },
+    "Resize the window so the recording is an exact size" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ändert die Fenstergröße, damit die Aufnahme genau diese Größe hat"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Redimensionner la fenêtre pour que l’enregistrement ait une taille exacte"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "収録がぴったりのサイズになるようにウインドウのサイズを変更"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Изменить размер окна, чтобы запись была точного размера"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Змінити розмір вікна, щоб запис мав точний розмір"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "调整窗口大小，让录制内容正好是这个尺寸"
+          }
+        }
+      }
+    },
+    "Resizing another app's window needs Accessibility access: allow LF Studios in System Settings → Privacy & Security → Accessibility, then choose the size again." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Um das Fenster einer anderen App zu ändern, braucht LF Studios Zugriff auf die Bedienungshilfen: Erlaube LF Studios unter „Systemeinstellungen“ → „Datenschutz & Sicherheit“ → „Bedienungshilfen“ und wähle die Größe dann noch einmal."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Redimensionner la fenêtre d’une autre app nécessite l’accès à l’accessibilité : autorisez LF Studios dans Réglages Système → Confidentialité et sécurité → Accessibilité, puis choisissez à nouveau la taille."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ほかのアプリのウインドウのサイズを変えるにはアクセシビリティへのアクセスが必要です。“システム設定”＞“プライバシーとセキュリティ”＞“アクセシビリティ”でLF Studiosを許可してから、もう一度サイズを選んでください。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Чтобы менять размер окон других приложений, нужен универсальный доступ: разрешите его для LF Studios в разделе Системные настройки → Конфиденциальность и безопасность → Универсальный доступ, затем снова выберите размер."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Щоб змінювати розмір вікон інших застосунків, потрібен універсальний доступ: дозвольте його для LF Studios: Системні параметри → Приватність і безпека → Універсальний доступ, а потім знову виберіть розмір."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "调整其他应用的窗口大小需要辅助功能权限：请在“系统设置”→“隐私与安全性”→“辅助功能”中允许 LF Studios，然后重新选择尺寸。"
+          }
+        }
+      }
+    },
     "Resolution" : {
       "localizations" : {
         "de" : {
@@ -57971,6 +60181,86 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "恢复 Apple 快捷键"
+          }
+        }
+      }
+    },
+    "Restore size" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Größe wiederherstellen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rétablir la taille"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サイズを元に戻す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вернуть размер"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повернути розмір"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "恢复大小"
+          }
+        }
+      }
+    },
+    "Restore size — put the window back as it was" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Größe wiederherstellen – das Fenster wieder so, wie es war"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rétablir la taille — remettre la fenêtre comme elle était"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サイズを元に戻す — ウインドウを元の状態に戻します"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вернуть размер — вернуть окно как было"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повернути розмір — повернути вікно як було"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "恢复大小 — 把窗口恢复原样"
           }
         }
       }
@@ -58392,6 +60682,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "继续录制（%@）"
+          }
+        }
+      }
+    },
+    "Return to start at the end" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Am Ende zum Anfang zurück"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Revenir au départ à la fin"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最後に開始位置へ戻る"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "В конце вернуться к началу"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Наприкінці повернутися до початку"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "结尾时回到起点"
           }
         }
       }
@@ -62996,6 +65326,46 @@
         }
       }
     },
+    "Shadow color" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schattenfarbe"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couleur de l’ombre"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "シャドウの色"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Цвет тени"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Колір тіні"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "阴影颜色"
+          }
+        }
+      }
+    },
     "Shape" : {
       "localizations" : {
         "de" : {
@@ -64981,6 +67351,46 @@
         }
       }
     },
+    "Side rail" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seitenleiste"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Colonne latérale"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サイドレール"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Боковая панель"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Бічна панель"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "侧边按钮栏"
+          }
+        }
+      }
+    },
     "Silences over a second get shortened — except while you click, type, scroll, or move the pointer, so the demo itself is never cut" : {
       "localizations" : {
         "de" : {
@@ -65701,6 +68111,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "快速移动时产生柔和拖影"
+          }
+        }
+      }
+    },
+    "Softness" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weichheit"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Douceur"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ぼかし"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Мягкость"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "М’якість"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "柔和度"
           }
         }
       }
@@ -66527,6 +68977,176 @@
         }
       }
     },
+    "Split at %lld markers" : {
+      "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "An %lld Marker geteilt"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "An %lld Markern geteilt"
+                }
+              }
+            }
+          }
+        },
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Split at %lld marker"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Split at %lld markers"
+                }
+              }
+            }
+          }
+        },
+        "fr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Scindé à %lld marqueur"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Scindé à %lld marqueurs"
+                }
+              }
+            }
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld個のマーカー位置で分割しました"
+          }
+        },
+        "ru" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Разделено по %lld маркерам"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Разделено по %lld маркерам"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Разделено по %lld маркеру"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Разделено по %lld маркера"
+                }
+              }
+            }
+          }
+        },
+        "uk" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Розділено за %lld маркерами"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Розділено за %lld маркерами"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Розділено за %lld маркером"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Розділено за %lld маркера"
+                }
+              }
+            }
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已在 %lld 个标记处分割"
+          }
+        }
+      }
+    },
+    "Split at Markers" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An Markern teilen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scinder aux marqueurs"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マーカー位置で分割"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Разделить по маркерам"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Розділити за маркерами"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在标记处分割"
+          }
+        }
+      }
+    },
     "Split at Playhead" : {
       "localizations" : {
         "de" : {
@@ -66643,6 +69263,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "在播放头处分割（S）"
+          }
+        }
+      }
+    },
+    "Split the clips at every marker" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Clips an jedem Marker teilen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scinder les clips à chaque marqueur"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "すべてのマーカー位置でクリップを分割"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Разделить клипы по каждому маркеру"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Розділити кліпи за кожним маркером"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在每个标记处分割片段"
           }
         }
       }
@@ -66844,6 +69504,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "在 GitHub 上加星标"
+          }
+        }
+      }
+    },
+    "Start" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Début"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スタート"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Начало"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Початок"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "开始"
           }
         }
       }
@@ -69822,6 +72522,86 @@
         }
       }
     },
+    "The highest quality, and the only one that can keep transparency" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die höchste Qualität und die einzige, die Transparenz behalten kann"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La meilleure qualité, et la seule qui peut garder la transparence"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最高画質で、透明部分を保てる唯一のフォーマットです"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Самое высокое качество — и единственный формат, который сохраняет прозрачность"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Найвища якість — і єдиний формат, що зберігає прозорість"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最高画质，也是唯一能保留透明度的格式"
+          }
+        }
+      }
+    },
+    "The markers are already at clip edges" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Marker liegen schon an Clipgrenzen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les marqueurs sont déjà aux bords des clips"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マーカーはすでにクリップの境目にあります"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Маркеры уже стоят на границах клипов"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Маркери вже стоять на межах кліпів"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "标记已经位于片段边缘"
+          }
+        }
+      }
+    },
     "The menu bar icon is LF Studios' main entry point. While it is hidden, open LF Studios again from Finder, Launchpad, or Spotlight to bring these Preferences back." : {
       "localizations" : {
         "de" : {
@@ -69978,6 +72758,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "图片文件已不存在 — 请使用“替换”重新选择。"
+          }
+        }
+      }
+    },
+    "The pointer glides back to where it started, so the video loops without a jump" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Zeiger gleitet dorthin zurück, wo er begann – so läuft das Video ohne Sprung in Schleife"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le pointeur revient en glissant à son point de départ, pour que la vidéo boucle sans saut"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ポインタが開始位置へなめらかに戻り、ビデオが途切れずにループします"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Указатель плавно возвращается туда, откуда начал, и видео зацикливается без скачка"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Курсор плавно повертається туди, звідки почав, і відео зациклюється без стрибка"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "指针会滑回起始位置，让视频无缝循环"
           }
         }
       }
@@ -70259,6 +73079,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "选区会留在屏幕上供你调整 — 拖移边缘、用方向键微调，然后按下 Return 键。松开时按住 ⇧ 可立即截屏。"
+          }
+        }
+      }
+    },
+    "The size of the recording, in pixels." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Größe der Aufnahme in Pixeln."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La taille de l’enregistrement, en pixels."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "収録のサイズ（ピクセル）。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Размер записи в пикселях."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Розмір запису в пікселях."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "录制内容的尺寸（像素）。"
           }
         }
       }
@@ -71059,6 +73919,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "本周"
+          }
+        }
+      }
+    },
+    "This app" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese App"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cette app"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このアプリ"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Это приложение"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Цей застосунок"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "此应用"
           }
         }
       }
@@ -72919,6 +75819,46 @@
         }
       }
     },
+    "Transparent background" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transparenter Hintergrund"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arrière-plan transparent"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "透明な背景"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Прозрачный фон"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Прозоре тло"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "透明背景"
+          }
+        }
+      }
+    },
     "Trim the clip's end to the playhead (O)" : {
       "localizations" : {
         "de" : {
@@ -74236,6 +77176,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "撤销添加片头卡"
+          }
+        }
+      }
+    },
+    "Undo Add Marker" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Setzen des Markers widerrufen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler l’ajout du marqueur"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マーカーの追加を取り消す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отменить добавление маркера"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Відмінити додавання маркера"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "撤销添加标记"
           }
         }
       }
@@ -76171,6 +79151,46 @@
         }
       }
     },
+    "Undo Delete Marker" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Löschen des Markers widerrufen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler la suppression du marqueur"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マーカーの削除を取り消す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отменить удаление маркера"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Відмінити видалення маркера"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "撤销删除标记"
+          }
+        }
+      }
+    },
     "Undo Delete Spotlight" : {
       "localizations" : {
         "de" : {
@@ -76647,6 +79667,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "撤销摄像头片头和片尾"
+          }
+        }
+      }
+    },
+    "Undo Markers" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Änderung der Marker widerrufen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler la modification des marqueurs"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マーカーの変更を取り消す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отменить изменение маркеров"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Відмінити зміну маркерів"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "撤销标记更改"
           }
         }
       }
@@ -77742,6 +80802,46 @@
         }
       }
     },
+    "Undo Rename Marker" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Umbenennen des Markers widerrufen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler le changement de nom du marqueur"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マーカー名の変更を取り消す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отменить переименование маркера"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Відмінити перейменування маркера"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "撤销重新命名标记"
+          }
+        }
+      }
+    },
     "Undo Replace Camera Video" : {
       "localizations" : {
         "de" : {
@@ -78418,6 +81518,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "撤销分割"
+          }
+        }
+      }
+    },
+    "Undo Split at Markers" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Teilen an den Markern widerrufen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler la scission aux marqueurs"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マーカー位置での分割を取り消す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отменить разделение по маркерам"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Відмінити розділення за маркерами"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "撤销在标记处分割"
           }
         }
       }
@@ -79378,6 +82518,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "用作我的风格"
+          }
+        }
+      }
+    },
+    "Use the largest size that fits (%@ × %@)" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Größte passende Größe verwenden (%@ × %@)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utiliser la plus grande taille qui tient (%@ × %@)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "収まる最大のサイズを使う（%@ × %@）"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Взять самый большой размер, который помещается (%@ × %@)"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Узяти найбільший розмір, що вміщається (%@ × %@)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用能放下的最大尺寸（%@ × %@）"
           }
         }
       }
@@ -80749,6 +83929,46 @@
         }
       }
     },
+    "Width" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Breite"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Largeur"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "幅"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ширина"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ширина"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "宽度"
+          }
+        }
+      }
+    },
     "Window" : {
       "localizations" : {
         "de" : {
@@ -80947,6 +84167,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "窗口已关闭"
+          }
+        }
+      }
+    },
+    "Window size" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fenstergröße"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taille de la fenêtre"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ウインドウのサイズ"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Размер окна"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Розмір вікна"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "窗口大小"
           }
         }
       }
@@ -81358,6 +84618,86 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "一切就绪 — LF Studios 就在这里"
+          }
+        }
+      }
+    },
+    "YouTube needs every chapter to be at least 10 seconds long — move or remove markers that are closer together." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "YouTube braucht Kapitel von mindestens 10 Sekunden – verschiebe oder entferne Marker, die zu nah beieinanderliegen."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "YouTube exige que chaque chapitre dure au moins 10 secondes — déplacez ou supprimez les marqueurs trop rapprochés."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "YouTubeではチャプターごとに10秒以上が必要です — 近すぎるマーカーを移動するか削除してください。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "YouTube нужно, чтобы каждая глава длилась не меньше 10 секунд, — передвиньте или удалите слишком близкие маркеры."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "YouTube потребує, щоб кожен розділ тривав щонайменше 10 секунд, — пересуньте або видаліть надто близькі маркери."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "YouTube 要求每个章节至少 10 秒 — 请移动或移除靠得太近的标记。"
+          }
+        }
+      }
+    },
+    "YouTube shows chapters from 3 on — add a marker or two more." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "YouTube zeigt Kapitel ab 3 Stück – setze noch ein, zwei Marker."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "YouTube affiche les chapitres à partir de 3 — ajoutez un ou deux marqueurs de plus."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "YouTubeでは3つ以上でチャプターが表示されます — マーカーをあと1〜2個追加してください。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "YouTube показывает главы, когда их хотя бы 3, — добавьте ещё один-два маркера."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "YouTube показує розділи, коли їх щонайменше 3, — додайте ще один-два маркери."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "YouTube 至少需要 3 个章节才会显示 — 请再添加一两个标记。"
           }
         }
       }
@@ -82909,6 +86249,46 @@
         }
       }
     },
+    "a transparent background" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ein transparenter Hintergrund"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "un arrière-plan transparent"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "透明な背景"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "прозрачный фон"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "прозоре тло"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "透明背景"
+          }
+        }
+      }
+    },
     "add a zoom" : {
       "localizations" : {
         "de" : {
@@ -83065,6 +86445,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "已嵌入字幕"
+          }
+        }
+      }
+    },
+    "chapters" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kapitel"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "chapitres"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "チャプター"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "главы"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "розділи"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "章节"
           }
         }
       }
@@ -84842,6 +88262,46 @@
         }
       }
     },
+    "“%@” doesn't let this window be resized." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "„%@“ lässt die Größe dieses Fensters nicht ändern."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "« %@ » ne permet pas de redimensionner cette fenêtre."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%@”ではこのウインドウのサイズを変更できません。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "«%@» не позволяет менять размер этого окна."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "«%@» не дозволяє змінювати розмір цього вікна."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%@”不允许调整此窗口的大小。"
+          }
+        }
+      }
+    },
     "“%@” found in %lld of %lld captures" : {
       "localizations" : {
         "de" : {
@@ -85078,6 +88538,86 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "此 Mac 上没有“%@”，正在使用内置字体"
+          }
+        }
+      }
+    },
+    "“%@” keeps this window at least %@ × %@ pixels, so it can't be made %@ × %@." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "„%@“ hält dieses Fenster mindestens %@ × %@ Pixel groß, daher kann es nicht %@ × %@ werden."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "« %@ » garde cette fenêtre à au moins %@ × %@ pixels : elle ne peut pas faire %@ × %@."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%@”はこのウインドウを%@ × %@ピクセル以上に保つため、%@ × %@にはできません。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "«%@» не даёт сделать это окно меньше %@ × %@ пикселей, поэтому размер %@ × %@ недоступен."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "«%@» не дає зробити це вікно меншим за %@ × %@ пікселів, тому розмір %@ × %@ недоступний."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%@”要求此窗口至少为 %@ × %@ 像素，因此无法调整为 %@ × %@。"
+          }
+        }
+      }
+    },
+    "“%@” keeps this window at most %@ × %@ pixels, so it can't be made %@ × %@." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "„%@“ hält dieses Fenster höchstens %@ × %@ Pixel groß, daher kann es nicht %@ × %@ werden."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "« %@ » limite cette fenêtre à %@ × %@ pixels au plus : elle ne peut pas faire %@ × %@."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%@”はこのウインドウを%@ × %@ピクセル以下に保つため、%@ × %@にはできません。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "«%@» не даёт сделать это окно больше %@ × %@ пикселей, поэтому размер %@ × %@ недоступен."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "«%@» не дає зробити це вікно більшим за %@ × %@ пікселів, тому розмір %@ × %@ недоступний."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%@”限制此窗口最大为 %@ × %@ 像素，因此无法调整为 %@ × %@。"
           }
         }
       }

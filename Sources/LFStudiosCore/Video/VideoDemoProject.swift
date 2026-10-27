@@ -487,11 +487,17 @@ struct VideoCursorSettings: Codable, Equatable {
     var alwaysArrow: Bool = false
     /// Hide the pointer's last dash to the Stop button.
     var tidyEnding: Bool = true
+    /// The pointer glides back to where it started over the last
+    /// `returnDuration` seconds, so the video loops (VideoCursorLoop.swift).
+    var returnToStart: Bool = false
+    var returnDuration: Double = 0.8
+
+    static let returnDurationRange: ClosedRange<Double> = 0.3...2
 
     init() {}
 
     private enum CodingKeys: String, CodingKey {
-        case visible, size, smoothing, clickEffect, hideWhenIdle, motionBlur, alwaysArrow, tidyEnding
+        case visible, size, smoothing, clickEffect, hideWhenIdle, motionBlur, alwaysArrow, tidyEnding, returnToStart, returnDuration
     }
 
     init(from decoder: Decoder) throws {
@@ -505,6 +511,8 @@ struct VideoCursorSettings: Codable, Equatable {
         motionBlur = try container.decodeIfPresent(Bool.self, forKey: .motionBlur) ?? defaults.motionBlur
         alwaysArrow = try container.decodeIfPresent(Bool.self, forKey: .alwaysArrow) ?? defaults.alwaysArrow
         tidyEnding = try container.decodeIfPresent(Bool.self, forKey: .tidyEnding) ?? defaults.tidyEnding
+        returnToStart = try container.decodeIfPresent(Bool.self, forKey: .returnToStart) ?? defaults.returnToStart
+        returnDuration = try container.decodeIfPresent(Double.self, forKey: .returnDuration) ?? defaults.returnDuration
     }
 }
 
@@ -666,6 +674,9 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
     var cornerRadius: Double
     /// 0...1
     var shadow: Double
+    /// The shadow fine-tuned (VideoShadow.swift); nil: the classic shadow
+    /// from `shadow` alone.
+    var shadowStyle: VideoShadowStyle?
     /// Hairline highlight around the video edge.
     var outline: Bool
 
@@ -719,6 +730,8 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
     var captionTracks = VideoCaptionTracks()
     /// Every recording on the source axis, in order (empty: just this one).
     var sources: [VideoProjectSource] = []
+    /// Flagged moments, in recorded time (VideoMarkers.swift).
+    var markers: [VideoMarker] = []
 
     var sourceURL: URL { URL(fileURLWithPath: sourcePath) }
     var sourceSize: CGSize { CGSize(width: sourceWidth, height: sourceHeight) }
@@ -732,7 +745,8 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
     /// corners, and shadow can't show.
     var usesRawSourceFrame: Bool { padding <= 0.0005 }
     var effectiveCornerRadius: Double { usesRawSourceFrame ? 0 : cornerRadius }
-    var effectiveShadow: Double { usesRawSourceFrame ? 0 : shadow }
+    /// The classic shadow (none while the shadow is fine-tuned).
+    var effectiveShadow: Double { usesRawSourceFrame || shadowStyle != nil ? 0 : shadow }
 
     /// Whether a drawn pointer can appear at all (the recording captured the
     /// path, and the pixels don't already contain the system cursor).
@@ -786,6 +800,7 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
         cursorSamples = metadata.cursorSamples
         clickEvents = metadata.clickEvents
         keystrokes = metadata.keystrokes ?? []
+        markers = metadata.markers ?? []
         cursor.visible = metadata.shouldRenderCursor
         if trimEnd <= 0 {
             trimEnd = metadata.duration
@@ -1211,7 +1226,8 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
             captionStyle: captionStyle,
             keystrokeStyle: keystrokeStyle,
             titleFont: cards.font,
-            autoZoom: autoZoom
+            autoZoom: autoZoom,
+            shadowStyle: shadowStyle
         )
     }
 
@@ -1224,6 +1240,7 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
         padding = style.padding
         cornerRadius = style.cornerRadius
         shadow = style.shadow
+        shadowStyle = style.shadowStyle
         outline = style.outline
         zoomSpeed = style.zoomSpeed
         defaultZoomScale = style.defaultZoomScale
@@ -1243,11 +1260,11 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
 extension VideoDemoProject {
     private enum CodingKeys: String, CodingKey {
         case version, id, sourcePath, createdAt, sourceWidth, sourceHeight, trimStart, trimEnd, timelineClips
-        case aspectPreset, background, backgroundBlur, padding, cornerRadius, shadow, outline
+        case aspectPreset, background, backgroundBlur, padding, cornerRadius, shadow, shadowStyle, outline
         case zoomRegions, zoomSpeed, defaultZoomScale, motionBlur
         case overlayEffects, cursorSamples, clickEvents, nativeCursorVisible, cursor, audio
         case webcam, cameraLayouts, importedCamera, autoZoom, reframe, captions, transcriptLanguage, captionStyle, keystrokes, keystrokeStyle, crop
-        case cards, music, clickSounds, transitions, captionTracks, sources, imageOverlayEffects
+        case cards, music, clickSounds, transitions, captionTracks, sources, imageOverlayEffects, markers
         // Legacy (v1) keys
         case backgroundPreset, customBackgroundPath, stageInset, shadowStrength, zoomKeyframes
         case showCursorOverlay, enlargeCursor, showClickRipple, smoothCursor, cursorScale, clickSpotlight, cursorMotionBlur
@@ -1290,6 +1307,7 @@ extension VideoDemoProject {
         transitions = (try? container.decode(VideoTransitionSettings.self, forKey: .transitions)) ?? VideoTransitionSettings()
         captionTracks = (try? container.decode(VideoCaptionTracks.self, forKey: .captionTracks)) ?? VideoCaptionTracks()
         sources = (try? container.decode([VideoProjectSource].self, forKey: .sources)) ?? []
+        markers = (try? container.decode([VideoMarker].self, forKey: .markers)) ?? []
 
         let storedVersion = try container.decodeIfPresent(Int.self, forKey: .version) ?? 1
         if storedVersion >= 2 {
@@ -1299,6 +1317,7 @@ extension VideoDemoProject {
             padding = try container.decodeIfPresent(Double.self, forKey: .padding) ?? 0.085
             cornerRadius = try container.decodeIfPresent(Double.self, forKey: .cornerRadius) ?? 18
             shadow = try container.decodeIfPresent(Double.self, forKey: .shadow) ?? 0.55
+            shadowStyle = try? container.decodeIfPresent(VideoShadowStyle.self, forKey: .shadowStyle)
             outline = try container.decodeIfPresent(Bool.self, forKey: .outline) ?? true
             zoomRegions = try container.decodeIfPresent([VideoZoomRegion].self, forKey: .zoomRegions) ?? []
             zoomSpeed = (try? container.decode(VideoZoomSpeed.self, forKey: .zoomSpeed)) ?? .smooth
@@ -1360,6 +1379,7 @@ extension VideoDemoProject {
         try container.encode(padding, forKey: .padding)
         try container.encode(cornerRadius, forKey: .cornerRadius)
         try container.encode(shadow, forKey: .shadow)
+        try container.encodeIfPresent(shadowStyle, forKey: .shadowStyle)
         try container.encode(outline, forKey: .outline)
         try container.encode(zoomRegions, forKey: .zoomRegions)
         try container.encode(zoomSpeed, forKey: .zoomSpeed)
@@ -1368,6 +1388,7 @@ extension VideoDemoProject {
         try container.encode(overlayEffects.filter { $0.kind != .image }, forKey: .overlayEffects)
         let images = overlayEffects.filter { $0.kind == .image }
         if !images.isEmpty { try container.encode(images, forKey: .imageOverlayEffects) }
+        if !markers.isEmpty { try container.encode(markers, forKey: .markers) }
         try container.encode(cursorSamples, forKey: .cursorSamples)
         try container.encode(clickEvents, forKey: .clickEvents)
         try container.encode(nativeCursorVisible, forKey: .nativeCursorVisible)
@@ -1467,6 +1488,8 @@ struct VideoStylePreset: Codable, Equatable {
     /// Auto-zoom on clicks, on or off (nil: a preset saved before this
     /// existed, which leaves auto-zoom as it is).
     var autoZoom: Bool? = nil
+    /// The shadow fine-tuned (nil: the classic shadow from `shadow`).
+    var shadowStyle: VideoShadowStyle? = nil
 
     /// The built-in LF Studios look.
     static let factory = VideoStylePreset(
@@ -1515,7 +1538,7 @@ struct VideoStylePreset: Codable, Equatable {
 extension VideoStylePreset {
     private enum CodingKeys: String, CodingKey {
         case aspectPreset, background, backgroundBlur, padding, cornerRadius, shadow, outline
-        case zoomSpeed, defaultZoomScale, motionBlur, cursor, webcam, captionStyle, keystrokeStyle, titleFont, autoZoom
+        case zoomSpeed, defaultZoomScale, motionBlur, cursor, webcam, captionStyle, keystrokeStyle, titleFont, autoZoom, shadowStyle
     }
 
     /// Looks saved before a field existed still load.
@@ -1538,5 +1561,6 @@ extension VideoStylePreset {
         keystrokeStyle = (try? c.decode(VideoKeystrokeStyle.self, forKey: .keystrokeStyle)) ?? f.keystrokeStyle
         titleFont = try? c.decodeIfPresent(VideoFontChoice.self, forKey: .titleFont)
         autoZoom = try? c.decodeIfPresent(Bool.self, forKey: .autoZoom)
+        shadowStyle = try? c.decodeIfPresent(VideoShadowStyle.self, forKey: .shadowStyle)
     }
 }

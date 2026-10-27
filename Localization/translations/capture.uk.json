@@ -11,8 +11,14 @@
   "%@ · %lld fps" : {
     "uk" : "%@ · %lld fps"
   },
+  "%@ × %@ doesn't fit on this display" : {
+    "uk" : "%@ × %@ не вміщається на цьому екрані"
+  },
   "%@ × %@ px" : {
     "uk" : "%@ × %@ px"
+  },
+  "%@ × %@ — window %@ × %@ on this display" : {
+    "uk" : "%@ × %@ — вікно %@ × %@ на цьому екрані"
   },
   "%@, %@" : {
     "uk" : "%@, %@"
@@ -89,6 +95,24 @@
       "one" : "%lld секунда",
       "other" : "%lld секунди"
     }
+  },
+  "A window that size would be bigger than the screen. The largest of the same shape that fits is %@ × %@." : {
+    "uk" : "Вікно такого розміру більше за екран. Найбільший розмір тієї ж форми, що вміщається, — %@ × %@."
+  },
+  "Add Marker" : {
+    "uk" : "Додати маркер"
+  },
+  "Add Marker While Recording" : {
+    "uk" : "Додати маркер під час запису"
+  },
+  "Add a marker" : {
+    "uk" : "Додати маркер"
+  },
+  "Add a marker (%@)" : {
+    "uk" : "Додати маркер (%@)"
+  },
+  "Add a marker — set a shortcut in Settings → Shortcuts" : {
+    "uk" : "Додати маркер — скорочення можна задати в Параметри → Скорочення"
   },
   "All Displays" : {
     "uk" : "Усі дисплеї"
@@ -207,11 +231,17 @@
   "Couldn't create the video file." : {
     "uk" : "Не вдалося створити відеофайл."
   },
+  "Couldn't find that window to resize it. Choose it again and try once more." : {
+    "uk" : "Не вдалося знайти вікно, щоб змінити його розмір. Виберіть його знову й спробуйте ще раз."
+  },
   "Countdown" : {
     "uk" : "Зворотний відлік"
   },
   "Cursor" : {
     "uk" : "Курсор"
+  },
+  "Custom Size…" : {
+    "uk" : "Власний розмір…"
   },
   "Dark Mode" : {
     "uk" : "Темне"
@@ -273,6 +303,9 @@
   "Email address copied" : {
     "uk" : "Ел. адресу скопійовано"
   },
+  "Enter a width and a height from %@ to %@ pixels." : {
+    "uk" : "Введіть ширину й висоту від %@ до %@ пікселів."
+  },
   "Esc or Done finishes" : {
     "uk" : "Esc або «Готово» — завершити"
   },
@@ -288,6 +321,9 @@
   "Frame rate" : {
     "uk" : "Частота кадрів"
   },
+  "Height" : {
+    "uk" : "Висота"
+  },
   "Hidden network" : {
     "uk" : "Прихована мережа"
   },
@@ -299,6 +335,12 @@
   },
   "Keyboard shortcuts are on" : {
     "uk" : "Клавіатурні скорочення ввімкнено"
+  },
+  "LF Studios can't write to the save folder. Choose another one in Settings → Screenshots." : {
+    "uk" : "LF Studios не може записувати в папку збереження. Виберіть іншу в розділі Параметри → Знімки екрана."
+  },
+  "LF Studios isn't allowed to record the screen. Turn it on in System Settings → Privacy & Security → Screen & System Audio Recording." : {
+    "uk" : "LF Studios не має дозволу на запис екрана. Увімкніть його тут: Системні параметри → Приватність і безпека → Записування системного звуку й екрана."
   },
   "Light Mode" : {
     "uk" : "Світле"
@@ -317,6 +359,9 @@
   },
   "Links (%lld of %lld)" : {
     "uk" : "Посилання (%lld з %lld)"
+  },
+  "Marker %lld" : {
+    "uk" : "Маркер %lld"
   },
   "Max" : {
     "uk" : "Максимальна"
@@ -519,6 +564,18 @@
   "Resize" : {
     "uk" : "Змінити розмір"
   },
+  "Resize the window so the recording is an exact size" : {
+    "uk" : "Змінити розмір вікна, щоб запис мав точний розмір"
+  },
+  "Resizing another app's window needs Accessibility access: allow LF Studios in System Settings → Privacy & Security → Accessibility, then choose the size again." : {
+    "uk" : "Щоб змінювати розмір вікон інших застосунків, потрібен універсальний доступ: дозвольте його для LF Studios: Системні параметри → Приватність і безпека → Універсальний доступ, а потім знову виберіть розмір."
+  },
+  "Restore size" : {
+    "uk" : "Повернути розмір"
+  },
+  "Restore size — put the window back as it was" : {
+    "uk" : "Повернути розмір — повернути вікно як було"
+  },
   "Resume recording" : {
     "uk" : "Продовжити запис"
   },
@@ -634,12 +691,6 @@
   "Selection %@ by %@ points. Arrow keys move it, Return captures, Escape cancels." : {
     "uk" : "Вибір: %@ на %@ точок. Клавіші зі стрілками переміщують його, Return знімає, Escape скасовує."
   },
-  "LF Studios can't write to the save folder. Choose another one in Settings → Screenshots." : {
-    "uk" : "LF Studios не може записувати в папку збереження. Виберіть іншу в розділі Параметри → Знімки екрана."
-  },
-  "LF Studios isn't allowed to record the screen. Turn it on in System Settings → Privacy & Security → Screen & System Audio Recording." : {
-    "uk" : "LF Studios не має дозволу на запис екрана. Увімкніть його тут: Системні параметри → Приватність і безпека → Записування системного звуку й екрана."
-  },
   "Show keyboard shortcuts" : {
     "uk" : "Показувати клавіатурні скорочення"
   },
@@ -715,14 +766,23 @@
   "The recording couldn't be finished — saved the first %@." : {
     "uk" : "Не вдалося завершити запис — збережено перші %@."
   },
+  "The size of the recording, in pixels." : {
+    "uk" : "Розмір запису в пікселях."
+  },
   "The window you're recording closed. Stop when you're ready — the recording keeps going." : {
     "uk" : "Вікно, яке ви записуєте, закрилося. Зупиніть запис, коли будете готові, — він триває."
+  },
+  "This app" : {
+    "uk" : "Цей застосунок"
   },
   "To" : {
     "uk" : "Кому"
   },
   "URL" : {
     "uk" : "URL"
+  },
+  "Use the largest size that fits (%@ × %@)" : {
+    "uk" : "Узяти найбільший розмір, що вміщається (%@ × %@)"
   },
   "Warning" : {
     "uk" : "Попередження"
@@ -733,11 +793,17 @@
   "Wi-Fi QR found" : {
     "uk" : "Знайдено QR-код Wi-Fi"
   },
+  "Width" : {
+    "uk" : "Ширина"
+  },
   "Window capture" : {
     "uk" : "Знімок вікна"
   },
   "Window closed" : {
     "uk" : "Вікно закрито"
+  },
+  "Window size" : {
+    "uk" : "Розмір вікна"
   },
   "Yes" : {
     "uk" : "Так"
@@ -790,6 +856,15 @@
   },
   "up to %@ MB/min" : {
     "uk" : "до %@ МБ/хв"
+  },
+  "“%@” doesn't let this window be resized." : {
+    "uk" : "«%@» не дозволяє змінювати розмір цього вікна."
+  },
+  "“%@” keeps this window at least %@ × %@ pixels, so it can't be made %@ × %@." : {
+    "uk" : "«%@» не дає зробити це вікно меншим за %@ × %@ пікселів, тому розмір %@ × %@ недоступний."
+  },
+  "“%@” keeps this window at most %@ × %@ pixels, so it can't be made %@ × %@." : {
+    "uk" : "«%@» не дає зробити це вікно більшим за %@ × %@ пікселів, тому розмір %@ × %@ недоступний."
   },
   "✓ Saved screenshot" : {
     "uk" : "✓ Знімок екрана збережено"

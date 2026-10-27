@@ -371,6 +371,7 @@ final class RecordingEngine: NSObject {
         )
         hud.stopHandler = { [weak self] in self?.stopRecording() }
         hud.pauseHandler = { [weak self] in self?.togglePause() }
+        hud.markerHandler = { [weak self] in self?.addMarker() }
         hud.discardHandler = { [weak self] in self?.discardRecording() }
         hud.elapsedProvider = { [weak self] in self?.recordedSeconds ?? 0 }
         self.hud = hud
@@ -425,6 +426,13 @@ final class RecordingEngine: NSObject {
         hud?.setPaused(timeline.isPaused)
         outline?.setPaused(timeline.isPaused)
         stateChangedHandler?()
+    }
+
+    /// A marker at this moment (recorded time, pauses excluded); the bar
+    /// says "Marker 3".
+    func addMarker() {
+        guard isRecording, !isFinishing, let number = metadataRecorder?.addMarker() else { return }
+        hud?.showMarker(number)
     }
 
     /// Throws the take away: files deleted, nothing opens.

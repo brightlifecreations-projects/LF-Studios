@@ -79,6 +79,10 @@ final class HotkeyManager {
             captureEngine?.togglePauseRecording()
         }
 
+        KeyboardShortcuts.onKeyDown(for: .lfstudiosAddMarker) { [weak captureEngine] in
+            captureEngine?.addRecordingMarker()
+        }
+
         // Menu-bar-independent access: opens the command center even when a
         // crowded menu bar makes macOS hide the status icon.
         KeyboardShortcuts.onKeyDown(for: .lfstudiosOpenCommandCenter) {

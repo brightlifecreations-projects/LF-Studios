@@ -41,6 +41,14 @@ struct VideoEditorRootView: View {
                                 .padding(.top, model.isCropping ? 22 : 12)
                                 .padding(.bottom, stageBottomInset)
                         }
+                        // Vertical videos: the phone overlay's button, above
+                        // the preview on the right.
+                        if model.canShowPhoneOverlay, !model.isCropping {
+                            VideoPhoneOverlayButton(model: model)
+                                .frame(maxWidth: .infinity, alignment: .trailing)
+                                .padding(.top, 16)
+                                .padding(.trailing, 20)
+                        }
                         // With the export sheet up, the message shows on the
                         // sheet instead (see VideoOverlayNotice).
                         if let notice = model.notice, !model.isExportPresented {

@@ -114,6 +114,22 @@
 			<string>%lld Kameralayouts</string>
 		</dict>
 	</dict>
+	<key>%lld chapters — players like QuickTime Player list them, and so do editing apps</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>one</key>
+			<string>%lld Kapitel – Player wie QuickTime Player zeigen es an, Schnittprogramme auch</string>
+			<key>other</key>
+			<string>%lld Kapitel – Player wie QuickTime Player zeigen sie an, Schnittprogramme auch</string>
+		</dict>
+	</dict>
 	<key>%lld clicks</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -960,6 +976,22 @@
 			<string>%lld Leerlaufphase beschleunigt – %@ gespart · prüfe Stellen, an denen getippt wird</string>
 			<key>other</key>
 			<string>%lld Leerlaufphasen beschleunigt – %@ gespart · prüfe Stellen, an denen getippt wird</string>
+		</dict>
+	</dict>
+	<key>Split at %lld markers</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>one</key>
+			<string>An %lld Marker geteilt</string>
+			<key>other</key>
+			<string>An %lld Markern geteilt</string>
 		</dict>
 	</dict>
 	<key>This replaces all %lld caption lines, including any you edited or typed, with a new transcript in %@.</key>

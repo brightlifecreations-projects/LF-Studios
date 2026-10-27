@@ -276,6 +276,9 @@ final class VideoEditorModel: ObservableObject {
     }
     /// Crop mode: the preview shows the whole recording with a crop frame.
     @Published var isCropping = false
+    /// The phone overlay over a vertical preview (nil: off). The preview's
+    /// alone: never saved, never exported (VideoPhoneOverlay.swift).
+    @Published var phoneOverlay: VideoPhoneLayout?
     var cropBeforeEditing: VideoCropRect?
     var projectBeforeCrop: VideoDemoProject?
     var undoDepthBeforeCrop = 0
@@ -1976,7 +1979,7 @@ final class VideoEditorModel: ObservableObject {
             destination = folder.appendingPathComponent("\(exportBaseName).\(settings.fileExtension)")
         } else {
             let panel = NSSavePanel()
-            panel.allowedContentTypes = settings.format == .gif ? [.gif] : [.mpeg4Movie]
+            panel.allowedContentTypes = settings.format == .gif ? [.gif] : settings.format.isProRes ? [.quickTimeMovie] : [.mpeg4Movie]
             panel.canCreateDirectories = true
             panel.nameFieldStringValue = "\(exportBaseName).\(settings.fileExtension)"
             panel.directoryURL = URL(fileURLWithPath: Settings.autoSaveLocation, isDirectory: true)

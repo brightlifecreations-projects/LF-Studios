@@ -60,8 +60,12 @@
 	<string>%@ · %lld fps</string>
 	<key>%@ · on your clipboard — paste it anywhere</key>
 	<string>%@ · 已在剪贴板中 — 可粘贴到任何地方</string>
+	<key>%@ × %@ doesn't fit on this display</key>
+	<string>%@ × %@ 在这台显示器上放不下</string>
 	<key>%@ × %@ px</key>
 	<string>%@ × %@ 像素</string>
+	<key>%@ × %@ — window %@ × %@ on this display</key>
+	<string>%@ × %@ — 在这台显示器上窗口为 %@ × %@</string>
 	<key>%@ — %@</key>
 	<string>%@ — %@</string>
 	<key>%@ — LF Studios lives in your menu bar</key>
@@ -72,6 +76,8 @@
 	<string>%@ — 大约还剩一分钟</string>
 	<key>%@ — click to change</key>
 	<string>%@ — 点按以更改</string>
+	<key>%@ — click to jump here, double-click to rename</key>
+	<string>%@ — 点按跳到这里，连按两次重新命名</string>
 	<key>%@ → %@ — the part you ⇧-dragged on the timeline</key>
 	<string>%@ → %@ — 你在时间线上按住 ⇧ 拖移选中的部分</string>
 	<key>%@, %@</key>
@@ -100,6 +106,8 @@
 	<string>%lld 个摄像头布局</string>
 	<key>%lld captions</key>
 	<string>%lld 条字幕</string>
+	<key>%lld chapters — players like QuickTime Player list them, and so do editing apps</key>
+	<string>%lld 个章节 — QuickTime Player 等播放器和剪辑软件都会列出</string>
 	<key>%lld clicks</key>
 	<string>%lld 次点按</string>
 	<key>%lld clips</key>
@@ -182,14 +190,22 @@
 	<string>报告有助于修复这个问题。发送前你会看到全部内容，报告绝不会包含你的截屏或录制内容。</string>
 	<key>A second caption track you can show, burn in, or save as subtitles. Translated on this Mac — nothing is uploaded.</key>
 	<string>第二条字幕轨道，可显示、嵌入视频或存储为字幕文件。在这台 Mac 上翻译 — 不会上传任何内容。</string>
+	<key>A short button column, a pill button by the caption, a search bar at the top</key>
+	<string>一列较短的按钮、说明文字旁的胶囊按钮、顶部的搜索栏</string>
+	<key>A soft inner edge instead of a shadow below</key>
+	<string>柔和的内边缘，而不是下方的阴影</string>
 	<key>A soft shadow under the letters</key>
 	<string>字母下方的柔和阴影</string>
 	<key>A song under the whole video — it loops to fill, fades in and out, and dips while you talk. Use music you have the rights to.</key>
 	<string>为整段视频配上一首歌 — 可循环填满、淡入淡出，并在你说话时降低音量。请使用你拥有版权的音乐。</string>
 	<key>A subtitles file for YouTube and web players (.srt), or for the web (.vtt) — follows your cuts</key>
 	<string>用于 YouTube 和网页播放器（.srt）或网页（.vtt）的字幕文件 — 跟随你的剪辑</string>
+	<key>A taller button column, a spinning-disc spot, a bottom navigation bar</key>
+	<string>一列更高的按钮、旋转唱片的位置、底部导航栏</string>
 	<key>A video needs at least one clip</key>
 	<string>视频至少需要一个片段</string>
+	<key>A window that size would be bigger than the screen. The largest of the same shape that fits is %@ × %@.</key>
+	<string>这么大的窗口会超出屏幕。能放下的同比例最大尺寸是 %@ × %@。</string>
 	<key>About</key>
 	<string>关于</string>
 	<key>About %lld min left</key>
@@ -218,6 +234,10 @@
 	<string>添加图像或标志…</string>
 	<key>Add Intro Card</key>
 	<string>添加片头卡</string>
+	<key>Add Marker</key>
+	<string>添加标记</string>
+	<key>Add Marker While Recording</key>
+	<string>录制时添加标记</string>
 	<key>Add Music…</key>
 	<string>添加音乐…</string>
 	<key>Add Outro Card</key>
@@ -230,6 +250,14 @@
 	<string>在播放头处添加缩放</string>
 	<key>Add a caption at the playhead</key>
 	<string>在播放头处添加字幕</string>
+	<key>Add a marker</key>
+	<string>添加标记</string>
+	<key>Add a marker (%@)</key>
+	<string>添加标记（%@）</string>
+	<key>Add a marker at the playhead — markers become chapters</key>
+	<string>在播放头处添加标记 — 标记会成为章节</string>
+	<key>Add a marker — set a shortcut in Settings → Shortcuts</key>
+	<string>添加标记 — 可在“设置”→“快捷键”中设定快捷键</string>
 	<key>Add a zoom at the playhead (Z)</key>
 	<string>在播放头处添加缩放（Z）</string>
 	<key>Add another recording or video after this one — LF Studios recordings keep their pointer, clicks, and shortcuts.</key>
@@ -240,10 +268,14 @@
 	<string>在播放头处添加模糊（B）</string>
 	<key>Add camera video…</key>
 	<string>添加摄像头视频…</string>
+	<key>Add chapters from markers</key>
+	<string>根据标记添加章节</string>
 	<key>Add highlight at the playhead (H)</key>
 	<string>在播放头处添加高亮（H）</string>
 	<key>Add image at the playhead</key>
 	<string>在播放头处添加图像</string>
+	<key>Add markers first — each one starts a chapter</key>
+	<string>请先添加标记 — 每个标记开始一个章节</string>
 	<key>Add spotlight at the playhead</key>
 	<string>在播放头处添加聚光灯</string>
 	<key>Add text at the playhead (T)</key>
@@ -298,6 +330,10 @@
 	<string>始终显示箭头</string>
 	<key>Amber Fold</key>
 	<string>琥珀褶皱</string>
+	<key>Angle</key>
+	<string>角度</string>
+	<key>Angle, distance, softness, opacity, color, and an inner edge</key>
+	<string>角度、距离、柔和度、不透明度、颜色和内边缘</string>
 	<key>Annotate Last Screenshot</key>
 	<string>标注上一张截屏</string>
 	<key>Annotation</key>
@@ -322,6 +358,8 @@
 	<string>已停用 Apple 截屏快捷键。LF Studios 快捷键现已生效。</string>
 	<key>Apple screenshot shortcuts restored.</key>
 	<string>已恢复 Apple 截屏快捷键。</string>
+	<key>Apple's editing format: big files that keep every detail, for Final Cut Pro, Premiere Pro, and DaVinci Resolve</key>
+	<string>Apple 的剪辑格式：文件较大，保留所有细节，适用于 Final Cut Pro、Premiere Pro 和 DaVinci Resolve</string>
 	<key>Apple's screenshot shortcuts still own ⌘⇧3/4/5 — captures can double-trigger.</key>
 	<string>Apple 的截屏快捷键仍占用 ⌘⇧3/4/5 — 可能会重复截屏。</string>
 	<key>Apple's shortcuts are out of the way.</key>
@@ -462,6 +500,8 @@
 	<string>内置（San Francisco）</string>
 	<key>Burn captions into the video</key>
 	<string>将字幕嵌入视频</string>
+	<key>Buttons on the right, caption bottom-left, tabs at the top</key>
+	<string>按钮在右侧，说明文字在左下，标签页在顶部</string>
 	<key>Call</key>
 	<string>呼叫</string>
 	<key>Callout</key>
@@ -618,6 +658,12 @@
 	<string>卡片使用你的背景，时间线会随之延长。“Made with LF Studios”结尾画面是单独的 — 它位于导出选项中。</string>
 	<key>Center</key>
 	<string>居中</string>
+	<key>Chapters</key>
+	<string>章节</string>
+	<key>Chapters as text (“0:00 Start”) for a YouTube description</key>
+	<string>章节文本（“0:00 开始”），用于 YouTube 视频说明</string>
+	<key>Chapters copied — paste them into the video's description</key>
+	<string>已拷贝章节 — 请粘贴到视频说明中</string>
 	<key>Check</key>
 	<string>检查</string>
 	<key>Check for Updates</key>
@@ -780,6 +826,8 @@
 	<string>拷贝 %@</string>
 	<key>Copy (⌘C)</key>
 	<string>拷贝（⌘C）</string>
+	<key>Copy Chapters</key>
+	<string>拷贝章节</string>
 	<key>Copy Current Frame</key>
 	<string>拷贝当前帧</string>
 	<key>Copy Path</key>
@@ -838,6 +886,8 @@
 	<string>无法创建交付文件夹 — %@</string>
 	<key>Couldn't create the video file.</key>
 	<string>无法创建视频文件。</string>
+	<key>Couldn't find that window to resize it. Choose it again and try once more.</key>
+	<string>找不到要调整大小的窗口。请重新选择后再试一次。</string>
 	<key>Couldn't finish the file</key>
 	<string>无法完成该文件</string>
 	<key>Couldn't make captions</key>
@@ -928,6 +978,8 @@
 	<string>指针、点按和快捷键</string>
 	<key>Custom</key>
 	<string>自定</string>
+	<key>Custom Size…</key>
+	<string>自定大小…</string>
 	<key>Custom color</key>
 	<string>自定颜色</string>
 	<key>Custom color #%@</key>
@@ -970,6 +1022,8 @@
 	<string>删除截屏</string>
 	<key>Delete Clip</key>
 	<string>删除片段</string>
+	<key>Delete Marker</key>
+	<string>删除标记</string>
 	<key>Delete Screenshot</key>
 	<string>删除截屏</string>
 	<key>Delete Screenshots</key>
@@ -1030,6 +1084,8 @@
 	<string>叠化</string>
 	<key>Dissolve Between Clips</key>
 	<string>片段之间叠化</string>
+	<key>Distance</key>
+	<string>距离</string>
 	<key>Do you want to review them before quitting?</key>
 	<string>要在退出前逐一检查吗？</string>
 	<key>Docs, slides</key>
@@ -1172,6 +1228,8 @@
 	<string>喜欢 LF Studios 吗？点按即可在 GitHub 上为它加星标 ★</string>
 	<key>Enjoying LF Studios? Star it on GitHub so more people find it.</key>
 	<string>喜欢 LF Studios 吗？在 GitHub 上加个星标，让更多人发现它。</string>
+	<key>Enter a width and a height from %@ to %@ pixels.</key>
+	<string>请输入 %@ 到 %@ 像素之间的宽度和高度。</string>
 	<key>Esc</key>
 	<string>Esc</string>
 	<key>Esc or Done finishes</key>
@@ -1294,6 +1352,8 @@
 	<string>在文字稿中查找</string>
 	<key>Find “%@”</key>
 	<string>查找“%@”</string>
+	<key>Fine-tune shadow</key>
+	<string>微调阴影</string>
 	<key>Finish and Quit</key>
 	<string>完成后退出</string>
 	<key>Finish or cancel the current recording setup</key>
@@ -1356,6 +1416,8 @@
 	<string>全画面（无背景）</string>
 	<key>Full original files</key>
 	<string>完整原始文件</string>
+	<key>Full rail</key>
+	<string>完整按钮栏</string>
 	<key>Full screen: %@</key>
 	<string>全屏：%@</string>
 	<key>Full-Camera Intro and Outro</key>
@@ -1374,6 +1436,8 @@
 	<string>正在准备…</string>
 	<key>Glacier</key>
 	<string>冰川</string>
+	<key>Glide time</key>
+	<string>滑回时长</string>
 	<key>Glides without lagging behind — clicks still land exactly.</key>
 	<string>流畅跟随、毫不拖沓 — 点按位置依然精准。</string>
 	<key>Go to End</key>
@@ -1404,6 +1468,8 @@
 	<string>硬切</string>
 	<key>Health</key>
 	<string>状态</string>
+	<key>Height</key>
+	<string>高度</string>
 	<key>Hidden</key>
 	<string>隐藏</string>
 	<key>Hidden network</key>
@@ -1414,6 +1480,8 @@
 	<string>隐藏桌面图标</string>
 	<key>Hide Icon</key>
 	<string>隐藏图标</string>
+	<key>Hide Phone Overlay</key>
+	<string>隐藏手机界面叠层</string>
 	<key>Hide desktop icons while capturing</key>
 	<string>截屏时隐藏桌面图标</string>
 	<key>Hide the Menu Bar Icon?</key>
@@ -1484,6 +1552,8 @@
 	<string>附带成品视频</string>
 	<key>Includes: %@</key>
 	<string>包含：%@</string>
+	<key>Inset</key>
+	<string>内阴影</string>
 	<key>Inspector tabs</key>
 	<string>检查器标签页</string>
 	<key>Instagram, LinkedIn</key>
@@ -1632,6 +1702,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>布局</string>
 	<key>Layouts</key>
 	<string>布局</string>
+	<key>Leaves out the background: the video, its rounded corners and shadow, and a cut-out camera sit on transparency, ready to place over anything</key>
+	<string>去掉背景：视频及其圆角和阴影，以及抠出的摄像头画面都位于透明层上，可叠放在任何内容之上</string>
 	<key>Left</key>
 	<string>左侧</string>
 	<key>Left out:</key>
@@ -1646,6 +1718,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>轻度</string>
 	<key>Light Mode</key>
 	<string>浅色</string>
+	<key>Like ProRes 422 with even more detail, for color grading and effects — about half again as big</key>
+	<string>与 ProRes 422 相似但细节更丰富，适合调色和特效 — 文件约大一半</string>
 	<key>Lime Signal</key>
 	<string>青柠信号</string>
 	<key>Line</key>
@@ -1680,6 +1754,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>查找…</string>
 	<key>Look</key>
 	<string>外观</string>
+	<key>Loop</key>
+	<string>循环</string>
 	<key>Loop to fill</key>
 	<string>循环填满</string>
 	<key>Lower under your voice</key>
@@ -1692,6 +1768,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>减轻体积：%@，%@ fps</string>
 	<key>Manage</key>
 	<string>管理</string>
+	<key>Marker</key>
+	<string>标记</string>
+	<key>Marker %lld</key>
+	<string>标记 %lld</string>
+	<key>Marker name</key>
+	<string>标记名称</string>
+	<key>Marker: %@</key>
+	<string>标记：%@</string>
 	<key>Match the recording</key>
 	<string>与录制内容一致</string>
 	<key>Max</key>
@@ -1828,6 +1912,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>星云</string>
 	<key>Needed to capture the screen. macOS will ask once.</key>
 	<string>截取屏幕需要此权限。macOS 只会询问一次。</string>
+	<key>Needs a cursor LF Studios draws — this one is part of the video</key>
+	<string>需要由 LF Studios 绘制的指针 — 这个指针是视频画面的一部分</string>
 	<key>Neo Pop</key>
 	<string>新波普</string>
 	<key>Network</key>
@@ -2086,6 +2172,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>电话</string>
 	<key>Phone QR found</key>
 	<string>找到电话二维码</string>
+	<key>Phone overlay</key>
+	<string>手机界面叠层</string>
 	<key>Pick a preset as My Style (Presets ▸ Edit Presets ▸ Use as My Style), then one click puts it on any video.</key>
 	<string>选一个预设作为我的风格（预设 ▸ 编辑预设 ▸ 用作我的风格），之后点一下就能用到任何视频上。</string>
 	<key>Picked up where you left off</key>
@@ -2166,6 +2254,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>按下于 %@。按下 ⌫ 可在视频中隐藏它 — 适合处理误按的 ⌘Tab。</string>
 	<key>Preview</key>
 	<string>预览</string>
+	<key>Preview how a phone app's buttons and captions sit over this video, with the covered parts shaded — never in the export</key>
+	<string>预览手机应用的按钮和文字如何叠在视频上，并将被遮挡的部分加暗 — 不会出现在导出内容中</string>
 	<key>Preview muted — the export keeps its sound</key>
 	<string>预览已静音 — 导出仍保留声音</string>
 	<key>Preview sound on</key>
@@ -2312,6 +2402,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做添加图像</string>
 	<key>Redo Add Intro Card</key>
 	<string>重做添加片头卡</string>
+	<key>Redo Add Marker</key>
+	<string>重做添加标记</string>
 	<key>Redo Add Music</key>
 	<string>重做添加音乐</string>
 	<key>Redo Add Outro Card</key>
@@ -2404,6 +2496,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做删除高亮</string>
 	<key>Redo Delete Image</key>
 	<string>重做删除图像</string>
+	<key>Redo Delete Marker</key>
+	<string>重做删除标记</string>
 	<key>Redo Delete Spotlight</key>
 	<string>重做删除聚光灯</string>
 	<key>Redo Delete Text</key>
@@ -2428,6 +2522,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做图像样式更改</string>
 	<key>Redo Intro and Outro</key>
 	<string>重做摄像头片头和片尾</string>
+	<key>Redo Markers</key>
+	<string>重做标记更改</string>
 	<key>Redo Move %lld Items</key>
 	<string>重做移动 %lld 个项目</string>
 	<key>Redo Move Arrow</key>
@@ -2478,6 +2574,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做移除录制内容</string>
 	<key>Redo Remove Ums</key>
 	<string>重做移除语气词</string>
+	<key>Redo Rename Marker</key>
+	<string>重做重新命名标记</string>
 	<key>Redo Replace Camera Video</key>
 	<string>重做替换摄像头视频</string>
 	<key>Redo Replace Music</key>
@@ -2512,6 +2610,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做加速空闲片段</string>
 	<key>Redo Split</key>
 	<string>重做分割</string>
+	<key>Redo Split at Markers</key>
+	<string>重做在标记处分割</string>
 	<key>Redo Spotlight Style</key>
 	<string>重做聚光灯样式更改</string>
 	<key>Redo Start Over</key>
@@ -2604,6 +2704,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>去除抖动，保持灵敏。</string>
 	<key>Rename</key>
 	<string>重新命名</string>
+	<key>Rename Marker…</key>
+	<string>重新命名标记…</string>
 	<key>Rename Preset</key>
 	<string>重新命名预设</string>
 	<key>Rename…</key>
@@ -2638,6 +2740,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>恢复为 LF Studios 风格</string>
 	<key>Resize</key>
 	<string>调整大小</string>
+	<key>Resize the window so the recording is an exact size</key>
+	<string>调整窗口大小，让录制内容正好是这个尺寸</string>
+	<key>Resizing another app's window needs Accessibility access: allow LF Studios in System Settings → Privacy &amp; Security → Accessibility, then choose the size again.</key>
+	<string>调整其他应用的窗口大小需要辅助功能权限：请在“系统设置”→“隐私与安全性”→“辅助功能”中允许 LF Studios，然后重新选择尺寸。</string>
 	<key>Resolution</key>
 	<string>分辨率</string>
 	<key>Restart LF Studios to use %@?</key>
@@ -2654,6 +2760,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>全部恢复（%lld）</string>
 	<key>Restore Apple Shortcuts</key>
 	<string>恢复 Apple 快捷键</string>
+	<key>Restore size</key>
+	<string>恢复大小</string>
+	<key>Restore size — put the window back as it was</key>
+	<string>恢复大小 — 把窗口恢复原样</string>
 	<key>Restored %@</key>
 	<string>已恢复 %@</string>
 	<key>Restored %lld cuts — %@</key>
@@ -2666,6 +2776,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>继续录制</string>
 	<key>Resume recording (%@)</key>
 	<string>继续录制（%@）</string>
+	<key>Return to start at the end</key>
+	<string>结尾时回到起点</string>
 	<key>Reveal</key>
 	<string>显示</string>
 	<key>Reveal in Finder</key>
@@ -2886,6 +2998,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>阴影</string>
 	<key>Shadow and transparent padding</key>
 	<string>阴影和透明边距</string>
+	<key>Shadow color</key>
+	<string>阴影颜色</string>
 	<key>Shape</key>
 	<string>形状</string>
 	<key>Share</key>
@@ -2976,6 +3090,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>随机选择背景</string>
 	<key>Side by side</key>
 	<string>并排</string>
+	<key>Side rail</key>
+	<string>侧边按钮栏</string>
 	<key>Silences over a second get shortened — except while you click, type, scroll, or move the pointer, so the demo itself is never cut</key>
 	<string>超过一秒的静音会被缩短 — 点按、打字、滚动或移动指针时除外，因此演示本身不会被剪掉</string>
 	<key>Silences over a second get shortened — except while you move the pointer, click, or press a shortcut</key>
@@ -3012,6 +3128,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>社交媒体信息流</string>
 	<key>Soft streaks on fast moves</key>
 	<string>快速移动时产生柔和拖影</string>
+	<key>Softness</key>
+	<string>柔和度</string>
 	<key>Solid Color</key>
 	<string>纯色</string>
 	<key>Solid color</key>
@@ -3044,12 +3162,18 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>此部分的速度</string>
 	<key>Split</key>
 	<string>分割</string>
+	<key>Split at %lld markers</key>
+	<string>已在 %lld 个标记处分割</string>
+	<key>Split at Markers</key>
+	<string>在标记处分割</string>
 	<key>Split at Playhead</key>
 	<string>在播放头处分割</string>
 	<key>Split at playhead</key>
 	<string>在播放头处分割</string>
 	<key>Split at the playhead (S)</key>
 	<string>在播放头处分割（S）</string>
+	<key>Split the clips at every marker</key>
+	<string>在每个标记处分割片段</string>
 	<key>Split the video (S) to make cuts; each can dissolve or dip to black.</key>
 	<string>分割视频（S）以创建剪切点；每个剪切点都可以叠化或黑场过渡。</string>
 	<key>Spoken word</key>
@@ -3060,6 +3184,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>聚光灯形状</string>
 	<key>Star on GitHub</key>
 	<string>在 GitHub 上加星标</string>
+	<key>Start</key>
+	<string>开始</string>
 	<key>Start / end</key>
 	<string>开头/结尾</string>
 	<key>Start Over</key>
@@ -3208,6 +3334,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>导出意外停止（%@）。请重试 — 如果问题仍然存在，请以较低分辨率或 H.264 格式导出。</string>
 	<key>The handoff is ready</key>
 	<string>交付已就绪</string>
+	<key>The highest quality, and the only one that can keep transparency</key>
+	<string>最高画质，也是唯一能保留透明度的格式</string>
+	<key>The markers are already at clip edges</key>
+	<string>标记已经位于片段边缘</string>
 	<key>The menu bar icon is LF Studios' main entry point. While it is hidden, open LF Studios again from Finder, Launchpad, or Spotlight to bring these Preferences back.</key>
 	<string>菜单栏图标是 LF Studios 的主要入口。隐藏后，可从“访达”、“启动台”或“聚焦”再次打开 LF Studios 来重新显示这些设置。</string>
 	<key>The microphone couldn't start, so this recording has no mic.</key>
@@ -3216,6 +3346,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>麦克风已停止工作。录制将继续，但不含麦克风声音。</string>
 	<key>The picture's file is gone — choose it again with Replace.</key>
 	<string>图片文件已不存在 — 请使用“替换”重新选择。</string>
+	<key>The pointer glides back to where it started, so the video loops without a jump</key>
+	<string>指针会滑回起始位置，让视频无缝循环</string>
 	<key>The recording couldn't be finished — saved the first %@.</key>
 	<string>录制无法完成 — 已存储前 %@。</string>
 	<key>The recording for “%@” is missing</key>
@@ -3230,6 +3362,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>所选文件没有视频轨道。请改为选择视频文件。</string>
 	<key>The selection stays on screen to adjust — drag its edges, nudge it with the arrow keys, then press Return. Hold ⇧ as you release to capture right away.</key>
 	<string>选区会留在屏幕上供你调整 — 拖移边缘、用方向键微调，然后按下 Return 键。松开时按住 ⇧ 可立即截屏。</string>
+	<key>The size of the recording, in pixels.</key>
+	<string>录制内容的尺寸（像素）。</string>
 	<key>The song is shorter than the video</key>
 	<string>歌曲比视频短</string>
 	<key>The song's file is gone — choose it again with Replace.</key>
@@ -3270,6 +3404,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>这台 Mac 没有 ProRes 芯片，重新编码的文件需要一些时间 — 进度会显示要多久。</string>
 	<key>This Week</key>
 	<string>本周</string>
+	<key>This app</key>
+	<string>此应用</string>
 	<key>This list</key>
 	<string>此列表</string>
 	<key>This recording has newer edits than “%@”</key>
@@ -3358,6 +3494,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>转场</string>
 	<key>Translate</key>
 	<string>翻译</string>
+	<key>Transparent background</key>
+	<string>透明背景</string>
 	<key>Trim the clip's end to the playhead (O)</key>
 	<string>将片段结尾修剪到播放头（O）</string>
 	<key>Trim the clip's start to the playhead (I)</key>
@@ -3424,6 +3562,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销添加图像</string>
 	<key>Undo Add Intro Card</key>
 	<string>撤销添加片头卡</string>
+	<key>Undo Add Marker</key>
+	<string>撤销添加标记</string>
 	<key>Undo Add Music</key>
 	<string>撤销添加音乐</string>
 	<key>Undo Add Outro Card</key>
@@ -3516,6 +3656,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销删除高亮</string>
 	<key>Undo Delete Image</key>
 	<string>撤销删除图像</string>
+	<key>Undo Delete Marker</key>
+	<string>撤销删除标记</string>
 	<key>Undo Delete Spotlight</key>
 	<string>撤销删除聚光灯</string>
 	<key>Undo Delete Text</key>
@@ -3540,6 +3682,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销图像样式更改</string>
 	<key>Undo Intro and Outro</key>
 	<string>撤销摄像头片头和片尾</string>
+	<key>Undo Markers</key>
+	<string>撤销标记更改</string>
 	<key>Undo Move %lld Items</key>
 	<string>撤销移动 %lld 个项目</string>
 	<key>Undo Move Arrow</key>
@@ -3590,6 +3734,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销移除录制内容</string>
 	<key>Undo Remove Ums</key>
 	<string>撤销移除语气词</string>
+	<key>Undo Rename Marker</key>
+	<string>撤销重新命名标记</string>
 	<key>Undo Replace Camera Video</key>
 	<string>撤销替换摄像头视频</string>
 	<key>Undo Replace Music</key>
@@ -3624,6 +3770,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销加速空闲片段</string>
 	<key>Undo Split</key>
 	<string>撤销分割</string>
+	<key>Undo Split at Markers</key>
+	<string>撤销在标记处分割</string>
 	<key>Undo Spotlight Style</key>
 	<string>撤销聚光灯样式更改</string>
 	<key>Undo Start Over</key>
@@ -3672,6 +3820,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>选取自定图像</string>
 	<key>Use as My Style</key>
 	<string>用作我的风格</string>
+	<key>Use the largest size that fits (%@ × %@)</key>
+	<string>使用能放下的最大尺寸（%@ × %@）</string>
 	<key>Use this color</key>
 	<string>使用此颜色</string>
 	<key>Use this level for every zoom</key>
@@ -3740,6 +3890,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>找到无线局域网二维码</string>
 	<key>Wide</key>
 	<string>宽幅</string>
+	<key>Width</key>
+	<string>宽度</string>
 	<key>Window</key>
 	<string>窗口</string>
 	<key>Window Capture</key>
@@ -3750,6 +3902,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>窗口截屏只包含窗口本身，不会带入任何遮挡的内容。开启后，截屏会带有透明边距和柔和的投影。</string>
 	<key>Window closed</key>
 	<string>窗口已关闭</string>
+	<key>Window size</key>
+	<string>窗口大小</string>
 	<key>Words light up as they're spoken</key>
 	<string>说到哪个词，哪个词就会亮起</string>
 	<key>Writable</key>
@@ -3766,6 +3920,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>你有 %lld 张截屏的编辑尚未存储。</string>
 	<key>You're all set — LF Studios lives here</key>
 	<string>一切就绪 — LF Studios 就在这里</string>
+	<key>YouTube needs every chapter to be at least 10 seconds long — move or remove markers that are closer together.</key>
+	<string>YouTube 要求每个章节至少 10 秒 — 请移动或移除靠得太近的标记。</string>
+	<key>YouTube shows chapters from 3 on — add a marker or two more.</key>
+	<string>YouTube 至少需要 3 个章节才会显示 — 请再添加一两个标记。</string>
 	<key>YouTube, presentations</key>
 	<string>YouTube、演示文稿</string>
 	<key>Your Mac can't keep up with this recording and is skipping frames. Balanced quality or 30 fps will help.</key>
@@ -3834,6 +3992,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>只能复制缩放和标注</string>
 	<key>a table</key>
 	<string>1 个表格</string>
+	<key>a transparent background</key>
+	<string>透明背景</string>
 	<key>add a zoom</key>
 	<string>添加缩放</string>
 	<key>aim or resize it</key>
@@ -3842,6 +4002,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>所有快捷键</string>
 	<key>captions burned in</key>
 	<string>已嵌入字幕</string>
+	<key>chapters</key>
+	<string>章节</string>
 	<key>cut by editing words</key>
 	<string>通过编辑文字剪辑</string>
 	<key>dips under your voice</key>
@@ -3938,6 +4100,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>找不到“%@”。请将其放回原处，或将其从此视频中移除（“样式”→“录制内容”），然后重新导出。</string>
 	<key>“%@” can't be read — it may be damaged, still being saved, or in a format this Mac can't play. Remove it from this video (Style → Recordings), or put a working copy in its place, then export again.</key>
 	<string>无法读取“%@” — 它可能已损坏、仍在存储中，或采用了这台 Mac 无法播放的格式。请将其从此视频中移除（“样式”→“录制内容”），或用可正常使用的副本替换，然后重新导出。</string>
+	<key>“%@” doesn't let this window be resized.</key>
+	<string>“%@”不允许调整此窗口的大小。</string>
 	<key>“%@” found in %lld of %lld captures</key>
 	<string>在 %2$lld 张截屏中找到“%1$@”（共 %3$lld 张）</string>
 	<key>“%@” is your My Style — Apply my style (⇧⌘Y) puts it on a video</key>
@@ -3950,6 +4114,10 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>此 Mac 上没有“%@”，正在显示内置字体。请安装该字体，或使用“添加字体文件…”添加它的文件。</string>
 	<key>“%@” isn't on this Mac — using the built-in font</key>
 	<string>此 Mac 上没有“%@”，正在使用内置字体</string>
+	<key>“%@” keeps this window at least %@ × %@ pixels, so it can't be made %@ × %@.</key>
+	<string>“%@”要求此窗口至少为 %@ × %@ 像素，因此无法调整为 %@ × %@。</string>
+	<key>“%@” keeps this window at most %@ × %@ pixels, so it can't be made %@ × %@.</key>
+	<string>“%@”限制此窗口最大为 %@ × %@ 像素，因此无法调整为 %@ × %@。</string>
 	<key>“Made with LF Studios” end card (2s)</key>
 	<string>“Made with LF Studios”结尾画面（2 秒）</string>
 	<key>• %lld small notes about recordings that are gone</key>

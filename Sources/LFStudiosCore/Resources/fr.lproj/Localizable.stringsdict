@@ -146,6 +146,22 @@
 			<string>%lld sous-titres</string>
 		</dict>
 	</dict>
+	<key>%lld chapters — players like QuickTime Player list them, and so do editing apps</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>one</key>
+			<string>%lld chapitre — les lecteurs comme QuickTime Player l’affichent, et les logiciels de montage aussi</string>
+			<key>other</key>
+			<string>%lld chapitres — les lecteurs comme QuickTime Player les affichent, et les logiciels de montage aussi</string>
+		</dict>
+	</dict>
 	<key>%lld clicks</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -1008,6 +1024,22 @@
 			<string>%lld temps mort accéléré — %@ gagnées · vérifiez les passages de saisie</string>
 			<key>other</key>
 			<string>%lld temps morts accélérés — %@ gagnées · vérifiez les passages de saisie</string>
+		</dict>
+	</dict>
+	<key>Split at %lld markers</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>one</key>
+			<string>Scindé à %lld marqueur</string>
+			<key>other</key>
+			<string>Scindé à %lld marqueurs</string>
 		</dict>
 	</dict>
 	<key>This replaces all %lld caption lines, including any you edited or typed, with a new transcript in %@.</key>

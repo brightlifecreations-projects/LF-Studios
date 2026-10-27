@@ -1,17 +1,56 @@
 import AppKit
+import AVFoundation
 import Foundation
 
 /// Every export choice, persisted between exports.
 struct VideoExportSettings: Equatable {
     enum Format: String, CaseIterable, Identifiable {
         case mp4
+        case proRes422 = "prores422"
+        case proRes422HQ = "prores422hq"
+        case proRes4444 = "prores4444"
         case gif
 
         var id: String { rawValue }
         var title: String {
             switch self {
             case .mp4: return "MP4" // l10n-ignore: a format name
+            case .proRes422: return "ProRes 422" // l10n-ignore: a format name
+            case .proRes422HQ: return "ProRes 422 HQ" // l10n-ignore: a format name
+            case .proRes4444: return "ProRes 4444" // l10n-ignore: a format name
             case .gif: return "GIF" // l10n-ignore: a format name
+            }
+        }
+
+        /// A movie (MP4 or ProRes), not a GIF.
+        var isMovie: Bool { self != .gif }
+        var isProRes: Bool { proResCodec != nil }
+
+        var proResCodec: AVVideoCodecType? {
+            switch self {
+            case .proRes422: return .proRes422
+            case .proRes422HQ: return .proRes422HQ
+            case .proRes4444: return .proRes4444
+            case .mp4, .gif: return nil
+            }
+        }
+
+        var detail: String? {
+            switch self {
+            case .proRes422: return L("Apple's editing format: big files that keep every detail, for Final Cut Pro, Premiere Pro, and DaVinci Resolve")
+            case .proRes422HQ: return L("Like ProRes 422 with even more detail, for color grading and effects — about half again as big")
+            case .proRes4444: return L("The highest quality, and the only one that can keep transparency")
+            case .mp4, .gif: return nil
+            }
+        }
+
+        /// ProRes bits per second at 1080p, 29.97 fps (Apple's target rates).
+        var proResBitsPerSecond1080p30: Double {
+            switch self {
+            case .proRes422: return 147_000_000
+            case .proRes422HQ: return 220_000_000
+            case .proRes4444: return 330_000_000
+            case .mp4, .gif: return 0
             }
         }
     }
@@ -110,6 +149,16 @@ struct VideoExportSettings: Equatable {
     var burnCaptions: Bool = true
     /// A subtitles file saved next to the video (nil: none).
     var subtitles: VideoSubtitleFormat?
+    /// ProRes 4444 only: no background, so the frame, its shadow, and a
+    /// cut-out camera sit on transparency. Off each time the window opens.
+    var transparentBackground = false
+
+    /// MP4 and ProRes: chapters from the markers. Off each time the window
+    /// opens.
+    var chapters = false
+
+    /// The file keeps an alpha channel.
+    var keepsTransparency: Bool { format == .proRes4444 && transparentBackground }
 
     static let frameRates = [24, 30, 60]
     static let gifFrameRates = [10, 15, 20, 24]
@@ -147,7 +196,13 @@ struct VideoExportSettings: Equatable {
         return nil
     }
 
-    var fileExtension: String { format == .gif ? "gif" : "mp4" }
+    var fileExtension: String {
+        switch format {
+        case .gif: return "gif"
+        case .mp4: return "mp4"
+        case .proRes422, .proRes422HQ, .proRes4444: return "mov"
+        }
+    }
     var effectiveFrameRate: Int { format == .gif ? gifFPS : fps }
 
     /// Output pixel size for a canvas: the short side hits the chosen
@@ -179,10 +234,19 @@ struct VideoExportSettings: Equatable {
     /// Upper-bound size estimate (screen content usually lands well under).
     func estimatedBytes(duration: Double, canvas: CGSize, hasAudio: Bool) -> Int64 {
         let size = outputSize(canvas: canvas)
-        let seconds = max(duration, 0) + (endCard && format == .mp4 ? VideoDemoExporter.endCardDuration : 0)
+        let seconds = max(duration, 0) + (endCard && format.isMovie ? VideoDemoExporter.endCardDuration : 0)
         if format == .gif {
             let frames = seconds * Double(gifFPS)
             return Int64(frames * Double(size.width * size.height) * 0.12)
+        }
+        if format.isProRes {
+            // ProRes runs at a steady rate for its size and frame rate;
+            // the sound is uncompressed (48 kHz, 24-bit stereo).
+            let pixels = Double(size.width * size.height) / (1920 * 1080)
+            let rate = Double(max(fps, 1)) / 29.97
+            let video = format.proResBitsPerSecond1080p30 * pixels * rate * seconds / 8
+            let audio = hasAudio ? 48_000.0 * 2 * 3 * seconds : 0
+            return Int64(video + audio)
         }
         let video = Double(videoBitrate(for: size)) * seconds / 8
         let audio = hasAudio ? 192_000.0 * seconds / 8 : 0

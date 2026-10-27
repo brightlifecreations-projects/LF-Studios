@@ -60,8 +60,12 @@
 	<string>%@ · %lld fps</string>
 	<key>%@ · on your clipboard — paste it anywhere</key>
 	<string>%@ · in der Zwischenablage – überall einsetzen</string>
+	<key>%@ × %@ doesn't fit on this display</key>
+	<string>%@ × %@ passt nicht auf diesen Bildschirm</string>
 	<key>%@ × %@ px</key>
 	<string>%@ × %@ px</string>
+	<key>%@ × %@ — window %@ × %@ on this display</key>
+	<string>%@ × %@ – Fenster %@ × %@ auf diesem Bildschirm</string>
 	<key>%@ — %@</key>
 	<string>%@ – %@</string>
 	<key>%@ — LF Studios lives in your menu bar</key>
@@ -72,6 +76,8 @@
 	<string>%@ – noch etwa eine Minute</string>
 	<key>%@ — click to change</key>
 	<string>%@ – zum Ändern klicken</string>
+	<key>%@ — click to jump here, double-click to rename</key>
+	<string>%@ – klicken, um hierhin zu springen, doppelklicken zum Umbenennen</string>
 	<key>%@ → %@ — the part you ⇧-dragged on the timeline</key>
 	<string>%@ → %@ – der Teil, den du auf der Zeitleiste mit ⇧ markiert hast</string>
 	<key>%@, %@</key>
@@ -130,14 +136,22 @@
 	<string>Ein Bericht hilft, das zu beheben. Du siehst alles, bevor es gesendet wird, und er enthält nie deine Bildschirmfotos oder Aufnahmen.</string>
 	<key>A second caption track you can show, burn in, or save as subtitles. Translated on this Mac — nothing is uploaded.</key>
 	<string>Eine zweite Untertitelspur, die du anzeigen, einbrennen oder als Untertiteldatei sichern kannst. Übersetzt auf diesem Mac – nichts wird hochgeladen.</string>
+	<key>A short button column, a pill button by the caption, a search bar at the top</key>
+	<string>Eine kurze Knopfspalte, ein runder Knopf beim Bildtext, oben ein Suchfeld</string>
+	<key>A soft inner edge instead of a shadow below</key>
+	<string>Ein weicher innerer Rand statt eines Schattens darunter</string>
 	<key>A soft shadow under the letters</key>
 	<string>Ein weicher Schatten unter den Buchstaben</string>
 	<key>A song under the whole video — it loops to fill, fades in and out, and dips while you talk. Use music you have the rights to.</key>
 	<string>Ein Song unter dem ganzen Video – er wiederholt sich bei Bedarf, wird ein- und ausgeblendet und leiser, während du sprichst. Verwende nur Musik, für die du die Rechte hast.</string>
 	<key>A subtitles file for YouTube and web players (.srt), or for the web (.vtt) — follows your cuts</key>
 	<string>Eine Untertiteldatei für YouTube und Web-Player (.srt) oder fürs Web (.vtt) – folgt deinen Schnitten</string>
+	<key>A taller button column, a spinning-disc spot, a bottom navigation bar</key>
+	<string>Eine höhere Knopfspalte, ein Platz für eine drehende Scheibe, unten eine Navigationsleiste</string>
 	<key>A video needs at least one clip</key>
 	<string>Ein Video braucht mindestens einen Clip</string>
+	<key>A window that size would be bigger than the screen. The largest of the same shape that fits is %@ × %@.</key>
+	<string>Ein so großes Fenster wäre größer als der Bildschirm. Die größte passende Größe mit derselben Form ist %@ × %@.</string>
 	<key>About</key>
 	<string>Info</string>
 	<key>About %lld min left</key>
@@ -166,6 +180,10 @@
 	<string>Bild oder Logo hinzufügen …</string>
 	<key>Add Intro Card</key>
 	<string>Intro-Karte hinzufügen</string>
+	<key>Add Marker</key>
+	<string>Marker setzen</string>
+	<key>Add Marker While Recording</key>
+	<string>Marker beim Aufzeichnen setzen</string>
 	<key>Add Music…</key>
 	<string>Musik hinzufügen …</string>
 	<key>Add Outro Card</key>
@@ -178,6 +196,14 @@
 	<string>Zoom an der Abspielposition hinzufügen</string>
 	<key>Add a caption at the playhead</key>
 	<string>Untertitel an der Abspielposition hinzufügen</string>
+	<key>Add a marker</key>
+	<string>Marker setzen</string>
+	<key>Add a marker (%@)</key>
+	<string>Marker setzen (%@)</string>
+	<key>Add a marker at the playhead — markers become chapters</key>
+	<string>Marker an der Abspielposition setzen – Marker werden zu Kapiteln</string>
+	<key>Add a marker — set a shortcut in Settings → Shortcuts</key>
+	<string>Marker setzen – einen Kurzbefehl legst du unter „Einstellungen“ → „Kurzbefehle“ fest</string>
 	<key>Add a zoom at the playhead (Z)</key>
 	<string>Zoom an der Abspielposition hinzufügen (Z)</string>
 	<key>Add another recording or video after this one — LF Studios recordings keep their pointer, clicks, and shortcuts.</key>
@@ -188,10 +214,14 @@
 	<string>Weichzeichnen an der Abspielposition hinzufügen (B)</string>
 	<key>Add camera video…</key>
 	<string>Kameravideo hinzufügen …</string>
+	<key>Add chapters from markers</key>
+	<string>Kapitel aus Markern hinzufügen</string>
 	<key>Add highlight at the playhead (H)</key>
 	<string>Markierung an der Abspielposition hinzufügen (H)</string>
 	<key>Add image at the playhead</key>
 	<string>Bild an der Abspielposition hinzufügen</string>
+	<key>Add markers first — each one starts a chapter</key>
+	<string>Setze zuerst Marker – jeder beginnt ein Kapitel</string>
 	<key>Add spotlight at the playhead</key>
 	<string>Fokus an der Abspielposition hinzufügen</string>
 	<key>Add text at the playhead (T)</key>
@@ -246,6 +276,10 @@
 	<string>Immer den Pfeil zeigen</string>
 	<key>Amber Fold</key>
 	<string>Bernsteinfalte</string>
+	<key>Angle</key>
+	<string>Winkel</string>
+	<key>Angle, distance, softness, opacity, color, and an inner edge</key>
+	<string>Winkel, Abstand, Weichheit, Deckkraft, Farbe und ein innerer Rand</string>
 	<key>Annotate Last Screenshot</key>
 	<string>Letztes Bildschirmfoto beschriften</string>
 	<key>Annotation</key>
@@ -270,6 +304,8 @@
 	<string>Apples Bildschirmfoto-Kurzbefehle deaktiviert. Die Kurzbefehle von LF Studios sind jetzt aktiv.</string>
 	<key>Apple screenshot shortcuts restored.</key>
 	<string>Apples Bildschirmfoto-Kurzbefehle wiederhergestellt.</string>
+	<key>Apple's editing format: big files that keep every detail, for Final Cut Pro, Premiere Pro, and DaVinci Resolve</key>
+	<string>Apples Format für den Schnitt: große Dateien, die jedes Detail behalten – für Final Cut Pro, Premiere Pro und DaVinci Resolve</string>
 	<key>Apple's screenshot shortcuts still own ⌘⇧3/4/5 — captures can double-trigger.</key>
 	<string>Apples Bildschirmfoto-Kurzbefehle belegen noch ⌘⇧3/4/5 – Bildschirmfotos können doppelt ausgelöst werden.</string>
 	<key>Apple's shortcuts are out of the way.</key>
@@ -408,6 +444,8 @@
 	<string>Integriert (San Francisco)</string>
 	<key>Burn captions into the video</key>
 	<string>Untertitel ins Video einbrennen</string>
+	<key>Buttons on the right, caption bottom-left, tabs at the top</key>
+	<string>Knöpfe rechts, Bildtext unten links, Tabs oben</string>
 	<key>Call</key>
 	<string>Anrufen</string>
 	<key>Callout</key>
@@ -562,6 +600,12 @@
 	<string>Karten nutzen deinen Hintergrund, und die Zeitleiste wird für sie länger. Die Endkarte „Made with LF Studios“ ist davon getrennt – du findest sie in den Exportoptionen.</string>
 	<key>Center</key>
 	<string>Zentrieren</string>
+	<key>Chapters</key>
+	<string>Kapitel</string>
+	<key>Chapters as text (“0:00 Start”) for a YouTube description</key>
+	<string>Kapitel als Text („0:00 Start“) für eine YouTube-Beschreibung</string>
+	<key>Chapters copied — paste them into the video's description</key>
+	<string>Kapitel kopiert – füge sie in die Beschreibung des Videos ein</string>
 	<key>Check</key>
 	<string>Prüfen</string>
 	<key>Check for Updates</key>
@@ -724,6 +768,8 @@
 	<string>%@ kopieren</string>
 	<key>Copy (⌘C)</key>
 	<string>Kopieren (⌘C)</string>
+	<key>Copy Chapters</key>
+	<string>Kapitel kopieren</string>
 	<key>Copy Current Frame</key>
 	<string>Aktuelles Bild kopieren</string>
 	<key>Copy Path</key>
@@ -782,6 +828,8 @@
 	<string>Der Übergabeordner konnte nicht erstellt werden – %@</string>
 	<key>Couldn't create the video file.</key>
 	<string>Die Videodatei konnte nicht erstellt werden.</string>
+	<key>Couldn't find that window to resize it. Choose it again and try once more.</key>
+	<string>Das Fenster wurde nicht gefunden. Wähle es noch einmal aus und versuche es erneut.</string>
 	<key>Couldn't finish the file</key>
 	<string>Die Datei konnte nicht abgeschlossen werden</string>
 	<key>Couldn't make captions</key>
@@ -872,6 +920,8 @@
 	<string>Zeiger, Klicks und Tastaturkurzbefehle</string>
 	<key>Custom</key>
 	<string>Eigene</string>
+	<key>Custom Size…</key>
+	<string>Eigene Größe …</string>
 	<key>Custom color</key>
 	<string>Eigene Farbe</string>
 	<key>Custom color #%@</key>
@@ -910,6 +960,8 @@
 	<string>Bildschirmfotos löschen</string>
 	<key>Delete Clip</key>
 	<string>Clip löschen</string>
+	<key>Delete Marker</key>
+	<string>Marker löschen</string>
 	<key>Delete Screenshot</key>
 	<string>Bildschirmfoto löschen</string>
 	<key>Delete Screenshots</key>
@@ -968,6 +1020,8 @@
 	<string>Überblenden</string>
 	<key>Dissolve Between Clips</key>
 	<string>Zwischen Clips überblenden</string>
+	<key>Distance</key>
+	<string>Abstand</string>
 	<key>Do you want to review them before quitting?</key>
 	<string>Möchtest du sie vor dem Beenden durchsehen?</string>
 	<key>Docs, slides</key>
@@ -1110,6 +1164,8 @@
 	<string>Gefällt dir LF Studios? Klicke, um ihm auf GitHub einen Stern zu geben ★</string>
 	<key>Enjoying LF Studios? Star it on GitHub so more people find it.</key>
 	<string>Gefällt dir LF Studios? Gib ihm einen Stern auf GitHub, damit mehr Leute es finden.</string>
+	<key>Enter a width and a height from %@ to %@ pixels.</key>
+	<string>Gib eine Breite und eine Höhe von %@ bis %@ Pixeln ein.</string>
 	<key>Esc</key>
 	<string>Esc</string>
 	<key>Esc or Done finishes</key>
@@ -1230,6 +1286,8 @@
 	<string>Im Transkript suchen</string>
 	<key>Find “%@”</key>
 	<string>„%@“ suchen</string>
+	<key>Fine-tune shadow</key>
+	<string>Schatten feinjustieren</string>
 	<key>Finish and Quit</key>
 	<string>Abschließen und beenden</string>
 	<key>Finish or cancel the current recording setup</key>
@@ -1290,6 +1348,8 @@
 	<string>Ganzes Bild (ohne Hintergrund)</string>
 	<key>Full original files</key>
 	<string>Vollständige Originale</string>
+	<key>Full rail</key>
+	<string>Volle Leiste</string>
 	<key>Full screen: %@</key>
 	<string>Vollbild: %@</string>
 	<key>Full-Camera Intro and Outro</key>
@@ -1308,6 +1368,8 @@
 	<string>Wird vorbereitet …</string>
 	<key>Glacier</key>
 	<string>Gletscher</string>
+	<key>Glide time</key>
+	<string>Gleitdauer</string>
 	<key>Glides without lagging behind — clicks still land exactly.</key>
 	<string>Gleitet ohne Verzögerung – Klicks sitzen trotzdem genau.</string>
 	<key>Go to End</key>
@@ -1338,6 +1400,8 @@
 	<string>Schnitt</string>
 	<key>Health</key>
 	<string>Status</string>
+	<key>Height</key>
+	<string>Höhe</string>
 	<key>Hidden</key>
 	<string>Verborgen</string>
 	<key>Hidden network</key>
@@ -1348,6 +1412,8 @@
 	<string>Schreibtischsymbole ausblenden</string>
 	<key>Hide Icon</key>
 	<string>Symbol ausblenden</string>
+	<key>Hide Phone Overlay</key>
+	<string>Handy-Overlay ausblenden</string>
 	<key>Hide desktop icons while capturing</key>
 	<string>Schreibtischsymbole beim Aufnehmen ausblenden</string>
 	<key>Hide the Menu Bar Icon?</key>
@@ -1412,6 +1478,8 @@
 	<string>Fertiges Video beilegen</string>
 	<key>Includes: %@</key>
 	<string>Enthält: %@</string>
+	<key>Inset</key>
+	<string>Innen</string>
 	<key>Inspector tabs</key>
 	<string>Inspektor-Tabs</string>
 	<key>Instagram, LinkedIn</key>
@@ -1546,6 +1614,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Layout</string>
 	<key>Layouts</key>
 	<string>Layouts</string>
+	<key>Leaves out the background: the video, its rounded corners and shadow, and a cut-out camera sit on transparency, ready to place over anything</key>
+	<string>Lässt den Hintergrund weg: Das Video mit seinen abgerundeten Ecken und dem Schatten und eine freigestellte Kamera liegen auf Transparenz – bereit, über alles gelegt zu werden</string>
 	<key>Left</key>
 	<string>Links</string>
 	<key>Left out:</key>
@@ -1560,6 +1630,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Leicht</string>
 	<key>Light Mode</key>
 	<string>Hell</string>
+	<key>Like ProRes 422 with even more detail, for color grading and effects — about half again as big</key>
+	<string>Wie ProRes 422 mit noch mehr Detail, für Farbkorrektur und Effekte – etwa anderthalbmal so groß</string>
 	<key>Lime Signal</key>
 	<string>Limettensignal</string>
 	<key>Line</key>
@@ -1594,6 +1666,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Suchen …</string>
 	<key>Look</key>
 	<string>Aussehen</string>
+	<key>Loop</key>
+	<string>Schleife</string>
 	<key>Loop to fill</key>
 	<string>Bis zum Ende wiederholen</string>
 	<key>Lower under your voice</key>
@@ -1606,6 +1680,14 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Sparsamer machen: %@, %@ fps</string>
 	<key>Manage</key>
 	<string>Verwalten</string>
+	<key>Marker</key>
+	<string>Marker</string>
+	<key>Marker %lld</key>
+	<string>Marker %lld</string>
+	<key>Marker name</key>
+	<string>Name des Markers</string>
+	<key>Marker: %@</key>
+	<string>Marker: %@</string>
 	<key>Match the recording</key>
 	<string>Wie die Aufnahme</string>
 	<key>Max</key>
@@ -1742,6 +1824,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Nebel</string>
 	<key>Needed to capture the screen. macOS will ask once.</key>
 	<string>Nötig, um den Bildschirm aufzunehmen. macOS fragt einmal nach.</string>
+	<key>Needs a cursor LF Studios draws — this one is part of the video</key>
+	<string>Braucht einen Zeiger, den LF Studios zeichnet – dieser ist Teil des Videos</string>
 	<key>Neo Pop</key>
 	<string>Neo-Pop</string>
 	<key>Network</key>
@@ -2000,6 +2084,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Telefon</string>
 	<key>Phone QR found</key>
 	<string>QR-Code mit Telefonnummer gefunden</string>
+	<key>Phone overlay</key>
+	<string>Handy-Overlay</string>
 	<key>Pick a preset as My Style (Presets ▸ Edit Presets ▸ Use as My Style), then one click puts it on any video.</key>
 	<string>Wähle eine Voreinstellung als „Mein Stil“ (Voreinstellungen ▸ Voreinstellungen bearbeiten ▸ Als „Mein Stil“ verwenden), dann bringt ein Klick sie auf jedes Video.</string>
 	<key>Picked up where you left off</key>
@@ -2078,6 +2164,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Gedrückt bei %@. Drücke ⌫, um ihn im Video auszublenden – praktisch bei einem versehentlichen ⌘Tab.</string>
 	<key>Preview</key>
 	<string>Vorschau</string>
+	<key>Preview how a phone app's buttons and captions sit over this video, with the covered parts shaded — never in the export</key>
+	<string>Zeigt in der Vorschau, wie die Knöpfe und Texte einer Handy-App über diesem Video liegen, die verdeckten Teile abgedunkelt – nie im Export</string>
 	<key>Preview muted — the export keeps its sound</key>
 	<string>Vorschau stumm – der Export behält seinen Ton</string>
 	<key>Preview sound on</key>
@@ -2222,6 +2310,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Hinzufügen des Bilds wiederholen</string>
 	<key>Redo Add Intro Card</key>
 	<string>Hinzufügen der Intro-Karte wiederholen</string>
+	<key>Redo Add Marker</key>
+	<string>Setzen des Markers wiederholen</string>
 	<key>Redo Add Music</key>
 	<string>Hinzufügen der Musik wiederholen</string>
 	<key>Redo Add Outro Card</key>
@@ -2312,6 +2402,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Löschen der Markierung wiederholen</string>
 	<key>Redo Delete Image</key>
 	<string>Löschen des Bilds wiederholen</string>
+	<key>Redo Delete Marker</key>
+	<string>Löschen des Markers wiederholen</string>
 	<key>Redo Delete Spotlight</key>
 	<string>Löschen des Fokus wiederholen</string>
 	<key>Redo Delete Text</key>
@@ -2336,6 +2428,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Stiländerung des Bilds wiederholen</string>
 	<key>Redo Intro and Outro</key>
 	<string>Kamera für Intro und Outro wiederholen</string>
+	<key>Redo Markers</key>
+	<string>Änderung der Marker wiederholen</string>
 	<key>Redo Move Arrow</key>
 	<string>Verschieben des Pfeils wiederholen</string>
 	<key>Redo Move Blur</key>
@@ -2384,6 +2478,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Entfernen der Aufnahme wiederholen</string>
 	<key>Redo Remove Ums</key>
 	<string>Entfernen der Füllwörter wiederholen</string>
+	<key>Redo Rename Marker</key>
+	<string>Umbenennen des Markers wiederholen</string>
 	<key>Redo Replace Camera Video</key>
 	<string>Kameravideo ersetzen wiederholen</string>
 	<key>Redo Replace Music</key>
@@ -2418,6 +2514,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Beschleunigen des Leerlaufs wiederholen</string>
 	<key>Redo Split</key>
 	<string>Teilen wiederholen</string>
+	<key>Redo Split at Markers</key>
+	<string>Teilen an den Markern wiederholen</string>
 	<key>Redo Spotlight Style</key>
 	<string>Stiländerung des Fokus wiederholen</string>
 	<key>Redo Start Over</key>
@@ -2500,6 +2598,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Entfernt Zittern, bleibt aber flott.</string>
 	<key>Rename</key>
 	<string>Umbenennen</string>
+	<key>Rename Marker…</key>
+	<string>Marker umbenennen …</string>
 	<key>Rename Preset</key>
 	<string>Voreinstellung umbenennen</string>
 	<key>Rename…</key>
@@ -2534,6 +2634,10 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Auf den LF-Studios-Stil zurücksetzen</string>
 	<key>Resize</key>
 	<string>Größe ändern</string>
+	<key>Resize the window so the recording is an exact size</key>
+	<string>Ändert die Fenstergröße, damit die Aufnahme genau diese Größe hat</string>
+	<key>Resizing another app's window needs Accessibility access: allow LF Studios in System Settings → Privacy &amp; Security → Accessibility, then choose the size again.</key>
+	<string>Um das Fenster einer anderen App zu ändern, braucht LF Studios Zugriff auf die Bedienungshilfen: Erlaube LF Studios unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherheit“ → „Bedienungshilfen“ und wähle die Größe dann noch einmal.</string>
 	<key>Resolution</key>
 	<string>Auflösung</string>
 	<key>Restart LF Studios to use %@?</key>
@@ -2550,6 +2654,10 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Alle %lld wiederherstellen</string>
 	<key>Restore Apple Shortcuts</key>
 	<string>Apple-Kurzbefehle wiederherstellen</string>
+	<key>Restore size</key>
+	<string>Größe wiederherstellen</string>
+	<key>Restore size — put the window back as it was</key>
+	<string>Größe wiederherstellen – das Fenster wieder so, wie es war</string>
 	<key>Restored %@</key>
 	<string>%@ wiederhergestellt</string>
 	<key>Resume Recording</key>
@@ -2558,6 +2666,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Aufzeichnung fortsetzen</string>
 	<key>Resume recording (%@)</key>
 	<string>Aufzeichnung fortsetzen (%@)</string>
+	<key>Return to start at the end</key>
+	<string>Am Ende zum Anfang zurück</string>
 	<key>Reveal</key>
 	<string>Zeigen</string>
 	<key>Reveal in Finder</key>
@@ -2774,6 +2884,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Schatten</string>
 	<key>Shadow and transparent padding</key>
 	<string>Schatten und transparenter Rand</string>
+	<key>Shadow color</key>
+	<string>Schattenfarbe</string>
 	<key>Shape</key>
 	<string>Form</string>
 	<key>Share</key>
@@ -2860,6 +2972,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Zufälligen Hintergrund wählen</string>
 	<key>Side by side</key>
 	<string>Nebeneinander</string>
+	<key>Side rail</key>
+	<string>Seitenleiste</string>
 	<key>Silences over a second get shortened — except while you click, type, scroll, or move the pointer, so the demo itself is never cut</key>
 	<string>Stille über einer Sekunde wird gekürzt – außer während du klickst, tippst, scrollst oder den Zeiger bewegst, damit die Demo selbst nie geschnitten wird</string>
 	<key>Silences over a second get shortened — except while you move the pointer, click, or press a shortcut</key>
@@ -2896,6 +3010,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Social-Media-Feeds</string>
 	<key>Soft streaks on fast moves</key>
 	<string>Weiche Schlieren bei schnellen Bewegungen</string>
+	<key>Softness</key>
+	<string>Weichheit</string>
 	<key>Solid Color</key>
 	<string>Einfarbig</string>
 	<key>Solid color</key>
@@ -2924,12 +3040,16 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Tempo dieses Abschnitts</string>
 	<key>Split</key>
 	<string>Teilen</string>
+	<key>Split at Markers</key>
+	<string>An Markern teilen</string>
 	<key>Split at Playhead</key>
 	<string>An der Abspielposition teilen</string>
 	<key>Split at playhead</key>
 	<string>An der Abspielposition teilen</string>
 	<key>Split at the playhead (S)</key>
 	<string>An der Abspielposition teilen (S)</string>
+	<key>Split the clips at every marker</key>
+	<string>Die Clips an jedem Marker teilen</string>
 	<key>Split the video (S) to make cuts; each can dissolve or dip to black.</key>
 	<string>Teile das Video (S), um Schnitte zu setzen; jeder kann überblenden oder schwarz abblenden.</string>
 	<key>Spoken word</key>
@@ -2940,6 +3060,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Form des Fokus</string>
 	<key>Star on GitHub</key>
 	<string>Stern vergeben</string>
+	<key>Start</key>
+	<string>Start</string>
 	<key>Start / end</key>
 	<string>Anfang/Ende</string>
 	<key>Start Over</key>
@@ -3088,6 +3210,10 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Der Export wurde unerwartet beendet (%@). Versuche es erneut – wenn das weiterhin passiert, exportiere mit niedrigerer Auflösung oder in H.264.</string>
 	<key>The handoff is ready</key>
 	<string>Die Übergabe ist fertig</string>
+	<key>The highest quality, and the only one that can keep transparency</key>
+	<string>Die höchste Qualität und die einzige, die Transparenz behalten kann</string>
+	<key>The markers are already at clip edges</key>
+	<string>Die Marker liegen schon an Clipgrenzen</string>
 	<key>The menu bar icon is LF Studios' main entry point. While it is hidden, open LF Studios again from Finder, Launchpad, or Spotlight to bring these Preferences back.</key>
 	<string>Über das Symbol in der Menüleiste erreichst du LF Studios. Solange es ausgeblendet ist, öffne LF Studios erneut über den Finder, das Launchpad oder Spotlight, um diese Einstellungen wieder aufzurufen.</string>
 	<key>The microphone couldn't start, so this recording has no mic.</key>
@@ -3096,6 +3222,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Das Mikrofon funktioniert nicht mehr. Die Aufzeichnung läuft ohne Mikrofon weiter.</string>
 	<key>The picture's file is gone — choose it again with Replace.</key>
 	<string>Die Bilddatei fehlt – wähle sie mit „Ersetzen“ erneut aus.</string>
+	<key>The pointer glides back to where it started, so the video loops without a jump</key>
+	<string>Der Zeiger gleitet dorthin zurück, wo er begann – so läuft das Video ohne Sprung in Schleife</string>
 	<key>The recording couldn't be finished — saved the first %@.</key>
 	<string>Die Aufnahme konnte nicht abgeschlossen werden – die ersten %@ sind gesichert.</string>
 	<key>The recording for “%@” is missing</key>
@@ -3110,6 +3238,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Die ausgewählte Datei hat keine Videospur. Wähle stattdessen eine Videodatei.</string>
 	<key>The selection stays on screen to adjust — drag its edges, nudge it with the arrow keys, then press Return. Hold ⇧ as you release to capture right away.</key>
 	<string>Die Auswahl bleibt zum Anpassen auf dem Bildschirm – ziehe an den Rändern, verschiebe sie mit den Pfeiltasten und drücke dann den Zeilenschalter. Halte beim Loslassen ⇧ gedrückt, um sofort aufzunehmen.</string>
+	<key>The size of the recording, in pixels.</key>
+	<string>Die Größe der Aufnahme in Pixeln.</string>
 	<key>The song is shorter than the video</key>
 	<string>Der Song ist kürzer als das Video</string>
 	<key>The song's file is gone — choose it again with Replace.</key>
@@ -3150,6 +3280,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Dieser Mac hat keinen ProRes-Chip, die neu codierten Dateien dauern deshalb eine Weile – der Fortschritt zeigt, wie lange.</string>
 	<key>This Week</key>
 	<string>Diese Woche</string>
+	<key>This app</key>
+	<string>Diese App</string>
 	<key>This list</key>
 	<string>Diese Liste</string>
 	<key>This recording has newer edits than “%@”</key>
@@ -3236,6 +3368,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Übergänge</string>
 	<key>Translate</key>
 	<string>Übersetzen</string>
+	<key>Transparent background</key>
+	<string>Transparenter Hintergrund</string>
 	<key>Trim the clip's end to the playhead (O)</key>
 	<string>Clipende auf die Abspielposition trimmen (O)</string>
 	<key>Trim the clip's start to the playhead (I)</key>
@@ -3302,6 +3436,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Hinzufügen des Bilds widerrufen</string>
 	<key>Undo Add Intro Card</key>
 	<string>Hinzufügen der Intro-Karte widerrufen</string>
+	<key>Undo Add Marker</key>
+	<string>Setzen des Markers widerrufen</string>
 	<key>Undo Add Music</key>
 	<string>Hinzufügen der Musik widerrufen</string>
 	<key>Undo Add Outro Card</key>
@@ -3392,6 +3528,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Löschen der Markierung widerrufen</string>
 	<key>Undo Delete Image</key>
 	<string>Löschen des Bilds widerrufen</string>
+	<key>Undo Delete Marker</key>
+	<string>Löschen des Markers widerrufen</string>
 	<key>Undo Delete Spotlight</key>
 	<string>Löschen des Fokus widerrufen</string>
 	<key>Undo Delete Text</key>
@@ -3416,6 +3554,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Stiländerung des Bilds widerrufen</string>
 	<key>Undo Intro and Outro</key>
 	<string>Kamera für Intro und Outro widerrufen</string>
+	<key>Undo Markers</key>
+	<string>Änderung der Marker widerrufen</string>
 	<key>Undo Move Arrow</key>
 	<string>Verschieben des Pfeils widerrufen</string>
 	<key>Undo Move Blur</key>
@@ -3464,6 +3604,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Entfernen der Aufnahme widerrufen</string>
 	<key>Undo Remove Ums</key>
 	<string>Entfernen der Füllwörter widerrufen</string>
+	<key>Undo Rename Marker</key>
+	<string>Umbenennen des Markers widerrufen</string>
 	<key>Undo Replace Camera Video</key>
 	<string>Kameravideo ersetzen widerrufen</string>
 	<key>Undo Replace Music</key>
@@ -3498,6 +3640,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Beschleunigen des Leerlaufs widerrufen</string>
 	<key>Undo Split</key>
 	<string>Teilen widerrufen</string>
+	<key>Undo Split at Markers</key>
+	<string>Teilen an den Markern widerrufen</string>
 	<key>Undo Spotlight Style</key>
 	<string>Stiländerung des Fokus widerrufen</string>
 	<key>Undo Start Over</key>
@@ -3546,6 +3690,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Eigenes Bild auswählen</string>
 	<key>Use as My Style</key>
 	<string>Als „Mein Stil“ verwenden</string>
+	<key>Use the largest size that fits (%@ × %@)</key>
+	<string>Größte passende Größe verwenden (%@ × %@)</string>
 	<key>Use this color</key>
 	<string>Diese Farbe verwenden</string>
 	<key>Use this level for every zoom</key>
@@ -3614,6 +3760,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>QR-Code mit WLAN gefunden</string>
 	<key>Wide</key>
 	<string>Breit</string>
+	<key>Width</key>
+	<string>Breite</string>
 	<key>Window</key>
 	<string>Fenster</string>
 	<key>Window Capture</key>
@@ -3624,6 +3772,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Fensteraufnahmen sind freigestellt – nichts Überlappendes scheint durch. Ist dies aktiviert, erhalten sie einen transparenten Rand und einen weichen Schlagschatten.</string>
 	<key>Window closed</key>
 	<string>Fenster geschlossen</string>
+	<key>Window size</key>
+	<string>Fenstergröße</string>
 	<key>Words light up as they're spoken</key>
 	<string>Wörter leuchten auf, während sie gesprochen werden</string>
 	<key>Writable</key>
@@ -3638,6 +3788,10 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Du kannst das schließen – die Übergabe läuft weiter.</string>
 	<key>You're all set — LF Studios lives here</key>
 	<string>Alles bereit – LF Studios findest du hier</string>
+	<key>YouTube needs every chapter to be at least 10 seconds long — move or remove markers that are closer together.</key>
+	<string>YouTube braucht Kapitel von mindestens 10 Sekunden – verschiebe oder entferne Marker, die zu nah beieinanderliegen.</string>
+	<key>YouTube shows chapters from 3 on — add a marker or two more.</key>
+	<string>YouTube zeigt Kapitel ab 3 Stück – setze noch ein, zwei Marker.</string>
 	<key>YouTube, presentations</key>
 	<string>YouTube, Präsentationen</string>
 	<key>Your Mac can't keep up with this recording and is skipping frames. Balanced quality or 30 fps will help.</key>
@@ -3702,6 +3856,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Nur Zooms und Beschriftungen lassen sich duplizieren</string>
 	<key>a table</key>
 	<string>eine Tabelle</string>
+	<key>a transparent background</key>
+	<string>ein transparenter Hintergrund</string>
 	<key>add a zoom</key>
 	<string>Zoom hinzufügen</string>
 	<key>aim or resize it</key>
@@ -3710,6 +3866,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>alle Kurzbefehle</string>
 	<key>captions burned in</key>
 	<string>eingebrannte Untertitel</string>
+	<key>chapters</key>
+	<string>Kapitel</string>
 	<key>cut by editing words</key>
 	<string>per Text schneiden</string>
 	<key>dips under your voice</key>
@@ -3806,6 +3964,8 @@ Du kannst Apples Kurzbefehle jederzeit unter „Systemeinstellungen“ → „Ta
 	<string>„%@“ wurde nicht gefunden. Lege die Datei an ihren Ort zurück oder entferne sie aus diesem Video („Stil“ → „Aufnahmen“) und exportiere erneut.</string>
 	<key>“%@” can't be read — it may be damaged, still being saved, or in a format this Mac can't play. Remove it from this video (Style → Recordings), or put a working copy in its place, then export again.</key>
 	<string>„%@“ kann nicht gelesen werden – die Datei ist eventuell beschädigt, wird noch gesichert oder hat ein Format, das dieser Mac nicht abspielen kann. Entferne sie aus diesem Video („Stil“ → „Aufnahmen“) oder ersetze sie durch eine funktionierende Kopie und exportiere erneut.</string>
+	<key>“%@” doesn't let this window be resized.</key>
+	<string>„%@“ lässt die Größe dieses Fensters nicht ändern.</string>
 	<key>“%@” found in %lld of %lld captures</key>
 	<string>„%1$@“ in %2$lld von %3$lld Bildschirmfotos gefunden</string>
 	<key>“%@” is your My Style — Apply my style (⇧⌘Y) puts it on a video</key>
@@ -3818,6 +3978,10 @@ Du kannst Apples Kurzbefehle jederzeit unter „Systemeinstellungen“ → „Ta
 	<string>„%@“ ist auf diesem Mac nicht vorhanden – die integrierte Schrift wird angezeigt. Installiere sie oder füge ihre Datei mit „Schriftdatei hinzufügen …“ hinzu.</string>
 	<key>“%@” isn't on this Mac — using the built-in font</key>
 	<string>„%@“ ist auf diesem Mac nicht vorhanden – die integrierte Schrift wird verwendet</string>
+	<key>“%@” keeps this window at least %@ × %@ pixels, so it can't be made %@ × %@.</key>
+	<string>„%@“ hält dieses Fenster mindestens %@ × %@ Pixel groß, daher kann es nicht %@ × %@ werden.</string>
+	<key>“%@” keeps this window at most %@ × %@ pixels, so it can't be made %@ × %@.</key>
+	<string>„%@“ hält dieses Fenster höchstens %@ × %@ Pixel groß, daher kann es nicht %@ × %@ werden.</string>
 	<key>“Made with LF Studios” end card (2s)</key>
 	<string>Endkarte „Made with LF Studios“ (2 s)</string>
 	<key>⇧-drag</key>

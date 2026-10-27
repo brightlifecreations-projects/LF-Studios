@@ -142,7 +142,11 @@ struct VideoExportSheet: View {
         VStack(alignment: .leading, spacing: 16) {
             VideoSegmented(options: VideoExportSettings.Format.allCases.map { ($0, $0.title) }, selection: $model.exportSettings.format)
 
-            if settings.format == .mp4 {
+            if let detail = settings.format.detail {
+                note(detail)
+            }
+
+            if settings.format.isMovie {
                 row(L("Resolution")) {
                     VideoSegmented(options: VideoExportSettings.Resolution.allCases.map { ($0, $0.title) }, selection: $model.exportSettings.resolution)
                 }
@@ -150,6 +154,15 @@ struct VideoExportSheet: View {
                     // "fps" is the same in every language.
                     VideoSegmented(options: VideoExportSettings.frameRates.map { ($0, "\($0) fps") }, selection: $model.exportSettings.fps)
                 }
+            }
+            if settings.format == .proRes4444 {
+                VideoToggleRow(
+                    title: L("Transparent background"),
+                    detail: L("Leaves out the background: the video, its rounded corners and shadow, and a cut-out camera sit on transparency, ready to place over anything"),
+                    isOn: $model.exportSettings.transparentBackground
+                )
+            }
+            if settings.format == .mp4 {
                 row(L("Quality")) {
                     VStack(alignment: .leading, spacing: 5) {
                         VideoSegmented(options: VideoExportSettings.Quality.allCases.map { ($0, $0.title) }, selection: $model.exportSettings.quality)
@@ -162,7 +175,7 @@ struct VideoExportSheet: View {
                         note(settings.codec.detail)
                     }
                 }
-            } else {
+            } else if settings.format == .gif {
                 row(L("Size")) {
                     VideoSegmented(options: VideoExportSettings.GIFSize.allCases.map { ($0, $0.title) }, selection: $model.exportSettings.gifSize)
                 }
@@ -224,7 +237,30 @@ struct VideoExportSheet: View {
                 }
             }
 
-            if settings.format == .mp4 {
+            if settings.format.isMovie, !model.chapters.isEmpty {
+                row(L("Chapters")) {
+                    VStack(alignment: .leading, spacing: 6) {
+                        let chapters = model.chapters
+                        Toggle(L("Add chapters from markers"), isOn: $model.exportSettings.chapters)
+                            .toggleStyle(.checkbox)
+                            .font(.system(size: 12, weight: .medium))
+                            .foregroundStyle(VideoEditorTheme.textPrimary)
+                        note(L("\(chapters.count) chapters — players like QuickTime Player list them, and so do editing apps"))
+                        Button {
+                            model.copyChapters()
+                        } label: {
+                            Label(L("Copy Chapters"), systemImage: "doc.on.clipboard")
+                        }
+                        .buttonStyle(VideoSecondaryButtonStyle())
+                        .help(L("Chapters as text (“0:00 Start”) for a YouTube description"))
+                        if let problem = VideoChapterText.problem(chapters, duration: model.timelineDuration) {
+                            note(problem)
+                        }
+                    }
+                }
+            }
+
+            if settings.format.isMovie {
                 VideoToggleRow(title: L("End card"), detail: L("A 2-second “Made with LF Studios” outro on your background — your own outro card is in Style"), isOn: $model.exportSettings.endCard)
             } else {
                 note(L("GIFs embed anywhere — READMEs, pull requests, docs. Keep them short: they get big fast."))
@@ -372,15 +408,15 @@ struct VideoExportSheet: View {
     private var summary: some View {
         let size = settings.outputSize(canvas: canvas)
         let duration = exportDuration
-        let endCard = settings.format == .mp4 && settings.endCard
+        let endCard = settings.format.isMovie && settings.endCard
         let bytes = settings.estimatedBytes(duration: duration, canvas: canvas, hasAudio: model.hasAudio || model.project.music != nil || model.project.clickSounds.enabled)
         var parts = ["\(Int(size.width))×\(Int(size.height))", "\(settings.effectiveFrameRate) fps"]
-        if settings.format == .mp4 { parts.append(settings.codec.title) }
+        if settings.format == .mp4 { parts.append(settings.codec.title) } else if settings.format.isProRes { parts.append(settings.format.title) }
         parts.append(VideoEditorModel.timecode(duration + (endCard ? VideoDemoExporter.endCardDuration : 0)))
         let sourceShort = min(model.project.sourceWidth, model.project.sourceHeight)
         let stageShort = min(model.project.stageRect(in: canvas).width, model.project.stageRect(in: canvas).height)
         let outputScale = min(size.width, size.height) / max(min(canvas.width, canvas.height), 1)
-        let upscaled = settings.format == .mp4 && sourceShort > 0 && Double(stageShort * outputScale) > sourceShort * 1.15
+        let upscaled = settings.format.isMovie && sourceShort > 0 && Double(stageShort * outputScale) > sourceShort * 1.15
         let free = VideoExportFiles.availableBytes(at: URL(fileURLWithPath: Settings.autoSaveLocation, isDirectory: true).appendingPathComponent("export.mp4"))
         return VStack(alignment: .leading, spacing: 6) {
             HStack {
@@ -418,7 +454,9 @@ struct VideoExportSheet: View {
         if model.project.cards.outro.enabled { pieces.append(L("outro card")) }
         if model.project.music != nil { pieces.append(L("music")) }
         if !model.project.captions.isEmpty { pieces.append(settings.burnCaptions && model.project.captionStyle.visible ? L("captions burned in") : L("no captions in the picture")) }
-        if settings.format == .mp4 { pieces.append(endCard ? L("“Made with LF Studios” end card (2s)") : L("no end card")) }
+        if settings.keepsTransparency { pieces.append(L("a transparent background")) }
+        if settings.format.isMovie, settings.chapters, !model.chapters.isEmpty { pieces.append(L("chapters")) }
+        if settings.format.isMovie { pieces.append(endCard ? L("“Made with LF Studios” end card (2s)") : L("no end card")) }
         if let range = exportRange {
             let start = VideoEditorModel.timecode(range.lowerBound)
             let end = VideoEditorModel.timecode(range.upperBound)

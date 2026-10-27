@@ -272,6 +272,11 @@ struct VideoStageView: View {
                 } else {
                     VideoStageInteractionLayer(model: model, clock: model.clock, textLayout: model.previewRenderer.textLayout, viewSize: fitted)
                         .frame(width: fitted.width, height: fitted.height)
+                    // Over the preview only: the renderer never sees it.
+                    if let layout = model.phoneOverlay, model.canShowPhoneOverlay {
+                        VideoPhoneOverlayView(layout: layout, size: fitted)
+                            .clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
+                    }
                 }
             }
             .frame(width: proxy.size.width, height: proxy.size.height)

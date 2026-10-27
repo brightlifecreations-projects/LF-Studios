@@ -23,6 +23,7 @@ enum LFStudiosShortcut: CaseIterable, Identifiable {
     case recordFullscreen
     case stopRecording
     case pauseRecording
+    case addMarker
 
     var id: String { name.rawValue }
 
@@ -43,6 +44,7 @@ enum LFStudiosShortcut: CaseIterable, Identifiable {
         case .recordFullscreen: return L("Record Fullscreen")
         case .stopRecording: return L("Stop Recording")
         case .pauseRecording: return L("Pause / Resume Recording")
+        case .addMarker: return L("Add Marker While Recording")
         }
     }
 
@@ -52,7 +54,7 @@ enum LFStudiosShortcut: CaseIterable, Identifiable {
             return .screenshots
         case .captureText, .captureScrolling, .openCommandCenter:
             return .tools
-        case .recordArea, .recordWindow, .recordFullscreen, .stopRecording, .pauseRecording:
+        case .recordArea, .recordWindow, .recordFullscreen, .stopRecording, .pauseRecording, .addMarker:
             return .recording
         }
     }
@@ -74,6 +76,7 @@ enum LFStudiosShortcut: CaseIterable, Identifiable {
         case .recordFullscreen: return .lfstudiosRecordFullscreen
         case .stopRecording: return .lfstudiosStopRecording
         case .pauseRecording: return .lfstudiosPauseRecording
+        case .addMarker: return .lfstudiosAddMarker
         }
     }
 
@@ -119,6 +122,8 @@ extension KeyboardShortcuts.Name {
     static let lfstudiosRecordFullscreen = Self("recordFullscreen")
     static let lfstudiosStopRecording = Self("stopRecording")
     static let lfstudiosPauseRecording = Self("pauseRecording")
+    /// No default: every free key is someone's shortcut somewhere.
+    static let lfstudiosAddMarker = Self("addMarker")
 }
 
 // MARK: – Legacy default migration

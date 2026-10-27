@@ -75,6 +75,9 @@ final class VideoExportFlowTests: XCTestCase {
     /// working file behind: the next launch removes it — and only such
     /// files.
     func testTheNextLaunchRemovesWorkingFilesOfExportsThatNeverFinished() async throws {
+        // The list is shared by the whole test run: start from an empty one,
+        // so only this test's files are counted.
+        _ = VideoExportFiles.removeLeftovers()
         // A finished export leaves nothing listed.
         let project = try await recording()
         let done = directory.appendingPathComponent("done.mp4")

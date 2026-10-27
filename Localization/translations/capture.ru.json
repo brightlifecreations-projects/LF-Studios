@@ -11,8 +11,14 @@
   "%@ · %lld fps" : {
     "ru" : "%@ · %lld fps"
   },
+  "%@ × %@ doesn't fit on this display" : {
+    "ru" : "%@ × %@ не помещается на этом экране"
+  },
   "%@ × %@ px" : {
     "ru" : "%@ × %@ пикс."
+  },
+  "%@ × %@ — window %@ × %@ on this display" : {
+    "ru" : "%@ × %@ — окно %@ × %@ на этом экране"
   },
   "%@, %@" : {
     "ru" : "%@, %@"
@@ -89,6 +95,24 @@
       "one" : "%lld секунда",
       "other" : "%lld секунды"
     }
+  },
+  "A window that size would be bigger than the screen. The largest of the same shape that fits is %@ × %@." : {
+    "ru" : "Окно такого размера больше экрана. Самый большой размер той же формы, который помещается, — %@ × %@."
+  },
+  "Add Marker" : {
+    "ru" : "Добавить маркер"
+  },
+  "Add Marker While Recording" : {
+    "ru" : "Добавить маркер во время записи"
+  },
+  "Add a marker" : {
+    "ru" : "Добавить маркер"
+  },
+  "Add a marker (%@)" : {
+    "ru" : "Добавить маркер (%@)"
+  },
+  "Add a marker — set a shortcut in Settings → Shortcuts" : {
+    "ru" : "Добавить маркер — сочетание клавиш задаётся в разделе Настройки → Сочетания"
   },
   "All Displays" : {
     "ru" : "Все дисплеи"
@@ -207,11 +231,17 @@
   "Couldn't create the video file." : {
     "ru" : "Не удалось создать видеофайл."
   },
+  "Couldn't find that window to resize it. Choose it again and try once more." : {
+    "ru" : "Не удалось найти окно, чтобы изменить его размер. Выберите его снова и попробуйте ещё раз."
+  },
   "Countdown" : {
     "ru" : "Обратный отсчет"
   },
   "Cursor" : {
     "ru" : "Указатель"
+  },
+  "Custom Size…" : {
+    "ru" : "Другой размер…"
   },
   "Dark Mode" : {
     "ru" : "Тёмное"
@@ -273,6 +303,9 @@
   "Email address copied" : {
     "ru" : "Адрес e-mail скопирован"
   },
+  "Enter a width and a height from %@ to %@ pixels." : {
+    "ru" : "Введите ширину и высоту от %@ до %@ пикселей."
+  },
   "Esc or Done finishes" : {
     "ru" : "Esc или «Готово» — завершить"
   },
@@ -288,6 +321,9 @@
   "Frame rate" : {
     "ru" : "Частота кадров"
   },
+  "Height" : {
+    "ru" : "Высота"
+  },
   "Hidden network" : {
     "ru" : "Скрытая сеть"
   },
@@ -299,6 +335,12 @@
   },
   "Keyboard shortcuts are on" : {
     "ru" : "Сочетания клавиш включены"
+  },
+  "LF Studios can't write to the save folder. Choose another one in Settings → Screenshots." : {
+    "ru" : "LF Studios не может записывать в папку для сохранения. Выберите другую в разделе Настройки → Снимки экрана."
+  },
+  "LF Studios isn't allowed to record the screen. Turn it on in System Settings → Privacy & Security → Screen & System Audio Recording." : {
+    "ru" : "LF Studios не разрешено записывать экран. Включите разрешение в разделе Системные настройки → Конфиденциальность и безопасность → Запись экрана и системного звука."
   },
   "Light Mode" : {
     "ru" : "Светлое"
@@ -317,6 +359,9 @@
   },
   "Links (%lld of %lld)" : {
     "ru" : "Ссылки (%lld из %lld)"
+  },
+  "Marker %lld" : {
+    "ru" : "Маркер %lld"
   },
   "Max" : {
     "ru" : "Максимальное"
@@ -519,6 +564,18 @@
   "Resize" : {
     "ru" : "Изменить размер"
   },
+  "Resize the window so the recording is an exact size" : {
+    "ru" : "Изменить размер окна, чтобы запись была точного размера"
+  },
+  "Resizing another app's window needs Accessibility access: allow LF Studios in System Settings → Privacy & Security → Accessibility, then choose the size again." : {
+    "ru" : "Чтобы менять размер окон других приложений, нужен универсальный доступ: разрешите его для LF Studios в разделе Системные настройки → Конфиденциальность и безопасность → Универсальный доступ, затем снова выберите размер."
+  },
+  "Restore size" : {
+    "ru" : "Вернуть размер"
+  },
+  "Restore size — put the window back as it was" : {
+    "ru" : "Вернуть размер — вернуть окно как было"
+  },
   "Resume recording" : {
     "ru" : "Продолжить запись"
   },
@@ -634,12 +691,6 @@
   "Selection %@ by %@ points. Arrow keys move it, Return captures, Escape cancels." : {
     "ru" : "Выделение %@ на %@ пт. Клавиши со стрелками перемещают его, Return делает снимок, Escape отменяет."
   },
-  "LF Studios can't write to the save folder. Choose another one in Settings → Screenshots." : {
-    "ru" : "LF Studios не может записывать в папку для сохранения. Выберите другую в разделе Настройки → Снимки экрана."
-  },
-  "LF Studios isn't allowed to record the screen. Turn it on in System Settings → Privacy & Security → Screen & System Audio Recording." : {
-    "ru" : "LF Studios не разрешено записывать экран. Включите разрешение в разделе Системные настройки → Конфиденциальность и безопасность → Запись экрана и системного звука."
-  },
   "Show keyboard shortcuts" : {
     "ru" : "Показывать сочетания клавиш"
   },
@@ -715,14 +766,23 @@
   "The recording couldn't be finished — saved the first %@." : {
     "ru" : "Не удалось завершить запись — сохранены первые %@."
   },
+  "The size of the recording, in pixels." : {
+    "ru" : "Размер записи в пикселях."
+  },
   "The window you're recording closed. Stop when you're ready — the recording keeps going." : {
     "ru" : "Записываемое окно закрылось. Остановите запись, когда будете готовы, — она продолжается."
+  },
+  "This app" : {
+    "ru" : "Это приложение"
   },
   "To" : {
     "ru" : "Кому"
   },
   "URL" : {
     "ru" : "URL"
+  },
+  "Use the largest size that fits (%@ × %@)" : {
+    "ru" : "Взять самый большой размер, который помещается (%@ × %@)"
   },
   "Warning" : {
     "ru" : "Предупреждение"
@@ -733,11 +793,17 @@
   "Wi-Fi QR found" : {
     "ru" : "Найден QR-код с Wi-Fi"
   },
+  "Width" : {
+    "ru" : "Ширина"
+  },
   "Window capture" : {
     "ru" : "Снимок окна"
   },
   "Window closed" : {
     "ru" : "Окно закрыто"
+  },
+  "Window size" : {
+    "ru" : "Размер окна"
   },
   "Yes" : {
     "ru" : "Да"
@@ -790,6 +856,15 @@
   },
   "up to %@ MB/min" : {
     "ru" : "до %@ МБ/мин"
+  },
+  "“%@” doesn't let this window be resized." : {
+    "ru" : "«%@» не позволяет менять размер этого окна."
+  },
+  "“%@” keeps this window at least %@ × %@ pixels, so it can't be made %@ × %@." : {
+    "ru" : "«%@» не даёт сделать это окно меньше %@ × %@ пикселей, поэтому размер %@ × %@ недоступен."
+  },
+  "“%@” keeps this window at most %@ × %@ pixels, so it can't be made %@ × %@." : {
+    "ru" : "«%@» не даёт сделать это окно больше %@ × %@ пикселей, поэтому размер %@ × %@ недоступен."
   },
   "✓ Saved screenshot" : {
     "ru" : "✓ Снимок экрана сохранен"

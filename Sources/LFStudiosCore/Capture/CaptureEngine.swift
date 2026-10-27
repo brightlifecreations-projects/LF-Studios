@@ -616,6 +616,21 @@ final class CaptureEngine {
                 self?.recordingControlsWindow = nil
             }
         )
+        if let selectedWindow {
+            // Window size: the bar again, for the window as it is now.
+            window.windowResized = { [weak self] frame in
+                Task { @MainActor [weak self] in
+                    // The window list catches up a moment after a resize.
+                    try? await Task.sleep(nanoseconds: 150_000_000)
+                    let content = try? await SCShareableContent.excludingDesktopWindows(false, onScreenWindowsOnly: true)
+                    let fresh = content?.windows.first { $0.windowID == selectedWindow.windowID } ?? selectedWindow
+                    let display = NSScreen.screens.max { a, b in
+                        a.frame.intersection(frame).width * a.frame.intersection(frame).height < b.frame.intersection(frame).width * b.frame.intersection(frame).height
+                    } ?? screen
+                    self?.showRecordingControls(rect: frame, on: display, target: .window, selectedWindow: fresh)
+                }
+            }
+        }
         recordingControlsWindow = window
         window.show()
         CapturePerformance.mark("Recording controls", since: started)
@@ -675,6 +690,15 @@ final class CaptureEngine {
             return
         }
         recordingEngine.togglePause()
+    }
+
+    /// A marker at this moment of the recording (the flag, or its shortcut).
+    func addRecordingMarker() {
+        guard recordingEngine.elapsedSeconds != nil else {
+            ToastWindow.show(message: L("No recording in progress"))
+            return
+        }
+        recordingEngine.addMarker()
     }
 
     /// Pauses a running recording; true when this call paused it.
@@ -2054,6 +2078,11 @@ final class RecordingControlsWindow: NSWindow {
     private let selectedWindow: SCWindow?
     private let startHandler: (CGRect, NSScreen, SCWindow?) -> Void
     private let closeHandler: () -> Void
+    /// The chosen window was resized (Window size): show the bar again for
+    /// its new frame (AppKit coordinates).
+    var windowResized: ((CGRect) -> Void)?
+    private let windowSizeButton = NSPopUpButton(frame: .zero, pullsDown: true)
+    private let restoreSizeButton = RecordingActionButton(symbol: "arrow.uturn.backward", title: L("Restore size"), tint: NSColor.white.withAlphaComponent(0.8))
 
     private var keyMonitor: Any?
     private var didClose = false
@@ -2092,7 +2121,7 @@ final class RecordingControlsWindow: NSWindow {
         self.barWidth = Self.panelWidth + Self.qualityExtra
 
         super.init(
-            contentRect: NSRect(x: 0, y: 0, width: barWidth + Self.chromeInset * 2, height: Self.windowHeight(microphone: Settings.recordingMicrophone)),
+            contentRect: NSRect(x: 0, y: 0, width: barWidth + Self.chromeInset * 2, height: Self.windowHeight(upperRow: Settings.recordingMicrophone || target == .window)),
             styleMask: [.borderless],
             backing: .buffered,
             defer: false
@@ -2202,6 +2231,8 @@ final class RecordingControlsWindow: NSWindow {
         microphonePopup.action = #selector(microphoneChanged)
         microphonePopup.setAccessibilityLabel(L("Microphone"))
         microphoneContainer.addSubview(microphonePopup)
+
+        if target == .window { buildWindowSizeRow(in: root) }
 
         let bar = RecordingRoundedRectView(
             frame: NSRect(x: Self.chromeInset, y: Self.chromeInset, width: barWidth, height: Self.barHeight),
@@ -2479,15 +2510,19 @@ final class RecordingControlsWindow: NSWindow {
     }
 
     private func resizeForMicrophoneState() {
-        let newHeight = Self.windowHeight(microphone: Settings.recordingMicrophone)
+        let newHeight = Self.windowHeight(upperRow: showsUpperRow)
         guard abs(frame.height - newHeight) > 0.5 else { return }
         let oldFrame = frame
         setFrame(NSRect(x: oldFrame.minX, y: oldFrame.maxY - newHeight, width: oldFrame.width, height: newHeight), display: true)
     }
 
-    private static func windowHeight(microphone: Bool) -> CGFloat {
-        (microphone ? expandedHeight : barHeight) + chromeInset * 2
+    private static func windowHeight(upperRow: Bool) -> CGFloat {
+        (upperRow ? expandedHeight : barHeight) + chromeInset * 2
     }
+
+    /// The row above the bar: the microphone menu, and Window size in
+    /// Window mode.
+    private var showsUpperRow: Bool { Settings.recordingMicrophone || target == .window }
 
     @discardableResult
     private func selectItem(in popup: NSPopUpButton, representedObject: String) -> Bool {
@@ -2560,7 +2595,7 @@ final class RecordingControlsWindow: NSWindow {
 
     private func positionPanel() {
         let visible = targetScreen.visibleFrame
-        let visibleHeight = Settings.recordingMicrophone ? Self.expandedHeight : Self.barHeight
+        let visibleHeight = showsUpperRow ? Self.expandedHeight : Self.barHeight
         let x = visible.midX - barWidth / 2
         let y = min(visible.maxY - visibleHeight - 28, captureRect.maxY - visibleHeight - 14)
         let visibleOrigin = NSPoint(
@@ -2645,6 +2680,155 @@ final class RecordingControlsWindow: NSWindow {
             break
         }
         updateSizeEstimate()
+    }
+
+    // MARK: Window size
+
+    private func buildWindowSizeRow(in root: NSView) {
+        let container = NSView(frame: NSRect(x: Self.chromeInset, y: Self.chromeInset + 62, width: 150, height: 30))
+        container.wantsLayer = true
+        container.layer?.cornerRadius = 12
+        container.layer?.cornerCurve = .continuous
+        container.layer?.backgroundColor = NSColor(calibratedWhite: 0.105, alpha: 0.98).cgColor
+        container.layer?.borderWidth = 1
+        container.layer?.borderColor = NSColor.white.withAlphaComponent(0.13).cgColor
+        root.addSubview(container)
+
+        windowSizeButton.frame = NSRect(x: 8, y: 2, width: 110, height: 26)
+        windowSizeButton.bezelStyle = .shadowlessSquare
+        windowSizeButton.isBordered = false
+        windowSizeButton.controlSize = .small
+        windowSizeButton.font = .systemFont(ofSize: 11.5, weight: .semibold)
+        windowSizeButton.contentTintColor = NSColor.white.withAlphaComponent(0.9)
+        windowSizeButton.toolTip = L("Resize the window so the recording is an exact size")
+        windowSizeButton.setAccessibilityLabel(L("Window size"))
+        container.addSubview(windowSizeButton)
+        rebuildWindowSizeMenu()
+
+        restoreSizeButton.frame = NSRect(x: 118, y: 1, width: 28, height: 28)
+        restoreSizeButton.target = self
+        restoreSizeButton.action = #selector(restoreWindowSize)
+        restoreSizeButton.toolTip = L("Restore size — put the window back as it was")
+        restoreSizeButton.isHidden = selectedWindow.flatMap { RecordingWindowSizeMemory.previous(for: $0.windowID) } == nil
+        container.addSubview(restoreSizeButton)
+    }
+
+    private func rebuildWindowSizeMenu() {
+        let menu = NSMenu()
+        // A pull-down's first item is its title.
+        menu.addItem(withTitle: L("Window size"), action: nil, keyEquivalent: "")
+        let scale = targetScreen.backingScaleFactor
+        for (index, preset) in RecordingWindowSize.presets.enumerated() {
+            let points = RecordingWindowSize.points(width: preset.width, height: preset.height, scale: scale)
+            // Pixel sizes as plain digits, like the size shown on the bar.
+            let (width, height) = (String(preset.width), String(preset.height))
+            let (windowWidth, windowHeight) = (String(Int(points.width)), String(Int(points.height)))
+            let item = NSMenuItem(title: L("\(width) × \(height) — window \(windowWidth) × \(windowHeight) on this display"), action: #selector(windowSizeChosen(_:)), keyEquivalent: "")
+            item.target = self
+            item.tag = index
+            menu.addItem(item)
+        }
+        menu.addItem(.separator())
+        let custom = NSMenuItem(title: L("Custom Size…"), action: #selector(customWindowSize), keyEquivalent: "")
+        custom.target = self
+        menu.addItem(custom)
+        if let selectedWindow, RecordingWindowSizeMemory.previous(for: selectedWindow.windowID) != nil {
+            let restore = NSMenuItem(title: L("Restore size"), action: #selector(restoreWindowSize), keyEquivalent: "")
+            restore.target = self
+            menu.addItem(.separator())
+            menu.addItem(restore)
+        }
+        windowSizeButton.menu = menu
+    }
+
+    @objc private func windowSizeChosen(_ sender: NSMenuItem) {
+        guard RecordingWindowSize.presets.indices.contains(sender.tag) else { return }
+        resizeWindow(to: RecordingWindowSize.presets[sender.tag])
+    }
+
+    @objc private func customWindowSize() {
+        let alert = NSAlert()
+        alert.messageText = L("Window size")
+        alert.informativeText = L("The size of the recording, in pixels.")
+        let width = NSTextField(frame: NSRect(x: 0, y: 0, width: 80, height: 24))
+        let height = NSTextField(frame: NSRect(x: 104, y: 0, width: 80, height: 24))
+        let times = NSTextField(labelWithString: "×")
+        times.frame = NSRect(x: 86, y: 3, width: 14, height: 18)
+        let current = outputPixelSize
+        width.stringValue = String(current.width)
+        height.stringValue = String(current.height)
+        width.setAccessibilityLabel(L("Width"))
+        height.setAccessibilityLabel(L("Height"))
+        let fields = NSView(frame: NSRect(x: 0, y: 0, width: 184, height: 24))
+        [width, times, height].forEach(fields.addSubview)
+        alert.accessoryView = fields
+        alert.addButton(withTitle: L("Resize"))
+        alert.addButton(withTitle: L("Cancel"))
+        alert.window.initialFirstResponder = width
+        guard alert.runModal() == .alertFirstButtonReturn else { return }
+        guard let w = Int(width.stringValue.trimmingCharacters(in: .whitespaces)), let h = Int(height.stringValue.trimmingCharacters(in: .whitespaces)),
+              RecordingWindowSize.pixelRange.contains(w), RecordingWindowSize.pixelRange.contains(h) else {
+            let (lowest, highest) = (String(RecordingWindowSize.pixelRange.lowerBound), String(RecordingWindowSize.pixelRange.upperBound))
+            ToastWindow.show(message: L("Enter a width and a height from \(lowest) to \(highest) pixels."), duration: 3.5, on: targetScreen)
+            return
+        }
+        resizeWindow(to: RecordingWindowSize.Preset(width: w, height: h))
+    }
+
+    private func resizeWindow(to pixels: RecordingWindowSize.Preset) {
+        guard let selectedWindow else { return }
+        guard VideoKeystrokeFormatter.isAllowed else {
+            VideoKeystrokeFormatter.requestAccess()
+            ToastWindow.show(message: L("Resizing another app's window needs Accessibility access: allow LF Studios in System Settings → Privacy & Security → Accessibility, then choose the size again."), duration: 5, on: targetScreen)
+            return
+        }
+        let appName = selectedWindow.owningApplication?.applicationName ?? L("This app")
+        let screen = Self.screen(showing: selectedWindow) ?? targetScreen
+        let visible = screen.visibleFrame
+        let scale = screen.backingScaleFactor
+        var size = pixels
+        if !RecordingWindowSize.fits(width: size.width, height: size.height, scale: scale, in: visible) {
+            let fitting = RecordingWindowSize.largestFitting(width: size.width, height: size.height, scale: scale, in: visible)
+            let alert = NSAlert()
+            let (askedWidth, askedHeight) = (String(pixels.width), String(pixels.height))
+            let (fitWidth, fitHeight) = (String(fitting.width), String(fitting.height))
+            alert.messageText = L("\(askedWidth) × \(askedHeight) doesn't fit on this display")
+            alert.informativeText = L("A window that size would be bigger than the screen. The largest of the same shape that fits is \(fitWidth) × \(fitHeight).")
+            alert.addButton(withTitle: L("Use the largest size that fits (\(fitWidth) × \(fitHeight))"))
+            alert.addButton(withTitle: L("Cancel"))
+            guard alert.runModal() == .alertFirstButtonReturn else { return }
+            size = fitting
+        }
+        guard let window = RecordingAccessibilityWindow.find(selectedWindow) else {
+            ToastWindow.show(message: RecordingWindowSize.Outcome.notFound.message(appName: appName) ?? "", duration: 4, on: targetScreen)
+            return
+        }
+        let before = window.frame
+        let outcome = RecordingWindowSize.resize(window, toPixels: size, scale: scale, in: visible)
+        if outcome != .notResizable, let before { RecordingWindowSizeMemory.remember(before, for: selectedWindow.windowID) }
+        if let message = outcome.message(appName: appName) {
+            ToastWindow.show(message: message, duration: 4.5, on: targetScreen)
+        }
+        if outcome != .notResizable, let frame = window.frame { windowResized?(frame) }
+    }
+
+    @objc private func restoreWindowSize() {
+        guard let selectedWindow, let previous = RecordingWindowSizeMemory.previous(for: selectedWindow.windowID) else { return }
+        guard VideoKeystrokeFormatter.isAllowed, let window = RecordingAccessibilityWindow.find(selectedWindow) else {
+            ToastWindow.show(message: RecordingWindowSize.Outcome.notFound.message(appName: selectedWindow.owningApplication?.applicationName ?? L("This app")) ?? "", duration: 4, on: targetScreen)
+            return
+        }
+        window.setFrame(previous)
+        RecordingWindowSizeMemory.forget(selectedWindow.windowID)
+        if let frame = window.frame { windowResized?(frame) }
+    }
+
+    /// The display showing most of a window.
+    private static func screen(showing window: SCWindow) -> NSScreen? {
+        let frame = ScreenCoordinates.appKitRect(fromCG: window.frame)
+        return NSScreen.screens.max { a, b in
+            a.frame.intersection(frame).width * a.frame.intersection(frame).height < b.frame.intersection(frame).width * b.frame.intersection(frame).height
+        }
     }
 
     private func waitForAccessibility() {
