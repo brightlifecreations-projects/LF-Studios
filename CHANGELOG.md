@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.2.0] - Unreleased
+## [1.2.0] - 2026-10-27
 
 ### Changed
 - **Manual only.** Nothing creative happens unless you click a button or switch. A new recording opens as you recorded it, in its own frame, with the real pointer: no background or padding, no zooms, no cursor smoothing, ripple, enlarging, hiding or blur, no camera mirroring or shrinking, no word highlighting in captions, and shortcut keys recorded but hidden until you show them. The camera bubble still shows, plainly. "Even out loudness" starts off too. Your projects, drafts, and project files open exactly as they were.
