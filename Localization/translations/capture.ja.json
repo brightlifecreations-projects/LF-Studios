@@ -11,8 +11,14 @@
   "%@ · %lld fps" : {
     "ja" : "%@ · %lld fps"
   },
+  "%@ × %@ doesn't fit on this display" : {
+    "ja" : "%@ × %@はこのディスプレイに収まりません"
+  },
   "%@ × %@ px" : {
     "ja" : "%@ × %@ px"
+  },
+  "%@ × %@ — window %@ × %@ on this display" : {
+    "ja" : "%@ × %@ — このディスプレイではウインドウ%@ × %@"
   },
   "%@, %@" : {
     "ja" : "%@、%@"
@@ -50,14 +56,8 @@
   "%lld seconds" : {
     "ja" : "%lld秒"
   },
-  "%lld × %lld doesn't fit on this display" : {
-    "ja" : "%lld × %lldはこのディスプレイに収まりません"
-  },
-  "%lld × %lld — window %lld × %lld on this display" : {
-    "ja" : "%lld × %lld — このディスプレイではウインドウ%lld × %lld"
-  },
-  "A window that size would be bigger than the screen. The largest of the same shape that fits is %lld × %lld." : {
-    "ja" : "このサイズのウインドウは画面より大きくなります。同じ形で収まる最大のサイズは%lld × %lldです。"
+  "A window that size would be bigger than the screen. The largest of the same shape that fits is %@ × %@." : {
+    "ja" : "このサイズのウインドウは画面より大きくなります。同じ形で収まる最大のサイズは%@ × %@です。"
   },
   "Add Marker" : {
     "ja" : "マーカーを追加"
@@ -263,8 +263,8 @@
   "Email address copied" : {
     "ja" : "メールアドレスをコピーしました"
   },
-  "Enter a width and a height from %lld to %lld pixels." : {
-    "ja" : "幅と高さを%lld〜%lldピクセルで入力してください。"
+  "Enter a width and a height from %@ to %@ pixels." : {
+    "ja" : "幅と高さを%@〜%@ピクセルで入力してください。"
   },
   "Esc or Done finishes" : {
     "ja" : "Escキーまたは“完了”で終了"
@@ -731,8 +731,8 @@
   "URL" : {
     "ja" : "URL"
   },
-  "Use the largest size that fits (%lld × %lld)" : {
-    "ja" : "収まる最大のサイズを使う（%lld × %lld）"
+  "Use the largest size that fits (%@ × %@)" : {
+    "ja" : "収まる最大のサイズを使う（%@ × %@）"
   },
   "Warning" : {
     "ja" : "警告"
@@ -800,11 +800,11 @@
   "“%@” doesn't let this window be resized." : {
     "ja" : "“%@”ではこのウインドウのサイズを変更できません。"
   },
-  "“%@” keeps this window at least %lld × %lld pixels, so it can't be made %lld × %lld." : {
-    "ja" : "“%@”はこのウインドウを%lld × %lldピクセル以上に保つため、%lld × %lldにはできません。"
+  "“%@” keeps this window at least %@ × %@ pixels, so it can't be made %@ × %@." : {
+    "ja" : "“%@”はこのウインドウを%@ × %@ピクセル以上に保つため、%@ × %@にはできません。"
   },
-  "“%@” keeps this window at most %lld × %lld pixels, so it can't be made %lld × %lld." : {
-    "ja" : "“%@”はこのウインドウを%lld × %lldピクセル以下に保つため、%lld × %lldにはできません。"
+  "“%@” keeps this window at most %@ × %@ pixels, so it can't be made %@ × %@." : {
+    "ja" : "“%@”はこのウインドウを%@ × %@ピクセル以下に保つため、%@ × %@にはできません。"
   },
   "✓ Saved screenshot" : {
     "ja" : "✓ スクリーンショットを保存しました"

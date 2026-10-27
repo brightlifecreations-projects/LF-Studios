@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.3.0] - Unreleased
+
+Everything new starts off, and is turned on with its own button or switch.
+
+### Added
+- **ProRes in the export window.** ProRes 422, ProRes 422 HQ, and ProRes 4444 sit next to MP4 and GIF, saved as .mov with uncompressed sound. ProRes 4444 has a **Transparent background** switch: the background drops out, and the video with its rounded corners and shadow, and a cut-out camera, sit on transparency, ready to place over anything. The size estimate knows how big ProRes gets and warns when it won't fit on the disk.
+- **Window size.** In Window mode, the bar above the recording controls has Window size: 1280×720, 1920×1080, 1440×900, 1080×1080, 1080×1920, or Custom Size…. They're the recording's pixels, and each shows the window size that makes on this display (1920×1080 is a 960×540 window on a Retina screen). LF Studios resizes the window and centers it. If a size doesn't fit, it offers the largest of the same shape that does. If an app keeps a minimum size or won't be resized, it says so. **Restore size** puts the window back. Needs Accessibility access, which it asks for.
+- **Markers.** A flag on the recording bar marks a moment while you record, as does an Add Marker shortcut that you can set in Settings → Shortcuts (it has none to start with). Markers are saved with the recording and show as teal flags on the editor's timeline:
+  - click to jump there, double-click to rename, right-click to rename or delete,
+  - Marker adds one at the playhead, and Split at Markers splits the clips at every marker (one ⌘Z),
+  - they become chapters in MP4 and ProRes exports ("Add chapters from markers"),
+  - Copy Chapters gives "0:00 Start" text for a YouTube description, with a note when YouTube's rules aren't met,
+  - they're on Creative Handoff's Final Cut Pro, DaVinci Resolve, and Premiere Pro timelines.
+- **Looping cursor.** Cursor ▸ Loop ▸ Return to start at the end glides the pointer back to where it started over the last 0.3–2 seconds, so the last frame matches the first and the video loops without a jump.
+- **Advanced shadow.** Style ▸ Frame ▸ Fine-tune shadow adds angle, distance, softness, opacity, and color, plus **Inset** for a soft inner edge. It starts from the look the Shadow slider had, so nothing jumps. It's saved in style presets. Projects and presets from before keep their shadow exactly.
+- **Phone overlay.** For vertical (9:16) videos, a Phone overlay button above the preview shows a generic phone app's interface over the video (top bar, side buttons, caption area) and shades the parts it would cover. There are three layouts: Side rail, Full rail, and Minimal. It's drawn from plain shapes, in the preview only, and never in an export.
+
 ## [1.2.0] - 2026-10-27
 
 ### Changed

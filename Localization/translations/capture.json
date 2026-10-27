@@ -23,11 +23,21 @@
     "fr" : "%@ · %lld fps",
     "zh-Hans" : "%@ · %lld fps"
   },
+  "%@ × %@ doesn't fit on this display" : {
+    "de" : "%@ × %@ passt nicht auf diesen Bildschirm",
+    "fr" : "%@ × %@ ne tient pas sur cet écran",
+    "zh-Hans" : "%@ × %@ 在这台显示器上放不下"
+  },
   "%@ × %@ px" : {
     "comment" : "A display's size in pixels",
     "de" : "%@ × %@ px",
     "fr" : "%@ × %@ px",
     "zh-Hans" : "%@ × %@ 像素"
+  },
+  "%@ × %@ — window %@ × %@ on this display" : {
+    "de" : "%@ × %@ – Fenster %@ × %@ auf diesem Bildschirm",
+    "fr" : "%@ × %@ — fenêtre de %@ × %@ sur cet écran",
+    "zh-Hans" : "%@ × %@ — 在这台显示器上窗口为 %@ × %@"
   },
   "%@, %@" : {
     "comment" : "Joins items of a list (“a table, 2 links”)",
@@ -174,20 +184,10 @@
     },
     "zh-Hans" : "%lld 秒"
   },
-  "%lld × %lld doesn't fit on this display" : {
-    "de" : "%lld × %lld passt nicht auf diesen Bildschirm",
-    "fr" : "%lld × %lld ne tient pas sur cet écran",
-    "zh-Hans" : "%lld × %lld 在这台显示器上放不下"
-  },
-  "%lld × %lld — window %lld × %lld on this display" : {
-    "de" : "%lld × %lld – Fenster %lld × %lld auf diesem Bildschirm",
-    "fr" : "%lld × %lld — fenêtre de %lld × %lld sur cet écran",
-    "zh-Hans" : "%lld × %lld — 在这台显示器上窗口为 %lld × %lld"
-  },
-  "A window that size would be bigger than the screen. The largest of the same shape that fits is %lld × %lld." : {
-    "de" : "Ein so großes Fenster wäre größer als der Bildschirm. Die größte passende Größe mit derselben Form ist %lld × %lld.",
-    "fr" : "Une fenêtre de cette taille serait plus grande que l’écran. La plus grande taille de même forme qui tient est %lld × %lld.",
-    "zh-Hans" : "这么大的窗口会超出屏幕。能放下的同比例最大尺寸是 %lld × %lld。"
+  "A window that size would be bigger than the screen. The largest of the same shape that fits is %@ × %@." : {
+    "de" : "Ein so großes Fenster wäre größer als der Bildschirm. Die größte passende Größe mit derselben Form ist %@ × %@.",
+    "fr" : "Une fenêtre de cette taille serait plus grande que l’écran. La plus grande taille de même forme qui tient est %@ × %@.",
+    "zh-Hans" : "这么大的窗口会超出屏幕。能放下的同比例最大尺寸是 %@ × %@。"
   },
   "Add Marker" : {
     "de" : "Marker setzen",
@@ -553,10 +553,10 @@
     "fr" : "Adresse e-mail copiée",
     "zh-Hans" : "已拷贝电子邮件地址"
   },
-  "Enter a width and a height from %lld to %lld pixels." : {
-    "de" : "Gib eine Breite und eine Höhe von %lld bis %lld Pixeln ein.",
-    "fr" : "Saisissez une largeur et une hauteur de %lld à %lld pixels.",
-    "zh-Hans" : "请输入 %lld 到 %lld 像素之间的宽度和高度。"
+  "Enter a width and a height from %@ to %@ pixels." : {
+    "de" : "Gib eine Breite und eine Höhe von %@ bis %@ Pixeln ein.",
+    "fr" : "Saisissez une largeur et une hauteur de %@ à %@ pixels.",
+    "zh-Hans" : "请输入 %@ 到 %@ 像素之间的宽度和高度。"
   },
   "Esc or Done finishes" : {
     "de" : "Esc oder „Fertig“ zum Beenden",
@@ -1403,10 +1403,10 @@
     "fr" : "URL",
     "zh-Hans" : "网址"
   },
-  "Use the largest size that fits (%lld × %lld)" : {
-    "de" : "Größte passende Größe verwenden (%lld × %lld)",
-    "fr" : "Utiliser la plus grande taille qui tient (%lld × %lld)",
-    "zh-Hans" : "使用能放下的最大尺寸（%lld × %lld）"
+  "Use the largest size that fits (%@ × %@)" : {
+    "de" : "Größte passende Größe verwenden (%@ × %@)",
+    "fr" : "Utiliser la plus grande taille qui tient (%@ × %@)",
+    "zh-Hans" : "使用能放下的最大尺寸（%@ × %@）"
   },
   "Warning" : {
     "de" : "Warnung",
@@ -1549,15 +1549,15 @@
     "fr" : "« %@ » ne permet pas de redimensionner cette fenêtre.",
     "zh-Hans" : "“%@”不允许调整此窗口的大小。"
   },
-  "“%@” keeps this window at least %lld × %lld pixels, so it can't be made %lld × %lld." : {
-    "de" : "„%@“ hält dieses Fenster mindestens %lld × %lld Pixel groß, daher kann es nicht %lld × %lld werden.",
-    "fr" : "« %@ » garde cette fenêtre à au moins %lld × %lld pixels : elle ne peut pas faire %lld × %lld.",
-    "zh-Hans" : "“%@”要求此窗口至少为 %lld × %lld 像素，因此无法调整为 %lld × %lld。"
+  "“%@” keeps this window at least %@ × %@ pixels, so it can't be made %@ × %@." : {
+    "de" : "„%@“ hält dieses Fenster mindestens %@ × %@ Pixel groß, daher kann es nicht %@ × %@ werden.",
+    "fr" : "« %@ » garde cette fenêtre à au moins %@ × %@ pixels : elle ne peut pas faire %@ × %@.",
+    "zh-Hans" : "“%@”要求此窗口至少为 %@ × %@ 像素，因此无法调整为 %@ × %@。"
   },
-  "“%@” keeps this window at most %lld × %lld pixels, so it can't be made %lld × %lld." : {
-    "de" : "„%@“ hält dieses Fenster höchstens %lld × %lld Pixel groß, daher kann es nicht %lld × %lld werden.",
-    "fr" : "« %@ » limite cette fenêtre à %lld × %lld pixels au plus : elle ne peut pas faire %lld × %lld.",
-    "zh-Hans" : "“%@”限制此窗口最大为 %lld × %lld 像素，因此无法调整为 %lld × %lld。"
+  "“%@” keeps this window at most %@ × %@ pixels, so it can't be made %@ × %@." : {
+    "de" : "„%@“ hält dieses Fenster höchstens %@ × %@ Pixel groß, daher kann es nicht %@ × %@ werden.",
+    "fr" : "« %@ » limite cette fenêtre à %@ × %@ pixels au plus : elle ne peut pas faire %@ × %@.",
+    "zh-Hans" : "“%@”限制此窗口最大为 %@ × %@ 像素，因此无法调整为 %@ × %@。"
   },
   "✓ Saved screenshot" : {
     "de" : "✓ Bildschirmfoto gesichert",

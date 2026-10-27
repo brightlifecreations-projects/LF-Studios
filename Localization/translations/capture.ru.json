@@ -11,8 +11,14 @@
   "%@ · %lld fps" : {
     "ru" : "%@ · %lld fps"
   },
+  "%@ × %@ doesn't fit on this display" : {
+    "ru" : "%@ × %@ не помещается на этом экране"
+  },
   "%@ × %@ px" : {
     "ru" : "%@ × %@ пикс."
+  },
+  "%@ × %@ — window %@ × %@ on this display" : {
+    "ru" : "%@ × %@ — окно %@ × %@ на этом экране"
   },
   "%@, %@" : {
     "ru" : "%@, %@"
@@ -90,14 +96,8 @@
       "other" : "%lld секунды"
     }
   },
-  "%lld × %lld doesn't fit on this display" : {
-    "ru" : "%lld × %lld не помещается на этом экране"
-  },
-  "%lld × %lld — window %lld × %lld on this display" : {
-    "ru" : "%lld × %lld — окно %lld × %lld на этом экране"
-  },
-  "A window that size would be bigger than the screen. The largest of the same shape that fits is %lld × %lld." : {
-    "ru" : "Окно такого размера больше экрана. Самый большой размер той же формы, который помещается, — %lld × %lld."
+  "A window that size would be bigger than the screen. The largest of the same shape that fits is %@ × %@." : {
+    "ru" : "Окно такого размера больше экрана. Самый большой размер той же формы, который помещается, — %@ × %@."
   },
   "Add Marker" : {
     "ru" : "Добавить маркер"
@@ -303,8 +303,8 @@
   "Email address copied" : {
     "ru" : "Адрес e-mail скопирован"
   },
-  "Enter a width and a height from %lld to %lld pixels." : {
-    "ru" : "Введите ширину и высоту от %lld до %lld пикселей."
+  "Enter a width and a height from %@ to %@ pixels." : {
+    "ru" : "Введите ширину и высоту от %@ до %@ пикселей."
   },
   "Esc or Done finishes" : {
     "ru" : "Esc или «Готово» — завершить"
@@ -781,8 +781,8 @@
   "URL" : {
     "ru" : "URL"
   },
-  "Use the largest size that fits (%lld × %lld)" : {
-    "ru" : "Взять самый большой размер, который помещается (%lld × %lld)"
+  "Use the largest size that fits (%@ × %@)" : {
+    "ru" : "Взять самый большой размер, который помещается (%@ × %@)"
   },
   "Warning" : {
     "ru" : "Предупреждение"
@@ -860,11 +860,11 @@
   "“%@” doesn't let this window be resized." : {
     "ru" : "«%@» не позволяет менять размер этого окна."
   },
-  "“%@” keeps this window at least %lld × %lld pixels, so it can't be made %lld × %lld." : {
-    "ru" : "«%@» не даёт сделать это окно меньше %lld × %lld пикселей, поэтому размер %lld × %lld недоступен."
+  "“%@” keeps this window at least %@ × %@ pixels, so it can't be made %@ × %@." : {
+    "ru" : "«%@» не даёт сделать это окно меньше %@ × %@ пикселей, поэтому размер %@ × %@ недоступен."
   },
-  "“%@” keeps this window at most %lld × %lld pixels, so it can't be made %lld × %lld." : {
-    "ru" : "«%@» не даёт сделать это окно больше %lld × %lld пикселей, поэтому размер %lld × %lld недоступен."
+  "“%@” keeps this window at most %@ × %@ pixels, so it can't be made %@ × %@." : {
+    "ru" : "«%@» не даёт сделать это окно больше %@ × %@ пикселей, поэтому размер %@ × %@ недоступен."
   },
   "✓ Saved screenshot" : {
     "ru" : "✓ Снимок экрана сохранен"

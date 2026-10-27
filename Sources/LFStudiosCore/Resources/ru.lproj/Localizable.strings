@@ -60,8 +60,12 @@
 	<string>%@ · %lld fps</string>
 	<key>%@ · on your clipboard — paste it anywhere</key>
 	<string>%@ · в буфере обмена — вставьте куда угодно</string>
+	<key>%@ × %@ doesn't fit on this display</key>
+	<string>%@ × %@ не помещается на этом экране</string>
 	<key>%@ × %@ px</key>
 	<string>%@ × %@ пикс.</string>
+	<key>%@ × %@ — window %@ × %@ on this display</key>
+	<string>%@ × %@ — окно %@ × %@ на этом экране</string>
 	<key>%@ — %@</key>
 	<string>%@ — %@</string>
 	<key>%@ — LF Studios lives in your menu bar</key>
@@ -92,10 +96,6 @@
 	<string>%lld пикс. · Esc или «Готово» — завершить</string>
 	<key>%lld s</key>
 	<string>%lld с</string>
-	<key>%lld × %lld doesn't fit on this display</key>
-	<string>%lld × %lld не помещается на этом экране</string>
-	<key>%lld × %lld — window %lld × %lld on this display</key>
-	<string>%lld × %lld — окно %lld × %lld на этом экране</string>
 	<key>%lld%%</key>
 	<string>%lld %%</string>
 	<key>%lld%% volume</key>
@@ -144,8 +144,8 @@
 	<string>Более высокий столбец кнопок, место для вращающегося диска, панель навигации внизу</string>
 	<key>A video needs at least one clip</key>
 	<string>В видео должен быть хотя бы один клип</string>
-	<key>A window that size would be bigger than the screen. The largest of the same shape that fits is %lld × %lld.</key>
-	<string>Окно такого размера больше экрана. Самый большой размер той же формы, который помещается, — %lld × %lld.</string>
+	<key>A window that size would be bigger than the screen. The largest of the same shape that fits is %@ × %@.</key>
+	<string>Окно такого размера больше экрана. Самый большой размер той же формы, который помещается, — %@ × %@.</string>
 	<key>About</key>
 	<string>О программе</string>
 	<key>About %lld min left</key>
@@ -1158,8 +1158,8 @@
 	<string>Нравится LF Studios? Нажмите, чтобы поставить звезду на GitHub ★</string>
 	<key>Enjoying LF Studios? Star it on GitHub so more people find it.</key>
 	<string>Нравится LF Studios? Поставьте звезду на GitHub, чтобы о нем узнало больше людей.</string>
-	<key>Enter a width and a height from %lld to %lld pixels.</key>
-	<string>Введите ширину и высоту от %lld до %lld пикселей.</string>
+	<key>Enter a width and a height from %@ to %@ pixels.</key>
+	<string>Введите ширину и высоту от %@ до %@ пикселей.</string>
 	<key>Esc</key>
 	<string>Esc</string>
 	<key>Esc or Done finishes</key>
@@ -3684,8 +3684,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Выбрать свое изображение</string>
 	<key>Use as My Style</key>
 	<string>Использовать как «Мой стиль»</string>
-	<key>Use the largest size that fits (%lld × %lld)</key>
-	<string>Взять самый большой размер, который помещается (%lld × %lld)</string>
+	<key>Use the largest size that fits (%@ × %@)</key>
+	<string>Взять самый большой размер, который помещается (%@ × %@)</string>
 	<key>Use this color</key>
 	<string>Использовать этот цвет</string>
 	<key>Use this level for every zoom</key>
@@ -3972,10 +3972,10 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>Шрифта «%@» нет на этом Mac — показан встроенный шрифт. Установите его или добавьте файл через «Добавить файл шрифта…».</string>
 	<key>“%@” isn't on this Mac — using the built-in font</key>
 	<string>Шрифта «%@» нет на этом Mac — используется встроенный шрифт</string>
-	<key>“%@” keeps this window at least %lld × %lld pixels, so it can't be made %lld × %lld.</key>
-	<string>«%@» не даёт сделать это окно меньше %lld × %lld пикселей, поэтому размер %lld × %lld недоступен.</string>
-	<key>“%@” keeps this window at most %lld × %lld pixels, so it can't be made %lld × %lld.</key>
-	<string>«%@» не даёт сделать это окно больше %lld × %lld пикселей, поэтому размер %lld × %lld недоступен.</string>
+	<key>“%@” keeps this window at least %@ × %@ pixels, so it can't be made %@ × %@.</key>
+	<string>«%@» не даёт сделать это окно меньше %@ × %@ пикселей, поэтому размер %@ × %@ недоступен.</string>
+	<key>“%@” keeps this window at most %@ × %@ pixels, so it can't be made %@ × %@.</key>
+	<string>«%@» не даёт сделать это окно больше %@ × %@ пикселей, поэтому размер %@ × %@ недоступен.</string>
 	<key>“Made with LF Studios” end card (2s)</key>
 	<string>финальная заставка «Made with LF Studios» (2 с)</string>
 	<key>⇧-drag</key>

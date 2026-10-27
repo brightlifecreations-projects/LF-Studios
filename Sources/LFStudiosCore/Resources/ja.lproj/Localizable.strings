@@ -60,8 +60,12 @@
 	<string>%@ · %lld fps</string>
 	<key>%@ · on your clipboard — paste it anywhere</key>
 	<string>%@ · クリップボードにあります。どこにでもペーストできます</string>
+	<key>%@ × %@ doesn't fit on this display</key>
+	<string>%@ × %@はこのディスプレイに収まりません</string>
 	<key>%@ × %@ px</key>
 	<string>%@ × %@ px</string>
+	<key>%@ × %@ — window %@ × %@ on this display</key>
+	<string>%@ × %@ — このディスプレイではウインドウ%@ × %@</string>
 	<key>%@ — %@</key>
 	<string>%@（%@）</string>
 	<key>%@ — LF Studios lives in your menu bar</key>
@@ -152,10 +156,6 @@
 	<string>%lld個のショートカット</string>
 	<key>%lld zooms</key>
 	<string>%lld個のズーム</string>
-	<key>%lld × %lld doesn't fit on this display</key>
-	<string>%lld × %lldはこのディスプレイに収まりません</string>
-	<key>%lld × %lld — window %lld × %lld on this display</key>
-	<string>%lld × %lld — このディスプレイではウインドウ%lld × %lld</string>
 	<key>%lld%%</key>
 	<string>%lld%%</string>
 	<key>%lld%% volume</key>
@@ -204,8 +204,8 @@
 	<string>背の高いボタン列、回転するディスクの位置、下部のナビゲーションバー</string>
 	<key>A video needs at least one clip</key>
 	<string>ビデオには少なくとも1つのクリップが必要です</string>
-	<key>A window that size would be bigger than the screen. The largest of the same shape that fits is %lld × %lld.</key>
-	<string>このサイズのウインドウは画面より大きくなります。同じ形で収まる最大のサイズは%lld × %lldです。</string>
+	<key>A window that size would be bigger than the screen. The largest of the same shape that fits is %@ × %@.</key>
+	<string>このサイズのウインドウは画面より大きくなります。同じ形で収まる最大のサイズは%@ × %@です。</string>
 	<key>About</key>
 	<string>情報</string>
 	<key>About %lld min left</key>
@@ -1228,8 +1228,8 @@
 	<string>LF Studiosを気に入っていただけましたか? クリックしてGitHubでスターを付けてください ★</string>
 	<key>Enjoying LF Studios? Star it on GitHub so more people find it.</key>
 	<string>LF Studiosを気に入っていただけましたか? GitHubでスターを付けると、より多くの人に見つけてもらえます。</string>
-	<key>Enter a width and a height from %lld to %lld pixels.</key>
-	<string>幅と高さを%lld〜%lldピクセルで入力してください。</string>
+	<key>Enter a width and a height from %@ to %@ pixels.</key>
+	<string>幅と高さを%@〜%@ピクセルで入力してください。</string>
 	<key>Esc</key>
 	<string>Esc</string>
 	<key>Esc or Done finishes</key>
@@ -3820,8 +3820,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>カスタム画像を選択</string>
 	<key>Use as My Style</key>
 	<string>マイスタイルとして使用</string>
-	<key>Use the largest size that fits (%lld × %lld)</key>
-	<string>収まる最大のサイズを使う（%lld × %lld）</string>
+	<key>Use the largest size that fits (%@ × %@)</key>
+	<string>収まる最大のサイズを使う（%@ × %@）</string>
 	<key>Use this color</key>
 	<string>このカラーを使用</string>
 	<key>Use this level for every zoom</key>
@@ -4114,10 +4114,10 @@ Appleのショートカットは、“システム設定”＞“キーボード
 	<string>“%@”はこのMacにないため、内蔵フォントを表示しています。インストールするか、「フォントファイルを追加…」でファイルを追加してください。</string>
 	<key>“%@” isn't on this Mac — using the built-in font</key>
 	<string>“%@”はこのMacにないため、内蔵フォントを使用しています</string>
-	<key>“%@” keeps this window at least %lld × %lld pixels, so it can't be made %lld × %lld.</key>
-	<string>“%@”はこのウインドウを%lld × %lldピクセル以上に保つため、%lld × %lldにはできません。</string>
-	<key>“%@” keeps this window at most %lld × %lld pixels, so it can't be made %lld × %lld.</key>
-	<string>“%@”はこのウインドウを%lld × %lldピクセル以下に保つため、%lld × %lldにはできません。</string>
+	<key>“%@” keeps this window at least %@ × %@ pixels, so it can't be made %@ × %@.</key>
+	<string>“%@”はこのウインドウを%@ × %@ピクセル以上に保つため、%@ × %@にはできません。</string>
+	<key>“%@” keeps this window at most %@ × %@ pixels, so it can't be made %@ × %@.</key>
+	<string>“%@”はこのウインドウを%@ × %@ピクセル以下に保つため、%@ × %@にはできません。</string>
 	<key>“Made with LF Studios” end card (2s)</key>
 	<string>“Made with LF Studios”エンドカード（2秒）</string>
 	<key>• %lld small notes about recordings that are gone</key>

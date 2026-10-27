@@ -60,8 +60,12 @@
 	<string>%@ · %lld fps</string>
 	<key>%@ · on your clipboard — paste it anywhere</key>
 	<string>%@ · 已在剪贴板中 — 可粘贴到任何地方</string>
+	<key>%@ × %@ doesn't fit on this display</key>
+	<string>%@ × %@ 在这台显示器上放不下</string>
 	<key>%@ × %@ px</key>
 	<string>%@ × %@ 像素</string>
+	<key>%@ × %@ — window %@ × %@ on this display</key>
+	<string>%@ × %@ — 在这台显示器上窗口为 %@ × %@</string>
 	<key>%@ — %@</key>
 	<string>%@ — %@</string>
 	<key>%@ — LF Studios lives in your menu bar</key>
@@ -152,10 +156,6 @@
 	<string>%lld 个快捷键</string>
 	<key>%lld zooms</key>
 	<string>%lld 个缩放</string>
-	<key>%lld × %lld doesn't fit on this display</key>
-	<string>%lld × %lld 在这台显示器上放不下</string>
-	<key>%lld × %lld — window %lld × %lld on this display</key>
-	<string>%lld × %lld — 在这台显示器上窗口为 %lld × %lld</string>
 	<key>%lld%%</key>
 	<string>%lld%%</string>
 	<key>%lld%% volume</key>
@@ -204,8 +204,8 @@
 	<string>一列更高的按钮、旋转唱片的位置、底部导航栏</string>
 	<key>A video needs at least one clip</key>
 	<string>视频至少需要一个片段</string>
-	<key>A window that size would be bigger than the screen. The largest of the same shape that fits is %lld × %lld.</key>
-	<string>这么大的窗口会超出屏幕。能放下的同比例最大尺寸是 %lld × %lld。</string>
+	<key>A window that size would be bigger than the screen. The largest of the same shape that fits is %@ × %@.</key>
+	<string>这么大的窗口会超出屏幕。能放下的同比例最大尺寸是 %@ × %@。</string>
 	<key>About</key>
 	<string>关于</string>
 	<key>About %lld min left</key>
@@ -1228,8 +1228,8 @@
 	<string>喜欢 LF Studios 吗？点按即可在 GitHub 上为它加星标 ★</string>
 	<key>Enjoying LF Studios? Star it on GitHub so more people find it.</key>
 	<string>喜欢 LF Studios 吗？在 GitHub 上加个星标，让更多人发现它。</string>
-	<key>Enter a width and a height from %lld to %lld pixels.</key>
-	<string>请输入 %lld 到 %lld 像素之间的宽度和高度。</string>
+	<key>Enter a width and a height from %@ to %@ pixels.</key>
+	<string>请输入 %@ 到 %@ 像素之间的宽度和高度。</string>
 	<key>Esc</key>
 	<string>Esc</string>
 	<key>Esc or Done finishes</key>
@@ -3820,8 +3820,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>选取自定图像</string>
 	<key>Use as My Style</key>
 	<string>用作我的风格</string>
-	<key>Use the largest size that fits (%lld × %lld)</key>
-	<string>使用能放下的最大尺寸（%lld × %lld）</string>
+	<key>Use the largest size that fits (%@ × %@)</key>
+	<string>使用能放下的最大尺寸（%@ × %@）</string>
 	<key>Use this color</key>
 	<string>使用此颜色</string>
 	<key>Use this level for every zoom</key>
@@ -4114,10 +4114,10 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>此 Mac 上没有“%@”，正在显示内置字体。请安装该字体，或使用“添加字体文件…”添加它的文件。</string>
 	<key>“%@” isn't on this Mac — using the built-in font</key>
 	<string>此 Mac 上没有“%@”，正在使用内置字体</string>
-	<key>“%@” keeps this window at least %lld × %lld pixels, so it can't be made %lld × %lld.</key>
-	<string>“%@”要求此窗口至少为 %lld × %lld 像素，因此无法调整为 %lld × %lld。</string>
-	<key>“%@” keeps this window at most %lld × %lld pixels, so it can't be made %lld × %lld.</key>
-	<string>“%@”限制此窗口最大为 %lld × %lld 像素，因此无法调整为 %lld × %lld。</string>
+	<key>“%@” keeps this window at least %@ × %@ pixels, so it can't be made %@ × %@.</key>
+	<string>“%@”要求此窗口至少为 %@ × %@ 像素，因此无法调整为 %@ × %@。</string>
+	<key>“%@” keeps this window at most %@ × %@ pixels, so it can't be made %@ × %@.</key>
+	<string>“%@”限制此窗口最大为 %@ × %@ 像素，因此无法调整为 %@ × %@。</string>
 	<key>“Made with LF Studios” end card (2s)</key>
 	<string>“Made with LF Studios”结尾画面（2 秒）</string>
 	<key>• %lld small notes about recordings that are gone</key>

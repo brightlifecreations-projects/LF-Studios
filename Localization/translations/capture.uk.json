@@ -11,8 +11,14 @@
   "%@ · %lld fps" : {
     "uk" : "%@ · %lld fps"
   },
+  "%@ × %@ doesn't fit on this display" : {
+    "uk" : "%@ × %@ не вміщається на цьому екрані"
+  },
   "%@ × %@ px" : {
     "uk" : "%@ × %@ px"
+  },
+  "%@ × %@ — window %@ × %@ on this display" : {
+    "uk" : "%@ × %@ — вікно %@ × %@ на цьому екрані"
   },
   "%@, %@" : {
     "uk" : "%@, %@"
@@ -90,14 +96,8 @@
       "other" : "%lld секунди"
     }
   },
-  "%lld × %lld doesn't fit on this display" : {
-    "uk" : "%lld × %lld не вміщається на цьому екрані"
-  },
-  "%lld × %lld — window %lld × %lld on this display" : {
-    "uk" : "%lld × %lld — вікно %lld × %lld на цьому екрані"
-  },
-  "A window that size would be bigger than the screen. The largest of the same shape that fits is %lld × %lld." : {
-    "uk" : "Вікно такого розміру більше за екран. Найбільший розмір тієї ж форми, що вміщається, — %lld × %lld."
+  "A window that size would be bigger than the screen. The largest of the same shape that fits is %@ × %@." : {
+    "uk" : "Вікно такого розміру більше за екран. Найбільший розмір тієї ж форми, що вміщається, — %@ × %@."
   },
   "Add Marker" : {
     "uk" : "Додати маркер"
@@ -303,8 +303,8 @@
   "Email address copied" : {
     "uk" : "Ел. адресу скопійовано"
   },
-  "Enter a width and a height from %lld to %lld pixels." : {
-    "uk" : "Введіть ширину й висоту від %lld до %lld пікселів."
+  "Enter a width and a height from %@ to %@ pixels." : {
+    "uk" : "Введіть ширину й висоту від %@ до %@ пікселів."
   },
   "Esc or Done finishes" : {
     "uk" : "Esc або «Готово» — завершити"
@@ -781,8 +781,8 @@
   "URL" : {
     "uk" : "URL"
   },
-  "Use the largest size that fits (%lld × %lld)" : {
-    "uk" : "Узяти найбільший розмір, що вміщається (%lld × %lld)"
+  "Use the largest size that fits (%@ × %@)" : {
+    "uk" : "Узяти найбільший розмір, що вміщається (%@ × %@)"
   },
   "Warning" : {
     "uk" : "Попередження"
@@ -860,11 +860,11 @@
   "“%@” doesn't let this window be resized." : {
     "uk" : "«%@» не дозволяє змінювати розмір цього вікна."
   },
-  "“%@” keeps this window at least %lld × %lld pixels, so it can't be made %lld × %lld." : {
-    "uk" : "«%@» не дає зробити це вікно меншим за %lld × %lld пікселів, тому розмір %lld × %lld недоступний."
+  "“%@” keeps this window at least %@ × %@ pixels, so it can't be made %@ × %@." : {
+    "uk" : "«%@» не дає зробити це вікно меншим за %@ × %@ пікселів, тому розмір %@ × %@ недоступний."
   },
-  "“%@” keeps this window at most %lld × %lld pixels, so it can't be made %lld × %lld." : {
-    "uk" : "«%@» не дає зробити це вікно більшим за %lld × %lld пікселів, тому розмір %lld × %lld недоступний."
+  "“%@” keeps this window at most %@ × %@ pixels, so it can't be made %@ × %@." : {
+    "uk" : "«%@» не дає зробити це вікно більшим за %@ × %@ пікселів, тому розмір %@ × %@ недоступний."
   },
   "✓ Saved screenshot" : {
     "uk" : "✓ Знімок екрана збережено"

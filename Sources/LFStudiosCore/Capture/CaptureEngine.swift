@@ -2720,7 +2720,10 @@ final class RecordingControlsWindow: NSWindow {
         let scale = targetScreen.backingScaleFactor
         for (index, preset) in RecordingWindowSize.presets.enumerated() {
             let points = RecordingWindowSize.points(width: preset.width, height: preset.height, scale: scale)
-            let item = NSMenuItem(title: L("\(preset.width) × \(preset.height) — window \(Int(points.width)) × \(Int(points.height)) on this display"), action: #selector(windowSizeChosen(_:)), keyEquivalent: "")
+            // Pixel sizes as plain digits, like the size shown on the bar.
+            let (width, height) = (String(preset.width), String(preset.height))
+            let (windowWidth, windowHeight) = (String(Int(points.width)), String(Int(points.height)))
+            let item = NSMenuItem(title: L("\(width) × \(height) — window \(windowWidth) × \(windowHeight) on this display"), action: #selector(windowSizeChosen(_:)), keyEquivalent: "")
             item.target = self
             item.tag = index
             menu.addItem(item)
@@ -2765,7 +2768,8 @@ final class RecordingControlsWindow: NSWindow {
         guard alert.runModal() == .alertFirstButtonReturn else { return }
         guard let w = Int(width.stringValue.trimmingCharacters(in: .whitespaces)), let h = Int(height.stringValue.trimmingCharacters(in: .whitespaces)),
               RecordingWindowSize.pixelRange.contains(w), RecordingWindowSize.pixelRange.contains(h) else {
-            ToastWindow.show(message: L("Enter a width and a height from \(RecordingWindowSize.pixelRange.lowerBound) to \(RecordingWindowSize.pixelRange.upperBound) pixels."), duration: 3.5, on: targetScreen)
+            let (lowest, highest) = (String(RecordingWindowSize.pixelRange.lowerBound), String(RecordingWindowSize.pixelRange.upperBound))
+            ToastWindow.show(message: L("Enter a width and a height from \(lowest) to \(highest) pixels."), duration: 3.5, on: targetScreen)
             return
         }
         resizeWindow(to: RecordingWindowSize.Preset(width: w, height: h))
@@ -2786,9 +2790,11 @@ final class RecordingControlsWindow: NSWindow {
         if !RecordingWindowSize.fits(width: size.width, height: size.height, scale: scale, in: visible) {
             let fitting = RecordingWindowSize.largestFitting(width: size.width, height: size.height, scale: scale, in: visible)
             let alert = NSAlert()
-            alert.messageText = L("\(pixels.width) × \(pixels.height) doesn't fit on this display")
-            alert.informativeText = L("A window that size would be bigger than the screen. The largest of the same shape that fits is \(fitting.width) × \(fitting.height).")
-            alert.addButton(withTitle: L("Use the largest size that fits (\(fitting.width) × \(fitting.height))"))
+            let (askedWidth, askedHeight) = (String(pixels.width), String(pixels.height))
+            let (fitWidth, fitHeight) = (String(fitting.width), String(fitting.height))
+            alert.messageText = L("\(askedWidth) × \(askedHeight) doesn't fit on this display")
+            alert.informativeText = L("A window that size would be bigger than the screen. The largest of the same shape that fits is \(fitWidth) × \(fitHeight).")
+            alert.addButton(withTitle: L("Use the largest size that fits (\(fitWidth) × \(fitHeight))"))
             alert.addButton(withTitle: L("Cancel"))
             guard alert.runModal() == .alertFirstButtonReturn else { return }
             size = fitting

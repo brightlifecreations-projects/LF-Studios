@@ -60,8 +60,12 @@
 	<string>%@ · %lld fps</string>
 	<key>%@ · on your clipboard — paste it anywhere</key>
 	<string>%@ · dans le presse-papiers — collez-le où vous voulez</string>
+	<key>%@ × %@ doesn't fit on this display</key>
+	<string>%@ × %@ ne tient pas sur cet écran</string>
 	<key>%@ × %@ px</key>
 	<string>%@ × %@ px</string>
+	<key>%@ × %@ — window %@ × %@ on this display</key>
+	<string>%@ × %@ — fenêtre de %@ × %@ sur cet écran</string>
 	<key>%@ — %@</key>
 	<string>%@ — %@</string>
 	<key>%@ — LF Studios lives in your menu bar</key>
@@ -92,10 +96,6 @@
 	<string>%lld px · Échap ou « Terminé » pour finir</string>
 	<key>%lld s</key>
 	<string>%lld s</string>
-	<key>%lld × %lld doesn't fit on this display</key>
-	<string>%lld × %lld ne tient pas sur cet écran</string>
-	<key>%lld × %lld — window %lld × %lld on this display</key>
-	<string>%lld × %lld — fenêtre de %lld × %lld sur cet écran</string>
 	<key>%lld%%</key>
 	<string>%lld %%</string>
 	<key>%lld%% volume</key>
@@ -144,8 +144,8 @@
 	<string>Une colonne de boutons plus haute, l’emplacement d’un disque qui tourne, une barre de navigation en bas</string>
 	<key>A video needs at least one clip</key>
 	<string>Une vidéo doit contenir au moins un clip</string>
-	<key>A window that size would be bigger than the screen. The largest of the same shape that fits is %lld × %lld.</key>
-	<string>Une fenêtre de cette taille serait plus grande que l’écran. La plus grande taille de même forme qui tient est %lld × %lld.</string>
+	<key>A window that size would be bigger than the screen. The largest of the same shape that fits is %@ × %@.</key>
+	<string>Une fenêtre de cette taille serait plus grande que l’écran. La plus grande taille de même forme qui tient est %@ × %@.</string>
 	<key>About</key>
 	<string>À propos</string>
 	<key>About %lld min left</key>
@@ -1158,8 +1158,8 @@
 	<string>Vous aimez LF Studios ? Cliquez pour lui donner une étoile sur GitHub ★</string>
 	<key>Enjoying LF Studios? Star it on GitHub so more people find it.</key>
 	<string>Vous aimez LF Studios ? Donnez-lui une étoile sur GitHub pour que d’autres le découvrent.</string>
-	<key>Enter a width and a height from %lld to %lld pixels.</key>
-	<string>Saisissez une largeur et une hauteur de %lld à %lld pixels.</string>
+	<key>Enter a width and a height from %@ to %@ pixels.</key>
+	<string>Saisissez une largeur et une hauteur de %@ à %@ pixels.</string>
 	<key>Esc</key>
 	<string>Échap</string>
 	<key>Esc or Done finishes</key>
@@ -3684,8 +3684,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Choisir une image personnalisée</string>
 	<key>Use as My Style</key>
 	<string>Utiliser comme Mon style</string>
-	<key>Use the largest size that fits (%lld × %lld)</key>
-	<string>Utiliser la plus grande taille qui tient (%lld × %lld)</string>
+	<key>Use the largest size that fits (%@ × %@)</key>
+	<string>Utiliser la plus grande taille qui tient (%@ × %@)</string>
 	<key>Use this color</key>
 	<string>Utiliser cette couleur</string>
 	<key>Use this level for every zoom</key>
@@ -3972,10 +3972,10 @@ Vous pouvez réactiver les raccourcis d’Apple à tout moment dans Réglages Sy
 	<string>« %@ » n’est pas sur ce Mac : la police intégrée est affichée. Installez-la ou ajoutez son fichier avec Ajouter un fichier de police…</string>
 	<key>“%@” isn't on this Mac — using the built-in font</key>
 	<string>« %@ » n’est pas sur ce Mac : la police intégrée est utilisée</string>
-	<key>“%@” keeps this window at least %lld × %lld pixels, so it can't be made %lld × %lld.</key>
-	<string>« %@ » garde cette fenêtre à au moins %lld × %lld pixels : elle ne peut pas faire %lld × %lld.</string>
-	<key>“%@” keeps this window at most %lld × %lld pixels, so it can't be made %lld × %lld.</key>
-	<string>« %@ » limite cette fenêtre à %lld × %lld pixels au plus : elle ne peut pas faire %lld × %lld.</string>
+	<key>“%@” keeps this window at least %@ × %@ pixels, so it can't be made %@ × %@.</key>
+	<string>« %@ » garde cette fenêtre à au moins %@ × %@ pixels : elle ne peut pas faire %@ × %@.</string>
+	<key>“%@” keeps this window at most %@ × %@ pixels, so it can't be made %@ × %@.</key>
+	<string>« %@ » limite cette fenêtre à %@ × %@ pixels au plus : elle ne peut pas faire %@ × %@.</string>
 	<key>“Made with LF Studios” end card (2s)</key>
 	<string>écran de fin « Made with LF Studios » (2 s)</string>
 	<key>⇧-drag</key>

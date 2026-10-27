@@ -60,8 +60,12 @@
 	<string>%@ · %lld fps</string>
 	<key>%@ · on your clipboard — paste it anywhere</key>
 	<string>%@ · in der Zwischenablage – überall einsetzen</string>
+	<key>%@ × %@ doesn't fit on this display</key>
+	<string>%@ × %@ passt nicht auf diesen Bildschirm</string>
 	<key>%@ × %@ px</key>
 	<string>%@ × %@ px</string>
+	<key>%@ × %@ — window %@ × %@ on this display</key>
+	<string>%@ × %@ – Fenster %@ × %@ auf diesem Bildschirm</string>
 	<key>%@ — %@</key>
 	<string>%@ – %@</string>
 	<key>%@ — LF Studios lives in your menu bar</key>
@@ -98,10 +102,6 @@
 	<string>%lld s</string>
 	<key>%lld selected</key>
 	<string>%lld ausgewählt</string>
-	<key>%lld × %lld doesn't fit on this display</key>
-	<string>%lld × %lld passt nicht auf diesen Bildschirm</string>
-	<key>%lld × %lld — window %lld × %lld on this display</key>
-	<string>%lld × %lld – Fenster %lld × %lld auf diesem Bildschirm</string>
 	<key>%lld%%</key>
 	<string>%lld %%</string>
 	<key>%lld%% volume</key>
@@ -150,8 +150,8 @@
 	<string>Eine höhere Knopfspalte, ein Platz für eine drehende Scheibe, unten eine Navigationsleiste</string>
 	<key>A video needs at least one clip</key>
 	<string>Ein Video braucht mindestens einen Clip</string>
-	<key>A window that size would be bigger than the screen. The largest of the same shape that fits is %lld × %lld.</key>
-	<string>Ein so großes Fenster wäre größer als der Bildschirm. Die größte passende Größe mit derselben Form ist %lld × %lld.</string>
+	<key>A window that size would be bigger than the screen. The largest of the same shape that fits is %@ × %@.</key>
+	<string>Ein so großes Fenster wäre größer als der Bildschirm. Die größte passende Größe mit derselben Form ist %@ × %@.</string>
 	<key>About</key>
 	<string>Info</string>
 	<key>About %lld min left</key>
@@ -1164,8 +1164,8 @@
 	<string>Gefällt dir LF Studios? Klicke, um ihm auf GitHub einen Stern zu geben ★</string>
 	<key>Enjoying LF Studios? Star it on GitHub so more people find it.</key>
 	<string>Gefällt dir LF Studios? Gib ihm einen Stern auf GitHub, damit mehr Leute es finden.</string>
-	<key>Enter a width and a height from %lld to %lld pixels.</key>
-	<string>Gib eine Breite und eine Höhe von %lld bis %lld Pixeln ein.</string>
+	<key>Enter a width and a height from %@ to %@ pixels.</key>
+	<string>Gib eine Breite und eine Höhe von %@ bis %@ Pixeln ein.</string>
 	<key>Esc</key>
 	<string>Esc</string>
 	<key>Esc or Done finishes</key>
@@ -3690,8 +3690,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Eigenes Bild auswählen</string>
 	<key>Use as My Style</key>
 	<string>Als „Mein Stil“ verwenden</string>
-	<key>Use the largest size that fits (%lld × %lld)</key>
-	<string>Größte passende Größe verwenden (%lld × %lld)</string>
+	<key>Use the largest size that fits (%@ × %@)</key>
+	<string>Größte passende Größe verwenden (%@ × %@)</string>
 	<key>Use this color</key>
 	<string>Diese Farbe verwenden</string>
 	<key>Use this level for every zoom</key>
@@ -3978,10 +3978,10 @@ Du kannst Apples Kurzbefehle jederzeit unter „Systemeinstellungen“ → „Ta
 	<string>„%@“ ist auf diesem Mac nicht vorhanden – die integrierte Schrift wird angezeigt. Installiere sie oder füge ihre Datei mit „Schriftdatei hinzufügen …“ hinzu.</string>
 	<key>“%@” isn't on this Mac — using the built-in font</key>
 	<string>„%@“ ist auf diesem Mac nicht vorhanden – die integrierte Schrift wird verwendet</string>
-	<key>“%@” keeps this window at least %lld × %lld pixels, so it can't be made %lld × %lld.</key>
-	<string>„%@“ hält dieses Fenster mindestens %lld × %lld Pixel groß, daher kann es nicht %lld × %lld werden.</string>
-	<key>“%@” keeps this window at most %lld × %lld pixels, so it can't be made %lld × %lld.</key>
-	<string>„%@“ hält dieses Fenster höchstens %lld × %lld Pixel groß, daher kann es nicht %lld × %lld werden.</string>
+	<key>“%@” keeps this window at least %@ × %@ pixels, so it can't be made %@ × %@.</key>
+	<string>„%@“ hält dieses Fenster mindestens %@ × %@ Pixel groß, daher kann es nicht %@ × %@ werden.</string>
+	<key>“%@” keeps this window at most %@ × %@ pixels, so it can't be made %@ × %@.</key>
+	<string>„%@“ hält dieses Fenster höchstens %@ × %@ Pixel groß, daher kann es nicht %@ × %@ werden.</string>
 	<key>“Made with LF Studios” end card (2s)</key>
 	<string>Endkarte „Made with LF Studios“ (2 s)</string>
 	<key>⇧-drag</key>

@@ -1186,6 +1186,46 @@
         }
       }
     },
+    "%@ × %@ doesn't fit on this display" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ × %@ passt nicht auf diesen Bildschirm"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ × %@ ne tient pas sur cet écran"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ × %@はこのディスプレイに収まりません"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ × %@ не помещается на этом экране"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ × %@ не вміщається на цьому екрані"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ × %@ 在这台显示器上放不下"
+          }
+        }
+      }
+    },
     "%@ × %@ px" : {
       "comment" : "A display's size in pixels",
       "localizations" : {
@@ -1223,6 +1263,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ × %@ 像素"
+          }
+        }
+      }
+    },
+    "%@ × %@ — window %@ × %@ on this display" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ × %@ – Fenster %@ × %@ auf diesem Bildschirm"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ × %@ — fenêtre de %@ × %@ sur cet écran"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ × %@ — このディスプレイではウインドウ%@ × %@"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ × %@ — окно %@ × %@ на этом экране"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ × %@ — вікно %@ × %@ на цьому екрані"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ × %@ — 在这台显示器上窗口为 %@ × %@"
           }
         }
       }
@@ -5602,86 +5682,6 @@
         }
       }
     },
-    "%lld × %lld doesn't fit on this display" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld × %lld passt nicht auf diesen Bildschirm"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld × %lld ne tient pas sur cet écran"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld × %lldはこのディスプレイに収まりません"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld × %lld не помещается на этом экране"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld × %lld не вміщається на цьому екрані"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld × %lld 在这台显示器上放不下"
-          }
-        }
-      }
-    },
-    "%lld × %lld — window %lld × %lld on this display" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld × %lld – Fenster %lld × %lld auf diesem Bildschirm"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld × %lld — fenêtre de %lld × %lld sur cet écran"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld × %lld — このディスプレイではウインドウ%lld × %lld"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld × %lld — окно %lld × %lld на этом экране"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld × %lld — вікно %lld × %lld на цьому екрані"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld × %lld — 在这台显示器上窗口为 %lld × %lld"
-          }
-        }
-      }
-    },
     "%lld%%" : {
       "comment" : "A level in percent, on its own (volume, opacity, progress)",
       "localizations" : {
@@ -6650,42 +6650,42 @@
         }
       }
     },
-    "A window that size would be bigger than the screen. The largest of the same shape that fits is %lld × %lld." : {
+    "A window that size would be bigger than the screen. The largest of the same shape that fits is %@ × %@." : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ein so großes Fenster wäre größer als der Bildschirm. Die größte passende Größe mit derselben Form ist %lld × %lld."
+            "value" : "Ein so großes Fenster wäre größer als der Bildschirm. Die größte passende Größe mit derselben Form ist %@ × %@."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Une fenêtre de cette taille serait plus grande que l’écran. La plus grande taille de même forme qui tient est %lld × %lld."
+            "value" : "Une fenêtre de cette taille serait plus grande que l’écran. La plus grande taille de même forme qui tient est %@ × %@."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "このサイズのウインドウは画面より大きくなります。同じ形で収まる最大のサイズは%lld × %lldです。"
+            "value" : "このサイズのウインドウは画面より大きくなります。同じ形で収まる最大のサイズは%@ × %@です。"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Окно такого размера больше экрана. Самый большой размер той же формы, который помещается, — %lld × %lld."
+            "value" : "Окно такого размера больше экрана. Самый большой размер той же формы, который помещается, — %@ × %@."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Вікно такого розміру більше за екран. Найбільший розмір тієї ж форми, що вміщається, — %lld × %lld."
+            "value" : "Вікно такого розміру більше за екран. Найбільший розмір тієї ж форми, що вміщається, — %@ × %@."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "这么大的窗口会超出屏幕。能放下的同比例最大尺寸是 %lld × %lld。"
+            "value" : "这么大的窗口会超出屏幕。能放下的同比例最大尺寸是 %@ × %@。"
           }
         }
       }
@@ -27681,42 +27681,42 @@
         }
       }
     },
-    "Enter a width and a height from %lld to %lld pixels." : {
+    "Enter a width and a height from %@ to %@ pixels." : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gib eine Breite und eine Höhe von %lld bis %lld Pixeln ein."
+            "value" : "Gib eine Breite und eine Höhe von %@ bis %@ Pixeln ein."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Saisissez une largeur et une hauteur de %lld à %lld pixels."
+            "value" : "Saisissez une largeur et une hauteur de %@ à %@ pixels."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "幅と高さを%lld〜%lldピクセルで入力してください。"
+            "value" : "幅と高さを%@〜%@ピクセルで入力してください。"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Введите ширину и высоту от %lld до %lld пикселей."
+            "value" : "Введите ширину и высоту от %@ до %@ пикселей."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Введіть ширину й висоту від %lld до %lld пікселів."
+            "value" : "Введіть ширину й висоту від %@ до %@ пікселів."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "请输入 %lld 到 %lld 像素之间的宽度和高度。"
+            "value" : "请输入 %@ 到 %@ 像素之间的宽度和高度。"
           }
         }
       }
@@ -82522,42 +82522,42 @@
         }
       }
     },
-    "Use the largest size that fits (%lld × %lld)" : {
+    "Use the largest size that fits (%@ × %@)" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Größte passende Größe verwenden (%lld × %lld)"
+            "value" : "Größte passende Größe verwenden (%@ × %@)"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Utiliser la plus grande taille qui tient (%lld × %lld)"
+            "value" : "Utiliser la plus grande taille qui tient (%@ × %@)"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "収まる最大のサイズを使う（%lld × %lld）"
+            "value" : "収まる最大のサイズを使う（%@ × %@）"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Взять самый большой размер, который помещается (%lld × %lld)"
+            "value" : "Взять самый большой размер, который помещается (%@ × %@)"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Узяти найбільший розмір, що вміщається (%lld × %lld)"
+            "value" : "Узяти найбільший розмір, що вміщається (%@ × %@)"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "使用能放下的最大尺寸（%lld × %lld）"
+            "value" : "使用能放下的最大尺寸（%@ × %@）"
           }
         }
       }
@@ -88542,82 +88542,82 @@
         }
       }
     },
-    "“%@” keeps this window at least %lld × %lld pixels, so it can't be made %lld × %lld." : {
+    "“%@” keeps this window at least %@ × %@ pixels, so it can't be made %@ × %@." : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "„%@“ hält dieses Fenster mindestens %lld × %lld Pixel groß, daher kann es nicht %lld × %lld werden."
+            "value" : "„%@“ hält dieses Fenster mindestens %@ × %@ Pixel groß, daher kann es nicht %@ × %@ werden."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "« %@ » garde cette fenêtre à au moins %lld × %lld pixels : elle ne peut pas faire %lld × %lld."
+            "value" : "« %@ » garde cette fenêtre à au moins %@ × %@ pixels : elle ne peut pas faire %@ × %@."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "“%@”はこのウインドウを%lld × %lldピクセル以上に保つため、%lld × %lldにはできません。"
+            "value" : "“%@”はこのウインドウを%@ × %@ピクセル以上に保つため、%@ × %@にはできません。"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "«%@» не даёт сделать это окно меньше %lld × %lld пикселей, поэтому размер %lld × %lld недоступен."
+            "value" : "«%@» не даёт сделать это окно меньше %@ × %@ пикселей, поэтому размер %@ × %@ недоступен."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "«%@» не дає зробити це вікно меншим за %lld × %lld пікселів, тому розмір %lld × %lld недоступний."
+            "value" : "«%@» не дає зробити це вікно меншим за %@ × %@ пікселів, тому розмір %@ × %@ недоступний."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "“%@”要求此窗口至少为 %lld × %lld 像素，因此无法调整为 %lld × %lld。"
+            "value" : "“%@”要求此窗口至少为 %@ × %@ 像素，因此无法调整为 %@ × %@。"
           }
         }
       }
     },
-    "“%@” keeps this window at most %lld × %lld pixels, so it can't be made %lld × %lld." : {
+    "“%@” keeps this window at most %@ × %@ pixels, so it can't be made %@ × %@." : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "„%@“ hält dieses Fenster höchstens %lld × %lld Pixel groß, daher kann es nicht %lld × %lld werden."
+            "value" : "„%@“ hält dieses Fenster höchstens %@ × %@ Pixel groß, daher kann es nicht %@ × %@ werden."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "« %@ » limite cette fenêtre à %lld × %lld pixels au plus : elle ne peut pas faire %lld × %lld."
+            "value" : "« %@ » limite cette fenêtre à %@ × %@ pixels au plus : elle ne peut pas faire %@ × %@."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "“%@”はこのウインドウを%lld × %lldピクセル以下に保つため、%lld × %lldにはできません。"
+            "value" : "“%@”はこのウインドウを%@ × %@ピクセル以下に保つため、%@ × %@にはできません。"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "«%@» не даёт сделать это окно больше %lld × %lld пикселей, поэтому размер %lld × %lld недоступен."
+            "value" : "«%@» не даёт сделать это окно больше %@ × %@ пикселей, поэтому размер %@ × %@ недоступен."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "«%@» не дає зробити це вікно більшим за %lld × %lld пікселів, тому розмір %lld × %lld недоступний."
+            "value" : "«%@» не дає зробити це вікно більшим за %@ × %@ пікселів, тому розмір %@ × %@ недоступний."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "“%@”限制此窗口最大为 %lld × %lld 像素，因此无法调整为 %lld × %lld。"
+            "value" : "“%@”限制此窗口最大为 %@ × %@ 像素，因此无法调整为 %@ × %@。"
           }
         }
       }
