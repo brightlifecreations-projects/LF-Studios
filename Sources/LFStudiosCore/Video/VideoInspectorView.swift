@@ -381,6 +381,14 @@ struct VideoCursorInspector: View {
                 VideoInspectorSection(L("Clicks")) {
                     VideoSegmented(options: VideoCursorSettings.ClickEffect.allCases.filter { $0 != .press }.map { ($0, $0.title) }, selection: binding(\.clickEffect))
                 }
+                VideoInspectorSection(L("Loop")) {
+                    VideoToggleRow(
+                        title: L("Return to start at the end"),
+                        detail: L("Needs a cursor LF Studios draws — this one is part of the video"),
+                        isOn: .constant(false)
+                    )
+                    .disabled(true)
+                }
             } else {
                 VideoInspectorSection(L("Cursor")) {
                     VideoToggleRow(title: L("Show cursor"), isOn: binding(\.visible))
@@ -404,6 +412,24 @@ struct VideoCursorInspector: View {
                     VideoToggleRow(title: L("Motion blur"), detail: L("Soft streaks on fast moves"), isOn: binding(\.motionBlur))
                     VideoToggleRow(title: L("Hide when idle"), detail: L("Fades out after a moment without movement"), isOn: binding(\.hideWhenIdle))
                     VideoToggleRow(title: L("Hide the move to Stop"), detail: L("Skips the dash to the Stop button at the end"), isOn: binding(\.tidyEnding))
+                }
+
+                VideoInspectorSection(L("Loop")) {
+                    VideoToggleRow(
+                        title: L("Return to start at the end"),
+                        detail: L("The pointer glides back to where it started, so the video loops without a jump"),
+                        isOn: binding(\.returnToStart)
+                    )
+                    if cursor.returnToStart {
+                        VideoSliderRow(
+                            title: L("Glide time"),
+                            value: binding(\.returnDuration, coalesce: "cursor-return"),
+                            range: VideoCursorSettings.returnDurationRange,
+                            defaultValue: VideoCursorSettings().returnDuration,
+                            format: { VideoEditorModel.formatTenths($0) },
+                            onEditingEnded: { model.endGesture() }
+                        )
+                    }
                 }
 
                 VideoInspectorSection(L("Clicks")) {

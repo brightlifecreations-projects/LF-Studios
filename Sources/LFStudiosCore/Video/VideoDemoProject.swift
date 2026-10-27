@@ -487,11 +487,17 @@ struct VideoCursorSettings: Codable, Equatable {
     var alwaysArrow: Bool = false
     /// Hide the pointer's last dash to the Stop button.
     var tidyEnding: Bool = true
+    /// The pointer glides back to where it started over the last
+    /// `returnDuration` seconds, so the video loops (VideoCursorLoop.swift).
+    var returnToStart: Bool = false
+    var returnDuration: Double = 0.8
+
+    static let returnDurationRange: ClosedRange<Double> = 0.3...2
 
     init() {}
 
     private enum CodingKeys: String, CodingKey {
-        case visible, size, smoothing, clickEffect, hideWhenIdle, motionBlur, alwaysArrow, tidyEnding
+        case visible, size, smoothing, clickEffect, hideWhenIdle, motionBlur, alwaysArrow, tidyEnding, returnToStart, returnDuration
     }
 
     init(from decoder: Decoder) throws {
@@ -505,6 +511,8 @@ struct VideoCursorSettings: Codable, Equatable {
         motionBlur = try container.decodeIfPresent(Bool.self, forKey: .motionBlur) ?? defaults.motionBlur
         alwaysArrow = try container.decodeIfPresent(Bool.self, forKey: .alwaysArrow) ?? defaults.alwaysArrow
         tidyEnding = try container.decodeIfPresent(Bool.self, forKey: .tidyEnding) ?? defaults.tidyEnding
+        returnToStart = try container.decodeIfPresent(Bool.self, forKey: .returnToStart) ?? defaults.returnToStart
+        returnDuration = try container.decodeIfPresent(Double.self, forKey: .returnDuration) ?? defaults.returnDuration
     }
 }
 

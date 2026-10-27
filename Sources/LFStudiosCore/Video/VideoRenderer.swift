@@ -293,6 +293,8 @@ final class VideoRenderPlan: @unchecked Sendable {
     let cursorTrack: VideoCursorTrack?
     let cursorSettings: VideoCursorSettings
     let rendersCursor: Bool
+    /// The pointer gliding back to its start at the end (nil: off).
+    let cursorLoop: VideoCursorLoop?
     let artwork: VideoCursorArtwork
     let pointPixelScale: Double
     let clicks: [Click]
@@ -444,6 +446,12 @@ final class VideoRenderPlan: @unchecked Sendable {
         self.cursorTrack = cursorTrack
         cursorSettings = project.cursor
         rendersCursor = project.rendersCursor && cursorTrack != nil
+        cursorLoop = VideoCursorLoop(
+            settings: project.cursor,
+            track: rendersCursor ? cursorTrack : nil,
+            timelineDuration: timelineDuration,
+            firstSourceTime: VideoDemoProject.sourceTime(forTimelineTime: 0, segments: segments)
+        )
         self.artwork = artwork
         let baseScale = pointPixelScale ?? 2
         self.pointPixelScale = baseScale
@@ -771,7 +779,8 @@ final class VideoFrameRenderer {
 
         // 6. Click ripples and the pointer.
         if plan.rendersCursor, let track = plan.cursorTrack {
-            let alpha = track.alpha(at: sourceTime)
+            let recordedAlpha = track.alpha(at: sourceTime)
+            let alpha = plan.cursorLoop?.alpha(recordedAlpha, at: timelineTime) ?? recordedAlpha
             if alpha > 0.01 {
                 scene = drawPointer(on: scene, track: track, plan: plan, geometry: geometry, timelineTime: timelineTime, sourceTime: sourceTime, alpha: alpha, options: options)
             }
@@ -1770,7 +1779,8 @@ final class VideoFrameRenderer {
         alpha: Double,
         options: Options
     ) -> CIImage {
-        let shape = plan.artwork.shape(at: sourceTime, alwaysArrow: plan.cursorSettings.alwaysArrow)
+        let shapeTime = plan.cursorLoop?.shapeSourceTime(sourceTime, at: timelineTime) ?? sourceTime
+        let shape = plan.artwork.shape(at: shapeTime, alwaysArrow: plan.cursorSettings.alwaysArrow)
         let height = pointerPixelHeight(plan: plan, geometry: geometry, shape: shape, sourceTime: sourceTime)
         var output = scene
 
@@ -1793,7 +1803,8 @@ final class VideoFrameRenderer {
             }
         }
 
-        let position = plan.crop.map(track.position(at: sourceTime))
+        let recorded = track.position(at: sourceTime)
+        let position = plan.crop.map(plan.cursorLoop?.position(recorded, at: timelineTime) ?? recorded)
         let logical = CGPoint(
             x: plan.stageRect.minX + plan.stageRect.width * position.x,
             y: plan.stageRect.minY + plan.stageRect.height * position.y
@@ -1811,7 +1822,7 @@ final class VideoFrameRenderer {
             .transformed(by: CGAffineTransform(translationX: tip.x, y: tip.y))
 
         if plan.cursorSettings.motionBlur, !options.draft {
-            let velocity = track.velocity(at: sourceTime)
+            let velocity = Self.pointerVelocity(track: track, plan: plan, timelineTime: timelineTime, sourceTime: sourceTime)
             let perFrame = 1 / max(options.frameRate, 1)
             let dx = velocity.dx * Double(plan.stageRect.width) * Double(geometry.pixelScale) * perFrame
             let dy = velocity.dy * Double(plan.stageRect.height) * Double(geometry.pixelScale) * perFrame
@@ -1829,6 +1840,19 @@ final class VideoFrameRenderer {
             pointer = faded(pointer, alpha)
         }
         return pointer.composited(over: output)
+    }
+
+    /// Video-normalized units per second; while the pointer glides back to
+    /// its start, the glide's own speed.
+    static func pointerVelocity(track: VideoCursorTrack, plan: VideoRenderPlan, timelineTime: Double, sourceTime: Double) -> CGVector {
+        guard let loop = plan.cursorLoop, loop.weight(at: timelineTime + 0.01) > 0 else { return track.velocity(at: sourceTime) }
+        let dt = 1 / VideoCursorTrack.sampleRate
+        func at(_ time: Double) -> CGPoint {
+            loop.position(track.position(at: plan.sourceTime(forTimelineTime: time)), at: time)
+        }
+        let a = at(timelineTime - dt)
+        let b = at(timelineTime + dt)
+        return CGVector(dx: (b.x - a.x) / (2 * dt), dy: (b.y - a.y) / (2 * dt))
     }
 
     private func drawRipples(on scene: CIImage, plan: VideoRenderPlan, geometry: Geometry, time: Double, pointerHeight: CGFloat) -> CIImage {
