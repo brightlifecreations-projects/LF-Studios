@@ -89,6 +89,8 @@ struct VideoDemoRecordingMetadata: Codable, Equatable {
     var keystrokes: [VideoKeystrokeEvent]? = nil
     /// What each audio track carries, in file order.
     var audioTracks: [VideoAudioKind]? = nil
+    /// Markers set while recording (the bar's flag), in recorded time.
+    var markers: [VideoMarker]? = nil
     /// Finds the recording again after a rename or a move on the same
     /// drive (the leftover-data cleanup looks it up).
     var bookmark: Data? = nil
@@ -224,6 +226,7 @@ final class VideoDemoRecordingMetadataRecorder {
     private var buttonMonitor: Any?
     private var keyMonitor: Any?
     private var keystrokes: [VideoKeystrokeEvent] = []
+    private var markers: [VideoMarker] = []
     private var cursorSamples: [VideoDemoCursorSample] = []
     private var clickEvents: [VideoDemoClickEvent] = []
     private var openPresses: [VideoDemoClickEvent.Button: Int] = [:]
@@ -282,6 +285,13 @@ final class VideoDemoRecordingMetadataRecorder {
                 }
             }
         }
+    }
+
+    /// A marker now; returns its number (1 for the first).
+    func addMarker() -> Int? {
+        guard let time = elapsedTime else { return nil }
+        markers.append(VideoMarker(time: time))
+        return markers.count
     }
 
     private func recordKeystroke(_ keys: [String]) {
@@ -363,6 +373,12 @@ final class VideoDemoRecordingMetadataRecorder {
             guard time >= 0 else { return nil }
             return VideoKeystrokeEvent(id: event.id, time: time, keys: event.keys)
         }
+        // One set before the first frame marks the start.
+        markers = markers.map { marker in
+            var marker = marker
+            marker.time = max(marker.time - offset, 0)
+            return marker
+        }
     }
 
     func finish(duration: Double) -> VideoDemoRecordingMetadata {
@@ -406,6 +422,11 @@ final class VideoDemoRecordingMetadataRecorder {
             renderCursor: renderCursor,
             // The stop shortcut itself isn't part of the demo.
             keystrokes: keystrokes.filter { $0.time < end - 0.05 },
+            markers: markers.isEmpty ? nil : markers.map { marker in
+                var marker = marker
+                marker.time = min(marker.time, end)
+                return marker
+            },
             // Renamed or moved later, it can still be found.
             bookmark: try? videoURL.bookmarkData(options: [], includingResourceValuesForKeys: nil, relativeTo: nil)
         )

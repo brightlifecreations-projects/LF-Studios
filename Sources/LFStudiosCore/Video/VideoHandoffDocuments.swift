@@ -17,7 +17,7 @@ enum VideoHandoffReadme {
     /// The README, in English like the file names: it travels to other
     /// people and editing apps. `durations` are measured from the written
     /// files (planned ones otherwise).
-    static func text(plan: VideoHandoffPlan, name: String, date: Date = Date(), appVersion: String?, durations: [String: Double] = [:], written: Set<String>? = nil) -> String {
+    static func text(plan: VideoHandoffPlan, name: String, date: Date = Date(), appVersion: String?, durations: [String: Double] = [:], written: Set<String>? = nil, markers: [VideoPlacedMarker] = [], timelineDuration: Double = 0) -> String {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "yyyy-MM-dd HH:mm"
@@ -68,6 +68,10 @@ enum VideoHandoffReadme {
             lines.append("  Timeline (Premiere).xml opens in Adobe Premiere Pro (File ▸ Import).")
             lines.append("  They carry: every clip in its place, cuts and trims, clip order, speed changes, the camera at its offset, and the microphone, Mac sound, and music on their own tracks. 03 Audio/Full Mix.wav isn't on them: it's those tracks already mixed, so it would play everything twice. Use it on its own, or as a reference for the mix.")
             lines.append("  They can't carry LF Studios' effects: zooms and pans that follow the pointer, the drawn pointer and click effects, keys on screen, the background, padding, corners and shadow, the camera's shape, crop, border and background removal, annotations, title cards, transitions, and caption styling. Those are in the finished video (06 Final). Captions come as .srt files (05 Captions): import them in the editing app.")
+            if !markers.isEmpty {
+                let list = markers.map { "\(VideoChapterText.timestamp($0.time, hours: timelineDuration >= 3600)) \($0.title)" }.joined(separator: ", ")
+                lines.append("  Markers (\(markers.count)) are on the timelines at their places: \(list).")
+            }
             lines.append("  The timeline files point at this folder where it is now: if you move it, relink the media in the editing app.")
         }
         if !plan.skipped.isEmpty {
@@ -253,6 +257,10 @@ enum VideoHandoffTimeline {
             }
             connected.append(element)
         }
+        // Markers on the storyline (after its clips, as FCPXML wants).
+        for marker in input.project.placedMarkers(segments: input.segments) where marker.time <= total {
+            connected.append("          <marker start=\"\(base.fcp(marker.time))\" duration=\"\(base.frameDuration)\" value=\"\(escape(marker.title))\"/>")
+        }
         return """
         <?xml version="1.0" encoding="UTF-8"?>
         <!DOCTYPE fcpxml>
@@ -323,6 +331,9 @@ enum VideoHandoffTimeline {
         let audioTracks = audioLanes.map { lane in
             "        <track>\n" + clips.filter { $0.lane == lane }.sorted { $0.offset < $1.offset }.map { clipitem($0, video: false) }.joined(separator: "\n") + "\n        </track>"
         }
+        let sequenceMarkers = input.project.placedMarkers(segments: input.segments).map { marker in
+            "    <marker><name>\(escape(marker.title))</name><comment></comment><in>\(base.frames(marker.time))</in><out>-1</out></marker>"
+        }
         return """
         <?xml version="1.0" encoding="UTF-8"?>
         <!DOCTYPE xmeml>
@@ -340,6 +351,7 @@ enum VideoHandoffTimeline {
         \(audioTracks.joined(separator: "\n"))
               </audio>
             </media>
+        \(sequenceMarkers.joined(separator: "\n"))
           </sequence>
         </xmeml>
 

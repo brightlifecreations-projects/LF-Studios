@@ -153,6 +153,10 @@ struct VideoExportSettings: Equatable {
     /// cut-out camera sit on transparency. Off each time the window opens.
     var transparentBackground = false
 
+    /// MP4 and ProRes: chapters from the markers. Off each time the window
+    /// opens.
+    var chapters = false
+
     /// The file keeps an alpha channel.
     var keepsTransparency: Bool { format == .proRes4444 && transparentBackground }
 

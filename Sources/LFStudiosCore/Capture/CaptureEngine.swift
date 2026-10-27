@@ -677,6 +677,15 @@ final class CaptureEngine {
         recordingEngine.togglePause()
     }
 
+    /// A marker at this moment of the recording (the flag, or its shortcut).
+    func addRecordingMarker() {
+        guard recordingEngine.elapsedSeconds != nil else {
+            ToastWindow.show(message: L("No recording in progress"))
+            return
+        }
+        recordingEngine.addMarker()
+    }
+
     /// Pauses a running recording; true when this call paused it.
     func pauseRecordingIfRunning() -> Bool {
         guard recordingEngine.elapsedSeconds != nil, !recordingEngine.isPaused else { return false }

@@ -730,6 +730,8 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
     var captionTracks = VideoCaptionTracks()
     /// Every recording on the source axis, in order (empty: just this one).
     var sources: [VideoProjectSource] = []
+    /// Flagged moments, in recorded time (VideoMarkers.swift).
+    var markers: [VideoMarker] = []
 
     var sourceURL: URL { URL(fileURLWithPath: sourcePath) }
     var sourceSize: CGSize { CGSize(width: sourceWidth, height: sourceHeight) }
@@ -798,6 +800,7 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
         cursorSamples = metadata.cursorSamples
         clickEvents = metadata.clickEvents
         keystrokes = metadata.keystrokes ?? []
+        markers = metadata.markers ?? []
         cursor.visible = metadata.shouldRenderCursor
         if trimEnd <= 0 {
             trimEnd = metadata.duration
@@ -1261,7 +1264,7 @@ extension VideoDemoProject {
         case zoomRegions, zoomSpeed, defaultZoomScale, motionBlur
         case overlayEffects, cursorSamples, clickEvents, nativeCursorVisible, cursor, audio
         case webcam, cameraLayouts, importedCamera, autoZoom, reframe, captions, transcriptLanguage, captionStyle, keystrokes, keystrokeStyle, crop
-        case cards, music, clickSounds, transitions, captionTracks, sources, imageOverlayEffects
+        case cards, music, clickSounds, transitions, captionTracks, sources, imageOverlayEffects, markers
         // Legacy (v1) keys
         case backgroundPreset, customBackgroundPath, stageInset, shadowStrength, zoomKeyframes
         case showCursorOverlay, enlargeCursor, showClickRipple, smoothCursor, cursorScale, clickSpotlight, cursorMotionBlur
@@ -1304,6 +1307,7 @@ extension VideoDemoProject {
         transitions = (try? container.decode(VideoTransitionSettings.self, forKey: .transitions)) ?? VideoTransitionSettings()
         captionTracks = (try? container.decode(VideoCaptionTracks.self, forKey: .captionTracks)) ?? VideoCaptionTracks()
         sources = (try? container.decode([VideoProjectSource].self, forKey: .sources)) ?? []
+        markers = (try? container.decode([VideoMarker].self, forKey: .markers)) ?? []
 
         let storedVersion = try container.decodeIfPresent(Int.self, forKey: .version) ?? 1
         if storedVersion >= 2 {
@@ -1384,6 +1388,7 @@ extension VideoDemoProject {
         try container.encode(overlayEffects.filter { $0.kind != .image }, forKey: .overlayEffects)
         let images = overlayEffects.filter { $0.kind == .image }
         if !images.isEmpty { try container.encode(images, forKey: .imageOverlayEffects) }
+        if !markers.isEmpty { try container.encode(markers, forKey: .markers) }
         try container.encode(cursorSamples, forKey: .cursorSamples)
         try container.encode(clickEvents, forKey: .clickEvents)
         try container.encode(nativeCursorVisible, forKey: .nativeCursorVisible)

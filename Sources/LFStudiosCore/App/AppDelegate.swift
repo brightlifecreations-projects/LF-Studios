@@ -771,6 +771,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
                         symbol: paused ? "play.circle" : "pause.circle",
                         shortcut: .lfstudiosPauseRecording
                     ) { [weak self] in self?.captureEngine.togglePauseRecording() })
+                    recordActions.append(action(
+                        id: "record.marker",
+                        title: L("Add Marker"),
+                        symbol: "flag",
+                        shortcut: .lfstudiosAddMarker
+                    ) { [weak self] in self?.captureEngine.addRecordingMarker() })
                 }
                 // Stop/Cancel only exists while there is something to stop —
                 // a permanently visible disabled red row was pure noise.

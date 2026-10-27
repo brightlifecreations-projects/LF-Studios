@@ -138,6 +138,11 @@ struct VideoTimelineToolbar: View {
 
             toolButton(symbol: model.project.autoZoom ? "sparkles.rectangle.stack.fill" : "sparkles", title: L("Auto Zoom"), help: model.project.autoZoom ? L("Auto-zoom on clicks is on — click to turn it off and remove its zooms") : L("Turn on Auto-zoom on clicks — keeps zooms you placed by hand")) { model.setAutoZoom(!model.project.autoZoom) }
             toolButton(symbol: "hare", title: L("Speed Up Idle"), help: L("Fast-forward moments where nothing happens")) { model.speedUpIdle() }
+            toolbarDivider
+            toolButton(symbol: "flag", title: L("Marker"), help: L("Add a marker at the playhead — markers become chapters")) { model.addMarker() }
+            if !model.project.markers.isEmpty {
+                toolButton(symbol: "scissors.badge.ellipsis", title: L("Split at Markers"), help: L("Split the clips at every marker")) { model.splitAtMarkers() }
+            }
 
             Spacer(minLength: 8)
 
@@ -304,6 +309,9 @@ struct VideoTimelineSurface: View {
                 VideoTimelineRuler(duration: duration, pointsPerSecond: pointsPerSecond, inset: M.inset)
                     .frame(width: contentWidth + M.inset * 2, height: M.rulerHeight)
                     .allowsHitTesting(false)
+                if !model.project.markers.isEmpty {
+                    VideoMarkerFlags(model: model, geometry: geometry, height: M.rulerHeight)
+                }
 
                 zoomTrack
                 if !model.project.clickEvents.isEmpty {

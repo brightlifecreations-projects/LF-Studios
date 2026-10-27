@@ -414,10 +414,17 @@ enum VideoDemoExporter {
         guard reader.startReading() else {
             throw reader.error.map { VideoDemoExportError.system($0) } ?? VideoDemoExportError.exportFailed(L("Couldn't read the recording. Check that its file is still there, then export again."))
         }
+        // Chapters from the markers, when asked for.
+        let chapters = settings.chapters ? project.chapters(segments: plan.segments, duration: duration) : []
+        let chapterInput = chapters.isEmpty ? nil : VideoChapterTrack.addInput(to: writer, linkedTo: videoInput)
+
         guard writer.startWriting() else {
             throw writer.error.map { VideoDemoExportError.system($0) } ?? VideoDemoExportError.exportFailed(L("Couldn't write the video. Check that there's free space and that you can save to that folder, then export again."))
         }
         writer.startSession(atSourceTime: .zero)
+        if let chapterInput {
+            VideoChapterTrack.write(chapters, end: duration + (settings.endCard ? endCardDuration : 0), to: chapterInput)
+        }
 
         let job = MovieJob(
             reader: reader,

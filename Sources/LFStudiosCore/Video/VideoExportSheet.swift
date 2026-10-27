@@ -237,6 +237,29 @@ struct VideoExportSheet: View {
                 }
             }
 
+            if settings.format.isMovie, !model.chapters.isEmpty {
+                row(L("Chapters")) {
+                    VStack(alignment: .leading, spacing: 6) {
+                        let chapters = model.chapters
+                        Toggle(L("Add chapters from markers"), isOn: $model.exportSettings.chapters)
+                            .toggleStyle(.checkbox)
+                            .font(.system(size: 12, weight: .medium))
+                            .foregroundStyle(VideoEditorTheme.textPrimary)
+                        note(L("\(chapters.count) chapters — players like QuickTime Player list them, and so do editing apps"))
+                        Button {
+                            model.copyChapters()
+                        } label: {
+                            Label(L("Copy Chapters"), systemImage: "doc.on.clipboard")
+                        }
+                        .buttonStyle(VideoSecondaryButtonStyle())
+                        .help(L("Chapters as text (“0:00 Start”) for a YouTube description"))
+                        if let problem = VideoChapterText.problem(chapters, duration: model.timelineDuration) {
+                            note(problem)
+                        }
+                    }
+                }
+            }
+
             if settings.format.isMovie {
                 VideoToggleRow(title: L("End card"), detail: L("A 2-second “Made with LF Studios” outro on your background — your own outro card is in Style"), isOn: $model.exportSettings.endCard)
             } else {
@@ -432,6 +455,7 @@ struct VideoExportSheet: View {
         if model.project.music != nil { pieces.append(L("music")) }
         if !model.project.captions.isEmpty { pieces.append(settings.burnCaptions && model.project.captionStyle.visible ? L("captions burned in") : L("no captions in the picture")) }
         if settings.keepsTransparency { pieces.append(L("a transparent background")) }
+        if settings.format.isMovie, settings.chapters, !model.chapters.isEmpty { pieces.append(L("chapters")) }
         if settings.format.isMovie { pieces.append(endCard ? L("“Made with LF Studios” end card (2s)") : L("no end card")) }
         if let range = exportRange {
             let start = VideoEditorModel.timecode(range.lowerBound)

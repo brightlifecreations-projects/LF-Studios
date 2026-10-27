@@ -1,7 +1,7 @@
 import AppKit
 
 /// The floating control strip while recording: timer, what's being
-/// recorded, and pause / discard / stop. A non-activating panel, so
+/// recorded, and marker / pause / discard / stop. A non-activating panel, so
 /// clicking or dragging it never pulls focus from the recorded app.
 @MainActor
 final class RecordingHUDWindow: NSPanel {
@@ -13,10 +13,12 @@ final class RecordingHUDWindow: NSPanel {
         case saving
     }
 
-    static let size = NSSize(width: 400, height: 44)
+    static let size = NSSize(width: 432, height: 44)
 
     var stopHandler: (() -> Void)?
     var pauseHandler: (() -> Void)?
+    /// The flag: a marker at this moment.
+    var markerHandler: (() -> Void)?
     var discardHandler: (() -> Void)?
     /// Recorded seconds (pauses excluded); the HUD asks twice a second.
     var elapsedProvider: (() -> TimeInterval)?
@@ -34,6 +36,7 @@ final class RecordingHUDWindow: NSPanel {
     private let warningIcon = NSImageView()
     private let microphoneLevelMeter = RecordingHUDLevelMeter()
     private let microphoneWarning = NSImageView()
+    private let markerButton = RecordingHUDIconButton(symbol: "flag.fill", label: L("Add a marker"), tint: .white)
     private let pauseButton = RecordingHUDIconButton(symbol: "pause.fill", label: L("Pause recording"), tint: .white)
     private let discardButton = RecordingHUDIconButton(symbol: "trash", label: L("Discard recording"), tint: .white)
     private let stopButton = RecordingHUDIconButton(symbol: "stop.fill", label: L("Stop recording"), tint: .systemRed, size: 15)
@@ -46,6 +49,9 @@ final class RecordingHUDWindow: NSPanel {
     private var hasWarning = false
     /// Shown in place of the details for a few seconds after it happens.
     private var freshWarning: String?
+    /// "Marker 3", shown for a moment after the flag.
+    private var freshMarker: String?
+    private var markerRevertWorkItem: DispatchWorkItem?
     private var microphoneSilent = false
     private var confirmResumeState: State = .recording
     private var warningRevertWorkItem: DispatchWorkItem?
@@ -194,17 +200,22 @@ final class RecordingHUDWindow: NSPanel {
         microphoneWarning.isHidden = true
         root.addSubview(microphoneWarning)
 
-        pauseButton.frame = NSRect(x: 302, y: 8, width: 28, height: 28)
+        markerButton.frame = NSRect(x: 302, y: 8, width: 28, height: 28)
+        markerButton.target = self
+        markerButton.action = #selector(markerTapped)
+        root.addSubview(markerButton)
+
+        pauseButton.frame = NSRect(x: 334, y: 8, width: 28, height: 28)
         pauseButton.target = self
         pauseButton.action = #selector(pauseTapped)
         root.addSubview(pauseButton)
 
-        discardButton.frame = NSRect(x: 332, y: 8, width: 28, height: 28)
+        discardButton.frame = NSRect(x: 364, y: 8, width: 28, height: 28)
         discardButton.target = self
         discardButton.action = #selector(discardTapped)
         root.addSubview(discardButton)
 
-        stopButton.frame = NSRect(x: 362, y: 6, width: 32, height: 32)
+        stopButton.frame = NSRect(x: 394, y: 6, width: 32, height: 32)
         stopButton.target = self
         stopButton.action = #selector(stopTapped)
         root.addSubview(stopButton)
@@ -367,6 +378,7 @@ final class RecordingHUDWindow: NSPanel {
         layoutIndicators()
         microphoneLevelMeter.isHidden = !(active && showsMicrophone && !microphoneSilent)
         microphoneWarning.isHidden = !(active && showsMicrophone && microphoneSilent)
+        markerButton.isHidden = !active
         pauseButton.isHidden = !active
         discardButton.isHidden = !active
         stopButton.isHidden = !active
@@ -385,6 +397,9 @@ final class RecordingHUDWindow: NSPanel {
         if let freshWarning {
             detailLabel.stringValue = freshWarning
             detailLabel.textColor = .systemOrange
+        } else if let freshMarker {
+            detailLabel.stringValue = freshMarker
+            detailLabel.textColor = .white
         } else {
             detailLabel.stringValue = state == .paused ? L("Paused") : detailText
             detailLabel.textColor = state == .paused ? .systemYellow : NSColor.white.withAlphaComponent(0.46)
@@ -409,6 +424,24 @@ final class RecordingHUDWindow: NSPanel {
             pauseButton.toolTip = paused ? L("Resume recording") : L("Pause recording")
         }
         discardButton.toolTip = L("Discard recording")
+        if let markerShortcut = LFStudiosShortcut.addMarker.assignedShortcutText {
+            markerButton.toolTip = L("Add a marker (\(markerShortcut))")
+        } else {
+            markerButton.toolTip = L("Add a marker — set a shortcut in Settings → Shortcuts")
+        }
+    }
+
+    /// "Marker 3" in place of the details for a moment.
+    func showMarker(_ number: Int) {
+        freshMarker = L("Marker \(number)")
+        markerRevertWorkItem?.cancel()
+        let revert = DispatchWorkItem { [weak self] in
+            self?.freshMarker = nil
+            self?.restoreDetail()
+        }
+        markerRevertWorkItem = revert
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.6, execute: revert)
+        restoreDetail()
     }
 
     private func updateTime() {
@@ -469,6 +502,10 @@ final class RecordingHUDWindow: NSPanel {
 
     @objc private func stopTapped() {
         stopHandler?()
+    }
+
+    @objc private func markerTapped() {
+        markerHandler?()
     }
 
     @objc private func pauseTapped() {

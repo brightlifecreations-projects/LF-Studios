@@ -20,6 +20,11 @@ enum VideoEditDescription {
         if old.cameraLayouts != new.cameraLayouts { return items(old.cameraLayouts, new.cameraLayouts, names: .cameraLayouts) }
         if old.clickEvents != new.clickEvents { return items(old.clickEvents, new.clickEvents, names: .clicks) }
         if old.keystrokes != new.keystrokes { return new.keystrokes.count < old.keystrokes.count ? "Hide Shortcut" : "Shortcuts" }
+        if old.markers != new.markers {
+            if new.markers.count > old.markers.count { return "Add Marker" }
+            if new.markers.count < old.markers.count { return "Delete Marker" }
+            return "Markers"
+        }
         if old.crop != new.crop { return "Crop" }
         if old.audio != new.audio {
             if old.audio.muted != new.audio.muted { return new.audio.muted ? "Mute Video" : "Unmute Video" }
@@ -220,6 +225,12 @@ extension VideoEditDescription {
         case "Restore Cut": return (L("Undo Restore Cut"), L("Redo Restore Cut"))
         case "Restore Cuts": return (L("Undo Restore Cuts"), L("Redo Restore Cuts"))
         case "Speed Up Idle": return (L("Undo Speed Up Idle"), L("Redo Speed Up Idle"))
+        case "Split at Markers": return (L("Undo Split at Markers"), L("Redo Split at Markers"))
+        // Markers.
+        case "Add Marker": return (L("Undo Add Marker"), L("Redo Add Marker"))
+        case "Rename Marker": return (L("Undo Rename Marker"), L("Redo Rename Marker"))
+        case "Delete Marker": return (L("Undo Delete Marker"), L("Redo Delete Marker"))
+        case "Markers": return (L("Undo Markers"), L("Redo Markers"))
         // Words and pauses.
         case "Transcribe": return (L("Undo Transcribe"), L("Redo Transcribe"))
         case "Cut Word": return (L("Undo Cut Word"), L("Redo Cut Word"))
