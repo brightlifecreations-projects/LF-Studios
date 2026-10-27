@@ -174,6 +174,46 @@
     },
     "zh-Hans" : "%lld 秒"
   },
+  "%lld × %lld doesn't fit on this display" : {
+    "de" : "%lld × %lld passt nicht auf diesen Bildschirm",
+    "fr" : "%lld × %lld ne tient pas sur cet écran",
+    "zh-Hans" : "%lld × %lld 在这台显示器上放不下"
+  },
+  "%lld × %lld — window %lld × %lld on this display" : {
+    "de" : "%lld × %lld – Fenster %lld × %lld auf diesem Bildschirm",
+    "fr" : "%lld × %lld — fenêtre de %lld × %lld sur cet écran",
+    "zh-Hans" : "%lld × %lld — 在这台显示器上窗口为 %lld × %lld"
+  },
+  "A window that size would be bigger than the screen. The largest of the same shape that fits is %lld × %lld." : {
+    "de" : "Ein so großes Fenster wäre größer als der Bildschirm. Die größte passende Größe mit derselben Form ist %lld × %lld.",
+    "fr" : "Une fenêtre de cette taille serait plus grande que l’écran. La plus grande taille de même forme qui tient est %lld × %lld.",
+    "zh-Hans" : "这么大的窗口会超出屏幕。能放下的同比例最大尺寸是 %lld × %lld。"
+  },
+  "Add Marker" : {
+    "de" : "Marker setzen",
+    "fr" : "Ajouter un marqueur",
+    "zh-Hans" : "添加标记"
+  },
+  "Add Marker While Recording" : {
+    "de" : "Marker beim Aufzeichnen setzen",
+    "fr" : "Ajouter un marqueur pendant l’enregistrement",
+    "zh-Hans" : "录制时添加标记"
+  },
+  "Add a marker" : {
+    "de" : "Marker setzen",
+    "fr" : "Ajouter un marqueur",
+    "zh-Hans" : "添加标记"
+  },
+  "Add a marker (%@)" : {
+    "de" : "Marker setzen (%@)",
+    "fr" : "Ajouter un marqueur (%@)",
+    "zh-Hans" : "添加标记（%@）"
+  },
+  "Add a marker — set a shortcut in Settings → Shortcuts" : {
+    "de" : "Marker setzen – einen Kurzbefehl legst du unter „Einstellungen“ → „Kurzbefehle“ fest",
+    "fr" : "Ajouter un marqueur — définissez un raccourci dans Réglages → Raccourcis",
+    "zh-Hans" : "添加标记 — 可在“设置”→“快捷键”中设定快捷键"
+  },
   "All Displays" : {
     "de" : "Alle Bildschirme",
     "fr" : "Tous les écrans",
@@ -383,6 +423,11 @@
     "fr" : "Impossible de créer le fichier vidéo.",
     "zh-Hans" : "无法创建视频文件。"
   },
+  "Couldn't find that window to resize it. Choose it again and try once more." : {
+    "de" : "Das Fenster wurde nicht gefunden. Wähle es noch einmal aus und versuche es erneut.",
+    "fr" : "Impossible de trouver cette fenêtre pour la redimensionner. Choisissez-la à nouveau et réessayez.",
+    "zh-Hans" : "找不到要调整大小的窗口。请重新选择后再试一次。"
+  },
   "Countdown" : {
     "de" : "Countdown",
     "fr" : "Compte à rebours",
@@ -392,6 +437,11 @@
     "de" : "Zeiger",
     "fr" : "Pointeur",
     "zh-Hans" : "指针"
+  },
+  "Custom Size…" : {
+    "de" : "Eigene Größe …",
+    "fr" : "Taille personnalisée…",
+    "zh-Hans" : "自定大小…"
   },
   "Dark Mode" : {
     "comment" : "Settings → Appearance: always dark",
@@ -503,6 +553,11 @@
     "fr" : "Adresse e-mail copiée",
     "zh-Hans" : "已拷贝电子邮件地址"
   },
+  "Enter a width and a height from %lld to %lld pixels." : {
+    "de" : "Gib eine Breite und eine Höhe von %lld bis %lld Pixeln ein.",
+    "fr" : "Saisissez une largeur et une hauteur de %lld à %lld pixels.",
+    "zh-Hans" : "请输入 %lld 到 %lld 像素之间的宽度和高度。"
+  },
   "Esc or Done finishes" : {
     "de" : "Esc oder „Fertig“ zum Beenden",
     "fr" : "Échap ou « Terminé » pour finir",
@@ -528,6 +583,11 @@
     "fr" : "Fréquence d’images",
     "zh-Hans" : "帧速率"
   },
+  "Height" : {
+    "de" : "Höhe",
+    "fr" : "Hauteur",
+    "zh-Hans" : "高度"
+  },
   "Hidden network" : {
     "comment" : "Whether a Wi-Fi network is hidden (its value is Yes or No)",
     "de" : "Verborgenes Netzwerk",
@@ -550,6 +610,18 @@
     "de" : "Tastaturkurzbefehle sind aktiviert",
     "fr" : "Les raccourcis clavier sont activés",
     "zh-Hans" : "快捷键已开启"
+  },
+  "LF Studios can't write to the save folder. Choose another one in Settings → Screenshots." : {
+    "comment" : "Names LF Studios' Settings pane where the save folder is chosen",
+    "de" : "LF Studios kann nicht in den Zielordner schreiben. Wähle einen anderen unter „Einstellungen“ → „Bildschirmfotos“.",
+    "fr" : "LF Studios ne peut pas écrire dans le dossier d’enregistrement. Choisissez-en un autre dans Réglages → Captures.",
+    "zh-Hans" : "LF Studios 无法写入存储文件夹。请在“设置”→“截屏”中选择其他文件夹。"
+  },
+  "LF Studios isn't allowed to record the screen. Turn it on in System Settings → Privacy & Security → Screen & System Audio Recording." : {
+    "comment" : "Names the System Settings pane as macOS 15 and later call it",
+    "de" : "LF Studios darf den Bildschirm nicht aufzeichnen. Aktiviere es unter „Systemeinstellungen“ → „Datenschutz & Sicherheit“ → „Aufnahme von Bildschirm & Systemaudio“.",
+    "fr" : "LF Studios n’est pas autorisé à enregistrer l’écran. Activez-le dans Réglages Système → Confidentialité et sécurité → Enregistrement de l’écran et des sons du système.",
+    "zh-Hans" : "LF Studios 无权录制屏幕。请在“系统设置”→“隐私与安全性”→“录屏与系统录音”中开启。"
   },
   "Light Mode" : {
     "comment" : "Settings → Appearance: always light",
@@ -583,6 +655,11 @@
     "de" : "Links (%lld von %lld)",
     "fr" : "Liens (%lld sur %lld)",
     "zh-Hans" : "链接（前 %1$lld 个，共 %2$lld 个）"
+  },
+  "Marker %lld" : {
+    "de" : "Marker %lld",
+    "fr" : "Marqueur %lld",
+    "zh-Hans" : "标记 %lld"
   },
   "Max" : {
     "comment" : "Recording quality",
@@ -942,6 +1019,26 @@
     "fr" : "Redimensionner",
     "zh-Hans" : "调整大小"
   },
+  "Resize the window so the recording is an exact size" : {
+    "de" : "Ändert die Fenstergröße, damit die Aufnahme genau diese Größe hat",
+    "fr" : "Redimensionner la fenêtre pour que l’enregistrement ait une taille exacte",
+    "zh-Hans" : "调整窗口大小，让录制内容正好是这个尺寸"
+  },
+  "Resizing another app's window needs Accessibility access: allow LF Studios in System Settings → Privacy & Security → Accessibility, then choose the size again." : {
+    "de" : "Um das Fenster einer anderen App zu ändern, braucht LF Studios Zugriff auf die Bedienungshilfen: Erlaube LF Studios unter „Systemeinstellungen“ → „Datenschutz & Sicherheit“ → „Bedienungshilfen“ und wähle die Größe dann noch einmal.",
+    "fr" : "Redimensionner la fenêtre d’une autre app nécessite l’accès à l’accessibilité : autorisez LF Studios dans Réglages Système → Confidentialité et sécurité → Accessibilité, puis choisissez à nouveau la taille.",
+    "zh-Hans" : "调整其他应用的窗口大小需要辅助功能权限：请在“系统设置”→“隐私与安全性”→“辅助功能”中允许 LF Studios，然后重新选择尺寸。"
+  },
+  "Restore size" : {
+    "de" : "Größe wiederherstellen",
+    "fr" : "Rétablir la taille",
+    "zh-Hans" : "恢复大小"
+  },
+  "Restore size — put the window back as it was" : {
+    "de" : "Größe wiederherstellen – das Fenster wieder so, wie es war",
+    "fr" : "Rétablir la taille — remettre la fenêtre comme elle était",
+    "zh-Hans" : "恢复大小 — 把窗口恢复原样"
+  },
   "Resume recording" : {
     "de" : "Aufzeichnung fortsetzen",
     "fr" : "Reprendre l’enregistrement",
@@ -1148,18 +1245,6 @@
     "fr" : "Sélection de %@ sur %@ points. Les flèches la déplacent, Retour capture, Échap annule.",
     "zh-Hans" : "选区宽 %@ 点、高 %@ 点。方向键可移动选区，按 Return 键捕捉，按 Esc 键取消。"
   },
-  "LF Studios can't write to the save folder. Choose another one in Settings → Screenshots." : {
-    "comment" : "Names LF Studios' Settings pane where the save folder is chosen",
-    "de" : "LF Studios kann nicht in den Zielordner schreiben. Wähle einen anderen unter „Einstellungen“ → „Bildschirmfotos“.",
-    "fr" : "LF Studios ne peut pas écrire dans le dossier d’enregistrement. Choisissez-en un autre dans Réglages → Captures.",
-    "zh-Hans" : "LF Studios 无法写入存储文件夹。请在“设置”→“截屏”中选择其他文件夹。"
-  },
-  "LF Studios isn't allowed to record the screen. Turn it on in System Settings → Privacy & Security → Screen & System Audio Recording." : {
-    "comment" : "Names the System Settings pane as macOS 15 and later call it",
-    "de" : "LF Studios darf den Bildschirm nicht aufzeichnen. Aktiviere es unter „Systemeinstellungen“ → „Datenschutz & Sicherheit“ → „Aufnahme von Bildschirm & Systemaudio“.",
-    "fr" : "LF Studios n’est pas autorisé à enregistrer l’écran. Activez-le dans Réglages Système → Confidentialité et sécurité → Enregistrement de l’écran et des sons du système.",
-    "zh-Hans" : "LF Studios 无权录制屏幕。请在“系统设置”→“隐私与安全性”→“录屏与系统录音”中开启。"
-  },
   "Show keyboard shortcuts" : {
     "comment" : "Recording bar toggle: shows the shortcuts pressed while recording as keycaps",
     "de" : "Tastaturkurzbefehle anzeigen",
@@ -1292,10 +1377,20 @@
     "fr" : "L’enregistrement n’a pas pu être finalisé — le début (%@) a été sauvegardé.",
     "zh-Hans" : "录制无法完成 — 已存储前 %@。"
   },
+  "The size of the recording, in pixels." : {
+    "de" : "Die Größe der Aufnahme in Pixeln.",
+    "fr" : "La taille de l’enregistrement, en pixels.",
+    "zh-Hans" : "录制内容的尺寸（像素）。"
+  },
   "The window you're recording closed. Stop when you're ready — the recording keeps going." : {
     "de" : "Das aufgezeichnete Fenster wurde geschlossen. Stoppe, wenn du so weit bist – die Aufzeichnung läuft weiter.",
     "fr" : "La fenêtre que vous enregistrez a été fermée. Arrêtez quand vous voulez — l’enregistrement continue.",
     "zh-Hans" : "正在录制的窗口已关闭。准备好后再停止 — 录制仍在继续。"
+  },
+  "This app" : {
+    "de" : "Diese App",
+    "fr" : "Cette app",
+    "zh-Hans" : "此应用"
   },
   "To" : {
     "comment" : "Recipient of an email or message",
@@ -1307,6 +1402,11 @@
     "de" : "URL",
     "fr" : "URL",
     "zh-Hans" : "网址"
+  },
+  "Use the largest size that fits (%lld × %lld)" : {
+    "de" : "Größte passende Größe verwenden (%lld × %lld)",
+    "fr" : "Utiliser la plus grande taille qui tient (%lld × %lld)",
+    "zh-Hans" : "使用能放下的最大尺寸（%lld × %lld）"
   },
   "Warning" : {
     "de" : "Warnung",
@@ -1323,6 +1423,11 @@
     "fr" : "Code QR Wi-Fi détecté",
     "zh-Hans" : "找到无线局域网二维码"
   },
+  "Width" : {
+    "de" : "Breite",
+    "fr" : "Largeur",
+    "zh-Hans" : "宽度"
+  },
   "Window capture" : {
     "comment" : "VoiceOver: the overlay while picking a window to capture",
     "de" : "Fensteraufnahme",
@@ -1334,6 +1439,11 @@
     "de" : "Fenster geschlossen",
     "fr" : "Fenêtre fermée",
     "zh-Hans" : "窗口已关闭"
+  },
+  "Window size" : {
+    "de" : "Fenstergröße",
+    "fr" : "Taille de la fenêtre",
+    "zh-Hans" : "窗口大小"
   },
   "Yes" : {
     "comment" : "A yes/no value, like whether a Wi-Fi network is hidden",
@@ -1433,6 +1543,21 @@
     "de" : "bis zu %@ MB/Min.",
     "fr" : "jusqu’à %@ Mo/min",
     "zh-Hans" : "最多 %@ MB/分钟"
+  },
+  "“%@” doesn't let this window be resized." : {
+    "de" : "„%@“ lässt die Größe dieses Fensters nicht ändern.",
+    "fr" : "« %@ » ne permet pas de redimensionner cette fenêtre.",
+    "zh-Hans" : "“%@”不允许调整此窗口的大小。"
+  },
+  "“%@” keeps this window at least %lld × %lld pixels, so it can't be made %lld × %lld." : {
+    "de" : "„%@“ hält dieses Fenster mindestens %lld × %lld Pixel groß, daher kann es nicht %lld × %lld werden.",
+    "fr" : "« %@ » garde cette fenêtre à au moins %lld × %lld pixels : elle ne peut pas faire %lld × %lld.",
+    "zh-Hans" : "“%@”要求此窗口至少为 %lld × %lld 像素，因此无法调整为 %lld × %lld。"
+  },
+  "“%@” keeps this window at most %lld × %lld pixels, so it can't be made %lld × %lld." : {
+    "de" : "„%@“ hält dieses Fenster höchstens %lld × %lld Pixel groß, daher kann es nicht %lld × %lld werden.",
+    "fr" : "« %@ » limite cette fenêtre à %lld × %lld pixels au plus : elle ne peut pas faire %lld × %lld.",
+    "zh-Hans" : "“%@”限制此窗口最大为 %lld × %lld 像素，因此无法调整为 %lld × %lld。"
   },
   "✓ Saved screenshot" : {
     "de" : "✓ Bildschirmfoto gesichert",

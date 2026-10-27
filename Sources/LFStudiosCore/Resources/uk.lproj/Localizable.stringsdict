@@ -162,6 +162,26 @@
 			<string>%lld субтитру</string>
 		</dict>
 	</dict>
+	<key>%lld chapters — players like QuickTime Player list them, and so do editing apps</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>few</key>
+			<string>%lld розділи — їх показують програвачі на кшталт QuickTime Player і програми для монтажу</string>
+			<key>many</key>
+			<string>%lld розділів — їх показують програвачі на кшталт QuickTime Player і програми для монтажу</string>
+			<key>one</key>
+			<string>%lld розділ — його показують програвачі на кшталт QuickTime Player і програми для монтажу</string>
+			<key>other</key>
+			<string>%lld розділу — їх показують програвачі на кшталт QuickTime Player і програми для монтажу</string>
+		</dict>
+	</dict>
 	<key>%lld clicks</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -1240,6 +1260,26 @@
 			<string>Прискорено %lld простій — заощаджено %@ · перевірте місця з введенням тексту</string>
 			<key>other</key>
 			<string>Прискорено %lld простою — заощаджено %@ · перевірте місця з введенням тексту</string>
+		</dict>
+	</dict>
+	<key>Split at %lld markers</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>few</key>
+			<string>Розділено за %lld маркерами</string>
+			<key>many</key>
+			<string>Розділено за %lld маркерами</string>
+			<key>one</key>
+			<string>Розділено за %lld маркером</string>
+			<key>other</key>
+			<string>Розділено за %lld маркера</string>
 		</dict>
 	</dict>
 	<key>This replaces all %lld caption lines, including any you edited or typed, with a new transcript in %@.</key>

@@ -20,6 +20,9 @@
   "%@ — click to change" : {
     "ru" : "%@ — нажмите, чтобы изменить"
   },
+  "%@ — click to jump here, double-click to rename" : {
+    "ru" : "%@ — нажмите, чтобы перейти сюда, дважды нажмите, чтобы переименовать"
+  },
   "%@ → %@ — the part you ⇧-dragged on the timeline" : {
     "ru" : "%@ → %@ — фрагмент, выделенный на шкале времени с ⇧"
   },
@@ -39,6 +42,14 @@
   },
   "%@–%@ only" : {
     "ru" : "только %@–%@"
+  },
+  "%lld chapters — players like QuickTime Player list them, and so do editing apps" : {
+    "ru" : {
+      "few" : "%lld главы — их показывают плееры вроде QuickTime Player и программы для монтажа",
+      "many" : "%lld глав — их показывают плееры вроде QuickTime Player и программы для монтажа",
+      "one" : "%lld глава — её показывают плееры вроде QuickTime Player и программы для монтажа",
+      "other" : "%lld главы — их показывают плееры вроде QuickTime Player и программы для монтажа"
+    }
   },
   "%lld lines changed since translating" : {
     "ru" : {
@@ -80,6 +91,12 @@
   "A second caption track you can show, burn in, or save as subtitles. Translated on this Mac — nothing is uploaded." : {
     "ru" : "Вторая дорожка субтитров, которую можно показать, встроить в видео или сохранить как файл субтитров. Перевод выполняется на этом Mac — ничего не отправляется в сеть."
   },
+  "A short button column, a pill button by the caption, a search bar at the top" : {
+    "ru" : "Короткий столбец кнопок, кнопка-капсула у подписи, строка поиска вверху"
+  },
+  "A soft inner edge instead of a shadow below" : {
+    "ru" : "Мягкий внутренний край вместо тени снизу"
+  },
   "A soft shadow under the letters" : {
     "ru" : "Мягкая тень под буквами"
   },
@@ -88,6 +105,9 @@
   },
   "A subtitles file for YouTube and web players (.srt), or for the web (.vtt) — follows your cuts" : {
     "ru" : "Файл субтитров для YouTube и веб-плееров (.srt) или для веба (.vtt) — учитывает ваш монтаж"
+  },
+  "A taller button column, a spinning-disc spot, a bottom navigation bar" : {
+    "ru" : "Более высокий столбец кнопок, место для вращающегося диска, панель навигации внизу"
   },
   "A video needs at least one clip" : {
     "ru" : "В видео должен быть хотя бы один клип"
@@ -116,8 +136,17 @@
   "Add Outro Card" : {
     "ru" : "Добавить финальный титр"
   },
+  "Add a marker at the playhead — markers become chapters" : {
+    "ru" : "Добавить маркер у указателя воспроизведения — маркеры становятся главами"
+  },
   "Add another recording or video after this one — LF Studios recordings keep their pointer, clicks, and shortcuts." : {
     "ru" : "Добавьте после этой записи другую запись или видео — записи LF Studios сохраняют свой указатель, нажатия и сочетания клавиш."
+  },
+  "Add chapters from markers" : {
+    "ru" : "Добавить главы по маркерам"
+  },
+  "Add markers first — each one starts a chapter" : {
+    "ru" : "Сначала добавьте маркеры — с каждого начинается глава"
   },
   "Added %@ — %@" : {
     "ru" : "Добавлено: %@ — %@"
@@ -134,8 +163,17 @@
   "Almost done" : {
     "ru" : "Почти готово"
   },
+  "Angle" : {
+    "ru" : "Угол"
+  },
+  "Angle, distance, softness, opacity, color, and an inner edge" : {
+    "ru" : "Угол, расстояние, мягкость, непрозрачность, цвет и внутренний край"
+  },
   "Append Video…" : {
     "ru" : "Добавить видео в конец…"
+  },
+  "Apple's editing format: big files that keep every detail, for Final Cut Pro, Premiere Pro, and DaVinci Resolve" : {
+    "ru" : "Формат Apple для монтажа: большие файлы, в которых сохраняется каждая деталь, — для Final Cut Pro, Premiere Pro и DaVinci Resolve"
   },
   "Applies at every cut. Click a cut's marker on the timeline, or select a clip, to choose one for that cut only." : {
     "ru" : "Применяется к каждой склейке. Чтобы выбрать переход только для одной склейки, нажмите ее метку на шкале времени или выберите клип."
@@ -219,6 +257,9 @@
   "Burn captions into the video" : {
     "ru" : "Встроить субтитры в видео"
   },
+  "Buttons on the right, caption bottom-left, tabs at the top" : {
+    "ru" : "Кнопки справа, подпись слева внизу, вкладки вверху"
+  },
   "Camera footage, cleaned-up voice, drafts, and clipboard exports" : {
     "ru" : "Записи с камеры, очищенный голос, черновики и экспорты в буфер обмена"
   },
@@ -277,6 +318,15 @@
   },
   "Center" : {
     "ru" : "По центру"
+  },
+  "Chapters" : {
+    "ru" : "Главы"
+  },
+  "Chapters as text (“0:00 Start”) for a YouTube description" : {
+    "ru" : "Главы текстом («0:00 Начало») для описания на YouTube"
+  },
+  "Chapters copied — paste them into the video's description" : {
+    "ru" : "Главы скопированы — вставьте их в описание видео"
   },
   "Choose a .ttf or .otf font. LF Studios keeps its own copy, so it keeps working if the file is deleted." : {
     "ru" : "Выберите шрифт .ttf или .otf. LF Studios сохранит свою копию, и шрифт продолжит работать, даже если файл удалить."
@@ -355,6 +405,9 @@
   },
   "Copied — paste it anywhere" : {
     "ru" : "Скопировано — вставьте куда угодно"
+  },
+  "Copy Chapters" : {
+    "ru" : "Скопировать главы"
   },
   "Copy Path" : {
     "ru" : "Скопировать путь"
@@ -442,6 +495,9 @@
   "Cutout" : {
     "ru" : "Силуэт"
   },
+  "Delete Marker" : {
+    "ru" : "Удалить маркер"
+  },
   "Dip to black" : {
     "ru" : "Затемнение"
   },
@@ -456,6 +512,9 @@
   },
   "Dissolve Between Clips" : {
     "ru" : "Растворение между клипами"
+  },
+  "Distance" : {
+    "ru" : "Расстояние"
   },
   "Docs, slides" : {
     "ru" : "Документы, слайды"
@@ -592,6 +651,9 @@
   "Filling the frame — the view follows your cursor" : {
     "ru" : "Кадр заполнен — вид следует за указателем"
   },
+  "Fine-tune shadow" : {
+    "ru" : "Точная настройка тени"
+  },
   "Flamingo" : {
     "ru" : "Фламинго"
   },
@@ -618,6 +680,9 @@
   "Full camera" : {
     "ru" : "Во весь кадр"
   },
+  "Full rail" : {
+    "ru" : "Полная панель"
+  },
   "Full-screen camera for your intro and outro" : {
     "ru" : "Камера во вступлении и концовке"
   },
@@ -630,6 +695,9 @@
   "Glacier" : {
     "ru" : "Ледник"
   },
+  "Glide time" : {
+    "ru" : "Время возврата"
+  },
   "Graphite" : {
     "ru" : "Графитовый"
   },
@@ -641,6 +709,9 @@
   },
   "Hidden" : {
     "ru" : "Скрыта"
+  },
+  "Hide Phone Overlay" : {
+    "ru" : "Скрыть наложение телефона"
   },
   "Hide — the export keeps going (Esc)" : {
     "ru" : "Скрыть — экспорт продолжится (Esc)"
@@ -668,6 +739,9 @@
   },
   "Includes: %@" : {
     "ru" : "Включает: %@"
+  },
+  "Inset" : {
+    "ru" : "Внутренняя"
   },
   "Instagram, LinkedIn" : {
     "ru" : "Instagram, LinkedIn"
@@ -699,6 +773,18 @@
   "L" : {
     "ru" : "L"
   },
+  "LF Studios can't open this file" : {
+    "ru" : "LF Studios не может открыть этот файл"
+  },
+  "LF Studios can't save to that folder. Pick another place, like Desktop or Movies, and export again." : {
+    "ru" : "LF Studios не может сохранить файл в эту папку. Выберите другое место, например «Рабочий стол» или «Фильмы», и экспортируйте снова."
+  },
+  "LF Studios is still cleaning up the voice" : {
+    "ru" : "LF Studios еще очищает голос"
+  },
+  "LF Studios is still transcribing" : {
+    "ru" : "LF Studios еще расшифровывает речь"
+  },
   "Lagoon" : {
     "ru" : "Лагуна"
   },
@@ -711,6 +797,9 @@
   "Larger than the recording — text may look softer than at a lower resolution." : {
     "ru" : "Больше, чем запись, — текст может выглядеть мягче, чем при более низком разрешении."
   },
+  "Leaves out the background: the video, its rounded corners and shadow, and a cut-out camera sit on transparency, ready to place over anything" : {
+    "ru" : "Без фона: видео с его скруглёнными углами и тенью и вырезанная камера лежат на прозрачности — их можно наложить на что угодно"
+  },
   "Left" : {
     "ru" : "Слева"
   },
@@ -720,11 +809,17 @@
   "Light" : {
     "ru" : "Слегка"
   },
+  "Like ProRes 422 with even more detail, for color grading and effects — about half again as big" : {
+    "ru" : "Как ProRes 422, но ещё детальнее — для цветокоррекции и эффектов; файлы примерно в полтора раза больше"
+  },
   "Linen" : {
     "ru" : "Лен"
   },
   "Listening…" : {
     "ru" : "Прослушивание…"
+  },
+  "Loop" : {
+    "ru" : "Зацикливание"
   },
   "Loop to fill" : {
     "ru" : "Повторять до конца"
@@ -737,6 +832,15 @@
   },
   "Make it lighter: %@, %@ fps" : {
     "ru" : "Облегчить: %@, %@ fps"
+  },
+  "Marker" : {
+    "ru" : "Маркер"
+  },
+  "Marker name" : {
+    "ru" : "Название маркера"
+  },
+  "Marker: %@" : {
+    "ru" : "Маркер: %@"
   },
   "Match the recording" : {
     "ru" : "Как в записи"
@@ -800,6 +904,9 @@
   },
   "Nebula" : {
     "ru" : "Туманность"
+  },
+  "Needs a cursor LF Studios draws — this one is part of the video" : {
+    "ru" : "Нужен указатель, который рисует LF Studios, — этот является частью видео"
   },
   "New caption" : {
     "ru" : "Новый субтитр"
@@ -900,6 +1007,9 @@
   "Peach" : {
     "ru" : "Персик"
   },
+  "Phone overlay" : {
+    "ru" : "Наложение телефона"
+  },
   "Picked up where you left off" : {
     "ru" : "Продолжаем с того места, где вы остановились"
   },
@@ -939,6 +1049,9 @@
   "Press" : {
     "ru" : "Нажим"
   },
+  "Preview how a phone app's buttons and captions sit over this video, with the covered parts shaded — never in the export" : {
+    "ru" : "Показывает, как кнопки и подписи приложения на телефоне лягут поверх этого видео, а закрытые места затемняет — в экспорт не попадает"
+  },
   "Preview muted — the export keeps its sound" : {
     "ru" : "Звук предпросмотра выключен — при экспорте звук сохранится"
   },
@@ -972,6 +1085,15 @@
   "Rectangle" : {
     "ru" : "Прямоугольник"
   },
+  "Redo Add Marker" : {
+    "ru" : "Повторить добавление маркера"
+  },
+  "Redo Delete Marker" : {
+    "ru" : "Повторить удаление маркера"
+  },
+  "Redo Markers" : {
+    "ru" : "Повторить изменение маркеров"
+  },
   "Redo Move Caption" : {
     "ru" : "Повторить перемещение субтитра"
   },
@@ -980,6 +1102,12 @@
   },
   "Redo Move Shortcuts" : {
     "ru" : "Повторить перемещение сочетаний"
+  },
+  "Redo Rename Marker" : {
+    "ru" : "Повторить переименование маркера"
+  },
+  "Redo Split at Markers" : {
+    "ru" : "Повторить разделение по маркерам"
   },
   "Reels, TikTok, Shorts" : {
     "ru" : "Reels, TikTok, Shorts"
@@ -1036,6 +1164,9 @@
   "Removed — ⌘Z to undo" : {
     "ru" : "Удалено — ⌘Z, чтобы отменить"
   },
+  "Rename Marker…" : {
+    "ru" : "Переименовать маркер…"
+  },
   "Rendering for the clipboard… %lld%%" : {
     "ru" : "Рендеринг для буфера обмена… %lld %%"
   },
@@ -1079,6 +1210,9 @@
       "other" : "Восстановлено %lld слова"
     }
   },
+  "Return to start at the end" : {
+    "ru" : "В конце вернуться к началу"
+  },
   "Reveal" : {
     "ru" : "Показать"
   },
@@ -1121,6 +1255,9 @@
   "Set the out point to the playhead (%@)" : {
     "ru" : "Задать конец по указателю воспроизведения (%@)"
   },
+  "Shadow color" : {
+    "ru" : "Цвет тени"
+  },
   "Share" : {
     "ru" : "Поделиться"
   },
@@ -1141,18 +1278,6 @@
       "other" : "Сокращено %lld паузы — на %@ короче"
     }
   },
-  "LF Studios can't open this file" : {
-    "ru" : "LF Studios не может открыть этот файл"
-  },
-  "LF Studios can't save to that folder. Pick another place, like Desktop or Movies, and export again." : {
-    "ru" : "LF Studios не может сохранить файл в эту папку. Выберите другое место, например «Рабочий стол» или «Фильмы», и экспортируйте снова."
-  },
-  "LF Studios is still cleaning up the voice" : {
-    "ru" : "LF Studios еще очищает голос"
-  },
-  "LF Studios is still transcribing" : {
-    "ru" : "LF Studios еще расшифровывает речь"
-  },
   "Show" : {
     "ru" : "Показывать"
   },
@@ -1167,6 +1292,9 @@
   },
   "Side by side" : {
     "ru" : "Рядом"
+  },
+  "Side rail" : {
+    "ru" : "Боковая панель"
   },
   "Silky" : {
     "ru" : "Очень плавно"
@@ -1195,6 +1323,9 @@
   "Social feeds" : {
     "ru" : "Ленты соцсетей"
   },
+  "Softness" : {
+    "ru" : "Мягкость"
+  },
   "Sped up %lld idle moments — saved %@" : {
     "ru" : {
       "few" : "Ускорено %lld простоя — сэкономлено %@",
@@ -1220,6 +1351,20 @@
   "Speed Up Idle works on LF Studios recordings — it watches the pointer" : {
     "ru" : "«Ускорить простои» работает с записями LF Studios — функция отслеживает указатель"
   },
+  "Split at %lld markers" : {
+    "ru" : {
+      "few" : "Разделено по %lld маркерам",
+      "many" : "Разделено по %lld маркерам",
+      "one" : "Разделено по %lld маркеру",
+      "other" : "Разделено по %lld маркера"
+    }
+  },
+  "Split at Markers" : {
+    "ru" : "Разделить по маркерам"
+  },
+  "Split the clips at every marker" : {
+    "ru" : "Разделить клипы по каждому маркеру"
+  },
   "Split the video (S) to make cuts; each can dissolve or dip to black." : {
     "ru" : "Разделите видео (S), чтобы сделать склейки; к каждой можно применить растворение или затемнение."
   },
@@ -1228,6 +1373,9 @@
   },
   "Spotlight" : {
     "ru" : "Прожектор"
+  },
+  "Start" : {
+    "ru" : "Начало"
   },
   "Start Over" : {
     "ru" : "Начать заново"
@@ -1280,8 +1428,17 @@
   "The export stopped unexpectedly (%@). Try again — if it keeps happening, export at a lower resolution or in H.264." : {
     "ru" : "Экспорт неожиданно остановился (%@). Повторите попытку — если ошибка повторится, экспортируйте в более низком разрешении или в H.264."
   },
+  "The highest quality, and the only one that can keep transparency" : {
+    "ru" : "Самое высокое качество — и единственный формат, который сохраняет прозрачность"
+  },
+  "The markers are already at clip edges" : {
+    "ru" : "Маркеры уже стоят на границах клипов"
+  },
   "The picture's file is gone — choose it again with Replace." : {
     "ru" : "Файл изображения пропал — выберите его снова с помощью «Заменить»."
+  },
+  "The pointer glides back to where it started, so the video loops without a jump" : {
+    "ru" : "Указатель плавно возвращается туда, откуда начал, и видео зацикливается без скачка"
   },
   "The recording's file can't be found — it may have been moved or deleted. Put it back and export again." : {
     "ru" : "Файл записи не найден — возможно, его переместили или удалили. Верните его на место и экспортируйте снова."
@@ -1396,11 +1553,23 @@
   "Translate" : {
     "ru" : "Перевести"
   },
+  "Transparent background" : {
+    "ru" : "Прозрачный фон"
+  },
   "Turn Off Click Sounds" : {
     "ru" : "Выключить звуки нажатий"
   },
   "Under the voice" : {
     "ru" : "Под голосом"
+  },
+  "Undo Add Marker" : {
+    "ru" : "Отменить добавление маркера"
+  },
+  "Undo Delete Marker" : {
+    "ru" : "Отменить удаление маркера"
+  },
+  "Undo Markers" : {
+    "ru" : "Отменить изменение маркеров"
   },
   "Undo Move Caption" : {
     "ru" : "Отменить перемещение субтитра"
@@ -1410,6 +1579,12 @@
   },
   "Undo Move Shortcuts" : {
     "ru" : "Отменить перемещение сочетаний"
+  },
+  "Undo Rename Marker" : {
+    "ru" : "Отменить переименование маркера"
+  },
+  "Undo Split at Markers" : {
+    "ru" : "Отменить разделение по маркерам"
   },
   "Video copied" : {
     "ru" : "Видео скопировано"
@@ -1456,6 +1631,12 @@
   "Wide" : {
     "ru" : "Прямоугольник"
   },
+  "YouTube needs every chapter to be at least 10 seconds long — move or remove markers that are closer together." : {
+    "ru" : "YouTube нужно, чтобы каждая глава длилась не меньше 10 секунд, — передвиньте или удалите слишком близкие маркеры."
+  },
+  "YouTube shows chapters from 3 on — add a marker or two more." : {
+    "ru" : "YouTube показывает главы, когда их хотя бы 3, — добавьте ещё один-два маркера."
+  },
   "YouTube, presentations" : {
     "ru" : "YouTube, презентации"
   },
@@ -1471,8 +1652,14 @@
   "Zoom removed — ⌘Z to undo" : {
     "ru" : "Увеличение удалено — ⌘Z, чтобы отменить"
   },
+  "a transparent background" : {
+    "ru" : "прозрачный фон"
+  },
   "captions burned in" : {
     "ru" : "встроенные субтитры"
+  },
+  "chapters" : {
+    "ru" : "главы"
   },
   "intro card" : {
     "ru" : "начальный титр"

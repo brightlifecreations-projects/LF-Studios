@@ -72,6 +72,8 @@
 	<string>%@ — 残り約1分</string>
 	<key>%@ — click to change</key>
 	<string>%@: クリックして変更</string>
+	<key>%@ — click to jump here, double-click to rename</key>
+	<string>%@ — クリックでここへ移動、ダブルクリックで名前を変更</string>
 	<key>%@ → %@ — the part you ⇧-dragged on the timeline</key>
 	<string>%@ → %@（タイムラインで⇧ドラッグした部分）</string>
 	<key>%@, %@</key>
@@ -100,6 +102,8 @@
 	<string>%lld個のカメラのレイアウト</string>
 	<key>%lld captions</key>
 	<string>%lld個の字幕</string>
+	<key>%lld chapters — players like QuickTime Player list them, and so do editing apps</key>
+	<string>%lld個のチャプター — QuickTime Playerなどのプレーヤーや編集アプリで一覧表示されます</string>
 	<key>%lld clicks</key>
 	<string>%lld回のクリック</string>
 	<key>%lld clips</key>
@@ -148,6 +152,10 @@
 	<string>%lld個のショートカット</string>
 	<key>%lld zooms</key>
 	<string>%lld個のズーム</string>
+	<key>%lld × %lld doesn't fit on this display</key>
+	<string>%lld × %lldはこのディスプレイに収まりません</string>
+	<key>%lld × %lld — window %lld × %lld on this display</key>
+	<string>%lld × %lld — このディスプレイではウインドウ%lld × %lld</string>
 	<key>%lld%%</key>
 	<string>%lld%%</string>
 	<key>%lld%% volume</key>
@@ -182,14 +190,22 @@
 	<string>レポートはこの問題の修正に役立ちます。送信前にすべての内容を確認でき、スクリーンショットや収録したビデオが含まれることはありません。</string>
 	<key>A second caption track you can show, burn in, or save as subtitles. Translated on this Mac — nothing is uploaded.</key>
 	<string>表示、焼き付け、字幕ファイルとしての保存ができる2つ目の字幕トラックです。このMac上で翻訳されるため、何もアップロードされません。</string>
+	<key>A short button column, a pill button by the caption, a search bar at the top</key>
+	<string>短いボタン列、キャプション横のピル型ボタン、上部の検索バー</string>
+	<key>A soft inner edge instead of a shadow below</key>
+	<string>下に落ちる影の代わりに、内側のやわらかな縁</string>
 	<key>A soft shadow under the letters</key>
 	<string>文字の下にやわらかい影</string>
 	<key>A song under the whole video — it loops to fill, fades in and out, and dips while you talk. Use music you have the rights to.</key>
 	<string>ビデオ全体に曲を流します。長さに合わせてループし、フェードイン/フェードアウトして、話している間は音量が下がります。使用する権利のある音楽を使ってください。</string>
 	<key>A subtitles file for YouTube and web players (.srt), or for the web (.vtt) — follows your cuts</key>
 	<string>YouTubeやWebプレーヤー用（.srt）、またはWeb用（.vtt）の字幕ファイルです。カットが反映されます</string>
+	<key>A taller button column, a spinning-disc spot, a bottom navigation bar</key>
+	<string>背の高いボタン列、回転するディスクの位置、下部のナビゲーションバー</string>
 	<key>A video needs at least one clip</key>
 	<string>ビデオには少なくとも1つのクリップが必要です</string>
+	<key>A window that size would be bigger than the screen. The largest of the same shape that fits is %lld × %lld.</key>
+	<string>このサイズのウインドウは画面より大きくなります。同じ形で収まる最大のサイズは%lld × %lldです。</string>
 	<key>About</key>
 	<string>情報</string>
 	<key>About %lld min left</key>
@@ -218,6 +234,10 @@
 	<string>画像またはロゴを追加…</string>
 	<key>Add Intro Card</key>
 	<string>オープニングカードを追加</string>
+	<key>Add Marker</key>
+	<string>マーカーを追加</string>
+	<key>Add Marker While Recording</key>
+	<string>収録中にマーカーを追加</string>
 	<key>Add Music…</key>
 	<string>音楽を追加…</string>
 	<key>Add Outro Card</key>
@@ -230,6 +250,14 @@
 	<string>再生ヘッドの位置にズームを追加</string>
 	<key>Add a caption at the playhead</key>
 	<string>再生ヘッドの位置に字幕を追加</string>
+	<key>Add a marker</key>
+	<string>マーカーを追加</string>
+	<key>Add a marker (%@)</key>
+	<string>マーカーを追加（%@）</string>
+	<key>Add a marker at the playhead — markers become chapters</key>
+	<string>再生ヘッドの位置にマーカーを追加 — マーカーはチャプターになります</string>
+	<key>Add a marker — set a shortcut in Settings → Shortcuts</key>
+	<string>マーカーを追加 — ショートカットは“設定”＞“ショートカット”で設定できます</string>
 	<key>Add a zoom at the playhead (Z)</key>
 	<string>再生ヘッドの位置にズームを追加（Z）</string>
 	<key>Add another recording or video after this one — LF Studios recordings keep their pointer, clicks, and shortcuts.</key>
@@ -240,10 +268,14 @@
 	<string>再生ヘッドの位置にぼかしを追加（B）</string>
 	<key>Add camera video…</key>
 	<string>カメラ映像を追加…</string>
+	<key>Add chapters from markers</key>
+	<string>マーカーからチャプターを追加</string>
 	<key>Add highlight at the playhead (H)</key>
 	<string>再生ヘッドの位置にハイライトを追加（H）</string>
 	<key>Add image at the playhead</key>
 	<string>再生ヘッドの位置に画像を追加</string>
+	<key>Add markers first — each one starts a chapter</key>
+	<string>まずマーカーを追加してください — マーカーごとにチャプターが始まります</string>
 	<key>Add spotlight at the playhead</key>
 	<string>再生ヘッドの位置にスポットライトを追加</string>
 	<key>Add text at the playhead (T)</key>
@@ -298,6 +330,10 @@
 	<string>常に矢印を表示</string>
 	<key>Amber Fold</key>
 	<string>琥珀のひだ</string>
+	<key>Angle</key>
+	<string>角度</string>
+	<key>Angle, distance, softness, opacity, color, and an inner edge</key>
+	<string>角度、距離、ぼかし、不透明度、色、内側の縁</string>
 	<key>Annotate Last Screenshot</key>
 	<string>最後のスクリーンショットに注釈を付ける</string>
 	<key>Annotation</key>
@@ -322,6 +358,8 @@
 	<string>Appleのスクリーンショット用ショートカットを無効にしました。LF Studiosのショートカットが有効になりました。</string>
 	<key>Apple screenshot shortcuts restored.</key>
 	<string>Appleのスクリーンショット用ショートカットを元に戻しました。</string>
+	<key>Apple's editing format: big files that keep every detail, for Final Cut Pro, Premiere Pro, and DaVinci Resolve</key>
+	<string>Appleの編集用フォーマット：細部まで残る大きなファイルで、Final Cut Pro、Premiere Pro、DaVinci Resolveに向いています</string>
 	<key>Apple's screenshot shortcuts still own ⌘⇧3/4/5 — captures can double-trigger.</key>
 	<string>⌘⇧3/4/5はまだAppleのスクリーンショット用ショートカットに使われているため、二重に取り込まれることがあります。</string>
 	<key>Apple's shortcuts are out of the way.</key>
@@ -462,6 +500,8 @@
 	<string>内蔵（San Francisco）</string>
 	<key>Burn captions into the video</key>
 	<string>字幕をビデオに焼き付ける</string>
+	<key>Buttons on the right, caption bottom-left, tabs at the top</key>
+	<string>ボタンは右、キャプションは左下、タブは上</string>
 	<key>Call</key>
 	<string>電話をかける</string>
 	<key>Callout</key>
@@ -618,6 +658,12 @@
 	<string>カードには背景が使われ、その分タイムラインが長くなります。“Made with LF Studios”エンドカードはこれとは別で、書き出しオプションにあります。</string>
 	<key>Center</key>
 	<string>中央</string>
+	<key>Chapters</key>
+	<string>チャプター</string>
+	<key>Chapters as text (“0:00 Start”) for a YouTube description</key>
+	<string>YouTubeの説明欄用のチャプターテキスト（“0:00 スタート”）</string>
+	<key>Chapters copied — paste them into the video's description</key>
+	<string>チャプターをコピーしました — ビデオの説明欄にペーストしてください</string>
 	<key>Check</key>
 	<string>確認</string>
 	<key>Check for Updates</key>
@@ -780,6 +826,8 @@
 	<string>%@をコピー</string>
 	<key>Copy (⌘C)</key>
 	<string>コピー（⌘C）</string>
+	<key>Copy Chapters</key>
+	<string>チャプターをコピー</string>
 	<key>Copy Current Frame</key>
 	<string>現在のフレームをコピー</string>
 	<key>Copy Path</key>
@@ -838,6 +886,8 @@
 	<string>受け渡し用フォルダを作成できませんでした — %@</string>
 	<key>Couldn't create the video file.</key>
 	<string>ビデオファイルを作成できませんでした。</string>
+	<key>Couldn't find that window to resize it. Choose it again and try once more.</key>
+	<string>サイズを変更するウインドウが見つかりませんでした。もう一度選んでからやり直してください。</string>
 	<key>Couldn't finish the file</key>
 	<string>ファイルを完成できませんでした</string>
 	<key>Couldn't make captions</key>
@@ -928,6 +978,8 @@
 	<string>ポインタ、クリック、キーボードショートカット</string>
 	<key>Custom</key>
 	<string>カスタム</string>
+	<key>Custom Size…</key>
+	<string>カスタムサイズ…</string>
 	<key>Custom color</key>
 	<string>カスタムカラー</string>
 	<key>Custom color #%@</key>
@@ -970,6 +1022,8 @@
 	<string>スクリーンショットを削除</string>
 	<key>Delete Clip</key>
 	<string>クリップを削除</string>
+	<key>Delete Marker</key>
+	<string>マーカーを削除</string>
 	<key>Delete Screenshot</key>
 	<string>スクリーンショットを削除</string>
 	<key>Delete Screenshots</key>
@@ -1030,6 +1084,8 @@
 	<string>ディゾルブ</string>
 	<key>Dissolve Between Clips</key>
 	<string>クリップ間をディゾルブ</string>
+	<key>Distance</key>
+	<string>距離</string>
 	<key>Do you want to review them before quitting?</key>
 	<string>終了する前に確認しますか?</string>
 	<key>Docs, slides</key>
@@ -1172,6 +1228,8 @@
 	<string>LF Studiosを気に入っていただけましたか? クリックしてGitHubでスターを付けてください ★</string>
 	<key>Enjoying LF Studios? Star it on GitHub so more people find it.</key>
 	<string>LF Studiosを気に入っていただけましたか? GitHubでスターを付けると、より多くの人に見つけてもらえます。</string>
+	<key>Enter a width and a height from %lld to %lld pixels.</key>
+	<string>幅と高さを%lld〜%lldピクセルで入力してください。</string>
 	<key>Esc</key>
 	<string>Esc</string>
 	<key>Esc or Done finishes</key>
@@ -1294,6 +1352,8 @@
 	<string>文字起こし内を検索</string>
 	<key>Find “%@”</key>
 	<string>“%@”を探す</string>
+	<key>Fine-tune shadow</key>
+	<string>シャドウを細かく調整</string>
 	<key>Finish and Quit</key>
 	<string>完了してから終了</string>
 	<key>Finish or cancel the current recording setup</key>
@@ -1356,6 +1416,8 @@
 	<string>全面表示（背景なし）</string>
 	<key>Full original files</key>
 	<string>元のファイル全体</string>
+	<key>Full rail</key>
+	<string>フルレール</string>
 	<key>Full screen: %@</key>
 	<string>画面全体: %@</string>
 	<key>Full-Camera Intro and Outro</key>
@@ -1374,6 +1436,8 @@
 	<string>準備しています…</string>
 	<key>Glacier</key>
 	<string>氷河</string>
+	<key>Glide time</key>
+	<string>戻る時間</string>
 	<key>Glides without lagging behind — clicks still land exactly.</key>
 	<string>遅れずに滑らかに動き、クリック位置も正確なままです。</string>
 	<key>Go to End</key>
@@ -1404,6 +1468,8 @@
 	<string>カット</string>
 	<key>Health</key>
 	<string>状態</string>
+	<key>Height</key>
+	<string>高さ</string>
 	<key>Hidden</key>
 	<string>非表示</string>
 	<key>Hidden network</key>
@@ -1414,6 +1480,8 @@
 	<string>デスクトップのアイコンを非表示</string>
 	<key>Hide Icon</key>
 	<string>アイコンを非表示</string>
+	<key>Hide Phone Overlay</key>
+	<string>スマートフォンのオーバーレイを隠す</string>
 	<key>Hide desktop icons while capturing</key>
 	<string>取り込み中はデスクトップのアイコンを非表示</string>
 	<key>Hide the Menu Bar Icon?</key>
@@ -1484,6 +1552,8 @@
 	<string>完成したビデオを含める</string>
 	<key>Includes: %@</key>
 	<string>内容: %@</string>
+	<key>Inset</key>
+	<string>内側</string>
 	<key>Inspector tabs</key>
 	<string>インスペクタのタブ</string>
 	<key>Instagram, LinkedIn</key>
@@ -1632,6 +1702,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>レイアウト</string>
 	<key>Layouts</key>
 	<string>レイアウト</string>
+	<key>Leaves out the background: the video, its rounded corners and shadow, and a cut-out camera sit on transparency, ready to place over anything</key>
+	<string>背景を省きます：ビデオとその角丸・シャドウ、切り抜いたカメラが透明の上に置かれ、何の上にも重ねられます</string>
 	<key>Left</key>
 	<string>左</string>
 	<key>Left out:</key>
@@ -1646,6 +1718,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>軽め</string>
 	<key>Light Mode</key>
 	<string>ライト</string>
+	<key>Like ProRes 422 with even more detail, for color grading and effects — about half again as big</key>
+	<string>ProRes 422よりさらに細部が残り、カラーグレーディングやエフェクトに向いています — サイズは約1.5倍</string>
 	<key>Lime Signal</key>
 	<string>ライムシグナル</string>
 	<key>Line</key>
@@ -1680,6 +1754,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>場所を指定…</string>
 	<key>Look</key>
 	<string>スタイル</string>
+	<key>Loop</key>
+	<string>ループ</string>
 	<key>Loop to fill</key>
 	<string>ループして最後まで再生</string>
 	<key>Lower under your voice</key>
@@ -1692,6 +1768,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>軽くする: %@、%@ fps</string>
 	<key>Manage</key>
 	<string>管理</string>
+	<key>Marker</key>
+	<string>マーカー</string>
+	<key>Marker %lld</key>
+	<string>マーカー%lld</string>
+	<key>Marker name</key>
+	<string>マーカー名</string>
+	<key>Marker: %@</key>
+	<string>マーカー：%@</string>
 	<key>Match the recording</key>
 	<string>収録に合わせる</string>
 	<key>Max</key>
@@ -1828,6 +1912,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>星雲</string>
 	<key>Needed to capture the screen. macOS will ask once.</key>
 	<string>画面の取り込みに必要です。macOSからの確認は一度だけです。</string>
+	<key>Needs a cursor LF Studios draws — this one is part of the video</key>
+	<string>LF Studiosが描くポインタが必要です — このポインタはビデオの一部です</string>
 	<key>Neo Pop</key>
 	<string>ネオポップ</string>
 	<key>Network</key>
@@ -2086,6 +2172,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>電話番号</string>
 	<key>Phone QR found</key>
 	<string>電話番号のQRコードが見つかりました</string>
+	<key>Phone overlay</key>
+	<string>スマートフォンのオーバーレイ</string>
 	<key>Pick a preset as My Style (Presets ▸ Edit Presets ▸ Use as My Style), then one click puts it on any video.</key>
 	<string>プリセットをマイスタイルに選ぶと（プリセット ▸ プリセットを編集 ▸ マイスタイルとして使用）、ワンクリックでどのビデオにも適用できます。</string>
 	<key>Picked up where you left off</key>
@@ -2166,6 +2254,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>%@に押されました。⌫を押すとビデオで非表示になります。誤って押した⌘Tabなどを隠すのに便利です。</string>
 	<key>Preview</key>
 	<string>プレビュー</string>
+	<key>Preview how a phone app's buttons and captions sit over this video, with the covered parts shaded — never in the export</key>
+	<string>スマートフォンのアプリのボタンや文字がこのビデオにどう重なるかをプレビューし、隠れる部分を暗く表示します — 書き出しには入りません</string>
 	<key>Preview muted — the export keeps its sound</key>
 	<string>プレビューを消音しました。書き出したビデオのサウンドはそのままです</string>
 	<key>Preview sound on</key>
@@ -2312,6 +2402,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>画像の追加をやり直す</string>
 	<key>Redo Add Intro Card</key>
 	<string>オープニングカードの追加をやり直す</string>
+	<key>Redo Add Marker</key>
+	<string>マーカーの追加をやり直す</string>
 	<key>Redo Add Music</key>
 	<string>音楽の追加をやり直す</string>
 	<key>Redo Add Outro Card</key>
@@ -2404,6 +2496,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ハイライトの削除をやり直す</string>
 	<key>Redo Delete Image</key>
 	<string>画像の削除をやり直す</string>
+	<key>Redo Delete Marker</key>
+	<string>マーカーの削除をやり直す</string>
 	<key>Redo Delete Spotlight</key>
 	<string>スポットライトの削除をやり直す</string>
 	<key>Redo Delete Text</key>
@@ -2428,6 +2522,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>画像のスタイル変更をやり直す</string>
 	<key>Redo Intro and Outro</key>
 	<string>カメラ全面のオープニングとエンディングをやり直す</string>
+	<key>Redo Markers</key>
+	<string>マーカーの変更をやり直す</string>
 	<key>Redo Move %lld Items</key>
 	<string>%lld項目の移動をやり直す</string>
 	<key>Redo Move Arrow</key>
@@ -2478,6 +2574,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>収録の削除をやり直す</string>
 	<key>Redo Remove Ums</key>
 	<string>フィラーの削除をやり直す</string>
+	<key>Redo Rename Marker</key>
+	<string>マーカー名の変更をやり直す</string>
 	<key>Redo Replace Camera Video</key>
 	<string>カメラ映像の置き換えをやり直す</string>
 	<key>Redo Replace Music</key>
@@ -2512,6 +2610,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>動きのない区間の早送りをやり直す</string>
 	<key>Redo Split</key>
 	<string>分割をやり直す</string>
+	<key>Redo Split at Markers</key>
+	<string>マーカー位置での分割をやり直す</string>
 	<key>Redo Spotlight Style</key>
 	<string>スポットライトのスタイル変更をやり直す</string>
 	<key>Redo Start Over</key>
@@ -2604,6 +2704,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ぶれを取り除き、きびきびとした動きを保ちます。</string>
 	<key>Rename</key>
 	<string>名称変更</string>
+	<key>Rename Marker…</key>
+	<string>マーカー名を変更…</string>
 	<key>Rename Preset</key>
 	<string>プリセットの名称を変更</string>
 	<key>Rename…</key>
@@ -2638,6 +2740,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>LF Studiosの標準スタイルに戻す</string>
 	<key>Resize</key>
 	<string>サイズを変更</string>
+	<key>Resize the window so the recording is an exact size</key>
+	<string>収録がぴったりのサイズになるようにウインドウのサイズを変更</string>
+	<key>Resizing another app's window needs Accessibility access: allow LF Studios in System Settings → Privacy &amp; Security → Accessibility, then choose the size again.</key>
+	<string>ほかのアプリのウインドウのサイズを変えるにはアクセシビリティへのアクセスが必要です。“システム設定”＞“プライバシーとセキュリティ”＞“アクセシビリティ”でLF Studiosを許可してから、もう一度サイズを選んでください。</string>
 	<key>Resolution</key>
 	<string>解像度</string>
 	<key>Restart LF Studios to use %@?</key>
@@ -2654,6 +2760,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>%lld箇所すべてを復元</string>
 	<key>Restore Apple Shortcuts</key>
 	<string>Appleのショートカットを元に戻す</string>
+	<key>Restore size</key>
+	<string>サイズを元に戻す</string>
+	<key>Restore size — put the window back as it was</key>
+	<string>サイズを元に戻す — ウインドウを元の状態に戻します</string>
 	<key>Restored %@</key>
 	<string>%@分を復元しました</string>
 	<key>Restored %lld cuts — %@</key>
@@ -2666,6 +2776,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>収録を再開</string>
 	<key>Resume recording (%@)</key>
 	<string>収録を再開（%@）</string>
+	<key>Return to start at the end</key>
+	<string>最後に開始位置へ戻る</string>
 	<key>Reveal</key>
 	<string>表示</string>
 	<key>Reveal in Finder</key>
@@ -2886,6 +2998,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>シャドウ</string>
 	<key>Shadow and transparent padding</key>
 	<string>シャドウと透明な余白</string>
+	<key>Shadow color</key>
+	<string>シャドウの色</string>
 	<key>Shape</key>
 	<string>形状</string>
 	<key>Share</key>
@@ -2976,6 +3090,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>背景をシャッフル</string>
 	<key>Side by side</key>
 	<string>横並び</string>
+	<key>Side rail</key>
+	<string>サイドレール</string>
 	<key>Silences over a second get shortened — except while you click, type, scroll, or move the pointer, so the demo itself is never cut</key>
 	<string>1秒を超える無音部分を短縮します。ただし、クリック、入力、スクロール、ポインタの移動中は除くため、デモ自体がカットされることはありません</string>
 	<key>Silences over a second get shortened — except while you move the pointer, click, or press a shortcut</key>
@@ -3012,6 +3128,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>SNSのフィード</string>
 	<key>Soft streaks on fast moves</key>
 	<string>速い動きにやわらかな残像を付けます</string>
+	<key>Softness</key>
+	<string>ぼかし</string>
 	<key>Solid Color</key>
 	<string>単色</string>
 	<key>Solid color</key>
@@ -3044,12 +3162,18 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>この部分の速度</string>
 	<key>Split</key>
 	<string>分割</string>
+	<key>Split at %lld markers</key>
+	<string>%lld個のマーカー位置で分割しました</string>
+	<key>Split at Markers</key>
+	<string>マーカー位置で分割</string>
 	<key>Split at Playhead</key>
 	<string>再生ヘッドの位置で分割</string>
 	<key>Split at playhead</key>
 	<string>再生ヘッドの位置で分割</string>
 	<key>Split at the playhead (S)</key>
 	<string>再生ヘッドの位置で分割（S）</string>
+	<key>Split the clips at every marker</key>
+	<string>すべてのマーカー位置でクリップを分割</string>
 	<key>Split the video (S) to make cuts; each can dissolve or dip to black.</key>
 	<string>ビデオを分割（S）するとつなぎ目ができます。それぞれにディゾルブや黒にフェードを設定できます。</string>
 	<key>Spoken word</key>
@@ -3060,6 +3184,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>スポットライトの形状</string>
 	<key>Star on GitHub</key>
 	<string>GitHubでスターを付ける</string>
+	<key>Start</key>
+	<string>スタート</string>
 	<key>Start / end</key>
 	<string>最初/最後</string>
 	<key>Start Over</key>
@@ -3208,6 +3334,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>書き出しが予期せず停止しました（%@）。もう一度お試しください。問題が続く場合は、低い解像度またはH.264で書き出してください。</string>
 	<key>The handoff is ready</key>
 	<string>受け渡しの準備ができました</string>
+	<key>The highest quality, and the only one that can keep transparency</key>
+	<string>最高画質で、透明部分を保てる唯一のフォーマットです</string>
+	<key>The markers are already at clip edges</key>
+	<string>マーカーはすでにクリップの境目にあります</string>
 	<key>The menu bar icon is LF Studios' main entry point. While it is hidden, open LF Studios again from Finder, Launchpad, or Spotlight to bring these Preferences back.</key>
 	<string>メニューバーのアイコンはLF Studiosを使うための主な入り口です。非表示の間にこの設定を再び開くには、Finder、Launchpad、またはSpotlightからLF Studiosをもう一度開いてください。</string>
 	<key>The microphone couldn't start, so this recording has no mic.</key>
@@ -3216,6 +3346,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>マイクが動作しなくなりました。マイクなしで収録を続けます。</string>
 	<key>The picture's file is gone — choose it again with Replace.</key>
 	<string>画像のファイルが見つかりません。“置き換える”でもう一度選択してください。</string>
+	<key>The pointer glides back to where it started, so the video loops without a jump</key>
+	<string>ポインタが開始位置へなめらかに戻り、ビデオが途切れずにループします</string>
 	<key>The recording couldn't be finished — saved the first %@.</key>
 	<string>収録を完了できませんでした。最初の%@を保存しました。</string>
 	<key>The recording for “%@” is missing</key>
@@ -3230,6 +3362,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>選択したファイルにはビデオトラックがありません。ビデオファイルを選択してください。</string>
 	<key>The selection stays on screen to adjust — drag its edges, nudge it with the arrow keys, then press Return. Hold ⇧ as you release to capture right away.</key>
 	<string>選択範囲は調整できるように画面に残ります。端をドラッグしたり矢印キーで少しずつ動かしたりしてから、Returnキーを押してください。放すときに⇧を押したままにすると、すぐに取り込まれます。</string>
+	<key>The size of the recording, in pixels.</key>
+	<string>収録のサイズ（ピクセル）。</string>
 	<key>The song is shorter than the video</key>
 	<string>曲がビデオより短いです</string>
 	<key>The song's file is gone — choose it again with Replace.</key>
@@ -3270,6 +3404,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>このMacにはProResチップがないため、再エンコードするファイルには時間がかかります。進行状況に所要時間が表示されます。</string>
 	<key>This Week</key>
 	<string>今週</string>
+	<key>This app</key>
+	<string>このアプリ</string>
 	<key>This list</key>
 	<string>この一覧</string>
 	<key>This recording has newer edits than “%@”</key>
@@ -3358,6 +3494,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>トランジション</string>
 	<key>Translate</key>
 	<string>翻訳</string>
+	<key>Transparent background</key>
+	<string>透明な背景</string>
 	<key>Trim the clip's end to the playhead (O)</key>
 	<string>クリップの最後を再生ヘッドの位置までトリミング（O）</string>
 	<key>Trim the clip's start to the playhead (I)</key>
@@ -3424,6 +3562,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>画像の追加を取り消す</string>
 	<key>Undo Add Intro Card</key>
 	<string>オープニングカードの追加を取り消す</string>
+	<key>Undo Add Marker</key>
+	<string>マーカーの追加を取り消す</string>
 	<key>Undo Add Music</key>
 	<string>音楽の追加を取り消す</string>
 	<key>Undo Add Outro Card</key>
@@ -3516,6 +3656,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ハイライトの削除を取り消す</string>
 	<key>Undo Delete Image</key>
 	<string>画像の削除を取り消す</string>
+	<key>Undo Delete Marker</key>
+	<string>マーカーの削除を取り消す</string>
 	<key>Undo Delete Spotlight</key>
 	<string>スポットライトの削除を取り消す</string>
 	<key>Undo Delete Text</key>
@@ -3540,6 +3682,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>画像のスタイル変更を取り消す</string>
 	<key>Undo Intro and Outro</key>
 	<string>カメラ全面のオープニングとエンディングを取り消す</string>
+	<key>Undo Markers</key>
+	<string>マーカーの変更を取り消す</string>
 	<key>Undo Move %lld Items</key>
 	<string>%lld項目の移動を取り消す</string>
 	<key>Undo Move Arrow</key>
@@ -3590,6 +3734,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>収録の削除を取り消す</string>
 	<key>Undo Remove Ums</key>
 	<string>フィラーの削除を取り消す</string>
+	<key>Undo Rename Marker</key>
+	<string>マーカー名の変更を取り消す</string>
 	<key>Undo Replace Camera Video</key>
 	<string>カメラ映像の置き換えを取り消す</string>
 	<key>Undo Replace Music</key>
@@ -3624,6 +3770,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>動きのない区間の早送りを取り消す</string>
 	<key>Undo Split</key>
 	<string>分割を取り消す</string>
+	<key>Undo Split at Markers</key>
+	<string>マーカー位置での分割を取り消す</string>
 	<key>Undo Spotlight Style</key>
 	<string>スポットライトのスタイル変更を取り消す</string>
 	<key>Undo Start Over</key>
@@ -3672,6 +3820,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>カスタム画像を選択</string>
 	<key>Use as My Style</key>
 	<string>マイスタイルとして使用</string>
+	<key>Use the largest size that fits (%lld × %lld)</key>
+	<string>収まる最大のサイズを使う（%lld × %lld）</string>
 	<key>Use this color</key>
 	<string>このカラーを使用</string>
 	<key>Use this level for every zoom</key>
@@ -3740,6 +3890,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Wi-FiのQRコードが見つかりました</string>
 	<key>Wide</key>
 	<string>ワイド</string>
+	<key>Width</key>
+	<string>幅</string>
 	<key>Window</key>
 	<string>ウインドウ</string>
 	<key>Window Capture</key>
@@ -3750,6 +3902,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ウインドウを取り込むと、そのウインドウだけが写り、重なっているものは写りません。オンにすると、透明な余白と柔らかいドロップシャドウが付きます。</string>
 	<key>Window closed</key>
 	<string>ウインドウが閉じた</string>
+	<key>Window size</key>
+	<string>ウインドウのサイズ</string>
 	<key>Words light up as they're spoken</key>
 	<string>話している単語がハイライトされます</string>
 	<key>Writable</key>
@@ -3766,6 +3920,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>%lld件のスクリーンショットに未保存の編集があります。</string>
 	<key>You're all set — LF Studios lives here</key>
 	<string>準備完了です。LF Studiosはここにあります</string>
+	<key>YouTube needs every chapter to be at least 10 seconds long — move or remove markers that are closer together.</key>
+	<string>YouTubeではチャプターごとに10秒以上が必要です — 近すぎるマーカーを移動するか削除してください。</string>
+	<key>YouTube shows chapters from 3 on — add a marker or two more.</key>
+	<string>YouTubeでは3つ以上でチャプターが表示されます — マーカーをあと1〜2個追加してください。</string>
 	<key>YouTube, presentations</key>
 	<string>YouTube、プレゼンテーション</string>
 	<key>Your Mac can't keep up with this recording and is skipping frames. Balanced quality or 30 fps will help.</key>
@@ -3834,6 +3992,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>複製できるのはズームと注釈だけです</string>
 	<key>a table</key>
 	<string>表</string>
+	<key>a transparent background</key>
+	<string>透明な背景</string>
 	<key>add a zoom</key>
 	<string>ズームを追加</string>
 	<key>aim or resize it</key>
@@ -3842,6 +4002,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>すべてのショートカット</string>
 	<key>captions burned in</key>
 	<string>焼き付けた字幕</string>
+	<key>chapters</key>
+	<string>チャプター</string>
 	<key>cut by editing words</key>
 	<string>テキストを編集してカット</string>
 	<key>dips under your voice</key>
@@ -3938,6 +4100,8 @@ Appleのショートカットは、“システム設定”＞“キーボード
 	<string>“%@”が見つかりません。元の場所に戻すか、このビデオから削除してから（“スタイル”＞“収録したビデオ”）、もう一度書き出してください。</string>
 	<key>“%@” can't be read — it may be damaged, still being saved, or in a format this Mac can't play. Remove it from this video (Style → Recordings), or put a working copy in its place, then export again.</key>
 	<string>“%@”を読み込めません。破損しているか、保存中か、このMacで再生できない形式の可能性があります。このビデオから削除するか（“スタイル”＞“収録したビデオ”）、正常なコピーを同じ場所に置いてから、もう一度書き出してください。</string>
+	<key>“%@” doesn't let this window be resized.</key>
+	<string>“%@”ではこのウインドウのサイズを変更できません。</string>
 	<key>“%@” found in %lld of %lld captures</key>
 	<string>%3$lld件中%2$lld件のスクリーンショットで“%1$@”が見つかりました</string>
 	<key>“%@” is your My Style — Apply my style (⇧⌘Y) puts it on a video</key>
@@ -3950,6 +4114,10 @@ Appleのショートカットは、“システム設定”＞“キーボード
 	<string>“%@”はこのMacにないため、内蔵フォントを表示しています。インストールするか、「フォントファイルを追加…」でファイルを追加してください。</string>
 	<key>“%@” isn't on this Mac — using the built-in font</key>
 	<string>“%@”はこのMacにないため、内蔵フォントを使用しています</string>
+	<key>“%@” keeps this window at least %lld × %lld pixels, so it can't be made %lld × %lld.</key>
+	<string>“%@”はこのウインドウを%lld × %lldピクセル以上に保つため、%lld × %lldにはできません。</string>
+	<key>“%@” keeps this window at most %lld × %lld pixels, so it can't be made %lld × %lld.</key>
+	<string>“%@”はこのウインドウを%lld × %lldピクセル以下に保つため、%lld × %lldにはできません。</string>
 	<key>“Made with LF Studios” end card (2s)</key>
 	<string>“Made with LF Studios”エンドカード（2秒）</string>
 	<key>• %lld small notes about recordings that are gone</key>

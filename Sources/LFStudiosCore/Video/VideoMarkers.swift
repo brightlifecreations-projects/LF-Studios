@@ -176,8 +176,9 @@ struct VideoMarkerFlags: View {
     @State private var renaming: UUID?
     @State private var draft = ""
 
-    /// Dark text reads on it in both looks.
-    static let color = Color(nsColor: .systemYellow)
+    /// Teal, apart from the yellow of cut markers; dark text reads on it
+    /// in both looks.
+    static let color = Color(nsColor: .systemTeal)
 
     var body: some View {
         ZStack(alignment: .topLeading) {

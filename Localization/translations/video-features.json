@@ -35,6 +35,11 @@
     "fr" : "%@ — cliquez pour changer",
     "zh-Hans" : "%@ — 点按以更改"
   },
+  "%@ — click to jump here, double-click to rename" : {
+    "de" : "%@ – klicken, um hierhin zu springen, doppelklicken zum Umbenennen",
+    "fr" : "%@ — cliquez pour y aller, double-cliquez pour renommer",
+    "zh-Hans" : "%@ — 点按跳到这里，连按两次重新命名"
+  },
   "%@ → %@ — the part you ⇧-dragged on the timeline" : {
     "de" : "%@ → %@ – der Teil, den du auf der Zeitleiste mit ⇧ markiert hast",
     "fr" : "%@ → %@ — la partie sélectionnée avec ⇧ dans la timeline",
@@ -64,6 +69,21 @@
     "de" : "nur %@–%@",
     "fr" : "%@–%@ uniquement",
     "zh-Hans" : "仅 %@–%@"
+  },
+  "%lld chapters — players like QuickTime Player list them, and so do editing apps" : {
+    "de" : {
+      "one" : "%lld Kapitel – Player wie QuickTime Player zeigen es an, Schnittprogramme auch",
+      "other" : "%lld Kapitel – Player wie QuickTime Player zeigen sie an, Schnittprogramme auch"
+    },
+    "en" : {
+      "one" : "%lld chapter — players like QuickTime Player list it, and so do editing apps",
+      "other" : "%lld chapters — players like QuickTime Player list them, and so do editing apps"
+    },
+    "fr" : {
+      "one" : "%lld chapitre — les lecteurs comme QuickTime Player l’affichent, et les logiciels de montage aussi",
+      "other" : "%lld chapitres — les lecteurs comme QuickTime Player les affichent, et les logiciels de montage aussi"
+    },
+    "zh-Hans" : "%lld 个章节 — QuickTime Player 等播放器和剪辑软件都会列出"
   },
   "%lld lines changed since translating" : {
     "de" : {
@@ -137,6 +157,16 @@
     "fr" : "Une deuxième piste de sous-titres à afficher, incruster ou enregistrer en fichier de sous-titres. Traduite sur ce Mac — rien n’est envoyé en ligne.",
     "zh-Hans" : "第二条字幕轨道，可显示、嵌入视频或存储为字幕文件。在这台 Mac 上翻译 — 不会上传任何内容。"
   },
+  "A short button column, a pill button by the caption, a search bar at the top" : {
+    "de" : "Eine kurze Knopfspalte, ein runder Knopf beim Bildtext, oben ein Suchfeld",
+    "fr" : "Une courte colonne de boutons, un bouton arrondi près de la légende, une barre de recherche en haut",
+    "zh-Hans" : "一列较短的按钮、说明文字旁的胶囊按钮、顶部的搜索栏"
+  },
+  "A soft inner edge instead of a shadow below" : {
+    "de" : "Ein weicher innerer Rand statt eines Schattens darunter",
+    "fr" : "Un bord intérieur doux au lieu d’une ombre en dessous",
+    "zh-Hans" : "柔和的内边缘，而不是下方的阴影"
+  },
   "A soft shadow under the letters" : {
     "de" : "Ein weicher Schatten unter den Buchstaben",
     "fr" : "Une ombre douce sous les lettres",
@@ -151,6 +181,11 @@
     "de" : "Eine Untertiteldatei für YouTube und Web-Player (.srt) oder fürs Web (.vtt) – folgt deinen Schnitten",
     "fr" : "Un fichier de sous-titres pour YouTube et les lecteurs web (.srt), ou pour le web (.vtt) — suit vos coupes",
     "zh-Hans" : "用于 YouTube 和网页播放器（.srt）或网页（.vtt）的字幕文件 — 跟随你的剪辑"
+  },
+  "A taller button column, a spinning-disc spot, a bottom navigation bar" : {
+    "de" : "Eine höhere Knopfspalte, ein Platz für eine drehende Scheibe, unten eine Navigationsleiste",
+    "fr" : "Une colonne de boutons plus haute, l’emplacement d’un disque qui tourne, une barre de navigation en bas",
+    "zh-Hans" : "一列更高的按钮、旋转唱片的位置、底部导航栏"
   },
   "A video needs at least one clip" : {
     "de" : "Ein Video braucht mindestens einen Clip",
@@ -197,10 +232,25 @@
     "fr" : "Ajouter un carton de fin",
     "zh-Hans" : "添加片尾卡"
   },
+  "Add a marker at the playhead — markers become chapters" : {
+    "de" : "Marker an der Abspielposition setzen – Marker werden zu Kapiteln",
+    "fr" : "Ajouter un marqueur à la tête de lecture — les marqueurs deviennent des chapitres",
+    "zh-Hans" : "在播放头处添加标记 — 标记会成为章节"
+  },
   "Add another recording or video after this one — LF Studios recordings keep their pointer, clicks, and shortcuts." : {
     "de" : "Füge nach dieser Aufnahme eine weitere Aufnahme oder ein Video hinzu – LF-Studios-Aufnahmen behalten ihren Zeiger, ihre Klicks und Kurzbefehle.",
     "fr" : "Ajoutez un autre enregistrement ou une autre vidéo après celui-ci — les enregistrements LF Studios conservent leur pointeur, leurs clics et leurs raccourcis.",
     "zh-Hans" : "在此录制内容之后添加另一个录制内容或视频 — LF Studios 录制内容会保留指针、点按和快捷键。"
+  },
+  "Add chapters from markers" : {
+    "de" : "Kapitel aus Markern hinzufügen",
+    "fr" : "Ajouter des chapitres à partir des marqueurs",
+    "zh-Hans" : "根据标记添加章节"
+  },
+  "Add markers first — each one starts a chapter" : {
+    "de" : "Setze zuerst Marker – jeder beginnt ein Kapitel",
+    "fr" : "Ajoutez d’abord des marqueurs — chacun commence un chapitre",
+    "zh-Hans" : "请先添加标记 — 每个标记开始一个章节"
   },
   "Added %@ — %@" : {
     "de" : "%@ hinzugefügt – %@",
@@ -229,10 +279,25 @@
     "fr" : "Presque terminé",
     "zh-Hans" : "即将完成"
   },
+  "Angle" : {
+    "de" : "Winkel",
+    "fr" : "Angle",
+    "zh-Hans" : "角度"
+  },
+  "Angle, distance, softness, opacity, color, and an inner edge" : {
+    "de" : "Winkel, Abstand, Weichheit, Deckkraft, Farbe und ein innerer Rand",
+    "fr" : "Angle, distance, douceur, opacité, couleur et bord intérieur",
+    "zh-Hans" : "角度、距离、柔和度、不透明度、颜色和内边缘"
+  },
   "Append Video…" : {
     "de" : "Video anhängen …",
     "fr" : "Ajouter une vidéo à la suite…",
     "zh-Hans" : "追加视频…"
+  },
+  "Apple's editing format: big files that keep every detail, for Final Cut Pro, Premiere Pro, and DaVinci Resolve" : {
+    "de" : "Apples Format für den Schnitt: große Dateien, die jedes Detail behalten – für Final Cut Pro, Premiere Pro und DaVinci Resolve",
+    "fr" : "Le format de montage d’Apple : de gros fichiers qui gardent tous les détails, pour Final Cut Pro, Premiere Pro et DaVinci Resolve",
+    "zh-Hans" : "Apple 的剪辑格式：文件较大，保留所有细节，适用于 Final Cut Pro、Premiere Pro 和 DaVinci Resolve"
   },
   "Applies at every cut. Click a cut's marker on the timeline, or select a clip, to choose one for that cut only." : {
     "de" : "Gilt für jeden Schnitt. Klicke auf die Markierung eines Schnitts auf der Zeitleiste oder wähle einen Clip aus, um nur für diesen Schnitt einen Übergang festzulegen.",
@@ -379,6 +444,11 @@
     "fr" : "Incruster les sous-titres dans la vidéo",
     "zh-Hans" : "将字幕嵌入视频"
   },
+  "Buttons on the right, caption bottom-left, tabs at the top" : {
+    "de" : "Knöpfe rechts, Bildtext unten links, Tabs oben",
+    "fr" : "Boutons à droite, légende en bas à gauche, onglets en haut",
+    "zh-Hans" : "按钮在右侧，说明文字在左下，标签页在顶部"
+  },
   "Camera footage, cleaned-up voice, drafts, and clipboard exports" : {
     "de" : "Kameramaterial, bereinigte Stimme, Entwürfe und Exporte für die Zwischenablage",
     "fr" : "Séquences de caméra, voix nettoyée, brouillons et exportations pour le presse-papiers",
@@ -480,6 +550,21 @@
     "de" : "Zentrieren",
     "fr" : "Centrer",
     "zh-Hans" : "居中"
+  },
+  "Chapters" : {
+    "de" : "Kapitel",
+    "fr" : "Chapitres",
+    "zh-Hans" : "章节"
+  },
+  "Chapters as text (“0:00 Start”) for a YouTube description" : {
+    "de" : "Kapitel als Text („0:00 Start“) für eine YouTube-Beschreibung",
+    "fr" : "Les chapitres en texte (« 0:00 Début ») pour une description YouTube",
+    "zh-Hans" : "章节文本（“0:00 开始”），用于 YouTube 视频说明"
+  },
+  "Chapters copied — paste them into the video's description" : {
+    "de" : "Kapitel kopiert – füge sie in die Beschreibung des Videos ein",
+    "fr" : "Chapitres copiés — collez-les dans la description de la vidéo",
+    "zh-Hans" : "已拷贝章节 — 请粘贴到视频说明中"
   },
   "Choose a .ttf or .otf font. LF Studios keeps its own copy, so it keeps working if the file is deleted." : {
     "de" : "Wähle eine .ttf- oder .otf-Schrift. LF Studios behält eine eigene Kopie, damit sie auch funktioniert, wenn die Datei gelöscht wird.",
@@ -610,6 +695,11 @@
     "de" : "Kopiert – überall einsetzbar",
     "fr" : "Copié — collez-le où vous voulez",
     "zh-Hans" : "已拷贝 — 可粘贴到任何地方"
+  },
+  "Copy Chapters" : {
+    "de" : "Kapitel kopieren",
+    "fr" : "Copier les chapitres",
+    "zh-Hans" : "拷贝章节"
   },
   "Copy Path" : {
     "de" : "Pfad kopieren",
@@ -759,6 +849,11 @@
     "fr" : "Détouré",
     "zh-Hans" : "抠像"
   },
+  "Delete Marker" : {
+    "de" : "Marker löschen",
+    "fr" : "Supprimer le marqueur",
+    "zh-Hans" : "删除标记"
+  },
   "Dip to black" : {
     "de" : "Schwarzblende",
     "fr" : "Fondu au noir",
@@ -784,6 +879,11 @@
     "de" : "Zwischen Clips überblenden",
     "fr" : "Fondu entre les clips",
     "zh-Hans" : "片段之间叠化"
+  },
+  "Distance" : {
+    "de" : "Abstand",
+    "fr" : "Distance",
+    "zh-Hans" : "距离"
   },
   "Docs, slides" : {
     "de" : "Dokumente, Folien",
@@ -1012,6 +1112,11 @@
     "fr" : "Le cadre est rempli — la vue suit votre pointeur",
     "zh-Hans" : "正在填满画面 — 视图会跟随你的指针"
   },
+  "Fine-tune shadow" : {
+    "de" : "Schatten feinjustieren",
+    "fr" : "Régler l’ombre en détail",
+    "zh-Hans" : "微调阴影"
+  },
   "Flamingo" : {
     "de" : "Flamingo",
     "fr" : "Flamant",
@@ -1058,6 +1163,11 @@
     "fr" : "Caméra en plein écran",
     "zh-Hans" : "全屏摄像头"
   },
+  "Full rail" : {
+    "de" : "Volle Leiste",
+    "fr" : "Colonne complète",
+    "zh-Hans" : "完整按钮栏"
+  },
   "Full-screen camera for your intro and outro" : {
     "de" : "Kamera im Vollbild für Intro und Outro",
     "fr" : "Caméra en plein écran pour votre intro et votre fin",
@@ -1077,6 +1187,11 @@
     "de" : "Gletscher",
     "fr" : "Glacier",
     "zh-Hans" : "冰川"
+  },
+  "Glide time" : {
+    "de" : "Gleitdauer",
+    "fr" : "Durée du retour",
+    "zh-Hans" : "滑回时长"
   },
   "Graphite" : {
     "de" : "Graphit",
@@ -1099,6 +1214,11 @@
     "de" : "Verborgen",
     "fr" : "Masqué",
     "zh-Hans" : "隐藏"
+  },
+  "Hide Phone Overlay" : {
+    "de" : "Handy-Overlay ausblenden",
+    "fr" : "Masquer la surimpression du téléphone",
+    "zh-Hans" : "隐藏手机界面叠层"
   },
   "Hide — the export keeps going (Esc)" : {
     "de" : "Ausblenden – der Export läuft weiter (Esc)",
@@ -1145,6 +1265,11 @@
     "de" : "Enthält: %@",
     "fr" : "Contenu : %@",
     "zh-Hans" : "包含：%@"
+  },
+  "Inset" : {
+    "de" : "Innen",
+    "fr" : "Intérieure",
+    "zh-Hans" : "内阴影"
   },
   "Instagram, LinkedIn" : {
     "de" : "Instagram, LinkedIn",
@@ -1237,6 +1362,11 @@
     "fr" : "Plus grand que l’enregistrement — le texte peut paraître moins net qu’à une résolution plus basse.",
     "zh-Hans" : "大于录制内容 — 文字可能不如较低分辨率时清晰。"
   },
+  "Leaves out the background: the video, its rounded corners and shadow, and a cut-out camera sit on transparency, ready to place over anything" : {
+    "de" : "Lässt den Hintergrund weg: Das Video mit seinen abgerundeten Ecken und dem Schatten und eine freigestellte Kamera liegen auf Transparenz – bereit, über alles gelegt zu werden",
+    "fr" : "Retire l’arrière-plan : la vidéo, ses coins arrondis et son ombre, et une caméra détourée reposent sur de la transparence, prêtes à être posées sur n’importe quoi",
+    "zh-Hans" : "去掉背景：视频及其圆角和阴影，以及抠出的摄像头画面都位于透明层上，可叠放在任何内容之上"
+  },
   "Left" : {
     "de" : "Links",
     "fr" : "Gauche",
@@ -1253,6 +1383,11 @@
     "fr" : "Léger",
     "zh-Hans" : "轻度"
   },
+  "Like ProRes 422 with even more detail, for color grading and effects — about half again as big" : {
+    "de" : "Wie ProRes 422 mit noch mehr Detail, für Farbkorrektur und Effekte – etwa anderthalbmal so groß",
+    "fr" : "Comme ProRes 422 avec encore plus de détails, pour l’étalonnage et les effets — environ une fois et demie plus gros",
+    "zh-Hans" : "与 ProRes 422 相似但细节更丰富，适合调色和特效 — 文件约大一半"
+  },
   "Linen" : {
     "de" : "Leinen",
     "fr" : "Lin",
@@ -1262,6 +1397,11 @@
     "de" : "Hört zu …",
     "fr" : "Écoute…",
     "zh-Hans" : "正在聆听…"
+  },
+  "Loop" : {
+    "de" : "Schleife",
+    "fr" : "Boucle",
+    "zh-Hans" : "循环"
   },
   "Loop to fill" : {
     "de" : "Bis zum Ende wiederholen",
@@ -1283,6 +1423,21 @@
     "de" : "Sparsamer machen: %@, %@ fps",
     "fr" : "Alléger : %@, %@ fps",
     "zh-Hans" : "减轻体积：%@，%@ fps"
+  },
+  "Marker" : {
+    "de" : "Marker",
+    "fr" : "Marqueur",
+    "zh-Hans" : "标记"
+  },
+  "Marker name" : {
+    "de" : "Name des Markers",
+    "fr" : "Nom du marqueur",
+    "zh-Hans" : "标记名称"
+  },
+  "Marker: %@" : {
+    "de" : "Marker: %@",
+    "fr" : "Marqueur : %@",
+    "zh-Hans" : "标记：%@"
   },
   "Match the recording" : {
     "de" : "Wie die Aufnahme",
@@ -1388,6 +1543,11 @@
     "de" : "Nebel",
     "fr" : "Nébuleuse",
     "zh-Hans" : "星云"
+  },
+  "Needs a cursor LF Studios draws — this one is part of the video" : {
+    "de" : "Braucht einen Zeiger, den LF Studios zeichnet – dieser ist Teil des Videos",
+    "fr" : "Nécessite un pointeur dessiné par LF Studios — celui-ci fait partie de la vidéo",
+    "zh-Hans" : "需要由 LF Studios 绘制的指针 — 这个指针是视频画面的一部分"
   },
   "New caption" : {
     "comment" : "Default text of a new caption line, which the user edits",
@@ -1559,6 +1719,11 @@
     "fr" : "Pêche",
     "zh-Hans" : "蜜桃"
   },
+  "Phone overlay" : {
+    "de" : "Handy-Overlay",
+    "fr" : "Surimpression du téléphone",
+    "zh-Hans" : "手机界面叠层"
+  },
   "Picked up where you left off" : {
     "de" : "Weiter, wo du aufgehört hast",
     "fr" : "Reprise là où vous en étiez",
@@ -1625,6 +1790,11 @@
     "fr" : "Pression",
     "zh-Hans" : "按压"
   },
+  "Preview how a phone app's buttons and captions sit over this video, with the covered parts shaded — never in the export" : {
+    "de" : "Zeigt in der Vorschau, wie die Knöpfe und Texte einer Handy-App über diesem Video liegen, die verdeckten Teile abgedunkelt – nie im Export",
+    "fr" : "Prévisualisez comment les boutons et les textes d’une app de téléphone se placent sur cette vidéo, avec les parties couvertes ombrées — jamais dans l’export",
+    "zh-Hans" : "预览手机应用的按钮和文字如何叠在视频上，并将被遮挡的部分加暗 — 不会出现在导出内容中"
+  },
   "Preview muted — the export keeps its sound" : {
     "de" : "Vorschau stumm – der Export behält seinen Ton",
     "fr" : "Aperçu en sourdine — l’exportation conserve l’audio",
@@ -1680,6 +1850,21 @@
     "fr" : "Rectangle",
     "zh-Hans" : "矩形"
   },
+  "Redo Add Marker" : {
+    "de" : "Setzen des Markers wiederholen",
+    "fr" : "Rétablir l’ajout du marqueur",
+    "zh-Hans" : "重做添加标记"
+  },
+  "Redo Delete Marker" : {
+    "de" : "Löschen des Markers wiederholen",
+    "fr" : "Rétablir la suppression du marqueur",
+    "zh-Hans" : "重做删除标记"
+  },
+  "Redo Markers" : {
+    "de" : "Änderung der Marker wiederholen",
+    "fr" : "Rétablir la modification des marqueurs",
+    "zh-Hans" : "重做标记更改"
+  },
   "Redo Move Caption" : {
     "de" : "Verschieben des Untertitels wiederholen",
     "fr" : "Rétablir le déplacement du sous-titre",
@@ -1694,6 +1879,16 @@
     "de" : "Verschieben der Kurzbefehle wiederholen",
     "fr" : "Rétablir le déplacement des raccourcis",
     "zh-Hans" : "重做移动快捷键"
+  },
+  "Redo Rename Marker" : {
+    "de" : "Umbenennen des Markers wiederholen",
+    "fr" : "Rétablir le changement de nom du marqueur",
+    "zh-Hans" : "重做重新命名标记"
+  },
+  "Redo Split at Markers" : {
+    "de" : "Teilen an den Markern wiederholen",
+    "fr" : "Rétablir la scission aux marqueurs",
+    "zh-Hans" : "重做在标记处分割"
   },
   "Reels, TikTok, Shorts" : {
     "de" : "Reels, TikTok, Shorts",
@@ -1791,6 +1986,11 @@
     "fr" : "Supprimé — ⌘Z pour annuler",
     "zh-Hans" : "已移除 — 按 ⌘Z 撤销"
   },
+  "Rename Marker…" : {
+    "de" : "Marker umbenennen …",
+    "fr" : "Renommer le marqueur…",
+    "zh-Hans" : "重新命名标记…"
+  },
   "Rendering for the clipboard… %lld%%" : {
     "de" : "Wird für die Zwischenablage gerendert … %lld %%",
     "fr" : "Rendu pour le presse-papiers… %lld %%",
@@ -1868,6 +2068,11 @@
     },
     "zh-Hans" : "已恢复 %lld 个词"
   },
+  "Return to start at the end" : {
+    "de" : "Am Ende zum Anfang zurück",
+    "fr" : "Revenir au départ à la fin",
+    "zh-Hans" : "结尾时回到起点"
+  },
   "Reveal" : {
     "comment" : "Button: shows the exported file in Finder",
     "de" : "Zeigen",
@@ -1940,6 +2145,11 @@
     "fr" : "Placer le point de sortie sur la tête de lecture (%@)",
     "zh-Hans" : "将出点设为播放头位置（%@）"
   },
+  "Shadow color" : {
+    "de" : "Schattenfarbe",
+    "fr" : "Couleur de l’ombre",
+    "zh-Hans" : "阴影颜色"
+  },
   "Share" : {
     "de" : "Teilen",
     "fr" : "Partager",
@@ -2002,6 +2212,11 @@
     "fr" : "Côte à côte",
     "zh-Hans" : "并排"
   },
+  "Side rail" : {
+    "de" : "Seitenleiste",
+    "fr" : "Colonne latérale",
+    "zh-Hans" : "侧边按钮栏"
+  },
   "Silky" : {
     "de" : "Seidig",
     "fr" : "Soyeux",
@@ -2049,6 +2264,11 @@
     "fr" : "Fils des réseaux sociaux",
     "zh-Hans" : "社交媒体信息流"
   },
+  "Softness" : {
+    "de" : "Weichheit",
+    "fr" : "Douceur",
+    "zh-Hans" : "柔和度"
+  },
   "Sped up %lld idle moments — saved %@" : {
     "de" : {
       "one" : "%lld Leerlaufphase beschleunigt – %@ gespart",
@@ -2094,6 +2314,31 @@
     "fr" : "Accélérer les temps morts fonctionne avec les enregistrements LF Studios — la fonction suit le pointeur",
     "zh-Hans" : "“加速空闲片段”适用于 LF Studios 录制内容 — 它会追踪指针"
   },
+  "Split at %lld markers" : {
+    "de" : {
+      "one" : "An %lld Marker geteilt",
+      "other" : "An %lld Markern geteilt"
+    },
+    "en" : {
+      "one" : "Split at %lld marker",
+      "other" : "Split at %lld markers"
+    },
+    "fr" : {
+      "one" : "Scindé à %lld marqueur",
+      "other" : "Scindé à %lld marqueurs"
+    },
+    "zh-Hans" : "已在 %lld 个标记处分割"
+  },
+  "Split at Markers" : {
+    "de" : "An Markern teilen",
+    "fr" : "Scinder aux marqueurs",
+    "zh-Hans" : "在标记处分割"
+  },
+  "Split the clips at every marker" : {
+    "de" : "Die Clips an jedem Marker teilen",
+    "fr" : "Scinder les clips à chaque marqueur",
+    "zh-Hans" : "在每个标记处分割片段"
+  },
   "Split the video (S) to make cuts; each can dissolve or dip to black." : {
     "de" : "Teile das Video (S), um Schnitte zu setzen; jeder kann überblenden oder schwarz abblenden.",
     "fr" : "Scindez la vidéo (S) pour créer des coupes ; chacune peut passer par un fondu ou un fondu au noir.",
@@ -2108,6 +2353,11 @@
     "de" : "Fokus",
     "fr" : "Projecteur",
     "zh-Hans" : "聚光灯"
+  },
+  "Start" : {
+    "de" : "Start",
+    "fr" : "Début",
+    "zh-Hans" : "开始"
   },
   "Start Over" : {
     "de" : "Neu beginnen",
@@ -2197,10 +2447,25 @@
     "fr" : "L’exportation s’est arrêtée de façon inattendue (%@). Réessayez — si le problème persiste, exportez à une résolution plus basse ou en H.264.",
     "zh-Hans" : "导出意外停止（%@）。请重试 — 如果问题仍然存在，请以较低分辨率或 H.264 格式导出。"
   },
+  "The highest quality, and the only one that can keep transparency" : {
+    "de" : "Die höchste Qualität und die einzige, die Transparenz behalten kann",
+    "fr" : "La meilleure qualité, et la seule qui peut garder la transparence",
+    "zh-Hans" : "最高画质，也是唯一能保留透明度的格式"
+  },
+  "The markers are already at clip edges" : {
+    "de" : "Die Marker liegen schon an Clipgrenzen",
+    "fr" : "Les marqueurs sont déjà aux bords des clips",
+    "zh-Hans" : "标记已经位于片段边缘"
+  },
   "The picture's file is gone — choose it again with Replace." : {
     "de" : "Die Bilddatei fehlt – wähle sie mit „Ersetzen“ erneut aus.",
     "fr" : "Le fichier de l’image a disparu — choisissez-le à nouveau avec Remplacer.",
     "zh-Hans" : "图片文件已不存在 — 请使用“替换”重新选择。"
+  },
+  "The pointer glides back to where it started, so the video loops without a jump" : {
+    "de" : "Der Zeiger gleitet dorthin zurück, wo er begann – so läuft das Video ohne Sprung in Schleife",
+    "fr" : "Le pointeur revient en glissant à son point de départ, pour que la vidéo boucle sans saut",
+    "zh-Hans" : "指针会滑回起始位置，让视频无缝循环"
   },
   "The recording's file can't be found — it may have been moved or deleted. Put it back and export again." : {
     "de" : "Die Datei der Aufnahme wurde nicht gefunden – sie wurde eventuell bewegt oder gelöscht. Lege sie zurück und exportiere erneut.",
@@ -2393,6 +2658,11 @@
     "fr" : "Traduire",
     "zh-Hans" : "翻译"
   },
+  "Transparent background" : {
+    "de" : "Transparenter Hintergrund",
+    "fr" : "Arrière-plan transparent",
+    "zh-Hans" : "透明背景"
+  },
   "Turn Off Click Sounds" : {
     "de" : "Klickgeräusche ausschalten",
     "fr" : "Désactiver les sons de clic",
@@ -2402,6 +2672,21 @@
     "de" : "Unter der Stimme",
     "fr" : "Sous la voix",
     "zh-Hans" : "人声时音量"
+  },
+  "Undo Add Marker" : {
+    "de" : "Setzen des Markers widerrufen",
+    "fr" : "Annuler l’ajout du marqueur",
+    "zh-Hans" : "撤销添加标记"
+  },
+  "Undo Delete Marker" : {
+    "de" : "Löschen des Markers widerrufen",
+    "fr" : "Annuler la suppression du marqueur",
+    "zh-Hans" : "撤销删除标记"
+  },
+  "Undo Markers" : {
+    "de" : "Änderung der Marker widerrufen",
+    "fr" : "Annuler la modification des marqueurs",
+    "zh-Hans" : "撤销标记更改"
   },
   "Undo Move Caption" : {
     "de" : "Verschieben des Untertitels widerrufen",
@@ -2417,6 +2702,16 @@
     "de" : "Verschieben der Kurzbefehle widerrufen",
     "fr" : "Annuler le déplacement des raccourcis",
     "zh-Hans" : "撤销移动快捷键"
+  },
+  "Undo Rename Marker" : {
+    "de" : "Umbenennen des Markers widerrufen",
+    "fr" : "Annuler le changement de nom du marqueur",
+    "zh-Hans" : "撤销重新命名标记"
+  },
+  "Undo Split at Markers" : {
+    "de" : "Teilen an den Markern widerrufen",
+    "fr" : "Annuler la scission aux marqueurs",
+    "zh-Hans" : "撤销在标记处分割"
   },
   "Video copied" : {
     "de" : "Video kopiert",
@@ -2496,6 +2791,16 @@
     "fr" : "Large",
     "zh-Hans" : "宽幅"
   },
+  "YouTube needs every chapter to be at least 10 seconds long — move or remove markers that are closer together." : {
+    "de" : "YouTube braucht Kapitel von mindestens 10 Sekunden – verschiebe oder entferne Marker, die zu nah beieinanderliegen.",
+    "fr" : "YouTube exige que chaque chapitre dure au moins 10 secondes — déplacez ou supprimez les marqueurs trop rapprochés.",
+    "zh-Hans" : "YouTube 要求每个章节至少 10 秒 — 请移动或移除靠得太近的标记。"
+  },
+  "YouTube shows chapters from 3 on — add a marker or two more." : {
+    "de" : "YouTube zeigt Kapitel ab 3 Stück – setze noch ein, zwei Marker.",
+    "fr" : "YouTube affiche les chapitres à partir de 3 — ajoutez un ou deux marqueurs de plus.",
+    "zh-Hans" : "YouTube 至少需要 3 个章节才会显示 — 请再添加一两个标记。"
+  },
   "YouTube, presentations" : {
     "de" : "YouTube, Präsentationen",
     "fr" : "YouTube, présentations",
@@ -2522,10 +2827,20 @@
     "fr" : "Zoom supprimé — ⌘Z pour annuler",
     "zh-Hans" : "已移除缩放 — 按 ⌘Z 撤销"
   },
+  "a transparent background" : {
+    "de" : "ein transparenter Hintergrund",
+    "fr" : "un arrière-plan transparent",
+    "zh-Hans" : "透明背景"
+  },
   "captions burned in" : {
     "de" : "eingebrannte Untertitel",
     "fr" : "sous-titres incrustés",
     "zh-Hans" : "已嵌入字幕"
+  },
+  "chapters" : {
+    "de" : "Kapitel",
+    "fr" : "chapitres",
+    "zh-Hans" : "章节"
   },
   "intro card" : {
     "de" : "Intro-Karte",

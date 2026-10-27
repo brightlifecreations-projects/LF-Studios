@@ -130,6 +130,22 @@
 			<string>%lld captions</string>
 		</dict>
 	</dict>
+	<key>%lld chapters — players like QuickTime Player list them, and so do editing apps</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>one</key>
+			<string>%lld chapter — players like QuickTime Player list it, and so do editing apps</string>
+			<key>other</key>
+			<string>%lld chapters — players like QuickTime Player list them, and so do editing apps</string>
+		</dict>
+	</dict>
 	<key>%lld clicks</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -944,6 +960,22 @@
 			<string>Sped up %lld idle moment — saved %@ · check any typing</string>
 			<key>other</key>
 			<string>Sped up %lld idle moments — saved %@ · check any typing</string>
+		</dict>
+	</dict>
+	<key>Split at %lld markers</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>one</key>
+			<string>Split at %lld marker</string>
+			<key>other</key>
+			<string>Split at %lld markers</string>
 		</dict>
 	</dict>
 	<key>This replaces all %lld caption lines, including any you edited or typed, with a new transcript in %@.</key>

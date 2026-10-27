@@ -70,11 +70,10 @@ enum RecordingWindowSize {
             case .resized:
                 return nil
             case let .limited(asked, got):
-                let gotSize = "\(got.width) × \(got.height)"
                 if got.width > asked.width || got.height > asked.height {
-                    return L("“\(appName)” keeps this window at least \(gotSize) pixels, so it can't be made \(asked.width) × \(asked.height).")
+                    return L("“\(appName)” keeps this window at least \(got.width) × \(got.height) pixels, so it can't be made \(asked.width) × \(asked.height).")
                 }
-                return L("“\(appName)” keeps this window at most \(gotSize) pixels, so it can't be made \(asked.width) × \(asked.height).")
+                return L("“\(appName)” keeps this window at most \(got.width) × \(got.height) pixels, so it can't be made \(asked.width) × \(asked.height).")
             case .notResizable:
                 return L("“\(appName)” doesn't let this window be resized.")
             case .notFound:

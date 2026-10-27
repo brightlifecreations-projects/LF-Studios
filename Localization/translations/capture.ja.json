@@ -50,6 +50,30 @@
   "%lld seconds" : {
     "ja" : "%lld秒"
   },
+  "%lld × %lld doesn't fit on this display" : {
+    "ja" : "%lld × %lldはこのディスプレイに収まりません"
+  },
+  "%lld × %lld — window %lld × %lld on this display" : {
+    "ja" : "%lld × %lld — このディスプレイではウインドウ%lld × %lld"
+  },
+  "A window that size would be bigger than the screen. The largest of the same shape that fits is %lld × %lld." : {
+    "ja" : "このサイズのウインドウは画面より大きくなります。同じ形で収まる最大のサイズは%lld × %lldです。"
+  },
+  "Add Marker" : {
+    "ja" : "マーカーを追加"
+  },
+  "Add Marker While Recording" : {
+    "ja" : "収録中にマーカーを追加"
+  },
+  "Add a marker" : {
+    "ja" : "マーカーを追加"
+  },
+  "Add a marker (%@)" : {
+    "ja" : "マーカーを追加（%@）"
+  },
+  "Add a marker — set a shortcut in Settings → Shortcuts" : {
+    "ja" : "マーカーを追加 — ショートカットは“設定”＞“ショートカット”で設定できます"
+  },
   "All Displays" : {
     "ja" : "すべてのディスプレイ"
   },
@@ -167,11 +191,17 @@
   "Couldn't create the video file." : {
     "ja" : "ビデオファイルを作成できませんでした。"
   },
+  "Couldn't find that window to resize it. Choose it again and try once more." : {
+    "ja" : "サイズを変更するウインドウが見つかりませんでした。もう一度選んでからやり直してください。"
+  },
   "Countdown" : {
     "ja" : "カウントダウン"
   },
   "Cursor" : {
     "ja" : "ポインタ"
+  },
+  "Custom Size…" : {
+    "ja" : "カスタムサイズ…"
   },
   "Dark Mode" : {
     "ja" : "ダーク"
@@ -233,6 +263,9 @@
   "Email address copied" : {
     "ja" : "メールアドレスをコピーしました"
   },
+  "Enter a width and a height from %lld to %lld pixels." : {
+    "ja" : "幅と高さを%lld〜%lldピクセルで入力してください。"
+  },
   "Esc or Done finishes" : {
     "ja" : "Escキーまたは“完了”で終了"
   },
@@ -248,6 +281,9 @@
   "Frame rate" : {
     "ja" : "フレームレート"
   },
+  "Height" : {
+    "ja" : "高さ"
+  },
   "Hidden network" : {
     "ja" : "非公開ネットワーク"
   },
@@ -259,6 +295,12 @@
   },
   "Keyboard shortcuts are on" : {
     "ja" : "キーボードショートカットの表示がオンになりました"
+  },
+  "LF Studios can't write to the save folder. Choose another one in Settings → Screenshots." : {
+    "ja" : "LF Studiosは保存先フォルダに書き込めません。“設定”＞“スクリーンショット”で別のフォルダを選択してください。"
+  },
+  "LF Studios isn't allowed to record the screen. Turn it on in System Settings → Privacy & Security → Screen & System Audio Recording." : {
+    "ja" : "LF Studiosに画面収録が許可されていません。“システム設定”＞“プライバシーとセキュリティ”＞“画面収録とシステムオーディオ録音”でオンにしてください。"
   },
   "Light Mode" : {
     "ja" : "ライト"
@@ -277,6 +319,9 @@
   },
   "Links (%lld of %lld)" : {
     "ja" : "リンク（%2$lld件中%1$lld件）"
+  },
+  "Marker %lld" : {
+    "ja" : "マーカー%lld"
   },
   "Max" : {
     "ja" : "最高"
@@ -479,6 +524,18 @@
   "Resize" : {
     "ja" : "サイズを変更"
   },
+  "Resize the window so the recording is an exact size" : {
+    "ja" : "収録がぴったりのサイズになるようにウインドウのサイズを変更"
+  },
+  "Resizing another app's window needs Accessibility access: allow LF Studios in System Settings → Privacy & Security → Accessibility, then choose the size again." : {
+    "ja" : "ほかのアプリのウインドウのサイズを変えるにはアクセシビリティへのアクセスが必要です。“システム設定”＞“プライバシーとセキュリティ”＞“アクセシビリティ”でLF Studiosを許可してから、もう一度サイズを選んでください。"
+  },
+  "Restore size" : {
+    "ja" : "サイズを元に戻す"
+  },
+  "Restore size — put the window back as it was" : {
+    "ja" : "サイズを元に戻す — ウインドウを元の状態に戻します"
+  },
   "Resume recording" : {
     "ja" : "収録を再開"
   },
@@ -584,12 +641,6 @@
   "Selection %@ by %@ points. Arrow keys move it, Return captures, Escape cancels." : {
     "ja" : "選択範囲: 幅%@ポイント、高さ%@ポイント。矢印キーで移動、Returnキーで取り込み、Escキーでキャンセルします。"
   },
-  "LF Studios can't write to the save folder. Choose another one in Settings → Screenshots." : {
-    "ja" : "LF Studiosは保存先フォルダに書き込めません。“設定”＞“スクリーンショット”で別のフォルダを選択してください。"
-  },
-  "LF Studios isn't allowed to record the screen. Turn it on in System Settings → Privacy & Security → Screen & System Audio Recording." : {
-    "ja" : "LF Studiosに画面収録が許可されていません。“システム設定”＞“プライバシーとセキュリティ”＞“画面収録とシステムオーディオ録音”でオンにしてください。"
-  },
   "Show keyboard shortcuts" : {
     "ja" : "キーボードショートカットを表示"
   },
@@ -665,14 +716,23 @@
   "The recording couldn't be finished — saved the first %@." : {
     "ja" : "収録を完了できませんでした。最初の%@を保存しました。"
   },
+  "The size of the recording, in pixels." : {
+    "ja" : "収録のサイズ（ピクセル）。"
+  },
   "The window you're recording closed. Stop when you're ready — the recording keeps going." : {
     "ja" : "収録中のウインドウが閉じられました。収録は続いています。準備ができたら停止してください。"
+  },
+  "This app" : {
+    "ja" : "このアプリ"
   },
   "To" : {
     "ja" : "宛先"
   },
   "URL" : {
     "ja" : "URL"
+  },
+  "Use the largest size that fits (%lld × %lld)" : {
+    "ja" : "収まる最大のサイズを使う（%lld × %lld）"
   },
   "Warning" : {
     "ja" : "警告"
@@ -683,11 +743,17 @@
   "Wi-Fi QR found" : {
     "ja" : "Wi-FiのQRコードが見つかりました"
   },
+  "Width" : {
+    "ja" : "幅"
+  },
   "Window capture" : {
     "ja" : "ウインドウの取り込み"
   },
   "Window closed" : {
     "ja" : "ウインドウが閉じた"
+  },
+  "Window size" : {
+    "ja" : "ウインドウのサイズ"
   },
   "Yes" : {
     "ja" : "はい"
@@ -730,6 +796,15 @@
   },
   "up to %@ MB/min" : {
     "ja" : "最大%@ MB/分"
+  },
+  "“%@” doesn't let this window be resized." : {
+    "ja" : "“%@”ではこのウインドウのサイズを変更できません。"
+  },
+  "“%@” keeps this window at least %lld × %lld pixels, so it can't be made %lld × %lld." : {
+    "ja" : "“%@”はこのウインドウを%lld × %lldピクセル以上に保つため、%lld × %lldにはできません。"
+  },
+  "“%@” keeps this window at most %lld × %lld pixels, so it can't be made %lld × %lld." : {
+    "ja" : "“%@”はこのウインドウを%lld × %lldピクセル以下に保つため、%lld × %lldにはできません。"
   },
   "✓ Saved screenshot" : {
     "ja" : "✓ スクリーンショットを保存しました"

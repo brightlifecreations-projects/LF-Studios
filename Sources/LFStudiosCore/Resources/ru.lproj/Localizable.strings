@@ -72,6 +72,8 @@
 	<string>%@ — осталось около минуты</string>
 	<key>%@ — click to change</key>
 	<string>%@ — нажмите, чтобы изменить</string>
+	<key>%@ — click to jump here, double-click to rename</key>
+	<string>%@ — нажмите, чтобы перейти сюда, дважды нажмите, чтобы переименовать</string>
 	<key>%@ → %@ — the part you ⇧-dragged on the timeline</key>
 	<string>%@ → %@ — фрагмент, выделенный на шкале времени с ⇧</string>
 	<key>%@, %@</key>
@@ -90,6 +92,10 @@
 	<string>%lld пикс. · Esc или «Готово» — завершить</string>
 	<key>%lld s</key>
 	<string>%lld с</string>
+	<key>%lld × %lld doesn't fit on this display</key>
+	<string>%lld × %lld не помещается на этом экране</string>
+	<key>%lld × %lld — window %lld × %lld on this display</key>
+	<string>%lld × %lld — окно %lld × %lld на этом экране</string>
 	<key>%lld%%</key>
 	<string>%lld %%</string>
 	<key>%lld%% volume</key>
@@ -124,14 +130,22 @@
 	<string>Отчет поможет это исправить. Вы увидите его целиком перед отправкой, и в нем никогда не будет ваших снимков экрана и записей.</string>
 	<key>A second caption track you can show, burn in, or save as subtitles. Translated on this Mac — nothing is uploaded.</key>
 	<string>Вторая дорожка субтитров, которую можно показать, встроить в видео или сохранить как файл субтитров. Перевод выполняется на этом Mac — ничего не отправляется в сеть.</string>
+	<key>A short button column, a pill button by the caption, a search bar at the top</key>
+	<string>Короткий столбец кнопок, кнопка-капсула у подписи, строка поиска вверху</string>
+	<key>A soft inner edge instead of a shadow below</key>
+	<string>Мягкий внутренний край вместо тени снизу</string>
 	<key>A soft shadow under the letters</key>
 	<string>Мягкая тень под буквами</string>
 	<key>A song under the whole video — it loops to fill, fades in and out, and dips while you talk. Use music you have the rights to.</key>
 	<string>Песня на фоне всего видео — она повторяется до конца, плавно нарастает и затухает и приглушается, пока вы говорите. Используйте музыку, на которую у вас есть права.</string>
 	<key>A subtitles file for YouTube and web players (.srt), or for the web (.vtt) — follows your cuts</key>
 	<string>Файл субтитров для YouTube и веб-плееров (.srt) или для веба (.vtt) — учитывает ваш монтаж</string>
+	<key>A taller button column, a spinning-disc spot, a bottom navigation bar</key>
+	<string>Более высокий столбец кнопок, место для вращающегося диска, панель навигации внизу</string>
 	<key>A video needs at least one clip</key>
 	<string>В видео должен быть хотя бы один клип</string>
+	<key>A window that size would be bigger than the screen. The largest of the same shape that fits is %lld × %lld.</key>
+	<string>Окно такого размера больше экрана. Самый большой размер той же формы, который помещается, — %lld × %lld.</string>
 	<key>About</key>
 	<string>О программе</string>
 	<key>About %lld min left</key>
@@ -160,6 +174,10 @@
 	<string>Добавить изображение или логотип…</string>
 	<key>Add Intro Card</key>
 	<string>Добавить начальный титр</string>
+	<key>Add Marker</key>
+	<string>Добавить маркер</string>
+	<key>Add Marker While Recording</key>
+	<string>Добавить маркер во время записи</string>
 	<key>Add Music…</key>
 	<string>Добавить музыку…</string>
 	<key>Add Outro Card</key>
@@ -172,6 +190,14 @@
 	<string>Добавить увеличение у указателя воспроизведения</string>
 	<key>Add a caption at the playhead</key>
 	<string>Добавить субтитр у указателя воспроизведения</string>
+	<key>Add a marker</key>
+	<string>Добавить маркер</string>
+	<key>Add a marker (%@)</key>
+	<string>Добавить маркер (%@)</string>
+	<key>Add a marker at the playhead — markers become chapters</key>
+	<string>Добавить маркер у указателя воспроизведения — маркеры становятся главами</string>
+	<key>Add a marker — set a shortcut in Settings → Shortcuts</key>
+	<string>Добавить маркер — сочетание клавиш задаётся в разделе Настройки → Сочетания</string>
 	<key>Add a zoom at the playhead (Z)</key>
 	<string>Добавить увеличение у указателя воспроизведения (Z)</string>
 	<key>Add another recording or video after this one — LF Studios recordings keep their pointer, clicks, and shortcuts.</key>
@@ -182,10 +208,14 @@
 	<string>Добавить размытие у указателя воспроизведения (B)</string>
 	<key>Add camera video…</key>
 	<string>Добавить видео с камеры…</string>
+	<key>Add chapters from markers</key>
+	<string>Добавить главы по маркерам</string>
 	<key>Add highlight at the playhead (H)</key>
 	<string>Добавить выделение у указателя воспроизведения (H)</string>
 	<key>Add image at the playhead</key>
 	<string>Добавить изображение у указателя воспроизведения</string>
+	<key>Add markers first — each one starts a chapter</key>
+	<string>Сначала добавьте маркеры — с каждого начинается глава</string>
 	<key>Add spotlight at the playhead</key>
 	<string>Добавить прожектор у указателя воспроизведения</string>
 	<key>Add text at the playhead (T)</key>
@@ -240,6 +270,10 @@
 	<string>Всегда показывать стрелку</string>
 	<key>Amber Fold</key>
 	<string>Янтарная складка</string>
+	<key>Angle</key>
+	<string>Угол</string>
+	<key>Angle, distance, softness, opacity, color, and an inner edge</key>
+	<string>Угол, расстояние, мягкость, непрозрачность, цвет и внутренний край</string>
 	<key>Annotate Last Screenshot</key>
 	<string>Разметить последний снимок</string>
 	<key>Annotation</key>
@@ -264,6 +298,8 @@
 	<string>Сочетания клавиш Apple для снимков экрана отключены. Теперь работают сочетания клавиш LF Studios.</string>
 	<key>Apple screenshot shortcuts restored.</key>
 	<string>Сочетания клавиш Apple для снимков экрана восстановлены.</string>
+	<key>Apple's editing format: big files that keep every detail, for Final Cut Pro, Premiere Pro, and DaVinci Resolve</key>
+	<string>Формат Apple для монтажа: большие файлы, в которых сохраняется каждая деталь, — для Final Cut Pro, Premiere Pro и DaVinci Resolve</string>
 	<key>Apple's screenshot shortcuts still own ⌘⇧3/4/5 — captures can double-trigger.</key>
 	<string>⌘⇧3/4/5 по-прежнему заняты сочетаниями Apple для снимков экрана — снимок может сработать дважды.</string>
 	<key>Apple's shortcuts are out of the way.</key>
@@ -402,6 +438,8 @@
 	<string>Встроенный (San Francisco)</string>
 	<key>Burn captions into the video</key>
 	<string>Встроить субтитры в видео</string>
+	<key>Buttons on the right, caption bottom-left, tabs at the top</key>
+	<string>Кнопки справа, подпись слева внизу, вкладки вверху</string>
 	<key>Call</key>
 	<string>Позвонить</string>
 	<key>Callout</key>
@@ -556,6 +594,12 @@
 	<string>Титры используют ваш фон, а шкала времени удлиняется, чтобы их вместить. Финальная заставка «Made with LF Studios» — отдельно: она в параметрах экспорта.</string>
 	<key>Center</key>
 	<string>По центру</string>
+	<key>Chapters</key>
+	<string>Главы</string>
+	<key>Chapters as text (“0:00 Start”) for a YouTube description</key>
+	<string>Главы текстом («0:00 Начало») для описания на YouTube</string>
+	<key>Chapters copied — paste them into the video's description</key>
+	<string>Главы скопированы — вставьте их в описание видео</string>
 	<key>Check</key>
 	<string>Проверить</string>
 	<key>Check for Updates</key>
@@ -718,6 +762,8 @@
 	<string>Скопировать %@</string>
 	<key>Copy (⌘C)</key>
 	<string>Скопировать (⌘C)</string>
+	<key>Copy Chapters</key>
+	<string>Скопировать главы</string>
 	<key>Copy Current Frame</key>
 	<string>Скопировать текущий кадр</string>
 	<key>Copy Path</key>
@@ -776,6 +822,8 @@
 	<string>Не удалось создать папку для передачи — %@</string>
 	<key>Couldn't create the video file.</key>
 	<string>Не удалось создать видеофайл.</string>
+	<key>Couldn't find that window to resize it. Choose it again and try once more.</key>
+	<string>Не удалось найти окно, чтобы изменить его размер. Выберите его снова и попробуйте ещё раз.</string>
 	<key>Couldn't finish the file</key>
 	<string>Не удалось завершить файл</string>
 	<key>Couldn't make captions</key>
@@ -866,6 +914,8 @@
 	<string>Указатель, нажатия и сочетания клавиш</string>
 	<key>Custom</key>
 	<string>Свой</string>
+	<key>Custom Size…</key>
+	<string>Другой размер…</string>
 	<key>Custom color</key>
 	<string>Свой цвет</string>
 	<key>Custom color #%@</key>
@@ -904,6 +954,8 @@
 	<string>Удалить снимки</string>
 	<key>Delete Clip</key>
 	<string>Удалить клип</string>
+	<key>Delete Marker</key>
+	<string>Удалить маркер</string>
 	<key>Delete Screenshot</key>
 	<string>Удалить снимок экрана</string>
 	<key>Delete Screenshots</key>
@@ -962,6 +1014,8 @@
 	<string>Растворение</string>
 	<key>Dissolve Between Clips</key>
 	<string>Растворение между клипами</string>
+	<key>Distance</key>
+	<string>Расстояние</string>
 	<key>Do you want to review them before quitting?</key>
 	<string>Хотите просмотреть их перед завершением?</string>
 	<key>Docs, slides</key>
@@ -1104,6 +1158,8 @@
 	<string>Нравится LF Studios? Нажмите, чтобы поставить звезду на GitHub ★</string>
 	<key>Enjoying LF Studios? Star it on GitHub so more people find it.</key>
 	<string>Нравится LF Studios? Поставьте звезду на GitHub, чтобы о нем узнало больше людей.</string>
+	<key>Enter a width and a height from %lld to %lld pixels.</key>
+	<string>Введите ширину и высоту от %lld до %lld пикселей.</string>
 	<key>Esc</key>
 	<string>Esc</string>
 	<key>Esc or Done finishes</key>
@@ -1224,6 +1280,8 @@
 	<string>Найти в расшифровке</string>
 	<key>Find “%@”</key>
 	<string>Найти «%@»</string>
+	<key>Fine-tune shadow</key>
+	<string>Точная настройка тени</string>
 	<key>Finish and Quit</key>
 	<string>Дождаться и завершить</string>
 	<key>Finish or cancel the current recording setup</key>
@@ -1284,6 +1342,8 @@
 	<string>Весь кадр (без фона)</string>
 	<key>Full original files</key>
 	<string>Исходные файлы целиком</string>
+	<key>Full rail</key>
+	<string>Полная панель</string>
 	<key>Full screen: %@</key>
 	<string>Весь экран: %@</string>
 	<key>Full-Camera Intro and Outro</key>
@@ -1302,6 +1362,8 @@
 	<string>Подготовка…</string>
 	<key>Glacier</key>
 	<string>Ледник</string>
+	<key>Glide time</key>
+	<string>Время возврата</string>
 	<key>Glides without lagging behind — clicks still land exactly.</key>
 	<string>Плавно скользит без отставания — нажатия по-прежнему попадают точно.</string>
 	<key>Go to End</key>
@@ -1332,6 +1394,8 @@
 	<string>Жесткая склейка</string>
 	<key>Health</key>
 	<string>Состояние</string>
+	<key>Height</key>
+	<string>Высота</string>
 	<key>Hidden</key>
 	<string>Скрыта</string>
 	<key>Hidden network</key>
@@ -1342,6 +1406,8 @@
 	<string>Скрыть значки рабочего стола</string>
 	<key>Hide Icon</key>
 	<string>Скрыть значок</string>
+	<key>Hide Phone Overlay</key>
+	<string>Скрыть наложение телефона</string>
 	<key>Hide desktop icons while capturing</key>
 	<string>Скрывать значки рабочего стола при съемке</string>
 	<key>Hide the Menu Bar Icon?</key>
@@ -1406,6 +1472,8 @@
 	<string>Добавить готовое видео</string>
 	<key>Includes: %@</key>
 	<string>Включает: %@</string>
+	<key>Inset</key>
+	<string>Внутренняя</string>
 	<key>Inspector tabs</key>
 	<string>Вкладки инспектора</string>
 	<key>Instagram, LinkedIn</key>
@@ -1540,6 +1608,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Расположение</string>
 	<key>Layouts</key>
 	<string>Расположения</string>
+	<key>Leaves out the background: the video, its rounded corners and shadow, and a cut-out camera sit on transparency, ready to place over anything</key>
+	<string>Без фона: видео с его скруглёнными углами и тенью и вырезанная камера лежат на прозрачности — их можно наложить на что угодно</string>
 	<key>Left</key>
 	<string>Слева</string>
 	<key>Left out:</key>
@@ -1554,6 +1624,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Слегка</string>
 	<key>Light Mode</key>
 	<string>Светлое</string>
+	<key>Like ProRes 422 with even more detail, for color grading and effects — about half again as big</key>
+	<string>Как ProRes 422, но ещё детальнее — для цветокоррекции и эффектов; файлы примерно в полтора раза больше</string>
 	<key>Lime Signal</key>
 	<string>Лаймовый сигнал</string>
 	<key>Line</key>
@@ -1588,6 +1660,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Найти…</string>
 	<key>Look</key>
 	<string>Вид</string>
+	<key>Loop</key>
+	<string>Зацикливание</string>
 	<key>Loop to fill</key>
 	<string>Повторять до конца</string>
 	<key>Lower under your voice</key>
@@ -1600,6 +1674,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Облегчить: %@, %@ fps</string>
 	<key>Manage</key>
 	<string>Управление</string>
+	<key>Marker</key>
+	<string>Маркер</string>
+	<key>Marker %lld</key>
+	<string>Маркер %lld</string>
+	<key>Marker name</key>
+	<string>Название маркера</string>
+	<key>Marker: %@</key>
+	<string>Маркер: %@</string>
 	<key>Match the recording</key>
 	<string>Как в записи</string>
 	<key>Max</key>
@@ -1736,6 +1818,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Туманность</string>
 	<key>Needed to capture the screen. macOS will ask once.</key>
 	<string>Нужно для съемки экрана. macOS спросит один раз.</string>
+	<key>Needs a cursor LF Studios draws — this one is part of the video</key>
+	<string>Нужен указатель, который рисует LF Studios, — этот является частью видео</string>
 	<key>Neo Pop</key>
 	<string>Неопоп</string>
 	<key>Network</key>
@@ -1994,6 +2078,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Телефон</string>
 	<key>Phone QR found</key>
 	<string>Найден QR-код с номером телефона</string>
+	<key>Phone overlay</key>
+	<string>Наложение телефона</string>
 	<key>Pick a preset as My Style (Presets ▸ Edit Presets ▸ Use as My Style), then one click puts it on any video.</key>
 	<string>Выберите стиль как «Мой стиль» (Стили ▸ Изменить стили ▸ Использовать как «Мой стиль»), и одно нажатие применит его к любому видео.</string>
 	<key>Picked up where you left off</key>
@@ -2072,6 +2158,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Нажато в %@. Нажмите ⌫, чтобы скрыть его в видео, — удобно для случайного ⌘Tab.</string>
 	<key>Preview</key>
 	<string>Пример</string>
+	<key>Preview how a phone app's buttons and captions sit over this video, with the covered parts shaded — never in the export</key>
+	<string>Показывает, как кнопки и подписи приложения на телефоне лягут поверх этого видео, а закрытые места затемняет — в экспорт не попадает</string>
 	<key>Preview muted — the export keeps its sound</key>
 	<string>Звук предпросмотра выключен — при экспорте звук сохранится</string>
 	<key>Preview sound on</key>
@@ -2216,6 +2304,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторить добавление изображения</string>
 	<key>Redo Add Intro Card</key>
 	<string>Повторить добавление начального титра</string>
+	<key>Redo Add Marker</key>
+	<string>Повторить добавление маркера</string>
 	<key>Redo Add Music</key>
 	<string>Повторить добавление музыки</string>
 	<key>Redo Add Outro Card</key>
@@ -2306,6 +2396,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторить удаление выделения</string>
 	<key>Redo Delete Image</key>
 	<string>Повторить удаление изображения</string>
+	<key>Redo Delete Marker</key>
+	<string>Повторить удаление маркера</string>
 	<key>Redo Delete Spotlight</key>
 	<string>Повторить удаление прожектора</string>
 	<key>Redo Delete Text</key>
@@ -2330,6 +2422,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторить изменение стиля изображения</string>
 	<key>Redo Intro and Outro</key>
 	<string>Повторить вступление и концовку</string>
+	<key>Redo Markers</key>
+	<string>Повторить изменение маркеров</string>
 	<key>Redo Move Arrow</key>
 	<string>Повторить перемещение стрелки</string>
 	<key>Redo Move Blur</key>
@@ -2378,6 +2472,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторить удаление записи</string>
 	<key>Redo Remove Ums</key>
 	<string>Повторить удаление слов-паразитов</string>
+	<key>Redo Rename Marker</key>
+	<string>Повторить переименование маркера</string>
 	<key>Redo Replace Camera Video</key>
 	<string>Повторить замену видео с камеры</string>
 	<key>Redo Replace Music</key>
@@ -2412,6 +2508,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторить ускорение простоев</string>
 	<key>Redo Split</key>
 	<string>Повторить разделение</string>
+	<key>Redo Split at Markers</key>
+	<string>Повторить разделение по маркерам</string>
 	<key>Redo Spotlight Style</key>
 	<string>Повторить изменение стиля прожектора</string>
 	<key>Redo Start Over</key>
@@ -2494,6 +2592,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Убирает дрожание, сохраняя отзывчивость.</string>
 	<key>Rename</key>
 	<string>Переименовать</string>
+	<key>Rename Marker…</key>
+	<string>Переименовать маркер…</string>
 	<key>Rename Preset</key>
 	<string>Переименовать стиль</string>
 	<key>Rename…</key>
@@ -2528,6 +2628,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Вернуть стиль LF Studios</string>
 	<key>Resize</key>
 	<string>Изменить размер</string>
+	<key>Resize the window so the recording is an exact size</key>
+	<string>Изменить размер окна, чтобы запись была точного размера</string>
+	<key>Resizing another app's window needs Accessibility access: allow LF Studios in System Settings → Privacy &amp; Security → Accessibility, then choose the size again.</key>
+	<string>Чтобы менять размер окон других приложений, нужен универсальный доступ: разрешите его для LF Studios в разделе Системные настройки → Конфиденциальность и безопасность → Универсальный доступ, затем снова выберите размер.</string>
 	<key>Resolution</key>
 	<string>Разрешение</string>
 	<key>Restart LF Studios to use %@?</key>
@@ -2544,6 +2648,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Восстановить все (%lld)</string>
 	<key>Restore Apple Shortcuts</key>
 	<string>Восстановить сочетания клавиш Apple</string>
+	<key>Restore size</key>
+	<string>Вернуть размер</string>
+	<key>Restore size — put the window back as it was</key>
+	<string>Вернуть размер — вернуть окно как было</string>
 	<key>Restored %@</key>
 	<string>Восстановлено %@</string>
 	<key>Resume Recording</key>
@@ -2552,6 +2660,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Продолжить запись</string>
 	<key>Resume recording (%@)</key>
 	<string>Продолжить запись (%@)</string>
+	<key>Return to start at the end</key>
+	<string>В конце вернуться к началу</string>
 	<key>Reveal</key>
 	<string>Показать</string>
 	<key>Reveal in Finder</key>
@@ -2768,6 +2878,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Тень</string>
 	<key>Shadow and transparent padding</key>
 	<string>Тень и прозрачный отступ</string>
+	<key>Shadow color</key>
+	<string>Цвет тени</string>
 	<key>Shape</key>
 	<string>Форма</string>
 	<key>Share</key>
@@ -2854,6 +2966,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Выбрать случайный фон</string>
 	<key>Side by side</key>
 	<string>Рядом</string>
+	<key>Side rail</key>
+	<string>Боковая панель</string>
 	<key>Silences over a second get shortened — except while you click, type, scroll, or move the pointer, so the demo itself is never cut</key>
 	<string>Паузы длиннее секунды сокращаются — кроме моментов, когда вы нажимаете, печатаете, прокручиваете или двигаете указатель, чтобы сама демонстрация не пострадала</string>
 	<key>Silences over a second get shortened — except while you move the pointer, click, or press a shortcut</key>
@@ -2890,6 +3004,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Ленты соцсетей</string>
 	<key>Soft streaks on fast moves</key>
 	<string>Мягкие шлейфы при быстрых движениях</string>
+	<key>Softness</key>
+	<string>Мягкость</string>
 	<key>Solid Color</key>
 	<string>Сплошной цвет</string>
 	<key>Solid color</key>
@@ -2918,12 +3034,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Скорость этого фрагмента</string>
 	<key>Split</key>
 	<string>Разделить</string>
+	<key>Split at Markers</key>
+	<string>Разделить по маркерам</string>
 	<key>Split at Playhead</key>
 	<string>Разделить по указателю воспроизведения</string>
 	<key>Split at playhead</key>
 	<string>Разделить здесь</string>
 	<key>Split at the playhead (S)</key>
 	<string>Разделить по указателю воспроизведения (S)</string>
+	<key>Split the clips at every marker</key>
+	<string>Разделить клипы по каждому маркеру</string>
 	<key>Split the video (S) to make cuts; each can dissolve or dip to black.</key>
 	<string>Разделите видео (S), чтобы сделать склейки; к каждой можно применить растворение или затемнение.</string>
 	<key>Spoken word</key>
@@ -2934,6 +3054,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Форма прожектора</string>
 	<key>Star on GitHub</key>
 	<string>Поставить звезду</string>
+	<key>Start</key>
+	<string>Начало</string>
 	<key>Start / end</key>
 	<string>Начало / конец</string>
 	<key>Start Over</key>
@@ -3082,6 +3204,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Экспорт неожиданно остановился (%@). Повторите попытку — если ошибка повторится, экспортируйте в более низком разрешении или в H.264.</string>
 	<key>The handoff is ready</key>
 	<string>Передача готова</string>
+	<key>The highest quality, and the only one that can keep transparency</key>
+	<string>Самое высокое качество — и единственный формат, который сохраняет прозрачность</string>
+	<key>The markers are already at clip edges</key>
+	<string>Маркеры уже стоят на границах клипов</string>
 	<key>The menu bar icon is LF Studios' main entry point. While it is hidden, open LF Studios again from Finder, Launchpad, or Spotlight to bring these Preferences back.</key>
 	<string>Значок в строке меню — основной способ открыть LF Studios. Пока он скрыт, чтобы вернуться к этим настройкам, снова откройте LF Studios из Finder, Launchpad или Spotlight.</string>
 	<key>The microphone couldn't start, so this recording has no mic.</key>
@@ -3090,6 +3216,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Микрофон перестал работать. Запись продолжается без него.</string>
 	<key>The picture's file is gone — choose it again with Replace.</key>
 	<string>Файл изображения пропал — выберите его снова с помощью «Заменить».</string>
+	<key>The pointer glides back to where it started, so the video loops without a jump</key>
+	<string>Указатель плавно возвращается туда, откуда начал, и видео зацикливается без скачка</string>
 	<key>The recording couldn't be finished — saved the first %@.</key>
 	<string>Не удалось завершить запись — сохранены первые %@.</string>
 	<key>The recording for “%@” is missing</key>
@@ -3104,6 +3232,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>В выбранном файле нет видеодорожки. Выберите видеофайл.</string>
 	<key>The selection stays on screen to adjust — drag its edges, nudge it with the arrow keys, then press Return. Hold ⇧ as you release to capture right away.</key>
 	<string>Выделение остается на экране для настройки: перетяните его края, сдвиньте его клавишами со стрелками, затем нажмите Return. Удерживайте ⇧ при отпускании, чтобы сделать снимок сразу.</string>
+	<key>The size of the recording, in pixels.</key>
+	<string>Размер записи в пикселях.</string>
 	<key>The song is shorter than the video</key>
 	<string>Песня короче видео</string>
 	<key>The song's file is gone — choose it again with Replace.</key>
@@ -3144,6 +3274,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>В этом Mac нет чипа ProRes, поэтому перекодирование займёт время — сколько, покажет индикатор.</string>
 	<key>This Week</key>
 	<string>На этой неделе</string>
+	<key>This app</key>
+	<string>Это приложение</string>
 	<key>This list</key>
 	<string>Этот список</string>
 	<key>This recording has newer edits than “%@”</key>
@@ -3230,6 +3362,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Переходы</string>
 	<key>Translate</key>
 	<string>Перевести</string>
+	<key>Transparent background</key>
+	<string>Прозрачный фон</string>
 	<key>Trim the clip's end to the playhead (O)</key>
 	<string>Подрезать конец клипа по указателю воспроизведения (O)</string>
 	<key>Trim the clip's start to the playhead (I)</key>
@@ -3296,6 +3430,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Отменить добавление изображения</string>
 	<key>Undo Add Intro Card</key>
 	<string>Отменить добавление начального титра</string>
+	<key>Undo Add Marker</key>
+	<string>Отменить добавление маркера</string>
 	<key>Undo Add Music</key>
 	<string>Отменить добавление музыки</string>
 	<key>Undo Add Outro Card</key>
@@ -3386,6 +3522,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Отменить удаление выделения</string>
 	<key>Undo Delete Image</key>
 	<string>Отменить удаление изображения</string>
+	<key>Undo Delete Marker</key>
+	<string>Отменить удаление маркера</string>
 	<key>Undo Delete Spotlight</key>
 	<string>Отменить удаление прожектора</string>
 	<key>Undo Delete Text</key>
@@ -3410,6 +3548,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Отменить изменение стиля изображения</string>
 	<key>Undo Intro and Outro</key>
 	<string>Отменить вступление и концовку</string>
+	<key>Undo Markers</key>
+	<string>Отменить изменение маркеров</string>
 	<key>Undo Move Arrow</key>
 	<string>Отменить перемещение стрелки</string>
 	<key>Undo Move Blur</key>
@@ -3458,6 +3598,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Отменить удаление записи</string>
 	<key>Undo Remove Ums</key>
 	<string>Отменить удаление слов-паразитов</string>
+	<key>Undo Rename Marker</key>
+	<string>Отменить переименование маркера</string>
 	<key>Undo Replace Camera Video</key>
 	<string>Отменить замену видео с камеры</string>
 	<key>Undo Replace Music</key>
@@ -3492,6 +3634,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Отменить ускорение простоев</string>
 	<key>Undo Split</key>
 	<string>Отменить разделение</string>
+	<key>Undo Split at Markers</key>
+	<string>Отменить разделение по маркерам</string>
 	<key>Undo Spotlight Style</key>
 	<string>Отменить изменение стиля прожектора</string>
 	<key>Undo Start Over</key>
@@ -3540,6 +3684,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Выбрать свое изображение</string>
 	<key>Use as My Style</key>
 	<string>Использовать как «Мой стиль»</string>
+	<key>Use the largest size that fits (%lld × %lld)</key>
+	<string>Взять самый большой размер, который помещается (%lld × %lld)</string>
 	<key>Use this color</key>
 	<string>Использовать этот цвет</string>
 	<key>Use this level for every zoom</key>
@@ -3608,6 +3754,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Найден QR-код с Wi-Fi</string>
 	<key>Wide</key>
 	<string>Прямоугольник</string>
+	<key>Width</key>
+	<string>Ширина</string>
 	<key>Window</key>
 	<string>Окно</string>
 	<key>Window Capture</key>
@@ -3618,6 +3766,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Окно снимается отдельно — то, что его перекрывает, не попадает в снимок. Если параметр включен, к снимку добавляются прозрачный отступ и мягкая тень.</string>
 	<key>Window closed</key>
 	<string>Окно закрыто</string>
+	<key>Window size</key>
+	<string>Размер окна</string>
 	<key>Words light up as they're spoken</key>
 	<string>Слова подсвечиваются по мере произнесения</string>
 	<key>Writable</key>
@@ -3632,6 +3782,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Это можно закрыть — передача продолжится.</string>
 	<key>You're all set — LF Studios lives here</key>
 	<string>Все готово — LF Studios находится здесь</string>
+	<key>YouTube needs every chapter to be at least 10 seconds long — move or remove markers that are closer together.</key>
+	<string>YouTube нужно, чтобы каждая глава длилась не меньше 10 секунд, — передвиньте или удалите слишком близкие маркеры.</string>
+	<key>YouTube shows chapters from 3 on — add a marker or two more.</key>
+	<string>YouTube показывает главы, когда их хотя бы 3, — добавьте ещё один-два маркера.</string>
 	<key>YouTube, presentations</key>
 	<string>YouTube, презентации</string>
 	<key>Your Mac can't keep up with this recording and is skipping frames. Balanced quality or 30 fps will help.</key>
@@ -3696,6 +3850,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Дублировать можно только увеличения и разметку</string>
 	<key>a table</key>
 	<string>таблица</string>
+	<key>a transparent background</key>
+	<string>прозрачный фон</string>
 	<key>add a zoom</key>
 	<string>добавить увеличение</string>
 	<key>aim or resize it</key>
@@ -3704,6 +3860,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>все сочетания клавиш</string>
 	<key>captions burned in</key>
 	<string>встроенные субтитры</string>
+	<key>chapters</key>
+	<string>главы</string>
 	<key>cut by editing words</key>
 	<string>монтаж правкой текста</string>
 	<key>dips under your voice</key>
@@ -3800,6 +3958,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>Не удается найти «%@». Верните файл на место или удалите его из этого видео (Стиль → Записи) и экспортируйте снова.</string>
 	<key>“%@” can't be read — it may be damaged, still being saved, or in a format this Mac can't play. Remove it from this video (Style → Recordings), or put a working copy in its place, then export again.</key>
 	<string>Не удается прочитать «%@» — возможно, файл поврежден, еще сохраняется или имеет формат, который этот Mac не может воспроизвести. Удалите его из этого видео (Стиль → Записи) или замените рабочей копией и экспортируйте снова.</string>
+	<key>“%@” doesn't let this window be resized.</key>
+	<string>«%@» не позволяет менять размер этого окна.</string>
 	<key>“%@” found in %lld of %lld captures</key>
 	<string>Снимков с «%@»: %lld из %lld</string>
 	<key>“%@” is your My Style — Apply my style (⇧⌘Y) puts it on a video</key>
@@ -3812,6 +3972,10 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>Шрифта «%@» нет на этом Mac — показан встроенный шрифт. Установите его или добавьте файл через «Добавить файл шрифта…».</string>
 	<key>“%@” isn't on this Mac — using the built-in font</key>
 	<string>Шрифта «%@» нет на этом Mac — используется встроенный шрифт</string>
+	<key>“%@” keeps this window at least %lld × %lld pixels, so it can't be made %lld × %lld.</key>
+	<string>«%@» не даёт сделать это окно меньше %lld × %lld пикселей, поэтому размер %lld × %lld недоступен.</string>
+	<key>“%@” keeps this window at most %lld × %lld pixels, so it can't be made %lld × %lld.</key>
+	<string>«%@» не даёт сделать это окно больше %lld × %lld пикселей, поэтому размер %lld × %lld недоступен.</string>
 	<key>“Made with LF Studios” end card (2s)</key>
 	<string>финальная заставка «Made with LF Studios» (2 с)</string>
 	<key>⇧-drag</key>

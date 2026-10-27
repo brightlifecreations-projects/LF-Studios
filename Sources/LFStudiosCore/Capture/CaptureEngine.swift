@@ -2726,7 +2726,7 @@ final class RecordingControlsWindow: NSWindow {
             menu.addItem(item)
         }
         menu.addItem(.separator())
-        let custom = NSMenuItem(title: L("Custom…"), action: #selector(customWindowSize), keyEquivalent: "")
+        let custom = NSMenuItem(title: L("Custom Size…"), action: #selector(customWindowSize), keyEquivalent: "")
         custom.target = self
         menu.addItem(custom)
         if let selectedWindow, RecordingWindowSizeMemory.previous(for: selectedWindow.windowID) != nil {
