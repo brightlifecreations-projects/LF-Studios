@@ -201,6 +201,8 @@ struct VideoHandoffItem: Equatable, Identifiable {
         case audio([VideoHandoffPiece], duration: Double, channels: Int, aac: Bool)
         case text(String)
         case finalVideo
+        /// The edit's whole sound as the finished video has it.
+        case fullMix(duration: Double)
     }
 
     /// How README.txt describes the file.
@@ -391,6 +393,21 @@ enum VideoHandoffPlanner {
                 treatment: .audio("WAV, 48 kHz, 24-bit (decoded, no quality lost)"), // l10n-ignore: technical
                 duration: length, frameRate: nil, startOffset: options.lineUp ? 0 : first,
                 estimatedBytes: Int64(length * 48_000 * 3 * Double(channels))
+            ))
+        }
+        // Everything you hear, mixed as the edit plays it.
+        let hasSound = input.recordings.contains { $0.url != nil && !$0.audioKinds.isEmpty } || input.project.music != nil
+        if hasSound {
+            let length = input.timelineDuration
+            items.append(VideoHandoffItem(
+                folder: .audio, fileName: "Full Mix.wav",
+                description: trimmed || !options.lineUp
+                    ? "Everything you hear, mixed exactly as the edit plays it: voice, the Mac's sound, and the music dipping under the voice"
+                    : "Everything you hear, mixed exactly as the edit plays it: voice, the Mac's sound, and the music dipping under the voice (on the edit's clock, like the finished video)",
+                work: .fullMix(duration: length),
+                treatment: .audio("WAV, 48 kHz, 24-bit, the finished video's own mix and loudness"), // l10n-ignore: technical
+                duration: length, frameRate: nil, startOffset: 0,
+                estimatedBytes: Int64(length * 48_000 * 3 * 2)
             ))
         }
         if let music = input.project.music {

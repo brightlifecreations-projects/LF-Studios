@@ -4,7 +4,7 @@ import Sparkle
 @MainActor
 final class AppUpdateController: NSObject, SPUUpdaterDelegate {
     /// Where "Check for Updates" goes while Sparkle isn't set up.
-    static let releasesURL = URL(string: "https://github.com/brightlifecreations-projects/ShotStyle/releases")!
+    static let releasesURL = URL(string: "https://github.com/brightlifecreations-projects/LF-Studios/releases")!
     private var updaterController: SPUStandardUpdaterController?
 
     override init() {

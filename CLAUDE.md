@@ -10,7 +10,7 @@ projects and `.shotstylepresets` files still open. Keep those, the
 name prefix: existing users' files depend on them.
 
 ## Git
-- Repo: https://github.com/brightlifecreations-projects/ShotStyle (private).
+- Repo: https://github.com/brightlifecreations-projects/LF-Studios (private).
 - We work on `main`, the default branch (it used to be called `shotstyle`).
   Commit small changes straight to `main`; bigger ones go on a branch with a
   PR into `main`. Pull `main` before starting.
@@ -66,7 +66,7 @@ push or tag triggers back.
   Translations: Localization/ and Sources/LFStudiosCore/Resources/*.lproj
   (see scripts/localize.py). Update all 7 languages when adding text.
 - Never use `Bundle.module`; use `LFStudiosResources`.
-- LF Studios' home is https://github.com/brightlifecreations-projects/ShotStyle (About, issues,
+- LF Studios' home is https://github.com/brightlifecreations-projects/LF-Studios (About, issues,
   crash reports, update feed). Don't link shotnix.com. The only upstream
   references kept are the MIT attribution: "Based on Shotnix (MIT License)"
   linking to https://github.com/OMARVII/Shotnix, the "© Shotnix Contributors"

@@ -1438,11 +1438,11 @@ struct AboutSettingsView: View {
 
                 HStack(spacing: 8) {
                     AboutLinkButton(title: "GitHub") { // l10n-ignore: a name
-                        openURL("https://github.com/brightlifecreations-projects/ShotStyle")
+                        openURL("https://github.com/brightlifecreations-projects/LF-Studios")
                     }
 
                     AboutLinkButton(title: L("Report Issue")) {
-                        openURL("https://github.com/brightlifecreations-projects/ShotStyle/issues/new")
+                        openURL("https://github.com/brightlifecreations-projects/LF-Studios/issues/new")
                     }
                 }
                 .frame(maxWidth: 378)

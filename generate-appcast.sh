@@ -13,8 +13,8 @@ DMG_PATH="${1:-${LFSTUDIOS_DMG_PATH:-}}"
 DOWNLOAD_DIR="${LFSTUDIOS_RELEASE_DIR:-$SCRIPT_DIR/release}"
 APPCAST_BIN="${LFSTUDIOS_GENERATE_APPCAST_BIN:-$SCRIPT_DIR/.build/artifacts/sparkle/Sparkle/bin/generate_appcast}"
 SPARKLE_ACCOUNT="${LFSTUDIOS_SPARKLE_ACCOUNT:-ed25519}"
-DOWNLOAD_URL_PREFIX="${LFSTUDIOS_DOWNLOAD_URL_PREFIX:-https://github.com/brightlifecreations-projects/ShotStyle/releases/latest/download/}"
-RELEASE_NOTES_URL_PREFIX="${LFSTUDIOS_RELEASE_NOTES_URL_PREFIX:-https://github.com/brightlifecreations-projects/ShotStyle/releases/latest/download/}"
+DOWNLOAD_URL_PREFIX="${LFSTUDIOS_DOWNLOAD_URL_PREFIX:-https://github.com/brightlifecreations-projects/LF-Studios/releases/latest/download/}"
+RELEASE_NOTES_URL_PREFIX="${LFSTUDIOS_RELEASE_NOTES_URL_PREFIX:-https://github.com/brightlifecreations-projects/LF-Studios/releases/latest/download/}"
 
 usage() {
     cat <<'EOF'
@@ -23,7 +23,7 @@ Usage: bash generate-appcast.sh /path/to/LF Studios-v<version>-macOS.dmg
 Copies the notarized DMG into ./release, creates a matching Markdown
 release-notes file when needed, and runs Sparkle generate_appcast. Upload the
 DMG, the .md notes and appcast.xml to the latest GitHub release: the app's
-feed is https://github.com/brightlifecreations-projects/ShotStyle/releases/latest/download/appcast.xml
+feed is https://github.com/brightlifecreations-projects/LF-Studios/releases/latest/download/appcast.xml
 
 Optional environment:
   LFSTUDIOS_RELEASE_NOTES_FILE="/absolute/path/to/release-notes.md"
@@ -85,7 +85,7 @@ echo "▶ Generating Sparkle appcast…"
     --maximum-versions 0 \
     --download-url-prefix "$DOWNLOAD_URL_PREFIX" \
     --release-notes-url-prefix "$RELEASE_NOTES_URL_PREFIX" \
-    --link "https://github.com/brightlifecreations-projects/ShotStyle" \
+    --link "https://github.com/brightlifecreations-projects/LF-Studios" \
     "$STAGING_DIR"
 
 if [ ! -f "$STAGING_DIR/appcast.xml" ]; then

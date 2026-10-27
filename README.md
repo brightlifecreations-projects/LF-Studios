@@ -7,7 +7,7 @@
 **Screenshots, screen recordings and video editing for your Mac.**<br/>
 A native macOS menu-bar app. No account, no cloud: your captures stay on your Mac.
 
-[Download](https://github.com/brightlifecreations-projects/ShotStyle/releases/latest) · [What’s new](CHANGELOG.md) · [Report an issue](https://github.com/brightlifecreations-projects/ShotStyle/issues/new)
+[Download](https://github.com/brightlifecreations-projects/LF-Studios/releases/latest) · [What’s new](CHANGELOG.md) · [Report an issue](https://github.com/brightlifecreations-projects/LF-Studios/issues/new)
 
 <sub>Based on [Shotnix](https://github.com/OMARVII/Shotnix) (MIT License).</sub>
 
@@ -40,7 +40,7 @@ LF Studios is available in English, Deutsch, Français, 简体中文, Русск
 
 ### Download the app
 
-Get **LF-Studios.zip** from the [Releases page](https://github.com/brightlifecreations-projects/ShotStyle/releases/latest). It runs on Apple Silicon and Intel Macs with macOS 13 or later.
+Get **LF-Studios.zip** from the [Releases page](https://github.com/brightlifecreations-projects/LF-Studios/releases/latest). It runs on Apple Silicon and Intel Macs with macOS 13 or later.
 
 1. Unzip `LF-Studios.zip`.
 2. Drag **LF Studios** to your Applications folder.
@@ -59,7 +59,7 @@ Get **LF-Studios.zip** from the [Releases page](https://github.com/brightlifecre
 Requirements: macOS 13 or later, and either full **Xcode** (recommended, from the App Store) or the Xcode Command Line Tools with the **macOS 26 SDK**. Running the tests (`swift test`) needs full Xcode.
 
 ```bash
-git clone https://github.com/brightlifecreations-projects/ShotStyle.git
+git clone https://github.com/brightlifecreations-projects/LF-Studios.git
 cd LF Studios
 bash scripts/setup-signing.sh   # once per Mac
 bash build-app.sh               # add --universal for Apple Silicon + Intel

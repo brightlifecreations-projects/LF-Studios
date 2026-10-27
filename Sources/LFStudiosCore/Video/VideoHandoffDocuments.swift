@@ -66,7 +66,7 @@ enum VideoHandoffReadme {
             lines.append("TIMELINE")
             lines.append("  Timeline.fcpxml opens in Final Cut Pro (File ▸ Import ▸ XML) and DaVinci Resolve (File ▸ Import ▸ Timeline).")
             lines.append("  Timeline (Premiere).xml opens in Adobe Premiere Pro (File ▸ Import).")
-            lines.append("  They carry: every clip in its place, cuts and trims, clip order, speed changes, the camera at its offset, and the microphone, Mac sound, and music on their own tracks.")
+            lines.append("  They carry: every clip in its place, cuts and trims, clip order, speed changes, the camera at its offset, and the microphone, Mac sound, and music on their own tracks. 03 Audio/Full Mix.wav isn't on them: it's those tracks already mixed, so it would play everything twice. Use it on its own, or as a reference for the mix.")
             lines.append("  They can't carry LF Studios' effects: zooms and pans that follow the pointer, the drawn pointer and click effects, keys on screen, the background, padding, corners and shadow, the camera's shape, crop, border and background removal, annotations, title cards, transitions, and caption styling. Those are in the finished video (06 Final). Captions come as .srt files (05 Captions): import them in the editing app.")
             lines.append("  The timeline files point at this folder where it is now: if you move it, relink the media in the editing app.")
         }
@@ -197,7 +197,8 @@ enum VideoHandoffTimeline {
             }
         }
         // Sound files are on the recordings' axis: cut them like the screen.
-        for (index, item) in media.filter({ $0.folder == .audio && $0.fileName != "Music.m4a" && !$0.fileName.hasPrefix("Music.") }).enumerated() {
+        // The full mix stays out of the timelines: the separate tracks are there.
+        for (index, item) in media.filter({ $0.folder == .audio && !$0.fileName.hasPrefix("Music.") && $0.fileName != "Full Mix.wav" }).enumerated() {
             for segment in segments where !segment.clip.muted {
                 let clip = segment.clip
                 let start = lineUp ? clip.sourceStart : clip.sourceStart - (item.startOffset ?? 0)

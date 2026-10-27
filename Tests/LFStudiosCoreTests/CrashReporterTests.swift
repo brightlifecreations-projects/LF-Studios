@@ -118,7 +118,7 @@ final class CrashReporterTests: XCTestCase {
         let summary = CrashReportSummary(reason: .crash(crash))
         let issue = try XCTUnwrap(summary.issueURL(base: CrashReporter.issuesURL))
         XCTAssertLessThan(issue.absoluteString.count, 8_000, "GitHub refuses very long links")
-        XCTAssertTrue(issue.absoluteString.hasPrefix("https://github.com/brightlifecreations-projects/ShotStyle/issues/new?title="))
+        XCTAssertTrue(issue.absoluteString.hasPrefix("https://github.com/brightlifecreations-projects/LF-Studios/issues/new?title="))
         XCTAssertTrue(summary.fullText.contains("----- macOS crash report -----"))
     }
 

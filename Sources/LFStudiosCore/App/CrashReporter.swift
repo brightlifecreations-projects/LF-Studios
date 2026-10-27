@@ -7,7 +7,7 @@ import Darwin
 /// themselves, and normal quits, updates and restarts never ask.
 @MainActor
 enum CrashReporter {
-    static let issuesURL = URL(string: "https://github.com/brightlifecreations-projects/ShotStyle/issues/new")!
+    static let issuesURL = URL(string: "https://github.com/brightlifecreations-projects/LF-Studios/issues/new")!
 
     private static let sessionKey = "crashReporterSession"
     private static let handledKey = "crashReporterHandledIncidents"

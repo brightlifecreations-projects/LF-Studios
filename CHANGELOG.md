@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.1] - Unreleased
+
+### Added
+- **Full Mix in Creative Handoff.** 03 Audio now also has "Full Mix.wav": your voice, the Mac's sound, and the music mixed exactly as the edit plays them, the music dipping under your voice included — the finished video's own mix and loudness, as an uncompressed WAV. README.txt describes it; it stays off the timeline files, which already carry each track on its own.
+
+### Changed
+- **LF Studios has its own address.** The project moved to [brightlifecreations-projects/LF-Studios](https://github.com/brightlifecreations-projects/LF-Studios): About, Report Issue, crash reports, and Check for Updates point there. Links to the old address still lead to it.
+
 ## [1.1.0] - 2026-10-26
 
 ### Added

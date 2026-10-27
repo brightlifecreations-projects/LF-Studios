@@ -47,6 +47,10 @@ struct VideoHandoffTests {
         #expect(paths.contains("01 Screen/Clip 01.mov") && paths.contains("01 Screen/Clip 02.mov"))
         #expect(paths.contains("02 Camera/Camera.mov"))
         #expect(paths.contains("03 Audio/Microphone.wav") && paths.contains("03 Audio/System Audio.wav"))
+        #expect(paths.contains("03 Audio/Full Mix.wav"))
+        let mix = plan.items.first { $0.fileName == "Full Mix.wav" }
+        #expect(mix?.work == .fullMix(duration: 8) && mix?.duration == 8, "the edit's length")
+        #expect(mix?.description.contains("music dipping under the voice") == true)
         #expect(paths.contains("05 Captions/Captions.srt"))
         #expect(paths.contains { $0.hasPrefix("06 Final/") })
         #expect(paths.contains("Timeline.fcpxml") && paths.contains("Timeline (Premiere).xml") && paths.contains("README.txt"))
@@ -170,6 +174,9 @@ struct VideoHandoffTests {
         #expect(readme.contains("length 0:08.00 · 30 fps · starts at 0:00.00 · re-encoded to ProRes 422 HQ"))
         #expect(readme.contains("Re-encoded to ProRes: 01 Screen/Clip 01.mov, 01 Screen/Clip 02.mov, 02 Camera/Camera.mov"))
         #expect(readme.contains("They can't carry LF Studios' effects: zooms"))
+        #expect(readme.contains("03 Audio/Full Mix.wav\n  Everything you hear, mixed exactly as the edit plays it"))
+        #expect(readme.contains("the finished video's own mix and loudness"))
+        #expect(readme.contains("Full Mix.wav isn't on them"))
     }
 
     // MARK: Timelines
@@ -192,6 +199,7 @@ struct VideoHandoffTests {
             let fcpxml = VideoHandoffTimeline.fcpxml(plan: plan, input: input, folder: folder, durations: [:])
             let document = try XMLDocument(xmlString: fcpxml)
             #expect(document.rootElement()?.attribute(forName: "version")?.stringValue == "1.10")
+            #expect(!fcpxml.contains("Full Mix.wav"), "the full mix stays out of the timeline (it would double the sound)")
             let clipCount = try document.nodes(forXPath: "//asset-clip").count
             #expect(clipCount >= 4, "\(clips): \(clipCount) clips")
             #expect(fcpxml.contains("file:///tmp/Demo%20%E2%80%93%20Handoff/"), "files point into the handoff folder")

@@ -13,7 +13,7 @@ Thanks for your interest in contributing! Here's how to get started.
 ## Development Setup
 
 ```bash
-git clone https://github.com/brightlifecreations-projects/ShotStyle.git
+git clone https://github.com/brightlifecreations-projects/LF-Studios.git
 cd LF Studios
 bash scripts/setup-signing.sh   # once per Mac: a local signing certificate
 swift build                     # Debug build

@@ -15,7 +15,7 @@ PLIST="$ROOT/Info.plist"
 CHANGELOG="$ROOT/CHANGELOG.md"
 APP="$ROOT/.build/app.noindex/LF Studios.app"
 DIST="$ROOT/.build/release-dist"
-REPO_URL="https://github.com/brightlifecreations-projects/ShotStyle"
+REPO_URL="https://github.com/brightlifecreations-projects/LF-Studios"
 
 fail() { echo "✗ $*" >&2; exit 1; }
 
@@ -31,7 +31,7 @@ if [ -z "$GH" ]; then
   then log in:
     gh auth login
   and choose GitHub.com → HTTPS → "Login with a web browser". The account
-  needs write access to brightlifecreations-projects/ShotStyle.
+  needs write access to brightlifecreations-projects/LF-Studios.
 EOF
     exit 1
 fi
@@ -40,7 +40,7 @@ if ! "$GH" auth status >/dev/null 2>&1; then
 ✗ The GitHub CLI isn't logged in. Run:
     gh auth login
   and choose GitHub.com → HTTPS → "Login with a web browser". The account
-  needs write access to brightlifecreations-projects/ShotStyle.
+  needs write access to brightlifecreations-projects/LF-Studios.
 EOF
     exit 1
 fi

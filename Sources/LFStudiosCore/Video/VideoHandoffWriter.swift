@@ -188,6 +188,12 @@ final class VideoHandoffWriter: @unchecked Sendable {
             }
         case .audio(let pieces, let duration, let channels, let aac):
             try await Self.audio(pieces, duration: duration, channels: channels, aac: aac, to: url, report: report, isCancelled: isCancelled)
+        case .fullMix(let duration):
+            let cancelled = isCancelled
+            try await VideoDemoExporter.writeFullMix(
+                project: input.project, recording: input.recording, settings: input.exportSettings, duration: duration, to: url,
+                progress: { report($0) }, isCancelled: { cancelled() }
+            )
         case .finalVideo:
             let cancelled = isCancelled
             try await VideoDemoExporter.export(

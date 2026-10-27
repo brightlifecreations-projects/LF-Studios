@@ -81,6 +81,61 @@ enum TestSounds {
         return Array(UnsafeBufferPointer(start: channel, count: Int(buffer.frameLength)))
     }
 
+    /// A steady tone (mono) over `from`–`to`, silence elsewhere.
+    static func tone(_ frequency: Double, from: Double, to: Double, seconds: Double, gain: Float = 0.5, rate: Double = sampleRate) -> [Float] {
+        var samples = [Float](repeating: 0, count: Int(seconds * rate))
+        for i in Int(from * rate)..<min(Int(to * rate), samples.count) {
+            samples[i] = gain * Float(sin(2 * Double.pi * frequency * Double(i) / rate))
+        }
+        return samples
+    }
+
+    /// A movie's (or sound file's) first sound track, mixed to mono at `rate`.
+    static func readTrack(_ url: URL, rate: Double = 48_000) async throws -> [Float] {
+        let asset = AVURLAsset(url: url)
+        let track = try #require(try await asset.loadTracks(withMediaType: .audio).first)
+        let reader = try AVAssetReader(asset: asset)
+        let output = AVAssetReaderTrackOutput(track: track, outputSettings: [
+            AVFormatIDKey: kAudioFormatLinearPCM, AVSampleRateKey: rate, AVNumberOfChannelsKey: 1,
+            AVLinearPCMBitDepthKey: 32, AVLinearPCMIsFloatKey: true, AVLinearPCMIsNonInterleaved: false, AVLinearPCMIsBigEndianKey: false,
+        ])
+        reader.add(output)
+        #expect(reader.startReading())
+        var samples: [Float] = []
+        while let buffer = output.copyNextSampleBuffer() {
+            guard let block = CMSampleBufferGetDataBuffer(buffer) else { continue }
+            let length = CMBlockBufferGetDataLength(block)
+            var chunk = [Float](repeating: 0, count: length / 4)
+            chunk.withUnsafeMutableBytes { _ = CMBlockBufferCopyDataBytes(block, atOffset: 0, dataLength: length, destination: $0.baseAddress!) }
+            samples += chunk
+        }
+        return samples
+    }
+
+    /// How strong one frequency is over `from`–`to` (Goertzel, 0…≈amplitude).
+    static func level(of frequency: Double, in samples: [Float], from: Double, to: Double, rate: Double = 48_000) -> Double {
+        let a = max(Int(from * rate), 0), b = min(Int(to * rate), samples.count)
+        guard b > a else { return 0 }
+        let coefficient = 2 * cos(2 * Double.pi * frequency / rate)
+        var s1 = 0.0, s2 = 0.0
+        for i in a..<b {
+            let s0 = Double(samples[i]) + coefficient * s1 - s2
+            s2 = s1; s1 = s0
+        }
+        let power = s1 * s1 + s2 * s2 - coefficient * s1 * s2
+        return 2 * sqrt(max(power, 0)) / Double(b - a)
+    }
+
+    /// Loudness every `window` seconds (RMS).
+    static func envelope(_ samples: [Float], window: Double = 0.05, rate: Double = 48_000) -> [Double] {
+        let size = Int(window * rate)
+        return stride(from: 0, to: samples.count - size, by: size).map { start in
+            var sum = 0.0
+            for i in start..<(start + size) { sum += Double(samples[i] * samples[i]) }
+            return sqrt(sum / Double(size))
+        }
+    }
+
     /// Where loud stretches start (seconds), at least `gap` apart.
     static func onsets(_ samples: [Float], rate: Double = 48_000, threshold: Float = 0.1, gap: Double = 0.2) -> [Double] {
         var onsets: [Double] = []

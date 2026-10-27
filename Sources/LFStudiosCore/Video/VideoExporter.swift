@@ -29,19 +29,23 @@ enum VideoDemoExporter {
         case rendering(Double)
     }
 
-    /// Returns non-fatal warnings.
-    @discardableResult
-    static func export(
+    /// The edit as the export plays it: the recordings, cut and sped up,
+    /// with the camera, music (dipping under the voice), and click sounds,
+    /// and every volume, fade, and mute. The export renders it; Creative
+    /// Handoff's Full Mix reads its sound.
+    struct PreparedEdit {
+        let project: VideoDemoProject
+        let total: Double
+        let edit: VideoEditComposition
+        let appendedMetadata: [UUID: VideoDemoRecordingMetadata]
+    }
+
+    static func prepareEdit(
         project inputProject: VideoDemoProject,
-        recording: VideoDemoRecordingMetadata? = nil,
-        destinationURL: URL,
-        settings: VideoExportSettings = VideoExportSettings(),
-        range: VideoExportRange = .whole,
-        progress: @escaping @Sendable (Double) async -> Void = { _ in },
-        phase: @escaping @Sendable (Phase) async -> Void = { _ in },
-        shouldCancel: @escaping @Sendable () async -> Bool = { false }
-    ) async throws -> [String] {
-        await phase(.preparing)
+        recording: VideoDemoRecordingMetadata?,
+        settings: VideoExportSettings,
+        range: VideoExportRange = .whole
+    ) async throws -> PreparedEdit {
         let source = try await VideoSourceTracks.load(url: inputProject.sourceURL)
         var project = inputProject
         project.sourceWidth = Double(source.size.width)
@@ -127,6 +131,27 @@ enum VideoDemoExporter {
             includeAudio: !project.audio.isSilent(kinds: allKinds),
             extras: extras
         )
+        return PreparedEdit(project: project, total: total, edit: edit, appendedMetadata: appendedMetadata)
+    }
+
+    /// Returns non-fatal warnings.
+    @discardableResult
+    static func export(
+        project inputProject: VideoDemoProject,
+        recording: VideoDemoRecordingMetadata? = nil,
+        destinationURL: URL,
+        settings: VideoExportSettings = VideoExportSettings(),
+        range: VideoExportRange = .whole,
+        progress: @escaping @Sendable (Double) async -> Void = { _ in },
+        phase: @escaping @Sendable (Phase) async -> Void = { _ in },
+        shouldCancel: @escaping @Sendable () async -> Bool = { false }
+    ) async throws -> [String] {
+        await phase(.preparing)
+        let prepared = try await prepareEdit(project: inputProject, recording: recording, settings: settings, range: range)
+        let project = prepared.project
+        let total = prepared.total
+        let edit = prepared.edit
+        let appendedMetadata = prepared.appendedMetadata
         let plan = makePlan(project: project, sourceDuration: total, recording: recording, hasWebcam: edit.cameraTrack != nil, appendedMetadata: appendedMetadata)
         let canvas = plan.outputCanvasSize
         let outputSize = settings.outputSize(canvas: canvas)
@@ -409,6 +434,83 @@ enum VideoDemoExporter {
 
     /// Reads the edit's final mix once to find the gain that lands it at
     /// −16 LUFS without letting peaks pass −1 dBFS.
+    /// The edit's whole sound — voice, the Mac's sound, music dipping under
+    /// the voice, click sounds — mixed exactly as the export mixes it (the
+    /// same loudness gain too), as a 48 kHz 24-bit stereo WAV of `duration`.
+    static func writeFullMix(
+        project: VideoDemoProject,
+        recording: VideoDemoRecordingMetadata?,
+        settings inputSettings: VideoExportSettings,
+        duration: Double,
+        to url: URL,
+        progress: @escaping (Double) -> Void = { _ in },
+        isCancelled: @escaping () -> Bool = { false }
+    ) async throws {
+        // No end card: the mix runs the edit's own length.
+        var settings = inputSettings
+        settings.endCard = false
+        let prepared = try await prepareEdit(project: project, recording: recording, settings: settings)
+        let edit = prepared.edit
+        let cancel = CancellationFlag()
+        var gain = 1.0
+        if !edit.mixedAudioTracks.isEmpty, prepared.project.audio.normalizeLoudness {
+            gain = try await measureLoudnessGain(edit: edit, cancel: cancel) { progress($0 * 0.3) }
+        }
+        let rate = 48_000.0
+        try? FileManager.default.removeItem(at: url)
+        let file = try AVAudioFile(forWriting: url, settings: [
+            AVFormatIDKey: kAudioFormatLinearPCM, AVSampleRateKey: rate, AVNumberOfChannelsKey: 2,
+            AVLinearPCMBitDepthKey: 24, AVLinearPCMIsFloatKey: false, AVLinearPCMIsBigEndianKey: false,
+        ], commonFormat: .pcmFormatFloat32, interleaved: true)
+        let format = file.processingFormat
+        let totalFrames = AVAudioFramePosition((duration * rate).rounded())
+        var position: AVAudioFramePosition = 0
+        if !edit.mixedAudioTracks.isEmpty {
+            let reader = try AVAssetReader(asset: edit.composition)
+            let output = AVAssetReaderAudioMixOutput(audioTracks: edit.mixedAudioTracks, audioSettings: [
+                AVFormatIDKey: kAudioFormatLinearPCM, AVSampleRateKey: rate, AVNumberOfChannelsKey: 2,
+                AVLinearPCMBitDepthKey: 32, AVLinearPCMIsFloatKey: true, AVLinearPCMIsBigEndianKey: false, AVLinearPCMIsNonInterleaved: false,
+            ])
+            output.audioMix = edit.audioMix
+            output.audioTimePitchAlgorithm = .spectral
+            output.alwaysCopiesSampleData = false
+            guard reader.canAdd(output) else { throw VideoDemoExportError.exportFailed(L("Couldn't read the sound")) }
+            reader.add(output)
+            guard reader.startReading() else { throw reader.error ?? VideoDemoExportError.exportFailed(L("Couldn't read the sound")) }
+            try output.forEachSampleBuffer { sample in
+                if isCancelled() {
+                    reader.cancelReading()
+                    throw CancellationError()
+                }
+                guard position < totalFrames, let block = CMSampleBufferGetDataBuffer(sample) else { return position < totalFrames }
+                var length = 0
+                var pointer: UnsafeMutablePointer<Int8>?
+                guard CMBlockBufferGetDataPointer(block, atOffset: 0, lengthAtOffsetOut: nil, totalLengthOut: &length, dataPointerOut: &pointer) == noErr, let pointer else { return true }
+                let frames = min(AVAudioFrameCount(length / MemoryLayout<Float>.size / 2), AVAudioFrameCount(totalFrames - position))
+                guard frames > 0, let buffer = AVAudioPCMBuffer(pcmFormat: format, frameCapacity: frames) else { return true }
+                buffer.frameLength = frames
+                let samples = Int(frames) * 2
+                pointer.withMemoryRebound(to: Float.self, capacity: samples) { source in
+                    let target = buffer.floatChannelData![0]
+                    for index in 0..<samples {
+                        // The export's loudness gain, then kept inside full scale.
+                        target[index] = min(max(source[index] * Float(gain), -1), 1)
+                    }
+                }
+                try file.write(from: buffer)
+                position += AVAudioFramePosition(frames)
+                progress(0.3 + 0.7 * Double(position) / Double(max(totalFrames, 1)))
+                return true
+            }
+        }
+        // Silence to the clock's end (a mix a little shorter, or none at all).
+        if position < totalFrames, let silence = AVAudioPCMBuffer(pcmFormat: format, frameCapacity: AVAudioFrameCount(totalFrames - position)) {
+            silence.frameLength = AVAudioFrameCount(totalFrames - position)
+            try file.write(from: silence)
+        }
+        progress(1)
+    }
+
     private static func measureLoudnessGain(edit: VideoEditComposition, cancel: CancellationFlag, progress: @escaping (Double) -> Void = { _ in }) async throws -> Double {
         guard !edit.mixedAudioTracks.isEmpty else { return 1 }
         let reader = try AVAssetReader(asset: edit.composition)
@@ -899,7 +1001,7 @@ enum VideoEndCard {
         ])
         let titleSize = title.size()
         title.draw(at: CGPoint(x: size.width / 2 - titleSize.width / 2, y: size.height / 2 - 70 * unit - rise))
-        let link = NSAttributedString(string: "github.com/brightlifecreations-projects/ShotStyle", attributes: [ // l10n-ignore
+        let link = NSAttributedString(string: "github.com/brightlifecreations-projects/LF-Studios", attributes: [ // l10n-ignore
             .font: NSFont.systemFont(ofSize: 26 * unit, weight: .semibold),
             .foregroundColor: NSColor.white.withAlphaComponent(0.72),
         ])
