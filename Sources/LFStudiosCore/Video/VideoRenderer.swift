@@ -600,6 +600,8 @@ final class VideoFrameRenderer {
         /// Keep where the caption and the keys were drawn in `textLayout`
         /// (the preview's drag handles).
         var recordsTextLayout = false
+        /// No background: transparency around the frame (ProRes 4444).
+        var transparentBackground = false
     }
 
     /// Where the last frame drawn with `recordsTextLayout` put the caption
@@ -717,7 +719,9 @@ final class VideoFrameRenderer {
 
         // 1. Background (cached at rest resolution, moved by the camera).
         var scene: CIImage
-        if plan.fullBleed {
+        if options.transparentBackground {
+            scene = CIImage(color: CIColor.clear).cropped(to: outputRect)
+        } else if plan.fullBleed {
             scene = CIImage(color: CIColor.black).cropped(to: outputRect)
         } else {
             let background = backgroundImage(plan: plan, k: k)

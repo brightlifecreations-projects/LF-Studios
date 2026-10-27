@@ -112,7 +112,7 @@ enum VideoDemoExporter {
             extras.music = VideoMusicInput(file: file, settings: music, voice: voice, timelineOffset: musicOffset)
             // The song carries on under the end card and fades out at the
             // very end of the file.
-            if settings.format == .mp4, settings.endCard { extras.musicTail = endCardDuration }
+            if settings.format.isMovie, settings.endCard { extras.musicTail = endCardDuration }
         }
         if project.clickSounds.enabled {
             let times = VideoClickSound.times(project: project, segments: segments)
@@ -345,8 +345,9 @@ enum VideoDemoExporter {
         }
         await phase(.rendering(0))
 
-        let writer = try AVAssetWriter(outputURL: url, fileType: .mp4)
-        writer.shouldOptimizeForNetworkUse = true
+        let proRes = settings.format.proResCodec
+        let writer = try AVAssetWriter(outputURL: url, fileType: proRes == nil ? .mp4 : .mov)
+        writer.shouldOptimizeForNetworkUse = proRes == nil
         var compression: [String: Any] = [
             AVVideoAverageBitRateKey: settings.videoBitrate(for: outputSize),
             AVVideoExpectedSourceFrameRateKey: settings.fps,
@@ -357,16 +358,23 @@ enum VideoDemoExporter {
             compression[AVVideoProfileLevelKey] = AVVideoProfileLevelH264HighAutoLevel
             compression[AVVideoH264EntropyModeKey] = AVVideoH264EntropyModeCABAC
         }
-        let videoInput = AVAssetWriterInput(mediaType: .video, outputSettings: [
+        let colors: [String: Any] = [
+            AVVideoColorPrimariesKey: AVVideoColorPrimaries_ITU_R_709_2,
+            AVVideoTransferFunctionKey: AVVideoTransferFunction_ITU_R_709_2,
+            AVVideoYCbCrMatrixKey: AVVideoYCbCrMatrix_ITU_R_709_2,
+        ]
+        // ProRes has no bit rate to choose: its rate follows the size.
+        let videoInput = AVAssetWriterInput(mediaType: .video, outputSettings: proRes.map { codec in [
+            AVVideoCodecKey: codec,
+            AVVideoWidthKey: Int(outputSize.width),
+            AVVideoHeightKey: Int(outputSize.height),
+            AVVideoColorPropertiesKey: colors,
+        ] } ?? [
             AVVideoCodecKey: settings.codec == .hevc ? AVVideoCodecType.hevc : AVVideoCodecType.h264,
             AVVideoWidthKey: Int(outputSize.width),
             AVVideoHeightKey: Int(outputSize.height),
             AVVideoCompressionPropertiesKey: compression,
-            AVVideoColorPropertiesKey: [
-                AVVideoColorPrimariesKey: AVVideoColorPrimaries_ITU_R_709_2,
-                AVVideoTransferFunctionKey: AVVideoTransferFunction_ITU_R_709_2,
-                AVVideoYCbCrMatrixKey: AVVideoYCbCrMatrix_ITU_R_709_2,
-            ],
+            AVVideoColorPropertiesKey: colors,
         ])
         videoInput.expectsMediaDataInRealTime = false
         let adaptor = AVAssetWriterInputPixelBufferAdaptor(assetWriterInput: videoInput, sourcePixelBufferAttributes: [
@@ -381,11 +389,20 @@ enum VideoDemoExporter {
 
         var audioInput: AVAssetWriterInput?
         if audioOutput != nil {
-            let input = AVAssetWriterInput(mediaType: .audio, outputSettings: [
+            // ProRes movies carry uncompressed sound, as editing apps expect.
+            let input = AVAssetWriterInput(mediaType: .audio, outputSettings: proRes == nil ? [
                 AVFormatIDKey: kAudioFormatMPEG4AAC,
                 AVSampleRateKey: 48_000,
                 AVNumberOfChannelsKey: 2,
                 AVEncoderBitRateKey: 192_000,
+            ] : [
+                AVFormatIDKey: kAudioFormatLinearPCM,
+                AVSampleRateKey: 48_000,
+                AVNumberOfChannelsKey: 2,
+                AVLinearPCMBitDepthKey: 24,
+                AVLinearPCMIsFloatKey: false,
+                AVLinearPCMIsBigEndianKey: false,
+                AVLinearPCMIsNonInterleaved: false,
             ])
             input.expectsMediaDataInRealTime = false
             if writer.canAdd(input) {
@@ -418,6 +435,7 @@ enum VideoDemoExporter {
             fps: fps,
             duration: duration,
             endCard: settings.endCard ? EndCard(background: project.background) : nil,
+            transparent: settings.keepsTransparency,
             cancel: cancel,
             progress: { value in
                 await progress(value)
@@ -576,6 +594,8 @@ enum VideoDemoExporter {
         let fps: Double
         let duration: Double
         let endCard: EndCard?
+        /// No background (ProRes 4444 with transparency).
+        let transparent: Bool
         let cancel: CancellationFlag
         let progress: @Sendable (Double) async -> Void
         private(set) var warnings: [String] = []
@@ -612,6 +632,7 @@ enum VideoDemoExporter {
             fps: Double,
             duration: Double,
             endCard: EndCard?,
+            transparent: Bool,
             cancel: CancellationFlag,
             progress: @escaping @Sendable (Double) async -> Void
         ) {
@@ -630,6 +651,7 @@ enum VideoDemoExporter {
             self.fps = fps
             self.duration = duration
             self.endCard = endCard
+            self.transparent = transparent
             self.cancel = cancel
             self.progress = progress
         }
@@ -749,6 +771,7 @@ enum VideoDemoExporter {
 
             let source = currentSample.flatMap { CMSampleBufferGetImageBuffer($0) }.map { CIImage(cvPixelBuffer: $0) }
             var options = VideoFrameRenderer.Options(frameRate: fps)
+            options.transparentBackground = transparent
             if let cameraStore, let sample = currentSample {
                 if let frame = cameraStore.camera(at: CMSampleBufferGetPresentationTimeStamp(sample).seconds, tolerance: 0.02) {
                     lastCameraFrame = frame

@@ -1976,7 +1976,7 @@ final class VideoEditorModel: ObservableObject {
             destination = folder.appendingPathComponent("\(exportBaseName).\(settings.fileExtension)")
         } else {
             let panel = NSSavePanel()
-            panel.allowedContentTypes = settings.format == .gif ? [.gif] : [.mpeg4Movie]
+            panel.allowedContentTypes = settings.format == .gif ? [.gif] : settings.format.isProRes ? [.quickTimeMovie] : [.mpeg4Movie]
             panel.canCreateDirectories = true
             panel.nameFieldStringValue = "\(exportBaseName).\(settings.fileExtension)"
             panel.directoryURL = URL(fileURLWithPath: Settings.autoSaveLocation, isDirectory: true)
