@@ -89,6 +89,9 @@
   "All configured" : {
     "ja" : "すべて設定済み"
   },
+  "All off until you turn them on. Every screenshot is kept in History and Home, and every recording in Home; a short notice says so." : {
+    "ja" : "オンにするまではすべてオフです。スクリーンショットは履歴とホームに、収録はホームに必ず残り、短い通知でお知らせします。"
+  },
   "Allow Access…" : {
     "ja" : "アクセスを許可…"
   },
@@ -368,6 +371,9 @@
   "Copy screenshots to clipboard" : {
     "ja" : "スクリーンショットをクリップボードにコピー"
   },
+  "Copy screenshots to the clipboard" : {
+    "ja" : "スクリーンショットをクリップボードにコピー"
+  },
   "Could Not Disable Apple Shortcuts" : {
     "ja" : "Appleのショートカットを無効にできませんでした"
   },
@@ -500,8 +506,8 @@
   "Editable cursor" : {
     "ja" : "編集可能なポインタ"
   },
-  "Editable cursor records the pointer separately so the editor can smooth it, resize it, and keep it crisp when zoomed — the video editor adds it back on export (the raw recording file has no pointer). Auto-zoom makes a fresh recording open already produced: the camera zooms to follow your clicks. Keyboard shortcuts records only ⌘, ⌃ and ⌥ combos (plus Esc and F-keys) so the editor can show them as keycaps — plain typing is never recorded; macOS asks for Accessibility access. High quality is the default; Max keeps more detail but creates larger files. The countdown gives you a moment after pressing Record; Esc cancels it. Stop a recording with %@ from any app — plain Esc stays with the app you're recording." : {
-    "ja" : "“編集可能なポインタ”では、ポインタが別に記録されるため、エディタでポインタの動きを滑らかにしたり、サイズを変えたり、ズームしてもくっきり表示したりできます。ポインタは書き出し時にビデオエディタで合成されます（収録したままのファイルにはポインタは入っていません）。“自動ズーム”を使うと、新しい収録が編集済みの状態で開き、クリックに合わせて画面がズームします。“キーボードショートカットを表示”では、⌘、⌃、⌥を使った組み合わせ（およびEscキーとファンクションキー）だけが記録され、エディタでキーとして表示できます。通常の入力が記録されることはありません。macOSからアクセシビリティへのアクセスを求められます。品質のデフォルトは“高”です。“最高”では細部がより保たれますが、ファイルサイズが大きくなります。カウントダウンがあると、“収録”を押してから開始までに少し時間ができます。Escキーでキャンセルできます。収録はどのアプリからでも%@で停止できます。Escキーだけを押した場合は、収録中のアプリに送られます。"
+  "Editable cursor records the pointer separately so the editor can smooth it, resize it, and keep it crisp when zoomed — the video editor adds it back on export (the raw recording file has no pointer). Keyboard shortcuts records only ⌘, ⌃ and ⌥ combos (plus Esc and F-keys) so the editor can show them as keycaps — plain typing is never recorded; macOS asks for Accessibility access. High quality is the default; Max keeps more detail but creates larger files. The countdown gives you a moment after pressing Record; Esc cancels it. Stop a recording with %@ from any app — plain Esc stays with the app you're recording." : {
+    "ja" : "“編集可能なポインタ”では、ポインタが別に記録されるため、エディタでポインタの動きを滑らかにしたり、サイズを変えたり、ズームしてもくっきり表示したりできます。ポインタは書き出し時にビデオエディタで合成されます（収録したままのファイルにはポインタは入っていません）。“キーボードショートカットを表示”では、⌘、⌃、⌥を使った組み合わせ（およびEscキーとファンクションキー）だけが記録され、エディタでキーとして表示できます。通常の入力が記録されることはありません。macOSからアクセシビリティへのアクセスを求められます。品質のデフォルトは“高”です。“最高”では細部がより保たれますが、ファイルサイズが大きくなります。カウントダウンがあると、“収録”を押してから開始までに少し時間ができます。Escキーでキャンセルできます。収録はどのアプリからでも%@で停止できます。Escキーだけを押した場合は、収録中のアプリに送られます。"
   },
   "Ellipse" : {
     "ja" : "楕円"
@@ -875,6 +881,9 @@
   "Open in annotation editor" : {
     "ja" : "スクリーンショットエディタで開く"
   },
+  "Open the video editor after recording" : {
+    "ja" : "収録後にビデオエディタを開く"
+  },
   "Open video…" : {
     "ja" : "ビデオを開く…"
   },
@@ -1112,6 +1121,9 @@
   "Saved to %@: %@" : {
     "ja" : "“%@”に保存しました: %@"
   },
+  "Saved to History" : {
+    "ja" : "履歴に保存しました"
+  },
   "Save…" : {
     "ja" : "保存…"
   },
@@ -1225,6 +1237,9 @@
   },
   "Show one kind of capture" : {
     "ja" : "1種類のスクリーンショットだけを表示します"
+  },
+  "Show the preview after capture" : {
+    "ja" : "キャプチャ後にプレビューを表示"
   },
   "Show the whole screenshot again" : {
     "ja" : "スクリーンショット全体をもう一度表示します"

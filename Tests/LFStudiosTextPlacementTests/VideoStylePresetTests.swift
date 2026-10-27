@@ -235,29 +235,32 @@ struct VideoStylePresetTests {
         try await body(root)
     }
 
-    @Test func newRecordingsStartFromTheDefaultPreset() async throws {
+    @Test func myStyleIsKeptButNeverPutOnNewRecordings() async throws {
         try await withStorage { root in
             var library = VideoStylePresetLibrary()
-            let noAspect = library.add(name: "Red", style: distinctStyle(), includesAspectRatio: false)
-            library.setDefault(noAspect.id)
+            let red = library.add(name: "Red", style: distinctStyle(), includesAspectRatio: true)
+            library.setMyStyle(red.id)
             #expect(VideoStylePresetStore.save(library, root: root))
-            let fresh = VideoDemoProject.make(sourceURL: URL(fileURLWithPath: "/tmp/new.mp4"))
-            #expect(fresh.background == .color(VideoRGBA(0.9, 0.1, 0.1)))
-            #expect(fresh.aspectPreset == VideoStylePreset.factory.aspectPreset, "this preset leaves the aspect ratio alone")
+            #expect(VideoStylePresetStore.load(root: root).myStyle?.id == red.id, "the preset is My Style")
 
-            library.update(noAspect.id, with: distinctStyle())
-            library.presets[0].includesAspectRatio = true
-            #expect(VideoStylePresetStore.save(library, root: root))
-            #expect(VideoDemoProject.make(sourceURL: URL(fileURLWithPath: "/tmp/new.mp4")).aspectPreset == .vertical)
+            // Manual only: a new recording opens plain, My Style or not.
+            let url = URL(fileURLWithPath: "/tmp/new.mp4")
+            let made = VideoDemoProject.make(sourceURL: url)
+            #expect(made.background == VideoStylePreset.factory.background)
+            #expect(made.aspectPreset == VideoStylePreset.factory.aspectPreset)
+            let fresh = VideoDemoProject.fresh(sourceURL: url)
+            #expect(fresh.aspectPreset == .source)
+            #expect(fresh.padding == 0)
 
-            // "Use This Look for New Recordings" updates the default preset.
+            // "Save This Look as My Style" updates the preset, still without applying it.
             var look = distinctStyle()
             look.padding = 0.05
             VideoStylePreset.saveAsDefault(look)
             #expect(VideoStylePreset.savedDefault?.padding == 0.05)
             #expect(VideoStylePresetStore.load(root: root).presets.count == 1)
+            #expect(VideoDemoProject.fresh(sourceURL: url).padding == 0)
             VideoStylePreset.saveAsDefault(nil)
-            #expect(VideoDemoProject.make(sourceURL: URL(fileURLWithPath: "/tmp/new.mp4")).background == VideoStylePreset.factory.background)
+            #expect(VideoStylePresetStore.load(root: root).myStyle == nil)
         }
     }
 

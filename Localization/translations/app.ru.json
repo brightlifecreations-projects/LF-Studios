@@ -87,6 +87,9 @@
   "All configured" : {
     "ru" : "Все настроено"
   },
+  "All off until you turn them on. Every screenshot is kept in History and Home, and every recording in Home; a short notice says so." : {
+    "ru" : "Всё выключено, пока вы не включите. Каждый снимок остаётся в истории и на главной, каждая запись — на главной; об этом скажет короткое уведомление."
+  },
   "Allow Access…" : {
     "ru" : "Разрешить доступ…"
   },
@@ -303,6 +306,9 @@
   "Copy screenshots to clipboard" : {
     "ru" : "Копировать снимки в буфер обмена"
   },
+  "Copy screenshots to the clipboard" : {
+    "ru" : "Копировать снимки в буфер обмена"
+  },
   "Could Not Disable Apple Shortcuts" : {
     "ru" : "Не удалось отключить сочетания клавиш Apple"
   },
@@ -424,8 +430,8 @@
   "Editable cursor" : {
     "ru" : "Редактируемый указатель"
   },
-  "Editable cursor records the pointer separately so the editor can smooth it, resize it, and keep it crisp when zoomed — the video editor adds it back on export (the raw recording file has no pointer). Auto-zoom makes a fresh recording open already produced: the camera zooms to follow your clicks. Keyboard shortcuts records only ⌘, ⌃ and ⌥ combos (plus Esc and F-keys) so the editor can show them as keycaps — plain typing is never recorded; macOS asks for Accessibility access. High quality is the default; Max keeps more detail but creates larger files. The countdown gives you a moment after pressing Record; Esc cancels it. Stop a recording with %@ from any app — plain Esc stays with the app you're recording." : {
-    "ru" : "«Редактируемый указатель» записывает указатель отдельно, чтобы редактор мог сглаживать его, менять размер и сохранять четкость при увеличении, — видеоредактор добавляет его обратно при экспорте (в исходном файле записи указателя нет). С автомасштабом новая запись открывается уже смонтированной: камера приближается вслед за вашими нажатиями. «Показывать сочетания клавиш» записывает только комбинации с ⌘, ⌃ и ⌥ (а также Esc и функциональные клавиши), чтобы редактор мог показать их в виде клавиш, — обычный набор текста никогда не записывается; macOS запросит доступ в разделе «Универсальный доступ». По умолчанию используется высокое качество; максимальное сохраняет больше деталей, но файлы получаются крупнее. Обратный отсчет дает вам время после нажатия кнопки «Записать»; Esc отменяет его. Остановить запись из любого приложения можно сочетанием %@ — обычная клавиша Esc остается за приложением, которое вы записываете."
+  "Editable cursor records the pointer separately so the editor can smooth it, resize it, and keep it crisp when zoomed — the video editor adds it back on export (the raw recording file has no pointer). Keyboard shortcuts records only ⌘, ⌃ and ⌥ combos (plus Esc and F-keys) so the editor can show them as keycaps — plain typing is never recorded; macOS asks for Accessibility access. High quality is the default; Max keeps more detail but creates larger files. The countdown gives you a moment after pressing Record; Esc cancels it. Stop a recording with %@ from any app — plain Esc stays with the app you're recording." : {
+    "ru" : "«Редактируемый указатель» записывает указатель отдельно, чтобы редактор мог сглаживать его, менять размер и сохранять четкость при увеличении, — видеоредактор добавляет его обратно при экспорте (в исходном файле записи указателя нет). «Показывать сочетания клавиш» записывает только комбинации с ⌘, ⌃ и ⌥ (а также Esc и функциональные клавиши), чтобы редактор мог показать их в виде клавиш, — обычный набор текста никогда не записывается; macOS запросит доступ в разделе «Универсальный доступ». По умолчанию используется высокое качество; максимальное сохраняет больше деталей, но файлы получаются крупнее. Обратный отсчет дает вам время после нажатия кнопки «Записать»; Esc отменяет его. Остановить запись из любого приложения можно сочетанием %@ — обычная клавиша Esc остается за приложением, которое вы записываете."
   },
   "Ellipse" : {
     "ru" : "Эллипс"
@@ -788,6 +794,9 @@
   "Open editor after recording" : {
     "ru" : "Открывать редактор после записи"
   },
+  "Open the video editor after recording" : {
+    "ru" : "Открывать видеоредактор после записи"
+  },
   "Open video…" : {
     "ru" : "Открыть видео…"
   },
@@ -1003,6 +1012,9 @@
   "Saved to %@: %@" : {
     "ru" : "Сохранено в папку «%@»: %@"
   },
+  "Saved to History" : {
+    "ru" : "Сохранено в историю"
+  },
   "Save…" : {
     "ru" : "Сохранить…"
   },
@@ -1098,6 +1110,9 @@
   },
   "Show menu bar icon" : {
     "ru" : "Показывать значок в строке меню"
+  },
+  "Show the preview after capture" : {
+    "ru" : "Показывать превью после снимка"
   },
   "Show the whole screenshot again" : {
     "ru" : "Снова показать весь снимок"

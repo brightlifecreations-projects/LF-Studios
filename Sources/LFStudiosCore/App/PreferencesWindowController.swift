@@ -433,7 +433,9 @@ struct GeneralSettingsView: View {
     @AppStorage("playSounds") var playSounds = true
     @AppStorage("showMenuBarIcon") var showMenuBarIcon = true
     @AppStorage("hideDesktopIconsWhileCapturing") var hideDesktopIcons = false
-    @AppStorage("afterCaptureShowOverlay") var showOverlay = true
+    @AppStorage("afterCaptureShowOverlay") var showOverlay = false
+    @AppStorage("afterCaptureCopyToClipboard") var copyToClipboard = false
+    @AppStorage("openVideoEditorAfterRecording") var openVideoEditorAfterRecording = false
     @AppStorage("afterCaptureSaveAutomatically") var saveAutomatically = false
     @AppStorage("overlayOnLeft") var overlayOnLeft = true
     @AppStorage("overlayTimeout") var overlayTimeout: Double = 6.0
@@ -527,9 +529,26 @@ struct GeneralSettingsView: View {
                 }
             }
 
+            // Manual only: every after-capture action is off until switched on.
             PreferenceSection(L("After Capture")) {
-                PreferenceRow(L("Show Quick Access Overlay")) {
+                PreferenceRow(L("Copy screenshots to the clipboard")) {
+                    Toggle("", isOn: $copyToClipboard)
+                        .labelsHidden()
+                        .toggleStyle(.switch)
+                }
+
+                PreferenceDivider()
+
+                PreferenceRow(L("Show the preview after capture")) {
                     Toggle("", isOn: $showOverlay)
+                        .labelsHidden()
+                        .toggleStyle(.switch)
+                }
+
+                PreferenceDivider()
+
+                PreferenceRow(L("Open the video editor after recording")) {
+                    Toggle("", isOn: $openVideoEditorAfterRecording)
                         .labelsHidden()
                         .toggleStyle(.switch)
                 }
@@ -570,7 +589,7 @@ struct GeneralSettingsView: View {
                 }
             }
 
-            PreferenceFootnote(text: L("Choose what happens immediately after taking a screenshot."))
+            PreferenceFootnote(text: L("All off until you turn them on. Every screenshot is kept in History and Home, and every recording in Home; a short notice says so."))
         }
     }
 
@@ -714,7 +733,6 @@ private struct ShortcutRecorderRow: View {
 struct ScreenshotsSettingsView: View {
     @AppStorage("screenshotFormat") var screenshotFormat = "png"
     @AppStorage("jpegQuality") var jpegQuality: Double = 0.95
-    @AppStorage("afterCaptureCopyToClipboard") var copyToClipboard = true
     @AppStorage("autoSaveLocation") var autoSaveLocation = ""
     @AppStorage("filenameTemplate") var filenameTemplate = Settings.defaultFilenameTemplate
     @AppStorage("windowCaptureShadow") var windowCaptureShadow = true
@@ -759,16 +777,6 @@ struct ScreenshotsSettingsView: View {
                     }
                 }
             }
-
-            PreferenceSection(L("Clipboard")) {
-                PreferenceRow(L("Copy screenshots to clipboard")) {
-                    Toggle("", isOn: $copyToClipboard)
-                        .labelsHidden()
-                        .toggleStyle(.switch)
-                }
-            }
-
-            PreferenceFootnote(text: L("New screenshots are copied automatically. Turn this off if you only want to use the overlay or history actions."))
 
             CaptureSelectionPreferences()
 
@@ -887,8 +895,6 @@ struct RecordingSettingsView: View {
     @AppStorage("recordingSystemAudio") var systemAudio = false
     @AppStorage("recordingMicrophone") var microphone = false
     @AppStorage("recordingMicrophoneDeviceID") var microphoneDeviceID = ""
-    @AppStorage("openVideoEditorAfterRecording") var openVideoEditorAfterRecording = true
-    @AppStorage("autoZoomNewRecordings") var autoZoomNewRecordings = true
     @AppStorage("recordingKeystrokes") var keystrokes = false
     @AppStorage("recordingCamera") var camera = false
     @AppStorage("recordingCameraDeviceID") var cameraDeviceID = ""
@@ -969,21 +975,6 @@ struct RecordingSettingsView: View {
 
                 PreferenceDivider()
 
-                PreferenceRow(L("Open editor after recording")) {
-                    Toggle("", isOn: $openVideoEditorAfterRecording)
-                        .labelsHidden()
-                        .toggleStyle(.switch)
-                }
-
-                PreferenceDivider()
-
-                PreferenceRow(L("Auto-zoom new recordings")) {
-                    Toggle("", isOn: $autoZoomNewRecordings)
-                        .labelsHidden()
-                        .toggleStyle(.switch)
-                }
-
-                PreferenceDivider()
 
                 PreferenceRow(L("Show keyboard shortcuts")) {
                     HStack(spacing: 8) {
@@ -1013,7 +1004,7 @@ struct RecordingSettingsView: View {
                 keystrokeAccess = VideoKeystrokeFormatter.isAllowed
             }
 
-            PreferenceFootnote(text: L("Editable cursor records the pointer separately so the editor can smooth it, resize it, and keep it crisp when zoomed — the video editor adds it back on export (the raw recording file has no pointer). Auto-zoom makes a fresh recording open already produced: the camera zooms to follow your clicks. Keyboard shortcuts records only ⌘, ⌃ and ⌥ combos (plus Esc and F-keys) so the editor can show them as keycaps — plain typing is never recorded; macOS asks for Accessibility access. High quality is the default; Max keeps more detail but creates larger files. The countdown gives you a moment after pressing Record; Esc cancels it. Stop a recording with \(RecordingStopHotkey.displayText) from any app — plain Esc stays with the app you're recording."))
+            PreferenceFootnote(text: L("Editable cursor records the pointer separately so the editor can smooth it, resize it, and keep it crisp when zoomed — the video editor adds it back on export (the raw recording file has no pointer). Keyboard shortcuts records only ⌘, ⌃ and ⌥ combos (plus Esc and F-keys) so the editor can show them as keycaps — plain typing is never recorded; macOS asks for Accessibility access. High quality is the default; Max keeps more detail but creates larger files. The countdown gives you a moment after pressing Record; Esc cancels it. Stop a recording with \(RecordingStopHotkey.displayText) from any app — plain Esc stays with the app you're recording."))
 
             PreferenceSection(L("Audio")) {
                 PreferenceRow(L("Record system audio")) {

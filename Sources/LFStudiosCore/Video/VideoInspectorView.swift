@@ -209,9 +209,7 @@ struct VideoBackgroundInspector: View {
                     isOn: Binding(get: { project.outline }, set: { value in model.setStyle { $0.outline = value } })
                 )
                 Button {
-                    model.setStyle { project in
-                        project.padding = project.usesRawSourceFrame ? VideoStylePreset.factory.padding : 0
-                    }
+                    model.setStyle { $0.toggleBackground() }
                 } label: {
                     Label(project.usesRawSourceFrame ? L("Show background") : L("Full frame (no background)"), systemImage: project.usesRawSourceFrame ? "rectangle.inset.filled" : "rectangle.fill")
                         .frame(maxWidth: .infinity)
@@ -450,13 +448,11 @@ struct VideoZoomInspector: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 22) {
             VideoCard {
-                Button {
-                    model.autoZoom()
-                } label: {
-                    Label(L("Auto Zoom"), systemImage: "sparkles")
-                        .frame(maxWidth: .infinity)
-                }
-                .buttonStyle(VideoPrimaryButtonStyle())
+                VideoToggleRow(
+                    title: L("Auto-zoom on clicks"),
+                    detail: L("Off until you turn it on. On, it zooms in on your clicks and switches on its options below; off, its zooms go."),
+                    isOn: Binding(get: { model.project.autoZoom }, set: { model.setAutoZoom($0) })
+                )
                 Text(model.project.clickEvents.isEmpty
                      ? L("No clicks were recorded, so add zooms by hand: hover the zoom track and click.")
                      : L("Plans zooms around your \(model.project.clickEvents.count) clicks. Zooms you placed by hand are kept."))
@@ -473,6 +469,8 @@ struct VideoZoomInspector: View {
                 .disabled(model.project.zoomRegions.isEmpty)
             }
 
+            // Auto-zoom's own options: greyed out until it's on. Zooms added
+            // by hand keep working either way (each has its own settings).
             VideoInspectorSection(L("New zooms")) {
                 VideoSegmented(options: [1.5, 2.0, 2.5, 3.0].map { ($0, VideoEditorModel.formatScale($0)) }, selection: Binding(
                     get: { [1.5, 2.0, 2.5, 3.0].min { abs($0 - model.project.defaultZoomScale) < abs($1 - model.project.defaultZoomScale) } ?? 2 },
@@ -487,6 +485,8 @@ struct VideoZoomInspector: View {
                 .buttonStyle(VideoSecondaryButtonStyle())
                 .disabled(model.project.zoomRegions.isEmpty)
             }
+            .disabled(!model.project.autoZoom)
+            .opacity(model.project.autoZoom ? 1 : 0.45)
 
             VideoInspectorSection(L("Motion")) {
                 VideoSegmented(options: VideoZoomSpeed.allCases.map { ($0, $0.title) }, selection: Binding(
@@ -503,6 +503,8 @@ struct VideoZoomInspector: View {
                     onEditingEnded: { model.endGesture() }
                 )
             }
+            .disabled(!model.project.autoZoom)
+            .opacity(model.project.autoZoom ? 1 : 0.45)
 
             if !model.project.zoomRegions.isEmpty {
                 VideoInspectorSection(L("Zooms")) {

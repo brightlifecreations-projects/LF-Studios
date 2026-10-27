@@ -717,7 +717,10 @@ struct VideoCameraInspector: View {
 
                 VideoInspectorSection(L("Behavior")) {
                     VideoToggleRow(title: L("Mirror"), detail: L("Flip like a selfie"), isOn: binding(\.mirror))
-                    VideoToggleRow(title: L("Shrink while zoomed"), detail: L("Gets out of the way during zoom moves"), isOn: binding(\.shrinkWhenZoomed))
+                    // Part of Auto-zoom on clicks (Zoom panel): greyed out until it's on.
+                    VideoToggleRow(title: L("Shrink while zoomed"), detail: model.project.autoZoom ? L("Gets out of the way during zoom moves") : L("Turn on Auto-zoom on clicks (Zoom) to use this"), isOn: binding(\.shrinkWhenZoomed))
+                        .disabled(!model.project.autoZoom)
+                        .opacity(model.project.autoZoom ? 1 : 0.45)
                 }
                 .disabled(!model.project.webcam.visible)
 

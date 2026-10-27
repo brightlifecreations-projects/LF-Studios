@@ -299,6 +299,7 @@ final class VideoEditorLocalizedSnapshotTests: XCTestCase {
         VideoDemoDraftStore.delete(for: url)
         let model = VideoEditorModel(videoURL: url)
         await model.load()
+        model.setAutoZoom(true)
         try await Task.sleep(nanoseconds: 700_000_000)
         return model
     }

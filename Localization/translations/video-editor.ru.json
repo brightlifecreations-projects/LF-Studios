@@ -2,6 +2,9 @@
   " — %@ free there" : {
     "ru" : " — там свободно %@"
   },
+  "%@ (My Style)" : {
+    "ru" : "%@ (Мой стиль)"
+  },
   "%@ (This Mac)" : {
     "ru" : "%@ (этот Mac)"
   },
@@ -248,8 +251,17 @@
   "Appearance" : {
     "ru" : "Оформление"
   },
+  "Applied My Style (“%@”) — ⌘Z to undo" : {
+    "ru" : "Применён «Мой стиль» («%@») — ⌘Z, чтобы отменить"
+  },
   "Applied “%@”" : {
     "ru" : "Применено: «%@»"
+  },
+  "Apply My Style" : {
+    "ru" : "Применить мой стиль"
+  },
+  "Apply my style" : {
+    "ru" : "Применить мой стиль"
   },
   "Apply to all zooms" : {
     "ru" : "Применить ко всем увеличениям"
@@ -274,6 +286,21 @@
   },
   "Auto Zoom from Clicks" : {
     "ru" : "Автомасштаб по нажатиям"
+  },
+  "Auto-zoom off — its zooms are gone. ⌘Z to undo" : {
+    "ru" : "Автомасштаб выключен — его приближения убраны. ⌘Z, чтобы отменить"
+  },
+  "Auto-zoom on clicks" : {
+    "ru" : "Автомасштаб по нажатиям"
+  },
+  "Auto-zoom on clicks is on — click to turn it off and remove its zooms" : {
+    "ru" : "Автомасштаб по нажатиям включён — нажмите, чтобы выключить его и убрать его приближения"
+  },
+  "Auto-zoom on — no clicks left on the timeline" : {
+    "ru" : "Автомасштаб включён — на таймлайне не осталось нажатий"
+  },
+  "Auto-zoom on — no clicks were recorded, so add zooms by hand" : {
+    "ru" : "Автомасштаб включён — нажатия не записаны, добавьте приближения вручную"
   },
   "Back · pause · faster" : {
     "ru" : "Назад · пауза · быстрее"
@@ -394,6 +421,9 @@
   },
   "Choose Location…" : {
     "ru" : "Выбрать место…"
+  },
+  "Choose My Style first: Presets ▸ Edit Presets ▸ Use as My Style (⇧⌘Y)" : {
+    "ru" : "Сначала выберите «Мой стиль»: Стили ▸ Изменить стили ▸ Использовать как «Мой стиль» (⇧⌘Y)"
   },
   "Choose an LF Studios project" : {
     "ru" : "Выберите проект LF Studios"
@@ -900,6 +930,9 @@
   "It won't fit there. Choose another location, or pick Smaller files." : {
     "ru" : "Там не хватит места. Выберите другое место или «Файлы поменьше»."
   },
+  "It's your My Style, so Apply my style will have nothing to apply until you choose another. Videos that use this preset keep their look." : {
+    "ru" : "Это ваш «Мой стиль»: пока вы не выберете другой, применять будет нечего. Видео с этим стилем сохранят свой вид."
+  },
   "Jump here" : {
     "ru" : "Перейти сюда"
   },
@@ -1050,6 +1083,9 @@
   "My Preset" : {
     "ru" : "Мой набор"
   },
+  "My Style: “%@”" : {
+    "ru" : "Мой стиль: «%@»"
+  },
   "Never switch to the text beam or the hand" : {
     "ru" : "Не превращаться в текстовый курсор или руку"
   },
@@ -1073,6 +1109,12 @@
   },
   "No Exports Yet" : {
     "ru" : "Экспортов пока нет"
+  },
+  "No My Style now" : {
+    "ru" : "«Мой стиль» не выбран"
+  },
+  "No My Style yet — open Presets ▸ Edit Presets and choose Use as My Style on one" : {
+    "ru" : "«Мой стиль» ещё не выбран — откройте Стили ▸ Изменить стили и выберите у одного «Использовать как „Мой стиль“»"
   },
   "No background" : {
     "ru" : "Без фона"
@@ -1112,6 +1154,9 @@
   },
   "Not for this video" : {
     "ru" : "Не для этого видео"
+  },
+  "Off until you turn it on. On, it zooms in on your clicks and switches on its options below; off, its zooms go." : {
+    "ru" : "Выключен, пока вы его не включите. Включённый, он приближает места нажатий и включает свои параметры ниже; выключенный — его приближения убираются."
   },
   "Offset" : {
     "ru" : "Сдвиг"
@@ -1167,6 +1212,9 @@
   "Pause (Space)" : {
     "ru" : "Пауза (пробел)"
   },
+  "Pick a preset as My Style (Presets ▸ Edit Presets ▸ Use as My Style), then one click puts it on any video." : {
+    "ru" : "Выберите стиль как «Мой стиль» (Стили ▸ Изменить стили ▸ Использовать как «Мой стиль»), и одно нажатие применит его к любому видео."
+  },
   "Picture “%@” — the file is missing" : {
     "ru" : "Изображение «%@» — файл не найден"
   },
@@ -1216,6 +1264,9 @@
   },
   "Previous / next frame" : {
     "ru" : "Предыдущий / следующий кадр"
+  },
+  "Put “%@” on this video (⇧⌘Y)" : {
+    "ru" : "Применить «%@» к этому видео (⇧⌘Y)"
   },
   "Recent Exports" : {
     "ru" : "Недавние экспорты"
@@ -1292,6 +1343,9 @@
   "Redo Annotations" : {
     "ru" : "Повторить изменение элементов разметки"
   },
+  "Redo Apply My Style" : {
+    "ru" : "Повторить применение моего стиля"
+  },
   "Redo Apply Preset" : {
     "ru" : "Повторить применение стиля"
   },
@@ -1303,6 +1357,12 @@
   },
   "Redo Auto Zoom" : {
     "ru" : "Повторить автомасштаб"
+  },
+  "Redo Auto-Zoom Off" : {
+    "ru" : "Повторить выключение автомасштаба"
+  },
+  "Redo Auto-Zoom On" : {
+    "ru" : "Повторить включение автомасштаба"
   },
   "Redo Background" : {
     "ru" : "Повторить изменение фона"
@@ -1707,11 +1767,17 @@
   "Save Subtitles (.srt)…" : {
     "ru" : "Сохранить субтитры (.srt)…"
   },
+  "Save This Look as My Style" : {
+    "ru" : "Сохранить этот вид как «Мой стиль»"
+  },
   "Save as Preset" : {
     "ru" : "Сохранить как стиль"
   },
   "Save as Preset…" : {
     "ru" : "Сохранить как стиль…"
+  },
+  "Saved as My Style — Apply my style (⇧⌘Y) puts it on a video" : {
+    "ru" : "Сохранено как «Мой стиль» — «Применить мой стиль» (⇧⌘Y) применит его к видео"
   },
   "Saved by a newer LF Studios — some settings may not show" : {
     "ru" : "Сохранено более новой версией LF Studios — некоторые настройки могут не отображаться"
@@ -1925,6 +1991,9 @@
   "Stop Enhancing Voice" : {
     "ru" : "Выключить улучшение голоса"
   },
+  "Stop Using as My Style" : {
+    "ru" : "Больше не использовать как «Мой стиль»"
+  },
   "Stop Using for New Recordings" : {
     "ru" : "Не использовать для новых записей"
   },
@@ -2048,11 +2117,23 @@
   "Try Again" : {
     "ru" : "Повторить попытку"
   },
+  "Turn Off Auto-Zoom on Clicks" : {
+    "ru" : "Выключить автомасштаб по нажатиям"
+  },
   "Turn On" : {
     "ru" : "Включить"
   },
+  "Turn On Auto-Zoom on Clicks" : {
+    "ru" : "Включить автомасштаб по нажатиям"
+  },
   "Turn around" : {
     "ru" : "Развернуть"
+  },
+  "Turn on Auto-zoom on clicks (Zoom) to use this" : {
+    "ru" : "Чтобы использовать, включите автомасштаб по нажатиям (Масштаб)"
+  },
+  "Turn on Auto-zoom on clicks — keeps zooms you placed by hand" : {
+    "ru" : "Включить автомасштаб по нажатиям — приближения, добавленные вручную, останутся"
   },
   "Turn on the camera in the recording bar before you record, and your face appears here as a bubble you can place, resize, and restyle." : {
     "ru" : "Перед записью включите камеру на панели записи — и ваше лицо появится здесь в окошке, которое можно перемещать, масштабировать и оформлять."
@@ -2135,6 +2216,9 @@
   "Undo Annotations" : {
     "ru" : "Отменить изменение элементов разметки"
   },
+  "Undo Apply My Style" : {
+    "ru" : "Отменить применение моего стиля"
+  },
   "Undo Apply Preset" : {
     "ru" : "Отменить применение стиля"
   },
@@ -2146,6 +2230,12 @@
   },
   "Undo Auto Zoom" : {
     "ru" : "Отменить автомасштаб"
+  },
+  "Undo Auto-Zoom Off" : {
+    "ru" : "Отменить выключение автомасштаба"
+  },
+  "Undo Auto-Zoom On" : {
+    "ru" : "Отменить включение автомасштаба"
   },
   "Undo Background" : {
     "ru" : "Отменить изменение фона"
@@ -2463,6 +2553,9 @@
   "Use This Look for New Recordings" : {
     "ru" : "Использовать этот стиль для новых записей"
   },
+  "Use as My Style" : {
+    "ru" : "Использовать как «Мой стиль»"
+  },
   "Use for new recordings" : {
     "ru" : "Использовать для новых записей"
   },
@@ -2624,6 +2717,9 @@
   },
   "· follows cursor" : {
     "ru" : "· за указателем"
+  },
+  "“%@” is your My Style — Apply my style (⇧⌘Y) puts it on a video" : {
+    "ru" : "«%@» — ваш «Мой стиль»; «Применить мой стиль» (⇧⌘Y) применит его к видео"
   },
   "“%@” isn't at %@ anymore. Put it back, or save the project with Include Media next time so it carries its own copy." : {
     "ru" : "«%1$@» больше нет в %2$@. Верните файл на место или в следующий раз сохраните проект с параметром «Включить медиафайлы», чтобы в нём была своя копия."

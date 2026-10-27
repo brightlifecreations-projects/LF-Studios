@@ -167,6 +167,11 @@
     "fr" : "Tous configurés",
     "zh-Hans" : "全部已设置"
   },
+  "All off until you turn them on. Every screenshot is kept in History and Home, and every recording in Home; a short notice says so." : {
+    "de" : "Alles aus, bis du es einschaltest. Jedes Bildschirmfoto bleibt im Verlauf und auf der Startseite, jede Aufnahme auf der Startseite; ein kurzer Hinweis sagt es dir.",
+    "fr" : "Tout est désactivé tant que vous ne l’activez pas. Chaque capture d’écran est gardée dans l’historique et l’accueil, chaque enregistrement dans l’accueil ; un bref message l’indique.",
+    "zh-Hans" : "全部关闭，直到你开启。每张截屏都保存在历史记录和主页中，每段录制都保存在主页中；会有简短提示告诉你。"
+  },
   "Allow Access…" : {
     "de" : "Zugriff erlauben …",
     "fr" : "Autoriser l’accès…",
@@ -536,6 +541,11 @@
     "fr" : "Copier les captures dans le presse-papiers",
     "zh-Hans" : "将截屏拷贝到剪贴板"
   },
+  "Copy screenshots to the clipboard" : {
+    "de" : "Bildschirmfotos in die Zwischenablage kopieren",
+    "fr" : "Copier les captures d’écran dans le presse-papiers",
+    "zh-Hans" : "将截屏拷贝到剪贴板"
+  },
   "Could Not Disable Apple Shortcuts" : {
     "de" : "Apple-Kurzbefehle konnten nicht deaktiviert werden",
     "fr" : "Impossible de désactiver les raccourcis Apple",
@@ -749,10 +759,10 @@
     "fr" : "Pointeur modifiable",
     "zh-Hans" : "可编辑指针"
   },
-  "Editable cursor records the pointer separately so the editor can smooth it, resize it, and keep it crisp when zoomed — the video editor adds it back on export (the raw recording file has no pointer). Auto-zoom makes a fresh recording open already produced: the camera zooms to follow your clicks. Keyboard shortcuts records only ⌘, ⌃ and ⌥ combos (plus Esc and F-keys) so the editor can show them as keycaps — plain typing is never recorded; macOS asks for Accessibility access. High quality is the default; Max keeps more detail but creates larger files. The countdown gives you a moment after pressing Record; Esc cancels it. Stop a recording with %@ from any app — plain Esc stays with the app you're recording." : {
-    "de" : "„Bearbeitbarer Zeiger“ zeichnet den Zeiger separat auf, damit der Editor ihn glätten, skalieren und beim Zoomen scharf halten kann – der Video-Editor fügt ihn beim Exportieren wieder ein (die Rohdatei der Aufnahme enthält keinen Zeiger). Mit automatischem Zoom öffnet sich eine neue Aufnahme schon fertig produziert: Die Kamera folgt deinen Klicks. „Tastaturkurzbefehle anzeigen“ zeichnet nur Kombinationen mit ⌘, ⌃ und ⌥ auf (dazu Esc und die F-Tasten), damit der Editor sie als Tasten zeigen kann – normales Tippen wird nie aufgezeichnet; macOS fragt nach Zugriff auf die Bedienungshilfen. „Hoch“ ist die Standardqualität; „Maximal“ bewahrt mehr Details, erzeugt aber größere Dateien. Der Countdown gibt dir nach dem Start einen Moment Zeit; Esc bricht ihn ab. Stoppe eine Aufzeichnung aus jeder App mit %@ – ein einfaches Esc bleibt bei der App, die du aufzeichnest.",
-    "fr" : "« Pointeur modifiable » enregistre le pointeur séparément pour que l’éditeur puisse le lisser, le redimensionner et le garder net lors des zooms — l’éditeur vidéo le réintègre à l’exportation (le fichier brut de l’enregistrement ne contient pas de pointeur). Avec le zoom automatique, un nouvel enregistrement s’ouvre déjà monté : la caméra suit vos clics. « Afficher les raccourcis clavier » n’enregistre que les combinaisons avec ⌘, ⌃ et ⌥ (plus Échap et les touches de fonction) pour que l’éditeur puisse les afficher sous forme de touches — la frappe normale n’est jamais enregistrée ; macOS demande l’autorisation Accessibilité. La qualité élevée est utilisée par défaut ; la qualité maximale conserve plus de détails mais produit des fichiers plus volumineux. Le compte à rebours vous laisse un instant après avoir lancé l’enregistrement ; Échap l’annule. Arrêtez un enregistrement depuis n’importe quelle app avec %@ — un simple Échap reste destiné à l’app que vous enregistrez.",
-    "zh-Hans" : "“可编辑指针”会单独记录指针，以便编辑器平滑指针、调整其大小，并在缩放时保持清晰 — 视频编辑器会在导出时将指针加回（原始录制文件中不含指针）。开启自动缩放后，新录制内容打开时就已制作完成：镜头会跟随你的点按进行缩放。“显示快捷键”只记录含 ⌘、⌃ 和 ⌥ 的组合键（以及 Esc 键和功能键），以便编辑器将其显示为按键 — 普通输入绝不会被记录；macOS 会请求辅助功能权限。默认使用“高”质量；“最高”保留更多细节，但文件更大。按下“录制”后，倒计时会给你片刻准备时间；按 Esc 键可取消。在任何 App 中按 %@ 都能停止录制 — 单独按 Esc 键仍会传给你正在录制的 App。"
+  "Editable cursor records the pointer separately so the editor can smooth it, resize it, and keep it crisp when zoomed — the video editor adds it back on export (the raw recording file has no pointer). Keyboard shortcuts records only ⌘, ⌃ and ⌥ combos (plus Esc and F-keys) so the editor can show them as keycaps — plain typing is never recorded; macOS asks for Accessibility access. High quality is the default; Max keeps more detail but creates larger files. The countdown gives you a moment after pressing Record; Esc cancels it. Stop a recording with %@ from any app — plain Esc stays with the app you're recording." : {
+    "de" : "„Bearbeitbarer Zeiger“ zeichnet den Zeiger separat auf, damit der Editor ihn glätten, skalieren und beim Zoomen scharf halten kann – der Video-Editor fügt ihn beim Exportieren wieder ein (die Rohdatei der Aufnahme enthält keinen Zeiger). „Tastaturkurzbefehle anzeigen“ zeichnet nur Kombinationen mit ⌘, ⌃ und ⌥ auf (dazu Esc und die F-Tasten), damit der Editor sie als Tasten zeigen kann – normales Tippen wird nie aufgezeichnet; macOS fragt nach Zugriff auf die Bedienungshilfen. „Hoch“ ist die Standardqualität; „Maximal“ bewahrt mehr Details, erzeugt aber größere Dateien. Der Countdown gibt dir nach dem Start einen Moment Zeit; Esc bricht ihn ab. Stoppe eine Aufzeichnung aus jeder App mit %@ – ein einfaches Esc bleibt bei der App, die du aufzeichnest.",
+    "fr" : "« Pointeur modifiable » enregistre le pointeur séparément pour que l’éditeur puisse le lisser, le redimensionner et le garder net lors des zooms — l’éditeur vidéo le réintègre à l’exportation (le fichier brut de l’enregistrement ne contient pas de pointeur). « Afficher les raccourcis clavier » n’enregistre que les combinaisons avec ⌘, ⌃ et ⌥ (plus Échap et les touches de fonction) pour que l’éditeur puisse les afficher sous forme de touches — la frappe normale n’est jamais enregistrée ; macOS demande l’autorisation Accessibilité. La qualité élevée est utilisée par défaut ; la qualité maximale conserve plus de détails mais produit des fichiers plus volumineux. Le compte à rebours vous laisse un instant après avoir lancé l’enregistrement ; Échap l’annule. Arrêtez un enregistrement depuis n’importe quelle app avec %@ — un simple Échap reste destiné à l’app que vous enregistrez.",
+    "zh-Hans" : "“可编辑指针”会单独记录指针，以便编辑器平滑指针、调整其大小，并在缩放时保持清晰 — 视频编辑器会在导出时将指针加回（原始录制文件中不含指针）。“显示快捷键”只记录含 ⌘、⌃ 和 ⌥ 的组合键（以及 Esc 键和功能键），以便编辑器将其显示为按键 — 普通输入绝不会被记录；macOS 会请求辅助功能权限。默认使用“高”质量；“最高”保留更多细节，但文件更大。按下“录制”后，倒计时会给你片刻准备时间；按 Esc 键可取消。在任何 App 中按 %@ 都能停止录制 — 单独按 Esc 键仍会传给你正在录制的 App。"
   },
   "Ellipse" : {
     "de" : "Ellipse",
@@ -1393,6 +1403,11 @@
     "fr" : "Ouvrir l’éditeur après l’enregistrement",
     "zh-Hans" : "录制后打开编辑器"
   },
+  "Open the video editor after recording" : {
+    "de" : "Nach der Aufnahme den Video-Editor öffnen",
+    "fr" : "Ouvrir l’éditeur vidéo après l’enregistrement",
+    "zh-Hans" : "录制后打开视频编辑器"
+  },
   "Open video…" : {
     "comment" : "Home window card: choose a video file to edit",
     "de" : "Video öffnen …",
@@ -1764,6 +1779,11 @@
     "fr" : "Enregistré dans « %@ » : %@",
     "zh-Hans" : "已存储到“%@”：%@"
   },
+  "Saved to History" : {
+    "de" : "Im Verlauf gesichert",
+    "fr" : "Enregistré dans l’historique",
+    "zh-Hans" : "已存入历史记录"
+  },
   "Save…" : {
     "de" : "Sichern …",
     "fr" : "Enregistrer…",
@@ -1930,6 +1950,11 @@
     "de" : "Symbol in der Menüleiste anzeigen",
     "fr" : "Afficher l’icône dans la barre des menus",
     "zh-Hans" : "在菜单栏中显示图标"
+  },
+  "Show the preview after capture" : {
+    "de" : "Nach der Aufnahme die Vorschau zeigen",
+    "fr" : "Afficher l’aperçu après la capture",
+    "zh-Hans" : "截取后显示预览"
   },
   "Show the whole screenshot again" : {
     "de" : "Wieder das ganze Bildschirmfoto zeigen",

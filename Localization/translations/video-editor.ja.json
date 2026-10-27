@@ -2,6 +2,9 @@
   " — %@ free there" : {
     "ja" : " — 保存先の空き容量 %@"
   },
+  "%@ (My Style)" : {
+    "ja" : "%@（マイスタイル）"
+  },
   "%@ (This Mac)" : {
     "ja" : "%@（このMac）"
   },
@@ -188,8 +191,17 @@
   "Appearance" : {
     "ja" : "外観"
   },
+  "Applied My Style (“%@”) — ⌘Z to undo" : {
+    "ja" : "マイスタイル（“%@”）を適用しました — ⌘Zで取り消し"
+  },
   "Applied “%@”" : {
     "ja" : "“%@”を適用しました"
+  },
+  "Apply My Style" : {
+    "ja" : "マイスタイルを適用"
+  },
+  "Apply my style" : {
+    "ja" : "マイスタイルを適用"
   },
   "Apply to all zooms" : {
     "ja" : "すべてのズームに適用"
@@ -214,6 +226,21 @@
   },
   "Auto Zoom from Clicks" : {
     "ja" : "クリックから自動ズーム"
+  },
+  "Auto-zoom off — its zooms are gone. ⌘Z to undo" : {
+    "ja" : "自動ズームをオフにしました — 自動のズームは削除しました。⌘Zで取り消し"
+  },
+  "Auto-zoom on clicks" : {
+    "ja" : "クリックで自動ズーム"
+  },
+  "Auto-zoom on clicks is on — click to turn it off and remove its zooms" : {
+    "ja" : "クリックで自動ズームはオンです — クリックでオフにして自動のズームを削除"
+  },
+  "Auto-zoom on — no clicks left on the timeline" : {
+    "ja" : "自動ズームをオンにしました — タイムラインにクリックが残っていません"
+  },
+  "Auto-zoom on — no clicks were recorded, so add zooms by hand" : {
+    "ja" : "自動ズームをオンにしました — クリックが記録されていないので、ズームは手動で追加してください"
   },
   "Back · pause · faster" : {
     "ja" : "逆再生 · 一時停止 · 早送り"
@@ -334,6 +361,9 @@
   },
   "Choose Location…" : {
     "ja" : "場所を選択…"
+  },
+  "Choose My Style first: Presets ▸ Edit Presets ▸ Use as My Style (⇧⌘Y)" : {
+    "ja" : "まずマイスタイルを選んでください：プリセット ▸ プリセットを編集 ▸ マイスタイルとして使用（⇧⌘Y）"
   },
   "Choose an LF Studios project" : {
     "ja" : "LF Studiosプロジェクトを選択"
@@ -830,6 +860,9 @@
   "It won't fit there. Choose another location, or pick Smaller files." : {
     "ja" : "保存先の空き容量が足りません。別の場所を選ぶか、「小さいファイル」を選んでください。"
   },
+  "It's your My Style, so Apply my style will have nothing to apply until you choose another. Videos that use this preset keep their look." : {
+    "ja" : "これはマイスタイルなので、別のものを選ぶまで「マイスタイルを適用」で適用するものがなくなります。このプリセットを使っているビデオの見た目は変わりません。"
+  },
   "Jump here" : {
     "ja" : "ここに移動"
   },
@@ -980,6 +1013,9 @@
   "My Preset" : {
     "ja" : "マイプリセット"
   },
+  "My Style: “%@”" : {
+    "ja" : "マイスタイル：“%@”"
+  },
   "Never switch to the text beam or the hand" : {
     "ja" : "Iビームや手の形のポインタに切り替えません"
   },
@@ -1003,6 +1039,12 @@
   },
   "No Exports Yet" : {
     "ja" : "書き出しはまだありません"
+  },
+  "No My Style now" : {
+    "ja" : "マイスタイルを解除しました"
+  },
+  "No My Style yet — open Presets ▸ Edit Presets and choose Use as My Style on one" : {
+    "ja" : "マイスタイルがまだありません — プリセット ▸ プリセットを編集で、いずれかの「マイスタイルとして使用」を選んでください"
   },
   "No background" : {
     "ja" : "背景なし"
@@ -1042,6 +1084,9 @@
   },
   "Not for this video" : {
     "ja" : "このビデオでは使用しない"
+  },
+  "Off until you turn it on. On, it zooms in on your clicks and switches on its options below; off, its zooms go." : {
+    "ja" : "オンにするまではオフです。オンにするとクリックの位置にズームし、下のオプションもオンになります。オフにすると自動のズームは削除されます。"
   },
   "Offset" : {
     "ja" : "オフセット"
@@ -1097,6 +1142,9 @@
   "Pause (Space)" : {
     "ja" : "一時停止（スペース）"
   },
+  "Pick a preset as My Style (Presets ▸ Edit Presets ▸ Use as My Style), then one click puts it on any video." : {
+    "ja" : "プリセットをマイスタイルに選ぶと（プリセット ▸ プリセットを編集 ▸ マイスタイルとして使用）、ワンクリックでどのビデオにも適用できます。"
+  },
   "Picture “%@” — the file is missing" : {
     "ja" : "画像“%@” — ファイルが見つかりません"
   },
@@ -1141,6 +1189,9 @@
   },
   "Previous / next frame" : {
     "ja" : "前/次のフレーム"
+  },
+  "Put “%@” on this video (⇧⌘Y)" : {
+    "ja" : "“%@”をこのビデオに適用（⇧⌘Y）"
   },
   "Recent Exports" : {
     "ja" : "最近の書き出し"
@@ -1217,6 +1268,9 @@
   "Redo Annotations" : {
     "ja" : "注釈の変更をやり直す"
   },
+  "Redo Apply My Style" : {
+    "ja" : "マイスタイルの適用をやり直す"
+  },
   "Redo Apply Preset" : {
     "ja" : "プリセットの適用をやり直す"
   },
@@ -1228,6 +1282,12 @@
   },
   "Redo Auto Zoom" : {
     "ja" : "自動ズームの適用をやり直す"
+  },
+  "Redo Auto-Zoom Off" : {
+    "ja" : "自動ズームのオフをやり直す"
+  },
+  "Redo Auto-Zoom On" : {
+    "ja" : "自動ズームのオンをやり直す"
   },
   "Redo Background" : {
     "ja" : "背景の変更をやり直す"
@@ -1607,11 +1667,17 @@
   "Save Subtitles (.srt)…" : {
     "ja" : "字幕を保存（.srt）…"
   },
+  "Save This Look as My Style" : {
+    "ja" : "この見た目をマイスタイルとして保存"
+  },
   "Save as Preset" : {
     "ja" : "プリセットとして保存"
   },
   "Save as Preset…" : {
     "ja" : "プリセットとして保存…"
+  },
+  "Saved as My Style — Apply my style (⇧⌘Y) puts it on a video" : {
+    "ja" : "マイスタイルとして保存しました — 「マイスタイルを適用」（⇧⌘Y）でビデオに適用できます"
   },
   "Saved by a newer LF Studios — some settings may not show" : {
     "ja" : "新しいバージョンのLF Studiosで保存されています。一部の設定は表示されない場合があります"
@@ -1820,6 +1886,9 @@
   "Stop Enhancing Voice" : {
     "ja" : "声の補正を停止"
   },
+  "Stop Using as My Style" : {
+    "ja" : "マイスタイルとして使うのをやめる"
+  },
   "Stop Using for New Recordings" : {
     "ja" : "新しい収録での使用をやめる"
   },
@@ -1943,11 +2012,23 @@
   "Try Again" : {
     "ja" : "再試行"
   },
+  "Turn Off Auto-Zoom on Clicks" : {
+    "ja" : "クリックで自動ズームをオフにする"
+  },
   "Turn On" : {
     "ja" : "オンにする"
   },
+  "Turn On Auto-Zoom on Clicks" : {
+    "ja" : "クリックで自動ズームをオンにする"
+  },
   "Turn around" : {
     "ja" : "向きを反転"
+  },
+  "Turn on Auto-zoom on clicks (Zoom) to use this" : {
+    "ja" : "使うには「クリックで自動ズーム」（ズーム）をオンにしてください"
+  },
+  "Turn on Auto-zoom on clicks — keeps zooms you placed by hand" : {
+    "ja" : "クリックで自動ズームをオンにする — 手動で置いたズームはそのまま"
   },
   "Turn on the camera in the recording bar before you record, and your face appears here as a bubble you can place, resize, and restyle." : {
     "ja" : "収録する前に収録バーでカメラをオンにすると、ここに顔がワイプとして表示されます。ワイプの位置、サイズ、スタイルは自由に変更できます。"
@@ -2030,6 +2111,9 @@
   "Undo Annotations" : {
     "ja" : "注釈の変更を取り消す"
   },
+  "Undo Apply My Style" : {
+    "ja" : "マイスタイルの適用を取り消す"
+  },
   "Undo Apply Preset" : {
     "ja" : "プリセットの適用を取り消す"
   },
@@ -2041,6 +2125,12 @@
   },
   "Undo Auto Zoom" : {
     "ja" : "自動ズームの適用を取り消す"
+  },
+  "Undo Auto-Zoom Off" : {
+    "ja" : "自動ズームのオフを取り消す"
+  },
+  "Undo Auto-Zoom On" : {
+    "ja" : "自動ズームのオンを取り消す"
   },
   "Undo Background" : {
     "ja" : "背景の変更を取り消す"
@@ -2348,6 +2438,9 @@
   "Use This Look for New Recordings" : {
     "ja" : "このスタイルを新しい収録に使用"
   },
+  "Use as My Style" : {
+    "ja" : "マイスタイルとして使用"
+  },
   "Use for new recordings" : {
     "ja" : "新しい収録に使用"
   },
@@ -2509,6 +2602,9 @@
   },
   "· follows cursor" : {
     "ja" : "· ポインタに追従"
+  },
+  "“%@” is your My Style — Apply my style (⇧⌘Y) puts it on a video" : {
+    "ja" : "“%@”をマイスタイルにしました — 「マイスタイルを適用」（⇧⌘Y）でビデオに適用できます"
   },
   "“%@” isn't at %@ anymore. Put it back, or save the project with Include Media next time so it carries its own copy." : {
     "ja" : "“%1$@”は%2$@にありません。元に戻すか、次回は「メディアを含める」で保存して、プロジェクトに独自のコピーを持たせてください。"

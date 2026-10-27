@@ -174,6 +174,10 @@ final class VideoAudioTests: XCTestCase {
         settings.fps = 30
         settings.endCard = false
 
+        // New recordings leave the loudness alone until "Even out loudness" is on.
+        XCTAssertFalse(model.project.audio.normalizeLoudness)
+        model.setStyle { $0.audio.normalizeLoudness = true }
+
         // The test tone is quiet; export evens it out to about −16 LUFS.
         let even = directory.appendingPathComponent("even.mp4")
         try await VideoDemoExporter.export(project: model.project, recording: model.recording, destinationURL: even, settings: settings)

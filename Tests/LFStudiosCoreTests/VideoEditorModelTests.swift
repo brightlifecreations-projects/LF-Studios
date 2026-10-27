@@ -106,12 +106,15 @@ final class VideoEditorModelTests: XCTestCase {
         XCTAssertNotNil(model.waveform)
     }
 
-    func testFreshRecordingOpensWithAutoZoomAndCursor() async throws {
+    func testFreshRecordingOpensUnzoomedUntilAutoZoomIsOn() async throws {
         let model = try await makeModel()
-        XCTAssertFalse(model.project.zoomRegions.isEmpty, "fresh recordings open already zoomed")
-        XCTAssertTrue(model.project.zoomRegions.allSatisfy(\.isAuto))
+        XCTAssertTrue(model.project.zoomRegions.isEmpty, "fresh recordings open without zooms")
+        XCTAssertTrue(model.plan.camera.isStatic)
         XCTAssertTrue(model.project.rendersCursor)
         XCTAssertNotNil(model.plan.cursorTrack)
+        model.setAutoZoom(true)
+        XCTAssertFalse(model.project.zoomRegions.isEmpty, "Auto-zoom on clicks plans the zooms")
+        XCTAssertTrue(model.project.zoomRegions.allSatisfy(\.isAuto))
         XCTAssertFalse(model.plan.camera.isStatic)
     }
 
@@ -240,7 +243,8 @@ final class VideoEditorModelTests: XCTestCase {
         model.setStyle { $0.background = .gradient("violet") }
         model.saveStyleAsDefault()
         XCTAssertTrue(model.styleMatchesDefault)
-        XCTAssertEqual(VideoDemoProject.make(sourceURL: URL(fileURLWithPath: "/tmp/new.mp4")).background, .gradient("violet"))
+        XCTAssertEqual(VideoStylePreset.savedDefault?.background, .gradient("violet"), "saved as My Style")
+        XCTAssertNotEqual(VideoDemoProject.make(sourceURL: URL(fileURLWithPath: "/tmp/new.mp4")).background, .gradient("violet"), "and not put on new recordings")
     }
 
     func testIdleSpeedUpFindsStillStretches() async throws {

@@ -35,6 +35,8 @@ struct VideoNamedStylePreset: Codable, Equatable, Identifiable {
         if !includesAspectRatio { current.aspectPreset = style.aspectPreset }
         // The pointer's visibility is the recording's, never the preset's.
         current.cursor.visible = style.cursor.visible
+        // A preset without an auto-zoom choice matches either way.
+        if style.autoZoom == nil { current.autoZoom = nil }
         return current == style
     }
 }
@@ -67,6 +69,13 @@ struct VideoStylePresetLibrary: Codable, Equatable {
         defaultID = try? c.decodeIfPresent(UUID.self, forKey: .defaultID)
         if let defaultID, !presets.contains(where: { $0.id == defaultID }) { self.defaultID = nil }
     }
+
+    /// My Style: the preset Apply my style puts on a video. It's kept as
+    /// `defaultID`, where the "default for new recordings" used to be, so a
+    /// default chosen before 1.2.0 became My Style by itself.
+    var myStyleID: UUID? { defaultID }
+    var myStyle: VideoNamedStylePreset? { defaultPreset }
+    mutating func setMyStyle(_ id: UUID?) { setDefault(id) }
 
     var defaultPreset: VideoNamedStylePreset? {
         defaultID.flatMap { id in presets.first { $0.id == id } }

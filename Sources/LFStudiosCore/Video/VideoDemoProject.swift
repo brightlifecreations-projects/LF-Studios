@@ -694,6 +694,10 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
     /// Camera footage filmed apart from the recording; shown instead of the
     /// recorded camera (VideoImportedCamera.swift).
     var importedCamera: VideoImportedCamera?
+    /// Auto-zoom on clicks (the Zoom panel's switch). New recordings start
+    /// with it off; projects saved before it existed count as on, so their
+    /// zoom options stay as they were (VideoManualOnly.swift).
+    var autoZoom = true
     /// Narrow outputs (9:16, 4:5, 1:1) fill the frame and pan with the
     /// pointer instead of letterboxing the recording.
     var reframe = false
@@ -770,11 +774,8 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
             keystrokeStyle: VideoKeystrokeStyle(),
             crop: .full
         )
-        // The default preset (Style ▸ Presets), its aspect ratio only when
-        // it includes one.
-        if let preset = VideoStylePreset.savedDefaultPreset {
-            project.apply(preset: preset)
-        }
+        // Nothing is applied by itself: My Style is a button (Style ▸ Apply my
+        // style), and new recordings open plain (`fresh`).
         return project
     }
 
@@ -1209,7 +1210,8 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
             webcam: webcam,
             captionStyle: captionStyle,
             keystrokeStyle: keystrokeStyle,
-            titleFont: cards.font
+            titleFont: cards.font,
+            autoZoom: autoZoom
         )
     }
 
@@ -1244,7 +1246,7 @@ extension VideoDemoProject {
         case aspectPreset, background, backgroundBlur, padding, cornerRadius, shadow, outline
         case zoomRegions, zoomSpeed, defaultZoomScale, motionBlur
         case overlayEffects, cursorSamples, clickEvents, nativeCursorVisible, cursor, audio
-        case webcam, cameraLayouts, importedCamera, reframe, captions, transcriptLanguage, captionStyle, keystrokes, keystrokeStyle, crop
+        case webcam, cameraLayouts, importedCamera, autoZoom, reframe, captions, transcriptLanguage, captionStyle, keystrokes, keystrokeStyle, crop
         case cards, music, clickSounds, transitions, captionTracks, sources, imageOverlayEffects
         // Legacy (v1) keys
         case backgroundPreset, customBackgroundPath, stageInset, shadowStrength, zoomKeyframes
@@ -1274,6 +1276,7 @@ extension VideoDemoProject {
         webcam = (try? container.decode(VideoWebcamSettings.self, forKey: .webcam)) ?? VideoWebcamSettings()
         cameraLayouts = (try? container.decode([VideoCameraLayoutRegion].self, forKey: .cameraLayouts)) ?? []
         importedCamera = try? container.decodeIfPresent(VideoImportedCamera.self, forKey: .importedCamera)
+        autoZoom = (try? container.decodeIfPresent(Bool.self, forKey: .autoZoom)) ?? true
         reframe = try container.decodeIfPresent(Bool.self, forKey: .reframe) ?? false
         captions = (try? container.decode([VideoCaptionLine].self, forKey: .captions)) ?? []
         transcriptLanguage = try? container.decodeIfPresent(String.self, forKey: .transcriptLanguage)
@@ -1373,6 +1376,7 @@ extension VideoDemoProject {
         try container.encode(webcam, forKey: .webcam)
         try container.encode(cameraLayouts, forKey: .cameraLayouts)
         try container.encodeIfPresent(importedCamera, forKey: .importedCamera)
+        try container.encode(autoZoom, forKey: .autoZoom)
         try container.encode(reframe, forKey: .reframe)
         try container.encode(captions, forKey: .captions)
         try container.encodeIfPresent(transcriptLanguage, forKey: .transcriptLanguage)
@@ -1460,6 +1464,9 @@ struct VideoStylePreset: Codable, Equatable {
     var keystrokeStyle: VideoKeystrokeStyle = VideoKeystrokeStyle()
     /// The title cards' typeface (captions and keys carry theirs).
     var titleFont: VideoFontChoice?
+    /// Auto-zoom on clicks, on or off (nil: a preset saved before this
+    /// existed, which leaves auto-zoom as it is).
+    var autoZoom: Bool? = nil
 
     /// The built-in LF Studios look.
     static let factory = VideoStylePreset(
@@ -1508,7 +1515,7 @@ struct VideoStylePreset: Codable, Equatable {
 extension VideoStylePreset {
     private enum CodingKeys: String, CodingKey {
         case aspectPreset, background, backgroundBlur, padding, cornerRadius, shadow, outline
-        case zoomSpeed, defaultZoomScale, motionBlur, cursor, webcam, captionStyle, keystrokeStyle, titleFont
+        case zoomSpeed, defaultZoomScale, motionBlur, cursor, webcam, captionStyle, keystrokeStyle, titleFont, autoZoom
     }
 
     /// Looks saved before a field existed still load.
@@ -1530,5 +1537,6 @@ extension VideoStylePreset {
         captionStyle = (try? c.decode(VideoCaptionStyle.self, forKey: .captionStyle)) ?? f.captionStyle
         keystrokeStyle = (try? c.decode(VideoKeystrokeStyle.self, forKey: .keystrokeStyle)) ?? f.keystrokeStyle
         titleFont = try? c.decodeIfPresent(VideoFontChoice.self, forKey: .titleFont)
+        autoZoom = try? c.decodeIfPresent(Bool.self, forKey: .autoZoom)
     }
 }

@@ -440,6 +440,7 @@ final class MarketingAssetsTests: XCTestCase {
         let model = VideoEditorModel(videoURL: url)
         await model.load()
         XCTAssertTrue(model.isReady, model.loadError ?? "")
+        model.setAutoZoom(true)
         XCTAssertFalse(model.project.zoomRegions.isEmpty, "auto zoom planned the camera")
         let palette = Layout.normalized(CGPoint(x: Layout.palette.midX, y: Layout.palette.midY - 30))
         model.mutate { project in

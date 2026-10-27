@@ -6,10 +6,10 @@
 	<string> – %@ frei</string>
 	<key>%@ (%@)</key>
 	<string>%@ (%@)</string>
+	<key>%@ (My Style)</key>
+	<string>%@ (Mein Stil)</string>
 	<key>%@ (This Mac)</key>
 	<string>%@ (dieser Mac)</string>
-	<key>%@ (default)</key>
-	<string>%@ (Standard)</string>
 	<key>%@ (edited)</key>
 	<string>%@ (bearbeitet)</string>
 	<key>%@ (original)</key>
@@ -230,6 +230,8 @@
 	<string>Alle eingerichtet</string>
 	<key>All files</key>
 	<string>Alle Dateien</string>
+	<key>All off until you turn them on. Every screenshot is kept in History and Home, and every recording in Home; a short notice says so.</key>
+	<string>Alles aus, bis du es einschaltest. Jedes Bildschirmfoto bleibt im Verlauf und auf der Startseite, jede Aufnahme auf der Startseite; ein kurzer Hinweis sagt es dir.</string>
 	<key>All zooms set to %@</key>
 	<string>Alle Zooms auf %@ gesetzt</string>
 	<key>Allow Access…</key>
@@ -272,16 +274,22 @@
 	<string>Apples Bildschirmfoto-Kurzbefehle belegen noch ⌘⇧3/4/5 – Bildschirmfotos können doppelt ausgelöst werden.</string>
 	<key>Apple's shortcuts are out of the way.</key>
 	<string>Apples Kurzbefehle stören nicht mehr.</string>
+	<key>Applied My Style (“%@”) — ⌘Z to undo</key>
+	<string>Mein Stil („%@“) angewendet – ⌘Z zum Widerrufen</string>
 	<key>Applied “%@”</key>
 	<string>„%@“ angewendet</string>
 	<key>Applies at every cut. Click a cut's marker on the timeline, or select a clip, to choose one for that cut only.</key>
 	<string>Gilt für jeden Schnitt. Klicke auf die Markierung eines Schnitts auf der Zeitleiste oder wähle einen Clip aus, um nur für diesen Schnitt einen Übergang festzulegen.</string>
 	<key>Apply</key>
 	<string>Anwenden</string>
+	<key>Apply My Style</key>
+	<string>Meinen Stil anwenden</string>
 	<key>Apply background to this image</key>
 	<string>Hintergrund auf dieses Bild anwenden</string>
 	<key>Apply crop</key>
 	<string>Zuschnitt anwenden</string>
+	<key>Apply my style</key>
+	<string>Meinen Stil anwenden</string>
 	<key>Apply the crop (Return)</key>
 	<string>Zuschnitt anwenden (Zeilenschalter)</string>
 	<key>Apply this position to all captions</key>
@@ -314,14 +322,20 @@
 	<string>Auto</string>
 	<key>Auto Zoom</key>
 	<string>Auto-Zoom</string>
-	<key>Auto Zoom from Clicks</key>
-	<string>Auto-Zoom aus Klicks</string>
 	<key>Auto-dismiss overlay</key>
 	<string>Miniatur automatisch ausblenden</string>
 	<key>Auto-save folder</key>
 	<string>Ordner für automatisches Sichern</string>
-	<key>Auto-zoom new recordings</key>
-	<string>Neue Aufnahmen automatisch zoomen</string>
+	<key>Auto-zoom off — its zooms are gone. ⌘Z to undo</key>
+	<string>Auto-Zoom aus – seine Zooms sind weg. ⌘Z zum Widerrufen</string>
+	<key>Auto-zoom on clicks</key>
+	<string>Auto-Zoom bei Klicks</string>
+	<key>Auto-zoom on clicks is on — click to turn it off and remove its zooms</key>
+	<string>Auto-Zoom bei Klicks ist an – klicken, um ihn auszuschalten und seine Zooms zu entfernen</string>
+	<key>Auto-zoom on — no clicks left on the timeline</key>
+	<string>Auto-Zoom an – auf der Timeline sind keine Klicks mehr</string>
+	<key>Auto-zoom on — no clicks were recorded, so add zooms by hand</key>
+	<string>Auto-Zoom an – es wurden keine Klicks aufgezeichnet, füge Zooms also von Hand hinzu</string>
 	<key>Automatic</key>
 	<string>Automatisch</string>
 	<key>Automatic detects each capture's language; pick languages when it guesses wrong. Accurate reads small text best — Fast answers sooner but knows fewer languages. Used by Capture Text, Copy Text, and History search.</key>
@@ -560,6 +574,8 @@
 	<string>Bild auswählen …</string>
 	<key>Choose Location…</key>
 	<string>Ort wählen …</string>
+	<key>Choose My Style first: Presets ▸ Edit Presets ▸ Use as My Style (⇧⌘Y)</key>
+	<string>Wähle zuerst „Mein Stil“: Voreinstellungen ▸ Voreinstellungen bearbeiten ▸ Als „Mein Stil“ verwenden (⇧⌘Y)</string>
 	<key>Choose a .ttf or .otf font. LF Studios keeps its own copy, so it keeps working if the file is deleted.</key>
 	<string>Wähle eine .ttf- oder .otf-Schrift. LF Studios behält eine eigene Kopie, damit sie auch funktioniert, wenn die Datei gelöscht wird.</string>
 	<key>Choose a language</key>
@@ -582,8 +598,6 @@
 	<string>Bildschirm wählen</string>
 	<key>Choose the camera video to show in the bubble</key>
 	<string>Wähle das Kameravideo für die Blase</string>
-	<key>Choose what happens immediately after taking a screenshot.</key>
-	<string>Lege fest, was direkt nach einem Bildschirmfoto passiert.</string>
 	<key>Choose where to put the handoff folder — any folder or drive</key>
 	<string>Wähle, wohin der Übergabeordner soll – jeder Ordner oder jedes Laufwerk</string>
 	<key>Choose window</key>
@@ -668,8 +682,6 @@
 	<string>Clip geteilt</string>
 	<key>Clip starts / ends here</key>
 	<string>Clip beginnt/endet hier</string>
-	<key>Clipboard</key>
-	<string>Zwischenablage</string>
 	<key>Clips</key>
 	<string>Clips</string>
 	<key>Close</key>
@@ -728,7 +740,7 @@
 	<string>Bild in die Zwischenablage kopieren</string>
 	<key>Copy recognized text (OCR)</key>
 	<string>Erkannten Text kopieren (OCR)</string>
-	<key>Copy screenshots to clipboard</key>
+	<key>Copy screenshots to the clipboard</key>
 	<string>Bildschirmfotos in die Zwischenablage kopieren</string>
 	<key>Copy the rows tab-separated, ready to paste into a spreadsheet</key>
 	<string>Zeilen mit Tabulatoren getrennt kopieren – bereit zum Einsetzen in eine Tabellenkalkulation</string>
@@ -1054,8 +1066,8 @@
 	<string>Bearbeitbarer Zeiger</string>
 	<key>Editable cursor</key>
 	<string>Bearbeitbarer Zeiger</string>
-	<key>Editable cursor records the pointer separately so the editor can smooth it, resize it, and keep it crisp when zoomed — the video editor adds it back on export (the raw recording file has no pointer). Auto-zoom makes a fresh recording open already produced: the camera zooms to follow your clicks. Keyboard shortcuts records only ⌘, ⌃ and ⌥ combos (plus Esc and F-keys) so the editor can show them as keycaps — plain typing is never recorded; macOS asks for Accessibility access. High quality is the default; Max keeps more detail but creates larger files. The countdown gives you a moment after pressing Record; Esc cancels it. Stop a recording with %@ from any app — plain Esc stays with the app you're recording.</key>
-	<string>„Bearbeitbarer Zeiger“ zeichnet den Zeiger separat auf, damit der Editor ihn glätten, skalieren und beim Zoomen scharf halten kann – der Video-Editor fügt ihn beim Exportieren wieder ein (die Rohdatei der Aufnahme enthält keinen Zeiger). Mit automatischem Zoom öffnet sich eine neue Aufnahme schon fertig produziert: Die Kamera folgt deinen Klicks. „Tastaturkurzbefehle anzeigen“ zeichnet nur Kombinationen mit ⌘, ⌃ und ⌥ auf (dazu Esc und die F-Tasten), damit der Editor sie als Tasten zeigen kann – normales Tippen wird nie aufgezeichnet; macOS fragt nach Zugriff auf die Bedienungshilfen. „Hoch“ ist die Standardqualität; „Maximal“ bewahrt mehr Details, erzeugt aber größere Dateien. Der Countdown gibt dir nach dem Start einen Moment Zeit; Esc bricht ihn ab. Stoppe eine Aufzeichnung aus jeder App mit %@ – ein einfaches Esc bleibt bei der App, die du aufzeichnest.</string>
+	<key>Editable cursor records the pointer separately so the editor can smooth it, resize it, and keep it crisp when zoomed — the video editor adds it back on export (the raw recording file has no pointer). Keyboard shortcuts records only ⌘, ⌃ and ⌥ combos (plus Esc and F-keys) so the editor can show them as keycaps — plain typing is never recorded; macOS asks for Accessibility access. High quality is the default; Max keeps more detail but creates larger files. The countdown gives you a moment after pressing Record; Esc cancels it. Stop a recording with %@ from any app — plain Esc stays with the app you're recording.</key>
+	<string>„Bearbeitbarer Zeiger“ zeichnet den Zeiger separat auf, damit der Editor ihn glätten, skalieren und beim Zoomen scharf halten kann – der Video-Editor fügt ihn beim Exportieren wieder ein (die Rohdatei der Aufnahme enthält keinen Zeiger). „Tastaturkurzbefehle anzeigen“ zeichnet nur Kombinationen mit ⌘, ⌃ und ⌥ auf (dazu Esc und die F-Tasten), damit der Editor sie als Tasten zeigen kann – normales Tippen wird nie aufgezeichnet; macOS fragt nach Zugriff auf die Bedienungshilfen. „Hoch“ ist die Standardqualität; „Maximal“ bewahrt mehr Details, erzeugt aber größere Dateien. Der Countdown gibt dir nach dem Start einen Moment Zeit; Esc bricht ihn ab. Stoppe eine Aufzeichnung aus jeder App mit %@ – ein einfaches Esc bleibt bei der App, die du aufzeichnest.</string>
 	<key>Editing</key>
 	<string>Bearbeiten</string>
 	<key>Ellipse</key>
@@ -1434,6 +1446,8 @@
 	<string>Er wurde direkt ins Bild aufgezeichnet und lässt sich daher nicht vergrößern oder glätten. Neue Aufnahmen zeichnen standardmäßig einen bearbeitbaren Zeiger auf („Einstellungen“ → „Aufzeichnung“).</string>
 	<key>It won't fit there. Choose another location, or pick Smaller files.</key>
 	<string>Dort ist nicht genug Platz. Wähle einen anderen Ort oder „Kleinere Dateien“.</string>
+	<key>It's your My Style, so Apply my style will have nothing to apply until you choose another. Videos that use this preset keep their look.</key>
+	<string>Das ist dein „Mein Stil“ – „Meinen Stil anwenden“ hat dann nichts anzuwenden, bis du einen anderen wählst. Videos mit dieser Voreinstellung behalten ihren Look.</string>
 	<key>JPEG Quality</key>
 	<string>JPEG-Qualität</string>
 	<key>Jump here</key>
@@ -1722,6 +1736,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Mein Look</string>
 	<key>My Preset</key>
 	<string>Meine Voreinstellung</string>
+	<key>My Style: “%@”</key>
+	<string>Mein Stil: „%@“</string>
 	<key>Nebula</key>
 	<string>Nebel</string>
 	<key>Needed to capture the screen. macOS will ask once.</key>
@@ -1738,16 +1754,6 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Neuer Untertitel</string>
 	<key>New recording</key>
 	<string>Neue Aufnahme</string>
-	<key>New recordings use “%@”</key>
-	<string>Neue Aufnahmen verwenden „%@“</string>
-	<key>New recordings will use the LF Studios look</key>
-	<string>Neue Aufnahmen verwenden den LF-Studios-Look</string>
-	<key>New recordings will use the built-in LF Studios look instead. Videos that use this preset keep their look.</key>
-	<string>Neue Aufnahmen verwenden dann den integrierten LF-Studios-Look. Videos mit dieser Voreinstellung behalten ihren Look.</string>
-	<key>New recordings will use “%@”</key>
-	<string>Neue Aufnahmen verwenden „%@“</string>
-	<key>New screenshots are copied automatically. Turn this off if you only want to use the overlay or history actions.</key>
-	<string>Neue Bildschirmfotos werden automatisch kopiert. Schalte dies aus, wenn du nur die Miniatur oder den Verlauf nutzen möchtest.</string>
 	<key>New zooms</key>
 	<string>Neue Zooms</string>
 	<key>Nice shot. You're all set.</key>
@@ -1758,6 +1764,10 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Nein</string>
 	<key>No Exports Yet</key>
 	<string>Noch keine Exporte</string>
+	<key>No My Style now</key>
+	<string>Jetzt kein „Mein Stil“</string>
+	<key>No My Style yet — open Presets ▸ Edit Presets and choose Use as My Style on one</key>
+	<string>Noch kein „Mein Stil“ – öffne Voreinstellungen ▸ Voreinstellungen bearbeiten und wähle bei einer davon „Als ‚Mein Stil‘ verwenden“</string>
 	<key>No background</key>
 	<string>Kein Hintergrund</string>
 	<key>No background — text only</key>
@@ -1778,12 +1788,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Keine Bildschirmfotos dieser Art</string>
 	<key>No captures yet</key>
 	<string>Noch keine Bildschirmfotos</string>
-	<key>No clicks left on the timeline</key>
-	<string>Keine Klicks mehr auf der Zeitleiste</string>
 	<key>No clicks were recorded in this video</key>
 	<string>In diesem Video wurden keine Klicks aufgezeichnet</string>
-	<key>No clicks were recorded — add zooms by hand</key>
-	<string>Keine Klicks aufgezeichnet – füge Zooms von Hand hinzu</string>
 	<key>No clicks were recorded, so add zooms by hand: hover the zoom track and click.</key>
 	<string>Es wurden keine Klicks aufgezeichnet – füge Zooms von Hand hinzu: Zeige auf die Zoomspur und klicke.</string>
 	<key>No conflict</key>
@@ -1862,6 +1868,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Anteil an der Bildbreite.</string>
 	<key>Off</key>
 	<string>Aus</string>
+	<key>Off until you turn it on. On, it zooms in on your clicks and switches on its options below; off, its zooms go.</key>
+	<string>Aus, bis du ihn einschaltest. An, zoomt er auf deine Klicks und schaltet seine Optionen unten ein; aus, verschwinden seine Zooms.</string>
 	<key>Offset</key>
 	<string>Versatz</string>
 	<key>Older</key>
@@ -1910,10 +1918,10 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Video-Editor öffnen</string>
 	<key>Open a .lfstudios project</key>
 	<string>Ein .lfstudios-Projekt öffnen</string>
-	<key>Open editor after recording</key>
-	<string>Editor nach der Aufzeichnung öffnen</string>
 	<key>Open in annotation editor</key>
 	<string>Im Bildschirmfoto-Editor öffnen</string>
+	<key>Open the video editor after recording</key>
+	<string>Nach der Aufnahme den Video-Editor öffnen</string>
 	<key>Open video…</key>
 	<string>Video öffnen …</string>
 	<key>Opens its title and length in Style</key>
@@ -1992,6 +2000,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Telefon</string>
 	<key>Phone QR found</key>
 	<string>QR-Code mit Telefonnummer gefunden</string>
+	<key>Pick a preset as My Style (Presets ▸ Edit Presets ▸ Use as My Style), then one click puts it on any video.</key>
+	<string>Wähle eine Voreinstellung als „Mein Stil“ (Voreinstellungen ▸ Voreinstellungen bearbeiten ▸ Als „Mein Stil“ verwenden), dann bringt ein Klick sie auf jedes Video.</string>
 	<key>Picked up where you left off</key>
 	<string>Weiter, wo du aufgehört hast</string>
 	<key>Picture “%@” — the file is missing</key>
@@ -2012,8 +2022,6 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Verpixelter Bereich</string>
 	<key>Placement</key>
 	<string>Platzierung</string>
-	<key>Plan zooms from your clicks — keeps zooms you placed by hand</key>
-	<string>Zooms aus deinen Klicks planen – von Hand gesetzte Zooms bleiben erhalten</string>
 	<key>Play</key>
 	<string>Abspielen</string>
 	<key>Play (Space)</key>
@@ -2086,6 +2094,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Rein</string>
 	<key>Purple</key>
 	<string>Lila</string>
+	<key>Put “%@” on this video (⇧⌘Y)</key>
+	<string>„%@“ auf dieses Video anwenden (⇧⌘Y)</string>
 	<key>QR Code</key>
 	<string>QR-Code</string>
 	<key>QR Codes</key>
@@ -2230,6 +2240,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Beschriftungsänderung wiederholen</string>
 	<key>Redo Annotations</key>
 	<string>Änderung der Beschriftungen wiederholen</string>
+	<key>Redo Apply My Style</key>
+	<string>„Meinen Stil anwenden“ wiederholen</string>
 	<key>Redo Apply Preset</key>
 	<string>Anwenden der Voreinstellung wiederholen</string>
 	<key>Redo Arrow Style</key>
@@ -2238,6 +2250,10 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Änderung des Seitenverhältnisses wiederholen</string>
 	<key>Redo Auto Zoom</key>
 	<string>Auto-Zoom wiederholen</string>
+	<key>Redo Auto-Zoom Off</key>
+	<string>Auto-Zoom aus wiederholen</string>
+	<key>Redo Auto-Zoom On</key>
+	<string>Auto-Zoom an wiederholen</string>
 	<key>Redo Background</key>
 	<string>Hintergrundänderung wiederholen</string>
 	<key>Redo Blur Style</key>
@@ -2606,6 +2622,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Untertitel sichern (.srt) …</string>
 	<key>Save Subtitles (.vtt)…</key>
 	<string>Untertitel sichern (.vtt) …</string>
+	<key>Save This Look as My Style</key>
+	<string>Diesen Look als „Mein Stil“ sichern</string>
 	<key>Save as Preset</key>
 	<string>Als Voreinstellung sichern</string>
 	<key>Save as Preset…</key>
@@ -2624,6 +2642,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>%@ gesichert</string>
 	<key>Saved %@ to %@ — click to reveal in Finder</key>
 	<string>„%1$@“ in „%2$@“ gesichert – zum Anzeigen im Finder klicken</string>
+	<key>Saved as My Style — Apply my style (⇧⌘Y) puts it on a video</key>
+	<string>Als „Mein Stil“ gesichert – „Meinen Stil anwenden“ (⇧⌘Y) bringt ihn auf ein Video</string>
 	<key>Saved by a newer LF Studios — some settings may not show</key>
 	<string>Von einer neueren LF-Studios-Version gesichert – manche Einstellungen werden eventuell nicht angezeigt</string>
 	<key>Saved capture</key>
@@ -2632,8 +2652,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Voreinstellung „%@“ gesichert</string>
 	<key>Saved to %@: %@</key>
 	<string>Gesichert in „%@“: %@</string>
-	<key>Saved — new recordings will use this look</key>
-	<string>Gesichert – neue Aufnahmen verwenden diesen Stil</string>
+	<key>Saved to History</key>
+	<string>Im Verlauf gesichert</string>
 	<key>Saved “%@”</key>
 	<string>„%@“ gesichert</string>
 	<key>Saves %@ — only silences where nothing happens on screen</key>
@@ -2742,8 +2762,6 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Startpunkt an Abspielposition setzen</string>
 	<key>Set Out to Playhead</key>
 	<string>Endpunkt an Abspielposition setzen</string>
-	<key>Set as Default for New Recordings</key>
-	<string>Als Standard für neue Aufnahmen festlegen</string>
 	<key>Set the in point to the playhead (%@)</key>
 	<string>Startpunkt auf die Abspielposition setzen (%@)</string>
 	<key>Set the out point to the playhead (%@)</key>
@@ -2790,8 +2808,6 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Editor-Tipps zeigen</string>
 	<key>Show Folder in Finder</key>
 	<string>Ordner im Finder zeigen</string>
-	<key>Show Quick Access Overlay</key>
-	<string>Schnellzugriff-Miniatur anzeigen</string>
 	<key>Show Recent Export “%@” in Finder</key>
 	<string>Letzten Export „%@“ im Finder zeigen</string>
 	<key>Show Recording in Finder</key>
@@ -2826,6 +2842,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Nur eine Art von Bildschirmfotos zeigen</string>
 	<key>Show shortcuts</key>
 	<string>Kurzbefehle anzeigen</string>
+	<key>Show the preview after capture</key>
+	<string>Nach der Aufnahme die Vorschau zeigen</string>
 	<key>Show the timeline in more detail</key>
 	<string>Zeitleiste detaillierter zeigen</string>
 	<key>Show the whole screenshot again</key>
@@ -2952,8 +2970,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Stimmverbesserung beenden</string>
 	<key>Stop Recording</key>
 	<string>Aufzeichnung stoppen</string>
-	<key>Stop Using for New Recordings</key>
-	<string>Nicht mehr für neue Aufnahmen verwenden</string>
+	<key>Stop Using as My Style</key>
+	<string>Nicht mehr als „Mein Stil“ verwenden</string>
 	<key>Stop and Close</key>
 	<string>Stoppen und schließen</string>
 	<key>Stop recording</key>
@@ -3228,12 +3246,20 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Erneut versuchen</string>
 	<key>Try it right now — Capture Area is also in the menu bar.</key>
 	<string>Probier es gleich aus – „Bereich aufnehmen“ findest du auch in der Menüleiste.</string>
+	<key>Turn Off Auto-Zoom on Clicks</key>
+	<string>Auto-Zoom bei Klicks ausschalten</string>
 	<key>Turn Off Click Sounds</key>
 	<string>Klickgeräusche ausschalten</string>
 	<key>Turn On</key>
 	<string>Einschalten</string>
+	<key>Turn On Auto-Zoom on Clicks</key>
+	<string>Auto-Zoom bei Klicks einschalten</string>
 	<key>Turn around</key>
 	<string>Umdrehen</string>
+	<key>Turn on Auto-zoom on clicks (Zoom) to use this</key>
+	<string>Schalte dafür Auto-Zoom bei Klicks ein (Zoom)</string>
+	<key>Turn on Auto-zoom on clicks — keeps zooms you placed by hand</key>
+	<string>Auto-Zoom bei Klicks einschalten – von Hand gesetzte Zooms bleiben</string>
 	<key>Turn on the camera in the recording bar before you record, and your face appears here as a bubble you can place, resize, and restyle.</key>
 	<string>Schalte vor der Aufzeichnung die Kamera in der Aufzeichnungsleiste ein – dann erscheint dein Gesicht hier als Blase, die du platzieren, skalieren und neu gestalten kannst.</string>
 	<key>Turn on the microphone or system audio before recording to capture sound.</key>
@@ -3294,6 +3320,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Beschriftungsänderung widerrufen</string>
 	<key>Undo Annotations</key>
 	<string>Änderung der Beschriftungen widerrufen</string>
+	<key>Undo Apply My Style</key>
+	<string>„Meinen Stil anwenden“ widerrufen</string>
 	<key>Undo Apply Preset</key>
 	<string>Anwenden der Voreinstellung widerrufen</string>
 	<key>Undo Arrow Style</key>
@@ -3302,6 +3330,10 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Änderung des Seitenverhältnisses widerrufen</string>
 	<key>Undo Auto Zoom</key>
 	<string>Auto-Zoom widerrufen</string>
+	<key>Undo Auto-Zoom Off</key>
+	<string>Auto-Zoom aus widerrufen</string>
+	<key>Undo Auto-Zoom On</key>
+	<string>Auto-Zoom an widerrufen</string>
 	<key>Undo Background</key>
 	<string>Hintergrundänderung widerrufen</string>
 	<key>Undo Blur Style</key>
@@ -3512,8 +3544,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Updates</string>
 	<key>Upload Custom Image</key>
 	<string>Eigenes Bild auswählen</string>
-	<key>Use This Look for New Recordings</key>
-	<string>Diesen Stil für neue Aufnahmen verwenden</string>
+	<key>Use as My Style</key>
+	<string>Als „Mein Stil“ verwenden</string>
 	<key>Use this color</key>
 	<string>Diese Farbe verwenden</string>
 	<key>Use this level for every zoom</key>
@@ -3776,6 +3808,8 @@ Du kannst Apples Kurzbefehle jederzeit unter „Systemeinstellungen“ → „Ta
 	<string>„%@“ kann nicht gelesen werden – die Datei ist eventuell beschädigt, wird noch gesichert oder hat ein Format, das dieser Mac nicht abspielen kann. Entferne sie aus diesem Video („Stil“ → „Aufnahmen“) oder ersetze sie durch eine funktionierende Kopie und exportiere erneut.</string>
 	<key>“%@” found in %lld of %lld captures</key>
 	<string>„%1$@“ in %2$lld von %3$lld Bildschirmfotos gefunden</string>
+	<key>“%@” is your My Style — Apply my style (⇧⌘Y) puts it on a video</key>
+	<string>„%@“ ist dein „Mein Stil“ – „Meinen Stil anwenden“ (⇧⌘Y) bringt ihn auf ein Video</string>
 	<key>“%@” isn't at %@ anymore. Put it back, or save the project with Include Media next time so it carries its own copy.</key>
 	<string>„%1$@“ ist nicht mehr unter %2$@. Lege die Datei zurück oder sichere das Projekt beim nächsten Mal mit „Medien einschließen“, damit es eine eigene Kopie enthält.</string>
 	<key>“%@” isn't in %@ anymore. Locate it to get the camera back.</key>

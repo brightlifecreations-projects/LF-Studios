@@ -154,12 +154,14 @@ final class VideoDemoPostRecordingPanel: NSPanel {
         }
     }
 
-    /// Auto-close after the user-configured overlay timeout (-1 = never),
-    /// same convention as the post-capture overlay.
+    /// Seconds before it goes by itself (hovering pauses it).
+    static let autoCloseSeconds: TimeInterval = 6
+
+    /// It always goes by itself after a few seconds — never left in the way
+    /// (the preview's own timeout, "Never" included, is for the preview).
     private func scheduleAutoClose() {
         dismissTimer?.invalidate()
-        let timeout = Settings.overlayTimeout
-        guard timeout > 0 else { return }
+        let timeout = Self.autoCloseSeconds
         dismissTimer = Timer.scheduledTimer(withTimeInterval: timeout, repeats: false) { [weak self] _ in
             DispatchQueue.main.async { self?.close() }
         }
