@@ -52,31 +52,101 @@ enum TestVideos {
     }
 
     /// An H.264 movie; `draw` paints each frame (CGContext, y up).
+    ///
+    /// Reliable under load: the writer's pixel-buffer pool can fail to hand
+    /// out a frame (IOSurface pressure, or the encoder service dropping the
+    /// writer after a long run of exports), which used to stop the test at
+    /// "Expectation failed: buffer". Now a frame the pool can't give is made
+    /// directly, every step is checked, and a writer that fails is retried
+    /// from scratch (three tries) before the real error is reported.
     static func writeVideo(to url: URL, size: CGSize, seconds: Int, fps: Int, draw: (CGContext, Int) -> Void) async throws {
+        var failures: [String] = []
+        for attempt in 1...3 {
+            do {
+                try await writeVideoOnce(to: url, size: size, seconds: seconds, fps: fps, draw: draw)
+                return
+            } catch let failure as WriteFailure {
+                failures.append("try \(attempt): \(failure.reason)")
+                try? FileManager.default.removeItem(at: url)
+                try await Task.sleep(nanoseconds: 300_000_000 * UInt64(attempt))
+            }
+        }
+        Issue.record("Couldn't write the test video \(url.lastPathComponent): \(failures.joined(separator: "; "))")
+        throw WriteFailure(reason: failures.last ?? "")
+    }
+
+    struct WriteFailure: Error { let reason: String }
+
+    /// Tests only: make the next writes of a file fail this way (exercises
+    /// the retry). Keyed by path, so suites running alongside aren't touched.
+    enum InjectedFailure { case pool, append, start }
+    nonisolated(unsafe) private static var injectedFailures: [String: [InjectedFailure]] = [:]
+    private static let injectionLock = NSLock()
+    static func inject(_ failures: [InjectedFailure], into url: URL) {
+        injectionLock.lock(); defer { injectionLock.unlock() }
+        injectedFailures[url.path] = failures
+    }
+    private static func takeInjected(for url: URL) -> InjectedFailure? {
+        injectionLock.lock(); defer { injectionLock.unlock() }
+        guard var queue = injectedFailures[url.path], !queue.isEmpty else { return nil }
+        let next = queue.removeFirst()
+        injectedFailures[url.path] = queue
+        return next
+    }
+
+    private static func writeVideoOnce(to url: URL, size: CGSize, seconds: Int, fps: Int, draw: (CGContext, Int) -> Void) async throws {
         let width = Int(size.width), height = Int(size.height)
+        let injected = takeInjected(for: url)
         try? FileManager.default.removeItem(at: url)
         let writer = try AVAssetWriter(outputURL: url, fileType: .mp4)
         let input = AVAssetWriterInput(mediaType: .video, outputSettings: [AVVideoCodecKey: AVVideoCodecType.h264, AVVideoWidthKey: width, AVVideoHeightKey: height])
-        let adaptor = AVAssetWriterInputPixelBufferAdaptor(assetWriterInput: input, sourcePixelBufferAttributes: [
+        input.expectsMediaDataInRealTime = false
+        let attributes: [String: Any] = [
             kCVPixelBufferPixelFormatTypeKey as String: kCVPixelFormatType_32BGRA, kCVPixelBufferWidthKey as String: width, kCVPixelBufferHeightKey as String: height,
-        ])
+            kCVPixelBufferIOSurfacePropertiesKey as String: [:] as [String: Any],
+        ]
+        let adaptor = AVAssetWriterInputPixelBufferAdaptor(assetWriterInput: input, sourcePixelBufferAttributes: attributes)
         writer.add(input)
-        #expect(writer.startWriting())
+        guard injected != .start, writer.startWriting() else {
+            throw WriteFailure(reason: "startWriting failed: \(String(describing: writer.error))")
+        }
         writer.startSession(atSourceTime: .zero)
         for frame in 0..<(fps * seconds) {
-            while !input.isReadyForMoreMediaData { try await Task.sleep(nanoseconds: 1_000_000) }
+            // Never wait on a writer that has stopped.
+            while !input.isReadyForMoreMediaData {
+                guard writer.status == .writing else { throw WriteFailure(reason: "writer stopped at frame \(frame): \(String(describing: writer.error))") }
+                try await Task.sleep(nanoseconds: 1_000_000)
+            }
             var buffer: CVPixelBuffer?
-            CVPixelBufferPoolCreatePixelBuffer(nil, try #require(adaptor.pixelBufferPool), &buffer)
-            let pixels = try #require(buffer)
+            var status: CVReturn = kCVReturnError
+            if injected != .pool, let pool = adaptor.pixelBufferPool {
+                status = CVPixelBufferPoolCreatePixelBuffer(nil, pool, &buffer)
+            }
+            if buffer == nil {
+                // The pool couldn't give one: make it directly.
+                let direct = CVPixelBufferCreate(nil, width, height, kCVPixelFormatType_32BGRA, attributes as CFDictionary, &buffer)
+                guard direct == kCVReturnSuccess, buffer != nil else {
+                    throw WriteFailure(reason: "no frame buffer at frame \(frame) (pool \(status), direct \(direct)), writer \(writer.status.rawValue): \(String(describing: writer.error))")
+                }
+            }
+            let pixels = buffer!
             CVPixelBufferLockBaseAddress(pixels, [])
-            let context = try #require(CGContext(data: CVPixelBufferGetBaseAddress(pixels), width: width, height: height, bitsPerComponent: 8, bytesPerRow: CVPixelBufferGetBytesPerRow(pixels), space: CGColorSpaceCreateDeviceRGB(), bitmapInfo: CGImageAlphaInfo.premultipliedFirst.rawValue | CGBitmapInfo.byteOrder32Little.rawValue))
+            guard let context = CGContext(data: CVPixelBufferGetBaseAddress(pixels), width: width, height: height, bitsPerComponent: 8, bytesPerRow: CVPixelBufferGetBytesPerRow(pixels), space: CGColorSpaceCreateDeviceRGB(), bitmapInfo: CGImageAlphaInfo.premultipliedFirst.rawValue | CGBitmapInfo.byteOrder32Little.rawValue) else {
+                CVPixelBufferUnlockBaseAddress(pixels, [])
+                throw WriteFailure(reason: "no drawing context at frame \(frame)")
+            }
             draw(context, frame)
             CVPixelBufferUnlockBaseAddress(pixels, [])
-            adaptor.append(pixels, withPresentationTime: CMTime(value: CMTimeValue(frame), timescale: CMTimeScale(fps)))
+            guard injected != .append || frame < 3, adaptor.append(pixels, withPresentationTime: CMTime(value: CMTimeValue(frame), timescale: CMTimeScale(fps))) else {
+                writer.cancelWriting()
+                throw WriteFailure(reason: "append failed at frame \(frame): \(String(describing: writer.error))")
+            }
         }
         input.markAsFinished()
         await writer.finishWriting()
-        #expect(writer.status == .completed)
+        guard writer.status == .completed else {
+            throw WriteFailure(reason: "finishWriting ended \(writer.status.rawValue): \(String(describing: writer.error))")
+        }
     }
 
     /// The color (0…1) of one output pixel, top-left origin.
