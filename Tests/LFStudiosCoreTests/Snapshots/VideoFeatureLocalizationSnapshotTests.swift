@@ -85,7 +85,19 @@ final class VideoFeatureLocalizationSnapshotTests: XCTestCase {
 
     // MARK: Export
 
-    func testExportSheetInEachLanguage() async throws {
+    // One test per language, so they can run at the same time.
+    func testExportSheetInGerman() async throws { try await exportSheet(in: "de") }
+    func testExportSheetInFrench() async throws { try await exportSheet(in: "fr") }
+    func testExportSheetInChinese() async throws { try await exportSheet(in: "zh-Hans") }
+    func testExportSheetInRussian() async throws { try await exportSheet(in: "ru") }
+    func testExportSheetInUkrainian() async throws { try await exportSheet(in: "uk") }
+    func testExportSheetInJapanese() async throws { try await exportSheet(in: "ja") }
+
+    func testExportSheetCoversEveryLanguage() {
+        XCTAssertEqual(Self.languages, ["de", "fr", "zh-Hans", "ru", "uk", "ja"], "a new language needs its export sheet test above")
+    }
+
+    private func exportSheet(in language: String) async throws {
         let model = try await model(seconds: 6)
         model.mutate { $0.captions = [VideoCaptionLine(start: 0.5, end: 2.5, text: "Hello there")] }
         model.setIntroEnabled(true)
@@ -93,7 +105,7 @@ final class VideoFeatureLocalizationSnapshotTests: XCTestCase {
         model.selection = .range(VideoDemoTimelineRange(start: 1, end: 3.5))
         let sheet = CGSize(width: 900, height: 900)
         let destination = directory.appendingPathComponent("Onboarding walkthrough (edited).mp4")
-        for language in Self.languages {
+        do {
             L10n.use(language)
             model.exportSettings = VideoExportSettings()
             model.exportSettings.subtitles = .srt

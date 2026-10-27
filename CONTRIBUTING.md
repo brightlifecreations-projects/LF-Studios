@@ -18,7 +18,8 @@ cd LF Studios
 bash scripts/setup-signing.sh   # once per Mac: a local signing certificate
 swift build                     # Debug build
 bash build-app.sh               # Full .app bundle (release + icon + codesign)
-swift test                      # Needs full Xcode (XCTest)
+bash scripts/test-quick.sh      # Tests while working, in parallel (needs full Xcode)
+bash scripts/test-full.sh       # Every test, screenshots included: once before a release
 ```
 
 **Requirements:** macOS 13+, Swift 5.9+. Full Xcode to run the tests.

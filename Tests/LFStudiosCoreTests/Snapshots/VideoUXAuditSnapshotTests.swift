@@ -8,7 +8,7 @@ import XCTest
 /// each kind of selection, the overlays, the smallest window — into PNGs
 /// (printed as SNAPSHOT: …) for a visual pass before a release.
 @MainActor
-final class VideoUXAuditTests: XCTestCase {
+final class VideoUXAuditSnapshotTests: XCTestCase {
     override class func setUp() {
         super.setUp()
         VideoTestStorage.isolate()

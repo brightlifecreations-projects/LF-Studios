@@ -23,7 +23,17 @@ name prefix: existing users' files depend on them.
 - See launch errors: `"/Applications/LF Studios.app/Contents/MacOS/LFStudios"`
 - Universal (Apple Silicon + Intel): `bash build-app.sh --universal`;
   `--no-install` leaves the app in .build/app.noindex.
-- Tests: `swift test` (about 20 minutes; needs full Xcode).
+- Tests (need full Xcode):
+  - While working: `bash scripts/test-quick.sh`, every test except the slow
+    screenshot tests, in parallel (a couple of minutes). For one area,
+    `swift test --filter <Class>`.
+  - Before publishing a release, once: `bash scripts/test-full.sh`, every
+    test, screenshot tests included.
+  - Screenshot tests live in Tests/LFStudiosCoreTests/Snapshots/, and each
+    class there ends in `SnapshotTests`. Tests that can't share the Mac
+    (screen recording, clipboard, shared settings, speed limits) run one
+    after another; the list and the reasons are in scripts/test-groups.sh.
+    A new test that needs either belongs there.
 - The owner's Mac has full Xcode. With only the Command Line Tools,
   build-app.sh falls back to an installed macOS 26 SDK when the newest one
   needs Xcode's macro plugins, and otherwise says to install Xcode.
@@ -36,7 +46,8 @@ branch and open a pull request into `main` describing what changed and what
 to check. The owner builds, tests, merges, and publishes it.
 
 ## Publishing a new version
-Run `bash scripts/publish-release.sh <version>` on main with everything
+First run `bash scripts/test-full.sh` once; it must pass. Then run
+`bash scripts/publish-release.sh <version>` on main with everything
 committed and pushed. CHANGELOG.md must have a `## [<version>]` section first.
 The script sets the version in Info.plist, dates the CHANGELOG section,
 commits and pushes, builds the universal app, zips it, and creates the

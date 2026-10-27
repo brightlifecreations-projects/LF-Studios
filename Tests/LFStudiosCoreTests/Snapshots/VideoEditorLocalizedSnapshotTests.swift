@@ -9,7 +9,7 @@ import XCTest
 /// selection, the timeline's lanes, the command palette, the shortcuts
 /// sheet, every page of tips, and cropping. Written to
 /// lfstudios-ux-l10n/<language>/ (printed as SNAPSHOT: …) for a visual pass;
-/// VideoUXAuditTests renders the same states in English.
+/// VideoUXAuditSnapshotTests renders the same states in English.
 @MainActor
 final class VideoEditorLocalizedSnapshotTests: XCTestCase {
     override class func setUp() {

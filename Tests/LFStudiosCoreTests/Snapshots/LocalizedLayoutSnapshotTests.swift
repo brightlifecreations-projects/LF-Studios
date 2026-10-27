@@ -8,13 +8,13 @@ import XCTest
 /// Settings, the menu, the welcome window, and the editor's toolbar and
 /// popovers render in English, German, French, and Chinese to look at.
 @MainActor
-final class LocalizedLayoutTests: XCTestCase {
+final class LocalizedLayoutSnapshotTests: XCTestCase {
     private static let languages = ["en"] + L10n.translations
     private var suiteName: String!
 
     override func setUp() async throws {
         _ = NSApplication.shared
-        suiteName = "LFStudiosCoreTests.LocalizedLayout.\(UUID().uuidString)"
+        suiteName = "LFStudiosCoreTests.LocalizedLayoutSnapshot.\(UUID().uuidString)"
         Settings.defaults = UserDefaults(suiteName: suiteName)!
     }
 
