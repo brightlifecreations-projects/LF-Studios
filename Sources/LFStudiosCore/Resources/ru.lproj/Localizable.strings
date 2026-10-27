@@ -6,10 +6,10 @@
 	<string> — там свободно %@</string>
 	<key>%@ (%@)</key>
 	<string>%@ (%@)</string>
+	<key>%@ (My Style)</key>
+	<string>%@ (Мой стиль)</string>
 	<key>%@ (This Mac)</key>
 	<string>%@ (этот Mac)</string>
-	<key>%@ (default)</key>
-	<string>%@ (по умолчанию)</string>
 	<key>%@ (edited)</key>
 	<string>%@ (изменено)</string>
 	<key>%@ (original)</key>
@@ -224,6 +224,8 @@
 	<string>Все настроено</string>
 	<key>All files</key>
 	<string>Все файлы</string>
+	<key>All off until you turn them on. Every screenshot is kept in History and Home, and every recording in Home; a short notice says so.</key>
+	<string>Всё выключено, пока вы не включите. Каждый снимок остаётся в истории и на главной, каждая запись — на главной; об этом скажет короткое уведомление.</string>
 	<key>All zooms set to %@</key>
 	<string>Для всех увеличений задано %@</string>
 	<key>Allow Access…</key>
@@ -266,16 +268,22 @@
 	<string>⌘⇧3/4/5 по-прежнему заняты сочетаниями Apple для снимков экрана — снимок может сработать дважды.</string>
 	<key>Apple's shortcuts are out of the way.</key>
 	<string>Сочетания клавиш Apple больше не мешают.</string>
+	<key>Applied My Style (“%@”) — ⌘Z to undo</key>
+	<string>Применён «Мой стиль» («%@») — ⌘Z, чтобы отменить</string>
 	<key>Applied “%@”</key>
 	<string>Применено: «%@»</string>
 	<key>Applies at every cut. Click a cut's marker on the timeline, or select a clip, to choose one for that cut only.</key>
 	<string>Применяется к каждой склейке. Чтобы выбрать переход только для одной склейки, нажмите ее метку на шкале времени или выберите клип.</string>
 	<key>Apply</key>
 	<string>Применить</string>
+	<key>Apply My Style</key>
+	<string>Применить мой стиль</string>
 	<key>Apply background to this image</key>
 	<string>Применить фон к этому изображению</string>
 	<key>Apply crop</key>
 	<string>Применить обрезку</string>
+	<key>Apply my style</key>
+	<string>Применить мой стиль</string>
 	<key>Apply the crop (Return)</key>
 	<string>Применить обрезку (Return)</string>
 	<key>Apply this position to all captions</key>
@@ -308,14 +316,20 @@
 	<string>Авто</string>
 	<key>Auto Zoom</key>
 	<string>Автомасштаб</string>
-	<key>Auto Zoom from Clicks</key>
-	<string>Автомасштаб по нажатиям</string>
 	<key>Auto-dismiss overlay</key>
 	<string>Автоскрытие миниатюры</string>
 	<key>Auto-save folder</key>
 	<string>Папка автосохранения</string>
-	<key>Auto-zoom new recordings</key>
-	<string>Автомасштаб для новых записей</string>
+	<key>Auto-zoom off — its zooms are gone. ⌘Z to undo</key>
+	<string>Автомасштаб выключен — его приближения убраны. ⌘Z, чтобы отменить</string>
+	<key>Auto-zoom on clicks</key>
+	<string>Автомасштаб по нажатиям</string>
+	<key>Auto-zoom on clicks is on — click to turn it off and remove its zooms</key>
+	<string>Автомасштаб по нажатиям включён — нажмите, чтобы выключить его и убрать его приближения</string>
+	<key>Auto-zoom on — no clicks left on the timeline</key>
+	<string>Автомасштаб включён — на таймлайне не осталось нажатий</string>
+	<key>Auto-zoom on — no clicks were recorded, so add zooms by hand</key>
+	<string>Автомасштаб включён — нажатия не записаны, добавьте приближения вручную</string>
 	<key>Automatic</key>
 	<string>Автоматически</string>
 	<key>Automatic detects each capture's language; pick languages when it guesses wrong. Accurate reads small text best — Fast answers sooner but knows fewer languages. Used by Capture Text, Copy Text, and History search.</key>
@@ -554,6 +568,8 @@
 	<string>Выбрать изображение…</string>
 	<key>Choose Location…</key>
 	<string>Выбрать место…</string>
+	<key>Choose My Style first: Presets ▸ Edit Presets ▸ Use as My Style (⇧⌘Y)</key>
+	<string>Сначала выберите «Мой стиль»: Стили ▸ Изменить стили ▸ Использовать как «Мой стиль» (⇧⌘Y)</string>
 	<key>Choose a .ttf or .otf font. LF Studios keeps its own copy, so it keeps working if the file is deleted.</key>
 	<string>Выберите шрифт .ttf или .otf. LF Studios сохранит свою копию, и шрифт продолжит работать, даже если файл удалить.</string>
 	<key>Choose a language</key>
@@ -576,8 +592,6 @@
 	<string>Выбрать экран</string>
 	<key>Choose the camera video to show in the bubble</key>
 	<string>Выберите видео с камеры для пузыря</string>
-	<key>Choose what happens immediately after taking a screenshot.</key>
-	<string>Выберите, что происходит сразу после снимка экрана.</string>
 	<key>Choose where to put the handoff folder — any folder or drive</key>
 	<string>Выберите, куда положить папку для передачи — любая папка или диск</string>
 	<key>Choose window</key>
@@ -662,8 +676,6 @@
 	<string>Клип разделен</string>
 	<key>Clip starts / ends here</key>
 	<string>Клип начинается / заканчивается здесь</string>
-	<key>Clipboard</key>
-	<string>Буфер обмена</string>
 	<key>Clips</key>
 	<string>Клипы</string>
 	<key>Close</key>
@@ -722,7 +734,7 @@
 	<string>Скопировать изображение в буфер обмена</string>
 	<key>Copy recognized text (OCR)</key>
 	<string>Скопировать распознанный текст (OCR)</string>
-	<key>Copy screenshots to clipboard</key>
+	<key>Copy screenshots to the clipboard</key>
 	<string>Копировать снимки в буфер обмена</string>
 	<key>Copy the rows tab-separated, ready to paste into a spreadsheet</key>
 	<string>Скопировать строки с разделителями-табуляциями, чтобы вставить их в электронную таблицу</string>
@@ -1048,8 +1060,8 @@
 	<string>Редактируемый указатель</string>
 	<key>Editable cursor</key>
 	<string>Редактируемый указатель</string>
-	<key>Editable cursor records the pointer separately so the editor can smooth it, resize it, and keep it crisp when zoomed — the video editor adds it back on export (the raw recording file has no pointer). Auto-zoom makes a fresh recording open already produced: the camera zooms to follow your clicks. Keyboard shortcuts records only ⌘, ⌃ and ⌥ combos (plus Esc and F-keys) so the editor can show them as keycaps — plain typing is never recorded; macOS asks for Accessibility access. High quality is the default; Max keeps more detail but creates larger files. The countdown gives you a moment after pressing Record; Esc cancels it. Stop a recording with %@ from any app — plain Esc stays with the app you're recording.</key>
-	<string>«Редактируемый указатель» записывает указатель отдельно, чтобы редактор мог сглаживать его, менять размер и сохранять четкость при увеличении, — видеоредактор добавляет его обратно при экспорте (в исходном файле записи указателя нет). С автомасштабом новая запись открывается уже смонтированной: камера приближается вслед за вашими нажатиями. «Показывать сочетания клавиш» записывает только комбинации с ⌘, ⌃ и ⌥ (а также Esc и функциональные клавиши), чтобы редактор мог показать их в виде клавиш, — обычный набор текста никогда не записывается; macOS запросит доступ в разделе «Универсальный доступ». По умолчанию используется высокое качество; максимальное сохраняет больше деталей, но файлы получаются крупнее. Обратный отсчет дает вам время после нажатия кнопки «Записать»; Esc отменяет его. Остановить запись из любого приложения можно сочетанием %@ — обычная клавиша Esc остается за приложением, которое вы записываете.</string>
+	<key>Editable cursor records the pointer separately so the editor can smooth it, resize it, and keep it crisp when zoomed — the video editor adds it back on export (the raw recording file has no pointer). Keyboard shortcuts records only ⌘, ⌃ and ⌥ combos (plus Esc and F-keys) so the editor can show them as keycaps — plain typing is never recorded; macOS asks for Accessibility access. High quality is the default; Max keeps more detail but creates larger files. The countdown gives you a moment after pressing Record; Esc cancels it. Stop a recording with %@ from any app — plain Esc stays with the app you're recording.</key>
+	<string>«Редактируемый указатель» записывает указатель отдельно, чтобы редактор мог сглаживать его, менять размер и сохранять четкость при увеличении, — видеоредактор добавляет его обратно при экспорте (в исходном файле записи указателя нет). «Показывать сочетания клавиш» записывает только комбинации с ⌘, ⌃ и ⌥ (а также Esc и функциональные клавиши), чтобы редактор мог показать их в виде клавиш, — обычный набор текста никогда не записывается; macOS запросит доступ в разделе «Универсальный доступ». По умолчанию используется высокое качество; максимальное сохраняет больше деталей, но файлы получаются крупнее. Обратный отсчет дает вам время после нажатия кнопки «Записать»; Esc отменяет его. Остановить запись из любого приложения можно сочетанием %@ — обычная клавиша Esc остается за приложением, которое вы записываете.</string>
 	<key>Editing</key>
 	<string>Монтаж</string>
 	<key>Ellipse</key>
@@ -1428,6 +1440,8 @@
 	<string>Он записан прямо в изображение, поэтому нельзя изменить его размер или сгладить его. Новые записи по умолчанию сохраняют редактируемый указатель (Настройки → Запись).</string>
 	<key>It won't fit there. Choose another location, or pick Smaller files.</key>
 	<string>Там не хватит места. Выберите другое место или «Файлы поменьше».</string>
+	<key>It's your My Style, so Apply my style will have nothing to apply until you choose another. Videos that use this preset keep their look.</key>
+	<string>Это ваш «Мой стиль»: пока вы не выберете другой, применять будет нечего. Видео с этим стилем сохранят свой вид.</string>
 	<key>JPEG Quality</key>
 	<string>Качество JPEG</string>
 	<key>Jump here</key>
@@ -1716,6 +1730,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Мой стиль</string>
 	<key>My Preset</key>
 	<string>Мой набор</string>
+	<key>My Style: “%@”</key>
+	<string>Мой стиль: «%@»</string>
 	<key>Nebula</key>
 	<string>Туманность</string>
 	<key>Needed to capture the screen. macOS will ask once.</key>
@@ -1732,16 +1748,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Новый субтитр</string>
 	<key>New recording</key>
 	<string>Новая запись</string>
-	<key>New recordings use “%@”</key>
-	<string>Новые записи используют «%@»</string>
-	<key>New recordings will use the LF Studios look</key>
-	<string>Новые записи будут в стиле LF Studios</string>
-	<key>New recordings will use the built-in LF Studios look instead. Videos that use this preset keep their look.</key>
-	<string>Новые записи будут использовать встроенный стиль LF Studios. Видео с этим стилем сохранят свой вид.</string>
-	<key>New recordings will use “%@”</key>
-	<string>Новые записи будут использовать «%@»</string>
-	<key>New screenshots are copied automatically. Turn this off if you only want to use the overlay or history actions.</key>
-	<string>Новые снимки копируются автоматически. Выключите, если хотите пользоваться только миниатюрой или действиями в истории.</string>
 	<key>New zooms</key>
 	<string>Новые увеличения</string>
 	<key>Nice shot. You're all set.</key>
@@ -1752,6 +1758,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Нет</string>
 	<key>No Exports Yet</key>
 	<string>Экспортов пока нет</string>
+	<key>No My Style now</key>
+	<string>«Мой стиль» не выбран</string>
+	<key>No My Style yet — open Presets ▸ Edit Presets and choose Use as My Style on one</key>
+	<string>«Мой стиль» ещё не выбран — откройте Стили ▸ Изменить стили и выберите у одного «Использовать как „Мой стиль“»</string>
 	<key>No background</key>
 	<string>Без фона</string>
 	<key>No background — text only</key>
@@ -1772,12 +1782,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Нет снимков этого типа</string>
 	<key>No captures yet</key>
 	<string>Снимков пока нет</string>
-	<key>No clicks left on the timeline</key>
-	<string>На шкале времени не осталось нажатий</string>
 	<key>No clicks were recorded in this video</key>
 	<string>В этом видео нажатия не записаны</string>
-	<key>No clicks were recorded — add zooms by hand</key>
-	<string>Нажатия не записаны — добавьте увеличения вручную</string>
 	<key>No clicks were recorded, so add zooms by hand: hover the zoom track and click.</key>
 	<string>Нажатия не записаны, поэтому добавьте увеличения вручную: наведите указатель на дорожку «Масштаб» и нажмите.</string>
 	<key>No conflict</key>
@@ -1856,6 +1862,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>От ширины кадра.</string>
 	<key>Off</key>
 	<string>Выкл.</string>
+	<key>Off until you turn it on. On, it zooms in on your clicks and switches on its options below; off, its zooms go.</key>
+	<string>Выключен, пока вы его не включите. Включённый, он приближает места нажатий и включает свои параметры ниже; выключенный — его приближения убираются.</string>
 	<key>Offset</key>
 	<string>Сдвиг</string>
 	<key>Older</key>
@@ -1904,10 +1912,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Открыть видеоредактор</string>
 	<key>Open a .lfstudios project</key>
 	<string>Открыть проект .lfstudios</string>
-	<key>Open editor after recording</key>
-	<string>Открывать редактор после записи</string>
 	<key>Open in annotation editor</key>
 	<string>Открыть в редакторе снимков</string>
+	<key>Open the video editor after recording</key>
+	<string>Открывать видеоредактор после записи</string>
 	<key>Open video…</key>
 	<string>Открыть видео…</string>
 	<key>Opens its title and length in Style</key>
@@ -1986,6 +1994,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Телефон</string>
 	<key>Phone QR found</key>
 	<string>Найден QR-код с номером телефона</string>
+	<key>Pick a preset as My Style (Presets ▸ Edit Presets ▸ Use as My Style), then one click puts it on any video.</key>
+	<string>Выберите стиль как «Мой стиль» (Стили ▸ Изменить стили ▸ Использовать как «Мой стиль»), и одно нажатие применит его к любому видео.</string>
 	<key>Picked up where you left off</key>
 	<string>Продолжаем с того места, где вы остановились</string>
 	<key>Picture “%@” — the file is missing</key>
@@ -2006,8 +2016,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Пикселизированная область</string>
 	<key>Placement</key>
 	<string>Размещение</string>
-	<key>Plan zooms from your clicks — keeps zooms you placed by hand</key>
-	<string>Расставить увеличения по вашим нажатиям — увеличения, добавленные вручную, сохранятся</string>
 	<key>Play</key>
 	<string>Воспроизвести</string>
 	<key>Play (Space)</key>
@@ -2080,6 +2088,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Чистый</string>
 	<key>Purple</key>
 	<string>Фиолетовый</string>
+	<key>Put “%@” on this video (⇧⌘Y)</key>
+	<string>Применить «%@» к этому видео (⇧⌘Y)</string>
 	<key>QR Code</key>
 	<string>QR-код</string>
 	<key>QR Codes</key>
@@ -2224,6 +2234,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторить изменение элемента разметки</string>
 	<key>Redo Annotations</key>
 	<string>Повторить изменение элементов разметки</string>
+	<key>Redo Apply My Style</key>
+	<string>Повторить применение моего стиля</string>
 	<key>Redo Apply Preset</key>
 	<string>Повторить применение стиля</string>
 	<key>Redo Arrow Style</key>
@@ -2232,6 +2244,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторить изменение соотношения сторон</string>
 	<key>Redo Auto Zoom</key>
 	<string>Повторить автомасштаб</string>
+	<key>Redo Auto-Zoom Off</key>
+	<string>Повторить выключение автомасштаба</string>
+	<key>Redo Auto-Zoom On</key>
+	<string>Повторить включение автомасштаба</string>
 	<key>Redo Background</key>
 	<string>Повторить изменение фона</string>
 	<key>Redo Blur Style</key>
@@ -2600,6 +2616,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Сохранить субтитры (.srt)…</string>
 	<key>Save Subtitles (.vtt)…</key>
 	<string>Сохранить субтитры (.vtt)…</string>
+	<key>Save This Look as My Style</key>
+	<string>Сохранить этот вид как «Мой стиль»</string>
 	<key>Save as Preset</key>
 	<string>Сохранить как стиль</string>
 	<key>Save as Preset…</key>
@@ -2618,6 +2636,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Сохранено: %@</string>
 	<key>Saved %@ to %@ — click to reveal in Finder</key>
 	<string>Файл «%@» сохранен в папку «%@» — нажмите, чтобы показать в Finder</string>
+	<key>Saved as My Style — Apply my style (⇧⌘Y) puts it on a video</key>
+	<string>Сохранено как «Мой стиль» — «Применить мой стиль» (⇧⌘Y) применит его к видео</string>
 	<key>Saved by a newer LF Studios — some settings may not show</key>
 	<string>Сохранено более новой версией LF Studios — некоторые настройки могут не отображаться</string>
 	<key>Saved capture</key>
@@ -2626,8 +2646,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Стиль «%@» сохранён</string>
 	<key>Saved to %@: %@</key>
 	<string>Сохранено в папку «%@»: %@</string>
-	<key>Saved — new recordings will use this look</key>
-	<string>Сохранено — новые записи будут использовать этот стиль</string>
+	<key>Saved to History</key>
+	<string>Сохранено в историю</string>
 	<key>Saved “%@”</key>
 	<string>«%@» сохранён</string>
 	<key>Saves %@ — only silences where nothing happens on screen</key>
@@ -2736,8 +2756,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Задать начало по указателю воспроизведения</string>
 	<key>Set Out to Playhead</key>
 	<string>Задать конец по указателю воспроизведения</string>
-	<key>Set as Default for New Recordings</key>
-	<string>Использовать для новых записей</string>
 	<key>Set the in point to the playhead (%@)</key>
 	<string>Задать начало по указателю воспроизведения (%@)</string>
 	<key>Set the out point to the playhead (%@)</key>
@@ -2784,8 +2802,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Показать подсказки редактора</string>
 	<key>Show Folder in Finder</key>
 	<string>Показать папку в Finder</string>
-	<key>Show Quick Access Overlay</key>
-	<string>Показывать миниатюру быстрого доступа</string>
 	<key>Show Recent Export “%@” in Finder</key>
 	<string>Показать недавний экспорт «%@» в Finder</string>
 	<key>Show Recording in Finder</key>
@@ -2820,6 +2836,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Показать снимки одного типа</string>
 	<key>Show shortcuts</key>
 	<string>Показывать сочетания клавиш</string>
+	<key>Show the preview after capture</key>
+	<string>Показывать превью после снимка</string>
 	<key>Show the timeline in more detail</key>
 	<string>Показать шкалу времени подробнее</string>
 	<key>Show the whole screenshot again</key>
@@ -2946,8 +2964,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Выключить улучшение голоса</string>
 	<key>Stop Recording</key>
 	<string>Остановить запись</string>
-	<key>Stop Using for New Recordings</key>
-	<string>Не использовать для новых записей</string>
+	<key>Stop Using as My Style</key>
+	<string>Больше не использовать как «Мой стиль»</string>
 	<key>Stop and Close</key>
 	<string>Остановить и закрыть</string>
 	<key>Stop recording</key>
@@ -3222,12 +3240,20 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторить попытку</string>
 	<key>Try it right now — Capture Area is also in the menu bar.</key>
 	<string>Попробуйте прямо сейчас — «Снять область» есть и в строке меню.</string>
+	<key>Turn Off Auto-Zoom on Clicks</key>
+	<string>Выключить автомасштаб по нажатиям</string>
 	<key>Turn Off Click Sounds</key>
 	<string>Выключить звуки нажатий</string>
 	<key>Turn On</key>
 	<string>Включить</string>
+	<key>Turn On Auto-Zoom on Clicks</key>
+	<string>Включить автомасштаб по нажатиям</string>
 	<key>Turn around</key>
 	<string>Развернуть</string>
+	<key>Turn on Auto-zoom on clicks (Zoom) to use this</key>
+	<string>Чтобы использовать, включите автомасштаб по нажатиям (Масштаб)</string>
+	<key>Turn on Auto-zoom on clicks — keeps zooms you placed by hand</key>
+	<string>Включить автомасштаб по нажатиям — приближения, добавленные вручную, останутся</string>
 	<key>Turn on the camera in the recording bar before you record, and your face appears here as a bubble you can place, resize, and restyle.</key>
 	<string>Перед записью включите камеру на панели записи — и ваше лицо появится здесь в окошке, которое можно перемещать, масштабировать и оформлять.</string>
 	<key>Turn on the microphone or system audio before recording to capture sound.</key>
@@ -3288,6 +3314,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Отменить изменение элемента разметки</string>
 	<key>Undo Annotations</key>
 	<string>Отменить изменение элементов разметки</string>
+	<key>Undo Apply My Style</key>
+	<string>Отменить применение моего стиля</string>
 	<key>Undo Apply Preset</key>
 	<string>Отменить применение стиля</string>
 	<key>Undo Arrow Style</key>
@@ -3296,6 +3324,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Отменить изменение соотношения сторон</string>
 	<key>Undo Auto Zoom</key>
 	<string>Отменить автомасштаб</string>
+	<key>Undo Auto-Zoom Off</key>
+	<string>Отменить выключение автомасштаба</string>
+	<key>Undo Auto-Zoom On</key>
+	<string>Отменить включение автомасштаба</string>
 	<key>Undo Background</key>
 	<string>Отменить изменение фона</string>
 	<key>Undo Blur Style</key>
@@ -3506,8 +3538,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Обновления</string>
 	<key>Upload Custom Image</key>
 	<string>Выбрать свое изображение</string>
-	<key>Use This Look for New Recordings</key>
-	<string>Использовать этот стиль для новых записей</string>
+	<key>Use as My Style</key>
+	<string>Использовать как «Мой стиль»</string>
 	<key>Use this color</key>
 	<string>Использовать этот цвет</string>
 	<key>Use this level for every zoom</key>
@@ -3770,6 +3802,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>Не удается прочитать «%@» — возможно, файл поврежден, еще сохраняется или имеет формат, который этот Mac не может воспроизвести. Удалите его из этого видео (Стиль → Записи) или замените рабочей копией и экспортируйте снова.</string>
 	<key>“%@” found in %lld of %lld captures</key>
 	<string>Снимков с «%@»: %lld из %lld</string>
+	<key>“%@” is your My Style — Apply my style (⇧⌘Y) puts it on a video</key>
+	<string>«%@» — ваш «Мой стиль»; «Применить мой стиль» (⇧⌘Y) применит его к видео</string>
 	<key>“%@” isn't at %@ anymore. Put it back, or save the project with Include Media next time so it carries its own copy.</key>
 	<string>«%1$@» больше нет в %2$@. Верните файл на место или в следующий раз сохраните проект с параметром «Включить медиафайлы», чтобы в нём была своя копия.</string>
 	<key>“%@” isn't in %@ anymore. Locate it to get the camera back.</key>

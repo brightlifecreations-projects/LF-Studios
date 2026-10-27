@@ -121,6 +121,7 @@ final class AppearanceSnapshotTests: XCTestCase {
             model.inspectorTab = tab
             try await render(VideoInspectorView(model: model), size: CGSize(width: 318, height: 1500), name: "inspector-\(tab.rawValue)")
         }
+        model.setAutoZoom(true)
         model.selection = .zoom(model.project.zoomRegions[0].id)
         try await render(VideoInspectorView(model: model), size: CGSize(width: 318, height: 900), name: "inspector-selected-zoom")
         model.selection = .caption(model.project.captions[0].id)

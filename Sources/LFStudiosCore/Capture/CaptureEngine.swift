@@ -864,6 +864,9 @@ final class CaptureEngine {
         finishCapture(image: image, rect: rect, type: type, historyManager: historyManager, playSound: playSound, on: screen)
     }
 
+    static var savedToHistoryMessage: String { L("Saved to History") }
+    static let savedToHistorySeconds: TimeInterval = 2.5
+
     /// Shared post-capture pipeline: sound, haptic, history, auto-actions,
     /// overlay — and the first successful capture completes onboarding.
     private func finishCapture(image: NSImage, rect: CGRect, type: CaptureType, historyManager: HistoryManager, playSound: Bool = true, on screen: NSScreen? = nil) {
@@ -883,6 +886,10 @@ final class CaptureEngine {
         }
         if Settings.afterCaptureShowOverlay {
             QuickAccessOverlay.show(image: image, historyItem: item, historyManager: historyManager)
+        } else {
+            // No preview: a short notice that goes by itself and never takes
+            // a click (the capture is in History and Home).
+            ToastWindow.show(message: Self.savedToHistoryMessage, duration: Self.savedToHistorySeconds, on: screen)
         }
 
         if !Settings.onboardingCompleted {

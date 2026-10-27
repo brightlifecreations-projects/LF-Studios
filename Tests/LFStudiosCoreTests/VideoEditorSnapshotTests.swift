@@ -42,6 +42,7 @@ final class VideoEditorSnapshotTests: XCTestCase {
         VideoDemoDraftStore.delete(for: url)
         let model = VideoEditorModel(videoURL: url)
         await model.load()
+        model.setAutoZoom(true)
         try? await Task.sleep(nanoseconds: 600_000_000)
         return model
     }

@@ -15,8 +15,25 @@ extension VideoEditorModel {
     /// Applies a preset to this video, as one undo step.
     func applyPreset(_ id: UUID) {
         guard let preset = presets.current.preset(id) else { return }
-        mutate(label: "Apply Preset") { $0.apply(preset: preset) }
+        let total = sourceDuration
+        mutate(label: "Apply Preset") { $0.apply(preset: preset, totalDuration: total) }
         showNotice(L("Applied “\(preset.name)”"), symbol: "paintpalette")
+    }
+
+    /// The preset chosen as My Style (Presets ▸ Edit Presets ▸ Use as My Style).
+    var myStyle: VideoNamedStylePreset? { presets.current.myStyle }
+
+    /// Style ▸ Apply my style (⇧⌘Y): My Style on this video, one undo step.
+    /// Without one, it says how to choose it.
+    func applyMyStyle() {
+        guard isReady else { return }
+        guard let preset = myStyle else {
+            showNotice(L("No My Style yet — open Presets ▸ Edit Presets and choose Use as My Style on one"), symbol: "wand.and.stars", duration: 5)
+            return
+        }
+        let total = sourceDuration
+        mutate(label: "Apply My Style") { $0.apply(preset: preset, totalDuration: total) }
+        showNotice(L("Applied My Style (“\(preset.name)”) — ⌘Z to undo"), symbol: "wand.and.stars")
     }
 
     /// Save as Preset…: a name, and whether it sets the aspect ratio.
@@ -70,8 +87,8 @@ extension VideoEditorModel {
         guard let preset = presets.current.preset(id) else { return }
         let alert = NSAlert()
         alert.messageText = L("Delete “\(preset.name)”?")
-        alert.informativeText = presets.current.defaultID == id
-            ? L("New recordings will use the built-in LF Studios look instead. Videos that use this preset keep their look.")
+        alert.informativeText = presets.current.myStyleID == id
+            ? L("It's your My Style, so Apply my style will have nothing to apply until you choose another. Videos that use this preset keep their look.")
             : L("Videos that use this preset keep their look.")
         alert.addButton(withTitle: L("Delete"))
         alert.addButton(withTitle: L("Cancel"))
@@ -80,13 +97,14 @@ extension VideoEditorModel {
         presets.change { $0.delete(id) }
     }
 
-    /// nil: new recordings start with the built-in look.
-    func setDefaultPreset(_ id: UUID?) {
-        presets.change { $0.setDefault(id) }
+    /// The preset Apply my style applies (nil: none). Choosing it applies
+    /// nothing: new recordings still open plain.
+    func setMyStyle(_ id: UUID?) {
+        presets.change { $0.setMyStyle(id) }
         if let id, let preset = presets.current.preset(id) {
-            showNotice(L("New recordings will use “\(preset.name)”"), symbol: "checkmark.seal.fill")
+            showNotice(L("“\(preset.name)” is your My Style — Apply my style (⇧⌘Y) puts it on a video"), symbol: "wand.and.stars")
         } else {
-            showNotice(L("New recordings will use the LF Studios look"), symbol: "arrow.counterclockwise")
+            showNotice(L("No My Style now"), symbol: "wand.and.stars")
         }
     }
 
@@ -150,6 +168,22 @@ struct VideoStylePresetsSection: View {
     var body: some View {
         let library = store.library
         let matching = model.matchingPreset
+        VStack(alignment: .leading, spacing: 8) {
+            Button {
+                model.applyMyStyle()
+            } label: {
+                Label(L("Apply my style"), systemImage: "wand.and.stars")
+                    .frame(maxWidth: .infinity)
+            }
+            .buttonStyle(VideoPrimaryButtonStyle())
+            .help(library.myStyle.map { L("Put “\($0.name)” on this video (⇧⌘Y)") } ?? L("Choose My Style first: Presets ▸ Edit Presets ▸ Use as My Style (⇧⌘Y)"))
+            if library.myStyle == nil {
+                Text(L("Pick a preset as My Style (Presets ▸ Edit Presets ▸ Use as My Style), then one click puts it on any video."))
+                    .font(.system(size: 10.5))
+                    .foregroundStyle(VideoEditorTheme.textTertiary)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+        }
         VideoInspectorSection(L("Presets")) {
             Menu {
                 if library.presets.isEmpty {
@@ -174,10 +208,10 @@ struct VideoStylePresetsSection: View {
                             Menu(preset.name) {
                                 Button(L("Update with Current Style")) { model.updatePreset(preset.id) }
                                 Button(L("Rename…")) { model.renamePreset(preset.id) }
-                                if library.defaultID == preset.id {
-                                    Button(L("Stop Using for New Recordings")) { model.setDefaultPreset(nil) }
+                                if library.myStyleID == preset.id {
+                                    Button(L("Stop Using as My Style")) { model.setMyStyle(nil) }
                                 } else {
-                                    Button(L("Set as Default for New Recordings")) { model.setDefaultPreset(preset.id) }
+                                    Button(L("Use as My Style")) { model.setMyStyle(preset.id) }
                                 }
                                 Divider()
                                 Button(L("Delete…"), role: .destructive) { model.deletePreset(preset.id) }
@@ -206,8 +240,8 @@ struct VideoStylePresetsSection: View {
             .background(VideoEditorTheme.card, in: RoundedRectangle(cornerRadius: 8, style: .continuous))
             .overlay(RoundedRectangle(cornerRadius: 8, style: .continuous).stroke(VideoEditorTheme.cardStroke, lineWidth: 1))
 
-            if let defaultPreset = library.defaultPreset {
-                Label(L("New recordings use “\(defaultPreset.name)”"), systemImage: "checkmark.seal.fill")
+            if let myStyle = library.myStyle {
+                Label(L("My Style: “\(myStyle.name)”"), systemImage: "wand.and.stars")
                     .font(.system(size: 10.5, weight: .medium))
                     .foregroundStyle(VideoEditorTheme.textTertiary)
             }
@@ -217,6 +251,6 @@ struct VideoStylePresetsSection: View {
     }
 
     private func title(_ preset: VideoNamedStylePreset, library: VideoStylePresetLibrary) -> String {
-        library.defaultID == preset.id ? L("\(preset.name) (default)") : preset.name
+        library.myStyleID == preset.id ? L("\(preset.name) (My Style)") : preset.name
     }
 }

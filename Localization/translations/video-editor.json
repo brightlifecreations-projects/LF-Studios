@@ -5,6 +5,11 @@
     "fr" : " — %@ libres à cet endroit",
     "zh-Hans" : " — 那里有 %@ 可用空间"
   },
+  "%@ (My Style)" : {
+    "de" : "%@ (Mein Stil)",
+    "fr" : "%@ (Mon style)",
+    "zh-Hans" : "%@（我的风格）"
+  },
   "%@ (This Mac)" : {
     "comment" : "Caption language menu: the Mac's own language",
     "de" : "%@ (dieser Mac)",
@@ -441,11 +446,26 @@
     "fr" : "Apparence",
     "zh-Hans" : "外观"
   },
+  "Applied My Style (“%@”) — ⌘Z to undo" : {
+    "de" : "Mein Stil („%@“) angewendet – ⌘Z zum Widerrufen",
+    "fr" : "Mon style (« %@ ») appliqué — ⌘Z pour annuler",
+    "zh-Hans" : "已应用我的风格（“%@”）— 按 ⌘Z 撤销"
+  },
   "Applied “%@”" : {
     "comment" : "Notice after applying a style preset",
     "de" : "„%@“ angewendet",
     "fr" : "« %@ » appliqué",
     "zh-Hans" : "已应用“%@”"
+  },
+  "Apply My Style" : {
+    "de" : "Meinen Stil anwenden",
+    "fr" : "Appliquer mon style",
+    "zh-Hans" : "应用我的风格"
+  },
+  "Apply my style" : {
+    "de" : "Meinen Stil anwenden",
+    "fr" : "Appliquer mon style",
+    "zh-Hans" : "应用我的风格"
   },
   "Apply to all zooms" : {
     "de" : "Auf alle Zooms anwenden",
@@ -488,6 +508,31 @@
     "de" : "Auto-Zoom aus Klicks",
     "fr" : "Zoom automatique à partir des clics",
     "zh-Hans" : "根据点按自动缩放"
+  },
+  "Auto-zoom off — its zooms are gone. ⌘Z to undo" : {
+    "de" : "Auto-Zoom aus – seine Zooms sind weg. ⌘Z zum Widerrufen",
+    "fr" : "Zoom auto désactivé — ses zooms ont été retirés. ⌘Z pour annuler",
+    "zh-Hans" : "自动缩放已关闭 — 它生成的缩放已移除。按 ⌘Z 撤销"
+  },
+  "Auto-zoom on clicks" : {
+    "de" : "Auto-Zoom bei Klicks",
+    "fr" : "Zoom auto sur les clics",
+    "zh-Hans" : "点按时自动缩放"
+  },
+  "Auto-zoom on clicks is on — click to turn it off and remove its zooms" : {
+    "de" : "Auto-Zoom bei Klicks ist an – klicken, um ihn auszuschalten und seine Zooms zu entfernen",
+    "fr" : "Le zoom auto sur les clics est activé — cliquez pour le désactiver et retirer ses zooms",
+    "zh-Hans" : "点按时自动缩放已开启 — 点按可关闭并移除它生成的缩放"
+  },
+  "Auto-zoom on — no clicks left on the timeline" : {
+    "de" : "Auto-Zoom an – auf der Timeline sind keine Klicks mehr",
+    "fr" : "Zoom auto activé — il ne reste aucun clic sur la timeline",
+    "zh-Hans" : "自动缩放已开启 — 时间线上已没有点按"
+  },
+  "Auto-zoom on — no clicks were recorded, so add zooms by hand" : {
+    "de" : "Auto-Zoom an – es wurden keine Klicks aufgezeichnet, füge Zooms also von Hand hinzu",
+    "fr" : "Zoom auto activé — aucun clic n’a été enregistré, ajoutez donc les zooms à la main",
+    "zh-Hans" : "自动缩放已开启 — 没有录到点按，请手动添加缩放"
   },
   "Back · pause · faster" : {
     "de" : "Zurück · Pause · Schneller",
@@ -695,6 +740,11 @@
     "de" : "Ort wählen …",
     "fr" : "Choisir l’emplacement…",
     "zh-Hans" : "选择位置…"
+  },
+  "Choose My Style first: Presets ▸ Edit Presets ▸ Use as My Style (⇧⌘Y)" : {
+    "de" : "Wähle zuerst „Mein Stil“: Voreinstellungen ▸ Voreinstellungen bearbeiten ▸ Als „Mein Stil“ verwenden (⇧⌘Y)",
+    "fr" : "Choisissez d’abord Mon style : Préréglages ▸ Modifier les préréglages ▸ Utiliser comme Mon style (⇧⌘Y)",
+    "zh-Hans" : "请先选择我的风格：预设 ▸ 编辑预设 ▸ 用作我的风格（⇧⌘Y）"
   },
   "Choose an LF Studios project" : {
     "de" : "Wähle ein LF-Studios-Projekt",
@@ -1561,6 +1611,11 @@
     "fr" : "Il n’y a pas assez de place. Choisissez un autre emplacement ou « Fichiers plus légers ».",
     "zh-Hans" : "那里放不下。请选择其他位置，或选择“较小的文件”。"
   },
+  "It's your My Style, so Apply my style will have nothing to apply until you choose another. Videos that use this preset keep their look." : {
+    "de" : "Das ist dein „Mein Stil“ – „Meinen Stil anwenden“ hat dann nichts anzuwenden, bis du einen anderen wählst. Videos mit dieser Voreinstellung behalten ihren Look.",
+    "fr" : "C’est votre Mon style : « Appliquer mon style » n’aura rien à appliquer tant que vous n’en choisissez pas un autre. Les vidéos qui utilisent ce préréglage gardent leur apparence.",
+    "zh-Hans" : "这是你的我的风格，删除后“应用我的风格”将无可应用，直到你另选一个。使用此预设的视频会保留原样。"
+  },
   "Jump here" : {
     "de" : "Hierher springen",
     "fr" : "Aller ici",
@@ -1819,6 +1874,11 @@
     "fr" : "Mon préréglage",
     "zh-Hans" : "我的预设"
   },
+  "My Style: “%@”" : {
+    "de" : "Mein Stil: „%@“",
+    "fr" : "Mon style : « %@ »",
+    "zh-Hans" : "我的风格：“%@”"
+  },
   "Never switch to the text beam or the hand" : {
     "de" : "Nie zum Textcursor oder zur Hand wechseln",
     "fr" : "Ne jamais passer au curseur de texte ni à la main",
@@ -1858,6 +1918,16 @@
     "de" : "Noch keine Exporte",
     "fr" : "Aucune exportation",
     "zh-Hans" : "尚无导出内容"
+  },
+  "No My Style now" : {
+    "de" : "Jetzt kein „Mein Stil“",
+    "fr" : "Plus de Mon style",
+    "zh-Hans" : "现在没有我的风格"
+  },
+  "No My Style yet — open Presets ▸ Edit Presets and choose Use as My Style on one" : {
+    "de" : "Noch kein „Mein Stil“ – öffne Voreinstellungen ▸ Voreinstellungen bearbeiten und wähle bei einer davon „Als ‚Mein Stil‘ verwenden“",
+    "fr" : "Pas encore de Mon style — ouvrez Préréglages ▸ Modifier les préréglages et choisissez Utiliser comme Mon style sur l’un d’eux",
+    "zh-Hans" : "还没有我的风格 — 打开预设 ▸ 编辑预设，在其中一个上选择“用作我的风格”"
   },
   "No background" : {
     "de" : "Kein Hintergrund",
@@ -1923,6 +1993,11 @@
     "de" : "Nicht für dieses Video",
     "fr" : "Pas pour cette vidéo",
     "zh-Hans" : "此视频不需要"
+  },
+  "Off until you turn it on. On, it zooms in on your clicks and switches on its options below; off, its zooms go." : {
+    "de" : "Aus, bis du ihn einschaltest. An, zoomt er auf deine Klicks und schaltet seine Optionen unten ein; aus, verschwinden seine Zooms.",
+    "fr" : "Désactivé tant que vous ne l’activez pas. Activé, il zoome sur vos clics et active ses options ci-dessous ; désactivé, ses zooms disparaissent.",
+    "zh-Hans" : "在你开启前一直关闭。开启后，它会在你的点按处放大，并打开下方的选项；关闭后，它生成的缩放会被移除。"
   },
   "Offset" : {
     "comment" : "How far the camera video is shifted against the recording",
@@ -2017,6 +2092,11 @@
     "fr" : "Pause (Espace)",
     "zh-Hans" : "暂停（空格键）"
   },
+  "Pick a preset as My Style (Presets ▸ Edit Presets ▸ Use as My Style), then one click puts it on any video." : {
+    "de" : "Wähle eine Voreinstellung als „Mein Stil“ (Voreinstellungen ▸ Voreinstellungen bearbeiten ▸ Als „Mein Stil“ verwenden), dann bringt ein Klick sie auf jedes Video.",
+    "fr" : "Choisissez un préréglage comme Mon style (Préréglages ▸ Modifier les préréglages ▸ Utiliser comme Mon style), puis un clic l’applique à n’importe quelle vidéo.",
+    "zh-Hans" : "选一个预设作为我的风格（预设 ▸ 编辑预设 ▸ 用作我的风格），之后点一下就能用到任何视频上。"
+  },
   "Picture “%@” — the file is missing" : {
     "de" : "Bild „%@“ – die Datei fehlt",
     "fr" : "Image « %@ » — le fichier est introuvable",
@@ -2102,6 +2182,11 @@
     "de" : "Vorheriges/nächstes Bild",
     "fr" : "Image précédente/suivante",
     "zh-Hans" : "上一帧/下一帧"
+  },
+  "Put “%@” on this video (⇧⌘Y)" : {
+    "de" : "„%@“ auf dieses Video anwenden (⇧⌘Y)",
+    "fr" : "Appliquer « %@ » à cette vidéo (⇧⌘Y)",
+    "zh-Hans" : "把“%@”用到这个视频上（⇧⌘Y）"
   },
   "Recent Exports" : {
     "de" : "Letzte Exporte",
@@ -2229,6 +2314,11 @@
     "fr" : "Rétablir la modification des annotations",
     "zh-Hans" : "重做标注更改"
   },
+  "Redo Apply My Style" : {
+    "de" : "„Meinen Stil anwenden“ wiederholen",
+    "fr" : "Rétablir Appliquer mon style",
+    "zh-Hans" : "重做应用我的风格"
+  },
   "Redo Apply Preset" : {
     "de" : "Anwenden der Voreinstellung wiederholen",
     "fr" : "Rétablir l’application du préréglage",
@@ -2248,6 +2338,16 @@
     "de" : "Auto-Zoom wiederholen",
     "fr" : "Rétablir le zoom automatique",
     "zh-Hans" : "重做自动缩放"
+  },
+  "Redo Auto-Zoom Off" : {
+    "de" : "Auto-Zoom aus wiederholen",
+    "fr" : "Rétablir la désactivation du zoom auto",
+    "zh-Hans" : "重做关闭自动缩放"
+  },
+  "Redo Auto-Zoom On" : {
+    "de" : "Auto-Zoom an wiederholen",
+    "fr" : "Rétablir l’activation du zoom auto",
+    "zh-Hans" : "重做开启自动缩放"
   },
   "Redo Background" : {
     "de" : "Hintergrundänderung wiederholen",
@@ -2937,6 +3037,11 @@
     "fr" : "Enregistrer les sous-titres (.srt)…",
     "zh-Hans" : "存储字幕（.srt）…"
   },
+  "Save This Look as My Style" : {
+    "de" : "Diesen Look als „Mein Stil“ sichern",
+    "fr" : "Enregistrer cette apparence comme Mon style",
+    "zh-Hans" : "把这个外观存储为我的风格"
+  },
   "Save as Preset" : {
     "de" : "Als Voreinstellung sichern",
     "fr" : "Enregistrer comme préréglage",
@@ -2946,6 +3051,11 @@
     "de" : "Als Voreinstellung sichern …",
     "fr" : "Enregistrer comme préréglage…",
     "zh-Hans" : "存储为预设…"
+  },
+  "Saved as My Style — Apply my style (⇧⌘Y) puts it on a video" : {
+    "de" : "Als „Mein Stil“ gesichert – „Meinen Stil anwenden“ (⇧⌘Y) bringt ihn auf ein Video",
+    "fr" : "Enregistré comme Mon style — Appliquer mon style (⇧⌘Y) l’applique à une vidéo",
+    "zh-Hans" : "已存储为我的风格 — “应用我的风格”（⇧⌘Y）可把它用到视频上"
   },
   "Saved by a newer LF Studios — some settings may not show" : {
     "de" : "Von einer neueren LF-Studios-Version gesichert – manche Einstellungen werden eventuell nicht angezeigt",
@@ -3308,6 +3418,11 @@
     "fr" : "Arrêter l’amélioration de la voix",
     "zh-Hans" : "停止增强人声"
   },
+  "Stop Using as My Style" : {
+    "de" : "Nicht mehr als „Mein Stil“ verwenden",
+    "fr" : "Ne plus utiliser comme Mon style",
+    "zh-Hans" : "不再用作我的风格"
+  },
   "Stop Using for New Recordings" : {
     "de" : "Nicht mehr für neue Aufnahmen verwenden",
     "fr" : "Ne plus utiliser pour les nouveaux enregistrements",
@@ -3517,15 +3632,35 @@
     "fr" : "Réessayer",
     "zh-Hans" : "重试"
   },
+  "Turn Off Auto-Zoom on Clicks" : {
+    "de" : "Auto-Zoom bei Klicks ausschalten",
+    "fr" : "Désactiver le zoom auto sur les clics",
+    "zh-Hans" : "关闭点按时自动缩放"
+  },
   "Turn On" : {
     "de" : "Einschalten",
     "fr" : "Activer",
     "zh-Hans" : "打开"
   },
+  "Turn On Auto-Zoom on Clicks" : {
+    "de" : "Auto-Zoom bei Klicks einschalten",
+    "fr" : "Activer le zoom auto sur les clics",
+    "zh-Hans" : "开启点按时自动缩放"
+  },
   "Turn around" : {
     "de" : "Umdrehen",
     "fr" : "Inverser",
     "zh-Hans" : "反转方向"
+  },
+  "Turn on Auto-zoom on clicks (Zoom) to use this" : {
+    "de" : "Schalte dafür Auto-Zoom bei Klicks ein (Zoom)",
+    "fr" : "Activez le zoom auto sur les clics (Zoom) pour l’utiliser",
+    "zh-Hans" : "请先开启点按时自动缩放（缩放）"
+  },
+  "Turn on Auto-zoom on clicks — keeps zooms you placed by hand" : {
+    "de" : "Auto-Zoom bei Klicks einschalten – von Hand gesetzte Zooms bleiben",
+    "fr" : "Activer le zoom auto sur les clics — les zooms placés à la main sont conservés",
+    "zh-Hans" : "开启点按时自动缩放 — 保留你手动放置的缩放"
   },
   "Turn on the camera in the recording bar before you record, and your face appears here as a bubble you can place, resize, and restyle." : {
     "de" : "Schalte vor der Aufzeichnung die Kamera in der Aufzeichnungsleiste ein – dann erscheint dein Gesicht hier als Blase, die du platzieren, skalieren und neu gestalten kannst.",
@@ -3663,6 +3798,11 @@
     "fr" : "Annuler la modification des annotations",
     "zh-Hans" : "撤销标注更改"
   },
+  "Undo Apply My Style" : {
+    "de" : "„Meinen Stil anwenden“ widerrufen",
+    "fr" : "Annuler Appliquer mon style",
+    "zh-Hans" : "撤销应用我的风格"
+  },
   "Undo Apply Preset" : {
     "de" : "Anwenden der Voreinstellung widerrufen",
     "fr" : "Annuler l’application du préréglage",
@@ -3682,6 +3822,16 @@
     "de" : "Auto-Zoom widerrufen",
     "fr" : "Annuler le zoom automatique",
     "zh-Hans" : "撤销自动缩放"
+  },
+  "Undo Auto-Zoom Off" : {
+    "de" : "Auto-Zoom aus widerrufen",
+    "fr" : "Annuler la désactivation du zoom auto",
+    "zh-Hans" : "撤销关闭自动缩放"
+  },
+  "Undo Auto-Zoom On" : {
+    "de" : "Auto-Zoom an widerrufen",
+    "fr" : "Annuler l’activation du zoom auto",
+    "zh-Hans" : "撤销开启自动缩放"
   },
   "Undo Background" : {
     "de" : "Hintergrundänderung widerrufen",
@@ -4215,6 +4365,11 @@
     "fr" : "Utiliser ce style pour les nouveaux enregistrements",
     "zh-Hans" : "为新录制内容使用此风格"
   },
+  "Use as My Style" : {
+    "de" : "Als „Mein Stil“ verwenden",
+    "fr" : "Utiliser comme Mon style",
+    "zh-Hans" : "用作我的风格"
+  },
   "Use for new recordings" : {
     "de" : "Für neue Aufnahmen verwenden",
     "fr" : "Utiliser par défaut",
@@ -4494,6 +4649,11 @@
     "de" : "· folgt dem Zeiger",
     "fr" : "· suit le pointeur",
     "zh-Hans" : "· 跟随指针"
+  },
+  "“%@” is your My Style — Apply my style (⇧⌘Y) puts it on a video" : {
+    "de" : "„%@“ ist dein „Mein Stil“ – „Meinen Stil anwenden“ (⇧⌘Y) bringt ihn auf ein Video",
+    "fr" : "« %@ » est votre Mon style — Appliquer mon style (⇧⌘Y) l’applique à une vidéo",
+    "zh-Hans" : "“%@”是你的我的风格 — “应用我的风格”（⇧⌘Y）可把它用到视频上"
   },
   "“%@” isn't at %@ anymore. Put it back, or save the project with Include Media next time so it carries its own copy." : {
     "de" : "„%1$@“ ist nicht mehr unter %2$@. Lege die Datei zurück oder sichere das Projekt beim nächsten Mal mit „Medien einschließen“, damit es eine eigene Kopie enthält.",

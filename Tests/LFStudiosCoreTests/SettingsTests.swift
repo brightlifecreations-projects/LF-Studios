@@ -25,15 +25,16 @@ final class SettingsTests: XCTestCase {
         XCTAssertEqual(Settings.overlayTimeout, 6)
         XCTAssertTrue(Settings.overlayOnLeft)
         XCTAssertTrue(Settings.playSounds)
-        XCTAssertTrue(Settings.afterCaptureShowOverlay)
-        XCTAssertTrue(Settings.afterCaptureCopyToClipboard)
+        // Manual only: nothing happens after a capture until it's switched on.
+        XCTAssertFalse(Settings.afterCaptureShowOverlay)
+        XCTAssertFalse(Settings.afterCaptureCopyToClipboard)
         XCTAssertFalse(Settings.afterCaptureSaveAutomatically)
         XCTAssertEqual(Settings.screenshotFormat, "png")
         XCTAssertEqual(Settings.jpegQuality, 0.95, accuracy: 0.001)
         XCTAssertEqual(Settings.recordingFPS, 60)
         XCTAssertEqual(Settings.recordingQuality, "high")
         XCTAssertTrue(Settings.recordingShowsCursor)
-        XCTAssertTrue(Settings.openVideoEditorAfterRecording)
+        XCTAssertFalse(Settings.openVideoEditorAfterRecording)
     }
 
     func testAnnotationEditorSettingsDefaultsAndClamping() {

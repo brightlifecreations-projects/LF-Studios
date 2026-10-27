@@ -62,6 +62,14 @@ push or tag triggers back.
   with `tccutil reset ScreenCapture com.lfstudios.app` (and Accessibility).
 
 ## Conventions
+- Manual only: every creative effect starts OFF and is turned on by the user
+  with its own button or switch. Nothing is applied to a video automatically.
+  Exceptions that stay automatic because they protect the user's work: crash
+  recovery, saving edits as you go (drafts), moving settings after a rename,
+  replacing a microphone that drops out mid-recording, and permission checks.
+  New recordings open with `VideoDemoProject.fresh` (Video/VideoManualOnly.swift);
+  don't change the settings types' built-in values, which older drafts and
+  project files fall back on.
 - User-visible strings go through `L("…")`; English strings are the keys.
   Translations: Localization/ and Sources/LFStudiosCore/Resources/*.lproj
   (see scripts/localize.py). Update all 7 languages when adding text.

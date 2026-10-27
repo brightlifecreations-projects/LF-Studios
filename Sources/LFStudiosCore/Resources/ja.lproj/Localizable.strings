@@ -6,10 +6,10 @@
 	<string> — 保存先の空き容量 %@</string>
 	<key>%@ (%@)</key>
 	<string>%@（%@）</string>
+	<key>%@ (My Style)</key>
+	<string>%@（マイスタイル）</string>
 	<key>%@ (This Mac)</key>
 	<string>%@（このMac）</string>
-	<key>%@ (default)</key>
-	<string>%@（デフォルト）</string>
 	<key>%@ (edited)</key>
 	<string>%@（編集済み）</string>
 	<key>%@ (original)</key>
@@ -282,6 +282,8 @@
 	<string>すべて設定済み</string>
 	<key>All files</key>
 	<string>すべてのファイル</string>
+	<key>All off until you turn them on. Every screenshot is kept in History and Home, and every recording in Home; a short notice says so.</key>
+	<string>オンにするまではすべてオフです。スクリーンショットは履歴とホームに、収録はホームに必ず残り、短い通知でお知らせします。</string>
 	<key>All zooms set to %@</key>
 	<string>すべてのズームを%@に設定しました</string>
 	<key>Allow Access…</key>
@@ -324,16 +326,22 @@
 	<string>⌘⇧3/4/5はまだAppleのスクリーンショット用ショートカットに使われているため、二重に取り込まれることがあります。</string>
 	<key>Apple's shortcuts are out of the way.</key>
 	<string>Appleのショートカットと競合しません。</string>
+	<key>Applied My Style (“%@”) — ⌘Z to undo</key>
+	<string>マイスタイル（“%@”）を適用しました — ⌘Zで取り消し</string>
 	<key>Applied “%@”</key>
 	<string>“%@”を適用しました</string>
 	<key>Applies at every cut. Click a cut's marker on the timeline, or select a clip, to choose one for that cut only.</key>
 	<string>すべてのつなぎ目に適用されます。1つのつなぎ目だけに設定するには、タイムライン上のつなぎ目のマーカーをクリックするか、クリップを選択します。</string>
 	<key>Apply</key>
 	<string>適用</string>
+	<key>Apply My Style</key>
+	<string>マイスタイルを適用</string>
 	<key>Apply background to this image</key>
 	<string>この画像に背景を適用</string>
 	<key>Apply crop</key>
 	<string>切り取りを適用</string>
+	<key>Apply my style</key>
+	<string>マイスタイルを適用</string>
 	<key>Apply the crop (Return)</key>
 	<string>切り取りを適用（Returnキー）</string>
 	<key>Apply this position to all captions</key>
@@ -366,18 +374,22 @@
 	<string>自動</string>
 	<key>Auto Zoom</key>
 	<string>自動ズーム</string>
-	<key>Auto Zoom from Clicks</key>
-	<string>クリックから自動ズーム</string>
-	<key>Auto zoom applied — %lld zooms follow your clicks</key>
-	<string>自動ズームを適用しました。クリックに合わせて%lld個のズームを追加しました</string>
 	<key>Auto zoom — %lld zooms</key>
 	<string>自動ズーム: %lld個のズーム</string>
 	<key>Auto-dismiss overlay</key>
 	<string>サムネールを自動的に閉じる</string>
 	<key>Auto-save folder</key>
 	<string>自動保存先</string>
-	<key>Auto-zoom new recordings</key>
-	<string>新しい収録に自動ズームを適用</string>
+	<key>Auto-zoom off — its zooms are gone. ⌘Z to undo</key>
+	<string>自動ズームをオフにしました — 自動のズームは削除しました。⌘Zで取り消し</string>
+	<key>Auto-zoom on clicks</key>
+	<string>クリックで自動ズーム</string>
+	<key>Auto-zoom on clicks is on — click to turn it off and remove its zooms</key>
+	<string>クリックで自動ズームはオンです — クリックでオフにして自動のズームを削除</string>
+	<key>Auto-zoom on — no clicks left on the timeline</key>
+	<string>自動ズームをオンにしました — タイムラインにクリックが残っていません</string>
+	<key>Auto-zoom on — no clicks were recorded, so add zooms by hand</key>
+	<string>自動ズームをオンにしました — クリックが記録されていないので、ズームは手動で追加してください</string>
 	<key>Automatic</key>
 	<string>自動</string>
 	<key>Automatic detects each capture's language; pick languages when it guesses wrong. Accurate reads small text best — Fast answers sooner but knows fewer languages. Used by Capture Text, Copy Text, and History search.</key>
@@ -618,6 +630,8 @@
 	<string>画像を選択…</string>
 	<key>Choose Location…</key>
 	<string>場所を選択…</string>
+	<key>Choose My Style first: Presets ▸ Edit Presets ▸ Use as My Style (⇧⌘Y)</key>
+	<string>まずマイスタイルを選んでください：プリセット ▸ プリセットを編集 ▸ マイスタイルとして使用（⇧⌘Y）</string>
 	<key>Choose a .ttf or .otf font. LF Studios keeps its own copy, so it keeps working if the file is deleted.</key>
 	<string>.ttfまたは.otfのフォントを選択してください。LF Studiosは独自のコピーを保持するため、ファイルが削除されても使い続けられます。</string>
 	<key>Choose a language</key>
@@ -640,8 +654,6 @@
 	<string>ディスプレイを選択</string>
 	<key>Choose the camera video to show in the bubble</key>
 	<string>バブルに表示するカメラ映像を選択</string>
-	<key>Choose what happens immediately after taking a screenshot.</key>
-	<string>スクリーンショットを撮った直後の動作を選択します。</string>
 	<key>Choose where to put the handoff folder — any folder or drive</key>
 	<string>受け渡し用フォルダの保存先を選択 — どのフォルダやドライブでも構いません</string>
 	<key>Choose window</key>
@@ -726,8 +738,6 @@
 	<string>クリップを分割しました</string>
 	<key>Clip starts / ends here</key>
 	<string>ここをクリップの開始/終了位置に</string>
-	<key>Clipboard</key>
-	<string>クリップボード</string>
 	<key>Clips</key>
 	<string>クリップ</string>
 	<key>Close</key>
@@ -786,7 +796,7 @@
 	<string>画像をクリップボードにコピー</string>
 	<key>Copy recognized text (OCR)</key>
 	<string>認識されたテキストをコピー（OCR）</string>
-	<key>Copy screenshots to clipboard</key>
+	<key>Copy screenshots to the clipboard</key>
 	<string>スクリーンショットをクリップボードにコピー</string>
 	<key>Copy the rows tab-separated, ready to paste into a spreadsheet</key>
 	<string>行をタブ区切りでコピーします。スプレッドシートにそのままペーストできます。</string>
@@ -1118,8 +1128,8 @@
 	<string>編集可能なポインタ</string>
 	<key>Editable cursor</key>
 	<string>編集可能なポインタ</string>
-	<key>Editable cursor records the pointer separately so the editor can smooth it, resize it, and keep it crisp when zoomed — the video editor adds it back on export (the raw recording file has no pointer). Auto-zoom makes a fresh recording open already produced: the camera zooms to follow your clicks. Keyboard shortcuts records only ⌘, ⌃ and ⌥ combos (plus Esc and F-keys) so the editor can show them as keycaps — plain typing is never recorded; macOS asks for Accessibility access. High quality is the default; Max keeps more detail but creates larger files. The countdown gives you a moment after pressing Record; Esc cancels it. Stop a recording with %@ from any app — plain Esc stays with the app you're recording.</key>
-	<string>“編集可能なポインタ”では、ポインタが別に記録されるため、エディタでポインタの動きを滑らかにしたり、サイズを変えたり、ズームしてもくっきり表示したりできます。ポインタは書き出し時にビデオエディタで合成されます（収録したままのファイルにはポインタは入っていません）。“自動ズーム”を使うと、新しい収録が編集済みの状態で開き、クリックに合わせて画面がズームします。“キーボードショートカットを表示”では、⌘、⌃、⌥を使った組み合わせ（およびEscキーとファンクションキー）だけが記録され、エディタでキーとして表示できます。通常の入力が記録されることはありません。macOSからアクセシビリティへのアクセスを求められます。品質のデフォルトは“高”です。“最高”では細部がより保たれますが、ファイルサイズが大きくなります。カウントダウンがあると、“収録”を押してから開始までに少し時間ができます。Escキーでキャンセルできます。収録はどのアプリからでも%@で停止できます。Escキーだけを押した場合は、収録中のアプリに送られます。</string>
+	<key>Editable cursor records the pointer separately so the editor can smooth it, resize it, and keep it crisp when zoomed — the video editor adds it back on export (the raw recording file has no pointer). Keyboard shortcuts records only ⌘, ⌃ and ⌥ combos (plus Esc and F-keys) so the editor can show them as keycaps — plain typing is never recorded; macOS asks for Accessibility access. High quality is the default; Max keeps more detail but creates larger files. The countdown gives you a moment after pressing Record; Esc cancels it. Stop a recording with %@ from any app — plain Esc stays with the app you're recording.</key>
+	<string>“編集可能なポインタ”では、ポインタが別に記録されるため、エディタでポインタの動きを滑らかにしたり、サイズを変えたり、ズームしてもくっきり表示したりできます。ポインタは書き出し時にビデオエディタで合成されます（収録したままのファイルにはポインタは入っていません）。“キーボードショートカットを表示”では、⌘、⌃、⌥を使った組み合わせ（およびEscキーとファンクションキー）だけが記録され、エディタでキーとして表示できます。通常の入力が記録されることはありません。macOSからアクセシビリティへのアクセスを求められます。品質のデフォルトは“高”です。“最高”では細部がより保たれますが、ファイルサイズが大きくなります。カウントダウンがあると、“収録”を押してから開始までに少し時間ができます。Escキーでキャンセルできます。収録はどのアプリからでも%@で停止できます。Escキーだけを押した場合は、収録中のアプリに送られます。</string>
 	<key>Editing</key>
 	<string>編集</string>
 	<key>Ellipse</key>
@@ -1508,6 +1518,8 @@
 	<string>ポインタが映像に焼き込まれているため、サイズの変更や滑らかにする処理はできません。新しい収録では、デフォルトで編集可能なポインタが記録されます（“設定”＞“収録”）。</string>
 	<key>It won't fit there. Choose another location, or pick Smaller files.</key>
 	<string>保存先の空き容量が足りません。別の場所を選ぶか、「小さいファイル」を選んでください。</string>
+	<key>It's your My Style, so Apply my style will have nothing to apply until you choose another. Videos that use this preset keep their look.</key>
+	<string>これはマイスタイルなので、別のものを選ぶまで「マイスタイルを適用」で適用するものがなくなります。このプリセットを使っているビデオの見た目は変わりません。</string>
 	<key>JPEG Quality</key>
 	<string>JPEGの品質</string>
 	<key>Jump here</key>
@@ -1810,6 +1822,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>マイスタイル</string>
 	<key>My Preset</key>
 	<string>マイプリセット</string>
+	<key>My Style: “%@”</key>
+	<string>マイスタイル：“%@”</string>
 	<key>Nebula</key>
 	<string>星雲</string>
 	<key>Needed to capture the screen. macOS will ask once.</key>
@@ -1826,16 +1840,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>新しい字幕</string>
 	<key>New recording</key>
 	<string>新規収録</string>
-	<key>New recordings use “%@”</key>
-	<string>新しい収録では“%@”を使用</string>
-	<key>New recordings will use the LF Studios look</key>
-	<string>新しい収録ではLF Studiosスタイルを使用します</string>
-	<key>New recordings will use the built-in LF Studios look instead. Videos that use this preset keep their look.</key>
-	<string>新しい収録では内蔵のLF Studiosスタイルが使われます。このプリセットを使っているビデオの外観はそのままです。</string>
-	<key>New recordings will use “%@”</key>
-	<string>新しい収録では“%@”を使用します</string>
-	<key>New screenshots are copied automatically. Turn this off if you only want to use the overlay or history actions.</key>
-	<string>新しいスクリーンショットは自動的にコピーされます。サムネールや履歴の操作だけを使いたい場合はオフにしてください。</string>
 	<key>New zooms</key>
 	<string>新しいズーム</string>
 	<key>Nice shot. You're all set.</key>
@@ -1846,6 +1850,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>いいえ</string>
 	<key>No Exports Yet</key>
 	<string>書き出しはまだありません</string>
+	<key>No My Style now</key>
+	<string>マイスタイルを解除しました</string>
+	<key>No My Style yet — open Presets ▸ Edit Presets and choose Use as My Style on one</key>
+	<string>マイスタイルがまだありません — プリセット ▸ プリセットを編集で、いずれかの「マイスタイルとして使用」を選んでください</string>
 	<key>No background</key>
 	<string>背景なし</string>
 	<key>No background — text only</key>
@@ -1866,12 +1874,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>この種類のスクリーンショットはありません</string>
 	<key>No captures yet</key>
 	<string>スクリーンショットはまだありません</string>
-	<key>No clicks left on the timeline</key>
-	<string>タイムラインにクリックが残っていません</string>
 	<key>No clicks were recorded in this video</key>
 	<string>このビデオにはクリックが記録されていません</string>
-	<key>No clicks were recorded — add zooms by hand</key>
-	<string>クリックが記録されていません。ズームは手動で追加してください</string>
 	<key>No clicks were recorded, so add zooms by hand: hover the zoom track and click.</key>
 	<string>クリックが記録されていないため、ズームは手動で追加してください。ズームトラックにポインタを置いてクリックします。</string>
 	<key>No conflict</key>
@@ -1950,6 +1954,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ビデオの幅に対する割合です。</string>
 	<key>Off</key>
 	<string>オフ</string>
+	<key>Off until you turn it on. On, it zooms in on your clicks and switches on its options below; off, its zooms go.</key>
+	<string>オンにするまではオフです。オンにするとクリックの位置にズームし、下のオプションもオンになります。オフにすると自動のズームは削除されます。</string>
 	<key>Offset</key>
 	<string>オフセット</string>
 	<key>Older</key>
@@ -1998,10 +2004,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ビデオエディタを開く</string>
 	<key>Open a .lfstudios project</key>
 	<string>.lfstudiosプロジェクトを開く</string>
-	<key>Open editor after recording</key>
-	<string>収録後にエディタを開く</string>
 	<key>Open in annotation editor</key>
 	<string>スクリーンショットエディタで開く</string>
+	<key>Open the video editor after recording</key>
+	<string>収録後にビデオエディタを開く</string>
 	<key>Open video…</key>
 	<string>ビデオを開く…</string>
 	<key>Opens its title and length in Style</key>
@@ -2080,6 +2086,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>電話番号</string>
 	<key>Phone QR found</key>
 	<string>電話番号のQRコードが見つかりました</string>
+	<key>Pick a preset as My Style (Presets ▸ Edit Presets ▸ Use as My Style), then one click puts it on any video.</key>
+	<string>プリセットをマイスタイルに選ぶと（プリセット ▸ プリセットを編集 ▸ マイスタイルとして使用）、ワンクリックでどのビデオにも適用できます。</string>
 	<key>Picked up where you left off</key>
 	<string>前回の続きから再開しました</string>
 	<key>Picture “%@” — the file is missing</key>
@@ -2100,8 +2108,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>モザイクをかけた範囲</string>
 	<key>Placement</key>
 	<string>配置</string>
-	<key>Plan zooms from your clicks — keeps zooms you placed by hand</key>
-	<string>クリックに合わせてズームを配置します。手動で配置したズームは残ります</string>
 	<key>Plans zooms around your %lld clicks. Zooms you placed by hand are kept.</key>
 	<string>%lld回のクリックに合わせてズームを配置します。手動で配置したズームは残ります。</string>
 	<key>Play</key>
@@ -2176,6 +2182,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ピュア</string>
 	<key>Purple</key>
 	<string>パープル</string>
+	<key>Put “%@” on this video (⇧⌘Y)</key>
+	<string>“%@”をこのビデオに適用（⇧⌘Y）</string>
 	<key>QR Code</key>
 	<string>QRコード</string>
 	<key>QR Codes</key>
@@ -2322,6 +2330,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>注釈の変更をやり直す</string>
 	<key>Redo Annotations</key>
 	<string>注釈の変更をやり直す</string>
+	<key>Redo Apply My Style</key>
+	<string>マイスタイルの適用をやり直す</string>
 	<key>Redo Apply Preset</key>
 	<string>プリセットの適用をやり直す</string>
 	<key>Redo Arrow Style</key>
@@ -2330,6 +2340,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>アスペクト比の変更をやり直す</string>
 	<key>Redo Auto Zoom</key>
 	<string>自動ズームの適用をやり直す</string>
+	<key>Redo Auto-Zoom Off</key>
+	<string>自動ズームのオフをやり直す</string>
+	<key>Redo Auto-Zoom On</key>
+	<string>自動ズームのオンをやり直す</string>
 	<key>Redo Background</key>
 	<string>背景の変更をやり直す</string>
 	<key>Redo Blur Style</key>
@@ -2716,6 +2730,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>字幕を保存（.srt）…</string>
 	<key>Save Subtitles (.vtt)…</key>
 	<string>字幕を保存（.vtt）…</string>
+	<key>Save This Look as My Style</key>
+	<string>この見た目をマイスタイルとして保存</string>
 	<key>Save as Preset</key>
 	<string>プリセットとして保存</string>
 	<key>Save as Preset…</key>
@@ -2734,6 +2750,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>“%@”を保存しました</string>
 	<key>Saved %@ to %@ — click to reveal in Finder</key>
 	<string>“%1$@”を“%2$@”に保存しました。クリックするとFinderに表示します</string>
+	<key>Saved as My Style — Apply my style (⇧⌘Y) puts it on a video</key>
+	<string>マイスタイルとして保存しました — 「マイスタイルを適用」（⇧⌘Y）でビデオに適用できます</string>
 	<key>Saved by a newer LF Studios — some settings may not show</key>
 	<string>新しいバージョンのLF Studiosで保存されています。一部の設定は表示されない場合があります</string>
 	<key>Saved capture</key>
@@ -2742,8 +2760,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>プリセット“%@”を保存しました</string>
 	<key>Saved to %@: %@</key>
 	<string>“%@”に保存しました: %@</string>
-	<key>Saved — new recordings will use this look</key>
-	<string>保存しました。新しい収録にはこのスタイルが使われます</string>
+	<key>Saved to History</key>
+	<string>履歴に保存しました</string>
 	<key>Saved “%@”</key>
 	<string>“%@”を保存しました</string>
 	<key>Saves %@ — only silences where nothing happens on screen</key>
@@ -2856,8 +2874,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>イン点を再生ヘッドの位置に設定</string>
 	<key>Set Out to Playhead</key>
 	<string>アウト点を再生ヘッドの位置に設定</string>
-	<key>Set as Default for New Recordings</key>
-	<string>新しい収録のデフォルトに設定</string>
 	<key>Set the in point to the playhead (%@)</key>
 	<string>イン点を再生ヘッドの位置（%@）に設定</string>
 	<key>Set the out point to the playhead (%@)</key>
@@ -2908,8 +2924,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>エディタのヒントを表示</string>
 	<key>Show Folder in Finder</key>
 	<string>フォルダをFinderに表示</string>
-	<key>Show Quick Access Overlay</key>
-	<string>クイックアクセスのサムネールを表示</string>
 	<key>Show Recent Export “%@” in Finder</key>
 	<string>最近書き出した“%@”をFinderに表示</string>
 	<key>Show Recording in Finder</key>
@@ -2944,6 +2958,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>1種類のスクリーンショットだけを表示します</string>
 	<key>Show shortcuts</key>
 	<string>ショートカットを表示</string>
+	<key>Show the preview after capture</key>
+	<string>キャプチャ後にプレビューを表示</string>
 	<key>Show the timeline in more detail</key>
 	<string>タイムラインを拡大表示</string>
 	<key>Show the whole screenshot again</key>
@@ -3074,8 +3090,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>声の補正を停止</string>
 	<key>Stop Recording</key>
 	<string>収録を停止</string>
-	<key>Stop Using for New Recordings</key>
-	<string>新しい収録での使用をやめる</string>
+	<key>Stop Using as My Style</key>
+	<string>マイスタイルとして使うのをやめる</string>
 	<key>Stop and Close</key>
 	<string>停止して閉じる</string>
 	<key>Stop recording</key>
@@ -3352,12 +3368,20 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>再試行</string>
 	<key>Try it right now — Capture Area is also in the menu bar.</key>
 	<string>今すぐ試してみましょう。“範囲を取り込む”はメニューバーからも使えます。</string>
+	<key>Turn Off Auto-Zoom on Clicks</key>
+	<string>クリックで自動ズームをオフにする</string>
 	<key>Turn Off Click Sounds</key>
 	<string>クリック音をオフにする</string>
 	<key>Turn On</key>
 	<string>オンにする</string>
+	<key>Turn On Auto-Zoom on Clicks</key>
+	<string>クリックで自動ズームをオンにする</string>
 	<key>Turn around</key>
 	<string>向きを反転</string>
+	<key>Turn on Auto-zoom on clicks (Zoom) to use this</key>
+	<string>使うには「クリックで自動ズーム」（ズーム）をオンにしてください</string>
+	<key>Turn on Auto-zoom on clicks — keeps zooms you placed by hand</key>
+	<string>クリックで自動ズームをオンにする — 手動で置いたズームはそのまま</string>
 	<key>Turn on the camera in the recording bar before you record, and your face appears here as a bubble you can place, resize, and restyle.</key>
 	<string>収録する前に収録バーでカメラをオンにすると、ここに顔がワイプとして表示されます。ワイプの位置、サイズ、スタイルは自由に変更できます。</string>
 	<key>Turn on the microphone or system audio before recording to capture sound.</key>
@@ -3418,6 +3442,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>注釈の変更を取り消す</string>
 	<key>Undo Annotations</key>
 	<string>注釈の変更を取り消す</string>
+	<key>Undo Apply My Style</key>
+	<string>マイスタイルの適用を取り消す</string>
 	<key>Undo Apply Preset</key>
 	<string>プリセットの適用を取り消す</string>
 	<key>Undo Arrow Style</key>
@@ -3426,6 +3452,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>アスペクト比の変更を取り消す</string>
 	<key>Undo Auto Zoom</key>
 	<string>自動ズームの適用を取り消す</string>
+	<key>Undo Auto-Zoom Off</key>
+	<string>自動ズームのオフを取り消す</string>
+	<key>Undo Auto-Zoom On</key>
+	<string>自動ズームのオンを取り消す</string>
 	<key>Undo Background</key>
 	<string>背景の変更を取り消す</string>
 	<key>Undo Blur Style</key>
@@ -3640,8 +3670,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>アップデート</string>
 	<key>Upload Custom Image</key>
 	<string>カスタム画像を選択</string>
-	<key>Use This Look for New Recordings</key>
-	<string>このスタイルを新しい収録に使用</string>
+	<key>Use as My Style</key>
+	<string>マイスタイルとして使用</string>
 	<key>Use this color</key>
 	<string>このカラーを使用</string>
 	<key>Use this level for every zoom</key>
@@ -3910,6 +3940,8 @@ Appleのショートカットは、“システム設定”＞“キーボード
 	<string>“%@”を読み込めません。破損しているか、保存中か、このMacで再生できない形式の可能性があります。このビデオから削除するか（“スタイル”＞“収録したビデオ”）、正常なコピーを同じ場所に置いてから、もう一度書き出してください。</string>
 	<key>“%@” found in %lld of %lld captures</key>
 	<string>%3$lld件中%2$lld件のスクリーンショットで“%1$@”が見つかりました</string>
+	<key>“%@” is your My Style — Apply my style (⇧⌘Y) puts it on a video</key>
+	<string>“%@”をマイスタイルにしました — 「マイスタイルを適用」（⇧⌘Y）でビデオに適用できます</string>
 	<key>“%@” isn't at %@ anymore. Put it back, or save the project with Include Media next time so it carries its own copy.</key>
 	<string>“%1$@”は%2$@にありません。元に戻すか、次回は「メディアを含める」で保存して、プロジェクトに独自のコピーを持たせてください。</string>
 	<key>“%@” isn't in %@ anymore. Locate it to get the camera back.</key>

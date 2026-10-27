@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.2.0] - Unreleased
+
+### Changed
+- **Manual only.** Nothing creative happens unless you click a button or switch. A new recording opens as you recorded it, in its own frame, with the real pointer: no background or padding, no zooms, no cursor smoothing, ripple, enlarging, hiding or blur, no camera mirroring or shrinking, no word highlighting in captions, and shortcut keys recorded but hidden until you show them. The camera bubble still shows, plainly. "Even out loudness" starts off too. Your projects, drafts, and project files open exactly as they were.
+- **Auto-zoom on clicks** is now its own switch in the Zoom panel, off for new recordings. Turning it on plans zooms from your clicks and switches on its options (zoom feel, motion blur, the camera shrinking while zoomed); turning it off removes those zooms and options again. Either way it's one ⌘Z step, and zooms you placed yourself stay. The "Auto-zoom new recordings" setting is gone.
+- **After a capture, nothing happens on its own.** Settings → General → After Capture has four switches, all off: Copy screenshots to the clipboard, Show the preview after capture, Open the video editor after recording, and Save automatically. Settings you changed yourself are kept; ones you never touched switch to off. Every screenshot is still kept in History and Home, and a short "Saved to History" notice says so.
+- The "Recording saved" panel closes by itself after a few seconds (hover to keep it), and neither it nor the notice ever blocks anything.
+
+### Added
+- **Apply my style.** A button at the top of the Style panel (⇧⌘Y) puts your own look on the video in one ⌘Z step. In the Presets menu, "Use as My Style" picks which preset it is; until you pick one, the button explains how. A preset you'd set as the default for new recordings becomes My Style, and is no longer applied by itself.
+
 ## [1.1.1] - 2026-10-27
 
 ### Added

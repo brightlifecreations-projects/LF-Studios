@@ -495,6 +495,7 @@ extension VideoEditorModel {
         case ([.command], "k"):
             withAnimation(.easeOut(duration: 0.15)) { isCommandPalettePresented = true }
             return true
+        case ([.command, .shift], "y"): applyMyStyle(); return true
         case ([.command], "e"):
             withAnimation(.easeOut(duration: 0.15)) { isExportPresented = true }
             return true
@@ -692,7 +693,8 @@ struct VideoCommandPalette: View {
             Command(id: "play", title: model.isPlaying ? L("Pause") : L("Play"), symbol: "playpause.fill", shortcut: L("Space")) { model.togglePlay() },
             Command(id: "split", title: L("Split at Playhead"), symbol: "scissors", shortcut: "S") { model.splitAtPlayhead() },
             Command(id: "zoom", title: L("Add Zoom at Playhead"), symbol: "plus.magnifyingglass", shortcut: "Z") { model.addZoom(at: model.clock.time) },
-            Command(id: "auto", title: L("Auto Zoom from Clicks"), symbol: "sparkles", shortcut: "") { model.autoZoom() },
+            Command(id: "auto", title: model.project.autoZoom ? L("Turn Off Auto-Zoom on Clicks") : L("Turn On Auto-Zoom on Clicks"), symbol: "sparkles", shortcut: "") { model.setAutoZoom(!model.project.autoZoom) },
+            Command(id: "my-style", title: L("Apply My Style"), symbol: "wand.and.stars", shortcut: "⇧⌘Y") { model.applyMyStyle() },
             Command(id: "remove-zooms", title: L("Remove All Zooms"), symbol: "trash", shortcut: "") { model.removeAllZooms() },
             Command(id: "idle", title: L("Speed Up Idle Moments"), symbol: "hare", shortcut: "") { model.speedUpIdle() },
             Command(id: "crop", title: L("Crop the Recording…"), symbol: "crop", shortcut: "") { model.beginCrop() },
@@ -703,9 +705,9 @@ struct VideoCommandPalette: View {
             Command(id: "spotlight", title: L("Add Spotlight (Dim Around a Spot)"), symbol: VideoDemoOverlayEffectKind.spotlight.icon, shortcut: "") { model.addOverlay(.spotlight) },
             Command(id: "shuffle", title: L("Shuffle Background"), symbol: "dice", shortcut: "") { model.shuffleBackground() },
             Command(id: "full-frame", title: model.project.usesRawSourceFrame ? L("Show Background") : L("Full Frame (No Background)"), symbol: "rectangle.inset.filled", shortcut: "") {
-                model.setStyle { $0.padding = $0.usesRawSourceFrame ? VideoStylePreset.factory.padding : 0 }
+                model.setStyle { $0.toggleBackground() }
             },
-            Command(id: "save-look", title: L("Use This Look for New Recordings"), symbol: "checkmark.seal", shortcut: "") { model.saveStyleAsDefault() },
+            Command(id: "save-look", title: L("Save This Look as My Style"), symbol: "checkmark.seal", shortcut: "") { model.saveStyleAsDefault() },
             Command(id: "reset-look", title: L("Reset to the LF Studios Look"), symbol: "arrow.counterclockwise", shortcut: "") { model.resetStyle() },
             Command(id: "copy-frame", title: L("Copy Current Frame"), symbol: "photo.on.rectangle", shortcut: "⌘C") { model.copyCurrentFrame() },
             Command(id: "undo", title: VideoEditDescription.undoTitle(model.undoLabel), symbol: "arrow.uturn.backward", shortcut: "⌘Z") { model.undo() },
@@ -840,7 +842,7 @@ struct VideoShortcutsSheet: View {
             (L("Editing"), [("S  C  ⌘B", L("Split at playhead")), (L("⇧-drag"), L("Select a range to cut")), (L("⇧/⌘-click"), L("Select several items")), ("I  O", L("Clip starts / ends here")), ("⌫", L("Delete selection")), ("⌥← ⌥→", L("Select previous / next item")), ("⌘Z  ⇧⌘Z", L("Undo / redo"))]),
             (L("Zooms & annotations"), [("Z", L("Add zoom at playhead")), ("1 – 5", L("Zoom level (zoom selected)")), ("⌘D", L("Duplicate zoom or annotation")), ("T  H  A  B", L("Text · highlight · arrow · blur")), (L("Double-click"), L("Type in a text annotation"))]),
             (L("Timeline"), [("=  −", L("Show more / less detail")), ("⌘=  ⌘−", L("Show more / less detail")), (L("⌘ scroll"), L("Zoom in at the pointer"))]),
-            (L("General"), [("⌘E", L("Export")), ("⌘K", L("All commands")), ("⌘C", L("Copy current frame")), ("⌘F", L("Find in the transcript")), ("?", L("This list")), (L("Esc"), L("Deselect / close"))]),
+            (L("General"), [("⌘E", L("Export")), ("⇧⌘Y", L("Apply my style")), ("⌘K", L("All commands")), ("⌘C", L("Copy current frame")), ("⌘F", L("Find in the transcript")), ("?", L("This list")), (L("Esc"), L("Deselect / close"))]),
         ]
     }
 

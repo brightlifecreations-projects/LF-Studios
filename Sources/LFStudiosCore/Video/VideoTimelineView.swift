@@ -136,7 +136,7 @@ struct VideoTimelineToolbar: View {
             }
             toolbarDivider
 
-            toolButton(symbol: "sparkles", title: L("Auto Zoom"), help: L("Plan zooms from your clicks — keeps zooms you placed by hand")) { model.autoZoom() }
+            toolButton(symbol: model.project.autoZoom ? "sparkles.rectangle.stack.fill" : "sparkles", title: L("Auto Zoom"), help: model.project.autoZoom ? L("Auto-zoom on clicks is on — click to turn it off and remove its zooms") : L("Turn on Auto-zoom on clicks — keeps zooms you placed by hand")) { model.setAutoZoom(!model.project.autoZoom) }
             toolButton(symbol: "hare", title: L("Speed Up Idle"), help: L("Fast-forward moments where nothing happens")) { model.speedUpIdle() }
 
             Spacer(minLength: 8)

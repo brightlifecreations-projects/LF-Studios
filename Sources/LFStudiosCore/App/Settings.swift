@@ -99,7 +99,8 @@ enum Settings {
 
     static var afterCaptureShowOverlay: Bool {
         get {
-            if defaults.object(forKey: "afterCaptureShowOverlay") == nil { return true }
+            // Manual only: off unless the user turned it on.
+            if defaults.object(forKey: "afterCaptureShowOverlay") == nil { return false }
             return defaults.bool(forKey: "afterCaptureShowOverlay")
         }
         set { defaults.set(newValue, forKey: "afterCaptureShowOverlay") }
@@ -107,7 +108,8 @@ enum Settings {
 
     static var afterCaptureCopyToClipboard: Bool {
         get {
-            if defaults.object(forKey: "afterCaptureCopyToClipboard") == nil { return true }
+            // Manual only: off unless the user turned it on.
+            if defaults.object(forKey: "afterCaptureCopyToClipboard") == nil { return false }
             return defaults.bool(forKey: "afterCaptureCopyToClipboard")
         }
         set { defaults.set(newValue, forKey: "afterCaptureCopyToClipboard") }
@@ -284,7 +286,8 @@ enum Settings {
 
     static var openVideoEditorAfterRecording: Bool {
         get {
-            if defaults.object(forKey: "openVideoEditorAfterRecording") == nil { return true }
+            // Manual only: off unless the user turned it on.
+            if defaults.object(forKey: "openVideoEditorAfterRecording") == nil { return false }
             return defaults.bool(forKey: "openVideoEditorAfterRecording")
         }
         set { defaults.set(newValue, forKey: "openVideoEditorAfterRecording") }
@@ -411,16 +414,6 @@ enum Settings {
     static var videoExportEndCard: Bool {
         get { defaults.bool(forKey: "videoExportEndCardOn") }
         set { defaults.set(newValue, forKey: "videoExportEndCardOn") }
-    }
-
-    /// Auto-generate click-following zooms when a fresh recording opens in the
-    /// video editor (the recording feels "produced" with zero editing).
-    static var autoZoomNewRecordings: Bool {
-        get {
-            if defaults.object(forKey: "autoZoomNewRecordings") == nil { return true }
-            return defaults.bool(forKey: "autoZoomNewRecordings")
-        }
-        set { defaults.set(newValue, forKey: "autoZoomNewRecordings") }
     }
 
     // MARK: – Annotation editor

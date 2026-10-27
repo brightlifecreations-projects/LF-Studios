@@ -441,7 +441,8 @@ final class VideoEditorModel: ObservableObject {
         self.recording = recording
         sourceBookmark = try? videoURL.bookmarkData(options: [.minimalBookmark], includingResourceValuesForKeys: nil, relativeTo: nil)
         artwork = VideoCursorArtwork(metadata: recording)
-        var project = VideoDemoProject.make(sourceURL: videoURL)
+        // A new recording opens plain; a draft (loaded next) keeps its look.
+        var project = VideoDemoProject.fresh(sourceURL: videoURL)
         if let recording {
             project.apply(metadata: recording)
         }
@@ -488,7 +489,6 @@ final class VideoEditorModel: ObservableObject {
             playback.setAudioSources(VideoAudioSource.sources(from: source, kinds: audioKinds))
 
             var loaded = project
-            var isFresh = false
             // The store only hands back this file's own draft (moved or
             // renamed files included; copies and replaced files excluded).
             if let draft = VideoDemoDraftStore.load(for: project.sourceURL) {
@@ -500,8 +500,6 @@ final class VideoEditorModel: ObservableObject {
                     loaded.cursorSamples = recording.cursorSamples
                 }
                 restoredDraft = true
-            } else {
-                isFresh = recording != nil
             }
             loaded.sourceWidth = Double(source.size.width)
             loaded.sourceHeight = Double(source.size.height)
@@ -518,16 +516,8 @@ final class VideoEditorModel: ObservableObject {
             }
             loaded.ensureTimeline(totalDuration: total)
 
-            // A fresh recording opens already produced.
-            if isFresh, Settings.autoZoomNewRecordings, loaded.zoomRegions.isEmpty, !loaded.clickEvents.isEmpty {
-                loaded.zoomRegions = VideoAutoZoomPlanner.regions(
-                    clicks: loaded.clicksInsideCrop,
-                    cursorSamples: loaded.cursorSamples,
-                    segments: loaded.timelineSegments(totalDuration: source.duration),
-                    scale: loaded.defaultZoomScale,
-                    speed: loaded.zoomSpeed
-                )
-            }
+            // A fresh recording opens plain: nothing is applied by itself
+            // (Auto-zoom on clicks is the Zoom panel's switch).
             if restoredDraft { restoreKeptHistory(for: loaded) }
             // Imported camera footage first, else the recorded camera.
             loaded.relocateImportedCamera()
@@ -548,9 +538,7 @@ final class VideoEditorModel: ObservableObject {
             playback.apply(segments: segments, audio: project.audio, keepSourceTime: nil, extras: editExtras)
             playback.seek(to: 0, fast: false)
             saveDraftNow()
-            if isFresh, !project.zoomRegions.isEmpty {
-                showNotice(L("Auto zoom applied — \(project.zoomRegions.count) zooms follow your clicks"), symbol: "sparkles")
-            } else if restoredDraft {
+            if restoredDraft {
                 showNotice(L("Picked up where you left off"), symbol: "clock.arrow.circlepath")
             }
             // A font this project uses isn't here: the built-in one stands in
@@ -1470,24 +1458,14 @@ final class VideoEditorModel: ObservableObject {
     /// Start Over without asking. Edits go; added recordings stay.
     func resetToOriginal() {
         let primaryDuration = project.sources.first(where: \.isPrimary)?.duration ?? sourceDuration
-        var fresh = VideoDemoProject.make(sourceURL: project.sourceURL, duration: primaryDuration, sourceSize: project.sourceSize)
+        var fresh = VideoDemoProject.fresh(sourceURL: project.sourceURL, duration: primaryDuration, sourceSize: project.sourceSize)
         if let recording { fresh.apply(metadata: recording) }
         fresh.sourceWidth = project.sourceWidth
         fresh.sourceHeight = project.sourceHeight
         fresh.ensureTimeline(totalDuration: primaryDuration)
         restoreAddedRecordings(into: &fresh)
-        let total = fresh.sourceAxisDuration ?? primaryDuration
         if fresh.sourceHeight > fresh.sourceWidth * 1.1, fresh.aspectPreset == .widescreen || fresh.aspectPreset == .classic {
             fresh.aspectPreset = .source
-        }
-        if recording != nil, Settings.autoZoomNewRecordings, !fresh.clickEvents.isEmpty {
-            fresh.zoomRegions = VideoAutoZoomPlanner.regions(
-                clicks: fresh.clicksInsideCrop,
-                cursorSamples: fresh.cursorSamples,
-                segments: fresh.timelineSegments(totalDuration: total),
-                scale: fresh.defaultZoomScale,
-                speed: fresh.zoomSpeed
-            )
         }
         selection = .none
         mutate(label: "Start Over") { $0 = fresh }
@@ -1547,29 +1525,27 @@ final class VideoEditorModel: ObservableObject {
         showNotice(L("All zooms set to \(Self.formatScale(scale))"), symbol: "plus.magnifyingglass")
     }
 
-    func autoZoom() {
-        let generated = VideoAutoZoomPlanner.regions(
-            clicks: project.clicksInsideCrop,
-            cursorSamples: project.cursorSamples,
-            segments: segments,
-            scale: project.defaultZoomScale,
-            speed: project.zoomSpeed
-        )
-        guard !generated.isEmpty else {
-            showNotice(project.clickEvents.isEmpty ? L("No clicks were recorded — add zooms by hand") : L("No clicks left on the timeline"), symbol: "sparkles")
+    /// Auto-zoom on clicks, from the Zoom panel's switch (and the toolbar's
+    /// Auto Zoom, which turns it on or plans the zooms again): one undo step.
+    func setAutoZoom(_ on: Bool) {
+        let total = sourceDuration
+        var generated = 0
+        mutate(label: on ? "Auto-Zoom On" : "Auto-Zoom Off") { generated = $0.setAutoZoom(on, totalDuration: total) }
+        if case .zoom = selection, !project.zoomRegions.contains(where: { if case .zoom(let id) = selection { return $0.id == id } else { return false } }) {
+            selection = .none
+        }
+        guard on else {
+            showNotice(L("Auto-zoom off — its zooms are gone. ⌘Z to undo"), symbol: "sparkles")
             return
         }
-        mutate(label: "Auto Zoom") { project in
-            let manual = project.zoomRegions.filter { !$0.isAuto }
-            // Keep hand-made zooms; drop generated ones that would overlap them.
-            let kept = generated.filter { candidate in
-                !manual.contains { $0.start < candidate.end && $0.end > candidate.start }
-            }
-            project.zoomRegions = (manual + kept).sorted { $0.start < $1.start }
+        if generated == 0 {
+            showNotice(project.clickEvents.isEmpty ? L("Auto-zoom on — no clicks were recorded, so add zooms by hand") : L("Auto-zoom on — no clicks left on the timeline"), symbol: "sparkles")
+        } else {
+            showNotice(L("Auto zoom — \(project.zoomRegions.count) zooms"), symbol: "sparkles")
         }
-        selection = .none
-        showNotice(L("Auto zoom — \(project.zoomRegions.count) zooms"), symbol: "sparkles")
     }
+
+    func autoZoom() { setAutoZoom(true) }
 
     func removeAllZooms() {
         guard !project.zoomRegions.isEmpty else { return }
@@ -1808,9 +1784,12 @@ final class VideoEditorModel: ObservableObject {
         mutate(coalesce: key, change)
     }
 
+    /// This look as My Style (made "My Look" when there's no My Style yet).
+    /// Nothing is applied: new recordings still open plain.
     func saveStyleAsDefault() {
         VideoStylePreset.saveAsDefault(project.style)
-        showNotice(L("Saved — new recordings will use this look"), symbol: "checkmark.circle.fill")
+        VideoStylePresetStore.shared.reloadIfNeeded()
+        showNotice(L("Saved as My Style — Apply my style (⇧⌘Y) puts it on a video"), symbol: "checkmark.circle.fill")
     }
 
     /// Back to the built-in LF Studios look.

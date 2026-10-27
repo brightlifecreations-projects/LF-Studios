@@ -6,10 +6,10 @@
 	<string> — 那里有 %@ 可用空间</string>
 	<key>%@ (%@)</key>
 	<string>%@（%@）</string>
+	<key>%@ (My Style)</key>
+	<string>%@（我的风格）</string>
 	<key>%@ (This Mac)</key>
 	<string>%@（这台 Mac）</string>
-	<key>%@ (default)</key>
-	<string>%@（默认）</string>
 	<key>%@ (edited)</key>
 	<string>%@（已编辑）</string>
 	<key>%@ (original)</key>
@@ -282,6 +282,8 @@
 	<string>全部已设置</string>
 	<key>All files</key>
 	<string>所有文件</string>
+	<key>All off until you turn them on. Every screenshot is kept in History and Home, and every recording in Home; a short notice says so.</key>
+	<string>全部关闭，直到你开启。每张截屏都保存在历史记录和主页中，每段录制都保存在主页中；会有简短提示告诉你。</string>
 	<key>All zooms set to %@</key>
 	<string>所有缩放已设为 %@</string>
 	<key>Allow Access…</key>
@@ -324,16 +326,22 @@
 	<string>Apple 的截屏快捷键仍占用 ⌘⇧3/4/5 — 可能会重复截屏。</string>
 	<key>Apple's shortcuts are out of the way.</key>
 	<string>Apple 的快捷键已不再冲突。</string>
+	<key>Applied My Style (“%@”) — ⌘Z to undo</key>
+	<string>已应用我的风格（“%@”）— 按 ⌘Z 撤销</string>
 	<key>Applied “%@”</key>
 	<string>已应用“%@”</string>
 	<key>Applies at every cut. Click a cut's marker on the timeline, or select a clip, to choose one for that cut only.</key>
 	<string>应用于每个剪切点。点按时间线上剪切点的标记或选择一个片段，可单独为该剪切点选择转场。</string>
 	<key>Apply</key>
 	<string>应用</string>
+	<key>Apply My Style</key>
+	<string>应用我的风格</string>
 	<key>Apply background to this image</key>
 	<string>为此图像应用背景</string>
 	<key>Apply crop</key>
 	<string>应用裁剪</string>
+	<key>Apply my style</key>
+	<string>应用我的风格</string>
 	<key>Apply the crop (Return)</key>
 	<string>应用裁剪（Return 键）</string>
 	<key>Apply this position to all captions</key>
@@ -366,18 +374,22 @@
 	<string>自动</string>
 	<key>Auto Zoom</key>
 	<string>自动缩放</string>
-	<key>Auto Zoom from Clicks</key>
-	<string>根据点按自动缩放</string>
-	<key>Auto zoom applied — %lld zooms follow your clicks</key>
-	<string>已应用自动缩放 — %lld 个缩放跟随你的点按</string>
 	<key>Auto zoom — %lld zooms</key>
 	<string>自动缩放 — %lld 个缩放</string>
 	<key>Auto-dismiss overlay</key>
 	<string>自动隐藏缩略图</string>
 	<key>Auto-save folder</key>
 	<string>自动存储文件夹</string>
-	<key>Auto-zoom new recordings</key>
-	<string>自动缩放新录制内容</string>
+	<key>Auto-zoom off — its zooms are gone. ⌘Z to undo</key>
+	<string>自动缩放已关闭 — 它生成的缩放已移除。按 ⌘Z 撤销</string>
+	<key>Auto-zoom on clicks</key>
+	<string>点按时自动缩放</string>
+	<key>Auto-zoom on clicks is on — click to turn it off and remove its zooms</key>
+	<string>点按时自动缩放已开启 — 点按可关闭并移除它生成的缩放</string>
+	<key>Auto-zoom on — no clicks left on the timeline</key>
+	<string>自动缩放已开启 — 时间线上已没有点按</string>
+	<key>Auto-zoom on — no clicks were recorded, so add zooms by hand</key>
+	<string>自动缩放已开启 — 没有录到点按，请手动添加缩放</string>
 	<key>Automatic</key>
 	<string>自动</string>
 	<key>Automatic detects each capture's language; pick languages when it guesses wrong. Accurate reads small text best — Fast answers sooner but knows fewer languages. Used by Capture Text, Copy Text, and History search.</key>
@@ -618,6 +630,8 @@
 	<string>选择图像…</string>
 	<key>Choose Location…</key>
 	<string>选择位置…</string>
+	<key>Choose My Style first: Presets ▸ Edit Presets ▸ Use as My Style (⇧⌘Y)</key>
+	<string>请先选择我的风格：预设 ▸ 编辑预设 ▸ 用作我的风格（⇧⌘Y）</string>
 	<key>Choose a .ttf or .otf font. LF Studios keeps its own copy, so it keeps working if the file is deleted.</key>
 	<string>选择 .ttf 或 .otf 字体。LF Studios 会保留自己的副本，因此即使文件被删除也能继续使用。</string>
 	<key>Choose a language</key>
@@ -640,8 +654,6 @@
 	<string>选择显示器</string>
 	<key>Choose the camera video to show in the bubble</key>
 	<string>选择要在气泡中显示的摄像头视频</string>
-	<key>Choose what happens immediately after taking a screenshot.</key>
-	<string>选择截屏后立即执行的操作。</string>
 	<key>Choose where to put the handoff folder — any folder or drive</key>
 	<string>选择交付文件夹的存放位置 — 任意文件夹或磁盘均可</string>
 	<key>Choose window</key>
@@ -726,8 +738,6 @@
 	<string>已分割片段</string>
 	<key>Clip starts / ends here</key>
 	<string>片段从此处开始/结束</string>
-	<key>Clipboard</key>
-	<string>剪贴板</string>
 	<key>Clips</key>
 	<string>片段</string>
 	<key>Close</key>
@@ -786,7 +796,7 @@
 	<string>将图像拷贝到剪贴板</string>
 	<key>Copy recognized text (OCR)</key>
 	<string>拷贝识别出的文字（OCR）</string>
-	<key>Copy screenshots to clipboard</key>
+	<key>Copy screenshots to the clipboard</key>
 	<string>将截屏拷贝到剪贴板</string>
 	<key>Copy the rows tab-separated, ready to paste into a spreadsheet</key>
 	<string>以制表符分隔的形式拷贝各行，可直接粘贴到电子表格中</string>
@@ -1118,8 +1128,8 @@
 	<string>可编辑指针</string>
 	<key>Editable cursor</key>
 	<string>可编辑指针</string>
-	<key>Editable cursor records the pointer separately so the editor can smooth it, resize it, and keep it crisp when zoomed — the video editor adds it back on export (the raw recording file has no pointer). Auto-zoom makes a fresh recording open already produced: the camera zooms to follow your clicks. Keyboard shortcuts records only ⌘, ⌃ and ⌥ combos (plus Esc and F-keys) so the editor can show them as keycaps — plain typing is never recorded; macOS asks for Accessibility access. High quality is the default; Max keeps more detail but creates larger files. The countdown gives you a moment after pressing Record; Esc cancels it. Stop a recording with %@ from any app — plain Esc stays with the app you're recording.</key>
-	<string>“可编辑指针”会单独记录指针，以便编辑器平滑指针、调整其大小，并在缩放时保持清晰 — 视频编辑器会在导出时将指针加回（原始录制文件中不含指针）。开启自动缩放后，新录制内容打开时就已制作完成：镜头会跟随你的点按进行缩放。“显示快捷键”只记录含 ⌘、⌃ 和 ⌥ 的组合键（以及 Esc 键和功能键），以便编辑器将其显示为按键 — 普通输入绝不会被记录；macOS 会请求辅助功能权限。默认使用“高”质量；“最高”保留更多细节，但文件更大。按下“录制”后，倒计时会给你片刻准备时间；按 Esc 键可取消。在任何 App 中按 %@ 都能停止录制 — 单独按 Esc 键仍会传给你正在录制的 App。</string>
+	<key>Editable cursor records the pointer separately so the editor can smooth it, resize it, and keep it crisp when zoomed — the video editor adds it back on export (the raw recording file has no pointer). Keyboard shortcuts records only ⌘, ⌃ and ⌥ combos (plus Esc and F-keys) so the editor can show them as keycaps — plain typing is never recorded; macOS asks for Accessibility access. High quality is the default; Max keeps more detail but creates larger files. The countdown gives you a moment after pressing Record; Esc cancels it. Stop a recording with %@ from any app — plain Esc stays with the app you're recording.</key>
+	<string>“可编辑指针”会单独记录指针，以便编辑器平滑指针、调整其大小，并在缩放时保持清晰 — 视频编辑器会在导出时将指针加回（原始录制文件中不含指针）。“显示快捷键”只记录含 ⌘、⌃ 和 ⌥ 的组合键（以及 Esc 键和功能键），以便编辑器将其显示为按键 — 普通输入绝不会被记录；macOS 会请求辅助功能权限。默认使用“高”质量；“最高”保留更多细节，但文件更大。按下“录制”后，倒计时会给你片刻准备时间；按 Esc 键可取消。在任何 App 中按 %@ 都能停止录制 — 单独按 Esc 键仍会传给你正在录制的 App。</string>
 	<key>Editing</key>
 	<string>编辑</string>
 	<key>Ellipse</key>
@@ -1508,6 +1518,8 @@
 	<string>指针已录入画面像素中，因此无法调整大小或平滑处理。新录制内容默认会捕捉可编辑的指针（“设置”→“录制”）。</string>
 	<key>It won't fit there. Choose another location, or pick Smaller files.</key>
 	<string>那里放不下。请选择其他位置，或选择“较小的文件”。</string>
+	<key>It's your My Style, so Apply my style will have nothing to apply until you choose another. Videos that use this preset keep their look.</key>
+	<string>这是你的我的风格，删除后“应用我的风格”将无可应用，直到你另选一个。使用此预设的视频会保留原样。</string>
 	<key>JPEG Quality</key>
 	<string>JPEG 质量</string>
 	<key>Jump here</key>
@@ -1810,6 +1822,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>我的外观</string>
 	<key>My Preset</key>
 	<string>我的预设</string>
+	<key>My Style: “%@”</key>
+	<string>我的风格：“%@”</string>
 	<key>Nebula</key>
 	<string>星云</string>
 	<key>Needed to capture the screen. macOS will ask once.</key>
@@ -1826,16 +1840,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>新字幕</string>
 	<key>New recording</key>
 	<string>新录制</string>
-	<key>New recordings use “%@”</key>
-	<string>新录制内容使用“%@”</string>
-	<key>New recordings will use the LF Studios look</key>
-	<string>新录制内容将使用 LF Studios 外观</string>
-	<key>New recordings will use the built-in LF Studios look instead. Videos that use this preset keep their look.</key>
-	<string>新录制内容将改用内置的 LF Studios 外观。使用此预设的视频会保留其外观。</string>
-	<key>New recordings will use “%@”</key>
-	<string>新录制内容将使用“%@”</string>
-	<key>New screenshots are copied automatically. Turn this off if you only want to use the overlay or history actions.</key>
-	<string>新截屏会自动拷贝。如果只想使用缩略图或历史记录中的操作，请关闭此选项。</string>
 	<key>New zooms</key>
 	<string>新缩放</string>
 	<key>Nice shot. You're all set.</key>
@@ -1846,6 +1850,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>否</string>
 	<key>No Exports Yet</key>
 	<string>尚无导出内容</string>
+	<key>No My Style now</key>
+	<string>现在没有我的风格</string>
+	<key>No My Style yet — open Presets ▸ Edit Presets and choose Use as My Style on one</key>
+	<string>还没有我的风格 — 打开预设 ▸ 编辑预设，在其中一个上选择“用作我的风格”</string>
 	<key>No background</key>
 	<string>无背景</string>
 	<key>No background — text only</key>
@@ -1866,12 +1874,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>没有此类截屏</string>
 	<key>No captures yet</key>
 	<string>还没有截屏</string>
-	<key>No clicks left on the timeline</key>
-	<string>时间线上已没有点按</string>
 	<key>No clicks were recorded in this video</key>
 	<string>此视频中没有录制到点按</string>
-	<key>No clicks were recorded — add zooms by hand</key>
-	<string>没有录制到点按 — 请手动添加缩放</string>
 	<key>No clicks were recorded, so add zooms by hand: hover the zoom track and click.</key>
 	<string>没有录制到点按，请手动添加缩放：将指针悬停在缩放轨道上并点按。</string>
 	<key>No conflict</key>
@@ -1950,6 +1954,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>相对于画面宽度。</string>
 	<key>Off</key>
 	<string>关闭</string>
+	<key>Off until you turn it on. On, it zooms in on your clicks and switches on its options below; off, its zooms go.</key>
+	<string>在你开启前一直关闭。开启后，它会在你的点按处放大，并打开下方的选项；关闭后，它生成的缩放会被移除。</string>
 	<key>Offset</key>
 	<string>偏移</string>
 	<key>Older</key>
@@ -1998,10 +2004,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>打开视频编辑器</string>
 	<key>Open a .lfstudios project</key>
 	<string>打开 .lfstudios 项目</string>
-	<key>Open editor after recording</key>
-	<string>录制后打开编辑器</string>
 	<key>Open in annotation editor</key>
 	<string>在截屏编辑器中打开</string>
+	<key>Open the video editor after recording</key>
+	<string>录制后打开视频编辑器</string>
 	<key>Open video…</key>
 	<string>打开视频…</string>
 	<key>Opens its title and length in Style</key>
@@ -2080,6 +2086,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>电话</string>
 	<key>Phone QR found</key>
 	<string>找到电话二维码</string>
+	<key>Pick a preset as My Style (Presets ▸ Edit Presets ▸ Use as My Style), then one click puts it on any video.</key>
+	<string>选一个预设作为我的风格（预设 ▸ 编辑预设 ▸ 用作我的风格），之后点一下就能用到任何视频上。</string>
 	<key>Picked up where you left off</key>
 	<string>已从你上次停下的地方继续</string>
 	<key>Picture “%@” — the file is missing</key>
@@ -2100,8 +2108,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>像素化区域</string>
 	<key>Placement</key>
 	<string>位置</string>
-	<key>Plan zooms from your clicks — keeps zooms you placed by hand</key>
-	<string>根据你的点按规划缩放 — 保留你手动放置的缩放</string>
 	<key>Plans zooms around your %lld clicks. Zooms you placed by hand are kept.</key>
 	<string>根据你的 %lld 次点按规划缩放。你手动放置的缩放会保留。</string>
 	<key>Play</key>
@@ -2176,6 +2182,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>纯白</string>
 	<key>Purple</key>
 	<string>紫色</string>
+	<key>Put “%@” on this video (⇧⌘Y)</key>
+	<string>把“%@”用到这个视频上（⇧⌘Y）</string>
 	<key>QR Code</key>
 	<string>二维码</string>
 	<key>QR Codes</key>
@@ -2322,6 +2330,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做标注更改</string>
 	<key>Redo Annotations</key>
 	<string>重做标注更改</string>
+	<key>Redo Apply My Style</key>
+	<string>重做应用我的风格</string>
 	<key>Redo Apply Preset</key>
 	<string>重做应用预设</string>
 	<key>Redo Arrow Style</key>
@@ -2330,6 +2340,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做宽高比更改</string>
 	<key>Redo Auto Zoom</key>
 	<string>重做自动缩放</string>
+	<key>Redo Auto-Zoom Off</key>
+	<string>重做关闭自动缩放</string>
+	<key>Redo Auto-Zoom On</key>
+	<string>重做开启自动缩放</string>
 	<key>Redo Background</key>
 	<string>重做背景更改</string>
 	<key>Redo Blur Style</key>
@@ -2716,6 +2730,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>存储字幕（.srt）…</string>
 	<key>Save Subtitles (.vtt)…</key>
 	<string>存储字幕（.vtt）…</string>
+	<key>Save This Look as My Style</key>
+	<string>把这个外观存储为我的风格</string>
 	<key>Save as Preset</key>
 	<string>存储为预设</string>
 	<key>Save as Preset…</key>
@@ -2734,6 +2750,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>已存储 %@</string>
 	<key>Saved %@ to %@ — click to reveal in Finder</key>
 	<string>已将“%1$@”存储到“%2$@” — 点按以在“访达”中显示</string>
+	<key>Saved as My Style — Apply my style (⇧⌘Y) puts it on a video</key>
+	<string>已存储为我的风格 — “应用我的风格”（⇧⌘Y）可把它用到视频上</string>
 	<key>Saved by a newer LF Studios — some settings may not show</key>
 	<string>由较新版本的 LF Studios 存储，某些设置可能不会显示</string>
 	<key>Saved capture</key>
@@ -2742,8 +2760,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>已存储预设“%@”</string>
 	<key>Saved to %@: %@</key>
 	<string>已存储到“%@”：%@</string>
-	<key>Saved — new recordings will use this look</key>
-	<string>已存储 — 新录制内容将使用此风格</string>
+	<key>Saved to History</key>
+	<string>已存入历史记录</string>
 	<key>Saved “%@”</key>
 	<string>已存储“%@”</string>
 	<key>Saves %@ — only silences where nothing happens on screen</key>
@@ -2856,8 +2874,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>将入点设为播放头位置</string>
 	<key>Set Out to Playhead</key>
 	<string>将出点设为播放头位置</string>
-	<key>Set as Default for New Recordings</key>
-	<string>设为新录制内容的默认设置</string>
 	<key>Set the in point to the playhead (%@)</key>
 	<string>将入点设为播放头位置（%@）</string>
 	<key>Set the out point to the playhead (%@)</key>
@@ -2908,8 +2924,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>显示编辑器提示</string>
 	<key>Show Folder in Finder</key>
 	<string>在“访达”中显示文件夹</string>
-	<key>Show Quick Access Overlay</key>
-	<string>显示快速访问缩略图</string>
 	<key>Show Recent Export “%@” in Finder</key>
 	<string>在“访达”中显示最近导出的“%@”</string>
 	<key>Show Recording in Finder</key>
@@ -2944,6 +2958,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>只显示某类截屏</string>
 	<key>Show shortcuts</key>
 	<string>显示快捷键</string>
+	<key>Show the preview after capture</key>
+	<string>截取后显示预览</string>
 	<key>Show the timeline in more detail</key>
 	<string>更详细地显示时间线</string>
 	<key>Show the whole screenshot again</key>
@@ -3074,8 +3090,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>停止增强人声</string>
 	<key>Stop Recording</key>
 	<string>停止录制</string>
-	<key>Stop Using for New Recordings</key>
-	<string>不再用于新录制内容</string>
+	<key>Stop Using as My Style</key>
+	<string>不再用作我的风格</string>
 	<key>Stop and Close</key>
 	<string>停止并关闭</string>
 	<key>Stop recording</key>
@@ -3352,12 +3368,20 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重试</string>
 	<key>Try it right now — Capture Area is also in the menu bar.</key>
 	<string>现在就试试 — “捕捉区域”也在菜单栏中。</string>
+	<key>Turn Off Auto-Zoom on Clicks</key>
+	<string>关闭点按时自动缩放</string>
 	<key>Turn Off Click Sounds</key>
 	<string>关闭点按音效</string>
 	<key>Turn On</key>
 	<string>打开</string>
+	<key>Turn On Auto-Zoom on Clicks</key>
+	<string>开启点按时自动缩放</string>
 	<key>Turn around</key>
 	<string>反转方向</string>
+	<key>Turn on Auto-zoom on clicks (Zoom) to use this</key>
+	<string>请先开启点按时自动缩放（缩放）</string>
+	<key>Turn on Auto-zoom on clicks — keeps zooms you placed by hand</key>
+	<string>开启点按时自动缩放 — 保留你手动放置的缩放</string>
 	<key>Turn on the camera in the recording bar before you record, and your face appears here as a bubble you can place, resize, and restyle.</key>
 	<string>录制前在录制栏中打开摄像头，你的脸就会以气泡形式显示在这里，你可以调整它的位置、大小和样式。</string>
 	<key>Turn on the microphone or system audio before recording to capture sound.</key>
@@ -3418,6 +3442,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销标注更改</string>
 	<key>Undo Annotations</key>
 	<string>撤销标注更改</string>
+	<key>Undo Apply My Style</key>
+	<string>撤销应用我的风格</string>
 	<key>Undo Apply Preset</key>
 	<string>撤销应用预设</string>
 	<key>Undo Arrow Style</key>
@@ -3426,6 +3452,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销宽高比更改</string>
 	<key>Undo Auto Zoom</key>
 	<string>撤销自动缩放</string>
+	<key>Undo Auto-Zoom Off</key>
+	<string>撤销关闭自动缩放</string>
+	<key>Undo Auto-Zoom On</key>
+	<string>撤销开启自动缩放</string>
 	<key>Undo Background</key>
 	<string>撤销背景更改</string>
 	<key>Undo Blur Style</key>
@@ -3640,8 +3670,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>更新</string>
 	<key>Upload Custom Image</key>
 	<string>选取自定图像</string>
-	<key>Use This Look for New Recordings</key>
-	<string>为新录制内容使用此风格</string>
+	<key>Use as My Style</key>
+	<string>用作我的风格</string>
 	<key>Use this color</key>
 	<string>使用此颜色</string>
 	<key>Use this level for every zoom</key>
@@ -3910,6 +3940,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>无法读取“%@” — 它可能已损坏、仍在存储中，或采用了这台 Mac 无法播放的格式。请将其从此视频中移除（“样式”→“录制内容”），或用可正常使用的副本替换，然后重新导出。</string>
 	<key>“%@” found in %lld of %lld captures</key>
 	<string>在 %2$lld 张截屏中找到“%1$@”（共 %3$lld 张）</string>
+	<key>“%@” is your My Style — Apply my style (⇧⌘Y) puts it on a video</key>
+	<string>“%@”是你的我的风格 — “应用我的风格”（⇧⌘Y）可把它用到视频上</string>
 	<key>“%@” isn't at %@ anymore. Put it back, or save the project with Include Media next time so it carries its own copy.</key>
 	<string>“%1$@”已不在 %2$@ 中。请将它放回原处，或下次存储项目时选择“包含媒体”，让项目带上自己的副本。</string>
 	<key>“%@” isn't in %@ anymore. Locate it to get the camera back.</key>
