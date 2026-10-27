@@ -896,12 +896,40 @@ struct RecordingSettingsView: View {
     @AppStorage("recordingMicrophone") var microphone = false
     @AppStorage("recordingMicrophoneDeviceID") var microphoneDeviceID = ""
     @AppStorage("recordingKeystrokes") var keystrokes = false
+    @AppStorage("recordingTracksTyping") var tracksTyping = false
+    @AppStorage("recordingKeyTiming") var keyTiming = false
     @AppStorage("recordingCamera") var camera = false
     @AppStorage("recordingCameraDeviceID") var cameraDeviceID = ""
     @AppStorage("recordingCountdownSeconds") var countdown = 0
     @State private var keystrokeAccess = VideoKeystrokeFormatter.isAllowed
 
     private var microphones: [MicrophoneOption] { MicrophoneDeviceProvider.options }
+
+    /// A switch for an option that reads the keyboard or the focused
+    /// field: macOS asks for Accessibility the first time it goes on.
+    private func accessibilitySwitch(_ isOn: Binding<Bool>) -> some View {
+        HStack(spacing: 8) {
+            if isOn.wrappedValue && !keystrokeAccess {
+                Button(L("Allow Access…")) {
+                    VideoKeystrokeFormatter.requestAccess()
+                    NSWorkspace.shared.open(URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility")!)
+                }
+                .controlSize(.small)
+            }
+            Toggle("", isOn: Binding(
+                get: { isOn.wrappedValue },
+                set: { on in
+                    isOn.wrappedValue = on
+                    if on && !VideoKeystrokeFormatter.isAllowed {
+                        VideoKeystrokeFormatter.requestAccess()
+                    }
+                    keystrokeAccess = VideoKeystrokeFormatter.isAllowed
+                }
+            ))
+            .labelsHidden()
+            .toggleStyle(.switch)
+        }
+    }
 
     /// A full-display recording of the main screen at the chosen settings.
     private var sizeEstimate: String {
@@ -977,27 +1005,19 @@ struct RecordingSettingsView: View {
 
 
                 PreferenceRow(L("Show keyboard shortcuts")) {
-                    HStack(spacing: 8) {
-                        if keystrokes && !keystrokeAccess {
-                            Button(L("Allow Access…")) {
-                                VideoKeystrokeFormatter.requestAccess()
-                                NSWorkspace.shared.open(URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility")!)
-                            }
-                            .controlSize(.small)
-                        }
-                        Toggle("", isOn: Binding(
-                            get: { keystrokes },
-                            set: { on in
-                                keystrokes = on
-                                if on && !VideoKeystrokeFormatter.isAllowed {
-                                    VideoKeystrokeFormatter.requestAccess()
-                                }
-                                keystrokeAccess = VideoKeystrokeFormatter.isAllowed
-                            }
-                        ))
-                        .labelsHidden()
-                        .toggleStyle(.switch)
-                    }
+                    accessibilitySwitch($keystrokes)
+                }
+
+                PreferenceDivider()
+
+                PreferenceRow(L("Track where I type"), detail: L("Positions only: no text, no keys")) {
+                    accessibilitySwitch($tracksTyping)
+                }
+
+                PreferenceDivider()
+
+                PreferenceRow(L("Record when keys are pressed"), detail: L("Timing only: never which keys")) {
+                    accessibilitySwitch($keyTiming)
                 }
             }
             .onReceive(NotificationCenter.default.publisher(for: NSApplication.didBecomeActiveNotification)) { _ in
@@ -1005,6 +1025,8 @@ struct RecordingSettingsView: View {
             }
 
             PreferenceFootnote(text: L("Editable cursor records the pointer separately so the editor can smooth it, resize it, and keep it crisp when zoomed — the video editor adds it back on export (the raw recording file has no pointer). Keyboard shortcuts records only ⌘, ⌃ and ⌥ combos (plus Esc and F-keys) so the editor can show them as keycaps — plain typing is never recorded; macOS asks for Accessibility access. High quality is the default; Max keeps more detail but creates larger files. The countdown gives you a moment after pressing Record; Esc cancels it. Stop a recording with \(RecordingStopHotkey.displayText) from any app — plain Esc stays with the app you're recording."))
+
+            PreferenceFootnote(text: L("Track where I type saves only where the text cursor is on screen, so the editor can zoom in on typing. Record when keys are pressed saves only the moment each key goes down, so the editor can speed up typing. No text is recorded and no keys are named. While a password field has focus, neither saves anything. Both are off until you turn them on; macOS asks for Accessibility access."))
 
             PreferenceSection(L("Audio")) {
                 PreferenceRow(L("Record system audio")) {

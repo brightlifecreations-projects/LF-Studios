@@ -443,10 +443,12 @@ struct VideoCursorInspector: View {
                         isOn: binding(\.alwaysArrow)
                     )
                     .disabled(!model.artwork.hasCapturedShapes)
+                    VideoCursorStylePicker(model: model)
                 }
             }
 
             VideoKeyboardSection(model: model)
+            VideoTypingSpeedSection(model: model)
         }
     }
 
@@ -488,6 +490,8 @@ struct VideoZoomInspector: View {
                 .buttonStyle(VideoSecondaryButtonStyle(destructive: true))
                 .disabled(model.project.zoomRegions.isEmpty)
             }
+
+            VideoZoomToolsCard(model: model)
 
             // Auto-zoom's own options: greyed out until it's on. Zooms added
             // by hand keep working either way (each has its own settings).
@@ -536,13 +540,13 @@ struct VideoZoomInspector: View {
                                     model.seek(to: range.lowerBound + min(1.2, (range.upperBound - range.lowerBound) / 2))
                                 } label: {
                                     HStack(spacing: 8) {
-                                        Image(systemName: region.followsCursor ? "cursorarrow.motionlines" : "scope")
+                                        Image(systemName: region.isLoupe ? "magnifyingglass.circle" : region.followsTyping ? "character.cursor.ibeam" : region.followsCursor ? "cursorarrow.motionlines" : "scope")
                                             .foregroundStyle(VideoEditorTheme.zoom)
                                             .frame(width: 16)
                                         Text(VideoEditorModel.formatScale(region.scale))
                                             .font(.system(size: 12, weight: .semibold))
                                             .monospacedDigit()
-                                        Text(region.followsCursor ? L("Follows cursor") : L("Aim by hand"))
+                                        Text(region.isLoupe ? L("Loupe") : region.followsTyping ? L("Follows typing") : region.followsCursor ? L("Follows cursor") : L("Aim by hand"))
                                             .font(.system(size: 11))
                                             .foregroundStyle(VideoEditorTheme.textSecondary)
                                         Spacer()
@@ -1060,31 +1064,7 @@ struct VideoSelectionInspector: View {
             .buttonStyle(VideoSecondaryButtonStyle())
         }
 
-        VideoInspectorSection(L("Framing")) {
-            VideoSegmented(options: [(true, L("Follow cursor")), (false, L("Aim by hand"))], selection: Binding(
-                get: { zoom.followsCursor },
-                set: { value in
-                    model.updateZoom(zoom.id) { $0.followsCursor = value }
-                    if !value { model.pause() }
-                }
-            ))
-            if zoom.followsCursor {
-                Text(L("The camera keeps your cursor in view and glides after it."))
-                    .font(.system(size: 10.5))
-                    .foregroundStyle(VideoEditorTheme.textTertiary)
-            } else {
-                Text(L("Drag the frame on the preview to aim; drag its corners to zoom in or out."))
-                    .font(.system(size: 10.5))
-                    .foregroundStyle(VideoEditorTheme.textTertiary)
-                Button {
-                    model.updateZoom(zoom.id) { $0.focusX = 0.5; $0.focusY = 0.5 }
-                } label: {
-                    Text(L("Center"))
-                        .frame(maxWidth: .infinity)
-                }
-                .buttonStyle(VideoSecondaryButtonStyle())
-            }
-        }
+        VideoZoomBlockControls(model: model, zoom: zoom)
 
         if let range = model.zoomTimelineRange(zoom) {
             VideoInspectorSection(L("Timing")) {
@@ -1133,6 +1113,12 @@ struct VideoSelectionInspector: View {
             Text(L("\(VideoEditorModel.format(segment.clip.sourceDuration)) of recording plays in \(VideoEditorModel.format(segment.duration))."))
                 .font(.system(size: 10.5))
                 .foregroundStyle(VideoEditorTheme.textTertiary)
+            if segment.clip.typingSpeedUp {
+                Text(L("Sped up by Speed up typing — pick another speed here, or press it again."))
+                    .font(.system(size: 10.5))
+                    .foregroundStyle(VideoEditorTheme.textTertiary)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
         }
 
         VideoInspectorSection(L("Sound")) {

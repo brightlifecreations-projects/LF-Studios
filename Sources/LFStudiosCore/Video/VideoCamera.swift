@@ -129,9 +129,17 @@ final class VideoCameraTrack: @unchecked Sendable {
         var end: Double
         var scale: Double
         var follows: Bool
+        /// Follows the text cursor instead of the pointer.
+        var followsTyping = false
         /// Canvas-normalized aim (manual regions).
         var focus: CGPoint
         var regionID: UUID
+        /// Where the subject sits off the middle of the output (output
+        /// units, y down) — clear of the camera bubble.
+        var offset: CGPoint = .zero
+
+        /// The aim moves with something (the pointer or the text cursor).
+        var tracks: Bool { follows || followsTyping }
     }
 
     /// Transition length for a zoom of the given depth: deeper zooms travel
@@ -149,7 +157,8 @@ final class VideoCameraTrack: @unchecked Sendable {
         crop: VideoCropRect = .full
     ) -> [Piece] {
         var pieces: [Piece] = []
-        for region in regions where region.end > region.start {
+        // Loupes magnify a spot over the frame; the camera stays put.
+        for region in regions where region.end > region.start && region.loupe == nil {
             let inCrop = crop.map(CGPoint(x: region.focusX, y: region.focusY))
             let focus = CGPoint(
                 x: stage.minX + stage.width * inCrop.x,
@@ -160,9 +169,11 @@ final class VideoCameraTrack: @unchecked Sendable {
                     start: range.lowerBound,
                     end: range.upperBound,
                     scale: region.scale,
-                    follows: region.followsCursor,
+                    follows: region.followsCursor && !region.followsTyping,
+                    followsTyping: region.followsTyping,
                     focus: focus,
-                    regionID: region.id
+                    regionID: region.id,
+                    offset: region.offset
                 ))
             }
         }
@@ -184,6 +195,7 @@ final class VideoCameraTrack: @unchecked Sendable {
     ///   - stage: the video's rect on the canvas, canvas-normalized (y down).
     ///   - cursor: smoothed pointer at a SOURCE time, video-normalized; nil
     ///     when unknown or hidden.
+    ///   - typing: the text cursor at a SOURCE time, the same way.
     static func build(
         regions: [VideoZoomRegion],
         segments: [VideoDemoTimelineSegment],
@@ -191,7 +203,8 @@ final class VideoCameraTrack: @unchecked Sendable {
         speed: VideoZoomSpeed,
         stage: CGRect,
         crop: VideoCropRect = .full,
-        cursor: ((Double) -> CGPoint?)?
+        cursor: ((Double) -> CGPoint?)?,
+        typing: ((Double) -> CGPoint?)? = nil
     ) -> VideoCameraTrack {
         guard timelineDuration > 0 else { return .identity }
         let pieces = pieces(regions: regions, segments: segments, stage: stage, crop: crop)
@@ -231,10 +244,10 @@ final class VideoCameraTrack: @unchecked Sendable {
             return segment.clip.sourceStart + local * segment.clip.normalizedSpeed
         }
 
-        func canvasCursor(atTimeline time: Double) -> CGPoint? {
-            guard let cursor else { return nil }
+        func canvasCursor(atTimeline time: Double, typing typed: Bool = false) -> CGPoint? {
+            guard let follow = typed ? typing : cursor else { return nil }
             let sourceTime = sourceTime(forTimeline: time)
-            guard let raw = cursor(sourceTime) else { return nil }
+            guard let raw = follow(sourceTime) else { return nil }
             let point = crop.map(raw)
             return CGPoint(x: stage.minX + stage.width * point.x, y: stage.minY + stage.height * point.y)
         }
@@ -342,11 +355,11 @@ final class VideoCameraTrack: @unchecked Sendable {
                 if leash == nil {
                     // Look ahead to where the pointer is when the zoom lands.
                     let lookAhead = min(max(piece.start, groupStart) + rampIn, piece.end)
-                    leash = canvasCursor(atTimeline: lookAhead) ?? canvasCursor(atTimeline: t) ?? piece.focus
+                    leash = canvasCursor(atTimeline: lookAhead, typing: piece.followsTyping) ?? canvasCursor(atTimeline: t, typing: piece.followsTyping) ?? piece.focus
                 }
                 // Zooming in heads for where the pointer lands; the pointer
                 // on its way there doesn't pull the aim around.
-                if !rampingIn, var current = leash, let pointer = canvasCursor(atTimeline: t) {
+                if !rampingIn, var current = leash, let pointer = canvasCursor(atTimeline: t, typing: piece.followsTyping) {
                     // Dead zone: small moves near the middle don't move the
                     // camera; leaving it drags the aim along.
                     let dead = 0.26 / s
@@ -367,12 +380,12 @@ final class VideoCameraTrack: @unchecked Sendable {
                 if let origin = panOrigin, origin.from == blend.from.start, origin.to == blend.to.start {
                     from = origin.point
                 } else {
-                    from = blend.from.follows ? (springPosition ?? followAim(for: blend.from)) : blend.from.focus
+                    from = blend.from.tracks ? (springPosition ?? followAim(for: blend.from)) : blend.from.focus
                     panOrigin = (blend.from.start, blend.to.start, from)
                 }
                 let to: CGPoint
-                if blend.to.follows {
-                    to = canvasCursor(atTimeline: blend.to.start + 0.2) ?? blend.to.focus
+                if blend.to.tracks {
+                    to = canvasCursor(atTimeline: blend.to.start + 0.2, typing: blend.to.followsTyping) ?? blend.to.focus
                 } else {
                     to = blend.to.focus
                 }
@@ -389,8 +402,8 @@ final class VideoCameraTrack: @unchecked Sendable {
                 )
                 springPosition = aimTarget
                 springVelocity = .zero
-                if blend.to.follows, blend.progress > 0.999 { leash = to }
-            } else if activePiece.follows {
+                if blend.to.tracks, blend.progress > 0.999 { leash = to }
+            } else if activePiece.tracks {
                 let target = followAim(for: activePiece)
                 if var position = springPosition {
                     // Critically damped spring toward the leash.
@@ -425,9 +438,23 @@ final class VideoCameraTrack: @unchecked Sendable {
             // Zooming in and out moves straight between the full frame and
             // the shot. Clamping the aim at every scale instead pinned the
             // camera to the canvas edge, then let go partway in: a bend.
+            // A framing offset puts the subject off the middle: the camera
+            // looks that far the other way (in canvas units at this scale).
+            var offset = activePiece.offset
+            if let blend = chainBlend {
+                offset = CGPoint(
+                    x: VideoCameraEasing.lerp(Double(blend.from.offset.x), Double(blend.to.offset.x), blend.progress),
+                    y: VideoCameraEasing.lerp(Double(blend.from.offset.y), Double(blend.to.offset.y), blend.progress)
+                )
+            }
+            if var center = shotCenter {
+                center.x = VideoCameraState.clampedCenter(Double(center.x - offset.x / CGFloat(held)), scale: held)
+                center.y = VideoCameraState.clampedCenter(Double(center.y - offset.y / CGFloat(held)), scale: held)
+                shotCenter = center
+            }
             let shot = shotCenter ?? CGPoint(
-                x: VideoCameraState.clampedCenter(Double(aimTarget.x), scale: held),
-                y: VideoCameraState.clampedCenter(Double(aimTarget.y), scale: held)
+                x: VideoCameraState.clampedCenter(Double(aimTarget.x - offset.x / CGFloat(held)), scale: held),
+                y: VideoCameraState.clampedCenter(Double(aimTarget.y - offset.y / CGFloat(held)), scale: held)
             )
             let zoomed = VideoCameraEasing.windowProgress(from: 1, to: held, at: scale, fallback: 1)
             scales[index] = scale

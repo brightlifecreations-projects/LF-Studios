@@ -18,6 +18,8 @@
 	<string>%@（⇧⌘Z）</string>
 	<key>%@ (⌘Z)</key>
 	<string>%@（⌘Z）</string>
+	<key>%@ Loupe</key>
+	<string>%@ 放大镜</string>
 	<key>%@ Zoom</key>
 	<string>缩放 %@</string>
 	<key>%@ area</key>
@@ -156,12 +158,18 @@
 	<string>%lld 个快捷键</string>
 	<key>%lld zooms</key>
 	<string>%lld 个缩放</string>
+	<key>%lld zooms can't move far enough — try Move the Camera Instead.</key>
+	<string>%lld 个缩放无法移得足够远 — 请试试“改为移动摄像头”。</string>
+	<key>%lld zooms have no free corner for the camera.</key>
+	<string>%lld 个缩放没有可放摄像头的空闲角落。</string>
 	<key>%lld%%</key>
 	<string>%lld%%</string>
 	<key>%lld%% volume</key>
 	<string>音量 %lld%%</string>
 	<key>%lld/%lld configured</key>
 	<string>已设置 %lld/%lld</string>
+	<key>(estimated from screen changes — check the speed blocks)</key>
+	<string>（根据屏幕变化估算 — 请检查变速块）</string>
 	<key>, </key>
 	<string>，</string>
 	<key>, %@ to %@</key>
@@ -186,6 +194,10 @@
 	<string>已存在同名文件。请换一个名称，然后重新导出。</string>
 	<key>A hairline that separates dark recordings from the background</key>
 	<string>一条细线，将深色录制内容与背景分开</string>
+	<key>A magnifier over one spot at the playhead; the rest of the frame stays in view</key>
+	<string>在播放头处放大一个位置；画面其余部分保持可见</string>
+	<key>A magnifier over one spot; the rest of the frame stays in view.</key>
+	<string>放大一个位置；画面其余部分保持可见。</string>
 	<key>A report helps fix this. You'll see everything before it's sent, and it never includes your screenshots or recordings.</key>
 	<string>报告有助于修复这个问题。发送前你会看到全部内容，报告绝不会包含你的截屏或录制内容。</string>
 	<key>A second caption track you can show, burn in, or save as subtitles. Translated on this Mac — nothing is uploaded.</key>
@@ -234,6 +246,8 @@
 	<string>添加图像或标志…</string>
 	<key>Add Intro Card</key>
 	<string>添加片头卡</string>
+	<key>Add Loupe</key>
+	<string>添加放大镜</string>
 	<key>Add Marker</key>
 	<string>添加标记</string>
 	<key>Add Marker While Recording</key>
@@ -280,18 +294,24 @@
 	<string>在播放头处添加聚光灯</string>
 	<key>Add text at the playhead (T)</key>
 	<string>在播放头处添加文字（T）</string>
+	<key>Add typing zooms</key>
+	<string>添加打字缩放</string>
 	<key>Add zoom at playhead</key>
 	<string>在播放头处添加缩放</string>
 	<key>Add “%@” at the playhead</key>
 	<string>在播放头处添加“%@”</string>
 	<key>Added %@ — %@</key>
 	<string>已添加 %@ — %@</string>
+	<key>Added %lld typing zooms — ⌘Z to undo</key>
+	<string>已添加 %lld 个打字缩放 — 按 ⌘Z 撤销</string>
 	<key>Added to LF Studios</key>
 	<string>已添加到 LF Studios</string>
 	<key>Added “%@”</key>
 	<string>已添加“%@”</string>
 	<key>Adjust to move it half a second</key>
 	<string>调整可将其移动半秒</string>
+	<key>Adjusted %lld zooms — ⌘Z to undo.</key>
+	<string>已调整 %lld 个缩放 — 按 ⌘Z 撤销。</string>
 	<key>Advanced Tools</key>
 	<string>高级工具</string>
 	<key>After Capture</key>
@@ -320,6 +340,8 @@
 	<string>所有缩放已设为 %@</string>
 	<key>Allow Access…</key>
 	<string>允许访问…</string>
+	<key>Allow LF Studios in Accessibility so it can see where you type.</key>
+	<string>请在“辅助功能”中允许 LF Studios，以便它知道你在哪里打字。</string>
 	<key>Allow LF Studios in Accessibility — shortcuts turn on by themselves.</key>
 	<string>请在“辅助功能”中允许 LF Studios — 快捷键会自动开启。</string>
 	<key>Allow Screen Recording</key>
@@ -486,6 +508,8 @@
 	<string>骨白</string>
 	<key>Border</key>
 	<string>边框</string>
+	<key>Border color</key>
+	<string>边框颜色</string>
 	<key>Bottom</key>
 	<string>底部</string>
 	<key>Bottom left</key>
@@ -670,6 +694,8 @@
 	<string>检查更新</string>
 	<key>Choose</key>
 	<string>选择</string>
+	<key>Choose Another…</key>
+	<string>选择其他…</string>
 	<key>Choose Capture Area in the LF Studios menu to start</key>
 	<string>在 LF Studios 菜单中选择“捕捉区域”即可开始</string>
 	<key>Choose Image…</key>
@@ -680,6 +706,8 @@
 	<string>请先选择我的风格：预设 ▸ 编辑预设 ▸ 用作我的风格（⇧⌘Y）</string>
 	<key>Choose a .ttf or .otf font. LF Studios keeps its own copy, so it keeps working if the file is deleted.</key>
 	<string>选择 .ttf 或 .otf 字体。LF Studios 会保留自己的副本，因此即使文件被删除也能继续使用。</string>
+	<key>Choose a PNG to use as the pointer, then click where it points</key>
+	<string>选择一个 PNG 作为指针，然后点按它所指的位置</string>
 	<key>Choose a language</key>
 	<string>选择语言</string>
 	<key>Choose a logo, watermark, or screenshot to place on the video</key>
@@ -758,6 +786,8 @@
 	<string>已移除点按 — 按 ⌘Z 撤销</string>
 	<key>Click sounds</key>
 	<string>点按音效</string>
+	<key>Click the picture where it points.</key>
+	<string>在图片上点按它所指的位置。</string>
 	<key>Click to add a zoom — or press Z at the playhead</key>
 	<string>点按即可添加缩放 — 或在播放头处按下 Z</string>
 	<key>Click to add the next step</key>
@@ -984,6 +1014,8 @@
 	<string>自定颜色</string>
 	<key>Custom color #%@</key>
 	<string>自定颜色 #%@</string>
+	<key>Custom image…</key>
+	<string>自定图像…</string>
 	<key>Custom look</key>
 	<string>自定外观</string>
 	<key>Custom position</key>
@@ -1352,12 +1384,18 @@
 	<string>在文字稿中查找</string>
 	<key>Find “%@”</key>
 	<string>查找“%@”</string>
+	<key>Finds typing and plays it faster, as speed blocks you can change</key>
+	<string>找到打字部分并加快播放，生成可修改的变速块</string>
+	<key>Finds zooms the camera bubble covers and moves their framing, or the bubble, out of the way</key>
+	<string>找到被摄像头气泡遮住的缩放，并移开其取景或气泡</string>
 	<key>Fine-tune shadow</key>
 	<string>微调阴影</string>
 	<key>Finish and Quit</key>
 	<string>完成后退出</string>
 	<key>Finish or cancel the current recording setup</key>
 	<string>请先完成或取消当前的录制准备</string>
+	<key>Fit zooms around camera</key>
+	<string>让缩放避开摄像头</string>
 	<key>Fix</key>
 	<string>修复</string>
 	<key>Flamingo</key>
@@ -1366,10 +1404,18 @@
 	<string>像自拍一样翻转</string>
 	<key>Follow Cursor</key>
 	<string>跟随指针</string>
+	<key>Follow Typing</key>
+	<string>跟随打字</string>
 	<key>Follow cursor</key>
 	<string>跟随指针</string>
+	<key>Follow typing</key>
+	<string>跟随打字</string>
 	<key>Follows cursor</key>
 	<string>跟随指针</string>
+	<key>Follows typing</key>
+	<string>跟随打字</string>
+	<key>Follows where you typed. Pressing it again replaces only these zooms.</key>
+	<string>跟随你打字的位置。再次按下只会替换这些缩放。</string>
 	<key>Font</key>
 	<string>字体</string>
 	<key>For Final Cut Pro, DaVinci Resolve, and Adobe Premiere Pro</key>
@@ -1404,6 +1450,8 @@
 	<string>从直角到圆形</string>
 	<key>From your Mac</key>
 	<string>来自你的 Mac</string>
+	<key>Full</key>
+	<string>全画面</string>
 	<key>Full Camera at Playhead</key>
 	<string>在播放头处使用全屏摄像头</string>
 	<key>Full Frame (No Background)</key>
@@ -1524,6 +1572,8 @@
 	<string>悬停在缩放轨道上</string>
 	<key>Hover the zoom track and click to add a zoom, or press Z at the playhead. Drag a zoom to move it; drag its edges to change how long it lasts.</key>
 	<string>将指针悬停在缩放轨道上并点按即可添加缩放，或在播放头处按下 Z。拖移缩放可移动它；拖移其边缘可更改持续时间。</string>
+	<key>How long the loupe takes to grow in and fade out</key>
+	<string>放大镜展开和淡出所需的时间</string>
 	<key>How strongly blur and pixelate hide what's under them</key>
 	<string>模糊和像素化遮盖下方内容的程度</string>
 	<key>Image</key>
@@ -1590,6 +1640,8 @@
 	<string>那里放不下。请选择其他位置，或选择“较小的文件”。</string>
 	<key>It's your My Style, so Apply my style will have nothing to apply until you choose another. Videos that use this preset keep their look.</key>
 	<string>这是你的我的风格，删除后“应用我的风格”将无可应用，直到你另选一个。使用此预设的视频会保留原样。</string>
+	<key>Its own arrow, text and hand pointers, drawn for the video.</key>
+	<string>专为视频绘制的箭头、文本和手形指针。</string>
 	<key>JPEG Quality</key>
 	<string>JPEG 质量</string>
 	<key>Jump here</key>
@@ -1758,12 +1810,18 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>循环</string>
 	<key>Loop to fill</key>
 	<string>循环填满</string>
+	<key>Loupe</key>
+	<string>放大镜</string>
 	<key>Lower under your voice</key>
 	<string>避让人声</string>
 	<key>M</key>
 	<string>中</string>
 	<key>MIT License — Free and open source</key>
 	<string>MIT 许可证 — 免费开源</string>
+	<key>Make Full Zoom</key>
+	<string>改为全画面缩放</string>
+	<key>Make Loupe</key>
+	<string>改为放大镜</string>
 	<key>Make it lighter: %@, %@ fps</key>
 	<string>减轻体积：%@，%@ fps</string>
 	<key>Manage</key>
@@ -1862,10 +1920,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>前移</string>
 	<key>Move later</key>
 	<string>后移</string>
+	<key>Move the Camera Instead</key>
+	<string>改为移动摄像头</string>
 	<key>Move the playhead inside a clip to split</key>
 	<string>将播放头移到片段内以进行分割</string>
 	<key>Move the playhead to where the camera shows, then crop</key>
 	<string>将播放头移到显示摄像头画面的位置，然后再裁剪</string>
+	<key>Moved clear of the camera bubble.</key>
+	<string>已移出摄像头气泡。</string>
 	<key>Moved to the Trash</key>
 	<string>已移到废纸篓</string>
 	<key>Movement</key>
@@ -2002,10 +2064,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>此录制内容中未检测到语音。如果其中有旁白，请在“音频”标签页中检查其音量，然后重试。</string>
 	<key>No text found in this selection</key>
 	<string>此选区中未找到文字</string>
+	<key>No typing found in this recording</key>
+	<string>此录制中未找到打字</string>
+	<key>No typing found to speed up</key>
+	<string>未找到可加速的打字</string>
 	<key>No ums</key>
 	<string>没有语气词</string>
 	<key>No ums or uhs left</key>
 	<string>已没有语气词</string>
+	<key>No zooms are under the camera</key>
+	<string>没有缩放被摄像头遮住</string>
 	<key>None</key>
 	<string>无</string>
 	<key>None in this recording. Turn on “Show keyboard shortcuts” in Settings → Recording and every ⌘ shortcut you press appears as keycaps. Plain typing is never recorded.</key>
@@ -2090,6 +2158,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>打开视频编辑器</string>
 	<key>Open a .lfstudios project</key>
 	<string>打开 .lfstudios 项目</string>
+	<key>Open and close</key>
+	<string>展开和收起</string>
 	<key>Open in annotation editor</key>
 	<string>在截屏编辑器中打开</string>
 	<key>Open the video editor after recording</key>
@@ -2124,6 +2194,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>出点延后</string>
 	<key>Outline</key>
 	<string>描边</string>
+	<key>Outlined</key>
+	<string>轮廓</string>
 	<key>Outro</key>
 	<string>片尾</string>
 	<key>Outro card</key>
@@ -2232,6 +2304,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>瓷白</string>
 	<key>Position</key>
 	<string>位置</string>
+	<key>Positions only: no text, no keys</key>
+	<string>仅位置：不含文本和按键</string>
 	<key>Preferences</key>
 	<string>设置</string>
 	<key>Preparing to copy…</key>
@@ -2314,6 +2388,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>录制区域</string>
 	<key>Record Fullscreen</key>
 	<string>录制全屏</string>
+	<key>Record When Keys Are Pressed</key>
+	<string>记录按键时刻</string>
 	<key>Record Window</key>
 	<string>录制窗口</string>
 	<key>Record an area, a window, or the whole screen</key>
@@ -2324,6 +2400,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>录制麦克风</string>
 	<key>Record system audio</key>
 	<string>录制电脑声音</string>
+	<key>Record when keys are pressed</key>
+	<string>记录按键时刻</string>
+	<key>Record with “Track where I type” on (Settings → Recording) to zoom in on typing.</key>
+	<string>开启“跟踪打字位置”（设置 → 录制）后录制，即可缩放到打字处。</string>
+	<key>Record with “Track where I type” on to zoom in on typing</key>
+	<string>开启“跟踪打字位置”后录制，即可缩放到打字处</string>
 	<key>Recorded at %@. Drag its dot on the timeline to retime it; ripples and Auto Zoom follow.</key>
 	<string>录制于 %@。在时间线上拖移它的圆点即可调整时间；波纹和自动缩放会随之更新。</string>
 	<key>Recording</key>
@@ -2402,6 +2484,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做添加图像</string>
 	<key>Redo Add Intro Card</key>
 	<string>重做添加片头卡</string>
+	<key>Redo Add Loupe</key>
+	<string>重做添加放大镜</string>
 	<key>Redo Add Marker</key>
 	<string>重做添加标记</string>
 	<key>Redo Add Music</key>
@@ -2414,6 +2498,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做添加聚光灯</string>
 	<key>Redo Add Text</key>
 	<string>重做添加文字</string>
+	<key>Redo Add Typing Zooms</key>
+	<string>重做添加打字缩放</string>
 	<key>Redo Add Zoom</key>
 	<string>重做添加缩放</string>
 	<key>Redo Add Zooms</key>
@@ -2454,6 +2540,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做字幕翻译</string>
 	<key>Redo Captions</key>
 	<string>重做字幕更改</string>
+	<key>Redo Change Loupe</key>
+	<string>重做更改放大镜</string>
 	<key>Redo Click Sounds</key>
 	<string>重做点按音效更改</string>
 	<key>Redo Clicks</key>
@@ -2514,6 +2602,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做增强人声</string>
 	<key>Redo Fade</key>
 	<string>重做淡入淡出</string>
+	<key>Redo Fit Zooms Around Camera</key>
+	<string>重做让缩放避开摄像头</string>
 	<key>Redo Hide Shortcut</key>
 	<string>重做隐藏快捷键</string>
 	<key>Redo Highlight Style</key>
@@ -2608,6 +2698,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做速度更改</string>
 	<key>Redo Speed Up Idle</key>
 	<string>重做加速空闲片段</string>
+	<key>Redo Speed Up Typing</key>
+	<string>重做加速打字</string>
 	<key>Redo Split</key>
 	<string>重做分割</string>
 	<key>Redo Split at Markers</key>
@@ -2804,6 +2896,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>打开前请检查电话号码。</string>
 	<key>Right</key>
 	<string>右侧</string>
+	<key>Ring</key>
+	<string>圆环</string>
 	<key>Ripple</key>
 	<string>波纹</string>
 	<key>Rose Smoke</key>
@@ -2880,6 +2974,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>节省 %@ — 仅限屏幕上无任何动静的静音部分</string>
 	<key>Saves %@ — silences where the pointer rests and nothing is clicked or pressed (this older recording can't see typing)</key>
 	<string>节省 %@ — 指针静止且没有点按或按键的静音部分（这个较早的录制内容无法识别打字）</string>
+	<key>Saves only the moment each key goes down, so the editor can speed up typing. Never which keys, and nothing while a password field has focus.</key>
+	<string>只存储每次按键按下的时刻，以便编辑器加速打字部分。绝不记录是哪些键，密码栏处于焦点时也不记录任何内容。</string>
+	<key>Saves only where the text cursor is, so the editor can zoom in on typing. No text and no keys are recorded, and nothing while a password field has focus.</key>
+	<string>只存储文本光标的位置，以便编辑器缩放到打字处。不记录任何文本和按键，密码栏处于焦点时也不记录任何内容。</string>
 	<key>Saves the background, frame, cursor, zoom, captions, keys, and camera bubble. Apply it to any video from the Presets menu.</key>
 	<string>存储背景、边框、指针、缩放、字幕、按键和摄像头气泡。可从“预设”菜单将其应用到任何视频。</string>
 	<key>Save…</key>
@@ -3006,6 +3104,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>共享</string>
 	<key>Share — Mail, Messages, AirDrop…</key>
 	<string>共享 — “邮件”、“信息”、隔空投送…</string>
+	<key>Shift the Zooms</key>
+	<string>移动缩放</string>
 	<key>Shortcut</key>
 	<string>快捷键</string>
 	<key>Shortcut %@</key>
@@ -3146,6 +3246,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>已加速 %lld 个空闲片段 — 节省了 %@</string>
 	<key>Sped up %lld idle moments — saved %@ · check any typing</key>
 	<string>已加速 %lld 个空闲片段 — 节省了 %@ · 请检查打字的片段</string>
+	<key>Sped up %lld typing stretches to %@ — %@ shorter</key>
+	<string>已将 %lld 段打字加速到 %@ — 缩短了 %@</string>
+	<key>Sped up by Speed up typing — pick another speed here, or press it again.</key>
+	<string>由“加速打字”加速 — 可在此选择其他速度，或再次按下。</string>
 	<key>Speech recognition is turned off for LF Studios in System Settings → Privacy &amp; Security → Speech Recognition. Turn it on, then try again.</key>
 	<string>LF Studios 的语音识别已在“系统设置”→“隐私与安全性”→“语音识别”中关闭。请将其打开，然后重试。</string>
 	<key>Speech recognition isn't available on this Mac right now. Try again in a moment.</key>
@@ -3160,6 +3264,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>“加速空闲片段”适用于 LF Studios 录制内容 — 它会追踪指针</string>
 	<key>Speed of this part</key>
 	<string>此部分的速度</string>
+	<key>Speed up typing to</key>
+	<string>将打字加速到</string>
 	<key>Split</key>
 	<string>分割</string>
 	<key>Split at %lld markers</key>
@@ -3322,6 +3428,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>窗口在录制开始前已关闭。</string>
 	<key>The camera couldn't start.</key>
 	<string>无法启动摄像头。</string>
+	<key>The camera follows the text cursor as you type.</key>
+	<string>镜头在你打字时跟随文本光标。</string>
 	<key>The camera keeps your cursor in view and glides after it.</key>
 	<string>镜头会让指针保持在画面中，并平滑地跟随它。</string>
 	<key>The camera stopped. The recording continues without it.</key>
@@ -3336,6 +3444,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>交付已就绪</string>
 	<key>The highest quality, and the only one that can keep transparency</key>
 	<string>最高画质，也是唯一能保留透明度的格式</string>
+	<key>The loupe stays over the text cursor.</key>
+	<string>放大镜停在文本光标上方。</string>
+	<key>The loupe stays over your cursor.</key>
+	<string>放大镜停在指针上方。</string>
 	<key>The markers are already at clip edges</key>
 	<string>标记已经位于片段边缘</string>
 	<key>The menu bar icon is LF Studios' main entry point. While it is hidden, open LF Studios again from Finder, Launchpad, or Spotlight to bring these Preferences back.</key>
@@ -3378,6 +3490,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>无法移除视频本身的录制内容</string>
 	<key>The voice track is empty, so there's nothing to clean up. Turn off Enhance voice to keep the original sound.</key>
 	<string>人声轨道为空，没有可清理的内容。请关闭“增强人声”以保留原始声音。</string>
+	<key>The whole frame zooms in.</key>
+	<string>整个画面放大。</string>
 	<key>The window you're recording closed. Stop when you're ready — the recording keeps going.</key>
 	<string>正在录制的窗口已关闭。准备好后再停止 — 录制仍在继续。</string>
 	<key>There are no captions to translate yet. Transcribe or add captions first.</key>
@@ -3408,6 +3522,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>此应用</string>
 	<key>This list</key>
 	<string>此列表</string>
+	<key>This recording didn't save key timing or screen changes, so typing can't be found</key>
+	<string>此录制未存储按键时刻或屏幕变化，因此无法找到打字部分</string>
+	<key>This recording didn't save key timing, so typing is estimated from screen changes while the pointer holds still. Check the speed blocks it makes.</key>
+	<string>此录制未存储按键时刻，因此会根据指针静止时的屏幕变化来估算打字部分。请检查生成的变速块。</string>
 	<key>This recording has newer edits than “%@”</key>
 	<string>此录制内容的编辑比“%@”更新</string>
 	<key>This recording has no sound</key>
@@ -3422,6 +3540,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>此录制内容只有箭头</string>
 	<key>This replaces all %lld caption lines, including any you edited or typed, with a new transcript in %@.</key>
 	<string>这会用新的%2$@文字稿替换全部 %1$lld 行字幕，包括你编辑或输入过的行。</string>
+	<key>This video has no camera bubble</key>
+	<string>此视频没有摄像头气泡</string>
 	<key>This video is copy-protected and can't be exported.</key>
 	<string>此视频受复制保护，无法导出。</string>
 	<key>This video isn't there anymore</key>
@@ -3446,6 +3566,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>时间线缩放比例（捏合或按住 ⌘ 滚动）</string>
 	<key>Timing</key>
 	<string>时间</string>
+	<key>Timing only: never which keys</key>
+	<string>仅时刻：绝不记录是哪些键</string>
 	<key>Tips</key>
 	<string>提示</string>
 	<key>Title</key>
@@ -3468,6 +3590,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>左上</string>
 	<key>Top right</key>
 	<string>右上</string>
+	<key>Touch dot</key>
+	<string>触控圆点</string>
+	<key>Track Where I Type</key>
+	<string>跟踪打字位置</string>
+	<key>Track where I type</key>
+	<string>跟踪打字位置</string>
+	<key>Track where I type saves only where the text cursor is on screen, so the editor can zoom in on typing. Record when keys are pressed saves only the moment each key goes down, so the editor can speed up typing. No text is recorded and no keys are named. While a password field has focus, neither saves anything. Both are off until you turn them on; macOS asks for Accessibility access.</key>
+	<string>“跟踪打字位置”只存储文本光标在屏幕上的位置，以便编辑器缩放到打字处。“记录按键时刻”只存储每次按键按下的时刻，以便编辑器加速打字部分。不会记录任何文本，也不会记下是哪些键。密码栏处于焦点时，两者都不存储任何内容。两者在你开启前都保持关闭；macOS 会请求“辅助功能”权限。</string>
 	<key>Transcribe</key>
 	<string>转录</string>
 	<key>Transcribe Again</key>
@@ -3516,6 +3646,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>开启点按时自动缩放</string>
 	<key>Turn around</key>
 	<string>反转方向</string>
+	<key>Turn off vertical reframing to fit zooms around the camera</key>
+	<string>请先关闭竖屏重新取景，再让缩放避开摄像头</string>
 	<key>Turn on Auto-zoom on clicks (Zoom) to use this</key>
 	<string>请先开启点按时自动缩放（缩放）</string>
 	<key>Turn on Auto-zoom on clicks — keeps zooms you placed by hand</key>
@@ -3526,10 +3658,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>录制前打开麦克风或电脑声音即可录制声音。</string>
 	<key>Turn the video's sound back on</key>
 	<string>重新打开视频声音</string>
+	<key>Type</key>
+	<string>类型</string>
 	<key>Type here…</key>
 	<string>在此输入…</string>
 	<key>Type in a text annotation</key>
 	<string>在文字标注中输入</string>
+	<key>Typing</key>
+	<string>打字</string>
+	<key>Typing now plays at %@</key>
+	<string>打字部分现在以 %@ 播放</string>
 	<key>URL</key>
 	<string>网址</string>
 	<key>Under the voice</key>
@@ -3562,6 +3700,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销添加图像</string>
 	<key>Undo Add Intro Card</key>
 	<string>撤销添加片头卡</string>
+	<key>Undo Add Loupe</key>
+	<string>撤销添加放大镜</string>
 	<key>Undo Add Marker</key>
 	<string>撤销添加标记</string>
 	<key>Undo Add Music</key>
@@ -3574,6 +3714,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销添加聚光灯</string>
 	<key>Undo Add Text</key>
 	<string>撤销添加文字</string>
+	<key>Undo Add Typing Zooms</key>
+	<string>撤销添加打字缩放</string>
 	<key>Undo Add Zoom</key>
 	<string>撤销添加缩放</string>
 	<key>Undo Add Zooms</key>
@@ -3614,6 +3756,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销字幕翻译</string>
 	<key>Undo Captions</key>
 	<string>撤销字幕更改</string>
+	<key>Undo Change Loupe</key>
+	<string>撤销更改放大镜</string>
 	<key>Undo Click Sounds</key>
 	<string>撤销点按音效更改</string>
 	<key>Undo Clicks</key>
@@ -3674,6 +3818,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销增强人声</string>
 	<key>Undo Fade</key>
 	<string>撤销淡入淡出</string>
+	<key>Undo Fit Zooms Around Camera</key>
+	<string>撤销让缩放避开摄像头</string>
 	<key>Undo Hide Shortcut</key>
 	<string>撤销隐藏快捷键</string>
 	<key>Undo Highlight Style</key>
@@ -3768,6 +3914,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销速度更改</string>
 	<key>Undo Speed Up Idle</key>
 	<string>撤销加速空闲片段</string>
+	<key>Undo Speed Up Typing</key>
+	<string>撤销加速打字</string>
 	<key>Undo Split</key>
 	<string>撤销分割</string>
 	<key>Undo Split at Markers</key>
@@ -3802,6 +3950,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销统一缩放级别</string>
 	<key>Undo Zooms</key>
 	<string>撤销缩放更改</string>
+	<key>Undo camera fit</key>
+	<string>撤销避开摄像头</string>
 	<key>Unmute Clip</key>
 	<string>取消片段静音</string>
 	<key>Unmute preview</key>
@@ -3828,6 +3978,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>将此级别用于所有缩放</string>
 	<key>Used for screenshots and recordings. Tokens: %y year, %m month, %d day, %H hour, %M minute, %S second. Leave empty to restore the default.</key>
 	<string>用于截屏和录制内容。标记：%y 年、%m 月、%d 日、%H 时、%M 分、%S 秒。留空即可恢复默认设置。</string>
+	<key>Uses the key timing saved with this recording (never which keys). Shortcut keycaps stay on screen long enough to read.</key>
+	<string>使用此录制存储的按键时刻（绝不记录是哪些键）。快捷键键帽在屏幕上停留足够长，便于看清。</string>
+	<key>Uses where the text cursor moved while you typed.</key>
+	<string>使用你打字时文本光标的移动。</string>
 	<key>Utility</key>
 	<string>实用工具</string>
 	<key>Version</key>
@@ -3880,6 +4034,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>你的 Mac 上播放的声音</string>
 	<key>What's New</key>
 	<string>新功能</string>
+	<key>While this zoom plays, the camera bubble moves to: %@</key>
+	<string>此缩放播放时，摄像头气泡移到：%@</string>
 	<key>White</key>
 	<string>白色</string>
 	<key>Whole video</key>
@@ -3990,6 +4146,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>缩放和标注</string>
 	<key>Zooms and annotations can be duplicated</key>
 	<string>只能复制缩放和标注</string>
+	<key>Zooms that follow the text cursor while you type</key>
+	<string>打字时跟随文本光标的缩放</string>
 	<key>a table</key>
 	<string>1 个表格</string>
 	<key>a transparent background</key>
@@ -4020,6 +4178,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>片头卡</string>
 	<key>loops</key>
 	<string>循环播放</string>
+	<key>macOS classic</key>
+	<string>macOS 经典</string>
 	<key>macOS closed LF Studios last time because it ran out of memory</key>
 	<string>上次 macOS 因内存不足关闭了 LF Studios</string>
 	<key>macOS downloads %@ once, then translates right here — nothing is uploaded.</key>
@@ -4094,6 +4254,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>· 拖移以对准</string>
 	<key>· follows cursor</key>
 	<string>· 跟随指针</string>
+	<key>· follows typing</key>
+	<string>· 跟随打字</string>
 	<key>“%@” (was in %@)</key>
 	<string>“%@”（原位于 %@）</string>
 	<key>“%@” can't be found. Put it back where it was, or remove it from this video (Style → Recordings), then export again.</key>

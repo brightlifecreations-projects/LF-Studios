@@ -602,6 +602,86 @@
 			<string>%lld увеличения</string>
 		</dict>
 	</dict>
+	<key>%lld zooms can't move far enough — try Move the Camera Instead.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>few</key>
+			<string>%lld увеличения не сдвинуть достаточно — попробуйте «Сдвинуть камеру».</string>
+			<key>many</key>
+			<string>%lld увеличений не сдвинуть достаточно — попробуйте «Сдвинуть камеру».</string>
+			<key>one</key>
+			<string>%lld увеличение не сдвинуть достаточно — попробуйте «Сдвинуть камеру».</string>
+			<key>other</key>
+			<string>%lld увеличения не сдвинуть достаточно — попробуйте «Сдвинуть камеру».</string>
+		</dict>
+	</dict>
+	<key>%lld zooms have no free corner for the camera.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>few</key>
+			<string>Для %lld увеличений нет свободного угла для камеры.</string>
+			<key>many</key>
+			<string>Для %lld увеличений нет свободного угла для камеры.</string>
+			<key>one</key>
+			<string>Для %lld увеличения нет свободного угла для камеры.</string>
+			<key>other</key>
+			<string>Для %lld увеличения нет свободного угла для камеры.</string>
+		</dict>
+	</dict>
+	<key>Added %lld typing zooms — ⌘Z to undo</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>few</key>
+			<string>Добавлено %lld увеличения набора — ⌘Z, чтобы отменить</string>
+			<key>many</key>
+			<string>Добавлено %lld увеличений набора — ⌘Z, чтобы отменить</string>
+			<key>one</key>
+			<string>Добавлено %lld увеличение набора — ⌘Z, чтобы отменить</string>
+			<key>other</key>
+			<string>Добавлено %lld увеличения набора — ⌘Z, чтобы отменить</string>
+		</dict>
+	</dict>
+	<key>Adjusted %lld zooms — ⌘Z to undo.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>few</key>
+			<string>Исправлено %lld увеличения — ⌘Z, чтобы отменить.</string>
+			<key>many</key>
+			<string>Исправлено %lld увеличений — ⌘Z, чтобы отменить.</string>
+			<key>one</key>
+			<string>Исправлено %lld увеличение — ⌘Z, чтобы отменить.</string>
+			<key>other</key>
+			<string>Исправлено %lld увеличения — ⌘Z, чтобы отменить.</string>
+		</dict>
+	</dict>
 	<key>Auto zoom — %lld zooms</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -1280,6 +1360,26 @@
 			<string>Ускорен %lld простой — сэкономлено %@ · проверьте места с набором текста</string>
 			<key>other</key>
 			<string>Ускорено %lld простоя — сэкономлено %@ · проверьте места с набором текста</string>
+		</dict>
+	</dict>
+	<key>Sped up %lld typing stretches to %@ — %@ shorter</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>few</key>
+			<string>Ускорены %lld отрезка набора до %@ — короче на %@</string>
+			<key>many</key>
+			<string>Ускорены %lld отрезков набора до %@ — короче на %@</string>
+			<key>one</key>
+			<string>Ускорен %lld отрезок набора до %@ — короче на %@</string>
+			<key>other</key>
+			<string>Ускорены %lld отрезка набора до %@ — короче на %@</string>
 		</dict>
 	</dict>
 	<key>Split at %lld markers</key>

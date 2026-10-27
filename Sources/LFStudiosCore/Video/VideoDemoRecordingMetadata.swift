@@ -54,6 +54,9 @@ struct VideoCursorShape: Codable, Equatable, Identifiable {
     var width: Double
     var height: Double
     var pngData: Data
+    /// Arrow, I-beam or hand, when it's one of the system's (nil: older
+    /// recordings, or another pointer).
+    var kind: VideoCursorKind? = nil
 }
 
 struct VideoCursorShapeEvent: Codable, Equatable {
@@ -91,6 +94,12 @@ struct VideoDemoRecordingMetadata: Codable, Equatable {
     var audioTracks: [VideoAudioKind]? = nil
     /// Markers set while recording (the bar's flag), in recorded time.
     var markers: [VideoMarker]? = nil
+    /// "Track where I type": where the text cursor was — positions only,
+    /// never text (RecordingTypingTracker.swift).
+    var textCursor: [VideoTextCursorSample]? = nil
+    /// "Record when keys are pressed": the moments keys went down — never
+    /// which keys.
+    var keyPresses: [Double]? = nil
     /// Finds the recording again after a rename or a move on the same
     /// drive (the leftover-data cleanup looks it up).
     var bookmark: Data? = nil
@@ -220,6 +229,8 @@ final class VideoDemoRecordingMetadataRecorder {
     private let nativeCursorVisible: Bool
     private let renderCursor: Bool
     private let recordsKeystrokes: Bool
+    /// Typing positions and key timing (nil: both off).
+    private var typing: RecordingTypingTracker?
     /// Host clock → video time: t=0 at the first frame, pauses cut out.
     private var timeline = RecordingTimeline()
     private var timer: Timer?
@@ -236,7 +247,7 @@ final class VideoDemoRecordingMetadataRecorder {
     private var lastSampledPoint: CGPoint?
     private var shapeFingerprintCache: [ObjectIdentifier: String] = [:]
 
-    init(videoURL: URL, captureRect: CGRect, sourcePixelSize: CGSize, fps: Int, nativeCursorVisible: Bool, renderCursor: Bool, recordsKeystrokes: Bool = false) {
+    init(videoURL: URL, captureRect: CGRect, sourcePixelSize: CGSize, fps: Int, nativeCursorVisible: Bool, renderCursor: Bool, recordsKeystrokes: Bool = false, tracksTyping: Bool = false, recordsKeyTiming: Bool = false) {
         self.videoURL = videoURL
         self.captureRect = captureRect
         self.pointPixelScale = captureRect.width > 0 ? Double(sourcePixelSize.width / captureRect.width) : nil
@@ -245,6 +256,14 @@ final class VideoDemoRecordingMetadataRecorder {
         self.nativeCursorVisible = nativeCursorVisible
         self.renderCursor = renderCursor
         self.recordsKeystrokes = recordsKeystrokes
+        if tracksTyping || recordsKeyTiming {
+            typing = RecordingTypingTracker(
+                tracksTyping: tracksTyping,
+                recordsKeyTiming: recordsKeyTiming,
+                time: { [weak self] host in self?.timeline.time(at: host) },
+                map: { [weak self] box in self?.videoBox(for: box) }
+            )
+        }
     }
 
     func start() {
@@ -285,6 +304,7 @@ final class VideoDemoRecordingMetadataRecorder {
                 }
             }
         }
+        typing?.start()
     }
 
     /// A marker now; returns its number (1 for the first).
@@ -373,6 +393,7 @@ final class VideoDemoRecordingMetadataRecorder {
             guard time >= 0 else { return nil }
             return VideoKeystrokeEvent(id: event.id, time: time, keys: event.keys)
         }
+        typing?.shift(by: offset)
         // One set before the first frame marks the start.
         markers = markers.map { marker in
             var marker = marker
@@ -396,6 +417,8 @@ final class VideoDemoRecordingMetadataRecorder {
 
         // Presses still held at stop end with the recording.
         let end = max(duration, 0)
+        let typed = typing?.finish(duration: end)
+        typing = nil
         for index in openPresses.values where clickEvents.indices.contains(index) {
             clickEvents[index].endTime = max(end, clickEvents[index].time)
         }
@@ -427,6 +450,8 @@ final class VideoDemoRecordingMetadataRecorder {
                 marker.time = min(marker.time, end)
                 return marker
             },
+            textCursor: typed.flatMap { $0.samples.isEmpty ? nil : $0.samples },
+            keyPresses: typed.flatMap { $0.keyPresses.isEmpty ? nil : $0.keyPresses },
             // Renamed or moved later, it can still be found.
             bookmark: try? videoURL.bookmarkData(options: [], includingResourceValuesForKeys: nil, relativeTo: nil)
         )
@@ -486,7 +511,8 @@ final class VideoDemoRecordingMetadataRecorder {
                 hotSpotY: cursor.hotSpot.y,
                 width: size.width,
                 height: size.height,
-                pngData: png
+                pngData: png,
+                kind: VideoCursorKind.match(cursor)
             )
         }
         return cursorShapes[id] == nil ? nil : id
@@ -532,6 +558,14 @@ final class VideoDemoRecordingMetadataRecorder {
         guard captureRect.width > 0, captureRect.height > 0 else { return CGPoint(x: -1, y: -1) }
         let point = Self.videoPoint(for: screenPoint, captureRect: captureRect, videoRect: videoRect)
         return CGPoint(x: min(max(point.x, -0.5), 1.5), y: min(max(point.y, -0.5), 1.5))
+    }
+
+    /// A screen box (AppKit space) → video-normalized box, y down.
+    private func videoBox(for box: CGRect) -> CGRect? {
+        guard captureRect.width > 0, captureRect.height > 0 else { return nil }
+        let topLeft = Self.videoPoint(for: CGPoint(x: box.minX, y: box.maxY), captureRect: captureRect, videoRect: videoRect)
+        let bottomRight = Self.videoPoint(for: CGPoint(x: box.maxX, y: box.minY), captureRect: captureRect, videoRect: videoRect)
+        return CGRect(x: topLeft.x, y: topLeft.y, width: bottomRight.x - topLeft.x, height: bottomRight.y - topLeft.y)
     }
 
     /// A screen point (AppKit space) → video-normalized, y down, given where

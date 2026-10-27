@@ -507,15 +507,15 @@ struct VideoTimelineSurface: View {
                 .strokeBorder(Color.white.opacity(selected ? 0.95 : 0.16), lineWidth: selected ? 1.5 : 1)
             if width > 44 {
                 HStack(spacing: 4) {
-                    Image(systemName: region.followsCursor ? "cursorarrow.motionlines" : "scope")
+                    Image(systemName: region.isLoupe ? "magnifyingglass.circle" : region.followsTyping ? "character.cursor.ibeam" : region.followsCursor ? "cursorarrow.motionlines" : "scope")
                         .font(.system(size: 9.5, weight: .bold))
-                    Text(width > 80 ? L("\(VideoEditorModel.formatScale(region.scale)) Zoom") : VideoEditorModel.formatScale(region.scale))
+                    Text(width > 80 ? (region.isLoupe ? L("\(VideoEditorModel.formatScale(region.scale)) Loupe") : L("\(VideoEditorModel.formatScale(region.scale)) Zoom")) : VideoEditorModel.formatScale(region.scale))
                         .font(.system(size: 11, weight: .bold))
                         .monospacedDigit()
                         // The level stays whole; the tag after it gives way first.
                         .layoutPriority(1)
                     if width > 150 {
-                        Text(region.followsCursor ? L("· follows cursor") : L("· aim by hand"))
+                        Text(region.followsTyping ? L("· follows typing") : region.followsCursor ? L("· follows cursor") : L("· aim by hand"))
                             .font(.system(size: 10.5, weight: .semibold))
                             .foregroundStyle(.white.opacity(0.72))
                     }
@@ -692,8 +692,14 @@ struct VideoTimelineSurface: View {
 
     @ViewBuilder
     private func zoomMenu(_ region: VideoZoomRegion) -> some View {
-        Button(region.followsCursor ? L("Aim by Hand") : L("Follow Cursor")) {
-            model.updateZoom(region.id) { $0.followsCursor.toggle() }
+        Button(region.followsCursor || region.followsTyping ? L("Aim by Hand") : L("Follow Cursor")) {
+            model.setZoomFollow(region.id, region.followsCursor || region.followsTyping ? .fixed : .pointer)
+        }
+        if model.hasTypingPositions, !region.followsTyping {
+            Button(L("Follow Typing")) { model.setZoomFollow(region.id, .typing) }
+        }
+        Button(region.isLoupe ? L("Make Full Zoom") : L("Make Loupe")) {
+            model.setZoomIsLoupe(region.id, !region.isLoupe)
         }
         Menu(L("Zoom Level")) {
             ForEach([1.25, 1.5, 2, 2.5, 3, 4], id: \.self) { scale in

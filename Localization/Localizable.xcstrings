@@ -329,6 +329,46 @@
         }
       }
     },
+    "%@ Loupe" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@-Lupe"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loupe %@"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ ルーペ"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Лупа %@"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Лупа %@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ 放大镜"
+          }
+        }
+      }
+    },
     "%@ Zoom" : {
       "comment" : "A zoom on the timeline with its level (2× Zoom)",
       "localizations" : {
@@ -5682,6 +5722,266 @@
         }
       }
     },
+    "%lld zooms can't move far enough — try Move the Camera Instead." : {
+      "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Zoom lässt sich nicht weit genug verschieben – versuche „Stattdessen Kamera verschieben“."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Zooms lassen sich nicht weit genug verschieben – versuche „Stattdessen Kamera verschieben“."
+                }
+              }
+            }
+          }
+        },
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld zoom can't move far enough — try Move the Camera Instead."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld zooms can't move far enough — try Move the Camera Instead."
+                }
+              }
+            }
+          }
+        },
+        "fr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld zoom ne peut pas être assez décalé — essayez « Déplacer plutôt la caméra »."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld zooms ne peuvent pas être assez décalés — essayez « Déplacer plutôt la caméra »."
+                }
+              }
+            }
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld個のズームは十分にずらせません。“代わりにカメラを移動”を試してください。"
+          }
+        },
+        "ru" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld увеличения не сдвинуть достаточно — попробуйте «Сдвинуть камеру»."
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld увеличений не сдвинуть достаточно — попробуйте «Сдвинуть камеру»."
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld увеличение не сдвинуть достаточно — попробуйте «Сдвинуть камеру»."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld увеличения не сдвинуть достаточно — попробуйте «Сдвинуть камеру»."
+                }
+              }
+            }
+          }
+        },
+        "uk" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld наближення не зсунути достатньо — спробуйте «Зсунути камеру»."
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld наближень не зсунути достатньо — спробуйте «Зсунути камеру»."
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld наближення не зсунути достатньо — спробуйте «Зсунути камеру»."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld наближення не зсунути достатньо — спробуйте «Зсунути камеру»."
+                }
+              }
+            }
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld 个缩放无法移得足够远 — 请试试“改为移动摄像头”。"
+          }
+        }
+      }
+    },
+    "%lld zooms have no free corner for the camera." : {
+      "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Für %lld Zoom ist keine Ecke für die Kamera frei."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Für %lld Zooms ist keine Ecke für die Kamera frei."
+                }
+              }
+            }
+          }
+        },
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld zoom has no free corner for the camera."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld zooms have no free corner for the camera."
+                }
+              }
+            }
+          }
+        },
+        "fr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld zoom n’a aucun coin libre pour la caméra."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld zooms n’ont aucun coin libre pour la caméra."
+                }
+              }
+            }
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld個のズームには、カメラを置ける空いた角がありません。"
+          }
+        },
+        "ru" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Для %lld увеличений нет свободного угла для камеры."
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Для %lld увеличений нет свободного угла для камеры."
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Для %lld увеличения нет свободного угла для камеры."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Для %lld увеличения нет свободного угла для камеры."
+                }
+              }
+            }
+          }
+        },
+        "uk" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Для %lld наближень немає вільного кута для камери."
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Для %lld наближень немає вільного кута для камери."
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Для %lld наближення немає вільного кута для камери."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Для %lld наближення немає вільного кута для камери."
+                }
+              }
+            }
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld 个缩放没有可放摄像头的空闲角落。"
+          }
+        }
+      }
+    },
     "%lld%%" : {
       "comment" : "A level in percent, on its own (volume, opacity, progress)",
       "localizations" : {
@@ -5800,6 +6100,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "已设置 %lld/%lld"
+          }
+        }
+      }
+    },
+    "(estimated from screen changes — check the speed blocks)" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(geschätzt anhand von Bildschirmänderungen – prüfe die Tempoblöcke)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(estimation d’après les changements à l’écran — vérifiez les blocs de vitesse)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "（画面の変化からの推定です。速度ブロックを確認してください）"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(оценка по изменениям на экране — проверьте блоки скорости)"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(оцінка за змінами на екрані — перевірте блоки швидкості)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "（根据屏幕变化估算 — 请检查变速块）"
           }
         }
       }
@@ -6285,6 +6625,86 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "一条细线，将深色录制内容与背景分开"
+          }
+        }
+      }
+    },
+    "A magnifier over one spot at the playhead; the rest of the frame stays in view" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eine Lupe über einer Stelle an der Abspielposition; der Rest des Bilds bleibt sichtbar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Une loupe sur un point à la tête de lecture ; le reste de l’image reste visible"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "再生ヘッドの位置で1か所を拡大し、ほかの部分はそのまま表示します"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Лупа над одним местом у курсора воспроизведения; остальной кадр остаётся виден"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Лупа над одним місцем біля курсора відтворення; решта кадру лишається видимою"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在播放头处放大一个位置；画面其余部分保持可见"
+          }
+        }
+      }
+    },
+    "A magnifier over one spot; the rest of the frame stays in view." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eine Lupe über einer Stelle; der Rest des Bilds bleibt sichtbar."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Une loupe sur un point ; le reste de l’image reste visible."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1か所を拡大し、ほかの部分はそのまま表示します。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Лупа над одним местом; остальной кадр остаётся виден."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Лупа над одним місцем; решта кадру лишається видимою."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "放大一个位置；画面其余部分保持可见。"
           }
         }
       }
@@ -7252,6 +7672,46 @@
         }
       }
     },
+    "Add Loupe" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lupe hinzufügen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouter une loupe"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ルーペを追加"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавить лупу"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Додати лупу"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "添加放大镜"
+          }
+        }
+      }
+    },
     "Add Marker" : {
       "localizations" : {
         "de" : {
@@ -8172,6 +8632,46 @@
         }
       }
     },
+    "Add typing zooms" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zooms aufs Tippen hinzufügen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouter des zooms sur la saisie"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "入力箇所のズームを追加"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Увеличить набор текста"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Наблизити набір тексту"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "添加打字缩放"
+          }
+        }
+      }
+    },
     "Add zoom at playhead" : {
       "localizations" : {
         "de" : {
@@ -8289,6 +8789,136 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "已添加 %@ — %@"
+          }
+        }
+      }
+    },
+    "Added %lld typing zooms — ⌘Z to undo" : {
+      "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Zoom aufs Tippen hinzugefügt – ⌘Z zum Widerrufen"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Zooms aufs Tippen hinzugefügt – ⌘Z zum Widerrufen"
+                }
+              }
+            }
+          }
+        },
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Added %lld typing zoom — ⌘Z to undo"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Added %lld typing zooms — ⌘Z to undo"
+                }
+              }
+            }
+          }
+        },
+        "fr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld zoom sur la saisie ajouté — ⌘Z pour annuler"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld zooms sur la saisie ajoutés — ⌘Z pour annuler"
+                }
+              }
+            }
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "入力箇所のズームを%lld個追加しました。⌘Zで取り消せます"
+          }
+        },
+        "ru" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Добавлено %lld увеличения набора — ⌘Z, чтобы отменить"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Добавлено %lld увеличений набора — ⌘Z, чтобы отменить"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Добавлено %lld увеличение набора — ⌘Z, чтобы отменить"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Добавлено %lld увеличения набора — ⌘Z, чтобы отменить"
+                }
+              }
+            }
+          }
+        },
+        "uk" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Додано %lld наближення набору — ⌘Z, щоб скасувати"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Додано %lld наближень набору — ⌘Z, щоб скасувати"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Додано %lld наближення набору — ⌘Z, щоб скасувати"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Додано %lld наближення набору — ⌘Z, щоб скасувати"
+                }
+              }
+            }
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已添加 %lld 个打字缩放 — 按 ⌘Z 撤销"
           }
         }
       }
@@ -8412,6 +9042,136 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "调整可将其移动半秒"
+          }
+        }
+      }
+    },
+    "Adjusted %lld zooms — ⌘Z to undo." : {
+      "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Zoom angepasst – ⌘Z zum Widerrufen."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Zooms angepasst – ⌘Z zum Widerrufen."
+                }
+              }
+            }
+          }
+        },
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Adjusted %lld zoom — ⌘Z to undo."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Adjusted %lld zooms — ⌘Z to undo."
+                }
+              }
+            }
+          }
+        },
+        "fr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld zoom ajusté — ⌘Z pour annuler."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld zooms ajustés — ⌘Z pour annuler."
+                }
+              }
+            }
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld個のズームを調整しました。⌘Zで取り消せます。"
+          }
+        },
+        "ru" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Исправлено %lld увеличения — ⌘Z, чтобы отменить."
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Исправлено %lld увеличений — ⌘Z, чтобы отменить."
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Исправлено %lld увеличение — ⌘Z, чтобы отменить."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Исправлено %lld увеличения — ⌘Z, чтобы отменить."
+                }
+              }
+            }
+          }
+        },
+        "uk" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Виправлено %lld наближення — ⌘Z, щоб скасувати."
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Виправлено %lld наближень — ⌘Z, щоб скасувати."
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Виправлено %lld наближення — ⌘Z, щоб скасувати."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Виправлено %lld наближення — ⌘Z, щоб скасувати."
+                }
+              }
+            }
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已调整 %lld 个缩放 — 按 ⌘Z 撤销。"
           }
         }
       }
@@ -8996,6 +9756,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "允许访问…"
+          }
+        }
+      }
+    },
+    "Allow LF Studios in Accessibility so it can see where you type." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erlaube LF Studios unter „Bedienungshilfen“, damit es sieht, wo du tippst."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autorisez LF Studios dans Accessibilité pour qu’il voie où vous tapez."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "入力している場所がわかるように、“アクセシビリティ”でLF Studiosを許可してください。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Разрешите LF Studios доступ в разделе «Универсальный доступ», чтобы приложение видело, где вы печатаете."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дозвольте LF Studios у розділі «Доступність», щоб застосунок бачив, де ви друкуєте."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请在“辅助功能”中允许 LF Studios，以便它知道你在哪里打字。"
           }
         }
       }
@@ -12423,6 +13223,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "边框"
+          }
+        }
+      }
+    },
+    "Border color" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rahmenfarbe"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couleur de la bordure"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "枠線のカラー"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Цвет рамки"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Колір рамки"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "边框颜色"
           }
         }
       }
@@ -16212,6 +17052,46 @@
         }
       }
     },
+    "Choose Another…" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anderes wählen …"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choisir une autre…"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ほかを選択…"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выбрать другое…"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вибрати інше…"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择其他…"
+          }
+        }
+      }
+    },
     "Choose Capture Area in the LF Studios menu to start" : {
       "localizations" : {
         "de" : {
@@ -16408,6 +17288,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "选择 .ttf 或 .otf 字体。LF Studios 会保留自己的副本，因此即使文件被删除也能继续使用。"
+          }
+        }
+      }
+    },
+    "Choose a PNG to use as the pointer, then click where it points" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wähle ein PNG als Zeiger und klicke dann auf die Stelle, auf die er zeigt"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choisissez un PNG à utiliser comme pointeur, puis cliquez là où il pointe"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ポインタにするPNGを選び、指す位置をクリックしてください"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выберите PNG для указателя, затем щёлкните там, куда он указывает"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Виберіть PNG для курсора, потім клацніть там, куди він вказує"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择一个 PNG 作为指针，然后点按它所指的位置"
           }
         }
       }
@@ -17971,6 +18891,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "点按音效"
+          }
+        }
+      }
+    },
+    "Click the picture where it points." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klicke auf die Stelle im Bild, auf die er zeigt."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cliquez sur l’image là où il pointe."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "画像の指す位置をクリックしてください。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Щёлкните по картинке там, куда он указывает."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Клацніть на зображенні там, куди він вказує."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在图片上点按它所指的位置。"
           }
         }
       }
@@ -22506,6 +23466,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "自定颜色 #%@"
+          }
+        }
+      }
+    },
+    "Custom image…" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eigenes Bild …"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Image personnalisée…"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カスタム画像…"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Своё изображение…"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Власне зображення…"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自定图像…"
           }
         }
       }
@@ -30255,6 +31255,86 @@
         }
       }
     },
+    "Finds typing and plays it faster, as speed blocks you can change" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Findet Tippen und spielt es schneller ab – als Tempoblöcke, die du ändern kannst"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trouve la saisie et la lit plus vite, en blocs de vitesse modifiables"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "入力部分を見つけて速く再生します。速度ブロックはあとから変更できます"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Находит набор текста и ускоряет его — блоками скорости, которые можно менять"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Знаходить набір тексту й прискорює його — блоками швидкості, які можна змінити"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "找到打字部分并加快播放，生成可修改的变速块"
+          }
+        }
+      }
+    },
+    "Finds zooms the camera bubble covers and moves their framing, or the bubble, out of the way" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Findet Zooms, die die Kamerablase verdeckt, und verschiebt ihren Bildausschnitt oder die Blase"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trouve les zooms que la bulle de caméra masque et décale leur cadrage, ou la bulle"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カメラのワイプに隠れるズームを見つけ、フレーミングかワイプをずらします"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Находит увеличения, которые закрывает окошко камеры, и сдвигает их кадр или само окошко"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Знаходить наближення, які закриває бульбашка камери, і зсуває їхній кадр або саму бульбашку"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "找到被摄像头气泡遮住的缩放，并移开其取景或气泡"
+          }
+        }
+      }
+    },
     "Fine-tune shadow" : {
       "localizations" : {
         "de" : {
@@ -30371,6 +31451,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "请先完成或取消当前的录制准备"
+          }
+        }
+      }
+    },
+    "Fit zooms around camera" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zooms an Kamera anpassen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajuster les zooms autour de la caméra"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カメラを避けてズーム"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Увеличения в обход камеры"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Наближення в обхід камери"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "让缩放避开摄像头"
           }
         }
       }
@@ -30536,6 +31656,46 @@
         }
       }
     },
+    "Follow Typing" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tippen folgen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suivre la saisie"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "入力に追従"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Следовать за набором"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Стежити за набором"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "跟随打字"
+          }
+        }
+      }
+    },
     "Follow cursor" : {
       "localizations" : {
         "de" : {
@@ -30576,6 +31736,46 @@
         }
       }
     },
+    "Follow typing" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tippen folgen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suivre la saisie"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "入力に追従"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "За набором"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Стежити за набором"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "跟随打字"
+          }
+        }
+      }
+    },
     "Follows cursor" : {
       "localizations" : {
         "de" : {
@@ -30612,6 +31812,86 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "跟随指针"
+          }
+        }
+      }
+    },
+    "Follows typing" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Folgt dem Tippen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suit la saisie"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "入力に追従"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "За набором"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Стежить за набором"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "跟随打字"
+          }
+        }
+      }
+    },
+    "Follows where you typed. Pressing it again replaces only these zooms." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Folgt der Stelle, an der du getippt hast. Erneut gedrückt, ersetzt es nur diese Zooms."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suit l’endroit où vous avez tapé. Appuyer de nouveau ne remplace que ces zooms."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "入力した場所に追従します。もう一度押すと、これらのズームだけが置き換わります。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Следует за местом, где вы печатали. Повторное нажатие заменяет только эти увеличения."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Стежить за місцем, де ви друкували. Повторне натискання замінює лише ці наближення."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "跟随你打字的位置。再次按下只会替换这些缩放。"
           }
         }
       }
@@ -31386,6 +32666,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "来自你的 Mac"
+          }
+        }
+      }
+    },
+    "Full" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Voll"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plein"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "全体"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Весь кадр"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Увесь кадр"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "全画面"
           }
         }
       }
@@ -33982,6 +35302,46 @@
         }
       }
     },
+    "How long the loupe takes to grow in and fade out" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wie lange die Lupe zum Auf- und Zuklappen braucht"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Durée d’ouverture et de fermeture de la loupe"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ルーペが開いて消えるまでの時間"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сколько длится появление и исчезновение лупы"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скільки триває поява й зникнення лупи"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "放大镜展开和淡出所需的时间"
+          }
+        }
+      }
+    },
     "How strongly blur and pixelate hide what's under them" : {
       "localizations" : {
         "de" : {
@@ -35395,6 +36755,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "这是你的我的风格，删除后“应用我的风格”将无可应用，直到你另选一个。使用此预设的视频会保留原样。"
+          }
+        }
+      }
+    },
+    "Its own arrow, text and hand pointers, drawn for the video." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eigene Pfeil-, Text- und Handzeiger, fürs Video gezeichnet."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ses propres pointeurs flèche, texte et main, dessinés pour la vidéo."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ビデオ用に描かれた専用の矢印、テキスト、手のポインタです。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Свои указатели — стрелка, текст и рука, нарисованные для видео."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Власні курсори — стрілка, текст і рука, намальовані для відео."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "专为视频绘制的箭头、文本和手形指针。"
           }
         }
       }
@@ -39286,6 +40686,46 @@
         }
       }
     },
+    "Loupe" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lupe"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loupe"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ルーペ"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Лупа"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Лупа"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "放大镜"
+          }
+        }
+      }
+    },
     "Lower under your voice" : {
       "localizations" : {
         "de" : {
@@ -39403,6 +40843,86 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "MIT 许可证 — 免费开源"
+          }
+        }
+      }
+    },
+    "Make Full Zoom" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In vollen Zoom umwandeln"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passer en zoom plein"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "全体ズームにする"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сделать увеличением кадра"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зробити наближенням кадру"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "改为全画面缩放"
+          }
+        }
+      }
+    },
+    "Make Loupe" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In Lupe umwandeln"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passer en loupe"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ルーペにする"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сделать лупой"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зробити лупою"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "改为放大镜"
           }
         }
       }
@@ -41374,6 +42894,46 @@
         }
       }
     },
+    "Move the Camera Instead" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stattdessen Kamera verschieben"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Déplacer plutôt la caméra"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "代わりにカメラを移動"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сдвинуть камеру"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зсунути камеру"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "改为移动摄像头"
+          }
+        }
+      }
+    },
     "Move the playhead inside a clip to split" : {
       "localizations" : {
         "de" : {
@@ -41450,6 +43010,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "将播放头移到显示摄像头画面的位置，然后再裁剪"
+          }
+        }
+      }
+    },
+    "Moved clear of the camera bubble." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aus dem Bereich der Kamerablase verschoben."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Décalé hors de la bulle de caméra."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カメラのワイプの外へずらしました。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сдвинуто из-под окошка камеры."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зсунуто з-під бульбашки камери."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已移出摄像头气泡。"
           }
         }
       }
@@ -44182,6 +45782,86 @@
         }
       }
     },
+    "No typing found in this recording" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In dieser Aufnahme wurde kein Tippen gefunden"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucune saisie trouvée dans cet enregistrement"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この収録には入力が見つかりません"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "В этой записи не найден набор текста"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "У цьому записі не знайдено набору тексту"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "此录制中未找到打字"
+          }
+        }
+      }
+    },
+    "No typing found to speed up" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kein Tippen zum Beschleunigen gefunden"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucune saisie à accélérer"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "早送りする入力が見つかりません"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нет набора текста для ускорения"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Немає набору тексту для прискорення"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未找到可加速的打字"
+          }
+        }
+      }
+    },
     "No ums" : {
       "localizations" : {
         "de" : {
@@ -44258,6 +45938,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "已没有语气词"
+          }
+        }
+      }
+    },
+    "No zooms are under the camera" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Zooms liegen unter der Kamera"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucun zoom n’est sous la caméra"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カメラに隠れるズームはありません"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Камера не закрывает ни одного увеличения"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Камера не закриває жодного наближення"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "没有缩放被摄像头遮住"
           }
         }
       }
@@ -45952,6 +47672,46 @@
         }
       }
     },
+    "Open and close" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öffnen und schließen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ouverture et fermeture"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開閉"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Появление и исчезновение"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поява й зникнення"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "展开和收起"
+          }
+        }
+      }
+    },
     "Open in annotation editor" : {
       "localizations" : {
         "de" : {
@@ -46633,6 +48393,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "描边"
+          }
+        }
+      }
+    },
+    "Outlined" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Umriss"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contour"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "輪郭"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Контур"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Контур"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "轮廓"
           }
         }
       }
@@ -48895,6 +50695,46 @@
         }
       }
     },
+    "Positions only: no text, no keys" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nur Positionen: kein Text, keine Tasten"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Positions uniquement : ni texte, ni touches"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "位置のみ: テキストもキーも記録しません"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Только положение: без текста и клавиш"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Лише положення: без тексту й клавіш"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "仅位置：不含文本和按键"
+          }
+        }
+      }
+    },
     "Preferences" : {
       "localizations" : {
         "de" : {
@@ -50616,6 +52456,46 @@
         }
       }
     },
+    "Record When Keys Are Pressed" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aufzeichnen, wann Tasten gedrückt werden"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enregistrer quand des touches sont pressées"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キーを押したタイミングを記録"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Записывать моменты нажатий"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Записувати моменти натискань"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "记录按键时刻"
+          }
+        }
+      }
+    },
     "Record Window" : {
       "localizations" : {
         "de" : {
@@ -50813,6 +52693,126 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "录制电脑声音"
+          }
+        }
+      }
+    },
+    "Record when keys are pressed" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aufzeichnen, wann Tasten gedrückt werden"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enregistrer quand des touches sont pressées"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キーを押したタイミングを記録"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Записывать моменты нажатий"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Записувати моменти натискань"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "记录按键时刻"
+          }
+        }
+      }
+    },
+    "Record with “Track where I type” on (Settings → Recording) to zoom in on typing." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nimm mit „Verfolgen, wo ich tippe“ auf (Einstellungen → Aufzeichnung), um aufs Tippen zu zoomen."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enregistrez avec « Suivre où je tape » activé (Réglages → Enregistrement) pour zoomer sur la saisie."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "入力箇所をズームするには、“入力場所を追跡”をオンにして収録してください（設定 → 収録）。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Записывайте с включённым «Следить, где я печатаю» (Настройки → Запись), чтобы увеличивать набор текста."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Записуйте з увімкненим «Стежити, де я друкую» (Параметри → Запис), щоб наближати набір тексту."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "开启“跟踪打字位置”（设置 → 录制）后录制，即可缩放到打字处。"
+          }
+        }
+      }
+    },
+    "Record with “Track where I type” on to zoom in on typing" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nimm mit „Verfolgen, wo ich tippe“ auf, um aufs Tippen zu zoomen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enregistrez avec « Suivre où je tape » activé pour zoomer sur la saisie"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "入力箇所をズームするには、“入力場所を追跡”をオンにして収録してください"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Записывайте с включённым «Следить, где я печатаю», чтобы увеличивать набор текста"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Записуйте з увімкненим «Стежити, де я друкую», щоб наближати набір тексту"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "开启“跟踪打字位置”后录制，即可缩放到打字处"
           }
         }
       }
@@ -52380,6 +54380,46 @@
         }
       }
     },
+    "Redo Add Loupe" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lupe hinzufügen wiederholen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rétablir l’ajout de la loupe"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ルーペの追加をやり直す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторить добавление лупы"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторити додавання лупи"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重做添加放大镜"
+          }
+        }
+      }
+    },
     "Redo Add Marker" : {
       "localizations" : {
         "de" : {
@@ -52616,6 +54656,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "重做添加文字"
+          }
+        }
+      }
+    },
+    "Redo Add Typing Zooms" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zooms aufs Tippen hinzufügen wiederholen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rétablir l’ajout des zooms sur la saisie"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "入力箇所のズームの追加をやり直す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторить увеличение набора текста"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторити наближення набору тексту"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重做添加打字缩放"
           }
         }
       }
@@ -53416,6 +55496,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "重做字幕更改"
+          }
+        }
+      }
+    },
+    "Redo Change Loupe" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lupe ändern wiederholen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rétablir la modification de la loupe"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ルーペの変更をやり直す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторить изменение лупы"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторити зміну лупи"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重做更改放大镜"
           }
         }
       }
@@ -54707,6 +56827,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "重做淡入淡出"
+          }
+        }
+      }
+    },
+    "Redo Fit Zooms Around Camera" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zooms an Kamera anpassen wiederholen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rétablir l’ajustement des zooms autour de la caméra"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カメラを避けるズームをやり直す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторить обход камеры"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторити обхід камери"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重做让缩放避开摄像头"
           }
         }
       }
@@ -56678,6 +58838,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "重做加速空闲片段"
+          }
+        }
+      }
+    },
+    "Redo Speed Up Typing" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tippen beschleunigen wiederholen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rétablir l’accélération de la saisie"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "入力の早送りをやり直す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторить ускорение набора"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторити прискорення набору"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重做加速打字"
           }
         }
       }
@@ -61248,6 +63448,46 @@
         }
       }
     },
+    "Ring" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ring"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anneau"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "リング"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кольцо"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кільце"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "圆环"
+          }
+        }
+      }
+    },
     "Ripple" : {
       "localizations" : {
         "de" : {
@@ -62769,6 +65009,86 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "节省 %@ — 指针静止且没有点按或按键的静音部分（这个较早的录制内容无法识别打字）"
+          }
+        }
+      }
+    },
+    "Saves only the moment each key goes down, so the editor can speed up typing. Never which keys, and nothing while a password field has focus." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sichert nur den Moment jedes Tastendrucks, damit der Editor Tippen beschleunigen kann. Nie welche Tasten, und nichts, solange ein Passwortfeld aktiv ist."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "N’enregistre que le moment où chaque touche est pressée, pour que l’éditeur puisse accélérer la saisie. Jamais quelles touches, et rien tant qu’un champ de mot de passe est actif."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キーを押した瞬間だけを保存し、エディタで入力部分を早送りできるようにします。どのキーかは記録せず、パスワード欄の入力中は何も保存しません。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сохраняет только момент каждого нажатия, чтобы редактор мог ускорить набор текста. Никогда — какие клавиши, и ничего, пока активно поле пароля."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зберігає лише момент кожного натискання, щоб редактор міг прискорити набір тексту. Ніколи — які клавіші, і нічого, поки активне поле пароля."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "只存储每次按键按下的时刻，以便编辑器加速打字部分。绝不记录是哪些键，密码栏处于焦点时也不记录任何内容。"
+          }
+        }
+      }
+    },
+    "Saves only where the text cursor is, so the editor can zoom in on typing. No text and no keys are recorded, and nothing while a password field has focus." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sichert nur, wo der Textcursor ist, damit der Editor aufs Tippen zoomen kann. Kein Text und keine Tasten werden aufgezeichnet, und nichts, solange ein Passwortfeld aktiv ist."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "N’enregistre que la position du curseur de texte, pour que l’éditeur puisse zoomer sur la saisie. Aucun texte ni aucune touche n’est enregistré, et rien tant qu’un champ de mot de passe est actif."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "テキストカーソルの位置だけを保存し、エディタで入力箇所をズームできるようにします。テキストもキーも記録せず、パスワード欄の入力中は何も保存しません。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сохраняет только положение текстового курсора, чтобы редактор мог увеличить набор текста. Ни текст, ни клавиши не записываются, и ничего, пока активно поле пароля."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зберігає лише положення текстового курсора, щоб редактор міг наблизити набір тексту. Ні текст, ні клавіші не записуються, і нічого, поки активне поле пароля."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "只存储文本光标的位置，以便编辑器缩放到打字处。不记录任何文本和按键，密码栏处于焦点时也不记录任何内容。"
           }
         }
       }
@@ -65482,6 +67802,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "共享 — “邮件”、“信息”、隔空投送…"
+          }
+        }
+      }
+    },
+    "Shift the Zooms" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zooms verschieben"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Décaler les zooms"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ズームをずらす"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сдвинуть увеличения"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зсунути наближення"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "移动缩放"
           }
         }
       }
@@ -68657,6 +71017,176 @@
         }
       }
     },
+    "Sped up %lld typing stretches to %@ — %@ shorter" : {
+      "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Tipp-Abschnitt auf %@ beschleunigt – %@ kürzer"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Tipp-Abschnitte auf %@ beschleunigt – %@ kürzer"
+                }
+              }
+            }
+          }
+        },
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Sped up %lld typing stretch to %@ — %@ shorter"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Sped up %lld typing stretches to %@ — %@ shorter"
+                }
+              }
+            }
+          }
+        },
+        "fr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld passage de saisie accéléré à %@ — %@ de moins"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld passages de saisie accélérés à %@ — %@ de moins"
+                }
+              }
+            }
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "入力部分%lldか所を%@に早送りしました（%@短縮）"
+          }
+        },
+        "ru" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Ускорены %lld отрезка набора до %@ — короче на %@"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Ускорены %lld отрезков набора до %@ — короче на %@"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Ускорен %lld отрезок набора до %@ — короче на %@"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Ускорены %lld отрезка набора до %@ — короче на %@"
+                }
+              }
+            }
+          }
+        },
+        "uk" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Прискорено %lld відрізки набору до %@ — коротше на %@"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Прискорено %lld відрізків набору до %@ — коротше на %@"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Прискорено %lld відрізок набору до %@ — коротше на %@"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Прискорено %lld відрізка набору до %@ — коротше на %@"
+                }
+              }
+            }
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已将 %lld 段打字加速到 %@ — 缩短了 %@"
+          }
+        }
+      }
+    },
+    "Sped up by Speed up typing — pick another speed here, or press it again." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Durch „Tippen beschleunigen“ schneller – wähle hier ein anderes Tempo oder drücke es erneut."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accéléré par « Accélérer la saisie » — choisissez une autre vitesse ici, ou appuyez de nouveau."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“入力を早送り”で速くしました。ここで別の速度を選ぶか、もう一度押してください。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ускорено кнопкой «Ускорить набор» — выберите здесь другую скорость или нажмите её снова."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Прискорено кнопкою «Прискорити набір» — виберіть тут іншу швидкість або натисніть її знову."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "由“加速打字”加速 — 可在此选择其他速度，或再次按下。"
+          }
+        }
+      }
+    },
     "Speech recognition is turned off for LF Studios in System Settings → Privacy & Security → Speech Recognition. Turn it on, then try again." : {
       "localizations" : {
         "de" : {
@@ -68933,6 +71463,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "此部分的速度"
+          }
+        }
+      }
+    },
+    "Speed up typing to" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tippen beschleunigen auf"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accélérer la saisie à"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "入力の早送り速度"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ускорить набор до"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Прискорити набір до"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "将打字加速到"
           }
         }
       }
@@ -72282,6 +74852,46 @@
         }
       }
     },
+    "The camera follows the text cursor as you type." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Kamera folgt beim Tippen dem Textcursor."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La caméra suit le curseur de texte pendant la saisie."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "入力中、カメラがテキストカーソルを追いかけます。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Камера следует за текстовым курсором, пока вы печатаете."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Камера стежить за текстовим курсором, поки ви друкуєте."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "镜头在你打字时跟随文本光标。"
+          }
+        }
+      }
+    },
     "The camera keeps your cursor in view and glides after it." : {
       "localizations" : {
         "de" : {
@@ -72558,6 +75168,86 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "最高画质，也是唯一能保留透明度的格式"
+          }
+        }
+      }
+    },
+    "The loupe stays over the text cursor." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Lupe bleibt über dem Textcursor."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La loupe reste sur le curseur de texte."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ルーペがテキストカーソルの上にとどまります。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Лупа держится над текстовым курсором."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Лупа тримається над текстовим курсором."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "放大镜停在文本光标上方。"
+          }
+        }
+      }
+    },
+    "The loupe stays over your cursor." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Lupe bleibt über deinem Zeiger."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La loupe reste sur votre pointeur."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ルーペがポインタの上にとどまります。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Лупа держится над указателем."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Лупа тримається над курсором."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "放大镜停在指针上方。"
           }
         }
       }
@@ -73403,6 +76093,46 @@
         }
       }
     },
+    "The whole frame zooms in." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das ganze Bild zoomt hinein."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toute l’image zoome."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "画面全体がズームします。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Увеличивается весь кадр."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Наближується весь кадр."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "整个画面放大。"
+          }
+        }
+      }
+    },
     "The window you're recording closed. Stop when you're ready — the recording keeps going." : {
       "localizations" : {
         "de" : {
@@ -74003,6 +76733,86 @@
         }
       }
     },
+    "This recording didn't save key timing or screen changes, so typing can't be found" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Aufnahme hat weder Tastenzeitpunkte noch Bildschirmänderungen gesichert, daher lässt sich kein Tippen finden"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cet enregistrement n’a conservé ni le moment des touches ni les changements à l’écran : impossible de trouver la saisie"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この収録にはキーのタイミングも画面の変化も保存されていないため、入力を見つけられません"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Эта запись не сохранила ни моменты нажатий, ни изменения на экране, поэтому набор текста не найти"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Цей запис не зберіг ні моментів натискань, ні змін на екрані, тож набір тексту не знайти"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "此录制未存储按键时刻或屏幕变化，因此无法找到打字部分"
+          }
+        }
+      }
+    },
+    "This recording didn't save key timing, so typing is estimated from screen changes while the pointer holds still. Check the speed blocks it makes." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Aufnahme hat keine Tastenzeitpunkte gesichert, daher wird Tippen anhand von Bildschirmänderungen bei ruhendem Zeiger geschätzt. Prüfe die erzeugten Tempoblöcke."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cet enregistrement n’a pas conservé le moment des touches : la saisie est estimée d’après les changements à l’écran pendant que le pointeur reste immobile. Vérifiez les blocs de vitesse créés."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この収録にはキーのタイミングが保存されていないため、ポインタが止まっている間の画面の変化から入力を推定します。作成された速度ブロックを確認してください。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Эта запись не сохранила моменты нажатий, поэтому набор текста оценивается по изменениям на экране, пока указатель неподвижен. Проверьте созданные блоки скорости."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Цей запис не зберіг моментів натискань, тож набір тексту оцінюється за змінами на екрані, поки курсор нерухомий. Перевірте створені блоки швидкості."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "此录制未存储按键时刻，因此会根据指针静止时的屏幕变化来估算打字部分。请检查生成的变速块。"
+          }
+        }
+      }
+    },
     "This recording has newer edits than “%@”" : {
       "localizations" : {
         "de" : {
@@ -74369,6 +77179,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "这会用新的%2$@文字稿替换全部 %1$lld 行字幕，包括你编辑或输入过的行。"
+          }
+        }
+      }
+    },
+    "This video has no camera bubble" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dieses Video hat keine Kamerablase"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cette vidéo n’a pas de bulle de caméra"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このビデオにはカメラのワイプがありません"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "В этом видео нет окошка камеры"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "У цьому відео немає бульбашки камери"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "此视频没有摄像头气泡"
           }
         }
       }
@@ -74857,6 +77707,46 @@
         }
       }
     },
+    "Timing only: never which keys" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nur Zeitpunkte: nie welche Tasten"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Moments uniquement : jamais quelles touches"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "タイミングのみ: どのキーかは記録しません"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Только моменты: никогда — какие клавиши"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Лише моменти: ніколи — які клавіші"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "仅时刻：绝不记录是哪些键"
+          }
+        }
+      }
+    },
     "Tips" : {
       "localizations" : {
         "de" : {
@@ -75295,6 +78185,166 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "右上"
+          }
+        }
+      }
+    },
+    "Touch dot" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Touch-Punkt"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Point tactile"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "タッチの点"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Точка касания"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Точка дотику"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "触控圆点"
+          }
+        }
+      }
+    },
+    "Track Where I Type" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verfolgen, wo ich tippe"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suivre où je tape"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "入力場所を追跡"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Следить, где я печатаю"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Стежити, де я друкую"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "跟踪打字位置"
+          }
+        }
+      }
+    },
+    "Track where I type" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verfolgen, wo ich tippe"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suivre où je tape"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "入力場所を追跡"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Следить, где я печатаю"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Стежити, де я друкую"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "跟踪打字位置"
+          }
+        }
+      }
+    },
+    "Track where I type saves only where the text cursor is on screen, so the editor can zoom in on typing. Record when keys are pressed saves only the moment each key goes down, so the editor can speed up typing. No text is recorded and no keys are named. While a password field has focus, neither saves anything. Both are off until you turn them on; macOS asks for Accessibility access." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "„Verfolgen, wo ich tippe“ sichert nur, wo der Textcursor auf dem Bildschirm ist, damit der Editor aufs Tippen zoomen kann. „Aufzeichnen, wann Tasten gedrückt werden“ sichert nur den Moment jedes Tastendrucks, damit der Editor Tippen beschleunigen kann. Es wird kein Text aufgezeichnet und keine Taste benannt. Solange ein Passwortfeld aktiv ist, sichern beide nichts. Beide sind aus, bis du sie einschaltest; macOS fragt nach dem Zugriff auf „Bedienungshilfen“."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "« Suivre où je tape » n’enregistre que la position du curseur de texte à l’écran, pour que l’éditeur puisse zoomer sur la saisie. « Enregistrer quand des touches sont pressées » n’enregistre que le moment où chaque touche est pressée, pour que l’éditeur puisse accélérer la saisie. Aucun texte n’est enregistré et aucune touche n’est nommée. Tant qu’un champ de mot de passe est actif, aucun des deux n’enregistre quoi que ce soit. Les deux restent désactivés tant que vous ne les activez pas ; macOS demande l’accès Accessibilité."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“入力場所を追跡”は画面上のテキストカーソルの位置だけを保存し、エディタで入力箇所をズームできるようにします。“キーを押したタイミングを記録”はキーを押した瞬間だけを保存し、入力部分を早送りできるようにします。テキストは記録せず、どのキーかも記録しません。パスワード欄の入力中は、どちらも何も保存しません。どちらもオンにするまでオフのままで、macOSが“アクセシビリティ”へのアクセスを求めます。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "«Следить, где я печатаю» сохраняет только положение текстового курсора на экране, чтобы редактор мог увеличить набор текста. «Записывать моменты нажатий» сохраняет только момент каждого нажатия, чтобы редактор мог ускорить набор. Текст не записывается, клавиши не называются. Пока активно поле пароля, ни одна из функций ничего не сохраняет. Обе выключены, пока вы их не включите; macOS запросит доступ в разделе «Универсальный доступ»."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "«Стежити, де я друкую» зберігає лише положення текстового курсора на екрані, щоб редактор міг наблизити набір тексту. «Записувати моменти натискань» зберігає лише момент кожного натискання, щоб редактор міг прискорити набір. Текст не записується, клавіші не називаються. Поки активне поле пароля, жодна з функцій нічого не зберігає. Обидві вимкнені, доки ви їх не ввімкнете; macOS попросить доступ у розділі «Доступність»."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“跟踪打字位置”只存储文本光标在屏幕上的位置，以便编辑器缩放到打字处。“记录按键时刻”只存储每次按键按下的时刻，以便编辑器加速打字部分。不会记录任何文本，也不会记下是哪些键。密码栏处于焦点时，两者都不存储任何内容。两者在你开启前都保持关闭；macOS 会请求“辅助功能”权限。"
           }
         }
       }
@@ -76259,6 +79309,46 @@
         }
       }
     },
+    "Turn off vertical reframing to fit zooms around the camera" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schalte die vertikale Bildanpassung aus, um Zooms an die Kamera anzupassen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Désactivez le recadrage vertical pour ajuster les zooms autour de la caméra"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カメラを避けてズームするには、縦向きのリフレームをオフにしてください"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выключите вертикальное кадрирование, чтобы увеличения обходили камеру"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вимкніть вертикальне кадрування, щоб наближення обходили камеру"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请先关闭竖屏重新取景，再让缩放避开摄像头"
+          }
+        }
+      }
+    },
     "Turn on Auto-zoom on clicks (Zoom) to use this" : {
       "localizations" : {
         "de" : {
@@ -76459,6 +79549,46 @@
         }
       }
     },
+    "Type" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Art"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Type"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "種類"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тип"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тип"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "类型"
+          }
+        }
+      }
+    },
     "Type here…" : {
       "localizations" : {
         "de" : {
@@ -76535,6 +79665,86 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "在文字标注中输入"
+          }
+        }
+      }
+    },
+    "Typing" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tippen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saisie"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "入力"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Набор текста"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Набір тексту"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "打字"
+          }
+        }
+      }
+    },
+    "Typing now plays at %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tippen läuft jetzt mit %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La saisie est maintenant lue à %@"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "入力部分は%@で再生されます"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Набор текста теперь идёт на %@"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Набір тексту тепер іде на %@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "打字部分现在以 %@ 播放"
           }
         }
       }
@@ -77180,6 +80390,46 @@
         }
       }
     },
+    "Undo Add Loupe" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lupe hinzufügen widerrufen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler l’ajout de la loupe"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ルーペの追加を取り消す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отменить добавление лупы"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скасувати додавання лупи"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "撤销添加放大镜"
+          }
+        }
+      }
+    },
     "Undo Add Marker" : {
       "localizations" : {
         "de" : {
@@ -77416,6 +80666,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "撤销添加文字"
+          }
+        }
+      }
+    },
+    "Undo Add Typing Zooms" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zooms aufs Tippen hinzufügen widerrufen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler l’ajout des zooms sur la saisie"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "入力箇所のズームの追加を取り消す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отменить увеличение набора текста"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скасувати наближення набору тексту"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "撤销添加打字缩放"
           }
         }
       }
@@ -78216,6 +81506,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "撤销字幕更改"
+          }
+        }
+      }
+    },
+    "Undo Change Loupe" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lupe ändern widerrufen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler la modification de la loupe"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ルーペの変更を取り消す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отменить изменение лупы"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скасувати зміну лупи"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "撤销更改放大镜"
           }
         }
       }
@@ -79507,6 +82837,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "撤销淡入淡出"
+          }
+        }
+      }
+    },
+    "Undo Fit Zooms Around Camera" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zooms an Kamera anpassen widerrufen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler l’ajustement des zooms autour de la caméra"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カメラを避けるズームを取り消す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отменить обход камеры"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скасувати обхід камери"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "撤销让缩放避开摄像头"
           }
         }
       }
@@ -81482,6 +84852,46 @@
         }
       }
     },
+    "Undo Speed Up Typing" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tippen beschleunigen widerrufen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler l’accélération de la saisie"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "入力の早送りを取り消す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отменить ускорение набора"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скасувати прискорення набору"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "撤销加速打字"
+          }
+        }
+      }
+    },
     "Undo Split" : {
       "localizations" : {
         "de" : {
@@ -82162,6 +85572,46 @@
         }
       }
     },
+    "Undo camera fit" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kamera-Anpassung zurücknehmen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler l’ajustement à la caméra"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カメラ回避を元に戻す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вернуть как было"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повернути як було"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "撤销避开摄像头"
+          }
+        }
+      }
+    },
     "Unmute Clip" : {
       "localizations" : {
         "de" : {
@@ -82679,6 +86129,86 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "用于截屏和录制内容。标记：%y 年、%m 月、%d 日、%H 时、%M 分、%S 秒。留空即可恢复默认设置。"
+          }
+        }
+      }
+    },
+    "Uses the key timing saved with this recording (never which keys). Shortcut keycaps stay on screen long enough to read." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nutzt die mit dieser Aufnahme gesicherten Tastenzeitpunkte (nie welche Tasten). Tastenkürzel bleiben lange genug sichtbar, um sie zu lesen."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utilise le moment des touches conservé avec cet enregistrement (jamais quelles touches). Les raccourcis restent à l’écran assez longtemps pour être lus."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この収録に保存されたキーのタイミングを使います（どのキーかは含みません）。ショートカットのキーは読めるだけの時間表示されます。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Использует моменты нажатий, сохранённые с этой записью (без названий клавиш). Сочетания клавиш остаются на экране достаточно долго, чтобы их прочитать."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Використовує моменти натискань, збережені з цим записом (без назв клавіш). Скорочення лишаються на екрані достатньо довго, щоб їх прочитати."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用此录制存储的按键时刻（绝不记录是哪些键）。快捷键键帽在屏幕上停留足够长，便于看清。"
+          }
+        }
+      }
+    },
+    "Uses where the text cursor moved while you typed." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nutzt, wohin sich der Textcursor beim Tippen bewegt hat."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utilise les déplacements du curseur de texte pendant la saisie."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "入力中のテキストカーソルの動きを使います。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Использует перемещения текстового курсора во время набора."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Використовує переміщення текстового курсора під час набору."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用你打字时文本光标的移动。"
           }
         }
       }
@@ -83725,6 +87255,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "新功能"
+          }
+        }
+      }
+    },
+    "While this zoom plays, the camera bubble moves to: %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Während dieser Zoom läuft, wandert die Kamerablase nach: %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pendant ce zoom, la bulle de caméra se place : %@"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このズーム中、カメラのワイプの移動先: %@"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пока идёт это увеличение, окошко камеры перемещается: %@"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поки триває це наближення, бульбашка камери переміщується: %@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "此缩放播放时，摄像头气泡移到：%@"
           }
         }
       }
@@ -86208,6 +89778,46 @@
         }
       }
     },
+    "Zooms that follow the text cursor while you type" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zooms, die beim Tippen dem Textcursor folgen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Des zooms qui suivent le curseur de texte pendant la saisie"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "入力中にテキストカーソルを追うズーム"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Увеличения, следующие за текстовым курсором при наборе"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Наближення, що стежать за текстовим курсором під час набору"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "打字时跟随文本光标的缩放"
+          }
+        }
+      }
+    },
     "a table" : {
       "comment" : "Listed with links and email addresses the recognized text holds",
       "localizations" : {
@@ -86807,6 +90417,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "循环播放"
+          }
+        }
+      }
+    },
+    "macOS classic" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "macOS klassisch"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "macOS classique"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "macOSクラシック"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Классический macOS"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Класичний macOS"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "macOS 经典"
           }
         }
       }
@@ -88138,6 +91788,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "· 跟随指针"
+          }
+        }
+      }
+    },
+    "· follows typing" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "· folgt dem Tippen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "· suit la saisie"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "· 入力に追従"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "· за набором"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "· за набором"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "· 跟随打字"
           }
         }
       }

@@ -18,6 +18,8 @@
 	<string>%@ (⇧⌘Z)</string>
 	<key>%@ (⌘Z)</key>
 	<string>%@ (⌘Z)</string>
+	<key>%@ Loupe</key>
+	<string>Лупа %@</string>
 	<key>%@ Zoom</key>
 	<string>Масштаб %@</string>
 	<key>%@ area</key>
@@ -102,6 +104,8 @@
 	<string>громкость %lld %%</string>
 	<key>%lld/%lld configured</key>
 	<string>Настроено: %lld из %lld</string>
+	<key>(estimated from screen changes — check the speed blocks)</key>
+	<string>(оценка по изменениям на экране — проверьте блоки скорости)</string>
 	<key>, </key>
 	<string>, </string>
 	<key>, %@ to %@</key>
@@ -126,6 +130,10 @@
 	<string>Файл с таким именем уже существует. Выберите другое имя и экспортируйте снова.</string>
 	<key>A hairline that separates dark recordings from the background</key>
 	<string>Тонкая линия отделяет темные записи от фона</string>
+	<key>A magnifier over one spot at the playhead; the rest of the frame stays in view</key>
+	<string>Лупа над одним местом у курсора воспроизведения; остальной кадр остаётся виден</string>
+	<key>A magnifier over one spot; the rest of the frame stays in view.</key>
+	<string>Лупа над одним местом; остальной кадр остаётся виден.</string>
 	<key>A report helps fix this. You'll see everything before it's sent, and it never includes your screenshots or recordings.</key>
 	<string>Отчет поможет это исправить. Вы увидите его целиком перед отправкой, и в нем никогда не будет ваших снимков экрана и записей.</string>
 	<key>A second caption track you can show, burn in, or save as subtitles. Translated on this Mac — nothing is uploaded.</key>
@@ -174,6 +182,8 @@
 	<string>Добавить изображение или логотип…</string>
 	<key>Add Intro Card</key>
 	<string>Добавить начальный титр</string>
+	<key>Add Loupe</key>
+	<string>Добавить лупу</string>
 	<key>Add Marker</key>
 	<string>Добавить маркер</string>
 	<key>Add Marker While Recording</key>
@@ -220,6 +230,8 @@
 	<string>Добавить прожектор у указателя воспроизведения</string>
 	<key>Add text at the playhead (T)</key>
 	<string>Добавить текст у указателя воспроизведения (T)</string>
+	<key>Add typing zooms</key>
+	<string>Увеличить набор текста</string>
 	<key>Add zoom at playhead</key>
 	<string>Добавить увеличение у указателя воспроизведения</string>
 	<key>Add “%@” at the playhead</key>
@@ -260,6 +272,8 @@
 	<string>Для всех увеличений задано %@</string>
 	<key>Allow Access…</key>
 	<string>Разрешить доступ…</string>
+	<key>Allow LF Studios in Accessibility so it can see where you type.</key>
+	<string>Разрешите LF Studios доступ в разделе «Универсальный доступ», чтобы приложение видело, где вы печатаете.</string>
 	<key>Allow LF Studios in Accessibility — shortcuts turn on by themselves.</key>
 	<string>Разрешите LF Studios доступ в разделе «Универсальный доступ» — сочетания клавиш включатся сами.</string>
 	<key>Allow Screen Recording</key>
@@ -424,6 +438,8 @@
 	<string>Слоновая кость</string>
 	<key>Border</key>
 	<string>Рамка</string>
+	<key>Border color</key>
+	<string>Цвет рамки</string>
 	<key>Bottom</key>
 	<string>Внизу</string>
 	<key>Bottom left</key>
@@ -606,6 +622,8 @@
 	<string>Проверить обновления</string>
 	<key>Choose</key>
 	<string>Выбрать</string>
+	<key>Choose Another…</key>
+	<string>Выбрать другое…</string>
 	<key>Choose Capture Area in the LF Studios menu to start</key>
 	<string>Чтобы начать, выберите «Снять область» в меню LF Studios</string>
 	<key>Choose Image…</key>
@@ -616,6 +634,8 @@
 	<string>Сначала выберите «Мой стиль»: Стили ▸ Изменить стили ▸ Использовать как «Мой стиль» (⇧⌘Y)</string>
 	<key>Choose a .ttf or .otf font. LF Studios keeps its own copy, so it keeps working if the file is deleted.</key>
 	<string>Выберите шрифт .ttf или .otf. LF Studios сохранит свою копию, и шрифт продолжит работать, даже если файл удалить.</string>
+	<key>Choose a PNG to use as the pointer, then click where it points</key>
+	<string>Выберите PNG для указателя, затем щёлкните там, куда он указывает</string>
 	<key>Choose a language</key>
 	<string>Выберите язык</string>
 	<key>Choose a logo, watermark, or screenshot to place on the video</key>
@@ -694,6 +714,8 @@
 	<string>Нажатие удалено — ⌘Z, чтобы отменить</string>
 	<key>Click sounds</key>
 	<string>Звуки нажатий</string>
+	<key>Click the picture where it points.</key>
+	<string>Щёлкните по картинке там, куда он указывает.</string>
 	<key>Click to add a zoom — or press Z at the playhead</key>
 	<string>Нажмите, чтобы добавить увеличение, — или нажмите Z у указателя воспроизведения</string>
 	<key>Click to add the next step</key>
@@ -920,6 +942,8 @@
 	<string>Свой цвет</string>
 	<key>Custom color #%@</key>
 	<string>Свой цвет #%@</string>
+	<key>Custom image…</key>
+	<string>Своё изображение…</string>
 	<key>Custom look</key>
 	<string>Свой стиль</string>
 	<key>Custom position</key>
@@ -1280,12 +1304,18 @@
 	<string>Найти в расшифровке</string>
 	<key>Find “%@”</key>
 	<string>Найти «%@»</string>
+	<key>Finds typing and plays it faster, as speed blocks you can change</key>
+	<string>Находит набор текста и ускоряет его — блоками скорости, которые можно менять</string>
+	<key>Finds zooms the camera bubble covers and moves their framing, or the bubble, out of the way</key>
+	<string>Находит увеличения, которые закрывает окошко камеры, и сдвигает их кадр или само окошко</string>
 	<key>Fine-tune shadow</key>
 	<string>Точная настройка тени</string>
 	<key>Finish and Quit</key>
 	<string>Дождаться и завершить</string>
 	<key>Finish or cancel the current recording setup</key>
 	<string>Завершите или отмените текущую подготовку к записи</string>
+	<key>Fit zooms around camera</key>
+	<string>Увеличения в обход камеры</string>
 	<key>Fix</key>
 	<string>Исправить</string>
 	<key>Flamingo</key>
@@ -1294,10 +1324,18 @@
 	<string>Отразить, как на селфи</string>
 	<key>Follow Cursor</key>
 	<string>Следовать за указателем</string>
+	<key>Follow Typing</key>
+	<string>Следовать за набором</string>
 	<key>Follow cursor</key>
 	<string>За указателем</string>
+	<key>Follow typing</key>
+	<string>За набором</string>
 	<key>Follows cursor</key>
 	<string>За указателем</string>
+	<key>Follows typing</key>
+	<string>За набором</string>
+	<key>Follows where you typed. Pressing it again replaces only these zooms.</key>
+	<string>Следует за местом, где вы печатали. Повторное нажатие заменяет только эти увеличения.</string>
 	<key>Font</key>
 	<string>Шрифт</string>
 	<key>For Final Cut Pro, DaVinci Resolve, and Adobe Premiere Pro</key>
@@ -1330,6 +1368,8 @@
 	<string>От острых углов до круга</string>
 	<key>From your Mac</key>
 	<string>С вашего Mac</string>
+	<key>Full</key>
+	<string>Весь кадр</string>
 	<key>Full Camera at Playhead</key>
 	<string>Камера на весь кадр у указателя воспроизведения</string>
 	<key>Full Frame (No Background)</key>
@@ -1446,6 +1486,8 @@
 	<string>Наведите указатель на дорожку «Масштаб»</string>
 	<key>Hover the zoom track and click to add a zoom, or press Z at the playhead. Drag a zoom to move it; drag its edges to change how long it lasts.</key>
 	<string>Наведите указатель на дорожку «Масштаб» и нажмите, чтобы добавить увеличение, или нажмите Z у указателя воспроизведения. Перетяните увеличение, чтобы переместить его; тяните за края, чтобы изменить длительность.</string>
+	<key>How long the loupe takes to grow in and fade out</key>
+	<string>Сколько длится появление и исчезновение лупы</string>
 	<key>How strongly blur and pixelate hide what's under them</key>
 	<string>Насколько сильно размытие и пикселизация скрывают содержимое</string>
 	<key>Image</key>
@@ -1510,6 +1552,8 @@
 	<string>Там не хватит места. Выберите другое место или «Файлы поменьше».</string>
 	<key>It's your My Style, so Apply my style will have nothing to apply until you choose another. Videos that use this preset keep their look.</key>
 	<string>Это ваш «Мой стиль»: пока вы не выберете другой, применять будет нечего. Видео с этим стилем сохранят свой вид.</string>
+	<key>Its own arrow, text and hand pointers, drawn for the video.</key>
+	<string>Свои указатели — стрелка, текст и рука, нарисованные для видео.</string>
 	<key>JPEG Quality</key>
 	<string>Качество JPEG</string>
 	<key>Jump here</key>
@@ -1664,12 +1708,18 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Зацикливание</string>
 	<key>Loop to fill</key>
 	<string>Повторять до конца</string>
+	<key>Loupe</key>
+	<string>Лупа</string>
 	<key>Lower under your voice</key>
 	<string>Приглушать под голос</string>
 	<key>M</key>
 	<string>M</string>
 	<key>MIT License — Free and open source</key>
 	<string>Лицензия MIT — бесплатно, с открытым исходным кодом</string>
+	<key>Make Full Zoom</key>
+	<string>Сделать увеличением кадра</string>
+	<key>Make Loupe</key>
+	<string>Сделать лупой</string>
 	<key>Make it lighter: %@, %@ fps</key>
 	<string>Облегчить: %@, %@ fps</string>
 	<key>Manage</key>
@@ -1768,10 +1818,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Раньше</string>
 	<key>Move later</key>
 	<string>Позже</string>
+	<key>Move the Camera Instead</key>
+	<string>Сдвинуть камеру</string>
 	<key>Move the playhead inside a clip to split</key>
 	<string>Поставьте указатель воспроизведения внутрь клипа, чтобы разделить его</string>
 	<key>Move the playhead to where the camera shows, then crop</key>
 	<string>Переместите указатель туда, где видна камера, затем обрежьте</string>
+	<key>Moved clear of the camera bubble.</key>
+	<string>Сдвинуто из-под окошка камеры.</string>
 	<key>Moved to the Trash</key>
 	<string>Перемещено в Корзину</string>
 	<key>Movement</key>
@@ -1908,10 +1962,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>В этой записи не найдено речи. Если в ней есть голос, проверьте его уровень во вкладке «Аудио» и повторите попытку.</string>
 	<key>No text found in this selection</key>
 	<string>В выделенной области не найден текст</string>
+	<key>No typing found in this recording</key>
+	<string>В этой записи не найден набор текста</string>
+	<key>No typing found to speed up</key>
+	<string>Нет набора текста для ускорения</string>
 	<key>No ums</key>
 	<string>Нет слов-паразитов</string>
 	<key>No ums or uhs left</key>
 	<string>Слов-паразитов не осталось</string>
+	<key>No zooms are under the camera</key>
+	<string>Камера не закрывает ни одного увеличения</string>
 	<key>None</key>
 	<string>Нет</string>
 	<key>None in this recording. Turn on “Show keyboard shortcuts” in Settings → Recording and every ⌘ shortcut you press appears as keycaps. Plain typing is never recorded.</key>
@@ -1996,6 +2056,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Открыть видеоредактор</string>
 	<key>Open a .lfstudios project</key>
 	<string>Открыть проект .lfstudios</string>
+	<key>Open and close</key>
+	<string>Появление и исчезновение</string>
 	<key>Open in annotation editor</key>
 	<string>Открыть в редакторе снимков</string>
 	<key>Open the video editor after recording</key>
@@ -2029,6 +2091,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<key>Out later</key>
 	<string>Конец позже</string>
 	<key>Outline</key>
+	<string>Контур</string>
+	<key>Outlined</key>
 	<string>Контур</string>
 	<key>Outro</key>
 	<string>Концовка</string>
@@ -2136,6 +2200,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Фарфор</string>
 	<key>Position</key>
 	<string>Положение</string>
+	<key>Positions only: no text, no keys</key>
+	<string>Только положение: без текста и клавиш</string>
 	<key>Preferences</key>
 	<string>Настройки</string>
 	<key>Preparing to copy…</key>
@@ -2216,6 +2282,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Записать область</string>
 	<key>Record Fullscreen</key>
 	<string>Записать весь экран</string>
+	<key>Record When Keys Are Pressed</key>
+	<string>Записывать моменты нажатий</string>
 	<key>Record Window</key>
 	<string>Записать окно</string>
 	<key>Record an area, a window, or the whole screen</key>
@@ -2226,6 +2294,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Записывать микрофон</string>
 	<key>Record system audio</key>
 	<string>Записывать системный звук</string>
+	<key>Record when keys are pressed</key>
+	<string>Записывать моменты нажатий</string>
+	<key>Record with “Track where I type” on (Settings → Recording) to zoom in on typing.</key>
+	<string>Записывайте с включённым «Следить, где я печатаю» (Настройки → Запись), чтобы увеличивать набор текста.</string>
+	<key>Record with “Track where I type” on to zoom in on typing</key>
+	<string>Записывайте с включённым «Следить, где я печатаю», чтобы увеличивать набор текста</string>
 	<key>Recorded at %@. Drag its dot on the timeline to retime it; ripples and Auto Zoom follow.</key>
 	<string>Записано в %@. Перетяните его точку на шкале времени, чтобы изменить время; волны и автомасштаб последуют за ней.</string>
 	<key>Recording</key>
@@ -2304,6 +2378,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторить добавление изображения</string>
 	<key>Redo Add Intro Card</key>
 	<string>Повторить добавление начального титра</string>
+	<key>Redo Add Loupe</key>
+	<string>Повторить добавление лупы</string>
 	<key>Redo Add Marker</key>
 	<string>Повторить добавление маркера</string>
 	<key>Redo Add Music</key>
@@ -2316,6 +2392,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторить добавление прожектора</string>
 	<key>Redo Add Text</key>
 	<string>Повторить добавление текста</string>
+	<key>Redo Add Typing Zooms</key>
+	<string>Повторить увеличение набора текста</string>
 	<key>Redo Add Zoom</key>
 	<string>Повторить добавление увеличения</string>
 	<key>Redo Add Zooms</key>
@@ -2356,6 +2434,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторить перевод субтитров</string>
 	<key>Redo Captions</key>
 	<string>Повторить изменение субтитров</string>
+	<key>Redo Change Loupe</key>
+	<string>Повторить изменение лупы</string>
 	<key>Redo Click Sounds</key>
 	<string>Повторить изменение звуков нажатий</string>
 	<key>Redo Clicks</key>
@@ -2414,6 +2494,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторить улучшение голоса</string>
 	<key>Redo Fade</key>
 	<string>Повторить изменение нарастания и затухания</string>
+	<key>Redo Fit Zooms Around Camera</key>
+	<string>Повторить обход камеры</string>
 	<key>Redo Hide Shortcut</key>
 	<string>Повторить скрытие сочетания</string>
 	<key>Redo Highlight Style</key>
@@ -2506,6 +2588,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторить изменение скорости</string>
 	<key>Redo Speed Up Idle</key>
 	<string>Повторить ускорение простоев</string>
+	<key>Redo Speed Up Typing</key>
+	<string>Повторить ускорение набора</string>
 	<key>Redo Split</key>
 	<string>Повторить разделение</string>
 	<key>Redo Split at Markers</key>
@@ -2688,6 +2772,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Проверьте номер телефона перед звонком.</string>
 	<key>Right</key>
 	<string>Справа</string>
+	<key>Ring</key>
+	<string>Кольцо</string>
 	<key>Ripple</key>
 	<string>Волна</string>
 	<key>Rose Smoke</key>
@@ -2764,6 +2850,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Экономит %@ — только паузы, когда на экране ничего не происходит</string>
 	<key>Saves %@ — silences where the pointer rests and nothing is clicked or pressed (this older recording can't see typing)</key>
 	<string>Экономит %@ — паузы, когда указатель неподвижен и ничего не нажимается (в этой старой записи не виден набор текста)</string>
+	<key>Saves only the moment each key goes down, so the editor can speed up typing. Never which keys, and nothing while a password field has focus.</key>
+	<string>Сохраняет только момент каждого нажатия, чтобы редактор мог ускорить набор текста. Никогда — какие клавиши, и ничего, пока активно поле пароля.</string>
+	<key>Saves only where the text cursor is, so the editor can zoom in on typing. No text and no keys are recorded, and nothing while a password field has focus.</key>
+	<string>Сохраняет только положение текстового курсора, чтобы редактор мог увеличить набор текста. Ни текст, ни клавиши не записываются, и ничего, пока активно поле пароля.</string>
 	<key>Saves the background, frame, cursor, zoom, captions, keys, and camera bubble. Apply it to any video from the Presets menu.</key>
 	<string>Сохраняет фон, рамку, указатель, приближение, субтитры, клавиши и окошко камеры. Применяйте его к любому видео из меню «Стили».</string>
 	<key>Save…</key>
@@ -2886,6 +2976,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Поделиться</string>
 	<key>Share — Mail, Messages, AirDrop…</key>
 	<string>Поделиться — Почта, Сообщения, AirDrop…</string>
+	<key>Shift the Zooms</key>
+	<string>Сдвинуть увеличения</string>
 	<key>Shortcut</key>
 	<string>Сочетание клавиш</string>
 	<key>Shortcut %@</key>
@@ -3018,6 +3110,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Пробел</string>
 	<key>Space Gray</key>
 	<string>Серый космос</string>
+	<key>Sped up by Speed up typing — pick another speed here, or press it again.</key>
+	<string>Ускорено кнопкой «Ускорить набор» — выберите здесь другую скорость или нажмите её снова.</string>
 	<key>Speech recognition is turned off for LF Studios in System Settings → Privacy &amp; Security → Speech Recognition. Turn it on, then try again.</key>
 	<string>Распознавание речи выключено для LF Studios в разделе Системные настройки → Конфиденциальность и безопасность → Распознавание речи. Включите его и повторите попытку.</string>
 	<key>Speech recognition isn't available on this Mac right now. Try again in a moment.</key>
@@ -3032,6 +3126,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>«Ускорить простои» работает с записями LF Studios — функция отслеживает указатель</string>
 	<key>Speed of this part</key>
 	<string>Скорость этого фрагмента</string>
+	<key>Speed up typing to</key>
+	<string>Ускорить набор до</string>
 	<key>Split</key>
 	<string>Разделить</string>
 	<key>Split at Markers</key>
@@ -3192,6 +3288,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Окно закрылось до начала записи.</string>
 	<key>The camera couldn't start.</key>
 	<string>Не удалось запустить камеру.</string>
+	<key>The camera follows the text cursor as you type.</key>
+	<string>Камера следует за текстовым курсором, пока вы печатаете.</string>
 	<key>The camera keeps your cursor in view and glides after it.</key>
 	<string>Камера держит указатель в кадре и плавно следует за ним.</string>
 	<key>The camera stopped. The recording continues without it.</key>
@@ -3206,6 +3304,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Передача готова</string>
 	<key>The highest quality, and the only one that can keep transparency</key>
 	<string>Самое высокое качество — и единственный формат, который сохраняет прозрачность</string>
+	<key>The loupe stays over the text cursor.</key>
+	<string>Лупа держится над текстовым курсором.</string>
+	<key>The loupe stays over your cursor.</key>
+	<string>Лупа держится над указателем.</string>
 	<key>The markers are already at clip edges</key>
 	<string>Маркеры уже стоят на границах клипов</string>
 	<key>The menu bar icon is LF Studios' main entry point. While it is hidden, open LF Studios again from Finder, Launchpad, or Spotlight to bring these Preferences back.</key>
@@ -3248,6 +3350,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Исходную запись видео удалить нельзя</string>
 	<key>The voice track is empty, so there's nothing to clean up. Turn off Enhance voice to keep the original sound.</key>
 	<string>Голосовая дорожка пуста, поэтому очищать нечего. Выключите «Улучшение голоса», чтобы сохранить исходный звук.</string>
+	<key>The whole frame zooms in.</key>
+	<string>Увеличивается весь кадр.</string>
 	<key>The window you're recording closed. Stop when you're ready — the recording keeps going.</key>
 	<string>Записываемое окно закрылось. Остановите запись, когда будете готовы, — она продолжается.</string>
 	<key>There are no captions to translate yet. Transcribe or add captions first.</key>
@@ -3278,6 +3382,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Это приложение</string>
 	<key>This list</key>
 	<string>Этот список</string>
+	<key>This recording didn't save key timing or screen changes, so typing can't be found</key>
+	<string>Эта запись не сохранила ни моменты нажатий, ни изменения на экране, поэтому набор текста не найти</string>
+	<key>This recording didn't save key timing, so typing is estimated from screen changes while the pointer holds still. Check the speed blocks it makes.</key>
+	<string>Эта запись не сохранила моменты нажатий, поэтому набор текста оценивается по изменениям на экране, пока указатель неподвижен. Проверьте созданные блоки скорости.</string>
 	<key>This recording has newer edits than “%@”</key>
 	<string>В этой записи есть правки новее, чем в «%@»</string>
 	<key>This recording has no sound</key>
@@ -3290,6 +3398,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>В этой записи нет голоса, под который можно приглушать музыку</string>
 	<key>This recording only has the arrow</key>
 	<string>В этой записи есть только стрелка</string>
+	<key>This video has no camera bubble</key>
+	<string>В этом видео нет окошка камеры</string>
 	<key>This video is copy-protected and can't be exported.</key>
 	<string>Это видео защищено от копирования, и его нельзя экспортировать.</string>
 	<key>This video isn't there anymore</key>
@@ -3314,6 +3424,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Масштаб шкалы времени (сведение пальцев или ⌘ и прокрутка)</string>
 	<key>Timing</key>
 	<string>Время</string>
+	<key>Timing only: never which keys</key>
+	<string>Только моменты: никогда — какие клавиши</string>
 	<key>Tips</key>
 	<string>Подсказки</string>
 	<key>Title</key>
@@ -3336,6 +3448,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Вверху слева</string>
 	<key>Top right</key>
 	<string>Вверху справа</string>
+	<key>Touch dot</key>
+	<string>Точка касания</string>
+	<key>Track Where I Type</key>
+	<string>Следить, где я печатаю</string>
+	<key>Track where I type</key>
+	<string>Следить, где я печатаю</string>
+	<key>Track where I type saves only where the text cursor is on screen, so the editor can zoom in on typing. Record when keys are pressed saves only the moment each key goes down, so the editor can speed up typing. No text is recorded and no keys are named. While a password field has focus, neither saves anything. Both are off until you turn them on; macOS asks for Accessibility access.</key>
+	<string>«Следить, где я печатаю» сохраняет только положение текстового курсора на экране, чтобы редактор мог увеличить набор текста. «Записывать моменты нажатий» сохраняет только момент каждого нажатия, чтобы редактор мог ускорить набор. Текст не записывается, клавиши не называются. Пока активно поле пароля, ни одна из функций ничего не сохраняет. Обе выключены, пока вы их не включите; macOS запросит доступ в разделе «Универсальный доступ».</string>
 	<key>Transcribe</key>
 	<string>Расшифровать</string>
 	<key>Transcribe Again</key>
@@ -3384,6 +3504,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Включить автомасштаб по нажатиям</string>
 	<key>Turn around</key>
 	<string>Развернуть</string>
+	<key>Turn off vertical reframing to fit zooms around the camera</key>
+	<string>Выключите вертикальное кадрирование, чтобы увеличения обходили камеру</string>
 	<key>Turn on Auto-zoom on clicks (Zoom) to use this</key>
 	<string>Чтобы использовать, включите автомасштаб по нажатиям (Масштаб)</string>
 	<key>Turn on Auto-zoom on clicks — keeps zooms you placed by hand</key>
@@ -3394,10 +3516,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Чтобы записать звук, перед записью включите микрофон или системный звук.</string>
 	<key>Turn the video's sound back on</key>
 	<string>Снова включить звук видео</string>
+	<key>Type</key>
+	<string>Тип</string>
 	<key>Type here…</key>
 	<string>Введите текст…</string>
 	<key>Type in a text annotation</key>
 	<string>Ввести текст в текстовый элемент</string>
+	<key>Typing</key>
+	<string>Набор текста</string>
+	<key>Typing now plays at %@</key>
+	<string>Набор текста теперь идёт на %@</string>
 	<key>URL</key>
 	<string>URL</string>
 	<key>Under the voice</key>
@@ -3430,6 +3558,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Отменить добавление изображения</string>
 	<key>Undo Add Intro Card</key>
 	<string>Отменить добавление начального титра</string>
+	<key>Undo Add Loupe</key>
+	<string>Отменить добавление лупы</string>
 	<key>Undo Add Marker</key>
 	<string>Отменить добавление маркера</string>
 	<key>Undo Add Music</key>
@@ -3442,6 +3572,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Отменить добавление прожектора</string>
 	<key>Undo Add Text</key>
 	<string>Отменить добавление текста</string>
+	<key>Undo Add Typing Zooms</key>
+	<string>Отменить увеличение набора текста</string>
 	<key>Undo Add Zoom</key>
 	<string>Отменить добавление увеличения</string>
 	<key>Undo Add Zooms</key>
@@ -3482,6 +3614,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Отменить перевод субтитров</string>
 	<key>Undo Captions</key>
 	<string>Отменить изменение субтитров</string>
+	<key>Undo Change Loupe</key>
+	<string>Отменить изменение лупы</string>
 	<key>Undo Click Sounds</key>
 	<string>Отменить изменение звуков нажатий</string>
 	<key>Undo Clicks</key>
@@ -3540,6 +3674,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Отменить улучшение голоса</string>
 	<key>Undo Fade</key>
 	<string>Отменить изменение нарастания и затухания</string>
+	<key>Undo Fit Zooms Around Camera</key>
+	<string>Отменить обход камеры</string>
 	<key>Undo Hide Shortcut</key>
 	<string>Отменить скрытие сочетания</string>
 	<key>Undo Highlight Style</key>
@@ -3632,6 +3768,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Отменить изменение скорости</string>
 	<key>Undo Speed Up Idle</key>
 	<string>Отменить ускорение простоев</string>
+	<key>Undo Speed Up Typing</key>
+	<string>Отменить ускорение набора</string>
 	<key>Undo Split</key>
 	<string>Отменить разделение</string>
 	<key>Undo Split at Markers</key>
@@ -3666,6 +3804,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Отменить общий уровень увеличения</string>
 	<key>Undo Zooms</key>
 	<string>Отменить изменение увеличений</string>
+	<key>Undo camera fit</key>
+	<string>Вернуть как было</string>
 	<key>Unmute Clip</key>
 	<string>Включить звук клипа</string>
 	<key>Unmute preview</key>
@@ -3692,6 +3832,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Для всех увеличений</string>
 	<key>Used for screenshots and recordings. Tokens: %y year, %m month, %d day, %H hour, %M minute, %S second. Leave empty to restore the default.</key>
 	<string>Используется для снимков экрана и записей. Переменные: %y — год, %m — месяц, %d — день, %H — час, %M — минута, %S — секунда. Оставьте поле пустым, чтобы восстановить шаблон по умолчанию.</string>
+	<key>Uses the key timing saved with this recording (never which keys). Shortcut keycaps stay on screen long enough to read.</key>
+	<string>Использует моменты нажатий, сохранённые с этой записью (без названий клавиш). Сочетания клавиш остаются на экране достаточно долго, чтобы их прочитать.</string>
+	<key>Uses where the text cursor moved while you typed.</key>
+	<string>Использует перемещения текстового курсора во время набора.</string>
 	<key>Utility</key>
 	<string>Утилиты</string>
 	<key>Version</key>
@@ -3744,6 +3888,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>То, что звучало на вашем Mac</string>
 	<key>What's New</key>
 	<string>Что нового</string>
+	<key>While this zoom plays, the camera bubble moves to: %@</key>
+	<string>Пока идёт это увеличение, окошко камеры перемещается: %@</string>
 	<key>White</key>
 	<string>Белый</string>
 	<key>Whole video</key>
@@ -3848,6 +3994,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Увеличения и разметка</string>
 	<key>Zooms and annotations can be duplicated</key>
 	<string>Дублировать можно только увеличения и разметку</string>
+	<key>Zooms that follow the text cursor while you type</key>
+	<string>Увеличения, следующие за текстовым курсором при наборе</string>
 	<key>a table</key>
 	<string>таблица</string>
 	<key>a transparent background</key>
@@ -3878,6 +4026,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>начальный титр</string>
 	<key>loops</key>
 	<string>повторяется</string>
+	<key>macOS classic</key>
+	<string>Классический macOS</string>
 	<key>macOS closed LF Studios last time because it ran out of memory</key>
 	<string>В прошлый раз macOS закрыла LF Studios из-за нехватки памяти</string>
 	<key>macOS downloads %@ once, then translates right here — nothing is uploaded.</key>
@@ -3952,6 +4102,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>· тяните, чтобы навести</string>
 	<key>· follows cursor</key>
 	<string>· за указателем</string>
+	<key>· follows typing</key>
+	<string>· за набором</string>
 	<key>“%@” (was in %@)</key>
 	<string>«%@» (ранее в %@)</string>
 	<key>“%@” can't be found. Put it back where it was, or remove it from this video (Style → Recordings), then export again.</key>

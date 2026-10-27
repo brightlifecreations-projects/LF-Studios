@@ -252,6 +252,20 @@ enum Settings {
         set { defaults.set(newValue, forKey: "recordingKeystrokes") }
     }
 
+    /// "Track where I type": the text cursor's position (never the text)
+    /// so the editor can zoom in on typing. Needs Accessibility.
+    static var recordingTracksTyping: Bool {
+        get { defaults.bool(forKey: "recordingTracksTyping") }
+        set { defaults.set(newValue, forKey: "recordingTracksTyping") }
+    }
+
+    /// "Record when keys are pressed": the moments keys go down (never
+    /// which keys) so the editor can speed up typing. Needs Accessibility.
+    static var recordingKeyTiming: Bool {
+        get { defaults.bool(forKey: "recordingKeyTiming") }
+        set { defaults.set(newValue, forKey: "recordingKeyTiming") }
+    }
+
     /// Language for generated captions (BCP-47; empty = the Mac's language).
     static var videoCaptionLanguage: String {
         get { defaults.string(forKey: "videoCaptionLanguage") ?? "" }

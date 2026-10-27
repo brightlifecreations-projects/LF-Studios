@@ -14,6 +14,8 @@ struct VideoDemoTimelineClip: Codable, Equatable, Identifiable {
     var muted: Bool
     var fadeIn: Double
     var fadeOut: Double
+    /// Sped up by "Speed up typing" — pressing it again changes its speed.
+    var typingSpeedUp = false
 
     init(
         id: UUID = UUID(),
@@ -22,7 +24,8 @@ struct VideoDemoTimelineClip: Codable, Equatable, Identifiable {
         speed: Double = 1,
         muted: Bool = false,
         fadeIn: Double = 0,
-        fadeOut: Double = 0
+        fadeOut: Double = 0,
+        typingSpeedUp: Bool = false
     ) {
         self.id = id
         self.sourceStart = sourceStart
@@ -31,6 +34,7 @@ struct VideoDemoTimelineClip: Codable, Equatable, Identifiable {
         self.muted = muted
         self.fadeIn = fadeIn
         self.fadeOut = fadeOut
+        self.typingSpeedUp = typingSpeedUp
     }
 
     var sourceDuration: Double {
@@ -46,7 +50,7 @@ struct VideoDemoTimelineClip: Codable, Equatable, Identifiable {
     }
 
     private enum CodingKeys: String, CodingKey {
-        case id, sourceStart, sourceEnd, speed, muted, fadeIn, fadeOut
+        case id, sourceStart, sourceEnd, speed, muted, fadeIn, fadeOut, typingSpeedUp
     }
 
     init(from decoder: Decoder) throws {
@@ -58,6 +62,19 @@ struct VideoDemoTimelineClip: Codable, Equatable, Identifiable {
         muted = try container.decodeIfPresent(Bool.self, forKey: .muted) ?? false
         fadeIn = try container.decodeIfPresent(Double.self, forKey: .fadeIn) ?? 0
         fadeOut = try container.decodeIfPresent(Double.self, forKey: .fadeOut) ?? 0
+        typingSpeedUp = (try? container.decodeIfPresent(Bool.self, forKey: .typingSpeedUp)) ?? false
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(sourceStart, forKey: .sourceStart)
+        try container.encode(sourceEnd, forKey: .sourceEnd)
+        try container.encode(speed, forKey: .speed)
+        try container.encode(muted, forKey: .muted)
+        try container.encode(fadeIn, forKey: .fadeIn)
+        try container.encode(fadeOut, forKey: .fadeOut)
+        if typingSpeedUp { try container.encode(true, forKey: .typingSpeedUp) }
     }
 }
 
@@ -332,6 +349,8 @@ enum VideoOverlayStyleMemory {
 struct VideoZoomRegion: Codable, Equatable, Identifiable {
     static let scaleRange: ClosedRange<Double> = 1.1...4
     static let minimumDuration = 0.4
+    /// How far the framing can be moved off its subject (output units).
+    static let offsetRange: ClosedRange<Double> = -0.45...0.45
 
     var id: UUID
     /// Source seconds.
@@ -346,6 +365,22 @@ struct VideoZoomRegion: Codable, Equatable, Identifiable {
     var focusY: Double
     /// Created by Auto Zoom — re-running it replaces only these.
     var isAuto: Bool
+    /// The camera follows the text cursor ("Track where I type"); wins
+    /// over `followsCursor`.
+    var followsTyping = false
+    /// Made by "Add typing zooms" — pressing it again replaces only these.
+    var isTyping = false
+    /// A loupe: a magnifier over one spot while the rest of the frame stays
+    /// (nil: the whole frame zooms). `scale` is its magnification.
+    var loupe: VideoLoupeStyle?
+    /// Where the subject sits on the output, off the middle (output units,
+    /// y down) — "Fit zooms around camera" moves it clear of the bubble.
+    /// For a loupe, how far the loupe sits from its subject.
+    var offsetX = 0.0
+    var offsetY = 0.0
+    /// The camera bubble slides to this corner while the zoom plays (nil:
+    /// it stays where it is).
+    var cameraCorner: VideoWebcamSettings.Anchor?
 
     init(
         id: UUID = UUID(),
@@ -368,6 +403,51 @@ struct VideoZoomRegion: Codable, Equatable, Identifiable {
     }
 
     var duration: Double { max(end - start, 0) }
+    var isLoupe: Bool { loupe != nil }
+    var offset: CGPoint { CGPoint(x: offsetX, y: offsetY) }
+
+    private enum CodingKeys: String, CodingKey {
+        case id, start, end, scale, followsCursor, focusX, focusY, isAuto
+        case followsTyping, isTyping, loupe, offsetX, offsetY, cameraCorner
+    }
+
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        id = try c.decode(UUID.self, forKey: .id)
+        start = try c.decode(Double.self, forKey: .start)
+        end = try c.decode(Double.self, forKey: .end)
+        scale = try c.decode(Double.self, forKey: .scale)
+        followsCursor = try c.decode(Bool.self, forKey: .followsCursor)
+        focusX = try c.decode(Double.self, forKey: .focusX)
+        focusY = try c.decode(Double.self, forKey: .focusY)
+        isAuto = try c.decode(Bool.self, forKey: .isAuto)
+        followsTyping = (try? c.decodeIfPresent(Bool.self, forKey: .followsTyping)) ?? false
+        isTyping = (try? c.decodeIfPresent(Bool.self, forKey: .isTyping)) ?? false
+        loupe = try? c.decodeIfPresent(VideoLoupeStyle.self, forKey: .loupe)
+        offsetX = (try? c.decodeIfPresent(Double.self, forKey: .offsetX)) ?? 0
+        offsetY = (try? c.decodeIfPresent(Double.self, forKey: .offsetY)) ?? 0
+        cameraCorner = try? c.decodeIfPresent(VideoWebcamSettings.Anchor.self, forKey: .cameraCorner)
+    }
+
+    /// The new keys only when used: a project without them saves exactly
+    /// as it did.
+    func encode(to encoder: Encoder) throws {
+        var c = encoder.container(keyedBy: CodingKeys.self)
+        try c.encode(id, forKey: .id)
+        try c.encode(start, forKey: .start)
+        try c.encode(end, forKey: .end)
+        try c.encode(scale, forKey: .scale)
+        try c.encode(followsCursor, forKey: .followsCursor)
+        try c.encode(focusX, forKey: .focusX)
+        try c.encode(focusY, forKey: .focusY)
+        try c.encode(isAuto, forKey: .isAuto)
+        if followsTyping { try c.encode(true, forKey: .followsTyping) }
+        if isTyping { try c.encode(true, forKey: .isTyping) }
+        try c.encodeIfPresent(loupe, forKey: .loupe)
+        if offsetX != 0 { try c.encode(offsetX, forKey: .offsetX) }
+        if offsetY != 0 { try c.encode(offsetY, forKey: .offsetY) }
+        try c.encodeIfPresent(cameraCorner, forKey: .cameraCorner)
+    }
 }
 
 enum VideoZoomSpeed: String, Codable, CaseIterable, Identifiable {
@@ -491,6 +571,11 @@ struct VideoCursorSettings: Codable, Equatable {
     /// `returnDuration` seconds, so the video loops (VideoCursorLoop.swift).
     var returnToStart: Bool = false
     var returnDuration: Double = 0.8
+    /// How the pointer looks (VideoCursorStyles.swift): the recording's own
+    /// unless another style is chosen.
+    var style: VideoCursorStyle = .classic
+    /// The picture for the Custom image style.
+    var customImage: VideoCursorImage?
 
     static let returnDurationRange: ClosedRange<Double> = 0.3...2
 
@@ -498,6 +583,7 @@ struct VideoCursorSettings: Codable, Equatable {
 
     private enum CodingKeys: String, CodingKey {
         case visible, size, smoothing, clickEffect, hideWhenIdle, motionBlur, alwaysArrow, tidyEnding, returnToStart, returnDuration
+        case style, customImage
     }
 
     init(from decoder: Decoder) throws {
@@ -513,6 +599,25 @@ struct VideoCursorSettings: Codable, Equatable {
         tidyEnding = try container.decodeIfPresent(Bool.self, forKey: .tidyEnding) ?? defaults.tidyEnding
         returnToStart = try container.decodeIfPresent(Bool.self, forKey: .returnToStart) ?? defaults.returnToStart
         returnDuration = try container.decodeIfPresent(Double.self, forKey: .returnDuration) ?? defaults.returnDuration
+        style = (try? container.decodeIfPresent(VideoCursorStyle.self, forKey: .style)) ?? defaults.style
+        customImage = try? container.decodeIfPresent(VideoCursorImage.self, forKey: .customImage)
+    }
+
+    /// The style keys only once one is chosen: older settings save as before.
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(visible, forKey: .visible)
+        try container.encode(size, forKey: .size)
+        try container.encode(smoothing, forKey: .smoothing)
+        try container.encode(clickEffect, forKey: .clickEffect)
+        try container.encode(hideWhenIdle, forKey: .hideWhenIdle)
+        try container.encode(motionBlur, forKey: .motionBlur)
+        try container.encode(alwaysArrow, forKey: .alwaysArrow)
+        try container.encode(tidyEnding, forKey: .tidyEnding)
+        try container.encode(returnToStart, forKey: .returnToStart)
+        try container.encode(returnDuration, forKey: .returnDuration)
+        if style != .classic { try container.encode(style, forKey: .style) }
+        try container.encodeIfPresent(customImage, forKey: .customImage)
     }
 }
 
@@ -732,6 +837,14 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
     var sources: [VideoProjectSource] = []
     /// Flagged moments, in recorded time (VideoMarkers.swift).
     var markers: [VideoMarker] = []
+    /// Where the text cursor was while recording ("Track where I type"):
+    /// positions only.
+    var textCursor: [VideoTextCursorSample] = []
+    /// When keys went down while recording ("Record when keys are
+    /// pressed"): times only, never which keys.
+    var keyPresses: [Double] = []
+    /// The look new loupes get (the last one edited, or a preset's).
+    var loupeStyle: VideoLoupeStyle?
 
     var sourceURL: URL { URL(fileURLWithPath: sourcePath) }
     var sourceSize: CGSize { CGSize(width: sourceWidth, height: sourceHeight) }
@@ -801,6 +914,8 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
         clickEvents = metadata.clickEvents
         keystrokes = metadata.keystrokes ?? []
         markers = metadata.markers ?? []
+        textCursor = metadata.textCursor ?? []
+        keyPresses = metadata.keyPresses ?? []
         cursor.visible = metadata.shouldRenderCursor
         if trimEnd <= 0 {
             trimEnd = metadata.duration
@@ -852,7 +967,8 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
                 speed: clip.speed,
                 muted: clip.muted,
                 fadeIn: clip.fadeIn,
-                fadeOut: clip.fadeOut
+                fadeOut: clip.fadeOut,
+                typingSpeedUp: clip.typingSpeedUp
             )
         }
     }
@@ -968,7 +1084,9 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
             fadeIn: 0,
             fadeOut: original.fadeOut
         )
-        clips.replaceSubrange(index...index, with: [first, second])
+        var halves = [first, second]
+        for half in halves.indices { halves[half].typingSpeedUp = original.typingSpeedUp }
+        clips.replaceSubrange(index...index, with: halves)
         timelineClips = clips
         syncTrimToTimeline(totalDuration: totalDuration)
         return second.id
@@ -1011,7 +1129,8 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
                         speed: segment.clip.speed,
                         muted: segment.clip.muted,
                         fadeIn: segment.clip.fadeIn,
-                        fadeOut: 0
+                        fadeOut: 0,
+                        typingSpeedUp: segment.clip.typingSpeedUp
                     ))
                 }
             }
@@ -1025,7 +1144,8 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
                         speed: segment.clip.speed,
                         muted: segment.clip.muted,
                         fadeIn: 0,
-                        fadeOut: segment.clip.fadeOut
+                        fadeOut: segment.clip.fadeOut,
+                        typingSpeedUp: segment.clip.typingSpeedUp
                     ))
                 }
             }
@@ -1227,7 +1347,8 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
             keystrokeStyle: keystrokeStyle,
             titleFont: cards.font,
             autoZoom: autoZoom,
-            shadowStyle: shadowStyle
+            shadowStyle: shadowStyle,
+            loupeStyle: loupeStyle
         )
     }
 
@@ -1252,6 +1373,14 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
         captionStyle = style.captionStyle
         keystrokeStyle = style.keystrokeStyle
         cards.font = style.titleFont
+        // A preset with a loupe look restyles the loupes (magnification
+        // stays each loupe's own).
+        if let loupe = style.loupeStyle {
+            loupeStyle = loupe
+            for index in zoomRegions.indices where zoomRegions[index].loupe != nil {
+                zoomRegions[index].loupe = loupe
+            }
+        }
     }
 }
 
@@ -1265,6 +1394,7 @@ extension VideoDemoProject {
         case overlayEffects, cursorSamples, clickEvents, nativeCursorVisible, cursor, audio
         case webcam, cameraLayouts, importedCamera, autoZoom, reframe, captions, transcriptLanguage, captionStyle, keystrokes, keystrokeStyle, crop
         case cards, music, clickSounds, transitions, captionTracks, sources, imageOverlayEffects, markers
+        case textCursor, keyPresses, loupeStyle
         // Legacy (v1) keys
         case backgroundPreset, customBackgroundPath, stageInset, shadowStrength, zoomKeyframes
         case showCursorOverlay, enlargeCursor, showClickRipple, smoothCursor, cursorScale, clickSpotlight, cursorMotionBlur
@@ -1308,6 +1438,9 @@ extension VideoDemoProject {
         captionTracks = (try? container.decode(VideoCaptionTracks.self, forKey: .captionTracks)) ?? VideoCaptionTracks()
         sources = (try? container.decode([VideoProjectSource].self, forKey: .sources)) ?? []
         markers = (try? container.decode([VideoMarker].self, forKey: .markers)) ?? []
+        textCursor = (try? container.decode([VideoTextCursorSample].self, forKey: .textCursor)) ?? []
+        keyPresses = (try? container.decode([Double].self, forKey: .keyPresses)) ?? []
+        loupeStyle = try? container.decodeIfPresent(VideoLoupeStyle.self, forKey: .loupeStyle)
 
         let storedVersion = try container.decodeIfPresent(Int.self, forKey: .version) ?? 1
         if storedVersion >= 2 {
@@ -1389,6 +1522,9 @@ extension VideoDemoProject {
         let images = overlayEffects.filter { $0.kind == .image }
         if !images.isEmpty { try container.encode(images, forKey: .imageOverlayEffects) }
         if !markers.isEmpty { try container.encode(markers, forKey: .markers) }
+        if !textCursor.isEmpty { try container.encode(textCursor, forKey: .textCursor) }
+        if !keyPresses.isEmpty { try container.encode(keyPresses, forKey: .keyPresses) }
+        try container.encodeIfPresent(loupeStyle, forKey: .loupeStyle)
         try container.encode(cursorSamples, forKey: .cursorSamples)
         try container.encode(clickEvents, forKey: .clickEvents)
         try container.encode(nativeCursorVisible, forKey: .nativeCursorVisible)
@@ -1490,6 +1626,8 @@ struct VideoStylePreset: Codable, Equatable {
     var autoZoom: Bool? = nil
     /// The shadow fine-tuned (nil: the classic shadow from `shadow`).
     var shadowStyle: VideoShadowStyle? = nil
+    /// The loupe look (nil: saved before loupes, or none was styled).
+    var loupeStyle: VideoLoupeStyle? = nil
 
     /// The built-in LF Studios look.
     static let factory = VideoStylePreset(
@@ -1538,7 +1676,7 @@ struct VideoStylePreset: Codable, Equatable {
 extension VideoStylePreset {
     private enum CodingKeys: String, CodingKey {
         case aspectPreset, background, backgroundBlur, padding, cornerRadius, shadow, outline
-        case zoomSpeed, defaultZoomScale, motionBlur, cursor, webcam, captionStyle, keystrokeStyle, titleFont, autoZoom, shadowStyle
+        case zoomSpeed, defaultZoomScale, motionBlur, cursor, webcam, captionStyle, keystrokeStyle, titleFont, autoZoom, shadowStyle, loupeStyle
     }
 
     /// Looks saved before a field existed still load.
@@ -1562,5 +1700,6 @@ extension VideoStylePreset {
         titleFont = try? c.decodeIfPresent(VideoFontChoice.self, forKey: .titleFont)
         autoZoom = try? c.decodeIfPresent(Bool.self, forKey: .autoZoom)
         shadowStyle = try? c.decodeIfPresent(VideoShadowStyle.self, forKey: .shadowStyle)
+        loupeStyle = try? c.decodeIfPresent(VideoLoupeStyle.self, forKey: .loupeStyle)
     }
 }

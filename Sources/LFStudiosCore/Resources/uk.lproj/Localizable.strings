@@ -18,6 +18,8 @@
 	<string>%@ (⇧⌘Z)</string>
 	<key>%@ (⌘Z)</key>
 	<string>%@ (⌘Z)</string>
+	<key>%@ Loupe</key>
+	<string>Лупа %@</string>
 	<key>%@ Zoom</key>
 	<string>Масштаб %@</string>
 	<key>%@ area</key>
@@ -106,6 +108,8 @@
 	<string>гучність %lld%%</string>
 	<key>%lld/%lld configured</key>
 	<string>Налаштовано %lld/%lld</string>
+	<key>(estimated from screen changes — check the speed blocks)</key>
+	<string>(оцінка за змінами на екрані — перевірте блоки швидкості)</string>
 	<key>, </key>
 	<string>, </string>
 	<key>, %@ to %@</key>
@@ -130,6 +134,10 @@
 	<string>Файл із такою назвою вже існує. Виберіть іншу назву й експортуйте ще раз.</string>
 	<key>A hairline that separates dark recordings from the background</key>
 	<string>Тонка лінія, що відділяє темні записи від тла</string>
+	<key>A magnifier over one spot at the playhead; the rest of the frame stays in view</key>
+	<string>Лупа над одним місцем біля курсора відтворення; решта кадру лишається видимою</string>
+	<key>A magnifier over one spot; the rest of the frame stays in view.</key>
+	<string>Лупа над одним місцем; решта кадру лишається видимою.</string>
 	<key>A report helps fix this. You'll see everything before it's sent, and it never includes your screenshots or recordings.</key>
 	<string>Звіт допоможе це виправити. Ви побачите його повністю перед надсиланням, і він ніколи не містить ваших знімків екрана чи записів.</string>
 	<key>A second caption track you can show, burn in, or save as subtitles. Translated on this Mac — nothing is uploaded.</key>
@@ -178,6 +186,8 @@
 	<string>Додати зображення чи логотип…</string>
 	<key>Add Intro Card</key>
 	<string>Додати вступну заставку</string>
+	<key>Add Loupe</key>
+	<string>Додати лупу</string>
 	<key>Add Marker</key>
 	<string>Додати маркер</string>
 	<key>Add Marker While Recording</key>
@@ -224,6 +234,8 @@
 	<string>Додати прожектор на покажчику відтворення</string>
 	<key>Add text at the playhead (T)</key>
 	<string>Додати текст на покажчику відтворення (T)</string>
+	<key>Add typing zooms</key>
+	<string>Наблизити набір тексту</string>
 	<key>Add zoom at playhead</key>
 	<string>Додати наближення на покажчику відтворення</string>
 	<key>Add “%@” at the playhead</key>
@@ -262,6 +274,8 @@
 	<string>Для всіх наближень встановлено %@</string>
 	<key>Allow Access…</key>
 	<string>Дозволити доступ…</string>
+	<key>Allow LF Studios in Accessibility so it can see where you type.</key>
+	<string>Дозвольте LF Studios у розділі «Доступність», щоб застосунок бачив, де ви друкуєте.</string>
 	<key>Allow LF Studios in Accessibility — shortcuts turn on by themselves.</key>
 	<string>Дозвольте LF Studios у розділі «Доступність» — скорочення ввімкнуться самі.</string>
 	<key>Allow Screen Recording</key>
@@ -426,6 +440,8 @@
 	<string>Слонова кістка</string>
 	<key>Border</key>
 	<string>Рамка</string>
+	<key>Border color</key>
+	<string>Колір рамки</string>
 	<key>Bottom</key>
 	<string>Унизу</string>
 	<key>Bottom left</key>
@@ -608,6 +624,8 @@
 	<string>Перевірити оновлення</string>
 	<key>Choose</key>
 	<string>Вибрати</string>
+	<key>Choose Another…</key>
+	<string>Вибрати інше…</string>
 	<key>Choose Capture Area in the LF Studios menu to start</key>
 	<string>Щоб почати, виберіть «Зняти область» у меню LF Studios</string>
 	<key>Choose Image…</key>
@@ -618,6 +636,8 @@
 	<string>Спершу виберіть «Мій стиль»: Стилі ▸ Змінити стилі ▸ Використовувати як «Мій стиль» (⇧⌘Y)</string>
 	<key>Choose a .ttf or .otf font. LF Studios keeps its own copy, so it keeps working if the file is deleted.</key>
 	<string>Виберіть шрифт .ttf або .otf. LF Studios збереже власну копію, тож шрифт працюватиме, навіть якщо файл видалити.</string>
+	<key>Choose a PNG to use as the pointer, then click where it points</key>
+	<string>Виберіть PNG для курсора, потім клацніть там, куди він вказує</string>
 	<key>Choose a language</key>
 	<string>Виберіть мову</string>
 	<key>Choose a logo, watermark, or screenshot to place on the video</key>
@@ -696,6 +716,8 @@
 	<string>Клацання вилучено — ⌘Z, щоб відмінити</string>
 	<key>Click sounds</key>
 	<string>Звуки клацання</string>
+	<key>Click the picture where it points.</key>
+	<string>Клацніть на зображенні там, куди він вказує.</string>
 	<key>Click to add a zoom — or press Z at the playhead</key>
 	<string>Клацніть, щоб додати наближення, — або натисніть Z на покажчику відтворення</string>
 	<key>Click to add the next step</key>
@@ -922,6 +944,8 @@
 	<string>Власний колір</string>
 	<key>Custom color #%@</key>
 	<string>Власний колір #%@</string>
+	<key>Custom image…</key>
+	<string>Власне зображення…</string>
 	<key>Custom look</key>
 	<string>Власний стиль</string>
 	<key>Custom position</key>
@@ -1282,12 +1306,18 @@
 	<string>Знайти в розшифровці</string>
 	<key>Find “%@”</key>
 	<string>Знайти «%@»</string>
+	<key>Finds typing and plays it faster, as speed blocks you can change</key>
+	<string>Знаходить набір тексту й прискорює його — блоками швидкості, які можна змінити</string>
+	<key>Finds zooms the camera bubble covers and moves their framing, or the bubble, out of the way</key>
+	<string>Знаходить наближення, які закриває бульбашка камери, і зсуває їхній кадр або саму бульбашку</string>
 	<key>Fine-tune shadow</key>
 	<string>Точне налаштування тіні</string>
 	<key>Finish and Quit</key>
 	<string>Дочекатися й завершити</string>
 	<key>Finish or cancel the current recording setup</key>
 	<string>Завершіть або скасуйте поточну підготовку до запису</string>
+	<key>Fit zooms around camera</key>
+	<string>Наближення в обхід камери</string>
 	<key>Fix</key>
 	<string>Виправити</string>
 	<key>Flamingo</key>
@@ -1296,10 +1326,18 @@
 	<string>Віддзеркалити, як селфі</string>
 	<key>Follow Cursor</key>
 	<string>Стежити за курсором</string>
+	<key>Follow Typing</key>
+	<string>Стежити за набором</string>
 	<key>Follow cursor</key>
 	<string>Стежити за курсором</string>
+	<key>Follow typing</key>
+	<string>Стежити за набором</string>
 	<key>Follows cursor</key>
 	<string>Стежить за курсором</string>
+	<key>Follows typing</key>
+	<string>Стежить за набором</string>
+	<key>Follows where you typed. Pressing it again replaces only these zooms.</key>
+	<string>Стежить за місцем, де ви друкували. Повторне натискання замінює лише ці наближення.</string>
 	<key>Font</key>
 	<string>Шрифт</string>
 	<key>For Final Cut Pro, DaVinci Resolve, and Adobe Premiere Pro</key>
@@ -1332,6 +1370,8 @@
 	<string>Від гострих кутів до кола</string>
 	<key>From your Mac</key>
 	<string>З вашого Mac</string>
+	<key>Full</key>
+	<string>Увесь кадр</string>
 	<key>Full Camera at Playhead</key>
 	<string>Лише камера на покажчику відтворення</string>
 	<key>Full Frame (No Background)</key>
@@ -1448,6 +1488,8 @@
 	<string>Наведіть на доріжку «Масштаб»</string>
 	<key>Hover the zoom track and click to add a zoom, or press Z at the playhead. Drag a zoom to move it; drag its edges to change how long it lasts.</key>
 	<string>Наведіть курсор на доріжку «Масштаб» і клацніть, щоб додати наближення, або натисніть Z на покажчику відтворення. Перетягуйте наближення, щоб перемістити; тягніть його краї, щоб змінити тривалість.</string>
+	<key>How long the loupe takes to grow in and fade out</key>
+	<string>Скільки триває поява й зникнення лупи</string>
 	<key>How strongly blur and pixelate hide what's under them</key>
 	<string>Наскільки сильно розмиття й пікселізація приховують вміст під ними</string>
 	<key>Image</key>
@@ -1512,6 +1554,8 @@
 	<string>Там не вистачить місця. Виберіть інше місце або «Менші файли».</string>
 	<key>It's your My Style, so Apply my style will have nothing to apply until you choose another. Videos that use this preset keep their look.</key>
 	<string>Це ваш «Мій стиль»: доки ви не виберете інший, застосовувати буде нічого. Відео з цим стилем збережуть свій вигляд.</string>
+	<key>Its own arrow, text and hand pointers, drawn for the video.</key>
+	<string>Власні курсори — стрілка, текст і рука, намальовані для відео.</string>
 	<key>JPEG Quality</key>
 	<string>Якість JPEG</string>
 	<key>Jump here</key>
@@ -1666,12 +1710,18 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Зациклення</string>
 	<key>Loop to fill</key>
 	<string>Повторювати до кінця</string>
+	<key>Loupe</key>
+	<string>Лупа</string>
 	<key>Lower under your voice</key>
 	<string>Стишувати під голос</string>
 	<key>M</key>
 	<string>M</string>
 	<key>MIT License — Free and open source</key>
 	<string>Ліцензія MIT — безплатне ПЗ з відкритим кодом</string>
+	<key>Make Full Zoom</key>
+	<string>Зробити наближенням кадру</string>
+	<key>Make Loupe</key>
+	<string>Зробити лупою</string>
 	<key>Make it lighter: %@, %@ fps</key>
 	<string>Полегшити: %@, %@ fps</string>
 	<key>Manage</key>
@@ -1770,10 +1820,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Раніше</string>
 	<key>Move later</key>
 	<string>Пізніше</string>
+	<key>Move the Camera Instead</key>
+	<string>Зсунути камеру</string>
 	<key>Move the playhead inside a clip to split</key>
 	<string>Щоб розділити, перемістіть покажчик відтворення всередину кліпу</string>
 	<key>Move the playhead to where the camera shows, then crop</key>
 	<string>Перемістіть вказівник туди, де видно камеру, потім обріжте</string>
+	<key>Moved clear of the camera bubble.</key>
+	<string>Зсунуто з-під бульбашки камери.</string>
 	<key>Moved to the Trash</key>
 	<string>Переміщено в Смітник</string>
 	<key>Movement</key>
@@ -1910,10 +1964,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>У цьому записі не знайдено мовлення. Якщо в ньому є коментар, перевірте рівень у вкладці «Аудіо», а потім спробуйте ще раз.</string>
 	<key>No text found in this selection</key>
 	<string>У вибраній області не знайдено тексту</string>
+	<key>No typing found in this recording</key>
+	<string>У цьому записі не знайдено набору тексту</string>
+	<key>No typing found to speed up</key>
+	<string>Немає набору тексту для прискорення</string>
 	<key>No ums</key>
 	<string>Немає слів-паразитів</string>
 	<key>No ums or uhs left</key>
 	<string>Слів-паразитів не залишилося</string>
+	<key>No zooms are under the camera</key>
+	<string>Камера не закриває жодного наближення</string>
 	<key>None</key>
 	<string>Немає</string>
 	<key>None in this recording. Turn on “Show keyboard shortcuts” in Settings → Recording and every ⌘ shortcut you press appears as keycaps. Plain typing is never recorded.</key>
@@ -1998,6 +2058,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Відкрити відеоредактор</string>
 	<key>Open a .lfstudios project</key>
 	<string>Відкрити проєкт .lfstudios</string>
+	<key>Open and close</key>
+	<string>Поява й зникнення</string>
 	<key>Open in annotation editor</key>
 	<string>Відкрити в редакторі знімків</string>
 	<key>Open the video editor after recording</key>
@@ -2031,6 +2093,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<key>Out later</key>
 	<string>Кінець пізніше</string>
 	<key>Outline</key>
+	<string>Контур</string>
+	<key>Outlined</key>
 	<string>Контур</string>
 	<key>Outro</key>
 	<string>Завершення</string>
@@ -2138,6 +2202,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Порцеляна</string>
 	<key>Position</key>
 	<string>Позиція</string>
+	<key>Positions only: no text, no keys</key>
+	<string>Лише положення: без тексту й клавіш</string>
 	<key>Preferences</key>
 	<string>Параметри</string>
 	<key>Preparing to copy…</key>
@@ -2218,6 +2284,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Записати область</string>
 	<key>Record Fullscreen</key>
 	<string>Записати весь екран</string>
+	<key>Record When Keys Are Pressed</key>
+	<string>Записувати моменти натискань</string>
 	<key>Record Window</key>
 	<string>Записати вікно</string>
 	<key>Record an area, a window, or the whole screen</key>
@@ -2228,6 +2296,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Записувати мікрофон</string>
 	<key>Record system audio</key>
 	<string>Записувати системний звук</string>
+	<key>Record when keys are pressed</key>
+	<string>Записувати моменти натискань</string>
+	<key>Record with “Track where I type” on (Settings → Recording) to zoom in on typing.</key>
+	<string>Записуйте з увімкненим «Стежити, де я друкую» (Параметри → Запис), щоб наближати набір тексту.</string>
+	<key>Record with “Track where I type” on to zoom in on typing</key>
+	<string>Записуйте з увімкненим «Стежити, де я друкую», щоб наближати набір тексту</string>
 	<key>Recorded at %@. Drag its dot on the timeline to retime it; ripples and Auto Zoom follow.</key>
 	<string>Записано на %@. Перетягніть його крапку на шкалі часу, щоб змінити час; хвилі й автонаближення підлаштуються.</string>
 	<key>Recording</key>
@@ -2306,6 +2380,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторити додавання зображення</string>
 	<key>Redo Add Intro Card</key>
 	<string>Повторити додавання вступної заставки</string>
+	<key>Redo Add Loupe</key>
+	<string>Повторити додавання лупи</string>
 	<key>Redo Add Marker</key>
 	<string>Повторити додавання маркера</string>
 	<key>Redo Add Music</key>
@@ -2318,6 +2394,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторити додавання прожектора</string>
 	<key>Redo Add Text</key>
 	<string>Повторити додавання тексту</string>
+	<key>Redo Add Typing Zooms</key>
+	<string>Повторити наближення набору тексту</string>
 	<key>Redo Add Zoom</key>
 	<string>Повторити додавання наближення</string>
 	<key>Redo Add Zooms</key>
@@ -2358,6 +2436,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторити переклад субтитрів</string>
 	<key>Redo Captions</key>
 	<string>Повторити зміну субтитрів</string>
+	<key>Redo Change Loupe</key>
+	<string>Повторити зміну лупи</string>
 	<key>Redo Click Sounds</key>
 	<string>Повторити зміну звуків клацання</string>
 	<key>Redo Clicks</key>
@@ -2416,6 +2496,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторити покращення голосу</string>
 	<key>Redo Fade</key>
 	<string>Повторити плавну появу/зникнення</string>
+	<key>Redo Fit Zooms Around Camera</key>
+	<string>Повторити обхід камери</string>
 	<key>Redo Hide Shortcut</key>
 	<string>Повторити приховування скорочення</string>
 	<key>Redo Highlight Style</key>
@@ -2508,6 +2590,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторити зміну швидкості</string>
 	<key>Redo Speed Up Idle</key>
 	<string>Повторити прискорення простоїв</string>
+	<key>Redo Speed Up Typing</key>
+	<string>Повторити прискорення набору</string>
 	<key>Redo Split</key>
 	<string>Повторити розділення</string>
 	<key>Redo Split at Markers</key>
@@ -2690,6 +2774,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Перш ніж відкривати, перевірте номер телефону.</string>
 	<key>Right</key>
 	<string>Праворуч</string>
+	<key>Ring</key>
+	<string>Кільце</string>
 	<key>Ripple</key>
 	<string>Хвиля</string>
 	<key>Rose Smoke</key>
@@ -2766,6 +2852,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Заощаджує %@ — лише тиша, коли на екрані нічого не відбувається</string>
 	<key>Saves %@ — silences where the pointer rests and nothing is clicked or pressed (this older recording can't see typing)</key>
 	<string>Заощаджує %@ — тиша, коли курсор нерухомий і нічого не клацають і не натискають (цей старіший запис не бачить введення тексту)</string>
+	<key>Saves only the moment each key goes down, so the editor can speed up typing. Never which keys, and nothing while a password field has focus.</key>
+	<string>Зберігає лише момент кожного натискання, щоб редактор міг прискорити набір тексту. Ніколи — які клавіші, і нічого, поки активне поле пароля.</string>
+	<key>Saves only where the text cursor is, so the editor can zoom in on typing. No text and no keys are recorded, and nothing while a password field has focus.</key>
+	<string>Зберігає лише положення текстового курсора, щоб редактор міг наблизити набір тексту. Ні текст, ні клавіші не записуються, і нічого, поки активне поле пароля.</string>
 	<key>Saves the background, frame, cursor, zoom, captions, keys, and camera bubble. Apply it to any video from the Presets menu.</key>
 	<string>Зберігає фон, рамку, вказівник, наближення, субтитри, клавіші та віконце камери. Застосовуйте його до будь-якого відео з меню «Стилі».</string>
 	<key>Save…</key>
@@ -2888,6 +2978,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Поділитися</string>
 	<key>Share — Mail, Messages, AirDrop…</key>
 	<string>Поділитися — Пошта, Повідомлення, AirDrop…</string>
+	<key>Shift the Zooms</key>
+	<string>Зсунути наближення</string>
 	<key>Shortcut</key>
 	<string>Скорочення</string>
 	<key>Shortcut %@</key>
@@ -3020,6 +3112,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Пробіл</string>
 	<key>Space Gray</key>
 	<string>Сірий космос</string>
+	<key>Sped up by Speed up typing — pick another speed here, or press it again.</key>
+	<string>Прискорено кнопкою «Прискорити набір» — виберіть тут іншу швидкість або натисніть її знову.</string>
 	<key>Speech recognition is turned off for LF Studios in System Settings → Privacy &amp; Security → Speech Recognition. Turn it on, then try again.</key>
 	<string>Розпізнавання мовлення для LF Studios вимкнено (Системні параметри → Приватність і безпека → Розпізнавання мовлення). Увімкніть його й спробуйте ще раз.</string>
 	<key>Speech recognition isn't available on this Mac right now. Try again in a moment.</key>
@@ -3034,6 +3128,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>«Прискорити простої» працює із записами LF Studios — функція стежить за курсором</string>
 	<key>Speed of this part</key>
 	<string>Швидкість цієї частини</string>
+	<key>Speed up typing to</key>
+	<string>Прискорити набір до</string>
 	<key>Split</key>
 	<string>Розділити</string>
 	<key>Split at Markers</key>
@@ -3194,6 +3290,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Вікно закрилося до початку запису.</string>
 	<key>The camera couldn't start.</key>
 	<string>Не вдалося запустити камеру.</string>
+	<key>The camera follows the text cursor as you type.</key>
+	<string>Камера стежить за текстовим курсором, поки ви друкуєте.</string>
 	<key>The camera keeps your cursor in view and glides after it.</key>
 	<string>Камера тримає курсор у кадрі й плавно стежить за ним.</string>
 	<key>The camera stopped. The recording continues without it.</key>
@@ -3208,6 +3306,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Передавання готове</string>
 	<key>The highest quality, and the only one that can keep transparency</key>
 	<string>Найвища якість — і єдиний формат, що зберігає прозорість</string>
+	<key>The loupe stays over the text cursor.</key>
+	<string>Лупа тримається над текстовим курсором.</string>
+	<key>The loupe stays over your cursor.</key>
+	<string>Лупа тримається над курсором.</string>
 	<key>The markers are already at clip edges</key>
 	<string>Маркери вже стоять на межах кліпів</string>
 	<key>The menu bar icon is LF Studios' main entry point. While it is hidden, open LF Studios again from Finder, Launchpad, or Spotlight to bring these Preferences back.</key>
@@ -3250,6 +3352,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Основний запис відео не можна вилучити</string>
 	<key>The voice track is empty, so there's nothing to clean up. Turn off Enhance voice to keep the original sound.</key>
 	<string>Голосова доріжка порожня, тож очищати нічого. Вимкніть «Покращити голос», щоб зберегти оригінальний звук.</string>
+	<key>The whole frame zooms in.</key>
+	<string>Наближується весь кадр.</string>
 	<key>The window you're recording closed. Stop when you're ready — the recording keeps going.</key>
 	<string>Вікно, яке ви записуєте, закрилося. Зупиніть запис, коли будете готові, — він триває.</string>
 	<key>There are no captions to translate yet. Transcribe or add captions first.</key>
@@ -3280,6 +3384,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Цей застосунок</string>
 	<key>This list</key>
 	<string>Цей список</string>
+	<key>This recording didn't save key timing or screen changes, so typing can't be found</key>
+	<string>Цей запис не зберіг ні моментів натискань, ні змін на екрані, тож набір тексту не знайти</string>
+	<key>This recording didn't save key timing, so typing is estimated from screen changes while the pointer holds still. Check the speed blocks it makes.</key>
+	<string>Цей запис не зберіг моментів натискань, тож набір тексту оцінюється за змінами на екрані, поки курсор нерухомий. Перевірте створені блоки швидкості.</string>
 	<key>This recording has newer edits than “%@”</key>
 	<string>У цьому записі є правки новіші, ніж у «%@»</string>
 	<key>This recording has no sound</key>
@@ -3292,6 +3400,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>У цьому записі немає голосу, під який можна стишувати музику</string>
 	<key>This recording only has the arrow</key>
 	<string>У цьому записі є лише стрілка</string>
+	<key>This video has no camera bubble</key>
+	<string>У цьому відео немає бульбашки камери</string>
 	<key>This video is copy-protected and can't be exported.</key>
 	<string>Це відео захищене від копіювання, його не можна експортувати.</string>
 	<key>This video isn't there anymore</key>
@@ -3316,6 +3426,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Масштаб шкали часу (зведення пальців або ⌘ і прокручування)</string>
 	<key>Timing</key>
 	<string>Час</string>
+	<key>Timing only: never which keys</key>
+	<string>Лише моменти: ніколи — які клавіші</string>
 	<key>Tips</key>
 	<string>Поради</string>
 	<key>Title</key>
@@ -3338,6 +3450,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Угорі ліворуч</string>
 	<key>Top right</key>
 	<string>Угорі праворуч</string>
+	<key>Touch dot</key>
+	<string>Точка дотику</string>
+	<key>Track Where I Type</key>
+	<string>Стежити, де я друкую</string>
+	<key>Track where I type</key>
+	<string>Стежити, де я друкую</string>
+	<key>Track where I type saves only where the text cursor is on screen, so the editor can zoom in on typing. Record when keys are pressed saves only the moment each key goes down, so the editor can speed up typing. No text is recorded and no keys are named. While a password field has focus, neither saves anything. Both are off until you turn them on; macOS asks for Accessibility access.</key>
+	<string>«Стежити, де я друкую» зберігає лише положення текстового курсора на екрані, щоб редактор міг наблизити набір тексту. «Записувати моменти натискань» зберігає лише момент кожного натискання, щоб редактор міг прискорити набір. Текст не записується, клавіші не називаються. Поки активне поле пароля, жодна з функцій нічого не зберігає. Обидві вимкнені, доки ви їх не ввімкнете; macOS попросить доступ у розділі «Доступність».</string>
 	<key>Transcribe</key>
 	<string>Розшифрувати</string>
 	<key>Transcribe Again</key>
@@ -3386,6 +3506,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Увімкнути автонаближення за клацаннями</string>
 	<key>Turn around</key>
 	<string>Розвернути</string>
+	<key>Turn off vertical reframing to fit zooms around the camera</key>
+	<string>Вимкніть вертикальне кадрування, щоб наближення обходили камеру</string>
 	<key>Turn on Auto-zoom on clicks (Zoom) to use this</key>
 	<string>Щоб скористатися, увімкніть автонаближення за клацаннями (Масштаб)</string>
 	<key>Turn on Auto-zoom on clicks — keeps zooms you placed by hand</key>
@@ -3396,10 +3518,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Щоб записати звук, перед записом увімкніть мікрофон або системний звук.</string>
 	<key>Turn the video's sound back on</key>
 	<string>Знову ввімкнути звук відео</string>
+	<key>Type</key>
+	<string>Тип</string>
 	<key>Type here…</key>
 	<string>Введіть текст…</string>
 	<key>Type in a text annotation</key>
 	<string>Вводити текст у текстовий елемент</string>
+	<key>Typing</key>
+	<string>Набір тексту</string>
+	<key>Typing now plays at %@</key>
+	<string>Набір тексту тепер іде на %@</string>
 	<key>URL</key>
 	<string>URL</string>
 	<key>Under the voice</key>
@@ -3432,6 +3560,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Відмінити додавання зображення</string>
 	<key>Undo Add Intro Card</key>
 	<string>Відмінити додавання вступної заставки</string>
+	<key>Undo Add Loupe</key>
+	<string>Скасувати додавання лупи</string>
 	<key>Undo Add Marker</key>
 	<string>Відмінити додавання маркера</string>
 	<key>Undo Add Music</key>
@@ -3444,6 +3574,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Відмінити додавання прожектора</string>
 	<key>Undo Add Text</key>
 	<string>Відмінити додавання тексту</string>
+	<key>Undo Add Typing Zooms</key>
+	<string>Скасувати наближення набору тексту</string>
 	<key>Undo Add Zoom</key>
 	<string>Відмінити додавання наближення</string>
 	<key>Undo Add Zooms</key>
@@ -3484,6 +3616,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Відмінити переклад субтитрів</string>
 	<key>Undo Captions</key>
 	<string>Відмінити зміну субтитрів</string>
+	<key>Undo Change Loupe</key>
+	<string>Скасувати зміну лупи</string>
 	<key>Undo Click Sounds</key>
 	<string>Відмінити зміну звуків клацання</string>
 	<key>Undo Clicks</key>
@@ -3542,6 +3676,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Відмінити покращення голосу</string>
 	<key>Undo Fade</key>
 	<string>Відмінити плавну появу/зникнення</string>
+	<key>Undo Fit Zooms Around Camera</key>
+	<string>Скасувати обхід камери</string>
 	<key>Undo Hide Shortcut</key>
 	<string>Відмінити приховування скорочення</string>
 	<key>Undo Highlight Style</key>
@@ -3634,6 +3770,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Відмінити зміну швидкості</string>
 	<key>Undo Speed Up Idle</key>
 	<string>Відмінити прискорення простоїв</string>
+	<key>Undo Speed Up Typing</key>
+	<string>Скасувати прискорення набору</string>
 	<key>Undo Split</key>
 	<string>Відмінити розділення</string>
 	<key>Undo Split at Markers</key>
@@ -3668,6 +3806,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Відмінити спільний рівень наближення</string>
 	<key>Undo Zooms</key>
 	<string>Відмінити зміну наближень</string>
+	<key>Undo camera fit</key>
+	<string>Повернути як було</string>
 	<key>Unmute Clip</key>
 	<string>Увімкнути звук кліпу</string>
 	<key>Unmute preview</key>
@@ -3694,6 +3834,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Цей рівень для всіх наближень</string>
 	<key>Used for screenshots and recordings. Tokens: %y year, %m month, %d day, %H hour, %M minute, %S second. Leave empty to restore the default.</key>
 	<string>Для знімків екрана й записів. Маркери: %y — рік, %m — місяць, %d — день, %H — година, %M — хвилина, %S — секунда. Залиште порожнім, щоб відновити типовий шаблон.</string>
+	<key>Uses the key timing saved with this recording (never which keys). Shortcut keycaps stay on screen long enough to read.</key>
+	<string>Використовує моменти натискань, збережені з цим записом (без назв клавіш). Скорочення лишаються на екрані достатньо довго, щоб їх прочитати.</string>
+	<key>Uses where the text cursor moved while you typed.</key>
+	<string>Використовує переміщення текстового курсора під час набору.</string>
 	<key>Utility</key>
 	<string>Утиліти</string>
 	<key>Version</key>
@@ -3746,6 +3890,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Те, що звучало на вашому Mac</string>
 	<key>What's New</key>
 	<string>Що нового</string>
+	<key>While this zoom plays, the camera bubble moves to: %@</key>
+	<string>Поки триває це наближення, бульбашка камери переміщується: %@</string>
 	<key>White</key>
 	<string>Білий</string>
 	<key>Whole video</key>
@@ -3850,6 +3996,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Наближення й розмітка</string>
 	<key>Zooms and annotations can be duplicated</key>
 	<string>Дублювати можна лише наближення й розмітку</string>
+	<key>Zooms that follow the text cursor while you type</key>
+	<string>Наближення, що стежать за текстовим курсором під час набору</string>
 	<key>a table</key>
 	<string>таблиця</string>
 	<key>a transparent background</key>
@@ -3880,6 +4028,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>вступна заставка</string>
 	<key>loops</key>
 	<string>повторюється</string>
+	<key>macOS classic</key>
+	<string>Класичний macOS</string>
 	<key>macOS closed LF Studios last time because it ran out of memory</key>
 	<string>Минулого разу macOS закрила LF Studios через нестачу пам’яті</string>
 	<key>macOS downloads %@ once, then translates right here — nothing is uploaded.</key>
@@ -3954,6 +4104,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>· тягніть, щоб навести</string>
 	<key>· follows cursor</key>
 	<string>· за курсором</string>
+	<key>· follows typing</key>
+	<string>· за набором</string>
 	<key>“%@” (was in %@)</key>
 	<string>«%@» (раніше в %@)</string>
 	<key>“%@” can't be found. Put it back where it was, or remove it from this video (Style → Recordings), then export again.</key>

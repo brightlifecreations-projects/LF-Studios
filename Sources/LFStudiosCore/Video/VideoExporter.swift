@@ -234,6 +234,7 @@ enum VideoDemoExporter {
         )
         let segments = project.timelineSegments(totalDuration: sourceDuration)
         let duration = project.outputDuration(segments: segments)
+        let typingTrack = VideoTypingTrack(samples: project.textCursor)
         let camera = VideoCameraTrack.build(
             regions: project.zoomRegions,
             segments: segments,
@@ -241,7 +242,8 @@ enum VideoDemoExporter {
             speed: project.zoomSpeed,
             stage: normalizedStage,
             crop: project.crop.normalized,
-            cursor: cursorTrack.map { track in { track.visiblePosition(at: $0) } }
+            cursor: cursorTrack.map { track in { track.visiblePosition(at: $0) } },
+            typing: typingTrack.map { track in { track.position(at: $0) } }
         )
         let outputCanvas = project.canvasSize()
         var reframe: VideoReframe?
@@ -267,7 +269,8 @@ enum VideoDemoExporter {
             camera: camera,
             hasWebcam: hasWebcam,
             outputCanvasSize: outputCanvas,
-            reframe: reframe
+            reframe: reframe,
+            typingTrack: typingTrack
         )
     }
 

@@ -31,6 +31,9 @@ final class VideoCursorArtwork: @unchecked Sendable {
     let shapes: [String: Shape]
     let events: [VideoCursorShapeEvent]
     let arrow: Shape
+    /// What each captured shape is (an arrow, the I-beam, the hand), as
+    /// the recording saw it; older recordings are told apart by shape.
+    let kinds: [String: VideoCursorKind]
     private let eventTimes: [Double]
     /// The recording's own plain arrow (it matches the Mac's style) — found
     /// by its shape: tip at the top left, taller than wide. Not simply the
@@ -51,6 +54,11 @@ final class VideoCursorArtwork: @unchecked Sendable {
             )
         }
         self.shapes = shapes
+        var kinds: [String: VideoCursorKind] = [:]
+        for stored in metadata?.cursorShapes ?? [] {
+            if let kind = stored.kind { kinds[stored.id] = kind }
+        }
+        self.kinds = kinds
         // Collapse flicker: a shape shown for under ~0.12s (a pointer that
         // passes over a link on its way somewhere) is dropped.
         let raw = (metadata?.cursorShapeEvents ?? []).filter { shapes[$0.shapeID] != nil }
@@ -97,7 +105,7 @@ final class VideoCursorArtwork: @unchecked Sendable {
         return shapes[events[found].shapeID] ?? arrow
     }
 
-    private static func mipChain(_ image: CIImage) -> [CIImage] {
+    static func mipChain(_ image: CIImage) -> [CIImage] {
         var mips: [CIImage] = []
         var current = rasterize(image) ?? image
         mips.append(current)
@@ -306,6 +314,14 @@ final class VideoRenderPlan: @unchecked Sendable {
     let captionStyle: VideoCaptionStyle
     /// Camera bubble settings — nil when the recording has no camera.
     let webcam: VideoWebcamSettings?
+    /// Where the text cursor was ("Track where I type"; nil: not recorded).
+    let typingTrack: VideoTypingTrack?
+    /// Zoom blocks that are loupes.
+    let loupes: [VideoLoupeSpan]
+    /// Zooms that move the camera bubble to another corner while they play.
+    let bubbleMoves: [VideoBubbleMove]
+    /// The pointer's look (VideoCursorStyles.swift).
+    let cursorStyle: VideoCursorStyleArtwork?
 
     struct CameraLayoutSpan {
         let start: Double
@@ -381,9 +397,11 @@ final class VideoRenderPlan: @unchecked Sendable {
         camera: VideoCameraTrack,
         hasWebcam: Bool = false,
         outputCanvasSize: CGSize? = nil,
-        reframe: VideoReframe? = nil
+        reframe: VideoReframe? = nil,
+        typingTrack: VideoTypingTrack? = nil
     ) {
         webcam = hasWebcam ? project.webcam : nil
+        self.typingTrack = typingTrack
         canvasSize = project.canvasSize()
         self.outputCanvasSize = outputCanvasSize ?? project.canvasSize()
         self.reframe = reframe
@@ -501,6 +519,9 @@ final class VideoRenderPlan: @unchecked Sendable {
 
         captionStyle = project.captionStyle
         captions = Self.visibleCaptions(project.captions, segments: segments, translation: project.captionTracks.activeTranslation)
+        loupes = VideoLoupeSpan.spans(project: project, segments: segments)
+        bubbleMoves = hasWebcam ? VideoBubbleMove.moves(project: project, segments: segments) : []
+        cursorStyle = VideoCursorStyleArtwork.make(settings: project.cursor)
     }
 
     /// Caption lines as they appear in the edited video: timeline times,
@@ -776,6 +797,11 @@ final class VideoFrameRenderer {
             scene = composite(overlay: overlay, over: scene, plan: plan, geometry: geometry, time: timelineTime, solid: overlay.effect.id == options.solidOverlay)
         }
 
+        // Loupes magnify the recording and its annotations, under the pointer.
+        if !plan.loupes.isEmpty {
+            scene = drawLoupes(on: scene, plan: plan, geometry: geometry, timelineTime: timelineTime, sourceTime: sourceTime)
+        }
+
         // 5. Camera motion blur.
         if !options.draft, plan.motionBlur > 0.01, options.cameraOverride == nil {
             scene = cameraMotionBlur(scene, plan: plan, geometry: geometry, time: timelineTime, frameRate: options.frameRate)
@@ -822,7 +848,7 @@ final class VideoFrameRenderer {
         var avoid: CGRect?
         var avoidWeight: CGFloat = 1
         if let webcam = plan.webcam, webcam.visible, let frame = options.webcamFrame, plan.hasCameraFootage(at: timelineTime) {
-            let bubble = Self.webcamRect(webcam, outputSize: outputSize, cameraScale: cameraScale)
+            let bubble = Self.movedWebcamRect(webcam, plan: plan, time: timelineTime, outputSize: outputSize, cameraScale: cameraScale)
             let bubbleRadius = Self.webcamCornerRadius(webcam, rect: bubble)
             let camera = CameraPicture(frame: frame, mask: options.webcamMask, settings: webcam)
             switch plan.cameraLayout(at: timelineTime) {
@@ -1784,7 +1810,12 @@ final class VideoFrameRenderer {
         options: Options
     ) -> CIImage {
         let shapeTime = plan.cursorLoop?.shapeSourceTime(sourceTime, at: timelineTime) ?? sourceTime
-        let shape = plan.artwork.shape(at: shapeTime, alwaysArrow: plan.cursorSettings.alwaysArrow)
+        var shape = plan.artwork.shape(at: shapeTime, alwaysArrow: plan.cursorSettings.alwaysArrow)
+        if let style = plan.cursorStyle {
+            // A drawn style: its own arrow, I-beam or hand for what the
+            // recording's pointer was.
+            shape = style.shape(for: plan.cursorSettings.alwaysArrow ? .arrow : plan.artwork.kind(of: shape))
+        }
         let height = pointerPixelHeight(plan: plan, geometry: geometry, shape: shape, sourceTime: sourceTime)
         var output = scene
 

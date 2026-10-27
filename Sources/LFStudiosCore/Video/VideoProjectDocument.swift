@@ -156,6 +156,7 @@ struct VideoProjectContents {
         }
         if project.importedCamera != nil { map(&project.importedCamera!.path) }
         if project.music != nil { map(&project.music!.path) }
+        if project.cursor.customImage != nil { map(&project.cursor.customImage!.path) }
         for index in project.overlayEffects.indices where project.overlayEffects[index].image != nil {
             map(&project.overlayEffects[index].image!.path)
         }

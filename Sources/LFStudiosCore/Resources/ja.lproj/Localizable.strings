@@ -18,6 +18,8 @@
 	<string>%@（⇧⌘Z）</string>
 	<key>%@ (⌘Z)</key>
 	<string>%@（⌘Z）</string>
+	<key>%@ Loupe</key>
+	<string>%@ ルーペ</string>
 	<key>%@ Zoom</key>
 	<string>%@ズーム</string>
 	<key>%@ area</key>
@@ -156,12 +158,18 @@
 	<string>%lld個のショートカット</string>
 	<key>%lld zooms</key>
 	<string>%lld個のズーム</string>
+	<key>%lld zooms can't move far enough — try Move the Camera Instead.</key>
+	<string>%lld個のズームは十分にずらせません。“代わりにカメラを移動”を試してください。</string>
+	<key>%lld zooms have no free corner for the camera.</key>
+	<string>%lld個のズームには、カメラを置ける空いた角がありません。</string>
 	<key>%lld%%</key>
 	<string>%lld%%</string>
 	<key>%lld%% volume</key>
 	<string>音量%lld%%</string>
 	<key>%lld/%lld configured</key>
 	<string>設定済み: %lld/%lld</string>
+	<key>(estimated from screen changes — check the speed blocks)</key>
+	<string>（画面の変化からの推定です。速度ブロックを確認してください）</string>
 	<key>, </key>
 	<string>、</string>
 	<key>, %@ to %@</key>
@@ -186,6 +194,10 @@
 	<string>同じ名前のファイルがすでにあります。別の名前を付けて、もう一度書き出してください。</string>
 	<key>A hairline that separates dark recordings from the background</key>
 	<string>暗い映像と背景の境目に細い線を引きます</string>
+	<key>A magnifier over one spot at the playhead; the rest of the frame stays in view</key>
+	<string>再生ヘッドの位置で1か所を拡大し、ほかの部分はそのまま表示します</string>
+	<key>A magnifier over one spot; the rest of the frame stays in view.</key>
+	<string>1か所を拡大し、ほかの部分はそのまま表示します。</string>
 	<key>A report helps fix this. You'll see everything before it's sent, and it never includes your screenshots or recordings.</key>
 	<string>レポートはこの問題の修正に役立ちます。送信前にすべての内容を確認でき、スクリーンショットや収録したビデオが含まれることはありません。</string>
 	<key>A second caption track you can show, burn in, or save as subtitles. Translated on this Mac — nothing is uploaded.</key>
@@ -234,6 +246,8 @@
 	<string>画像またはロゴを追加…</string>
 	<key>Add Intro Card</key>
 	<string>オープニングカードを追加</string>
+	<key>Add Loupe</key>
+	<string>ルーペを追加</string>
 	<key>Add Marker</key>
 	<string>マーカーを追加</string>
 	<key>Add Marker While Recording</key>
@@ -280,18 +294,24 @@
 	<string>再生ヘッドの位置にスポットライトを追加</string>
 	<key>Add text at the playhead (T)</key>
 	<string>再生ヘッドの位置にテキストを追加（T）</string>
+	<key>Add typing zooms</key>
+	<string>入力箇所のズームを追加</string>
 	<key>Add zoom at playhead</key>
 	<string>再生ヘッドの位置にズームを追加</string>
 	<key>Add “%@” at the playhead</key>
 	<string>再生ヘッドの位置に“%@”を追加</string>
 	<key>Added %@ — %@</key>
 	<string>“%@”を追加しました（%@）</string>
+	<key>Added %lld typing zooms — ⌘Z to undo</key>
+	<string>入力箇所のズームを%lld個追加しました。⌘Zで取り消せます</string>
 	<key>Added to LF Studios</key>
 	<string>LF Studiosに追加済み</string>
 	<key>Added “%@”</key>
 	<string>“%@”を追加しました</string>
 	<key>Adjust to move it half a second</key>
 	<string>調整すると0.5秒ずつ移動します</string>
+	<key>Adjusted %lld zooms — ⌘Z to undo.</key>
+	<string>%lld個のズームを調整しました。⌘Zで取り消せます。</string>
 	<key>Advanced Tools</key>
 	<string>高度なツール</string>
 	<key>After Capture</key>
@@ -320,6 +340,8 @@
 	<string>すべてのズームを%@に設定しました</string>
 	<key>Allow Access…</key>
 	<string>アクセスを許可…</string>
+	<key>Allow LF Studios in Accessibility so it can see where you type.</key>
+	<string>入力している場所がわかるように、“アクセシビリティ”でLF Studiosを許可してください。</string>
 	<key>Allow LF Studios in Accessibility — shortcuts turn on by themselves.</key>
 	<string>“アクセシビリティ”でLF Studiosを許可すると、ショートカットの表示が自動的にオンになります。</string>
 	<key>Allow Screen Recording</key>
@@ -486,6 +508,8 @@
 	<string>生成り</string>
 	<key>Border</key>
 	<string>枠線</string>
+	<key>Border color</key>
+	<string>枠線のカラー</string>
 	<key>Bottom</key>
 	<string>下</string>
 	<key>Bottom left</key>
@@ -670,6 +694,8 @@
 	<string>アップデートを確認</string>
 	<key>Choose</key>
 	<string>選択</string>
+	<key>Choose Another…</key>
+	<string>ほかを選択…</string>
 	<key>Choose Capture Area in the LF Studios menu to start</key>
 	<string>LF Studiosのメニューから“範囲を取り込む”を選択して始めましょう</string>
 	<key>Choose Image…</key>
@@ -680,6 +706,8 @@
 	<string>まずマイスタイルを選んでください：プリセット ▸ プリセットを編集 ▸ マイスタイルとして使用（⇧⌘Y）</string>
 	<key>Choose a .ttf or .otf font. LF Studios keeps its own copy, so it keeps working if the file is deleted.</key>
 	<string>.ttfまたは.otfのフォントを選択してください。LF Studiosは独自のコピーを保持するため、ファイルが削除されても使い続けられます。</string>
+	<key>Choose a PNG to use as the pointer, then click where it points</key>
+	<string>ポインタにするPNGを選び、指す位置をクリックしてください</string>
 	<key>Choose a language</key>
 	<string>言語を選択</string>
 	<key>Choose a logo, watermark, or screenshot to place on the video</key>
@@ -758,6 +786,8 @@
 	<string>クリックを削除しました。⌘Zで取り消せます</string>
 	<key>Click sounds</key>
 	<string>クリック音</string>
+	<key>Click the picture where it points.</key>
+	<string>画像の指す位置をクリックしてください。</string>
 	<key>Click to add a zoom — or press Z at the playhead</key>
 	<string>クリックしてズームを追加。再生ヘッドの位置でZキーを押しても追加できます</string>
 	<key>Click to add the next step</key>
@@ -984,6 +1014,8 @@
 	<string>カスタムカラー</string>
 	<key>Custom color #%@</key>
 	<string>カスタムカラー #%@</string>
+	<key>Custom image…</key>
+	<string>カスタム画像…</string>
 	<key>Custom look</key>
 	<string>カスタムの外観</string>
 	<key>Custom position</key>
@@ -1352,12 +1384,18 @@
 	<string>文字起こし内を検索</string>
 	<key>Find “%@”</key>
 	<string>“%@”を探す</string>
+	<key>Finds typing and plays it faster, as speed blocks you can change</key>
+	<string>入力部分を見つけて速く再生します。速度ブロックはあとから変更できます</string>
+	<key>Finds zooms the camera bubble covers and moves their framing, or the bubble, out of the way</key>
+	<string>カメラのワイプに隠れるズームを見つけ、フレーミングかワイプをずらします</string>
 	<key>Fine-tune shadow</key>
 	<string>シャドウを細かく調整</string>
 	<key>Finish and Quit</key>
 	<string>完了してから終了</string>
 	<key>Finish or cancel the current recording setup</key>
 	<string>現在の収録の準備を完了するか、キャンセルしてください</string>
+	<key>Fit zooms around camera</key>
+	<string>カメラを避けてズーム</string>
 	<key>Fix</key>
 	<string>修正</string>
 	<key>Flamingo</key>
@@ -1366,10 +1404,18 @@
 	<string>自撮りと同じ向きにします</string>
 	<key>Follow Cursor</key>
 	<string>ポインタに追従</string>
+	<key>Follow Typing</key>
+	<string>入力に追従</string>
 	<key>Follow cursor</key>
 	<string>ポインタに追従</string>
+	<key>Follow typing</key>
+	<string>入力に追従</string>
 	<key>Follows cursor</key>
 	<string>ポインタに追従</string>
+	<key>Follows typing</key>
+	<string>入力に追従</string>
+	<key>Follows where you typed. Pressing it again replaces only these zooms.</key>
+	<string>入力した場所に追従します。もう一度押すと、これらのズームだけが置き換わります。</string>
 	<key>Font</key>
 	<string>フォント</string>
 	<key>For Final Cut Pro, DaVinci Resolve, and Adobe Premiere Pro</key>
@@ -1404,6 +1450,8 @@
 	<string>角ばった形から円まで</string>
 	<key>From your Mac</key>
 	<string>このMacから</string>
+	<key>Full</key>
+	<string>全体</string>
 	<key>Full Camera at Playhead</key>
 	<string>再生ヘッドの位置でカメラを全面に</string>
 	<key>Full Frame (No Background)</key>
@@ -1524,6 +1572,8 @@
 	<string>ズームトラックをクリック</string>
 	<key>Hover the zoom track and click to add a zoom, or press Z at the playhead. Drag a zoom to move it; drag its edges to change how long it lasts.</key>
 	<string>ズームトラックにポインタを置いてクリックするか、再生ヘッドの位置でZキーを押すとズームを追加できます。ズームをドラッグすると移動、端をドラッグすると長さを変更できます。</string>
+	<key>How long the loupe takes to grow in and fade out</key>
+	<string>ルーペが開いて消えるまでの時間</string>
 	<key>How strongly blur and pixelate hide what's under them</key>
 	<string>ぼかしとモザイクで下の内容を隠す強さ</string>
 	<key>Image</key>
@@ -1590,6 +1640,8 @@
 	<string>保存先の空き容量が足りません。別の場所を選ぶか、「小さいファイル」を選んでください。</string>
 	<key>It's your My Style, so Apply my style will have nothing to apply until you choose another. Videos that use this preset keep their look.</key>
 	<string>これはマイスタイルなので、別のものを選ぶまで「マイスタイルを適用」で適用するものがなくなります。このプリセットを使っているビデオの見た目は変わりません。</string>
+	<key>Its own arrow, text and hand pointers, drawn for the video.</key>
+	<string>ビデオ用に描かれた専用の矢印、テキスト、手のポインタです。</string>
 	<key>JPEG Quality</key>
 	<string>JPEGの品質</string>
 	<key>Jump here</key>
@@ -1758,12 +1810,18 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ループ</string>
 	<key>Loop to fill</key>
 	<string>ループして最後まで再生</string>
+	<key>Loupe</key>
+	<string>ルーペ</string>
 	<key>Lower under your voice</key>
 	<string>話している間は音量を下げる</string>
 	<key>M</key>
 	<string>中</string>
 	<key>MIT License — Free and open source</key>
 	<string>無料のオープンソース（MITライセンス）</string>
+	<key>Make Full Zoom</key>
+	<string>全体ズームにする</string>
+	<key>Make Loupe</key>
+	<string>ルーペにする</string>
 	<key>Make it lighter: %@, %@ fps</key>
 	<string>軽くする: %@、%@ fps</string>
 	<key>Manage</key>
@@ -1862,10 +1920,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>前に移動</string>
 	<key>Move later</key>
 	<string>後ろに移動</string>
+	<key>Move the Camera Instead</key>
+	<string>代わりにカメラを移動</string>
 	<key>Move the playhead inside a clip to split</key>
 	<string>分割するには、再生ヘッドをクリップ内に移動してください</string>
 	<key>Move the playhead to where the camera shows, then crop</key>
 	<string>カメラが映っている位置に再生ヘッドを移動してからクロップしてください</string>
+	<key>Moved clear of the camera bubble.</key>
+	<string>カメラのワイプの外へずらしました。</string>
 	<key>Moved to the Trash</key>
 	<string>ゴミ箱に入れました</string>
 	<key>Movement</key>
@@ -2002,10 +2064,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>この収録には音声が見つかりませんでした。ナレーションが入っている場合は、“オーディオ”タブで音量を確認してから、もう一度お試しください。</string>
 	<key>No text found in this selection</key>
 	<string>選択範囲にテキストが見つかりませんでした</string>
+	<key>No typing found in this recording</key>
+	<string>この収録には入力が見つかりません</string>
+	<key>No typing found to speed up</key>
+	<string>早送りする入力が見つかりません</string>
 	<key>No ums</key>
 	<string>フィラーなし</string>
 	<key>No ums or uhs left</key>
 	<string>フィラー（えー、あのー）はもうありません</string>
+	<key>No zooms are under the camera</key>
+	<string>カメラに隠れるズームはありません</string>
 	<key>None</key>
 	<string>なし</string>
 	<key>None in this recording. Turn on “Show keyboard shortcuts” in Settings → Recording and every ⌘ shortcut you press appears as keycaps. Plain typing is never recorded.</key>
@@ -2090,6 +2158,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ビデオエディタを開く</string>
 	<key>Open a .lfstudios project</key>
 	<string>.lfstudiosプロジェクトを開く</string>
+	<key>Open and close</key>
+	<string>開閉</string>
 	<key>Open in annotation editor</key>
 	<string>スクリーンショットエディタで開く</string>
 	<key>Open the video editor after recording</key>
@@ -2124,6 +2194,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>アウト点を遅らせる</string>
 	<key>Outline</key>
 	<string>縁取り</string>
+	<key>Outlined</key>
+	<string>輪郭</string>
 	<key>Outro</key>
 	<string>エンディング</string>
 	<key>Outro card</key>
@@ -2232,6 +2304,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ポーセリン</string>
 	<key>Position</key>
 	<string>位置</string>
+	<key>Positions only: no text, no keys</key>
+	<string>位置のみ: テキストもキーも記録しません</string>
 	<key>Preferences</key>
 	<string>設定</string>
 	<key>Preparing to copy…</key>
@@ -2314,6 +2388,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>範囲を収録</string>
 	<key>Record Fullscreen</key>
 	<string>画面全体を収録</string>
+	<key>Record When Keys Are Pressed</key>
+	<string>キーを押したタイミングを記録</string>
 	<key>Record Window</key>
 	<string>ウインドウを収録</string>
 	<key>Record an area, a window, or the whole screen</key>
@@ -2324,6 +2400,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>マイクを録音</string>
 	<key>Record system audio</key>
 	<string>システムオーディオを録音</string>
+	<key>Record when keys are pressed</key>
+	<string>キーを押したタイミングを記録</string>
+	<key>Record with “Track where I type” on (Settings → Recording) to zoom in on typing.</key>
+	<string>入力箇所をズームするには、“入力場所を追跡”をオンにして収録してください（設定 → 収録）。</string>
+	<key>Record with “Track where I type” on to zoom in on typing</key>
+	<string>入力箇所をズームするには、“入力場所を追跡”をオンにして収録してください</string>
 	<key>Recorded at %@. Drag its dot on the timeline to retime it; ripples and Auto Zoom follow.</key>
 	<string>%@に記録されました。タイムライン上の点をドラッグするとタイミングを変更でき、波紋と自動ズームも合わせて移動します。</string>
 	<key>Recording</key>
@@ -2402,6 +2484,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>画像の追加をやり直す</string>
 	<key>Redo Add Intro Card</key>
 	<string>オープニングカードの追加をやり直す</string>
+	<key>Redo Add Loupe</key>
+	<string>ルーペの追加をやり直す</string>
 	<key>Redo Add Marker</key>
 	<string>マーカーの追加をやり直す</string>
 	<key>Redo Add Music</key>
@@ -2414,6 +2498,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>スポットライトの追加をやり直す</string>
 	<key>Redo Add Text</key>
 	<string>テキストの追加をやり直す</string>
+	<key>Redo Add Typing Zooms</key>
+	<string>入力箇所のズームの追加をやり直す</string>
 	<key>Redo Add Zoom</key>
 	<string>ズームの追加をやり直す</string>
 	<key>Redo Add Zooms</key>
@@ -2454,6 +2540,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>字幕の翻訳をやり直す</string>
 	<key>Redo Captions</key>
 	<string>字幕の変更をやり直す</string>
+	<key>Redo Change Loupe</key>
+	<string>ルーペの変更をやり直す</string>
 	<key>Redo Click Sounds</key>
 	<string>クリック音の変更をやり直す</string>
 	<key>Redo Clicks</key>
@@ -2514,6 +2602,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>声の補正をやり直す</string>
 	<key>Redo Fade</key>
 	<string>フェードの変更をやり直す</string>
+	<key>Redo Fit Zooms Around Camera</key>
+	<string>カメラを避けるズームをやり直す</string>
 	<key>Redo Hide Shortcut</key>
 	<string>ショートカットの非表示をやり直す</string>
 	<key>Redo Highlight Style</key>
@@ -2608,6 +2698,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>速度の変更をやり直す</string>
 	<key>Redo Speed Up Idle</key>
 	<string>動きのない区間の早送りをやり直す</string>
+	<key>Redo Speed Up Typing</key>
+	<string>入力の早送りをやり直す</string>
 	<key>Redo Split</key>
 	<string>分割をやり直す</string>
 	<key>Redo Split at Markers</key>
@@ -2804,6 +2896,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>開く前に、電話番号を確認してください。</string>
 	<key>Right</key>
 	<string>右</string>
+	<key>Ring</key>
+	<string>リング</string>
 	<key>Ripple</key>
 	<string>波紋</string>
 	<key>Rose Smoke</key>
@@ -2880,6 +2974,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>%@短縮。画面上で何も起きていない無音部分だけが対象です</string>
 	<key>Saves %@ — silences where the pointer rests and nothing is clicked or pressed (this older recording can't see typing)</key>
 	<string>%@短縮。ポインタが止まっていて、クリックもキー操作もない無音部分が対象です（この古い収録では入力を検出できません）</string>
+	<key>Saves only the moment each key goes down, so the editor can speed up typing. Never which keys, and nothing while a password field has focus.</key>
+	<string>キーを押した瞬間だけを保存し、エディタで入力部分を早送りできるようにします。どのキーかは記録せず、パスワード欄の入力中は何も保存しません。</string>
+	<key>Saves only where the text cursor is, so the editor can zoom in on typing. No text and no keys are recorded, and nothing while a password field has focus.</key>
+	<string>テキストカーソルの位置だけを保存し、エディタで入力箇所をズームできるようにします。テキストもキーも記録せず、パスワード欄の入力中は何も保存しません。</string>
 	<key>Saves the background, frame, cursor, zoom, captions, keys, and camera bubble. Apply it to any video from the Presets menu.</key>
 	<string>背景、フレーム、ポインタ、ズーム、字幕、キー、カメラの吹き出しを保存します。「プリセット」メニューから任意のビデオに適用できます。</string>
 	<key>Save…</key>
@@ -3006,6 +3104,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>共有</string>
 	<key>Share — Mail, Messages, AirDrop…</key>
 	<string>共有: “メール”、“メッセージ”、AirDrop…</string>
+	<key>Shift the Zooms</key>
+	<string>ズームをずらす</string>
 	<key>Shortcut</key>
 	<string>ショートカット</string>
 	<key>Shortcut %@</key>
@@ -3146,6 +3246,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>動きのない区間を%lld箇所早送りし、%@短くなりました</string>
 	<key>Sped up %lld idle moments — saved %@ · check any typing</key>
 	<string>動きのない区間を%lld箇所早送りし、%@短くなりました · 入力中の場面を確認してください</string>
+	<key>Sped up %lld typing stretches to %@ — %@ shorter</key>
+	<string>入力部分%lldか所を%@に早送りしました（%@短縮）</string>
+	<key>Sped up by Speed up typing — pick another speed here, or press it again.</key>
+	<string>“入力を早送り”で速くしました。ここで別の速度を選ぶか、もう一度押してください。</string>
 	<key>Speech recognition is turned off for LF Studios in System Settings → Privacy &amp; Security → Speech Recognition. Turn it on, then try again.</key>
 	<string>LF Studiosの音声認識が“システム設定”＞“プライバシーとセキュリティ”＞“音声認識”でオフになっています。オンにしてから、もう一度お試しください。</string>
 	<key>Speech recognition isn't available on this Mac right now. Try again in a moment.</key>
@@ -3160,6 +3264,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>“動きのない区間を早送り”はLF Studiosで収録したビデオで使えます。ポインタの動きをもとに判断します</string>
 	<key>Speed of this part</key>
 	<string>この部分の速度</string>
+	<key>Speed up typing to</key>
+	<string>入力の早送り速度</string>
 	<key>Split</key>
 	<string>分割</string>
 	<key>Split at %lld markers</key>
@@ -3322,6 +3428,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>収録を開始する前にウインドウが閉じられました。</string>
 	<key>The camera couldn't start.</key>
 	<string>カメラを起動できませんでした。</string>
+	<key>The camera follows the text cursor as you type.</key>
+	<string>入力中、カメラがテキストカーソルを追いかけます。</string>
 	<key>The camera keeps your cursor in view and glides after it.</key>
 	<string>カメラがポインタを画面内にとらえ、滑らかに追いかけます。</string>
 	<key>The camera stopped. The recording continues without it.</key>
@@ -3336,6 +3444,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>受け渡しの準備ができました</string>
 	<key>The highest quality, and the only one that can keep transparency</key>
 	<string>最高画質で、透明部分を保てる唯一のフォーマットです</string>
+	<key>The loupe stays over the text cursor.</key>
+	<string>ルーペがテキストカーソルの上にとどまります。</string>
+	<key>The loupe stays over your cursor.</key>
+	<string>ルーペがポインタの上にとどまります。</string>
 	<key>The markers are already at clip edges</key>
 	<string>マーカーはすでにクリップの境目にあります</string>
 	<key>The menu bar icon is LF Studios' main entry point. While it is hidden, open LF Studios again from Finder, Launchpad, or Spotlight to bring these Preferences back.</key>
@@ -3378,6 +3490,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>このビデオ自体の収録は削除できません</string>
 	<key>The voice track is empty, so there's nothing to clean up. Turn off Enhance voice to keep the original sound.</key>
 	<string>声のトラックが空なので、補正するものがありません。元のサウンドのままにするには、“声を補正”をオフにしてください。</string>
+	<key>The whole frame zooms in.</key>
+	<string>画面全体がズームします。</string>
 	<key>The window you're recording closed. Stop when you're ready — the recording keeps going.</key>
 	<string>収録中のウインドウが閉じられました。収録は続いています。準備ができたら停止してください。</string>
 	<key>There are no captions to translate yet. Transcribe or add captions first.</key>
@@ -3408,6 +3522,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>このアプリ</string>
 	<key>This list</key>
 	<string>この一覧</string>
+	<key>This recording didn't save key timing or screen changes, so typing can't be found</key>
+	<string>この収録にはキーのタイミングも画面の変化も保存されていないため、入力を見つけられません</string>
+	<key>This recording didn't save key timing, so typing is estimated from screen changes while the pointer holds still. Check the speed blocks it makes.</key>
+	<string>この収録にはキーのタイミングが保存されていないため、ポインタが止まっている間の画面の変化から入力を推定します。作成された速度ブロックを確認してください。</string>
 	<key>This recording has newer edits than “%@”</key>
 	<string>この収録には“%@”より新しい編集があります</string>
 	<key>This recording has no sound</key>
@@ -3422,6 +3540,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>この収録には矢印のポインタしかありません</string>
 	<key>This replaces all %lld caption lines, including any you edited or typed, with a new transcript in %@.</key>
 	<string>字幕%1$lld行すべて（編集や入力をした行も含む）が、%2$@の新しい文字起こしに置き換えられます。</string>
+	<key>This video has no camera bubble</key>
+	<string>このビデオにはカメラのワイプがありません</string>
 	<key>This video is copy-protected and can't be exported.</key>
 	<string>このビデオはコピー保護されているため、書き出せません。</string>
 	<key>This video isn't there anymore</key>
@@ -3446,6 +3566,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>タイムラインの表示倍率（ピンチまたは⌘スクロール）</string>
 	<key>Timing</key>
 	<string>タイミング</string>
+	<key>Timing only: never which keys</key>
+	<string>タイミングのみ: どのキーかは記録しません</string>
 	<key>Tips</key>
 	<string>ヒント</string>
 	<key>Title</key>
@@ -3468,6 +3590,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>左上</string>
 	<key>Top right</key>
 	<string>右上</string>
+	<key>Touch dot</key>
+	<string>タッチの点</string>
+	<key>Track Where I Type</key>
+	<string>入力場所を追跡</string>
+	<key>Track where I type</key>
+	<string>入力場所を追跡</string>
+	<key>Track where I type saves only where the text cursor is on screen, so the editor can zoom in on typing. Record when keys are pressed saves only the moment each key goes down, so the editor can speed up typing. No text is recorded and no keys are named. While a password field has focus, neither saves anything. Both are off until you turn them on; macOS asks for Accessibility access.</key>
+	<string>“入力場所を追跡”は画面上のテキストカーソルの位置だけを保存し、エディタで入力箇所をズームできるようにします。“キーを押したタイミングを記録”はキーを押した瞬間だけを保存し、入力部分を早送りできるようにします。テキストは記録せず、どのキーかも記録しません。パスワード欄の入力中は、どちらも何も保存しません。どちらもオンにするまでオフのままで、macOSが“アクセシビリティ”へのアクセスを求めます。</string>
 	<key>Transcribe</key>
 	<string>文字起こし</string>
 	<key>Transcribe Again</key>
@@ -3516,6 +3646,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>クリックで自動ズームをオンにする</string>
 	<key>Turn around</key>
 	<string>向きを反転</string>
+	<key>Turn off vertical reframing to fit zooms around the camera</key>
+	<string>カメラを避けてズームするには、縦向きのリフレームをオフにしてください</string>
 	<key>Turn on Auto-zoom on clicks (Zoom) to use this</key>
 	<string>使うには「クリックで自動ズーム」（ズーム）をオンにしてください</string>
 	<key>Turn on Auto-zoom on clicks — keeps zooms you placed by hand</key>
@@ -3526,10 +3658,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>サウンドを収録するには、収録する前にマイクまたはシステムオーディオをオンにしてください。</string>
 	<key>Turn the video's sound back on</key>
 	<string>ビデオのサウンドを再びオンにする</string>
+	<key>Type</key>
+	<string>種類</string>
 	<key>Type here…</key>
 	<string>ここに入力…</string>
 	<key>Type in a text annotation</key>
 	<string>テキストの注釈に入力</string>
+	<key>Typing</key>
+	<string>入力</string>
+	<key>Typing now plays at %@</key>
+	<string>入力部分は%@で再生されます</string>
 	<key>URL</key>
 	<string>URL</string>
 	<key>Under the voice</key>
@@ -3562,6 +3700,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>画像の追加を取り消す</string>
 	<key>Undo Add Intro Card</key>
 	<string>オープニングカードの追加を取り消す</string>
+	<key>Undo Add Loupe</key>
+	<string>ルーペの追加を取り消す</string>
 	<key>Undo Add Marker</key>
 	<string>マーカーの追加を取り消す</string>
 	<key>Undo Add Music</key>
@@ -3574,6 +3714,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>スポットライトの追加を取り消す</string>
 	<key>Undo Add Text</key>
 	<string>テキストの追加を取り消す</string>
+	<key>Undo Add Typing Zooms</key>
+	<string>入力箇所のズームの追加を取り消す</string>
 	<key>Undo Add Zoom</key>
 	<string>ズームの追加を取り消す</string>
 	<key>Undo Add Zooms</key>
@@ -3614,6 +3756,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>字幕の翻訳を取り消す</string>
 	<key>Undo Captions</key>
 	<string>字幕の変更を取り消す</string>
+	<key>Undo Change Loupe</key>
+	<string>ルーペの変更を取り消す</string>
 	<key>Undo Click Sounds</key>
 	<string>クリック音の変更を取り消す</string>
 	<key>Undo Clicks</key>
@@ -3674,6 +3818,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>声の補正を取り消す</string>
 	<key>Undo Fade</key>
 	<string>フェードの変更を取り消す</string>
+	<key>Undo Fit Zooms Around Camera</key>
+	<string>カメラを避けるズームを取り消す</string>
 	<key>Undo Hide Shortcut</key>
 	<string>ショートカットの非表示を取り消す</string>
 	<key>Undo Highlight Style</key>
@@ -3768,6 +3914,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>速度の変更を取り消す</string>
 	<key>Undo Speed Up Idle</key>
 	<string>動きのない区間の早送りを取り消す</string>
+	<key>Undo Speed Up Typing</key>
+	<string>入力の早送りを取り消す</string>
 	<key>Undo Split</key>
 	<string>分割を取り消す</string>
 	<key>Undo Split at Markers</key>
@@ -3802,6 +3950,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ズーム倍率の一括変更を取り消す</string>
 	<key>Undo Zooms</key>
 	<string>ズームの変更を取り消す</string>
+	<key>Undo camera fit</key>
+	<string>カメラ回避を元に戻す</string>
 	<key>Unmute Clip</key>
 	<string>クリップの消音を解除</string>
 	<key>Unmute preview</key>
@@ -3828,6 +3978,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>この倍率をすべてのズームに適用</string>
 	<key>Used for screenshots and recordings. Tokens: %y year, %m month, %d day, %H hour, %M minute, %S second. Leave empty to restore the default.</key>
 	<string>スクリーンショットと収録のファイル名に使用されます。トークン: %y（年）、%m（月）、%d（日）、%H（時）、%M（分）、%S（秒）。空欄にするとデフォルトに戻ります。</string>
+	<key>Uses the key timing saved with this recording (never which keys). Shortcut keycaps stay on screen long enough to read.</key>
+	<string>この収録に保存されたキーのタイミングを使います（どのキーかは含みません）。ショートカットのキーは読めるだけの時間表示されます。</string>
+	<key>Uses where the text cursor moved while you typed.</key>
+	<string>入力中のテキストカーソルの動きを使います。</string>
 	<key>Utility</key>
 	<string>ユーティリティ</string>
 	<key>Version</key>
@@ -3880,6 +4034,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Macで再生されていたサウンド</string>
 	<key>What's New</key>
 	<string>新機能</string>
+	<key>While this zoom plays, the camera bubble moves to: %@</key>
+	<string>このズーム中、カメラのワイプの移動先: %@</string>
 	<key>White</key>
 	<string>ホワイト</string>
 	<key>Whole video</key>
@@ -3990,6 +4146,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ズームと注釈</string>
 	<key>Zooms and annotations can be duplicated</key>
 	<string>複製できるのはズームと注釈だけです</string>
+	<key>Zooms that follow the text cursor while you type</key>
+	<string>入力中にテキストカーソルを追うズーム</string>
 	<key>a table</key>
 	<string>表</string>
 	<key>a transparent background</key>
@@ -4020,6 +4178,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>オープニングカード</string>
 	<key>loops</key>
 	<string>ループ再生</string>
+	<key>macOS classic</key>
+	<string>macOSクラシック</string>
 	<key>macOS closed LF Studios last time because it ran out of memory</key>
 	<string>前回、メモリが不足したためmacOSがLF Studiosを終了しました</string>
 	<key>macOS downloads %@ once, then translates right here — nothing is uploaded.</key>
@@ -4094,6 +4254,8 @@ Appleのショートカットは、“システム設定”＞“キーボード
 	<string>· ドラッグで位置を指定</string>
 	<key>· follows cursor</key>
 	<string>· ポインタに追従</string>
+	<key>· follows typing</key>
+	<string>· 入力に追従</string>
 	<key>“%@” (was in %@)</key>
 	<string>“%@”（%@にありました）</string>
 	<key>“%@” can't be found. Put it back where it was, or remove it from this video (Style → Recordings), then export again.</key>

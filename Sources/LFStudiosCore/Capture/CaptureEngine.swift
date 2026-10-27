@@ -2924,6 +2924,20 @@ final class RecordingControlsWindow: NSWindow {
         openEditor.state = Settings.openVideoEditorAfterRecording ? .on : .off
         menu.addItem(openEditor)
 
+        // Typing: positions and timing only, both off until chosen here or
+        // in Settings → Recording.
+        menu.addItem(.separator())
+        let typing = NSMenuItem(title: L("Track Where I Type"), action: #selector(tracksTypingToggled), keyEquivalent: "")
+        typing.target = self
+        typing.state = Settings.recordingTracksTyping ? .on : .off
+        typing.toolTip = L("Saves only where the text cursor is, so the editor can zoom in on typing. No text and no keys are recorded, and nothing while a password field has focus.")
+        menu.addItem(typing)
+        let timing = NSMenuItem(title: L("Record When Keys Are Pressed"), action: #selector(keyTimingToggled), keyEquivalent: "")
+        timing.target = self
+        timing.state = Settings.recordingKeyTiming ? .on : .off
+        timing.toolTip = L("Saves only the moment each key goes down, so the editor can speed up typing. Never which keys, and nothing while a password field has focus.")
+        menu.addItem(timing)
+
         menu.addItem(.separator())
         let countdown = NSMenuItem(title: L("Countdown"), action: nil, keyEquivalent: "")
         let countdownMenu = NSMenu()
@@ -2952,6 +2966,23 @@ final class RecordingControlsWindow: NSWindow {
 
     @objc private func openEditorToggled() {
         Settings.openVideoEditorAfterRecording.toggle()
+    }
+
+    @objc private func tracksTypingToggled() {
+        Settings.recordingTracksTyping.toggle()
+        if Settings.recordingTracksTyping { askForTypingAccess() }
+    }
+
+    @objc private func keyTimingToggled() {
+        Settings.recordingKeyTiming.toggle()
+        if Settings.recordingKeyTiming { askForTypingAccess() }
+    }
+
+    /// Both typing options read the focused field through Accessibility.
+    private func askForTypingAccess() {
+        guard !VideoKeystrokeFormatter.isAllowed else { return }
+        VideoKeystrokeFormatter.requestAccess()
+        ToastWindow.show(message: L("Allow LF Studios in Accessibility so it can see where you type."), duration: 3.2)
     }
 
     @objc private func countdownChosen(_ sender: NSMenuItem) {
