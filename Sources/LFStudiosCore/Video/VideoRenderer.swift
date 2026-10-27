@@ -283,6 +283,8 @@ final class VideoRenderPlan: @unchecked Sendable {
     let backgroundBlur: Double
     let cornerRadius: Double
     let shadow: Double
+    /// The fine-tuned shadow (nil: the classic one from `shadow`).
+    let shadowStyle: VideoShadowStyle?
     let outline: Bool
     let fullBleed: Bool
     let segments: [VideoDemoTimelineSegment]
@@ -396,6 +398,7 @@ final class VideoRenderPlan: @unchecked Sendable {
         backgroundBlur = project.backgroundBlur
         cornerRadius = project.effectiveCornerRadius
         shadow = project.effectiveShadow
+        shadowStyle = project.effectiveShadowStyle
         outline = project.outline && !project.usesRawSourceFrame
         fullBleed = project.usesRawSourceFrame
         segments = project.timelineSegments(totalDuration: sourceDuration)
@@ -606,6 +609,7 @@ final class VideoFrameRenderer {
         let stage: CGRect
         let radius: Double
         let shadow: Double
+        let style: VideoShadowStyle?
         let k: Double
     }
 
@@ -713,7 +717,12 @@ final class VideoFrameRenderer {
         }
 
         // 2. Shadow.
-        if !plan.fullBleed, plan.shadow > 0.01 {
+        if let style = plan.shadowStyle {
+            if !style.inset {
+                let shadow = shadowImage(plan: plan, k: k)
+                scene = shadow.transformed(by: CGAffineTransform(scaleX: 1 / k, y: 1 / k).concatenating(geometry.transform)).composited(over: scene)
+            }
+        } else if !plan.fullBleed, plan.shadow > 0.01 {
             let shadow = shadowImage(plan: plan, k: k)
             scene = shadow.transformed(by: CGAffineTransform(scaleX: 1 / k, y: 1 / k).concatenating(geometry.transform)).composited(over: scene)
         }
@@ -733,6 +742,12 @@ final class VideoFrameRenderer {
         } else {
             let placeholder = roundedRect(stageOut, radius: radius, color: CIColor(red: 0.08, green: 0.08, blue: 0.09))
             scene = placeholder.composited(over: scene)
+        }
+
+        // The inset shadow: a soft inner edge over the recording.
+        if let style = plan.shadowStyle, style.inset {
+            let inner = shadowImage(plan: plan, k: k)
+            scene = inner.transformed(by: CGAffineTransform(scaleX: 1 / k, y: 1 / k).concatenating(geometry.transform)).composited(over: scene)
         }
 
         if plan.outline, radius >= 0 {
@@ -951,8 +966,13 @@ final class VideoFrameRenderer {
     }
 
     private func shadowImage(plan: VideoRenderPlan, k: CGFloat) -> CIImage {
-        let key = ShadowKey(stage: plan.stageRect, radius: plan.cornerRadius, shadow: plan.shadow, k: Double(k))
+        let key = ShadowKey(stage: plan.stageRect, radius: plan.cornerRadius, shadow: plan.shadow, style: plan.shadowStyle, k: Double(k))
         if let cached = shadowCache, cached.key == key { return cached.image }
+        if let style = plan.shadowStyle {
+            let image = rasterized(fineShadow(style, plan: plan, k: k), canvas: plan.canvasSize, k: k)
+            shadowCache = (key, image)
+            return image
+        }
         let canvas = plan.canvasSize
         let unit = min(canvas.width, canvas.height) / 1080
         let strength = CGFloat(plan.shadow)
@@ -975,15 +995,65 @@ final class VideoFrameRenderer {
             .transformed(by: CGAffineTransform(translationX: 0, y: -1.5 * unit * k))
             .applyingGaussianBlur(sigma: Double(3 * unit * k))
         let combined = contact.composited(over: blurred)
-        let extent = CGRect(x: 0, y: 0, width: canvas.width * k, height: canvas.height * k)
-        let image: CIImage
-        if let cgImage = VideoRenderContext.shared.createCGImage(combined, from: extent, format: .RGBA8, colorSpace: CGColorSpace(name: CGColorSpace.sRGB)) {
-            image = CIImage(cgImage: cgImage)
-        } else {
-            image = combined
-        }
+        let image = rasterized(combined, canvas: canvas, k: k)
         shadowCache = (key, image)
         return image
+    }
+
+    /// Drawn once per look and kept as pixels: blurs are slow to redo.
+    private func rasterized(_ image: CIImage, canvas: CGSize, k: CGFloat) -> CIImage {
+        let extent = CGRect(x: 0, y: 0, width: canvas.width * k, height: canvas.height * k)
+        if let cgImage = VideoRenderContext.shared.createCGImage(image, from: extent, format: .RGBA8, colorSpace: CGColorSpace(name: CGColorSpace.sRGB)) {
+            return CIImage(cgImage: cgImage)
+        }
+        return image
+    }
+
+    /// The fine-tuned shadow on transparency (canvas pixels × k, y up): a
+    /// drop shadow below the frame, or an inner edge clipped to it.
+    private func fineShadow(_ style: VideoShadowStyle, plan: VideoRenderPlan, k: CGFloat) -> CIImage {
+        let canvas = plan.canvasSize
+        let unit = min(canvas.width, canvas.height) / 1080 * k
+        let extent = CGRect(x: 0, y: 0, width: canvas.width * k, height: canvas.height * k)
+        let stage = CGRect(
+            x: plan.stageRect.minX * k,
+            y: (canvas.height - plan.stageRect.maxY) * k,
+            width: plan.stageRect.width * k,
+            height: plan.stageRect.height * k
+        )
+        let radius = CGFloat(plan.cornerRadius) * k
+        // y down on the canvas, y up here.
+        let dx = CGFloat(style.offset.dx) * unit
+        let dy = -CGFloat(style.offset.dy) * unit
+        let sigma = Double(CGFloat(style.softness) * unit) * 0.5
+        let color = CIColor(red: style.color.r, green: style.color.g, blue: style.color.b, alpha: style.color.a * style.opacity)
+
+        if style.inset {
+            // Color all around a hole the frame's shape, moved by the
+            // offset, blurred, and kept only inside the frame.
+            let margin = max(CGFloat(sigma) * 3, abs(dx), abs(dy)) + 4
+            let hole = roundedRect(stage, radius: radius, color: CIColor.white)
+                .transformed(by: CGAffineTransform(translationX: dx, y: dy))
+            let field = CIImage(color: color).cropped(to: stage.insetBy(dx: -margin, dy: -margin))
+                .applyingFilter("CISourceOutCompositing", parameters: [kCIInputBackgroundImageKey: hole])
+            let soft = sigma > 0.05 ? field.applyingGaussianBlur(sigma: sigma) : field
+            let mask = roundedRect(stage, radius: radius, color: CIColor.white)
+            return soft.cropped(to: stage)
+                .applyingFilter("CISourceInCompositing", parameters: [kCIInputBackgroundImageKey: mask])
+                .cropped(to: extent)
+        }
+
+        // The same two layers as the classic shadow: a soft one, and a
+        // tight contact shadow that grounds the frame.
+        let body = roundedRect(stage.insetBy(dx: stage.width * 0.01, dy: 0), radius: radius, color: color)
+            .transformed(by: CGAffineTransform(translationX: dx, y: dy))
+        let blurred = (sigma > 0.05 ? body.applyingGaussianBlur(sigma: sigma) : body).cropped(to: extent)
+        let length = max(hypot(dx, dy), 0.0001)
+        let contactColor = CIColor(red: style.color.r, green: style.color.g, blue: style.color.b, alpha: style.color.a * style.opacity * 0.18)
+        let contact = roundedRect(stage, radius: radius, color: contactColor)
+            .transformed(by: CGAffineTransform(translationX: dx / length * 1.5 * unit, y: dy / length * 1.5 * unit))
+            .applyingGaussianBlur(sigma: Double(3 * unit))
+        return contact.composited(over: blurred).cropped(to: extent)
     }
 
     private func placedVideo(_ incoming: CIImage, plan: VideoRenderPlan, geometry: Geometry, stageOut: CGRect, draft: Bool = false) -> CIImage {

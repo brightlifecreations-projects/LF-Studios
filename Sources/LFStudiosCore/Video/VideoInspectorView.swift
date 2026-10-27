@@ -195,14 +195,8 @@ struct VideoBackgroundInspector: View {
                     format: { "\(Int($0.rounded()))" },
                     onEditingEnded: { model.endGesture() }
                 )
-                VideoSliderRow(
-                    title: L("Shadow"),
-                    value: Binding(get: { project.shadow }, set: { value in model.setStyle(coalesce: "shadow") { $0.shadow = value } }),
-                    range: 0...1,
-                    defaultValue: VideoStylePreset.factory.shadow,
-                    format: { VideoEditorFormat.percent($0) },
-                    onEditingEnded: { model.endGesture() }
-                )
+                // The Shadow slider, or the fine-tuned shadow (VideoShadow.swift).
+                VideoShadowControls(model: model)
                 VideoToggleRow(
                     title: L("Edge highlight"),
                     detail: L("A hairline that separates dark recordings from the background"),
