@@ -562,6 +562,86 @@
 			<string>%lld наближення</string>
 		</dict>
 	</dict>
+	<key>%lld zooms can't move far enough — try Move the Camera Instead.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>few</key>
+			<string>%lld наближення не зсунути достатньо — спробуйте «Зсунути камеру».</string>
+			<key>many</key>
+			<string>%lld наближень не зсунути достатньо — спробуйте «Зсунути камеру».</string>
+			<key>one</key>
+			<string>%lld наближення не зсунути достатньо — спробуйте «Зсунути камеру».</string>
+			<key>other</key>
+			<string>%lld наближення не зсунути достатньо — спробуйте «Зсунути камеру».</string>
+		</dict>
+	</dict>
+	<key>%lld zooms have no free corner for the camera.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>few</key>
+			<string>Для %lld наближень немає вільного кута для камери.</string>
+			<key>many</key>
+			<string>Для %lld наближень немає вільного кута для камери.</string>
+			<key>one</key>
+			<string>Для %lld наближення немає вільного кута для камери.</string>
+			<key>other</key>
+			<string>Для %lld наближення немає вільного кута для камери.</string>
+		</dict>
+	</dict>
+	<key>Added %lld typing zooms — ⌘Z to undo</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>few</key>
+			<string>Додано %lld наближення набору — ⌘Z, щоб скасувати</string>
+			<key>many</key>
+			<string>Додано %lld наближень набору — ⌘Z, щоб скасувати</string>
+			<key>one</key>
+			<string>Додано %lld наближення набору — ⌘Z, щоб скасувати</string>
+			<key>other</key>
+			<string>Додано %lld наближення набору — ⌘Z, щоб скасувати</string>
+		</dict>
+	</dict>
+	<key>Adjusted %lld zooms — ⌘Z to undo.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>few</key>
+			<string>Виправлено %lld наближення — ⌘Z, щоб скасувати.</string>
+			<key>many</key>
+			<string>Виправлено %lld наближень — ⌘Z, щоб скасувати.</string>
+			<key>one</key>
+			<string>Виправлено %lld наближення — ⌘Z, щоб скасувати.</string>
+			<key>other</key>
+			<string>Виправлено %lld наближення — ⌘Z, щоб скасувати.</string>
+		</dict>
+	</dict>
 	<key>All captures are moved to LF Studios’ trash and permanently deleted after %lld days.</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -1260,6 +1340,26 @@
 			<string>Прискорено %lld простій — заощаджено %@ · перевірте місця з введенням тексту</string>
 			<key>other</key>
 			<string>Прискорено %lld простою — заощаджено %@ · перевірте місця з введенням тексту</string>
+		</dict>
+	</dict>
+	<key>Sped up %lld typing stretches to %@ — %@ shorter</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>few</key>
+			<string>Прискорено %lld відрізки набору до %@ — коротше на %@</string>
+			<key>many</key>
+			<string>Прискорено %lld відрізків набору до %@ — коротше на %@</string>
+			<key>one</key>
+			<string>Прискорено %lld відрізок набору до %@ — коротше на %@</string>
+			<key>other</key>
+			<string>Прискорено %lld відрізка набору до %@ — коротше на %@</string>
 		</dict>
 	</dict>
 	<key>Split at %lld markers</key>

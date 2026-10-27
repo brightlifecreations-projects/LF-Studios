@@ -372,6 +372,9 @@ final class VideoEditorModel: ObservableObject {
 
     /// Everything the camera path depends on — captions, shortcuts,
     /// annotations, and most style changes leave it alone.
+    /// The text cursor's path (it never changes after loading).
+    private var typingTrackCache: (samples: Int, track: VideoTypingTrack?)?
+
     private struct CameraTrackKey: Equatable {
         let regions: [VideoZoomRegion]
         let timings: [VideoPlaybackController.EditStructure.Timing]
@@ -379,6 +382,7 @@ final class VideoEditorModel: ObservableObject {
         let stage: CGRect
         let crop: VideoCropRect
         let cursorTrack: ObjectIdentifier?
+        let textCursor: Int
     }
 
     private struct TimelineSignature: Equatable {
@@ -653,6 +657,13 @@ final class VideoEditorModel: ObservableObject {
             cursorTrack = VideoSourcesPointer.cursorTrack(project: project, duration: sourceDuration)
             cursorTrackCache = (key, cursorTrack)
         }
+        let typingTrack: VideoTypingTrack?
+        if let cache = typingTrackCache, cache.samples == project.textCursor.count {
+            typingTrack = cache.track
+        } else {
+            typingTrack = VideoTypingTrack(samples: project.textCursor)
+            typingTrackCache = (project.textCursor.count, typingTrack)
+        }
         // Reframing renders the recording's own shape, then crops a moving
         // window: the camera path is built for that landscape scene.
         let layoutProject = project.reframeActive ? project.reframeScene() : project
@@ -665,7 +676,8 @@ final class VideoEditorModel: ObservableObject {
             speed: project.zoomSpeed,
             stage: normalizedStage,
             crop: project.crop.normalized,
-            cursorTrack: cursorTrack.map(ObjectIdentifier.init)
+            cursorTrack: cursorTrack.map(ObjectIdentifier.init),
+            textCursor: project.textCursor.count
         )
         let camera: VideoCameraTrack
         if let cache = cameraTrackCache, cache.key == cameraKey {
@@ -678,7 +690,8 @@ final class VideoEditorModel: ObservableObject {
                 speed: project.zoomSpeed,
                 stage: normalizedStage,
                 crop: project.crop.normalized,
-                cursor: cursorTrack.map { track in { track.visiblePosition(at: $0) } }
+                cursor: cursorTrack.map { track in { track.visiblePosition(at: $0) } },
+                typing: typingTrack.map { track in { track.position(at: $0) } }
             )
             cameraTrackCache = (cameraKey, camera)
         }
@@ -712,7 +725,8 @@ final class VideoEditorModel: ObservableObject {
             camera: camera,
             hasWebcam: hasWebcamFootage,
             outputCanvasSize: outputCanvas,
-            reframe: reframe
+            reframe: reframe,
+            typingTrack: typingTrack
         )
         if !plan.transitions.isEmpty { prefetchHeldFrames() }
     }
@@ -1357,7 +1371,7 @@ final class VideoEditorModel: ObservableObject {
     }
 
     @discardableResult
-    func addZoom(at time: Double, length: Double = 3) -> UUID? {
+    func addZoom(at time: Double, length: Double = 3, label: String? = nil, configure: (inout VideoZoomRegion) -> Void = { _ in }) -> UUID? {
         let gap = zoomGap(around: time)
         guard gap.upperBound - gap.lowerBound >= VideoZoomRegion.minimumDuration else {
             showNotice(L("There's already a zoom here"), symbol: "plus.magnifyingglass")
@@ -1375,7 +1389,7 @@ final class VideoEditorModel: ObservableObject {
         guard sourceEnd - sourceStart >= VideoZoomRegion.minimumDuration else { return nil }
         // Aim where the pointer is, when we know it.
         let pointer = plan.cursorTrack?.visiblePosition(at: sourceTime(forTimeline: min(start + 0.6, end)))
-        let region = VideoZoomRegion(
+        var region = VideoZoomRegion(
             start: sourceStart,
             end: sourceEnd,
             scale: project.defaultZoomScale,
@@ -1383,7 +1397,8 @@ final class VideoEditorModel: ObservableObject {
             focusX: pointer.map { Double($0.x) } ?? 0.5,
             focusY: pointer.map { Double($0.y) } ?? 0.5
         )
-        mutate { project in
+        configure(&region)
+        mutate(label: label) { project in
             project.zoomRegions.append(region)
             project.zoomRegions.sort { $0.start < $1.start }
         }
@@ -1399,6 +1414,7 @@ final class VideoEditorModel: ObservableObject {
             project.zoomRegions[index].focusX = min(max(project.zoomRegions[index].focusX, 0), 1)
             project.zoomRegions[index].focusY = min(max(project.zoomRegions[index].focusY, 0), 1)
             project.zoomRegions[index].isAuto = false
+            project.zoomRegions[index].isTyping = false
         }
     }
 

@@ -37,6 +37,8 @@ struct VideoNamedStylePreset: Codable, Equatable, Identifiable {
         current.cursor.visible = style.cursor.visible
         // A preset without an auto-zoom choice matches either way.
         if style.autoZoom == nil { current.autoZoom = nil }
+        // Nor does one saved without a loupe look.
+        if style.loupeStyle == nil { current.loupeStyle = nil }
         return current == style
     }
 }

@@ -258,7 +258,9 @@ final class RecordingEngine: NSObject {
                 fps: configuration.fps,
                 nativeCursorVisible: configuration.bakesCursorIntoVideo,
                 renderCursor: configuration.showsCursor && !configuration.bakesCursorIntoVideo,
-                recordsKeystrokes: Settings.recordingKeystrokes
+                recordsKeystrokes: Settings.recordingKeystrokes,
+                tracksTyping: Settings.recordingTracksTyping,
+                recordsKeyTiming: Settings.recordingKeyTiming
             )
             self.metadataRecorder = metadataRecorder
             timeline = RecordingTimeline()

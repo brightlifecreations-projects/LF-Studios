@@ -18,6 +18,8 @@
 	<string>%@ (⇧⌘Z)</string>
 	<key>%@ (⌘Z)</key>
 	<string>%@ (⌘Z)</string>
+	<key>%@ Loupe</key>
+	<string>%@-Lupe</string>
 	<key>%@ Zoom</key>
 	<string>Zoom %@</string>
 	<key>%@ area</key>
@@ -108,6 +110,8 @@
 	<string>Lautstärke %lld %%</string>
 	<key>%lld/%lld configured</key>
 	<string>%lld/%lld eingerichtet</string>
+	<key>(estimated from screen changes — check the speed blocks)</key>
+	<string>(geschätzt anhand von Bildschirmänderungen – prüfe die Tempoblöcke)</string>
 	<key>, </key>
 	<string>, </string>
 	<key>, %@ to %@</key>
@@ -132,6 +136,10 @@
 	<string>Eine Datei mit diesem Namen ist im Weg. Wähle einen anderen Namen und exportiere erneut.</string>
 	<key>A hairline that separates dark recordings from the background</key>
 	<string>Eine feine Linie hebt dunkle Aufnahmen vom Hintergrund ab</string>
+	<key>A magnifier over one spot at the playhead; the rest of the frame stays in view</key>
+	<string>Eine Lupe über einer Stelle an der Abspielposition; der Rest des Bilds bleibt sichtbar</string>
+	<key>A magnifier over one spot; the rest of the frame stays in view.</key>
+	<string>Eine Lupe über einer Stelle; der Rest des Bilds bleibt sichtbar.</string>
 	<key>A report helps fix this. You'll see everything before it's sent, and it never includes your screenshots or recordings.</key>
 	<string>Ein Bericht hilft, das zu beheben. Du siehst alles, bevor es gesendet wird, und er enthält nie deine Bildschirmfotos oder Aufnahmen.</string>
 	<key>A second caption track you can show, burn in, or save as subtitles. Translated on this Mac — nothing is uploaded.</key>
@@ -180,6 +188,8 @@
 	<string>Bild oder Logo hinzufügen …</string>
 	<key>Add Intro Card</key>
 	<string>Intro-Karte hinzufügen</string>
+	<key>Add Loupe</key>
+	<string>Lupe hinzufügen</string>
 	<key>Add Marker</key>
 	<string>Marker setzen</string>
 	<key>Add Marker While Recording</key>
@@ -226,6 +236,8 @@
 	<string>Fokus an der Abspielposition hinzufügen</string>
 	<key>Add text at the playhead (T)</key>
 	<string>Text an der Abspielposition hinzufügen (T)</string>
+	<key>Add typing zooms</key>
+	<string>Zooms aufs Tippen hinzufügen</string>
 	<key>Add zoom at playhead</key>
 	<string>Zoom an der Abspielposition hinzufügen</string>
 	<key>Add “%@” at the playhead</key>
@@ -266,6 +278,8 @@
 	<string>Alle Zooms auf %@ gesetzt</string>
 	<key>Allow Access…</key>
 	<string>Zugriff erlauben …</string>
+	<key>Allow LF Studios in Accessibility so it can see where you type.</key>
+	<string>Erlaube LF Studios unter „Bedienungshilfen“, damit es sieht, wo du tippst.</string>
 	<key>Allow LF Studios in Accessibility — shortcuts turn on by themselves.</key>
 	<string>Erlaube LF Studios unter „Bedienungshilfen“ – die Kurzbefehle schalten sich dann selbst ein.</string>
 	<key>Allow Screen Recording</key>
@@ -430,6 +444,8 @@
 	<string>Knochenweiß</string>
 	<key>Border</key>
 	<string>Rahmen</string>
+	<key>Border color</key>
+	<string>Rahmenfarbe</string>
 	<key>Bottom</key>
 	<string>Unten</string>
 	<key>Bottom left</key>
@@ -612,6 +628,8 @@
 	<string>Nach Updates suchen</string>
 	<key>Choose</key>
 	<string>Auswählen</string>
+	<key>Choose Another…</key>
+	<string>Anderes wählen …</string>
 	<key>Choose Capture Area in the LF Studios menu to start</key>
 	<string>Wähle „Bereich aufnehmen“ im LF-Studios-Menü, um loszulegen</string>
 	<key>Choose Image…</key>
@@ -622,6 +640,8 @@
 	<string>Wähle zuerst „Mein Stil“: Voreinstellungen ▸ Voreinstellungen bearbeiten ▸ Als „Mein Stil“ verwenden (⇧⌘Y)</string>
 	<key>Choose a .ttf or .otf font. LF Studios keeps its own copy, so it keeps working if the file is deleted.</key>
 	<string>Wähle eine .ttf- oder .otf-Schrift. LF Studios behält eine eigene Kopie, damit sie auch funktioniert, wenn die Datei gelöscht wird.</string>
+	<key>Choose a PNG to use as the pointer, then click where it points</key>
+	<string>Wähle ein PNG als Zeiger und klicke dann auf die Stelle, auf die er zeigt</string>
 	<key>Choose a language</key>
 	<string>Sprache wählen</string>
 	<key>Choose a logo, watermark, or screenshot to place on the video</key>
@@ -700,6 +720,8 @@
 	<string>Klick entfernt – ⌘Z zum Widerrufen</string>
 	<key>Click sounds</key>
 	<string>Klickgeräusche</string>
+	<key>Click the picture where it points.</key>
+	<string>Klicke auf die Stelle im Bild, auf die er zeigt.</string>
 	<key>Click to add a zoom — or press Z at the playhead</key>
 	<string>Klicke, um einen Zoom hinzuzufügen – oder drücke Z an der Abspielposition</string>
 	<key>Click to add the next step</key>
@@ -926,6 +948,8 @@
 	<string>Eigene Farbe</string>
 	<key>Custom color #%@</key>
 	<string>Eigene Farbe #%@</string>
+	<key>Custom image…</key>
+	<string>Eigenes Bild …</string>
 	<key>Custom look</key>
 	<string>Eigener Look</string>
 	<key>Custom position</key>
@@ -1286,12 +1310,18 @@
 	<string>Im Transkript suchen</string>
 	<key>Find “%@”</key>
 	<string>„%@“ suchen</string>
+	<key>Finds typing and plays it faster, as speed blocks you can change</key>
+	<string>Findet Tippen und spielt es schneller ab – als Tempoblöcke, die du ändern kannst</string>
+	<key>Finds zooms the camera bubble covers and moves their framing, or the bubble, out of the way</key>
+	<string>Findet Zooms, die die Kamerablase verdeckt, und verschiebt ihren Bildausschnitt oder die Blase</string>
 	<key>Fine-tune shadow</key>
 	<string>Schatten feinjustieren</string>
 	<key>Finish and Quit</key>
 	<string>Abschließen und beenden</string>
 	<key>Finish or cancel the current recording setup</key>
 	<string>Schließe die Vorbereitung der aktuellen Aufzeichnung ab oder brich sie ab</string>
+	<key>Fit zooms around camera</key>
+	<string>Zooms an Kamera anpassen</string>
 	<key>Fix</key>
 	<string>Beheben</string>
 	<key>Flamingo</key>
@@ -1300,10 +1330,18 @@
 	<string>Wie ein Selfie umdrehen</string>
 	<key>Follow Cursor</key>
 	<string>Zeiger folgen</string>
+	<key>Follow Typing</key>
+	<string>Tippen folgen</string>
 	<key>Follow cursor</key>
 	<string>Zeiger folgen</string>
+	<key>Follow typing</key>
+	<string>Tippen folgen</string>
 	<key>Follows cursor</key>
 	<string>Folgt dem Zeiger</string>
+	<key>Follows typing</key>
+	<string>Folgt dem Tippen</string>
+	<key>Follows where you typed. Pressing it again replaces only these zooms.</key>
+	<string>Folgt der Stelle, an der du getippt hast. Erneut gedrückt, ersetzt es nur diese Zooms.</string>
 	<key>Font</key>
 	<string>Schrift</string>
 	<key>For Final Cut Pro, DaVinci Resolve, and Adobe Premiere Pro</key>
@@ -1336,6 +1374,8 @@
 	<string>Von spitzen Ecken bis zum Kreis</string>
 	<key>From your Mac</key>
 	<string>Von deinem Mac</string>
+	<key>Full</key>
+	<string>Voll</string>
 	<key>Full Camera at Playhead</key>
 	<string>Kamera im Vollbild an der Abspielposition</string>
 	<key>Full Frame (No Background)</key>
@@ -1452,6 +1492,8 @@
 	<string>Auf die Zoomspur zeigen</string>
 	<key>Hover the zoom track and click to add a zoom, or press Z at the playhead. Drag a zoom to move it; drag its edges to change how long it lasts.</key>
 	<string>Zeige auf die Zoomspur und klicke, um einen Zoom hinzuzufügen, oder drücke Z an der Abspielposition. Ziehe einen Zoom, um ihn zu bewegen; ziehe an seinen Rändern, um seine Dauer zu ändern.</string>
+	<key>How long the loupe takes to grow in and fade out</key>
+	<string>Wie lange die Lupe zum Auf- und Zuklappen braucht</string>
 	<key>How strongly blur and pixelate hide what's under them</key>
 	<string>Wie stark Weichzeichnen und Verpixeln den Inhalt darunter verbergen</string>
 	<key>Image</key>
@@ -1516,6 +1558,8 @@
 	<string>Dort ist nicht genug Platz. Wähle einen anderen Ort oder „Kleinere Dateien“.</string>
 	<key>It's your My Style, so Apply my style will have nothing to apply until you choose another. Videos that use this preset keep their look.</key>
 	<string>Das ist dein „Mein Stil“ – „Meinen Stil anwenden“ hat dann nichts anzuwenden, bis du einen anderen wählst. Videos mit dieser Voreinstellung behalten ihren Look.</string>
+	<key>Its own arrow, text and hand pointers, drawn for the video.</key>
+	<string>Eigene Pfeil-, Text- und Handzeiger, fürs Video gezeichnet.</string>
 	<key>JPEG Quality</key>
 	<string>JPEG-Qualität</string>
 	<key>Jump here</key>
@@ -1670,12 +1714,18 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Schleife</string>
 	<key>Loop to fill</key>
 	<string>Bis zum Ende wiederholen</string>
+	<key>Loupe</key>
+	<string>Lupe</string>
 	<key>Lower under your voice</key>
 	<string>Unter deiner Stimme leiser</string>
 	<key>M</key>
 	<string>M</string>
 	<key>MIT License — Free and open source</key>
 	<string>MIT-Lizenz – kostenlos und Open Source</string>
+	<key>Make Full Zoom</key>
+	<string>In vollen Zoom umwandeln</string>
+	<key>Make Loupe</key>
+	<string>In Lupe umwandeln</string>
 	<key>Make it lighter: %@, %@ fps</key>
 	<string>Sparsamer machen: %@, %@ fps</string>
 	<key>Manage</key>
@@ -1774,10 +1824,14 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Nach vorn</string>
 	<key>Move later</key>
 	<string>Nach hinten</string>
+	<key>Move the Camera Instead</key>
+	<string>Stattdessen Kamera verschieben</string>
 	<key>Move the playhead inside a clip to split</key>
 	<string>Bewege die Abspielposition in einen Clip, um ihn zu teilen</string>
 	<key>Move the playhead to where the camera shows, then crop</key>
 	<string>Bewege die Abspielposition dorthin, wo die Kamera zu sehen ist, und beschneide dann</string>
+	<key>Moved clear of the camera bubble.</key>
+	<string>Aus dem Bereich der Kamerablase verschoben.</string>
 	<key>Moved to the Trash</key>
 	<string>In den Papierkorb gelegt</string>
 	<key>Movement</key>
@@ -1914,10 +1968,16 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>In dieser Aufnahme wurde keine Sprache gefunden. Wenn sie gesprochenen Text enthält, prüfe die Lautstärke im Tab „Audio“ und versuche es erneut.</string>
 	<key>No text found in this selection</key>
 	<string>In dieser Auswahl wurde kein Text gefunden</string>
+	<key>No typing found in this recording</key>
+	<string>In dieser Aufnahme wurde kein Tippen gefunden</string>
+	<key>No typing found to speed up</key>
+	<string>Kein Tippen zum Beschleunigen gefunden</string>
 	<key>No ums</key>
 	<string>Keine Füllwörter</string>
 	<key>No ums or uhs left</key>
 	<string>Keine Füllwörter mehr</string>
+	<key>No zooms are under the camera</key>
+	<string>Keine Zooms liegen unter der Kamera</string>
 	<key>None</key>
 	<string>Ohne</string>
 	<key>None in this recording. Turn on “Show keyboard shortcuts” in Settings → Recording and every ⌘ shortcut you press appears as keycaps. Plain typing is never recorded.</key>
@@ -2002,6 +2062,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Video-Editor öffnen</string>
 	<key>Open a .lfstudios project</key>
 	<string>Ein .lfstudios-Projekt öffnen</string>
+	<key>Open and close</key>
+	<string>Öffnen und schließen</string>
 	<key>Open in annotation editor</key>
 	<string>Im Bildschirmfoto-Editor öffnen</string>
 	<key>Open the video editor after recording</key>
@@ -2036,6 +2098,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Ende später</string>
 	<key>Outline</key>
 	<string>Kontur</string>
+	<key>Outlined</key>
+	<string>Umriss</string>
 	<key>Outro</key>
 	<string>Outro</string>
 	<key>Outro card</key>
@@ -2142,6 +2206,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Porzellan</string>
 	<key>Position</key>
 	<string>Position</string>
+	<key>Positions only: no text, no keys</key>
+	<string>Nur Positionen: kein Text, keine Tasten</string>
 	<key>Preferences</key>
 	<string>Einstellungen</string>
 	<key>Preparing to copy…</key>
@@ -2222,6 +2288,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Bereich aufzeichnen</string>
 	<key>Record Fullscreen</key>
 	<string>Vollbild aufzeichnen</string>
+	<key>Record When Keys Are Pressed</key>
+	<string>Aufzeichnen, wann Tasten gedrückt werden</string>
 	<key>Record Window</key>
 	<string>Fenster aufzeichnen</string>
 	<key>Record an area, a window, or the whole screen</key>
@@ -2232,6 +2300,12 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Mikrofon aufzeichnen</string>
 	<key>Record system audio</key>
 	<string>Systemton aufzeichnen</string>
+	<key>Record when keys are pressed</key>
+	<string>Aufzeichnen, wann Tasten gedrückt werden</string>
+	<key>Record with “Track where I type” on (Settings → Recording) to zoom in on typing.</key>
+	<string>Nimm mit „Verfolgen, wo ich tippe“ auf (Einstellungen → Aufzeichnung), um aufs Tippen zu zoomen.</string>
+	<key>Record with “Track where I type” on to zoom in on typing</key>
+	<string>Nimm mit „Verfolgen, wo ich tippe“ auf, um aufs Tippen zu zoomen</string>
 	<key>Recorded at %@. Drag its dot on the timeline to retime it; ripples and Auto Zoom follow.</key>
 	<string>Aufgezeichnet bei %@. Ziehe seinen Punkt in der Zeitleiste, um den Zeitpunkt zu ändern; Wellen und Auto-Zoom folgen.</string>
 	<key>Recording</key>
@@ -2310,6 +2384,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Hinzufügen des Bilds wiederholen</string>
 	<key>Redo Add Intro Card</key>
 	<string>Hinzufügen der Intro-Karte wiederholen</string>
+	<key>Redo Add Loupe</key>
+	<string>Lupe hinzufügen wiederholen</string>
 	<key>Redo Add Marker</key>
 	<string>Setzen des Markers wiederholen</string>
 	<key>Redo Add Music</key>
@@ -2322,6 +2398,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Hinzufügen des Fokus wiederholen</string>
 	<key>Redo Add Text</key>
 	<string>Hinzufügen des Texts wiederholen</string>
+	<key>Redo Add Typing Zooms</key>
+	<string>Zooms aufs Tippen hinzufügen wiederholen</string>
 	<key>Redo Add Zoom</key>
 	<string>Hinzufügen des Zooms wiederholen</string>
 	<key>Redo Add Zooms</key>
@@ -2362,6 +2440,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Untertitelübersetzung wiederholen</string>
 	<key>Redo Captions</key>
 	<string>Änderung der Untertitel wiederholen</string>
+	<key>Redo Change Loupe</key>
+	<string>Lupe ändern wiederholen</string>
 	<key>Redo Click Sounds</key>
 	<string>Änderung der Klickgeräusche wiederholen</string>
 	<key>Redo Clicks</key>
@@ -2420,6 +2500,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Stimmverbesserung wiederholen</string>
 	<key>Redo Fade</key>
 	<string>Ein- und Ausblenden wiederholen</string>
+	<key>Redo Fit Zooms Around Camera</key>
+	<string>Zooms an Kamera anpassen wiederholen</string>
 	<key>Redo Hide Shortcut</key>
 	<string>Ausblenden des Kurzbefehls wiederholen</string>
 	<key>Redo Highlight Style</key>
@@ -2512,6 +2594,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Tempoänderung wiederholen</string>
 	<key>Redo Speed Up Idle</key>
 	<string>Beschleunigen des Leerlaufs wiederholen</string>
+	<key>Redo Speed Up Typing</key>
+	<string>Tippen beschleunigen wiederholen</string>
 	<key>Redo Split</key>
 	<string>Teilen wiederholen</string>
 	<key>Redo Split at Markers</key>
@@ -2694,6 +2778,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Prüfe die Telefonnummer vor dem Öffnen.</string>
 	<key>Right</key>
 	<string>Rechts</string>
+	<key>Ring</key>
+	<string>Ring</string>
 	<key>Ripple</key>
 	<string>Welle</string>
 	<key>Rose Smoke</key>
@@ -2770,6 +2856,10 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Spart %@ – nur Stille, in der auf dem Bildschirm nichts passiert</string>
 	<key>Saves %@ — silences where the pointer rests and nothing is clicked or pressed (this older recording can't see typing)</key>
 	<string>Spart %@ – Stille, in der der Zeiger ruht und nichts geklickt oder gedrückt wird (diese ältere Aufnahme erkennt kein Tippen)</string>
+	<key>Saves only the moment each key goes down, so the editor can speed up typing. Never which keys, and nothing while a password field has focus.</key>
+	<string>Sichert nur den Moment jedes Tastendrucks, damit der Editor Tippen beschleunigen kann. Nie welche Tasten, und nichts, solange ein Passwortfeld aktiv ist.</string>
+	<key>Saves only where the text cursor is, so the editor can zoom in on typing. No text and no keys are recorded, and nothing while a password field has focus.</key>
+	<string>Sichert nur, wo der Textcursor ist, damit der Editor aufs Tippen zoomen kann. Kein Text und keine Tasten werden aufgezeichnet, und nichts, solange ein Passwortfeld aktiv ist.</string>
 	<key>Saves the background, frame, cursor, zoom, captions, keys, and camera bubble. Apply it to any video from the Presets menu.</key>
 	<string>Sichert Hintergrund, Rahmen, Zeiger, Zoom, Untertitel, Tasten und Kamerablase. Wende sie über das Menü „Voreinstellungen“ auf jedes Video an.</string>
 	<key>Save…</key>
@@ -2892,6 +2982,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Teilen</string>
 	<key>Share — Mail, Messages, AirDrop…</key>
 	<string>Teilen – Mail, Nachrichten, AirDrop …</string>
+	<key>Shift the Zooms</key>
+	<string>Zooms verschieben</string>
 	<key>Shortcut</key>
 	<string>Kurzbefehl</string>
 	<key>Shortcut %@</key>
@@ -3024,6 +3116,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Leertaste</string>
 	<key>Space Gray</key>
 	<string>Space Grau</string>
+	<key>Sped up by Speed up typing — pick another speed here, or press it again.</key>
+	<string>Durch „Tippen beschleunigen“ schneller – wähle hier ein anderes Tempo oder drücke es erneut.</string>
 	<key>Speech recognition is turned off for LF Studios in System Settings → Privacy &amp; Security → Speech Recognition. Turn it on, then try again.</key>
 	<string>Die Spracherkennung ist für LF Studios unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherheit“ → „Spracherkennung“ deaktiviert. Aktiviere sie und versuche es erneut.</string>
 	<key>Speech recognition isn't available on this Mac right now. Try again in a moment.</key>
@@ -3038,6 +3132,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>„Leerlauf beschleunigen“ funktioniert mit LF-Studios-Aufnahmen – es beobachtet den Zeiger</string>
 	<key>Speed of this part</key>
 	<string>Tempo dieses Abschnitts</string>
+	<key>Speed up typing to</key>
+	<string>Tippen beschleunigen auf</string>
 	<key>Split</key>
 	<string>Teilen</string>
 	<key>Split at Markers</key>
@@ -3198,6 +3294,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Das Fenster wurde geschlossen, bevor die Aufzeichnung beginnen konnte.</string>
 	<key>The camera couldn't start.</key>
 	<string>Die Kamera konnte nicht gestartet werden.</string>
+	<key>The camera follows the text cursor as you type.</key>
+	<string>Die Kamera folgt beim Tippen dem Textcursor.</string>
 	<key>The camera keeps your cursor in view and glides after it.</key>
 	<string>Die Kamera behält deinen Zeiger im Bild und gleitet ihm nach.</string>
 	<key>The camera stopped. The recording continues without it.</key>
@@ -3212,6 +3310,10 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Die Übergabe ist fertig</string>
 	<key>The highest quality, and the only one that can keep transparency</key>
 	<string>Die höchste Qualität und die einzige, die Transparenz behalten kann</string>
+	<key>The loupe stays over the text cursor.</key>
+	<string>Die Lupe bleibt über dem Textcursor.</string>
+	<key>The loupe stays over your cursor.</key>
+	<string>Die Lupe bleibt über deinem Zeiger.</string>
 	<key>The markers are already at clip edges</key>
 	<string>Die Marker liegen schon an Clipgrenzen</string>
 	<key>The menu bar icon is LF Studios' main entry point. While it is hidden, open LF Studios again from Finder, Launchpad, or Spotlight to bring these Preferences back.</key>
@@ -3254,6 +3356,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Die eigene Aufnahme des Videos kann nicht entfernt werden</string>
 	<key>The voice track is empty, so there's nothing to clean up. Turn off Enhance voice to keep the original sound.</key>
 	<string>Die Sprachspur ist leer, es gibt also nichts zu bereinigen. Deaktiviere „Stimme verbessern“, um den Originalton zu behalten.</string>
+	<key>The whole frame zooms in.</key>
+	<string>Das ganze Bild zoomt hinein.</string>
 	<key>The window you're recording closed. Stop when you're ready — the recording keeps going.</key>
 	<string>Das aufgezeichnete Fenster wurde geschlossen. Stoppe, wenn du so weit bist – die Aufzeichnung läuft weiter.</string>
 	<key>There are no captions to translate yet. Transcribe or add captions first.</key>
@@ -3284,6 +3388,10 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Diese App</string>
 	<key>This list</key>
 	<string>Diese Liste</string>
+	<key>This recording didn't save key timing or screen changes, so typing can't be found</key>
+	<string>Diese Aufnahme hat weder Tastenzeitpunkte noch Bildschirmänderungen gesichert, daher lässt sich kein Tippen finden</string>
+	<key>This recording didn't save key timing, so typing is estimated from screen changes while the pointer holds still. Check the speed blocks it makes.</key>
+	<string>Diese Aufnahme hat keine Tastenzeitpunkte gesichert, daher wird Tippen anhand von Bildschirmänderungen bei ruhendem Zeiger geschätzt. Prüfe die erzeugten Tempoblöcke.</string>
 	<key>This recording has newer edits than “%@”</key>
 	<string>Diese Aufnahme hat neuere Änderungen als „%@“</string>
 	<key>This recording has no sound</key>
@@ -3296,6 +3404,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Diese Aufnahme hat keine Stimme, unter der die Musik leiser werden könnte</string>
 	<key>This recording only has the arrow</key>
 	<string>Diese Aufnahme enthält nur den Pfeil</string>
+	<key>This video has no camera bubble</key>
+	<string>Dieses Video hat keine Kamerablase</string>
 	<key>This video is copy-protected and can't be exported.</key>
 	<string>Dieses Video ist kopiergeschützt und kann nicht exportiert werden.</string>
 	<key>This video isn't there anymore</key>
@@ -3320,6 +3430,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Zeitleistenmaßstab (Zusammenziehen oder ⌘-Scrollen)</string>
 	<key>Timing</key>
 	<string>Timing</string>
+	<key>Timing only: never which keys</key>
+	<string>Nur Zeitpunkte: nie welche Tasten</string>
 	<key>Tips</key>
 	<string>Tipps</string>
 	<key>Title</key>
@@ -3342,6 +3454,14 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Oben links</string>
 	<key>Top right</key>
 	<string>Oben rechts</string>
+	<key>Touch dot</key>
+	<string>Touch-Punkt</string>
+	<key>Track Where I Type</key>
+	<string>Verfolgen, wo ich tippe</string>
+	<key>Track where I type</key>
+	<string>Verfolgen, wo ich tippe</string>
+	<key>Track where I type saves only where the text cursor is on screen, so the editor can zoom in on typing. Record when keys are pressed saves only the moment each key goes down, so the editor can speed up typing. No text is recorded and no keys are named. While a password field has focus, neither saves anything. Both are off until you turn them on; macOS asks for Accessibility access.</key>
+	<string>„Verfolgen, wo ich tippe“ sichert nur, wo der Textcursor auf dem Bildschirm ist, damit der Editor aufs Tippen zoomen kann. „Aufzeichnen, wann Tasten gedrückt werden“ sichert nur den Moment jedes Tastendrucks, damit der Editor Tippen beschleunigen kann. Es wird kein Text aufgezeichnet und keine Taste benannt. Solange ein Passwortfeld aktiv ist, sichern beide nichts. Beide sind aus, bis du sie einschaltest; macOS fragt nach dem Zugriff auf „Bedienungshilfen“.</string>
 	<key>Transcribe</key>
 	<string>Transkribieren</string>
 	<key>Transcribe Again</key>
@@ -3390,6 +3510,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Auto-Zoom bei Klicks einschalten</string>
 	<key>Turn around</key>
 	<string>Umdrehen</string>
+	<key>Turn off vertical reframing to fit zooms around the camera</key>
+	<string>Schalte die vertikale Bildanpassung aus, um Zooms an die Kamera anzupassen</string>
 	<key>Turn on Auto-zoom on clicks (Zoom) to use this</key>
 	<string>Schalte dafür Auto-Zoom bei Klicks ein (Zoom)</string>
 	<key>Turn on Auto-zoom on clicks — keeps zooms you placed by hand</key>
@@ -3400,10 +3522,16 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Schalte vor der Aufzeichnung das Mikrofon oder den Systemton ein, um Ton aufzuzeichnen.</string>
 	<key>Turn the video's sound back on</key>
 	<string>Ton des Videos wieder einschalten</string>
+	<key>Type</key>
+	<string>Art</string>
 	<key>Type here…</key>
 	<string>Hier tippen …</string>
 	<key>Type in a text annotation</key>
 	<string>In einer Textbeschriftung tippen</string>
+	<key>Typing</key>
+	<string>Tippen</string>
+	<key>Typing now plays at %@</key>
+	<string>Tippen läuft jetzt mit %@</string>
 	<key>URL</key>
 	<string>URL</string>
 	<key>Under the voice</key>
@@ -3436,6 +3564,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Hinzufügen des Bilds widerrufen</string>
 	<key>Undo Add Intro Card</key>
 	<string>Hinzufügen der Intro-Karte widerrufen</string>
+	<key>Undo Add Loupe</key>
+	<string>Lupe hinzufügen widerrufen</string>
 	<key>Undo Add Marker</key>
 	<string>Setzen des Markers widerrufen</string>
 	<key>Undo Add Music</key>
@@ -3448,6 +3578,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Hinzufügen des Fokus widerrufen</string>
 	<key>Undo Add Text</key>
 	<string>Hinzufügen des Texts widerrufen</string>
+	<key>Undo Add Typing Zooms</key>
+	<string>Zooms aufs Tippen hinzufügen widerrufen</string>
 	<key>Undo Add Zoom</key>
 	<string>Hinzufügen des Zooms widerrufen</string>
 	<key>Undo Add Zooms</key>
@@ -3488,6 +3620,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Untertitelübersetzung widerrufen</string>
 	<key>Undo Captions</key>
 	<string>Änderung der Untertitel widerrufen</string>
+	<key>Undo Change Loupe</key>
+	<string>Lupe ändern widerrufen</string>
 	<key>Undo Click Sounds</key>
 	<string>Änderung der Klickgeräusche widerrufen</string>
 	<key>Undo Clicks</key>
@@ -3546,6 +3680,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Stimmverbesserung widerrufen</string>
 	<key>Undo Fade</key>
 	<string>Ein- und Ausblenden widerrufen</string>
+	<key>Undo Fit Zooms Around Camera</key>
+	<string>Zooms an Kamera anpassen widerrufen</string>
 	<key>Undo Hide Shortcut</key>
 	<string>Ausblenden des Kurzbefehls widerrufen</string>
 	<key>Undo Highlight Style</key>
@@ -3638,6 +3774,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Tempoänderung widerrufen</string>
 	<key>Undo Speed Up Idle</key>
 	<string>Beschleunigen des Leerlaufs widerrufen</string>
+	<key>Undo Speed Up Typing</key>
+	<string>Tippen beschleunigen widerrufen</string>
 	<key>Undo Split</key>
 	<string>Teilen widerrufen</string>
 	<key>Undo Split at Markers</key>
@@ -3672,6 +3810,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Einheitliche Zoomstufe widerrufen</string>
 	<key>Undo Zooms</key>
 	<string>Änderung der Zooms widerrufen</string>
+	<key>Undo camera fit</key>
+	<string>Kamera-Anpassung zurücknehmen</string>
 	<key>Unmute Clip</key>
 	<string>Stummschaltung des Clips aufheben</string>
 	<key>Unmute preview</key>
@@ -3698,6 +3838,10 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Diese Stufe für alle Zooms verwenden</string>
 	<key>Used for screenshots and recordings. Tokens: %y year, %m month, %d day, %H hour, %M minute, %S second. Leave empty to restore the default.</key>
 	<string>Gilt für Bildschirmfotos und Aufnahmen. Platzhalter: %y Jahr, %m Monat, %d Tag, %H Stunde, %M Minute, %S Sekunde. Leer lassen, um die Standardvorlage wiederherzustellen.</string>
+	<key>Uses the key timing saved with this recording (never which keys). Shortcut keycaps stay on screen long enough to read.</key>
+	<string>Nutzt die mit dieser Aufnahme gesicherten Tastenzeitpunkte (nie welche Tasten). Tastenkürzel bleiben lange genug sichtbar, um sie zu lesen.</string>
+	<key>Uses where the text cursor moved while you typed.</key>
+	<string>Nutzt, wohin sich der Textcursor beim Tippen bewegt hat.</string>
 	<key>Utility</key>
 	<string>Extras</string>
 	<key>Version</key>
@@ -3750,6 +3894,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Was auf deinem Mac zu hören war</string>
 	<key>What's New</key>
 	<string>Neuigkeiten</string>
+	<key>While this zoom plays, the camera bubble moves to: %@</key>
+	<string>Während dieser Zoom läuft, wandert die Kamerablase nach: %@</string>
 	<key>White</key>
 	<string>Weiß</string>
 	<key>Whole video</key>
@@ -3854,6 +4000,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Zooms &amp; Beschriftungen</string>
 	<key>Zooms and annotations can be duplicated</key>
 	<string>Nur Zooms und Beschriftungen lassen sich duplizieren</string>
+	<key>Zooms that follow the text cursor while you type</key>
+	<string>Zooms, die beim Tippen dem Textcursor folgen</string>
 	<key>a table</key>
 	<string>eine Tabelle</string>
 	<key>a transparent background</key>
@@ -3884,6 +4032,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Intro-Karte</string>
 	<key>loops</key>
 	<string>wiederholt sich</string>
+	<key>macOS classic</key>
+	<string>macOS klassisch</string>
 	<key>macOS closed LF Studios last time because it ran out of memory</key>
 	<string>macOS hat LF Studios beim letzten Mal beendet, weil der Arbeitsspeicher nicht mehr gereicht hat</string>
 	<key>macOS downloads %@ once, then translates right here — nothing is uploaded.</key>
@@ -3958,6 +4108,8 @@ Du kannst Apples Kurzbefehle jederzeit unter „Systemeinstellungen“ → „Ta
 	<string>· zum Ausrichten ziehen</string>
 	<key>· follows cursor</key>
 	<string>· folgt dem Zeiger</string>
+	<key>· follows typing</key>
+	<string>· folgt dem Tippen</string>
 	<key>“%@” (was in %@)</key>
 	<string>„%@“ (war in %@)</string>
 	<key>“%@” can't be found. Put it back where it was, or remove it from this video (Style → Recordings), then export again.</key>

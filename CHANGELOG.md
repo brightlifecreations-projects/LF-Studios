@@ -1,5 +1,19 @@
 # Changelog
 
+## [Unreleased]
+
+Everything new starts off, and is turned on with its own button or switch.
+
+### Added
+- **Zoom follows typing.** Settings → Recording (and the recording bar's options menu) has **Track where I type**, off to start with. While recording, it saves only where the text cursor is on screen, a few times a second, and never the text or the keys. In the editor, **Add typing zooms** in the Zoom panel adds zooms that follow the text cursor through each stretch of typing, one ⌘Z step. Pressing it again replaces only those zooms. Each one can be edited like any zoom: Framing has Follow cursor, Follow typing, and Aim by hand.
+- **Loupe zoom.** Each zoom has **Type: Full / Loupe**, and the Zoom panel has **Add Loupe**. A loupe is a round or rounded magnifier over one spot while the rest of the frame stays in view. Its size, magnification, shape, border and border color, shadow, and how long it takes to open and close are all adjustable. New loupes take the look of the last one you changed. Style presets save the look, and applying a preset restyles the loupes (one ⌘Z step).
+- **Fit zooms around camera.** Two buttons in the Zoom panel check every zoom the camera bubble would cover. **Shift the Zooms** moves each one's framing clear of the bubble, moving a loupe aside or zooming a little deeper where the frame's edge is in the way. **Move the Camera Instead** slides the bubble to a free corner while that zoom plays. It says what changed ("Adjusted 4 zooms"), and it's one ⌘Z step.
+- **Cursor styles.** Cursor ▸ Appearance ▸ Style: macOS classic (the recording's own pointer, as before), White, Outlined, Touch dot, Ring, or Custom image…. Each drawn style has its own arrow, text (I-beam), and hand, all drawn in LF Studios. A custom image is a PNG you click to set where it points; it's used for every pointer shape. Styles are saved in presets and project files, and "Include media" packs a custom image into the project.
+- **Speed up typing.** Settings → Recording (and the recording bar's options menu) has **Record when keys are pressed**, off to start with. It saves only the moment each key goes down, never which key. In the editor, Cursor ▸ Typing speeds every typing stretch up to 2×, 3×, 4×, 6×, or 8× as speed blocks you can change, one ⌘Z step. Pressing it again with another speed changes them. Shortcut keycaps stay on screen long enough to read. For older recordings without key timing, typing is estimated from screen changes while the pointer holds still, and LF Studios says it's an estimate.
+
+### Privacy
+- While a password field has focus (or macOS has secure keyboard entry on), neither typing option records anything: no text cursor positions and no key-press times. A key pressed just before the field was noticed is dropped too. Recording resumes when focus leaves the field.
+
 ## [1.3.0] - 2026-10-27
 
 Everything new starts off, and is turned on with its own button or switch.

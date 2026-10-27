@@ -482,6 +482,70 @@
 			<string>%lld zooms</string>
 		</dict>
 	</dict>
+	<key>%lld zooms can't move far enough — try Move the Camera Instead.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>one</key>
+			<string>%lld zoom ne peut pas être assez décalé — essayez « Déplacer plutôt la caméra ».</string>
+			<key>other</key>
+			<string>%lld zooms ne peuvent pas être assez décalés — essayez « Déplacer plutôt la caméra ».</string>
+		</dict>
+	</dict>
+	<key>%lld zooms have no free corner for the camera.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>one</key>
+			<string>%lld zoom n’a aucun coin libre pour la caméra.</string>
+			<key>other</key>
+			<string>%lld zooms n’ont aucun coin libre pour la caméra.</string>
+		</dict>
+	</dict>
+	<key>Added %lld typing zooms — ⌘Z to undo</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>one</key>
+			<string>%lld zoom sur la saisie ajouté — ⌘Z pour annuler</string>
+			<key>other</key>
+			<string>%lld zooms sur la saisie ajoutés — ⌘Z pour annuler</string>
+		</dict>
+	</dict>
+	<key>Adjusted %lld zooms — ⌘Z to undo.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>one</key>
+			<string>%lld zoom ajusté — ⌘Z pour annuler.</string>
+			<key>other</key>
+			<string>%lld zooms ajustés — ⌘Z pour annuler.</string>
+		</dict>
+	</dict>
 	<key>Auto zoom — %lld zooms</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -1024,6 +1088,22 @@
 			<string>%lld temps mort accéléré — %@ gagnées · vérifiez les passages de saisie</string>
 			<key>other</key>
 			<string>%lld temps morts accélérés — %@ gagnées · vérifiez les passages de saisie</string>
+		</dict>
+	</dict>
+	<key>Sped up %lld typing stretches to %@ — %@ shorter</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>one</key>
+			<string>%lld passage de saisie accéléré à %@ — %@ de moins</string>
+			<key>other</key>
+			<string>%lld passages de saisie accélérés à %@ — %@ de moins</string>
 		</dict>
 	</dict>
 	<key>Split at %lld markers</key>
