@@ -276,6 +276,9 @@ final class VideoEditorModel: ObservableObject {
     }
     /// Crop mode: the preview shows the whole recording with a crop frame.
     @Published var isCropping = false
+    /// The phone overlay over a vertical preview (nil: off). The preview's
+    /// alone: never saved, never exported (VideoPhoneOverlay.swift).
+    @Published var phoneOverlay: VideoPhoneLayout?
     var cropBeforeEditing: VideoCropRect?
     var projectBeforeCrop: VideoDemoProject?
     var undoDepthBeforeCrop = 0
