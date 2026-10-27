@@ -30,7 +30,8 @@ final class VideoEditorSnapshotTests: XCTestCase {
     }
 
     private func demoModel() async throws -> VideoEditorModel {
-        let directory = FileManager.default.temporaryDirectory.appendingPathComponent("lfstudios-snap", isDirectory: true)
+        // One folder per test process: tests of this class can run at once.
+        let directory = FileManager.default.temporaryDirectory.appendingPathComponent("lfstudios-snap-\(ProcessInfo.processInfo.processIdentifier)", isDirectory: true)
         try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
         let url = directory.appendingPathComponent("snap.mp4")
         if !FileManager.default.fileExists(atPath: url.path) {

@@ -70,6 +70,9 @@ final class HistoryManagerTests: XCTestCase {
         manager.replaceImage(of: item, with: Self.makeSolidImage(color: .systemGreen))
 
         let originalPath = HistoryManager.originalImagePath(for: item)
+        // While the capture's own write is still queued, the original is
+        // kept behind it, in the background.
+        try await waitForFile(atPath: originalPath, timeout: 10)
         XCTAssertEqual(try Data(contentsOf: URL(fileURLWithPath: originalPath)), captureBytes, "the first capture is kept, not an intermediate edit")
         XCTAssertEqual(changes, 2, "an open history panel refreshes")
         XCTAssertEqual(manager.items.count, 1)
