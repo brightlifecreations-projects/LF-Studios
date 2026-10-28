@@ -695,8 +695,142 @@ enum GuideContent {
             ),
         ]
     }
-    static func textFeatures() -> [GuideEntry] { [] } // STUB
-    static func historyFeatures() -> [GuideEntry] { [] } // STUB
+    // MARK: Copy text & QR codes
+
+    static func textFeatures() -> [GuideEntry] {
+        [
+            GuideEntry(
+                id: "text-capture", symbol: "text.viewfinder", title: L("Capture Text"),
+                summary: L("Copy any text you can see on screen, even in pictures, videos, and apps that don't let you select it."),
+                location: L("The LF Studios menu in the menu bar ▸ Capture Text."),
+                steps: [
+                    L("Choose Capture Text, or press its shortcut."),
+                    L("Drag over the text."),
+                    L("Paste it anywhere with ⌘V."),
+                ],
+                keys: [.global(.captureText)],
+                tips: [
+                    L("Columns, tables, and right-to-left languages come out in reading order."),
+                    L("The picture is saved in History too, so you can search for its text later."),
+                ],
+                related: ["text-window", "text-settings"]
+            ),
+            GuideEntry(
+                id: "text-window", symbol: "doc.text.magnifyingglass", title: L("Recognized text, links & tables"),
+                summary: L("When the text has links, email addresses, or a table, LF Studios offers more ways to use it."),
+                location: L("Click the notice that appears after Capture Text (“click for options”)."),
+                points: [
+                    L("Open or copy each link and email address."),
+                    L("Copy as Table puts the table on the clipboard, ready to paste into a spreadsheet."),
+                    L("Copy Text copies all of it again."),
+                ],
+                keys: [.fixed("Esc", L("Close"))]
+            ),
+            GuideEntry(
+                id: "text-thumbnail", symbol: "text.below.photo", title: L("Copy text from a screenshot"),
+                summary: L("Copy the text in a screenshot you just took."),
+                location: L("On the preview after capture, click Text, or right-click and choose Copy Text."),
+                tips: [L("The preview shows only when Show the preview after capture is on in Settings ▸ General.")],
+                showMe: .settings(.general)
+            ),
+            GuideEntry(
+                id: "text-qr", symbol: "qrcode.viewfinder", title: L("Scan QR Code"),
+                summary: L("Read a QR code or barcode on your screen: open its link, write the email, or see the Wi-Fi password."),
+                location: L("The LF Studios menu in the menu bar ▸ Scan QR Code."),
+                steps: [
+                    L("Choose Scan QR Code."),
+                    L("Drag over the code."),
+                    L("Click Copy, or the button for what's in it, like Open Link."),
+                ],
+                tips: [L("Reads QR codes and most barcodes, like the ones on products and tickets.")]
+            ),
+            GuideEntry(
+                id: "text-settings", symbol: "character.magnify", title: L("Text recognition settings"),
+                summary: L("Choose between accurate and fast, and which languages to read."),
+                location: L("Settings ▸ Screenshots ▸ Text Recognition."),
+                points: [
+                    L("Accuracy: Accurate reads more carefully; Fast is quicker but knows fewer languages."),
+                    L("Languages: Automatic finds the language itself, or pick the ones you use."),
+                ],
+                tips: [L("These settings are used by Capture Text, Copy Text, and History search.")],
+                showMe: .settings(.screenshots)
+            ),
+        ]
+    }
+
+    // MARK: History & pins
+
+    static func historyFeatures() -> [GuideEntry] {
+        [
+            GuideEntry(
+                id: "history-panel", symbol: "clock.arrow.circlepath", title: L("History"),
+                summary: L("Every screenshot you take, in one place, grouped by day."),
+                location: L("The LF Studios menu in the menu bar ▸ Open History. Screenshots also show in Home ▸ Screenshots."),
+                points: [
+                    L("Click Copy or Edit on a screenshot, or double-click it to edit it."),
+                    L("Right-click for Save As…, Pin to Screen, and Delete."),
+                ],
+                keys: [.fixed("↩", L("Edit the selected screenshot")), .fixed("⌘C", L("Copy")), .fixed("⌫", L("Delete")), .fixed("⌘Z", L("Undo a delete"))],
+                showMe: .history
+            ),
+            GuideEntry(
+                id: "history-search", symbol: "magnifyingglass", title: L("Search screenshots by their text"),
+                summary: L("Find a screenshot by any word in it."),
+                location: L("The search box at the top of History, or the search box in Home."),
+                steps: [
+                    L("Open History and just start typing: the search box fills in."),
+                    L("Screenshots with those words show up."),
+                ],
+                keys: [.fixed("⌘F", L("Search")), .fixed("Esc", L("Clear the search"))],
+                tips: [L("LF Studios reads the text in every screenshot in the background, on your Mac.")],
+                showMe: .history
+            ),
+            GuideEntry(
+                id: "history-manage", symbol: "checkmark.circle", title: L("Filter, select & delete"),
+                summary: L("Show one kind of capture, select several at once, and undo a delete."),
+                location: L("In History: the All Captures menu at the top, and the screenshots themselves."),
+                points: [
+                    L("All Captures: show only Area, Window, Fullscreen, Scrolling, or Text captures."),
+                    L("⌘-click or ⇧-click to select several; the arrow keys move the selection."),
+                    L("Deleted screenshots stay in LF Studios' trash for 7 days, and ⌘Z brings them back."),
+                    L("Clear All deletes every capture."),
+                ],
+                keys: [.fixed(L("⇧/⌘-click"), L("Select several items")), .fixed("⌫", L("Delete")), .fixed("⌘Z", L("Undo a delete"))],
+                showMe: .history
+            ),
+            GuideEntry(
+                id: "history-drag", symbol: "hand.draw", title: L("Drag screenshots into other apps"),
+                summary: L("Drop a screenshot straight into an email, a chat, a document, or Finder."),
+                location: L("In History, or from the preview after capture."),
+                steps: [L("Drag a screenshot out of History and drop it where you want it.")],
+                tips: [L("Select several to drag them all at once.")],
+                showMe: .history
+            ),
+            GuideEntry(
+                id: "history-pin", symbol: "pin", title: L("Pin to Screen"),
+                summary: L("Float a screenshot above all your windows, as a reference while you work."),
+                location: L("History ▸ right-click a screenshot ▸ Pin to Screen, or Pin on the preview after capture."),
+                steps: [
+                    L("Pin a screenshot."),
+                    L("Drag it to move it; drag an edge to resize it."),
+                    L("Right-click it for Copy, Save As…, Edit, Close Pin, or Close All Pins."),
+                ],
+                keys: [.fixed("Esc", L("Close the pin")), .fixed("⌘C", L("Copy"))],
+                showMe: .history
+            ),
+            GuideEntry(
+                id: "history-keep", symbol: "archivebox", title: L("Keep captures & clean up"),
+                summary: L("Choose how long History keeps screenshots, and free up space."),
+                location: L("Settings ▸ Screenshots ▸ History."),
+                points: [
+                    L("Keep captures: Forever, 7, 30, or 90 days, or the last 100, 500, or 1,000."),
+                    L("Clean Up… empties History's trash and removes leftover files."),
+                ],
+                tips: [L("If a new limit would delete screenshots, LF Studios asks first.")],
+                showMe: .settings(.screenshots)
+            ),
+        ]
+    }
     static func recordingFeatures() -> [GuideEntry] { [] } // STUB
     static func videoEditorFeatures() -> [GuideEntry] { [] } // STUB
     static func zoomFeatures() -> [GuideEntry] { [] } // STUB
