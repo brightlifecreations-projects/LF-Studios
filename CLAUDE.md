@@ -69,8 +69,8 @@ Updates (Sparkle):
   same release also goes on this repo, for the record.
 - The update key: the public half is `LFSTUDIOS_SPARKLE_PUBLIC_ED_KEY` in
   .env.local (not committed; build-app.sh puts it in Info.plist); the
-  private half is in this Mac's login Keychain ("Private key for signing
-  Sparkle updates", account ed25519) and never goes in the repo.
+  private half is in this Mac's login Keychain (service
+  "https://sparkle-project.org", account ed25519) and never goes in the repo.
   publish-release.sh refuses to publish if either is missing or they don't
   match.
 - Restore on another Mac: import the backup the owner keeps in their
