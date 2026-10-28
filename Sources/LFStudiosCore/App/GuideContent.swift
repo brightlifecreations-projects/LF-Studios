@@ -2147,13 +2147,191 @@ enum GuideContent {
     // MARK: - Privacy
 
     static func privacy() -> [GuideEntry] {
-        []
+        [
+            GuideEntry(
+                id: "privacy-on-mac", symbol: "laptopcomputer", title: L("Everything stays on your Mac"),
+                summary: L("Your screenshots, recordings, and edits are yours. LF Studios has no account, and sends nothing about you or your work anywhere."),
+                points: [
+                    L("Text recognition, captions, Whisper, Find private info, face tracking, background removal, and voice cleanup all run on your Mac."),
+                    L("Your recordings are never uploaded."),
+                ]
+            ),
+            GuideEntry(
+                id: "privacy-internet", symbol: "network", title: L("When LF Studios uses the internet"),
+                summary: L("Only for these, and never to send your work:"),
+                points: [
+                    L("Downloading a Whisper model, and only when you click Download."),
+                    L("Checking for updates: once a day, or when you choose Check for Updates…. You can turn the daily check off in Settings ▸ General."),
+                    L("macOS itself may download a language the first time you transcribe or translate captions in it."),
+                    L("Links you click, like Report Issue or a link in a QR code, open in your web browser."),
+                ],
+                showMe: .settings(.general)
+            ),
+            GuideEntry(
+                id: "privacy-typing", symbol: "keyboard", title: L("Typing options: what they save"),
+                summary: L("Three recording options look at your keyboard. None of them ever saves what you type."),
+                points: [
+                    L("Track where I type: only where the text cursor is on screen, a few times a second. Never the text, never the keys."),
+                    L("Record when keys are pressed: only the moment each key goes down. Never which key."),
+                    L("Show keyboard shortcuts: only shortcuts with ⌘ or ⌃ (like ⌘C), and keys like Esc. Never ordinary typing."),
+                    L("While a password field is in use, the typing options save nothing at all, not even the moments just before."),
+                ],
+                tips: [L("All three are off until you turn them on, and they need Accessibility.")],
+                showMe: .settings(.recording)
+            ),
+            GuideEntry(
+                id: "privacy-saved", symbol: "doc.text", title: L("What a recording keeps"),
+                summary: L("Next to the video, LF Studios keeps the details the editor needs, on your Mac."),
+                points: [
+                    L("The video, in your save folder, and the camera video, if the camera was on."),
+                    L("Where the pointer went, and where you clicked."),
+                    L("Only if you turned them on: shortcuts, typing positions and times, and your speaker notes."),
+                    L("Markers you added."),
+                ]
+            ),
+            GuideEntry(
+                id: "privacy-never-recorded", symbol: "eye.slash", title: L("Never in your recordings"),
+                summary: L("LF Studios' own floating windows stay out of your screen recordings and screenshots."),
+                points: [
+                    L("The recording bar, the camera bubble preview, Speaker notes, the countdown, and notices."),
+                    L("Speaker notes are hidden from screen sharing too."),
+                ]
+            ),
+            GuideEntry(
+                id: "privacy-delete", symbol: "trash", title: L("Deleting your things"),
+                summary: L("Remove anything, any time."),
+                points: [
+                    L("Right-click a project in Home ▸ Delete: it goes to the Trash."),
+                    L("History ▸ Clear All deletes every screenshot (it can be undone for 7 days)."),
+                    L("Settings ▸ Recording ▸ Storage ▸ Clean Up… removes leftover video data."),
+                    L("Settings ▸ General ▸ Whisper Models deletes downloaded models."),
+                ]
+            ),
+        ]
     }
 
     // MARK: - Troubleshooting
 
     static func troubleshooting() -> [GuideEntry] {
-        []
+        [
+            GuideEntry(
+                id: "trouble-black", symbol: "rectangle.slash", title: L("My recording is black, or shows only the wallpaper"),
+                summary: L("LF Studios doesn't have Screen Recording permission yet."),
+                steps: [
+                    L("Click Open System Settings below."),
+                    L("In Screen & System Audio Recording, make sure LF Studios is on. If it already is, turn it off and on again."),
+                    L("Quit LF Studios and open it again."),
+                    L("Check the LF Studios menu: Health should say Everything is ready."),
+                ],
+                showMe: .systemSettings(.screenRecording)
+            ),
+            GuideEntry(
+                id: "trouble-no-sound", symbol: "speaker.slash", title: L("No sound was recorded"),
+                summary: L("The microphone was off, muted, or not allowed."),
+                steps: [
+                    L("Before recording, turn on Microphone in the recording bar and check that its level meter moves when you speak."),
+                    L("Pick the right microphone in the menu above the bar."),
+                    L("Make sure LF Studios is allowed under Microphone in System Settings."),
+                    L("For your Mac's own sound, turn on System audio too."),
+                    L("In the editor, check that Mute video is off in the Audio panel, and that the preview isn't muted (press M)."),
+                ],
+                showMe: .systemSettings(.microphone),
+                related: ["rec-mic", "audio-levels"]
+            ),
+            GuideEntry(
+                id: "trouble-shortcuts", symbol: "keyboard.badge.exclamationmark", title: L("My shortcuts don't work"),
+                summary: L("A shortcut isn't set, or another app uses the same keys."),
+                steps: [
+                    L("Open Settings ▸ Shortcuts and check that the shortcut has keys. Recording shortcuts start unset."),
+                    L("Another app may use the same keys: choose different ones."),
+                    L("LF Studios must be running. Turn on Launch LF Studios at login so it always is."),
+                ],
+                showMe: .settings(.shortcuts),
+                related: ["trouble-apple-screenshot"]
+            ),
+            GuideEntry(
+                id: "trouble-apple-screenshot", symbol: "camera.badge.ellipsis", title: L("⇧⌘4 opens Apple's screenshot tool"),
+                summary: L("macOS has its own screenshot shortcuts with the same keys."),
+                steps: [
+                    L("Open the LF Studios menu and, under Health, click Fix next to Apple Shortcuts."),
+                    L("Or turn off Apple's screenshot shortcuts yourself: System Settings ▸ Keyboard ▸ Keyboard Shortcuts ▸ Screenshots."),
+                ],
+                tips: [L("Want Apple's back? Settings ▸ Shortcuts ▸ Restore Apple Shortcuts.")],
+                showMe: .systemSettings(.keyboard)
+            ),
+            GuideEntry(
+                id: "trouble-cant-open", symbol: "xmark.shield", title: L("macOS says LF Studios can't be opened"),
+                summary: L("macOS is careful with apps downloaded from the internet. This only happens the first time."),
+                steps: [
+                    L("Try to open LF Studios once, and close the message."),
+                    L("Open System Settings ▸ Privacy & Security, scroll down, and click Open Anyway next to LF Studios."),
+                    L("Still stuck, or does it say the app is damaged? Open Terminal and paste this line, then press Return: xattr -dr com.apple.quarantine \"/Applications/LF Studios.app\""),
+                ],
+                tips: [L("Updates installed from inside LF Studios never need this again.")]
+            ),
+            GuideEntry(
+                id: "trouble-updates", symbol: "arrow.triangle.2.circlepath", title: L("LF Studios doesn't find updates"),
+                summary: L("Updates need version 1.4.1 or later, and the internet."),
+                steps: [
+                    L("Choose LF Studios ▸ Check for Updates…."),
+                    L("Older than 1.4.1? Download the latest version once by hand from the LF Studios releases page. After that, it updates itself."),
+                    L("Check that your Mac is online."),
+                ],
+                showMe: .settings(.general),
+                related: ["app-updates"]
+            ),
+            GuideEntry(
+                id: "trouble-missing-media", symbol: "questionmark.folder", title: L("A camera video or a font is missing"),
+                summary: L("A file the project uses was moved, deleted, or is on another Mac."),
+                steps: [
+                    L("Camera video missing: in the Camera panel, click Locate… and find the file."),
+                    L("Font missing: install the font on this Mac, or add it with Add Font File… in the font menu."),
+                    L("Moving a project to another Mac? Save it with Include media, so everything comes along."),
+                ],
+                related: ["camera-import", "style-fonts", "project-save"]
+            ),
+            GuideEntry(
+                id: "trouble-export", symbol: "externaldrive.badge.exclamationmark", title: L("Export is slow, or the disk is full"),
+                summary: L("Big, sharp videos take longer and need more space."),
+                steps: [
+                    L("Keep editing: exports run in the background."),
+                    L("For a faster, smaller file, choose 1080p, 30 fps, and MP4."),
+                    L("Free up space: Settings ▸ Recording ▸ Storage ▸ Clean Up…, History's Clean Up…, and empty the Trash."),
+                ],
+                tips: [L("The export window warns you before a file won't fit.")],
+                showMe: .settings(.recording)
+            ),
+            GuideEntry(
+                id: "trouble-menu-icon", symbol: "menubar.rectangle", title: L("The menu bar icon is missing"),
+                summary: L("It's turned off, or the menu bar is too full and macOS hid it."),
+                steps: [
+                    L("Check Settings ▸ General ▸ Show menu bar icon."),
+                    L("Too many icons? Remove some, or set an Open Command Center shortcut in Settings ▸ Shortcuts."),
+                    L("Everything is in the Home window too."),
+                ],
+                showMe: .settings(.general)
+            ),
+            GuideEntry(
+                id: "trouble-transcribe", symbol: "waveform.slash", title: L("Transcribe doesn't work"),
+                summary: L("The recording has no voice, the language isn't ready, or a permission is off."),
+                steps: [
+                    L("Check that the recording has sound, and that the Language matches what you speak."),
+                    L("On macOS 15 and earlier: allow LF Studios under Speech Recognition, and turn on Dictation for that language in System Settings ▸ Keyboard."),
+                    L("Or try the Whisper engine instead."),
+                ],
+                showMe: .systemSettings(.speechRecognition),
+                related: ["captions-transcribe", "captions-whisper"]
+            ),
+            GuideEntry(
+                id: "trouble-slow-analysis", symbol: "hourglass", title: L("Find private info or face tracking takes a while"),
+                summary: L("They look through the whole video on your Mac, which takes longer for long or 4K videos."),
+                steps: [
+                    L("Keep editing: they carry on even when you close their panel."),
+                    L("Plug in your laptop: Macs work faster on power."),
+                ],
+                tips: [L("Each video is looked through only once: the second time is instant.")]
+            ),
+        ]
     }
 
     // MARK: - Keyboard shortcuts
