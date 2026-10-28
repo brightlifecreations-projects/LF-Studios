@@ -1076,8 +1076,283 @@ enum GuideContent {
             ),
         ]
     }
-    static func videoEditorFeatures() -> [GuideEntry] { [] } // STUB
-    static func zoomFeatures() -> [GuideEntry] { [] } // STUB
+    // MARK: Video editor
+
+    static func videoEditorFeatures() -> [GuideEntry] {
+        [
+            GuideEntry(
+                id: "video-open", symbol: "film", title: L("Opening a video"),
+                summary: L("Open a recording, or any MP4 or MOV video, in the video editor."),
+                location: L("Click a recording in Home, click Edit Video after recording, or click Open video… in Home. The LF Studios menu ▸ Edit Last Recording opens the newest one."),
+                tips: [
+                    L("You can also drop a video file on the LF Studios icon in the Dock."),
+                    L("The editor has six panels on the right: Style, Cursor, Zoom, Camera, Captions, and Audio."),
+                ],
+                showMe: .home(.recordings)
+            ),
+            GuideEntry(
+                id: "video-play", symbol: "play.circle", title: L("Playing & moving around"),
+                summary: L("Play the video and move the playhead (the line that shows where you are) to any moment."),
+                location: L("The timeline at the bottom of the video editor."),
+                steps: [
+                    L("Press Space to play and pause."),
+                    L("Click or drag anywhere on the timeline to jump there."),
+                    L("Pinch, or ⌘-scroll, on the timeline to see more detail."),
+                ],
+                keys: [
+                    .fixed(L("Space"), L("Play / pause")),
+                    .fixed("J  K  L", L("Back · pause · faster")),
+                    .fixed("← →", L("Previous / next frame")),
+                    .fixed("⇧← ⇧→", L("Jump one second")),
+                    .fixed("⌘← ⌘→", L("Start / end")),
+                ]
+            ),
+            GuideEntry(
+                id: "video-clips", symbol: "scissors", title: L("Split, trim & reorder clips"),
+                summary: L("Cut the recording into clips, shorten them, and change their order."),
+                location: L("The clips lane on the timeline, and the Timeline menu."),
+                steps: [
+                    L("Move the playhead and press S to split the clip there."),
+                    L("Drag a clip's edge to trim it, or press I or O to make it start or end at the playhead."),
+                    L("Drag a clip by its name to move it. Click a clip and press ⌫ to delete it."),
+                ],
+                keys: [
+                    .fixed("S", L("Split at the playhead")),
+                    .fixed("I  O", L("Clip starts / ends here")),
+                    .fixed("⌫", L("Delete the selection")),
+                ],
+                tips: [L("Right-click a clip for Speed, Mute Clip, Move Earlier, and Move Later.")]
+            ),
+            GuideEntry(
+                id: "video-cut-part", symbol: "rectangle.badge.minus", title: L("Cut out a part"),
+                summary: L("Select any stretch of the video and remove it, even across several clips."),
+                location: L("Hold ⇧ and drag on the timeline."),
+                steps: [
+                    L("Hold ⇧ and drag across the part you don't want."),
+                    L("Click Cut this part in the panel on the right."),
+                ],
+                keys: [.fixed(L("⇧-drag"), L("Select a range to cut"))],
+                tips: [L("A yellow marker shows where something was cut. Click it to bring the part back.")],
+                related: ["howto-cut"]
+            ),
+            GuideEntry(
+                id: "video-speed", symbol: "gauge.with.dots.needle.67percent", title: L("Speed"),
+                summary: L("Speed up slow parts, or slow down fast ones."),
+                location: L("Select a clip, or ⇧-drag a part, and choose its Speed in the panel on the right."),
+                points: [
+                    L("Speeds from 0.5× to 16×."),
+                    L("Speed Up Idle on the timeline fast-forwards the moments when nothing happens."),
+                ],
+                related: ["cursor-typing-speed"]
+            ),
+            GuideEntry(
+                id: "video-transitions", symbol: "rectangle.portrait.on.rectangle.portrait.angled", title: L("Transitions & fades"),
+                summary: L("Blend from one clip into the next, and fade in and out of black."),
+                location: L("Style panel ▸ Transitions, or click the + between two clips on the timeline."),
+                points: [
+                    L("Between clips: Hard cut, Dissolve, or Dip to black, with a Length."),
+                    L("Fade in from black and Fade out to black for the start and end."),
+                ],
+                showMe: .editor(.background)
+            ),
+            GuideEntry(
+                id: "video-cards", symbol: "rectangle.and.text.magnifyingglass", title: L("Intro & outro cards"),
+                summary: L("Add a title card before the video and a closing card after it."),
+                location: L("Style panel ▸ Intro & outro."),
+                steps: [
+                    L("Turn on Intro card or Outro card."),
+                    L("Type a Title and Subtitle, and set the Length."),
+                ],
+                tips: [L("The cards use the same background as your video. Pick their font with the font menu.")],
+                showMe: .editor(.background)
+            ),
+            GuideEntry(
+                id: "video-annotations", symbol: "arrow.up.right.square", title: L("Text, arrows & highlights"),
+                summary: L("Add text, arrows, highlights, and spotlights on top of the video."),
+                location: L("The tool buttons above the preview: Text, Arrow, Highlight, Blur, Spotlight, and Image."),
+                steps: [
+                    L("Move the playhead to where it should appear."),
+                    L("Click a tool, or press its key."),
+                    L("Drag it on the preview to place it; drag a corner to resize it."),
+                    L("On the timeline, drag its edges to set how long it shows."),
+                ],
+                keys: [
+                    .fixed("T", L("Text")), .fixed("A", L("Arrow")), .fixed("H", L("Highlight")), .fixed("B", L("Blur")),
+                    .fixed("⌘D", L("Duplicate zoom or annotation")),
+                ],
+                tips: [L("Double-click text on the preview to change it. New ones keep the last color and size you used.")]
+            ),
+            GuideEntry(
+                id: "video-images", symbol: "photo", title: L("Images & logos"),
+                summary: L("Put a logo, a watermark, or a picture on the video."),
+                location: L("Click Image above the preview."),
+                steps: [
+                    L("Choose a picture."),
+                    L("Drag it into place, or pick a corner under Position."),
+                    L("Set Size and Opacity. Turn on Show for the whole video for a watermark."),
+                ]
+            ),
+            GuideEntry(
+                id: "video-crop", symbol: "crop", title: L("Crop the recording"),
+                summary: L("Trim toolbars, the menu bar, or empty space off the edges of the recording."),
+                location: L("Click Crop in the editor's toolbar."),
+                steps: [
+                    L("Click Crop."),
+                    L("Drag the frame's edges, or pick a shape like 16:9."),
+                    L("Click Done, or press Return."),
+                ],
+                keys: [.fixed("↩", L("Done")), .fixed("Esc", L("Cancel"))],
+                tips: [L("The cursor, zooms, and clicks follow the crop.")]
+            ),
+            GuideEntry(
+                id: "video-undo", symbol: "arrow.uturn.backward", title: L("Undo, redo & start over"),
+                summary: L("Every change can be undone, step by step."),
+                location: L("The Undo and Redo buttons in the editor's toolbar."),
+                keys: [.fixed("⌘Z", L("Undo")), .fixed("⇧⌘Z", L("Redo"))],
+                tips: [
+                    L("Hover over Undo to see what it will undo."),
+                    L("To begin again, open the commands (⌘K) and choose Start Over from the Original Recording…. It asks first, and can be undone too."),
+                ]
+            ),
+            GuideEntry(
+                id: "video-commands", symbol: "command.square", title: L("Commands & shortcuts list"),
+                summary: L("Find any action by typing its name, and see every key the editor knows."),
+                location: L("The ⌘ and ? buttons in the editor's toolbar."),
+                keys: [.fixed("⌘K", L("All commands")), .fixed("?", L("Keyboard Shortcuts"))],
+                related: ["shortcuts-page"]
+            ),
+            GuideEntry(
+                id: "video-markers", symbol: "flag", title: L("Markers"),
+                summary: L("Flags on the timeline for important moments. They can split the video and become chapters."),
+                location: L("Click Marker on the timeline's toolbar. Markers added while recording are there too."),
+                points: [
+                    L("Click a marker to jump there; double-click to rename it; right-click to delete it."),
+                    L("Split at Markers splits the clips at every marker."),
+                ],
+                related: ["export-chapters", "rec-markers"]
+            ),
+            GuideEntry(
+                id: "video-append", symbol: "film.stack", title: L("Append Video"),
+                summary: L("Add another recording to the end of this one, to make one video."),
+                location: L("Style panel ▸ Recordings ▸ Append Video…."),
+                tips: [L("Change the order with Move earlier and Move later, or remove one with Remove from this video.")],
+                showMe: .editor(.background)
+            ),
+            GuideEntry(
+                id: "video-copy-frame", symbol: "photo.on.rectangle", title: L("Copy the current frame"),
+                summary: L("Copy the picture at the playhead, to paste it anywhere."),
+                location: L("Press ⌘C in the video editor, or choose Copy Current Frame in the commands (⌘K)."),
+                keys: [.fixed("⌘C", L("Copy current frame"))]
+            ),
+            GuideEntry(
+                id: "video-select", symbol: "checkmark.rectangle.stack", title: L("Selecting things"),
+                summary: L("Click anything on the timeline or the preview to change it in the panel on the right."),
+                location: L("The “Selected” panel appears at the top right when something is selected."),
+                keys: [
+                    .fixed(L("⇧/⌘-click"), L("Select several items")),
+                    .fixed("⌥← ⌥→", L("Select previous / next item")),
+                    .fixed("Esc", L("Deselect / close")),
+                ]
+            ),
+            GuideEntry(
+                id: "video-tips", symbol: "lightbulb", title: L("Editor tips"),
+                summary: L("Short tips under the preview while you learn the editor."),
+                location: L("Under the video preview. Hide them with ×; bring them back from the shortcuts list (?)."),
+            ),
+        ]
+    }
+
+    // MARK: Zoom
+
+    static func zoomFeatures() -> [GuideEntry] {
+        [
+            GuideEntry(
+                id: "zoom-add", symbol: "plus.magnifyingglass", title: L("Add a zoom"),
+                summary: L("Zoom in on part of the video so details are easy to see."),
+                location: L("Click Zoom above the preview, or click the zoom lane on the timeline."),
+                steps: [
+                    L("Move the playhead to where the zoom should start."),
+                    L("Press Z, or click Zoom."),
+                    L("Drag the zoom's edges on the timeline to set its length."),
+                ],
+                keys: [.fixed("Z", L("Add a zoom at the playhead")), .fixed("⌘D", L("Duplicate zoom or annotation"))],
+                showMe: .editor(.zoom),
+                related: ["zoom-edit"]
+            ),
+            GuideEntry(
+                id: "zoom-edit", symbol: "slider.horizontal.below.square.filled.and.square", title: L("Change a zoom"),
+                summary: L("Choose how far a zoom goes in and where it looks."),
+                location: L("Click a zoom on the timeline; its settings appear in the panel on the right."),
+                points: [
+                    L("Zoom level: how close it goes. Use this level for every zoom applies it to all."),
+                    L("Framing: Follow cursor follows the pointer; Aim by hand lets you drag the frame on the preview; Follow typing follows your typing."),
+                    L("Right-click a zoom on the timeline for quick changes."),
+                ],
+                keys: [.fixed("1 – 5", L("Zoom level of the selected zoom"))],
+                showMe: .editor(.zoom),
+                related: ["camera-follows-cursor"]
+            ),
+            GuideEntry(
+                id: "zoom-auto", symbol: "cursorarrow.click.2", title: L("Auto-zoom on clicks"),
+                summary: L("Adds a zoom wherever you clicked while recording."),
+                location: L("Zoom panel ▸ Auto-zoom on clicks."),
+                steps: [
+                    L("Turn on Auto-zoom on clicks."),
+                    L("Watch the result, then change or delete any zoom."),
+                ],
+                tips: [
+                    L("Turning it off removes its zooms again; zooms you added yourself stay."),
+                    L("Needs clicks recorded by LF Studios."),
+                ],
+                showMe: .editor(.zoom)
+            ),
+            GuideEntry(
+                id: "zoom-motion", symbol: "wind", title: L("Zoom motion"),
+                summary: L("Choose how quickly and smoothly zooms move."),
+                location: L("Zoom panel ▸ Motion: Slow, Smooth, Quick, or Instant, plus Motion blur."),
+                tips: [L("These, and New zooms, are for auto-zoom; turn on Auto-zoom on clicks to use them.")],
+                showMe: .editor(.zoom)
+            ),
+            GuideEntry(
+                id: "zoom-loupe", symbol: "magnifyingglass.circle", title: L("Loupe"),
+                summary: L("A round magnifier over one spot, while the rest of the video stays in view."),
+                location: L("Zoom panel ▸ Add Loupe. Or select a zoom and choose Type ▸ Loupe."),
+                steps: [
+                    L("Click Add Loupe."),
+                    L("Drag it over what you want to show."),
+                    L("Set its size, shape, border, and shadow under Loupe."),
+                ],
+                tips: [L("New loupes take the look of the last one you changed.")],
+                showMe: .editor(.zoom),
+                since: "1.4.0"
+            ),
+            GuideEntry(
+                id: "zoom-typing", symbol: "character.cursor.ibeam", title: L("Typing zooms"),
+                summary: L("Zooms that follow your text cursor while you type, so viewers can read along."),
+                location: L("Zoom panel ▸ Add typing zooms."),
+                steps: [
+                    L("Before recording, turn on Track where I type."),
+                    L("In the editor, click Add typing zooms."),
+                ],
+                tips: [L("Clicking it again replaces only those zooms. Each can be changed like any zoom.")],
+                showMe: .editor(.zoom),
+                since: "1.4.0",
+                related: ["rec-typing"]
+            ),
+            GuideEntry(
+                id: "zoom-camera-fit", symbol: "person.crop.rectangle", title: L("Fit zooms around the camera"),
+                summary: L("Keeps the camera bubble from covering what a zoom shows."),
+                location: L("Zoom panel ▸ Fit zooms around camera."),
+                points: [
+                    L("Shift the Zooms: moves each zoom clear of the bubble."),
+                    L("Move the Camera Instead: slides the bubble to a free corner during that zoom."),
+                ],
+                tips: [L("It tells you how many zooms it changed, and one ⌘Z undoes it.")],
+                showMe: .editor(.zoom),
+                since: "1.4.0"
+            ),
+        ]
+    }
     static func cursorFeatures() -> [GuideEntry] { [] } // STUB
     static func cameraFeatures() -> [GuideEntry] { [] } // STUB
     static func captionFeatures() -> [GuideEntry] { [] } // STUB
