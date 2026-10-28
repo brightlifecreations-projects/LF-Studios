@@ -54,6 +54,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             Settings.lastRecordingPath = url.path
             VideoDemoEditorWindowController.open(videoURL: url)
         }
+        // A folder dropped on the Dock icon opens as a project (VideoFolderOpener).
+        for folder in urls where VideoFolderReader.isFolder(folder) {
+            VideoFolderOpener.openFolder(folder)
+        }
     }
 
     /// Work that quitting would cut short (an export, a transcription) asks

@@ -299,6 +299,49 @@ final class RecordingFolderTests: XCTestCase {
         XCTAssertTrue(try String(contentsOf: srt, encoding: .utf8).contains("Hello there"))
     }
 
+    /// Another Mac: the folder alone, none of LF Studios' hidden data
+    /// (drafts, the recording's data) — the edit is all there.
+    func testTheFolderOpensWithTheWholeEditOnAnotherMac() async throws {
+        let result = try await organize(try await take())
+        let opened = try VideoProjectPackage.open(result.project)
+        XCTAssertNotNil(VideoProjectOpener.prepare(opened))
+        let model = VideoEditorModel(videoURL: result.video)
+        model.projectFileURL = result.project
+        model.projectMediaMode = .folder
+        model.projectFolder = opened.document.folder
+        await model.load()
+        model.mutate(label: "Add Caption") {
+            $0.captions = [VideoCaptionLine(id: UUID(), start: 0.2, end: 1.2, text: "Made on this Mac", words: [])]
+            $0.timelineClips = [VideoDemoTimelineClip(sourceStart: 0.5, sourceEnd: 1.8, speed: 1)]
+        }
+        model.saveDraftNow()
+        await model.recordingFolderWrite?.value
+
+        // Copied to another Mac: a different place, and no hidden data at all.
+        let otherMac = root.deletingLastPathComponent().appendingPathComponent("Other Mac/Downloads", isDirectory: true)
+        try FileManager.default.createDirectory(at: otherMac, withIntermediateDirectories: true)
+        let copied = otherMac.appendingPathComponent(result.folder.lastPathComponent, isDirectory: true)
+        try FileManager.default.copyItem(at: result.folder, to: copied)
+        let otherStorage = root.deletingLastPathComponent().appendingPathComponent("Other Mac/Storage", isDirectory: true)
+        try FileManager.default.createDirectory(at: otherStorage, withIntermediateDirectories: true)
+        try await VideoStorageLocation.$scopedRoot.withValue(otherStorage) {
+            let project = try XCTUnwrap(VideoRecordingFolder.projectFiles(in: copied).first)
+            let there = try VideoProjectPackage.open(project)
+            XCTAssertEqual(there.contents.project.captions.map(\.text), ["Made on this Mac"])
+            XCTAssertEqual(there.contents.project.timelineClips.first?.sourceStart ?? 0, 0.5, accuracy: 0.001)
+            XCTAssertTrue(FileManager.default.fileExists(atPath: there.contents.project.sourcePath))
+            XCTAssertTrue(FileManager.default.fileExists(atPath: there.contents.recording?.webcam?.path ?? "/missing"))
+            XCTAssertEqual(there.contents.recording?.webcam?.offset, 0.25)
+            XCTAssertEqual(there.contents.recording?.cursorSamples.isEmpty, false, "the pointer data travels inside the project")
+            let primary = try XCTUnwrap(VideoProjectOpener.prepare(there))
+            let editor = VideoEditorModel(videoURL: primary)
+            await editor.load()
+            XCTAssertTrue(editor.isReady)
+            XCTAssertEqual(editor.project.captions.map(\.text), ["Made on this Mac"])
+            XCTAssertTrue(editor.hasWebcamFootage, "the camera is found in the copied folder")
+        }
+    }
+
     func testCaptionsFilesFollowTheCaptions() throws {
         let folder = place.appendingPathComponent("Demo", isDirectory: true)
         try FileManager.default.createDirectory(at: folder.appendingPathComponent("Demo.lfstudios"), withIntermediateDirectories: true)

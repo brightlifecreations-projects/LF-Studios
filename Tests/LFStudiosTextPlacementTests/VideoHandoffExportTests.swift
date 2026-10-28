@@ -290,6 +290,70 @@ struct VideoHandoffExportTests {
         #expect(TestSounds.level(of: 220, in: raw, from: 2.2, to: 3.0) > TestSounds.level(of: 220, in: raw, from: 0.4, to: 1.1) * 0.9, "Music.m4a alone doesn't dip")
     }
 
+    /// The handoff's project reopens the same edit, pointing only at files
+    /// inside the handoff — trimmed (with originals alongside) and uncut.
+    @Test(arguments: [VideoHandoffOptions.Clips.trimmed, .full])
+    func theHandoffsProjectReopensTheWholeEdit(clips: VideoHandoffOptions.Clips) async throws {
+        let fixture = try await fixture()
+        let destination = fixture.folder.appendingPathComponent("Out \(clips.rawValue)", isDirectory: true)
+        try FileManager.default.createDirectory(at: destination, withIntermediateDirectories: true)
+        var options = VideoHandoffOptions()
+        options.clips = clips
+        options.includeFinal = false
+        let result = try await write(fixture, options: options, into: destination)
+        let package = result.folder.appendingPathComponent("Demo.lfstudios")
+        #expect(FileManager.default.fileExists(atPath: VideoProjectPackage.manifestURL(package).path))
+        // Moved elsewhere first: it's found relative to the folder.
+        let moved = fixture.folder.appendingPathComponent("Moved \(clips.rawValue)", isDirectory: true)
+        try FileManager.default.moveItem(at: result.folder, to: moved)
+        let opened = try VideoProjectPackage.open(moved.appendingPathComponent("Demo.lfstudios"))
+        #expect(opened.document.folder?.kind == .handoff)
+        let movedPath = moved.standardizedFileURL.path
+        for path in opened.contents.paths {
+            #expect(path.hasPrefix(movedPath + "/"), "\(path) is outside the handoff")
+            #expect(FileManager.default.fileExists(atPath: path), "\(path) is missing")
+        }
+        // The same edit: cuts, speed, captions, camera offset, pointer.
+        let original = fixture.input.project
+        let project = opened.contents.project
+        #expect(project.timelineClips.map { [$0.sourceStart, $0.sourceEnd, $0.speed] } == original.timelineClips.map { [$0.sourceStart, $0.sourceEnd, $0.speed] })
+        #expect(project.captions.map(\.text) == original.captions.map(\.text))
+        #expect(project.cursorSamples == original.cursorSamples)
+        #expect(opened.contents.recording?.webcam?.offset == Self.lag)
+        #expect(project.overlayEffects.count == 1)
+        // The screen it plays is the untouched recording.
+        #expect(try await duration(project.sourceURL) == (try await duration(fixture.input.recordings[0].url!)))
+        let readme = try String(contentsOf: moved.appendingPathComponent("README.txt"), encoding: .utf8)
+        #expect(readme.contains("Demo.lfstudios"))
+        if clips == .trimmed {
+            #expect(FileManager.default.fileExists(atPath: moved.appendingPathComponent("01 Screen/Originals/Demo.mov").path))
+            let timeline = try String(contentsOf: moved.appendingPathComponent("Timeline.fcpxml"), encoding: .utf8)
+            #expect(!timeline.contains("Originals"), "the originals stay off the timelines")
+        }
+    }
+
+    @Test func withoutOriginalsATrimmedHandoffHasNoProjectAndSaysWhy() async throws {
+        let fixture = try await fixture()
+        let destination = fixture.folder.appendingPathComponent("Out", isDirectory: true)
+        try FileManager.default.createDirectory(at: destination, withIntermediateDirectories: true)
+        var options = VideoHandoffOptions()
+        options.includeFinal = false
+        options.includeOriginals = false
+        let plan = VideoHandoffPlanner.plan(fixture.input, options: options, folderName: "Demo")
+        #expect(!plan.includesProject)
+        #expect(plan.originalsBytes == 0)
+        var with = options
+        with.includeOriginals = true
+        let full = VideoHandoffPlanner.plan(fixture.input, options: with, folderName: "Demo")
+        #expect(full.includesProject)
+        #expect(full.originalsBytes > 0, "the dialog shows what the originals add")
+        let result = try await write(fixture, options: options, into: destination)
+        #expect(!FileManager.default.fileExists(atPath: result.folder.appendingPathComponent("Demo.lfstudios").path))
+        #expect(!FileManager.default.fileExists(atPath: result.folder.appendingPathComponent("01 Screen/Originals").path))
+        let readme = try String(contentsOf: result.folder.appendingPathComponent("README.txt"), encoding: .utf8)
+        #expect(readme.contains("Include originals so it reopens in LF Studios"))
+    }
+
     @Test func aMissingCameraIsSkippedAndListed() async throws {
         var fixture = try await fixture()
         fixture.input.recordings[0].camera?.url = nil

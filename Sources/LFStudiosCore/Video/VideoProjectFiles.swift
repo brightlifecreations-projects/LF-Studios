@@ -61,15 +61,17 @@ extension UTType {
 /// Opening a `.lfstudios` project in the video editor.
 @MainActor
 enum VideoProjectOpener {
-    /// File ▸ Open Project… and Home's Open Project….
+    /// File ▸ Open… (⌘O) and Home's Open…: a project, a folder (a
+    /// recording's own, a Creative Handoff, any other), or a video.
     static func chooseAndOpen() {
         let panel = NSOpenPanel()
-        panel.allowedContentTypes = [.lfstudiosProject, .shotstyleProject]
+        panel.allowedContentTypes = [.lfstudiosProject, .shotstyleProject, .folder, .mpeg4Movie, .quickTimeMovie, .movie]
         panel.allowsMultipleSelection = false
+        panel.canChooseDirectories = true
         panel.treatsFilePackagesAsDirectories = false
-        panel.message = L("Choose an LF Studios project")
+        panel.message = L("Choose a project, a folder, or a video")
         guard panel.runModal() == .OK, let url = panel.url else { return }
-        open(url)
+        VideoFolderOpener.open(url)
     }
 
     /// The edit as the editor will pick it up, ready before the window
@@ -194,6 +196,8 @@ extension VideoEditorModel {
             case .success:
                 projectFileURL = url
                 projectMediaMode = mode
+                // Saved there on purpose: the folder is the project's now.
+                if mode == .folder { VideoFileIdentity.unprotect(url.deletingLastPathComponent()) }
                 VideoProjectRecents.add(url)
                 showNotice(L("Saved “\(url.deletingPathExtension().lastPathComponent)”"), symbol: "checkmark.circle.fill")
             case .failure:

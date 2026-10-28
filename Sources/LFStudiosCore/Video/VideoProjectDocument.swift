@@ -277,9 +277,12 @@ enum VideoProjectPackage {
     /// copied in once: saving again copies only what's new or changed, and
     /// files nothing uses anymore are removed.
     @discardableResult
-    static func save(_ contents: VideoProjectContents, to package: URL, mode: VideoProjectDocument.MediaMode, appVersion: String? = nil, folder: VideoProjectDocument.FolderInfo? = nil, fontFiles: (String) -> [URL] = { VideoFonts.addedFontFiles(forFamily: $0) }) throws -> VideoProjectDocument {
+    /// `copiesOutsideFiles` (folder projects): copy what's outside the folder
+    /// into it. Off (a handoff, which decided what it holds): those stay
+    /// linked where they are.
+    static func save(_ contents: VideoProjectContents, to package: URL, mode: VideoProjectDocument.MediaMode, appVersion: String? = nil, folder: VideoProjectDocument.FolderInfo? = nil, copiesOutsideFiles: Bool = true, fontFiles: (String) -> [URL] = { VideoFonts.addedFontFiles(forFamily: $0) }) throws -> VideoProjectDocument {
         if mode == .folder {
-            return try saveFolderProject(contents, to: package, appVersion: appVersion, folder: folder ?? VideoProjectDocument.FolderInfo(kind: .opened), fontFiles: fontFiles)
+            return try saveFolderProject(contents, to: package, appVersion: appVersion, folder: folder ?? VideoProjectDocument.FolderInfo(kind: .opened), copiesOutsideFiles: copiesOutsideFiles, fontFiles: fontFiles)
         }
         let fm = FileManager.default
         let media = package.appendingPathComponent(VideoProjectDocument.mediaFolder, isDirectory: true)
@@ -382,7 +385,7 @@ enum VideoProjectPackage {
     /// folder (music LF Studios keeps, a picture from elsewhere) is copied
     /// into the folder's matching subfolder first, so the folder holds the
     /// whole edit.
-    private static func saveFolderProject(_ contents: VideoProjectContents, to package: URL, appVersion: String?, folder: VideoProjectDocument.FolderInfo, fontFiles: (String) -> [URL]) throws -> VideoProjectDocument {
+    private static func saveFolderProject(_ contents: VideoProjectContents, to package: URL, appVersion: String?, folder: VideoProjectDocument.FolderInfo, copiesOutsideFiles: Bool, fontFiles: (String) -> [URL]) throws -> VideoProjectDocument {
         let fm = FileManager.default
         try fm.createDirectory(at: package, withIntermediateDirectories: true)
         let root = package.standardizedFileURL.deletingLastPathComponent()
@@ -396,6 +399,10 @@ enum VideoProjectPackage {
                 continue
             }
             guard fm.fileExists(atPath: url.path) else { continue } // missing: stays missing
+            guard copiesOutsideFiles else {
+                if let bookmark = try? url.bookmarkData(options: [], includingResourceValuesForKeys: nil, relativeTo: nil) { bookmarks[path] = bookmark }
+                continue
+            }
             let subfolder = root.appendingPathComponent(kind.folder, isDirectory: true)
             try fm.createDirectory(at: subfolder, withIntermediateDirectories: true)
             let destination = VideoRecordingFolder.uniqueFile(named: url.lastPathComponent, in: subfolder)

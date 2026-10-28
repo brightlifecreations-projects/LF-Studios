@@ -19,7 +19,7 @@ final class VideoEditorFileMenu: NSObject, NSMenuDelegate, NSMenuItemValidation 
         if !menu.items.isEmpty { menu.addItem(.separator()) }
         // Projects (VideoProjectFiles.swift): Open from anywhere; Save while
         // a video editor is in front.
-        let open = NSMenuItem(title: L("Open Project…"), action: #selector(openProject(_:)), keyEquivalent: "o")
+        let open = NSMenuItem(title: L("Open…"), action: #selector(openProject(_:)), keyEquivalent: "o")
         open.keyEquivalentModifierMask = [.command]
         open.target = self
         menu.addItem(open)

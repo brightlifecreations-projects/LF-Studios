@@ -186,6 +186,11 @@ struct VideoHandoffSheet: View {
                 isOn: Binding(get: { hasNotes && options.includeSpeakerNotes }, set: { options.includeSpeakerNotes = $0 })
             )
             .disabled(!hasNotes)
+            VideoToggleRow(
+                title: L("Include originals so it reopens in LF Studios"),
+                detail: L("With the LF Studios project, the folder opens the whole edit again. Clips cut to your edit need the untouched recordings alongside."),
+                isOn: $options.includeOriginals
+            )
             row(L("Quality")) {
                 VideoSegmented(options: [(VideoHandoffOptions.Quality.proRes422HQ, L("Best (ProRes 422 HQ)")), (.proRes422, L("Smaller files (ProRes 422)"))], selection: $options.quality)
             }
@@ -243,6 +248,11 @@ struct VideoHandoffSheet: View {
             Text(L("\(files) files, about \(size)") + (available.map { L(" — \(ByteCountFormatter.string(fromByteCount: $0, countStyle: .file)) free there") } ?? ""))
                 .font(.system(size: 11.5, weight: .medium))
                 .foregroundStyle(fits ? VideoEditorTheme.textSecondary : VideoEditorTheme.warning)
+            if plan.originalsBytes > 0 {
+                Text(L("Includes \(ByteCountFormatter.string(fromByteCount: plan.originalsBytes, countStyle: .file)) of originals for the LF Studios project"))
+                    .font(.system(size: 10.5))
+                    .foregroundStyle(VideoEditorTheme.textTertiary)
+            }
             if !fits {
                 Label(L("It won't fit there. Choose another location, or pick Smaller files."), systemImage: "exclamationmark.triangle.fill")
                     .font(.system(size: 11.5, weight: .semibold))

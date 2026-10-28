@@ -549,6 +549,16 @@ struct HomeRootView: View {
         }
         .ignoresSafeArea()
         .frame(minWidth: 880, minHeight: 580)
+        // A folder, project, or video dropped anywhere on Home opens.
+        .onDrop(of: [.fileURL], isTargeted: nil) { providers in
+            for provider in providers {
+                _ = provider.loadObject(ofClass: URL.self) { url, _ in
+                    guard let url else { return }
+                    DispatchQueue.main.async { VideoFolderOpener.open(url) }
+                }
+            }
+            return !providers.isEmpty
+        }
     }
 }
 
@@ -643,12 +653,12 @@ private struct HomeLibraryView: View {
             Button {
                 VideoProjectOpener.chooseAndOpen()
             } label: {
-                Label(L("Open Project…"), systemImage: "folder")
+                Label(L("Open…"), systemImage: "folder")
                     .font(.system(size: 12.5, weight: .semibold))
             }
             .buttonStyle(.plain)
             .foregroundStyle(HomeColors.ink.opacity(0.8))
-            .help(L("Open a .lfstudios project"))
+            .help(L("Open a project, a recording's folder, a Creative Handoff, or a video"))
             HomeSearchField(text: $model.query)
                 .frame(width: 260)
         }

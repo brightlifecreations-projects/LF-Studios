@@ -179,6 +179,24 @@ final class VideoHandoffWriter: @unchecked Sendable {
         switch item.work {
         case .copy(let source):
             try FileManager.default.copyItem(at: source, to: url)
+            // A copy of a recording is its own: opening it never picks up
+            // (or changes) the original's edits (VideoDemoStores.swift).
+            if VideoProjectPackage.videoExtensions.contains(url.pathExtension.lowercased()) {
+                _ = VideoFileIdentity.restamp(url)
+            }
+        case .project(let mapping):
+            let folder = url.deletingLastPathComponent()
+            var sources: [String: VideoDemoRecordingMetadata] = [:]
+            for recording in input.recordings where recording.id != input.project.sources.first(where: \.isPrimary)?.id {
+                if let metadata = recording.metadata, input.project.sources.contains(where: { $0.id == recording.id && !$0.isPrimary }) {
+                    sources[recording.id.uuidString] = metadata
+                }
+            }
+            var contents = VideoProjectContents(project: input.project, recording: input.recording, sourceRecordings: sources)
+            contents.mapPaths { path in
+                mapping[URL(fileURLWithPath: path).standardizedFileURL.path].map { folder.appendingPathComponent($0).path } ?? path
+            }
+            try VideoProjectPackage.save(contents, to: url, mode: .folder, appVersion: appVersion, folder: .init(kind: .handoff), copiesOutsideFiles: false)
         case .text(let text):
             try text.write(to: url, atomically: true, encoding: .utf8)
         case .passthrough(let pieces, let duration):

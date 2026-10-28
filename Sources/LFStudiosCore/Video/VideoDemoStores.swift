@@ -98,6 +98,30 @@ enum VideoFileIdentity {
         return restamp(canonical)
     }
 
+    // Folders opened as projects but not saved yet (VideoFolderOpener):
+    // nothing in them is stamped, so they stay exactly as they were.
+    private static let protectionLock = NSLock()
+    nonisolated(unsafe) private static var protectedFolders: Set<String> = []
+
+    static func protect(_ folder: URL) {
+        protectionLock.lock()
+        defer { protectionLock.unlock() }
+        protectedFolders.insert(canonicalURL(folder).path)
+    }
+
+    static func unprotect(_ folder: URL) {
+        protectionLock.lock()
+        defer { protectionLock.unlock() }
+        protectedFolders.remove(canonicalURL(folder).path)
+    }
+
+    static func isProtected(_ url: URL) -> Bool {
+        let path = canonicalURL(url).path
+        protectionLock.lock()
+        defer { protectionLock.unlock() }
+        return protectedFolders.contains { path == $0 || path.hasPrefix($0 + "/") }
+    }
+
     /// Puts `id` back on a file that should keep it (a recording copied to
     /// another drive, whose copy may have lost its stamp).
     @discardableResult
@@ -176,6 +200,7 @@ enum VideoFileIdentity {
     /// Writes the stamp and reads it back (some file systems accept the
     /// write but don't keep it).
     private static func writeStamp(_ value: String, on canonical: URL) -> Bool {
+        guard !isProtected(canonical) else { return false }
         let written = canonical.withUnsafeFileSystemRepresentation { path -> Bool in
             guard let path else { return false }
             return value.withCString { setxattr(path, attribute, $0, strlen($0), 0, XATTR_NOFOLLOW) == 0 }
