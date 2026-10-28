@@ -1983,8 +1983,167 @@ enum GuideContent {
             ),
         ]
     }
-    static func projectFeatures() -> [GuideEntry] { [] } // STUB
-    static func settingsFeatures() -> [GuideEntry] { [] } // STUB
+    // MARK: Projects
+
+    static func projectFeatures() -> [GuideEntry] {
+        [
+            GuideEntry(
+                id: "home-projects", symbol: "square.grid.2x2", title: L("Home & your projects"),
+                summary: L("Every recording, screenshot, and saved project in one place."),
+                location: L("Home ▸ Projects. Recordings and Screenshots in the sidebar show just one kind."),
+                points: [
+                    L("Click a project to open it."),
+                    L("Right-click for Open, Show in Finder, Creative Handoff…, or Delete (moves it to the Trash)."),
+                    L("The search box finds projects by name, and screenshots by their text."),
+                ],
+                showMe: .home(.home)
+            ),
+            GuideEntry(
+                id: "project-save", symbol: "doc.badge.plus", title: L("Save a project"),
+                summary: L("Keep a whole edit as one file: the recording, camera, sound, music, pictures, fonts, and every change."),
+                location: L("In the video editor: File ▸ Save Project (⌘S) or Save Project As… (⇧⌘S)."),
+                points: [
+                    L("Include media: the project opens on any Mac."),
+                    L("Link to media: smaller, for this Mac only."),
+                ],
+                keys: [.fixed("⌘S", L("Save Project")), .fixed("⇧⌘S", L("Save Project As…"))]
+            ),
+            GuideEntry(
+                id: "project-open", symbol: "folder", title: L("Open a project"),
+                summary: L("Open a saved .lfstudios project."),
+                location: L("Open Project… in Home, File ▸ Open Project… (⌘O), or double-click the project in Finder."),
+                keys: [.fixed("⌘O", L("Open Project…"))],
+                tips: [L("Projects from ShotStyle (.shotstyle) open too.")]
+            ),
+            GuideEntry(
+                id: "project-drafts", symbol: "clock.badge.checkmark", title: L("Your edits are kept"),
+                summary: L("Every change is saved as you go. Close the editor and open the recording again: your edit is still there."),
+                location: L("Happens by itself, for every recording."),
+                tips: [L("Renaming or moving the recording in Finder doesn't lose the edit.")]
+            ),
+            GuideEntry(
+                id: "project-cleanup", symbol: "externaldrive.badge.minus", title: L("Clean up video data"),
+                summary: L("Free up space taken by data for recordings that are gone, unused camera videos, and old copies."),
+                location: L("Settings ▸ Recording ▸ Storage ▸ Clean Up…."),
+                tips: [L("It shows what it would remove and asks first.")],
+                showMe: .settings(.recording)
+            ),
+        ]
+    }
+
+    // MARK: Settings
+
+    static func settingsFeatures() -> [GuideEntry] {
+        [
+            GuideEntry(
+                id: "app-guide", symbol: "book", title: L("This Guide"),
+                summary: L("Help for every part of LF Studios, with search, steps, and a Show me button that takes you there."),
+                location: L("Home ▸ Guide, or Help ▸ LF Studios Guide."),
+                keys: [.fixed("⌘?", L("LF Studios Guide"))],
+                tips: [L("Show me only opens the right place; it never changes a setting or turns anything on.")],
+                since: "1.5.0"
+            ),
+            GuideEntry(
+                id: "app-command-center", symbol: "menubar.rectangle", title: L("The LF Studios menu (Command Center)"),
+                summary: L("Every capture, recording, and tool, from the LF Studios icon in the menu bar."),
+                location: L("Click the LF Studios icon in the menu bar."),
+                points: [
+                    L("Capture, Recording, Tools, and Utility sections, each with its current shortcut."),
+                    L("Health shows whether everything is ready, and offers a Fix when something isn't."),
+                    L("While recording, the icon becomes a red timer: click it to stop."),
+                ],
+                keys: [.global(.openCommandCenter)]
+            ),
+            GuideEntry(
+                id: "app-shortcuts", symbol: "keyboard", title: L("Change keyboard shortcuts"),
+                summary: L("Set your own keys for captures and recordings. They work in every app."),
+                location: L("Settings ▸ Shortcuts."),
+                steps: [
+                    L("Click the field next to a command."),
+                    L("Press the keys you want. To remove one, click the ×."),
+                ],
+                tips: [
+                    L("Recording shortcuts start unset. Reset Defaults brings back the original keys."),
+                    L("Restore Apple Shortcuts turns Apple's own ⇧⌘3, ⇧⌘4, and ⇧⌘5 back on."),
+                ],
+                showMe: .settings(.shortcuts),
+                related: ["shortcuts-page", "trouble-shortcuts"]
+            ),
+            GuideEntry(
+                id: "app-appearance", symbol: "circle.lefthalf.filled", title: L("Light & dark appearance"),
+                summary: L("Choose light or dark windows, or follow your Mac."),
+                location: L("Settings ▸ General ▸ Appearance: System, Light Mode, or Dark Mode."),
+                tips: [L("Your screenshots and videos look the same either way.")],
+                showMe: .settings(.general)
+            ),
+            GuideEntry(
+                id: "app-language", symbol: "globe", title: L("Language"),
+                summary: L("Use LF Studios in English, German, French, Chinese, Russian, Ukrainian, or Japanese."),
+                location: L("Settings ▸ General ▸ Language."),
+                tips: [L("LF Studios restarts to switch languages.")],
+                showMe: .settings(.general)
+            ),
+            GuideEntry(
+                id: "app-login", symbol: "power", title: L("Open at login"),
+                summary: L("Start LF Studios when you log in, so your shortcuts are always ready."),
+                location: L("Settings ▸ General ▸ Startup ▸ Launch LF Studios at login."),
+                showMe: .settings(.general)
+            ),
+            GuideEntry(
+                id: "app-menu-icon", symbol: "menubar.arrow.up.rectangle", title: L("Menu bar icon"),
+                summary: L("Show or hide the LF Studios icon in the menu bar."),
+                location: L("Settings ▸ General ▸ Menu Bar ▸ Show menu bar icon."),
+                tips: [L("If the menu bar is too full, macOS may hide the icon. Set an Open Command Center shortcut to reach the menu anyway.")],
+                showMe: .settings(.general),
+                related: ["trouble-menu-icon"]
+            ),
+            GuideEntry(
+                id: "app-updates", symbol: "arrow.triangle.2.circlepath", title: L("Updates"),
+                summary: L("LF Studios checks for a new version once a day. It shows what's new, and installs only when you click Install Update."),
+                location: L("LF Studios ▸ Check for Updates…, and Settings ▸ General ▸ Updates ▸ Check for updates automatically."),
+                points: [
+                    L("Install Update: downloads it, installs it, and reopens LF Studios."),
+                    L("Remind Me Later or Skip This Version: nothing changes."),
+                ],
+                tips: [L("Your projects, recordings, settings, and permissions stay as they are.")],
+                showMe: .settings(.general),
+                since: "1.4.1",
+                related: ["trouble-updates"]
+            ),
+            GuideEntry(
+                id: "app-files", symbol: "folder.badge.gearshape", title: L("Save folder, file names & format"),
+                summary: L("Choose where files are saved, what they're called, and the picture format."),
+                location: L("Settings ▸ Screenshots."),
+                points: [
+                    L("Save Location: the folder for saved screenshots and recordings (the Desktop to start with)."),
+                    L("File Name: a template with the date and time; Preview shows the result."),
+                    L("Export Format: PNG, JPEG (with a quality slider), or WebP."),
+                ],
+                showMe: .settings(.screenshots)
+            ),
+            GuideEntry(
+                id: "app-whisper", symbol: "arrow.down.circle", title: L("Whisper models"),
+                summary: L("Download or delete the models Whisper uses for captions."),
+                location: L("Settings ▸ General ▸ Whisper Models."),
+                tips: [L("Models are downloaded only when you click Download, and can be deleted to free up space.")],
+                showMe: .settings(.general),
+                since: "1.4.0",
+                related: ["captions-whisper"]
+            ),
+            GuideEntry(
+                id: "app-welcome", symbol: "hand.wave", title: L("Welcome checklist"),
+                summary: L("Three quick steps the first time you open LF Studios: allow Screen Recording, free up shortcuts, and take a test screenshot."),
+                location: L("Shows at launch until your first screenshot, or until you click Skip Setup.")
+            ),
+            GuideEntry(
+                id: "app-crash", symbol: "ladybug", title: L("Report a problem"),
+                summary: L("If LF Studios quit unexpectedly, it offers to report it next time it opens."),
+                location: L("The message after a crash ▸ Report on GitHub. Or Settings ▸ About ▸ Report Issue."),
+                tips: [L("You see the report before anything is sent, and you send it yourself.")],
+                showMe: .settings(.about)
+            ),
+        ]
+    }
 
     // MARK: - Privacy
 
