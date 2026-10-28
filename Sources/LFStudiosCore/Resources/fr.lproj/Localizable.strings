@@ -18,6 +18,8 @@
 	<string>%@ (⇧⌘Z)</string>
 	<key>%@ (⌘Z)</key>
 	<string>%@ (⌘Z)</string>
+	<key>%@ It's in “%@” and opens as before.</key>
+	<string>%@ Il se trouve dans « %@ » et s’ouvre comme avant.</string>
 	<key>%@ Loupe</key>
 	<string>Loupe %@</string>
 	<key>%@ Zoom</key>
@@ -88,6 +90,14 @@
 	<string>%@ — cliquez pour changer</string>
 	<key>%@ — click to jump here, double-click to rename</key>
 	<string>%@ — cliquez pour y aller, double-cliquez pour renommer</string>
+	<key>%@ — it was cut like the edit, so it can't be lined up with the recording again</key>
+	<string>%@ — il a été coupé comme le montage, il ne peut donc plus être aligné sur l’enregistrement</string>
+	<key>%@ — its lines don't match the captions</key>
+	<string>%@ — ses lignes ne correspondent pas aux sous-titres</string>
+	<key>%@ — only one camera video can be shown</key>
+	<string>%@ — une seule vidéo de caméra peut être affichée</string>
+	<key>%@ — separate sound files open as their own tracks in LF Studios 1.7</key>
+	<string>%@ — les fichiers son séparés s’ouvrent comme pistes distinctes dans LF Studios 1.7</string>
 	<key>%@ → %@ — the part you ⇧-dragged on the timeline</key>
 	<string>%@ → %@ — la partie sélectionnée avec ⇧ dans la timeline</string>
 	<key>%@, %@</key>
@@ -100,12 +110,16 @@
 	<string>%@–%@ uniquement</string>
 	<key>%lld files, about %@</key>
 	<string>%1$lld fichiers, environ %2$@</string>
+	<key>%lld markers</key>
+	<string>%lld marqueurs</string>
 	<key>%lld of %lld captures</key>
 	<string>%lld sur %lld captures</string>
 	<key>%lld px · Esc or Done finishes</key>
 	<string>%lld px · Échap ou « Terminé » pour finir</string>
 	<key>%lld s</key>
 	<string>%lld s</string>
+	<key>%lld screen clips, one after the other</key>
+	<string>%lld clips de l’écran, l’un après l’autre</string>
 	<key>%lld%%</key>
 	<string>%lld %%</string>
 	<key>%lld%% volume</key>
@@ -126,6 +140,12 @@
 	<string>0,1 s plus tôt</string>
 	<key>0.1s later</key>
 	<string>0,1 s plus tard</string>
+	<key>01 Screen: the screen recording. 02 Camera: the camera video, if you recorded one.</key>
+	<string>01 Screen : l’enregistrement de l’écran. 02 Camera : la vidéo de la caméra, si vous en avez enregistré une.</string>
+	<key>03 Audio: your microphone and the Mac's sound as separate files. 05 Captions: your captions, once you make them.</key>
+	<string>03 Audio : votre micro et le son du Mac dans des fichiers séparés. 05 Captions : vos sous-titres, une fois créés.</string>
+	<key>07 Data: the pointer, clicks, and keys. And README.txt, which says what each file is.</key>
+	<string>07 Data : le pointeur, les clics et les touches. Et README.txt, qui décrit chaque fichier.</string>
 	<key>A 2-second “Made with LF Studios” outro on your background — your own outro card is in Style</key>
 	<string>Un outro « Made with LF Studios » de 2 secondes sur votre arrière-plan — votre propre carton de fin se trouve dans Style</string>
 	<key>A README lists every file. Include speaker notes adds your notes.</key>
@@ -150,6 +170,8 @@
 	<string>Un fichier utilisé par le projet a été déplacé, supprimé, ou se trouve sur un autre Mac.</string>
 	<key>A file with that name is in the way. Pick another name and export again.</key>
 	<string>Un fichier portant ce nom existe déjà. Choisissez un autre nom, puis exportez à nouveau.</string>
+	<key>A folder with an LF Studios project in it opens that project, exactly as it was saved.</key>
+	<string>Un dossier contenant un projet LF Studios ouvre ce projet, exactement tel qu’il a été enregistré.</string>
 	<key>A hairline that separates dark recordings from the background</key>
 	<string>Un filet fin détache les enregistrements sombres de l’arrière-plan</string>
 	<key>A magnifier over one spot at the playhead; the rest of the frame stays in view</key>
@@ -354,6 +376,8 @@
 	<string>Après l’enregistrement</string>
 	<key>After recording, click Restore size to put it back.</key>
 	<string>Après l’enregistrement, cliquez sur Rétablir la taille pour la remettre comme avant.</string>
+	<key>After you stop, LF Studios asks where to save the recording, then puts everything from it in one new folder: the video, the camera, the sound, and the project that opens it all.</key>
+	<string>Quand vous arrêtez, LF Studios vous demande où enregistrer, puis place tout dans un nouveau dossier : la vidéo, la caméra, le son et le projet qui ouvre le tout.</string>
 	<key>Afterwards, click Restore size to put the window back.</key>
 	<string>Ensuite, cliquez sur Rétablir la taille pour remettre la fenêtre comme avant.</string>
 	<key>Aim by Hand</key>
@@ -412,6 +436,10 @@
 	<string>Toujours afficher la flèche</string>
 	<key>Amber Fold</key>
 	<string>Pli d’ambre</string>
+	<key>An LF Studios project: open the folder in LF Studios to edit the video again. With clips cut to your edit, Include originals so it reopens in LF Studios adds the untouched recordings it needs.</key>
+	<string>Un projet LF Studios : ouvrez le dossier dans LF Studios pour modifier à nouveau la vidéo. Si les clips sont coupés selon votre montage, Inclure les originaux pour rouvrir dans LF Studios ajoute les enregistrements intacts nécessaires.</string>
+	<key>An older Creative Handoff is put back together from its files: the screen, the cuts, the camera at its place, captions, markers, and the pointer. A summary says what came back.</key>
+	<string>Une ancienne Transmission créative est reconstituée à partir de ses fichiers : l’écran, les coupes, la caméra à sa place, les sous-titres, les marqueurs et le pointeur. Un résumé indique ce qui a été récupéré.</string>
 	<key>An optional 2-second “Made with LF Studios” card at the end.</key>
 	<string>Un écran « Made with LF Studios » facultatif de 2 secondes à la fin.</string>
 	<key>Angle</key>
@@ -432,6 +460,8 @@
 	<string>Une autre app utilise peut-être les mêmes touches : choisissez-en d’autres.</string>
 	<key>Any color…</key>
 	<string>Toute couleur…</string>
+	<key>Any other folder: Import Folder lists the videos. Choose which is the screen recording and which the camera, and when the camera starts.</key>
+	<string>Tout autre dossier : Importer le dossier liste les vidéos. Indiquez laquelle est l’enregistrement de l’écran, laquelle est la caméra, et quand la caméra commence.</string>
 	<key>App</key>
 	<string>App</string>
 	<key>Appearance</key>
@@ -492,6 +522,8 @@
 	<string>Queue de la flèche</string>
 	<key>Arrows, shapes &amp; lines</key>
 	<string>Flèches, formes et lignes</string>
+	<key>Ask where to save after each recording</key>
+	<string>Demander l’emplacement après chaque enregistrement</string>
 	<key>Aspect Ratio %@ — %@</key>
 	<string>Format %@ — %@</string>
 	<key>Aspect ratio</key>
@@ -534,8 +566,6 @@
 	<string>Réglage auto choisit les réglages pour vous ; Réinitialiser revient en arrière.</string>
 	<key>Auto-dismiss overlay</key>
 	<string>Masquer la vignette automatiquement</string>
-	<key>Auto-save folder</key>
-	<string>Dossier d’enregistrement automatique</string>
 	<key>Auto-zoom off — its zooms are gone. ⌘Z to undo</key>
 	<string>Zoom auto désactivé — ses zooms ont été retirés. ⌘Z pour annuler</string>
 	<key>Auto-zoom on clicks</key>
@@ -818,6 +848,8 @@
 	<string>Les sous-titres sont masqués dans l’éditeur (onglet Sous-titres → Afficher les sous-titres).</string>
 	<key>Captions from your narration — and cut the video by editing its words</key>
 	<string>Sous-titres tirés de votre narration — et montage de la vidéo par son texte</string>
+	<key>Captions in %@</key>
+	<string>Sous-titres en %@</string>
 	<key>Captions in the export</key>
 	<string>Sous-titres dans l’export</string>
 	<key>Captions look like this</key>
@@ -1004,6 +1036,10 @@
 	<string>Choisissez une Taille, une police, et En haut ou En bas. Ou faites glisser les touches sur l’aperçu.</string>
 	<key>Choose a folder and click Export Here.</key>
 	<string>Choisissez un dossier et cliquez sur Exporter ici.</string>
+	<key>Choose a folder with a screen recording in it, as an MP4 or MOV file.</key>
+	<string>Choisissez un dossier contenant un enregistrement de l’écran, au format MP4 ou MOV.</string>
+	<key>Choose a folder you can save to.</key>
+	<string>Choisissez un dossier dans lequel vous pouvez enregistrer.</string>
 	<key>Choose a language</key>
 	<string>Choisir une langue</string>
 	<key>Choose a language and click Translate.</key>
@@ -1012,6 +1048,8 @@
 	<string>Choisissez un logo, un filigrane ou une capture d’écran à placer sur la vidéo</string>
 	<key>Choose a picture.</key>
 	<string>Choisissez une image.</string>
+	<key>Choose a project, a folder, or a video</key>
+	<string>Choisissez un projet, un dossier ou une vidéo</string>
 	<key>Choose a recording or video to add after this one</key>
 	<string>Choisissez un enregistrement ou une vidéo à ajouter après celui-ci</string>
 	<key>Choose a size, or Custom Size… for your own.</key>
@@ -1024,14 +1062,10 @@
 	<string>Choisissez un style sous Apparence.</string>
 	<key>Choose a style.</key>
 	<string>Choisissez un style.</string>
-	<key>Choose a writable folder for auto-save.</key>
-	<string>Choisissez un dossier accessible en écriture pour l’enregistrement automatique.</string>
 	<key>Choose a writable folder.</key>
 	<string>Choisissez un dossier accessible en écriture.</string>
 	<key>Choose again with another speed to change them.</key>
 	<string>Choisissez de nouveau avec une autre vitesse pour les modifier.</string>
-	<key>Choose an LF Studios project</key>
-	<string>Choisissez un projet LF Studios</string>
 	<key>Choose between accurate and fast, and which languages to read.</key>
 	<string>Choisissez entre précision et rapidité, et les langues à lire.</string>
 	<key>Choose folder</key>
@@ -1054,6 +1088,8 @@
 	<string>Choisissez la vidéo de caméra à afficher dans la bulle</string>
 	<key>Choose the corner (Left or Right) and how long it stays in the same settings section. Hovering keeps it open.</key>
 	<string>Choisissez le coin (Gauche ou Droite) et sa durée d’affichage dans la même section des réglages. La survoler la garde ouverte.</string>
+	<key>Choose the screen recording, and the camera video if there is one. Nothing in the folder changes until you save.</key>
+	<string>Choisissez l’enregistrement de l’écran, et la vidéo de la caméra s’il y en a une. Rien ne change dans le dossier tant que vous n’enregistrez pas.</string>
 	<key>Choose the video's shape for where it's going.</key>
 	<string>Choisissez la forme de la vidéo selon sa destination.</string>
 	<key>Choose what happens after each screenshot or recording.</key>
@@ -1062,8 +1098,8 @@
 	<string>Choisissez ce que montre la bulle et donnez-lui une finition soignée.</string>
 	<key>Choose what to include, then click Choose Location….</key>
 	<string>Choisissez ce qu’il faut inclure, puis cliquez sur Choisir l’emplacement….</string>
-	<key>Choose where files are saved, what they're called, and the picture format.</key>
-	<string>Choisissez où les fichiers sont enregistrés, leur nom et le format d’image.</string>
+	<key>Choose where screenshots and recordings are saved, what they're called, and the picture format.</key>
+	<string>Choisissez où sont enregistrés les captures et les enregistrements, leur nom et le format d’image.</string>
 	<key>Choose where to put the handoff folder — any folder or drive</key>
 	<string>Choisissez où placer le dossier de transmission — n’importe quel dossier ou disque</string>
 	<key>Choose window</key>
@@ -1136,6 +1172,8 @@
 	<string>Cliquez sur Flou au-dessus de l’aperçu, ou appuyez sur B.</string>
 	<key>Click Camera in the recording bar. Choose the camera in ⋯ More recording options.</key>
 	<string>Cliquez sur Caméra dans la barre d’enregistrement. Choisissez la caméra dans ⋯ Autres options d’enregistrement.</string>
+	<key>Click Cancel, or turn off asking, and it goes in the Recording folder, laid out the same way. Nothing is ever lost.</key>
+	<string>Cliquez sur Annuler, ou désactivez la demande, et il va dans le Dossier des enregistrements, organisé de la même façon. Rien n’est jamais perdu.</string>
 	<key>Click Choose under the window you want.</key>
 	<string>Cliquez sur Choisir sous la fenêtre voulue.</string>
 	<key>Click Color for eight quick colors, or Custom… for any color.</key>
@@ -1624,6 +1662,8 @@
 	<string>Coupe, sans transition</string>
 	<key>Cutout</key>
 	<string>Détouré</string>
+	<key>Cuts and speed changes (%lld clips)</key>
+	<string>Coupes et changements de vitesse (%lld clips)</string>
 	<key>Dark Mode</key>
 	<string>Sombre</string>
 	<key>De-esser</key>
@@ -1682,8 +1722,6 @@
 	<string>Fondu au noir</string>
 	<key>Dips while you talk, comes back in the pauses</key>
 	<string>Baisse quand vous parlez, remonte pendant les pauses</string>
-	<key>Directory where screenshots are saved if Auto-Save is enabled.</key>
-	<string>Dossier où les captures sont enregistrées si l’enregistrement automatique est activé.</string>
 	<key>Disable Apple Shortcuts</key>
 	<string>Désactiver les raccourcis Apple</string>
 	<key>Disabled</key>
@@ -1876,6 +1914,8 @@
 	<string>Pendant un zoom, la vue suit votre pointeur, pour que ce que vous montrez reste dans l’image. L’aperçu affiche « La caméra suit votre pointeur » pendant ce temps.</string>
 	<key>Dusk</key>
 	<string>Crépuscule</string>
+	<key>Each recording in its own folder</key>
+	<string>Chaque enregistrement dans son propre dossier</string>
 	<key>Each recording keeps its own pointer, clicks, and shortcuts. Reorder them here; cut and trim them on the timeline like any clip.</key>
 	<string>Chaque enregistrement conserve son pointeur, ses clics et ses raccourcis. Réorganisez-les ici ; coupez-les et raccourcissez-les dans la timeline comme n’importe quel clip.</string>
 	<key>Each shape keeps its own version: switch back and forth without losing anything. Cuts, words, and styles stay shared.</key>
@@ -1996,6 +2036,8 @@
 	<string>Chaque partie de cette vidéo dans son propre fichier, dans un nouveau dossier — pour un autre monteur ou logiciel de montage.</string>
 	<key>Every part of your video as its own file, in one folder, for another editor or app.</key>
 	<string>Chaque élément de votre vidéo dans son propre fichier, dans un seul dossier, pour un autre monteur ou une autre app.</string>
+	<key>Every recording gets a folder of its own, with its project file, the screen and camera videos, the sound as separate files, and its data. With asking off, or when you click Cancel, it goes in the Recording folder.</key>
+	<string>Chaque enregistrement a son propre dossier, avec son fichier de projet, les vidéos de l’écran et de la caméra, le son dans des fichiers séparés, et ses données. Si la demande est désactivée, ou si vous cliquez sur Annuler, il va dans le Dossier des enregistrements.</string>
 	<key>Every recording, screenshot, and saved project in one place.</key>
 	<string>Tous vos enregistrements, captures et projets enregistrés au même endroit.</string>
 	<key>Every screenshot is kept in History and in Home ▸ Screenshots.</key>
@@ -2150,6 +2192,8 @@
 	<string>Fichier ▸ Transmission créative… (⇧⌘E), le bouton de la fenêtre d’export, ou un clic droit sur un enregistrement dans l’accueil.</string>
 	<key>Files are copied as they are wherever they can be. Only what has to change — clips cut to your edit, a camera with its background removed — is re-encoded to ProRes.</key>
 	<string>Les fichiers sont copiés tels quels partout où c’est possible. Seul ce qui doit changer — les clips coupés selon votre montage, une caméra sans arrière-plan — est réencodé en ProRes.</string>
+	<key>Files move only once the recording is finished and checked. If something goes wrong, the recording stays where it was.</key>
+	<string>Les fichiers ne sont déplacés qu’une fois l’enregistrement terminé et vérifié. En cas de problème, l’enregistrement reste où il était.</string>
 	<key>Fill the Frame, Follow the Cursor</key>
 	<string>Remplir le cadre et suivre le pointeur</string>
 	<key>Fill the frame, follow the cursor</key>
@@ -2232,6 +2276,8 @@
 	<string>Inverser comme un selfie</string>
 	<key>Float a screenshot above all your windows, as a reference while you work.</key>
 	<string>Faites flotter une capture au-dessus de toutes vos fenêtres, comme référence pendant que vous travaillez.</string>
+	<key>Folder name:</key>
+	<string>Nom du dossier :</string>
 	<key>Follow Cursor</key>
 	<string>Suivre le pointeur</string>
 	<key>Follow Typing</key>
@@ -2574,10 +2620,14 @@
 	<string>Si vous ne répondez pas dans les quelques secondes, l’enregistrement est conservé, au cas où.</string>
 	<key>If your Mac crashes or loses power while recording, LF Studios saves what it can.</key>
 	<string>Si votre Mac plante ou s’éteint pendant un enregistrement, LF Studios sauve ce qu’il peut.</string>
+	<key>Ignore</key>
+	<string>Ignorer</string>
 	<key>Image</key>
 	<string>Image</string>
 	<key>Images &amp; logos</key>
 	<string>Images et logos</string>
+	<key>Import Folder</key>
+	<string>Importer le dossier</string>
 	<key>Import Presets…</key>
 	<string>Importer des préréglages…</string>
 	<key>Imported Preset</key>
@@ -2666,10 +2716,14 @@
 	<string>Inclure les médias (fonctionne sur tout Mac)</string>
 	<key>Include media: the project opens on any Mac.</key>
 	<string>Inclure les médias : le projet s’ouvre sur n’importe quel Mac.</string>
+	<key>Include originals so it reopens in LF Studios</key>
+	<string>Inclure les originaux pour rouvrir dans LF Studios</string>
 	<key>Include speaker notes</key>
 	<string>Inclure les notes de l’orateur</string>
 	<key>Include the finished video</key>
 	<string>Inclure la vidéo finale</string>
+	<key>Includes %@ of originals for the LF Studios project</key>
+	<string>Inclut %@ d’originaux pour le projet LF Studios</string>
 	<key>Includes: %@</key>
 	<string>Contenu : %@</string>
 	<key>Inset</key>
@@ -2698,8 +2752,8 @@
 	<string>Carton d’intro, de %@ à %@</string>
 	<key>Iris</key>
 	<string>Iris</string>
-	<key>It checks the free space first. Cancel removes the half-made folder.</key>
-	<string>L’espace libre est vérifié d’abord. Annuler supprime le dossier à moitié créé.</string>
+	<key>It checks the free space first, and shows how much the originals add. Cancel removes the half-made folder.</key>
+	<string>L’espace libre est vérifié d’abord, avec la taille ajoutée par les originaux. Annuler supprime le dossier en partie créé.</string>
 	<key>It happens by itself. The bar while recording shows a short note, and a notice explains it.</key>
 	<string>Cela se fait tout seul. La barre d’enregistrement affiche une courte note, et un message explique ce qui s’est passé.</string>
 	<key>It isn't an LF Studios project, or it's damaged.</key>
@@ -2734,6 +2788,8 @@
 	<string>C’est votre Mon style : « Appliquer mon style » n’aura rien à appliquer tant que vous n’en choisissez pas un autre. Les vidéos qui utilisent ce préréglage gardent leur apparence.</string>
 	<key>Its own arrow, text and hand pointers, drawn for the video.</key>
 	<string>Ses propres pointeurs flèche, texte et main, dessinés pour la vidéo.</string>
+	<key>Its screen recording can't be read.</key>
+	<string>Son enregistrement de l’écran est illisible.</string>
 	<key>JPEG Quality</key>
 	<string>Qualité JPEG</string>
 	<key>Jump here</key>
@@ -2974,6 +3030,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Écoute…</string>
 	<key>Listens on this Mac — nothing is uploaded</key>
 	<string>L’écoute se fait sur ce Mac — rien n’est envoyé</string>
+	<key>Loaded:</key>
+	<string>Chargé :</string>
 	<key>Locate…</key>
 	<string>Localiser…</string>
 	<key>Look</key>
@@ -3150,6 +3208,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Plus tôt</string>
 	<key>Move later</key>
 	<string>Plus tard</string>
+	<key>Move or rename the folder in Finder as you like, or copy it to another Mac: it still opens.</key>
+	<string>Déplacez ou renommez le dossier dans le Finder comme vous le souhaitez, ou copiez-le sur un autre Mac : il s’ouvre toujours.</string>
 	<key>Move the Camera Instead</key>
 	<string>Déplacer plutôt la caméra</string>
 	<key>Move the Camera Instead: slides the bubble to a free corner during that zoom.</key>
@@ -3172,8 +3232,12 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Placez le pointeur sur une fenêtre : elle s’illumine.</string>
 	<key>Move the pointer over the window you want: it lights up.</key>
 	<string>Placez le pointeur sur la fenêtre voulue : elle s’illumine.</string>
+	<key>Move to Trash</key>
+	<string>Placer dans la corbeille</string>
 	<key>Move to where it ends and press S again.</key>
 	<string>Allez à la fin de l’erreur et appuyez de nouveau sur S.</string>
+	<key>Move “%@” to the Trash?</key>
+	<string>Placer « %@ » dans la corbeille ?</string>
 	<key>Moved clear of the camera bubble.</key>
 	<string>Décalé hors de la bulle de caméra.</string>
 	<key>Moved to the Trash</key>
@@ -3412,12 +3476,18 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Pas assez de place : la transmission demande environ %1$@ et il reste %2$@ à cet endroit.</string>
 	<key>Not for this video</key>
 	<string>Pas pour cette vidéo</string>
+	<key>Not loaded:</key>
+	<string>Non chargé :</string>
 	<key>Not now</key>
 	<string>Plus tard</string>
 	<key>Not set</key>
 	<string>Non défini</string>
 	<key>Nothing in the Guide matches your search. Try a shorter word, like “zoom” or “camera”.</key>
 	<string>Rien dans le guide ne correspond à votre recherche. Essayez un mot plus court, comme « zoom » ou « caméra ».</string>
+	<key>Nothing in the folder changes until you save (⌘S).</key>
+	<string>Rien ne change dans le dossier tant que vous n’enregistrez pas (⌘S).</string>
+	<key>Nothing in the folder changes until you save (⌘S). Saving writes the project into the folder.</key>
+	<string>Rien ne change dans le dossier tant que vous n’enregistrez pas (⌘S). L’enregistrement écrit le projet dans le dossier.</string>
 	<key>Nothing is ticked or blurred until you choose. Everything stays on your Mac.</key>
 	<string>Rien n’est coché ni flouté tant que vous ne l’avez pas choisi. Tout reste sur votre Mac.</string>
 	<key>Nothing is uploaded. The first time, macOS may download the language, which needs the internet once.</key>
@@ -3520,10 +3590,6 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Ouvrir Confidentialité et sécurité</string>
 	<key>Open Project as Saved</key>
 	<string>Ouvrir le projet enregistré</string>
-	<key>Open Project…</key>
-	<string>Ouvrir un projet…</string>
-	<key>Open Project… in Home, File ▸ Open Project… (⌘O), or double-click the project in Finder.</key>
-	<string>Ouvrir un projet… dans l’accueil, Fichier ▸ Ouvrir un projet… (⌘O), ou double-cliquez sur le projet dans le Finder.</string>
 	<key>Open Recording Settings…</key>
 	<string>Ouvrir les réglages d’enregistrement…</string>
 	<key>Open Settings</key>
@@ -3540,20 +3606,24 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Ouvrez Timeline.fcpxml dans Final Cut Pro ou DaVinci Resolve, ou “Timeline (Premiere).xml” dans Premiere Pro.</string>
 	<key>Open Video Editor</key>
 	<string>Ouvrir l’éditeur vidéo</string>
-	<key>Open a .lfstudios project</key>
-	<string>Ouvrir un projet .lfstudios</string>
+	<key>Open a folder of files as one project: a recording's folder, a Creative Handoff, or any folder with videos in it.</key>
+	<string>Ouvrez un dossier de fichiers comme un seul projet : le dossier d’un enregistrement, une Transmission créative ou tout dossier contenant des vidéos.</string>
 	<key>Open a project</key>
 	<string>Ouvrir un projet</string>
+	<key>Open a project, a recording's folder, a Creative Handoff, or a video</key>
+	<string>Ouvrir un projet, le dossier d’un enregistrement, une Transmission créative ou une vidéo</string>
 	<key>Open a recording in the video editor first, then click Show me.</key>
 	<string>Ouvrez d’abord un enregistrement dans l’éditeur vidéo, puis cliquez sur Me montrer.</string>
 	<key>Open a recording, or any MP4 or MOV video, in the video editor.</key>
 	<string>Ouvrez un enregistrement, ou n’importe quelle vidéo MP4 ou MOV, dans l’éditeur vidéo.</string>
-	<key>Open a saved .lfstudios project.</key>
-	<string>Ouvrez un projet .lfstudios enregistré.</string>
+	<key>Open a saved .lfstudios project, a recording's folder, or a video.</key>
+	<string>Ouvrez un projet .lfstudios enregistré, le dossier d’un enregistrement ou une vidéo.</string>
 	<key>Open a screenshot from Home, History, or the preview after capture. The tools are in the toolbar at the top.</key>
 	<string>Ouvrez une capture depuis l’accueil, l’historique ou l’aperçu après la capture. Les outils se trouvent dans la barre d’outils en haut.</string>
 	<key>Open a screenshot to mark it up, then copy or save the result.</key>
 	<string>Ouvrez une capture pour l’annoter, puis copiez ou enregistrez le résultat.</string>
+	<key>Open a whole folder</key>
+	<string>Ouvrir un dossier entier</string>
 	<key>Open and close</key>
 	<string>Ouverture et fermeture</string>
 	<key>Open at login</key>
@@ -3576,6 +3646,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Ouvrir l’éditeur vidéo après l’enregistrement.</string>
 	<key>Open video…</key>
 	<string>Ouvrir une vidéo…</string>
+	<key>Opened “%@”</key>
+	<string>« %@ » ouvert</string>
 	<key>Opening a video</key>
 	<string>Ouvrir une vidéo</string>
 	<key>Opening, saving, copying &amp; undo</key>
@@ -3584,6 +3656,12 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Ouvre son titre et sa durée dans Style</string>
 	<key>Opens its volume, fades, and ducking in Audio</key>
 	<string>Ouvre son volume, ses fondus et son atténuation dans Audio</string>
+	<key>Open…</key>
+	<string>Ouvrir…</string>
+	<key>Open… in Home or File ▸ Open… (⌘O), and choose the folder. Or drop the folder on the Home window or the LF Studios icon in the Dock.</key>
+	<string>Ouvrir… dans l’accueil ou Fichier ▸ Ouvrir… (⌘O), puis choisissez le dossier. Ou déposez le dossier sur la fenêtre d’accueil ou sur l’icône LF Studios dans le Dock.</string>
+	<key>Open… in Home, File ▸ Open… (⌘O), or double-click the project in Finder.</key>
+	<string>Ouvrir… dans l’accueil, Fichier ▸ Ouvrir… (⌘O), ou double-cliquez sur le projet dans le Finder.</string>
 	<key>Optional: type words to look for too, like a client's name.</key>
 	<string>Facultatif : saisissez aussi des mots à rechercher, comme le nom d’un client.</string>
 	<key>Optional: type words to look for, and turn on Also scan the camera video.</key>
@@ -4016,6 +4094,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Enregistrement supprimé</string>
 	<key>Recording failed before saving.</key>
 	<string>L’enregistrement a échoué avant d’être sauvegardé.</string>
+	<key>Recording folder</key>
+	<string>Dossier des enregistrements</string>
 	<key>Recording keyboard shortcuts</key>
 	<string>Enregistrement des raccourcis clavier</string>
 	<key>Recording paused — click to stop (%@)</key>
@@ -4532,8 +4612,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Clic droit sur un projet dans l’accueil ▸ Supprimer : il va dans la corbeille.</string>
 	<key>Right-click a zoom on the timeline for quick changes.</key>
 	<string>Faites un clic droit sur un zoom dans la timeline pour des modifications rapides.</string>
-	<key>Right-click for Open, Show in Finder, Creative Handoff…, or Delete (moves it to the Trash).</key>
-	<string>Clic droit pour Ouvrir, Afficher dans le Finder, Transmission créative… ou Supprimer (le place dans la corbeille).</string>
+	<key>Right-click for Open, Show in Finder, Creative Handoff…, or Delete (moves it to the Trash; for a recording's folder, the whole folder, after asking).</key>
+	<string>Clic droit pour Ouvrir, Afficher dans le Finder, Transmission créative… ou Supprimer (place l’élément dans la corbeille ; pour le dossier d’un enregistrement, le dossier entier, après confirmation).</string>
 	<key>Right-click for Save As…, Pin to Screen, and Delete.</key>
 	<string>Clic droit pour Enregistrer sous…, Épingler à l’écran et Supprimer.</string>
 	<key>Right-click it for Copy, Save As…, Edit, Close Pin, or Close All Pins.</key>
@@ -4572,12 +4652,12 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Dossier d’enregistrement</string>
 	<key>Save Location</key>
 	<string>Emplacement d’enregistrement</string>
-	<key>Save Location: the folder for saved screenshots and recordings (the Desktop to start with).</key>
-	<string>Emplacement d’enregistrement : le dossier des captures et enregistrements sauvegardés (le Bureau au départ).</string>
 	<key>Save Project</key>
 	<string>Enregistrer le projet</string>
 	<key>Save Project As…</key>
 	<string>Enregistrer le projet sous…</string>
+	<key>Save Recording</key>
+	<string>Sauvegarder l’enregistrement</string>
 	<key>Save Subtitles</key>
 	<string>Enregistrer les sous-titres</string>
 	<key>Save Subtitles (.srt)…</key>
@@ -4606,8 +4686,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Enregistrer les modifications de cette capture ?</string>
 	<key>Save folder updated.</key>
 	<string>Dossier d’enregistrement mis à jour.</string>
-	<key>Save folder, file names &amp; format</key>
-	<string>Dossier, noms de fichiers et format</string>
+	<key>Save folders, file names &amp; format</key>
+	<string>Dossiers, noms de fichiers et format</string>
 	<key>Save just the sound, with the same mix and loudness as the video.</key>
 	<string>Enregistrez seulement le son, avec le même mixage et le même volume que la vidéo.</string>
 	<key>Save screenshot to disk</key>
@@ -4636,6 +4716,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Enregistré dans « %@ » : %@</string>
 	<key>Saved to History</key>
 	<string>Enregistré dans l’historique</string>
+	<key>Saved to “%@” in %@</key>
+	<string>Enregistré dans « %@ », dans %@</string>
 	<key>Saved “%@”</key>
 	<string>« %@ » enregistré</string>
 	<key>Saves %@ — only silences where nothing happens on screen</key>
@@ -4654,6 +4736,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Ne conserve que l’instant de chaque frappe : jamais la touche, et rien pendant l’utilisation d’un champ de mot de passe.</string>
 	<key>Save…</key>
 	<string>Enregistrer…</string>
+	<key>Saving</key>
+	<string>Sauvegarde</string>
 	<key>Saving captures to History</key>
 	<string>Ajout des captures à l’historique</string>
 	<key>Saving project…</key>
@@ -4678,6 +4762,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Autorisation d’enregistrement de l’écran requise</string>
 	<key>Screen clips, camera, voice, computer sound, music, pictures, captions, and fonts.</key>
 	<string>Clips de l’écran, caméra, voix, son de l’ordinateur, musique, images, sous-titres et polices.</string>
+	<key>Screen recording</key>
+	<string>Enregistrement de l’écran</string>
 	<key>Screen recording didn't start in time. Try again.</key>
 	<string>L’enregistrement de l’écran n’a pas démarré à temps. Réessayez.</string>
 	<key>Screen recording “%@” — the file is missing</key>
@@ -4690,6 +4776,10 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Capture d’écran effectuée</string>
 	<key>Screenshot editor</key>
 	<string>Éditeur de captures</string>
+	<key>Screenshot folder</key>
+	<string>Dossier des captures</string>
+	<key>Screenshot folder (Settings ▸ Screenshots): where screenshots are saved. Recording folder (Settings ▸ Recording): where recordings go when you don't choose. Both start as the folder you used before, or the Desktop.</key>
+	<string>Dossier des captures (Réglages ▸ Captures) : où sont enregistrées les captures. Dossier des enregistrements (Réglages ▸ Enregistrement) : où vont les enregistrements quand vous ne choisissez pas. Au départ, les deux sont le dossier utilisé auparavant, ou le Bureau.</string>
 	<key>Screenshot selection</key>
 	<string>Sélection pour la capture d’écran</string>
 	<key>Screenshot thumbnail</key>
@@ -4862,8 +4952,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Réglages ▸ Captures ▸ Reconnaissance de texte.</string>
 	<key>Settings ▸ Screenshots ▸ Window Capture adds a soft shadow and some transparent space around the window. It's on to start with.</key>
 	<string>Réglages ▸ Captures ▸ Capture de fenêtre ajoute une ombre douce et un peu d’espace transparent autour de la fenêtre. C’est activé au départ.</string>
-	<key>Settings ▸ Screenshots.</key>
-	<string>Réglages ▸ Captures.</string>
+	<key>Settings ▸ Screenshots, and Settings ▸ Recording ▸ Saving.</key>
+	<string>Réglages ▸ Captures, et Réglages ▸ Enregistrement ▸ Sauvegarde.</string>
 	<key>Settings ▸ Shortcuts.</key>
 	<string>Réglages ▸ Raccourcis.</string>
 	<key>Settings…</key>
@@ -5064,10 +5154,14 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Couleur unie</string>
 	<key>Solid color</key>
 	<string>Couleur unie</string>
+	<key>Some files couldn't be written — README.txt in the folder lists them</key>
+	<string>Certains fichiers n’ont pas pu être écrits — README.txt dans le dossier les liste</string>
 	<key>Something not working? Find the problem, then try the fixes in order.</key>
 	<string>Quelque chose ne marche pas ? Trouvez le problème, puis essayez les solutions dans l’ordre.</string>
 	<key>Sound</key>
 	<string>Son</string>
+	<key>Sound files can be added as tracks of their own in LF Studios 1.7.</key>
+	<string>Les fichiers son pourront être ajoutés comme pistes distinctes dans LF Studios 1.7.</string>
 	<key>Sounds</key>
 	<string>Sons</string>
 	<key>Space</key>
@@ -5176,6 +5270,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Démarrer, puis appuyer de nouveau pour finir</string>
 	<key>Starts</key>
 	<string>Début</string>
+	<key>Starts after the screen by</key>
+	<string>Décalage après l’écran :</string>
 	<key>Startup</key>
 	<string>Démarrage</string>
 	<key>Step %lld</key>
@@ -5378,6 +5474,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Le menu LF Studios dans la barre des menus ▸ Scanner un code QR.</string>
 	<key>The LF Studios menu in the menu bar ▸ Timed Capture.</key>
 	<string>Le menu LF Studios dans la barre des menus ▸ Capture avec minuteur.</string>
+	<key>The LF Studios project — it needs the original files: turn on Include originals so it reopens in LF Studios</key>
+	<string>Le projet LF Studios — il a besoin des fichiers originaux : activez Inclure les originaux pour rouvrir dans LF Studios</string>
 	<key>The Undo and Redo buttons in the editor's toolbar.</key>
 	<string>Les boutons Annuler et Rétablir dans la barre d’outils de l’éditeur.</string>
 	<key>The aspect ratio menu in the video editor's toolbar.</key>
@@ -5408,6 +5506,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Impossible de lire la vidéo de la caméra</string>
 	<key>The camera video couldn't be read, so no face could be found.</key>
 	<string>Impossible de lire la vidéo de la caméra : aucun visage n’a pu être trouvé.</string>
+	<key>The camera, %@ after the screen</key>
+	<string>La caméra, %@ après l’écran</string>
 	<key>The cards use the same background as your video. Pick their font with the font menu.</key>
 	<string>Les cartons utilisent le même arrière-plan que votre vidéo. Choisissez leur police avec le menu des polices.</string>
 	<key>The clips lane on the timeline, and the Timeline menu.</key>
@@ -5434,6 +5534,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>La première fois, macOS demande l’autorisation d’utiliser le micro.</string>
 	<key>The flag button in the bar while recording.</key>
 	<string>Le bouton drapeau dans la barre pendant l’enregistrement.</string>
+	<key>The folder couldn't be made: %@</key>
+	<string>Impossible de créer le dossier : %@</string>
 	<key>The font menu next to captions, text, title cards, and Keys on screen.</key>
 	<string>Le menu des polices à côté des sous-titres, du texte, des cartons de titre et de Touches à l’écran.</string>
 	<key>The handoff is ready</key>
@@ -5462,6 +5564,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Le micro était désactivé, coupé ou non autorisé.</string>
 	<key>The model downloads once from Hugging Face. After that, Whisper works offline, and your recording is never uploaded.</key>
 	<string>Le modèle est téléchargé une seule fois depuis Hugging Face. Ensuite, Whisper fonctionne hors ligne, et votre enregistrement n’est jamais envoyé.</string>
+	<key>The music</key>
+	<string>La musique</string>
 	<key>The notes never appear in a recording, a screenshot, or screen sharing.</key>
 	<string>Les notes n’apparaissent jamais dans un enregistrement, une capture ou un partage d’écran.</string>
 	<key>The notes you read from while recording, kept with the video.</key>
@@ -5478,12 +5582,20 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>L’image est aussi enregistrée dans l’historique, pour que vous puissiez rechercher son texte plus tard.</string>
 	<key>The picture's file is gone — choose it again with Replace.</key>
 	<string>Le fichier de l’image a disparu — choisissez-le à nouveau avec Remplacer.</string>
+	<key>The pictures in 04 Graphics — older handoffs don't say where they were placed</key>
+	<string>Les images de 04 Graphics — les anciennes transmissions n’indiquent pas où elles étaient placées</string>
+	<key>The pointer data — it fits only an uncut recording</key>
+	<string>Les données du pointeur — elles ne correspondent qu’à un enregistrement non coupé</string>
 	<key>The pointer glides back to where it started at the end, so the video loops without a jump.</key>
 	<string>Le pointeur revient en glissant à son point de départ à la fin, pour que la vidéo boucle sans saut.</string>
 	<key>The pointer glides back to where it started, so the video loops without a jump</key>
 	<string>Le pointeur revient en glissant à son point de départ, pour que la vidéo boucle sans saut</string>
+	<key>The pointer, clicks, and keyboard shortcuts</key>
+	<string>Le pointeur, les clics et les raccourcis clavier</string>
 	<key>The preview shows only when Show the preview after capture is on in Settings ▸ General.</key>
 	<string>L’aperçu n’apparaît que si Afficher l’aperçu après la capture est activé dans Réglages ▸ Général.</string>
+	<key>The project file opens everything again, exactly as you left it. LF Studios keeps it up to date as you edit.</key>
+	<string>Le fichier de projet rouvre tout, exactement comme vous l’avez laissé. LF Studios le tient à jour pendant que vous modifiez.</string>
 	<key>The recording bar</key>
 	<string>La barre d’enregistrement</string>
 	<key>The recording bar, the camera bubble preview, Speaker notes, the countdown, and notices.</key>
@@ -5494,12 +5606,20 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>L’enregistrement de « %@ » est introuvable</string>
 	<key>The recording has no voice, the language isn't ready, or a permission is off.</key>
 	<string>L’enregistrement ne contient pas de voix, la langue n’est pas prête, ou une autorisation est désactivée.</string>
+	<key>The recording isn't where it was saved.</key>
+	<string>L’enregistrement n’est plus là où il a été enregistré.</string>
+	<key>The recording stayed where it was</key>
+	<string>L’enregistrement est resté où il était</string>
 	<key>The recording's file can't be found — it may have been moved or deleted. Put it back and export again.</key>
 	<string>Le fichier de l’enregistrement est introuvable — il a peut-être été déplacé ou supprimé. Remettez-le en place, puis exportez à nouveau.</string>
 	<key>The red stop button in the bar while recording, or the red timer in the menu bar.</key>
 	<string>Le bouton d’arrêt rouge dans la barre pendant l’enregistrement, ou le minuteur rouge dans la barre des menus.</string>
 	<key>The save panel did not return a destination. Please try saving again.</key>
 	<string>La zone de dialogue d’enregistrement n’a renvoyé aucune destination. Veuillez réessayer.</string>
+	<key>The save window appears after each recording. Settings ▸ Recording ▸ Saving has Ask where to save after each recording and the Recording folder.</key>
+	<string>La fenêtre d’enregistrement apparaît après chaque enregistrement. Réglages ▸ Enregistrement ▸ Sauvegarde contient Demander l’emplacement après chaque enregistrement et le Dossier des enregistrements.</string>
+	<key>The screen recording</key>
+	<string>L’enregistrement de l’écran</string>
 	<key>The screenshot has no image data.</key>
 	<string>La capture ne contient aucune donnée d’image.</string>
 	<key>The screenshot is taken when it reaches zero.</key>
@@ -5528,6 +5648,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Le fichier du morceau a disparu — choisissez-le à nouveau avec Remplacer.</string>
 	<key>The sound couldn't be read. Export again.</key>
 	<string>Impossible de lire le son. Exportez de nouveau.</string>
+	<key>The sound recorded with the screen</key>
+	<string>Le son enregistré avec l’écran</string>
 	<key>The text is now on the clipboard: paste it anywhere with ⌘V.</key>
 	<string>Le texte est maintenant dans le presse-papiers : collez-le où vous voulez avec ⌘V.</string>
 	<key>The timeline at the bottom of the video editor.</key>
@@ -5554,6 +5676,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>La vidéo, dans votre dossier d’enregistrement, et la vidéo de la caméra, si la caméra était activée.</string>
 	<key>The voice track is empty, so there's nothing to clean up. Turn off Enhance voice to keep the original sound.</key>
 	<string>La piste vocale est vide : il n’y a rien à nettoyer. Désactivez Améliorer la voix pour garder le son d’origine.</string>
+	<key>The whole folder goes to the Trash: the recording, its camera video, its sound files, captions, and project.</key>
+	<string>Le dossier entier va dans la corbeille : l’enregistrement, sa vidéo de caméra, ses fichiers son, ses sous-titres et son projet.</string>
 	<key>The whole frame zooms in.</key>
 	<string>Toute l’image zoome.</string>
 	<key>The whole mix at −16 LUFS, peaks under −1 dB</key>
@@ -5576,6 +5700,10 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Il y a déjà un zoom ici</string>
 	<key>There's no video in this file</key>
 	<string>Ce fichier ne contient pas de vidéo</string>
+	<key>There's no video in “%@”</key>
+	<string>Aucune vidéo dans « %@ »</string>
+	<key>There's no video to use as the screen recording.</key>
+	<string>Aucune vidéo ne peut servir d’enregistrement de l’écran.</string>
 	<key>There's nothing to write</key>
 	<string>Il n’y a rien à écrire</string>
 	<key>These settings are used by Capture Text, Copy Text, and History search.</key>
@@ -6302,6 +6430,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Ce que LF Studios conserve, et ce qu’il ne fait jamais.</string>
 	<key>What a recording keeps</key>
 	<string>Ce que conserve un enregistrement</string>
+	<key>What is each file in “%@”?</key>
+	<string>À quoi sert chaque fichier de « %@ » ?</string>
 	<key>What was playing on your Mac</key>
 	<string>Ce qui était diffusé sur votre Mac</string>
 	<key>What's New</key>
@@ -6320,6 +6450,10 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Quand vous avez fini, cliquez sur le bouton d’arrêt rouge ou appuyez sur ⌃⌘Esc.</string>
 	<key>Whenever you capture or record an area.</key>
 	<string>Chaque fois que vous capturez ou enregistrez une zone.</string>
+	<key>Where do you want to save this recording?</key>
+	<string>Où voulez-vous sauvegarder cet enregistrement ?</string>
+	<key>Where screenshots are saved: by Save on the preview after capture, and by Save automatically. Recordings have their own folder in Settings ▸ Recording.</key>
+	<string>Où sont enregistrées les captures : avec Enregistrer dans l’aperçu après la capture, et avec Enregistrer automatiquement. Les enregistrements ont leur propre dossier dans Réglages ▸ Enregistrement.</string>
 	<key>Where the pointer went, and where you clicked.</key>
 	<string>Le trajet du pointeur, et les endroits où vous avez cliqué.</string>
 	<key>Where to find it</key>
@@ -6378,6 +6512,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Avec une transcription, vous pouvez aussi couper en supprimant des mots : Sous-titres ▸ Montage par texte.</string>
 	<key>With more than one screen, click Record next to the one you want.</key>
 	<string>Avec plusieurs écrans, cliquez sur Enregistrer à côté de celui que vous voulez.</string>
+	<key>With the LF Studios project, the folder opens the whole edit again. Clips cut to your edit need the untouched recordings alongside.</key>
+	<string>Avec le projet LF Studios, le dossier rouvre tout le montage. Les clips coupés selon votre montage ont besoin des enregistrements intacts à côté.</string>
 	<key>Words light up as they're spoken</key>
 	<string>Les mots s’allument au fil de la parole</string>
 	<key>Works best with Record when keys are pressed on while recording. For older recordings, LF Studios guesses from the screen and says so.</key>
@@ -6530,6 +6666,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Des zooms qui suivent le curseur de texte pendant la saisie</string>
 	<key>Zooms that follow your text cursor while you type, so viewers can read along.</key>
 	<string>Des zooms qui suivent votre curseur de texte pendant que vous tapez, pour que les spectateurs puissent lire en même temps.</string>
+	<key>Zooms, styles, annotations, and title cards — older handoffs don't include them</key>
+	<string>Zooms, styles, annotations et cartons de titre — les anciennes transmissions ne les incluent pas</string>
 	<key>a table</key>
 	<string>un tableau</string>
 	<key>a transparent background</key>
@@ -6660,6 +6798,8 @@ Vous pouvez réactiver les raccourcis d’Apple à tout moment dans Réglages Sy
 	<string>« %@ » est introuvable. Remettez-le à son emplacement, ou retirez-le de cette vidéo (Style → Enregistrements), puis exportez à nouveau.</string>
 	<key>“%@” can't be read — it may be damaged, still being saved, or in a format this Mac can't play. Remove it from this video (Style → Recordings), or put a working copy in its place, then export again.</key>
 	<string>« %@ » ne peut pas être lu — il est peut-être endommagé, encore en cours d’enregistrement, ou dans un format que ce Mac ne peut pas lire. Retirez-le de cette vidéo (Style → Enregistrements), ou remplacez-le par une copie qui fonctionne, puis exportez à nouveau.</string>
+	<key>“%@” couldn't be moved: %@</key>
+	<string>Impossible de déplacer « %@ » : %@</string>
 	<key>“%@” doesn't let this window be resized.</key>
 	<string>« %@ » ne permet pas de redimensionner cette fenêtre.</string>
 	<key>“%@” found in %lld of %lld captures</key>
