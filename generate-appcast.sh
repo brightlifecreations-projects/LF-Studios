@@ -1,4 +1,14 @@
 #!/bin/bash
+# The update feed (appcast.xml) for one release, signed with the Sparkle key
+# in this Mac's Keychain. publish-release.sh runs it; it uploads nothing.
+#
+#   bash generate-appcast.sh <version> /path/to/LF-Studios.zip
+#
+# Writes appcast.xml (and the update window's notes, from that version's
+# CHANGELOG section) next to the zip. The zip's download link is the
+# version's release on the public releases repo, where publish-release.sh
+# uploads it with appcast.xml; the app's SUFeedURL reads appcast.xml from the
+# latest release there.
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
@@ -9,36 +19,14 @@ if [ -f "$SCRIPT_DIR/.env.local" ]; then
     set +a
 fi
 
-DMG_PATH="${1:-${LFSTUDIOS_DMG_PATH:-}}"
-DOWNLOAD_DIR="${LFSTUDIOS_RELEASE_DIR:-$SCRIPT_DIR/release}"
+VERSION="${1:-}"
+ZIP_PATH="${2:-}"
 APPCAST_BIN="${LFSTUDIOS_GENERATE_APPCAST_BIN:-$SCRIPT_DIR/.build/artifacts/sparkle/Sparkle/bin/generate_appcast}"
 SPARKLE_ACCOUNT="${LFSTUDIOS_SPARKLE_ACCOUNT:-ed25519}"
-DOWNLOAD_URL_PREFIX="${LFSTUDIOS_DOWNLOAD_URL_PREFIX:-https://github.com/brightlifecreations-projects/LF-Studios/releases/latest/download/}"
-RELEASE_NOTES_URL_PREFIX="${LFSTUDIOS_RELEASE_NOTES_URL_PREFIX:-https://github.com/brightlifecreations-projects/LF-Studios/releases/latest/download/}"
+RELEASES_REPO_URL="${LFSTUDIOS_RELEASES_REPO_URL:-https://github.com/brightlifecreations-projects/LF-Studios-Releases}"
 
-usage() {
-    cat <<'EOF'
-Usage: bash generate-appcast.sh /path/to/LF Studios-v<version>-macOS.dmg
-
-Copies the notarized DMG into ./release, creates a matching Markdown
-release-notes file when needed, and runs Sparkle generate_appcast. Upload the
-DMG, the .md notes and appcast.xml to the latest GitHub release: the app's
-feed is https://github.com/brightlifecreations-projects/LF-Studios/releases/latest/download/appcast.xml
-
-Optional environment:
-  LFSTUDIOS_RELEASE_NOTES_FILE="/absolute/path/to/release-notes.md"
-  LFSTUDIOS_GENERATE_APPCAST_BIN="/absolute/path/to/generate_appcast"
-  LFSTUDIOS_SPARKLE_ACCOUNT="ed25519"
-EOF
-}
-
-if [ "${1:-}" = "--help" ] || [ "${1:-}" = "-h" ]; then
-    usage
-    exit 0
-fi
-
-if [ -z "$DMG_PATH" ] || [ ! -f "$DMG_PATH" ]; then
-    usage
+if [ -z "$VERSION" ] || [ -z "$ZIP_PATH" ] || [ ! -f "$ZIP_PATH" ]; then
+    echo "Usage: bash generate-appcast.sh <version> /path/to/LF-Studios.zip"
     exit 1
 fi
 
@@ -48,52 +36,29 @@ if [ ! -x "$APPCAST_BIN" ]; then
     exit 1
 fi
 
-mkdir -p "$DOWNLOAD_DIR"
+OUT_DIR="$(cd "$(dirname "$ZIP_PATH")" && pwd)"
+ZIP_NAME="$(basename "$ZIP_PATH")"
+STAGING_DIR="$(mktemp -d)"
+trap 'rm -rf "$STAGING_DIR"' EXIT
 
-DMG_BASENAME="$(basename "$DMG_PATH")"
-ARCHIVE_DEST="$DOWNLOAD_DIR/$DMG_BASENAME"
-NOTES_DEST="$DOWNLOAD_DIR/${DMG_BASENAME%.*}.md"
-STAGING_DIR="$(mktemp -d "$SCRIPT_DIR/appcast-staging.XXXXXX")"
-cleanup() {
-    rm -rf "$STAGING_DIR"
-}
-trap cleanup EXIT
+cp "$ZIP_PATH" "$STAGING_DIR/$ZIP_NAME"
+# Same name as the zip: generate_appcast embeds it in the feed, and Sparkle
+# shows it in the update window.
+python3 "$SCRIPT_DIR/scripts/changelog-html.py" "$SCRIPT_DIR/CHANGELOG.md" "$VERSION" > "$STAGING_DIR/${ZIP_NAME%.*}.html"
 
-echo "▶ Copying notarized DMG into $DOWNLOAD_DIR…"
-if [ "$(cd "$(dirname "$DMG_PATH")" && pwd)/$(basename "$DMG_PATH")" != "$(cd "$(dirname "$ARCHIVE_DEST")" && pwd)/$(basename "$ARCHIVE_DEST")" ]; then
-    cp "$DMG_PATH" "$ARCHIVE_DEST"
-fi
-cp "$DMG_PATH" "$STAGING_DIR/$DMG_BASENAME"
-
-if [ -n "${LFSTUDIOS_RELEASE_NOTES_FILE:-}" ]; then
-    cp "$LFSTUDIOS_RELEASE_NOTES_FILE" "$NOTES_DEST"
-elif [ ! -f "$NOTES_DEST" ]; then
-    echo "▶ Creating release notes from CHANGELOG.md…"
-    awk '
-        /^## \[/ {
-            if (seen) exit
-            seen = 1
-        }
-        seen { print }
-    ' "$SCRIPT_DIR/CHANGELOG.md" > "$NOTES_DEST"
-fi
-cp "$NOTES_DEST" "$STAGING_DIR/${DMG_BASENAME%.*}.md"
-
-echo "▶ Generating Sparkle appcast…"
+echo "▶ Signing the zip and writing the update feed…"
 "$APPCAST_BIN" \
     --account "$SPARKLE_ACCOUNT" \
-    --maximum-versions 0 \
-    --download-url-prefix "$DOWNLOAD_URL_PREFIX" \
-    --release-notes-url-prefix "$RELEASE_NOTES_URL_PREFIX" \
-    --link "https://github.com/brightlifecreations-projects/LF-Studios" \
+    --embed-release-notes \
+    --download-url-prefix "$RELEASES_REPO_URL/releases/download/v$VERSION/" \
+    --link "$RELEASES_REPO_URL" \
     "$STAGING_DIR"
 
-if [ ! -f "$STAGING_DIR/appcast.xml" ]; then
-    echo "✗ Sparkle did not create $STAGING_DIR/appcast.xml"
-    exit 1
-fi
+APPCAST="$STAGING_DIR/appcast.xml"
+[ -f "$APPCAST" ] || { echo "✗ Sparkle did not create appcast.xml"; exit 1; }
+grep -q "sparkle:edSignature=" "$APPCAST" || { echo "✗ The update feed has no signature: is the Sparkle key in this Mac's Keychain?"; exit 1; }
+grep -q "<sparkle:shortVersionString>$VERSION</sparkle:shortVersionString>" "$APPCAST" || { echo "✗ The update feed isn't for $VERSION"; exit 1; }
 
-cp "$STAGING_DIR/appcast.xml" "$DOWNLOAD_DIR/appcast.xml"
-
-echo "✓ Appcast ready: $DOWNLOAD_DIR/appcast.xml"
-echo "  Upload $DMG_BASENAME, ${DMG_BASENAME%.*}.md and appcast.xml to the latest GitHub release."
+cp "$APPCAST" "$OUT_DIR/appcast.xml"
+cp "$STAGING_DIR/${ZIP_NAME%.*}.html" "$OUT_DIR/release-notes.html"
+echo "✓ Update feed: $OUT_DIR/appcast.xml"
