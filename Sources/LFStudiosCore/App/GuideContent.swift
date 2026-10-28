@@ -1353,8 +1353,201 @@ enum GuideContent {
             ),
         ]
     }
-    static func cursorFeatures() -> [GuideEntry] { [] } // STUB
-    static func cameraFeatures() -> [GuideEntry] { [] } // STUB
+    // MARK: Cursor
+
+    static func cursorFeatures() -> [GuideEntry] {
+        [
+            GuideEntry(
+                id: "cursor-show", symbol: "cursorarrow", title: L("Show & size the cursor"),
+                summary: L("Show or hide the pointer, and make it bigger so viewers can follow it."),
+                location: L("Cursor panel ▸ Cursor: Show cursor and Size."),
+                tips: [L("Needs Editable Cursor on while recording (it's on to start with). Otherwise the pointer is part of the picture and can't be changed.")],
+                showMe: .editor(.cursor),
+                related: ["rec-cursor"]
+            ),
+            GuideEntry(
+                id: "cursor-smooth", symbol: "scribble", title: L("Smooth cursor movement"),
+                summary: L("Turn shaky mouse moves into calm, smooth glides."),
+                location: L("Cursor panel ▸ Movement."),
+                points: [
+                    L("Off, Light, Smooth, or Silky."),
+                    L("Motion blur adds a soft trail when the pointer moves fast."),
+                    L("Hide when idle hides the pointer while it rests; Hide the move to Stop hides the trip to the stop button at the end."),
+                ],
+                showMe: .editor(.cursor)
+            ),
+            GuideEntry(
+                id: "cursor-clicks", symbol: "cursorarrow.click", title: L("Click effects"),
+                summary: L("Show each click, so viewers see what you pressed."),
+                location: L("Cursor panel ▸ Clicks: None, Press, or Ripple."),
+                tips: [L("For a click sound too, see Click sounds in the Audio panel.")],
+                showMe: .editor(.cursor),
+                related: ["audio-clicks"]
+            ),
+            GuideEntry(
+                id: "cursor-styles", symbol: "cursorarrow.rays", title: L("Cursor styles"),
+                summary: L("Change how the pointer looks: macOS classic, White, Outlined, Touch dot, Ring, or your own picture."),
+                location: L("Cursor panel ▸ Appearance ▸ Style."),
+                steps: [
+                    L("Choose a style."),
+                    L("For Custom image…, choose a PNG, then click the spot in it that points."),
+                ],
+                tips: [L("Styles are saved in presets and project files.")],
+                showMe: .editor(.cursor),
+                since: "1.4.0"
+            ),
+            GuideEntry(
+                id: "cursor-loop", symbol: "repeat", title: L("Looping cursor"),
+                summary: L("The pointer glides back to where it started at the end, so the video loops without a jump."),
+                location: L("Cursor panel ▸ Loop ▸ Return to start at the end."),
+                tips: [L("Glide time sets how long the trip back takes. Great for GIFs.")],
+                showMe: .editor(.cursor)
+            ),
+            GuideEntry(
+                id: "cursor-keys", symbol: "command", title: L("Keys on screen"),
+                summary: L("Show the keyboard shortcuts you pressed, like ⌘C, as keys on the video."),
+                location: L("Cursor panel ▸ Keys on screen ▸ Show shortcuts."),
+                steps: [
+                    L("Turn on Show shortcuts."),
+                    L("Choose a Size, a font, and Top or Bottom. Or drag the keys on the preview."),
+                    L("To hide one, click it on the timeline and press ⌫."),
+                ],
+                tips: [L("Needs Show keyboard shortcuts on while recording.")],
+                showMe: .editor(.cursor),
+                related: ["rec-shortcuts"]
+            ),
+            GuideEntry(
+                id: "cursor-typing-speed", symbol: "hare", title: L("Speed up typing"),
+                summary: L("Speed through the parts where you type, so viewers don't wait."),
+                location: L("Cursor panel ▸ Typing ▸ Speed up typing to 2×, 3×, 4×, 6×, or 8×."),
+                steps: [
+                    L("Choose a speed. The typing parts become speed blocks on the timeline."),
+                    L("Choose again with another speed to change them."),
+                ],
+                tips: [L("Works best with Record when keys are pressed on while recording. For older recordings, LF Studios guesses from the screen and says so.")],
+                showMe: .editor(.cursor),
+                since: "1.4.0",
+                related: ["rec-keys-pressed"]
+            ),
+        ]
+    }
+
+    // MARK: Camera
+
+    static func cameraFeatures() -> [GuideEntry] {
+        let needsCamera = L("Needs a recording made with the camera on, or a camera video you added.")
+        return [
+            GuideEntry(
+                id: "camera-bubble", symbol: "person.crop.circle", title: L("The camera bubble"),
+                summary: L("Your face in a bubble over the video. Move it, resize it, and choose its shape."),
+                location: L("Camera panel ▸ Camera, Position, and Behavior. Click the bubble on the preview to open it."),
+                points: [
+                    L("Shape: Circle, Rounded, Wide, or Cutout (just you, without the background)."),
+                    L("Size, and Position: drag the bubble on the preview, or pick one of eight spots."),
+                    L("Mirror flips it like a mirror."),
+                ],
+                tips: [needsCamera],
+                showMe: .editor(.camera),
+                related: ["rec-camera"]
+            ),
+            GuideEntry(
+                id: "camera-behind", symbol: "person.and.background.dotted", title: L("Blur or remove your background"),
+                summary: L("Blur what's behind you, or remove it completely."),
+                location: L("Camera panel ▸ Camera ▸ Behind you: Original, Blur, or Remove."),
+                tips: [L("LF Studios finds your outline on this Mac. Choose the Cutout shape to show just you, floating over the video.")],
+                showMe: .editor(.camera)
+            ),
+            GuideEntry(
+                id: "camera-look", symbol: "circle.dashed.rectangle", title: L("Camera crop, roundness, border & shadow"),
+                summary: L("Choose what the bubble shows and give it a finished look."),
+                location: L("Camera panel ▸ Look."),
+                points: [
+                    L("Crop…: drag a frame over the camera picture to choose what the bubble shows."),
+                    L("Roundness: from sharp corners to a full circle."),
+                    L("Border, in any color and thickness, and Shadow."),
+                ],
+                showMe: .editor(.camera)
+            ),
+            GuideEntry(
+                id: "camera-layouts", symbol: "rectangle.split.2x1", title: L("Camera layouts"),
+                summary: L("Show the camera full screen, side by side with the screen, or hide it, for any part of the video."),
+                location: L("Camera panel ▸ Layouts."),
+                steps: [
+                    L("Move the playhead and click Full camera, Side by side, or Hidden."),
+                    L("A block appears on the Camera lane: drag it to move it, drag its edges to change its length."),
+                ],
+                tips: [L("Full camera for intro & outro starts and ends the video with you full screen.")],
+                showMe: .editor(.camera)
+            ),
+            GuideEntry(
+                id: "camera-face", symbol: "face.dashed", title: L("Keep face centered"),
+                summary: L("The bubble follows your face, so you stay in the middle even when you move."),
+                location: L("Camera panel ▸ Face tracking ▸ Keep face centered."),
+                steps: [
+                    L("Turn on Keep face centered. LF Studios looks for your face once, with progress and Cancel."),
+                    L("Set Smoothness (how calmly it follows) and Framing (how close it is)."),
+                ],
+                tips: [L("It works on your Mac with Apple's face detection. If your face isn't found for a while, the last framing holds.")],
+                showMe: .editor(.camera),
+                since: "1.4.0"
+            ),
+            GuideEntry(
+                id: "camera-silences", symbol: "person.crop.circle.badge.moon", title: L("Hide camera during silences"),
+                summary: L("Hide the camera whenever you're not talking, and bring it back when you speak."),
+                location: L("Camera panel ▸ Silences ▸ Hide camera during silences."),
+                steps: [
+                    L("Set the Minimum silence (1 to 10 seconds)."),
+                    L("Click Hide camera during silences. Hide blocks appear on the Camera lane."),
+                ],
+                tips: [L("Clicking it again replaces only those blocks; ones you made yourself stay. Needs a recording with your voice.")],
+                showMe: .editor(.camera),
+                since: "1.4.0"
+            ),
+            GuideEntry(
+                id: "camera-color", symbol: "camera.filters", title: L("Camera color"),
+                summary: L("Make your camera look its best: brighter, warmer, or more cinematic."),
+                location: L("Camera panel ▸ Color."),
+                points: [
+                    L("Looks: Natural, Warm, Bright, or Cinematic."),
+                    L("Brightness, Contrast, Saturation, Warmth, Tint, and Sharpness."),
+                    L("Auto adjust picks settings for you; Reset goes back."),
+                ],
+                tips: [L("Changes only the camera, never your screen.")],
+                showMe: .editor(.camera),
+                since: "1.4.0"
+            ),
+            GuideEntry(
+                id: "camera-import", symbol: "iphone.and.arrow.forward", title: L("Add a camera video from a phone"),
+                summary: L("Filmed yourself with a phone or a camera? Put that video in the bubble instead."),
+                location: L("Camera panel ▸ Camera video ▸ Add camera video…."),
+                steps: [
+                    L("Click Add camera video… and choose the video."),
+                    L("LF Studios lines it up with your recording by its sound."),
+                    L("If it's slightly off, use Offset, Sync by Sound, or drag the camera strip on the timeline."),
+                ],
+                tips: [L("The video stays where it is. If you move or delete it, LF Studios offers Locate….")],
+                showMe: .editor(.camera)
+            ),
+            GuideEntry(
+                id: "camera-shrink", symbol: "arrow.down.right.and.arrow.up.left", title: L("Shrink while zoomed"),
+                summary: L("Makes the bubble smaller during zooms, so it covers less."),
+                location: L("Camera panel ▸ Behavior ▸ Shrink while zoomed."),
+                tips: [L("Works with Auto-zoom on clicks.")],
+                showMe: .editor(.camera)
+            ),
+            GuideEntry(
+                id: "camera-follows-cursor", symbol: "cursorarrow.motionlines", title: L("Camera follows your cursor"),
+                summary: L("During a zoom, the view moves with your pointer, so what you point at stays in the picture. The preview says “Camera follows your cursor” while it does."),
+                location: L("Click a zoom on the timeline, then choose Framing ▸ Follow cursor."),
+                tips: [
+                    L("Here “camera” means the view of your screen, not your camera bubble."),
+                    L("For a vertical video, Fill the Frame, Follow the Cursor in the aspect ratio menu does the same for the whole video."),
+                ],
+                showMe: .editor(.zoom),
+                related: ["zoom-edit", "size-reframe"]
+            ),
+        ]
+    }
     static func captionFeatures() -> [GuideEntry] { [] } // STUB
     static func audioFeatures() -> [GuideEntry] { [] } // STUB
     static func styleFeatures() -> [GuideEntry] { [] } // STUB
