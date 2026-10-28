@@ -1548,8 +1548,200 @@ enum GuideContent {
             ),
         ]
     }
-    static func captionFeatures() -> [GuideEntry] { [] } // STUB
-    static func audioFeatures() -> [GuideEntry] { [] } // STUB
+    // MARK: Captions
+
+    static func captionFeatures() -> [GuideEntry] {
+        [
+            GuideEntry(
+                id: "captions-transcribe", symbol: "waveform.and.mic", title: L("Transcribe"),
+                summary: L("LF Studios listens to your recording and writes down what you say, on your Mac. That gives you captions, and lets you edit the video by its words."),
+                location: L("Captions panel ▸ Transcribe."),
+                steps: [
+                    L("Choose the Language you speak in the recording."),
+                    L("Click Transcribe. Keep editing while it listens."),
+                ],
+                tips: [
+                    L("Nothing is uploaded. The first time, macOS may download the language, which needs the internet once."),
+                    L("On macOS 15 and earlier, it needs Speech Recognition allowed, and Dictation set up for that language."),
+                ],
+                showMe: .editor(.captions),
+                related: ["captions-whisper", "trouble-transcribe"]
+            ),
+            GuideEntry(
+                id: "captions-whisper", symbol: "waveform.badge.magnifyingglass", title: L("Whisper"),
+                summary: L("A second way to transcribe that's often more accurate, especially with accents or noise."),
+                location: L("Captions panel ▸ Engine ▸ Whisper."),
+                steps: [
+                    L("Choose Whisper, then a Model."),
+                    L("Click Download the first time. Models range from Tiny (about 75 MB, fastest) to Large v3 Turbo (about 630 MB, most accurate)."),
+                    L("Click Transcribe with Whisper."),
+                ],
+                tips: [
+                    L("The model downloads once from Hugging Face. After that, Whisper works offline, and your recording is never uploaded."),
+                    L("If a model is too much for this Mac, LF Studios says so and suggests a smaller one. Manage models in Settings ▸ General ▸ Whisper Models."),
+                ],
+                showMe: .editor(.captions),
+                since: "1.4.0",
+                related: ["app-whisper"]
+            ),
+            GuideEntry(
+                id: "captions-edit-text", symbol: "text.word.spacing", title: L("Edit by text"),
+                summary: L("Edit your video like a document: delete words, and that part of the video goes."),
+                location: L("Captions panel ▸ Edit by text (after transcribing)."),
+                steps: [
+                    L("Select words and press ⌫ to cut them from the video."),
+                    L("Press ⌫ again on crossed-out words to bring them back."),
+                    L("Click a word to jump there."),
+                ],
+                keys: [.fixed("⌫", L("Cut the selected words")), .fixed("⌘F", L("Find in the transcript"))],
+                showMe: .editor(.captions)
+            ),
+            GuideEntry(
+                id: "captions-cleanup", symbol: "wand.and.stars", title: L("Remove ums & shorten pauses"),
+                summary: L("Cut filler words like “um” and “uh”, and long pauses, in one click each."),
+                location: L("Captions panel ▸ Edit by text ▸ Remove ums and Shorten pauses."),
+                tips: [L("Pauses longer than a second become short ones, except where you're clicking, typing, or moving the pointer. ⌘Z undoes either one.")],
+                showMe: .editor(.captions)
+            ),
+            GuideEntry(
+                id: "captions-look", symbol: "textformat.size", title: L("Caption style"),
+                summary: L("Choose how captions look: style, color, font, size, and place."),
+                location: L("Captions panel ▸ Look."),
+                points: [
+                    L("Styles: Classic, Bold outline, Minimal, or Highlight."),
+                    L("Highlight words lights up each word as it's spoken."),
+                    L("Font, Size (S, M, L), and Position (Bottom or Top)."),
+                ],
+                showMe: .editor(.captions),
+                related: ["style-fonts"]
+            ),
+            GuideEntry(
+                id: "captions-animation", symbol: "text.badge.star", title: L("Caption animations"),
+                summary: L("Bring captions to life: words that pop in, a karaoke fill, a typewriter, and more."),
+                location: L("Captions panel ▸ Look ▸ Animation."),
+                points: [L("None, Pop-in words, One word at a time, Karaoke fill, Typewriter, Bounce, Fade up, or Highlight box.")],
+                tips: [L("They follow your spoken words, and look the same in the preview and the export.")],
+                showMe: .editor(.captions),
+                since: "1.4.0"
+            ),
+            GuideEntry(
+                id: "captions-place", symbol: "arrow.up.and.down.and.arrow.left.and.right", title: L("Place captions anywhere"),
+                summary: L("Drag captions to any spot on the video, or move one caption on its own."),
+                location: L("Pause the video and drag the caption on the preview."),
+                points: [
+                    L("It snaps to the middle and to the safe edges, with guide lines."),
+                    L("Select one caption first to move only that one. Apply this position to all captions moves the rest there too."),
+                    L("Reset position puts captions back at the bottom."),
+                ],
+                showMe: .editor(.captions)
+            ),
+            GuideEntry(
+                id: "captions-lines", symbol: "list.bullet", title: L("Edit caption lines"),
+                summary: L("Fix words, change timing, and add captions by hand."),
+                location: L("Captions panel ▸ Lines."),
+                points: [
+                    L("Click a line to edit its words; click its time to jump there; × removes it."),
+                    L("+ adds a caption at the playhead. No transcript? Use Or type one at the playhead."),
+                    L("Select a caption on the timeline to change when it starts and ends."),
+                ],
+                showMe: .editor(.captions)
+            ),
+            GuideEntry(
+                id: "captions-translate", symbol: "globe", title: L("Translate captions"),
+                summary: L("Add a second set of captions in another language."),
+                location: L("Captions panel ▸ Languages."),
+                steps: [
+                    L("Choose a language and click Translate."),
+                    L("Use Show to pick which captions the video shows."),
+                ],
+                tips: [L("Needs macOS 15 or later. Translated on your Mac; macOS downloads each language once.")],
+                showMe: .editor(.captions)
+            ),
+            GuideEntry(
+                id: "captions-subtitles", symbol: "doc.plaintext", title: L("Save subtitles"),
+                summary: L("Save captions as a subtitles file for YouTube, Vimeo, or a video player."),
+                location: L("Captions panel ▸ Save Subtitles, or File ▸ Save Subtitles (.srt)…."),
+                tips: [L("Choose .srt or .vtt. The file follows your cuts and speed changes.")],
+                showMe: .editor(.captions),
+                related: ["export-captions"]
+            ),
+            GuideEntry(
+                id: "captions-notes", symbol: "note.text", title: L("Speaker notes in the editor"),
+                summary: L("The notes you read from while recording, kept with the video."),
+                location: L("At the top of the Captions panel, for recordings made with Speaker notes open."),
+                tips: [L("Click Copy notes to use them elsewhere.")],
+                showMe: .editor(.captions),
+                since: "1.4.0",
+                related: ["rec-notes"]
+            ),
+        ]
+    }
+
+    // MARK: Audio
+
+    static func audioFeatures() -> [GuideEntry] {
+        [
+            GuideEntry(
+                id: "audio-levels", symbol: "slider.vertical.3", title: L("Volume & mute"),
+                summary: L("Set how loud your voice and your Mac's sound are, or mute the video."),
+                location: L("Audio panel ▸ Sound."),
+                points: [
+                    L("Voice and Computer sound each have their own slider."),
+                    L("Mute video exports it without sound."),
+                ],
+                keys: [.fixed("M", L("Mute the preview (or the selected clip)"))],
+                tips: [L("M only quiets the preview; the export keeps its sound.")],
+                showMe: .editor(.audio)
+            ),
+            GuideEntry(
+                id: "audio-enhance", symbol: "waveform.badge.plus", title: L("Enhance voice"),
+                summary: L("Removes background noise and hum, and evens out your voice."),
+                location: L("Audio panel ▸ Voice ▸ Enhance voice."),
+                tips: [L("Processed on your Mac.")],
+                showMe: .editor(.audio)
+            ),
+            GuideEntry(
+                id: "audio-podcast", symbol: "mic.circle", title: L("Podcast mode"),
+                summary: L("Make your voice sound like a podcast: clean, warm, and clear."),
+                location: L("Audio panel ▸ Podcast ▸ Podcast mode."),
+                points: [L("Noise removal, De-esser (softens “s” sounds), Warm and clear EQ, Compression, and Podcast loudness: each with its own switch.")],
+                tips: [L("While it's on, it takes the place of Enhance voice and Even out loudness.")],
+                showMe: .editor(.audio),
+                since: "1.4.0"
+            ),
+            GuideEntry(
+                id: "audio-loudness", symbol: "speaker.wave.3", title: L("Even out loudness"),
+                summary: L("Exports at the loudness video sites expect, without distortion."),
+                location: L("Audio panel ▸ Export ▸ Even out loudness."),
+                showMe: .editor(.audio)
+            ),
+            GuideEntry(
+                id: "audio-music", symbol: "music.note", title: L("Music"),
+                summary: L("Play a song under your video. It loops, fades in and out, and gets quieter while you talk."),
+                location: L("Audio panel ▸ Music ▸ Add Music…."),
+                points: [
+                    L("Volume, and Lower under your voice."),
+                    L("Fade in, Fade out, Loop to fill, and Start the song at."),
+                ],
+                tips: [L("Use music you have the rights to. Click the music lane on the timeline to get back here.")],
+                showMe: .editor(.audio),
+                related: ["howto-music"]
+            ),
+            GuideEntry(
+                id: "audio-clicks", symbol: "hand.tap", title: L("Click sounds"),
+                summary: L("Play a soft click sound on every mouse click in the video."),
+                location: L("Audio panel ▸ Click sounds ▸ Play a click on each click."),
+                tips: [L("Needs clicks recorded by LF Studios. Set the Click volume.")],
+                showMe: .editor(.audio)
+            ),
+            GuideEntry(
+                id: "audio-clip", symbol: "speaker.slash", title: L("Mute or fade one part"),
+                summary: L("Silence one clip or part, or fade its sound in and out."),
+                location: L("Select a clip for Mute this clip, Fade in, and Fade out. Or ⇧-drag a part and choose Mute this part."),
+                keys: [.fixed("M", L("Mute the preview (or the selected clip)"))]
+            ),
+        ]
+    }
     static func styleFeatures() -> [GuideEntry] { [] } // STUB
     static func sizeFeatures() -> [GuideEntry] { [] } // STUB
     static func privacyFeatures() -> [GuideEntry] { [] } // STUB
