@@ -96,14 +96,16 @@
 	<string>%@ — його рядки не збігаються із субтитрами</string>
 	<key>%@ — only one camera video can be shown</key>
 	<string>%@ — можна показати лише одне відео з камери</string>
-	<key>%@ — separate sound files open as their own tracks in LF Studios 1.7</key>
-	<string>%@ — окремі звукові файли відкриватимуться як власні доріжки в LF Studios 1.7</string>
+	<key>%@ — this Mac can't play it</key>
+	<string>%@ — цей Mac не може його відтворити</string>
 	<key>%@ → %@ — the part you ⇧-dragged on the timeline</key>
 	<string>%@ → %@ — частина, яку ви виділили на шкалі часу з ⇧</string>
 	<key>%@, %@</key>
 	<string>%@, %@</string>
 	<key>%@, and %lld more</key>
 	<string>%@ і ще %lld</string>
+	<key>%@, as its own track</key>
+	<string>%@ — окремою доріжкою</string>
 	<key>%@: %@</key>
 	<string>%@: %@</string>
 	<key>%@s</key>
@@ -184,6 +186,8 @@
 	<string>Лупа над одним місцем; решта кадру лишається видимою.</string>
 	<key>A new recording opens just as you recorded it. Zooms, backgrounds, and effects stay off until you turn them on.</key>
 	<string>Новий запис відкривається таким, яким ви його записали. Наближення, тло й ефекти вимкнені, доки ви їх не ввімкнете.</string>
+	<key>A new track sits on the edit's timeline, where you put it. After Sync by sound it follows the recording instead.</key>
+	<string>Нова доріжка стоїть на шкалі часу монтажу там, де ви її поставили. Після «Синхронізувати за звуком» вона натомість іде за записом.</string>
 	<key>A preset saves the background, frame, cursor, zooms, captions, keys, and camera. Tick Include aspect ratio to save the shape too.</key>
 	<string>Стиль зберігає тло, рамку, курсор, наближення, субтитри, клавіші й камеру. Позначте «Включити співвідношення сторін», щоб зберегти й формат.</string>
 	<key>A report helps fix this. You'll see everything before it's sent, and it never includes your screenshots or recordings.</key>
@@ -302,6 +306,8 @@
 	<string>Додайте другий набір субтитрів іншою мовою.</string>
 	<key>Add a title card before the video and a closing card after it.</key>
 	<string>Додайте заставку з назвою перед відео й завершальну заставку після нього.</string>
+	<key>Add a voiceover, a separate microphone, or a sound effect. Each file is its own track on the timeline.</key>
+	<string>Додайте закадровий голос, окремий мікрофон чи звуковий ефект. Кожен файл — окрема доріжка на шкалі часу.</string>
 	<key>Add a zoom</key>
 	<string>Додати наближення</string>
 	<key>Add a zoom at the playhead</key>
@@ -314,6 +320,8 @@
 	<string>Додайте ще один запис у кінець цього, щоб вийшло одне відео.</string>
 	<key>Add arrow at the playhead (A)</key>
 	<string>Додати стрілку на покажчику відтворення (A)</string>
+	<key>Add audio…</key>
+	<string>Додати аудіо…</string>
 	<key>Add blur at the playhead (B)</key>
 	<string>Додати розмиття на покажчику відтворення (B)</string>
 	<key>Add camera video…</key>
@@ -342,6 +350,8 @@
 	<string>Маркери під час запису</string>
 	<key>Add music</key>
 	<string>Додати музику</string>
+	<key>Add sound files</key>
+	<string>Додати звукові файли</string>
 	<key>Add spotlight at the playhead</key>
 	<string>Додати прожектор на покажчику відтворення</string>
 	<key>Add text at the playhead (T)</key>
@@ -358,10 +368,22 @@
 	<string>Додати «%@» на покажчику відтворення</string>
 	<key>Added %@ — %@</key>
 	<string>Додано «%@» — %@</string>
+	<key>Added %lld sound files as tracks</key>
+	<string>Звукові файли додано як доріжки: %lld</string>
+	<key>Added sound</key>
+	<string>Доданий звук</string>
+	<key>Added sound is in the export, Full Mix, Creative Handoff, and the timeline files, and saved in a recording's folder (03 Audio).</key>
+	<string>Доданий звук потрапляє в експорт, Full Mix, «Творче передавання» і файли таймлайну, а також зберігається в папці запису (03 Audio).</string>
+	<key>Added sound “%@”</key>
+	<string>Доданий звук «%@»</string>
+	<key>Added sound “%@” — the file is missing</key>
+	<string>Доданий звук «%@» — файл відсутній</string>
 	<key>Added to LF Studios</key>
 	<string>Додані в LF Studios</string>
 	<key>Added “%@”</key>
 	<string>Шрифт «%@» додано</string>
+	<key>Added “%@” as its own track</key>
+	<string>«%@» додано окремою доріжкою</string>
 	<key>Adds a Camera hidden block for each pause at least this long. Drag or delete them on the Camera lane; pressing again replaces only these.</key>
 	<string>Додає блок «Камеру сховано» для кожної паузи щонайменше такої довжини. Перетягуйте або видаляйте їх на доріжці камери; повторне натискання замінює лише їх.</string>
 	<key>Adds a zoom wherever you clicked while recording.</key>
@@ -462,8 +484,8 @@
 	<string>Інша програма може використовувати ті самі клавіші: виберіть інші.</string>
 	<key>Any color…</key>
 	<string>Будь-який колір…</string>
-	<key>Any other folder: Import Folder lists the videos. Choose which is the screen recording and which the camera, and when the camera starts.</key>
-	<string>Будь-яка інша папка: «Імпорт папки» показує список відео. Виберіть, яке з них — запис екрана, а яке — камера, і коли камера починається.</string>
+	<key>Any other folder: Import Folder lists the videos and sound files. Choose which is the screen recording, which the camera, and which sound to add as tracks, and when each starts.</key>
+	<string>Будь-яка інша папка: «Імпорт папки» показує список відео та звукових файлів. Виберіть, що з них запис екрана, що — відео з камери, який звук додати як доріжки і коли кожен починається.</string>
 	<key>App</key>
 	<string>Програма</string>
 	<key>Appearance</key>
@@ -540,6 +562,10 @@
 	<string>Аудіо</string>
 	<key>Audio only</key>
 	<string>Лише звук</string>
+	<key>Audio panel ▸ Added sound ▸ Add audio…, or drop sound files on the timeline.</key>
+	<string>Панель «Аудіо» ▸ Доданий звук ▸ Додати аудіо…, або перетягніть звукові файли на шкалу часу.</string>
+	<key>Audio panel ▸ Added sound ▸ the track ▸ Use as my voice.</key>
+	<string>Панель «Аудіо» ▸ Доданий звук ▸ доріжка ▸ Використати як мій голос.</string>
 	<key>Audio panel ▸ Click sounds ▸ Play a click on each click.</key>
 	<string>Панель «Аудіо» ▸ Звуки клацання ▸ Звук на кожне клацання.</string>
 	<key>Audio panel ▸ Export ▸ Even out loudness.</key>
@@ -552,6 +578,8 @@
 	<string>Панель «Аудіо» ▸ Звук.</string>
 	<key>Audio panel ▸ Voice ▸ Enhance voice.</key>
 	<string>Панель «Аудіо» ▸ Голос ▸ Покращити голос.</string>
+	<key>Audio track</key>
+	<string>Аудіодоріжка</string>
 	<key>Aurora</key>
 	<string>Полярне сяйво</string>
 	<key>Aurora Blue</key>
@@ -804,6 +832,10 @@
 	<string>Камера — перетягніть, щоб перемістити, клацніть, щоб побачити параметри</string>
 	<key>Can't sync — the recording or the camera video has no sound</key>
 	<string>Не вдалося синхронізувати — запис або відео з камери не має звуку</string>
+	<key>Can't sync — the recording or “%@” has no sound</key>
+	<string>Не вдається синхронізувати — у записі чи в «%@» немає звуку</string>
+	<key>Can't sync — their sound doesn't match clearly enough. Drag the track into place instead.</key>
+	<string>Не вдається синхронізувати — звук не збігається достатньо чітко. Натомість перетягніть доріжку на місце.</string>
 	<key>Can't sync — their sound doesn't match clearly enough. Set the offset by hand.</key>
 	<string>Не вдалося синхронізувати — звук збігається недостатньо чітко. Задайте зсув вручну.</string>
 	<key>Cancel</key>
@@ -1084,14 +1116,16 @@
 	<string>Виберіть світлі чи темні вікна або вигляд, як на вашому Mac.</string>
 	<key>Choose screen</key>
 	<string>Вибрати екран</string>
+	<key>Choose sound files to add as tracks of their own</key>
+	<string>Виберіть звукові файли, щоб додати їх окремими доріжками</string>
 	<key>Choose the Language you speak in the recording.</key>
 	<string>У меню «Мова» виберіть мову, якою ви говорите в записі.</string>
 	<key>Choose the camera video to show in the bubble</key>
 	<string>Виберіть відео з камери для бульбашки</string>
 	<key>Choose the corner (Left or Right) and how long it stays in the same settings section. Hovering keeps it open.</key>
 	<string>Кут («Ліворуч» чи «Праворуч») і те, скільки вона лишається на екрані, вибираються в тому самому розділі параметрів. Поки курсор над нею, вона не зникає.</string>
-	<key>Choose the screen recording, and the camera video if there is one. Nothing in the folder changes until you save.</key>
-	<string>Виберіть запис екрана і, якщо є, відео з камери. Нічого в папці не зміниться, доки ви не збережете.</string>
+	<key>Choose the screen recording, the camera video if there is one, and the sound files to add as tracks. Nothing in the folder changes until you save.</key>
+	<string>Виберіть запис екрана, відео з камери (якщо воно є) і звукові файли, які слід додати як доріжки. Поки ви не збережете, у папці нічого не зміниться.</string>
 	<key>Choose the video's shape for where it's going.</key>
 	<string>Виберіть формат відео відповідно до того, де його показуватимуть.</string>
 	<key>Choose what happens after each screenshot or recording.</key>
@@ -1164,6 +1198,8 @@
 	<string>Клацніть «Адаптувати до формату»: наближення, бульбашка камери й субтитри перемістяться, щоб усе вмістилося.</string>
 	<key>Click Add Loupe.</key>
 	<string>Клацніть «Додати лупу».</string>
+	<key>Click Add audio… and choose one or more files: MP3, WAV, M4A, AAC, AIFF, FLAC, or CAF.</key>
+	<string>Клацніть «Додати аудіо…» й виберіть один чи кілька файлів: MP3, WAV, M4A, AAC, AIFF, FLAC чи CAF.</string>
 	<key>Click Add camera video… and choose the video.</key>
 	<string>Клацніть «Додати відео з камери…» й виберіть відео.</string>
 	<key>Click Apply, or press Return.</key>
@@ -1722,6 +1758,10 @@
 	<string>Фіолет пустелі</string>
 	<key>Dip to black</key>
 	<string>Затемнення</string>
+	<key>Dip under voice</key>
+	<string>Стишувати під голос</string>
+	<key>Dip under voice: an added track (like background sound) gets quieter while you talk. It's off until you turn it on.</key>
+	<string>«Стишувати під голос»: додана доріжка (наприклад, фоновий звук) стає тихішою, коли ви говорите. Вимкнено, доки ви це не ввімкнете.</string>
 	<key>Dips while you talk, comes back in the pauses</key>
 	<string>Стишується, коли ви говорите, і повертається в паузах</string>
 	<key>Disable Apple Shortcuts</key>
@@ -1876,6 +1916,8 @@
 	<string>Перетягніть закріплений знімок, щоб перемістити його; тягніть край, щоб змінити розмір.</string>
 	<key>Drag the spot on the preview; drag a corner to resize it. Everything around it dims while its bar on the timeline runs.</key>
 	<string>Перетягуйте світлову пляму в перегляді; тягніть кут, щоб змінити її розмір. Усе навколо затемнюється, поки триває її смуга на шкалі часу.</string>
+	<key>Drag the track on the timeline to move it; drag an edge to trim it; click it and press S to split it, or ⌫ to delete a piece.</key>
+	<string>Перетягуйте доріжку на шкалі часу, щоб перемістити її; тягніть край, щоб підрізати; клацніть її й натисніть S, щоб розділити, або ⌫, щоб видалити частину.</string>
 	<key>Drag the zoom's edges on the timeline to set its length.</key>
 	<string>Тягніть краї наближення на шкалі часу, щоб задати його тривалість.</string>
 	<key>Drag to capture  ·  Hold ⇧ as you let go to adjust first  ·  Space moves  ·  Esc cancels</key>
@@ -1916,6 +1958,8 @@
 	<string>Під час наближення кадр рухається за курсором, тож те, на що ви вказуєте, лишається в кадрі. Поки це відбувається, на перегляді написано «Камера стежить за курсором».</string>
 	<key>Dusk</key>
 	<string>Сутінки</string>
+	<key>Each file is its own track: drag it on the timeline, trim its ends, split it with S. MP3, WAV, M4A, AAC, AIFF, FLAC, or CAF — or drop files on the timeline.</key>
+	<string>Кожен файл — окрема доріжка: перетягуйте її на шкалі часу, підрізайте краї, розділяйте клавішею S. MP3, WAV, M4A, AAC, AIFF, FLAC чи CAF — або перетягніть файли на шкалу часу.</string>
 	<key>Each recording in its own folder</key>
 	<string>Кожен запис в окремій папці</string>
 	<key>Each recording keeps its own pointer, clicks, and shortcuts. Reorder them here; cut and trim them on the timeline like any clip.</key>
@@ -2290,6 +2334,8 @@
 	<string>Стежити за набором</string>
 	<key>Follows cursor</key>
 	<string>Стежить за курсором</string>
+	<key>Follows the recording</key>
+	<string>Іде за записом</string>
 	<key>Follows typing</key>
 	<string>Стежить за набором</string>
 	<key>Follows where you typed. Pressing it again replaces only these zooms.</key>
@@ -2654,6 +2700,8 @@
 	<string>Початок раніше</string>
 	<key>In later</key>
 	<string>Початок пізніше</string>
+	<key>In place of the recording's microphone — Enhance voice and Podcast mode clean it up</key>
+	<string>Замість мікрофона запису — «Покращити голос» і «Режим подкасту» очищують його</string>
 	<key>In the Style panel, open Presets and choose Save as Preset….</key>
 	<string>На панелі «Стиль» відкрийте «Стилі» й виберіть «Зберегти як стиль…».</string>
 	<key>In the editor, check that Mute video is off in the Audio panel, and that the preview isn't muted (press M).</key>
@@ -3004,6 +3052,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Вирівняти все</string>
 	<key>Line everything up makes every file start at the same moment.</key>
 	<string>«Вирівняти все» робить так, щоб кожен файл починався з того самого моменту.</string>
+	<key>Line it up with the recording's own sound; then it follows your cuts</key>
+	<string>Вирівняти за власним звуком запису; далі доріжка враховує ваші вирізання</string>
 	<key>Line width</key>
 	<string>Товщина лінії</string>
 	<key>Linen</key>
@@ -3224,6 +3274,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Наведіть покажчик відтворення й натисніть S, щоб розділити там кліп.</string>
 	<key>Move the playhead inside a clip to split</key>
 	<string>Щоб розділити, перемістіть покажчик відтворення всередину кліпу</string>
+	<key>Move the playhead into the sound to split it</key>
+	<string>Перемістіть покажчик відтворення в межі звуку, щоб розділити його</string>
 	<key>Move the playhead to where it should appear.</key>
 	<string>Наведіть покажчик відтворення туди, де елемент має з’явитися.</string>
 	<key>Move the playhead to where the camera shows, then crop</key>
@@ -3262,6 +3314,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Музика «%@»</string>
 	<key>Music “%@” — the file is missing</key>
 	<string>Музика «%@» — файл не знайдено</string>
+	<key>Mute</key>
+	<string>Вимкнути звук</string>
 	<key>Mute Clip</key>
 	<string>Вимкнути звук кліпу</string>
 	<key>Mute or fade one part</key>
@@ -3536,6 +3590,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>У macOS 15 і старіших потрібно дозволити «Розпізнавання мовлення» й налаштувати диктування для цієї мови.</string>
 	<key>On macOS 15 and earlier: allow LF Studios under Speech Recognition, and turn on Dictation for that language in System Settings ▸ Keyboard.</key>
 	<string>У macOS 15 і старіших: дозвольте LF Studios у розділі «Розпізнавання мовлення» й увімкніть диктування для цієї мови в Системні параметри ▸ Клавіатура.</string>
+	<key>On the edit's timeline</key>
+	<string>На шкалі часу монтажу</string>
 	<key>On the preview after capture, click Text, or right-click and choose Copy Text.</key>
 	<string>На перегляді після знімка клацніть «Текст» або клацніть правою кнопкою й виберіть «Скопіювати текст».</string>
 	<key>On the timeline's zoom lane, drag the zoom's edges to set how long it lasts.</key>
@@ -3992,6 +4048,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>«Якість»: «Збалансована», «Висока» чи «Максимальна». «Частота кадрів»: 30 чи 60 fps. Оцінка під ними показує, скільки місця займає хвилина.</string>
 	<key>Quick</key>
 	<string>Швидко</string>
+	<key>Quieter while you talk</key>
+	<string>Тихіше, коли ви говорите</string>
 	<key>Quit &amp; Reopen</key>
 	<string>Завершити й відкрити знову</string>
 	<key>Quit LF Studios</key>
@@ -4084,6 +4142,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Запишіть свій голос.</string>
 	<key>Recorded at %@. Drag its dot on the timeline to retime it; ripples and Auto Zoom follow.</key>
 	<string>Записано на %@. Перетягніть його крапку на шкалі часу, щоб змінити час; хвилі й автонаближення підлаштуються.</string>
+	<key>Recorded at the same time as the video? Click Sync by sound: it lines up with the recording and follows your cuts from then on.</key>
+	<string>Записано одночасно з відео? Клацніть «Синхронізувати за звуком»: доріжка вирівняється із записом і відтоді враховуватиме ваші вирізання.</string>
+	<key>Recorded your voice separately, or re-recorded it? Use that file in place of the recording's microphone.</key>
+	<string>Записали голос окремо чи перезаписали його? Використайте цей файл замість мікрофона запису.</string>
 	<key>Recording</key>
 	<string>Запис</string>
 	<key>Recording already in progress</key>
@@ -4146,6 +4208,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторити: адаптація до формату</string>
 	<key>Redo Add Arrow</key>
 	<string>Повторити додавання стрілки</string>
+	<key>Redo Add Audio</key>
+	<string>Повторити додавання аудіо</string>
 	<key>Redo Add Blur</key>
 	<string>Повторити додавання розмиття</string>
 	<key>Redo Add Camera Layout</key>
@@ -4200,6 +4264,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторити зміну стилю стрілки</string>
 	<key>Redo Aspect Ratio</key>
 	<string>Повторити зміну співвідношення сторін</string>
+	<key>Redo Audio Track Change</key>
+	<string>Повторити зміну аудіодоріжки</string>
 	<key>Redo Auto Adjust Camera Color</key>
 	<string>Повторити автоналаштування кольору камери</string>
 	<key>Redo Auto Zoom</key>
@@ -4308,6 +4374,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторити зміну маркерів</string>
 	<key>Redo Move Arrow</key>
 	<string>Повторити переміщення стрілки</string>
+	<key>Redo Move Audio</key>
+	<string>Повторити переміщення аудіо</string>
 	<key>Redo Move Blur</key>
 	<string>Повторити переміщення розмиття</string>
 	<key>Redo Move Caption</key>
@@ -4344,6 +4412,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторити ввімкнення режиму подкасту</string>
 	<key>Redo Remove All Zooms</key>
 	<string>Повторити вилучення всіх наближень</string>
+	<key>Redo Remove Audio</key>
+	<string>Повторити вилучення аудіо</string>
 	<key>Redo Remove Camera Video</key>
 	<string>Повторити вилучення відео з камери</string>
 	<key>Redo Remove Captions</key>
@@ -4396,6 +4466,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторити прискорення набору</string>
 	<key>Redo Split</key>
 	<string>Повторити розділення</string>
+	<key>Redo Split Audio</key>
+	<string>Повторити розділення аудіо</string>
 	<key>Redo Split at Markers</key>
 	<string>Повторити розділення за маркерами</string>
 	<key>Redo Spotlight Style</key>
@@ -4404,6 +4476,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторити повернення до оригіналу</string>
 	<key>Redo Style Change</key>
 	<string>Повторити зміну стилю</string>
+	<key>Redo Sync Audio by Sound</key>
+	<string>Повторити синхронізацію аудіо за звуком</string>
 	<key>Redo Text Style</key>
 	<string>Повторити зміну стилю тексту</string>
 	<key>Redo Timeline Edit</key>
@@ -4416,6 +4490,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторити зміну переходів</string>
 	<key>Redo Trim</key>
 	<string>Повторити підрізання</string>
+	<key>Redo Trim Audio</key>
+	<string>Повторити підрізання аудіо</string>
 	<key>Redo Unmute Clip</key>
 	<string>Повторити увімкнення звуку кліпу</string>
 	<key>Redo Unmute Part</key>
@@ -4458,6 +4534,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Вилучити музику</string>
 	<key>Remove Outro Card</key>
 	<string>Вилучити завершальну заставку</string>
+	<key>Remove Track</key>
+	<string>Вилучити доріжку</string>
 	<key>Remove Transcript &amp; Captions</key>
 	<string>Вилучити розшифровку й субтитри</string>
 	<key>Remove Ums</key>
@@ -4906,6 +4984,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Задайте гучність свого голосу й звуку Mac або вимкніть звук відео.</string>
 	<key>Set its Strength in the panel on the right.</key>
 	<string>Задайте його «Силу» на панелі праворуч.</string>
+	<key>Set its Volume, Fade in, and Fade out, or Mute it, in the Audio panel.</key>
+	<string>На панелі «Аудіо» задайте «Гучність», «Поява» і «Зникнення» або «Вимкнути звук».</string>
 	<key>Set its size, shape, border, and shadow under Loupe.</key>
 	<string>Задайте її розмір, форму, рамку й тінь у розділі «Лупа».</string>
 	<key>Set the Minimum silence (1 to 10 seconds).</key>
@@ -5162,8 +5242,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Щось не працює? Знайдіть проблему й спробуйте рішення по черзі.</string>
 	<key>Sound</key>
 	<string>Звук</string>
-	<key>Sound files can be added as tracks of their own in LF Studios 1.7.</key>
-	<string>Звукові файли можна буде додати як окремі доріжки в LF Studios 1.7.</string>
 	<key>Sounds</key>
 	<string>Звуки</string>
 	<key>Space</key>
@@ -5358,8 +5436,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Перемикайте камеру на весь кадр для ключових думок або ставте її поруч з екраном — на покажчику відтворення. Кожна зміна з’являється на доріжці «Камера».</string>
 	<key>Sync by Sound</key>
 	<string>Синхронізувати за звуком</string>
+	<key>Sync by sound</key>
+	<string>Синхронізувати за звуком</string>
+	<key>Sync it by sound first, so captions made from it line up with the video.</key>
+	<string>Спершу синхронізуйте її за звуком, щоб створені з неї субтитри збігалися з відео.</string>
 	<key>Synced by sound — the camera starts %@</key>
 	<string>Синхронізовано за звуком — камера починається %@</string>
+	<key>Synced by sound — “%@” follows the recording now</key>
+	<string>Синхронізовано за звуком — «%@» тепер іде за записом</string>
 	<key>System</key>
 	<string>Системне</string>
 	<key>System Default</key>
@@ -5754,6 +5838,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>У цьому записі немає голосу, під який можна стишувати музику</string>
 	<key>This recording only has the arrow</key>
 	<string>У цьому записі є лише стрілка</string>
+	<key>This sound file is gone — add it again.</key>
+	<string>Цього звукового файлу більше немає — додайте його знову.</string>
 	<key>This video has no camera bubble</key>
 	<string>У цьому відео немає бульбашки камери</string>
 	<key>This video has no camera footage to hide</key>
@@ -5850,6 +5936,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Точка дотику</string>
 	<key>Track Where I Type</key>
 	<string>Стежити, де я друкую</string>
+	<key>Track options</key>
+	<string>Параметри доріжки</string>
 	<key>Track where I type</key>
 	<string>Стежити, де я друкую</string>
 	<key>Track where I type saves only where the text cursor is on screen, so the editor can zoom in on typing. Record when keys are pressed saves only the moment each key goes down, so the editor can speed up typing. No text is recorded and no keys are named. While a password field has focus, neither saves anything. Both are off until you turn them on; macOS asks for Accessibility access.</key>
@@ -6010,6 +6098,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Скасувати: адаптація до формату</string>
 	<key>Undo Add Arrow</key>
 	<string>Відмінити додавання стрілки</string>
+	<key>Undo Add Audio</key>
+	<string>Відмінити додавання аудіо</string>
 	<key>Undo Add Blur</key>
 	<string>Відмінити додавання розмиття</string>
 	<key>Undo Add Camera Layout</key>
@@ -6064,6 +6154,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Відмінити зміну стилю стрілки</string>
 	<key>Undo Aspect Ratio</key>
 	<string>Відмінити зміну співвідношення сторін</string>
+	<key>Undo Audio Track Change</key>
+	<string>Відмінити зміну аудіодоріжки</string>
 	<key>Undo Auto Adjust Camera Color</key>
 	<string>Скасувати автоналаштування кольору камери</string>
 	<key>Undo Auto Zoom</key>
@@ -6172,6 +6264,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Відмінити зміну маркерів</string>
 	<key>Undo Move Arrow</key>
 	<string>Відмінити переміщення стрілки</string>
+	<key>Undo Move Audio</key>
+	<string>Відмінити переміщення аудіо</string>
 	<key>Undo Move Blur</key>
 	<string>Відмінити переміщення розмиття</string>
 	<key>Undo Move Caption</key>
@@ -6208,6 +6302,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Скасувати ввімкнення режиму подкасту</string>
 	<key>Undo Remove All Zooms</key>
 	<string>Відмінити вилучення всіх наближень</string>
+	<key>Undo Remove Audio</key>
+	<string>Відмінити вилучення аудіо</string>
 	<key>Undo Remove Camera Video</key>
 	<string>Скасувати вилучення відео з камери</string>
 	<key>Undo Remove Captions</key>
@@ -6260,6 +6356,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Скасувати прискорення набору</string>
 	<key>Undo Split</key>
 	<string>Відмінити розділення</string>
+	<key>Undo Split Audio</key>
+	<string>Відмінити розділення аудіо</string>
 	<key>Undo Split at Markers</key>
 	<string>Відмінити розділення за маркерами</string>
 	<key>Undo Spotlight Style</key>
@@ -6268,6 +6366,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Відмінити повернення до оригіналу</string>
 	<key>Undo Style Change</key>
 	<string>Відмінити зміну стилю</string>
+	<key>Undo Sync Audio by Sound</key>
+	<string>Відмінити синхронізацію аудіо за звуком</string>
 	<key>Undo Text Style</key>
 	<string>Відмінити зміну стилю тексту</string>
 	<key>Undo Timeline Edit</key>
@@ -6280,6 +6380,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Відмінити зміну переходів</string>
 	<key>Undo Trim</key>
 	<string>Відмінити підрізання</string>
+	<key>Undo Trim Audio</key>
+	<string>Відмінити підрізання аудіо</string>
 	<key>Undo Unmute Clip</key>
 	<string>Відмінити увімкнення звуку кліпу</string>
 	<key>Undo Unmute Part</key>
@@ -6330,10 +6432,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Перемикайтеся між оригіналом і перекладом за допомогою «Показ».</string>
 	<key>Use Size for line thickness, and Text size and Bold for text.</key>
 	<string>«Розмір» задає товщину лінії, а «Розмір тексту» й «Жирний» — вигляд тексту.</string>
+	<key>Use a sound file as your voice</key>
+	<string>Звуковий файл як ваш голос</string>
 	<key>Use any font on your Mac for captions, title cards, text, and keys, or add your own.</key>
 	<string>Використовуйте будь-який шрифт зі свого Mac для субтитрів, заставок, тексту й клавіш або додайте власний.</string>
 	<key>Use as My Style</key>
 	<string>Використовувати як «Мій стиль»</string>
+	<key>Use as my voice</key>
+	<string>Використати як мій голос</string>
+	<key>Use as my voice: the recording's microphone goes quiet and this track is the voice. Enhance voice and Podcast mode clean it up, and the music dips under it.</key>
+	<string>«Використати як мій голос»: мікрофон запису замовкає, а голосом стає ця доріжка. «Покращити голос» і «Режим подкасту» очищують її, а музика стишується під неї.</string>
 	<key>Use music you have the rights to.</key>
 	<string>Використовуйте музику, на яку маєте права.</string>
 	<key>Use music you have the rights to. Click the music lane on the timeline to get back here.</key>
@@ -6808,6 +6916,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>«%@» знайдено в %lld з %lld знімків</string>
 	<key>“%@” is your My Style — Apply my style (⇧⌘Y) puts it on a video</key>
 	<string>«%@» — ваш «Мій стиль»; «Застосувати мій стиль» (⇧⌘Y) застосує його до відео</string>
+	<key>“%@” isn't a sound file this Mac can play</key>
+	<string>«%@» — не звуковий файл, який може відтворити цей Mac</string>
 	<key>“%@” isn't at %@ anymore. Put it back, or save the project with Include Media next time so it carries its own copy.</key>
 	<string>«%1$@» більше немає в %2$@. Поверніть файл на місце або наступного разу збережіть проєкт із параметром «Включити медіафайли», щоб у ньому була власна копія.</string>
 	<key>“%@” isn't in %@ anymore. Locate it to get the camera back.</key>
@@ -6820,6 +6930,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>«%@» не дає зробити це вікно меншим за %@ × %@ пікселів, тому розмір %@ × %@ недоступний.</string>
 	<key>“%@” keeps this window at most %@ × %@ pixels, so it can't be made %@ × %@.</key>
 	<string>«%@» не дає зробити це вікно більшим за %@ × %@ пікселів, тому розмір %@ × %@ недоступний.</string>
+	<key>“%@” — drag to move, drag an edge to trim, click to change it in Audio</key>
+	<string>«%@» — перетягніть, щоб перемістити, тягніть край, щоб підрізати, клацніть, щоб змінити на панелі «Аудіо»</string>
 	<key>“Made with LF Studios” end card (2s)</key>
 	<string>кінцева заставка «Made with LF Studios» (2 с)</string>
 	<key>“Possible key” is a guess: long, random-looking text that might be a password.</key>

@@ -96,14 +96,16 @@
 	<string>%@ — 它的行与字幕不一致</string>
 	<key>%@ — only one camera video can be shown</key>
 	<string>%@ — 只能显示一个摄像头视频</string>
-	<key>%@ — separate sound files open as their own tracks in LF Studios 1.7</key>
-	<string>%@ — 在 LF Studios 1.7 中，单独的声音文件会作为独立的轨道打开</string>
+	<key>%@ — this Mac can't play it</key>
+	<string>%@ — 这台 Mac 无法播放</string>
 	<key>%@ → %@ — the part you ⇧-dragged on the timeline</key>
 	<string>%@ → %@ — 你在时间线上按住 ⇧ 拖移选中的部分</string>
 	<key>%@, %@</key>
 	<string>%@、%@</string>
 	<key>%@, and %lld more</key>
 	<string>%@，以及另外 %lld 个</string>
+	<key>%@, as its own track</key>
+	<string>%@，作为单独的轨道</string>
 	<key>%@: %@</key>
 	<string>%@：%@</string>
 	<key>%@s</key>
@@ -244,6 +246,8 @@
 	<string>放大一个位置；画面其余部分保持可见。</string>
 	<key>A new recording opens just as you recorded it. Zooms, backgrounds, and effects stay off until you turn them on.</key>
 	<string>新的录制内容打开时，和你录下的样子完全一样。缩放、背景和各种效果都保持关闭，直到你打开它们。</string>
+	<key>A new track sits on the edit's timeline, where you put it. After Sync by sound it follows the recording instead.</key>
+	<string>新轨道位于剪辑的时间线上你放置的位置。使用“按声音同步”后，它会改为跟随录制内容。</string>
 	<key>A preset saves the background, frame, cursor, zooms, captions, keys, and camera. Tick Include aspect ratio to save the shape too.</key>
 	<string>预设会存储背景、边框、指针、缩放、字幕、按键和摄像头。勾选“包括宽高比”可同时存储画面比例。</string>
 	<key>A report helps fix this. You'll see everything before it's sent, and it never includes your screenshots or recordings.</key>
@@ -362,6 +366,8 @@
 	<string>添加另一种语言的第二套字幕。</string>
 	<key>Add a title card before the video and a closing card after it.</key>
 	<string>在视频前加一张标题卡，在视频后加一张结尾卡。</string>
+	<key>Add a voiceover, a separate microphone, or a sound effect. Each file is its own track on the timeline.</key>
+	<string>添加旁白、单独麦克风的录音或音效。每个文件都是时间线上的一条单独轨道。</string>
 	<key>Add a zoom</key>
 	<string>添加缩放</string>
 	<key>Add a zoom at the playhead</key>
@@ -374,6 +380,8 @@
 	<string>把另一段录制内容接到这一段的末尾，合成一个视频。</string>
 	<key>Add arrow at the playhead (A)</key>
 	<string>在播放头处添加箭头（A）</string>
+	<key>Add audio…</key>
+	<string>添加音频…</string>
 	<key>Add blur at the playhead (B)</key>
 	<string>在播放头处添加模糊（B）</string>
 	<key>Add camera video…</key>
@@ -402,6 +410,8 @@
 	<string>录制时添加标记</string>
 	<key>Add music</key>
 	<string>添加音乐</string>
+	<key>Add sound files</key>
+	<string>添加声音文件</string>
 	<key>Add spotlight at the playhead</key>
 	<string>在播放头处添加聚光灯</string>
 	<key>Add text at the playhead (T)</key>
@@ -418,12 +428,24 @@
 	<string>在播放头处添加“%@”</string>
 	<key>Added %@ — %@</key>
 	<string>已添加 %@ — %@</string>
+	<key>Added %lld sound files as tracks</key>
+	<string>已将 %lld 个声音文件添加为轨道</string>
 	<key>Added %lld typing zooms — ⌘Z to undo</key>
 	<string>已添加 %lld 个打字缩放 — 按 ⌘Z 撤销</string>
+	<key>Added sound</key>
+	<string>添加的声音</string>
+	<key>Added sound is in the export, Full Mix, Creative Handoff, and the timeline files, and saved in a recording's folder (03 Audio).</key>
+	<string>“添加的声音”会包含在导出内容、Full Mix、创意交付和时间线文件中，并存储在录制内容的文件夹（03 Audio）中。</string>
+	<key>Added sound “%@”</key>
+	<string>添加的声音“%@”</string>
+	<key>Added sound “%@” — the file is missing</key>
+	<string>添加的声音“%@” — 文件不见了</string>
 	<key>Added to LF Studios</key>
 	<string>已添加到 LF Studios</string>
 	<key>Added “%@”</key>
 	<string>已添加“%@”</string>
+	<key>Added “%@” as its own track</key>
+	<string>已将“%@”添加为单独的轨道</string>
 	<key>Adds a Camera hidden block for each pause at least this long. Drag or delete them on the Camera lane; pressing again replaces only these.</key>
 	<string>为每段至少这么长的停顿添加一个“隐藏摄像头”块。可在摄像头轨道上拖移或删除；再次按下只替换这些块。</string>
 	<key>Adds a zoom wherever you clicked while recording.</key>
@@ -528,8 +550,8 @@
 	<string>另一个应用可能使用了相同的按键：请换用其他按键。</string>
 	<key>Any color…</key>
 	<string>任意颜色…</string>
-	<key>Any other folder: Import Folder lists the videos. Choose which is the screen recording and which the camera, and when the camera starts.</key>
-	<string>其他任何文件夹：“导入文件夹”会列出其中的视频。选择哪个是屏幕录制内容、哪个是摄像头视频，以及摄像头何时开始。</string>
+	<key>Any other folder: Import Folder lists the videos and sound files. Choose which is the screen recording, which the camera, and which sound to add as tracks, and when each starts.</key>
+	<string>其他任何文件夹：“导入文件夹”会列出其中的视频和声音文件。选择哪个是屏幕录制、哪个是摄像头视频、哪些声音要添加为轨道，以及每个文件从何时开始。</string>
 	<key>App</key>
 	<string>App</string>
 	<key>Appearance</key>
@@ -606,6 +628,10 @@
 	<string>音频</string>
 	<key>Audio only</key>
 	<string>仅音频</string>
+	<key>Audio panel ▸ Added sound ▸ Add audio…, or drop sound files on the timeline.</key>
+	<string>“音频”面板 ▸ 添加的声音 ▸ 添加音频…，或将声音文件拖放到时间线上。</string>
+	<key>Audio panel ▸ Added sound ▸ the track ▸ Use as my voice.</key>
+	<string>“音频”面板 ▸ 添加的声音 ▸ 该轨道 ▸ 用作我的人声。</string>
 	<key>Audio panel ▸ Click sounds ▸ Play a click on each click.</key>
 	<string>“音频”面板 ▸ 点按音效 ▸ 每次点按时播放点按声。</string>
 	<key>Audio panel ▸ Export ▸ Even out loudness.</key>
@@ -618,6 +644,8 @@
 	<string>“音频”面板 ▸ 声音。</string>
 	<key>Audio panel ▸ Voice ▸ Enhance voice.</key>
 	<string>“音频”面板 ▸ 人声 ▸ 增强人声。</string>
+	<key>Audio track</key>
+	<string>音频轨道</string>
 	<key>Aurora</key>
 	<string>极光</string>
 	<key>Aurora Blue</key>
@@ -876,6 +904,10 @@
 	<string>摄像头 — 拖移可移动，点按可查看选项</string>
 	<key>Can't sync — the recording or the camera video has no sound</key>
 	<string>无法同步 — 录制内容或摄像头视频没有声音</string>
+	<key>Can't sync — the recording or “%@” has no sound</key>
+	<string>无法同步 — 录制内容或“%@”没有声音</string>
+	<key>Can't sync — their sound doesn't match clearly enough. Drag the track into place instead.</key>
+	<string>无法同步 — 两者的声音匹配得不够清楚。请改为将轨道拖到合适的位置。</string>
 	<key>Can't sync — their sound doesn't match clearly enough. Set the offset by hand.</key>
 	<string>无法同步 — 两者的声音匹配得不够清楚。请手动设置偏移。</string>
 	<key>Cancel</key>
@@ -1158,14 +1190,16 @@
 	<string>选择浅色或深色窗口，或跟随你的 Mac。</string>
 	<key>Choose screen</key>
 	<string>选择显示器</string>
+	<key>Choose sound files to add as tracks of their own</key>
+	<string>选择要添加为单独轨道的声音文件</string>
 	<key>Choose the Language you speak in the recording.</key>
 	<string>选择你在录制内容中说的“语言”。</string>
 	<key>Choose the camera video to show in the bubble</key>
 	<string>选择要在气泡中显示的摄像头视频</string>
 	<key>Choose the corner (Left or Right) and how long it stays in the same settings section. Hovering keeps it open.</key>
 	<string>在同一设置部分中，选择它显示的角落（“左侧”或“右侧”）以及停留多久。指针悬停时它会一直显示。</string>
-	<key>Choose the screen recording, and the camera video if there is one. Nothing in the folder changes until you save.</key>
-	<string>选择屏幕录制内容，以及摄像头视频（如果有）。在你存储之前，文件夹中的内容不会有任何改变。</string>
+	<key>Choose the screen recording, the camera video if there is one, and the sound files to add as tracks. Nothing in the folder changes until you save.</key>
+	<string>选择屏幕录制、摄像头视频（如果有）以及要添加为轨道的声音文件。存储之前，文件夹中的任何内容都不会改变。</string>
 	<key>Choose the video's shape for where it's going.</key>
 	<string>根据视频的去处，选择视频的画面比例。</string>
 	<key>Choose what happens after each screenshot or recording.</key>
@@ -1238,6 +1272,8 @@
 	<string>点按“适配此比例”：缩放、摄像头气泡和字幕会移到合适的位置。</string>
 	<key>Click Add Loupe.</key>
 	<string>点按“添加放大镜”。</string>
+	<key>Click Add audio… and choose one or more files: MP3, WAV, M4A, AAC, AIFF, FLAC, or CAF.</key>
+	<string>点按“添加音频…”，然后选择一个或多个文件：MP3、WAV、M4A、AAC、AIFF、FLAC 或 CAF。</string>
 	<key>Click Add camera video… and choose the video.</key>
 	<string>点按“添加摄像头视频…”，然后选择视频。</string>
 	<key>Click Apply, or press Return.</key>
@@ -1802,6 +1838,10 @@
 	<string>沙漠紫罗兰</string>
 	<key>Dip to black</key>
 	<string>黑场过渡</string>
+	<key>Dip under voice</key>
+	<string>人声时降低</string>
+	<key>Dip under voice: an added track (like background sound) gets quieter while you talk. It's off until you turn it on.</key>
+	<string>人声时降低：添加的轨道（如背景声音）会在你说话时变小声。打开之前，此功能保持关闭。</string>
 	<key>Dips while you talk, comes back in the pauses</key>
 	<string>说话时降低音量，停顿时恢复</string>
 	<key>Disable Apple Shortcuts</key>
@@ -1956,6 +1996,8 @@
 	<string>拖移贴图可移动它；拖移边缘可调整大小。</string>
 	<key>Drag the spot on the preview; drag a corner to resize it. Everything around it dims while its bar on the timeline runs.</key>
 	<string>在预览中拖移聚光区域；拖移某个角可调整其大小。在其时间线条块持续期间，周围的一切都会变暗。</string>
+	<key>Drag the track on the timeline to move it; drag an edge to trim it; click it and press S to split it, or ⌫ to delete a piece.</key>
+	<string>在时间线上拖移轨道可移动它；拖移边缘可修剪它；点按它后按下 S 可分割，按下 ⌫ 可删除其中一段。</string>
 	<key>Drag the zoom's edges on the timeline to set its length.</key>
 	<string>在时间线上拖移缩放的边缘，设定它的长度。</string>
 	<key>Drag to capture  ·  Hold ⇧ as you let go to adjust first  ·  Space moves  ·  Esc cancels</key>
@@ -1996,6 +2038,8 @@
 	<string>缩放期间，画面会随你的指针移动，让你指向的内容始终留在画面中。这时预览会显示“镜头跟随你的指针”。</string>
 	<key>Dusk</key>
 	<string>黄昏</string>
+	<key>Each file is its own track: drag it on the timeline, trim its ends, split it with S. MP3, WAV, M4A, AAC, AIFF, FLAC, or CAF — or drop files on the timeline.</key>
+	<string>每个文件都是一条单独轨道：在时间线上拖移它、修剪两端、按 S 分割。支持 MP3、WAV、M4A、AAC、AIFF、FLAC 或 CAF — 也可以将文件拖放到时间线上。</string>
 	<key>Each recording in its own folder</key>
 	<string>每段录制内容都有自己的文件夹</string>
 	<key>Each recording keeps its own pointer, clicks, and shortcuts. Reorder them here; cut and trim them on the timeline like any clip.</key>
@@ -2374,6 +2418,8 @@
 	<string>跟随打字</string>
 	<key>Follows cursor</key>
 	<string>跟随指针</string>
+	<key>Follows the recording</key>
+	<string>跟随录制内容</string>
 	<key>Follows typing</key>
 	<string>跟随打字</string>
 	<key>Follows where you typed. Pressing it again replaces only these zooms.</key>
@@ -2746,6 +2792,8 @@
 	<string>入点提前</string>
 	<key>In later</key>
 	<string>入点延后</string>
+	<key>In place of the recording's microphone — Enhance voice and Podcast mode clean it up</key>
+	<string>替代录制内容的麦克风声音 — 由“增强人声”和“播客模式”进行清理</string>
 	<key>In the Style panel, open Presets and choose Save as Preset….</key>
 	<string>在“样式”面板中打开“预设”，选择“存储为预设…”。</string>
 	<key>In the editor, check that Mute video is off in the Audio panel, and that the preview isn't muted (press M).</key>
@@ -3110,6 +3158,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>全部对齐</string>
 	<key>Line everything up makes every file start at the same moment.</key>
 	<string>“全部对齐”会让每个文件都从同一时刻开始。</string>
+	<key>Line it up with the recording's own sound; then it follows your cuts</key>
+	<string>与录制内容本身的声音对齐，之后会跟随你的剪切</string>
 	<key>Line width</key>
 	<string>线条粗细</string>
 	<key>Linen</key>
@@ -3330,6 +3380,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>移动播放头，然后按 S 键在那里分割片段。</string>
 	<key>Move the playhead inside a clip to split</key>
 	<string>将播放头移到片段内以进行分割</string>
+	<key>Move the playhead into the sound to split it</key>
+	<string>将播放头移到声音范围内即可分割</string>
 	<key>Move the playhead to where it should appear.</key>
 	<string>将播放头移到它应出现的地方。</string>
 	<key>Move the playhead to where the camera shows, then crop</key>
@@ -3368,6 +3420,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>音乐“%@”</string>
 	<key>Music “%@” — the file is missing</key>
 	<string>音乐“%@” — 文件不见了</string>
+	<key>Mute</key>
+	<string>静音</string>
 	<key>Mute Clip</key>
 	<string>将片段静音</string>
 	<key>Mute or fade one part</key>
@@ -3642,6 +3696,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>在 macOS 15 及更早版本上，需要允许“语音识别”，并为该语言设置好“听写”。</string>
 	<key>On macOS 15 and earlier: allow LF Studios under Speech Recognition, and turn on Dictation for that language in System Settings ▸ Keyboard.</key>
 	<string>在 macOS 15 及更早版本上：在“语音识别”中允许 LF Studios，并在“系统设置 ▸ 键盘”中为该语言打开“听写”。</string>
+	<key>On the edit's timeline</key>
+	<string>位于剪辑的时间线上</string>
 	<key>On the preview after capture, click Text, or right-click and choose Copy Text.</key>
 	<string>在截取后预览中点按“文字”，或右键点按并选择“拷贝文字”。</string>
 	<key>On the timeline's zoom lane, drag the zoom's edges to set how long it lasts.</key>
@@ -4100,6 +4156,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>质量：“均衡”“高”或“最高”。帧速率：30 或 60 fps。下方的估算显示每分钟会占用多少空间。</string>
 	<key>Quick</key>
 	<string>快速</string>
+	<key>Quieter while you talk</key>
+	<string>说话时变小声</string>
 	<key>Quit &amp; Reopen</key>
 	<string>退出并重新打开</string>
 	<key>Quit LF Studios</key>
@@ -4194,6 +4252,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>录下你的声音。</string>
 	<key>Recorded at %@. Drag its dot on the timeline to retime it; ripples and Auto Zoom follow.</key>
 	<string>录制于 %@。在时间线上拖移它的圆点即可调整时间；波纹和自动缩放会随之更新。</string>
+	<key>Recorded at the same time as the video? Click Sync by sound: it lines up with the recording and follows your cuts from then on.</key>
+	<string>与视频同时录制的？点按“按声音同步”：它会与录制内容对齐，此后跟随你的剪切。</string>
+	<key>Recorded your voice separately, or re-recorded it? Use that file in place of the recording's microphone.</key>
+	<string>单独录了人声，或者重新录了一遍？用那个文件替代录制内容的麦克风声音。</string>
 	<key>Recording</key>
 	<string>录制</string>
 	<key>Recording already in progress</key>
@@ -4256,6 +4318,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做“适配此比例”</string>
 	<key>Redo Add Arrow</key>
 	<string>重做添加箭头</string>
+	<key>Redo Add Audio</key>
+	<string>重做添加音频</string>
 	<key>Redo Add Blur</key>
 	<string>重做添加模糊</string>
 	<key>Redo Add Camera Layout</key>
@@ -4310,6 +4374,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做箭头样式更改</string>
 	<key>Redo Aspect Ratio</key>
 	<string>重做宽高比更改</string>
+	<key>Redo Audio Track Change</key>
+	<string>重做音频轨道更改</string>
 	<key>Redo Auto Adjust Camera Color</key>
 	<string>重做自动调整摄像头颜色</string>
 	<key>Redo Auto Zoom</key>
@@ -4422,6 +4488,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做移动 %lld 个项目</string>
 	<key>Redo Move Arrow</key>
 	<string>重做移动箭头</string>
+	<key>Redo Move Audio</key>
+	<string>重做移动音频</string>
 	<key>Redo Move Blur</key>
 	<string>重做移动模糊</string>
 	<key>Redo Move Caption</key>
@@ -4458,6 +4526,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做开启播客模式</string>
 	<key>Redo Remove All Zooms</key>
 	<string>重做移除所有缩放</string>
+	<key>Redo Remove Audio</key>
+	<string>重做移除音频</string>
 	<key>Redo Remove Camera Video</key>
 	<string>重做移除摄像头视频</string>
 	<key>Redo Remove Captions</key>
@@ -4510,6 +4580,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做加速打字</string>
 	<key>Redo Split</key>
 	<string>重做分割</string>
+	<key>Redo Split Audio</key>
+	<string>重做分割音频</string>
 	<key>Redo Split at Markers</key>
 	<string>重做在标记处分割</string>
 	<key>Redo Spotlight Style</key>
@@ -4518,6 +4590,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做从头开始</string>
 	<key>Redo Style Change</key>
 	<string>重做样式更改</string>
+	<key>Redo Sync Audio by Sound</key>
+	<string>重做按声音同步音频</string>
 	<key>Redo Text Style</key>
 	<string>重做文字样式更改</string>
 	<key>Redo Timeline Edit</key>
@@ -4530,6 +4604,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做转场更改</string>
 	<key>Redo Trim</key>
 	<string>重做修剪</string>
+	<key>Redo Trim Audio</key>
+	<string>重做修剪音频</string>
 	<key>Redo Unmute Clip</key>
 	<string>重做取消片段静音</string>
 	<key>Redo Unmute Part</key>
@@ -4574,6 +4650,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>移除音乐</string>
 	<key>Remove Outro Card</key>
 	<string>移除片尾卡</string>
+	<key>Remove Track</key>
+	<string>移除轨道</string>
 	<key>Remove Transcript &amp; Captions</key>
 	<string>移除文字稿和字幕</string>
 	<key>Remove Ums</key>
@@ -5038,6 +5116,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>设定你的声音和 Mac 声音的音量，或将视频静音。</string>
 	<key>Set its Strength in the panel on the right.</key>
 	<string>在右侧面板中设定它的“强度”。</string>
+	<key>Set its Volume, Fade in, and Fade out, or Mute it, in the Audio panel.</key>
+	<string>在“音频”面板中设置它的“音量”“淡入”和“淡出”，或将它“静音”。</string>
 	<key>Set its size, shape, border, and shadow under Loupe.</key>
 	<string>在“放大镜”下设定它的大小、形状、边框和阴影。</string>
 	<key>Set the Minimum silence (1 to 10 seconds).</key>
@@ -5298,8 +5378,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>遇到问题了？先找到问题所在，再按顺序尝试下面的解决方法。</string>
 	<key>Sound</key>
 	<string>声音</string>
-	<key>Sound files can be added as tracks of their own in LF Studios 1.7.</key>
-	<string>在 LF Studios 1.7 中，声音文件可以作为独立的轨道添加。</string>
 	<key>Sounds</key>
 	<string>声音</string>
 	<key>Space</key>
@@ -5502,8 +5580,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>在播放头处将摄像头切换为全屏以讲解要点，或与屏幕并排显示。每次切换都会显示在“摄像头”轨道上。</string>
 	<key>Sync by Sound</key>
 	<string>按声音同步</string>
+	<key>Sync by sound</key>
+	<string>按声音同步</string>
+	<key>Sync it by sound first, so captions made from it line up with the video.</key>
+	<string>请先按声音同步，这样用它生成的字幕才能与视频对齐。</string>
 	<key>Synced by sound — the camera starts %@</key>
 	<string>已按声音同步 — 摄像头开始于%@</string>
+	<key>Synced by sound — “%@” follows the recording now</key>
+	<string>已按声音同步 — “%@”现在跟随录制内容</string>
 	<key>System</key>
 	<string>跟随系统</string>
 	<key>System Default</key>
@@ -5900,6 +5984,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>此录制内容只有箭头</string>
 	<key>This replaces all %lld caption lines, including any you edited or typed, with a new transcript in %@.</key>
 	<string>这会用新的%2$@文字稿替换全部 %1$lld 行字幕，包括你编辑或输入过的行。</string>
+	<key>This sound file is gone — add it again.</key>
+	<string>此声音文件已不存在 — 请重新添加。</string>
 	<key>This video has no camera bubble</key>
 	<string>此视频没有摄像头气泡</string>
 	<key>This video has no camera footage to hide</key>
@@ -5996,6 +6082,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>触控圆点</string>
 	<key>Track Where I Type</key>
 	<string>跟踪打字位置</string>
+	<key>Track options</key>
+	<string>轨道选项</string>
 	<key>Track where I type</key>
 	<string>跟踪打字位置</string>
 	<key>Track where I type saves only where the text cursor is on screen, so the editor can zoom in on typing. Record when keys are pressed saves only the moment each key goes down, so the editor can speed up typing. No text is recorded and no keys are named. While a password field has focus, neither saves anything. Both are off until you turn them on; macOS asks for Accessibility access.</key>
@@ -6156,6 +6244,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销“适配此比例”</string>
 	<key>Undo Add Arrow</key>
 	<string>撤销添加箭头</string>
+	<key>Undo Add Audio</key>
+	<string>撤销添加音频</string>
 	<key>Undo Add Blur</key>
 	<string>撤销添加模糊</string>
 	<key>Undo Add Camera Layout</key>
@@ -6210,6 +6300,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销箭头样式更改</string>
 	<key>Undo Aspect Ratio</key>
 	<string>撤销宽高比更改</string>
+	<key>Undo Audio Track Change</key>
+	<string>撤销音频轨道更改</string>
 	<key>Undo Auto Adjust Camera Color</key>
 	<string>撤销自动调整摄像头颜色</string>
 	<key>Undo Auto Zoom</key>
@@ -6322,6 +6414,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销移动 %lld 个项目</string>
 	<key>Undo Move Arrow</key>
 	<string>撤销移动箭头</string>
+	<key>Undo Move Audio</key>
+	<string>撤销移动音频</string>
 	<key>Undo Move Blur</key>
 	<string>撤销移动模糊</string>
 	<key>Undo Move Caption</key>
@@ -6358,6 +6452,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销开启播客模式</string>
 	<key>Undo Remove All Zooms</key>
 	<string>撤销移除所有缩放</string>
+	<key>Undo Remove Audio</key>
+	<string>撤销移除音频</string>
 	<key>Undo Remove Camera Video</key>
 	<string>撤销移除摄像头视频</string>
 	<key>Undo Remove Captions</key>
@@ -6410,6 +6506,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销加速打字</string>
 	<key>Undo Split</key>
 	<string>撤销分割</string>
+	<key>Undo Split Audio</key>
+	<string>撤销分割音频</string>
 	<key>Undo Split at Markers</key>
 	<string>撤销在标记处分割</string>
 	<key>Undo Spotlight Style</key>
@@ -6418,6 +6516,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销从头开始</string>
 	<key>Undo Style Change</key>
 	<string>撤销样式更改</string>
+	<key>Undo Sync Audio by Sound</key>
+	<string>撤销按声音同步音频</string>
 	<key>Undo Text Style</key>
 	<string>撤销文字样式更改</string>
 	<key>Undo Timeline Edit</key>
@@ -6430,6 +6530,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销转场更改</string>
 	<key>Undo Trim</key>
 	<string>撤销修剪</string>
+	<key>Undo Trim Audio</key>
+	<string>撤销修剪音频</string>
 	<key>Undo Unmute Clip</key>
 	<string>撤销取消片段静音</string>
 	<key>Undo Unmute Part</key>
@@ -6480,10 +6582,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>使用“显示”在原文和译文之间切换。</string>
 	<key>Use Size for line thickness, and Text size and Bold for text.</key>
 	<string>用“大小”设定线条粗细，用“文字大小”和“粗体”设定文字。</string>
+	<key>Use a sound file as your voice</key>
+	<string>将声音文件用作你的人声</string>
 	<key>Use any font on your Mac for captions, title cards, text, and keys, or add your own.</key>
 	<string>可为字幕、标题卡、文字和按键使用 Mac 上的任何字体，也可以添加你自己的字体。</string>
 	<key>Use as My Style</key>
 	<string>用作我的风格</string>
+	<key>Use as my voice</key>
+	<string>用作我的人声</string>
+	<key>Use as my voice: the recording's microphone goes quiet and this track is the voice. Enhance voice and Podcast mode clean it up, and the music dips under it.</key>
+	<string>用作我的人声：录制内容的麦克风声音会静音，由这条轨道作为人声。“增强人声”和“播客模式”会对它进行清理，音乐也会在它出现时降低音量。</string>
 	<key>Use music you have the rights to.</key>
 	<string>请使用你有权使用的音乐。</string>
 	<key>Use music you have the rights to. Click the music lane on the timeline to get back here.</key>
@@ -6964,6 +7072,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>在 %2$lld 张截屏中找到“%1$@”（共 %3$lld 张）</string>
 	<key>“%@” is your My Style — Apply my style (⇧⌘Y) puts it on a video</key>
 	<string>“%@”是你的我的风格 — “应用我的风格”（⇧⌘Y）可把它用到视频上</string>
+	<key>“%@” isn't a sound file this Mac can play</key>
+	<string>“%@”不是这台 Mac 可以播放的声音文件</string>
 	<key>“%@” isn't at %@ anymore. Put it back, or save the project with Include Media next time so it carries its own copy.</key>
 	<string>“%1$@”已不在 %2$@ 中。请将它放回原处，或下次存储项目时选择“包含媒体”，让项目带上自己的副本。</string>
 	<key>“%@” isn't in %@ anymore. Locate it to get the camera back.</key>
@@ -6976,6 +7086,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>“%@”要求此窗口至少为 %@ × %@ 像素，因此无法调整为 %@ × %@。</string>
 	<key>“%@” keeps this window at most %@ × %@ pixels, so it can't be made %@ × %@.</key>
 	<string>“%@”限制此窗口最大为 %@ × %@ 像素，因此无法调整为 %@ × %@。</string>
+	<key>“%@” — drag to move, drag an edge to trim, click to change it in Audio</key>
+	<string>“%@” — 拖移可移动，拖移边缘可修剪，点按可在“音频”中更改</string>
 	<key>“Made with LF Studios” end card (2s)</key>
 	<string>“Made with LF Studios”结尾画面（2 秒）</string>
 	<key>“Possible key” is a guess: long, random-looking text that might be a password.</key>

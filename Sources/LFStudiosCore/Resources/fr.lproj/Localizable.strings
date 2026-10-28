@@ -96,12 +96,14 @@
 	<string>%@ — ses lignes ne correspondent pas aux sous-titres</string>
 	<key>%@ — only one camera video can be shown</key>
 	<string>%@ — une seule vidéo de caméra peut être affichée</string>
-	<key>%@ — separate sound files open as their own tracks in LF Studios 1.7</key>
-	<string>%@ — les fichiers son séparés s’ouvrent comme pistes distinctes dans LF Studios 1.7</string>
+	<key>%@ — this Mac can't play it</key>
+	<string>%@ — ce Mac ne peut pas le lire</string>
 	<key>%@ → %@ — the part you ⇧-dragged on the timeline</key>
 	<string>%@ → %@ — la partie sélectionnée avec ⇧ dans la timeline</string>
 	<key>%@, %@</key>
 	<string>%@, %@</string>
+	<key>%@, as its own track</key>
+	<string>%@, sur sa propre piste</string>
 	<key>%@: %@</key>
 	<string>%@ : %@</string>
 	<key>%@s</key>
@@ -180,6 +182,8 @@
 	<string>Une loupe sur un point ; le reste de l’image reste visible.</string>
 	<key>A new recording opens just as you recorded it. Zooms, backgrounds, and effects stay off until you turn them on.</key>
 	<string>Un nouvel enregistrement s’ouvre tel que vous l’avez enregistré. Zooms, arrière-plans et effets restent désactivés jusqu’à ce que vous les activiez.</string>
+	<key>A new track sits on the edit's timeline, where you put it. After Sync by sound it follows the recording instead.</key>
+	<string>Une nouvelle piste reste sur la timeline du montage, là où vous la placez. Après Synchroniser par le son, elle suit plutôt l’enregistrement.</string>
 	<key>A preset saves the background, frame, cursor, zooms, captions, keys, and camera. Tick Include aspect ratio to save the shape too.</key>
 	<string>Un préréglage enregistre l’arrière-plan, le cadre, le pointeur, les zooms, les sous-titres, les touches et la caméra. Cochez Inclure le format pour enregistrer aussi la forme.</string>
 	<key>A report helps fix this. You'll see everything before it's sent, and it never includes your screenshots or recordings.</key>
@@ -298,6 +302,8 @@
 	<string>Ajoutez une deuxième série de sous-titres dans une autre langue.</string>
 	<key>Add a title card before the video and a closing card after it.</key>
 	<string>Ajoutez un carton de titre avant la vidéo et un carton de clôture après.</string>
+	<key>Add a voiceover, a separate microphone, or a sound effect. Each file is its own track on the timeline.</key>
+	<string>Ajoutez une voix off, un micro séparé ou un effet sonore. Chaque fichier a sa propre piste sur la timeline.</string>
 	<key>Add a zoom</key>
 	<string>Ajouter un zoom</string>
 	<key>Add a zoom at the playhead</key>
@@ -310,6 +316,8 @@
 	<string>Ajoutez un autre enregistrement à la fin de celui-ci, pour n’en faire qu’une vidéo.</string>
 	<key>Add arrow at the playhead (A)</key>
 	<string>Ajouter une flèche à la tête de lecture (A)</string>
+	<key>Add audio…</key>
+	<string>Ajouter de l’audio…</string>
 	<key>Add blur at the playhead (B)</key>
 	<string>Ajouter un flou à la tête de lecture (B)</string>
 	<key>Add camera video…</key>
@@ -338,6 +346,8 @@
 	<string>Ajouter des marqueurs pendant l’enregistrement</string>
 	<key>Add music</key>
 	<string>Ajouter de la musique</string>
+	<key>Add sound files</key>
+	<string>Ajouter des fichiers audio</string>
 	<key>Add spotlight at the playhead</key>
 	<string>Ajouter un projecteur à la tête de lecture</string>
 	<key>Add text at the playhead (T)</key>
@@ -354,10 +364,22 @@
 	<string>Ajouter « %@ » à la tête de lecture</string>
 	<key>Added %@ — %@</key>
 	<string>%@ ajouté — %@</string>
+	<key>Added %lld sound files as tracks</key>
+	<string>%lld fichiers audio ajoutés en pistes</string>
+	<key>Added sound</key>
+	<string>Son ajouté</string>
+	<key>Added sound is in the export, Full Mix, Creative Handoff, and the timeline files, and saved in a recording's folder (03 Audio).</key>
+	<string>Le son ajouté figure dans l’export, Full Mix, la Transmission créative et les fichiers de timeline, et il est enregistré dans le dossier de l’enregistrement (03 Audio).</string>
+	<key>Added sound “%@”</key>
+	<string>Son ajouté « %@ »</string>
+	<key>Added sound “%@” — the file is missing</key>
+	<string>Son ajouté « %@ » — le fichier est introuvable</string>
 	<key>Added to LF Studios</key>
 	<string>Ajoutées à LF Studios</string>
 	<key>Added “%@”</key>
 	<string>« %@ » ajoutée</string>
+	<key>Added “%@” as its own track</key>
+	<string>« %@ » ajouté sur sa propre piste</string>
 	<key>Adds a Camera hidden block for each pause at least this long. Drag or delete them on the Camera lane; pressing again replaces only these.</key>
 	<string>Ajoute un bloc « Caméra masquée » pour chaque pause au moins aussi longue. Faites-les glisser ou supprimez-les dans la piste Caméra ; appuyer de nouveau ne remplace que ceux-ci.</string>
 	<key>Adds a zoom wherever you clicked while recording.</key>
@@ -460,8 +482,8 @@
 	<string>Une autre app utilise peut-être les mêmes touches : choisissez-en d’autres.</string>
 	<key>Any color…</key>
 	<string>Toute couleur…</string>
-	<key>Any other folder: Import Folder lists the videos. Choose which is the screen recording and which the camera, and when the camera starts.</key>
-	<string>Tout autre dossier : Importer le dossier liste les vidéos. Indiquez laquelle est l’enregistrement de l’écran, laquelle est la caméra, et quand la caméra commence.</string>
+	<key>Any other folder: Import Folder lists the videos and sound files. Choose which is the screen recording, which the camera, and which sound to add as tracks, and when each starts.</key>
+	<string>Tout autre dossier : Importer le dossier liste les vidéos et les fichiers audio. Choisissez lequel est l’enregistrement de l’écran, lequel est la caméra, quels sons ajouter en pistes, et quand chacun commence.</string>
 	<key>App</key>
 	<string>App</string>
 	<key>Appearance</key>
@@ -538,6 +560,10 @@
 	<string>Audio</string>
 	<key>Audio only</key>
 	<string>Audio seul</string>
+	<key>Audio panel ▸ Added sound ▸ Add audio…, or drop sound files on the timeline.</key>
+	<string>Panneau Audio ▸ Son ajouté ▸ Ajouter de l’audio…, ou déposez des fichiers audio sur la timeline.</string>
+	<key>Audio panel ▸ Added sound ▸ the track ▸ Use as my voice.</key>
+	<string>Panneau Audio ▸ Son ajouté ▸ la piste ▸ Utiliser comme ma voix.</string>
 	<key>Audio panel ▸ Click sounds ▸ Play a click on each click.</key>
 	<string>Panneau Audio ▸ Sons de clic ▸ Jouer un son à chaque clic.</string>
 	<key>Audio panel ▸ Export ▸ Even out loudness.</key>
@@ -550,6 +576,8 @@
 	<string>Panneau Audio ▸ Son.</string>
 	<key>Audio panel ▸ Voice ▸ Enhance voice.</key>
 	<string>Panneau Audio ▸ Voix ▸ Améliorer la voix.</string>
+	<key>Audio track</key>
+	<string>Piste audio</string>
 	<key>Aurora</key>
 	<string>Aurore</string>
 	<key>Aurora Blue</key>
@@ -802,6 +830,10 @@
 	<string>Caméra — faites-la glisser pour la déplacer, cliquez pour les options</string>
 	<key>Can't sync — the recording or the camera video has no sound</key>
 	<string>Synchronisation impossible : l’enregistrement ou la vidéo de caméra n’a pas de son</string>
+	<key>Can't sync — the recording or “%@” has no sound</key>
+	<string>Synchronisation impossible : l’enregistrement ou « %@ » n’a pas de son</string>
+	<key>Can't sync — their sound doesn't match clearly enough. Drag the track into place instead.</key>
+	<string>Synchronisation impossible : leurs sons ne correspondent pas assez nettement. Faites plutôt glisser la piste à sa place.</string>
 	<key>Can't sync — their sound doesn't match clearly enough. Set the offset by hand.</key>
 	<string>Synchronisation impossible : leurs sons ne correspondent pas assez nettement. Réglez le décalage à la main.</string>
 	<key>Cancel</key>
@@ -1082,14 +1114,16 @@
 	<string>Choisissez des fenêtres claires ou sombres, ou suivez votre Mac.</string>
 	<key>Choose screen</key>
 	<string>Choisir un écran</string>
+	<key>Choose sound files to add as tracks of their own</key>
+	<string>Choisissez des fichiers audio à ajouter sur leurs propres pistes</string>
 	<key>Choose the Language you speak in the recording.</key>
 	<string>Choisissez la Langue que vous parlez dans l’enregistrement.</string>
 	<key>Choose the camera video to show in the bubble</key>
 	<string>Choisissez la vidéo de caméra à afficher dans la bulle</string>
 	<key>Choose the corner (Left or Right) and how long it stays in the same settings section. Hovering keeps it open.</key>
 	<string>Choisissez le coin (Gauche ou Droite) et sa durée d’affichage dans la même section des réglages. La survoler la garde ouverte.</string>
-	<key>Choose the screen recording, and the camera video if there is one. Nothing in the folder changes until you save.</key>
-	<string>Choisissez l’enregistrement de l’écran, et la vidéo de la caméra s’il y en a une. Rien ne change dans le dossier tant que vous n’enregistrez pas.</string>
+	<key>Choose the screen recording, the camera video if there is one, and the sound files to add as tracks. Nothing in the folder changes until you save.</key>
+	<string>Choisissez l’enregistrement de l’écran, la vidéo de caméra s’il y en a une, et les fichiers audio à ajouter en pistes. Rien ne change dans le dossier tant que vous n’enregistrez pas.</string>
 	<key>Choose the video's shape for where it's going.</key>
 	<string>Choisissez la forme de la vidéo selon sa destination.</string>
 	<key>Choose what happens after each screenshot or recording.</key>
@@ -1162,6 +1196,8 @@
 	<string>Cliquez sur Adapter à ce format : les zooms, la bulle de caméra et les sous-titres se déplacent pour tenir dans le cadre.</string>
 	<key>Click Add Loupe.</key>
 	<string>Cliquez sur Ajouter une loupe.</string>
+	<key>Click Add audio… and choose one or more files: MP3, WAV, M4A, AAC, AIFF, FLAC, or CAF.</key>
+	<string>Cliquez sur Ajouter de l’audio… et choisissez un ou plusieurs fichiers : MP3, WAV, M4A, AAC, AIFF, FLAC ou CAF.</string>
 	<key>Click Add camera video… and choose the video.</key>
 	<string>Cliquez sur Ajouter une vidéo de caméra… et choisissez la vidéo.</string>
 	<key>Click Apply, or press Return.</key>
@@ -1720,6 +1756,10 @@
 	<string>Violet du désert</string>
 	<key>Dip to black</key>
 	<string>Fondu au noir</string>
+	<key>Dip under voice</key>
+	<string>Baisser sous la voix</string>
+	<key>Dip under voice: an added track (like background sound) gets quieter while you talk. It's off until you turn it on.</key>
+	<string>Baisser sous la voix : une piste ajoutée (comme un son d’ambiance) baisse quand vous parlez. Cette option reste désactivée tant que vous ne l’activez pas.</string>
 	<key>Dips while you talk, comes back in the pauses</key>
 	<string>Baisse quand vous parlez, remonte pendant les pauses</string>
 	<key>Disable Apple Shortcuts</key>
@@ -1874,6 +1914,8 @@
 	<string>Faites glisser la capture épinglée pour la déplacer ; faites glisser un bord pour la redimensionner.</string>
 	<key>Drag the spot on the preview; drag a corner to resize it. Everything around it dims while its bar on the timeline runs.</key>
 	<string>Faites glisser le projecteur dans l’aperçu ; faites glisser un coin pour le redimensionner. Tout ce qui l’entoure s’assombrit pendant sa barre dans la timeline.</string>
+	<key>Drag the track on the timeline to move it; drag an edge to trim it; click it and press S to split it, or ⌫ to delete a piece.</key>
+	<string>Faites glisser la piste sur la timeline pour la déplacer ; faites glisser un bord pour l’ajuster ; cliquez dessus et appuyez sur S pour la scinder, ou sur ⌫ pour supprimer un morceau.</string>
 	<key>Drag the zoom's edges on the timeline to set its length.</key>
 	<string>Faites glisser les bords du zoom sur la timeline pour régler sa durée.</string>
 	<key>Drag to capture  ·  Hold ⇧ as you let go to adjust first  ·  Space moves  ·  Esc cancels</key>
@@ -1914,6 +1956,8 @@
 	<string>Pendant un zoom, la vue suit votre pointeur, pour que ce que vous montrez reste dans l’image. L’aperçu affiche « La caméra suit votre pointeur » pendant ce temps.</string>
 	<key>Dusk</key>
 	<string>Crépuscule</string>
+	<key>Each file is its own track: drag it on the timeline, trim its ends, split it with S. MP3, WAV, M4A, AAC, AIFF, FLAC, or CAF — or drop files on the timeline.</key>
+	<string>Chaque fichier a sa propre piste : faites-la glisser sur la timeline, ajustez ses extrémités, scindez-la avec S. MP3, WAV, M4A, AAC, AIFF, FLAC ou CAF — ou déposez des fichiers sur la timeline.</string>
 	<key>Each recording in its own folder</key>
 	<string>Chaque enregistrement dans son propre dossier</string>
 	<key>Each recording keeps its own pointer, clicks, and shortcuts. Reorder them here; cut and trim them on the timeline like any clip.</key>
@@ -2288,6 +2332,8 @@
 	<string>Suivre la saisie</string>
 	<key>Follows cursor</key>
 	<string>Suit le pointeur</string>
+	<key>Follows the recording</key>
+	<string>Suit l’enregistrement</string>
 	<key>Follows typing</key>
 	<string>Suit la saisie</string>
 	<key>Follows where you typed. Pressing it again replaces only these zooms.</key>
@@ -2652,6 +2698,8 @@
 	<string>Entrée plus tôt</string>
 	<key>In later</key>
 	<string>Entrée plus tard</string>
+	<key>In place of the recording's microphone — Enhance voice and Podcast mode clean it up</key>
+	<string>À la place du micro de l’enregistrement — Améliorer la voix et Mode podcast le nettoient</string>
 	<key>In the Style panel, open Presets and choose Save as Preset….</key>
 	<string>Dans le panneau Style, ouvrez Préréglages et choisissez Enregistrer comme préréglage….</string>
 	<key>In the editor, check that Mute video is off in the Audio panel, and that the preview isn't muted (press M).</key>
@@ -3002,6 +3050,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Tout aligner</string>
 	<key>Line everything up makes every file start at the same moment.</key>
 	<string>Tout aligner fait commencer chaque fichier au même moment.</string>
+	<key>Line it up with the recording's own sound; then it follows your cuts</key>
+	<string>L’aligner sur le son de l’enregistrement ; elle suit ensuite vos coupes</string>
 	<key>Line width</key>
 	<string>Épaisseur du trait</string>
 	<key>Linen</key>
@@ -3222,6 +3272,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Placez la tête de lecture et appuyez sur S pour y scinder le clip.</string>
 	<key>Move the playhead inside a clip to split</key>
 	<string>Placez la tête de lecture dans un clip pour le scinder</string>
+	<key>Move the playhead into the sound to split it</key>
+	<string>Placez la tête de lecture dans le son pour le scinder</string>
 	<key>Move the playhead to where it should appear.</key>
 	<string>Placez la tête de lecture là où l’élément doit apparaître.</string>
 	<key>Move the playhead to where the camera shows, then crop</key>
@@ -3260,6 +3312,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Musique « %@ »</string>
 	<key>Music “%@” — the file is missing</key>
 	<string>Musique « %@ » — le fichier est introuvable</string>
+	<key>Mute</key>
+	<string>Couper le son</string>
 	<key>Mute Clip</key>
 	<string>Couper le son du clip</string>
 	<key>Mute or fade one part</key>
@@ -3534,6 +3588,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Sous macOS 15 et antérieur, il faut autoriser la reconnaissance vocale et configurer la dictée pour cette langue.</string>
 	<key>On macOS 15 and earlier: allow LF Studios under Speech Recognition, and turn on Dictation for that language in System Settings ▸ Keyboard.</key>
 	<string>Sous macOS 15 et antérieur : autorisez LF Studios sous Reconnaissance vocale, et activez la dictée pour cette langue dans Réglages Système ▸ Clavier.</string>
+	<key>On the edit's timeline</key>
+	<string>Sur la timeline du montage</string>
 	<key>On the preview after capture, click Text, or right-click and choose Copy Text.</key>
 	<string>Sur l’aperçu après la capture, cliquez sur Texte, ou faites un clic droit et choisissez Copier le texte.</string>
 	<key>On the timeline's zoom lane, drag the zoom's edges to set how long it lasts.</key>
@@ -3990,6 +4046,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Qualité : Équilibrée, Élevée ou Maximale. Fréquence d’images : 30 ou 60 fps. L’estimation en dessous indique l’espace pris par une minute.</string>
 	<key>Quick</key>
 	<string>Rapide</string>
+	<key>Quieter while you talk</key>
+	<string>Baisse quand vous parlez</string>
 	<key>Quit &amp; Reopen</key>
 	<string>Quitter et rouvrir</string>
 	<key>Quit LF Studios</key>
@@ -4082,6 +4140,10 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Enregistrez votre voix.</string>
 	<key>Recorded at %@. Drag its dot on the timeline to retime it; ripples and Auto Zoom follow.</key>
 	<string>Enregistré à %@. Faites glisser son point dans la timeline pour le recaler ; les ondes et le zoom auto suivent.</string>
+	<key>Recorded at the same time as the video? Click Sync by sound: it lines up with the recording and follows your cuts from then on.</key>
+	<string>Enregistré en même temps que la vidéo ? Cliquez sur Synchroniser par le son : la piste s’aligne sur l’enregistrement et suit ensuite vos coupes.</string>
+	<key>Recorded your voice separately, or re-recorded it? Use that file in place of the recording's microphone.</key>
+	<string>Vous avez enregistré votre voix à part, ou vous l’avez réenregistrée ? Utilisez ce fichier à la place du micro de l’enregistrement.</string>
 	<key>Recording</key>
 	<string>Enregistrement</string>
 	<key>Recording already in progress</key>
@@ -4144,6 +4206,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Rétablir Adapter à ce format</string>
 	<key>Redo Add Arrow</key>
 	<string>Rétablir l’ajout de la flèche</string>
+	<key>Redo Add Audio</key>
+	<string>Rétablir l’ajout de l’audio</string>
 	<key>Redo Add Blur</key>
 	<string>Rétablir l’ajout du flou</string>
 	<key>Redo Add Camera Layout</key>
@@ -4198,6 +4262,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Rétablir la modification du style de la flèche</string>
 	<key>Redo Aspect Ratio</key>
 	<string>Rétablir la modification du format</string>
+	<key>Redo Audio Track Change</key>
+	<string>Rétablir la modification de la piste audio</string>
 	<key>Redo Auto Adjust Camera Color</key>
 	<string>Rétablir le réglage auto des couleurs de la caméra</string>
 	<key>Redo Auto Zoom</key>
@@ -4306,6 +4372,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Rétablir la modification des marqueurs</string>
 	<key>Redo Move Arrow</key>
 	<string>Rétablir le déplacement de la flèche</string>
+	<key>Redo Move Audio</key>
+	<string>Rétablir le déplacement de l’audio</string>
 	<key>Redo Move Blur</key>
 	<string>Rétablir le déplacement du flou</string>
 	<key>Redo Move Caption</key>
@@ -4342,6 +4410,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Rétablir l’activation du mode podcast</string>
 	<key>Redo Remove All Zooms</key>
 	<string>Rétablir la suppression de tous les zooms</string>
+	<key>Redo Remove Audio</key>
+	<string>Rétablir la suppression de l’audio</string>
 	<key>Redo Remove Camera Video</key>
 	<string>Rétablir la suppression de la vidéo de caméra</string>
 	<key>Redo Remove Captions</key>
@@ -4394,6 +4464,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Rétablir l’accélération de la saisie</string>
 	<key>Redo Split</key>
 	<string>Rétablir la scission</string>
+	<key>Redo Split Audio</key>
+	<string>Rétablir la scission de l’audio</string>
 	<key>Redo Split at Markers</key>
 	<string>Rétablir la scission aux marqueurs</string>
 	<key>Redo Spotlight Style</key>
@@ -4402,6 +4474,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Rétablir le retour à l’original</string>
 	<key>Redo Style Change</key>
 	<string>Rétablir la modification du style</string>
+	<key>Redo Sync Audio by Sound</key>
+	<string>Rétablir la synchronisation de l’audio par le son</string>
 	<key>Redo Text Style</key>
 	<string>Rétablir la modification du style du texte</string>
 	<key>Redo Timeline Edit</key>
@@ -4414,6 +4488,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Rétablir la modification des transitions</string>
 	<key>Redo Trim</key>
 	<string>Rétablir l’ajustement</string>
+	<key>Redo Trim Audio</key>
+	<string>Rétablir l’ajustement de l’audio</string>
 	<key>Redo Unmute Clip</key>
 	<string>Rétablir le rétablissement du son du clip</string>
 	<key>Redo Unmute Part</key>
@@ -4456,6 +4532,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Supprimer la musique</string>
 	<key>Remove Outro Card</key>
 	<string>Supprimer le carton de fin</string>
+	<key>Remove Track</key>
+	<string>Supprimer la piste</string>
 	<key>Remove Transcript &amp; Captions</key>
 	<string>Supprimer la transcription et les sous-titres</string>
 	<key>Remove Ums</key>
@@ -4904,6 +4982,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Réglez le volume de votre voix et du son de votre Mac, ou coupez le son de la vidéo.</string>
 	<key>Set its Strength in the panel on the right.</key>
 	<string>Réglez son Intensité dans le panneau de droite.</string>
+	<key>Set its Volume, Fade in, and Fade out, or Mute it, in the Audio panel.</key>
+	<string>Dans le panneau Audio, réglez son Volume, son Fondu d’entrée et son Fondu de sortie, ou utilisez Couper le son.</string>
 	<key>Set its size, shape, border, and shadow under Loupe.</key>
 	<string>Réglez sa taille, sa forme, sa bordure et son ombre sous Loupe.</string>
 	<key>Set the Minimum silence (1 to 10 seconds).</key>
@@ -5160,8 +5240,6 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Quelque chose ne marche pas ? Trouvez le problème, puis essayez les solutions dans l’ordre.</string>
 	<key>Sound</key>
 	<string>Son</string>
-	<key>Sound files can be added as tracks of their own in LF Studios 1.7.</key>
-	<string>Les fichiers son pourront être ajoutés comme pistes distinctes dans LF Studios 1.7.</string>
 	<key>Sounds</key>
 	<string>Sons</string>
 	<key>Space</key>
@@ -5356,8 +5434,14 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Passez la caméra en plein écran pour les points clés, ou placez-la côte à côte avec l’écran — à la tête de lecture. Chaque changement apparaît sur la piste Caméra.</string>
 	<key>Sync by Sound</key>
 	<string>Synchroniser par le son</string>
+	<key>Sync by sound</key>
+	<string>Synchroniser par le son</string>
+	<key>Sync it by sound first, so captions made from it line up with the video.</key>
+	<string>Synchronisez-la d’abord par le son, pour que les sous-titres qui en sont tirés soient alignés sur la vidéo.</string>
 	<key>Synced by sound — the camera starts %@</key>
 	<string>Synchronisé par le son — la caméra commence %@</string>
+	<key>Synced by sound — “%@” follows the recording now</key>
+	<string>Synchronisé par le son — « %@ » suit maintenant l’enregistrement</string>
 	<key>System</key>
 	<string>Système</string>
 	<key>System Default</key>
@@ -5752,6 +5836,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Cet enregistrement ne contient pas de voix sous laquelle baisser la musique</string>
 	<key>This recording only has the arrow</key>
 	<string>Cet enregistrement ne contient que la flèche</string>
+	<key>This sound file is gone — add it again.</key>
+	<string>Ce fichier audio a disparu — ajoutez-le à nouveau.</string>
 	<key>This video has no camera bubble</key>
 	<string>Cette vidéo n’a pas de bulle de caméra</string>
 	<key>This video has no camera footage to hide</key>
@@ -5848,6 +5934,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Point tactile</string>
 	<key>Track Where I Type</key>
 	<string>Suivre où je tape</string>
+	<key>Track options</key>
+	<string>Options de la piste</string>
 	<key>Track where I type</key>
 	<string>Suivre où je tape</string>
 	<key>Track where I type saves only where the text cursor is on screen, so the editor can zoom in on typing. Record when keys are pressed saves only the moment each key goes down, so the editor can speed up typing. No text is recorded and no keys are named. While a password field has focus, neither saves anything. Both are off until you turn them on; macOS asks for Accessibility access.</key>
@@ -6008,6 +6096,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Annuler Adapter à ce format</string>
 	<key>Undo Add Arrow</key>
 	<string>Annuler l’ajout de la flèche</string>
+	<key>Undo Add Audio</key>
+	<string>Annuler l’ajout de l’audio</string>
 	<key>Undo Add Blur</key>
 	<string>Annuler l’ajout du flou</string>
 	<key>Undo Add Camera Layout</key>
@@ -6062,6 +6152,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Annuler la modification du style de la flèche</string>
 	<key>Undo Aspect Ratio</key>
 	<string>Annuler la modification du format</string>
+	<key>Undo Audio Track Change</key>
+	<string>Annuler la modification de la piste audio</string>
 	<key>Undo Auto Adjust Camera Color</key>
 	<string>Annuler le réglage auto des couleurs de la caméra</string>
 	<key>Undo Auto Zoom</key>
@@ -6170,6 +6262,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Annuler la modification des marqueurs</string>
 	<key>Undo Move Arrow</key>
 	<string>Annuler le déplacement de la flèche</string>
+	<key>Undo Move Audio</key>
+	<string>Annuler le déplacement de l’audio</string>
 	<key>Undo Move Blur</key>
 	<string>Annuler le déplacement du flou</string>
 	<key>Undo Move Caption</key>
@@ -6206,6 +6300,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Annuler l’activation du mode podcast</string>
 	<key>Undo Remove All Zooms</key>
 	<string>Annuler la suppression de tous les zooms</string>
+	<key>Undo Remove Audio</key>
+	<string>Annuler la suppression de l’audio</string>
 	<key>Undo Remove Camera Video</key>
 	<string>Annuler la suppression de la vidéo de caméra</string>
 	<key>Undo Remove Captions</key>
@@ -6258,6 +6354,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Annuler l’accélération de la saisie</string>
 	<key>Undo Split</key>
 	<string>Annuler la scission</string>
+	<key>Undo Split Audio</key>
+	<string>Annuler la scission de l’audio</string>
 	<key>Undo Split at Markers</key>
 	<string>Annuler la scission aux marqueurs</string>
 	<key>Undo Spotlight Style</key>
@@ -6266,6 +6364,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Annuler le retour à l’original</string>
 	<key>Undo Style Change</key>
 	<string>Annuler la modification du style</string>
+	<key>Undo Sync Audio by Sound</key>
+	<string>Annuler la synchronisation de l’audio par le son</string>
 	<key>Undo Text Style</key>
 	<string>Annuler la modification du style du texte</string>
 	<key>Undo Timeline Edit</key>
@@ -6278,6 +6378,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Annuler la modification des transitions</string>
 	<key>Undo Trim</key>
 	<string>Annuler l’ajustement</string>
+	<key>Undo Trim Audio</key>
+	<string>Annuler l’ajustement de l’audio</string>
 	<key>Undo Unmute Clip</key>
 	<string>Annuler le rétablissement du son du clip</string>
 	<key>Undo Unmute Part</key>
@@ -6328,10 +6430,16 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Utilisez Afficher pour passer de l’original à la traduction.</string>
 	<key>Use Size for line thickness, and Text size and Bold for text.</key>
 	<string>Utilisez Taille pour l’épaisseur des traits, et Taille du texte et Gras pour le texte.</string>
+	<key>Use a sound file as your voice</key>
+	<string>Utiliser un fichier audio comme votre voix</string>
 	<key>Use any font on your Mac for captions, title cards, text, and keys, or add your own.</key>
 	<string>Utilisez n’importe quelle police de votre Mac pour les sous-titres, les cartons de titre, le texte et les touches, ou ajoutez la vôtre.</string>
 	<key>Use as My Style</key>
 	<string>Utiliser comme Mon style</string>
+	<key>Use as my voice</key>
+	<string>Utiliser comme ma voix</string>
+	<key>Use as my voice: the recording's microphone goes quiet and this track is the voice. Enhance voice and Podcast mode clean it up, and the music dips under it.</key>
+	<string>Utiliser comme ma voix : le micro de l’enregistrement se tait et cette piste devient la voix. Améliorer la voix et Mode podcast la nettoient, et la musique baisse sous elle.</string>
 	<key>Use music you have the rights to.</key>
 	<string>Utilisez de la musique dont vous avez les droits.</string>
 	<key>Use music you have the rights to. Click the music lane on the timeline to get back here.</key>
@@ -6806,6 +6914,8 @@ Vous pouvez réactiver les raccourcis d’Apple à tout moment dans Réglages Sy
 	<string>« %1$@ » trouvé dans %2$lld sur %3$lld captures</string>
 	<key>“%@” is your My Style — Apply my style (⇧⌘Y) puts it on a video</key>
 	<string>« %@ » est votre Mon style — Appliquer mon style (⇧⌘Y) l’applique à une vidéo</string>
+	<key>“%@” isn't a sound file this Mac can play</key>
+	<string>« %@ » n’est pas un fichier audio que ce Mac peut lire</string>
 	<key>“%@” isn't at %@ anymore. Put it back, or save the project with Include Media next time so it carries its own copy.</key>
 	<string>« %1$@ » n’est plus dans %2$@. Remettez-le en place, ou enregistrez le projet avec Inclure les médias la prochaine fois pour qu’il emporte sa propre copie.</string>
 	<key>“%@” isn't in %@ anymore. Locate it to get the camera back.</key>
@@ -6818,6 +6928,8 @@ Vous pouvez réactiver les raccourcis d’Apple à tout moment dans Réglages Sy
 	<string>« %@ » garde cette fenêtre à au moins %@ × %@ pixels : elle ne peut pas faire %@ × %@.</string>
 	<key>“%@” keeps this window at most %@ × %@ pixels, so it can't be made %@ × %@.</key>
 	<string>« %@ » limite cette fenêtre à %@ × %@ pixels au plus : elle ne peut pas faire %@ × %@.</string>
+	<key>“%@” — drag to move, drag an edge to trim, click to change it in Audio</key>
+	<string>« %@ » — faites glisser pour déplacer, faites glisser un bord pour ajuster, cliquez pour modifier dans Audio</string>
 	<key>“Made with LF Studios” end card (2s)</key>
 	<string>écran de fin « Made with LF Studios » (2 s)</string>
 	<key>“Possible key” is a guess: long, random-looking text that might be a password.</key>
