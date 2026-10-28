@@ -4,22 +4,34 @@ import Sparkle
 @MainActor
 final class AppUpdateController: NSObject, SPUUpdaterDelegate {
     /// Where "Check for Updates" goes while Sparkle isn't set up.
-    static let releasesURL = URL(string: "https://github.com/brightlifecreations-projects/LF-Studios/releases")!
-    private var updaterController: SPUStandardUpdaterController?
+    static let releasesURL = URL(string: "https://github.com/brightlifecreations-projects/LF-Studios-Releases/releases")!
+    /// The one the app runs (Settings reads and sets automatic checks).
+    private(set) static var shared: AppUpdateController?
+    private var updater: SPUUpdater?
+    private var userDriver: OneClickUserDriver?
 
     override init() {
         super.init()
+        Self.shared = self
 
         guard AppUpdateConfiguration.current != nil else {
             print("[LF Studios] Sparkle updates are disabled because SUPublicEDKey is not configured.")
             return
         }
 
-        updaterController = SPUStandardUpdaterController(
-            startingUpdater: true,
-            updaterDelegate: self,
-            userDriverDelegate: nil
-        )
+        let driver = OneClickUserDriver(hostBundle: .main, delegate: nil)
+        let updater = SPUUpdater(hostBundle: .main, applicationBundle: .main, userDriver: driver, delegate: self)
+        do {
+            try updater.start()
+        } catch {
+            print("[LF Studios] Sparkle couldn't start: \(error.localizedDescription)")
+            return
+        }
+        // Never download or install in the background, whatever an older
+        // build left in the defaults.
+        updater.automaticallyDownloadsUpdates = false
+        self.updater = updater
+        userDriver = driver
     }
 
     /// An update never relaunches the app in the middle of a recording or an
@@ -32,75 +44,53 @@ final class AppUpdateController: NSObject, SPUUpdaterDelegate {
         }
     }
 
-    /// With automatic updates on, Sparkle downloads an update in the
-    /// background and installs it when the app quits. A menu bar app is
-    /// rarely quit, so the update could wait for days: LF Studios installs it
-    /// itself as soon as it's quiet (it quits and reopens in a moment).
-    nonisolated func updater(_ updater: SPUUpdater, willInstallUpdateOnQuit item: SUAppcastItem, immediateInstallationBlock immediateInstallHandler: @escaping () -> Void) -> Bool {
-        MainActor.assumeIsolated {
-            quietInstaller.schedule(immediateInstallHandler)
-            return true
-        }
-    }
-
-    private let quietInstaller = QuietUpdateInstaller()
-
     var canCheckForUpdates: Bool {
-        updaterController?.updater.canCheckForUpdates ?? true
+        updater?.canCheckForUpdates ?? true
     }
+
+    /// Settings → General ▸ Check for updates automatically: once a day.
+    /// A check only shows the update window; nothing installs until the
+    /// user clicks Install Update.
+    var automaticallyChecks: Bool {
+        get { updater?.automaticallyChecksForUpdates ?? false }
+        set { updater?.automaticallyChecksForUpdates = newValue }
+    }
+
+    var isConfigured: Bool { updater != nil }
 
     func checkForUpdates(_ sender: Any?) {
-        guard let updaterController else {
+        guard let updater else {
             NSWorkspace.shared.open(Self.releasesURL)
             return
         }
-        updaterController.checkForUpdates(sender)
+        updater.checkForUpdates()
     }
 }
 
-/// Holds a downloaded update until nothing would notice LF Studios quitting and
-/// reopening: no recording or export running, no window open (an editor,
-/// Settings, a pin, the capture overlay), and a minute without typing or
-/// pointing, so the next shortcut isn't the one that lands mid-relaunch.
+/// Sparkle's own update window, minus its second question: after Install
+/// Update it would download and then ask again (Install and Relaunch). Once
+/// the user has clicked Install Update, the update installs and LF Studios
+/// relaunches. An update Sparkle prepared some other way still asks.
 @MainActor
-final class QuietUpdateInstaller {
-    nonisolated static let idleSeconds: Double = 60
-    private var install: (() -> Void)?
-    private var timer: Timer?
+final class OneClickUserDriver: SPUStandardUserDriver {
+    private var installChosen = false
 
-    func schedule(_ install: @escaping () -> Void) {
-        self.install = install
-        timer?.invalidate()
-        timer = Timer.scheduledTimer(withTimeInterval: 30, repeats: true) { [weak self] _ in
-            MainActor.assumeIsolated { self?.installIfQuiet() }
+    override func showUpdateFound(with appcastItem: SUAppcastItem, state: SPUUserUpdateState, reply: @escaping (SPUUserUpdateChoice) -> Void) {
+        super.showUpdateFound(with: appcastItem, state: state) { [weak self] choice in
+            self?.installChosen = choice == .install
+            reply(choice)
         }
-        installIfQuiet()
     }
 
-    private func installIfQuiet() {
-        guard let install, Self.isQuiet(busy: AppTermination.isBusy, openWindows: Self.openWindowCount, idleSeconds: Self.systemIdleSeconds) else { return }
-        self.install = nil
-        timer?.invalidate()
-        timer = nil
-        install()
+    override func showReady(toInstallAndRelaunch reply: @escaping (SPUUserUpdateChoice) -> Void) {
+        guard installChosen else { return super.showReady(toInstallAndRelaunch: reply) }
+        installChosen = false
+        reply(.install)
     }
 
-    nonisolated static func isQuiet(busy: Bool, openWindows: Int, idleSeconds: Double) -> Bool {
-        !busy && openWindows == 0 && idleSeconds >= Self.idleSeconds
-    }
-
-    /// Windows someone could be looking at; the menu bar icon's own window
-    /// doesn't count.
-    private static var openWindowCount: Int {
-        NSApp.windows.filter {
-            $0.isVisible && $0.alphaValue > 0 && $0.frame.width > 1 && $0.frame.height > 1
-                && !String(describing: type(of: $0)).contains("StatusBar")
-        }.count
-    }
-
-    /// Seconds since the last key press, click or pointer move, anywhere.
-    private static var systemIdleSeconds: Double {
-        CGEventSource.secondsSinceLastEventType(.combinedSessionState, eventType: CGEventType(rawValue: ~0)!)
+    override func dismissUpdateInstallation() {
+        installChosen = false
+        super.dismissUpdateInstallation()
     }
 }
 

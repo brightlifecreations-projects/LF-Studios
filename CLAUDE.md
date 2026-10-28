@@ -46,13 +46,49 @@ branch and open a pull request into `main` describing what changed and what
 to check. The owner builds, tests, merges, and publishes it.
 
 ## Publishing a new version
+Always publish from the owner's Mac. Only it has the "ShotStyle Local
+Signing" certificate (the same signature on every version is what keeps
+users' Screen Recording and Accessibility permissions across updates) and
+the Sparkle update key (installed apps accept only updates signed with it).
+Never publish from a cloud session, CI, or another Mac without restoring
+both first.
+
 First run `bash scripts/test-full.sh` once; it must pass. Then run
 `bash scripts/publish-release.sh <version>` on main with everything
 committed and pushed. CHANGELOG.md must have a `## [<version>]` section first.
 The script sets the version in Info.plist, dates the CHANGELOG section,
-commits and pushes, builds the universal app, zips it, and creates the
-GitHub Release with LF-Studios.zip, the install steps, and that CHANGELOG
-section. It builds on this Mac, so it uses no GitHub Actions minutes.
+commits and pushes, builds the universal app, zips it, signs the zip with
+the update key, writes the update feed (appcast.xml, via generate-appcast.sh;
+the update window shows that CHANGELOG section), and creates the GitHub
+Releases. It builds on this Mac, so it uses no GitHub Actions minutes.
+
+Updates (Sparkle):
+- The source repo is private, so downloads and the feed live in the public
+  https://github.com/brightlifecreations-projects/LF-Studios-Releases (releases
+  only, no code). SUFeedURL reads appcast.xml from its latest release. The
+  same release also goes on this repo, for the record.
+- The update key: the public half is `LFSTUDIOS_SPARKLE_PUBLIC_ED_KEY` in
+  .env.local (not committed; build-app.sh puts it in Info.plist); the
+  private half is in this Mac's login Keychain ("Private key for signing
+  Sparkle updates", account ed25519) and never goes in the repo.
+  publish-release.sh refuses to publish if either is missing or they don't
+  match.
+- Restore on another Mac: import the backup the owner keeps in their
+  password manager with
+  `.build/artifacts/sparkle/Sparkle/bin/generate_keys -f <file>` (run
+  `swift build` once first so the tool exists), delete the file, check that
+  `generate_keys -p` prints the same public key, and put that key in
+  .env.local. Also move the signing certificate over (Keychain Access →
+  export "ShotStyle Local Signing" with its private key as .p12, import it
+  on the new Mac). A new certificate would make every user grant the
+  permissions again; a new update key would mean every user has to
+  reinstall by hand.
+- Updates never install on their own: the app checks once a day (Settings →
+  General ▸ Check for updates automatically) or on LF Studios → Check for
+  Updates…, and installs only when the user clicks Install Update. Keep
+  SUAutomaticallyUpdate and SUAllowsAutomaticUpdates off in Info.plist.
+- 1.4.1 is the first version that updates itself; older ones must be
+  installed by hand once.
 
 ## GitHub Actions
 macOS runners cost Mac minutes. CI (`trusty-1-0.yml`) runs only on pull
@@ -93,7 +129,7 @@ push or tag triggers back.
   (see scripts/localize.py). Update all 7 languages when adding text.
 - Never use `Bundle.module`; use `LFStudiosResources`.
 - LF Studios' home is https://github.com/brightlifecreations-projects/LF-Studios (About, issues,
-  crash reports, update feed). Don't link shotnix.com. The only upstream
+  crash reports); downloads and the update feed are on LF-Studios-Releases. Don't link shotnix.com. The only upstream
   references kept are the MIT attribution: "Based on Shotnix (MIT License)"
   linking to https://github.com/OMARVII/Shotnix, the "© Shotnix Contributors"
   notice in About, and the copyright line in LICENSE.

@@ -7,7 +7,7 @@
 **Screenshots, screen recordings and video editing for your Mac.**<br/>
 A native macOS menu-bar app. No account, no cloud: your captures stay on your Mac.
 
-[Download](https://github.com/brightlifecreations-projects/LF-Studios/releases/latest) · [What’s new](CHANGELOG.md) · [Report an issue](https://github.com/brightlifecreations-projects/LF-Studios/issues/new)
+[Download](https://github.com/brightlifecreations-projects/LF-Studios-Releases/releases/latest) · [What’s new](CHANGELOG.md) · [Report an issue](https://github.com/brightlifecreations-projects/LF-Studios/issues/new)
 
 <sub>Based on [Shotnix](https://github.com/OMARVII/Shotnix) (MIT License).</sub>
 
@@ -40,7 +40,15 @@ LF Studios is available in English, Deutsch, Français, 简体中文, Русск
 
 ### Download the app
 
-Get **LF-Studios.zip** from the [Releases page](https://github.com/brightlifecreations-projects/LF-Studios/releases/latest). It runs on Apple Silicon and Intel Macs with macOS 13 or later.
+Get **LF-Studios.zip** from the [Releases page](https://github.com/brightlifecreations-projects/LF-Studios-Releases/releases/latest). It runs on Apple Silicon and Intel Macs with macOS 13 or later.
+
+**Install 1.4.1 by hand once.** From 1.4.1 on, LF Studios updates itself: it
+checks once a day (Settings → General → **Check for updates automatically**),
+or whenever you choose LF Studios → **Check for Updates…**, and shows what's
+new with **Install Update**, **Remind Me Later** and **Skip This Version**.
+Nothing installs until you click Install Update. Your projects, recordings,
+settings and permissions stay. Versions before 1.4.1 can't update
+themselves, so install 1.4.1 or later with these steps once:
 
 1. Unzip `LF-Studios.zip`.
 2. Drag **LF Studios** to your Applications folder.

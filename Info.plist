@@ -112,10 +112,18 @@
 	<string>LF Studios transcribes your recordings on this Mac to create captions.</string>
 	<key>NSSupportsAutomaticGraphicsSwitching</key>
 	<true/>
+	<key>SUAllowsAutomaticUpdates</key>
+	<false/>
+	<key>SUAutomaticallyUpdate</key>
+	<false/>
+	<key>SUEnableAutomaticChecks</key>
+	<true/>
 	<key>SUFeedURL</key>
-	<string>https://github.com/brightlifecreations-projects/LF-Studios/releases/latest/download/appcast.xml</string>
+	<string>https://github.com/brightlifecreations-projects/LF-Studios-Releases/releases/latest/download/appcast.xml</string>
 	<key>SUPublicEDKey</key>
 	<string>SET_SPARKLE_PUBLIC_ED_KEY_IN_RELEASE_BUILD</string>
+	<key>SUScheduledCheckInterval</key>
+	<integer>86400</integer>
 	<key>UTExportedTypeDeclarations</key>
 	<array>
 		<dict>
