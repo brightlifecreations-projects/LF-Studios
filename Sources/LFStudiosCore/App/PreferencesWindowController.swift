@@ -443,6 +443,7 @@ struct GeneralSettingsView: View {
     @AppStorage(AppAppearance.key) var appearance: AppAppearance = .system
     @State private var launchAtLogin = SMAppService.mainApp.status == .enabled
     @State private var language = AppLanguage().choice
+    @State private var checkUpdates = AppUpdateController.shared?.automaticallyChecks ?? false
 
     /// System Default, named after the Mac's language, then each language in
     /// its own words.
@@ -498,6 +499,20 @@ struct GeneralSettingsView: View {
                         }
                 }
             }
+
+            PreferenceSection(L("Updates")) {
+                PreferenceRow(L("Check for updates automatically")) {
+                    Toggle("", isOn: Binding(get: { checkUpdates }, set: { on in
+                        checkUpdates = on
+                        AppUpdateController.shared?.automaticallyChecks = on
+                    }))
+                    .labelsHidden()
+                    .toggleStyle(.switch)
+                    .disabled(AppUpdateController.shared?.isConfigured != true)
+                }
+            }
+
+            PreferenceFootnote(text: L("Once a day. When there's a new version, LF Studios shows what's new and installs it only when you click Install Update. Your projects, recordings, settings and permissions stay."))
 
             PreferenceSection(L("Sounds")) {
                 PreferenceRow(L("Play capture sound")) {

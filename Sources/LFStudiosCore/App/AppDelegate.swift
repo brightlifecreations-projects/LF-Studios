@@ -405,6 +405,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         let appMenuItem = NSMenuItem()
         let appMenu = NSMenu(title: "LF Studios") // l10n-ignore
         appMenu.addItem(menuItem(L("LF Studios Home"), action: #selector(openHome), key: "0", modifiers: [.command]))
+        // Always enabled: without the update key it opens the releases page.
+        appMenu.addItem(menuItem(L("Check for Updates…"), action: #selector(checkForUpdates(_:)), key: "", modifiers: []))
         let preferencesItem = NSMenuItem(title: L("Settings…"), action: #selector(openPreferences), keyEquivalent: ",")
         preferencesItem.target = self
         appMenu.addItem(preferencesItem)
