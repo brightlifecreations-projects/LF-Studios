@@ -25,11 +25,7 @@ struct VideoCaptionPlacementExportTests {
         try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
         // Editor data the exporter keeps goes to a scratch folder, not the
         // user's own.
-        if VideoStorageLocation.overrideRoot == nil {
-            let root = FileManager.default.temporaryDirectory.appendingPathComponent("lfstudios-test-storage", isDirectory: true)
-            try FileManager.default.createDirectory(at: root, withIntermediateDirectories: true)
-            VideoStorageLocation.overrideRoot = root
-        }
+        try TestVideos.isolateStorage()
         if let path = ProcessInfo.processInfo.environment["LFSTUDIOS_PLACEMENT_FRAMES"] {
             framesDirectory = URL(fileURLWithPath: path, isDirectory: true)
         } else {

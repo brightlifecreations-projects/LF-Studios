@@ -228,11 +228,8 @@ struct VideoStylePresetTests {
 
     /// Runs `body` with LF Studios' storage in a fresh folder.
     private func withStorage(_ body: (URL) async throws -> Void) async throws {
-        let previous = VideoStorageLocation.overrideRoot
         let root = try temporaryRoot()
-        VideoStorageLocation.overrideRoot = root
-        defer { VideoStorageLocation.overrideRoot = previous }
-        try await body(root)
+        try await TestVideos.withStorage(root) { try await body(root) }
     }
 
     @Test func myStyleIsKeptButNeverPutOnNewRecordings() async throws {

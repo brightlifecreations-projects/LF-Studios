@@ -10,11 +10,12 @@ enum VideoTestStorage {
     static let parent = FileManager.default.temporaryDirectory.appendingPathComponent("lfstudios-test-storage", isDirectory: true)
 
     static func isolate() {
-        guard VideoStorageLocation.overrideRoot == nil else { return }
-        let root = parent.appendingPathComponent("process-\(ProcessInfo.processInfo.processIdentifier)", isDirectory: true)
-        // A process from an earlier run may have had this number: start empty.
-        try? FileManager.default.removeItem(at: root)
-        try? FileManager.default.createDirectory(at: root, withIntermediateDirectories: true)
-        VideoStorageLocation.overrideRoot = root
+        VideoStorageLocation.useRootIfUnset {
+            let root = parent.appendingPathComponent("process-\(ProcessInfo.processInfo.processIdentifier)", isDirectory: true)
+            // A process from an earlier run may have had this number: start empty.
+            try? FileManager.default.removeItem(at: root)
+            try? FileManager.default.createDirectory(at: root, withIntermediateDirectories: true)
+            return root
+        }
     }
 }

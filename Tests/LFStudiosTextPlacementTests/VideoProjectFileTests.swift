@@ -184,12 +184,9 @@ struct VideoProjectFileTests {
     // MARK: Opening (auto-saved edits keep working)
 
     private func withStorage(_ body: () async throws -> Void) async rethrows {
-        let previous = VideoStorageLocation.overrideRoot
         let root = FileManager.default.temporaryDirectory.appendingPathComponent("lfstudios-project-storage-\(UUID().uuidString)", isDirectory: true)
         try? FileManager.default.createDirectory(at: root, withIntermediateDirectories: true)
-        VideoStorageLocation.overrideRoot = root
-        defer { VideoStorageLocation.overrideRoot = previous }
-        try await body()
+        try await TestVideos.withStorage(root, body)
     }
 
     @MainActor

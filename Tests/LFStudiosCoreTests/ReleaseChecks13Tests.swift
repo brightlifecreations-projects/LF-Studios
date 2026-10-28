@@ -106,7 +106,7 @@ final class ReleaseChecks13Tests: XCTestCase {
         let plain = try await frame(try await export(model, "vertical-plain"), at: 2)
         model.phoneOverlay = .fullRail
         let overlaid = try await frame(try await export(model, "vertical-with-overlay-on"), at: 2)
-        XCTAssertEqual(TestImageBytes.rgba(plain), TestImageBytes.rgba(overlaid))
+        TestImageBytes.assertSamePicture(plain, overlaid, "the phone overlay isn't in the export")
         try save(overlaid, "vertical-export-with-overlay-on")
         print("RELEASE CHECKS in \(out.path)")
     }

@@ -163,11 +163,19 @@ enum TestVideos {
     }
 
     /// Editor data the exporter keeps goes to a scratch folder.
+    /// Tests start on several threads at once: the folder is set in one
+    /// step (VideoStorageLocation.useRootIfUnset), never checked and then set.
     static func isolateStorage() throws {
-        guard VideoStorageLocation.overrideRoot == nil else { return }
-        let root = FileManager.default.temporaryDirectory.appendingPathComponent("lfstudios-test-storage", isDirectory: true)
+        let root = VideoStorageLocation.useRootIfUnset {
+            FileManager.default.temporaryDirectory.appendingPathComponent("lfstudios-test-storage", isDirectory: true)
+        }
         try FileManager.default.createDirectory(at: root, withIntermediateDirectories: true)
-        VideoStorageLocation.overrideRoot = root
+    }
+
+    /// Runs `body` with LF Studios' storage in `root`, for this test only:
+    /// the suites running beside it keep their own.
+    static func withStorage<T>(_ root: URL, _ body: () async throws -> T) async rethrows -> T {
+        try await VideoStorageLocation.$scopedRoot.withValue(root) { try await body() }
     }
 
     static func export(_ project: VideoDemoProject, to url: URL, format: VideoExportSettings.Format = .mp4, burnCaptions: Bool = true) async throws {
