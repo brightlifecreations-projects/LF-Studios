@@ -417,8 +417,190 @@ enum GuideContent {
     // MARK: - All features
 
     static func featureCategories() -> [GuideCategory] {
-        []
+        [
+            GuideCategory(id: "screenshots", title: L("Screenshots"), symbol: "camera.viewfinder", entries: screenshotFeatures()),
+            GuideCategory(id: "screenshot-editor", title: L("Screenshot editor"), symbol: "pencil.and.outline", entries: screenshotEditorFeatures()),
+            GuideCategory(id: "text-qr", title: L("Copy text & QR codes"), symbol: "text.viewfinder", entries: textFeatures()),
+            GuideCategory(id: "history", title: L("History & pins"), symbol: "clock.arrow.circlepath", entries: historyFeatures()),
+            GuideCategory(id: "recording", title: L("Recording"), symbol: "record.circle", entries: recordingFeatures()),
+            GuideCategory(id: "video-editor", title: L("Video editor"), symbol: "film", entries: videoEditorFeatures()),
+            GuideCategory(id: "zoom", title: L("Zoom"), symbol: "plus.magnifyingglass", entries: zoomFeatures()),
+            GuideCategory(id: "cursor", title: L("Cursor"), symbol: "cursorarrow.motionlines", entries: cursorFeatures()),
+            GuideCategory(id: "camera", title: L("Camera"), symbol: "person.crop.circle", entries: cameraFeatures()),
+            GuideCategory(id: "captions", title: L("Captions"), symbol: "captions.bubble", entries: captionFeatures()),
+            GuideCategory(id: "audio", title: L("Audio"), symbol: "speaker.wave.2", entries: audioFeatures()),
+            GuideCategory(id: "style", title: L("Style & presets"), symbol: "paintbrush", entries: styleFeatures()),
+            GuideCategory(id: "sizes", title: L("Video sizes"), symbol: "aspectratio", entries: sizeFeatures()),
+            GuideCategory(id: "privacy-features", title: L("Privacy"), symbol: "eye.slash", entries: privacyFeatures()),
+            GuideCategory(id: "export", title: L("Export"), symbol: "square.and.arrow.up", entries: exportFeatures()),
+            GuideCategory(id: "projects", title: L("Projects"), symbol: "folder", entries: projectFeatures()),
+            GuideCategory(id: "settings", title: L("Settings"), symbol: "gearshape", entries: settingsFeatures()),
+        ].filter { !$0.entries.isEmpty }
     }
+
+    // MARK: Screenshots
+
+    static func screenshotFeatures() -> [GuideEntry] {
+        [
+            GuideEntry(
+                id: "shot-area", symbol: "rectangle.dashed", title: L("Capture Area"),
+                summary: L("Drag over any part of the screen to capture it."),
+                location: L("Home ▸ Take screenshot, or the LF Studios menu in the menu bar ▸ Capture Area."),
+                steps: [
+                    L("Press the shortcut, or click Take screenshot."),
+                    L("Drag over the area you want."),
+                    L("Let go to capture it."),
+                ],
+                keys: [.global(.captureArea), .fixed("Esc", L("Cancel"))],
+                tips: [L("Every screenshot is kept in History and in Home ▸ Screenshots.")],
+                related: ["shot-selecting", "shot-after-capture"]
+            ),
+            GuideEntry(
+                id: "shot-window", symbol: "macwindow", title: L("Capture Window"),
+                summary: L("Capture one window on its own, even if other windows are in front of it."),
+                location: L("The LF Studios menu in the menu bar ▸ Capture Window."),
+                steps: [
+                    L("Press the shortcut, or choose Capture Window."),
+                    L("Move the pointer over a window: it lights up."),
+                    L("Click to capture it."),
+                ],
+                keys: [.global(.captureWindow), .fixed("Esc", L("Cancel"))],
+                tips: [
+                    L("Settings ▸ Screenshots ▸ Window Capture adds a soft shadow and some transparent space around the window. It's on to start with."),
+                    L("On macOS 13, a window is captured as you see it on screen, including anything in front of it."),
+                ],
+                showMe: .settings(.screenshots)
+            ),
+            GuideEntry(
+                id: "shot-fullscreen", symbol: "display", title: L("Capture Fullscreen"),
+                summary: L("Capture the whole screen the pointer is on, right away."),
+                location: L("The LF Studios menu in the menu bar ▸ Capture Fullscreen."),
+                keys: [.global(.captureFullscreenNative), .global(.captureFullscreenFallback)],
+                tips: [L("⇧⌘3 is also Apple's own screenshot shortcut. LF Studios offers to turn Apple's off, so its own works.")],
+                related: ["shot-all-displays", "trouble-apple-screenshot"]
+            ),
+            GuideEntry(
+                id: "shot-all-displays", symbol: "rectangle.on.rectangle", title: L("Capture All Displays"),
+                summary: L("Capture every screen at once, one picture per screen."),
+                location: L("The LF Studios menu in the menu bar ▸ Capture All Displays. It's there only while more than one screen is connected."),
+                keys: [.global(.captureAllDisplays)]
+            ),
+            GuideEntry(
+                id: "shot-previous", symbol: "arrow.counterclockwise", title: L("Capture Previous Area"),
+                summary: L("Capture the same area as last time, without selecting it again."),
+                location: L("The LF Studios menu in the menu bar ▸ Capture Previous Area."),
+                keys: [.global(.capturePreviousArea)],
+                tips: [L("LF Studios remembers the area until it quits. With no area yet, you select one as usual.")]
+            ),
+            GuideEntry(
+                id: "shot-timed", symbol: "timer", title: L("Timed Capture"),
+                summary: L("Select an area, then wait a few seconds before the shot: time to open a menu or hover over something."),
+                location: L("The LF Studios menu in the menu bar ▸ Timed Capture."),
+                steps: [
+                    L("Choose Timed Capture and drag over the area."),
+                    L("Get things ready while the countdown runs."),
+                    L("The screenshot is taken when it reaches zero."),
+                ],
+                keys: [.global(.captureTimed), .fixed("Esc", L("Cancel the countdown"))],
+                tips: [L("Choose 3, 5, or 10 seconds in Settings ▸ Screenshots ▸ Timed Capture.")],
+                showMe: .settings(.screenshots)
+            ),
+            GuideEntry(
+                id: "shot-scrolling", symbol: "scroll", title: L("Scrolling Capture"),
+                summary: L("Capture a page that's longer than the screen, by scrolling through it."),
+                location: L("Home ▸ Scroll capture, or the LF Studios menu in the menu bar ▸ Scrolling Capture."),
+                steps: [
+                    L("Drag over the part of the window that scrolls."),
+                    L("Scroll down slowly."),
+                    L("Click Done or press Esc to finish."),
+                ],
+                keys: [.global(.captureScrolling, L("Start, and press again to finish")), .fixed("Esc", L("Finish"))],
+                tips: [
+                    L("Headers and sidebars that stay in place show only once."),
+                    L("Up to 30,000 pixels tall. It stops by itself after 10 minutes."),
+                ],
+                related: ["howto-scrolling"]
+            ),
+            GuideEntry(
+                id: "shot-selecting", symbol: "selection.pin.in.out", title: L("Selecting an area"),
+                summary: L("Get the area exactly right: a magnifier, the size as you drag, and keys to fine-tune."),
+                location: L("Whenever you capture or record an area."),
+                points: [
+                    L("The magnifier shows the pixels under the pointer, with their color."),
+                    L("The size shows while you drag."),
+                    L("Hold Space while dragging to move the area instead of resizing it."),
+                    L("Hold ⇧ as you let go to adjust the area before capturing. Then drag its edges, or use the arrow keys, and press Return."),
+                ],
+                keys: [
+                    .fixed(L("Space"), L("Move the area while dragging")),
+                    .fixed("⇧", L("Hold as you let go to adjust first")),
+                    .fixed("← → ↑ ↓", L("Nudge the area (with ⇧: 10 points)")),
+                    .fixed("⌥ ← → ↑ ↓", L("Make the area bigger or smaller")),
+                    .fixed("↩", L("Capture")),
+                    .fixed("Esc", L("Cancel")),
+                ],
+                tips: [L("Prefer to adjust every time? Turn off Capture immediately after selecting in Settings ▸ Screenshots.")],
+                showMe: .settings(.screenshots)
+            ),
+            GuideEntry(
+                id: "shot-desktop-icons", symbol: "menubar.dock.rectangle", title: L("Hide desktop icons"),
+                summary: L("Keep files on your desktop out of your screenshots."),
+                location: L("Settings ▸ General ▸ Menu Bar ▸ Hide desktop icons while capturing. Or the LF Studios menu ▸ Hide Desktop Icons, which hides them until you show them again."),
+                tips: [L("While capturing, the icons are covered with your wallpaper for a moment. Nothing on the desktop is moved.")],
+                showMe: .settings(.general)
+            ),
+            GuideEntry(
+                id: "shot-sound", symbol: "speaker.wave.1", title: L("Capture sound"),
+                summary: L("A camera shutter sound plays when a screenshot is taken."),
+                location: L("Settings ▸ General ▸ Sounds ▸ Play capture sound."),
+                showMe: .settings(.general)
+            ),
+            GuideEntry(
+                id: "shot-preview", symbol: "rectangle.inset.bottomleft.filled", title: L("Preview after capture"),
+                summary: L("A small thumbnail of each screenshot, with buttons to edit, copy, save, or pin it."),
+                location: L("Turn it on in Settings ▸ General ▸ After Capture ▸ Show the preview after capture."),
+                points: [
+                    L("Hover over the thumbnail for Edit, Close, Delete, Pin, Copy, Save, and Text (copies the text in it)."),
+                    L("Double-click it to edit; drag it into another app to drop the picture there."),
+                    L("Swipe it sideways to dismiss it."),
+                ],
+                keys: [.fixed("⌘C", L("Copy")), .fixed("⌘S", L("Save")), .fixed("⌘E", L("Edit")), .fixed("Esc", L("Close"))],
+                tips: [L("Choose the corner (Left or Right) and how long it stays in the same settings section. Hovering keeps it open.")],
+                showMe: .settings(.general)
+            ),
+            GuideEntry(
+                id: "shot-after-capture", symbol: "checklist", title: L("After capture"),
+                summary: L("Choose what happens after each screenshot or recording."),
+                location: L("Settings ▸ General ▸ After Capture."),
+                points: [
+                    L("Copy screenshots to the clipboard."),
+                    L("Show the preview after capture."),
+                    L("Open the video editor after recording."),
+                    L("Save automatically, to the folder chosen in Settings ▸ Screenshots."),
+                ],
+                tips: [L("All of these start off. Every screenshot is still kept in History and Home, and a short notice says so.")],
+                showMe: .settings(.general),
+                related: ["app-files"]
+            ),
+        ]
+    }
+
+    static func screenshotEditorFeatures() -> [GuideEntry] { [] } // STUB
+    static func textFeatures() -> [GuideEntry] { [] } // STUB
+    static func historyFeatures() -> [GuideEntry] { [] } // STUB
+    static func recordingFeatures() -> [GuideEntry] { [] } // STUB
+    static func videoEditorFeatures() -> [GuideEntry] { [] } // STUB
+    static func zoomFeatures() -> [GuideEntry] { [] } // STUB
+    static func cursorFeatures() -> [GuideEntry] { [] } // STUB
+    static func cameraFeatures() -> [GuideEntry] { [] } // STUB
+    static func captionFeatures() -> [GuideEntry] { [] } // STUB
+    static func audioFeatures() -> [GuideEntry] { [] } // STUB
+    static func styleFeatures() -> [GuideEntry] { [] } // STUB
+    static func sizeFeatures() -> [GuideEntry] { [] } // STUB
+    static func privacyFeatures() -> [GuideEntry] { [] } // STUB
+    static func exportFeatures() -> [GuideEntry] { [] } // STUB
+    static func projectFeatures() -> [GuideEntry] { [] } // STUB
+    static func settingsFeatures() -> [GuideEntry] { [] } // STUB
 
     // MARK: - Privacy
 
