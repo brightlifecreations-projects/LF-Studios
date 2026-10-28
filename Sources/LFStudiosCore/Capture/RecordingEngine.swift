@@ -194,7 +194,7 @@ final class RecordingEngine: NSObject {
             // Room for this recording's own stop threshold and then some, or
             // it would stop itself right after starting. The camera counts if
             // it's asked for: whether it starts is only known later.
-            let saveFolder = URL(fileURLWithPath: Settings.autoSaveLocation, isDirectory: true)
+            let saveFolder = URL(fileURLWithPath: Settings.recordingFolder, isDirectory: true)
             let required = RecordingDiskSpace.requiredToStart(bytesPerSecond: screenRate + (configuration.recordsCamera ? cameraRate : 0))
             if let available = await Self.availableCapacity(at: saveFolder), available < required {
                 throw RecordingError.notEnoughSpace(required: required, available: available)
@@ -1647,7 +1647,7 @@ final class RecordingEngine: NSObject {
     }
 
     private static func makeOutputURL() -> URL {
-        let directory = URL(fileURLWithPath: Settings.autoSaveLocation, isDirectory: true)
+        let directory = URL(fileURLWithPath: Settings.recordingFolder, isDirectory: true)
         let baseName = ImageExporter.timestampedName
         var url = directory.appendingPathComponent("\(baseName).mp4")
         var suffix = 2

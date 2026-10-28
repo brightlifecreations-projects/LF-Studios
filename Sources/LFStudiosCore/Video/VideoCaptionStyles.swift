@@ -340,7 +340,7 @@ extension VideoEditorModel {
         let panel = NSSavePanel()
         panel.allowedContentTypes = [UTType(filenameExtension: format.fileExtension) ?? .plainText]
         panel.nameFieldStringValue = subtitleFileName(format)
-        panel.directoryURL = recentExports.first?.exportURL.deletingLastPathComponent() ?? URL(fileURLWithPath: Settings.autoSaveLocation, isDirectory: true)
+        panel.directoryURL = recentExports.first?.exportURL.deletingLastPathComponent() ?? URL(fileURLWithPath: Settings.recordingFolder, isDirectory: true)
         panel.canCreateDirectories = true
         guard panel.runModal() == .OK, let url = panel.url else { return }
         do {

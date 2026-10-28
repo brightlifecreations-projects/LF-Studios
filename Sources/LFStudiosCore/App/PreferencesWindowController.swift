@@ -822,7 +822,7 @@ struct ScreenshotsSettingsView: View {
             TextRecognitionPreferences()
 
             PreferenceSection(L("Save Location")) {
-                PreferenceRow(L("Auto-save folder"), detail: displayLocation) {
+                PreferenceRow(L("Screenshot folder"), detail: displayLocation) {
                     Button(L("Choose...")) {
                         let panel = NSOpenPanel()
                         panel.canChooseFiles = false
@@ -834,7 +834,7 @@ struct ScreenshotsSettingsView: View {
                             if Settings.setAutoSaveLocation(url.path) {
                                 autoSaveLocation = Settings.autoSaveLocation
                             } else {
-                                ToastWindow.show(message: L("Choose a writable folder for auto-save."))
+                                ToastWindow.show(message: L("Choose a folder you can save to."))
                             }
                         }
                     }
@@ -842,7 +842,7 @@ struct ScreenshotsSettingsView: View {
                 }
             }
 
-            PreferenceFootnote(text: L("Directory where screenshots are saved if Auto-Save is enabled."))
+            PreferenceFootnote(text: L("Where screenshots are saved: by Save on the preview after capture, and by Save automatically. Recordings have their own folder in Settings ▸ Recording."))
 
             PreferenceSection(L("File Name")) {
                 PreferenceRow(L("Template")) {
@@ -919,7 +919,15 @@ struct RecordingSettingsView: View {
     @AppStorage("recordingCamera") var camera = false
     @AppStorage("recordingCameraDeviceID") var cameraDeviceID = ""
     @AppStorage("recordingCountdownSeconds") var countdown = 0
+    @AppStorage("recordingFolder") var recordingFolder = ""
+    @AppStorage("askWhereToSaveRecordings") var askWhereToSave = true
     @State private var keystrokeAccess = VideoKeystrokeFormatter.isAllowed
+
+    /// Read through the stored value, so the row updates when it changes.
+    private var displayRecordingFolder: String {
+        _ = recordingFolder
+        return Settings.recordingFolder
+    }
 
     private var microphones: [MicrophoneOption] { MicrophoneDeviceProvider.options }
 
@@ -1097,6 +1105,36 @@ struct RecordingSettingsView: View {
             }
 
             PreferenceFootnote(text: L("Your camera is recorded as its own layer: a live bubble shows while you record (it never appears in the screen capture), and the editor lets you move, resize, and restyle it — or hide it — afterwards."))
+
+            PreferenceSection(L("Saving")) {
+                PreferenceRow(L("Ask where to save after each recording")) {
+                    Toggle("", isOn: $askWhereToSave)
+                        .labelsHidden()
+                        .toggleStyle(.switch)
+                }
+
+                PreferenceDivider()
+
+                PreferenceRow(L("Recording folder"), detail: displayRecordingFolder) {
+                    Button(L("Choose...")) {
+                        let panel = NSOpenPanel()
+                        panel.canChooseFiles = false
+                        panel.canChooseDirectories = true
+                        panel.canCreateDirectories = true
+                        panel.directoryURL = URL(fileURLWithPath: Settings.recordingFolder)
+                        if panel.runModal() == .OK, let url = panel.url {
+                            if Settings.setRecordingFolder(url.path) {
+                                recordingFolder = Settings.recordingFolder
+                            } else {
+                                ToastWindow.show(message: L("Choose a folder you can save to."))
+                            }
+                        }
+                    }
+                    .buttonStyle(.bordered)
+                }
+            }
+
+            PreferenceFootnote(text: L("Every recording gets a folder of its own, with its project file, the screen and camera videos, the sound as separate files, and its data. With asking off, or when you click Cancel, it goes in the Recording folder."))
 
             // Leftover video data (VideoDataCleanup.swift).
             PreferenceSection(L("Storage")) {

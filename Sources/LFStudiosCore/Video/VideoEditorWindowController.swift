@@ -114,7 +114,7 @@ final class VideoDemoEditorWindowController: NSWindowController, NSWindowDelegat
         panel.canChooseDirectories = false
         panel.canChooseFiles = true
         panel.allowedContentTypes = [.mpeg4Movie, .quickTimeMovie, .movie]
-        panel.directoryURL = URL(fileURLWithPath: Settings.autoSaveLocation, isDirectory: true)
+        panel.directoryURL = URL(fileURLWithPath: Settings.recordingFolder, isDirectory: true)
         guard panel.runModal() == .OK, let url = panel.url else { return nil }
         Settings.lastRecordingPath = url.path
         return url

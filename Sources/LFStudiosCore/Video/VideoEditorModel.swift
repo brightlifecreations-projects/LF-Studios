@@ -2019,7 +2019,7 @@ final class VideoEditorModel: ObservableObject {
             }
             panel.canCreateDirectories = true
             panel.nameFieldStringValue = "\(exportBaseName).\(settings.fileExtension)"
-            panel.directoryURL = URL(fileURLWithPath: Settings.autoSaveLocation, isDirectory: true)
+            panel.directoryURL = URL(fileURLWithPath: Settings.recordingFolder, isDirectory: true)
             guard panel.runModal() == .OK, let url = panel.url else { return }
             destination = url
         }

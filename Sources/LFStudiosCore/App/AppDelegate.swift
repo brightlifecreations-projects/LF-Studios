@@ -108,6 +108,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         // Before the welcome window marks this install as launched.
         Settings.migrateCaptureSettingsIfNeeded()
         Settings.migrateRecordingFPSIfNeeded()
+        Settings.migrateRecordingFolderIfNeeded()
         // Unfinished exports' working files, then old clipboard exports (in
         // the background).
         VideoExportFiles.removeLeftovers()
@@ -594,7 +595,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         panel.canChooseDirectories = false
         panel.canChooseFiles = true
         panel.allowedContentTypes = [.mpeg4Movie, .quickTimeMovie, .movie]
-        panel.directoryURL = URL(fileURLWithPath: Settings.autoSaveLocation, isDirectory: true)
+        panel.directoryURL = URL(fileURLWithPath: Settings.recordingFolder, isDirectory: true)
 
         guard panel.runModal() == .OK, let url = panel.url else { return }
         Settings.lastRecordingPath = url.path
@@ -850,15 +851,18 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         ]
     }
 
+    /// Health ▸ Save Folder ▸ Fix: a new folder for whichever of the two
+    /// (screenshots, recordings) can't be written to.
     private func chooseAutoSaveFolder() {
+        let recordings = !FileManager.default.isWritableFile(atPath: Settings.recordingFolder)
         let panel = NSOpenPanel()
         panel.canChooseFiles = false
         panel.canChooseDirectories = true
         panel.canCreateDirectories = true
-        panel.directoryURL = URL(fileURLWithPath: Settings.autoSaveLocation)
+        panel.directoryURL = URL(fileURLWithPath: recordings ? Settings.recordingFolder : Settings.autoSaveLocation)
 
         guard panel.runModal() == .OK, let url = panel.url else { return }
-        if Settings.setAutoSaveLocation(url.path) {
+        if recordings ? Settings.setRecordingFolder(url.path) : Settings.setAutoSaveLocation(url.path) {
             ToastWindow.show(message: L("Save folder updated."))
         } else {
             ToastWindow.show(message: L("Choose a writable folder."))
