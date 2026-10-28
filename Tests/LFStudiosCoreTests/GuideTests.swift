@@ -156,11 +156,22 @@ final class GuideTests: XCTestCase {
         XCTAssertEqual(GuideKey.fixed("⌘E", "Export").currentKeys, "⌘E")
     }
 
-    func testEveryMenuShortcutIsOnTheShortcutsPage() throws {
+    /// The app's menu bar, built once: its File menu shares one Recent
+    /// Exports submenu, which can't go into two menus.
+    private static var builtMenu: (main: NSMenu, help: NSMenu?)?
+
+    private func appMenu() throws -> (main: NSMenu, help: NSMenu?) {
+        if let builtMenu = Self.builtMenu { return builtMenu }
         let previous = NSApp.mainMenu
         defer { NSApp.mainMenu = previous }
         AppDelegate().setupMainMenu()
-        let menu = try XCTUnwrap(NSApp.mainMenu)
+        let built = (main: try XCTUnwrap(NSApp.mainMenu), help: NSApp.helpMenu)
+        Self.builtMenu = built
+        return built
+    }
+
+    func testEveryMenuShortcutIsOnTheShortcutsPage() throws {
+        let menu = try appMenu().main
         var missing: [String] = []
         func walk(_ menu: NSMenu) {
             for item in menu.items {
@@ -176,10 +187,7 @@ final class GuideTests: XCTestCase {
     }
 
     func testTheHelpMenuOpensTheGuideWithCommandQuestionMark() throws {
-        let previous = NSApp.mainMenu
-        defer { NSApp.mainMenu = previous }
-        AppDelegate().setupMainMenu()
-        let help = try XCTUnwrap(NSApp.helpMenu)
+        let help = try XCTUnwrap(try appMenu().help)
         let item = try XCTUnwrap(help.items.first)
         XCTAssertEqual(item.title, "LF Studios Guide")
         XCTAssertEqual(item.keyEquivalent, "?")

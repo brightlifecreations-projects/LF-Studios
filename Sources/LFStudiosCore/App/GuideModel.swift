@@ -200,15 +200,21 @@ final class GuideModel: ObservableObject {
         case .chapter(let id): return id
         case .category(let id): return categoriesByID[id]?.1 ?? .features
         case .entry(let id):
-            if let back = history.last, case .chapter(let chapter) = back { return chapter }
-            return chapters.first { $0.entries.contains { $0.id == id } }?.id ?? .features
+            // Opened from a chapter that lists it (What's new): that one.
+            if let back = history.last, case .chapter(let chapter) = back,
+               self.chapter(chapter)?.entries.contains(where: { $0.id == id }) == true {
+                return chapter
+            }
+            return chapters.first { $0.id != .whatsNew && $0.entries.contains { $0.id == id } }?.id ?? .features
         }
     }
 
     var selectedCategory: String? {
         switch page {
         case .category(let id): return id
-        case .entry(let id): return category(containing: id)?.id
+        case .entry(let id):
+            guard selectedChapter == .features else { return nil }
+            return category(containing: id)?.id
         case .chapter: return nil
         }
     }
