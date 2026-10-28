@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.1] - Unreleased
+
+### Added
+- **Updates inside the app.** LF Studios → **Check for Updates…** looks for a new version, and LF Studios also checks once a day (Settings → General → **Check for updates automatically**, on to start with). The update window shows what's new, with **Install Update**, **Remind Me Later** and **Skip This Version**. Nothing downloads or installs until you click Install Update. LF Studios then relaunches, with your projects, recordings, drafts, history, settings, presets, fonts, Whisper models and permissions as they were. Install 1.4.1 by hand once; later versions update themselves.
+
+### Changed
+- Downloads moved to [LF-Studios-Releases](https://github.com/brightlifecreations-projects/LF-Studios-Releases/releases), which anyone with the link can open without a GitHub login.
+
 ## [1.4.0] - 2026-10-28
 
 Everything new starts off, and is turned on with its own button or switch.
