@@ -624,7 +624,7 @@ struct VideoSourceLayout {
 
     /// Loads the added recordings (the primary's tracks are passed in),
     /// each voice swapped for its cleaned-up version when that's wanted.
-    static func load(project: VideoDemoProject, primary: VideoSourceTracks, primaryAudio: [VideoAudioSource], primaryCamera: VideoCameraSource?, includeCameras: Bool = true, enhanceVoice: Bool = false) async -> VideoSourceLayout? {
+    static func load(project: VideoDemoProject, primary: VideoSourceTracks, primaryAudio: [VideoAudioSource], primaryCamera: VideoCameraSource?, includeCameras: Bool = true, voice: VideoVoiceRecipe? = nil) async -> VideoSourceLayout? {
         guard project.hasAppendedSources else { return nil }
         var entries: [Entry] = []
         for source in project.sources {
@@ -639,7 +639,7 @@ struct VideoSourceLayout {
             if includeCameras, let webcam = source.webcam {
                 camera = await VideoCameraSource.load(webcam)
             }
-            let audio = await VideoAudioSource.resolved(from: tracks, kinds: kinds, enhanceVoice: enhanceVoice)
+            let audio = await VideoAudioSource.resolved(from: tracks, kinds: kinds, voice: voice)
             entries.append(Entry(source: source, tracks: tracks, audio: audio, camera: camera))
         }
         return VideoSourceLayout(entries: entries)
@@ -690,8 +690,9 @@ extension VideoCameraComposition {
 struct VideoVoiceTarget: Equatable {
     let url: URL
     let trackIndex: Int
+    var recipe: VideoVoiceRecipe = .enhance
 
-    var destination: URL { VideoVoiceEnhancer.cacheURL(for: url, trackIndex: trackIndex) }
+    var destination: URL { VideoVoiceEnhancer.cacheURL(for: url, trackIndex: trackIndex, recipe: recipe) }
     var isReady: Bool { FileManager.default.fileExists(atPath: destination.path) }
 }
 
@@ -699,12 +700,13 @@ extension VideoDemoProject {
     /// Every recording's voice track, the project's own first.
     func voiceTargets(primaryKinds: [VideoAudioKind]) -> [VideoVoiceTarget] {
         var targets: [VideoVoiceTarget] = []
+        let recipe = audio.voiceRecipe ?? .enhance
         if let index = VideoAudioKind.voiceTrackIndex(in: primaryKinds) {
-            targets.append(VideoVoiceTarget(url: sourceURL, trackIndex: index))
+            targets.append(VideoVoiceTarget(url: sourceURL, trackIndex: index, recipe: recipe))
         }
         for source in sources where !source.isPrimary {
             guard let index = VideoAudioKind.voiceTrackIndex(in: source.audioKinds), let url = VideoSourceLocator.resolve(source) else { continue }
-            targets.append(VideoVoiceTarget(url: url, trackIndex: index))
+            targets.append(VideoVoiceTarget(url: url, trackIndex: index, recipe: recipe))
         }
         return targets
     }
@@ -726,7 +728,7 @@ extension VideoVoiceEnhancer {
             guard tracks.indices.contains(target.trackIndex) else { continue }
             let done = Double(index)
             let count = Double(pending.count)
-            try await enhance(asset: asset, track: tracks[target.trackIndex], to: target.destination) { value in
+            try await enhance(asset: asset, track: tracks[target.trackIndex], to: target.destination, recipe: target.recipe) { value in
                 progress((done + value) / count)
             }
         }
@@ -808,7 +810,7 @@ extension VideoEditorModel {
         activityCache = nil
         await reloadSources()
         // With Enhance voice on, the new recording's voice is cleaned up too.
-        if project.audio.enhanceVoice { startVoiceEnhancementIfNeeded() }
+        if project.audio.voiceRecipe != nil { startVoiceEnhancementIfNeeded() }
         let added = project.sources.last
         if let added, let time = segments.first(where: { $0.clip.sourceStart >= added.offset - 0.001 })?.timelineStart {
             seek(to: time)

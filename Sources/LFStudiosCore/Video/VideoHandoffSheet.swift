@@ -179,6 +179,13 @@ struct VideoHandoffSheet: View {
             VideoToggleRow(title: L("Line everything up"), detail: L("Every file starts at the same moment and is as long as the others: drop them all at 0:00 and they play in sync, the camera too."), isOn: $options.lineUp)
             VideoToggleRow(title: L("Include the finished video"), detail: L("Exported with your export settings"), isOn: $options.includeFinal)
             VideoToggleRow(title: L("Include a timeline for editing apps"), detail: L("For Final Cut Pro, DaVinci Resolve, and Adobe Premiere Pro"), isOn: $options.includeTimeline)
+            let hasNotes = !(model.project.speakerNotes ?? "").trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+            VideoToggleRow(
+                title: L("Include speaker notes"),
+                detail: hasNotes ? L("Your notes from recording, as Notes.txt") : L("This video has no speaker notes"),
+                isOn: Binding(get: { hasNotes && options.includeSpeakerNotes }, set: { options.includeSpeakerNotes = $0 })
+            )
+            .disabled(!hasNotes)
             row(L("Quality")) {
                 VideoSegmented(options: [(VideoHandoffOptions.Quality.proRes422HQ, L("Best (ProRes 422 HQ)")), (.proRes422, L("Smaller files (ProRes 422)"))], selection: $options.quality)
             }

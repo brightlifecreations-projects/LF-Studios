@@ -374,6 +374,13 @@ final class VideoEditorModel: ObservableObject {
     /// annotations, and most style changes leave it alone.
     /// The text cursor's path (it never changes after loading).
     private var typingTrackCache: (samples: Int, track: VideoTypingTrack?)?
+    /// The bubble's face-following crop, rebuilt when its inputs change.
+    var faceCropCache: (key: String, path: VideoFaceCropPath?)?
+    /// "Keep face centered" analyzing: how far (0…1); nil when not.
+    @Published var faceAnalysisProgress: Double?
+    var faceAnalysisTask: Task<Void, Never>?
+    /// "Auto adjust" reading camera frames.
+    @Published var isAutoAdjustingColor = false
 
     private struct CameraTrackKey: Equatable {
         let regions: [VideoZoomRegion]
@@ -555,7 +562,7 @@ final class VideoEditorModel: ObservableObject {
             }
             Task { await loadThumbnails() }
             Task { await loadWaveform() }
-            if project.audio.enhanceVoice {
+            if project.audio.voiceRecipe != nil {
                 enhanceVoiceChanged()
             }
             Task { await prepareMedia() }
@@ -584,7 +591,7 @@ final class VideoEditorModel: ObservableObject {
             || old.keystrokes != project.keystrokes || old.sources != project.sources {
             activityCache = nil
         }
-        if isReady, old.audio.enhanceVoice != project.audio.enhanceVoice {
+        if isReady, old.audio.voiceRecipe != project.audio.voiceRecipe {
             enhanceVoiceChanged()
         }
         if isReady, hasWebcamFootage, old.webcam.needsPersonMask != project.webcam.needsPersonMask {
@@ -726,7 +733,8 @@ final class VideoEditorModel: ObservableObject {
             hasWebcam: hasWebcamFootage,
             outputCanvasSize: outputCanvas,
             reframe: reframe,
-            typingTrack: typingTrack
+            typingTrack: typingTrack,
+            faceCrop: faceCropPath()
         )
         if !plan.transitions.isEmpty { prefetchHeldFrames() }
     }
@@ -1995,7 +2003,13 @@ final class VideoEditorModel: ObservableObject {
             destination = folder.appendingPathComponent("\(exportBaseName).\(settings.fileExtension)")
         } else {
             let panel = NSSavePanel()
-            panel.allowedContentTypes = settings.format == .gif ? [.gif] : settings.format.isProRes ? [.quickTimeMovie] : [.mpeg4Movie]
+            switch settings.format {
+            case .gif: panel.allowedContentTypes = [.gif]
+            case .m4a: panel.allowedContentTypes = [.mpeg4Audio]
+            case .wav: panel.allowedContentTypes = [.wav]
+            case .aiff: panel.allowedContentTypes = [.aiff]
+            default: panel.allowedContentTypes = settings.format.isProRes ? [.quickTimeMovie] : [.mpeg4Movie]
+            }
             panel.canCreateDirectories = true
             panel.nameFieldStringValue = "\(exportBaseName).\(settings.fileExtension)"
             panel.directoryURL = URL(fileURLWithPath: Settings.autoSaveLocation, isDirectory: true)

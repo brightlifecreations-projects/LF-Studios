@@ -267,6 +267,7 @@ struct VideoCaptionsInspector: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 22) {
+            VideoSpeakerNotesCard(model: model)
             if !model.hasTranscript || model.captionJob != nil {
                 generateCard
             }
@@ -723,6 +724,8 @@ struct VideoCameraInspector: View {
                         .opacity(model.project.autoZoom ? 1 : 0.45)
                 }
                 .disabled(!model.project.webcam.visible)
+
+                VideoCameraExtrasSections(model: model)
 
                 VideoInspectorSection(L("Layouts")) {
                     Text(L("Switch the camera to full screen for talking points, or put it side by side with the screen — at the playhead. Each shows on the Camera lane."))

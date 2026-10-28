@@ -702,6 +702,26 @@
 			<string>Автомасштаб — %lld увеличения</string>
 		</dict>
 	</dict>
+	<key>Camera hidden in %lld silences — ⌘Z to undo</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>few</key>
+			<string>Камера скрыта в %lld паузах — ⌘Z, чтобы отменить</string>
+			<key>many</key>
+			<string>Камера скрыта в %lld паузах — ⌘Z, чтобы отменить</string>
+			<key>one</key>
+			<string>Камера скрыта в %lld паузе — ⌘Z, чтобы отменить</string>
+			<key>other</key>
+			<string>Камера скрыта в %lld паузы — ⌘Z, чтобы отменить</string>
+		</dict>
+	</dict>
 	<key>Captions ready — %lld lines</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>

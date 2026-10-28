@@ -2052,7 +2052,7 @@ final class RecordingControlsWindow: NSWindow {
     private static var openWindows: [RecordingControlsWindow] = []
     private static let barHeight: CGFloat = 56
     private static let expandedHeight: CGFloat = 92
-    private static let panelWidth: CGFloat = 808
+    private static let panelWidth: CGFloat = 854
     private static let chromeInset: CGFloat = 8
     private static let qualityWidth: CGFloat = 72
     private static let qualityFont = NSFont.systemFont(ofSize: 12, weight: .semibold)
@@ -2097,6 +2097,7 @@ final class RecordingControlsWindow: NSWindow {
     private let cursorButton = RecordingToggleButton(symbol: "cursorarrow.rays", title: L("Cursor"))
     private let cameraButton = RecordingToggleButton(symbol: "video.fill", title: L("Camera"), activeTint: .systemBlue)
     private let keysButton = RecordingToggleButton(symbol: "command", title: L("Show keyboard shortcuts"))
+    private let notesButton = RecordingToggleButton(symbol: "text.quote", title: L("Speaker notes"))
     private let qualityPopup = NSPopUpButton(frame: .zero, pullsDown: false)
     private let fpsPopup = NSPopUpButton(frame: .zero, pullsDown: false)
     private let sizeLabel = NSTextField(labelWithString: "")
@@ -2262,13 +2263,14 @@ final class RecordingControlsWindow: NSWindow {
         sourcePill.toolTip = L("Records \(pixelWidth) × \(pixelHeight) pixels (\(pointWidth) × \(pointHeight) points)")
         bar.addSubview(sourcePill)
 
-        let audioGroup = segmentContainer(frame: NSRect(x: 234, y: 8, width: 268, height: 40))
+        let audioGroup = segmentContainer(frame: NSRect(x: 234, y: 8, width: 314, height: 40))
         bar.addSubview(audioGroup)
         bar.addSubview(divider(x: 280, height: 22))
         bar.addSubview(divider(x: 326, height: 22))
         bar.addSubview(divider(x: 362, height: 22))
         bar.addSubview(divider(x: 408, height: 22))
         bar.addSubview(divider(x: 454, height: 22))
+        bar.addSubview(divider(x: 500, height: 22))
 
         systemAudioButton.frame = NSRect(x: 238, y: 9, width: 40, height: 38)
         microphoneButton.frame = NSRect(x: 284, y: 9, width: 40, height: 38)
@@ -2278,7 +2280,9 @@ final class RecordingControlsWindow: NSWindow {
         cursorButton.frame = NSRect(x: 366, y: 9, width: 40, height: 38)
         cameraButton.frame = NSRect(x: 412, y: 9, width: 40, height: 38)
         keysButton.frame = NSRect(x: 458, y: 9, width: 40, height: 38)
-        for button in [systemAudioButton, microphoneButton, cursorButton, cameraButton, keysButton] {
+        notesButton.frame = NSRect(x: 504, y: 9, width: 40, height: 38)
+        notesButton.toolTip = L("Speaker notes: a teleprompter that never shows in the recording")
+        for button in [systemAudioButton, microphoneButton, cursorButton, cameraButton, keysButton, notesButton] {
             button.target = self
             button.action = #selector(toggleChanged(_:))
             bar.addSubview(button)
@@ -2287,20 +2291,20 @@ final class RecordingControlsWindow: NSWindow {
         // Right of the quality menu, everything moves over by what a longer
         // quality name needs (none in English).
         let extra = barWidth - Self.panelWidth
-        let settingsGroup = segmentContainer(frame: NSRect(x: 510, y: 8, width: 166 + extra, height: 40))
+        let settingsGroup = segmentContainer(frame: NSRect(x: 556, y: 8, width: 166 + extra, height: 40))
         bar.addSubview(settingsGroup)
-        bar.addSubview(divider(x: 594 + extra, height: 22))
+        bar.addSubview(divider(x: 640 + extra, height: 22))
 
         let qualities: [RecordingQuality] = [.balanced, .high, .max]
         configurePopup(qualityPopup, items: qualities.map { ($0.displayName, $0.rawValue) })
-        qualityPopup.frame = NSRect(x: 516, y: 18, width: Self.qualityWidth + extra, height: 28)
+        qualityPopup.frame = NSRect(x: 562, y: 18, width: Self.qualityWidth + extra, height: 28)
         qualityPopup.target = self
         qualityPopup.action = #selector(qualityChanged)
         qualityPopup.setAccessibilityLabel(L("Quality"))
         bar.addSubview(qualityPopup)
 
         configurePopup(fpsPopup, items: [("30 fps", "30"), ("60 fps", "60")])
-        fpsPopup.frame = NSRect(x: 602 + extra, y: 18, width: 68, height: 28)
+        fpsPopup.frame = NSRect(x: 648 + extra, y: 18, width: 68, height: 28)
         fpsPopup.target = self
         fpsPopup.action = #selector(fpsChanged)
         fpsPopup.setAccessibilityLabel(L("Frame rate"))
@@ -2309,16 +2313,16 @@ final class RecordingControlsWindow: NSWindow {
         sizeLabel.font = .monospacedDigitSystemFont(ofSize: 8.5, weight: .semibold)
         sizeLabel.textColor = NSColor.white.withAlphaComponent(0.4)
         sizeLabel.alignment = .center
-        sizeLabel.frame = NSRect(x: 514, y: 11, width: 158 + extra, height: 11)
+        sizeLabel.frame = NSRect(x: 560, y: 11, width: 158 + extra, height: 11)
         sizeLabel.toolTip = L("Estimated file size. Still screens take less.")
         bar.addSubview(sizeLabel)
 
-        optionsButton.frame = NSRect(x: 684 + extra, y: 9, width: 36, height: 38)
+        optionsButton.frame = NSRect(x: 730 + extra, y: 9, width: 36, height: 38)
         optionsButton.target = self
         optionsButton.action = #selector(optionsTapped)
         bar.addSubview(optionsButton)
 
-        recordButton.frame = NSRect(x: 728 + extra, y: 9, width: 38, height: 38)
+        recordButton.frame = NSRect(x: 774 + extra, y: 9, width: 38, height: 38)
         recordButton.target = self
         recordButton.action = #selector(recordTapped)
         // Return records, as the default button of the bar.
@@ -2327,13 +2331,13 @@ final class RecordingControlsWindow: NSWindow {
         bar.addSubview(recordButton)
 
         let cancelButton = RecordingActionButton(symbol: "xmark", title: L("Cancel"), tint: .secondaryLabelColor)
-        cancelButton.frame = NSRect(x: 768 + extra, y: 9, width: 32, height: 38)
+        cancelButton.frame = NSRect(x: 814 + extra, y: 9, width: 32, height: 38)
         cancelButton.target = self
         cancelButton.action = #selector(cancelTapped)
         bar.addSubview(cancelButton)
 
         let escHint = keyHint("esc")
-        escHint.frame = NSRect(x: 772 + extra, y: 3, width: 24, height: 12)
+        escHint.frame = NSRect(x: 818 + extra, y: 3, width: 24, height: 12)
         bar.addSubview(escHint)
 
         syncFromSettings()
@@ -2367,6 +2371,7 @@ final class RecordingControlsWindow: NSWindow {
         cursorButton.isOn = Settings.recordingShowsCursor
         cameraButton.isOn = Settings.recordingCamera
         keysButton.isOn = Settings.recordingKeystrokes && VideoKeystrokeFormatter.isAllowed
+        notesButton.isOn = SpeakerNotes.shared.isShown
         selectItem(in: qualityPopup, representedObject: Settings.recordingQuality)
         selectItem(in: fpsPopup, representedObject: String(Settings.recordingFPS))
         reloadMicrophones()
@@ -2663,6 +2668,8 @@ final class RecordingControlsWindow: NSWindow {
             } else {
                 CameraCapture.shared.stop()
             }
+        case notesButton:
+            if sender.isOn { SpeakerNotes.shared.show() } else { SpeakerNotes.shared.hide() }
         case keysButton:
             if sender.isOn, !VideoKeystrokeFormatter.isAllowed {
                 // macOS asks once; the button switches on by itself the

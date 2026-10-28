@@ -636,6 +636,8 @@ struct VideoAudioSettings: Codable, Equatable {
     var enhanceVoice = false
     /// Exports at a steady −16 LUFS (peaks kept under −1 dBFS).
     var normalizeLoudness = true
+    /// Podcast mode's voice chain (nil: off).
+    var podcast: VideoPodcastSettings?
 
     init() {}
 
@@ -656,7 +658,7 @@ struct VideoAudioSettings: Codable, Equatable {
         kinds.isEmpty || kinds.allSatisfy { effectiveVolume(for: $0) < 0.0005 }
     }
 
-    private enum CodingKeys: String, CodingKey { case volume, muted, voiceVolume, systemVolume, enhanceVoice, normalizeLoudness }
+    private enum CodingKeys: String, CodingKey { case volume, muted, voiceVolume, systemVolume, enhanceVoice, normalizeLoudness, podcast }
 
     init(from decoder: Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
@@ -667,6 +669,7 @@ struct VideoAudioSettings: Codable, Equatable {
         systemVolume = try c.decodeIfPresent(Double.self, forKey: .systemVolume) ?? d.systemVolume
         enhanceVoice = try c.decodeIfPresent(Bool.self, forKey: .enhanceVoice) ?? d.enhanceVoice
         normalizeLoudness = try c.decodeIfPresent(Bool.self, forKey: .normalizeLoudness) ?? d.normalizeLoudness
+        podcast = try? c.decodeIfPresent(VideoPodcastSettings.self, forKey: .podcast)
     }
 }
 
@@ -845,6 +848,10 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
     var keyPresses: [Double] = []
     /// The look new loupes get (the last one edited, or a preset's).
     var loupeStyle: VideoLoupeStyle?
+    /// "Keep face centered" (nil: never analyzed / off).
+    var faceTracking: VideoFaceTracking?
+    /// The speaker notes read while recording (nil: none).
+    var speakerNotes: String?
 
     var sourceURL: URL { URL(fileURLWithPath: sourcePath) }
     var sourceSize: CGSize { CGSize(width: sourceWidth, height: sourceHeight) }
@@ -916,6 +923,7 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
         markers = metadata.markers ?? []
         textCursor = metadata.textCursor ?? []
         keyPresses = metadata.keyPresses ?? []
+        speakerNotes = metadata.speakerNotes
         cursor.visible = metadata.shouldRenderCursor
         if trimEnd <= 0 {
             trimEnd = metadata.duration
@@ -1394,7 +1402,7 @@ extension VideoDemoProject {
         case overlayEffects, cursorSamples, clickEvents, nativeCursorVisible, cursor, audio
         case webcam, cameraLayouts, importedCamera, autoZoom, reframe, captions, transcriptLanguage, captionStyle, keystrokes, keystrokeStyle, crop
         case cards, music, clickSounds, transitions, captionTracks, sources, imageOverlayEffects, markers
-        case textCursor, keyPresses, loupeStyle
+        case textCursor, keyPresses, loupeStyle, faceTracking, speakerNotes
         // Legacy (v1) keys
         case backgroundPreset, customBackgroundPath, stageInset, shadowStrength, zoomKeyframes
         case showCursorOverlay, enlargeCursor, showClickRipple, smoothCursor, cursorScale, clickSpotlight, cursorMotionBlur
@@ -1441,6 +1449,8 @@ extension VideoDemoProject {
         textCursor = (try? container.decode([VideoTextCursorSample].self, forKey: .textCursor)) ?? []
         keyPresses = (try? container.decode([Double].self, forKey: .keyPresses)) ?? []
         loupeStyle = try? container.decodeIfPresent(VideoLoupeStyle.self, forKey: .loupeStyle)
+        faceTracking = try? container.decodeIfPresent(VideoFaceTracking.self, forKey: .faceTracking)
+        speakerNotes = try? container.decodeIfPresent(String.self, forKey: .speakerNotes)
 
         let storedVersion = try container.decodeIfPresent(Int.self, forKey: .version) ?? 1
         if storedVersion >= 2 {
@@ -1525,6 +1535,8 @@ extension VideoDemoProject {
         if !textCursor.isEmpty { try container.encode(textCursor, forKey: .textCursor) }
         if !keyPresses.isEmpty { try container.encode(keyPresses, forKey: .keyPresses) }
         try container.encodeIfPresent(loupeStyle, forKey: .loupeStyle)
+        try container.encodeIfPresent(faceTracking, forKey: .faceTracking)
+        if let speakerNotes, !speakerNotes.isEmpty { try container.encode(speakerNotes, forKey: .speakerNotes) }
         try container.encode(cursorSamples, forKey: .cursorSamples)
         try container.encode(clickEvents, forKey: .clickEvents)
         try container.encode(nativeCursorVisible, forKey: .nativeCursorVisible)

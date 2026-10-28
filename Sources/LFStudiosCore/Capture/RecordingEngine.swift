@@ -270,6 +270,7 @@ final class RecordingEngine: NSObject {
             isRecording = true
             recordingStartedAt = CACurrentMediaTime()
             metadataRecorder.start()
+            SpeakerNotes.shared.recordingStarted()
             stateChangedHandler?()
 
             // Arm the queue-confined writer core before any buffer can arrive
@@ -945,6 +946,8 @@ final class RecordingEngine: NSObject {
         let metadata = metadataRecorder?.finish(duration: duration)
         pendingRecordingMetadata = discarding ? nil : metadata
         pendingRecordingMetadata?.audioTracks = audioKinds.isEmpty ? nil : audioKinds
+        let notes = SpeakerNotes.shared.recordingFinished()
+        if !discarding { pendingRecordingMetadata?.speakerNotes = notes }
         metadataRecorder = nil
         if recordsCamera, !discarding {
             cameraFinishTask = Task { await CameraCapture.shared.finishRecording() }

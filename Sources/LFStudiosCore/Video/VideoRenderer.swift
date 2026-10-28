@@ -322,6 +322,8 @@ final class VideoRenderPlan: @unchecked Sendable {
     let bubbleMoves: [VideoBubbleMove]
     /// The pointer's look (VideoCursorStyles.swift).
     let cursorStyle: VideoCursorStyleArtwork?
+    /// The bubble's crop following the face (nil: off).
+    let faceCrop: VideoFaceCropPath?
 
     struct CameraLayoutSpan {
         let start: Double
@@ -398,9 +400,11 @@ final class VideoRenderPlan: @unchecked Sendable {
         hasWebcam: Bool = false,
         outputCanvasSize: CGSize? = nil,
         reframe: VideoReframe? = nil,
-        typingTrack: VideoTypingTrack? = nil
+        typingTrack: VideoTypingTrack? = nil,
+        faceCrop: VideoFaceCropPath? = nil
     ) {
         webcam = hasWebcam ? project.webcam : nil
+        self.faceCrop = hasWebcam ? faceCrop : nil
         self.typingTrack = typingTrack
         canvasSize = project.canvasSize()
         self.outputCanvasSize = outputCanvasSize ?? project.canvasSize()
@@ -850,7 +854,10 @@ final class VideoFrameRenderer {
         if let webcam = plan.webcam, webcam.visible, let frame = options.webcamFrame, plan.hasCameraFootage(at: timelineTime) {
             let bubble = Self.movedWebcamRect(webcam, plan: plan, time: timelineTime, outputSize: outputSize, cameraScale: cameraScale)
             let bubbleRadius = Self.webcamCornerRadius(webcam, rect: bubble)
-            let camera = CameraPicture(frame: frame, mask: options.webcamMask, settings: webcam)
+            var picture = webcam
+            // Keep face centered: the crop follows the face.
+            if let face = plan.faceCrop { picture.crop = face.crop(atSourceTime: sourceTime) }
+            let camera = CameraPicture(frame: frame, mask: options.webcamMask, settings: picture)
             switch plan.cameraLayout(at: timelineTime) {
             case let (layout, progress)? where layout == .fullscreen:
                 // The bubble grows to fill the frame.
@@ -1520,6 +1527,10 @@ final class VideoFrameRenderer {
         var picture = frame.transformed(by: transform)
         if scale < 0.8 { picture = picture.samplingLinear() }
         picture = picture.cropped(to: rect)
+        // Color for the camera alone, at the size it's drawn.
+        if let color = camera.settings.color, !color.isNeutral {
+            picture = color.apply(to: picture, pixelsPerPoint: max(rect.height / 300, 1))
+        }
 
         guard camera.settings.needsPersonMask, let mask = camera.mask, mask.extent.width > 0, mask.extent.height > 0 else {
             return (picture, nil)

@@ -216,6 +216,8 @@
 	<string>背の高いボタン列、回転するディスクの位置、下部のナビゲーションバー</string>
 	<key>A video needs at least one clip</key>
 	<string>ビデオには少なくとも1つのクリップが必要です</string>
+	<key>A voice chain for spoken audio: noise removal, de-essing, a warm and clear EQ, compression, and the podcast loudness standard. Each step can be turned off. Processed on this Mac.</key>
+	<string>話し声用の処理チェーン: ノイズ除去、ディエッサー、温かくクリアなEQ、コンプレッサー、ポッドキャストのラウドネス基準。各ステップはオフにできます。このMac上で処理します。</string>
 	<key>A window that size would be bigger than the screen. The largest of the same shape that fits is %@ × %@.</key>
 	<string>このサイズのウインドウは画面より大きくなります。同じ形で収まる最大のサイズは%@ × %@です。</string>
 	<key>About</key>
@@ -308,6 +310,8 @@
 	<string>LF Studiosに追加済み</string>
 	<key>Added “%@”</key>
 	<string>“%@”を追加しました</string>
+	<key>Adds a Camera hidden block for each pause at least this long. Drag or delete them on the Camera lane; pressing again replaces only these.</key>
+	<string>この長さ以上の間ごとに「カメラ非表示」ブロックを追加します。カメラレーンでドラッグや削除ができます。もう一度押すと、これらだけが置き換わります。</string>
 	<key>Adjust to move it half a second</key>
 	<string>調整すると0.5秒ずつ移動します</string>
 	<key>Adjusted %lld zooms — ⌘Z to undo.</key>
@@ -426,6 +430,8 @@
 	<string>再生ヘッドに合わせる</string>
 	<key>Audio</key>
 	<string>オーディオ</string>
+	<key>Audio only</key>
+	<string>オーディオのみ</string>
 	<key>Aurora</key>
 	<string>オーロラ</string>
 	<key>Aurora Blue</key>
@@ -434,6 +440,8 @@
 	<string>自動</string>
 	<key>Auto Zoom</key>
 	<string>自動ズーム</string>
+	<key>Auto adjust</key>
+	<string>自動調整</string>
 	<key>Auto zoom — %lld zooms</key>
 	<string>自動ズーム: %lld個のズーム</string>
 	<key>Auto-dismiss overlay</key>
@@ -460,6 +468,8 @@
 	<string>LF Studiosの標準スタイルに戻しました</string>
 	<key>Back to the original recording — ⌘Z to undo</key>
 	<string>元の収録に戻しました。⌘Zで取り消せます</string>
+	<key>Back to the start</key>
+	<string>最初に戻る</string>
 	<key>Back · pause · faster</key>
 	<string>逆再生 · 一時停止 · 早送り</string>
 	<key>Background</key>
@@ -480,6 +490,8 @@
 	<string>バーコード</string>
 	<key>Based on Shotnix (MIT License)</key>
 	<string>Shotnix がベース（MIT ライセンス）</string>
+	<key>Begins scrolling when the recording starts</key>
+	<string>収録の開始と同時にスクロールを始めます</string>
 	<key>Behavior</key>
 	<string>動作</string>
 	<key>Behind you</key>
@@ -516,6 +528,10 @@
 	<string>左下</string>
 	<key>Bottom right</key>
 	<string>右下</string>
+	<key>Bright</key>
+	<string>ブライト</string>
+	<key>Brightness</key>
+	<string>明るさ</string>
 	<key>Bring All to Front</key>
 	<string>すべてを手前に移動</string>
 	<key>Built-in</key>
@@ -540,6 +556,8 @@
 	<string>カメラへのアクセスがオフになっています。“システム設定”＞“プライバシーとセキュリティ”＞“カメラ”でLF Studiosを許可してください。</string>
 	<key>Camera bubble</key>
 	<string>カメラのワイプ</string>
+	<key>Camera color adjusted — tweak the sliders, or ⌘Z to undo</key>
+	<string>カメラの色を調整しました。スライダーで微調整するか、⌘Zで取り消せます</string>
 	<key>Camera disconnected</key>
 	<string>カメラ未接続</string>
 	<key>Camera disconnected.</key>
@@ -556,6 +574,8 @@
 	<string>カメラ映像、補正済みの声、下書き、クリップボード用の書き出し</string>
 	<key>Camera hidden</key>
 	<string>カメラ非表示</string>
+	<key>Camera hidden in %lld silences — ⌘Z to undo</key>
+	<string>%lldか所の無音でカメラを隠しました。⌘Zで取り消せます</string>
 	<key>Camera later by %@ s</key>
 	<string>カメラを%@秒遅く</string>
 	<key>Camera layout</key>
@@ -682,6 +702,8 @@
 	<string>カードには背景が使われ、その分タイムラインが長くなります。“Made with LF Studios”エンドカードはこれとは別で、書き出しオプションにあります。</string>
 	<key>Center</key>
 	<string>中央</string>
+	<key>Change the text</key>
+	<string>テキストを変更</string>
 	<key>Chapters</key>
 	<string>チャプター</string>
 	<key>Chapters as text (“0:00 Start”) for a YouTube description</key>
@@ -734,6 +756,8 @@
 	<string>ウインドウを選択</string>
 	<key>Choose...</key>
 	<string>選択…</string>
+	<key>Cinematic</key>
+	<string>シネマ</string>
 	<key>Circle</key>
 	<string>円形</string>
 	<key>Citrus</key>
@@ -840,10 +864,16 @@
 	<string>コマンド</string>
 	<key>Compose Email</key>
 	<string>メールを作成</string>
+	<key>Compressed AAC (256 kbps): small, and plays everywhere — for podcasts and sharing</key>
+	<string>圧縮AAC（256 kbps）: 小さく、どこでも再生可能。ポッドキャストや共有に</string>
+	<key>Compression</key>
+	<string>コンプレッサー</string>
 	<key>Computer sound</key>
 	<string>システムオーディオ</string>
 	<key>Conflict detected</key>
 	<string>競合あり</string>
+	<key>Contrast</key>
+	<string>コントラスト</string>
 	<key>Copied</key>
 	<string>コピーしました</string>
 	<key>Copied to clipboard</key>
@@ -872,6 +902,8 @@
 	<string>現在のフレームをコピー</string>
 	<key>Copy image to clipboard</key>
 	<string>画像をクリップボードにコピー</string>
+	<key>Copy notes</key>
+	<string>メモをコピー</string>
 	<key>Copy recognized text (OCR)</key>
 	<string>認識されたテキストをコピー（OCR）</string>
 	<key>Copy screenshots to the clipboard</key>
@@ -1040,6 +1072,8 @@
 	<string>切り抜き</string>
 	<key>Dark Mode</key>
 	<string>ダーク</string>
+	<key>De-esser</key>
+	<string>ディエッサー</string>
 	<key>Decoded details</key>
 	<string>読み取った内容</string>
 	<key>Delete</key>
@@ -1342,6 +1376,10 @@
 	<string>書き出す…</string>
 	<key>Extra-fluid curves for slow, cinematic demos.</key>
 	<string>映画のようにゆっくり見せるデモ向けの、より滑らかなカーブです。</string>
+	<key>Face tracking</key>
+	<string>顔の追跡</string>
+	<key>Face tracking canceled</key>
+	<string>顔の追跡をキャンセルしました</string>
 	<key>Fade in</key>
 	<string>フェードイン</string>
 	<key>Fade in from black</key>
@@ -1386,6 +1424,8 @@
 	<string>“%@”を探す</string>
 	<key>Finds typing and plays it faster, as speed blocks you can change</key>
 	<string>入力部分を見つけて速く再生します。速度ブロックはあとから変更できます</string>
+	<key>Finds your face in the camera video on this Mac, then the bubble's framing follows it. Where no face is found, it keeps the last good framing.</key>
+	<string>このMac上でカメラ映像から顔を見つけ、ワイプのフレーミングが顔を追いかけます。顔が見つからない部分では、最後の良いフレーミングを保ちます。</string>
 	<key>Finds zooms the camera bubble covers and moves their framing, or the bubble, out of the way</key>
 	<string>カメラのワイプに隠れるズームを見つけ、フレーミングかワイプをずらします</string>
 	<key>Fine-tune shadow</key>
@@ -1420,6 +1460,8 @@
 	<string>フォント</string>
 	<key>For Final Cut Pro, DaVinci Resolve, and Adobe Premiere Pro</key>
 	<string>Final Cut Pro、DaVinci Resolve、Adobe Premiere Pro用</string>
+	<key>For the camera only; the screen stays as recorded.</key>
+	<string>カメラだけに適用され、画面は収録したままです。</string>
 	<key>Forever</key>
 	<string>無期限</string>
 	<key>Format</key>
@@ -1530,6 +1572,8 @@
 	<string>アイコンを非表示</string>
 	<key>Hide Phone Overlay</key>
 	<string>スマートフォンのオーバーレイを隠す</string>
+	<key>Hide camera during silences</key>
+	<string>無音の間はカメラを隠す</string>
 	<key>Hide desktop icons while capturing</key>
 	<string>取り込み中はデスクトップのアイコンを非表示</string>
 	<key>Hide the Menu Bar Icon?</key>
@@ -1544,6 +1588,8 @@
 	<string>非表示にします。書き出しは続行されます（Esc）</string>
 	<key>High</key>
 	<string>高</string>
+	<key>Higher glides calmly after you; lower keeps up with quick moves</key>
+	<string>高いほど穏やかに追いかけ、低いほど素早い動きについていきます</string>
 	<key>Highlight</key>
 	<string>ハイライト</string>
 	<key>Highlight color</key>
@@ -1574,6 +1620,8 @@
 	<string>ズームトラックにポインタを置いてクリックするか、再生ヘッドの位置でZキーを押すとズームを追加できます。ズームをドラッグすると移動、端をドラッグすると長さを変更できます。</string>
 	<key>How long the loupe takes to grow in and fade out</key>
 	<string>ルーペが開いて消えるまでの時間</string>
+	<key>How much of the bubble your face fills</key>
+	<string>ワイプの中で顔が占める大きさ</string>
 	<key>How strongly blur and pixelate hide what's under them</key>
 	<string>ぼかしとモザイクで下の内容を隠す強さ</string>
 	<key>Image</key>
@@ -1598,6 +1646,8 @@
 	<string>アスペクト比を含める（%@）</string>
 	<key>Include media (works on any Mac)</key>
 	<string>メディアを含める（どのMacでも使えます）</string>
+	<key>Include speaker notes</key>
+	<string>スピーカーノートを含める</string>
 	<key>Include the finished video</key>
 	<string>完成したビデオを含める</string>
 	<key>Includes: %@</key>
@@ -1658,6 +1708,8 @@
 	<string>スクリーンショットの保存期間</string>
 	<key>Keep editing — the words appear here when LF Studios is done listening.</key>
 	<string>編集を続けられます。LF Studiosが聞き取りを終えると、ここにテキストが表示されます。</string>
+	<key>Keep face centered</key>
+	<string>顔を中央に保つ</string>
 	<key>Keeping 30 days removes %lld older captures from History now. This can't be undone.</key>
 	<string>保存期間を“30日”にすると、それより古い%lld件のスクリーンショットが今すぐ履歴から削除されます。この操作は取り消せません。</string>
 	<key>Keeping 7 days removes %lld older captures from History now. This can't be undone.</key>
@@ -1670,6 +1722,8 @@
 	<string>保存期間を“最新100件”にすると、それより古い%lld件のスクリーンショットが今すぐ履歴から削除されます。この操作は取り消せません。</string>
 	<key>Keeping last 500 captures removes %lld older captures from History now. This can't be undone.</key>
 	<string>保存期間を“最新500件”にすると、それより古い%lld件のスクリーンショットが今すぐ履歴から削除されます。この操作は取り消せません。</string>
+	<key>Keeps loud and quiet words close together</key>
+	<string>大きな声と小さな声の差を縮めます</string>
 	<key>Keyboard</key>
 	<string>キーボード</string>
 	<key>Keyboard Shortcuts</key>
@@ -1762,6 +1816,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>含まれなかったもの：</string>
 	<key>Length</key>
 	<string>長さ</string>
+	<key>Less rumble and boom, more presence</key>
+	<string>低音のこもりを抑え、声を前に出します</string>
 	<key>Letterbox Instead of Following the Cursor</key>
 	<string>ポインタに追従せずレターボックスで表示</string>
 	<key>Level</key>
@@ -1806,10 +1862,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>場所を指定…</string>
 	<key>Look</key>
 	<string>スタイル</string>
+	<key>Looking for your face in the camera video. This happens once; the result is kept.</key>
+	<string>カメラ映像から顔を探しています。一度だけ行い、結果は保存されます。</string>
 	<key>Loop</key>
 	<string>ループ</string>
 	<key>Loop to fill</key>
 	<string>ループして最後まで再生</string>
+	<key>Loose</key>
+	<string>ゆったり</string>
 	<key>Loupe</key>
 	<string>ルーペ</string>
 	<key>Lower under your voice</key>
@@ -1886,6 +1946,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ミニマル</string>
 	<key>Minimize</key>
 	<string>しまう</string>
+	<key>Minimum silence</key>
+	<string>最短の無音</string>
 	<key>Mint</key>
 	<string>ミント</string>
 	<key>Mirror</key>
@@ -1970,6 +2032,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>マイプリセット</string>
 	<key>My Style: “%@”</key>
 	<string>マイスタイル：“%@”</string>
+	<key>Natural</key>
+	<string>ナチュラル</string>
 	<key>Nebula</key>
 	<string>星雲</string>
 	<key>Needed to capture the screen. macOS will ask once.</key>
@@ -2030,6 +2094,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>競合なし</string>
 	<key>No cursor data in this video</key>
 	<string>このビデオにはポインタのデータがありません</string>
+	<key>No face found in the camera video</key>
+	<string>カメラ映像に顔が見つかりません</string>
 	<key>No idle moments found — nice and tight</key>
 	<string>動きのない区間は見つかりませんでした。テンポは良好です</string>
 	<key>No location chosen</key>
@@ -2058,6 +2124,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ここには空きがありません。再生ヘッドを移動してください</string>
 	<key>No saved captures yet</key>
 	<string>保存済みのスクリーンショットはまだありません</string>
+	<key>No silences that long</key>
+	<string>その長さの無音はありません</string>
 	<key>No sound from the microphone</key>
 	<string>マイクから音声が入力されていません</string>
 	<key>No speech was found in this recording. If it has narration, check its level in the Audio tab, then try again.</key>
@@ -2074,6 +2142,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>フィラー（えー、あのー）はもうありません</string>
 	<key>No zooms are under the camera</key>
 	<string>カメラに隠れるズームはありません</string>
+	<key>Noise removal</key>
+	<string>ノイズ除去</string>
 	<key>None</key>
 	<string>なし</string>
 	<key>None in this recording. Turn on “Show keyboard shortcuts” in Settings → Recording and every ⌘ shortcut you press appears as keycaps. Plain typing is never recorded.</key>
@@ -2216,12 +2286,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>パスワード</string>
 	<key>Paste</key>
 	<string>ペースト</string>
+	<key>Paste or type your notes here. They stay out of every recording.</key>
+	<string>ここにメモを貼り付けるか入力します。メモはどの収録にも映りません。</string>
 	<key>Pause</key>
 	<string>一時停止</string>
 	<key>Pause (Space)</key>
 	<string>一時停止（スペース）</string>
 	<key>Pause / Resume Recording</key>
 	<string>収録を一時停止/再開</string>
+	<key>Pause / Resume Speaker Notes</key>
+	<string>スピーカーノートの一時停止/再開</string>
 	<key>Pause Recording</key>
 	<string>収録を一時停止</string>
 	<key>Pause recording</key>
@@ -2230,6 +2304,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>収録を一時停止（%@）</string>
 	<key>Pause restored</key>
 	<string>無音部分を復元しました</string>
+	<key>Pause scrolling (Space)</key>
+	<string>スクロールを一時停止（スペース）</string>
 	<key>Pause shortened</key>
 	<string>無音部分を短縮しました</string>
 	<key>Paused</key>
@@ -2298,6 +2374,20 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>再生または一時停止します。Optionキーと矢印キーで、タイムライン上の項目を選択できます。</string>
 	<key>Plum</key>
 	<string>プラム</string>
+	<key>Podcast</key>
+	<string>ポッドキャスト</string>
+	<key>Podcast loudness</key>
+	<string>ポッドキャストのラウドネス</string>
+	<key>Podcast mode</key>
+	<string>ポッドキャストモード</string>
+	<key>Podcast mode below takes care of the voice while it's on.</key>
+	<string>下のポッドキャストモードがオンの間は、そちらが声を処理します。</string>
+	<key>Podcast mode off</key>
+	<string>ポッドキャストモードをオフにしました</string>
+	<key>Podcast mode on — turn off any step you don't want</key>
+	<string>ポッドキャストモードをオンにしました。不要なステップはオフにできます</string>
+	<key>Podcast voice ready</key>
+	<string>ポッドキャスト用の声の準備ができました</string>
 	<key>Polar Dawn</key>
 	<string>極地の夜明け</string>
 	<key>Porcelain</key>
@@ -2370,6 +2460,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>範囲</string>
 	<key>Re-enable Apple's ⌘⇧3/4/5 screenshot shortcuts</key>
 	<string>Appleのスクリーンショット用ショートカット（⌘⇧3/4/5）を再度有効にします</string>
+	<key>Read</key>
+	<string>読む</string>
+	<key>Read mode: Space starts and pauses scrolling</key>
+	<string>読むモード: スペースでスクロールの開始と一時停止</string>
 	<key>Ready</key>
 	<string>準備完了</string>
 	<key>Ready · %lld optional off</key>
@@ -2516,6 +2610,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>矢印のスタイル変更をやり直す</string>
 	<key>Redo Aspect Ratio</key>
 	<string>アスペクト比の変更をやり直す</string>
+	<key>Redo Auto Adjust Camera Color</key>
+	<string>カメラの色の自動調整をやり直す</string>
 	<key>Redo Auto Zoom</key>
 	<string>自動ズームの適用をやり直す</string>
 	<key>Redo Auto-Zoom Off</key>
@@ -2600,10 +2696,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>テキストの編集をやり直す</string>
 	<key>Redo Enhance Voice</key>
 	<string>声の補正をやり直す</string>
+	<key>Redo Face Tracking</key>
+	<string>顔の追跡をやり直す</string>
 	<key>Redo Fade</key>
 	<string>フェードの変更をやり直す</string>
 	<key>Redo Fit Zooms Around Camera</key>
 	<string>カメラを避けるズームをやり直す</string>
+	<key>Redo Hide Camera During Silences</key>
+	<string>無音の間のカメラ非表示をやり直す</string>
 	<key>Redo Hide Shortcut</key>
 	<string>ショートカットの非表示をやり直す</string>
 	<key>Redo Highlight Style</key>
@@ -2612,6 +2712,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>画像のスタイル変更をやり直す</string>
 	<key>Redo Intro and Outro</key>
 	<string>カメラ全面のオープニングとエンディングをやり直す</string>
+	<key>Redo Keep Face Centered</key>
+	<string>「顔を中央に保つ」をやり直す</string>
 	<key>Redo Markers</key>
 	<string>マーカーの変更をやり直す</string>
 	<key>Redo Move %lld Items</key>
@@ -2648,6 +2750,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>部分の消音をやり直す</string>
 	<key>Redo Mute Video</key>
 	<string>ビデオの消音をやり直す</string>
+	<key>Redo Podcast Mode Off</key>
+	<string>ポッドキャストモードのオフをやり直す</string>
+	<key>Redo Podcast Mode On</key>
+	<string>ポッドキャストモードのオンをやり直す</string>
 	<key>Redo Remove All Zooms</key>
 	<string>すべてのズームの削除をやり直す</string>
 	<key>Redo Remove Camera Video</key>
@@ -2794,6 +2900,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>背景ノイズやハムノイズを除去し、音量を均一にします。処理はこのMac上で行われます</string>
 	<key>Removes jitter, keeps it snappy.</key>
 	<string>ぶれを取り除き、きびきびとした動きを保ちます。</string>
+	<key>Removes room noise and hum, and quiets the room between words</key>
+	<string>部屋の雑音やハムを取り除き、言葉の間を静かにします</string>
 	<key>Rename</key>
 	<string>名称変更</string>
 	<key>Rename Marker…</key>
@@ -2914,6 +3022,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>角の丸み</string>
 	<key>S</key>
 	<string>小</string>
+	<key>Saturation</key>
+	<string>彩度</string>
 	<key>Save</key>
 	<string>保存</string>
 	<key>Save %@…</key>
@@ -3042,6 +3152,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>スクロール取り込みが最大の長さ（%lldポイント）に達したため、終了しました。</string>
 	<key>Scrolling capture stopped after %lld minutes.</key>
 	<string>%lld分が経過したため、スクロール取り込みを停止しました。</string>
+	<key>Scrolling speed</key>
+	<string>スクロール速度</string>
 	<key>Search commands</key>
 	<string>コマンドを検索</string>
 	<key>Search projects</key>
@@ -3104,6 +3216,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>共有</string>
 	<key>Share — Mail, Messages, AirDrop…</key>
 	<string>共有: “メール”、“メッセージ”、AirDrop…</string>
+	<key>Sharpness</key>
+	<string>シャープネス</string>
 	<key>Shift the Zooms</key>
 	<string>ズームをずらす</string>
 	<key>Shortcut</key>
@@ -3170,6 +3284,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>タイムラインを縮小表示</string>
 	<key>Show one kind of capture</key>
 	<string>1種類のスクリーンショットだけを表示します</string>
+	<key>Show or hide your speaker notes — they never show in the recording</key>
+	<string>スピーカーノートを表示/非表示。ノートが収録に映ることはありません</string>
 	<key>Show shortcuts</key>
 	<string>ショートカットを表示</string>
 	<key>Show the preview after capture</key>
@@ -3192,6 +3308,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>横並び</string>
 	<key>Side rail</key>
 	<string>サイドレール</string>
+	<key>Silences</key>
+	<string>無音</string>
 	<key>Silences over a second get shortened — except while you click, type, scroll, or move the pointer, so the demo itself is never cut</key>
 	<string>1秒を超える無音部分を短縮します。ただし、クリック、入力、スクロール、ポインタの移動中は除くため、デモ自体がカットされることはありません</string>
 	<key>Silences over a second get shortened — except while you move the pointer, click, or press a shortcut</key>
@@ -3222,12 +3340,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ファイルが最も小さく、ドキュメントやチャットに最適</string>
 	<key>Smooth</key>
 	<string>滑らか</string>
+	<key>Smoothness</key>
+	<string>なめらかさ</string>
 	<key>Social</key>
 	<string>SNS</string>
 	<key>Social feeds</key>
 	<string>SNSのフィード</string>
 	<key>Soft streaks on fast moves</key>
 	<string>速い動きにやわらかな残像を付けます</string>
+	<key>Softens sharp “s” and “sh” sounds</key>
+	<string>鋭い「サ行」「シャ行」の音を和らげます</string>
 	<key>Softness</key>
 	<string>ぼかし</string>
 	<key>Solid Color</key>
@@ -3242,6 +3364,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>スペース</string>
 	<key>Space Gray</key>
 	<string>スペースグレイ</string>
+	<key>Speaker Notes</key>
+	<string>スピーカーノート</string>
+	<key>Speaker notes</key>
+	<string>スピーカーノート</string>
+	<key>Speaker notes copied</key>
+	<string>スピーカーノートをコピーしました</string>
+	<key>Speaker notes: a teleprompter that never shows in the recording</key>
+	<string>スピーカーノート: 収録に映らないプロンプター</string>
 	<key>Sped up %lld idle moments — saved %@</key>
 	<string>動きのない区間を%lld箇所早送りし、%@短くなりました</string>
 	<key>Sped up %lld idle moments — saved %@ · check any typing</key>
@@ -3304,8 +3434,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ここから開始</string>
 	<key>Start over from the original recording?</key>
 	<string>元の収録に戻しますか?</string>
+	<key>Start scrolling (Space)</key>
+	<string>スクロールを開始（スペース）</string>
 	<key>Start the song at</key>
 	<string>曲の開始位置</string>
+	<key>Start with recording</key>
+	<string>収録と同時に開始</string>
 	<key>Starts</key>
 	<string>開始</string>
 	<key>Startup</key>
@@ -3426,6 +3560,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>そのビデオは空です</string>
 	<key>That window closed before recording could start.</key>
 	<string>収録を開始する前にウインドウが閉じられました。</string>
+	<key>The bubble follows your face; where none was found it holds the last framing</key>
+	<string>ワイプが顔を追いかけます。顔が見つからない部分では最後のフレーミングを保ちます</string>
+	<key>The bubble now follows your face</key>
+	<string>ワイプが顔を追いかけるようになりました</string>
+	<key>The bubble's framing follows your face</key>
+	<string>ワイプのフレーミングが顔を追いかけます</string>
 	<key>The camera couldn't start.</key>
 	<string>カメラを起動できませんでした。</string>
 	<key>The camera follows the text cursor as you type.</key>
@@ -3434,6 +3574,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>カメラがポインタを画面内にとらえ、滑らかに追いかけます。</string>
 	<key>The camera stopped. The recording continues without it.</key>
 	<string>カメラが停止しました。カメラなしで収録を続けます。</string>
+	<key>The camera video couldn't be read</key>
+	<string>カメラ映像を読み込めませんでした</string>
+	<key>The camera video couldn't be read, so no face could be found.</key>
+	<string>カメラ映像を読み込めなかったため、顔を見つけられませんでした。</string>
 	<key>The cursor is part of this video</key>
 	<string>このビデオではポインタが映像に焼き込まれています</string>
 	<key>The export carries on in the background (Esc)</key>
@@ -3456,6 +3600,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>マイクを起動できなかったため、この収録にはマイクの音声が入りません。</string>
 	<key>The microphone stopped working. The recording continues without it.</key>
 	<string>マイクが動作しなくなりました。マイクなしで収録を続けます。</string>
+	<key>The notes you read while recording. They're saved with the project, and go into Creative Handoff only when you choose.</key>
+	<string>収録中に読んだメモです。プロジェクトと一緒に保存され、選んだときだけクリエイティブ受け渡しに含まれます。</string>
 	<key>The picture's file is gone — choose it again with Replace.</key>
 	<string>画像のファイルが見つかりません。“置き換える”でもう一度選択してください。</string>
 	<key>The pointer glides back to where it started, so the video loops without a jump</key>
@@ -3480,6 +3626,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>曲がビデオより短いです</string>
 	<key>The song's file is gone — choose it again with Replace.</key>
 	<string>曲のファイルが見つかりません。“置き換える”でもう一度選択してください。</string>
+	<key>The sound couldn't be read. Export again.</key>
+	<string>音声を読み込めませんでした。もう一度書き出してください。</string>
 	<key>The timeline is empty. Restore a clip, then export again.</key>
 	<string>タイムラインが空です。クリップを復元してから、もう一度書き出してください。</string>
 	<key>The video encoder is busy — another app may be recording or exporting. Wait a moment and try again, or choose H.264.</key>
@@ -3488,10 +3636,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ビデオに映像がありません</string>
 	<key>The video's own recording can't be removed</key>
 	<string>このビデオ自体の収録は削除できません</string>
+	<key>The video's sound as you edited it — cuts, speed changes, music and the voice settings included.</key>
+	<string>編集したとおりのビデオの音声です。カット、速度の変更、音楽、声の設定を含みます。</string>
+	<key>The video's sound as you edited it, at −16 LUFS — cuts, speed changes, music and the voice settings included.</key>
+	<string>編集したとおりのビデオの音声（−16 LUFS）です。カット、速度の変更、音楽、声の設定を含みます。</string>
 	<key>The voice track is empty, so there's nothing to clean up. Turn off Enhance voice to keep the original sound.</key>
 	<string>声のトラックが空なので、補正するものがありません。元のサウンドのままにするには、“声を補正”をオフにしてください。</string>
 	<key>The whole frame zooms in.</key>
 	<string>画面全体がズームします。</string>
+	<key>The whole mix at −16 LUFS, peaks under −1 dB</key>
+	<string>ミックス全体を−16 LUFSに、ピークは−1 dB未満に</string>
 	<key>The window you're recording closed. Stop when you're ready — the recording keeps going.</key>
 	<string>収録中のウインドウが閉じられました。収録は続いています。準備ができたら停止してください。</string>
 	<key>There are no captions to translate yet. Transcribe or add captions first.</key>
@@ -3542,6 +3696,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>字幕%1$lld行すべて（編集や入力をした行も含む）が、%2$@の新しい文字起こしに置き換えられます。</string>
 	<key>This video has no camera bubble</key>
 	<string>このビデオにはカメラのワイプがありません</string>
+	<key>This video has no camera footage to hide</key>
+	<string>このビデオには隠すカメラ映像がありません</string>
+	<key>This video has no camera footage to track</key>
+	<string>このビデオには追跡するカメラ映像がありません</string>
+	<key>This video has no sound to export. Turn on the microphone or system audio before recording, or add music.</key>
+	<string>このビデオには書き出す音声がありません。収録前にマイクかシステムオーディオをオンにするか、音楽を追加してください。</string>
+	<key>This video has no speaker notes</key>
+	<string>このビデオにはスピーカーノートがありません</string>
+	<key>This video has no voice to listen for silences</key>
+	<string>このビデオには無音を探すための声がありません</string>
 	<key>This video is copy-protected and can't be exported.</key>
 	<string>このビデオはコピー保護されているため、書き出せません。</string>
 	<key>This video isn't there anymore</key>
@@ -3552,6 +3716,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>3つの簡単なステップで、すぐに取り込みを始められます。</string>
 	<key>Tide Glass</key>
 	<string>潮のガラス</string>
+	<key>Tight</key>
+	<string>大きく</string>
 	<key>Timed Capture</key>
 	<string>タイマーで取り込む</string>
 	<key>Timed Capture (%llds)</key>
@@ -3568,6 +3734,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>タイミング</string>
 	<key>Timing only: never which keys</key>
 	<string>タイミングのみ: どのキーかは記録しません</string>
+	<key>Tint</key>
+	<string>色かぶり</string>
 	<key>Tips</key>
 	<string>ヒント</string>
 	<key>Title</key>
@@ -3646,6 +3814,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>クリックで自動ズームをオンにする</string>
 	<key>Turn around</key>
 	<string>向きを反転</string>
+	<key>Turn off podcast mode</key>
+	<string>ポッドキャストモードをオフにする</string>
 	<key>Turn off vertical reframing to fit zooms around the camera</key>
 	<string>カメラを避けてズームするには、縦向きのリフレームをオフにしてください</string>
 	<key>Turn on Auto-zoom on clicks (Zoom) to use this</key>
@@ -3670,6 +3840,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>入力部分は%@で再生されます</string>
 	<key>URL</key>
 	<string>URL</string>
+	<key>Uncompressed 24-bit sound, as Logic Pro and GarageBand like it</key>
+	<string>非圧縮の24ビット音声。Logic ProやGarageBand向け</string>
+	<key>Uncompressed 24-bit sound, for editing in an audio app</key>
+	<string>非圧縮の24ビット音声。オーディオアプリでの編集に</string>
 	<key>Under the voice</key>
 	<string>話している間の音量</string>
 	<key>Undo</key>
@@ -3732,6 +3906,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>矢印のスタイル変更を取り消す</string>
 	<key>Undo Aspect Ratio</key>
 	<string>アスペクト比の変更を取り消す</string>
+	<key>Undo Auto Adjust Camera Color</key>
+	<string>カメラの色の自動調整を取り消す</string>
 	<key>Undo Auto Zoom</key>
 	<string>自動ズームの適用を取り消す</string>
 	<key>Undo Auto-Zoom Off</key>
@@ -3816,10 +3992,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>テキストの編集を取り消す</string>
 	<key>Undo Enhance Voice</key>
 	<string>声の補正を取り消す</string>
+	<key>Undo Face Tracking</key>
+	<string>顔の追跡を取り消す</string>
 	<key>Undo Fade</key>
 	<string>フェードの変更を取り消す</string>
 	<key>Undo Fit Zooms Around Camera</key>
 	<string>カメラを避けるズームを取り消す</string>
+	<key>Undo Hide Camera During Silences</key>
+	<string>無音の間のカメラ非表示を取り消す</string>
 	<key>Undo Hide Shortcut</key>
 	<string>ショートカットの非表示を取り消す</string>
 	<key>Undo Highlight Style</key>
@@ -3828,6 +4008,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>画像のスタイル変更を取り消す</string>
 	<key>Undo Intro and Outro</key>
 	<string>カメラ全面のオープニングとエンディングを取り消す</string>
+	<key>Undo Keep Face Centered</key>
+	<string>「顔を中央に保つ」を取り消す</string>
 	<key>Undo Markers</key>
 	<string>マーカーの変更を取り消す</string>
 	<key>Undo Move %lld Items</key>
@@ -3864,6 +4046,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>部分の消音を取り消す</string>
 	<key>Undo Mute Video</key>
 	<string>ビデオの消音を取り消す</string>
+	<key>Undo Podcast Mode Off</key>
+	<string>ポッドキャストモードのオフを取り消す</string>
+	<key>Undo Podcast Mode On</key>
+	<string>ポッドキャストモードのオンを取り消す</string>
 	<key>Undo Remove All Zooms</key>
 	<string>すべてのズームの削除を取り消す</string>
 	<key>Undo Remove Camera Video</key>
@@ -4020,6 +4206,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>待機中…</string>
 	<key>Wallpaper</key>
 	<string>壁紙</string>
+	<key>Warm</key>
+	<string>ウォーム</string>
+	<key>Warm and clear EQ</key>
+	<string>温かくクリアなEQ</string>
+	<key>Warmth</key>
+	<string>色温度</string>
 	<key>Warning</key>
 	<string>警告</string>
 	<key>Web</key>
@@ -4110,6 +4302,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ナレーションを字幕にできます。さらに、テキストを編集してビデオをカットできます。</string>
 	<key>Your narration can become captions — transcribe it here</key>
 	<string>ここでナレーションを文字起こしすると、字幕にできます</string>
+	<key>Your notes from recording, as Notes.txt</key>
+	<string>収録時のメモをNotes.txtとして</string>
 	<key>Your presets, fonts, capture history, and recording edits came along too. ShotStyle's own copy is untouched, so you can delete the old app whenever you're ready.</key>
 	<string>プリセット、フォント、キャプチャ履歴、収録の編集内容もすべて引き継がれています。ShotStyle側のデータはそのまま残っているので、古いアプリはいつでも削除できます。</string>
 	<key>Your recordings and screenshots will appear here</key>

@@ -142,8 +142,8 @@ final class CaptureLocalizationTests: XCTestCase {
         let hud = makeHUD()
         defer { hud.closeHUD() }
         RecordingUITestSupport.click(try XCTUnwrap(RecordingUITestSupport.button(labelled: "Discard recording", in: hud)), in: hud)
-        XCTAssertEqual(try XCTUnwrap(RecordingUITestSupport.button(labelled: "Discard", in: hud)).frame, NSRect(x: 294, y: 10, width: 66, height: 24))
-        XCTAssertEqual(try XCTUnwrap(RecordingUITestSupport.button(labelled: "Keep", in: hud)).frame, NSRect(x: 366, y: 10, width: 58, height: 24))
+        XCTAssertEqual(try XCTUnwrap(RecordingUITestSupport.button(labelled: "Discard", in: hud)).frame, NSRect(x: 326, y: 10, width: 66, height: 24))
+        XCTAssertEqual(try XCTUnwrap(RecordingUITestSupport.button(labelled: "Keep", in: hud)).frame, NSRect(x: 398, y: 10, width: 58, height: 24))
     }
 
     // MARK: Area selection

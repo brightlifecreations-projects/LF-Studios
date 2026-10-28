@@ -567,7 +567,7 @@ extension VideoEditorModel {
     }
 
     private var enhancedVoiceURL: URL? {
-        voiceTrackIndex.map { VideoVoiceEnhancer.cacheURL(for: project.sourceURL, trackIndex: $0) }
+        voiceTrackIndex.map { VideoVoiceEnhancer.cacheURL(for: project.sourceURL, trackIndex: $0, recipe: project.audio.voiceRecipe ?? .enhance) }
     }
 
     /// This recording's cleaned-up voice is ready (added recordings each
@@ -578,7 +578,7 @@ extension VideoEditorModel {
 
     /// The toggle (or an undo) changed: process if needed, then swap sources.
     func enhanceVoiceChanged() {
-        if project.audio.enhanceVoice { startVoiceEnhancementIfNeeded() }
+        if project.audio.voiceRecipe != nil { startVoiceEnhancementIfNeeded() }
         Task { await refreshAudioSources() }
     }
 
@@ -588,7 +588,7 @@ extension VideoEditorModel {
         if let voiceTask { return voiceTask }
         // Every recording's voice (added recordings too), one after another.
         let pending = project.voiceTargets(primaryKinds: audioKinds).filter { !$0.isReady }
-        guard project.audio.enhanceVoice, !pending.isEmpty else { return nil }
+        guard project.audio.voiceRecipe != nil, !pending.isEmpty else { return nil }
         voiceJob = 0
         voiceError = nil
         let report: @Sendable (Double) -> Void = { [weak self] value in
@@ -615,7 +615,11 @@ extension VideoEditorModel {
                 self.voiceJob = nil
                 self.endVoiceQuitToken()
                 await self.refreshAudioSources()
-                if self.project.audio.enhanceVoice {
+                // The steps may have changed while this ran.
+                if self.startVoiceEnhancementIfNeeded() != nil { return true }
+                if self.project.audio.podcast != nil {
+                    self.showNotice(L("Podcast voice ready"), symbol: "waveform")
+                } else if self.project.audio.enhanceVoice {
                     self.showNotice(L("Voice enhanced — background noise removed"), symbol: "waveform")
                 }
                 return true
@@ -642,7 +646,7 @@ extension VideoEditorModel {
     /// Rebuilds the sound sources (e.g. the enhanced voice became ready).
     func refreshAudioSources() async {
         guard let source = playback.source else { return }
-        let sources = await VideoAudioSource.resolved(from: source, kinds: audioKinds, enhanceVoice: project.audio.enhanceVoice)
+        let sources = await VideoAudioSource.resolved(from: source, kinds: audioKinds, voice: project.audio.voiceRecipe)
         playback.setAudioSources(sources)
         await reloadSourceAudio()
         if let moved = playback.apply(segments: segments, audio: project.audio, keepSourceTime: sourceTime(forTimeline: clock.time), extras: editExtras), !isPlaying {

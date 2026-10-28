@@ -562,6 +562,22 @@
 			<string>Zoom auto — %lld zooms</string>
 		</dict>
 	</dict>
+	<key>Camera hidden in %lld silences — ⌘Z to undo</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>one</key>
+			<string>Caméra masquée pendant %lld silence — ⌘Z pour annuler</string>
+			<key>other</key>
+			<string>Caméra masquée pendant %lld silences — ⌘Z pour annuler</string>
+		</dict>
+	</dict>
 	<key>Captions ready — %lld lines</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>

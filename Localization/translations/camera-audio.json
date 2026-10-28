@@ -1,0 +1,497 @@
+{
+  "A voice chain for spoken audio: noise removal, de-essing, a warm and clear EQ, compression, and the podcast loudness standard. Each step can be turned off. Processed on this Mac.": {
+    "de": "Eine Stimmkette für gesprochenen Ton: Rauschentfernung, De-Essing, ein warmer, klarer EQ, Kompression und der Podcast-Lautheitsstandard. Jeder Schritt lässt sich ausschalten. Verarbeitet auf diesem Mac.",
+    "fr": "Une chaîne pour la voix parlée : suppression du bruit, de-essing, égaliseur chaud et clair, compression et la norme de volume des podcasts. Chaque étape peut être désactivée. Traité sur ce Mac.",
+    "zh-Hans": "适用于人声的处理链：降噪、齿音消除、温暖清晰的均衡、压缩，以及播客响度标准。每一步都可以关闭。在这台 Mac 上处理。"
+  },
+  "Adds a Camera hidden block for each pause at least this long. Drag or delete them on the Camera lane; pressing again replaces only these.": {
+    "de": "Fügt für jede mindestens so lange Pause einen Block „Kamera ausgeblendet“ hinzu. Ziehe oder lösche sie in der Kameraspur; erneut gedrückt, ersetzt es nur diese.",
+    "fr": "Ajoute un bloc « Caméra masquée » pour chaque pause au moins aussi longue. Faites-les glisser ou supprimez-les dans la piste Caméra ; appuyer de nouveau ne remplace que ceux-ci.",
+    "zh-Hans": "为每段至少这么长的停顿添加一个“隐藏摄像头”块。可在摄像头轨道上拖移或删除；再次按下只替换这些块。"
+  },
+  "Audio only": {
+    "de": "Nur Ton",
+    "fr": "Audio seul",
+    "zh-Hans": "仅音频"
+  },
+  "Auto adjust": {
+    "de": "Automatisch anpassen",
+    "fr": "Réglage auto",
+    "zh-Hans": "自动调整"
+  },
+  "Back to the start": {
+    "de": "Zurück zum Anfang",
+    "fr": "Revenir au début",
+    "zh-Hans": "回到开头"
+  },
+  "Begins scrolling when the recording starts": {
+    "de": "Beginnt zu scrollen, wenn die Aufnahme startet",
+    "fr": "Commence à défiler au début de l’enregistrement",
+    "zh-Hans": "录制开始时开始滚动"
+  },
+  "Bright": {
+    "de": "Hell",
+    "fr": "Lumineux",
+    "zh-Hans": "明亮"
+  },
+  "Brightness": {
+    "de": "Helligkeit",
+    "fr": "Luminosité",
+    "zh-Hans": "亮度"
+  },
+  "Camera color adjusted — tweak the sliders, or ⌘Z to undo": {
+    "de": "Kamerafarbe angepasst – passe die Regler an oder widerrufe mit ⌘Z",
+    "fr": "Couleurs de la caméra ajustées — affinez avec les curseurs, ou ⌘Z pour annuler",
+    "zh-Hans": "已调整摄像头颜色 — 可微调滑块，或按 ⌘Z 撤销"
+  },
+  "Camera hidden in %lld silences — ⌘Z to undo": {
+    "en": {
+      "one": "Camera hidden in %lld silence — ⌘Z to undo",
+      "other": "Camera hidden in %lld silences — ⌘Z to undo"
+    },
+    "de": {
+      "one": "Kamera in %lld Sprechpause ausgeblendet – ⌘Z zum Widerrufen",
+      "other": "Kamera in %lld Sprechpausen ausgeblendet – ⌘Z zum Widerrufen"
+    },
+    "fr": {
+      "one": "Caméra masquée pendant %lld silence — ⌘Z pour annuler",
+      "other": "Caméra masquée pendant %lld silences — ⌘Z pour annuler"
+    },
+    "zh-Hans": "已在 %lld 段静默中隐藏摄像头 — 按 ⌘Z 撤销"
+  },
+  "Change the text": {
+    "de": "Text ändern",
+    "fr": "Modifier le texte",
+    "zh-Hans": "修改文本"
+  },
+  "Cinematic": {
+    "de": "Kinolook",
+    "fr": "Cinéma",
+    "zh-Hans": "电影感"
+  },
+  "Compressed AAC (256 kbps): small, and plays everywhere — for podcasts and sharing": {
+    "de": "Komprimiertes AAC (256 kbit/s): klein und überall abspielbar – für Podcasts und zum Teilen",
+    "fr": "AAC compressé (256 kbit/s) : léger et lisible partout — pour les podcasts et le partage",
+    "zh-Hans": "压缩的 AAC（256 kbps）：文件小，到处都能播放 — 适合播客和分享"
+  },
+  "Compression": {
+    "de": "Kompression",
+    "fr": "Compression",
+    "zh-Hans": "压缩"
+  },
+  "Contrast": {
+    "de": "Kontrast",
+    "fr": "Contraste",
+    "zh-Hans": "对比度"
+  },
+  "Copy notes": {
+    "de": "Notizen kopieren",
+    "fr": "Copier les notes",
+    "zh-Hans": "拷贝备注"
+  },
+  "De-esser": {
+    "de": "De-Esser",
+    "fr": "De-esser",
+    "zh-Hans": "齿音消除"
+  },
+  "Face tracking": {
+    "de": "Gesichtsverfolgung",
+    "fr": "Suivi du visage",
+    "zh-Hans": "面部跟踪"
+  },
+  "Face tracking canceled": {
+    "de": "Gesichtsverfolgung abgebrochen",
+    "fr": "Suivi du visage annulé",
+    "zh-Hans": "已取消面部跟踪"
+  },
+  "Finds your face in the camera video on this Mac, then the bubble's framing follows it. Where no face is found, it keeps the last good framing.": {
+    "de": "Findet dein Gesicht im Kameravideo auf diesem Mac, dann folgt ihm der Bildausschnitt der Blase. Wo kein Gesicht gefunden wird, bleibt der letzte gute Ausschnitt.",
+    "fr": "Trouve votre visage dans la vidéo de la caméra sur ce Mac, puis le cadrage de la bulle le suit. Là où aucun visage n’est trouvé, le dernier bon cadrage est conservé.",
+    "zh-Hans": "在这台 Mac 上找到摄像头视频中的面部，气泡的取景随之移动。找不到面部的地方会保持上一个合适的取景。"
+  },
+  "For the camera only; the screen stays as recorded.": {
+    "de": "Nur für die Kamera; der Bildschirm bleibt wie aufgenommen.",
+    "fr": "Pour la caméra uniquement ; l’écran reste tel qu’enregistré.",
+    "zh-Hans": "仅作用于摄像头；屏幕保持录制时的样子。"
+  },
+  "Hide camera during silences": {
+    "de": "Kamera in Sprechpausen ausblenden",
+    "fr": "Masquer la caméra pendant les silences",
+    "zh-Hans": "静默时隐藏摄像头"
+  },
+  "Higher glides calmly after you; lower keeps up with quick moves": {
+    "de": "Höher gleitet ruhig nach; niedriger folgt schnellen Bewegungen",
+    "fr": "Plus haut suit en douceur ; plus bas suit les mouvements rapides",
+    "zh-Hans": "越高跟随越平缓；越低越能跟上快速移动"
+  },
+  "How much of the bubble your face fills": {
+    "de": "Wie viel der Blase dein Gesicht füllt",
+    "fr": "La part de la bulle occupée par votre visage",
+    "zh-Hans": "面部占气泡的比例"
+  },
+  "Include speaker notes": {
+    "de": "Sprechernotizen einschließen",
+    "fr": "Inclure les notes de l’orateur",
+    "zh-Hans": "包括演讲者备注"
+  },
+  "Keep face centered": {
+    "de": "Gesicht zentriert halten",
+    "fr": "Garder le visage centré",
+    "zh-Hans": "保持面部居中"
+  },
+  "Keeps loud and quiet words close together": {
+    "de": "Hält laute und leise Wörter nah beieinander",
+    "fr": "Rapproche les mots forts et faibles",
+    "zh-Hans": "让响亮和轻柔的词音量接近"
+  },
+  "Less rumble and boom, more presence": {
+    "de": "Weniger Rumpeln und Dröhnen, mehr Präsenz",
+    "fr": "Moins de grondement et de résonance, plus de présence",
+    "zh-Hans": "减少隆隆声和轰鸣，增加临场感"
+  },
+  "Looking for your face in the camera video. This happens once; the result is kept.": {
+    "de": "Dein Gesicht wird im Kameravideo gesucht. Das geschieht einmal; das Ergebnis wird gespeichert.",
+    "fr": "Recherche de votre visage dans la vidéo de la caméra. Cela n’a lieu qu’une fois ; le résultat est conservé.",
+    "zh-Hans": "正在摄像头视频中寻找面部。只需进行一次，结果会被保留。"
+  },
+  "Loose": {
+    "de": "Weit",
+    "fr": "Large",
+    "zh-Hans": "宽松"
+  },
+  "Minimum silence": {
+    "de": "Mindestpause",
+    "fr": "Silence minimal",
+    "zh-Hans": "最短静默"
+  },
+  "Natural": {
+    "de": "Natürlich",
+    "fr": "Naturel",
+    "zh-Hans": "自然"
+  },
+  "No face found in the camera video": {
+    "de": "Im Kameravideo wurde kein Gesicht gefunden",
+    "fr": "Aucun visage trouvé dans la vidéo de la caméra",
+    "zh-Hans": "摄像头视频中未找到面部"
+  },
+  "No silences that long": {
+    "de": "Keine so langen Pausen",
+    "fr": "Aucun silence aussi long",
+    "zh-Hans": "没有这么长的静默"
+  },
+  "Noise removal": {
+    "de": "Rauschentfernung",
+    "fr": "Suppression du bruit",
+    "zh-Hans": "降噪"
+  },
+  "Paste or type your notes here. They stay out of every recording.": {
+    "de": "Füge deine Notizen hier ein oder tippe sie. Sie erscheinen in keiner Aufnahme.",
+    "fr": "Collez ou tapez vos notes ici. Elles n’apparaissent dans aucun enregistrement.",
+    "zh-Hans": "在此粘贴或输入备注。它们不会出现在任何录制中。"
+  },
+  "Pause / Resume Speaker Notes": {
+    "de": "Sprechernotizen anhalten/fortsetzen",
+    "fr": "Suspendre/reprendre les notes de l’orateur",
+    "zh-Hans": "暂停/继续演讲者备注"
+  },
+  "Pause scrolling (Space)": {
+    "de": "Scrollen anhalten (Leertaste)",
+    "fr": "Suspendre le défilement (Espace)",
+    "zh-Hans": "暂停滚动（空格键）"
+  },
+  "Podcast": {
+    "de": "Podcast",
+    "fr": "Podcast",
+    "zh-Hans": "播客"
+  },
+  "Podcast loudness": {
+    "de": "Podcast-Lautheit",
+    "fr": "Volume podcast",
+    "zh-Hans": "播客响度"
+  },
+  "Podcast mode": {
+    "de": "Podcast-Modus",
+    "fr": "Mode podcast",
+    "zh-Hans": "播客模式"
+  },
+  "Podcast mode below takes care of the voice while it's on.": {
+    "de": "Solange der Podcast-Modus unten an ist, kümmert er sich um die Stimme.",
+    "fr": "Tant qu’il est activé, le mode podcast ci-dessous s’occupe de la voix.",
+    "zh-Hans": "播客模式开启时，由下方的播客模式处理人声。"
+  },
+  "Podcast mode off": {
+    "de": "Podcast-Modus aus",
+    "fr": "Mode podcast désactivé",
+    "zh-Hans": "播客模式已关闭"
+  },
+  "Podcast mode on — turn off any step you don't want": {
+    "de": "Podcast-Modus an – schalte jeden Schritt aus, den du nicht willst",
+    "fr": "Mode podcast activé — désactivez les étapes dont vous ne voulez pas",
+    "zh-Hans": "播客模式已开启 — 可关闭任何不需要的步骤"
+  },
+  "Podcast voice ready": {
+    "de": "Podcast-Stimme bereit",
+    "fr": "Voix podcast prête",
+    "zh-Hans": "播客人声已就绪"
+  },
+  "Read": {
+    "de": "Lesen",
+    "fr": "Lire",
+    "zh-Hans": "阅读"
+  },
+  "Read mode: Space starts and pauses scrolling": {
+    "de": "Lesemodus: Die Leertaste startet und pausiert das Scrollen",
+    "fr": "Mode lecture : Espace lance et suspend le défilement",
+    "zh-Hans": "阅读模式：空格键开始和暂停滚动"
+  },
+  "Redo Auto Adjust Camera Color": {
+    "de": "Kamerafarbe automatisch anpassen wiederholen",
+    "fr": "Rétablir le réglage auto des couleurs de la caméra",
+    "zh-Hans": "重做自动调整摄像头颜色"
+  },
+  "Redo Face Tracking": {
+    "de": "Gesichtsverfolgung wiederholen",
+    "fr": "Rétablir le suivi du visage",
+    "zh-Hans": "重做面部跟踪"
+  },
+  "Redo Hide Camera During Silences": {
+    "de": "Kamera in Sprechpausen ausblenden wiederholen",
+    "fr": "Rétablir le masquage de la caméra pendant les silences",
+    "zh-Hans": "重做静默时隐藏摄像头"
+  },
+  "Redo Keep Face Centered": {
+    "de": "Gesicht zentriert halten wiederholen",
+    "fr": "Rétablir « Garder le visage centré »",
+    "zh-Hans": "重做保持面部居中"
+  },
+  "Redo Podcast Mode Off": {
+    "de": "Podcast-Modus aus wiederholen",
+    "fr": "Rétablir la désactivation du mode podcast",
+    "zh-Hans": "重做关闭播客模式"
+  },
+  "Redo Podcast Mode On": {
+    "de": "Podcast-Modus an wiederholen",
+    "fr": "Rétablir l’activation du mode podcast",
+    "zh-Hans": "重做开启播客模式"
+  },
+  "Removes room noise and hum, and quiets the room between words": {
+    "de": "Entfernt Raumrauschen und Brummen und macht den Raum zwischen Wörtern leiser",
+    "fr": "Supprime le bruit ambiant et le ronflement, et atténue la pièce entre les mots",
+    "zh-Hans": "去除环境噪音和嗡嗡声，并让词与词之间更安静"
+  },
+  "Saturation": {
+    "de": "Sättigung",
+    "fr": "Saturation",
+    "zh-Hans": "饱和度"
+  },
+  "Scrolling speed": {
+    "de": "Scrollgeschwindigkeit",
+    "fr": "Vitesse de défilement",
+    "zh-Hans": "滚动速度"
+  },
+  "Sharpness": {
+    "de": "Schärfe",
+    "fr": "Netteté",
+    "zh-Hans": "锐度"
+  },
+  "Show or hide your speaker notes — they never show in the recording": {
+    "de": "Sprechernotizen ein- oder ausblenden – sie erscheinen nie in der Aufnahme",
+    "fr": "Afficher ou masquer vos notes — elles n’apparaissent jamais dans l’enregistrement",
+    "zh-Hans": "显示或隐藏演讲者备注 — 它们绝不会出现在录制中"
+  },
+  "Silences": {
+    "de": "Sprechpausen",
+    "fr": "Silences",
+    "zh-Hans": "静默"
+  },
+  "Smoothness": {
+    "de": "Gleichmäßigkeit",
+    "fr": "Fluidité",
+    "zh-Hans": "平滑度"
+  },
+  "Softens sharp “s” and “sh” sounds": {
+    "de": "Mildert scharfe „S“- und „Sch“-Laute",
+    "fr": "Adoucit les « s » et « ch » sifflants",
+    "zh-Hans": "柔化尖锐的“s”和“sh”音"
+  },
+  "Speaker Notes": {
+    "de": "Sprechernotizen",
+    "fr": "Notes de l’orateur",
+    "zh-Hans": "演讲者备注"
+  },
+  "Speaker notes": {
+    "de": "Sprechernotizen",
+    "fr": "Notes de l’orateur",
+    "zh-Hans": "演讲者备注"
+  },
+  "Speaker notes copied": {
+    "de": "Sprechernotizen kopiert",
+    "fr": "Notes de l’orateur copiées",
+    "zh-Hans": "已拷贝演讲者备注"
+  },
+  "Speaker notes: a teleprompter that never shows in the recording": {
+    "de": "Sprechernotizen: ein Teleprompter, der nie in der Aufnahme erscheint",
+    "fr": "Notes de l’orateur : un prompteur qui n’apparaît jamais dans l’enregistrement",
+    "zh-Hans": "演讲者备注：绝不会出现在录制中的提词器"
+  },
+  "Start scrolling (Space)": {
+    "de": "Scrollen starten (Leertaste)",
+    "fr": "Lancer le défilement (Espace)",
+    "zh-Hans": "开始滚动（空格键）"
+  },
+  "Start with recording": {
+    "de": "Mit Aufnahme starten",
+    "fr": "Démarrer avec l’enregistrement",
+    "zh-Hans": "随录制开始"
+  },
+  "The bubble follows your face; where none was found it holds the last framing": {
+    "de": "Die Blase folgt deinem Gesicht; wo keins gefunden wurde, hält sie den letzten Ausschnitt",
+    "fr": "La bulle suit votre visage ; là où aucun n’a été trouvé, elle garde le dernier cadrage",
+    "zh-Hans": "气泡跟随你的面部；找不到面部的地方保持上一个取景"
+  },
+  "The bubble now follows your face": {
+    "de": "Die Blase folgt jetzt deinem Gesicht",
+    "fr": "La bulle suit maintenant votre visage",
+    "zh-Hans": "气泡现在会跟随你的面部"
+  },
+  "The bubble's framing follows your face": {
+    "de": "Der Bildausschnitt der Blase folgt deinem Gesicht",
+    "fr": "Le cadrage de la bulle suit votre visage",
+    "zh-Hans": "气泡的取景跟随你的面部"
+  },
+  "The camera video couldn't be read": {
+    "de": "Das Kameravideo konnte nicht gelesen werden",
+    "fr": "Impossible de lire la vidéo de la caméra",
+    "zh-Hans": "无法读取摄像头视频"
+  },
+  "The camera video couldn't be read, so no face could be found.": {
+    "de": "Das Kameravideo konnte nicht gelesen werden, daher wurde kein Gesicht gefunden.",
+    "fr": "Impossible de lire la vidéo de la caméra : aucun visage n’a pu être trouvé.",
+    "zh-Hans": "无法读取摄像头视频，因此找不到面部。"
+  },
+  "The notes you read while recording. They're saved with the project, and go into Creative Handoff only when you choose.": {
+    "de": "Die Notizen, die du beim Aufnehmen gelesen hast. Sie werden mit dem Projekt gesichert und kommen nur in die Kreative Übergabe, wenn du es wählst.",
+    "fr": "Les notes lues pendant l’enregistrement. Elles sont enregistrées avec le projet et n’entrent dans la Transmission créative que si vous le choisissez.",
+    "zh-Hans": "你在录制时阅读的备注。它们随项目存储，只有在你选择时才会放入“创意交付”。"
+  },
+  "The sound couldn't be read. Export again.": {
+    "de": "Der Ton konnte nicht gelesen werden. Exportiere erneut.",
+    "fr": "Impossible de lire le son. Exportez de nouveau.",
+    "zh-Hans": "无法读取声音。请重新导出。"
+  },
+  "The video's sound as you edited it — cuts, speed changes, music and the voice settings included.": {
+    "de": "Der Ton des Videos, wie du ihn bearbeitet hast – mit Schnitten, Tempoänderungen, Musik und den Stimmeinstellungen.",
+    "fr": "Le son de la vidéo tel que vous l’avez monté — coupes, changements de vitesse, musique et réglages de la voix compris.",
+    "zh-Hans": "按你的编辑输出视频声音 — 包括剪切、变速、音乐和人声设置。"
+  },
+  "The video's sound as you edited it, at −16 LUFS — cuts, speed changes, music and the voice settings included.": {
+    "de": "Der Ton des Videos, wie du ihn bearbeitet hast, bei −16 LUFS – mit Schnitten, Tempoänderungen, Musik und den Stimmeinstellungen.",
+    "fr": "Le son de la vidéo tel que vous l’avez monté, à −16 LUFS — coupes, changements de vitesse, musique et réglages de la voix compris.",
+    "zh-Hans": "按你的编辑输出视频声音，响度 −16 LUFS — 包括剪切、变速、音乐和人声设置。"
+  },
+  "The whole mix at −16 LUFS, peaks under −1 dB": {
+    "de": "Die ganze Mischung bei −16 LUFS, Spitzen unter −1 dB",
+    "fr": "Tout le mixage à −16 LUFS, crêtes sous −1 dB",
+    "zh-Hans": "整个混音为 −16 LUFS，峰值低于 −1 dB"
+  },
+  "This video has no camera footage to hide": {
+    "de": "Dieses Video hat keine Kameraaufnahme zum Ausblenden",
+    "fr": "Cette vidéo n’a pas d’images de caméra à masquer",
+    "zh-Hans": "此视频没有可隐藏的摄像头画面"
+  },
+  "This video has no camera footage to track": {
+    "de": "Dieses Video hat keine Kameraaufnahme zum Verfolgen",
+    "fr": "Cette vidéo n’a pas d’images de caméra à suivre",
+    "zh-Hans": "此视频没有可跟踪的摄像头画面"
+  },
+  "This video has no sound to export. Turn on the microphone or system audio before recording, or add music.": {
+    "de": "Dieses Video hat keinen Ton zum Exportieren. Schalte vor der Aufnahme das Mikrofon oder den Systemton ein, oder füge Musik hinzu.",
+    "fr": "Cette vidéo n’a pas de son à exporter. Activez le micro ou le son du système avant d’enregistrer, ou ajoutez de la musique.",
+    "zh-Hans": "此视频没有可导出的声音。请在录制前打开麦克风或系统音频，或添加音乐。"
+  },
+  "This video has no speaker notes": {
+    "de": "Dieses Video hat keine Sprechernotizen",
+    "fr": "Cette vidéo n’a pas de notes de l’orateur",
+    "zh-Hans": "此视频没有演讲者备注"
+  },
+  "This video has no voice to listen for silences": {
+    "de": "Dieses Video hat keine Stimme, in der sich Pausen finden lassen",
+    "fr": "Cette vidéo n’a pas de voix dans laquelle chercher des silences",
+    "zh-Hans": "此视频没有可用于检测静默的人声"
+  },
+  "Tight": {
+    "de": "Eng",
+    "fr": "Serré",
+    "zh-Hans": "紧凑"
+  },
+  "Tint": {
+    "de": "Farbton",
+    "fr": "Teinte",
+    "zh-Hans": "色调"
+  },
+  "Turn off podcast mode": {
+    "de": "Podcast-Modus ausschalten",
+    "fr": "Désactiver le mode podcast",
+    "zh-Hans": "关闭播客模式"
+  },
+  "Uncompressed 24-bit sound, as Logic Pro and GarageBand like it": {
+    "de": "Unkomprimierter 24-Bit-Ton, wie Logic Pro und GarageBand ihn mögen",
+    "fr": "Son non compressé en 24 bits, comme l’aiment Logic Pro et GarageBand",
+    "zh-Hans": "未压缩的 24 位声音，适合 Logic Pro 和 GarageBand"
+  },
+  "Uncompressed 24-bit sound, for editing in an audio app": {
+    "de": "Unkomprimierter 24-Bit-Ton zum Bearbeiten in einer Audio-App",
+    "fr": "Son non compressé en 24 bits, à monter dans une app audio",
+    "zh-Hans": "未压缩的 24 位声音，用于在音频应用中编辑"
+  },
+  "Undo Auto Adjust Camera Color": {
+    "de": "Kamerafarbe automatisch anpassen widerrufen",
+    "fr": "Annuler le réglage auto des couleurs de la caméra",
+    "zh-Hans": "撤销自动调整摄像头颜色"
+  },
+  "Undo Face Tracking": {
+    "de": "Gesichtsverfolgung widerrufen",
+    "fr": "Annuler le suivi du visage",
+    "zh-Hans": "撤销面部跟踪"
+  },
+  "Undo Hide Camera During Silences": {
+    "de": "Kamera in Sprechpausen ausblenden widerrufen",
+    "fr": "Annuler le masquage de la caméra pendant les silences",
+    "zh-Hans": "撤销静默时隐藏摄像头"
+  },
+  "Undo Keep Face Centered": {
+    "de": "Gesicht zentriert halten widerrufen",
+    "fr": "Annuler « Garder le visage centré »",
+    "zh-Hans": "撤销保持面部居中"
+  },
+  "Undo Podcast Mode Off": {
+    "de": "Podcast-Modus aus widerrufen",
+    "fr": "Annuler la désactivation du mode podcast",
+    "zh-Hans": "撤销关闭播客模式"
+  },
+  "Undo Podcast Mode On": {
+    "de": "Podcast-Modus an widerrufen",
+    "fr": "Annuler l’activation du mode podcast",
+    "zh-Hans": "撤销开启播客模式"
+  },
+  "Warm": {
+    "de": "Warm",
+    "fr": "Chaud",
+    "zh-Hans": "暖色"
+  },
+  "Warm and clear EQ": {
+    "de": "Warmer, klarer EQ",
+    "fr": "Égaliseur chaud et clair",
+    "zh-Hans": "温暖清晰的均衡"
+  },
+  "Warmth": {
+    "de": "Wärme",
+    "fr": "Chaleur",
+    "zh-Hans": "色温"
+  },
+  "Your notes from recording, as Notes.txt": {
+    "de": "Deine Notizen von der Aufnahme, als Notes.txt",
+    "fr": "Vos notes de l’enregistrement, en Notes.txt",
+    "zh-Hans": "你录制时的备注，保存为 Notes.txt"
+  }
+}

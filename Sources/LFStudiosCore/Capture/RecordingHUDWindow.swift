@@ -13,7 +13,7 @@ final class RecordingHUDWindow: NSPanel {
         case saving
     }
 
-    static let size = NSSize(width: 432, height: 44)
+    static let size = NSSize(width: 464, height: 44)
 
     var stopHandler: (() -> Void)?
     var pauseHandler: (() -> Void)?
@@ -36,6 +36,7 @@ final class RecordingHUDWindow: NSPanel {
     private let warningIcon = NSImageView()
     private let microphoneLevelMeter = RecordingHUDLevelMeter()
     private let microphoneWarning = NSImageView()
+    private let notesButton = RecordingHUDIconButton(symbol: "text.quote", label: L("Speaker notes"), tint: .white)
     private let markerButton = RecordingHUDIconButton(symbol: "flag.fill", label: L("Add a marker"), tint: .white)
     private let pauseButton = RecordingHUDIconButton(symbol: "pause.fill", label: L("Pause recording"), tint: .white)
     private let discardButton = RecordingHUDIconButton(symbol: "trash", label: L("Discard recording"), tint: .white)
@@ -200,22 +201,28 @@ final class RecordingHUDWindow: NSPanel {
         microphoneWarning.isHidden = true
         root.addSubview(microphoneWarning)
 
-        markerButton.frame = NSRect(x: 302, y: 8, width: 28, height: 28)
+        notesButton.frame = NSRect(x: 302, y: 8, width: 28, height: 28)
+        notesButton.target = self
+        notesButton.action = #selector(notesTapped)
+        notesButton.toolTip = L("Show or hide your speaker notes — they never show in the recording")
+        root.addSubview(notesButton)
+
+        markerButton.frame = NSRect(x: 334, y: 8, width: 28, height: 28)
         markerButton.target = self
         markerButton.action = #selector(markerTapped)
         root.addSubview(markerButton)
 
-        pauseButton.frame = NSRect(x: 334, y: 8, width: 28, height: 28)
+        pauseButton.frame = NSRect(x: 366, y: 8, width: 28, height: 28)
         pauseButton.target = self
         pauseButton.action = #selector(pauseTapped)
         root.addSubview(pauseButton)
 
-        discardButton.frame = NSRect(x: 364, y: 8, width: 28, height: 28)
+        discardButton.frame = NSRect(x: 396, y: 8, width: 28, height: 28)
         discardButton.target = self
         discardButton.action = #selector(discardTapped)
         root.addSubview(discardButton)
 
-        stopButton.frame = NSRect(x: 394, y: 6, width: 32, height: 32)
+        stopButton.frame = NSRect(x: 426, y: 6, width: 32, height: 32)
         stopButton.target = self
         stopButton.action = #selector(stopTapped)
         root.addSubview(stopButton)
@@ -379,6 +386,7 @@ final class RecordingHUDWindow: NSPanel {
         microphoneLevelMeter.isHidden = !(active && showsMicrophone && !microphoneSilent)
         microphoneWarning.isHidden = !(active && showsMicrophone && microphoneSilent)
         markerButton.isHidden = !active
+        notesButton.isHidden = !active
         pauseButton.isHidden = !active
         discardButton.isHidden = !active
         stopButton.isHidden = !active
@@ -506,6 +514,10 @@ final class RecordingHUDWindow: NSPanel {
 
     @objc private func markerTapped() {
         markerHandler?()
+    }
+
+    @objc private func notesTapped() {
+        SpeakerNotes.shared.toggle()
     }
 
     @objc private func pauseTapped() {

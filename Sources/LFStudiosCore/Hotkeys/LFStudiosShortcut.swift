@@ -24,6 +24,7 @@ enum LFStudiosShortcut: CaseIterable, Identifiable {
     case stopRecording
     case pauseRecording
     case addMarker
+    case pauseSpeakerNotes
 
     var id: String { name.rawValue }
 
@@ -45,6 +46,7 @@ enum LFStudiosShortcut: CaseIterable, Identifiable {
         case .stopRecording: return L("Stop Recording")
         case .pauseRecording: return L("Pause / Resume Recording")
         case .addMarker: return L("Add Marker While Recording")
+        case .pauseSpeakerNotes: return L("Pause / Resume Speaker Notes")
         }
     }
 
@@ -54,7 +56,7 @@ enum LFStudiosShortcut: CaseIterable, Identifiable {
             return .screenshots
         case .captureText, .captureScrolling, .openCommandCenter:
             return .tools
-        case .recordArea, .recordWindow, .recordFullscreen, .stopRecording, .pauseRecording, .addMarker:
+        case .recordArea, .recordWindow, .recordFullscreen, .stopRecording, .pauseRecording, .addMarker, .pauseSpeakerNotes:
             return .recording
         }
     }
@@ -77,6 +79,7 @@ enum LFStudiosShortcut: CaseIterable, Identifiable {
         case .stopRecording: return .lfstudiosStopRecording
         case .pauseRecording: return .lfstudiosPauseRecording
         case .addMarker: return .lfstudiosAddMarker
+        case .pauseSpeakerNotes: return .lfstudiosPauseSpeakerNotes
         }
     }
 
@@ -124,6 +127,9 @@ extension KeyboardShortcuts.Name {
     static let lfstudiosPauseRecording = Self("pauseRecording")
     /// No default: every free key is someone's shortcut somewhere.
     static let lfstudiosAddMarker = Self("addMarker")
+    /// No default: set it in Settings → Shortcuts. Space and the panel's
+    /// button work anyway.
+    static let lfstudiosPauseSpeakerNotes = Self("pauseSpeakerNotes")
 }
 
 // MARK: – Legacy default migration

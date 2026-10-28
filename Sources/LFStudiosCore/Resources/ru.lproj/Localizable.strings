@@ -152,6 +152,8 @@
 	<string>Более высокий столбец кнопок, место для вращающегося диска, панель навигации внизу</string>
 	<key>A video needs at least one clip</key>
 	<string>В видео должен быть хотя бы один клип</string>
+	<key>A voice chain for spoken audio: noise removal, de-essing, a warm and clear EQ, compression, and the podcast loudness standard. Each step can be turned off. Processed on this Mac.</key>
+	<string>Цепочка обработки речи: шумоподавление, подавление шипящих, тёплый и чистый эквалайзер, компрессия и стандарт громкости подкастов. Каждый шаг можно выключить. Обработка на этом Mac.</string>
 	<key>A window that size would be bigger than the screen. The largest of the same shape that fits is %@ × %@.</key>
 	<string>Окно такого размера больше экрана. Самый большой размер той же формы, который помещается, — %@ × %@.</string>
 	<key>About</key>
@@ -242,6 +244,8 @@
 	<string>Добавленные в LF Studios</string>
 	<key>Added “%@”</key>
 	<string>Шрифт «%@» добавлен</string>
+	<key>Adds a Camera hidden block for each pause at least this long. Drag or delete them on the Camera lane; pressing again replaces only these.</key>
+	<string>Добавляет блок «Камера скрыта» для каждой паузы не короче этой. Перетаскивайте или удаляйте их на дорожке камеры; повторное нажатие заменяет только их.</string>
 	<key>Adjust to move it half a second</key>
 	<string>Регулируйте, чтобы сдвинуть на полсекунды</string>
 	<key>Advanced Tools</key>
@@ -358,6 +362,8 @@
 	<string>Текущее время</string>
 	<key>Audio</key>
 	<string>Аудио</string>
+	<key>Audio only</key>
+	<string>Только звук</string>
 	<key>Aurora</key>
 	<string>Сияние</string>
 	<key>Aurora Blue</key>
@@ -366,6 +372,8 @@
 	<string>Авто</string>
 	<key>Auto Zoom</key>
 	<string>Автомасштаб</string>
+	<key>Auto adjust</key>
+	<string>Автонастройка</string>
 	<key>Auto-dismiss overlay</key>
 	<string>Автоскрытие миниатюры</string>
 	<key>Auto-save folder</key>
@@ -390,6 +398,8 @@
 	<string>Вернуть стиль LF Studios</string>
 	<key>Back to the original recording — ⌘Z to undo</key>
 	<string>Возврат к исходной записи — ⌘Z, чтобы отменить</string>
+	<key>Back to the start</key>
+	<string>В начало</string>
 	<key>Back · pause · faster</key>
 	<string>Назад · пауза · быстрее</string>
 	<key>Background</key>
@@ -410,6 +420,8 @@
 	<string>Штрихкоды</string>
 	<key>Based on Shotnix (MIT License)</key>
 	<string>Основано на Shotnix (лицензия MIT)</string>
+	<key>Begins scrolling when the recording starts</key>
+	<string>Начинает прокрутку, когда начинается запись</string>
 	<key>Behavior</key>
 	<string>Поведение</string>
 	<key>Behind you</key>
@@ -446,6 +458,10 @@
 	<string>Внизу слева</string>
 	<key>Bottom right</key>
 	<string>Внизу справа</string>
+	<key>Bright</key>
+	<string>Яркий</string>
+	<key>Brightness</key>
+	<string>Яркость</string>
 	<key>Bring All to Front</key>
 	<string>Все окна — на передний план</string>
 	<key>Built-in</key>
@@ -470,6 +486,8 @@
 	<string>Доступ к камере выключен — разрешите его для LF Studios в разделе Системные настройки → Конфиденциальность и безопасность → Камера.</string>
 	<key>Camera bubble</key>
 	<string>Окошко камеры</string>
+	<key>Camera color adjusted — tweak the sliders, or ⌘Z to undo</key>
+	<string>Цвет камеры настроен — подправьте ползунки или нажмите ⌘Z, чтобы отменить</string>
 	<key>Camera disconnected</key>
 	<string>Камера отключена</string>
 	<key>Camera disconnected.</key>
@@ -610,6 +628,8 @@
 	<string>Титры используют ваш фон, а шкала времени удлиняется, чтобы их вместить. Финальная заставка «Made with LF Studios» — отдельно: она в параметрах экспорта.</string>
 	<key>Center</key>
 	<string>По центру</string>
+	<key>Change the text</key>
+	<string>Изменить текст</string>
 	<key>Chapters</key>
 	<string>Главы</string>
 	<key>Chapters as text (“0:00 Start”) for a YouTube description</key>
@@ -662,6 +682,8 @@
 	<string>Выбрать окно</string>
 	<key>Choose...</key>
 	<string>Выбрать…</string>
+	<key>Cinematic</key>
+	<string>Кино</string>
 	<key>Circle</key>
 	<string>Круг</string>
 	<key>Citrus</key>
@@ -768,10 +790,16 @@
 	<string>Команды</string>
 	<key>Compose Email</key>
 	<string>Написать письмо</string>
+	<key>Compressed AAC (256 kbps): small, and plays everywhere — for podcasts and sharing</key>
+	<string>Сжатый AAC (256 кбит/с): компактный и везде воспроизводится — для подкастов и обмена</string>
+	<key>Compression</key>
+	<string>Компрессия</string>
 	<key>Computer sound</key>
 	<string>Звук компьютера</string>
 	<key>Conflict detected</key>
 	<string>Обнаружен конфликт</string>
+	<key>Contrast</key>
+	<string>Контраст</string>
 	<key>Copied</key>
 	<string>Скопировано</string>
 	<key>Copied to clipboard</key>
@@ -800,6 +828,8 @@
 	<string>Скопировать текущий кадр</string>
 	<key>Copy image to clipboard</key>
 	<string>Скопировать изображение в буфер обмена</string>
+	<key>Copy notes</key>
+	<string>Скопировать заметки</string>
 	<key>Copy recognized text (OCR)</key>
 	<string>Скопировать распознанный текст (OCR)</string>
 	<key>Copy screenshots to the clipboard</key>
@@ -966,6 +996,8 @@
 	<string>Силуэт</string>
 	<key>Dark Mode</key>
 	<string>Тёмное</string>
+	<key>De-esser</key>
+	<string>Подавление шипящих</string>
 	<key>Decoded details</key>
 	<string>Расшифрованные данные</string>
 	<key>Delete</key>
@@ -1262,6 +1294,10 @@
 	<string>Экспортировать…</string>
 	<key>Extra-fluid curves for slow, cinematic demos.</key>
 	<string>Особо плавные кривые для неспешных кинематографичных демо.</string>
+	<key>Face tracking</key>
+	<string>Отслеживание лица</string>
+	<key>Face tracking canceled</key>
+	<string>Отслеживание лица отменено</string>
 	<key>Fade in</key>
 	<string>Нарастание</string>
 	<key>Fade in from black</key>
@@ -1306,6 +1342,8 @@
 	<string>Найти «%@»</string>
 	<key>Finds typing and plays it faster, as speed blocks you can change</key>
 	<string>Находит набор текста и ускоряет его — блоками скорости, которые можно менять</string>
+	<key>Finds your face in the camera video on this Mac, then the bubble's framing follows it. Where no face is found, it keeps the last good framing.</key>
+	<string>Находит ваше лицо в видео с камеры на этом Mac, и кадр окошка следует за ним. Где лицо не найдено, сохраняется последний удачный кадр.</string>
 	<key>Finds zooms the camera bubble covers and moves their framing, or the bubble, out of the way</key>
 	<string>Находит увеличения, которые закрывает окошко камеры, и сдвигает их кадр или само окошко</string>
 	<key>Fine-tune shadow</key>
@@ -1340,6 +1378,8 @@
 	<string>Шрифт</string>
 	<key>For Final Cut Pro, DaVinci Resolve, and Adobe Premiere Pro</key>
 	<string>Для Final Cut Pro, DaVinci Resolve и Adobe Premiere Pro</string>
+	<key>For the camera only; the screen stays as recorded.</key>
+	<string>Только для камеры; экран остаётся как записан.</string>
 	<key>Forever</key>
 	<string>Бессрочно</string>
 	<key>Format</key>
@@ -1448,6 +1488,8 @@
 	<string>Скрыть значок</string>
 	<key>Hide Phone Overlay</key>
 	<string>Скрыть наложение телефона</string>
+	<key>Hide camera during silences</key>
+	<string>Скрывать камеру в паузах</string>
 	<key>Hide desktop icons while capturing</key>
 	<string>Скрывать значки рабочего стола при съемке</string>
 	<key>Hide the Menu Bar Icon?</key>
@@ -1462,6 +1504,8 @@
 	<string>Скрыть — экспорт продолжится (Esc)</string>
 	<key>High</key>
 	<string>Высокое</string>
+	<key>Higher glides calmly after you; lower keeps up with quick moves</key>
+	<string>Выше — плавно следует за вами; ниже — успевает за быстрыми движениями</string>
 	<key>Highlight</key>
 	<string>Выделение</string>
 	<key>Highlight color</key>
@@ -1488,6 +1532,8 @@
 	<string>Наведите указатель на дорожку «Масштаб» и нажмите, чтобы добавить увеличение, или нажмите Z у указателя воспроизведения. Перетяните увеличение, чтобы переместить его; тяните за края, чтобы изменить длительность.</string>
 	<key>How long the loupe takes to grow in and fade out</key>
 	<string>Сколько длится появление и исчезновение лупы</string>
+	<key>How much of the bubble your face fills</key>
+	<string>Какую часть окошка занимает лицо</string>
 	<key>How strongly blur and pixelate hide what's under them</key>
 	<string>Насколько сильно размытие и пикселизация скрывают содержимое</string>
 	<key>Image</key>
@@ -1510,6 +1556,8 @@
 	<string>Включить соотношение сторон (%@)</string>
 	<key>Include media (works on any Mac)</key>
 	<string>Включить медиафайлы (работает на любом Mac)</string>
+	<key>Include speaker notes</key>
+	<string>Включить заметки докладчика</string>
 	<key>Include the finished video</key>
 	<string>Добавить готовое видео</string>
 	<key>Includes: %@</key>
@@ -1570,6 +1618,10 @@
 	<string>Хранить снимки</string>
 	<key>Keep editing — the words appear here when LF Studios is done listening.</key>
 	<string>Продолжайте работу — слова появятся здесь, когда LF Studios закончит слушать.</string>
+	<key>Keep face centered</key>
+	<string>Держать лицо по центру</string>
+	<key>Keeps loud and quiet words close together</key>
+	<string>Сближает громкие и тихие слова</string>
 	<key>Keyboard</key>
 	<string>Клавиатура</string>
 	<key>Keyboard Shortcuts</key>
@@ -1660,6 +1712,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Не вошло:</string>
 	<key>Length</key>
 	<string>Длительность</string>
+	<key>Less rumble and boom, more presence</key>
+	<string>Меньше гула и бубнения, больше разборчивости</string>
 	<key>Letterbox Instead of Following the Cursor</key>
 	<string>Вписать с полосами вместо следования за указателем</string>
 	<key>Level</key>
@@ -1704,10 +1758,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Найти…</string>
 	<key>Look</key>
 	<string>Вид</string>
+	<key>Looking for your face in the camera video. This happens once; the result is kept.</key>
+	<string>Поиск лица в видео с камеры. Это делается один раз; результат сохраняется.</string>
 	<key>Loop</key>
 	<string>Зацикливание</string>
 	<key>Loop to fill</key>
 	<string>Повторять до конца</string>
+	<key>Loose</key>
+	<string>Свободно</string>
 	<key>Loupe</key>
 	<string>Лупа</string>
 	<key>Lower under your voice</key>
@@ -1784,6 +1842,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Минимальный</string>
 	<key>Minimize</key>
 	<string>Свернуть</string>
+	<key>Minimum silence</key>
+	<string>Минимальная пауза</string>
 	<key>Mint</key>
 	<string>Мята</string>
 	<key>Mirror</key>
@@ -1868,6 +1928,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Мой набор</string>
 	<key>My Style: “%@”</key>
 	<string>Мой стиль: «%@»</string>
+	<key>Natural</key>
+	<string>Естественный</string>
 	<key>Nebula</key>
 	<string>Туманность</string>
 	<key>Needed to capture the screen. macOS will ask once.</key>
@@ -1928,6 +1990,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Нет конфликтов</string>
 	<key>No cursor data in this video</key>
 	<string>В этом видео нет данных указателя</string>
+	<key>No face found in the camera video</key>
+	<string>В видео с камеры лицо не найдено</string>
 	<key>No idle moments found — nice and tight</key>
 	<string>Простоев не найдено — все плотно</string>
 	<key>No location chosen</key>
@@ -1956,6 +2020,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Здесь нет места — переместите указатель воспроизведения</string>
 	<key>No saved captures yet</key>
 	<string>Сохраненных снимков пока нет</string>
+	<key>No silences that long</key>
+	<string>Таких длинных пауз нет</string>
 	<key>No sound from the microphone</key>
 	<string>Нет звука с микрофона</string>
 	<key>No speech was found in this recording. If it has narration, check its level in the Audio tab, then try again.</key>
@@ -1972,6 +2038,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Слов-паразитов не осталось</string>
 	<key>No zooms are under the camera</key>
 	<string>Камера не закрывает ни одного увеличения</string>
+	<key>Noise removal</key>
+	<string>Шумоподавление</string>
 	<key>None</key>
 	<string>Нет</string>
 	<key>None in this recording. Turn on “Show keyboard shortcuts” in Settings → Recording and every ⌘ shortcut you press appears as keycaps. Plain typing is never recorded.</key>
@@ -2114,12 +2182,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Пароль</string>
 	<key>Paste</key>
 	<string>Вставить</string>
+	<key>Paste or type your notes here. They stay out of every recording.</key>
+	<string>Вставьте или введите заметки здесь. Они не попадают ни в одну запись.</string>
 	<key>Pause</key>
 	<string>Пауза</string>
 	<key>Pause (Space)</key>
 	<string>Пауза (пробел)</string>
 	<key>Pause / Resume Recording</key>
 	<string>Приостановить/продолжить запись</string>
+	<key>Pause / Resume Speaker Notes</key>
+	<string>Пауза / продолжение заметок докладчика</string>
 	<key>Pause Recording</key>
 	<string>Приостановить запись</string>
 	<key>Pause recording</key>
@@ -2128,6 +2200,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Приостановить запись (%@)</string>
 	<key>Pause restored</key>
 	<string>Пауза восстановлена</string>
+	<key>Pause scrolling (Space)</key>
+	<string>Остановить прокрутку (пробел)</string>
 	<key>Pause shortened</key>
 	<string>Пауза сокращена</string>
 	<key>Paused</key>
@@ -2194,6 +2268,20 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Запускает или приостанавливает воспроизведение. Чтобы выбирать объекты на шкале времени, используйте Option и клавиши со стрелками.</string>
 	<key>Plum</key>
 	<string>Слива</string>
+	<key>Podcast</key>
+	<string>Подкаст</string>
+	<key>Podcast loudness</key>
+	<string>Громкость подкаста</string>
+	<key>Podcast mode</key>
+	<string>Режим подкаста</string>
+	<key>Podcast mode below takes care of the voice while it's on.</key>
+	<string>Пока включён режим подкаста ниже, он отвечает за голос.</string>
+	<key>Podcast mode off</key>
+	<string>Режим подкаста выключен</string>
+	<key>Podcast mode on — turn off any step you don't want</key>
+	<string>Режим подкаста включён — выключите ненужные шаги</string>
+	<key>Podcast voice ready</key>
+	<string>Голос для подкаста готов</string>
 	<key>Polar Dawn</key>
 	<string>Полярный рассвет</string>
 	<key>Porcelain</key>
@@ -2266,6 +2354,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Диапазон</string>
 	<key>Re-enable Apple's ⌘⇧3/4/5 screenshot shortcuts</key>
 	<string>Снова включить сочетания клавиш Apple ⌘⇧3/4/5 для снимков экрана</string>
+	<key>Read</key>
+	<string>Читать</string>
+	<key>Read mode: Space starts and pauses scrolling</key>
+	<string>Режим чтения: пробел запускает и останавливает прокрутку</string>
 	<key>Ready</key>
 	<string>Готово</string>
 	<key>Recent Exports</key>
@@ -2410,6 +2502,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторить изменение стиля стрелки</string>
 	<key>Redo Aspect Ratio</key>
 	<string>Повторить изменение соотношения сторон</string>
+	<key>Redo Auto Adjust Camera Color</key>
+	<string>Повторить автонастройку цвета камеры</string>
 	<key>Redo Auto Zoom</key>
 	<string>Повторить автомасштаб</string>
 	<key>Redo Auto-Zoom Off</key>
@@ -2492,10 +2586,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторить правку текста</string>
 	<key>Redo Enhance Voice</key>
 	<string>Повторить улучшение голоса</string>
+	<key>Redo Face Tracking</key>
+	<string>Повторить отслеживание лица</string>
 	<key>Redo Fade</key>
 	<string>Повторить изменение нарастания и затухания</string>
 	<key>Redo Fit Zooms Around Camera</key>
 	<string>Повторить обход камеры</string>
+	<key>Redo Hide Camera During Silences</key>
+	<string>Повторить скрытие камеры в паузах</string>
 	<key>Redo Hide Shortcut</key>
 	<string>Повторить скрытие сочетания</string>
 	<key>Redo Highlight Style</key>
@@ -2504,6 +2602,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторить изменение стиля изображения</string>
 	<key>Redo Intro and Outro</key>
 	<string>Повторить вступление и концовку</string>
+	<key>Redo Keep Face Centered</key>
+	<string>Повторить «Держать лицо по центру»</string>
 	<key>Redo Markers</key>
 	<string>Повторить изменение маркеров</string>
 	<key>Redo Move Arrow</key>
@@ -2538,6 +2638,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторить выключение звука фрагмента</string>
 	<key>Redo Mute Video</key>
 	<string>Повторить выключение звука видео</string>
+	<key>Redo Podcast Mode Off</key>
+	<string>Повторить выключение режима подкаста</string>
+	<key>Redo Podcast Mode On</key>
+	<string>Повторить включение режима подкаста</string>
 	<key>Redo Remove All Zooms</key>
 	<string>Повторить удаление всех увеличений</string>
 	<key>Redo Remove Camera Video</key>
@@ -2674,6 +2778,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Убирает фоновый шум и гул и выравнивает громкость — обработка на этом Mac</string>
 	<key>Removes jitter, keeps it snappy.</key>
 	<string>Убирает дрожание, сохраняя отзывчивость.</string>
+	<key>Removes room noise and hum, and quiets the room between words</key>
+	<string>Убирает шум комнаты и гул и приглушает паузы между словами</string>
 	<key>Rename</key>
 	<string>Переименовать</string>
 	<key>Rename Marker…</key>
@@ -2790,6 +2896,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Скругление</string>
 	<key>S</key>
 	<string>S</string>
+	<key>Saturation</key>
+	<string>Насыщенность</string>
 	<key>Save</key>
 	<string>Сохранить</string>
 	<key>Save %@…</key>
@@ -2914,6 +3022,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Управление снимком с прокруткой</string>
 	<key>Scrolling capture failed</key>
 	<string>Не удалось сделать снимок с прокруткой</string>
+	<key>Scrolling speed</key>
+	<string>Скорость прокрутки</string>
 	<key>Search commands</key>
 	<string>Поиск команд</string>
 	<key>Search projects</key>
@@ -2976,6 +3086,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Поделиться</string>
 	<key>Share — Mail, Messages, AirDrop…</key>
 	<string>Поделиться — Почта, Сообщения, AirDrop…</string>
+	<key>Sharpness</key>
+	<string>Резкость</string>
 	<key>Shift the Zooms</key>
 	<string>Сдвинуть увеличения</string>
 	<key>Shortcut</key>
@@ -3038,6 +3150,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Показать большую часть шкалы времени</string>
 	<key>Show one kind of capture</key>
 	<string>Показать снимки одного типа</string>
+	<key>Show or hide your speaker notes — they never show in the recording</key>
+	<string>Показать или скрыть заметки докладчика — они никогда не попадают в запись</string>
 	<key>Show shortcuts</key>
 	<string>Показывать сочетания клавиш</string>
 	<key>Show the preview after capture</key>
@@ -3060,6 +3174,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Рядом</string>
 	<key>Side rail</key>
 	<string>Боковая панель</string>
+	<key>Silences</key>
+	<string>Паузы</string>
 	<key>Silences over a second get shortened — except while you click, type, scroll, or move the pointer, so the demo itself is never cut</key>
 	<string>Паузы длиннее секунды сокращаются — кроме моментов, когда вы нажимаете, печатаете, прокручиваете или двигаете указатель, чтобы сама демонстрация не пострадала</string>
 	<key>Silences over a second get shortened — except while you move the pointer, click, or press a shortcut</key>
@@ -3090,12 +3206,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Самые маленькие файлы — для документов и чатов</string>
 	<key>Smooth</key>
 	<string>Плавно</string>
+	<key>Smoothness</key>
+	<string>Плавность</string>
 	<key>Social</key>
 	<string>Соцсети</string>
 	<key>Social feeds</key>
 	<string>Ленты соцсетей</string>
 	<key>Soft streaks on fast moves</key>
 	<string>Мягкие шлейфы при быстрых движениях</string>
+	<key>Softens sharp “s” and “sh” sounds</key>
+	<string>Смягчает резкие «с» и «ш»</string>
 	<key>Softness</key>
 	<string>Мягкость</string>
 	<key>Solid Color</key>
@@ -3110,6 +3230,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Пробел</string>
 	<key>Space Gray</key>
 	<string>Серый космос</string>
+	<key>Speaker Notes</key>
+	<string>Заметки докладчика</string>
+	<key>Speaker notes</key>
+	<string>Заметки докладчика</string>
+	<key>Speaker notes copied</key>
+	<string>Заметки докладчика скопированы</string>
+	<key>Speaker notes: a teleprompter that never shows in the recording</key>
+	<string>Заметки докладчика: суфлёр, который никогда не попадает в запись</string>
 	<key>Sped up by Speed up typing — pick another speed here, or press it again.</key>
 	<string>Ускорено кнопкой «Ускорить набор» — выберите здесь другую скорость или нажмите её снова.</string>
 	<key>Speech recognition is turned off for LF Studios in System Settings → Privacy &amp; Security → Speech Recognition. Turn it on, then try again.</key>
@@ -3164,8 +3292,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Начало здесь</string>
 	<key>Start over from the original recording?</key>
 	<string>Начать заново с исходной записи?</string>
+	<key>Start scrolling (Space)</key>
+	<string>Начать прокрутку (пробел)</string>
 	<key>Start the song at</key>
 	<string>Начало песни с</string>
+	<key>Start with recording</key>
+	<string>Вместе с записью</string>
 	<key>Starts</key>
 	<string>Начало</string>
 	<key>Startup</key>
@@ -3286,6 +3418,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Это видео пустое</string>
 	<key>That window closed before recording could start.</key>
 	<string>Окно закрылось до начала записи.</string>
+	<key>The bubble follows your face; where none was found it holds the last framing</key>
+	<string>Окошко следует за лицом; где его нет, сохраняется последний кадр</string>
+	<key>The bubble now follows your face</key>
+	<string>Теперь окошко следует за лицом</string>
+	<key>The bubble's framing follows your face</key>
+	<string>Кадр окошка следует за лицом</string>
 	<key>The camera couldn't start.</key>
 	<string>Не удалось запустить камеру.</string>
 	<key>The camera follows the text cursor as you type.</key>
@@ -3294,6 +3432,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Камера держит указатель в кадре и плавно следует за ним.</string>
 	<key>The camera stopped. The recording continues without it.</key>
 	<string>Камера остановилась. Запись продолжается без нее.</string>
+	<key>The camera video couldn't be read</key>
+	<string>Не удалось прочитать видео с камеры</string>
+	<key>The camera video couldn't be read, so no face could be found.</key>
+	<string>Не удалось прочитать видео с камеры, поэтому лицо не найдено.</string>
 	<key>The cursor is part of this video</key>
 	<string>Указатель — часть этого видео</string>
 	<key>The export carries on in the background (Esc)</key>
@@ -3316,6 +3458,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Не удалось запустить микрофон, поэтому запись идет без микрофона.</string>
 	<key>The microphone stopped working. The recording continues without it.</key>
 	<string>Микрофон перестал работать. Запись продолжается без него.</string>
+	<key>The notes you read while recording. They're saved with the project, and go into Creative Handoff only when you choose.</key>
+	<string>Заметки, которые вы читали во время записи. Они сохраняются с проектом и попадают в «Творческую передачу», только если вы это выберете.</string>
 	<key>The picture's file is gone — choose it again with Replace.</key>
 	<string>Файл изображения пропал — выберите его снова с помощью «Заменить».</string>
 	<key>The pointer glides back to where it started, so the video loops without a jump</key>
@@ -3340,6 +3484,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Песня короче видео</string>
 	<key>The song's file is gone — choose it again with Replace.</key>
 	<string>Файл песни пропал — выберите его снова с помощью «Заменить».</string>
+	<key>The sound couldn't be read. Export again.</key>
+	<string>Не удалось прочитать звук. Экспортируйте снова.</string>
 	<key>The timeline is empty. Restore a clip, then export again.</key>
 	<string>Шкала времени пуста. Восстановите клип и экспортируйте снова.</string>
 	<key>The video encoder is busy — another app may be recording or exporting. Wait a moment and try again, or choose H.264.</key>
@@ -3348,10 +3494,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>В видео нет изображения</string>
 	<key>The video's own recording can't be removed</key>
 	<string>Исходную запись видео удалить нельзя</string>
+	<key>The video's sound as you edited it — cuts, speed changes, music and the voice settings included.</key>
+	<string>Звук видео с вашим монтажом — с обрезками, изменениями скорости, музыкой и настройками голоса.</string>
+	<key>The video's sound as you edited it, at −16 LUFS — cuts, speed changes, music and the voice settings included.</key>
+	<string>Звук видео с вашим монтажом, −16 LUFS — с обрезками, изменениями скорости, музыкой и настройками голоса.</string>
 	<key>The voice track is empty, so there's nothing to clean up. Turn off Enhance voice to keep the original sound.</key>
 	<string>Голосовая дорожка пуста, поэтому очищать нечего. Выключите «Улучшение голоса», чтобы сохранить исходный звук.</string>
 	<key>The whole frame zooms in.</key>
 	<string>Увеличивается весь кадр.</string>
+	<key>The whole mix at −16 LUFS, peaks under −1 dB</key>
+	<string>Весь микс на −16 LUFS, пики ниже −1 дБ</string>
 	<key>The window you're recording closed. Stop when you're ready — the recording keeps going.</key>
 	<string>Записываемое окно закрылось. Остановите запись, когда будете готовы, — она продолжается.</string>
 	<key>There are no captions to translate yet. Transcribe or add captions first.</key>
@@ -3400,6 +3552,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>В этой записи есть только стрелка</string>
 	<key>This video has no camera bubble</key>
 	<string>В этом видео нет окошка камеры</string>
+	<key>This video has no camera footage to hide</key>
+	<string>В этом видео нет записи с камеры, которую можно скрыть</string>
+	<key>This video has no camera footage to track</key>
+	<string>В этом видео нет записи с камеры для отслеживания</string>
+	<key>This video has no sound to export. Turn on the microphone or system audio before recording, or add music.</key>
+	<string>В этом видео нет звука для экспорта. Включите микрофон или системный звук перед записью или добавьте музыку.</string>
+	<key>This video has no speaker notes</key>
+	<string>В этом видео нет заметок докладчика</string>
+	<key>This video has no voice to listen for silences</key>
+	<string>В этом видео нет голоса, по которому искать паузы</string>
 	<key>This video is copy-protected and can't be exported.</key>
 	<string>Это видео защищено от копирования, и его нельзя экспортировать.</string>
 	<key>This video isn't there anymore</key>
@@ -3410,6 +3572,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Три быстрых шага — и можно делать снимки.</string>
 	<key>Tide Glass</key>
 	<string>Приливное стекло</string>
+	<key>Tight</key>
+	<string>Крупно</string>
 	<key>Timed Capture</key>
 	<string>Снимок с таймером</string>
 	<key>Timed Capture (%llds)</key>
@@ -3426,6 +3590,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Время</string>
 	<key>Timing only: never which keys</key>
 	<string>Только моменты: никогда — какие клавиши</string>
+	<key>Tint</key>
+	<string>Оттенок</string>
 	<key>Tips</key>
 	<string>Подсказки</string>
 	<key>Title</key>
@@ -3504,6 +3670,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Включить автомасштаб по нажатиям</string>
 	<key>Turn around</key>
 	<string>Развернуть</string>
+	<key>Turn off podcast mode</key>
+	<string>Выключить режим подкаста</string>
 	<key>Turn off vertical reframing to fit zooms around the camera</key>
 	<string>Выключите вертикальное кадрирование, чтобы увеличения обходили камеру</string>
 	<key>Turn on Auto-zoom on clicks (Zoom) to use this</key>
@@ -3528,6 +3696,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Набор текста теперь идёт на %@</string>
 	<key>URL</key>
 	<string>URL</string>
+	<key>Uncompressed 24-bit sound, as Logic Pro and GarageBand like it</key>
+	<string>Несжатый 24-битный звук, как любят Logic Pro и GarageBand</string>
+	<key>Uncompressed 24-bit sound, for editing in an audio app</key>
+	<string>Несжатый 24-битный звук для монтажа в аудиоприложении</string>
 	<key>Under the voice</key>
 	<string>Под голосом</string>
 	<key>Undo</key>
@@ -3590,6 +3762,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Отменить изменение стиля стрелки</string>
 	<key>Undo Aspect Ratio</key>
 	<string>Отменить изменение соотношения сторон</string>
+	<key>Undo Auto Adjust Camera Color</key>
+	<string>Отменить автонастройку цвета камеры</string>
 	<key>Undo Auto Zoom</key>
 	<string>Отменить автомасштаб</string>
 	<key>Undo Auto-Zoom Off</key>
@@ -3672,10 +3846,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Отменить правку текста</string>
 	<key>Undo Enhance Voice</key>
 	<string>Отменить улучшение голоса</string>
+	<key>Undo Face Tracking</key>
+	<string>Отменить отслеживание лица</string>
 	<key>Undo Fade</key>
 	<string>Отменить изменение нарастания и затухания</string>
 	<key>Undo Fit Zooms Around Camera</key>
 	<string>Отменить обход камеры</string>
+	<key>Undo Hide Camera During Silences</key>
+	<string>Отменить скрытие камеры в паузах</string>
 	<key>Undo Hide Shortcut</key>
 	<string>Отменить скрытие сочетания</string>
 	<key>Undo Highlight Style</key>
@@ -3684,6 +3862,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Отменить изменение стиля изображения</string>
 	<key>Undo Intro and Outro</key>
 	<string>Отменить вступление и концовку</string>
+	<key>Undo Keep Face Centered</key>
+	<string>Отменить «Держать лицо по центру»</string>
 	<key>Undo Markers</key>
 	<string>Отменить изменение маркеров</string>
 	<key>Undo Move Arrow</key>
@@ -3718,6 +3898,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Отменить выключение звука фрагмента</string>
 	<key>Undo Mute Video</key>
 	<string>Отменить выключение звука видео</string>
+	<key>Undo Podcast Mode Off</key>
+	<string>Отменить выключение режима подкаста</string>
+	<key>Undo Podcast Mode On</key>
+	<string>Отменить включение режима подкаста</string>
 	<key>Undo Remove All Zooms</key>
 	<string>Отменить удаление всех увеличений</string>
 	<key>Undo Remove Camera Video</key>
@@ -3874,6 +4058,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Ожидание…</string>
 	<key>Wallpaper</key>
 	<string>Обои</string>
+	<key>Warm</key>
+	<string>Тёплый</string>
+	<key>Warm and clear EQ</key>
+	<string>Тёплый и чистый эквалайзер</string>
+	<key>Warmth</key>
+	<string>Теплота</string>
 	<key>Warning</key>
 	<string>Предупреждение</string>
 	<key>Web</key>
@@ -3958,6 +4148,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Вашу речь можно превратить в субтитры — а затем монтировать видео, правя текст.</string>
 	<key>Your narration can become captions — transcribe it here</key>
 	<string>Вашу речь можно превратить в субтитры — расшифруйте ее здесь</string>
+	<key>Your notes from recording, as Notes.txt</key>
+	<string>Ваши заметки из записи в файле Notes.txt</string>
 	<key>Your presets, fonts, capture history, and recording edits came along too. ShotStyle's own copy is untouched, so you can delete the old app whenever you're ready.</key>
 	<string>Пресеты, шрифты, история снимков и правки записей тоже перенесены. Копия ShotStyle не изменилась, так что старое приложение можно удалить, когда захотите.</string>
 	<key>Your recordings and screenshots will appear here</key>

@@ -79,7 +79,8 @@ final class VideoProResExportTests: XCTestCase {
         other.format = .proRes422HQ
         other.transparentBackground = true
         XCTAssertFalse(other.keepsTransparency, "only 4444 keeps transparency")
-        XCTAssertEqual(VideoExportSettings.Format.allCases, [.mp4, .proRes422, .proRes422HQ, .proRes4444, .gif])
+        XCTAssertEqual(VideoExportSettings.Format.videoFormats, [.mp4, .proRes422, .proRes422HQ, .proRes4444, .gif])
+        XCTAssertEqual(VideoExportSettings.Format.allCases, VideoExportSettings.Format.videoFormats + [.m4a, .wav, .aiff])
         XCTAssertEqual(other.fileExtension, "mov")
     }
 

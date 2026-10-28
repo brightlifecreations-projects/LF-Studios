@@ -464,7 +464,7 @@ final class VideoExportQueue: ObservableObject {
     /// can go into the export. Returns true when one was wanted but
     /// couldn't be made.
     private func enhanceVoiceIfNeeded(_ job: Job) async -> Bool {
-        guard job.project.audio.enhanceVoice else { return false }
+        guard job.project.audio.voiceRecipe != nil else { return false }
         let asset = AVURLAsset(url: job.project.sourceURL)
         var counts: [Int] = []
         for track in (try? await asset.loadTracks(withMediaType: .audio)) ?? [] {
@@ -489,7 +489,7 @@ final class VideoExportQueue: ObservableObject {
 
     /// "Demo.srt" (or .vtt) next to the video, when captions exist.
     private func writeSubtitles(for job: Job) -> URL? {
-        guard let format = job.settings.subtitles, !job.project.captions.isEmpty else { return nil }
+        guard let format = job.settings.subtitles, !job.project.captions.isEmpty, !job.settings.format.isAudioOnly else { return nil }
         let base = job.destination.deletingPathExtension()
         let language = job.project.captionTracks.active.map { ".\($0)" } ?? ""
         let url = base.deletingLastPathComponent().appendingPathComponent("\(base.lastPathComponent)\(language).\(format.fileExtension)")

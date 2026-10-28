@@ -682,6 +682,26 @@
 			<string>Автонаближення — %lld наближення</string>
 		</dict>
 	</dict>
+	<key>Camera hidden in %lld silences — ⌘Z to undo</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>few</key>
+			<string>Камеру сховано в %lld паузах — ⌘Z, щоб скасувати</string>
+			<key>many</key>
+			<string>Камеру сховано в %lld паузах — ⌘Z, щоб скасувати</string>
+			<key>one</key>
+			<string>Камеру сховано в %lld паузі — ⌘Z, щоб скасувати</string>
+			<key>other</key>
+			<string>Камеру сховано в %lld паузи — ⌘Z, щоб скасувати</string>
+		</dict>
+	</dict>
 	<key>Captions ready — %lld lines</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>

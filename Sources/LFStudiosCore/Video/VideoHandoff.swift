@@ -31,6 +31,31 @@ struct VideoHandoffOptions: Codable, Equatable {
     var includeFinal = true
     var includeTimeline = true
     var quality: Quality = .proRes422HQ
+    /// The speaker notes as Notes.txt. Off: notes are private until chosen.
+    var includeSpeakerNotes = false
+
+    init(clips: Clips = .trimmed, lineUp: Bool = true, includeFinal: Bool = true, includeTimeline: Bool = true, quality: Quality = .proRes422HQ, includeSpeakerNotes: Bool = false) {
+        self.clips = clips
+        self.lineUp = lineUp
+        self.includeFinal = includeFinal
+        self.includeTimeline = includeTimeline
+        self.quality = quality
+        self.includeSpeakerNotes = includeSpeakerNotes
+    }
+
+    private enum CodingKeys: String, CodingKey { case clips, lineUp, includeFinal, includeTimeline, quality, includeSpeakerNotes }
+
+    /// Options saved before a field existed still load.
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        let d = VideoHandoffOptions()
+        clips = (try? c.decodeIfPresent(Clips.self, forKey: .clips)) ?? d.clips
+        lineUp = (try? c.decodeIfPresent(Bool.self, forKey: .lineUp)) ?? d.lineUp
+        includeFinal = (try? c.decodeIfPresent(Bool.self, forKey: .includeFinal)) ?? d.includeFinal
+        includeTimeline = (try? c.decodeIfPresent(Bool.self, forKey: .includeTimeline)) ?? d.includeTimeline
+        quality = (try? c.decodeIfPresent(Quality.self, forKey: .quality)) ?? d.quality
+        includeSpeakerNotes = (try? c.decodeIfPresent(Bool.self, forKey: .includeSpeakerNotes)) ?? d.includeSpeakerNotes
+    }
 
     static let key = "creativeHandoffOptions"
     static let locationKey = "creativeHandoffLocation"
