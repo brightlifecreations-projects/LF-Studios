@@ -1742,10 +1742,247 @@ enum GuideContent {
             ),
         ]
     }
-    static func styleFeatures() -> [GuideEntry] { [] } // STUB
-    static func sizeFeatures() -> [GuideEntry] { [] } // STUB
-    static func privacyFeatures() -> [GuideEntry] { [] } // STUB
-    static func exportFeatures() -> [GuideEntry] { [] } // STUB
+    // MARK: Style & presets
+
+    static func styleFeatures() -> [GuideEntry] {
+        [
+            GuideEntry(
+                id: "style-background", symbol: "photo.on.rectangle.angled", title: L("Background"),
+                summary: L("Put your recording on a wallpaper, a gradient, a color, or your own picture."),
+                location: L("Style panel ▸ Background."),
+                points: [
+                    L("Wallpaper, Gradient, Color, or Image. Wallpaper includes the ones on your Mac."),
+                    L("The dice button picks one at random."),
+                    L("Background blur softens a wallpaper or picture."),
+                ],
+                showMe: .editor(.background)
+            ),
+            GuideEntry(
+                id: "style-frame", symbol: "square.on.square.dashed", title: L("Frame: padding, corners & shadow"),
+                summary: L("Give the video space around it, rounded corners, and a shadow."),
+                location: L("Style panel ▸ Frame."),
+                points: [
+                    L("Padding, Roundness, and Shadow."),
+                    L("Fine-tune shadow adds angle, distance, softness, opacity, color, and Inset."),
+                    L("Full frame (no background) shows the video edge to edge again."),
+                ],
+                showMe: .editor(.background)
+            ),
+            GuideEntry(
+                id: "style-presets", symbol: "square.stack.3d.up", title: L("Style presets"),
+                summary: L("Save a whole look under a name, and put it on any video in one click."),
+                location: L("Style panel ▸ Presets."),
+                steps: [
+                    L("Style a video, then choose Presets ▸ Save as Preset…."),
+                    L("Pick a preset from the menu to apply it. ⌘Z undoes it."),
+                    L("Edit Presets renames, updates, or deletes them."),
+                ],
+                tips: [
+                    L("A preset saves the background, frame, cursor, zooms, captions, keys, and camera. Tick Include aspect ratio to save the shape too."),
+                    L("Export Presets… and Import Presets… share them as a small file."),
+                ],
+                showMe: .editor(.background),
+                related: ["style-my-style"]
+            ),
+            GuideEntry(
+                id: "style-my-style", symbol: "paintbrush.pointed", title: L("My Style"),
+                summary: L("Your own look, one click away."),
+                location: L("Style panel ▸ Apply my style. Choose which preset it is with Presets ▸ Edit Presets ▸ Use as My Style."),
+                keys: [.fixed("⇧⌘Y", L("Apply my style"))],
+                tips: [L("It's never applied by itself: only when you click it.")],
+                showMe: .editor(.background),
+                related: ["howto-my-style"]
+            ),
+            GuideEntry(
+                id: "style-fonts", symbol: "textformat", title: L("Fonts"),
+                summary: L("Use any font on your Mac for captions, title cards, text, and keys, or add your own."),
+                location: L("The font menu next to captions, text, title cards, and Keys on screen."),
+                points: [
+                    L("Pick a font and a weight; add Outline or Shadow to make it easier to read."),
+                    L("Add Font File… brings in a .ttf or .otf file. LF Studios keeps its own copy."),
+                ],
+                tips: [L("If a project uses a font this Mac doesn't have, LF Studios uses its own font instead and says so.")]
+            ),
+        ]
+    }
+
+    // MARK: Video sizes
+
+    static func sizeFeatures() -> [GuideEntry] {
+        [
+            GuideEntry(
+                id: "size-ratio", symbol: "aspectratio", title: L("Aspect ratio"),
+                summary: L("Choose the video's shape for where it's going."),
+                location: L("The aspect ratio menu in the video editor's toolbar."),
+                points: [L("Auto (like the recording), 16:9 for YouTube, 4:3, 1:1, 4:5 for Instagram, or 9:16 for Reels, TikTok, and Shorts.")],
+                related: ["size-adapt", "howto-vertical"]
+            ),
+            GuideEntry(
+                id: "size-reframe", symbol: "viewfinder", title: L("Fill the frame, follow the cursor"),
+                summary: L("For a narrow video from a wide recording: the picture fills the frame and follows your pointer."),
+                location: L("Aspect ratio menu ▸ Fill the Frame, Follow the Cursor."),
+                tips: [L("Needs the cursor recorded by LF Studios. Without it, the video is shown with bars instead.")]
+            ),
+            GuideEntry(
+                id: "size-adapt", symbol: "rectangle.portrait.arrowtriangle.2.outward", title: L("Adapt to this ratio"),
+                summary: L("After changing the shape, move zooms, the camera, and captions so everything fits."),
+                location: L("Adapt to this ratio, next to the aspect ratio menu after you change it."),
+                tips: [
+                    L("Each shape keeps its own version: switch back and forth without losing anything. Cuts, words, and styles stay shared."),
+                    L("One ⌘Z undoes it."),
+                ],
+                since: "1.4.0"
+            ),
+            GuideEntry(
+                id: "size-export-all", symbol: "square.stack", title: L("Export all ratios"),
+                summary: L("Export every shape you made, like 16:9 and 9:16, in one go."),
+                location: L("Export all ratios, next to the aspect ratio menu, once you've adapted more than one shape."),
+                steps: [
+                    L("Click Export all ratios."),
+                    L("Choose a folder and click Export Here."),
+                ],
+                since: "1.4.0"
+            ),
+            GuideEntry(
+                id: "size-phone", symbol: "iphone", title: L("Phone overlay"),
+                summary: L("See where a phone app's buttons and captions would cover your vertical video."),
+                location: L("Phone overlay, above the preview, for 9:16 videos."),
+                points: [L("Side rail, Full rail, or Minimal. It shows only in the preview, never in the export.")]
+            ),
+        ]
+    }
+
+    // MARK: Privacy (features)
+
+    static func privacyFeatures() -> [GuideEntry] {
+        [
+            GuideEntry(
+                id: "privacy-find", symbol: "eye.trianglebadge.exclamationmark", title: L("Find private info"),
+                summary: L("Looks through your video for faces, email addresses, phone and card numbers, passwords, and words you choose, so you can blur them."),
+                location: L("Find private info, above the preview in the video editor."),
+                steps: [
+                    L("Optional: type words to look for, and turn on Also scan the camera video."),
+                    L("Click Find Private Info. You can keep editing meanwhile."),
+                    L("Tick what to hide and click Blur Selected."),
+                ],
+                tips: [
+                    L("Nothing is ticked or blurred until you choose. Everything stays on your Mac."),
+                    L("“Possible key” is a guess: long, random-looking text that might be a password."),
+                ],
+                since: "1.4.0",
+                related: ["privacy-blur", "howto-private"]
+            ),
+            GuideEntry(
+                id: "privacy-blur", symbol: "drop.halffull", title: L("Blur"),
+                summary: L("Blur any part of the video."),
+                location: L("Click Blur above the preview, or press B."),
+                steps: [
+                    L("Drag the blur over what you want to hide."),
+                    L("Set its Strength in the panel on the right."),
+                    L("On the timeline, drag its edges to set how long it lasts."),
+                ],
+                keys: [.fixed("B", L("Add a blur at the playhead"))]
+            ),
+        ]
+    }
+
+    // MARK: Export
+
+    static func exportFeatures() -> [GuideEntry] {
+        let sheet = L("Click Export in the video editor's toolbar (⌘E).")
+        return [
+            GuideEntry(
+                id: "export-mp4", symbol: "square.and.arrow.up", title: L("Export a video (MP4)"),
+                summary: L("Save your edit as a video that plays everywhere."),
+                location: sheet,
+                steps: [
+                    L("Choose MP4."),
+                    L("Pick a Resolution (720p to 4K), a Frame rate, and a Quality: Web, Social, or Studio."),
+                    L("Click Export…."),
+                ],
+                keys: [.fixed("⌘E", L("Export"))],
+                tips: [
+                    L("H.264 plays everywhere. HEVC makes smaller files, but some browsers and Windows PCs can't play it."),
+                    L("The size estimate tells you how big the file will be, and warns when the disk is too full."),
+                ]
+            ),
+            GuideEntry(
+                id: "export-prores", symbol: "film.circle", title: L("ProRes & a transparent background"),
+                summary: L("High-quality files for video editing apps. ProRes 4444 can drop the background, ready to place over anything."),
+                location: L("In the export window, choose ProRes 422, ProRes 422 HQ, or ProRes 4444."),
+                tips: [L("ProRes files are big. Turn on Transparent background with ProRes 4444.")]
+            ),
+            GuideEntry(
+                id: "export-gif", symbol: "photo.stack", title: L("GIF"),
+                summary: L("A small looping animation for chats, docs, and bug reports."),
+                location: L("In the export window, choose GIF."),
+                points: [L("Size: Small, Medium, or Large. Frame rate: 10 to 24 fps.")],
+                tips: [L("Keep GIFs short. LF Studios suggests how to make a big one lighter.")]
+            ),
+            GuideEntry(
+                id: "export-audio", symbol: "waveform", title: L("Audio only"),
+                summary: L("Save just the sound, with the same mix and loudness as the video."),
+                location: L("In the export window, choose Audio only at the top."),
+                points: [L("M4A (small), WAV, or AIFF (both full quality).")],
+                since: "1.4.0"
+            ),
+            GuideEntry(
+                id: "export-range", symbol: "timeline.selection", title: L("Export part of the video"),
+                summary: L("Export only a selection, or the part between in and out points."),
+                location: L("In the export window ▸ Range: Whole video, Selection, or In & out."),
+                tips: [L("For Selection, ⇧-drag on the timeline first.")]
+            ),
+            GuideEntry(
+                id: "export-captions", symbol: "captions.bubble", title: L("Captions in the export"),
+                summary: L("Burn captions into the picture, and save a subtitles file next to the video."),
+                location: L("In the export window ▸ Captions."),
+                points: [
+                    L("Burn captions into the video: they're always visible."),
+                    L("Subtitles file: .srt or .vtt, for players that can turn captions on and off."),
+                ]
+            ),
+            GuideEntry(
+                id: "export-chapters", symbol: "list.bullet.rectangle", title: L("Chapters"),
+                summary: L("Turn your markers into chapters, in the video and for YouTube."),
+                location: L("In the export window ▸ Chapters."),
+                points: [
+                    L("Add chapters from markers puts chapters in MP4 and ProRes files."),
+                    L("Copy Chapters copies them as text for a YouTube description."),
+                ],
+                tips: [L("YouTube needs at least three chapters, each at least 10 seconds long.")],
+                related: ["video-markers", "howto-chapters"]
+            ),
+            GuideEntry(
+                id: "export-end-card", symbol: "rectangle.on.rectangle.angled", title: L("End card"),
+                summary: L("An optional 2-second “Made with LF Studios” card at the end."),
+                location: L("In the export window ▸ End card.")
+            ),
+            GuideEntry(
+                id: "export-background", symbol: "arrow.down.circle", title: L("Exports keep going while you edit"),
+                summary: L("Exports run in the background. When one is done, share it, show it, copy it, or play it."),
+                location: L("The export progress in the editor's toolbar; past exports in File ▸ Recent Exports."),
+                points: [
+                    L("Keep Editing closes the export window; the export carries on."),
+                    L("Share sends it with Mail, Messages, AirDrop, and more."),
+                    L("Copy, in the export window, puts the video on the clipboard."),
+                ]
+            ),
+            GuideEntry(
+                id: "export-handoff", symbol: "shippingbox", title: L("Creative Handoff"),
+                summary: L("Every part of your video as its own file, in one folder, for another editor or app."),
+                location: L("File ▸ Creative Handoff… (⇧⌘E), the button in the export window, or right-click a recording in Home."),
+                points: [
+                    L("Screen clips, camera, voice, computer sound, music, pictures, captions, and fonts."),
+                    L("A timeline for Final Cut Pro, DaVinci Resolve, and Adobe Premiere Pro."),
+                    L("Line everything up makes every file start at the same moment."),
+                    L("A README lists every file. Include speaker notes adds your notes."),
+                ],
+                keys: [.fixed("⇧⌘E", L("Creative Handoff"))],
+                tips: [L("It checks the free space first. Cancel removes the half-made folder.")],
+                related: ["howto-handoff"]
+            ),
+        ]
+    }
     static func projectFeatures() -> [GuideEntry] { [] } // STUB
     static func settingsFeatures() -> [GuideEntry] { [] } // STUB
 
