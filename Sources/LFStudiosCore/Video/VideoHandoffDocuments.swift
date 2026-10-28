@@ -144,7 +144,8 @@ enum VideoHandoffTimeline {
     static func clips(plan: VideoHandoffPlan, input: VideoHandoffInput) -> [VideoHandoffTimelineClip] {
         var clips: [VideoHandoffTimelineClip] = []
         let lineUp = plan.options.lineUp
-        let media = plan.items.filter { [.screen, .camera, .audio].contains($0.folder) }
+        // The originals kept for the LF Studios project aren't on the timelines.
+        let media = plan.items.filter { [.screen, .camera, .audio].contains($0.folder) && !$0.fileName.hasPrefix(VideoHandoffPlanner.originalsFolder + "/") }
         var audioLane = -1
         var cameraLane = 2
         if plan.options.clips == .trimmed {

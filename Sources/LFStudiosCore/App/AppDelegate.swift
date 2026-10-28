@@ -54,6 +54,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             Settings.lastRecordingPath = url.path
             VideoDemoEditorWindowController.open(videoURL: url)
         }
+        // A folder dropped on the Dock icon opens as a project (VideoFolderOpener).
+        for folder in urls where VideoFolderReader.isFolder(folder) {
+            VideoFolderOpener.openFolder(folder)
+        }
     }
 
     /// Work that quitting would cut short (an export, a transcription) asks
@@ -108,6 +112,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         // Before the welcome window marks this install as launched.
         Settings.migrateCaptureSettingsIfNeeded()
         Settings.migrateRecordingFPSIfNeeded()
+        Settings.migrateRecordingFolderIfNeeded()
         // Unfinished exports' working files, then old clipboard exports (in
         // the background).
         VideoExportFiles.removeLeftovers()
@@ -118,26 +123,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             self?.recordingStateDidChange()
         }
         captureEngine.recordingFinishedHandler = { finished in
-            let url = finished.url
-            Settings.lastRecordingPath = url.path
-            NotificationCenter.default.post(name: .lfstudiosRecordingsDidChange, object: nil)
-            let openEditor = {
-                DispatchQueue.main.async {
-                    guard FileManager.default.fileExists(atPath: url.path) else {
-                        // No editor after all: drop the foreground Stop took for it.
-                        LFStudiosEditorActivation.releaseForeground()
-                        return
-                    }
-                    VideoDemoPostRecordingPanel.dismissActive()
-                    VideoDemoEditorWindowController.open(videoURL: url)
-                }
-            }
-            // Straight into the editor: no panel flashing on the way. The
-            // engine decided (and gave back its foreground hold if it won't).
-            if finished.opensEditor {
-                openEditor()
-            } else {
-                VideoDemoPostRecordingPanel.show(videoURL: url, on: finished.screen, openHandler: openEditor)
+            // Into its own folder first (asking where, unless that's off):
+            // the panel and the editor then open it from there.
+            Task { @MainActor in
+                let url = await VideoRecordingSaveFlow.save(finished)
+                Self.recordingSaved(finished, at: url)
             }
         }
         hotkeyManager = HotkeyManager()
@@ -223,11 +213,44 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     // MARK: – Recording indicator
 
+    /// After a recording is saved where it belongs: the editor, or the
+    /// "Recording saved" panel.
+    private static func recordingSaved(_ finished: FinishedRecording, at url: URL) {
+        Settings.lastRecordingPath = url.path
+        NotificationCenter.default.post(name: .lfstudiosRecordingsDidChange, object: nil)
+        let openEditor = {
+            DispatchQueue.main.async {
+                guard FileManager.default.fileExists(atPath: url.path) else {
+                    // No editor after all: drop the foreground Stop took for it.
+                    LFStudiosEditorActivation.releaseForeground()
+                    return
+                }
+                VideoDemoPostRecordingPanel.dismissActive()
+                VideoDemoEditorWindowController.open(videoURL: url)
+            }
+        }
+        // Straight into the editor: no panel flashing on the way. The
+        // engine decided (and gave back its foreground hold if it won't).
+        if finished.opensEditor {
+            openEditor()
+        } else {
+            VideoDemoPostRecordingPanel.show(videoURL: url, on: finished.screen, openHandler: openEditor)
+        }
+    }
+
     /// A recording cut short by a crash or power loss is still on disk (it's
-    /// written in fragments): point the user at it.
+    /// written in fragments): point the user at it. Recordings a crash or a
+    /// quit kept from their folders get them now (in the Recording folder).
     private func recoverInterruptedRecording() {
         Task { @MainActor in
-            guard let url = await RecordingRecovery.recoverInterruptedRecording() else { return }
+            let recovered = await RecordingRecovery.recoverInterruptedRecording()
+            if let recovered { VideoRecordingFolders.addPending(recovered) }
+            let organized = await VideoRecordingFolderWriter.finishInterrupted()
+            if !organized.isEmpty {
+                NotificationCenter.default.post(name: .lfstudiosRecordingsDidChange, object: nil)
+            }
+            guard let recovered else { return }
+            let url = organized.first { $0.original.standardizedFileURL == recovered.standardizedFileURL }?.video ?? recovered
             Settings.lastRecordingPath = url.path
             ToastWindow.show(
                 message: L("Recovered your interrupted recording “\(url.lastPathComponent)”. Click to open it."),
@@ -594,7 +617,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         panel.canChooseDirectories = false
         panel.canChooseFiles = true
         panel.allowedContentTypes = [.mpeg4Movie, .quickTimeMovie, .movie]
-        panel.directoryURL = URL(fileURLWithPath: Settings.autoSaveLocation, isDirectory: true)
+        panel.directoryURL = URL(fileURLWithPath: Settings.recordingFolder, isDirectory: true)
 
         guard panel.runModal() == .OK, let url = panel.url else { return }
         Settings.lastRecordingPath = url.path
@@ -850,15 +873,18 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         ]
     }
 
+    /// Health ▸ Save Folder ▸ Fix: a new folder for whichever of the two
+    /// (screenshots, recordings) can't be written to.
     private func chooseAutoSaveFolder() {
+        let recordings = !FileManager.default.isWritableFile(atPath: Settings.recordingFolder)
         let panel = NSOpenPanel()
         panel.canChooseFiles = false
         panel.canChooseDirectories = true
         panel.canCreateDirectories = true
-        panel.directoryURL = URL(fileURLWithPath: Settings.autoSaveLocation)
+        panel.directoryURL = URL(fileURLWithPath: recordings ? Settings.recordingFolder : Settings.autoSaveLocation)
 
         guard panel.runModal() == .OK, let url = panel.url else { return }
-        if Settings.setAutoSaveLocation(url.path) {
+        if recordings ? Settings.setRecordingFolder(url.path) : Settings.setAutoSaveLocation(url.path) {
             ToastWindow.show(message: L("Save folder updated."))
         } else {
             ToastWindow.show(message: L("Choose a writable folder."))

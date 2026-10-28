@@ -61,15 +61,17 @@ extension UTType {
 /// Opening a `.lfstudios` project in the video editor.
 @MainActor
 enum VideoProjectOpener {
-    /// File ▸ Open Project… and Home's Open Project….
+    /// File ▸ Open… (⌘O) and Home's Open…: a project, a folder (a
+    /// recording's own, a Creative Handoff, any other), or a video.
     static func chooseAndOpen() {
         let panel = NSOpenPanel()
-        panel.allowedContentTypes = [.lfstudiosProject, .shotstyleProject]
+        panel.allowedContentTypes = [.lfstudiosProject, .shotstyleProject, .folder, .mpeg4Movie, .quickTimeMovie, .movie]
         panel.allowsMultipleSelection = false
+        panel.canChooseDirectories = true
         panel.treatsFilePackagesAsDirectories = false
-        panel.message = L("Choose an LF Studios project")
+        panel.message = L("Choose a project, a folder, or a video")
         guard panel.runModal() == .OK, let url = panel.url else { return }
-        open(url)
+        VideoFolderOpener.open(url)
     }
 
     /// The edit as the editor will pick it up, ready before the window
@@ -100,7 +102,9 @@ enum VideoProjectOpener {
                 // Included media: the copy is this project's alone, so its
                 // newer draft is this project's unsaved work. Linked: the
                 // recording may have been edited apart from the project.
-                useSaved = opened.document.mediaMode == .included ? false : !ask(opened.package.deletingPathExtension().lastPathComponent)
+                // A folder project: the folder is the edit's home, so its
+                // newer draft is that folder's unsaved work too.
+                useSaved = opened.document.mediaMode == .linked ? !ask(opened.package.deletingPathExtension().lastPathComponent) : false
             }
         }
         if useSaved {
@@ -134,7 +138,7 @@ enum VideoProjectOpener {
             return
         }
         VideoFontLibrary.shared.reload()
-        VideoDemoEditorWindowController.open(videoURL: primary, projectFile: opened.package, mode: opened.document.mediaMode)
+        VideoDemoEditorWindowController.open(videoURL: primary, projectFile: opened.package, mode: opened.document.mediaMode, folder: opened.document.folder)
         VideoProjectRecents.add(opened.package)
         if opened.document.isFromNewerVersion {
             VideoDemoEditorWindowController.keyModel?.showNotice(L("Saved by a newer LF Studios — some settings may not show"), symbol: "exclamationmark.triangle.fill", duration: 5)
@@ -179,18 +183,21 @@ extension VideoEditorModel {
         }
         guard let url = destination else { return }
         let contents = projectContents
+        let folder = mode == .folder ? (projectFolder ?? .init(kind: .opened)) : nil
         let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
         isSavingProject = true
         showNotice(L("Saving project…"), symbol: "square.and.arrow.down", duration: 30)
         Task {
             let result: Result<Void, Error> = await Task.detached(priority: .userInitiated) {
-                Result { _ = try VideoProjectPackage.save(contents, to: url, mode: mode, appVersion: version) }
+                Result { _ = try VideoProjectPackage.save(contents, to: url, mode: mode, appVersion: version, folder: folder) }
             }.value
             isSavingProject = false
             switch result {
             case .success:
                 projectFileURL = url
                 projectMediaMode = mode
+                // Saved there on purpose: the folder is the project's now.
+                if mode == .folder { VideoFileIdentity.unprotect(url.deletingLastPathComponent()) }
                 VideoProjectRecents.add(url)
                 showNotice(L("Saved “\(url.deletingPathExtension().lastPathComponent)”"), symbol: "checkmark.circle.fill")
             case .failure:
@@ -217,5 +224,41 @@ extension VideoEditorModel {
         guard panel.runModal() == .OK, var url = panel.url else { return nil }
         if url.pathExtension != VideoProjectDocument.fileExtension { url.appendPathExtension(VideoProjectDocument.fileExtension) }
         return (url, popup.indexOfSelectedItem == 0 ? .included : .linked)
+    }
+}
+
+// MARK: - A recording's own folder, kept up to date
+
+extension VideoEditorModel {
+    /// A recording's own folder (VideoRecordingFolder.swift) holds the whole
+    /// edit: after each autosave, its project file is written again, and its
+    /// captions (05 Captions) follow the captions in the editor. A folder
+    /// someone opened themselves changes only on Save.
+    func updateRecordingFolder() {
+        guard projectMediaMode == .folder, projectFolder?.kind == .recording, let package = projectFileURL,
+              recordingFolderWritten != project else { return }
+        recordingFolderWritten = project
+        let contents = projectContents
+        let folder = package.deletingLastPathComponent()
+        let name = package.deletingPathExtension().lastPathComponent
+        let captions = recordingFolderCaptions(name: name)
+        let version = VideoRecordingFolderWriter.appVersion
+        recordingFolderWrite = Task.detached(priority: .utility) { [previous = recordingFolderWrite] in
+            _ = await previous?.value
+            _ = try? VideoProjectPackage.save(contents, to: package, mode: .folder, appVersion: version, folder: .init(kind: .recording))
+            VideoRecordingFolder.writeCaptions(captions, in: folder)
+        }
+    }
+
+    /// The captions files as they should be now: Name.srt and, for each
+    /// translation, Name.<language>.srt — on the edit's clock.
+    func recordingFolderCaptions(name: String) -> [String: String] {
+        guard !project.captions.isEmpty else { return [:] }
+        var files = ["\(name).srt": VideoCaptionBuilder.srt(lines: project.captions, segments: segments)]
+        for translation in project.captionTracks.translations {
+            let lines = Dictionary(translation.lines.map { ($0.id, $0.text) }, uniquingKeysWith: { first, _ in first })
+            files["\(name).\(translation.language).srt"] = VideoCaptionBuilder.srt(lines: project.captions, segments: segments, translation: lines)
+        }
+        return files
     }
 }

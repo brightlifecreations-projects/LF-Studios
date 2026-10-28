@@ -194,7 +194,7 @@ final class RecordingEngine: NSObject {
             // Room for this recording's own stop threshold and then some, or
             // it would stop itself right after starting. The camera counts if
             // it's asked for: whether it starts is only known later.
-            let saveFolder = URL(fileURLWithPath: Settings.autoSaveLocation, isDirectory: true)
+            let saveFolder = URL(fileURLWithPath: Settings.recordingFolder, isDirectory: true)
             let required = RecordingDiskSpace.requiredToStart(bytesPerSecond: screenRate + (configuration.recordsCamera ? cameraRate : 0))
             if let available = await Self.availableCapacity(at: saveFolder), available < required {
                 throw RecordingError.notEnoughSpace(required: required, available: available)
@@ -1114,9 +1114,14 @@ final class RecordingEngine: NSObject {
         cleanup(releasingForeground: false)
         if forTermination {
             Settings.lastRecordingPath = url.path
+            // No time to ask where it goes: it gets its folder (in the
+            // Recording folder) at the next launch.
+            VideoRecordingFolders.addPending(url)
+        } else if let recordingFinishedHandler {
+            // The app saves it into its folder, then says where it went.
+            recordingFinishedHandler(FinishedRecording(url: url, screen: screen, opensEditor: opensEditor, message: message, isComplete: playable == nil))
         } else {
             ToastWindow.show(message: message, duration: playable == nil ? 3 : 4, on: screen)
-            recordingFinishedHandler?(FinishedRecording(url: url, screen: screen, opensEditor: opensEditor))
         }
         finishCompleted()
     }
@@ -1647,7 +1652,7 @@ final class RecordingEngine: NSObject {
     }
 
     private static func makeOutputURL() -> URL {
-        let directory = URL(fileURLWithPath: Settings.autoSaveLocation, isDirectory: true)
+        let directory = URL(fileURLWithPath: Settings.recordingFolder, isDirectory: true)
         let baseName = ImageExporter.timestampedName
         var url = directory.appendingPathComponent("\(baseName).mp4")
         var suffix = 2
@@ -1734,6 +1739,12 @@ struct FinishedRecording {
     /// Open it in the editor now. False when the setting is off — or when
     /// the next take is already being set up, which the editor would cover.
     let opensEditor: Bool
+    /// What to say once it's saved ("Saved to …", or what was kept of a
+    /// take cut short).
+    var message: String = ""
+    /// The whole take was saved (false: the disk filled up, or it couldn't
+    /// be finished, and `message` says what was kept).
+    var isComplete: Bool = true
 }
 
 /// SCStream crosses into the timeout helper's tasks; it's only used there

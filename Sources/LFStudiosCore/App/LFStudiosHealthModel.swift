@@ -54,7 +54,8 @@ struct LFStudiosHealthSnapshot: Equatable {
             nativeShortcutsEnabled: NativeShortcutManager.nativeShortcutsEnabled,
             updatesConfigured: updatesConfigured,
             autoSavePath: autoSavePath,
-            autoSaveWritable: isWritableAutoSavePath(autoSavePath),
+            // Both the screenshot and the recording folder.
+            autoSaveWritable: isWritableAutoSavePath(autoSavePath) && isWritableAutoSavePath(Settings.recordingFolder),
             configuredShortcutCount: LFStudiosShortcut.requiredConfiguredCount(),
             expectedShortcutCount: LFStudiosShortcut.requiredShortcutCount,
             optionalUnassignedShortcutCount: LFStudiosShortcut.optionalUnassignedCount(),

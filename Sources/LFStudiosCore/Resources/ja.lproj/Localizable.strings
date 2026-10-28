@@ -18,6 +18,8 @@
 	<string>%@（⇧⌘Z）</string>
 	<key>%@ (⌘Z)</key>
 	<string>%@（⌘Z）</string>
+	<key>%@ It's in “%@” and opens as before.</key>
+	<string>%@ 収録は“%@”にあり、これまでどおり開けます。</string>
 	<key>%@ Loupe</key>
 	<string>%@ ルーペ</string>
 	<key>%@ Zoom</key>
@@ -88,6 +90,14 @@
 	<string>%@: クリックして変更</string>
 	<key>%@ — click to jump here, double-click to rename</key>
 	<string>%@ — クリックでここへ移動、ダブルクリックで名前を変更</string>
+	<key>%@ — it was cut like the edit, so it can't be lined up with the recording again</key>
+	<string>%@ — 編集に合わせてカットされているため、収録にもう一度合わせることはできません</string>
+	<key>%@ — its lines don't match the captions</key>
+	<string>%@ — 行が字幕と一致しません</string>
+	<key>%@ — only one camera video can be shown</key>
+	<string>%@ — 表示できるカメラ映像は1つだけです</string>
+	<key>%@ — separate sound files open as their own tracks in LF Studios 1.7</key>
+	<string>%@ — 別々のサウンドファイルは、LF Studios 1.7でそれぞれ独自のトラックとして開けるようになります</string>
 	<key>%@ → %@ — the part you ⇧-dragged on the timeline</key>
 	<string>%@ → %@（タイムラインで⇧ドラッグした部分）</string>
 	<key>%@, %@</key>
@@ -140,6 +150,8 @@
 	<string>%lld行 · %@を検出</string>
 	<key>%lld links</key>
 	<string>%lld件のリンク</string>
+	<key>%lld markers</key>
+	<string>%lld個のマーカー</string>
 	<key>%lld of %lld captures</key>
 	<string>%2$lld件中%1$lld件のスクリーンショット</string>
 	<key>%lld parts</key>
@@ -154,6 +166,8 @@
 	<string>%lld秒</string>
 	<key>%lld saved captures · drag any card to Finder · right-click for more actions</key>
 	<string>保存済みのスクリーンショット%lld件 · カードはFinderにドラッグできます · 右クリックでその他の操作</string>
+	<key>%lld screen clips, one after the other</key>
+	<string>%lld個の画面クリップ（順番につなげたもの）</string>
 	<key>%lld screens</key>
 	<string>%lld台のディスプレイ</string>
 	<key>%lld screenshots deleted — click or press ⌘Z to undo</key>
@@ -190,6 +204,12 @@
 	<string>0.1秒早く</string>
 	<key>0.1s later</key>
 	<string>0.1秒遅く</string>
+	<key>01 Screen: the screen recording. 02 Camera: the camera video, if you recorded one.</key>
+	<string>01 Screen: 画面収録。02 Camera: カメラ映像（収録した場合）。</string>
+	<key>03 Audio: your microphone and the Mac's sound as separate files. 05 Captions: your captions, once you make them.</key>
+	<string>03 Audio: マイクの音とMacのサウンドを別々のファイルで。05 Captions: 字幕（作成した場合）。</string>
+	<key>07 Data: the pointer, clicks, and keys. And README.txt, which says what each file is.</key>
+	<string>07 Data: ポインタ、クリック、キー操作。そして、各ファイルの内容を説明するREADME.txt。</string>
 	<key>A 2-second “Made with LF Studios” outro on your background — your own outro card is in Style</key>
 	<string>背景に“Made with LF Studios”を2秒間表示して締めくくります。独自のエンディングカードは“スタイル”にあります</string>
 	<key>A README lists every file. Include speaker notes adds your notes.</key>
@@ -214,6 +234,8 @@
 	<string>プロジェクトで使っているファイルが、移動または削除されたか、別のMacにあります。</string>
 	<key>A file with that name is in the way. Pick another name and export again.</key>
 	<string>同じ名前のファイルがすでにあります。別の名前を付けて、もう一度書き出してください。</string>
+	<key>A folder with an LF Studios project in it opens that project, exactly as it was saved.</key>
+	<string>LF Studiosのプロジェクトが入ったフォルダは、そのプロジェクトが保存したときのとおりに開きます。</string>
 	<key>A hairline that separates dark recordings from the background</key>
 	<string>暗い映像と背景の境目に細い線を引きます</string>
 	<key>A magnifier over one spot at the playhead; the rest of the frame stays in view</key>
@@ -422,6 +444,8 @@
 	<string>収録後</string>
 	<key>After recording, click Restore size to put it back.</key>
 	<string>収録が終わったら、“サイズを元に戻す”をクリックして元に戻します。</string>
+	<key>After you stop, LF Studios asks where to save the recording, then puts everything from it in one new folder: the video, the camera, the sound, and the project that opens it all.</key>
+	<string>収録を停止すると、LF Studiosが保存先を確認し、収録したものすべてを1つの新しいフォルダにまとめます: ビデオ、カメラ映像、サウンド、そしてそれらをすべて開くプロジェクトです。</string>
 	<key>Afterwards, click Restore size to put the window back.</key>
 	<string>終わったら、“サイズを元に戻す”をクリックしてウインドウを元に戻します。</string>
 	<key>Aim by Hand</key>
@@ -480,6 +504,10 @@
 	<string>常に矢印を表示</string>
 	<key>Amber Fold</key>
 	<string>琥珀のひだ</string>
+	<key>An LF Studios project: open the folder in LF Studios to edit the video again. With clips cut to your edit, Include originals so it reopens in LF Studios adds the untouched recordings it needs.</key>
+	<string>LF Studiosのプロジェクト: フォルダをLF Studiosで開くと、ビデオをもう一度編集できます。クリップを編集に合わせてカットする場合は、“LF Studiosで再び開けるようにオリジナルを含める”で、必要な元の収録がそのまま追加されます。</string>
+	<key>An older Creative Handoff is put back together from its files: the screen, the cuts, the camera at its place, captions, markers, and the pointer. A summary says what came back.</key>
+	<string>以前のクリエイティブ受け渡しは、そのファイルから組み立て直されます: 画面、カット、元の位置のカメラ、字幕、マーカー、ポインタ。復元できた内容は概要に表示されます。</string>
 	<key>An optional 2-second “Made with LF Studios” card at the end.</key>
 	<string>最後に付ける2秒の“Made with LF Studios”カードです（オプション）。</string>
 	<key>Angle</key>
@@ -500,6 +528,8 @@
 	<string>ほかのアプリが同じキーを使っている場合があります。別のキーを選んでください。</string>
 	<key>Any color…</key>
 	<string>その他のカラー…</string>
+	<key>Any other folder: Import Folder lists the videos. Choose which is the screen recording and which the camera, and when the camera starts.</key>
+	<string>それ以外のフォルダ: “フォルダを読み込む”にビデオが一覧表示されます。どれが画面収録でどれがカメラ映像か、そしてカメラがいつ始まるかを選びます。</string>
 	<key>App</key>
 	<string>アプリ</string>
 	<key>Appearance</key>
@@ -560,6 +590,8 @@
 	<string>矢印の始点</string>
 	<key>Arrows, shapes &amp; lines</key>
 	<string>矢印、図形、線</string>
+	<key>Ask where to save after each recording</key>
+	<string>収録のたびに保存先を確認する</string>
 	<key>Aspect Ratio %@ — %@</key>
 	<string>アスペクト比%@（%@）</string>
 	<key>Aspect ratio</key>
@@ -604,8 +636,6 @@
 	<string>自動ズーム: %lld個のズーム</string>
 	<key>Auto-dismiss overlay</key>
 	<string>サムネールを自動的に閉じる</string>
-	<key>Auto-save folder</key>
-	<string>自動保存先</string>
 	<key>Auto-zoom off — its zooms are gone. ⌘Z to undo</key>
 	<string>自動ズームをオフにしました — 自動のズームは削除しました。⌘Zで取り消し</string>
 	<key>Auto-zoom on clicks</key>
@@ -892,6 +922,8 @@
 	<string>字幕はエディタで非表示になっています（“字幕”タブ＞“字幕を表示”）。</string>
 	<key>Captions from your narration — and cut the video by editing its words</key>
 	<string>ナレーションから字幕を作成し、テキストを編集してビデオをカットできます</string>
+	<key>Captions in %@</key>
+	<string>%@の字幕</string>
 	<key>Captions in the export</key>
 	<string>書き出すビデオの字幕</string>
 	<key>Captions look like this</key>
@@ -1080,6 +1112,10 @@
 	<string>“サイズ”、フォント、“上”または“下”を選びます。プレビュー上でキーをドラッグすることもできます。</string>
 	<key>Choose a folder and click Export Here.</key>
 	<string>フォルダを選び、“ここに書き出す”をクリックします。</string>
+	<key>Choose a folder with a screen recording in it, as an MP4 or MOV file.</key>
+	<string>画面収録（MP4またはMOVファイル）が入ったフォルダを選択してください。</string>
+	<key>Choose a folder you can save to.</key>
+	<string>保存できるフォルダを選択してください。</string>
 	<key>Choose a language</key>
 	<string>言語を選択</string>
 	<key>Choose a language and click Translate.</key>
@@ -1088,6 +1124,8 @@
 	<string>ビデオに配置するロゴ、透かし、またはスクリーンショットを選択してください</string>
 	<key>Choose a picture.</key>
 	<string>画像を選びます。</string>
+	<key>Choose a project, a folder, or a video</key>
+	<string>プロジェクト、フォルダ、またはビデオを選択</string>
 	<key>Choose a recording or video to add after this one</key>
 	<string>このビデオの後ろに追加する収録またはビデオを選択してください</string>
 	<key>Choose a size, or Custom Size… for your own.</key>
@@ -1100,14 +1138,10 @@
 	<string>“スタイル”で見た目を選びます。</string>
 	<key>Choose a style.</key>
 	<string>スタイルを選びます。</string>
-	<key>Choose a writable folder for auto-save.</key>
-	<string>自動保存用に書き込み可能なフォルダを選択してください。</string>
 	<key>Choose a writable folder.</key>
 	<string>書き込み可能なフォルダを選択してください。</string>
 	<key>Choose again with another speed to change them.</key>
 	<string>変更するには、別の速度をもう一度選びます。</string>
-	<key>Choose an LF Studios project</key>
-	<string>LF Studiosプロジェクトを選択</string>
 	<key>Choose between accurate and fast, and which languages to read.</key>
 	<string>正確さと速さのどちらを優先するか、どの言語を読み取るかを選びます。</string>
 	<key>Choose folder</key>
@@ -1130,6 +1164,8 @@
 	<string>バブルに表示するカメラ映像を選択</string>
 	<key>Choose the corner (Left or Right) and how long it stays in the same settings section. Hovering keeps it open.</key>
 	<string>表示する隅（“左”または“右”）と表示時間は、同じ設定セクションで選べます。ポインタを置いている間は表示されたままです。</string>
+	<key>Choose the screen recording, and the camera video if there is one. Nothing in the folder changes until you save.</key>
+	<string>画面収録と、あればカメラ映像を選択します。保存するまで、フォルダ内は何も変更されません。</string>
 	<key>Choose the video's shape for where it's going.</key>
 	<string>公開先に合わせて、ビデオの形を選びます。</string>
 	<key>Choose what happens after each screenshot or recording.</key>
@@ -1138,8 +1174,8 @@
 	<string>ワイプに映す部分を選び、仕上がりを整えます。</string>
 	<key>Choose what to include, then click Choose Location….</key>
 	<string>含めるものを選び、“場所を選択…”をクリックします。</string>
-	<key>Choose where files are saved, what they're called, and the picture format.</key>
-	<string>ファイルの保存場所、名前、画像のフォーマットを選びます。</string>
+	<key>Choose where screenshots and recordings are saved, what they're called, and the picture format.</key>
+	<string>スクリーンショットと収録の保存先、名前、画像フォーマットを選択します。</string>
 	<key>Choose where to put the handoff folder — any folder or drive</key>
 	<string>受け渡し用フォルダの保存先を選択 — どのフォルダやドライブでも構いません</string>
 	<key>Choose window</key>
@@ -1212,6 +1248,8 @@
 	<string>プレビューの上の“ぼかし”をクリックするか、Bキーを押します。</string>
 	<key>Click Camera in the recording bar. Choose the camera in ⋯ More recording options.</key>
 	<string>収録バーの“カメラ”をクリックします。カメラは⋯（“その他の収録オプション”）で選びます。</string>
+	<key>Click Cancel, or turn off asking, and it goes in the Recording folder, laid out the same way. Nothing is ever lost.</key>
+	<string>“キャンセル”をクリックするか、確認をオフにすると、同じ構成で“収録のフォルダ”に保存されます。失われるものはありません。</string>
 	<key>Click Choose under the window you want.</key>
 	<string>収録したいウインドウの下にある“選択”をクリックします。</string>
 	<key>Click Color for eight quick colors, or Custom… for any color.</key>
@@ -1702,6 +1740,8 @@
 	<string>つなぎ目、トランジションなし</string>
 	<key>Cutout</key>
 	<string>切り抜き</string>
+	<key>Cuts and speed changes (%lld clips)</key>
+	<string>カットと速度の変更（%lld個のクリップ）</string>
 	<key>Dark Mode</key>
 	<string>ダーク</string>
 	<key>De-esser</key>
@@ -1764,8 +1804,6 @@
 	<string>黒にフェード</string>
 	<key>Dips while you talk, comes back in the pauses</key>
 	<string>話している間は音量が下がり、話が途切れると元に戻ります</string>
-	<key>Directory where screenshots are saved if Auto-Save is enabled.</key>
-	<string>“自動的に保存”がオンのときに、スクリーンショットが保存されるフォルダです。</string>
 	<key>Disable Apple Shortcuts</key>
 	<string>Appleのショートカットを無効にする</string>
 	<key>Disabled</key>
@@ -1958,6 +1996,8 @@
 	<string>ズーム中は、表示範囲がポインタと一緒に動くので、指しているものが画面から外れません。その間、プレビューには“カメラがポインタに追従”と表示されます。</string>
 	<key>Dusk</key>
 	<string>夕暮れ</string>
+	<key>Each recording in its own folder</key>
+	<string>収録ごとに専用のフォルダ</string>
 	<key>Each recording keeps its own pointer, clicks, and shortcuts. Reorder them here; cut and trim them on the timeline like any clip.</key>
 	<string>各収録はそれぞれのポインタ、クリック、ショートカットを保持します。ここで順番を並べ替え、ほかのクリップと同じようにタイムラインでカットやトリミングができます。</string>
 	<key>Each shape keeps its own version: switch back and forth without losing anything. Cuts, words, and styles stay shared.</key>
@@ -2078,6 +2118,8 @@
 	<string>このビデオのすべての要素を個別のファイルとして新しいフォルダに — 別の編集者や編集アプリに渡すために。</string>
 	<key>Every part of your video as its own file, in one folder, for another editor or app.</key>
 	<string>ビデオの各要素を別々のファイルとして1つのフォルダにまとめ、ほかの編集者やアプリに渡します。</string>
+	<key>Every recording gets a folder of its own, with its project file, the screen and camera videos, the sound as separate files, and its data. With asking off, or when you click Cancel, it goes in the Recording folder.</key>
+	<string>収録ごとに専用のフォルダが作られ、プロジェクトファイル、画面とカメラのビデオ、別々のファイルになったサウンド、データが入ります。確認をオフにしているときや“キャンセル”をクリックしたときは、“収録のフォルダ”に保存されます。</string>
 	<key>Every recording, screenshot, and saved project in one place.</key>
 	<string>収録したビデオ、スクリーンショット、保存したプロジェクトのすべてが1か所にまとまっています。</string>
 	<key>Every screenshot is kept in History and in Home ▸ Screenshots.</key>
@@ -2236,6 +2278,8 @@
 	<string>“ファイル”＞“クリエイティブ受け渡し…”（⇧⌘E）、書き出しウインドウのボタン、またはホームで収録したビデオを右クリック。</string>
 	<key>Files are copied as they are wherever they can be. Only what has to change — clips cut to your edit, a camera with its background removed — is re-encoded to ProRes.</key>
 	<string>可能な限りファイルはそのままコピーします。変更が必要なもの（編集に合わせてカットしたクリップ、背景を削除したカメラ）だけをProResに再エンコードします。</string>
+	<key>Files move only once the recording is finished and checked. If something goes wrong, the recording stays where it was.</key>
+	<string>ファイルが移動されるのは、収録が完了して確認が済んでからです。問題が起きた場合、収録は元の場所に残ります。</string>
 	<key>Fill the Frame, Follow the Cursor</key>
 	<string>画面いっぱいに表示してポインタに追従</string>
 	<key>Fill the frame, follow the cursor</key>
@@ -2318,6 +2362,8 @@
 	<string>自撮りと同じ向きにします</string>
 	<key>Float a screenshot above all your windows, as a reference while you work.</key>
 	<string>作業中の参考用に、スクリーンショットをすべてのウインドウの上に浮かべておきます。</string>
+	<key>Folder name:</key>
+	<string>フォルダ名:</string>
 	<key>Follow Cursor</key>
 	<string>ポインタに追従</string>
 	<key>Follow Typing</key>
@@ -2666,10 +2712,14 @@
 	<string>数秒以内に応答しないと、念のため収録は残されます。</string>
 	<key>If your Mac crashes or loses power while recording, LF Studios saves what it can.</key>
 	<string>収録中にMacがクラッシュしたり電源が切れたりした場合は、LF Studiosができる限り保存します。</string>
+	<key>Ignore</key>
+	<string>無視</string>
 	<key>Image</key>
 	<string>画像</string>
 	<key>Images &amp; logos</key>
 	<string>画像とロゴ</string>
+	<key>Import Folder</key>
+	<string>フォルダを読み込む</string>
 	<key>Import Presets…</key>
 	<string>プリセットを読み込む…</string>
 	<key>Imported %lld presets</key>
@@ -2760,10 +2810,14 @@
 	<string>メディアを含める（どのMacでも使えます）</string>
 	<key>Include media: the project opens on any Mac.</key>
 	<string>メディアを含める: どのMacでもプロジェクトを開けます。</string>
+	<key>Include originals so it reopens in LF Studios</key>
+	<string>LF Studiosで再び開けるようにオリジナルを含める</string>
 	<key>Include speaker notes</key>
 	<string>スピーカーノートを含める</string>
 	<key>Include the finished video</key>
 	<string>完成したビデオを含める</string>
+	<key>Includes %@ of originals for the LF Studios project</key>
+	<string>LF Studiosのプロジェクト用のオリジナル%@を含みます</string>
 	<key>Includes: %@</key>
 	<string>内容: %@</string>
 	<key>Inset</key>
@@ -2792,8 +2846,8 @@
 	<string>オープニングカード、%@から%@</string>
 	<key>Iris</key>
 	<string>アイリス</string>
-	<key>It checks the free space first. Cancel removes the half-made folder.</key>
-	<string>最初に空き領域を確認します。“キャンセル”では、作りかけのフォルダを削除します。</string>
+	<key>It checks the free space first, and shows how much the originals add. Cancel removes the half-made folder.</key>
+	<string>最初に空き容量を確認し、オリジナルでどれだけ増えるかを表示します。“キャンセル”を押すと、作成途中のフォルダは削除されます。</string>
 	<key>It happens by itself. The bar while recording shows a short note, and a notice explains it.</key>
 	<string>自動的に行われます。収録中のバーに短いメモが表示され、通知で説明されます。</string>
 	<key>It isn't an LF Studios project, or it's damaged.</key>
@@ -2828,6 +2882,8 @@
 	<string>これはマイスタイルなので、別のものを選ぶまで「マイスタイルを適用」で適用するものがなくなります。このプリセットを使っているビデオの見た目は変わりません。</string>
 	<key>Its own arrow, text and hand pointers, drawn for the video.</key>
 	<string>ビデオ用に描かれた専用の矢印、テキスト、手のポインタです。</string>
+	<key>Its screen recording can't be read.</key>
+	<string>画面収録を読み込めません。</string>
 	<key>JPEG Quality</key>
 	<string>JPEGの品質</string>
 	<key>Jump here</key>
@@ -3082,6 +3138,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>聞き取り中…</string>
 	<key>Listens on this Mac — nothing is uploaded</key>
 	<string>このMac上で聞き取ります。何もアップロードされません</string>
+	<key>Loaded:</key>
+	<string>読み込んだもの:</string>
 	<key>Locate…</key>
 	<string>場所を指定…</string>
 	<key>Look</key>
@@ -3258,6 +3316,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>前に移動</string>
 	<key>Move later</key>
 	<string>後ろに移動</string>
+	<key>Move or rename the folder in Finder as you like, or copy it to another Mac: it still opens.</key>
+	<string>Finderでフォルダを自由に移動したり名前を変更したり、別のMacにコピーしたりしても、そのまま開けます。</string>
 	<key>Move the Camera Instead</key>
 	<string>代わりにカメラを移動</string>
 	<key>Move the Camera Instead: slides the bubble to a free corner during that zoom.</key>
@@ -3280,8 +3340,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ウインドウの上にポインタを移動すると、そのウインドウが強調表示されます。</string>
 	<key>Move the pointer over the window you want: it lights up.</key>
 	<string>取り込みたいウインドウの上にポインタを移動すると、そのウインドウが強調表示されます。</string>
+	<key>Move to Trash</key>
+	<string>ゴミ箱に入れる</string>
 	<key>Move to where it ends and press S again.</key>
 	<string>終わる位置に移動して、もう一度Sキーを押します。</string>
+	<key>Move “%@” to the Trash?</key>
+	<string>“%@”をゴミ箱に入れますか?</string>
 	<key>Moved clear of the camera bubble.</key>
 	<string>カメラのワイプの外へずらしました。</string>
 	<key>Moved to the Trash</key>
@@ -3520,12 +3584,18 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>空き容量が足りません：受け渡しには約%1$@が必要ですが、保存先の空きは%2$@です。</string>
 	<key>Not for this video</key>
 	<string>このビデオでは使用しない</string>
+	<key>Not loaded:</key>
+	<string>読み込まなかったもの:</string>
 	<key>Not now</key>
 	<string>今はしない</string>
 	<key>Not set</key>
 	<string>未設定</string>
 	<key>Nothing in the Guide matches your search. Try a shorter word, like “zoom” or “camera”.</key>
 	<string>検索に一致する項目がガイドにありません。“ズーム”や“カメラ”など、短い言葉で試してください。</string>
+	<key>Nothing in the folder changes until you save (⌘S).</key>
+	<string>保存する（⌘S）まで、フォルダ内は何も変更されません。</string>
+	<key>Nothing in the folder changes until you save (⌘S). Saving writes the project into the folder.</key>
+	<string>保存する（⌘S）まで、フォルダ内は何も変更されません。保存すると、プロジェクトがフォルダに書き込まれます。</string>
 	<key>Nothing is ticked or blurred until you choose. Everything stays on your Mac.</key>
 	<string>選ぶまでは、何もチェックされず、何もぼかされません。すべてMac上で処理されます。</string>
 	<key>Nothing is uploaded. The first time, macOS may download the language, which needs the internet once.</key>
@@ -3628,10 +3698,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>“プライバシーとセキュリティ”を開く</string>
 	<key>Open Project as Saved</key>
 	<string>保存時のプロジェクトを開く</string>
-	<key>Open Project…</key>
-	<string>プロジェクトを開く…</string>
-	<key>Open Project… in Home, File ▸ Open Project… (⌘O), or double-click the project in Finder.</key>
-	<string>ホームの“プロジェクトを開く…”、“ファイル”＞“プロジェクトを開く…”（⌘O）、またはFinderでプロジェクトをダブルクリック。</string>
 	<key>Open Recording Settings…</key>
 	<string>収録設定を開く…</string>
 	<key>Open Settings</key>
@@ -3648,20 +3714,24 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Final Cut ProまたはDaVinci ResolveでTimeline.fcpxmlを開くか、Premiere Proで“Timeline (Premiere).xml”を開きます。</string>
 	<key>Open Video Editor</key>
 	<string>ビデオエディタを開く</string>
-	<key>Open a .lfstudios project</key>
-	<string>.lfstudiosプロジェクトを開く</string>
+	<key>Open a folder of files as one project: a recording's folder, a Creative Handoff, or any folder with videos in it.</key>
+	<string>ファイルの入ったフォルダを1つのプロジェクトとして開きます: 収録のフォルダ、クリエイティブ受け渡し、またはビデオの入った任意のフォルダ。</string>
 	<key>Open a project</key>
 	<string>プロジェクトを開く</string>
+	<key>Open a project, a recording's folder, a Creative Handoff, or a video</key>
+	<string>プロジェクト、収録のフォルダ、クリエイティブ受け渡し、またはビデオを開く</string>
 	<key>Open a recording in the video editor first, then click Show me.</key>
 	<string>先にビデオエディタで収録を開いてから、“見てみる”をクリックしてください。</string>
 	<key>Open a recording, or any MP4 or MOV video, in the video editor.</key>
 	<string>収録したビデオや、MP4またはMOVのビデオをビデオエディタで開きます。</string>
-	<key>Open a saved .lfstudios project.</key>
-	<string>保存した.lfstudiosプロジェクトを開きます。</string>
+	<key>Open a saved .lfstudios project, a recording's folder, or a video.</key>
+	<string>保存した.lfstudiosプロジェクト、収録のフォルダ、またはビデオを開きます。</string>
 	<key>Open a screenshot from Home, History, or the preview after capture. The tools are in the toolbar at the top.</key>
 	<string>ホーム、履歴、または取り込み後のプレビューからスクリーンショットを開きます。ツールは上部のツールバーにあります。</string>
 	<key>Open a screenshot to mark it up, then copy or save the result.</key>
 	<string>スクリーンショットを開いて注釈を付け、結果をコピーまたは保存します。</string>
+	<key>Open a whole folder</key>
+	<string>フォルダごと開く</string>
 	<key>Open and close</key>
 	<string>開閉</string>
 	<key>Open at login</key>
@@ -3684,6 +3754,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>収録後にビデオエディタを開く。</string>
 	<key>Open video…</key>
 	<string>ビデオを開く…</string>
+	<key>Opened “%@”</key>
+	<string>“%@”を開きました</string>
 	<key>Opening a video</key>
 	<string>ビデオを開く</string>
 	<key>Opening, saving, copying &amp; undo</key>
@@ -3692,6 +3764,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>“スタイル”にタイトルと長さの設定を表示します</string>
 	<key>Opens its volume, fades, and ducking in Audio</key>
 	<string>“オーディオ”で音量、フェード、話している間の音量の設定を開きます</string>
+	<key>Open…</key>
+	<string>開く…</string>
+	<key>Open… in Home or File ▸ Open… (⌘O), and choose the folder. Or drop the folder on the Home window or the LF Studios icon in the Dock.</key>
+	<string>ホームの“開く…”または“ファイル”＞“開く…”（⌘O）を選び、フォルダを選択します。または、ホームウインドウかDockのLF Studiosアイコンにフォルダをドロップします。</string>
+	<key>Open… in Home, File ▸ Open… (⌘O), or double-click the project in Finder.</key>
+	<string>ホームの“開く…”、“ファイル”＞“開く…”（⌘O）、またはFinderでプロジェクトをダブルクリック。</string>
 	<key>Optional: type words to look for too, like a client's name.</key>
 	<string>オプション: 顧客の名前など、ほかに探したい語を入力することもできます。</string>
 	<key>Optional: type words to look for, and turn on Also scan the camera video.</key>
@@ -4128,6 +4206,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>収録を破棄しました</string>
 	<key>Recording failed before saving.</key>
 	<string>保存する前に収録に失敗しました。</string>
+	<key>Recording folder</key>
+	<string>収録のフォルダ</string>
 	<key>Recording keyboard shortcuts</key>
 	<string>キーボードショートカットを記録中</string>
 	<key>Recording paused — click to stop (%@)</key>
@@ -4662,8 +4742,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ホームでプロジェクトを右クリック＞“削除”: ゴミ箱に移動します。</string>
 	<key>Right-click a zoom on the timeline for quick changes.</key>
 	<string>タイムラインでズームを右クリックすると、すばやく変更できます。</string>
-	<key>Right-click for Open, Show in Finder, Creative Handoff…, or Delete (moves it to the Trash).</key>
-	<string>右クリックすると、“開く”、“Finderに表示”、“クリエイティブ受け渡し…”、“削除”（ゴミ箱に移動）を選べます。</string>
+	<key>Right-click for Open, Show in Finder, Creative Handoff…, or Delete (moves it to the Trash; for a recording's folder, the whole folder, after asking).</key>
+	<string>右クリックすると、“開く”、“Finderに表示”、“クリエイティブ受け渡し…”、“削除”を選べます（“削除”はゴミ箱に入れます。収録のフォルダの場合は、確認のあとフォルダ全体を入れます）。</string>
 	<key>Right-click for Save As…, Pin to Screen, and Delete.</key>
 	<string>右クリックすると、“別名で保存…”、“画面に固定”、“削除”を選べます。</string>
 	<key>Right-click it for Copy, Save As…, Edit, Close Pin, or Close All Pins.</key>
@@ -4702,12 +4782,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>保存先フォルダ</string>
 	<key>Save Location</key>
 	<string>保存場所</string>
-	<key>Save Location: the folder for saved screenshots and recordings (the Desktop to start with).</key>
-	<string>“保存場所”: スクリーンショットや収録を保存するフォルダ（最初はデスクトップ）。</string>
 	<key>Save Project</key>
 	<string>プロジェクトを保存</string>
 	<key>Save Project As…</key>
 	<string>プロジェクトを別名で保存…</string>
+	<key>Save Recording</key>
+	<string>収録を保存</string>
 	<key>Save Subtitles</key>
 	<string>字幕を保存</string>
 	<key>Save Subtitles (.srt)…</key>
@@ -4736,8 +4816,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>このスクリーンショットへの変更内容を保存しますか?</string>
 	<key>Save folder updated.</key>
 	<string>保存先フォルダを更新しました。</string>
-	<key>Save folder, file names &amp; format</key>
-	<string>保存フォルダ、ファイル名、フォーマット</string>
+	<key>Save folders, file names &amp; format</key>
+	<string>保存先フォルダ、ファイル名、フォーマット</string>
 	<key>Save just the sound, with the same mix and loudness as the video.</key>
 	<string>ビデオと同じミックスと音量で、音声だけを保存します。</string>
 	<key>Save screenshot to disk</key>
@@ -4766,6 +4846,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>“%@”に保存しました: %@</string>
 	<key>Saved to History</key>
 	<string>履歴に保存しました</string>
+	<key>Saved to “%@” in %@</key>
+	<string>“%@”に保存しました（%@内）</string>
 	<key>Saved “%@”</key>
 	<string>“%@”を保存しました</string>
 	<key>Saves %@ — only silences where nothing happens on screen</key>
@@ -4784,6 +4866,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>保存されるのはキーを押したタイミングだけです。どのキーかは保存されず、パスワードフィールドの使用中は何も保存されません。</string>
 	<key>Save…</key>
 	<string>保存…</string>
+	<key>Saving</key>
+	<string>保存</string>
 	<key>Saving captures to History</key>
 	<string>スクリーンショットを履歴に保存中</string>
 	<key>Saving project…</key>
@@ -4808,6 +4892,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>画面収録のアクセス許可が必要です</string>
 	<key>Screen clips, camera, voice, computer sound, music, pictures, captions, and fonts.</key>
 	<string>画面のクリップ、カメラ、声、システムオーディオ、音楽、画像、字幕、フォント。</string>
+	<key>Screen recording</key>
+	<string>画面収録</string>
 	<key>Screen recording didn't start in time. Try again.</key>
 	<string>画面収録が時間内に開始されませんでした。もう一度お試しください。</string>
 	<key>Screen recording “%@” — the file is missing</key>
@@ -4820,6 +4906,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>スクリーンショットを取り込みました</string>
 	<key>Screenshot editor</key>
 	<string>スクリーンショットエディタ</string>
+	<key>Screenshot folder</key>
+	<string>スクリーンショットのフォルダ</string>
+	<key>Screenshot folder (Settings ▸ Screenshots): where screenshots are saved. Recording folder (Settings ▸ Recording): where recordings go when you don't choose. Both start as the folder you used before, or the Desktop.</key>
+	<string>“スクリーンショットのフォルダ”（“設定”＞“スクリーンショット”）: スクリーンショットの保存先です。“収録のフォルダ”（“設定”＞“収録”）: 保存先を選ばなかったときの収録の保存先です。どちらも最初は、以前使っていたフォルダかデスクトップになっています。</string>
 	<key>Screenshot selection</key>
 	<string>スクリーンショットの選択範囲</string>
 	<key>Screenshot thumbnail</key>
@@ -4996,8 +5086,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>“設定”＞“スクリーンショット”＞“テキスト認識”。</string>
 	<key>Settings ▸ Screenshots ▸ Window Capture adds a soft shadow and some transparent space around the window. It's on to start with.</key>
 	<string>“設定”＞“スクリーンショット”＞“ウインドウの取り込み”では、ウインドウの周りに柔らかいシャドウと透明な余白が付きます。最初はオンになっています。</string>
-	<key>Settings ▸ Screenshots.</key>
-	<string>“設定”＞“スクリーンショット”。</string>
+	<key>Settings ▸ Screenshots, and Settings ▸ Recording ▸ Saving.</key>
+	<string>“設定”＞“スクリーンショット”と、“設定”＞“収録”＞“保存”。</string>
 	<key>Settings ▸ Shortcuts.</key>
 	<string>“設定”＞“ショートカット”。</string>
 	<key>Settings…</key>
@@ -5202,10 +5292,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>単色</string>
 	<key>Solid color</key>
 	<string>単色</string>
+	<key>Some files couldn't be written — README.txt in the folder lists them</key>
+	<string>一部のファイルを書き込めませんでした — フォルダ内のREADME.txtに一覧があります</string>
 	<key>Something not working? Find the problem, then try the fixes in order.</key>
 	<string>うまく動かないときは、症状を探して、解決方法を順番に試してください。</string>
 	<key>Sound</key>
 	<string>サウンド</string>
+	<key>Sound files can be added as tracks of their own in LF Studios 1.7.</key>
+	<string>サウンドファイルは、LF Studios 1.7で独自のトラックとして追加できるようになります。</string>
 	<key>Sounds</key>
 	<string>サウンド</string>
 	<key>Space</key>
@@ -5322,6 +5416,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>開始（もう一度押すと終了）</string>
 	<key>Starts</key>
 	<string>開始</string>
+	<key>Starts after the screen by</key>
+	<string>画面からの開始の遅れ</string>
 	<key>Startup</key>
 	<string>起動</string>
 	<key>Step %lld</key>
@@ -5524,6 +5620,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>メニューバーのLF Studiosメニュー＞“QRコードをスキャン”。</string>
 	<key>The LF Studios menu in the menu bar ▸ Timed Capture.</key>
 	<string>メニューバーのLF Studiosメニュー＞“タイマーで取り込む”。</string>
+	<key>The LF Studios project — it needs the original files: turn on Include originals so it reopens in LF Studios</key>
+	<string>LF Studiosのプロジェクト — 元のファイルが必要です: “LF Studiosで再び開けるようにオリジナルを含める”をオンにしてください</string>
 	<key>The Undo and Redo buttons in the editor's toolbar.</key>
 	<string>エディタのツールバーにある“取り消す”ボタンと“やり直す”ボタン。</string>
 	<key>The aspect ratio menu in the video editor's toolbar.</key>
@@ -5554,6 +5652,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>カメラ映像を読み込めませんでした</string>
 	<key>The camera video couldn't be read, so no face could be found.</key>
 	<string>カメラ映像を読み込めなかったため、顔を見つけられませんでした。</string>
+	<key>The camera, %@ after the screen</key>
+	<string>カメラ（画面の%@後から）</string>
 	<key>The cards use the same background as your video. Pick their font with the font menu.</key>
 	<string>カードの背景はビデオと同じです。フォントはフォントメニューで選びます。</string>
 	<key>The clips lane on the timeline, and the Timeline menu.</key>
@@ -5580,6 +5680,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>初回は、macOSがマイクの許可を確認します。</string>
 	<key>The flag button in the bar while recording.</key>
 	<string>収録中のバーにある旗のボタン。</string>
+	<key>The folder couldn't be made: %@</key>
+	<string>フォルダを作成できませんでした: %@</string>
 	<key>The font menu next to captions, text, title cards, and Keys on screen.</key>
 	<string>字幕、テキスト、タイトルカード、“キー表示”の横にあるフォントメニュー。</string>
 	<key>The handoff is ready</key>
@@ -5608,6 +5710,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>マイクがオフ、消音、または許可されていませんでした。</string>
 	<key>The model downloads once from Hugging Face. After that, Whisper works offline, and your recording is never uploaded.</key>
 	<string>モデルはHugging Faceから一度だけダウンロードされます。そのあとはWhisperはオフラインで動作し、収録がアップロードされることはありません。</string>
+	<key>The music</key>
+	<string>音楽</string>
 	<key>The notes never appear in a recording, a screenshot, or screen sharing.</key>
 	<string>メモが収録、スクリーンショット、画面共有に映ることはありません。</string>
 	<key>The notes you read from while recording, kept with the video.</key>
@@ -5624,12 +5728,20 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>画像は履歴にも保存されるので、あとからテキストで検索できます。</string>
 	<key>The picture's file is gone — choose it again with Replace.</key>
 	<string>画像のファイルが見つかりません。“置き換える”でもう一度選択してください。</string>
+	<key>The pictures in 04 Graphics — older handoffs don't say where they were placed</key>
+	<string>04 Graphicsの画像 — 以前の受け渡しには配置場所の情報がありません</string>
+	<key>The pointer data — it fits only an uncut recording</key>
+	<string>ポインタのデータ — カットしていない収録にしか合いません</string>
 	<key>The pointer glides back to where it started at the end, so the video loops without a jump.</key>
 	<string>最後にポインタが開始位置へ滑らかに戻るので、ビデオが途切れずにループします。</string>
 	<key>The pointer glides back to where it started, so the video loops without a jump</key>
 	<string>ポインタが開始位置へなめらかに戻り、ビデオが途切れずにループします</string>
+	<key>The pointer, clicks, and keyboard shortcuts</key>
+	<string>ポインタ、クリック、キーボードショートカット</string>
 	<key>The preview shows only when Show the preview after capture is on in Settings ▸ General.</key>
 	<string>プレビューは、“設定”＞“一般”で“キャプチャ後にプレビューを表示”がオンの場合にだけ表示されます。</string>
+	<key>The project file opens everything again, exactly as you left it. LF Studios keeps it up to date as you edit.</key>
+	<string>プロジェクトファイルを開くと、すべてが最後の状態のとおりに開きます。編集すると、LF Studiosが随時更新します。</string>
 	<key>The recording bar</key>
 	<string>収録バー</string>
 	<key>The recording bar, the camera bubble preview, Speaker notes, the countdown, and notices.</key>
@@ -5640,12 +5752,20 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>“%@”の収録ファイルが見つかりません</string>
 	<key>The recording has no voice, the language isn't ready, or a permission is off.</key>
 	<string>収録に声が入っていないか、言語の準備ができていないか、アクセス許可がオフになっています。</string>
+	<key>The recording isn't where it was saved.</key>
+	<string>収録が保存した場所にありません。</string>
+	<key>The recording stayed where it was</key>
+	<string>収録は元の場所に残っています</string>
 	<key>The recording's file can't be found — it may have been moved or deleted. Put it back and export again.</key>
 	<string>収録のファイルが見つかりません。移動または削除された可能性があります。元の場所に戻してから、もう一度書き出してください。</string>
 	<key>The red stop button in the bar while recording, or the red timer in the menu bar.</key>
 	<string>収録中のバーにある赤い停止ボタン、またはメニューバーの赤いタイマー。</string>
 	<key>The save panel did not return a destination. Please try saving again.</key>
 	<string>保存パネルから保存先を取得できませんでした。もう一度保存してください。</string>
+	<key>The save window appears after each recording. Settings ▸ Recording ▸ Saving has Ask where to save after each recording and the Recording folder.</key>
+	<string>収録のたびに保存ウインドウが表示されます。“収録のたびに保存先を確認する”と“収録のフォルダ”は、“設定”＞“収録”＞“保存”にあります。</string>
+	<key>The screen recording</key>
+	<string>画面収録</string>
 	<key>The screenshot has no image data.</key>
 	<string>スクリーンショットに画像データがありません。</string>
 	<key>The screenshot is taken when it reaches zero.</key>
@@ -5674,6 +5794,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>曲のファイルが見つかりません。“置き換える”でもう一度選択してください。</string>
 	<key>The sound couldn't be read. Export again.</key>
 	<string>音声を読み込めませんでした。もう一度書き出してください。</string>
+	<key>The sound recorded with the screen</key>
+	<string>画面と一緒に収録したサウンド</string>
 	<key>The text is now on the clipboard: paste it anywhere with ⌘V.</key>
 	<string>テキストがクリップボードにコピーされます。⌘Vでどこにでもペーストできます。</string>
 	<key>The timeline at the bottom of the video editor.</key>
@@ -5700,6 +5822,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>保存フォルダ内のビデオと、カメラがオンだった場合はカメラ映像。</string>
 	<key>The voice track is empty, so there's nothing to clean up. Turn off Enhance voice to keep the original sound.</key>
 	<string>声のトラックが空なので、補正するものがありません。元のサウンドのままにするには、“声を補正”をオフにしてください。</string>
+	<key>The whole folder goes to the Trash: the recording, its camera video, its sound files, captions, and project.</key>
+	<string>フォルダ全体がゴミ箱に入ります: 収録、カメラ映像、サウンドファイル、字幕、プロジェクト。</string>
 	<key>The whole frame zooms in.</key>
 	<string>画面全体がズームします。</string>
 	<key>The whole mix at −16 LUFS, peaks under −1 dB</key>
@@ -5722,6 +5846,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ここにはすでにズームがあります</string>
 	<key>There's no video in this file</key>
 	<string>このファイルにはビデオがありません</string>
+	<key>There's no video in “%@”</key>
+	<string>“%@”にビデオがありません</string>
+	<key>There's no video to use as the screen recording.</key>
+	<string>画面収録として使えるビデオがありません。</string>
 	<key>There's nothing to write</key>
 	<string>書き込むものがありません</string>
 	<key>These settings are used by Capture Text, Copy Text, and History search.</key>
@@ -6454,6 +6582,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>LF Studiosが保存するもの、そして決してしないこと。</string>
 	<key>What a recording keeps</key>
 	<string>収録に保存される内容</string>
+	<key>What is each file in “%@”?</key>
+	<string>“%@”の各ファイルの内容</string>
 	<key>What was playing on your Mac</key>
 	<string>Macで再生されていたサウンド</string>
 	<key>What's New</key>
@@ -6472,6 +6602,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>終わったら、赤い停止ボタンをクリックするか、⌃⌘Escを押します。</string>
 	<key>Whenever you capture or record an area.</key>
 	<string>範囲を取り込むときや収録するとき、いつでも。</string>
+	<key>Where do you want to save this recording?</key>
+	<string>この収録をどこに保存しますか?</string>
+	<key>Where screenshots are saved: by Save on the preview after capture, and by Save automatically. Recordings have their own folder in Settings ▸ Recording.</key>
+	<string>スクリーンショットの保存先です。取り込み後のプレビューの“保存”と、“自動的に保存”で使われます。収録には、“設定”＞“収録”に専用のフォルダがあります。</string>
 	<key>Where the pointer went, and where you clicked.</key>
 	<string>ポインタの動きと、クリックした場所。</string>
 	<key>Where to find it</key>
@@ -6530,6 +6664,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>文字起こしがある場合は、単語を削除してカットすることもできます: “字幕”＞“テキストで編集”。</string>
 	<key>With more than one screen, click Record next to the one you want.</key>
 	<string>画面が複数ある場合は、収録したい画面の横にある“収録”をクリックします。</string>
+	<key>With the LF Studios project, the folder opens the whole edit again. Clips cut to your edit need the untouched recordings alongside.</key>
+	<string>LF Studiosのプロジェクトがあれば、フォルダを開くと編集全体がもう一度開きます。編集に合わせてカットしたクリップには、元のままの収録も一緒に必要です。</string>
 	<key>Words light up as they're spoken</key>
 	<string>話している単語がハイライトされます</string>
 	<key>Works best with Record when keys are pressed on while recording. For older recordings, LF Studios guesses from the screen and says so.</key>
@@ -6688,6 +6824,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>入力中にテキストカーソルを追うズーム</string>
 	<key>Zooms that follow your text cursor while you type, so viewers can read along.</key>
 	<string>入力中のテキストカーソルを追いかけるズームです。視聴者が入力内容を読みながら見られます。</string>
+	<key>Zooms, styles, annotations, and title cards — older handoffs don't include them</key>
+	<string>ズーム、スタイル、注釈、タイトルカード — 以前の受け渡しには含まれていません</string>
 	<key>a table</key>
 	<string>表</string>
 	<key>a transparent background</key>
@@ -6818,6 +6956,8 @@ Appleのショートカットは、“システム設定”＞“キーボード
 	<string>“%@”が見つかりません。元の場所に戻すか、このビデオから削除してから（“スタイル”＞“収録したビデオ”）、もう一度書き出してください。</string>
 	<key>“%@” can't be read — it may be damaged, still being saved, or in a format this Mac can't play. Remove it from this video (Style → Recordings), or put a working copy in its place, then export again.</key>
 	<string>“%@”を読み込めません。破損しているか、保存中か、このMacで再生できない形式の可能性があります。このビデオから削除するか（“スタイル”＞“収録したビデオ”）、正常なコピーを同じ場所に置いてから、もう一度書き出してください。</string>
+	<key>“%@” couldn't be moved: %@</key>
+	<string>“%@”を移動できませんでした: %@</string>
 	<key>“%@” doesn't let this window be resized.</key>
 	<string>“%@”ではこのウインドウのサイズを変更できません。</string>
 	<key>“%@” found in %lld of %lld captures</key>

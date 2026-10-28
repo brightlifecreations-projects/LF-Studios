@@ -428,7 +428,7 @@ struct VideoExportSheet: View {
         let stageShort = min(model.project.stageRect(in: canvas).width, model.project.stageRect(in: canvas).height)
         let outputScale = min(size.width, size.height) / max(min(canvas.width, canvas.height), 1)
         let upscaled = settings.format.isMovie && sourceShort > 0 && Double(stageShort * outputScale) > sourceShort * 1.15
-        let free = VideoExportFiles.availableBytes(at: URL(fileURLWithPath: Settings.autoSaveLocation, isDirectory: true).appendingPathComponent("export.mp4"))
+        let free = VideoExportFiles.availableBytes(at: URL(fileURLWithPath: Settings.recordingFolder, isDirectory: true).appendingPathComponent("export.mp4"))
         return VStack(alignment: .leading, spacing: 6) {
             HStack {
                 Text(parts.joined(separator: " · "))

@@ -18,6 +18,8 @@
 	<string>%@ (⇧⌘Z)</string>
 	<key>%@ (⌘Z)</key>
 	<string>%@ (⌘Z)</string>
+	<key>%@ It's in “%@” and opens as before.</key>
+	<string>%@ Запись находится в папке «%@» и открывается как раньше.</string>
 	<key>%@ Loupe</key>
 	<string>Лупа %@</string>
 	<key>%@ Zoom</key>
@@ -88,6 +90,14 @@
 	<string>%@ — нажмите, чтобы изменить</string>
 	<key>%@ — click to jump here, double-click to rename</key>
 	<string>%@ — нажмите, чтобы перейти сюда, дважды нажмите, чтобы переименовать</string>
+	<key>%@ — it was cut like the edit, so it can't be lined up with the recording again</key>
+	<string>%@ — файл обрезан под монтаж, поэтому его уже не совместить с записью</string>
+	<key>%@ — its lines don't match the captions</key>
+	<string>%@ — строки не совпадают с субтитрами</string>
+	<key>%@ — only one camera video can be shown</key>
+	<string>%@ — можно показать только одно видео с камеры</string>
+	<key>%@ — separate sound files open as their own tracks in LF Studios 1.7</key>
+	<string>%@ — отдельные звуковые файлы открываются как свои дорожки в LF Studios 1.7</string>
 	<key>%@ → %@ — the part you ⇧-dragged on the timeline</key>
 	<string>%@ → %@ — фрагмент, выделенный на шкале времени с ⇧</string>
 	<key>%@, %@</key>
@@ -100,12 +110,16 @@
 	<string>только %@–%@</string>
 	<key>%lld files, about %@</key>
 	<string>Файлов: %1$lld, около %2$@</string>
+	<key>%lld markers</key>
+	<string>Маркеры: %lld</string>
 	<key>%lld of %lld captures</key>
 	<string>Снимков: %lld из %lld</string>
 	<key>%lld px · Esc or Done finishes</key>
 	<string>%lld пикс. · Esc или «Готово» — завершить</string>
 	<key>%lld s</key>
 	<string>%lld с</string>
+	<key>%lld screen clips, one after the other</key>
+	<string>Клипы экрана подряд: %lld</string>
 	<key>%lld%%</key>
 	<string>%lld %%</string>
 	<key>%lld%% volume</key>
@@ -126,6 +140,12 @@
 	<string>На 0,1 с раньше</string>
 	<key>0.1s later</key>
 	<string>На 0,1 с позже</string>
+	<key>01 Screen: the screen recording. 02 Camera: the camera video, if you recorded one.</key>
+	<string>01 Screen — запись экрана. 02 Camera — видео с камеры, если вы его записывали.</string>
+	<key>03 Audio: your microphone and the Mac's sound as separate files. 05 Captions: your captions, once you make them.</key>
+	<string>03 Audio — ваш микрофон и звук Mac отдельными файлами. 05 Captions — ваши субтитры, когда вы их создадите.</string>
+	<key>07 Data: the pointer, clicks, and keys. And README.txt, which says what each file is.</key>
+	<string>07 Data — указатель, нажатия и клавиши. И README.txt, где сказано, что это за файлы.</string>
 	<key>A 2-second “Made with LF Studios” outro on your background — your own outro card is in Style</key>
 	<string>Двухсекундная концовка «Made with LF Studios» на вашем фоне — собственный финальный титр находится во вкладке «Стиль»</string>
 	<key>A README lists every file. Include speaker notes adds your notes.</key>
@@ -150,6 +170,8 @@
 	<string>Файл, который использует проект, перемещен, удален или находится на другом Mac.</string>
 	<key>A file with that name is in the way. Pick another name and export again.</key>
 	<string>Файл с таким именем уже существует. Выберите другое имя и экспортируйте снова.</string>
+	<key>A folder with an LF Studios project in it opens that project, exactly as it was saved.</key>
+	<string>Папка с проектом LF Studios открывает этот проект точно таким, каким он был сохранен.</string>
 	<key>A hairline that separates dark recordings from the background</key>
 	<string>Тонкая линия отделяет темные записи от фона</string>
 	<key>A magnifier over one spot at the playhead; the rest of the frame stays in view</key>
@@ -354,6 +376,8 @@
 	<string>После записи</string>
 	<key>After recording, click Restore size to put it back.</key>
 	<string>После записи нажмите «Вернуть размер», чтобы вернуть окно как было.</string>
+	<key>After you stop, LF Studios asks where to save the recording, then puts everything from it in one new folder: the video, the camera, the sound, and the project that opens it all.</key>
+	<string>Когда вы остановите запись, LF Studios спросит, куда ее сохранить, и сложит все в одну новую папку: видео, камеру, звук и проект, который все это открывает.</string>
 	<key>Afterwards, click Restore size to put the window back.</key>
 	<string>После записи нажмите «Вернуть размер», чтобы вернуть окну прежний размер.</string>
 	<key>Aim by Hand</key>
@@ -412,6 +436,10 @@
 	<string>Всегда показывать стрелку</string>
 	<key>Amber Fold</key>
 	<string>Янтарная складка</string>
+	<key>An LF Studios project: open the folder in LF Studios to edit the video again. With clips cut to your edit, Include originals so it reopens in LF Studios adds the untouched recordings it needs.</key>
+	<string>Проект LF Studios: откройте папку в LF Studios, чтобы снова редактировать видео. Если клипы обрезаны под монтаж, параметр «Добавить оригиналы для повторного открытия в LF Studios» добавит нужные исходные записи.</string>
+	<key>An older Creative Handoff is put back together from its files: the screen, the cuts, the camera at its place, captions, markers, and the pointer. A summary says what came back.</key>
+	<string>Старая «Творческая передача» собирается заново из своих файлов: экран, вырезанные фрагменты, камера на своем месте, субтитры, маркеры и указатель. В сводке видно, что удалось восстановить.</string>
 	<key>An optional 2-second “Made with LF Studios” card at the end.</key>
 	<string>Необязательная 2-секундная заставка «Made with LF Studios» в конце.</string>
 	<key>Angle</key>
@@ -432,6 +460,8 @@
 	<string>Возможно, те же клавиши использует другое приложение — выберите другие.</string>
 	<key>Any color…</key>
 	<string>Любой цвет…</string>
+	<key>Any other folder: Import Folder lists the videos. Choose which is the screen recording and which the camera, and when the camera starts.</key>
+	<string>Любая другая папка: «Импортировать папку» покажет список видео. Выберите, какое из них — запись экрана, а какое — камера, и когда начинается камера.</string>
 	<key>App</key>
 	<string>Приложение</string>
 	<key>Appearance</key>
@@ -492,6 +522,8 @@
 	<string>Хвост стрелки</string>
 	<key>Arrows, shapes &amp; lines</key>
 	<string>Стрелки, фигуры и линии</string>
+	<key>Ask where to save after each recording</key>
+	<string>Спрашивать, куда сохранять каждую запись</string>
 	<key>Aspect Ratio %@ — %@</key>
 	<string>Соотношение сторон %@ — %@</string>
 	<key>Aspect ratio</key>
@@ -534,8 +566,6 @@
 	<string>«Автонастройка» подбирает параметры за вас; «Сбросить» возвращает исходные.</string>
 	<key>Auto-dismiss overlay</key>
 	<string>Автоскрытие миниатюры</string>
-	<key>Auto-save folder</key>
-	<string>Папка автосохранения</string>
 	<key>Auto-zoom off — its zooms are gone. ⌘Z to undo</key>
 	<string>Автомасштаб выключен — его приближения убраны. ⌘Z, чтобы отменить</string>
 	<key>Auto-zoom on clicks</key>
@@ -818,6 +848,8 @@
 	<string>Субтитры скрыты в редакторе (вкладка «Субтитры» → «Показывать субтитры»).</string>
 	<key>Captions from your narration — and cut the video by editing its words</key>
 	<string>Субтитры из вашей речи — и монтаж видео правкой текста</string>
+	<key>Captions in %@</key>
+	<string>Субтитры: %@</string>
 	<key>Captions in the export</key>
 	<string>Субтитры при экспорте</string>
 	<key>Captions look like this</key>
@@ -1004,6 +1036,10 @@
 	<string>Выберите размер, шрифт и положение — «Вверху» или «Внизу». Или перетяните клавиши в предпросмотре.</string>
 	<key>Choose a folder and click Export Here.</key>
 	<string>Выберите папку и нажмите «Экспортировать сюда».</string>
+	<key>Choose a folder with a screen recording in it, as an MP4 or MOV file.</key>
+	<string>Выберите папку, в которой есть запись экрана в формате MP4 или MOV.</string>
+	<key>Choose a folder you can save to.</key>
+	<string>Выберите папку, в которую можно сохранять.</string>
 	<key>Choose a language</key>
 	<string>Выберите язык</string>
 	<key>Choose a language and click Translate.</key>
@@ -1012,6 +1048,8 @@
 	<string>Выберите логотип, водяной знак или снимок экрана, чтобы разместить его на видео</string>
 	<key>Choose a picture.</key>
 	<string>Выберите картинку.</string>
+	<key>Choose a project, a folder, or a video</key>
+	<string>Выберите проект, папку или видео</string>
 	<key>Choose a recording or video to add after this one</key>
 	<string>Выберите запись или видео, которое нужно добавить после этого</string>
 	<key>Choose a size, or Custom Size… for your own.</key>
@@ -1024,14 +1062,10 @@
 	<string>Выберите стиль в разделе «Вид».</string>
 	<key>Choose a style.</key>
 	<string>Выберите стиль.</string>
-	<key>Choose a writable folder for auto-save.</key>
-	<string>Выберите папку для автосохранения, доступную для записи.</string>
 	<key>Choose a writable folder.</key>
 	<string>Выберите папку, доступную для записи.</string>
 	<key>Choose again with another speed to change them.</key>
 	<string>Чтобы изменить их, выберите еще раз другую скорость.</string>
-	<key>Choose an LF Studios project</key>
-	<string>Выберите проект LF Studios</string>
 	<key>Choose between accurate and fast, and which languages to read.</key>
 	<string>Выберите между точностью и скоростью и укажите, какие языки распознавать.</string>
 	<key>Choose folder</key>
@@ -1054,6 +1088,8 @@
 	<string>Выберите видео с камеры для пузыря</string>
 	<key>Choose the corner (Left or Right) and how long it stays in the same settings section. Hovering keeps it open.</key>
 	<string>Угол («Слева» или «Справа») и время показа выбираются в том же разделе настроек. Пока указатель над миниатюрой, она не исчезает.</string>
+	<key>Choose the screen recording, and the camera video if there is one. Nothing in the folder changes until you save.</key>
+	<string>Выберите запись экрана и, если есть, видео с камеры. В папке ничего не изменится, пока вы не сохраните.</string>
 	<key>Choose the video's shape for where it's going.</key>
 	<string>Выберите формат видео в зависимости от того, где его будут смотреть.</string>
 	<key>Choose what happens after each screenshot or recording.</key>
@@ -1062,8 +1098,8 @@
 	<string>Выберите, что показывает окошко, и придайте ему законченный вид.</string>
 	<key>Choose what to include, then click Choose Location….</key>
 	<string>Выберите, что включить, и нажмите «Выбрать место…».</string>
-	<key>Choose where files are saved, what they're called, and the picture format.</key>
-	<string>Выберите, куда сохранять файлы, как их называть и в каком формате сохранять картинки.</string>
+	<key>Choose where screenshots and recordings are saved, what they're called, and the picture format.</key>
+	<string>Выберите, куда сохранять снимки и записи, как их называть и в каком формате сохранять изображения.</string>
 	<key>Choose where to put the handoff folder — any folder or drive</key>
 	<string>Выберите, куда положить папку для передачи — любая папка или диск</string>
 	<key>Choose window</key>
@@ -1136,6 +1172,8 @@
 	<string>Нажмите «Размытие» над предпросмотром или клавишу B.</string>
 	<key>Click Camera in the recording bar. Choose the camera in ⋯ More recording options.</key>
 	<string>Нажмите «Камера» на панели записи. Камеру можно выбрать в ⋯ «Другие параметры записи».</string>
+	<key>Click Cancel, or turn off asking, and it goes in the Recording folder, laid out the same way. Nothing is ever lost.</key>
+	<string>Нажмите «Отменить» или выключите вопрос, и запись попадет в «Папку для записей» с той же структурой. Ничего не потеряется.</string>
 	<key>Click Choose under the window you want.</key>
 	<string>Нажмите «Выбрать» под нужным окном.</string>
 	<key>Click Color for eight quick colors, or Custom… for any color.</key>
@@ -1624,6 +1662,8 @@
 	<string>Склейка без перехода</string>
 	<key>Cutout</key>
 	<string>Силуэт</string>
+	<key>Cuts and speed changes (%lld clips)</key>
+	<string>Вырезанные фрагменты и изменения скорости (клипов: %lld)</string>
 	<key>Dark Mode</key>
 	<string>Тёмное</string>
 	<key>De-esser</key>
@@ -1682,8 +1722,6 @@
 	<string>Затемнение</string>
 	<key>Dips while you talk, comes back in the pauses</key>
 	<string>Приглушается, когда вы говорите, и возвращается в паузах</string>
-	<key>Directory where screenshots are saved if Auto-Save is enabled.</key>
-	<string>Папка, в которую сохраняются снимки экрана, если включено автосохранение.</string>
 	<key>Disable Apple Shortcuts</key>
 	<string>Отключить сочетания клавиш Apple</string>
 	<key>Disabled</key>
@@ -1876,6 +1914,8 @@
 	<string>Во время увеличения кадр движется вместе с указателем, и то, на что вы указываете, остается в кадре. Пока это происходит, в предпросмотре видна надпись «Камера следует за указателем».</string>
 	<key>Dusk</key>
 	<string>Сумерки</string>
+	<key>Each recording in its own folder</key>
+	<string>Каждая запись в своей папке</string>
 	<key>Each recording keeps its own pointer, clicks, and shortcuts. Reorder them here; cut and trim them on the timeline like any clip.</key>
 	<string>Каждая запись сохраняет свой указатель, нажатия и сочетания клавиш. Меняйте их порядок здесь, а вырезайте и подрезайте на шкале времени, как любой клип.</string>
 	<key>Each shape keeps its own version: switch back and forth without losing anything. Cuts, words, and styles stay shared.</key>
@@ -1996,6 +2036,8 @@
 	<string>Каждая часть этого видео отдельным файлом в новой папке — для другого монтажёра или программы монтажа.</string>
 	<key>Every part of your video as its own file, in one folder, for another editor or app.</key>
 	<string>Каждая часть видео отдельным файлом в одной папке — для другого монтажера или приложения.</string>
+	<key>Every recording gets a folder of its own, with its project file, the screen and camera videos, the sound as separate files, and its data. With asking off, or when you click Cancel, it goes in the Recording folder.</key>
+	<string>Каждая запись получает свою папку с файлом проекта, видео экрана и камеры, звуком в отдельных файлах и данными. Если вопрос выключен или вы нажали «Отменить», запись попадет в «Папку для записей».</string>
 	<key>Every recording, screenshot, and saved project in one place.</key>
 	<string>Все записи, снимки и сохраненные проекты в одном месте.</string>
 	<key>Every screenshot is kept in History and in Home ▸ Screenshots.</key>
@@ -2150,6 +2192,8 @@
 	<string>Файл ▸ Творческая передача… (⇧⌘E), кнопка в окне экспорта или правая кнопка мыши на записи на главной.</string>
 	<key>Files are copied as they are wherever they can be. Only what has to change — clips cut to your edit, a camera with its background removed — is re-encoded to ProRes.</key>
 	<string>Где возможно, файлы копируются как есть. В ProRes перекодируется только то, что должно измениться: клипы, обрезанные по вашему монтажу, и камера без фона.</string>
+	<key>Files move only once the recording is finished and checked. If something goes wrong, the recording stays where it was.</key>
+	<string>Файлы перемещаются только после того, как запись завершена и проверена. Если что-то пойдет не так, запись останется на прежнем месте.</string>
 	<key>Fill the Frame, Follow the Cursor</key>
 	<string>Заполнить кадр и следовать за указателем</string>
 	<key>Fill the frame, follow the cursor</key>
@@ -2232,6 +2276,8 @@
 	<string>Отразить, как на селфи</string>
 	<key>Float a screenshot above all your windows, as a reference while you work.</key>
 	<string>Пусть снимок висит поверх всех окон как образец, пока вы работаете.</string>
+	<key>Folder name:</key>
+	<string>Имя папки:</string>
 	<key>Follow Cursor</key>
 	<string>Следовать за указателем</string>
 	<key>Follow Typing</key>
@@ -2574,10 +2620,14 @@
 	<string>Если не ответить в течение нескольких секунд, запись сохранится — на всякий случай.</string>
 	<key>If your Mac crashes or loses power while recording, LF Studios saves what it can.</key>
 	<string>Если Mac даст сбой или выключится во время записи, LF Studios сохранит все, что сможет.</string>
+	<key>Ignore</key>
+	<string>Не использовать</string>
 	<key>Image</key>
 	<string>Изображение</string>
 	<key>Images &amp; logos</key>
 	<string>Изображения и логотипы</string>
+	<key>Import Folder</key>
+	<string>Импортировать папку</string>
 	<key>Import Presets…</key>
 	<string>Импортировать стили…</string>
 	<key>Imported Preset</key>
@@ -2666,10 +2716,14 @@
 	<string>Включить медиафайлы (работает на любом Mac)</string>
 	<key>Include media: the project opens on any Mac.</key>
 	<string>«Включить медиафайлы»: проект откроется на любом Mac.</string>
+	<key>Include originals so it reopens in LF Studios</key>
+	<string>Добавить оригиналы для повторного открытия в LF Studios</string>
 	<key>Include speaker notes</key>
 	<string>Включить заметки докладчика</string>
 	<key>Include the finished video</key>
 	<string>Добавить готовое видео</string>
+	<key>Includes %@ of originals for the LF Studios project</key>
+	<string>Оригиналы для проекта LF Studios: %@</string>
 	<key>Includes: %@</key>
 	<string>Включает: %@</string>
 	<key>Inset</key>
@@ -2698,8 +2752,8 @@
 	<string>Начальный титр, с %@ до %@</string>
 	<key>Iris</key>
 	<string>Ирис</string>
-	<key>It checks the free space first. Cancel removes the half-made folder.</key>
-	<string>Сначала проверяется свободное место. «Отменить» удаляет недоделанную папку.</string>
+	<key>It checks the free space first, and shows how much the originals add. Cancel removes the half-made folder.</key>
+	<string>Сначала проверяется свободное место и показывается, сколько займут оригиналы. «Отменить» удаляет недоделанную папку.</string>
 	<key>It happens by itself. The bar while recording shows a short note, and a notice explains it.</key>
 	<string>Это происходит само. На панели во время записи появляется короткая пометка, а уведомление объясняет, что случилось.</string>
 	<key>It isn't an LF Studios project, or it's damaged.</key>
@@ -2734,6 +2788,8 @@
 	<string>Это ваш «Мой стиль»: пока вы не выберете другой, применять будет нечего. Видео с этим стилем сохранят свой вид.</string>
 	<key>Its own arrow, text and hand pointers, drawn for the video.</key>
 	<string>Свои указатели — стрелка, текст и рука, нарисованные для видео.</string>
+	<key>Its screen recording can't be read.</key>
+	<string>Не удается прочитать запись экрана.</string>
 	<key>JPEG Quality</key>
 	<string>Качество JPEG</string>
 	<key>Jump here</key>
@@ -2974,6 +3030,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Прослушивание…</string>
 	<key>Listens on this Mac — nothing is uploaded</key>
 	<string>Работает на этом Mac — ничего не отправляется в сеть</string>
+	<key>Loaded:</key>
+	<string>Загружено:</string>
 	<key>Locate…</key>
 	<string>Найти…</string>
 	<key>Look</key>
@@ -3150,6 +3208,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Раньше</string>
 	<key>Move later</key>
 	<string>Позже</string>
+	<key>Move or rename the folder in Finder as you like, or copy it to another Mac: it still opens.</key>
+	<string>Перемещайте и переименовывайте папку в Finder как угодно или скопируйте ее на другой Mac: она все равно откроется.</string>
 	<key>Move the Camera Instead</key>
 	<string>Сдвинуть камеру</string>
 	<key>Move the Camera Instead: slides the bubble to a free corner during that zoom.</key>
@@ -3172,8 +3232,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Наведите указатель на окно — оно подсветится.</string>
 	<key>Move the pointer over the window you want: it lights up.</key>
 	<string>Наведите указатель на нужное окно — оно подсветится.</string>
+	<key>Move to Trash</key>
+	<string>Переместить в Корзину</string>
 	<key>Move to where it ends and press S again.</key>
 	<string>Перейдите туда, где она заканчивается, и снова нажмите S.</string>
+	<key>Move “%@” to the Trash?</key>
+	<string>Переместить «%@» в Корзину?</string>
 	<key>Moved clear of the camera bubble.</key>
 	<string>Сдвинуто из-под окошка камеры.</string>
 	<key>Moved to the Trash</key>
@@ -3412,12 +3476,18 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Не хватает места: для передачи нужно около %1$@, а там свободно %2$@.</string>
 	<key>Not for this video</key>
 	<string>Не для этого видео</string>
+	<key>Not loaded:</key>
+	<string>Не загружено:</string>
 	<key>Not now</key>
 	<string>Не сейчас</string>
 	<key>Not set</key>
 	<string>Не задано</string>
 	<key>Nothing in the Guide matches your search. Try a shorter word, like “zoom” or “camera”.</key>
 	<string>В руководстве ничего не найдено. Попробуйте слово короче, например «масштаб» или «камера».</string>
+	<key>Nothing in the folder changes until you save (⌘S).</key>
+	<string>В папке ничего не изменится, пока вы не сохраните (⌘S).</string>
+	<key>Nothing in the folder changes until you save (⌘S). Saving writes the project into the folder.</key>
+	<string>В папке ничего не изменится, пока вы не сохраните (⌘S). При сохранении проект записывается в папку.</string>
 	<key>Nothing is ticked or blurred until you choose. Everything stays on your Mac.</key>
 	<string>Ничего не отмечается и не размывается, пока вы не выберете. Все остается на вашем Mac.</string>
 	<key>Nothing is uploaded. The first time, macOS may download the language, which needs the internet once.</key>
@@ -3520,10 +3590,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Открыть настройки конфиденциальности</string>
 	<key>Open Project as Saved</key>
 	<string>Открыть сохранённый проект</string>
-	<key>Open Project…</key>
-	<string>Открыть проект…</string>
-	<key>Open Project… in Home, File ▸ Open Project… (⌘O), or double-click the project in Finder.</key>
-	<string>«Открыть проект…» на главной, Файл ▸ Открыть проект… (⌘O) или двойное нажатие на проект в Finder.</string>
 	<key>Open Recording Settings…</key>
 	<string>Открыть настройки записи…</string>
 	<key>Open Settings</key>
@@ -3540,20 +3606,24 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Откройте Timeline.fcpxml в Final Cut Pro или DaVinci Resolve либо “Timeline (Premiere).xml” в Premiere Pro.</string>
 	<key>Open Video Editor</key>
 	<string>Открыть видеоредактор</string>
-	<key>Open a .lfstudios project</key>
-	<string>Открыть проект .lfstudios</string>
+	<key>Open a folder of files as one project: a recording's folder, a Creative Handoff, or any folder with videos in it.</key>
+	<string>Откройте папку с файлами как один проект: папку записи, «Творческую передачу» или любую папку с видео.</string>
 	<key>Open a project</key>
 	<string>Открытие проекта</string>
+	<key>Open a project, a recording's folder, a Creative Handoff, or a video</key>
+	<string>Открыть проект, папку записи, «Творческую передачу» или видео</string>
 	<key>Open a recording in the video editor first, then click Show me.</key>
 	<string>Сначала откройте запись в видеоредакторе, затем нажмите «Показать».</string>
 	<key>Open a recording, or any MP4 or MOV video, in the video editor.</key>
 	<string>Откройте в видеоредакторе запись или любое видео MP4 или MOV.</string>
-	<key>Open a saved .lfstudios project.</key>
-	<string>Откройте сохраненный проект .lfstudios.</string>
+	<key>Open a saved .lfstudios project, a recording's folder, or a video.</key>
+	<string>Откройте сохраненный проект .lfstudios, папку записи или видео.</string>
 	<key>Open a screenshot from Home, History, or the preview after capture. The tools are in the toolbar at the top.</key>
 	<string>Откройте снимок с главной, из истории или из превью после снимка. Инструменты — на панели инструментов вверху.</string>
 	<key>Open a screenshot to mark it up, then copy or save the result.</key>
 	<string>Откройте снимок, чтобы разметить его, а потом скопируйте или сохраните результат.</string>
+	<key>Open a whole folder</key>
+	<string>Открытие целой папки</string>
 	<key>Open and close</key>
 	<string>Появление и исчезновение</string>
 	<key>Open at login</key>
@@ -3576,6 +3646,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Открывать видеоредактор после записи.</string>
 	<key>Open video…</key>
 	<string>Открыть видео…</string>
+	<key>Opened “%@”</key>
+	<string>Открыто: «%@»</string>
 	<key>Opening a video</key>
 	<string>Открытие видео</string>
 	<key>Opening, saving, copying &amp; undo</key>
@@ -3584,6 +3656,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Открывает его название и длительность во вкладке «Стиль»</string>
 	<key>Opens its volume, fades, and ducking in Audio</key>
 	<string>Открывает громкость, нарастание, затухание и приглушение во вкладке «Аудио»</string>
+	<key>Open…</key>
+	<string>Открыть…</string>
+	<key>Open… in Home or File ▸ Open… (⌘O), and choose the folder. Or drop the folder on the Home window or the LF Studios icon in the Dock.</key>
+	<string>«Открыть…» на главной или Файл ▸ Открыть… (⌘O), затем выберите папку. Или перетяните папку в окно «Главная» или на значок LF Studios в Dock.</string>
+	<key>Open… in Home, File ▸ Open… (⌘O), or double-click the project in Finder.</key>
+	<string>«Открыть…» на главной, Файл ▸ Открыть… (⌘O) или двойное нажатие на проект в Finder.</string>
 	<key>Optional: type words to look for too, like a client's name.</key>
 	<string>По желанию: введите слова, которые тоже нужно искать, например имя клиента.</string>
 	<key>Optional: type words to look for, and turn on Also scan the camera video.</key>
@@ -4016,6 +4094,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Запись удалена</string>
 	<key>Recording failed before saving.</key>
 	<string>Запись прервалась до сохранения.</string>
+	<key>Recording folder</key>
+	<string>Папка для записей</string>
 	<key>Recording keyboard shortcuts</key>
 	<string>Записываются сочетания клавиш</string>
 	<key>Recording paused — click to stop (%@)</key>
@@ -4532,8 +4612,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Правой кнопкой мыши на проекте на главной ▸ Удалить: проект попадет в Корзину.</string>
 	<key>Right-click a zoom on the timeline for quick changes.</key>
 	<string>Нажмите на увеличение на шкале времени правой кнопкой мыши для быстрых изменений.</string>
-	<key>Right-click for Open, Show in Finder, Creative Handoff…, or Delete (moves it to the Trash).</key>
-	<string>Правой кнопкой мыши — «Открыть», «Показать в Finder», «Творческая передача…» или «Удалить» (перемещает в Корзину).</string>
+	<key>Right-click for Open, Show in Finder, Creative Handoff…, or Delete (moves it to the Trash; for a recording's folder, the whole folder, after asking).</key>
+	<string>Правой кнопкой мыши — «Открыть», «Показать в Finder», «Творческая передача…» или «Удалить» (перемещает в Корзину; для папки записи — всю папку, после подтверждения).</string>
 	<key>Right-click for Save As…, Pin to Screen, and Delete.</key>
 	<string>Правой кнопкой мыши — «Сохранить как…», «Закрепить на экране» и «Удалить».</string>
 	<key>Right-click it for Copy, Save As…, Edit, Close Pin, or Close All Pins.</key>
@@ -4572,12 +4652,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Папка для сохранения</string>
 	<key>Save Location</key>
 	<string>Место сохранения</string>
-	<key>Save Location: the folder for saved screenshots and recordings (the Desktop to start with).</key>
-	<string>«Место сохранения»: папка для сохраненных снимков и записей (сначала это рабочий стол).</string>
 	<key>Save Project</key>
 	<string>Сохранить проект</string>
 	<key>Save Project As…</key>
 	<string>Сохранить проект как…</string>
+	<key>Save Recording</key>
+	<string>Сохранение записи</string>
 	<key>Save Subtitles</key>
 	<string>Сохранить субтитры</string>
 	<key>Save Subtitles (.srt)…</key>
@@ -4606,8 +4686,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Сохранить изменения в этом снимке экрана?</string>
 	<key>Save folder updated.</key>
 	<string>Папка для сохранения обновлена.</string>
-	<key>Save folder, file names &amp; format</key>
-	<string>Папка, имена файлов и формат</string>
+	<key>Save folders, file names &amp; format</key>
+	<string>Папки, имена файлов и формат</string>
 	<key>Save just the sound, with the same mix and loudness as the video.</key>
 	<string>Сохраните только звук — с тем же сведением и громкостью, что в видео.</string>
 	<key>Save screenshot to disk</key>
@@ -4636,6 +4716,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Сохранено в папку «%@»: %@</string>
 	<key>Saved to History</key>
 	<string>Сохранено в историю</string>
+	<key>Saved to “%@” in %@</key>
+	<string>Сохранено в «%@» в папке %@</string>
 	<key>Saved “%@”</key>
 	<string>«%@» сохранён</string>
 	<key>Saves %@ — only silences where nothing happens on screen</key>
@@ -4654,6 +4736,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Сохраняет только момент каждого нажатия: никогда — какая клавиша, и ничего, пока используется поле пароля.</string>
 	<key>Save…</key>
 	<string>Сохранить…</string>
+	<key>Saving</key>
+	<string>Сохранение</string>
 	<key>Saving captures to History</key>
 	<string>Сохранение снимков в историю</string>
 	<key>Saving project…</key>
@@ -4678,6 +4762,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Нужно разрешение на запись экрана</string>
 	<key>Screen clips, camera, voice, computer sound, music, pictures, captions, and fonts.</key>
 	<string>Клипы экрана, камера, голос, звук компьютера, музыка, картинки, субтитры и шрифты.</string>
+	<key>Screen recording</key>
+	<string>Запись экрана</string>
 	<key>Screen recording didn't start in time. Try again.</key>
 	<string>Запись экрана не началась вовремя. Повторите попытку.</string>
 	<key>Screen recording “%@” — the file is missing</key>
@@ -4690,6 +4776,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Снимок экрана сделан</string>
 	<key>Screenshot editor</key>
 	<string>Редактор снимков</string>
+	<key>Screenshot folder</key>
+	<string>Папка для снимков</string>
+	<key>Screenshot folder (Settings ▸ Screenshots): where screenshots are saved. Recording folder (Settings ▸ Recording): where recordings go when you don't choose. Both start as the folder you used before, or the Desktop.</key>
+	<string>«Папка для снимков» (Настройки ▸ Снимки экрана): куда сохраняются снимки. «Папка для записей» (Настройки ▸ Запись): куда попадают записи, если вы не выбрали место. Сначала в обоих случаях указана папка, которую вы использовали раньше, или «Рабочий стол».</string>
 	<key>Screenshot selection</key>
 	<string>Выделение для снимка экрана</string>
 	<key>Screenshot thumbnail</key>
@@ -4862,8 +4952,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Настройки ▸ Снимки экрана ▸ Распознавание текста.</string>
 	<key>Settings ▸ Screenshots ▸ Window Capture adds a soft shadow and some transparent space around the window. It's on to start with.</key>
 	<string>Настройки ▸ Снимки экрана ▸ Снимки окон добавляет вокруг окна мягкую тень и немного прозрачного места. Сразу включено.</string>
-	<key>Settings ▸ Screenshots.</key>
-	<string>Настройки ▸ Снимки экрана.</string>
+	<key>Settings ▸ Screenshots, and Settings ▸ Recording ▸ Saving.</key>
+	<string>Настройки ▸ Снимки экрана и Настройки ▸ Запись ▸ Сохранение.</string>
 	<key>Settings ▸ Shortcuts.</key>
 	<string>Настройки ▸ Сочетания.</string>
 	<key>Settings…</key>
@@ -5064,10 +5154,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Сплошной цвет</string>
 	<key>Solid color</key>
 	<string>Сплошной цвет</string>
+	<key>Some files couldn't be written — README.txt in the folder lists them</key>
+	<string>Некоторые файлы не удалось записать — их список в README.txt в папке</string>
 	<key>Something not working? Find the problem, then try the fixes in order.</key>
 	<string>Что-то не работает? Найдите проблему и попробуйте решения по порядку.</string>
 	<key>Sound</key>
 	<string>Звук</string>
+	<key>Sound files can be added as tracks of their own in LF Studios 1.7.</key>
+	<string>Звуковые файлы можно будет добавить как отдельные дорожки в LF Studios 1.7.</string>
 	<key>Sounds</key>
 	<string>Звуки</string>
 	<key>Space</key>
@@ -5176,6 +5270,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Начать; нажмите еще раз, чтобы закончить</string>
 	<key>Starts</key>
 	<string>Начало</string>
+	<key>Starts after the screen by</key>
+	<string>Начинается после экрана через</string>
 	<key>Startup</key>
 	<string>Запуск</string>
 	<key>Step %lld</key>
@@ -5378,6 +5474,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Меню LF Studios в строке меню ▸ Сканировать QR-код.</string>
 	<key>The LF Studios menu in the menu bar ▸ Timed Capture.</key>
 	<string>Меню LF Studios в строке меню ▸ Снимок с таймером.</string>
+	<key>The LF Studios project — it needs the original files: turn on Include originals so it reopens in LF Studios</key>
+	<string>Проект LF Studios — ему нужны исходные файлы: включите «Добавить оригиналы для повторного открытия в LF Studios»</string>
 	<key>The Undo and Redo buttons in the editor's toolbar.</key>
 	<string>Кнопки «Отменить» и «Повторить» на панели инструментов редактора.</string>
 	<key>The aspect ratio menu in the video editor's toolbar.</key>
@@ -5408,6 +5506,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Не удалось прочитать видео с камеры</string>
 	<key>The camera video couldn't be read, so no face could be found.</key>
 	<string>Не удалось прочитать видео с камеры, поэтому лицо не найдено.</string>
+	<key>The camera, %@ after the screen</key>
+	<string>Камера, через %@ после экрана</string>
 	<key>The cards use the same background as your video. Pick their font with the font menu.</key>
 	<string>У титров тот же фон, что и у видео. Шрифт выбирается в меню шрифтов.</string>
 	<key>The clips lane on the timeline, and the Timeline menu.</key>
@@ -5434,6 +5534,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>В первый раз macOS попросит разрешить доступ к микрофону.</string>
 	<key>The flag button in the bar while recording.</key>
 	<string>Кнопка с флажком на панели во время записи.</string>
+	<key>The folder couldn't be made: %@</key>
+	<string>Не удалось создать папку: %@</string>
 	<key>The font menu next to captions, text, title cards, and Keys on screen.</key>
 	<string>Меню шрифтов рядом с субтитрами, текстом, титрами и «Клавиши на экране».</string>
 	<key>The handoff is ready</key>
@@ -5462,6 +5564,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Микрофон был выключен, приглушен или для него не было разрешения.</string>
 	<key>The model downloads once from Hugging Face. After that, Whisper works offline, and your recording is never uploaded.</key>
 	<string>Модель один раз загружается с Hugging Face. После этого Whisper работает без интернета, а ваша запись никогда никуда не загружается.</string>
+	<key>The music</key>
+	<string>Музыка</string>
 	<key>The notes never appear in a recording, a screenshot, or screen sharing.</key>
 	<string>Заметки никогда не попадают в запись, на снимок экрана или в демонстрацию экрана.</string>
 	<key>The notes you read from while recording, kept with the video.</key>
@@ -5478,12 +5582,20 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Картинка тоже сохраняется в истории, так что позже ее можно найти по тексту.</string>
 	<key>The picture's file is gone — choose it again with Replace.</key>
 	<string>Файл изображения пропал — выберите его снова с помощью «Заменить».</string>
+	<key>The pictures in 04 Graphics — older handoffs don't say where they were placed</key>
+	<string>Изображения в 04 Graphics — в старых передачах не указано, где они были размещены</string>
+	<key>The pointer data — it fits only an uncut recording</key>
+	<string>Данные указателя — подходят только для необрезанной записи</string>
 	<key>The pointer glides back to where it started at the end, so the video loops without a jump.</key>
 	<string>В конце указатель плавно возвращается туда, откуда начал, и видео зацикливается без скачка.</string>
 	<key>The pointer glides back to where it started, so the video loops without a jump</key>
 	<string>Указатель плавно возвращается туда, откуда начал, и видео зацикливается без скачка</string>
+	<key>The pointer, clicks, and keyboard shortcuts</key>
+	<string>Указатель, нажатия и сочетания клавиш</string>
 	<key>The preview shows only when Show the preview after capture is on in Settings ▸ General.</key>
 	<string>Превью появляется, только если в разделе Настройки ▸ Основные включено «Показывать превью после снимка».</string>
+	<key>The project file opens everything again, exactly as you left it. LF Studios keeps it up to date as you edit.</key>
+	<string>Файл проекта снова открывает все точно так, как вы оставили. LF Studios обновляет его, пока вы редактируете.</string>
 	<key>The recording bar</key>
 	<string>Панель записи</string>
 	<key>The recording bar, the camera bubble preview, Speaker notes, the countdown, and notices.</key>
@@ -5494,12 +5606,20 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Запись для «%@» не найдена</string>
 	<key>The recording has no voice, the language isn't ready, or a permission is off.</key>
 	<string>В записи нет голоса, язык не готов или выключено разрешение.</string>
+	<key>The recording isn't where it was saved.</key>
+	<string>Записи нет там, где она была сохранена.</string>
+	<key>The recording stayed where it was</key>
+	<string>Запись осталась на прежнем месте</string>
 	<key>The recording's file can't be found — it may have been moved or deleted. Put it back and export again.</key>
 	<string>Файл записи не найден — возможно, его переместили или удалили. Верните его на место и экспортируйте снова.</string>
 	<key>The red stop button in the bar while recording, or the red timer in the menu bar.</key>
 	<string>Красная кнопка остановки на панели во время записи или красный таймер в строке меню.</string>
 	<key>The save panel did not return a destination. Please try saving again.</key>
 	<string>Окно сохранения не вернуло место назначения. Попробуйте сохранить еще раз.</string>
+	<key>The save window appears after each recording. Settings ▸ Recording ▸ Saving has Ask where to save after each recording and the Recording folder.</key>
+	<string>Окно сохранения появляется после каждой записи. В разделе Настройки ▸ Запись ▸ Сохранение есть «Спрашивать, куда сохранять каждую запись» и «Папка для записей».</string>
+	<key>The screen recording</key>
+	<string>Запись экрана</string>
 	<key>The screenshot has no image data.</key>
 	<string>В снимке экрана нет данных изображения.</string>
 	<key>The screenshot is taken when it reaches zero.</key>
@@ -5528,6 +5648,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Файл песни пропал — выберите его снова с помощью «Заменить».</string>
 	<key>The sound couldn't be read. Export again.</key>
 	<string>Не удалось прочитать звук. Экспортируйте снова.</string>
+	<key>The sound recorded with the screen</key>
+	<string>Звук, записанный вместе с экраном</string>
 	<key>The text is now on the clipboard: paste it anywhere with ⌘V.</key>
 	<string>Текст уже в буфере обмена: вставьте его куда угодно с помощью ⌘V.</string>
 	<key>The timeline at the bottom of the video editor.</key>
@@ -5554,6 +5676,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Само видео — в вашей папке сохранения — и видео с камеры, если камера была включена.</string>
 	<key>The voice track is empty, so there's nothing to clean up. Turn off Enhance voice to keep the original sound.</key>
 	<string>Голосовая дорожка пуста, поэтому очищать нечего. Выключите «Улучшение голоса», чтобы сохранить исходный звук.</string>
+	<key>The whole folder goes to the Trash: the recording, its camera video, its sound files, captions, and project.</key>
+	<string>В Корзину перемещается вся папка: запись, видео с камеры, звуковые файлы, субтитры и проект.</string>
 	<key>The whole frame zooms in.</key>
 	<string>Увеличивается весь кадр.</string>
 	<key>The whole mix at −16 LUFS, peaks under −1 dB</key>
@@ -5576,6 +5700,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Здесь уже есть увеличение</string>
 	<key>There's no video in this file</key>
 	<string>В этом файле нет видео</string>
+	<key>There's no video in “%@”</key>
+	<string>В «%@» нет видео</string>
+	<key>There's no video to use as the screen recording.</key>
+	<string>Нет видео, которое можно использовать как запись экрана.</string>
 	<key>There's nothing to write</key>
 	<string>Нечего записывать</string>
 	<key>These settings are used by Capture Text, Copy Text, and History search.</key>
@@ -6302,6 +6430,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Что LF Studios хранит и чего никогда не делает.</string>
 	<key>What a recording keeps</key>
 	<string>Что хранит запись</string>
+	<key>What is each file in “%@”?</key>
+	<string>Что за файлы в «%@»?</string>
 	<key>What was playing on your Mac</key>
 	<string>То, что звучало на вашем Mac</string>
 	<key>What's New</key>
@@ -6320,6 +6450,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Когда закончите, нажмите красную кнопку остановки или ⌃⌘Esc.</string>
 	<key>Whenever you capture or record an area.</key>
 	<string>Каждый раз, когда вы снимаете или записываете область.</string>
+	<key>Where do you want to save this recording?</key>
+	<string>Куда сохранить эту запись?</string>
+	<key>Where screenshots are saved: by Save on the preview after capture, and by Save automatically. Recordings have their own folder in Settings ▸ Recording.</key>
+	<string>Куда сохраняются снимки: кнопкой «Сохранить» в превью после снимка и параметром «Сохранять автоматически». У записей своя папка в разделе Настройки ▸ Запись.</string>
 	<key>Where the pointer went, and where you clicked.</key>
 	<string>Куда двигался указатель и где вы нажимали.</string>
 	<key>Where to find it</key>
@@ -6378,6 +6512,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Если есть расшифровка, можно вырезать и удаляя слова: Субтитры ▸ Монтаж по тексту.</string>
 	<key>With more than one screen, click Record next to the one you want.</key>
 	<string>Если экранов несколько, нажмите «Записать» рядом с нужным.</string>
+	<key>With the LF Studios project, the folder opens the whole edit again. Clips cut to your edit need the untouched recordings alongside.</key>
+	<string>С проектом LF Studios папка снова открывает весь монтаж. Клипам, обрезанным под монтаж, нужны рядом нетронутые исходные записи.</string>
 	<key>Words light up as they're spoken</key>
 	<string>Слова подсвечиваются по мере произнесения</string>
 	<key>Works best with Record when keys are pressed on while recording. For older recordings, LF Studios guesses from the screen and says so.</key>
@@ -6530,6 +6666,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Увеличения, следующие за текстовым курсором при наборе</string>
 	<key>Zooms that follow your text cursor while you type, so viewers can read along.</key>
 	<string>Увеличения, которые следуют за текстовым курсором, пока вы печатаете, чтобы зрители могли читать.</string>
+	<key>Zooms, styles, annotations, and title cards — older handoffs don't include them</key>
+	<string>Увеличения, стили, разметка и титры — в старых передачах их нет</string>
 	<key>a table</key>
 	<string>таблица</string>
 	<key>a transparent background</key>
@@ -6660,6 +6798,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>Не удается найти «%@». Верните файл на место или удалите его из этого видео (Стиль → Записи) и экспортируйте снова.</string>
 	<key>“%@” can't be read — it may be damaged, still being saved, or in a format this Mac can't play. Remove it from this video (Style → Recordings), or put a working copy in its place, then export again.</key>
 	<string>Не удается прочитать «%@» — возможно, файл поврежден, еще сохраняется или имеет формат, который этот Mac не может воспроизвести. Удалите его из этого видео (Стиль → Записи) или замените рабочей копией и экспортируйте снова.</string>
+	<key>“%@” couldn't be moved: %@</key>
+	<string>Не удалось переместить «%@»: %@</string>
 	<key>“%@” doesn't let this window be resized.</key>
 	<string>«%@» не позволяет менять размер этого окна.</string>
 	<key>“%@” found in %lld of %lld captures</key>

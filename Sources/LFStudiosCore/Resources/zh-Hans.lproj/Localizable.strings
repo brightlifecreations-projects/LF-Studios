@@ -18,6 +18,8 @@
 	<string>%@（⇧⌘Z）</string>
 	<key>%@ (⌘Z)</key>
 	<string>%@（⌘Z）</string>
+	<key>%@ It's in “%@” and opens as before.</key>
+	<string>%@ 它在“%@”中，可以像以前一样打开。</string>
 	<key>%@ Loupe</key>
 	<string>%@ 放大镜</string>
 	<key>%@ Zoom</key>
@@ -88,6 +90,14 @@
 	<string>%@ — 点按以更改</string>
 	<key>%@ — click to jump here, double-click to rename</key>
 	<string>%@ — 点按跳到这里，连按两次重新命名</string>
+	<key>%@ — it was cut like the edit, so it can't be lined up with the recording again</key>
+	<string>%@ — 它已按剪辑裁剪，无法再与录制内容对齐</string>
+	<key>%@ — its lines don't match the captions</key>
+	<string>%@ — 它的行与字幕不一致</string>
+	<key>%@ — only one camera video can be shown</key>
+	<string>%@ — 只能显示一个摄像头视频</string>
+	<key>%@ — separate sound files open as their own tracks in LF Studios 1.7</key>
+	<string>%@ — 在 LF Studios 1.7 中，单独的声音文件会作为独立的轨道打开</string>
 	<key>%@ → %@ — the part you ⇧-dragged on the timeline</key>
 	<string>%@ → %@ — 你在时间线上按住 ⇧ 拖移选中的部分</string>
 	<key>%@, %@</key>
@@ -140,6 +150,8 @@
 	<string>%lld 行 · 找到 %@</string>
 	<key>%lld links</key>
 	<string>%lld 个链接</string>
+	<key>%lld markers</key>
+	<string>%lld 个标记</string>
 	<key>%lld of %lld captures</key>
 	<string>%1$lld 张截屏（共 %2$lld 张）</string>
 	<key>%lld parts</key>
@@ -154,6 +166,8 @@
 	<string>%lld 秒</string>
 	<key>%lld saved captures · drag any card to Finder · right-click for more actions</key>
 	<string>已存储 %lld 张截屏 · 可将卡片拖到“访达” · 右键点按查看更多操作</string>
+	<key>%lld screen clips, one after the other</key>
+	<string>%lld 个屏幕片段，依次排列</string>
 	<key>%lld screens</key>
 	<string>%lld 个显示器</string>
 	<key>%lld screenshots deleted — click or press ⌘Z to undo</key>
@@ -190,6 +204,12 @@
 	<string>提前 0.1 秒</string>
 	<key>0.1s later</key>
 	<string>推后 0.1 秒</string>
+	<key>01 Screen: the screen recording. 02 Camera: the camera video, if you recorded one.</key>
+	<string>01 Screen：屏幕录制内容。02 Camera：摄像头视频（如果你录制了）。</string>
+	<key>03 Audio: your microphone and the Mac's sound as separate files. 05 Captions: your captions, once you make them.</key>
+	<string>03 Audio：你的麦克风和 Mac 的声音，分别存为单独的文件。05 Captions：你的字幕（制作字幕后）。</string>
+	<key>07 Data: the pointer, clicks, and keys. And README.txt, which says what each file is.</key>
+	<string>07 Data：指针、点按和按键。还有 README.txt，说明每个文件是什么。</string>
 	<key>A 2-second “Made with LF Studios” outro on your background — your own outro card is in Style</key>
 	<string>在你的背景上显示 2 秒的“Made with LF Studios”结尾 — 你自己的片尾卡在“样式”中</string>
 	<key>A README lists every file. Include speaker notes adds your notes.</key>
@@ -214,6 +234,8 @@
 	<string>项目使用的某个文件被移动、删除，或者在另一台 Mac 上。</string>
 	<key>A file with that name is in the way. Pick another name and export again.</key>
 	<string>已存在同名文件。请换一个名称，然后重新导出。</string>
+	<key>A folder with an LF Studios project in it opens that project, exactly as it was saved.</key>
+	<string>包含 LF Studios 项目的文件夹会打开该项目，与存储时完全一样。</string>
 	<key>A hairline that separates dark recordings from the background</key>
 	<string>一条细线，将深色录制内容与背景分开</string>
 	<key>A magnifier over one spot at the playhead; the rest of the frame stays in view</key>
@@ -422,6 +444,8 @@
 	<string>录制之后</string>
 	<key>After recording, click Restore size to put it back.</key>
 	<string>录制结束后，点按“恢复大小”让窗口恢复原样。</string>
+	<key>After you stop, LF Studios asks where to save the recording, then puts everything from it in one new folder: the video, the camera, the sound, and the project that opens it all.</key>
+	<string>停止录制后，LF Studios 会询问录制内容的存储位置，然后把所有内容放进一个新文件夹：视频、摄像头画面、声音，以及能打开这一切的项目。</string>
 	<key>Afterwards, click Restore size to put the window back.</key>
 	<string>录制结束后，点按“恢复大小”让窗口恢复原样。</string>
 	<key>Aim by Hand</key>
@@ -480,6 +504,10 @@
 	<string>始终显示箭头</string>
 	<key>Amber Fold</key>
 	<string>琥珀褶皱</string>
+	<key>An LF Studios project: open the folder in LF Studios to edit the video again. With clips cut to your edit, Include originals so it reopens in LF Studios adds the untouched recordings it needs.</key>
+	<string>LF Studios 项目：在 LF Studios 中打开该文件夹，即可再次编辑视频。如果片段已按你的剪辑裁剪，“包含原始文件，以便在 LF Studios 中重新打开”会加入所需的未改动的录制内容。</string>
+	<key>An older Creative Handoff is put back together from its files: the screen, the cuts, the camera at its place, captions, markers, and the pointer. A summary says what came back.</key>
+	<string>较早的创意交付会根据其中的文件重新组合：屏幕、剪切、位置正确的摄像头画面、字幕、标记和指针。摘要会说明恢复了哪些内容。</string>
 	<key>An optional 2-second “Made with LF Studios” card at the end.</key>
 	<string>可选：在结尾加上一张 2 秒的“Made with LF Studios”卡片。</string>
 	<key>Angle</key>
@@ -500,6 +528,8 @@
 	<string>另一个应用可能使用了相同的按键：请换用其他按键。</string>
 	<key>Any color…</key>
 	<string>任意颜色…</string>
+	<key>Any other folder: Import Folder lists the videos. Choose which is the screen recording and which the camera, and when the camera starts.</key>
+	<string>其他任何文件夹：“导入文件夹”会列出其中的视频。选择哪个是屏幕录制内容、哪个是摄像头视频，以及摄像头何时开始。</string>
 	<key>App</key>
 	<string>App</string>
 	<key>Appearance</key>
@@ -560,6 +590,8 @@
 	<string>箭头尾部</string>
 	<key>Arrows, shapes &amp; lines</key>
 	<string>箭头、形状和线条</string>
+	<key>Ask where to save after each recording</key>
+	<string>每次录制后询问存储位置</string>
 	<key>Aspect Ratio %@ — %@</key>
 	<string>宽高比 %@ — %@</string>
 	<key>Aspect ratio</key>
@@ -604,8 +636,6 @@
 	<string>自动缩放 — %lld 个缩放</string>
 	<key>Auto-dismiss overlay</key>
 	<string>自动隐藏缩略图</string>
-	<key>Auto-save folder</key>
-	<string>自动存储文件夹</string>
 	<key>Auto-zoom off — its zooms are gone. ⌘Z to undo</key>
 	<string>自动缩放已关闭 — 它生成的缩放已移除。按 ⌘Z 撤销</string>
 	<key>Auto-zoom on clicks</key>
@@ -892,6 +922,8 @@
 	<string>字幕已在编辑器中隐藏（“字幕”标签页→“显示字幕”）。</string>
 	<key>Captions from your narration — and cut the video by editing its words</key>
 	<string>根据你的解说生成字幕 — 还能通过编辑文字来剪辑视频</string>
+	<key>Captions in %@</key>
+	<string>%@字幕</string>
 	<key>Captions in the export</key>
 	<string>导出视频中的字幕</string>
 	<key>Captions look like this</key>
@@ -1080,6 +1112,10 @@
 	<string>选择“大小”、字体，以及“顶部”或“底部”。也可以在预览上拖移按键。</string>
 	<key>Choose a folder and click Export Here.</key>
 	<string>选择一个文件夹，然后点按“导出到此处”。</string>
+	<key>Choose a folder with a screen recording in it, as an MP4 or MOV file.</key>
+	<string>请选择一个包含屏幕录制内容（MP4 或 MOV 文件）的文件夹。</string>
+	<key>Choose a folder you can save to.</key>
+	<string>请选择一个你可以存储到的文件夹。</string>
 	<key>Choose a language</key>
 	<string>选择语言</string>
 	<key>Choose a language and click Translate.</key>
@@ -1088,6 +1124,8 @@
 	<string>选择要放在视频上的标志、水印或截屏</string>
 	<key>Choose a picture.</key>
 	<string>选择一张图片。</string>
+	<key>Choose a project, a folder, or a video</key>
+	<string>选择项目、文件夹或视频</string>
 	<key>Choose a recording or video to add after this one</key>
 	<string>选择要添加在此之后的录制内容或视频</string>
 	<key>Choose a size, or Custom Size… for your own.</key>
@@ -1100,14 +1138,10 @@
 	<string>在“外观”下选择一种样式。</string>
 	<key>Choose a style.</key>
 	<string>选择一种样式。</string>
-	<key>Choose a writable folder for auto-save.</key>
-	<string>请为自动存储选择一个可写入的文件夹。</string>
 	<key>Choose a writable folder.</key>
 	<string>请选择一个可写入的文件夹。</string>
 	<key>Choose again with another speed to change them.</key>
 	<string>再选一次其他速度即可更改。</string>
-	<key>Choose an LF Studios project</key>
-	<string>选择 LF Studios 项目</string>
 	<key>Choose between accurate and fast, and which languages to read.</key>
 	<string>选择精确还是快速，以及要识别哪些语言。</string>
 	<key>Choose folder</key>
@@ -1130,6 +1164,8 @@
 	<string>选择要在气泡中显示的摄像头视频</string>
 	<key>Choose the corner (Left or Right) and how long it stays in the same settings section. Hovering keeps it open.</key>
 	<string>在同一设置部分中，选择它显示的角落（“左侧”或“右侧”）以及停留多久。指针悬停时它会一直显示。</string>
+	<key>Choose the screen recording, and the camera video if there is one. Nothing in the folder changes until you save.</key>
+	<string>选择屏幕录制内容，以及摄像头视频（如果有）。在你存储之前，文件夹中的内容不会有任何改变。</string>
 	<key>Choose the video's shape for where it's going.</key>
 	<string>根据视频的去处，选择视频的画面比例。</string>
 	<key>Choose what happens after each screenshot or recording.</key>
@@ -1138,8 +1174,8 @@
 	<string>选择气泡显示的内容，让它看起来更精致。</string>
 	<key>Choose what to include, then click Choose Location….</key>
 	<string>选择要包含的内容，然后点按“选择位置…”。</string>
-	<key>Choose where files are saved, what they're called, and the picture format.</key>
-	<string>选择文件存储的位置、文件名称以及图片格式。</string>
+	<key>Choose where screenshots and recordings are saved, what they're called, and the picture format.</key>
+	<string>选择截屏和录制内容的存储位置、名称以及图片格式。</string>
 	<key>Choose where to put the handoff folder — any folder or drive</key>
 	<string>选择交付文件夹的存放位置 — 任意文件夹或磁盘均可</string>
 	<key>Choose window</key>
@@ -1212,6 +1248,8 @@
 	<string>点按预览上方的“模糊”，或按 B 键。</string>
 	<key>Click Camera in the recording bar. Choose the camera in ⋯ More recording options.</key>
 	<string>点按录制栏中的“摄像头”。在“⋯ 更多录制选项”中选择摄像头。</string>
+	<key>Click Cancel, or turn off asking, and it goes in the Recording folder, laid out the same way. Nothing is ever lost.</key>
+	<string>点按“取消”或关闭询问，录制内容就会以同样的结构放进“录制文件夹”。任何内容都不会丢失。</string>
 	<key>Click Choose under the window you want.</key>
 	<string>点按你想要的窗口下方的“选择”。</string>
 	<key>Click Color for eight quick colors, or Custom… for any color.</key>
@@ -1702,6 +1740,8 @@
 	<string>硬切，无转场</string>
 	<key>Cutout</key>
 	<string>抠像</string>
+	<key>Cuts and speed changes (%lld clips)</key>
+	<string>剪切和速度调整（%lld 个片段）</string>
 	<key>Dark Mode</key>
 	<string>深色</string>
 	<key>De-esser</key>
@@ -1764,8 +1804,6 @@
 	<string>黑场过渡</string>
 	<key>Dips while you talk, comes back in the pauses</key>
 	<string>说话时降低音量，停顿时恢复</string>
-	<key>Directory where screenshots are saved if Auto-Save is enabled.</key>
-	<string>启用自动存储时，截屏会存储在此文件夹中。</string>
 	<key>Disable Apple Shortcuts</key>
 	<string>停用 Apple 快捷键</string>
 	<key>Disabled</key>
@@ -1958,6 +1996,8 @@
 	<string>缩放期间，画面会随你的指针移动，让你指向的内容始终留在画面中。这时预览会显示“镜头跟随你的指针”。</string>
 	<key>Dusk</key>
 	<string>黄昏</string>
+	<key>Each recording in its own folder</key>
+	<string>每段录制内容都有自己的文件夹</string>
 	<key>Each recording keeps its own pointer, clicks, and shortcuts. Reorder them here; cut and trim them on the timeline like any clip.</key>
 	<string>每个录制内容都保留自己的指针、点按和快捷键。在这里调整顺序；像其他片段一样在时间线上剪切和修剪。</string>
 	<key>Each shape keeps its own version: switch back and forth without losing anything. Cuts, words, and styles stay shared.</key>
@@ -2078,6 +2118,8 @@
 	<string>把这个视频的每个部分都作为单独的文件放进一个新文件夹 — 交给其他剪辑师或剪辑软件。</string>
 	<key>Every part of your video as its own file, in one folder, for another editor or app.</key>
 	<string>视频的每个部分都作为单独的文件，放在同一个文件夹中，交给其他剪辑师或应用。</string>
+	<key>Every recording gets a folder of its own, with its project file, the screen and camera videos, the sound as separate files, and its data. With asking off, or when you click Cancel, it goes in the Recording folder.</key>
+	<string>每段录制内容都有一个专属文件夹，里面有它的项目文件、屏幕和摄像头视频、分别存储的声音文件，以及它的数据。关闭询问，或点按“取消”时，它会放进“录制文件夹”。</string>
 	<key>Every recording, screenshot, and saved project in one place.</key>
 	<string>所有录制内容、截屏和已存储的项目都集中在一处。</string>
 	<key>Every screenshot is kept in History and in Home ▸ Screenshots.</key>
@@ -2236,6 +2278,8 @@
 	<string>“文件 ▸ 创意交付…”（⇧⌘E）、导出窗口中的按钮，或在“主页”中右键点按一段录制内容。</string>
 	<key>Files are copied as they are wherever they can be. Only what has to change — clips cut to your edit, a camera with its background removed — is re-encoded to ProRes.</key>
 	<string>能原样复制的文件都会原样复制。只有必须改变的内容 — 按你的剪辑裁剪的片段、去除了背景的摄像头画面 — 才会重新编码为 ProRes。</string>
+	<key>Files move only once the recording is finished and checked. If something goes wrong, the recording stays where it was.</key>
+	<string>只有在录制完成并检查无误后，文件才会移动。如果出现问题，录制内容会留在原处。</string>
 	<key>Fill the Frame, Follow the Cursor</key>
 	<string>填满画面并跟随指针</string>
 	<key>Fill the frame, follow the cursor</key>
@@ -2318,6 +2362,8 @@
 	<string>像自拍一样翻转</string>
 	<key>Float a screenshot above all your windows, as a reference while you work.</key>
 	<string>让截屏浮在所有窗口上方，工作时方便参考。</string>
+	<key>Folder name:</key>
+	<string>文件夹名称：</string>
 	<key>Follow Cursor</key>
 	<string>跟随指针</string>
 	<key>Follow Typing</key>
@@ -2666,10 +2712,14 @@
 	<string>如果你几秒钟内没有回应，录制内容会被保留，以防万一。</string>
 	<key>If your Mac crashes or loses power while recording, LF Studios saves what it can.</key>
 	<string>如果录制时 Mac 崩溃或断电，LF Studios 会尽量保存录下的内容。</string>
+	<key>Ignore</key>
+	<string>忽略</string>
 	<key>Image</key>
 	<string>图像</string>
 	<key>Images &amp; logos</key>
 	<string>图像和标志</string>
+	<key>Import Folder</key>
+	<string>导入文件夹</string>
 	<key>Import Presets…</key>
 	<string>导入预设…</string>
 	<key>Imported %lld presets</key>
@@ -2760,10 +2810,14 @@
 	<string>包含媒体（在任何 Mac 上都可用）</string>
 	<key>Include media: the project opens on any Mac.</key>
 	<string>包含媒体：项目可以在任何 Mac 上打开。</string>
+	<key>Include originals so it reopens in LF Studios</key>
+	<string>包含原始文件，以便在 LF Studios 中重新打开</string>
 	<key>Include speaker notes</key>
 	<string>包括演讲者备注</string>
 	<key>Include the finished video</key>
 	<string>附带成品视频</string>
+	<key>Includes %@ of originals for the LF Studios project</key>
+	<string>包含 %@ 的原始文件，供 LF Studios 项目使用</string>
 	<key>Includes: %@</key>
 	<string>包含：%@</string>
 	<key>Inset</key>
@@ -2792,8 +2846,8 @@
 	<string>片头卡，%@ 至 %@</string>
 	<key>Iris</key>
 	<string>鸢尾</string>
-	<key>It checks the free space first. Cancel removes the half-made folder.</key>
-	<string>它会先检查可用空间。“取消”会移除做到一半的文件夹。</string>
+	<key>It checks the free space first, and shows how much the originals add. Cancel removes the half-made folder.</key>
+	<string>它会先检查可用空间，并显示原始文件会增加多少大小。“取消”会删除做了一半的文件夹。</string>
 	<key>It happens by itself. The bar while recording shows a short note, and a notice explains it.</key>
 	<string>这会自动进行。录制栏会显示一条简短说明，并有提示解释发生了什么。</string>
 	<key>It isn't an LF Studios project, or it's damaged.</key>
@@ -2828,6 +2882,8 @@
 	<string>这是你的我的风格，删除后“应用我的风格”将无可应用，直到你另选一个。使用此预设的视频会保留原样。</string>
 	<key>Its own arrow, text and hand pointers, drawn for the video.</key>
 	<string>专为视频绘制的箭头、文本和手形指针。</string>
+	<key>Its screen recording can't be read.</key>
+	<string>无法读取它的屏幕录制内容。</string>
 	<key>JPEG Quality</key>
 	<string>JPEG 质量</string>
 	<key>Jump here</key>
@@ -3082,6 +3138,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>正在聆听…</string>
 	<key>Listens on this Mac — nothing is uploaded</key>
 	<string>在这台 Mac 上识别 — 不会上传任何内容</string>
+	<key>Loaded:</key>
+	<string>已载入：</string>
 	<key>Locate…</key>
 	<string>查找…</string>
 	<key>Look</key>
@@ -3258,6 +3316,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>前移</string>
 	<key>Move later</key>
 	<string>后移</string>
+	<key>Move or rename the folder in Finder as you like, or copy it to another Mac: it still opens.</key>
+	<string>你可以在“访达”中随意移动文件夹或重新命名，或将它拷贝到另一台 Mac：它仍然可以打开。</string>
 	<key>Move the Camera Instead</key>
 	<string>改为移动摄像头</string>
 	<key>Move the Camera Instead: slides the bubble to a free corner during that zoom.</key>
@@ -3280,8 +3340,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>将指针移到一个窗口上：它会高亮显示。</string>
 	<key>Move the pointer over the window you want: it lights up.</key>
 	<string>将指针移到你想要的窗口上：它会高亮显示。</string>
+	<key>Move to Trash</key>
+	<string>移到废纸篓</string>
 	<key>Move to where it ends and press S again.</key>
 	<string>移到它结束的地方，再按一次 S 键。</string>
+	<key>Move “%@” to the Trash?</key>
+	<string>要将“%@”移到废纸篓吗？</string>
 	<key>Moved clear of the camera bubble.</key>
 	<string>已移出摄像头气泡。</string>
 	<key>Moved to the Trash</key>
@@ -3520,12 +3584,18 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>空间不足：交付大约需要 %1$@，那里只有 %2$@ 可用。</string>
 	<key>Not for this video</key>
 	<string>此视频不需要</string>
+	<key>Not loaded:</key>
+	<string>未载入：</string>
 	<key>Not now</key>
 	<string>以后再说</string>
 	<key>Not set</key>
 	<string>未设定</string>
 	<key>Nothing in the Guide matches your search. Try a shorter word, like “zoom” or “camera”.</key>
 	<string>使用指南中没有与你的搜索匹配的内容。试试更短的词，例如“缩放”或“摄像头”。</string>
+	<key>Nothing in the folder changes until you save (⌘S).</key>
+	<string>在你存储（⌘S）之前，文件夹中的内容不会有任何改变。</string>
+	<key>Nothing in the folder changes until you save (⌘S). Saving writes the project into the folder.</key>
+	<string>在你存储（⌘S）之前，文件夹中的内容不会有任何改变。存储时会把项目写入该文件夹。</string>
 	<key>Nothing is ticked or blurred until you choose. Everything stays on your Mac.</key>
 	<string>在你选择之前，什么都不会被勾选或模糊。一切都留在你的 Mac 上。</string>
 	<key>Nothing is uploaded. The first time, macOS may download the language, which needs the internet once.</key>
@@ -3628,10 +3698,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>打开“隐私与安全性”</string>
 	<key>Open Project as Saved</key>
 	<string>打开存储时的项目</string>
-	<key>Open Project…</key>
-	<string>打开项目…</string>
-	<key>Open Project… in Home, File ▸ Open Project… (⌘O), or double-click the project in Finder.</key>
-	<string>“主页”中的“打开项目…”、“文件 ▸ 打开项目…”（⌘O），或在“访达”中连按两次项目。</string>
 	<key>Open Recording Settings…</key>
 	<string>打开录制设置…</string>
 	<key>Open Settings</key>
@@ -3648,20 +3714,24 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>在 Final Cut Pro 或 DaVinci Resolve 中打开 Timeline.fcpxml，或在 Premiere Pro 中打开“Timeline (Premiere).xml”。</string>
 	<key>Open Video Editor</key>
 	<string>打开视频编辑器</string>
-	<key>Open a .lfstudios project</key>
-	<string>打开 .lfstudios 项目</string>
+	<key>Open a folder of files as one project: a recording's folder, a Creative Handoff, or any folder with videos in it.</key>
+	<string>把一个文件夹中的文件作为一个项目打开：录制内容的文件夹、创意交付，或任何包含视频的文件夹。</string>
 	<key>Open a project</key>
 	<string>打开项目</string>
+	<key>Open a project, a recording's folder, a Creative Handoff, or a video</key>
+	<string>打开项目、录制内容的文件夹、创意交付或视频</string>
 	<key>Open a recording in the video editor first, then click Show me.</key>
 	<string>请先在视频编辑器中打开一段录制内容，然后点按“带我去看”。</string>
 	<key>Open a recording, or any MP4 or MOV video, in the video editor.</key>
 	<string>在视频编辑器中打开录制内容，或任何 MP4 或 MOV 视频。</string>
-	<key>Open a saved .lfstudios project.</key>
-	<string>打开已存储的 .lfstudios 项目。</string>
+	<key>Open a saved .lfstudios project, a recording's folder, or a video.</key>
+	<string>打开已存储的 .lfstudios 项目、录制内容的文件夹或视频。</string>
 	<key>Open a screenshot from Home, History, or the preview after capture. The tools are in the toolbar at the top.</key>
 	<string>从“主页”“历史记录”或截取后预览中打开截屏。工具位于顶部的工具栏中。</string>
 	<key>Open a screenshot to mark it up, then copy or save the result.</key>
 	<string>打开截屏进行标注，然后拷贝或存储结果。</string>
+	<key>Open a whole folder</key>
+	<string>打开整个文件夹</string>
 	<key>Open and close</key>
 	<string>展开和收起</string>
 	<key>Open at login</key>
@@ -3684,6 +3754,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>录制后打开视频编辑器。</string>
 	<key>Open video…</key>
 	<string>打开视频…</string>
+	<key>Opened “%@”</key>
+	<string>已打开“%@”</string>
 	<key>Opening a video</key>
 	<string>打开视频</string>
 	<key>Opening, saving, copying &amp; undo</key>
@@ -3692,6 +3764,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>在“样式”中打开其标题和时长</string>
 	<key>Opens its volume, fades, and ducking in Audio</key>
 	<string>在“音频”中打开其音量、淡入淡出和降低设置</string>
+	<key>Open…</key>
+	<string>打开…</string>
+	<key>Open… in Home or File ▸ Open… (⌘O), and choose the folder. Or drop the folder on the Home window or the LF Studios icon in the Dock.</key>
+	<string>点按“主页”中的“打开…”或选择“文件 ▸ 打开…”（⌘O），然后选择该文件夹。也可以把文件夹拖到“主页”窗口或程序坞中的 LF Studios 图标上。</string>
+	<key>Open… in Home, File ▸ Open… (⌘O), or double-click the project in Finder.</key>
+	<string>点按“主页”中的“打开…”、选择“文件 ▸ 打开…”（⌘O），或在“访达”中连按两次该项目。</string>
 	<key>Optional: type words to look for too, like a client's name.</key>
 	<string>可选：输入其他要查找的字词，例如客户的名字。</string>
 	<key>Optional: type words to look for, and turn on Also scan the camera video.</key>
@@ -4128,6 +4206,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>已丢弃录制内容</string>
 	<key>Recording failed before saving.</key>
 	<string>录制失败，未能存储。</string>
+	<key>Recording folder</key>
+	<string>录制文件夹</string>
 	<key>Recording keyboard shortcuts</key>
 	<string>正在记录快捷键</string>
 	<key>Recording paused — click to stop (%@)</key>
@@ -4662,8 +4742,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>在“主页”中右键点按项目 ▸ 删除：它会被移到废纸篓。</string>
 	<key>Right-click a zoom on the timeline for quick changes.</key>
 	<string>右键点按时间线上的缩放，可快速进行更改。</string>
-	<key>Right-click for Open, Show in Finder, Creative Handoff…, or Delete (moves it to the Trash).</key>
-	<string>右键点按可选择“打开”“在‘访达’中显示”“创意交付…”或“删除”（移到废纸篓）。</string>
+	<key>Right-click for Open, Show in Finder, Creative Handoff…, or Delete (moves it to the Trash; for a recording's folder, the whole folder, after asking).</key>
+	<string>右键点按可选择“打开”“在‘访达’中显示”“创意交付…”或“删除”（移到废纸篓；如果是录制内容的文件夹，会在询问后移走整个文件夹）。</string>
 	<key>Right-click for Save As…, Pin to Screen, and Delete.</key>
 	<string>右键点按可选择“存储为…”“贴到屏幕”和“删除”。</string>
 	<key>Right-click it for Copy, Save As…, Edit, Close Pin, or Close All Pins.</key>
@@ -4702,12 +4782,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>存储文件夹</string>
 	<key>Save Location</key>
 	<string>存储位置</string>
-	<key>Save Location: the folder for saved screenshots and recordings (the Desktop to start with).</key>
-	<string>存储位置：存储截屏和录制内容的文件夹（一开始是桌面）。</string>
 	<key>Save Project</key>
 	<string>存储项目</string>
 	<key>Save Project As…</key>
 	<string>项目存储为…</string>
+	<key>Save Recording</key>
+	<string>存储录制内容</string>
 	<key>Save Subtitles</key>
 	<string>存储字幕</string>
 	<key>Save Subtitles (.srt)…</key>
@@ -4736,7 +4816,7 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>要存储对此截屏的更改吗？</string>
 	<key>Save folder updated.</key>
 	<string>存储文件夹已更新。</string>
-	<key>Save folder, file names &amp; format</key>
+	<key>Save folders, file names &amp; format</key>
 	<string>存储文件夹、文件名和格式</string>
 	<key>Save just the sound, with the same mix and loudness as the video.</key>
 	<string>只存储声音，混音和响度与视频相同。</string>
@@ -4766,6 +4846,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>已存储到“%@”：%@</string>
 	<key>Saved to History</key>
 	<string>已存入历史记录</string>
+	<key>Saved to “%@” in %@</key>
+	<string>已存储到“%@”（位于“%@”中）</string>
 	<key>Saved “%@”</key>
 	<string>已存储“%@”</string>
 	<key>Saves %@ — only silences where nothing happens on screen</key>
@@ -4784,6 +4866,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>只存储每次按键的时刻：绝不存储按了哪个键，正在使用密码栏时也不存储任何内容。</string>
 	<key>Save…</key>
 	<string>存储…</string>
+	<key>Saving</key>
+	<string>存储</string>
 	<key>Saving captures to History</key>
 	<string>正在将截屏存储到历史记录</string>
 	<key>Saving project…</key>
@@ -4808,6 +4892,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>需要屏幕录制权限</string>
 	<key>Screen clips, camera, voice, computer sound, music, pictures, captions, and fonts.</key>
 	<string>屏幕片段、摄像头、人声、电脑声音、音乐、图片、字幕和字体。</string>
+	<key>Screen recording</key>
+	<string>屏幕录制内容</string>
 	<key>Screen recording didn't start in time. Try again.</key>
 	<string>屏幕录制未能及时开始。请重试。</string>
 	<key>Screen recording “%@” — the file is missing</key>
@@ -4820,6 +4906,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>已截屏</string>
 	<key>Screenshot editor</key>
 	<string>截屏编辑器</string>
+	<key>Screenshot folder</key>
+	<string>截屏文件夹</string>
+	<key>Screenshot folder (Settings ▸ Screenshots): where screenshots are saved. Recording folder (Settings ▸ Recording): where recordings go when you don't choose. Both start as the folder you used before, or the Desktop.</key>
+	<string>截屏文件夹（“设置 ▸ 截屏”）：截屏的存储位置。录制文件夹（“设置 ▸ 录制”）：你不选择位置时录制内容的存放位置。两者一开始都是你以前使用的文件夹，或者桌面。</string>
 	<key>Screenshot selection</key>
 	<string>截屏选区</string>
 	<key>Screenshot thumbnail</key>
@@ -4996,8 +5086,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>设置 ▸ 截屏 ▸ 文字识别。</string>
 	<key>Settings ▸ Screenshots ▸ Window Capture adds a soft shadow and some transparent space around the window. It's on to start with.</key>
 	<string>“设置 ▸ 截屏 ▸ 窗口截屏”会在窗口周围添加柔和的阴影和一些透明空白。此选项一开始就是打开的。</string>
-	<key>Settings ▸ Screenshots.</key>
-	<string>设置 ▸ 截屏。</string>
+	<key>Settings ▸ Screenshots, and Settings ▸ Recording ▸ Saving.</key>
+	<string>“设置 ▸ 截屏”，以及“设置 ▸ 录制 ▸ 存储”。</string>
 	<key>Settings ▸ Shortcuts.</key>
 	<string>设置 ▸ 快捷键。</string>
 	<key>Settings…</key>
@@ -5202,10 +5292,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>纯色</string>
 	<key>Solid color</key>
 	<string>纯色</string>
+	<key>Some files couldn't be written — README.txt in the folder lists them</key>
+	<string>部分文件无法写入 — 文件夹中的 README.txt 列出了这些文件</string>
 	<key>Something not working? Find the problem, then try the fixes in order.</key>
 	<string>遇到问题了？先找到问题所在，再按顺序尝试下面的解决方法。</string>
 	<key>Sound</key>
 	<string>声音</string>
+	<key>Sound files can be added as tracks of their own in LF Studios 1.7.</key>
+	<string>在 LF Studios 1.7 中，声音文件可以作为独立的轨道添加。</string>
 	<key>Sounds</key>
 	<string>声音</string>
 	<key>Space</key>
@@ -5322,6 +5416,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>开始，再按一次结束</string>
 	<key>Starts</key>
 	<string>开始</string>
+	<key>Starts after the screen by</key>
+	<string>晚于屏幕</string>
 	<key>Startup</key>
 	<string>启动</string>
 	<key>Step %lld</key>
@@ -5524,6 +5620,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>菜单栏中的 LF Studios 菜单 ▸ 扫描二维码。</string>
 	<key>The LF Studios menu in the menu bar ▸ Timed Capture.</key>
 	<string>菜单栏中的 LF Studios 菜单 ▸ 定时截屏。</string>
+	<key>The LF Studios project — it needs the original files: turn on Include originals so it reopens in LF Studios</key>
+	<string>LF Studios 项目 — 它需要原始文件：请打开“包含原始文件，以便在 LF Studios 中重新打开”</string>
 	<key>The Undo and Redo buttons in the editor's toolbar.</key>
 	<string>编辑器工具栏中的“撤销”和“重做”按钮。</string>
 	<key>The aspect ratio menu in the video editor's toolbar.</key>
@@ -5554,6 +5652,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>无法读取摄像头视频</string>
 	<key>The camera video couldn't be read, so no face could be found.</key>
 	<string>无法读取摄像头视频，因此找不到面部。</string>
+	<key>The camera, %@ after the screen</key>
+	<string>摄像头画面，晚于屏幕 %@</string>
 	<key>The cards use the same background as your video. Pick their font with the font menu.</key>
 	<string>卡片使用与视频相同的背景。用字体菜单选择它们的字体。</string>
 	<key>The clips lane on the timeline, and the Timeline menu.</key>
@@ -5580,6 +5680,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>第一次使用时，macOS 会请求允许使用麦克风。</string>
 	<key>The flag button in the bar while recording.</key>
 	<string>录制期间录制栏中的旗帜按钮。</string>
+	<key>The folder couldn't be made: %@</key>
+	<string>无法创建文件夹：%@</string>
 	<key>The font menu next to captions, text, title cards, and Keys on screen.</key>
 	<string>字幕、文字、标题卡和“屏幕按键”旁边的字体菜单。</string>
 	<key>The handoff is ready</key>
@@ -5608,6 +5710,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>麦克风处于关闭或静音状态，或者未获得允许。</string>
 	<key>The model downloads once from Hugging Face. After that, Whisper works offline, and your recording is never uploaded.</key>
 	<string>模型只需从 Hugging Face 下载一次。之后 Whisper 可离线使用，你的录制内容绝不会被上传。</string>
+	<key>The music</key>
+	<string>音乐</string>
 	<key>The notes never appear in a recording, a screenshot, or screen sharing.</key>
 	<string>备注绝不会出现在录制内容、截屏或屏幕共享中。</string>
 	<key>The notes you read from while recording, kept with the video.</key>
@@ -5624,12 +5728,20 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>图片也会保存在“历史记录”中，所以之后可以搜索其中的文字。</string>
 	<key>The picture's file is gone — choose it again with Replace.</key>
 	<string>图片文件已不存在 — 请使用“替换”重新选择。</string>
+	<key>The pictures in 04 Graphics — older handoffs don't say where they were placed</key>
+	<string>04 Graphics 中的图片 — 较早的交付没有记录它们的位置</string>
+	<key>The pointer data — it fits only an uncut recording</key>
+	<string>指针数据 — 它只适用于未剪辑的录制内容</string>
 	<key>The pointer glides back to where it started at the end, so the video loops without a jump.</key>
 	<string>结尾时指针会滑回起点，这样视频循环播放时不会跳动。</string>
 	<key>The pointer glides back to where it started, so the video loops without a jump</key>
 	<string>指针会滑回起始位置，让视频无缝循环</string>
+	<key>The pointer, clicks, and keyboard shortcuts</key>
+	<string>指针、点按和快捷键</string>
 	<key>The preview shows only when Show the preview after capture is on in Settings ▸ General.</key>
 	<string>只有在“设置 ▸ 通用”中打开了“截取后显示预览”，才会显示预览。</string>
+	<key>The project file opens everything again, exactly as you left it. LF Studios keeps it up to date as you edit.</key>
+	<string>项目文件会让一切按你离开时的样子重新打开。LF Studios 会在你编辑时随时更新它。</string>
 	<key>The recording bar</key>
 	<string>录制栏</string>
 	<key>The recording bar, the camera bubble preview, Speaker notes, the countdown, and notices.</key>
@@ -5640,12 +5752,20 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>“%@”的录制内容不见了</string>
 	<key>The recording has no voice, the language isn't ready, or a permission is off.</key>
 	<string>录制内容中没有人声、语言还没准备好，或者某项权限已关闭。</string>
+	<key>The recording isn't where it was saved.</key>
+	<string>录制内容不在存储时的位置。</string>
+	<key>The recording stayed where it was</key>
+	<string>录制内容留在了原处</string>
 	<key>The recording's file can't be found — it may have been moved or deleted. Put it back and export again.</key>
 	<string>找不到录制内容的文件 — 它可能已被移动或删除。请将它放回原处，然后重新导出。</string>
 	<key>The red stop button in the bar while recording, or the red timer in the menu bar.</key>
 	<string>录制期间录制栏中的红色停止按钮，或菜单栏中的红色计时器。</string>
 	<key>The save panel did not return a destination. Please try saving again.</key>
 	<string>存储面板未返回存储位置。请再次尝试存储。</string>
+	<key>The save window appears after each recording. Settings ▸ Recording ▸ Saving has Ask where to save after each recording and the Recording folder.</key>
+	<string>每次录制后都会出现存储窗口。“设置 ▸ 录制 ▸ 存储”中有“每次录制后询问存储位置”和“录制文件夹”。</string>
+	<key>The screen recording</key>
+	<string>屏幕录制内容</string>
 	<key>The screenshot has no image data.</key>
 	<string>截屏不含图像数据。</string>
 	<key>The screenshot is taken when it reaches zero.</key>
@@ -5674,6 +5794,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>歌曲文件已不存在 — 请使用“替换”重新选择。</string>
 	<key>The sound couldn't be read. Export again.</key>
 	<string>无法读取声音。请重新导出。</string>
+	<key>The sound recorded with the screen</key>
+	<string>与屏幕一同录制的声音</string>
 	<key>The text is now on the clipboard: paste it anywhere with ⌘V.</key>
 	<string>文字现在已在剪贴板中：用 ⌘V 粘贴到任何地方。</string>
 	<key>The timeline at the bottom of the video editor.</key>
@@ -5700,6 +5822,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>视频（在你的存储文件夹中），以及摄像头视频（如果打开了摄像头）。</string>
 	<key>The voice track is empty, so there's nothing to clean up. Turn off Enhance voice to keep the original sound.</key>
 	<string>人声轨道为空，没有可清理的内容。请关闭“增强人声”以保留原始声音。</string>
+	<key>The whole folder goes to the Trash: the recording, its camera video, its sound files, captions, and project.</key>
+	<string>整个文件夹都会移到废纸篓：录制内容、它的摄像头视频、声音文件、字幕和项目。</string>
 	<key>The whole frame zooms in.</key>
 	<string>整个画面放大。</string>
 	<key>The whole mix at −16 LUFS, peaks under −1 dB</key>
@@ -5722,6 +5846,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>这里已有缩放</string>
 	<key>There's no video in this file</key>
 	<string>此文件中没有视频</string>
+	<key>There's no video in “%@”</key>
+	<string>“%@”中没有视频</string>
+	<key>There's no video to use as the screen recording.</key>
+	<string>没有可用作屏幕录制内容的视频。</string>
 	<key>There's nothing to write</key>
 	<string>没有可写入的内容</string>
 	<key>These settings are used by Capture Text, Copy Text, and History search.</key>
@@ -6454,6 +6582,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>LF Studios 会保存什么，以及绝不会做什么。</string>
 	<key>What a recording keeps</key>
 	<string>录制内容会保存什么</string>
+	<key>What is each file in “%@”?</key>
+	<string>“%@”中的每个文件分别是什么？</string>
 	<key>What was playing on your Mac</key>
 	<string>你的 Mac 上播放的声音</string>
 	<key>What's New</key>
@@ -6472,6 +6602,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>完成后，点按红色的停止按钮或按下 ⌃⌘Esc。</string>
 	<key>Whenever you capture or record an area.</key>
 	<string>每次捕捉或录制一个区域时。</string>
+	<key>Where do you want to save this recording?</key>
+	<string>你想把这段录制内容存储到哪里？</string>
+	<key>Where screenshots are saved: by Save on the preview after capture, and by Save automatically. Recordings have their own folder in Settings ▸ Recording.</key>
+	<string>截屏的存储位置：用于截取后预览中的“存储”和“自动存储”。录制内容在“设置 ▸ 录制”中有自己的文件夹。</string>
 	<key>Where the pointer went, and where you clicked.</key>
 	<string>指针移动的路径，以及你点按的位置。</string>
 	<key>Where to find it</key>
@@ -6530,6 +6664,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>有了文字稿，你还可以通过删除文字来剪辑：“字幕 ▸ 按文字编辑”。</string>
 	<key>With more than one screen, click Record next to the one you want.</key>
 	<string>如果有多个屏幕，请点按你想要的那个屏幕旁边的“录制”。</string>
+	<key>With the LF Studios project, the folder opens the whole edit again. Clips cut to your edit need the untouched recordings alongside.</key>
+	<string>有了 LF Studios 项目，打开该文件夹即可重现整个剪辑。按你的剪辑裁剪的片段需要旁边附带未改动的录制内容。</string>
 	<key>Words light up as they're spoken</key>
 	<string>说到哪个词，哪个词就会亮起</string>
 	<key>Works best with Record when keys are pressed on while recording. For older recordings, LF Studios guesses from the screen and says so.</key>
@@ -6688,6 +6824,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>打字时跟随文本光标的缩放</string>
 	<key>Zooms that follow your text cursor while you type, so viewers can read along.</key>
 	<string>在你打字时跟随文本光标的缩放，让观众能跟着读。</string>
+	<key>Zooms, styles, annotations, and title cards — older handoffs don't include them</key>
+	<string>缩放、样式、标注和标题卡 — 较早的交付不包含这些内容</string>
 	<key>a table</key>
 	<string>1 个表格</string>
 	<key>a transparent background</key>
@@ -6818,6 +6956,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>找不到“%@”。请将其放回原处，或将其从此视频中移除（“样式”→“录制内容”），然后重新导出。</string>
 	<key>“%@” can't be read — it may be damaged, still being saved, or in a format this Mac can't play. Remove it from this video (Style → Recordings), or put a working copy in its place, then export again.</key>
 	<string>无法读取“%@” — 它可能已损坏、仍在存储中，或采用了这台 Mac 无法播放的格式。请将其从此视频中移除（“样式”→“录制内容”），或用可正常使用的副本替换，然后重新导出。</string>
+	<key>“%@” couldn't be moved: %@</key>
+	<string>无法移动“%@”：%@</string>
 	<key>“%@” doesn't let this window be resized.</key>
 	<string>“%@”不允许调整此窗口的大小。</string>
 	<key>“%@” found in %lld of %lld captures</key>

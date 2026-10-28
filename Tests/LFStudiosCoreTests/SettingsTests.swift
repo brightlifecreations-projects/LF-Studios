@@ -37,6 +37,56 @@ final class SettingsTests: XCTestCase {
         XCTAssertFalse(Settings.openVideoEditorAfterRecording)
     }
 
+    // MARK: Screenshot folder and recording folder
+
+    private func makeFolder(_ name: String) throws -> URL {
+        let url = FileManager.default.temporaryDirectory.appendingPathComponent("lfstudios-folders-\(UUID().uuidString)/\(name)", isDirectory: true)
+        try FileManager.default.createDirectory(at: url, withIntermediateDirectories: true)
+        return url.standardizedFileURL
+    }
+
+    func testRecordingFolderStartsAsTheFolderRecordingsWentToBefore() throws {
+        // A fresh install: both are the Desktop.
+        XCTAssertEqual(Settings.recordingFolder, Settings.defaultAutoSaveLocation)
+        XCTAssertTrue(Settings.askWhereToSaveRecordings, "asks to start with")
+        // Someone who picked a save folder before it was split.
+        let old = try makeFolder("Before")
+        XCTAssertTrue(Settings.setAutoSaveLocation(old.path))
+        XCTAssertEqual(Settings.recordingFolder, old.path)
+        Settings.migrateRecordingFolderIfNeeded()
+        // From now on they're separate: a new screenshot folder doesn't move recordings.
+        let screenshots = try makeFolder("Screenshots")
+        XCTAssertTrue(Settings.setAutoSaveLocation(screenshots.path))
+        XCTAssertEqual(Settings.autoSaveLocation, screenshots.path)
+        XCTAssertEqual(Settings.recordingFolder, old.path)
+        let recordings = try makeFolder("Recordings")
+        XCTAssertTrue(Settings.setRecordingFolder(recordings.path))
+        XCTAssertEqual(Settings.recordingFolder, recordings.path)
+        XCTAssertEqual(Settings.autoSaveLocation, screenshots.path)
+        // Running the move again changes nothing.
+        Settings.migrateRecordingFolderIfNeeded()
+        XCTAssertEqual(Settings.recordingFolder, recordings.path)
+    }
+
+    func testRecordingFolderRefusesAFolderThatCantBeWritten() throws {
+        XCTAssertFalse(Settings.setRecordingFolder("/nonexistent-\(UUID().uuidString)"))
+        XCTAssertFalse(Settings.setRecordingFolder("relative/path"))
+        XCTAssertEqual(Settings.recordingFolder, Settings.defaultAutoSaveLocation)
+        // A folder deleted afterwards falls back instead of failing.
+        let gone = try makeFolder("Gone")
+        XCTAssertTrue(Settings.setRecordingFolder(gone.path))
+        try FileManager.default.removeItem(at: gone)
+        XCTAssertEqual(Settings.recordingFolder, Settings.autoSaveLocation)
+    }
+
+    func testRecordingsInTheRecordingFolderShowInHome() throws {
+        let recordings = try makeFolder("Recordings")
+        XCTAssertTrue(Settings.setRecordingFolder(recordings.path))
+        let video = recordings.appendingPathComponent("LF Studios 2026-10-29 at 10.00.00.mp4")
+        try Data([0]).write(to: video)
+        XCTAssertTrue(Settings.recordingURLs.contains { $0.standardizedFileURL == video.standardizedFileURL })
+    }
+
     func testAnnotationEditorSettingsDefaultsAndClamping() {
         XCTAssertFalse(Settings.annotationRoundedRectangles)
         XCTAssertEqual(Settings.annotationTextFontSize, 18)

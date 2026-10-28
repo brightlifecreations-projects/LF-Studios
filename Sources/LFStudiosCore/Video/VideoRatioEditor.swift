@@ -43,7 +43,7 @@ extension VideoEditorModel {
         panel.canCreateDirectories = true
         panel.prompt = L("Export Here")
         panel.message = L("Exports \(ratios.map(\.title).joined(separator: ", ")) into this folder.")
-        panel.directoryURL = URL(fileURLWithPath: Settings.autoSaveLocation, isDirectory: true)
+        panel.directoryURL = URL(fileURLWithPath: Settings.recordingFolder, isDirectory: true)
         guard panel.runModal() == .OK, let folder = panel.url else { return }
         playback.pause()
         var base = project

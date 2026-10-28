@@ -12,6 +12,15 @@ import Foundation
 /// "Link to media" keeps only paths (and bookmarks to find moved files):
 /// small, for this Mac. Paths inside the package are written relative
 /// (`@package/Media/…`), so the package can move anywhere.
+///
+/// A folder project (`.folder`, version 2) sits in a folder with its media
+/// around it — a recording's own folder, or a Creative Handoff — and
+/// points at it relative to that folder (`@folder/01 Screen/…`), so the
+/// whole folder can be moved or renamed:
+///
+///     Name/
+///         Name.lfstudios/project.json
+///         01 Screen/  02 Camera/  03 Audio/  04 Graphics/  05 Captions/  07 Data/  Fonts/
 struct VideoProjectDocument: Codable {
     static let format = "lfstudios-project"
     /// Projects saved while the app was called ShotStyle.
@@ -22,7 +31,9 @@ struct VideoProjectDocument: Codable {
     static let openableExtensions: Set<String> = [fileExtension, legacyFileExtension]
     /// Bump when the layout changes, and teach `migrate` the step up, so
     /// every older project still opens.
-    static let currentVersion = 1
+    /// 2: folder projects (`@folder/` paths). Projects without them are
+    /// still written as 1, so older versions of LF Studios open them as before.
+    static let currentVersion = 2
     static let fileExtension = "lfstudios"
     static let typeIdentifier = "com.lfstudios.project"
     static let manifestName = "project.json"
@@ -30,12 +41,31 @@ struct VideoProjectDocument: Codable {
     static let fontsFolder = "Fonts"
     /// The prefix of paths inside the package.
     static let packagePrefix = "@package/"
+    /// The prefix of paths in the folder around a folder project.
+    static let folderPrefix = "@folder/"
 
     enum MediaMode: String, Codable {
         /// Copies inside the package: opens on any Mac.
         case included
         /// Paths to the originals: small, this Mac only.
         case linked
+        /// Paths into the folder around the project (its media is there).
+        case folder
+    }
+
+    /// What made the folder around a folder project.
+    struct FolderInfo: Codable, Equatable {
+        enum Kind: String, Codable {
+            /// A recording's own folder: LF Studios keeps its project file
+            /// and captions up to date as the edit changes.
+            case recording
+            /// A Creative Handoff.
+            case handoff
+            /// A folder someone opened: written to only on Save.
+            case opened
+        }
+
+        var kind: Kind
     }
 
     /// Where a packaged file came from, so saving again skips files that
@@ -61,14 +91,17 @@ struct VideoProjectDocument: Codable {
     var origins: [String: Origin]
     /// Linked media: a bookmark per path, to find moved files.
     var bookmarks: [String: Data]
+    /// Folder projects: what made the folder.
+    var folder: FolderInfo?
 
     private enum CodingKeys: String, CodingKey {
-        case format, version, savedAt, appVersion, mediaMode, project, recording, sourceRecordings, origins, bookmarks
+        case format, version, savedAt, appVersion, mediaMode, project, recording, sourceRecordings, origins, bookmarks, folder
     }
 
-    init(format: String = Self.format, version: Int = Self.currentVersion, savedAt: Date = Date(), appVersion: String? = nil, mediaMode: MediaMode, project: VideoDemoProject, recording: VideoDemoRecordingMetadata?, sourceRecordings: [String: VideoDemoRecordingMetadata] = [:], origins: [String: Origin] = [:], bookmarks: [String: Data] = [:]) {
+    init(format: String = Self.format, version: Int? = nil, savedAt: Date = Date(), appVersion: String? = nil, mediaMode: MediaMode, project: VideoDemoProject, recording: VideoDemoRecordingMetadata?, sourceRecordings: [String: VideoDemoRecordingMetadata] = [:], origins: [String: Origin] = [:], bookmarks: [String: Data] = [:], folder: FolderInfo? = nil) {
         self.format = format
-        self.version = version
+        self.version = version ?? (mediaMode == .folder ? 2 : 1)
+        self.folder = folder
         self.savedAt = savedAt
         self.appVersion = appVersion
         self.mediaMode = mediaMode
@@ -91,6 +124,22 @@ struct VideoProjectDocument: Codable {
         sourceRecordings = (try? c.decode([String: VideoDemoRecordingMetadata].self, forKey: .sourceRecordings)) ?? [:]
         origins = (try? c.decode([String: Origin].self, forKey: .origins)) ?? [:]
         bookmarks = (try? c.decode([String: Data].self, forKey: .bookmarks)) ?? [:]
+        folder = try? c.decodeIfPresent(FolderInfo.self, forKey: .folder)
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var c = encoder.container(keyedBy: CodingKeys.self)
+        try c.encode(format, forKey: .format)
+        try c.encode(version, forKey: .version)
+        try c.encode(savedAt, forKey: .savedAt)
+        try c.encodeIfPresent(appVersion, forKey: .appVersion)
+        try c.encode(mediaMode, forKey: .mediaMode)
+        try c.encode(project, forKey: .project)
+        try c.encodeIfPresent(recording, forKey: .recording)
+        try c.encode(sourceRecordings, forKey: .sourceRecordings)
+        try c.encode(origins, forKey: .origins)
+        try c.encode(bookmarks, forKey: .bookmarks)
+        try c.encodeIfPresent(folder, forKey: .folder)
     }
 
     enum ReadError: Error, Equatable {
@@ -111,9 +160,9 @@ struct VideoProjectDocument: Codable {
         }
     }
 
-    /// Steps an older manifest up to `currentVersion` (nothing yet: 1 is
-    /// the first). A newer manifest is read as it is: fields this version
-    /// doesn't know are skipped.
+    /// Steps an older manifest up to `currentVersion` (1 → 2 needs nothing:
+    /// 2 only adds folder projects). A newer manifest is read as it is:
+    /// fields this version doesn't know are skipped.
     static func migrate(_ object: [String: Any], from version: Int) -> [String: Any] {
         object
     }
@@ -147,31 +196,59 @@ struct VideoProjectContents {
     var recording: VideoDemoRecordingMetadata?
     var sourceRecordings: [String: VideoDemoRecordingMetadata]
 
-    mutating func mapPaths(_ transform: (String) -> String) {
-        func map(_ path: inout String) { if !path.isEmpty { path = transform(path) } }
-        map(&project.sourcePath)
-        for index in project.sources.indices {
-            map(&project.sources[index].path)
-            if project.sources[index].webcam != nil { map(&project.sources[index].webcam!.path) }
+    /// What a file is, for where a folder project puts its copy.
+    enum MediaKind {
+        case screen, camera, audio, graphic
+
+        /// Its folder in a recording's folder or a handoff.
+        var folder: String {
+            switch self {
+            case .screen: return VideoRecordingFolder.Layout.screen
+            case .camera: return VideoRecordingFolder.Layout.camera
+            case .audio: return VideoRecordingFolder.Layout.audio
+            case .graphic: return VideoRecordingFolder.Layout.graphics
+            }
         }
-        if project.importedCamera != nil { map(&project.importedCamera!.path) }
-        if project.music != nil { map(&project.music!.path) }
-        if project.cursor.customImage != nil { map(&project.cursor.customImage!.path) }
+    }
+
+    mutating func mapPaths(_ transform: (String) -> String) {
+        mapPaths { path, _ in transform(path) }
+    }
+
+    mutating func mapPaths(_ transform: (String, MediaKind) -> String) {
+        func map(_ path: inout String, _ kind: MediaKind) { if !path.isEmpty { path = transform(path, kind) } }
+        map(&project.sourcePath, .screen)
+        for index in project.sources.indices {
+            map(&project.sources[index].path, .screen)
+            if project.sources[index].webcam != nil { map(&project.sources[index].webcam!.path, .camera) }
+        }
+        if project.importedCamera != nil { map(&project.importedCamera!.path, .camera) }
+        if project.music != nil { map(&project.music!.path, .audio) }
+        if project.cursor.customImage != nil { map(&project.cursor.customImage!.path, .graphic) }
         for index in project.overlayEffects.indices where project.overlayEffects[index].image != nil {
-            map(&project.overlayEffects[index].image!.path)
+            map(&project.overlayEffects[index].image!.path, .graphic)
         }
         if case .image(var path) = project.background {
-            map(&path)
+            map(&path, .graphic)
             project.background = .image(path)
         }
         if recording != nil {
-            map(&recording!.videoURLPath)
-            if recording!.webcam != nil { map(&recording!.webcam!.path) }
+            map(&recording!.videoURLPath, .screen)
+            if recording!.webcam != nil { map(&recording!.webcam!.path, .camera) }
         }
         for key in sourceRecordings.keys {
-            map(&sourceRecordings[key]!.videoURLPath)
-            if sourceRecordings[key]!.webcam != nil { map(&sourceRecordings[key]!.webcam!.path) }
+            map(&sourceRecordings[key]!.videoURLPath, .screen)
+            if sourceRecordings[key]!.webcam != nil { map(&sourceRecordings[key]!.webcam!.path, .camera) }
         }
+    }
+
+    /// Every path with what it is (the first kind seen for a path).
+    var kindedPaths: [(path: String, kind: MediaKind)] {
+        var all: [(String, MediaKind)] = []
+        var copy = self
+        copy.mapPaths { path, kind in all.append((path, kind)); return path }
+        var seen = Set<String>()
+        return all.filter { seen.insert($0.0).inserted }
     }
 
     var paths: [String] {
@@ -200,7 +277,13 @@ enum VideoProjectPackage {
     /// copied in once: saving again copies only what's new or changed, and
     /// files nothing uses anymore are removed.
     @discardableResult
-    static func save(_ contents: VideoProjectContents, to package: URL, mode: VideoProjectDocument.MediaMode, appVersion: String? = nil, fontFiles: (String) -> [URL] = { VideoFonts.addedFontFiles(forFamily: $0) }) throws -> VideoProjectDocument {
+    /// `copiesOutsideFiles` (folder projects): copy what's outside the folder
+    /// into it. Off (a handoff, which decided what it holds): those stay
+    /// linked where they are.
+    static func save(_ contents: VideoProjectContents, to package: URL, mode: VideoProjectDocument.MediaMode, appVersion: String? = nil, folder: VideoProjectDocument.FolderInfo? = nil, copiesOutsideFiles: Bool = true, fontFiles: (String) -> [URL] = { VideoFonts.addedFontFiles(forFamily: $0) }) throws -> VideoProjectDocument {
+        if mode == .folder {
+            return try saveFolderProject(contents, to: package, appVersion: appVersion, folder: folder ?? VideoProjectDocument.FolderInfo(kind: .opened), copiesOutsideFiles: copiesOutsideFiles, fontFiles: fontFiles)
+        }
         let fm = FileManager.default
         let media = package.appendingPathComponent(VideoProjectDocument.mediaFolder, isDirectory: true)
         let fonts = package.appendingPathComponent(VideoProjectDocument.fontsFolder, isDirectory: true)
@@ -297,6 +380,70 @@ enum VideoProjectPackage {
         return document
     }
 
+    /// A folder project: its media stays where it is in the folder around
+    /// the package and is pointed at relative to it. Anything outside the
+    /// folder (music LF Studios keeps, a picture from elsewhere) is copied
+    /// into the folder's matching subfolder first, so the folder holds the
+    /// whole edit.
+    private static func saveFolderProject(_ contents: VideoProjectContents, to package: URL, appVersion: String?, folder: VideoProjectDocument.FolderInfo, copiesOutsideFiles: Bool, fontFiles: (String) -> [URL]) throws -> VideoProjectDocument {
+        let fm = FileManager.default
+        try fm.createDirectory(at: package, withIntermediateDirectories: true)
+        let root = package.standardizedFileURL.deletingLastPathComponent()
+        let rootPath = root.path
+        var references: [String: String] = [:]
+        var bookmarks: [String: Data] = [:]
+        for (path, kind) in contents.kindedPaths {
+            let url = URL(fileURLWithPath: path).standardizedFileURL
+            if url.path.hasPrefix(rootPath + "/") {
+                references[path] = VideoProjectDocument.folderPrefix + String(url.path.dropFirst(rootPath.count + 1))
+                continue
+            }
+            guard fm.fileExists(atPath: url.path) else { continue } // missing: stays missing
+            guard copiesOutsideFiles else {
+                if let bookmark = try? url.bookmarkData(options: [], includingResourceValuesForKeys: nil, relativeTo: nil) { bookmarks[path] = bookmark }
+                continue
+            }
+            let subfolder = root.appendingPathComponent(kind.folder, isDirectory: true)
+            try fm.createDirectory(at: subfolder, withIntermediateDirectories: true)
+            let destination = VideoRecordingFolder.uniqueFile(named: url.lastPathComponent, in: subfolder)
+            try fm.copyItem(at: url, to: destination)
+            if videoExtensions.contains(destination.pathExtension.lowercased()) {
+                _ = VideoFileIdentity.restamp(destination)
+            }
+            references[path] = VideoProjectDocument.folderPrefix + "\(kind.folder)/\(destination.lastPathComponent)"
+            if let bookmark = try? url.bookmarkData(options: [], includingResourceValuesForKeys: nil, relativeTo: nil) {
+                bookmarks[path] = bookmark
+            }
+        }
+        var stored = contents
+        stored.mapPaths { references[$0] ?? $0 }
+        for index in stored.project.sources.indices { stored.project.sources[index].bookmark = nil }
+        stored.project.importedCamera?.bookmark = nil
+        if stored.recording != nil { stored.recording!.bookmark = nil }
+
+        // Fonts added to LF Studios that the project uses go in Fonts/.
+        for family in VideoProjectDocument.fontFamilies(of: contents.project) {
+            for file in fontFiles(family) {
+                let fonts = root.appendingPathComponent(VideoProjectDocument.fontsFolder, isDirectory: true)
+                try fm.createDirectory(at: fonts, withIntermediateDirectories: true)
+                let destination = fonts.appendingPathComponent(file.lastPathComponent)
+                if !fm.fileExists(atPath: destination.path) { try fm.copyItem(at: file, to: destination) }
+            }
+        }
+
+        let document = VideoProjectDocument(
+            appVersion: appVersion,
+            mediaMode: .folder,
+            project: stored.project,
+            recording: stored.recording,
+            sourceRecordings: stored.sourceRecordings,
+            bookmarks: bookmarks,
+            folder: folder
+        )
+        try document.encoded().write(to: manifestURL(package), options: .atomic)
+        return document
+    }
+
     struct Opened {
         var document: VideoProjectDocument
         /// With every path pointing at a real place on this Mac.
@@ -313,9 +460,13 @@ enum VideoProjectPackage {
         let document = try VideoProjectDocument.decode(data)
         var contents = VideoProjectContents(project: document.project, recording: document.recording, sourceRecordings: document.sourceRecordings)
         let root = package.standardizedFileURL
+        let folder = root.deletingLastPathComponent()
         contents.mapPaths { path in
             if path.hasPrefix(VideoProjectDocument.packagePrefix) {
                 return root.appendingPathComponent(String(path.dropFirst(VideoProjectDocument.packagePrefix.count))).path
+            }
+            if path.hasPrefix(VideoProjectDocument.folderPrefix) {
+                return folder.appendingPathComponent(String(path.dropFirst(VideoProjectDocument.folderPrefix.count))).path
             }
             if !FileManager.default.fileExists(atPath: path), let bookmark = document.bookmarks[path] {
                 var stale = false
@@ -326,7 +477,8 @@ enum VideoProjectPackage {
             }
             return path
         }
-        let fonts = (try? FileManager.default.contentsOfDirectory(at: root.appendingPathComponent(VideoProjectDocument.fontsFolder, isDirectory: true), includingPropertiesForKeys: nil)) ?? []
+        let fontsRoot = document.mediaMode == .folder ? folder : root
+        let fonts = (try? FileManager.default.contentsOfDirectory(at: fontsRoot.appendingPathComponent(VideoProjectDocument.fontsFolder, isDirectory: true), includingPropertiesForKeys: nil)) ?? []
         return Opened(document: document, contents: contents, package: root, fontFiles: fonts.filter { VideoFonts.fileExtensions.contains($0.pathExtension.lowercased()) })
     }
 }

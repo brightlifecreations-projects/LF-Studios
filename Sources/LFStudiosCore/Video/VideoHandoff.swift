@@ -33,17 +33,23 @@ struct VideoHandoffOptions: Codable, Equatable {
     var quality: Quality = .proRes422HQ
     /// The speaker notes as Notes.txt. Off: notes are private until chosen.
     var includeSpeakerNotes = false
+    /// The untouched recordings (and camera, and song) as well, wherever
+    /// the handoff's own files were cut or re-encoded, so its LF Studios
+    /// project opens the whole edit again. Off: a handoff that needs them
+    /// gets no project, and README.txt says so.
+    var includeOriginals = true
 
-    init(clips: Clips = .trimmed, lineUp: Bool = true, includeFinal: Bool = true, includeTimeline: Bool = true, quality: Quality = .proRes422HQ, includeSpeakerNotes: Bool = false) {
+    init(clips: Clips = .trimmed, lineUp: Bool = true, includeFinal: Bool = true, includeTimeline: Bool = true, quality: Quality = .proRes422HQ, includeSpeakerNotes: Bool = false, includeOriginals: Bool = true) {
         self.clips = clips
         self.lineUp = lineUp
         self.includeFinal = includeFinal
         self.includeTimeline = includeTimeline
         self.quality = quality
         self.includeSpeakerNotes = includeSpeakerNotes
+        self.includeOriginals = includeOriginals
     }
 
-    private enum CodingKeys: String, CodingKey { case clips, lineUp, includeFinal, includeTimeline, quality, includeSpeakerNotes }
+    private enum CodingKeys: String, CodingKey { case clips, lineUp, includeFinal, includeTimeline, quality, includeSpeakerNotes, includeOriginals }
 
     /// Options saved before a field existed still load.
     init(from decoder: Decoder) throws {
@@ -55,6 +61,7 @@ struct VideoHandoffOptions: Codable, Equatable {
         includeTimeline = (try? c.decodeIfPresent(Bool.self, forKey: .includeTimeline)) ?? d.includeTimeline
         quality = (try? c.decodeIfPresent(Quality.self, forKey: .quality)) ?? d.quality
         includeSpeakerNotes = (try? c.decodeIfPresent(Bool.self, forKey: .includeSpeakerNotes)) ?? d.includeSpeakerNotes
+        includeOriginals = (try? c.decodeIfPresent(Bool.self, forKey: .includeOriginals)) ?? d.includeOriginals
     }
 
     static let key = "creativeHandoffOptions"
@@ -228,6 +235,9 @@ struct VideoHandoffItem: Equatable, Identifiable {
         case finalVideo
         /// The edit's whole sound as the finished video has it.
         case fullMix(duration: Double)
+        /// The LF Studios project: the whole edit, pointing at the handoff's
+        /// own files (original path → path in the handoff).
+        case project([String: String])
     }
 
     /// How README.txt describes the file.
@@ -278,10 +288,16 @@ struct VideoHandoffPlan: Equatable {
     var options: VideoHandoffOptions
 
     var estimatedBytes: Int64 { items.reduce(0) { $0 + $1.estimatedBytes } }
+    /// The originals added only so the project reopens (the dialog shows it).
+    var originalsBytes: Int64 { items.filter { $0.fileName.hasPrefix(VideoHandoffPlanner.originalsFolder + "/") }.reduce(0) { $0 + $1.estimatedBytes } }
+    var includesProject: Bool { items.contains { if case .project = $0.work { return true } else { return false } } }
     var reencodes: Bool { items.contains { if case .reencode = $0.work { return true } else { return false } } }
 }
 
 enum VideoHandoffPlanner {
+    /// Untouched originals the project needs, inside 01 Screen, 02 Camera, 03 Audio.
+    static let originalsFolder = "Originals"
+
     /// "<Project> – Handoff 2026-10-27", with " 2", " 3"… when it's taken.
     static func folderName(project: String, date: Date = Date(), existing: (String) -> Bool) -> String {
         let formatter = DateFormatter()
@@ -517,6 +533,7 @@ enum VideoHandoffPlanner {
         }
 
         var plan = VideoHandoffPlan(folderName: folderName, items: items, skipped: skipped, clockDuration: clock, options: options)
+        addProject(to: &plan, input: input, options: options)
         if options.includeTimeline {
             plan.items.append(VideoHandoffItem(folder: .root, fileName: "Timeline.fcpxml", description: "The timeline for Final Cut Pro and DaVinci Resolve",
                                                work: .text(""), treatment: .written, duration: nil, frameRate: nil, startOffset: nil, estimatedBytes: 50_000))
@@ -526,6 +543,54 @@ enum VideoHandoffPlanner {
         plan.items.append(VideoHandoffItem(folder: .root, fileName: "README.txt", description: "This list", work: .text(""), treatment: .written,
                                            duration: nil, frameRate: nil, startOffset: nil, estimatedBytes: 10_000))
         return plan
+    }
+
+    // MARK: The LF Studios project
+
+    /// `<Project>.lfstudios`, holding the whole edit and pointing at the
+    /// handoff's own untouched copies. Files the handoff cut or re-encoded
+    /// (clips, a lined-up camera, the laid-out song) can't carry the edit:
+    /// their originals come along in Originals/, or — with that off — there's
+    /// no project, and the reason is listed.
+    static func addProject(to plan: inout VideoHandoffPlan, input: VideoHandoffInput, options: VideoHandoffOptions) {
+        var mapping: [String: String] = [:]
+        for item in plan.items {
+            if case .copy(let url) = item.work { mapping[url.standardizedFileURL.path] = item.relativePath }
+        }
+        var needed: [(url: URL, folder: VideoHandoffItem.Folder, what: String)] = []
+        for recording in input.recordings {
+            if let url = recording.url, mapping[url.standardizedFileURL.path] == nil {
+                needed.append((url, .screen, "The original screen recording “\(recording.name)”, for the LF Studios project"))
+            }
+            if let camera = recording.camera, let url = camera.url, mapping[url.standardizedFileURL.path] == nil {
+                needed.append((url, .camera, "The original camera video, for the LF Studios project"))
+            }
+        }
+        if let music = input.project.music, FileManager.default.fileExists(atPath: music.path), mapping[URL(fileURLWithPath: music.path).standardizedFileURL.path] == nil {
+            needed.append((URL(fileURLWithPath: music.path), .audio, "The original song, for the LF Studios project"))
+        }
+        var seen = Set<String>()
+        needed = needed.filter { seen.insert($0.url.standardizedFileURL.path).inserted }
+        if !needed.isEmpty && !options.includeOriginals {
+            plan.skipped.append(L("The LF Studios project — it needs the original files: turn on Include originals so it reopens in LF Studios"))
+            return
+        }
+        for original in needed {
+            var name = original.url.lastPathComponent
+            var number = 2
+            while plan.items.contains(where: { $0.folder == original.folder && $0.fileName == "\(originalsFolder)/\(name)" }) {
+                name = "\(original.url.deletingPathExtension().lastPathComponent) \(number).\(original.url.pathExtension)"
+                number += 1
+            }
+            let item = VideoHandoffItem(folder: original.folder, fileName: "\(originalsFolder)/\(name)", description: original.what,
+                                        work: .copy(original.url), treatment: .original, duration: nil, frameRate: nil, startOffset: nil,
+                                        estimatedBytes: fileSize(original.url))
+            plan.items.append(item)
+            mapping[original.url.standardizedFileURL.path] = item.relativePath
+        }
+        plan.items.append(VideoHandoffItem(folder: .root, fileName: "\(VideoRecordingFolder.safeName(input.name)).\(VideoProjectDocument.fileExtension)",
+                                           description: "The LF Studios project: open it, or this whole folder, in LF Studios to edit the video again",
+                                           work: .project(mapping), treatment: .written, duration: nil, frameRate: nil, startOffset: nil, estimatedBytes: 500_000))
     }
 
     // MARK: Alignment

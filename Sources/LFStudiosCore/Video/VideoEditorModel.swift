@@ -318,6 +318,9 @@ final class VideoEditorModel: ObservableObject {
     /// (VideoProjectFiles.swift); nil: just the recording's own edit.
     @Published var projectFileURL: URL?
     @Published var projectMediaMode: VideoProjectDocument.MediaMode?
+    /// A folder project: what made the folder. A recording's own folder is
+    /// kept up to date as the edit changes; any other only on Save.
+    @Published var projectFolder: VideoProjectDocument.FolderInfo?
     @Published var isSavingProject = false
     private let sourceBookmark: Data?
     let artwork: VideoCursorArtwork
@@ -334,6 +337,10 @@ final class VideoEditorModel: ObservableObject {
     private var lastCoalesceKey: String?
     private var lastMutation = Date.distantPast
     private var autosaveWork: DispatchWorkItem?
+    /// The last write of a recording's folder (one at a time, in order).
+    var recordingFolderWrite: Task<Void, Never>?
+    /// The edit as last written there: an autosave with nothing new writes nothing.
+    var recordingFolderWritten: VideoDemoProject?
     private var noticeWork: DispatchWorkItem?
     private var cursorTrackCache: (key: CursorTrackKey, track: VideoCursorTrack?)?
     private var cameraTrackCache: (key: CameraTrackKey, track: VideoCameraTrack)?
@@ -1965,6 +1972,7 @@ final class VideoEditorModel: ObservableObject {
             draft.cursorSamples = []
         }
         VideoDemoDraftStore.save(draft, for: draft.sourceURL)
+        updateRecordingFolder()
     }
 
     /// Export, the command palette, or the shortcut sheet is up: edits
@@ -2019,7 +2027,7 @@ final class VideoEditorModel: ObservableObject {
             }
             panel.canCreateDirectories = true
             panel.nameFieldStringValue = "\(exportBaseName).\(settings.fileExtension)"
-            panel.directoryURL = URL(fileURLWithPath: Settings.autoSaveLocation, isDirectory: true)
+            panel.directoryURL = URL(fileURLWithPath: Settings.recordingFolder, isDirectory: true)
             guard panel.runModal() == .OK, let url = panel.url else { return }
             destination = url
         }

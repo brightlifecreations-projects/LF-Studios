@@ -141,6 +141,61 @@ enum Settings {
         return true
     }
 
+    // MARK: – Recording folder
+
+    private static let recordingFolderKey = "recordingFolder"
+
+    /// Settings ▸ Recording ▸ Recording folder: where finished recordings go
+    /// (each in a folder of its own) when nobody is asked, or the save window
+    /// is cancelled. Until set, the folder recordings went to before it
+    /// existed (the screenshot folder, `autoSaveLocation`).
+    static var recordingFolder: String {
+        get {
+            let v = defaults.string(forKey: recordingFolderKey) ?? ""
+            guard !v.isEmpty else { return autoSaveLocation }
+            return normalizedWritableDirectoryPath(v) ?? autoSaveLocation
+        }
+        set { _ = setRecordingFolder(newValue) }
+    }
+
+    @discardableResult
+    static func setRecordingFolder(_ path: String) -> Bool {
+        let trimmed = path.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else {
+            defaults.removeObject(forKey: recordingFolderKey)
+            return true
+        }
+        guard let normalized = normalizedWritableDirectoryPath(trimmed) else { return false }
+        defaults.set(normalized, forKey: recordingFolderKey)
+        return true
+    }
+
+    /// One folder used to decide where both screenshots and recordings went.
+    /// Recordings keep that folder as their own, so changing the screenshot
+    /// folder later never moves them.
+    static func migrateRecordingFolderIfNeeded() {
+        guard defaults.object(forKey: recordingFolderKey) == nil,
+              let screenshots = defaults.string(forKey: autoSaveLocationKey), !screenshots.isEmpty,
+              let normalized = normalizedWritableDirectoryPath(screenshots) else { return }
+        defaults.set(normalized, forKey: recordingFolderKey)
+    }
+
+    /// Settings ▸ Recording ▸ Ask where to save after each recording. On to
+    /// start with; off, recordings go to the Recording folder.
+    static var askWhereToSaveRecordings: Bool {
+        get { defaults.object(forKey: "askWhereToSaveRecordings") == nil ? true : defaults.bool(forKey: "askWhereToSaveRecordings") }
+        set { defaults.set(newValue, forKey: "askWhereToSaveRecordings") }
+    }
+
+    /// Where the save window last put a recording; it starts there next time.
+    static var lastRecordingSaveFolder: String {
+        get {
+            let v = defaults.string(forKey: "lastRecordingSaveFolder") ?? ""
+            return normalizedWritableDirectoryPath(v) ?? recordingFolder
+        }
+        set { defaults.set(newValue, forKey: "lastRecordingSaveFolder") }
+    }
+
     private static func normalizedWritableDirectoryPath(_ path: String) -> String? {
         guard path.hasPrefix("/") else { return nil }
         guard !path.split(separator: "/", omittingEmptySubsequences: false).contains("..") else { return nil }
@@ -341,6 +396,7 @@ enum Settings {
     /// wherever it is), newest first.
     static var recordingURLs: [URL] {
         let directories = Array(Set([
+            recordingFolder,
             autoSaveLocation,
             defaultAutoSaveLocation,
         ]))

@@ -329,6 +329,46 @@
         }
       }
     },
+    "%@ It's in “%@” and opens as before." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ Die Aufnahme liegt in „%@“ und öffnet sich wie bisher."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ Il se trouve dans « %@ » et s’ouvre comme avant."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ 収録は“%@”にあり、これまでどおり開けます。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ Запись находится в папке «%@» и открывается как раньше."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ Запис лежить у «%@» і відкривається, як і раніше."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ 它在“%@”中，可以像以前一样打开。"
+          }
+        }
+      }
+    },
     "%@ Loupe" : {
       "localizations" : {
         "de" : {
@@ -1747,6 +1787,166 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ — 点按跳到这里，连按两次重新命名"
+          }
+        }
+      }
+    },
+    "%@ — it was cut like the edit, so it can't be lined up with the recording again" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ – wurde wie im Schnitt gekürzt und lässt sich nicht mehr an der Aufnahme ausrichten"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ — il a été coupé comme le montage, il ne peut donc plus être aligné sur l’enregistrement"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ — 編集に合わせてカットされているため、収録にもう一度合わせることはできません"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ — файл обрезан под монтаж, поэтому его уже не совместить с записью"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ — його обрізано так само, як у монтажі, тож його вже не вдасться вирівняти із записом"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ — 它已按剪辑裁剪，无法再与录制内容对齐"
+          }
+        }
+      }
+    },
+    "%@ — its lines don't match the captions" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ – die Zeilen passen nicht zu den Untertiteln"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ — ses lignes ne correspondent pas aux sous-titres"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ — 行が字幕と一致しません"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ — строки не совпадают с субтитрами"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ — його рядки не збігаються із субтитрами"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ — 它的行与字幕不一致"
+          }
+        }
+      }
+    },
+    "%@ — only one camera video can be shown" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ – es kann nur ein Kameravideo angezeigt werden"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ — une seule vidéo de caméra peut être affichée"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ — 表示できるカメラ映像は1つだけです"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ — можно показать только одно видео с камеры"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ — можна показати лише одне відео з камери"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ — 只能显示一个摄像头视频"
+          }
+        }
+      }
+    },
+    "%@ — separate sound files open as their own tracks in LF Studios 1.7" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ – einzelne Tondateien öffnen sich in LF Studios 1.7 als eigene Spuren"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ — les fichiers son séparés s’ouvrent comme pistes distinctes dans LF Studios 1.7"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ — 別々のサウンドファイルは、LF Studios 1.7でそれぞれ独自のトラックとして開けるようになります"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ — отдельные звуковые файлы открываются как свои дорожки в LF Studios 1.7"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ — окремі звукові файли відкриватимуться як власні доріжки в LF Studios 1.7"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ — 在 LF Studios 1.7 中，单独的声音文件会作为独立的轨道打开"
           }
         }
       }
@@ -4531,6 +4731,46 @@
         }
       }
     },
+    "%lld markers" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld Marker"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld marqueurs"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld個のマーカー"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Маркеры: %lld"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Маркери: %lld"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld 个标记"
+          }
+        }
+      }
+    },
     "%lld of %lld captures" : {
       "localizations" : {
         "de" : {
@@ -5152,6 +5392,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "已存储 %lld 张截屏 · 可将卡片拖到“访达” · 右键点按查看更多操作"
+          }
+        }
+      }
+    },
+    "%lld screen clips, one after the other" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld Bildschirm-Clips, nacheinander"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld clips de l’écran, l’un après l’autre"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld個の画面クリップ（順番につなげたもの）"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Клипы экрана подряд: %lld"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кліпи екрана один за одним: %lld"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld 个屏幕片段，依次排列"
           }
         }
       }
@@ -6548,6 +6828,126 @@
         }
       }
     },
+    "01 Screen: the screen recording. 02 Camera: the camera video, if you recorded one." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "01 Screen: die Bildschirmaufnahme. 02 Camera: das Kameravideo, falls du eines aufgezeichnet hast."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "01 Screen : l’enregistrement de l’écran. 02 Camera : la vidéo de la caméra, si vous en avez enregistré une."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "01 Screen: 画面収録。02 Camera: カメラ映像（収録した場合）。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "01 Screen — запись экрана. 02 Camera — видео с камеры, если вы его записывали."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "01 Screen: запис екрана. 02 Camera: відео з камери, якщо ви його записували."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "01 Screen：屏幕录制内容。02 Camera：摄像头视频（如果你录制了）。"
+          }
+        }
+      }
+    },
+    "03 Audio: your microphone and the Mac's sound as separate files. 05 Captions: your captions, once you make them." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "03 Audio: dein Mikrofon und der Ton des Mac als getrennte Dateien. 05 Captions: deine Untertitel, sobald du sie erstellst."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "03 Audio : votre micro et le son du Mac dans des fichiers séparés. 05 Captions : vos sous-titres, une fois créés."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "03 Audio: マイクの音とMacのサウンドを別々のファイルで。05 Captions: 字幕（作成した場合）。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "03 Audio — ваш микрофон и звук Mac отдельными файлами. 05 Captions — ваши субтитры, когда вы их создадите."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "03 Audio: ваш мікрофон і звук Mac окремими файлами. 05 Captions: ваші субтитри, щойно ви їх створите."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "03 Audio：你的麦克风和 Mac 的声音，分别存为单独的文件。05 Captions：你的字幕（制作字幕后）。"
+          }
+        }
+      }
+    },
+    "07 Data: the pointer, clicks, and keys. And README.txt, which says what each file is." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "07 Data: Zeiger, Klicks und Tasten. Und README.txt, die erklärt, was jede Datei ist."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "07 Data : le pointeur, les clics et les touches. Et README.txt, qui décrit chaque fichier."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "07 Data: ポインタ、クリック、キー操作。そして、各ファイルの内容を説明するREADME.txt。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "07 Data — указатель, нажатия и клавиши. И README.txt, где сказано, что это за файлы."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "07 Data: курсор, клацання й клавіші. А також README.txt, де сказано, що це за файли."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "07 Data：指针、点按和按键。还有 README.txt，说明每个文件是什么。"
+          }
+        }
+      }
+    },
     "A 2-second “Made with LF Studios” outro on your background — your own outro card is in Style" : {
       "comment" : "Keep “Made with LF Studios” in English: the end card shows it that way in every language",
       "localizations" : {
@@ -7025,6 +7425,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "已存在同名文件。请换一个名称，然后重新导出。"
+          }
+        }
+      }
+    },
+    "A folder with an LF Studios project in it opens that project, exactly as it was saved." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ein Ordner mit einem LF-Studios-Projekt darin öffnet dieses Projekt, genau so, wie es gesichert wurde."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un dossier contenant un projet LF Studios ouvre ce projet, exactement tel qu’il a été enregistré."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LF Studiosのプロジェクトが入ったフォルダは、そのプロジェクトが保存したときのとおりに開きます。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Папка с проектом LF Studios открывает этот проект точно таким, каким он был сохранен."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Папка з проєктом LF Studios відкриває цей проєкт саме таким, яким його збережено."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "包含 LF Studios 项目的文件夹会打开该项目，与存储时完全一样。"
           }
         }
       }
@@ -11376,6 +11816,46 @@
         }
       }
     },
+    "After you stop, LF Studios asks where to save the recording, then puts everything from it in one new folder: the video, the camera, the sound, and the project that opens it all." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wenn du stoppst, fragt LF Studios, wo die Aufnahme gesichert werden soll, und legt dann alles davon in einen neuen Ordner: das Video, die Kamera, den Ton und das Projekt, das alles wieder öffnet."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quand vous arrêtez, LF Studios vous demande où enregistrer, puis place tout dans un nouveau dossier : la vidéo, la caméra, le son et le projet qui ouvre le tout."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "収録を停止すると、LF Studiosが保存先を確認し、収録したものすべてを1つの新しいフォルダにまとめます: ビデオ、カメラ映像、サウンド、そしてそれらをすべて開くプロジェクトです。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Когда вы остановите запись, LF Studios спросит, куда ее сохранить, и сложит все в одну новую папку: видео, камеру, звук и проект, который все это открывает."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Коли ви зупините запис, LF Studios запитає, куди його зберегти, а тоді покладе все з нього в одну нову папку: відео, камеру, звук і проєкт, який усе це відкриває."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "停止录制后，LF Studios 会询问录制内容的存储位置，然后把所有内容放进一个新文件夹：视频、摄像头画面、声音，以及能打开这一切的项目。"
+          }
+        }
+      }
+    },
     "Afterwards, click Restore size to put the window back." : {
       "localizations" : {
         "de" : {
@@ -12560,6 +13040,86 @@
         }
       }
     },
+    "An LF Studios project: open the folder in LF Studios to edit the video again. With clips cut to your edit, Include originals so it reopens in LF Studios adds the untouched recordings it needs." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ein LF-Studios-Projekt: Öffne den Ordner in LF Studios, um das Video weiter zu bearbeiten. Sind die Clips auf deinen Schnitt gekürzt, fügt „Originale beilegen, damit es sich in LF Studios wieder öffnet“ die unbearbeiteten Aufnahmen hinzu, die es braucht."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un projet LF Studios : ouvrez le dossier dans LF Studios pour modifier à nouveau la vidéo. Si les clips sont coupés selon votre montage, Inclure les originaux pour rouvrir dans LF Studios ajoute les enregistrements intacts nécessaires."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LF Studiosのプロジェクト: フォルダをLF Studiosで開くと、ビデオをもう一度編集できます。クリップを編集に合わせてカットする場合は、“LF Studiosで再び開けるようにオリジナルを含める”で、必要な元の収録がそのまま追加されます。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Проект LF Studios: откройте папку в LF Studios, чтобы снова редактировать видео. Если клипы обрезаны под монтаж, параметр «Добавить оригиналы для повторного открытия в LF Studios» добавит нужные исходные записи."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Проєкт LF Studios: відкрийте папку в LF Studios, щоб знову редагувати відео. Якщо кліпи обрізано за вашим монтажем, «Додати оригінали, щоб знову відкрити в LF Studios» додає потрібні необрізані записи."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LF Studios 项目：在 LF Studios 中打开该文件夹，即可再次编辑视频。如果片段已按你的剪辑裁剪，“包含原始文件，以便在 LF Studios 中重新打开”会加入所需的未改动的录制内容。"
+          }
+        }
+      }
+    },
+    "An older Creative Handoff is put back together from its files: the screen, the cuts, the camera at its place, captions, markers, and the pointer. A summary says what came back." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eine ältere Kreative Übergabe wird aus ihren Dateien wieder zusammengesetzt: der Bildschirm, die Schnitte, die Kamera an ihrer Stelle, Untertitel, Marker und der Zeiger. Eine Übersicht zeigt, was zurückgekommen ist."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Une ancienne Transmission créative est reconstituée à partir de ses fichiers : l’écran, les coupes, la caméra à sa place, les sous-titres, les marqueurs et le pointeur. Un résumé indique ce qui a été récupéré."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "以前のクリエイティブ受け渡しは、そのファイルから組み立て直されます: 画面、カット、元の位置のカメラ、字幕、マーカー、ポインタ。復元できた内容は概要に表示されます。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Старая «Творческая передача» собирается заново из своих файлов: экран, вырезанные фрагменты, камера на своем месте, субтитры, маркеры и указатель. В сводке видно, что удалось восстановить."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Старіше «Творче передавання» відновлюється з його файлів: екран, вирізані фрагменти, камера на своєму місці, субтитри, маркери й курсор. Підсумок показує, що вдалося відновити."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "较早的创意交付会根据其中的文件重新组合：屏幕、剪切、位置正确的摄像头画面、字幕、标记和指针。摘要会说明恢复了哪些内容。"
+          }
+        }
+      }
+    },
     "An optional 2-second “Made with LF Studios” card at the end." : {
       "localizations" : {
         "de" : {
@@ -12956,6 +13516,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "任意颜色…"
+          }
+        }
+      }
+    },
+    "Any other folder: Import Folder lists the videos. Choose which is the screen recording and which the camera, and when the camera starts." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jeder andere Ordner: „Ordner importieren“ listet die Videos auf. Wähle, welches die Bildschirmaufnahme und welches die Kamera ist und wann die Kamera beginnt."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tout autre dossier : Importer le dossier liste les vidéos. Indiquez laquelle est l’enregistrement de l’écran, laquelle est la caméra, et quand la caméra commence."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "それ以外のフォルダ: “フォルダを読み込む”にビデオが一覧表示されます。どれが画面収録でどれがカメラ映像か、そしてカメラがいつ始まるかを選びます。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Любая другая папка: «Импортировать папку» покажет список видео. Выберите, какое из них — запись экрана, а какое — камера, и когда начинается камера."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Будь-яка інша папка: «Імпорт папки» показує список відео. Виберіть, яке з них — запис екрана, а яке — камера, і коли камера починається."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "其他任何文件夹：“导入文件夹”会列出其中的视频。选择哪个是屏幕录制内容、哪个是摄像头视频，以及摄像头何时开始。"
           }
         }
       }
@@ -14165,6 +14765,46 @@
         }
       }
     },
+    "Ask where to save after each recording" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nach jeder Aufzeichnung fragen, wo gesichert wird"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Demander l’emplacement après chaque enregistrement"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "収録のたびに保存先を確認する"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Спрашивать, куда сохранять каждую запись"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Запитувати, куди зберегти, після кожного запису"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "每次录制后询问存储位置"
+          }
+        }
+      }
+    },
     "Aspect Ratio %@ — %@" : {
       "comment" : "Command: an aspect ratio, then what it's for",
       "localizations" : {
@@ -15134,46 +15774,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "自动隐藏缩略图"
-          }
-        }
-      }
-    },
-    "Auto-save folder" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ordner für automatisches Sichern"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dossier d’enregistrement automatique"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "自動保存先"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Папка автосохранения"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Папка автозбереження"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "自动存储文件夹"
           }
         }
       }
@@ -21096,6 +21696,46 @@
         }
       }
     },
+    "Captions in %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Untertitel auf %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sous-titres en %@"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@の字幕"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Субтитры: %@"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Субтитри: %@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@字幕"
+          }
+        }
+      }
+    },
     "Captions in the export" : {
       "localizations" : {
         "de" : {
@@ -24952,6 +25592,86 @@
         }
       }
     },
+    "Choose a folder with a screen recording in it, as an MP4 or MOV file." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wähle einen Ordner mit einer Bildschirmaufnahme darin, als MP4- oder MOV-Datei."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choisissez un dossier contenant un enregistrement de l’écran, au format MP4 ou MOV."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "画面収録（MP4またはMOVファイル）が入ったフォルダを選択してください。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выберите папку, в которой есть запись экрана в формате MP4 или MOV."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Виберіть папку із записом екрана у форматі MP4 або MOV."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请选择一个包含屏幕录制内容（MP4 或 MOV 文件）的文件夹。"
+          }
+        }
+      }
+    },
+    "Choose a folder you can save to." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wähle einen Ordner, in dem du sichern darfst."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choisissez un dossier dans lequel vous pouvez enregistrer."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "保存できるフォルダを選択してください。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выберите папку, в которую можно сохранять."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Виберіть папку, у яку можна зберігати."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请选择一个你可以存储到的文件夹。"
+          }
+        }
+      }
+    },
     "Choose a language" : {
       "localizations" : {
         "de" : {
@@ -25108,6 +25828,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "选择一张图片。"
+          }
+        }
+      }
+    },
+    "Choose a project, a folder, or a video" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wähle ein Projekt, einen Ordner oder ein Video"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choisissez un projet, un dossier ou une vidéo"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロジェクト、フォルダ、またはビデオを選択"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выберите проект, папку или видео"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Виберіть проєкт, папку або відео"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择项目、文件夹或视频"
           }
         }
       }
@@ -25352,46 +26112,6 @@
         }
       }
     },
-    "Choose a writable folder for auto-save." : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wähle einen beschreibbaren Ordner zum automatischen Sichern."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Choisissez un dossier accessible en écriture pour l’enregistrement automatique."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "自動保存用に書き込み可能なフォルダを選択してください。"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Выберите папку для автосохранения, доступную для записи."
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Виберіть для автозбереження папку, у яку можна записувати."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "请为自动存储选择一个可写入的文件夹。"
-          }
-        }
-      }
-    },
     "Choose a writable folder." : {
       "localizations" : {
         "de" : {
@@ -25468,46 +26188,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "再选一次其他速度即可更改。"
-          }
-        }
-      }
-    },
-    "Choose an LF Studios project" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wähle ein LF-Studios-Projekt"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Choisissez un projet LF Studios"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "LF Studiosプロジェクトを選択"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Выберите проект LF Studios"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Виберіть проєкт LF Studios"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "选择 LF Studios 项目"
           }
         }
       }
@@ -25952,6 +26632,46 @@
         }
       }
     },
+    "Choose the screen recording, and the camera video if there is one. Nothing in the folder changes until you save." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wähle die Bildschirmaufnahme und, falls vorhanden, das Kameravideo. Im Ordner ändert sich nichts, bis du sicherst."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choisissez l’enregistrement de l’écran, et la vidéo de la caméra s’il y en a une. Rien ne change dans le dossier tant que vous n’enregistrez pas."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "画面収録と、あればカメラ映像を選択します。保存するまで、フォルダ内は何も変更されません。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выберите запись экрана и, если есть, видео с камеры. В папке ничего не изменится, пока вы не сохраните."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Виберіть запис екрана і, якщо є, відео з камери. Нічого в папці не зміниться, доки ви не збережете."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择屏幕录制内容，以及摄像头视频（如果有）。在你存储之前，文件夹中的内容不会有任何改变。"
+          }
+        }
+      }
+    },
     "Choose the video's shape for where it's going." : {
       "localizations" : {
         "de" : {
@@ -26112,42 +26832,42 @@
         }
       }
     },
-    "Choose where files are saved, what they're called, and the picture format." : {
+    "Choose where screenshots and recordings are saved, what they're called, and the picture format." : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wähle, wo Dateien gesichert werden, wie sie heißen und welches Bildformat sie haben."
+            "value" : "Wähle, wo Bildschirmfotos und Aufnahmen gesichert werden, wie sie heißen und welches Bildformat sie haben."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Choisissez où les fichiers sont enregistrés, leur nom et le format d’image."
+            "value" : "Choisissez où sont enregistrés les captures et les enregistrements, leur nom et le format d’image."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ファイルの保存場所、名前、画像のフォーマットを選びます。"
+            "value" : "スクリーンショットと収録の保存先、名前、画像フォーマットを選択します。"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Выберите, куда сохранять файлы, как их называть и в каком формате сохранять картинки."
+            "value" : "Выберите, куда сохранять снимки и записи, как их называть и в каком формате сохранять изображения."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Виберіть, куди зберігаються файли, як вони називаються і в якому форматі зображення."
+            "value" : "Виберіть, куди зберігати знімки й записи, як їх називати та формат зображень."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "选择文件存储的位置、文件名称以及图片格式。"
+            "value" : "选择截屏和录制内容的存储位置、名称以及图片格式。"
           }
         }
       }
@@ -27590,6 +28310,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "点按录制栏中的“摄像头”。在“⋯ 更多录制选项”中选择摄像头。"
+          }
+        }
+      }
+    },
+    "Click Cancel, or turn off asking, and it goes in the Recording folder, laid out the same way. Nothing is ever lost." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klickst du auf „Abbrechen“ oder schaltest das Fragen aus, kommt sie in den „Aufnahmeordner“, genauso aufgebaut. Es geht nie etwas verloren."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cliquez sur Annuler, ou désactivez la demande, et il va dans le Dossier des enregistrements, organisé de la même façon. Rien n’est jamais perdu."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“キャンセル”をクリックするか、確認をオフにすると、同じ構成で“収録のフォルダ”に保存されます。失われるものはありません。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нажмите «Отменить» или выключите вопрос, и запись попадет в «Папку для записей» с той же структурой. Ничего не потеряется."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Клацніть «Скасувати» або вимкніть запитування — і запис потрапить у папку, задану в «Папка записів», з тим самим упорядкуванням. Нічого не губиться."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "点按“取消”或关闭询问，录制内容就会以同样的结构放进“录制文件夹”。任何内容都不会丢失。"
           }
         }
       }
@@ -37504,6 +38264,46 @@
         }
       }
     },
+    "Cuts and speed changes (%lld clips)" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schnitte und Tempowechsel (%lld Clips)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Coupes et changements de vitesse (%lld clips)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カットと速度の変更（%lld個のクリップ）"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вырезанные фрагменты и изменения скорости (клипов: %lld)"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вирізані фрагменти й зміни швидкості (кліпів: %lld)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "剪切和速度调整（%lld 个片段）"
+          }
+        }
+      }
+    },
     "Dark Mode" : {
       "comment" : "Settings → Appearance: always dark",
       "localizations" : {
@@ -38921,46 +39721,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "说话时降低音量，停顿时恢复"
-          }
-        }
-      }
-    },
-    "Directory where screenshots are saved if Auto-Save is enabled." : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ordner, in dem Bildschirmfotos gesichert werden, wenn automatisches Sichern aktiviert ist."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dossier où les captures sont enregistrées si l’enregistrement automatique est activé."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "“自動的に保存”がオンのときに、スクリーンショットが保存されるフォルダです。"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Папка, в которую сохраняются снимки экрана, если включено автосохранение."
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Папка, у яку зберігаються знімки екрана, якщо ввімкнено автозбереження."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "启用自动存储时，截屏会存储在此文件夹中。"
           }
         }
       }
@@ -42818,6 +43578,46 @@
         }
       }
     },
+    "Each recording in its own folder" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jede Aufnahme in einem eigenen Ordner"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chaque enregistrement dans son propre dossier"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "収録ごとに専用のフォルダ"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Каждая запись в своей папке"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кожен запис в окремій папці"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "每段录制内容都有自己的文件夹"
+          }
+        }
+      }
+    },
     "Each recording keeps its own pointer, clicks, and shortcuts. Reorder them here; cut and trim them on the timeline like any clip." : {
       "localizations" : {
         "de" : {
@@ -45218,6 +46018,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "视频的每个部分都作为单独的文件，放在同一个文件夹中，交给其他剪辑师或应用。"
+          }
+        }
+      }
+    },
+    "Every recording gets a folder of its own, with its project file, the screen and camera videos, the sound as separate files, and its data. With asking off, or when you click Cancel, it goes in the Recording folder." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jede Aufnahme bekommt einen eigenen Ordner mit ihrer Projektdatei, den Bildschirm- und Kameravideos, dem Ton als getrennte Dateien und ihren Daten. Ist das Fragen aus oder klickst du auf „Abbrechen“, kommt sie in den „Aufnahmeordner“."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chaque enregistrement a son propre dossier, avec son fichier de projet, les vidéos de l’écran et de la caméra, le son dans des fichiers séparés, et ses données. Si la demande est désactivée, ou si vous cliquez sur Annuler, il va dans le Dossier des enregistrements."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "収録ごとに専用のフォルダが作られ、プロジェクトファイル、画面とカメラのビデオ、別々のファイルになったサウンド、データが入ります。確認をオフにしているときや“キャンセル”をクリックしたときは、“収録のフォルダ”に保存されます。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Каждая запись получает свою папку с файлом проекта, видео экрана и камеры, звуком в отдельных файлах и данными. Если вопрос выключен или вы нажали «Отменить», запись попадет в «Папку для записей»."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кожен запис отримує окрему папку з файлом проєкту, відео з екрана й камери, звуком окремими файлами та своїми даними. Якщо запитування вимкнено або ви клацнули «Скасувати», запис потрапляє в папку, задану в «Папка записів»."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "每段录制内容都有一个专属文件夹，里面有它的项目文件、屏幕和摄像头视频、分别存储的声音文件，以及它的数据。关闭询问，或点按“取消”时，它会放进“录制文件夹”。"
           }
         }
       }
@@ -48565,6 +49405,46 @@
         }
       }
     },
+    "Files move only once the recording is finished and checked. If something goes wrong, the recording stays where it was." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dateien werden erst verschoben, wenn die Aufnahme fertig und geprüft ist. Geht etwas schief, bleibt die Aufnahme, wo sie war."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les fichiers ne sont déplacés qu’une fois l’enregistrement terminé et vérifié. En cas de problème, l’enregistrement reste où il était."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ファイルが移動されるのは、収録が完了して確認が済んでからです。問題が起きた場合、収録は元の場所に残ります。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Файлы перемещаются только после того, как запись завершена и проверена. Если что-то пойдет не так, запись останется на прежнем месте."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Файли переміщуються лише тоді, коли запис завершено й перевірено. Якщо щось піде не так, запис залишиться там, де був."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "只有在录制完成并检查无误后，文件才会移动。如果出现问题，录制内容会留在原处。"
+          }
+        }
+      }
+    },
     "Fill the Frame, Follow the Cursor" : {
       "localizations" : {
         "de" : {
@@ -50202,6 +51082,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "让截屏浮在所有窗口上方，工作时方便参考。"
+          }
+        }
+      }
+    },
+    "Folder name:" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ordnername:"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nom du dossier :"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "フォルダ名:"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Имя папки:"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Назва папки:"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "文件夹名称："
           }
         }
       }
@@ -57452,6 +58372,46 @@
         }
       }
     },
+    "Ignore" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ignorieren"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ignorer"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "無視"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не использовать"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ігнорувати"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "忽略"
+          }
+        }
+      }
+    },
     "Image" : {
       "comment" : "Background kind (your own picture), and the image annotation",
       "localizations" : {
@@ -57529,6 +58489,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "图像和标志"
+          }
+        }
+      }
+    },
+    "Import Folder" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ordner importieren"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importer le dossier"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "フォルダを読み込む"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Импортировать папку"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Імпорт папки"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "导入文件夹"
           }
         }
       }
@@ -59427,6 +60427,46 @@
         }
       }
     },
+    "Include originals so it reopens in LF Studios" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Originale beilegen, damit es sich in LF Studios wieder öffnet"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inclure les originaux pour rouvrir dans LF Studios"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LF Studiosで再び開けるようにオリジナルを含める"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавить оригиналы для повторного открытия в LF Studios"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Додати оригінали, щоб знову відкрити в LF Studios"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "包含原始文件，以便在 LF Studios 中重新打开"
+          }
+        }
+      }
+    },
     "Include speaker notes" : {
       "localizations" : {
         "de" : {
@@ -59503,6 +60543,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "附带成品视频"
+          }
+        }
+      }
+    },
+    "Includes %@ of originals for the LF Studios project" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enthält %@ an Originalen für das LF-Studios-Projekt"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inclut %@ d’originaux pour le projet LF Studios"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LF Studiosのプロジェクト用のオリジナル%@を含みます"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Оригиналы для проекта LF Studios: %@"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Містить %@ оригінальних файлів для проєкту LF Studios"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "包含 %@ 的原始文件，供 LF Studios 项目使用"
           }
         }
       }
@@ -60069,42 +61149,42 @@
         }
       }
     },
-    "It checks the free space first. Cancel removes the half-made folder." : {
+    "It checks the free space first, and shows how much the originals add. Cancel removes the half-made folder." : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Es prüft zuerst den freien Speicherplatz. „Abbrechen“ entfernt den halb fertigen Ordner."
+            "value" : "Zuerst wird der freie Speicherplatz geprüft und angezeigt, wie viel die Originale ausmachen. „Abbrechen“ entfernt den halb fertigen Ordner."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "L’espace libre est vérifié d’abord. Annuler supprime le dossier à moitié créé."
+            "value" : "L’espace libre est vérifié d’abord, avec la taille ajoutée par les originaux. Annuler supprime le dossier en partie créé."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "最初に空き領域を確認します。“キャンセル”では、作りかけのフォルダを削除します。"
+            "value" : "最初に空き容量を確認し、オリジナルでどれだけ増えるかを表示します。“キャンセル”を押すと、作成途中のフォルダは削除されます。"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Сначала проверяется свободное место. «Отменить» удаляет недоделанную папку."
+            "value" : "Сначала проверяется свободное место и показывается, сколько займут оригиналы. «Отменить» удаляет недоделанную папку."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Спершу перевіряється вільне місце. «Скасувати» вилучає недороблену папку."
+            "value" : "Спершу перевіряється вільне місце й показується, скільки додадуть оригінали. «Скасувати» вилучає недороблену папку."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "它会先检查可用空间。“取消”会移除做到一半的文件夹。"
+            "value" : "它会先检查可用空间，并显示原始文件会增加多少大小。“取消”会删除做了一半的文件夹。"
           }
         }
       }
@@ -60785,6 +61865,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "专为视频绘制的箭头、文本和手形指针。"
+          }
+        }
+      }
+    },
+    "Its screen recording can't be read." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Bildschirmaufnahme kann nicht gelesen werden."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Son enregistrement de l’écran est illisible."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "画面収録を読み込めません。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удается прочитать запись экрана."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не вдається прочитати запис екрана."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无法读取它的屏幕录制内容。"
           }
         }
       }
@@ -66395,6 +67515,46 @@
         }
       }
     },
+    "Loaded:" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geladen:"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chargé :"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "読み込んだもの:"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Загружено:"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Завантажено:"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已载入："
+          }
+        }
+      }
+    },
     "Locate…" : {
       "localizations" : {
         "de" : {
@@ -69924,6 +71084,46 @@
         }
       }
     },
+    "Move or rename the folder in Finder as you like, or copy it to another Mac: it still opens." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verschiebe oder benenne den Ordner im Finder um, wie du willst, oder kopiere ihn auf einen anderen Mac: Er öffnet sich trotzdem."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Déplacez ou renommez le dossier dans le Finder comme vous le souhaitez, ou copiez-le sur un autre Mac : il s’ouvre toujours."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Finderでフォルダを自由に移動したり名前を変更したり、別のMacにコピーしたりしても、そのまま開けます。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Перемещайте и переименовывайте папку в Finder как угодно или скопируйте ее на другой Mac: она все равно откроется."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Перемістіть чи перейменуйте папку у Finder як завгодно або скопіюйте її на інший Mac — вона все одно відкриється."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你可以在“访达”中随意移动文件夹或重新命名，或将它拷贝到另一台 Mac：它仍然可以打开。"
+          }
+        }
+      }
+    },
     "Move the Camera Instead" : {
       "localizations" : {
         "de" : {
@@ -70364,6 +71564,46 @@
         }
       }
     },
+    "Move to Trash" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In den Papierkorb legen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Placer dans la corbeille"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ゴミ箱に入れる"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Переместить в Корзину"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Перемістити в Смітник"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "移到废纸篓"
+          }
+        }
+      }
+    },
     "Move to where it ends and press S again." : {
       "localizations" : {
         "de" : {
@@ -70400,6 +71640,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "移到它结束的地方，再按一次 S 键。"
+          }
+        }
+      }
+    },
+    "Move “%@” to the Trash?" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "„%@“ in den Papierkorb legen?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Placer « %@ » dans la corbeille ?"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%@”をゴミ箱に入れますか?"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Переместить «%@» в Корзину?"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Перемістити «%@» у Смітник?"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "要将“%@”移到废纸篓吗？"
           }
         }
       }
@@ -75176,6 +76456,46 @@
         }
       }
     },
+    "Not loaded:" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nicht geladen:"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non chargé :"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "読み込まなかったもの:"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не загружено:"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не завантажено:"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未载入："
+          }
+        }
+      }
+    },
     "Not now" : {
       "localizations" : {
         "de" : {
@@ -75292,6 +76612,86 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "使用指南中没有与你的搜索匹配的内容。试试更短的词，例如“缩放”或“摄像头”。"
+          }
+        }
+      }
+    },
+    "Nothing in the folder changes until you save (⌘S)." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Im Ordner ändert sich nichts, bis du sicherst (⌘S)."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rien ne change dans le dossier tant que vous n’enregistrez pas (⌘S)."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "保存する（⌘S）まで、フォルダ内は何も変更されません。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "В папке ничего не изменится, пока вы не сохраните (⌘S)."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нічого в папці не зміниться, доки ви не збережете (⌘S)."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在你存储（⌘S）之前，文件夹中的内容不会有任何改变。"
+          }
+        }
+      }
+    },
+    "Nothing in the folder changes until you save (⌘S). Saving writes the project into the folder." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Im Ordner ändert sich nichts, bis du sicherst (⌘S). Beim Sichern wird das Projekt in den Ordner geschrieben."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rien ne change dans le dossier tant que vous n’enregistrez pas (⌘S). L’enregistrement écrit le projet dans le dossier."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "保存する（⌘S）まで、フォルダ内は何も変更されません。保存すると、プロジェクトがフォルダに書き込まれます。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "В папке ничего не изменится, пока вы не сохраните (⌘S). При сохранении проект записывается в папку."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нічого в папці не зміниться, доки ви не збережете (⌘S). Під час збереження проєкт записується в папку."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在你存储（⌘S）之前，文件夹中的内容不会有任何改变。存储时会把项目写入该文件夹。"
           }
         }
       }
@@ -77341,86 +78741,6 @@
         }
       }
     },
-    "Open Project…" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Projekt öffnen …"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ouvrir un projet…"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "プロジェクトを開く…"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Открыть проект…"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Відкрити проєкт…"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "打开项目…"
-          }
-        }
-      }
-    },
-    "Open Project… in Home, File ▸ Open Project… (⌘O), or double-click the project in Finder." : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "„Projekt öffnen …“ im Startfenster, Ablage ▸ Projekt öffnen … (⌘O) oder ein Doppelklick auf das Projekt im Finder."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ouvrir un projet… dans l’accueil, Fichier ▸ Ouvrir un projet… (⌘O), ou double-cliquez sur le projet dans le Finder."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ホームの“プロジェクトを開く…”、“ファイル”＞“プロジェクトを開く…”（⌘O）、またはFinderでプロジェクトをダブルクリック。"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "«Открыть проект…» на главной, Файл ▸ Открыть проект… (⌘O) или двойное нажатие на проект в Finder."
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "«Відкрити проєкт…» на головній, Файл ▸ Відкрити проєкт… (⌘O) або подвійне клацання проєкту у Finder."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "“主页”中的“打开项目…”、“文件 ▸ 打开项目…”（⌘O），或在“访达”中连按两次项目。"
-          }
-        }
-      }
-    },
     "Open Recording Settings…" : {
       "localizations" : {
         "de" : {
@@ -77742,42 +79062,42 @@
         }
       }
     },
-    "Open a .lfstudios project" : {
+    "Open a folder of files as one project: a recording's folder, a Creative Handoff, or any folder with videos in it." : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ein .lfstudios-Projekt öffnen"
+            "value" : "Öffne einen Ordner mit Dateien als ein Projekt: den Ordner einer Aufnahme, eine Kreative Übergabe oder jeden Ordner mit Videos darin."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ouvrir un projet .lfstudios"
+            "value" : "Ouvrez un dossier de fichiers comme un seul projet : le dossier d’un enregistrement, une Transmission créative ou tout dossier contenant des vidéos."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : ".lfstudiosプロジェクトを開く"
+            "value" : "ファイルの入ったフォルダを1つのプロジェクトとして開きます: 収録のフォルダ、クリエイティブ受け渡し、またはビデオの入った任意のフォルダ。"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Открыть проект .lfstudios"
+            "value" : "Откройте папку с файлами как один проект: папку записи, «Творческую передачу» или любую папку с видео."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Відкрити проєкт .lfstudios"
+            "value" : "Відкрийте папку з файлами як один проєкт: папку запису, «Творче передавання» або будь-яку папку з відео."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "打开 .lfstudios 项目"
+            "value" : "把一个文件夹中的文件作为一个项目打开：录制内容的文件夹、创意交付，或任何包含视频的文件夹。"
           }
         }
       }
@@ -77818,6 +79138,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "打开项目"
+          }
+        }
+      }
+    },
+    "Open a project, a recording's folder, a Creative Handoff, or a video" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ein Projekt, den Ordner einer Aufnahme, eine Kreative Übergabe oder ein Video öffnen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ouvrir un projet, le dossier d’un enregistrement, une Transmission créative ou une vidéo"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロジェクト、収録のフォルダ、クリエイティブ受け渡し、またはビデオを開く"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Открыть проект, папку записи, «Творческую передачу» или видео"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Відкрити проєкт, папку запису, «Творче передавання» або відео"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "打开项目、录制内容的文件夹、创意交付或视频"
           }
         }
       }
@@ -77902,42 +79262,42 @@
         }
       }
     },
-    "Open a saved .lfstudios project." : {
+    "Open a saved .lfstudios project, a recording's folder, or a video." : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Öffne ein gesichertes .lfstudios-Projekt."
+            "value" : "Öffne ein gesichertes .lfstudios-Projekt, den Ordner einer Aufnahme oder ein Video."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ouvrez un projet .lfstudios enregistré."
+            "value" : "Ouvrez un projet .lfstudios enregistré, le dossier d’un enregistrement ou une vidéo."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "保存した.lfstudiosプロジェクトを開きます。"
+            "value" : "保存した.lfstudiosプロジェクト、収録のフォルダ、またはビデオを開きます。"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Откройте сохраненный проект .lfstudios."
+            "value" : "Откройте сохраненный проект .lfstudios, папку записи или видео."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Відкрийте збережений проєкт .lfstudios."
+            "value" : "Відкрийте збережений проєкт .lfstudios, папку запису або відео."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "打开已存储的 .lfstudios 项目。"
+            "value" : "打开已存储的 .lfstudios 项目、录制内容的文件夹或视频。"
           }
         }
       }
@@ -78018,6 +79378,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "打开截屏进行标注，然后拷贝或存储结果。"
+          }
+        }
+      }
+    },
+    "Open a whole folder" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einen ganzen Ordner öffnen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ouvrir un dossier entier"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "フォルダごと開く"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Открытие целой папки"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Відкрити цілу папку"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "打开整个文件夹"
           }
         }
       }
@@ -78463,6 +79863,46 @@
         }
       }
     },
+    "Opened “%@”" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "„%@“ geöffnet"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "« %@ » ouvert"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%@”を開きました"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Открыто: «%@»"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Відкрито «%@»"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已打开“%@”"
+          }
+        }
+      }
+    },
     "Opening a video" : {
       "localizations" : {
         "de" : {
@@ -78619,6 +80059,126 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "在“音频”中打开其音量、淡入淡出和降低设置"
+          }
+        }
+      }
+    },
+    "Open…" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öffnen …"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ouvrir…"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開く…"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Открыть…"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Відкрити…"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "打开…"
+          }
+        }
+      }
+    },
+    "Open… in Home or File ▸ Open… (⌘O), and choose the folder. Or drop the folder on the Home window or the LF Studios icon in the Dock." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "„Öffnen …“ im Startfenster oder Ablage ▸ Öffnen … (⌘O), dann den Ordner wählen. Oder zieh den Ordner auf das Startfenster oder das LF-Studios-Symbol im Dock."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ouvrir… dans l’accueil ou Fichier ▸ Ouvrir… (⌘O), puis choisissez le dossier. Ou déposez le dossier sur la fenêtre d’accueil ou sur l’icône LF Studios dans le Dock."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ホームの“開く…”または“ファイル”＞“開く…”（⌘O）を選び、フォルダを選択します。または、ホームウインドウかDockのLF Studiosアイコンにフォルダをドロップします。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "«Открыть…» на главной или Файл ▸ Открыть… (⌘O), затем выберите папку. Или перетяните папку в окно «Главная» или на значок LF Studios в Dock."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "«Відкрити…» на головній або Файл ▸ Відкрити… (⌘O), і виберіть папку. Або перетягніть папку на вікно «Головна» чи на значок LF Studios у Dock."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "点按“主页”中的“打开…”或选择“文件 ▸ 打开…”（⌘O），然后选择该文件夹。也可以把文件夹拖到“主页”窗口或程序坞中的 LF Studios 图标上。"
+          }
+        }
+      }
+    },
+    "Open… in Home, File ▸ Open… (⌘O), or double-click the project in Finder." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "„Öffnen …“ im Startfenster, Ablage ▸ Öffnen … (⌘O) oder ein Doppelklick auf das Projekt im Finder."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ouvrir… dans l’accueil, Fichier ▸ Ouvrir… (⌘O), ou double-cliquez sur le projet dans le Finder."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ホームの“開く…”、“ファイル”＞“開く…”（⌘O）、またはFinderでプロジェクトをダブルクリック。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "«Открыть…» на главной, Файл ▸ Открыть… (⌘O) или двойное нажатие на проект в Finder."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "«Відкрити…» на головній, Файл ▸ Відкрити… (⌘O) або двічі клацніть проєкт у Finder."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "点按“主页”中的“打开…”、选择“文件 ▸ 打开…”（⌘O），或在“访达”中连按两次该项目。"
           }
         }
       }
@@ -87524,6 +89084,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "录制失败，未能存储。"
+          }
+        }
+      }
+    },
+    "Recording folder" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aufnahmeordner"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dossier des enregistrements"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "収録のフォルダ"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Папка для записей"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Папка записів"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "录制文件夹"
           }
         }
       }
@@ -99038,42 +100638,42 @@
         }
       }
     },
-    "Right-click for Open, Show in Finder, Creative Handoff…, or Delete (moves it to the Trash)." : {
+    "Right-click for Open, Show in Finder, Creative Handoff…, or Delete (moves it to the Trash; for a recording's folder, the whole folder, after asking)." : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mit einem Rechtsklick findest du „Öffnen“, „Im Finder zeigen“, „Kreative Übergabe …“ und „Löschen“ (legt es in den Papierkorb)."
+            "value" : "Mit einem Rechtsklick findest du „Öffnen“, „Im Finder zeigen“, „Kreative Übergabe …“ und „Löschen“ (legt es in den Papierkorb; beim Ordner einer Aufnahme nach Rückfrage den ganzen Ordner)."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Clic droit pour Ouvrir, Afficher dans le Finder, Transmission créative… ou Supprimer (le place dans la corbeille)."
+            "value" : "Clic droit pour Ouvrir, Afficher dans le Finder, Transmission créative… ou Supprimer (place l’élément dans la corbeille ; pour le dossier d’un enregistrement, le dossier entier, après confirmation)."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "右クリックすると、“開く”、“Finderに表示”、“クリエイティブ受け渡し…”、“削除”（ゴミ箱に移動）を選べます。"
+            "value" : "右クリックすると、“開く”、“Finderに表示”、“クリエイティブ受け渡し…”、“削除”を選べます（“削除”はゴミ箱に入れます。収録のフォルダの場合は、確認のあとフォルダ全体を入れます）。"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Правой кнопкой мыши — «Открыть», «Показать в Finder», «Творческая передача…» или «Удалить» (перемещает в Корзину)."
+            "value" : "Правой кнопкой мыши — «Открыть», «Показать в Finder», «Творческая передача…» или «Удалить» (перемещает в Корзину; для папки записи — всю папку, после подтверждения)."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Клацніть правою кнопкою, щоб вибрати «Відкрити», «Показати у Finder», «Творче передавання…» або «Видалити» (переносить у Смітник)."
+            "value" : "Клацніть правою кнопкою, щоб вибрати «Відкрити», «Показати у Finder», «Творче передавання…» або «Видалити» (переміщує в Смітник; для папки запису — усю папку, після запитання)."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "右键点按可选择“打开”“在‘访达’中显示”“创意交付…”或“删除”（移到废纸篓）。"
+            "value" : "右键点按可选择“打开”“在‘访达’中显示”“创意交付…”或“删除”（移到废纸篓；如果是录制内容的文件夹，会在询问后移走整个文件夹）。"
           }
         }
       }
@@ -99839,46 +101439,6 @@
         }
       }
     },
-    "Save Location: the folder for saved screenshots and recordings (the Desktop to start with)." : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Speicherort: der Ordner für gesicherte Bildschirmfotos und Aufnahmen (anfangs der Schreibtisch)."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Emplacement d’enregistrement : le dossier des captures et enregistrements sauvegardés (le Bureau au départ)."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "“保存場所”: スクリーンショットや収録を保存するフォルダ（最初はデスクトップ）。"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "«Место сохранения»: папка для сохраненных снимков и записей (сначала это рабочий стол)."
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "«Місце збереження»: папка для збережених знімків і записів (спершу — робочий стіл)."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "存储位置：存储截屏和录制内容的文件夹（一开始是桌面）。"
-          }
-        }
-      }
-    },
     "Save Project" : {
       "localizations" : {
         "de" : {
@@ -99955,6 +101515,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "项目存储为…"
+          }
+        }
+      }
+    },
+    "Save Recording" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aufnahme sichern"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sauvegarder l’enregistrement"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "収録を保存"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сохранение записи"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зберегти запис"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "存储录制内容"
           }
         }
       }
@@ -100519,36 +102119,36 @@
         }
       }
     },
-    "Save folder, file names & format" : {
+    "Save folders, file names & format" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Speicherordner, Dateinamen & Format"
+            "value" : "Zielordner, Dateinamen & Format"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dossier, noms de fichiers et format"
+            "value" : "Dossiers, noms de fichiers et format"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "保存フォルダ、ファイル名、フォーマット"
+            "value" : "保存先フォルダ、ファイル名、フォーマット"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Папка, имена файлов и формат"
+            "value" : "Папки, имена файлов и формат"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Папка збереження, назви файлів і формат"
+            "value" : "Папки, назви файлів і формат"
           }
         },
         "zh-Hans" : {
@@ -101122,6 +102722,46 @@
         }
       }
     },
+    "Saved to “%@” in %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gesichert: „%@“ in %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enregistré dans « %@ », dans %@"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%@”に保存しました（%@内）"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сохранено в «%@» в папке %@"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Збережено в «%@» у папці «%@»"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已存储到“%@”（位于“%@”中）"
+          }
+        }
+      }
+    },
     "Saved “%@”" : {
       "comment" : "Notice after saving a project",
       "localizations" : {
@@ -101479,6 +103119,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "存储…"
+          }
+        }
+      }
+    },
+    "Saving" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sichern"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sauvegarde"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "保存"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сохранение"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Збереження"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "存储"
           }
         }
       }
@@ -101965,6 +103645,46 @@
         }
       }
     },
+    "Screen recording" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bildschirmaufnahme"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enregistrement de l’écran"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "画面収録"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Запись экрана"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Запис екрана"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "屏幕录制内容"
+          }
+        }
+      }
+    },
     "Screen recording didn't start in time. Try again." : {
       "localizations" : {
         "de" : {
@@ -102202,6 +103922,86 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "截屏编辑器"
+          }
+        }
+      }
+    },
+    "Screenshot folder" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bildschirmfoto-Ordner"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dossier des captures"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スクリーンショットのフォルダ"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Папка для снимков"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Папка знімків"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "截屏文件夹"
+          }
+        }
+      }
+    },
+    "Screenshot folder (Settings ▸ Screenshots): where screenshots are saved. Recording folder (Settings ▸ Recording): where recordings go when you don't choose. Both start as the folder you used before, or the Desktop." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "„Bildschirmfoto-Ordner“ (Einstellungen ▸ Bildschirmfotos): wo Bildschirmfotos gesichert werden. „Aufnahmeordner“ (Einstellungen ▸ Aufzeichnung): wohin Aufnahmen kommen, wenn du nichts wählst. Beide sind anfangs der Ordner, den du bisher genutzt hast, oder der Schreibtisch."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dossier des captures (Réglages ▸ Captures) : où sont enregistrées les captures. Dossier des enregistrements (Réglages ▸ Enregistrement) : où vont les enregistrements quand vous ne choisissez pas. Au départ, les deux sont le dossier utilisé auparavant, ou le Bureau."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“スクリーンショットのフォルダ”（“設定”＞“スクリーンショット”）: スクリーンショットの保存先です。“収録のフォルダ”（“設定”＞“収録”）: 保存先を選ばなかったときの収録の保存先です。どちらも最初は、以前使っていたフォルダかデスクトップになっています。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "«Папка для снимков» (Настройки ▸ Снимки экрана): куда сохраняются снимки. «Папка для записей» (Настройки ▸ Запись): куда попадают записи, если вы не выбрали место. Сначала в обоих случаях указана папка, которую вы использовали раньше, или «Рабочий стол»."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "«Папка знімків» (Параметри ▸ Знімки екрана): куди зберігаються знімки. «Папка записів» (Параметри ▸ Запис): куди потрапляють записи, якщо ви не виберете місце. Спершу це папка, якою ви користувалися раніше, або робочий стіл."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "截屏文件夹（“设置 ▸ 截屏”）：截屏的存储位置。录制文件夹（“设置 ▸ 录制”）：你不选择位置时录制内容的存放位置。两者一开始都是你以前使用的文件夹，或者桌面。"
           }
         }
       }
@@ -105916,42 +107716,42 @@
         }
       }
     },
-    "Settings ▸ Screenshots." : {
+    "Settings ▸ Screenshots, and Settings ▸ Recording ▸ Saving." : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Einstellungen ▸ Bildschirmfotos."
+            "value" : "Einstellungen ▸ Bildschirmfotos und Einstellungen ▸ Aufzeichnung ▸ Sichern."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Réglages ▸ Captures."
+            "value" : "Réglages ▸ Captures, et Réglages ▸ Enregistrement ▸ Sauvegarde."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "“設定”＞“スクリーンショット”。"
+            "value" : "“設定”＞“スクリーンショット”と、“設定”＞“収録”＞“保存”。"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Настройки ▸ Снимки экрана."
+            "value" : "Настройки ▸ Снимки экрана и Настройки ▸ Запись ▸ Сохранение."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Параметри ▸ Знімки екрана."
+            "value" : "Параметри ▸ Знімки екрана і Параметри ▸ Запис ▸ Збереження."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "设置 ▸ 截屏。"
+            "value" : "“设置 ▸ 截屏”，以及“设置 ▸ 录制 ▸ 存储”。"
           }
         }
       }
@@ -110225,6 +112025,46 @@
         }
       }
     },
+    "Some files couldn't be written — README.txt in the folder lists them" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einige Dateien konnten nicht geschrieben werden – README.txt im Ordner listet sie auf"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Certains fichiers n’ont pas pu être écrits — README.txt dans le dossier les liste"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一部のファイルを書き込めませんでした — フォルダ内のREADME.txtに一覧があります"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Некоторые файлы не удалось записать — их список в README.txt в папке"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Деякі файли не вдалося записати — їх перелічено в README.txt у папці"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "部分文件无法写入 — 文件夹中的 README.txt 列出了这些文件"
+          }
+        }
+      }
+    },
     "Something not working? Find the problem, then try the fixes in order." : {
       "localizations" : {
         "de" : {
@@ -110302,6 +112142,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "声音"
+          }
+        }
+      }
+    },
+    "Sound files can be added as tracks of their own in LF Studios 1.7." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tondateien lassen sich in LF Studios 1.7 als eigene Spuren hinzufügen."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les fichiers son pourront être ajoutés comme pistes distinctes dans LF Studios 1.7."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サウンドファイルは、LF Studios 1.7で独自のトラックとして追加できるようになります。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Звуковые файлы можно будет добавить как отдельные дорожки в LF Studios 1.7."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Звукові файли можна буде додати як окремі доріжки в LF Studios 1.7."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在 LF Studios 1.7 中，声音文件可以作为独立的轨道添加。"
           }
         }
       }
@@ -112984,6 +114864,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "开始"
+          }
+        }
+      }
+    },
+    "Starts after the screen by" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beginnt nach dem Bildschirm um"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Décalage après l’écran :"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "画面からの開始の遅れ"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Начинается после экрана через"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Починається пізніше за екран на"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "晚于屏幕"
           }
         }
       }
@@ -117042,6 +118962,46 @@
         }
       }
     },
+    "The LF Studios project — it needs the original files: turn on Include originals so it reopens in LF Studios" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das LF-Studios-Projekt – es braucht die Originaldateien: Schalte „Originale beilegen, damit es sich in LF Studios wieder öffnet“ ein"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le projet LF Studios — il a besoin des fichiers originaux : activez Inclure les originaux pour rouvrir dans LF Studios"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LF Studiosのプロジェクト — 元のファイルが必要です: “LF Studiosで再び開けるようにオリジナルを含める”をオンにしてください"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Проект LF Studios — ему нужны исходные файлы: включите «Добавить оригиналы для повторного открытия в LF Studios»"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Проєкт LF Studios — йому потрібні оригінальні файли: увімкніть «Додати оригінали, щоб знову відкрити в LF Studios»"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LF Studios 项目 — 它需要原始文件：请打开“包含原始文件，以便在 LF Studios 中重新打开”"
+          }
+        }
+      }
+    },
     "The Undo and Redo buttons in the editor's toolbar." : {
       "localizations" : {
         "de" : {
@@ -117642,6 +119602,46 @@
         }
       }
     },
+    "The camera, %@ after the screen" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Kamera, %@ nach dem Bildschirm"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La caméra, %@ après l’écran"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カメラ（画面の%@後から）"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Камера, через %@ после экрана"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Камера — на %@ пізніше за екран"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "摄像头画面，晚于屏幕 %@"
+          }
+        }
+      }
+    },
     "The cards use the same background as your video. Pick their font with the font menu." : {
       "localizations" : {
         "de" : {
@@ -118158,6 +120158,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "录制期间录制栏中的旗帜按钮。"
+          }
+        }
+      }
+    },
+    "The folder couldn't be made: %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Ordner konnte nicht erstellt werden: %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossible de créer le dossier : %@"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "フォルダを作成できませんでした: %@"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удалось создать папку: %@"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не вдалося створити папку: %@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无法创建文件夹：%@"
           }
         }
       }
@@ -118722,6 +120762,46 @@
         }
       }
     },
+    "The music" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Musik"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La musique"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "音楽"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Музыка"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Музика"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "音乐"
+          }
+        }
+      }
+    },
     "The notes never appear in a recording, a screenshot, or screen sharing." : {
       "localizations" : {
         "de" : {
@@ -119042,6 +121122,86 @@
         }
       }
     },
+    "The pictures in 04 Graphics — older handoffs don't say where they were placed" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Bilder in 04 Graphics – ältere Übergaben geben nicht an, wo sie platziert waren"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les images de 04 Graphics — les anciennes transmissions n’indiquent pas où elles étaient placées"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "04 Graphicsの画像 — 以前の受け渡しには配置場所の情報がありません"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Изображения в 04 Graphics — в старых передачах не указано, где они были размещены"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зображення в 04 Graphics — старіші передавання не зберігають, де їх розміщено"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "04 Graphics 中的图片 — 较早的交付没有记录它们的位置"
+          }
+        }
+      }
+    },
+    "The pointer data — it fits only an uncut recording" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Zeigerdaten – sie passen nur zu einer ungeschnittenen Aufnahme"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les données du pointeur — elles ne correspondent qu’à un enregistrement non coupé"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ポインタのデータ — カットしていない収録にしか合いません"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Данные указателя — подходят только для необрезанной записи"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дані курсора — вони підходять лише до необрізаного запису"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "指针数据 — 它只适用于未剪辑的录制内容"
+          }
+        }
+      }
+    },
     "The pointer glides back to where it started at the end, so the video loops without a jump." : {
       "localizations" : {
         "de" : {
@@ -119122,6 +121282,46 @@
         }
       }
     },
+    "The pointer, clicks, and keyboard shortcuts" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeiger, Klicks und Tastaturkurzbefehle"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le pointeur, les clics et les raccourcis clavier"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ポインタ、クリック、キーボードショートカット"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Указатель, нажатия и сочетания клавиш"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Курсор, клацання й клавіатурні скорочення"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "指针、点按和快捷键"
+          }
+        }
+      }
+    },
     "The preview shows only when Show the preview after capture is on in Settings ▸ General." : {
       "localizations" : {
         "de" : {
@@ -119158,6 +121358,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "只有在“设置 ▸ 通用”中打开了“截取后显示预览”，才会显示预览。"
+          }
+        }
+      }
+    },
+    "The project file opens everything again, exactly as you left it. LF Studios keeps it up to date as you edit." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Projektdatei öffnet alles wieder, genau so, wie du es verlassen hast. LF Studios hält sie beim Bearbeiten aktuell."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le fichier de projet rouvre tout, exactement comme vous l’avez laissé. LF Studios le tient à jour pendant que vous modifiez."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロジェクトファイルを開くと、すべてが最後の状態のとおりに開きます。編集すると、LF Studiosが随時更新します。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Файл проекта снова открывает все точно так, как вы оставили. LF Studios обновляет его, пока вы редактируете."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Файл проєкту знову відкриває все саме так, як ви залишили. LF Studios оновлює його, поки ви редагуєте."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "项目文件会让一切按你离开时的样子重新打开。LF Studios 会在你编辑时随时更新它。"
           }
         }
       }
@@ -119363,6 +121603,86 @@
         }
       }
     },
+    "The recording isn't where it was saved." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Aufnahme ist nicht mehr dort, wo sie gesichert wurde."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L’enregistrement n’est plus là où il a été enregistré."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "収録が保存した場所にありません。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Записи нет там, где она была сохранена."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Запису немає там, де його збережено."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "录制内容不在存储时的位置。"
+          }
+        }
+      }
+    },
+    "The recording stayed where it was" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Aufnahme ist geblieben, wo sie war"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L’enregistrement est resté où il était"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "収録は元の場所に残っています"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Запись осталась на прежнем месте"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Запис залишився там, де був"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "录制内容留在了原处"
+          }
+        }
+      }
+    },
     "The recording's file can't be found — it may have been moved or deleted. Put it back and export again." : {
       "localizations" : {
         "de" : {
@@ -119479,6 +121799,86 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "存储面板未返回存储位置。请再次尝试存储。"
+          }
+        }
+      }
+    },
+    "The save window appears after each recording. Settings ▸ Recording ▸ Saving has Ask where to save after each recording and the Recording folder." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das Fenster zum Sichern erscheint nach jeder Aufzeichnung. Unter Einstellungen ▸ Aufzeichnung ▸ Sichern findest du „Nach jeder Aufzeichnung fragen, wo gesichert wird“ und den „Aufnahmeordner“."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La fenêtre d’enregistrement apparaît après chaque enregistrement. Réglages ▸ Enregistrement ▸ Sauvegarde contient Demander l’emplacement après chaque enregistrement et le Dossier des enregistrements."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "収録のたびに保存ウインドウが表示されます。“収録のたびに保存先を確認する”と“収録のフォルダ”は、“設定”＞“収録”＞“保存”にあります。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Окно сохранения появляется после каждой записи. В разделе Настройки ▸ Запись ▸ Сохранение есть «Спрашивать, куда сохранять каждую запись» и «Папка для записей»."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вікно збереження з’являється після кожного запису. У Параметри ▸ Запис ▸ Збереження є «Запитувати, куди зберегти, після кожного запису» і «Папка записів»."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "每次录制后都会出现存储窗口。“设置 ▸ 录制 ▸ 存储”中有“每次录制后询问存储位置”和“录制文件夹”。"
+          }
+        }
+      }
+    },
+    "The screen recording" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Bildschirmaufnahme"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L’enregistrement de l’écran"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "画面収録"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Запись экрана"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Запис екрана"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "屏幕录制内容"
           }
         }
       }
@@ -120043,6 +122443,46 @@
         }
       }
     },
+    "The sound recorded with the screen" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der mit dem Bildschirm aufgezeichnete Ton"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le son enregistré avec l’écran"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "画面と一緒に収録したサウンド"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Звук, записанный вместе с экраном"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Звук, записаний разом з екраном"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "与屏幕一同录制的声音"
+          }
+        }
+      }
+    },
     "The text is now on the clipboard: paste it anywhere with ⌘V." : {
       "localizations" : {
         "de" : {
@@ -120563,6 +123003,46 @@
         }
       }
     },
+    "The whole folder goes to the Trash: the recording, its camera video, its sound files, captions, and project." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der ganze Ordner kommt in den Papierkorb: die Aufnahme, ihr Kameravideo, ihre Tondateien, Untertitel und das Projekt."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le dossier entier va dans la corbeille : l’enregistrement, sa vidéo de caméra, ses fichiers son, ses sous-titres et son projet."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "フォルダ全体がゴミ箱に入ります: 収録、カメラ映像、サウンドファイル、字幕、プロジェクト。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "В Корзину перемещается вся папка: запись, видео с камеры, звуковые файлы, субтитры и проект."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Уся папка потрапить у Смітник: запис, відео з камери, звукові файли, субтитри й проєкт."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "整个文件夹都会移到废纸篓：录制内容、它的摄像头视频、声音文件、字幕和项目。"
+          }
+        }
+      }
+    },
     "The whole frame zooms in." : {
       "localizations" : {
         "de" : {
@@ -120999,6 +123479,86 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "此文件中没有视频"
+          }
+        }
+      }
+    },
+    "There's no video in “%@”" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In „%@“ ist kein Video"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucune vidéo dans « %@ »"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%@”にビデオがありません"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "В «%@» нет видео"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "У «%@» немає відео"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%@”中没有视频"
+          }
+        }
+      }
+    },
+    "There's no video to use as the screen recording." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Es gibt kein Video, das als Bildschirmaufnahme dienen kann."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucune vidéo ne peut servir d’enregistrement de l’écran."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "画面収録として使えるビデオがありません。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нет видео, которое можно использовать как запись экрана."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Немає відео, яке можна використати як запис екрана."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "没有可用作屏幕录制内容的视频。"
           }
         }
       }
@@ -135928,6 +138488,46 @@
         }
       }
     },
+    "What is each file in “%@”?" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Was ist jede Datei in „%@“?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "À quoi sert chaque fichier de « %@ » ?"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%@”の各ファイルの内容"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Что за файлы в «%@»?"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Що за файли в «%@»?"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%@”中的每个文件分别是什么？"
+          }
+        }
+      }
+    },
     "What was playing on your Mac" : {
       "localizations" : {
         "de" : {
@@ -136285,6 +138885,86 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "每次捕捉或录制一个区域时。"
+          }
+        }
+      }
+    },
+    "Where do you want to save this recording?" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wo möchtest du diese Aufnahme sichern?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Où voulez-vous sauvegarder cet enregistrement ?"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この収録をどこに保存しますか?"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Куда сохранить эту запись?"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Куди зберегти цей запис?"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你想把这段录制内容存储到哪里？"
+          }
+        }
+      }
+    },
+    "Where screenshots are saved: by Save on the preview after capture, and by Save automatically. Recordings have their own folder in Settings ▸ Recording." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wo Bildschirmfotos gesichert werden: mit „Sichern“ in der Vorschau nach der Aufnahme und mit „Automatisch sichern“. Aufnahmen haben ihren eigenen Ordner unter Einstellungen ▸ Aufzeichnung."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Où sont enregistrées les captures : avec Enregistrer dans l’aperçu après la capture, et avec Enregistrer automatiquement. Les enregistrements ont leur propre dossier dans Réglages ▸ Enregistrement."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スクリーンショットの保存先です。取り込み後のプレビューの“保存”と、“自動的に保存”で使われます。収録には、“設定”＞“収録”に専用のフォルダがあります。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Куда сохраняются снимки: кнопкой «Сохранить» в превью после снимка и параметром «Сохранять автоматически». У записей своя папка в разделе Настройки ▸ Запись."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Куди зберігаються знімки: кнопкою «Зберегти» на перегляді після знімка і через «Зберігати автоматично». Для записів є окрема папка в Параметри ▸ Запис."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "截屏的存储位置：用于截取后预览中的“存储”和“自动存储”。录制内容在“设置 ▸ 录制”中有自己的文件夹。"
           }
         }
       }
@@ -137447,6 +140127,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "如果有多个屏幕，请点按你想要的那个屏幕旁边的“录制”。"
+          }
+        }
+      }
+    },
+    "With the LF Studios project, the folder opens the whole edit again. Clips cut to your edit need the untouched recordings alongside." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mit dem LF-Studios-Projekt öffnet der Ordner den ganzen Schnitt wieder. Auf deinen Schnitt gekürzte Clips brauchen die unbearbeiteten Aufnahmen daneben."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avec le projet LF Studios, le dossier rouvre tout le montage. Les clips coupés selon votre montage ont besoin des enregistrements intacts à côté."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LF Studiosのプロジェクトがあれば、フォルダを開くと編集全体がもう一度開きます。編集に合わせてカットしたクリップには、元のままの収録も一緒に必要です。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "С проектом LF Studios папка снова открывает весь монтаж. Клипам, обрезанным под монтаж, нужны рядом нетронутые исходные записи."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "З проєктом LF Studios папка знову відкриває весь монтаж. Кліпам, обрізаним за вашим монтажем, потрібні поруч необрізані записи."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "有了 LF Studios 项目，打开该文件夹即可重现整个剪辑。按你的剪辑裁剪的片段需要旁边附带未改动的录制内容。"
           }
         }
       }
@@ -140888,6 +143608,46 @@
         }
       }
     },
+    "Zooms, styles, annotations, and title cards — older handoffs don't include them" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zooms, Stile, Beschriftungen und Titelkarten – ältere Übergaben enthalten sie nicht"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zooms, styles, annotations et cartons de titre — les anciennes transmissions ne les incluent pas"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ズーム、スタイル、注釈、タイトルカード — 以前の受け渡しには含まれていません"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Увеличения, стили, разметка и титры — в старых передачах их нет"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Наближення, стилі, розмітка й заставки — старіші передавання їх не містять"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "缩放、样式、标注和标题卡 — 较早的交付不包含这些内容"
+          }
+        }
+      }
+    },
     "a table" : {
       "comment" : "Listed with links and email addresses the recognized text holds",
       "localizations" : {
@@ -143338,6 +146098,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "无法读取“%@” — 它可能已损坏、仍在存储中，或采用了这台 Mac 无法播放的格式。请将其从此视频中移除（“样式”→“录制内容”），或用可正常使用的副本替换，然后重新导出。"
+          }
+        }
+      }
+    },
+    "“%@” couldn't be moved: %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "„%@“ konnte nicht verschoben werden: %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossible de déplacer « %@ » : %@"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%@”を移動できませんでした: %@"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удалось переместить «%@»: %@"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не вдалося перемістити «%@»: %@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无法移动“%@”：%@"
           }
         }
       }

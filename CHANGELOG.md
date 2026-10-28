@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.6.0]
+
+### Added
+- **Every recording in its own folder.** When a recording finishes, LF Studios asks “Where do you want to save this recording?” (a name and a folder), then makes a new folder there with everything the recording is made of: the project file, 01 Screen (the recording, untouched), 02 Camera, 03 Audio (Microphone.wav and System Audio.wav, as separate files), 05 Captions (once there are captions), 07 Data (pointer, clicks, keys, typing, markers), the speaker notes, and a README. Cancel saves it to the Recording folder the same way, so nothing is ever lost. Settings ▸ Recording ▸ **Ask where to save after each recording** (on) turns the question off.
+  - The files move only after the recording is completely finished; each one is checked first, and if anything goes wrong the recording stays where it was. A move a crash interrupted is put back and done again at the next launch.
+  - The folder is the recording's home: the editor keeps its project file and its captions up to date as you edit. Move or rename it in Finder, or copy it to another Mac: it still opens, with the whole edit.
+  - Home ▸ Recordings shows these folders; Delete moves the whole folder to the Trash, after asking.
+- **Open a whole folder.** Open… (⌘O, and Home's Open…) takes a folder as well as a project or a video, and a folder dropped on Home or on the Dock icon opens too.
+  - A folder with an LF Studios project in it opens that project exactly as it was.
+  - An older Creative Handoff is rebuilt from its files, README.txt, and Timeline.fcpxml: the screen, its cuts and speed changes, the camera at its offset, captions and their translations, markers, the pointer, clicks, and keys, and the music. A summary says what came back and what couldn't.
+  - Any other folder opens the **Import Folder** window: a role for each video (Screen recording, Camera, Ignore) and the camera's offset.
+  - Nothing inside an opened folder changes until you save (⌘S), which writes the project into it.
+- **Creative Handoff reopens in LF Studios.** A handoff now holds an LF Studios project with the whole edit, pointing at the handoff's own files. With clips cut to your edit, **Include originals so it reopens in LF Studios** (on) adds the untouched recordings it needs; the dialog shows what they add. Off, such a handoff has no project, and README.txt says so.
+
+### Changed
+- **Two save folders.** Settings ▸ Screenshots ▸ **Screenshot folder** is for screenshots; Settings ▸ Recording ▸ **Recording folder** is for recordings. Both start as the folder you used before.
+
 ## [1.5.0]
 
 ### Added
