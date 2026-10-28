@@ -1067,6 +1067,7 @@ enum GuideContent {
             GuideEntry(
                 id: "rec-problems", symbol: "exclamationmark.triangle", title: L("If something goes wrong while recording"),
                 summary: L("LF Studios keeps your recording safe when things change in the middle of it."),
+                location: L("It happens by itself. The bar while recording shows a short note, and a notice explains it."),
                 points: [
                     L("Microphone unplugged: it switches to another one, or carries on without sound until one is plugged in."),
                     L("Camera unplugged: the screen recording keeps going without it."),
@@ -2239,7 +2240,7 @@ enum GuideContent {
                 related: ["rec-mic", "audio-levels"]
             ),
             GuideEntry(
-                id: "trouble-shortcuts", symbol: "keyboard.badge.exclamationmark", title: L("My shortcuts don't work"),
+                id: "trouble-shortcuts", symbol: "exclamationmark.bubble", title: L("My shortcuts don't work"),
                 summary: L("A shortcut isn't set, or another app uses the same keys."),
                 steps: [
                     L("Open Settings ▸ Shortcuts and check that the shortcut has keys. Recording shortcuts start unset."),

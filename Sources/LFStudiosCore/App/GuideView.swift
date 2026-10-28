@@ -55,7 +55,9 @@ private struct GuideOutline: View {
                     ) {
                         model.jump(to: .chapter(chapter.id))
                     }
-                    if chapter.id == .features {
+                    // The sections show while All features is open, so
+                    // every chapter fits in the outline.
+                    if chapter.id == .features, model.query.isEmpty, model.selectedChapter == .features {
                         ForEach(chapter.categories) { category in
                             GuideOutlineButton(
                                 title: category.title,
@@ -91,14 +93,15 @@ private struct GuideOutlineButton: View {
                     .frame(width: 18)
                 Text(title)
                     .font(.system(size: isSub ? 12 : 13, weight: isSub ? .medium : .semibold))
-                    .lineLimit(1)
-                    .truncationMode(.tail)
+                    .lineLimit(2)
+                    .fixedSize(horizontal: false, vertical: true)
                 Spacer(minLength: 0)
             }
             .foregroundStyle(HomeColors.ink.opacity(isSelected ? 0.96 : (isSub ? 0.6 : 0.72)))
             .padding(.leading, isSub ? 22 : 8)
             .padding(.trailing, 8)
-            .frame(height: isSub ? 26 : 30)
+            .padding(.vertical, 5)
+            .frame(minHeight: isSub ? 26 : 30)
             .background(
                 RoundedRectangle(cornerRadius: 7, style: .continuous)
                     .fill(isSelected ? HomeColors.ink.opacity(0.11) : (isHovering ? HomeColors.ink.opacity(0.05) : .clear))
@@ -698,5 +701,17 @@ private struct GuideFlow: Layout {
             x += size.width + spacing
             rowHeight = max(rowHeight, size.height)
         }
+    }
+}
+
+/// One page on its own, full length (the Guide's snapshot tests).
+struct GuidePageProbe: View {
+    @ObservedObject var model: GuideModel
+
+    var body: some View {
+        GuidePageView(model: model)
+            .padding(24)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(HomeColors.content)
     }
 }
