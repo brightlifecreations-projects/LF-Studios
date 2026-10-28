@@ -104,6 +104,7 @@ extension VideoDemoProject {
     var assetPaths: Set<String> {
         var paths = Set(overlayEffects.compactMap { $0.image?.path })
         if let music { paths.insert(music.path) }
+        paths.formUnion(audioTracks.map(\.path))
         return paths
     }
 }

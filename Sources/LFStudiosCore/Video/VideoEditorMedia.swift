@@ -129,6 +129,9 @@ final class VideoEditorMedia {
     var music: (path: String, file: VideoAudioFile)?
     var musicWaveform: (path: String, waveform: VideoWaveform)?
     var clickSound: VideoAudioFile?
+    /// Added sound files, loaded, by the path loaded (the cleaned-up voice's
+    /// own when it's ready).
+    var externalAudio: [String: VideoAudioFile] = [:]
     /// Speech on each recording's voice track, in its own seconds ("" is
     /// the project's own recording; others by source ID).
     var speech: [String: [ClosedRange<Double>]] = [:]
@@ -178,6 +181,14 @@ extension VideoEditorModel {
                 extras.clicks = VideoClickSoundInput(file: click, times: times, volume: project.clickSounds.volume)
             }
         }
+        if !project.audioTracks.isEmpty {
+            let tracks = project.audioTracks.compactMap { track -> VideoExternalAudioInput.Track? in
+                let url = VideoExternalAudioInput.fileURL(for: track, recipe: project.audio.voiceRecipe)
+                return media.externalAudio[url.path].map { VideoExternalAudioInput.Track(settings: track, file: $0) }
+            }
+            let needsVoice = project.audioTracks.contains { $0.dipUnderVoice && !$0.useAsVoice }
+            extras.externalAudio = VideoExternalAudioInput(tracks: tracks, voice: needsVoice ? VideoMusicDucking.speechOnTimeline(project: project, primaryKinds: audioKinds, speech: media.speech, segments: segments) : [])
+        }
         return extras
     }
 
@@ -221,6 +232,10 @@ extension VideoEditorModel {
         if project.clickSounds.enabled, media.clickSound == nil {
             loadClickSound()
         }
+        if project.audioTracks.map(\.path) != old.audioTracks.map(\.path) || project.externalVoice?.id != old.externalVoice?.id
+            || project.audioTracks.map(\.dipUnderVoice) != old.audioTracks.map(\.dipUnderVoice) || project.audio.voiceRecipe != old.audio.voiceRecipe {
+            loadExternalAudio()
+        }
         if project.sources.map(\.id) != old.sources.map(\.id) || project.sources.map(\.offset) != old.sources.map(\.offset) {
             Task { await reloadSources() }
         }
@@ -232,6 +247,33 @@ extension VideoEditorModel {
         if project.hasAppendedSources { await reloadSources() }
         if project.music != nil { loadMusic() }
         if project.clickSounds.enabled { loadClickSound() }
+        if !project.audioTracks.isEmpty { loadExternalAudio() }
+    }
+
+    /// Loads the added sound files (and where the voice speaks, for those
+    /// that dip under it, or the one used as the voice).
+    func loadExternalAudio() {
+        guard !project.audioTracks.isEmpty else {
+            refreshPlayback()
+            return
+        }
+        guard media.begin("external-audio") else { return }
+        Task {
+            defer { media.end("external-audio") }
+            for track in project.audioTracks {
+                let url = VideoExternalAudioInput.fileURL(for: track, recipe: project.audio.voiceRecipe)
+                if media.externalAudio[url.path] == nil, let file = await VideoAudioFile.load(url) {
+                    media.externalAudio[url.path] = file
+                }
+            }
+            if let voice = project.externalVoice, media.speech["track:\(voice.id.uuidString)"] == nil {
+                media.speech["track:\(voice.id.uuidString)"] = await VideoVoiceActivity.speech(url: voice.url, trackIndex: 0)
+            }
+            if project.audioTracks.contains(where: \.dipUnderVoice) { await loadSpeech() }
+            refreshPlayback()
+            // A track used as the voice gets the voice's clean-up too.
+            if project.externalVoice != nil, project.audio.voiceRecipe != nil { startVoiceEnhancementIfNeeded() }
+        }
     }
 
     /// Re-applies the edit to the player (music, clicks, recordings loaded).
@@ -415,7 +457,9 @@ extension VideoEditorModel {
             cards: project.cards,
             transitions: project.transitions,
             sources: project.sources,
-            importedCamera: project.importedCamera
+            importedCamera: project.importedCamera,
+            audioTracks: project.audioTracks,
+            selectedAudioPiece: selectedAudioPiece
         )
     }
 }
@@ -428,6 +472,8 @@ struct VideoTimelineExtrasSignature: Equatable {
     let transitions: VideoTransitionSettings
     let sources: [VideoProjectSource]
     let importedCamera: VideoImportedCamera?
+    let audioTracks: [VideoExternalAudioTrack]
+    let selectedAudioPiece: VideoAudioPieceRef?
 }
 
 enum VideoMusicDucking {
@@ -436,6 +482,24 @@ enum VideoMusicDucking {
     /// silent voice ducks nothing.
     static func voiceOnTimeline(project: VideoDemoProject, primaryKinds: [VideoAudioKind], speech: [String: [ClosedRange<Double>]], segments: [VideoDemoTimelineSegment]) -> [ClosedRange<Double>] {
         guard project.music?.ducking == true else { return [] }
+        return speechOnTimeline(project: project, primaryKinds: primaryKinds, speech: speech, segments: segments)
+    }
+
+    /// Where the voice speaks on the timeline: an added track used as the
+    /// voice ("track:<id>" in `speech`, in its file's seconds), else every
+    /// recording's own voice.
+    static func speechOnTimeline(project: VideoDemoProject, primaryKinds: [VideoAudioKind], speech: [String: [ClosedRange<Double>]], segments: [VideoDemoTimelineSegment]) -> [ClosedRange<Double>] {
+        if let voice = project.externalVoice {
+            let heard = speech["track:\(voice.id.uuidString)"] ?? []
+            let total = project.outputDuration(segments: segments)
+            return voice.placed(segments: segments, timelineDuration: total).flatMap { piece in
+                heard.compactMap { range -> ClosedRange<Double>? in
+                    let a = max(range.lowerBound, piece.fileStart), b = min(range.upperBound, piece.fileStart + piece.fileLength)
+                    guard b > a else { return nil }
+                    return (piece.timelineStart + (a - piece.fileStart) / piece.speed)...(piece.timelineStart + (b - piece.fileStart) / piece.speed)
+                }
+            }.sorted { $0.lowerBound < $1.lowerBound }
+        }
         var axis: [ClosedRange<Double>] = []
         let primaryVoice = VideoAudioKind.voiceTrackIndex(in: primaryKinds).map { primaryKinds[$0] } ?? .mixed
         if project.audio.effectiveVolume(for: primaryVoice) > 0.01 {

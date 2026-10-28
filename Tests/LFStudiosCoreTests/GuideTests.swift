@@ -93,10 +93,12 @@ final class GuideTests: XCTestCase {
     func testWhatsNewListsTheNewestFeaturesWithANewBadge() throws {
         let whatsNew = try XCTUnwrap(chapters.first { $0.id == .whatsNew })
         let listed = Set(whatsNew.entries.map(\.id))
-        XCTAssertEqual(GuideContent.newVersions.first, "1.6.0", "the newest version first")
+        // The newest version first: the one at the top of the CHANGELOG.
+        let changelog = URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent().appendingPathComponent("CHANGELOG.md")
+        let top = try String(contentsOf: changelog, encoding: .utf8).components(separatedBy: "\n").first { $0.hasPrefix("## [") }
+        XCTAssertEqual(top.map { String($0.dropFirst(4).prefix { $0 != "]" }) }, GuideContent.newVersions.first, "put the new version first in GuideContent.newVersions")
+        XCTAssertTrue(listed.contains("audio-added"))
         XCTAssertTrue(listed.contains("rec-folder"))
-        XCTAssertTrue(listed.contains("project-folder"))
-        XCTAssertTrue(listed.contains("app-guide"))
         XCTAssertFalse(listed.contains("camera-face"), "older versions' pages leave What's new")
         for entry in features {
             XCTAssertEqual(entry.isNew, listed.contains(entry.id), entry.id)

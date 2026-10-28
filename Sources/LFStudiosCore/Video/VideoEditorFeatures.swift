@@ -138,6 +138,12 @@ extension VideoEditorModel {
     /// The microphone alone (cleaned up when that's ready), not the Mac's
     /// sound mixed in.
     var transcriptionSource: VideoCaptionTranscriber.Source {
+        // An added track used as the voice, synced to the recording: its
+        // words land on the recording's clock.
+        if let voice = project.externalVoice, voice.lockedToRecording, let first = voice.pieces.first {
+            let url = VideoExternalAudioInput.fileURL(for: voice, recipe: project.audio.voiceRecipe)
+            return VideoCaptionTranscriber.Source(url: url, trackIndex: 0, offset: first.at - first.fileStart)
+        }
         let voiceStart = voiceTrackIndex.flatMap { index in
             playback.source.flatMap { $0.audioRanges.indices.contains(index) ? $0.audioRanges[index].start.seconds : nil }
         } ?? 0
@@ -545,7 +551,7 @@ extension VideoEditorModel {
     var voiceTrackIndex: Int? { VideoAudioKind.voiceTrackIndex(in: audioKinds) }
     var hasSeparateVoiceAndSystem: Bool { audioKinds.contains(.microphone) && audioKinds.contains(.system) }
     /// Any recording in the video has a voice to clean up.
-    var canEnhanceVoice: Bool { (voiceTrackIndex != nil || project.appendedSourceHasVoice) && VideoVoiceEnhancer.isAvailable }
+    var canEnhanceVoice: Bool { (voiceTrackIndex != nil || project.appendedSourceHasVoice || project.externalVoice != nil) && VideoVoiceEnhancer.isAvailable }
 
     /// M: the preview goes quiet; the video's own sound (and the export)
     /// is untouched.
@@ -651,6 +657,13 @@ extension VideoEditorModel {
         let sources = await VideoAudioSource.resolved(from: source, kinds: audioKinds, voice: project.audio.voiceRecipe)
         playback.setAudioSources(sources)
         await reloadSourceAudio()
+        // A cleaned-up voice from an added track: load that file instead.
+        if project.externalVoice != nil {
+            for track in project.audioTracks {
+                let url = VideoExternalAudioInput.fileURL(for: track, recipe: project.audio.voiceRecipe)
+                if media.externalAudio[url.path] == nil, let file = await VideoAudioFile.load(url) { media.externalAudio[url.path] = file }
+            }
+        }
         if let moved = playback.apply(segments: segments, audio: project.audio, keepSourceTime: sourceTime(forTimeline: clock.time), extras: editExtras), !isPlaying {
             clock.time = moved
         }

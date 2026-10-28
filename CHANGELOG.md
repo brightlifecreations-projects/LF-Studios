@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.7.0]
+
+### Added
+- **Add sound files.** The Audio panel has **Add audio…** (and sound files can be dropped on the timeline): MP3, WAV, M4A, AAC, AIFF, FLAC, and CAF. Each file becomes its own track under the music: drag it to move it, drag an edge to trim it, click it and press S to split it or ⌫ to delete a piece; set its volume, fades, or mute. Several tracks play at once.
+  - **Sync by sound** lines a track up with the recording's sound, the way the camera syncs, and from then on it follows the cuts and speed changes. New tracks sit freely on the edit's timeline.
+  - **Use as my voice** puts a track in place of the recording's microphone, for a separate microphone or a re-recorded voiceover: Enhance voice and Podcast mode clean it up, the music dips under it, and synced captions come from it.
+  - **Dip under voice** (off to start with) lowers a track while you talk.
+  - Added sound is in the export, Audio only, Full Mix, Creative Handoff (03 Audio, laid out like the edit or as added) and its timeline files, and it reopens with the project. A recording's folder keeps its copy in 03 Audio.
+- **Folders with separate sound files.** Import Folder has an **Audio track** role with an offset, and an older Creative Handoff whose clips have no sound brings back Microphone.wav (as the voice) and System Audio.wav as tracks of their own.
+
+### Fixed
+- A recording's folder no longer collects a new copy of a song or a picture each time its project is kept up to date: the first copy is used again.
+
 ## [1.6.0]
 
 ### Added

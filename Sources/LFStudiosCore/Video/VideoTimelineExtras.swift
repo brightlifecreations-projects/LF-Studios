@@ -49,6 +49,7 @@ extension VideoTimelineMetrics {
     /// there are none.
     static func bottomLanesHeight(_ project: VideoDemoProject) -> CGFloat {
         (project.importedCamera == nil ? 0 : gap + cameraFootageLaneHeight) + (project.music == nil ? 0 : gap + musicLaneHeight)
+            + CGFloat(project.audioTracks.count) * (gap + musicLaneHeight)
     }
 }
 
@@ -93,6 +94,19 @@ struct VideoTimelineExtrasLayer: View {
                 )
                 .equatable()
                 .offset(y: clipTop + M.clipTrackHeight + M.gap + (project.importedCamera == nil ? 0 : M.cameraFootageLaneHeight + M.gap))
+            }
+            // Added sound files, a lane each, under the music.
+            let audioTop = clipTop + M.clipTrackHeight + M.gap + (project.importedCamera == nil ? 0 : M.cameraFootageLaneHeight + M.gap) + (project.music == nil ? 0 : M.musicLaneHeight + M.gap)
+            ForEach(Array(project.audioTracks.enumerated()), id: \.element.id) { index, track in
+                VideoExternalAudioLane(
+                    track: track,
+                    placed: track.placed(segments: model.segments, timelineDuration: model.timelineDuration),
+                    selected: model.selectedAudioPiece?.track == track.id ? model.selectedAudioPiece?.piece : nil,
+                    geometry: geometry,
+                    model: model
+                )
+                .equatable()
+                .offset(y: audioTop + CGFloat(index) * (M.musicLaneHeight + M.gap))
             }
         }
     }

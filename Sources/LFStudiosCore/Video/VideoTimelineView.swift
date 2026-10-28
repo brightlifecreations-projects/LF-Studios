@@ -301,6 +301,9 @@ struct VideoTimelineSurface: View {
         VStack(spacing: 0) {
         ScrollView(.horizontal, showsIndicators: model.timelineZoom > 1.01) {
             ZStack(alignment: .topLeading) {
+                // Sound files dropped on the timeline become tracks there.
+                Color.clear
+                    .onDrop(of: [.fileURL], delegate: VideoAudioDrop(model: model, geometry: geometry))
                 // Scrub anywhere that isn't an object.
                 Color.clear
                     .contentShape(Rectangle())
@@ -328,7 +331,7 @@ struct VideoTimelineSurface: View {
                     .offset(y: clickTop)
                 }
                 clipTrack
-                // Cards, cut markers, recording boundaries, music.
+                // Cards, cut markers, recording boundaries, music, added sound.
                 VideoTimelineExtrasLayer(model: model, geometry: geometry, clipTop: clipTop)
                 if !model.project.overlayEffects.isEmpty { overlayLanes }
                 if !model.project.captions.isEmpty {

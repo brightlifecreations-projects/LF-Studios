@@ -15,7 +15,7 @@ import Foundation
 @MainActor
 enum GuideContent {
     /// Pages from these versions get a New badge and fill What's new.
-    nonisolated static let newVersions: [String] = ["1.6.0", "1.5.0"]
+    nonisolated static let newVersions: [String] = ["1.7.0", "1.6.0"]
 
     static func chapters() -> [GuideChapter] {
         let features = featureCategories()
@@ -1747,6 +1747,38 @@ enum GuideContent {
                 related: ["howto-music"]
             ),
             GuideEntry(
+                id: "audio-added", symbol: "waveform.badge.plus", title: L("Add sound files"),
+                summary: L("Add a voiceover, a separate microphone, or a sound effect. Each file is its own track on the timeline."),
+                location: L("Audio panel ▸ Added sound ▸ Add audio…, or drop sound files on the timeline."),
+                steps: [
+                    L("Click Add audio… and choose one or more files: MP3, WAV, M4A, AAC, AIFF, FLAC, or CAF."),
+                    L("Drag the track on the timeline to move it; drag an edge to trim it; click it and press S to split it, or ⌫ to delete a piece."),
+                    L("Set its Volume, Fade in, and Fade out, or Mute it, in the Audio panel."),
+                    L("Recorded at the same time as the video? Click Sync by sound: it lines up with the recording and follows your cuts from then on."),
+                ],
+                keys: [.fixed("S", L("Split at the playhead")), .fixed("⌫", L("Delete the selection"))],
+                tips: [
+                    L("A new track sits on the edit's timeline, where you put it. After Sync by sound it follows the recording instead."),
+                    L("Added sound is in the export, Full Mix, Creative Handoff, and the timeline files, and saved in a recording's folder (03 Audio)."),
+                ],
+                showMe: .editor(.audio),
+                since: "1.7.0",
+                related: ["audio-voice", "audio-music"]
+            ),
+            GuideEntry(
+                id: "audio-voice", symbol: "mic.badge.plus", title: L("Use a sound file as your voice"),
+                summary: L("Recorded your voice separately, or re-recorded it? Use that file in place of the recording's microphone."),
+                location: L("Audio panel ▸ Added sound ▸ the track ▸ Use as my voice."),
+                points: [
+                    L("Use as my voice: the recording's microphone goes quiet and this track is the voice. Enhance voice and Podcast mode clean it up, and the music dips under it."),
+                    L("Dip under voice: an added track (like background sound) gets quieter while you talk. It's off until you turn it on."),
+                ],
+                tips: [L("Sync it by sound first, so captions made from it line up with the video.")],
+                showMe: .editor(.audio),
+                since: "1.7.0",
+                related: ["audio-added", "audio-enhance", "audio-podcast"]
+            ),
+            GuideEntry(
                 id: "audio-clicks", symbol: "hand.tap", title: L("Click sounds"),
                 summary: L("Play a soft click sound on every mouse click in the video."),
                 location: L("Audio panel ▸ Click sounds ▸ Play a click on each click."),
@@ -2043,7 +2075,7 @@ enum GuideContent {
                 points: [
                     L("A folder with an LF Studios project in it opens that project, exactly as it was saved."),
                     L("An older Creative Handoff is put back together from its files: the screen, the cuts, the camera at its place, captions, markers, and the pointer. A summary says what came back."),
-                    L("Any other folder: Import Folder lists the videos. Choose which is the screen recording and which the camera, and when the camera starts."),
+                    L("Any other folder: Import Folder lists the videos and sound files. Choose which is the screen recording, which the camera, and which sound to add as tracks, and when each starts."),
                 ],
                 keys: [.fixed("⌘O", L("Open…"))],
                 tips: [L("Nothing in the folder changes until you save (⌘S). Saving writes the project into the folder.")],

@@ -180,6 +180,10 @@ extension VideoDemoProject {
             project.cards.intro.skip = lower
             if upper < introEnd { project.cards.intro.cutAt = upper }
         }
+        // Added sound on the edit's timeline moves with the part.
+        for index in project.audioTracks.indices where !project.audioTracks[index].lockedToRecording {
+            for piece in project.audioTracks[index].pieces.indices { project.audioTracks[index].pieces[piece].at -= lower }
+        }
         if cards.outro.enabled, upper > outroStart + 0.05 {
             project.cards.outro = cards.outro
             if lower > outroStart { project.cards.outro.skip = lower - outroStart }

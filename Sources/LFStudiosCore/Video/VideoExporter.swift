@@ -114,6 +114,29 @@ enum VideoDemoExporter {
             // very end of the file.
             if settings.format.isMovie, settings.endCard { extras.musicTail = endCardDuration }
         }
+        if !project.audioTracks.isEmpty {
+            var speech: [String: [ClosedRange<Double>]] = [:]
+            let needsVoice = project.audioTracks.contains { $0.dipUnderVoice && !$0.useAsVoice } || (project.music?.ducking == true && project.externalVoice != nil)
+            if needsVoice {
+                if let voice = project.externalVoice {
+                    speech["track:\(voice.id.uuidString)"] = await VideoVoiceActivity.speech(url: voice.url, trackIndex: 0)
+                } else if let index = VideoAudioKind.voiceTrackIndex(in: kinds) {
+                    speech[""] = await VideoVoiceActivity.speech(url: project.sourceURL, trackIndex: index)
+                }
+            }
+            var tracks: [VideoExternalAudioInput.Track] = []
+            for track in project.audioTracks {
+                if let file = await VideoAudioFile.load(VideoExternalAudioInput.fileURL(for: track, recipe: project.audio.voiceRecipe)) {
+                    tracks.append(.init(settings: track, file: file))
+                }
+            }
+            let timeline = VideoMusicDucking.speechOnTimeline(project: project, primaryKinds: kinds, speech: speech, segments: segments)
+            extras.externalAudio = VideoExternalAudioInput(tracks: tracks, voice: needsVoice ? timeline : [])
+            // The music ducks under the added voice, not the recording's microphone.
+            if project.externalVoice != nil, let music = extras.music, music.settings.ducking {
+                extras.music?.voice = timeline
+            }
+        }
         if project.clickSounds.enabled {
             let times = VideoClickSound.times(project: project, segments: segments)
             if !times.isEmpty, let url = try? VideoClickSound.fileURL(), let file = await VideoAudioFile.load(url) {

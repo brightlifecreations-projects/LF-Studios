@@ -389,8 +389,16 @@ enum VideoHandoffRebuilder {
                 continue
             } else if screenHasSound {
                 continue // the same sound as the screen recording's own tracks
+            } else if let prepared = try? await VideoExternalAudioImport.prepare(sound) {
+                // On the handoff's clock: the edit's (trimmed) or the recording's.
+                let starts = readme.starts[relative(sound)] ?? 0
+                var track = VideoExternalAudioTrack(path: prepared.url.path, name: name, duration: prepared.duration, at: readme.trimmed ? starts : 0)
+                if !readme.trimmed { track.lock(toRecordingOffset: starts) }
+                track.useAsVoice = name == VideoRecordingFolder.Layout.microphone && !contents.project.audioTracks.contains(where: \.useAsVoice)
+                contents.project.audioTracks.append(track)
+                summary.loaded.append(L("\(relative(sound)), as its own track"))
             } else {
-                summary.notLoaded.append(L("\(relative(sound)) — separate sound files open as their own tracks in LF Studios 1.7"))
+                summary.notLoaded.append(L("\(relative(sound)) — this Mac can't play it"))
             }
         }
         if screenHasSound { summary.loaded.append(L("The sound recorded with the screen")) }
@@ -516,12 +524,13 @@ enum VideoFolderOpener {
 /// What each file in a folder is, chosen by the user.
 struct VideoFolderImportChoice: Identifiable, Equatable {
     enum Role: String, CaseIterable, Identifiable {
-        case screen, camera, ignore
+        case screen, camera, audio, ignore
         var id: String { rawValue }
         var title: String {
             switch self {
             case .screen: return L("Screen recording")
             case .camera: return L("Camera")
+            case .audio: return L("Audio track")
             case .ignore: return L("Ignore")
             }
         }
@@ -531,19 +540,19 @@ struct VideoFolderImportChoice: Identifiable, Equatable {
     var duration: Double
     var isVideo: Bool
     var role: Role
-    /// Camera: seconds it starts after the screen recording.
+    /// Camera or audio track: seconds it starts after the screen recording.
     var offset: Double = 0
 
     var id: String { url.path }
 
-    /// The longest video is the screen; the next one the camera; the rest,
-    /// and every sound file, ignored to start with.
+    /// The longest video is the screen; the next one the camera; sound
+    /// files are audio tracks; other videos ignored to start with.
     static func suggested(_ files: [(url: URL, duration: Double, isVideo: Bool)]) -> [VideoFolderImportChoice] {
         let videos = files.filter(\.isVideo).sorted { $0.duration > $1.duration }
         let screen = videos.first?.url
         let camera = videos.dropFirst().first?.url
         return files.map { file in
-            let role: Role = file.url == screen ? .screen : (file.url == camera ? .camera : .ignore)
+            let role: Role = file.url == screen ? .screen : (file.url == camera ? .camera : (file.isVideo ? .ignore : .audio))
             return VideoFolderImportChoice(url: file.url, duration: file.duration, isVideo: file.isVideo, role: role)
         }
     }
@@ -553,7 +562,15 @@ struct VideoFolderImportChoice: Identifiable, Equatable {
     static func build(_ choices: [VideoFolderImportChoice]) async throws -> VideoProjectContents {
         let screens = choices.filter { $0.role == .screen && $0.isVideo }.map(\.url)
         let camera = choices.first { $0.role == .camera && $0.isVideo }
-        return try await VideoFolderProjectBuilder.project(screens: screens, camera: camera?.url, cameraOffset: camera?.offset ?? 0, metadata: nil)
+        var contents = try await VideoFolderProjectBuilder.project(screens: screens, camera: camera?.url, cameraOffset: camera?.offset ?? 0, metadata: nil)
+        // Each sound file its own track, on the recording's clock at its offset.
+        for choice in choices where choice.role == .audio {
+            guard let prepared = try? await VideoExternalAudioImport.prepare(choice.url) else { continue }
+            var track = VideoExternalAudioTrack(path: prepared.url.path, name: choice.url.lastPathComponent, duration: prepared.duration, at: 0)
+            track.lock(toRecordingOffset: choice.offset)
+            contents.project.audioTracks.append(track)
+        }
+        return contents
     }
 }
 
@@ -608,7 +625,7 @@ struct VideoFolderImportView: View {
         VStack(alignment: .leading, spacing: 12) {
             Text(L("What is each file in “\(folder.lastPathComponent)”?"))
                 .font(.system(size: 14, weight: .semibold))
-            Text(L("Choose the screen recording, and the camera video if there is one. Nothing in the folder changes until you save."))
+            Text(L("Choose the screen recording, the camera video if there is one, and the sound files to add as tracks. Nothing in the folder changes until you save."))
                 .font(.system(size: 11.5))
                 .foregroundStyle(.secondary)
                 .fixedSize(horizontal: false, vertical: true)
@@ -629,7 +646,7 @@ struct VideoFolderImportView: View {
                                     .foregroundStyle(.secondary)
                             }
                             Spacer(minLength: 8)
-                            if choice.role == .camera {
+                            if choice.role == .camera || choice.role == .audio {
                                 Text(L("Starts after the screen by"))
                                     .font(.system(size: 11))
                                     .foregroundStyle(.secondary)
@@ -641,7 +658,7 @@ struct VideoFolderImportView: View {
                                     .foregroundStyle(.secondary)
                             }
                             Picker("", selection: $choice.role) {
-                                ForEach(VideoFolderImportChoice.Role.allCases.filter { choice.isVideo || $0 == .ignore }) { role in
+                                ForEach(VideoFolderImportChoice.Role.allCases.filter { choice.isVideo ? $0 != .audio : ($0 == .audio || $0 == .ignore) }) { role in
                                     Text(role.title).tag(role)
                                 }
                             }
@@ -651,11 +668,6 @@ struct VideoFolderImportView: View {
                         .padding(.vertical, 4)
                     }
                 }
-            }
-            if state.choices.contains(where: { !$0.isVideo }) {
-                Text(L("Sound files can be added as tracks of their own in LF Studios 1.7."))
-                    .font(.system(size: 10.5))
-                    .foregroundStyle(.secondary)
             }
             HStack {
                 Spacer()
