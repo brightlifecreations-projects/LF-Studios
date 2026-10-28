@@ -585,7 +585,116 @@ enum GuideContent {
         ]
     }
 
-    static func screenshotEditorFeatures() -> [GuideEntry] { [] } // STUB
+    // MARK: Screenshot editor
+
+    /// A tool's name and its key, as the editor's toolbar shows them.
+    private static func tool(_ tool: AnnotationTool) -> GuideKey {
+        .fixed(tool.shortcutLabel, tool.name)
+    }
+
+    static func screenshotEditorFeatures() -> [GuideEntry] {
+        let place = L("Open a screenshot from Home, History, or the preview after capture. The tools are in the toolbar at the top.")
+        return [
+            GuideEntry(
+                id: "editor-arrows-shapes", symbol: "arrow.up.right", title: L("Arrows, shapes & lines"),
+                summary: L("Point at things and frame them: arrows, rectangles, ellipses, lines, and freehand drawing."),
+                location: place,
+                steps: [
+                    L("Pick a tool in the toolbar, or press its key."),
+                    L("Drag on the screenshot to draw."),
+                    L("To bend an arrow, select it and drag the dot in its middle."),
+                ],
+                keys: [
+                    tool(.arrow), tool(.rectangle), tool(.filledRectangle), .fixed("⌥R", L("Rounded corners")),
+                    tool(.ellipse), tool(.line), tool(.freehand),
+                    .fixed(L("⇧-drag"), L("Square, circle, or straight 45° lines")),
+                    .fixed(L("⌥-drag"), L("Draw from the center")),
+                ]
+            ),
+            GuideEntry(
+                id: "editor-text", symbol: "textformat", title: L("Text, callouts & numbered steps"),
+                summary: L("Add labels, speech-bubble callouts, and numbered circles for step-by-step guides."),
+                location: place,
+                steps: [
+                    L("Text: click where the text goes and type. Press ⌘Return, Esc, or click elsewhere to finish."),
+                    L("Callout: press on the thing to point at, drag the bubble out, then type."),
+                    L("Numbered steps: click once for each step. The numbers count up by themselves."),
+                    L("Double-click any text to change it."),
+                ],
+                keys: [tool(.text), tool(.callout), tool(.numberedStep), .fixed("⌘↩", L("Finish typing"))],
+                tips: [L("Set the text size and Bold in the toolbar. Drag a corner of the text to make it bigger or smaller.")]
+            ),
+            GuideEntry(
+                id: "editor-highlight-blur", symbol: "highlighter", title: L("Highlight, blur, pixelate & spotlight"),
+                summary: L("Draw attention to something, or hide it."),
+                location: place,
+                points: [
+                    L("Highlighter: a see-through marker, in a straight line or freehand."),
+                    L("Blur and Pixelate: hide passwords, names, and other private details. Strength sets how much."),
+                    L("Spotlight: darkens everything except the area you draw. Choose Rectangle or Ellipse."),
+                ],
+                keys: [tool(.highlighter), tool(.freehandHighlighter), tool(.blur), tool(.pixelate), tool(.spotlight)],
+                tips: [L("For private information, use a high Strength: a light blur can sometimes still be read.")]
+            ),
+            GuideEntry(
+                id: "editor-crop", symbol: "crop", title: L("Crop"),
+                summary: L("Trim the screenshot to just the part that matters."),
+                location: place,
+                steps: [
+                    L("Choose Crop, or press C."),
+                    L("Drag a frame. Drag inside it to move it, or drag its edges to resize it."),
+                    L("Click Apply, or press Return."),
+                ],
+                keys: [tool(.crop), .fixed("↩", L("Apply the crop")), .fixed("Esc", L("Cancel"))],
+                tips: [L("Your marks stay editable. Reset shows the whole screenshot again, and ⌘Z undoes a crop.")]
+            ),
+            GuideEntry(
+                id: "editor-style", symbol: "paintpalette", title: L("Colors, sizes & bold"),
+                summary: L("Change how a mark looks, before or after you draw it."),
+                location: place,
+                steps: [
+                    L("Pick the Select tool (V) and click a mark to change it, or set things before you draw."),
+                    L("Click Color for eight quick colors, or Custom… for any color."),
+                    L("Use Size for line thickness, and Text size and Bold for text."),
+                ],
+                keys: [
+                    tool(.select),
+                    .fixed("⌫", L("Delete the selected mark")),
+                    .fixed("← → ↑ ↓", L("Nudge the selected mark (with ⇧: 10 points)")),
+                    .fixed("Esc", L("Deselect")),
+                ],
+                tips: [L("LF Studios remembers your last tool, color, and sizes for next time.")]
+            ),
+            GuideEntry(
+                id: "editor-background", symbol: "photo.artframe", title: L("Background & frame"),
+                summary: L("Put your screenshot on a gradient, a color, or a picture, with rounded corners and a shadow: ready to share."),
+                location: L("In the screenshot editor, click Background in the toolbar."),
+                steps: [
+                    L("Click Background."),
+                    L("Choose Gradient, Solid Color, or Image, then a preset. Upload Custom Image uses your own picture."),
+                    L("Set Padding, Radius (rounded corners), and Shadow."),
+                ],
+                tips: [L("To remove it again, untick Apply background to this image.")]
+            ),
+            GuideEntry(
+                id: "editor-open", symbol: "square.and.arrow.down", title: L("Opening, saving, copying & undo"),
+                summary: L("Open a screenshot to mark it up, then copy or save the result."),
+                location: L("Click a screenshot in Home, or choose Edit in History or on the preview after capture. The LF Studios menu ▸ Annotate Last Screenshot opens the newest one."),
+                steps: [
+                    L("Mark up the screenshot."),
+                    L("Click Copy to paste it into another app, or Save to keep it as a file."),
+                    L("Close the window when you're done. If you haven't saved, LF Studios asks first."),
+                ],
+                keys: [
+                    .fixed("⌘C", L("Copy")), .fixed("⌘S", L("Save")),
+                    .fixed("⌘Z", L("Undo")), .fixed("⇧⌘Z", L("Redo")),
+                    .fixed("⌘=  ⌘−", L("Zoom in / out")), .fixed("⌘0", L("Actual size")),
+                    .fixed("⌘W", L("Close")),
+                ],
+                tips: [L("Your edits replace the screenshot in History; the original is kept too.")]
+            ),
+        ]
+    }
     static func textFeatures() -> [GuideEntry] { [] } // STUB
     static func historyFeatures() -> [GuideEntry] { [] } // STUB
     static func recordingFeatures() -> [GuideEntry] { [] } // STUB
