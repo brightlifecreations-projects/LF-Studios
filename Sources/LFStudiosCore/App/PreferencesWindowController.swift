@@ -590,6 +590,9 @@ struct GeneralSettingsView: View {
             }
 
             PreferenceFootnote(text: L("All off until you turn them on. Every screenshot is kept in History and Home, and every recording in Home; a short notice says so."))
+
+            // Whisper captions (Video/VideoWhisperViews.swift).
+            WhisperModelsSettingsSection()
         }
     }
 

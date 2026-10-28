@@ -84,7 +84,9 @@ extension VideoCaptionStyle {
 enum VideoCaptionDrawing {
     /// `spoken`: index of the word being said (-1: none yet); nil draws
     /// every word in full ink (no word timings, or highlighting off).
-    static func image(text: String, words: [String], spoken: Int?, style: VideoCaptionStyle, fontSize: CGFloat, maxWidth: CGFloat) -> CGImage? {
+    /// `animation`: each word's state at this moment (VideoCaptionAnimation
+    /// .swift); the words are then drawn one by one.
+    static func image(text: String, words: [String], spoken: Int?, style: VideoCaptionStyle, fontSize: CGFloat, maxWidth: CGFloat, animation: VideoCaptionAnimationFrame? = nil) -> CGImage? {
         let preset = style.preset
         // The chosen typeface (VideoFonts.swift), in the look's weight
         // unless one is picked.
@@ -98,16 +100,30 @@ enum VideoCaptionDrawing {
         let highlight = style.resolvedHighlight.nsColor
         let content = NSMutableAttributedString()
         var ranges: [NSRange] = []
-        if let spoken, !words.isEmpty {
+        // Animated, the words are laid out (and drawn) one by one; karaoke
+        // starts them unfilled.
+        let animated = animation.map { $0.words.count == words.count && !words.isEmpty } ?? false
+        // Highlight box: the chosen highlight color, or a strong purple when
+        // the look's own is white (white on white can't be read); the word
+        // on it turns dark when the box is light.
+        let boxColor = style.highlightColor ?? (preset.defaultHighlight.luminance > 0.6 ? VideoRGBA(hex: 0x7C4DFF) : preset.defaultHighlight)
+        let boxedWord = animation?.animation == .highlightBox ? animation?.box.map { Int($0.rounded()) } : nil
+        if animated || (spoken != nil && !words.isEmpty) {
             for (index, word) in words.enumerated() {
                 if index > 0, VideoCaptionBuilder.needsSpace(between: words[index - 1], and: word) {
                     content.append(NSAttributedString(string: " ", attributes: [.font: font]))
                 }
                 var color = ink
-                if index > spoken {
-                    color = ink.withAlphaComponent(preset.upcomingAlpha)
-                } else if index == spoken, preset != .highlight {
-                    color = highlight
+                if animation?.animation == .karaoke {
+                    color = ink.withAlphaComponent(max(preset.upcomingAlpha, 0.45))
+                } else if index == boxedWord {
+                    color = boxColor.luminance > 0.6 ? NSColor(white: 0.08, alpha: 1) : ink
+                } else if let spoken, animation?.animation.colorsWords != true {
+                    if index > spoken {
+                        color = ink.withAlphaComponent(preset.upcomingAlpha)
+                    } else if index == spoken, preset != .highlight {
+                        color = highlight
+                    }
                 }
                 let start = content.length
                 content.append(NSAttributedString(string: word, attributes: [.font: font, .foregroundColor: color]))
@@ -119,7 +135,8 @@ enum VideoCaptionDrawing {
         content.addAttribute(.paragraphStyle, value: paragraph, range: NSRange(location: 0, length: content.length))
 
         let padX = (fontSize * (preset.backdrop == .pill ? 0.7 : 0.45)).rounded()
-        let padY = (fontSize * (preset.backdrop == .pill ? 0.36 : 0.3)).rounded()
+        let room = animated ? fontSize * CGFloat(animation?.animation.verticalRoom ?? 0) : 0
+        let padY = (fontSize * (preset.backdrop == .pill ? 0.36 : 0.3) + room).rounded()
         // Laid out once: the bounds, and the spoken word's box for Highlight.
         let storage = NSTextStorage(attributedString: content)
         let layout = NSLayoutManager()
@@ -152,11 +169,29 @@ enum VideoCaptionDrawing {
         let origin = CGPoint(x: padX - used.minX, y: padY - used.minY)
         let glyphs = layout.glyphRange(for: container)
 
-        if preset == .highlight, let spoken, ranges.indices.contains(spoken) {
-            let glyphRange = layout.glyphRange(forCharacterRange: ranges[spoken], actualCharacterRange: nil)
-            var box = layout.boundingRect(forGlyphRange: glyphRange, in: container).offsetBy(dx: origin.x, dy: origin.y)
-            box = box.insetBy(dx: -fontSize * 0.18, dy: -fontSize * 0.04)
-            let tag = NSBezierPath(roundedRect: box, xRadius: fontSize * 0.2, yRadius: fontSize * 0.2)
+        func box(_ index: Int) -> CGRect {
+            let glyphRange = layout.glyphRange(forCharacterRange: ranges[index], actualCharacterRange: nil)
+            return layout.boundingRect(forGlyphRange: glyphRange, in: container).offsetBy(dx: origin.x, dy: origin.y)
+        }
+        if animated, let place = animation?.box, !ranges.isEmpty {
+            // Highlight box: behind the word being said, gliding to the next
+            // (on another line it moves there at once).
+            let lower = min(max(Int(place.rounded(.down)), 0), ranges.count - 1)
+            let upper = min(lower + 1, ranges.count - 1)
+            let f = CGFloat(place - Double(lower))
+            let a = box(lower), b = box(upper)
+            var rect = a
+            if abs(a.midY - b.midY) < fontSize * 0.3 {
+                rect = CGRect(x: a.minX + (b.minX - a.minX) * f, y: a.minY, width: a.width + (b.width - a.width) * f, height: a.height)
+            } else if f > 0.5 {
+                rect = b
+            }
+            rect = rect.insetBy(dx: -fontSize * 0.2, dy: -fontSize * 0.05)
+            boxColor.nsColor.setFill()
+            NSBezierPath(roundedRect: rect, xRadius: fontSize * 0.2, yRadius: fontSize * 0.2).fill()
+        } else if preset == .highlight, !animated, let spoken, ranges.indices.contains(spoken) {
+            let spokenBox = box(spoken).insetBy(dx: -fontSize * 0.18, dy: -fontSize * 0.04)
+            let tag = NSBezierPath(roundedRect: spokenBox, xRadius: fontSize * 0.2, yRadius: fontSize * 0.2)
             highlight.setFill()
             tag.fill()
         }
@@ -165,16 +200,23 @@ enum VideoCaptionDrawing {
         // glyph edge, so drawing it first keeps the fill crisp): the Bold
         // outline look's, or the font's Outline option.
         let strokeWidth: CGFloat? = preset == .outline ? 15 : (style.font?.outline == true ? 12 : nil)
-        if let strokeWidth {
-            let stroke = NSMutableAttributedString(attributedString: content)
-            stroke.addAttributes([.strokeColor: NSColor.black, .strokeWidth: strokeWidth, .foregroundColor: NSColor.black], range: NSRange(location: 0, length: stroke.length))
-            let strokeStorage = NSTextStorage(attributedString: stroke)
-            let strokeLayout = NSLayoutManager()
-            let strokeContainer = NSTextContainer(size: container.size)
-            strokeContainer.lineFragmentPadding = 0
-            strokeLayout.addTextContainer(strokeContainer)
-            strokeStorage.addLayoutManager(strokeLayout)
-            strokeLayout.drawGlyphs(forGlyphRange: strokeLayout.glyphRange(for: strokeContainer), at: origin)
+        /// The same words laid out the same way, with other attributes
+        /// (the outline, karaoke's filled color).
+        func twin(_ attributes: [NSAttributedString.Key: Any]) -> (NSTextStorage, NSLayoutManager) {
+            let copy = NSMutableAttributedString(attributedString: content)
+            copy.addAttributes(attributes, range: NSRange(location: 0, length: copy.length))
+            let twinStorage = NSTextStorage(attributedString: copy)
+            let twinLayout = NSLayoutManager()
+            let twinContainer = NSTextContainer(size: container.size)
+            twinContainer.lineFragmentPadding = 0
+            twinLayout.addTextContainer(twinContainer)
+            twinStorage.addLayoutManager(twinLayout)
+            twinLayout.ensureLayout(for: twinContainer)
+            return (twinStorage, twinLayout)
+        }
+        let stroke = strokeWidth.map { twin([.strokeColor: NSColor.black, .strokeWidth: $0, .foregroundColor: NSColor.black]) }
+        if let stroke, !animated {
+            stroke.1.drawGlyphs(forGlyphRange: stroke.1.glyphRange(for: stroke.1.textContainers[0]), at: origin)
         }
         switch preset {
         case .minimal, .highlight:
@@ -189,7 +231,38 @@ enum VideoCaptionDrawing {
                 VideoFonts.shadow(fontSize: fontSize).set()
             }
         }
-        layout.drawGlyphs(forGlyphRange: glyphs, at: origin)
+        if animated, let animation {
+            let filled = animation.animation == .karaoke ? twin([.foregroundColor: highlight]) : nil
+            for (index, range) in ranges.enumerated() {
+                let state = animation.words[index]
+                guard state.opacity > 0.001 else { continue }
+                var shown = range
+                if let letters = state.letters {
+                    // Whole characters (an emoji or accent stays together).
+                    let word = (content.string as NSString).substring(with: range)
+                    let prefix = String(word.prefix(max(letters, 0)))
+                    shown.length = (prefix as NSString).length
+                }
+                guard shown.length > 0 else { continue }
+                let wordBox = box(index)
+                let glyphRange = layout.glyphRange(forCharacterRange: shown, actualCharacterRange: nil)
+                context.saveGState()
+                context.setAlpha(CGFloat(state.opacity))
+                // y runs down here: a lift moves up.
+                context.translateBy(x: wordBox.midX, y: wordBox.midY - CGFloat(state.lift) * fontSize)
+                context.scaleBy(x: CGFloat(state.scale), y: CGFloat(state.scale))
+                context.translateBy(x: -wordBox.midX, y: -wordBox.midY)
+                stroke?.1.drawGlyphs(forGlyphRange: glyphRange, at: origin)
+                layout.drawGlyphs(forGlyphRange: glyphRange, at: origin)
+                if let filled, state.fill > 0 {
+                    context.clip(to: CGRect(x: wordBox.minX - fontSize, y: wordBox.minY - fontSize, width: fontSize + wordBox.width * CGFloat(state.fill), height: wordBox.height + fontSize * 2))
+                    filled.1.drawGlyphs(forGlyphRange: glyphRange, at: origin)
+                }
+                context.restoreGState()
+            }
+        } else {
+            layout.drawGlyphs(forGlyphRange: glyphs, at: origin)
+        }
         NSGraphicsContext.restoreGraphicsState()
         return context.makeImage()
     }

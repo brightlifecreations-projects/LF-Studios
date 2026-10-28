@@ -112,6 +112,7 @@ enum RecordingCaptureFilter {
     }
 
     /// The windows of `window`'s app to leave out, from `content`.
+    @MainActor
     static func windowsToHide(recording window: SCWindow, in content: SCShareableContent) -> [SCWindow] {
         guard let processID = window.owningApplication?.processID else { return [] }
         let siblings = content.windows.filter { $0.owningApplication?.processID == processID && $0.windowID != window.windowID }
@@ -122,8 +123,9 @@ enum RecordingCaptureFilter {
     }
 
     /// LF Studios' windows that never appear in a recording.
-    static func neverCapturedWindowIDs(in windows: [NSWindow] = NSApp.windows) -> Set<CGWindowID> {
-        Set(windows.filter { $0 is RecordingNeverCaptured && $0.windowNumber > 0 }.compactMap { CGWindowID(exactly: $0.windowNumber) })
+    @MainActor
+    static func neverCapturedWindowIDs(in windows: [NSWindow]? = nil) -> Set<CGWindowID> {
+        Set((windows ?? NSApp.windows).filter { $0 is RecordingNeverCaptured && $0.windowNumber > 0 }.compactMap { CGWindowID(exactly: $0.windowNumber) })
     }
 
     static func summary(of window: SCWindow) -> WindowSummary {

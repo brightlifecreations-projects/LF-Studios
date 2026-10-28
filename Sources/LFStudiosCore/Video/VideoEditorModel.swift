@@ -251,6 +251,10 @@ final class VideoEditorModel: ObservableObject {
     @Published var isExportPresented = false
     /// Creative Handoff's dialog, and the handoff being written.
     @Published var isHandoffPresented = false
+    /// "Find private info" (VideoPrivacyPanel.swift): the dialog, and its
+    /// scan, which carries on while it's closed.
+    @Published var isPrivacyPresented = false
+    let privacyJob = VideoPrivacyJob()
     @Published var handoffJob: VideoHandoffJob?
     /// Opened for a handoff: the dialog shows once the video has loaded.
     var handoffWhenReady = false
@@ -333,7 +337,7 @@ final class VideoEditorModel: ObservableObject {
     private var noticeWork: DispatchWorkItem?
     private var cursorTrackCache: (key: CursorTrackKey, track: VideoCursorTrack?)?
     private var cameraTrackCache: (key: CameraTrackKey, track: VideoCameraTrack)?
-    private var reframeCache: (key: CameraTrackKey, fraction: CGFloat, reframe: VideoReframe)?
+    private var reframeCache: (key: CameraTrackKey, fraction: CGFloat, followsZooms: Bool, reframe: VideoReframe)?
     private var transcriptCache: (captions: [VideoCaptionLine], language: String?, words: [VideoTranscriptWord])?
     /// Dropped whenever the pointer path, clicks, shortcuts, or recordings
     /// change (or an added recording's own data arrives).
@@ -706,7 +710,7 @@ final class VideoEditorModel: ObservableObject {
         var reframe: VideoReframe?
         if project.reframeActive,
            let fraction = VideoReframe.windowFraction(outputAspect: outputCanvas.width / max(outputCanvas.height, 1), sceneAspect: canvas.width / max(canvas.height, 1)) {
-            if let cache = reframeCache, cache.key == cameraKey, cache.fraction == fraction {
+            if let cache = reframeCache, cache.key == cameraKey, cache.fraction == fraction, cache.followsZooms == project.reframeFollowsZooms {
                 reframe = cache.reframe
             } else {
                 let built = VideoReframe.build(
@@ -717,9 +721,10 @@ final class VideoEditorModel: ObservableObject {
                     canvas: canvas,
                     stage: stage,
                     crop: project.crop.normalized,
-                    duration: project.outputDuration(segments: segments)
+                    duration: project.outputDuration(segments: segments),
+                    zoomSubject: project.zoomSubject(cursor: cursorTrack.map { track in { track.visiblePosition(at: $0) } }, typing: typingTrack.map { track in { track.position(at: $0) } })
                 )
-                reframeCache = (cameraKey, fraction, built)
+                reframeCache = (cameraKey, fraction, project.reframeFollowsZooms, built)
                 reframe = built
             }
         }
@@ -1692,8 +1697,10 @@ final class VideoEditorModel: ObservableObject {
             effect.x = min(max(effect.x, 0.02), 0.98)
             effect.y = min(max(effect.y, 0.02), 0.98)
             effect.duration = max(effect.duration, 0.2)
-            // A moved or resized arrow takes its ends along.
+            // A moved or resized arrow takes its ends along; a blur that
+            // follows something takes its path along.
             effect.refitArrowEnds(from: old)
+            effect.followMove(from: old)
             project.overlayEffects[index] = effect
         }
     }
@@ -1962,7 +1969,7 @@ final class VideoEditorModel: ObservableObject {
 
     /// Export, the command palette, or the shortcut sheet is up: edits
     /// behind it (undo) stay put.
-    var hasOverlayOpen: Bool { isExportPresented || isHandoffPresented || isCommandPalettePresented || isShortcutsPresented }
+    var hasOverlayOpen: Bool { isExportPresented || isHandoffPresented || isPrivacyPresented || isCommandPalettePresented || isShortcutsPresented }
 
     /// Something that shouldn't be dropped silently by closing the window,
     /// as the title of the "close anyway?" question: a whole sentence, so

@@ -14,6 +14,9 @@ let package = Package(
         // vendored copy locates its resource bundle in Contents/Resources.
         .package(path: "Vendor/KeyboardShortcuts"),
         .package(url: "https://github.com/sparkle-project/Sparkle", from: "2.10.0"),
+        // Whisper captions, on the Mac with Core ML (MIT). Pinned: model
+        // downloads and loading are driven by LF Studios, never by itself.
+        .package(url: "https://github.com/argmaxinc/WhisperKit", exact: "1.1.1"),
     ],
     targets: [
         .target(
@@ -21,6 +24,7 @@ let package = Package(
             dependencies: [
                 .product(name: "KeyboardShortcuts", package: "KeyboardShortcuts"),
                 .product(name: "Sparkle", package: "Sparkle"),
+                .product(name: "WhisperKit", package: "WhisperKit"),
             ],
             path: "Sources/LFStudiosCore",
             resources: [.process("Resources")]

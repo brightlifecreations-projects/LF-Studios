@@ -682,6 +682,26 @@
 			<string>Автонаближення — %lld наближення</string>
 		</dict>
 	</dict>
+	<key>Blurred %lld items — adjust or delete them on the timeline</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>few</key>
+			<string>Розмито %lld елементи — налаштуйте або видаліть на шкалі часу</string>
+			<key>many</key>
+			<string>Розмито %lld елементів — налаштуйте або видаліть на шкалі часу</string>
+			<key>one</key>
+			<string>Розмито %lld елемент — налаштуйте або видаліть на шкалі часу</string>
+			<key>other</key>
+			<string>Розмито %lld елемента — налаштуйте або видаліть на шкалі часу</string>
+		</dict>
+	</dict>
 	<key>Camera hidden in %lld silences — ⌘Z to undo</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -800,6 +820,26 @@
 			<string>Експортовано %lld стиль</string>
 			<key>other</key>
 			<string>Експортовано %lld стилю</string>
+		</dict>
+	</dict>
+	<key>Exporting %lld versions</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>few</key>
+			<string>Експорт %lld версій</string>
+			<key>many</key>
+			<string>Експорт %lld версій</string>
+			<key>one</key>
+			<string>Експорт %lld версії</string>
+			<key>other</key>
+			<string>Експорт %lld версії</string>
 		</dict>
 	</dict>
 	<key>Freed %@ (%lld files)</key>

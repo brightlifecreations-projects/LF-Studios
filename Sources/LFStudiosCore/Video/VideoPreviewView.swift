@@ -382,7 +382,7 @@ struct VideoStageInteractionLayer: View {
     /// The frontmost annotation on screen under `point` (view points).
     func annotation(at point: CGPoint) -> VideoDemoOverlayEffect? {
         // Drawn lowest lane first: the last drawn is in front.
-        for overlay in model.plan.overlays.reversed() where overlay.isShowing(at: clock.time, margin: 0.05) {
+        for overlay in model.plan.overlays.reversed() where overlay.effect.onCamera != true && overlay.isShowing(at: clock.time, margin: 0.05) {
             let effect = overlay.effect
             if VideoAnnotationHitTest.hits(effect, rect: viewRect(effect), arrow: effect.kind == .arrow ? viewArrow(effect) : nil, point: point) {
                 return effect
@@ -448,6 +448,8 @@ struct VideoStageInteractionLayer: View {
             let r = effect.imageRect(in: viewSize)
             return CGRect(x: r.minX, y: viewSize.height - r.maxY, width: r.width, height: r.height)
         }
+        // A blur that follows something: where it is now.
+        let effect = effect.placed(atSource: model.plan.sourceTime(forTimelineTime: clock.time))
         let center = viewPoint(CGPoint(x: stage.minX + stage.width * CGFloat(effect.x), y: stage.minY + stage.height * CGFloat(effect.y)))
         let width = stage.width * CGFloat(effect.width) * viewScale
         let height = stage.height * CGFloat(effect.height) * viewScale

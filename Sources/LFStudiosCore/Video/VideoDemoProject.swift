@@ -208,6 +208,11 @@ struct VideoDemoOverlayEffect: Codable, Equatable, Identifiable {
     var strength: Double?
     /// A text annotation's typeface (VideoFonts.swift).
     var font: VideoFontChoice?
+    /// A blur that follows something as it moves ("Find private info",
+    /// VideoOverlayMotion.swift); nil: it stays where it is.
+    var motion: [VideoOverlayMotionKey]?
+    /// Over the camera picture rather than the recording (true only).
+    var onCamera: Bool?
 
     init(
         id: UUID = UUID(),
@@ -263,6 +268,8 @@ struct VideoDemoOverlayEffect: Codable, Equatable, Identifiable {
         image = try? container.decodeIfPresent(VideoOverlayImage.self, forKey: .image)
         strength = try? container.decodeIfPresent(Double.self, forKey: .strength)
         font = try? container.decodeIfPresent(VideoFontChoice.self, forKey: .font)
+        motion = try? container.decodeIfPresent([VideoOverlayMotionKey].self, forKey: .motion)
+        onCamera = try? container.decodeIfPresent(Bool.self, forKey: .onCamera)
     }
 }
 
@@ -852,6 +859,17 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
     var faceTracking: VideoFaceTracking?
     /// The speaker notes read while recording (nil: none).
     var speakerNotes: String?
+    /// "Adapt to this ratio" (VideoRatioVersions.swift): each adapted ratio's
+    /// own version, keyed by AspectPreset raw value…
+    var ratioVersions: [String: VideoRatioVersion] = [:]
+    /// …the values every other ratio shares (nil: nothing adapted yet)…
+    var ratioShared: VideoRatioVersion?
+    /// …the ratio the project was in before the first one was adapted…
+    var ratioBase: AspectPreset?
+    /// …and the ratio before the last switch.
+    var previousRatio: AspectPreset?
+    /// The reframing window keeps zoom targets in view (set by Adapt).
+    var reframeFollowsZooms = false
 
     var sourceURL: URL { URL(fileURLWithPath: sourcePath) }
     var sourceSize: CGSize { CGSize(width: sourceWidth, height: sourceHeight) }
@@ -1403,6 +1421,7 @@ extension VideoDemoProject {
         case webcam, cameraLayouts, importedCamera, autoZoom, reframe, captions, transcriptLanguage, captionStyle, keystrokes, keystrokeStyle, crop
         case cards, music, clickSounds, transitions, captionTracks, sources, imageOverlayEffects, markers
         case textCursor, keyPresses, loupeStyle, faceTracking, speakerNotes
+        case ratioVersions, ratioShared, ratioBase, previousRatio, reframeFollowsZooms
         // Legacy (v1) keys
         case backgroundPreset, customBackgroundPath, stageInset, shadowStrength, zoomKeyframes
         case showCursorOverlay, enlargeCursor, showClickRipple, smoothCursor, cursorScale, clickSpotlight, cursorMotionBlur
@@ -1451,6 +1470,11 @@ extension VideoDemoProject {
         loupeStyle = try? container.decodeIfPresent(VideoLoupeStyle.self, forKey: .loupeStyle)
         faceTracking = try? container.decodeIfPresent(VideoFaceTracking.self, forKey: .faceTracking)
         speakerNotes = try? container.decodeIfPresent(String.self, forKey: .speakerNotes)
+        ratioVersions = (try? container.decodeIfPresent([String: VideoRatioVersion].self, forKey: .ratioVersions)) ?? [:]
+        ratioShared = try? container.decodeIfPresent(VideoRatioVersion.self, forKey: .ratioShared)
+        ratioBase = try? container.decodeIfPresent(AspectPreset.self, forKey: .ratioBase)
+        previousRatio = try? container.decodeIfPresent(AspectPreset.self, forKey: .previousRatio)
+        reframeFollowsZooms = (try? container.decodeIfPresent(Bool.self, forKey: .reframeFollowsZooms)) ?? false
 
         let storedVersion = try container.decodeIfPresent(Int.self, forKey: .version) ?? 1
         if storedVersion >= 2 {
@@ -1537,6 +1561,12 @@ extension VideoDemoProject {
         try container.encodeIfPresent(loupeStyle, forKey: .loupeStyle)
         try container.encodeIfPresent(faceTracking, forKey: .faceTracking)
         if let speakerNotes, !speakerNotes.isEmpty { try container.encode(speakerNotes, forKey: .speakerNotes) }
+        // Only once used: older files stay byte for byte as they were.
+        if !ratioVersions.isEmpty { try container.encode(ratioVersions, forKey: .ratioVersions) }
+        try container.encodeIfPresent(ratioShared, forKey: .ratioShared)
+        try container.encodeIfPresent(ratioBase, forKey: .ratioBase)
+        try container.encodeIfPresent(previousRatio, forKey: .previousRatio)
+        if reframeFollowsZooms { try container.encode(true, forKey: .reframeFollowsZooms) }
         try container.encode(cursorSamples, forKey: .cursorSamples)
         try container.encode(clickEvents, forKey: .clickEvents)
         try container.encode(nativeCursorVisible, forKey: .nativeCursorVisible)

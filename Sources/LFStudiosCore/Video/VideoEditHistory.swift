@@ -335,6 +335,8 @@ extension VideoEditDescription {
         case "Auto Adjust Camera Color": return (L("Undo Auto Adjust Camera Color"), L("Redo Auto Adjust Camera Color"))
         case "Podcast Mode On": return (L("Undo Podcast Mode On"), L("Redo Podcast Mode On"))
         case "Podcast Mode Off": return (L("Undo Podcast Mode Off"), L("Redo Podcast Mode Off"))
+        case "Adapt to This Ratio": return (L("Undo Adapt to This Ratio"), L("Redo Adapt to This Ratio"))
+        case "Blur Private Info": return (L("Undo Blur Private Info"), L("Redo Blur Private Info"))
         case "Auto-Zoom Off": return (L("Undo Auto-Zoom Off"), L("Redo Auto-Zoom Off"))
         case "Add Camera Video": return (L("Undo Add Camera Video"), L("Redo Add Camera Video"))
         case "Replace Camera Video": return (L("Undo Replace Camera Video"), L("Redo Replace Camera Video"))

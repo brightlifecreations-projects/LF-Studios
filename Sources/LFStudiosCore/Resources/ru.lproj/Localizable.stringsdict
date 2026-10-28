@@ -702,6 +702,26 @@
 			<string>Автомасштаб — %lld увеличения</string>
 		</dict>
 	</dict>
+	<key>Blurred %lld items — adjust or delete them on the timeline</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>few</key>
+			<string>Размыто %lld элемента — настройте или удалите на шкале времени</string>
+			<key>many</key>
+			<string>Размыто %lld элементов — настройте или удалите на шкале времени</string>
+			<key>one</key>
+			<string>Размыт %lld элемент — настройте или удалите на шкале времени</string>
+			<key>other</key>
+			<string>Размыто %lld элемента — настройте или удалите на шкале времени</string>
+		</dict>
+	</dict>
 	<key>Camera hidden in %lld silences — ⌘Z to undo</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -820,6 +840,26 @@
 			<string>Экспортирован %lld стиль</string>
 			<key>other</key>
 			<string>Экспортировано %lld стиля</string>
+		</dict>
+	</dict>
+	<key>Exporting %lld versions</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>few</key>
+			<string>Экспорт %lld версий</string>
+			<key>many</key>
+			<string>Экспорт %lld версий</string>
+			<key>one</key>
+			<string>Экспорт %lld версии</string>
+			<key>other</key>
+			<string>Экспорт %lld версии</string>
 		</dict>
 	</dict>
 	<key>Freed %@ (%lld files)</key>

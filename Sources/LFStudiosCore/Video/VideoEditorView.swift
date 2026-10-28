@@ -86,6 +86,11 @@ struct VideoEditorRootView: View {
                     .transition(.opacity)
                     .accessibilityAddTraits(.isModal)
             }
+            if model.isPrivacyPresented {
+                VideoPrivacySheet(model: model)
+                    .transition(.opacity)
+                    .accessibilityAddTraits(.isModal)
+            }
             if model.isHandoffPresented {
                 VideoHandoffSheet(model: model)
                     .transition(.opacity)
@@ -194,6 +199,8 @@ struct VideoEditorToolbar: View {
                 .help(L("Crop the recording — trim away toolbars or empty space"))
 
                 aspectMenu
+                // Adapt to this ratio, Export all ratios (VideoRatioEditor.swift).
+                VideoRatioButtons(model: model)
 
                 HStack(spacing: 2) {
                     Button { model.undo() } label: {
@@ -278,6 +285,11 @@ struct VideoEditorToolbar: View {
                 set: { on in model.setStyle { $0.reframe = on } }
             ))
             .disabled(!model.project.canReframe || (model.project.cursorSamples.isEmpty && !model.project.reframe))
+            Divider()
+            Button(L("Adapt to This Ratio")) { model.adaptToRatio() }
+                .disabled(!model.isReady)
+            Button(L("Export All Ratios…")) { model.exportAllRatios() }
+                .disabled(model.project.ratiosToExport.count < 2 || !model.isReady)
         } label: {
             HStack(spacing: 6) {
                 Image(systemName: model.project.aspectPreset.symbol)
@@ -457,6 +469,14 @@ extension VideoEditorModel {
 
         // Modal surfaces first. Undo never reaches the edit behind them.
         let isUndoKey = key == "z" && (modifiers == [.command] || modifiers == [.command, .shift])
+        if isPrivacyPresented {
+            // Escape closes it (a scan keeps going); typing reaches its word list.
+            if code == 53 {
+                closePrivacyScan()
+                return true
+            }
+            return isUndoKey
+        }
         if isHandoffPresented {
             // Escape closes the dialog; a running handoff keeps going.
             if code == 53 {
@@ -710,6 +730,8 @@ struct VideoCommandPalette: View {
             Command(id: "highlight", title: L("Add Highlight"), symbol: "rectangle.dashed", shortcut: "H") { model.addOverlay(.highlight) },
             Command(id: "arrow", title: L("Add Arrow"), symbol: "arrow.up.right", shortcut: "A") { model.addOverlay(.arrow) },
             Command(id: "blur", title: L("Add Blur"), symbol: "eye.slash", shortcut: "B") { model.addOverlay(.blur) },
+            Command(id: "find-private", title: L("Find Private Info…"), symbol: "eye.trianglebadge.exclamationmark", shortcut: "") { model.showPrivacyScan() },
+            Command(id: "adapt-ratio", title: L("Adapt to This Ratio"), symbol: "wand.and.rays", shortcut: "") { model.adaptToRatio() },
             Command(id: "spotlight", title: L("Add Spotlight (Dim Around a Spot)"), symbol: VideoDemoOverlayEffectKind.spotlight.icon, shortcut: "") { model.addOverlay(.spotlight) },
             Command(id: "shuffle", title: L("Shuffle Background"), symbol: "dice", shortcut: "") { model.shuffleBackground() },
             Command(id: "full-frame", title: model.project.usesRawSourceFrame ? L("Show Background") : L("Full Frame (No Background)"), symbol: "rectangle.inset.filled", shortcut: "") {
@@ -1103,6 +1125,18 @@ struct VideoToolDock: View {
                     ) {
                         model.addOverlay(kind)
                     }
+                }
+            }
+            group {
+                // Nothing is blurred until you pick (VideoPrivacyPanel.swift).
+                VideoDockButton(
+                    title: L("Find private info"),
+                    symbol: "eye.trianglebadge.exclamationmark",
+                    tint: VideoEditorTheme.overlayTint(.blur),
+                    active: model.isPrivacyPresented,
+                    help: L("Find faces, emails, phone and card numbers, and keys in the video, then choose what to blur")
+                ) {
+                    model.showPrivacyScan()
                 }
             }
             group {

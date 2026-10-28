@@ -30,10 +30,16 @@
 	<string>%2$@に取り込んだ%1$@のスクリーンショット</string>
 	<key>%@ capture, %@</key>
 	<string>%1$@のスクリーンショット、%2$@</string>
+	<key>%@ couldn't be downloaded: %@</key>
+	<string>%@をダウンロードできませんでした：%@</string>
 	<key>%@ found</key>
 	<string>%@が見つかりました</string>
 	<key>%@ fullscreen</key>
 	<string>%@: 画面全体</string>
+	<key>%@ has its own version now</key>
+	<string>%@に専用のバージョンができました</string>
+	<key>%@ is too much for this Mac and would be very slow or fail. Try %@ instead.</key>
+	<string>%@はこのMacには重すぎて、とても遅いか失敗します。代わりに%@をお試しください。</string>
 	<key>%@ isn't supported for captions on this Mac. Pick another language.</key>
 	<string>このMacでは%@の字幕に対応していません。別の言語を選択してください。</string>
 	<key>%@ long</key>
@@ -60,6 +66,8 @@
 	<string>%@ · %@ × %@の画像</string>
 	<key>%@ · %lld fps</key>
 	<string>%@ · %lld fps</string>
+	<key>%@ · about %@</key>
+	<string>%@ · 約%@</string>
 	<key>%@ · on your clipboard — paste it anywhere</key>
 	<string>%@ · クリップボードにあります。どこにでもペーストできます</string>
 	<key>%@ × %@ doesn't fit on this display</key>
@@ -234,6 +242,12 @@
 	<string>精度</string>
 	<key>Accurate</key>
 	<string>正確</string>
+	<key>Adapt to This Ratio</key>
+	<string>この比率に合わせる</string>
+	<key>Adapt to this ratio</key>
+	<string>この比率に合わせる</string>
+	<key>Adapted to %@: %@</key>
+	<string>%@に合わせました：%@</string>
 	<key>Add Arrow</key>
 	<string>矢印を追加</string>
 	<key>Add Blur</key>
@@ -352,6 +366,10 @@
 	<string>画面収録を許可</string>
 	<key>Almost done</key>
 	<string>まもなく完了</string>
+	<key>Also look for these words</key>
+	<string>これらの語も探す</string>
+	<key>Also scan the camera video</key>
+	<string>カメラのビデオも調べる</string>
 	<key>Always show the arrow</key>
 	<string>常に矢印を表示</string>
 	<key>Amber Fold</key>
@@ -360,6 +378,8 @@
 	<string>角度</string>
 	<key>Angle, distance, softness, opacity, color, and an inner edge</key>
 	<string>角度、距離、ぼかし、不透明度、色、内側の縁</string>
+	<key>Animation</key>
+	<string>アニメーション</string>
 	<key>Annotate Last Screenshot</key>
 	<string>最後のスクリーンショットに注釈を付ける</string>
 	<key>Annotation</key>
@@ -376,6 +396,8 @@
 	<string>外観</string>
 	<key>Append Video…</key>
 	<string>ビデオを末尾に追加…</string>
+	<key>Apple</key>
+	<string>Apple</string>
 	<key>Apple Shortcuts</key>
 	<string>Appleのショートカット</string>
 	<key>Apple screenshot shortcuts disabled.</key>
@@ -488,6 +510,8 @@
 	<string>バーコードの内容をクリップボードにコピーしました</string>
 	<key>Barcodes</key>
 	<string>バーコード</string>
+	<key>Base</key>
+	<string>Base</string>
 	<key>Based on Shotnix (MIT License)</key>
 	<string>Shotnix がベース（MIT ライセンス）</string>
 	<key>Begins scrolling when the recording starts</key>
@@ -508,6 +532,14 @@
 	<string>ブルー</string>
 	<key>Blur</key>
 	<string>ぼかし</string>
+	<key>Blur %@ %@</key>
+	<string>%@ %@をぼかす</string>
+	<key>Blur Selected (%lld)</key>
+	<string>選択項目をぼかす（%lld）</string>
+	<key>Blurred</key>
+	<string>ぼかし済み</string>
+	<key>Blurred %lld items — adjust or delete them on the timeline</key>
+	<string>%lld件をぼかしました。タイムラインで調整・削除できます</string>
 	<key>Blurred area</key>
 	<string>ぼかした範囲</string>
 	<key>Blurs fast camera moves the way a real camera does.</key>
@@ -528,6 +560,8 @@
 	<string>左下</string>
 	<key>Bottom right</key>
 	<string>右下</string>
+	<key>Bounce</key>
+	<string>バウンド</string>
 	<key>Bright</key>
 	<string>ブライト</string>
 	<key>Brightness</key>
@@ -630,6 +664,8 @@
 	<string>峡谷のシルク</string>
 	<key>Caption</key>
 	<string>字幕</string>
+	<key>Caption animation</key>
+	<string>字幕のアニメーション</string>
 	<key>Caption removed</key>
 	<string>字幕を削除しました</string>
 	<key>Caption style %@</key>
@@ -640,6 +676,8 @@
 	<string>字幕“%@”</string>
 	<key>Captions</key>
 	<string>字幕</string>
+	<key>Captions already made stay. To use this model again, download it again.</key>
+	<string>作成済みの字幕はそのまま残ります。このモデルをまた使うには、もう一度ダウンロードしてください。</string>
 	<key>Captions are drawn into the picture, and a subtitles file is saved next to the video.</key>
 	<string>字幕を映像に描き込み、ビデオと同じ場所に字幕ファイルを保存します。</string>
 	<key>Captions are drawn into the picture.</key>
@@ -698,6 +736,8 @@
 	<string>ここで上限を選択しない限り、スクリーンショットは削除するまで履歴に残ります。“クリーンアップ”は履歴のゴミ箱（削除を取り消せるスクリーンショット）を空にし、どのスクリーンショットにも使われなくなったファイルを削除します。</string>
 	<key>Carbon Arc</key>
 	<string>カーボンアーク</string>
+	<key>Card number</key>
+	<string>カード番号</string>
 	<key>Cards use your background, and the timeline grows to fit them. The “Made with LF Studios” end card is separate — it's in the export options.</key>
 	<string>カードには背景が使われ、その分タイムラインが長くなります。“Made with LF Studios”エンドカードはこれとは別で、書き出しオプションにあります。</string>
 	<key>Center</key>
@@ -822,6 +862,8 @@
 	<string>クリック</string>
 	<key>Clicks — drag one to retime it, ⌫ removes the selected one</key>
 	<string>クリック: ドラッグでタイミングを変更、⌫で選択したクリックを削除</string>
+	<key>Client names, project code names… (separate with commas)</key>
+	<string>顧客名、プロジェクトのコード名など（カンマで区切る）</string>
 	<key>Clip</key>
 	<string>クリップ</string>
 	<key>Clip %lld</key>
@@ -1104,6 +1146,8 @@
 	<string>選択項目を削除</string>
 	<key>Delete selection (⌫)</key>
 	<string>選択項目を削除（⌫）</string>
+	<key>Delete the %@ model?</key>
+	<string>%@モデルを削除しますか？</string>
 	<key>Delete “%@”?</key>
 	<string>“%@”を削除しますか？</string>
 	<key>Deleted captures waiting in History's trash and files no capture uses are removed for good, along with %lld captures past your History limit. The rest of your history stays.</key>
@@ -1174,6 +1218,16 @@
 	<string>ダブルクリックで編集、またはほかのアプリにドラッグします。Command-Cでコピー、Command-Sで保存、Escキーで閉じます。</string>
 	<key>Double-click to show the recording in Finder</key>
 	<string>ダブルクリックで収録をFinderに表示</string>
+	<key>Download</key>
+	<string>ダウンロード</string>
+	<key>Download %@ (%@)</key>
+	<string>%@をダウンロード（%@）</string>
+	<key>Download the %@ model first, in the Captions tab or Settings → General.</key>
+	<string>まず%@モデルを、「字幕」タブか「設定」→「一般」でダウンロードしてください。</string>
+	<key>Downloaded · %@ on this Mac</key>
+	<string>ダウンロード済み · このMacで%@</string>
+	<key>Downloading %@…</key>
+	<string>%@をダウンロード中…</string>
 	<key>Downloading the language model…</key>
 	<string>言語モデルをダウンロード中…</string>
 	<key>Drag captions on the preview to place them anywhere</key>
@@ -1262,6 +1316,8 @@
 	<string>%@にメールを送信</string>
 	<key>Email QR found</key>
 	<string>メールのQRコードが見つかりました</string>
+	<key>Email address</key>
+	<string>メールアドレス</string>
 	<key>Email address copied</key>
 	<string>メールアドレスをコピーしました</string>
 	<key>Ember</key>
@@ -1284,6 +1340,8 @@
 	<string>ここで終了</string>
 	<key>Ends</key>
 	<string>終了</string>
+	<key>Engine</key>
+	<string>エンジン</string>
 	<key>English</key>
 	<string>英語</string>
 	<key>Enhance Voice</key>
@@ -1330,12 +1388,18 @@
 	<string>書き出す</string>
 	<key>Export (⌘E)</key>
 	<string>書き出す（⌘E）</string>
+	<key>Export All Ratios…</key>
+	<string>すべての比率を書き出す…</string>
 	<key>Export Format</key>
 	<string>書き出しフォーマット</string>
+	<key>Export Here</key>
+	<string>ここに書き出す</string>
 	<key>Export Presets…</key>
 	<string>プリセットを書き出す…</string>
 	<key>Export Video…</key>
 	<string>ビデオを書き出す…</string>
+	<key>Export all ratios</key>
+	<string>すべての比率を書き出す</string>
 	<key>Export and put the file on the clipboard — paste it into Slack, Mail, or Finder</key>
 	<string>書き出してファイルをクリップボードにコピーします。Slack、“メール”、Finderにペーストできます</string>
 	<key>Export cancelled</key>
@@ -1358,6 +1422,8 @@
 	<string>“声を補正”を完了できなかったため、補正なしで書き出しました。</string>
 	<key>Exported · %@</key>
 	<string>書き出しました · %@</string>
+	<key>Exporting %lld versions</key>
+	<string>%lld個のバージョンを書き出しています</string>
 	<key>Exporting %lld%%</key>
 	<string>書き出し中…%lld%%</string>
 	<key>Exporting a video for the clipboard</key>
@@ -1368,6 +1434,10 @@
 	<string>書き出し中…</string>
 	<key>Exporting… %lld%%</key>
 	<string>書き出し中…%lld%%</string>
+	<key>Exports %@ in one go</key>
+	<string>%@をまとめて書き出します</string>
+	<key>Exports %@ into this folder.</key>
+	<string>%@をこのフォルダに書き出します。</string>
 	<key>Exports at the level video sites expect (−16 LUFS) without clipping</key>
 	<string>動画サイトが想定するレベル（−16 LUFS）で、音割れせずに書き出します</string>
 	<key>Exports without sound — to quiet just the preview, press M</key>
@@ -1376,10 +1446,14 @@
 	<string>書き出す…</string>
 	<key>Extra-fluid curves for slow, cinematic demos.</key>
 	<string>映画のようにゆっくり見せるデモ向けの、より滑らかなカーブです。</string>
+	<key>Face</key>
+	<string>顔</string>
 	<key>Face tracking</key>
 	<string>顔の追跡</string>
 	<key>Face tracking canceled</key>
 	<string>顔の追跡をキャンセルしました</string>
+	<key>Faces, email addresses, phone and card numbers, keys and passwords on screen, and your own words. Read on this Mac with Apple's Vision; nothing is blurred until you choose.</key>
+	<string>顔、メールアドレス、電話番号やカード番号、画面上のキーやパスワード、そして指定した語。AppleのVisionでこのMac上で読み取ります。選ぶまで何もぼかしません。</string>
 	<key>Fade in</key>
 	<string>フェードイン</string>
 	<key>Fade in from black</key>
@@ -1388,12 +1462,16 @@
 	<string>フェードアウト</string>
 	<key>Fade out to black</key>
 	<string>黒へフェードアウト</string>
+	<key>Fade up</key>
+	<string>フェードアップ</string>
 	<key>Fades out after a moment without movement</key>
 	<string>しばらく動かないとフェードアウトします</string>
 	<key>Fast</key>
 	<string>高速</string>
 	<key>Fast-forward moments where nothing happens</key>
 	<string>動きのない区間を早送り</string>
+	<key>Fastest, least accurate</key>
+	<string>最速、精度は最低</string>
 	<key>File</key>
 	<string>ファイル</string>
 	<key>File %lld of %lld: %@</key>
@@ -1416,10 +1494,18 @@
 	<string>画面いっぱいに表示します。ポインタに合わせて表示範囲が動きます</string>
 	<key>Filmed yourself on a phone or camera? Add that video and it shows in the bubble, lined up by sound.</key>
 	<string>スマートフォンやカメラで自分を撮影しましたか？その映像を追加すると、音声で合わせてバブルに表示されます。</string>
+	<key>Find Private Info</key>
+	<string>個人情報を探す</string>
+	<key>Find Private Info…</key>
+	<string>個人情報を探す…</string>
+	<key>Find faces, emails, phone and card numbers, and keys in the video, then choose what to blur</key>
+	<string>ビデオ内の顔、メール、電話番号やカード番号、キーを探し、ぼかすものを選びます</string>
 	<key>Find in Transcript</key>
 	<string>文字起こし内を検索</string>
 	<key>Find in the transcript</key>
 	<string>文字起こし内を検索</string>
+	<key>Find private info</key>
+	<string>個人情報</string>
 	<key>Find “%@”</key>
 	<string>“%@”を探す</string>
 	<key>Finds typing and plays it faster, as speed blocks you can change</key>
@@ -1460,12 +1546,18 @@
 	<string>フォント</string>
 	<key>For Final Cut Pro, DaVinci Resolve, and Adobe Premiere Pro</key>
 	<string>Final Cut Pro、DaVinci Resolve、Adobe Premiere Pro用</string>
+	<key>For captions with the Whisper engine. Models are downloaded from Hugging Face only when you choose one; transcribing happens on this Mac and nothing is uploaded.</key>
+	<string>Whisperエンジンによる字幕用。モデルは選んだときにだけHugging Faceからダウンロードされます。文字起こしはこのMac上で行われ、何もアップロードされません。</string>
 	<key>For the camera only; the screen stays as recorded.</key>
 	<string>カメラだけに適用され、画面は収録したままです。</string>
+	<key>For things behind you, like a whiteboard or a document</key>
+	<string>背後にあるもの（ホワイトボードや書類など）のため</string>
 	<key>Forever</key>
 	<string>無期限</string>
 	<key>Format</key>
 	<string>フォーマット</string>
+	<key>Found %lld</key>
+	<string>%lld件見つかりました</string>
 	<key>Frame</key>
 	<string>枠</string>
 	<key>Frame copied</key>
@@ -1592,6 +1684,8 @@
 	<string>高いほど穏やかに追いかけ、低いほど素早い動きについていきます</string>
 	<key>Highlight</key>
 	<string>ハイライト</string>
+	<key>Highlight box</key>
+	<string>ハイライトボックス</string>
 	<key>Highlight color</key>
 	<string>ハイライトカラー</string>
 	<key>Highlight words</key>
@@ -1698,6 +1792,8 @@
 	<string>ここに移動</string>
 	<key>Jump one second</key>
 	<string>1秒移動</string>
+	<key>Karaoke fill</key>
+	<string>カラオケ塗り</string>
 	<key>Keep</key>
 	<string>続ける</string>
 	<key>Keep Editing</key>
@@ -1706,6 +1802,8 @@
 	<string>作業を続ける</string>
 	<key>Keep captures</key>
 	<string>スクリーンショットの保存期間</string>
+	<key>Keep editing — close this and it carries on.</key>
+	<string>編集を続けてください。閉じても続きます。</string>
 	<key>Keep editing — the words appear here when LF Studios is done listening.</key>
 	<string>編集を続けられます。LF Studiosが聞き取りを終えると、ここにテキストが表示されます。</string>
 	<key>Keep face centered</key>
@@ -1724,6 +1822,8 @@
 	<string>保存期間を“最新500件”にすると、それより古い%lld件のスクリーンショットが今すぐ履歴から削除されます。この操作は取り消せません。</string>
 	<key>Keeps loud and quiet words close together</key>
 	<string>大きな声と小さな声の差を縮めます</string>
+	<key>Key or password</key>
+	<string>キーまたはパスワード</string>
 	<key>Keyboard</key>
 	<string>キーボード</string>
 	<key>Keyboard Shortcuts</key>
@@ -1794,6 +1894,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>言語</string>
 	<key>Large</key>
 	<string>大</string>
+	<key>Large v3 Turbo</key>
+	<string>Large v3 Turbo</string>
 	<key>Larger than the recording — text may look softer than at a lower resolution.</key>
 	<string>収録より大きいサイズです。低い解像度のときよりテキストがぼやけて見えることがあります。</string>
 	<key>Last %lld captures</key>
@@ -1864,6 +1966,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>スタイル</string>
 	<key>Looking for your face in the camera video. This happens once; the result is kept.</key>
 	<string>カメラ映像から顔を探しています。一度だけ行い、結果は保存されます。</string>
+	<key>Looking through the video…</key>
+	<string>ビデオを調べています…</string>
 	<key>Loop</key>
 	<string>ループ</string>
 	<key>Loop to fill</key>
@@ -1954,6 +2058,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>左右反転</string>
 	<key>Mist</key>
 	<string>ミスト</string>
+	<key>Model</key>
+	<string>モデル</string>
 	<key>More</key>
 	<string>その他</string>
 	<key>More caption options</key>
@@ -1966,6 +2072,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>モス</string>
 	<key>Moss Glow</key>
 	<string>苔の輝き</string>
+	<key>Most accurate, slowest</key>
+	<string>最も正確、最も遅い</string>
 	<key>Motion</key>
 	<string>モーション</string>
 	<key>Motion blur</key>
@@ -2162,6 +2270,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>このビデオでは使用しない</string>
 	<key>Not now</key>
 	<string>今はしない</string>
+	<key>Nothing private found</key>
+	<string>個人情報は見つかりませんでした</string>
 	<key>Nothing to clean up — everything belongs to recordings you still have</key>
 	<string>クリーンアップするものはありません。すべて現在ある収録のデータです</string>
 	<key>Nothing was recorded — the screen didn't send any picture. Try again.</key>
@@ -2186,6 +2296,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>それ以前</string>
 	<key>On your clipboard · %@</key>
 	<string>クリップボードにあります · %@</string>
+	<key>One word at a time</key>
+	<string>1語ずつ</string>
 	<key>Only %@ free on your disk — this may not fit. Free up space or save to another drive.</key>
 	<string>ディスクの空き容量が%@しかないため、収まらない可能性があります。空き容量を増やすか、別のドライブに保存してください。</string>
 	<key>Opacity</key>
@@ -2254,6 +2366,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>オーキッド</string>
 	<key>Original</key>
 	<string>オリジナル</string>
+	<key>Original shape</key>
+	<string>元の形</string>
 	<key>Otherwise, LF Studios switches languages the next time it opens.</key>
 	<string>今すぐ再起動しない場合は、次回LF Studiosを開いたときに言語が切り替わります。</string>
 	<key>Out</key>
@@ -2320,6 +2434,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>電話番号</string>
 	<key>Phone QR found</key>
 	<string>電話番号のQRコードが見つかりました</string>
+	<key>Phone number</key>
+	<string>電話番号</string>
 	<key>Phone overlay</key>
 	<string>スマートフォンのオーバーレイ</string>
 	<key>Pick a preset as My Style (Presets ▸ Edit Presets ▸ Use as My Style), then one click puts it on any video.</key>
@@ -2390,12 +2506,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ポッドキャスト用の声の準備ができました</string>
 	<key>Polar Dawn</key>
 	<string>極地の夜明け</string>
+	<key>Pop-in words</key>
+	<string>ポップインする単語</string>
 	<key>Porcelain</key>
 	<string>ポーセリン</string>
 	<key>Position</key>
 	<string>位置</string>
 	<key>Positions only: no text, no keys</key>
 	<string>位置のみ: テキストもキーも記録しません</string>
+	<key>Possible key</key>
+	<string>キーの可能性</string>
 	<key>Preferences</key>
 	<string>設定</string>
 	<key>Preparing to copy…</key>
@@ -2554,6 +2674,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ぼかしとモザイクの強さ</string>
 	<key>Redo</key>
 	<string>やり直す</string>
+	<key>Redo Adapt to This Ratio</key>
+	<string>「この比率に合わせる」をやり直す</string>
 	<key>Redo Add Arrow</key>
 	<string>矢印の追加をやり直す</string>
 	<key>Redo Add Blur</key>
@@ -2620,6 +2742,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>自動ズームのオンをやり直す</string>
 	<key>Redo Background</key>
 	<string>背景の変更をやり直す</string>
+	<key>Redo Blur Private Info</key>
+	<string>「個人情報をぼかす」をやり直す</string>
 	<key>Redo Blur Style</key>
 	<string>ぼかしのスタイル変更をやり直す</string>
 	<key>Redo Camera Change</key>
@@ -2842,6 +2966,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ズームの変更をやり直す</string>
 	<key>Reels, TikTok, Shorts</key>
 	<string>Reels、TikTok、Shorts</string>
+	<key>Reframes zooms, moves the camera bubble, and keeps captions in the safe area for %@. This ratio then keeps its own version.</key>
+	<string>%@向けにズームを組み直し、カメラのバブルを動かし、字幕をセーフエリアに収めます。以後この比率は専用のバージョンを持ちます。</string>
 	<key>Regular</key>
 	<string>標準</string>
 	<key>Releasing the mouse takes the shot. Hold ⇧ as you release to adjust the selection first — drag its edges, nudge it with the arrow keys, then press Return.</key>
@@ -3106,6 +3232,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>画面収録を保存しています</string>
 	<key>Saving…</key>
 	<string>保存中…</string>
+	<key>Scan Again</key>
+	<string>もう一度調べる</string>
 	<key>Scan QR Code</key>
 	<string>QRコードをスキャン</string>
 	<key>Screen Recording</key>
@@ -3168,6 +3296,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>選択</string>
 	<key>Select All</key>
 	<string>すべてを選択</string>
+	<key>Select None</key>
+	<string>選択を解除</string>
 	<key>Select a clip on the timeline to mute it or fade it in and out.</key>
 	<string>タイムラインでクリップを選択すると、消音やフェードイン/フェードアウトを設定できます。</string>
 	<key>Select a range to cut</key>
@@ -3670,6 +3800,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>このMacではこれらの言語間で翻訳できません。別の言語を選択してください。</string>
 	<key>This Mac has no ProRes chip, so the re-encoded files take a while — the progress shows how long.</key>
 	<string>このMacにはProResチップがないため、再エンコードするファイルには時間がかかります。進行状況に所要時間が表示されます。</string>
+	<key>This Mac is too old or slow for Whisper. Use Apple's captions instead.</key>
+	<string>このMacはWhisperには古すぎるか遅すぎます。代わりにAppleの字幕を使ってください。</string>
 	<key>This Week</key>
 	<string>今週</string>
 	<key>This app</key>
@@ -3736,6 +3868,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>タイミングのみ: どのキーかは記録しません</string>
 	<key>Tint</key>
 	<string>色かぶり</string>
+	<key>Tiny</key>
+	<string>Tiny</string>
 	<key>Tips</key>
 	<string>ヒント</string>
 	<key>Title</key>
@@ -3770,6 +3904,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>文字起こし</string>
 	<key>Transcribe Again</key>
 	<string>もう一度文字起こし</string>
+	<key>Transcribe Again with Whisper…</key>
+	<string>Whisperでもう一度文字起こし…</string>
 	<key>Transcribe Again…</key>
 	<string>もう一度文字起こし…</string>
 	<key>Transcribe Narration (Captions, Edit by Text)</key>
@@ -3778,6 +3914,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>もう一度文字起こししますか?</string>
 	<key>Transcribe the narration to search its words</key>
 	<string>ナレーションを文字起こしすると、単語を検索できます</string>
+	<key>Transcribe with Whisper</key>
+	<string>Whisperで文字起こし</string>
 	<key>Transcribe…</key>
 	<string>文字起こし…</string>
 	<key>Transcribing “%@”</key>
@@ -3834,6 +3972,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ここに入力…</string>
 	<key>Type in a text annotation</key>
 	<string>テキストの注釈に入力</string>
+	<key>Typewriter</key>
+	<string>タイプライター</string>
 	<key>Typing</key>
 	<string>入力</string>
 	<key>Typing now plays at %@</key>
@@ -3850,6 +3990,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>取り消す</string>
 	<key>Undo / redo</key>
 	<string>取り消す/やり直す</string>
+	<key>Undo Adapt to This Ratio</key>
+	<string>「この比率に合わせる」を取り消す</string>
 	<key>Undo Add Arrow</key>
 	<string>矢印の追加を取り消す</string>
 	<key>Undo Add Blur</key>
@@ -3916,6 +4058,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>自動ズームのオンを取り消す</string>
 	<key>Undo Background</key>
 	<string>背景の変更を取り消す</string>
+	<key>Undo Blur Private Info</key>
+	<string>「個人情報をぼかす」を取り消す</string>
 	<key>Undo Blur Style</key>
 	<string>ぼかしのスタイル変更を取り消す</string>
 	<key>Undo Camera Change</key>
@@ -4154,6 +4298,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>アップデート</string>
 	<key>Upload Custom Image</key>
 	<string>カスタム画像を選択</string>
+	<key>Use %@</key>
+	<string>%@を使う</string>
 	<key>Use as My Style</key>
 	<string>マイスタイルとして使用</string>
 	<key>Use the largest size that fits (%@ × %@)</key>
@@ -4228,6 +4374,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>新機能</string>
 	<key>While this zoom plays, the camera bubble moves to: %@</key>
 	<string>このズーム中、カメラのワイプの移動先: %@</string>
+	<key>Whisper</key>
+	<string>Whisper</string>
+	<key>Whisper Models</key>
+	<string>Whisperモデル</string>
+	<key>Whisper runs on this Mac. The model is downloaded once from Hugging Face; your recording is never uploaded.</key>
+	<string>WhisperはこのMac上で動きます。モデルはHugging Faceから一度だけダウンロードされ、録画がアップロードされることはありません。</string>
 	<key>White</key>
 	<string>ホワイト</string>
 	<key>Whole video</key>
@@ -4312,6 +4464,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>テキストを入力</string>
 	<key>Your video's background shows behind you — found on this Mac, frame by frame.</key>
 	<string>ビデオの背景が背後に表示されます。人物の切り抜きは、このMac上で1フレームずつ行われます。</string>
+	<key>Your word</key>
+	<string>指定した語</string>
 	<key>Your words, as text</key>
 	<string>話した内容をテキストに</string>
 	<key>Zoom</key>
@@ -4352,6 +4506,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>移動やサイズ変更</string>
 	<key>all shortcuts</key>
 	<string>すべてのショートカット</string>
+	<key>captions</key>
+	<string>字幕</string>
 	<key>captions burned in</key>
 	<string>焼き付けた字幕</string>
 	<key>chapters</key>
@@ -4402,6 +4558,8 @@ Appleのショートカットは、“システム設定”＞“キーボード
 	<string>映像に字幕なし</string>
 	<key>no end card</key>
 	<string>エンドカードなし</string>
+	<key>not downloaded</key>
+	<string>未ダウンロード</string>
 	<key>outro card</key>
 	<string>エンディングカード</string>
 	<key>play</key>
@@ -4424,6 +4582,8 @@ Appleのショートカットは、“システム設定”＞“キーボード
 	<string>内部音声</string>
 	<key>text, highlight, arrow, blur</key>
 	<string>テキスト、ハイライト、矢印、ぼかし</string>
+	<key>the camera</key>
+	<string>カメラ</string>
 	<key>the video</key>
 	<string>ビデオ</string>
 	<key>this recording</key>

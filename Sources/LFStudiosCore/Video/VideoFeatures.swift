@@ -337,10 +337,12 @@ struct VideoCaptionStyle: Codable, Equatable {
     var highlightColor: VideoRGBA?
     /// Typeface (VideoFonts.swift); nil: the look's own.
     var font: VideoFontChoice?
+    /// How words come in (VideoCaptionAnimation.swift).
+    var animation: VideoCaptionAnimation = .none
 
     init() {}
 
-    private enum CodingKeys: String, CodingKey { case visible, size, position, placement, highlightWords, preset, highlightColor, font }
+    private enum CodingKeys: String, CodingKey { case visible, size, position, placement, highlightWords, preset, highlightColor, font, animation }
 
     init(from decoder: Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
@@ -353,6 +355,21 @@ struct VideoCaptionStyle: Codable, Equatable {
         preset = (try? c.decode(VideoCaptionPreset.self, forKey: .preset)) ?? d.preset
         highlightColor = try? c.decodeIfPresent(VideoRGBA.self, forKey: .highlightColor)
         font = try? c.decodeIfPresent(VideoFontChoice.self, forKey: .font)
+        animation = (try? c.decodeIfPresent(VideoCaptionAnimation.self, forKey: .animation)) ?? d.animation
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var c = encoder.container(keyedBy: CodingKeys.self)
+        try c.encode(visible, forKey: .visible)
+        try c.encode(size, forKey: .size)
+        try c.encode(position, forKey: .position)
+        try c.encodeIfPresent(placement, forKey: .placement)
+        try c.encode(highlightWords, forKey: .highlightWords)
+        try c.encode(preset, forKey: .preset)
+        try c.encodeIfPresent(highlightColor, forKey: .highlightColor)
+        try c.encodeIfPresent(font, forKey: .font)
+        // Only once chosen: files from before stay as they were.
+        if animation != .none { try c.encode(animation, forKey: .animation) }
     }
 }
 

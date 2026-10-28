@@ -514,6 +514,22 @@
 			<string>Auto zoom — %lld zooms</string>
 		</dict>
 	</dict>
+	<key>Blurred %lld items — adjust or delete them on the timeline</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>one</key>
+			<string>Blurred %lld item — adjust or delete it on the timeline</string>
+			<key>other</key>
+			<string>Blurred %lld items — adjust or delete them on the timeline</string>
+		</dict>
+	</dict>
 	<key>Camera hidden in %lld silences — ⌘Z to undo</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -608,6 +624,22 @@
 			<string>Exported %lld preset</string>
 			<key>other</key>
 			<string>Exported %lld presets</string>
+		</dict>
+	</dict>
+	<key>Exporting %lld versions</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>one</key>
+			<string>Exporting %lld version</string>
+			<key>other</key>
+			<string>Exporting %lld versions</string>
 		</dict>
 	</dict>
 	<key>Freed %@ (%lld files)</key>

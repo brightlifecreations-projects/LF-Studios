@@ -258,6 +258,13 @@ struct VideoTranscriptPanel: View {
 
 struct VideoCaptionsInspector: View {
     @ObservedObject var model: VideoEditorModel
+    @ObservedObject private var whisper = VideoWhisperModels.shared
+
+    /// The Whisper model to transcribe with, when Whisper is chosen and
+    /// downloaded (nil: Apple's recognizer).
+    private var whisperChoice: VideoWhisperModel? {
+        whisper.engine == .whisper && whisper.installed.contains(whisper.selected) ? whisper.selected : nil
+    }
 
     private var style: VideoCaptionStyle { model.project.captionStyle }
 
@@ -275,9 +282,33 @@ struct VideoCaptionsInspector: View {
                 VideoInspectorSection(L("Look")) {
                     VideoToggleRow(title: L("Show captions"), isOn: binding(\.visible))
                     VideoToggleRow(title: L("Highlight words"), detail: L("Words light up as they're spoken"), isOn: binding(\.highlightWords))
+                        .disabled(style.animation.colorsWords)
                     // Caption looks (VideoCaptionStyles.swift).
                     VideoCaptionPresetPicker(model: model)
                     VideoFontPicker(model: model, choice: binding(\.font))
+                    // How words come in (VideoCaptionAnimation.swift).
+                    labeled(L("Animation")) {
+                        Menu {
+                            ForEach(VideoCaptionAnimation.allCases) { animation in
+                                Button {
+                                    model.setStyle { $0.captionStyle.animation = animation }
+                                } label: {
+                                    if animation == style.animation {
+                                        Label(animation.title, systemImage: "checkmark")
+                                    } else {
+                                        Text(animation.title)
+                                    }
+                                }
+                            }
+                        } label: {
+                            Text(style.animation.title)
+                                .font(.system(size: 11.5, weight: .medium))
+                        }
+                        .menuStyle(.borderlessButton)
+                        .fixedSize()
+                        .accessibilityLabel(L("Caption animation"))
+                        Spacer(minLength: 0)
+                    }
                     labeled(L("Size")) {
                         VideoSegmented(options: VideoTextSize.allCases.map { ($0, $0.title) }, selection: binding(\.size))
                     }
@@ -313,6 +344,10 @@ struct VideoCaptionsInspector: View {
                     Menu {
                         Button(model.hasTranscript ? L("Transcribe Again…") : L("Transcribe…")) { model.transcribeAgain() }
                             .disabled(model.captionTask != nil)
+                        if let whisperChoice {
+                            Button(L("Transcribe Again with Whisper…")) { model.transcribeAgain(whisper: whisperChoice) }
+                                .disabled(model.captionTask != nil)
+                        }
                         Menu(L("Language")) { languageItems }
                             .disabled(model.captionTask != nil)
                         Divider()
@@ -337,7 +372,7 @@ struct VideoCaptionsInspector: View {
             Text(title)
                 .font(.system(size: 12, weight: .medium))
                 .foregroundStyle(VideoEditorTheme.textPrimary)
-                .frame(width: VideoEditorTheme.rowTitleWidth([L("Size"), L("Position")]), alignment: .leading)
+                .frame(width: VideoEditorTheme.rowTitleWidth([L("Size"), L("Position"), L("Animation")]), alignment: .leading)
             content()
         }
     }
@@ -413,16 +448,18 @@ struct VideoCaptionsInspector: View {
                     .menuStyle(.borderlessButton)
                     .fixedSize()
                 }
+                // Apple (built in) or Whisper (VideoWhisperViews.swift).
+                VideoCaptionEngineControls(model: model)
                 Button {
                     model.captionJob = nil
                     // Typed lines get replaced: that asks first.
-                    model.transcribeAgain()
+                    model.transcribeAgain(whisper: whisperChoice)
                 } label: {
-                    Label(model.captionJob?.error != nil ? L("Try Again") : L("Transcribe"), systemImage: "waveform.badge.magnifyingglass")
+                    Label(model.captionJob?.error != nil ? L("Try Again") : (whisper.engine == .whisper ? L("Transcribe with Whisper") : L("Transcribe")), systemImage: "waveform.badge.magnifyingglass")
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(VideoPrimaryButtonStyle())
-                .disabled(!model.hasAudio)
+                .disabled(!model.hasAudio || (whisper.engine == .whisper && whisperChoice == nil))
                 if model.captionJob?.error != nil {
                     Button {
                         model.captionJob = nil
@@ -608,7 +645,7 @@ struct VideoKeyboardSection: View {
                     Text(L("Size"))
                         .font(.system(size: 12, weight: .medium))
                         .foregroundStyle(VideoEditorTheme.textPrimary)
-                        .frame(width: VideoEditorTheme.rowTitleWidth([L("Size"), L("Position")]), alignment: .leading)
+                        .frame(width: VideoEditorTheme.rowTitleWidth([L("Size"), L("Position"), L("Animation")]), alignment: .leading)
                     VideoSegmented(options: VideoTextSize.allCases.map { ($0, $0.title) }, selection: binding(\.size))
                 }
                 .disabled(!model.project.keystrokeStyle.visible)
@@ -618,7 +655,7 @@ struct VideoKeyboardSection: View {
                     Text(L("Position"))
                         .font(.system(size: 12, weight: .medium))
                         .foregroundStyle(VideoEditorTheme.textPrimary)
-                        .frame(width: VideoEditorTheme.rowTitleWidth([L("Size"), L("Position")]), alignment: .leading)
+                        .frame(width: VideoEditorTheme.rowTitleWidth([L("Size"), L("Position"), L("Animation")]), alignment: .leading)
                     VideoSegmented(options: VideoTextPosition.allCases.map { ($0, $0.title) }, selection: Binding(get: { model.project.keystrokeStyle.position }, set: { model.setKeystrokePreset($0) }))
                 }
                 .disabled(!model.project.keystrokeStyle.visible)
