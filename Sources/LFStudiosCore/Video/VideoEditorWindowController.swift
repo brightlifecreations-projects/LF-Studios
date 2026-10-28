@@ -64,6 +64,14 @@ final class VideoDemoEditorWindowController: NSWindowController, NSWindowDelegat
         openControllers.forEach { $0.bringEditorToFront() }
     }
 
+    /// The Guide's "Show me": the editor in front shows that tab. Opens no
+    /// recording and changes nothing else.
+    static func showOpenEditor(on tab: VideoEditorModel.InspectorTab) {
+        guard let controller = frontController() else { return }
+        controller.model.inspectorTab = tab
+        controller.bringEditorToFront()
+    }
+
     static func splitActiveEditor() { frontController()?.model.splitAtPlayhead() }
     static func deleteActiveSelection() { frontController()?.model.deleteSelection() }
     static func trimActiveInToPlayhead() { frontController()?.model.trimSelectedClipToPlayhead(leading: true) }

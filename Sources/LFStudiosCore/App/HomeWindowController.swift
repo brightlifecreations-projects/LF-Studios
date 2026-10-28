@@ -15,6 +15,7 @@ struct HomeActions {
     var takeScreenshot: () -> Void
     var scrollCapture: () -> Void
     var openVideo: () -> Void
+    var openHistory: () -> Void = {}
 }
 
 /// LF Studios' main window: start a capture, and find every recording and
@@ -41,6 +42,12 @@ final class HomeWindowController: NSWindowController, NSWindowDelegate {
     }
 
     static func show() {
+        shared?.showHome()
+    }
+
+    /// Home, open on one section (Help ▸ LF Studios Guide opens the Guide).
+    static func show(section: HomeSection) {
+        shared?.model.section = section
         shared?.showHome()
     }
 
@@ -131,6 +138,7 @@ enum HomeSection: String, CaseIterable, Identifiable {
     case recordings
     case screenshots
     case settings
+    case guide
 
     var id: String { rawValue }
 
@@ -140,6 +148,7 @@ enum HomeSection: String, CaseIterable, Identifiable {
         case .recordings: return L("Recordings")
         case .screenshots: return L("Screenshots")
         case .settings: return L("Settings")
+        case .guide: return L("Guide")
         }
     }
 
@@ -149,6 +158,7 @@ enum HomeSection: String, CaseIterable, Identifiable {
         case .recordings: return "video"
         case .screenshots: return "photo.on.rectangle"
         case .settings: return "gearshape"
+        case .guide: return "book"
         }
     }
 }
@@ -206,6 +216,7 @@ final class HomeModel: ObservableObject {
     let historyManager: HistoryManager
     let actions: HomeActions
     let preferencesSelection = PreferencesSelectionModel()
+    let guide = GuideModel()
     /// Hides the Home window, so it isn't in the way of a capture; with true,
     /// it comes back once the capture overlay closes.
     var stepAside: (_ comesBack: Bool) -> Void = { _ in }
@@ -216,6 +227,10 @@ final class HomeModel: ObservableObject {
     init(historyManager: HistoryManager, actions: HomeActions) {
         self.historyManager = historyManager
         self.actions = actions
+        guide.navigate = { [weak self] destination in
+            guard let self else { return }
+            GuideNavigator.go(to: destination, home: self)
+        }
         for name in [Notification.Name.lfstudiosHistoryDidChange, .lfstudiosRecordingsDidChange] {
             observers.append(NotificationCenter.default.addObserver(forName: name, object: nil, queue: .main) { [weak self] _ in
                 MainActor.assumeIsolated { self?.reload() }
@@ -228,7 +243,7 @@ final class HomeModel: ObservableObject {
         switch section {
         case .recordings: inSection = projects.filter { $0.isRecording || $0.isProjectFile }
         case .screenshots: inSection = projects.filter { !$0.isRecording && !$0.isProjectFile }
-        case .home, .settings: inSection = projects
+        case .home, .settings, .guide: inSection = projects
         }
         let terms = query.split(separator: " ").map(String.init)
         guard !terms.isEmpty else { return inSection }
@@ -465,9 +480,12 @@ struct HomeRootView: View {
                 .fill(HomeColors.stroke)
                 .frame(width: 1)
             Group {
-                if model.section == .settings {
+                switch model.section {
+                case .settings:
                     PreferencesRootView(selection: model.preferencesSelection)
-                } else {
+                case .guide:
+                    GuideRootView(model: model.guide)
+                default:
                     HomeLibraryView(model: model)
                 }
             }
@@ -636,15 +654,16 @@ private struct HomeLibraryView: View {
     }
 }
 
-private struct HomeSearchField: View {
+struct HomeSearchField: View {
     @Binding var text: String
+    var placeholder = L("Search projects")
 
     var body: some View {
         HStack(spacing: 7) {
             Image(systemName: "magnifyingglass")
                 .font(.system(size: 12, weight: .semibold))
                 .foregroundStyle(HomeColors.ink.opacity(0.45))
-            TextField(L("Search projects"), text: $text)
+            TextField(placeholder, text: $text)
                 .textFieldStyle(.plain)
                 .font(.system(size: 13))
             if !text.isEmpty {

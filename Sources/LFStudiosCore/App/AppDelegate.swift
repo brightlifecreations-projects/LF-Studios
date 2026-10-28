@@ -146,7 +146,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             newRecording: { [weak self] in self?.recordArea() },
             takeScreenshot: { [weak self] in self?.captureArea() },
             scrollCapture: { [weak self] in self?.captureScrolling() },
-            openVideo: { [weak self] in self?.openVideoEditor() }
+            openVideo: { [weak self] in self?.openVideoEditor() },
+            openHistory: { [weak self] in self?.openHistory() }
         ))
         // Before anything else reads the launch event.
         let launchedAsLoginItem = Self.launchedAsLoginItem
@@ -398,7 +399,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     // MARK: – Status bar
 
-    private func setupMainMenu() {
+    func setupMainMenu() {
         // The app menu's title is always the app's name.
         let mainMenu = NSMenu(title: "LF Studios") // l10n-ignore
 
@@ -471,6 +472,13 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         windowMenuItem.submenu = windowMenu
         mainMenu.addItem(windowMenuItem)
         NSApp.windowsMenu = windowMenu
+
+        let helpMenuItem = NSMenuItem()
+        let helpMenu = NSMenu(title: L("Help"))
+        helpMenu.addItem(menuItem(L("LF Studios Guide"), action: #selector(openGuide), key: "?", modifiers: [.command]))
+        helpMenuItem.submenu = helpMenu
+        mainMenu.addItem(helpMenuItem)
+        NSApp.helpMenu = helpMenu
 
         NSApp.mainMenu = mainMenu
     }
@@ -598,6 +606,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
     @objc func openHistory()         { HistoryPanelController.shared.show(historyManager: historyManager) }
     @objc func openHome()            { HomeWindowController.show() }
+    @objc func openGuide()           { HomeWindowController.show(section: .guide) }
     @objc func toggleDesktopIcons()  { DesktopIconsManager.toggle() }
     @objc func openPreferences()     { PreferencesWindowController.shared.show(tab: .general) }
     @objc func openShortcutsPreferences() { PreferencesWindowController.shared.show(tab: .shortcuts) }
