@@ -93,9 +93,11 @@ final class GuideTests: XCTestCase {
     func testWhatsNewListsTheNewestFeaturesWithANewBadge() throws {
         let whatsNew = try XCTUnwrap(chapters.first { $0.id == .whatsNew })
         let listed = Set(whatsNew.entries.map(\.id))
+        XCTAssertEqual(GuideContent.newVersions.first, "1.6.0", "the newest version first")
+        XCTAssertTrue(listed.contains("rec-folder"))
+        XCTAssertTrue(listed.contains("project-folder"))
         XCTAssertTrue(listed.contains("app-guide"))
-        XCTAssertTrue(listed.contains("app-updates"))
-        XCTAssertTrue(listed.contains("camera-face"))
+        XCTAssertFalse(listed.contains("camera-face"), "older versions' pages leave What's new")
         for entry in features {
             XCTAssertEqual(entry.isNew, listed.contains(entry.id), entry.id)
         }

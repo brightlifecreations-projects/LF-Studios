@@ -15,7 +15,7 @@ import Foundation
 @MainActor
 enum GuideContent {
     /// Pages from these versions get a New badge and fill What's new.
-    nonisolated static let newVersions: [String] = ["1.5.0", "1.4.1", "1.4.0"]
+    nonisolated static let newVersions: [String] = ["1.6.0", "1.5.0"]
 
     static func chapters() -> [GuideChapter] {
         let features = featureCategories()
@@ -1059,6 +1059,25 @@ enum GuideContent {
                 showMe: .settings(.general)
             ),
             GuideEntry(
+                id: "rec-folder", symbol: "folder.badge.plus", title: L("Each recording in its own folder"),
+                summary: L("After you stop, LF Studios asks where to save the recording, then puts everything from it in one new folder: the video, the camera, the sound, and the project that opens it all."),
+                location: L("The save window appears after each recording. Settings ▸ Recording ▸ Saving has Ask where to save after each recording and the Recording folder."),
+                points: [
+                    L("01 Screen: the screen recording. 02 Camera: the camera video, if you recorded one."),
+                    L("03 Audio: your microphone and the Mac's sound as separate files. 05 Captions: your captions, once you make them."),
+                    L("07 Data: the pointer, clicks, and keys. And README.txt, which says what each file is."),
+                    L("The project file opens everything again, exactly as you left it. LF Studios keeps it up to date as you edit."),
+                ],
+                tips: [
+                    L("Click Cancel, or turn off asking, and it goes in the Recording folder, laid out the same way. Nothing is ever lost."),
+                    L("Move or rename the folder in Finder as you like, or copy it to another Mac: it still opens."),
+                    L("Files move only once the recording is finished and checked. If something goes wrong, the recording stays where it was."),
+                ],
+                showMe: .settings(.recording),
+                since: "1.6.0",
+                related: ["project-folder", "app-files"]
+            ),
+            GuideEntry(
                 id: "rec-recovery", symbol: "lifepreserver", title: L("Recovering an interrupted recording"),
                 summary: L("If your Mac crashes or loses power while recording, LF Studios saves what it can."),
                 location: L("Happens by itself the next time LF Studios opens."),
@@ -1976,10 +1995,11 @@ enum GuideContent {
                     L("A timeline for Final Cut Pro, DaVinci Resolve, and Adobe Premiere Pro."),
                     L("Line everything up makes every file start at the same moment."),
                     L("A README lists every file. Include speaker notes adds your notes."),
+                    L("An LF Studios project: open the folder in LF Studios to edit the video again. With clips cut to your edit, Include originals so it reopens in LF Studios adds the untouched recordings it needs."),
                 ],
                 keys: [.fixed("⇧⌘E", L("Creative Handoff"))],
-                tips: [L("It checks the free space first. Cancel removes the half-made folder.")],
-                related: ["howto-handoff"]
+                tips: [L("It checks the free space first, and shows how much the originals add. Cancel removes the half-made folder.")],
+                related: ["howto-handoff", "project-folder"]
             ),
         ]
     }
@@ -1993,7 +2013,7 @@ enum GuideContent {
                 location: L("Home ▸ Projects. Recordings and Screenshots in the sidebar show just one kind."),
                 points: [
                     L("Click a project to open it."),
-                    L("Right-click for Open, Show in Finder, Creative Handoff…, or Delete (moves it to the Trash)."),
+                    L("Right-click for Open, Show in Finder, Creative Handoff…, or Delete (moves it to the Trash; for a recording's folder, the whole folder, after asking)."),
                     L("The search box finds projects by name, and screenshots by their text."),
                 ],
                 showMe: .home(.home)
@@ -2010,10 +2030,25 @@ enum GuideContent {
             ),
             GuideEntry(
                 id: "project-open", symbol: "folder", title: L("Open a project"),
-                summary: L("Open a saved .lfstudios project."),
-                location: L("Open Project… in Home, File ▸ Open Project… (⌘O), or double-click the project in Finder."),
-                keys: [.fixed("⌘O", L("Open Project…"))],
-                tips: [L("Projects from ShotStyle (.shotstyle) open too.")]
+                summary: L("Open a saved .lfstudios project, a recording's folder, or a video."),
+                location: L("Open… in Home, File ▸ Open… (⌘O), or double-click the project in Finder."),
+                keys: [.fixed("⌘O", L("Open…"))],
+                tips: [L("Projects from ShotStyle (.shotstyle) open too.")],
+                related: ["project-folder"]
+            ),
+            GuideEntry(
+                id: "project-folder", symbol: "folder.badge.questionmark", title: L("Open a whole folder"),
+                summary: L("Open a folder of files as one project: a recording's folder, a Creative Handoff, or any folder with videos in it."),
+                location: L("Open… in Home or File ▸ Open… (⌘O), and choose the folder. Or drop the folder on the Home window or the LF Studios icon in the Dock."),
+                points: [
+                    L("A folder with an LF Studios project in it opens that project, exactly as it was saved."),
+                    L("An older Creative Handoff is put back together from its files: the screen, the cuts, the camera at its place, captions, markers, and the pointer. A summary says what came back."),
+                    L("Any other folder: Import Folder lists the videos. Choose which is the screen recording and which the camera, and when the camera starts."),
+                ],
+                keys: [.fixed("⌘O", L("Open…"))],
+                tips: [L("Nothing in the folder changes until you save (⌘S). Saving writes the project into the folder.")],
+                since: "1.6.0",
+                related: ["rec-folder", "export-handoff"]
             ),
             GuideEntry(
                 id: "project-drafts", symbol: "clock.badge.checkmark", title: L("Your edits are kept"),
@@ -2111,11 +2146,11 @@ enum GuideContent {
                 related: ["trouble-updates"]
             ),
             GuideEntry(
-                id: "app-files", symbol: "folder.badge.gearshape", title: L("Save folder, file names & format"),
-                summary: L("Choose where files are saved, what they're called, and the picture format."),
-                location: L("Settings ▸ Screenshots."),
+                id: "app-files", symbol: "folder.badge.gearshape", title: L("Save folders, file names & format"),
+                summary: L("Choose where screenshots and recordings are saved, what they're called, and the picture format."),
+                location: L("Settings ▸ Screenshots, and Settings ▸ Recording ▸ Saving."),
                 points: [
-                    L("Save Location: the folder for saved screenshots and recordings (the Desktop to start with)."),
+                    L("Screenshot folder (Settings ▸ Screenshots): where screenshots are saved. Recording folder (Settings ▸ Recording): where recordings go when you don't choose. Both start as the folder you used before, or the Desktop."),
                     L("File Name: a template with the date and time; Preview shows the result."),
                     L("Export Format: PNG, JPEG (with a quality slider), or WebP."),
                 ],
@@ -2435,7 +2470,7 @@ enum GuideContent {
             .fixed("⌘,", L("Settings…")),
             .fixed("⌘Q", L("Quit LF Studios")),
             .fixed("⌘W", L("Close Window")),
-            .fixed("⌘O", L("Open Project…")),
+            .fixed("⌘O", L("Open…")),
             .fixed("⌘S", L("Save Project")),
             .fixed("⇧⌘S", L("Save Project As…")),
             .fixed("⌘E", L("Export Video…")),
