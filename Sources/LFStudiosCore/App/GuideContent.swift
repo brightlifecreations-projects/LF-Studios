@@ -1219,7 +1219,6 @@ enum GuideContent {
                 summary: L("Find any action by typing its name, and see every key the editor knows."),
                 location: L("The ⌘ and ? buttons in the editor's toolbar."),
                 keys: [.fixed("⌘K", L("All commands")), .fixed("?", L("Keyboard Shortcuts"))],
-                related: ["shortcuts-page"]
             ),
             GuideEntry(
                 id: "video-markers", symbol: "flag", title: L("Markers"),
@@ -2067,7 +2066,7 @@ enum GuideContent {
                     L("Restore Apple Shortcuts turns Apple's own ⇧⌘3, ⇧⌘4, and ⇧⌘5 back on."),
                 ],
                 showMe: .settings(.shortcuts),
-                related: ["shortcuts-page", "trouble-shortcuts"]
+                related: ["trouble-shortcuts"]
             ),
             GuideEntry(
                 id: "app-appearance", symbol: "circle.lefthalf.filled", title: L("Light & dark appearance"),
@@ -2160,7 +2159,121 @@ enum GuideContent {
     // MARK: - Keyboard shortcuts
 
     static func shortcutGroups() -> [GuideShortcutGroup] {
-        []
+        [
+            GuideShortcutGroup(
+                title: L("In any app"), symbol: "globe",
+                note: L("These work everywhere while LF Studios is running. “Not set” means no keys yet: add your own in Settings ▸ Shortcuts."),
+                keys: LFStudiosShortcut.allCases.map { GuideKey.global($0) } + [.fixed("⌃⌘Esc", L("Stop recording, from any app"))]
+            ),
+            GuideShortcutGroup(title: L("Menus"), symbol: "menubar.rectangle", keys: menuKeys()),
+            GuideShortcutGroup(
+                title: L("Video editor"), symbol: "film",
+                note: L("Press ? in the editor to see this list there."),
+                keys: VideoShortcutsSheet.groups.flatMap { $0.1.map { GuideKey.fixed($0.0, $0.1) } }
+            ),
+            GuideShortcutGroup(
+                title: L("Screenshot editor"), symbol: "pencil.and.outline",
+                keys: AnnotationTool.allCases.map { tool($0) } + [
+                    .fixed("⌥R", L("Rounded corners")),
+                    .fixed(L("⇧-drag"), L("Square, circle, or straight 45° lines")),
+                    .fixed(L("⌥-drag"), L("Draw from the center")),
+                    .fixed("⌘↩", L("Finish typing")),
+                    .fixed("⌫", L("Delete the selected mark")),
+                    .fixed("← → ↑ ↓", L("Nudge the selected mark (with ⇧: 10 points)")),
+                    .fixed("↩", L("Apply the crop")),
+                    .fixed("Esc", L("Deselect")),
+                    .fixed("⌘Z", L("Undo")), .fixed("⇧⌘Z", L("Redo")),
+                    .fixed("⌘C", L("Copy")), .fixed("⌘S", L("Save")),
+                    .fixed("⌘=  ⌘−", L("Zoom in / out")), .fixed("⌘0", L("Actual size")),
+                    .fixed("⌘W", L("Close")),
+                ]
+            ),
+            GuideShortcutGroup(
+                title: L("Selecting an area"), symbol: "selection.pin.in.out",
+                keys: [
+                    .fixed(L("Space"), L("Move the area while dragging")),
+                    .fixed("⇧", L("Hold as you let go to adjust first")),
+                    .fixed("← → ↑ ↓", L("Nudge the area (with ⇧: 10 points)")),
+                    .fixed("⌥ ← → ↑ ↓", L("Make the area bigger or smaller")),
+                    .fixed("↩", L("Capture")),
+                    .fixed("Esc", L("Cancel")),
+                ]
+            ),
+            GuideShortcutGroup(
+                title: L("Recording"), symbol: "record.circle",
+                keys: [
+                    .fixed("↩", L("Start recording")),
+                    .fixed("Esc", L("Cancel")),
+                    .fixed("⌃⌘Esc", L("Stop recording, from any app")),
+                    .fixed("Esc", L("Stop, while LF Studios is the app in front")),
+                ]
+            ),
+            GuideShortcutGroup(
+                title: L("Speaker notes"), symbol: "text.alignleft",
+                keys: [.fixed(L("Space"), L("Pause or resume scrolling")), .fixed("↑ ↓", L("Scroll by a line"))]
+            ),
+            GuideShortcutGroup(
+                title: L("Scrolling Capture"), symbol: "scroll",
+                keys: [.fixed("Esc", L("Finish"))]
+            ),
+            GuideShortcutGroup(
+                title: L("Preview after capture"), symbol: "rectangle.inset.bottomleft.filled",
+                note: L("While the pointer is over the thumbnail."),
+                keys: [.fixed("⌘C", L("Copy")), .fixed("⌘S", L("Save")), .fixed("⌘E", L("Edit")), .fixed("Esc", L("Close"))]
+            ),
+            GuideShortcutGroup(
+                title: L("History"), symbol: "clock.arrow.circlepath",
+                keys: [
+                    .fixed("⌘F", L("Search")),
+                    .fixed("↩", L("Edit the selected screenshot")),
+                    .fixed("⌘C", L("Copy")),
+                    .fixed("⌫", L("Delete")),
+                    .fixed("⌘Z", L("Undo a delete")),
+                    .fixed("Esc", L("Clear the search")),
+                ]
+            ),
+            GuideShortcutGroup(
+                title: L("Pinned screenshots"), symbol: "pin",
+                keys: [.fixed("Esc", L("Close the pin")), .fixed("⌘C", L("Copy")), .fixed("⌘W", L("Close"))]
+            ),
+            GuideShortcutGroup(
+                title: L("Edit by text"), symbol: "text.word.spacing",
+                keys: [
+                    .fixed("⌫", L("Cut the selected words")),
+                    .fixed("⌦", L("Cut the word after the cursor")),
+                    .fixed("⌘F", L("Find in the transcript")),
+                    .fixed("⌘G", L("Find the next one")),
+                ]
+            ),
+        ]
+    }
+
+    /// The menu bar's keys (AppDelegate.setupMainMenu).
+    static func menuKeys() -> [GuideKey] {
+        [
+            .fixed("⌘0", L("LF Studios Home")),
+            .fixed("⌘?", L("LF Studios Guide")),
+            .fixed("⌘,", L("Settings…")),
+            .fixed("⌘Q", L("Quit LF Studios")),
+            .fixed("⌘W", L("Close Window")),
+            .fixed("⌘O", L("Open Project…")),
+            .fixed("⌘S", L("Save Project")),
+            .fixed("⇧⌘S", L("Save Project As…")),
+            .fixed("⌘E", L("Export Video…")),
+            .fixed("⇧⌘E", L("Creative Handoff…")),
+            .fixed("⌘Z", L("Undo")),
+            .fixed("⇧⌘Z", L("Redo")),
+            .fixed("⌘X", L("Cut")),
+            .fixed("⌘C", L("Copy")),
+            .fixed("⌘V", L("Paste")),
+            .fixed("⌘A", L("Select All")),
+            .fixed("S", L("Split at Playhead")),
+            .fixed("⌫", L("Delete Selection")),
+            .fixed("I", L("Set In to Playhead")),
+            .fixed("O", L("Set Out to Playhead")),
+            .fixed("M", L("Mute Clip")),
+            .fixed("⌘M", L("Minimize")),
+        ]
     }
 }
 
