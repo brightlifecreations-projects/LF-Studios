@@ -203,19 +203,44 @@ final class FolderOpeningTests: XCTestCase {
         XCTAssertEqual(VideoSubtitleReader.srt("1\r\n00:01:02,500 --> 00:01:03,000\r\nHi\r\nthere\r\n").first, .init(start: 62.5, end: 63, text: "Hi\nthere"))
     }
 
+    /// A real (silent) WAV, `seconds` long.
+    private func wav(_ relative: String, in folder: URL, seconds: Double) throws {
+        let url = folder.appendingPathComponent(relative)
+        try FileManager.default.createDirectory(at: url.deletingLastPathComponent(), withIntermediateDirectories: true)
+        let format = try XCTUnwrap(AVAudioFormat(standardFormatWithSampleRate: 48_000, channels: 1))
+        let file = try AVAudioFile(forWriting: url, settings: [AVFormatIDKey: kAudioFormatLinearPCM, AVSampleRateKey: 48_000, AVNumberOfChannelsKey: 1, AVLinearPCMBitDepthKey: 16, AVLinearPCMIsFloatKey: false])
+        let buffer = try XCTUnwrap(AVAudioPCMBuffer(pcmFormat: format, frameCapacity: AVAudioFrameCount(seconds * 48_000)))
+        buffer.frameLength = buffer.frameCapacity
+        try file.write(from: buffer)
+    }
+
+    func testAnOlderTrimmedHandoffBringsItsSoundFilesBackAsTracks() async throws {
+        let folder = base.appendingPathComponent("Trimmed – Handoff", isDirectory: true)
+        _ = try await video("01 Screen/Clip 01.mov", in: folder, seconds: 3, sound: false)
+        try wav("03 Audio/Microphone.wav", in: folder, seconds: 3)
+        try wav("03 Audio/System Audio.wav", in: folder, seconds: 3)
+        try wav("03 Audio/Full Mix.wav", in: folder, seconds: 3)
+        try write("Trimmed — Creative Handoff\n\nClips: trimmed to the edit (cuts, clip order, and speed changes are in the files).\nLined up: every video and sound file starts at 0:00 and is 0:03.00 long.\n", "README.txt", in: folder)
+        let (contents, summary) = try await VideoHandoffRebuilder.rebuild(folder)
+        XCTAssertEqual(contents.project.audioTracks.map(\.name), ["Microphone.wav", "System Audio.wav"], "the full mix isn't needed")
+        XCTAssertEqual(contents.project.audioTracks.first?.useAsVoice, true, "the microphone is the voice")
+        XCTAssertEqual(contents.project.audioTracks.first?.lockedToRecording, false, "on the edit's clock, like the trimmed clips")
+        XCTAssertTrue(summary.loaded.contains { $0.contains("Microphone.wav") })
+    }
+
     // MARK: Any other folder
 
     func testAnyOtherFolderIsImportedByRole() async throws {
         let folder = base.appendingPathComponent("Shoot", isDirectory: true)
         let screen = try await video("Screen capture.mov", in: folder, seconds: 4)
         let camera = try await video("Phone/IMG_0001.mov", in: folder, seconds: 3, sound: false)
-        try write("RIFF", "voice.wav", in: folder)
+        try write("RIFF", "voice.wav", in: folder) // not real sound: left out when built
         let files = VideoFolderReader.mediaFiles(in: folder)
         XCTAssertEqual(Set(files.map(\.lastPathComponent)), ["Screen capture.mov", "IMG_0001.mov", "voice.wav"])
         var choices = VideoFolderImportChoice.suggested(files.map { ($0, $0 == screen.standardizedFileURL ? 4 : ($0 == camera.standardizedFileURL ? 3 : 10), VideoFolderReader.videoExtensions.contains($0.pathExtension.lowercased())) })
         XCTAssertEqual(choices.first { $0.url == screen.standardizedFileURL }?.role, .screen, "the longest video is the screen")
         XCTAssertEqual(choices.first { $0.url == camera.standardizedFileURL }?.role, .camera)
-        XCTAssertEqual(choices.first { $0.url.lastPathComponent == "voice.wav" }?.role, .ignore)
+        XCTAssertEqual(choices.first { $0.url.lastPathComponent == "voice.wav" }?.role, .audio, "sound files are audio tracks")
         let index = try XCTUnwrap(choices.firstIndex { $0.role == .camera })
         choices[index].offset = 1.5
         let contents = try await VideoFolderImportChoice.build(choices)

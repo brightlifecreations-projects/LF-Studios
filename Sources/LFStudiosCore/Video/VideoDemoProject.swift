@@ -840,6 +840,8 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
     // and appended recordings — each lives in its own file.
     var cards = VideoTitleCards()
     var music: VideoMusicTrack?
+    /// Sound files added to the video, each its own track (VideoExternalAudio.swift).
+    var audioTracks: [VideoExternalAudioTrack] = []
     var clickSounds = VideoClickSoundSettings()
     var transitions = VideoTransitionSettings()
     var captionTracks = VideoCaptionTracks()
@@ -1419,7 +1421,7 @@ extension VideoDemoProject {
         case zoomRegions, zoomSpeed, defaultZoomScale, motionBlur
         case overlayEffects, cursorSamples, clickEvents, nativeCursorVisible, cursor, audio
         case webcam, cameraLayouts, importedCamera, autoZoom, reframe, captions, transcriptLanguage, captionStyle, keystrokes, keystrokeStyle, crop
-        case cards, music, clickSounds, transitions, captionTracks, sources, imageOverlayEffects, markers
+        case cards, music, audioTracks, clickSounds, transitions, captionTracks, sources, imageOverlayEffects, markers
         case textCursor, keyPresses, loupeStyle, faceTracking, speakerNotes
         case ratioVersions, ratioShared, ratioBase, previousRatio, reframeFollowsZooms
         // Legacy (v1) keys
@@ -1460,6 +1462,7 @@ extension VideoDemoProject {
         crop = (try? container.decode(VideoCropRect.self, forKey: .crop))?.normalized ?? .full
         cards = (try? container.decode(VideoTitleCards.self, forKey: .cards)) ?? VideoTitleCards()
         music = try? container.decodeIfPresent(VideoMusicTrack.self, forKey: .music)
+        audioTracks = (try? container.decode([VideoExternalAudioTrack].self, forKey: .audioTracks)) ?? []
         clickSounds = (try? container.decode(VideoClickSoundSettings.self, forKey: .clickSounds)) ?? VideoClickSoundSettings()
         transitions = (try? container.decode(VideoTransitionSettings.self, forKey: .transitions)) ?? VideoTransitionSettings()
         captionTracks = (try? container.decode(VideoCaptionTracks.self, forKey: .captionTracks)) ?? VideoCaptionTracks()
@@ -1585,6 +1588,7 @@ extension VideoDemoProject {
         try container.encode(crop, forKey: .crop)
         try container.encode(cards, forKey: .cards)
         try container.encodeIfPresent(music, forKey: .music)
+        if !audioTracks.isEmpty { try container.encode(audioTracks, forKey: .audioTracks) }
         try container.encode(clickSounds, forKey: .clickSounds)
         try container.encode(transitions, forKey: .transitions)
         try container.encode(captionTracks, forKey: .captionTracks)

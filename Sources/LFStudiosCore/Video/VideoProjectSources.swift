@@ -716,6 +716,10 @@ extension VideoDemoProject {
             guard let index = VideoAudioKind.voiceTrackIndex(in: source.audioKinds), let url = VideoSourceLocator.resolve(source) else { continue }
             targets.append(VideoVoiceTarget(url: url, trackIndex: index, recipe: recipe))
         }
+        // An added sound file used as the voice is cleaned up like one.
+        if let voice = externalVoice, FileManager.default.fileExists(atPath: voice.path) {
+            targets.append(VideoVoiceTarget(url: voice.url, trackIndex: 0, recipe: recipe))
+        }
         return targets
     }
 

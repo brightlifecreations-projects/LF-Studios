@@ -678,6 +678,7 @@ struct VideoAudioInspector: View {
 
             // Music and click sounds work with or without recorded sound.
             VideoMusicSection(model: model)
+            VideoExternalAudioSection(model: model)
             VideoClickSoundSection(model: model)
         }
     }

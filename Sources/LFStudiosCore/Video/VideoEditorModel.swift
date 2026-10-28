@@ -210,8 +210,13 @@ final class VideoEditorModel: ObservableObject {
     @Published private(set) var loadFailure: VideoLoadFailure?
     /// Closes this editor's window (set by the window controller).
     var closeEditor: (() -> Void)?
+    /// A piece of an added sound file, picked on its timeline lane.
+    @Published var selectedAudioPiece: VideoAudioPieceRef?
+    /// The added track being synced by sound.
+    @Published var isSyncingAudio: UUID?
     @Published var selection: Selection = .none {
         didSet {
+            if selection != .none { selectedAudioPiece = nil }
             // Picking something on its own (even one already picked) drops
             // the others.
             if !keepsExtraSelection, !extraSelection.isEmpty { extraSelection = [] }
@@ -1059,6 +1064,11 @@ final class VideoEditorModel: ObservableObject {
     }
 
     func splitAtPlayhead() {
+        // An added sound piece is selected: S splits that track instead.
+        if let piece = selectedAudioPiece {
+            splitAudioTrack(piece.track)
+            return
+        }
         let time = clock.time
         guard let segment = segment(atTimeline: time) else { return }
         let sourceTime = segment.sourceTime(forTimelineTime: time)
@@ -1793,6 +1803,10 @@ final class VideoEditorModel: ObservableObject {
     // MARK: Delete / Escape
 
     func deleteSelection() {
+        if let piece = selectedAudioPiece {
+            deleteAudioPiece(piece)
+            return
+        }
         if !extraSelection.isEmpty {
             deleteSelectedItems()
             return

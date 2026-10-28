@@ -29,13 +29,16 @@ struct VideoEditComposition {
     var musicDuration: Double = 0
     /// A click sound on every recorded click.
     var clickTrack: AVMutableCompositionTrack? = nil
+    /// Sound files added to the video, each on its own track, with where
+    /// their pieces landed (VideoExternalAudio.swift).
+    var externalTracks: [(track: AVMutableCompositionTrack, id: UUID, placed: [VideoExternalAudioTrack.Placed])] = []
     /// With several recordings: the transform that fits each stretch of
     /// the video track into `sourceSize` (starts, in order).
     var pieceTransforms: [(start: CMTime, transform: CGAffineTransform)] = []
 
     /// Every sound track, for reading the final mix.
     var mixedAudioTracks: [AVMutableCompositionTrack] {
-        audioTracks + [musicTrack, clickTrack].compactMap { $0 }
+        audioTracks + [musicTrack, clickTrack].compactMap { $0 } + externalTracks.map(\.track)
     }
 
     /// What a video composition must cover: the whole asset, including
@@ -104,6 +107,8 @@ struct VideoEditExtras {
     var layout: VideoSourceLayout?
     var music: VideoMusicInput?
     var clicks: VideoClickSoundInput?
+    /// Sound files added to the video.
+    var externalAudio: VideoExternalAudioInput?
 
     static let none = VideoEditExtras()
 
@@ -114,19 +119,21 @@ struct VideoEditExtras {
         let layout: [String]
         let music: VideoMusicInput.StructureKey?
         let clicks: VideoClickSoundInput.StructureKey?
+        let externalAudio: VideoExternalAudioInput.StructureKey?
     }
 
     /// What only the mix depends on.
     struct MixKey: Equatable {
         let music: VideoMusicInput.MixKey?
         let clickVolume: Double?
+        let externalAudio: VideoExternalAudioInput.MixKey?
     }
 
     var structureKey: StructureKey {
-        StructureKey(tail: (tail * 1000).rounded() / 1000, musicTail: musicTail, layout: layout?.identity ?? [], music: music?.structureKey, clicks: clicks?.structureKey)
+        StructureKey(tail: (tail * 1000).rounded() / 1000, musicTail: musicTail, layout: layout?.identity ?? [], music: music?.structureKey, clicks: clicks?.structureKey, externalAudio: externalAudio?.structureKey)
     }
 
-    var mixKey: MixKey { MixKey(music: music?.mixKey, clickVolume: clicks?.volume) }
+    var mixKey: MixKey { MixKey(music: music?.mixKey, clickVolume: clicks?.volume, externalAudio: externalAudio?.mixKey) }
 }
 
 enum VideoCompositionBuilder {
@@ -353,6 +360,7 @@ enum VideoCompositionBuilder {
         let musicLength = total + max(extras.musicTail, 0)
         let music = extras.music?.insert(into: composition, duration: musicLength)
         let clicks = extras.clicks?.insert(into: composition, duration: total)
+        let external = extras.externalAudio?.insert(into: composition, segments: segments, duration: total) ?? []
 
         var edit = VideoEditComposition(
             composition: composition,
@@ -371,6 +379,7 @@ enum VideoCompositionBuilder {
             clickTrack: clicks,
             pieceTransforms: pieceTransforms
         )
+        edit.externalTracks = external
         edit.audioMix = audioMix(for: edit, segments: segments, audio: audio, extras: extras)
         return edit
     }
@@ -385,9 +394,11 @@ enum VideoCompositionBuilder {
         let current = segments.filter { $0.clip.sourceDuration > 0.001 }
         let aligned = current.count == edit.placements.count
         var parameters: [AVMutableAudioMixInputParameters] = []
+        // An added track used as the voice takes the microphone's place.
+        let voiceReplaced = extras.externalAudio?.tracks.contains { $0.settings.useAsVoice && !$0.settings.muted } ?? false
         for (index, track) in edit.audioTracks.enumerated() {
             let kind = edit.audioKinds.indices.contains(index) ? edit.audioKinds[index] : .mixed
-            let volume = audio.effectiveVolume(for: kind)
+            let volume: Float = voiceReplaced && kind == .microphone ? 0 : audio.effectiveVolume(for: kind)
             let params = AVMutableAudioMixInputParameters(track: track)
             for (placementIndex, placement) in edit.placements.enumerated() {
                 let clip = aligned ? current[placementIndex].clip : placement.segment.clip
@@ -407,6 +418,13 @@ enum VideoCompositionBuilder {
             let params = AVMutableAudioMixInputParameters(track: track)
             params.setVolume(Float(min(max(clicks.volume, 0), 1)), at: .zero)
             parameters.append(params)
+        }
+        if let external = extras.externalAudio {
+            for entry in edit.externalTracks {
+                let params = AVMutableAudioMixInputParameters(track: entry.track)
+                external.apply(to: params, track: entry.id, placed: entry.placed, audio: audio)
+                parameters.append(params)
+            }
         }
         let mix = AVMutableAudioMix()
         mix.inputParameters = parameters

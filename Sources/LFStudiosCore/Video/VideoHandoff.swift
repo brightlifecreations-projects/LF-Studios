@@ -437,7 +437,7 @@ enum VideoHandoffPlanner {
             ))
         }
         // Everything you hear, mixed as the edit plays it.
-        let hasSound = input.recordings.contains { $0.url != nil && !$0.audioKinds.isEmpty } || input.project.music != nil
+        let hasSound = input.recordings.contains { $0.url != nil && !$0.audioKinds.isEmpty } || input.project.music != nil || !input.project.audioTracks.isEmpty
         if hasSound {
             let length = input.timelineDuration
             items.append(VideoHandoffItem(
@@ -471,6 +471,43 @@ enum VideoHandoffPlanner {
                 items.append(VideoHandoffItem(
                     folder: .audio, fileName: "Music.\(url.pathExtension.lowercased())", description: "The music file, as it was added (in the edit it starts at the beginning of the video)",
                     work: .copy(url), treatment: .original, duration: music.duration, frameRate: nil, startOffset: nil, estimatedBytes: fileSize(url)
+                ))
+            }
+        }
+
+        // Added sound files: laid out like the edit (trimmed), or as added.
+        var audioNames: Set<String> = Set(items.filter { $0.folder == .audio }.map(\.fileName))
+        for track in input.project.audioTracks {
+            guard FileManager.default.fileExists(atPath: track.path) else {
+                skipped.append(L("Added sound “\(track.name)” — the file is missing"))
+                continue
+            }
+            let base = URL(fileURLWithPath: track.name).deletingPathExtension().lastPathComponent
+            if trimmed {
+                let placed = track.placed(segments: segments, timelineDuration: input.timelineDuration)
+                guard !track.muted, !placed.isEmpty else { continue }
+                let pieces = placed.map { piece in
+                    VideoHandoffPiece(url: track.url, audioTrack: 0, sourceStart: piece.fileStart, sourceDuration: piece.fileLength, at: piece.timelineStart,
+                                      speed: piece.speed, gain: track.volume, fadeIn: track.fadeIn, fadeOut: track.fadeOut)
+                }
+                let first = pieces.map(\.at).min() ?? 0
+                let last = pieces.map(\.end).max() ?? 0
+                let length = options.lineUp ? clock : last - first
+                let laid = options.lineUp ? pieces : pieces.map { var piece = $0; piece.at -= first; return piece }
+                items.append(VideoHandoffItem(
+                    folder: .audio, fileName: unique("\(base).wav", in: &audioNames),
+                    description: "Added sound “\(track.name)”, laid out like the edit, with its level and fades",
+                    work: .audio(laid, duration: length, channels: 2, aac: false),
+                    treatment: .audio("WAV, 48 kHz, 24-bit (decoded, no quality lost)"), // l10n-ignore: technical
+                    duration: length, frameRate: nil, startOffset: options.lineUp ? 0 : first,
+                    estimatedBytes: Int64(length * 48_000 * 3 * 2)
+                ))
+            } else {
+                items.append(VideoHandoffItem(
+                    folder: .audio, fileName: unique(track.url.lastPathComponent, in: &audioNames),
+                    description: track.lockedToRecording ? "Added sound “\(track.name)”, as it was added (synced to the recording)" : "Added sound “\(track.name)”, as it was added (placed on the edit's timeline)",
+                    work: .copy(track.url), treatment: .original, duration: track.duration, frameRate: nil,
+                    startOffset: track.lockedToRecording ? track.pieces.first.map { $0.at - $0.fileStart } : nil, estimatedBytes: fileSize(track.url)
                 ))
             }
         }
@@ -568,6 +605,9 @@ enum VideoHandoffPlanner {
         }
         if let music = input.project.music, FileManager.default.fileExists(atPath: music.path), mapping[URL(fileURLWithPath: music.path).standardizedFileURL.path] == nil {
             needed.append((URL(fileURLWithPath: music.path), .audio, "The original song, for the LF Studios project"))
+        }
+        for track in input.project.audioTracks where FileManager.default.fileExists(atPath: track.path) && mapping[track.url.standardizedFileURL.path] == nil {
+            needed.append((track.url, .audio, "The added sound “\(track.name)” as it was added, for the LF Studios project"))
         }
         var seen = Set<String>()
         needed = needed.filter { seen.insert($0.url.standardizedFileURL.path).inserted }

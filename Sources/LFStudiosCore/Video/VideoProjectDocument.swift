@@ -224,6 +224,7 @@ struct VideoProjectContents {
         }
         if project.importedCamera != nil { map(&project.importedCamera!.path, .camera) }
         if project.music != nil { map(&project.music!.path, .audio) }
+        for index in project.audioTracks.indices { map(&project.audioTracks[index].path, .audio) }
         if project.cursor.customImage != nil { map(&project.cursor.customImage!.path, .graphic) }
         for index in project.overlayEffects.indices where project.overlayEffects[index].image != nil {
             map(&project.overlayEffects[index].image!.path, .graphic)
@@ -405,10 +406,18 @@ enum VideoProjectPackage {
             }
             let subfolder = root.appendingPathComponent(kind.folder, isDirectory: true)
             try fm.createDirectory(at: subfolder, withIntermediateDirectories: true)
-            let destination = VideoRecordingFolder.uniqueFile(named: url.lastPathComponent, in: subfolder)
-            try fm.copyItem(at: url, to: destination)
-            if videoExtensions.contains(destination.pathExtension.lowercased()) {
-                _ = VideoFileIdentity.restamp(destination)
+            // Copied on an earlier save (the editor keeps its own copy and
+            // writes the folder's project again after edits): reused, never
+            // copied twice.
+            let destination: URL
+            if let copied = existingCopy(of: url, in: subfolder) {
+                destination = copied
+            } else {
+                destination = VideoRecordingFolder.uniqueFile(named: url.lastPathComponent, in: subfolder)
+                try fm.copyItem(at: url, to: destination)
+                if videoExtensions.contains(destination.pathExtension.lowercased()) {
+                    _ = VideoFileIdentity.restamp(destination)
+                }
             }
             references[path] = VideoProjectDocument.folderPrefix + "\(kind.folder)/\(destination.lastPathComponent)"
             if let bookmark = try? url.bookmarkData(options: [], includingResourceValuesForKeys: nil, relativeTo: nil) {
@@ -442,6 +451,20 @@ enum VideoProjectPackage {
         )
         try document.encoded().write(to: manifestURL(package), options: .atomic)
         return document
+    }
+
+    /// A file in `folder` with `original`'s name (or "name 2"…) and the same
+    /// size and contents.
+    private static func existingCopy(of original: URL, in folder: URL) -> URL? {
+        let fm = FileManager.default
+        let base = original.deletingPathExtension().lastPathComponent
+        let ext = original.pathExtension.lowercased()
+        guard let size = fileInfo(original)?.size else { return nil }
+        let candidates = ((try? fm.contentsOfDirectory(at: folder, includingPropertiesForKeys: [.fileSizeKey])) ?? []).filter { candidate in
+            let name = candidate.deletingPathExtension().lastPathComponent
+            return candidate.pathExtension.lowercased() == ext && (name == base || name.hasPrefix(base + " ")) && fileInfo(candidate)?.size == size
+        }
+        return candidates.first { fm.contentsEqual(atPath: $0.path, andPath: original.path) }
     }
 
     struct Opened {

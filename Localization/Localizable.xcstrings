@@ -1911,42 +1911,42 @@
         }
       }
     },
-    "%@ — separate sound files open as their own tracks in LF Studios 1.7" : {
+    "%@ — this Mac can't play it" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ – einzelne Tondateien öffnen sich in LF Studios 1.7 als eigene Spuren"
+            "value" : "%@ – dieser Mac kann sie nicht abspielen"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ — les fichiers son séparés s’ouvrent comme pistes distinctes dans LF Studios 1.7"
+            "value" : "%@ — ce Mac ne peut pas le lire"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ — 別々のサウンドファイルは、LF Studios 1.7でそれぞれ独自のトラックとして開けるようになります"
+            "value" : "%@ — このMacでは再生できません"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ — отдельные звуковые файлы открываются как свои дорожки в LF Studios 1.7"
+            "value" : "%@ — этот Mac не может это воспроизвести"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ — окремі звукові файли відкриватимуться як власні доріжки в LF Studios 1.7"
+            "value" : "%@ — цей Mac не може його відтворити"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ — 在 LF Studios 1.7 中，单独的声音文件会作为独立的轨道打开"
+            "value" : "%@ — 这台 Mac 无法播放"
           }
         }
       }
@@ -2104,6 +2104,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@，以及另外 %lld 个"
+          }
+        }
+      }
+    },
+    "%@, as its own track" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@, als eigene Spur"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@, sur sa propre piste"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@（専用のトラック）"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ — отдельной дорожкой"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ — окремою доріжкою"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@，作为单独的轨道"
           }
         }
       }
@@ -7629,6 +7669,46 @@
         }
       }
     },
+    "A new track sits on the edit's timeline, where you put it. After Sync by sound it follows the recording instead." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eine neue Spur liegt auf der Zeitleiste des Schnitts, dort, wo du sie hinlegst. Nach „Am Ton ausrichten“ folgt sie stattdessen der Aufnahme."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Une nouvelle piste reste sur la timeline du montage, là où vous la placez. Après Synchroniser par le son, elle suit plutôt l’enregistrement."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新しいトラックは、編集のタイムライン上の置いた位置にとどまります。“音声で同期”のあとは、収録に合わせて動くようになります。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Новая дорожка стоит на шкале времени монтажа там, куда вы ее поместили. После «Синхронизировать по звуку» она следует за записью."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нова доріжка стоїть на шкалі часу монтажу там, де ви її поставили. Після «Синхронізувати за звуком» вона натомість іде за записом."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新轨道位于剪辑的时间线上你放置的位置。使用“按声音同步”后，它会改为跟随录制内容。"
+          }
+        }
+      }
+    },
     "A preset saves the background, frame, cursor, zooms, captions, keys, and camera. Tick Include aspect ratio to save the shape too." : {
       "localizations" : {
         "de" : {
@@ -9992,6 +10072,46 @@
         }
       }
     },
+    "Add a voiceover, a separate microphone, or a sound effect. Each file is its own track on the timeline." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Füge einen Sprechertext, ein separates Mikrofon oder einen Soundeffekt hinzu. Jede Datei ist eine eigene Spur auf der Zeitleiste."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajoutez une voix off, un micro séparé ou un effet sonore. Chaque fichier a sa propre piste sur la timeline."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ナレーション、別のマイクの音声、効果音を追加します。各ファイルがタイムライン上でそれぞれ専用のトラックになります。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавьте закадровый голос, запись с отдельного микрофона или звуковой эффект. Каждый файл — отдельная дорожка на шкале времени."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Додайте закадровий голос, окремий мікрофон чи звуковий ефект. Кожен файл — окрема доріжка на шкалі часу."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "添加旁白、单独麦克风的录音或音效。每个文件都是时间线上的一条单独轨道。"
+          }
+        }
+      }
+    },
     "Add a zoom" : {
       "localizations" : {
         "de" : {
@@ -10228,6 +10348,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "在播放头处添加箭头（A）"
+          }
+        }
+      }
+    },
+    "Add audio…" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Audio hinzufügen …"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouter de l’audio…"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オーディオを追加…"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавить аудио…"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Додати аудіо…"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "添加音频…"
           }
         }
       }
@@ -10792,6 +10952,46 @@
         }
       }
     },
+    "Add sound files" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tondateien hinzufügen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouter des fichiers audio"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サウンドファイルを追加"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавление звуковых файлов"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Додати звукові файли"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "添加声音文件"
+          }
+        }
+      }
+    },
     "Add spotlight at the playhead" : {
       "localizations" : {
         "de" : {
@@ -11113,6 +11313,46 @@
         }
       }
     },
+    "Added %lld sound files as tracks" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld Tondateien als Spuren hinzugefügt"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld fichiers audio ajoutés en pistes"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld個のサウンドファイルをトラックとして追加しました"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавлено звуковых файлов в виде дорожек: %lld"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Звукові файли додано як доріжки: %lld"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已将 %lld 个声音文件添加为轨道"
+          }
+        }
+      }
+    },
     "Added %lld typing zooms — ⌘Z to undo" : {
       "localizations" : {
         "de" : {
@@ -11243,6 +11483,166 @@
         }
       }
     },
+    "Added sound" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hinzugefügter Ton"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Son ajouté"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "追加したサウンド"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавленный звук"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Доданий звук"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "添加的声音"
+          }
+        }
+      }
+    },
+    "Added sound is in the export, Full Mix, Creative Handoff, and the timeline files, and saved in a recording's folder (03 Audio)." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hinzugefügter Ton ist im Export, in Full Mix, in der Kreativen Übergabe und in den Timeline-Dateien enthalten und wird im Ordner einer Aufnahme gesichert (03 Audio)."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le son ajouté figure dans l’export, Full Mix, la Transmission créative et les fichiers de timeline, et il est enregistré dans le dossier de l’enregistrement (03 Audio)."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "追加したサウンドは、書き出したビデオ、Full Mix、クリエイティブ受け渡し、タイムラインファイルに含まれ、収録のフォルダ（03 Audio）にも保存されます。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавленный звук попадает в экспорт, Full Mix, «Творческую передачу» и файлы шкалы времени и сохраняется в папке записи (03 Audio)."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Доданий звук потрапляє в експорт, Full Mix, «Творче передавання» і файли таймлайну, а також зберігається в папці запису (03 Audio)."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“添加的声音”会包含在导出内容、Full Mix、创意交付和时间线文件中，并存储在录制内容的文件夹（03 Audio）中。"
+          }
+        }
+      }
+    },
+    "Added sound “%@”" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hinzugefügter Ton „%@“"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Son ajouté « %@ »"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "追加したサウンド“%@”"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавленный звук «%@»"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Доданий звук «%@»"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "添加的声音“%@”"
+          }
+        }
+      }
+    },
+    "Added sound “%@” — the file is missing" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hinzugefügter Ton „%@“ – die Datei fehlt"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Son ajouté « %@ » — le fichier est introuvable"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "追加したサウンド“%@” — ファイルが見つかりません"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавленный звук «%@» — файл не найден"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Доданий звук «%@» — файл відсутній"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "添加的声音“%@” — 文件不见了"
+          }
+        }
+      }
+    },
     "Added to LF Studios" : {
       "comment" : "Font menu section: fonts added from files",
       "localizations" : {
@@ -11321,6 +11721,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "已添加“%@”"
+          }
+        }
+      }
+    },
+    "Added “%@” as its own track" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "„%@“ als eigene Spur hinzugefügt"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "« %@ » ajouté sur sa propre piste"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%@”を専用のトラックとして追加しました"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "«%@» добавлен отдельной дорожкой"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "«%@» додано окремою доріжкою"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已将“%@”添加为单独的轨道"
           }
         }
       }
@@ -13520,42 +13960,42 @@
         }
       }
     },
-    "Any other folder: Import Folder lists the videos. Choose which is the screen recording and which the camera, and when the camera starts." : {
+    "Any other folder: Import Folder lists the videos and sound files. Choose which is the screen recording, which the camera, and which sound to add as tracks, and when each starts." : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Jeder andere Ordner: „Ordner importieren“ listet die Videos auf. Wähle, welches die Bildschirmaufnahme und welches die Kamera ist und wann die Kamera beginnt."
+            "value" : "Jeder andere Ordner: „Ordner importieren“ listet die Videos und Tondateien auf. Wähle, welche die Bildschirmaufnahme ist, welche die Kamera und welchen Ton du als Spuren hinzufügen willst, und wann jede beginnt."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tout autre dossier : Importer le dossier liste les vidéos. Indiquez laquelle est l’enregistrement de l’écran, laquelle est la caméra, et quand la caméra commence."
+            "value" : "Tout autre dossier : Importer le dossier liste les vidéos et les fichiers audio. Choisissez lequel est l’enregistrement de l’écran, lequel est la caméra, quels sons ajouter en pistes, et quand chacun commence."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "それ以外のフォルダ: “フォルダを読み込む”にビデオが一覧表示されます。どれが画面収録でどれがカメラ映像か、そしてカメラがいつ始まるかを選びます。"
+            "value" : "そのほかのフォルダ: “フォルダを読み込む”でビデオとサウンドファイルが一覧表示されます。どれが画面収録で、どれがカメラか、どのサウンドをトラックとして追加するか、それぞれの開始位置を選びます。"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Любая другая папка: «Импортировать папку» покажет список видео. Выберите, какое из них — запись экрана, а какое — камера, и когда начинается камера."
+            "value" : "Любая другая папка: «Импортировать папку» показывает список видео и звуковых файлов. Выберите, что из них запись экрана, что камера и какой звук добавить дорожками, а также когда начинается каждый файл."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Будь-яка інша папка: «Імпорт папки» показує список відео. Виберіть, яке з них — запис екрана, а яке — камера, і коли камера починається."
+            "value" : "Будь-яка інша папка: «Імпорт папки» показує список відео та звукових файлів. Виберіть, що з них запис екрана, що — відео з камери, який звук додати як доріжки і коли кожен починається."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "其他任何文件夹：“导入文件夹”会列出其中的视频。选择哪个是屏幕录制内容、哪个是摄像头视频，以及摄像头何时开始。"
+            "value" : "其他任何文件夹：“导入文件夹”会列出其中的视频和声音文件。选择哪个是屏幕录制、哪个是摄像头视频、哪些声音要添加为轨道，以及每个文件从何时开始。"
           }
         }
       }
@@ -15087,6 +15527,86 @@
         }
       }
     },
+    "Audio panel ▸ Added sound ▸ Add audio…, or drop sound files on the timeline." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Panel „Audio“ ▸ Hinzugefügter Ton ▸ Audio hinzufügen …, oder zieh Tondateien auf die Zeitleiste."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Panneau Audio ▸ Son ajouté ▸ Ajouter de l’audio…, ou déposez des fichiers audio sur la timeline."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“オーディオ”パネル＞“追加したサウンド”＞“オーディオを追加…”、またはタイムラインにサウンドファイルをドロップ。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Панель «Аудио» ▸ Добавленный звук ▸ Добавить аудио… — или перетяните звуковые файлы на шкалу времени."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Панель «Аудіо» ▸ Доданий звук ▸ Додати аудіо…, або перетягніть звукові файли на шкалу часу."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“音频”面板 ▸ 添加的声音 ▸ 添加音频…，或将声音文件拖放到时间线上。"
+          }
+        }
+      }
+    },
+    "Audio panel ▸ Added sound ▸ the track ▸ Use as my voice." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Panel „Audio“ ▸ Hinzugefügter Ton ▸ die Spur ▸ Als meine Stimme nutzen."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Panneau Audio ▸ Son ajouté ▸ la piste ▸ Utiliser comme ma voix."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“オーディオ”パネル＞“追加したサウンド”＞トラック＞“自分の声として使う”。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Панель «Аудио» ▸ Добавленный звук ▸ дорожка ▸ Использовать как мой голос."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Панель «Аудіо» ▸ Доданий звук ▸ доріжка ▸ Використати як мій голос."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“音频”面板 ▸ 添加的声音 ▸ 该轨道 ▸ 用作我的人声。"
+          }
+        }
+      }
+    },
     "Audio panel ▸ Click sounds ▸ Play a click on each click." : {
       "localizations" : {
         "de" : {
@@ -15323,6 +15843,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "“音频”面板 ▸ 人声 ▸ 增强人声。"
+          }
+        }
+      }
+    },
+    "Audio track" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Audiospur"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Piste audio"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オーディオトラック"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Аудиодорожка"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Аудіодоріжка"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "音频轨道"
           }
         }
       }
@@ -20768,6 +21328,86 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "无法同步 — 录制内容或摄像头视频没有声音"
+          }
+        }
+      }
+    },
+    "Can't sync — the recording or “%@” has no sound" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Synchronisieren nicht möglich – die Aufnahme oder „%@“ hat keinen Ton"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Synchronisation impossible : l’enregistrement ou « %@ » n’a pas de son"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "同期できません — 収録または“%@”に音声がありません"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удалось синхронизировать — у записи или «%@» нет звука"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не вдається синхронізувати — у записі чи в «%@» немає звуку"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无法同步 — 录制内容或“%@”没有声音"
+          }
+        }
+      }
+    },
+    "Can't sync — their sound doesn't match clearly enough. Drag the track into place instead." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Synchronisieren nicht möglich – der Ton passt nicht deutlich genug zusammen. Zieh die Spur stattdessen an ihren Platz."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Synchronisation impossible : leurs sons ne correspondent pas assez nettement. Faites plutôt glisser la piste à sa place."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "同期できません — 音声が十分に一致しません。代わりにトラックをドラッグして位置を合わせてください。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удалось синхронизировать — звук совпадает недостаточно чётко. Перетяните дорожку на место вручную."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не вдається синхронізувати — звук не збігається достатньо чітко. Натомість перетягніть доріжку на місце."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无法同步 — 两者的声音匹配得不够清楚。请改为将轨道拖到合适的位置。"
           }
         }
       }
@@ -26512,6 +27152,46 @@
         }
       }
     },
+    "Choose sound files to add as tracks of their own" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wähle Tondateien, die als eigene Spuren hinzugefügt werden"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choisissez des fichiers audio à ajouter sur leurs propres pistes"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "専用のトラックとして追加するサウンドファイルを選択してください"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выберите звуковые файлы, чтобы добавить их отдельными дорожками"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Виберіть звукові файли, щоб додати їх окремими доріжками"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择要添加为单独轨道的声音文件"
+          }
+        }
+      }
+    },
     "Choose the Language you speak in the recording." : {
       "localizations" : {
         "de" : {
@@ -26632,42 +27312,42 @@
         }
       }
     },
-    "Choose the screen recording, and the camera video if there is one. Nothing in the folder changes until you save." : {
+    "Choose the screen recording, the camera video if there is one, and the sound files to add as tracks. Nothing in the folder changes until you save." : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wähle die Bildschirmaufnahme und, falls vorhanden, das Kameravideo. Im Ordner ändert sich nichts, bis du sicherst."
+            "value" : "Wähle die Bildschirmaufnahme, das Kameravideo, falls vorhanden, und die Tondateien, die als Spuren hinzugefügt werden. Im Ordner ändert sich nichts, bis du sicherst."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Choisissez l’enregistrement de l’écran, et la vidéo de la caméra s’il y en a une. Rien ne change dans le dossier tant que vous n’enregistrez pas."
+            "value" : "Choisissez l’enregistrement de l’écran, la vidéo de caméra s’il y en a une, et les fichiers audio à ajouter en pistes. Rien ne change dans le dossier tant que vous n’enregistrez pas."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "画面収録と、あればカメラ映像を選択します。保存するまで、フォルダ内は何も変更されません。"
+            "value" : "画面収録、カメラ映像（ある場合）、トラックとして追加するサウンドファイルを選びます。保存するまで、フォルダ内は何も変更されません。"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Выберите запись экрана и, если есть, видео с камеры. В папке ничего не изменится, пока вы не сохраните."
+            "value" : "Выберите запись экрана, видео с камеры, если оно есть, и звуковые файлы, которые нужно добавить дорожками. До сохранения в папке ничего не меняется."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Виберіть запис екрана і, якщо є, відео з камери. Нічого в папці не зміниться, доки ви не збережете."
+            "value" : "Виберіть запис екрана, відео з камери (якщо воно є) і звукові файли, які слід додати як доріжки. Поки ви не збережете, у папці нічого не зміниться."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "选择屏幕录制内容，以及摄像头视频（如果有）。在你存储之前，文件夹中的内容不会有任何改变。"
+            "value" : "选择屏幕录制、摄像头视频（如果有）以及要添加为轨道的声音文件。存储之前，文件夹中的任何内容都不会改变。"
           }
         }
       }
@@ -28110,6 +28790,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "点按“添加放大镜”。"
+          }
+        }
+      }
+    },
+    "Click Add audio… and choose one or more files: MP3, WAV, M4A, AAC, AIFF, FLAC, or CAF." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klicke auf „Audio hinzufügen …“ und wähle eine oder mehrere Dateien: MP3, WAV, M4A, AAC, AIFF, FLAC oder CAF."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cliquez sur Ajouter de l’audio… et choisissez un ou plusieurs fichiers : MP3, WAV, M4A, AAC, AIFF, FLAC ou CAF."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“オーディオを追加…”をクリックし、1つ以上のファイルを選びます: MP3、WAV、M4A、AAC、AIFF、FLAC、CAF。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нажмите «Добавить аудио…» и выберите один или несколько файлов: MP3, WAV, M4A, AAC, AIFF, FLAC или CAF."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Клацніть «Додати аудіо…» й виберіть один чи кілька файлів: MP3, WAV, M4A, AAC, AIFF, FLAC чи CAF."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "点按“添加音频…”，然后选择一个或多个文件：MP3、WAV、M4A、AAC、AIFF、FLAC 或 CAF。"
           }
         }
       }
@@ -39685,6 +40405,86 @@
         }
       }
     },
+    "Dip under voice" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unter Stimme absenken"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Baisser sous la voix"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "声に合わせて音量を下げる"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Приглушать при речи"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Стишувати під голос"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "人声时降低"
+          }
+        }
+      }
+    },
+    "Dip under voice: an added track (like background sound) gets quieter while you talk. It's off until you turn it on." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unter Stimme absenken: Eine hinzugefügte Spur (etwa Hintergrundton) wird leiser, während du sprichst. Es ist aus, bis du es einschaltest."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Baisser sous la voix : une piste ajoutée (comme un son d’ambiance) baisse quand vous parlez. Cette option reste désactivée tant que vous ne l’activez pas."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“声に合わせて音量を下げる”: 追加したトラック（背景音など）の音量が、話している間は下がります。オンにするまではオフのままです。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "«Приглушать при речи»: добавленная дорожка (например, фоновый звук) становится тише, пока вы говорите. Параметр выключен, пока вы его не включите."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "«Стишувати під голос»: додана доріжка (наприклад, фоновий звук) стає тихішою, коли ви говорите. Вимкнено, доки ви це не ввімкнете."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "人声时降低：添加的轨道（如背景声音）会在你说话时变小声。打开之前，此功能保持关闭。"
+          }
+        }
+      }
+    },
     "Dips while you talk, comes back in the pauses" : {
       "localizations" : {
         "de" : {
@@ -42776,6 +43576,46 @@
         }
       }
     },
+    "Drag the track on the timeline to move it; drag an edge to trim it; click it and press S to split it, or ⌫ to delete a piece." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zieh die Spur auf der Zeitleiste, um sie zu verschieben; zieh einen Rand, um sie zu trimmen; klicke sie an und drück S, um sie zu teilen, oder ⌫, um ein Stück zu löschen."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Faites glisser la piste sur la timeline pour la déplacer ; faites glisser un bord pour l’ajuster ; cliquez dessus et appuyez sur S pour la scinder, ou sur ⌫ pour supprimer un morceau."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "タイムライン上でトラックをドラッグすると移動、端をドラッグするとトリミングできます。クリックしてSキーを押すと分割、⌫キーを押すとその部分を削除できます。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Перетяните дорожку на шкале времени, чтобы переместить ее; тяните за край, чтобы подрезать; нажмите на нее и нажмите S, чтобы разделить, или ⌫, чтобы удалить фрагмент."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Перетягуйте доріжку на шкалі часу, щоб перемістити її; тягніть край, щоб підрізати; клацніть її й натисніть S, щоб розділити, або ⌫, щоб видалити частину."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在时间线上拖移轨道可移动它；拖移边缘可修剪它；点按它后按下 S 可分割，按下 ⌫ 可删除其中一段。"
+          }
+        }
+      }
+    },
     "Drag the zoom's edges on the timeline to set its length." : {
       "localizations" : {
         "de" : {
@@ -43574,6 +44414,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "黄昏"
+          }
+        }
+      }
+    },
+    "Each file is its own track: drag it on the timeline, trim its ends, split it with S. MP3, WAV, M4A, AAC, AIFF, FLAC, or CAF — or drop files on the timeline." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jede Datei ist eine eigene Spur: Zieh sie auf der Zeitleiste, trimme ihre Enden, teile sie mit S. MP3, WAV, M4A, AAC, AIFF, FLAC oder CAF – oder zieh Dateien auf die Zeitleiste."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chaque fichier a sa propre piste : faites-la glisser sur la timeline, ajustez ses extrémités, scindez-la avec S. MP3, WAV, M4A, AAC, AIFF, FLAC ou CAF — ou déposez des fichiers sur la timeline."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "各ファイルが専用のトラックになります: タイムライン上でドラッグ、両端をトリミング、Sキーで分割できます。MP3、WAV、M4A、AAC、AIFF、FLAC、CAFに対応。タイムラインにファイルをドロップしても追加できます。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Каждый файл — отдельная дорожка: перетаскивайте ее по шкале времени, подрезайте края, разделяйте клавишей S. MP3, WAV, M4A, AAC, AIFF, FLAC или CAF — или перетяните файлы на шкалу времени."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кожен файл — окрема доріжка: перетягуйте її на шкалі часу, підрізайте краї, розділяйте клавішею S. MP3, WAV, M4A, AAC, AIFF, FLAC чи CAF — або перетягніть файли на шкалу часу."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "每个文件都是一条单独轨道：在时间线上拖移它、修剪两端、按 S 分割。支持 MP3、WAV、M4A、AAC、AIFF、FLAC 或 CAF — 也可以将文件拖放到时间线上。"
           }
         }
       }
@@ -51322,6 +52202,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "跟随指针"
+          }
+        }
+      }
+    },
+    "Follows the recording" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Folgt der Aufnahme"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suit l’enregistrement"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "収録に合わせて移動"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Следует за записью"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Іде за записом"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "跟随录制内容"
           }
         }
       }
@@ -59145,6 +60065,46 @@
         }
       }
     },
+    "In place of the recording's microphone — Enhance voice and Podcast mode clean it up" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anstelle des Mikrofons der Aufnahme – „Stimme verbessern“ und der Podcast-Modus bereinigen sie"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "À la place du micro de l’enregistrement — Améliorer la voix et Mode podcast le nettoient"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "収録のマイクの代わりに使います。“声を補正”と“ポッドキャストモード”で音声を整えられます"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вместо микрофона записи — «Улучшение голоса» и «Режим подкаста» очищают ее"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Замість мікрофона запису — «Покращити голос» і «Режим подкасту» очищують його"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "替代录制内容的麦克风声音 — 由“增强人声”和“播客模式”进行清理"
+          }
+        }
+      }
+    },
     "In the Style panel, open Presets and choose Save as Preset…." : {
       "localizations" : {
         "de" : {
@@ -66951,6 +67911,46 @@
         }
       }
     },
+    "Line it up with the recording's own sound; then it follows your cuts" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Am Ton der Aufnahme ausrichten; danach folgt sie deinen Schnitten"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L’aligner sur le son de l’enregistrement ; elle suit ensuite vos coupes"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "収録自体の音声に合わせて位置をそろえます。その後はカットに合わせて動きます"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Совместить со звуком записи — затем дорожка будет следовать за вашими склейками"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вирівняти за власним звуком запису; далі доріжка враховує ваші вирізання"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "与录制内容本身的声音对齐，之后会跟随你的剪切"
+          }
+        }
+      }
+    },
     "Line width" : {
       "localizations" : {
         "de" : {
@@ -71364,6 +72364,46 @@
         }
       }
     },
+    "Move the playhead into the sound to split it" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bewege die Abspielposition in den Ton, um ihn zu teilen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Placez la tête de lecture dans le son pour le scinder"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "分割するには、再生ヘッドをサウンドの範囲内に移動してください"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поставьте указатель воспроизведения внутрь звука, чтобы разделить его"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Перемістіть покажчик відтворення в межі звуку, щоб розділити його"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "将播放头移到声音范围内即可分割"
+          }
+        }
+      }
+    },
     "Move the playhead to where it should appear." : {
       "localizations" : {
         "de" : {
@@ -72122,6 +73162,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "音乐“%@” — 文件不见了"
+          }
+        }
+      }
+    },
+    "Mute" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stumm"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couper le son"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "消音"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Без звука"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вимкнути звук"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "静音"
           }
         }
       }
@@ -77614,6 +78694,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "在 macOS 15 及更早版本上：在“语音识别”中允许 LF Studios，并在“系统设置 ▸ 键盘”中为该语言打开“听写”。"
+          }
+        }
+      }
+    },
+    "On the edit's timeline" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auf der Zeitleiste des Schnitts"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sur la timeline du montage"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "編集のタイムライン上"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "На шкале времени монтажа"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "На шкалі часу монтажу"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "位于剪辑的时间线上"
           }
         }
       }
@@ -86889,6 +88009,46 @@
         }
       }
     },
+    "Quieter while you talk" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leiser, während du sprichst"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Baisse quand vous parlez"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "話している間は音量を下げる"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тише, пока вы говорите"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тихіше, коли ви говорите"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "说话时变小声"
+          }
+        }
+      }
+    },
     "Quit & Reopen" : {
       "localizations" : {
         "de" : {
@@ -88847,6 +90007,86 @@
         }
       }
     },
+    "Recorded at the same time as the video? Click Sync by sound: it lines up with the recording and follows your cuts from then on." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gleichzeitig mit dem Video aufgenommen? Klicke auf „Am Ton ausrichten“: Die Spur wird an der Aufnahme ausgerichtet und folgt ab dann deinen Schnitten."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enregistré en même temps que la vidéo ? Cliquez sur Synchroniser par le son : la piste s’aligne sur l’enregistrement et suit ensuite vos coupes."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ビデオと同時に録音した場合は、“音声で同期”をクリックします。収録に合わせて位置がそろい、以降はカットに合わせて動きます。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Записано одновременно с видео? Нажмите «Синхронизировать по звуку»: дорожка совместится с записью и дальше будет следовать за вашими склейками."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Записано одночасно з відео? Клацніть «Синхронізувати за звуком»: доріжка вирівняється із записом і відтоді враховуватиме ваші вирізання."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "与视频同时录制的？点按“按声音同步”：它会与录制内容对齐，此后跟随你的剪切。"
+          }
+        }
+      }
+    },
+    "Recorded your voice separately, or re-recorded it? Use that file in place of the recording's microphone." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deine Stimme separat oder neu aufgenommen? Nutze diese Datei anstelle des Mikrofons der Aufnahme."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous avez enregistré votre voix à part, ou vous l’avez réenregistrée ? Utilisez ce fichier à la place du micro de l’enregistrement."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "声を別に録音した場合や録り直した場合は、そのファイルを収録のマイクの代わりに使えます。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Записали голос отдельно или перезаписали его? Используйте этот файл вместо микрофона записи."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Записали голос окремо чи перезаписали його? Використайте цей файл замість мікрофона запису."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "单独录了人声，或者重新录了一遍？用那个文件替代录制内容的麦克风声音。"
+          }
+        }
+      }
+    },
     "Recording" : {
       "comment" : "The recording HUD's status, before its details load",
       "localizations" : {
@@ -90090,6 +91330,46 @@
         }
       }
     },
+    "Redo Add Audio" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hinzufügen des Audios wiederholen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rétablir l’ajout de l’audio"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オーディオの追加をやり直す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторить добавление аудио"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторити додавання аудіо"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重做添加音频"
+          }
+        }
+      }
+    },
     "Redo Add Blur" : {
       "localizations" : {
         "de" : {
@@ -91166,6 +92446,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "重做宽高比更改"
+          }
+        }
+      }
+    },
+    "Redo Audio Track Change" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Änderung der Audiospur wiederholen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rétablir la modification de la piste audio"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オーディオトラックの変更をやり直す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторить изменение аудиодорожки"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторити зміну аудіодоріжки"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重做音频轨道更改"
           }
         }
       }
@@ -93592,6 +94912,46 @@
         }
       }
     },
+    "Redo Move Audio" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verschieben des Audios wiederholen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rétablir le déplacement de l’audio"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オーディオの移動をやり直す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторить перемещение аудио"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторити переміщення аудіо"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重做移动音频"
+          }
+        }
+      }
+    },
     "Redo Move Blur" : {
       "localizations" : {
         "de" : {
@@ -94308,6 +95668,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "重做移除所有缩放"
+          }
+        }
+      }
+    },
+    "Redo Remove Audio" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entfernen des Audios wiederholen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rétablir la suppression de l’audio"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オーディオの削除をやり直す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторить удаление аудио"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторити вилучення аудіо"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重做移除音频"
           }
         }
       }
@@ -95352,6 +96752,46 @@
         }
       }
     },
+    "Redo Split Audio" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Teilen des Audios wiederholen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rétablir la scission de l’audio"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オーディオの分割をやり直す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторить разделение аудио"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторити розділення аудіо"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重做分割音频"
+          }
+        }
+      }
+    },
     "Redo Split at Markers" : {
       "localizations" : {
         "de" : {
@@ -95508,6 +96948,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "重做样式更改"
+          }
+        }
+      }
+    },
+    "Redo Sync Audio by Sound" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ausrichten des Audios am Ton wiederholen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rétablir la synchronisation de l’audio par le son"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "音声によるオーディオの同期をやり直す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторить синхронизацию аудио по звуку"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторити синхронізацію аудіо за звуком"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重做按声音同步音频"
           }
         }
       }
@@ -95748,6 +97228,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "重做修剪"
+          }
+        }
+      }
+    },
+    "Redo Trim Audio" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trimmen des Audios wiederholen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rétablir l’ajustement de l’audio"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オーディオのトリミングをやり直す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторить подрезку аудио"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторити підрізання аудіо"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重做修剪音频"
           }
         }
       }
@@ -96720,6 +98240,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "移除片尾卡"
+          }
+        }
+      }
+    },
+    "Remove Track" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spur entfernen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supprimer la piste"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "トラックを削除"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалить дорожку"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вилучити доріжку"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "移除轨道"
           }
         }
       }
@@ -106756,6 +108316,46 @@
         }
       }
     },
+    "Set its Volume, Fade in, and Fade out, or Mute it, in the Audio panel." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stell im Panel „Audio“ Lautstärke, Einblenden und Ausblenden ein, oder schalte sie mit „Stumm“ stumm."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dans le panneau Audio, réglez son Volume, son Fondu d’entrée et son Fondu de sortie, ou utilisez Couper le son."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“オーディオ”パネルで“音量”、“フェードイン”、“フェードアウト”を設定したり、“消音”にしたりできます。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "На панели «Аудио» задайте «Громкость», «Нарастание» и «Затухание» или включите «Без звука»."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "На панелі «Аудіо» задайте «Гучність», «Поява» і «Зникнення» або «Вимкнути звук»."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在“音频”面板中设置它的“音量”“淡入”和“淡出”，或将它“静音”。"
+          }
+        }
+      }
+    },
     "Set its size, shape, border, and shadow under Loupe." : {
       "localizations" : {
         "de" : {
@@ -112146,46 +113746,6 @@
         }
       }
     },
-    "Sound files can be added as tracks of their own in LF Studios 1.7." : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tondateien lassen sich in LF Studios 1.7 als eigene Spuren hinzufügen."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Les fichiers son pourront être ajoutés comme pistes distinctes dans LF Studios 1.7."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "サウンドファイルは、LF Studios 1.7で独自のトラックとして追加できるようになります。"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Звуковые файлы можно будет добавить как отдельные дорожки в LF Studios 1.7."
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Звукові файли можна буде додати як окремі доріжки в LF Studios 1.7."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "在 LF Studios 1.7 中，声音文件可以作为独立的轨道添加。"
-          }
-        }
-      }
-    },
     "Sounds" : {
       "localizations" : {
         "de" : {
@@ -116594,6 +118154,86 @@
         }
       }
     },
+    "Sync by sound" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Am Ton ausrichten"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Synchroniser par le son"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "音声で同期"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Синхронизировать по звуку"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Синхронізувати за звуком"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "按声音同步"
+          }
+        }
+      }
+    },
+    "Sync it by sound first, so captions made from it line up with the video." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Richte sie zuerst am Ton aus, damit Untertitel daraus zum Video passen."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Synchronisez-la d’abord par le son, pour que les sous-titres qui en sont tirés soient alignés sur la vidéo."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "先に音声で同期して、そこから作成する字幕がビデオと合うようにします。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сначала синхронизируйте ее по звуку, чтобы созданные по ней субтитры совпадали с видео."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Спершу синхронізуйте її за звуком, щоб створені з неї субтитри збігалися з відео."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请先按声音同步，这样用它生成的字幕才能与视频对齐。"
+          }
+        }
+      }
+    },
     "Synced by sound — the camera starts %@" : {
       "comment" : "%@ is e.g. “0.70 s after the recording”",
       "localizations" : {
@@ -116631,6 +118271,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "已按声音同步 — 摄像头开始于%@"
+          }
+        }
+      }
+    },
+    "Synced by sound — “%@” follows the recording now" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Am Ton ausgerichtet – „%@“ folgt jetzt der Aufnahme"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Synchronisé par le son — « %@ » suit maintenant l’enregistrement"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "音声で同期しました — “%@”は収録に合わせて動くようになりました"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Синхронизировано по звуку — «%@» теперь следует за записью"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Синхронізовано за звуком — «%@» тепер іде за записом"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已按声音同步 — “%@”现在跟随录制内容"
           }
         }
       }
@@ -124653,6 +126333,46 @@
         }
       }
     },
+    "This sound file is gone — add it again." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Tondatei ist weg – füge sie erneut hinzu."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ce fichier audio a disparu — ajoutez-le à nouveau."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このサウンドファイルが見つかりません。もう一度追加してください。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Этот звуковой файл пропал — добавьте его снова."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Цього звукового файлу більше немає — додайте його знову."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "此声音文件已不存在 — 请重新添加。"
+          }
+        }
+      }
+    },
     "This video has no camera bubble" : {
       "localizations" : {
         "de" : {
@@ -126575,6 +128295,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "跟踪打字位置"
+          }
+        }
+      }
+    },
+    "Track options" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spuroptionen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Options de la piste"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "トラックのオプション"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Параметры дорожки"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Параметри доріжки"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "轨道选项"
           }
         }
       }
@@ -129780,6 +131540,46 @@
         }
       }
     },
+    "Undo Add Audio" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hinzufügen des Audios widerrufen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler l’ajout de l’audio"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オーディオの追加を取り消す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отменить добавление аудио"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Відмінити додавання аудіо"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "撤销添加音频"
+          }
+        }
+      }
+    },
     "Undo Add Blur" : {
       "localizations" : {
         "de" : {
@@ -130856,6 +132656,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "撤销宽高比更改"
+          }
+        }
+      }
+    },
+    "Undo Audio Track Change" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Änderung der Audiospur widerrufen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler la modification de la piste audio"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オーディオトラックの変更を取り消す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отменить изменение аудиодорожки"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Відмінити зміну аудіодоріжки"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "撤销音频轨道更改"
           }
         }
       }
@@ -133282,6 +135122,46 @@
         }
       }
     },
+    "Undo Move Audio" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verschieben des Audios widerrufen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler le déplacement de l’audio"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オーディオの移動を取り消す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отменить перемещение аудио"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Відмінити переміщення аудіо"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "撤销移动音频"
+          }
+        }
+      }
+    },
     "Undo Move Blur" : {
       "localizations" : {
         "de" : {
@@ -133998,6 +135878,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "撤销移除所有缩放"
+          }
+        }
+      }
+    },
+    "Undo Remove Audio" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entfernen des Audios widerrufen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler la suppression de l’audio"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オーディオの削除を取り消す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отменить удаление аудио"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Відмінити вилучення аудіо"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "撤销移除音频"
           }
         }
       }
@@ -135042,6 +136962,46 @@
         }
       }
     },
+    "Undo Split Audio" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Teilen des Audios widerrufen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler la scission de l’audio"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オーディオの分割を取り消す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отменить разделение аудио"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Відмінити розділення аудіо"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "撤销分割音频"
+          }
+        }
+      }
+    },
     "Undo Split at Markers" : {
       "localizations" : {
         "de" : {
@@ -135198,6 +137158,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "撤销样式更改"
+          }
+        }
+      }
+    },
+    "Undo Sync Audio by Sound" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ausrichten des Audios am Ton widerrufen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler la synchronisation de l’audio par le son"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "音声によるオーディオの同期を取り消す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отменить синхронизацию аудио по звуку"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Відмінити синхронізацію аудіо за звуком"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "撤销按声音同步音频"
           }
         }
       }
@@ -135438,6 +137438,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "撤销修剪"
+          }
+        }
+      }
+    },
+    "Undo Trim Audio" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trimmen des Audios widerrufen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler l’ajustement de l’audio"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オーディオのトリミングを取り消す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отменить подрезку аудио"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Відмінити підрізання аудіо"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "撤销修剪音频"
           }
         }
       }
@@ -136442,6 +138482,46 @@
         }
       }
     },
+    "Use a sound file as your voice" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eine Tondatei als deine Stimme nutzen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utiliser un fichier audio comme votre voix"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サウンドファイルを声として使う"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Звуковой файл в качестве голоса"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Звуковий файл як ваш голос"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "将声音文件用作你的人声"
+          }
+        }
+      }
+    },
     "Use any font on your Mac for captions, title cards, text, and keys, or add your own." : {
       "localizations" : {
         "de" : {
@@ -136518,6 +138598,86 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "用作我的风格"
+          }
+        }
+      }
+    },
+    "Use as my voice" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Als meine Stimme nutzen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utiliser comme ma voix"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自分の声として使う"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Использовать как мой голос"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Використати як мій голос"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "用作我的人声"
+          }
+        }
+      }
+    },
+    "Use as my voice: the recording's microphone goes quiet and this track is the voice. Enhance voice and Podcast mode clean it up, and the music dips under it." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Als meine Stimme nutzen: Das Mikrofon der Aufnahme verstummt, und diese Spur ist die Stimme. „Stimme verbessern“ und der Podcast-Modus bereinigen sie, und die Musik wird darunter leiser."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utiliser comme ma voix : le micro de l’enregistrement se tait et cette piste devient la voix. Améliorer la voix et Mode podcast la nettoient, et la musique baisse sous elle."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“自分の声として使う”: 収録のマイクは無音になり、このトラックが声になります。“声を補正”と“ポッドキャストモード”で音声が整えられ、音楽は声に合わせて音量が下がります。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "«Использовать как мой голос»: микрофон записи затихает, а голосом становится эта дорожка. «Улучшение голоса» и «Режим подкаста» очищают ее, а музыка под ней приглушается."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "«Використати як мій голос»: мікрофон запису замовкає, а голосом стає ця доріжка. «Покращити голос» і «Режим подкасту» очищують її, а музика стишується під неї."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "用作我的人声：录制内容的麦克风声音会静音，由这条轨道作为人声。“增强人声”和“播客模式”会对它进行清理，音乐也会在它出现时降低音量。"
           }
         }
       }
@@ -146262,6 +148422,46 @@
         }
       }
     },
+    "“%@” isn't a sound file this Mac can play" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "„%@“ ist keine Tondatei, die dieser Mac abspielen kann"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "« %@ » n’est pas un fichier audio que ce Mac peut lire"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%@”は、このMacで再生できるサウンドファイルではありません"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "«%@» — не звуковой файл, который может воспроизвести этот Mac"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "«%@» — не звуковий файл, який може відтворити цей Mac"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%@”不是这台 Mac 可以播放的声音文件"
+          }
+        }
+      }
+    },
     "“%@” isn't at %@ anymore. Put it back, or save the project with Include Media next time so it carries its own copy." : {
       "localizations" : {
         "de" : {
@@ -146498,6 +148698,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "“%@”限制此窗口最大为 %@ × %@ 像素，因此无法调整为 %@ × %@。"
+          }
+        }
+      }
+    },
+    "“%@” — drag to move, drag an edge to trim, click to change it in Audio" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "„%@“ – ziehen zum Verschieben, Rand ziehen zum Trimmen, klicken zum Ändern in „Audio“"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "« %@ » — faites glisser pour déplacer, faites glisser un bord pour ajuster, cliquez pour modifier dans Audio"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%@”: ドラッグで移動、端をドラッグでトリミング、クリックで“オーディオ”で変更"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "«%@» — перетяните, чтобы переместить, тяните за край, чтобы подрезать, нажмите, чтобы изменить во вкладке «Аудио»"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "«%@» — перетягніть, щоб перемістити, тягніть край, щоб підрізати, клацніть, щоб змінити на панелі «Аудіо»"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%@” — 拖移可移动，拖移边缘可修剪，点按可在“音频”中更改"
           }
         }
       }

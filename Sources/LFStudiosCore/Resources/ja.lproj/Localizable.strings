@@ -96,14 +96,16 @@
 	<string>%@ — 行が字幕と一致しません</string>
 	<key>%@ — only one camera video can be shown</key>
 	<string>%@ — 表示できるカメラ映像は1つだけです</string>
-	<key>%@ — separate sound files open as their own tracks in LF Studios 1.7</key>
-	<string>%@ — 別々のサウンドファイルは、LF Studios 1.7でそれぞれ独自のトラックとして開けるようになります</string>
+	<key>%@ — this Mac can't play it</key>
+	<string>%@ — このMacでは再生できません</string>
 	<key>%@ → %@ — the part you ⇧-dragged on the timeline</key>
 	<string>%@ → %@（タイムラインで⇧ドラッグした部分）</string>
 	<key>%@, %@</key>
 	<string>%@、%@</string>
 	<key>%@, and %lld more</key>
 	<string>%@、ほか%lld件</string>
+	<key>%@, as its own track</key>
+	<string>%@（専用のトラック）</string>
 	<key>%@: %@</key>
 	<string>%@: %@</string>
 	<key>%@s</key>
@@ -244,6 +246,8 @@
 	<string>1か所を拡大し、ほかの部分はそのまま表示します。</string>
 	<key>A new recording opens just as you recorded it. Zooms, backgrounds, and effects stay off until you turn them on.</key>
 	<string>新しい収録は、収録したままの状態で開きます。ズーム、背景、効果は、オンにするまでオフのままです。</string>
+	<key>A new track sits on the edit's timeline, where you put it. After Sync by sound it follows the recording instead.</key>
+	<string>新しいトラックは、編集のタイムライン上の置いた位置にとどまります。“音声で同期”のあとは、収録に合わせて動くようになります。</string>
 	<key>A preset saves the background, frame, cursor, zooms, captions, keys, and camera. Tick Include aspect ratio to save the shape too.</key>
 	<string>プリセットには、背景、枠、ポインタ、ズーム、字幕、キー表示、カメラが保存されます。形も保存するには、“アスペクト比を含める”にチェックを付けます。</string>
 	<key>A report helps fix this. You'll see everything before it's sent, and it never includes your screenshots or recordings.</key>
@@ -362,6 +366,8 @@
 	<string>別の言語の字幕をもう1組追加します。</string>
 	<key>Add a title card before the video and a closing card after it.</key>
 	<string>ビデオの前にタイトルカード、後ろに締めくくりのカードを追加します。</string>
+	<key>Add a voiceover, a separate microphone, or a sound effect. Each file is its own track on the timeline.</key>
+	<string>ナレーション、別のマイクの音声、効果音を追加します。各ファイルがタイムライン上でそれぞれ専用のトラックになります。</string>
 	<key>Add a zoom</key>
 	<string>ズームを追加</string>
 	<key>Add a zoom at the playhead</key>
@@ -374,6 +380,8 @@
 	<string>別の収録をこのビデオの最後に追加して、1本のビデオにします。</string>
 	<key>Add arrow at the playhead (A)</key>
 	<string>再生ヘッドの位置に矢印を追加（A）</string>
+	<key>Add audio…</key>
+	<string>オーディオを追加…</string>
 	<key>Add blur at the playhead (B)</key>
 	<string>再生ヘッドの位置にぼかしを追加（B）</string>
 	<key>Add camera video…</key>
@@ -402,6 +410,8 @@
 	<string>収録中にマーカーを追加する</string>
 	<key>Add music</key>
 	<string>音楽を追加する</string>
+	<key>Add sound files</key>
+	<string>サウンドファイルを追加</string>
 	<key>Add spotlight at the playhead</key>
 	<string>再生ヘッドの位置にスポットライトを追加</string>
 	<key>Add text at the playhead (T)</key>
@@ -418,12 +428,24 @@
 	<string>再生ヘッドの位置に“%@”を追加</string>
 	<key>Added %@ — %@</key>
 	<string>“%@”を追加しました（%@）</string>
+	<key>Added %lld sound files as tracks</key>
+	<string>%lld個のサウンドファイルをトラックとして追加しました</string>
 	<key>Added %lld typing zooms — ⌘Z to undo</key>
 	<string>入力箇所のズームを%lld個追加しました。⌘Zで取り消せます</string>
+	<key>Added sound</key>
+	<string>追加したサウンド</string>
+	<key>Added sound is in the export, Full Mix, Creative Handoff, and the timeline files, and saved in a recording's folder (03 Audio).</key>
+	<string>追加したサウンドは、書き出したビデオ、Full Mix、クリエイティブ受け渡し、タイムラインファイルに含まれ、収録のフォルダ（03 Audio）にも保存されます。</string>
+	<key>Added sound “%@”</key>
+	<string>追加したサウンド“%@”</string>
+	<key>Added sound “%@” — the file is missing</key>
+	<string>追加したサウンド“%@” — ファイルが見つかりません</string>
 	<key>Added to LF Studios</key>
 	<string>LF Studiosに追加済み</string>
 	<key>Added “%@”</key>
 	<string>“%@”を追加しました</string>
+	<key>Added “%@” as its own track</key>
+	<string>“%@”を専用のトラックとして追加しました</string>
 	<key>Adds a Camera hidden block for each pause at least this long. Drag or delete them on the Camera lane; pressing again replaces only these.</key>
 	<string>この長さ以上の間ごとに「カメラ非表示」ブロックを追加します。カメラレーンでドラッグや削除ができます。もう一度押すと、これらだけが置き換わります。</string>
 	<key>Adds a zoom wherever you clicked while recording.</key>
@@ -528,8 +550,8 @@
 	<string>ほかのアプリが同じキーを使っている場合があります。別のキーを選んでください。</string>
 	<key>Any color…</key>
 	<string>その他のカラー…</string>
-	<key>Any other folder: Import Folder lists the videos. Choose which is the screen recording and which the camera, and when the camera starts.</key>
-	<string>それ以外のフォルダ: “フォルダを読み込む”にビデオが一覧表示されます。どれが画面収録でどれがカメラ映像か、そしてカメラがいつ始まるかを選びます。</string>
+	<key>Any other folder: Import Folder lists the videos and sound files. Choose which is the screen recording, which the camera, and which sound to add as tracks, and when each starts.</key>
+	<string>そのほかのフォルダ: “フォルダを読み込む”でビデオとサウンドファイルが一覧表示されます。どれが画面収録で、どれがカメラか、どのサウンドをトラックとして追加するか、それぞれの開始位置を選びます。</string>
 	<key>App</key>
 	<string>アプリ</string>
 	<key>Appearance</key>
@@ -606,6 +628,10 @@
 	<string>オーディオ</string>
 	<key>Audio only</key>
 	<string>オーディオのみ</string>
+	<key>Audio panel ▸ Added sound ▸ Add audio…, or drop sound files on the timeline.</key>
+	<string>“オーディオ”パネル＞“追加したサウンド”＞“オーディオを追加…”、またはタイムラインにサウンドファイルをドロップ。</string>
+	<key>Audio panel ▸ Added sound ▸ the track ▸ Use as my voice.</key>
+	<string>“オーディオ”パネル＞“追加したサウンド”＞トラック＞“自分の声として使う”。</string>
 	<key>Audio panel ▸ Click sounds ▸ Play a click on each click.</key>
 	<string>“オーディオ”パネル＞“クリック音”＞“クリックごとにクリック音を鳴らす”。</string>
 	<key>Audio panel ▸ Export ▸ Even out loudness.</key>
@@ -618,6 +644,8 @@
 	<string>“オーディオ”パネル＞“サウンド”。</string>
 	<key>Audio panel ▸ Voice ▸ Enhance voice.</key>
 	<string>“オーディオ”パネル＞“声”＞“声を補正”。</string>
+	<key>Audio track</key>
+	<string>オーディオトラック</string>
 	<key>Aurora</key>
 	<string>オーロラ</string>
 	<key>Aurora Blue</key>
@@ -876,6 +904,10 @@
 	<string>カメラ: ドラッグで移動、クリックでオプションを表示</string>
 	<key>Can't sync — the recording or the camera video has no sound</key>
 	<string>同期できません — 収録またはカメラ映像に音声がありません</string>
+	<key>Can't sync — the recording or “%@” has no sound</key>
+	<string>同期できません — 収録または“%@”に音声がありません</string>
+	<key>Can't sync — their sound doesn't match clearly enough. Drag the track into place instead.</key>
+	<string>同期できません — 音声が十分に一致しません。代わりにトラックをドラッグして位置を合わせてください。</string>
 	<key>Can't sync — their sound doesn't match clearly enough. Set the offset by hand.</key>
 	<string>同期できません — 音声が十分に一致しません。オフセットを手動で設定してください。</string>
 	<key>Cancel</key>
@@ -1158,14 +1190,16 @@
 	<string>ウインドウをライトにするかダークにするか、Macの設定に合わせるかを選びます。</string>
 	<key>Choose screen</key>
 	<string>ディスプレイを選択</string>
+	<key>Choose sound files to add as tracks of their own</key>
+	<string>専用のトラックとして追加するサウンドファイルを選択してください</string>
 	<key>Choose the Language you speak in the recording.</key>
 	<string>収録で話している“言語”を選びます。</string>
 	<key>Choose the camera video to show in the bubble</key>
 	<string>バブルに表示するカメラ映像を選択</string>
 	<key>Choose the corner (Left or Right) and how long it stays in the same settings section. Hovering keeps it open.</key>
 	<string>表示する隅（“左”または“右”）と表示時間は、同じ設定セクションで選べます。ポインタを置いている間は表示されたままです。</string>
-	<key>Choose the screen recording, and the camera video if there is one. Nothing in the folder changes until you save.</key>
-	<string>画面収録と、あればカメラ映像を選択します。保存するまで、フォルダ内は何も変更されません。</string>
+	<key>Choose the screen recording, the camera video if there is one, and the sound files to add as tracks. Nothing in the folder changes until you save.</key>
+	<string>画面収録、カメラ映像（ある場合）、トラックとして追加するサウンドファイルを選びます。保存するまで、フォルダ内は何も変更されません。</string>
 	<key>Choose the video's shape for where it's going.</key>
 	<string>公開先に合わせて、ビデオの形を選びます。</string>
 	<key>Choose what happens after each screenshot or recording.</key>
@@ -1238,6 +1272,8 @@
 	<string>“この比率に合わせる”をクリックすると、ズーム、カメラのワイプ、字幕が収まるように移動します。</string>
 	<key>Click Add Loupe.</key>
 	<string>“ルーペを追加”をクリックします。</string>
+	<key>Click Add audio… and choose one or more files: MP3, WAV, M4A, AAC, AIFF, FLAC, or CAF.</key>
+	<string>“オーディオを追加…”をクリックし、1つ以上のファイルを選びます: MP3、WAV、M4A、AAC、AIFF、FLAC、CAF。</string>
 	<key>Click Add camera video… and choose the video.</key>
 	<string>“カメラ映像を追加…”をクリックして、ビデオを選びます。</string>
 	<key>Click Apply, or press Return.</key>
@@ -1802,6 +1838,10 @@
 	<string>砂漠のすみれ</string>
 	<key>Dip to black</key>
 	<string>黒にフェード</string>
+	<key>Dip under voice</key>
+	<string>声に合わせて音量を下げる</string>
+	<key>Dip under voice: an added track (like background sound) gets quieter while you talk. It's off until you turn it on.</key>
+	<string>“声に合わせて音量を下げる”: 追加したトラック（背景音など）の音量が、話している間は下がります。オンにするまではオフのままです。</string>
 	<key>Dips while you talk, comes back in the pauses</key>
 	<string>話している間は音量が下がり、話が途切れると元に戻ります</string>
 	<key>Disable Apple Shortcuts</key>
@@ -1956,6 +1996,8 @@
 	<string>固定したスクリーンショットはドラッグで移動、端をドラッグでサイズ変更できます。</string>
 	<key>Drag the spot on the preview; drag a corner to resize it. Everything around it dims while its bar on the timeline runs.</key>
 	<string>プレビュー上でスポットをドラッグし、角をドラッグしてサイズを変更します。タイムライン上のバーの間は、その周囲がすべて暗くなります。</string>
+	<key>Drag the track on the timeline to move it; drag an edge to trim it; click it and press S to split it, or ⌫ to delete a piece.</key>
+	<string>タイムライン上でトラックをドラッグすると移動、端をドラッグするとトリミングできます。クリックしてSキーを押すと分割、⌫キーを押すとその部分を削除できます。</string>
 	<key>Drag the zoom's edges on the timeline to set its length.</key>
 	<string>タイムラインでズームの端をドラッグして、長さを設定します。</string>
 	<key>Drag to capture  ·  Hold ⇧ as you let go to adjust first  ·  Space moves  ·  Esc cancels</key>
@@ -1996,6 +2038,8 @@
 	<string>ズーム中は、表示範囲がポインタと一緒に動くので、指しているものが画面から外れません。その間、プレビューには“カメラがポインタに追従”と表示されます。</string>
 	<key>Dusk</key>
 	<string>夕暮れ</string>
+	<key>Each file is its own track: drag it on the timeline, trim its ends, split it with S. MP3, WAV, M4A, AAC, AIFF, FLAC, or CAF — or drop files on the timeline.</key>
+	<string>各ファイルが専用のトラックになります: タイムライン上でドラッグ、両端をトリミング、Sキーで分割できます。MP3、WAV、M4A、AAC、AIFF、FLAC、CAFに対応。タイムラインにファイルをドロップしても追加できます。</string>
 	<key>Each recording in its own folder</key>
 	<string>収録ごとに専用のフォルダ</string>
 	<key>Each recording keeps its own pointer, clicks, and shortcuts. Reorder them here; cut and trim them on the timeline like any clip.</key>
@@ -2374,6 +2418,8 @@
 	<string>入力に追従</string>
 	<key>Follows cursor</key>
 	<string>ポインタに追従</string>
+	<key>Follows the recording</key>
+	<string>収録に合わせて移動</string>
 	<key>Follows typing</key>
 	<string>入力に追従</string>
 	<key>Follows where you typed. Pressing it again replaces only these zooms.</key>
@@ -2746,6 +2792,8 @@
 	<string>イン点を早める</string>
 	<key>In later</key>
 	<string>イン点を遅らせる</string>
+	<key>In place of the recording's microphone — Enhance voice and Podcast mode clean it up</key>
+	<string>収録のマイクの代わりに使います。“声を補正”と“ポッドキャストモード”で音声を整えられます</string>
 	<key>In the Style panel, open Presets and choose Save as Preset….</key>
 	<string>“スタイル”パネルで“プリセット”を開き、“プリセットとして保存…”を選択します。</string>
 	<key>In the editor, check that Mute video is off in the Audio panel, and that the preview isn't muted (press M).</key>
@@ -3110,6 +3158,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>すべてそろえる</string>
 	<key>Line everything up makes every file start at the same moment.</key>
 	<string>“すべてそろえる”では、すべてのファイルが同じ時点から始まるようにします。</string>
+	<key>Line it up with the recording's own sound; then it follows your cuts</key>
+	<string>収録自体の音声に合わせて位置をそろえます。その後はカットに合わせて動きます</string>
 	<key>Line width</key>
 	<string>線の幅</string>
 	<key>Linen</key>
@@ -3330,6 +3380,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>再生ヘッドを移動してSキーを押すと、その位置でクリップを分割します。</string>
 	<key>Move the playhead inside a clip to split</key>
 	<string>分割するには、再生ヘッドをクリップ内に移動してください</string>
+	<key>Move the playhead into the sound to split it</key>
+	<string>分割するには、再生ヘッドをサウンドの範囲内に移動してください</string>
 	<key>Move the playhead to where it should appear.</key>
 	<string>表示したい位置に再生ヘッドを移動します。</string>
 	<key>Move the playhead to where the camera shows, then crop</key>
@@ -3368,6 +3420,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>音楽“%@”</string>
 	<key>Music “%@” — the file is missing</key>
 	<string>音楽“%@” — ファイルが見つかりません</string>
+	<key>Mute</key>
+	<string>消音</string>
 	<key>Mute Clip</key>
 	<string>クリップを消音</string>
 	<key>Mute or fade one part</key>
@@ -3642,6 +3696,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>macOS 15以前では、“音声認識”の許可と、その言語の音声入力の設定が必要です。</string>
 	<key>On macOS 15 and earlier: allow LF Studios under Speech Recognition, and turn on Dictation for that language in System Settings ▸ Keyboard.</key>
 	<string>macOS 15以前の場合: “音声認識”でLF Studiosを許可し、“システム設定”＞“キーボード”でその言語の音声入力をオンにします。</string>
+	<key>On the edit's timeline</key>
+	<string>編集のタイムライン上</string>
 	<key>On the preview after capture, click Text, or right-click and choose Copy Text.</key>
 	<string>取り込み後のプレビューで“テキスト”をクリックするか、右クリックして“テキストをコピー”を選択します。</string>
 	<key>On the timeline's zoom lane, drag the zoom's edges to set how long it lasts.</key>
@@ -4100,6 +4156,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>“品質”: “標準”、“高”、“最高”。“フレームレート”: 30fpsまたは60fps。その下の目安で、1分あたりに必要な容量がわかります。</string>
 	<key>Quick</key>
 	<string>速め</string>
+	<key>Quieter while you talk</key>
+	<string>話している間は音量を下げる</string>
 	<key>Quit &amp; Reopen</key>
 	<string>終了して再度開く</string>
 	<key>Quit LF Studios</key>
@@ -4194,6 +4252,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>声を収録します。</string>
 	<key>Recorded at %@. Drag its dot on the timeline to retime it; ripples and Auto Zoom follow.</key>
 	<string>%@に記録されました。タイムライン上の点をドラッグするとタイミングを変更でき、波紋と自動ズームも合わせて移動します。</string>
+	<key>Recorded at the same time as the video? Click Sync by sound: it lines up with the recording and follows your cuts from then on.</key>
+	<string>ビデオと同時に録音した場合は、“音声で同期”をクリックします。収録に合わせて位置がそろい、以降はカットに合わせて動きます。</string>
+	<key>Recorded your voice separately, or re-recorded it? Use that file in place of the recording's microphone.</key>
+	<string>声を別に録音した場合や録り直した場合は、そのファイルを収録のマイクの代わりに使えます。</string>
 	<key>Recording</key>
 	<string>収録</string>
 	<key>Recording already in progress</key>
@@ -4256,6 +4318,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>「この比率に合わせる」をやり直す</string>
 	<key>Redo Add Arrow</key>
 	<string>矢印の追加をやり直す</string>
+	<key>Redo Add Audio</key>
+	<string>オーディオの追加をやり直す</string>
 	<key>Redo Add Blur</key>
 	<string>ぼかしの追加をやり直す</string>
 	<key>Redo Add Camera Layout</key>
@@ -4310,6 +4374,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>矢印のスタイル変更をやり直す</string>
 	<key>Redo Aspect Ratio</key>
 	<string>アスペクト比の変更をやり直す</string>
+	<key>Redo Audio Track Change</key>
+	<string>オーディオトラックの変更をやり直す</string>
 	<key>Redo Auto Adjust Camera Color</key>
 	<string>カメラの色の自動調整をやり直す</string>
 	<key>Redo Auto Zoom</key>
@@ -4422,6 +4488,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>%lld項目の移動をやり直す</string>
 	<key>Redo Move Arrow</key>
 	<string>矢印の移動をやり直す</string>
+	<key>Redo Move Audio</key>
+	<string>オーディオの移動をやり直す</string>
 	<key>Redo Move Blur</key>
 	<string>ぼかしの移動をやり直す</string>
 	<key>Redo Move Caption</key>
@@ -4458,6 +4526,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ポッドキャストモードのオンをやり直す</string>
 	<key>Redo Remove All Zooms</key>
 	<string>すべてのズームの削除をやり直す</string>
+	<key>Redo Remove Audio</key>
+	<string>オーディオの削除をやり直す</string>
 	<key>Redo Remove Camera Video</key>
 	<string>カメラ映像の削除をやり直す</string>
 	<key>Redo Remove Captions</key>
@@ -4510,6 +4580,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>入力の早送りをやり直す</string>
 	<key>Redo Split</key>
 	<string>分割をやり直す</string>
+	<key>Redo Split Audio</key>
+	<string>オーディオの分割をやり直す</string>
 	<key>Redo Split at Markers</key>
 	<string>マーカー位置での分割をやり直す</string>
 	<key>Redo Spotlight Style</key>
@@ -4518,6 +4590,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>元の収録への復元をやり直す</string>
 	<key>Redo Style Change</key>
 	<string>スタイルの変更をやり直す</string>
+	<key>Redo Sync Audio by Sound</key>
+	<string>音声によるオーディオの同期をやり直す</string>
 	<key>Redo Text Style</key>
 	<string>テキストのスタイル変更をやり直す</string>
 	<key>Redo Timeline Edit</key>
@@ -4530,6 +4604,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>トランジションの変更をやり直す</string>
 	<key>Redo Trim</key>
 	<string>トリミングをやり直す</string>
+	<key>Redo Trim Audio</key>
+	<string>オーディオのトリミングをやり直す</string>
 	<key>Redo Unmute Clip</key>
 	<string>クリップの消音解除をやり直す</string>
 	<key>Redo Unmute Part</key>
@@ -4574,6 +4650,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>音楽を削除</string>
 	<key>Remove Outro Card</key>
 	<string>エンディングカードを削除</string>
+	<key>Remove Track</key>
+	<string>トラックを削除</string>
 	<key>Remove Transcript &amp; Captions</key>
 	<string>文字起こしと字幕を削除</string>
 	<key>Remove Ums</key>
@@ -5038,6 +5116,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>声とMacのサウンドの音量を設定したり、ビデオを消音したりします。</string>
 	<key>Set its Strength in the panel on the right.</key>
 	<string>右側のパネルで“強さ”を設定します。</string>
+	<key>Set its Volume, Fade in, and Fade out, or Mute it, in the Audio panel.</key>
+	<string>“オーディオ”パネルで“音量”、“フェードイン”、“フェードアウト”を設定したり、“消音”にしたりできます。</string>
 	<key>Set its size, shape, border, and shadow under Loupe.</key>
 	<string>“ルーペ”で、サイズ、形、枠線、シャドウを設定します。</string>
 	<key>Set the Minimum silence (1 to 10 seconds).</key>
@@ -5298,8 +5378,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>うまく動かないときは、症状を探して、解決方法を順番に試してください。</string>
 	<key>Sound</key>
 	<string>サウンド</string>
-	<key>Sound files can be added as tracks of their own in LF Studios 1.7.</key>
-	<string>サウンドファイルは、LF Studios 1.7で独自のトラックとして追加できるようになります。</string>
 	<key>Sounds</key>
 	<string>サウンド</string>
 	<key>Space</key>
@@ -5502,8 +5580,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>再生ヘッドの位置で、カメラを全面に切り替えて要点を話したり、画面と横並びにしたりできます。切り替えはそれぞれ“カメラ”トラックに表示されます。</string>
 	<key>Sync by Sound</key>
 	<string>音声で同期</string>
+	<key>Sync by sound</key>
+	<string>音声で同期</string>
+	<key>Sync it by sound first, so captions made from it line up with the video.</key>
+	<string>先に音声で同期して、そこから作成する字幕がビデオと合うようにします。</string>
 	<key>Synced by sound — the camera starts %@</key>
 	<string>音声で同期しました — カメラの開始は%@</string>
+	<key>Synced by sound — “%@” follows the recording now</key>
+	<string>音声で同期しました — “%@”は収録に合わせて動くようになりました</string>
 	<key>System</key>
 	<string>システム</string>
 	<key>System Default</key>
@@ -5900,6 +5984,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>この収録には矢印のポインタしかありません</string>
 	<key>This replaces all %lld caption lines, including any you edited or typed, with a new transcript in %@.</key>
 	<string>字幕%1$lld行すべて（編集や入力をした行も含む）が、%2$@の新しい文字起こしに置き換えられます。</string>
+	<key>This sound file is gone — add it again.</key>
+	<string>このサウンドファイルが見つかりません。もう一度追加してください。</string>
 	<key>This video has no camera bubble</key>
 	<string>このビデオにはカメラのワイプがありません</string>
 	<key>This video has no camera footage to hide</key>
@@ -5996,6 +6082,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>タッチの点</string>
 	<key>Track Where I Type</key>
 	<string>入力場所を追跡</string>
+	<key>Track options</key>
+	<string>トラックのオプション</string>
 	<key>Track where I type</key>
 	<string>入力場所を追跡</string>
 	<key>Track where I type saves only where the text cursor is on screen, so the editor can zoom in on typing. Record when keys are pressed saves only the moment each key goes down, so the editor can speed up typing. No text is recorded and no keys are named. While a password field has focus, neither saves anything. Both are off until you turn them on; macOS asks for Accessibility access.</key>
@@ -6156,6 +6244,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>「この比率に合わせる」を取り消す</string>
 	<key>Undo Add Arrow</key>
 	<string>矢印の追加を取り消す</string>
+	<key>Undo Add Audio</key>
+	<string>オーディオの追加を取り消す</string>
 	<key>Undo Add Blur</key>
 	<string>ぼかしの追加を取り消す</string>
 	<key>Undo Add Camera Layout</key>
@@ -6210,6 +6300,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>矢印のスタイル変更を取り消す</string>
 	<key>Undo Aspect Ratio</key>
 	<string>アスペクト比の変更を取り消す</string>
+	<key>Undo Audio Track Change</key>
+	<string>オーディオトラックの変更を取り消す</string>
 	<key>Undo Auto Adjust Camera Color</key>
 	<string>カメラの色の自動調整を取り消す</string>
 	<key>Undo Auto Zoom</key>
@@ -6322,6 +6414,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>%lld項目の移動を取り消す</string>
 	<key>Undo Move Arrow</key>
 	<string>矢印の移動を取り消す</string>
+	<key>Undo Move Audio</key>
+	<string>オーディオの移動を取り消す</string>
 	<key>Undo Move Blur</key>
 	<string>ぼかしの移動を取り消す</string>
 	<key>Undo Move Caption</key>
@@ -6358,6 +6452,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ポッドキャストモードのオンを取り消す</string>
 	<key>Undo Remove All Zooms</key>
 	<string>すべてのズームの削除を取り消す</string>
+	<key>Undo Remove Audio</key>
+	<string>オーディオの削除を取り消す</string>
 	<key>Undo Remove Camera Video</key>
 	<string>カメラ映像の削除を取り消す</string>
 	<key>Undo Remove Captions</key>
@@ -6410,6 +6506,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>入力の早送りを取り消す</string>
 	<key>Undo Split</key>
 	<string>分割を取り消す</string>
+	<key>Undo Split Audio</key>
+	<string>オーディオの分割を取り消す</string>
 	<key>Undo Split at Markers</key>
 	<string>マーカー位置での分割を取り消す</string>
 	<key>Undo Spotlight Style</key>
@@ -6418,6 +6516,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>元の収録への復元を取り消す</string>
 	<key>Undo Style Change</key>
 	<string>スタイルの変更を取り消す</string>
+	<key>Undo Sync Audio by Sound</key>
+	<string>音声によるオーディオの同期を取り消す</string>
 	<key>Undo Text Style</key>
 	<string>テキストのスタイル変更を取り消す</string>
 	<key>Undo Timeline Edit</key>
@@ -6430,6 +6530,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>トランジションの変更を取り消す</string>
 	<key>Undo Trim</key>
 	<string>トリミングを取り消す</string>
+	<key>Undo Trim Audio</key>
+	<string>オーディオのトリミングを取り消す</string>
 	<key>Undo Unmute Clip</key>
 	<string>クリップの消音解除を取り消す</string>
 	<key>Undo Unmute Part</key>
@@ -6480,10 +6582,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>“表示”で、元の字幕と翻訳を切り替えます。</string>
 	<key>Use Size for line thickness, and Text size and Bold for text.</key>
 	<string>線の太さは“サイズ”で、テキストは“テキストサイズ”と“太い”で設定します。</string>
+	<key>Use a sound file as your voice</key>
+	<string>サウンドファイルを声として使う</string>
 	<key>Use any font on your Mac for captions, title cards, text, and keys, or add your own.</key>
 	<string>字幕、タイトルカード、テキスト、キー表示に、Mac上のどのフォントでも使えます。自分のフォントを追加することもできます。</string>
 	<key>Use as My Style</key>
 	<string>マイスタイルとして使用</string>
+	<key>Use as my voice</key>
+	<string>自分の声として使う</string>
+	<key>Use as my voice: the recording's microphone goes quiet and this track is the voice. Enhance voice and Podcast mode clean it up, and the music dips under it.</key>
+	<string>“自分の声として使う”: 収録のマイクは無音になり、このトラックが声になります。“声を補正”と“ポッドキャストモード”で音声が整えられ、音楽は声に合わせて音量が下がります。</string>
 	<key>Use music you have the rights to.</key>
 	<string>使用する権利のある音楽を使ってください。</string>
 	<key>Use music you have the rights to. Click the music lane on the timeline to get back here.</key>
@@ -6964,6 +7072,8 @@ Appleのショートカットは、“システム設定”＞“キーボード
 	<string>%3$lld件中%2$lld件のスクリーンショットで“%1$@”が見つかりました</string>
 	<key>“%@” is your My Style — Apply my style (⇧⌘Y) puts it on a video</key>
 	<string>“%@”をマイスタイルにしました — 「マイスタイルを適用」（⇧⌘Y）でビデオに適用できます</string>
+	<key>“%@” isn't a sound file this Mac can play</key>
+	<string>“%@”は、このMacで再生できるサウンドファイルではありません</string>
 	<key>“%@” isn't at %@ anymore. Put it back, or save the project with Include Media next time so it carries its own copy.</key>
 	<string>“%1$@”は%2$@にありません。元に戻すか、次回は「メディアを含める」で保存して、プロジェクトに独自のコピーを持たせてください。</string>
 	<key>“%@” isn't in %@ anymore. Locate it to get the camera back.</key>
@@ -6976,6 +7086,8 @@ Appleのショートカットは、“システム設定”＞“キーボード
 	<string>“%@”はこのウインドウを%@ × %@ピクセル以上に保つため、%@ × %@にはできません。</string>
 	<key>“%@” keeps this window at most %@ × %@ pixels, so it can't be made %@ × %@.</key>
 	<string>“%@”はこのウインドウを%@ × %@ピクセル以下に保つため、%@ × %@にはできません。</string>
+	<key>“%@” — drag to move, drag an edge to trim, click to change it in Audio</key>
+	<string>“%@”: ドラッグで移動、端をドラッグでトリミング、クリックで“オーディオ”で変更</string>
 	<key>“Made with LF Studios” end card (2s)</key>
 	<string>“Made with LF Studios”エンドカード（2秒）</string>
 	<key>“Possible key” is a guess: long, random-looking text that might be a password.</key>
