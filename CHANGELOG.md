@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.4.2] - Unreleased
+
+### Changed
+- A check that updates work: 1.4.1 updates itself to this version. Nothing else changed.
+
 ## [1.4.1] - 2026-10-28
 
 ### Added
