@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.4.0] - Unreleased
+## [1.4.0] - 2026-10-28
 
 Everything new starts off, and is turned on with its own button or switch.
 
