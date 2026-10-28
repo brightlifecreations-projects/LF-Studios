@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased]
+## [1.4.0] - Unreleased
 
 Everything new starts off, and is turned on with its own button or switch.
 
