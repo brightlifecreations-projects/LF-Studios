@@ -111,6 +111,8 @@ private struct GuideOutlineButton: View {
         .buttonStyle(.plain)
         .onHover { isHovering = $0 }
         .help(title)
+        .accessibilityLabel(title)
+        .accessibilityAddTraits(isSelected ? .isSelected : [])
     }
 }
 
@@ -529,6 +531,9 @@ private struct GuideEntryRow: View {
         }
         .buttonStyle(.plain)
         .onHover { isHovering = $0 }
+        .accessibilityLabel(entry.title)
+        .accessibilityValue(entry.isNew ? L("New") : String())
+        .accessibilityHint(entry.summary)
     }
 }
 
@@ -564,6 +569,7 @@ private struct GuideCategoryCard: View {
         }
         .buttonStyle(.plain)
         .onHover { isHovering = $0 }
+        .accessibilityLabel(category.title)
     }
 }
 
