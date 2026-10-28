@@ -831,7 +831,251 @@ enum GuideContent {
             ),
         ]
     }
-    static func recordingFeatures() -> [GuideEntry] { [] } // STUB
+    // MARK: Recording
+
+    static func recordingFeatures() -> [GuideEntry] {
+        let bar = L("In the recording bar, which appears after you choose what to record.")
+        return [
+            GuideEntry(
+                id: "rec-area", symbol: "rectangle.dashed.badge.record", title: L("Record an area"),
+                summary: L("Record just part of the screen."),
+                location: L("Home ▸ New recording, or the LF Studios menu in the menu bar ▸ Record Area."),
+                steps: [
+                    L("Drag over the area to record."),
+                    L("Choose your options in the recording bar."),
+                    L("Click Record, or press Return."),
+                ],
+                keys: [.global(.recordArea), .fixed("↩", L("Start recording")), .fixed("Esc", L("Cancel"))],
+                tips: [L("A thin outline shows what's being recorded. It never appears in the video.")],
+                related: ["rec-bar", "rec-stop"]
+            ),
+            GuideEntry(
+                id: "rec-window", symbol: "macwindow.badge.plus", title: L("Record a window"),
+                summary: L("Record one window. The recording follows it if you move it, even to another screen."),
+                location: L("The LF Studios menu in the menu bar ▸ Record Window."),
+                steps: [
+                    L("Choose Record Window."),
+                    L("Click Choose under the window you want."),
+                    L("Click Record."),
+                ],
+                keys: [.global(.recordWindow)],
+                tips: [
+                    L("That app's other windows stay out of the video, but its menus and dialogs show."),
+                    L("If the window closes, the recording keeps going until you stop it."),
+                ],
+                related: ["rec-window-size"]
+            ),
+            GuideEntry(
+                id: "rec-screen", symbol: "display", title: L("Record the full screen"),
+                summary: L("Record everything on one screen."),
+                location: L("The LF Studios menu in the menu bar ▸ Record Fullscreen."),
+                steps: [
+                    L("Choose Record Fullscreen."),
+                    L("With more than one screen, click Record next to the one you want."),
+                    L("Click Record in the recording bar."),
+                ],
+                keys: [.global(.recordFullscreen)]
+            ),
+            GuideEntry(
+                id: "rec-bar", symbol: "slider.horizontal.3", title: L("The recording bar"),
+                summary: L("Everything for the recording, before you start: sound, camera, cursor, quality, and more."),
+                location: bar,
+                points: [
+                    L("System audio, Microphone, Cursor, Camera, Show keyboard shortcuts, and Speaker notes: click to turn each on or off."),
+                    L("Quality: Balanced, High, or Max. Frame rate: 30 or 60 fps. The estimate under them shows how much space a minute takes."),
+                    L("⋯ More recording options: the camera, Editable Cursor, Countdown, and the typing options."),
+                ],
+                keys: [.fixed("↩", L("Start recording")), .fixed("Esc", L("Cancel"))],
+                tips: [
+                    L("Drag the bar by its handle to move it."),
+                    L("Your choices are remembered for next time, and match Settings ▸ Recording."),
+                ],
+                showMe: .settings(.recording)
+            ),
+            GuideEntry(
+                id: "rec-system-audio", symbol: "speaker.wave.2", title: L("System audio"),
+                summary: L("Record the sound your Mac plays, like a video or an app's sounds."),
+                location: L("Click System audio in the recording bar, or Settings ▸ Recording ▸ Audio ▸ Record system audio."),
+                tips: [L("It's saved separately from your voice, so you can set each one's volume in the editor. LF Studios' own sounds are left out.")],
+                showMe: .settings(.recording)
+            ),
+            GuideEntry(
+                id: "rec-mic", symbol: "mic", title: L("Microphone"),
+                summary: L("Record your voice."),
+                location: L("Click Microphone in the recording bar. A menu above the bar picks which microphone."),
+                steps: [
+                    L("Turn on Microphone."),
+                    L("Choose your microphone in the menu above the bar."),
+                    L("Speak and watch the level meter move."),
+                ],
+                tips: [
+                    L("If the microphone is unplugged while recording, LF Studios switches to another one and keeps going."),
+                    L("The first time, macOS asks to allow the microphone."),
+                ],
+                showMe: .settings(.recording),
+                related: ["permission-microphone", "trouble-no-sound"]
+            ),
+            GuideEntry(
+                id: "rec-camera", symbol: "web.camera", title: L("Camera"),
+                summary: L("Show yourself in a bubble while you record."),
+                location: L("Click Camera in the recording bar. Choose the camera in ⋯ More recording options."),
+                steps: [
+                    L("Turn on Camera. A round bubble appears; drag it where you like."),
+                    L("Record as usual."),
+                ],
+                tips: [
+                    L("The camera is saved separately, so in the editor you can move it, resize it, restyle it, or hide it."),
+                    L("The bubble you see while recording never shows up in the screen recording itself."),
+                ],
+                showMe: .settings(.recording),
+                related: ["camera-bubble", "permission-camera"]
+            ),
+            GuideEntry(
+                id: "rec-cursor", symbol: "cursorarrow", title: L("Cursor & editable cursor"),
+                summary: L("Show the pointer in your recording, and keep it sharp and adjustable in the editor."),
+                location: L("Cursor in the recording bar, and ⋯ More recording options ▸ Editable Cursor. Also in Settings ▸ Recording ▸ Video."),
+                points: [
+                    L("Cursor: shows the pointer in the video."),
+                    L("Editable Cursor: saves the pointer separately, so the editor can smooth it, enlarge it, change its style, and keep it crisp when zoomed."),
+                ],
+                tips: [L("Both are on to start with.")],
+                showMe: .settings(.recording),
+                related: ["cursor-show"]
+            ),
+            GuideEntry(
+                id: "rec-shortcuts", symbol: "command", title: L("Show keyboard shortcuts"),
+                summary: L("Remember the shortcuts you press, like ⌘C, so the video can show them on screen."),
+                location: L("Click Show keyboard shortcuts (⌘) in the recording bar, or Settings ▸ Recording ▸ Show keyboard shortcuts."),
+                tips: [
+                    L("Only shortcuts with ⌘ or ⌃ (and a few keys like Esc) are saved, never ordinary typing."),
+                    L("Needs Accessibility. In the editor, show them with Cursor ▸ Keys on screen."),
+                ],
+                showMe: .settings(.recording),
+                related: ["cursor-keys", "permission-accessibility"]
+            ),
+            GuideEntry(
+                id: "rec-typing", symbol: "character.cursor.ibeam", title: L("Track where I type"),
+                summary: L("Remembers where the text cursor is on screen, so the editor can zoom in on your typing."),
+                location: L("⋯ More recording options ▸ Track Where I Type, or Settings ▸ Recording ▸ Track where I type."),
+                tips: [
+                    L("Saves positions only: never the text, never the keys, and nothing while a password field is in use."),
+                    L("Off to start with. Needs Accessibility."),
+                ],
+                showMe: .settings(.recording),
+                since: "1.4.0",
+                related: ["zoom-typing", "privacy-typing"]
+            ),
+            GuideEntry(
+                id: "rec-keys-pressed", symbol: "keyboard.badge.ellipsis", title: L("Record when keys are pressed"),
+                summary: L("Remembers when you type, so the editor can speed up the typing parts."),
+                location: L("⋯ More recording options ▸ Record When Keys Are Pressed, or Settings ▸ Recording."),
+                tips: [
+                    L("Saves the moment of each key press only: never which key, and nothing while a password field is in use."),
+                    L("Off to start with. Needs Accessibility."),
+                ],
+                showMe: .settings(.recording),
+                since: "1.4.0",
+                related: ["cursor-typing-speed", "privacy-typing"]
+            ),
+            GuideEntry(
+                id: "rec-countdown", symbol: "timer", title: L("Countdown"),
+                summary: L("A few seconds to get ready before recording starts."),
+                location: L("⋯ More recording options ▸ Countdown, or Settings ▸ Recording ▸ Countdown."),
+                keys: [.fixed("Esc", L("Cancel the countdown"))],
+                tips: [L("Choose Off, 3, 5, or 10 seconds. Click the countdown to cancel it.")],
+                showMe: .settings(.recording)
+            ),
+            GuideEntry(
+                id: "rec-window-size", symbol: "aspectratio", title: L("Window size"),
+                summary: L("Resize a window so the recording comes out at an exact size, like 1920 × 1080."),
+                location: L("When recording a window: the Window size menu in the row above the recording bar."),
+                steps: [
+                    L("Choose a size, or Custom Size… for your own."),
+                    L("LF Studios resizes the window and centers it."),
+                    L("After recording, click Restore size to put it back."),
+                ],
+                tips: [
+                    L("If a size doesn't fit on the screen, LF Studios offers the biggest one of the same shape that does."),
+                    L("Needs Accessibility. Some apps don't let their windows be resized; LF Studios says so."),
+                ],
+                related: ["howto-window-size"]
+            ),
+            GuideEntry(
+                id: "rec-notes", symbol: "text.alignleft", title: L("Speaker notes"),
+                summary: L("A teleprompter for your script. It never shows up in a recording, a screenshot, or screen sharing."),
+                location: L("Click Speaker notes in the recording bar, or in the bar while recording."),
+                steps: [
+                    L("Paste or type your notes, then click Read."),
+                    L("Set the scrolling speed and text size."),
+                    L("Click play, press Space, or tick Start with recording."),
+                ],
+                keys: [.fixed(L("Space"), L("Pause or resume scrolling")), .fixed("↑ ↓", L("Scroll by a line")), .global(.pauseSpeakerNotes)],
+                tips: [L("Your notes are remembered. A recording made with them open keeps a copy, shown in the editor's Captions panel.")],
+                since: "1.4.0",
+                related: ["captions-notes", "howto-notes"]
+            ),
+            GuideEntry(
+                id: "rec-pause", symbol: "pause.circle", title: L("Pause & resume"),
+                summary: L("Take a break in the middle of a recording. The pause is left out of the video."),
+                location: L("The pause button in the bar while recording."),
+                keys: [.global(.pauseRecording)],
+                tips: [L("While paused, the outline around the area turns yellow.")]
+            ),
+            GuideEntry(
+                id: "rec-markers", symbol: "flag", title: L("Add markers while recording"),
+                summary: L("Mark important moments while you record. They show as flags in the editor and can become chapters."),
+                location: L("The flag button in the bar while recording."),
+                keys: [.global(.addMarker)],
+                related: ["video-markers", "export-chapters"]
+            ),
+            GuideEntry(
+                id: "rec-discard", symbol: "trash", title: L("Discard a take"),
+                summary: L("Throw away a recording that went wrong and start again."),
+                location: L("The trash button in the bar while recording."),
+                steps: [L("Click the trash button, then Discard.")],
+                tips: [L("If you don't answer within a few seconds, the recording is kept, just in case.")]
+            ),
+            GuideEntry(
+                id: "rec-stop", symbol: "stop.circle", title: L("Stop recording"),
+                summary: L("Finish the recording and save it."),
+                location: L("The red stop button in the bar while recording, or the red timer in the menu bar."),
+                keys: [
+                    .fixed("⌃⌘Esc", L("Stop recording, from any app")),
+                    .global(.stopRecording),
+                    .fixed("Esc", L("Stop, while LF Studios is the app in front")),
+                ],
+                tips: [L("Plain Esc belongs to the app you're recording, so it stops only when LF Studios is in front. ⌃⌘Esc works everywhere.")]
+            ),
+            GuideEntry(
+                id: "rec-saved", symbol: "checkmark.rectangle", title: L("After recording"),
+                summary: L("The “Recording saved” panel lets you edit the video, show it in Finder, or copy where it is."),
+                location: L("The panel appears at the top right of the screen after you stop."),
+                points: [
+                    L("Edit Video opens the video editor."),
+                    L("Reveal shows the file in Finder; Copy Path copies where it is."),
+                    L("The panel closes by itself after a few seconds; hover over it to keep it."),
+                ],
+                tips: [L("To skip the panel and go straight to the editor, turn on Open the video editor after recording in Settings ▸ General.")],
+                showMe: .settings(.general)
+            ),
+            GuideEntry(
+                id: "rec-recovery", symbol: "lifepreserver", title: L("Recovering an interrupted recording"),
+                summary: L("If your Mac crashes or loses power while recording, LF Studios saves what it can."),
+                location: L("Happens by itself the next time LF Studios opens."),
+                tips: [L("Click the notice to open the recovered video. Pointer, click, and marker details from that take can't be recovered.")]
+            ),
+            GuideEntry(
+                id: "rec-problems", symbol: "exclamationmark.triangle", title: L("If something goes wrong while recording"),
+                summary: L("LF Studios keeps your recording safe when things change in the middle of it."),
+                points: [
+                    L("Microphone unplugged: it switches to another one, or carries on without sound until one is plugged in."),
+                    L("Camera unplugged: the screen recording keeps going without it."),
+                    L("Disk almost full: it warns you, then stops and saves the recording before the disk is full."),
+                    L("“Skipping frames”: your Mac can't keep up. Try Balanced quality or 30 fps."),
+                ]
+            ),
+        ]
+    }
     static func videoEditorFeatures() -> [GuideEntry] { [] } // STUB
     static func zoomFeatures() -> [GuideEntry] { [] } // STUB
     static func cursorFeatures() -> [GuideEntry] { [] } // STUB
