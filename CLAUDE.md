@@ -128,6 +128,17 @@ push or tag triggers back.
   Translations: Localization/ and Sources/LFStudiosCore/Resources/*.lproj
   (see scripts/localize.py). Update all 7 languages when adding text.
 - Never use `Bundle.module`; use `LFStudiosResources`.
+- Every new or changed user-facing feature must add or update its Guide
+  entry in the same commit. The Guide (Home ▸ Guide, Help ▸ LF Studios
+  Guide ⌘?) is written for brand-new users: plain words, short steps, the
+  app's exact button names. All of its content is in
+  App/GuideContent.swift: a feature page needs a name, what it does, where
+  to find it, and, where it helps, steps, keys, tips, "Show me" (only
+  navigates, never turns anything on), and `since:` its version. When
+  publishing, put the new version first in `GuideContent.newVersions` so
+  its pages get the New badge and fill What's new. A new global shortcut,
+  menu shortcut, or editor key also goes on the Keyboard shortcuts page
+  (GuideTests checks).
 - LF Studios' home is https://github.com/brightlifecreations-projects/LF-Studios (About, issues,
   crash reports); downloads and the update feed are on LF-Studios-Releases. Don't link shotnix.com. The only upstream
   references kept are the MIT attribution: "Based on Shotnix (MIT License)"

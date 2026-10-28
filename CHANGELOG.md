@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.5.0]
+
+### Added
+- **The Guide.** Home's sidebar has a new **Guide**, below Settings, and Help ▸ **LF Studios Guide** (⌘?) opens it. It's help for every part of LF Studios, written for people who've just installed it, in all seven languages:
+  - **Getting started:** what LF Studios does, the Home window, allowing Screen Recording, Accessibility, the microphone and the camera (each with Open System Settings, and whether it's allowed yet), your first screenshot, and your first recording, edit and export.
+  - **How do I…?** Nineteen short recipes, from a screenshot of a scrolling page to a vertical video for Reels or chapters for YouTube.
+  - **All features:** every feature, section by section, with what it does, where to find it, steps, its keyboard shortcut, and tips. A **Show me** button opens the right place, like the right Settings page or the video editor's panel. It only goes there; it never changes a setting.
+  - **Keyboard shortcuts:** every shortcut, with the keys set on your Mac right now, and a button to change them.
+  - **Privacy**, **Troubleshooting**, and **What's new**, where the newest features carry a New badge.
+  - A search box looks through every page's name, words, and steps.
+
 ## [1.4.2] - 2026-10-28
 
 ### Changed
