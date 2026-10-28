@@ -58,8 +58,15 @@ struct VideoProjectFileTests {
         let decoded = try VideoProjectDocument.decode(try document.encoded())
         #expect(decoded.project == project)
         #expect(decoded.mediaMode == .included)
-        #expect(decoded.version == VideoProjectDocument.currentVersion)
+        // Without folder paths it's still version 1: older LF Studios
+        // versions open it without a warning.
+        #expect(decoded.version == 1)
         #expect(!decoded.isFromNewerVersion)
+        let folder = VideoProjectDocument(appVersion: "1.6.0", mediaMode: .folder, project: project, recording: nil, folder: .init(kind: .recording))
+        let decodedFolder = try VideoProjectDocument.decode(try folder.encoded())
+        #expect(decodedFolder.version == VideoProjectDocument.currentVersion)
+        #expect(decodedFolder.folder?.kind == .recording)
+        #expect(!decodedFolder.isFromNewerVersion)
     }
 
     @Test func otherFilesAreRefused() {

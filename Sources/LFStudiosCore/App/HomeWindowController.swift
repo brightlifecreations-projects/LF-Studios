@@ -169,6 +169,9 @@ struct HomeProject: Identifiable {
         case screenshot(HistoryItem)
         /// A saved `.lfstudios` project (VideoProjectFiles.swift).
         case projectFile(URL)
+        /// A recording in its own folder: the folder's project file
+        /// (VideoRecordingFolder.swift).
+        case recordingFolder(URL)
     }
 
     let id: String
@@ -188,12 +191,21 @@ struct HomeProject: Identifiable {
         return false
     }
 
+    var isRecordingFolder: Bool {
+        if case .recordingFolder = kind { return true }
+        return false
+    }
+
+    /// A recording, a recording's folder, or a project: opens in the video editor.
+    var isVideo: Bool { isRecording || isProjectFile || isRecordingFolder }
+
     /// The badge on its card.
     var symbol: String {
         switch kind {
         case .recording: return "video.fill"
         case .screenshot: return "photo.fill"
         case .projectFile: return "doc.fill"
+        case .recordingFolder: return "video.fill"
         }
     }
 }
@@ -241,8 +253,8 @@ final class HomeModel: ObservableObject {
     var visibleProjects: [HomeProject] {
         let inSection: [HomeProject]
         switch section {
-        case .recordings: inSection = projects.filter { $0.isRecording || $0.isProjectFile }
-        case .screenshots: inSection = projects.filter { !$0.isRecording && !$0.isProjectFile }
+        case .recordings: inSection = projects.filter(\.isVideo)
+        case .screenshots: inSection = projects.filter { !$0.isVideo }
         case .home, .settings, .guide: inSection = projects
         }
         let terms = query.split(separator: " ").map(String.init)
@@ -253,7 +265,22 @@ final class HomeModel: ObservableObject {
     }
 
     func reload() {
-        let recordings = Settings.recordingURLs.map { url in
+        // Recordings in folders of their own: wherever they were saved, and
+        // any in the folders Home looks in.
+        let scanned = Array(Set([Settings.recordingFolder, Settings.autoSaveLocation, Settings.defaultAutoSaveLocation]))
+            .map { URL(fileURLWithPath: $0, isDirectory: true) }
+        let folderProjects = VideoRecordingFolders.projects(scanning: scanned)
+        let inFolders = Set(folderProjects.map(\.path))
+        let folders = folderProjects.map { project in
+            HomeProject(
+                id: "folder:" + project.path,
+                kind: .recordingFolder(project),
+                name: project.deletingLastPathComponent().lastPathComponent,
+                date: Self.modificationDate(of: VideoProjectPackage.manifestURL(project)),
+                searchText: project.deletingLastPathComponent().lastPathComponent
+            )
+        }
+        let recordings = Settings.recordingURLs.filter { VideoRecordingFolder.project(ofVideo: $0) == nil }.map { url in
             HomeProject(
                 id: url.path,
                 kind: .recording(url),
@@ -272,7 +299,7 @@ final class HomeModel: ObservableObject {
                 searchText: [name, item.ocrText ?? ""].joined(separator: " ")
             )
         }
-        let projectFiles = VideoProjectRecents.load().map { url in
+        let projectFiles = VideoProjectRecents.load().filter { !inFolders.contains($0.standardizedFileURL.path) }.map { url in
             HomeProject(
                 id: "project:" + url.standardizedFileURL.path,
                 kind: .projectFile(url),
@@ -281,7 +308,7 @@ final class HomeModel: ObservableObject {
                 searchText: url.deletingPathExtension().lastPathComponent
             )
         }
-        projects = (projectFiles + recordings + screenshots).sorted { $0.date > $1.date }
+        projects = (folders + projectFiles + recordings + screenshots).sorted { $0.date > $1.date }
         let ids = Set(projects.map(\.id))
         details = details.filter { ids.contains($0.key) }
         projects.forEach(loadDetailsIfNeeded)
@@ -309,14 +336,14 @@ final class HomeModel: ObservableObject {
             VideoDemoEditorWindowController.open(videoURL: url)
         case .screenshot(let item):
             AnnotationWindowController.open(image: item.fullImage, historyItem: item, historyManager: historyManager)
-        case .projectFile(let url):
+        case .projectFile(let url), .recordingFolder(let url):
             VideoProjectOpener.open(url)
         }
     }
 
     /// Opens the recording (or project) and its Creative Handoff dialog.
     func handoff(_ project: HomeProject) {
-        guard project.isRecording || project.isProjectFile else { return }
+        guard project.isVideo else { return }
         VideoDemoEditorWindowController.handoffOnNextOpen = true
         open(project)
     }
@@ -330,6 +357,8 @@ final class HomeModel: ObservableObject {
             NSWorkspace.shared.activateFileViewerSelecting([url])
         case .projectFile(let url):
             NSWorkspace.shared.activateFileViewerSelecting([url])
+        case .recordingFolder(let project):
+            NSWorkspace.shared.activateFileViewerSelecting([project.deletingLastPathComponent()])
         }
     }
 
@@ -346,7 +375,30 @@ final class HomeModel: ObservableObject {
             reload()
         case .screenshot(let item):
             historyManager.delete(item)
+        case .recordingFolder(let project):
+            let folder = project.deletingLastPathComponent()
+            guard confirmDeletingFolder(folder) else { return }
+            do {
+                try FileManager.default.trashItem(at: folder, resultingItemURL: nil)
+                VideoRecordingFolders.remove(folder)
+                if Settings.lastRecordingPath.hasPrefix(folder.standardizedFileURL.path + "/") { Settings.lastRecordingPath = "" }
+                ToastWindow.show(message: L("Moved to the Trash"), duration: 2)
+            } catch {
+                NSSound.beep()
+            }
+            reload()
         }
+    }
+
+    /// The whole folder goes: the recording, its camera, sound, captions,
+    /// and project. Asks first.
+    private func confirmDeletingFolder(_ folder: URL) -> Bool {
+        let alert = NSAlert()
+        alert.messageText = L("Move “\(folder.lastPathComponent)” to the Trash?")
+        alert.informativeText = L("The whole folder goes to the Trash: the recording, its camera video, its sound files, captions, and project.")
+        alert.addButton(withTitle: L("Move to Trash"))
+        alert.addButton(withTitle: L("Cancel"))
+        return alert.runModal() == .alertFirstButtonReturn
     }
 
     // MARK: Loading
@@ -369,6 +421,8 @@ final class HomeModel: ObservableObject {
                 loaded = await Task.detached(priority: .utility) { Self.screenshotDetails(item) }.value
             case .projectFile(let url):
                 loaded = await Self.projectFileDetails(url)
+            case .recordingFolder(let url):
+                loaded = await Self.projectFileDetails(url, sizeOf: url.deletingLastPathComponent())
             }
             loading.remove(id)
             guard let current = projects.first(where: { $0.id == id }) else { return }
@@ -387,14 +441,15 @@ final class HomeModel: ObservableObject {
 
     /// A project's card: its recording's frame and length, the package's
     /// size on disk.
-    nonisolated private static func projectFileDetails(_ url: URL) async -> HomeProjectDetails {
+    /// `sizeOf`: what to measure (a recording's whole folder; else the package).
+    nonisolated private static func projectFileDetails(_ url: URL, sizeOf measured: URL? = nil) async -> HomeProjectDetails {
         let primary = await Task.detached(priority: .utility) { (try? VideoProjectPackage.open(url))?.contents.project.sourceURL }.value
         var details = HomeProjectDetails()
         if let primary, FileManager.default.fileExists(atPath: primary.path) {
             details = await recordingDetails(primary)
         }
         details.fileSize = await Task.detached(priority: .utility) { () -> Int64 in
-            let files = FileManager.default.enumerator(at: url, includingPropertiesForKeys: [.fileSizeKey])
+            let files = FileManager.default.enumerator(at: measured ?? url, includingPropertiesForKeys: [.fileSizeKey])
             var total: Int64 = 0
             while let file = files?.nextObject() as? URL {
                 total += Int64((try? file.resourceValues(forKeys: [.fileSizeKey]).fileSize) ?? 0)
@@ -641,7 +696,7 @@ private struct HomeLibraryView: View {
                             .contextMenu {
                                 Button(L("Open")) { model.open(project) }
                                 Button(L("Show in Finder")) { model.showInFinder(project) }
-                                if project.isRecording || project.isProjectFile {
+                                if project.isVideo {
                                     Button(L("Creative Handoff…")) { model.handoff(project) }
                                 }
                                 Divider()
@@ -793,7 +848,7 @@ private struct HomeProjectCard: View {
                         .resizable()
                         .scaledToFill()
                 } else {
-                    Image(systemName: project.isRecording || project.isProjectFile ? "video" : "photo")
+                    Image(systemName: project.isVideo ? "video" : "photo")
                         .font(.system(size: 24))
                         .foregroundStyle(HomeColors.ink.opacity(0.25))
                 }

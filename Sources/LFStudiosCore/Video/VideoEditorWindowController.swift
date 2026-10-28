@@ -20,6 +20,13 @@ final class VideoDemoEditorWindowController: NSWindowController, NSWindowDelegat
     }
 
     static func open(videoURL: URL) {
+        // A recording in its own folder opens through that folder's project,
+        // so the edit there stays up to date (VideoRecordingFolder.swift).
+        let sourceURL = canonicalVideoURL(videoURL)
+        if !openControllers.contains(where: { $0.sourceURL == sourceURL }), let project = VideoRecordingFolder.project(ofVideo: videoURL) {
+            VideoProjectOpener.open(project)
+            return
+        }
         open(videoURL: videoURL, projectFile: nil, mode: nil)
     }
 
@@ -29,7 +36,7 @@ final class VideoDemoEditorWindowController: NSWindowController, NSWindowDelegat
 
     /// `projectFile`: the `.lfstudios` project it's opened from; ⌘S saves
     /// back to it.
-    static func open(videoURL: URL, projectFile: URL?, mode: VideoProjectDocument.MediaMode?) {
+    static func open(videoURL: URL, projectFile: URL?, mode: VideoProjectDocument.MediaMode?, folder: VideoProjectDocument.FolderInfo? = nil) {
         let sourceURL = canonicalVideoURL(videoURL)
         let controller: VideoDemoEditorWindowController
         if let existing = openControllers.first(where: { $0.sourceURL == sourceURL }) {
@@ -41,6 +48,7 @@ final class VideoDemoEditorWindowController: NSWindowController, NSWindowDelegat
         if let projectFile {
             controller.model.projectFileURL = projectFile
             controller.model.projectMediaMode = mode
+            controller.model.projectFolder = mode == .folder ? folder : nil
             controller.window?.title = projectFile.deletingPathExtension().lastPathComponent
             controller.window?.representedURL = projectFile
         }

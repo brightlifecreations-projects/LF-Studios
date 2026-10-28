@@ -98,6 +98,16 @@ enum VideoFileIdentity {
         return restamp(canonical)
     }
 
+    /// Puts `id` back on a file that should keep it (a recording copied to
+    /// another drive, whose copy may have lost its stamp).
+    @discardableResult
+    static func stamp(_ id: String, on url: URL) -> Bool {
+        let canonical = canonicalURL(url)
+        guard writeStamp(id, on: canonical) else { return false }
+        writePointer(id, for: canonical)
+        return true
+    }
+
     /// A new ID (a copy carried its original's).
     static func restamp(_ url: URL) -> String? {
         let canonical = canonicalURL(url)
