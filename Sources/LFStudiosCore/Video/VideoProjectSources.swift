@@ -417,10 +417,18 @@ enum VideoSourcesTranscription {
         project: VideoDemoProject,
         primary: VideoCaptionTranscriber.Source,
         languageIdentifier: String?,
+        whisper: VideoWhisperModel? = nil,
         progress: @escaping @Sendable (VideoCaptionTranscriber.Stage) -> Void
     ) async throws -> VideoCaptionTranscriber.Result {
+        // Apple's recognizer, or a downloaded Whisper model (VideoWhisper.swift).
+        func run(_ input: VideoCaptionTranscriber.Source, _ language: String?, _ progress: @escaping @Sendable (VideoCaptionTranscriber.Stage) -> Void) async throws -> VideoCaptionTranscriber.Result {
+            if let whisper {
+                return try await VideoWhisperTranscriber.transcribe(url: input.url, trackIndex: input.trackIndex, timeOffset: input.offset, languageIdentifier: language, model: whisper, progress: progress)
+            }
+            return try await VideoCaptionTranscriber.transcribe(url: input.url, trackIndex: input.trackIndex, timeOffset: input.offset, languageIdentifier: language, progress: progress)
+        }
         guard project.hasAppendedSources else {
-            return try await VideoCaptionTranscriber.transcribe(url: primary.url, trackIndex: primary.trackIndex, timeOffset: primary.offset, languageIdentifier: languageIdentifier, progress: progress)
+            return try await run(primary, languageIdentifier, progress)
         }
         var words: [VideoCaptionWord] = []
         var language = languageIdentifier
@@ -442,7 +450,7 @@ enum VideoSourcesTranscription {
             }
             do {
                 // The first recording's language is used for the rest.
-                let result = try await VideoCaptionTranscriber.transcribe(url: input.url, trackIndex: input.trackIndex, timeOffset: input.offset, languageIdentifier: language, progress: scaled)
+                let result = try await run(input, language, scaled)
                 language = language ?? result.language
                 words += result.words.compactMap { word in
                     guard word.start < source.duration else { return nil }

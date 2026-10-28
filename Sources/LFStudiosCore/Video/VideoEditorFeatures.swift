@@ -64,7 +64,9 @@ extension VideoEditorModel {
     }
 
     /// Transcribes the narration on this Mac and lays it out as captions.
-    func generateCaptions() {
+    /// `whisper`: transcribe with this downloaded Whisper model instead of
+    /// Apple's recognizer (VideoWhisper.swift).
+    func generateCaptions(whisper: VideoWhisperModel? = nil) {
         guard captionTask == nil else { return }
         guard hasAudio else {
             captionJob = VideoCaptionJob(stage: .preparing, error: VideoCaptionTranscriber.Failure.noAudio.localizedDescription)
@@ -94,7 +96,7 @@ extension VideoEditorModel {
             do {
                 // The voice of every recording in the video, in order
                 // (VideoProjectSources.swift).
-                let result = try await VideoSourcesTranscription.transcribe(project: snapshot, primary: source, languageIdentifier: language, progress: report)
+                let result = try await VideoSourcesTranscription.transcribe(project: snapshot, primary: source, languageIdentifier: language, whisper: whisper, progress: report)
                 guard let self, self.captionToken == token else { return }
                 self.captionTask = nil
                 self.captionToken = nil
@@ -165,10 +167,10 @@ extension VideoEditorModel {
     }
 
     /// A new transcript replaces every line — ask first when there are any.
-    func transcribeAgain() {
+    func transcribeAgain(whisper: VideoWhisperModel? = nil) {
         guard captionTask == nil else { return }
         guard !project.captions.isEmpty else {
-            generateCaptions()
+            generateCaptions(whisper: whisper)
             return
         }
         let alert = NSAlert()
@@ -178,7 +180,7 @@ extension VideoEditorModel {
         alert.addButton(withTitle: L("Cancel"))
         guard alert.runModal() == .alertFirstButtonReturn else { return }
         captionJob = nil
-        generateCaptions()
+        generateCaptions(whisper: whisper)
     }
 
     func cancelCaptions() {
@@ -844,9 +846,11 @@ extension VideoEditorModel {
         let wasNarrow = project.canReframe
         // Following the cursor needs its recorded path.
         let canFollow = !project.cursorSamples.isEmpty
+        let adapted = project.ratioShared != nil
         setStyle { project in
-            project.apply(aspectPreset: preset)
-            if project.canReframe, !wasNarrow, canFollow { project.reframe = true }
+            // Adapted ratios bring their own version back (VideoRatioVersions.swift).
+            project.switchRatio(to: preset)
+            if !adapted, project.canReframe, !wasNarrow, canFollow { project.reframe = true }
         }
         if project.reframeActive, !wasNarrow {
             showNotice(L("Filling the frame — the view follows your cursor"), symbol: "arrow.left.and.right.square")

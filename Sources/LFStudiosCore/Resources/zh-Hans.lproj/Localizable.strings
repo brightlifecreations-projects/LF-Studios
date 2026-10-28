@@ -30,10 +30,16 @@
 	<string>%2$@ 的%1$@截屏</string>
 	<key>%@ capture, %@</key>
 	<string>%1$@截屏，%2$@</string>
+	<key>%@ couldn't be downloaded: %@</key>
+	<string>无法下载“%@”：%@</string>
 	<key>%@ found</key>
 	<string>已找到：%@</string>
 	<key>%@ fullscreen</key>
 	<string>%@ 全屏</string>
+	<key>%@ has its own version now</key>
+	<string>%@ 现在有了自己的版本</string>
+	<key>%@ is too much for this Mac and would be very slow or fail. Try %@ instead.</key>
+	<string>%@ 对这台 Mac 来说太重，会非常慢或失败。请改用 %@。</string>
 	<key>%@ isn't supported for captions on this Mac. Pick another language.</key>
 	<string>这台 Mac 不支持用%@生成字幕。请选择其他语言。</string>
 	<key>%@ long</key>
@@ -60,6 +66,8 @@
 	<string>%@ · %@ × %@ 图像</string>
 	<key>%@ · %lld fps</key>
 	<string>%@ · %lld fps</string>
+	<key>%@ · about %@</key>
+	<string>%@ · 约 %@</string>
 	<key>%@ · on your clipboard — paste it anywhere</key>
 	<string>%@ · 已在剪贴板中 — 可粘贴到任何地方</string>
 	<key>%@ × %@ doesn't fit on this display</key>
@@ -234,6 +242,12 @@
 	<string>准确度</string>
 	<key>Accurate</key>
 	<string>精确</string>
+	<key>Adapt to This Ratio</key>
+	<string>适配此比例</string>
+	<key>Adapt to this ratio</key>
+	<string>适配此比例</string>
+	<key>Adapted to %@: %@</key>
+	<string>已适配 %@：%@</string>
 	<key>Add Arrow</key>
 	<string>添加箭头</string>
 	<key>Add Blur</key>
@@ -352,6 +366,10 @@
 	<string>允许屏幕录制</string>
 	<key>Almost done</key>
 	<string>即将完成</string>
+	<key>Also look for these words</key>
+	<string>同时查找这些词</string>
+	<key>Also scan the camera video</key>
+	<string>同时扫描摄像头视频</string>
 	<key>Always show the arrow</key>
 	<string>始终显示箭头</string>
 	<key>Amber Fold</key>
@@ -360,6 +378,8 @@
 	<string>角度</string>
 	<key>Angle, distance, softness, opacity, color, and an inner edge</key>
 	<string>角度、距离、柔和度、不透明度、颜色和内边缘</string>
+	<key>Animation</key>
+	<string>动画</string>
 	<key>Annotate Last Screenshot</key>
 	<string>标注上一张截屏</string>
 	<key>Annotation</key>
@@ -376,6 +396,8 @@
 	<string>外观</string>
 	<key>Append Video…</key>
 	<string>追加视频…</string>
+	<key>Apple</key>
+	<string>Apple</string>
 	<key>Apple Shortcuts</key>
 	<string>Apple 快捷键</string>
 	<key>Apple screenshot shortcuts disabled.</key>
@@ -488,6 +510,8 @@
 	<string>已将条形码内容拷贝到剪贴板</string>
 	<key>Barcodes</key>
 	<string>条形码</string>
+	<key>Base</key>
+	<string>Base</string>
 	<key>Based on Shotnix (MIT License)</key>
 	<string>基于 Shotnix（MIT 许可证）</string>
 	<key>Begins scrolling when the recording starts</key>
@@ -508,6 +532,14 @@
 	<string>蓝色</string>
 	<key>Blur</key>
 	<string>模糊</string>
+	<key>Blur %@ %@</key>
+	<string>模糊%@ %@</string>
+	<key>Blur Selected (%lld)</key>
+	<string>模糊所选项（%lld）</string>
+	<key>Blurred</key>
+	<string>已模糊</string>
+	<key>Blurred %lld items — adjust or delete them on the timeline</key>
+	<string>已模糊 %lld 项——可在时间线上调整或删除</string>
 	<key>Blurred area</key>
 	<string>模糊区域</string>
 	<key>Blurs fast camera moves the way a real camera does.</key>
@@ -528,6 +560,8 @@
 	<string>左下</string>
 	<key>Bottom right</key>
 	<string>右下</string>
+	<key>Bounce</key>
+	<string>弹跳</string>
 	<key>Bright</key>
 	<string>明亮</string>
 	<key>Brightness</key>
@@ -630,6 +664,8 @@
 	<string>峡谷丝绸</string>
 	<key>Caption</key>
 	<string>字幕</string>
+	<key>Caption animation</key>
+	<string>字幕动画</string>
 	<key>Caption removed</key>
 	<string>已移除字幕</string>
 	<key>Caption style %@</key>
@@ -640,6 +676,8 @@
 	<string>字幕“%@”</string>
 	<key>Captions</key>
 	<string>字幕</string>
+	<key>Captions already made stay. To use this model again, download it again.</key>
+	<string>已生成的字幕会保留。要再次使用此模型，请重新下载。</string>
 	<key>Captions are drawn into the picture, and a subtitles file is saved next to the video.</key>
 	<string>字幕会绘制在画面中，并在视频旁存储一个字幕文件。</string>
 	<key>Captions are drawn into the picture.</key>
@@ -698,6 +736,8 @@
 	<string>除非你在此处设定保留限制，否则截屏会一直保留在历史记录中，直到你将其删除。“清理”会清空历史记录的废纸篓（其中是仍可撤销删除的截屏），并移除不再被任何截屏使用的文件。</string>
 	<key>Carbon Arc</key>
 	<string>碳弧</string>
+	<key>Card number</key>
+	<string>银行卡号</string>
 	<key>Cards use your background, and the timeline grows to fit them. The “Made with LF Studios” end card is separate — it's in the export options.</key>
 	<string>卡片使用你的背景，时间线会随之延长。“Made with LF Studios”结尾画面是单独的 — 它位于导出选项中。</string>
 	<key>Center</key>
@@ -822,6 +862,8 @@
 	<string>点按</string>
 	<key>Clicks — drag one to retime it, ⌫ removes the selected one</key>
 	<string>点按 — 拖移可调整时间，按 ⌫ 可移除所选项</string>
+	<key>Client names, project code names… (separate with commas)</key>
+	<string>客户名称、项目代号……（用逗号分隔）</string>
 	<key>Clip</key>
 	<string>片段</string>
 	<key>Clip %lld</key>
@@ -1104,6 +1146,8 @@
 	<string>删除所选内容</string>
 	<key>Delete selection (⌫)</key>
 	<string>删除所选内容（⌫）</string>
+	<key>Delete the %@ model?</key>
+	<string>要删除“%@”模型吗？</string>
 	<key>Delete “%@”?</key>
 	<string>要删除“%@”吗？</string>
 	<key>Deleted captures waiting in History's trash and files no capture uses are removed for good, along with %lld captures past your History limit. The rest of your history stays.</key>
@@ -1174,6 +1218,16 @@
 	<string>连按两次以编辑，或拖移到其他 App。Command-C 拷贝，Command-S 存储，Esc 键关闭。</string>
 	<key>Double-click to show the recording in Finder</key>
 	<string>连按两次以在“访达”中显示录制内容</string>
+	<key>Download</key>
+	<string>下载</string>
+	<key>Download %@ (%@)</key>
+	<string>下载 %@（%@）</string>
+	<key>Download the %@ model first, in the Captions tab or Settings → General.</key>
+	<string>请先下载“%@”模型（在“字幕”标签页或“设置”→“通用”中）。</string>
+	<key>Downloaded · %@ on this Mac</key>
+	<string>已下载 · 在此 Mac 上占用 %@</string>
+	<key>Downloading %@…</key>
+	<string>正在下载 %@…</string>
 	<key>Downloading the language model…</key>
 	<string>正在下载语言模型…</string>
 	<key>Drag captions on the preview to place them anywhere</key>
@@ -1262,6 +1316,8 @@
 	<string>给 %@ 发邮件</string>
 	<key>Email QR found</key>
 	<string>找到电子邮件二维码</string>
+	<key>Email address</key>
+	<string>电子邮件地址</string>
 	<key>Email address copied</key>
 	<string>已拷贝电子邮件地址</string>
 	<key>Ember</key>
@@ -1284,6 +1340,8 @@
 	<string>到这里结束</string>
 	<key>Ends</key>
 	<string>结束</string>
+	<key>Engine</key>
+	<string>引擎</string>
 	<key>English</key>
 	<string>英语</string>
 	<key>Enhance Voice</key>
@@ -1330,12 +1388,18 @@
 	<string>导出</string>
 	<key>Export (⌘E)</key>
 	<string>导出（⌘E）</string>
+	<key>Export All Ratios…</key>
+	<string>导出所有比例…</string>
 	<key>Export Format</key>
 	<string>导出格式</string>
+	<key>Export Here</key>
+	<string>导出到此处</string>
 	<key>Export Presets…</key>
 	<string>导出预设…</string>
 	<key>Export Video…</key>
 	<string>导出视频…</string>
+	<key>Export all ratios</key>
+	<string>导出所有比例</string>
 	<key>Export and put the file on the clipboard — paste it into Slack, Mail, or Finder</key>
 	<string>导出并将文件放到剪贴板 — 可粘贴到 Slack、“邮件”或“访达”</string>
 	<key>Export cancelled</key>
@@ -1358,6 +1422,8 @@
 	<string>已在未“增强人声”的情况下导出 — 增强未能完成。</string>
 	<key>Exported · %@</key>
 	<string>已导出 · %@</string>
+	<key>Exporting %lld versions</key>
+	<string>正在导出 %lld 个版本</string>
 	<key>Exporting %lld%%</key>
 	<string>正在导出 %lld%%</string>
 	<key>Exporting a video for the clipboard</key>
@@ -1368,6 +1434,10 @@
 	<string>正在导出…</string>
 	<key>Exporting… %lld%%</key>
 	<string>正在导出…%lld%%</string>
+	<key>Exports %@ in one go</key>
+	<string>一次导出 %@</string>
+	<key>Exports %@ into this folder.</key>
+	<string>将 %@ 导出到此文件夹。</string>
 	<key>Exports at the level video sites expect (−16 LUFS) without clipping</key>
 	<string>按视频网站要求的音量导出（−16 LUFS），不会削波</string>
 	<key>Exports without sound — to quiet just the preview, press M</key>
@@ -1376,10 +1446,14 @@
 	<string>导出…</string>
 	<key>Extra-fluid curves for slow, cinematic demos.</key>
 	<string>超流畅的曲线，适合慢节奏、电影感的演示。</string>
+	<key>Face</key>
+	<string>人脸</string>
 	<key>Face tracking</key>
 	<string>面部跟踪</string>
 	<key>Face tracking canceled</key>
 	<string>已取消面部跟踪</string>
+	<key>Faces, email addresses, phone and card numbers, keys and passwords on screen, and your own words. Read on this Mac with Apple's Vision; nothing is blurred until you choose.</key>
+	<string>人脸、电子邮件地址、电话和银行卡号、屏幕上的密钥和密码，以及你自己的词语。在此 Mac 上用 Apple 的 Vision 识别；在你选择之前不会模糊任何内容。</string>
 	<key>Fade in</key>
 	<string>淡入</string>
 	<key>Fade in from black</key>
@@ -1388,12 +1462,16 @@
 	<string>淡出</string>
 	<key>Fade out to black</key>
 	<string>淡出到黑色</string>
+	<key>Fade up</key>
+	<string>上浮淡入</string>
 	<key>Fades out after a moment without movement</key>
 	<string>片刻不移动后淡出</string>
 	<key>Fast</key>
 	<string>快速</string>
 	<key>Fast-forward moments where nothing happens</key>
 	<string>快进没有动静的时刻</string>
+	<key>Fastest, least accurate</key>
+	<string>最快，最不准确</string>
 	<key>File</key>
 	<string>文件</string>
 	<key>File %lld of %lld: %@</key>
@@ -1416,10 +1494,18 @@
 	<string>正在填满画面 — 视图会跟随你的指针</string>
 	<key>Filmed yourself on a phone or camera? Add that video and it shows in the bubble, lined up by sound.</key>
 	<string>用手机或相机拍了自己？添加该视频，它会显示在气泡中，并按声音对齐。</string>
+	<key>Find Private Info</key>
+	<string>查找隐私信息</string>
+	<key>Find Private Info…</key>
+	<string>查找隐私信息…</string>
+	<key>Find faces, emails, phone and card numbers, and keys in the video, then choose what to blur</key>
+	<string>查找视频中的人脸、电子邮件、电话和银行卡号以及密钥，然后选择要模糊的内容</string>
 	<key>Find in Transcript</key>
 	<string>在文字稿中查找</string>
 	<key>Find in the transcript</key>
 	<string>在文字稿中查找</string>
+	<key>Find private info</key>
+	<string>查找隐私信息</string>
 	<key>Find “%@”</key>
 	<string>查找“%@”</string>
 	<key>Finds typing and plays it faster, as speed blocks you can change</key>
@@ -1460,12 +1546,18 @@
 	<string>字体</string>
 	<key>For Final Cut Pro, DaVinci Resolve, and Adobe Premiere Pro</key>
 	<string>用于 Final Cut Pro、DaVinci Resolve 和 Adobe Premiere Pro</string>
+	<key>For captions with the Whisper engine. Models are downloaded from Hugging Face only when you choose one; transcribing happens on this Mac and nothing is uploaded.</key>
+	<string>用于 Whisper 引擎生成字幕。只有在你选择模型时才会从 Hugging Face 下载；转写在此 Mac 上进行，不会上传任何内容。</string>
 	<key>For the camera only; the screen stays as recorded.</key>
 	<string>仅作用于摄像头；屏幕保持录制时的样子。</string>
+	<key>For things behind you, like a whiteboard or a document</key>
+	<string>用于你身后的东西，例如白板或文件</string>
 	<key>Forever</key>
 	<string>永久</string>
 	<key>Format</key>
 	<string>格式</string>
+	<key>Found %lld</key>
+	<string>找到 %lld 项</string>
 	<key>Frame</key>
 	<string>边框</string>
 	<key>Frame copied</key>
@@ -1592,6 +1684,8 @@
 	<string>越高跟随越平缓；越低越能跟上快速移动</string>
 	<key>Highlight</key>
 	<string>高亮</string>
+	<key>Highlight box</key>
+	<string>高亮框</string>
 	<key>Highlight color</key>
 	<string>高亮颜色</string>
 	<key>Highlight words</key>
@@ -1698,6 +1792,8 @@
 	<string>跳转到这里</string>
 	<key>Jump one second</key>
 	<string>跳转一秒</string>
+	<key>Karaoke fill</key>
+	<string>卡拉 OK 填充</string>
 	<key>Keep</key>
 	<string>保留</string>
 	<key>Keep Editing</key>
@@ -1706,6 +1802,8 @@
 	<string>继续工作</string>
 	<key>Keep captures</key>
 	<string>保留截屏</string>
+	<key>Keep editing — close this and it carries on.</key>
+	<string>继续编辑吧——关闭此窗口后扫描仍会继续。</string>
 	<key>Keep editing — the words appear here when LF Studios is done listening.</key>
 	<string>你可以继续编辑 — LF Studios 听完后，字词会显示在这里。</string>
 	<key>Keep face centered</key>
@@ -1724,6 +1822,8 @@
 	<string>选择“最近 500 张截屏”将立即从历史记录中移除 %lld 张较早的截屏。此操作无法撤销。</string>
 	<key>Keeps loud and quiet words close together</key>
 	<string>让响亮和轻柔的词音量接近</string>
+	<key>Key or password</key>
+	<string>密钥或密码</string>
 	<key>Keyboard</key>
 	<string>键盘</string>
 	<key>Keyboard Shortcuts</key>
@@ -1794,6 +1894,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>语言</string>
 	<key>Large</key>
 	<string>大</string>
+	<key>Large v3 Turbo</key>
+	<string>Large v3 Turbo</string>
 	<key>Larger than the recording — text may look softer than at a lower resolution.</key>
 	<string>大于录制内容 — 文字可能不如较低分辨率时清晰。</string>
 	<key>Last %lld captures</key>
@@ -1864,6 +1966,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>外观</string>
 	<key>Looking for your face in the camera video. This happens once; the result is kept.</key>
 	<string>正在摄像头视频中寻找面部。只需进行一次，结果会被保留。</string>
+	<key>Looking through the video…</key>
+	<string>正在检查视频…</string>
 	<key>Loop</key>
 	<string>循环</string>
 	<key>Loop to fill</key>
@@ -1954,6 +2058,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>镜像</string>
 	<key>Mist</key>
 	<string>薄雾</string>
+	<key>Model</key>
+	<string>模型</string>
 	<key>More</key>
 	<string>更多</string>
 	<key>More caption options</key>
@@ -1966,6 +2072,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>苔绿</string>
 	<key>Moss Glow</key>
 	<string>苔藓微光</string>
+	<key>Most accurate, slowest</key>
+	<string>最准确，最慢</string>
 	<key>Motion</key>
 	<string>运动</string>
 	<key>Motion blur</key>
@@ -2162,6 +2270,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>此视频不需要</string>
 	<key>Not now</key>
 	<string>以后再说</string>
+	<key>Nothing private found</key>
+	<string>未发现隐私信息</string>
 	<key>Nothing to clean up — everything belongs to recordings you still have</key>
 	<string>没有可清理的内容 — 所有数据都属于你仍保留的录制内容</string>
 	<key>Nothing was recorded — the screen didn't send any picture. Try again.</key>
@@ -2186,6 +2296,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>更早</string>
 	<key>On your clipboard · %@</key>
 	<string>已在剪贴板中 · %@</string>
+	<key>One word at a time</key>
+	<string>逐词显示</string>
 	<key>Only %@ free on your disk — this may not fit. Free up space or save to another drive.</key>
 	<string>你的磁盘上仅剩 %@ 可用空间 — 可能放不下。请释放空间或存储到其他磁盘。</string>
 	<key>Opacity</key>
@@ -2254,6 +2366,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>兰花</string>
 	<key>Original</key>
 	<string>原始</string>
+	<key>Original shape</key>
+	<string>原始比例</string>
 	<key>Otherwise, LF Studios switches languages the next time it opens.</key>
 	<string>否则，LF Studios 会在下次打开时切换语言。</string>
 	<key>Out</key>
@@ -2320,6 +2434,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>电话</string>
 	<key>Phone QR found</key>
 	<string>找到电话二维码</string>
+	<key>Phone number</key>
+	<string>电话号码</string>
 	<key>Phone overlay</key>
 	<string>手机界面叠层</string>
 	<key>Pick a preset as My Style (Presets ▸ Edit Presets ▸ Use as My Style), then one click puts it on any video.</key>
@@ -2390,12 +2506,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>播客人声已就绪</string>
 	<key>Polar Dawn</key>
 	<string>极地晨光</string>
+	<key>Pop-in words</key>
+	<string>弹出词语</string>
 	<key>Porcelain</key>
 	<string>瓷白</string>
 	<key>Position</key>
 	<string>位置</string>
 	<key>Positions only: no text, no keys</key>
 	<string>仅位置：不含文本和按键</string>
+	<key>Possible key</key>
+	<string>可能是密钥</string>
 	<key>Preferences</key>
 	<string>设置</string>
 	<key>Preparing to copy…</key>
@@ -2554,6 +2674,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>遮盖强度</string>
 	<key>Redo</key>
 	<string>重做</string>
+	<key>Redo Adapt to This Ratio</key>
+	<string>重做“适配此比例”</string>
 	<key>Redo Add Arrow</key>
 	<string>重做添加箭头</string>
 	<key>Redo Add Blur</key>
@@ -2620,6 +2742,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做开启自动缩放</string>
 	<key>Redo Background</key>
 	<string>重做背景更改</string>
+	<key>Redo Blur Private Info</key>
+	<string>重做“模糊隐私信息”</string>
 	<key>Redo Blur Style</key>
 	<string>重做模糊样式更改</string>
 	<key>Redo Camera Change</key>
@@ -2842,6 +2966,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做缩放更改</string>
 	<key>Reels, TikTok, Shorts</key>
 	<string>Reels、TikTok、Shorts</string>
+	<key>Reframes zooms, moves the camera bubble, and keeps captions in the safe area for %@. This ratio then keeps its own version.</key>
+	<string>为 %@ 重新取景缩放、移动摄像头气泡，并让字幕保持在安全区内。此后该比例会保留自己的版本。</string>
 	<key>Regular</key>
 	<string>常规</string>
 	<key>Releasing the mouse takes the shot. Hold ⇧ as you release to adjust the selection first — drag its edges, nudge it with the arrow keys, then press Return.</key>
@@ -3106,6 +3232,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>正在存储屏幕录制内容</string>
 	<key>Saving…</key>
 	<string>正在存储…</string>
+	<key>Scan Again</key>
+	<string>重新扫描</string>
 	<key>Scan QR Code</key>
 	<string>扫描二维码</string>
 	<key>Screen Recording</key>
@@ -3168,6 +3296,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>选择</string>
 	<key>Select All</key>
 	<string>全选</string>
+	<key>Select None</key>
+	<string>全不选</string>
 	<key>Select a clip on the timeline to mute it or fade it in and out.</key>
 	<string>在时间线上选择一个片段即可将其静音或设置淡入淡出。</string>
 	<key>Select a range to cut</key>
@@ -3670,6 +3800,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>这台 Mac 无法在这两种语言之间翻译。请选择其他语言。</string>
 	<key>This Mac has no ProRes chip, so the re-encoded files take a while — the progress shows how long.</key>
 	<string>这台 Mac 没有 ProRes 芯片，重新编码的文件需要一些时间 — 进度会显示要多久。</string>
+	<key>This Mac is too old or slow for Whisper. Use Apple's captions instead.</key>
+	<string>这台 Mac 太旧或太慢，无法运行 Whisper。请改用 Apple 的字幕。</string>
 	<key>This Week</key>
 	<string>本周</string>
 	<key>This app</key>
@@ -3736,6 +3868,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>仅时刻：绝不记录是哪些键</string>
 	<key>Tint</key>
 	<string>色调</string>
+	<key>Tiny</key>
+	<string>Tiny</string>
 	<key>Tips</key>
 	<string>提示</string>
 	<key>Title</key>
@@ -3770,6 +3904,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>转录</string>
 	<key>Transcribe Again</key>
 	<string>重新转录</string>
+	<key>Transcribe Again with Whisper…</key>
+	<string>用 Whisper 重新转写…</string>
 	<key>Transcribe Again…</key>
 	<string>重新转录…</string>
 	<key>Transcribe Narration (Captions, Edit by Text)</key>
@@ -3778,6 +3914,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>要重新转录吗？</string>
 	<key>Transcribe the narration to search its words</key>
 	<string>转录旁白后即可搜索其中的词语</string>
+	<key>Transcribe with Whisper</key>
+	<string>用 Whisper 转写</string>
 	<key>Transcribe…</key>
 	<string>转录…</string>
 	<key>Transcribing “%@”</key>
@@ -3834,6 +3972,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>在此输入…</string>
 	<key>Type in a text annotation</key>
 	<string>在文字标注中输入</string>
+	<key>Typewriter</key>
+	<string>打字机</string>
 	<key>Typing</key>
 	<string>打字</string>
 	<key>Typing now plays at %@</key>
@@ -3850,6 +3990,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销</string>
 	<key>Undo / redo</key>
 	<string>撤销/重做</string>
+	<key>Undo Adapt to This Ratio</key>
+	<string>撤销“适配此比例”</string>
 	<key>Undo Add Arrow</key>
 	<string>撤销添加箭头</string>
 	<key>Undo Add Blur</key>
@@ -3916,6 +4058,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销开启自动缩放</string>
 	<key>Undo Background</key>
 	<string>撤销背景更改</string>
+	<key>Undo Blur Private Info</key>
+	<string>撤销“模糊隐私信息”</string>
 	<key>Undo Blur Style</key>
 	<string>撤销模糊样式更改</string>
 	<key>Undo Camera Change</key>
@@ -4154,6 +4298,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>更新</string>
 	<key>Upload Custom Image</key>
 	<string>选取自定图像</string>
+	<key>Use %@</key>
+	<string>使用 %@</string>
 	<key>Use as My Style</key>
 	<string>用作我的风格</string>
 	<key>Use the largest size that fits (%@ × %@)</key>
@@ -4228,6 +4374,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>新功能</string>
 	<key>While this zoom plays, the camera bubble moves to: %@</key>
 	<string>此缩放播放时，摄像头气泡移到：%@</string>
+	<key>Whisper</key>
+	<string>Whisper</string>
+	<key>Whisper Models</key>
+	<string>Whisper 模型</string>
+	<key>Whisper runs on this Mac. The model is downloaded once from Hugging Face; your recording is never uploaded.</key>
+	<string>Whisper 在此 Mac 上运行。模型只需从 Hugging Face 下载一次；你的录制内容绝不会上传。</string>
 	<key>White</key>
 	<string>白色</string>
 	<key>Whole video</key>
@@ -4312,6 +4464,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>你的文字</string>
 	<key>Your video's background shows behind you — found on this Mac, frame by frame.</key>
 	<string>视频背景会显示在你身后 — 在这台 Mac 上逐帧识别。</string>
+	<key>Your word</key>
+	<string>你的词语</string>
 	<key>Your words, as text</key>
 	<string>把你的话变成文字</string>
 	<key>Zoom</key>
@@ -4352,6 +4506,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>对准或调整大小</string>
 	<key>all shortcuts</key>
 	<string>所有快捷键</string>
+	<key>captions</key>
+	<string>字幕</string>
 	<key>captions burned in</key>
 	<string>已嵌入字幕</string>
 	<key>chapters</key>
@@ -4402,6 +4558,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>画面中无字幕</string>
 	<key>no end card</key>
 	<string>无结尾画面</string>
+	<key>not downloaded</key>
+	<string>未下载</string>
 	<key>outro card</key>
 	<string>片尾卡</string>
 	<key>play</key>
@@ -4424,6 +4582,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>系统</string>
 	<key>text, highlight, arrow, blur</key>
 	<string>文字、高亮、箭头、模糊</string>
+	<key>the camera</key>
+	<string>摄像头</string>
 	<key>the video</key>
 	<string>视频</string>
 	<key>this recording</key>

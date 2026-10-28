@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased]
+## [1.4.0] - Unreleased
 
 Everything new starts off, and is turned on with its own button or switch.
 
@@ -17,12 +17,13 @@ Everything new starts off, and is turned on with its own button or switch.
 - **Export audio only.** The export window has **Video / Audio only**. Audio only saves the edit's sound as M4A (AAC), WAV (24-bit), or AIFF (24-bit), with the same mix and loudness as the video.
 - **Speaker notes.** A Notes button in the recording bar (and in the bar while recording) opens a floating teleprompter. It never shows up in a recording, or in screenshots or screen sharing. Paste or type your notes, set the text size, and scroll by hand (arrow keys) or let it scroll at the speed you choose. Space or the play button pauses and resumes. A Pause / Resume Speaker Notes shortcut can be set in Settings → Shortcuts; it has none to start with. **Start with recording** begins scrolling when the recording starts. The notes are remembered between recordings, and a take recorded with the panel open keeps them in its project (the Captions tab shows them, with Copy).
 - **Speaker notes in Creative Handoff.** The Handoff dialog has **Include speaker notes**, off to start with. When it's on, the notes are added as Notes.txt.
+- **Whisper captions.** The Captions tab has **Engine: Apple / Whisper** (Apple, as before, to start with) and **Transcribe with Whisper**. Whisper runs on the Mac with Core ML (WhisperKit). Pick a model, from Tiny (fastest, about 75 MB) to Large v3 Turbo (most accurate, about 630 MB). It's downloaded from Hugging Face only when you click Download, with progress and Cancel, and that download is the only time Whisper uses the network. Your recording is never uploaded. Settings → General → Whisper Models lists the models, with Download and Delete. If a model is too much for the Mac, LF Studios says so and suggests a smaller one. Whisper's words work like Apple's: editing, translation, animations, and .srt and .vtt export.
+- **Caption animations.** Caption style ▸ **Animation**: None (as before, to start with), Pop-in words, One word at a time, Karaoke fill, Typewriter, Bounce, Fade up, or Highlight box. They follow the spoken words; typed and translated captions spread their words over the caption. They work with custom fonts, every caption position (one caption's own spot too) and every aspect ratio, and are saved in style presets. The preview and the export draw the same frames.
+- **Adapt to this ratio.** After you switch the aspect ratio, **Adapt to this ratio** (beside the ratio menu, and in it) reframes the zooms so what they zoom on stays in frame, moves the camera bubble (to the top on 9:16), and keeps captions in the safe area. It's one ⌘Z step. From then on that ratio keeps its own zooms' framing, camera place and size, camera layouts and caption positions. Switching back brings each ratio's version back, so 16:9, 9:16 and 1:1 versions of one project live side by side. Cuts, caption text, styles and zooms themselves stay shared. **Export all ratios** exports every version in one go into a folder you choose.
+- **Find private info.** **Find private info** (in the bar above the preview) scans the video in the background with Apple's Vision, with progress and Cancel. It looks for faces, email addresses, phone numbers, card numbers, API keys, tokens and passwords shown as text, and words you type (client names, for example). Long random-looking text is listed as "Possible key", since that's a guess. **Also scan the camera video** (off to start with) looks at things behind you, like a whiteboard. Each find is followed over time, also while the page scrolls. The list shows a thumbnail, the type and the time range, with a checkbox for each. Nothing is ticked, and nothing is blurred until you choose. **Blur selected** turns the ticked items into normal blur blocks that follow them, in one ⌘Z step; move, resize or delete them like any blur. A second scan of the same video is instant. Everything stays on the Mac.
 
 ### Privacy
 - While a password field has focus (or macOS has secure keyboard entry on), neither typing option records anything: no text cursor positions and no key-press times. A key pressed just before the field was noticed is dropped too. Recording resumes when focus leaves the field.
-
-### Still to check
-- Keep face centered has been tested with made-up face positions and on computer-made video only. The check on a real camera video (a 10–15 s face-test.mov) is still to do.
 
 ## [1.3.0] - 2026-10-27
 

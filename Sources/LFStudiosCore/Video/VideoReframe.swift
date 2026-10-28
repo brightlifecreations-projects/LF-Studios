@@ -46,7 +46,8 @@ struct VideoReframe {
         canvas: CGSize,
         stage: CGRect,
         crop: VideoCropRect,
-        duration: Double
+        duration: Double,
+        zoomSubject: ((Double) -> CGPoint?)? = nil
     ) -> VideoReframe {
         let count = max(Int((duration * sampleRate).rounded(.up)) + 1, 2)
         let half = Double(windowFraction) / 2
@@ -68,6 +69,23 @@ struct VideoReframe {
             return (canvasX - state.centerX) * state.scale + 0.5
         }
 
+        /// "Adapt to this ratio": while a zoom plays, what it zooms on
+        /// (`zoomSubject`, recording-normalized at a source time) is kept
+        /// in frame instead of the pointer.
+        func subjectX(atTimeline time: Double, cursor: inout SegmentCursor) -> Double? {
+            guard let zoomSubject else { return nil }
+            let state = camera.state(at: time)
+            guard state.scale > 1.05, let point = zoomSubject(cursor.sourceTime(forTimelineTime: time)) else { return nil }
+            let inCrop = crop.map(point)
+            let canvasX = Double(stage.minX + stage.width * inCrop.x) / Double(max(canvas.width, 1))
+            return (canvasX - state.centerX) * state.scale + 0.5
+        }
+        func followed(atTimeline time: Double, cursor: inout SegmentCursor, subjectCursor: inout SegmentCursor) -> Double? {
+            subjectX(atTimeline: time, cursor: &subjectCursor) ?? pointerX(atTimeline: time, cursor: &cursor)
+        }
+        var nowSubject = SegmentCursor(segments: segments)
+        var aheadSubject = SegmentCursor(segments: segments)
+
         var centers = [Double](repeating: 0.5, count: count)
         var startCursor = SegmentCursor(segments: segments)
         let start = pointerX(atTimeline: 0.3, cursor: &startCursor) ?? 0.5
@@ -81,7 +99,7 @@ struct VideoReframe {
             let t = Double(index) * dt
             // Look a little ahead so the frame is already moving when the
             // pointer gets there.
-            if let ahead = pointerX(atTimeline: min(t + 0.25, duration), cursor: &aheadCursor) {
+            if let ahead = followed(atTimeline: min(t + 0.25, duration), cursor: &aheadCursor, subjectCursor: &aheadSubject) {
                 if ahead > leash + dead { leash = ahead - dead }
                 if ahead < leash - dead { leash = ahead + dead }
             }
@@ -89,8 +107,8 @@ struct VideoReframe {
             let acceleration = omega * omega * (target - position) - 2 * omega * velocity
             velocity += acceleration * dt
             position += velocity * dt
-            // Hard rule: the pointer never leaves the frame.
-            if let now = pointerX(atTimeline: t, cursor: &nowCursor) {
+            // Hard rule: the pointer (or the zoom's subject) never leaves the frame.
+            if let now = followed(atTimeline: t, cursor: &nowCursor, subjectCursor: &nowSubject) {
                 let margin = Double(windowFraction) * 0.08
                 if now > position + half - margin { position = now - half + margin; velocity = 0 }
                 if now < position - half + margin { position = now + half - margin; velocity = 0 }

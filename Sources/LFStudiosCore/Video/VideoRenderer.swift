@@ -797,8 +797,8 @@ final class VideoFrameRenderer {
 
         // 4. Overlays (text, arrows, highlights, blur). Images are pinned
         // to the frame, so they come later, with the output layers.
-        for overlay in plan.overlays where overlay.effect.kind != .image && overlay.isShowing(at: timelineTime) {
-            scene = composite(overlay: overlay, over: scene, plan: plan, geometry: geometry, time: timelineTime, solid: overlay.effect.id == options.solidOverlay)
+        for overlay in plan.overlays where overlay.effect.kind != .image && overlay.effect.onCamera != true && overlay.isShowing(at: timelineTime) {
+            scene = composite(overlay: overlay, over: scene, plan: plan, geometry: geometry, time: timelineTime, sourceTime: sourceTime, solid: overlay.effect.id == options.solidOverlay)
         }
 
         // Loupes magnify the recording and its annotations, under the pointer.
@@ -857,7 +857,7 @@ final class VideoFrameRenderer {
             var picture = webcam
             // Keep face centered: the crop follows the face.
             if let face = plan.faceCrop { picture.crop = face.crop(atSourceTime: sourceTime) }
-            let camera = CameraPicture(frame: frame, mask: options.webcamMask, settings: picture)
+            let camera = CameraPicture(frame: blurredCamera(frame, plan: plan, timelineTime: timelineTime, sourceTime: sourceTime), mask: options.webcamMask, settings: picture)
             switch plan.cameraLayout(at: timelineTime) {
             case let (layout, progress)? where layout == .fullscreen:
                 // The bubble grows to fill the frame.
@@ -1166,8 +1166,9 @@ final class VideoFrameRenderer {
 
     // MARK: Overlays
 
-    private func composite(overlay: VideoRenderPlan.Overlay, over scene: CIImage, plan: VideoRenderPlan, geometry: Geometry, time: Double, solid: Bool = false) -> CIImage {
-        let effect = overlay.effect
+    private func composite(overlay: VideoRenderPlan.Overlay, over scene: CIImage, plan: VideoRenderPlan, geometry: Geometry, time: Double, sourceTime: Double, solid: Bool = false) -> CIImage {
+        // A blur following something moves along its path (VideoOverlayMotion.swift).
+        let effect = overlay.effect.placed(atSource: sourceTime)
         let stage = plan.stageRect
         let width = stage.width * CGFloat(min(max(effect.width, 0.02), 1))
         let height = stage.height * CGFloat(min(max(effect.height, 0.02), 1))
@@ -1421,7 +1422,7 @@ final class VideoFrameRenderer {
 
         if plan.captionStyle.visible, let caption = plan.caption(at: timelineTime), let range = caption.range(at: timelineTime) {
             let opacity = Self.fade(time: timelineTime, start: range.lowerBound, end: range.upperBound, fadeIn: 0.08, fadeOut: 0.12)
-            if opacity > 0.001, let image = captionImage(caption, style: plan.captionStyle, sourceTime: sourceTime, outputSize: outputSize) {
+            if opacity > 0.001, let image = captionImage(caption, style: plan.captionStyle, sourceTime: sourceTime, timelineTime: timelineTime, outputSize: outputSize) {
                 let box = place(image, position: plan.captionStyle.position, placement: caption.placement ?? plan.captionStyle.placement, opacity: opacity, pop: 1)
                 layout.caption = VideoTextLayout.Box(rect: box, outputSize: outputSize, captionID: caption.id)
             }
@@ -1489,6 +1490,25 @@ final class VideoFrameRenderer {
             width: a.width + (b.width - a.width) * t,
             height: a.height + (b.height - a.height) * t
         )
+    }
+
+    /// Blurs found on the camera video ("Also scan the camera video"),
+    /// on the camera's own picture, before it's placed.
+    private func blurredCamera(_ frame: CIImage, plan: VideoRenderPlan, timelineTime: Double, sourceTime: Double) -> CIImage {
+        var picture = frame
+        let extent = frame.extent
+        for overlay in plan.overlays where overlay.effect.kind == .blur && overlay.effect.onCamera == true && overlay.isShowing(at: timelineTime) {
+            let effect = overlay.effect.placed(atSource: sourceTime)
+            let width = extent.width * CGFloat(effect.width), height = extent.height * CGFloat(effect.height)
+            // Camera-normalized with y down; Core Image's y runs up.
+            let rect = CGRect(x: extent.minX + extent.width * CGFloat(effect.x) - width / 2, y: extent.maxY - extent.height * CGFloat(effect.y) - height / 2, width: width, height: height).intersection(extent)
+            guard rect.width > 1, rect.height > 1 else { continue }
+            let strength = effect.blurStrength
+            let sigma = Double(max(rect.width, rect.height) * 0.08 + 8) * (0.05 + 0.95 * strength * strength)
+            let blurred = picture.clampedToExtent().applyingGaussianBlur(sigma: sigma).cropped(to: rect)
+            picture = blurred.composited(over: picture)
+        }
+        return picture
     }
 
     struct CameraPicture {
@@ -1677,22 +1697,63 @@ final class VideoFrameRenderer {
         return min(max(value, 0), 1)
     }
 
-    private func captionImage(_ caption: VideoRenderPlan.Caption, style: VideoCaptionStyle, sourceTime: Double, outputSize: CGSize) -> CIImage? {
+    private func captionImage(_ caption: VideoRenderPlan.Caption, style: VideoCaptionStyle, sourceTime: Double, timelineTime: Double, outputSize: CGSize) -> CIImage? {
         let shortSide = min(outputSize.width, outputSize.height)
         let fontSize = max((style.size.scale * shortSide).rounded(), 9)
         let maxWidth = (outputSize.width * 0.82).rounded()
         let highlight = style.highlightWords && !caption.words.isEmpty
         let spoken = highlight ? (caption.words.lastIndex { $0.start <= sourceTime + 0.02 } ?? -1) : -1
         let look = "\(style.preset.rawValue)-\(style.highlightColor.map { "\($0.r)-\($0.g)-\($0.b)" } ?? "")-\(style.font?.cacheKey ?? "")"
-        let key = "caption-\(caption.id)-\(caption.text.hashValue)-\(highlight)-\(spoken)-\(Int(fontSize))-\(Int(maxWidth))-\(look)"
+        guard style.animation != .none else {
+            let key = "caption-\(caption.id)-\(caption.text.hashValue)-\(highlight)-\(spoken)-\(Int(fontSize))-\(Int(maxWidth))-\(look)"
+            return cached(key) {
+                VideoCaptionDrawing.image(
+                    text: caption.text,
+                    words: caption.words.map(\.text),
+                    spoken: highlight ? spoken : nil,
+                    style: style,
+                    fontSize: fontSize,
+                    maxWidth: maxWidth
+                ).map { CIImage(cgImage: $0) }
+            }
+        }
+        // Animated (VideoCaptionAnimation.swift): spoken words keep their
+        // own times; typed or translated ones spread over the caption.
+        let words: [String]
+        let timings: [VideoCaptionAnimator.Timing]
+        let now: Double
+        if caption.words.isEmpty {
+            words = VideoCaptionAnimator.words(of: caption.text)
+            timings = VideoCaptionAnimator.evenTimings(for: words, start: caption.start, end: caption.end)
+            now = timelineTime
+        } else {
+            words = caption.words.map(\.text)
+            timings = caption.words.map { VideoCaptionAnimator.Timing(start: $0.start, end: $0.end) }
+            now = sourceTime
+        }
+        guard !words.isEmpty else { return nil }
+        var frame = VideoCaptionAnimator.frame(style.animation, timings: timings, letters: words.map(\.count), at: now)
+        var shownWords = words
+        var shownSpoken: Int? = highlight ? spoken : nil
+        if let single = frame.single, words.indices.contains(single) {
+            shownWords = [words[single]]
+            frame.words = [frame.words[single]]
+            frame.single = nil
+            shownSpoken = nil
+        }
+        let text = VideoCaptionBuilder.joined(shownWords)
+        // The words shown are in the key: one word at a time shows a
+        // different word with the same state.
+        let key = "caption-\(caption.id)-\(caption.text.hashValue)-\(text.hashValue)-\(shownSpoken ?? -2)-\(Int(fontSize))-\(Int(maxWidth))-\(look)-\(frame.cacheKey)"
         return cached(key) {
             VideoCaptionDrawing.image(
-                text: caption.text,
-                words: caption.words.map(\.text),
-                spoken: highlight ? spoken : nil,
+                text: text,
+                words: shownWords,
+                spoken: shownSpoken,
                 style: style,
                 fontSize: fontSize,
-                maxWidth: maxWidth
+                maxWidth: maxWidth,
+                animation: frame
             ).map { CIImage(cgImage: $0) }
         }
     }

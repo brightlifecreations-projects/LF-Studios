@@ -72,6 +72,13 @@ push or tag triggers back.
   ad-hoc and macOS forgets the permissions on every rebuild; fix stale entries
   with `tccutil reset ScreenCapture com.lfstudios.app` (and Accessibility).
 
+## Still to check (not for the CHANGELOG or release notes)
+- Keep face centered (1.4.0) has been tested with made-up face positions only.
+  The real check, `ReleaseChecksCameraAudioTests.testFaceTrackingOnARealCameraVideo`,
+  runs once the owner has saved a 10–15 s video of themselves moving their
+  head as ~/Desktop/face-test.mov (it skips until then). It works on a copy
+  and deletes the copy afterwards.
+
 ## Conventions
 - Manual only: every creative effect starts OFF and is turned on by the user
   with its own button or switch. Nothing is applied to a video automatically.

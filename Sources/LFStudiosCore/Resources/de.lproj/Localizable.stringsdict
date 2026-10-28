@@ -514,6 +514,22 @@
 			<string>Auto-Zoom – %lld Zooms</string>
 		</dict>
 	</dict>
+	<key>Blurred %lld items — adjust or delete them on the timeline</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>one</key>
+			<string>%lld Element weichgezeichnet – auf der Zeitleiste anpassen oder löschen</string>
+			<key>other</key>
+			<string>%lld Elemente weichgezeichnet – auf der Zeitleiste anpassen oder löschen</string>
+		</dict>
+	</dict>
 	<key>Camera hidden in %lld silences — ⌘Z to undo</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -608,6 +624,22 @@
 			<string>%lld Voreinstellung exportiert</string>
 			<key>other</key>
 			<string>%lld Voreinstellungen exportiert</string>
+		</dict>
+	</dict>
+	<key>Exporting %lld versions</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>one</key>
+			<string>%lld Fassung wird exportiert</string>
+			<key>other</key>
+			<string>%lld Fassungen werden exportiert</string>
 		</dict>
 	</dict>
 	<key>Freed %@ (%lld files)</key>

@@ -263,7 +263,8 @@ enum VideoDemoExporter {
                 canvas: canvas,
                 stage: stage,
                 crop: project.crop.normalized,
-                duration: duration
+                duration: duration,
+                zoomSubject: project.zoomSubject(cursor: cursorTrack.map { track in { track.visiblePosition(at: $0) } }, typing: typingTrack.map { track in { track.position(at: $0) } })
             )
         }
         return VideoRenderPlan(

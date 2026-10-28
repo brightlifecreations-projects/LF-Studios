@@ -30,10 +30,16 @@
 	<string>Capture (%1$@) du %2$@</string>
 	<key>%@ capture, %@</key>
 	<string>Capture (%1$@), %2$@</string>
+	<key>%@ couldn't be downloaded: %@</key>
+	<string>Impossible de télécharger %@ : %@</string>
 	<key>%@ found</key>
 	<string>%@ détecté</string>
 	<key>%@ fullscreen</key>
 	<string>%@ plein écran</string>
+	<key>%@ has its own version now</key>
+	<string>%@ a maintenant sa propre version</string>
+	<key>%@ is too much for this Mac and would be very slow or fail. Try %@ instead.</key>
+	<string>%@ est trop lourd pour ce Mac : ce serait très lent ou échouerait. Essayez plutôt %@.</string>
 	<key>%@ isn't supported for captions on this Mac. Pick another language.</key>
 	<string>La langue %@ n’est pas prise en charge pour les sous-titres sur ce Mac. Choisissez une autre langue.</string>
 	<key>%@ long</key>
@@ -60,6 +66,8 @@
 	<string>%@ · image %@ × %@</string>
 	<key>%@ · %lld fps</key>
 	<string>%@ · %lld fps</string>
+	<key>%@ · about %@</key>
+	<string>%@ · environ %@</string>
 	<key>%@ · on your clipboard — paste it anywhere</key>
 	<string>%@ · dans le presse-papiers — collez-le où vous voulez</string>
 	<key>%@ × %@ doesn't fit on this display</key>
@@ -170,6 +178,12 @@
 	<string>Précision</string>
 	<key>Accurate</key>
 	<string>Précise</string>
+	<key>Adapt to This Ratio</key>
+	<string>Adapter à ce format</string>
+	<key>Adapt to this ratio</key>
+	<string>Adapter à ce format</string>
+	<key>Adapted to %@: %@</key>
+	<string>Adapté au %@ : %@</string>
 	<key>Add Arrow</key>
 	<string>Ajouter une flèche</string>
 	<key>Add Blur</key>
@@ -284,6 +298,10 @@
 	<string>Autoriser l’enregistrement de l’écran</string>
 	<key>Almost done</key>
 	<string>Presque terminé</string>
+	<key>Also look for these words</key>
+	<string>Chercher aussi ces mots</string>
+	<key>Also scan the camera video</key>
+	<string>Analyser aussi la vidéo de la caméra</string>
 	<key>Always show the arrow</key>
 	<string>Toujours afficher la flèche</string>
 	<key>Amber Fold</key>
@@ -292,6 +310,8 @@
 	<string>Angle</string>
 	<key>Angle, distance, softness, opacity, color, and an inner edge</key>
 	<string>Angle, distance, douceur, opacité, couleur et bord intérieur</string>
+	<key>Animation</key>
+	<string>Animation</string>
 	<key>Annotate Last Screenshot</key>
 	<string>Annoter la dernière capture</string>
 	<key>Annotation</key>
@@ -308,6 +328,8 @@
 	<string>Apparence</string>
 	<key>Append Video…</key>
 	<string>Ajouter une vidéo à la suite…</string>
+	<key>Apple</key>
+	<string>Apple</string>
 	<key>Apple Shortcuts</key>
 	<string>Raccourcis Apple</string>
 	<key>Apple screenshot shortcuts disabled.</key>
@@ -418,6 +440,8 @@
 	<string>Code-barres copié dans le presse-papiers</string>
 	<key>Barcodes</key>
 	<string>Codes-barres</string>
+	<key>Base</key>
+	<string>Base</string>
 	<key>Based on Shotnix (MIT License)</key>
 	<string>Basé sur Shotnix (licence MIT)</string>
 	<key>Begins scrolling when the recording starts</key>
@@ -438,6 +462,12 @@
 	<string>Bleu</string>
 	<key>Blur</key>
 	<string>Flou</string>
+	<key>Blur %@ %@</key>
+	<string>Flouter %@ %@</string>
+	<key>Blur Selected (%lld)</key>
+	<string>Flouter la sélection (%lld)</string>
+	<key>Blurred</key>
+	<string>Flouté</string>
 	<key>Blurred area</key>
 	<string>Zone floutée</string>
 	<key>Blurs fast camera moves the way a real camera does.</key>
@@ -458,6 +488,8 @@
 	<string>En bas à gauche</string>
 	<key>Bottom right</key>
 	<string>En bas à droite</string>
+	<key>Bounce</key>
+	<string>Rebond</string>
 	<key>Bright</key>
 	<string>Lumineux</string>
 	<key>Brightness</key>
@@ -558,6 +590,8 @@
 	<string>Soie de canyon</string>
 	<key>Caption</key>
 	<string>Sous-titre</string>
+	<key>Caption animation</key>
+	<string>Animation des sous-titres</string>
 	<key>Caption removed</key>
 	<string>Sous-titre supprimé</string>
 	<key>Caption style %@</key>
@@ -568,6 +602,8 @@
 	<string>Sous-titre « %@ »</string>
 	<key>Captions</key>
 	<string>Sous-titres</string>
+	<key>Captions already made stay. To use this model again, download it again.</key>
+	<string>Les sous-titres déjà créés restent. Pour réutiliser ce modèle, téléchargez-le à nouveau.</string>
 	<key>Captions are drawn into the picture, and a subtitles file is saved next to the video.</key>
 	<string>Les sous-titres sont incrustés dans l’image, et un fichier de sous-titres est enregistré à côté de la vidéo.</string>
 	<key>Captions are drawn into the picture.</key>
@@ -624,6 +660,8 @@
 	<string>Les captures restent dans l’historique jusqu’à ce que vous les supprimiez, sauf si vous choisissez une limite ici. « Nettoyer » vide la corbeille de l’historique (les captures supprimées que vous pourriez encore récupérer) et supprime les fichiers qu’aucune capture n’utilise plus.</string>
 	<key>Carbon Arc</key>
 	<string>Arc de carbone</string>
+	<key>Card number</key>
+	<string>Numéro de carte</string>
 	<key>Cards use your background, and the timeline grows to fit them. The “Made with LF Studios” end card is separate — it's in the export options.</key>
 	<string>Les cartons utilisent votre arrière-plan, et la timeline s’allonge pour les accueillir. L’écran de fin « Made with LF Studios » est à part — il se trouve dans les options d’exportation.</string>
 	<key>Center</key>
@@ -748,6 +786,8 @@
 	<string>Clics</string>
 	<key>Clicks — drag one to retime it, ⌫ removes the selected one</key>
 	<string>Clics — faites-en glisser un pour le recaler, ⌫ supprime celui qui est sélectionné</string>
+	<key>Client names, project code names… (separate with commas)</key>
+	<string>Noms de clients, noms de code de projets… (séparés par des virgules)</string>
 	<key>Clip</key>
 	<string>Clip</string>
 	<key>Clip %lld</key>
@@ -1026,6 +1066,8 @@
 	<string>Supprimer la sélection</string>
 	<key>Delete selection (⌫)</key>
 	<string>Supprimer la sélection (⌫)</string>
+	<key>Delete the %@ model?</key>
+	<string>Supprimer le modèle %@ ?</string>
 	<key>Delete “%@”?</key>
 	<string>Supprimer « %@ » ?</string>
 	<key>Deleted captures waiting in History's trash and files no capture uses are removed for good. The captures in your history stay.</key>
@@ -1094,6 +1136,16 @@
 	<string>Double-cliquez pour modifier, ou faites glisser vers une autre app. Commande + C copie, Commande + S enregistre, Échap ferme.</string>
 	<key>Double-click to show the recording in Finder</key>
 	<string>Double-cliquez pour afficher l’enregistrement dans le Finder</string>
+	<key>Download</key>
+	<string>Télécharger</string>
+	<key>Download %@ (%@)</key>
+	<string>Télécharger %@ (%@)</string>
+	<key>Download the %@ model first, in the Captions tab or Settings → General.</key>
+	<string>Téléchargez d’abord le modèle %@, dans l’onglet Sous-titres ou Réglages → Général.</string>
+	<key>Downloaded · %@ on this Mac</key>
+	<string>Téléchargé · %@ sur ce Mac</string>
+	<key>Downloading %@…</key>
+	<string>Téléchargement de %@…</string>
 	<key>Downloading the language model…</key>
 	<string>Téléchargement du modèle de langue…</string>
 	<key>Drag captions on the preview to place them anywhere</key>
@@ -1182,6 +1234,8 @@
 	<string>Écrire à %@</string>
 	<key>Email QR found</key>
 	<string>Code QR avec e-mail détecté</string>
+	<key>Email address</key>
+	<string>Adresse e-mail</string>
 	<key>Email address copied</key>
 	<string>Adresse e-mail copiée</string>
 	<key>Ember</key>
@@ -1204,6 +1258,8 @@
 	<string>Finir ici</string>
 	<key>Ends</key>
 	<string>Fin</string>
+	<key>Engine</key>
+	<string>Moteur</string>
 	<key>English</key>
 	<string>Anglais</string>
 	<key>Enhance Voice</key>
@@ -1250,12 +1306,18 @@
 	<string>Exporter</string>
 	<key>Export (⌘E)</key>
 	<string>Exporter (⌘E)</string>
+	<key>Export All Ratios…</key>
+	<string>Exporter tous les formats…</string>
 	<key>Export Format</key>
 	<string>Format d’exportation</string>
+	<key>Export Here</key>
+	<string>Exporter ici</string>
 	<key>Export Presets…</key>
 	<string>Exporter les préréglages…</string>
 	<key>Export Video…</key>
 	<string>Exporter la vidéo…</string>
+	<key>Export all ratios</key>
+	<string>Exporter tous les formats</string>
 	<key>Export and put the file on the clipboard — paste it into Slack, Mail, or Finder</key>
 	<string>Exporter et placer le fichier dans le presse-papiers — collez-le dans Slack, Mail ou le Finder</string>
 	<key>Export cancelled</key>
@@ -1286,6 +1348,10 @@
 	<string>Exportation…</string>
 	<key>Exporting… %lld%%</key>
 	<string>Exportation… %lld %%</string>
+	<key>Exports %@ in one go</key>
+	<string>Exporte %@ en une fois</string>
+	<key>Exports %@ into this folder.</key>
+	<string>Exporte %@ dans ce dossier.</string>
 	<key>Exports at the level video sites expect (−16 LUFS) without clipping</key>
 	<string>Exporte au niveau attendu par les sites vidéo (−16 LUFS), sans saturation</string>
 	<key>Exports without sound — to quiet just the preview, press M</key>
@@ -1294,10 +1360,14 @@
 	<string>Exporter…</string>
 	<key>Extra-fluid curves for slow, cinematic demos.</key>
 	<string>Courbes extra-fluides pour des démos lentes et cinématographiques.</string>
+	<key>Face</key>
+	<string>Visage</string>
 	<key>Face tracking</key>
 	<string>Suivi du visage</string>
 	<key>Face tracking canceled</key>
 	<string>Suivi du visage annulé</string>
+	<key>Faces, email addresses, phone and card numbers, keys and passwords on screen, and your own words. Read on this Mac with Apple's Vision; nothing is blurred until you choose.</key>
+	<string>Visages, adresses e-mail, numéros de téléphone et de carte, clés et mots de passe à l’écran, et vos propres mots. Lus sur ce Mac avec Vision d’Apple ; rien n’est flouté avant votre choix.</string>
 	<key>Fade in</key>
 	<string>Fondu d’entrée</string>
 	<key>Fade in from black</key>
@@ -1306,12 +1376,16 @@
 	<string>Fondu de sortie</string>
 	<key>Fade out to black</key>
 	<string>Fondu vers le noir</string>
+	<key>Fade up</key>
+	<string>Fondu vers le haut</string>
 	<key>Fades out after a moment without movement</key>
 	<string>Disparaît après un moment sans mouvement</string>
 	<key>Fast</key>
 	<string>Rapide</string>
 	<key>Fast-forward moments where nothing happens</key>
 	<string>Accélérer les moments où rien ne se passe</string>
+	<key>Fastest, least accurate</key>
+	<string>Le plus rapide, le moins précis</string>
 	<key>File</key>
 	<string>Fichier</string>
 	<key>File %lld of %lld: %@</key>
@@ -1334,10 +1408,18 @@
 	<string>Le cadre est rempli — la vue suit votre pointeur</string>
 	<key>Filmed yourself on a phone or camera? Add that video and it shows in the bubble, lined up by sound.</key>
 	<string>Vous vous êtes filmé avec un téléphone ou une caméra ? Ajoutez cette vidéo : elle s’affiche dans la bulle, alignée par le son.</string>
+	<key>Find Private Info</key>
+	<string>Trouver les infos privées</string>
+	<key>Find Private Info…</key>
+	<string>Trouver les infos privées…</string>
+	<key>Find faces, emails, phone and card numbers, and keys in the video, then choose what to blur</key>
+	<string>Trouver visages, e-mails, numéros de téléphone et de carte et clés dans la vidéo, puis choisir quoi flouter</string>
 	<key>Find in Transcript</key>
 	<string>Rechercher dans la transcription</string>
 	<key>Find in the transcript</key>
 	<string>Rechercher dans la transcription</string>
+	<key>Find private info</key>
+	<string>Infos privées</string>
 	<key>Find “%@”</key>
 	<string>Trouver « %@ »</string>
 	<key>Finds typing and plays it faster, as speed blocks you can change</key>
@@ -1378,12 +1460,18 @@
 	<string>Police</string>
 	<key>For Final Cut Pro, DaVinci Resolve, and Adobe Premiere Pro</key>
 	<string>Pour Final Cut Pro, DaVinci Resolve et Adobe Premiere Pro</string>
+	<key>For captions with the Whisper engine. Models are downloaded from Hugging Face only when you choose one; transcribing happens on this Mac and nothing is uploaded.</key>
+	<string>Pour les sous-titres avec Whisper. Les modèles sont téléchargés depuis Hugging Face uniquement quand vous en choisissez un ; la transcription se fait sur ce Mac et rien n’est envoyé.</string>
 	<key>For the camera only; the screen stays as recorded.</key>
 	<string>Pour la caméra uniquement ; l’écran reste tel qu’enregistré.</string>
+	<key>For things behind you, like a whiteboard or a document</key>
+	<string>Pour ce qui est derrière vous, comme un tableau blanc ou un document</string>
 	<key>Forever</key>
 	<string>Indéfiniment</string>
 	<key>Format</key>
 	<string>Format</string>
+	<key>Found %lld</key>
+	<string>%lld trouvé(s)</string>
 	<key>Frame</key>
 	<string>Cadre</string>
 	<key>Frame copied</key>
@@ -1508,6 +1596,8 @@
 	<string>Plus haut suit en douceur ; plus bas suit les mouvements rapides</string>
 	<key>Highlight</key>
 	<string>Surlignage</string>
+	<key>Highlight box</key>
+	<string>Encadré surligné</string>
 	<key>Highlight color</key>
 	<string>Couleur de surlignage</string>
 	<key>Highlight words</key>
@@ -1608,6 +1698,8 @@
 	<string>Aller ici</string>
 	<key>Jump one second</key>
 	<string>Sauter d’une seconde</string>
+	<key>Karaoke fill</key>
+	<string>Remplissage karaoké</string>
 	<key>Keep</key>
 	<string>Garder</string>
 	<key>Keep Editing</key>
@@ -1616,12 +1708,16 @@
 	<string>Ne pas quitter</string>
 	<key>Keep captures</key>
 	<string>Conserver les captures</string>
+	<key>Keep editing — close this and it carries on.</key>
+	<string>Continuez à éditer : fermez cette fenêtre, l’analyse continue.</string>
 	<key>Keep editing — the words appear here when LF Studios is done listening.</key>
 	<string>Continuez à modifier — les mots apparaîtront ici quand LF Studios aura fini d’écouter.</string>
 	<key>Keep face centered</key>
 	<string>Garder le visage centré</string>
 	<key>Keeps loud and quiet words close together</key>
 	<string>Rapproche les mots forts et faibles</string>
+	<key>Key or password</key>
+	<string>Clé ou mot de passe</string>
 	<key>Keyboard</key>
 	<string>Clavier</string>
 	<key>Keyboard Shortcuts</key>
@@ -1692,6 +1788,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Langues</string>
 	<key>Large</key>
 	<string>Grande</string>
+	<key>Large v3 Turbo</key>
+	<string>Large v3 Turbo</string>
 	<key>Larger than the recording — text may look softer than at a lower resolution.</key>
 	<string>Plus grand que l’enregistrement — le texte peut paraître moins net qu’à une résolution plus basse.</string>
 	<key>Later</key>
@@ -1760,6 +1858,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Apparence</string>
 	<key>Looking for your face in the camera video. This happens once; the result is kept.</key>
 	<string>Recherche de votre visage dans la vidéo de la caméra. Cela n’a lieu qu’une fois ; le résultat est conservé.</string>
+	<key>Looking through the video…</key>
+	<string>Analyse de la vidéo…</string>
 	<key>Loop</key>
 	<string>Boucle</string>
 	<key>Loop to fill</key>
@@ -1850,6 +1950,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Miroir</string>
 	<key>Mist</key>
 	<string>Brume</string>
+	<key>Model</key>
+	<string>Modèle</string>
 	<key>More</key>
 	<string>Plus</string>
 	<key>More caption options</key>
@@ -1862,6 +1964,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Vert mousse</string>
 	<key>Moss Glow</key>
 	<string>Lueur de mousse</string>
+	<key>Most accurate, slowest</key>
+	<string>Le plus précis, le plus lent</string>
 	<key>Motion</key>
 	<string>Mouvement</string>
 	<key>Motion blur</key>
@@ -2058,6 +2162,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Pas pour cette vidéo</string>
 	<key>Not now</key>
 	<string>Plus tard</string>
+	<key>Nothing private found</key>
+	<string>Aucune info privée trouvée</string>
 	<key>Nothing to clean up — everything belongs to recordings you still have</key>
 	<string>Rien à nettoyer — tout appartient à des enregistrements que vous avez encore</string>
 	<key>Nothing was recorded — the screen didn't send any picture. Try again.</key>
@@ -2082,6 +2188,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Plus ancien</string>
 	<key>On your clipboard · %@</key>
 	<string>Dans le presse-papiers · %@</string>
+	<key>One word at a time</key>
+	<string>Un mot à la fois</string>
 	<key>Only %@ free on your disk — this may not fit. Free up space or save to another drive.</key>
 	<string>Seulement %@ libres sur votre disque — cela risque de ne pas suffire. Libérez de l’espace ou enregistrez sur un autre disque.</string>
 	<key>Opacity</key>
@@ -2150,6 +2258,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Orchidée</string>
 	<key>Original</key>
 	<string>Original</string>
+	<key>Original shape</key>
+	<string>Forme d’origine</string>
 	<key>Otherwise, LF Studios switches languages the next time it opens.</key>
 	<string>Sinon, LF Studios changera de langue à sa prochaine ouverture.</string>
 	<key>Out</key>
@@ -2216,6 +2326,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Téléphone</string>
 	<key>Phone QR found</key>
 	<string>Code QR avec téléphone détecté</string>
+	<key>Phone number</key>
+	<string>Numéro de téléphone</string>
 	<key>Phone overlay</key>
 	<string>Surimpression du téléphone</string>
 	<key>Pick a preset as My Style (Presets ▸ Edit Presets ▸ Use as My Style), then one click puts it on any video.</key>
@@ -2284,12 +2396,16 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Voix podcast prête</string>
 	<key>Polar Dawn</key>
 	<string>Aube polaire</string>
+	<key>Pop-in words</key>
+	<string>Mots qui apparaissent</string>
 	<key>Porcelain</key>
 	<string>Porcelaine</string>
 	<key>Position</key>
 	<string>Position</string>
 	<key>Positions only: no text, no keys</key>
 	<string>Positions uniquement : ni texte, ni touches</string>
+	<key>Possible key</key>
+	<string>Clé possible</string>
 	<key>Preferences</key>
 	<string>Réglages</string>
 	<key>Preparing to copy…</key>
@@ -2446,6 +2562,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Intensité du masquage</string>
 	<key>Redo</key>
 	<string>Rétablir</string>
+	<key>Redo Adapt to This Ratio</key>
+	<string>Rétablir Adapter à ce format</string>
 	<key>Redo Add Arrow</key>
 	<string>Rétablir l’ajout de la flèche</string>
 	<key>Redo Add Blur</key>
@@ -2512,6 +2630,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Rétablir l’activation du zoom auto</string>
 	<key>Redo Background</key>
 	<string>Rétablir la modification de l’arrière-plan</string>
+	<key>Redo Blur Private Info</key>
+	<string>Rétablir Flouter les infos privées</string>
 	<key>Redo Blur Style</key>
 	<string>Rétablir la modification du style du flou</string>
 	<key>Redo Camera Change</key>
@@ -2730,6 +2850,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Rétablir la modification des zooms</string>
 	<key>Reels, TikTok, Shorts</key>
 	<string>Reels, TikTok, Shorts</string>
+	<key>Reframes zooms, moves the camera bubble, and keeps captions in the safe area for %@. This ratio then keeps its own version.</key>
+	<string>Recadre les zooms, déplace la bulle de caméra et garde les sous-titres dans la zone sûre pour le %@. Ce format garde ensuite sa propre version.</string>
 	<key>Regular</key>
 	<string>Normal</string>
 	<key>Releasing the mouse takes the shot. Hold ⇧ as you release to adjust the selection first — drag its edges, nudge it with the arrow keys, then press Return.</key>
@@ -2980,6 +3102,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Finalisation de l’enregistrement de l’écran</string>
 	<key>Saving…</key>
 	<string>Finalisation…</string>
+	<key>Scan Again</key>
+	<string>Analyser à nouveau</string>
 	<key>Scan QR Code</key>
 	<string>Scanner un code QR</string>
 	<key>Screen Recording</key>
@@ -3038,6 +3162,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Sélection</string>
 	<key>Select All</key>
 	<string>Tout sélectionner</string>
+	<key>Select None</key>
+	<string>Ne rien sélectionner</string>
 	<key>Select a clip on the timeline to mute it or fade it in and out.</key>
 	<string>Sélectionnez un clip dans la timeline pour couper son son ou lui appliquer un fondu.</string>
 	<key>Select a range to cut</key>
@@ -3528,6 +3654,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Ce Mac ne peut pas traduire entre ces langues. Choisissez une autre langue.</string>
 	<key>This Mac has no ProRes chip, so the re-encoded files take a while — the progress shows how long.</key>
 	<string>Ce Mac n’a pas de puce ProRes : les fichiers réencodés prennent un moment — la progression indique combien de temps.</string>
+	<key>This Mac is too old or slow for Whisper. Use Apple's captions instead.</key>
+	<string>Ce Mac est trop ancien ou trop lent pour Whisper. Utilisez plutôt les sous-titres d’Apple.</string>
 	<key>This Week</key>
 	<string>Cette semaine</string>
 	<key>This app</key>
@@ -3592,6 +3720,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Moments uniquement : jamais quelles touches</string>
 	<key>Tint</key>
 	<string>Teinte</string>
+	<key>Tiny</key>
+	<string>Tiny</string>
 	<key>Tips</key>
 	<string>Astuces</string>
 	<key>Title</key>
@@ -3626,6 +3756,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Transcrire</string>
 	<key>Transcribe Again</key>
 	<string>Transcrire à nouveau</string>
+	<key>Transcribe Again with Whisper…</key>
+	<string>Retranscrire avec Whisper…</string>
 	<key>Transcribe Again…</key>
 	<string>Transcrire à nouveau…</string>
 	<key>Transcribe Narration (Captions, Edit by Text)</key>
@@ -3634,6 +3766,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Transcrire à nouveau ?</string>
 	<key>Transcribe the narration to search its words</key>
 	<string>Transcrivez la narration pour rechercher dans ses mots</string>
+	<key>Transcribe with Whisper</key>
+	<string>Transcrire avec Whisper</string>
 	<key>Transcribe…</key>
 	<string>Transcrire…</string>
 	<key>Transcribing “%@”</key>
@@ -3690,6 +3824,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Saisissez du texte…</string>
 	<key>Type in a text annotation</key>
 	<string>Saisir du texte dans une annotation</string>
+	<key>Typewriter</key>
+	<string>Machine à écrire</string>
 	<key>Typing</key>
 	<string>Saisie</string>
 	<key>Typing now plays at %@</key>
@@ -3706,6 +3842,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Annuler</string>
 	<key>Undo / redo</key>
 	<string>Annuler/Rétablir</string>
+	<key>Undo Adapt to This Ratio</key>
+	<string>Annuler Adapter à ce format</string>
 	<key>Undo Add Arrow</key>
 	<string>Annuler l’ajout de la flèche</string>
 	<key>Undo Add Blur</key>
@@ -3772,6 +3910,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Annuler l’activation du zoom auto</string>
 	<key>Undo Background</key>
 	<string>Annuler la modification de l’arrière-plan</string>
+	<key>Undo Blur Private Info</key>
+	<string>Annuler Flouter les infos privées</string>
 	<key>Undo Blur Style</key>
 	<string>Annuler la modification du style du flou</string>
 	<key>Undo Camera Change</key>
@@ -4006,6 +4146,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Mises à jour</string>
 	<key>Upload Custom Image</key>
 	<string>Choisir une image personnalisée</string>
+	<key>Use %@</key>
+	<string>Utiliser %@</string>
 	<key>Use as My Style</key>
 	<string>Utiliser comme Mon style</string>
 	<key>Use the largest size that fits (%@ × %@)</key>
@@ -4080,6 +4222,12 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Nouveautés</string>
 	<key>While this zoom plays, the camera bubble moves to: %@</key>
 	<string>Pendant ce zoom, la bulle de caméra se place : %@</string>
+	<key>Whisper</key>
+	<string>Whisper</string>
+	<key>Whisper Models</key>
+	<string>Modèles Whisper</string>
+	<key>Whisper runs on this Mac. The model is downloaded once from Hugging Face; your recording is never uploaded.</key>
+	<string>Whisper fonctionne sur ce Mac. Le modèle est téléchargé une fois depuis Hugging Face ; votre enregistrement n’est jamais envoyé.</string>
 	<key>White</key>
 	<string>Blanc</string>
 	<key>Whole video</key>
@@ -4158,6 +4306,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Votre texte</string>
 	<key>Your video's background shows behind you — found on this Mac, frame by frame.</key>
 	<string>L’arrière-plan de votre vidéo apparaît derrière vous — détouré sur ce Mac, image par image.</string>
+	<key>Your word</key>
+	<string>Votre mot</string>
 	<key>Your words, as text</key>
 	<string>Vos paroles, en texte</string>
 	<key>Zoom</key>
@@ -4198,6 +4348,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>le viser ou le redimensionner</string>
 	<key>all shortcuts</key>
 	<string>tous les raccourcis</string>
+	<key>captions</key>
+	<string>sous-titres</string>
 	<key>captions burned in</key>
 	<string>sous-titres incrustés</string>
 	<key>chapters</key>
@@ -4248,6 +4400,8 @@ Vous pouvez réactiver les raccourcis d’Apple à tout moment dans Réglages Sy
 	<string>pas de sous-titres dans l’image</string>
 	<key>no end card</key>
 	<string>pas d’écran de fin</string>
+	<key>not downloaded</key>
+	<string>non téléchargé</string>
 	<key>outro card</key>
 	<string>carton de fin</string>
 	<key>play</key>
@@ -4270,6 +4424,8 @@ Vous pouvez réactiver les raccourcis d’Apple à tout moment dans Réglages Sy
 	<string>système</string>
 	<key>text, highlight, arrow, blur</key>
 	<string>texte, surlignage, flèche, flou</string>
+	<key>the camera</key>
+	<string>la caméra</string>
 	<key>the video</key>
 	<string>la vidéo</string>
 	<key>this recording</key>

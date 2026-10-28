@@ -30,10 +30,16 @@
 	<string>Снимок (%@) от %@</string>
 	<key>%@ capture, %@</key>
 	<string>Снимок (%@), %@</string>
+	<key>%@ couldn't be downloaded: %@</key>
+	<string>Не удалось загрузить %@: %@</string>
 	<key>%@ found</key>
 	<string>Найдено: %@</string>
 	<key>%@ fullscreen</key>
 	<string>%@ весь экран</string>
+	<key>%@ has its own version now</key>
+	<string>У %@ теперь своя версия</string>
+	<key>%@ is too much for this Mac and would be very slow or fail. Try %@ instead.</key>
+	<string>%@ слишком тяжела для этого Mac: будет очень медленно или не получится. Попробуйте %@.</string>
 	<key>%@ isn't supported for captions on this Mac. Pick another language.</key>
 	<string>Язык «%@» не поддерживается для субтитров на этом Mac. Выберите другой язык.</string>
 	<key>%@ long</key>
@@ -60,6 +66,8 @@
 	<string>%@ · изображение %@ × %@</string>
 	<key>%@ · %lld fps</key>
 	<string>%@ · %lld fps</string>
+	<key>%@ · about %@</key>
+	<string>%@ · около %@</string>
 	<key>%@ · on your clipboard — paste it anywhere</key>
 	<string>%@ · в буфере обмена — вставьте куда угодно</string>
 	<key>%@ × %@ doesn't fit on this display</key>
@@ -170,6 +178,12 @@
 	<string>Режим</string>
 	<key>Accurate</key>
 	<string>Точный</string>
+	<key>Adapt to This Ratio</key>
+	<string>Адаптировать к этому формату</string>
+	<key>Adapt to this ratio</key>
+	<string>Адаптировать к формату</string>
+	<key>Adapted to %@: %@</key>
+	<string>Адаптировано к %@: %@</string>
 	<key>Add Arrow</key>
 	<string>Добавить стрелку</string>
 	<key>Add Blur</key>
@@ -284,6 +298,10 @@
 	<string>Разрешить запись экрана</string>
 	<key>Almost done</key>
 	<string>Почти готово</string>
+	<key>Also look for these words</key>
+	<string>Искать также эти слова</string>
+	<key>Also scan the camera video</key>
+	<string>Проверять и видео с камеры</string>
 	<key>Always show the arrow</key>
 	<string>Всегда показывать стрелку</string>
 	<key>Amber Fold</key>
@@ -292,6 +310,8 @@
 	<string>Угол</string>
 	<key>Angle, distance, softness, opacity, color, and an inner edge</key>
 	<string>Угол, расстояние, мягкость, непрозрачность, цвет и внутренний край</string>
+	<key>Animation</key>
+	<string>Анимация</string>
 	<key>Annotate Last Screenshot</key>
 	<string>Разметить последний снимок</string>
 	<key>Annotation</key>
@@ -308,6 +328,8 @@
 	<string>Оформление</string>
 	<key>Append Video…</key>
 	<string>Добавить видео в конец…</string>
+	<key>Apple</key>
+	<string>Apple</string>
 	<key>Apple Shortcuts</key>
 	<string>Сочетания клавиш Apple</string>
 	<key>Apple screenshot shortcuts disabled.</key>
@@ -418,6 +440,8 @@
 	<string>Штрихкод скопирован в буфер обмена</string>
 	<key>Barcodes</key>
 	<string>Штрихкоды</string>
+	<key>Base</key>
+	<string>Base</string>
 	<key>Based on Shotnix (MIT License)</key>
 	<string>Основано на Shotnix (лицензия MIT)</string>
 	<key>Begins scrolling when the recording starts</key>
@@ -438,6 +462,12 @@
 	<string>Синий</string>
 	<key>Blur</key>
 	<string>Размытие</string>
+	<key>Blur %@ %@</key>
+	<string>Размыть: %@ %@</string>
+	<key>Blur Selected (%lld)</key>
+	<string>Размыть выбранное (%lld)</string>
+	<key>Blurred</key>
+	<string>Размыто</string>
 	<key>Blurred area</key>
 	<string>Размытая область</string>
 	<key>Blurs fast camera moves the way a real camera does.</key>
@@ -458,6 +488,8 @@
 	<string>Внизу слева</string>
 	<key>Bottom right</key>
 	<string>Внизу справа</string>
+	<key>Bounce</key>
+	<string>Прыжок</string>
 	<key>Bright</key>
 	<string>Яркий</string>
 	<key>Brightness</key>
@@ -558,6 +590,8 @@
 	<string>Шелк каньона</string>
 	<key>Caption</key>
 	<string>Субтитр</string>
+	<key>Caption animation</key>
+	<string>Анимация субтитров</string>
 	<key>Caption removed</key>
 	<string>Субтитр удален</string>
 	<key>Caption style %@</key>
@@ -568,6 +602,8 @@
 	<string>Субтитр «%@»</string>
 	<key>Captions</key>
 	<string>Субтитры</string>
+	<key>Captions already made stay. To use this model again, download it again.</key>
+	<string>Уже созданные субтитры останутся. Чтобы снова использовать модель, загрузите её заново.</string>
 	<key>Captions are drawn into the picture, and a subtitles file is saved next to the video.</key>
 	<string>Субтитры встраиваются в изображение, а рядом с видео сохраняется файл субтитров.</string>
 	<key>Captions are drawn into the picture.</key>
@@ -624,6 +660,8 @@
 	<string>Снимки хранятся в истории, пока вы их не удалите, если здесь не задан лимит. «Убрать лишнее» очищает корзину истории (удаленные снимки, которые еще можно вернуть) и удаляет файлы, которые больше не использует ни один снимок.</string>
 	<key>Carbon Arc</key>
 	<string>Угольная дуга</string>
+	<key>Card number</key>
+	<string>Номер карты</string>
 	<key>Cards use your background, and the timeline grows to fit them. The “Made with LF Studios” end card is separate — it's in the export options.</key>
 	<string>Титры используют ваш фон, а шкала времени удлиняется, чтобы их вместить. Финальная заставка «Made with LF Studios» — отдельно: она в параметрах экспорта.</string>
 	<key>Center</key>
@@ -748,6 +786,8 @@
 	<string>Нажатия</string>
 	<key>Clicks — drag one to retime it, ⌫ removes the selected one</key>
 	<string>Нажатия — перетяните нажатие, чтобы сменить его время; ⌫ удаляет выбранное</string>
+	<key>Client names, project code names… (separate with commas)</key>
+	<string>Имена клиентов, кодовые названия проектов… (через запятую)</string>
 	<key>Clip</key>
 	<string>Клип</string>
 	<key>Clip %lld</key>
@@ -1026,6 +1066,8 @@
 	<string>Удалить выбранное</string>
 	<key>Delete selection (⌫)</key>
 	<string>Удалить выбранное (⌫)</string>
+	<key>Delete the %@ model?</key>
+	<string>Удалить модель %@?</string>
 	<key>Delete “%@”?</key>
 	<string>Удалить «%@»?</string>
 	<key>Deleted captures waiting in History's trash and files no capture uses are removed for good. The captures in your history stay.</key>
@@ -1094,6 +1136,16 @@
 	<string>Дважды нажмите, чтобы изменить, или перетяните в другое приложение. Command-C копирует, Command-S сохраняет, Escape закрывает.</string>
 	<key>Double-click to show the recording in Finder</key>
 	<string>Дважды нажмите, чтобы показать запись в Finder</string>
+	<key>Download</key>
+	<string>Загрузить</string>
+	<key>Download %@ (%@)</key>
+	<string>Загрузить %@ (%@)</string>
+	<key>Download the %@ model first, in the Captions tab or Settings → General.</key>
+	<string>Сначала загрузите модель %@ — на вкладке «Субтитры» или в Настройки → Основные.</string>
+	<key>Downloaded · %@ on this Mac</key>
+	<string>Загружено · %@ на этом Mac</string>
+	<key>Downloading %@…</key>
+	<string>Загрузка %@…</string>
 	<key>Downloading the language model…</key>
 	<string>Загрузка языковой модели…</string>
 	<key>Drag captions on the preview to place them anywhere</key>
@@ -1182,6 +1234,8 @@
 	<string>Написать на %@</string>
 	<key>Email QR found</key>
 	<string>Найден QR-код с e-mail</string>
+	<key>Email address</key>
+	<string>Адрес эл. почты</string>
 	<key>Email address copied</key>
 	<string>Адрес e-mail скопирован</string>
 	<key>Ember</key>
@@ -1204,6 +1258,8 @@
 	<string>Конец здесь</string>
 	<key>Ends</key>
 	<string>Конец</string>
+	<key>Engine</key>
+	<string>Движок</string>
 	<key>English</key>
 	<string>Английский</string>
 	<key>Enhance Voice</key>
@@ -1250,12 +1306,18 @@
 	<string>Экспорт</string>
 	<key>Export (⌘E)</key>
 	<string>Экспорт (⌘E)</string>
+	<key>Export All Ratios…</key>
+	<string>Экспортировать все форматы…</string>
 	<key>Export Format</key>
 	<string>Формат экспорта</string>
+	<key>Export Here</key>
+	<string>Экспортировать сюда</string>
 	<key>Export Presets…</key>
 	<string>Экспортировать стили…</string>
 	<key>Export Video…</key>
 	<string>Экспортировать видео…</string>
+	<key>Export all ratios</key>
+	<string>Экспорт всех форматов</string>
 	<key>Export and put the file on the clipboard — paste it into Slack, Mail, or Finder</key>
 	<string>Экспортировать и поместить файл в буфер обмена — вставьте его в Slack, Почту или Finder</string>
 	<key>Export cancelled</key>
@@ -1286,6 +1348,10 @@
 	<string>Экспорт…</string>
 	<key>Exporting… %lld%%</key>
 	<string>Экспорт… %lld %%</string>
+	<key>Exports %@ in one go</key>
+	<string>Экспортирует %@ за один раз</string>
+	<key>Exports %@ into this folder.</key>
+	<string>Экспортирует %@ в эту папку.</string>
 	<key>Exports at the level video sites expect (−16 LUFS) without clipping</key>
 	<string>Экспорт с уровнем громкости для видеосайтов (−16 LUFS) без перегрузки</string>
 	<key>Exports without sound — to quiet just the preview, press M</key>
@@ -1294,10 +1360,14 @@
 	<string>Экспортировать…</string>
 	<key>Extra-fluid curves for slow, cinematic demos.</key>
 	<string>Особо плавные кривые для неспешных кинематографичных демо.</string>
+	<key>Face</key>
+	<string>Лицо</string>
 	<key>Face tracking</key>
 	<string>Отслеживание лица</string>
 	<key>Face tracking canceled</key>
 	<string>Отслеживание лица отменено</string>
+	<key>Faces, email addresses, phone and card numbers, keys and passwords on screen, and your own words. Read on this Mac with Apple's Vision; nothing is blurred until you choose.</key>
+	<string>Лица, адреса почты, номера телефонов и карт, ключи и пароли на экране, а также ваши слова. Распознаётся на этом Mac с помощью Apple Vision; ничего не размывается, пока вы не выберете.</string>
 	<key>Fade in</key>
 	<string>Нарастание</string>
 	<key>Fade in from black</key>
@@ -1306,12 +1376,16 @@
 	<string>Затухание</string>
 	<key>Fade out to black</key>
 	<string>Уход в черный</string>
+	<key>Fade up</key>
+	<string>Появление снизу</string>
 	<key>Fades out after a moment without movement</key>
 	<string>Исчезает, если какое-то время не двигается</string>
 	<key>Fast</key>
 	<string>Быстрый</string>
 	<key>Fast-forward moments where nothing happens</key>
 	<string>Ускорить моменты, где ничего не происходит</string>
+	<key>Fastest, least accurate</key>
+	<string>Самая быстрая, наименее точная</string>
 	<key>File</key>
 	<string>Файл</string>
 	<key>File %lld of %lld: %@</key>
@@ -1334,10 +1408,18 @@
 	<string>Кадр заполнен — вид следует за указателем</string>
 	<key>Filmed yourself on a phone or camera? Add that video and it shows in the bubble, lined up by sound.</key>
 	<string>Снимали себя на телефон или камеру? Добавьте это видео — оно появится в пузыре, совмещённое по звуку.</string>
+	<key>Find Private Info</key>
+	<string>Найти личные данные</string>
+	<key>Find Private Info…</key>
+	<string>Найти личные данные…</string>
+	<key>Find faces, emails, phone and card numbers, and keys in the video, then choose what to blur</key>
+	<string>Найти в видео лица, адреса почты, номера телефонов и карт и ключи, затем выбрать, что размыть</string>
 	<key>Find in Transcript</key>
 	<string>Найти в расшифровке</string>
 	<key>Find in the transcript</key>
 	<string>Найти в расшифровке</string>
+	<key>Find private info</key>
+	<string>Личные данные</string>
 	<key>Find “%@”</key>
 	<string>Найти «%@»</string>
 	<key>Finds typing and plays it faster, as speed blocks you can change</key>
@@ -1378,12 +1460,18 @@
 	<string>Шрифт</string>
 	<key>For Final Cut Pro, DaVinci Resolve, and Adobe Premiere Pro</key>
 	<string>Для Final Cut Pro, DaVinci Resolve и Adobe Premiere Pro</string>
+	<key>For captions with the Whisper engine. Models are downloaded from Hugging Face only when you choose one; transcribing happens on this Mac and nothing is uploaded.</key>
+	<string>Для субтитров с движком Whisper. Модели загружаются с Hugging Face, только когда вы их выбираете; расшифровка идёт на этом Mac, ничего не отправляется.</string>
 	<key>For the camera only; the screen stays as recorded.</key>
 	<string>Только для камеры; экран остаётся как записан.</string>
+	<key>For things behind you, like a whiteboard or a document</key>
+	<string>Для того, что у вас за спиной: доска, документ</string>
 	<key>Forever</key>
 	<string>Бессрочно</string>
 	<key>Format</key>
 	<string>Формат</string>
+	<key>Found %lld</key>
+	<string>Найдено: %lld</string>
 	<key>Frame</key>
 	<string>Рамка</string>
 	<key>Frame copied</key>
@@ -1508,6 +1596,8 @@
 	<string>Выше — плавно следует за вами; ниже — успевает за быстрыми движениями</string>
 	<key>Highlight</key>
 	<string>Выделение</string>
+	<key>Highlight box</key>
+	<string>Рамка выделения</string>
 	<key>Highlight color</key>
 	<string>Цвет выделения</string>
 	<key>Highlight words</key>
@@ -1608,6 +1698,8 @@
 	<string>Перейти сюда</string>
 	<key>Jump one second</key>
 	<string>Перейти на секунду</string>
+	<key>Karaoke fill</key>
+	<string>Караоке-заливка</string>
 	<key>Keep</key>
 	<string>Оставить</string>
 	<key>Keep Editing</key>
@@ -1616,12 +1708,16 @@
 	<string>Продолжить работу</string>
 	<key>Keep captures</key>
 	<string>Хранить снимки</string>
+	<key>Keep editing — close this and it carries on.</key>
+	<string>Продолжайте работу — закройте окно, проверка продолжится.</string>
 	<key>Keep editing — the words appear here when LF Studios is done listening.</key>
 	<string>Продолжайте работу — слова появятся здесь, когда LF Studios закончит слушать.</string>
 	<key>Keep face centered</key>
 	<string>Держать лицо по центру</string>
 	<key>Keeps loud and quiet words close together</key>
 	<string>Сближает громкие и тихие слова</string>
+	<key>Key or password</key>
+	<string>Ключ или пароль</string>
 	<key>Keyboard</key>
 	<string>Клавиатура</string>
 	<key>Keyboard Shortcuts</key>
@@ -1692,6 +1788,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Языки</string>
 	<key>Large</key>
 	<string>Большой</string>
+	<key>Large v3 Turbo</key>
+	<string>Large v3 Turbo</string>
 	<key>Larger than the recording — text may look softer than at a lower resolution.</key>
 	<string>Больше, чем запись, — текст может выглядеть мягче, чем при более низком разрешении.</string>
 	<key>Later</key>
@@ -1760,6 +1858,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Вид</string>
 	<key>Looking for your face in the camera video. This happens once; the result is kept.</key>
 	<string>Поиск лица в видео с камеры. Это делается один раз; результат сохраняется.</string>
+	<key>Looking through the video…</key>
+	<string>Проверка видео…</string>
 	<key>Loop</key>
 	<string>Зацикливание</string>
 	<key>Loop to fill</key>
@@ -1850,6 +1950,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Зеркальное отражение</string>
 	<key>Mist</key>
 	<string>Туман</string>
+	<key>Model</key>
+	<string>Модель</string>
 	<key>More</key>
 	<string>Еще</string>
 	<key>More caption options</key>
@@ -1862,6 +1964,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Мох</string>
 	<key>Moss Glow</key>
 	<string>Сияние мха</string>
+	<key>Most accurate, slowest</key>
+	<string>Самая точная, самая медленная</string>
 	<key>Motion</key>
 	<string>Движение</string>
 	<key>Motion blur</key>
@@ -2058,6 +2162,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Не для этого видео</string>
 	<key>Not now</key>
 	<string>Не сейчас</string>
+	<key>Nothing private found</key>
+	<string>Личных данных не найдено</string>
 	<key>Nothing to clean up — everything belongs to recordings you still have</key>
 	<string>Убирать нечего — все данные относятся к вашим записям</string>
 	<key>Nothing was recorded — the screen didn't send any picture. Try again.</key>
@@ -2082,6 +2188,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Ранее</string>
 	<key>On your clipboard · %@</key>
 	<string>В буфере обмена · %@</string>
+	<key>One word at a time</key>
+	<string>По одному слову</string>
 	<key>Only %@ free on your disk — this may not fit. Free up space or save to another drive.</key>
 	<string>На диске свободно только %@ — этого может не хватить. Освободите место или сохраните на другой диск.</string>
 	<key>Opacity</key>
@@ -2150,6 +2258,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Орхидея</string>
 	<key>Original</key>
 	<string>Оригинал</string>
+	<key>Original shape</key>
+	<string>Исходная форма</string>
 	<key>Otherwise, LF Studios switches languages the next time it opens.</key>
 	<string>Иначе LF Studios сменит язык при следующем открытии.</string>
 	<key>Out</key>
@@ -2216,6 +2326,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Телефон</string>
 	<key>Phone QR found</key>
 	<string>Найден QR-код с номером телефона</string>
+	<key>Phone number</key>
+	<string>Номер телефона</string>
 	<key>Phone overlay</key>
 	<string>Наложение телефона</string>
 	<key>Pick a preset as My Style (Presets ▸ Edit Presets ▸ Use as My Style), then one click puts it on any video.</key>
@@ -2284,12 +2396,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Голос для подкаста готов</string>
 	<key>Polar Dawn</key>
 	<string>Полярный рассвет</string>
+	<key>Pop-in words</key>
+	<string>Всплывающие слова</string>
 	<key>Porcelain</key>
 	<string>Фарфор</string>
 	<key>Position</key>
 	<string>Положение</string>
 	<key>Positions only: no text, no keys</key>
 	<string>Только положение: без текста и клавиш</string>
+	<key>Possible key</key>
+	<string>Возможно, ключ</string>
 	<key>Preferences</key>
 	<string>Настройки</string>
 	<key>Preparing to copy…</key>
@@ -2446,6 +2562,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Степень скрытия</string>
 	<key>Redo</key>
 	<string>Повторить</string>
+	<key>Redo Adapt to This Ratio</key>
+	<string>Повторить: адаптация к формату</string>
 	<key>Redo Add Arrow</key>
 	<string>Повторить добавление стрелки</string>
 	<key>Redo Add Blur</key>
@@ -2512,6 +2630,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторить включение автомасштаба</string>
 	<key>Redo Background</key>
 	<string>Повторить изменение фона</string>
+	<key>Redo Blur Private Info</key>
+	<string>Повторить: размытие личных данных</string>
 	<key>Redo Blur Style</key>
 	<string>Повторить изменение стиля размытия</string>
 	<key>Redo Camera Change</key>
@@ -2730,6 +2850,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторить изменение увеличений</string>
 	<key>Reels, TikTok, Shorts</key>
 	<string>Reels, TikTok, Shorts</string>
+	<key>Reframes zooms, moves the camera bubble, and keeps captions in the safe area for %@. This ratio then keeps its own version.</key>
+	<string>Перестраивает зумы, двигает пузырь камеры и держит субтитры в безопасной зоне для %@. Затем у этого формата будет своя версия.</string>
 	<key>Regular</key>
 	<string>Обычный</string>
 	<key>Releasing the mouse takes the shot. Hold ⇧ as you release to adjust the selection first — drag its edges, nudge it with the arrow keys, then press Return.</key>
@@ -2980,6 +3102,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Сохранение записи экрана</string>
 	<key>Saving…</key>
 	<string>Сохранение…</string>
+	<key>Scan Again</key>
+	<string>Проверить снова</string>
 	<key>Scan QR Code</key>
 	<string>Сканировать QR-код</string>
 	<key>Screen Recording</key>
@@ -3038,6 +3162,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Выбор</string>
 	<key>Select All</key>
 	<string>Выбрать все</string>
+	<key>Select None</key>
+	<string>Снять выбор</string>
 	<key>Select a clip on the timeline to mute it or fade it in and out.</key>
 	<string>Выберите клип на шкале времени, чтобы выключить его звук или настроить нарастание и затухание.</string>
 	<key>Select a range to cut</key>
@@ -3528,6 +3654,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Этот Mac не может переводить между этими языками. Выберите другой язык.</string>
 	<key>This Mac has no ProRes chip, so the re-encoded files take a while — the progress shows how long.</key>
 	<string>В этом Mac нет чипа ProRes, поэтому перекодирование займёт время — сколько, покажет индикатор.</string>
+	<key>This Mac is too old or slow for Whisper. Use Apple's captions instead.</key>
+	<string>Этот Mac слишком старый или медленный для Whisper. Используйте субтитры Apple.</string>
 	<key>This Week</key>
 	<string>На этой неделе</string>
 	<key>This app</key>
@@ -3592,6 +3720,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Только моменты: никогда — какие клавиши</string>
 	<key>Tint</key>
 	<string>Оттенок</string>
+	<key>Tiny</key>
+	<string>Tiny</string>
 	<key>Tips</key>
 	<string>Подсказки</string>
 	<key>Title</key>
@@ -3626,6 +3756,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Расшифровать</string>
 	<key>Transcribe Again</key>
 	<string>Расшифровать заново</string>
+	<key>Transcribe Again with Whisper…</key>
+	<string>Расшифровать заново с Whisper…</string>
 	<key>Transcribe Again…</key>
 	<string>Расшифровать заново…</string>
 	<key>Transcribe Narration (Captions, Edit by Text)</key>
@@ -3634,6 +3766,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Расшифровать заново?</string>
 	<key>Transcribe the narration to search its words</key>
 	<string>Расшифруйте речь, чтобы искать по ее словам</string>
+	<key>Transcribe with Whisper</key>
+	<string>Расшифровать с Whisper</string>
 	<key>Transcribe…</key>
 	<string>Расшифровать…</string>
 	<key>Transcribing “%@”</key>
@@ -3690,6 +3824,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Введите текст…</string>
 	<key>Type in a text annotation</key>
 	<string>Ввести текст в текстовый элемент</string>
+	<key>Typewriter</key>
+	<string>Печатная машинка</string>
 	<key>Typing</key>
 	<string>Набор текста</string>
 	<key>Typing now plays at %@</key>
@@ -3706,6 +3842,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Отменить</string>
 	<key>Undo / redo</key>
 	<string>Отменить / повторить</string>
+	<key>Undo Adapt to This Ratio</key>
+	<string>Отменить: адаптация к формату</string>
 	<key>Undo Add Arrow</key>
 	<string>Отменить добавление стрелки</string>
 	<key>Undo Add Blur</key>
@@ -3772,6 +3910,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Отменить включение автомасштаба</string>
 	<key>Undo Background</key>
 	<string>Отменить изменение фона</string>
+	<key>Undo Blur Private Info</key>
+	<string>Отменить: размытие личных данных</string>
 	<key>Undo Blur Style</key>
 	<string>Отменить изменение стиля размытия</string>
 	<key>Undo Camera Change</key>
@@ -4006,6 +4146,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Обновления</string>
 	<key>Upload Custom Image</key>
 	<string>Выбрать свое изображение</string>
+	<key>Use %@</key>
+	<string>Использовать %@</string>
 	<key>Use as My Style</key>
 	<string>Использовать как «Мой стиль»</string>
 	<key>Use the largest size that fits (%@ × %@)</key>
@@ -4080,6 +4222,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Что нового</string>
 	<key>While this zoom plays, the camera bubble moves to: %@</key>
 	<string>Пока идёт это увеличение, окошко камеры перемещается: %@</string>
+	<key>Whisper</key>
+	<string>Whisper</string>
+	<key>Whisper Models</key>
+	<string>Модели Whisper</string>
+	<key>Whisper runs on this Mac. The model is downloaded once from Hugging Face; your recording is never uploaded.</key>
+	<string>Whisper работает на этом Mac. Модель загружается с Hugging Face один раз; запись никуда не отправляется.</string>
 	<key>White</key>
 	<string>Белый</string>
 	<key>Whole video</key>
@@ -4158,6 +4306,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Ваш текст</string>
 	<key>Your video's background shows behind you — found on this Mac, frame by frame.</key>
 	<string>Фон вашего видео виден позади вас — он выделяется на этом Mac кадр за кадром.</string>
+	<key>Your word</key>
+	<string>Ваше слово</string>
 	<key>Your words, as text</key>
 	<string>Ваши слова в виде текста</string>
 	<key>Zoom</key>
@@ -4198,6 +4348,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>навести или изменить размер</string>
 	<key>all shortcuts</key>
 	<string>все сочетания клавиш</string>
+	<key>captions</key>
+	<string>субтитры</string>
 	<key>captions burned in</key>
 	<string>встроенные субтитры</string>
 	<key>chapters</key>
@@ -4248,6 +4400,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>без субтитров в изображении</string>
 	<key>no end card</key>
 	<string>без финальной заставки</string>
+	<key>not downloaded</key>
+	<string>не загружено</string>
 	<key>outro card</key>
 	<string>финальный титр</string>
 	<key>play</key>
@@ -4270,6 +4424,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>система</string>
 	<key>text, highlight, arrow, blur</key>
 	<string>текст, выделение, стрелка, размытие</string>
+	<key>the camera</key>
+	<string>камера</string>
 	<key>the video</key>
 	<string>видео</string>
 	<key>this recording</key>
