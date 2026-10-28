@@ -216,6 +216,8 @@
 	<string>一列更高的按钮、旋转唱片的位置、底部导航栏</string>
 	<key>A video needs at least one clip</key>
 	<string>视频至少需要一个片段</string>
+	<key>A voice chain for spoken audio: noise removal, de-essing, a warm and clear EQ, compression, and the podcast loudness standard. Each step can be turned off. Processed on this Mac.</key>
+	<string>适用于人声的处理链：降噪、齿音消除、温暖清晰的均衡、压缩，以及播客响度标准。每一步都可以关闭。在这台 Mac 上处理。</string>
 	<key>A window that size would be bigger than the screen. The largest of the same shape that fits is %@ × %@.</key>
 	<string>这么大的窗口会超出屏幕。能放下的同比例最大尺寸是 %@ × %@。</string>
 	<key>About</key>
@@ -308,6 +310,8 @@
 	<string>已添加到 LF Studios</string>
 	<key>Added “%@”</key>
 	<string>已添加“%@”</string>
+	<key>Adds a Camera hidden block for each pause at least this long. Drag or delete them on the Camera lane; pressing again replaces only these.</key>
+	<string>为每段至少这么长的停顿添加一个“隐藏摄像头”块。可在摄像头轨道上拖移或删除；再次按下只替换这些块。</string>
 	<key>Adjust to move it half a second</key>
 	<string>调整可将其移动半秒</string>
 	<key>Adjusted %lld zooms — ⌘Z to undo.</key>
@@ -426,6 +430,8 @@
 	<string>设为播放头</string>
 	<key>Audio</key>
 	<string>音频</string>
+	<key>Audio only</key>
+	<string>仅音频</string>
 	<key>Aurora</key>
 	<string>极光</string>
 	<key>Aurora Blue</key>
@@ -434,6 +440,8 @@
 	<string>自动</string>
 	<key>Auto Zoom</key>
 	<string>自动缩放</string>
+	<key>Auto adjust</key>
+	<string>自动调整</string>
 	<key>Auto zoom — %lld zooms</key>
 	<string>自动缩放 — %lld 个缩放</string>
 	<key>Auto-dismiss overlay</key>
@@ -460,6 +468,8 @@
 	<string>已恢复为 LF Studios 风格</string>
 	<key>Back to the original recording — ⌘Z to undo</key>
 	<string>已恢复为原始录制内容 — 按 ⌘Z 撤销</string>
+	<key>Back to the start</key>
+	<string>回到开头</string>
 	<key>Back · pause · faster</key>
 	<string>后退 · 暂停 · 加快</string>
 	<key>Background</key>
@@ -480,6 +490,8 @@
 	<string>条形码</string>
 	<key>Based on Shotnix (MIT License)</key>
 	<string>基于 Shotnix（MIT 许可证）</string>
+	<key>Begins scrolling when the recording starts</key>
+	<string>录制开始时开始滚动</string>
 	<key>Behavior</key>
 	<string>行为</string>
 	<key>Behind you</key>
@@ -516,6 +528,10 @@
 	<string>左下</string>
 	<key>Bottom right</key>
 	<string>右下</string>
+	<key>Bright</key>
+	<string>明亮</string>
+	<key>Brightness</key>
+	<string>亮度</string>
 	<key>Bring All to Front</key>
 	<string>前置全部窗口</string>
 	<key>Built-in</key>
@@ -540,6 +556,8 @@
 	<string>摄像头访问权限已关闭 — 请在“系统设置”→“隐私与安全性”→“摄像头”中允许 LF Studios。</string>
 	<key>Camera bubble</key>
 	<string>摄像头气泡</string>
+	<key>Camera color adjusted — tweak the sliders, or ⌘Z to undo</key>
+	<string>已调整摄像头颜色 — 可微调滑块，或按 ⌘Z 撤销</string>
 	<key>Camera disconnected</key>
 	<string>摄像头已断开</string>
 	<key>Camera disconnected.</key>
@@ -556,6 +574,8 @@
 	<string>摄像头素材、清理后的人声、草稿和剪贴板导出</string>
 	<key>Camera hidden</key>
 	<string>隐藏摄像头</string>
+	<key>Camera hidden in %lld silences — ⌘Z to undo</key>
+	<string>已在 %lld 段静默中隐藏摄像头 — 按 ⌘Z 撤销</string>
 	<key>Camera later by %@ s</key>
 	<string>摄像头延后 %@ 秒</string>
 	<key>Camera layout</key>
@@ -682,6 +702,8 @@
 	<string>卡片使用你的背景，时间线会随之延长。“Made with LF Studios”结尾画面是单独的 — 它位于导出选项中。</string>
 	<key>Center</key>
 	<string>居中</string>
+	<key>Change the text</key>
+	<string>修改文本</string>
 	<key>Chapters</key>
 	<string>章节</string>
 	<key>Chapters as text (“0:00 Start”) for a YouTube description</key>
@@ -734,6 +756,8 @@
 	<string>选择窗口</string>
 	<key>Choose...</key>
 	<string>选取…</string>
+	<key>Cinematic</key>
+	<string>电影感</string>
 	<key>Circle</key>
 	<string>圆形</string>
 	<key>Citrus</key>
@@ -840,10 +864,16 @@
 	<string>命令</string>
 	<key>Compose Email</key>
 	<string>撰写邮件</string>
+	<key>Compressed AAC (256 kbps): small, and plays everywhere — for podcasts and sharing</key>
+	<string>压缩的 AAC（256 kbps）：文件小，到处都能播放 — 适合播客和分享</string>
+	<key>Compression</key>
+	<string>压缩</string>
 	<key>Computer sound</key>
 	<string>电脑声音</string>
 	<key>Conflict detected</key>
 	<string>检测到冲突</string>
+	<key>Contrast</key>
+	<string>对比度</string>
 	<key>Copied</key>
 	<string>已拷贝</string>
 	<key>Copied to clipboard</key>
@@ -872,6 +902,8 @@
 	<string>拷贝当前帧</string>
 	<key>Copy image to clipboard</key>
 	<string>将图像拷贝到剪贴板</string>
+	<key>Copy notes</key>
+	<string>拷贝备注</string>
 	<key>Copy recognized text (OCR)</key>
 	<string>拷贝识别出的文字（OCR）</string>
 	<key>Copy screenshots to the clipboard</key>
@@ -1040,6 +1072,8 @@
 	<string>抠像</string>
 	<key>Dark Mode</key>
 	<string>深色</string>
+	<key>De-esser</key>
+	<string>齿音消除</string>
 	<key>Decoded details</key>
 	<string>解码详情</string>
 	<key>Delete</key>
@@ -1342,6 +1376,10 @@
 	<string>导出…</string>
 	<key>Extra-fluid curves for slow, cinematic demos.</key>
 	<string>超流畅的曲线，适合慢节奏、电影感的演示。</string>
+	<key>Face tracking</key>
+	<string>面部跟踪</string>
+	<key>Face tracking canceled</key>
+	<string>已取消面部跟踪</string>
 	<key>Fade in</key>
 	<string>淡入</string>
 	<key>Fade in from black</key>
@@ -1386,6 +1424,8 @@
 	<string>查找“%@”</string>
 	<key>Finds typing and plays it faster, as speed blocks you can change</key>
 	<string>找到打字部分并加快播放，生成可修改的变速块</string>
+	<key>Finds your face in the camera video on this Mac, then the bubble's framing follows it. Where no face is found, it keeps the last good framing.</key>
+	<string>在这台 Mac 上找到摄像头视频中的面部，气泡的取景随之移动。找不到面部的地方会保持上一个合适的取景。</string>
 	<key>Finds zooms the camera bubble covers and moves their framing, or the bubble, out of the way</key>
 	<string>找到被摄像头气泡遮住的缩放，并移开其取景或气泡</string>
 	<key>Fine-tune shadow</key>
@@ -1420,6 +1460,8 @@
 	<string>字体</string>
 	<key>For Final Cut Pro, DaVinci Resolve, and Adobe Premiere Pro</key>
 	<string>用于 Final Cut Pro、DaVinci Resolve 和 Adobe Premiere Pro</string>
+	<key>For the camera only; the screen stays as recorded.</key>
+	<string>仅作用于摄像头；屏幕保持录制时的样子。</string>
 	<key>Forever</key>
 	<string>永久</string>
 	<key>Format</key>
@@ -1530,6 +1572,8 @@
 	<string>隐藏图标</string>
 	<key>Hide Phone Overlay</key>
 	<string>隐藏手机界面叠层</string>
+	<key>Hide camera during silences</key>
+	<string>静默时隐藏摄像头</string>
 	<key>Hide desktop icons while capturing</key>
 	<string>截屏时隐藏桌面图标</string>
 	<key>Hide the Menu Bar Icon?</key>
@@ -1544,6 +1588,8 @@
 	<string>隐藏 — 导出会继续进行（Esc）</string>
 	<key>High</key>
 	<string>高</string>
+	<key>Higher glides calmly after you; lower keeps up with quick moves</key>
+	<string>越高跟随越平缓；越低越能跟上快速移动</string>
 	<key>Highlight</key>
 	<string>高亮</string>
 	<key>Highlight color</key>
@@ -1574,6 +1620,8 @@
 	<string>将指针悬停在缩放轨道上并点按即可添加缩放，或在播放头处按下 Z。拖移缩放可移动它；拖移其边缘可更改持续时间。</string>
 	<key>How long the loupe takes to grow in and fade out</key>
 	<string>放大镜展开和淡出所需的时间</string>
+	<key>How much of the bubble your face fills</key>
+	<string>面部占气泡的比例</string>
 	<key>How strongly blur and pixelate hide what's under them</key>
 	<string>模糊和像素化遮盖下方内容的程度</string>
 	<key>Image</key>
@@ -1598,6 +1646,8 @@
 	<string>包括宽高比（%@）</string>
 	<key>Include media (works on any Mac)</key>
 	<string>包含媒体（在任何 Mac 上都可用）</string>
+	<key>Include speaker notes</key>
+	<string>包括演讲者备注</string>
 	<key>Include the finished video</key>
 	<string>附带成品视频</string>
 	<key>Includes: %@</key>
@@ -1658,6 +1708,8 @@
 	<string>保留截屏</string>
 	<key>Keep editing — the words appear here when LF Studios is done listening.</key>
 	<string>你可以继续编辑 — LF Studios 听完后，字词会显示在这里。</string>
+	<key>Keep face centered</key>
+	<string>保持面部居中</string>
 	<key>Keeping 30 days removes %lld older captures from History now. This can't be undone.</key>
 	<string>选择“30 天”将立即从历史记录中移除 %lld 张较早的截屏。此操作无法撤销。</string>
 	<key>Keeping 7 days removes %lld older captures from History now. This can't be undone.</key>
@@ -1670,6 +1722,8 @@
 	<string>选择“最近 100 张截屏”将立即从历史记录中移除 %lld 张较早的截屏。此操作无法撤销。</string>
 	<key>Keeping last 500 captures removes %lld older captures from History now. This can't be undone.</key>
 	<string>选择“最近 500 张截屏”将立即从历史记录中移除 %lld 张较早的截屏。此操作无法撤销。</string>
+	<key>Keeps loud and quiet words close together</key>
+	<string>让响亮和轻柔的词音量接近</string>
 	<key>Keyboard</key>
 	<string>键盘</string>
 	<key>Keyboard Shortcuts</key>
@@ -1762,6 +1816,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>未包含：</string>
 	<key>Length</key>
 	<string>时长</string>
+	<key>Less rumble and boom, more presence</key>
+	<string>减少隆隆声和轰鸣，增加临场感</string>
 	<key>Letterbox Instead of Following the Cursor</key>
 	<string>加黑边，不跟随指针</string>
 	<key>Level</key>
@@ -1806,10 +1862,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>查找…</string>
 	<key>Look</key>
 	<string>外观</string>
+	<key>Looking for your face in the camera video. This happens once; the result is kept.</key>
+	<string>正在摄像头视频中寻找面部。只需进行一次，结果会被保留。</string>
 	<key>Loop</key>
 	<string>循环</string>
 	<key>Loop to fill</key>
 	<string>循环填满</string>
+	<key>Loose</key>
+	<string>宽松</string>
 	<key>Loupe</key>
 	<string>放大镜</string>
 	<key>Lower under your voice</key>
@@ -1886,6 +1946,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>极简</string>
 	<key>Minimize</key>
 	<string>最小化</string>
+	<key>Minimum silence</key>
+	<string>最短静默</string>
 	<key>Mint</key>
 	<string>薄荷</string>
 	<key>Mirror</key>
@@ -1970,6 +2032,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>我的预设</string>
 	<key>My Style: “%@”</key>
 	<string>我的风格：“%@”</string>
+	<key>Natural</key>
+	<string>自然</string>
 	<key>Nebula</key>
 	<string>星云</string>
 	<key>Needed to capture the screen. macOS will ask once.</key>
@@ -2030,6 +2094,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>无冲突</string>
 	<key>No cursor data in this video</key>
 	<string>此视频中没有指针数据</string>
+	<key>No face found in the camera video</key>
+	<string>摄像头视频中未找到面部</string>
 	<key>No idle moments found — nice and tight</key>
 	<string>未发现空闲片段 — 节奏紧凑</string>
 	<key>No location chosen</key>
@@ -2058,6 +2124,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>这里没有空间 — 请移动播放头</string>
 	<key>No saved captures yet</key>
 	<string>还没有已存储的截屏</string>
+	<key>No silences that long</key>
+	<string>没有这么长的静默</string>
 	<key>No sound from the microphone</key>
 	<string>麦克风没有声音</string>
 	<key>No speech was found in this recording. If it has narration, check its level in the Audio tab, then try again.</key>
@@ -2074,6 +2142,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>已没有语气词</string>
 	<key>No zooms are under the camera</key>
 	<string>没有缩放被摄像头遮住</string>
+	<key>Noise removal</key>
+	<string>降噪</string>
 	<key>None</key>
 	<string>无</string>
 	<key>None in this recording. Turn on “Show keyboard shortcuts” in Settings → Recording and every ⌘ shortcut you press appears as keycaps. Plain typing is never recorded.</key>
@@ -2216,12 +2286,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>密码</string>
 	<key>Paste</key>
 	<string>粘贴</string>
+	<key>Paste or type your notes here. They stay out of every recording.</key>
+	<string>在此粘贴或输入备注。它们不会出现在任何录制中。</string>
 	<key>Pause</key>
 	<string>暂停</string>
 	<key>Pause (Space)</key>
 	<string>暂停（空格键）</string>
 	<key>Pause / Resume Recording</key>
 	<string>暂停/继续录制</string>
+	<key>Pause / Resume Speaker Notes</key>
+	<string>暂停/继续演讲者备注</string>
 	<key>Pause Recording</key>
 	<string>暂停录制</string>
 	<key>Pause recording</key>
@@ -2230,6 +2304,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>暂停录制（%@）</string>
 	<key>Pause restored</key>
 	<string>已恢复停顿</string>
+	<key>Pause scrolling (Space)</key>
+	<string>暂停滚动（空格键）</string>
 	<key>Pause shortened</key>
 	<string>已缩短停顿</string>
 	<key>Paused</key>
@@ -2298,6 +2374,20 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>播放或暂停。使用 Option 键和箭头键可选择时间线上的内容。</string>
 	<key>Plum</key>
 	<string>梅子</string>
+	<key>Podcast</key>
+	<string>播客</string>
+	<key>Podcast loudness</key>
+	<string>播客响度</string>
+	<key>Podcast mode</key>
+	<string>播客模式</string>
+	<key>Podcast mode below takes care of the voice while it's on.</key>
+	<string>播客模式开启时，由下方的播客模式处理人声。</string>
+	<key>Podcast mode off</key>
+	<string>播客模式已关闭</string>
+	<key>Podcast mode on — turn off any step you don't want</key>
+	<string>播客模式已开启 — 可关闭任何不需要的步骤</string>
+	<key>Podcast voice ready</key>
+	<string>播客人声已就绪</string>
 	<key>Polar Dawn</key>
 	<string>极地晨光</string>
 	<key>Porcelain</key>
@@ -2370,6 +2460,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>范围</string>
 	<key>Re-enable Apple's ⌘⇧3/4/5 screenshot shortcuts</key>
 	<string>重新启用 Apple 的 ⌘⇧3/4/5 截屏快捷键</string>
+	<key>Read</key>
+	<string>阅读</string>
+	<key>Read mode: Space starts and pauses scrolling</key>
+	<string>阅读模式：空格键开始和暂停滚动</string>
 	<key>Ready</key>
 	<string>就绪</string>
 	<key>Ready · %lld optional off</key>
@@ -2516,6 +2610,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做箭头样式更改</string>
 	<key>Redo Aspect Ratio</key>
 	<string>重做宽高比更改</string>
+	<key>Redo Auto Adjust Camera Color</key>
+	<string>重做自动调整摄像头颜色</string>
 	<key>Redo Auto Zoom</key>
 	<string>重做自动缩放</string>
 	<key>Redo Auto-Zoom Off</key>
@@ -2600,10 +2696,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做编辑文字</string>
 	<key>Redo Enhance Voice</key>
 	<string>重做增强人声</string>
+	<key>Redo Face Tracking</key>
+	<string>重做面部跟踪</string>
 	<key>Redo Fade</key>
 	<string>重做淡入淡出</string>
 	<key>Redo Fit Zooms Around Camera</key>
 	<string>重做让缩放避开摄像头</string>
+	<key>Redo Hide Camera During Silences</key>
+	<string>重做静默时隐藏摄像头</string>
 	<key>Redo Hide Shortcut</key>
 	<string>重做隐藏快捷键</string>
 	<key>Redo Highlight Style</key>
@@ -2612,6 +2712,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做图像样式更改</string>
 	<key>Redo Intro and Outro</key>
 	<string>重做摄像头片头和片尾</string>
+	<key>Redo Keep Face Centered</key>
+	<string>重做保持面部居中</string>
 	<key>Redo Markers</key>
 	<string>重做标记更改</string>
 	<key>Redo Move %lld Items</key>
@@ -2648,6 +2750,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做部分静音</string>
 	<key>Redo Mute Video</key>
 	<string>重做视频静音</string>
+	<key>Redo Podcast Mode Off</key>
+	<string>重做关闭播客模式</string>
+	<key>Redo Podcast Mode On</key>
+	<string>重做开启播客模式</string>
 	<key>Redo Remove All Zooms</key>
 	<string>重做移除所有缩放</string>
 	<key>Redo Remove Camera Video</key>
@@ -2794,6 +2900,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>去除背景噪音和嗡嗡声，并平衡你的音量 — 在这台 Mac 上处理</string>
 	<key>Removes jitter, keeps it snappy.</key>
 	<string>去除抖动，保持灵敏。</string>
+	<key>Removes room noise and hum, and quiets the room between words</key>
+	<string>去除环境噪音和嗡嗡声，并让词与词之间更安静</string>
 	<key>Rename</key>
 	<string>重新命名</string>
 	<key>Rename Marker…</key>
@@ -2914,6 +3022,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>圆角</string>
 	<key>S</key>
 	<string>小</string>
+	<key>Saturation</key>
+	<string>饱和度</string>
 	<key>Save</key>
 	<string>存储</string>
 	<key>Save %@…</key>
@@ -3042,6 +3152,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>滚动截屏已达到最大长度（%lld 点），已完成。</string>
 	<key>Scrolling capture stopped after %lld minutes.</key>
 	<string>滚动截屏已在 %lld 分钟后停止。</string>
+	<key>Scrolling speed</key>
+	<string>滚动速度</string>
 	<key>Search commands</key>
 	<string>搜索命令</string>
 	<key>Search projects</key>
@@ -3104,6 +3216,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>共享</string>
 	<key>Share — Mail, Messages, AirDrop…</key>
 	<string>共享 — “邮件”、“信息”、隔空投送…</string>
+	<key>Sharpness</key>
+	<string>锐度</string>
 	<key>Shift the Zooms</key>
 	<string>移动缩放</string>
 	<key>Shortcut</key>
@@ -3170,6 +3284,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>显示更多时间线</string>
 	<key>Show one kind of capture</key>
 	<string>只显示某类截屏</string>
+	<key>Show or hide your speaker notes — they never show in the recording</key>
+	<string>显示或隐藏演讲者备注 — 它们绝不会出现在录制中</string>
 	<key>Show shortcuts</key>
 	<string>显示快捷键</string>
 	<key>Show the preview after capture</key>
@@ -3192,6 +3308,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>并排</string>
 	<key>Side rail</key>
 	<string>侧边按钮栏</string>
+	<key>Silences</key>
+	<string>静默</string>
 	<key>Silences over a second get shortened — except while you click, type, scroll, or move the pointer, so the demo itself is never cut</key>
 	<string>超过一秒的静音会被缩短 — 点按、打字、滚动或移动指针时除外，因此演示本身不会被剪掉</string>
 	<key>Silences over a second get shortened — except while you move the pointer, click, or press a shortcut</key>
@@ -3222,12 +3340,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>文件最小，适合文档和聊天</string>
 	<key>Smooth</key>
 	<string>平滑</string>
+	<key>Smoothness</key>
+	<string>平滑度</string>
 	<key>Social</key>
 	<string>社交媒体</string>
 	<key>Social feeds</key>
 	<string>社交媒体信息流</string>
 	<key>Soft streaks on fast moves</key>
 	<string>快速移动时产生柔和拖影</string>
+	<key>Softens sharp “s” and “sh” sounds</key>
+	<string>柔化尖锐的“s”和“sh”音</string>
 	<key>Softness</key>
 	<string>柔和度</string>
 	<key>Solid Color</key>
@@ -3242,6 +3364,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>空格键</string>
 	<key>Space Gray</key>
 	<string>深空灰色</string>
+	<key>Speaker Notes</key>
+	<string>演讲者备注</string>
+	<key>Speaker notes</key>
+	<string>演讲者备注</string>
+	<key>Speaker notes copied</key>
+	<string>已拷贝演讲者备注</string>
+	<key>Speaker notes: a teleprompter that never shows in the recording</key>
+	<string>演讲者备注：绝不会出现在录制中的提词器</string>
 	<key>Sped up %lld idle moments — saved %@</key>
 	<string>已加速 %lld 个空闲片段 — 节省了 %@</string>
 	<key>Sped up %lld idle moments — saved %@ · check any typing</key>
@@ -3304,8 +3434,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>从这里开始</string>
 	<key>Start over from the original recording?</key>
 	<string>要从原始录制内容重新开始吗？</string>
+	<key>Start scrolling (Space)</key>
+	<string>开始滚动（空格键）</string>
 	<key>Start the song at</key>
 	<string>歌曲起始位置</string>
+	<key>Start with recording</key>
+	<string>随录制开始</string>
 	<key>Starts</key>
 	<string>开始</string>
 	<key>Startup</key>
@@ -3426,6 +3560,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>该视频为空</string>
 	<key>That window closed before recording could start.</key>
 	<string>窗口在录制开始前已关闭。</string>
+	<key>The bubble follows your face; where none was found it holds the last framing</key>
+	<string>气泡跟随你的面部；找不到面部的地方保持上一个取景</string>
+	<key>The bubble now follows your face</key>
+	<string>气泡现在会跟随你的面部</string>
+	<key>The bubble's framing follows your face</key>
+	<string>气泡的取景跟随你的面部</string>
 	<key>The camera couldn't start.</key>
 	<string>无法启动摄像头。</string>
 	<key>The camera follows the text cursor as you type.</key>
@@ -3434,6 +3574,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>镜头会让指针保持在画面中，并平滑地跟随它。</string>
 	<key>The camera stopped. The recording continues without it.</key>
 	<string>摄像头已停止。录制将继续，但不含摄像头画面。</string>
+	<key>The camera video couldn't be read</key>
+	<string>无法读取摄像头视频</string>
+	<key>The camera video couldn't be read, so no face could be found.</key>
+	<string>无法读取摄像头视频，因此找不到面部。</string>
 	<key>The cursor is part of this video</key>
 	<string>指针已录入此视频</string>
 	<key>The export carries on in the background (Esc)</key>
@@ -3456,6 +3600,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>麦克风无法启动，因此本次录制不含麦克风声音。</string>
 	<key>The microphone stopped working. The recording continues without it.</key>
 	<string>麦克风已停止工作。录制将继续，但不含麦克风声音。</string>
+	<key>The notes you read while recording. They're saved with the project, and go into Creative Handoff only when you choose.</key>
+	<string>你在录制时阅读的备注。它们随项目存储，只有在你选择时才会放入“创意交付”。</string>
 	<key>The picture's file is gone — choose it again with Replace.</key>
 	<string>图片文件已不存在 — 请使用“替换”重新选择。</string>
 	<key>The pointer glides back to where it started, so the video loops without a jump</key>
@@ -3480,6 +3626,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>歌曲比视频短</string>
 	<key>The song's file is gone — choose it again with Replace.</key>
 	<string>歌曲文件已不存在 — 请使用“替换”重新选择。</string>
+	<key>The sound couldn't be read. Export again.</key>
+	<string>无法读取声音。请重新导出。</string>
 	<key>The timeline is empty. Restore a clip, then export again.</key>
 	<string>时间线为空。请恢复一个片段，然后重新导出。</string>
 	<key>The video encoder is busy — another app may be recording or exporting. Wait a moment and try again, or choose H.264.</key>
@@ -3488,10 +3636,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>该视频没有画面</string>
 	<key>The video's own recording can't be removed</key>
 	<string>无法移除视频本身的录制内容</string>
+	<key>The video's sound as you edited it — cuts, speed changes, music and the voice settings included.</key>
+	<string>按你的编辑输出视频声音 — 包括剪切、变速、音乐和人声设置。</string>
+	<key>The video's sound as you edited it, at −16 LUFS — cuts, speed changes, music and the voice settings included.</key>
+	<string>按你的编辑输出视频声音，响度 −16 LUFS — 包括剪切、变速、音乐和人声设置。</string>
 	<key>The voice track is empty, so there's nothing to clean up. Turn off Enhance voice to keep the original sound.</key>
 	<string>人声轨道为空，没有可清理的内容。请关闭“增强人声”以保留原始声音。</string>
 	<key>The whole frame zooms in.</key>
 	<string>整个画面放大。</string>
+	<key>The whole mix at −16 LUFS, peaks under −1 dB</key>
+	<string>整个混音为 −16 LUFS，峰值低于 −1 dB</string>
 	<key>The window you're recording closed. Stop when you're ready — the recording keeps going.</key>
 	<string>正在录制的窗口已关闭。准备好后再停止 — 录制仍在继续。</string>
 	<key>There are no captions to translate yet. Transcribe or add captions first.</key>
@@ -3542,6 +3696,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>这会用新的%2$@文字稿替换全部 %1$lld 行字幕，包括你编辑或输入过的行。</string>
 	<key>This video has no camera bubble</key>
 	<string>此视频没有摄像头气泡</string>
+	<key>This video has no camera footage to hide</key>
+	<string>此视频没有可隐藏的摄像头画面</string>
+	<key>This video has no camera footage to track</key>
+	<string>此视频没有可跟踪的摄像头画面</string>
+	<key>This video has no sound to export. Turn on the microphone or system audio before recording, or add music.</key>
+	<string>此视频没有可导出的声音。请在录制前打开麦克风或系统音频，或添加音乐。</string>
+	<key>This video has no speaker notes</key>
+	<string>此视频没有演讲者备注</string>
+	<key>This video has no voice to listen for silences</key>
+	<string>此视频没有可用于检测静默的人声</string>
 	<key>This video is copy-protected and can't be exported.</key>
 	<string>此视频受复制保护，无法导出。</string>
 	<key>This video isn't there anymore</key>
@@ -3552,6 +3716,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>只需三个简单步骤即可开始截屏。</string>
 	<key>Tide Glass</key>
 	<string>潮汐玻璃</string>
+	<key>Tight</key>
+	<string>紧凑</string>
 	<key>Timed Capture</key>
 	<string>定时截屏</string>
 	<key>Timed Capture (%llds)</key>
@@ -3568,6 +3734,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>时间</string>
 	<key>Timing only: never which keys</key>
 	<string>仅时刻：绝不记录是哪些键</string>
+	<key>Tint</key>
+	<string>色调</string>
 	<key>Tips</key>
 	<string>提示</string>
 	<key>Title</key>
@@ -3646,6 +3814,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>开启点按时自动缩放</string>
 	<key>Turn around</key>
 	<string>反转方向</string>
+	<key>Turn off podcast mode</key>
+	<string>关闭播客模式</string>
 	<key>Turn off vertical reframing to fit zooms around the camera</key>
 	<string>请先关闭竖屏重新取景，再让缩放避开摄像头</string>
 	<key>Turn on Auto-zoom on clicks (Zoom) to use this</key>
@@ -3670,6 +3840,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>打字部分现在以 %@ 播放</string>
 	<key>URL</key>
 	<string>网址</string>
+	<key>Uncompressed 24-bit sound, as Logic Pro and GarageBand like it</key>
+	<string>未压缩的 24 位声音，适合 Logic Pro 和 GarageBand</string>
+	<key>Uncompressed 24-bit sound, for editing in an audio app</key>
+	<string>未压缩的 24 位声音，用于在音频应用中编辑</string>
 	<key>Under the voice</key>
 	<string>人声时音量</string>
 	<key>Undo</key>
@@ -3732,6 +3906,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销箭头样式更改</string>
 	<key>Undo Aspect Ratio</key>
 	<string>撤销宽高比更改</string>
+	<key>Undo Auto Adjust Camera Color</key>
+	<string>撤销自动调整摄像头颜色</string>
 	<key>Undo Auto Zoom</key>
 	<string>撤销自动缩放</string>
 	<key>Undo Auto-Zoom Off</key>
@@ -3816,10 +3992,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销编辑文字</string>
 	<key>Undo Enhance Voice</key>
 	<string>撤销增强人声</string>
+	<key>Undo Face Tracking</key>
+	<string>撤销面部跟踪</string>
 	<key>Undo Fade</key>
 	<string>撤销淡入淡出</string>
 	<key>Undo Fit Zooms Around Camera</key>
 	<string>撤销让缩放避开摄像头</string>
+	<key>Undo Hide Camera During Silences</key>
+	<string>撤销静默时隐藏摄像头</string>
 	<key>Undo Hide Shortcut</key>
 	<string>撤销隐藏快捷键</string>
 	<key>Undo Highlight Style</key>
@@ -3828,6 +4008,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销图像样式更改</string>
 	<key>Undo Intro and Outro</key>
 	<string>撤销摄像头片头和片尾</string>
+	<key>Undo Keep Face Centered</key>
+	<string>撤销保持面部居中</string>
 	<key>Undo Markers</key>
 	<string>撤销标记更改</string>
 	<key>Undo Move %lld Items</key>
@@ -3864,6 +4046,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销部分静音</string>
 	<key>Undo Mute Video</key>
 	<string>撤销视频静音</string>
+	<key>Undo Podcast Mode Off</key>
+	<string>撤销关闭播客模式</string>
+	<key>Undo Podcast Mode On</key>
+	<string>撤销开启播客模式</string>
 	<key>Undo Remove All Zooms</key>
 	<string>撤销移除所有缩放</string>
 	<key>Undo Remove Camera Video</key>
@@ -4020,6 +4206,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>等待中…</string>
 	<key>Wallpaper</key>
 	<string>墙纸</string>
+	<key>Warm</key>
+	<string>暖色</string>
+	<key>Warm and clear EQ</key>
+	<string>温暖清晰的均衡</string>
+	<key>Warmth</key>
+	<string>色温</string>
 	<key>Warning</key>
 	<string>警告</string>
 	<key>Web</key>
@@ -4110,6 +4302,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>你的解说可以变成字幕 — 然后通过编辑文字来剪辑视频。</string>
 	<key>Your narration can become captions — transcribe it here</key>
 	<string>你的解说可以变成字幕 — 在这里转录</string>
+	<key>Your notes from recording, as Notes.txt</key>
+	<string>你录制时的备注，保存为 Notes.txt</string>
 	<key>Your presets, fonts, capture history, and recording edits came along too. ShotStyle's own copy is untouched, so you can delete the old app whenever you're ready.</key>
 	<string>你的预设、字体、截屏历史和录制内容的编辑也一并带了过来。ShotStyle 自己的副本保持不变，你可以随时删除旧应用。</string>
 	<key>Your recordings and screenshots will appear here</key>

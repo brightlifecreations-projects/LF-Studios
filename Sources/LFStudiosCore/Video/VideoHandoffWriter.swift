@@ -145,6 +145,10 @@ final class VideoHandoffWriter: @unchecked Sendable {
                 written.append(name)
             }
         }
+        if plan.options.includeSpeakerNotes, let notes = input.project.speakerNotes, !notes.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            try notes.write(to: folder.appendingPathComponent("Notes.txt"), atomically: true, encoding: .utf8)
+            written.append("Notes.txt")
+        }
         written.append("README.txt")
         let readme = VideoHandoffReadme.text(plan: finalPlan, name: input.name, appVersion: appVersion, durations: durations, written: Set(written), markers: input.project.placedMarkers(segments: input.segments), timelineDuration: input.timelineDuration)
         try readme.write(to: folder.appendingPathComponent("README.txt"), atomically: true, encoding: .utf8)

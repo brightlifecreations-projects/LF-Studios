@@ -100,6 +100,8 @@ struct VideoDemoRecordingMetadata: Codable, Equatable {
     /// "Record when keys are pressed": the moments keys went down — never
     /// which keys.
     var keyPresses: [Double]? = nil
+    /// The speaker notes shown while recording.
+    var speakerNotes: String? = nil
     /// Finds the recording again after a rename or a move on the same
     /// drive (the leftover-data cleanup looks it up).
     var bookmark: Data? = nil

@@ -140,7 +140,14 @@ struct VideoExportSheet: View {
 
     private var optionsView: some View {
         VStack(alignment: .leading, spacing: 16) {
-            VideoSegmented(options: VideoExportSettings.Format.allCases.map { ($0, $0.title) }, selection: $model.exportSettings.format)
+            VideoSegmented(options: [(false, L("Video")), (true, L("Audio only"))], selection: Binding(
+                get: { settings.format.isAudioOnly },
+                set: { audio in
+                    guard audio != settings.format.isAudioOnly else { return }
+                    model.exportSettings.format = audio ? .m4a : .mp4
+                }
+            ))
+            VideoSegmented(options: (settings.format.isAudioOnly ? VideoExportSettings.Format.audioFormats : VideoExportSettings.Format.videoFormats).map { ($0, $0.title) }, selection: $model.exportSettings.format)
 
             if let detail = settings.format.detail {
                 note(detail)
@@ -209,7 +216,7 @@ struct VideoExportSheet: View {
                 }
             }
 
-            if !model.project.captions.isEmpty {
+            if !model.project.captions.isEmpty, !settings.format.isAudioOnly {
                 row(L("Captions")) {
                     VStack(alignment: .leading, spacing: 6) {
                         // Captions hidden in the editor are never burned in.
@@ -262,6 +269,10 @@ struct VideoExportSheet: View {
 
             if settings.format.isMovie {
                 VideoToggleRow(title: L("End card"), detail: L("A 2-second “Made with LF Studios” outro on your background — your own outro card is in Style"), isOn: $model.exportSettings.endCard)
+            } else if settings.format.isAudioOnly {
+                note(model.project.audio.normalizesLoudness
+                     ? L("The video's sound as you edited it, at −16 LUFS — cuts, speed changes, music and the voice settings included.")
+                     : L("The video's sound as you edited it — cuts, speed changes, music and the voice settings included."))
             } else {
                 note(L("GIFs embed anywhere — READMEs, pull requests, docs. Keep them short: they get big fast."))
             }
@@ -410,7 +421,7 @@ struct VideoExportSheet: View {
         let duration = exportDuration
         let endCard = settings.format.isMovie && settings.endCard
         let bytes = settings.estimatedBytes(duration: duration, canvas: canvas, hasAudio: model.hasAudio || model.project.music != nil || model.project.clickSounds.enabled)
-        var parts = ["\(Int(size.width))×\(Int(size.height))", "\(settings.effectiveFrameRate) fps"]
+        var parts = settings.format.isAudioOnly ? [settings.format.title, "48 kHz"] : ["\(Int(size.width))×\(Int(size.height))", "\(settings.effectiveFrameRate) fps"]
         if settings.format == .mp4 { parts.append(settings.codec.title) } else if settings.format.isProRes { parts.append(settings.format.title) }
         parts.append(VideoEditorModel.timecode(duration + (endCard ? VideoDemoExporter.endCardDuration : 0)))
         let sourceShort = min(model.project.sourceWidth, model.project.sourceHeight)
@@ -453,7 +464,7 @@ struct VideoExportSheet: View {
         if model.project.cards.intro.enabled { pieces.append(L("intro card")) }
         if model.project.cards.outro.enabled { pieces.append(L("outro card")) }
         if model.project.music != nil { pieces.append(L("music")) }
-        if !model.project.captions.isEmpty { pieces.append(settings.burnCaptions && model.project.captionStyle.visible ? L("captions burned in") : L("no captions in the picture")) }
+        if !model.project.captions.isEmpty, !settings.format.isAudioOnly { pieces.append(settings.burnCaptions && model.project.captionStyle.visible ? L("captions burned in") : L("no captions in the picture")) }
         if settings.keepsTransparency { pieces.append(L("a transparent background")) }
         if settings.format.isMovie, settings.chapters, !model.chapters.isEmpty { pieces.append(L("chapters")) }
         if settings.format.isMovie { pieces.append(endCard ? L("“Made with LF Studios” end card (2s)") : L("no end card")) }

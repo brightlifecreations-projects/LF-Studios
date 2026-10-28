@@ -24,9 +24,9 @@ final class ShortcutDefaultsTests: XCTestCase {
     }
 
     func testAllExpectedShortcutsAreRegistered() {
-        // 7 screenshot (incl. timed and All Displays), 3 tools, 6 recording
-        // (with pause/resume and markers).
-        XCTAssertEqual(LFStudiosShortcut.allCases.count, 16)
+        // 7 screenshot (incl. timed and All Displays), 3 tools, 7 recording
+        // (with pause/resume, markers and pausing speaker notes).
+        XCTAssertEqual(LFStudiosShortcut.allCases.count, 17)
         XCTAssertEqual(Set(LFStudiosShortcut.allCases.map(\.name.rawValue)).count, LFStudiosShortcut.allCases.count)
         XCTAssertEqual(LFStudiosShortcut.captureAllDisplays.section, .screenshots)
     }

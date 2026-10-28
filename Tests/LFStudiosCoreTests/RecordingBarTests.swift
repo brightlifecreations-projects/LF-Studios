@@ -44,7 +44,7 @@ final class RecordingBarTests: XCTestCase {
         let bar = try makeBar()
         defer { bar.closeControls() }
         let all = try toggles(in: bar)
-        XCTAssertEqual(Set(all.compactMap { $0.accessibilityLabel() }), ["System audio", "Microphone", "Cursor", "Camera", "Show keyboard shortcuts"])
+        XCTAssertEqual(Set(all.compactMap { $0.accessibilityLabel() }), ["System audio", "Microphone", "Cursor", "Camera", "Show keyboard shortcuts", "Speaker notes"])
         let systemAudio = try XCTUnwrap(all.first { $0.accessibilityLabel() == "System audio" })
         XCTAssertEqual(systemAudio.accessibilityValue() as? NSNumber, 0)
 

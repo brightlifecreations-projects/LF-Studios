@@ -123,6 +123,8 @@ struct VideoWebcamSettings: Codable, Equatable {
     var border: Border?
     /// 0 no shadow … 1 strong (nil: the usual soft shadow, 0.5).
     var shadowStrength: Double?
+    /// The camera picture's color and sharpness (nil: as filmed).
+    var color: VideoCameraColor?
 
     struct Border: Codable, Equatable {
         var color: VideoRGBA
@@ -154,7 +156,7 @@ struct VideoWebcamSettings: Codable, Equatable {
 
     init() {}
 
-    private enum CodingKeys: String, CodingKey { case visible, size, anchor, shape, mirror, shrinkWhenZoomed, backdrop, crop, roundness, border, shadowStrength }
+    private enum CodingKeys: String, CodingKey { case visible, size, anchor, shape, mirror, shrinkWhenZoomed, backdrop, crop, roundness, border, shadowStrength, color }
 
     init(from decoder: Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
@@ -170,6 +172,7 @@ struct VideoWebcamSettings: Codable, Equatable {
         roundness = (try? c.decodeIfPresent(Double.self, forKey: .roundness)).flatMap { $0 }.map { min(max($0, 0), 1) }
         border = try? c.decodeIfPresent(Border.self, forKey: .border)
         shadowStrength = (try? c.decodeIfPresent(Double.self, forKey: .shadowStrength)).flatMap { $0 }.map { min(max($0, 0), 1) }
+        color = try? c.decodeIfPresent(VideoCameraColor.self, forKey: .color)
     }
 }
 
@@ -213,15 +216,39 @@ struct VideoCameraLayoutRegion: Codable, Equatable, Identifiable {
     var start: Double
     var end: Double
     var layout: Layout
+    /// Made by "Hide camera during silences": pressing it again replaces
+    /// only these.
+    var isSilence = false
 
-    init(id: UUID = UUID(), start: Double, end: Double, layout: Layout) {
+    init(id: UUID = UUID(), start: Double, end: Double, layout: Layout, isSilence: Bool = false) {
         self.id = id
         self.start = start
         self.end = end
         self.layout = layout
+        self.isSilence = isSilence
     }
 
     static let minimumDuration = 0.8
+
+    private enum CodingKeys: String, CodingKey { case id, start, end, layout, isSilence }
+
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        id = try c.decode(UUID.self, forKey: .id)
+        start = try c.decode(Double.self, forKey: .start)
+        end = try c.decode(Double.self, forKey: .end)
+        layout = try c.decode(Layout.self, forKey: .layout)
+        isSilence = (try? c.decodeIfPresent(Bool.self, forKey: .isSilence)) ?? false
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var c = encoder.container(keyedBy: CodingKeys.self)
+        try c.encode(id, forKey: .id)
+        try c.encode(start, forKey: .start)
+        try c.encode(end, forKey: .end)
+        try c.encode(layout, forKey: .layout)
+        if isSilence { try c.encode(true, forKey: .isSilence) }
+    }
 }
 
 /// The camera footage recorded alongside a screen recording.

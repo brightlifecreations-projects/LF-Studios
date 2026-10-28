@@ -83,6 +83,10 @@ final class HotkeyManager {
             captureEngine?.addRecordingMarker()
         }
 
+        KeyboardShortcuts.onKeyDown(for: .lfstudiosPauseSpeakerNotes) {
+            SpeakerNotes.shared.toggleScrolling()
+        }
+
         // Menu-bar-independent access: opens the command center even when a
         // crowded menu bar makes macOS hide the status icon.
         KeyboardShortcuts.onKeyDown(for: .lfstudiosOpenCommandCenter) {

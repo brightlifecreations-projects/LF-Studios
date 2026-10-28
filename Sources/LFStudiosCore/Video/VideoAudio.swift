@@ -48,12 +48,12 @@ struct VideoAudioSource {
 
     /// The recording's tracks, with the voice replaced by its enhanced
     /// version when that's wanted and already processed.
-    static func resolved(from source: VideoSourceTracks, kinds: [VideoAudioKind], enhanceVoice: Bool) async -> [VideoAudioSource] {
+    static func resolved(from source: VideoSourceTracks, kinds: [VideoAudioKind], voice recipe: VideoVoiceRecipe?) async -> [VideoAudioSource] {
         var sources = self.sources(from: source, kinds: kinds)
-        guard enhanceVoice,
+        guard let recipe,
               let index = VideoAudioKind.voiceTrackIndex(in: kinds),
               sources.indices.contains(index) else { return sources }
-        let url = VideoVoiceEnhancer.cacheURL(for: source.asset.url, trackIndex: index)
+        let url = VideoVoiceEnhancer.cacheURL(for: source.asset.url, trackIndex: index, recipe: recipe)
         guard FileManager.default.fileExists(atPath: url.path) else { return sources }
         let asset = AVURLAsset(url: url)
         guard let track = try? await asset.loadTracks(withMediaType: .audio).first,
@@ -96,10 +96,10 @@ enum VideoVoiceEnhancer {
     }
 
     /// Where the enhanced version of `track` in `recording` is cached.
-    static func cacheURL(for recording: URL, trackIndex: Int) -> URL {
+    static func cacheURL(for recording: URL, trackIndex: Int, recipe: VideoVoiceRecipe = .enhance) -> URL {
         let attributes = try? FileManager.default.attributesOfItem(atPath: recording.path)
         let stamp = (attributes?[.modificationDate] as? Date)?.timeIntervalSince1970 ?? 0
-        let key = Data("\(recording.standardizedFileURL.path)|\(trackIndex)|\(Int(stamp))|v\(version)".utf8)
+        let key = Data("\(recording.standardizedFileURL.path)|\(trackIndex)|\(Int(stamp))|v\(version)\(recipe.signature)".utf8)
             .base64EncodedString()
             .replacingOccurrences(of: "/", with: "_")
             .replacingOccurrences(of: "+", with: "-")
@@ -132,9 +132,10 @@ enum VideoVoiceEnhancer {
         asset: AVAsset,
         track: AVAssetTrack,
         to destination: URL,
+        recipe: VideoVoiceRecipe = .enhance,
         progress: @escaping @Sendable (Double) -> Void
     ) async throws -> Double {
-        guard isAvailable else { throw Failure.unavailable }
+        guard isAvailable || !recipe.isolation else { throw Failure.unavailable }
         let fileManager = FileManager.default
         try fileManager.createDirectory(at: destination.deletingLastPathComponent(), withIntermediateDirectories: true)
         let work = fileManager.temporaryDirectory.appendingPathComponent("lfstudios-voice-\(UUID().uuidString)", isDirectory: true)
@@ -162,7 +163,7 @@ enum VideoVoiceEnhancer {
         let engine = AVAudioEngine()
         let player = AVAudioPlayerNode()
         let isolation = AVAudioUnitEffect(audioComponentDescription: isolationDescription)
-        let equalizer = AVAudioUnitEQ(numberOfBands: 2)
+        let equalizer = AVAudioUnitEQ(numberOfBands: 5)
         let compressor = AVAudioUnitEffect(audioComponentDescription: AudioComponentDescription(
             componentType: kAudioUnitType_Effect,
             componentSubType: kAudioUnitSubType_DynamicsProcessor,
@@ -176,28 +177,14 @@ enum VideoVoiceEnhancer {
         engine.attach(compressor)
 
         let isolationUnit = isolation.audioUnit
-        AudioUnitSetParameter(isolationUnit, kAUSoundIsolationParam_WetDryMixPercent, kAudioUnitScope_Global, 0, 100, 0)
+        AudioUnitSetParameter(isolationUnit, kAUSoundIsolationParam_WetDryMixPercent, kAudioUnitScope_Global, 0, recipe.isolation ? 100 : 0, 0)
         if #available(macOS 15.0, *) {
             AudioUnitSetParameter(isolationUnit, kAUSoundIsolationParam_SoundToIsolate, kAudioUnitScope_Global, 0, AudioUnitParameterValue(kAUSoundIsolationSoundType_HighQualityVoice), 0)
         }
+        isolation.bypass = !recipe.isolation
 
-        let rumble = equalizer.bands[0]
-        rumble.filterType = .highPass
-        rumble.frequency = 80
-        rumble.bypass = false
-        let presence = equalizer.bands[1]
-        presence.filterType = .parametric
-        presence.frequency = 3_000
-        presence.bandwidth = 1.2
-        presence.gain = 1.5
-        presence.bypass = false
-
-        let compressorUnit = compressor.audioUnit
-        AudioUnitSetParameter(compressorUnit, kDynamicsProcessorParam_Threshold, kAudioUnitScope_Global, 0, -24, 0)
-        AudioUnitSetParameter(compressorUnit, kDynamicsProcessorParam_HeadRoom, kAudioUnitScope_Global, 0, 8, 0)
-        AudioUnitSetParameter(compressorUnit, kDynamicsProcessorParam_AttackTime, kAudioUnitScope_Global, 0, 0.004, 0)
-        AudioUnitSetParameter(compressorUnit, kDynamicsProcessorParam_ReleaseTime, kAudioUnitScope_Global, 0, 0.15, 0)
-        AudioUnitSetParameter(compressorUnit, kDynamicsProcessorParam_OverallGain, kAudioUnitScope_Global, 0, 4, 0)
+        Self.configure(equalizer, recipe.equalizer)
+        Self.configure(compressor, recipe.compressor)
 
         engine.connect(player, to: isolation, format: format)
         engine.connect(isolation, to: equalizer, format: format)
@@ -213,12 +200,15 @@ enum VideoVoiceEnhancer {
         player.play()
 
         let outputURL = work.appendingPathComponent("voice.m4a")
-        let output = try AVAudioFile(forWriting: outputURL, settings: [
+        let aac: [String: Any] = [
             AVFormatIDKey: kAudioFormatMPEG4AAC,
             AVSampleRateKey: 48_000,
             AVNumberOfChannelsKey: 1,
-            AVEncoderBitRateKey: 128_000,
-        ], commonFormat: .pcmFormatFloat32, interleaved: false)
+            AVEncoderBitRateKey: recipe == .enhance ? 128_000 : 192_000,
+        ]
+        // Steps of our own come after: render to a lossless file first.
+        let renderedURL = work.appendingPathComponent(recipe.needsPostProcessing ? "rendered.caf" : "voice.m4a")
+        let output = try AVAudioFile(forWriting: renderedURL, settings: recipe.needsPostProcessing ? format.settings : aac, commonFormat: .pcmFormatFloat32, interleaved: false)
         guard let buffer = AVAudioPCMBuffer(pcmFormat: engine.manualRenderingFormat, frameCapacity: engine.manualRenderingMaximumFrameCount) else {
             throw Failure.unavailable
         }
@@ -253,15 +243,82 @@ enum VideoVoiceEnhancer {
             @unknown default:
                 throw Failure.failed(L("Voice enhancement stopped partway. Turn Enhance voice off and on again to retry."))
             }
-            progress(0.15 + 0.85 * Double(engine.manualRenderingSampleTime) / Double(max(total, 1)))
+            progress(0.15 + (recipe.needsPostProcessing ? 0.55 : 0.85) * Double(engine.manualRenderingSampleTime) / Double(max(total, 1)))
         }
         player.stop()
         engine.stop()
+
+        if recipe.needsPostProcessing {
+            let finished = work.appendingPathComponent("finished.caf")
+            try VideoVoiceDSP.postProcess(renderedURL, to: finished, recipe: recipe) { value in progress(0.7 + 0.25 * value) }
+            let encoded = try AVAudioFile(forWriting: outputURL, settings: aac, commonFormat: .pcmFormatFloat32, interleaved: false)
+            let source = try AVAudioFile(forReading: finished, commonFormat: .pcmFormatFloat32, interleaved: false)
+            guard let chunk = AVAudioPCMBuffer(pcmFormat: source.processingFormat, frameCapacity: 16_384) else { throw Failure.unavailable }
+            while source.framePosition < source.length {
+                try Task.checkCancellation()
+                try source.read(into: chunk, frameCount: 16_384)
+                guard chunk.frameLength > 0 else { break }
+                try encoded.write(from: chunk)
+            }
+        }
 
         try? fileManager.removeItem(at: destination)
         try fileManager.moveItem(at: outputURL, to: destination)
         progress(1)
         return firstTime ?? 0
+    }
+}
+
+extension VideoVoiceEnhancer {
+    /// Enhance voice: a rumble cut and a touch of presence. Podcast: warm
+    /// and clear — rumble and mud out, a little body, presence and air.
+    static func configure(_ equalizer: AVAudioUnitEQ, _ kind: VideoVoiceRecipe.Equalizer) {
+        for band in equalizer.bands { band.bypass = true }
+        func band(_ index: Int, _ type: AVAudioUnitEQFilterType, _ frequency: Float, gain: Float = 0, bandwidth: Float = 1) {
+            let b = equalizer.bands[index]
+            b.filterType = type
+            b.frequency = frequency
+            b.gain = gain
+            b.bandwidth = bandwidth
+            b.bypass = false
+        }
+        switch kind {
+        case .none:
+            break
+        case .gentle:
+            band(0, .highPass, 80)
+            band(1, .parametric, 3_000, gain: 1.5, bandwidth: 1.2)
+        case .podcast:
+            band(0, .highPass, 85)
+            band(1, .lowShelf, 180, gain: 1.5)
+            band(2, .parametric, 320, gain: -2.5, bandwidth: 1.1)
+            band(3, .parametric, 3_800, gain: 2.5, bandwidth: 1.3)
+            band(4, .highShelf, 10_000, gain: 1.5)
+        }
+    }
+
+    static func configure(_ compressor: AVAudioUnitEffect, _ kind: VideoVoiceRecipe.Compressor) {
+        let unit = compressor.audioUnit
+        func set(_ parameter: AudioUnitParameterID, _ value: AudioUnitParameterValue) {
+            AudioUnitSetParameter(unit, parameter, kAudioUnitScope_Global, 0, value, 0)
+        }
+        switch kind {
+        case .none:
+            compressor.bypass = true
+        case .gentle:
+            set(kDynamicsProcessorParam_Threshold, -24)
+            set(kDynamicsProcessorParam_HeadRoom, 8)
+            set(kDynamicsProcessorParam_AttackTime, 0.004)
+            set(kDynamicsProcessorParam_ReleaseTime, 0.15)
+            set(kDynamicsProcessorParam_OverallGain, 4)
+        case .podcast:
+            // Firmer: words sit close together, as on a radio voice.
+            set(kDynamicsProcessorParam_Threshold, -26)
+            set(kDynamicsProcessorParam_HeadRoom, 5)
+            set(kDynamicsProcessorParam_AttackTime, 0.003)
+            set(kDynamicsProcessorParam_ReleaseTime, 0.12)
+            set(kDynamicsProcessorParam_OverallGain, 6)
+        }
     }
 }
 

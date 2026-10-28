@@ -630,6 +630,13 @@ struct VideoAudioInspector: View {
                             detail: L("Removes background noise and hum, and evens out your level — processed on this Mac"),
                             isOn: binding(\.enhanceVoice)
                         )
+                        .disabled(audio.podcast != nil)
+                        if audio.podcast != nil {
+                            Text(L("Podcast mode below takes care of the voice while it's on."))
+                                .font(.system(size: 10.5))
+                                .foregroundStyle(VideoEditorTheme.textTertiary)
+                                .fixedSize(horizontal: false, vertical: true)
+                        }
                         if let progress = model.voiceJob {
                             VStack(alignment: .leading, spacing: 5) {
                                 HStack {
@@ -643,7 +650,7 @@ struct VideoAudioInspector: View {
                                 }
                                 ProgressView(value: progress).progressViewStyle(.linear)
                             }
-                        } else if let error = model.voiceError, audio.enhanceVoice {
+                        } else if let error = model.voiceError, audio.voiceRecipe != nil {
                             Label(error, systemImage: "exclamationmark.triangle.fill")
                                 .font(.system(size: 11, weight: .medium))
                                 .foregroundStyle(Color.orange)
@@ -652,12 +659,15 @@ struct VideoAudioInspector: View {
                     }
                 }
 
+                VideoPodcastSection(model: model)
+
                 VideoInspectorSection(L("Export")) {
                     VideoToggleRow(
                         title: L("Even out loudness"),
                         detail: L("Exports at the level video sites expect (−16 LUFS) without clipping"),
                         isOn: binding(\.normalizeLoudness)
                     )
+                    .disabled(audio.podcast != nil)
                 }
 
                 Text(L("Select a clip on the timeline to mute it or fade it in and out."))

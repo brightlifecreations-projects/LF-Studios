@@ -95,10 +95,10 @@ final class LFStudiosHealthModelTests: XCTestCase {
         }
         let optionalOff = LFStudiosShortcut.optionalUnassignedCount { _ in nil }
 
-        XCTAssertEqual(LFStudiosShortcut.allCases.count, 16)
+        XCTAssertEqual(LFStudiosShortcut.allCases.count, 17)
         XCTAssertEqual(LFStudiosShortcut.requiredShortcutCount, 5)
         XCTAssertEqual(required, 2)
-        XCTAssertEqual(optionalOff, 11)
+        XCTAssertEqual(optionalOff, 12)
         XCTAssertFalse(LFStudiosShortcut.captureArea.isOptional)
         XCTAssertTrue(LFStudiosShortcut.recordArea.isOptional)
         XCTAssertTrue(LFStudiosShortcut.stopRecording.isOptional)

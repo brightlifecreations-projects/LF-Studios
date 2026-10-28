@@ -76,7 +76,7 @@ enum VideoDemoExporter {
             camera = await VideoCameraSource.load(webcam)
         }
         let kinds = VideoAudioKind.resolve(recorded: recording?.audioTracks, channelCounts: source.audioChannelCounts)
-        let audioSources = await VideoAudioSource.resolved(from: source, kinds: kinds, enhanceVoice: project.audio.enhanceVoice)
+        let audioSources = await VideoAudioSource.resolved(from: source, kinds: kinds, voice: project.audio.voiceRecipe)
 
         var extras = VideoEditExtras()
         extras.tail = project.timelineTail
@@ -88,7 +88,7 @@ enum VideoDemoExporter {
                 }
                 if let metadata = VideoDemoSidecarStore.load(for: url) { appendedMetadata[added.id] = metadata }
             }
-            let layout = await VideoSourceLayout.load(project: project, primary: source, primaryAudio: audioSources, primaryCamera: camera, includeCameras: project.webcam.visible, enhanceVoice: project.audio.enhanceVoice)
+            let layout = await VideoSourceLayout.load(project: project, primary: source, primaryAudio: audioSources, primaryCamera: camera, includeCameras: project.webcam.visible, voice: project.audio.voiceRecipe)
             // There but unreadable (damaged, not a video): say so, rather
             // than export its part as silent black.
             if let unreadable = project.sources.first(where: { added in !added.isPrimary && !(layout?.entries.contains { $0.source.id == added.id } ?? false) }) {
@@ -184,7 +184,13 @@ enum VideoDemoExporter {
         defer { VideoExportFiles.cleanUp(temporaryURL) }
 
         let warnings: [String]
-        if settings.format == .gif {
+        if settings.format.isAudioOnly {
+            guard !edit.mixedAudioTracks.isEmpty else {
+                throw VideoDemoExportError.exportFailed(L("This video has no sound to export. Turn on the microphone or system audio before recording, or add music."))
+            }
+            try await writeAudio(edit: edit, project: project, format: settings.format, duration: timelineDuration, to: temporaryURL, cancel: cancel, progress: progress, phase: phase)
+            warnings = []
+        } else if settings.format == .gif {
             await phase(.rendering(0))
             try await writeGIF(
                 edit: edit,
@@ -270,7 +276,8 @@ enum VideoDemoExporter {
             hasWebcam: hasWebcam,
             outputCanvasSize: outputCanvas,
             reframe: reframe,
-            typingTrack: typingTrack
+            typingTrack: typingTrack,
+            faceCrop: hasWebcam ? VideoFaceCropPath.make(project: project, recordedCamera: recording?.webcam) : nil
         )
     }
 
@@ -286,6 +293,92 @@ enum VideoDemoExporter {
         let output = AVAssetReaderVideoCompositionOutput(videoTracks: [edit.videoTrack], videoSettings: settings)
         output.videoComposition = VideoCompositionBuilder.readerVideoComposition(for: edit, frameRate: frameRate)
         return output
+    }
+
+    // MARK: Audio only
+
+    /// The file settings for a sound-only format: AAC at 256 kbps, or
+    /// 24-bit uncompressed (little-endian WAV, big-endian AIFF).
+    static func audioFileSettings(_ format: VideoExportSettings.Format) -> [String: Any] {
+        switch format {
+        case .m4a:
+            return [AVFormatIDKey: kAudioFormatMPEG4AAC, AVSampleRateKey: 48_000, AVNumberOfChannelsKey: 2, AVEncoderBitRateKey: 256_000]
+        default:
+            return [
+                AVFormatIDKey: kAudioFormatLinearPCM,
+                AVSampleRateKey: 48_000,
+                AVNumberOfChannelsKey: 2,
+                AVLinearPCMBitDepthKey: 24,
+                AVLinearPCMIsFloatKey: false,
+                AVLinearPCMIsBigEndianKey: format == .aiff,
+                AVLinearPCMIsNonInterleaved: false,
+            ]
+        }
+    }
+
+    /// The edited video's sound alone: the same mix as the movie, at the
+    /// same loudness.
+    private static func writeAudio(
+        edit: VideoEditComposition,
+        project: VideoDemoProject,
+        format: VideoExportSettings.Format,
+        duration: Double,
+        to url: URL,
+        cancel: CancellationFlag,
+        progress: @escaping @Sendable (Double) async -> Void,
+        phase: @escaping @Sendable (Phase) async -> Void
+    ) async throws {
+        var gain = 1.0
+        if project.audio.normalizesLoudness {
+            await phase(.balancingLoudness(0))
+            gain = try await measureLoudnessGain(edit: edit, cancel: cancel) { fraction in
+                Task { await phase(.balancingLoudness(fraction)) }
+            }
+        }
+        await phase(.rendering(0))
+        let reader = try AVAssetReader(asset: edit.composition)
+        let output = AVAssetReaderAudioMixOutput(audioTracks: edit.mixedAudioTracks, audioSettings: [
+            AVFormatIDKey: kAudioFormatLinearPCM,
+            AVSampleRateKey: 48_000,
+            AVNumberOfChannelsKey: 2,
+            AVLinearPCMBitDepthKey: 32,
+            AVLinearPCMIsFloatKey: true,
+            AVLinearPCMIsBigEndianKey: false,
+            AVLinearPCMIsNonInterleaved: false,
+        ])
+        output.audioMix = edit.audioMix
+        output.audioTimePitchAlgorithm = .spectral
+        output.alwaysCopiesSampleData = false
+        guard reader.canAdd(output) else { throw VideoDemoExportError.exportFailed(L("The sound couldn't be read. Export again.")) }
+        reader.add(output)
+        guard reader.startReading() else { throw reader.error ?? VideoDemoExportError.exportFailed(L("The sound couldn't be read. Export again.")) }
+        guard let processing = AVAudioFormat(commonFormat: .pcmFormatFloat32, sampleRate: 48_000, channels: 2, interleaved: true) else { return }
+        let file = try AVAudioFile(forWriting: url, settings: audioFileSettings(format), commonFormat: .pcmFormatFloat32, interleaved: true)
+        let total = max(duration, 0.001)
+        let scale = Float(gain)
+        var written = 0.0
+        while let sample = output.copyNextSampleBuffer() {
+            if cancel.isSet {
+                reader.cancelReading()
+                throw VideoDemoExportError.cancelled
+            }
+            guard let block = CMSampleBufferGetDataBuffer(sample) else { continue }
+            var length = 0
+            var pointer: UnsafeMutablePointer<Int8>?
+            guard CMBlockBufferGetDataPointer(block, atOffset: 0, lengthAtOffsetOut: nil, totalLengthOut: &length, dataPointerOut: &pointer) == noErr,
+                  let pointer else { continue }
+            let frames = length / (MemoryLayout<Float>.size * 2)
+            guard frames > 0, let buffer = AVAudioPCMBuffer(pcmFormat: processing, frameCapacity: AVAudioFrameCount(frames)) else { continue }
+            buffer.frameLength = AVAudioFrameCount(frames)
+            pointer.withMemoryRebound(to: Float.self, capacity: frames * 2) { source in
+                let target = buffer.floatChannelData![0]
+                for index in 0..<(frames * 2) { target[index] = source[index] * scale }
+            }
+            try file.write(from: buffer)
+            written += Double(frames) / 48_000
+            await progress(min(written / total, 1) * 0.99)
+        }
+        if reader.status == .failed { throw reader.error ?? VideoDemoExportError.exportFailed(L("The sound couldn't be read. Export again.")) }
     }
 
     // MARK: MP4
@@ -340,7 +433,7 @@ enum VideoDemoExporter {
 
         // Even loudness: measure the final mix once, then apply one gain.
         var audioGain = 1.0
-        if audioOutput != nil, project.audio.normalizeLoudness {
+        if audioOutput != nil, project.audio.normalizesLoudness {
             await phase(.balancingLoudness(0))
             audioGain = try await measureLoudnessGain(edit: edit, cancel: cancel) { fraction in
                 Task { await phase(.balancingLoudness(fraction)) }
@@ -481,7 +574,7 @@ enum VideoDemoExporter {
         let edit = prepared.edit
         let cancel = CancellationFlag()
         var gain = 1.0
-        if !edit.mixedAudioTracks.isEmpty, prepared.project.audio.normalizeLoudness {
+        if !edit.mixedAudioTracks.isEmpty, prepared.project.audio.normalizesLoudness {
             gain = try await measureLoudnessGain(edit: edit, cancel: cancel) { progress($0 * 0.3) }
         }
         let rate = 48_000.0

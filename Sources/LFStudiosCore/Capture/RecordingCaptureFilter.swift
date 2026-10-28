@@ -41,7 +41,8 @@ enum RecordingCaptureFilter {
     }
 
     static func isRealWindow(_ window: NSWindow) -> Bool {
-        guard window.styleMask.contains(.titled) else { return false }
+        // Speaker notes and the like: never in a recording.
+        guard !(window is RecordingNeverCaptured), window.styleMask.contains(.titled) else { return false }
         let owner: AnyObject? = window.windowController ?? (window.delegate as AnyObject?)
         if let owner, isBundledFramework(Bundle(for: type(of: owner))) { return false }
         return true
@@ -114,8 +115,15 @@ enum RecordingCaptureFilter {
     static func windowsToHide(recording window: SCWindow, in content: SCShareableContent) -> [SCWindow] {
         guard let processID = window.owningApplication?.processID else { return [] }
         let siblings = content.windows.filter { $0.owningApplication?.processID == processID && $0.windowID != window.windowID }
-        let hide = windowsToHide(recording: summary(of: window), others: siblings.map(summary(of:)))
+        var hide = windowsToHide(recording: summary(of: window), others: siblings.map(summary(of:)))
+        // Recording one of LF Studios' own windows: its notes stay out too.
+        if processID == pid_t(ProcessInfo.processInfo.processIdentifier) { hide.formUnion(neverCapturedWindowIDs()) }
         return siblings.filter { hide.contains($0.windowID) }
+    }
+
+    /// LF Studios' windows that never appear in a recording.
+    static func neverCapturedWindowIDs(in windows: [NSWindow] = NSApp.windows) -> Set<CGWindowID> {
+        Set(windows.filter { $0 is RecordingNeverCaptured && $0.windowNumber > 0 }.compactMap { CGWindowID(exactly: $0.windowNumber) })
     }
 
     static func summary(of window: SCWindow) -> WindowSummary {

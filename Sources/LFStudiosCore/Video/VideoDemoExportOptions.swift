@@ -10,8 +10,15 @@ struct VideoExportSettings: Equatable {
         case proRes422HQ = "prores422hq"
         case proRes4444 = "prores4444"
         case gif
+        /// Audio only: the edited video's sound.
+        case m4a
+        case wav
+        case aiff
 
         var id: String { rawValue }
+
+        static let videoFormats: [Format] = [.mp4, .proRes422, .proRes422HQ, .proRes4444, .gif]
+        static let audioFormats: [Format] = [.m4a, .wav, .aiff]
         var title: String {
             switch self {
             case .mp4: return "MP4" // l10n-ignore: a format name
@@ -19,11 +26,15 @@ struct VideoExportSettings: Equatable {
             case .proRes422HQ: return "ProRes 422 HQ" // l10n-ignore: a format name
             case .proRes4444: return "ProRes 4444" // l10n-ignore: a format name
             case .gif: return "GIF" // l10n-ignore: a format name
+            case .m4a: return "M4A" // l10n-ignore: a format name
+            case .wav: return "WAV" // l10n-ignore: a format name
+            case .aiff: return "AIFF" // l10n-ignore: a format name
             }
         }
 
-        /// A movie (MP4 or ProRes), not a GIF.
-        var isMovie: Bool { self != .gif }
+        /// A movie (MP4 or ProRes), not a GIF or sound alone.
+        var isMovie: Bool { self != .gif && !isAudioOnly }
+        var isAudioOnly: Bool { Self.audioFormats.contains(self) }
         var isProRes: Bool { proResCodec != nil }
 
         var proResCodec: AVVideoCodecType? {
@@ -31,7 +42,7 @@ struct VideoExportSettings: Equatable {
             case .proRes422: return .proRes422
             case .proRes422HQ: return .proRes422HQ
             case .proRes4444: return .proRes4444
-            case .mp4, .gif: return nil
+            case .mp4, .gif, .m4a, .wav, .aiff: return nil
             }
         }
 
@@ -40,6 +51,9 @@ struct VideoExportSettings: Equatable {
             case .proRes422: return L("Apple's editing format: big files that keep every detail, for Final Cut Pro, Premiere Pro, and DaVinci Resolve")
             case .proRes422HQ: return L("Like ProRes 422 with even more detail, for color grading and effects — about half again as big")
             case .proRes4444: return L("The highest quality, and the only one that can keep transparency")
+            case .m4a: return L("Compressed AAC (256 kbps): small, and plays everywhere — for podcasts and sharing")
+            case .wav: return L("Uncompressed 24-bit sound, for editing in an audio app")
+            case .aiff: return L("Uncompressed 24-bit sound, as Logic Pro and GarageBand like it")
             case .mp4, .gif: return nil
             }
         }
@@ -50,7 +64,7 @@ struct VideoExportSettings: Equatable {
             case .proRes422: return 147_000_000
             case .proRes422HQ: return 220_000_000
             case .proRes4444: return 330_000_000
-            case .mp4, .gif: return 0
+            case .mp4, .gif, .m4a, .wav, .aiff: return 0
             }
         }
     }
@@ -201,6 +215,9 @@ struct VideoExportSettings: Equatable {
         case .gif: return "gif"
         case .mp4: return "mp4"
         case .proRes422, .proRes422HQ, .proRes4444: return "mov"
+        case .m4a: return "m4a"
+        case .wav: return "wav"
+        case .aiff: return "aiff"
         }
     }
     var effectiveFrameRate: Int { format == .gif ? gifFPS : fps }
@@ -235,6 +252,11 @@ struct VideoExportSettings: Equatable {
     func estimatedBytes(duration: Double, canvas: CGSize, hasAudio: Bool) -> Int64 {
         let size = outputSize(canvas: canvas)
         let seconds = max(duration, 0) + (endCard && format.isMovie ? VideoDemoExporter.endCardDuration : 0)
+        switch format {
+        case .m4a: return Int64(256_000.0 * seconds / 8)
+        case .wav, .aiff: return Int64(48_000.0 * 2 * 3 * seconds)
+        default: break
+        }
         if format == .gif {
             let frames = seconds * Double(gifFPS)
             return Int64(frames * Double(size.width * size.height) * 0.12)
