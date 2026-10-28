@@ -123,4 +123,35 @@ enum TestImageBytes {
         context?.draw(image, in: CGRect(x: 0, y: 0, width: image.width, height: image.height))
         return bytes
     }
+
+    /// Two exports of the same edit show the same picture, but they aren't
+    /// always the same bytes: while other exports keep the Mac's video
+    /// encoder busy (the full test run), H.264 compresses a little
+    /// differently: up to about 36 levels in a pixel, 0.05 on average. Any
+    /// drawing that matters (an icon, a line, a shade) is far more
+    /// (VideoPhoneOverlayTests.testTheComparisonWouldSeeTheOverlay).
+    static let encoderNoise = (largest: 64, mean: 0.5)
+
+    /// The largest difference in one channel of one pixel, and the average
+    /// over all of them, in levels (0–255).
+    static func difference(_ a: CGImage, _ b: CGImage) -> (largest: Int, mean: Double) {
+        let first = rgba(a)
+        let second = rgba(b)
+        guard first.count == second.count, !first.isEmpty else { return (255, 255) }
+        var largest = 0
+        var total = 0
+        for index in first.indices {
+            let difference = abs(Int(first[index]) - Int(second[index]))
+            largest = max(largest, difference)
+            total += difference
+        }
+        return (largest, Double(total) / Double(first.count))
+    }
+
+    /// Two exported frames show the same picture, give or take encoder noise.
+    static func assertSamePicture(_ a: CGImage, _ b: CGImage, _ message: String = "", file: StaticString = #filePath, line: UInt = #line) {
+        let (largest, mean) = difference(a, b)
+        XCTAssertLessThanOrEqual(largest, encoderNoise.largest, "\(message): a pixel differs by \(largest)", file: file, line: line)
+        XCTAssertLessThan(mean, encoderNoise.mean, "\(message): pixels differ by \(mean) on average", file: file, line: line)
+    }
 }

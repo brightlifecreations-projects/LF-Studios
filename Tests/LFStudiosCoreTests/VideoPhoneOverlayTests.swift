@@ -74,10 +74,42 @@ final class VideoPhoneOverlayTests: XCTestCase {
         for time in [0.2, 1.0, 1.8] {
             let a = try await frame(with, at: time)
             let b = try await frame(without, at: time)
-            XCTAssertEqual(TestImageBytes.rgba(a), TestImageBytes.rgba(b), "the export is the same with the overlay on (\(time) s)")
+            TestImageBytes.assertSamePicture(a, b, "the export is the same with the overlay on (\(time) s)")
         }
         let json = String(data: try JSONEncoder().encode(model.project), encoding: .utf8) ?? ""
         XCTAssertFalse(json.contains("phoneOverlay") || json.contains("sideRail"), "not saved in the project")
+    }
+
+    /// The export check allows for encoder noise, but never for the
+    /// overlay: even the lightest layout over a real exported frame is far
+    /// outside it.
+    func testTheComparisonWouldSeeTheOverlay() async throws {
+        let url = folder.appendingPathComponent("rec.mp4")
+        try await VideoTestSupport.writeFakeRecording(to: url, size: CGSize(width: 960, height: 600), seconds: 2, fps: 30)
+        let model = VideoEditorModel(videoURL: url)
+        await model.load()
+        model.setStyle { $0.apply(aspectPreset: .vertical) }
+        var settings = VideoExportSettings()
+        settings.resolution = .p720
+        settings.fps = 30
+        let exported = folder.appendingPathComponent("plain.mp4")
+        try await VideoDemoExporter.export(project: model.project, recording: model.recording, destinationURL: exported, settings: settings)
+        let plain = try await frame(exported, at: 1.0)
+        let size = CGSize(width: plain.width, height: plain.height)
+        for layout in VideoPhoneLayout.allCases {
+            let view = ZStack {
+                Image(decorative: plain, scale: 1)
+                VideoPhoneOverlayView(layout: layout, size: size)
+            }
+            .frame(width: size.width, height: size.height)
+            let renderer = ImageRenderer(content: view)
+            renderer.scale = 1
+            let overlaid = try XCTUnwrap(renderer.cgImage)
+            let (largest, mean) = TestImageBytes.difference(plain, overlaid)
+            XCTAssertGreaterThan(largest, TestImageBytes.encoderNoise.largest * 2, "\(layout)")
+            XCTAssertGreaterThan(mean, TestImageBytes.encoderNoise.mean, "\(layout)")
+            print("PHONE OVERLAY CHECK: \(layout) largest \(largest) mean \(mean)")
+        }
     }
 
     /// Pictures of each layout over a grey frame, for a look.

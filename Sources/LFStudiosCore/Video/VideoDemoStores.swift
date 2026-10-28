@@ -4,9 +4,44 @@ import Foundation
 /// Where video drafts, recording metadata, and the export index live.
 /// Tests point it at a temporary folder so they never touch real data.
 enum VideoStorageLocation {
-    nonisolated(unsafe) static var overrideRoot: URL?
+    // Tests keep their data out of the user's folders. Swift Testing runs
+    // tests on several threads of one process at once, so the folder for the
+    // whole process sits behind a lock, and a test that needs a folder of its
+    // own sets `scopedRoot` for its own task only, never for the tests
+    // running beside it. The app sets neither.
+    private static let lock = NSLock()
+    nonisolated(unsafe) private static var processRoot: URL?
+
+    /// This task's own folder (`$scopedRoot.withValue(folder) { … }`).
+    @TaskLocal static var scopedRoot: URL?
+
+    static var overrideRoot: URL? {
+        get {
+            lock.lock()
+            defer { lock.unlock() }
+            return processRoot
+        }
+        set {
+            lock.lock()
+            defer { lock.unlock() }
+            processRoot = newValue
+        }
+    }
+
+    /// The folder for the whole process: the one already set, or `make()`'s,
+    /// in one step, so tests starting together agree on one.
+    @discardableResult
+    static func useRootIfUnset(_ make: () -> URL) -> URL {
+        lock.lock()
+        defer { lock.unlock() }
+        if let processRoot { return processRoot }
+        let root = make()
+        processRoot = root
+        return root
+    }
 
     static var root: URL {
+        if let scopedRoot { return scopedRoot }
         if let overrideRoot { return overrideRoot }
         // Under `swift test` nothing reads or writes the user's own data
         // (drafts, presets…), even in tests that don't set a root.
