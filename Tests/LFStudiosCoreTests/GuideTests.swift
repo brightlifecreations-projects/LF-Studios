@@ -98,7 +98,8 @@ final class GuideTests: XCTestCase {
         let top = try String(contentsOf: changelog, encoding: .utf8).components(separatedBy: "\n").first { $0.hasPrefix("## [") }
         XCTAssertEqual(top.map { String($0.dropFirst(4).prefix { $0 != "]" }) }, GuideContent.newVersions.first, "put the new version first in GuideContent.newVersions")
         XCTAssertTrue(listed.contains("audio-added"))
-        XCTAssertTrue(listed.contains("rec-folder"))
+        XCTAssertTrue(listed.contains("rec-frame"))
+        XCTAssertFalse(listed.contains("rec-folder"), "1.6.0 has left What's new")
         XCTAssertFalse(listed.contains("camera-face"), "older versions' pages leave What's new")
         for entry in features {
             XCTAssertEqual(entry.isNew, listed.contains(entry.id), entry.id)

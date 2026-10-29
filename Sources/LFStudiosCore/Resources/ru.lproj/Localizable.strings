@@ -174,6 +174,10 @@
 	<string>Файл с таким именем уже существует. Выберите другое имя и экспортируйте снова.</string>
 	<key>A folder with an LF Studios project in it opens that project, exactly as it was saved.</key>
 	<string>Папка с проектом LF Studios открывает этот проект точно таким, каким он был сохранен.</string>
+	<key>A frame appears in the middle of the screen. Choose its shape above the recording bar, like 16:9.</key>
+	<string>Посередине экрана появится рамка. Выберите ее форму над панелью записи, например 16:9.</string>
+	<key>A frame of an exact shape and size, so your video comes out ready for YouTube, Reels, or Instagram.</key>
+	<string>Рамка точной формы и размера, чтобы видео сразу подходило для YouTube, Reels или Instagram.</string>
 	<key>A hairline that separates dark recordings from the background</key>
 	<string>Тонкая линия отделяет темные записи от фона</string>
 	<key>A magnifier over one spot at the playhead; the rest of the frame stays in view</key>
@@ -236,6 +240,8 @@
 	<string>Осталось около %lld с</string>
 	<key>About LF Studios</key>
 	<string>О программе LF Studios</string>
+	<key>Above the recording bar, choose 16:9 for YouTube, 9:16 for Reels, TikTok, and Shorts, or 4:5 for the Instagram feed.</key>
+	<string>Над панелью записи выберите 16:9 для YouTube, 9:16 для Reels, TikTok и Shorts или 4:5 для ленты Instagram.</string>
 	<key>Accuracy</key>
 	<string>Режим</string>
 	<key>Accuracy: Accurate reads more carefully; Fast is quicker but knows fewer languages.</key>
@@ -394,6 +400,8 @@
 	<string>После снимка</string>
 	<key>After changing the shape, move zooms, the camera, and captions so everything fits.</key>
 	<string>После смены формата переместите увеличения, камеру и субтитры, чтобы все поместилось.</string>
+	<key>After clicking the frame's border or the bars.</key>
+	<string>После нажатия на край рамки или на панели.</string>
 	<key>After recording</key>
 	<string>После записи</string>
 	<key>After recording, click Restore size to put it back.</key>
@@ -484,6 +492,8 @@
 	<string>Любой цвет…</string>
 	<key>Any other folder: Import Folder lists the videos and sound files. Choose which is the screen recording, which the camera, and which sound to add as tracks, and when each starts.</key>
 	<string>Любая другая папка: «Импортировать папку» показывает список видео и звуковых файлов. Выберите, что из них запись экрана, что камера и какой звук добавить дорожками, а также когда начинается каждый файл.</string>
+	<key>Any shape, like 3:2</key>
+	<string>Любая форма, например 3:2</string>
 	<key>App</key>
 	<string>Приложение</string>
 	<key>Appearance</key>
@@ -844,6 +854,8 @@
 	<string>Отменить экспорт</string>
 	<key>Cancel the countdown</key>
 	<string>Отменить обратный отсчет</string>
+	<key>Cancel the frame, from any app</key>
+	<string>Отменить рамку из любого приложения</string>
 	<key>Cancel this export</key>
 	<string>Отменить этот экспорт</string>
 	<key>Cancelled</key>
@@ -1026,6 +1038,8 @@
 	<string>Выбрать</string>
 	<key>Choose .srt or .vtt. The file follows your cuts and speed changes.</key>
 	<string>Выберите .srt или .vtt. Файл учитывает ваши вырезки и изменения скорости.</string>
+	<key>Choose 1080p in the size menu.</key>
+	<string>Выберите 1080p в меню размера.</string>
 	<key>Choose 3, 5, or 10 seconds in Settings ▸ Screenshots ▸ Timed Capture.</key>
 	<string>Выберите 3, 5 или 10 секунд в разделе Настройки ▸ Снимки экрана ▸ Снимок с таймером.</string>
 	<key>Choose Another…</key>
@@ -1084,6 +1098,8 @@
 	<string>Выберите проект, папку или видео</string>
 	<key>Choose a recording or video to add after this one</key>
 	<string>Выберите запись или видео, которое нужно добавить после этого</string>
+	<key>Choose a shape, then a size.</key>
+	<string>Выберите форму, затем размер.</string>
 	<key>Choose a size, or Custom Size… for your own.</key>
 	<string>Выберите размер или «Другой размер…», чтобы задать свой.</string>
 	<key>Choose a song to play under the video</key>
@@ -1262,10 +1278,12 @@
 	<string>Нажмите «Маркер» на панели шкалы времени. Маркеры, добавленные во время записи, тоже там.</string>
 	<key>Click Microphone in the recording bar. A menu above the bar picks which microphone.</key>
 	<string>Нажмите «Микрофон» на панели записи. В меню над панелью выбирается микрофон.</string>
-	<key>Click New recording in Home and drag over the area to record. For a window or the whole screen, use Record Window or Record Fullscreen in the LF Studios menu.</key>
-	<string>Нажмите «Новая запись» на главной и выделите мышью область для записи. Для окна или всего экрана используйте «Записать окно» или «Записать весь экран» в меню LF Studios.</string>
-	<key>Click New recording in Home, then drag over the area you want to record.</key>
-	<string>Нажмите «Новая запись» на главной и выделите мышью область, которую нужно записать.</string>
+	<key>Click New recording in Home.</key>
+	<string>Нажмите «Новая запись» на главной.</string>
+	<key>Click New recording in Home. A frame appears: choose a shape above the recording bar, like 16:9, and drag the frame's border to what you want to record.</key>
+	<string>Нажмите «Новая запись» на главной. Появится рамка: выберите форму над панелью записи, например 16:9, и перетяните край рамки к тому, что хотите записать.</string>
+	<key>Click New recording in Home. Choose a shape for the frame (16:9 for YouTube, 9:16 for Reels) and drag its border into place. For a window or the whole screen, click Window or Full screen above the recording bar.</key>
+	<string>Нажмите «Новая запись» на главной. Выберите форму рамки (16:9 для YouTube, 9:16 для Reels) и перетяните ее за край на место. Чтобы записать окно или весь экран, нажмите «Окно» или «Весь экран» над панелью записи.</string>
 	<key>Click Open System Settings below.</key>
 	<string>Нажмите «Открыть Системные настройки» ниже.</string>
 	<key>Click Phone overlay above the preview to see what a phone app would cover.</key>
@@ -1372,6 +1390,8 @@
 	<string>Повторное нажатие заменяет только эти увеличения. Каждое можно изменить, как любое другое.</string>
 	<key>Clicks</key>
 	<string>Нажатия</string>
+	<key>Clicks and scrolling inside the frame and on the dimmed screen go to your apps, so you can set things up first. Only the frame's border and corners, and the bars, take clicks.</key>
+	<string>Нажатия и прокрутка внутри рамки и на затемненном экране передаются вашим приложениям, так что сначала можно все подготовить. Нажатия принимают только край и углы рамки и панели.</string>
 	<key>Clicks — drag one to retime it, ⌫ removes the selected one</key>
 	<string>Нажатия — перетяните нажатие, чтобы сменить его время; ⌫ удаляет выбранное</string>
 	<key>Client names, project code names… (separate with commas)</key>
@@ -1670,10 +1690,14 @@
 	<string>Свой стиль</string>
 	<key>Custom position</key>
 	<string>Своё положение</string>
+	<key>Custom shape</key>
+	<string>Своя форма</string>
 	<key>Custom: %@</key>
 	<string>Свое изображение: %@</string>
 	<key>Custom…</key>
 	<string>Другой…</string>
+	<key>Custom…: type any shape, like 3:2 or 2.39:1.</key>
+	<string>«Другой…»: введите любую форму, например 3:2 или 2.39:1.</string>
 	<key>Cut</key>
 	<string>Вырезать</string>
 	<key>Cut filler words like um and uh</key>
@@ -1848,6 +1872,8 @@
 	<string>Перетяните клип за название, чтобы переместить его. Выберите клип и нажмите ⌫, чтобы удалить его.</string>
 	<key>Drag a clip's edge to trim it, or press I or O to make it start or end at the playhead.</key>
 	<string>Перетяните край клипа, чтобы обрезать его, или нажмите I или O, чтобы он начинался или заканчивался у указателя воспроизведения.</string>
+	<key>Drag a corner to resize it. The shape stays the same.</key>
+	<string>Перетяните угол, чтобы изменить размер. Форма останется прежней.</string>
 	<key>Drag a frame. Drag inside it to move it, or drag its edges to resize it.</key>
 	<string>Нарисуйте рамку. Перетаскивайте ее изнутри, чтобы переместить, или за края, чтобы изменить размер.</string>
 	<key>Drag a screenshot out of History and drop it where you want it.</key>
@@ -1874,10 +1900,10 @@
 	<string>Проведите по снимку, чтобы нарисовать.</string>
 	<key>Drag one of them on the timeline to move them all together; ⌫ removes them all. ⇧- or ⌘-click adds or takes one out.</key>
 	<string>Перетяните любой из них на шкале времени, чтобы переместить все вместе; ⌫ удаляет все. Нажатие с ⇧ или ⌘ добавляет или исключает элемент.</string>
+	<key>Drag out any area instead, of any shape</key>
+	<string>Выделить любую область любой формы</string>
 	<key>Drag over any part of the screen to capture it.</key>
 	<string>Выделите мышью любую часть экрана, чтобы снять ее.</string>
-	<key>Drag over the area to record.</key>
-	<string>Выделите мышью область для записи.</string>
 	<key>Drag over the area you want, then let go.</key>
 	<string>Выделите мышью нужную область и отпустите кнопку.</string>
 	<key>Drag over the area you want.</key>
@@ -1904,6 +1930,12 @@
 	<string>Перетяните рамку в предпросмотре на все, что нужно скрыть. Размытие следует за увеличениями и держится до конца своей полосы.</string>
 	<key>Drag the frame on the preview to aim; drag its corners to zoom in or out.</key>
 	<string>Перетяните рамку в предпросмотре, чтобы навести ее; тяните за углы, чтобы увеличить или уменьшить.</string>
+	<key>Drag the frame over what you want to show. To fill it with one app, click Fit a window to the frame… and choose its window.</key>
+	<string>Перетяните рамку на то, что хотите показать. Чтобы заполнить ее одним приложением, нажмите «Подогнать окно под рамку…» и выберите его окно.</string>
+	<key>Drag the frame's border to move it, or a corner to make it bigger or smaller.</key>
+	<string>Перетяните рамку за край, чтобы переместить, или за угол, чтобы увеличить или уменьшить.</string>
+	<key>Drag the frame's border to move it. It snaps to the middle and the edges of the screen.</key>
+	<string>Перетяните рамку за край, чтобы переместить. Она прилипает к середине и краям экрана.</string>
 	<key>Drag the frame's edges, or pick a shape like 16:9.</key>
 	<string>Перетяните края рамки или выберите пропорции, например 16:9.</string>
 	<key>Drag the frame, or its corners, over the part of the camera picture the bubble should show.</key>
@@ -1924,6 +1956,8 @@
 	<string>Перетяните, чтобы изменить конец клипа</string>
 	<key>Drag to change where this clip starts</key>
 	<string>Перетяните, чтобы изменить начало клипа</string>
+	<key>Drag to move the bars</key>
+	<string>Перетяните, чтобы переместить панели</string>
 	<key>Drag to move this clip to another place in the video</key>
 	<string>Перетяните, чтобы переместить клип в другое место видео</string>
 	<key>Drag to move where the arrow starts</key>
@@ -2050,6 +2084,8 @@
 	<string>Введите ширину и высоту от %@ до %@ пикселей.</string>
 	<key>Esc</key>
 	<string>Esc</string>
+	<key>Esc and the arrow keys work after you click the frame's border or the bars.</key>
+	<string>Esc и клавиши со стрелками работают после нажатия на край рамки или на панели.</string>
 	<key>Esc or Done finishes</key>
 	<string>Esc или «Готово» — завершить</string>
 	<key>Estimated file size. Still screens take less.</key>
@@ -2302,10 +2338,18 @@
 	<string>Закончите запись и сохраните ее.</string>
 	<key>Finish typing</key>
 	<string>Закончить ввод</string>
+	<key>Fit a window to the frame needs Accessibility. LF Studios asks for it the first time.</key>
+	<string>Для функции «Подогнать окно под рамку» нужен универсальный доступ. LF Studios запросит его в первый раз.</string>
+	<key>Fit a window to the frame…</key>
+	<string>Подогнать окно под рамку…</string>
+	<key>Fit a window to the frame…: choose a window of another app, and it takes exactly the frame's place and size.</key>
+	<string>«Подогнать окно под рамку…»: выберите окно другого приложения, и оно займет точно место и размер рамки.</string>
 	<key>Fit zooms around camera</key>
 	<string>Увеличения в обход камеры</string>
 	<key>Fit zooms around the camera</key>
 	<string>Увеличения в обход камеры</string>
+	<key>Fitting another app's window needs Accessibility access: allow LF Studios in System Settings → Privacy &amp; Security → Accessibility, then try again.</key>
+	<string>Чтобы подогнать окно другого приложения, нужен универсальный доступ: разрешите LF Studios в разделе Системные настройки → Конфиденциальность и безопасность → Универсальный доступ, затем повторите попытку.</string>
 	<key>Fix</key>
 	<string>Исправить</string>
 	<key>Fix any word in the list of lines.</key>
@@ -2342,10 +2386,16 @@
 	<string>Шрифт</string>
 	<key>Font missing: install the font on this Mac, or add it with Add Font File… in the font menu.</key>
 	<string>Нет шрифта: установите шрифт на этот Mac или добавьте его через «Добавить файл шрифта…» в меню шрифтов.</string>
+	<key>Font “%@” — installed on this Mac, so it's left out: turn on Include fonts installed on this Mac (check the font's license allows sharing it). Without it, another Mac shows a stand-in font.</key>
+	<string>Шрифт «%@» установлен на этом Mac, поэтому не добавлен: включите «Включить шрифты, установленные на этом Mac» (проверьте, что лицензия шрифта разрешает им делиться). Без этого на другом Mac будет показан шрифт-замена.</string>
 	<key>Font, Size (S, M, L), and Position (Bottom or Top).</key>
 	<string>«Шрифт», «Размер» (S, M, L) и «Положение» («Внизу» или «Вверху»).</string>
 	<key>Fonts</key>
 	<string>Шрифты</string>
+	<key>Fonts added to LF Studios always go along. Check that a font's license lets you share it before sending.</key>
+	<string>Шрифты, добавленные в LF Studios, передаются всегда. Перед отправкой проверьте, что лицензия шрифта разрешает им делиться.</string>
+	<key>Fonts you added to LF Studios always go along. Fonts installed on this Mac (in Font Book) go only with Include fonts installed on this Mac turned on: check that the font's license lets you share it first. Without them, README.txt lists the fonts left out.</key>
+	<string>Шрифты, которые вы добавили в LF Studios, передаются всегда. Шрифты, установленные на этом Mac (в приложении «Шрифты»), передаются, только если включено «Включить шрифты, установленные на этом Mac»: сначала проверьте, что лицензия шрифта разрешает им делиться. Без них в README.txt перечислены шрифты, которые не вошли.</string>
 	<key>For Custom image…, choose a PNG, then click the spot in it that points.</key>
 	<string>Для «Своё изображение…» выберите PNG, затем нажмите на точку картинки, которая будет острием.</string>
 	<key>For Final Cut Pro, DaVinci Resolve, and Adobe Premiere Pro</key>
@@ -2384,8 +2434,12 @@
 	<string>Найдено: %lld</string>
 	<key>Frame</key>
 	<string>Рамка</string>
+	<key>Frame border: drag to move</key>
+	<string>Край рамки: перетяните, чтобы переместить</string>
 	<key>Frame copied</key>
 	<string>Кадр скопирован</string>
+	<key>Frame corner: drag to resize</key>
+	<string>Угол рамки: перетяните, чтобы изменить размер</string>
 	<key>Frame rate</key>
 	<string>Частота кадров</string>
 	<key>Frame: padding, corners &amp; shadow</key>
@@ -2434,6 +2488,8 @@
 	<string>Исходные файлы целиком</string>
 	<key>Full rail</key>
 	<string>Полная панель</string>
+	<key>Full screen</key>
+	<string>Весь экран</string>
 	<key>Full screen: %@</key>
 	<string>Весь экран: %@</string>
 	<key>Full-Camera Intro and Outro</key>
@@ -2760,6 +2816,10 @@
 	<string>Добавить таймлайн для программ монтажа</string>
 	<key>Include aspect ratio (%@)</key>
 	<string>Включить соотношение сторон (%@)</string>
+	<key>Include fonts installed on this Mac</key>
+	<string>Включить шрифты, установленные на этом Mac</string>
+	<key>Include fonts installed on this Mac: fonts from Font Book go along too. Check that a font's license lets you share it first. Fonts you added to LF Studios always go.</key>
+	<string>«Включить шрифты, установленные на этом Mac»: шрифты из приложения «Шрифты» тоже передаются. Сначала проверьте, что лицензия шрифта разрешает им делиться. Шрифты, добавленные в LF Studios, передаются всегда.</string>
 	<key>Include media (works on any Mac)</key>
 	<string>Включить медиафайлы (работает на любом Mac)</string>
 	<key>Include media: the project opens on any Mac.</key>
@@ -2778,6 +2838,8 @@
 	<string>Внутренняя</string>
 	<key>Inspector tabs</key>
 	<string>Вкладки инспектора</string>
+	<key>Instagram feed</key>
+	<string>Лента Instagram</string>
 	<key>Instagram, LinkedIn</key>
 	<string>Instagram, LinkedIn</string>
 	<key>Install Update: downloads it, installs it, and reopens LF Studios.</key>
@@ -2968,6 +3030,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>LF Studios распознает текст на каждом снимке в фоновом режиме, на вашем Mac.</string>
 	<key>LF Studios remembers the area until it quits. With no area yet, you select one as usual.</key>
 	<string>LF Studios помнит область, пока приложение не завершится. Если области еще нет, вы выделяете ее как обычно.</string>
+	<key>LF Studios remembers the last shape, size, and place on each screen.</key>
+	<string>LF Studios запоминает последние форму, размер и место на каждом экране.</string>
 	<key>LF Studios remembers your last tool, color, and sizes for next time.</key>
 	<string>LF Studios запоминает последний инструмент, цвет и размеры до следующего раза.</string>
 	<key>LF Studios resizes and centers the window. Click Record.</key>
@@ -2978,8 +3042,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Чтобы сменить язык, LF Studios перезапустится.</string>
 	<key>LF Studios restarts to switch languages. You can also set it in System Settings → General → Language &amp; Region → Applications.</key>
 	<string>Чтобы сменить язык, LF Studios перезапустится. Язык также можно выбрать в разделе Системные настройки → Основные → Язык и регион → Приложения.</string>
-	<key>LF Studios shows up in that list only after it has asked once.</key>
-	<string>LF Studios появится в этом списке только после того, как один раз попросит доступ.</string>
+	<key>LF Studios shows up under Camera only after it has asked once. There's no + button to add it yourself: turning on Camera in the recording bar is what asks.</key>
+	<string>LF Studios появляется в списке «Камера» только после того, как один раз запросит доступ. Кнопки «+», чтобы добавить его самому, нет: запрос появляется, когда вы включаете «Камера» на панели записи.</string>
+	<key>LF Studios shows up under Microphone only after it has asked once. There's no + button to add it yourself: turning on Microphone in the recording bar is what asks.</key>
+	<string>LF Studios появляется в списке «Микрофон» только после того, как один раз запросит доступ. Кнопки «+», чтобы добавить его самому, нет: запрос появляется, когда вы включаете «Микрофон» на панели записи.</string>
 	<key>LF Studios takes screenshots, records your screen, and turns your recordings into polished videos. Mark up a screenshot in seconds, or record yourself with your voice and camera, then cut, zoom, add captions, and export.</key>
 	<string>LF Studios делает снимки экрана, записывает экран и превращает записи в аккуратные видео. Разметьте снимок за секунды или запишите себя с голосом и камерой, а затем вырежьте лишнее, добавьте увеличения и субтитры и экспортируйте.</string>
 	<key>LF Studios will wrap these up before it quits.</key>
@@ -3006,6 +3072,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Large v3 Turbo</string>
 	<key>Larger than the recording — text may look softer than at a lower resolution.</key>
 	<string>Больше, чем запись, — текст может выглядеть мягче, чем при более низком разрешении.</string>
+	<key>Largest</key>
+	<string>Самый большой</string>
 	<key>Later</key>
 	<string>Позже</string>
 	<key>Launch LF Studios at login</key>
@@ -3114,6 +3182,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>M4A (компактный), WAV или AIFF (оба в полном качестве).</string>
 	<key>MIT License — Free and open source</key>
 	<string>Лицензия MIT — бесплатно, с открытым исходным кодом</string>
+	<key>Mac screen</key>
+	<string>Экран Mac</string>
 	<key>Make Full Zoom</key>
 	<string>Сделать увеличением кадра</string>
 	<key>Make Loupe</key>
@@ -3124,8 +3194,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Облегчить: %@, %@ fps</string>
 	<key>Make my videos look the same every time</key>
 	<string>Одинаковое оформление для всех видео</string>
-	<key>Make sure LF Studios is allowed under Microphone in System Settings.</key>
-	<string>Проверьте, что приложению LF Studios разрешен доступ в разделе «Микрофон» Системных настроек.</string>
+	<key>Make sure LF Studios is allowed under Microphone in System Settings. It appears there only after it has asked once, and there's no + button: turn on Microphone in the recording bar and click Allow.</key>
+	<string>Убедитесь, что приложению LF Studios разрешен доступ в разделе «Микрофон» в Системных настройках. Приложение появляется там только после того, как один раз запросит доступ, и кнопки «+» нет: включите «Микрофон» на панели записи и нажмите «Разрешить».</string>
 	<key>Make the area bigger or smaller</key>
 	<string>Увеличить или уменьшить область</string>
 	<key>Make your camera look its best: brighter, warmer, or more cinematic.</key>
@@ -3266,6 +3336,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>«Сдвинуть камеру»: на время этого увеличения переносит окошко в свободный угол.</string>
 	<key>Move the area while dragging</key>
 	<string>Переместить область во время выделения</string>
+	<key>Move the frame (with ⇧: 10 points)</key>
+	<string>Переместить рамку (с ⇧ — на 10 точек)</string>
 	<key>Move the playhead and click Full camera, Side by side, or Hidden.</key>
 	<string>Поставьте указатель воспроизведения и нажмите «Во весь кадр», «Рядом» или «Скрыта».</string>
 	<key>Move the playhead and press S to split the clip there.</key>
@@ -3476,6 +3548,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Стилей пока нет</string>
 	<key>No projects match your search</key>
 	<string>Нет проектов, соответствующих запросу</string>
+	<key>No question appeared, and LF Studios isn't in that list? Open Terminal, run tccutil reset Camera com.lfstudios.app, then quit and reopen LF Studios and turn on Camera again.</key>
+	<string>Вопрос не появился, а LF Studios нет в этом списке? Откройте Терминал, выполните tccutil reset Camera com.lfstudios.app, затем завершите и снова откройте LF Studios и снова включите «Камера».</string>
+	<key>No question appeared, and LF Studios isn't in that list? Open Terminal, run tccutil reset Microphone com.lfstudios.app, then quit and reopen LF Studios and turn on Microphone again.</key>
+	<string>Вопрос не появился, а LF Studios нет в этом списке? Откройте Терминал, выполните tccutil reset Microphone com.lfstudios.app, затем завершите и снова откройте LF Studios и снова включите «Микрофон».</string>
+	<key>No question appeared? Open Terminal, run tccutil reset Microphone com.lfstudios.app, then quit and reopen LF Studios and try again.</key>
+	<string>Вопрос не появился? Откройте Терминал, выполните tccutil reset Microphone com.lfstudios.app, затем завершите и снова откройте LF Studios и повторите попытку.</string>
 	<key>No recordable windows found</key>
 	<string>Нет окон, доступных для записи</string>
 	<key>No recording in progress</key>
@@ -3702,6 +3780,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Открывать видеоредактор после записи.</string>
 	<key>Open video…</key>
 	<string>Открыть видео…</string>
+	<key>Opened on another Mac, the project looks and sounds the same: the cleaned-up voice, Keep face centered, the pointer's own picture, and a macOS wallpaper background travel in the folder.</key>
+	<string>На другом Mac проект выглядит и звучит так же: очищенный голос, «Держать лицо по центру», собственное изображение указателя и фон из обоев macOS передаются в папке.</string>
 	<key>Opened “%@”</key>
 	<string>Открыто: «%@»</string>
 	<key>Opening a video</key>
@@ -4114,12 +4194,18 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Записывать камеру</string>
 	<key>Record everything on one screen.</key>
 	<string>Запишите все, что происходит на одном экране.</string>
-	<key>Record just part of the screen.</key>
-	<string>Запишите только часть экрана.</string>
+	<key>Record for YouTube, Reels, or Instagram</key>
+	<string>Запись для YouTube, Reels или Instagram</string>
+	<key>Record in exactly the shape the site wants, so nothing gets cut off or stretched.</key>
+	<string>Записывайте точно в той форме, которую требует сайт, чтобы ничего не обрезалось и не растягивалось.</string>
+	<key>Record just part of the screen, in the exact shape and size you choose.</key>
+	<string>Записывайте только часть экрана — точно той формы и размера, которые вы выберете.</string>
 	<key>Record microphone</key>
 	<string>Записывать микрофон</string>
 	<key>Record my screen with my voice and camera</key>
 	<string>Запись экрана с голосом и камерой</string>
+	<key>Record one window instead</key>
+	<string>Записать одно окно</string>
 	<key>Record one window. The recording follows it if you move it, even to another screen.</key>
 	<string>Запишите одно окно. Запись следует за ним, даже если переместить его на другой экран.</string>
 	<key>Record system audio</key>
@@ -4128,6 +4214,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Запись всего экрана</string>
 	<key>Record the sound your Mac plays, like a video or an app's sounds.</key>
 	<string>Записывайте звук, который воспроизводит ваш Mac, например видео или звуки приложений.</string>
+	<key>Record the whole screen instead</key>
+	<string>Записать весь экран</string>
 	<key>Record when keys are pressed</key>
 	<string>Записывать моменты нажатий</string>
 	<key>Record when keys are pressed: only the moment each key goes down. Never which key.</key>
@@ -4502,6 +4590,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторить общий уровень увеличения</string>
 	<key>Redo Zooms</key>
 	<string>Повторить изменение увеличений</string>
+	<key>Reels / TikTok / Shorts</key>
+	<string>Reels / TikTok / Shorts</string>
 	<key>Reels, TikTok, Shorts</key>
 	<string>Reels, TikTok, Shorts</string>
 	<key>Reframes zooms, moves the camera bubble, and keeps captions in the safe area for %@. This ratio then keeps its own version.</key>
@@ -4622,6 +4712,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Измените размер окна, чтобы запись получилась точного размера, например 1920 × 1080.</string>
 	<key>Resize the window so the recording is an exact size</key>
 	<string>Изменить размер окна, чтобы запись была точного размера</string>
+	<key>Resizes a window of another app to exactly the frame, so it fills the recording</key>
+	<string>Подгоняет окно другого приложения точно под рамку, чтобы оно заполнило запись</string>
 	<key>Resizing another app's window needs Accessibility access: allow LF Studios in System Settings → Privacy &amp; Security → Accessibility, then choose the size again.</key>
 	<string>Чтобы менять размер окон других приложений, нужен универсальный доступ: разрешите его для LF Studios в разделе Системные настройки → Конфиденциальность и безопасность → Универсальный доступ, затем снова выберите размер.</string>
 	<key>Resolution</key>
@@ -4798,6 +4890,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Сохранено в «%@» в папке %@</string>
 	<key>Saved “%@”</key>
 	<string>«%@» сохранён</string>
+	<key>Saved. Fonts installed on this Mac aren't included: %@. Another Mac shows a stand-in font.</key>
+	<string>Сохранено. Шрифты, установленные на этом Mac, не включены: %@. На другом Mac будет показан шрифт-замена.</string>
 	<key>Saves %@ — only silences where nothing happens on screen</key>
 	<string>Экономит %@ — только паузы, когда на экране ничего не происходит</string>
 	<key>Saves %@ — silences where the pointer rests and nothing is clicked or pressed (this older recording can't see typing)</key>
@@ -4938,6 +5032,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Выделите область и подождите несколько секунд до снимка — успеете открыть меню или навести указатель на что-нибудь.</string>
 	<key>Select any stretch of the video and remove it, even across several clips.</key>
 	<string>Выделите любой отрезок видео и удалите его, даже если он захватывает несколько клипов.</string>
+	<key>Select area manually</key>
+	<string>Выбрать область вручную</string>
 	<key>Select one caption first to move only that one. Apply this position to all captions moves the rest there too.</key>
 	<string>Сначала выберите один субтитр, чтобы переместить только его. «Применить это положение ко всем субтитрам» переносит туда и остальные.</string>
 	<key>Select previous / next item</key>
@@ -5048,6 +5144,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Форма</string>
 	<key>Shape: Circle, Rounded, Wide, or Cutout (just you, without the background).</key>
 	<string>«Форма»: «Круг», «Квадрат», «Прямоугольник» или «Силуэт» (только вы, без фона).</string>
+	<key>Shapes: 16:9 for YouTube, 9:16 for Reels, TikTok, and Shorts, 1:1 for square posts, 4:5 for the Instagram feed, 4:3 for slides and iPad, 16:10 for a Mac screen, 21:9 for a cinematic look. Point at one to see what it's for.</key>
+	<string>Формы: 16:9 для YouTube, 9:16 для Reels, TikTok и Shorts, 1:1 для квадратных постов, 4:5 для ленты Instagram, 4:3 для слайдов и iPad, 16:10 для экрана Mac, 21:9 для кинематографичного вида. Наведите указатель на форму, чтобы узнать, для чего она.</string>
 	<key>Share</key>
 	<string>Поделиться</string>
 	<key>Share sends it with Mail, Messages, AirDrop, and more.</key>
@@ -5206,6 +5304,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Небо</string>
 	<key>Sky Wash</key>
 	<string>Небесная акварель</string>
+	<key>Slides / iPad</key>
+	<string>Слайды / iPad</string>
 	<key>Slow</key>
 	<string>Медленно</string>
 	<key>Small</key>
@@ -5316,6 +5416,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Форма прожектора</string>
 	<key>Spotlight: darkens everything except the area you draw. Choose Rectangle or Ellipse.</key>
 	<string>Прожектор: затемняет все, кроме нарисованной области. Выберите «Прямоугольник» или «Эллипс».</string>
+	<key>Square posts</key>
+	<string>Квадратные посты</string>
 	<key>Square, circle, or straight 45° lines</key>
 	<string>Квадрат, круг или прямые линии под 45°</string>
 	<key>Star on GitHub</key>
@@ -5564,6 +5666,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Кнопки «Отменить» и «Повторить» на панели инструментов редактора.</string>
 	<key>The aspect ratio menu in the video editor's toolbar.</key>
 	<string>Меню соотношения сторон на панели инструментов видеоредактора.</string>
+	<key>The bars move out of the frame's way. Drag them anywhere by the handle on the left.</key>
+	<string>Панели отодвигаются, чтобы не мешать рамке. Перетаскивайте их куда угодно за ручку слева.</string>
 	<key>The bubble follows your face, so you stay in the middle even when you move.</key>
 	<string>Окошко следует за вашим лицом, и вы остаетесь в центре, даже когда двигаетесь.</string>
 	<key>The bubble follows your face; where none was found it holds the last framing</key>
@@ -5622,6 +5726,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Не удалось создать папку: %@</string>
 	<key>The font menu next to captions, text, title cards, and Keys on screen.</key>
 	<string>Меню шрифтов рядом с субтитрами, текстом, титрами и «Клавиши на экране».</string>
+	<key>The frame bar</key>
+	<string>Панель рамки</string>
+	<key>The frame, the dimming, and the bars are never in the video. Nothing is recorded until you click Record.</key>
+	<string>Рамка, затемнение и панели никогда не попадают в видео. Ничего не записывается, пока вы не нажмете «Записать».</string>
 	<key>The handoff is ready</key>
 	<string>Передача готова</string>
 	<key>The highest quality, and the only one that can keep transparency</key>
@@ -5722,6 +5830,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Боковое меню слева: «Главная», «Записи», «Снимки экрана», «Настройки» и это руководство.</string>
 	<key>The size estimate tells you how big the file will be, and warns when the disk is too full.</key>
 	<string>Оценка размера показывает, насколько большим будет файл, и предупреждает, если на диске мало места.</string>
+	<key>The size menu: 720p, 1080p, 1440p (where they fit your screen) and Largest. The size above the frame, like 1920 × 1080, is the video's size in pixels.</key>
+	<string>Меню размера: 720p, 1080p, 1440p (если помещаются на экране) и «Самый большой». Размер над рамкой, например 1920 × 1080, — это размер видео в пикселях.</string>
 	<key>The size of the recording, in pixels.</key>
 	<string>Размер записи в пикселях.</string>
 	<key>The size shows while you drag.</key>
@@ -5734,6 +5844,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Не удалось прочитать звук. Экспортируйте снова.</string>
 	<key>The sound recorded with the screen</key>
 	<string>Звук, записанный вместе с экраном</string>
+	<key>The strip above the recording bar, after Home ▸ New recording.</key>
+	<string>Полоса над панелью записи после Главная ▸ Новая запись.</string>
 	<key>The text is now on the clipboard: paste it anywhere with ⌘V.</key>
 	<string>Текст уже в буфере обмена: вставьте его куда угодно с помощью ⌘V.</string>
 	<key>The timeline at the bottom of the video editor.</key>
@@ -5746,12 +5858,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Кнопка корзины на панели во время записи.</string>
 	<key>The video encoder is busy — another app may be recording or exporting. Wait a moment and try again, or choose H.264.</key>
 	<string>Видеокодер занят — возможно, другое приложение записывает или экспортирует видео. Подождите немного и повторите попытку или выберите H.264.</string>
+	<key>The video has exactly the shape you chose, like 1080 × 1920 for 9:16.</key>
+	<string>Видео получается точно выбранной формы, например 1080 × 1920 для 9:16.</string>
 	<key>The video has no picture</key>
 	<string>В видео нет изображения</string>
 	<key>The video stays where it is. If you move or delete it, LF Studios offers Locate….</key>
 	<string>Видео остается на своем месте. Если вы его переместите или удалите, LF Studios предложит «Найти…».</string>
 	<key>The video's own recording can't be removed</key>
 	<string>Исходную запись видео удалить нельзя</string>
+	<key>The video's size in pixels. Drag a corner of the frame for any other size.</key>
+	<string>Размер видео в пикселях. Для любого другого размера перетяните угол рамки.</string>
 	<key>The video's sound as you edited it — cuts, speed changes, music and the voice settings included.</key>
 	<string>Звук видео с вашим монтажом — с обрезками, изменениями скорости, музыкой и настройками голоса.</string>
 	<key>The video's sound as you edited it, at −16 LUFS — cuts, speed changes, music and the voice settings included.</key>
@@ -5908,6 +6024,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Чтобы размыть что-то самостоятельно, нажмите B и перетяните размытие на нужное место.</string>
 	<key>To cut a mistake, move the playhead to it, press S to split, click the bad part, and press ⌫.</key>
 	<string>Чтобы вырезать ошибку, поставьте на нее указатель воспроизведения, нажмите S, чтобы разделить клип, выберите неудачный фрагмент и нажмите ⌫.</string>
+	<key>To drag out any area yourself, click Select area manually above the recording bar.</key>
+	<string>Чтобы выделить любую область самостоятельно, нажмите «Выбрать область вручную» над панелью записи.</string>
 	<key>To hide one, click it on the timeline and press ⌫.</key>
 	<string>Чтобы скрыть одно сочетание, нажмите на него на шкале времени и нажмите ⌫.</string>
 	<key>To remove it again, untick Apply background to this image.</key>
@@ -6060,6 +6178,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Тип</string>
 	<key>Type a Title and Subtitle, and set the Length.</key>
 	<string>Введите заголовок и подзаголовок и задайте длительность.</string>
+	<key>Type a shape like 3:2 or 2.39:1.</key>
+	<string>Введите форму, например 3:2 или 2.39:1.</string>
 	<key>Type here…</key>
 	<string>Введите текст…</string>
 	<key>Type in a text annotation</key>
@@ -6420,6 +6540,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Для обновлений нужна версия 1.4.1 или новее и подключение к интернету.</string>
 	<key>Upload Custom Image</key>
 	<string>Выбрать свое изображение</string>
+	<key>Use</key>
+	<string>Применить</string>
 	<key>Use %@</key>
 	<string>Использовать %@</string>
 	<key>Use LF Studios in English, German, French, Chinese, Russian, Ukrainian, or Japanese.</key>
@@ -6602,6 +6724,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Прямоугольник</string>
 	<key>Width</key>
 	<string>Ширина</string>
+	<key>Width and height, like 3:2 or 2.39:1.</key>
+	<string>Ширина и высота, например 3:2 или 2.39:1.</string>
 	<key>Window</key>
 	<string>Окно</string>
 	<key>Window Capture</key>
@@ -6614,6 +6738,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Окно закрыто</string>
 	<key>Window size</key>
 	<string>Размер окна</string>
+	<key>Window, Full screen, and Select area manually: record another way instead.</key>
+	<string>«Окно», «Весь экран» и «Выбрать область вручную»: записать по-другому.</string>
 	<key>Windows in front of it don't get in the way: only the window you click is captured.</key>
 	<string>Окна поверх него не мешают: снимается только то окно, на которое вы нажали.</string>
 	<key>With a transcript, you can also cut by deleting words: Captions ▸ Edit by text.</key>
@@ -6644,6 +6770,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Вы видите отчет до отправки и отправляете его сами.</string>
 	<key>You're all set — LF Studios lives here</key>
 	<string>Все готово — LF Studios находится здесь</string>
+	<key>YouTube</key>
+	<string>YouTube</string>
 	<key>YouTube needs at least three chapters, each at least 10 seconds long.</key>
 	<string>YouTube нужно не меньше трех глав, и каждая должна длиться не меньше 10 секунд.</string>
 	<key>YouTube needs at least three chapters, each at least 10 seconds long. LF Studios tells you if yours don't fit.</key>

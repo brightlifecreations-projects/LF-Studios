@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.8.0]
+
+### Added
+- **The frame bar.** New recording (in Home), Record Area and its shortcut now show a frame: a highlighted area of an exact shape and size in the middle of the screen, the rest dimmed, with its size shown (like 1920 × 1080). A strip above the recording bar sets it up:
+  - **Shapes:** 16:9 (YouTube), 9:16 (Reels, TikTok, Shorts), 1:1 (square posts), 4:5 (Instagram feed), 4:3 (slides, iPad), 16:10 (a Mac screen), 21:9 (cinematic), and **Custom…** for any other, like 3:2 or 2.39:1. Point at a shape to see what it's for.
+  - **Sizes:** 720p, 1080p, 1440p (where they fit the screen) and Largest, in the video's own pixels. The video comes out exactly that shape and size.
+  - Drag the frame's border to move it (it snaps to the middle and the edges of the screen), or a corner to resize it, keeping its shape. The arrow keys move it (⇧: 10 points), Return records, Esc cancels, and ⌃⌘Esc cancels from any app.
+  - Clicks and scrolling inside the frame and on the dimmed screen go to your apps; only the frame's border and corners and the bars take clicks. The bars move out of the frame's way, and you can drag them anywhere.
+  - **Fit a window to the frame…** resizes another app's window to exactly the frame's place and size.
+  - **Window**, **Full screen** and **Select area manually** (the drag selection you know) record another way instead.
+  - The frame, the dimming and the bars are never in the video; while recording, only the thin outline shows, and it isn't recorded either. LF Studios remembers the last shape, size and place on each screen.
+- **Include fonts installed on this Mac** in Creative Handoff and Save Project (off to start with): fonts from Font Book go along too. Check that a font's license lets you share it first. Fonts added to LF Studios always go along; when installed fonts are left out, README.txt (or the save notice) names them.
+
+### Fixed
+- **Projects and handoffs look and sound the same on another Mac.** The cleaned-up voice (Enhance voice, Podcast mode), Keep face centered, the pointer's own picture and a macOS wallpaper background now travel in the project's folder or the handoff, so opening it elsewhere exports exactly the same video. A handoff's finished video and Full Mix now clean up the voice first when it hasn't been yet.
+- The Guide explains the microphone and camera permissions as they really work: LF Studios appears in System Settings only after it has asked once, and how to make it ask again.
+
 ## [1.7.0]
 
 ### Added
