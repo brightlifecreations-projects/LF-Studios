@@ -153,6 +153,18 @@ enum VideoInspection {
     /// A video of solid colors, one after another (`sRGB`, tagged), with
     /// optional sound: a tone during `toneSeconds` at the start.
     static func writeColorVideo(to url: URL, size: CGSize, colors: [(NSColor, Double)], fps: Int = 30, toneSeconds: Double? = nil, toneFrequency: Double = 440) async throws {
+        // A Mac busy with many tests at once can fail to start a writer
+        // (no pixel buffers): the machine's state, so it's tried again.
+        for attempt in 1...3 {
+            do {
+                return try await writeColorVideoOnce(to: url, size: size, colors: colors, fps: fps, toneSeconds: toneSeconds, toneFrequency: toneFrequency)
+            } catch where attempt < 3 {
+                try await Task.sleep(nanoseconds: 300_000_000)
+            }
+        }
+    }
+
+    private static func writeColorVideoOnce(to url: URL, size: CGSize, colors: [(NSColor, Double)], fps: Int, toneSeconds: Double?, toneFrequency: Double) async throws {
         try? FileManager.default.removeItem(at: url)
         let writer = try AVAssetWriter(outputURL: url, fileType: .mp4)
         let input = AVAssetWriterInput(mediaType: .video, outputSettings: [
@@ -201,8 +213,9 @@ enum VideoInspection {
             for _ in 0..<count {
                 while !input.isReadyForMoreMediaData { try await Task.sleep(nanoseconds: 2_000_000) }
                 var buffer: CVPixelBuffer?
-                CVPixelBufferPoolCreatePixelBuffer(nil, adaptor.pixelBufferPool!, &buffer)
-                let pixels = buffer!
+                guard let pool = adaptor.pixelBufferPool else { throw writer.error ?? NSError(domain: "test", code: 3) }
+                CVPixelBufferPoolCreatePixelBuffer(nil, pool, &buffer)
+                guard let pixels = buffer else { throw writer.error ?? NSError(domain: "test", code: 4) }
                 CVBufferSetAttachment(pixels, kCVImageBufferCGColorSpaceKey, CGColorSpace(name: CGColorSpace.sRGB)!, .shouldPropagate)
                 CVPixelBufferLockBaseAddress(pixels, [])
                 let context = CGContext(data: CVPixelBufferGetBaseAddress(pixels), width: Int(size.width), height: Int(size.height), bitsPerComponent: 8, bytesPerRow: CVPixelBufferGetBytesPerRow(pixels), space: CGColorSpace(name: CGColorSpace.sRGB)!, bitmapInfo: CGImageAlphaInfo.premultipliedFirst.rawValue | CGBitmapInfo.byteOrder32Little.rawValue)!
