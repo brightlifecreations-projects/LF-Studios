@@ -347,6 +347,28 @@ enum VideoEditorLayout {
     static let toolbarHeight: CGFloat = 53
     /// About a third of the window.
     static let defaultTimelineFraction = 0.36
+    /// Shorter windows (a 13" MacBook's): Small tracks and 40%, so Zooms,
+    /// Video clips, Camera and Captions show without scrolling.
+    static let compactWindowHeight: CGFloat = 1000
+    static let compactTimelineFraction = 0.40
+
+    static func isCompact(windowHeight: CGFloat) -> Bool { windowHeight < compactWindowHeight }
+
+    /// Where the divider starts, until it's dragged.
+    static func defaultFraction(windowHeight: CGFloat) -> Double {
+        isCompact(windowHeight: windowHeight) ? compactTimelineFraction : defaultTimelineFraction
+    }
+
+    /// The track height to start with, until one is chosen.
+    static func defaultTrackHeight(windowHeight: CGFloat) -> VideoTimelineTrackHeight {
+        isCompact(windowHeight: windowHeight) ? .small : .medium
+    }
+
+    /// The divider's place: where it was dragged to, or the start for
+    /// this window.
+    static func fraction(chosen: Double?, windowHeight: CGFloat) -> Double {
+        chosen ?? defaultFraction(windowHeight: windowHeight)
+    }
     static let minimumTimeline: CGFloat = 200
     /// The preview area: the tools, the picture and the tips under it.
     static let minimumPreview: CGFloat = 300

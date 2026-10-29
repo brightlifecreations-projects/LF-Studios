@@ -108,8 +108,9 @@ final class VideoTimelineSnapshotTests: XCTestCase {
             L10n.use(language)
             let model = try await demoModel()
             for (sizeName, size) in sizes {
-                // The timeline a third of the window, as it opens.
-                let timeline = VideoEditorLayout.timelineHeight(windowHeight: size.height, fraction: VideoEditorLayout.defaultTimelineFraction)
+                // The timeline as it opens: a third of a large window, 40%
+                // and Small tracks on a 13" one.
+                let timeline = VideoEditorLayout.timelineHeight(windowHeight: size.height, fraction: VideoEditorLayout.defaultFraction(windowHeight: size.height))
                 XCTAssertGreaterThanOrEqual(size.height - VideoEditorLayout.toolbarHeight - timeline, VideoEditorLayout.minimumPreview)
                 for (lookName, look) in [("light", NSAppearance.Name.aqua), ("dark", .darkAqua)] {
                     try await render(model, size: size, look: look, name: "editor-\(language)-\(lookName)-\(sizeName)")

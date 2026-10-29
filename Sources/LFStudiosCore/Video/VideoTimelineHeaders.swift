@@ -46,7 +46,7 @@ struct VideoTimelineHeaderCorner: View {
             Menu {
                 ForEach(VideoTimelineTrackHeight.allCases) { height in
                     Button {
-                        model.timelineTrackHeight = height
+                        model.chooseTrackHeight(height)
                     } label: {
                         if height == model.timelineTrackHeight {
                             Label(height.title, systemImage: "checkmark")
@@ -235,11 +235,16 @@ struct VideoTimelineRowHints: View {
 
 // MARK: - The divider above the timeline
 
-/// Drag to give the timeline more or less room; double-click for the
-/// usual size. Remembered on this Mac.
+/// Drag to give the timeline more or less room; double-click to go back to
+/// where it starts for this window. A drag is remembered on this Mac.
 struct VideoTimelineDivider: View {
-    @Binding var fraction: Double
+    /// Where it is now.
+    let fraction: Double
     let windowHeight: CGFloat
+    /// Dragged (`done`: the drag ended, remember it).
+    let moved: (_ fraction: Double, _ done: Bool) -> Void
+    /// Double-clicked.
+    let reset: () -> Void
     @State private var start: Double?
     @State private var hovering = false
 
@@ -262,29 +267,23 @@ struct VideoTimelineDivider: View {
                 .onChanged { value in
                     if start == nil { start = fraction }
                     let height = VideoEditorLayout.timelineHeight(windowHeight: windowHeight, fraction: start ?? fraction) - value.translation.height
-                    fraction = VideoEditorLayout.fraction(forTimelineHeight: height, windowHeight: windowHeight)
+                    moved(VideoEditorLayout.fraction(forTimelineHeight: height, windowHeight: windowHeight), false)
                 }
                 .onEnded { _ in
                     start = nil
-                    Settings.videoTimelineFraction = fraction
+                    moved(fraction, true)
                 }
         )
-        .simultaneousGesture(
-            TapGesture(count: 2).onEnded {
-                fraction = VideoEditorLayout.defaultTimelineFraction
-                Settings.videoTimelineFraction = fraction
-            }
-        )
+        .simultaneousGesture(TapGesture(count: 2).onEnded { reset() })
         .help(L("Drag to resize the timeline. Double-click for the usual size."))
         .accessibilityElement()
         .accessibilityLabel(L("Timeline size"))
         .accessibilityAdjustableAction { direction in
             switch direction {
-            case .increment: fraction = min(fraction + 0.05, 0.9)
-            case .decrement: fraction = max(fraction - 0.05, 0.1)
+            case .increment: moved(min(fraction + 0.05, 0.9), true)
+            case .decrement: moved(max(fraction - 0.05, 0.1), true)
             @unknown default: break
             }
-            Settings.videoTimelineFraction = fraction
         }
     }
 }

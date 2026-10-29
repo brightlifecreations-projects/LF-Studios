@@ -4,12 +4,16 @@ import SwiftUI
 struct VideoEditorRootView: View {
     @ObservedObject var model: VideoEditorModel
     @AppStorage("videoEditorTipsDismissed") private var tipsDismissed = false
-    /// The divider between the preview and the timeline (Settings).
-    @State private var timelineFraction = Settings.videoTimelineFraction
+    /// The divider between the preview and the timeline, once dragged
+    /// (nil: where it starts for this window, VideoEditorLayout).
+    @State private var chosenFraction = Settings.videoTimelineFraction
 
     var body: some View {
         GeometryReader { proxy in
             editor(height: proxy.size.height)
+                // Small tracks on a short window, until one is chosen.
+                .onAppear { model.fitTrackHeight(windowHeight: proxy.size.height) }
+                .onChange(of: proxy.size.height) { model.fitTrackHeight(windowHeight: $0) }
         }
         .background(VideoEditorTheme.window)
         .background(VideoKeyboardBridge(model: model).frame(width: 0, height: 0))
@@ -76,7 +80,18 @@ struct VideoEditorRootView: View {
                     VideoInspectorView(model: model)
                         .frame(width: 318)
                 }
-                VideoTimelineDivider(fraction: $timelineFraction, windowHeight: height)
+                VideoTimelineDivider(
+                    fraction: VideoEditorLayout.fraction(chosen: chosenFraction, windowHeight: height),
+                    windowHeight: height,
+                    moved: { fraction, done in
+                        chosenFraction = fraction
+                        if done { Settings.videoTimelineFraction = fraction }
+                    },
+                    reset: {
+                        chosenFraction = nil
+                        Settings.videoTimelineFraction = nil
+                    }
+                )
                 VideoTimelineView(model: model).equatable()
                     .frame(height: timelineHeight(windowHeight: height))
             }
@@ -130,7 +145,7 @@ struct VideoEditorRootView: View {
     /// Where the divider puts it (remembered on this Mac), kept so that
     /// the preview and the timeline stay usable (VideoEditorLayout).
     private func timelineHeight(windowHeight: CGFloat) -> CGFloat {
-        VideoEditorLayout.timelineHeight(windowHeight: windowHeight, fraction: timelineFraction)
+        VideoEditorLayout.timelineHeight(windowHeight: windowHeight, fraction: VideoEditorLayout.fraction(chosen: chosenFraction, windowHeight: windowHeight))
     }
 
     private var loadingOverlay: some View {

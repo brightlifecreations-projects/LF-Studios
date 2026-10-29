@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.11.1]
+
+### Changed
+- **More of the timeline on smaller screens.** In a window shorter than about 1000 points (a 13" MacBook's), the video editor starts with Small tracks and gives the timeline about 40% of the height, so Zooms, Video clips, Camera and Captions show without scrolling. Larger windows start as before. A track height or divider place you chose still wins; double-clicking the divider goes back to the start for that window.
+
+### Fixed
+- Changing the track height now resizes the video clips straight away; they kept their old height until something else changed.
+
 ## [1.11.0]
 
 ### Added

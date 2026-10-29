@@ -246,13 +246,27 @@ final class VideoEditorModel: ObservableObject {
     @Published var timelineZoom: Double = 1 {
         didSet { refreshTimeline() }
     }
-    /// Small, Medium or Large lanes (remembered on this Mac).
-    @Published var timelineTrackHeight: VideoTimelineTrackHeight = Settings.videoTimelineTrackHeight {
+    /// Small, Medium or Large lanes: chosen (remembered on this Mac), or
+    /// the start for the window's height (`fitTrackHeight`).
+    @Published private(set) var timelineTrackHeight: VideoTimelineTrackHeight = Settings.videoTimelineTrackHeight ?? .medium {
         didSet {
-            Settings.videoTimelineTrackHeight = timelineTrackHeight
             VideoTimelineMetrics.rowScale = timelineTrackHeight.scale
             refreshTimeline()
         }
+    }
+
+    /// Track height in the timeline's menu: remembered from now on.
+    func chooseTrackHeight(_ height: VideoTimelineTrackHeight) {
+        Settings.videoTimelineTrackHeight = height
+        timelineTrackHeight = height
+    }
+
+    /// Until one is chosen, the track height suits the window: Small when
+    /// it's short (VideoEditorLayout).
+    func fitTrackHeight(windowHeight: CGFloat) {
+        guard Settings.videoTimelineTrackHeight == nil, windowHeight > 0 else { return }
+        let fitting = VideoEditorLayout.defaultTrackHeight(windowHeight: windowHeight)
+        if fitting != timelineTrackHeight { timelineTrackHeight = fitting }
     }
     /// Width of the timeline's lanes on screen (the surface keeps it up to
     /// date) — how far it can zoom depends on it.
@@ -480,7 +494,7 @@ final class VideoEditorModel: ObservableObject {
     }
 
     init(videoURL: URL) {
-        VideoTimelineMetrics.rowScale = Settings.videoTimelineTrackHeight.scale
+        VideoTimelineMetrics.rowScale = (Settings.videoTimelineTrackHeight ?? .medium).scale
         // Opened from where it is now: its data points here (VideoDataCleanup).
         let recording = VideoDemoSidecarStore.load(for: videoURL).map { VideoDemoSidecarStore.recordLocation(of: $0, for: videoURL) }
         self.recording = recording

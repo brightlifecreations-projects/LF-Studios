@@ -991,10 +991,14 @@ struct VideoTimelineClipView: View, Equatable {
     let waveform: VideoWaveform?
     let sourceAspect: Double
     let hover: VideoTimelineHover
+    /// The track height's scale when it was made: a new track height
+    /// redraws it (its height comes from the metrics).
+    var rowScale: CGFloat = VideoTimelineMetrics.rowScale
 
     nonisolated static func == (a: Self, b: Self) -> Bool {
         a.segment == b.segment && a.index == b.index && a.pointsPerSecond == b.pointsPerSecond && a.selected == b.selected
             && a.thumbnails.map(\.id) == b.thumbnails.map(\.id) && a.waveform?.peaks.count == b.waveform?.peaks.count && a.sourceAspect == b.sourceAspect
+            && a.rowScale == b.rowScale
     }
 
     @State private var hovered = false

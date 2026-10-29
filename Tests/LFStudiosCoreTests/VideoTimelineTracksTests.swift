@@ -51,11 +51,12 @@ final class VideoTimelineTracksTests: XCTestCase {
         // screens, minus the title bar), and the editor's smallest.
         for height: CGFloat in [1200, 900 - 28, 800 - 28, 700] {
             let available = height - Layout.toolbarHeight
-            let start = Layout.timelineHeight(windowHeight: height, fraction: Layout.defaultTimelineFraction)
+            let fraction = Layout.defaultFraction(windowHeight: height)
+            let start = Layout.timelineHeight(windowHeight: height, fraction: fraction)
             XCTAssertGreaterThanOrEqual(start, Layout.minimumTimeline, "\(height)")
             XCTAssertGreaterThanOrEqual(available - start, Layout.minimumPreview, "\(height): the preview keeps room")
-            if available * CGFloat(Layout.defaultTimelineFraction) >= Layout.minimumTimeline {
-                XCTAssertEqual(start / available, CGFloat(Layout.defaultTimelineFraction), accuracy: 0.01, "\(height): about a third")
+            if available * CGFloat(fraction) >= Layout.minimumTimeline, available - available * CGFloat(fraction) >= Layout.minimumPreview {
+                XCTAssertEqual(start / available, CGFloat(fraction), accuracy: 0.01, "\(height): a third, or 40% when short")
             }
             // Dragged all the way up and all the way down: kept usable.
             let tallest = Layout.timelineHeight(windowHeight: height, fraction: 0.99)
@@ -64,25 +65,78 @@ final class VideoTimelineTracksTests: XCTestCase {
             XCTAssertEqual(shortest, Layout.minimumTimeline, "\(height)")
             // A drag lands where the pointer put it, within those limits.
             let wanted: CGFloat = 260
-            let fraction = Layout.fraction(forTimelineHeight: wanted, windowHeight: height)
-            XCTAssertEqual(Layout.timelineHeight(windowHeight: height, fraction: fraction), min(max(wanted, Layout.minimumTimeline), tallest), accuracy: 1)
+            let dragged = Layout.fraction(forTimelineHeight: wanted, windowHeight: height)
+            XCTAssertEqual(Layout.timelineHeight(windowHeight: height, fraction: dragged), min(max(wanted, Layout.minimumTimeline), tallest), accuracy: 1)
         }
-        // On a 13" window the preview gets most of it, the timeline a third.
-        let thirteen = Layout.timelineHeight(windowHeight: 772, fraction: Layout.defaultTimelineFraction)
-        XCTAssertEqual(thirteen, (772 - Layout.toolbarHeight) * CGFloat(Layout.defaultTimelineFraction), accuracy: 1)
-        XCTAssertGreaterThanOrEqual(772 - Layout.toolbarHeight - thirteen, 450)
+        // On a 13" window the preview gets most of it, the timeline 40%.
+        let thirteen = Layout.timelineHeight(windowHeight: 772, fraction: Layout.defaultFraction(windowHeight: 772))
+        XCTAssertEqual(thirteen, (772 - Layout.toolbarHeight) * 0.40, accuracy: 1)
+        XCTAssertGreaterThanOrEqual(772 - Layout.toolbarHeight - thirteen, 420)
     }
 
     func testTheDividerAndTrackHeightAreRememberedOnThisMac() async throws {
-        XCTAssertEqual(Settings.videoTimelineFraction, VideoEditorLayout.defaultTimelineFraction)
-        XCTAssertEqual(Settings.videoTimelineTrackHeight, .medium)
+        XCTAssertNil(Settings.videoTimelineFraction, "not chosen: it follows the window")
+        XCTAssertNil(Settings.videoTimelineTrackHeight)
         Settings.videoTimelineFraction = 0.5
         XCTAssertEqual(Settings.videoTimelineFraction, 0.5)
         let model = try await makeModel()
-        model.timelineTrackHeight = .large
+        model.chooseTrackHeight(.large)
         XCTAssertEqual(Settings.videoTimelineTrackHeight, .large)
         XCTAssertEqual(VideoTimelineMetrics.rowScale, VideoTimelineTrackHeight.large.scale)
         XCTAssertEqual(VideoEditorModel(videoURL: model.project.sourceURL).timelineTrackHeight, .large, "the next editor too")
+        // Chosen wins over the window's height.
+        model.fitTrackHeight(windowHeight: 700)
+        XCTAssertEqual(model.timelineTrackHeight, .large)
+        XCTAssertEqual(VideoEditorLayout.fraction(chosen: Settings.videoTimelineFraction, windowHeight: 700), 0.5)
+        // The divider's double-click forgets it: back to the window's start.
+        Settings.videoTimelineFraction = nil
+        XCTAssertEqual(VideoEditorLayout.fraction(chosen: Settings.videoTimelineFraction, windowHeight: 700), VideoEditorLayout.compactTimelineFraction)
+    }
+
+    // MARK: Shorter windows
+
+    func testShortWindowsStartWithSmallTracksAndForty() async throws {
+        typealias Layout = VideoEditorLayout
+        for height: CGFloat in [700, 772, 872, 999] {
+            XCTAssertEqual(Layout.defaultTrackHeight(windowHeight: height), .small, "\(height)")
+            XCTAssertEqual(Layout.defaultFraction(windowHeight: height), 0.40, "\(height)")
+        }
+        for height: CGFloat in [1000, 1117, 1440] {
+            XCTAssertEqual(Layout.defaultTrackHeight(windowHeight: height), .medium, "\(height): today's start")
+            XCTAssertEqual(Layout.defaultFraction(windowHeight: height), Layout.defaultTimelineFraction, "\(height)")
+        }
+        let model = try await makeModel()
+        XCTAssertEqual(model.timelineTrackHeight, .medium)
+        model.fitTrackHeight(windowHeight: 772)
+        XCTAssertEqual(model.timelineTrackHeight, .small, "a 13\" window")
+        XCTAssertNil(Settings.videoTimelineTrackHeight, "only a start, not remembered")
+        model.fitTrackHeight(windowHeight: 1200)
+        XCTAssertEqual(model.timelineTrackHeight, .medium, "made taller: back to Medium")
+    }
+
+    /// On a short window, Zooms, Video clips (with click marks), Camera and
+    /// Captions show without scrolling, all of them with something on.
+    func testShortWindowsShowTheFirstFourTracksWithoutScrolling() async throws {
+        let model = try await makeModel()
+        model.mutate { project in
+            project.zoomRegions = [VideoZoomRegion(start: 1, end: 3, scale: 2, followsCursor: false)]
+            project.clickEvents = [VideoDemoClickEvent(time: 1, x: 0.5, y: 0.5, button: .left)]
+            project.cameraLayouts = [VideoCameraLayoutRegion(start: 2, end: 4, layout: .fullscreen)]
+            project.captions = [VideoCaptionLine(start: 1, end: 2, text: "Hi")]
+            project.keystrokes = [VideoKeystrokeEvent(time: 2, keys: ["⌘", "S"])]
+        }
+        // 740 pt and up: a 13" MacBook's window and any short one.
+        for height: CGFloat in [740, 772, 800, 872, 950, 999] {
+            model.fitTrackHeight(windowHeight: height)
+            let timeline = VideoEditorLayout.timelineHeight(windowHeight: height, fraction: VideoEditorLayout.defaultFraction(windowHeight: height))
+            // Under the timeline's toolbar and the ruler.
+            let lanes = timeline - 44 - 1 - VideoTimelineMetrics.rulerHeight - 1
+            let rows = VideoTimelineRowLayout(project: model.project, hasCamera: true)
+            let captions = try XCTUnwrap(rows.row(.captions))
+            XCTAssertFalse(captions.isEmpty)
+            XCTAssertLessThanOrEqual(captions.top + captions.height, lanes, "\(height): Captions ends at \(captions.top + captions.height), the lanes show \(lanes)")
+            XCTAssertGreaterThanOrEqual(height - VideoEditorLayout.toolbarHeight - timeline, VideoEditorLayout.minimumPreview, "\(height): the preview keeps room")
+        }
     }
 
     // MARK: Rows
@@ -145,6 +199,19 @@ final class VideoTimelineTracksTests: XCTestCase {
         XCTAssertEqual(model.project.captions.count, 1, "folding a track changes nothing on it")
         model.undo()
         XCTAssertTrue(try XCTUnwrap(VideoTimelineRowLayout(project: model.project, hasCamera: true).row(.captions)).showsContent)
+    }
+
+    /// A new track height redraws the clips too (their height comes from
+    /// the metrics; 1.11.0 kept the old height until something else changed).
+    func testTheClipsRedrawForANewTrackHeight() async throws {
+        let model = try await makeModel()
+        let segment = try XCTUnwrap(model.segments.first)
+        func clip(_ height: VideoTimelineTrackHeight) -> VideoTimelineClipView {
+            VideoTimelineMetrics.rowScale = height.scale
+            return VideoTimelineClipView(model: model, segment: segment, index: 0, pointsPerSecond: 100, selected: false, thumbnails: [], waveform: nil, sourceAspect: 1.6, hover: VideoTimelineHover())
+        }
+        XCTAssertTrue(clip(.small) == clip(.small))
+        XCTAssertFalse(clip(.medium) == clip(.small), "a new track height is a change")
     }
 
     // MARK: Hide, Mute, Lock

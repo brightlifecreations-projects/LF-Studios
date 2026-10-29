@@ -344,17 +344,23 @@ enum Settings {
         set { defaults.set(try? JSONEncoder().encode(newValue), forKey: "recordingCameraSetup") }
     }
 
-    /// The video editor's track height (Small, Medium, Large).
-    static var videoTimelineTrackHeight: VideoTimelineTrackHeight {
-        get { defaults.string(forKey: "videoTimelineTrackHeight").flatMap(VideoTimelineTrackHeight.init(rawValue:)) ?? .medium }
-        set { defaults.set(newValue.rawValue, forKey: "videoTimelineTrackHeight") }
+    /// The video editor's track height, once chosen (nil: it follows the
+    /// window's height, VideoEditorLayout).
+    static var videoTimelineTrackHeight: VideoTimelineTrackHeight? {
+        get { defaults.string(forKey: "videoTimelineTrackHeight").flatMap(VideoTimelineTrackHeight.init(rawValue:)) }
+        set {
+            if let newValue { defaults.set(newValue.rawValue, forKey: "videoTimelineTrackHeight") } else { defaults.removeObject(forKey: "videoTimelineTrackHeight") }
+        }
     }
 
     /// The video editor's timeline: its share of the space under the
-    /// toolbar (the divider between the preview and the timeline).
-    static var videoTimelineFraction: Double {
-        get { defaults.object(forKey: "videoTimelineFraction") as? Double ?? VideoEditorLayout.defaultTimelineFraction }
-        set { defaults.set(newValue, forKey: "videoTimelineFraction") }
+    /// toolbar, once the divider was dragged (nil: it follows the window's
+    /// height, VideoEditorLayout).
+    static var videoTimelineFraction: Double? {
+        get { defaults.object(forKey: "videoTimelineFraction") as? Double }
+        set {
+            if let newValue { defaults.set(newValue, forKey: "videoTimelineFraction") } else { defaults.removeObject(forKey: "videoTimelineFraction") }
+        }
     }
 
     static var recordingCameraDeviceID: String {

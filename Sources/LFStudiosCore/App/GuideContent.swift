@@ -15,7 +15,7 @@ import Foundation
 @MainActor
 enum GuideContent {
     /// Pages from these versions get a New badge and fill What's new.
-    nonisolated static let newVersions: [String] = ["1.11.0", "1.10.0", "1.9.0", "1.8.0", "1.7.0"]
+    nonisolated static let newVersions: [String] = ["1.11.1", "1.11.0", "1.10.0", "1.9.0", "1.8.0", "1.7.0"]
 
     static func chapters() -> [GuideChapter] {
         let features = featureCategories()
@@ -1194,7 +1194,7 @@ enum GuideContent {
                 location: L("The bottom of the video editor."),
                 points: [
                     L("Drag the line above the timeline to make it taller or shorter; double-click it for the usual size. LF Studios remembers it."),
-                    L("Track height (above the track names): Small, Medium, or Large."),
+                    L("Track height (above the track names): Small, Medium, or Large. A window shorter than about 1000 points starts with Small tracks and a taller timeline, until you choose."),
                     L("Each track's eye hides it and its speaker mutes it, in the preview and the export. The lock keeps everything on it from changing."),
                     L("A track with nothing on it is a thin row that says how to add something. The arrow next to a name folds a track away."),
                 ],
