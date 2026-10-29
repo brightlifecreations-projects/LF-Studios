@@ -1346,42 +1346,82 @@
         }
       }
     },
-    "%@ · Screen part of a %@ split video" : {
+    "%@ · Screen part of a %@ side-by-side video" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%1$@ · Bildschirmteil eines geteilten %2$@-Videos"
+            "value" : "%1$@ · Bildschirmteil eines %2$@-Videos nebeneinander"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%1$@ · Partie écran d’une vidéo %2$@ partagée"
+            "value" : "%1$@ · Partie écran d’une vidéo %2$@ côte à côte"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%1$@ · %2$@分割ビデオの画面部分"
+            "value" : "%1$@ · %2$@横並びビデオの画面部分"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%1$@ · Часть экрана разделенного видео %2$@"
+            "value" : "%1$@ · Часть экрана видео %2$@ рядом"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%1$@ · Частина екрана розділеного відео %2$@"
+            "value" : "%1$@ · Частина екрана відео %2$@ поруч"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%1$@ · %2$@ 分屏视频的屏幕部分"
+            "value" : "%1$@ · %2$@ 并排视频的屏幕部分"
+          }
+        }
+      }
+    },
+    "%@ · Screen part of a %@ stacked video" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · Bildschirmteil eines %2$@-Videos übereinander"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · Partie écran d’une vidéo %2$@ superposée"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · %2$@上下分割ビデオの画面部分"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · Часть экрана видео %2$@ одно над другим"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · Частина екрана відео %2$@ одне над одним"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · %2$@ 上下排列视频的屏幕部分"
           }
         }
       }
@@ -9194,42 +9234,42 @@
         }
       }
     },
-    "Adapt to this ratio turns side by side into one above the other: left becomes top, right becomes bottom." : {
+    "Adapt to this ratio keeps the Direction you chose. If you never chose one, it follows the new shape: left becomes top, right becomes bottom." : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "„An dieses Format anpassen“ macht aus nebeneinander übereinander: Links wird oben, rechts wird unten."
+            "value" : "„An dieses Format anpassen“ behält die gewählte Richtung. Hast du keine gewählt, folgt sie der neuen Form: Links wird oben, rechts wird unten."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Adapter à ce format transforme côte à côte en l’un au-dessus de l’autre : la gauche devient le haut, la droite le bas."
+            "value" : "Adapter à ce format garde la Direction choisie. Si vous n’en avez choisi aucune, elle suit la nouvelle forme : la gauche devient le haut, la droite le bas."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "“この比率に合わせる”を使うと、横並びが上下の並びに変わります。左は上に、右は下になります。"
+            "value" : "“この比率に合わせる”は選んだ“方向”を保ちます。選んでいない場合は新しい形に合わせて、左は上に、右は下になります。"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "«Адаптировать к формату» превращает «рядом» в «одно над другим»: левая часть становится верхней, правая — нижней."
+            "value" : "«Адаптировать к формату» сохраняет выбранное направление. Если вы его не выбирали, оно следует новой форме: левая часть становится верхней, правая — нижней."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "«Адаптувати до формату» перетворює «поруч» на «одне над одним»: ліва частина стає верхньою, права — нижньою."
+            "value" : "«Адаптувати до формату» зберігає вибраний напрямок. Якщо ви його не вибирали, він іде за новою формою: ліва частина стає верхньою, права — нижньою."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "“适配此比例”会把并排改为上下排列：左侧变为上方，右侧变为下方。"
+            "value" : "“适配此比例”会保留你选择的方向。如果从未选择，则跟随新形状：左侧变为上方，右侧变为下方。"
           }
         }
       }
@@ -16370,42 +16410,42 @@
         }
       }
     },
-    "Auto (like the recording), 16:9 for YouTube, 4:3, 1:1, 4:5 for Instagram, or 9:16 for Reels, TikTok, and Shorts." : {
+    "Auto (like the recording), 16:9 for YouTube, 9:16 for Reels, TikTok, and Shorts, 1:1, 4:5 for Instagram, 4:3, 16:10 like a Mac screen, or 21:9 for a cinematic look." : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Auto (wie die Aufnahme), 16:9 für YouTube, 4:3, 1:1, 4:5 für Instagram oder 9:16 für Reels, TikTok und Shorts."
+            "value" : "Auto (wie die Aufnahme), 16:9 für YouTube, 9:16 für Reels, TikTok und Shorts, 1:1, 4:5 für Instagram, 4:3, 16:10 wie ein Mac-Bildschirm oder 21:9 für einen Kino-Look."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Auto (comme l’enregistrement), 16:9 pour YouTube, 4:3, 1:1, 4:5 pour Instagram, ou 9:16 pour Reels, TikTok et Shorts."
+            "value" : "Auto (comme l’enregistrement), 16:9 pour YouTube, 9:16 pour Reels, TikTok et Shorts, 1:1, 4:5 pour Instagram, 4:3, 16:10 comme un écran de Mac, ou 21:9 pour un rendu cinéma."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "“自動”（収録と同じ）、YouTube用の16:9、4:3、1:1、Instagram用の4:5、Reels、TikTok、Shorts用の9:16。"
+            "value" : "自動（収録と同じ）、YouTube向けの16:9、Reels・TikTok・Shorts向けの9:16、1:1、Instagram向けの4:5、4:3、Macの画面と同じ16:10、映画のような21:9。"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "«Авто» (как у записи), 16:9 для YouTube, 4:3, 1:1, 4:5 для Instagram или 9:16 для Reels, TikTok и Shorts."
+            "value" : "Авто (как запись), 16:9 для YouTube, 9:16 для Reels, TikTok и Shorts, 1:1, 4:5 для Instagram, 4:3, 16:10 как экран Mac или 21:9 для кинематографичного вида."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "«Авто» (як у записі), 16:9 для YouTube, 4:3, 1:1, 4:5 для Instagram або 9:16 для Reels, TikTok і Shorts."
+            "value" : "Авто (як запис), 16:9 для YouTube, 9:16 для Reels, TikTok і Shorts, 1:1, 4:5 для Instagram, 4:3, 16:10 як екран Mac або 21:9 для кінематографічного вигляду."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "自动（与录制内容相同）、适合 YouTube 的 16:9、4:3、1:1、适合 Instagram 的 4:5，或适合 Reels、TikTok 和 Shorts 的 9:16。"
+            "value" : "自动（与录制内容相同）、适合 YouTube 的 16:9、适合 Reels、TikTok 和 Shorts 的 9:16、1:1、适合 Instagram 的 4:5、4:3、与 Mac 屏幕相同的 16:10，或带电影感的 21:9。"
           }
         }
       }
@@ -26714,42 +26754,42 @@
         }
       }
     },
-    "Choose Layout ▸ Split screen. The frame becomes the screen's part, like 8:9 for a 16:9 video split in half, and the camera preview fills the camera's part." : {
+    "Choose Layout ▸ Split screen, and a Direction. The frame becomes the screen's part, like 8:9 for a 16:9 video split side by side, or 32:9 stacked, and the camera preview fills the camera's part." : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wähle Layout ▸ Geteilter Bildschirm. Der Rahmen wird zum Bildschirmteil, etwa 8:9 bei einem halbierten 16:9-Video, und die Kameravorschau füllt den Kamerateil."
+            "value" : "Wähle Layout ▸ Geteilter Bildschirm und eine Richtung. Der Rahmen wird zum Bildschirmteil, etwa 8:9 bei einem 16:9-Video nebeneinander oder 32:9 übereinander, und die Kameravorschau füllt den Kamerateil."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Choisissez Disposition ▸ Écran partagé. Le cadre devient la partie écran, par exemple 8:9 pour une vidéo 16:9 coupée en deux, et l’aperçu de la caméra remplit la partie caméra."
+            "value" : "Choisissez Disposition ▸ Écran partagé, et une Direction. Le cadre devient la partie écran, par exemple 8:9 pour une vidéo 16:9 côte à côte, ou 32:9 superposée, et l’aperçu de la caméra remplit la partie caméra."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "“レイアウト”＞“分割画面”を選びます。枠が画面部分（16:9のビデオを半分に分けるなら8:9など）になり、カメラのプレビューがカメラ部分を埋めます。"
+            "value" : "“レイアウト”＞“分割画面”と“方向”を選びます。枠が画面部分（16:9のビデオで横並びなら8:9、上下なら32:9など）になり、カメラのプレビューがカメラ部分を埋めます。"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Выберите «Расположение ▸ Разделенный экран». Рамка станет частью экрана, например 8:9 для видео 16:9, разделенного пополам, а предпросмотр камеры заполнит часть камеры."
+            "value" : "Выберите «Расположение ▸ Разделенный экран» и направление. Рамка станет частью экрана, например 8:9 для видео 16:9 рядом или 32:9 одно над другим, а предпросмотр камеры заполнит часть камеры."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Виберіть «Макет ▸ Розділений екран». Рамка стане частиною екрана, наприклад 8:9 для відео 16:9, поділеного навпіл, а перегляд камери заповнить частину камери."
+            "value" : "Виберіть «Макет ▸ Розділений екран» і напрямок. Рамка стане частиною екрана, наприклад 8:9 для відео 16:9 поруч або 32:9 одне над одним, а перегляд камери заповнить частину камери."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "选择“布局 ▸ 分屏”。录制框会变成屏幕部分，例如对半分的 16:9 视频为 8:9，摄像头预览会填满摄像头部分。"
+            "value" : "选择“布局 ▸ 分屏”和一个方向。录制框会变成屏幕部分，例如 16:9 视频并排时为 8:9，上下排列时为 32:9，摄像头预览会填满摄像头部分。"
           }
         }
       }
@@ -39451,6 +39491,46 @@
         }
       }
     },
+    "Custom aspect ratio" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eigenes Seitenverhältnis"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Format personnalisé"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カスタムの比率"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Свой формат"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Власний формат"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自定比例"
+          }
+        }
+      }
+    },
     "Custom color" : {
       "localizations" : {
         "de" : {
@@ -39772,6 +39852,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "自定…"
+          }
+        }
+      }
+    },
+    "Custom… for any other shape: type it like 3:2 or 2.39:1. Choose Custom… again to change it." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "„Eigene …“ für jede andere Form: Gib sie ein wie 3:2 oder 2.39:1. Wähle „Eigene …“ erneut, um sie zu ändern."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Personnaliser… pour toute autre forme : tapez-la comme 3:2 ou 2.39:1. Choisissez à nouveau Personnaliser… pour la changer."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“カスタム…”で、ほかの形を3:2や2.39:1のように入力します。変更するにはもう一度“カスタム…”を選びます。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "«Другой…» для любой другой формы: введите ее, например 3:2 или 2.39:1. Выберите «Другой…» снова, чтобы изменить."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "«Власний…» для будь-якої іншої форми: введіть її, як-от 3:2 або 2.39:1. Виберіть «Власний…» знову, щоб змінити."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“自定…”可用于任何其他形状：输入 3:2 或 2.39:1 之类的比例。再次选择“自定…”即可更改。"
           }
         }
       }
@@ -41963,6 +42083,86 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "说话时降低音量，停顿时恢复"
+          }
+        }
+      }
+    },
+    "Direction" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Richtung"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Direction"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "方向"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Направление"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Напрямок"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "方向"
+          }
+        }
+      }
+    },
+    "Direction: Side by side (left and right) or Stacked (top and bottom), on a video of any shape. Until you choose, landscape videos go side by side and square and vertical ones stacked." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Richtung: Nebeneinander (links und rechts) oder Übereinander (oben und unten), bei einem Video jeder Form. Bis du wählst, werden Querformat-Videos nebeneinander und quadratische und hochformatige übereinander geteilt."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Direction : Côte à côte (gauche et droite) ou Superposé (haut et bas), sur une vidéo de n’importe quelle forme. Tant que vous n’avez pas choisi, les vidéos paysage sont côte à côte, les carrées et verticales superposées."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "方向: “横並び”（左右）または“上下”（上と下）。どんな形のビデオでも使えます。選ぶまでは、横長のビデオは横並び、正方形や縦長のビデオは上下になります。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Направление: «Рядом» (слева и справа) или «Одно над другим» (сверху и снизу), на видео любой формы. Пока вы не выбрали, горизонтальные видео делятся рядом, а квадратные и вертикальные — одно над другим."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Напрямок: «Поруч» (ліворуч і праворуч) або «Одне над одним» (угорі й унизу), на відео будь-якої форми. Поки ви не вибрали, горизонтальні відео діляться поруч, а квадратні й вертикальні — одне над одним."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "方向：并排（左右）或上下（上方和下方），适用于任何形状的视频。在你选择之前，横向视频为并排，方形和竖向视频为上下。"
           }
         }
       }
@@ -44893,6 +45093,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "在视频上拖移摄像头的边缘可更改其宽度和高度。"
+          }
+        }
+      }
+    },
+    "Drag the divider on the video to change the split; the background (Style) shows in the gap." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zieh den Trenner im Video, um die Aufteilung zu ändern; im Abstand zeigt sich der Hintergrund (Stil)."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Faites glisser le séparateur sur la vidéo pour changer la répartition ; l’arrière-plan (Style) apparaît dans l’espace."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ビデオ上の区切り線をドラッグして分割を変えます。間隔には背景（スタイル）が見えます。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Перетащите разделитель на видео, чтобы изменить пропорции; в промежутке виден фон (Стиль)."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Перетягніть роздільник на відео, щоб змінити пропорції; у проміжку видно тло (Стиль)."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "拖移视频上的分隔线可更改比例；间距中显示背景（样式）。"
           }
         }
       }
@@ -48740,6 +48980,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "视频的每个部分都作为单独的文件，放在同一个文件夹中，交给其他剪辑师或应用。"
+          }
+        }
+      }
+    },
+    "Every ratio works with Adapt to this ratio, Export all ratios, and presets saved with Include aspect ratio." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jedes Format funktioniert mit „An dieses Format anpassen“, „Alle Formate exportieren“ und Voreinstellungen, die mit „Seitenverhältnis einbeziehen“ gesichert wurden."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chaque format fonctionne avec Adapter à ce format, Exporter tous les formats et les préréglages enregistrés avec Inclure le format."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "どの比率も、“この比率に合わせる”、“すべての比率を書き出す”、“アスペクト比を含める”で保存したプリセットで使えます。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Любой формат работает с «Адаптировать к формату», «Экспортировать все форматы» и стилями, сохраненными с «Включить соотношение сторон»."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кожен формат працює з «Адаптувати до формату», «Експортувати всі формати» і стилями, збереженими з «Включити співвідношення сторін»."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "每种比例都可以配合“适配此比例”“导出所有比例”以及存储时选择了“包括宽高比”的预设使用。"
           }
         }
       }
@@ -69380,46 +69660,6 @@
         }
       }
     },
-    "Landscape videos (16:9, 4:3, 21:9) split side by side; square and vertical ones (1:1, 4:5, 9:16) one above the other." : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Querformat-Videos (16:9, 4:3, 21:9) werden nebeneinander geteilt, quadratische und hochformatige (1:1, 4:5, 9:16) übereinander."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Les vidéos paysage (16:9, 4:3, 21:9) sont partagées côte à côte ; les carrées et verticales (1:1, 4:5, 9:16) l’une au-dessus de l’autre."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "横長のビデオ（16:9、4:3、21:9）は左右に、正方形や縦長のビデオ（1:1、4:5、9:16）は上下に分割されます。"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Горизонтальные видео (16:9, 4:3, 21:9) делятся рядом, квадратные и вертикальные (1:1, 4:5, 9:16) — одно над другим."
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Горизонтальні відео (16:9, 4:3, 21:9) діляться поруч, квадратні й вертикальні (1:1, 4:5, 9:16) — одне над одним."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "横向视频（16:9、4:3、21:9）左右分屏；方形和竖向视频（1:1、4:5、9:16）上下分屏。"
-          }
-        }
-      }
-    },
     "Language" : {
       "localizations" : {
         "de" : {
@@ -82216,46 +82456,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "每天一次。有新版本时，LF Studios 会显示新内容，只有在你点按“安装更新”后才会安装。你的项目、录制、设置和权限都会保留。"
-          }
-        }
-      }
-    },
-    "One above the other on this video. Drag the divider on the video to change the split; the background (Style) shows in the gap." : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bei diesem Video übereinander. Zieh den Trenner im Video, um die Aufteilung zu ändern; im Abstand zeigt sich der Hintergrund (Stil)."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "L’un au-dessus de l’autre sur cette vidéo. Faites glisser le séparateur sur la vidéo pour changer la répartition ; l’arrière-plan (Style) apparaît dans l’espace."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "このビデオでは上下に並びます。ビデオ上の区切り線をドラッグして分割を変えます。間隔には背景（スタイル）が見えます。"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "На этом видео — одно над другим. Перетащите разделитель на видео, чтобы изменить пропорции; в промежутке виден фон (Стиль)."
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "На цьому відео — одне над одним. Перетягніть роздільник на відео, щоб змінити пропорції; у проміжку видно тло (Стиль)."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "此视频为上下排列。拖移视频上的分隔线可更改比例；间距中显示背景（样式）。"
           }
         }
       }
@@ -116423,46 +116623,6 @@
         }
       }
     },
-    "Side by side on this video. Drag the divider on the video to change the split; the background (Style) shows in the gap." : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bei diesem Video nebeneinander. Zieh den Trenner im Video, um die Aufteilung zu ändern; im Abstand zeigt sich der Hintergrund (Stil)."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Côte à côte sur cette vidéo. Faites glisser le séparateur sur la vidéo pour changer la répartition ; l’arrière-plan (Style) apparaît dans l’espace."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "このビデオでは横に並びます。ビデオ上の区切り線をドラッグして分割を変えます。間隔には背景（スタイル）が見えます。"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "На этом видео — рядом. Перетащите разделитель на видео, чтобы изменить пропорции; в промежутке виден фон (Стиль)."
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "На цьому відео — поруч. Перетягніть роздільник на відео, щоб змінити пропорції; у проміжку видно тло (Стиль)."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "此视频为并排排列。拖移视频上的分隔线可更改比例；间距中显示背景（样式）。"
-          }
-        }
-      }
-    },
     "Side by side uses Split screen's options (Camera panel ▸ Layout): the camera's side, the split size, and the gap. Each change eases in and out." : {
       "localizations" : {
         "de" : {
@@ -120106,6 +120266,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "正方形、圆形或 45° 直线"
+          }
+        }
+      }
+    },
+    "Stacked" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Übereinander"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Superposé"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "上下"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Одно над другим"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Одне над одним"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "上下"
           }
         }
       }
@@ -124200,6 +124400,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "该文件不是 LF Studios 可以使用的字体"
+          }
+        }
+      }
+    },
+    "That isn't a ratio. Try 3:2 or 2.39:1." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das ist kein Seitenverhältnis. Versuch 3:2 oder 2.39:1."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ce n’est pas un format. Essayez 3:2 ou 2.39:1."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "比率ではありません。3:2や2.39:1のように入力してください。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Это не формат. Попробуйте 3:2 или 2.39:1."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Це не формат. Спробуйте 3:2 або 2.39:1."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "这不是有效的比例。请试试 3:2 或 2.39:1。"
           }
         }
       }
@@ -143404,6 +143644,46 @@
         }
       }
     },
+    "Use This Ratio" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dieses Format verwenden"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utiliser ce format"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この比率を使用"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Использовать формат"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Використати формат"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用此比例"
+          }
+        }
+      }
+    },
     "Use a sound file as your voice" : {
       "localizations" : {
         "de" : {
@@ -146847,6 +147127,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "宽度和高度，例如 3:2 或 2.39:1。"
+          }
+        }
+      }
+    },
+    "Width and height, like 3:2, 2.39:1 or 5:4." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Breite und Höhe, etwa 3:2, 2.39:1 oder 5:4."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Largeur et hauteur, comme 3:2, 2.39:1 ou 5:4."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "幅と高さ（3:2、2.39:1、5:4など）。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ширина и высота, например 3:2, 2.39:1 или 5:4."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ширина й висота, як-от 3:2, 2.39:1 або 5:4."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "宽度和高度，例如 3:2、2.39:1 或 5:4。"
           }
         }
       }

@@ -68,8 +68,10 @@
 	<string>%@ · изображение %@ × %@</string>
 	<key>%@ · %lld fps</key>
 	<string>%@ · %lld fps</string>
-	<key>%@ · Screen part of a %@ split video</key>
-	<string>%1$@ · Часть экрана разделенного видео %2$@</string>
+	<key>%@ · Screen part of a %@ side-by-side video</key>
+	<string>%1$@ · Часть экрана видео %2$@ рядом</string>
+	<key>%@ · Screen part of a %@ stacked video</key>
+	<string>%1$@ · Часть экрана видео %2$@ одно над другим</string>
 	<key>%@ · about %@</key>
 	<string>%@ · около %@</string>
 	<key>%@ · on your clipboard — paste it anywhere</key>
@@ -258,8 +260,8 @@
 	<string>Адаптировать к этому формату</string>
 	<key>Adapt to this ratio</key>
 	<string>Адаптировать к формату</string>
-	<key>Adapt to this ratio turns side by side into one above the other: left becomes top, right becomes bottom.</key>
-	<string>«Адаптировать к формату» превращает «рядом» в «одно над другим»: левая часть становится верхней, правая — нижней.</string>
+	<key>Adapt to this ratio keeps the Direction you chose. If you never chose one, it follows the new shape: left becomes top, right becomes bottom.</key>
+	<string>«Адаптировать к формату» сохраняет выбранное направление. Если вы его не выбирали, оно следует новой форме: левая часть становится верхней, правая — нижней.</string>
 	<key>Adapt to this ratio, next to the aspect ratio menu after you change it.</key>
 	<string>«Адаптировать к формату» — рядом с меню соотношения сторон, после того как вы смените формат.</string>
 	<key>Adapted to %@: %@</key>
@@ -602,8 +604,8 @@
 	<string>Синее сияние</string>
 	<key>Auto</key>
 	<string>Авто</string>
-	<key>Auto (like the recording), 16:9 for YouTube, 4:3, 1:1, 4:5 for Instagram, or 9:16 for Reels, TikTok, and Shorts.</key>
-	<string>«Авто» (как у записи), 16:9 для YouTube, 4:3, 1:1, 4:5 для Instagram или 9:16 для Reels, TikTok и Shorts.</string>
+	<key>Auto (like the recording), 16:9 for YouTube, 9:16 for Reels, TikTok, and Shorts, 1:1, 4:5 for Instagram, 4:3, 16:10 like a Mac screen, or 21:9 for a cinematic look.</key>
+	<string>Авто (как запись), 16:9 для YouTube, 9:16 для Reels, TikTok и Shorts, 1:1, 4:5 для Instagram, 4:3, 16:10 как экран Mac или 21:9 для кинематографичного вида.</string>
 	<key>Auto Zoom</key>
 	<string>Автомасштаб</string>
 	<key>Auto adjust</key>
@@ -1092,8 +1094,8 @@
 	<string>Выбрать изображение…</string>
 	<key>Choose LF Studios ▸ Check for Updates….</key>
 	<string>Выберите LF Studios ▸ Проверить обновления….</string>
-	<key>Choose Layout ▸ Split screen. The frame becomes the screen's part, like 8:9 for a 16:9 video split in half, and the camera preview fills the camera's part.</key>
-	<string>Выберите «Расположение ▸ Разделенный экран». Рамка станет частью экрана, например 8:9 для видео 16:9, разделенного пополам, а предпросмотр камеры заполнит часть камеры.</string>
+	<key>Choose Layout ▸ Split screen, and a Direction. The frame becomes the screen's part, like 8:9 for a 16:9 video split side by side, or 32:9 stacked, and the camera preview fills the camera's part.</key>
+	<string>Выберите «Расположение ▸ Разделенный экран» и направление. Рамка станет частью экрана, например 8:9 для видео 16:9 рядом или 32:9 одно над другим, а предпросмотр камеры заполнит часть камеры.</string>
 	<key>Choose Location…</key>
 	<string>Выбрать место…</string>
 	<key>Choose MP4.</key>
@@ -1728,6 +1730,8 @@
 	<string>Свой</string>
 	<key>Custom Size…</key>
 	<string>Другой размер…</string>
+	<key>Custom aspect ratio</key>
+	<string>Свой формат</string>
 	<key>Custom color</key>
 	<string>Свой цвет</string>
 	<key>Custom color #%@</key>
@@ -1744,6 +1748,8 @@
 	<string>Свое изображение: %@</string>
 	<key>Custom…</key>
 	<string>Другой…</string>
+	<key>Custom… for any other shape: type it like 3:2 or 2.39:1. Choose Custom… again to change it.</key>
+	<string>«Другой…» для любой другой формы: введите ее, например 3:2 или 2.39:1. Выберите «Другой…» снова, чтобы изменить.</string>
 	<key>Custom…: type any shape, like 3:2 or 2.39:1.</key>
 	<string>«Другой…»: введите любую форму, например 3:2 или 2.39:1.</string>
 	<key>Cut</key>
@@ -1834,6 +1840,10 @@
 	<string>«Приглушать при речи»: добавленная дорожка (например, фоновый звук) становится тише, пока вы говорите. Параметр выключен, пока вы его не включите.</string>
 	<key>Dips while you talk, comes back in the pauses</key>
 	<string>Приглушается, когда вы говорите, и возвращается в паузах</string>
+	<key>Direction</key>
+	<string>Направление</string>
+	<key>Direction: Side by side (left and right) or Stacked (top and bottom), on a video of any shape. Until you choose, landscape videos go side by side and square and vertical ones stacked.</key>
+	<string>Направление: «Рядом» (слева и справа) или «Одно над другим» (сверху и снизу), на видео любой формы. Пока вы не выбрали, горизонтальные видео делятся рядом, а квадратные и вертикальные — одно над другим.</string>
 	<key>Disable Apple Shortcuts</key>
 	<string>Отключить сочетания клавиш Apple</string>
 	<key>Disabled</key>
@@ -1980,6 +1990,8 @@
 	<string>Перетяните рамку в предпросмотре на все, что нужно скрыть. Размытие следует за увеличениями и держится до конца своей полосы.</string>
 	<key>Drag the camera's edges on the video to change its width and height.</key>
 	<string>Тяните края камеры на видео, чтобы изменить ширину и высоту.</string>
+	<key>Drag the divider on the video to change the split; the background (Style) shows in the gap.</key>
+	<string>Перетащите разделитель на видео, чтобы изменить пропорции; в промежутке виден фон (Стиль).</string>
 	<key>Drag the frame on the preview to aim; drag its corners to zoom in or out.</key>
 	<string>Перетяните рамку в предпросмотре, чтобы навести ее; тяните за углы, чтобы увеличить или уменьшить.</string>
 	<key>Drag the frame over what you want to show. To fill it with one app, click Fit a window to the frame… and choose its window.</key>
@@ -2172,6 +2184,8 @@
 	<string>Каждая часть этого видео отдельным файлом в новой папке — для другого монтажёра или программы монтажа.</string>
 	<key>Every part of your video as its own file, in one folder, for another editor or app.</key>
 	<string>Каждая часть видео отдельным файлом в одной папке — для другого монтажера или приложения.</string>
+	<key>Every ratio works with Adapt to this ratio, Export all ratios, and presets saved with Include aspect ratio.</key>
+	<string>Любой формат работает с «Адаптировать к формату», «Экспортировать все форматы» и стилями, сохраненными с «Включить соотношение сторон».</string>
 	<key>Every recording gets a folder of its own, with its project file, the screen and camera videos, the sound as separate files, and its data. With asking off, or when you click Cancel, it goes in the Recording folder.</key>
 	<string>Каждая запись получает свою папку с файлом проекта, видео экрана и камеры, звуком в отдельных файлах и данными. Если вопрос выключен или вы нажали «Отменить», запись попадет в «Папку для записей».</string>
 	<key>Every recording, screenshot, and saved project in one place.</key>
@@ -3130,8 +3144,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Лагуна</string>
 	<key>Landscape (16:9)</key>
 	<string>Горизонтально (16:9)</string>
-	<key>Landscape videos (16:9, 4:3, 21:9) split side by side; square and vertical ones (1:1, 4:5, 9:16) one above the other.</key>
-	<string>Горизонтальные видео (16:9, 4:3, 21:9) делятся рядом, квадратные и вертикальные (1:1, 4:5, 9:16) — одно над другим.</string>
 	<key>Language</key>
 	<string>Язык</string>
 	<key>Languages</key>
@@ -3764,8 +3776,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>В буфере обмена · %@</string>
 	<key>Once a day. When there's a new version, LF Studios shows what's new and installs it only when you click Install Update. Your projects, recordings, settings and permissions stay.</key>
 	<string>Раз в день. Когда выходит новая версия, LF Studios показывает, что нового, и устанавливает её, только когда вы нажмёте «Установить обновление». Ваши проекты, записи, настройки и разрешения сохраняются.</string>
-	<key>One above the other on this video. Drag the divider on the video to change the split; the background (Style) shows in the gap.</key>
-	<string>На этом видео — одно над другим. Перетащите разделитель на видео, чтобы изменить пропорции; в промежутке виден фон (Стиль).</string>
 	<key>One word at a time</key>
 	<string>По одному слову</string>
 	<key>One ⌘Z undoes it.</key>
@@ -5374,8 +5384,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Выбрать случайный фон</string>
 	<key>Side by side</key>
 	<string>Рядом</string>
-	<key>Side by side on this video. Drag the divider on the video to change the split; the background (Style) shows in the gap.</key>
-	<string>На этом видео — рядом. Перетащите разделитель на видео, чтобы изменить пропорции; в промежутке виден фон (Стиль).</string>
 	<key>Side by side uses Split screen's options (Camera panel ▸ Layout): the camera's side, the split size, and the gap. Each change eases in and out.</key>
 	<string>«Рядом» использует параметры разделенного экрана (панель «Камера» ▸ Расположение): сторону камеры, пропорции и промежуток. Каждая смена происходит плавно.</string>
 	<key>Side rail</key>
@@ -5532,6 +5540,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Квадратные посты</string>
 	<key>Square, circle, or straight 45° lines</key>
 	<string>Квадрат, круг или прямые линии под 45°</string>
+	<key>Stacked</key>
+	<string>Одно над другим</string>
 	<key>Star on GitHub</key>
 	<string>Поставить звезду</string>
 	<key>Start</key>
@@ -5736,6 +5746,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Этот диск доступен только для чтения. Выберите другое место для сохранения и экспортируйте снова.</string>
 	<key>That file isn't a font LF Studios can use</key>
 	<string>Этот файл не является шрифтом, который может использовать LF Studios</string>
+	<key>That isn't a ratio. Try 3:2 or 2.39:1.</key>
+	<string>Это не формат. Попробуйте 3:2 или 2.39:1.</string>
 	<key>That isn't an LF Studios presets file</key>
 	<string>Это не файл стилей LF Studios</string>
 	<key>That part is only a title card — include a moment of the video to export it.</key>
@@ -6676,6 +6688,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>С помощью «Показывать» переключайтесь между оригиналом и переводом.</string>
 	<key>Use Size for line thickness, and Text size and Bold for text.</key>
 	<string>«Размер» задает толщину линии, а «Размер текста» и «Жирный» — вид текста.</string>
+	<key>Use This Ratio</key>
+	<string>Использовать формат</string>
 	<key>Use a sound file as your voice</key>
 	<string>Звуковой файл в качестве голоса</string>
 	<key>Use any font on your Mac for captions, title cards, text, and keys, or add your own.</key>
@@ -6848,6 +6862,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Ширина</string>
 	<key>Width and height, like 3:2 or 2.39:1.</key>
 	<string>Ширина и высота, например 3:2 или 2.39:1.</string>
+	<key>Width and height, like 3:2, 2.39:1 or 5:4.</key>
+	<string>Ширина и высота, например 3:2, 2.39:1 или 5:4.</string>
 	<key>Window</key>
 	<string>Окно</string>
 	<key>Window Capture</key>

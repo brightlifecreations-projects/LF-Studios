@@ -855,12 +855,18 @@ extension VideoEditorModel {
     /// Switching a wide recording to a narrow shape fills the frame and
     /// follows the pointer (letterboxing a screen into a phone frame makes
     /// it unreadable); the aspect menu turns that off.
-    func setAspect(_ preset: VideoDemoProject.AspectPreset) {
+    func setAspect(_ preset: VideoDemoProject.AspectPreset, customAspect: Double? = nil) {
+        // Custom… asks for its shape first.
+        if preset == .custom, customAspect == nil {
+            chooseCustomAspect()
+            return
+        }
         let wasNarrow = project.canReframe
         // Following the cursor needs its recorded path.
         let canFollow = !project.cursorSamples.isEmpty
         let adapted = project.ratioShared != nil
         setStyle { project in
+            if let customAspect { project.customAspect = customAspect }
             // Adapted ratios bring their own version back (VideoRatioVersions.swift).
             project.switchRatio(to: preset)
             if !adapted, project.canReframe, !wasNarrow, canFollow { project.reframe = true }
@@ -868,6 +874,35 @@ extension VideoEditorModel {
         if project.reframeActive, !wasNarrow {
             showNotice(L("Filling the frame — the view follows your cursor"), symbol: "arrow.left.and.right.square")
         }
+    }
+}
+
+// MARK: - Custom aspect ratio
+
+extension VideoEditorModel {
+    /// Custom…: any shape, typed like the frame bar's ("3:2", "2.39:1").
+    func chooseCustomAspect() {
+        let alert = NSAlert()
+        alert.messageText = L("Custom aspect ratio")
+        alert.informativeText = L("Width and height, like 3:2, 2.39:1 or 5:4.")
+        let field = NSTextField(string: project.customAspect.map { VideoEditorFormat.ratio(CGFloat($0)) } ?? "3:2")
+        field.frame = NSRect(x: 0, y: 0, width: 200, height: 24)
+        alert.accessoryView = field
+        alert.addButton(withTitle: L("Use This Ratio"))
+        alert.addButton(withTitle: L("Cancel"))
+        alert.window.initialFirstResponder = field
+        guard alert.runModal() == .alertFirstButtonReturn else { return }
+        guard let aspect = Self.customAspect(from: field.stringValue) else {
+            showNotice(L("That isn't a ratio. Try 3:2 or 2.39:1."), symbol: "exclamationmark.triangle.fill")
+            return
+        }
+        setAspect(.custom, customAspect: aspect)
+    }
+
+    /// "3:2" → 1.5 (nil: not a shape the frame bar would take either).
+    nonisolated static func customAspect(from text: String) -> Double? {
+        guard let ratio = RecordingFrameRatio.parse(text) else { return nil }
+        return Double(ratio.width) / Double(ratio.height)
     }
 }
 

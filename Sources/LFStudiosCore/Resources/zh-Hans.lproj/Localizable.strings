@@ -68,8 +68,10 @@
 	<string>%@ · %@ × %@ 图像</string>
 	<key>%@ · %lld fps</key>
 	<string>%@ · %lld fps</string>
-	<key>%@ · Screen part of a %@ split video</key>
-	<string>%1$@ · %2$@ 分屏视频的屏幕部分</string>
+	<key>%@ · Screen part of a %@ side-by-side video</key>
+	<string>%1$@ · %2$@ 并排视频的屏幕部分</string>
+	<key>%@ · Screen part of a %@ stacked video</key>
+	<string>%1$@ · %2$@ 上下排列视频的屏幕部分</string>
 	<key>%@ · about %@</key>
 	<string>%@ · 约 %@</string>
 	<key>%@ · on your clipboard — paste it anywhere</key>
@@ -322,8 +324,8 @@
 	<string>适配此比例</string>
 	<key>Adapt to this ratio</key>
 	<string>适配此比例</string>
-	<key>Adapt to this ratio turns side by side into one above the other: left becomes top, right becomes bottom.</key>
-	<string>“适配此比例”会把并排改为上下排列：左侧变为上方，右侧变为下方。</string>
+	<key>Adapt to this ratio keeps the Direction you chose. If you never chose one, it follows the new shape: left becomes top, right becomes bottom.</key>
+	<string>“适配此比例”会保留你选择的方向。如果从未选择，则跟随新形状：左侧变为上方，右侧变为下方。</string>
 	<key>Adapt to this ratio, next to the aspect ratio menu after you change it.</key>
 	<string>更改宽高比后，宽高比菜单旁边的“适配此比例”。</string>
 	<key>Adapted to %@: %@</key>
@@ -670,8 +672,8 @@
 	<string>极光蓝</string>
 	<key>Auto</key>
 	<string>自动</string>
-	<key>Auto (like the recording), 16:9 for YouTube, 4:3, 1:1, 4:5 for Instagram, or 9:16 for Reels, TikTok, and Shorts.</key>
-	<string>自动（与录制内容相同）、适合 YouTube 的 16:9、4:3、1:1、适合 Instagram 的 4:5，或适合 Reels、TikTok 和 Shorts 的 9:16。</string>
+	<key>Auto (like the recording), 16:9 for YouTube, 9:16 for Reels, TikTok, and Shorts, 1:1, 4:5 for Instagram, 4:3, 16:10 like a Mac screen, or 21:9 for a cinematic look.</key>
+	<string>自动（与录制内容相同）、适合 YouTube 的 16:9、适合 Reels、TikTok 和 Shorts 的 9:16、1:1、适合 Instagram 的 4:5、4:3、与 Mac 屏幕相同的 16:10，或带电影感的 21:9。</string>
 	<key>Auto Zoom</key>
 	<string>自动缩放</string>
 	<key>Auto adjust</key>
@@ -1168,8 +1170,8 @@
 	<string>选择图像…</string>
 	<key>Choose LF Studios ▸ Check for Updates….</key>
 	<string>选择“LF Studios ▸ 检查更新…”。</string>
-	<key>Choose Layout ▸ Split screen. The frame becomes the screen's part, like 8:9 for a 16:9 video split in half, and the camera preview fills the camera's part.</key>
-	<string>选择“布局 ▸ 分屏”。录制框会变成屏幕部分，例如对半分的 16:9 视频为 8:9，摄像头预览会填满摄像头部分。</string>
+	<key>Choose Layout ▸ Split screen, and a Direction. The frame becomes the screen's part, like 8:9 for a 16:9 video split side by side, or 32:9 stacked, and the camera preview fills the camera's part.</key>
+	<string>选择“布局 ▸ 分屏”和一个方向。录制框会变成屏幕部分，例如 16:9 视频并排时为 8:9，上下排列时为 32:9，摄像头预览会填满摄像头部分。</string>
 	<key>Choose Location…</key>
 	<string>选择位置…</string>
 	<key>Choose MP4.</key>
@@ -1804,6 +1806,8 @@
 	<string>自定</string>
 	<key>Custom Size…</key>
 	<string>自定大小…</string>
+	<key>Custom aspect ratio</key>
+	<string>自定比例</string>
 	<key>Custom color</key>
 	<string>自定颜色</string>
 	<key>Custom color #%@</key>
@@ -1820,6 +1824,8 @@
 	<string>自定图像：%@</string>
 	<key>Custom…</key>
 	<string>自定…</string>
+	<key>Custom… for any other shape: type it like 3:2 or 2.39:1. Choose Custom… again to change it.</key>
+	<string>“自定…”可用于任何其他形状：输入 3:2 或 2.39:1 之类的比例。再次选择“自定…”即可更改。</string>
 	<key>Custom…: type any shape, like 3:2 or 2.39:1.</key>
 	<string>自定…：输入任意比例，例如 3:2 或 2.39:1。</string>
 	<key>Cut</key>
@@ -1916,6 +1922,10 @@
 	<string>人声时降低：添加的轨道（如背景声音）会在你说话时变小声。打开之前，此功能保持关闭。</string>
 	<key>Dips while you talk, comes back in the pauses</key>
 	<string>说话时降低音量，停顿时恢复</string>
+	<key>Direction</key>
+	<string>方向</string>
+	<key>Direction: Side by side (left and right) or Stacked (top and bottom), on a video of any shape. Until you choose, landscape videos go side by side and square and vertical ones stacked.</key>
+	<string>方向：并排（左右）或上下（上方和下方），适用于任何形状的视频。在你选择之前，横向视频为并排，方形和竖向视频为上下。</string>
 	<key>Disable Apple Shortcuts</key>
 	<string>停用 Apple 快捷键</string>
 	<key>Disabled</key>
@@ -2062,6 +2072,8 @@
 	<string>在预览中将方框拖到任何隐私内容上。模糊效果会跟随缩放，并持续到其条块结束。</string>
 	<key>Drag the camera's edges on the video to change its width and height.</key>
 	<string>在视频上拖移摄像头的边缘可更改其宽度和高度。</string>
+	<key>Drag the divider on the video to change the split; the background (Style) shows in the gap.</key>
+	<string>拖移视频上的分隔线可更改比例；间距中显示背景（样式）。</string>
 	<key>Drag the frame on the preview to aim; drag its corners to zoom in or out.</key>
 	<string>在预览中拖移画框即可对准；拖移其角可放大或缩小。</string>
 	<key>Drag the frame over what you want to show. To fill it with one app, click Fit a window to the frame… and choose its window.</key>
@@ -2254,6 +2266,8 @@
 	<string>把这个视频的每个部分都作为单独的文件放进一个新文件夹 — 交给其他剪辑师或剪辑软件。</string>
 	<key>Every part of your video as its own file, in one folder, for another editor or app.</key>
 	<string>视频的每个部分都作为单独的文件，放在同一个文件夹中，交给其他剪辑师或应用。</string>
+	<key>Every ratio works with Adapt to this ratio, Export all ratios, and presets saved with Include aspect ratio.</key>
+	<string>每种比例都可以配合“适配此比例”“导出所有比例”以及存储时选择了“包括宽高比”的预设使用。</string>
 	<key>Every recording gets a folder of its own, with its project file, the screen and camera videos, the sound as separate files, and its data. With asking off, or when you click Cancel, it goes in the Recording folder.</key>
 	<string>每段录制内容都有一个专属文件夹，里面有它的项目文件、屏幕和摄像头视频、分别存储的声音文件，以及它的数据。关闭询问，或点按“取消”时，它会放进“录制文件夹”。</string>
 	<key>Every recording, screenshot, and saved project in one place.</key>
@@ -3236,8 +3250,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>泻湖</string>
 	<key>Landscape (16:9)</key>
 	<string>横向（16:9）</string>
-	<key>Landscape videos (16:9, 4:3, 21:9) split side by side; square and vertical ones (1:1, 4:5, 9:16) one above the other.</key>
-	<string>横向视频（16:9、4:3、21:9）左右分屏；方形和竖向视频（1:1、4:5、9:16）上下分屏。</string>
 	<key>Language</key>
 	<string>语言</string>
 	<key>Languages</key>
@@ -3872,8 +3884,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>已在剪贴板中 · %@</string>
 	<key>Once a day. When there's a new version, LF Studios shows what's new and installs it only when you click Install Update. Your projects, recordings, settings and permissions stay.</key>
 	<string>每天一次。有新版本时，LF Studios 会显示新内容，只有在你点按“安装更新”后才会安装。你的项目、录制、设置和权限都会保留。</string>
-	<key>One above the other on this video. Drag the divider on the video to change the split; the background (Style) shows in the gap.</key>
-	<string>此视频为上下排列。拖移视频上的分隔线可更改比例；间距中显示背景（样式）。</string>
 	<key>One word at a time</key>
 	<string>逐词显示</string>
 	<key>One ⌘Z undoes it.</key>
@@ -5512,8 +5522,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>随机选择背景</string>
 	<key>Side by side</key>
 	<string>并排</string>
-	<key>Side by side on this video. Drag the divider on the video to change the split; the background (Style) shows in the gap.</key>
-	<string>此视频为并排排列。拖移视频上的分隔线可更改比例；间距中显示背景（样式）。</string>
 	<key>Side by side uses Split screen's options (Camera panel ▸ Layout): the camera's side, the split size, and the gap. Each change eases in and out.</key>
 	<string>“并排”使用分屏的选项（“摄像头”面板 ▸ 布局）：摄像头位置、分屏比例和间距。每次切换都会平滑过渡。</string>
 	<key>Side rail</key>
@@ -5678,6 +5686,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>方形帖子</string>
 	<key>Square, circle, or straight 45° lines</key>
 	<string>正方形、圆形或 45° 直线</string>
+	<key>Stacked</key>
+	<string>上下</string>
 	<key>Star on GitHub</key>
 	<string>在 GitHub 上加星标</string>
 	<key>Start</key>
@@ -5882,6 +5892,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>该磁盘为只读。请选择其他存储位置，然后重新导出。</string>
 	<key>That file isn't a font LF Studios can use</key>
 	<string>该文件不是 LF Studios 可以使用的字体</string>
+	<key>That isn't a ratio. Try 3:2 or 2.39:1.</key>
+	<string>这不是有效的比例。请试试 3:2 或 2.39:1。</string>
 	<key>That isn't an LF Studios presets file</key>
 	<string>这不是 LF Studios 预设文件</string>
 	<key>That part is only a title card — include a moment of the video to export it.</key>
@@ -6828,6 +6840,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>使用“显示”在原文和译文之间切换。</string>
 	<key>Use Size for line thickness, and Text size and Bold for text.</key>
 	<string>用“大小”设定线条粗细，用“文字大小”和“粗体”设定文字。</string>
+	<key>Use This Ratio</key>
+	<string>使用此比例</string>
 	<key>Use a sound file as your voice</key>
 	<string>将声音文件用作你的人声</string>
 	<key>Use any font on your Mac for captions, title cards, text, and keys, or add your own.</key>
@@ -7000,6 +7014,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>宽度</string>
 	<key>Width and height, like 3:2 or 2.39:1.</key>
 	<string>宽度和高度，例如 3:2 或 2.39:1。</string>
+	<key>Width and height, like 3:2, 2.39:1 or 5:4.</key>
+	<string>宽度和高度，例如 3:2、2.39:1 或 5:4。</string>
 	<key>Window</key>
 	<string>窗口</string>
 	<key>Window Capture</key>

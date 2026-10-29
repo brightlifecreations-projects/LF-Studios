@@ -68,8 +68,10 @@
 	<string>%@ · Bild %@ × %@</string>
 	<key>%@ · %lld fps</key>
 	<string>%@ · %lld fps</string>
-	<key>%@ · Screen part of a %@ split video</key>
-	<string>%1$@ · Bildschirmteil eines geteilten %2$@-Videos</string>
+	<key>%@ · Screen part of a %@ side-by-side video</key>
+	<string>%1$@ · Bildschirmteil eines %2$@-Videos nebeneinander</string>
+	<key>%@ · Screen part of a %@ stacked video</key>
+	<string>%1$@ · Bildschirmteil eines %2$@-Videos übereinander</string>
 	<key>%@ · about %@</key>
 	<string>%@ · etwa %@</string>
 	<key>%@ · on your clipboard — paste it anywhere</key>
@@ -264,8 +266,8 @@
 	<string>An dieses Format anpassen</string>
 	<key>Adapt to this ratio</key>
 	<string>An dieses Format anpassen</string>
-	<key>Adapt to this ratio turns side by side into one above the other: left becomes top, right becomes bottom.</key>
-	<string>„An dieses Format anpassen“ macht aus nebeneinander übereinander: Links wird oben, rechts wird unten.</string>
+	<key>Adapt to this ratio keeps the Direction you chose. If you never chose one, it follows the new shape: left becomes top, right becomes bottom.</key>
+	<string>„An dieses Format anpassen“ behält die gewählte Richtung. Hast du keine gewählt, folgt sie der neuen Form: Links wird oben, rechts wird unten.</string>
 	<key>Adapt to this ratio, next to the aspect ratio menu after you change it.</key>
 	<string>„An dieses Format anpassen“, neben dem Menü für das Seitenverhältnis, nachdem du es geändert hast.</string>
 	<key>Adapted to %@: %@</key>
@@ -608,8 +610,8 @@
 	<string>Polarlichtblau</string>
 	<key>Auto</key>
 	<string>Auto</string>
-	<key>Auto (like the recording), 16:9 for YouTube, 4:3, 1:1, 4:5 for Instagram, or 9:16 for Reels, TikTok, and Shorts.</key>
-	<string>Auto (wie die Aufnahme), 16:9 für YouTube, 4:3, 1:1, 4:5 für Instagram oder 9:16 für Reels, TikTok und Shorts.</string>
+	<key>Auto (like the recording), 16:9 for YouTube, 9:16 for Reels, TikTok, and Shorts, 1:1, 4:5 for Instagram, 4:3, 16:10 like a Mac screen, or 21:9 for a cinematic look.</key>
+	<string>Auto (wie die Aufnahme), 16:9 für YouTube, 9:16 für Reels, TikTok und Shorts, 1:1, 4:5 für Instagram, 4:3, 16:10 wie ein Mac-Bildschirm oder 21:9 für einen Kino-Look.</string>
 	<key>Auto Zoom</key>
 	<string>Auto-Zoom</string>
 	<key>Auto adjust</key>
@@ -1098,8 +1100,8 @@
 	<string>Bild auswählen …</string>
 	<key>Choose LF Studios ▸ Check for Updates….</key>
 	<string>Wähle LF Studios ▸ Nach Updates suchen ….</string>
-	<key>Choose Layout ▸ Split screen. The frame becomes the screen's part, like 8:9 for a 16:9 video split in half, and the camera preview fills the camera's part.</key>
-	<string>Wähle Layout ▸ Geteilter Bildschirm. Der Rahmen wird zum Bildschirmteil, etwa 8:9 bei einem halbierten 16:9-Video, und die Kameravorschau füllt den Kamerateil.</string>
+	<key>Choose Layout ▸ Split screen, and a Direction. The frame becomes the screen's part, like 8:9 for a 16:9 video split side by side, or 32:9 stacked, and the camera preview fills the camera's part.</key>
+	<string>Wähle Layout ▸ Geteilter Bildschirm und eine Richtung. Der Rahmen wird zum Bildschirmteil, etwa 8:9 bei einem 16:9-Video nebeneinander oder 32:9 übereinander, und die Kameravorschau füllt den Kamerateil.</string>
 	<key>Choose Location…</key>
 	<string>Ort wählen …</string>
 	<key>Choose MP4.</key>
@@ -1734,6 +1736,8 @@
 	<string>Eigene</string>
 	<key>Custom Size…</key>
 	<string>Eigene Größe …</string>
+	<key>Custom aspect ratio</key>
+	<string>Eigenes Seitenverhältnis</string>
 	<key>Custom color</key>
 	<string>Eigene Farbe</string>
 	<key>Custom color #%@</key>
@@ -1750,6 +1754,8 @@
 	<string>Eigenes Bild: %@</string>
 	<key>Custom…</key>
 	<string>Eigene …</string>
+	<key>Custom… for any other shape: type it like 3:2 or 2.39:1. Choose Custom… again to change it.</key>
+	<string>„Eigene …“ für jede andere Form: Gib sie ein wie 3:2 oder 2.39:1. Wähle „Eigene …“ erneut, um sie zu ändern.</string>
 	<key>Custom…: type any shape, like 3:2 or 2.39:1.</key>
 	<string>„Eigene …“: Gib eine beliebige Form ein, etwa 3:2 oder 2.39:1.</string>
 	<key>Cut</key>
@@ -1840,6 +1846,10 @@
 	<string>Unter Stimme absenken: Eine hinzugefügte Spur (etwa Hintergrundton) wird leiser, während du sprichst. Es ist aus, bis du es einschaltest.</string>
 	<key>Dips while you talk, comes back in the pauses</key>
 	<string>Wird leiser, während du sprichst, und in Pausen wieder lauter</string>
+	<key>Direction</key>
+	<string>Richtung</string>
+	<key>Direction: Side by side (left and right) or Stacked (top and bottom), on a video of any shape. Until you choose, landscape videos go side by side and square and vertical ones stacked.</key>
+	<string>Richtung: Nebeneinander (links und rechts) oder Übereinander (oben und unten), bei einem Video jeder Form. Bis du wählst, werden Querformat-Videos nebeneinander und quadratische und hochformatige übereinander geteilt.</string>
 	<key>Disable Apple Shortcuts</key>
 	<string>Apple-Kurzbefehle deaktivieren</string>
 	<key>Disabled</key>
@@ -1986,6 +1996,8 @@
 	<string>Ziehe das Feld in der Vorschau über alles Private. Die Weichzeichnung folgt Zooms und bleibt, bis ihr Balken endet.</string>
 	<key>Drag the camera's edges on the video to change its width and height.</key>
 	<string>Zieh an den Rändern der Kamera im Video, um Breite und Höhe zu ändern.</string>
+	<key>Drag the divider on the video to change the split; the background (Style) shows in the gap.</key>
+	<string>Zieh den Trenner im Video, um die Aufteilung zu ändern; im Abstand zeigt sich der Hintergrund (Stil).</string>
 	<key>Drag the frame on the preview to aim; drag its corners to zoom in or out.</key>
 	<string>Ziehe den Rahmen in der Vorschau, um auszurichten; ziehe an seinen Ecken, um hinein- oder herauszuzoomen.</string>
 	<key>Drag the frame over what you want to show. To fill it with one app, click Fit a window to the frame… and choose its window.</key>
@@ -2178,6 +2190,8 @@
 	<string>Jeder Teil dieses Videos als eigene Datei in einem neuen Ordner – für eine andere Person im Schnitt oder ein Schnittprogramm.</string>
 	<key>Every part of your video as its own file, in one folder, for another editor or app.</key>
 	<string>Jeder Teil deines Videos als eigene Datei, in einem Ordner, für einen anderen Editor oder eine andere App.</string>
+	<key>Every ratio works with Adapt to this ratio, Export all ratios, and presets saved with Include aspect ratio.</key>
+	<string>Jedes Format funktioniert mit „An dieses Format anpassen“, „Alle Formate exportieren“ und Voreinstellungen, die mit „Seitenverhältnis einbeziehen“ gesichert wurden.</string>
 	<key>Every recording gets a folder of its own, with its project file, the screen and camera videos, the sound as separate files, and its data. With asking off, or when you click Cancel, it goes in the Recording folder.</key>
 	<string>Jede Aufnahme bekommt einen eigenen Ordner mit ihrer Projektdatei, den Bildschirm- und Kameravideos, dem Ton als getrennte Dateien und ihren Daten. Ist das Fragen aus oder klickst du auf „Abbrechen“, kommt sie in den „Aufnahmeordner“.</string>
 	<key>Every recording, screenshot, and saved project in one place.</key>
@@ -3136,8 +3150,6 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Lagune</string>
 	<key>Landscape (16:9)</key>
 	<string>Querformat (16:9)</string>
-	<key>Landscape videos (16:9, 4:3, 21:9) split side by side; square and vertical ones (1:1, 4:5, 9:16) one above the other.</key>
-	<string>Querformat-Videos (16:9, 4:3, 21:9) werden nebeneinander geteilt, quadratische und hochformatige (1:1, 4:5, 9:16) übereinander.</string>
 	<key>Language</key>
 	<string>Sprache</string>
 	<key>Languages</key>
@@ -3770,8 +3782,6 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>In der Zwischenablage · %@</string>
 	<key>Once a day. When there's a new version, LF Studios shows what's new and installs it only when you click Install Update. Your projects, recordings, settings and permissions stay.</key>
 	<string>Einmal am Tag. Gibt es eine neue Version, zeigt LF Studios, was neu ist, und installiert sie erst, wenn du auf „Update installieren“ klickst. Deine Projekte, Aufnahmen, Einstellungen und Berechtigungen bleiben erhalten.</string>
-	<key>One above the other on this video. Drag the divider on the video to change the split; the background (Style) shows in the gap.</key>
-	<string>Bei diesem Video übereinander. Zieh den Trenner im Video, um die Aufteilung zu ändern; im Abstand zeigt sich der Hintergrund (Stil).</string>
 	<key>One word at a time</key>
 	<string>Wort für Wort</string>
 	<key>One ⌘Z undoes it.</key>
@@ -5380,8 +5390,6 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Zufälligen Hintergrund wählen</string>
 	<key>Side by side</key>
 	<string>Nebeneinander</string>
-	<key>Side by side on this video. Drag the divider on the video to change the split; the background (Style) shows in the gap.</key>
-	<string>Bei diesem Video nebeneinander. Zieh den Trenner im Video, um die Aufteilung zu ändern; im Abstand zeigt sich der Hintergrund (Stil).</string>
 	<key>Side by side uses Split screen's options (Camera panel ▸ Layout): the camera's side, the split size, and the gap. Each change eases in and out.</key>
 	<string>„Nebeneinander“ nutzt die Optionen des geteilten Bildschirms (Panel „Kamera“ ▸ Layout): Kameraseite, Aufteilung und Abstand. Jeder Wechsel wird weich ein- und ausgeblendet.</string>
 	<key>Side rail</key>
@@ -5538,6 +5546,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Quadratische Posts</string>
 	<key>Square, circle, or straight 45° lines</key>
 	<string>Quadrat, Kreis oder gerade 45°-Linien</string>
+	<key>Stacked</key>
+	<string>Übereinander</string>
 	<key>Star on GitHub</key>
 	<string>Stern vergeben</string>
 	<key>Start</key>
@@ -5742,6 +5752,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Dieses Laufwerk ist schreibgeschützt. Wähle einen anderen Ort zum Sichern und exportiere erneut.</string>
 	<key>That file isn't a font LF Studios can use</key>
 	<string>Diese Datei ist keine Schrift, die LF Studios verwenden kann</string>
+	<key>That isn't a ratio. Try 3:2 or 2.39:1.</key>
+	<string>Das ist kein Seitenverhältnis. Versuch 3:2 oder 2.39:1.</string>
 	<key>That isn't an LF Studios presets file</key>
 	<string>Das ist keine LF-Studios-Voreinstellungsdatei</string>
 	<key>That part is only a title card — include a moment of the video to export it.</key>
@@ -6682,6 +6694,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Wechsle mit „Anzeigen“ zwischen Original und Übersetzung.</string>
 	<key>Use Size for line thickness, and Text size and Bold for text.</key>
 	<string>Mit „Größe“ stellst du die Linienstärke ein, mit „Textgröße“ und „Fett“ den Text.</string>
+	<key>Use This Ratio</key>
+	<string>Dieses Format verwenden</string>
 	<key>Use a sound file as your voice</key>
 	<string>Eine Tondatei als deine Stimme nutzen</string>
 	<key>Use any font on your Mac for captions, title cards, text, and keys, or add your own.</key>
@@ -6854,6 +6868,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Breite</string>
 	<key>Width and height, like 3:2 or 2.39:1.</key>
 	<string>Breite und Höhe, etwa 3:2 oder 2.39:1.</string>
+	<key>Width and height, like 3:2, 2.39:1 or 5:4.</key>
+	<string>Breite und Höhe, etwa 3:2, 2.39:1 oder 5:4.</string>
 	<key>Window</key>
 	<string>Fenster</string>
 	<key>Window Capture</key>

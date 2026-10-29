@@ -104,7 +104,7 @@ struct VideoHandoffSplit: Equatable {
     static func make(project: VideoDemoProject, recordingSize: CGSize) -> VideoHandoffSplit? {
         guard project.webcam.visible, project.webcam.effectiveLayout == .split, recordingSize.width > 1, recordingSize.height > 1 else { return nil }
         let canvas = project.canvasSize()
-        let sideBySide = VideoSplitLayout.isSideBySide(canvas)
+        let sideBySide = VideoSplitLayout.isSideBySide(project.webcam.effectiveSplit, in: canvas)
         func even(_ value: CGFloat) -> CGFloat { max(2, (value / 2).rounded() * 2) }
         // Recorded as the screen's part: the whole video is wider (or
         // taller) than the recording; otherwise the recording's size.

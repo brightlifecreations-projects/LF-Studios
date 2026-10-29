@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.11.0]
+
+### Added
+- **Split screen in both directions.** Split screen has a Direction: Side by side (left and right) or Stacked (top and bottom), on a video of any shape. Camera side follows it (Left/Right or Top/Bottom), and the split size, the divider and the gap work both ways. It's in the recording bar (Layout ▸ Direction), where the frame becomes the screen's part for that direction ("Screen part of a 16:9 stacked video"), and in the editor's Camera panel. Until you choose, a split goes the way it did before (side by side on landscape videos, stacked on square and vertical ones), and Adapt to this ratio keeps a direction you chose.
+- **16:10, 21:9 and Custom… in the aspect ratio menu**, like the frame bar's. Custom… takes any shape, typed like 3:2 or 2.39:1. They work with Adapt to this ratio, Export all ratios, and presets saved with Include aspect ratio.
+
 ## [1.10.0]
 
 ### Added

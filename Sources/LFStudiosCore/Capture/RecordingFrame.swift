@@ -365,9 +365,11 @@ final class RecordingFrameController {
     /// "960 × 1080 · Screen part of a 16:9 split video", or just the size.
     var label: String {
         let size = Self.sizeText(recordedPixels)
-        guard split != nil else { return size }
+        guard let split else { return size }
         let whole = ratio.label
-        return L("\(size) · Screen part of a \(whole) split video")
+        return VideoSplitLayout.isSideBySide(split, in: CGSize(width: pixels.width, height: pixels.height))
+            ? L("\(size) · Screen part of a \(whole) side-by-side video")
+            : L("\(size) · Screen part of a \(whole) stacked video")
     }
 
     var scale: CGFloat { max(screen.backingScaleFactor, 1) }

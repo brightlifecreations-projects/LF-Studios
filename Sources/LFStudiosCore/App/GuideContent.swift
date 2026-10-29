@@ -15,7 +15,7 @@ import Foundation
 @MainActor
 enum GuideContent {
     /// Pages from these versions get a New badge and fill What's new.
-    nonisolated static let newVersions: [String] = ["1.10.0", "1.9.0", "1.8.0", "1.7.0"]
+    nonisolated static let newVersions: [String] = ["1.11.0", "1.10.0", "1.9.0", "1.8.0", "1.7.0"]
 
     static func chapters() -> [GuideChapter] {
         let features = featureCategories()
@@ -1572,22 +1572,22 @@ enum GuideContent {
                 summary: L("The screen and your camera each fill one part of the video: side by side, or one above the other."),
                 location: L("Before recording: turn on Camera, then Layout ▸ Split screen above the recording bar. In the editor: Camera panel ▸ Layout."),
                 points: [
-                    L("Landscape videos (16:9, 4:3, 21:9) split side by side; square and vertical ones (1:1, 4:5, 9:16) one above the other."),
+                    L("Direction: Side by side (left and right) or Stacked (top and bottom), on a video of any shape. Until you choose, landscape videos go side by side and square and vertical ones stacked."),
                     L("Camera side, Split size (from 30/70 to 70/30, 50/50 to start), and Gap, with the video's background in between."),
                 ],
                 steps: [
-                    L("Choose Layout ▸ Split screen. The frame becomes the screen's part, like 8:9 for a 16:9 video split in half, and the camera preview fills the camera's part."),
+                    L("Choose Layout ▸ Split screen, and a Direction. The frame becomes the screen's part, like 8:9 for a 16:9 video split side by side, or 32:9 stacked, and the camera preview fills the camera's part."),
                     L("Arrange what you'll show inside the frame: it fills the screen's part exactly, without stretching or black bars."),
                     L("Record. The video opens in the editor already split."),
                 ],
                 tips: [
                     L("In the editor, drag the divider on the video to change the split. Zooms happen inside the screen's part; captions go over the whole video."),
-                    L("Adapt to this ratio turns side by side into one above the other: left becomes top, right becomes bottom."),
+                    L("Adapt to this ratio keeps the Direction you chose. If you never chose one, it follows the new shape: left becomes top, right becomes bottom."),
                     L("Layout also has Screen only and Camera only. The screen and the camera are always both recorded, so you can change your mind later."),
                     L("Creative Handoff's README.txt says where each part goes, in pixels, for your editing app."),
                 ],
                 showMe: .editor(.camera),
-                since: "1.10.0",
+                since: "1.11.0",
                 related: ["camera-layouts", "rec-frame", "camera-shape"]
             ),
             GuideEntry(
@@ -1992,7 +1992,12 @@ enum GuideContent {
                 id: "size-ratio", symbol: "aspectratio", title: L("Aspect ratio"),
                 summary: L("Choose the video's shape for where it's going."),
                 location: L("The aspect ratio menu in the video editor's toolbar."),
-                points: [L("Auto (like the recording), 16:9 for YouTube, 4:3, 1:1, 4:5 for Instagram, or 9:16 for Reels, TikTok, and Shorts.")],
+                points: [
+                    L("Auto (like the recording), 16:9 for YouTube, 9:16 for Reels, TikTok, and Shorts, 1:1, 4:5 for Instagram, 4:3, 16:10 like a Mac screen, or 21:9 for a cinematic look."),
+                    L("Custom… for any other shape: type it like 3:2 or 2.39:1. Choose Custom… again to change it."),
+                ],
+                tips: [L("Every ratio works with Adapt to this ratio, Export all ratios, and presets saved with Include aspect ratio.")],
+                since: "1.11.0",
                 related: ["size-adapt", "howto-vertical"]
             ),
             GuideEntry(

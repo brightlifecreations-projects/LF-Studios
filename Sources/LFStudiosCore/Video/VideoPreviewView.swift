@@ -491,7 +491,7 @@ struct VideoStageInteractionLayer: View {
     /// Drag it between 30/70 and 70/30; one ⌘Z per drag.
     private func splitDivider(_ split: VideoWebcamSettings.Split) -> some View {
         let size = viewSize
-        let sideBySide = VideoSplitLayout.isSideBySide(size)
+        let sideBySide = VideoSplitLayout.isSideBySide(split, in: size)
         let position = VideoSplitLayout.dividerPosition(split, in: size)
         let grab: CGFloat = 14
         return ZStack {

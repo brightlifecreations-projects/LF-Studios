@@ -270,12 +270,15 @@ struct VideoEditorToolbar: View {
         Menu {
             ForEach(VideoDemoProject.AspectPreset.allCases) { preset in
                 Button {
-                    model.setAspect(preset)
+                    // Custom… asks again, to change its shape.
+                    if preset == .custom { model.chooseCustomAspect() } else { model.setAspect(preset) }
                 } label: {
+                    // Custom… shows its shape once one is chosen.
+                    let title = model.project.title(of: preset)
                     if preset == model.project.aspectPreset {
-                        Label(L("\(preset.title) — \(preset.detail)"), systemImage: "checkmark")
+                        Label(L("\(title) — \(preset.detail)"), systemImage: "checkmark")
                     } else {
-                        Text(L("\(preset.title) — \(preset.detail)"))
+                        Text(L("\(title) — \(preset.detail)"))
                     }
                 }
             }
@@ -293,7 +296,7 @@ struct VideoEditorToolbar: View {
         } label: {
             HStack(spacing: 6) {
                 Image(systemName: model.project.aspectPreset.symbol)
-                Text(model.project.aspectPreset.title)
+                Text(model.project.aspectTitle)
                     .monospacedDigit()
             }
             .font(.system(size: 12, weight: .semibold))

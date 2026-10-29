@@ -32,7 +32,10 @@ struct VideoNamedStylePreset: Codable, Equatable, Identifiable {
     /// counts when the preset sets it).
     func matches(_ project: VideoDemoProject) -> Bool {
         var current = project.style
-        if !includesAspectRatio { current.aspectPreset = style.aspectPreset }
+        if !includesAspectRatio {
+            current.aspectPreset = style.aspectPreset
+            current.customAspect = style.customAspect
+        }
         // The pointer's visibility is the recording's, never the preset's.
         current.cursor.visible = style.cursor.visible
         // A preset without an auto-zoom choice matches either way.
@@ -46,9 +49,12 @@ struct VideoNamedStylePreset: Codable, Equatable, Identifiable {
 extension VideoDemoProject {
     /// Applies a preset; the aspect ratio only when the preset includes it.
     mutating func apply(preset: VideoNamedStylePreset) {
-        let aspect = aspectPreset
+        let aspect = aspectPreset, custom = customAspect
         apply(style: preset.style)
-        if !preset.includesAspectRatio { aspectPreset = aspect }
+        if !preset.includesAspectRatio {
+            aspectPreset = aspect
+            customAspect = custom
+        }
     }
 }
 
