@@ -143,6 +143,12 @@ struct VideoHandoffInput {
     var axisDuration: Double { recordings.map(\.end).max() ?? 0 }
     var timelineDuration: Double { project.outputDuration(segments: segments) }
     var frameRate: Double { recordings.first?.frameRate ?? 30 }
+    /// Split screen: its layout in pixels (nil: not split).
+    var split: VideoHandoffSplit? {
+        VideoHandoffSplit.make(project: project, recordingSize: recordings.first?.size ?? .zero)
+    }
+    /// The timeline files' frame: the recording's, or a split video's whole.
+    var sequenceSize: CGSize { split?.video ?? recordings.first?.size ?? CGSize(width: 1920, height: 1080) }
 }
 
 extension VideoHandoffInput {

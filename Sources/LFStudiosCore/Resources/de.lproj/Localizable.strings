@@ -68,6 +68,8 @@
 	<string>%@ · Bild %@ × %@</string>
 	<key>%@ · %lld fps</key>
 	<string>%@ · %lld fps</string>
+	<key>%@ · Screen part of a %@ split video</key>
+	<string>%1$@ · Bildschirmteil eines geteilten %2$@-Videos</string>
 	<key>%@ · about %@</key>
 	<string>%@ · etwa %@</string>
 	<key>%@ · on your clipboard — paste it anywhere</key>
@@ -178,6 +180,8 @@
 	<string>Eine Datei, die das Projekt nutzt, wurde verschoben, gelöscht oder liegt auf einem anderen Mac.</string>
 	<key>A file with that name is in the way. Pick another name and export again.</key>
 	<string>Eine Datei mit diesem Namen ist im Weg. Wähle einen anderen Namen und exportiere erneut.</string>
+	<key>A fixed shape (Circle, 1:1, 16:9…) keeps its shape as you resize. With Free, width and height change on their own; hold ⇧ to keep the shape.</key>
+	<string>Eine feste Form (Kreis, 1:1, 16:9 …) bleibt beim Ändern der Größe erhalten. Mit „Frei“ ändern sich Breite und Höhe einzeln; halte ⇧, um die Form zu behalten.</string>
 	<key>A folder with an LF Studios project in it opens that project, exactly as it was saved.</key>
 	<string>Ein Ordner mit einem LF-Studios-Projekt darin öffnet dieses Projekt, genau so, wie es gesichert wurde.</string>
 	<key>A frame appears in the middle of the screen. Choose its shape above the recording bar, like 16:9.</key>
@@ -260,6 +264,8 @@
 	<string>An dieses Format anpassen</string>
 	<key>Adapt to this ratio</key>
 	<string>An dieses Format anpassen</string>
+	<key>Adapt to this ratio turns side by side into one above the other: left becomes top, right becomes bottom.</key>
+	<string>„An dieses Format anpassen“ macht aus nebeneinander übereinander: Links wird oben, rechts wird unten.</string>
 	<key>Adapt to this ratio, next to the aspect ratio menu after you change it.</key>
 	<string>„An dieses Format anpassen“, neben dem Menü für das Seitenverhältnis, nachdem du es geändert hast.</string>
 	<key>Adapted to %@: %@</key>
@@ -552,6 +558,8 @@
 	<string>Aquamarmor</string>
 	<key>Area</key>
 	<string>Bereich</string>
+	<key>Arrange what you'll show inside the frame: it fills the screen's part exactly, without stretching or black bars.</key>
+	<string>Richte im Rahmen ein, was du zeigen willst: Es füllt den Bildschirmteil genau aus, ohne Verzerrung oder schwarze Balken.</string>
 	<key>Arrow</key>
 	<string>Pfeil</string>
 	<key>Arrow head</key>
@@ -632,6 +640,8 @@
 	<string>Zurück zur Originalaufnahme – ⌘Z zum Widerrufen</string>
 	<key>Back to the start</key>
 	<string>Zurück zum Anfang</string>
+	<key>Back to the usual size, in the spot chosen above</key>
+	<string>Zurück zur üblichen Größe, an der oben gewählten Stelle</string>
 	<key>Back · pause · faster</key>
 	<string>Zurück · Pause · Schneller</string>
 	<key>Background</key>
@@ -662,6 +672,12 @@
 	<string>Schalte vor der Aufzeichnung in der Aufzeichnungsleiste „Mikrofon“ ein und prüf, ob sich die Pegelanzeige bewegt, wenn du sprichst.</string>
 	<key>Before recording, turn on Track where I type.</key>
 	<string>Schalte vor der Aufzeichnung „Verfolgen, wo ich tippe“ ein.</string>
+	<key>Before recording: Select size above the recording bar, with Camera on. In the editor: drag the camera on the preview.</key>
+	<string>Vor der Aufnahme: „Größe wählen“ über der Aufzeichnungsleiste, mit eingeschalteter Kamera. Im Editor: Zieh die Kamera in der Vorschau.</string>
+	<key>Before recording: turn on Camera, then Camera shape above the recording bar. In the editor: Camera panel ▸ Camera ▸ Camera shape.</key>
+	<string>Vor der Aufnahme: „Kamera“ einschalten, dann „Kameraform“ über der Aufzeichnungsleiste. Im Editor: Panel „Kamera“ ▸ Kamera ▸ Kameraform.</string>
+	<key>Before recording: turn on Camera, then Layout ▸ Split screen above the recording bar. In the editor: Camera panel ▸ Layout.</key>
+	<string>Vor der Aufnahme: „Kamera“ einschalten, dann Layout ▸ Geteilter Bildschirm über der Aufzeichnungsleiste. Im Editor: Panel „Kamera“ ▸ Layout.</string>
 	<key>Begins scrolling when the recording starts</key>
 	<string>Beginnt zu scrollen, wenn die Aufnahme startet</string>
 	<key>Behavior</key>
@@ -738,6 +754,8 @@
 	<string>Alle nach vorne bringen</string>
 	<key>Bring captions to life: words that pop in, a karaoke fill, a typewriter, and more.</key>
 	<string>Bring Leben in die Untertitel: aufploppende Wörter, Karaoke-Füllung, Schreibmaschine und mehr.</string>
+	<key>Bubble</key>
+	<string>Blase</string>
 	<key>Built-in</key>
 	<string>Integriert</string>
 	<key>Built-in (San Francisco)</key>
@@ -760,6 +778,8 @@
 	<string>Sprechblase: Drück auf die Stelle, auf die sie zeigen soll, zieh die Blase heraus und tippe.</string>
 	<key>Camera</key>
 	<string>Kamera</string>
+	<key>Camera %@</key>
+	<string>Kamera %@</string>
 	<key>Camera Side by Side at Playhead</key>
 	<string>Kamera nebeneinander an der Abspielposition</string>
 	<key>Camera access is off — allow LF Studios in System Settings → Privacy &amp; Security → Camera.</key>
@@ -800,6 +820,8 @@
 	<string>Kameralayouts</string>
 	<key>Camera layouts — drag to move, drag an edge to retime, click to change</key>
 	<string>Kameralayouts – ziehen zum Bewegen, Rand ziehen zum Ändern der Dauer, klicken zum Ändern</string>
+	<key>Camera only</key>
+	<string>Nur Kamera</string>
 	<key>Camera panel ▸ Behavior ▸ Shrink while zoomed.</key>
 	<string>Panel „Kamera“ ▸ Verhalten ▸ Beim Zoomen verkleinern.</string>
 	<key>Camera panel ▸ Camera video ▸ Add camera video….</key>
@@ -820,6 +842,16 @@
 	<string>Panel „Kamera“ ▸ Sprechpausen ▸ Kamera in Sprechpausen ausblenden.</string>
 	<key>Camera preview</key>
 	<string>Kameravorschau</string>
+	<key>Camera shape</key>
+	<string>Kameraform</string>
+	<key>Camera shape: Circle, Rounded rectangle, Square, Landscape, Portrait, 4:3, 3:4, Free, or Cutout (just you, without the background).</key>
+	<string>Kameraform: Kreis, Abgerundetes Rechteck, Quadrat, Querformat, Hochformat, 4:3, 3:4, Frei oder Freigestellt (nur du, ohne Hintergrund).</string>
+	<key>Camera shape: how the camera looks in the video. The preview shows it.</key>
+	<string>Kameraform: wie die Kamera im Video aussieht. Die Vorschau zeigt es.</string>
+	<key>Camera side</key>
+	<string>Kameraseite</string>
+	<key>Camera side, Split size (from 30/70 to 70/30, 50/50 to start), and Gap, with the video's background in between.</key>
+	<string>Kameraseite, Aufteilung (von 30/70 bis 70/30, anfangs 50/50) und Abstand, mit dem Hintergrund des Videos dazwischen.</string>
 	<key>Camera stopped</key>
 	<string>Kamera gestoppt</string>
 	<key>Camera unplugged: the screen recording keeps going without it.</key>
@@ -842,8 +874,10 @@
 	<string>Kameravideo „%1$@“, %2$@</string>
 	<key>Camera video: %@</key>
 	<string>Kameravideo: %@</string>
-	<key>Camera — drag to move it, click for options</key>
-	<string>Kamera – ziehen zum Bewegen, klicken für Optionen</string>
+	<key>Camera — drag to move it, drag its edges to resize it, click for options</key>
+	<string>Kamera – ziehen zum Verschieben, an den Rändern ziehen zum Ändern der Größe, klicken für Optionen</string>
+	<key>Camera: %@%% of width, %@</key>
+	<string>Kamera: %1$@ %% der Breite, %2$@</string>
 	<key>Can't sync — the recording or the camera video has no sound</key>
 	<string>Synchronisieren nicht möglich – die Aufnahme oder das Kameravideo hat keinen Ton</string>
 	<key>Can't sync — the recording or “%@” has no sound</key>
@@ -1050,6 +1084,8 @@
 	<string>Wähle 3, 5 oder 10 Sekunden unter Einstellungen ▸ Bildschirmfotos ▸ Aufnahme mit Timer.</string>
 	<key>Choose Another…</key>
 	<string>Anderes wählen …</string>
+	<key>Choose Camera shape. The camera preview takes that shape right away, so you can frame yourself.</key>
+	<string>Wähle „Kameraform“. Die Kameravorschau nimmt die Form sofort an, so kannst du dich ins Bild setzen.</string>
 	<key>Choose Capture Area in the LF Studios menu to start</key>
 	<string>Wähle „Bereich aufnehmen“ im LF-Studios-Menü, um loszulegen</string>
 	<key>Choose Capture Text, or press its shortcut.</key>
@@ -1062,6 +1098,8 @@
 	<string>Bild auswählen …</string>
 	<key>Choose LF Studios ▸ Check for Updates….</key>
 	<string>Wähle LF Studios ▸ Nach Updates suchen ….</string>
+	<key>Choose Layout ▸ Split screen. The frame becomes the screen's part, like 8:9 for a 16:9 video split in half, and the camera preview fills the camera's part.</key>
+	<string>Wähle Layout ▸ Geteilter Bildschirm. Der Rahmen wird zum Bildschirmteil, etwa 8:9 bei einem halbierten 16:9-Video, und die Kameravorschau füllt den Kamerateil.</string>
 	<key>Choose Location…</key>
 	<string>Ort wählen …</string>
 	<key>Choose MP4.</key>
@@ -1142,6 +1180,8 @@
 	<string>Wähle die Sprache, die du in der Aufnahme sprichst.</string>
 	<key>Choose the camera video to show in the bubble</key>
 	<string>Wähle das Kameravideo für die Blase</string>
+	<key>Choose the camera's shape and ratio before you record, and change it any time in the editor.</key>
+	<string>Wähle Form und Seitenverhältnis der Kamera vor der Aufnahme und ändere sie jederzeit im Editor.</string>
 	<key>Choose the corner (Left or Right) and how long it stays in the same settings section. Hovering keeps it open.</key>
 	<string>Die Ecke (Links oder Rechts) und wie lange sie bleibt, wählst du im selben Einstellungsbereich. Solange der Zeiger darauf ist, bleibt sie offen.</string>
 	<key>Choose the screen recording, the camera video if there is one, and the sound files to add as tracks. Nothing in the folder changes until you save.</key>
@@ -1170,6 +1210,8 @@
 	<string>Kinolook</string>
 	<key>Circle</key>
 	<string>Kreis</string>
+	<key>Circle, Rounded rectangle, Square (1:1), Landscape (16:9), Portrait (9:16), 4:3, 3:4, or Free (any width and height).</key>
+	<string>Kreis, Abgerundetes Rechteck, Quadrat (1:1), Querformat (16:9), Hochformat (9:16), 4:3, 3:4 oder Frei (beliebige Breite und Höhe).</string>
 	<key>Citrus</key>
 	<string>Zitrus</string>
 	<key>Classic</key>
@@ -1228,6 +1270,8 @@
 	<string>Klicke auf „Hintergrund“.</string>
 	<key>Click Blur above the preview, or press B.</key>
 	<string>Klicke über der Vorschau auf „Weichzeichnen“ oder drück B.</string>
+	<key>Click Camera again to turn the camera off completely.</key>
+	<string>Klicke erneut auf „Kamera“, um die Kamera ganz auszuschalten.</string>
 	<key>Click Camera in the recording bar. Choose the camera in ⋯ More recording options.</key>
 	<string>Klicke in der Aufzeichnungsleiste auf „Kamera“. Die Kamera wählst du unter ⋯ Weitere Aufzeichnungsoptionen.</string>
 	<key>Click Cancel, or turn off asking, and it goes in the Recording folder, laid out the same way. Nothing is ever lost.</key>
@@ -1304,6 +1348,8 @@
 	<string>Klicke auf „Aufzeichnen“. Drück die Leertaste, um das Scrollen anzuhalten und fortzusetzen.</string>
 	<key>Click Scroll capture in Home, or choose Scrolling Capture in the LF Studios menu.</key>
 	<string>Klicke im Startfenster auf „Scroll-Aufnahme“ oder wähle „Scroll-Aufnahme“ im LF-Studios-Menü.</string>
+	<key>Click Select size. Handles appear on the camera preview.</key>
+	<string>Klicke auf „Größe wählen“. An der Kameravorschau erscheinen Griffe.</string>
 	<key>Click Show keyboard shortcuts (⌘) in the recording bar, or Settings ▸ Recording ▸ Show keyboard shortcuts.</key>
 	<string>Klicke in der Aufzeichnungsleiste auf „Tastaturkurzbefehle anzeigen“ (⌘), oder Einstellungen ▸ Aufzeichnung ▸ Tastaturkurzbefehle anzeigen.</string>
 	<key>Click Speaker notes in the recording bar, or in the bar while recording.</key>
@@ -1632,6 +1678,8 @@
 	<string>Übergabe erstellen</string>
 	<key>Creative Handoff</key>
 	<string>Kreative Übergabe</string>
+	<key>Creative Handoff's README.txt says where each part goes, in pixels, for your editing app.</key>
+	<string>Die README.txt der Kreativen Übergabe nennt für deine Schnitt-App in Pixeln, wohin jeder Teil gehört.</string>
 	<key>Creative Handoff…</key>
 	<string>Kreative Übergabe …</string>
 	<key>Crimson Ridge</key>
@@ -1884,6 +1932,8 @@
 	<string>Zieh einen Rahmen auf. Zieh darin, um ihn zu verschieben, oder an seinen Rändern, um die Größe zu ändern.</string>
 	<key>Drag a screenshot out of History and drop it where you want it.</key>
 	<string>Zieh ein Bildschirmfoto aus dem Verlauf und leg es dort ab, wo du es haben willst.</string>
+	<key>Drag an edge or a corner to resize it, the middle to move it.</key>
+	<string>Zieh an einem Rand oder einer Ecke, um die Größe zu ändern, in der Mitte, um sie zu verschieben.</string>
 	<key>Drag captions on the preview to place them anywhere</key>
 	<string>Zieh Untertitel in der Vorschau an eine beliebige Stelle</string>
 	<key>Drag captions to any spot on the video, or move one caption on its own.</key>
@@ -1934,6 +1984,8 @@
 	<string>Zieh den Weichzeichner über das, was du verbergen willst.</string>
 	<key>Drag the box on the preview over anything private. Blur follows zooms and stays until its bar ends.</key>
 	<string>Ziehe das Feld in der Vorschau über alles Private. Die Weichzeichnung folgt Zooms und bleibt, bis ihr Balken endet.</string>
+	<key>Drag the camera's edges on the video to change its width and height.</key>
+	<string>Zieh an den Rändern der Kamera im Video, um Breite und Höhe zu ändern.</string>
 	<key>Drag the frame on the preview to aim; drag its corners to zoom in or out.</key>
 	<string>Ziehe den Rahmen in der Vorschau, um auszurichten; ziehe an seinen Ecken, um hinein- oder herauszuzoomen.</string>
 	<key>Drag the frame over what you want to show. To fill it with one app, click Fit a window to the frame… and choose its window.</key>
@@ -1950,6 +2002,8 @@
 	<string>Zieh die Tasten in der Vorschau an eine beliebige Stelle</string>
 	<key>Drag the pin to move it; drag an edge to resize it.</key>
 	<string>Zieh das angeheftete Bild, um es zu bewegen; zieh an einem Rand, um die Größe zu ändern.</string>
+	<key>Drag the preview where you want the camera in the video: what it covers of the recording frame is where the camera goes.</key>
+	<string>Zieh die Vorschau dorthin, wo die Kamera im Video sein soll: Was sie vom Aufnahmerahmen bedeckt, ist der Platz der Kamera.</string>
 	<key>Drag the spot on the preview; drag a corner to resize it. Everything around it dims while its bar on the timeline runs.</key>
 	<string>Ziehe den Fokus in der Vorschau; ziehe an einer Ecke, um die Größe zu ändern. Alles darum herum wird abgedunkelt, solange sein Balken in der Zeitleiste läuft.</string>
 	<key>Drag the track on the timeline to move it; drag an edge to trim it; click it and press S to split it, or ⌫ to delete a piece.</key>
@@ -1958,6 +2012,8 @@
 	<string>Zieh die Ränder des Zooms auf der Zeitleiste, um seine Länge festzulegen.</string>
 	<key>Drag to capture  ·  Hold ⇧ as you let go to adjust first  ·  Space moves  ·  Esc cancels</key>
 	<string>Ziehen zum Aufnehmen  ·  Beim Loslassen ⇧ halten, um erst anzupassen  ·  Leertaste verschiebt  ·  Esc bricht ab</string>
+	<key>Drag to change how much of the video the camera takes</key>
+	<string>Ziehen, um zu ändern, wie viel vom Video die Kamera einnimmt</string>
 	<key>Drag to change where this clip ends</key>
 	<string>Ziehen, um das Ende dieses Clips zu ändern</string>
 	<key>Drag to change where this clip starts</key>
@@ -2510,6 +2566,10 @@
 	<string>GIFs lassen sich überall einbetten – READMEs, Pull-Requests, Dokumentationen. Halte sie kurz – sie werden schnell groß.</string>
 	<key>GIFs get big quickly: keep them short and choose a smaller size.</key>
 	<string>GIFs werden schnell groß: Halte sie kurz und wähle eine kleinere Größe.</string>
+	<key>Gap</key>
+	<string>Abstand</string>
+	<key>Gap between the parts</key>
+	<string>Abstand zwischen den Teilen</string>
 	<key>General</key>
 	<string>Allgemein</string>
 	<key>Get the area exactly right: a magnifier, the size as you drag, and keys to fine-tune.</key>
@@ -2554,6 +2614,8 @@
 	<string>Anleitung</string>
 	<key>H.264 plays everywhere. HEVC makes smaller files, but some browsers and Windows PCs can't play it.</key>
 	<string>H.264 läuft überall. HEVC macht kleinere Dateien, aber manche Browser und Windows-PCs können es nicht abspielen.</string>
+	<key>Handles on the camera preview: drag an edge or corner to resize it, the middle to move it.</key>
+	<string>Griffe an der Kameravorschau: Zieh an einem Rand oder einer Ecke, um die Größe zu ändern, in der Mitte, um sie zu verschieben.</string>
 	<key>Handoff didn't finish</key>
 	<string>Übergabe nicht fertig geworden</string>
 	<key>Handoff ready — show it</key>
@@ -2768,6 +2830,10 @@
 	<string>Prüf im Editor, ob „Video stummschalten“ im Panel „Audio“ aus ist und die Vorschau nicht stummgeschaltet ist (drück M).</string>
 	<key>In the editor, click Add typing zooms.</key>
 	<string>Klicke im Editor auf „Zooms aufs Tippen hinzufügen“.</string>
+	<key>In the editor, drag the divider on the video to change the split. Zooms happen inside the screen's part; captions go over the whole video.</key>
+	<string>Im Editor ziehst du den Trenner im Video, um die Aufteilung zu ändern. Zooms passieren im Bildschirmteil, Untertitel liegen über dem ganzen Video.</string>
+	<key>In the editor, the camera snaps to the corners, the edges and the center. Each drag is one ⌘Z. Reset size in Camera ▸ Position goes back to the usual size.</key>
+	<string>Im Editor rastet die Kamera an den Ecken, Rändern und der Mitte ein. Jedes Ziehen ist ein ⌘Z. „Größe zurücksetzen“ unter Kamera ▸ Position stellt die übliche Größe wieder her.</string>
 	<key>In the export window ▸ Captions.</key>
 	<string>Im Exportfenster ▸ Untertitel.</string>
 	<key>In the export window ▸ Chapters.</key>
@@ -3038,6 +3104,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>LF Studios merkt sich den Bereich, bis es beendet wird. Gibt es noch keinen Bereich, wählst du wie gewohnt einen aus.</string>
 	<key>LF Studios remembers the last shape, size, and place on each screen.</key>
 	<string>LF Studios merkt sich auf jedem Bildschirm die letzte Form, Größe und Position.</string>
+	<key>LF Studios remembers your last shape for the next recording.</key>
+	<string>LF Studios merkt sich deine letzte Form für die nächste Aufnahme.</string>
 	<key>LF Studios remembers your last tool, color, and sizes for next time.</key>
 	<string>LF Studios merkt sich dein letztes Werkzeug, deine Farbe und Größen fürs nächste Mal.</string>
 	<key>LF Studios resizes and centers the window. Click Record.</key>
@@ -3066,6 +3134,10 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>LFSTUDIOS-BIBLIOTHEK</string>
 	<key>Lagoon</key>
 	<string>Lagune</string>
+	<key>Landscape (16:9)</key>
+	<string>Querformat (16:9)</string>
+	<key>Landscape videos (16:9, 4:3, 21:9) split side by side; square and vertical ones (1:1, 4:5, 9:16) one above the other.</key>
+	<string>Querformat-Videos (16:9, 4:3, 21:9) werden nebeneinander geteilt, quadratische und hochformatige (1:1, 4:5, 9:16) übereinander.</string>
 	<key>Language</key>
 	<string>Sprache</string>
 	<key>Languages</key>
@@ -3088,6 +3160,10 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Lavendelglas</string>
 	<key>Layout</key>
 	<string>Layout</string>
+	<key>Layout also has Screen only and Camera only. The screen and the camera are always both recorded, so you can change your mind later.</key>
+	<string>Unter „Layout“ gibt es auch „Nur Bildschirm“ und „Nur Kamera“. Bildschirm und Kamera werden immer beide aufgenommen, du kannst es dir also später anders überlegen.</string>
+	<key>Layout: the camera in a bubble, split screen with the screen, or only one of them. Both are always recorded.</key>
+	<string>Layout: die Kamera in einer Blase, geteilter Bildschirm mit dem Bildschirm oder nur eines von beiden. Beides wird immer aufgenommen.</string>
 	<key>Layouts</key>
 	<string>Layouts</string>
 	<key>Leaves out the background: the video, its rounded corners and shadow, and a cut-out camera sit on transparency, ready to place over anything</key>
@@ -3344,8 +3420,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Bereich beim Ziehen verschieben</string>
 	<key>Move the frame (with ⇧: 10 points)</key>
 	<string>Rahmen verschieben (mit ⇧: 10 Punkte)</string>
-	<key>Move the playhead and click Full camera, Side by side, or Hidden.</key>
-	<string>Bewege die Abspielposition und klicke auf „Kamera im Vollbild“, „Nebeneinander“ oder „Verborgen“.</string>
+	<key>Move the playhead and click Full camera, Side by side, or Hidden (on a split video, also Bubble).</key>
+	<string>Bewege die Abspielposition und klicke auf „Kamera im Vollbild“, „Nebeneinander“ oder „Verborgen“ (bei einem geteilten Video auch „Blase“).</string>
 	<key>Move the playhead and press S to split the clip there.</key>
 	<string>Bewege die Abspielposition und drück S, um den Clip dort zu teilen.</string>
 	<key>Move the playhead inside a clip to split</key>
@@ -3616,6 +3692,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Nicht genug Platz: Die Übergabe braucht etwa %1$@, frei sind dort %2$@.</string>
 	<key>Not for this video</key>
 	<string>Nicht für dieses Video</string>
+	<key>Not in video — position set in the editor</key>
+	<string>Nicht im Video – Position im Editor festlegen</string>
 	<key>Not loaded:</key>
 	<string>Nicht geladen:</string>
 	<key>Not now</key>
@@ -3654,6 +3732,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Ozean</string>
 	<key>Of the frame's width.</key>
 	<string>Anteil an der Bildbreite.</string>
+	<key>Of the video's width</key>
+	<string>Der Breite des Videos</string>
 	<key>Off</key>
 	<string>Aus</string>
 	<key>Off to start with. Needs Accessibility.</key>
@@ -3690,6 +3770,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>In der Zwischenablage · %@</string>
 	<key>Once a day. When there's a new version, LF Studios shows what's new and installs it only when you click Install Update. Your projects, recordings, settings and permissions stay.</key>
 	<string>Einmal am Tag. Gibt es eine neue Version, zeigt LF Studios, was neu ist, und installiert sie erst, wenn du auf „Update installieren“ klickst. Deine Projekte, Aufnahmen, Einstellungen und Berechtigungen bleiben erhalten.</string>
+	<key>One above the other on this video. Drag the divider on the video to change the split; the background (Style) shows in the gap.</key>
+	<string>Bei diesem Video übereinander. Zieh den Trenner im Video, um die Aufteilung zu ändern; im Abstand zeigt sich der Hintergrund (Stil).</string>
 	<key>One word at a time</key>
 	<string>Wort für Wort</string>
 	<key>One ⌘Z undoes it.</key>
@@ -3816,8 +3898,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Oder zieh es in der Vorschau. Bilder bleiben an ihrem Platz, während die Kamera zoomt.</string>
 	<key>Or drag its bar on the timeline.</key>
 	<string>Oder zieh seinen Balken auf der Zeitleiste.</string>
-	<key>Or drag the bubble on the video — it snaps to the nearest spot.</key>
-	<string>Oder ziehe die Blase im Video – sie rastet an der nächsten Position ein.</string>
+	<key>Or drag the camera on the video: it snaps to the corners, edges and center. Drag its edges and corners to resize it.</key>
+	<string>Oder zieh die Kamera im Video: Sie rastet an Ecken, Rändern und der Mitte ein. Zieh an ihren Rändern und Ecken, um die Größe zu ändern.</string>
 	<key>Or hold ⇧ and drag across the timeline to select a part, then click Cut this part.</key>
 	<string>Oder halte ⇧ gedrückt und zieh über die Zeitleiste, um einen Abschnitt auszuwählen. Klicke dann auf „Abschnitt herausschneiden“.</string>
 	<key>Or try the Whisper engine instead.</key>
@@ -4030,8 +4112,12 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Aufploppende Wörter</string>
 	<key>Porcelain</key>
 	<string>Porzellan</string>
+	<key>Portrait (9:16)</key>
+	<string>Hochformat (9:16)</string>
 	<key>Position</key>
 	<string>Position</string>
+	<key>Position and Size: drag the camera on the preview, drag its edges and corners to resize it, or pick one of eight spots.</key>
+	<string>Position und Größe: Zieh die Kamera in der Vorschau, zieh an ihren Rändern und Ecken, um die Größe zu ändern, oder wähle eine von acht Stellen.</string>
 	<key>Positions only: no text, no keys</key>
 	<string>Nur Positionen: kein Text, keine Tasten</string>
 	<key>Possible key</key>
@@ -4196,8 +4282,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Bereich aufzeichnen</string>
 	<key>Record an area, a window, or the whole screen</key>
 	<string>Nimm einen Bereich, ein Fenster oder den ganzen Bildschirm auf</string>
-	<key>Record as usual.</key>
-	<string>Zeichne wie gewohnt auf.</string>
+	<key>Record as usual. The video opens in the editor with the camera there, in that shape and size.</key>
+	<string>Nimm wie gewohnt auf. Das Video öffnet sich im Editor mit der Kamera an dieser Stelle, in dieser Form und Größe.</string>
 	<key>Record camera</key>
 	<string>Kamera aufzeichnen</string>
 	<key>Record everything on one screen.</key>
@@ -4234,6 +4320,10 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Nimm mit „Verfolgen, wo ich tippe“ auf, um aufs Tippen zu zoomen</string>
 	<key>Record your voice.</key>
 	<string>Zeichne deine Stimme auf.</string>
+	<key>Record. The video opens in the editor already split.</key>
+	<string>Nimm auf. Das Video öffnet sich im Editor bereits geteilt.</string>
+	<key>Record. The video opens in the editor with the camera in that shape.</key>
+	<string>Nimm auf. Das Video öffnet sich im Editor mit der Kamera in dieser Form.</string>
 	<key>Recorded at %@. Drag its dot on the timeline to retime it; ripples and Auto Zoom follow.</key>
 	<string>Aufgezeichnet bei %@. Ziehe seinen Punkt in der Zeitleiste, um den Zeitpunkt zu ändern; Wellen und Auto-Zoom folgen.</string>
 	<key>Recorded at the same time as the video? Click Sync by sound: it lines up with the recording and follows your cuts from then on.</key>
@@ -4710,6 +4800,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Position zurücksetzen</string>
 	<key>Reset position puts captions back at the bottom.</key>
 	<string>„Position zurücksetzen“ bringt die Untertitel wieder nach unten.</string>
+	<key>Reset size</key>
+	<string>Größe zurücksetzen</string>
 	<key>Reset to default position</key>
 	<string>Auf Standardposition zurücksetzen</string>
 	<key>Reset to the LF Studios Look</key>
@@ -4718,6 +4810,10 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Größe ändern</string>
 	<key>Resize a window so the recording comes out at an exact size, like 1920 × 1080.</key>
 	<string>Ändere die Größe eines Fensters, damit die Aufnahme genau eine bestimmte Größe hat, etwa 1920 × 1080.</string>
+	<key>Resize and place the camera by dragging, before you record and in the editor.</key>
+	<string>Ändere Größe und Platz der Kamera durch Ziehen, vor der Aufnahme und im Editor.</string>
+	<key>Resize the camera</key>
+	<string>Größe der Kamera ändern</string>
 	<key>Resize the window so the recording is an exact size</key>
 	<string>Ändert die Fenstergröße, damit die Aufnahme genau diese Größe hat</string>
 	<key>Resizes a window of another app to exactly the frame, so it fills the recording</key>
@@ -4812,6 +4908,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Abgerundetes Rechteck</string>
 	<key>Roundness</key>
 	<string>Rundung</string>
+	<key>Roundness, in the same menu: from sharp corners to round.</key>
+	<string>Rundung, im selben Menü: von spitzen Ecken bis rund.</string>
 	<key>Roundness: from sharp corners to a full circle.</key>
 	<string>Rundung: von spitzen Ecken bis zum vollen Kreis.</string>
 	<key>S</key>
@@ -4942,6 +5040,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Berechtigung für Bildschirmaufnahme erforderlich</string>
 	<key>Screen clips, camera, voice, computer sound, music, pictures, captions, and fonts.</key>
 	<string>Bildschirm-Clips, Kamera, Stimme, Systemton, Musik, Bilder, Untertitel und Schriften.</string>
+	<key>Screen only</key>
+	<string>Nur Bildschirm</string>
 	<key>Screen recording</key>
 	<string>Bildschirmaufnahme</string>
 	<key>Screen recording didn't start in time. Try again.</key>
@@ -5050,6 +5150,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Mehrere Objekte auswählen</string>
 	<key>Select several to drag them all at once.</key>
 	<string>Wähle mehrere aus, um sie alle auf einmal zu ziehen.</string>
+	<key>Select size</key>
+	<string>Größe wählen</string>
 	<key>Select which display to record fullscreen</key>
 	<string>Wähle den Bildschirm für die Vollbildaufzeichnung</string>
 	<key>Select words and press ⌫ to cut them from the video — ⌫ again on crossed-out words puts them back. Click a word to jump there; ⌘F finds.</key>
@@ -5150,8 +5252,6 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Schattenfarbe</string>
 	<key>Shape</key>
 	<string>Form</string>
-	<key>Shape: Circle, Rounded, Wide, or Cutout (just you, without the background).</key>
-	<string>Form: Kreis, Abgerundet, Breit oder Freigestellt (nur du, ohne Hintergrund).</string>
 	<key>Shapes: 16:9 for YouTube, 9:16 for Reels, TikTok, and Shorts, 1:1 for square posts, 4:5 for the Instagram feed, 4:3 for slides and iPad, 16:10 for a Mac screen, 21:9 for a cinematic look. Point at one to see what it's for.</key>
 	<string>Formen: 16:9 für YouTube, 9:16 für Reels, TikTok und Shorts, 1:1 für quadratische Posts, 4:5 für den Instagram-Feed, 4:3 für Präsentationen und iPad, 16:10 für einen Mac-Bildschirm, 21:9 für einen Kino-Look. Zeig auf eine Form, um zu sehen, wofür sie gedacht ist.</string>
 	<key>Share</key>
@@ -5280,6 +5380,10 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Zufälligen Hintergrund wählen</string>
 	<key>Side by side</key>
 	<string>Nebeneinander</string>
+	<key>Side by side on this video. Drag the divider on the video to change the split; the background (Style) shows in the gap.</key>
+	<string>Bei diesem Video nebeneinander. Zieh den Trenner im Video, um die Aufteilung zu ändern; im Abstand zeigt sich der Hintergrund (Stil).</string>
+	<key>Side by side uses Split screen's options (Camera panel ▸ Layout): the camera's side, the split size, and the gap. Each change eases in and out.</key>
+	<string>„Nebeneinander“ nutzt die Optionen des geteilten Bildschirms (Panel „Kamera“ ▸ Layout): Kameraseite, Aufteilung und Abstand. Jeder Wechsel wird weich ein- und ausgeblendet.</string>
 	<key>Side rail</key>
 	<string>Seitenleiste</string>
 	<key>Side rail, Full rail, or Minimal. It shows only in the preview, never in the export.</key>
@@ -5298,8 +5402,6 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Silber</string>
 	<key>Size</key>
 	<string>Größe</string>
-	<key>Size, and Position: drag the bubble on the preview, or pick one of eight spots.</key>
-	<string>Größe und Position: Zieh die Blase in der Vorschau oder wähle eine von acht Stellen.</string>
 	<key>Size: Small, Medium, or Large. Frame rate: 10 to 24 fps.</key>
 	<string>Größe: Klein, Mittel oder Groß. Bildrate: 10 bis 24 fps.</string>
 	<key>Skip Setup</key>
@@ -5410,6 +5512,12 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>An der Abspielposition teilen</string>
 	<key>Split at the playhead (S)</key>
 	<string>An der Abspielposition teilen (S)</string>
+	<key>Split screen</key>
+	<string>Geteilter Bildschirm</string>
+	<key>Split screen divider</key>
+	<string>Trenner des geteilten Bildschirms</string>
+	<key>Split size</key>
+	<string>Aufteilung</string>
 	<key>Split the clips at every marker</key>
 	<string>Die Clips an jedem Marker teilen</string>
 	<key>Split the video (S) to make cuts; each can dissolve or dip to black.</key>
@@ -5424,6 +5532,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Form des Fokus</string>
 	<key>Spotlight: darkens everything except the area you draw. Choose Rectangle or Ellipse.</key>
 	<string>Fokus: Dunkelt alles ab außer dem Bereich, den du zeichnest. Wähle „Rechteck“ oder „Ellipse“.</string>
+	<key>Square (1:1)</key>
+	<string>Quadrat (1:1)</string>
 	<key>Square posts</key>
 	<string>Quadratische Posts</string>
 	<key>Square, circle, or straight 45° lines</key>
@@ -5682,8 +5792,6 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Die Blase folgt deinem Gesicht; wo keins gefunden wurde, hält sie den letzten Ausschnitt</string>
 	<key>The bubble now follows your face</key>
 	<string>Die Blase folgt jetzt deinem Gesicht</string>
-	<key>The bubble you see while recording never shows up in the screen recording itself.</key>
-	<string>Die Blase, die du beim Aufzeichnen siehst, erscheint nie in der Bildschirmaufnahme selbst.</string>
 	<key>The bubble's framing follows your face</key>
 	<string>Der Bildausschnitt der Blase folgt deinem Gesicht</string>
 	<key>The camera bubble</key>
@@ -5692,8 +5800,12 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Die Kamera konnte nicht gestartet werden.</string>
 	<key>The camera follows the text cursor as you type.</key>
 	<string>Die Kamera folgt beim Tippen dem Textcursor.</string>
-	<key>The camera is saved separately, so in the editor you can move it, resize it, restyle it, or hide it.</key>
-	<string>Die Kamera wird separat gesichert, im Editor kannst du sie also verschieben, skalieren, neu gestalten oder ausblenden.</string>
+	<key>The camera is always recorded whole: the shape is only a setting, so you can change it later, and Creative Handoff gets the whole camera picture.</key>
+	<string>Die Kamera wird immer ganz aufgenommen: Die Form ist nur eine Einstellung, du kannst sie später ändern, und die Kreative Übergabe bekommt das ganze Kamerabild.</string>
+	<key>The camera is saved separately and whole, so in the editor you can move it, resize it, restyle it, or hide it.</key>
+	<string>Die Kamera wird separat und ganz gesichert, im Editor kannst du sie also verschieben, in der Größe ändern, neu gestalten oder ausblenden.</string>
+	<key>The camera is still in the recording: choose another layout to show it.</key>
+	<string>Die Kamera ist weiterhin in der Aufnahme: Wähle ein anderes Layout, um sie zu zeigen.</string>
 	<key>The camera keeps your cursor in view and glides after it.</key>
 	<string>Die Kamera behält deinen Zeiger im Bild und gleitet ihm nach.</string>
 	<key>The camera stopped. The recording continues without it.</key>
@@ -5742,6 +5854,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Die Übergabe ist fertig</string>
 	<key>The highest quality, and the only one that can keep transparency</key>
 	<string>Die höchste Qualität und die einzige, die Transparenz behalten kann</string>
+	<key>The label under it says how wide the camera is and where it goes in the video. The editor opens with exactly that.</key>
+	<string>Die Beschriftung darunter zeigt, wie breit die Kamera ist und wo sie im Video sitzt. Der Editor öffnet sich genau so.</string>
 	<key>The loupe stays over the text cursor.</key>
 	<string>Die Lupe bleibt über dem Textcursor.</string>
 	<key>The loupe stays over your cursor.</key>
@@ -5794,6 +5908,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Zeiger, Klicks und Tastaturkurzbefehle</string>
 	<key>The preview shows only when Show the preview after capture is on in Settings ▸ General.</key>
 	<string>Die Vorschau erscheint nur, wenn „Nach der Aufnahme die Vorschau zeigen“ unter Einstellungen ▸ Allgemein eingeschaltet ist.</string>
+	<key>The preview you see while recording never shows up in the screen recording itself.</key>
+	<string>Die Vorschau, die du beim Aufnehmen siehst, erscheint nie in der Bildschirmaufnahme selbst.</string>
 	<key>The project file opens everything again, exactly as you left it. LF Studios keeps it up to date as you edit.</key>
 	<string>Die Projektdatei öffnet alles wieder, genau so, wie du es verlassen hast. LF Studios hält sie beim Bearbeiten aktuell.</string>
 	<key>The recording bar</key>
@@ -5818,6 +5934,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Das Sichern-Fenster hat keinen Speicherort zurückgegeben. Bitte versuche es erneut.</string>
 	<key>The save window appears after each recording. Settings ▸ Recording ▸ Saving has Ask where to save after each recording and the Recording folder.</key>
 	<string>Das Fenster zum Sichern erscheint nach jeder Aufzeichnung. Unter Einstellungen ▸ Aufzeichnung ▸ Sichern findest du „Nach jeder Aufzeichnung fragen, wo gesichert wird“ und den „Aufnahmeordner“.</string>
+	<key>The screen and your camera each fill one part of the video: side by side, or one above the other.</key>
+	<string>Bildschirm und Kamera füllen je einen Teil des Videos: nebeneinander oder übereinander.</string>
 	<key>The screen recording</key>
 	<string>Die Bildschirmaufnahme</string>
 	<key>The screenshot has no image data.</key>
@@ -6034,6 +6152,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Um einen Fehler herauszuschneiden, bewege die Abspielposition dorthin, drück S zum Teilen, klicke auf den missglückten Teil und drück ⌫.</string>
 	<key>To drag out any area yourself, click Select area manually above the recording bar.</key>
 	<string>Um selbst einen beliebigen Bereich aufzuziehen, klicke über der Aufzeichnungsleiste auf „Bereich manuell auswählen“.</string>
+	<key>To get the preview out of the way, drag it outside the frame: the label says “Not in video”, and the editor puts the camera in its usual corner.</key>
+	<string>Um die Vorschau aus dem Weg zu räumen, zieh sie aus dem Rahmen: Die Beschriftung zeigt „Nicht im Video“, und der Editor setzt die Kamera in ihre übliche Ecke.</string>
 	<key>To hide one, click it on the timeline and press ⌫.</key>
 	<string>Um einen auszublenden, klicke auf der Zeitleiste darauf und drück ⌫.</string>
 	<key>To remove it again, untick Apply background to this image.</key>
@@ -6152,12 +6272,14 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Auto-Zoom bei Klicks einschalten – von Hand gesetzte Zooms bleiben</string>
 	<key>Turn on Auto-zoom on clicks.</key>
 	<string>Schalte „Auto-Zoom bei Klicks“ ein.</string>
+	<key>Turn on Camera in the recording bar.</key>
+	<string>Schalte in der Aufzeichnungsleiste „Kamera“ ein.</string>
 	<key>Turn on Camera in the recording bar. macOS asks once: click Allow.</key>
 	<string>Schalte in der Aufzeichnungsleiste „Kamera“ ein. macOS fragt einmal: Klicke auf „Erlauben“.</string>
 	<key>Turn on Camera. A bubble with your face appears; it's recorded separately, so you can move and restyle it later.</key>
 	<string>Schalte „Kamera“ ein. Eine Blase mit deinem Gesicht erscheint. Sie wird separat aufgezeichnet, du kannst sie also später verschieben und neu gestalten.</string>
-	<key>Turn on Camera. A round bubble appears; drag it where you like.</key>
-	<string>Schalte „Kamera“ ein. Eine runde Blase erscheint; zieh sie, wohin du willst.</string>
+	<key>Turn on Camera. A preview of your camera appears, in the Camera shape chosen above the bar.</key>
+	<string>Schalte „Kamera“ ein. Eine Vorschau deiner Kamera erscheint, in der Kameraform, die über der Leiste gewählt ist.</string>
 	<key>Turn on Intro card or Outro card.</key>
 	<string>Schalte „Intro-Karte“ oder „Outro-Karte“ ein.</string>
 	<key>Turn on Keep face centered. LF Studios looks for your face once, with progress and Cancel.</key>
@@ -6728,8 +6850,6 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>WLAN</string>
 	<key>Wi-Fi QR found</key>
 	<string>QR-Code mit WLAN gefunden</string>
-	<key>Wide</key>
-	<string>Breit</string>
 	<key>Width</key>
 	<string>Breite</string>
 	<key>Width and height, like 3:2 or 2.39:1.</key>
@@ -6750,6 +6870,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>„Fenster“, „Vollbild“ und „Bereich manuell auswählen“: stattdessen anders aufzeichnen.</string>
 	<key>Windows in front of it don't get in the way: only the window you click is captured.</key>
 	<string>Fenster davor stören nicht: Nur das angeklickte Fenster wird aufgenommen.</string>
+	<key>With Camera on and Layout ▸ Split screen, the frame is the screen's part of the video, and the camera's part shows beside it.</key>
+	<string>Mit eingeschalteter Kamera und Layout ▸ Geteilter Bildschirm ist der Rahmen der Bildschirmteil des Videos, und der Kamerateil wird daneben gezeigt.</string>
 	<key>With a transcript, you can also cut by deleting words: Captions ▸ Edit by text.</key>
 	<string>Mit einem Transkript kannst du auch schneiden, indem du Wörter löschst: Panel „Untertitel“ ▸ Per Text bearbeiten.</string>
 	<key>With more than one screen, click Record next to the one you want.</key>
@@ -6922,10 +7044,18 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>ausrichten oder Größe ändern</string>
 	<key>all shortcuts</key>
 	<string>alle Kurzbefehle</string>
+	<key>bottom</key>
+	<string>unten</string>
+	<key>bottom left</key>
+	<string>unten links</string>
+	<key>bottom right</key>
+	<string>unten rechts</string>
 	<key>captions</key>
 	<string>Untertitel</string>
 	<key>captions burned in</key>
 	<string>eingebrannte Untertitel</string>
+	<key>center</key>
+	<string>Mitte</string>
 	<key>chapters</key>
 	<string>Kapitel</string>
 	<key>cut by editing words</key>
@@ -6942,6 +7072,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>gleichzeitig mit der Aufnahme</string>
 	<key>intro card</key>
 	<string>Intro-Karte</string>
+	<key>left</key>
+	<string>links</string>
 	<key>loops</key>
 	<string>wiederholt sich</string>
 	<key>macOS asks once, the first time you take a screenshot. You can also allow it here first.</key>
@@ -6992,6 +7124,8 @@ Du kannst Apples Kurzbefehle jederzeit unter „Systemeinstellungen“ → „Ta
 	<string>abspielen</string>
 	<key>pointer</key>
 	<string>Zeiger</string>
+	<key>right</key>
+	<string>rechts</string>
 	<key>s</key>
 	<string>s</string>
 	<key>select a part to cut</key>
@@ -7014,6 +7148,12 @@ Du kannst Apples Kurzbefehle jederzeit unter „Systemeinstellungen“ → „Ta
 	<string>das Video</string>
 	<key>this recording</key>
 	<string>diese Aufnahme</string>
+	<key>top</key>
+	<string>oben</string>
+	<key>top left</key>
+	<string>oben links</string>
+	<key>top right</key>
+	<string>oben rechts</string>
 	<key>trim to the playhead</key>
 	<string>bis zur Abspielposition trimmen</string>
 	<key>type</key>

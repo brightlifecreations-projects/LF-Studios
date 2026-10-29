@@ -42,6 +42,9 @@ final class RecordingEngine: NSObject {
     private var metadataRecorder: VideoDemoRecordingMetadataRecorder?
     private var pendingRecordingMetadata: VideoDemoRecordingMetadata?
     private var recordsCamera = false
+    /// The camera's shape and place chosen before recording (Camera shape,
+    /// the preview in the frame), saved with the recording.
+    private var cameraSetup: VideoRecordingCameraSetup?
     private var cameraFinishTask: Task<CameraPipeline.Result?, Never>?
     private var cameraFirstFrameHostTime: Double?
     private var recoveryNote: RecordingRecoveryNote?
@@ -358,6 +361,9 @@ final class RecordingEngine: NSObject {
         CameraCapture.shared.interruptionHandler = { [weak self] interruption in
             self?.cameraInterrupted(interruption)
         }
+        // What the preview shows as recording starts is what the editor opens with.
+        cameraSetup = recordsCamera ? CameraCapture.shared.setup(forRecording: captureRect) : nil
+        CameraCapture.shared.hidePreviewControls()
         microphone?.eventHandler = { [weak self] event in
             self?.microphoneChanged(event)
         }
@@ -1095,6 +1101,10 @@ final class RecordingEngine: NSObject {
             recordingMetadata?.duration = min(recorded, playable)
         }
         Self.attach(camera: camera, screenStart: timeline.origin, to: &recordingMetadata)
+        if recordingMetadata?.webcam != nil, let cameraSetup, cameraSetup != VideoRecordingCameraSetup() {
+            recordingMetadata?.cameraSetup = cameraSetup
+        }
+        cameraSetup = nil
         if let recordingMetadata {
             VideoDemoSidecarStore.save(recordingMetadata, for: url)
         }

@@ -29,6 +29,7 @@ A native macOS menu-bar app. No account, no cloud: your captures stay on your Ma
 
 - Record an area, a window or a display at 60 fps, with system audio, your microphone and your camera. Pause, resume, and recover takes after a crash.
 - Recordings open already edited: zooms on your clicks and a smooth cursor.
+- Show your camera in any shape and size, chosen before you record, or split screen with the screen, side by side or one above the other.
 - Add captions from your narration (made on your Mac), music, title cards, transitions, logos and image overlays.
 - Export MP4 up to 4K at 60 fps, or GIF.
 - Save a whole edit as one `.lfsp` file (LF Studios Project), and share your looks as a `.lfss` file (LF Studios Style). Projects (`.lfstudios`) and presets (`.lfstudiospresets`) from LF Studios 1.8 and earlier, and ShotStyle's, still open.

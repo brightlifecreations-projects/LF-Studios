@@ -371,8 +371,9 @@ final class CaptureEngine {
         RecordingFocus.noteSetupStarted()
         guard let screen = screenUnderMouse() ?? NSScreen.main ?? NSScreen.screens.first else { return }
         let frame = RecordingFrameController(screen: screen)
-        lastCaptureRect = frame.rect
-        showRecordingControls(rect: frame.rect, on: screen, target: .area, frame: frame)
+        frame.split = Settings.recordingCamera ? Settings.recordingCameraSetup.activeSplit : nil
+        lastCaptureRect = frame.recordedRect
+        showRecordingControls(rect: frame.recordedRect, on: screen, target: .area, frame: frame)
     }
 
     /// The frame bar's "Select area manually": drag out any area.
@@ -682,6 +683,9 @@ final class CaptureEngine {
         frame.changeHandler = { [weak self, weak bar, weak frame, weak model] rect, screen in
             guard let self, let bar, let frame, let model else { return }
             self.lastCaptureRect = rect
+            // Split screen: the camera preview fills the camera's part.
+            CameraCapture.shared.splitPart = frame.cameraPartRect.map { ($0, Double(frame.ratio.width) / Double(frame.ratio.height)) }
+            bar.frameVideoSize = frame.rect.size
             bar.updateCaptureRect(rect, on: screen)
             if model.ratio != frame.ratio { model.ratio = frame.ratio }
             if model.pixels != frame.pixels { model.pixels = frame.pixels }
@@ -689,6 +693,14 @@ final class CaptureEngine {
             if model.sizeChoices != choices { model.sizeChoices = choices }
             self.layoutFrameStrip()
         }
+        // Layout ▸ Split screen (or the camera on or off) reshapes the frame.
+        bar.cameraLayoutChanged = { [weak frame] in
+            guard let frame else { return }
+            frame.split = Settings.recordingCamera ? Settings.recordingCameraSetup.activeSplit : nil
+            CameraCapture.shared.splitPart = frame.cameraPartRect.map { ($0, Double(frame.ratio.width) / Double(frame.ratio.height)) }
+        }
+        CameraCapture.shared.splitPart = frame.cameraPartRect.map { ($0, Double(frame.ratio.width) / Double(frame.ratio.height)) }
+        bar.frameVideoSize = frame.rect.size
         frame.cancelHandler = { [weak bar] in bar?.closeControls() }
         frame.recordHandler = { [weak bar] in bar?.record() }
         bar.frameKeyHandler = { [weak frame] event in frame?.handleKey(event) ?? false }
@@ -788,13 +800,15 @@ final class CaptureEngine {
             return
         }
         if let before = window.frame { RecordingWindowSizeMemory.remember(before, for: scWindow.windowID) }
-        let outcome = RecordingWindowSize.fit(window, to: frame.rect, scale: frame.scale)
+        // Split screen: the window fills the screen's part.
+        let target = frame.recordedRect
+        let outcome = RecordingWindowSize.fit(window, to: target, scale: frame.scale)
         if let message = outcome.message(appName: appName) {
             ToastWindow.show(message: message, duration: 4.5, on: frame.screen)
-        } else if let actual = window.frame, abs(actual.minX - frame.rect.minX) > 1 || abs(actual.minY - frame.rect.minY) > 1 {
+        } else if let actual = window.frame, abs(actual.minX - target.minX) > 1 || abs(actual.minY - target.minY) > 1 {
             // macOS kept it from going there (under the menu bar): the
             // frame goes to the window instead.
-            frame.move(to: actual.origin, snapping: false)
+            frame.move(to: CGPoint(x: actual.minX - (target.minX - frame.rect.minX), y: actual.minY - (target.minY - frame.rect.minY)), snapping: false)
         }
         recordingControlsWindow?.makeKeyAndOrderFront(nil)
     }
@@ -2281,6 +2295,15 @@ final class RecordingControlsWindow: NSWindow {
     private let recordButton = RecordingActionButton(symbol: "record.circle", title: L("Record"))
     private let microphonePopup = NSPopUpButton(frame: .zero, pullsDown: false)
     private let microphoneContainer = NSView()
+    /// Above the bar while the camera is on: Camera shape, Select size.
+    private let cameraContainer = NSView()
+    private let cameraShapeButton = NSPopUpButton(frame: .zero, pullsDown: true)
+    private let selectSizeButton = NSButton(title: "", target: nil, action: nil)
+    private let cameraLayoutButton = NSPopUpButton(frame: .zero, pullsDown: true)
+    /// Layout or the camera changed (the frame bar reshapes for Split screen).
+    var cameraLayoutChanged: (() -> Void)?
+    /// The frame bar's whole video (with Split screen, more than what's recorded).
+    var frameVideoSize: CGSize? { didSet { if frameVideoSize != oldValue { rebuildCameraLayoutMenu() } } }
     private let microphoneLevelMeter = RecordingAudioLevelMeter()
     private var microphoneMonitorSession: AVCaptureSession?
     private var microphoneMonitorOutput: AVCaptureAudioDataOutput?
@@ -2298,7 +2321,7 @@ final class RecordingControlsWindow: NSWindow {
         self.barWidth = Self.panelWidth + Self.qualityExtra
 
         super.init(
-            contentRect: NSRect(x: 0, y: 0, width: barWidth + Self.chromeInset * 2, height: Self.windowHeight(upperRow: Settings.recordingMicrophone || target == .window)),
+            contentRect: NSRect(x: 0, y: 0, width: barWidth + Self.chromeInset * 2, height: Self.windowHeight(upperRow: Settings.recordingMicrophone || target == .window || Settings.recordingCamera)),
             styleMask: [.borderless],
             backing: .buffered,
             defer: false
@@ -2375,6 +2398,7 @@ final class RecordingControlsWindow: NSWindow {
             if let message = result.message {
                 Settings.recordingCamera = false
                 self.cameraButton.isOn = false
+                self.updateCameraRow()
                 // Denied and "no camera" need different fixes.
                 ToastWindow.show(message: message, duration: 3.5, on: self.targetScreen)
             } else if self.didClose, !self.keepsCameraAfterClose {
@@ -2388,6 +2412,7 @@ final class RecordingControlsWindow: NSWindow {
         CameraCapture.shared.stop()
         Settings.recordingCamera = false
         cameraButton.isOn = false
+        updateCameraRow()
         ToastWindow.show(message: L("Camera disconnected."), on: targetScreen)
     }
 
@@ -2418,6 +2443,7 @@ final class RecordingControlsWindow: NSWindow {
         microphoneContainer.addSubview(microphonePopup)
 
         if target == .window { buildWindowSizeRow(in: root) }
+        buildCameraRow(in: root)
 
         let bar = RecordingRoundedRectView(
             frame: NSRect(x: Self.chromeInset, y: Self.chromeInset, width: barWidth, height: Self.barHeight),
@@ -2716,7 +2742,7 @@ final class RecordingControlsWindow: NSWindow {
 
     /// The row above the bar: the microphone menu, and Window size in
     /// Window mode.
-    private var showsUpperRow: Bool { Settings.recordingMicrophone || target == .window }
+    private var showsUpperRow: Bool { Settings.recordingMicrophone || target == .window || Settings.recordingCamera }
 
     @discardableResult
     private func selectItem(in popup: NSPopUpButton, representedObject: String) -> Bool {
@@ -2792,6 +2818,7 @@ final class RecordingControlsWindow: NSWindow {
     func updateCaptureRect(_ rect: CGRect, on screen: NSScreen) {
         captureRect = rect
         targetScreen = screen
+        CameraCapture.shared.updateFrame(rect, on: screen)
         let pixels = outputPixelSize
         let pixelWidth = String(pixels.width), pixelHeight = String(pixels.height)
         let pointWidth = String(Int(rect.width)), pointHeight = String(Int(rect.height))
@@ -2913,6 +2940,7 @@ final class RecordingControlsWindow: NSWindow {
             } else {
                 CameraCapture.shared.stop()
             }
+            updateCameraRow()
         case notesButton:
             if sender.isOn { SpeakerNotes.shared.show() } else { SpeakerNotes.shared.hide() }
         case keysButton:
@@ -2935,6 +2963,226 @@ final class RecordingControlsWindow: NSWindow {
     }
 
     // MARK: Window size
+
+    // MARK: Camera shape and size
+
+    private func buildCameraRow(in root: NSView) {
+        let x = Self.chromeInset + 518
+        cameraContainer.frame = NSRect(x: x, y: Self.chromeInset + 62, width: barWidth + Self.chromeInset - x, height: 30)
+        cameraContainer.wantsLayer = true
+        cameraContainer.layer?.cornerRadius = 12
+        cameraContainer.layer?.cornerCurve = .continuous
+        cameraContainer.layer?.backgroundColor = NSColor(calibratedWhite: 0.105, alpha: 0.98).cgColor
+        cameraContainer.layer?.borderWidth = 1
+        cameraContainer.layer?.borderColor = NSColor.white.withAlphaComponent(0.13).cgColor
+        root.addSubview(cameraContainer)
+
+        cameraShapeButton.frame = NSRect(x: 6, y: 2, width: 118, height: 26)
+        cameraShapeButton.bezelStyle = .shadowlessSquare
+        cameraShapeButton.isBordered = false
+        cameraShapeButton.controlSize = .small
+        cameraShapeButton.font = .systemFont(ofSize: 11.5, weight: .semibold)
+        cameraShapeButton.contentTintColor = NSColor.white.withAlphaComponent(0.9)
+        cameraShapeButton.toolTip = L("Camera shape: how the camera looks in the video. The preview shows it.")
+        cameraShapeButton.setAccessibilityLabel(L("Camera shape"))
+        cameraContainer.addSubview(cameraShapeButton)
+
+        selectSizeButton.frame = NSRect(x: 124, y: 2, width: 96, height: 26)
+        selectSizeButton.bezelStyle = .shadowlessSquare
+        selectSizeButton.isBordered = false
+        selectSizeButton.setButtonType(.pushOnPushOff)
+        selectSizeButton.controlSize = .small
+        selectSizeButton.font = .systemFont(ofSize: 11.5, weight: .semibold)
+        selectSizeButton.contentTintColor = NSColor.white.withAlphaComponent(0.9)
+        selectSizeButton.image = NSImage(systemSymbolName: "arrow.up.left.and.arrow.down.right", accessibilityDescription: nil)
+        selectSizeButton.imagePosition = .imageLeading
+        selectSizeButton.title = L("Select size")
+        selectSizeButton.toolTip = L("Handles on the camera preview: drag an edge or corner to resize it, the middle to move it.")
+        selectSizeButton.target = self
+        selectSizeButton.action = #selector(selectSizeToggled)
+        cameraContainer.addSubview(selectSizeButton)
+
+        cameraLayoutButton.frame = NSRect(x: 220, y: 2, width: cameraContainer.frame.width - 226, height: 26)
+        cameraLayoutButton.bezelStyle = .shadowlessSquare
+        cameraLayoutButton.isBordered = false
+        cameraLayoutButton.controlSize = .small
+        cameraLayoutButton.font = .systemFont(ofSize: 11.5, weight: .semibold)
+        cameraLayoutButton.contentTintColor = NSColor.white.withAlphaComponent(0.9)
+        cameraLayoutButton.toolTip = L("Layout: the camera in a bubble, split screen with the screen, or only one of them. Both are always recorded.")
+        cameraLayoutButton.setAccessibilityLabel(L("Layout"))
+        cameraContainer.addSubview(cameraLayoutButton)
+        updateCameraRow()
+    }
+
+    private func rebuildCameraLayoutMenu() {
+        let setup = Settings.recordingCameraSetup
+        let menu = NSMenu()
+        menu.autoenablesItems = false
+        let title = NSMenuItem(title: setup.effectiveLayout.title, action: nil, keyEquivalent: "")
+        title.image = NSImage(systemSymbolName: setup.effectiveLayout.symbol, accessibilityDescription: nil)
+        menu.addItem(title)
+        for choice in VideoRecordingCameraSetup.LayoutChoice.allCases {
+            let item = NSMenuItem(title: choice.title, action: #selector(cameraLayoutChosen(_:)), keyEquivalent: "")
+            item.target = self
+            item.representedObject = choice.rawValue
+            item.image = NSImage(systemSymbolName: choice.symbol, accessibilityDescription: nil)
+            item.state = choice == setup.effectiveLayout ? .on : .off
+            menu.addItem(item)
+        }
+        if let split = setup.activeSplit {
+            let sideBySide = VideoSplitLayout.isSideBySide(captureVideoSize)
+            menu.addItem(.separator())
+            let sideHeader = NSMenuItem(title: L("Camera side"), action: nil, keyEquivalent: "")
+            sideHeader.isEnabled = false
+            menu.addItem(sideHeader)
+            for side in VideoWebcamSettings.Split.Side.allCases {
+                let item = NSMenuItem(title: side.title(sideBySide: sideBySide), action: #selector(cameraSideChosen(_:)), keyEquivalent: "")
+                item.target = self
+                item.representedObject = side.rawValue
+                item.state = side == split.cameraSide ? .on : .off
+                item.indentationLevel = 1
+                menu.addItem(item)
+            }
+            let sizeHeader = NSMenuItem(title: L("Split size"), action: nil, keyEquivalent: "")
+            sizeHeader.isEnabled = false
+            menu.addItem(sizeHeader)
+            for share in [0.3, 0.4, 0.5, 0.6, 0.7] {
+                let item = NSMenuItem(title: L("Camera \(VideoEditorFormat.percent(share))"), action: #selector(cameraShareChosen(_:)), keyEquivalent: "")
+                item.target = self
+                item.representedObject = share
+                item.state = abs(split.keptShare - share) < 0.001 ? .on : .off
+                item.indentationLevel = 1
+                menu.addItem(item)
+            }
+            let gap = NSMenuItem(title: L("Gap between the parts"), action: #selector(cameraGapToggled), keyEquivalent: "")
+            gap.target = self
+            gap.state = split.keptGap > 0.0001 ? .on : .off
+            menu.addItem(gap)
+        }
+        cameraLayoutButton.menu = menu
+    }
+
+    /// The video's shape: the frame (the whole video when it's split), or
+    /// what's recorded.
+    private var captureVideoSize: CGSize {
+        frameVideoSize ?? CGSize(width: max(captureRect.width, 1), height: max(captureRect.height, 1))
+    }
+
+    private func changeCameraSetup(_ change: (inout VideoRecordingCameraSetup) -> Void) {
+        var setup = Settings.recordingCameraSetup
+        change(&setup)
+        Settings.recordingCameraSetup = setup
+        CameraCapture.shared.apply(setup)
+        rebuildCameraLayoutMenu()
+        updateSelectSize()
+        cameraLayoutChanged?()
+    }
+
+    @objc private func cameraLayoutChosen(_ sender: NSMenuItem) {
+        guard let raw = sender.representedObject as? String, let choice = VideoRecordingCameraSetup.LayoutChoice(rawValue: raw) else { return }
+        changeCameraSetup { $0.layout = choice == .bubble ? nil : choice }
+    }
+
+    @objc private func cameraSideChosen(_ sender: NSMenuItem) {
+        guard let raw = sender.representedObject as? String, let side = VideoWebcamSettings.Split.Side(rawValue: raw) else { return }
+        changeCameraSetup { $0.split = $0.activeSplit; $0.split?.cameraSide = side }
+    }
+
+    @objc private func cameraShareChosen(_ sender: NSMenuItem) {
+        guard let share = sender.representedObject as? Double else { return }
+        changeCameraSetup { $0.split = $0.activeSplit; $0.split?.cameraShare = share }
+    }
+
+    @objc private func cameraGapToggled() {
+        changeCameraSetup { setup in
+            var split = setup.activeSplit ?? VideoWebcamSettings.Split()
+            split.gap = split.keptGap > 0.0001 ? 0 : 0.02
+            setup.split = split
+        }
+    }
+
+    /// Select size is for the bubble (a split's camera fills its part).
+    private func updateSelectSize() {
+        let bubble = Settings.recordingCameraSetup.effectiveLayout == .bubble
+        selectSizeButton.isEnabled = bubble
+        if !bubble, selectSizeButton.state == .on {
+            selectSizeButton.state = .off
+            CameraCapture.shared.showsSizeHandles = false
+        }
+    }
+
+    /// Shown with the camera on; its menu built from what's chosen now.
+    private func updateCameraRow() {
+        let on = Settings.recordingCamera
+        cameraContainer.isHidden = !on
+        if !on {
+            selectSizeButton.state = .off
+            CameraCapture.shared.showsSizeHandles = false
+        }
+        rebuildCameraShapeMenu()
+        rebuildCameraLayoutMenu()
+        updateSelectSize()
+        resizeForMicrophoneState()
+        cameraLayoutChanged?()
+    }
+
+    private func rebuildCameraShapeMenu() {
+        let setup = Settings.recordingCameraSetup
+        let menu = NSMenu()
+        menu.autoenablesItems = false
+        // A pull-down's first item is its title.
+        let title = NSMenuItem(title: setup.shape.title, action: nil, keyEquivalent: "")
+        title.image = NSImage(systemSymbolName: setup.shape.symbol, accessibilityDescription: nil)
+        menu.addItem(title)
+        for shape in VideoWebcamSettings.Shape.recordable {
+            let item = NSMenuItem(title: shape.title, action: #selector(cameraShapeChosen(_:)), keyEquivalent: "")
+            item.target = self
+            item.representedObject = shape.rawValue
+            item.image = NSImage(systemSymbolName: shape.symbol, accessibilityDescription: nil)
+            item.state = shape == setup.shape ? .on : .off
+            menu.addItem(item)
+        }
+        if setup.shape.hasCorners {
+            menu.addItem(.separator())
+            let header = NSMenuItem(title: L("Roundness"), action: nil, keyEquivalent: "")
+            header.isEnabled = false
+            menu.addItem(header)
+            let slider = NSSlider(value: setup.roundness ?? setup.shape.roundness, minValue: 0, maxValue: 1, target: self, action: #selector(cameraRoundnessChanged(_:)))
+            slider.frame = NSRect(x: 18, y: 4, width: 170, height: 20)
+            slider.controlSize = .small
+            slider.isContinuous = true
+            slider.setAccessibilityLabel(L("Roundness"))
+            let holder = NSView(frame: NSRect(x: 0, y: 0, width: 206, height: 28))
+            holder.addSubview(slider)
+            let item = NSMenuItem()
+            item.view = holder
+            menu.addItem(item)
+        }
+        cameraShapeButton.menu = menu
+    }
+
+    @objc private func cameraShapeChosen(_ sender: NSMenuItem) {
+        guard let raw = sender.representedObject as? String, let shape = VideoWebcamSettings.Shape(rawValue: raw) else { return }
+        var setup = Settings.recordingCameraSetup
+        if shape == .free, setup.shape != .free { setup.freeAspect = Double(setup.webcam.effectiveAspect) }
+        setup.shape = shape
+        setup.roundness = nil
+        Settings.recordingCameraSetup = setup
+        CameraCapture.shared.apply(setup)
+        if let current = CameraCapture.shared.setup(forRecording: captureRect) { Settings.recordingCameraSetup = current }
+        rebuildCameraShapeMenu()
+    }
+
+    @objc private func cameraRoundnessChanged(_ sender: NSSlider) {
+        var setup = Settings.recordingCameraSetup
+        setup.roundness = sender.doubleValue
+        Settings.recordingCameraSetup = setup
+        CameraCapture.shared.apply(setup)
+    }
+
+    @objc private func selectSizeToggled() {
+        CameraCapture.shared.showsSizeHandles = selectSizeButton.state == .on
+    }
 
     private func buildWindowSizeRow(in root: NSView) {
         let container = NSView(frame: NSRect(x: Self.chromeInset, y: Self.chromeInset + 62, width: 150, height: 30))

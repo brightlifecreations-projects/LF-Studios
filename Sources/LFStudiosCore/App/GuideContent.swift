@@ -15,7 +15,7 @@ import Foundation
 @MainActor
 enum GuideContent {
     /// Pages from these versions get a New badge and fill What's new.
-    nonisolated static let newVersions: [String] = ["1.9.0", "1.8.0", "1.7.0"]
+    nonisolated static let newVersions: [String] = ["1.10.0", "1.9.0", "1.8.0", "1.7.0"]
 
     static func chapters() -> [GuideChapter] {
         let features = featureCategories()
@@ -900,9 +900,10 @@ enum GuideContent {
                     L("The bars move out of the frame's way. Drag them anywhere by the handle on the left."),
                     L("LF Studios remembers the last shape, size, and place on each screen."),
                     L("Fit a window to the frame needs Accessibility. LF Studios asks for it the first time."),
+                    L("With Camera on and Layout ▸ Split screen, the frame is the screen's part of the video, and the camera's part shows beside it."),
                 ],
                 since: "1.8.0",
-                related: ["howto-frame", "rec-area", "permission-accessibility"]
+                related: ["howto-frame", "rec-area", "permission-accessibility", "camera-split"]
             ),
             GuideEntry(
                 id: "rec-window", symbol: "macwindow.badge.plus", title: L("Record a window"),
@@ -975,15 +976,19 @@ enum GuideContent {
                 summary: L("Show yourself in a bubble while you record."),
                 location: L("Click Camera in the recording bar. Choose the camera in ⋯ More recording options."),
                 steps: [
-                    L("Turn on Camera. A round bubble appears; drag it where you like."),
-                    L("Record as usual."),
+                    L("Turn on Camera. A preview of your camera appears, in the Camera shape chosen above the bar."),
+                    L("Drag the preview where you want the camera in the video: what it covers of the recording frame is where the camera goes."),
+                    L("Record as usual. The video opens in the editor with the camera there, in that shape and size."),
                 ],
                 tips: [
-                    L("The camera is saved separately, so in the editor you can move it, resize it, restyle it, or hide it."),
-                    L("The bubble you see while recording never shows up in the screen recording itself."),
+                    L("To get the preview out of the way, drag it outside the frame: the label says “Not in video”, and the editor puts the camera in its usual corner."),
+                    L("The camera is saved separately and whole, so in the editor you can move it, resize it, restyle it, or hide it."),
+                    L("The preview you see while recording never shows up in the screen recording itself."),
+                    L("Click Camera again to turn the camera off completely."),
                 ],
                 showMe: .settings(.recording),
-                related: ["camera-bubble", "permission-camera"]
+                since: "1.10.0",
+                related: ["camera-shape", "camera-bubble", "permission-camera"]
             ),
             GuideEntry(
                 id: "rec-cursor", symbol: "cursorarrow", title: L("Cursor & editable cursor"),
@@ -1516,13 +1521,74 @@ enum GuideContent {
                 summary: L("Your face in a bubble over the video. Move it, resize it, and choose its shape."),
                 location: L("Camera panel ▸ Camera, Position, and Behavior. Click the bubble on the preview to open it."),
                 points: [
-                    L("Shape: Circle, Rounded, Wide, or Cutout (just you, without the background)."),
-                    L("Size, and Position: drag the bubble on the preview, or pick one of eight spots."),
+                    L("Camera shape: Circle, Rounded rectangle, Square, Landscape, Portrait, 4:3, 3:4, Free, or Cutout (just you, without the background)."),
+                    L("Position and Size: drag the camera on the preview, drag its edges and corners to resize it, or pick one of eight spots."),
                     L("Mirror flips it like a mirror."),
                 ],
                 tips: [needsCamera],
                 showMe: .editor(.camera),
                 related: ["rec-camera"]
+            ),
+            GuideEntry(
+                id: "camera-shape", symbol: "rectangle.on.rectangle", title: L("Camera shape"),
+                summary: L("Choose the camera's shape and ratio before you record, and change it any time in the editor."),
+                location: L("Before recording: turn on Camera, then Camera shape above the recording bar. In the editor: Camera panel ▸ Camera ▸ Camera shape."),
+                points: [
+                    L("Circle, Rounded rectangle, Square (1:1), Landscape (16:9), Portrait (9:16), 4:3, 3:4, or Free (any width and height)."),
+                    L("Roundness, in the same menu: from sharp corners to round."),
+                ],
+                steps: [
+                    L("Turn on Camera in the recording bar."),
+                    L("Choose Camera shape. The camera preview takes that shape right away, so you can frame yourself."),
+                    L("Record. The video opens in the editor with the camera in that shape."),
+                ],
+                tips: [
+                    L("The camera is always recorded whole: the shape is only a setting, so you can change it later, and Creative Handoff gets the whole camera picture."),
+                    L("LF Studios remembers your last shape for the next recording."),
+                ],
+                showMe: .editor(.camera),
+                since: "1.10.0",
+                related: ["rec-camera", "camera-bubble", "camera-look"]
+            ),
+            GuideEntry(
+                id: "camera-size", symbol: "arrow.up.left.and.arrow.down.right", title: L("Select size"),
+                summary: L("Resize and place the camera by dragging, before you record and in the editor."),
+                location: L("Before recording: Select size above the recording bar, with Camera on. In the editor: drag the camera on the preview."),
+                steps: [
+                    L("Click Select size. Handles appear on the camera preview."),
+                    L("Drag an edge or a corner to resize it, the middle to move it."),
+                    L("The label under it says how wide the camera is and where it goes in the video. The editor opens with exactly that."),
+                ],
+                tips: [
+                    L("A fixed shape (Circle, 1:1, 16:9…) keeps its shape as you resize. With Free, width and height change on their own; hold ⇧ to keep the shape."),
+                    L("In the editor, the camera snaps to the corners, the edges and the center. Each drag is one ⌘Z. Reset size in Camera ▸ Position goes back to the usual size."),
+                ],
+                showMe: .editor(.camera),
+                since: "1.10.0",
+                related: ["camera-shape", "rec-camera", "camera-bubble"]
+            ),
+            GuideEntry(
+                id: "camera-split", symbol: "rectangle.split.2x1", title: L("Split screen"),
+                summary: L("The screen and your camera each fill one part of the video: side by side, or one above the other."),
+                location: L("Before recording: turn on Camera, then Layout ▸ Split screen above the recording bar. In the editor: Camera panel ▸ Layout."),
+                points: [
+                    L("Landscape videos (16:9, 4:3, 21:9) split side by side; square and vertical ones (1:1, 4:5, 9:16) one above the other."),
+                    L("Camera side, Split size (from 30/70 to 70/30, 50/50 to start), and Gap, with the video's background in between."),
+                ],
+                steps: [
+                    L("Choose Layout ▸ Split screen. The frame becomes the screen's part, like 8:9 for a 16:9 video split in half, and the camera preview fills the camera's part."),
+                    L("Arrange what you'll show inside the frame: it fills the screen's part exactly, without stretching or black bars."),
+                    L("Record. The video opens in the editor already split."),
+                ],
+                tips: [
+                    L("In the editor, drag the divider on the video to change the split. Zooms happen inside the screen's part; captions go over the whole video."),
+                    L("Adapt to this ratio turns side by side into one above the other: left becomes top, right becomes bottom."),
+                    L("Layout also has Screen only and Camera only. The screen and the camera are always both recorded, so you can change your mind later."),
+                    L("Creative Handoff's README.txt says where each part goes, in pixels, for your editing app."),
+                ],
+                showMe: .editor(.camera),
+                since: "1.10.0",
+                related: ["camera-layouts", "rec-frame", "camera-shape"]
             ),
             GuideEntry(
                 id: "camera-behind", symbol: "person.and.background.dotted", title: L("Blur or remove your background"),
@@ -1543,15 +1609,20 @@ enum GuideContent {
                 showMe: .editor(.camera)
             ),
             GuideEntry(
-                id: "camera-layouts", symbol: "rectangle.split.2x1", title: L("Camera layouts"),
+                id: "camera-layouts", symbol: "rectangle.on.rectangle.angled", title: L("Camera layouts"),
                 summary: L("Show the camera full screen, side by side with the screen, or hide it, for any part of the video."),
                 location: L("Camera panel ▸ Layouts."),
                 steps: [
-                    L("Move the playhead and click Full camera, Side by side, or Hidden."),
+                    L("Move the playhead and click Full camera, Side by side, or Hidden (on a split video, also Bubble)."),
                     L("A block appears on the Camera lane: drag it to move it, drag its edges to change its length."),
                 ],
-                tips: [L("Full camera for intro & outro starts and ends the video with you full screen.")],
-                showMe: .editor(.camera)
+                tips: [
+                    L("Full camera for intro & outro starts and ends the video with you full screen."),
+                    L("Side by side uses Split screen's options (Camera panel ▸ Layout): the camera's side, the split size, and the gap. Each change eases in and out."),
+                ],
+                showMe: .editor(.camera),
+                since: "1.10.0",
+                related: ["camera-split"]
             ),
             GuideEntry(
                 id: "camera-face", symbol: "face.dashed", title: L("Keep face centered"),

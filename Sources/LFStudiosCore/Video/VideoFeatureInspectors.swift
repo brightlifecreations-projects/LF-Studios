@@ -716,7 +716,7 @@ struct VideoCameraInspector: View {
                 VideoInspectorSection(L("Camera")) {
                     VideoToggleRow(title: L("Show camera"), isOn: binding(\.visible))
                     // A shape is also a corner preset: picking one resets the roundness.
-                    VideoSegmented(options: VideoWebcamSettings.Shape.allCases.map { ($0, $0.title) }, selection: Binding(get: { model.project.webcam.shape }, set: { shape in model.setStyle { $0.webcam.shape = shape; $0.webcam.roundness = nil } }))
+                    VideoCameraShapeMenu(model: model)
                     HStack(spacing: 10) {
                         Text(L("Behind you"))
                             .font(.system(size: 12, weight: .medium))
@@ -731,25 +731,64 @@ struct VideoCameraInspector: View {
                             .foregroundStyle(VideoEditorTheme.textTertiary)
                             .fixedSize(horizontal: false, vertical: true)
                     }
-                    VideoSliderRow(
-                        title: L("Size"),
-                        value: binding(\.size, coalesce: "webcam-size"),
-                        range: VideoWebcamSettings.sizeRange,
-                        defaultValue: VideoWebcamSettings().size,
-                        format: { VideoEditorFormat.percent($0) },
-                        onEditingEnded: { model.endGesture() }
-                    )
+                    if model.project.webcam.placement != nil {
+                        // Placed by hand: its width, as a share of the video's.
+                        VideoSliderRow(
+                            title: L("Size"),
+                            value: Binding(get: { model.project.webcam.placement?.width ?? 0.25 }, set: { value in model.setStyle(coalesce: "webcam-size") { $0.webcam.placement?.width = value } }),
+                            range: 0.08...0.9,
+                            defaultValue: 0.25,
+                            format: { VideoEditorFormat.percent($0) },
+                            detail: L("Of the video's width"),
+                            onEditingEnded: { model.endGesture() }
+                        )
+                    } else {
+                        VideoSliderRow(
+                            title: L("Size"),
+                            value: binding(\.size, coalesce: "webcam-size"),
+                            range: VideoWebcamSettings.sizeRange,
+                            defaultValue: VideoWebcamSettings().size,
+                            format: { VideoEditorFormat.percent($0) },
+                            onEditingEnded: { model.endGesture() }
+                        )
+                    }
                 }
                 .disabled(false)
+
+                VideoCameraLayoutSection(model: model)
 
                 cameraLook
 
                 VideoInspectorSection(L("Position")) {
-                    VideoAnchorPicker(selection: binding(\.anchor))
-                    Text(L("Or drag the bubble on the video — it snaps to the nearest spot."))
+                    // A spot puts a camera placed by hand back on the grid, as big.
+                    VideoAnchorPicker(selection: Binding(get: { model.project.webcam.anchor }, set: { anchor in
+                        let canvas = model.plan.outputCanvasSize
+                        model.setStyle {
+                            let rect = VideoFrameRenderer.webcamRect($0.webcam, outputSize: canvas)
+                            if $0.webcam.placement != nil {
+                                $0.webcam.placement = nil
+                                $0.webcam.size = min(max(Double(rect.height / max(min(canvas.width, canvas.height), 1)), VideoWebcamSettings.sizeRange.lowerBound), VideoWebcamSettings.sizeRange.upperBound)
+                            }
+                            $0.webcam.anchor = anchor
+                        }
+                    }))
+                    Text(L("Or drag the camera on the video: it snaps to the corners, edges and center. Drag its edges and corners to resize it."))
                         .font(.system(size: 10.5))
                         .foregroundStyle(VideoEditorTheme.textTertiary)
                         .fixedSize(horizontal: false, vertical: true)
+                    if model.project.webcam.placement != nil || abs(model.project.webcam.size - VideoWebcamSettings().size) > 0.0001 {
+                        Button {
+                            model.setStyle {
+                                $0.webcam.placement = nil
+                                $0.webcam.size = VideoWebcamSettings().size
+                            }
+                        } label: {
+                            Label(L("Reset size"), systemImage: "arrow.uturn.backward")
+                                .frame(maxWidth: .infinity)
+                        }
+                        .buttonStyle(VideoSecondaryButtonStyle())
+                        .help(L("Back to the usual size, in the spot chosen above"))
+                    }
                 }
                 .disabled(!model.project.webcam.visible)
 
@@ -770,7 +809,8 @@ struct VideoCameraInspector: View {
                         .foregroundStyle(VideoEditorTheme.textTertiary)
                         .fixedSize(horizontal: false, vertical: true)
                     HStack(spacing: 8) {
-                        ForEach(VideoCameraLayoutRegion.Layout.allCases) { layout in
+                        // Bubble only means something on a split or camera-only video.
+                        ForEach(VideoCameraLayoutRegion.Layout.allCases.filter { $0 != .bubble || model.project.webcam.effectiveLayout != .bubble }) { layout in
                             Button {
                                 model.addCameraLayout(layout)
                             } label: {
@@ -909,5 +949,101 @@ struct VideoAnchorPicker: View {
         .frame(width: size.width, height: size.height)
         .frame(maxWidth: .infinity)
         .animation(.spring(response: 0.25, dampingFraction: 0.8), value: selection)
+    }
+}
+
+/// Camera shape: the outline and ratio, Free for any (VideoFeatures.swift).
+struct VideoCameraShapeMenu: View {
+    @ObservedObject var model: VideoEditorModel
+
+    var body: some View {
+        let webcam = model.project.webcam
+        HStack(spacing: 10) {
+            Text(L("Camera shape"))
+                .font(.system(size: 12, weight: .medium))
+                .foregroundStyle(VideoEditorTheme.textPrimary)
+                .fixedSize()
+            Menu {
+                ForEach(VideoWebcamSettings.Shape.allCases) { shape in
+                    Button {
+                        model.setStyle { $0.webcam.choose(shape: shape) }
+                    } label: {
+                        Label(shape.title, systemImage: shape == webcam.shape ? "checkmark" : shape.symbol)
+                    }
+                }
+            } label: {
+                Label(webcam.shape.title, systemImage: webcam.shape.symbol)
+                    .font(.system(size: 11.5, weight: .medium))
+            }
+            .menuStyle(.borderlessButton)
+            .fixedSize()
+            .accessibilityLabel(L("Camera shape"))
+            Spacer(minLength: 0)
+            if webcam.shape == .free {
+                // The ratio it's dragged to, like 1.25:1.
+                Text(VideoEditorFormat.ratio(webcam.effectiveAspect))
+                    .font(.system(size: 11, weight: .medium).monospacedDigit())
+                    .foregroundStyle(VideoEditorTheme.textSecondary)
+                    .help(L("Drag the camera's edges on the video to change its width and height."))
+            }
+        }
+    }
+}
+
+/// Layout: Bubble, Split screen, Screen only or Camera only, and Split
+/// screen's options (VideoSplitScreen.swift).
+struct VideoCameraLayoutSection: View {
+    @ObservedObject var model: VideoEditorModel
+
+    var body: some View {
+        let webcam = model.project.webcam
+        let choice = VideoRecordingCameraSetup.LayoutChoice.of(webcam)
+        let sideBySide = VideoSplitLayout.isSideBySide(model.plan.outputCanvasSize)
+        VideoInspectorSection(L("Layout")) {
+            VideoSegmented(
+                options: VideoRecordingCameraSetup.LayoutChoice.allCases.map { ($0, $0.title) },
+                selection: Binding(get: { choice }, set: { newChoice in model.setStyle { $0.webcam = newChoice.applied(to: $0.webcam) } })
+            )
+            if choice == .split {
+                let split = webcam.effectiveSplit
+                HStack(spacing: 10) {
+                    Text(L("Camera side"))
+                        .font(.system(size: 12, weight: .medium))
+                        .foregroundStyle(VideoEditorTheme.textPrimary)
+                        .fixedSize()
+                    VideoSegmented(
+                        options: VideoWebcamSettings.Split.Side.allCases.map { ($0, $0.title(sideBySide: sideBySide)) },
+                        selection: Binding(get: { split.cameraSide }, set: { side in model.setStyle { $0.webcam.split = $0.webcam.effectiveSplit; $0.webcam.split?.cameraSide = side } })
+                    )
+                }
+                VideoSliderRow(
+                    title: L("Split size"),
+                    value: Binding(get: { split.keptShare }, set: { value in model.setStyle(coalesce: "split-share") { $0.webcam.split = $0.webcam.effectiveSplit; $0.webcam.split?.cameraShare = value } }),
+                    range: VideoWebcamSettings.Split.shareRange,
+                    defaultValue: 0.5,
+                    format: { L("Camera \(VideoEditorFormat.percent($0))") },
+                    onEditingEnded: { model.endGesture() }
+                )
+                VideoSliderRow(
+                    title: L("Gap"),
+                    value: Binding(get: { split.keptGap }, set: { value in model.setStyle(coalesce: "split-gap") { $0.webcam.split = $0.webcam.effectiveSplit; $0.webcam.split?.gap = value } }),
+                    range: VideoWebcamSettings.Split.gapRange,
+                    defaultValue: 0,
+                    format: { $0 < 0.0005 ? L("None") : VideoEditorFormat.percent($0 / VideoWebcamSettings.Split.gapRange.upperBound) },
+                    onEditingEnded: { model.endGesture() }
+                )
+                Text(sideBySide
+                     ? L("Side by side on this video. Drag the divider on the video to change the split; the background (Style) shows in the gap.")
+                     : L("One above the other on this video. Drag the divider on the video to change the split; the background (Style) shows in the gap."))
+                    .font(.system(size: 10.5))
+                    .foregroundStyle(VideoEditorTheme.textTertiary)
+                    .fixedSize(horizontal: false, vertical: true)
+            } else if choice == .screenOnly {
+                Text(L("The camera is still in the recording: choose another layout to show it."))
+                    .font(.system(size: 10.5))
+                    .foregroundStyle(VideoEditorTheme.textTertiary)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+        }
     }
 }

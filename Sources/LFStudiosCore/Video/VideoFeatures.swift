@@ -47,10 +47,24 @@ struct VideoWebcamSettings: Codable, Equatable {
         }
     }
 
+    /// The bubble's outline and ratio. `square` and `rectangle` keep their
+    /// stored names (projects from before 1.10.0 use them).
     enum Shape: String, Codable, CaseIterable, Identifiable {
         case circle
-        case square
+        /// Rounded rectangle: 4:3 with soft corners (called "Wide" before 1.10.0).
         case rectangle
+        /// Square (1:1).
+        case square
+        /// 16:9.
+        case landscape
+        /// 9:16.
+        case portrait
+        /// 4:3.
+        case classic
+        /// 3:4.
+        case classicPortrait
+        /// Any width and height (`freeAspect`).
+        case free
         /// Just you — no frame, the background removed.
         case cutout
 
@@ -58,11 +72,34 @@ struct VideoWebcamSettings: Codable, Equatable {
         var title: String {
             switch self {
             case .circle: return L("Circle")
-            case .square: return L("Rounded")
-            case .rectangle: return L("Wide")
+            case .rectangle: return L("Rounded rectangle")
+            case .square: return L("Square (1:1)")
+            case .landscape: return L("Landscape (16:9)")
+            case .portrait: return L("Portrait (9:16)")
+            case .classic: return "4:3" // l10n-ignore: a ratio
+            case .classicPortrait: return "3:4" // l10n-ignore: a ratio
+            case .free: return L("Free")
             case .cutout: return L("Cutout")
             }
         }
+
+        var symbol: String {
+            switch self {
+            case .circle: return "circle"
+            case .rectangle: return "rectangle.roundedtop"
+            case .square: return "square"
+            case .landscape: return "rectangle.ratio.16.to.9"
+            case .portrait: return "rectangle.ratio.9.to.16"
+            case .classic: return "rectangle.ratio.4.to.3"
+            case .classicPortrait: return "rectangle.ratio.3.to.4"
+            case .free: return "rectangle.dashed"
+            case .cutout: return "person.crop.rectangle"
+            }
+        }
+
+        /// The shapes a camera can take before recording (Cutout is a look
+        /// chosen in the editor).
+        static var recordable: [Shape] { allCases.filter { $0 != .cutout } }
 
         /// The corners each shape has (0 sharp … 1 a circle), matching
         /// what it was drawn with before roundness was adjustable.
@@ -72,17 +109,92 @@ struct VideoWebcamSettings: Codable, Equatable {
             case .square: return 0.44
             case .rectangle: return 0.24
             case .cutout: return 0
+            case .landscape, .portrait, .classic, .classicPortrait, .free: return 0.12
             }
         }
 
-        /// Width / height.
+        /// Width / height (Free: 1 until it's dragged to another shape).
         var aspect: CGFloat {
             switch self {
-            case .rectangle: return 4 / 3
-            case .cutout: return 3 / 4
-            default: return 1
+            case .rectangle, .classic: return 4 / 3
+            case .cutout, .classicPortrait: return 3 / 4
+            case .landscape: return 16 / 9
+            case .portrait: return 9 / 16
+            case .circle, .square, .free: return 1
             }
         }
+
+        /// The roundness slider means something (a circle is always round,
+        /// a cutout has no frame).
+        var hasCorners: Bool { self != .circle && self != .cutout }
+    }
+
+    /// How the camera and the screen share the video, for the whole video
+    /// (the Camera lane can switch it for a stretch). Screen only is the
+    /// camera hidden (`visible` off).
+    enum Layout: String, Codable, CaseIterable, Identifiable {
+        case bubble
+        /// The screen and the camera each take one part of the video.
+        case split
+        /// The camera fills the video.
+        case cameraOnly
+
+        var id: String { rawValue }
+
+        /// The Camera lane layout that draws the same.
+        var regionLayout: VideoCameraLayoutRegion.Layout {
+            switch self {
+            case .bubble: return .bubble
+            case .split: return .sideBySide
+            case .cameraOnly: return .fullscreen
+            }
+        }
+    }
+
+    /// Split screen: side by side on a landscape video, one above the
+    /// other on a square or vertical one.
+    struct Split: Codable, Equatable {
+        enum Side: String, Codable, CaseIterable, Identifiable {
+            /// Left, or top.
+            case first
+            /// Right, or bottom.
+            case second
+
+            var id: String { rawValue }
+
+            func title(sideBySide: Bool) -> String {
+                switch self {
+                case .first: return sideBySide ? L("Left") : L("Top")
+                case .second: return sideBySide ? L("Right") : L("Bottom")
+                }
+            }
+        }
+
+        var cameraSide: Side = .second
+        /// The camera's share of the video (0.5: half).
+        var cameraShare: Double = 0.5
+        /// Between the parts, as a share of the video's short side; the
+        /// video's background shows there.
+        var gap: Double = 0
+
+        static let shareRange: ClosedRange<Double> = 0.3...0.7
+        static let gapRange: ClosedRange<Double> = 0...0.06
+
+        var keptShare: Double { min(max(cameraShare, Self.shareRange.lowerBound), Self.shareRange.upperBound) }
+        var keptGap: Double { min(max(gap, Self.gapRange.lowerBound), Self.gapRange.upperBound) }
+    }
+
+    /// Where the bubble is and how wide, chosen by hand (dragging it in the
+    /// editor, or the camera preview before recording). Normalized on the
+    /// output with y down.
+    struct Placement: Codable, Equatable {
+        /// The bubble's center.
+        var x: Double
+        var y: Double
+        /// Its width, as a share of the output's width.
+        var width: Double
+
+        static let widthRange: ClosedRange<Double> = 0.04...1
     }
 
     /// What's behind you in the camera picture.
@@ -125,6 +237,22 @@ struct VideoWebcamSettings: Codable, Equatable {
     var shadowStrength: Double?
     /// The camera picture's color and sharpness (nil: as filmed).
     var color: VideoCameraColor?
+    /// Free's width / height (nil: 1).
+    var freeAspect: Double?
+    /// Placed by hand (nil: at `anchor`, `size` big).
+    var placement: Placement?
+    /// For the whole video (nil: the bubble).
+    var layout: Layout?
+    /// Split screen's options, also Side by side's on the Camera lane (nil:
+    /// Side by side as it was before 1.10.0, the screen letterboxed beside a
+    /// narrower camera).
+    var split: Split?
+
+    var effectiveLayout: Layout { layout ?? .bubble }
+    /// What Split screen and Side by side use.
+    var effectiveSplit: Split { split ?? Split() }
+
+    static let freeAspectRange: ClosedRange<Double> = 0.25...4
 
     struct Border: Codable, Equatable {
         var color: VideoRGBA
@@ -146,6 +274,36 @@ struct VideoWebcamSettings: Codable, Equatable {
         return shape.roundness
     }
 
+    /// Width / height of the bubble.
+    var effectiveAspect: CGFloat {
+        guard shape == .free else { return shape.aspect }
+        return CGFloat(min(max(freeAspect ?? 1, Self.freeAspectRange.lowerBound), Self.freeAspectRange.upperBound))
+    }
+
+    /// Picks a shape: its own corners again, and Free starts from the
+    /// bubble's ratio now. A bubble placed by hand keeps its width and
+    /// center.
+    mutating func choose(shape newShape: Shape) {
+        if newShape == .free, shape != .free { freeAspect = Double(effectiveAspect) }
+        shape = newShape
+        roundness = nil
+    }
+
+    /// The same bubble at `anchor` (a zoom moving it to a free corner):
+    /// as big as it is now.
+    func at(anchor newAnchor: Anchor, outputSize: CGSize) -> VideoWebcamSettings {
+        var moved = self
+        moved.anchor = newAnchor
+        if placement != nil {
+            let rect = VideoFrameRenderer.webcamRect(self, outputSize: outputSize)
+            moved.placement = nil
+            moved.size = Double(rect.height / max(min(outputSize.width, outputSize.height), 1))
+            let free = VideoFrameRenderer.webcamRect(moved, outputSize: outputSize, unclamped: true)
+            moved.placement = Placement(x: Double(free.midX / max(outputSize.width, 1)), y: Double(1 - free.midY / max(outputSize.height, 1)), width: Double(rect.width / max(outputSize.width, 1)))
+        }
+        return moved
+    }
+
     /// The crop, kept inside the picture and at least a sliver big (nil when
     /// it's the whole picture).
     var effectiveCrop: VideoCropRect? {
@@ -156,7 +314,7 @@ struct VideoWebcamSettings: Codable, Equatable {
 
     init() {}
 
-    private enum CodingKeys: String, CodingKey { case visible, size, anchor, shape, mirror, shrinkWhenZoomed, backdrop, crop, roundness, border, shadowStrength, color }
+    private enum CodingKeys: String, CodingKey { case visible, size, anchor, shape, mirror, shrinkWhenZoomed, backdrop, crop, roundness, border, shadowStrength, color, freeAspect, placement, layout, split }
 
     init(from decoder: Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
@@ -173,12 +331,18 @@ struct VideoWebcamSettings: Codable, Equatable {
         border = try? c.decodeIfPresent(Border.self, forKey: .border)
         shadowStrength = (try? c.decodeIfPresent(Double.self, forKey: .shadowStrength)).flatMap { $0 }.map { min(max($0, 0), 1) }
         color = try? c.decodeIfPresent(VideoCameraColor.self, forKey: .color)
+        freeAspect = (try? c.decodeIfPresent(Double.self, forKey: .freeAspect)).flatMap { $0 }
+        placement = try? c.decodeIfPresent(Placement.self, forKey: .placement)
+        layout = try? c.decodeIfPresent(Layout.self, forKey: .layout)
+        split = try? c.decodeIfPresent(Split.self, forKey: .split)
     }
 }
 
 /// A stretch of the timeline where the camera takes a different layout.
 struct VideoCameraLayoutRegion: Codable, Equatable, Identifiable {
     enum Layout: String, Codable, CaseIterable, Identifiable {
+        /// The camera in its bubble (on a video that's split or camera only).
+        case bubble
         /// The camera fills the frame (intros, outros, talking points).
         case fullscreen
         /// Screen on the left, camera on the right.
@@ -189,6 +353,7 @@ struct VideoCameraLayoutRegion: Codable, Equatable, Identifiable {
         var id: String { rawValue }
         var title: String {
             switch self {
+            case .bubble: return L("Camera bubble")
             case .fullscreen: return L("Full camera")
             case .sideBySide: return L("Side by side")
             case .hidden: return L("Camera hidden")
@@ -197,6 +362,7 @@ struct VideoCameraLayoutRegion: Codable, Equatable, Identifiable {
         /// For narrow buttons.
         var shortTitle: String {
             switch self {
+            case .bubble: return L("Bubble")
             case .fullscreen: return L("Full camera")
             case .sideBySide: return L("Side by side")
             case .hidden: return L("Hidden")
@@ -204,6 +370,7 @@ struct VideoCameraLayoutRegion: Codable, Equatable, Identifiable {
         }
         var symbol: String {
             switch self {
+            case .bubble: return "person.crop.circle"
             case .fullscreen: return "person.crop.rectangle.fill"
             case .sideBySide: return "rectangle.split.2x1.fill"
             case .hidden: return "eye.slash.fill"

@@ -68,6 +68,8 @@
 	<string>%@ · зображення %@ × %@</string>
 	<key>%@ · %lld fps</key>
 	<string>%@ · %lld fps</string>
+	<key>%@ · Screen part of a %@ split video</key>
+	<string>%1$@ · Частина екрана розділеного відео %2$@</string>
 	<key>%@ · about %@</key>
 	<string>%@ · близько %@</string>
 	<key>%@ · on your clipboard — paste it anywhere</key>
@@ -176,6 +178,8 @@
 	<string>Файл, який використовує проєкт, переміщено, видалено або він на іншому Mac.</string>
 	<key>A file with that name is in the way. Pick another name and export again.</key>
 	<string>Файл із такою назвою вже існує. Виберіть іншу назву й експортуйте ще раз.</string>
+	<key>A fixed shape (Circle, 1:1, 16:9…) keeps its shape as you resize. With Free, width and height change on their own; hold ⇧ to keep the shape.</key>
+	<string>Фіксована форма (Коло, 1:1, 16:9…) зберігається під час зміни розміру. У режимі «Довільне» ширина й висота змінюються окремо; утримуйте ⇧, щоб зберегти форму.</string>
 	<key>A folder with an LF Studios project in it opens that project, exactly as it was saved.</key>
 	<string>Папка з проєктом LF Studios відкриває цей проєкт саме таким, яким його збережено.</string>
 	<key>A frame appears in the middle of the screen. Choose its shape above the recording bar, like 16:9.</key>
@@ -258,6 +262,8 @@
 	<string>Адаптувати до цього формату</string>
 	<key>Adapt to this ratio</key>
 	<string>Адаптувати до формату</string>
+	<key>Adapt to this ratio turns side by side into one above the other: left becomes top, right becomes bottom.</key>
+	<string>«Адаптувати до формату» перетворює «поруч» на «одне над одним»: ліва частина стає верхньою, права — нижньою.</string>
 	<key>Adapt to this ratio, next to the aspect ratio menu after you change it.</key>
 	<string>«Адаптувати до формату» — поруч із меню формату, після того як ви його зміните.</string>
 	<key>Adapted to %@: %@</key>
@@ -548,6 +554,8 @@
 	<string>Бірюзовий мармур</string>
 	<key>Area</key>
 	<string>Область</string>
+	<key>Arrange what you'll show inside the frame: it fills the screen's part exactly, without stretching or black bars.</key>
+	<string>Розмістіть у рамці те, що показуватимете: воно точно заповнить частину екрана, без розтягування й чорних смуг.</string>
 	<key>Arrow</key>
 	<string>Стрілка</string>
 	<key>Arrow head</key>
@@ -628,6 +636,8 @@
 	<string>Відновлено оригінальний запис — ⌘Z, щоб відмінити</string>
 	<key>Back to the start</key>
 	<string>На початок</string>
+	<key>Back to the usual size, in the spot chosen above</key>
+	<string>Повернути звичний розмір у вибраному вище місці</string>
 	<key>Back · pause · faster</key>
 	<string>Назад · пауза · швидше</string>
 	<key>Background</key>
@@ -658,6 +668,12 @@
 	<string>Перед записом увімкніть «Мікрофон» на панелі запису й перевірте, що індикатор рівня рухається, коли ви говорите.</string>
 	<key>Before recording, turn on Track where I type.</key>
 	<string>Перед записом увімкніть «Стежити, де я друкую».</string>
+	<key>Before recording: Select size above the recording bar, with Camera on. In the editor: drag the camera on the preview.</key>
+	<string>Перед записом: «Вибрати розмір» над панеллю запису при ввімкненій камері. У редакторі: перетягуйте камеру в перегляді.</string>
+	<key>Before recording: turn on Camera, then Camera shape above the recording bar. In the editor: Camera panel ▸ Camera ▸ Camera shape.</key>
+	<string>Перед записом: увімкніть «Камера», потім «Форма камери» над панеллю запису. У редакторі: панель «Камера» ▸ Камера ▸ Форма камери.</string>
+	<key>Before recording: turn on Camera, then Layout ▸ Split screen above the recording bar. In the editor: Camera panel ▸ Layout.</key>
+	<string>Перед записом: увімкніть «Камера», потім «Макет ▸ Розділений екран» над панеллю запису. У редакторі: панель «Камера» ▸ Макет.</string>
 	<key>Begins scrolling when the recording starts</key>
 	<string>Починає прокручування, коли починається запис</string>
 	<key>Behavior</key>
@@ -734,6 +750,8 @@
 	<string>Вивести все на передній план</string>
 	<key>Bring captions to life: words that pop in, a karaoke fill, a typewriter, and more.</key>
 	<string>Оживіть субтитри: слова, що вискакують, караоке-заливка, друкарська машинка тощо.</string>
+	<key>Bubble</key>
+	<string>Бульбашка</string>
 	<key>Built-in</key>
 	<string>Вбудований</string>
 	<key>Built-in (San Francisco)</key>
@@ -756,6 +774,8 @@
 	<string>Виноска: натисніть на те, на що треба вказати, витягніть бульбашку й друкуйте.</string>
 	<key>Camera</key>
 	<string>Камера</string>
+	<key>Camera %@</key>
+	<string>Камера %@</string>
 	<key>Camera Side by Side at Playhead</key>
 	<string>Камера поруч на покажчику відтворення</string>
 	<key>Camera access is off — allow LF Studios in System Settings → Privacy &amp; Security → Camera.</key>
@@ -796,6 +816,8 @@
 	<string>Макети камери</string>
 	<key>Camera layouts — drag to move, drag an edge to retime, click to change</key>
 	<string>Макети камери — перетягуйте, щоб перемістити, тягніть край, щоб змінити тривалість, клацніть, щоб вибрати інший</string>
+	<key>Camera only</key>
+	<string>Тільки камера</string>
 	<key>Camera panel ▸ Behavior ▸ Shrink while zoomed.</key>
 	<string>Панель «Камера» ▸ Поведінка ▸ Зменшувати під час наближення.</string>
 	<key>Camera panel ▸ Camera video ▸ Add camera video….</key>
@@ -816,6 +838,16 @@
 	<string>Панель «Камера» ▸ Паузи ▸ Ховати камеру в паузах.</string>
 	<key>Camera preview</key>
 	<string>Перегляд камери</string>
+	<key>Camera shape</key>
+	<string>Форма камери</string>
+	<key>Camera shape: Circle, Rounded rectangle, Square, Landscape, Portrait, 4:3, 3:4, Free, or Cutout (just you, without the background).</key>
+	<string>Форма камери: Коло, Заокруглений прямокутник, Квадрат, Горизонтально, Вертикально, 4:3, 3:4, Довільне чи Силует (лише ви, без тла).</string>
+	<key>Camera shape: how the camera looks in the video. The preview shows it.</key>
+	<string>Форма камери: як камера виглядає у відео. Перегляд це показує.</string>
+	<key>Camera side</key>
+	<string>Бік камери</string>
+	<key>Camera side, Split size (from 30/70 to 70/30, 50/50 to start), and Gap, with the video's background in between.</key>
+	<string>Бік камери, Пропорції (від 30/70 до 70/30, спершу 50/50) і Проміжок, у якому видно тло відео.</string>
 	<key>Camera stopped</key>
 	<string>Збій камери</string>
 	<key>Camera unplugged: the screen recording keeps going without it.</key>
@@ -838,8 +870,10 @@
 	<string>Відео з камери «%1$@», %2$@</string>
 	<key>Camera video: %@</key>
 	<string>Відео з камери: %@</string>
-	<key>Camera — drag to move it, click for options</key>
-	<string>Камера — перетягніть, щоб перемістити, клацніть, щоб побачити параметри</string>
+	<key>Camera — drag to move it, drag its edges to resize it, click for options</key>
+	<string>Камера — перетягніть, щоб перемістити, тягніть краї, щоб змінити розмір, клацніть для параметрів</string>
+	<key>Camera: %@%% of width, %@</key>
+	<string>Камера: %1$@ %% ширини, %2$@</string>
 	<key>Can't sync — the recording or the camera video has no sound</key>
 	<string>Не вдалося синхронізувати — запис або відео з камери не має звуку</string>
 	<key>Can't sync — the recording or “%@” has no sound</key>
@@ -1046,6 +1080,8 @@
 	<string>Виберіть 3, 5 чи 10 секунд у Параметри ▸ Знімки екрана ▸ Знімок за таймером.</string>
 	<key>Choose Another…</key>
 	<string>Вибрати інше…</string>
+	<key>Choose Camera shape. The camera preview takes that shape right away, so you can frame yourself.</key>
+	<string>Виберіть «Форма камери». Перегляд одразу набуває цієї форми, щоб ви могли скадрувати себе.</string>
 	<key>Choose Capture Area in the LF Studios menu to start</key>
 	<string>Щоб почати, виберіть «Зняти область» у меню LF Studios</string>
 	<key>Choose Capture Text, or press its shortcut.</key>
@@ -1058,6 +1094,8 @@
 	<string>Вибрати зображення…</string>
 	<key>Choose LF Studios ▸ Check for Updates….</key>
 	<string>Виберіть LF Studios ▸ Перевірити оновлення….</string>
+	<key>Choose Layout ▸ Split screen. The frame becomes the screen's part, like 8:9 for a 16:9 video split in half, and the camera preview fills the camera's part.</key>
+	<string>Виберіть «Макет ▸ Розділений екран». Рамка стане частиною екрана, наприклад 8:9 для відео 16:9, поділеного навпіл, а перегляд камери заповнить частину камери.</string>
 	<key>Choose Location…</key>
 	<string>Вибрати місце…</string>
 	<key>Choose MP4.</key>
@@ -1138,6 +1176,8 @@
 	<string>У меню «Мова» виберіть мову, якою ви говорите в записі.</string>
 	<key>Choose the camera video to show in the bubble</key>
 	<string>Виберіть відео з камери для бульбашки</string>
+	<key>Choose the camera's shape and ratio before you record, and change it any time in the editor.</key>
+	<string>Виберіть форму й пропорції камери перед записом і змінюйте їх у редакторі будь-коли.</string>
 	<key>Choose the corner (Left or Right) and how long it stays in the same settings section. Hovering keeps it open.</key>
 	<string>Кут («Ліворуч» чи «Праворуч») і те, скільки вона лишається на екрані, вибираються в тому самому розділі параметрів. Поки курсор над нею, вона не зникає.</string>
 	<key>Choose the screen recording, the camera video if there is one, and the sound files to add as tracks. Nothing in the folder changes until you save.</key>
@@ -1166,6 +1206,8 @@
 	<string>Кіно</string>
 	<key>Circle</key>
 	<string>Коло</string>
+	<key>Circle, Rounded rectangle, Square (1:1), Landscape (16:9), Portrait (9:16), 4:3, 3:4, or Free (any width and height).</key>
+	<string>Коло, Заокруглений прямокутник, Квадрат (1:1), Горизонтально (16:9), Вертикально (9:16), 4:3, 3:4 чи Довільне (будь-які ширина й висота).</string>
 	<key>Citrus</key>
 	<string>Цитрус</string>
 	<key>Classic</key>
@@ -1224,6 +1266,8 @@
 	<string>Клацніть «Тло».</string>
 	<key>Click Blur above the preview, or press B.</key>
 	<string>Клацніть «Розмиття» над переглядом або натисніть B.</string>
+	<key>Click Camera again to turn the camera off completely.</key>
+	<string>Клацніть «Камера» ще раз, щоб повністю вимкнути камеру.</string>
 	<key>Click Camera in the recording bar. Choose the camera in ⋯ More recording options.</key>
 	<string>Клацніть «Камера» на панелі запису. Камеру можна вибрати в ⋯ «Інші параметри запису».</string>
 	<key>Click Cancel, or turn off asking, and it goes in the Recording folder, laid out the same way. Nothing is ever lost.</key>
@@ -1300,6 +1344,8 @@
 	<string>Клацніть «Записати». Пробіл призупиняє й відновлює прокручування.</string>
 	<key>Click Scroll capture in Home, or choose Scrolling Capture in the LF Studios menu.</key>
 	<string>Клацніть «Знімок із прокручуванням» на головній або виберіть «Знімок із прокручуванням» у меню LF Studios.</string>
+	<key>Click Select size. Handles appear on the camera preview.</key>
+	<string>Клацніть «Вибрати розмір». На перегляді камери з’являться маркери.</string>
 	<key>Click Show keyboard shortcuts (⌘) in the recording bar, or Settings ▸ Recording ▸ Show keyboard shortcuts.</key>
 	<string>Клацніть «Показувати клавіатурні скорочення» (⌘) на панелі запису або Параметри ▸ Запис ▸ Показувати клавіатурні скорочення.</string>
 	<key>Click Speaker notes in the recording bar, or in the bar while recording.</key>
@@ -1628,6 +1674,8 @@
 	<string>Створити передавання</string>
 	<key>Creative Handoff</key>
 	<string>Творче передавання</string>
+	<key>Creative Handoff's README.txt says where each part goes, in pixels, for your editing app.</key>
+	<string>README.txt Творчого передавання вказує в пікселях, де розміщена кожна частина, — для вашої програми монтажу.</string>
 	<key>Creative Handoff…</key>
 	<string>Творче передавання…</string>
 	<key>Crimson Ridge</key>
@@ -1880,6 +1928,8 @@
 	<string>Намалюйте рамку. Тягніть усередині, щоб перемістити її, або тягніть краї, щоб змінити розмір.</string>
 	<key>Drag a screenshot out of History and drop it where you want it.</key>
 	<string>Перетягніть знімок з історії й киньте його туди, куди потрібно.</string>
+	<key>Drag an edge or a corner to resize it, the middle to move it.</key>
+	<string>Тягніть край або кут, щоб змінити розмір, середину — щоб перемістити.</string>
 	<key>Drag captions on the preview to place them anywhere</key>
 	<string>Перетягуйте субтитри в попередньому перегляді, щоб розмістити їх будь-де</string>
 	<key>Drag captions to any spot on the video, or move one caption on its own.</key>
@@ -1930,6 +1980,8 @@
 	<string>Перетягніть розмиття на те, що хочете приховати.</string>
 	<key>Drag the box on the preview over anything private. Blur follows zooms and stays until its bar ends.</key>
 	<string>Перетягніть рамку в перегляді на все приватне. Розмиття стежить за наближеннями й діє до кінця своєї смуги.</string>
+	<key>Drag the camera's edges on the video to change its width and height.</key>
+	<string>Тягніть краї камери на відео, щоб змінити ширину й висоту.</string>
 	<key>Drag the frame on the preview to aim; drag its corners to zoom in or out.</key>
 	<string>Перетягуйте рамку в перегляді, щоб навести; тягніть її кути, щоб наблизити чи віддалити.</string>
 	<key>Drag the frame over what you want to show. To fill it with one app, click Fit a window to the frame… and choose its window.</key>
@@ -1946,6 +1998,8 @@
 	<string>Перетягуйте клавіші в попередньому перегляді, щоб розмістити їх будь-де</string>
 	<key>Drag the pin to move it; drag an edge to resize it.</key>
 	<string>Перетягніть закріплений знімок, щоб перемістити його; тягніть край, щоб змінити розмір.</string>
+	<key>Drag the preview where you want the camera in the video: what it covers of the recording frame is where the camera goes.</key>
+	<string>Перетягніть перегляд туди, де камера має бути у відео: те, що він закриває в рамці запису, і є місце камери.</string>
 	<key>Drag the spot on the preview; drag a corner to resize it. Everything around it dims while its bar on the timeline runs.</key>
 	<string>Перетягуйте світлову пляму в перегляді; тягніть кут, щоб змінити її розмір. Усе навколо затемнюється, поки триває її смуга на шкалі часу.</string>
 	<key>Drag the track on the timeline to move it; drag an edge to trim it; click it and press S to split it, or ⌫ to delete a piece.</key>
@@ -1954,6 +2008,8 @@
 	<string>Тягніть краї наближення на шкалі часу, щоб задати його тривалість.</string>
 	<key>Drag to capture  ·  Hold ⇧ as you let go to adjust first  ·  Space moves  ·  Esc cancels</key>
 	<string>Перетягніть, щоб зняти  ·  Утримуйте ⇧, коли відпускаєте, щоб спершу налаштувати  ·  Пробіл — перемістити  ·  Esc — скасувати</string>
+	<key>Drag to change how much of the video the camera takes</key>
+	<string>Перетягніть, щоб змінити, яку частину відео займає камера</string>
 	<key>Drag to change where this clip ends</key>
 	<string>Перетягніть, щоб змінити кінець кліпу</string>
 	<key>Drag to change where this clip starts</key>
@@ -2506,6 +2562,10 @@
 	<string>GIF можна вбудувати будь-де — у README, pull request, документацію. Робіть їх короткими: вони швидко стають великими.</string>
 	<key>GIFs get big quickly: keep them short and choose a smaller size.</key>
 	<string>GIF швидко стають великими: робіть їх короткими й вибирайте менший розмір.</string>
+	<key>Gap</key>
+	<string>Проміжок</string>
+	<key>Gap between the parts</key>
+	<string>Проміжок між частинами</string>
 	<key>General</key>
 	<string>Загальні</string>
 	<key>Get the area exactly right: a magnifier, the size as you drag, and keys to fine-tune.</key>
@@ -2550,6 +2610,8 @@
 	<string>Посібник</string>
 	<key>H.264 plays everywhere. HEVC makes smaller files, but some browsers and Windows PCs can't play it.</key>
 	<string>H.264 відтворюється будь-де. HEVC дає менші файли, але деякі браузери й комп’ютери з Windows не можуть його відтворити.</string>
+	<key>Handles on the camera preview: drag an edge or corner to resize it, the middle to move it.</key>
+	<string>Маркери на перегляді камери: тягніть край або кут, щоб змінити розмір, середину — щоб перемістити.</string>
 	<key>Handoff didn't finish</key>
 	<string>Передавання не завершено</string>
 	<key>Handoff ready — show it</key>
@@ -2764,6 +2826,10 @@
 	<string>У редакторі перевірте, що на панелі «Аудіо» вимкнено «Вимкнути звук відео», а звук перегляду не вимкнено (натисніть M).</string>
 	<key>In the editor, click Add typing zooms.</key>
 	<string>У редакторі клацніть «Наблизити набір тексту».</string>
+	<key>In the editor, drag the divider on the video to change the split. Zooms happen inside the screen's part; captions go over the whole video.</key>
+	<string>У редакторі перетягуйте роздільник на відео, щоб змінити пропорції. Масштабування відбувається в частині екрана; субтитри йдуть поверх усього відео.</string>
+	<key>In the editor, the camera snaps to the corners, the edges and the center. Each drag is one ⌘Z. Reset size in Camera ▸ Position goes back to the usual size.</key>
+	<string>У редакторі камера прилипає до кутів, країв і центру. Кожне перетягування скасовується одним ⌘Z. «Скинути розмір» у Камера ▸ Позиція повертає звичний розмір.</string>
 	<key>In the export window ▸ Captions.</key>
 	<string>У вікні експорту ▸ Субтитри.</string>
 	<key>In the export window ▸ Chapters.</key>
@@ -3034,6 +3100,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>LF Studios пам’ятає область, доки ви не завершите програму. Якщо області ще немає, ви вибираєте її як зазвичай.</string>
 	<key>LF Studios remembers the last shape, size, and place on each screen.</key>
 	<string>LF Studios запам’ятовує останні форму, розмір і місце на кожному екрані.</string>
+	<key>LF Studios remembers your last shape for the next recording.</key>
+	<string>LF Studios запам’ятовує останню форму для наступного запису.</string>
 	<key>LF Studios remembers your last tool, color, and sizes for next time.</key>
 	<string>LF Studios запам’ятовує ваш останній інструмент, колір і розміри до наступного разу.</string>
 	<key>LF Studios resizes and centers the window. Click Record.</key>
@@ -3062,6 +3130,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>МЕДІАТЕКА LFSTUDIOS</string>
 	<key>Lagoon</key>
 	<string>Лагуна</string>
+	<key>Landscape (16:9)</key>
+	<string>Горизонтально (16:9)</string>
+	<key>Landscape videos (16:9, 4:3, 21:9) split side by side; square and vertical ones (1:1, 4:5, 9:16) one above the other.</key>
+	<string>Горизонтальні відео (16:9, 4:3, 21:9) діляться поруч, квадратні й вертикальні (1:1, 4:5, 9:16) — одне над одним.</string>
 	<key>Language</key>
 	<string>Мова</string>
 	<key>Languages</key>
@@ -3084,6 +3156,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Лавандове скло</string>
 	<key>Layout</key>
 	<string>Макет</string>
+	<key>Layout also has Screen only and Camera only. The screen and the camera are always both recorded, so you can change your mind later.</key>
+	<string>У «Макеті» є також «Лише екран» і «Тільки камера». Екран і камера завжди записуються обидва, тож можна передумати пізніше.</string>
+	<key>Layout: the camera in a bubble, split screen with the screen, or only one of them. Both are always recorded.</key>
+	<string>Макет: камера в бульбашці, розділений екран з екраном або лише щось одне. Записується завжди і те, і те.</string>
 	<key>Layouts</key>
 	<string>Макети</string>
 	<key>Leaves out the background: the video, its rounded corners and shadow, and a cut-out camera sit on transparency, ready to place over anything</key>
@@ -3340,8 +3416,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Переміщати область під час перетягування</string>
 	<key>Move the frame (with ⇧: 10 points)</key>
 	<string>Перемістити рамку (із ⇧: на 10 точок)</string>
-	<key>Move the playhead and click Full camera, Side by side, or Hidden.</key>
-	<string>Наведіть покажчик відтворення й клацніть «Лише камера», «Поруч» чи «Сховано».</string>
+	<key>Move the playhead and click Full camera, Side by side, or Hidden (on a split video, also Bubble).</key>
+	<string>Перемістіть курсор відтворення й клацніть «Лише камера», «Поруч» або «Сховано» (на розділеному відео ще «Бульбашка»).</string>
 	<key>Move the playhead and press S to split the clip there.</key>
 	<string>Наведіть покажчик відтворення й натисніть S, щоб розділити там кліп.</string>
 	<key>Move the playhead inside a clip to split</key>
@@ -3612,6 +3688,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Не вистачає місця: для передавання потрібно близько %1$@, а там вільно %2$@.</string>
 	<key>Not for this video</key>
 	<string>Не для цього відео</string>
+	<key>Not in video — position set in the editor</key>
+	<string>Не у відео — позицію задають у редакторі</string>
 	<key>Not loaded:</key>
 	<string>Не завантажено:</string>
 	<key>Not now</key>
@@ -3650,6 +3728,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Океан</string>
 	<key>Of the frame's width.</key>
 	<string>Від ширини кадру.</string>
+	<key>Of the video's width</key>
+	<string>Від ширини відео</string>
 	<key>Off</key>
 	<string>Вимкнено</string>
 	<key>Off to start with. Needs Accessibility.</key>
@@ -3686,6 +3766,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>У буфері обміну · %@</string>
 	<key>Once a day. When there's a new version, LF Studios shows what's new and installs it only when you click Install Update. Your projects, recordings, settings and permissions stay.</key>
 	<string>Раз на день. Коли виходить нова версія, LF Studios показує, що нового, і встановлює її, лише коли ви натиснете «Встановити оновлення». Ваші проєкти, записи, налаштування й дозволи зберігаються.</string>
+	<key>One above the other on this video. Drag the divider on the video to change the split; the background (Style) shows in the gap.</key>
+	<string>На цьому відео — одне над одним. Перетягніть роздільник на відео, щоб змінити пропорції; у проміжку видно тло (Стиль).</string>
 	<key>One word at a time</key>
 	<string>По одному слову</string>
 	<key>One ⌘Z undoes it.</key>
@@ -3812,8 +3894,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Або перетягніть його в перегляді. Зображення лишаються на місці, поки камера наближається.</string>
 	<key>Or drag its bar on the timeline.</key>
 	<string>Або перетягніть його смугу на шкалі часу.</string>
-	<key>Or drag the bubble on the video — it snaps to the nearest spot.</key>
-	<string>Або перетягніть бульбашку у відео — вона прилипне до найближчого місця.</string>
+	<key>Or drag the camera on the video: it snaps to the corners, edges and center. Drag its edges and corners to resize it.</key>
+	<string>Або перетягніть камеру на відео: вона прилипає до кутів, країв і центру. Тягніть її краї й кути, щоб змінити розмір.</string>
 	<key>Or hold ⇧ and drag across the timeline to select a part, then click Cut this part.</key>
 	<string>Або утримуйте ⇧ і перетягніть по шкалі часу, щоб виділити частину, а тоді клацніть «Вирізати цю частину».</string>
 	<key>Or try the Whisper engine instead.</key>
@@ -4026,8 +4108,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Слова, що з’являються</string>
 	<key>Porcelain</key>
 	<string>Порцеляна</string>
+	<key>Portrait (9:16)</key>
+	<string>Вертикально (9:16)</string>
 	<key>Position</key>
 	<string>Позиція</string>
+	<key>Position and Size: drag the camera on the preview, drag its edges and corners to resize it, or pick one of eight spots.</key>
+	<string>Позиція й розмір: перетягніть камеру в перегляді, тягніть її краї й кути, щоб змінити розмір, або виберіть одне з восьми місць.</string>
 	<key>Positions only: no text, no keys</key>
 	<string>Лише положення: без тексту й клавіш</string>
 	<key>Possible key</key>
@@ -4192,8 +4278,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Запис області</string>
 	<key>Record an area, a window, or the whole screen</key>
 	<string>Запишіть область, вікно або весь екран</string>
-	<key>Record as usual.</key>
-	<string>Записуйте як зазвичай.</string>
+	<key>Record as usual. The video opens in the editor with the camera there, in that shape and size.</key>
+	<string>Записуйте як зазвичай. Відео відкриється в редакторі з камерою на цьому місці, такої ж форми й розміру.</string>
 	<key>Record camera</key>
 	<string>Записувати камеру</string>
 	<key>Record everything on one screen.</key>
@@ -4230,6 +4316,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Записуйте з увімкненим «Стежити, де я друкую», щоб наближати набір тексту</string>
 	<key>Record your voice.</key>
 	<string>Запишіть свій голос.</string>
+	<key>Record. The video opens in the editor already split.</key>
+	<string>Запишіть. Відео відкриється в редакторі вже розділеним.</string>
+	<key>Record. The video opens in the editor with the camera in that shape.</key>
+	<string>Запишіть. Відео відкриється в редакторі з камерою цієї форми.</string>
 	<key>Recorded at %@. Drag its dot on the timeline to retime it; ripples and Auto Zoom follow.</key>
 	<string>Записано на %@. Перетягніть його крапку на шкалі часу, щоб змінити час; хвилі й автонаближення підлаштуються.</string>
 	<key>Recorded at the same time as the video? Click Sync by sound: it lines up with the recording and follows your cuts from then on.</key>
@@ -4706,6 +4796,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Скинути позицію</string>
 	<key>Reset position puts captions back at the bottom.</key>
 	<string>«Скинути позицію» повертає субтитри вниз.</string>
+	<key>Reset size</key>
+	<string>Скинути розмір</string>
 	<key>Reset to default position</key>
 	<string>Повернути типову позицію</string>
 	<key>Reset to the LF Studios Look</key>
@@ -4714,6 +4806,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Змінити розмір</string>
 	<key>Resize a window so the recording comes out at an exact size, like 1920 × 1080.</key>
 	<string>Змініть розмір вікна, щоб запис вийшов точного розміру, як-от 1920 × 1080.</string>
+	<key>Resize and place the camera by dragging, before you record and in the editor.</key>
+	<string>Змінюйте розмір і місце камери перетягуванням — перед записом і в редакторі.</string>
+	<key>Resize the camera</key>
+	<string>Змінити розмір камери</string>
 	<key>Resize the window so the recording is an exact size</key>
 	<string>Змінити розмір вікна, щоб запис мав точний розмір</string>
 	<key>Resizes a window of another app to exactly the frame, so it fills the recording</key>
@@ -4808,6 +4904,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Заокруглений прямокутник</string>
 	<key>Roundness</key>
 	<string>Заокруглення</string>
+	<key>Roundness, in the same menu: from sharp corners to round.</key>
+	<string>Заокруглення в тому ж меню: від гострих кутів до круглих.</string>
 	<key>Roundness: from sharp corners to a full circle.</key>
 	<string>«Заокруглення»: від гострих кутів до повного кола.</string>
 	<key>S</key>
@@ -4938,6 +5036,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Потрібен дозвіл на запис екрана</string>
 	<key>Screen clips, camera, voice, computer sound, music, pictures, captions, and fonts.</key>
 	<string>Кліпи екрана, камера, голос, звук комп’ютера, музика, зображення, субтитри й шрифти.</string>
+	<key>Screen only</key>
+	<string>Лише екран</string>
 	<key>Screen recording</key>
 	<string>Запис екрана</string>
 	<key>Screen recording didn't start in time. Try again.</key>
@@ -5046,6 +5146,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Вибрати кілька елементів</string>
 	<key>Select several to drag them all at once.</key>
 	<string>Виберіть кілька, щоб перетягнути їх усі разом.</string>
+	<key>Select size</key>
+	<string>Вибрати розмір</string>
 	<key>Select which display to record fullscreen</key>
 	<string>Виберіть дисплей для запису на весь екран</string>
 	<key>Select words and press ⌫ to cut them from the video — ⌫ again on crossed-out words puts them back. Click a word to jump there; ⌘F finds.</key>
@@ -5146,8 +5248,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Колір тіні</string>
 	<key>Shape</key>
 	<string>Форма</string>
-	<key>Shape: Circle, Rounded, Wide, or Cutout (just you, without the background).</key>
-	<string>«Форма»: «Коло», «Заокруглена», «Широка» чи «Силует» (лише ви, без тла).</string>
 	<key>Shapes: 16:9 for YouTube, 9:16 for Reels, TikTok, and Shorts, 1:1 for square posts, 4:5 for the Instagram feed, 4:3 for slides and iPad, 16:10 for a Mac screen, 21:9 for a cinematic look. Point at one to see what it's for.</key>
 	<string>Форми: 16:9 для YouTube, 9:16 для Reels, TikTok і Shorts, 1:1 для квадратних дописів, 4:5 для стрічки Instagram, 4:3 для слайдів та iPad, 16:10 для екрана Mac, 21:9 для кінематографічного вигляду. Наведіть курсор на форму, щоб побачити, для чого вона.</string>
 	<key>Share</key>
@@ -5276,6 +5376,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Вибрати випадкове тло</string>
 	<key>Side by side</key>
 	<string>Поруч</string>
+	<key>Side by side on this video. Drag the divider on the video to change the split; the background (Style) shows in the gap.</key>
+	<string>На цьому відео — поруч. Перетягніть роздільник на відео, щоб змінити пропорції; у проміжку видно тло (Стиль).</string>
+	<key>Side by side uses Split screen's options (Camera panel ▸ Layout): the camera's side, the split size, and the gap. Each change eases in and out.</key>
+	<string>«Поруч» використовує параметри розділеного екрана (панель «Камера» ▸ Макет): бік камери, пропорції й проміжок. Кожна зміна відбувається плавно.</string>
 	<key>Side rail</key>
 	<string>Бічна панель</string>
 	<key>Side rail, Full rail, or Minimal. It shows only in the preview, never in the export.</key>
@@ -5294,8 +5398,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Сріблястий</string>
 	<key>Size</key>
 	<string>Розмір</string>
-	<key>Size, and Position: drag the bubble on the preview, or pick one of eight spots.</key>
-	<string>«Розмір» і «Позиція»: перетягніть бульбашку на перегляді або виберіть одне з восьми місць.</string>
 	<key>Size: Small, Medium, or Large. Frame rate: 10 to 24 fps.</key>
 	<string>«Розмір»: «Малий», «Середній» чи «Великий». «Частота кадрів»: від 10 до 24 fps.</string>
 	<key>Skip Setup</key>
@@ -5406,6 +5508,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Розділити на покажчику відтворення</string>
 	<key>Split at the playhead (S)</key>
 	<string>Розділити на покажчику відтворення (S)</string>
+	<key>Split screen</key>
+	<string>Розділений екран</string>
+	<key>Split screen divider</key>
+	<string>Роздільник екрана</string>
+	<key>Split size</key>
+	<string>Пропорції</string>
 	<key>Split the clips at every marker</key>
 	<string>Розділити кліпи за кожним маркером</string>
 	<key>Split the video (S) to make cuts; each can dissolve or dip to black.</key>
@@ -5420,6 +5528,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Форма прожектора</string>
 	<key>Spotlight: darkens everything except the area you draw. Choose Rectangle or Ellipse.</key>
 	<string>Прожектор: затемнює все, крім намальованої області. Виберіть «Прямокутник» чи «Еліпс».</string>
+	<key>Square (1:1)</key>
+	<string>Квадрат (1:1)</string>
 	<key>Square posts</key>
 	<string>Квадратні дописи</string>
 	<key>Square, circle, or straight 45° lines</key>
@@ -5678,8 +5788,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Бульбашка стежить за обличчям; де його немає, лишається останній кадр</string>
 	<key>The bubble now follows your face</key>
 	<string>Тепер бульбашка стежить за обличчям</string>
-	<key>The bubble you see while recording never shows up in the screen recording itself.</key>
-	<string>Бульбашка, яку ви бачите під час запису, ніколи не потрапляє в сам запис екрана.</string>
 	<key>The bubble's framing follows your face</key>
 	<string>Кадр бульбашки стежить за обличчям</string>
 	<key>The camera bubble</key>
@@ -5688,8 +5796,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Не вдалося запустити камеру.</string>
 	<key>The camera follows the text cursor as you type.</key>
 	<string>Камера стежить за текстовим курсором, поки ви друкуєте.</string>
-	<key>The camera is saved separately, so in the editor you can move it, resize it, restyle it, or hide it.</key>
-	<string>Камера зберігається окремо, тож у редакторі її можна перемістити, змінити розмір і стиль або сховати.</string>
+	<key>The camera is always recorded whole: the shape is only a setting, so you can change it later, and Creative Handoff gets the whole camera picture.</key>
+	<string>Камера завжди записується цілком: форма — лише налаштування, її можна змінити пізніше, а Творче передавання отримує всю картинку камери.</string>
+	<key>The camera is saved separately and whole, so in the editor you can move it, resize it, restyle it, or hide it.</key>
+	<string>Камера зберігається окремо й цілком, тож у редакторі її можна перемістити, змінити розмір і стиль або сховати.</string>
+	<key>The camera is still in the recording: choose another layout to show it.</key>
+	<string>Камера й далі є в записі: виберіть інший макет, щоб її показати.</string>
 	<key>The camera keeps your cursor in view and glides after it.</key>
 	<string>Камера тримає курсор у кадрі й плавно стежить за ним.</string>
 	<key>The camera stopped. The recording continues without it.</key>
@@ -5738,6 +5850,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Передавання готове</string>
 	<key>The highest quality, and the only one that can keep transparency</key>
 	<string>Найвища якість — і єдиний формат, що зберігає прозорість</string>
+	<key>The label under it says how wide the camera is and where it goes in the video. The editor opens with exactly that.</key>
+	<string>Підпис під нею показує ширину камери та її місце у відео. Редактор відкриється саме так.</string>
 	<key>The loupe stays over the text cursor.</key>
 	<string>Лупа тримається над текстовим курсором.</string>
 	<key>The loupe stays over your cursor.</key>
@@ -5790,6 +5904,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Курсор, клацання й клавіатурні скорочення</string>
 	<key>The preview shows only when Show the preview after capture is on in Settings ▸ General.</key>
 	<string>Перегляд показується, лише коли в Параметри ▸ Загальні ввімкнено «Показувати перегляд після знімка».</string>
+	<key>The preview you see while recording never shows up in the screen recording itself.</key>
+	<string>Перегляд, який ви бачите під час запису, ніколи не потрапляє в сам запис екрана.</string>
 	<key>The project file opens everything again, exactly as you left it. LF Studios keeps it up to date as you edit.</key>
 	<string>Файл проєкту знову відкриває все саме так, як ви залишили. LF Studios оновлює його, поки ви редагуєте.</string>
 	<key>The recording bar</key>
@@ -5814,6 +5930,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Вікно збереження не повернуло місце призначення. Спробуйте зберегти ще раз.</string>
 	<key>The save window appears after each recording. Settings ▸ Recording ▸ Saving has Ask where to save after each recording and the Recording folder.</key>
 	<string>Вікно збереження з’являється після кожного запису. У Параметри ▸ Запис ▸ Збереження є «Запитувати, куди зберегти, після кожного запису» і «Папка записів».</string>
+	<key>The screen and your camera each fill one part of the video: side by side, or one above the other.</key>
+	<string>Екран і камера заповнюють кожен свою частину відео: поруч або одне над одним.</string>
 	<key>The screen recording</key>
 	<string>Запис екрана</string>
 	<key>The screenshot has no image data.</key>
@@ -6030,6 +6148,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Щоб вирізати помилку, наведіть на неї покажчик відтворення, натисніть S, щоб розділити, клацніть невдалу частину й натисніть ⌫.</string>
 	<key>To drag out any area yourself, click Select area manually above the recording bar.</key>
 	<string>Щоб самостійно виділити будь-яку область, клацніть «Вибрати область вручну» над панеллю запису.</string>
+	<key>To get the preview out of the way, drag it outside the frame: the label says “Not in video”, and the editor puts the camera in its usual corner.</key>
+	<string>Щоб прибрати перегляд з дороги, перетягніть його за рамку: підпис покаже «Не у відео», а редактор поставить камеру в звичний кут.</string>
 	<key>To hide one, click it on the timeline and press ⌫.</key>
 	<string>Щоб сховати одне з них, клацніть його на шкалі часу й натисніть ⌫.</string>
 	<key>To remove it again, untick Apply background to this image.</key>
@@ -6148,12 +6268,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Увімкнути автонаближення за клацаннями — наближення, додані вручну, лишаться</string>
 	<key>Turn on Auto-zoom on clicks.</key>
 	<string>Увімкніть «Автонаближення за клацаннями».</string>
+	<key>Turn on Camera in the recording bar.</key>
+	<string>Увімкніть «Камера» на панелі запису.</string>
 	<key>Turn on Camera in the recording bar. macOS asks once: click Allow.</key>
 	<string>Увімкніть «Камера» на панелі запису. macOS запитає один раз: клацніть «Дозволити».</string>
 	<key>Turn on Camera. A bubble with your face appears; it's recorded separately, so you can move and restyle it later.</key>
 	<string>Увімкніть «Камера». З’явиться бульбашка з вашим обличчям; вона записується окремо, тож згодом її можна перемістити й змінити її стиль.</string>
-	<key>Turn on Camera. A round bubble appears; drag it where you like.</key>
-	<string>Увімкніть «Камера». З’явиться кругла бульбашка — перетягніть її куди завгодно.</string>
+	<key>Turn on Camera. A preview of your camera appears, in the Camera shape chosen above the bar.</key>
+	<string>Увімкніть «Камера». З’явиться перегляд камери у формі, вибраній над панеллю.</string>
 	<key>Turn on Intro card or Outro card.</key>
 	<string>Увімкніть «Вступна заставка» чи «Завершальна заставка».</string>
 	<key>Turn on Keep face centered. LF Studios looks for your face once, with progress and Cancel.</key>
@@ -6724,8 +6846,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Wi-Fi</string>
 	<key>Wi-Fi QR found</key>
 	<string>Знайдено QR-код Wi-Fi</string>
-	<key>Wide</key>
-	<string>Широка</string>
 	<key>Width</key>
 	<string>Ширина</string>
 	<key>Width and height, like 3:2 or 2.39:1.</key>
@@ -6746,6 +6866,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>«Вікно», «Весь екран» і «Вибрати область вручну»: записати інакше.</string>
 	<key>Windows in front of it don't get in the way: only the window you click is captured.</key>
 	<string>Вікна попереду не заважають: знімається лише те вікно, яке ви клацнули.</string>
+	<key>With Camera on and Layout ▸ Split screen, the frame is the screen's part of the video, and the camera's part shows beside it.</key>
+	<string>З увімкненою камерою й «Макет ▸ Розділений екран» рамка — це частина екрана у відео, а частина камери показана поруч.</string>
 	<key>With a transcript, you can also cut by deleting words: Captions ▸ Edit by text.</key>
 	<string>Якщо є розшифровка, можна вирізати й видаляючи слова: Субтитри ▸ Монтаж за текстом.</string>
 	<key>With more than one screen, click Record next to the one you want.</key>
@@ -6918,10 +7040,18 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>навести чи змінити розмір</string>
 	<key>all shortcuts</key>
 	<string>усі скорочення</string>
+	<key>bottom</key>
+	<string>унизу</string>
+	<key>bottom left</key>
+	<string>унизу ліворуч</string>
+	<key>bottom right</key>
+	<string>унизу праворуч</string>
 	<key>captions</key>
 	<string>субтитри</string>
 	<key>captions burned in</key>
 	<string>вшиті субтитри</string>
+	<key>center</key>
+	<string>у центрі</string>
 	<key>chapters</key>
 	<string>розділи</string>
 	<key>cut by editing words</key>
@@ -6938,6 +7068,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>одночасно із записом</string>
 	<key>intro card</key>
 	<string>вступна заставка</string>
+	<key>left</key>
+	<string>ліворуч</string>
 	<key>loops</key>
 	<string>повторюється</string>
 	<key>macOS asks once, the first time you take a screenshot. You can also allow it here first.</key>
@@ -6988,6 +7120,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>відтворити</string>
 	<key>pointer</key>
 	<string>курсор</string>
+	<key>right</key>
+	<string>праворуч</string>
 	<key>s</key>
 	<string>с</string>
 	<key>select a part to cut</key>
@@ -7010,6 +7144,12 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>відео</string>
 	<key>this recording</key>
 	<string>цей запис</string>
+	<key>top</key>
+	<string>угорі</string>
+	<key>top left</key>
+	<string>угорі ліворуч</string>
+	<key>top right</key>
+	<string>угорі праворуч</string>
 	<key>trim to the playhead</key>
 	<string>підрізати до покажчика відтворення</string>
 	<key>type</key>

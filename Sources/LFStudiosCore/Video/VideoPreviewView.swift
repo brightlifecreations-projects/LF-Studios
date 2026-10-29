@@ -301,7 +301,8 @@ struct VideoStageInteractionLayer: View {
 
     @State private var aimOrigin: (id: UUID, centerX: Double, centerY: Double, scale: Double)?
     @State private var overlayOrigin: VideoDemoOverlayEffect?
-    @State private var bubbleDrag: CGSize?
+    /// The camera being dragged: by which handle, and where it is now.
+    @State private var bubbleDrag: (handle: VideoCameraHandle, rect: CGRect)?
     @State private var hoveringBubble = false
     /// A press on the picture: whether its first moment was handled, and
     /// the annotation it landed on (nil: empty picture).
@@ -364,8 +365,13 @@ struct VideoStageInteractionLayer: View {
 
             // The bubble handle only where the bubble is (not during a full
             // camera, side by side, or hidden stretch).
-            if let webcam = model.plan.webcam, webcam.visible, !model.isAimingZoom, model.plan.cameraLayout(at: clock.time) == nil, model.plan.hasCameraFootage(at: clock.time) {
+            if let webcam = model.plan.webcam, webcam.visible, !model.isAimingZoom, model.plan.showsBubble(at: clock.time), model.plan.hasCameraFootage(at: clock.time) {
                 webcamHandle(webcam)
+            }
+
+            // Split screen's divider, while the split shows in full.
+            if let webcam = model.plan.webcam, !model.isAimingZoom, !model.isPlaying, showsSplit(webcam) {
+                splitDivider(webcam.effectiveSplit)
             }
 
             // Captions and shortcut keys, dragged anywhere (VideoTextHandles.swift).
@@ -471,43 +477,84 @@ struct VideoStageInteractionLayer: View {
         return CGRect(x: rect.minX, y: viewSize.height - rect.maxY, width: rect.width, height: rect.height)
     }
 
-    private func nearestAnchor(to point: CGPoint, _ settings: VideoWebcamSettings) -> VideoWebcamSettings.Anchor {
-        VideoWebcamSettings.Anchor.allCases.min { a, b in
-            var sa = settings
-            sa.anchor = a
-            var sb = settings
-            sb.anchor = b
-            let ra = bubbleRect(sa)
-            let rb = bubbleRect(sb)
-            return hypot(ra.midX - point.x, ra.midY - point.y) < hypot(rb.midX - point.x, rb.midY - point.y)
-        } ?? settings.anchor
+    // MARK: Split screen's divider
+
+    /// The split is on screen in full (not on its way in or out).
+    private func showsSplit(_ webcam: VideoWebcamSettings) -> Bool {
+        guard webcam.visible, model.plan.hasCameraFootage(at: clock.time) else { return false }
+        if let region = model.plan.cameraLayout(at: clock.time) {
+            return region.layout == .sideBySide && webcam.split != nil && region.progress >= 0.999
+        }
+        return webcam.effectiveLayout == .split
     }
 
-    /// Drag the camera anywhere — it snaps to the nearest of eight spots.
+    /// Drag it between 30/70 and 70/30; one ⌘Z per drag.
+    private func splitDivider(_ split: VideoWebcamSettings.Split) -> some View {
+        let size = viewSize
+        let sideBySide = VideoSplitLayout.isSideBySide(size)
+        let position = VideoSplitLayout.dividerPosition(split, in: size)
+        let grab: CGFloat = 14
+        return ZStack {
+            Capsule()
+                .fill(Color.white.opacity(0.92))
+                .overlay(Capsule().strokeBorder(VideoEditorTheme.camera, lineWidth: 1.5))
+                .frame(width: sideBySide ? 6 : 44, height: sideBySide ? 44 : 6)
+        }
+        .frame(width: sideBySide ? grab : size.width, height: sideBySide ? size.height : grab)
+        .contentShape(Rectangle())
+        .offset(x: sideBySide ? position * size.width - grab / 2 : 0, y: sideBySide ? 0 : position * size.height - grab / 2)
+        .onHover { inside in (inside ? (sideBySide ? NSCursor.resizeLeftRight : NSCursor.resizeUpDown) : NSCursor.arrow).set() }
+        .gesture(
+            DragGesture(minimumDistance: 1, coordinateSpace: .named(Self.space))
+                .onChanged { value in
+                    let at = sideBySide ? value.location.x / max(size.width, 1) : value.location.y / max(size.height, 1)
+                    let share = VideoSplitLayout.share(forDivider: at, split, in: size)
+                    model.setStyle(coalesce: "split-divider") {
+                        $0.webcam.split = $0.webcam.effectiveSplit
+                        $0.webcam.split?.cameraShare = share
+                    }
+                }
+                .onEnded { _ in model.endGesture() }
+        )
+        .help(L("Drag to change how much of the video the camera takes"))
+        .accessibilityLabel(L("Split screen divider"))
+    }
+
+    /// The camera after a drag: moved or resized (a fixed shape keeps its
+    /// ratio, Free doesn't unless ⇧ is held), snapped to the video's
+    /// corners, edges and center, kept inside the video.
+    private func draggedBubble(_ rect: CGRect, handle: VideoCameraHandle, by delta: CGSize, settings: VideoWebcamSettings, shift: Bool) -> CGRect {
+        let bounds = CGRect(origin: .zero, size: viewSize)
+        let keepsShape = settings.shape != .free || shift
+        let aspect: CGFloat? = keepsShape ? (settings.shape == .free ? rect.width / max(rect.height, 1) : settings.effectiveAspect) : nil
+        let moved = VideoCameraPreviewGeometry.resized(rect, handle: handle, by: delta, aspect: aspect, minimum: 24, within: bounds)
+        let short = min(viewSize.width, viewSize.height)
+        let snapped = VideoCameraPreviewGeometry.snapped(moved, handle: handle, in: bounds, margin: (short * 0.04).rounded(), threshold: 7, keepsShape: keepsShape)
+        return VideoCameraPreviewGeometry.resized(snapped, handle: .move, by: .zero, aspect: nil, minimum: 24, within: bounds)
+    }
+
+    /// Drag the camera anywhere (it snaps to the corners, edges and
+    /// center); drag its edges and corners to resize it. One undo per drag.
     private func webcamHandle(_ settings: VideoWebcamSettings) -> some View {
         let rect = bubbleRect(settings)
-        let shown = rect.offsetBy(dx: bubbleDrag?.width ?? 0, dy: bubbleDrag?.height ?? 0)
-        let radius = VideoFrameRenderer.webcamCornerRadius(settings, rect: rect)
-        let target: CGRect? = bubbleDrag.map { drag in
-            var snapped = settings
-            snapped.anchor = nearestAnchor(to: CGPoint(x: rect.midX + drag.width, y: rect.midY + drag.height), settings)
-            return bubbleRect(snapped)
-        }
+        let shown = bubbleDrag?.rect ?? rect
+        let radius = VideoFrameRenderer.webcamCornerRadius(settings, rect: shown)
+        let showsHandles = !model.isPlaying && (hoveringBubble || bubbleDrag != nil || model.inspectorTab == .camera)
         return ZStack(alignment: .topLeading) {
-            if let target {
+            if bubbleDrag != nil {
                 RoundedRectangle(cornerRadius: radius, style: .continuous)
                     .fill(VideoEditorTheme.camera.opacity(0.18))
                     .overlay(RoundedRectangle(cornerRadius: radius, style: .continuous).strokeBorder(VideoEditorTheme.camera, style: StrokeStyle(lineWidth: 2, dash: [6, 4])))
-                    .frame(width: target.width, height: target.height)
-                    .offset(x: target.minX, y: target.minY)
+                    .frame(width: shown.width, height: shown.height)
+                    .offset(x: shown.minX, y: shown.minY)
                     .allowsHitTesting(false)
             }
             RoundedRectangle(cornerRadius: radius, style: .continuous)
                 .strokeBorder(Color.white.opacity(bubbleDrag != nil ? 0.95 : (hoveringBubble ? 0.7 : 0)), lineWidth: 2)
                 .background(RoundedRectangle(cornerRadius: radius, style: .continuous).fill(Color.white.opacity(bubbleDrag != nil ? 0.12 : 0.001)))
-                .frame(width: shown.width, height: shown.height)
+                .frame(width: rect.width, height: rect.height)
                 .contentShape(RoundedRectangle(cornerRadius: radius, style: .continuous))
-                .offset(x: shown.minX, y: shown.minY)
+                .offset(x: rect.minX, y: rect.minY)
                 .onHover { inside in
                     hoveringBubble = inside
                     (inside ? NSCursor.openHand : NSCursor.arrow).set()
@@ -516,23 +563,53 @@ struct VideoStageInteractionLayer: View {
                     model.selection = .none
                     model.inspectorTab = .camera
                 }
-                .gesture(
-                    DragGesture(minimumDistance: 2, coordinateSpace: .global)
-                        .onChanged { value in
-                            bubbleDrag = value.translation
-                            NSCursor.closedHand.set()
+                .gesture(bubbleGesture(.move, rect: rect, settings: settings))
+                .help(L("Camera — drag to move it, drag its edges to resize it, click for options"))
+            if showsHandles {
+                ForEach(VideoCameraHandle.resizing, id: \.self) { handle in
+                    let unit = handle.unit
+                    Circle()
+                        .fill(Color.white)
+                        .overlay(Circle().strokeBorder(VideoEditorTheme.camera, lineWidth: 1.5))
+                        .frame(width: 10, height: 10)
+                        .frame(width: 22, height: 22)
+                        .contentShape(Rectangle())
+                        .offset(x: shown.minX + shown.width * unit.x - 11, y: shown.minY + shown.height * unit.y - 11)
+                        .onHover { inside in
+                            if inside { (handle.isCorner ? NSCursor.crosshair : ((handle.movesLeft || handle.movesRight) ? NSCursor.resizeLeftRight : NSCursor.resizeUpDown)).set() } else { NSCursor.arrow.set() }
                         }
-                        .onEnded { value in
-                            let anchor = nearestAnchor(to: CGPoint(x: rect.midX + value.translation.width, y: rect.midY + value.translation.height), settings)
-                            bubbleDrag = nil
-                            if anchor != settings.anchor {
-                                model.setStyle { $0.webcam.anchor = anchor }
-                            }
-                            NSCursor.openHand.set()
-                        }
-                )
-                .help(L("Camera — drag to move it, click for options"))
+                        .gesture(bubbleGesture(handle, rect: rect, settings: settings))
+                        .accessibilityLabel(L("Resize the camera"))
+                }
+            }
         }
+    }
+
+    private func bubbleGesture(_ handle: VideoCameraHandle, rect: CGRect, settings: VideoWebcamSettings) -> some Gesture {
+        DragGesture(minimumDistance: 2, coordinateSpace: .global)
+            .onChanged { value in
+                let shift = NSEvent.modifierFlags.contains(.shift)
+                bubbleDrag = (handle, draggedBubble(rect, handle: handle, by: value.translation, settings: settings, shift: shift))
+                if handle == .move { NSCursor.closedHand.set() }
+            }
+            .onEnded { value in
+                let shift = NSEvent.modifierFlags.contains(.shift)
+                let final = draggedBubble(rect, handle: handle, by: value.translation, settings: settings, shift: shift)
+                bubbleDrag = nil
+                guard final != rect else { return }
+                // Saved unshrunk: Shrink while zoomed makes it smaller now.
+                let full = VideoFrameRenderer.webcamRect(settings, outputSize: viewSize).width
+                let grow = full / max(rect.width, 1)
+                let size = viewSize
+                var placement = VideoCameraPreviewGeometry.placement(ofVideoRect: final, in: size)
+                placement.width *= Double(grow)
+                let freeAspect = settings.shape == .free && handle != .move ? Double(final.width / max(final.height, 1)) : nil
+                model.setStyle {
+                    $0.webcam.placement = placement
+                    if let freeAspect { $0.webcam.freeAspect = freeAspect }
+                }
+                if handle == .move { NSCursor.openHand.set() }
+            }
     }
 
     private func isVisibleNow(_ effect: VideoDemoOverlayEffect) -> Bool {

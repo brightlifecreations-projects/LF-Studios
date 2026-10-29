@@ -1,0 +1,650 @@
+{
+  "Camera shape": {
+    "de": "Kameraform",
+    "fr": "Forme de la caméra",
+    "zh-Hans": "摄像头形状",
+    "ru": "Форма камеры",
+    "uk": "Форма камери",
+    "ja": "カメラの形"
+  },
+  "Rounded rectangle": {
+    "de": "Abgerundetes Rechteck",
+    "fr": "Rectangle arrondi",
+    "zh-Hans": "圆角矩形",
+    "ru": "Скругленный прямоугольник",
+    "uk": "Заокруглений прямокутник",
+    "ja": "角丸長方形"
+  },
+  "Square (1:1)": {
+    "de": "Quadrat (1:1)",
+    "fr": "Carré (1:1)",
+    "zh-Hans": "正方形（1:1）",
+    "ru": "Квадрат (1:1)",
+    "uk": "Квадрат (1:1)",
+    "ja": "正方形（1:1）"
+  },
+  "Landscape (16:9)": {
+    "de": "Querformat (16:9)",
+    "fr": "Paysage (16:9)",
+    "zh-Hans": "横向（16:9）",
+    "ru": "Горизонтально (16:9)",
+    "uk": "Горизонтально (16:9)",
+    "ja": "横長（16:9）"
+  },
+  "Portrait (9:16)": {
+    "de": "Hochformat (9:16)",
+    "fr": "Portrait (9:16)",
+    "zh-Hans": "竖向（9:16）",
+    "ru": "Вертикально (9:16)",
+    "uk": "Вертикально (9:16)",
+    "ja": "縦長（9:16）"
+  },
+  "Select size": {
+    "de": "Größe wählen",
+    "fr": "Choisir la taille",
+    "zh-Hans": "选择大小",
+    "ru": "Выбрать размер",
+    "uk": "Вибрати розмір",
+    "ja": "サイズを選択"
+  },
+  "Camera shape: how the camera looks in the video. The preview shows it.": {
+    "de": "Kameraform: wie die Kamera im Video aussieht. Die Vorschau zeigt es.",
+    "fr": "Forme de la caméra : son apparence dans la vidéo. L’aperçu la montre.",
+    "zh-Hans": "摄像头形状：摄像头在视频中的样子。预览会显示出来。",
+    "ru": "Форма камеры: как камера выглядит в видео. Предпросмотр это показывает.",
+    "uk": "Форма камери: як камера виглядає у відео. Перегляд це показує.",
+    "ja": "カメラの形: ビデオでのカメラの見た目です。プレビューに表示されます。"
+  },
+  "Handles on the camera preview: drag an edge or corner to resize it, the middle to move it.": {
+    "de": "Griffe an der Kameravorschau: Zieh an einem Rand oder einer Ecke, um die Größe zu ändern, in der Mitte, um sie zu verschieben.",
+    "fr": "Des poignées sur l’aperçu de la caméra : faites glisser un bord ou un coin pour le redimensionner, le milieu pour le déplacer.",
+    "zh-Hans": "摄像头预览上的控制点：拖移边缘或角可调整大小，拖移中间可移动。",
+    "ru": "Маркеры на предпросмотре камеры: тяните за край или угол, чтобы изменить размер, за середину — чтобы переместить.",
+    "uk": "Маркери на перегляді камери: тягніть край або кут, щоб змінити розмір, середину — щоб перемістити.",
+    "ja": "カメラのプレビューにハンドルを表示します。端や角をドラッグするとサイズ変更、中央をドラッグすると移動します。"
+  },
+  "Not in video — position set in the editor": {
+    "de": "Nicht im Video – Position im Editor festlegen",
+    "fr": "Pas dans la vidéo — position choisie dans l’éditeur",
+    "zh-Hans": "不在视频中——位置在编辑器中设置",
+    "ru": "Не в видео — положение задается в редакторе",
+    "uk": "Не у відео — позицію задають у редакторі",
+    "ja": "ビデオ外 — 位置はエディタで設定"
+  },
+  "Camera: %@%% of width, %@": {
+    "de": "Kamera: %1$@ %% der Breite, %2$@",
+    "fr": "Caméra : %1$@ %% de la largeur, %2$@",
+    "zh-Hans": "摄像头：宽度的 %1$@%%，%2$@",
+    "ru": "Камера: %1$@ %% ширины, %2$@",
+    "uk": "Камера: %1$@ %% ширини, %2$@",
+    "ja": "カメラ: 幅の%1$@%%、%2$@"
+  },
+  "top left": {
+    "de": "oben links",
+    "fr": "en haut à gauche",
+    "zh-Hans": "左上",
+    "ru": "вверху слева",
+    "uk": "угорі ліворуч",
+    "ja": "左上"
+  },
+  "top": {
+    "de": "oben",
+    "fr": "en haut",
+    "zh-Hans": "上方",
+    "ru": "вверху",
+    "uk": "угорі",
+    "ja": "上"
+  },
+  "top right": {
+    "de": "oben rechts",
+    "fr": "en haut à droite",
+    "zh-Hans": "右上",
+    "ru": "вверху справа",
+    "uk": "угорі праворуч",
+    "ja": "右上"
+  },
+  "left": {
+    "de": "links",
+    "fr": "à gauche",
+    "zh-Hans": "左侧",
+    "ru": "слева",
+    "uk": "ліворуч",
+    "ja": "左"
+  },
+  "right": {
+    "de": "rechts",
+    "fr": "à droite",
+    "zh-Hans": "右侧",
+    "ru": "справа",
+    "uk": "праворуч",
+    "ja": "右"
+  },
+  "bottom left": {
+    "de": "unten links",
+    "fr": "en bas à gauche",
+    "zh-Hans": "左下",
+    "ru": "внизу слева",
+    "uk": "унизу ліворуч",
+    "ja": "左下"
+  },
+  "bottom": {
+    "de": "unten",
+    "fr": "en bas",
+    "zh-Hans": "下方",
+    "ru": "внизу",
+    "uk": "унизу",
+    "ja": "下"
+  },
+  "bottom right": {
+    "de": "unten rechts",
+    "fr": "en bas à droite",
+    "zh-Hans": "右下",
+    "ru": "внизу справа",
+    "uk": "унизу праворуч",
+    "ja": "右下"
+  },
+  "center": {
+    "de": "Mitte",
+    "fr": "au centre",
+    "zh-Hans": "中间",
+    "ru": "в центре",
+    "uk": "у центрі",
+    "ja": "中央"
+  },
+  "Drag the camera's edges on the video to change its width and height.": {
+    "de": "Zieh an den Rändern der Kamera im Video, um Breite und Höhe zu ändern.",
+    "fr": "Faites glisser les bords de la caméra sur la vidéo pour changer sa largeur et sa hauteur.",
+    "zh-Hans": "在视频上拖移摄像头的边缘可更改其宽度和高度。",
+    "ru": "Тяните края камеры на видео, чтобы изменить ширину и высоту.",
+    "uk": "Тягніть краї камери на відео, щоб змінити ширину й висоту.",
+    "ja": "ビデオ上でカメラの端をドラッグすると、幅と高さを変えられます。"
+  },
+  "Before recording: turn on Camera, then Camera shape above the recording bar. In the editor: Camera panel ▸ Camera ▸ Camera shape.": {
+    "de": "Vor der Aufnahme: „Kamera“ einschalten, dann „Kameraform“ über der Aufzeichnungsleiste. Im Editor: Panel „Kamera“ ▸ Kamera ▸ Kameraform.",
+    "fr": "Avant l’enregistrement : activez Caméra, puis Forme de la caméra au-dessus de la barre d’enregistrement. Dans l’éditeur : panneau Caméra ▸ Caméra ▸ Forme de la caméra.",
+    "zh-Hans": "录制前：打开“摄像头”，然后使用录制栏上方的“摄像头形状”。在编辑器中：“摄像头”面板 ▸ 摄像头 ▸ 摄像头形状。",
+    "ru": "Перед записью: включите «Камера», затем «Форма камеры» над панелью записи. В редакторе: панель «Камера» ▸ Камера ▸ Форма камеры.",
+    "uk": "Перед записом: увімкніть «Камера», потім «Форма камери» над панеллю запису. У редакторі: панель «Камера» ▸ Камера ▸ Форма камери.",
+    "ja": "収録前: “カメラ”をオンにして、収録バーの上の“カメラの形”を使います。エディタでは: “カメラ”パネル＞“カメラ”＞“カメラの形”。"
+  },
+  "Camera shape: Circle, Rounded rectangle, Square, Landscape, Portrait, 4:3, 3:4, Free, or Cutout (just you, without the background).": {
+    "de": "Kameraform: Kreis, Abgerundetes Rechteck, Quadrat, Querformat, Hochformat, 4:3, 3:4, Frei oder Freigestellt (nur du, ohne Hintergrund).",
+    "fr": "Forme de la caméra : Cercle, Rectangle arrondi, Carré, Paysage, Portrait, 4:3, 3:4, Libre ou Détouré (vous seul, sans l’arrière-plan).",
+    "zh-Hans": "摄像头形状：圆形、圆角矩形、正方形、横向、竖向、4:3、3:4、自由或抠像（只有你，没有背景）。",
+    "ru": "Форма камеры: Круг, Скругленный прямоугольник, Квадрат, Горизонтально, Вертикально, 4:3, 3:4, Произвольно или Силуэт (только вы, без фона).",
+    "uk": "Форма камери: Коло, Заокруглений прямокутник, Квадрат, Горизонтально, Вертикально, 4:3, 3:4, Довільне чи Силует (лише ви, без тла).",
+    "ja": "カメラの形: 円形、角丸長方形、正方形、横長、縦長、4:3、3:4、自由形式、切り抜き（背景なしで自分だけ）。"
+  },
+  "Choose Camera shape. The camera preview takes that shape right away, so you can frame yourself.": {
+    "de": "Wähle „Kameraform“. Die Kameravorschau nimmt die Form sofort an, so kannst du dich ins Bild setzen.",
+    "fr": "Choisissez Forme de la caméra. L’aperçu prend aussitôt cette forme, pour que vous puissiez vous cadrer.",
+    "zh-Hans": "选择“摄像头形状”。摄像头预览会立即变成该形状，方便你调整取景。",
+    "ru": "Выберите «Форма камеры». Предпросмотр сразу принимает эту форму, чтобы вы могли выстроить кадр.",
+    "uk": "Виберіть «Форма камери». Перегляд одразу набуває цієї форми, щоб ви могли скадрувати себе.",
+    "ja": "“カメラの形”を選びます。カメラのプレビューがすぐにその形になるので、自分の映り方を調整できます。"
+  },
+  "Choose the camera's shape and ratio before you record, and change it any time in the editor.": {
+    "de": "Wähle Form und Seitenverhältnis der Kamera vor der Aufnahme und ändere sie jederzeit im Editor.",
+    "fr": "Choisissez la forme et les proportions de la caméra avant d’enregistrer, et modifiez-les à tout moment dans l’éditeur.",
+    "zh-Hans": "在录制前选择摄像头的形状和比例，之后可随时在编辑器中更改。",
+    "ru": "Выберите форму и пропорции камеры перед записью и меняйте их в редакторе когда угодно.",
+    "uk": "Виберіть форму й пропорції камери перед записом і змінюйте їх у редакторі будь-коли.",
+    "ja": "収録前にカメラの形と比率を選び、エディタでいつでも変更できます。"
+  },
+  "Circle, Rounded rectangle, Square (1:1), Landscape (16:9), Portrait (9:16), 4:3, 3:4, or Free (any width and height).": {
+    "de": "Kreis, Abgerundetes Rechteck, Quadrat (1:1), Querformat (16:9), Hochformat (9:16), 4:3, 3:4 oder Frei (beliebige Breite und Höhe).",
+    "fr": "Cercle, Rectangle arrondi, Carré (1:1), Paysage (16:9), Portrait (9:16), 4:3, 3:4 ou Libre (n’importe quelle largeur et hauteur).",
+    "zh-Hans": "圆形、圆角矩形、正方形（1:1）、横向（16:9）、竖向（9:16）、4:3、3:4 或自由（任意宽度和高度）。",
+    "ru": "Круг, Скругленный прямоугольник, Квадрат (1:1), Горизонтально (16:9), Вертикально (9:16), 4:3, 3:4 или Произвольно (любые ширина и высота).",
+    "uk": "Коло, Заокруглений прямокутник, Квадрат (1:1), Горизонтально (16:9), Вертикально (9:16), 4:3, 3:4 чи Довільне (будь-які ширина й висота).",
+    "ja": "円形、角丸長方形、正方形（1:1）、横長（16:9）、縦長（9:16）、4:3、3:4、自由形式（幅と高さを自由に）。"
+  },
+  "Click Camera again to turn the camera off completely.": {
+    "de": "Klicke erneut auf „Kamera“, um die Kamera ganz auszuschalten.",
+    "fr": "Cliquez à nouveau sur Caméra pour l’éteindre complètement.",
+    "zh-Hans": "再次点按“摄像头”即可完全关闭摄像头。",
+    "ru": "Нажмите «Камера» еще раз, чтобы полностью выключить камеру.",
+    "uk": "Клацніть «Камера» ще раз, щоб повністю вимкнути камеру.",
+    "ja": "もう一度“カメラ”をクリックすると、カメラが完全にオフになります。"
+  },
+  "Drag the preview where you want the camera in the video: what it covers of the recording frame is where the camera goes.": {
+    "de": "Zieh die Vorschau dorthin, wo die Kamera im Video sein soll: Was sie vom Aufnahmerahmen bedeckt, ist der Platz der Kamera.",
+    "fr": "Faites glisser l’aperçu là où vous voulez la caméra dans la vidéo : ce qu’il couvre du cadre d’enregistrement est l’endroit où ira la caméra.",
+    "zh-Hans": "把预览拖到你想让摄像头在视频中出现的位置：它在录制框中盖住的地方，就是摄像头的位置。",
+    "ru": "Перетащите предпросмотр туда, где камера должна быть в видео: то, что он закрывает в рамке записи, и есть место камеры.",
+    "uk": "Перетягніть перегляд туди, де камера має бути у відео: те, що він закриває в рамці запису, і є місце камери.",
+    "ja": "ビデオ内でカメラを置きたい場所にプレビューをドラッグします。収録枠のうちプレビューが重なる場所が、カメラの位置になります。"
+  },
+  "LF Studios remembers your last shape for the next recording.": {
+    "de": "LF Studios merkt sich deine letzte Form für die nächste Aufnahme.",
+    "fr": "LF Studios retient votre dernière forme pour le prochain enregistrement.",
+    "zh-Hans": "LF Studios 会记住你上次的形状，用于下一次录制。",
+    "ru": "LF Studios запоминает последнюю форму для следующей записи.",
+    "uk": "LF Studios запам’ятовує останню форму для наступного запису.",
+    "ja": "LF Studiosは前回の形を次の収録のために記憶します。"
+  },
+  "Record as usual. The video opens in the editor with the camera there, in that shape and size.": {
+    "de": "Nimm wie gewohnt auf. Das Video öffnet sich im Editor mit der Kamera an dieser Stelle, in dieser Form und Größe.",
+    "fr": "Enregistrez comme d’habitude. La vidéo s’ouvre dans l’éditeur avec la caméra à cet endroit, de cette forme et de cette taille.",
+    "zh-Hans": "照常录制。视频会在编辑器中打开，摄像头就在那个位置，形状和大小也一样。",
+    "ru": "Записывайте как обычно. Видео откроется в редакторе с камерой на этом месте, такой же формы и размера.",
+    "uk": "Записуйте як зазвичай. Відео відкриється в редакторі з камерою на цьому місці, такої ж форми й розміру.",
+    "ja": "いつもどおり収録します。ビデオはその位置、形、サイズのカメラでエディタに開きます。"
+  },
+  "Record. The video opens in the editor with the camera in that shape.": {
+    "de": "Nimm auf. Das Video öffnet sich im Editor mit der Kamera in dieser Form.",
+    "fr": "Enregistrez. La vidéo s’ouvre dans l’éditeur avec la caméra de cette forme.",
+    "zh-Hans": "开始录制。视频会在编辑器中打开，摄像头就是这个形状。",
+    "ru": "Запишите. Видео откроется в редакторе с камерой этой формы.",
+    "uk": "Запишіть. Відео відкриється в редакторі з камерою цієї форми.",
+    "ja": "収録します。ビデオはその形のカメラでエディタに開きます。"
+  },
+  "Roundness, in the same menu: from sharp corners to round.": {
+    "de": "Rundung, im selben Menü: von spitzen Ecken bis rund.",
+    "fr": "Arrondi, dans le même menu : des coins vifs à l’arrondi.",
+    "zh-Hans": "圆角在同一菜单中：从直角到圆形。",
+    "ru": "Скругление в том же меню: от острых углов до круглых.",
+    "uk": "Заокруглення в тому ж меню: від гострих кутів до круглих.",
+    "ja": "同じメニューの“角の丸み”: 鋭い角から丸い角まで。"
+  },
+  "The camera is always recorded whole: the shape is only a setting, so you can change it later, and Creative Handoff gets the whole camera picture.": {
+    "de": "Die Kamera wird immer ganz aufgenommen: Die Form ist nur eine Einstellung, du kannst sie später ändern, und die Kreative Übergabe bekommt das ganze Kamerabild.",
+    "fr": "La caméra est toujours enregistrée en entier : la forme n’est qu’un réglage, vous pouvez la changer plus tard, et la Transmission créative reçoit toute l’image de la caméra.",
+    "zh-Hans": "摄像头始终完整录制：形状只是一项设置，所以你之后可以更改，创意交付也会得到完整的摄像头画面。",
+    "ru": "Камера всегда записывается целиком: форма — лишь настройка, ее можно изменить позже, а Творческая передача получает всю картинку камеры.",
+    "uk": "Камера завжди записується цілком: форма — лише налаштування, її можна змінити пізніше, а Творче передавання отримує всю картинку камери.",
+    "ja": "カメラは常に全体が収録されます。形は設定にすぎないので後から変更でき、クリエイティブ受け渡しにはカメラ映像全体が渡されます。"
+  },
+  "The camera is saved separately and whole, so in the editor you can move it, resize it, restyle it, or hide it.": {
+    "de": "Die Kamera wird separat und ganz gesichert, im Editor kannst du sie also verschieben, in der Größe ändern, neu gestalten oder ausblenden.",
+    "fr": "La caméra est enregistrée à part et en entier : dans l’éditeur, vous pouvez la déplacer, la redimensionner, changer son style ou la masquer.",
+    "zh-Hans": "摄像头会单独完整存储，所以你可以在编辑器中移动、调整大小、更改样式或隐藏它。",
+    "ru": "Камера сохраняется отдельно и целиком, поэтому в редакторе ее можно переместить, изменить размер и стиль или скрыть.",
+    "uk": "Камера зберігається окремо й цілком, тож у редакторі її можна перемістити, змінити розмір і стиль або сховати.",
+    "ja": "カメラは別に、全体が保存されるので、エディタで移動、サイズ変更、スタイル変更、非表示ができます。"
+  },
+  "The preview you see while recording never shows up in the screen recording itself.": {
+    "de": "Die Vorschau, die du beim Aufnehmen siehst, erscheint nie in der Bildschirmaufnahme selbst.",
+    "fr": "L’aperçu que vous voyez pendant l’enregistrement n’apparaît jamais dans l’enregistrement de l’écran lui-même.",
+    "zh-Hans": "录制时看到的预览绝不会出现在屏幕录制本身中。",
+    "ru": "Предпросмотр, который вы видите во время записи, никогда не попадает в саму запись экрана.",
+    "uk": "Перегляд, який ви бачите під час запису, ніколи не потрапляє в сам запис екрана.",
+    "ja": "収録中に見えるプレビューは、画面収録そのものには決して映りません。"
+  },
+  "To get the preview out of the way, drag it outside the frame: the label says “Not in video”, and the editor puts the camera in its usual corner.": {
+    "de": "Um die Vorschau aus dem Weg zu räumen, zieh sie aus dem Rahmen: Die Beschriftung zeigt „Nicht im Video“, und der Editor setzt die Kamera in ihre übliche Ecke.",
+    "fr": "Pour écarter l’aperçu, faites-le glisser hors du cadre : l’étiquette indique « Pas dans la vidéo », et l’éditeur place la caméra dans son coin habituel.",
+    "zh-Hans": "要让预览让开，请把它拖到录制框外：标签会显示“不在视频中”，编辑器会把摄像头放在它通常的角落。",
+    "ru": "Чтобы убрать предпросмотр с дороги, перетащите его за рамку: подпись покажет «Не в видео», а редактор поставит камеру в обычный угол.",
+    "uk": "Щоб прибрати перегляд з дороги, перетягніть його за рамку: підпис покаже «Не у відео», а редактор поставить камеру в звичний кут.",
+    "ja": "プレビューを邪魔にならない所へ動かすには、枠の外へドラッグします。ラベルに“ビデオ外”と表示され、エディタはカメラをいつもの隅に置きます。"
+  },
+  "Turn on Camera in the recording bar.": {
+    "de": "Schalte in der Aufzeichnungsleiste „Kamera“ ein.",
+    "fr": "Activez Caméra dans la barre d’enregistrement.",
+    "zh-Hans": "在录制栏中打开“摄像头”。",
+    "ru": "Включите «Камера» на панели записи.",
+    "uk": "Увімкніть «Камера» на панелі запису.",
+    "ja": "収録バーで“カメラ”をオンにします。"
+  },
+  "Turn on Camera. A preview of your camera appears, in the Camera shape chosen above the bar.": {
+    "de": "Schalte „Kamera“ ein. Eine Vorschau deiner Kamera erscheint, in der Kameraform, die über der Leiste gewählt ist.",
+    "fr": "Activez Caméra. Un aperçu de votre caméra apparaît, dans la Forme de la caméra choisie au-dessus de la barre.",
+    "zh-Hans": "打开“摄像头”。摄像头预览会出现，形状为录制栏上方选择的“摄像头形状”。",
+    "ru": "Включите «Камера». Появится предпросмотр камеры в форме, выбранной над панелью.",
+    "uk": "Увімкніть «Камера». З’явиться перегляд камери у формі, вибраній над панеллю.",
+    "ja": "“カメラ”をオンにします。バーの上で選んだ“カメラの形”でカメラのプレビューが表示されます。"
+  },
+  "A fixed shape (Circle, 1:1, 16:9…) keeps its shape as you resize. With Free, width and height change on their own; hold ⇧ to keep the shape.": {
+    "de": "Eine feste Form (Kreis, 1:1, 16:9 …) bleibt beim Ändern der Größe erhalten. Mit „Frei“ ändern sich Breite und Höhe einzeln; halte ⇧, um die Form zu behalten.",
+    "fr": "Une forme fixe (Cercle, 1:1, 16:9…) garde sa forme quand vous la redimensionnez. Avec Libre, largeur et hauteur changent séparément ; maintenez ⇧ pour garder la forme.",
+    "zh-Hans": "固定形状（圆形、1:1、16:9…）在调整大小时会保持形状。选择“自由”时，宽度和高度可分别更改；按住 ⇧ 可保持形状。",
+    "ru": "Фиксированная форма (Круг, 1:1, 16:9…) сохраняется при изменении размера. В режиме «Произвольно» ширина и высота меняются отдельно; удерживайте ⇧, чтобы сохранить форму.",
+    "uk": "Фіксована форма (Коло, 1:1, 16:9…) зберігається під час зміни розміру. У режимі «Довільне» ширина й висота змінюються окремо; утримуйте ⇧, щоб зберегти форму.",
+    "ja": "固定の形（円形、1:1、16:9…）はサイズを変えても形が保たれます。“自由形式”では幅と高さが別々に変わります。⇧を押したままにすると形が保たれます。"
+  },
+  "Back to the usual size, in the spot chosen above": {
+    "de": "Zurück zur üblichen Größe, an der oben gewählten Stelle",
+    "fr": "Revenir à la taille habituelle, à l’emplacement choisi ci-dessus",
+    "zh-Hans": "恢复为通常大小，位于上方选择的位置",
+    "ru": "Вернуть обычный размер в выбранном выше месте",
+    "uk": "Повернути звичний розмір у вибраному вище місці",
+    "ja": "上で選んだ位置で、いつものサイズに戻します"
+  },
+  "Before recording: Select size above the recording bar, with Camera on. In the editor: drag the camera on the preview.": {
+    "de": "Vor der Aufnahme: „Größe wählen“ über der Aufzeichnungsleiste, mit eingeschalteter Kamera. Im Editor: Zieh die Kamera in der Vorschau.",
+    "fr": "Avant l’enregistrement : Choisir la taille au-dessus de la barre d’enregistrement, avec Caméra activée. Dans l’éditeur : faites glisser la caméra dans l’aperçu.",
+    "zh-Hans": "录制前：打开“摄像头”后，使用录制栏上方的“选择大小”。在编辑器中：在预览上拖移摄像头。",
+    "ru": "Перед записью: «Выбрать размер» над панелью записи при включенной камере. В редакторе: перетаскивайте камеру в предпросмотре.",
+    "uk": "Перед записом: «Вибрати розмір» над панеллю запису при ввімкненій камері. У редакторі: перетягуйте камеру в перегляді.",
+    "ja": "収録前: “カメラ”をオンにして、収録バーの上の“サイズを選択”を使います。エディタでは: プレビュー上でカメラをドラッグします。"
+  },
+  "Camera — drag to move it, drag its edges to resize it, click for options": {
+    "de": "Kamera – ziehen zum Verschieben, an den Rändern ziehen zum Ändern der Größe, klicken für Optionen",
+    "fr": "Caméra — faites-la glisser pour la déplacer, tirez ses bords pour la redimensionner, cliquez pour les options",
+    "zh-Hans": "摄像头——拖移可移动，拖移边缘可调整大小，点按可查看选项",
+    "ru": "Камера — перетащите, чтобы переместить, тяните за края, чтобы изменить размер, нажмите для параметров",
+    "uk": "Камера — перетягніть, щоб перемістити, тягніть краї, щоб змінити розмір, клацніть для параметрів",
+    "ja": "カメラ — ドラッグで移動、端のドラッグでサイズ変更、クリックでオプション"
+  },
+  "Click Select size. Handles appear on the camera preview.": {
+    "de": "Klicke auf „Größe wählen“. An der Kameravorschau erscheinen Griffe.",
+    "fr": "Cliquez sur Choisir la taille. Des poignées apparaissent sur l’aperçu de la caméra.",
+    "zh-Hans": "点按“选择大小”。摄像头预览上会出现控制点。",
+    "ru": "Нажмите «Выбрать размер». На предпросмотре камеры появятся маркеры.",
+    "uk": "Клацніть «Вибрати розмір». На перегляді камери з’являться маркери.",
+    "ja": "“サイズを選択”をクリックします。カメラのプレビューにハンドルが表示されます。"
+  },
+  "Drag an edge or a corner to resize it, the middle to move it.": {
+    "de": "Zieh an einem Rand oder einer Ecke, um die Größe zu ändern, in der Mitte, um sie zu verschieben.",
+    "fr": "Faites glisser un bord ou un coin pour la redimensionner, le milieu pour la déplacer.",
+    "zh-Hans": "拖移边缘或角可调整大小，拖移中间可移动。",
+    "ru": "Тяните за край или угол, чтобы изменить размер, за середину — чтобы переместить.",
+    "uk": "Тягніть край або кут, щоб змінити розмір, середину — щоб перемістити.",
+    "ja": "端や角をドラッグするとサイズ変更、中央をドラッグすると移動します。"
+  },
+  "In the editor, the camera snaps to the corners, the edges and the center. Each drag is one ⌘Z. Reset size in Camera ▸ Position goes back to the usual size.": {
+    "de": "Im Editor rastet die Kamera an den Ecken, Rändern und der Mitte ein. Jedes Ziehen ist ein ⌘Z. „Größe zurücksetzen“ unter Kamera ▸ Position stellt die übliche Größe wieder her.",
+    "fr": "Dans l’éditeur, la caméra s’aimante aux coins, aux bords et au centre. Chaque glissement s’annule d’un ⌘Z. Réinitialiser la taille dans Caméra ▸ Position revient à la taille habituelle.",
+    "zh-Hans": "在编辑器中，摄像头会吸附到角、边缘和中间。每次拖移可用一次 ⌘Z 撤销。“摄像头 ▸ 位置”中的“重置大小”可恢复为通常大小。",
+    "ru": "В редакторе камера прилипает к углам, краям и центру. Каждое перетаскивание отменяется одним ⌘Z. «Сбросить размер» в Камера ▸ Положение возвращает обычный размер.",
+    "uk": "У редакторі камера прилипає до кутів, країв і центру. Кожне перетягування скасовується одним ⌘Z. «Скинути розмір» у Камера ▸ Позиція повертає звичний розмір.",
+    "ja": "エディタでは、カメラは角、端、中央に吸着します。ドラッグ1回は⌘Z 1回で取り消せます。“カメラ”＞“位置”の“サイズをリセット”でいつものサイズに戻ります。"
+  },
+  "Of the video's width": {
+    "de": "Der Breite des Videos",
+    "fr": "De la largeur de la vidéo",
+    "zh-Hans": "占视频宽度",
+    "ru": "От ширины видео",
+    "uk": "Від ширини відео",
+    "ja": "ビデオの幅に対して"
+  },
+  "Or drag the camera on the video: it snaps to the corners, edges and center. Drag its edges and corners to resize it.": {
+    "de": "Oder zieh die Kamera im Video: Sie rastet an Ecken, Rändern und der Mitte ein. Zieh an ihren Rändern und Ecken, um die Größe zu ändern.",
+    "fr": "Ou faites glisser la caméra sur la vidéo : elle s’aimante aux coins, aux bords et au centre. Tirez ses bords et ses coins pour la redimensionner.",
+    "zh-Hans": "也可以在视频上拖移摄像头：它会吸附到角、边缘和中间。拖移其边缘和角可调整大小。",
+    "ru": "Или перетащите камеру на видео: она прилипает к углам, краям и центру. Тяните за края и углы, чтобы изменить размер.",
+    "uk": "Або перетягніть камеру на відео: вона прилипає до кутів, країв і центру. Тягніть її краї й кути, щоб змінити розмір.",
+    "ja": "またはビデオ上でカメラをドラッグします。角、端、中央に吸着します。端や角をドラッグするとサイズを変えられます。"
+  },
+  "Position and Size: drag the camera on the preview, drag its edges and corners to resize it, or pick one of eight spots.": {
+    "de": "Position und Größe: Zieh die Kamera in der Vorschau, zieh an ihren Rändern und Ecken, um die Größe zu ändern, oder wähle eine von acht Stellen.",
+    "fr": "Position et Taille : faites glisser la caméra dans l’aperçu, tirez ses bords et ses coins pour la redimensionner, ou choisissez l’un des huit emplacements.",
+    "zh-Hans": "位置和大小：在预览上拖移摄像头，拖移其边缘和角可调整大小，或选取八个位置之一。",
+    "ru": "Положение и размер: перетащите камеру в предпросмотре, тяните за края и углы, чтобы изменить размер, или выберите одно из восьми мест.",
+    "uk": "Позиція й розмір: перетягніть камеру в перегляді, тягніть її краї й кути, щоб змінити розмір, або виберіть одне з восьми місць.",
+    "ja": "位置とサイズ: プレビュー上でカメラをドラッグし、端や角をドラッグしてサイズを変えるか、8つの位置から選びます。"
+  },
+  "Reset size": {
+    "de": "Größe zurücksetzen",
+    "fr": "Réinitialiser la taille",
+    "zh-Hans": "重置大小",
+    "ru": "Сбросить размер",
+    "uk": "Скинути розмір",
+    "ja": "サイズをリセット"
+  },
+  "Resize and place the camera by dragging, before you record and in the editor.": {
+    "de": "Ändere Größe und Platz der Kamera durch Ziehen, vor der Aufnahme und im Editor.",
+    "fr": "Redimensionnez et placez la caméra en la faisant glisser, avant d’enregistrer et dans l’éditeur.",
+    "zh-Hans": "通过拖移来调整摄像头的大小和位置，录制前和在编辑器中都可以。",
+    "ru": "Меняйте размер и место камеры перетаскиванием — перед записью и в редакторе.",
+    "uk": "Змінюйте розмір і місце камери перетягуванням — перед записом і в редакторі.",
+    "ja": "収録前とエディタで、ドラッグしてカメラのサイズと位置を決めます。"
+  },
+  "Resize the camera": {
+    "de": "Größe der Kamera ändern",
+    "fr": "Redimensionner la caméra",
+    "zh-Hans": "调整摄像头大小",
+    "ru": "Изменить размер камеры",
+    "uk": "Змінити розмір камери",
+    "ja": "カメラのサイズを変更"
+  },
+  "The label under it says how wide the camera is and where it goes in the video. The editor opens with exactly that.": {
+    "de": "Die Beschriftung darunter zeigt, wie breit die Kamera ist und wo sie im Video sitzt. Der Editor öffnet sich genau so.",
+    "fr": "L’étiquette en dessous indique la largeur de la caméra et sa place dans la vidéo. L’éditeur s’ouvre exactement ainsi.",
+    "zh-Hans": "下方的标签会说明摄像头的宽度以及它在视频中的位置。编辑器打开时正是这样。",
+    "ru": "Подпись под ней показывает ширину камеры и ее место в видео. Редактор откроется именно так.",
+    "uk": "Підпис під нею показує ширину камери та її місце у відео. Редактор відкриється саме так.",
+    "ja": "下のラベルに、カメラの幅とビデオ内での位置が表示されます。エディタはそのとおりに開きます。"
+  },
+  "%@ · Screen part of a %@ split video": {
+    "de": "%1$@ · Bildschirmteil eines geteilten %2$@-Videos",
+    "fr": "%1$@ · Partie écran d’une vidéo %2$@ partagée",
+    "zh-Hans": "%1$@ · %2$@ 分屏视频的屏幕部分",
+    "ru": "%1$@ · Часть экрана разделенного видео %2$@",
+    "uk": "%1$@ · Частина екрана розділеного відео %2$@",
+    "ja": "%1$@ · %2$@分割ビデオの画面部分"
+  },
+  "Adapt to this ratio turns side by side into one above the other: left becomes top, right becomes bottom.": {
+    "de": "„An dieses Format anpassen“ macht aus nebeneinander übereinander: Links wird oben, rechts wird unten.",
+    "fr": "Adapter à ce format transforme côte à côte en l’un au-dessus de l’autre : la gauche devient le haut, la droite le bas.",
+    "zh-Hans": "“适配此比例”会把并排改为上下排列：左侧变为上方，右侧变为下方。",
+    "ru": "«Адаптировать к формату» превращает «рядом» в «одно над другим»: левая часть становится верхней, правая — нижней.",
+    "uk": "«Адаптувати до формату» перетворює «поруч» на «одне над одним»: ліва частина стає верхньою, права — нижньою.",
+    "ja": "“この比率に合わせる”を使うと、横並びが上下の並びに変わります。左は上に、右は下になります。"
+  },
+  "Arrange what you'll show inside the frame: it fills the screen's part exactly, without stretching or black bars.": {
+    "de": "Richte im Rahmen ein, was du zeigen willst: Es füllt den Bildschirmteil genau aus, ohne Verzerrung oder schwarze Balken.",
+    "fr": "Disposez ce que vous allez montrer dans le cadre : il remplit exactement la partie écran, sans étirement ni bandes noires.",
+    "zh-Hans": "在录制框中摆放你要展示的内容：它会正好填满屏幕部分，不会拉伸，也没有黑边。",
+    "ru": "Разместите в рамке то, что будете показывать: оно точно заполнит часть экрана, без растяжения и черных полос.",
+    "uk": "Розмістіть у рамці те, що показуватимете: воно точно заповнить частину екрана, без розтягування й чорних смуг.",
+    "ja": "見せたいものを枠の中に並べます。画面部分にぴったり収まり、引き伸ばしや黒帯はありません。"
+  },
+  "Before recording: turn on Camera, then Layout ▸ Split screen above the recording bar. In the editor: Camera panel ▸ Layout.": {
+    "de": "Vor der Aufnahme: „Kamera“ einschalten, dann Layout ▸ Geteilter Bildschirm über der Aufzeichnungsleiste. Im Editor: Panel „Kamera“ ▸ Layout.",
+    "fr": "Avant l’enregistrement : activez Caméra, puis Disposition ▸ Écran partagé au-dessus de la barre d’enregistrement. Dans l’éditeur : panneau Caméra ▸ Disposition.",
+    "zh-Hans": "录制前：打开“摄像头”，然后在录制栏上方选择“布局 ▸ 分屏”。在编辑器中：“摄像头”面板 ▸ 布局。",
+    "ru": "Перед записью: включите «Камера», затем «Расположение ▸ Разделенный экран» над панелью записи. В редакторе: панель «Камера» ▸ Расположение.",
+    "uk": "Перед записом: увімкніть «Камера», потім «Макет ▸ Розділений екран» над панеллю запису. У редакторі: панель «Камера» ▸ Макет.",
+    "ja": "収録前: “カメラ”をオンにして、収録バーの上の“レイアウト”＞“分割画面”を選びます。エディタでは: “カメラ”パネル＞“レイアウト”。"
+  },
+  "Bubble": {
+    "de": "Blase",
+    "fr": "Bulle",
+    "zh-Hans": "气泡",
+    "ru": "Окошко",
+    "uk": "Бульбашка",
+    "ja": "ワイプ"
+  },
+  "Camera %@": {
+    "de": "Kamera %@",
+    "fr": "Caméra %@",
+    "zh-Hans": "摄像头 %@",
+    "ru": "Камера %@",
+    "uk": "Камера %@",
+    "ja": "カメラ %@"
+  },
+  "Camera only": {
+    "de": "Nur Kamera",
+    "fr": "Caméra seule",
+    "zh-Hans": "仅摄像头",
+    "ru": "Только камера",
+    "uk": "Тільки камера",
+    "ja": "カメラのみ"
+  },
+  "Camera side": {
+    "de": "Kameraseite",
+    "fr": "Côté de la caméra",
+    "zh-Hans": "摄像头位置",
+    "ru": "Сторона камеры",
+    "uk": "Бік камери",
+    "ja": "カメラの側"
+  },
+  "Camera side, Split size (from 30/70 to 70/30, 50/50 to start), and Gap, with the video's background in between.": {
+    "de": "Kameraseite, Aufteilung (von 30/70 bis 70/30, anfangs 50/50) und Abstand, mit dem Hintergrund des Videos dazwischen.",
+    "fr": "Côté de la caméra, Répartition (de 30/70 à 70/30, 50/50 au départ) et Espace, avec l’arrière-plan de la vidéo entre les deux.",
+    "zh-Hans": "摄像头位置、分屏比例（从 30/70 到 70/30，起始为 50/50）和间距，中间显示视频的背景。",
+    "ru": "Сторона камеры, Пропорции (от 30/70 до 70/30, сначала 50/50) и Промежуток, в котором виден фон видео.",
+    "uk": "Бік камери, Пропорції (від 30/70 до 70/30, спершу 50/50) і Проміжок, у якому видно тло відео.",
+    "ja": "“カメラの側”、“分割の比率”（30/70〜70/30、最初は50/50）、“間隔”（間にビデオの背景が見えます）。"
+  },
+  "Choose Layout ▸ Split screen. The frame becomes the screen's part, like 8:9 for a 16:9 video split in half, and the camera preview fills the camera's part.": {
+    "de": "Wähle Layout ▸ Geteilter Bildschirm. Der Rahmen wird zum Bildschirmteil, etwa 8:9 bei einem halbierten 16:9-Video, und die Kameravorschau füllt den Kamerateil.",
+    "fr": "Choisissez Disposition ▸ Écran partagé. Le cadre devient la partie écran, par exemple 8:9 pour une vidéo 16:9 coupée en deux, et l’aperçu de la caméra remplit la partie caméra.",
+    "zh-Hans": "选择“布局 ▸ 分屏”。录制框会变成屏幕部分，例如对半分的 16:9 视频为 8:9，摄像头预览会填满摄像头部分。",
+    "ru": "Выберите «Расположение ▸ Разделенный экран». Рамка станет частью экрана, например 8:9 для видео 16:9, разделенного пополам, а предпросмотр камеры заполнит часть камеры.",
+    "uk": "Виберіть «Макет ▸ Розділений екран». Рамка стане частиною екрана, наприклад 8:9 для відео 16:9, поділеного навпіл, а перегляд камери заповнить частину камери.",
+    "ja": "“レイアウト”＞“分割画面”を選びます。枠が画面部分（16:9のビデオを半分に分けるなら8:9など）になり、カメラのプレビューがカメラ部分を埋めます。"
+  },
+  "Creative Handoff's README.txt says where each part goes, in pixels, for your editing app.": {
+    "de": "Die README.txt der Kreativen Übergabe nennt für deine Schnitt-App in Pixeln, wohin jeder Teil gehört.",
+    "fr": "Le README.txt de la Transmission créative indique, en pixels, où va chaque partie, pour votre app de montage.",
+    "zh-Hans": "创意交付中的 README.txt 会以像素说明每个部分的位置，方便你在剪辑应用中使用。",
+    "ru": "README.txt Творческой передачи указывает в пикселях, где находится каждая часть, — для вашей программы монтажа.",
+    "uk": "README.txt Творчого передавання вказує в пікселях, де розміщена кожна частина, — для вашої програми монтажу.",
+    "ja": "クリエイティブ受け渡しのREADME.txtには、編集アプリのために各部分の位置がピクセル単位で書かれます。"
+  },
+  "Drag to change how much of the video the camera takes": {
+    "de": "Ziehen, um zu ändern, wie viel vom Video die Kamera einnimmt",
+    "fr": "Faites glisser pour changer la part de la vidéo occupée par la caméra",
+    "zh-Hans": "拖移可更改摄像头在视频中所占的比例",
+    "ru": "Перетащите, чтобы изменить, какую часть видео занимает камера",
+    "uk": "Перетягніть, щоб змінити, яку частину відео займає камера",
+    "ja": "ドラッグしてカメラがビデオに占める割合を変えます"
+  },
+  "Gap": {
+    "de": "Abstand",
+    "fr": "Espace",
+    "zh-Hans": "间距",
+    "ru": "Промежуток",
+    "uk": "Проміжок",
+    "ja": "間隔"
+  },
+  "Gap between the parts": {
+    "de": "Abstand zwischen den Teilen",
+    "fr": "Espace entre les parties",
+    "zh-Hans": "两部分之间的间距",
+    "ru": "Промежуток между частями",
+    "uk": "Проміжок між частинами",
+    "ja": "部分の間に間隔を空ける"
+  },
+  "In the editor, drag the divider on the video to change the split. Zooms happen inside the screen's part; captions go over the whole video.": {
+    "de": "Im Editor ziehst du den Trenner im Video, um die Aufteilung zu ändern. Zooms passieren im Bildschirmteil, Untertitel liegen über dem ganzen Video.",
+    "fr": "Dans l’éditeur, faites glisser le séparateur sur la vidéo pour changer la répartition. Les zooms ont lieu dans la partie écran ; les sous-titres couvrent toute la vidéo.",
+    "zh-Hans": "在编辑器中，拖移视频上的分隔线可更改分屏比例。缩放发生在屏幕部分内；字幕覆盖整个视频。",
+    "ru": "В редакторе перетаскивайте разделитель на видео, чтобы изменить пропорции. Масштабирование происходит внутри части экрана; субтитры идут поверх всего видео.",
+    "uk": "У редакторі перетягуйте роздільник на відео, щоб змінити пропорції. Масштабування відбувається в частині екрана; субтитри йдуть поверх усього відео.",
+    "ja": "エディタでは、ビデオ上の区切り線をドラッグして分割を変えます。ズームは画面部分の中で行われ、字幕はビデオ全体の上に表示されます。"
+  },
+  "Landscape videos (16:9, 4:3, 21:9) split side by side; square and vertical ones (1:1, 4:5, 9:16) one above the other.": {
+    "de": "Querformat-Videos (16:9, 4:3, 21:9) werden nebeneinander geteilt, quadratische und hochformatige (1:1, 4:5, 9:16) übereinander.",
+    "fr": "Les vidéos paysage (16:9, 4:3, 21:9) sont partagées côte à côte ; les carrées et verticales (1:1, 4:5, 9:16) l’une au-dessus de l’autre.",
+    "zh-Hans": "横向视频（16:9、4:3、21:9）左右分屏；方形和竖向视频（1:1、4:5、9:16）上下分屏。",
+    "ru": "Горизонтальные видео (16:9, 4:3, 21:9) делятся рядом, квадратные и вертикальные (1:1, 4:5, 9:16) — одно над другим.",
+    "uk": "Горизонтальні відео (16:9, 4:3, 21:9) діляться поруч, квадратні й вертикальні (1:1, 4:5, 9:16) — одне над одним.",
+    "ja": "横長のビデオ（16:9、4:3、21:9）は左右に、正方形や縦長のビデオ（1:1、4:5、9:16）は上下に分割されます。"
+  },
+  "Layout also has Screen only and Camera only. The screen and the camera are always both recorded, so you can change your mind later.": {
+    "de": "Unter „Layout“ gibt es auch „Nur Bildschirm“ und „Nur Kamera“. Bildschirm und Kamera werden immer beide aufgenommen, du kannst es dir also später anders überlegen.",
+    "fr": "Disposition propose aussi Écran seul et Caméra seule. L’écran et la caméra sont toujours enregistrés tous les deux : vous pouvez changer d’avis plus tard.",
+    "zh-Hans": "“布局”中还有“仅屏幕”和“仅摄像头”。屏幕和摄像头始终都会录制，所以你之后可以改变主意。",
+    "ru": "В «Расположении» есть также «Только экран» и «Только камера». Экран и камера всегда записываются оба, так что передумать можно позже.",
+    "uk": "У «Макеті» є також «Лише екран» і «Тільки камера». Екран і камера завжди записуються обидва, тож можна передумати пізніше.",
+    "ja": "“レイアウト”には“画面のみ”と“カメラのみ”もあります。画面とカメラは常に両方収録されるので、後から変えられます。"
+  },
+  "Layout: the camera in a bubble, split screen with the screen, or only one of them. Both are always recorded.": {
+    "de": "Layout: die Kamera in einer Blase, geteilter Bildschirm mit dem Bildschirm oder nur eines von beiden. Beides wird immer aufgenommen.",
+    "fr": "Disposition : la caméra dans une bulle, en écran partagé avec l’écran, ou l’un des deux seulement. Les deux sont toujours enregistrés.",
+    "zh-Hans": "布局：摄像头显示在气泡中、与屏幕分屏，或只显示其中之一。两者始终都会录制。",
+    "ru": "Расположение: камера в окошке, разделенный экран с экраном или только одно из них. Записывается всегда и то и другое.",
+    "uk": "Макет: камера в бульбашці, розділений екран з екраном або лише щось одне. Записується завжди і те, і те.",
+    "ja": "レイアウト: カメラをワイプで表示、画面と分割、またはどちらか一方のみ。どちらも常に収録されます。"
+  },
+  "Move the playhead and click Full camera, Side by side, or Hidden (on a split video, also Bubble).": {
+    "de": "Bewege die Abspielposition und klicke auf „Kamera im Vollbild“, „Nebeneinander“ oder „Verborgen“ (bei einem geteilten Video auch „Blase“).",
+    "fr": "Déplacez la tête de lecture et cliquez sur Caméra en plein écran, Côte à côte ou Masqué (sur une vidéo partagée, aussi Bulle).",
+    "zh-Hans": "移动播放头，然后点按“全屏摄像头”“并排”或“隐藏”（分屏视频还可选“气泡”）。",
+    "ru": "Переместите указатель воспроизведения и нажмите «Во весь кадр», «Рядом» или «Скрыта» (на разделенном видео еще «Окошко»).",
+    "uk": "Перемістіть курсор відтворення й клацніть «Лише камера», «Поруч» або «Сховано» (на розділеному відео ще «Бульбашка»).",
+    "ja": "再生ヘッドを動かして、“カメラ全面”、“横並び”、“非表示”（分割ビデオでは“ワイプ”も）をクリックします。"
+  },
+  "One above the other on this video. Drag the divider on the video to change the split; the background (Style) shows in the gap.": {
+    "de": "Bei diesem Video übereinander. Zieh den Trenner im Video, um die Aufteilung zu ändern; im Abstand zeigt sich der Hintergrund (Stil).",
+    "fr": "L’un au-dessus de l’autre sur cette vidéo. Faites glisser le séparateur sur la vidéo pour changer la répartition ; l’arrière-plan (Style) apparaît dans l’espace.",
+    "zh-Hans": "此视频为上下排列。拖移视频上的分隔线可更改比例；间距中显示背景（样式）。",
+    "ru": "На этом видео — одно над другим. Перетащите разделитель на видео, чтобы изменить пропорции; в промежутке виден фон (Стиль).",
+    "uk": "На цьому відео — одне над одним. Перетягніть роздільник на відео, щоб змінити пропорції; у проміжку видно тло (Стиль).",
+    "ja": "このビデオでは上下に並びます。ビデオ上の区切り線をドラッグして分割を変えます。間隔には背景（スタイル）が見えます。"
+  },
+  "Record. The video opens in the editor already split.": {
+    "de": "Nimm auf. Das Video öffnet sich im Editor bereits geteilt.",
+    "fr": "Enregistrez. La vidéo s’ouvre dans l’éditeur déjà partagée.",
+    "zh-Hans": "开始录制。视频在编辑器中打开时已经分屏。",
+    "ru": "Запишите. Видео откроется в редакторе уже разделенным.",
+    "uk": "Запишіть. Відео відкриється в редакторі вже розділеним.",
+    "ja": "収録します。ビデオはすでに分割された状態でエディタに開きます。"
+  },
+  "Screen only": {
+    "de": "Nur Bildschirm",
+    "fr": "Écran seul",
+    "zh-Hans": "仅屏幕",
+    "ru": "Только экран",
+    "uk": "Лише екран",
+    "ja": "画面のみ"
+  },
+  "Side by side on this video. Drag the divider on the video to change the split; the background (Style) shows in the gap.": {
+    "de": "Bei diesem Video nebeneinander. Zieh den Trenner im Video, um die Aufteilung zu ändern; im Abstand zeigt sich der Hintergrund (Stil).",
+    "fr": "Côte à côte sur cette vidéo. Faites glisser le séparateur sur la vidéo pour changer la répartition ; l’arrière-plan (Style) apparaît dans l’espace.",
+    "zh-Hans": "此视频为并排排列。拖移视频上的分隔线可更改比例；间距中显示背景（样式）。",
+    "ru": "На этом видео — рядом. Перетащите разделитель на видео, чтобы изменить пропорции; в промежутке виден фон (Стиль).",
+    "uk": "На цьому відео — поруч. Перетягніть роздільник на відео, щоб змінити пропорції; у проміжку видно тло (Стиль).",
+    "ja": "このビデオでは横に並びます。ビデオ上の区切り線をドラッグして分割を変えます。間隔には背景（スタイル）が見えます。"
+  },
+  "Side by side uses Split screen's options (Camera panel ▸ Layout): the camera's side, the split size, and the gap. Each change eases in and out.": {
+    "de": "„Nebeneinander“ nutzt die Optionen des geteilten Bildschirms (Panel „Kamera“ ▸ Layout): Kameraseite, Aufteilung und Abstand. Jeder Wechsel wird weich ein- und ausgeblendet.",
+    "fr": "Côte à côte utilise les options de l’écran partagé (panneau Caméra ▸ Disposition) : le côté de la caméra, la répartition et l’espace. Chaque changement se fait en douceur.",
+    "zh-Hans": "“并排”使用分屏的选项（“摄像头”面板 ▸ 布局）：摄像头位置、分屏比例和间距。每次切换都会平滑过渡。",
+    "ru": "«Рядом» использует параметры разделенного экрана (панель «Камера» ▸ Расположение): сторону камеры, пропорции и промежуток. Каждая смена происходит плавно.",
+    "uk": "«Поруч» використовує параметри розділеного екрана (панель «Камера» ▸ Макет): бік камери, пропорції й проміжок. Кожна зміна відбувається плавно.",
+    "ja": "“横並び”は分割画面のオプション（“カメラ”パネル＞“レイアウト”）を使います: カメラの側、分割の比率、間隔。切り替えはなめらかに行われます。"
+  },
+  "Split screen": {
+    "de": "Geteilter Bildschirm",
+    "fr": "Écran partagé",
+    "zh-Hans": "分屏",
+    "ru": "Разделенный экран",
+    "uk": "Розділений екран",
+    "ja": "分割画面"
+  },
+  "Split screen divider": {
+    "de": "Trenner des geteilten Bildschirms",
+    "fr": "Séparateur de l’écran partagé",
+    "zh-Hans": "分屏分隔线",
+    "ru": "Разделитель экрана",
+    "uk": "Роздільник екрана",
+    "ja": "分割画面の区切り線"
+  },
+  "Split size": {
+    "de": "Aufteilung",
+    "fr": "Répartition",
+    "zh-Hans": "分屏比例",
+    "ru": "Пропорции",
+    "uk": "Пропорції",
+    "ja": "分割の比率"
+  },
+  "The camera is still in the recording: choose another layout to show it.": {
+    "de": "Die Kamera ist weiterhin in der Aufnahme: Wähle ein anderes Layout, um sie zu zeigen.",
+    "fr": "La caméra est toujours dans l’enregistrement : choisissez une autre disposition pour l’afficher.",
+    "zh-Hans": "摄像头仍在录制内容中：选择其他布局即可显示它。",
+    "ru": "Камера по-прежнему есть в записи: выберите другое расположение, чтобы ее показать.",
+    "uk": "Камера й далі є в записі: виберіть інший макет, щоб її показати.",
+    "ja": "カメラは収録に残っています。表示するには別のレイアウトを選びます。"
+  },
+  "The screen and your camera each fill one part of the video: side by side, or one above the other.": {
+    "de": "Bildschirm und Kamera füllen je einen Teil des Videos: nebeneinander oder übereinander.",
+    "fr": "L’écran et votre caméra remplissent chacun une partie de la vidéo : côte à côte, ou l’un au-dessus de l’autre.",
+    "zh-Hans": "屏幕和摄像头各自填满视频的一部分：并排或上下排列。",
+    "ru": "Экран и камера заполняют каждый свою часть видео: рядом или одно над другим.",
+    "uk": "Екран і камера заповнюють кожен свою частину відео: поруч або одне над одним.",
+    "ja": "画面とカメラがそれぞれビデオの一部を埋めます。横並び、または上下に。"
+  },
+  "With Camera on and Layout ▸ Split screen, the frame is the screen's part of the video, and the camera's part shows beside it.": {
+    "de": "Mit eingeschalteter Kamera und Layout ▸ Geteilter Bildschirm ist der Rahmen der Bildschirmteil des Videos, und der Kamerateil wird daneben gezeigt.",
+    "fr": "Avec Caméra activée et Disposition ▸ Écran partagé, le cadre est la partie écran de la vidéo, et la partie caméra s’affiche à côté.",
+    "zh-Hans": "打开“摄像头”并选择“布局 ▸ 分屏”时，录制框是视频的屏幕部分，摄像头部分显示在旁边。",
+    "ru": "При включенной камере и «Расположение ▸ Разделенный экран» рамка — это часть экрана в видео, а часть камеры показана рядом.",
+    "uk": "З увімкненою камерою й «Макет ▸ Розділений екран» рамка — це частина екрана у відео, а частина камери показана поруч.",
+    "ja": "“カメラ”がオンで“レイアウト”＞“分割画面”のとき、枠はビデオの画面部分になり、その隣にカメラ部分が表示されます。"
+  }
+}

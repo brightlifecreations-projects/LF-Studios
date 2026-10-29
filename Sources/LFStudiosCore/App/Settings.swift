@@ -333,6 +333,17 @@ enum Settings {
         set { defaults.set(newValue, forKey: "recordingCamera") }
     }
 
+    /// The camera's shape, roundness, and place in the frame, as last chosen
+    /// in the recording bar (the next recording starts from it).
+    static var recordingCameraSetup: VideoRecordingCameraSetup {
+        get {
+            guard let data = defaults.data(forKey: "recordingCameraSetup"),
+                  let setup = try? JSONDecoder().decode(VideoRecordingCameraSetup.self, from: data) else { return VideoRecordingCameraSetup() }
+            return setup
+        }
+        set { defaults.set(try? JSONEncoder().encode(newValue), forKey: "recordingCameraSetup") }
+    }
+
     static var recordingCameraDeviceID: String {
         get { defaults.string(forKey: "recordingCameraDeviceID") ?? "" }
         set { defaults.set(newValue, forKey: "recordingCameraDeviceID") }

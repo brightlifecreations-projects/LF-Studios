@@ -17,7 +17,7 @@ enum VideoHandoffReadme {
     /// The README, in English like the file names: it travels to other
     /// people and editing apps. `durations` are measured from the written
     /// files (planned ones otherwise).
-    static func text(plan: VideoHandoffPlan, name: String, date: Date = Date(), appVersion: String?, durations: [String: Double] = [:], written: Set<String>? = nil, markers: [VideoPlacedMarker] = [], timelineDuration: Double = 0) -> String {
+    static func text(plan: VideoHandoffPlan, name: String, date: Date = Date(), appVersion: String?, durations: [String: Double] = [:], written: Set<String>? = nil, markers: [VideoPlacedMarker] = [], timelineDuration: Double = 0, split: VideoHandoffSplit? = nil) -> String {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "yyyy-MM-dd HH:mm"
@@ -74,6 +74,10 @@ enum VideoHandoffReadme {
             }
             lines.append("  The timeline files point at this folder where it is now: if you move it, relink the media in the editing app.")
         }
+        if let split {
+            lines.append("")
+            lines.append(contentsOf: split.readme)
+        }
         if !plan.skipped.isEmpty {
             lines.append("")
             lines.append("NOT INCLUDED")
@@ -82,6 +86,58 @@ enum VideoHandoffReadme {
         lines.append("")
         return lines.joined(separator: "\n")
     }
+}
+
+// MARK: - Split screen
+
+/// A split-screen video in a handoff: the whole video's size and where the
+/// screen and the camera go in it, in pixels with the origin at the top
+/// left (as editing apps measure). README.txt spells it out; the timeline
+/// files are that size.
+struct VideoHandoffSplit: Equatable {
+    let video: CGSize
+    let screen: CGRect
+    let camera: CGRect
+    let sideBySide: Bool
+
+    /// Nil unless the whole video is split screen with a camera.
+    static func make(project: VideoDemoProject, recordingSize: CGSize) -> VideoHandoffSplit? {
+        guard project.webcam.visible, project.webcam.effectiveLayout == .split, recordingSize.width > 1, recordingSize.height > 1 else { return nil }
+        let canvas = project.canvasSize()
+        let sideBySide = VideoSplitLayout.isSideBySide(canvas)
+        func even(_ value: CGFloat) -> CGFloat { max(2, (value / 2).rounded() * 2) }
+        // Recorded as the screen's part: the whole video is wider (or
+        // taller) than the recording; otherwise the recording's size.
+        let video: CGSize
+        if sideBySide {
+            let height = recordingSize.height
+            video = CGSize(width: even(height * canvas.width / canvas.height), height: height)
+        } else {
+            let width = recordingSize.width
+            video = CGSize(width: width, height: even(width * canvas.height / canvas.width))
+        }
+        let parts = VideoSplitLayout.parts(project.webcam.effectiveSplit, in: video)
+        func topDown(_ rect: CGRect) -> CGRect { CGRect(x: rect.minX, y: video.height - rect.maxY, width: rect.width, height: rect.height) }
+        return VideoHandoffSplit(video: video, screen: topDown(parts.screen), camera: topDown(parts.camera), sideBySide: sideBySide)
+    }
+
+    // l10n-ignore-begin: README.txt is written in English
+    var readme: [String] {
+        func box(_ rect: CGRect) -> String {
+            "\(Int(rect.width)) × \(Int(rect.height)) at x \(Int(rect.minX)), y \(Int(rect.minY))"
+        }
+        let sides = sideBySide
+            ? (screen.minX < camera.minX ? ("left", "right") : ("right", "left"))
+            : (screen.minY < camera.minY ? ("top", "bottom") : ("bottom", "top"))
+        return [
+            "SPLIT SCREEN",
+            "  The video is split \(sideBySide ? "side by side" : "one above the other"): the screen on the \(sides.0), the camera on the \(sides.1). The timeline files are \(Int(video.width)) × \(Int(video.height)), like the finished video.",
+            "  Screen: \(box(screen)), filled (scaled to cover its part, centered, the rest cropped).",
+            "  Camera: \(box(camera)), filled the same way.",
+            "  Pixels from the top left. The timeline files place the clips in time; set this position, scale and crop in the editing app (Final Cut Pro: Transform and Crop; Premiere Pro: Motion and Crop; DaVinci Resolve: Transform and Cropping). Layout changes on the Camera lane are in the finished video only.",
+        ]
+    }
+    // l10n-ignore-end
 }
 
 // MARK: - Timelines
@@ -229,7 +285,7 @@ enum VideoHandoffTimeline {
     /// storyline as long as the video, every clip connected to it in its lane.
     static func fcpxml(plan: VideoHandoffPlan, input: VideoHandoffInput, folder: URL, durations: [String: Double]) -> String {
         let base = VideoHandoffTimebase(fps: input.frameRate)
-        let size = input.recordings.first?.size ?? CGSize(width: 1920, height: 1080)
+        let size = input.sequenceSize
         let clips = clips(plan: plan, input: input)
         let total = input.timelineDuration
         let files = Array(Set(clips.map(\.file))).sorted()
@@ -290,7 +346,7 @@ enum VideoHandoffTimeline {
     /// Final Cut Pro 7 XML (xmeml 4), which Adobe Premiere Pro imports.
     static func premiereXML(plan: VideoHandoffPlan, input: VideoHandoffInput, folder: URL, durations: [String: Double]) -> String {
         let base = VideoHandoffTimebase(fps: input.frameRate)
-        let size = input.recordings.first?.size ?? CGSize(width: 1920, height: 1080)
+        let size = input.sequenceSize
         let clips = clips(plan: plan, input: input)
         let total = base.frames(input.timelineDuration)
         let rate = "<rate><timebase>\(base.timebase)</timebase><ntsc>\(base.isNTSC ? "TRUE" : "FALSE")</ntsc></rate>"

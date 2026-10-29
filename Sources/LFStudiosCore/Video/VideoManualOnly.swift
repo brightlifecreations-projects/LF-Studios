@@ -27,6 +27,8 @@ extension VideoWebcamSettings {
         var webcam = VideoWebcamSettings()
         webcam.mirror = false
         webcam.shrinkWhenZoomed = false
+        // Side by side (and Split screen) as 1.10.0 draws them: 50/50.
+        webcam.split = VideoWebcamSettings.Split()
         return webcam
     }
 }

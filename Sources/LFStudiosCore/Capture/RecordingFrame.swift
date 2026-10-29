@@ -306,7 +306,14 @@ final class RecordingFrameController {
     private(set) var ratio: RecordingFrameRatio
     private(set) var rect: CGRect
 
-    /// The frame moved, changed size or moved to another display.
+    /// Split screen (the camera on, Layout ▸ Split screen): the frame is
+    /// the whole video, what's recorded is the screen's part of it.
+    var split: VideoWebcamSettings.Split? {
+        didSet { if split != oldValue { apply(rect, save: false) } }
+    }
+
+    /// The frame moved, changed size or moved to another display: what's
+    /// recorded (the screen's part, when split).
     var changeHandler: ((CGRect, NSScreen) -> Void)?
     /// Esc, ⌃⌘Esc: the setup ends.
     var cancelHandler: (() -> Void)?
@@ -336,6 +343,31 @@ final class RecordingFrameController {
             let pixels = RecordingFrameGeometry.defaultPixels(ratio, in: available)
             rect = RecordingFrameGeometry.centered(pixels, screenFrame: screen.frame, scale: screen.backingScaleFactor)
         }
+    }
+
+    /// What's recorded: the frame, or with Split screen the screen's part
+    /// of it, in whole even pixels.
+    var recordedRect: CGRect {
+        guard let split else { return rect }
+        let part = VideoSplitLayout.screenPixels(split, video: CGSize(width: pixels.width, height: pixels.height))
+        return CGRect(x: rect.minX + part.minX / scale, y: rect.minY + part.minY / scale, width: part.width / scale, height: part.height / scale)
+    }
+
+    /// Split screen: the camera's part of the frame (nil: not split).
+    var cameraPartRect: CGRect? {
+        guard let split else { return nil }
+        let part = VideoSplitLayout.parts(split, in: CGSize(width: pixels.width, height: pixels.height)).camera
+        return CGRect(x: rect.minX + part.minX / scale, y: rect.minY + part.minY / scale, width: part.width / scale, height: part.height / scale)
+    }
+
+    var recordedPixels: RecordingFrameGeometry.Pixels { RecordingFrameGeometry.pixels(of: recordedRect, scale: scale) }
+
+    /// "960 × 1080 · Screen part of a 16:9 split video", or just the size.
+    var label: String {
+        let size = Self.sizeText(recordedPixels)
+        guard split != nil else { return size }
+        let whole = ratio.label
+        return L("\(size) · Screen part of a \(whole) split video")
     }
 
     var scale: CGFloat { max(screen.backingScaleFactor, 1) }
@@ -438,7 +470,7 @@ final class RecordingFrameController {
         rect = newRect
         layout()
         if save { remember() }
-        changeHandler?(rect, screen)
+        changeHandler?(recordedRect, screen)
     }
 
     private func remember() {
@@ -499,7 +531,7 @@ final class RecordingFrameController {
     }
 
     private func layout() {
-        dimWindow?.update(frame: rect, label: Self.sizeText(pixels))
+        dimWindow?.update(frame: recordedRect, video: split == nil ? nil : rect, camera: cameraPartRect, label: label)
         for window in handleWindows {
             window.setFrame(Self.handleFrame(window.role, around: rect), display: true)
         }
@@ -543,11 +575,18 @@ final class RecordingFrameDimWindow: NSPanel {
         setFrame(screen.frame, display: true)
     }
 
-    func update(frame rect: CGRect, label: String) {
+    /// `rect` is what's recorded; with Split screen, `video` is the whole
+    /// video around it and `camera` the camera's part.
+    func update(frame rect: CGRect, video: CGRect? = nil, camera: CGRect? = nil, label: String) {
         dimView.hole = rect.offsetBy(dx: -frame.minX, dy: -frame.minY)
+        dimView.video = video?.offsetBy(dx: -frame.minX, dy: -frame.minY)
+        dimView.camera = camera?.offsetBy(dx: -frame.minX, dy: -frame.minY)
         dimView.label = label
         dimView.needsDisplay = true
     }
+
+    /// The camera's part as drawn, for tests (nil: not split).
+    var drawnCameraPart: CGRect? { dimView.camera }
 
     /// The frame's place as drawn, for tests (in the window's own points).
     var drawnFrame: CGRect { dimView.hole }
@@ -556,6 +595,9 @@ final class RecordingFrameDimWindow: NSPanel {
 @MainActor
 private final class RecordingFrameDimView: NSView {
     var hole: CGRect = .zero
+    /// Split screen: the whole video and the camera's part of it.
+    var video: CGRect?
+    var camera: CGRect?
     var label = ""
 
     override var isOpaque: Bool { false }
@@ -567,6 +609,23 @@ private final class RecordingFrameDimView: NSView {
         NSColor.black.withAlphaComponent(0.45).setFill()
         dim.fill()
 
+        if let camera {
+            // The camera's part: not recorded from the screen, the camera
+            // fills it in the video.
+            let part = NSBezierPath(rect: camera.insetBy(dx: 1, dy: 1))
+            part.lineWidth = 2
+            part.setLineDash([7, 5], count: 2, phase: 0)
+            NSColor.systemBlue.withAlphaComponent(0.95).setStroke()
+            part.stroke()
+            let attributes: [NSAttributedString.Key: Any] = [
+                .font: NSFont.systemFont(ofSize: 13, weight: .semibold),
+                .foregroundColor: NSColor.white.withAlphaComponent(0.92),
+            ]
+            let text = NSAttributedString(string: L("Camera"), attributes: attributes)
+            let size = text.size()
+            text.draw(at: CGPoint(x: camera.midX - size.width / 2, y: camera.midY - size.height / 2))
+        }
+
         // The border just outside the frame, so the frame's own pixels
         // show exactly what's recorded.
         let border = NSBezierPath(rect: hole.insetBy(dx: -1, dy: -1))
@@ -574,10 +633,11 @@ private final class RecordingFrameDimView: NSView {
         NSColor.white.withAlphaComponent(0.95).setStroke()
         border.stroke()
 
-        // Corner handles.
+        // Corner handles (on the whole video when it's split).
         NSColor.white.setFill()
         let size: CGFloat = 10
-        for corner in [CGPoint(x: hole.minX, y: hole.minY), CGPoint(x: hole.maxX, y: hole.minY), CGPoint(x: hole.minX, y: hole.maxY), CGPoint(x: hole.maxX, y: hole.maxY)] {
+        let handles = video ?? hole
+        for corner in [CGPoint(x: handles.minX, y: handles.minY), CGPoint(x: handles.maxX, y: handles.minY), CGPoint(x: handles.minX, y: handles.maxY), CGPoint(x: handles.maxX, y: handles.maxY)] {
             NSBezierPath(roundedRect: CGRect(x: corner.x - size / 2, y: corner.y - size / 2, width: size, height: size), xRadius: 2.5, yRadius: 2.5).fill()
         }
 
@@ -589,8 +649,9 @@ private final class RecordingFrameDimView: NSView {
         let text = NSAttributedString(string: label, attributes: attributes)
         let textSize = text.size()
         let pill = CGSize(width: textSize.width + 16, height: textSize.height + 6)
-        var origin = CGPoint(x: hole.minX, y: hole.maxY + 8)
-        if origin.y + pill.height > bounds.maxY - 4 { origin.y = hole.maxY - pill.height - 10; origin.x += 10 }
+        let top = video ?? hole
+        var origin = CGPoint(x: top.minX, y: top.maxY + 8)
+        if origin.y + pill.height > bounds.maxY - 4 { origin.y = hole.maxY - pill.height - 10; origin.x = hole.minX + 10 }
         let pillRect = CGRect(origin: origin, size: pill)
         NSColor.black.withAlphaComponent(0.72).setFill()
         NSBezierPath(roundedRect: pillRect, xRadius: pill.height / 2, yRadius: pill.height / 2).fill()

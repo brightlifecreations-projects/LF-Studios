@@ -73,13 +73,13 @@ final class CameraCapture {
             .appendingPathComponent("\(screenRecording.deletingPathExtension().lastPathComponent)-\(UUID().uuidString.prefix(8)).mov")
     }
 
-    /// Starts the camera and shows the bubble at the bottom-right of `rect`
-    /// (screen coordinates).
+    /// Starts the camera and shows the preview where the camera goes in
+    /// `rect`'s video (screen coordinates), in the shape last chosen.
     @discardableResult
     func start(deviceID: String, around rect: CGRect, on screen: NSScreen) async -> StartResult {
         if session != nil {
-            // A spot the user dragged the bubble to stays put.
-            if let bubble, !bubble.wasMovedByUser { bubble.place(around: rect, on: screen) }
+            // A spot the user dragged the preview to stays put.
+            bubble?.update(frame: rect, on: screen)
             return .started
         }
         guard await Self.requestAccess() else { return .denied }
@@ -112,8 +112,13 @@ final class CameraCapture {
 
         self.session = session
         self.pipeline = pipeline
-        let bubble = CameraBubbleWindow(session: session)
+        let bubble = CameraBubbleWindow(session: session, setup: Settings.recordingCameraSetup)
+        bubble.changed = { preview in
+            // Remembered for the next recording.
+            Settings.recordingCameraSetup = preview.currentSetup(frame: preview.frameRect)
+        }
         bubble.place(around: rect, on: screen)
+        bubble.showSplitPart(splitPart?.rect)
         bubble.orderFrontRegardless()
         self.bubble = bubble
         observe(session: session, device: device)
@@ -133,13 +138,54 @@ final class CameraCapture {
         guard !isRecording else { return }
         observers.forEach(NotificationCenter.default.removeObserver)
         observers.removeAll()
-        bubble?.orderOut(nil)
+        bubble?.close()
         bubble = nil
+        splitPart = nil
         pipeline = nil
         guard let session else { return }
         self.session = nil
         nonisolated(unsafe) let stopping = session
         DispatchQueue.global(qos: .userInitiated).async { stopping.stopRunning() }
+    }
+
+    // MARK: The preview's shape and place (the recording bar)
+
+    /// The recording frame moved or changed size.
+    func updateFrame(_ rect: CGRect, on screen: NSScreen) {
+        bubble?.update(frame: rect, on: screen)
+    }
+
+    /// Camera shape or Roundness changed in the recording bar.
+    func apply(_ setup: VideoRecordingCameraSetup) {
+        bubble?.apply(setup)
+    }
+
+    /// Select size: handles on the preview.
+    var showsSizeHandles: Bool {
+        get { bubble?.showsHandles ?? false }
+        set { bubble?.showsHandles = newValue }
+    }
+
+    /// Split screen with the frame bar: the camera's part of the frame (the
+    /// preview fills it) and the whole video's width / height. Nil when the
+    /// video isn't split, or there's no frame.
+    var splitPart: (rect: CGRect, videoAspect: Double)? {
+        didSet { bubble?.showSplitPart(splitPart?.rect) }
+    }
+
+    /// The camera's shape and place for a recording of `frame`, as the
+    /// preview shows it now (nil: no preview).
+    func setup(forRecording frame: CGRect) -> VideoRecordingCameraSetup? {
+        guard let bubble else { return nil }
+        var setup = bubble.currentSetup(frame: frame)
+        if setup.effectiveLayout == .split { setup.videoAspect = splitPart?.videoAspect }
+        return setup
+    }
+
+    /// Recording started: the preview stays, its label and handles go.
+    func hidePreviewControls() {
+        bubble?.showsHandles = false
+        bubble?.showsLabel = false
     }
 
     /// `onFirstFrame` gets the first written frame's host time.
@@ -341,20 +387,30 @@ final class CameraPipeline: NSObject, AVCaptureVideoDataOutputSampleBufferDelega
     }
 }
 
-/// The round, draggable camera preview shown while recording. Invisible to
-/// screen capture — the editor draws the camera from its own file.
+/// The camera preview shown before and while recording, in the shape
+/// chosen in the recording bar. Invisible to screen capture — the editor
+/// draws the camera from its own file. What it covers of the recording
+/// frame is where the camera goes in the video (VideoCameraSetup.swift);
+/// drag it outside the frame to get it out of the way.
 final class CameraBubbleWindow: NSPanel {
-    private static let diameter: CGFloat = 168
-
-    /// Set once the user drags the bubble: later placements leave it there.
+    /// Set once the user drags or resizes it: later placements leave it there.
     private(set) var wasMovedByUser = false
-    private var placedOrigin: CGPoint?
-    private var moveObserver: NSObjectProtocol?
+    /// The recording frame (screen points).
+    private(set) var frameRect: CGRect = .zero
+    private(set) var setup: VideoRecordingCameraSetup
+    /// Select size: handles on the edges and corners.
+    var showsHandles = false { didSet { bubbleView.showsHandles = showsHandles; updateLabel() } }
+    /// Told after the user moves or resizes it (the bar remembers it).
+    var changed: ((CameraBubbleWindow) -> Void)?
 
-    init(session: AVCaptureSession) {
-        let size = Self.diameter
+    private let bubbleView: CameraBubbleView
+    private let labelWindow = CameraBubbleLabelWindow()
+
+    init(session: AVCaptureSession, setup: VideoRecordingCameraSetup) {
+        self.setup = setup
+        bubbleView = CameraBubbleView(session: session)
         super.init(
-            contentRect: NSRect(x: 0, y: 0, width: size, height: size),
+            contentRect: NSRect(x: 0, y: 0, width: 168, height: 168),
             styleMask: [.borderless, .nonactivatingPanel],
             backing: .buffered,
             defer: false
@@ -365,62 +421,298 @@ final class CameraBubbleWindow: NSPanel {
         backgroundColor = .clear
         hasShadow = true
         level = .floating
-        isMovableByWindowBackground = true
         sharingType = .none
         hidesOnDeactivate = false
         collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary, .stationary]
-
-        let view = NSView(frame: NSRect(x: 0, y: 0, width: size, height: size))
-        view.wantsLayer = true
-        view.layer?.cornerRadius = size / 2
-        view.layer?.masksToBounds = true
-        view.layer?.backgroundColor = NSColor.black.cgColor
-
-        let preview = AVCaptureVideoPreviewLayer(session: session)
-        preview.videoGravity = .resizeAspectFill
-        preview.frame = view.bounds
-        if let connection = preview.connection, connection.isVideoMirroringSupported {
-            connection.automaticallyAdjustsVideoMirroring = false
-            connection.isVideoMirrored = true
-        }
-        view.layer?.addSublayer(preview)
-
-        let ring = CAShapeLayer()
-        ring.path = CGPath(ellipseIn: view.bounds.insetBy(dx: 1.5, dy: 1.5), transform: nil)
-        ring.fillColor = nil
-        ring.strokeColor = NSColor.white.withAlphaComponent(0.85).cgColor
-        ring.lineWidth = 3
-        view.layer?.addSublayer(ring)
-
-        contentView = view
+        bubbleView.frame = NSRect(x: 0, y: 0, width: 168, height: 168)
+        bubbleView.autoresizingMask = [.width, .height]
+        bubbleView.window_ = self
+        contentView = bubbleView
+        applyLook()
         setAccessibilityLabel(L("Camera preview"))
-        // Compared against where `place` put it: programmatic moves may
-        // report after the fact.
-        moveObserver = NotificationCenter.default.addObserver(forName: NSWindow.didMoveNotification, object: self, queue: .main) { [weak self] _ in
-            MainActor.assumeIsolated {
-                guard let self, let placedOrigin = self.placedOrigin else { return }
-                if abs(self.frame.minX - placedOrigin.x) > 0.5 || abs(self.frame.minY - placedOrigin.y) > 0.5 {
-                    self.wasMovedByUser = true
-                }
-            }
-        }
-    }
-
-    deinit {
-        if let moveObserver { NotificationCenter.default.removeObserver(moveObserver) }
     }
 
     override var canBecomeKey: Bool { false }
 
-    /// Bottom-right corner of `rect`, inset, kept on screen.
+    override func orderFrontRegardless() {
+        super.orderFrontRegardless()
+        if labelWindow.parent == nil { addChildWindow(labelWindow, ordered: .above) }
+        updateLabel()
+    }
+
+    override func close() {
+        labelWindow.close()
+        super.close()
+    }
+
+    /// The label goes once recording starts (what's saved is decided then).
+    var showsLabel = true { didSet { updateLabel() } }
+
+    /// Puts the preview where the camera goes in `frame`'s video: its
+    /// remembered place, or the usual spot.
     func place(around rect: CGRect, on screen: NSScreen) {
-        let size = Self.diameter
-        let margin: CGFloat = 28
-        let visible = screen.visibleFrame
-        var origin = CGPoint(x: rect.maxX - size - margin, y: rect.minY + margin)
-        origin.x = min(max(origin.x, visible.minX + 8), visible.maxX - size - 8)
-        origin.y = min(max(origin.y, visible.minY + 8), visible.maxY - size - 8)
-        placedOrigin = origin
-        setFrameOrigin(origin)
+        frameRect = rect
+        setFrame(Self.kept(VideoCameraPreviewGeometry.previewRect(setup, in: rect), on: screen), display: true)
+        updateLabel()
+    }
+
+    /// The frame moved or changed size: a preview in the video keeps its
+    /// place in it; one moved out of the way stays where it is.
+    func update(frame rect: CGRect, on screen: NSScreen) {
+        guard splitPartRect == nil else {
+            frameRect = rect
+            return
+        }
+        let inside = VideoCameraPreviewGeometry.placement(of: frame, in: frameRect)
+        frameRect = rect
+        if !wasMovedByUser {
+            place(around: rect, on: screen)
+        } else if let inside {
+            setup.placement = inside
+            setFrame(Self.kept(VideoCameraPreviewGeometry.rect(setup, in: rect), on: screen), display: true)
+            updateLabel()
+        } else {
+            updateLabel()
+        }
+    }
+
+    /// A new shape or roundness: the same center and width, the new shape.
+    func apply(_ newSetup: VideoRecordingCameraSetup) {
+        guard splitPartRect == nil else {
+            setup = newSetup
+            return
+        }
+        let center = CGPoint(x: frame.midX, y: frame.midY)
+        let width = frame.width
+        setup = newSetup
+        applyLook()
+        let aspect = setup.webcam.effectiveAspect
+        var rect = CGRect(x: center.x - width / 2, y: center.y - width / aspect / 2, width: width, height: width / aspect)
+        if let screen = screen ?? NSScreen.main { rect = Self.kept(rect, on: screen) }
+        setFrame(rect, display: true)
+        updateLabel()
+    }
+
+    /// Split screen: the preview fills the camera's part of the frame
+    /// (square corners, not moved by hand). Nil: the bubble again.
+    private(set) var splitPartRect: CGRect?
+    private var bubbleFrameBeforeSplit: CGRect?
+
+    func showSplitPart(_ rect: CGRect?) {
+        guard rect != splitPartRect else { return }
+        if let rect {
+            if splitPartRect == nil { bubbleFrameBeforeSplit = frame }
+            splitPartRect = rect
+            showsHandles = false
+            bubbleView.roundness = 0
+            bubbleView.isLocked = true
+            setFrame(rect, display: true)
+        } else {
+            splitPartRect = nil
+            bubbleView.isLocked = false
+            applyLook()
+            if let before = bubbleFrameBeforeSplit { setFrame(before, display: true) }
+            bubbleFrameBeforeSplit = nil
+        }
+        updateLabel()
+    }
+
+    /// What's saved for a recording of `frame` now.
+    func currentSetup(frame rect: CGRect) -> VideoRecordingCameraSetup {
+        // Split: the bubble's own place (for a Bubble stretch later on).
+        let preview = bubbleFrameBeforeSplit ?? frame
+        return VideoCameraPreviewGeometry.setup(setup, preview: preview, frame: rect)
+    }
+
+    fileprivate func userChanged(to rect: CGRect) {
+        wasMovedByUser = true
+        setFrame(rect, display: true)
+        if setup.shape == .free { setup.freeAspect = Double(rect.width / max(rect.height, 1)) }
+        updateLabel()
+        changed?(self)
+    }
+
+    fileprivate var keepsShape: Bool { setup.shape != .free }
+    fileprivate var aspect: CGFloat { setup.webcam.effectiveAspect }
+
+    private func applyLook() {
+        let webcam = setup.webcam
+        bubbleView.roundness = webcam.shape == .circle ? 1 : webcam.effectiveRoundness
+    }
+
+    private func updateLabel() {
+        guard showsLabel, isVisible, frameRect.width > 1, splitPartRect == nil else {
+            labelWindow.orderOut(nil)
+            return
+        }
+        labelWindow.show(VideoCameraPreviewGeometry.label(preview: frame, frame: frameRect), below: frame)
+    }
+
+    /// Kept on the screen it's on.
+    private static func kept(_ rect: CGRect, on screen: NSScreen) -> CGRect {
+        let visible = screen.frame
+        var rect = rect
+        rect.size.width = min(rect.width, visible.width)
+        rect.size.height = min(rect.height, visible.height)
+        rect.origin.x = min(max(rect.minX, visible.minX), visible.maxX - rect.width)
+        rect.origin.y = min(max(rect.minY, visible.minY), visible.maxY - rect.height)
+        return rect
+    }
+}
+
+/// The live picture in its shape, with a light rim; dragging moves it, and
+/// with Select size its edges and corners resize it.
+private final class CameraBubbleView: NSView {
+    weak var window_: CameraBubbleWindow?
+    var roundness: Double = 1 { didSet { needsLayout = true } }
+    /// Filling a split's camera part: not moved or resized by hand.
+    var isLocked = false
+    var showsHandles = false { didSet { needsLayout = true; window?.invalidateCursorRects(for: self) } }
+
+    private let preview: AVCaptureVideoPreviewLayer
+    private let shapeMask = CAShapeLayer()
+    private let ring = CAShapeLayer()
+    private let handleLayer = CAShapeLayer()
+    private var drag: (handle: VideoCameraHandle, start: CGPoint, frame: CGRect)?
+
+    init(session: AVCaptureSession) {
+        preview = AVCaptureVideoPreviewLayer(session: session)
+        super.init(frame: .zero)
+        wantsLayer = true
+        layer?.backgroundColor = NSColor.clear.cgColor
+        let picture = CALayer()
+        picture.backgroundColor = NSColor.black.cgColor
+        preview.videoGravity = .resizeAspectFill
+        if let connection = preview.connection, connection.isVideoMirroringSupported {
+            connection.automaticallyAdjustsVideoMirroring = false
+            connection.isVideoMirrored = true
+        }
+        picture.addSublayer(preview)
+        picture.mask = shapeMask
+        layer?.addSublayer(picture)
+        ring.fillColor = nil
+        ring.strokeColor = NSColor.white.withAlphaComponent(0.85).cgColor
+        ring.lineWidth = 3
+        layer?.addSublayer(ring)
+        handleLayer.fillColor = NSColor.white.cgColor
+        handleLayer.strokeColor = NSColor.systemBlue.cgColor
+        handleLayer.lineWidth = 1.5
+        layer?.addSublayer(handleLayer)
+    }
+
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+
+    private var radius: CGFloat { CGFloat(roundness) * min(bounds.width, bounds.height) / 2 }
+
+    override func layout() {
+        super.layout()
+        CATransaction.begin()
+        CATransaction.setDisableActions(true)
+        layer?.sublayers?.first?.frame = bounds
+        preview.frame = bounds
+        shapeMask.path = CGPath(roundedRect: bounds, cornerWidth: radius, cornerHeight: radius, transform: nil)
+        let inset = bounds.insetBy(dx: 1.5, dy: 1.5)
+        let ringRadius = max(radius - 1.5, 0)
+        ring.path = CGPath(roundedRect: inset, cornerWidth: ringRadius, cornerHeight: ringRadius, transform: nil)
+        ring.strokeColor = (showsHandles ? NSColor.systemBlue : NSColor.white.withAlphaComponent(0.85)).cgColor
+        let handles = CGMutablePath()
+        if showsHandles {
+            for handle in VideoCameraHandle.resizing {
+                handles.addEllipse(in: handleRect(handle))
+            }
+        }
+        handleLayer.path = handles
+        CATransaction.commit()
+    }
+
+    /// A handle's dot, in view coordinates (y up).
+    private func handleRect(_ handle: VideoCameraHandle) -> CGRect {
+        let unit = handle.unit
+        let point = CGPoint(x: bounds.minX + 5 + (bounds.width - 10) * unit.x, y: bounds.maxY - 5 - (bounds.height - 10) * unit.y)
+        return CGRect(x: point.x - 5, y: point.y - 5, width: 10, height: 10)
+    }
+
+    private func handle(at point: CGPoint) -> VideoCameraHandle {
+        guard showsHandles else { return .move }
+        for handle in VideoCameraHandle.resizing where handleRect(handle).insetBy(dx: -6, dy: -6).contains(point) { return handle }
+        // Near an edge: that edge.
+        let edge: CGFloat = 8
+        if point.x < edge { return .left }
+        if point.x > bounds.width - edge { return .right }
+        if point.y < edge { return .bottom }
+        if point.y > bounds.height - edge { return .top }
+        return .move
+    }
+
+    override func resetCursorRects() {
+        guard showsHandles else { return }
+        for handle in VideoCameraHandle.resizing {
+            let cursor: NSCursor = handle.isCorner ? .crosshair : ((handle.movesLeft || handle.movesRight) ? .resizeLeftRight : .resizeUpDown)
+            addCursorRect(handleRect(handle).insetBy(dx: -6, dy: -6), cursor: cursor)
+        }
+    }
+
+    override func acceptsFirstMouse(for event: NSEvent?) -> Bool { true }
+
+    override func mouseDown(with event: NSEvent) {
+        guard let window = window_, !isLocked else { return }
+        drag = (handle(at: convert(event.locationInWindow, from: nil)), NSEvent.mouseLocation, window.frame)
+    }
+
+    override func mouseDragged(with event: NSEvent) {
+        guard let drag, let window = window_ else { return }
+        let now = NSEvent.mouseLocation
+        // Worked out with y down, like the editor.
+        let start = drag.frame
+        let flipped = CGRect(x: start.minX, y: -start.maxY, width: start.width, height: start.height)
+        let delta = CGSize(width: now.x - drag.start.x, height: -(now.y - drag.start.y))
+        let keepsShape = window.keepsShape || event.modifierFlags.contains(.shift)
+        let aspect: CGFloat? = keepsShape ? (window.keepsShape ? window.aspect : start.width / max(start.height, 1)) : nil
+        let moved = VideoCameraPreviewGeometry.resized(flipped, handle: drag.handle, by: delta, aspect: aspect, minimum: VideoCameraPreviewGeometry.minimumSide)
+        window.userChanged(to: CGRect(x: moved.minX, y: -moved.maxY, width: moved.width, height: moved.height))
+    }
+
+    override func mouseUp(with event: NSEvent) {
+        drag = nil
+    }
+}
+
+/// "Camera: 25% of width, bottom right" under the preview.
+private final class CameraBubbleLabelWindow: NSPanel {
+    private let text = NSTextField(labelWithString: "")
+
+    init() {
+        super.init(contentRect: NSRect(x: 0, y: 0, width: 200, height: 22), styleMask: [.borderless, .nonactivatingPanel], backing: .buffered, defer: false)
+        appearance = AppAppearance.overlay
+        isOpaque = false
+        backgroundColor = .clear
+        hasShadow = false
+        level = .floating
+        sharingType = .none
+        ignoresMouseEvents = true
+        hidesOnDeactivate = false
+        isReleasedWhenClosed = false
+        collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary, .stationary]
+        let pill = NSView(frame: NSRect(x: 0, y: 0, width: 200, height: 22))
+        pill.wantsLayer = true
+        pill.layer?.cornerRadius = 11
+        pill.layer?.backgroundColor = NSColor(calibratedWhite: 0.08, alpha: 0.88).cgColor
+        pill.autoresizingMask = [.width, .height]
+        text.font = .systemFont(ofSize: 11, weight: .semibold)
+        text.textColor = NSColor.white.withAlphaComponent(0.92)
+        text.alignment = .center
+        text.frame = NSRect(x: 8, y: 3, width: 184, height: 16)
+        text.autoresizingMask = [.width]
+        pill.addSubview(text)
+        contentView = pill
+    }
+
+    override var canBecomeKey: Bool { false }
+
+    func show(_ string: String, below rect: CGRect) {
+        text.stringValue = string
+        let width = ceil(text.intrinsicContentSize.width) + 20
+        setFrame(NSRect(x: rect.midX - width / 2, y: rect.minY - 28, width: width, height: 22), display: true)
+        orderFrontRegardless()
     }
 }

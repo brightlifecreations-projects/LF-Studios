@@ -36,8 +36,7 @@ extension VideoFrameRenderer {
     static func movedWebcamRect(_ settings: VideoWebcamSettings, plan: VideoRenderPlan, time: Double, outputSize: CGSize, cameraScale: Double) -> CGRect {
         let home = webcamRect(settings, outputSize: outputSize, cameraScale: cameraScale)
         guard let move = plan.bubbleMoves.first(where: { time > $0.start && time < $0.end }) else { return home }
-        var moved = settings
-        moved.anchor = move.corner
+        let moved = settings.at(anchor: move.corner, outputSize: outputSize)
         let away = webcamRect(moved, outputSize: outputSize, cameraScale: cameraScale)
         return lerp(home, away, CGFloat(move.progress(at: time)))
     }
@@ -80,9 +79,9 @@ enum VideoZoomCameraFit {
     /// The bubble on the output, normalized with y down (nil: no bubble
     /// at that moment).
     static func bubbleBox(plan: VideoRenderPlan, time: Double, anchor: VideoWebcamSettings.Anchor? = nil) -> CGRect? {
-        guard var webcam = plan.webcam, webcam.visible, plan.hasCameraFootage(at: time), plan.cameraLayout(at: time) == nil else { return nil }
-        if let anchor { webcam.anchor = anchor }
+        guard var webcam = plan.webcam, webcam.visible, plan.hasCameraFootage(at: time), plan.showsBubble(at: time) else { return nil }
         let output = plan.outputCanvasSize
+        if let anchor { webcam = webcam.at(anchor: anchor, outputSize: output) }
         let scale = plan.camera.state(at: time).scale
         let rect = VideoFrameRenderer.webcamRect(webcam, outputSize: output, cameraScale: scale)
         let margin = min(output.width, output.height) * 0.015

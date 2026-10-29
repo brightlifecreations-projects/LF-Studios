@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.10.0]
+
+### Added
+- **Camera shape, chosen before you record.** With Camera on, a Camera shape menu sits above the recording bar: Circle, Rounded rectangle, Square (1:1), Landscape (16:9), Portrait (9:16), 4:3, 3:4, or Free, with Roundness. The camera preview takes the shape right away so you can frame yourself; it's still never in the screen recording.
+  - What the preview covers of the recording frame is where the camera goes in the video: the editor opens with the camera in that place, size, and shape. A label under the preview says so (“Camera: 25% of width, bottom right”). Drag it outside the frame to get it out of the way (“Not in video”): the editor then puts it in its usual corner.
+  - The camera is still recorded whole and uncropped, so the shape can be changed later and Creative Handoff gets the whole picture. LF Studios remembers your last choices.
+- **Select size.** Next to Camera shape: handles on the camera preview. Drag an edge or a corner to resize it, the middle to move it; a fixed shape keeps its shape, Free changes width and height on their own (⇧ keeps the shape). The label shows the size and place in the recording frame, and the editor opens with exactly that.
+  - In the editor, the camera on the preview has the same handles: drag it anywhere (it snaps to the corners, edges and center) and drag its edges and corners to resize it, one ⌘Z per drag. Camera ▸ Position ▸ Reset size goes back to the usual size; each aspect ratio version keeps its own placement.
+  - The editor's Camera panel has the same shapes.
+- **Split screen.** Layout, next to Select size: Bubble, Split screen, Screen only, or Camera only (the screen and the camera are always both recorded). In Split screen the screen and the camera each fill one part of the video: side by side on landscape videos (16:9, 4:3, 21:9…), one above the other on square and vertical ones (1:1, 4:5, 9:16). Choose the camera's side, the split size (50/50 to start, 30/70 to 70/30), and a gap with the background behind it.
+  - Before recording, the frame bar's frame becomes the screen's part, like 8:9 for a 16:9 video split in half, labelled "Screen part of a 16:9 split video", and the camera preview fills the camera's part: what you arrange in the frame fills that part exactly, without stretching or black bars.
+  - In the editor: the same Layout and options in the Camera panel, and a divider to drag on the video. The camera fills its part (following your face with Keep face centered); zooms happen inside the screen's part; captions go over the whole video.
+  - The Camera lane's layouts keep working, with smooth changes, and Side by side now uses the split's options on new recordings (older projects keep their Side by side look). On a split video there's also a Bubble block. Adapt to this ratio turns side by side into one above the other.
+  - In every export, ProRes with transparency (the gap is see-through), Creative Handoff (its timeline files are the whole split video's size, and README.txt says where each part goes), and the .lfsp project. “Wide” is now called Rounded rectangle, “Rounded” is Square (1:1); older projects look exactly as before.
+
 ## [1.9.0]
 
 ### Changed
