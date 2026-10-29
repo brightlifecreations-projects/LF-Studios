@@ -83,6 +83,22 @@ final class VideoEditorDiscoverabilityTests: XCTestCase {
         XCTAssertFalse(recent.items.contains { $0.title == "gone.mp4" })
     }
 
+    /// The File menu's section goes into any number of menus (the app's,
+    /// a test's): each gets its own Recent Exports menu. One shared menu
+    /// made AppKit throw on the second, and an Objective-C exception
+    /// thrown inside a task leaves the Swift runtime thinking that task
+    /// still runs ("freed pointer was not the last allocation").
+    func testTheFileMenuSectionGoesIntoMoreThanOneMenu() {
+        let first = NSMenu(title: "File"), second = NSMenu(title: "File")
+        VideoEditorFileMenu.shared.addItems(to: first)
+        VideoEditorFileMenu.shared.addItems(to: second)
+        let a = try? XCTUnwrap(first.items.last?.submenu), b = try? XCTUnwrap(second.items.last?.submenu)
+        XCTAssertNotNil(a)
+        XCTAssertNotNil(b)
+        XCTAssertFalse(a === b, "a Recent Exports menu each")
+        XCTAssertTrue(a?.delegate === VideoEditorFileMenu.shared && b?.delegate === VideoEditorFileMenu.shared)
+    }
+
     func testCaptionCommandsWorkWithoutSound() async throws {
         let model = try await T.make(in: directory)
         XCTAssertFalse(model.hasAudio)

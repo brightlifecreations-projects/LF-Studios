@@ -11,7 +11,6 @@ final class VideoEditorFileMenu: NSObject, NSMenuDelegate, NSMenuItemValidation 
     private weak var saveProjectItem: NSMenuItem?
     private weak var saveProjectAsItem: NSMenuItem?
     private weak var handoffItem: NSMenuItem?
-    private let recentMenu = NSMenu(title: L("Recent Exports"))
     private var keyWindowObserver: NSObjectProtocol?
 
     /// Adds the editor's items to `menu` as their own section.
@@ -45,6 +44,9 @@ final class VideoEditorFileMenu: NSObject, NSMenuDelegate, NSMenuItemValidation 
         subtitles.target = self
         menu.addItem(subtitles)
         let recent = NSMenuItem(title: L("Recent Exports"), action: nil, keyEquivalent: "")
+        // A menu of its own each time: a menu belongs to one item only, and
+        // AppKit throws when one is given a second (filled when it opens).
+        let recentMenu = NSMenu(title: L("Recent Exports"))
         recentMenu.delegate = self
         recent.submenu = recentMenu
         menu.addItem(recent)
