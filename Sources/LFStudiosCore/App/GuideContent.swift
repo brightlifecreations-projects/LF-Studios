@@ -115,8 +115,9 @@ enum GuideContent {
                 steps: [
                     L("Turn on Microphone in the recording bar. macOS asks once: click Allow."),
                     L("Clicked Don't Allow by mistake? Click Open System Settings below and turn on LF Studios under Microphone."),
+                    L("No question appeared, and LF Studios isn't in that list? Open Terminal, run tccutil reset Microphone com.lfstudios.app, then quit and reopen LF Studios and turn on Microphone again."),
                 ],
-                tips: [L("LF Studios shows up in that list only after it has asked once.")],
+                tips: [L("LF Studios shows up under Microphone only after it has asked once. There's no + button to add it yourself: turning on Microphone in the recording bar is what asks.")],
                 showMe: .systemSettings(.microphone),
                 related: ["trouble-no-sound"]
             ),
@@ -126,8 +127,9 @@ enum GuideContent {
                 steps: [
                     L("Turn on Camera in the recording bar. macOS asks once: click Allow."),
                     L("Clicked Don't Allow by mistake? Click Open System Settings below and turn on LF Studios under Camera."),
+                    L("No question appeared, and LF Studios isn't in that list? Open Terminal, run tccutil reset Camera com.lfstudios.app, then quit and reopen LF Studios and turn on Camera again."),
                 ],
-                tips: [L("LF Studios shows up in that list only after it has asked once.")],
+                tips: [L("LF Studios shows up under Camera only after it has asked once. There's no + button to add it yourself: turning on Camera in the recording bar is what asks.")],
                 showMe: .systemSettings(.camera)
             ),
             GuideEntry(
@@ -2359,7 +2361,8 @@ enum GuideContent {
                 steps: [
                     L("Before recording, turn on Microphone in the recording bar and check that its level meter moves when you speak."),
                     L("Pick the right microphone in the menu above the bar."),
-                    L("Make sure LF Studios is allowed under Microphone in System Settings."),
+                    L("Make sure LF Studios is allowed under Microphone in System Settings. It appears there only after it has asked once, and there's no + button: turn on Microphone in the recording bar and click Allow."),
+                    L("No question appeared? Open Terminal, run tccutil reset Microphone com.lfstudios.app, then quit and reopen LF Studios and try again."),
                     L("For your Mac's own sound, turn on System audio too."),
                     L("In the editor, check that Mute video is off in the Audio panel, and that the preview isn't muted (press M)."),
                 ],
