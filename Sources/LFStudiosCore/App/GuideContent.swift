@@ -15,7 +15,7 @@ import Foundation
 @MainActor
 enum GuideContent {
     /// Pages from these versions get a New badge and fill What's new.
-    nonisolated static let newVersions: [String] = ["1.9.0", "1.8.0", "1.7.0"]
+    nonisolated static let newVersions: [String] = ["1.10.0", "1.9.0", "1.8.0", "1.7.0"]
 
     static func chapters() -> [GuideChapter] {
         let features = featureCategories()
@@ -975,15 +975,19 @@ enum GuideContent {
                 summary: L("Show yourself in a bubble while you record."),
                 location: L("Click Camera in the recording bar. Choose the camera in ⋯ More recording options."),
                 steps: [
-                    L("Turn on Camera. A round bubble appears; drag it where you like."),
-                    L("Record as usual."),
+                    L("Turn on Camera. A preview of your camera appears, in the Camera shape chosen above the bar."),
+                    L("Drag the preview where you want the camera in the video: what it covers of the recording frame is where the camera goes."),
+                    L("Record as usual. The video opens in the editor with the camera there, in that shape and size."),
                 ],
                 tips: [
-                    L("The camera is saved separately, so in the editor you can move it, resize it, restyle it, or hide it."),
-                    L("The bubble you see while recording never shows up in the screen recording itself."),
+                    L("To get the preview out of the way, drag it outside the frame: the label says “Not in video”, and the editor puts the camera in its usual corner."),
+                    L("The camera is saved separately and whole, so in the editor you can move it, resize it, restyle it, or hide it."),
+                    L("The preview you see while recording never shows up in the screen recording itself."),
+                    L("Click Camera again to turn the camera off completely."),
                 ],
                 showMe: .settings(.recording),
-                related: ["camera-bubble", "permission-camera"]
+                since: "1.10.0",
+                related: ["camera-shape", "camera-bubble", "permission-camera"]
             ),
             GuideEntry(
                 id: "rec-cursor", symbol: "cursorarrow", title: L("Cursor & editable cursor"),
@@ -1516,13 +1520,34 @@ enum GuideContent {
                 summary: L("Your face in a bubble over the video. Move it, resize it, and choose its shape."),
                 location: L("Camera panel ▸ Camera, Position, and Behavior. Click the bubble on the preview to open it."),
                 points: [
-                    L("Shape: Circle, Rounded, Wide, or Cutout (just you, without the background)."),
+                    L("Camera shape: Circle, Rounded rectangle, Square, Landscape, Portrait, 4:3, 3:4, Free, or Cutout (just you, without the background)."),
                     L("Size, and Position: drag the bubble on the preview, or pick one of eight spots."),
                     L("Mirror flips it like a mirror."),
                 ],
                 tips: [needsCamera],
                 showMe: .editor(.camera),
                 related: ["rec-camera"]
+            ),
+            GuideEntry(
+                id: "camera-shape", symbol: "rectangle.on.rectangle", title: L("Camera shape"),
+                summary: L("Choose the camera's shape and ratio before you record, and change it any time in the editor."),
+                location: L("Before recording: turn on Camera, then Camera shape above the recording bar. In the editor: Camera panel ▸ Camera ▸ Camera shape."),
+                points: [
+                    L("Circle, Rounded rectangle, Square (1:1), Landscape (16:9), Portrait (9:16), 4:3, 3:4, or Free (any width and height)."),
+                    L("Roundness, in the same menu: from sharp corners to round."),
+                ],
+                steps: [
+                    L("Turn on Camera in the recording bar."),
+                    L("Choose Camera shape. The camera preview takes that shape right away, so you can frame yourself."),
+                    L("Record. The video opens in the editor with the camera in that shape."),
+                ],
+                tips: [
+                    L("The camera is always recorded whole: the shape is only a setting, so you can change it later, and Creative Handoff gets the whole camera picture."),
+                    L("LF Studios remembers your last shape for the next recording."),
+                ],
+                showMe: .editor(.camera),
+                since: "1.10.0",
+                related: ["rec-camera", "camera-bubble", "camera-look"]
             ),
             GuideEntry(
                 id: "camera-behind", symbol: "person.and.background.dotted", title: L("Blur or remove your background"),

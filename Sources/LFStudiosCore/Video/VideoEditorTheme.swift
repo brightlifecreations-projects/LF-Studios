@@ -91,6 +91,12 @@ enum VideoEditorFormat {
     static func percent(_ fraction: Double) -> String {
         L("\(Int((fraction * 100).rounded()))%")
     }
+
+    /// Width / height as a ratio: "1.25:1", or "1:1.6" when it's tall.
+    static func ratio(_ aspect: CGFloat) -> String {
+        func digits(_ value: CGFloat) -> String { Double(value).formatted(.number.precision(.fractionLength(0...2))) }
+        return aspect >= 1 ? "\(digits(aspect)):1" : "1:\(digits(1 / max(aspect, 0.01)))" // l10n-ignore: a ratio
+    }
 }
 
 // MARK: - Buttons

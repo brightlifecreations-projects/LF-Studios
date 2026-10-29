@@ -656,6 +656,8 @@
 	<string>Avant d’enregistrer, activez Micro dans la barre d’enregistrement et vérifiez que son indicateur de niveau bouge quand vous parlez.</string>
 	<key>Before recording, turn on Track where I type.</key>
 	<string>Avant l’enregistrement, activez Suivre où je tape.</string>
+	<key>Before recording: turn on Camera, then Camera shape above the recording bar. In the editor: Camera panel ▸ Camera ▸ Camera shape.</key>
+	<string>Avant l’enregistrement : activez Caméra, puis Forme de la caméra au-dessus de la barre d’enregistrement. Dans l’éditeur : panneau Caméra ▸ Caméra ▸ Forme de la caméra.</string>
 	<key>Begins scrolling when the recording starts</key>
 	<string>Commence à défiler au début de l’enregistrement</string>
 	<key>Behavior</key>
@@ -814,6 +816,12 @@
 	<string>Panneau Caméra ▸ Silences ▸ Masquer la caméra pendant les silences.</string>
 	<key>Camera preview</key>
 	<string>Aperçu de la caméra</string>
+	<key>Camera shape</key>
+	<string>Forme de la caméra</string>
+	<key>Camera shape: Circle, Rounded rectangle, Square, Landscape, Portrait, 4:3, 3:4, Free, or Cutout (just you, without the background).</key>
+	<string>Forme de la caméra : Cercle, Rectangle arrondi, Carré, Paysage, Portrait, 4:3, 3:4, Libre ou Détouré (vous seul, sans l’arrière-plan).</string>
+	<key>Camera shape: how the camera looks in the video. The preview shows it.</key>
+	<string>Forme de la caméra : son apparence dans la vidéo. L’aperçu la montre.</string>
 	<key>Camera stopped</key>
 	<string>Caméra arrêtée</string>
 	<key>Camera unplugged: the screen recording keeps going without it.</key>
@@ -838,6 +846,8 @@
 	<string>Vidéo de caméra : %@</string>
 	<key>Camera — drag to move it, click for options</key>
 	<string>Caméra — faites-la glisser pour la déplacer, cliquez pour les options</string>
+	<key>Camera: %@%% of width, %@</key>
+	<string>Caméra : %1$@ %% de la largeur, %2$@</string>
 	<key>Can't sync — the recording or the camera video has no sound</key>
 	<string>Synchronisation impossible : l’enregistrement ou la vidéo de caméra n’a pas de son</string>
 	<key>Can't sync — the recording or “%@” has no sound</key>
@@ -1044,6 +1054,8 @@
 	<string>Choisissez 3, 5 ou 10 secondes dans Réglages ▸ Captures ▸ Capture avec minuteur.</string>
 	<key>Choose Another…</key>
 	<string>Choisir une autre…</string>
+	<key>Choose Camera shape. The camera preview takes that shape right away, so you can frame yourself.</key>
+	<string>Choisissez Forme de la caméra. L’aperçu prend aussitôt cette forme, pour que vous puissiez vous cadrer.</string>
 	<key>Choose Capture Area in the LF Studios menu to start</key>
 	<string>Choisissez « Capturer une zone » dans le menu LF Studios pour commencer</string>
 	<key>Choose Capture Text, or press its shortcut.</key>
@@ -1136,6 +1148,8 @@
 	<string>Choisissez la Langue que vous parlez dans l’enregistrement.</string>
 	<key>Choose the camera video to show in the bubble</key>
 	<string>Choisissez la vidéo de caméra à afficher dans la bulle</string>
+	<key>Choose the camera's shape and ratio before you record, and change it any time in the editor.</key>
+	<string>Choisissez la forme et les proportions de la caméra avant d’enregistrer, et modifiez-les à tout moment dans l’éditeur.</string>
 	<key>Choose the corner (Left or Right) and how long it stays in the same settings section. Hovering keeps it open.</key>
 	<string>Choisissez le coin (Gauche ou Droite) et sa durée d’affichage dans la même section des réglages. La survoler la garde ouverte.</string>
 	<key>Choose the screen recording, the camera video if there is one, and the sound files to add as tracks. Nothing in the folder changes until you save.</key>
@@ -1164,6 +1178,8 @@
 	<string>Cinéma</string>
 	<key>Circle</key>
 	<string>Cercle</string>
+	<key>Circle, Rounded rectangle, Square (1:1), Landscape (16:9), Portrait (9:16), 4:3, 3:4, or Free (any width and height).</key>
+	<string>Cercle, Rectangle arrondi, Carré (1:1), Paysage (16:9), Portrait (9:16), 4:3, 3:4 ou Libre (n’importe quelle largeur et hauteur).</string>
 	<key>Citrus</key>
 	<string>Agrumes</string>
 	<key>Classic</key>
@@ -1222,6 +1238,8 @@
 	<string>Cliquez sur Arrière-plan.</string>
 	<key>Click Blur above the preview, or press B.</key>
 	<string>Cliquez sur Flou au-dessus de l’aperçu, ou appuyez sur B.</string>
+	<key>Click Camera again to turn the camera off completely.</key>
+	<string>Cliquez à nouveau sur Caméra pour l’éteindre complètement.</string>
 	<key>Click Camera in the recording bar. Choose the camera in ⋯ More recording options.</key>
 	<string>Cliquez sur Caméra dans la barre d’enregistrement. Choisissez la caméra dans ⋯ Autres options d’enregistrement.</string>
 	<key>Click Cancel, or turn off asking, and it goes in the Recording folder, laid out the same way. Nothing is ever lost.</key>
@@ -1928,6 +1946,8 @@
 	<string>Faites glisser le flou sur ce que vous voulez masquer.</string>
 	<key>Drag the box on the preview over anything private. Blur follows zooms and stays until its bar ends.</key>
 	<string>Faites glisser le cadre dans l’aperçu sur tout élément privé. Le flou suit les zooms et reste jusqu’à la fin de sa barre.</string>
+	<key>Drag the camera's edges on the video to change its width and height.</key>
+	<string>Faites glisser les bords de la caméra sur la vidéo pour changer sa largeur et sa hauteur.</string>
 	<key>Drag the frame on the preview to aim; drag its corners to zoom in or out.</key>
 	<string>Faites glisser le cadre dans l’aperçu pour viser ; faites glisser ses coins pour zoomer ou dézoomer.</string>
 	<key>Drag the frame over what you want to show. To fill it with one app, click Fit a window to the frame… and choose its window.</key>
@@ -1944,6 +1964,8 @@
 	<string>Faites glisser les touches dans l’aperçu pour les placer où vous voulez</string>
 	<key>Drag the pin to move it; drag an edge to resize it.</key>
 	<string>Faites glisser la capture épinglée pour la déplacer ; faites glisser un bord pour la redimensionner.</string>
+	<key>Drag the preview where you want the camera in the video: what it covers of the recording frame is where the camera goes.</key>
+	<string>Faites glisser l’aperçu là où vous voulez la caméra dans la vidéo : ce qu’il couvre du cadre d’enregistrement est l’endroit où ira la caméra.</string>
 	<key>Drag the spot on the preview; drag a corner to resize it. Everything around it dims while its bar on the timeline runs.</key>
 	<string>Faites glisser le projecteur dans l’aperçu ; faites glisser un coin pour le redimensionner. Tout ce qui l’entoure s’assombrit pendant sa barre dans la timeline.</string>
 	<key>Drag the track on the timeline to move it; drag an edge to trim it; click it and press S to split it, or ⌫ to delete a piece.</key>
@@ -2548,6 +2570,8 @@
 	<string>Guide</string>
 	<key>H.264 plays everywhere. HEVC makes smaller files, but some browsers and Windows PCs can't play it.</key>
 	<string>H.264 se lit partout. HEVC produit des fichiers plus petits, mais certains navigateurs et PC Windows ne peuvent pas le lire.</string>
+	<key>Handles on the camera preview: drag an edge or corner to resize it, the middle to move it.</key>
+	<string>Des poignées sur l’aperçu de la caméra : faites glisser un bord ou un coin pour le redimensionner, le milieu pour le déplacer.</string>
 	<key>Handoff didn't finish</key>
 	<string>La transmission n’a pas abouti</string>
 	<key>Handoff ready — show it</key>
@@ -3032,6 +3056,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>LF Studios garde la zone en mémoire jusqu’à ce que vous le quittiez. S’il n’y a pas encore de zone, vous en sélectionnez une comme d’habitude.</string>
 	<key>LF Studios remembers the last shape, size, and place on each screen.</key>
 	<string>LF Studios retient la dernière forme, la dernière taille et le dernier emplacement sur chaque écran.</string>
+	<key>LF Studios remembers your last shape for the next recording.</key>
+	<string>LF Studios retient votre dernière forme pour le prochain enregistrement.</string>
 	<key>LF Studios remembers your last tool, color, and sizes for next time.</key>
 	<string>LF Studios retient votre dernier outil, votre couleur et vos tailles pour la prochaine fois.</string>
 	<key>LF Studios resizes and centers the window. Click Record.</key>
@@ -3060,6 +3086,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>BIBLIOTHÈQUE LFSTUDIOS</string>
 	<key>Lagoon</key>
 	<string>Lagon</string>
+	<key>Landscape (16:9)</key>
+	<string>Paysage (16:9)</string>
 	<key>Language</key>
 	<string>Langue</string>
 	<key>Languages</key>
@@ -3610,6 +3638,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Pas assez de place : la transmission demande environ %1$@ et il reste %2$@ à cet endroit.</string>
 	<key>Not for this video</key>
 	<string>Pas pour cette vidéo</string>
+	<key>Not in video — position set in the editor</key>
+	<string>Pas dans la vidéo — position choisie dans l’éditeur</string>
 	<key>Not loaded:</key>
 	<string>Non chargé :</string>
 	<key>Not now</key>
@@ -4024,6 +4054,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Mots qui apparaissent</string>
 	<key>Porcelain</key>
 	<string>Porcelaine</string>
+	<key>Portrait (9:16)</key>
+	<string>Portrait (9:16)</string>
 	<key>Position</key>
 	<string>Position</string>
 	<key>Positions only: no text, no keys</key>
@@ -4190,8 +4222,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Enregistrer une zone</string>
 	<key>Record an area, a window, or the whole screen</key>
 	<string>Enregistrez une zone, une fenêtre ou tout l’écran</string>
-	<key>Record as usual.</key>
-	<string>Enregistrez comme d’habitude.</string>
+	<key>Record as usual. The video opens in the editor with the camera there, in that shape and size.</key>
+	<string>Enregistrez comme d’habitude. La vidéo s’ouvre dans l’éditeur avec la caméra à cet endroit, de cette forme et de cette taille.</string>
 	<key>Record camera</key>
 	<string>Enregistrer la caméra</string>
 	<key>Record everything on one screen.</key>
@@ -4228,6 +4260,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Enregistrez avec « Suivre où je tape » activé pour zoomer sur la saisie</string>
 	<key>Record your voice.</key>
 	<string>Enregistrez votre voix.</string>
+	<key>Record. The video opens in the editor with the camera in that shape.</key>
+	<string>Enregistrez. La vidéo s’ouvre dans l’éditeur avec la caméra de cette forme.</string>
 	<key>Recorded at %@. Drag its dot on the timeline to retime it; ripples and Auto Zoom follow.</key>
 	<string>Enregistré à %@. Faites glisser son point dans la timeline pour le recaler ; les ondes et le zoom auto suivent.</string>
 	<key>Recorded at the same time as the video? Click Sync by sound: it lines up with the recording and follows your cuts from then on.</key>
@@ -4806,6 +4840,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Rectangle arrondi</string>
 	<key>Roundness</key>
 	<string>Arrondi</string>
+	<key>Roundness, in the same menu: from sharp corners to round.</key>
+	<string>Arrondi, dans le même menu : des coins vifs à l’arrondi.</string>
 	<key>Roundness: from sharp corners to a full circle.</key>
 	<string>Arrondi : des coins nets jusqu’au cercle complet.</string>
 	<key>S</key>
@@ -5044,6 +5080,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Sélectionner plusieurs éléments</string>
 	<key>Select several to drag them all at once.</key>
 	<string>Sélectionnez-en plusieurs pour les faire glisser toutes à la fois.</string>
+	<key>Select size</key>
+	<string>Choisir la taille</string>
 	<key>Select which display to record fullscreen</key>
 	<string>Choisissez l’écran à enregistrer en plein écran</string>
 	<key>Select words and press ⌫ to cut them from the video — ⌫ again on crossed-out words puts them back. Click a word to jump there; ⌘F finds.</key>
@@ -5144,8 +5182,6 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Couleur de l’ombre</string>
 	<key>Shape</key>
 	<string>Forme</string>
-	<key>Shape: Circle, Rounded, Wide, or Cutout (just you, without the background).</key>
-	<string>Forme : Cercle, Arrondi, Large ou Détouré (juste vous, sans l’arrière-plan).</string>
 	<key>Shapes: 16:9 for YouTube, 9:16 for Reels, TikTok, and Shorts, 1:1 for square posts, 4:5 for the Instagram feed, 4:3 for slides and iPad, 16:10 for a Mac screen, 21:9 for a cinematic look. Point at one to see what it's for.</key>
 	<string>Formes : 16:9 pour YouTube, 9:16 pour Reels, TikTok et Shorts, 1:1 pour les publications carrées, 4:5 pour le fil Instagram, 4:3 pour les présentations et l’iPad, 16:10 pour un écran de Mac, 21:9 pour un rendu cinéma. Pointez sur une forme pour voir à quoi elle sert.</string>
 	<key>Share</key>
@@ -5418,6 +5454,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Forme du projecteur</string>
 	<key>Spotlight: darkens everything except the area you draw. Choose Rectangle or Ellipse.</key>
 	<string>Projecteur : assombrit tout sauf la zone que vous dessinez. Choisissez Rectangle ou Ellipse.</string>
+	<key>Square (1:1)</key>
+	<string>Carré (1:1)</string>
 	<key>Square posts</key>
 	<string>Publications carrées</string>
 	<key>Square, circle, or straight 45° lines</key>
@@ -5676,8 +5714,6 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>La bulle suit votre visage ; là où aucun n’a été trouvé, elle garde le dernier cadrage</string>
 	<key>The bubble now follows your face</key>
 	<string>La bulle suit maintenant votre visage</string>
-	<key>The bubble you see while recording never shows up in the screen recording itself.</key>
-	<string>La bulle que vous voyez pendant l’enregistrement n’apparaît jamais dans l’enregistrement de l’écran lui-même.</string>
 	<key>The bubble's framing follows your face</key>
 	<string>Le cadrage de la bulle suit votre visage</string>
 	<key>The camera bubble</key>
@@ -5686,8 +5722,10 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Impossible de démarrer la caméra.</string>
 	<key>The camera follows the text cursor as you type.</key>
 	<string>La caméra suit le curseur de texte pendant la saisie.</string>
-	<key>The camera is saved separately, so in the editor you can move it, resize it, restyle it, or hide it.</key>
-	<string>La caméra est enregistrée à part : dans l’éditeur, vous pouvez la déplacer, la redimensionner, changer son style ou la masquer.</string>
+	<key>The camera is always recorded whole: the shape is only a setting, so you can change it later, and Creative Handoff gets the whole camera picture.</key>
+	<string>La caméra est toujours enregistrée en entier : la forme n’est qu’un réglage, vous pouvez la changer plus tard, et la Transmission créative reçoit toute l’image de la caméra.</string>
+	<key>The camera is saved separately and whole, so in the editor you can move it, resize it, restyle it, or hide it.</key>
+	<string>La caméra est enregistrée à part et en entier : dans l’éditeur, vous pouvez la déplacer, la redimensionner, changer son style ou la masquer.</string>
 	<key>The camera keeps your cursor in view and glides after it.</key>
 	<string>La caméra garde votre pointeur dans le cadre et le suit en douceur.</string>
 	<key>The camera stopped. The recording continues without it.</key>
@@ -5788,6 +5826,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Le pointeur, les clics et les raccourcis clavier</string>
 	<key>The preview shows only when Show the preview after capture is on in Settings ▸ General.</key>
 	<string>L’aperçu n’apparaît que si Afficher l’aperçu après la capture est activé dans Réglages ▸ Général.</string>
+	<key>The preview you see while recording never shows up in the screen recording itself.</key>
+	<string>L’aperçu que vous voyez pendant l’enregistrement n’apparaît jamais dans l’enregistrement de l’écran lui-même.</string>
 	<key>The project file opens everything again, exactly as you left it. LF Studios keeps it up to date as you edit.</key>
 	<string>Le fichier de projet rouvre tout, exactement comme vous l’avez laissé. LF Studios le tient à jour pendant que vous modifiez.</string>
 	<key>The recording bar</key>
@@ -6028,6 +6068,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Pour couper une erreur, placez-y la tête de lecture, appuyez sur S pour scinder, cliquez sur la mauvaise partie et appuyez sur ⌫.</string>
 	<key>To drag out any area yourself, click Select area manually above the recording bar.</key>
 	<string>Pour tracer vous-même une zone libre, cliquez sur Sélectionner une zone manuellement au-dessus de la barre d’enregistrement.</string>
+	<key>To get the preview out of the way, drag it outside the frame: the label says “Not in video”, and the editor puts the camera in its usual corner.</key>
+	<string>Pour écarter l’aperçu, faites-le glisser hors du cadre : l’étiquette indique « Pas dans la vidéo », et l’éditeur place la caméra dans son coin habituel.</string>
 	<key>To hide one, click it on the timeline and press ⌫.</key>
 	<string>Pour en masquer un, cliquez dessus dans la timeline et appuyez sur ⌫.</string>
 	<key>To remove it again, untick Apply background to this image.</key>
@@ -6146,12 +6188,14 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Activer le zoom auto sur les clics — les zooms placés à la main sont conservés</string>
 	<key>Turn on Auto-zoom on clicks.</key>
 	<string>Activez Zoom auto sur les clics.</string>
+	<key>Turn on Camera in the recording bar.</key>
+	<string>Activez Caméra dans la barre d’enregistrement.</string>
 	<key>Turn on Camera in the recording bar. macOS asks once: click Allow.</key>
 	<string>Activez Caméra dans la barre d’enregistrement. macOS le demande une fois : cliquez sur Autoriser.</string>
 	<key>Turn on Camera. A bubble with your face appears; it's recorded separately, so you can move and restyle it later.</key>
 	<string>Activez Caméra. Une bulle avec votre visage apparaît ; elle est enregistrée à part, vous pourrez donc la déplacer et changer son style plus tard.</string>
-	<key>Turn on Camera. A round bubble appears; drag it where you like.</key>
-	<string>Activez Caméra. Une bulle ronde apparaît ; faites-la glisser où vous voulez.</string>
+	<key>Turn on Camera. A preview of your camera appears, in the Camera shape chosen above the bar.</key>
+	<string>Activez Caméra. Un aperçu de votre caméra apparaît, dans la Forme de la caméra choisie au-dessus de la barre.</string>
 	<key>Turn on Intro card or Outro card.</key>
 	<string>Activez Carton d’intro ou Carton de fin.</string>
 	<key>Turn on Keep face centered. LF Studios looks for your face once, with progress and Cancel.</key>
@@ -6722,8 +6766,6 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Wi-Fi</string>
 	<key>Wi-Fi QR found</key>
 	<string>Code QR Wi-Fi détecté</string>
-	<key>Wide</key>
-	<string>Large</string>
 	<key>Width</key>
 	<string>Largeur</string>
 	<key>Width and height, like 3:2 or 2.39:1.</key>
@@ -6916,10 +6958,18 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>le viser ou le redimensionner</string>
 	<key>all shortcuts</key>
 	<string>tous les raccourcis</string>
+	<key>bottom</key>
+	<string>en bas</string>
+	<key>bottom left</key>
+	<string>en bas à gauche</string>
+	<key>bottom right</key>
+	<string>en bas à droite</string>
 	<key>captions</key>
 	<string>sous-titres</string>
 	<key>captions burned in</key>
 	<string>sous-titres incrustés</string>
+	<key>center</key>
+	<string>au centre</string>
 	<key>chapters</key>
 	<string>chapitres</string>
 	<key>cut by editing words</key>
@@ -6936,6 +6986,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>en même temps que l’enregistrement</string>
 	<key>intro card</key>
 	<string>carton d’intro</string>
+	<key>left</key>
+	<string>à gauche</string>
 	<key>loops</key>
 	<string>en boucle</string>
 	<key>macOS asks once, the first time you take a screenshot. You can also allow it here first.</key>
@@ -6986,6 +7038,8 @@ Vous pouvez réactiver les raccourcis d’Apple à tout moment dans Réglages Sy
 	<string>lire</string>
 	<key>pointer</key>
 	<string>pointeur</string>
+	<key>right</key>
+	<string>à droite</string>
 	<key>s</key>
 	<string>s</string>
 	<key>select a part to cut</key>
@@ -7008,6 +7062,12 @@ Vous pouvez réactiver les raccourcis d’Apple à tout moment dans Réglages Sy
 	<string>la vidéo</string>
 	<key>this recording</key>
 	<string>cet enregistrement</string>
+	<key>top</key>
+	<string>en haut</string>
+	<key>top left</key>
+	<string>en haut à gauche</string>
+	<key>top right</key>
+	<string>en haut à droite</string>
 	<key>trim to the playhead</key>
 	<string>ajuster à la tête de lecture</string>
 	<key>type</key>

@@ -716,7 +716,7 @@ struct VideoCameraInspector: View {
                 VideoInspectorSection(L("Camera")) {
                     VideoToggleRow(title: L("Show camera"), isOn: binding(\.visible))
                     // A shape is also a corner preset: picking one resets the roundness.
-                    VideoSegmented(options: VideoWebcamSettings.Shape.allCases.map { ($0, $0.title) }, selection: Binding(get: { model.project.webcam.shape }, set: { shape in model.setStyle { $0.webcam.shape = shape; $0.webcam.roundness = nil } }))
+                    VideoCameraShapeMenu(model: model)
                     HStack(spacing: 10) {
                         Text(L("Behind you"))
                             .font(.system(size: 12, weight: .medium))
@@ -909,5 +909,43 @@ struct VideoAnchorPicker: View {
         .frame(width: size.width, height: size.height)
         .frame(maxWidth: .infinity)
         .animation(.spring(response: 0.25, dampingFraction: 0.8), value: selection)
+    }
+}
+
+/// Camera shape: the outline and ratio, Free for any (VideoFeatures.swift).
+struct VideoCameraShapeMenu: View {
+    @ObservedObject var model: VideoEditorModel
+
+    var body: some View {
+        let webcam = model.project.webcam
+        HStack(spacing: 10) {
+            Text(L("Camera shape"))
+                .font(.system(size: 12, weight: .medium))
+                .foregroundStyle(VideoEditorTheme.textPrimary)
+                .fixedSize()
+            Menu {
+                ForEach(VideoWebcamSettings.Shape.allCases) { shape in
+                    Button {
+                        model.setStyle { $0.webcam.choose(shape: shape) }
+                    } label: {
+                        Label(shape.title, systemImage: shape == webcam.shape ? "checkmark" : shape.symbol)
+                    }
+                }
+            } label: {
+                Label(webcam.shape.title, systemImage: webcam.shape.symbol)
+                    .font(.system(size: 11.5, weight: .medium))
+            }
+            .menuStyle(.borderlessButton)
+            .fixedSize()
+            .accessibilityLabel(L("Camera shape"))
+            Spacer(minLength: 0)
+            if webcam.shape == .free {
+                // The ratio it's dragged to, like 1.25:1.
+                Text(VideoEditorFormat.ratio(webcam.effectiveAspect))
+                    .font(.system(size: 11, weight: .medium).monospacedDigit())
+                    .foregroundStyle(VideoEditorTheme.textSecondary)
+                    .help(L("Drag the camera's edges on the video to change its width and height."))
+            }
+        }
     }
 }

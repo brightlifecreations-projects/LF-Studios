@@ -473,10 +473,8 @@ struct VideoStageInteractionLayer: View {
 
     private func nearestAnchor(to point: CGPoint, _ settings: VideoWebcamSettings) -> VideoWebcamSettings.Anchor {
         VideoWebcamSettings.Anchor.allCases.min { a, b in
-            var sa = settings
-            sa.anchor = a
-            var sb = settings
-            sb.anchor = b
+            let sa = settings.at(anchor: a, outputSize: viewSize)
+            let sb = settings.at(anchor: b, outputSize: viewSize)
             let ra = bubbleRect(sa)
             let rb = bubbleRect(sb)
             return hypot(ra.midX - point.x, ra.midY - point.y) < hypot(rb.midX - point.x, rb.midY - point.y)
@@ -489,8 +487,7 @@ struct VideoStageInteractionLayer: View {
         let shown = rect.offsetBy(dx: bubbleDrag?.width ?? 0, dy: bubbleDrag?.height ?? 0)
         let radius = VideoFrameRenderer.webcamCornerRadius(settings, rect: rect)
         let target: CGRect? = bubbleDrag.map { drag in
-            var snapped = settings
-            snapped.anchor = nearestAnchor(to: CGPoint(x: rect.midX + drag.width, y: rect.midY + drag.height), settings)
+            let snapped = settings.at(anchor: nearestAnchor(to: CGPoint(x: rect.midX + drag.width, y: rect.midY + drag.height), settings), outputSize: viewSize)
             return bubbleRect(snapped)
         }
         return ZStack(alignment: .topLeading) {
@@ -525,8 +522,9 @@ struct VideoStageInteractionLayer: View {
                         .onEnded { value in
                             let anchor = nearestAnchor(to: CGPoint(x: rect.midX + value.translation.width, y: rect.midY + value.translation.height), settings)
                             bubbleDrag = nil
-                            if anchor != settings.anchor {
-                                model.setStyle { $0.webcam.anchor = anchor }
+                            if anchor != settings.anchor || settings.placement != nil {
+                                let size = viewSize
+                                model.setStyle { $0.webcam = $0.webcam.at(anchor: anchor, outputSize: size) }
                             }
                             NSCursor.openHand.set()
                         }

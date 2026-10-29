@@ -277,6 +277,6 @@ final class VideoFaceCropPath: @unchecked Sendable {
               let camera = project.activeCamera(recorded: recordedCamera) else { return nil }
         let url = project.importedCamera?.resolved() ?? camera.url
         guard let analysis = VideoFaceStore.load(for: url) else { return nil }
-        return VideoFaceCropPath(analysis: analysis, settings: settings, pictureSize: CGSize(width: camera.width, height: camera.height), bubbleAspect: project.webcam.shape.aspect, offset: camera.offset)
+        return VideoFaceCropPath(analysis: analysis, settings: settings, pictureSize: CGSize(width: camera.width, height: camera.height), bubbleAspect: project.webcam.effectiveAspect, offset: camera.offset)
     }
 }

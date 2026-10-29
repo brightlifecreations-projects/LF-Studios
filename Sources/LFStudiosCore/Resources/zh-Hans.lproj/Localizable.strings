@@ -726,6 +726,8 @@
 	<string>录制前，在录制栏中打开“麦克风”，并确认说话时它的电平表会跳动。</string>
 	<key>Before recording, turn on Track where I type.</key>
 	<string>录制前，打开“跟踪打字位置”。</string>
+	<key>Before recording: turn on Camera, then Camera shape above the recording bar. In the editor: Camera panel ▸ Camera ▸ Camera shape.</key>
+	<string>录制前：打开“摄像头”，然后使用录制栏上方的“摄像头形状”。在编辑器中：“摄像头”面板 ▸ 摄像头 ▸ 摄像头形状。</string>
 	<key>Begins scrolling when the recording starts</key>
 	<string>录制开始时开始滚动</string>
 	<key>Behavior</key>
@@ -888,6 +890,12 @@
 	<string>“摄像头”面板 ▸ 静默 ▸ 静默时隐藏摄像头。</string>
 	<key>Camera preview</key>
 	<string>摄像头预览</string>
+	<key>Camera shape</key>
+	<string>摄像头形状</string>
+	<key>Camera shape: Circle, Rounded rectangle, Square, Landscape, Portrait, 4:3, 3:4, Free, or Cutout (just you, without the background).</key>
+	<string>摄像头形状：圆形、圆角矩形、正方形、横向、竖向、4:3、3:4、自由或抠像（只有你，没有背景）。</string>
+	<key>Camera shape: how the camera looks in the video. The preview shows it.</key>
+	<string>摄像头形状：摄像头在视频中的样子。预览会显示出来。</string>
 	<key>Camera stopped</key>
 	<string>摄像头已停止</string>
 	<key>Camera unplugged: the screen recording keeps going without it.</key>
@@ -912,6 +920,8 @@
 	<string>摄像头视频：%@</string>
 	<key>Camera — drag to move it, click for options</key>
 	<string>摄像头 — 拖移可移动，点按可查看选项</string>
+	<key>Camera: %@%% of width, %@</key>
+	<string>摄像头：宽度的 %1$@%%，%2$@</string>
 	<key>Can't sync — the recording or the camera video has no sound</key>
 	<string>无法同步 — 录制内容或摄像头视频没有声音</string>
 	<key>Can't sync — the recording or “%@” has no sound</key>
@@ -1120,6 +1130,8 @@
 	<string>在“设置 ▸ 截屏 ▸ 定时截屏”中选择 3、5 或 10 秒。</string>
 	<key>Choose Another…</key>
 	<string>选择其他…</string>
+	<key>Choose Camera shape. The camera preview takes that shape right away, so you can frame yourself.</key>
+	<string>选择“摄像头形状”。摄像头预览会立即变成该形状，方便你调整取景。</string>
 	<key>Choose Capture Area in the LF Studios menu to start</key>
 	<string>在 LF Studios 菜单中选择“捕捉区域”即可开始</string>
 	<key>Choose Capture Text, or press its shortcut.</key>
@@ -1212,6 +1224,8 @@
 	<string>选择你在录制内容中说的“语言”。</string>
 	<key>Choose the camera video to show in the bubble</key>
 	<string>选择要在气泡中显示的摄像头视频</string>
+	<key>Choose the camera's shape and ratio before you record, and change it any time in the editor.</key>
+	<string>在录制前选择摄像头的形状和比例，之后可随时在编辑器中更改。</string>
 	<key>Choose the corner (Left or Right) and how long it stays in the same settings section. Hovering keeps it open.</key>
 	<string>在同一设置部分中，选择它显示的角落（“左侧”或“右侧”）以及停留多久。指针悬停时它会一直显示。</string>
 	<key>Choose the screen recording, the camera video if there is one, and the sound files to add as tracks. Nothing in the folder changes until you save.</key>
@@ -1240,6 +1254,8 @@
 	<string>电影感</string>
 	<key>Circle</key>
 	<string>圆形</string>
+	<key>Circle, Rounded rectangle, Square (1:1), Landscape (16:9), Portrait (9:16), 4:3, 3:4, or Free (any width and height).</key>
+	<string>圆形、圆角矩形、正方形（1:1）、横向（16:9）、竖向（9:16）、4:3、3:4 或自由（任意宽度和高度）。</string>
 	<key>Citrus</key>
 	<string>柑橘</string>
 	<key>Classic</key>
@@ -1298,6 +1314,8 @@
 	<string>点按“背景”。</string>
 	<key>Click Blur above the preview, or press B.</key>
 	<string>点按预览上方的“模糊”，或按 B 键。</string>
+	<key>Click Camera again to turn the camera off completely.</key>
+	<string>再次点按“摄像头”即可完全关闭摄像头。</string>
 	<key>Click Camera in the recording bar. Choose the camera in ⋯ More recording options.</key>
 	<string>点按录制栏中的“摄像头”。在“⋯ 更多录制选项”中选择摄像头。</string>
 	<key>Click Cancel, or turn off asking, and it goes in the Recording folder, laid out the same way. Nothing is ever lost.</key>
@@ -2010,6 +2028,8 @@
 	<string>把模糊框拖到你想隐藏的内容上。</string>
 	<key>Drag the box on the preview over anything private. Blur follows zooms and stays until its bar ends.</key>
 	<string>在预览中将方框拖到任何隐私内容上。模糊效果会跟随缩放，并持续到其条块结束。</string>
+	<key>Drag the camera's edges on the video to change its width and height.</key>
+	<string>在视频上拖移摄像头的边缘可更改其宽度和高度。</string>
 	<key>Drag the frame on the preview to aim; drag its corners to zoom in or out.</key>
 	<string>在预览中拖移画框即可对准；拖移其角可放大或缩小。</string>
 	<key>Drag the frame over what you want to show. To fill it with one app, click Fit a window to the frame… and choose its window.</key>
@@ -2026,6 +2046,8 @@
 	<string>在预览中拖移按键，即可放到任意位置</string>
 	<key>Drag the pin to move it; drag an edge to resize it.</key>
 	<string>拖移贴图可移动它；拖移边缘可调整大小。</string>
+	<key>Drag the preview where you want the camera in the video: what it covers of the recording frame is where the camera goes.</key>
+	<string>把预览拖到你想让摄像头在视频中出现的位置：它在录制框中盖住的地方，就是摄像头的位置。</string>
 	<key>Drag the spot on the preview; drag a corner to resize it. Everything around it dims while its bar on the timeline runs.</key>
 	<string>在预览中拖移聚光区域；拖移某个角可调整其大小。在其时间线条块持续期间，周围的一切都会变暗。</string>
 	<key>Drag the track on the timeline to move it; drag an edge to trim it; click it and press S to split it, or ⌫ to delete a piece.</key>
@@ -2636,6 +2658,8 @@
 	<string>使用指南</string>
 	<key>H.264 plays everywhere. HEVC makes smaller files, but some browsers and Windows PCs can't play it.</key>
 	<string>H.264 随处都能播放。HEVC 文件更小，但部分浏览器和 Windows 电脑无法播放。</string>
+	<key>Handles on the camera preview: drag an edge or corner to resize it, the middle to move it.</key>
+	<string>摄像头预览上的控制点：拖移边缘或角可调整大小，拖移中间可移动。</string>
 	<key>Handoff didn't finish</key>
 	<string>交付未完成</string>
 	<key>Handoff ready — show it</key>
@@ -3138,6 +3162,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>LF Studios 在退出前会一直记住该区域。如果还没有区域，就照常选择一个。</string>
 	<key>LF Studios remembers the last shape, size, and place on each screen.</key>
 	<string>LF Studios 会记住每个屏幕上次使用的比例、大小和位置。</string>
+	<key>LF Studios remembers your last shape for the next recording.</key>
+	<string>LF Studios 会记住你上次的形状，用于下一次录制。</string>
 	<key>LF Studios remembers your last tool, color, and sizes for next time.</key>
 	<string>LF Studios 会记住你上次使用的工具、颜色和大小，供下次使用。</string>
 	<key>LF Studios resizes and centers the window. Click Record.</key>
@@ -3166,6 +3192,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>LFSTUDIOS 资源库</string>
 	<key>Lagoon</key>
 	<string>泻湖</string>
+	<key>Landscape (16:9)</key>
+	<string>横向（16:9）</string>
 	<key>Language</key>
 	<string>语言</string>
 	<key>Languages</key>
@@ -3718,6 +3746,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>空间不足：交付大约需要 %1$@，那里只有 %2$@ 可用。</string>
 	<key>Not for this video</key>
 	<string>此视频不需要</string>
+	<key>Not in video — position set in the editor</key>
+	<string>不在视频中——位置在编辑器中设置</string>
 	<key>Not loaded:</key>
 	<string>未载入：</string>
 	<key>Not now</key>
@@ -4134,6 +4164,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>弹出词语</string>
 	<key>Porcelain</key>
 	<string>瓷白</string>
+	<key>Portrait (9:16)</key>
+	<string>竖向（9:16）</string>
 	<key>Position</key>
 	<string>位置</string>
 	<key>Positions only: no text, no keys</key>
@@ -4302,8 +4334,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>录制区域</string>
 	<key>Record an area, a window, or the whole screen</key>
 	<string>录制一个区域、一个窗口或整个屏幕</string>
-	<key>Record as usual.</key>
-	<string>照常录制。</string>
+	<key>Record as usual. The video opens in the editor with the camera there, in that shape and size.</key>
+	<string>照常录制。视频会在编辑器中打开，摄像头就在那个位置，形状和大小也一样。</string>
 	<key>Record camera</key>
 	<string>录制摄像头</string>
 	<key>Record everything on one screen.</key>
@@ -4340,6 +4372,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>开启“跟踪打字位置”后录制，即可缩放到打字处</string>
 	<key>Record your voice.</key>
 	<string>录下你的声音。</string>
+	<key>Record. The video opens in the editor with the camera in that shape.</key>
+	<string>开始录制。视频会在编辑器中打开，摄像头就是这个形状。</string>
 	<key>Recorded at %@. Drag its dot on the timeline to retime it; ripples and Auto Zoom follow.</key>
 	<string>录制于 %@。在时间线上拖移它的圆点即可调整时间；波纹和自动缩放会随之更新。</string>
 	<key>Recorded at the same time as the video? Click Sync by sound: it lines up with the recording and follows your cuts from then on.</key>
@@ -4936,6 +4970,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>圆角矩形</string>
 	<key>Roundness</key>
 	<string>圆角</string>
+	<key>Roundness, in the same menu: from sharp corners to round.</key>
+	<string>圆角在同一菜单中：从直角到圆形。</string>
 	<key>Roundness: from sharp corners to a full circle.</key>
 	<string>圆角：从直角一直到完整的圆形。</string>
 	<key>S</key>
@@ -5178,6 +5214,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>选择多个项目</string>
 	<key>Select several to drag them all at once.</key>
 	<string>选择多张可一次全部拖出。</string>
+	<key>Select size</key>
+	<string>选择大小</string>
 	<key>Select which display to record fullscreen</key>
 	<string>选择要全屏录制的显示器</string>
 	<key>Select words and press ⌫ to cut them from the video — ⌫ again on crossed-out words puts them back. Click a word to jump there; ⌘F finds.</key>
@@ -5278,8 +5316,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>阴影颜色</string>
 	<key>Shape</key>
 	<string>形状</string>
-	<key>Shape: Circle, Rounded, Wide, or Cutout (just you, without the background).</key>
-	<string>形状：“圆形”“圆角”“宽幅”或“抠像”（只显示你，不带背景）。</string>
 	<key>Shapes: 16:9 for YouTube, 9:16 for Reels, TikTok, and Shorts, 1:1 for square posts, 4:5 for the Instagram feed, 4:3 for slides and iPad, 16:10 for a Mac screen, 21:9 for a cinematic look. Point at one to see what it's for.</key>
 	<string>比例：YouTube 用 16:9，Reels、TikTok 和 Shorts 用 9:16，方形帖子用 1:1，Instagram 动态用 4:5，幻灯片和 iPad 用 4:3，Mac 屏幕用 16:10，电影感画面用 21:9。将指针移到某个比例上可查看它的用途。</string>
 	<key>Share</key>
@@ -5564,6 +5600,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>聚光灯形状</string>
 	<key>Spotlight: darkens everything except the area you draw. Choose Rectangle or Ellipse.</key>
 	<string>聚光灯：让你画出的区域以外的地方全部变暗。可选择“矩形”或“椭圆”。</string>
+	<key>Square (1:1)</key>
+	<string>正方形（1:1）</string>
 	<key>Square posts</key>
 	<string>方形帖子</string>
 	<key>Square, circle, or straight 45° lines</key>
@@ -5822,8 +5860,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>气泡跟随你的面部；找不到面部的地方保持上一个取景</string>
 	<key>The bubble now follows your face</key>
 	<string>气泡现在会跟随你的面部</string>
-	<key>The bubble you see while recording never shows up in the screen recording itself.</key>
-	<string>录制时看到的气泡绝不会出现在屏幕录制内容中。</string>
 	<key>The bubble's framing follows your face</key>
 	<string>气泡的取景跟随你的面部</string>
 	<key>The camera bubble</key>
@@ -5832,8 +5868,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>无法启动摄像头。</string>
 	<key>The camera follows the text cursor as you type.</key>
 	<string>镜头在你打字时跟随文本光标。</string>
-	<key>The camera is saved separately, so in the editor you can move it, resize it, restyle it, or hide it.</key>
-	<string>摄像头画面是单独存储的，所以在编辑器中可以移动它、调整大小、更改样式或将其隐藏。</string>
+	<key>The camera is always recorded whole: the shape is only a setting, so you can change it later, and Creative Handoff gets the whole camera picture.</key>
+	<string>摄像头始终完整录制：形状只是一项设置，所以你之后可以更改，创意交付也会得到完整的摄像头画面。</string>
+	<key>The camera is saved separately and whole, so in the editor you can move it, resize it, restyle it, or hide it.</key>
+	<string>摄像头会单独完整存储，所以你可以在编辑器中移动、调整大小、更改样式或隐藏它。</string>
 	<key>The camera keeps your cursor in view and glides after it.</key>
 	<string>镜头会让指针保持在画面中，并平滑地跟随它。</string>
 	<key>The camera stopped. The recording continues without it.</key>
@@ -5934,6 +5972,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>指针、点按和快捷键</string>
 	<key>The preview shows only when Show the preview after capture is on in Settings ▸ General.</key>
 	<string>只有在“设置 ▸ 通用”中打开了“截取后显示预览”，才会显示预览。</string>
+	<key>The preview you see while recording never shows up in the screen recording itself.</key>
+	<string>录制时看到的预览绝不会出现在屏幕录制本身中。</string>
 	<key>The project file opens everything again, exactly as you left it. LF Studios keeps it up to date as you edit.</key>
 	<string>项目文件会让一切按你离开时的样子重新打开。LF Studios 会在你编辑时随时更新它。</string>
 	<key>The recording bar</key>
@@ -6176,6 +6216,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>要剪掉失误，把播放头移到那里，按 S 键分割，点按不要的部分，然后按 ⌫。</string>
 	<key>To drag out any area yourself, click Select area manually above the recording bar.</key>
 	<string>要自己拖移出任意区域，请点按录制栏上方的“手动选择区域”。</string>
+	<key>To get the preview out of the way, drag it outside the frame: the label says “Not in video”, and the editor puts the camera in its usual corner.</key>
+	<string>要让预览让开，请把它拖到录制框外：标签会显示“不在视频中”，编辑器会把摄像头放在它通常的角落。</string>
 	<key>To hide one, click it on the timeline and press ⌫.</key>
 	<string>要隐藏其中一个，请在时间线上点按它，然后按 ⌫。</string>
 	<key>To remove it again, untick Apply background to this image.</key>
@@ -6294,12 +6336,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>开启点按时自动缩放 — 保留你手动放置的缩放</string>
 	<key>Turn on Auto-zoom on clicks.</key>
 	<string>打开“点按时自动缩放”。</string>
+	<key>Turn on Camera in the recording bar.</key>
+	<string>在录制栏中打开“摄像头”。</string>
 	<key>Turn on Camera in the recording bar. macOS asks once: click Allow.</key>
 	<string>在录制栏中打开“摄像头”。macOS 会询问一次：点按“允许”。</string>
 	<key>Turn on Camera. A bubble with your face appears; it's recorded separately, so you can move and restyle it later.</key>
 	<string>打开“摄像头”，会出现一个显示你面部的气泡；它是单独录制的，所以之后还可以移动它、更改样式。</string>
-	<key>Turn on Camera. A round bubble appears; drag it where you like.</key>
-	<string>打开“摄像头”，会出现一个圆形气泡；把它拖到你喜欢的位置。</string>
+	<key>Turn on Camera. A preview of your camera appears, in the Camera shape chosen above the bar.</key>
+	<string>打开“摄像头”。摄像头预览会出现，形状为录制栏上方选择的“摄像头形状”。</string>
 	<key>Turn on Intro card or Outro card.</key>
 	<string>打开“片头卡”或“片尾卡”。</string>
 	<key>Turn on Keep face centered. LF Studios looks for your face once, with progress and Cancel.</key>
@@ -6874,8 +6918,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>无线局域网</string>
 	<key>Wi-Fi QR found</key>
 	<string>找到无线局域网二维码</string>
-	<key>Wide</key>
-	<string>宽幅</string>
 	<key>Width</key>
 	<string>宽度</string>
 	<key>Width and height, like 3:2 or 2.39:1.</key>
@@ -7074,10 +7116,18 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>对准或调整大小</string>
 	<key>all shortcuts</key>
 	<string>所有快捷键</string>
+	<key>bottom</key>
+	<string>下方</string>
+	<key>bottom left</key>
+	<string>左下</string>
+	<key>bottom right</key>
+	<string>右下</string>
 	<key>captions</key>
 	<string>字幕</string>
 	<key>captions burned in</key>
 	<string>已嵌入字幕</string>
+	<key>center</key>
+	<string>中间</string>
 	<key>chapters</key>
 	<string>章节</string>
 	<key>cut by editing words</key>
@@ -7094,6 +7144,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>与录制内容同步</string>
 	<key>intro card</key>
 	<string>片头卡</string>
+	<key>left</key>
+	<string>左侧</string>
 	<key>loops</key>
 	<string>循环播放</string>
 	<key>macOS asks once, the first time you take a screenshot. You can also allow it here first.</key>
@@ -7144,6 +7196,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>播放</string>
 	<key>pointer</key>
 	<string>指针</string>
+	<key>right</key>
+	<string>右侧</string>
 	<key>s</key>
 	<string>秒</string>
 	<key>select a part to cut</key>
@@ -7166,6 +7220,12 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>视频</string>
 	<key>this recording</key>
 	<string>此录制内容</string>
+	<key>top</key>
+	<string>上方</string>
+	<key>top left</key>
+	<string>左上</string>
+	<key>top right</key>
+	<string>右上</string>
 	<key>trim to the playhead</key>
 	<string>修剪到播放头</string>
 	<key>type</key>

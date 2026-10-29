@@ -1447,17 +1447,40 @@ final class VideoFrameRenderer {
 
     // MARK: Camera bubble
 
-    /// Where the bubble sits in output pixels (bottom-left origin).
-    static func webcamRect(_ settings: VideoWebcamSettings, outputSize: CGSize, cameraScale: Double = 1) -> CGRect {
+    /// Where the bubble sits in output pixels (bottom-left origin): placed
+    /// by hand, or at its anchor. `unclamped` lets a hand placement reach
+    /// past the edges (only for working one out).
+    static func webcamRect(_ settings: VideoWebcamSettings, outputSize: CGSize, cameraScale: Double = 1, unclamped: Bool = false) -> CGRect {
         let shortSide = min(outputSize.width, outputSize.height)
-        var height = shortSide * CGFloat(min(max(settings.size, VideoWebcamSettings.sizeRange.lowerBound), VideoWebcamSettings.sizeRange.upperBound))
-        if settings.shrinkWhenZoomed {
-            // Eases down to 70% as the camera pushes in.
-            let amount = min(max((cameraScale - 1) / 0.6, 0), 1)
-            height *= CGFloat(1 - 0.3 * VideoCameraEasing.spring(amount))
+        let aspect = settings.effectiveAspect
+        // Eases down to 70% as the camera pushes in.
+        let shrink: CGFloat = settings.shrinkWhenZoomed ? CGFloat(1 - 0.3 * VideoCameraEasing.spring(min(max((cameraScale - 1) / 0.6, 0), 1))) : 1
+        if let placement = settings.placement {
+            var width = outputSize.width * CGFloat(min(max(placement.width, VideoWebcamSettings.Placement.widthRange.lowerBound), VideoWebcamSettings.Placement.widthRange.upperBound))
+            var height = width / aspect
+            // Never taller than the video.
+            if height > outputSize.height {
+                height = outputSize.height
+                width = height * aspect
+            }
+            width *= shrink
+            height *= shrink
+            var midX = outputSize.width * CGFloat(placement.x)
+            var midY = outputSize.height * CGFloat(1 - placement.y)
+            if !unclamped {
+                midX = min(max(midX, width / 2), outputSize.width - width / 2)
+                midY = min(max(midY, height / 2), outputSize.height - height / 2)
+            }
+            return CGRect(x: (midX - width / 2).rounded(), y: (midY - height / 2).rounded(), width: width.rounded(), height: height.rounded())
         }
-        let width = height * settings.shape.aspect
+        var height = shortSide * CGFloat(min(max(settings.size, VideoWebcamSettings.sizeRange.lowerBound), VideoWebcamSettings.sizeRange.upperBound)) * shrink
+        var width = height * aspect
+        // A wide bubble on a narrow video: never wider than it.
         let margin = (shortSide * 0.04).rounded()
+        if width > outputSize.width - margin * 2 {
+            width = outputSize.width - margin * 2
+            height = width / aspect
+        }
         let unit = settings.anchor.unit
         let x = margin + (outputSize.width - width - margin * 2) * unit.x
         let yFromTop = margin + (outputSize.height - height - margin * 2) * unit.y

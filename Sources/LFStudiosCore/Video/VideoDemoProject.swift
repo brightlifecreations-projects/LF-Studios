@@ -948,6 +948,7 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
         keyPresses = metadata.keyPresses ?? []
         speakerNotes = metadata.speakerNotes
         cursor.visible = metadata.shouldRenderCursor
+        if metadata.webcam != nil { apply(cameraSetup: metadata.cameraSetup) }
         if trimEnd <= 0 {
             trimEnd = metadata.duration
         }

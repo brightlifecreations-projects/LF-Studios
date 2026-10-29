@@ -656,6 +656,8 @@
 	<string>Перед записью включите «Микрофон» на панели записи и проверьте, что индикатор уровня движется, когда вы говорите.</string>
 	<key>Before recording, turn on Track where I type.</key>
 	<string>Перед записью включите «Следить, где я печатаю».</string>
+	<key>Before recording: turn on Camera, then Camera shape above the recording bar. In the editor: Camera panel ▸ Camera ▸ Camera shape.</key>
+	<string>Перед записью: включите «Камера», затем «Форма камеры» над панелью записи. В редакторе: панель «Камера» ▸ Камера ▸ Форма камеры.</string>
 	<key>Begins scrolling when the recording starts</key>
 	<string>Начинает прокрутку, когда начинается запись</string>
 	<key>Behavior</key>
@@ -814,6 +816,12 @@
 	<string>Панель «Камера» ▸ Паузы ▸ Скрывать камеру в паузах.</string>
 	<key>Camera preview</key>
 	<string>Предпросмотр камеры</string>
+	<key>Camera shape</key>
+	<string>Форма камеры</string>
+	<key>Camera shape: Circle, Rounded rectangle, Square, Landscape, Portrait, 4:3, 3:4, Free, or Cutout (just you, without the background).</key>
+	<string>Форма камеры: Круг, Скругленный прямоугольник, Квадрат, Горизонтально, Вертикально, 4:3, 3:4, Произвольно или Силуэт (только вы, без фона).</string>
+	<key>Camera shape: how the camera looks in the video. The preview shows it.</key>
+	<string>Форма камеры: как камера выглядит в видео. Предпросмотр это показывает.</string>
 	<key>Camera stopped</key>
 	<string>Камера остановлена</string>
 	<key>Camera unplugged: the screen recording keeps going without it.</key>
@@ -838,6 +846,8 @@
 	<string>Видео с камеры: %@</string>
 	<key>Camera — drag to move it, click for options</key>
 	<string>Камера — перетяните, чтобы переместить; нажмите, чтобы открыть параметры</string>
+	<key>Camera: %@%% of width, %@</key>
+	<string>Камера: %1$@ %% ширины, %2$@</string>
 	<key>Can't sync — the recording or the camera video has no sound</key>
 	<string>Не удалось синхронизировать — у записи или видео с камеры нет звука</string>
 	<key>Can't sync — the recording or “%@” has no sound</key>
@@ -1044,6 +1054,8 @@
 	<string>Выберите 3, 5 или 10 секунд в разделе Настройки ▸ Снимки экрана ▸ Снимок с таймером.</string>
 	<key>Choose Another…</key>
 	<string>Выбрать другое…</string>
+	<key>Choose Camera shape. The camera preview takes that shape right away, so you can frame yourself.</key>
+	<string>Выберите «Форма камеры». Предпросмотр сразу принимает эту форму, чтобы вы могли выстроить кадр.</string>
 	<key>Choose Capture Area in the LF Studios menu to start</key>
 	<string>Чтобы начать, выберите «Снять область» в меню LF Studios</string>
 	<key>Choose Capture Text, or press its shortcut.</key>
@@ -1136,6 +1148,8 @@
 	<string>Выберите язык, на котором вы говорите в записи.</string>
 	<key>Choose the camera video to show in the bubble</key>
 	<string>Выберите видео с камеры для пузыря</string>
+	<key>Choose the camera's shape and ratio before you record, and change it any time in the editor.</key>
+	<string>Выберите форму и пропорции камеры перед записью и меняйте их в редакторе когда угодно.</string>
 	<key>Choose the corner (Left or Right) and how long it stays in the same settings section. Hovering keeps it open.</key>
 	<string>Угол («Слева» или «Справа») и время показа выбираются в том же разделе настроек. Пока указатель над миниатюрой, она не исчезает.</string>
 	<key>Choose the screen recording, the camera video if there is one, and the sound files to add as tracks. Nothing in the folder changes until you save.</key>
@@ -1164,6 +1178,8 @@
 	<string>Кино</string>
 	<key>Circle</key>
 	<string>Круг</string>
+	<key>Circle, Rounded rectangle, Square (1:1), Landscape (16:9), Portrait (9:16), 4:3, 3:4, or Free (any width and height).</key>
+	<string>Круг, Скругленный прямоугольник, Квадрат (1:1), Горизонтально (16:9), Вертикально (9:16), 4:3, 3:4 или Произвольно (любые ширина и высота).</string>
 	<key>Citrus</key>
 	<string>Цитрус</string>
 	<key>Classic</key>
@@ -1222,6 +1238,8 @@
 	<string>Нажмите «Фон».</string>
 	<key>Click Blur above the preview, or press B.</key>
 	<string>Нажмите «Размытие» над предпросмотром или клавишу B.</string>
+	<key>Click Camera again to turn the camera off completely.</key>
+	<string>Нажмите «Камера» еще раз, чтобы полностью выключить камеру.</string>
 	<key>Click Camera in the recording bar. Choose the camera in ⋯ More recording options.</key>
 	<string>Нажмите «Камера» на панели записи. Камеру можно выбрать в ⋯ «Другие параметры записи».</string>
 	<key>Click Cancel, or turn off asking, and it goes in the Recording folder, laid out the same way. Nothing is ever lost.</key>
@@ -1928,6 +1946,8 @@
 	<string>Перетяните размытие на то, что нужно скрыть.</string>
 	<key>Drag the box on the preview over anything private. Blur follows zooms and stays until its bar ends.</key>
 	<string>Перетяните рамку в предпросмотре на все, что нужно скрыть. Размытие следует за увеличениями и держится до конца своей полосы.</string>
+	<key>Drag the camera's edges on the video to change its width and height.</key>
+	<string>Тяните края камеры на видео, чтобы изменить ширину и высоту.</string>
 	<key>Drag the frame on the preview to aim; drag its corners to zoom in or out.</key>
 	<string>Перетяните рамку в предпросмотре, чтобы навести ее; тяните за углы, чтобы увеличить или уменьшить.</string>
 	<key>Drag the frame over what you want to show. To fill it with one app, click Fit a window to the frame… and choose its window.</key>
@@ -1944,6 +1964,8 @@
 	<string>Перетаскивайте клавиши в просмотре, чтобы разместить их где угодно</string>
 	<key>Drag the pin to move it; drag an edge to resize it.</key>
 	<string>Перетаскивайте закрепленный снимок, чтобы переместить его; тяните за край, чтобы изменить размер.</string>
+	<key>Drag the preview where you want the camera in the video: what it covers of the recording frame is where the camera goes.</key>
+	<string>Перетащите предпросмотр туда, где камера должна быть в видео: то, что он закрывает в рамке записи, и есть место камеры.</string>
 	<key>Drag the spot on the preview; drag a corner to resize it. Everything around it dims while its bar on the timeline runs.</key>
 	<string>Перетяните пятно в предпросмотре; тяните за угол, чтобы изменить его размер. Все вокруг затемняется, пока идет его полоса на шкале времени.</string>
 	<key>Drag the track on the timeline to move it; drag an edge to trim it; click it and press S to split it, or ⌫ to delete a piece.</key>
@@ -2548,6 +2570,8 @@
 	<string>Руководство</string>
 	<key>H.264 plays everywhere. HEVC makes smaller files, but some browsers and Windows PCs can't play it.</key>
 	<string>H.264 воспроизводится везде. HEVC дает файлы меньше, но некоторые браузеры и компьютеры с Windows не могут его воспроизвести.</string>
+	<key>Handles on the camera preview: drag an edge or corner to resize it, the middle to move it.</key>
+	<string>Маркеры на предпросмотре камеры: тяните за край или угол, чтобы изменить размер, за середину — чтобы переместить.</string>
 	<key>Handoff didn't finish</key>
 	<string>Передача не завершена</string>
 	<key>Handoff ready — show it</key>
@@ -3032,6 +3056,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>LF Studios помнит область, пока приложение не завершится. Если области еще нет, вы выделяете ее как обычно.</string>
 	<key>LF Studios remembers the last shape, size, and place on each screen.</key>
 	<string>LF Studios запоминает последние форму, размер и место на каждом экране.</string>
+	<key>LF Studios remembers your last shape for the next recording.</key>
+	<string>LF Studios запоминает последнюю форму для следующей записи.</string>
 	<key>LF Studios remembers your last tool, color, and sizes for next time.</key>
 	<string>LF Studios запоминает последний инструмент, цвет и размеры до следующего раза.</string>
 	<key>LF Studios resizes and centers the window. Click Record.</key>
@@ -3060,6 +3086,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>МЕДИАТЕКА LFSTUDIOS</string>
 	<key>Lagoon</key>
 	<string>Лагуна</string>
+	<key>Landscape (16:9)</key>
+	<string>Горизонтально (16:9)</string>
 	<key>Language</key>
 	<string>Язык</string>
 	<key>Languages</key>
@@ -3610,6 +3638,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Не хватает места: для передачи нужно около %1$@, а там свободно %2$@.</string>
 	<key>Not for this video</key>
 	<string>Не для этого видео</string>
+	<key>Not in video — position set in the editor</key>
+	<string>Не в видео — положение задается в редакторе</string>
 	<key>Not loaded:</key>
 	<string>Не загружено:</string>
 	<key>Not now</key>
@@ -4024,6 +4054,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Всплывающие слова</string>
 	<key>Porcelain</key>
 	<string>Фарфор</string>
+	<key>Portrait (9:16)</key>
+	<string>Вертикально (9:16)</string>
 	<key>Position</key>
 	<string>Положение</string>
 	<key>Positions only: no text, no keys</key>
@@ -4190,8 +4222,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Запись области</string>
 	<key>Record an area, a window, or the whole screen</key>
 	<string>Запишите область, окно или весь экран</string>
-	<key>Record as usual.</key>
-	<string>Записывайте как обычно.</string>
+	<key>Record as usual. The video opens in the editor with the camera there, in that shape and size.</key>
+	<string>Записывайте как обычно. Видео откроется в редакторе с камерой на этом месте, такой же формы и размера.</string>
 	<key>Record camera</key>
 	<string>Записывать камеру</string>
 	<key>Record everything on one screen.</key>
@@ -4228,6 +4260,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Записывайте с включённым «Следить, где я печатаю», чтобы увеличивать набор текста</string>
 	<key>Record your voice.</key>
 	<string>Записывайте свой голос.</string>
+	<key>Record. The video opens in the editor with the camera in that shape.</key>
+	<string>Запишите. Видео откроется в редакторе с камерой этой формы.</string>
 	<key>Recorded at %@. Drag its dot on the timeline to retime it; ripples and Auto Zoom follow.</key>
 	<string>Записано в %@. Перетяните его точку на шкале времени, чтобы изменить время; волны и автомасштаб последуют за ней.</string>
 	<key>Recorded at the same time as the video? Click Sync by sound: it lines up with the recording and follows your cuts from then on.</key>
@@ -4806,6 +4840,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Скругленный прямоугольник</string>
 	<key>Roundness</key>
 	<string>Скругление</string>
+	<key>Roundness, in the same menu: from sharp corners to round.</key>
+	<string>Скругление в том же меню: от острых углов до круглых.</string>
 	<key>Roundness: from sharp corners to a full circle.</key>
 	<string>«Скругление»: от острых углов до полного круга.</string>
 	<key>S</key>
@@ -5044,6 +5080,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Выбрать несколько объектов</string>
 	<key>Select several to drag them all at once.</key>
 	<string>Выберите несколько, чтобы перетянуть их все сразу.</string>
+	<key>Select size</key>
+	<string>Выбрать размер</string>
 	<key>Select which display to record fullscreen</key>
 	<string>Выберите дисплей для записи всего экрана</string>
 	<key>Select words and press ⌫ to cut them from the video — ⌫ again on crossed-out words puts them back. Click a word to jump there; ⌘F finds.</key>
@@ -5144,8 +5182,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Цвет тени</string>
 	<key>Shape</key>
 	<string>Форма</string>
-	<key>Shape: Circle, Rounded, Wide, or Cutout (just you, without the background).</key>
-	<string>«Форма»: «Круг», «Квадрат», «Прямоугольник» или «Силуэт» (только вы, без фона).</string>
 	<key>Shapes: 16:9 for YouTube, 9:16 for Reels, TikTok, and Shorts, 1:1 for square posts, 4:5 for the Instagram feed, 4:3 for slides and iPad, 16:10 for a Mac screen, 21:9 for a cinematic look. Point at one to see what it's for.</key>
 	<string>Формы: 16:9 для YouTube, 9:16 для Reels, TikTok и Shorts, 1:1 для квадратных постов, 4:5 для ленты Instagram, 4:3 для слайдов и iPad, 16:10 для экрана Mac, 21:9 для кинематографичного вида. Наведите указатель на форму, чтобы узнать, для чего она.</string>
 	<key>Share</key>
@@ -5418,6 +5454,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Форма прожектора</string>
 	<key>Spotlight: darkens everything except the area you draw. Choose Rectangle or Ellipse.</key>
 	<string>Прожектор: затемняет все, кроме нарисованной области. Выберите «Прямоугольник» или «Эллипс».</string>
+	<key>Square (1:1)</key>
+	<string>Квадрат (1:1)</string>
 	<key>Square posts</key>
 	<string>Квадратные посты</string>
 	<key>Square, circle, or straight 45° lines</key>
@@ -5676,8 +5714,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Окошко следует за лицом; где его нет, сохраняется последний кадр</string>
 	<key>The bubble now follows your face</key>
 	<string>Теперь окошко следует за лицом</string>
-	<key>The bubble you see while recording never shows up in the screen recording itself.</key>
-	<string>Окошко, которое вы видите во время записи, никогда не попадает в саму запись экрана.</string>
 	<key>The bubble's framing follows your face</key>
 	<string>Кадр окошка следует за лицом</string>
 	<key>The camera bubble</key>
@@ -5686,8 +5722,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Не удалось запустить камеру.</string>
 	<key>The camera follows the text cursor as you type.</key>
 	<string>Камера следует за текстовым курсором, пока вы печатаете.</string>
-	<key>The camera is saved separately, so in the editor you can move it, resize it, restyle it, or hide it.</key>
-	<string>Камера сохраняется отдельно, поэтому в редакторе ее можно переместить, изменить размер и оформление или скрыть.</string>
+	<key>The camera is always recorded whole: the shape is only a setting, so you can change it later, and Creative Handoff gets the whole camera picture.</key>
+	<string>Камера всегда записывается целиком: форма — лишь настройка, ее можно изменить позже, а Творческая передача получает всю картинку камеры.</string>
+	<key>The camera is saved separately and whole, so in the editor you can move it, resize it, restyle it, or hide it.</key>
+	<string>Камера сохраняется отдельно и целиком, поэтому в редакторе ее можно переместить, изменить размер и стиль или скрыть.</string>
 	<key>The camera keeps your cursor in view and glides after it.</key>
 	<string>Камера держит указатель в кадре и плавно следует за ним.</string>
 	<key>The camera stopped. The recording continues without it.</key>
@@ -5788,6 +5826,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Указатель, нажатия и сочетания клавиш</string>
 	<key>The preview shows only when Show the preview after capture is on in Settings ▸ General.</key>
 	<string>Превью появляется, только если в разделе Настройки ▸ Основные включено «Показывать превью после снимка».</string>
+	<key>The preview you see while recording never shows up in the screen recording itself.</key>
+	<string>Предпросмотр, который вы видите во время записи, никогда не попадает в саму запись экрана.</string>
 	<key>The project file opens everything again, exactly as you left it. LF Studios keeps it up to date as you edit.</key>
 	<string>Файл проекта снова открывает все точно так, как вы оставили. LF Studios обновляет его, пока вы редактируете.</string>
 	<key>The recording bar</key>
@@ -6028,6 +6068,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Чтобы вырезать ошибку, поставьте на нее указатель воспроизведения, нажмите S, чтобы разделить клип, выберите неудачный фрагмент и нажмите ⌫.</string>
 	<key>To drag out any area yourself, click Select area manually above the recording bar.</key>
 	<string>Чтобы выделить любую область самостоятельно, нажмите «Выбрать область вручную» над панелью записи.</string>
+	<key>To get the preview out of the way, drag it outside the frame: the label says “Not in video”, and the editor puts the camera in its usual corner.</key>
+	<string>Чтобы убрать предпросмотр с дороги, перетащите его за рамку: подпись покажет «Не в видео», а редактор поставит камеру в обычный угол.</string>
 	<key>To hide one, click it on the timeline and press ⌫.</key>
 	<string>Чтобы скрыть одно сочетание, нажмите на него на шкале времени и нажмите ⌫.</string>
 	<key>To remove it again, untick Apply background to this image.</key>
@@ -6146,12 +6188,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Включить автомасштаб по нажатиям — приближения, добавленные вручную, останутся</string>
 	<key>Turn on Auto-zoom on clicks.</key>
 	<string>Включите «Автомасштаб по нажатиям».</string>
+	<key>Turn on Camera in the recording bar.</key>
+	<string>Включите «Камера» на панели записи.</string>
 	<key>Turn on Camera in the recording bar. macOS asks once: click Allow.</key>
 	<string>Включите «Камера» на панели записи. macOS спросит один раз — нажмите «Разрешить».</string>
 	<key>Turn on Camera. A bubble with your face appears; it's recorded separately, so you can move and restyle it later.</key>
 	<string>Включите «Камера». Появится окошко с вашим лицом; оно записывается отдельно, поэтому позже его можно переместить и оформить иначе.</string>
-	<key>Turn on Camera. A round bubble appears; drag it where you like.</key>
-	<string>Включите «Камера». Появится круглое окошко — перетяните его куда нужно.</string>
+	<key>Turn on Camera. A preview of your camera appears, in the Camera shape chosen above the bar.</key>
+	<string>Включите «Камера». Появится предпросмотр камеры в форме, выбранной над панелью.</string>
 	<key>Turn on Intro card or Outro card.</key>
 	<string>Включите «Начальный титр» или «Финальный титр».</string>
 	<key>Turn on Keep face centered. LF Studios looks for your face once, with progress and Cancel.</key>
@@ -6722,8 +6766,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Wi-Fi</string>
 	<key>Wi-Fi QR found</key>
 	<string>Найден QR-код с Wi-Fi</string>
-	<key>Wide</key>
-	<string>Прямоугольник</string>
 	<key>Width</key>
 	<string>Ширина</string>
 	<key>Width and height, like 3:2 or 2.39:1.</key>
@@ -6916,10 +6958,18 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>навести или изменить размер</string>
 	<key>all shortcuts</key>
 	<string>все сочетания клавиш</string>
+	<key>bottom</key>
+	<string>внизу</string>
+	<key>bottom left</key>
+	<string>внизу слева</string>
+	<key>bottom right</key>
+	<string>внизу справа</string>
 	<key>captions</key>
 	<string>субтитры</string>
 	<key>captions burned in</key>
 	<string>встроенные субтитры</string>
+	<key>center</key>
+	<string>в центре</string>
 	<key>chapters</key>
 	<string>главы</string>
 	<key>cut by editing words</key>
@@ -6936,6 +6986,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>одновременно с записью</string>
 	<key>intro card</key>
 	<string>начальный титр</string>
+	<key>left</key>
+	<string>слева</string>
 	<key>loops</key>
 	<string>повторяется</string>
 	<key>macOS asks once, the first time you take a screenshot. You can also allow it here first.</key>
@@ -6986,6 +7038,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>воспроизвести</string>
 	<key>pointer</key>
 	<string>указатель</string>
+	<key>right</key>
+	<string>справа</string>
 	<key>s</key>
 	<string>с</string>
 	<key>select a part to cut</key>
@@ -7008,6 +7062,12 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>видео</string>
 	<key>this recording</key>
 	<string>эта запись</string>
+	<key>top</key>
+	<string>вверху</string>
+	<key>top left</key>
+	<string>вверху слева</string>
+	<key>top right</key>
+	<string>вверху справа</string>
 	<key>trim to the playhead</key>
 	<string>подрезать по указателю воспроизведения</string>
 	<key>type</key>
