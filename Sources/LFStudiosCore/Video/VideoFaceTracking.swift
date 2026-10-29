@@ -16,10 +16,13 @@ struct VideoFaceTracking: Codable, Equatable {
     var smoothness = 0.6
     /// 0 loose (head and shoulders) … 1 tight (the face fills the bubble).
     var tightness = 0.45
+    /// The analysis this edit uses, named so a saved project or handoff
+    /// carries it to another Mac (VideoProjectCaches.swift).
+    var analysisPath: String?
 
     init() {}
 
-    private enum CodingKeys: String, CodingKey { case enabled, smoothness, tightness }
+    private enum CodingKeys: String, CodingKey { case enabled, smoothness, tightness, analysisPath }
 
     init(from decoder: Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
@@ -27,6 +30,7 @@ struct VideoFaceTracking: Codable, Equatable {
         enabled = (try? c.decodeIfPresent(Bool.self, forKey: .enabled)) ?? d.enabled
         smoothness = (try? c.decodeIfPresent(Double.self, forKey: .smoothness)) ?? d.smoothness
         tightness = (try? c.decodeIfPresent(Double.self, forKey: .tightness)) ?? d.tightness
+        analysisPath = try? c.decodeIfPresent(String.self, forKey: .analysisPath)
     }
 }
 
@@ -89,6 +93,14 @@ enum VideoFaceStore {
         lock.lock()
         memory[key] = analysis
         lock.unlock()
+        return analysis
+    }
+
+    /// An analysis carried in a project (07 Data), wherever it is.
+    static func load(file: URL) -> VideoFaceAnalysis? {
+        guard let data = try? Data(contentsOf: file),
+              let analysis = try? JSONDecoder().decode(VideoFaceAnalysis.self, from: data),
+              analysis.version == VideoFaceAnalysis.version else { return nil }
         return analysis
     }
 

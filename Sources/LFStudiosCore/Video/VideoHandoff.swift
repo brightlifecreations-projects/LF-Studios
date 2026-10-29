@@ -38,8 +38,11 @@ struct VideoHandoffOptions: Codable, Equatable {
     /// project opens the whole edit again. Off: a handoff that needs them
     /// gets no project, and README.txt says so.
     var includeOriginals = true
+    /// Fonts installed on this Mac (Font Book) as well as those added to LF
+    /// Studios. Off: a font's license may not allow sharing it.
+    var includeInstalledFonts = false
 
-    init(clips: Clips = .trimmed, lineUp: Bool = true, includeFinal: Bool = true, includeTimeline: Bool = true, quality: Quality = .proRes422HQ, includeSpeakerNotes: Bool = false, includeOriginals: Bool = true) {
+    init(clips: Clips = .trimmed, lineUp: Bool = true, includeFinal: Bool = true, includeTimeline: Bool = true, quality: Quality = .proRes422HQ, includeSpeakerNotes: Bool = false, includeOriginals: Bool = true, includeInstalledFonts: Bool = false) {
         self.clips = clips
         self.lineUp = lineUp
         self.includeFinal = includeFinal
@@ -47,9 +50,10 @@ struct VideoHandoffOptions: Codable, Equatable {
         self.quality = quality
         self.includeSpeakerNotes = includeSpeakerNotes
         self.includeOriginals = includeOriginals
+        self.includeInstalledFonts = includeInstalledFonts
     }
 
-    private enum CodingKeys: String, CodingKey { case clips, lineUp, includeFinal, includeTimeline, quality, includeSpeakerNotes, includeOriginals }
+    private enum CodingKeys: String, CodingKey { case clips, lineUp, includeFinal, includeTimeline, quality, includeSpeakerNotes, includeOriginals, includeInstalledFonts }
 
     /// Options saved before a field existed still load.
     init(from decoder: Decoder) throws {
@@ -62,6 +66,7 @@ struct VideoHandoffOptions: Codable, Equatable {
         quality = (try? c.decodeIfPresent(Quality.self, forKey: .quality)) ?? d.quality
         includeSpeakerNotes = (try? c.decodeIfPresent(Bool.self, forKey: .includeSpeakerNotes)) ?? d.includeSpeakerNotes
         includeOriginals = (try? c.decodeIfPresent(Bool.self, forKey: .includeOriginals)) ?? d.includeOriginals
+        includeInstalledFonts = (try? c.decodeIfPresent(Bool.self, forKey: .includeInstalledFonts)) ?? d.includeInstalledFonts
     }
 
     static let key = "creativeHandoffOptions"
@@ -178,7 +183,10 @@ extension VideoHandoffInput {
                 metadata: metadata
             ))
         }
-        return VideoHandoffInput(name: name, project: project, recordings: recordings, exportSettings: exportSettings, recording: recording)
+        // This Mac's cleaned-up voices and face tracking, named so they go along.
+        let primaryKinds = zip(sources, recordings).first { $0.0.isPrimary }?.1.audioKinds ?? []
+        let carried = VideoProjectCaches.carrying(project, recordedCamera: recording?.webcam, primaryKinds: primaryKinds)
+        return VideoHandoffInput(name: name, project: carried, recordings: recordings, exportSettings: exportSettings, recording: recording)
     }
 }
 
@@ -531,6 +539,12 @@ enum VideoHandoffPlanner {
         if case .image(let path) = input.project.background {
             addGraphic(path, "The background picture")
         }
+        if case .systemWallpaper(let path) = input.project.background {
+            addGraphic(path, "The background picture (a macOS wallpaper)")
+        }
+        if input.project.cursor.style == .custom, let cursor = input.project.cursor.customImage {
+            addGraphic(cursor.path, "The pointer's own picture")
+        }
 
         // 05 Captions
         if !input.project.captions.isEmpty {
@@ -560,10 +574,28 @@ enum VideoHandoffPlanner {
                                           work: .text(data), treatment: .written, duration: nil, frameRate: nil, startOffset: nil, estimatedBytes: Int64(data.utf8.count)))
         }
 
+        // The cleaned-up voices and the face tracking the LF Studios project
+        // plays, so it sounds and looks the same on another Mac.
+        let preferred = VideoProjectContents(project: input.project, recording: input.recording, sourceRecordings: [:]).preferredNames
+        for voice in input.project.carriedVoices where FileManager.default.fileExists(atPath: voice.path) {
+            let url = URL(fileURLWithPath: voice.path)
+            items.append(VideoHandoffItem(folder: .audio, fileName: unique(preferred[voice.path] ?? url.lastPathComponent, in: &audioNames),
+                                          description: "The cleaned-up voice (Enhance voice), as LF Studios plays it, unaligned",
+                                          work: .copy(url), treatment: .original, duration: nil, frameRate: nil, startOffset: nil, estimatedBytes: fileSize(url)))
+        }
+        if let path = input.project.faceTracking?.analysisPath, FileManager.default.fileExists(atPath: path) {
+            items.append(VideoHandoffItem(folder: .data, fileName: "Face tracking.json", description: "Where the face is in the camera video (Keep face centered), for the LF Studios project",
+                                          work: .copy(URL(fileURLWithPath: path)), treatment: .original, duration: nil, frameRate: nil, startOffset: nil, estimatedBytes: fileSize(URL(fileURLWithPath: path))))
+        }
+
         // Fonts
         var fontNames = Set<String>()
-        for family in VideoProjectDocument.fontFamilies(of: input.project) {
-            for file in VideoFonts.addedFontFiles(forFamily: family) {
+        let families = VideoProjectDocument.fontFamilies(of: input.project)
+        for family in VideoFonts.installedFamiliesLeftOut(families, includeInstalled: options.includeInstalledFonts) {
+            skipped.append(L("Font “\(family)” — installed on this Mac, so it's left out: turn on Include fonts installed on this Mac (check the font's license allows sharing it). Without it, another Mac shows a stand-in font."))
+        }
+        for family in families {
+            for file in VideoFonts.carriedFontFiles(forFamily: family, includeInstalled: options.includeInstalledFonts) {
                 items.append(VideoHandoffItem(folder: .fonts, fileName: unique(file.lastPathComponent, in: &fontNames), description: "Font “\(family)”",
                                               work: .copy(file), treatment: .original, duration: nil, frameRate: nil, startOffset: nil, estimatedBytes: fileSize(file)))
             }

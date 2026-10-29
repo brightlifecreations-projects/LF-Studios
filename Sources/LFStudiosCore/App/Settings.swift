@@ -353,6 +353,13 @@ enum Settings {
         set { defaults.set(newValue, forKey: "recordingMicrophoneDeviceID") }
     }
 
+    /// Save Project's "Include fonts installed on this Mac" (off: a font's
+    /// license may not allow sharing it).
+    static var projectIncludesInstalledFonts: Bool {
+        get { defaults.bool(forKey: "projectIncludesInstalledFonts") }
+        set { defaults.set(newValue, forKey: "projectIncludesInstalledFonts") }
+    }
+
     static var openVideoEditorAfterRecording: Bool {
         get {
             // Manual only: off unless the user turned it on.

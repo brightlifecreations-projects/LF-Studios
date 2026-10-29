@@ -238,6 +238,10 @@
 	<string>已存在同名文件。请换一个名称，然后重新导出。</string>
 	<key>A folder with an LF Studios project in it opens that project, exactly as it was saved.</key>
 	<string>包含 LF Studios 项目的文件夹会打开该项目，与存储时完全一样。</string>
+	<key>A frame appears in the middle of the screen. Choose its shape above the recording bar, like 16:9.</key>
+	<string>屏幕中间会出现一个录制框。在录制栏上方选择它的比例，例如 16:9。</string>
+	<key>A frame of an exact shape and size, so your video comes out ready for YouTube, Reels, or Instagram.</key>
+	<string>一个比例和大小都精确的录制框，让你的视频直接适合 YouTube、Reels 或 Instagram。</string>
 	<key>A hairline that separates dark recordings from the background</key>
 	<string>一条细线，将深色录制内容与背景分开</string>
 	<key>A magnifier over one spot at the playhead; the rest of the frame stays in view</key>
@@ -300,6 +304,8 @@
 	<string>大约还剩 %lld 秒</string>
 	<key>About LF Studios</key>
 	<string>关于 LF Studios</string>
+	<key>Above the recording bar, choose 16:9 for YouTube, 9:16 for Reels, TikTok, and Shorts, or 4:5 for the Instagram feed.</key>
+	<string>在录制栏上方，为 YouTube 选择 16:9，为 Reels、TikTok 和 Shorts 选择 9:16，为 Instagram 动态选择 4:5。</string>
 	<key>Accuracy</key>
 	<string>准确度</string>
 	<key>Accuracy: Accurate reads more carefully; Fast is quicker but knows fewer languages.</key>
@@ -462,6 +468,8 @@
 	<string>截屏后</string>
 	<key>After changing the shape, move zooms, the camera, and captions so everything fits.</key>
 	<string>更改画面比例后，移动缩放、摄像头和字幕，让一切都合适。</string>
+	<key>After clicking the frame's border or the bars.</key>
+	<string>在点按录制框的边框或两条栏之后。</string>
 	<key>After recording</key>
 	<string>录制之后</string>
 	<key>After recording, click Restore size to put it back.</key>
@@ -552,6 +560,8 @@
 	<string>任意颜色…</string>
 	<key>Any other folder: Import Folder lists the videos and sound files. Choose which is the screen recording, which the camera, and which sound to add as tracks, and when each starts.</key>
 	<string>其他任何文件夹：“导入文件夹”会列出其中的视频和声音文件。选择哪个是屏幕录制、哪个是摄像头视频、哪些声音要添加为轨道，以及每个文件从何时开始。</string>
+	<key>Any shape, like 3:2</key>
+	<string>任意比例，例如 3:2</string>
 	<key>App</key>
 	<string>App</string>
 	<key>Appearance</key>
@@ -918,6 +928,8 @@
 	<string>取消导出</string>
 	<key>Cancel the countdown</key>
 	<string>取消倒计时</string>
+	<key>Cancel the frame, from any app</key>
+	<string>从任意应用取消录制框</string>
 	<key>Cancel this export</key>
 	<string>取消此导出</string>
 	<key>Cancelled</key>
@@ -1102,6 +1114,8 @@
 	<string>选择</string>
 	<key>Choose .srt or .vtt. The file follows your cuts and speed changes.</key>
 	<string>选择 .srt 或 .vtt。文件会跟随你的剪辑和变速调整。</string>
+	<key>Choose 1080p in the size menu.</key>
+	<string>在大小菜单中选择 1080p。</string>
 	<key>Choose 3, 5, or 10 seconds in Settings ▸ Screenshots ▸ Timed Capture.</key>
 	<string>在“设置 ▸ 截屏 ▸ 定时截屏”中选择 3、5 或 10 秒。</string>
 	<key>Choose Another…</key>
@@ -1160,6 +1174,8 @@
 	<string>选择项目、文件夹或视频</string>
 	<key>Choose a recording or video to add after this one</key>
 	<string>选择要添加在此之后的录制内容或视频</string>
+	<key>Choose a shape, then a size.</key>
+	<string>先选择比例，再选择大小。</string>
 	<key>Choose a size, or Custom Size… for your own.</key>
 	<string>选择一个尺寸，或选择“自定大小…”来自己设定。</string>
 	<key>Choose a song to play under the video</key>
@@ -1338,10 +1354,12 @@
 	<string>点按时间线工具栏中的“标记”。录制时添加的标记也会显示在这里。</string>
 	<key>Click Microphone in the recording bar. A menu above the bar picks which microphone.</key>
 	<string>点按录制栏中的“麦克风”。录制栏上方的菜单可选择使用哪个麦克风。</string>
-	<key>Click New recording in Home and drag over the area to record. For a window or the whole screen, use Record Window or Record Fullscreen in the LF Studios menu.</key>
-	<string>点按“主页”中的“新录制”，然后拖移框出要录制的区域。要录制窗口或整个屏幕，请使用 LF Studios 菜单中的“录制窗口”或“录制全屏”。</string>
-	<key>Click New recording in Home, then drag over the area you want to record.</key>
-	<string>点按“主页”中的“新录制”，然后拖移框出要录制的区域。</string>
+	<key>Click New recording in Home.</key>
+	<string>点按“主页”中的“新录制”。</string>
+	<key>Click New recording in Home. A frame appears: choose a shape above the recording bar, like 16:9, and drag the frame's border to what you want to record.</key>
+	<string>点按“主页”中的“新录制”。屏幕上会出现一个录制框：在录制栏上方选择比例，例如 16:9，然后拖移录制框的边框，框住你要录制的内容。</string>
+	<key>Click New recording in Home. Choose a shape for the frame (16:9 for YouTube, 9:16 for Reels) and drag its border into place. For a window or the whole screen, click Window or Full screen above the recording bar.</key>
+	<string>点按“主页”中的“新录制”。为录制框选择比例（YouTube 用 16:9，Reels 用 9:16），然后拖移它的边框到合适位置。要录制窗口或整个屏幕，请点按录制栏上方的“窗口”或“全屏”。</string>
 	<key>Click Open System Settings below.</key>
 	<string>点按下方的“打开系统设置”。</string>
 	<key>Click Phone overlay above the preview to see what a phone app would cover.</key>
@@ -1448,6 +1466,8 @@
 	<string>再次点按它只会替换这些缩放。每个缩放都可以像其他缩放一样更改。</string>
 	<key>Clicks</key>
 	<string>点按</string>
+	<key>Clicks and scrolling inside the frame and on the dimmed screen go to your apps, so you can set things up first. Only the frame's border and corners, and the bars, take clicks.</key>
+	<string>在录制框内和变暗的屏幕上点按和滚动，都会传给你的应用，所以你可以先把内容准备好。只有录制框的边框和四角，以及两条栏，会响应点按。</string>
 	<key>Clicks — drag one to retime it, ⌫ removes the selected one</key>
 	<string>点按 — 拖移可调整时间，按 ⌫ 可移除所选项</string>
 	<key>Client names, project code names… (separate with commas)</key>
@@ -1746,10 +1766,14 @@
 	<string>自定外观</string>
 	<key>Custom position</key>
 	<string>自定位置</string>
+	<key>Custom shape</key>
+	<string>自定比例</string>
 	<key>Custom: %@</key>
 	<string>自定图像：%@</string>
 	<key>Custom…</key>
-	<string>自定颜色…</string>
+	<string>自定…</string>
+	<key>Custom…: type any shape, like 3:2 or 2.39:1.</key>
+	<string>自定…：输入任意比例，例如 3:2 或 2.39:1。</string>
 	<key>Cut</key>
 	<string>剪切</string>
 	<key>Cut %lld words — ⌘Z to undo</key>
@@ -1930,6 +1954,8 @@
 	<string>拖移片段的名称可移动它。点按片段并按 ⌫ 可将其删除。</string>
 	<key>Drag a clip's edge to trim it, or press I or O to make it start or end at the playhead.</key>
 	<string>拖移片段的边缘可修剪它，或按 I 或 O 键让它从播放头处开始或结束。</string>
+	<key>Drag a corner to resize it. The shape stays the same.</key>
+	<string>拖移一角可调整大小，比例保持不变。</string>
 	<key>Drag a frame. Drag inside it to move it, or drag its edges to resize it.</key>
 	<string>拖移出一个框。在框内拖移可移动它，拖移边缘可调整大小。</string>
 	<key>Drag a screenshot out of History and drop it where you want it.</key>
@@ -1956,10 +1982,10 @@
 	<string>在截屏上拖移即可绘制。</string>
 	<key>Drag one of them on the timeline to move them all together; ⌫ removes them all. ⇧- or ⌘-click adds or takes one out.</key>
 	<string>在时间线上拖移其中一项即可一起移动所有项目；按 ⌫ 会全部移除。按住 ⇧ 或 ⌘ 点按可添加或移除某一项。</string>
+	<key>Drag out any area instead, of any shape</key>
+	<string>改为拖移出任意比例的区域</string>
 	<key>Drag over any part of the screen to capture it.</key>
 	<string>在屏幕的任意部分上拖移即可捕捉。</string>
-	<key>Drag over the area to record.</key>
-	<string>拖移框出要录制的区域。</string>
 	<key>Drag over the area you want, then let go.</key>
 	<string>拖移框出你想要的区域，然后松开。</string>
 	<key>Drag over the area you want.</key>
@@ -1986,6 +2012,12 @@
 	<string>在预览中将方框拖到任何隐私内容上。模糊效果会跟随缩放，并持续到其条块结束。</string>
 	<key>Drag the frame on the preview to aim; drag its corners to zoom in or out.</key>
 	<string>在预览中拖移画框即可对准；拖移其角可放大或缩小。</string>
+	<key>Drag the frame over what you want to show. To fill it with one app, click Fit a window to the frame… and choose its window.</key>
+	<string>把录制框拖到你要展示的内容上。要让某个应用填满它，请点按“让窗口适配录制框…”并选择该应用的窗口。</string>
+	<key>Drag the frame's border to move it, or a corner to make it bigger or smaller.</key>
+	<string>拖移录制框的边框可移动它，拖移一角可放大或缩小。</string>
+	<key>Drag the frame's border to move it. It snaps to the middle and the edges of the screen.</key>
+	<string>拖移录制框的边框可移动它。它会吸附到屏幕的中间和边缘。</string>
 	<key>Drag the frame's edges, or pick a shape like 16:9.</key>
 	<string>拖移边框的边缘，或选取一种比例，例如 16:9。</string>
 	<key>Drag the frame, or its corners, over the part of the camera picture the bubble should show.</key>
@@ -2006,6 +2038,8 @@
 	<string>拖移可更改此片段的结尾</string>
 	<key>Drag to change where this clip starts</key>
 	<string>拖移可更改此片段的开头</string>
+	<key>Drag to move the bars</key>
+	<string>拖移以移动两条栏</string>
 	<key>Drag to move this clip to another place in the video</key>
 	<string>拖移可将此片段移到视频中的其他位置</string>
 	<key>Drag to move where the arrow starts</key>
@@ -2132,6 +2166,8 @@
 	<string>请输入 %@ 到 %@ 像素之间的宽度和高度。</string>
 	<key>Esc</key>
 	<string>Esc</string>
+	<key>Esc and the arrow keys work after you click the frame's border or the bars.</key>
+	<string>点按录制框的边框或两条栏之后，Esc 和方向键即可使用。</string>
 	<key>Esc or Done finishes</key>
 	<string>按 Esc 键或点按“完成”结束</string>
 	<key>Estimated file size. Still screens take less.</key>
@@ -2388,10 +2424,18 @@
 	<string>结束录制并存储。</string>
 	<key>Finish typing</key>
 	<string>完成输入</string>
+	<key>Fit a window to the frame needs Accessibility. LF Studios asks for it the first time.</key>
+	<string>“让窗口适配录制框”需要“辅助功能”权限。LF Studios 会在第一次使用时请求。</string>
+	<key>Fit a window to the frame…</key>
+	<string>让窗口适配录制框…</string>
+	<key>Fit a window to the frame…: choose a window of another app, and it takes exactly the frame's place and size.</key>
+	<string>让窗口适配录制框…：选择另一个应用的窗口，它就会精确占据录制框的位置和大小。</string>
 	<key>Fit zooms around camera</key>
 	<string>让缩放避开摄像头</string>
 	<key>Fit zooms around the camera</key>
 	<string>让缩放避开摄像头</string>
+	<key>Fitting another app's window needs Accessibility access: allow LF Studios in System Settings → Privacy &amp; Security → Accessibility, then try again.</key>
+	<string>调整其他应用的窗口需要“辅助功能”权限：请在“系统设置 → 隐私与安全性 → 辅助功能”中允许 LF Studios，然后再试一次。</string>
 	<key>Fix</key>
 	<string>修复</string>
 	<key>Fix any word in the list of lines.</key>
@@ -2428,10 +2472,16 @@
 	<string>字体</string>
 	<key>Font missing: install the font on this Mac, or add it with Add Font File… in the font menu.</key>
 	<string>字体不见了：在这台 Mac 上安装该字体，或在字体菜单中用“添加字体文件…”添加它。</string>
+	<key>Font “%@” — installed on this Mac, so it's left out: turn on Include fonts installed on this Mac (check the font's license allows sharing it). Without it, another Mac shows a stand-in font.</key>
+	<string>字体“%@” — 安装在这台 Mac 上，因此未包含：请打开“包括这台 Mac 上安装的字体”（请确认该字体的许可允许分享）。否则，另一台 Mac 会显示替代字体。</string>
 	<key>Font, Size (S, M, L), and Position (Bottom or Top).</key>
 	<string>字体、大小（小、中、大）和位置（底部或顶部）。</string>
 	<key>Fonts</key>
 	<string>字体</string>
+	<key>Fonts added to LF Studios always go along. Check that a font's license lets you share it before sending.</key>
+	<string>添加到 LF Studios 的字体总会一起带上。发送前请确认字体的许可允许你分享它。</string>
+	<key>Fonts you added to LF Studios always go along. Fonts installed on this Mac (in Font Book) go only with Include fonts installed on this Mac turned on: check that the font's license lets you share it first. Without them, README.txt lists the fonts left out.</key>
+	<string>你添加到 LF Studios 的字体总会一起带上。安装在这台 Mac 上的字体（在“字体册”中）只有在打开“包括这台 Mac 上安装的字体”时才会带上：请先确认该字体的许可允许你分享。如果没有带上，README.txt 会列出未包含的字体。</string>
 	<key>For Custom image…, choose a PNG, then click the spot in it that points.</key>
 	<string>如果选择“自定图像…”，请选择一张 PNG 图片，然后点按图片中指针尖所在的位置。</string>
 	<key>For Final Cut Pro, DaVinci Resolve, and Adobe Premiere Pro</key>
@@ -2470,8 +2520,12 @@
 	<string>找到 %lld 项</string>
 	<key>Frame</key>
 	<string>边框</string>
+	<key>Frame border: drag to move</key>
+	<string>录制框边框：拖移以移动</string>
 	<key>Frame copied</key>
 	<string>已拷贝画面</string>
+	<key>Frame corner: drag to resize</key>
+	<string>录制框一角：拖移以调整大小</string>
 	<key>Frame rate</key>
 	<string>帧速率</string>
 	<key>Frame: padding, corners &amp; shadow</key>
@@ -2522,6 +2576,8 @@
 	<string>完整原始文件</string>
 	<key>Full rail</key>
 	<string>完整按钮栏</string>
+	<key>Full screen</key>
+	<string>全屏</string>
 	<key>Full screen: %@</key>
 	<string>全屏：%@</string>
 	<key>Full-Camera Intro and Outro</key>
@@ -2854,6 +2910,10 @@
 	<string>附带剪辑软件用的时间线</string>
 	<key>Include aspect ratio (%@)</key>
 	<string>包括宽高比（%@）</string>
+	<key>Include fonts installed on this Mac</key>
+	<string>包括这台 Mac 上安装的字体</string>
+	<key>Include fonts installed on this Mac: fonts from Font Book go along too. Check that a font's license lets you share it first. Fonts you added to LF Studios always go.</key>
+	<string>包括这台 Mac 上安装的字体：“字体册”中的字体也会一起带上。请先确认字体的许可允许你分享。你添加到 LF Studios 的字体总会带上。</string>
 	<key>Include media (works on any Mac)</key>
 	<string>包含媒体（在任何 Mac 上都可用）</string>
 	<key>Include media: the project opens on any Mac.</key>
@@ -2872,6 +2932,8 @@
 	<string>内阴影</string>
 	<key>Inspector tabs</key>
 	<string>检查器标签页</string>
+	<key>Instagram feed</key>
+	<string>Instagram 动态</string>
 	<key>Instagram, LinkedIn</key>
 	<string>Instagram、LinkedIn</string>
 	<key>Install Update: downloads it, installs it, and reopens LF Studios.</key>
@@ -3074,6 +3136,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>LF Studios 会在后台读取每张截屏中的文字，全程在你的 Mac 上完成。</string>
 	<key>LF Studios remembers the area until it quits. With no area yet, you select one as usual.</key>
 	<string>LF Studios 在退出前会一直记住该区域。如果还没有区域，就照常选择一个。</string>
+	<key>LF Studios remembers the last shape, size, and place on each screen.</key>
+	<string>LF Studios 会记住每个屏幕上次使用的比例、大小和位置。</string>
 	<key>LF Studios remembers your last tool, color, and sizes for next time.</key>
 	<string>LF Studios 会记住你上次使用的工具、颜色和大小，供下次使用。</string>
 	<key>LF Studios resizes and centers the window. Click Record.</key>
@@ -3084,8 +3148,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>切换语言时，LF Studios 会重新启动。</string>
 	<key>LF Studios restarts to switch languages. You can also set it in System Settings → General → Language &amp; Region → Applications.</key>
 	<string>切换语言时，LF Studios 会退出并重新打开。你也可以在“系统设置”→“通用”→“语言与地区”→“应用程序”中设置。</string>
-	<key>LF Studios shows up in that list only after it has asked once.</key>
-	<string>LF Studios 询问过一次之后，才会出现在该列表中。</string>
+	<key>LF Studios shows up under Camera only after it has asked once. There's no + button to add it yourself: turning on Camera in the recording bar is what asks.</key>
+	<string>LF Studios 只有在请求过一次之后，才会出现在“摄像头”下。没有可以自己添加它的 + 按钮：在录制栏中打开“摄像头”就会发出请求。</string>
+	<key>LF Studios shows up under Microphone only after it has asked once. There's no + button to add it yourself: turning on Microphone in the recording bar is what asks.</key>
+	<string>LF Studios 只有在请求过一次之后，才会出现在“麦克风”下。没有可以自己添加它的 + 按钮：在录制栏中打开“麦克风”就会发出请求。</string>
 	<key>LF Studios takes screenshots, records your screen, and turns your recordings into polished videos. Mark up a screenshot in seconds, or record yourself with your voice and camera, then cut, zoom, add captions, and export.</key>
 	<string>LF Studios 可以截屏、录制屏幕，并把录制内容制作成精美的视频。几秒钟就能标注一张截屏；也可以录下你的声音和摄像头画面，然后剪辑、缩放、添加字幕并导出。</string>
 	<key>LF Studios will wrap these up before it quits.</key>
@@ -3112,6 +3178,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Large v3 Turbo</string>
 	<key>Larger than the recording — text may look softer than at a lower resolution.</key>
 	<string>大于录制内容 — 文字可能不如较低分辨率时清晰。</string>
+	<key>Largest</key>
+	<string>最大</string>
 	<key>Last %lld captures</key>
 	<string>最近 %lld 张截屏</string>
 	<key>Later</key>
@@ -3222,6 +3290,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>M4A（体积小）、WAV 或 AIFF（两者均为完整音质）。</string>
 	<key>MIT License — Free and open source</key>
 	<string>MIT 许可证 — 免费开源</string>
+	<key>Mac screen</key>
+	<string>Mac 屏幕</string>
 	<key>Make Full Zoom</key>
 	<string>改为全画面缩放</string>
 	<key>Make Loupe</key>
@@ -3232,8 +3302,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>减轻体积：%@，%@ fps</string>
 	<key>Make my videos look the same every time</key>
 	<string>让每个视频的风格都保持一致</string>
-	<key>Make sure LF Studios is allowed under Microphone in System Settings.</key>
-	<string>确保在“系统设置”的“麦克风”中允许了 LF Studios。</string>
+	<key>Make sure LF Studios is allowed under Microphone in System Settings. It appears there only after it has asked once, and there's no + button: turn on Microphone in the recording bar and click Allow.</key>
+	<string>请确认在“系统设置”中，LF Studios 已在“麦克风”下获得允许。它只有在请求过一次之后才会出现在那里，而且没有 + 按钮：在录制栏中打开“麦克风”，然后点按“允许”。</string>
 	<key>Make the area bigger or smaller</key>
 	<string>放大或缩小区域</string>
 	<key>Make your camera look its best: brighter, warmer, or more cinematic.</key>
@@ -3374,6 +3444,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>改为移动摄像头：在该缩放期间把气泡移到空着的角落。</string>
 	<key>Move the area while dragging</key>
 	<string>拖移时移动区域</string>
+	<key>Move the frame (with ⇧: 10 points)</key>
+	<string>移动录制框（按住 ⇧：10 点）</string>
 	<key>Move the playhead and click Full camera, Side by side, or Hidden.</key>
 	<string>移动播放头，然后点按“全屏摄像头”“并排”或“隐藏”。</string>
 	<key>Move the playhead and press S to split the clip there.</key>
@@ -3584,6 +3656,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>还没有预设</string>
 	<key>No projects match your search</key>
 	<string>没有符合搜索条件的项目</string>
+	<key>No question appeared, and LF Studios isn't in that list? Open Terminal, run tccutil reset Camera com.lfstudios.app, then quit and reopen LF Studios and turn on Camera again.</key>
+	<string>没有出现询问，列表中也没有 LF Studios？打开“终端”，运行 tccutil reset Camera com.lfstudios.app，然后退出并重新打开 LF Studios，再次打开“摄像头”。</string>
+	<key>No question appeared, and LF Studios isn't in that list? Open Terminal, run tccutil reset Microphone com.lfstudios.app, then quit and reopen LF Studios and turn on Microphone again.</key>
+	<string>没有出现询问，列表中也没有 LF Studios？打开“终端”，运行 tccutil reset Microphone com.lfstudios.app，然后退出并重新打开 LF Studios，再次打开“麦克风”。</string>
+	<key>No question appeared? Open Terminal, run tccutil reset Microphone com.lfstudios.app, then quit and reopen LF Studios and try again.</key>
+	<string>没有出现询问？打开“终端”，运行 tccutil reset Microphone com.lfstudios.app，然后退出并重新打开 LF Studios，再试一次。</string>
 	<key>No recordable windows found</key>
 	<string>未找到可录制的窗口</string>
 	<key>No recording in progress</key>
@@ -3810,6 +3888,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>录制后打开视频编辑器。</string>
 	<key>Open video…</key>
 	<string>打开视频…</string>
+	<key>Opened on another Mac, the project looks and sounds the same: the cleaned-up voice, Keep face centered, the pointer's own picture, and a macOS wallpaper background travel in the folder.</key>
+	<string>在另一台 Mac 上打开时，项目的画面和声音都一样：清理后的人声、“保持面部居中”、指针自己的图片以及 macOS 墙纸背景都会随文件夹一起带上。</string>
 	<key>Opened “%@”</key>
 	<string>已打开“%@”</string>
 	<key>Opening a video</key>
@@ -4226,12 +4306,18 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>录制摄像头</string>
 	<key>Record everything on one screen.</key>
 	<string>录制一个屏幕上的所有内容。</string>
-	<key>Record just part of the screen.</key>
-	<string>只录制屏幕的一部分。</string>
+	<key>Record for YouTube, Reels, or Instagram</key>
+	<string>为 YouTube、Reels 或 Instagram 录制</string>
+	<key>Record in exactly the shape the site wants, so nothing gets cut off or stretched.</key>
+	<string>按网站要求的精确比例录制，不会有内容被裁掉或拉伸。</string>
+	<key>Record just part of the screen, in the exact shape and size you choose.</key>
+	<string>只录制屏幕的一部分，比例和大小都由你精确选择。</string>
 	<key>Record microphone</key>
 	<string>录制麦克风</string>
 	<key>Record my screen with my voice and camera</key>
 	<string>录制屏幕，并录下我的声音和摄像头画面</string>
+	<key>Record one window instead</key>
+	<string>改为录制一个窗口</string>
 	<key>Record one window. The recording follows it if you move it, even to another screen.</key>
 	<string>录制一个窗口。即使你移动窗口，甚至移到另一个屏幕，录制也会跟着它。</string>
 	<key>Record system audio</key>
@@ -4240,6 +4326,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>录制全屏</string>
 	<key>Record the sound your Mac plays, like a video or an app's sounds.</key>
 	<string>录下 Mac 播放的声音，例如视频或应用发出的声音。</string>
+	<key>Record the whole screen instead</key>
+	<string>改为录制整个屏幕</string>
 	<key>Record when keys are pressed</key>
 	<string>记录按键时刻</string>
 	<key>Record when keys are pressed: only the moment each key goes down. Never which key.</key>
@@ -4618,6 +4706,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做统一缩放级别</string>
 	<key>Redo Zooms</key>
 	<string>重做缩放更改</string>
+	<key>Reels / TikTok / Shorts</key>
+	<string>Reels / TikTok / Shorts</string>
 	<key>Reels, TikTok, Shorts</key>
 	<string>Reels、TikTok、Shorts</string>
 	<key>Reframes zooms, moves the camera bubble, and keeps captions in the safe area for %@. This ratio then keeps its own version.</key>
@@ -4748,6 +4838,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>调整窗口大小，让录制内容正好是某个尺寸，例如 1920 × 1080。</string>
 	<key>Resize the window so the recording is an exact size</key>
 	<string>调整窗口大小，让录制内容正好是这个尺寸</string>
+	<key>Resizes a window of another app to exactly the frame, so it fills the recording</key>
+	<string>把另一个应用的窗口调整到与录制框完全一致，让它填满录制画面</string>
 	<key>Resizing another app's window needs Accessibility access: allow LF Studios in System Settings → Privacy &amp; Security → Accessibility, then choose the size again.</key>
 	<string>调整其他应用的窗口大小需要辅助功能权限：请在“系统设置”→“隐私与安全性”→“辅助功能”中允许 LF Studios，然后重新选择尺寸。</string>
 	<key>Resolution</key>
@@ -4928,6 +5020,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>已存储到“%@”（位于“%@”中）</string>
 	<key>Saved “%@”</key>
 	<string>已存储“%@”</string>
+	<key>Saved. Fonts installed on this Mac aren't included: %@. Another Mac shows a stand-in font.</key>
+	<string>已存储。未包含安装在这台 Mac 上的字体：%@。另一台 Mac 会显示替代字体。</string>
 	<key>Saves %@ — only silences where nothing happens on screen</key>
 	<string>节省 %@ — 仅限屏幕上无任何动静的静音部分</string>
 	<key>Saves %@ — silences where the pointer rests and nothing is clicked or pressed (this older recording can't see typing)</key>
@@ -5072,6 +5166,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>选择一个区域，然后等几秒再截屏：留出时间打开菜单或将指针悬停在某处。</string>
 	<key>Select any stretch of the video and remove it, even across several clips.</key>
 	<string>选择视频中的任意一段并移除它，即使跨越多个片段也可以。</string>
+	<key>Select area manually</key>
+	<string>手动选择区域</string>
 	<key>Select one caption first to move only that one. Apply this position to all captions moves the rest there too.</key>
 	<string>先选中一条字幕，就只会移动这一条。“将此位置应用到所有字幕”会把其他字幕也移到这里。</string>
 	<key>Select previous / next item</key>
@@ -5182,6 +5278,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>形状</string>
 	<key>Shape: Circle, Rounded, Wide, or Cutout (just you, without the background).</key>
 	<string>形状：“圆形”“圆角”“宽幅”或“抠像”（只显示你，不带背景）。</string>
+	<key>Shapes: 16:9 for YouTube, 9:16 for Reels, TikTok, and Shorts, 1:1 for square posts, 4:5 for the Instagram feed, 4:3 for slides and iPad, 16:10 for a Mac screen, 21:9 for a cinematic look. Point at one to see what it's for.</key>
+	<string>比例：YouTube 用 16:9，Reels、TikTok 和 Shorts 用 9:16，方形帖子用 1:1，Instagram 动态用 4:5，幻灯片和 iPad 用 4:3，Mac 屏幕用 16:10，电影感画面用 21:9。将指针移到某个比例上可查看它的用途。</string>
 	<key>Share</key>
 	<string>共享</string>
 	<key>Share sends it with Mail, Messages, AirDrop, and more.</key>
@@ -5344,6 +5442,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>天空</string>
 	<key>Sky Wash</key>
 	<string>天空水彩</string>
+	<key>Slides / iPad</key>
+	<string>幻灯片 / iPad</string>
 	<key>Slow</key>
 	<string>慢速</string>
 	<key>Small</key>
@@ -5462,6 +5562,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>聚光灯形状</string>
 	<key>Spotlight: darkens everything except the area you draw. Choose Rectangle or Ellipse.</key>
 	<string>聚光灯：让你画出的区域以外的地方全部变暗。可选择“矩形”或“椭圆”。</string>
+	<key>Square posts</key>
+	<string>方形帖子</string>
 	<key>Square, circle, or straight 45° lines</key>
 	<string>正方形、圆形或 45° 直线</string>
 	<key>Star on GitHub</key>
@@ -5710,6 +5812,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>编辑器工具栏中的“撤销”和“重做”按钮。</string>
 	<key>The aspect ratio menu in the video editor's toolbar.</key>
 	<string>视频编辑器工具栏中的宽高比菜单。</string>
+	<key>The bars move out of the frame's way. Drag them anywhere by the handle on the left.</key>
+	<string>两条栏会避开录制框。拖移左侧的把手，可将它们移到任意位置。</string>
 	<key>The bubble follows your face, so you stay in the middle even when you move.</key>
 	<string>气泡会跟随你的脸，即使你移动，也能保持在画面中央。</string>
 	<key>The bubble follows your face; where none was found it holds the last framing</key>
@@ -5768,6 +5872,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>无法创建文件夹：%@</string>
 	<key>The font menu next to captions, text, title cards, and Keys on screen.</key>
 	<string>字幕、文字、标题卡和“屏幕按键”旁边的字体菜单。</string>
+	<key>The frame bar</key>
+	<string>录制框栏</string>
+	<key>The frame, the dimming, and the bars are never in the video. Nothing is recorded until you click Record.</key>
+	<string>录制框、变暗效果和两条栏都不会出现在视频中。点按“录制”之前，不会录制任何内容。</string>
 	<key>The handoff is ready</key>
 	<string>交付已就绪</string>
 	<key>The highest quality, and the only one that can keep transparency</key>
@@ -5868,6 +5976,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>左侧边栏：主页、录制内容、截屏、设置，以及这份使用指南。</string>
 	<key>The size estimate tells you how big the file will be, and warns when the disk is too full.</key>
 	<string>大小估算会告诉你文件有多大，并在磁盘空间不足时提醒你。</string>
+	<key>The size menu: 720p, 1080p, 1440p (where they fit your screen) and Largest. The size above the frame, like 1920 × 1080, is the video's size in pixels.</key>
+	<string>大小菜单：720p、1080p、1440p（屏幕放得下时）和“最大”。录制框上方显示的大小（例如 1920 × 1080）是视频的像素尺寸。</string>
 	<key>The size of the recording, in pixels.</key>
 	<string>录制内容的尺寸（像素）。</string>
 	<key>The size shows while you drag.</key>
@@ -5880,6 +5990,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>无法读取声音。请重新导出。</string>
 	<key>The sound recorded with the screen</key>
 	<string>与屏幕一同录制的声音</string>
+	<key>The strip above the recording bar, after Home ▸ New recording.</key>
+	<string>录制栏上方的那一条，在“主页 ▸ 新录制”之后出现。</string>
 	<key>The text is now on the clipboard: paste it anywhere with ⌘V.</key>
 	<string>文字现在已在剪贴板中：用 ⌘V 粘贴到任何地方。</string>
 	<key>The timeline at the bottom of the video editor.</key>
@@ -5892,12 +6004,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>录制期间录制栏中的废纸篓按钮。</string>
 	<key>The video encoder is busy — another app may be recording or exporting. Wait a moment and try again, or choose H.264.</key>
 	<string>视频编码器正忙 — 可能有其他 App 正在录制或导出。请稍候再试，或选择 H.264。</string>
+	<key>The video has exactly the shape you chose, like 1080 × 1920 for 9:16.</key>
+	<string>视频的比例与你选择的完全一致，例如 9:16 为 1080 × 1920。</string>
 	<key>The video has no picture</key>
 	<string>该视频没有画面</string>
 	<key>The video stays where it is. If you move or delete it, LF Studios offers Locate….</key>
 	<string>视频会留在原来的位置。如果你移动或删除了它，LF Studios 会提供“查找…”。</string>
 	<key>The video's own recording can't be removed</key>
 	<string>无法移除视频本身的录制内容</string>
+	<key>The video's size in pixels. Drag a corner of the frame for any other size.</key>
+	<string>视频的像素尺寸。拖移录制框的一角可设定其他任意大小。</string>
 	<key>The video's sound as you edited it — cuts, speed changes, music and the voice settings included.</key>
 	<string>按你的编辑输出视频声音 — 包括剪切、变速、音乐和人声设置。</string>
 	<key>The video's sound as you edited it, at −16 LUFS — cuts, speed changes, music and the voice settings included.</key>
@@ -6056,6 +6172,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>要自己模糊某处，请按 B 键，然后把模糊框拖到它上面。</string>
 	<key>To cut a mistake, move the playhead to it, press S to split, click the bad part, and press ⌫.</key>
 	<string>要剪掉失误，把播放头移到那里，按 S 键分割，点按不要的部分，然后按 ⌫。</string>
+	<key>To drag out any area yourself, click Select area manually above the recording bar.</key>
+	<string>要自己拖移出任意区域，请点按录制栏上方的“手动选择区域”。</string>
 	<key>To hide one, click it on the timeline and press ⌫.</key>
 	<string>要隐藏其中一个，请在时间线上点按它，然后按 ⌫。</string>
 	<key>To remove it again, untick Apply background to this image.</key>
@@ -6208,6 +6326,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>类型</string>
 	<key>Type a Title and Subtitle, and set the Length.</key>
 	<string>输入“标题”和“副标题”，并设定“时长”。</string>
+	<key>Type a shape like 3:2 or 2.39:1.</key>
+	<string>输入比例，例如 3:2 或 2.39:1。</string>
 	<key>Type here…</key>
 	<string>在此输入…</string>
 	<key>Type in a text annotation</key>
@@ -6572,6 +6692,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>更新需要 1.4.1 或更高版本，并且需要联网。</string>
 	<key>Upload Custom Image</key>
 	<string>选取自定图像</string>
+	<key>Use</key>
+	<string>使用</string>
 	<key>Use %@</key>
 	<string>使用 %@</string>
 	<key>Use LF Studios in English, German, French, Chinese, Russian, Ukrainian, or Japanese.</key>
@@ -6754,6 +6876,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>宽幅</string>
 	<key>Width</key>
 	<string>宽度</string>
+	<key>Width and height, like 3:2 or 2.39:1.</key>
+	<string>宽度和高度，例如 3:2 或 2.39:1。</string>
 	<key>Window</key>
 	<string>窗口</string>
 	<key>Window Capture</key>
@@ -6766,6 +6890,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>窗口已关闭</string>
 	<key>Window size</key>
 	<string>窗口大小</string>
+	<key>Window, Full screen, and Select area manually: record another way instead.</key>
+	<string>“窗口”“全屏”和“手动选择区域”：改用其他方式录制。</string>
 	<key>Windows in front of it don't get in the way: only the window you click is captured.</key>
 	<string>挡在前面的窗口不会碍事：只会捕捉你点按的那个窗口。</string>
 	<key>With a transcript, you can also cut by deleting words: Captions ▸ Edit by text.</key>
@@ -6798,6 +6924,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>发送之前你会先看到报告内容，而且要由你自己发送。</string>
 	<key>You're all set — LF Studios lives here</key>
 	<string>一切就绪 — LF Studios 就在这里</string>
+	<key>YouTube</key>
+	<string>YouTube</string>
 	<key>YouTube needs at least three chapters, each at least 10 seconds long.</key>
 	<string>YouTube 至少需要三个章节，每个章节至少 10 秒。</string>
 	<key>YouTube needs at least three chapters, each at least 10 seconds long. LF Studios tells you if yours don't fit.</key>

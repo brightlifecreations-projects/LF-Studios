@@ -699,6 +699,9 @@ struct VideoVoiceTarget: Equatable {
     let url: URL
     let trackIndex: Int
     var recipe: VideoVoiceRecipe = .enhance
+    /// Whose voice (VideoCarriedVoice.owner): "primary", an added
+    /// recording's id, or "audio:" and an added sound's id.
+    var owner = VideoCarriedVoice.primary
 
     var destination: URL { VideoVoiceEnhancer.cacheURL(for: url, trackIndex: trackIndex, recipe: recipe) }
     var isReady: Bool { FileManager.default.fileExists(atPath: destination.path) }
@@ -710,15 +713,15 @@ extension VideoDemoProject {
         var targets: [VideoVoiceTarget] = []
         let recipe = audio.voiceRecipe ?? .enhance
         if let index = VideoAudioKind.voiceTrackIndex(in: primaryKinds) {
-            targets.append(VideoVoiceTarget(url: sourceURL, trackIndex: index, recipe: recipe))
+            targets.append(VideoVoiceTarget(url: sourceURL, trackIndex: index, recipe: recipe, owner: VideoCarriedVoice.primary))
         }
         for source in sources where !source.isPrimary {
             guard let index = VideoAudioKind.voiceTrackIndex(in: source.audioKinds), let url = VideoSourceLocator.resolve(source) else { continue }
-            targets.append(VideoVoiceTarget(url: url, trackIndex: index, recipe: recipe))
+            targets.append(VideoVoiceTarget(url: url, trackIndex: index, recipe: recipe, owner: source.id.uuidString))
         }
         // An added sound file used as the voice is cleaned up like one.
         if let voice = externalVoice, FileManager.default.fileExists(atPath: voice.path) {
-            targets.append(VideoVoiceTarget(url: voice.url, trackIndex: 0, recipe: recipe))
+            targets.append(VideoVoiceTarget(url: voice.url, trackIndex: 0, recipe: recipe, owner: VideoCarriedVoice.audioPrefix + voice.id.uuidString))
         }
         return targets
     }

@@ -211,12 +211,14 @@ final class VideoHandoffWriter: @unchecked Sendable {
         case .audio(let pieces, let duration, let channels, let aac):
             try await Self.audio(pieces, duration: duration, channels: channels, aac: aac, to: url, report: report, isCancelled: isCancelled)
         case .fullMix(let duration):
+            try await prepareVoices()
             let cancelled = isCancelled
             try await VideoDemoExporter.writeFullMix(
                 project: input.project, recording: input.recording, settings: input.exportSettings, duration: duration, to: url,
                 progress: { report($0) }, isCancelled: { cancelled() }
             )
         case .finalVideo:
+            try await prepareVoices()
             let cancelled = isCancelled
             try await VideoDemoExporter.export(
                 project: input.project, recording: input.recording, destinationURL: url, settings: input.exportSettings,
@@ -224,6 +226,16 @@ final class VideoHandoffWriter: @unchecked Sendable {
                 shouldCancel: { cancelled() }
             )
         }
+    }
+
+    /// The cleaned-up voices have to exist before the finished video or the
+    /// full mix can play them (the editor's export makes them the same way).
+    private func prepareVoices() async throws {
+        guard input.project.audio.voiceRecipe != nil else { return }
+        let kinds = await VideoProjectCaches.primaryKinds(project: input.project, recording: input.recording)
+        let pending = input.project.voiceTargets(primaryKinds: kinds).filter { !$0.isReady }
+        guard !pending.isEmpty, VideoVoiceEnhancer.isAvailable else { return }
+        try await VideoVoiceEnhancer.enhance(pending) { _ in }
     }
 
     // MARK: Passthrough

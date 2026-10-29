@@ -191,6 +191,11 @@ struct VideoHandoffSheet: View {
                 detail: L("With the LF Studios project, the folder opens the whole edit again. Clips cut to your edit need the untouched recordings alongside."),
                 isOn: $options.includeOriginals
             )
+            VideoToggleRow(
+                title: L("Include fonts installed on this Mac"),
+                detail: L("Fonts added to LF Studios always go along. Check that a font's license lets you share it before sending."),
+                isOn: $options.includeInstalledFonts
+            )
             row(L("Quality")) {
                 VideoSegmented(options: [(VideoHandoffOptions.Quality.proRes422HQ, L("Best (ProRes 422 HQ)")), (.proRes422, L("Smaller files (ProRes 422)"))], selection: $options.quality)
             }

@@ -469,13 +469,7 @@ final class VideoExportQueue: ObservableObject {
     /// couldn't be made.
     private func enhanceVoiceIfNeeded(_ job: Job) async -> Bool {
         guard job.project.audio.voiceRecipe != nil else { return false }
-        let asset = AVURLAsset(url: job.project.sourceURL)
-        var counts: [Int] = []
-        for track in (try? await asset.loadTracks(withMediaType: .audio)) ?? [] {
-            let formats = (try? await track.load(.formatDescriptions)) ?? []
-            counts.append(Int(formats.first.flatMap { CMAudioFormatDescriptionGetStreamBasicDescription($0)?.pointee.mChannelsPerFrame } ?? 2))
-        }
-        let kinds = counts.isEmpty ? [] : VideoAudioKind.resolve(recorded: job.recording?.audioTracks, channelCounts: counts)
+        let kinds = await VideoProjectCaches.primaryKinds(project: job.project, recording: job.recording)
         let pending = job.project.voiceTargets(primaryKinds: kinds).filter { !$0.isReady }
         guard !pending.isEmpty else { return false }
         guard VideoVoiceEnhancer.isAvailable else { return true }

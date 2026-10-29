@@ -524,4 +524,135 @@ final class RecordingEngineIntegrationTests: XCTestCase {
         XCTAssertGreaterThan(resizedMiddle, 0.9, "the resized window is still in the video")
         XCTAssertLessThan(resizedTop, 0.2, "letterboxed, not stretched or cropped")
     }
+
+    // MARK: The frame bar (1.8.0)
+
+    /// A green titled window (one of the test app's real windows, so it's
+    /// recorded) around `rect`.
+    private func greenWindow(around rect: CGRect) -> NSWindow {
+        let window = NSWindow(contentRect: rect.insetBy(dx: -120, dy: -90), styleMask: [.titled], backing: .buffered, defer: false)
+        window.isReleasedWhenClosed = false
+        window.title = "Green"
+        let content = NSView(frame: NSRect(origin: .zero, size: window.contentRect(forFrameRect: window.frame).size))
+        content.wantsLayer = true
+        content.layer?.backgroundColor = NSColor(srgbRed: 0, green: 0.8, blue: 0.2, alpha: 1).cgColor
+        window.contentView = content
+        window.setFrame(window.frameRect(forContentRect: rect.insetBy(dx: -120, dy: -90)), display: true)
+        // Record gives focus back to the app the user was in: this stays on top of it.
+        window.level = .floating
+        window.orderFrontRegardless()
+        return window
+    }
+
+    /// Every pixel of the frame's outer ring and a grid inside it is the
+    /// green underneath: no border, no dimming, no handles, no size label.
+    private func assertOnlyGreen(_ url: URL, at seconds: [Double], file: StaticString = #filePath, line: UInt = #line) async throws {
+        let generator = AVAssetImageGenerator(asset: AVURLAsset(url: url))
+        generator.requestedTimeToleranceBefore = .zero
+        generator.requestedTimeToleranceAfter = .zero
+        for time in seconds {
+            let image = try await generator.image(at: CMTime(seconds: time, preferredTimescale: 600)).image
+            let width = image.width, height = image.height
+            var data = [UInt8](repeating: 0, count: width * height * 4)
+            let context = try XCTUnwrap(CGContext(data: &data, width: width, height: height, bitsPerComponent: 8, bytesPerRow: width * 4, space: CGColorSpace(name: CGColorSpace.sRGB)!, bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue))
+            context.draw(image, in: CGRect(x: 0, y: 0, width: width, height: height))
+            var bad: [(Int, Int, [UInt8])] = []
+            func check(_ x: Int, _ y: Int) {
+                let i = (y * width + x) * 4
+                let (r, g, b) = (data[i], data[i + 1], data[i + 2])
+                if !(g > 150 && r < 90 && b < 130) { bad.append((x, y, [r, g, b])) }
+            }
+            for x in 0..<width { for y in [0, 1, 2, 3, height - 4, height - 3, height - 2, height - 1] { check(x, y) } }
+            for y in 0..<height { for x in [0, 1, 2, 3, width - 4, width - 3, width - 2, width - 1] { check(x, y) } }
+            for x in stride(from: 0, to: width, by: 7) { for y in stride(from: 0, to: height, by: 7) { check(x, y) } }
+            if !bad.isEmpty, let out = ProcessInfo.processInfo.environment["LF_FRAME_DEBUG_DIR"],
+               let dest = CGImageDestinationCreateWithURL(URL(fileURLWithPath: out).appendingPathComponent("frame-\(time).png") as CFURL, "public.png" as CFString, 1, nil) {
+                CGImageDestinationAddImage(dest, image, nil)
+                CGImageDestinationFinalize(dest)
+            }
+            XCTAssertTrue(bad.isEmpty, "at \(time) s, \(bad.count) pixels aren't the window underneath, first \(bad.prefix(5))", file: file, line: line)
+        }
+    }
+
+    /// The frame, its dimming, border and handles showing the whole time
+    /// (worse than the real flow, which closes them on Record): none of it
+    /// is in the video, which is exactly the frame's pixels.
+    func testTheFrameAndItsDimmingAreNeverRecorded() async throws {
+        let screen = try XCTUnwrap(NSScreen.main)
+        let frame = RecordingFrameController(screen: screen)
+        let scale = screen.backingScaleFactor
+        frame.setPixels(RecordingFrameGeometry.Pixels(width: Int(640 * scale), height: Int(360 * scale)))
+        frame.move(to: CGPoint(x: screen.frame.midX - 320 + 0.3, y: screen.frame.midY - 180 + 0.3), snapping: false)
+        let green = greenWindow(around: frame.rect)
+        defer { green.orderOut(nil) }
+        frame.show()
+        defer { frame.close() }
+        try await sleep(0.5)
+
+        let engine = RecordingEngine()
+        self.engine = engine
+        var finished: URL?
+        engine.recordingFinishedHandler = { finished = $0.url }
+        try await start(engine) { await engine.startRecording(rect: frame.rect, on: screen) }
+        try await sleep(1.5)
+        engine.stopRecording()
+        try await waitUntil(timeout: 20) { finished != nil }
+        let url = try XCTUnwrap(finished)
+
+        let track = try await XCTUnwrapAsync(await AVURLAsset(url: url).loadTracks(withMediaType: .video).first)
+        let size = try await track.load(.naturalSize)
+        XCTAssertEqual(Int(size.width), frame.pixels.width)
+        XCTAssertEqual(Int(size.height), frame.pixels.height)
+        XCTAssertEqual(Int(size.width) * 9, Int(size.height) * 16, "exactly 16:9")
+        try await assertOnlyGreen(url, at: [0.3, 1.0])
+    }
+
+    /// The real flow: New recording's frame bar, a 1:1 frame, Return. The
+    /// frame, strip and bar are gone before the first frame; the video is
+    /// exactly the frame.
+    func testTheFrameBarRecordsExactlyTheFrame() async throws {
+        Settings.recordingCountdownSeconds = 0
+        let capture = CaptureEngine()
+        var finished: URL?
+        capture.recordingFinishedHandler = { finished = $0.url }
+        await capture.startAreaRecording()
+        let setup = try XCTUnwrap(capture.frameSetupForTesting, "New recording shows the frame bar")
+        XCTAssertTrue(setup.strip.isVisible)
+        XCTAssertTrue(setup.bar.childWindows?.contains(setup.strip) == true, "the strip moves with the bar")
+        XCTAssertFalse(setup.frame.windows.isEmpty)
+        XCTAssertTrue(RecordingStopHotkey.isRegistered, "⌃⌘Esc cancels the frame from any app")
+
+        let frame = setup.frame
+        let scale = frame.scale
+        frame.setRatio(RecordingFrameRatio(1, 1))
+        frame.setPixels(RecordingFrameGeometry.Pixels(width: Int(400 * scale), height: Int(400 * scale)))
+        frame.move(to: CGPoint(x: frame.screen.frame.midX - 200, y: frame.screen.frame.midY - 200), snapping: false)
+        let block = setup.bar.visibleBarFrame.union(setup.strip.frame)
+        XCTAssertFalse(block.intersects(frame.rect), "the bars keep clear of the frame")
+        let green = greenWindow(around: frame.rect)
+        defer { green.orderOut(nil) }
+        let pixels = frame.pixels
+        try await sleep(0.4)
+
+        // Return, as from the frame's border.
+        let returnKey = try XCTUnwrap(NSEvent.keyEvent(with: .keyDown, location: .zero, modifierFlags: [], timestamp: 0, windowNumber: 0, context: nil, characters: "\r", charactersIgnoringModifiers: "\r", isARepeat: false, keyCode: 36))
+        XCTAssertTrue(frame.handleKey(returnKey))
+        XCTAssertTrue(frame.windows.isEmpty, "the frame is gone before recording starts")
+        XCTAssertFalse(setup.strip.isVisible)
+        XCTAssertFalse(setup.bar.isVisible)
+        XCTAssertNil(capture.frameSetupForTesting)
+
+        let deadline = Date().addingTimeInterval(10)
+        while !capture.isRecordingForTesting, Date() < deadline { try await sleep(0.05) }
+        guard capture.isRecordingForTesting else { throw XCTSkip("ScreenCaptureKit didn't start a stream") }
+        try await sleep(2)
+        capture.stopRecording()
+        try await waitUntil(timeout: 20) { finished != nil }
+        let url = try XCTUnwrap(finished)
+        let track = try await XCTUnwrapAsync(await AVURLAsset(url: url).loadTracks(withMediaType: .video).first)
+        let size = try await track.load(.naturalSize)
+        XCTAssertEqual(Int(size.width), pixels.width)
+        XCTAssertEqual(Int(size.height), pixels.height)
+        try await assertOnlyGreen(url, at: [0.5, 1.5])
+    }
 }

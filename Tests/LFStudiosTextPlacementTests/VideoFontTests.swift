@@ -10,7 +10,8 @@ import Testing
 enum TestFonts {
     static let family = "LFStudiosQa"
 
-    static func makeFontFile(in directory: URL) throws -> URL {
+    /// `family` must be 11 letters, like "Chalkduster", so the file stays valid.
+    static func makeFontFile(in directory: URL, family: String = family) throws -> URL {
         let original = try Data(contentsOf: URL(fileURLWithPath: "/System/Library/Fonts/Supplemental/Chalkduster.ttf"))
         func replacing(_ data: Data, _ a: Data, _ b: Data) -> Data {
             var out = data

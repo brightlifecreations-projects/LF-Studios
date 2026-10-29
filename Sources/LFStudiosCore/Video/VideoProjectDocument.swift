@@ -198,7 +198,7 @@ struct VideoProjectContents {
 
     /// What a file is, for where a folder project puts its copy.
     enum MediaKind {
-        case screen, camera, audio, graphic
+        case screen, camera, audio, graphic, data
 
         /// Its folder in a recording's folder or a handoff.
         var folder: String {
@@ -207,6 +207,7 @@ struct VideoProjectContents {
             case .camera: return VideoRecordingFolder.Layout.camera
             case .audio: return VideoRecordingFolder.Layout.audio
             case .graphic: return VideoRecordingFolder.Layout.graphics
+            case .data: return VideoRecordingFolder.Layout.data
             }
         }
     }
@@ -233,6 +234,14 @@ struct VideoProjectContents {
             map(&path, .graphic)
             project.background = .image(path)
         }
+        // A macOS wallpaper: another Mac may not have that one.
+        if case .systemWallpaper(var path) = project.background {
+            map(&path, .graphic)
+            project.background = .systemWallpaper(path)
+        }
+        // This Mac's caches the edit uses (VideoProjectCaches.swift).
+        for index in project.carriedVoices.indices { map(&project.carriedVoices[index].path, .audio) }
+        if project.faceTracking?.analysisPath != nil { map(&project.faceTracking!.analysisPath!, .data) }
         if recording != nil {
             map(&recording!.videoURLPath, .screen)
             if recording!.webcam != nil { map(&recording!.webcam!.path, .camera) }
@@ -250,6 +259,25 @@ struct VideoProjectContents {
         copy.mapPaths { path, kind in all.append((path, kind)); return path }
         var seen = Set<String>()
         return all.filter { seen.insert($0.0).inserted }
+    }
+
+    /// Readable names for copies of cached files (a cache's own name is a
+    /// long key).
+    var preferredNames: [String: String] {
+        var names: [String: String] = [:]
+        for voice in project.carriedVoices {
+            let whose: String
+            if voice.owner == VideoCarriedVoice.primary {
+                whose = project.sourceURL.deletingPathExtension().lastPathComponent
+            } else if let source = project.sources.first(where: { $0.id.uuidString == voice.owner }) {
+                whose = URL(fileURLWithPath: source.name).deletingPathExtension().lastPathComponent
+            } else {
+                whose = project.audioTracks.first { VideoCarriedVoice.audioPrefix + $0.id.uuidString == voice.owner }?.name ?? "Voice"
+            }
+            names[voice.path] = "\(whose) - voice, cleaned up.m4a" // l10n-ignore: a file name, like the folders'
+        }
+        if let path = project.faceTracking?.analysisPath { names[path] = "Face tracking.json" } // l10n-ignore
+        return names
     }
 
     var paths: [String] {
@@ -393,6 +421,7 @@ enum VideoProjectPackage {
         let rootPath = root.path
         var references: [String: String] = [:]
         var bookmarks: [String: Data] = [:]
+        let names = contents.preferredNames
         for (path, kind) in contents.kindedPaths {
             let url = URL(fileURLWithPath: path).standardizedFileURL
             if url.path.hasPrefix(rootPath + "/") {
@@ -410,10 +439,11 @@ enum VideoProjectPackage {
             // writes the folder's project again after edits): reused, never
             // copied twice.
             let destination: URL
-            if let copied = existingCopy(of: url, in: subfolder) {
+            let name = names[path] ?? url.lastPathComponent
+            if let copied = existingCopy(of: url, named: name, in: subfolder) {
                 destination = copied
             } else {
-                destination = VideoRecordingFolder.uniqueFile(named: url.lastPathComponent, in: subfolder)
+                destination = VideoRecordingFolder.uniqueFile(named: name, in: subfolder)
                 try fm.copyItem(at: url, to: destination)
                 if videoExtensions.contains(destination.pathExtension.lowercased()) {
                     _ = VideoFileIdentity.restamp(destination)
@@ -455,10 +485,10 @@ enum VideoProjectPackage {
 
     /// A file in `folder` with `original`'s name (or "name 2"…) and the same
     /// size and contents.
-    private static func existingCopy(of original: URL, in folder: URL) -> URL? {
+    private static func existingCopy(of original: URL, named name: String, in folder: URL) -> URL? {
         let fm = FileManager.default
-        let base = original.deletingPathExtension().lastPathComponent
-        let ext = original.pathExtension.lowercased()
+        let base = URL(fileURLWithPath: name).deletingPathExtension().lastPathComponent
+        let ext = URL(fileURLWithPath: name).pathExtension.lowercased()
         guard let size = fileInfo(original)?.size else { return nil }
         let candidates = ((try? fm.contentsOfDirectory(at: folder, includingPropertiesForKeys: [.fileSizeKey])) ?? []).filter { candidate in
             let name = candidate.deletingPathExtension().lastPathComponent

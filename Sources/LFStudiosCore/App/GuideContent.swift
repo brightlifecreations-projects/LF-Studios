@@ -15,7 +15,7 @@ import Foundation
 @MainActor
 enum GuideContent {
     /// Pages from these versions get a New badge and fill What's new.
-    nonisolated static let newVersions: [String] = ["1.7.0", "1.6.0"]
+    nonisolated static let newVersions: [String] = ["1.8.0", "1.7.0"]
 
     static func chapters() -> [GuideChapter] {
         let features = featureCategories()
@@ -115,8 +115,9 @@ enum GuideContent {
                 steps: [
                     L("Turn on Microphone in the recording bar. macOS asks once: click Allow."),
                     L("Clicked Don't Allow by mistake? Click Open System Settings below and turn on LF Studios under Microphone."),
+                    L("No question appeared, and LF Studios isn't in that list? Open Terminal, run tccutil reset Microphone com.lfstudios.app, then quit and reopen LF Studios and turn on Microphone again."),
                 ],
-                tips: [L("LF Studios shows up in that list only after it has asked once.")],
+                tips: [L("LF Studios shows up under Microphone only after it has asked once. There's no + button to add it yourself: turning on Microphone in the recording bar is what asks.")],
                 showMe: .systemSettings(.microphone),
                 related: ["trouble-no-sound"]
             ),
@@ -126,8 +127,9 @@ enum GuideContent {
                 steps: [
                     L("Turn on Camera in the recording bar. macOS asks once: click Allow."),
                     L("Clicked Don't Allow by mistake? Click Open System Settings below and turn on LF Studios under Camera."),
+                    L("No question appeared, and LF Studios isn't in that list? Open Terminal, run tccutil reset Camera com.lfstudios.app, then quit and reopen LF Studios and turn on Camera again."),
                 ],
-                tips: [L("LF Studios shows up in that list only after it has asked once.")],
+                tips: [L("LF Studios shows up under Camera only after it has asked once. There's no + button to add it yourself: turning on Camera in the recording bar is what asks.")],
                 showMe: .systemSettings(.camera)
             ),
             GuideEntry(
@@ -148,7 +150,7 @@ enum GuideContent {
                 id: "first-recording", symbol: "record.circle", title: L("Your first recording, edit, and export"),
                 summary: L("Record a short demo, tidy it up, and save it as a video."),
                 steps: [
-                    L("Click New recording in Home, then drag over the area you want to record."),
+                    L("Click New recording in Home. A frame appears: choose a shape above the recording bar, like 16:9, and drag the frame's border to what you want to record."),
                     L("In the recording bar, turn on Microphone (and Camera, if you like), then click Record or press Return."),
                     L("Do your demo. When you're done, click the red stop button or press ⌃⌘Esc."),
                     L("Click Edit Video in the “Recording saved” panel. The video editor opens."),
@@ -221,7 +223,7 @@ enum GuideContent {
                 id: "howto-record", symbol: "person.wave.2", title: L("Record my screen with my voice and camera"),
                 summary: L("Record a demo with your voice and your face in a bubble."),
                 steps: [
-                    L("Click New recording in Home and drag over the area to record. For a window or the whole screen, use Record Window or Record Fullscreen in the LF Studios menu."),
+                    L("Click New recording in Home. Choose a shape for the frame (16:9 for YouTube, 9:16 for Reels) and drag its border into place. For a window or the whole screen, click Window or Full screen above the recording bar."),
                     L("In the recording bar, turn on Microphone. To pick a different microphone, use the menu that appears above the bar."),
                     L("Turn on Camera. A bubble with your face appears; it's recorded separately, so you can move and restyle it later."),
                     L("Click Record, or press Return."),
@@ -230,6 +232,20 @@ enum GuideContent {
                 keys: [.fixed("↩", L("Start recording")), .fixed("⌃⌘Esc", L("Stop recording, from any app"))],
                 tips: [L("The first time, macOS asks to allow the microphone and the camera.")],
                 related: ["rec-mic", "rec-camera", "camera-bubble"]
+            ),
+            GuideEntry(
+                id: "howto-frame", symbol: "rectangle.portrait", title: L("Record for YouTube, Reels, or Instagram"),
+                summary: L("Record in exactly the shape the site wants, so nothing gets cut off or stretched."),
+                steps: [
+                    L("Click New recording in Home."),
+                    L("Above the recording bar, choose 16:9 for YouTube, 9:16 for Reels, TikTok, and Shorts, or 4:5 for the Instagram feed."),
+                    L("Choose 1080p in the size menu."),
+                    L("Drag the frame over what you want to show. To fill it with one app, click Fit a window to the frame… and choose its window."),
+                    L("Click Record."),
+                ],
+                tips: [L("The video has exactly the shape you chose, like 1080 × 1920 for 9:16.")],
+                since: "1.8.0",
+                related: ["rec-frame", "rec-area"]
             ),
             GuideEntry(
                 id: "howto-cut", symbol: "scissors", title: L("Cut out mistakes"),
@@ -838,16 +854,55 @@ enum GuideContent {
         return [
             GuideEntry(
                 id: "rec-area", symbol: "rectangle.dashed.badge.record", title: L("Record an area"),
-                summary: L("Record just part of the screen."),
+                summary: L("Record just part of the screen, in the exact shape and size you choose."),
                 location: L("Home ▸ New recording, or the LF Studios menu in the menu bar ▸ Record Area."),
                 steps: [
-                    L("Drag over the area to record."),
+                    L("A frame appears in the middle of the screen. Choose its shape above the recording bar, like 16:9."),
+                    L("Drag the frame's border to move it, or a corner to make it bigger or smaller."),
                     L("Choose your options in the recording bar."),
                     L("Click Record, or press Return."),
                 ],
                 keys: [.global(.recordArea), .fixed("↩", L("Start recording")), .fixed("Esc", L("Cancel"))],
-                tips: [L("A thin outline shows what's being recorded. It never appears in the video.")],
-                related: ["rec-bar", "rec-stop"]
+                tips: [
+                    L("To drag out any area yourself, click Select area manually above the recording bar."),
+                    L("A thin outline shows what's being recorded. It never appears in the video."),
+                ],
+                since: "1.8.0",
+                related: ["rec-frame", "rec-bar", "rec-stop"]
+            ),
+            GuideEntry(
+                id: "rec-frame", symbol: "aspectratio", title: L("The frame bar"),
+                summary: L("A frame of an exact shape and size, so your video comes out ready for YouTube, Reels, or Instagram."),
+                location: L("The strip above the recording bar, after Home ▸ New recording."),
+                points: [
+                    L("Shapes: 16:9 for YouTube, 9:16 for Reels, TikTok, and Shorts, 1:1 for square posts, 4:5 for the Instagram feed, 4:3 for slides and iPad, 16:10 for a Mac screen, 21:9 for a cinematic look. Point at one to see what it's for."),
+                    L("Custom…: type any shape, like 3:2 or 2.39:1."),
+                    L("The size menu: 720p, 1080p, 1440p (where they fit your screen) and Largest. The size above the frame, like 1920 × 1080, is the video's size in pixels."),
+                    L("Fit a window to the frame…: choose a window of another app, and it takes exactly the frame's place and size."),
+                    L("Window, Full screen, and Select area manually: record another way instead."),
+                ],
+                steps: [
+                    L("Choose a shape, then a size."),
+                    L("Drag the frame's border to move it. It snaps to the middle and the edges of the screen."),
+                    L("Drag a corner to resize it. The shape stays the same."),
+                    L("Click Record, or press Return."),
+                ],
+                keys: [
+                    .fixed("← → ↑ ↓", L("Move the frame (with ⇧: 10 points)")),
+                    .fixed("↩", L("Start recording")),
+                    .fixed("Esc", L("Cancel")),
+                    .fixed("⌃⌘Esc", L("Cancel the frame, from any app")),
+                ],
+                tips: [
+                    L("Clicks and scrolling inside the frame and on the dimmed screen go to your apps, so you can set things up first. Only the frame's border and corners, and the bars, take clicks."),
+                    L("Esc and the arrow keys work after you click the frame's border or the bars."),
+                    L("The frame, the dimming, and the bars are never in the video. Nothing is recorded until you click Record."),
+                    L("The bars move out of the frame's way. Drag them anywhere by the handle on the left."),
+                    L("LF Studios remembers the last shape, size, and place on each screen."),
+                    L("Fit a window to the frame needs Accessibility. LF Studios asks for it the first time."),
+                ],
+                since: "1.8.0",
+                related: ["howto-frame", "rec-area", "permission-accessibility"]
             ),
             GuideEntry(
                 id: "rec-window", symbol: "macwindow.badge.plus", title: L("Record a window"),
@@ -2030,7 +2085,12 @@ enum GuideContent {
                     L("An LF Studios project: open the folder in LF Studios to edit the video again. With clips cut to your edit, Include originals so it reopens in LF Studios adds the untouched recordings it needs."),
                 ],
                 keys: [.fixed("⇧⌘E", L("Creative Handoff"))],
-                tips: [L("It checks the free space first, and shows how much the originals add. Cancel removes the half-made folder.")],
+                tips: [
+                    L("It checks the free space first, and shows how much the originals add. Cancel removes the half-made folder."),
+                    L("Fonts you added to LF Studios always go along. Fonts installed on this Mac (in Font Book) go only with Include fonts installed on this Mac turned on: check that the font's license lets you share it first. Without them, README.txt lists the fonts left out."),
+                    L("Opened on another Mac, the project looks and sounds the same: the cleaned-up voice, Keep face centered, the pointer's own picture, and a macOS wallpaper background travel in the folder."),
+                ],
+                since: "1.8.0",
                 related: ["howto-handoff", "project-folder"]
             ),
         ]
@@ -2057,8 +2117,10 @@ enum GuideContent {
                 points: [
                     L("Include media: the project opens on any Mac."),
                     L("Link to media: smaller, for this Mac only."),
+                    L("Include fonts installed on this Mac: fonts from Font Book go along too. Check that a font's license lets you share it first. Fonts you added to LF Studios always go."),
                 ],
-                keys: [.fixed("⌘S", L("Save Project")), .fixed("⇧⌘S", L("Save Project As…"))]
+                keys: [.fixed("⌘S", L("Save Project")), .fixed("⇧⌘S", L("Save Project As…"))],
+                since: "1.8.0"
             ),
             GuideEntry(
                 id: "project-open", symbol: "folder", title: L("Open a project"),
@@ -2299,7 +2361,8 @@ enum GuideContent {
                 steps: [
                     L("Before recording, turn on Microphone in the recording bar and check that its level meter moves when you speak."),
                     L("Pick the right microphone in the menu above the bar."),
-                    L("Make sure LF Studios is allowed under Microphone in System Settings."),
+                    L("Make sure LF Studios is allowed under Microphone in System Settings. It appears there only after it has asked once, and there's no + button: turn on Microphone in the recording bar and click Allow."),
+                    L("No question appeared? Open Terminal, run tccutil reset Microphone com.lfstudios.app, then quit and reopen LF Studios and try again."),
                     L("For your Mac's own sound, turn on System audio too."),
                     L("In the editor, check that Mute video is off in the Audio panel, and that the preview isn't muted (press M)."),
                 ],
@@ -2443,6 +2506,16 @@ enum GuideContent {
                     .fixed("⌥ ← → ↑ ↓", L("Make the area bigger or smaller")),
                     .fixed("↩", L("Capture")),
                     .fixed("Esc", L("Cancel")),
+                ]
+            ),
+            GuideShortcutGroup(
+                title: L("The frame bar"), symbol: "aspectratio",
+                note: L("After clicking the frame's border or the bars."),
+                keys: [
+                    .fixed("← → ↑ ↓", L("Move the frame (with ⇧: 10 points)")),
+                    .fixed("↩", L("Start recording")),
+                    .fixed("Esc", L("Cancel")),
+                    .fixed("⌃⌘Esc", L("Cancel the frame, from any app")),
                 ]
             ),
             GuideShortcutGroup(
