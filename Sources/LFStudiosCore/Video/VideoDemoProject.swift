@@ -859,6 +859,9 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
     var loupeStyle: VideoLoupeStyle?
     /// "Keep face centered" (nil: never analyzed / off).
     var faceTracking: VideoFaceTracking?
+    /// The cleaned-up voices this edit plays, named so a saved project or
+    /// handoff carries them to another Mac (VideoProjectCaches.swift).
+    var carriedVoices: [VideoCarriedVoice] = []
     /// The speaker notes read while recording (nil: none).
     var speakerNotes: String?
     /// "Adapt to this ratio" (VideoRatioVersions.swift): each adapted ratio's
@@ -1422,7 +1425,7 @@ extension VideoDemoProject {
         case overlayEffects, cursorSamples, clickEvents, nativeCursorVisible, cursor, audio
         case webcam, cameraLayouts, importedCamera, autoZoom, reframe, captions, transcriptLanguage, captionStyle, keystrokes, keystrokeStyle, crop
         case cards, music, audioTracks, clickSounds, transitions, captionTracks, sources, imageOverlayEffects, markers
-        case textCursor, keyPresses, loupeStyle, faceTracking, speakerNotes
+        case textCursor, keyPresses, loupeStyle, faceTracking, carriedVoices, speakerNotes
         case ratioVersions, ratioShared, ratioBase, previousRatio, reframeFollowsZooms
         // Legacy (v1) keys
         case backgroundPreset, customBackgroundPath, stageInset, shadowStrength, zoomKeyframes
@@ -1472,6 +1475,7 @@ extension VideoDemoProject {
         keyPresses = (try? container.decode([Double].self, forKey: .keyPresses)) ?? []
         loupeStyle = try? container.decodeIfPresent(VideoLoupeStyle.self, forKey: .loupeStyle)
         faceTracking = try? container.decodeIfPresent(VideoFaceTracking.self, forKey: .faceTracking)
+        carriedVoices = (try? container.decodeIfPresent([VideoCarriedVoice].self, forKey: .carriedVoices)) ?? []
         speakerNotes = try? container.decodeIfPresent(String.self, forKey: .speakerNotes)
         ratioVersions = (try? container.decodeIfPresent([String: VideoRatioVersion].self, forKey: .ratioVersions)) ?? [:]
         ratioShared = try? container.decodeIfPresent(VideoRatioVersion.self, forKey: .ratioShared)
@@ -1563,6 +1567,7 @@ extension VideoDemoProject {
         if !keyPresses.isEmpty { try container.encode(keyPresses, forKey: .keyPresses) }
         try container.encodeIfPresent(loupeStyle, forKey: .loupeStyle)
         try container.encodeIfPresent(faceTracking, forKey: .faceTracking)
+        if !carriedVoices.isEmpty { try container.encode(carriedVoices, forKey: .carriedVoices) }
         if let speakerNotes, !speakerNotes.isEmpty { try container.encode(speakerNotes, forKey: .speakerNotes) }
         // Only once used: older files stay byte for byte as they were.
         if !ratioVersions.isEmpty { try container.encode(ratioVersions, forKey: .ratioVersions) }

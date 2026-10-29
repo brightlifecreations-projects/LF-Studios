@@ -2083,7 +2083,12 @@ enum GuideContent {
                     L("An LF Studios project: open the folder in LF Studios to edit the video again. With clips cut to your edit, Include originals so it reopens in LF Studios adds the untouched recordings it needs."),
                 ],
                 keys: [.fixed("⇧⌘E", L("Creative Handoff"))],
-                tips: [L("It checks the free space first, and shows how much the originals add. Cancel removes the half-made folder.")],
+                tips: [
+                    L("It checks the free space first, and shows how much the originals add. Cancel removes the half-made folder."),
+                    L("Fonts you added to LF Studios always go along. Fonts installed on this Mac (in Font Book) go only with Include fonts installed on this Mac turned on: check that the font's license lets you share it first. Without them, README.txt lists the fonts left out."),
+                    L("Opened on another Mac, the project looks and sounds the same: the cleaned-up voice, Keep face centered, the pointer's own picture, and a macOS wallpaper background travel in the folder."),
+                ],
+                since: "1.8.0",
                 related: ["howto-handoff", "project-folder"]
             ),
         ]
@@ -2110,8 +2115,10 @@ enum GuideContent {
                 points: [
                     L("Include media: the project opens on any Mac."),
                     L("Link to media: smaller, for this Mac only."),
+                    L("Include fonts installed on this Mac: fonts from Font Book go along too. Check that a font's license lets you share it first. Fonts you added to LF Studios always go."),
                 ],
-                keys: [.fixed("⌘S", L("Save Project")), .fixed("⇧⌘S", L("Save Project As…"))]
+                keys: [.fixed("⌘S", L("Save Project")), .fixed("⇧⌘S", L("Save Project As…"))],
+                since: "1.8.0"
             ),
             GuideEntry(
                 id: "project-open", symbol: "folder", title: L("Open a project"),

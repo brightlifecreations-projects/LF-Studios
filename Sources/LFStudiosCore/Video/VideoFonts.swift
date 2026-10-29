@@ -223,6 +223,48 @@ enum VideoFonts {
         }
     }
 
+    // MARK: Fonts installed on this Mac (Font Book)
+
+    /// The files of `family` installed on this Mac (in Font Book), not
+    /// macOS's own fonts, which every Mac has, nor ones added to LF Studios.
+    static func installedFontFiles(forFamily family: String, root: URL = VideoStorageLocation.root) -> [URL] {
+        let attributes = [kCTFontFamilyNameAttribute: family] as CFDictionary
+        let descriptor = CTFontDescriptorCreateWithAttributes(attributes)
+        guard let matches = CTFontDescriptorCreateMatchingFontDescriptors(descriptor, nil) as? [CTFontDescriptor] else { return [] }
+        let added = directory(root: root).resolvingSymlinksInPath().path + "/"
+        var files = Set<URL>()
+        for match in matches {
+            guard (CTFontDescriptorCopyAttribute(match, kCTFontFamilyNameAttribute) as? String) == family,
+                  let url = (CTFontDescriptorCopyAttribute(match, kCTFontURLAttribute) as? URL)?.resolvingSymlinksInPath(),
+                  fileExtensions.contains(url.pathExtension.lowercased()),
+                  !isSystemFont(url), !url.path.hasPrefix(added) else { continue }
+            files.insert(url)
+        }
+        return files.sorted { $0.path < $1.path }
+    }
+
+    /// macOS's own fonts: on every Mac, and never copied.
+    static func isSystemFont(_ url: URL) -> Bool {
+        let path = url.standardizedFileURL.path
+        return path.hasPrefix("/System/") || path.hasPrefix("/Library/Apple/") || path.contains("/AssetsV2/") || path.contains("com_apple_MobileAsset_Font")
+    }
+
+    /// The font files a saved project or handoff carries for `family`:
+    /// those added to LF Studios, and with `includeInstalled` those
+    /// installed on this Mac too.
+    static func carriedFontFiles(forFamily family: String, includeInstalled: Bool, root: URL = VideoStorageLocation.root) -> [URL] {
+        let added = addedFontFiles(forFamily: family, root: root)
+        guard includeInstalled, added.isEmpty else { return added }
+        return installedFontFiles(forFamily: family, root: root)
+    }
+
+    /// The families a project uses that are installed on this Mac but not
+    /// carried (the switch is off): another Mac shows its usual stand-in.
+    static func installedFamiliesLeftOut(_ families: [String], includeInstalled: Bool, root: URL = VideoStorageLocation.root) -> [String] {
+        guard !includeInstalled else { return [] }
+        return families.filter { addedFontFiles(forFamily: $0, root: root).isEmpty && !installedFontFiles(forFamily: $0, root: root).isEmpty }
+    }
+
     private static let registrationLock = NSLock()
     nonisolated(unsafe) private static var registered: Set<String> = []
 

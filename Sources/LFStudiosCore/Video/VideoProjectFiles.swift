@@ -86,6 +86,9 @@ enum VideoProjectOpener {
         for file in opened.fontFiles {
             _ = try? VideoFonts.addFontFile(file)
         }
+        // The cleaned-up voices and the face tracking it carries, where
+        // this Mac looks for them.
+        VideoProjectCaches.restore(contents)
         if let recording = contents.recording {
             VideoDemoSidecarStore.save(recording, for: primary)
         }
@@ -162,7 +165,8 @@ extension VideoEditorModel {
         for (id, metadata) in media.appendedMetadata {
             if let metadata { sources[id.uuidString] = metadata }
         }
-        return VideoProjectContents(project: project, recording: recording, sourceRecordings: sources)
+        // Naming this Mac's cached voices and face tracking, so they travel.
+        return VideoProjectCaches.carrying(VideoProjectContents(project: project, recording: recording, sourceRecordings: sources), primaryKinds: audioKinds)
     }
 
     /// ⌘S: into the project file this edit came from or was saved to (asks
@@ -185,11 +189,16 @@ extension VideoEditorModel {
         let contents = projectContents
         let folder = mode == .folder ? (projectFolder ?? .init(kind: .opened)) : nil
         let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+        let includeInstalled = Settings.projectIncludesInstalledFonts
+        let leftOut = mode == .linked ? [] : VideoFonts.installedFamiliesLeftOut(VideoProjectDocument.fontFamilies(of: contents.project), includeInstalled: includeInstalled)
         isSavingProject = true
         showNotice(L("Saving project…"), symbol: "square.and.arrow.down", duration: 30)
         Task {
             let result: Result<Void, Error> = await Task.detached(priority: .userInitiated) {
-                Result { _ = try VideoProjectPackage.save(contents, to: url, mode: mode, appVersion: version, folder: folder) }
+                Result {
+                    _ = try VideoProjectPackage.save(contents, to: url, mode: mode, appVersion: version, folder: folder,
+                                                     fontFiles: { VideoFonts.carriedFontFiles(forFamily: $0, includeInstalled: includeInstalled) })
+                }
             }.value
             isSavingProject = false
             switch result {
@@ -199,7 +208,12 @@ extension VideoEditorModel {
                 // Saved there on purpose: the folder is the project's now.
                 if mode == .folder { VideoFileIdentity.unprotect(url.deletingLastPathComponent()) }
                 VideoProjectRecents.add(url)
-                showNotice(L("Saved “\(url.deletingPathExtension().lastPathComponent)”"), symbol: "checkmark.circle.fill")
+                if leftOut.isEmpty {
+                    showNotice(L("Saved “\(url.deletingPathExtension().lastPathComponent)”"), symbol: "checkmark.circle.fill")
+                } else {
+                    let names = leftOut.joined(separator: ", ")
+                    showNotice(L("Saved. Fonts installed on this Mac aren't included: \(names). Another Mac shows a stand-in font."), symbol: "textformat", duration: 6)
+                }
             case .failure:
                 showNotice(L("Couldn't save the project — check there's room on the disk"), symbol: "exclamationmark.triangle.fill", duration: 5)
             }
@@ -219,9 +233,20 @@ extension VideoEditorModel {
         let row = NSStackView(views: [label, popup])
         row.orientation = .horizontal
         row.spacing = 8
-        row.edgeInsets = NSEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
-        panel.accessoryView = row
+        let fonts = NSButton(checkboxWithTitle: L("Include fonts installed on this Mac"), target: nil, action: nil)
+        fonts.state = Settings.projectIncludesInstalledFonts ? .on : .off
+        let fontsNote = NSTextField(wrappingLabelWithString: L("Fonts added to LF Studios always go along. Check that a font's license lets you share it before sending."))
+        fontsNote.font = .systemFont(ofSize: NSFont.smallSystemFontSize)
+        fontsNote.textColor = .secondaryLabelColor
+        fontsNote.preferredMaxLayoutWidth = 400
+        let stack = NSStackView(views: [row, fonts, fontsNote])
+        stack.orientation = .vertical
+        stack.alignment = .leading
+        stack.spacing = 6
+        stack.edgeInsets = NSEdgeInsets(top: 8, left: 16, bottom: 10, right: 16)
+        panel.accessoryView = stack
         guard panel.runModal() == .OK, var url = panel.url else { return nil }
+        Settings.projectIncludesInstalledFonts = fonts.state == .on
         if url.pathExtension != VideoProjectDocument.fileExtension { url.appendPathExtension(VideoProjectDocument.fileExtension) }
         return (url, popup.indexOfSelectedItem == 0 ? .included : .linked)
     }
@@ -243,9 +268,11 @@ extension VideoEditorModel {
         let name = package.deletingPathExtension().lastPathComponent
         let captions = recordingFolderCaptions(name: name)
         let version = VideoRecordingFolderWriter.appVersion
+        let includeInstalled = Settings.projectIncludesInstalledFonts
         recordingFolderWrite = Task.detached(priority: .utility) { [previous = recordingFolderWrite] in
             _ = await previous?.value
-            _ = try? VideoProjectPackage.save(contents, to: package, mode: .folder, appVersion: version, folder: .init(kind: .recording))
+            _ = try? VideoProjectPackage.save(contents, to: package, mode: .folder, appVersion: version, folder: .init(kind: .recording),
+                                              fontFiles: { VideoFonts.carriedFontFiles(forFamily: $0, includeInstalled: includeInstalled) })
             VideoRecordingFolder.writeCaptions(captions, in: folder)
         }
     }
