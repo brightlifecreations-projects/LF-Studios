@@ -519,7 +519,7 @@ final class RecordingFrameTests: XCTestCase {
         let camera = try XCTUnwrap(frame.cameraPartRect)
         XCTAssertEqual(camera.minX, frame.recordedRect.maxX, accuracy: 0.51)
         XCTAssertEqual(camera.maxX, frame.rect.maxX, accuracy: 0.51)
-        XCTAssertTrue(frame.label.contains("Screen part of a 16:9 split video"), frame.label)
+        XCTAssertTrue(frame.label.contains("Screen part of a 16:9 side-by-side video"), frame.label)
         XCTAssertTrue(frame.label.hasPrefix("640 × 720"), frame.label)
 
         // Each ratio, side and size: even pixels inside the frame.
@@ -543,5 +543,35 @@ final class RecordingFrameTests: XCTestCase {
         }
         frame.split = nil
         XCTAssertEqual(frame.recordedRect, frame.rect, "back to the whole frame")
+    }
+
+    /// 1.11.0: either direction on any shape. Stacked, the screen's part is
+    /// the whole width and part of the height.
+    func testStackedSplitRecordsTheTopOrBottomPartOnEveryShape() throws {
+        let screen = try XCTUnwrap(NSScreen.main)
+        let frame = RecordingFrameController(screen: screen)
+        controllers.append(frame)
+        frame.setPixels(RecordingFrameGeometry.pixels(.standard, shortSide: 720))
+        frame.split = VideoWebcamSettings.Split(direction: .stacked)
+        XCTAssertEqual(frame.recordedPixels, Pixels(width: 1280, height: 360), "16:9 stacked 50/50: 32:9")
+        XCTAssertTrue(frame.label.contains("Screen part of a 16:9 stacked video"), frame.label)
+        let camera = try XCTUnwrap(frame.cameraPartRect)
+        XCTAssertEqual(camera.maxY, frame.recordedRect.minY, accuracy: 0.51, "the camera below (second)")
+        for preset in RecordingFrameRatio.presets {
+            frame.setRatio(preset.ratio)
+            for direction in VideoWebcamSettings.Split.Direction.allCases {
+                frame.split = VideoWebcamSettings.Split(cameraShare: 0.4, direction: direction)
+                let pixels = frame.recordedPixels
+                XCTAssertEqual(pixels.width % 2, 0, "\(preset.label)")
+                XCTAssertEqual(pixels.height % 2, 0, "\(preset.label)")
+                if direction == .stacked {
+                    XCTAssertEqual(pixels.width, frame.pixels.width, "\(preset.label) stacked: the full width")
+                    XCTAssertTrue(frame.label.contains("stacked"), frame.label)
+                } else {
+                    XCTAssertEqual(pixels.height, frame.pixels.height, "\(preset.label) side by side: the full height")
+                    XCTAssertTrue(frame.label.contains("side-by-side"), frame.label)
+                }
+            }
+        }
     }
 }

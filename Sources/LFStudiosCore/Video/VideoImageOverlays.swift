@@ -217,6 +217,7 @@ extension VideoEditorModel {
 
     @discardableResult
     func addImageOverlay(from url: URL, at time: Double? = nil) -> UUID? {
+        if refuseLocked(.annotations) { return nil }
         guard let size = VideoImageOverlayRenderer.pixelSize(of: url),
               let stored = try? VideoAssetStore.importFile(url) else {
             showNotice(L("Couldn't open that image"), symbol: "exclamationmark.triangle.fill")

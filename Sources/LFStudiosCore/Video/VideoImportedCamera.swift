@@ -362,7 +362,7 @@ struct VideoCameraVideoSection: View {
 // MARK: - Timeline strip
 
 extension VideoTimelineMetrics {
-    static let cameraFootageLaneHeight: CGFloat = 22
+    static var cameraFootageLaneHeight: CGFloat { scaled(22) }
 }
 
 extension VideoEditorModel {

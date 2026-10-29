@@ -692,6 +692,12 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
         case square
         case portrait
         case vertical
+        /// 16:10, a Mac screen.
+        case mac
+        /// 21:9, cinematic.
+        case cinema
+        /// Any shape (the project's `customAspect`).
+        case custom
 
         var id: String { rawValue }
 
@@ -703,6 +709,9 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
             case .square: return "1:1"
             case .portrait: return "4:5"
             case .vertical: return "9:16"
+            case .mac: return "16:10"
+            case .cinema: return "21:9"
+            case .custom: return L("Custom…")
             }
         }
 
@@ -714,6 +723,9 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
             case .square: return L("Social feeds")
             case .portrait: return L("Instagram, LinkedIn")
             case .vertical: return L("Reels, TikTok, Shorts")
+            case .mac: return L("Mac screen")
+            case .cinema: return L("Cinematic")
+            case .custom: return L("Any shape, like 3:2")
             }
         }
 
@@ -725,6 +737,9 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
             case .square: return "square"
             case .portrait: return "rectangle.portrait"
             case .vertical: return "rectangle.ratio.9.to.16"
+            case .mac: return "rectangle"
+            case .cinema: return "rectangle.ratio.16.to.9"
+            case .custom: return "aspectratio"
             }
         }
 
@@ -737,6 +752,10 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
             case .square: return 1
             case .portrait: return 4 / 5
             case .vertical: return 9 / 16
+            case .mac: return 16 / 10
+            case .cinema: return 21 / 9
+            // The project's own (see `VideoDemoProject.canvasSize()`).
+            case .custom: return nil
             }
         }
 
@@ -824,6 +843,11 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
     /// recording is only the screen's part). Auto uses it while the video
     /// is split.
     var splitVideoAspect: Double?
+    /// Custom… in the ratio menu: width / height.
+    var customAspect: Double?
+    /// The timeline's Hide, Mute, Lock and collapsed rows, by track
+    /// (VideoTimelineTracks.swift); none set: everything shows and plays.
+    var trackStates: [String: VideoTrackState] = [:]
     /// Auto-zoom on clicks (the Zoom panel's switch). New recordings start
     /// with it off; projects saved before it existed count as on, so their
     /// zoom options stay as they were (VideoManualOnly.swift).
@@ -1307,12 +1331,31 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
     /// Logical canvas (short side 1080). Top-left origin everywhere in the
     /// model; the renderer flips at its boundary.
     func canvasSize() -> CGSize {
+        if aspectPreset == .custom {
+            // Custom…: its own shape (Auto until one is chosen).
+            let custom = Self.keptCustomAspect(customAspect)
+            return aspectPreset.canvasSize(sourceSize: custom.map { CGSize(width: 1080 * $0, height: 1080) } ?? croppedSourceSize)
+        }
         if aspectPreset == .source, let whole = splitVideoAspect, whole > 0.1, webcam.visible, webcam.effectiveLayout == .split {
             // Recorded as the screen's part of a split video: Auto is the whole video.
             return aspectPreset.canvasSize(sourceSize: CGSize(width: 1080 * whole, height: 1080))
         }
         return aspectPreset.canvasSize(sourceSize: croppedSourceSize)
     }
+
+    /// Custom…'s shape, kept between 1:8 and 8:1 (nil: none chosen).
+    static func keptCustomAspect(_ aspect: Double?) -> Double? {
+        guard let aspect, aspect.isFinite, aspect > 0 else { return nil }
+        return min(max(aspect, 1.0 / 8), 8)
+    }
+
+    /// The ratio's name: "16:9", or Custom's own shape, like "2.39:1".
+    func title(of preset: AspectPreset) -> String {
+        guard preset == .custom, let custom = Self.keptCustomAspect(customAspect) else { return preset.title }
+        return VideoEditorFormat.ratio(CGFloat(custom))
+    }
+
+    var aspectTitle: String { title(of: aspectPreset) }
 
     /// The output is narrower than the recording (9:16, 4:5, 1:1 of a wide
     /// screen): reframing can fill it.
@@ -1388,7 +1431,8 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
             titleFont: cards.font,
             autoZoom: autoZoom,
             shadowStyle: shadowStyle,
-            loupeStyle: loupeStyle
+            loupeStyle: loupeStyle,
+            customAspect: aspectPreset == .custom ? customAspect : nil
         )
     }
 
@@ -1396,6 +1440,7 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
     /// fact (was it captured?) so it is left alone.
     mutating func apply(style: VideoStylePreset) {
         aspectPreset = style.aspectPreset
+        if style.aspectPreset == .custom, let custom = style.customAspect { customAspect = custom }
         background = style.background
         backgroundBlur = style.backgroundBlur
         padding = style.padding
@@ -1432,7 +1477,7 @@ extension VideoDemoProject {
         case aspectPreset, background, backgroundBlur, padding, cornerRadius, shadow, shadowStyle, outline
         case zoomRegions, zoomSpeed, defaultZoomScale, motionBlur
         case overlayEffects, cursorSamples, clickEvents, nativeCursorVisible, cursor, audio
-        case webcam, cameraLayouts, importedCamera, splitVideoAspect, autoZoom, reframe, captions, transcriptLanguage, captionStyle, keystrokes, keystrokeStyle, crop
+        case webcam, cameraLayouts, importedCamera, splitVideoAspect, customAspect, trackStates, autoZoom, reframe, captions, transcriptLanguage, captionStyle, keystrokes, keystrokeStyle, crop
         case cards, music, audioTracks, clickSounds, transitions, captionTracks, sources, imageOverlayEffects, markers
         case textCursor, keyPresses, loupeStyle, faceTracking, carriedVoices, speakerNotes
         case ratioVersions, ratioShared, ratioBase, previousRatio, reframeFollowsZooms
@@ -1465,6 +1510,8 @@ extension VideoDemoProject {
         cameraLayouts = (try? container.decode([VideoCameraLayoutRegion].self, forKey: .cameraLayouts)) ?? []
         importedCamera = try? container.decodeIfPresent(VideoImportedCamera.self, forKey: .importedCamera)
         splitVideoAspect = (try? container.decodeIfPresent(Double.self, forKey: .splitVideoAspect)).flatMap { $0 }
+        customAspect = (try? container.decodeIfPresent(Double.self, forKey: .customAspect)).flatMap { $0 }
+        trackStates = (try? container.decodeIfPresent([String: VideoTrackState].self, forKey: .trackStates)).flatMap { $0 } ?? [:]
         autoZoom = (try? container.decodeIfPresent(Bool.self, forKey: .autoZoom)) ?? true
         reframe = try container.decodeIfPresent(Bool.self, forKey: .reframe) ?? false
         captions = (try? container.decode([VideoCaptionLine].self, forKey: .captions)) ?? []
@@ -1594,6 +1641,8 @@ extension VideoDemoProject {
         try container.encode(cameraLayouts, forKey: .cameraLayouts)
         try container.encodeIfPresent(importedCamera, forKey: .importedCamera)
         try container.encodeIfPresent(splitVideoAspect, forKey: .splitVideoAspect)
+        try container.encodeIfPresent(customAspect, forKey: .customAspect)
+        if !trackStates.isEmpty { try container.encode(trackStates, forKey: .trackStates) }
         try container.encode(autoZoom, forKey: .autoZoom)
         try container.encode(reframe, forKey: .reframe)
         try container.encode(captions, forKey: .captions)
@@ -1690,6 +1739,8 @@ struct VideoStylePreset: Codable, Equatable {
     var shadowStyle: VideoShadowStyle? = nil
     /// The loupe look (nil: saved before loupes, or none was styled).
     var loupeStyle: VideoLoupeStyle? = nil
+    /// Custom…'s shape, when that's the ratio.
+    var customAspect: Double? = nil
 
     /// The built-in LF Studios look.
     static let factory = VideoStylePreset(
@@ -1738,7 +1789,7 @@ struct VideoStylePreset: Codable, Equatable {
 extension VideoStylePreset {
     private enum CodingKeys: String, CodingKey {
         case aspectPreset, background, backgroundBlur, padding, cornerRadius, shadow, outline
-        case zoomSpeed, defaultZoomScale, motionBlur, cursor, webcam, captionStyle, keystrokeStyle, titleFont, autoZoom, shadowStyle, loupeStyle
+        case zoomSpeed, defaultZoomScale, motionBlur, cursor, webcam, captionStyle, keystrokeStyle, titleFont, autoZoom, shadowStyle, loupeStyle, customAspect
     }
 
     /// Looks saved before a field existed still load.
@@ -1763,5 +1814,6 @@ extension VideoStylePreset {
         autoZoom = try? c.decodeIfPresent(Bool.self, forKey: .autoZoom)
         shadowStyle = try? c.decodeIfPresent(VideoShadowStyle.self, forKey: .shadowStyle)
         loupeStyle = try? c.decodeIfPresent(VideoLoupeStyle.self, forKey: .loupeStyle)
+        customAspect = (try? c.decodeIfPresent(Double.self, forKey: .customAspect)).flatMap { $0 }
     }
 }

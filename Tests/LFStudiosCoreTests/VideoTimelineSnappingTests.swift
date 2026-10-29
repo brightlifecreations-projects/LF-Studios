@@ -48,10 +48,18 @@ final class VideoTimelineSnappingTests: XCTestCase {
     }
 
     /// 10 s in a timeline 1000 pt wide: x = 18 + 100·t.
-    private static let size = CGSize(width: 1036, height: 360)
+    /// The track headers (1.11.0) on the left, then the lanes.
+    private static let lanesX = VideoTimelineMetrics.headerWidth + 1
+    private static let size = CGSize(width: 1036 + lanesX, height: 360)
     private static let surfaceTop: CGFloat = 45
 
-    private func x(_ time: Double) -> CGFloat { 18 + CGFloat(time) * 100 }
+    private func x(_ time: Double) -> CGFloat { Self.lanesX + 18 + CGFloat(time) * 100 }
+
+    /// `dy` into a track's lanes (top-left view coordinates), under the
+    /// ruler, at today's lane size (Small).
+    private func y(_ track: VideoTimelineTrack, in model: VideoEditorModel, _ dy: CGFloat) -> CGFloat {
+        Self.surfaceTop + VideoTimelineMetrics.rulerHeight + 1 + (VideoTimelineRowLayout(project: model.project, hasCamera: model.hasWebcamFootage).contentTop(track) ?? 0) + dy
+    }
 
     private func makeModel() async throws -> VideoEditorModel {
         let model = try await T.make(in: directory, T.Options(seconds: 10, pointer: false))
@@ -60,6 +68,8 @@ final class VideoTimelineSnappingTests: XCTestCase {
     }
 
     private func mount(_ model: VideoEditorModel) async {
+        // Today's lane sizes (the positions below count on them).
+        VideoTimelineMetrics.rowScale = VideoTimelineTrackHeight.small.scale
         let window = NSWindow(contentRect: NSRect(origin: .zero, size: Self.size), styleMask: [.borderless], backing: .buffered, defer: false)
         window.contentView = Host(rootView: AnyView(VideoTimelineView(model: model).frame(width: Self.size.width, height: Self.size.height)))
         window.orderFrontRegardless()
@@ -94,7 +104,7 @@ final class VideoTimelineSnappingTests: XCTestCase {
         await mount(model)
         // One annotation lane right under the ruler; drag its start from 1 s
         // to 4.95 s — 5 pt short of the playhead.
-        let y = Self.surfaceTop + 31 + 13
+        let y = y(.annotations, in: model, 13)
         await drag(from: CGPoint(x: x(1.5), y: y), to: CGPoint(x: x(5.45), y: y))
         let moved = try XCTUnwrap(model.project.overlayEffects.first)
         XCTAssertEqual(moved.time, 5, accuracy: 0.001, "lands on the playhead")
@@ -106,7 +116,7 @@ final class VideoTimelineSnappingTests: XCTestCase {
         }
         model.endGesture()
         await T.settle(0.2)
-        let captionY = Self.surfaceTop + 31 + 11
+        let captionY = self.y(.captions, in: model, 11)
         await drag(from: CGPoint(x: x(3) - 3, y: captionY), to: CGPoint(x: x(4.94) - 3, y: captionY))
         let line = try XCTUnwrap(model.project.captions.first)
         XCTAssertEqual(line.start, 2, accuracy: 0.01)

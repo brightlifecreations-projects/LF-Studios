@@ -700,5 +700,5 @@ struct VideoMusicLane: View, Equatable {
 }
 
 extension VideoTimelineMetrics {
-    static let musicLaneHeight: CGFloat = 26
+    static var musicLaneHeight: CGFloat { scaled(26) }
 }

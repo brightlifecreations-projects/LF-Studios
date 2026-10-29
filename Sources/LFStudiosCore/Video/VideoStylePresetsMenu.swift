@@ -41,7 +41,7 @@ extension VideoEditorModel {
         let library = presets.current
         let name = NSTextField(string: library.uniqueName(L("My Preset")))
         name.frame = NSRect(x: 0, y: 30, width: 260, height: 24)
-        let aspect = NSButton(checkboxWithTitle: L("Include aspect ratio (\(project.aspectPreset.title))"), target: nil, action: nil)
+        let aspect = NSButton(checkboxWithTitle: L("Include aspect ratio (\(project.aspectTitle))"), target: nil, action: nil)
         aspect.state = .off
         aspect.frame = NSRect(x: 0, y: 0, width: 260, height: 20)
         let accessory = NSView(frame: NSRect(x: 0, y: 0, width: 260, height: 56))

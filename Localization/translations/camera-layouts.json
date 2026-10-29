@@ -646,5 +646,541 @@
     "ru": "При включенной камере и «Расположение ▸ Разделенный экран» рамка — это часть экрана в видео, а часть камеры показана рядом.",
     "uk": "З увімкненою камерою й «Макет ▸ Розділений екран» рамка — це частина екрана у відео, а частина камери показана поруч.",
     "ja": "“カメラ”がオンで“レイアウト”＞“分割画面”のとき、枠はビデオの画面部分になり、その隣にカメラ部分が表示されます。"
+  },
+  "%@ · Screen part of a %@ side-by-side video": {
+    "de": "%1$@ · Bildschirmteil eines %2$@-Videos nebeneinander",
+    "fr": "%1$@ · Partie écran d’une vidéo %2$@ côte à côte",
+    "zh-Hans": "%1$@ · %2$@ 并排视频的屏幕部分",
+    "ru": "%1$@ · Часть экрана видео %2$@ рядом",
+    "uk": "%1$@ · Частина екрана відео %2$@ поруч",
+    "ja": "%1$@ · %2$@横並びビデオの画面部分"
+  },
+  "%@ · Screen part of a %@ stacked video": {
+    "de": "%1$@ · Bildschirmteil eines %2$@-Videos übereinander",
+    "fr": "%1$@ · Partie écran d’une vidéo %2$@ superposée",
+    "zh-Hans": "%1$@ · %2$@ 上下排列视频的屏幕部分",
+    "ru": "%1$@ · Часть экрана видео %2$@ одно над другим",
+    "uk": "%1$@ · Частина екрана відео %2$@ одне над одним",
+    "ja": "%1$@ · %2$@上下分割ビデオの画面部分"
+  },
+  "Adapt to this ratio keeps the Direction you chose. If you never chose one, it follows the new shape: left becomes top, right becomes bottom.": {
+    "de": "„An dieses Format anpassen“ behält die gewählte Richtung. Hast du keine gewählt, folgt sie der neuen Form: Links wird oben, rechts wird unten.",
+    "fr": "Adapter à ce format garde la Direction choisie. Si vous n’en avez choisi aucune, elle suit la nouvelle forme : la gauche devient le haut, la droite le bas.",
+    "zh-Hans": "“适配此比例”会保留你选择的方向。如果从未选择，则跟随新形状：左侧变为上方，右侧变为下方。",
+    "ru": "«Адаптировать к формату» сохраняет выбранное направление. Если вы его не выбирали, оно следует новой форме: левая часть становится верхней, правая — нижней.",
+    "uk": "«Адаптувати до формату» зберігає вибраний напрямок. Якщо ви його не вибирали, він іде за новою формою: ліва частина стає верхньою, права — нижньою.",
+    "ja": "“この比率に合わせる”は選んだ“方向”を保ちます。選んでいない場合は新しい形に合わせて、左は上に、右は下になります。"
+  },
+  "Auto (like the recording), 16:9 for YouTube, 9:16 for Reels, TikTok, and Shorts, 1:1, 4:5 for Instagram, 4:3, 16:10 like a Mac screen, or 21:9 for a cinematic look.": {
+    "de": "Auto (wie die Aufnahme), 16:9 für YouTube, 9:16 für Reels, TikTok und Shorts, 1:1, 4:5 für Instagram, 4:3, 16:10 wie ein Mac-Bildschirm oder 21:9 für einen Kino-Look.",
+    "fr": "Auto (comme l’enregistrement), 16:9 pour YouTube, 9:16 pour Reels, TikTok et Shorts, 1:1, 4:5 pour Instagram, 4:3, 16:10 comme un écran de Mac, ou 21:9 pour un rendu cinéma.",
+    "zh-Hans": "自动（与录制内容相同）、适合 YouTube 的 16:9、适合 Reels、TikTok 和 Shorts 的 9:16、1:1、适合 Instagram 的 4:5、4:3、与 Mac 屏幕相同的 16:10，或带电影感的 21:9。",
+    "ru": "Авто (как запись), 16:9 для YouTube, 9:16 для Reels, TikTok и Shorts, 1:1, 4:5 для Instagram, 4:3, 16:10 как экран Mac или 21:9 для кинематографичного вида.",
+    "uk": "Авто (як запис), 16:9 для YouTube, 9:16 для Reels, TikTok і Shorts, 1:1, 4:5 для Instagram, 4:3, 16:10 як екран Mac або 21:9 для кінематографічного вигляду.",
+    "ja": "自動（収録と同じ）、YouTube向けの16:9、Reels・TikTok・Shorts向けの9:16、1:1、Instagram向けの4:5、4:3、Macの画面と同じ16:10、映画のような21:9。"
+  },
+  "Choose Layout ▸ Split screen, and a Direction. The frame becomes the screen's part, like 8:9 for a 16:9 video split side by side, or 32:9 stacked, and the camera preview fills the camera's part.": {
+    "de": "Wähle Layout ▸ Geteilter Bildschirm und eine Richtung. Der Rahmen wird zum Bildschirmteil, etwa 8:9 bei einem 16:9-Video nebeneinander oder 32:9 übereinander, und die Kameravorschau füllt den Kamerateil.",
+    "fr": "Choisissez Disposition ▸ Écran partagé, et une Direction. Le cadre devient la partie écran, par exemple 8:9 pour une vidéo 16:9 côte à côte, ou 32:9 superposée, et l’aperçu de la caméra remplit la partie caméra.",
+    "zh-Hans": "选择“布局 ▸ 分屏”和一个方向。录制框会变成屏幕部分，例如 16:9 视频并排时为 8:9，上下排列时为 32:9，摄像头预览会填满摄像头部分。",
+    "ru": "Выберите «Расположение ▸ Разделенный экран» и направление. Рамка станет частью экрана, например 8:9 для видео 16:9 рядом или 32:9 одно над другим, а предпросмотр камеры заполнит часть камеры.",
+    "uk": "Виберіть «Макет ▸ Розділений екран» і напрямок. Рамка стане частиною екрана, наприклад 8:9 для відео 16:9 поруч або 32:9 одне над одним, а перегляд камери заповнить частину камери.",
+    "ja": "“レイアウト”＞“分割画面”と“方向”を選びます。枠が画面部分（16:9のビデオで横並びなら8:9、上下なら32:9など）になり、カメラのプレビューがカメラ部分を埋めます。"
+  },
+  "Custom aspect ratio": {
+    "de": "Eigenes Seitenverhältnis",
+    "fr": "Format personnalisé",
+    "zh-Hans": "自定比例",
+    "ru": "Свой формат",
+    "uk": "Власний формат",
+    "ja": "カスタムの比率"
+  },
+  "Custom… for any other shape: type it like 3:2 or 2.39:1. Choose Custom… again to change it.": {
+    "de": "„Eigene …“ für jede andere Form: Gib sie ein wie 3:2 oder 2.39:1. Wähle „Eigene …“ erneut, um sie zu ändern.",
+    "fr": "Personnaliser… pour toute autre forme : tapez-la comme 3:2 ou 2.39:1. Choisissez à nouveau Personnaliser… pour la changer.",
+    "zh-Hans": "“自定…”可用于任何其他形状：输入 3:2 或 2.39:1 之类的比例。再次选择“自定…”即可更改。",
+    "ru": "«Другой…» для любой другой формы: введите ее, например 3:2 или 2.39:1. Выберите «Другой…» снова, чтобы изменить.",
+    "uk": "«Власний…» для будь-якої іншої форми: введіть її, як-от 3:2 або 2.39:1. Виберіть «Власний…» знову, щоб змінити.",
+    "ja": "“カスタム…”で、ほかの形を3:2や2.39:1のように入力します。変更するにはもう一度“カスタム…”を選びます。"
+  },
+  "Direction": {
+    "de": "Richtung",
+    "fr": "Direction",
+    "zh-Hans": "方向",
+    "ru": "Направление",
+    "uk": "Напрямок",
+    "ja": "方向"
+  },
+  "Direction: Side by side (left and right) or Stacked (top and bottom), on a video of any shape. Until you choose, landscape videos go side by side and square and vertical ones stacked.": {
+    "de": "Richtung: Nebeneinander (links und rechts) oder Übereinander (oben und unten), bei einem Video jeder Form. Bis du wählst, werden Querformat-Videos nebeneinander und quadratische und hochformatige übereinander geteilt.",
+    "fr": "Direction : Côte à côte (gauche et droite) ou Superposé (haut et bas), sur une vidéo de n’importe quelle forme. Tant que vous n’avez pas choisi, les vidéos paysage sont côte à côte, les carrées et verticales superposées.",
+    "zh-Hans": "方向：并排（左右）或上下（上方和下方），适用于任何形状的视频。在你选择之前，横向视频为并排，方形和竖向视频为上下。",
+    "ru": "Направление: «Рядом» (слева и справа) или «Одно над другим» (сверху и снизу), на видео любой формы. Пока вы не выбрали, горизонтальные видео делятся рядом, а квадратные и вертикальные — одно над другим.",
+    "uk": "Напрямок: «Поруч» (ліворуч і праворуч) або «Одне над одним» (угорі й унизу), на відео будь-якої форми. Поки ви не вибрали, горизонтальні відео діляться поруч, а квадратні й вертикальні — одне над одним.",
+    "ja": "方向: “横並び”（左右）または“上下”（上と下）。どんな形のビデオでも使えます。選ぶまでは、横長のビデオは横並び、正方形や縦長のビデオは上下になります。"
+  },
+  "Drag the divider on the video to change the split; the background (Style) shows in the gap.": {
+    "de": "Zieh den Trenner im Video, um die Aufteilung zu ändern; im Abstand zeigt sich der Hintergrund (Stil).",
+    "fr": "Faites glisser le séparateur sur la vidéo pour changer la répartition ; l’arrière-plan (Style) apparaît dans l’espace.",
+    "zh-Hans": "拖移视频上的分隔线可更改比例；间距中显示背景（样式）。",
+    "ru": "Перетащите разделитель на видео, чтобы изменить пропорции; в промежутке виден фон (Стиль).",
+    "uk": "Перетягніть роздільник на відео, щоб змінити пропорції; у проміжку видно тло (Стиль).",
+    "ja": "ビデオ上の区切り線をドラッグして分割を変えます。間隔には背景（スタイル）が見えます。"
+  },
+  "Every ratio works with Adapt to this ratio, Export all ratios, and presets saved with Include aspect ratio.": {
+    "de": "Jedes Format funktioniert mit „An dieses Format anpassen“, „Alle Formate exportieren“ und Voreinstellungen, die mit „Seitenverhältnis einbeziehen“ gesichert wurden.",
+    "fr": "Chaque format fonctionne avec Adapter à ce format, Exporter tous les formats et les préréglages enregistrés avec Inclure le format.",
+    "zh-Hans": "每种比例都可以配合“适配此比例”“导出所有比例”以及存储时选择了“包括宽高比”的预设使用。",
+    "ru": "Любой формат работает с «Адаптировать к формату», «Экспортировать все форматы» и стилями, сохраненными с «Включить соотношение сторон».",
+    "uk": "Кожен формат працює з «Адаптувати до формату», «Експортувати всі формати» і стилями, збереженими з «Включити співвідношення сторін».",
+    "ja": "どの比率も、“この比率に合わせる”、“すべての比率を書き出す”、“アスペクト比を含める”で保存したプリセットで使えます。"
+  },
+  "Stacked": {
+    "de": "Übereinander",
+    "fr": "Superposé",
+    "zh-Hans": "上下",
+    "ru": "Одно над другим",
+    "uk": "Одне над одним",
+    "ja": "上下"
+  },
+  "That isn't a ratio. Try 3:2 or 2.39:1.": {
+    "de": "Das ist kein Seitenverhältnis. Versuch 3:2 oder 2.39:1.",
+    "fr": "Ce n’est pas un format. Essayez 3:2 ou 2.39:1.",
+    "zh-Hans": "这不是有效的比例。请试试 3:2 或 2.39:1。",
+    "ru": "Это не формат. Попробуйте 3:2 или 2.39:1.",
+    "uk": "Це не формат. Спробуйте 3:2 або 2.39:1.",
+    "ja": "比率ではありません。3:2や2.39:1のように入力してください。"
+  },
+  "Use This Ratio": {
+    "de": "Dieses Format verwenden",
+    "fr": "Utiliser ce format",
+    "zh-Hans": "使用此比例",
+    "ru": "Использовать формат",
+    "uk": "Використати формат",
+    "ja": "この比率を使用"
+  },
+  "Width and height, like 3:2, 2.39:1 or 5:4.": {
+    "de": "Breite und Höhe, etwa 3:2, 2.39:1 oder 5:4.",
+    "fr": "Largeur et hauteur, comme 3:2, 2.39:1 ou 5:4.",
+    "zh-Hans": "宽度和高度，例如 3:2、2.39:1 或 5:4。",
+    "ru": "Ширина и высота, например 3:2, 2.39:1 или 5:4.",
+    "uk": "Ширина й висота, як-от 3:2, 2.39:1 або 5:4.",
+    "ja": "幅と高さ（3:2、2.39:1、5:4など）。"
+  },
+  "A track with nothing on it is a thin row that says how to add something. The arrow next to a name folds a track away.": {
+    "de": "Eine leere Spur ist eine schmale Zeile, die sagt, wie du etwas hinzufügst. Mit dem Pfeil neben dem Namen klappst du eine Spur ein.",
+    "fr": "Une piste vide est une fine rangée qui indique comment y ajouter quelque chose. La flèche à côté d’un nom replie la piste.",
+    "zh-Hans": "空轨道显示为一条细行，并说明如何添加内容。名称旁的箭头可以折叠轨道。",
+    "ru": "Пустая дорожка — узкая строка с подсказкой, как что-то добавить. Стрелка рядом с названием сворачивает дорожку.",
+    "uk": "Порожня доріжка — вузький рядок із підказкою, як щось додати. Стрілка поруч із назвою згортає доріжку.",
+    "ja": "何もないトラックは細い行になり、追加の方法が表示されます。名前の横の矢印でトラックを折りたためます。"
+  },
+  "Add captions in the Captions panel": {
+    "de": "Untertitel fügst du im Panel „Untertitel“ hinzu",
+    "fr": "Ajoutez des sous-titres dans le panneau Sous-titres",
+    "zh-Hans": "在“字幕”面板中添加字幕",
+    "ru": "Добавьте субтитры на панели «Субтитры»",
+    "uk": "Додайте субтитри на панелі «Субтитри»",
+    "ja": "“字幕”パネルで字幕を追加します"
+  },
+  "Add music in the Audio panel": {
+    "de": "Musik fügst du im Panel „Audio“ hinzu",
+    "fr": "Ajoutez de la musique dans le panneau Audio",
+    "zh-Hans": "在“音频”面板中添加音乐",
+    "ru": "Добавьте музыку на панели «Аудио»",
+    "uk": "Додайте музику на панелі «Аудіо»",
+    "ja": "“オーディオ”パネルで音楽を追加します"
+  },
+  "Add text, arrows, highlights, blur or pictures with the tools above the preview": {
+    "de": "Text, Pfeile, Markierungen, Weichzeichner oder Bilder fügst du mit den Werkzeugen über der Vorschau hinzu",
+    "fr": "Ajoutez du texte, des flèches, des surlignages, du flou ou des images avec les outils au-dessus de l’aperçu",
+    "zh-Hans": "使用预览上方的工具添加文本、箭头、高亮、模糊或图片",
+    "ru": "Добавьте текст, стрелки, выделения, размытие или картинки инструментами над предпросмотром",
+    "uk": "Додайте текст, стрілки, виділення, розмиття або зображення інструментами над переглядом",
+    "ja": "プレビューの上のツールで、テキスト、矢印、ハイライト、ぼかし、画像を追加します"
+  },
+  "Camera layouts and added camera video show here: Camera panel ▸ Layouts": {
+    "de": "Kamera-Layouts und hinzugefügtes Kameravideo erscheinen hier: Panel „Kamera“ ▸ Layouts",
+    "fr": "Les dispositions de caméra et la vidéo de caméra ajoutée apparaissent ici : panneau Caméra ▸ Dispositions",
+    "zh-Hans": "摄像头布局和添加的摄像头视频显示在这里：“摄像头”面板 ▸ 布局",
+    "ru": "Расположения камеры и добавленное видео с камеры появляются здесь: панель «Камера» ▸ Расположения",
+    "uk": "Макети камери й додане відео з камери з’являються тут: панель «Камера» ▸ Макети",
+    "ja": "カメラのレイアウトと追加したカメラ映像はここに表示されます: “カメラ”パネル＞“レイアウト”"
+  },
+  "Collapse %@": {
+    "de": "%@ einklappen",
+    "fr": "Replier %@",
+    "zh-Hans": "折叠“%@”",
+    "ru": "Свернуть «%@»",
+    "uk": "Згорнути «%@»",
+    "ja": "“%@”を折りたたむ"
+  },
+  "Collapse this track": {
+    "de": "Diese Spur einklappen",
+    "fr": "Replier cette piste",
+    "zh-Hans": "折叠此轨道",
+    "ru": "Свернуть дорожку",
+    "uk": "Згорнути доріжку",
+    "ja": "このトラックを折りたたむ"
+  },
+  "Drag the line above the timeline to make it taller or shorter; double-click it for the usual size. LF Studios remembers it.": {
+    "de": "Zieh die Linie über der Timeline, um sie höher oder niedriger zu machen; ein Doppelklick stellt die übliche Größe her. LF Studios merkt sich das.",
+    "fr": "Faites glisser la ligne au-dessus de la timeline pour l’agrandir ou la réduire ; double-cliquez pour la taille habituelle. LF Studios s’en souvient.",
+    "zh-Hans": "拖移时间线上方的线可以调高或调低时间线；连按两次恢复通常大小。LF Studios 会记住它。",
+    "ru": "Перетащите линию над таймлайном, чтобы сделать его выше или ниже; двойной щелчок возвращает обычный размер. LF Studios запоминает его.",
+    "uk": "Перетягніть лінію над таймлайном, щоб зробити його вищим або нижчим; подвійне клацання повертає звичний розмір. LF Studios запам’ятовує його.",
+    "ja": "タイムラインの上の線をドラッグすると高さを変えられます。ダブルクリックでいつものサイズに戻ります。LF Studiosはこれを記憶します。"
+  },
+  "Drag to resize the timeline. Double-click for the usual size.": {
+    "de": "Ziehen, um die Größe der Timeline zu ändern. Doppelklick für die übliche Größe.",
+    "fr": "Faites glisser pour redimensionner la timeline. Double-cliquez pour la taille habituelle.",
+    "zh-Hans": "拖移可调整时间线的大小。连按两次恢复通常大小。",
+    "ru": "Перетащите, чтобы изменить размер таймлайна. Двойной щелчок — обычный размер.",
+    "uk": "Перетягніть, щоб змінити розмір таймлайна. Подвійне клацання — звичний розмір.",
+    "ja": "ドラッグしてタイムラインのサイズを変えます。ダブルクリックでいつものサイズに戻ります。"
+  },
+  "Each track's eye hides it and its speaker mutes it, in the preview and the export. The lock keeps everything on it from changing.": {
+    "de": "Das Auge einer Spur blendet sie aus und ihr Lautsprecher schaltet sie stumm, in der Vorschau und im Export. Das Schloss schützt alles darauf vor Änderungen.",
+    "fr": "L’œil d’une piste la masque et son haut-parleur la rend muette, dans l’aperçu et l’export. Le cadenas empêche toute modification de son contenu.",
+    "zh-Hans": "轨道的眼睛图标可在预览和导出中隐藏它，扬声器图标可使其静音。锁可防止其中的内容被更改。",
+    "ru": "Глаз дорожки скрывает ее, а динамик выключает звук — в предпросмотре и экспорте. Замок не дает ничего на ней изменить.",
+    "uk": "Око доріжки ховає її, а динамік вимикає звук — у перегляді й експорті. Замок не дає нічого на ній змінити.",
+    "ja": "トラックの目のボタンで非表示、スピーカーで消音になります（プレビューと書き出しの両方）。鍵をかけると、その上のものは変更できなくなります。"
+  },
+  "Every part of the video on its own track, top to bottom: Zooms, Video clips, Camera, Captions, Keys, Text & annotations, Music, and each sound you added.": {
+    "de": "Jeder Teil des Videos auf einer eigenen Spur, von oben nach unten: Zooms, Videoclips, Kamera, Untertitel, Tasten, Text & Anmerkungen, Musik und jeder hinzugefügte Ton.",
+    "fr": "Chaque partie de la vidéo sur sa propre piste, de haut en bas : Zooms, Clips vidéo, Caméra, Sous-titres, Touches, Texte et annotations, Musique, et chaque son ajouté.",
+    "zh-Hans": "视频的每个部分都在自己的轨道上，从上到下：缩放、视频片段、摄像头、字幕、按键、文本和标注、音乐，以及你添加的每个声音。",
+    "ru": "Каждая часть видео на своей дорожке, сверху вниз: Увеличения, Клипы, Камера, Субтитры, Клавиши, Текст и пометки, Музыка и каждый добавленный звук.",
+    "uk": "Кожна частина відео на своїй доріжці, згори донизу: Наближення, Кліпи, Камера, Субтитри, Клавіші, Текст і позначки, Музика й кожен доданий звук.",
+    "ja": "ビデオの各部分がそれぞれのトラックに上から順に並びます: ズーム、ビデオクリップ、カメラ、字幕、キー、テキストと注釈、音楽、追加した各サウンド。"
+  },
+  "Hide %@": {
+    "de": "%@ ausblenden",
+    "fr": "Masquer %@",
+    "zh-Hans": "隐藏“%@”",
+    "ru": "Скрыть «%@»",
+    "uk": "Сховати «%@»",
+    "ja": "“%@”を非表示"
+  },
+  "Hide “%@” in the preview and the export": {
+    "de": "„%@“ in der Vorschau und im Export ausblenden",
+    "fr": "Masquer « %@ » dans l’aperçu et l’export",
+    "zh-Hans": "在预览和导出中隐藏“%@”",
+    "ru": "Скрыть «%@» в предпросмотре и экспорте",
+    "uk": "Сховати «%@» у перегляді й експорті",
+    "ja": "プレビューと書き出しで“%@”を非表示にする"
+  },
+  "Hiding or muting a track never deletes anything: turn it back on, and it's all there.": {
+    "de": "Ausblenden oder Stummschalten löscht nie etwas: Schalte die Spur wieder ein, und alles ist da.",
+    "fr": "Masquer ou couper le son d’une piste ne supprime rien : réactivez-la, et tout est là.",
+    "zh-Hans": "隐藏轨道或将其静音不会删除任何内容：重新打开后一切都在。",
+    "ru": "Скрытие или выключение звука дорожки ничего не удаляет: включите ее снова, и все на месте.",
+    "uk": "Приховування чи вимкнення звуку доріжки нічого не видаляє: увімкніть її знову, і все на місці.",
+    "ja": "トラックを非表示や消音にしても何も削除されません。元に戻せばすべてそのままです。"
+  },
+  "Keys": {
+    "de": "Tasten",
+    "fr": "Touches",
+    "zh-Hans": "按键",
+    "ru": "Клавиши",
+    "uk": "Клавіші",
+    "ja": "キー"
+  },
+  "Lock %@": {
+    "de": "%@ sperren",
+    "fr": "Verrouiller %@",
+    "zh-Hans": "锁定“%@”",
+    "ru": "Заблокировать «%@»",
+    "uk": "Заблокувати «%@»",
+    "ja": "“%@”をロック"
+  },
+  "Lock “%@”: nothing on it can be changed": {
+    "de": "„%@“ sperren: Nichts darauf lässt sich ändern",
+    "fr": "Verrouiller « %@ » : rien ne peut y être modifié",
+    "zh-Hans": "锁定“%@”：其中的内容都无法更改",
+    "ru": "Заблокировать «%@»: на ней ничего нельзя изменить",
+    "uk": "Заблокувати «%@»: на ній нічого не можна змінити",
+    "ja": "“%@”をロック: その上のものは変更できなくなります"
+  },
+  "Mute %@": {
+    "de": "%@ stummschalten",
+    "fr": "Couper le son de %@",
+    "zh-Hans": "将“%@”静音",
+    "ru": "Выключить звук «%@»",
+    "uk": "Вимкнути звук «%@»",
+    "ja": "“%@”を消音"
+  },
+  "Mute “%@” in the preview and the export": {
+    "de": "„%@“ in der Vorschau und im Export stummschalten",
+    "fr": "Couper le son de « %@ » dans l’aperçu et l’export",
+    "zh-Hans": "在预览和导出中将“%@”静音",
+    "ru": "Выключить звук «%@» в предпросмотре и экспорте",
+    "uk": "Вимкнути звук «%@» у перегляді й експорті",
+    "ja": "プレビューと書き出しで“%@”を消音する"
+  },
+  "Pinch, ⌘-scroll, ⌘+ and ⌘−, or the slider on the right, to see more or less of the video.": {
+    "de": "Mit Zusammenziehen, ⌘-Scrollen, ⌘+ und ⌘− oder dem Regler rechts siehst du mehr oder weniger vom Video.",
+    "fr": "Pincez, faites défiler avec ⌘, utilisez ⌘+ et ⌘−, ou le curseur à droite, pour voir plus ou moins de la vidéo.",
+    "zh-Hans": "通过捏合、按住 ⌘ 滚动、⌘+ 和 ⌘−，或右侧的滑块来查看更多或更少的视频内容。",
+    "ru": "Сводите пальцы, прокручивайте с ⌘, жмите ⌘+ и ⌘− или двигайте ползунок справа, чтобы видеть больше или меньше видео.",
+    "uk": "Зводьте пальці, прокручуйте з ⌘, натискайте ⌘+ і ⌘− або рухайте повзунок праворуч, щоб бачити більше чи менше відео.",
+    "ja": "ピンチ、⌘スクロール、⌘+と⌘−、または右側のスライダーで、表示する範囲を変えます。"
+  },
+  "Scroll up and down when the tracks don't all fit; the ruler and the track names stay put.": {
+    "de": "Scrolle nach oben und unten, wenn nicht alle Spuren passen; das Lineal und die Spurnamen bleiben stehen.",
+    "fr": "Faites défiler vers le haut et le bas quand toutes les pistes ne tiennent pas ; la règle et les noms des pistes restent en place.",
+    "zh-Hans": "轨道显示不下时可上下滚动；标尺和轨道名称保持不动。",
+    "ru": "Прокручивайте вверх и вниз, если дорожки не помещаются; линейка и названия дорожек остаются на месте.",
+    "uk": "Прокручуйте вгору й униз, якщо доріжки не вміщаються; лінійка й назви доріжок лишаються на місці.",
+    "ja": "トラックが入りきらないときは上下にスクロールします。ルーラーとトラック名は動きません。"
+  },
+  "Shortcuts pressed while recording show here": {
+    "de": "Beim Aufnehmen gedrückte Kurzbefehle erscheinen hier",
+    "fr": "Les raccourcis pressés pendant l’enregistrement apparaissent ici",
+    "zh-Hans": "录制时按下的快捷键显示在这里",
+    "ru": "Здесь видны сочетания клавиш, нажатые во время записи",
+    "uk": "Тут видно сполучення клавіш, натиснуті під час запису",
+    "ja": "収録中に押したショートカットがここに表示されます"
+  },
+  "Show %@": {
+    "de": "%@ einblenden",
+    "fr": "Afficher %@",
+    "zh-Hans": "显示“%@”",
+    "ru": "Показать «%@»",
+    "uk": "Показати «%@»",
+    "ja": "“%@”を表示"
+  },
+  "Show this track": {
+    "de": "Diese Spur einblenden",
+    "fr": "Afficher cette piste",
+    "zh-Hans": "显示此轨道",
+    "ru": "Показать дорожку",
+    "uk": "Показати доріжку",
+    "ja": "このトラックを表示"
+  },
+  "Show “%@” in the video": {
+    "de": "„%@“ im Video zeigen",
+    "fr": "Afficher « %@ » dans la vidéo",
+    "zh-Hans": "在视频中显示“%@”",
+    "ru": "Показать «%@» в видео",
+    "uk": "Показати «%@» у відео",
+    "ja": "ビデオに“%@”を表示する"
+  },
+  "Text & annotations": {
+    "de": "Text & Anmerkungen",
+    "fr": "Texte et annotations",
+    "zh-Hans": "文本和标注",
+    "ru": "Текст и пометки",
+    "uk": "Текст і позначки",
+    "ja": "テキストと注釈"
+  },
+  "The bottom of the video editor.": {
+    "de": "Unten im Video-Editor.",
+    "fr": "Le bas de l’éditeur vidéo.",
+    "zh-Hans": "视频编辑器的底部。",
+    "ru": "Нижняя часть видеоредактора.",
+    "uk": "Нижня частина відеоредактора.",
+    "ja": "ビデオエディタの下部。"
+  },
+  "The timeline and its tracks": {
+    "de": "Die Timeline und ihre Spuren",
+    "fr": "La timeline et ses pistes",
+    "zh-Hans": "时间线及其轨道",
+    "ru": "Таймлайн и его дорожки",
+    "uk": "Таймлайн і його доріжки",
+    "ja": "タイムラインとトラック"
+  },
+  "Timeline size": {
+    "de": "Größe der Timeline",
+    "fr": "Taille de la timeline",
+    "zh-Hans": "时间线大小",
+    "ru": "Размер таймлайна",
+    "uk": "Розмір таймлайна",
+    "ja": "タイムラインのサイズ"
+  },
+  "Track height": {
+    "de": "Spurhöhe",
+    "fr": "Hauteur des pistes",
+    "zh-Hans": "轨道高度",
+    "ru": "Высота дорожек",
+    "uk": "Висота доріжок",
+    "ja": "トラックの高さ"
+  },
+  "Track height (above the track names): Small, Medium, or Large.": {
+    "de": "Spurhöhe (über den Spurnamen): Klein, Mittel oder Groß.",
+    "fr": "Hauteur des pistes (au-dessus des noms) : Petite, Moyenne ou Grande.",
+    "zh-Hans": "轨道高度（在轨道名称上方）：小、中或大。",
+    "ru": "Высота дорожек (над их названиями): Маленькая, Средняя или Большая.",
+    "uk": "Висота доріжок (над їхніми назвами): Мала, Середня або Велика.",
+    "ja": "トラックの高さ（トラック名の上）: 小、中、大。"
+  },
+  "Tracks": {
+    "de": "Spuren",
+    "fr": "Pistes",
+    "zh-Hans": "轨道",
+    "ru": "Дорожки",
+    "uk": "Доріжки",
+    "ja": "トラック"
+  },
+  "Unlock %@": {
+    "de": "%@ entsperren",
+    "fr": "Déverrouiller %@",
+    "zh-Hans": "解锁“%@”",
+    "ru": "Разблокировать «%@»",
+    "uk": "Розблокувати «%@»",
+    "ja": "“%@”のロックを解除"
+  },
+  "Unlock “%@”": {
+    "de": "„%@“ entsperren",
+    "fr": "Déverrouiller « %@ »",
+    "zh-Hans": "解锁“%@”",
+    "ru": "Разблокировать «%@»",
+    "uk": "Розблокувати «%@»",
+    "ja": "“%@”のロックを解除"
+  },
+  "Unmute %@": {
+    "de": "Ton von %@ einschalten",
+    "fr": "Rétablir le son de %@",
+    "zh-Hans": "取消“%@”静音",
+    "ru": "Включить звук «%@»",
+    "uk": "Увімкнути звук «%@»",
+    "ja": "“%@”の消音を解除"
+  },
+  "Unmute “%@”": {
+    "de": "Ton von „%@“ einschalten",
+    "fr": "Rétablir le son de « %@ »",
+    "zh-Hans": "取消“%@”静音",
+    "ru": "Включить звук «%@»",
+    "uk": "Увімкнути звук «%@»",
+    "ja": "“%@”の消音を解除"
+  },
+  "Video clips": {
+    "de": "Videoclips",
+    "fr": "Clips vidéo",
+    "zh-Hans": "视频片段",
+    "ru": "Клипы",
+    "uk": "Кліпи",
+    "ja": "ビデオクリップ"
+  },
+  "“%@” is locked. Unlock it in its header to change it.": {
+    "de": "„%@“ ist gesperrt. Entsperre die Spur in ihrem Kopf, um sie zu ändern.",
+    "fr": "« %@ » est verrouillée. Déverrouillez-la dans son en-tête pour la modifier.",
+    "zh-Hans": "“%@”已锁定。请在轨道标题中解锁后再更改。",
+    "ru": "«%@» заблокирована. Разблокируйте ее в заголовке, чтобы изменить.",
+    "uk": "«%@» заблоковано. Розблокуйте її в заголовку, щоб змінити.",
+    "ja": "“%@”はロックされています。変更するにはトラックの見出しでロックを解除します。"
+  },
+  "Undo Hide Track": {
+    "de": "Ausblenden der Spur widerrufen",
+    "fr": "Annuler le masquage de la piste",
+    "zh-Hans": "撤销隐藏轨道",
+    "ru": "Отменить скрытие дорожки",
+    "uk": "Відмінити приховування доріжки",
+    "ja": "トラックの非表示を取り消す"
+  },
+  "Redo Hide Track": {
+    "de": "Ausblenden der Spur wiederholen",
+    "fr": "Rétablir le masquage de la piste",
+    "zh-Hans": "重做隐藏轨道",
+    "ru": "Повторить скрытие дорожки",
+    "uk": "Повторити приховування доріжки",
+    "ja": "トラックの非表示をやり直す"
+  },
+  "Undo Show Track": {
+    "de": "Einblenden der Spur widerrufen",
+    "fr": "Annuler l’affichage de la piste",
+    "zh-Hans": "撤销显示轨道",
+    "ru": "Отменить показ дорожки",
+    "uk": "Відмінити показ доріжки",
+    "ja": "トラックの表示を取り消す"
+  },
+  "Redo Show Track": {
+    "de": "Einblenden der Spur wiederholen",
+    "fr": "Rétablir l’affichage de la piste",
+    "zh-Hans": "重做显示轨道",
+    "ru": "Повторить показ дорожки",
+    "uk": "Повторити показ доріжки",
+    "ja": "トラックの表示をやり直す"
+  },
+  "Undo Mute Track": {
+    "de": "Stummschalten der Spur widerrufen",
+    "fr": "Annuler la coupure du son de la piste",
+    "zh-Hans": "撤销轨道静音",
+    "ru": "Отменить выключение звука дорожки",
+    "uk": "Відмінити вимкнення звуку доріжки",
+    "ja": "トラックの消音を取り消す"
+  },
+  "Redo Mute Track": {
+    "de": "Stummschalten der Spur wiederholen",
+    "fr": "Rétablir la coupure du son de la piste",
+    "zh-Hans": "重做轨道静音",
+    "ru": "Повторить выключение звука дорожки",
+    "uk": "Повторити вимкнення звуку доріжки",
+    "ja": "トラックの消音をやり直す"
+  },
+  "Undo Unmute Track": {
+    "de": "Einschalten des Spurtons widerrufen",
+    "fr": "Annuler le rétablissement du son de la piste",
+    "zh-Hans": "撤销取消轨道静音",
+    "ru": "Отменить включение звука дорожки",
+    "uk": "Відмінити увімкнення звуку доріжки",
+    "ja": "トラックの消音解除を取り消す"
+  },
+  "Redo Unmute Track": {
+    "de": "Einschalten des Spurtons wiederholen",
+    "fr": "Rétablir le rétablissement du son de la piste",
+    "zh-Hans": "重做取消轨道静音",
+    "ru": "Повторить включение звука дорожки",
+    "uk": "Повторити увімкнення звуку доріжки",
+    "ja": "トラックの消音解除をやり直す"
+  },
+  "Undo Lock Track": {
+    "de": "Sperren der Spur widerrufen",
+    "fr": "Annuler le verrouillage de la piste",
+    "zh-Hans": "撤销锁定轨道",
+    "ru": "Отменить блокировку дорожки",
+    "uk": "Відмінити блокування доріжки",
+    "ja": "トラックのロックを取り消す"
+  },
+  "Redo Lock Track": {
+    "de": "Sperren der Spur wiederholen",
+    "fr": "Rétablir le verrouillage de la piste",
+    "zh-Hans": "重做锁定轨道",
+    "ru": "Повторить блокировку дорожки",
+    "uk": "Повторити блокування доріжки",
+    "ja": "トラックのロックをやり直す"
+  },
+  "Undo Unlock Track": {
+    "de": "Entsperren der Spur widerrufen",
+    "fr": "Annuler le déverrouillage de la piste",
+    "zh-Hans": "撤销解锁轨道",
+    "ru": "Отменить разблокировку дорожки",
+    "uk": "Відмінити розблокування доріжки",
+    "ja": "トラックのロック解除を取り消す"
+  },
+  "Redo Unlock Track": {
+    "de": "Entsperren der Spur wiederholen",
+    "fr": "Rétablir le déverrouillage de la piste",
+    "zh-Hans": "重做解锁轨道",
+    "ru": "Повторить разблокировку дорожки",
+    "uk": "Повторити розблокування доріжки",
+    "ja": "トラックのロック解除をやり直す"
+  },
+  "Undo Collapse Track": {
+    "de": "Einklappen der Spur widerrufen",
+    "fr": "Annuler le repli de la piste",
+    "zh-Hans": "撤销折叠轨道",
+    "ru": "Отменить сворачивание дорожки",
+    "uk": "Відмінити згортання доріжки",
+    "ja": "トラックの折りたたみを取り消す"
+  },
+  "Redo Collapse Track": {
+    "de": "Einklappen der Spur wiederholen",
+    "fr": "Rétablir le repli de la piste",
+    "zh-Hans": "重做折叠轨道",
+    "ru": "Повторить сворачивание дорожки",
+    "uk": "Повторити згортання доріжки",
+    "ja": "トラックの折りたたみをやり直す"
   }
 }

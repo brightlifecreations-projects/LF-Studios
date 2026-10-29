@@ -144,7 +144,7 @@ extension VideoEditorModel {
 
     /// Splits the clips at every marker, as one ⌘Z step.
     func splitAtMarkers() {
-        guard !placedMarkers.isEmpty else { return }
+        guard !placedMarkers.isEmpty, !refuseLocked(.clips) else { return }
         var splits = 0
         let total = sourceDuration
         mutate(label: "Split at Markers") { splits = $0.splitAtMarkers(totalDuration: total) }

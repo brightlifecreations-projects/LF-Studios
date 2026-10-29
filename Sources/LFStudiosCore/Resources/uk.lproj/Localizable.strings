@@ -68,8 +68,10 @@
 	<string>%@ · зображення %@ × %@</string>
 	<key>%@ · %lld fps</key>
 	<string>%@ · %lld fps</string>
-	<key>%@ · Screen part of a %@ split video</key>
-	<string>%1$@ · Частина екрана розділеного відео %2$@</string>
+	<key>%@ · Screen part of a %@ side-by-side video</key>
+	<string>%1$@ · Частина екрана відео %2$@ поруч</string>
+	<key>%@ · Screen part of a %@ stacked video</key>
+	<string>%1$@ · Частина екрана відео %2$@ одне над одним</string>
 	<key>%@ · about %@</key>
 	<string>%@ · близько %@</string>
 	<key>%@ · on your clipboard — paste it anywhere</key>
@@ -230,6 +232,8 @@
 	<string>Тонка рамка показує, що записується. У відео вона ніколи не з’являється.</string>
 	<key>A timeline for Final Cut Pro, DaVinci Resolve, and Adobe Premiere Pro.</key>
 	<string>Шкала часу для Final Cut Pro, DaVinci Resolve і Adobe Premiere Pro.</string>
+	<key>A track with nothing on it is a thin row that says how to add something. The arrow next to a name folds a track away.</key>
+	<string>Порожня доріжка — вузький рядок із підказкою, як щось додати. Стрілка поруч із назвою згортає доріжку.</string>
 	<key>A video needs at least one clip</key>
 	<string>У відео має бути хоча б один кліп</string>
 	<key>A voice chain for spoken audio: noise removal, de-essing, a warm and clear EQ, compression, and the podcast loudness standard. Each step can be turned off. Processed on this Mac.</key>
@@ -262,8 +266,8 @@
 	<string>Адаптувати до цього формату</string>
 	<key>Adapt to this ratio</key>
 	<string>Адаптувати до формату</string>
-	<key>Adapt to this ratio turns side by side into one above the other: left becomes top, right becomes bottom.</key>
-	<string>«Адаптувати до формату» перетворює «поруч» на «одне над одним»: ліва частина стає верхньою, права — нижньою.</string>
+	<key>Adapt to this ratio keeps the Direction you chose. If you never chose one, it follows the new shape: left becomes top, right becomes bottom.</key>
+	<string>«Адаптувати до формату» зберігає вибраний напрямок. Якщо ви його не вибирали, він іде за новою формою: ліва частина стає верхньою, права — нижньою.</string>
 	<key>Adapt to this ratio, next to the aspect ratio menu after you change it.</key>
 	<string>«Адаптувати до формату» — поруч із меню формату, після того як ви його зміните.</string>
 	<key>Adapted to %@: %@</key>
@@ -344,6 +348,8 @@
 	<string>Спершу додайте субтитри (панель «Субтитри» ▸ «Розшифрувати»).</string>
 	<key>Add captions in another language.</key>
 	<string>Додайте субтитри іншою мовою.</string>
+	<key>Add captions in the Captions panel</key>
+	<string>Додайте субтитри на панелі «Субтитри»</string>
 	<key>Add chapters for YouTube</key>
 	<string>Додати розділи для YouTube</string>
 	<key>Add chapters from markers</key>
@@ -362,6 +368,8 @@
 	<string>Маркери під час запису</string>
 	<key>Add music</key>
 	<string>Додати музику</string>
+	<key>Add music in the Audio panel</key>
+	<string>Додайте музику на панелі «Аудіо»</string>
 	<key>Add sound files</key>
 	<string>Додати звукові файли</string>
 	<key>Add spotlight at the playhead</key>
@@ -370,6 +378,8 @@
 	<string>Додати текст на покажчику відтворення (T)</string>
 	<key>Add text, arrows, highlights, and spotlights on top of the video.</key>
 	<string>Додавайте поверх відео текст, стрілки, виділення й прожектори.</string>
+	<key>Add text, arrows, highlights, blur or pictures with the tools above the preview</key>
+	<string>Додайте текст, стрілки, виділення, розмиття або зображення інструментами над переглядом</string>
 	<key>Add typing zooms</key>
 	<string>Наблизити набір тексту</string>
 	<key>Add zoom at playhead</key>
@@ -604,8 +614,8 @@
 	<string>Синє сяйво</string>
 	<key>Auto</key>
 	<string>Авто</string>
-	<key>Auto (like the recording), 16:9 for YouTube, 4:3, 1:1, 4:5 for Instagram, or 9:16 for Reels, TikTok, and Shorts.</key>
-	<string>«Авто» (як у записі), 16:9 для YouTube, 4:3, 1:1, 4:5 для Instagram або 9:16 для Reels, TikTok і Shorts.</string>
+	<key>Auto (like the recording), 16:9 for YouTube, 9:16 for Reels, TikTok, and Shorts, 1:1, 4:5 for Instagram, 4:3, 16:10 like a Mac screen, or 21:9 for a cinematic look.</key>
+	<string>Авто (як запис), 16:9 для YouTube, 9:16 для Reels, TikTok і Shorts, 1:1, 4:5 для Instagram, 4:3, 16:10 як екран Mac або 21:9 для кінематографічного вигляду.</string>
 	<key>Auto Zoom</key>
 	<string>Автонаближення</string>
 	<key>Auto adjust</key>
@@ -814,6 +824,8 @@
 	<string>Макет камери: %@</string>
 	<key>Camera layouts</key>
 	<string>Макети камери</string>
+	<key>Camera layouts and added camera video show here: Camera panel ▸ Layouts</key>
+	<string>Макети камери й додане відео з камери з’являються тут: панель «Камера» ▸ Макети</string>
 	<key>Camera layouts — drag to move, drag an edge to retime, click to change</key>
 	<string>Макети камери — перетягуйте, щоб перемістити, тягніть край, щоб змінити тривалість, клацніть, щоб вибрати інший</string>
 	<key>Camera only</key>
@@ -1094,8 +1106,8 @@
 	<string>Вибрати зображення…</string>
 	<key>Choose LF Studios ▸ Check for Updates….</key>
 	<string>Виберіть LF Studios ▸ Перевірити оновлення….</string>
-	<key>Choose Layout ▸ Split screen. The frame becomes the screen's part, like 8:9 for a 16:9 video split in half, and the camera preview fills the camera's part.</key>
-	<string>Виберіть «Макет ▸ Розділений екран». Рамка стане частиною екрана, наприклад 8:9 для відео 16:9, поділеного навпіл, а перегляд камери заповнить частину камери.</string>
+	<key>Choose Layout ▸ Split screen, and a Direction. The frame becomes the screen's part, like 8:9 for a 16:9 video split side by side, or 32:9 stacked, and the camera preview fills the camera's part.</key>
+	<string>Виберіть «Макет ▸ Розділений екран» і напрямок. Рамка стане частиною екрана, наприклад 8:9 для відео 16:9 поруч або 32:9 одне над одним, а перегляд камери заповнить частину камери.</string>
 	<key>Choose Location…</key>
 	<string>Вибрати місце…</string>
 	<key>Choose MP4.</key>
@@ -1482,6 +1494,10 @@
 	<string>Прибережний серпанок</string>
 	<key>Cobalt Drapes</key>
 	<string>Кобальтова завіса</string>
+	<key>Collapse %@</key>
+	<string>Згорнути «%@»</string>
+	<key>Collapse this track</key>
+	<string>Згорнути доріжку</string>
 	<key>Color</key>
 	<string>Колір</string>
 	<key>Colors, sizes &amp; bold</key>
@@ -1730,6 +1746,8 @@
 	<string>Власний</string>
 	<key>Custom Size…</key>
 	<string>Власний розмір…</string>
+	<key>Custom aspect ratio</key>
+	<string>Власний формат</string>
 	<key>Custom color</key>
 	<string>Власний колір</string>
 	<key>Custom color #%@</key>
@@ -1746,6 +1764,8 @@
 	<string>Власне зображення: %@</string>
 	<key>Custom…</key>
 	<string>Власний…</string>
+	<key>Custom… for any other shape: type it like 3:2 or 2.39:1. Choose Custom… again to change it.</key>
+	<string>«Власний…» для будь-якої іншої форми: введіть її, як-от 3:2 або 2.39:1. Виберіть «Власний…» знову, щоб змінити.</string>
 	<key>Custom…: type any shape, like 3:2 or 2.39:1.</key>
 	<string>«Власний…»: введіть будь-яку форму, як-от 3:2 чи 2.39:1.</string>
 	<key>Cut</key>
@@ -1836,6 +1856,10 @@
 	<string>«Стишувати під голос»: додана доріжка (наприклад, фоновий звук) стає тихішою, коли ви говорите. Вимкнено, доки ви це не ввімкнете.</string>
 	<key>Dips while you talk, comes back in the pauses</key>
 	<string>Стишується, коли ви говорите, і повертається в паузах</string>
+	<key>Direction</key>
+	<string>Напрямок</string>
+	<key>Direction: Side by side (left and right) or Stacked (top and bottom), on a video of any shape. Until you choose, landscape videos go side by side and square and vertical ones stacked.</key>
+	<string>Напрямок: «Поруч» (ліворуч і праворуч) або «Одне над одним» (угорі й унизу), на відео будь-якої форми. Поки ви не вибрали, горизонтальні відео діляться поруч, а квадратні й вертикальні — одне над одним.</string>
 	<key>Disable Apple Shortcuts</key>
 	<string>Вимкнути скорочення Apple</string>
 	<key>Disabled</key>
@@ -1982,6 +2006,8 @@
 	<string>Перетягніть рамку в перегляді на все приватне. Розмиття стежить за наближеннями й діє до кінця своєї смуги.</string>
 	<key>Drag the camera's edges on the video to change its width and height.</key>
 	<string>Тягніть краї камери на відео, щоб змінити ширину й висоту.</string>
+	<key>Drag the divider on the video to change the split; the background (Style) shows in the gap.</key>
+	<string>Перетягніть роздільник на відео, щоб змінити пропорції; у проміжку видно тло (Стиль).</string>
 	<key>Drag the frame on the preview to aim; drag its corners to zoom in or out.</key>
 	<string>Перетягуйте рамку в перегляді, щоб навести; тягніть її кути, щоб наблизити чи віддалити.</string>
 	<key>Drag the frame over what you want to show. To fill it with one app, click Fit a window to the frame… and choose its window.</key>
@@ -1996,6 +2022,8 @@
 	<string>Перетягніть рамку або її кути на ту частину зображення з камери, яку має показувати віконце.</string>
 	<key>Drag the keys on the preview to place them anywhere</key>
 	<string>Перетягуйте клавіші в попередньому перегляді, щоб розмістити їх будь-де</string>
+	<key>Drag the line above the timeline to make it taller or shorter; double-click it for the usual size. LF Studios remembers it.</key>
+	<string>Перетягніть лінію над таймлайном, щоб зробити його вищим або нижчим; подвійне клацання повертає звичний розмір. LF Studios запам’ятовує його.</string>
 	<key>Drag the pin to move it; drag an edge to resize it.</key>
 	<string>Перетягніть закріплений знімок, щоб перемістити його; тягніть край, щоб змінити розмір.</string>
 	<key>Drag the preview where you want the camera in the video: what it covers of the recording frame is where the camera goes.</key>
@@ -2026,6 +2054,8 @@
 	<string>Перетягніть, щоб перемістити; тягніть кут, щоб змінити розмір</string>
 	<key>Drag to point the arrow</key>
 	<string>Перетягніть, щоб спрямувати стрілку</string>
+	<key>Drag to resize the timeline. Double-click for the usual size.</key>
+	<string>Перетягніть, щоб змінити розмір таймлайна. Подвійне клацання — звичний розмір.</string>
 	<key>Drag to select, then adjust  ·  Hold ⇧ as you let go to capture right away  ·  Esc cancels</key>
 	<string>Перетягніть, щоб вибрати, а потім налаштуйте  ·  Утримуйте ⇧, коли відпускаєте, щоб зняти одразу  ·  Esc — скасувати</string>
 	<key>Draw attention to something, or hide it.</key>
@@ -2056,6 +2086,8 @@
 	<string>Кожен запис зберігає свій курсор, клацання й скорочення. Змінюйте їх порядок тут; вирізайте й підрізайте їх на шкалі часу, як будь-який кліп.</string>
 	<key>Each shape keeps its own version: switch back and forth without losing anything. Cuts, words, and styles stay shared.</key>
 	<string>Кожен формат має власну версію: перемикайтеся туди й назад, нічого не втрачаючи. Вирізання, слова й стилі спільні.</string>
+	<key>Each track's eye hides it and its speaker mutes it, in the preview and the export. The lock keeps everything on it from changing.</key>
+	<string>Око доріжки ховає її, а динамік вимикає звук — у перегляді й експорті. Замок не дає нічого на ній змінити.</string>
 	<key>Each video is looked through only once: the second time is instant.</key>
 	<string>Кожне відео переглядається лише один раз: удруге результат миттєвий.</string>
 	<key>Edge highlight</key>
@@ -2168,12 +2200,16 @@
 	<string>Усі вирізання, наближення, розмітку, субтитри й зміни стилю в цьому відео буде вилучено. Цю дію можна відмінити.</string>
 	<key>Every file starts at the same moment and is as long as the others: drop them all at 0:00 and they play in sync, the camera too.</key>
 	<string>Кожен файл починається в одну мить і такої ж довжини, як інші: покладіть усі на 0:00 — і вони йдуть синхронно, камера теж.</string>
+	<key>Every part of the video on its own track, top to bottom: Zooms, Video clips, Camera, Captions, Keys, Text &amp; annotations, Music, and each sound you added.</key>
+	<string>Кожна частина відео на своїй доріжці, згори донизу: Наближення, Кліпи, Камера, Субтитри, Клавіші, Текст і позначки, Музика й кожен доданий звук.</string>
 	<key>Every part of this video as its own file — screen, camera, sound, captions, the finished video, and a timeline for editing apps (⇧⌘E)</key>
 	<string>Кожна частина цього відео окремим файлом — екран, камера, звук, субтитри, готове відео й таймлайн для програм монтажу (⇧⌘E)</string>
 	<key>Every part of this video as its own file, in a new folder — for another editor or editing app.</key>
 	<string>Кожна частина цього відео окремим файлом у новій папці — для іншого монтажера чи програми монтажу.</string>
 	<key>Every part of your video as its own file, in one folder, for another editor or app.</key>
 	<string>Кожна частина відео окремим файлом в одній папці — для іншого монтажера чи програми.</string>
+	<key>Every ratio works with Adapt to this ratio, Export all ratios, and presets saved with Include aspect ratio.</key>
+	<string>Кожен формат працює з «Адаптувати до формату», «Експортувати всі формати» і стилями, збереженими з «Включити співвідношення сторін».</string>
 	<key>Every recording gets a folder of its own, with its project file, the screen and camera videos, the sound as separate files, and its data. With asking off, or when you click Cancel, it goes in the Recording folder.</key>
 	<string>Кожен запис отримує окрему папку з файлом проєкту, відео з екрана й камери, звуком окремими файлами та своїми даними. Якщо запитування вимкнено або ви клацнули «Скасувати», запис потрапляє в папку, задану в «Папка записів».</string>
 	<key>Every recording, screenshot, and saved project in one place.</key>
@@ -2648,6 +2684,8 @@
 	<string>Прихована мережа</string>
 	<key>Hide</key>
 	<string>Сховати</string>
+	<key>Hide %@</key>
+	<string>Сховати «%@»</string>
 	<key>Hide Desktop Icons</key>
 	<string>Сховати значки робочого столу</string>
 	<key>Hide Icon</key>
@@ -2676,6 +2714,10 @@
 	<string>«Ховати в спокої» ховає курсор, поки він нерухомий; «Сховати рух до „Зупинити“» ховає шлях до кнопки зупинки наприкінці.</string>
 	<key>Hide — the export keeps going (Esc)</key>
 	<string>Сховати — експорт триває (Esc)</string>
+	<key>Hide “%@” in the preview and the export</key>
+	<string>Сховати «%@» у перегляді й експорті</string>
+	<key>Hiding or muting a track never deletes anything: turn it back on, and it's all there.</key>
+	<string>Приховування чи вимкнення звуку доріжки нічого не видаляє: увімкніть її знову, і все на місці.</string>
 	<key>High</key>
 	<string>Висока</string>
 	<key>High-quality files for video editing apps. ProRes 4444 can drop the background, ready to place over anything.</key>
@@ -3030,6 +3072,8 @@
 	<string>Клавіатурні скорочення ввімкнено</string>
 	<key>Keyboard shortcuts — click one to select it, ⌫ hides it</key>
 	<string>Клавіатурні скорочення — клацніть одне, щоб вибрати, ⌫ ховає його</string>
+	<key>Keys</key>
+	<string>Клавіші</string>
 	<key>Keys on screen</key>
 	<string>Клавіші на екрані</string>
 	<key>L</key>
@@ -3132,8 +3176,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Лагуна</string>
 	<key>Landscape (16:9)</key>
 	<string>Горизонтально (16:9)</string>
-	<key>Landscape videos (16:9, 4:3, 21:9) split side by side; square and vertical ones (1:1, 4:5, 9:16) one above the other.</key>
-	<string>Горизонтальні відео (16:9, 4:3, 21:9) діляться поруч, квадратні й вертикальні (1:1, 4:5, 9:16) — одне над одним.</string>
 	<key>Language</key>
 	<string>Мова</string>
 	<key>Languages</key>
@@ -3230,6 +3272,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Завантажено:</string>
 	<key>Locate…</key>
 	<string>Знайти…</string>
+	<key>Lock %@</key>
+	<string>Заблокувати «%@»</string>
+	<key>Lock “%@”: nothing on it can be changed</key>
+	<string>Заблокувати «%@»: на ній нічого не можна змінити</string>
 	<key>Look</key>
 	<string>Вигляд</string>
 	<key>Looking for your face in the camera video. This happens once; the result is kept.</key>
@@ -3464,6 +3510,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Музика «%@» — файл не знайдено</string>
 	<key>Mute</key>
 	<string>Вимкнути звук</string>
+	<key>Mute %@</key>
+	<string>Вимкнути звук «%@»</string>
 	<key>Mute Clip</key>
 	<string>Вимкнути звук кліпу</string>
 	<key>Mute or fade one part</key>
@@ -3486,6 +3534,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>«Вимкнути звук відео» експортує його без звуку.</string>
 	<key>Mute video is on (Audio tab) — this export will have no sound.</key>
 	<string>Увімкнено «Вимкнути звук відео» (вкладка «Аудіо») — цей експорт буде без звуку.</string>
+	<key>Mute “%@” in the preview and the export</key>
+	<string>Вимкнути звук «%@» у перегляді й експорті</string>
 	<key>My Look</key>
 	<string>Мій стиль</string>
 	<key>My Preset</key>
@@ -3766,8 +3816,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>У буфері обміну · %@</string>
 	<key>Once a day. When there's a new version, LF Studios shows what's new and installs it only when you click Install Update. Your projects, recordings, settings and permissions stay.</key>
 	<string>Раз на день. Коли виходить нова версія, LF Studios показує, що нового, і встановлює її, лише коли ви натиснете «Встановити оновлення». Ваші проєкти, записи, налаштування й дозволи зберігаються.</string>
-	<key>One above the other on this video. Drag the divider on the video to change the split; the background (Style) shows in the gap.</key>
-	<string>На цьому відео — одне над одним. Перетягніть роздільник на відео, щоб змінити пропорції; у проміжку видно тло (Стиль).</string>
 	<key>One word at a time</key>
 	<string>По одному слову</string>
 	<key>One ⌘Z undoes it.</key>
@@ -4028,6 +4076,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Закріпити на екрані</string>
 	<key>Pinch, or ⌘-scroll, on the timeline to see more detail.</key>
 	<string>Зведіть пальці або прокручуйте з ⌘ на шкалі часу, щоб побачити більше деталей.</string>
+	<key>Pinch, ⌘-scroll, ⌘+ and ⌘−, or the slider on the right, to see more or less of the video.</key>
+	<string>Зводьте пальці, прокручуйте з ⌘, натискайте ⌘+ і ⌘− або рухайте повзунок праворуч, щоб бачити більше чи менше відео.</string>
 	<key>Pine Dusk</key>
 	<string>Сосновий присмерк</string>
 	<key>Pinned Screenshot</key>
@@ -4480,6 +4530,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторити зміну звуків клацання</string>
 	<key>Redo Clicks</key>
 	<string>Повторити зміну клацань</string>
+	<key>Redo Collapse Track</key>
+	<string>Повторити згортання доріжки</string>
 	<key>Redo Crop</key>
 	<string>Повторити обрізання</string>
 	<key>Redo Cursor Change</key>
@@ -4542,6 +4594,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторити приховування камери в паузах</string>
 	<key>Redo Hide Shortcut</key>
 	<string>Повторити приховування скорочення</string>
+	<key>Redo Hide Track</key>
+	<string>Повторити приховування доріжки</string>
 	<key>Redo Highlight Style</key>
 	<string>Повторити зміну стилю виділення</string>
 	<key>Redo Image Style</key>
@@ -4550,6 +4604,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторити камеру для вступу й завершення</string>
 	<key>Redo Keep Face Centered</key>
 	<string>Повторити «Тримати обличчя в центрі»</string>
+	<key>Redo Lock Track</key>
+	<string>Повторити блокування доріжки</string>
 	<key>Redo Markers</key>
 	<string>Повторити зміну маркерів</string>
 	<key>Redo Move Arrow</key>
@@ -4584,6 +4640,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторити вимкнення звуку кліпу</string>
 	<key>Redo Mute Part</key>
 	<string>Повторити вимкнення звуку частини</string>
+	<key>Redo Mute Track</key>
+	<string>Повторити вимкнення звуку доріжки</string>
 	<key>Redo Mute Video</key>
 	<string>Повторити вимкнення звуку відео</string>
 	<key>Redo Podcast Mode Off</key>
@@ -4636,6 +4694,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторити скорочення паузи</string>
 	<key>Redo Shorten Pauses</key>
 	<string>Повторити скорочення пауз</string>
+	<key>Redo Show Track</key>
+	<string>Повторити показ доріжки</string>
 	<key>Redo Sound Change</key>
 	<string>Повторити зміну звуку</string>
 	<key>Redo Speed Change</key>
@@ -4672,10 +4732,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторити підрізання</string>
 	<key>Redo Trim Audio</key>
 	<string>Повторити підрізання аудіо</string>
+	<key>Redo Unlock Track</key>
+	<string>Повторити розблокування доріжки</string>
 	<key>Redo Unmute Clip</key>
 	<string>Повторити увімкнення звуку кліпу</string>
 	<key>Redo Unmute Part</key>
 	<string>Повторити увімкнення звуку частини</string>
+	<key>Redo Unmute Track</key>
+	<string>Повторити увімкнення звуку доріжки</string>
 	<key>Redo Unmute Video</key>
 	<string>Повторити увімкнення звуку відео</string>
 	<key>Redo Zoom Change</key>
@@ -5078,6 +5142,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Прокрутіть униз, щоб зняти</string>
 	<key>Scroll down to capture more</key>
 	<string>Прокручуйте далі вниз</string>
+	<key>Scroll up and down when the tracks don't all fit; the ruler and the track names stay put.</key>
+	<string>Прокручуйте вгору й униз, якщо доріжки не вміщаються; лінійка й назви доріжок лишаються на місці.</string>
 	<key>Scrolled too fast — scroll back up a little</key>
 	<string>Надто швидко — прокрутіть трохи назад</string>
 	<key>Scrolling</key>
@@ -5278,12 +5344,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Клавіші скорочення — перетягніть, щоб перемістити, клацніть правою кнопкою, щоб скинути</string>
 	<key>Shortcuts</key>
 	<string>Скорочення</string>
+	<key>Shortcuts pressed while recording show here</key>
+	<string>Тут видно сполучення клавіш, натиснуті під час запису</string>
 	<key>Shorten Pauses</key>
 	<string>Скоротити паузи</string>
 	<key>Shortens every silence over a second (this video has no LF Studios pointer data to spot what happens on screen)</key>
 	<string>Скорочує кожну тишу, довшу за секунду (у цьому відео немає даних курсора LF Studios, щоб розпізнати, що відбувається на екрані)</string>
 	<key>Show</key>
 	<string>Показ</string>
+	<key>Show %@</key>
+	<string>Показати «%@»</string>
 	<key>Show &amp; size the cursor</key>
 	<string>Показ і розмір курсора</string>
 	<key>Show Background</key>
@@ -5360,10 +5430,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Показати шкалу часу детальніше</string>
 	<key>Show the whole screenshot again</key>
 	<string>Знову показати весь знімок</string>
+	<key>Show this track</key>
+	<string>Показати доріжку</string>
 	<key>Show tips under the video again</key>
 	<string>Знову показувати поради під відео</string>
 	<key>Show yourself in a bubble while you record.</key>
 	<string>Показуйте себе в бульбашці під час запису.</string>
+	<key>Show “%@” in the video</key>
+	<string>Показати «%@» у відео</string>
 	<key>Shows at launch until your first screenshot, or until you click Skip Setup.</key>
 	<string>Показується під час запуску до вашого першого знімка або доки ви не клацнете «Пропустити налаштування».</string>
 	<key>Shows what can be removed — data of recordings LF Studios can't find, unused footage and pictures, old clipboard exports — and asks before removing it</key>
@@ -5376,8 +5450,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Вибрати випадкове тло</string>
 	<key>Side by side</key>
 	<string>Поруч</string>
-	<key>Side by side on this video. Drag the divider on the video to change the split; the background (Style) shows in the gap.</key>
-	<string>На цьому відео — поруч. Перетягніть роздільник на відео, щоб змінити пропорції; у проміжку видно тло (Стиль).</string>
 	<key>Side by side uses Split screen's options (Camera panel ▸ Layout): the camera's side, the split size, and the gap. Each change eases in and out.</key>
 	<string>«Поруч» використовує параметри розділеного екрана (панель «Камера» ▸ Макет): бік камери, пропорції й проміжок. Кожна зміна відбувається плавно.</string>
 	<key>Side rail</key>
@@ -5534,6 +5606,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Квадратні дописи</string>
 	<key>Square, circle, or straight 45° lines</key>
 	<string>Квадрат, коло чи прямі лінії під 45°</string>
+	<key>Stacked</key>
+	<string>Одне над одним</string>
 	<key>Star on GitHub</key>
 	<string>Поставити зірку</string>
 	<key>Start</key>
@@ -5698,6 +5772,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Шаблон</string>
 	<key>Text</key>
 	<string>Текст</string>
+	<key>Text &amp; annotations</key>
+	<string>Текст і позначки</string>
 	<key>Text QR found</key>
 	<string>Знайдено QR-код із текстом</string>
 	<key>Text Recognition</key>
@@ -5738,6 +5814,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Цей диск доступний лише для читання. Виберіть інше місце для збереження й експортуйте ще раз.</string>
 	<key>That file isn't a font LF Studios can use</key>
 	<string>Цей файл не є шрифтом, який може використовувати LF Studios</string>
+	<key>That isn't a ratio. Try 3:2 or 2.39:1.</key>
+	<string>Це не формат. Спробуйте 3:2 або 2.39:1.</string>
 	<key>That isn't an LF Studios presets file</key>
 	<string>Це не файл стилів LF Studios</string>
 	<key>That part is only a title card — include a moment of the video to export it.</key>
@@ -5782,6 +5860,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Меню формату на панелі інструментів відеоредактора.</string>
 	<key>The bars move out of the frame's way. Drag them anywhere by the handle on the left.</key>
 	<string>Панелі відсуваються, щоб не заступати рамку. Їх можна перетягнути будь-куди за ручку ліворуч.</string>
+	<key>The bottom of the video editor.</key>
+	<string>Нижня частина відеоредактора.</string>
 	<key>The bubble follows your face, so you stay in the middle even when you move.</key>
 	<string>Бульбашка стежить за вашим обличчям, тож ви лишаєтеся в центрі, навіть коли рухаєтеся.</string>
 	<key>The bubble follows your face; where none was found it holds the last framing</key>
@@ -5970,6 +6050,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Смуга над панеллю запису, після Головна ▸ Новий запис.</string>
 	<key>The text is now on the clipboard: paste it anywhere with ⌘V.</key>
 	<string>Текст тепер у буфері обміну: вставте його будь-де за допомогою ⌘V.</string>
+	<key>The timeline and its tracks</key>
+	<string>Таймлайн і його доріжки</string>
 	<key>The timeline at the bottom of the video editor.</key>
 	<string>Шкала часу внизу відеоредактора.</string>
 	<key>The timeline is empty. Restore a clip, then export again.</key>
@@ -6122,6 +6204,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Масштаб шкали часу</string>
 	<key>Timeline scale (pinch, or ⌘-scroll)</key>
 	<string>Масштаб шкали часу (зведення пальців або ⌘ і прокручування)</string>
+	<key>Timeline size</key>
+	<string>Розмір таймлайна</string>
 	<key>Timing</key>
 	<string>Час</string>
 	<key>Timing only: never which keys</key>
@@ -6176,6 +6260,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Точка дотику</string>
 	<key>Track Where I Type</key>
 	<string>Стежити, де я друкую</string>
+	<key>Track height</key>
+	<string>Висота доріжок</string>
+	<key>Track height (above the track names): Small, Medium, or Large.</key>
+	<string>Висота доріжок (над їхніми назвами): Мала, Середня або Велика.</string>
 	<key>Track options</key>
 	<string>Параметри доріжки</string>
 	<key>Track where I type</key>
@@ -6184,6 +6272,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>«Стежити, де я друкую» зберігає лише положення текстового курсора на екрані, щоб редактор міг наблизити набір тексту. «Записувати моменти натискань» зберігає лише момент кожного натискання, щоб редактор міг прискорити набір. Текст не записується, клавіші не називаються. Поки активне поле пароля, жодна з функцій нічого не зберігає. Обидві вимкнені, доки ви їх не ввімкнете; macOS попросить доступ у розділі «Доступність».</string>
 	<key>Track where I type: only where the text cursor is on screen, a few times a second. Never the text, never the keys.</key>
 	<string>«Стежити, де я друкую»: лише те, де на екрані текстовий курсор, кілька разів на секунду. Ніколи текст, ніколи клавіші.</string>
+	<key>Tracks</key>
+	<string>Доріжки</string>
 	<key>Transcribe</key>
 	<string>Розшифрувати</string>
 	<key>Transcribe Again</key>
@@ -6434,6 +6524,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Відмінити зміну звуків клацання</string>
 	<key>Undo Clicks</key>
 	<string>Відмінити зміну клацань</string>
+	<key>Undo Collapse Track</key>
+	<string>Відмінити згортання доріжки</string>
 	<key>Undo Crop</key>
 	<string>Відмінити обрізання</string>
 	<key>Undo Cursor Change</key>
@@ -6496,6 +6588,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Скасувати приховування камери в паузах</string>
 	<key>Undo Hide Shortcut</key>
 	<string>Відмінити приховування скорочення</string>
+	<key>Undo Hide Track</key>
+	<string>Відмінити приховування доріжки</string>
 	<key>Undo Highlight Style</key>
 	<string>Відмінити зміну стилю виділення</string>
 	<key>Undo Image Style</key>
@@ -6504,6 +6598,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Відмінити камеру для вступу й завершення</string>
 	<key>Undo Keep Face Centered</key>
 	<string>Скасувати «Тримати обличчя в центрі»</string>
+	<key>Undo Lock Track</key>
+	<string>Відмінити блокування доріжки</string>
 	<key>Undo Markers</key>
 	<string>Відмінити зміну маркерів</string>
 	<key>Undo Move Arrow</key>
@@ -6538,6 +6634,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Відмінити вимкнення звуку кліпу</string>
 	<key>Undo Mute Part</key>
 	<string>Відмінити вимкнення звуку частини</string>
+	<key>Undo Mute Track</key>
+	<string>Відмінити вимкнення звуку доріжки</string>
 	<key>Undo Mute Video</key>
 	<string>Відмінити вимкнення звуку відео</string>
 	<key>Undo Podcast Mode Off</key>
@@ -6590,6 +6688,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Відмінити скорочення паузи</string>
 	<key>Undo Shorten Pauses</key>
 	<string>Відмінити скорочення пауз</string>
+	<key>Undo Show Track</key>
+	<string>Відмінити показ доріжки</string>
 	<key>Undo Sound Change</key>
 	<string>Відмінити зміну звуку</string>
 	<key>Undo Speed Change</key>
@@ -6626,10 +6726,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Відмінити підрізання</string>
 	<key>Undo Trim Audio</key>
 	<string>Відмінити підрізання аудіо</string>
+	<key>Undo Unlock Track</key>
+	<string>Відмінити розблокування доріжки</string>
 	<key>Undo Unmute Clip</key>
 	<string>Відмінити увімкнення звуку кліпу</string>
 	<key>Undo Unmute Part</key>
 	<string>Відмінити увімкнення звуку частини</string>
+	<key>Undo Unmute Track</key>
+	<string>Відмінити увімкнення звуку доріжки</string>
 	<key>Undo Unmute Video</key>
 	<string>Відмінити увімкнення звуку відео</string>
 	<key>Undo Zoom Change</key>
@@ -6644,6 +6748,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повернути як було</string>
 	<key>Undo, redo &amp; start over</key>
 	<string>Відміна, повтор і початок заново</string>
+	<key>Unlock %@</key>
+	<string>Розблокувати «%@»</string>
+	<key>Unlock “%@”</key>
+	<string>Розблокувати «%@»</string>
+	<key>Unmute %@</key>
+	<string>Увімкнути звук «%@»</string>
 	<key>Unmute Clip</key>
 	<string>Увімкнути звук кліпу</string>
 	<key>Unmute preview</key>
@@ -6652,6 +6762,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Увімкнути звук перегляду</string>
 	<key>Unmute the preview (M)</key>
 	<string>Увімкнути звук перегляду (M)</string>
+	<key>Unmute “%@”</key>
+	<string>Увімкнути звук «%@»</string>
 	<key>Up to 30,000 pixels tall. It stops by itself after 10 minutes.</key>
 	<string>Висота — до 30 000 пікселів. Знімання зупиняється само через 10 хвилин.</string>
 	<key>Update with Current Style</key>
@@ -6678,6 +6790,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Перемикайтеся між оригіналом і перекладом за допомогою «Показ».</string>
 	<key>Use Size for line thickness, and Text size and Bold for text.</key>
 	<string>«Розмір» задає товщину лінії, а «Розмір тексту» й «Жирний» — вигляд тексту.</string>
+	<key>Use This Ratio</key>
+	<string>Використати формат</string>
 	<key>Use a sound file as your voice</key>
 	<string>Звуковий файл як ваш голос</string>
 	<key>Use any font on your Mac for captions, title cards, text, and keys, or add your own.</key>
@@ -6712,6 +6826,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Версія %@</string>
 	<key>Video</key>
 	<string>Відео</string>
+	<key>Video clips</key>
+	<string>Кліпи</string>
 	<key>Video copied</key>
 	<string>Відео скопійовано</string>
 	<key>Video data</key>
@@ -6850,6 +6966,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Ширина</string>
 	<key>Width and height, like 3:2 or 2.39:1.</key>
 	<string>Ширина й висота, як-от 3:2 чи 2.39:1.</string>
+	<key>Width and height, like 3:2, 2.39:1 or 5:4.</key>
+	<string>Ширина й висота, як-от 3:2, 2.39:1 або 5:4.</string>
 	<key>Window</key>
 	<string>Вікно</string>
 	<key>Window Capture</key>
@@ -7184,6 +7302,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>«%@» не дозволяє змінювати розмір цього вікна.</string>
 	<key>“%@” found in %lld of %lld captures</key>
 	<string>«%@» знайдено в %lld з %lld знімків</string>
+	<key>“%@” is locked. Unlock it in its header to change it.</key>
+	<string>«%@» заблоковано. Розблокуйте її в заголовку, щоб змінити.</string>
 	<key>“%@” is your My Style — Apply my style (⇧⌘Y) puts it on a video</key>
 	<string>«%@» — ваш «Мій стиль»; «Застосувати мій стиль» (⇧⌘Y) застосує його до відео</string>
 	<key>“%@” isn't a sound file this Mac can play</key>

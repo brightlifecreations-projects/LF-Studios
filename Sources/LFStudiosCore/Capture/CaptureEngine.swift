@@ -3030,8 +3030,20 @@ final class RecordingControlsWindow: NSWindow {
             menu.addItem(item)
         }
         if let split = setup.activeSplit {
-            let sideBySide = VideoSplitLayout.isSideBySide(captureVideoSize)
+            let sideBySide = VideoSplitLayout.isSideBySide(split, in: captureVideoSize)
             menu.addItem(.separator())
+            let directionHeader = NSMenuItem(title: L("Direction"), action: nil, keyEquivalent: "")
+            directionHeader.isEnabled = false
+            menu.addItem(directionHeader)
+            for direction in VideoWebcamSettings.Split.Direction.allCases {
+                let item = NSMenuItem(title: direction.title, action: #selector(cameraDirectionChosen(_:)), keyEquivalent: "")
+                item.target = self
+                item.representedObject = direction.rawValue
+                item.image = NSImage(systemSymbolName: direction.symbol, accessibilityDescription: nil)
+                item.state = (direction == .sideBySide) == sideBySide ? .on : .off
+                item.indentationLevel = 1
+                menu.addItem(item)
+            }
             let sideHeader = NSMenuItem(title: L("Camera side"), action: nil, keyEquivalent: "")
             sideHeader.isEnabled = false
             menu.addItem(sideHeader)
@@ -3081,6 +3093,11 @@ final class RecordingControlsWindow: NSWindow {
     @objc private func cameraLayoutChosen(_ sender: NSMenuItem) {
         guard let raw = sender.representedObject as? String, let choice = VideoRecordingCameraSetup.LayoutChoice(rawValue: raw) else { return }
         changeCameraSetup { $0.layout = choice == .bubble ? nil : choice }
+    }
+
+    @objc private func cameraDirectionChosen(_ sender: NSMenuItem) {
+        guard let raw = sender.representedObject as? String, let direction = VideoWebcamSettings.Split.Direction(rawValue: raw) else { return }
+        changeCameraSetup { $0.split = $0.activeSplit; $0.split?.direction = direction }
     }
 
     @objc private func cameraSideChosen(_ sender: NSMenuItem) {

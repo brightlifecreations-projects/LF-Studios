@@ -44,15 +44,6 @@ extension VideoEditorModel {
     }
 }
 
-extension VideoTimelineMetrics {
-    /// Lanes under the clips (imported camera footage, music) — 0 when
-    /// there are none.
-    static func bottomLanesHeight(_ project: VideoDemoProject) -> CGFloat {
-        (project.importedCamera == nil ? 0 : gap + cameraFootageLaneHeight) + (project.music == nil ? 0 : gap + musicLaneHeight)
-            + CGFloat(project.audioTracks.count) * (gap + musicLaneHeight)
-    }
-}
-
 /// What the timeline shows beyond the recording's own lanes: the intro
 /// and outro cards on the clip track, a marker on every cut (click to pick
 /// its transition), where one recording hands over to the next, and the
@@ -61,6 +52,8 @@ struct VideoTimelineExtrasLayer: View {
     let model: VideoEditorModel
     let geometry: VideoTimelineGeometry
     let clipTop: CGFloat
+    /// Where the camera, music and sound rows are (VideoTimelineTracks.swift).
+    let rows: VideoTimelineRowLayout
 
     private typealias M = VideoTimelineMetrics
 
@@ -78,12 +71,15 @@ struct VideoTimelineExtrasLayer: View {
                 VideoSourceBoundaryMarkers(boundaries: boundaries, geometry: geometry, clipTop: clipTop)
             }
             VideoTransitionMarkers(model: model, geometry: geometry, clipTop: clipTop)
-            if let camera = project.importedCamera {
+            if let camera = project.importedCamera, let top = rows.contentTop(.camera) {
+                let state = project.trackState(.camera)
                 VideoCameraFootageLane(camera: camera, spans: model.cameraFootageSpans(offset: camera.offset), geometry: geometry, model: model)
                     .equatable()
-                    .offset(y: clipTop + M.clipTrackHeight + M.gap)
+                    .offset(y: top + (model.hasWebcamFootage && !project.cameraLayouts.isEmpty ? M.cameraLaneHeight + M.overlayLaneGap : 0))
+                    .opacity(state.hidden ? 0.4 : 1)
+                    .allowsHitTesting(!state.locked)
             }
-            if let music = project.music {
+            if let music = project.music, let top = rows.contentTop(.music) {
                 VideoMusicLane(
                     music: music,
                     waveform: model.media.musicWaveform?.path == music.path ? model.media.musicWaveform?.waveform : nil,
@@ -93,20 +89,24 @@ struct VideoTimelineExtrasLayer: View {
                     model: model
                 )
                 .equatable()
-                .offset(y: clipTop + M.clipTrackHeight + M.gap + (project.importedCamera == nil ? 0 : M.cameraFootageLaneHeight + M.gap))
+                .offset(y: top)
+                .opacity(project.trackState(.music).muted ? 0.45 : 1)
+                .allowsHitTesting(!project.isTrackLocked(.music))
             }
-            // Added sound files, a lane each, under the music.
-            let audioTop = clipTop + M.clipTrackHeight + M.gap + (project.importedCamera == nil ? 0 : M.cameraFootageLaneHeight + M.gap) + (project.music == nil ? 0 : M.musicLaneHeight + M.gap)
-            ForEach(Array(project.audioTracks.enumerated()), id: \.element.id) { index, track in
-                VideoExternalAudioLane(
-                    track: track,
-                    placed: track.placed(segments: model.segments, timelineDuration: model.timelineDuration),
-                    selected: model.selectedAudioPiece?.track == track.id ? model.selectedAudioPiece?.piece : nil,
-                    geometry: geometry,
-                    model: model
-                )
-                .equatable()
-                .offset(y: audioTop + CGFloat(index) * (M.musicLaneHeight + M.gap))
+            // Added sound files, a row each, under the music.
+            ForEach(project.audioTracks, id: \.id) { track in
+                if let top = rows.contentTop(.sound(track.id)) {
+                    VideoExternalAudioLane(
+                        track: track,
+                        placed: track.placed(segments: model.segments, timelineDuration: model.timelineDuration),
+                        selected: model.selectedAudioPiece?.track == track.id ? model.selectedAudioPiece?.piece : nil,
+                        geometry: geometry,
+                        model: model
+                    )
+                    .equatable()
+                    .offset(y: top)
+                    .allowsHitTesting(!project.isTrackLocked(.sound(track.id)))
+                }
             }
         }
     }

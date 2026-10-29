@@ -172,7 +172,7 @@ extension VideoEditorModel {
         var extras = VideoEditExtras()
         extras.tail = project.timelineTail
         extras.layout = project.hasAppendedSources ? media.layout : nil
-        if let music = project.music, let loaded = media.music, loaded.path == music.path {
+        if let music = project.music, !project.trackState(.music).muted, let loaded = media.music, loaded.path == music.path {
             extras.music = VideoMusicInput(file: loaded.file, settings: music, voice: voiceTimelineRanges)
         }
         if project.clickSounds.enabled, let click = media.clickSound {

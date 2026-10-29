@@ -4,6 +4,8 @@ import SwiftUI
 struct VideoEditorRootView: View {
     @ObservedObject var model: VideoEditorModel
     @AppStorage("videoEditorTipsDismissed") private var tipsDismissed = false
+    /// The divider between the preview and the timeline (Settings).
+    @State private var timelineFraction = Settings.videoTimelineFraction
 
     var body: some View {
         GeometryReader { proxy in
@@ -74,7 +76,7 @@ struct VideoEditorRootView: View {
                     VideoInspectorView(model: model)
                         .frame(width: 318)
                 }
-                Rectangle().fill(VideoEditorTheme.hairline).frame(height: 1)
+                VideoTimelineDivider(fraction: $timelineFraction, windowHeight: height)
                 VideoTimelineView(model: model).equatable()
                     .frame(height: timelineHeight(windowHeight: height))
             }
@@ -125,12 +127,10 @@ struct VideoEditorRootView: View {
         }
     }
 
-    /// Tall enough for every lane, but the picture keeps at least half the
-    /// space under the toolbar (the lanes scroll when they don't fit).
+    /// Where the divider puts it (remembered on this Mac), kept so that
+    /// the preview and the timeline stay usable (VideoEditorLayout).
     private func timelineHeight(windowHeight: CGFloat) -> CGFloat {
-        let content = VideoTimelineMetrics.contentHeight(model.project)
-        let limit = max((windowHeight - 53) * 0.5, 190)
-        return min(max(44 + 1 + content + 10, 190), limit)
+        VideoEditorLayout.timelineHeight(windowHeight: windowHeight, fraction: timelineFraction)
     }
 
     private var loadingOverlay: some View {
@@ -270,12 +270,15 @@ struct VideoEditorToolbar: View {
         Menu {
             ForEach(VideoDemoProject.AspectPreset.allCases) { preset in
                 Button {
-                    model.setAspect(preset)
+                    // Custom… asks again, to change its shape.
+                    if preset == .custom { model.chooseCustomAspect() } else { model.setAspect(preset) }
                 } label: {
+                    // Custom… shows its shape once one is chosen.
+                    let title = model.project.title(of: preset)
                     if preset == model.project.aspectPreset {
-                        Label(L("\(preset.title) — \(preset.detail)"), systemImage: "checkmark")
+                        Label(L("\(title) — \(preset.detail)"), systemImage: "checkmark")
                     } else {
-                        Text(L("\(preset.title) — \(preset.detail)"))
+                        Text(L("\(title) — \(preset.detail)"))
                     }
                 }
             }
@@ -293,7 +296,7 @@ struct VideoEditorToolbar: View {
         } label: {
             HStack(spacing: 6) {
                 Image(systemName: model.project.aspectPreset.symbol)
-                Text(model.project.aspectPreset.title)
+                Text(model.project.aspectTitle)
                     .monospacedDigit()
             }
             .font(.system(size: 12, weight: .semibold))

@@ -170,12 +170,35 @@ struct VideoWebcamSettings: Codable, Equatable {
             }
         }
 
+        /// Side by side (left and right) or stacked (top and bottom).
+        enum Direction: String, Codable, CaseIterable, Identifiable {
+            case sideBySide
+            case stacked
+
+            var id: String { rawValue }
+            var title: String {
+                switch self {
+                case .sideBySide: return L("Side by side")
+                case .stacked: return L("Stacked")
+                }
+            }
+            var symbol: String {
+                switch self {
+                case .sideBySide: return "rectangle.split.2x1"
+                case .stacked: return "rectangle.split.1x2"
+                }
+            }
+        }
+
         var cameraSide: Side = .second
         /// The camera's share of the video (0.5: half).
         var cameraShare: Double = 0.5
         /// Between the parts, as a share of the video's short side; the
         /// video's background shows there.
         var gap: Double = 0
+        /// Chosen by hand (nil: from the video's shape — side by side when
+        /// it's wider than tall, stacked otherwise, as in 1.10.0).
+        var direction: Direction?
 
         static let shareRange: ClosedRange<Double> = 0.3...0.7
         static let gapRange: ClosedRange<Double> = 0...0.06

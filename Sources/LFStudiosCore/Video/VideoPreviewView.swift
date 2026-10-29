@@ -354,7 +354,8 @@ struct VideoStageInteractionLayer: View {
                 followBadge
             }
 
-            if !model.isPlaying, let overlay = model.selectedOverlay, isVisibleNow(overlay) {
+            // A locked track's things stay put here too (its header's Lock).
+            if !model.isPlaying, !model.isTrackLocked(.annotations), let overlay = model.selectedOverlay, isVisibleNow(overlay) {
                 if overlay.kind == .image {
                     // Pinned to the frame (VideoImageOverlays.swift).
                     VideoImageOverlayHandles(model: model, effect: overlay, viewSize: viewSize)
@@ -365,17 +366,17 @@ struct VideoStageInteractionLayer: View {
 
             // The bubble handle only where the bubble is (not during a full
             // camera, side by side, or hidden stretch).
-            if let webcam = model.plan.webcam, webcam.visible, !model.isAimingZoom, model.plan.showsBubble(at: clock.time), model.plan.hasCameraFootage(at: clock.time) {
+            if let webcam = model.plan.webcam, webcam.visible, !model.isAimingZoom, !model.isTrackLocked(.camera), model.plan.showsBubble(at: clock.time), model.plan.hasCameraFootage(at: clock.time) {
                 webcamHandle(webcam)
             }
 
             // Split screen's divider, while the split shows in full.
-            if let webcam = model.plan.webcam, !model.isAimingZoom, !model.isPlaying, showsSplit(webcam) {
+            if let webcam = model.plan.webcam, !model.isAimingZoom, !model.isPlaying, !model.isTrackLocked(.camera), showsSplit(webcam) {
                 splitDivider(webcam.effectiveSplit)
             }
 
             // Captions and shortcut keys, dragged anywhere (VideoTextHandles.swift).
-            if !model.isPlaying, !model.isAimingZoom {
+            if !model.isPlaying, !model.isAimingZoom, !model.isTrackLocked(.captions) || !model.isTrackLocked(.keys) {
                 VideoTextHandles(model: model, layout: textLayout.layout, viewSize: viewSize)
             }
         }
@@ -491,7 +492,7 @@ struct VideoStageInteractionLayer: View {
     /// Drag it between 30/70 and 70/30; one ⌘Z per drag.
     private func splitDivider(_ split: VideoWebcamSettings.Split) -> some View {
         let size = viewSize
-        let sideBySide = VideoSplitLayout.isSideBySide(size)
+        let sideBySide = VideoSplitLayout.isSideBySide(split, in: size)
         let position = VideoSplitLayout.dividerPosition(split, in: size)
         let grab: CGFloat = 14
         return ZStack {

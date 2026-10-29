@@ -9,6 +9,8 @@ import SwiftUI
 final class VideoTimelineScroller {
     private(set) weak var scrollView: NSScrollView?
     private weak var model: VideoEditorModel?
+    /// Told where the lanes are scrolled to (the ruler and headers follow).
+    weak var offsets: VideoTimelineScrollOffsets?
     /// Paging after the playhead; off once you scroll by hand, back on the
     /// next time playback starts.
     var followsPlayhead = true
@@ -34,12 +36,37 @@ final class VideoTimelineScroller {
             NotificationCenter.default.addObserver(forName: NSScrollView.willStartLiveScrollNotification, object: scrollView, queue: .main) { [weak self] _ in
                 MainActor.assumeIsolated { self?.followsPlayhead = false }
             },
+            // The ruler follows the lanes across, the track headers up and
+            // down (the lanes' outer scroll view).
+            NotificationCenter.default.addObserver(forName: NSView.boundsDidChangeNotification, object: scrollView.contentView, queue: .main) { [weak self] _ in
+                MainActor.assumeIsolated { self?.publishOffsets() }
+            },
             // The window closing ends the ⌘-scroll monitor with it.
             NotificationCenter.default.addObserver(forName: NSWindow.willCloseNotification, object: scrollView.window, queue: .main) { [weak self] _ in
                 MainActor.assumeIsolated { self?.stopMonitoring() }
             },
         ]
+        scrollView.contentView.postsBoundsChangedNotifications = true
+        if let outer = scrollView.enclosingScrollView {
+            outer.contentView.postsBoundsChangedNotifications = true
+            observers.append(NotificationCenter.default.addObserver(forName: NSView.boundsDidChangeNotification, object: outer.contentView, queue: .main) { [weak self] _ in
+                MainActor.assumeIsolated { self?.publishOffsets() }
+            })
+        }
+        publishOffsets()
         installScrollZoom()
+    }
+
+    private func publishOffsets() {
+        guard let scrollView, let offsets else { return }
+        let across = scrollView.contentView.bounds.minX
+        let down = scrollView.enclosingScrollView.map { outer -> CGFloat in
+            // Measured from the top whichever way the document is drawn.
+            let bounds = outer.contentView.bounds
+            guard let document = outer.documentView, !document.isFlipped else { return bounds.minY }
+            return document.frame.height - bounds.maxY
+        } ?? 0
+        offsets.update(CGRect(x: across, y: down, width: 0, height: 0))
     }
 
     private func stopMonitoring() {

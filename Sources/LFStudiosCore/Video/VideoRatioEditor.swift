@@ -20,13 +20,13 @@ extension VideoEditorModel {
         if report.zooms > 0 { parts.append(L("\(report.zooms) zooms")) }
         if report.movedCamera, project.activeCamera(recorded: recording?.webcam) != nil { parts.append(L("the camera")) }
         if report.captions > 0 { parts.append(L("captions")) }
-        let title = project.aspectPreset.title
+        let title = project.aspectTitle
         showNotice(parts.isEmpty ? L("\(title) has its own version now") : L("Adapted to \(title): \(parts.joined(separator: ", "))"), symbol: project.aspectPreset.symbol, duration: 3.5)
     }
 
     /// File name part for a ratio: "9x16".
-    static func ratioFileTag(_ preset: VideoDemoProject.AspectPreset) -> String {
-        preset == .source ? L("Original shape") : preset.title.replacingOccurrences(of: ":", with: "x")
+    nonisolated static func ratioFileTag(_ preset: VideoDemoProject.AspectPreset, in project: VideoDemoProject? = nil) -> String {
+        preset == .source ? L("Original shape") : (project?.title(of: preset) ?? preset.title).replacingOccurrences(of: ":", with: "x")
     }
 
     /// Every adapted ratio (and the one they started from), each its own
@@ -42,14 +42,14 @@ extension VideoEditorModel {
         panel.canChooseFiles = false
         panel.canCreateDirectories = true
         panel.prompt = L("Export Here")
-        panel.message = L("Exports \(ratios.map(\.title).joined(separator: ", ")) into this folder.")
+        panel.message = L("Exports \(ratios.map { project.title(of: $0) }.joined(separator: ", ")) into this folder.")
         panel.directoryURL = URL(fileURLWithPath: Settings.recordingFolder, isDirectory: true)
         guard panel.runModal() == .OK, let folder = panel.url else { return }
         playback.pause()
         var base = project
         if base.cursorSamples.isEmpty, let recording { base.cursorSamples = recording.cursorSamples }
         for preset in ratios {
-            let destination = folder.appendingPathComponent("\(exportBaseName) – \(Self.ratioFileTag(preset)).\(settings.fileExtension)")
+            let destination = folder.appendingPathComponent("\(exportBaseName) – \(Self.ratioFileTag(preset, in: project)).\(settings.fileExtension)")
             _ = VideoExportQueue.shared.enqueue(project: base.version(for: preset), recording: recording, settings: settings, destination: destination, toClipboard: false)
         }
         showNotice(L("Exporting \(ratios.count) versions"), symbol: "square.stack.3d.up", duration: 3)
@@ -71,7 +71,7 @@ struct VideoRatioButtons: View {
                         .font(.system(size: 11.5, weight: .semibold))
                 }
                 .buttonStyle(VideoSecondaryButtonStyle())
-                .help(L("Reframes zooms, moves the camera bubble, and keeps captions in the safe area for \(model.project.aspectPreset.title). This ratio then keeps its own version."))
+                .help(L("Reframes zooms, moves the camera bubble, and keeps captions in the safe area for \(model.project.aspectTitle). This ratio then keeps its own version."))
             }
             if model.project.ratiosToExport.count > 1 {
                 Button {
@@ -81,7 +81,7 @@ struct VideoRatioButtons: View {
                         .font(.system(size: 11.5, weight: .semibold))
                 }
                 .buttonStyle(VideoSecondaryButtonStyle())
-                .help(L("Exports \(model.project.ratiosToExport.map(\.title).joined(separator: ", ")) in one go"))
+                .help(L("Exports \(model.project.ratiosToExport.map { model.project.title(of: $0) }.joined(separator: ", ")) in one go"))
                 .disabled(!model.isReady)
             }
         }

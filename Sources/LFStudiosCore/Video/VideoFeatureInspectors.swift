@@ -998,7 +998,7 @@ struct VideoCameraLayoutSection: View {
     var body: some View {
         let webcam = model.project.webcam
         let choice = VideoRecordingCameraSetup.LayoutChoice.of(webcam)
-        let sideBySide = VideoSplitLayout.isSideBySide(model.plan.outputCanvasSize)
+        let sideBySide = VideoSplitLayout.isSideBySide(webcam.effectiveSplit, in: model.plan.outputCanvasSize)
         VideoInspectorSection(L("Layout")) {
             VideoSegmented(
                 options: VideoRecordingCameraSetup.LayoutChoice.allCases.map { ($0, $0.title) },
@@ -1006,6 +1006,17 @@ struct VideoCameraLayoutSection: View {
             )
             if choice == .split {
                 let split = webcam.effectiveSplit
+                HStack(spacing: 10) {
+                    Text(L("Direction"))
+                        .font(.system(size: 12, weight: .medium))
+                        .foregroundStyle(VideoEditorTheme.textPrimary)
+                        .fixedSize()
+                    // Chosen once, kept for every ratio (Adapt too).
+                    VideoSegmented(
+                        options: VideoWebcamSettings.Split.Direction.allCases.map { ($0, $0.title) },
+                        selection: Binding(get: { sideBySide ? .sideBySide : .stacked }, set: { direction in model.setStyle { $0.webcam.split = $0.webcam.effectiveSplit; $0.webcam.split?.direction = direction } })
+                    )
+                }
                 HStack(spacing: 10) {
                     Text(L("Camera side"))
                         .font(.system(size: 12, weight: .medium))
@@ -1032,9 +1043,7 @@ struct VideoCameraLayoutSection: View {
                     format: { $0 < 0.0005 ? L("None") : VideoEditorFormat.percent($0 / VideoWebcamSettings.Split.gapRange.upperBound) },
                     onEditingEnded: { model.endGesture() }
                 )
-                Text(sideBySide
-                     ? L("Side by side on this video. Drag the divider on the video to change the split; the background (Style) shows in the gap.")
-                     : L("One above the other on this video. Drag the divider on the video to change the split; the background (Style) shows in the gap."))
+                Text(L("Drag the divider on the video to change the split; the background (Style) shows in the gap."))
                     .font(.system(size: 10.5))
                     .foregroundStyle(VideoEditorTheme.textTertiary)
                     .fixedSize(horizontal: false, vertical: true)
