@@ -172,6 +172,8 @@
 	<string>Un fichier utilisé par le projet a été déplacé, supprimé, ou se trouve sur un autre Mac.</string>
 	<key>A file with that name is in the way. Pick another name and export again.</key>
 	<string>Un fichier portant ce nom existe déjà. Choisissez un autre nom, puis exportez à nouveau.</string>
+	<key>A fixed shape (Circle, 1:1, 16:9…) keeps its shape as you resize. With Free, width and height change on their own; hold ⇧ to keep the shape.</key>
+	<string>Une forme fixe (Cercle, 1:1, 16:9…) garde sa forme quand vous la redimensionnez. Avec Libre, largeur et hauteur changent séparément ; maintenez ⇧ pour garder la forme.</string>
 	<key>A folder with an LF Studios project in it opens that project, exactly as it was saved.</key>
 	<string>Un dossier contenant un projet LF Studios ouvre ce projet, exactement tel qu’il a été enregistré.</string>
 	<key>A frame appears in the middle of the screen. Choose its shape above the recording bar, like 16:9.</key>
@@ -626,6 +628,8 @@
 	<string>Retour à l’enregistrement d’origine — ⌘Z pour annuler</string>
 	<key>Back to the start</key>
 	<string>Revenir au début</string>
+	<key>Back to the usual size, in the spot chosen above</key>
+	<string>Revenir à la taille habituelle, à l’emplacement choisi ci-dessus</string>
 	<key>Back · pause · faster</key>
 	<string>Arrière · pause · plus vite</string>
 	<key>Background</key>
@@ -656,6 +660,8 @@
 	<string>Avant d’enregistrer, activez Micro dans la barre d’enregistrement et vérifiez que son indicateur de niveau bouge quand vous parlez.</string>
 	<key>Before recording, turn on Track where I type.</key>
 	<string>Avant l’enregistrement, activez Suivre où je tape.</string>
+	<key>Before recording: Select size above the recording bar, with Camera on. In the editor: drag the camera on the preview.</key>
+	<string>Avant l’enregistrement : Choisir la taille au-dessus de la barre d’enregistrement, avec Caméra activée. Dans l’éditeur : faites glisser la caméra dans l’aperçu.</string>
 	<key>Before recording: turn on Camera, then Camera shape above the recording bar. In the editor: Camera panel ▸ Camera ▸ Camera shape.</key>
 	<string>Avant l’enregistrement : activez Caméra, puis Forme de la caméra au-dessus de la barre d’enregistrement. Dans l’éditeur : panneau Caméra ▸ Caméra ▸ Forme de la caméra.</string>
 	<key>Begins scrolling when the recording starts</key>
@@ -844,8 +850,8 @@
 	<string>Vidéo de caméra « %1$@ », %2$@</string>
 	<key>Camera video: %@</key>
 	<string>Vidéo de caméra : %@</string>
-	<key>Camera — drag to move it, click for options</key>
-	<string>Caméra — faites-la glisser pour la déplacer, cliquez pour les options</string>
+	<key>Camera — drag to move it, drag its edges to resize it, click for options</key>
+	<string>Caméra — faites-la glisser pour la déplacer, tirez ses bords pour la redimensionner, cliquez pour les options</string>
 	<key>Camera: %@%% of width, %@</key>
 	<string>Caméra : %1$@ %% de la largeur, %2$@</string>
 	<key>Can't sync — the recording or the camera video has no sound</key>
@@ -1316,6 +1322,8 @@
 	<string>Cliquez sur Enregistrer. Appuyez sur Espace pour mettre en pause et reprendre le défilement.</string>
 	<key>Click Scroll capture in Home, or choose Scrolling Capture in the LF Studios menu.</key>
 	<string>Cliquez sur Capture défilante dans l’accueil, ou choisissez Capture défilante dans le menu LF Studios.</string>
+	<key>Click Select size. Handles appear on the camera preview.</key>
+	<string>Cliquez sur Choisir la taille. Des poignées apparaissent sur l’aperçu de la caméra.</string>
 	<key>Click Show keyboard shortcuts (⌘) in the recording bar, or Settings ▸ Recording ▸ Show keyboard shortcuts.</key>
 	<string>Cliquez sur Afficher les raccourcis clavier (⌘) dans la barre d’enregistrement, ou Réglages ▸ Enregistrement ▸ Afficher les raccourcis clavier.</string>
 	<key>Click Speaker notes in the recording bar, or in the bar while recording.</key>
@@ -1896,6 +1904,8 @@
 	<string>Tracez un cadre. Faites-le glisser par l’intérieur pour le déplacer, ou par ses bords pour le redimensionner.</string>
 	<key>Drag a screenshot out of History and drop it where you want it.</key>
 	<string>Faites glisser une capture hors de l’historique et déposez-la où vous voulez.</string>
+	<key>Drag an edge or a corner to resize it, the middle to move it.</key>
+	<string>Faites glisser un bord ou un coin pour la redimensionner, le milieu pour la déplacer.</string>
 	<key>Drag captions on the preview to place them anywhere</key>
 	<string>Faites glisser les sous-titres dans l’aperçu pour les placer où vous voulez</string>
 	<key>Drag captions to any spot on the video, or move one caption on its own.</key>
@@ -2786,6 +2796,8 @@
 	<string>Dans l’éditeur, vérifiez que Couper le son de la vidéo est désactivé dans le panneau Audio, et que le son de l’aperçu n’est pas coupé (appuyez sur M).</string>
 	<key>In the editor, click Add typing zooms.</key>
 	<string>Dans l’éditeur, cliquez sur Ajouter des zooms sur la saisie.</string>
+	<key>In the editor, the camera snaps to the corners, the edges and the center. Each drag is one ⌘Z. Reset size in Camera ▸ Position goes back to the usual size.</key>
+	<string>Dans l’éditeur, la caméra s’aimante aux coins, aux bords et au centre. Chaque glissement s’annule d’un ⌘Z. Réinitialiser la taille dans Caméra ▸ Position revient à la taille habituelle.</string>
 	<key>In the export window ▸ Captions.</key>
 	<string>Dans la fenêtre d’export ▸ Sous-titres.</string>
 	<key>In the export window ▸ Chapters.</key>
@@ -3678,6 +3690,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Océan</string>
 	<key>Of the frame's width.</key>
 	<string>De la largeur du cadre.</string>
+	<key>Of the video's width</key>
+	<string>De la largeur de la vidéo</string>
 	<key>Off</key>
 	<string>Désactivé</string>
 	<key>Off to start with. Needs Accessibility.</key>
@@ -3840,8 +3854,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Ou faites-la glisser dans l’aperçu. Les images restent en place pendant les zooms.</string>
 	<key>Or drag its bar on the timeline.</key>
 	<string>Ou faites glisser sa barre dans la timeline.</string>
-	<key>Or drag the bubble on the video — it snaps to the nearest spot.</key>
-	<string>Ou faites glisser la bulle sur la vidéo — elle s’aimante à l’emplacement le plus proche.</string>
+	<key>Or drag the camera on the video: it snaps to the corners, edges and center. Drag its edges and corners to resize it.</key>
+	<string>Ou faites glisser la caméra sur la vidéo : elle s’aimante aux coins, aux bords et au centre. Tirez ses bords et ses coins pour la redimensionner.</string>
 	<key>Or hold ⇧ and drag across the timeline to select a part, then click Cut this part.</key>
 	<string>Ou maintenez ⇧ et faites glisser sur la timeline pour sélectionner un passage, puis cliquez sur Couper ce passage.</string>
 	<key>Or try the Whisper engine instead.</key>
@@ -4058,6 +4072,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Portrait (9:16)</string>
 	<key>Position</key>
 	<string>Position</string>
+	<key>Position and Size: drag the camera on the preview, drag its edges and corners to resize it, or pick one of eight spots.</key>
+	<string>Position et Taille : faites glisser la caméra dans l’aperçu, tirez ses bords et ses coins pour la redimensionner, ou choisissez l’un des huit emplacements.</string>
 	<key>Positions only: no text, no keys</key>
 	<string>Positions uniquement : ni texte, ni touches</string>
 	<key>Possible key</key>
@@ -4738,6 +4754,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Réinitialiser la position</string>
 	<key>Reset position puts captions back at the bottom.</key>
 	<string>Réinitialiser la position remet les sous-titres en bas.</string>
+	<key>Reset size</key>
+	<string>Réinitialiser la taille</string>
 	<key>Reset to default position</key>
 	<string>Rétablir la position par défaut</string>
 	<key>Reset to the LF Studios Look</key>
@@ -4746,6 +4764,10 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Redimensionner</string>
 	<key>Resize a window so the recording comes out at an exact size, like 1920 × 1080.</key>
 	<string>Redimensionnez une fenêtre pour que l’enregistrement ait une taille exacte, comme 1920 × 1080.</string>
+	<key>Resize and place the camera by dragging, before you record and in the editor.</key>
+	<string>Redimensionnez et placez la caméra en la faisant glisser, avant d’enregistrer et dans l’éditeur.</string>
+	<key>Resize the camera</key>
+	<string>Redimensionner la caméra</string>
 	<key>Resize the window so the recording is an exact size</key>
 	<string>Redimensionner la fenêtre pour que l’enregistrement ait une taille exacte</string>
 	<key>Resizes a window of another app to exactly the frame, so it fills the recording</key>
@@ -5328,8 +5350,6 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Argent</string>
 	<key>Size</key>
 	<string>Taille</string>
-	<key>Size, and Position: drag the bubble on the preview, or pick one of eight spots.</key>
-	<string>Taille, et Position : faites glisser la bulle sur l’aperçu, ou choisissez l’un des huit emplacements.</string>
 	<key>Size: Small, Medium, or Large. Frame rate: 10 to 24 fps.</key>
 	<string>Taille : Petite, Moyenne ou Grande. Fréquence d’images : de 10 à 24 fps.</string>
 	<key>Skip Setup</key>
@@ -5774,6 +5794,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>La transmission est prête</string>
 	<key>The highest quality, and the only one that can keep transparency</key>
 	<string>La meilleure qualité, et la seule qui peut garder la transparence</string>
+	<key>The label under it says how wide the camera is and where it goes in the video. The editor opens with exactly that.</key>
+	<string>L’étiquette en dessous indique la largeur de la caméra et sa place dans la vidéo. L’éditeur s’ouvre exactement ainsi.</string>
 	<key>The loupe stays over the text cursor.</key>
 	<string>La loupe reste sur le curseur de texte.</string>
 	<key>The loupe stays over your cursor.</key>

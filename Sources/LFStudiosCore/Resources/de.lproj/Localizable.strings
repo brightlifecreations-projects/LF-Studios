@@ -178,6 +178,8 @@
 	<string>Eine Datei, die das Projekt nutzt, wurde verschoben, gelöscht oder liegt auf einem anderen Mac.</string>
 	<key>A file with that name is in the way. Pick another name and export again.</key>
 	<string>Eine Datei mit diesem Namen ist im Weg. Wähle einen anderen Namen und exportiere erneut.</string>
+	<key>A fixed shape (Circle, 1:1, 16:9…) keeps its shape as you resize. With Free, width and height change on their own; hold ⇧ to keep the shape.</key>
+	<string>Eine feste Form (Kreis, 1:1, 16:9 …) bleibt beim Ändern der Größe erhalten. Mit „Frei“ ändern sich Breite und Höhe einzeln; halte ⇧, um die Form zu behalten.</string>
 	<key>A folder with an LF Studios project in it opens that project, exactly as it was saved.</key>
 	<string>Ein Ordner mit einem LF-Studios-Projekt darin öffnet dieses Projekt, genau so, wie es gesichert wurde.</string>
 	<key>A frame appears in the middle of the screen. Choose its shape above the recording bar, like 16:9.</key>
@@ -632,6 +634,8 @@
 	<string>Zurück zur Originalaufnahme – ⌘Z zum Widerrufen</string>
 	<key>Back to the start</key>
 	<string>Zurück zum Anfang</string>
+	<key>Back to the usual size, in the spot chosen above</key>
+	<string>Zurück zur üblichen Größe, an der oben gewählten Stelle</string>
 	<key>Back · pause · faster</key>
 	<string>Zurück · Pause · Schneller</string>
 	<key>Background</key>
@@ -662,6 +666,8 @@
 	<string>Schalte vor der Aufzeichnung in der Aufzeichnungsleiste „Mikrofon“ ein und prüf, ob sich die Pegelanzeige bewegt, wenn du sprichst.</string>
 	<key>Before recording, turn on Track where I type.</key>
 	<string>Schalte vor der Aufzeichnung „Verfolgen, wo ich tippe“ ein.</string>
+	<key>Before recording: Select size above the recording bar, with Camera on. In the editor: drag the camera on the preview.</key>
+	<string>Vor der Aufnahme: „Größe wählen“ über der Aufzeichnungsleiste, mit eingeschalteter Kamera. Im Editor: Zieh die Kamera in der Vorschau.</string>
 	<key>Before recording: turn on Camera, then Camera shape above the recording bar. In the editor: Camera panel ▸ Camera ▸ Camera shape.</key>
 	<string>Vor der Aufnahme: „Kamera“ einschalten, dann „Kameraform“ über der Aufzeichnungsleiste. Im Editor: Panel „Kamera“ ▸ Kamera ▸ Kameraform.</string>
 	<key>Begins scrolling when the recording starts</key>
@@ -850,8 +856,8 @@
 	<string>Kameravideo „%1$@“, %2$@</string>
 	<key>Camera video: %@</key>
 	<string>Kameravideo: %@</string>
-	<key>Camera — drag to move it, click for options</key>
-	<string>Kamera – ziehen zum Bewegen, klicken für Optionen</string>
+	<key>Camera — drag to move it, drag its edges to resize it, click for options</key>
+	<string>Kamera – ziehen zum Verschieben, an den Rändern ziehen zum Ändern der Größe, klicken für Optionen</string>
 	<key>Camera: %@%% of width, %@</key>
 	<string>Kamera: %1$@ %% der Breite, %2$@</string>
 	<key>Can't sync — the recording or the camera video has no sound</key>
@@ -1322,6 +1328,8 @@
 	<string>Klicke auf „Aufzeichnen“. Drück die Leertaste, um das Scrollen anzuhalten und fortzusetzen.</string>
 	<key>Click Scroll capture in Home, or choose Scrolling Capture in the LF Studios menu.</key>
 	<string>Klicke im Startfenster auf „Scroll-Aufnahme“ oder wähle „Scroll-Aufnahme“ im LF-Studios-Menü.</string>
+	<key>Click Select size. Handles appear on the camera preview.</key>
+	<string>Klicke auf „Größe wählen“. An der Kameravorschau erscheinen Griffe.</string>
 	<key>Click Show keyboard shortcuts (⌘) in the recording bar, or Settings ▸ Recording ▸ Show keyboard shortcuts.</key>
 	<string>Klicke in der Aufzeichnungsleiste auf „Tastaturkurzbefehle anzeigen“ (⌘), oder Einstellungen ▸ Aufzeichnung ▸ Tastaturkurzbefehle anzeigen.</string>
 	<key>Click Speaker notes in the recording bar, or in the bar while recording.</key>
@@ -1902,6 +1910,8 @@
 	<string>Zieh einen Rahmen auf. Zieh darin, um ihn zu verschieben, oder an seinen Rändern, um die Größe zu ändern.</string>
 	<key>Drag a screenshot out of History and drop it where you want it.</key>
 	<string>Zieh ein Bildschirmfoto aus dem Verlauf und leg es dort ab, wo du es haben willst.</string>
+	<key>Drag an edge or a corner to resize it, the middle to move it.</key>
+	<string>Zieh an einem Rand oder einer Ecke, um die Größe zu ändern, in der Mitte, um sie zu verschieben.</string>
 	<key>Drag captions on the preview to place them anywhere</key>
 	<string>Zieh Untertitel in der Vorschau an eine beliebige Stelle</string>
 	<key>Drag captions to any spot on the video, or move one caption on its own.</key>
@@ -2792,6 +2802,8 @@
 	<string>Prüf im Editor, ob „Video stummschalten“ im Panel „Audio“ aus ist und die Vorschau nicht stummgeschaltet ist (drück M).</string>
 	<key>In the editor, click Add typing zooms.</key>
 	<string>Klicke im Editor auf „Zooms aufs Tippen hinzufügen“.</string>
+	<key>In the editor, the camera snaps to the corners, the edges and the center. Each drag is one ⌘Z. Reset size in Camera ▸ Position goes back to the usual size.</key>
+	<string>Im Editor rastet die Kamera an den Ecken, Rändern und der Mitte ein. Jedes Ziehen ist ein ⌘Z. „Größe zurücksetzen“ unter Kamera ▸ Position stellt die übliche Größe wieder her.</string>
 	<key>In the export window ▸ Captions.</key>
 	<string>Im Exportfenster ▸ Untertitel.</string>
 	<key>In the export window ▸ Chapters.</key>
@@ -3684,6 +3696,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Ozean</string>
 	<key>Of the frame's width.</key>
 	<string>Anteil an der Bildbreite.</string>
+	<key>Of the video's width</key>
+	<string>Der Breite des Videos</string>
 	<key>Off</key>
 	<string>Aus</string>
 	<key>Off to start with. Needs Accessibility.</key>
@@ -3846,8 +3860,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Oder zieh es in der Vorschau. Bilder bleiben an ihrem Platz, während die Kamera zoomt.</string>
 	<key>Or drag its bar on the timeline.</key>
 	<string>Oder zieh seinen Balken auf der Zeitleiste.</string>
-	<key>Or drag the bubble on the video — it snaps to the nearest spot.</key>
-	<string>Oder ziehe die Blase im Video – sie rastet an der nächsten Position ein.</string>
+	<key>Or drag the camera on the video: it snaps to the corners, edges and center. Drag its edges and corners to resize it.</key>
+	<string>Oder zieh die Kamera im Video: Sie rastet an Ecken, Rändern und der Mitte ein. Zieh an ihren Rändern und Ecken, um die Größe zu ändern.</string>
 	<key>Or hold ⇧ and drag across the timeline to select a part, then click Cut this part.</key>
 	<string>Oder halte ⇧ gedrückt und zieh über die Zeitleiste, um einen Abschnitt auszuwählen. Klicke dann auf „Abschnitt herausschneiden“.</string>
 	<key>Or try the Whisper engine instead.</key>
@@ -4064,6 +4078,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Hochformat (9:16)</string>
 	<key>Position</key>
 	<string>Position</string>
+	<key>Position and Size: drag the camera on the preview, drag its edges and corners to resize it, or pick one of eight spots.</key>
+	<string>Position und Größe: Zieh die Kamera in der Vorschau, zieh an ihren Rändern und Ecken, um die Größe zu ändern, oder wähle eine von acht Stellen.</string>
 	<key>Positions only: no text, no keys</key>
 	<string>Nur Positionen: kein Text, keine Tasten</string>
 	<key>Possible key</key>
@@ -4744,6 +4760,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Position zurücksetzen</string>
 	<key>Reset position puts captions back at the bottom.</key>
 	<string>„Position zurücksetzen“ bringt die Untertitel wieder nach unten.</string>
+	<key>Reset size</key>
+	<string>Größe zurücksetzen</string>
 	<key>Reset to default position</key>
 	<string>Auf Standardposition zurücksetzen</string>
 	<key>Reset to the LF Studios Look</key>
@@ -4752,6 +4770,10 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Größe ändern</string>
 	<key>Resize a window so the recording comes out at an exact size, like 1920 × 1080.</key>
 	<string>Ändere die Größe eines Fensters, damit die Aufnahme genau eine bestimmte Größe hat, etwa 1920 × 1080.</string>
+	<key>Resize and place the camera by dragging, before you record and in the editor.</key>
+	<string>Ändere Größe und Platz der Kamera durch Ziehen, vor der Aufnahme und im Editor.</string>
+	<key>Resize the camera</key>
+	<string>Größe der Kamera ändern</string>
 	<key>Resize the window so the recording is an exact size</key>
 	<string>Ändert die Fenstergröße, damit die Aufnahme genau diese Größe hat</string>
 	<key>Resizes a window of another app to exactly the frame, so it fills the recording</key>
@@ -5334,8 +5356,6 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Silber</string>
 	<key>Size</key>
 	<string>Größe</string>
-	<key>Size, and Position: drag the bubble on the preview, or pick one of eight spots.</key>
-	<string>Größe und Position: Zieh die Blase in der Vorschau oder wähle eine von acht Stellen.</string>
 	<key>Size: Small, Medium, or Large. Frame rate: 10 to 24 fps.</key>
 	<string>Größe: Klein, Mittel oder Groß. Bildrate: 10 bis 24 fps.</string>
 	<key>Skip Setup</key>
@@ -5780,6 +5800,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Die Übergabe ist fertig</string>
 	<key>The highest quality, and the only one that can keep transparency</key>
 	<string>Die höchste Qualität und die einzige, die Transparenz behalten kann</string>
+	<key>The label under it says how wide the camera is and where it goes in the video. The editor opens with exactly that.</key>
+	<string>Die Beschriftung darunter zeigt, wie breit die Kamera ist und wo sie im Video sitzt. Der Editor öffnet sich genau so.</string>
 	<key>The loupe stays over the text cursor.</key>
 	<string>Die Lupe bleibt über dem Textcursor.</string>
 	<key>The loupe stays over your cursor.</key>

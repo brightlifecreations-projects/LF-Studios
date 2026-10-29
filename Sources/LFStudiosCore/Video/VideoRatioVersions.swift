@@ -15,6 +15,8 @@ struct VideoRatioVersion: Codable, Equatable {
     var zooms: [String: ZoomFraming]
     var webcamAnchor: VideoWebcamSettings.Anchor
     var webcamSize: Double
+    /// Placed by hand (nil: at the anchor; versions saved before 1.10.0).
+    var webcamPlacement: VideoWebcamSettings.Placement?
     var cameraLayouts: [VideoCameraLayoutRegion]
     var captionPosition: VideoTextPosition
     var captionPlacement: VideoTextPlacement?
@@ -38,6 +40,7 @@ extension VideoDemoProject {
             zooms: Dictionary(uniqueKeysWithValues: zoomRegions.map { ($0.id.uuidString, VideoRatioVersion.ZoomFraming(offsetX: $0.offsetX, offsetY: $0.offsetY, cameraCorner: $0.cameraCorner)) }),
             webcamAnchor: webcam.anchor,
             webcamSize: webcam.size,
+            webcamPlacement: webcam.placement,
             cameraLayouts: cameraLayouts,
             captionPosition: captionStyle.position,
             captionPlacement: captionStyle.placement,
@@ -56,6 +59,7 @@ extension VideoDemoProject {
         }
         webcam.anchor = version.webcamAnchor
         webcam.size = version.webcamSize
+        webcam.placement = version.webcamPlacement
         cameraLayouts = version.cameraLayouts
         captionStyle.position = version.captionPosition
         captionStyle.placement = version.captionPlacement
@@ -148,6 +152,15 @@ extension VideoDemoProject {
         // captions and the app's buttons, so it goes up top.
         let anchor = webcam.anchor
         let size = webcam.size
+        let placement = webcam.placement
+        if let placed = placement {
+            // Placed by hand for another shape: the nearest spot, as big.
+            let rect = VideoFrameRenderer.webcamRect(webcam, outputSize: canvas)
+            let short = max(min(canvas.width, canvas.height), 1)
+            webcam.placement = nil
+            webcam.anchor = VideoWebcamSettings.Anchor.nearest(to: CGPoint(x: placed.x, y: placed.y))
+            webcam.size = min(max(Double(rect.height / short), VideoWebcamSettings.sizeRange.lowerBound), VideoWebcamSettings.sizeRange.upperBound)
+        }
         if vertical {
             if anchor == .bottomLeft { webcam.anchor = .topLeft }
             if anchor == .bottomRight { webcam.anchor = .topRight }
@@ -155,7 +168,7 @@ extension VideoDemoProject {
         } else if narrow {
             webcam.size = min(webcam.size, 0.3)
         }
-        report.movedCamera = webcam.visible && (anchor != webcam.anchor || abs(size - webcam.size) > 0.0001)
+        report.movedCamera = webcam.visible && (placement != nil || anchor != webcam.anchor || abs(size - webcam.size) > 0.0001)
 
         // Captions inside the safe area (on a vertical frame, clear of the
         // parts a phone app covers: VideoPhoneOverlay.swift).

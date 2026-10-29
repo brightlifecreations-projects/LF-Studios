@@ -731,25 +731,62 @@ struct VideoCameraInspector: View {
                             .foregroundStyle(VideoEditorTheme.textTertiary)
                             .fixedSize(horizontal: false, vertical: true)
                     }
-                    VideoSliderRow(
-                        title: L("Size"),
-                        value: binding(\.size, coalesce: "webcam-size"),
-                        range: VideoWebcamSettings.sizeRange,
-                        defaultValue: VideoWebcamSettings().size,
-                        format: { VideoEditorFormat.percent($0) },
-                        onEditingEnded: { model.endGesture() }
-                    )
+                    if model.project.webcam.placement != nil {
+                        // Placed by hand: its width, as a share of the video's.
+                        VideoSliderRow(
+                            title: L("Size"),
+                            value: Binding(get: { model.project.webcam.placement?.width ?? 0.25 }, set: { value in model.setStyle(coalesce: "webcam-size") { $0.webcam.placement?.width = value } }),
+                            range: 0.08...0.9,
+                            defaultValue: 0.25,
+                            format: { VideoEditorFormat.percent($0) },
+                            detail: L("Of the video's width"),
+                            onEditingEnded: { model.endGesture() }
+                        )
+                    } else {
+                        VideoSliderRow(
+                            title: L("Size"),
+                            value: binding(\.size, coalesce: "webcam-size"),
+                            range: VideoWebcamSettings.sizeRange,
+                            defaultValue: VideoWebcamSettings().size,
+                            format: { VideoEditorFormat.percent($0) },
+                            onEditingEnded: { model.endGesture() }
+                        )
+                    }
                 }
                 .disabled(false)
 
                 cameraLook
 
                 VideoInspectorSection(L("Position")) {
-                    VideoAnchorPicker(selection: binding(\.anchor))
-                    Text(L("Or drag the bubble on the video — it snaps to the nearest spot."))
+                    // A spot puts a camera placed by hand back on the grid, as big.
+                    VideoAnchorPicker(selection: Binding(get: { model.project.webcam.anchor }, set: { anchor in
+                        let canvas = model.plan.outputCanvasSize
+                        model.setStyle {
+                            let rect = VideoFrameRenderer.webcamRect($0.webcam, outputSize: canvas)
+                            if $0.webcam.placement != nil {
+                                $0.webcam.placement = nil
+                                $0.webcam.size = min(max(Double(rect.height / max(min(canvas.width, canvas.height), 1)), VideoWebcamSettings.sizeRange.lowerBound), VideoWebcamSettings.sizeRange.upperBound)
+                            }
+                            $0.webcam.anchor = anchor
+                        }
+                    }))
+                    Text(L("Or drag the camera on the video: it snaps to the corners, edges and center. Drag its edges and corners to resize it."))
                         .font(.system(size: 10.5))
                         .foregroundStyle(VideoEditorTheme.textTertiary)
                         .fixedSize(horizontal: false, vertical: true)
+                    if model.project.webcam.placement != nil || abs(model.project.webcam.size - VideoWebcamSettings().size) > 0.0001 {
+                        Button {
+                            model.setStyle {
+                                $0.webcam.placement = nil
+                                $0.webcam.size = VideoWebcamSettings().size
+                            }
+                        } label: {
+                            Label(L("Reset size"), systemImage: "arrow.uturn.backward")
+                                .frame(maxWidth: .infinity)
+                        }
+                        .buttonStyle(VideoSecondaryButtonStyle())
+                        .help(L("Back to the usual size, in the spot chosen above"))
+                    }
                 }
                 .disabled(!model.project.webcam.visible)
 

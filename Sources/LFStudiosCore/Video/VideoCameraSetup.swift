@@ -218,3 +218,43 @@ extension VideoCameraPreviewGeometry {
         return result
     }
 }
+
+extension VideoCameraPreviewGeometry {
+    /// A dragged camera (y down) pulled onto the video's corners, edges and
+    /// center when it's within `threshold` of one: the usual margin in from
+    /// each edge, the edge itself, and the middle. Moving snaps the whole
+    /// camera; resizing only the edges being dragged, and only for Free
+    /// (a kept shape follows the edge it's dragged by).
+    static func snapped(_ rect: CGRect, handle: VideoCameraHandle, in bounds: CGRect, margin: CGFloat, threshold: CGFloat, keepsShape: Bool) -> CGRect {
+        func nearest(_ value: CGFloat, _ targets: [CGFloat]) -> CGFloat? {
+            targets.map { ($0, abs($0 - value)) }.filter { $0.1 <= threshold }.min { $0.1 < $1.1 }?.0
+        }
+        let lows = (x: [bounds.minX + margin, bounds.minX], y: [bounds.minY + margin, bounds.minY])
+        let highs = (x: [bounds.maxX - margin, bounds.maxX], y: [bounds.maxY - margin, bounds.maxY])
+        var result = rect
+        if handle == .move {
+            // The closest of either edge or the middle, per axis.
+            let xs = [nearest(rect.minX, lows.x).map { $0 - rect.minX }, nearest(rect.maxX, highs.x).map { $0 - rect.maxX }, nearest(rect.midX, [bounds.midX]).map { $0 - rect.midX }].compactMap { $0 }
+            let ys = [nearest(rect.minY, lows.y).map { $0 - rect.minY }, nearest(rect.maxY, highs.y).map { $0 - rect.maxY }, nearest(rect.midY, [bounds.midY]).map { $0 - rect.midY }].compactMap { $0 }
+            if let dx = xs.min(by: { abs($0) < abs($1) }) { result.origin.x += dx }
+            if let dy = ys.min(by: { abs($0) < abs($1) }) { result.origin.y += dy }
+            return result
+        }
+        guard !keepsShape else { return rect }
+        var minX = rect.minX, maxX = rect.maxX, minY = rect.minY, maxY = rect.maxY
+        if handle.movesLeft, let x = nearest(minX, lows.x) { minX = x }
+        if handle.movesRight, let x = nearest(maxX, highs.x) { maxX = x }
+        if handle.movesTop, let y = nearest(minY, lows.y) { minY = y }
+        if handle.movesBottom, let y = nearest(maxY, highs.y) { maxY = y }
+        return CGRect(x: minX, y: minY, width: maxX - minX, height: maxY - minY)
+    }
+
+    /// A camera rect on the video (y down) as a hand placement.
+    static func placement(ofVideoRect rect: CGRect, in size: CGSize) -> VideoWebcamSettings.Placement {
+        VideoWebcamSettings.Placement(
+            x: Double(rect.midX / max(size.width, 1)),
+            y: Double(rect.midY / max(size.height, 1)),
+            width: Double(rect.width / max(size.width, 1))
+        )
+    }
+}

@@ -172,6 +172,8 @@
 	<string>Файл, который использует проект, перемещен, удален или находится на другом Mac.</string>
 	<key>A file with that name is in the way. Pick another name and export again.</key>
 	<string>Файл с таким именем уже существует. Выберите другое имя и экспортируйте снова.</string>
+	<key>A fixed shape (Circle, 1:1, 16:9…) keeps its shape as you resize. With Free, width and height change on their own; hold ⇧ to keep the shape.</key>
+	<string>Фиксированная форма (Круг, 1:1, 16:9…) сохраняется при изменении размера. В режиме «Произвольно» ширина и высота меняются отдельно; удерживайте ⇧, чтобы сохранить форму.</string>
 	<key>A folder with an LF Studios project in it opens that project, exactly as it was saved.</key>
 	<string>Папка с проектом LF Studios открывает этот проект точно таким, каким он был сохранен.</string>
 	<key>A frame appears in the middle of the screen. Choose its shape above the recording bar, like 16:9.</key>
@@ -626,6 +628,8 @@
 	<string>Возврат к исходной записи — ⌘Z, чтобы отменить</string>
 	<key>Back to the start</key>
 	<string>В начало</string>
+	<key>Back to the usual size, in the spot chosen above</key>
+	<string>Вернуть обычный размер в выбранном выше месте</string>
 	<key>Back · pause · faster</key>
 	<string>Назад · пауза · быстрее</string>
 	<key>Background</key>
@@ -656,6 +660,8 @@
 	<string>Перед записью включите «Микрофон» на панели записи и проверьте, что индикатор уровня движется, когда вы говорите.</string>
 	<key>Before recording, turn on Track where I type.</key>
 	<string>Перед записью включите «Следить, где я печатаю».</string>
+	<key>Before recording: Select size above the recording bar, with Camera on. In the editor: drag the camera on the preview.</key>
+	<string>Перед записью: «Выбрать размер» над панелью записи при включенной камере. В редакторе: перетаскивайте камеру в предпросмотре.</string>
 	<key>Before recording: turn on Camera, then Camera shape above the recording bar. In the editor: Camera panel ▸ Camera ▸ Camera shape.</key>
 	<string>Перед записью: включите «Камера», затем «Форма камеры» над панелью записи. В редакторе: панель «Камера» ▸ Камера ▸ Форма камеры.</string>
 	<key>Begins scrolling when the recording starts</key>
@@ -844,8 +850,8 @@
 	<string>Видео с камеры «%1$@», %2$@</string>
 	<key>Camera video: %@</key>
 	<string>Видео с камеры: %@</string>
-	<key>Camera — drag to move it, click for options</key>
-	<string>Камера — перетяните, чтобы переместить; нажмите, чтобы открыть параметры</string>
+	<key>Camera — drag to move it, drag its edges to resize it, click for options</key>
+	<string>Камера — перетащите, чтобы переместить, тяните за края, чтобы изменить размер, нажмите для параметров</string>
 	<key>Camera: %@%% of width, %@</key>
 	<string>Камера: %1$@ %% ширины, %2$@</string>
 	<key>Can't sync — the recording or the camera video has no sound</key>
@@ -1316,6 +1322,8 @@
 	<string>Нажмите «Записать». Пробел ставит прокрутку на паузу и продолжает ее.</string>
 	<key>Click Scroll capture in Home, or choose Scrolling Capture in the LF Studios menu.</key>
 	<string>Нажмите «Снимок с прокруткой» на главной или выберите «Снимок с прокруткой» в меню LF Studios.</string>
+	<key>Click Select size. Handles appear on the camera preview.</key>
+	<string>Нажмите «Выбрать размер». На предпросмотре камеры появятся маркеры.</string>
 	<key>Click Show keyboard shortcuts (⌘) in the recording bar, or Settings ▸ Recording ▸ Show keyboard shortcuts.</key>
 	<string>Нажмите «Показывать сочетания клавиш» (⌘) на панели записи или Настройки ▸ Запись ▸ Показывать сочетания клавиш.</string>
 	<key>Click Speaker notes in the recording bar, or in the bar while recording.</key>
@@ -1896,6 +1904,8 @@
 	<string>Нарисуйте рамку. Перетаскивайте ее изнутри, чтобы переместить, или за края, чтобы изменить размер.</string>
 	<key>Drag a screenshot out of History and drop it where you want it.</key>
 	<string>Перетяните снимок из истории туда, где он нужен.</string>
+	<key>Drag an edge or a corner to resize it, the middle to move it.</key>
+	<string>Тяните за край или угол, чтобы изменить размер, за середину — чтобы переместить.</string>
 	<key>Drag captions on the preview to place them anywhere</key>
 	<string>Перетаскивайте субтитры в просмотре, чтобы разместить их где угодно</string>
 	<key>Drag captions to any spot on the video, or move one caption on its own.</key>
@@ -2786,6 +2796,8 @@
 	<string>В редакторе проверьте, что на панели «Аудио» выключено «Выключить звук видео» и что звук предпросмотра не выключен (клавиша M).</string>
 	<key>In the editor, click Add typing zooms.</key>
 	<string>В редакторе нажмите «Увеличить набор текста».</string>
+	<key>In the editor, the camera snaps to the corners, the edges and the center. Each drag is one ⌘Z. Reset size in Camera ▸ Position goes back to the usual size.</key>
+	<string>В редакторе камера прилипает к углам, краям и центру. Каждое перетаскивание отменяется одним ⌘Z. «Сбросить размер» в Камера ▸ Положение возвращает обычный размер.</string>
 	<key>In the export window ▸ Captions.</key>
 	<string>В окне экспорта ▸ Субтитры.</string>
 	<key>In the export window ▸ Chapters.</key>
@@ -3678,6 +3690,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Океан</string>
 	<key>Of the frame's width.</key>
 	<string>От ширины кадра.</string>
+	<key>Of the video's width</key>
+	<string>От ширины видео</string>
 	<key>Off</key>
 	<string>Выкл.</string>
 	<key>Off to start with. Needs Accessibility.</key>
@@ -3840,8 +3854,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Или перетяните его в предпросмотре. Изображения остаются на месте, пока камера приближается.</string>
 	<key>Or drag its bar on the timeline.</key>
 	<string>Или перетяните его полосу на шкале времени.</string>
-	<key>Or drag the bubble on the video — it snaps to the nearest spot.</key>
-	<string>Или перетяните окошко по видео — оно притянется к ближайшему месту.</string>
+	<key>Or drag the camera on the video: it snaps to the corners, edges and center. Drag its edges and corners to resize it.</key>
+	<string>Или перетащите камеру на видео: она прилипает к углам, краям и центру. Тяните за края и углы, чтобы изменить размер.</string>
 	<key>Or hold ⇧ and drag across the timeline to select a part, then click Cut this part.</key>
 	<string>Или удерживайте ⇧ и проведите по шкале времени, чтобы выделить фрагмент, затем нажмите «Вырезать этот фрагмент».</string>
 	<key>Or try the Whisper engine instead.</key>
@@ -4058,6 +4072,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Вертикально (9:16)</string>
 	<key>Position</key>
 	<string>Положение</string>
+	<key>Position and Size: drag the camera on the preview, drag its edges and corners to resize it, or pick one of eight spots.</key>
+	<string>Положение и размер: перетащите камеру в предпросмотре, тяните за края и углы, чтобы изменить размер, или выберите одно из восьми мест.</string>
 	<key>Positions only: no text, no keys</key>
 	<string>Только положение: без текста и клавиш</string>
 	<key>Possible key</key>
@@ -4738,6 +4754,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Сбросить положение</string>
 	<key>Reset position puts captions back at the bottom.</key>
 	<string>«Сбросить положение» возвращает субтитры вниз.</string>
+	<key>Reset size</key>
+	<string>Сбросить размер</string>
 	<key>Reset to default position</key>
 	<string>Вернуть положение по умолчанию</string>
 	<key>Reset to the LF Studios Look</key>
@@ -4746,6 +4764,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Изменить размер</string>
 	<key>Resize a window so the recording comes out at an exact size, like 1920 × 1080.</key>
 	<string>Измените размер окна, чтобы запись получилась точного размера, например 1920 × 1080.</string>
+	<key>Resize and place the camera by dragging, before you record and in the editor.</key>
+	<string>Меняйте размер и место камеры перетаскиванием — перед записью и в редакторе.</string>
+	<key>Resize the camera</key>
+	<string>Изменить размер камеры</string>
 	<key>Resize the window so the recording is an exact size</key>
 	<string>Изменить размер окна, чтобы запись была точного размера</string>
 	<key>Resizes a window of another app to exactly the frame, so it fills the recording</key>
@@ -5328,8 +5350,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Серебристый</string>
 	<key>Size</key>
 	<string>Размер</string>
-	<key>Size, and Position: drag the bubble on the preview, or pick one of eight spots.</key>
-	<string>«Размер» и «Положение»: перетяните окошко в предпросмотре или выберите одно из восьми мест.</string>
 	<key>Size: Small, Medium, or Large. Frame rate: 10 to 24 fps.</key>
 	<string>«Размер»: «Маленький», «Средний» или «Большой». «Частота кадров»: от 10 до 24 fps.</string>
 	<key>Skip Setup</key>
@@ -5774,6 +5794,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Передача готова</string>
 	<key>The highest quality, and the only one that can keep transparency</key>
 	<string>Самое высокое качество — и единственный формат, который сохраняет прозрачность</string>
+	<key>The label under it says how wide the camera is and where it goes in the video. The editor opens with exactly that.</key>
+	<string>Подпись под ней показывает ширину камеры и ее место в видео. Редактор откроется именно так.</string>
 	<key>The loupe stays over the text cursor.</key>
 	<string>Лупа держится над текстовым курсором.</string>
 	<key>The loupe stays over your cursor.</key>

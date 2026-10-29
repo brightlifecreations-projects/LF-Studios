@@ -236,6 +236,8 @@
 	<string>プロジェクトで使っているファイルが、移動または削除されたか、別のMacにあります。</string>
 	<key>A file with that name is in the way. Pick another name and export again.</key>
 	<string>同じ名前のファイルがすでにあります。別の名前を付けて、もう一度書き出してください。</string>
+	<key>A fixed shape (Circle, 1:1, 16:9…) keeps its shape as you resize. With Free, width and height change on their own; hold ⇧ to keep the shape.</key>
+	<string>固定の形（円形、1:1、16:9…）はサイズを変えても形が保たれます。“自由形式”では幅と高さが別々に変わります。⇧を押したままにすると形が保たれます。</string>
 	<key>A folder with an LF Studios project in it opens that project, exactly as it was saved.</key>
 	<string>LF Studiosのプロジェクトが入ったフォルダは、そのプロジェクトが保存したときのとおりに開きます。</string>
 	<key>A frame appears in the middle of the screen. Choose its shape above the recording bar, like 16:9.</key>
@@ -696,6 +698,8 @@
 	<string>元の収録に戻しました。⌘Zで取り消せます</string>
 	<key>Back to the start</key>
 	<string>最初に戻る</string>
+	<key>Back to the usual size, in the spot chosen above</key>
+	<string>上で選んだ位置で、いつものサイズに戻します</string>
 	<key>Back · pause · faster</key>
 	<string>逆再生 · 一時停止 · 早送り</string>
 	<key>Background</key>
@@ -726,6 +730,8 @@
 	<string>収録する前に、収録バーで“マイク”をオンにし、話したときにレベルメーターが動くことを確認します。</string>
 	<key>Before recording, turn on Track where I type.</key>
 	<string>収録する前に、“入力場所を追跡”をオンにします。</string>
+	<key>Before recording: Select size above the recording bar, with Camera on. In the editor: drag the camera on the preview.</key>
+	<string>収録前: “カメラ”をオンにして、収録バーの上の“サイズを選択”を使います。エディタでは: プレビュー上でカメラをドラッグします。</string>
 	<key>Before recording: turn on Camera, then Camera shape above the recording bar. In the editor: Camera panel ▸ Camera ▸ Camera shape.</key>
 	<string>収録前: “カメラ”をオンにして、収録バーの上の“カメラの形”を使います。エディタでは: “カメラ”パネル＞“カメラ”＞“カメラの形”。</string>
 	<key>Begins scrolling when the recording starts</key>
@@ -918,8 +924,8 @@
 	<string>カメラ映像“%1$@”、%2$@</string>
 	<key>Camera video: %@</key>
 	<string>カメラ映像：%@</string>
-	<key>Camera — drag to move it, click for options</key>
-	<string>カメラ: ドラッグで移動、クリックでオプションを表示</string>
+	<key>Camera — drag to move it, drag its edges to resize it, click for options</key>
+	<string>カメラ — ドラッグで移動、端のドラッグでサイズ変更、クリックでオプション</string>
 	<key>Camera: %@%% of width, %@</key>
 	<string>カメラ: 幅の%1$@%%、%2$@</string>
 	<key>Can't sync — the recording or the camera video has no sound</key>
@@ -1392,6 +1398,8 @@
 	<string>“収録”をクリックします。スペースバーを押すと、スクロールを一時停止・再開できます。</string>
 	<key>Click Scroll capture in Home, or choose Scrolling Capture in the LF Studios menu.</key>
 	<string>ホームで“スクロールして取り込む”をクリックするか、LF Studiosメニューで“スクロールして取り込む”を選択します。</string>
+	<key>Click Select size. Handles appear on the camera preview.</key>
+	<string>“サイズを選択”をクリックします。カメラのプレビューにハンドルが表示されます。</string>
 	<key>Click Show keyboard shortcuts (⌘) in the recording bar, or Settings ▸ Recording ▸ Show keyboard shortcuts.</key>
 	<string>収録バーの“キーボードショートカットを表示”（⌘）をクリックするか、“設定”＞“収録”＞“キーボードショートカットを表示”。</string>
 	<key>Click Speaker notes in the recording bar, or in the bar while recording.</key>
@@ -1978,6 +1986,8 @@
 	<string>枠をドラッグします。枠の内側をドラッグすると移動、端をドラッグするとサイズを変更できます。</string>
 	<key>Drag a screenshot out of History and drop it where you want it.</key>
 	<string>スクリーンショットを履歴からドラッグして、置きたい場所でドロップします。</string>
+	<key>Drag an edge or a corner to resize it, the middle to move it.</key>
+	<string>端や角をドラッグするとサイズ変更、中央をドラッグすると移動します。</string>
 	<key>Drag captions on the preview to place them anywhere</key>
 	<string>プレビューで字幕をドラッグすると、好きな位置に配置できます</string>
 	<key>Drag captions to any spot on the video, or move one caption on its own.</key>
@@ -2880,6 +2890,8 @@
 	<string>エディタで、“オーディオ”パネルの“ビデオを消音”がオフになっていること、プレビューが消音されていないこと（Mキーを押します）を確認します。</string>
 	<key>In the editor, click Add typing zooms.</key>
 	<string>エディタで“入力箇所のズームを追加”をクリックします。</string>
+	<key>In the editor, the camera snaps to the corners, the edges and the center. Each drag is one ⌘Z. Reset size in Camera ▸ Position goes back to the usual size.</key>
+	<string>エディタでは、カメラは角、端、中央に吸着します。ドラッグ1回は⌘Z 1回で取り消せます。“カメラ”＞“位置”の“サイズをリセット”でいつものサイズに戻ります。</string>
 	<key>In the export window ▸ Captions.</key>
 	<string>書き出しウインドウ＞“字幕”。</string>
 	<key>In the export window ▸ Chapters.</key>
@@ -3786,6 +3798,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>オーシャン</string>
 	<key>Of the frame's width.</key>
 	<string>ビデオの幅に対する割合です。</string>
+	<key>Of the video's width</key>
+	<string>ビデオの幅に対して</string>
 	<key>Off</key>
 	<string>オフ</string>
 	<key>Off to start with. Needs Accessibility.</key>
@@ -3948,8 +3962,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>プレビュー上でドラッグすることもできます。ズーム中も画像は同じ位置に留まります。</string>
 	<key>Or drag its bar on the timeline.</key>
 	<string>タイムライン上のバーをドラッグすることもできます。</string>
-	<key>Or drag the bubble on the video — it snaps to the nearest spot.</key>
-	<string>またはビデオ上でワイプをドラッグします。いちばん近い位置にスナップします。</string>
+	<key>Or drag the camera on the video: it snaps to the corners, edges and center. Drag its edges and corners to resize it.</key>
+	<string>またはビデオ上でカメラをドラッグします。角、端、中央に吸着します。端や角をドラッグするとサイズを変えられます。</string>
 	<key>Or hold ⇧ and drag across the timeline to select a part, then click Cut this part.</key>
 	<string>または、⇧キーを押したままタイムライン上をドラッグして範囲を選択し、“この部分をカット”をクリックします。</string>
 	<key>Or try the Whisper engine instead.</key>
@@ -4168,6 +4182,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>縦長（9:16）</string>
 	<key>Position</key>
 	<string>位置</string>
+	<key>Position and Size: drag the camera on the preview, drag its edges and corners to resize it, or pick one of eight spots.</key>
+	<string>位置とサイズ: プレビュー上でカメラをドラッグし、端や角をドラッグしてサイズを変えるか、8つの位置から選びます。</string>
 	<key>Positions only: no text, no keys</key>
 	<string>位置のみ: テキストもキーも記録しません</string>
 	<key>Possible key</key>
@@ -4864,6 +4880,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>位置をリセット</string>
 	<key>Reset position puts captions back at the bottom.</key>
 	<string>“位置をリセット”で、字幕が下に戻ります。</string>
+	<key>Reset size</key>
+	<string>サイズをリセット</string>
 	<key>Reset to default position</key>
 	<string>デフォルトの位置に戻す</string>
 	<key>Reset to the LF Studios Look</key>
@@ -4872,6 +4890,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>サイズを変更</string>
 	<key>Resize a window so the recording comes out at an exact size, like 1920 × 1080.</key>
 	<string>1920 × 1080など、収録がちょうどのサイズになるようにウインドウのサイズを変更します。</string>
+	<key>Resize and place the camera by dragging, before you record and in the editor.</key>
+	<string>収録前とエディタで、ドラッグしてカメラのサイズと位置を決めます。</string>
+	<key>Resize the camera</key>
+	<string>カメラのサイズを変更</string>
 	<key>Resize the window so the recording is an exact size</key>
 	<string>収録がぴったりのサイズになるようにウインドウのサイズを変更</string>
 	<key>Resizes a window of another app to exactly the frame, so it fills the recording</key>
@@ -5466,8 +5488,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>シルバー</string>
 	<key>Size</key>
 	<string>サイズ</string>
-	<key>Size, and Position: drag the bubble on the preview, or pick one of eight spots.</key>
-	<string>“サイズ”と“位置”: プレビュー上でワイプをドラッグするか、8か所の位置から選びます。</string>
 	<key>Size: Small, Medium, or Large. Frame rate: 10 to 24 fps.</key>
 	<string>“サイズ”: “小”、“中”、“大”。“フレームレート”: 10〜24fps。</string>
 	<key>Skip Setup</key>
@@ -5920,6 +5940,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>受け渡しの準備ができました</string>
 	<key>The highest quality, and the only one that can keep transparency</key>
 	<string>最高画質で、透明部分を保てる唯一のフォーマットです</string>
+	<key>The label under it says how wide the camera is and where it goes in the video. The editor opens with exactly that.</key>
+	<string>下のラベルに、カメラの幅とビデオ内での位置が表示されます。エディタはそのとおりに開きます。</string>
 	<key>The loupe stays over the text cursor.</key>
 	<string>ルーペがテキストカーソルの上にとどまります。</string>
 	<key>The loupe stays over your cursor.</key>

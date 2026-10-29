@@ -7471,6 +7471,46 @@
         }
       }
     },
+    "A fixed shape (Circle, 1:1, 16:9…) keeps its shape as you resize. With Free, width and height change on their own; hold ⇧ to keep the shape." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eine feste Form (Kreis, 1:1, 16:9 …) bleibt beim Ändern der Größe erhalten. Mit „Frei“ ändern sich Breite und Höhe einzeln; halte ⇧, um die Form zu behalten."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Une forme fixe (Cercle, 1:1, 16:9…) garde sa forme quand vous la redimensionnez. Avec Libre, largeur et hauteur changent séparément ; maintenez ⇧ pour garder la forme."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "固定の形（円形、1:1、16:9…）はサイズを変えても形が保たれます。“自由形式”では幅と高さが別々に変わります。⇧を押したままにすると形が保たれます。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Фиксированная форма (Круг, 1:1, 16:9…) сохраняется при изменении размера. В режиме «Произвольно» ширина и высота меняются отдельно; удерживайте ⇧, чтобы сохранить форму."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Фіксована форма (Коло, 1:1, 16:9…) зберігається під час зміни розміру. У режимі «Довільне» ширина й висота змінюються окремо; утримуйте ⇧, щоб зберегти форму."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "固定形状（圆形、1:1、16:9…）在调整大小时会保持形状。选择“自由”时，宽度和高度可分别更改；按住 ⇧ 可保持形状。"
+          }
+        }
+      }
+    },
     "A folder with an LF Studios project in it opens that project, exactly as it was saved." : {
       "localizations" : {
         "de" : {
@@ -16980,6 +17020,46 @@
         }
       }
     },
+    "Back to the usual size, in the spot chosen above" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zurück zur üblichen Größe, an der oben gewählten Stelle"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Revenir à la taille habituelle, à l’emplacement choisi ci-dessus"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "上で選んだ位置で、いつものサイズに戻します"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вернуть обычный размер в выбранном выше месте"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повернути звичний розмір у вибраному вище місці"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "恢复为通常大小，位于上方选择的位置"
+          }
+        }
+      }
+    },
     "Back · pause · faster" : {
       "localizations" : {
         "de" : {
@@ -17581,6 +17661,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "录制前，打开“跟踪打字位置”。"
+          }
+        }
+      }
+    },
+    "Before recording: Select size above the recording bar, with Camera on. In the editor: drag the camera on the preview." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vor der Aufnahme: „Größe wählen“ über der Aufzeichnungsleiste, mit eingeschalteter Kamera. Im Editor: Zieh die Kamera in der Vorschau."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avant l’enregistrement : Choisir la taille au-dessus de la barre d’enregistrement, avec Caméra activée. Dans l’éditeur : faites glisser la caméra dans l’aperçu."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "収録前: “カメラ”をオンにして、収録バーの上の“サイズを選択”を使います。エディタでは: プレビュー上でカメラをドラッグします。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Перед записью: «Выбрать размер» над панелью записи при включенной камере. В редакторе: перетаскивайте камеру в предпросмотре."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Перед записом: «Вибрати розмір» над панеллю запису при ввімкненій камері. У редакторі: перетягуйте камеру в перегляді."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "录制前：打开“摄像头”后，使用录制栏上方的“选择大小”。在编辑器中：在预览上拖移摄像头。"
           }
         }
       }
@@ -21614,42 +21734,42 @@
         }
       }
     },
-    "Camera — drag to move it, click for options" : {
+    "Camera — drag to move it, drag its edges to resize it, click for options" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kamera – ziehen zum Bewegen, klicken für Optionen"
+            "value" : "Kamera – ziehen zum Verschieben, an den Rändern ziehen zum Ändern der Größe, klicken für Optionen"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Caméra — faites-la glisser pour la déplacer, cliquez pour les options"
+            "value" : "Caméra — faites-la glisser pour la déplacer, tirez ses bords pour la redimensionner, cliquez pour les options"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "カメラ: ドラッグで移動、クリックでオプションを表示"
+            "value" : "カメラ — ドラッグで移動、端のドラッグでサイズ変更、クリックでオプション"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Камера — перетяните, чтобы переместить; нажмите, чтобы открыть параметры"
+            "value" : "Камера — перетащите, чтобы переместить, тяните за края, чтобы изменить размер, нажмите для параметров"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Камера — перетягніть, щоб перемістити, клацніть, щоб побачити параметри"
+            "value" : "Камера — перетягніть, щоб перемістити, тягніть краї, щоб змінити розмір, клацніть для параметрів"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "摄像头 — 拖移可移动，点按可查看选项"
+            "value" : "摄像头——拖移可移动，拖移边缘可调整大小，点按可查看选项"
           }
         }
       }
@@ -31192,6 +31312,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "点按“主页”中的“滚动截屏”，或在 LF Studios 菜单中选择“滚动截屏”。"
+          }
+        }
+      }
+    },
+    "Click Select size. Handles appear on the camera preview." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klicke auf „Größe wählen“. An der Kameravorschau erscheinen Griffe."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cliquez sur Choisir la taille. Des poignées apparaissent sur l’aperçu de la caméra."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“サイズを選択”をクリックします。カメラのプレビューにハンドルが表示されます。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нажмите «Выбрать размер». На предпросмотре камеры появятся маркеры."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Клацніть «Вибрати розмір». На перегляді камери з’являться маркери."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "点按“选择大小”。摄像头预览上会出现控制点。"
           }
         }
       }
@@ -43211,6 +43371,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "把截屏从“历史记录”中拖出来，放到你想要的地方。"
+          }
+        }
+      }
+    },
+    "Drag an edge or a corner to resize it, the middle to move it." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zieh an einem Rand oder einer Ecke, um die Größe zu ändern, in der Mitte, um sie zu verschieben."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Faites glisser un bord ou un coin pour la redimensionner, le milieu pour la déplacer."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "端や角をドラッグするとサイズ変更、中央をドラッグすると移動します。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тяните за край или угол, чтобы изменить размер, за середину — чтобы переместить."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тягніть край або кут, щоб змінити розмір, середину — щоб перемістити."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "拖移边缘或角可调整大小，拖移中间可移动。"
           }
         }
       }
@@ -61823,6 +62023,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "在编辑器中，点按“添加打字缩放”。"
+          }
+        }
+      }
+    },
+    "In the editor, the camera snaps to the corners, the edges and the center. Each drag is one ⌘Z. Reset size in Camera ▸ Position goes back to the usual size." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Im Editor rastet die Kamera an den Ecken, Rändern und der Mitte ein. Jedes Ziehen ist ein ⌘Z. „Größe zurücksetzen“ unter Kamera ▸ Position stellt die übliche Größe wieder her."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dans l’éditeur, la caméra s’aimante aux coins, aux bords et au centre. Chaque glissement s’annule d’un ⌘Z. Réinitialiser la taille dans Caméra ▸ Position revient à la taille habituelle."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "エディタでは、カメラは角、端、中央に吸着します。ドラッグ1回は⌘Z 1回で取り消せます。“カメラ”＞“位置”の“サイズをリセット”でいつものサイズに戻ります。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "В редакторе камера прилипает к углам, краям и центру. Каждое перетаскивание отменяется одним ⌘Z. «Сбросить размер» в Камера ▸ Положение возвращает обычный размер."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "У редакторі камера прилипає до кутів, країв і центру. Кожне перетягування скасовується одним ⌘Z. «Скинути розмір» у Камера ▸ Позиція повертає звичний розмір."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在编辑器中，摄像头会吸附到角、边缘和中间。每次拖移可用一次 ⌘Z 撤销。“摄像头 ▸ 位置”中的“重置大小”可恢复为通常大小。"
           }
         }
       }
@@ -80498,6 +80738,46 @@
         }
       }
     },
+    "Of the video's width" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Breite des Videos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "De la largeur de la vidéo"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ビデオの幅に対して"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "От ширины видео"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Від ширини відео"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "占视频宽度"
+          }
+        }
+      }
+    },
     "Off" : {
       "comment" : "No countdown",
       "localizations" : {
@@ -83745,42 +84025,42 @@
         }
       }
     },
-    "Or drag the bubble on the video — it snaps to the nearest spot." : {
+    "Or drag the camera on the video: it snaps to the corners, edges and center. Drag its edges and corners to resize it." : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Oder ziehe die Blase im Video – sie rastet an der nächsten Position ein."
+            "value" : "Oder zieh die Kamera im Video: Sie rastet an Ecken, Rändern und der Mitte ein. Zieh an ihren Rändern und Ecken, um die Größe zu ändern."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ou faites glisser la bulle sur la vidéo — elle s’aimante à l’emplacement le plus proche."
+            "value" : "Ou faites glisser la caméra sur la vidéo : elle s’aimante aux coins, aux bords et au centre. Tirez ses bords et ses coins pour la redimensionner."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "またはビデオ上でワイプをドラッグします。いちばん近い位置にスナップします。"
+            "value" : "またはビデオ上でカメラをドラッグします。角、端、中央に吸着します。端や角をドラッグするとサイズを変えられます。"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Или перетяните окошко по видео — оно притянется к ближайшему месту."
+            "value" : "Или перетащите камеру на видео: она прилипает к углам, краям и центру. Тяните за края и углы, чтобы изменить размер."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Або перетягніть бульбашку у відео — вона прилипне до найближчого місця."
+            "value" : "Або перетягніть камеру на відео: вона прилипає до кутів, країв і центру. Тягніть її краї й кути, щоб змінити розмір."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "也可以在视频上拖移气泡 — 它会吸附到最近的位置。"
+            "value" : "也可以在视频上拖移摄像头：它会吸附到角、边缘和中间。拖移其边缘和角可调整大小。"
           }
         }
       }
@@ -88243,6 +88523,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "位置"
+          }
+        }
+      }
+    },
+    "Position and Size: drag the camera on the preview, drag its edges and corners to resize it, or pick one of eight spots." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Position und Größe: Zieh die Kamera in der Vorschau, zieh an ihren Rändern und Ecken, um die Größe zu ändern, oder wähle eine von acht Stellen."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Position et Taille : faites glisser la caméra dans l’aperçu, tirez ses bords et ses coins pour la redimensionner, ou choisissez l’un des huit emplacements."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "位置とサイズ: プレビュー上でカメラをドラッグし、端や角をドラッグしてサイズを変えるか、8つの位置から選びます。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Положение и размер: перетащите камеру в предпросмотре, тяните за края и углы, чтобы изменить размер, или выберите одно из восьми мест."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Позиція й розмір: перетягніть камеру в перегляді, тягніть її краї й кути, щоб змінити розмір, або виберіть одне з восьми місць."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "位置和大小：在预览上拖移摄像头，拖移其边缘和角可调整大小，或选取八个位置之一。"
           }
         }
       }
@@ -102892,6 +103212,46 @@
         }
       }
     },
+    "Reset size" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Größe zurücksetzen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réinitialiser la taille"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サイズをリセット"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сбросить размер"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скинути розмір"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重置大小"
+          }
+        }
+      }
+    },
     "Reset to default position" : {
       "comment" : "Selected caption: follows the other captions again",
       "localizations" : {
@@ -103049,6 +103409,86 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "调整窗口大小，让录制内容正好是某个尺寸，例如 1920 × 1080。"
+          }
+        }
+      }
+    },
+    "Resize and place the camera by dragging, before you record and in the editor." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ändere Größe und Platz der Kamera durch Ziehen, vor der Aufnahme und im Editor."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Redimensionnez et placez la caméra en la faisant glisser, avant d’enregistrer et dans l’éditeur."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "収録前とエディタで、ドラッグしてカメラのサイズと位置を決めます。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Меняйте размер и место камеры перетаскиванием — перед записью и в редакторе."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Змінюйте розмір і місце камери перетягуванням — перед записом і в редакторі."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "通过拖移来调整摄像头的大小和位置，录制前和在编辑器中都可以。"
+          }
+        }
+      }
+    },
+    "Resize the camera" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Größe der Kamera ändern"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Redimensionner la caméra"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カメラのサイズを変更"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Изменить размер камеры"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Змінити розмір камери"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "调整摄像头大小"
           }
         }
       }
@@ -115504,46 +115944,6 @@
         }
       }
     },
-    "Size, and Position: drag the bubble on the preview, or pick one of eight spots." : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Größe und Position: Zieh die Blase in der Vorschau oder wähle eine von acht Stellen."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Taille, et Position : faites glisser la bulle sur l’aperçu, ou choisissez l’un des huit emplacements."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "“サイズ”と“位置”: プレビュー上でワイプをドラッグするか、8か所の位置から選びます。"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "«Размер» и «Положение»: перетяните окошко в предпросмотре или выберите одно из восьми мест."
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "«Розмір» і «Позиція»: перетягніть бульбашку на перегляді або виберіть одне з восьми місць."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "大小和位置：在预览上拖移气泡，或从八个位置中选取一个。"
-          }
-        }
-      }
-    },
     "Size: Small, Medium, or Large. Frame rate: 10 to 24 fps." : {
       "localizations" : {
         "de" : {
@@ -124960,6 +125360,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "最高画质，也是唯一能保留透明度的格式"
+          }
+        }
+      }
+    },
+    "The label under it says how wide the camera is and where it goes in the video. The editor opens with exactly that." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Beschriftung darunter zeigt, wie breit die Kamera ist und wo sie im Video sitzt. Der Editor öffnet sich genau so."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L’étiquette en dessous indique la largeur de la caméra et sa place dans la vidéo. L’éditeur s’ouvre exactement ainsi."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下のラベルに、カメラの幅とビデオ内での位置が表示されます。エディタはそのとおりに開きます。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Подпись под ней показывает ширину камеры и ее место в видео. Редактор откроется именно так."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Підпис під нею показує ширину камери та її місце у відео. Редактор відкриється саме так."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下方的标签会说明摄像头的宽度以及它在视频中的位置。编辑器打开时正是这样。"
           }
         }
       }

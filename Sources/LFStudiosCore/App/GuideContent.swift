@@ -1521,7 +1521,7 @@ enum GuideContent {
                 location: L("Camera panel ▸ Camera, Position, and Behavior. Click the bubble on the preview to open it."),
                 points: [
                     L("Camera shape: Circle, Rounded rectangle, Square, Landscape, Portrait, 4:3, 3:4, Free, or Cutout (just you, without the background)."),
-                    L("Size, and Position: drag the bubble on the preview, or pick one of eight spots."),
+                    L("Position and Size: drag the camera on the preview, drag its edges and corners to resize it, or pick one of eight spots."),
                     L("Mirror flips it like a mirror."),
                 ],
                 tips: [needsCamera],
@@ -1548,6 +1548,23 @@ enum GuideContent {
                 showMe: .editor(.camera),
                 since: "1.10.0",
                 related: ["rec-camera", "camera-bubble", "camera-look"]
+            ),
+            GuideEntry(
+                id: "camera-size", symbol: "arrow.up.left.and.arrow.down.right", title: L("Select size"),
+                summary: L("Resize and place the camera by dragging, before you record and in the editor."),
+                location: L("Before recording: Select size above the recording bar, with Camera on. In the editor: drag the camera on the preview."),
+                steps: [
+                    L("Click Select size. Handles appear on the camera preview."),
+                    L("Drag an edge or a corner to resize it, the middle to move it."),
+                    L("The label under it says how wide the camera is and where it goes in the video. The editor opens with exactly that."),
+                ],
+                tips: [
+                    L("A fixed shape (Circle, 1:1, 16:9…) keeps its shape as you resize. With Free, width and height change on their own; hold ⇧ to keep the shape."),
+                    L("In the editor, the camera snaps to the corners, the edges and the center. Each drag is one ⌘Z. Reset size in Camera ▸ Position goes back to the usual size."),
+                ],
+                showMe: .editor(.camera),
+                since: "1.10.0",
+                related: ["camera-shape", "rec-camera", "camera-bubble"]
             ),
             GuideEntry(
                 id: "camera-behind", symbol: "person.and.background.dotted", title: L("Blur or remove your background"),

@@ -236,6 +236,8 @@
 	<string>项目使用的某个文件被移动、删除，或者在另一台 Mac 上。</string>
 	<key>A file with that name is in the way. Pick another name and export again.</key>
 	<string>已存在同名文件。请换一个名称，然后重新导出。</string>
+	<key>A fixed shape (Circle, 1:1, 16:9…) keeps its shape as you resize. With Free, width and height change on their own; hold ⇧ to keep the shape.</key>
+	<string>固定形状（圆形、1:1、16:9…）在调整大小时会保持形状。选择“自由”时，宽度和高度可分别更改；按住 ⇧ 可保持形状。</string>
 	<key>A folder with an LF Studios project in it opens that project, exactly as it was saved.</key>
 	<string>包含 LF Studios 项目的文件夹会打开该项目，与存储时完全一样。</string>
 	<key>A frame appears in the middle of the screen. Choose its shape above the recording bar, like 16:9.</key>
@@ -696,6 +698,8 @@
 	<string>已恢复为原始录制内容 — 按 ⌘Z 撤销</string>
 	<key>Back to the start</key>
 	<string>回到开头</string>
+	<key>Back to the usual size, in the spot chosen above</key>
+	<string>恢复为通常大小，位于上方选择的位置</string>
 	<key>Back · pause · faster</key>
 	<string>后退 · 暂停 · 加快</string>
 	<key>Background</key>
@@ -726,6 +730,8 @@
 	<string>录制前，在录制栏中打开“麦克风”，并确认说话时它的电平表会跳动。</string>
 	<key>Before recording, turn on Track where I type.</key>
 	<string>录制前，打开“跟踪打字位置”。</string>
+	<key>Before recording: Select size above the recording bar, with Camera on. In the editor: drag the camera on the preview.</key>
+	<string>录制前：打开“摄像头”后，使用录制栏上方的“选择大小”。在编辑器中：在预览上拖移摄像头。</string>
 	<key>Before recording: turn on Camera, then Camera shape above the recording bar. In the editor: Camera panel ▸ Camera ▸ Camera shape.</key>
 	<string>录制前：打开“摄像头”，然后使用录制栏上方的“摄像头形状”。在编辑器中：“摄像头”面板 ▸ 摄像头 ▸ 摄像头形状。</string>
 	<key>Begins scrolling when the recording starts</key>
@@ -918,8 +924,8 @@
 	<string>摄像头视频“%1$@”，%2$@</string>
 	<key>Camera video: %@</key>
 	<string>摄像头视频：%@</string>
-	<key>Camera — drag to move it, click for options</key>
-	<string>摄像头 — 拖移可移动，点按可查看选项</string>
+	<key>Camera — drag to move it, drag its edges to resize it, click for options</key>
+	<string>摄像头——拖移可移动，拖移边缘可调整大小，点按可查看选项</string>
 	<key>Camera: %@%% of width, %@</key>
 	<string>摄像头：宽度的 %1$@%%，%2$@</string>
 	<key>Can't sync — the recording or the camera video has no sound</key>
@@ -1392,6 +1398,8 @@
 	<string>点按“录制”。按空格键可暂停或继续滚动。</string>
 	<key>Click Scroll capture in Home, or choose Scrolling Capture in the LF Studios menu.</key>
 	<string>点按“主页”中的“滚动截屏”，或在 LF Studios 菜单中选择“滚动截屏”。</string>
+	<key>Click Select size. Handles appear on the camera preview.</key>
+	<string>点按“选择大小”。摄像头预览上会出现控制点。</string>
 	<key>Click Show keyboard shortcuts (⌘) in the recording bar, or Settings ▸ Recording ▸ Show keyboard shortcuts.</key>
 	<string>点按录制栏中的“显示快捷键”（⌘），或前往“设置 ▸ 录制 ▸ 显示快捷键”。</string>
 	<key>Click Speaker notes in the recording bar, or in the bar while recording.</key>
@@ -1978,6 +1986,8 @@
 	<string>拖移出一个框。在框内拖移可移动它，拖移边缘可调整大小。</string>
 	<key>Drag a screenshot out of History and drop it where you want it.</key>
 	<string>把截屏从“历史记录”中拖出来，放到你想要的地方。</string>
+	<key>Drag an edge or a corner to resize it, the middle to move it.</key>
+	<string>拖移边缘或角可调整大小，拖移中间可移动。</string>
 	<key>Drag captions on the preview to place them anywhere</key>
 	<string>在预览中拖移字幕，即可放到任意位置</string>
 	<key>Drag captions to any spot on the video, or move one caption on its own.</key>
@@ -2880,6 +2890,8 @@
 	<string>在编辑器中，确认“音频”面板中的“视频静音”已关闭，并且预览没有被静音（按 M 键）。</string>
 	<key>In the editor, click Add typing zooms.</key>
 	<string>在编辑器中，点按“添加打字缩放”。</string>
+	<key>In the editor, the camera snaps to the corners, the edges and the center. Each drag is one ⌘Z. Reset size in Camera ▸ Position goes back to the usual size.</key>
+	<string>在编辑器中，摄像头会吸附到角、边缘和中间。每次拖移可用一次 ⌘Z 撤销。“摄像头 ▸ 位置”中的“重置大小”可恢复为通常大小。</string>
 	<key>In the export window ▸ Captions.</key>
 	<string>导出窗口 ▸ 字幕。</string>
 	<key>In the export window ▸ Chapters.</key>
@@ -3786,6 +3798,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>海洋</string>
 	<key>Of the frame's width.</key>
 	<string>相对于画面宽度。</string>
+	<key>Of the video's width</key>
+	<string>占视频宽度</string>
 	<key>Off</key>
 	<string>关闭</string>
 	<key>Off to start with. Needs Accessibility.</key>
@@ -3948,8 +3962,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>也可以在预览中拖移。缩放时图像会保持不动。</string>
 	<key>Or drag its bar on the timeline.</key>
 	<string>也可以在时间线上拖移其条块。</string>
-	<key>Or drag the bubble on the video — it snaps to the nearest spot.</key>
-	<string>也可以在视频上拖移气泡 — 它会吸附到最近的位置。</string>
+	<key>Or drag the camera on the video: it snaps to the corners, edges and center. Drag its edges and corners to resize it.</key>
+	<string>也可以在视频上拖移摄像头：它会吸附到角、边缘和中间。拖移其边缘和角可调整大小。</string>
 	<key>Or hold ⇧ and drag across the timeline to select a part, then click Cut this part.</key>
 	<string>或者按住 ⇧ 在时间线上拖移以选择一段，然后点按“剪掉这一段”。</string>
 	<key>Or try the Whisper engine instead.</key>
@@ -4168,6 +4182,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>竖向（9:16）</string>
 	<key>Position</key>
 	<string>位置</string>
+	<key>Position and Size: drag the camera on the preview, drag its edges and corners to resize it, or pick one of eight spots.</key>
+	<string>位置和大小：在预览上拖移摄像头，拖移其边缘和角可调整大小，或选取八个位置之一。</string>
 	<key>Positions only: no text, no keys</key>
 	<string>仅位置：不含文本和按键</string>
 	<key>Possible key</key>
@@ -4864,6 +4880,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重置位置</string>
 	<key>Reset position puts captions back at the bottom.</key>
 	<string>“重置位置”会把字幕放回底部。</string>
+	<key>Reset size</key>
+	<string>重置大小</string>
 	<key>Reset to default position</key>
 	<string>恢复默认位置</string>
 	<key>Reset to the LF Studios Look</key>
@@ -4872,6 +4890,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>调整大小</string>
 	<key>Resize a window so the recording comes out at an exact size, like 1920 × 1080.</key>
 	<string>调整窗口大小，让录制内容正好是某个尺寸，例如 1920 × 1080。</string>
+	<key>Resize and place the camera by dragging, before you record and in the editor.</key>
+	<string>通过拖移来调整摄像头的大小和位置，录制前和在编辑器中都可以。</string>
+	<key>Resize the camera</key>
+	<string>调整摄像头大小</string>
 	<key>Resize the window so the recording is an exact size</key>
 	<string>调整窗口大小，让录制内容正好是这个尺寸</string>
 	<key>Resizes a window of another app to exactly the frame, so it fills the recording</key>
@@ -5466,8 +5488,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>银色</string>
 	<key>Size</key>
 	<string>大小</string>
-	<key>Size, and Position: drag the bubble on the preview, or pick one of eight spots.</key>
-	<string>大小和位置：在预览上拖移气泡，或从八个位置中选取一个。</string>
 	<key>Size: Small, Medium, or Large. Frame rate: 10 to 24 fps.</key>
 	<string>大小：“小”“中”或“大”。帧速率：10 到 24 fps。</string>
 	<key>Skip Setup</key>
@@ -5920,6 +5940,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>交付已就绪</string>
 	<key>The highest quality, and the only one that can keep transparency</key>
 	<string>最高画质，也是唯一能保留透明度的格式</string>
+	<key>The label under it says how wide the camera is and where it goes in the video. The editor opens with exactly that.</key>
+	<string>下方的标签会说明摄像头的宽度以及它在视频中的位置。编辑器打开时正是这样。</string>
 	<key>The loupe stays over the text cursor.</key>
 	<string>放大镜停在文本光标上方。</string>
 	<key>The loupe stays over your cursor.</key>

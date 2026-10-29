@@ -6,6 +6,8 @@
 - **Camera shape, chosen before you record.** With Camera on, a Camera shape menu sits above the recording bar: Circle, Rounded rectangle, Square (1:1), Landscape (16:9), Portrait (9:16), 4:3, 3:4, or Free, with Roundness. The camera preview takes the shape right away so you can frame yourself; it's still never in the screen recording.
   - What the preview covers of the recording frame is where the camera goes in the video: the editor opens with the camera in that place, size, and shape. A label under the preview says so (“Camera: 25% of width, bottom right”). Drag it outside the frame to get it out of the way (“Not in video”): the editor then puts it in its usual corner.
   - The camera is still recorded whole and uncropped, so the shape can be changed later and Creative Handoff gets the whole picture. LF Studios remembers your last choices.
+- **Select size.** Next to Camera shape: handles on the camera preview. Drag an edge or a corner to resize it, the middle to move it; a fixed shape keeps its shape, Free changes width and height on their own (⇧ keeps the shape). The label shows the size and place in the recording frame, and the editor opens with exactly that.
+  - In the editor, the camera on the preview has the same handles: drag it anywhere (it snaps to the corners, edges and center) and drag its edges and corners to resize it, one ⌘Z per drag. Camera ▸ Position ▸ Reset size goes back to the usual size; each aspect ratio version keeps its own placement.
   - The editor's Camera panel has the same shapes. “Wide” is now called Rounded rectangle, “Rounded” is Square (1:1); older projects look exactly as before.
 
 ## [1.9.0]
