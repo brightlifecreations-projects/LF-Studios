@@ -43,6 +43,10 @@ final class CaptureEngine {
     private var recordingControlsWindow: RecordingControlsWindow?
     private var recordingScreenChooserWindow: RecordingScreenChooserWindow?
     private var recordingWindowChooserWindow: RecordingWindowChooserWindow?
+    private var recordingFrame: RecordingFrameController?
+    private var recordingFrameStrip: RecordingFrameStripWindow?
+    private var frameFitChooser: RecordingWindowChooserWindow?
+    private var frameStripObserver: NSObjectProtocol?
     private var recordingCountdownWindow: CountdownWindow?
     private var recordingSelectionActive = false
     private let recordingEngine = RecordingEngine()
@@ -357,7 +361,22 @@ final class CaptureEngine {
 
     // MARK: – Screen Recording
 
+    /// New recording, Record Area: the frame bar, a frame of an exact ratio
+    /// and size (RecordingFrame.swift) with the recording bar under it.
     func startAreaRecording() async {
+        guard PermissionsManager.hasScreenRecordingPermission else {
+            PermissionsManager.showPermissionDeniedAlert(); return
+        }
+        guard canBeginRecordingSetup() else { return }
+        RecordingFocus.noteSetupStarted()
+        guard let screen = screenUnderMouse() ?? NSScreen.main ?? NSScreen.screens.first else { return }
+        let frame = RecordingFrameController(screen: screen)
+        lastCaptureRect = frame.rect
+        showRecordingControls(rect: frame.rect, on: screen, target: .area, frame: frame)
+    }
+
+    /// The frame bar's "Select area manually": drag out any area.
+    func startManualAreaRecording() async {
         guard PermissionsManager.hasScreenRecordingPermission else {
             PermissionsManager.showPermissionDeniedAlert(); return
         }
@@ -601,7 +620,7 @@ final class CaptureEngine {
             .screen
     }
 
-    private func showRecordingControls(rect: CGRect, on screen: NSScreen, target: RecordingTargetKind, selectedWindow: SCWindow? = nil) {
+    private func showRecordingControls(rect: CGRect, on screen: NSScreen, target: RecordingTargetKind, selectedWindow: SCWindow? = nil, frame: RecordingFrameController? = nil) {
         let started = CFAbsoluteTimeGetCurrent()
         recordingControlsWindow?.closeControls()
         let window = RecordingControlsWindow(
@@ -613,9 +632,23 @@ final class CaptureEngine {
                 self?.beginRecording(rect: rect, on: screen, window: selectedWindow)
             },
             closeHandler: { [weak self] in
+                // The frame and its strip go first: never in the countdown
+                // or the recording.
+                self?.closeRecordingFrame()
                 self?.recordingControlsWindow = nil
             }
         )
+        if let frame {
+            recordingFrame = frame
+            attachFrame(frame, to: window)
+            recordingControlsWindow = window
+            window.show()
+            frame.show()
+            recordingFrameStrip?.orderFront(nil)
+            layoutFrameStrip()
+            CapturePerformance.mark("Recording frame", since: started)
+            return
+        }
         if let selectedWindow {
             // Window size: the bar again, for the window as it is now.
             window.windowResized = { [weak self] frame in
@@ -634,6 +667,136 @@ final class CaptureEngine {
         recordingControlsWindow = window
         window.show()
         CapturePerformance.mark("Recording controls", since: started)
+    }
+
+    // MARK: – The frame bar
+
+    private func attachFrame(_ frame: RecordingFrameController, to bar: RecordingControlsWindow) {
+        bar.avoidsCaptureRect = true
+        bar.reservedAbove = RecordingFrameStripWindow.height + RecordingFrameStripWindow.gap
+        let model = RecordingFrameStripModel(ratio: frame.ratio, pixels: frame.pixels, sizeChoices: frame.sizeChoices)
+        let strip = RecordingFrameStripWindow(model: model, width: bar.barWidth)
+        recordingFrameStrip = strip
+        bar.addChildWindow(strip, ordered: .above)
+
+        frame.changeHandler = { [weak self, weak bar, weak frame, weak model] rect, screen in
+            guard let self, let bar, let frame, let model else { return }
+            self.lastCaptureRect = rect
+            bar.updateCaptureRect(rect, on: screen)
+            if model.ratio != frame.ratio { model.ratio = frame.ratio }
+            if model.pixels != frame.pixels { model.pixels = frame.pixels }
+            let choices = frame.sizeChoices
+            if model.sizeChoices != choices { model.sizeChoices = choices }
+            self.layoutFrameStrip()
+        }
+        frame.cancelHandler = { [weak bar] in bar?.closeControls() }
+        frame.recordHandler = { [weak bar] in bar?.record() }
+        bar.frameKeyHandler = { [weak frame] event in frame?.handleKey(event) ?? false }
+        strip.keyHandler = { [weak frame] event in frame?.handleKey(event) ?? false }
+
+        model.chooseRatio = { [weak frame] ratio in frame?.setRatio(ratio) }
+        model.chooseSize = { [weak frame] pixels in frame?.setPixels(pixels) }
+        model.fitWindow = { [weak self, weak frame] in
+            guard let self, let frame else { return }
+            Task { await self.fitWindowToFrame(frame) }
+        }
+        model.recordWindow = { [weak self] in self?.switchFromFrame { await $0.startWindowRecording() } }
+        model.recordFullScreen = { [weak self] in self?.switchFromFrame { await $0.startFullscreenRecording() } }
+        model.selectManually = { [weak self] in self?.switchFromFrame { await $0.startManualAreaRecording() } }
+        frameStripObserver = NotificationCenter.default.addObserver(forName: NSWindow.didResizeNotification, object: bar, queue: .main) { [weak self] _ in
+            MainActor.assumeIsolated { self?.layoutFrameStrip() }
+        }
+    }
+
+    /// Tests: the frame bar's parts while it shows.
+    var frameSetupForTesting: (frame: RecordingFrameController, bar: RecordingControlsWindow, strip: RecordingFrameStripWindow)? {
+        guard let recordingFrame, let recordingControlsWindow, let recordingFrameStrip else { return nil }
+        return (recordingFrame, recordingControlsWindow, recordingFrameStrip)
+    }
+
+    var isRecordingForTesting: Bool { recordingEngine.elapsedSeconds != nil }
+
+    /// The strip sits right on top of the recording bar and moves with it.
+    private func layoutFrameStrip() {
+        guard let strip = recordingFrameStrip, let bar = recordingControlsWindow else { return }
+        let barFrame = bar.visibleBarFrame
+        strip.setFrame(NSRect(x: barFrame.minX, y: barFrame.maxY + RecordingFrameStripWindow.gap, width: barFrame.width, height: RecordingFrameStripWindow.height), display: true)
+    }
+
+    private func closeRecordingFrame() {
+        if let frameStripObserver { NotificationCenter.default.removeObserver(frameStripObserver) }
+        frameStripObserver = nil
+        recordingFrame?.close()
+        recordingFrame = nil
+        frameFitChooser?.closeChooser()
+        frameFitChooser = nil
+        if let strip = recordingFrameStrip {
+            strip.parent?.removeChildWindow(strip)
+            strip.orderOut(nil)
+        }
+        recordingFrameStrip = nil
+    }
+
+    /// Window, Full screen or Select area manually from the strip: this
+    /// setup ends and that one starts.
+    private func switchFromFrame(_ next: @escaping (CaptureEngine) async -> Void) {
+        recordingControlsWindow?.closeControls()
+        Task { @MainActor [weak self] in
+            guard let self else { return }
+            await next(self)
+        }
+    }
+
+    /// "Fit a window to the frame…": choose a window of another app, and it
+    /// takes exactly the frame's place and size (through Accessibility,
+    /// like Window size in 1.3.0).
+    private func fitWindowToFrame(_ frame: RecordingFrameController) async {
+        guard VideoKeystrokeFormatter.isAllowed else {
+            VideoKeystrokeFormatter.requestAccess()
+            ToastWindow.show(message: L("Fitting another app's window needs Accessibility access: allow LF Studios in System Settings → Privacy & Security → Accessibility, then try again."), duration: 5, on: frame.screen)
+            return
+        }
+        guard let content = try? await SCShareableContent.excludingDesktopWindows(true, onScreenWindowsOnly: true) else {
+            ToastWindow.show(message: L("Could not list windows. Check permissions."))
+            return
+        }
+        let choices = await recordingWindowChoices(from: content.windows)
+        guard !choices.isEmpty else {
+            ToastWindow.show(message: L("No recordable windows found"))
+            return
+        }
+        frameFitChooser?.closeChooser()
+        let chooser = RecordingWindowChooserWindow(
+            choices: choices,
+            selectHandler: { [weak self, weak frame] choice in
+                self?.frameFitChooser = nil
+                guard let self, let frame, frame.isShowing else { return }
+                self.fit(choice.window, to: frame)
+            },
+            closeHandler: { [weak self] in
+                self?.frameFitChooser = nil
+            }
+        )
+        frameFitChooser = chooser
+        chooser.show()
+    }
+
+    private func fit(_ scWindow: SCWindow, to frame: RecordingFrameController) {
+        let appName = scWindow.owningApplication?.applicationName ?? L("This app")
+        guard let window = RecordingAccessibilityWindow.find(scWindow) else {
+            ToastWindow.show(message: RecordingWindowSize.Outcome.notFound.message(appName: appName) ?? "", duration: 4, on: frame.screen)
+            return
+        }
+        if let before = window.frame { RecordingWindowSizeMemory.remember(before, for: scWindow.windowID) }
+        let outcome = RecordingWindowSize.fit(window, to: frame.rect, scale: frame.scale)
+        if let message = outcome.message(appName: appName) {
+            ToastWindow.show(message: message, duration: 4.5, on: frame.screen)
+        } else if let actual = window.frame, abs(actual.minX - frame.rect.minX) > 1 || abs(actual.minY - frame.rect.minY) > 1 {
+            // macOS kept it from going there (under the menu bar): the
+            // frame goes to the window instead.
+            frame.move(to: actual.origin, snapping: false)
+        }
+        recordingControlsWindow?.makeKeyAndOrderFront(nil)
     }
 
     /// Record was pressed: an optional countdown, then focus goes back to
@@ -2071,9 +2234,22 @@ final class RecordingControlsWindow: NSWindow {
     }
 
     /// The bar's width, 808 pt unless a longer quality name needs more.
-    private let barWidth: CGFloat
-    private let captureRect: CGRect
-    private let targetScreen: NSScreen
+    let barWidth: CGFloat
+    private var captureRect: CGRect
+    private var targetScreen: NSScreen
+    /// Recording a frame (RecordingFrame.swift): the bar keeps clear of it,
+    /// with `reservedAbove` points for the frame strip on top of the bar.
+    var avoidsCaptureRect = false
+    var reservedAbove: CGFloat = 0
+    /// Dragged somewhere by hand: it stays there when the frame moves.
+    private(set) var movedByUser = false
+    /// Where the bar last put itself: any other place is the user's drag.
+    private var placedOrigin: NSPoint?
+    /// Recording a frame: its keys (Esc, arrows, Return) first.
+    var frameKeyHandler: ((NSEvent) -> Bool)?
+    private var moveObserver: NSObjectProtocol?
+    private weak var sourcePillText: NSTextField?
+    private weak var sourcePillView: NSView?
     private let target: RecordingTargetKind
     private let selectedWindow: SCWindow?
     private let startHandler: (CGRect, NSScreen, SCWindow?) -> Void
@@ -2148,6 +2324,14 @@ final class RecordingControlsWindow: NSWindow {
     func show() {
         Self.openWindows.append(self)
         positionPanel()
+        moveObserver = NotificationCenter.default.addObserver(forName: NSWindow.didMoveNotification, object: self, queue: .main) { [weak self] _ in
+            MainActor.assumeIsolated {
+                guard let self, self.isVisible, let placed = self.placedOrigin else { return }
+                if abs(self.frame.origin.x - placed.x) > 0.5 || abs(self.frame.origin.y - placed.y) > 0.5 {
+                    self.movedByUser = true
+                }
+            }
+        }
         NSApp.ensureForegroundCapable(forCapture: true)
         NSApp.activate(ignoringOtherApps: true)
         alphaValue = 0
@@ -2262,6 +2446,8 @@ final class RecordingControlsWindow: NSWindow {
         sourcePill.frame = NSRect(x: 32, y: 9, width: 190, height: 38)
         sourcePill.toolTip = L("Records \(pixelWidth) × \(pixelHeight) pixels (\(pointWidth) × \(pointHeight) points)")
         bar.addSubview(sourcePill)
+        sourcePillView = sourcePill
+        sourcePillText = sourcePill.subviews.compactMap { $0 as? NSTextField }.first
 
         let audioGroup = segmentContainer(frame: NSRect(x: 234, y: 8, width: 314, height: 40))
         bar.addSubview(audioGroup)
@@ -2518,7 +2704,10 @@ final class RecordingControlsWindow: NSWindow {
         let newHeight = Self.windowHeight(upperRow: showsUpperRow)
         guard abs(frame.height - newHeight) > 0.5 else { return }
         let oldFrame = frame
-        setFrame(NSRect(x: oldFrame.minX, y: oldFrame.maxY - newHeight, width: oldFrame.width, height: newHeight), display: true)
+        let newFrame = NSRect(x: oldFrame.minX, y: oldFrame.maxY - newHeight, width: oldFrame.width, height: newHeight)
+        if placedOrigin != nil, !movedByUser { placedOrigin = newFrame.origin }
+        setFrame(newFrame, display: true)
+        if avoidsCaptureRect, !movedByUser || visibleBlock.intersects(captureRect) { positionPanel() }
     }
 
     private static func windowHeight(upperRow: Bool) -> CGFloat {
@@ -2598,9 +2787,57 @@ final class RecordingControlsWindow: NSWindow {
         return view
     }
 
+    /// The frame moved or changed size (RecordingFrame.swift): what Record
+    /// records, the size shown, and the bar's place (unless dragged by hand).
+    func updateCaptureRect(_ rect: CGRect, on screen: NSScreen) {
+        captureRect = rect
+        targetScreen = screen
+        let pixels = outputPixelSize
+        let pixelWidth = String(pixels.width), pixelHeight = String(pixels.height)
+        let pointWidth = String(Int(rect.width)), pointHeight = String(Int(rect.height))
+        sourcePillText?.stringValue = L("\(target.title) · \(pixelWidth) × \(pixelHeight)")
+        sourcePillView?.toolTip = L("Records \(pixelWidth) × \(pixelHeight) pixels (\(pointWidth) × \(pointHeight) points)")
+        updateSizeEstimate()
+        // Dragged by hand, it stays put unless the frame comes under it.
+        if !movedByUser || visibleBlock.intersects(rect.insetBy(dx: -6, dy: -6)) { positionPanel() }
+    }
+
+    /// The bar with the frame strip on top of it.
+    private var visibleBlock: CGRect {
+        let bar = visibleBarFrame
+        return CGRect(x: bar.minX, y: bar.minY, width: bar.width, height: bar.height + reservedAbove)
+    }
+
+    /// Record, as if its button was clicked (Return in the frame).
+    func record() {
+        recordTapped()
+    }
+
+    /// The bar's frame as it shows (without its shadow margin).
+    var visibleBarFrame: CGRect { frame.insetBy(dx: Self.chromeInset, dy: Self.chromeInset) }
+
     private func positionPanel() {
         let visible = targetScreen.visibleFrame
         let visibleHeight = showsUpperRow ? Self.expandedHeight : Self.barHeight
+        if avoidsCaptureRect {
+            // Below the frame, else above it (the strip on top), else in
+            // the corner farthest from it: never over the frame.
+            let block = visibleHeight + reservedAbove
+            let x = max(visible.minX + 16, min(captureRect.midX - barWidth / 2, visible.maxX - barWidth - 16))
+            var y: CGFloat
+            if captureRect.minY - 14 - block >= visible.minY + 8 {
+                y = captureRect.minY - 14 - block
+            } else if captureRect.maxY + 14 + block <= visible.maxY - 8 {
+                y = captureRect.maxY + 14
+            } else {
+                y = captureRect.midY > visible.midY ? visible.minY + 16 : visible.maxY - block - 16
+            }
+            y = max(visible.minY + 8, min(y, visible.maxY - block - 8))
+            let origin = pixelAligned(NSPoint(x: x - Self.chromeInset, y: y - Self.chromeInset))
+            placedOrigin = origin
+            setFrameOrigin(origin)
+            return
+        }
         let x = visible.midX - barWidth / 2
         let y = min(visible.maxY - visibleHeight - 28, captureRect.maxY - visibleHeight - 14)
         let visibleOrigin = NSPoint(
@@ -2618,6 +2855,12 @@ final class RecordingControlsWindow: NSWindow {
     private func installKeyMonitor() {
         keyMonitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { [weak self] event in
             guard let self, self.isVisible else { return event }
+            if let frameKeyHandler = self.frameKeyHandler {
+                // Only from the bar itself; the strip and the frame's
+                // handles pass their keys on their own.
+                guard event.window === self else { return event }
+                return frameKeyHandler(event) ? nil : event
+            }
             if event.keyCode == 53 {
                 self.closePanel()
                 return nil
@@ -2629,6 +2872,8 @@ final class RecordingControlsWindow: NSWindow {
     private func closePanel() {
         guard !didClose else { return }
         didClose = true
+        if let moveObserver { NotificationCenter.default.removeObserver(moveObserver) }
+        moveObserver = nil
         microphoneMonitorStartupTask?.cancel()
         microphoneMonitorStartupTask = nil
         stopMicrophoneMonitor()

@@ -104,6 +104,25 @@ enum RecordingWindowSize {
         }
         return .limited(asked: pixels, got: got)
     }
+
+    /// The frame bar's "Fit a window to the frame": the window takes
+    /// exactly that place and size; read back to see what the app allowed.
+    @MainActor
+    static func fit(_ window: RecordingResizableWindow, to target: CGRect, scale: CGFloat) -> Outcome {
+        guard window.isResizable else { return .notResizable }
+        let pixels = Preset(width: Int((target.width * scale).rounded()), height: Int((target.height * scale).rounded()))
+        window.setFrame(target)
+        guard let actual = window.frame else { return .notFound }
+        // An app that keeps a minimum size: centered on the frame instead.
+        if abs(actual.width - target.width) > 0.5 || abs(actual.height - target.height) > 0.5 {
+            window.setFrame(centered(actual.size, in: target))
+        }
+        let got = Preset(width: Int((actual.width * scale).rounded()), height: Int((actual.height * scale).rounded()))
+        if abs(got.width - pixels.width) <= Int(scale.rounded()), abs(got.height - pixels.height) <= Int(scale.rounded()) {
+            return .resized(pixels)
+        }
+        return .limited(asked: pixels, got: got)
+    }
 }
 
 /// A window whose frame can be read and set (AppKit coordinates).
