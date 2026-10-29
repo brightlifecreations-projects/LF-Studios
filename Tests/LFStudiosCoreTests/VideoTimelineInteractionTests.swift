@@ -36,7 +36,9 @@ final class VideoTimelineInteractionTests: XCTestCase {
 
     /// 10 s recording in a timeline whose content is exactly 1000 pt wide
     /// (100 pt per second, x = 18 + 100·t).
-    private static let size = CGSize(width: 1036, height: 360)
+    /// The track headers (1.11.0) on the left, then the lanes.
+    private static let lanesX = VideoTimelineMetrics.headerWidth + 1
+    private static let size = CGSize(width: 1036 + lanesX, height: 360)
     private static let surfaceTop: CGFloat = 45 // toolbar + hairline
 
     private func makeModel() async throws -> VideoEditorModel {
@@ -51,6 +53,8 @@ final class VideoTimelineInteractionTests: XCTestCase {
     }
 
     private func mount(_ model: VideoEditorModel) async {
+        // Today's lane sizes (the positions below count on them).
+        VideoTimelineMetrics.rowScale = VideoTimelineTrackHeight.small.scale
         let window = NSWindow(contentRect: NSRect(origin: .zero, size: Self.size), styleMask: [.borderless], backing: .buffered, defer: false)
         window.contentView = Host(rootView: AnyView(VideoTimelineView(model: model).frame(width: Self.size.width, height: Self.size.height)))
         window.orderFrontRegardless()
@@ -62,7 +66,13 @@ final class VideoTimelineInteractionTests: XCTestCase {
         try? await Task.sleep(nanoseconds: UInt64(seconds * 1_000_000_000))
     }
 
-    private func x(_ time: Double) -> CGFloat { 18 + CGFloat(time) * 100 }
+    private func x(_ time: Double) -> CGFloat { Self.lanesX + 18 + CGFloat(time) * 100 }
+
+    /// `dy` into a track's lanes (top-left view coordinates), under the
+    /// ruler, at today's lane size (Small).
+    private func y(_ track: VideoTimelineTrack, in model: VideoEditorModel, _ dy: CGFloat) -> CGFloat {
+        Self.surfaceTop + VideoTimelineMetrics.rulerHeight + 1 + (VideoTimelineRowLayout(project: model.project, hasCamera: model.hasWebcamFootage).contentTop(track) ?? 0) + dy
+    }
 
     /// Drag in top-left view coordinates, in small steps like a real hand.
     private func drag(from start: CGPoint, to end: CGPoint, steps: Int = 10) async {
@@ -87,8 +97,8 @@ final class VideoTimelineInteractionTests: XCTestCase {
         let model = try await makeModel()
         model.mutate { $0.zoomRegions = [VideoZoomRegion(start: 2, end: 4, scale: 2, followsCursor: false)] }
         await mount(model)
-        // Zoom track: ruler 24 + gap 7, block inset 2, 30 tall.
-        let y = Self.surfaceTop + 31 + 2 + 15
+        // Zoom track: block inset 2, 30 tall.
+        let y = y(.zooms, in: model, 2 + 15)
         await drag(from: CGPoint(x: x(2.8), y: y), to: CGPoint(x: x(4.3), y: y))
         let region = try XCTUnwrap(model.project.zoomRegions.first)
         XCTAssertEqual(region.start, 3.5, accuracy: 0.05, "moved 150 pt = 1.5 s")
@@ -107,8 +117,8 @@ final class VideoTimelineInteractionTests: XCTestCase {
             project.overlayEffects = [VideoDemoOverlayEffect(kind: .text, time: 5, duration: 2, x: 0.5, y: 0.5, width: 0.4, height: 0.1, text: "Hi")]
         }
         await mount(model)
-        // One annotation lane right under the ruler.
-        let y = Self.surfaceTop + 31 + 13
+        // The one annotation lane, on its row.
+        let y = y(.annotations, in: model, 13)
         await drag(from: CGPoint(x: x(6), y: y), to: CGPoint(x: x(5), y: y))
         let moved = try XCTUnwrap(model.project.overlayEffects.first)
         XCTAssertEqual(moved.time, 4, accuracy: 0.05, "moved 100 pt left = 1 s earlier")
@@ -124,7 +134,7 @@ final class VideoTimelineInteractionTests: XCTestCase {
             ])]
         }
         await mount(model)
-        let y = Self.surfaceTop + 31 + 11
+        let y = y(.captions, in: model, 11)
         await drag(from: CGPoint(x: x(4), y: y), to: CGPoint(x: x(4.5), y: y))
         let line = try XCTUnwrap(model.project.captions.first)
         XCTAssertEqual(line.start, 3.5, accuracy: 0.05)
@@ -141,8 +151,8 @@ final class VideoTimelineInteractionTests: XCTestCase {
     func testClipEndTrimTracksThePointer() async throws {
         let model = try await makeModel()
         await mount(model)
-        // Clip track right under the (empty) zoom track: 31 + 34 + 7.
-        let y = Self.surfaceTop + 72 + 33
+        // The recording's own track, its middle.
+        let y = y(.clips, in: model, 33)
         await drag(from: CGPoint(x: x(10) - 5, y: y), to: CGPoint(x: x(8) - 5, y: y), steps: 16)
         let clip = try XCTUnwrap(model.project.timelineClips.first)
         XCTAssertEqual(clip.sourceEnd, 8, accuracy: 0.06, "200 pt left = 2 s trimmed, even as the timeline shrinks")
@@ -239,11 +249,8 @@ final class VideoTimelineInteractionTests: XCTestCase {
         await mount(model)
         let views = scrollViews(in: try XCTUnwrap(window?.contentView))
         let vertical = try XCTUnwrap(views.first { ($0.documentView?.frame.height ?? 0) > $0.contentSize.height + 20 }, "an outer vertical scroller")
-        // It opens at the bottom, with the recording's own track in view.
-        let document = try XCTUnwrap(vertical.documentView)
+        // It opens at the top: the zooms and the recording come first (1.11.0).
         let visible = vertical.contentView.bounds
-        let bottomShown = document.isFlipped ? visible.maxY : document.frame.height - visible.minY
-        XCTAssertEqual(bottomShown, document.frame.height, accuracy: 2, "opens scrolled to the clips")
         // Either way (the Mac's scroll direction setting flips it).
         let before = visible.origin.y
         scroll(dy: 60, at: CGPoint(x: 500, y: 200))

@@ -342,6 +342,9 @@ final class VideoRenderPlan: @unchecked Sendable {
 
     /// Timeline stretches where the camera changes layout.
     let cameraLayouts: [CameraLayoutSpan]
+    /// Hide on the Video clips track: the screen recording (and its
+    /// pointer) isn't drawn.
+    let hidesScreen: Bool
     /// The frame the video is exported at (differs from `canvasSize` when
     /// reframing: the scene is landscape, the output is not).
     let outputCanvasSize: CGSize
@@ -412,6 +415,7 @@ final class VideoRenderPlan: @unchecked Sendable {
         faceCrop: VideoFaceCropPath? = nil
     ) {
         webcam = hasWebcam ? project.webcam : nil
+        hidesScreen = project.hidesScreen
         self.faceCrop = hasWebcam ? faceCrop : nil
         self.typingTrack = typingTrack
         canvasSize = project.canvasSize()
@@ -775,7 +779,9 @@ final class VideoFrameRenderer {
         // 3. The recording.
         let stageOut = geometry.rect(plan.stageRect)
         let radius = CGFloat(plan.cornerRadius) * geometry.pixelScale
-        if let source {
+        if plan.hidesScreen {
+            // Hidden: the background shows where the recording was.
+        } else if let source {
             let video = placedVideo(source, plan: plan, geometry: geometry, stageOut: stageOut, draft: options.draft)
             if plan.fullBleed || radius < 0.5 {
                 scene = video.cropped(to: stageOut).composited(over: scene)
@@ -820,7 +826,9 @@ final class VideoFrameRenderer {
         }
 
         // 6. Click ripples and the pointer.
-        if plan.rendersCursor, let track = plan.cursorTrack {
+        if plan.hidesScreen {
+            // The pointer belongs to the hidden recording.
+        } else if plan.rendersCursor, let track = plan.cursorTrack {
             let recordedAlpha = track.alpha(at: sourceTime)
             let alpha = plan.cursorLoop?.alpha(recordedAlpha, at: timelineTime) ?? recordedAlpha
             if alpha > 0.01 {

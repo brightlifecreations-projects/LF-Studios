@@ -81,6 +81,8 @@ struct VideoTimelineGeometry: Equatable {
     let duration: Double
     /// Content width including the insets.
     let width: CGFloat
+    /// The track height's scale: lanes redraw when it changes.
+    var rowScale: CGFloat = VideoTimelineMetrics.rowScale
 
     func x(_ time: Double) -> CGFloat { VideoTimelineMetrics.inset + CGFloat(time) * pointsPerSecond }
     func time(_ x: CGFloat) -> Double {
@@ -100,6 +102,8 @@ struct VideoTimelineHoverLayer: View {
     let zoomTop: CGFloat
     let showsZoomHint: Bool
     let viewportWidth: CGFloat
+    /// Where the lanes start (under the ruler, when it's in the same view).
+    var linesTop: CGFloat = VideoTimelineMetrics.rulerHeight
 
     private typealias M = VideoTimelineMetrics
 
@@ -123,8 +127,8 @@ struct VideoTimelineHoverLayer: View {
                 // A dragged edge landed on something.
                 Rectangle()
                     .fill(Color.yellow.opacity(0.85))
-                    .frame(width: 1, height: height - M.rulerHeight)
-                    .offset(x: geometry.x(snap), y: M.rulerHeight)
+                    .frame(width: 1, height: height - linesTop)
+                    .offset(x: geometry.x(snap), y: linesTop)
             }
         }
         .frame(width: geometry.width, height: height, alignment: .topLeading)
@@ -136,8 +140,8 @@ struct VideoTimelineHoverLayer: View {
         return ZStack(alignment: .topLeading) {
             Rectangle()
                 .fill(VideoEditorTheme.ink.opacity(0.3))
-                .frame(width: 1, height: height - M.rulerHeight)
-                .offset(x: position, y: M.rulerHeight)
+                .frame(width: 1, height: height - linesTop)
+                .offset(x: position, y: linesTop)
             Text(VideoEditorModel.timecode(time))
                 .font(.system(size: 9.5, weight: .bold, design: .monospaced))
                 .foregroundStyle(.white.opacity(0.85))

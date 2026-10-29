@@ -4,6 +4,11 @@
 
 ### Added
 - **Split screen in both directions.** Split screen has a Direction: Side by side (left and right) or Stacked (top and bottom), on a video of any shape. Camera side follows it (Left/Right or Top/Bottom), and the split size, the divider and the gap work both ways. It's in the recording bar (Layout ▸ Direction), where the frame becomes the screen's part for that direction ("Screen part of a 16:9 stacked video"), and in the editor's Camera panel. Until you choose, a split goes the way it did before (side by side on landscape videos, stacked on square and vertical ones), and Adapt to this ratio keeps a direction you chose.
+- **A bigger timeline, with tracks.** The video editor's timeline works like a video app's: one track per kind of thing, top to bottom (Zooms, Video clips with the clicks along their top, Camera, Captions, Keys, Text & annotations, Music, and each added sound), each with a header on the left.
+  - Drag the line above the timeline to give it more or less room (a third of the window to start; double-click for that again). LF Studios remembers it, and the preview and the timeline always keep room to work, a 13" MacBook included.
+  - Track height: Small (as before), Medium, or Large.
+  - Each header has Hide (eye), Mute (speaker, on tracks with sound) and Lock. Hide and mute change only what plays and exports; lock keeps everything on the track from changing, in the timeline and on the preview.
+  - Empty tracks are thin rows that say how to add something, and any track folds away. The ruler and the track names stay in place while you scroll; pinch, ⌘-scroll, ⌘+ / ⌘− and the slider zoom the timeline as before. Dragging, trimming, splitting, selecting and ⌘Z work as they did.
 - **16:10, 21:9 and Custom… in the aspect ratio menu**, like the frame bar's. Custom… takes any shape, typed like 3:2 or 2.39:1. They work with Adapt to this ratio, Export all ratios, and presets saved with Include aspect ratio.
 
 ## [1.10.0]

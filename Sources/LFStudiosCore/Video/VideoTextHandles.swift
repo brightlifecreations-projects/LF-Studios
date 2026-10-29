@@ -44,10 +44,11 @@ struct VideoTextHandles: View {
             if let drag {
                 guideLines(drag.guides)
             }
-            if let caption = layout.caption, let id = caption.captionID {
+            // Not on a locked track (its header's Lock).
+            if let caption = layout.caption, let id = caption.captionID, !model.isTrackLocked(.captions) {
                 handle(.caption(id), box: caption.rect(in: viewSize))
             }
-            if let keys = layout.keys {
+            if let keys = layout.keys, !model.isTrackLocked(.keys) {
                 handle(.keys, box: keys.rect(in: viewSize))
             }
         }

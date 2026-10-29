@@ -1185,7 +1185,26 @@ enum GuideContent {
                     .fixed("← →", L("Previous / next frame")),
                     .fixed("⇧← ⇧→", L("Jump one second")),
                     .fixed("⌘← ⌘→", L("Start / end")),
-                ]
+                ],
+                related: ["video-timeline"]
+            ),
+            GuideEntry(
+                id: "video-timeline", symbol: "rectangle.split.1x2", title: L("The timeline and its tracks"),
+                summary: L("Every part of the video on its own track, top to bottom: Zooms, Video clips, Camera, Captions, Keys, Text & annotations, Music, and each sound you added."),
+                location: L("The bottom of the video editor."),
+                points: [
+                    L("Drag the line above the timeline to make it taller or shorter; double-click it for the usual size. LF Studios remembers it."),
+                    L("Track height (above the track names): Small, Medium, or Large."),
+                    L("Each track's eye hides it and its speaker mutes it, in the preview and the export. The lock keeps everything on it from changing."),
+                    L("A track with nothing on it is a thin row that says how to add something. The arrow next to a name folds a track away."),
+                ],
+                steps: [
+                    L("Scroll up and down when the tracks don't all fit; the ruler and the track names stay put."),
+                    L("Pinch, ⌘-scroll, ⌘+ and ⌘−, or the slider on the right, to see more or less of the video."),
+                ],
+                tips: [L("Hiding or muting a track never deletes anything: turn it back on, and it's all there.")],
+                since: "1.11.0",
+                related: ["video-play", "video-clips"]
             ),
             GuideEntry(
                 id: "video-clips", symbol: "scissors", title: L("Split, trim & reorder clips"),

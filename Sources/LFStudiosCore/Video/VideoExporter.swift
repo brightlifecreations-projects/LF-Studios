@@ -47,7 +47,8 @@ enum VideoDemoExporter {
         range: VideoExportRange = .whole
     ) async throws -> PreparedEdit {
         let source = try await VideoSourceTracks.load(url: inputProject.sourceURL)
-        var project = inputProject
+        // Hidden tracks left out, muted ones silent (the timeline's headers).
+        var project = inputProject.forOutput()
         project.sourceWidth = Double(source.size.width)
         project.sourceHeight = Double(source.size.height)
         let total = project.sourceAxisDuration ?? source.duration

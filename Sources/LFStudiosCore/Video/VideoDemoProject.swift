@@ -845,6 +845,9 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
     var splitVideoAspect: Double?
     /// Custom… in the ratio menu: width / height.
     var customAspect: Double?
+    /// The timeline's Hide, Mute, Lock and collapsed rows, by track
+    /// (VideoTimelineTracks.swift); none set: everything shows and plays.
+    var trackStates: [String: VideoTrackState] = [:]
     /// Auto-zoom on clicks (the Zoom panel's switch). New recordings start
     /// with it off; projects saved before it existed count as on, so their
     /// zoom options stay as they were (VideoManualOnly.swift).
@@ -1474,7 +1477,7 @@ extension VideoDemoProject {
         case aspectPreset, background, backgroundBlur, padding, cornerRadius, shadow, shadowStyle, outline
         case zoomRegions, zoomSpeed, defaultZoomScale, motionBlur
         case overlayEffects, cursorSamples, clickEvents, nativeCursorVisible, cursor, audio
-        case webcam, cameraLayouts, importedCamera, splitVideoAspect, customAspect, autoZoom, reframe, captions, transcriptLanguage, captionStyle, keystrokes, keystrokeStyle, crop
+        case webcam, cameraLayouts, importedCamera, splitVideoAspect, customAspect, trackStates, autoZoom, reframe, captions, transcriptLanguage, captionStyle, keystrokes, keystrokeStyle, crop
         case cards, music, audioTracks, clickSounds, transitions, captionTracks, sources, imageOverlayEffects, markers
         case textCursor, keyPresses, loupeStyle, faceTracking, carriedVoices, speakerNotes
         case ratioVersions, ratioShared, ratioBase, previousRatio, reframeFollowsZooms
@@ -1508,6 +1511,7 @@ extension VideoDemoProject {
         importedCamera = try? container.decodeIfPresent(VideoImportedCamera.self, forKey: .importedCamera)
         splitVideoAspect = (try? container.decodeIfPresent(Double.self, forKey: .splitVideoAspect)).flatMap { $0 }
         customAspect = (try? container.decodeIfPresent(Double.self, forKey: .customAspect)).flatMap { $0 }
+        trackStates = (try? container.decodeIfPresent([String: VideoTrackState].self, forKey: .trackStates)).flatMap { $0 } ?? [:]
         autoZoom = (try? container.decodeIfPresent(Bool.self, forKey: .autoZoom)) ?? true
         reframe = try container.decodeIfPresent(Bool.self, forKey: .reframe) ?? false
         captions = (try? container.decode([VideoCaptionLine].self, forKey: .captions)) ?? []
@@ -1638,6 +1642,7 @@ extension VideoDemoProject {
         try container.encodeIfPresent(importedCamera, forKey: .importedCamera)
         try container.encodeIfPresent(splitVideoAspect, forKey: .splitVideoAspect)
         try container.encodeIfPresent(customAspect, forKey: .customAspect)
+        if !trackStates.isEmpty { try container.encode(trackStates, forKey: .trackStates) }
         try container.encode(autoZoom, forKey: .autoZoom)
         try container.encode(reframe, forKey: .reframe)
         try container.encode(captions, forKey: .captions)

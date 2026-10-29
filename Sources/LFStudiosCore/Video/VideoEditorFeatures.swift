@@ -329,6 +329,7 @@ extension VideoEditorModel {
 
     /// Adds an empty line at the playhead, ready to type.
     func addCaptionAtPlayhead() {
+        if refuseLocked(.captions) { return }
         let start = placementSourceTime(forTimeline: clock.time)
         let nextStart = project.captions.map(\.start).filter { $0 > start + 0.05 }.min() ?? sourceDuration
         // A placeholder the user types over: in their language.
@@ -715,7 +716,7 @@ extension VideoEditorModel {
 
     /// Adds a layout at the playhead, fitted into the free space there.
     func addCameraLayout(_ layout: VideoCameraLayoutRegion.Layout, duration: Double = 3) {
-        guard hasWebcamFootage else { return }
+        guard hasWebcamFootage, !refuseLocked(.camera) else { return }
         var start = placementSourceTime(forTimeline: clock.time)
         let others = project.cameraLayouts.sorted { $0.start < $1.start }
         // Step past every layout the playhead sits in — they can run end
@@ -740,7 +741,7 @@ extension VideoEditorModel {
 
     /// Full-screen camera for the first and last seconds.
     func addCameraIntroOutro(length preferred: Double = 3) {
-        guard hasWebcamFootage else { return }
+        guard hasWebcamFootage, !refuseLocked(.camera) else { return }
         // Short takes get a shorter intro and outro, with some screen between.
         guard let first = segments.first, let last = segments.last, let span = sourceSpanOnTimeline else { return }
         let length = min(preferred, (timelineDuration - 1) / 2, (span.upperBound - span.lowerBound - 1) / 2)

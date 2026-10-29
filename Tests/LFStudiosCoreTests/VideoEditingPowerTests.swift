@@ -195,7 +195,12 @@ final class VideoEditingPowerTests: XCTestCase {
         model.endGesture()
         model.selection = .overlay(first.id)
         model.toggleSelection(.overlay(second.id))
-        let size = CGSize(width: 1036, height: 300)
+        // The track headers (1.11.0) on the left; today's lane sizes (Small).
+        let lanesX = VideoTimelineMetrics.headerWidth + 1
+        VideoTimelineMetrics.rowScale = VideoTimelineTrackHeight.small.scale
+        let rows = VideoTimelineRowLayout(project: model.project, hasCamera: model.hasWebcamFootage)
+        let lanesTop = 45 + VideoTimelineMetrics.rulerHeight + 1
+        let size = CGSize(width: 1036 + lanesX, height: 300)
         let window = NSWindow(contentRect: NSRect(origin: .zero, size: size), styleMask: [.borderless], backing: .buffered, defer: false)
         window.contentView = Host(rootView: AnyView(VideoTimelineView(model: model).frame(width: size.width, height: size.height)))
         window.orderFrontRegardless()
@@ -205,9 +210,9 @@ final class VideoEditingPowerTests: XCTestCase {
             let event = NSEvent.mouseEvent(with: type, location: NSPoint(x: point.x, y: size.height - point.y), modifierFlags: [], timestamp: ProcessInfo.processInfo.systemUptime, windowNumber: window.windowNumber, context: nil, eventNumber: 0, clickCount: 1, pressure: 1)!
             window.sendEvent(event)
         }
-        // One annotation lane under the ruler (x = 18 + 100·t): drag the
-        // first by 1.2 s.
-        let start = CGPoint(x: 18 + 150, y: 45 + 31 + 13)
+        // The annotation lane on its row (x = 18 + 100·t past the headers):
+        // drag the first by 1.2 s.
+        let start = CGPoint(x: lanesX + 18 + 150, y: lanesTop + (rows.contentTop(.annotations) ?? 0) + 13)
         send(.leftMouseDown, start)
         await T.settle(0.05)
         for step in 1...10 {
@@ -230,7 +235,12 @@ final class VideoEditingPowerTests: XCTestCase {
         model.splitAtPlayhead()
         model.selection = .none
         let ids = model.segments.map(\.id)
-        let size = CGSize(width: 1036, height: 300)
+        // The track headers (1.11.0) on the left; today's lane sizes (Small).
+        let lanesX = VideoTimelineMetrics.headerWidth + 1
+        VideoTimelineMetrics.rowScale = VideoTimelineTrackHeight.small.scale
+        let rows = VideoTimelineRowLayout(project: model.project, hasCamera: model.hasWebcamFootage)
+        let lanesTop = 45 + VideoTimelineMetrics.rulerHeight + 1
+        let size = CGSize(width: 1036 + lanesX, height: 300)
         let window = NSWindow(contentRect: NSRect(origin: .zero, size: size), styleMask: [.borderless], backing: .buffered, defer: false)
         window.contentView = Host(rootView: AnyView(VideoTimelineView(model: model).frame(width: size.width, height: size.height)))
         window.orderFrontRegardless()
@@ -240,9 +250,9 @@ final class VideoEditingPowerTests: XCTestCase {
             let event = NSEvent.mouseEvent(with: type, location: NSPoint(x: point.x, y: size.height - point.y), modifierFlags: [], timestamp: ProcessInfo.processInfo.systemUptime, windowNumber: window.windowNumber, context: nil, eventNumber: 0, clickCount: 1, pressure: 1)!
             window.sendEvent(event)
         }
-        // The first clip's name chip sits at its top left: x 19 + 5…, and the
-        // clip track under the (empty) zoom track: 45 + 72 + 5 + 9.
-        let chip = CGPoint(x: 18 + 1 + 5 + 20, y: 45 + 72 + 5 + 9)
+        // The first clip's name chip sits at its top left: x 19 + 5…, on the
+        // Video clips row.
+        let chip = CGPoint(x: lanesX + 18 + 1 + 5 + 20, y: lanesTop + (rows.contentTop(.clips) ?? 0) + 5 + 9)
         send(.leftMouseDown, chip)
         await T.settle(0.05)
         for step in 1...12 {

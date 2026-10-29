@@ -246,6 +246,14 @@ final class VideoEditorModel: ObservableObject {
     @Published var timelineZoom: Double = 1 {
         didSet { refreshTimeline() }
     }
+    /// Small, Medium or Large lanes (remembered on this Mac).
+    @Published var timelineTrackHeight: VideoTimelineTrackHeight = Settings.videoTimelineTrackHeight {
+        didSet {
+            Settings.videoTimelineTrackHeight = timelineTrackHeight
+            VideoTimelineMetrics.rowScale = timelineTrackHeight.scale
+            refreshTimeline()
+        }
+    }
     /// Width of the timeline's lanes on screen (the surface keeps it up to
     /// date) — how far it can zoom depends on it.
     var timelineViewportWidth: CGFloat = 1000
@@ -425,6 +433,9 @@ final class VideoEditorModel: ObservableObject {
         let waveform: Int
         let sourceSize: CGSize
         let extras: VideoTimelineExtrasSignature
+        let tracks: [String: VideoTrackState]
+        let recordingMuted: Bool
+        let trackScale: CGFloat
     }
 
     /// Bumps the timeline's revision when anything it draws changed.
@@ -445,7 +456,10 @@ final class VideoEditorModel: ObservableObject {
             thumbnails: thumbnails.count,
             waveform: waveform?.peaks.count ?? -1,
             sourceSize: project.sourceSize,
-            extras: timelineExtrasSignature
+            extras: timelineExtrasSignature,
+            tracks: project.trackStates,
+            recordingMuted: project.audio.muted,
+            trackScale: VideoTimelineMetrics.rowScale
         )
         guard signature != timelineSignature else { return }
         timelineSignature = signature
@@ -466,6 +480,7 @@ final class VideoEditorModel: ObservableObject {
     }
 
     init(videoURL: URL) {
+        VideoTimelineMetrics.rowScale = Settings.videoTimelineTrackHeight.scale
         // Opened from where it is now: its data points here (VideoDataCleanup).
         let recording = VideoDemoSidecarStore.load(for: videoURL).map { VideoDemoSidecarStore.recordLocation(of: $0, for: videoURL) }
         self.recording = recording
@@ -660,6 +675,8 @@ final class VideoEditorModel: ObservableObject {
     var undoDepth: Int { undoStack.count }
 
     private func rebuildPlan() {
+        // As it plays: hidden tracks left out (the timeline's headers).
+        let project = self.project.forOutput()
         let key = CursorTrackKey(
             sampleCount: project.cursorSamples.count,
             firstSample: project.cursorSamples.first?.time ?? 0,
@@ -1066,9 +1083,11 @@ final class VideoEditorModel: ObservableObject {
     func splitAtPlayhead() {
         // An added sound piece is selected: S splits that track instead.
         if let piece = selectedAudioPiece {
+            if refuseLocked(.sound(piece.track)) { return }
             splitAudioTrack(piece.track)
             return
         }
+        if refuseLocked(.clips) { return }
         let time = clock.time
         guard let segment = segment(atTimeline: time) else { return }
         let sourceTime = segment.sourceTime(forTimelineTime: time)
@@ -1402,6 +1421,7 @@ final class VideoEditorModel: ObservableObject {
 
     @discardableResult
     func addZoom(at time: Double, length: Double = 3, label: String? = nil, configure: (inout VideoZoomRegion) -> Void = { _ in }) -> UUID? {
+        if refuseLocked(.zooms) { return nil }
         let gap = zoomGap(around: time)
         guard gap.upperBound - gap.lowerBound >= VideoZoomRegion.minimumDuration else {
             showNotice(L("There's already a zoom here"), symbol: "plus.magnifyingglass")
@@ -1577,6 +1597,7 @@ final class VideoEditorModel: ObservableObject {
     /// Auto-zoom on clicks, from the Zoom panel's switch (and the toolbar's
     /// Auto Zoom, which turns it on or plans the zooms again): one undo step.
     func setAutoZoom(_ on: Bool) {
+        if refuseLocked(.zooms) { return }
         let total = sourceDuration
         var generated = 0
         mutate(label: on ? "Auto-Zoom On" : "Auto-Zoom Off") { generated = $0.setAutoZoom(on, totalDuration: total) }
@@ -1616,6 +1637,7 @@ final class VideoEditorModel: ObservableObject {
     }
 
     func addOverlay(_ kind: VideoDemoOverlayEffectKind) {
+        if refuseLocked(.annotations) { return }
         // A picture needs a file first (VideoImageOverlays.swift).
         guard kind != .image else { return chooseImageOverlay() }
         let time = clock.time
@@ -1803,6 +1825,10 @@ final class VideoEditorModel: ObservableObject {
     // MARK: Delete / Escape
 
     func deleteSelection() {
+        if let track = lockedTrackInSelection {
+            _ = refuseLocked(track)
+            return
+        }
         if let piece = selectedAudioPiece {
             deleteAudioPiece(piece)
             return
@@ -1913,6 +1939,7 @@ final class VideoEditorModel: ObservableObject {
     }
 
     func speedUpIdle(speed: Double = 8) {
+        if refuseLocked(.clips) { return }
         // Without the pointer's path (or the screen's changes) there's no
         // telling a quiet screen from a busy one — it would speed up
         // everything.

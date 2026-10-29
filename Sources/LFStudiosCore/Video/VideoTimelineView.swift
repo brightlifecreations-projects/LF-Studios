@@ -5,25 +5,20 @@ import SwiftUI
 enum VideoTimelineMetrics {
     static let inset: CGFloat = 18
     static let rulerHeight: CGFloat = 24
-    static let zoomTrackHeight: CGFloat = 34
+    /// Track height (Small, Medium, Large): every lane grows with it.
+    nonisolated(unsafe) static var rowScale: CGFloat = VideoTimelineTrackHeight.medium.scale
+    static func scaled(_ height: CGFloat) -> CGFloat { (height * rowScale).rounded() }
+    static var zoomTrackHeight: CGFloat { scaled(34) }
     static let clickLaneHeight: CGFloat = 14
-    static let clipTrackHeight: CGFloat = 66
-    static let overlayLaneHeight: CGFloat = 26
+    static var clipTrackHeight: CGFloat { scaled(66) }
+    static var overlayLaneHeight: CGFloat { scaled(26) }
     static let overlayLaneGap: CGFloat = 4
-    static let captionLaneHeight: CGFloat = 22
-    static let keysLaneHeight: CGFloat = 18
-    static let cameraLaneHeight: CGFloat = 22
+    static var captionLaneHeight: CGFloat { scaled(22) }
+    static var keysLaneHeight: CGFloat { scaled(18) }
+    static var cameraLaneHeight: CGFloat { scaled(22) }
     static let gap: CGFloat = 7
-
-    /// Captions, shortcuts, and camera layouts sit in front of everything
-    /// else in the picture, so their lanes come first (0 when none).
-    static func textLanesHeight(_ project: VideoDemoProject) -> CGFloat {
-        var height: CGFloat = 0
-        if !project.captions.isEmpty { height += captionLaneHeight + overlayLaneGap }
-        if !project.keystrokes.isEmpty { height += keysLaneHeight + overlayLaneGap }
-        if !project.cameraLayouts.isEmpty { height += cameraLaneHeight + overlayLaneGap }
-        return height > 0 ? height - overlayLaneGap + gap : 0
-    }
+    /// The track headers on the left.
+    static let headerWidth: CGFloat = 204
 
     /// The annotation layers that get a lane, lowest first: one sitting
     /// wholly in a part that was cut away draws nothing and takes none.
@@ -49,24 +44,10 @@ enum VideoTimelineMetrics {
         return (layers.last ?? 0) + (target - layers.count + 1)
     }
 
-    /// Height of the annotation lanes block (0 when there are none).
-    static func overlayAreaHeight(_ project: VideoDemoProject) -> CGFloat {
-        let lanes = overlayLanes(project)
-        guard lanes > 0 else { return 0 }
-        return CGFloat(lanes) * overlayLaneHeight + CGFloat(lanes - 1) * overlayLaneGap + gap
-    }
-
-    /// Top-to-bottom the timeline stacks like the picture does: captions
-    /// and shortcuts (always in front), annotation lanes (the highest lane
-    /// is the frontmost layer), the camera, clicks, and the recording
-    /// itself at the base.
+    /// The ruler and every track's row (VideoTimelineTracks.swift): what
+    /// the timeline shows without scrolling up and down.
     static func contentHeight(_ project: VideoDemoProject) -> CGFloat {
-        var height = rulerHeight + gap + textLanesHeight(project) + overlayAreaHeight(project) + zoomTrackHeight + gap
-        if !project.clickEvents.isEmpty { height += clickLaneHeight + 3 }
-        height += clipTrackHeight
-        // Music and other lanes under the clips (VideoTimelineExtras.swift).
-        height += bottomLanesHeight(project)
-        return height + 12
+        rulerHeight + 1 + VideoTimelineRowLayout(project: project, hasCamera: project.webcam.visible).height
     }
 }
 
@@ -243,11 +224,13 @@ struct VideoTimelineSurface: View {
     @State private var pinchBase: Double?
     /// Anchored zooming, ⌘-scroll, and paging after the playhead.
     @State private var scroller = VideoTimelineScroller()
+    /// Where the lanes are scrolled to (the ruler and headers follow).
+    @State private var offsets = VideoTimelineScrollOffsets()
 
     private typealias M = VideoTimelineMetrics
 
     private var duration: Double { max(model.timelineDuration, model.layoutDurationLock ?? 0, 0.1) }
-    private var contentWidth: CGFloat { max(viewport.width - M.inset * 2, 100) * CGFloat(model.timelineZoom) }
+    private var contentWidth: CGFloat { max(viewport.width - M.headerWidth - 1 - M.inset * 2, 100) * CGFloat(model.timelineZoom) }
     private var pointsPerSecond: CGFloat { contentWidth / CGFloat(duration) }
 
     private var geometry: VideoTimelineGeometry {
@@ -257,14 +240,19 @@ struct VideoTimelineSurface: View {
     private func x(_ time: Double) -> CGFloat { M.inset + CGFloat(time) * pointsPerSecond }
     private func time(_ x: CGFloat) -> Double { min(max(Double((x - M.inset) / pointsPerSecond), 0), duration) }
 
-    private var textTop: CGFloat { M.rulerHeight + M.gap }
-    private var captionTop: CGFloat { textTop }
-    private var keysTop: CGFloat { textTop + (model.project.captions.isEmpty ? 0 : M.captionLaneHeight + M.overlayLaneGap) }
-    private var cameraLaneTop: CGFloat { keysTop + (model.project.keystrokes.isEmpty ? 0 : M.keysLaneHeight + M.overlayLaneGap) }
-    private var overlayTop: CGFloat { textTop + M.textLanesHeight(model.project) }
-    private var zoomTop: CGFloat { overlayTop + M.overlayAreaHeight(model.project) }
-    private var clickTop: CGFloat { zoomTop + M.zoomTrackHeight + M.gap }
+    /// Every track's row (VideoTimelineTracks.swift), below the ruler.
+    private var rows: VideoTimelineRowLayout { VideoTimelineRowLayout(project: model.project, hasCamera: model.hasWebcamFootage) }
+    /// Far above the lanes: a row that shows nothing.
+    private static let nowhere: CGFloat = -10_000
+    private var captionTop: CGFloat { rows.contentTop(.captions) ?? Self.nowhere }
+    private var keysTop: CGFloat { rows.contentTop(.keys) ?? Self.nowhere }
+    private var cameraLaneTop: CGFloat { rows.contentTop(.camera) ?? Self.nowhere }
+    private var overlayTop: CGFloat { rows.contentTop(.annotations) ?? Self.nowhere }
+    private var zoomTop: CGFloat { rows.contentTop(.zooms) ?? 0 }
+    private var clickTop: CGFloat { rows.contentTop(.clips) ?? 0 }
     private var clipTop: CGFloat { clickTop + (model.project.clickEvents.isEmpty ? 0 : M.clickLaneHeight + 3) }
+
+    private func shows(_ track: VideoTimelineTrack) -> Bool { rows.row(track)?.showsContent ?? false }
 
     /// Lane `layer` sits higher the higher its layer (and draws in front);
     /// only the layers on show count.
@@ -291,137 +279,49 @@ struct VideoTimelineSurface: View {
         return snapped.time
     }
 
+    /// The lanes scroll both ways; the ruler follows them across and the
+    /// track headers up and down (VideoTimelineScroller.swift).
     var body: some View {
-        let height = max(M.contentHeight(model.project), viewport.height)
-        let overflows = height > viewport.height + 0.5
-        // Lanes that don't fit scroll vertically. It opens (and starts
-        // overflowing) at the bottom, where the recording itself is.
-        ScrollViewReader { reader in
-        ScrollView(.vertical, showsIndicators: overflows) {
-        VStack(spacing: 0) {
-        ScrollView(.horizontal, showsIndicators: model.timelineZoom > 1.01) {
-            ZStack(alignment: .topLeading) {
-                // Sound files dropped on the timeline become tracks there.
+        let rows = self.rows
+        let lanesViewport = CGSize(width: max(viewport.width - M.headerWidth - 1, 100), height: max(viewport.height - M.rulerHeight - 1, 40))
+        let height = max(rows.height, lanesViewport.height)
+        HStack(spacing: 0) {
+            VStack(spacing: 0) {
+                VideoTimelineHeaderCorner(model: model)
+                    .frame(height: M.rulerHeight)
+                Rectangle().fill(VideoEditorTheme.hairline).frame(height: 1)
+                // Drawn over the space it's given: all the rows never stretch it.
                 Color.clear
-                    .onDrop(of: [.fileURL], delegate: VideoAudioDrop(model: model, geometry: geometry))
-                // Scrub anywhere that isn't an object.
-                Color.clear
-                    .contentShape(Rectangle())
-                    .gesture(scrubGesture)
-
-                VideoTimelineRuler(duration: duration, pointsPerSecond: pointsPerSecond, inset: M.inset)
-                    .frame(width: contentWidth + M.inset * 2, height: M.rulerHeight)
-                    .allowsHitTesting(false)
-                if !model.project.markers.isEmpty {
-                    VideoMarkerFlags(model: model, geometry: geometry, height: M.rulerHeight)
-                }
-
-                zoomTrack
-                if !model.project.clickEvents.isEmpty {
-                    VideoClickLane(
-                        items: model.project.clickEvents.compactMap { click in
-                            model.timelineTime(forSource: click.time).map { VideoClickLane.Item(id: click.id, time: $0) }
-                        },
-                        selectedIDs: model.selectedIDs { if case .click(let id) = $0 { return id } else { return nil } },
-                        geometry: geometry,
-                        model: model,
-                        hover: hover
-                    )
-                    .equatable()
-                    .offset(y: clickTop)
-                }
-                clipTrack
-                // Cards, cut markers, recording boundaries, music, added sound.
-                VideoTimelineExtrasLayer(model: model, geometry: geometry, clipTop: clipTop)
-                if !model.project.overlayEffects.isEmpty { overlayLanes }
-                if !model.project.captions.isEmpty {
-                    VideoCaptionLane(
-                        items: model.plan.captions.map { VideoCaptionLane.Item(id: $0.id, start: $0.start, end: $0.end, text: $0.text, hasOwnPlacement: $0.placement != nil) },
-                        selectedIDs: model.selectedIDs { if case .caption(let id) = $0 { return id } else { return nil } },
-                        geometry: geometry,
-                        model: model,
-                        hover: hover
-                    )
-                    .equatable()
-                    .offset(y: captionTop)
-                }
-                if !model.project.keystrokes.isEmpty {
-                    VideoKeysLane(
-                        items: model.project.keystrokes.compactMap { event in
-                            model.timelineTime(forSource: event.time).map { VideoKeysLane.Item(id: event.id, time: $0, label: event.keys.joined()) }
-                        },
-                        selectedIDs: model.selectedIDs { if case .keystroke(let id) = $0 { return id } else { return nil } },
-                        hidden: !model.project.keystrokeStyle.visible,
-                        geometry: geometry,
-                        model: model
-                    )
-                    .equatable()
-                    .offset(y: keysTop)
-                }
-
-                if !model.project.cameraLayouts.isEmpty {
-                    VideoCameraLayoutLane(
-                        items: model.cameraLayoutSpans.map { VideoCameraLayoutLane.Item(id: $0.region.id, start: $0.start, end: $0.end, layout: $0.region.layout) },
-                        selectedIDs: model.selectedIDs { if case .cameraLayout(let id) = $0 { return id } else { return nil } },
-                        geometry: geometry,
-                        model: model,
-                        hover: hover
-                    )
-                    .equatable()
-                    .offset(y: cameraLaneTop)
-                }
-
-                VideoTimelineHoverLayer(
-                    hover: hover,
-                    model: model,
-                    geometry: geometry,
-                    height: height,
-                    zoomTop: zoomTop,
-                    showsZoomHint: model.project.zoomRegions.isEmpty,
-                    viewportWidth: viewport.width
-                )
-                VideoTimelinePlayhead(clock: model.clock, x: { x($0) }, height: height)
-                VideoTimelinePlayheadFollower(clock: model.clock, model: model, scroller: scroller, x: { x($0) })
-            }
-            .frame(width: contentWidth + M.inset * 2, height: height, alignment: .topLeading)
-            .background(VideoTimelineScrollFinder(scroller: scroller, model: model))
-            .onContinuousHover { phase in
-                switch phase {
-                case .active(let location):
-                    hover.update(time: time(location.x), overZoomTrack: location.y >= zoomTop && location.y <= zoomTop + M.zoomTrackHeight)
-                    scroller.pointerIsOver(true)
-                case .ended:
-                    hover.update(time: nil, overZoomTrack: false)
-                    scroller.pointerIsOver(false)
-                }
-            }
-            .gesture(
-                MagnificationGesture()
-                    .onChanged { value in
-                        if pinchBase == nil { pinchBase = model.timelineZoom }
-                        // Pinching zooms around the pointer.
-                        if let time = hover.time { model.pendingZoomAnchor = (time, x(time) - scroller.visible.minX) }
-                        model.timelineZoom = min(max((pinchBase ?? 1) * value, 1), model.maxTimelineZoom)
+                    .overlay(alignment: .topLeading) {
+                        VideoTimelineTrackHeaders(model: model, rows: rows, offsets: offsets)
                     }
-                    .onEnded { _ in pinchBase = nil }
-            )
-        }
-        .frame(height: height)
-        Color.clear.frame(height: 0).id(Self.bottomAnchor)
-        }
-        }
-        .onAppear { reader.scrollTo(Self.bottomAnchor, anchor: .bottom) }
-        .onChange(of: overflows) { now in
-            // Not mid-drag: the dragged bar would leave the view.
-            if now, !hover.dragging { reader.scrollTo(Self.bottomAnchor, anchor: .bottom) }
-        }
+                    .clipped()
+            }
+            .frame(width: M.headerWidth)
+            .background(VideoEditorTheme.panel)
+            Rectangle().fill(VideoEditorTheme.hairline).frame(width: 1)
+            VStack(spacing: 0) {
+                rulerStrip
+                    .frame(height: M.rulerHeight)
+                Rectangle().fill(VideoEditorTheme.hairline).frame(height: 1)
+                // Up and down outside, across inside (as before 1.11.0).
+                ScrollView(.vertical, showsIndicators: height > lanesViewport.height + 0.5) {
+                    VStack(spacing: 0) {
+                        ScrollView(.horizontal, showsIndicators: model.timelineZoom > 1.01) {
+                            lanes(rows: rows, height: height)
+                        }
+                        .frame(height: height)
+                    }
+                }
+            }
         }
         .onAppear {
             scroller.pointsPerSecond = pointsPerSecond
-            model.timelineViewportWidth = max(viewport.width - M.inset * 2, 100)
+            scroller.offsets = offsets
+            model.timelineViewportWidth = max(lanesViewport.width - M.inset * 2, 100)
         }
         .onChange(of: viewport.width) { width in
-            model.timelineViewportWidth = max(width - M.inset * 2, 100)
+            model.timelineViewportWidth = max(width - M.headerWidth - 1 - M.inset * 2, 100)
         }
         .onChange(of: contentWidth) { _ in
             // A new scale: the moment under the pointer (or the playhead)
@@ -437,7 +337,147 @@ struct VideoTimelineSurface: View {
         .onChange(of: duration) { _ in scroller.pointsPerSecond = pointsPerSecond }
     }
 
-    private static let bottomAnchor = "timeline-bottom"
+    /// The ruler with the markers, following the lanes across.
+    private var rulerStrip: some View {
+        VideoTimelineRulerStrip(offsets: offsets) {
+            ZStack(alignment: .topLeading) {
+                Color.clear
+                    .contentShape(Rectangle())
+                    .gesture(scrubGesture)
+                VideoTimelineRuler(duration: duration, pointsPerSecond: pointsPerSecond, inset: M.inset)
+                    .frame(width: contentWidth + M.inset * 2, height: M.rulerHeight)
+                    .allowsHitTesting(false)
+                if !model.project.markers.isEmpty {
+                    VideoMarkerFlags(model: model, geometry: geometry, height: M.rulerHeight)
+                }
+                VideoTimelinePlayhead(clock: model.clock, x: { x($0) }, height: M.rulerHeight)
+            }
+            .frame(width: contentWidth + M.inset * 2, height: M.rulerHeight, alignment: .topLeading)
+        }
+    }
+
+    /// A track's lanes as the header says: dimmed while hidden, not to be
+    /// touched while locked.
+    private func trackLook<Content: View>(_ track: VideoTimelineTrack, @ViewBuilder _ content: () -> Content) -> some View {
+        let state = model.project.trackState(track)
+        return content()
+            .opacity(state.hidden ? 0.4 : 1)
+            .allowsHitTesting(!state.locked)
+    }
+
+    private func lanes(rows: VideoTimelineRowLayout, height: CGFloat) -> some View {
+        ZStack(alignment: .topLeading) {
+            // Sound files dropped on the timeline become tracks there.
+            Color.clear
+                .onDrop(of: [.fileURL], delegate: VideoAudioDrop(model: model, geometry: geometry))
+            // Scrub anywhere that isn't an object.
+            Color.clear
+                .contentShape(Rectangle())
+                .gesture(scrubGesture)
+            VideoTimelineRowBackgrounds(rows: rows, width: contentWidth + M.inset * 2, locked: Set(rows.rows.filter { model.project.isTrackLocked($0.track) }.map(\.track)))
+
+            trackLook(.zooms) { zoomTrack }
+            trackLook(.clips) {
+                ZStack(alignment: .topLeading) {
+                    if !model.project.clickEvents.isEmpty {
+                        VideoClickLane(
+                            items: model.project.clickEvents.compactMap { click in
+                                model.timelineTime(forSource: click.time).map { VideoClickLane.Item(id: click.id, time: $0) }
+                            },
+                            selectedIDs: model.selectedIDs { if case .click(let id) = $0 { return id } else { return nil } },
+                            geometry: geometry,
+                            model: model,
+                            hover: hover
+                        )
+                        .equatable()
+                        .offset(y: clickTop)
+                    }
+                    clipTrack
+                }
+            }
+            // Cards, cut markers and recording boundaries on the clips;
+            // added camera video, music and sound files on their rows.
+            VideoTimelineExtrasLayer(model: model, geometry: geometry, clipTop: clipTop, rows: rows)
+            if shows(.annotations) { trackLook(.annotations) { overlayLanes } }
+            if shows(.captions) {
+                trackLook(.captions) {
+                    VideoCaptionLane(
+                        items: model.plan.captions.map { VideoCaptionLane.Item(id: $0.id, start: $0.start, end: $0.end, text: $0.text, hasOwnPlacement: $0.placement != nil) },
+                        selectedIDs: model.selectedIDs { if case .caption(let id) = $0 { return id } else { return nil } },
+                        geometry: geometry,
+                        model: model,
+                        hover: hover
+                    )
+                    .equatable()
+                    .offset(y: captionTop)
+                }
+            }
+            if shows(.keys) {
+                trackLook(.keys) {
+                    VideoKeysLane(
+                        items: model.project.keystrokes.compactMap { event in
+                            model.timelineTime(forSource: event.time).map { VideoKeysLane.Item(id: event.id, time: $0, label: event.keys.joined()) }
+                        },
+                        selectedIDs: model.selectedIDs { if case .keystroke(let id) = $0 { return id } else { return nil } },
+                        hidden: !model.project.keystrokeStyle.visible,
+                        geometry: geometry,
+                        model: model
+                    )
+                    .equatable()
+                    .offset(y: keysTop)
+                }
+            }
+            if shows(.camera), !model.project.cameraLayouts.isEmpty, model.hasWebcamFootage {
+                trackLook(.camera) {
+                    VideoCameraLayoutLane(
+                        items: model.cameraLayoutSpans.map { VideoCameraLayoutLane.Item(id: $0.region.id, start: $0.start, end: $0.end, layout: $0.region.layout) },
+                        selectedIDs: model.selectedIDs { if case .cameraLayout(let id) = $0 { return id } else { return nil } },
+                        geometry: geometry,
+                        model: model,
+                        hover: hover
+                    )
+                    .equatable()
+                    .offset(y: cameraLaneTop)
+                }
+            }
+            VideoTimelineRowHints(rows: rows, inset: M.inset, width: min(contentWidth, max(viewport.width - M.headerWidth - M.inset * 2, 100)))
+
+            VideoTimelineHoverLayer(
+                hover: hover,
+                model: model,
+                geometry: geometry,
+                height: height,
+                zoomTop: zoomTop,
+                showsZoomHint: model.project.zoomRegions.isEmpty,
+                viewportWidth: viewport.width - M.headerWidth,
+                linesTop: 0
+            )
+            VideoTimelinePlayhead(clock: model.clock, x: { x($0) }, height: height, showsKnob: false)
+            VideoTimelinePlayheadFollower(clock: model.clock, model: model, scroller: scroller, x: { x($0) })
+        }
+        .frame(width: contentWidth + M.inset * 2, height: height, alignment: .topLeading)
+        .background(VideoTimelineScrollFinder(scroller: scroller, model: model))
+        .onContinuousHover { phase in
+            switch phase {
+            case .active(let location):
+                hover.update(time: time(location.x), overZoomTrack: location.y >= zoomTop && location.y <= zoomTop + M.zoomTrackHeight)
+                scroller.pointerIsOver(true)
+            case .ended:
+                hover.update(time: nil, overZoomTrack: false)
+                scroller.pointerIsOver(false)
+            }
+        }
+        .gesture(
+            MagnificationGesture()
+                .onChanged { value in
+                    if pinchBase == nil { pinchBase = model.timelineZoom }
+                    // Pinching zooms around the pointer.
+                    if let time = hover.time { model.pendingZoomAnchor = (time, x(time) - scroller.visible.minX) }
+                    model.timelineZoom = min(max((pinchBase ?? 1) * value, 1), model.maxTimelineZoom)
+                }
+                .onEnded { _ in pinchBase = nil }
+        )
+    }
 
     private var scrubGesture: some Gesture {
         DragGesture(minimumDistance: 0)
@@ -1274,6 +1314,8 @@ struct VideoTimelinePlayhead: View {
     @ObservedObject var clock: VideoDemoPlaybackClock
     let x: (Double) -> CGFloat
     let height: CGFloat
+    /// The knob sits on the ruler; the lanes get just the line.
+    var showsKnob = true
 
     var body: some View {
         let position = x(clock.time)
@@ -1281,10 +1323,12 @@ struct VideoTimelinePlayhead: View {
             Rectangle()
                 .fill(VideoEditorTheme.playhead)
                 .frame(width: 2, height: height)
-            PlayheadKnob()
-                .fill(VideoEditorTheme.playhead)
-                .frame(width: 13, height: 17)
-                .shadow(color: .black.opacity(0.4), radius: 2, y: 1)
+            if showsKnob {
+                PlayheadKnob()
+                    .fill(VideoEditorTheme.playhead)
+                    .frame(width: 13, height: 17)
+                    .shadow(color: .black.opacity(0.4), radius: 2, y: 1)
+            }
         }
         .offset(x: position - 6.5)
         .opacity(Self.hiddenInSnapshots ? 0 : 1)
