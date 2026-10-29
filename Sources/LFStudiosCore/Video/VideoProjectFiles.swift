@@ -52,20 +52,25 @@ extension UTType {
         UTType(VideoProjectDocument.typeIdentifier) ?? UTType(filenameExtension: VideoProjectDocument.fileExtension, conformingTo: .package) ?? .package
     }
 
+    /// A `.lfstudios` project from LF Studios 1.1–1.8 (still opens).
+    static var lfstudiosPreviousProject: UTType {
+        UTType(VideoProjectDocument.previousTypeIdentifier) ?? UTType(filenameExtension: VideoProjectDocument.previousFileExtension, conformingTo: .package) ?? .package
+    }
+
     /// A project saved while the app was called ShotStyle (still opens).
     static var shotstyleProject: UTType {
         UTType(VideoProjectDocument.legacyTypeIdentifier) ?? UTType(filenameExtension: VideoProjectDocument.legacyFileExtension, conformingTo: .package) ?? .package
     }
 }
 
-/// Opening a `.lfstudios` project in the video editor.
+/// Opening a project (`.lfsp`, or an older `.lfstudios`/`.shotstyle`) in the video editor.
 @MainActor
 enum VideoProjectOpener {
     /// File ▸ Open… (⌘O) and Home's Open…: a project, a folder (a
     /// recording's own, a Creative Handoff, any other), or a video.
     static func chooseAndOpen() {
         let panel = NSOpenPanel()
-        panel.allowedContentTypes = [.lfstudiosProject, .shotstyleProject, .folder, .mpeg4Movie, .quickTimeMovie, .movie]
+        panel.allowedContentTypes = [.lfstudiosProject, .lfstudiosPreviousProject, .shotstyleProject, .folder, .mpeg4Movie, .quickTimeMovie, .movie]
         panel.allowsMultipleSelection = false
         panel.canChooseDirectories = true
         panel.treatsFilePackagesAsDirectories = false
@@ -170,7 +175,8 @@ extension VideoEditorModel {
     }
 
     /// ⌘S: into the project file this edit came from or was saved to (asks
-    /// where the first time); ⇧⌘S always asks.
+    /// where the first time), under its own name, so an older `.lfstudios`
+    /// stays one; ⇧⌘S always asks, and writes a `.lfsp`.
     func saveProject(as saveAs: Bool = false) {
         guard isReady else { return }
         saveDraftNow()
@@ -225,7 +231,7 @@ extension VideoEditorModel {
         let panel = NSSavePanel()
         panel.allowedContentTypes = [.lfstudiosProject]
         panel.canCreateDirectories = true
-        panel.nameFieldStringValue = "\(projectFileURL?.deletingPathExtension().lastPathComponent ?? project.sourceURL.deletingPathExtension().lastPathComponent).\(VideoProjectDocument.fileExtension)"
+        panel.nameFieldStringValue = VideoProjectDocument.saveAsName(current: projectFileURL, source: project.sourceURL)
         let popup = NSPopUpButton(frame: NSRect(x: 0, y: 0, width: 340, height: 26), pullsDown: false)
         popup.addItems(withTitles: [L("Include media (works on any Mac)"), L("Link to media (small, this Mac only)")])
         popup.selectItem(at: mode == .included ? 0 : 1)
@@ -245,10 +251,9 @@ extension VideoEditorModel {
         stack.spacing = 6
         stack.edgeInsets = NSEdgeInsets(top: 8, left: 16, bottom: 10, right: 16)
         panel.accessoryView = stack
-        guard panel.runModal() == .OK, var url = panel.url else { return nil }
+        guard panel.runModal() == .OK, let chosen = panel.url else { return nil }
         Settings.projectIncludesInstalledFonts = fonts.state == .on
-        if url.pathExtension != VideoProjectDocument.fileExtension { url.appendPathExtension(VideoProjectDocument.fileExtension) }
-        return (url, popup.indexOfSelectedItem == 0 ? .included : .linked)
+        return (VideoProjectDocument.saveAsURL(chosen), popup.indexOfSelectedItem == 0 ? .included : .linked)
     }
 }
 

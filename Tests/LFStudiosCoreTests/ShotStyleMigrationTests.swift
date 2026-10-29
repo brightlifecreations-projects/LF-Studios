@@ -148,7 +148,7 @@ final class ShotStyleMigrationTests: XCTestCase {
         XCTAssertEqual(opened.contents.project.sourcePath, video.path)
         XCTAssertTrue(VideoProjectDocument.openableExtensions.contains("shotstyle"))
         XCTAssertTrue(VideoProjectDocument.openableExtensions.contains("lfstudios"))
-        XCTAssertEqual(VideoProjectDocument.fileExtension, "lfstudios", "new projects save as .lfstudios")
+        XCTAssertEqual(VideoProjectDocument.fileExtension, "lfsp", "new projects save as .lfsp")
     }
 
     func testShotStylePresetsStillImportWithTheirPictures() throws {
@@ -168,8 +168,9 @@ final class ShotStyleMigrationTests: XCTestCase {
         XCTAssertEqual(unpacked.first?.name, "Old look")
         guard case .image(let path) = unpacked.first?.style.background else { return XCTFail("the picture came along") }
         XCTAssertEqual(try Data(contentsOf: URL(fileURLWithPath: path)), Data([7, 7, 7]))
-        XCTAssertEqual(VideoStylePresetFile.fileExtension, "lfstudiospresets")
-        XCTAssertEqual(VideoStylePresetFile.legacyFileExtension, "shotstylepresets")
+        XCTAssertEqual(VideoStylePresetFile.fileExtension, "lfss")
+        XCTAssertTrue(VideoStylePresetFile.openableExtensions.contains("lfstudiospresets"))
+        XCTAssertTrue(VideoStylePresetFile.openableExtensions.contains("shotstylepresets"))
     }
 
     func testExistingRecordingsKeepTheirIDAttribute() {
@@ -223,7 +224,7 @@ final class ShotStyleMigrationTests: XCTestCase {
         XCTAssertEqual(plist["CFBundleName"] as? String, "LF Studios")
         XCTAssertEqual(plist["CFBundleIdentifier"] as? String, "com.lfstudios.app")
         let types = (plist["CFBundleDocumentTypes"] as? [[String: Any]] ?? []).flatMap { $0["LSItemContentTypes"] as? [String] ?? [] }
-        for type in ["com.lfstudios.project", "com.shotstyle.project", "com.lfstudios.presets", "com.shotstyle.presets"] {
+        for type in ["com.lfstudios.lfsp", "com.lfstudios.project", "com.shotstyle.project", "com.lfstudios.style", "com.lfstudios.presets", "com.shotstyle.presets"] {
             XCTAssertTrue(types.contains(type), "\(type) opens")
         }
         for script in ["scripts/publish-release.sh", ".github/workflows/release.yml"] {

@@ -83,7 +83,7 @@ final class RecordingFolderTests: XCTestCase {
         XCTAssertTrue(exists(folder.appendingPathComponent("07 Data/Recording data.json")))
         XCTAssertTrue(exists(folder.appendingPathComponent("Speaker notes.txt")))
         XCTAssertTrue(exists(folder.appendingPathComponent("README.txt")))
-        XCTAssertTrue(exists(folder.appendingPathComponent("Product demo.lfstudios/project.json")))
+        XCTAssertTrue(exists(folder.appendingPathComponent("Product demo.lfsp/project.json")))
         XCTAssertFalse(exists(folder.appendingPathComponent("05 Captions")), "no captions yet: no empty folder")
         XCTAssertFalse(exists(folder.appendingPathComponent("04 Graphics")))
         // Moved, not copied: nothing is left behind in the hidden folder.
@@ -241,7 +241,7 @@ final class RecordingFolderTests: XCTestCase {
         let result = try await organize(try await take())
         let renamed = place.appendingPathComponent("Renamed in Finder", isDirectory: true)
         try FileManager.default.moveItem(at: result.folder, to: renamed)
-        var opened = try VideoProjectPackage.open(renamed.appendingPathComponent("Product demo.lfstudios"))
+        var opened = try VideoProjectPackage.open(renamed.appendingPathComponent("Product demo.lfsp"))
         XCTAssertEqual(opened.contents.project.sourceURL.standardizedFileURL.path, renamed.appendingPathComponent("01 Screen/Product demo.mp4").standardizedFileURL.path)
         XCTAssertTrue(exists(opened.contents.project.sourceURL))
         XCTAssertTrue(exists(URL(fileURLWithPath: opened.contents.recording!.webcam!.path)))
@@ -249,14 +249,14 @@ final class RecordingFolderTests: XCTestCase {
         let elsewhere = root.deletingLastPathComponent().appendingPathComponent("Another drive folder/Inside", isDirectory: true)
         try FileManager.default.createDirectory(at: elsewhere.deletingLastPathComponent(), withIntermediateDirectories: true)
         try FileManager.default.moveItem(at: renamed, to: elsewhere)
-        opened = try VideoProjectPackage.open(elsewhere.appendingPathComponent("Product demo.lfstudios"))
+        opened = try VideoProjectPackage.open(elsewhere.appendingPathComponent("Product demo.lfsp"))
         XCTAssertTrue(exists(opened.contents.project.sourceURL))
         XCTAssertTrue(exists(URL(fileURLWithPath: opened.contents.recording!.webcam!.path)))
     }
 
     func testHomeFindsTheFolderWhereverItWasSavedAndAfterAMove() async throws {
         let result = try await organize(try await take())
-        XCTAssertEqual(VideoRecordingFolders.projects(scanning: [], root: root).map(\.lastPathComponent), ["Product demo.lfstudios"])
+        XCTAssertEqual(VideoRecordingFolders.projects(scanning: [], root: root).map(\.lastPathComponent), ["Product demo.lfsp"])
         let moved = root.deletingLastPathComponent().appendingPathComponent("Moved", isDirectory: true)
         try FileManager.default.moveItem(at: result.folder, to: moved)
         XCTAssertEqual(VideoRecordingFolders.projects(scanning: [], root: root).first?.deletingLastPathComponent().standardizedFileURL, moved.standardizedFileURL)

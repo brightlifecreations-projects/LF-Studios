@@ -319,7 +319,7 @@ final class VideoEditorModel: ObservableObject {
     let media = VideoEditorMedia()
     lazy var previewRenderer = VideoPreviewRenderer(model: self)
     let recording: VideoDemoRecordingMetadata?
-    /// The `.lfstudios` project this edit was opened from or saved to
+    /// The project file (`.lfsp`, or an older `.lfstudios`) this edit was opened from or saved to
     /// (VideoProjectFiles.swift); nil: just the recording's own edit.
     @Published var projectFileURL: URL?
     @Published var projectMediaMode: VideoProjectDocument.MediaMode?

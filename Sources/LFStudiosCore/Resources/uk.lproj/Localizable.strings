@@ -2158,8 +2158,8 @@
 	<string>Експортувати сюди</string>
 	<key>Export Presets…</key>
 	<string>Експортувати стилі…</string>
-	<key>Export Presets… and Import Presets… share them as a small file.</key>
-	<string>«Експортувати стилі…» й «Імпортувати стилі…» дають змогу ділитися ними як невеликим файлом.</string>
+	<key>Export Presets… and Import Presets… share them as a small .lfss file (LF Studios Style). Older .lfstudiospresets and .shotstylepresets files import too.</key>
+	<string>«Експортувати стилі…» й «Імпортувати стилі…» дають змогу ділитися ними як невеликим файлом .lfss (LF Studios Style). Старіші файли .lfstudiospresets і .shotstylepresets теж імпортуються.</string>
 	<key>Export Video…</key>
 	<string>Експортувати відео…</string>
 	<key>Export a GIF or audio only</key>
@@ -3480,6 +3480,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Нове в останніх версіях. Клацніть будь-що, щоб дізнатися, як це працює.</string>
 	<key>New loupes take the look of the last one you changed.</key>
 	<string>Нові лупи отримують вигляд останньої, яку ви змінили.</string>
+	<key>New projects are saved as .lfsp files. Save Project (⌘S) keeps an older .lfstudios project's name; Save Project As… (⇧⌘S) makes a .lfsp.</key>
+	<string>Нові проєкти зберігаються як файли .lfsp. «Зберегти проєкт» (⌘S) залишає старішому проєкту .lfstudios його назву; «Зберегти проєкт як…» (⇧⌘S) створює файл .lfsp.</string>
 	<key>New recording</key>
 	<string>Новий запис</string>
 	<key>New recording records an area of the screen, a window, or the whole screen.</key>
@@ -3660,6 +3662,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Зсув</string>
 	<key>Older</key>
 	<string>Раніше</string>
+	<key>Older projects open too: .lfstudios from LF Studios 1.8 and earlier, and .shotstyle from ShotStyle. LF Studios never renames them.</key>
+	<string>Старіші проєкти теж відкриваються: .lfstudios з LF Studios 1.8 і давніших версій та .shotstyle з ShotStyle. LF Studios ніколи їх не перейменовує.</string>
 	<key>Older than 1.4.1? Download the latest version once by hand from the LF Studios releases page. After that, it updates itself.</key>
 	<string>Версія старша за 1.4.1? Один раз завантажте найновішу версію вручну зі сторінки випусків LF Studios. Після цього програма оновлюватиметься сама.</string>
 	<key>On macOS 13, a window is captured as you see it on screen, including anything in front of it.</key>
@@ -3752,8 +3756,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Спершу відкрийте запис у відеоредакторі, а тоді клацніть «Показати».</string>
 	<key>Open a recording, or any MP4 or MOV video, in the video editor.</key>
 	<string>Відкрийте запис або будь-яке відео MP4 чи MOV у відеоредакторі.</string>
-	<key>Open a saved .lfstudios project, a recording's folder, or a video.</key>
-	<string>Відкрийте збережений проєкт .lfstudios, папку запису або відео.</string>
+	<key>Open a saved .lfsp project, a recording's folder, or a video.</key>
+	<string>Відкрийте збережений проєкт .lfsp, папку запису або відео.</string>
 	<key>Open a screenshot from Home, History, or the preview after capture. The tools are in the toolbar at the top.</key>
 	<string>Відкрийте знімок з головної, історії чи перегляду після знімка. Інструменти — на панелі інструментів угорі.</string>
 	<key>Open a screenshot to mark it up, then copy or save the result.</key>
@@ -4100,8 +4104,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Обробляється на вашому Mac.</string>
 	<key>Projects</key>
 	<string>Проєкти</string>
-	<key>Projects from ShotStyle (.shotstyle) open too.</key>
-	<string>Проєкти ShotStyle (.shotstyle) теж відкриваються.</string>
 	<key>Projects shows your recordings, screenshots, and saved projects, newest first. Click one to open it. Right-click for Show in Finder, Creative Handoff…, or Delete.</key>
 	<string>У «Проєктах» — ваші записи, знімки та збережені проєкти, найновіші вгорі. Клацніть, щоб відкрити. Клацніть правою кнопкою, щоб вибрати «Показати у Finder», «Творче передавання…» або «Видалити».</string>
 	<key>Pure</key>

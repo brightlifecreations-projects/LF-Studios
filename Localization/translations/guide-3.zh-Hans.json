@@ -293,8 +293,8 @@
   "A preset saves the background, frame, cursor, zooms, captions, keys, and camera. Tick Include aspect ratio to save the shape too.": {
     "zh-Hans": "预设会存储背景、边框、指针、缩放、字幕、按键和摄像头。勾选“包括宽高比”可同时存储画面比例。"
   },
-  "Export Presets… and Import Presets… share them as a small file.": {
-    "zh-Hans": "“导出预设…”和“导入预设…”可以通过一个小文件分享预设。"
+  "Export Presets… and Import Presets… share them as a small .lfss file (LF Studios Style). Older .lfstudiospresets and .shotstylepresets files import too.": {
+    "zh-Hans": "“导出预设…”和“导入预设…”可以通过一个小的 .lfss 文件（LF Studios Style）分享预设。较早的 .lfstudiospresets 和 .shotstylepresets 文件也可以导入。"
   },
   "Your own look, one click away.": {
     "zh-Hans": "你自己的外观，一键即可应用。"
@@ -587,8 +587,8 @@
   "Open Project… in Home, File ▸ Open Project… (⌘O), or double-click the project in Finder.": {
     "zh-Hans": "“主页”中的“打开项目…”、“文件 ▸ 打开项目…”（⌘O），或在“访达”中连按两次项目。"
   },
-  "Projects from ShotStyle (.shotstyle) open too.": {
-    "zh-Hans": "ShotStyle 的项目（.shotstyle）也可以打开。"
+  "Older projects open too: .lfstudios from LF Studios 1.8 and earlier, and .shotstyle from ShotStyle. LF Studios never renames them.": {
+    "zh-Hans": "较早的项目也可以打开：LF Studios 1.8 及更早版本的 .lfstudios，以及 ShotStyle 的 .shotstyle。LF Studios 从不重命名它们。"
   },
   "Your edits are kept": {
     "zh-Hans": "你的编辑会被保留"
@@ -1105,5 +1105,8 @@
   },
   "Press %@, or open the LF Studios menu in the menu bar and choose Capture Window.": {
     "zh-Hans": "按下 %@，或打开菜单栏中的 LF Studios 菜单，然后选择“捕捉窗口”。"
+  },
+  "New projects are saved as .lfsp files. Save Project (⌘S) keeps an older .lfstudios project's name; Save Project As… (⇧⌘S) makes a .lfsp.": {
+    "zh-Hans": "新项目会存储为 .lfsp 文件。“存储项目”（⌘S）会保留较早的 .lfstudios 项目的名称；“项目存储为…”（⇧⌘S）会生成 .lfsp 文件。"
   }
 }

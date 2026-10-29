@@ -479,7 +479,7 @@ enum VideoFolderOpener {
 
     /// Opens a project made from a folder's files. The folder stays as it
     /// is: nothing is written in it (not even the mark that identifies a
-    /// recording) until Save writes `<Folder>.lfstudios` there.
+    /// recording) until Save writes `<Folder>.lfsp` there.
     @discardableResult
     static func openUnsaved(_ contents: VideoProjectContents, folder: URL) -> Bool {
         VideoFileIdentity.protect(folder)

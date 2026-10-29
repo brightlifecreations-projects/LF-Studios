@@ -111,7 +111,12 @@ extension VideoEditorModel {
     // MARK: Sharing
 
     private static var presetFileType: UTType {
-        UTType(filenameExtension: VideoStylePresetFile.fileExtension, conformingTo: .json) ?? .json
+        UTType(VideoStylePresetFile.typeIdentifier) ?? UTType(filenameExtension: VideoStylePresetFile.fileExtension, conformingTo: .json) ?? .json
+    }
+
+    /// `.lfstudiospresets`, exported by LF Studios 1.1–1.8.
+    private static var previousPresetFileType: UTType {
+        UTType(VideoStylePresetFile.previousTypeIdentifier) ?? UTType(filenameExtension: VideoStylePresetFile.previousFileExtension, conformingTo: .json) ?? .json
     }
 
     /// Presets exported while the app was called ShotStyle.
@@ -137,7 +142,7 @@ extension VideoEditorModel {
 
     func importPresets() {
         let panel = NSOpenPanel()
-        panel.allowedContentTypes = [Self.presetFileType, Self.legacyPresetFileType, .json]
+        panel.allowedContentTypes = [Self.presetFileType, Self.previousPresetFileType, Self.legacyPresetFileType, .json]
         panel.allowsMultipleSelection = false
         guard panel.runModal() == .OK, let url = panel.url else { return }
         guard let count = presets.importFile(url) else {
@@ -149,7 +154,7 @@ extension VideoEditorModel {
 }
 
 extension VideoStylePresetStore {
-    /// Adds the presets in a `.lfstudiospresets` (or older `.shotstylepresets`)
+    /// Adds the presets in a `.lfss` (or older `.lfstudiospresets`/`.shotstylepresets`)
     /// file; nil when it isn't one. Returns how many were added.
     @discardableResult
     func importFile(_ url: URL) -> Int? {

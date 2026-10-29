@@ -43,6 +43,20 @@
 			<string>Owner</string>
 			<key>LSItemContentTypes</key>
 			<array>
+				<string>com.lfstudios.lfsp</string>
+			</array>
+			<key>LSTypeIsPackage</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>LF Studios Project (1.8 and earlier)</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSHandlerRank</key>
+			<string>Owner</string>
+			<key>LSItemContentTypes</key>
+			<array>
 				<string>com.lfstudios.project</string>
 			</array>
 			<key>LSTypeIsPackage</key>
@@ -61,6 +75,18 @@
 			</array>
 			<key>LSTypeIsPackage</key>
 			<true/>
+		</dict>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>LF Studios Style</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Owner</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.lfstudios.style</string>
+			</array>
 		</dict>
 		<dict>
 			<key>CFBundleTypeName</key>
@@ -146,6 +172,41 @@
 			</array>
 			<key>UTTypeDescription</key>
 			<string>LF Studios Project</string>
+			<key>UTTypeIdentifier</key>
+			<string>com.lfstudios.lfsp</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>lfsp</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.json</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>LF Studios Style</string>
+			<key>UTTypeIdentifier</key>
+			<string>com.lfstudios.style</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>lfss</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>com.apple.package</string>
+				<string>public.composite-content</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>LF Studios Project (1.8 and earlier)</string>
 			<key>UTTypeIdentifier</key>
 			<string>com.lfstudios.project</string>
 			<key>UTTypeTagSpecification</key>

@@ -2238,8 +2238,8 @@
 	<string>导出到此处</string>
 	<key>Export Presets…</key>
 	<string>导出预设…</string>
-	<key>Export Presets… and Import Presets… share them as a small file.</key>
-	<string>“导出预设…”和“导入预设…”可以通过一个小文件分享预设。</string>
+	<key>Export Presets… and Import Presets… share them as a small .lfss file (LF Studios Style). Older .lfstudiospresets and .shotstylepresets files import too.</key>
+	<string>“导出预设…”和“导入预设…”可以通过一个小的 .lfss 文件（LF Studios Style）分享预设。较早的 .lfstudiospresets 和 .shotstylepresets 文件也可以导入。</string>
 	<key>Export Video…</key>
 	<string>导出视频…</string>
 	<key>Export a GIF or audio only</key>
@@ -3586,6 +3586,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>最近几个版本的新功能。点按任意一项，了解它的用法。</string>
 	<key>New loupes take the look of the last one you changed.</key>
 	<string>新的放大镜会沿用你上次更改的那个放大镜的外观。</string>
+	<key>New projects are saved as .lfsp files. Save Project (⌘S) keeps an older .lfstudios project's name; Save Project As… (⇧⌘S) makes a .lfsp.</key>
+	<string>新项目会存储为 .lfsp 文件。“存储项目”（⌘S）会保留较早的 .lfstudios 项目的名称；“项目存储为…”（⇧⌘S）会生成 .lfsp 文件。</string>
 	<key>New recording</key>
 	<string>新录制</string>
 	<key>New recording records an area of the screen, a window, or the whole screen.</key>
@@ -3766,6 +3768,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>偏移</string>
 	<key>Older</key>
 	<string>更早</string>
+	<key>Older projects open too: .lfstudios from LF Studios 1.8 and earlier, and .shotstyle from ShotStyle. LF Studios never renames them.</key>
+	<string>较早的项目也可以打开：LF Studios 1.8 及更早版本的 .lfstudios，以及 ShotStyle 的 .shotstyle。LF Studios 从不重命名它们。</string>
 	<key>Older than 1.4.1? Download the latest version once by hand from the LF Studios releases page. After that, it updates itself.</key>
 	<string>版本低于 1.4.1？请从 LF Studios 的发布页面手动下载一次最新版本。之后它就会自行更新。</string>
 	<key>On macOS 13, a window is captured as you see it on screen, including anything in front of it.</key>
@@ -3858,8 +3862,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>请先在视频编辑器中打开一段录制内容，然后点按“带我去看”。</string>
 	<key>Open a recording, or any MP4 or MOV video, in the video editor.</key>
 	<string>在视频编辑器中打开录制内容，或任何 MP4 或 MOV 视频。</string>
-	<key>Open a saved .lfstudios project, a recording's folder, or a video.</key>
-	<string>打开已存储的 .lfstudios 项目、录制内容的文件夹或视频。</string>
+	<key>Open a saved .lfsp project, a recording's folder, or a video.</key>
+	<string>打开已存储的 .lfsp 项目、录制内容的文件夹或视频。</string>
 	<key>Open a screenshot from Home, History, or the preview after capture. The tools are in the toolbar at the top.</key>
 	<string>从“主页”“历史记录”或截取后预览中打开截屏。工具位于顶部的工具栏中。</string>
 	<key>Open a screenshot to mark it up, then copy or save the result.</key>
@@ -4208,8 +4212,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>在你的 Mac 上处理。</string>
 	<key>Projects</key>
 	<string>项目</string>
-	<key>Projects from ShotStyle (.shotstyle) open too.</key>
-	<string>ShotStyle 的项目（.shotstyle）也可以打开。</string>
 	<key>Projects shows your recordings, screenshots, and saved projects, newest first. Click one to open it. Right-click for Show in Finder, Creative Handoff…, or Delete.</key>
 	<string>“项目”按从新到旧显示你的录制内容、截屏和已存储的项目。点按一项即可打开。右键点按可选择“在‘访达’中显示”“创意交付…”或“删除”。</string>
 	<key>Pure</key>

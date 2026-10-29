@@ -34,8 +34,8 @@ final class VideoDemoEditorWindowController: NSWindowController, NSWindowDelegat
     /// the editor that opens next shows the dialog once it's loaded.
     static var handoffOnNextOpen = false
 
-    /// `projectFile`: the `.lfstudios` project it's opened from; ⌘S saves
-    /// back to it.
+    /// `projectFile`: the project file (`.lfsp`, or an older `.lfstudios`)
+    /// it's opened from; ⌘S saves back to it.
     static func open(videoURL: URL, projectFile: URL?, mode: VideoProjectDocument.MediaMode?, folder: VideoProjectDocument.FolderInfo? = nil) {
         let sourceURL = canonicalVideoURL(videoURL)
         let controller: VideoDemoEditorWindowController

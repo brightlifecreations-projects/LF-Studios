@@ -237,19 +237,25 @@ final class VideoStylePresetStore: ObservableObject {
 
 // MARK: - Sharing (Export / Import Presets…)
 
-/// A `.lfstudiospresets` file: presets to hand to someone else. Pictures
+/// A `.lfss` file (LF Studios Style): presets to hand to someone else. Pictures
 /// chosen as backgrounds travel inside it, since the path on this Mac means
 /// nothing on another.
 struct VideoStylePresetFile: Codable {
     static let kind = "lfstudios-style-presets"
     static let currentVersion = 1
-    static let fileExtension = "lfstudiospresets"
+    static let fileExtension = "lfss"
+    static let typeIdentifier = "com.lfstudios.style"
     /// Background paths in the file that point at an embedded picture.
     static let embeddedPrefix = "lfstudios-embedded:"
     /// Files exported while the app was called ShotStyle.
     static let legacyKind = "shotstyle-style-presets"
     static let legacyEmbeddedPrefix = "shotstyle-embedded:"
     static let legacyFileExtension = "shotstylepresets"
+    /// Files exported by LF Studios 1.1–1.8.
+    static let previousFileExtension = "lfstudiospresets"
+    static let previousTypeIdentifier = "com.lfstudios.presets"
+    /// Every name imports.
+    static let openableExtensions: Set<String> = [fileExtension, previousFileExtension, legacyFileExtension]
 
     var kind: String
     var version: Int

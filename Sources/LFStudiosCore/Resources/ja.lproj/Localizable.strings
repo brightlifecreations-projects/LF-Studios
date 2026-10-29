@@ -2238,8 +2238,8 @@
 	<string>ここに書き出す</string>
 	<key>Export Presets…</key>
 	<string>プリセットを書き出す…</string>
-	<key>Export Presets… and Import Presets… share them as a small file.</key>
-	<string>“プリセットを書き出す…”と“プリセットを読み込む…”で、小さなファイルとして共有できます。</string>
+	<key>Export Presets… and Import Presets… share them as a small .lfss file (LF Studios Style). Older .lfstudiospresets and .shotstylepresets files import too.</key>
+	<string>“プリセットを書き出す…”と“プリセットを読み込む…”で、小さな.lfssファイル（LF Studios Style）として共有できます。古い.lfstudiospresetsと.shotstylepresetsのファイルも読み込めます。</string>
 	<key>Export Video…</key>
 	<string>ビデオを書き出す…</string>
 	<key>Export a GIF or audio only</key>
@@ -3586,6 +3586,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>最近のバージョンで追加された機能です。クリックすると使いかたを読めます。</string>
 	<key>New loupes take the look of the last one you changed.</key>
 	<string>新しいルーペには、最後に変更したルーペの見た目が使われます。</string>
+	<key>New projects are saved as .lfsp files. Save Project (⌘S) keeps an older .lfstudios project's name; Save Project As… (⇧⌘S) makes a .lfsp.</key>
+	<string>新しいプロジェクトは.lfspファイルとして保存されます。“プロジェクトを保存”（⌘S）では古い.lfstudiosプロジェクトの名前はそのままです。“プロジェクトを別名で保存…”（⇧⌘S）では.lfspが作られます。</string>
 	<key>New recording</key>
 	<string>新規収録</string>
 	<key>New recording records an area of the screen, a window, or the whole screen.</key>
@@ -3766,6 +3768,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>オフセット</string>
 	<key>Older</key>
 	<string>それ以前</string>
+	<key>Older projects open too: .lfstudios from LF Studios 1.8 and earlier, and .shotstyle from ShotStyle. LF Studios never renames them.</key>
+	<string>古いプロジェクトも開けます: LF Studios 1.8以前の.lfstudiosと、ShotStyleの.shotstyle。LF Studiosがその名前を変えることはありません。</string>
 	<key>Older than 1.4.1? Download the latest version once by hand from the LF Studios releases page. After that, it updates itself.</key>
 	<string>1.4.1より前のバージョンの場合は、LF Studiosのリリースページから最新バージョンを一度だけ手動でダウンロードしてください。そのあとは自動的にアップデートされます。</string>
 	<key>On macOS 13, a window is captured as you see it on screen, including anything in front of it.</key>
@@ -3858,8 +3862,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>先にビデオエディタで収録を開いてから、“見てみる”をクリックしてください。</string>
 	<key>Open a recording, or any MP4 or MOV video, in the video editor.</key>
 	<string>収録したビデオや、MP4またはMOVのビデオをビデオエディタで開きます。</string>
-	<key>Open a saved .lfstudios project, a recording's folder, or a video.</key>
-	<string>保存した.lfstudiosプロジェクト、収録のフォルダ、またはビデオを開きます。</string>
+	<key>Open a saved .lfsp project, a recording's folder, or a video.</key>
+	<string>保存した.lfspプロジェクト、収録のフォルダ、またはビデオを開きます。</string>
 	<key>Open a screenshot from Home, History, or the preview after capture. The tools are in the toolbar at the top.</key>
 	<string>ホーム、履歴、または取り込み後のプレビューからスクリーンショットを開きます。ツールは上部のツールバーにあります。</string>
 	<key>Open a screenshot to mark it up, then copy or save the result.</key>
@@ -4208,8 +4212,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Mac上で処理されます。</string>
 	<key>Projects</key>
 	<string>プロジェクト</string>
-	<key>Projects from ShotStyle (.shotstyle) open too.</key>
-	<string>ShotStyleのプロジェクト（.shotstyle）も開けます。</string>
 	<key>Projects shows your recordings, screenshots, and saved projects, newest first. Click one to open it. Right-click for Show in Finder, Creative Handoff…, or Delete.</key>
 	<string>“プロジェクト”には、収録したビデオ、スクリーンショット、保存したプロジェクトが新しい順に表示されます。クリックすると開きます。右クリックすると、“Finderに表示”、“クリエイティブ受け渡し…”、“削除”を選べます。</string>
 	<key>Pure</key>

@@ -15,7 +15,7 @@ import Foundation
 @MainActor
 enum GuideContent {
     /// Pages from these versions get a New badge and fill What's new.
-    nonisolated static let newVersions: [String] = ["1.8.0", "1.7.0"]
+    nonisolated static let newVersions: [String] = ["1.9.0", "1.8.0", "1.7.0"]
 
     static func chapters() -> [GuideChapter] {
         let features = featureCategories()
@@ -1885,9 +1885,10 @@ enum GuideContent {
                 ],
                 tips: [
                     L("A preset saves the background, frame, cursor, zooms, captions, keys, and camera. Tick Include aspect ratio to save the shape too."),
-                    L("Export Presets… and Import Presets… share them as a small file."),
+                    L("Export Presets… and Import Presets… share them as a small .lfss file (LF Studios Style). Older .lfstudiospresets and .shotstylepresets files import too."),
                 ],
                 showMe: .editor(.background),
+                since: "1.9.0",
                 related: ["style-my-style"]
             ),
             GuideEntry(
@@ -2118,16 +2119,18 @@ enum GuideContent {
                     L("Include media: the project opens on any Mac."),
                     L("Link to media: smaller, for this Mac only."),
                     L("Include fonts installed on this Mac: fonts from Font Book go along too. Check that a font's license lets you share it first. Fonts you added to LF Studios always go."),
+                    L("New projects are saved as .lfsp files. Save Project (⌘S) keeps an older .lfstudios project's name; Save Project As… (⇧⌘S) makes a .lfsp."),
                 ],
                 keys: [.fixed("⌘S", L("Save Project")), .fixed("⇧⌘S", L("Save Project As…"))],
-                since: "1.8.0"
+                since: "1.9.0"
             ),
             GuideEntry(
                 id: "project-open", symbol: "folder", title: L("Open a project"),
-                summary: L("Open a saved .lfstudios project, a recording's folder, or a video."),
+                summary: L("Open a saved .lfsp project, a recording's folder, or a video."),
                 location: L("Open… in Home, File ▸ Open… (⌘O), or double-click the project in Finder."),
                 keys: [.fixed("⌘O", L("Open…"))],
-                tips: [L("Projects from ShotStyle (.shotstyle) open too.")],
+                tips: [L("Older projects open too: .lfstudios from LF Studios 1.8 and earlier, and .shotstyle from ShotStyle. LF Studios never renames them.")],
+                since: "1.9.0",
                 related: ["project-folder"]
             ),
             GuideEntry(

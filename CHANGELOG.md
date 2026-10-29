@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.9.0]
+
+### Changed
+- **New file names: ".lfsp" for projects, ".lfss" for styles.** Save Project, Creative Handoff and a recording's folder now write an LF Studios Project (".lfsp"), and Export Presets… writes an LF Studios Style file (".lfss"). Both open by double-click.
+  - Your older files are never renamed: ".lfstudios" projects and ".lfstudiospresets" files (and ShotStyle's ".shotstyle" and ".shotstylepresets") open just as before, by double-click too, and a folder with an older project in it opens it.
+  - Save Project (⌘S) keeps an older project's name and ending; Save Project As… (⇧⌘S) saves a ".lfsp".
+  - LF Studios 1.8 and earlier can't open ".lfsp" or ".lfss" files: whoever you send one to needs 1.9.0 or later.
+
 ## [1.8.0]
 
 ### Added

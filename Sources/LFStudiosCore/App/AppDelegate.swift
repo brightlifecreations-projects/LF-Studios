@@ -37,13 +37,13 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     /// Videos dropped on the app (Finder "Open With", `open -an LF Studios`)
     /// open straight in the video editor.
     func application(_ application: NSApplication, open urls: [URL]) {
-        // A double-clicked .lfstudios project, or a .shotstyle one saved
-        // under the app's earlier name (VideoProjectFiles.swift).
+        // A double-clicked .lfsp project, or an older .lfstudios or
+        // .shotstyle one (VideoProjectFiles.swift).
         for project in urls where VideoProjectDocument.openableExtensions.contains(project.pathExtension.lowercased()) {
             VideoProjectOpener.open(project)
         }
         // Double-clicked presets files go into the library.
-        for file in urls where [VideoStylePresetFile.fileExtension, VideoStylePresetFile.legacyFileExtension].contains(file.pathExtension.lowercased()) {
+        for file in urls where VideoStylePresetFile.openableExtensions.contains(file.pathExtension.lowercased()) {
             let count = VideoStylePresetStore.shared.importFile(file)
             let alert = NSAlert()
             alert.messageText = count.map { L("Imported \($0) presets") } ?? L("That isn't an LF Studios presets file")

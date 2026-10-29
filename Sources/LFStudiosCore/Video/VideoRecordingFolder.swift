@@ -7,7 +7,7 @@ import Foundation
 /// the whole edit:
 ///
 ///     Name/
-///         Name.lfstudios         the edit (paths relative to this folder)
+///         Name.lfsp              the edit (paths relative to this folder)
 ///         01 Screen/Name.mp4     the recording, untouched, with its sound tracks
 ///         02 Camera/Camera.mov   the camera, if recorded
 ///         03 Audio/              Microphone.wav, System Audio.wav, if recorded
@@ -445,7 +445,7 @@ enum VideoRecordingFolderWriter {
             "FILES",
             "",
             "\(name).\(VideoProjectDocument.fileExtension)",
-            "  The project: the whole edit, kept up to date as you edit.",
+            "  The project: the whole edit, kept up to date as you edit. It opens in LF Studios 1.9.0 or later.",
             "",
             "\(VideoRecordingFolder.Layout.screen)/\(video.lastPathComponent)",
             "  The screen recording, untouched, with its sound tracks inside.",

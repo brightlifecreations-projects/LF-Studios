@@ -261,7 +261,7 @@ struct VideoExternalAudioTests {
         #expect(TestSounds.level(of: 880, in: mix, from: 2.2, to: 2.8) > 0.05, "in the full mix")
         let timeline = try String(contentsOf: result.folder.appendingPathComponent("Timeline.fcpxml"), encoding: .utf8)
         #expect(timeline.contains("sting.wav"), "on the timeline files")
-        let opened = try VideoProjectPackage.open(result.folder.appendingPathComponent("Demo.lfstudios"))
+        let opened = try VideoProjectPackage.open(result.folder.appendingPathComponent("Demo.lfsp"))
         let reopened = try #require(opened.contents.project.audioTracks.first)
         #expect(reopened.path.hasPrefix(result.folder.standardizedFileURL.path), "the project points into the handoff")
         #expect(FileManager.default.fileExists(atPath: reopened.path))
@@ -277,7 +277,7 @@ struct VideoExternalAudioTests {
         var project = VideoDemoProject.fresh(sourceURL: screen)
         project.audioTracks = [VideoExternalAudioTrack(path: file.path, name: "outside.wav", duration: 1, at: 0)]
         let contents = VideoProjectContents(project: project, recording: nil, sourceRecordings: [:])
-        let package = home.appendingPathComponent("Demo.lfstudios")
+        let package = home.appendingPathComponent("Demo.lfsp")
         // Written again after every edit: the sound is copied in once.
         for _ in 0..<3 {
             try VideoProjectPackage.save(contents, to: package, mode: .folder, folder: .init(kind: .recording))

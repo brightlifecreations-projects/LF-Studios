@@ -9,6 +9,17 @@ projects and `.shotstylepresets` files still open. Keep those, the
 `com.shotstyle.recording-id` file attribute, and the "ShotStyle " recording
 name prefix: existing users' files depend on them.
 
+File types (Info.plist declares each, so they open by double-click):
+- `.lfsp` (LF Studios Project, `com.lfstudios.lfsp`) and `.lfss` (LF Studios
+  Style, `com.lfstudios.style`): what 1.9.0 and later write for new projects,
+  Creative Handoffs, recording folders and preset exports.
+- `.lfstudios` (`com.lfstudios.project`) and `.lfstudiospresets`
+  (`com.lfstudios.presets`), from 1.1–1.8, and the ShotStyle ones still
+  open. Never rename users' files: ⌘S saves an old project under its own
+  name and extension; only Save Project As… writes `.lfsp`. Code that looks
+  for projects uses `VideoProjectDocument.openableExtensions` (presets:
+  `VideoStylePresetFile.openableExtensions`), never one extension.
+
 ## Git
 - Repo: https://github.com/brightlifecreations-projects/LF-Studios (private).
 - We work on `main`, the default branch (it used to be called `shotstyle`).

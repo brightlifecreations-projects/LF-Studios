@@ -167,7 +167,7 @@ struct HomeProject: Identifiable {
     enum Kind {
         case recording(URL)
         case screenshot(HistoryItem)
-        /// A saved `.lfstudios` project (VideoProjectFiles.swift).
+        /// A saved project (`.lfsp`, `.lfstudios`, `.shotstyle`) (VideoProjectFiles.swift).
         case projectFile(URL)
         /// A recording in its own folder: the folder's project file
         /// (VideoRecordingFolder.swift).
