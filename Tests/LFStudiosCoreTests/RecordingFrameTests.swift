@@ -497,4 +497,51 @@ final class RecordingFrameTests: XCTestCase {
         strip.keyDown(with: try XCTUnwrap(RecordingUITestSupport.keyDown("\u{1b}", keyCode: 53, in: strip)))
         XCTAssertEqual(keys, 1, "Esc and the arrows work after clicking the strip")
     }
+
+    // MARK: Split screen (1.10.0)
+
+    /// With Layout ▸ Split screen, the frame is the whole video and what's
+    /// recorded is the screen's part: 8:9 for a 16:9 video split 50/50.
+    func testSplitScreenRecordsTheScreensPartOfTheFrame() throws {
+        let screen = try XCTUnwrap(NSScreen.main)
+        let frame = RecordingFrameController(screen: screen)
+        controllers.append(frame)
+        frame.setPixels(RecordingFrameGeometry.pixels(.standard, shortSide: 720))
+        XCTAssertEqual(frame.recordedRect, frame.rect, "not split: the frame is what's recorded")
+        XCTAssertNil(frame.cameraPartRect)
+
+        var recorded: [CGRect] = []
+        frame.changeHandler = { rect, _ in recorded.append(rect) }
+        frame.split = VideoWebcamSettings.Split()
+        XCTAssertEqual(recorded.last, frame.recordedRect, "the bar is told what's recorded")
+        XCTAssertEqual(frame.recordedPixels, Pixels(width: 640, height: 720), "8:9: half of 1280 × 720")
+        XCTAssertEqual(frame.recordedRect.minX, frame.rect.minX, accuracy: 0.01, "the screen on the left")
+        let camera = try XCTUnwrap(frame.cameraPartRect)
+        XCTAssertEqual(camera.minX, frame.recordedRect.maxX, accuracy: 0.51)
+        XCTAssertEqual(camera.maxX, frame.rect.maxX, accuracy: 0.51)
+        XCTAssertTrue(frame.label.contains("Screen part of a 16:9 split video"), frame.label)
+        XCTAssertTrue(frame.label.hasPrefix("640 × 720"), frame.label)
+
+        // Each ratio, side and size: even pixels inside the frame.
+        for preset in RecordingFrameRatio.presets {
+            frame.setRatio(preset.ratio)
+            for split in [VideoWebcamSettings.Split(), VideoWebcamSettings.Split(cameraSide: .first, cameraShare: 0.3), VideoWebcamSettings.Split(cameraShare: 0.7, gap: 0.02)] {
+                frame.split = split
+                let pixels = frame.recordedPixels
+                XCTAssertEqual(pixels.width % 2, 0, "\(preset.label)")
+                XCTAssertEqual(pixels.height % 2, 0, "\(preset.label)")
+                XCTAssertTrue(frame.rect.insetBy(dx: -0.01, dy: -0.01).contains(frame.recordedRect), "\(preset.label)")
+                let expected = VideoSplitLayout.screenPixels(split, video: CGSize(width: frame.pixels.width, height: frame.pixels.height))
+                XCTAssertEqual(pixels, Pixels(width: Int(expected.width), height: Int(expected.height)), "\(preset.label)")
+                let sideBySide = preset.ratio.width > preset.ratio.height
+                if sideBySide {
+                    XCTAssertEqual(pixels.height, frame.pixels.height, "\(preset.label): full height, part of the width")
+                } else {
+                    XCTAssertEqual(pixels.width, frame.pixels.width, "\(preset.label): full width, part of the height")
+                }
+            }
+        }
+        frame.split = nil
+        XCTAssertEqual(frame.recordedRect, frame.rect, "back to the whole frame")
+    }
 }

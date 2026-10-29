@@ -150,7 +150,7 @@ final class VideoHandoffWriter: @unchecked Sendable {
             written.append("Notes.txt")
         }
         written.append("README.txt")
-        let readme = VideoHandoffReadme.text(plan: finalPlan, name: input.name, appVersion: appVersion, durations: durations, written: Set(written), markers: input.project.placedMarkers(segments: input.segments), timelineDuration: input.timelineDuration)
+        let readme = VideoHandoffReadme.text(plan: finalPlan, name: input.name, appVersion: appVersion, durations: durations, written: Set(written), markers: input.project.placedMarkers(segments: input.segments), timelineDuration: input.timelineDuration, split: input.split)
         try readme.write(to: folder.appendingPathComponent("README.txt"), atomically: true, encoding: .utf8)
         return Result(folder: folder, written: written, skipped: skipped, durations: durations)
     }

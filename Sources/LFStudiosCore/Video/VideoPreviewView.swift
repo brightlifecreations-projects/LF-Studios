@@ -365,8 +365,13 @@ struct VideoStageInteractionLayer: View {
 
             // The bubble handle only where the bubble is (not during a full
             // camera, side by side, or hidden stretch).
-            if let webcam = model.plan.webcam, webcam.visible, !model.isAimingZoom, model.plan.cameraLayout(at: clock.time) == nil, model.plan.hasCameraFootage(at: clock.time) {
+            if let webcam = model.plan.webcam, webcam.visible, !model.isAimingZoom, model.plan.showsBubble(at: clock.time), model.plan.hasCameraFootage(at: clock.time) {
                 webcamHandle(webcam)
+            }
+
+            // Split screen's divider, while the split shows in full.
+            if let webcam = model.plan.webcam, !model.isAimingZoom, !model.isPlaying, showsSplit(webcam) {
+                splitDivider(webcam.effectiveSplit)
             }
 
             // Captions and shortcut keys, dragged anywhere (VideoTextHandles.swift).
@@ -470,6 +475,49 @@ struct VideoStageInteractionLayer: View {
     private func bubbleRect(_ settings: VideoWebcamSettings) -> CGRect {
         let rect = VideoFrameRenderer.webcamRect(settings, outputSize: viewSize, cameraScale: camera.scale)
         return CGRect(x: rect.minX, y: viewSize.height - rect.maxY, width: rect.width, height: rect.height)
+    }
+
+    // MARK: Split screen's divider
+
+    /// The split is on screen in full (not on its way in or out).
+    private func showsSplit(_ webcam: VideoWebcamSettings) -> Bool {
+        guard webcam.visible, model.plan.hasCameraFootage(at: clock.time) else { return false }
+        if let region = model.plan.cameraLayout(at: clock.time) {
+            return region.layout == .sideBySide && webcam.split != nil && region.progress >= 0.999
+        }
+        return webcam.effectiveLayout == .split
+    }
+
+    /// Drag it between 30/70 and 70/30; one ⌘Z per drag.
+    private func splitDivider(_ split: VideoWebcamSettings.Split) -> some View {
+        let size = viewSize
+        let sideBySide = VideoSplitLayout.isSideBySide(size)
+        let position = VideoSplitLayout.dividerPosition(split, in: size)
+        let grab: CGFloat = 14
+        return ZStack {
+            Capsule()
+                .fill(Color.white.opacity(0.92))
+                .overlay(Capsule().strokeBorder(VideoEditorTheme.camera, lineWidth: 1.5))
+                .frame(width: sideBySide ? 6 : 44, height: sideBySide ? 44 : 6)
+        }
+        .frame(width: sideBySide ? grab : size.width, height: sideBySide ? size.height : grab)
+        .contentShape(Rectangle())
+        .offset(x: sideBySide ? position * size.width - grab / 2 : 0, y: sideBySide ? 0 : position * size.height - grab / 2)
+        .onHover { inside in (inside ? (sideBySide ? NSCursor.resizeLeftRight : NSCursor.resizeUpDown) : NSCursor.arrow).set() }
+        .gesture(
+            DragGesture(minimumDistance: 1, coordinateSpace: .named(Self.space))
+                .onChanged { value in
+                    let at = sideBySide ? value.location.x / max(size.width, 1) : value.location.y / max(size.height, 1)
+                    let share = VideoSplitLayout.share(forDivider: at, split, in: size)
+                    model.setStyle(coalesce: "split-divider") {
+                        $0.webcam.split = $0.webcam.effectiveSplit
+                        $0.webcam.split?.cameraShare = share
+                    }
+                }
+                .onEnded { _ in model.endGesture() }
+        )
+        .help(L("Drag to change how much of the video the camera takes"))
+        .accessibilityLabel(L("Split screen divider"))
     }
 
     /// The camera after a drag: moved or resized (a fixed shape keeps its

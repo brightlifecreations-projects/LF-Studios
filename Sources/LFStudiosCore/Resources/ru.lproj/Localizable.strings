@@ -68,6 +68,8 @@
 	<string>%@ · изображение %@ × %@</string>
 	<key>%@ · %lld fps</key>
 	<string>%@ · %lld fps</string>
+	<key>%@ · Screen part of a %@ split video</key>
+	<string>%1$@ · Часть экрана разделенного видео %2$@</string>
 	<key>%@ · about %@</key>
 	<string>%@ · около %@</string>
 	<key>%@ · on your clipboard — paste it anywhere</key>
@@ -256,6 +258,8 @@
 	<string>Адаптировать к этому формату</string>
 	<key>Adapt to this ratio</key>
 	<string>Адаптировать к формату</string>
+	<key>Adapt to this ratio turns side by side into one above the other: left becomes top, right becomes bottom.</key>
+	<string>«Адаптировать к формату» превращает «рядом» в «одно над другим»: левая часть становится верхней, правая — нижней.</string>
 	<key>Adapt to this ratio, next to the aspect ratio menu after you change it.</key>
 	<string>«Адаптировать к формату» — рядом с меню соотношения сторон, после того как вы смените формат.</string>
 	<key>Adapted to %@: %@</key>
@@ -548,6 +552,8 @@
 	<string>Бирюзовый мрамор</string>
 	<key>Area</key>
 	<string>Область</string>
+	<key>Arrange what you'll show inside the frame: it fills the screen's part exactly, without stretching or black bars.</key>
+	<string>Разместите в рамке то, что будете показывать: оно точно заполнит часть экрана, без растяжения и черных полос.</string>
 	<key>Arrow</key>
 	<string>Стрелка</string>
 	<key>Arrow head</key>
@@ -664,6 +670,8 @@
 	<string>Перед записью: «Выбрать размер» над панелью записи при включенной камере. В редакторе: перетаскивайте камеру в предпросмотре.</string>
 	<key>Before recording: turn on Camera, then Camera shape above the recording bar. In the editor: Camera panel ▸ Camera ▸ Camera shape.</key>
 	<string>Перед записью: включите «Камера», затем «Форма камеры» над панелью записи. В редакторе: панель «Камера» ▸ Камера ▸ Форма камеры.</string>
+	<key>Before recording: turn on Camera, then Layout ▸ Split screen above the recording bar. In the editor: Camera panel ▸ Layout.</key>
+	<string>Перед записью: включите «Камера», затем «Расположение ▸ Разделенный экран» над панелью записи. В редакторе: панель «Камера» ▸ Расположение.</string>
 	<key>Begins scrolling when the recording starts</key>
 	<string>Начинает прокрутку, когда начинается запись</string>
 	<key>Behavior</key>
@@ -740,6 +748,8 @@
 	<string>Все окна — на передний план</string>
 	<key>Bring captions to life: words that pop in, a karaoke fill, a typewriter, and more.</key>
 	<string>Оживите субтитры: всплывающие слова, караоке-заливка, печатная машинка и не только.</string>
+	<key>Bubble</key>
+	<string>Окошко</string>
 	<key>Built-in</key>
 	<string>Встроенный</string>
 	<key>Built-in (San Francisco)</key>
@@ -762,6 +772,8 @@
 	<string>Выноска: нажмите на то, на что нужно указать, вытяните облачко и введите текст.</string>
 	<key>Camera</key>
 	<string>Камера</string>
+	<key>Camera %@</key>
+	<string>Камера %@</string>
 	<key>Camera Side by Side at Playhead</key>
 	<string>Камера рядом с экраном у указателя воспроизведения</string>
 	<key>Camera access is off — allow LF Studios in System Settings → Privacy &amp; Security → Camera.</key>
@@ -802,6 +814,8 @@
 	<string>Расположения камеры</string>
 	<key>Camera layouts — drag to move, drag an edge to retime, click to change</key>
 	<string>Расположения камеры — перетяните, чтобы сдвинуть; тяните за край, чтобы изменить длительность; нажмите, чтобы сменить</string>
+	<key>Camera only</key>
+	<string>Только камера</string>
 	<key>Camera panel ▸ Behavior ▸ Shrink while zoomed.</key>
 	<string>Панель «Камера» ▸ Поведение ▸ Уменьшать при увеличении.</string>
 	<key>Camera panel ▸ Camera video ▸ Add camera video….</key>
@@ -828,6 +842,10 @@
 	<string>Форма камеры: Круг, Скругленный прямоугольник, Квадрат, Горизонтально, Вертикально, 4:3, 3:4, Произвольно или Силуэт (только вы, без фона).</string>
 	<key>Camera shape: how the camera looks in the video. The preview shows it.</key>
 	<string>Форма камеры: как камера выглядит в видео. Предпросмотр это показывает.</string>
+	<key>Camera side</key>
+	<string>Сторона камеры</string>
+	<key>Camera side, Split size (from 30/70 to 70/30, 50/50 to start), and Gap, with the video's background in between.</key>
+	<string>Сторона камеры, Пропорции (от 30/70 до 70/30, сначала 50/50) и Промежуток, в котором виден фон видео.</string>
 	<key>Camera stopped</key>
 	<string>Камера остановлена</string>
 	<key>Camera unplugged: the screen recording keeps going without it.</key>
@@ -1074,6 +1092,8 @@
 	<string>Выбрать изображение…</string>
 	<key>Choose LF Studios ▸ Check for Updates….</key>
 	<string>Выберите LF Studios ▸ Проверить обновления….</string>
+	<key>Choose Layout ▸ Split screen. The frame becomes the screen's part, like 8:9 for a 16:9 video split in half, and the camera preview fills the camera's part.</key>
+	<string>Выберите «Расположение ▸ Разделенный экран». Рамка станет частью экрана, например 8:9 для видео 16:9, разделенного пополам, а предпросмотр камеры заполнит часть камеры.</string>
 	<key>Choose Location…</key>
 	<string>Выбрать место…</string>
 	<key>Choose MP4.</key>
@@ -1652,6 +1672,8 @@
 	<string>Создать передачу</string>
 	<key>Creative Handoff</key>
 	<string>Творческая передача</string>
+	<key>Creative Handoff's README.txt says where each part goes, in pixels, for your editing app.</key>
+	<string>README.txt Творческой передачи указывает в пикселях, где находится каждая часть, — для вашей программы монтажа.</string>
 	<key>Creative Handoff…</key>
 	<string>Творческая передача…</string>
 	<key>Crimson Ridge</key>
@@ -1984,6 +2006,8 @@
 	<string>Перетяните края увеличения на шкале времени, чтобы задать его длительность.</string>
 	<key>Drag to capture  ·  Hold ⇧ as you let go to adjust first  ·  Space moves  ·  Esc cancels</key>
 	<string>Выделите область, чтобы снять  ·  ⇧ при отпускании — сначала настроить  ·  Пробел — сдвиг  ·  Esc — отмена</string>
+	<key>Drag to change how much of the video the camera takes</key>
+	<string>Перетащите, чтобы изменить, какую часть видео занимает камера</string>
 	<key>Drag to change where this clip ends</key>
 	<string>Перетяните, чтобы изменить конец клипа</string>
 	<key>Drag to change where this clip starts</key>
@@ -2536,6 +2560,10 @@
 	<string>GIF можно встроить куда угодно — в README, пул-реквесты, документацию. Делайте их короткими: они быстро становятся большими.</string>
 	<key>GIFs get big quickly: keep them short and choose a smaller size.</key>
 	<string>GIF быстро становятся тяжелыми: делайте их короткими и выбирайте размер поменьше.</string>
+	<key>Gap</key>
+	<string>Промежуток</string>
+	<key>Gap between the parts</key>
+	<string>Промежуток между частями</string>
 	<key>General</key>
 	<string>Основные</string>
 	<key>Get the area exactly right: a magnifier, the size as you drag, and keys to fine-tune.</key>
@@ -2796,6 +2824,8 @@
 	<string>В редакторе проверьте, что на панели «Аудио» выключено «Выключить звук видео» и что звук предпросмотра не выключен (клавиша M).</string>
 	<key>In the editor, click Add typing zooms.</key>
 	<string>В редакторе нажмите «Увеличить набор текста».</string>
+	<key>In the editor, drag the divider on the video to change the split. Zooms happen inside the screen's part; captions go over the whole video.</key>
+	<string>В редакторе перетаскивайте разделитель на видео, чтобы изменить пропорции. Масштабирование происходит внутри части экрана; субтитры идут поверх всего видео.</string>
 	<key>In the editor, the camera snaps to the corners, the edges and the center. Each drag is one ⌘Z. Reset size in Camera ▸ Position goes back to the usual size.</key>
 	<string>В редакторе камера прилипает к углам, краям и центру. Каждое перетаскивание отменяется одним ⌘Z. «Сбросить размер» в Камера ▸ Положение возвращает обычный размер.</string>
 	<key>In the export window ▸ Captions.</key>
@@ -3100,6 +3130,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Лагуна</string>
 	<key>Landscape (16:9)</key>
 	<string>Горизонтально (16:9)</string>
+	<key>Landscape videos (16:9, 4:3, 21:9) split side by side; square and vertical ones (1:1, 4:5, 9:16) one above the other.</key>
+	<string>Горизонтальные видео (16:9, 4:3, 21:9) делятся рядом, квадратные и вертикальные (1:1, 4:5, 9:16) — одно над другим.</string>
 	<key>Language</key>
 	<string>Язык</string>
 	<key>Languages</key>
@@ -3122,6 +3154,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Лавандовое стекло</string>
 	<key>Layout</key>
 	<string>Расположение</string>
+	<key>Layout also has Screen only and Camera only. The screen and the camera are always both recorded, so you can change your mind later.</key>
+	<string>В «Расположении» есть также «Только экран» и «Только камера». Экран и камера всегда записываются оба, так что передумать можно позже.</string>
+	<key>Layout: the camera in a bubble, split screen with the screen, or only one of them. Both are always recorded.</key>
+	<string>Расположение: камера в окошке, разделенный экран с экраном или только одно из них. Записывается всегда и то и другое.</string>
 	<key>Layouts</key>
 	<string>Расположения</string>
 	<key>Leaves out the background: the video, its rounded corners and shadow, and a cut-out camera sit on transparency, ready to place over anything</key>
@@ -3378,8 +3414,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Переместить область во время выделения</string>
 	<key>Move the frame (with ⇧: 10 points)</key>
 	<string>Переместить рамку (с ⇧ — на 10 точек)</string>
-	<key>Move the playhead and click Full camera, Side by side, or Hidden.</key>
-	<string>Поставьте указатель воспроизведения и нажмите «Во весь кадр», «Рядом» или «Скрыта».</string>
+	<key>Move the playhead and click Full camera, Side by side, or Hidden (on a split video, also Bubble).</key>
+	<string>Переместите указатель воспроизведения и нажмите «Во весь кадр», «Рядом» или «Скрыта» (на разделенном видео еще «Окошко»).</string>
 	<key>Move the playhead and press S to split the clip there.</key>
 	<string>Поставьте указатель воспроизведения и нажмите S, чтобы разделить клип в этом месте.</string>
 	<key>Move the playhead inside a clip to split</key>
@@ -3728,6 +3764,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>В буфере обмена · %@</string>
 	<key>Once a day. When there's a new version, LF Studios shows what's new and installs it only when you click Install Update. Your projects, recordings, settings and permissions stay.</key>
 	<string>Раз в день. Когда выходит новая версия, LF Studios показывает, что нового, и устанавливает её, только когда вы нажмёте «Установить обновление». Ваши проекты, записи, настройки и разрешения сохраняются.</string>
+	<key>One above the other on this video. Drag the divider on the video to change the split; the background (Style) shows in the gap.</key>
+	<string>На этом видео — одно над другим. Перетащите разделитель на видео, чтобы изменить пропорции; в промежутке виден фон (Стиль).</string>
 	<key>One word at a time</key>
 	<string>По одному слову</string>
 	<key>One ⌘Z undoes it.</key>
@@ -4276,6 +4314,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Записывайте с включённым «Следить, где я печатаю», чтобы увеличивать набор текста</string>
 	<key>Record your voice.</key>
 	<string>Записывайте свой голос.</string>
+	<key>Record. The video opens in the editor already split.</key>
+	<string>Запишите. Видео откроется в редакторе уже разделенным.</string>
 	<key>Record. The video opens in the editor with the camera in that shape.</key>
 	<string>Запишите. Видео откроется в редакторе с камерой этой формы.</string>
 	<key>Recorded at %@. Drag its dot on the timeline to retime it; ripples and Auto Zoom follow.</key>
@@ -4994,6 +5034,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Нужно разрешение на запись экрана</string>
 	<key>Screen clips, camera, voice, computer sound, music, pictures, captions, and fonts.</key>
 	<string>Клипы экрана, камера, голос, звук компьютера, музыка, картинки, субтитры и шрифты.</string>
+	<key>Screen only</key>
+	<string>Только экран</string>
 	<key>Screen recording</key>
 	<string>Запись экрана</string>
 	<key>Screen recording didn't start in time. Try again.</key>
@@ -5332,6 +5374,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Выбрать случайный фон</string>
 	<key>Side by side</key>
 	<string>Рядом</string>
+	<key>Side by side on this video. Drag the divider on the video to change the split; the background (Style) shows in the gap.</key>
+	<string>На этом видео — рядом. Перетащите разделитель на видео, чтобы изменить пропорции; в промежутке виден фон (Стиль).</string>
+	<key>Side by side uses Split screen's options (Camera panel ▸ Layout): the camera's side, the split size, and the gap. Each change eases in and out.</key>
+	<string>«Рядом» использует параметры разделенного экрана (панель «Камера» ▸ Расположение): сторону камеры, пропорции и промежуток. Каждая смена происходит плавно.</string>
 	<key>Side rail</key>
 	<string>Боковая панель</string>
 	<key>Side rail, Full rail, or Minimal. It shows only in the preview, never in the export.</key>
@@ -5460,6 +5506,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Разделить у указателя воспроизведения</string>
 	<key>Split at the playhead (S)</key>
 	<string>Разделить по указателю воспроизведения (S)</string>
+	<key>Split screen</key>
+	<string>Разделенный экран</string>
+	<key>Split screen divider</key>
+	<string>Разделитель экрана</string>
+	<key>Split size</key>
+	<string>Пропорции</string>
 	<key>Split the clips at every marker</key>
 	<string>Разделить клипы по каждому маркеру</string>
 	<key>Split the video (S) to make cuts; each can dissolve or dip to black.</key>
@@ -5746,6 +5798,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Камера всегда записывается целиком: форма — лишь настройка, ее можно изменить позже, а Творческая передача получает всю картинку камеры.</string>
 	<key>The camera is saved separately and whole, so in the editor you can move it, resize it, restyle it, or hide it.</key>
 	<string>Камера сохраняется отдельно и целиком, поэтому в редакторе ее можно переместить, изменить размер и стиль или скрыть.</string>
+	<key>The camera is still in the recording: choose another layout to show it.</key>
+	<string>Камера по-прежнему есть в записи: выберите другое расположение, чтобы ее показать.</string>
 	<key>The camera keeps your cursor in view and glides after it.</key>
 	<string>Камера держит указатель в кадре и плавно следует за ним.</string>
 	<key>The camera stopped. The recording continues without it.</key>
@@ -5874,6 +5928,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Окно сохранения не вернуло место назначения. Попробуйте сохранить еще раз.</string>
 	<key>The save window appears after each recording. Settings ▸ Recording ▸ Saving has Ask where to save after each recording and the Recording folder.</key>
 	<string>Окно сохранения появляется после каждой записи. В разделе Настройки ▸ Запись ▸ Сохранение есть «Спрашивать, куда сохранять каждую запись» и «Папка для записей».</string>
+	<key>The screen and your camera each fill one part of the video: side by side, or one above the other.</key>
+	<string>Экран и камера заполняют каждый свою часть видео: рядом или одно над другим.</string>
 	<key>The screen recording</key>
 	<string>Запись экрана</string>
 	<key>The screenshot has no image data.</key>
@@ -6808,6 +6864,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>«Окно», «Весь экран» и «Выбрать область вручную»: записать по-другому.</string>
 	<key>Windows in front of it don't get in the way: only the window you click is captured.</key>
 	<string>Окна поверх него не мешают: снимается только то окно, на которое вы нажали.</string>
+	<key>With Camera on and Layout ▸ Split screen, the frame is the screen's part of the video, and the camera's part shows beside it.</key>
+	<string>При включенной камере и «Расположение ▸ Разделенный экран» рамка — это часть экрана в видео, а часть камеры показана рядом.</string>
 	<key>With a transcript, you can also cut by deleting words: Captions ▸ Edit by text.</key>
 	<string>Если есть расшифровка, можно вырезать и удаляя слова: Субтитры ▸ Монтаж по тексту.</string>
 	<key>With more than one screen, click Record next to the one you want.</key>

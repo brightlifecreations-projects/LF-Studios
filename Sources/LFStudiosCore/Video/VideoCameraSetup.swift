@@ -14,9 +14,72 @@ struct VideoRecordingCameraSetup: Codable, Equatable {
     /// The preview's place in the recording frame (nil: it wasn't in the
     /// frame, or wasn't moved: the editor's usual spot).
     var placement: VideoWebcamSettings.Placement?
+    /// Layout in the recording bar (nil: Bubble).
+    var layout: LayoutChoice?
+    /// Split screen's options (nil: the usual 50/50).
+    var split: VideoWebcamSettings.Split?
+    /// Split screen with the frame bar: the whole video's width / height
+    /// (what's recorded is the screen's part of it).
+    var videoAspect: Double?
+
+    /// Layout, as the recording bar and the Camera panel offer it.
+    enum LayoutChoice: String, Codable, CaseIterable, Identifiable {
+        case bubble
+        case split
+        /// The camera is recorded, and hidden in the editor.
+        case screenOnly
+        /// The screen is recorded, and the camera fills the video.
+        case cameraOnly
+
+        var id: String { rawValue }
+        var title: String {
+            switch self {
+            case .bubble: return L("Bubble")
+            case .split: return L("Split screen")
+            case .screenOnly: return L("Screen only")
+            case .cameraOnly: return L("Camera only")
+            }
+        }
+        var symbol: String {
+            switch self {
+            case .bubble: return "person.crop.circle"
+            case .split: return "rectangle.split.2x1"
+            case .screenOnly: return "display"
+            case .cameraOnly: return "person.crop.rectangle.fill"
+            }
+        }
+
+        /// What a project's camera is set to now.
+        static func of(_ webcam: VideoWebcamSettings) -> LayoutChoice {
+            guard webcam.visible else { return .screenOnly }
+            switch webcam.effectiveLayout {
+            case .bubble: return .bubble
+            case .split: return .split
+            case .cameraOnly: return .cameraOnly
+            }
+        }
+
+        /// The project's camera set to this layout.
+        func applied(to webcam: VideoWebcamSettings) -> VideoWebcamSettings {
+            var webcam = webcam
+            webcam.visible = self != .screenOnly
+            switch self {
+            case .bubble, .screenOnly: webcam.layout = nil
+            case .split:
+                webcam.layout = .split
+                webcam.split = webcam.split ?? VideoWebcamSettings.Split()
+            case .cameraOnly: webcam.layout = .cameraOnly
+            }
+            return webcam
+        }
+    }
+
+    var effectiveLayout: LayoutChoice { layout ?? .bubble }
+    /// Split screen's options while it's chosen (nil: another layout).
+    var activeSplit: VideoWebcamSettings.Split? { effectiveLayout == .split ? (split ?? VideoWebcamSettings.Split()) : nil }
 
     /// Nothing differs from a plain new recording's camera.
-    var isPlain: Bool { shape == .circle && roundness == nil && placement == nil }
+    var isPlain: Bool { shape == .circle && roundness == nil && placement == nil && effectiveLayout == .bubble }
 
     /// The webcam settings a new recording opens with.
     func applied(to webcam: VideoWebcamSettings) -> VideoWebcamSettings {
@@ -25,7 +88,8 @@ struct VideoRecordingCameraSetup: Codable, Equatable {
         webcam.freeAspect = shape == .free ? freeAspect : nil
         webcam.roundness = roundness.map { min(max($0, 0), 1) }
         webcam.placement = placement
-        return webcam
+        if let split { webcam.split = split }
+        return effectiveLayout.applied(to: webcam)
     }
 
     /// The settings the preview is drawn with.
@@ -37,6 +101,9 @@ extension VideoDemoProject {
     mutating func apply(cameraSetup setup: VideoRecordingCameraSetup?) {
         guard let setup, !setup.isPlain else { return }
         webcam = setup.applied(to: webcam)
+        if setup.effectiveLayout == .split, let whole = setup.videoAspect, whole > 0.1 {
+            splitVideoAspect = whole
+        }
     }
 }
 

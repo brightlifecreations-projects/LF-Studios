@@ -820,6 +820,10 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
     /// Camera footage filmed apart from the recording; shown instead of the
     /// recorded camera (VideoImportedCamera.swift).
     var importedCamera: VideoImportedCamera?
+    /// Recorded for split screen: the whole video's width / height (the
+    /// recording is only the screen's part). Auto uses it while the video
+    /// is split.
+    var splitVideoAspect: Double?
     /// Auto-zoom on clicks (the Zoom panel's switch). New recordings start
     /// with it off; projects saved before it existed count as on, so their
     /// zoom options stay as they were (VideoManualOnly.swift).
@@ -1303,7 +1307,11 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
     /// Logical canvas (short side 1080). Top-left origin everywhere in the
     /// model; the renderer flips at its boundary.
     func canvasSize() -> CGSize {
-        aspectPreset.canvasSize(sourceSize: croppedSourceSize)
+        if aspectPreset == .source, let whole = splitVideoAspect, whole > 0.1, webcam.visible, webcam.effectiveLayout == .split {
+            // Recorded as the screen's part of a split video: Auto is the whole video.
+            return aspectPreset.canvasSize(sourceSize: CGSize(width: 1080 * whole, height: 1080))
+        }
+        return aspectPreset.canvasSize(sourceSize: croppedSourceSize)
     }
 
     /// The output is narrower than the recording (9:16, 4:5, 1:1 of a wide
@@ -1424,7 +1432,7 @@ extension VideoDemoProject {
         case aspectPreset, background, backgroundBlur, padding, cornerRadius, shadow, shadowStyle, outline
         case zoomRegions, zoomSpeed, defaultZoomScale, motionBlur
         case overlayEffects, cursorSamples, clickEvents, nativeCursorVisible, cursor, audio
-        case webcam, cameraLayouts, importedCamera, autoZoom, reframe, captions, transcriptLanguage, captionStyle, keystrokes, keystrokeStyle, crop
+        case webcam, cameraLayouts, importedCamera, splitVideoAspect, autoZoom, reframe, captions, transcriptLanguage, captionStyle, keystrokes, keystrokeStyle, crop
         case cards, music, audioTracks, clickSounds, transitions, captionTracks, sources, imageOverlayEffects, markers
         case textCursor, keyPresses, loupeStyle, faceTracking, carriedVoices, speakerNotes
         case ratioVersions, ratioShared, ratioBase, previousRatio, reframeFollowsZooms
@@ -1456,6 +1464,7 @@ extension VideoDemoProject {
         webcam = (try? container.decode(VideoWebcamSettings.self, forKey: .webcam)) ?? VideoWebcamSettings()
         cameraLayouts = (try? container.decode([VideoCameraLayoutRegion].self, forKey: .cameraLayouts)) ?? []
         importedCamera = try? container.decodeIfPresent(VideoImportedCamera.self, forKey: .importedCamera)
+        splitVideoAspect = (try? container.decodeIfPresent(Double.self, forKey: .splitVideoAspect)).flatMap { $0 }
         autoZoom = (try? container.decodeIfPresent(Bool.self, forKey: .autoZoom)) ?? true
         reframe = try container.decodeIfPresent(Bool.self, forKey: .reframe) ?? false
         captions = (try? container.decode([VideoCaptionLine].self, forKey: .captions)) ?? []
@@ -1584,6 +1593,7 @@ extension VideoDemoProject {
         try container.encode(webcam, forKey: .webcam)
         try container.encode(cameraLayouts, forKey: .cameraLayouts)
         try container.encodeIfPresent(importedCamera, forKey: .importedCamera)
+        try container.encodeIfPresent(splitVideoAspect, forKey: .splitVideoAspect)
         try container.encode(autoZoom, forKey: .autoZoom)
         try container.encode(reframe, forKey: .reframe)
         try container.encode(captions, forKey: .captions)

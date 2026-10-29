@@ -900,9 +900,10 @@ enum GuideContent {
                     L("The bars move out of the frame's way. Drag them anywhere by the handle on the left."),
                     L("LF Studios remembers the last shape, size, and place on each screen."),
                     L("Fit a window to the frame needs Accessibility. LF Studios asks for it the first time."),
+                    L("With Camera on and Layout ▸ Split screen, the frame is the screen's part of the video, and the camera's part shows beside it."),
                 ],
                 since: "1.8.0",
-                related: ["howto-frame", "rec-area", "permission-accessibility"]
+                related: ["howto-frame", "rec-area", "permission-accessibility", "camera-split"]
             ),
             GuideEntry(
                 id: "rec-window", symbol: "macwindow.badge.plus", title: L("Record a window"),
@@ -1567,6 +1568,29 @@ enum GuideContent {
                 related: ["camera-shape", "rec-camera", "camera-bubble"]
             ),
             GuideEntry(
+                id: "camera-split", symbol: "rectangle.split.2x1", title: L("Split screen"),
+                summary: L("The screen and your camera each fill one part of the video: side by side, or one above the other."),
+                location: L("Before recording: turn on Camera, then Layout ▸ Split screen above the recording bar. In the editor: Camera panel ▸ Layout."),
+                points: [
+                    L("Landscape videos (16:9, 4:3, 21:9) split side by side; square and vertical ones (1:1, 4:5, 9:16) one above the other."),
+                    L("Camera side, Split size (from 30/70 to 70/30, 50/50 to start), and Gap, with the video's background in between."),
+                ],
+                steps: [
+                    L("Choose Layout ▸ Split screen. The frame becomes the screen's part, like 8:9 for a 16:9 video split in half, and the camera preview fills the camera's part."),
+                    L("Arrange what you'll show inside the frame: it fills the screen's part exactly, without stretching or black bars."),
+                    L("Record. The video opens in the editor already split."),
+                ],
+                tips: [
+                    L("In the editor, drag the divider on the video to change the split. Zooms happen inside the screen's part; captions go over the whole video."),
+                    L("Adapt to this ratio turns side by side into one above the other: left becomes top, right becomes bottom."),
+                    L("Layout also has Screen only and Camera only. The screen and the camera are always both recorded, so you can change your mind later."),
+                    L("Creative Handoff's README.txt says where each part goes, in pixels, for your editing app."),
+                ],
+                showMe: .editor(.camera),
+                since: "1.10.0",
+                related: ["camera-layouts", "rec-frame", "camera-shape"]
+            ),
+            GuideEntry(
                 id: "camera-behind", symbol: "person.and.background.dotted", title: L("Blur or remove your background"),
                 summary: L("Blur what's behind you, or remove it completely."),
                 location: L("Camera panel ▸ Camera ▸ Behind you: Original, Blur, or Remove."),
@@ -1585,15 +1609,20 @@ enum GuideContent {
                 showMe: .editor(.camera)
             ),
             GuideEntry(
-                id: "camera-layouts", symbol: "rectangle.split.2x1", title: L("Camera layouts"),
+                id: "camera-layouts", symbol: "rectangle.on.rectangle.angled", title: L("Camera layouts"),
                 summary: L("Show the camera full screen, side by side with the screen, or hide it, for any part of the video."),
                 location: L("Camera panel ▸ Layouts."),
                 steps: [
-                    L("Move the playhead and click Full camera, Side by side, or Hidden."),
+                    L("Move the playhead and click Full camera, Side by side, or Hidden (on a split video, also Bubble)."),
                     L("A block appears on the Camera lane: drag it to move it, drag its edges to change its length."),
                 ],
-                tips: [L("Full camera for intro & outro starts and ends the video with you full screen.")],
-                showMe: .editor(.camera)
+                tips: [
+                    L("Full camera for intro & outro starts and ends the video with you full screen."),
+                    L("Side by side uses Split screen's options (Camera panel ▸ Layout): the camera's side, the split size, and the gap. Each change eases in and out."),
+                ],
+                showMe: .editor(.camera),
+                since: "1.10.0",
+                related: ["camera-split"]
             ),
             GuideEntry(
                 id: "camera-face", symbol: "face.dashed", title: L("Keep face centered"),

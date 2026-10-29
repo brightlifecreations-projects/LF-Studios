@@ -79,7 +79,7 @@ enum VideoZoomCameraFit {
     /// The bubble on the output, normalized with y down (nil: no bubble
     /// at that moment).
     static func bubbleBox(plan: VideoRenderPlan, time: Double, anchor: VideoWebcamSettings.Anchor? = nil) -> CGRect? {
-        guard var webcam = plan.webcam, webcam.visible, plan.hasCameraFootage(at: time), plan.cameraLayout(at: time) == nil else { return nil }
+        guard var webcam = plan.webcam, webcam.visible, plan.hasCameraFootage(at: time), plan.showsBubble(at: time) else { return nil }
         let output = plan.outputCanvasSize
         if let anchor { webcam = webcam.at(anchor: anchor, outputSize: output) }
         let scale = plan.camera.state(at: time).scale

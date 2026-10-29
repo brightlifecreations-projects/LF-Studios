@@ -129,6 +129,61 @@ struct VideoWebcamSettings: Codable, Equatable {
         var hasCorners: Bool { self != .circle && self != .cutout }
     }
 
+    /// How the camera and the screen share the video, for the whole video
+    /// (the Camera lane can switch it for a stretch). Screen only is the
+    /// camera hidden (`visible` off).
+    enum Layout: String, Codable, CaseIterable, Identifiable {
+        case bubble
+        /// The screen and the camera each take one part of the video.
+        case split
+        /// The camera fills the video.
+        case cameraOnly
+
+        var id: String { rawValue }
+
+        /// The Camera lane layout that draws the same.
+        var regionLayout: VideoCameraLayoutRegion.Layout {
+            switch self {
+            case .bubble: return .bubble
+            case .split: return .sideBySide
+            case .cameraOnly: return .fullscreen
+            }
+        }
+    }
+
+    /// Split screen: side by side on a landscape video, one above the
+    /// other on a square or vertical one.
+    struct Split: Codable, Equatable {
+        enum Side: String, Codable, CaseIterable, Identifiable {
+            /// Left, or top.
+            case first
+            /// Right, or bottom.
+            case second
+
+            var id: String { rawValue }
+
+            func title(sideBySide: Bool) -> String {
+                switch self {
+                case .first: return sideBySide ? L("Left") : L("Top")
+                case .second: return sideBySide ? L("Right") : L("Bottom")
+                }
+            }
+        }
+
+        var cameraSide: Side = .second
+        /// The camera's share of the video (0.5: half).
+        var cameraShare: Double = 0.5
+        /// Between the parts, as a share of the video's short side; the
+        /// video's background shows there.
+        var gap: Double = 0
+
+        static let shareRange: ClosedRange<Double> = 0.3...0.7
+        static let gapRange: ClosedRange<Double> = 0...0.06
+
+        var keptShare: Double { min(max(cameraShare, Self.shareRange.lowerBound), Self.shareRange.upperBound) }
+        var keptGap: Double { min(max(gap, Self.gapRange.lowerBound), Self.gapRange.upperBound) }
+    }
+
     /// Where the bubble is and how wide, chosen by hand (dragging it in the
     /// editor, or the camera preview before recording). Normalized on the
     /// output with y down.
@@ -186,6 +241,16 @@ struct VideoWebcamSettings: Codable, Equatable {
     var freeAspect: Double?
     /// Placed by hand (nil: at `anchor`, `size` big).
     var placement: Placement?
+    /// For the whole video (nil: the bubble).
+    var layout: Layout?
+    /// Split screen's options, also Side by side's on the Camera lane (nil:
+    /// Side by side as it was before 1.10.0, the screen letterboxed beside a
+    /// narrower camera).
+    var split: Split?
+
+    var effectiveLayout: Layout { layout ?? .bubble }
+    /// What Split screen and Side by side use.
+    var effectiveSplit: Split { split ?? Split() }
 
     static let freeAspectRange: ClosedRange<Double> = 0.25...4
 
@@ -249,7 +314,7 @@ struct VideoWebcamSettings: Codable, Equatable {
 
     init() {}
 
-    private enum CodingKeys: String, CodingKey { case visible, size, anchor, shape, mirror, shrinkWhenZoomed, backdrop, crop, roundness, border, shadowStrength, color, freeAspect, placement }
+    private enum CodingKeys: String, CodingKey { case visible, size, anchor, shape, mirror, shrinkWhenZoomed, backdrop, crop, roundness, border, shadowStrength, color, freeAspect, placement, layout, split }
 
     init(from decoder: Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
@@ -268,12 +333,16 @@ struct VideoWebcamSettings: Codable, Equatable {
         color = try? c.decodeIfPresent(VideoCameraColor.self, forKey: .color)
         freeAspect = (try? c.decodeIfPresent(Double.self, forKey: .freeAspect)).flatMap { $0 }
         placement = try? c.decodeIfPresent(Placement.self, forKey: .placement)
+        layout = try? c.decodeIfPresent(Layout.self, forKey: .layout)
+        split = try? c.decodeIfPresent(Split.self, forKey: .split)
     }
 }
 
 /// A stretch of the timeline where the camera takes a different layout.
 struct VideoCameraLayoutRegion: Codable, Equatable, Identifiable {
     enum Layout: String, Codable, CaseIterable, Identifiable {
+        /// The camera in its bubble (on a video that's split or camera only).
+        case bubble
         /// The camera fills the frame (intros, outros, talking points).
         case fullscreen
         /// Screen on the left, camera on the right.
@@ -284,6 +353,7 @@ struct VideoCameraLayoutRegion: Codable, Equatable, Identifiable {
         var id: String { rawValue }
         var title: String {
             switch self {
+            case .bubble: return L("Camera bubble")
             case .fullscreen: return L("Full camera")
             case .sideBySide: return L("Side by side")
             case .hidden: return L("Camera hidden")
@@ -292,6 +362,7 @@ struct VideoCameraLayoutRegion: Codable, Equatable, Identifiable {
         /// For narrow buttons.
         var shortTitle: String {
             switch self {
+            case .bubble: return L("Bubble")
             case .fullscreen: return L("Full camera")
             case .sideBySide: return L("Side by side")
             case .hidden: return L("Hidden")
@@ -299,6 +370,7 @@ struct VideoCameraLayoutRegion: Codable, Equatable, Identifiable {
         }
         var symbol: String {
             switch self {
+            case .bubble: return "person.crop.circle"
             case .fullscreen: return "person.crop.rectangle.fill"
             case .sideBySide: return "rectangle.split.2x1.fill"
             case .hidden: return "eye.slash.fill"

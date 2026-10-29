@@ -118,6 +118,7 @@ final class CameraCapture {
             Settings.recordingCameraSetup = preview.currentSetup(frame: preview.frameRect)
         }
         bubble.place(around: rect, on: screen)
+        bubble.showSplitPart(splitPart?.rect)
         bubble.orderFrontRegardless()
         self.bubble = bubble
         observe(session: session, device: device)
@@ -139,6 +140,7 @@ final class CameraCapture {
         observers.removeAll()
         bubble?.close()
         bubble = nil
+        splitPart = nil
         pipeline = nil
         guard let session else { return }
         self.session = nil
@@ -164,11 +166,20 @@ final class CameraCapture {
         set { bubble?.showsHandles = newValue }
     }
 
+    /// Split screen with the frame bar: the camera's part of the frame (the
+    /// preview fills it) and the whole video's width / height. Nil when the
+    /// video isn't split, or there's no frame.
+    var splitPart: (rect: CGRect, videoAspect: Double)? {
+        didSet { bubble?.showSplitPart(splitPart?.rect) }
+    }
+
     /// The camera's shape and place for a recording of `frame`, as the
     /// preview shows it now (nil: no preview).
     func setup(forRecording frame: CGRect) -> VideoRecordingCameraSetup? {
         guard let bubble else { return nil }
-        return bubble.currentSetup(frame: frame)
+        var setup = bubble.currentSetup(frame: frame)
+        if setup.effectiveLayout == .split { setup.videoAspect = splitPart?.videoAspect }
+        return setup
     }
 
     /// Recording started: the preview stays, its label and handles go.
@@ -448,6 +459,10 @@ final class CameraBubbleWindow: NSPanel {
     /// The frame moved or changed size: a preview in the video keeps its
     /// place in it; one moved out of the way stays where it is.
     func update(frame rect: CGRect, on screen: NSScreen) {
+        guard splitPartRect == nil else {
+            frameRect = rect
+            return
+        }
         let inside = VideoCameraPreviewGeometry.placement(of: frame, in: frameRect)
         frameRect = rect
         if !wasMovedByUser {
@@ -463,6 +478,10 @@ final class CameraBubbleWindow: NSPanel {
 
     /// A new shape or roundness: the same center and width, the new shape.
     func apply(_ newSetup: VideoRecordingCameraSetup) {
+        guard splitPartRect == nil else {
+            setup = newSetup
+            return
+        }
         let center = CGPoint(x: frame.midX, y: frame.midY)
         let width = frame.width
         setup = newSetup
@@ -474,9 +493,35 @@ final class CameraBubbleWindow: NSPanel {
         updateLabel()
     }
 
+    /// Split screen: the preview fills the camera's part of the frame
+    /// (square corners, not moved by hand). Nil: the bubble again.
+    private(set) var splitPartRect: CGRect?
+    private var bubbleFrameBeforeSplit: CGRect?
+
+    func showSplitPart(_ rect: CGRect?) {
+        guard rect != splitPartRect else { return }
+        if let rect {
+            if splitPartRect == nil { bubbleFrameBeforeSplit = frame }
+            splitPartRect = rect
+            showsHandles = false
+            bubbleView.roundness = 0
+            bubbleView.isLocked = true
+            setFrame(rect, display: true)
+        } else {
+            splitPartRect = nil
+            bubbleView.isLocked = false
+            applyLook()
+            if let before = bubbleFrameBeforeSplit { setFrame(before, display: true) }
+            bubbleFrameBeforeSplit = nil
+        }
+        updateLabel()
+    }
+
     /// What's saved for a recording of `frame` now.
     func currentSetup(frame rect: CGRect) -> VideoRecordingCameraSetup {
-        VideoCameraPreviewGeometry.setup(setup, preview: frame, frame: rect)
+        // Split: the bubble's own place (for a Bubble stretch later on).
+        let preview = bubbleFrameBeforeSplit ?? frame
+        return VideoCameraPreviewGeometry.setup(setup, preview: preview, frame: rect)
     }
 
     fileprivate func userChanged(to rect: CGRect) {
@@ -496,7 +541,7 @@ final class CameraBubbleWindow: NSPanel {
     }
 
     private func updateLabel() {
-        guard showsLabel, isVisible, frameRect.width > 1 else {
+        guard showsLabel, isVisible, frameRect.width > 1, splitPartRect == nil else {
             labelWindow.orderOut(nil)
             return
         }
@@ -520,6 +565,8 @@ final class CameraBubbleWindow: NSPanel {
 private final class CameraBubbleView: NSView {
     weak var window_: CameraBubbleWindow?
     var roundness: Double = 1 { didSet { needsLayout = true } }
+    /// Filling a split's camera part: not moved or resized by hand.
+    var isLocked = false
     var showsHandles = false { didSet { needsLayout = true; window?.invalidateCursorRects(for: self) } }
 
     private let preview: AVCaptureVideoPreviewLayer
@@ -608,7 +655,7 @@ private final class CameraBubbleView: NSView {
     override func acceptsFirstMouse(for event: NSEvent?) -> Bool { true }
 
     override func mouseDown(with event: NSEvent) {
-        guard let window = window_ else { return }
+        guard let window = window_, !isLocked else { return }
         drag = (handle(at: convert(event.locationInWindow, from: nil)), NSEvent.mouseLocation, window.frame)
     }
 

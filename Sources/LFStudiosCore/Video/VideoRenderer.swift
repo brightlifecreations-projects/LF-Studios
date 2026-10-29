@@ -378,6 +378,14 @@ final class VideoRenderPlan: @unchecked Sendable {
         cameraCoverage?.contains { time >= $0.lowerBound - 0.0005 && time <= $0.upperBound + 0.0005 } ?? true
     }
 
+    /// The camera is in its bubble at `time` (no other layout around it):
+    /// its handles show, and zooms are fitted around it.
+    func showsBubble(at time: Double) -> Bool {
+        guard let webcam, webcam.visible else { return false }
+        if let region = cameraLayout(at: time) { return region.layout == .bubble }
+        return webcam.effectiveLayout == .bubble
+    }
+
     /// The layout at `time` and how far into it we are (0 → 1 → 0 across
     /// the stretch, easing over half a second at each end).
     func cameraLayout(at time: Double) -> (layout: VideoCameraLayoutRegion.Layout, progress: Double)? {
@@ -858,7 +866,20 @@ final class VideoFrameRenderer {
             // Keep face centered: the crop follows the face.
             if let face = plan.faceCrop { picture.crop = face.crop(atSourceTime: sourceTime) }
             let camera = CameraPicture(frame: blurredCamera(frame, plan: plan, timelineTime: timelineTime, sourceTime: sourceTime), mask: options.webcamMask, settings: picture)
-            switch plan.cameraLayout(at: timelineTime) {
+            let region = plan.cameraLayout(at: timelineTime)
+            // Split screen, Camera only, a Bubble stretch, or Side by side
+            // with 1.10.0's options: layouts blended as arrangements.
+            // Everything else is drawn exactly as before.
+            let arranged = webcam.effectiveLayout != .bubble || region?.layout == .bubble || (region?.layout == .sideBySide && webcam.split != nil)
+            if arranged {
+                let from = arrangement(webcam.effectiveLayout.regionLayout, webcam: webcam, bubble: bubble, bubbleRadius: bubbleRadius, stage: stageOut, outputSize: outputSize)
+                let to = region.map { arrangement($0.layout, webcam: webcam, bubble: bubble, bubbleRadius: bubbleRadius, stage: stageOut, outputSize: outputSize) } ?? from
+                let shown = CameraArrangement.lerp(from, to, CGFloat(region.map { VideoCameraEasing.spring($0.progress) } ?? 0))
+                scene = draw(shown, scene: scene, camera: camera, plan: plan, outputSize: outputSize, k: k, transparent: options.transparentBackground)
+                avoid = bubble
+                avoidWeight = shown.bubbleWeight
+            } else {
+            switch region {
             case let (layout, progress)? where layout == .fullscreen:
                 // The bubble grows to fill the frame.
                 let e = CGFloat(VideoCameraEasing.spring(progress))
@@ -885,6 +906,7 @@ final class VideoFrameRenderer {
                 let look = CameraLook(radius: bubbleRadius, rim: 1, shadow: 1, opacity: 1, cutout: webcam.shape == .cutout)
                 scene = drawCamera(camera, in: bubble, look: look, plan: plan, outputSize: outputSize, k: k, over: scene)
                 avoid = bubble
+            }
             }
         }
         scene = drawImages(on: scene, plan: plan, outputSize: outputSize, time: timelineTime, options: options)
@@ -1708,6 +1730,108 @@ final class VideoFrameRenderer {
         let cameraRadius = bubbleRadius + (shortSide * 0.018 - bubbleRadius) * e
         let look = CameraLook(radius: cameraRadius, rim: Double(1 - e), shadow: 1, opacity: 1, cutout: false)
         return drawCamera(camera, in: cameraRect, look: look, plan: plan, outputSize: outputSize, k: k, over: output)
+    }
+
+    // MARK: Layouts as arrangements (Split screen, 1.10.0)
+
+    /// Where the screen and the camera are for one layout; transitions
+    /// blend two of them.
+    struct CameraArrangement {
+        /// Where the screen's picture goes, and which part of the finished
+        /// scene it is (the whole output: the scene as it is).
+        var screen: CGRect
+        var screenCrop: CGRect
+        var screenRadius: CGFloat
+        /// 0: the scene drawn as it is; 1: on the background, as a part.
+        var screenCard: CGFloat
+        var camera: CGRect
+        var look: CameraLook
+        /// How much of it is the bubble (text steps around the bubble).
+        var bubbleWeight: CGFloat
+
+        static func lerp(_ a: CameraArrangement, _ b: CameraArrangement, _ t: CGFloat) -> CameraArrangement {
+            func mix(_ x: CGFloat, _ y: CGFloat) -> CGFloat { x + (y - x) * t }
+            func mixD(_ x: Double, _ y: Double) -> Double { x + (y - x) * Double(t) }
+            return CameraArrangement(
+                screen: VideoFrameRenderer.lerp(a.screen, b.screen, t),
+                screenCrop: VideoFrameRenderer.lerp(a.screenCrop, b.screenCrop, t),
+                screenRadius: mix(a.screenRadius, b.screenRadius),
+                screenCard: mix(a.screenCard, b.screenCard),
+                camera: VideoFrameRenderer.lerp(a.camera, b.camera, t),
+                look: CameraLook(radius: mix(a.look.radius, b.look.radius), rim: mixD(a.look.rim, b.look.rim), shadow: mixD(a.look.shadow, b.look.shadow),
+                                 opacity: mixD(a.look.opacity, b.look.opacity), cutout: t < 0.5 ? a.look.cutout : b.look.cutout),
+                bubbleWeight: mix(a.bubbleWeight, b.bubbleWeight)
+            )
+        }
+    }
+
+    /// One layout's arrangement on the output (bottom-left origin).
+    func arrangement(_ layout: VideoCameraLayoutRegion.Layout, webcam: VideoWebcamSettings, bubble: CGRect, bubbleRadius: CGFloat, stage: CGRect, outputSize: CGSize) -> CameraArrangement {
+        let output = CGRect(origin: .zero, size: outputSize)
+        let cutout = webcam.shape == .cutout
+        switch layout {
+        case .bubble:
+            return CameraArrangement(screen: output, screenCrop: output, screenRadius: 0, screenCard: 0, camera: bubble,
+                                     look: CameraLook(radius: bubbleRadius, rim: 1, shadow: 1, opacity: 1, cutout: cutout), bubbleWeight: 1)
+        case .fullscreen:
+            return CameraArrangement(screen: output, screenCrop: output, screenRadius: 0, screenCard: 0, camera: output,
+                                     look: CameraLook(radius: 0, rim: 0, shadow: 0, opacity: 1, cutout: false), bubbleWeight: 0)
+        case .hidden:
+            let shrunk = bubble.insetBy(dx: bubble.width * 0.06, dy: bubble.height * 0.06)
+            return CameraArrangement(screen: output, screenCrop: output, screenRadius: 0, screenCard: 0, camera: shrunk,
+                                     look: CameraLook(radius: bubbleRadius * 0.88, rim: 1, shadow: 1, opacity: 0, cutout: cutout), bubbleWeight: 0)
+        case .sideBySide:
+            let split = webcam.effectiveSplit
+            let parts = VideoSplitLayout.parts(split, in: outputSize)
+            let radius = split.keptGap > 0.0001 ? min(outputSize.width, outputSize.height) * 0.018 : 0
+            return CameraArrangement(screen: parts.screen, screenCrop: Self.splitScreenCrop(stage: stage, output: outputSize, part: parts.screen.size), screenRadius: radius, screenCard: 1,
+                                     camera: parts.camera, look: CameraLook(radius: radius, rim: 0, shadow: radius > 0 ? 1 : 0, opacity: 1, cutout: false), bubbleWeight: 0)
+        }
+    }
+
+    /// The part of the finished scene the screen's part shows: the
+    /// recording (the stage, as zoomed), cut to the part's shape around
+    /// its middle — filled, never stretched or letterboxed.
+    static func splitScreenCrop(stage: CGRect, output: CGSize, part: CGSize) -> CGRect {
+        var visible = stage.intersection(CGRect(origin: .zero, size: output))
+        if visible.isNull || visible.width < 4 || visible.height < 4 { visible = CGRect(origin: .zero, size: output) }
+        let aspect = part.width / max(part.height, 1)
+        var crop = visible
+        if visible.width / visible.height > aspect {
+            crop.size.width = visible.height * aspect
+            crop.origin.x = visible.midX - crop.width / 2
+        } else {
+            crop.size.height = visible.width / aspect
+            crop.origin.y = visible.midY - crop.height / 2
+        }
+        return crop
+    }
+
+    /// The scene and the camera, arranged.
+    private func draw(_ shown: CameraArrangement, scene input: CIImage, camera: CameraPicture, plan: VideoRenderPlan, outputSize: CGSize, k: CGFloat, transparent: Bool) -> CIImage {
+        let outputRect = CGRect(origin: .zero, size: outputSize)
+        var output = input
+        if shown.screenCard > 0.001 {
+            let source = shown.screenCrop, destination = shown.screen
+            let screen = input.cropped(to: source).transformed(by: CGAffineTransform(translationX: -source.minX, y: -source.minY)
+                .concatenating(CGAffineTransform(scaleX: destination.width / max(source.width, 1), y: destination.height / max(source.height, 1)))
+                .concatenating(CGAffineTransform(translationX: destination.minX, y: destination.minY)))
+            let mask = roundedRect(destination, radius: shown.screenRadius, color: CIColor.white)
+            let card = screen.cropped(to: destination).applyingFilter("CISourceInCompositing", parameters: [kCIInputBackgroundImageKey: mask])
+            var behind = transparent
+                ? CIImage(color: CIColor.clear).cropped(to: outputRect)
+                : backgroundImage(plan: plan, k: k).transformed(by: CGAffineTransform(scaleX: outputSize.width / max(plan.canvasSize.width * k, 1), y: outputSize.height / max(plan.canvasSize.height * k, 1))).cropped(to: outputRect)
+            // Fading from the scene as it is into the arranged parts.
+            behind = faded(behind, Double(shown.screenCard)).composited(over: faded(input, Double(1 - shown.screenCard)))
+            if shown.screenRadius > 0.5 {
+                let shortSide = min(outputSize.width, outputSize.height)
+                let shadow = roundedRect(destination.offsetBy(dx: 0, dy: -shortSide * 0.008), radius: shown.screenRadius, color: CIColor(red: 0, green: 0, blue: 0, alpha: 0.35 * shown.screenCard))
+                    .applyingGaussianBlur(sigma: Double(shortSide * 0.014))
+                behind = shadow.composited(over: behind)
+            }
+            output = card.composited(over: behind).cropped(to: outputRect)
+        }
+        return drawCamera(camera, in: shown.camera, look: shown.look, plan: plan, outputSize: outputSize, k: k, over: output)
     }
 
     static func fade(time: Double, start: Double, end: Double, fadeIn: Double, fadeOut: Double) -> Double {

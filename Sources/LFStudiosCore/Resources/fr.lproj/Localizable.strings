@@ -68,6 +68,8 @@
 	<string>%@ · image %@ × %@</string>
 	<key>%@ · %lld fps</key>
 	<string>%@ · %lld fps</string>
+	<key>%@ · Screen part of a %@ split video</key>
+	<string>%1$@ · Partie écran d’une vidéo %2$@ partagée</string>
 	<key>%@ · about %@</key>
 	<string>%@ · environ %@</string>
 	<key>%@ · on your clipboard — paste it anywhere</key>
@@ -256,6 +258,8 @@
 	<string>Adapter à ce format</string>
 	<key>Adapt to this ratio</key>
 	<string>Adapter à ce format</string>
+	<key>Adapt to this ratio turns side by side into one above the other: left becomes top, right becomes bottom.</key>
+	<string>Adapter à ce format transforme côte à côte en l’un au-dessus de l’autre : la gauche devient le haut, la droite le bas.</string>
 	<key>Adapt to this ratio, next to the aspect ratio menu after you change it.</key>
 	<string>Adapter à ce format, à côté du menu du format d’image une fois que vous l’avez changé.</string>
 	<key>Adapted to %@: %@</key>
@@ -548,6 +552,8 @@
 	<string>Marbre aqua</string>
 	<key>Area</key>
 	<string>Zone</string>
+	<key>Arrange what you'll show inside the frame: it fills the screen's part exactly, without stretching or black bars.</key>
+	<string>Disposez ce que vous allez montrer dans le cadre : il remplit exactement la partie écran, sans étirement ni bandes noires.</string>
 	<key>Arrow</key>
 	<string>Flèche</string>
 	<key>Arrow head</key>
@@ -664,6 +670,8 @@
 	<string>Avant l’enregistrement : Choisir la taille au-dessus de la barre d’enregistrement, avec Caméra activée. Dans l’éditeur : faites glisser la caméra dans l’aperçu.</string>
 	<key>Before recording: turn on Camera, then Camera shape above the recording bar. In the editor: Camera panel ▸ Camera ▸ Camera shape.</key>
 	<string>Avant l’enregistrement : activez Caméra, puis Forme de la caméra au-dessus de la barre d’enregistrement. Dans l’éditeur : panneau Caméra ▸ Caméra ▸ Forme de la caméra.</string>
+	<key>Before recording: turn on Camera, then Layout ▸ Split screen above the recording bar. In the editor: Camera panel ▸ Layout.</key>
+	<string>Avant l’enregistrement : activez Caméra, puis Disposition ▸ Écran partagé au-dessus de la barre d’enregistrement. Dans l’éditeur : panneau Caméra ▸ Disposition.</string>
 	<key>Begins scrolling when the recording starts</key>
 	<string>Commence à défiler au début de l’enregistrement</string>
 	<key>Behavior</key>
@@ -740,6 +748,8 @@
 	<string>Tout ramener au premier plan</string>
 	<key>Bring captions to life: words that pop in, a karaoke fill, a typewriter, and more.</key>
 	<string>Donnez vie aux sous-titres : mots qui apparaissent, remplissage karaoké, machine à écrire, et plus encore.</string>
+	<key>Bubble</key>
+	<string>Bulle</string>
 	<key>Built-in</key>
 	<string>Intégrée</string>
 	<key>Built-in (San Francisco)</key>
@@ -762,6 +772,8 @@
 	<string>Bulle : appuyez sur l’élément à montrer, faites glisser la bulle vers l’extérieur, puis tapez.</string>
 	<key>Camera</key>
 	<string>Caméra</string>
+	<key>Camera %@</key>
+	<string>Caméra %@</string>
 	<key>Camera Side by Side at Playhead</key>
 	<string>Caméra côte à côte à la tête de lecture</string>
 	<key>Camera access is off — allow LF Studios in System Settings → Privacy &amp; Security → Camera.</key>
@@ -802,6 +814,8 @@
 	<string>Dispositions de caméra</string>
 	<key>Camera layouts — drag to move, drag an edge to retime, click to change</key>
 	<string>Dispositions de caméra — faites glisser pour déplacer, un bord pour ajuster la durée, cliquez pour changer</string>
+	<key>Camera only</key>
+	<string>Caméra seule</string>
 	<key>Camera panel ▸ Behavior ▸ Shrink while zoomed.</key>
 	<string>Panneau Caméra ▸ Comportement ▸ Réduire pendant les zooms.</string>
 	<key>Camera panel ▸ Camera video ▸ Add camera video….</key>
@@ -828,6 +842,10 @@
 	<string>Forme de la caméra : Cercle, Rectangle arrondi, Carré, Paysage, Portrait, 4:3, 3:4, Libre ou Détouré (vous seul, sans l’arrière-plan).</string>
 	<key>Camera shape: how the camera looks in the video. The preview shows it.</key>
 	<string>Forme de la caméra : son apparence dans la vidéo. L’aperçu la montre.</string>
+	<key>Camera side</key>
+	<string>Côté de la caméra</string>
+	<key>Camera side, Split size (from 30/70 to 70/30, 50/50 to start), and Gap, with the video's background in between.</key>
+	<string>Côté de la caméra, Répartition (de 30/70 à 70/30, 50/50 au départ) et Espace, avec l’arrière-plan de la vidéo entre les deux.</string>
 	<key>Camera stopped</key>
 	<string>Caméra arrêtée</string>
 	<key>Camera unplugged: the screen recording keeps going without it.</key>
@@ -1074,6 +1092,8 @@
 	<string>Choisir une image…</string>
 	<key>Choose LF Studios ▸ Check for Updates….</key>
 	<string>Choisissez LF Studios ▸ Rechercher des mises à jour….</string>
+	<key>Choose Layout ▸ Split screen. The frame becomes the screen's part, like 8:9 for a 16:9 video split in half, and the camera preview fills the camera's part.</key>
+	<string>Choisissez Disposition ▸ Écran partagé. Le cadre devient la partie écran, par exemple 8:9 pour une vidéo 16:9 coupée en deux, et l’aperçu de la caméra remplit la partie caméra.</string>
 	<key>Choose Location…</key>
 	<string>Choisir l’emplacement…</string>
 	<key>Choose MP4.</key>
@@ -1652,6 +1672,8 @@
 	<string>Créer la transmission</string>
 	<key>Creative Handoff</key>
 	<string>Transmission créative</string>
+	<key>Creative Handoff's README.txt says where each part goes, in pixels, for your editing app.</key>
+	<string>Le README.txt de la Transmission créative indique, en pixels, où va chaque partie, pour votre app de montage.</string>
 	<key>Creative Handoff…</key>
 	<string>Transmission créative…</string>
 	<key>Crimson Ridge</key>
@@ -1984,6 +2006,8 @@
 	<string>Faites glisser les bords du zoom sur la timeline pour régler sa durée.</string>
 	<key>Drag to capture  ·  Hold ⇧ as you let go to adjust first  ·  Space moves  ·  Esc cancels</key>
 	<string>Faites glisser pour capturer  ·  Maintenez ⇧ en relâchant pour ajuster d’abord  ·  Espace pour déplacer  ·  Échap pour annuler</string>
+	<key>Drag to change how much of the video the camera takes</key>
+	<string>Faites glisser pour changer la part de la vidéo occupée par la caméra</string>
 	<key>Drag to change where this clip ends</key>
 	<string>Faites glisser pour modifier la fin de ce clip</string>
 	<key>Drag to change where this clip starts</key>
@@ -2536,6 +2560,10 @@
 	<string>Les GIF s’intègrent partout — README, pull requests, docs. Faites-les courts : ils deviennent vite lourds.</string>
 	<key>GIFs get big quickly: keep them short and choose a smaller size.</key>
 	<string>Les GIF deviennent vite lourds : faites-les courts et choisissez une taille plus petite.</string>
+	<key>Gap</key>
+	<string>Espace</string>
+	<key>Gap between the parts</key>
+	<string>Espace entre les parties</string>
 	<key>General</key>
 	<string>Général</string>
 	<key>Get the area exactly right: a magnifier, the size as you drag, and keys to fine-tune.</key>
@@ -2796,6 +2824,8 @@
 	<string>Dans l’éditeur, vérifiez que Couper le son de la vidéo est désactivé dans le panneau Audio, et que le son de l’aperçu n’est pas coupé (appuyez sur M).</string>
 	<key>In the editor, click Add typing zooms.</key>
 	<string>Dans l’éditeur, cliquez sur Ajouter des zooms sur la saisie.</string>
+	<key>In the editor, drag the divider on the video to change the split. Zooms happen inside the screen's part; captions go over the whole video.</key>
+	<string>Dans l’éditeur, faites glisser le séparateur sur la vidéo pour changer la répartition. Les zooms ont lieu dans la partie écran ; les sous-titres couvrent toute la vidéo.</string>
 	<key>In the editor, the camera snaps to the corners, the edges and the center. Each drag is one ⌘Z. Reset size in Camera ▸ Position goes back to the usual size.</key>
 	<string>Dans l’éditeur, la caméra s’aimante aux coins, aux bords et au centre. Chaque glissement s’annule d’un ⌘Z. Réinitialiser la taille dans Caméra ▸ Position revient à la taille habituelle.</string>
 	<key>In the export window ▸ Captions.</key>
@@ -3100,6 +3130,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Lagon</string>
 	<key>Landscape (16:9)</key>
 	<string>Paysage (16:9)</string>
+	<key>Landscape videos (16:9, 4:3, 21:9) split side by side; square and vertical ones (1:1, 4:5, 9:16) one above the other.</key>
+	<string>Les vidéos paysage (16:9, 4:3, 21:9) sont partagées côte à côte ; les carrées et verticales (1:1, 4:5, 9:16) l’une au-dessus de l’autre.</string>
 	<key>Language</key>
 	<string>Langue</string>
 	<key>Languages</key>
@@ -3122,6 +3154,10 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Verre lavande</string>
 	<key>Layout</key>
 	<string>Disposition</string>
+	<key>Layout also has Screen only and Camera only. The screen and the camera are always both recorded, so you can change your mind later.</key>
+	<string>Disposition propose aussi Écran seul et Caméra seule. L’écran et la caméra sont toujours enregistrés tous les deux : vous pouvez changer d’avis plus tard.</string>
+	<key>Layout: the camera in a bubble, split screen with the screen, or only one of them. Both are always recorded.</key>
+	<string>Disposition : la caméra dans une bulle, en écran partagé avec l’écran, ou l’un des deux seulement. Les deux sont toujours enregistrés.</string>
 	<key>Layouts</key>
 	<string>Dispositions</string>
 	<key>Leaves out the background: the video, its rounded corners and shadow, and a cut-out camera sit on transparency, ready to place over anything</key>
@@ -3378,8 +3414,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Déplacer la zone pendant le glissement</string>
 	<key>Move the frame (with ⇧: 10 points)</key>
 	<string>Déplacer le cadre (avec ⇧ : 10 points)</string>
-	<key>Move the playhead and click Full camera, Side by side, or Hidden.</key>
-	<string>Placez la tête de lecture et cliquez sur Caméra en plein écran, Côte à côte ou Masqué.</string>
+	<key>Move the playhead and click Full camera, Side by side, or Hidden (on a split video, also Bubble).</key>
+	<string>Déplacez la tête de lecture et cliquez sur Caméra en plein écran, Côte à côte ou Masqué (sur une vidéo partagée, aussi Bulle).</string>
 	<key>Move the playhead and press S to split the clip there.</key>
 	<string>Placez la tête de lecture et appuyez sur S pour y scinder le clip.</string>
 	<key>Move the playhead inside a clip to split</key>
@@ -3728,6 +3764,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Dans le presse-papiers · %@</string>
 	<key>Once a day. When there's a new version, LF Studios shows what's new and installs it only when you click Install Update. Your projects, recordings, settings and permissions stay.</key>
 	<string>Une fois par jour. Quand une nouvelle version est disponible, LF Studios montre les nouveautés et ne l'installe que lorsque vous cliquez sur « Installer la mise à jour ». Vos projets, enregistrements, réglages et autorisations sont conservés.</string>
+	<key>One above the other on this video. Drag the divider on the video to change the split; the background (Style) shows in the gap.</key>
+	<string>L’un au-dessus de l’autre sur cette vidéo. Faites glisser le séparateur sur la vidéo pour changer la répartition ; l’arrière-plan (Style) apparaît dans l’espace.</string>
 	<key>One word at a time</key>
 	<string>Un mot à la fois</string>
 	<key>One ⌘Z undoes it.</key>
@@ -4276,6 +4314,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Enregistrez avec « Suivre où je tape » activé pour zoomer sur la saisie</string>
 	<key>Record your voice.</key>
 	<string>Enregistrez votre voix.</string>
+	<key>Record. The video opens in the editor already split.</key>
+	<string>Enregistrez. La vidéo s’ouvre dans l’éditeur déjà partagée.</string>
 	<key>Record. The video opens in the editor with the camera in that shape.</key>
 	<string>Enregistrez. La vidéo s’ouvre dans l’éditeur avec la caméra de cette forme.</string>
 	<key>Recorded at %@. Drag its dot on the timeline to retime it; ripples and Auto Zoom follow.</key>
@@ -4994,6 +5034,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Autorisation d’enregistrement de l’écran requise</string>
 	<key>Screen clips, camera, voice, computer sound, music, pictures, captions, and fonts.</key>
 	<string>Clips de l’écran, caméra, voix, son de l’ordinateur, musique, images, sous-titres et polices.</string>
+	<key>Screen only</key>
+	<string>Écran seul</string>
 	<key>Screen recording</key>
 	<string>Enregistrement de l’écran</string>
 	<key>Screen recording didn't start in time. Try again.</key>
@@ -5332,6 +5374,10 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Choisir un arrière-plan au hasard</string>
 	<key>Side by side</key>
 	<string>Côte à côte</string>
+	<key>Side by side on this video. Drag the divider on the video to change the split; the background (Style) shows in the gap.</key>
+	<string>Côte à côte sur cette vidéo. Faites glisser le séparateur sur la vidéo pour changer la répartition ; l’arrière-plan (Style) apparaît dans l’espace.</string>
+	<key>Side by side uses Split screen's options (Camera panel ▸ Layout): the camera's side, the split size, and the gap. Each change eases in and out.</key>
+	<string>Côte à côte utilise les options de l’écran partagé (panneau Caméra ▸ Disposition) : le côté de la caméra, la répartition et l’espace. Chaque changement se fait en douceur.</string>
 	<key>Side rail</key>
 	<string>Colonne latérale</string>
 	<key>Side rail, Full rail, or Minimal. It shows only in the preview, never in the export.</key>
@@ -5460,6 +5506,12 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Scinder à la tête de lecture</string>
 	<key>Split at the playhead (S)</key>
 	<string>Scinder à la tête de lecture (S)</string>
+	<key>Split screen</key>
+	<string>Écran partagé</string>
+	<key>Split screen divider</key>
+	<string>Séparateur de l’écran partagé</string>
+	<key>Split size</key>
+	<string>Répartition</string>
 	<key>Split the clips at every marker</key>
 	<string>Scinder les clips à chaque marqueur</string>
 	<key>Split the video (S) to make cuts; each can dissolve or dip to black.</key>
@@ -5746,6 +5798,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>La caméra est toujours enregistrée en entier : la forme n’est qu’un réglage, vous pouvez la changer plus tard, et la Transmission créative reçoit toute l’image de la caméra.</string>
 	<key>The camera is saved separately and whole, so in the editor you can move it, resize it, restyle it, or hide it.</key>
 	<string>La caméra est enregistrée à part et en entier : dans l’éditeur, vous pouvez la déplacer, la redimensionner, changer son style ou la masquer.</string>
+	<key>The camera is still in the recording: choose another layout to show it.</key>
+	<string>La caméra est toujours dans l’enregistrement : choisissez une autre disposition pour l’afficher.</string>
 	<key>The camera keeps your cursor in view and glides after it.</key>
 	<string>La caméra garde votre pointeur dans le cadre et le suit en douceur.</string>
 	<key>The camera stopped. The recording continues without it.</key>
@@ -5874,6 +5928,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>La zone de dialogue d’enregistrement n’a renvoyé aucune destination. Veuillez réessayer.</string>
 	<key>The save window appears after each recording. Settings ▸ Recording ▸ Saving has Ask where to save after each recording and the Recording folder.</key>
 	<string>La fenêtre d’enregistrement apparaît après chaque enregistrement. Réglages ▸ Enregistrement ▸ Sauvegarde contient Demander l’emplacement après chaque enregistrement et le Dossier des enregistrements.</string>
+	<key>The screen and your camera each fill one part of the video: side by side, or one above the other.</key>
+	<string>L’écran et votre caméra remplissent chacun une partie de la vidéo : côte à côte, ou l’un au-dessus de l’autre.</string>
 	<key>The screen recording</key>
 	<string>L’enregistrement de l’écran</string>
 	<key>The screenshot has no image data.</key>
@@ -6808,6 +6864,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Fenêtre, Plein écran et Sélectionner une zone manuellement : enregistrer autrement.</string>
 	<key>Windows in front of it don't get in the way: only the window you click is captured.</key>
 	<string>Les fenêtres placées devant ne gênent pas : seule la fenêtre sur laquelle vous cliquez est capturée.</string>
+	<key>With Camera on and Layout ▸ Split screen, the frame is the screen's part of the video, and the camera's part shows beside it.</key>
+	<string>Avec Caméra activée et Disposition ▸ Écran partagé, le cadre est la partie écran de la vidéo, et la partie caméra s’affiche à côté.</string>
 	<key>With a transcript, you can also cut by deleting words: Captions ▸ Edit by text.</key>
 	<string>Avec une transcription, vous pouvez aussi couper en supprimant des mots : Sous-titres ▸ Montage par texte.</string>
 	<key>With more than one screen, click Record next to the one you want.</key>

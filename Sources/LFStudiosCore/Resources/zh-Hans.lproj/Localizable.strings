@@ -68,6 +68,8 @@
 	<string>%@ · %@ × %@ 图像</string>
 	<key>%@ · %lld fps</key>
 	<string>%@ · %lld fps</string>
+	<key>%@ · Screen part of a %@ split video</key>
+	<string>%1$@ · %2$@ 分屏视频的屏幕部分</string>
 	<key>%@ · about %@</key>
 	<string>%@ · 约 %@</string>
 	<key>%@ · on your clipboard — paste it anywhere</key>
@@ -320,6 +322,8 @@
 	<string>适配此比例</string>
 	<key>Adapt to this ratio</key>
 	<string>适配此比例</string>
+	<key>Adapt to this ratio turns side by side into one above the other: left becomes top, right becomes bottom.</key>
+	<string>“适配此比例”会把并排改为上下排列：左侧变为上方，右侧变为下方。</string>
 	<key>Adapt to this ratio, next to the aspect ratio menu after you change it.</key>
 	<string>更改宽高比后，宽高比菜单旁边的“适配此比例”。</string>
 	<key>Adapted to %@: %@</key>
@@ -616,6 +620,8 @@
 	<string>水色大理石</string>
 	<key>Area</key>
 	<string>区域</string>
+	<key>Arrange what you'll show inside the frame: it fills the screen's part exactly, without stretching or black bars.</key>
+	<string>在录制框中摆放你要展示的内容：它会正好填满屏幕部分，不会拉伸，也没有黑边。</string>
 	<key>Arrow</key>
 	<string>箭头</string>
 	<key>Arrow head</key>
@@ -734,6 +740,8 @@
 	<string>录制前：打开“摄像头”后，使用录制栏上方的“选择大小”。在编辑器中：在预览上拖移摄像头。</string>
 	<key>Before recording: turn on Camera, then Camera shape above the recording bar. In the editor: Camera panel ▸ Camera ▸ Camera shape.</key>
 	<string>录制前：打开“摄像头”，然后使用录制栏上方的“摄像头形状”。在编辑器中：“摄像头”面板 ▸ 摄像头 ▸ 摄像头形状。</string>
+	<key>Before recording: turn on Camera, then Layout ▸ Split screen above the recording bar. In the editor: Camera panel ▸ Layout.</key>
+	<string>录制前：打开“摄像头”，然后在录制栏上方选择“布局 ▸ 分屏”。在编辑器中：“摄像头”面板 ▸ 布局。</string>
 	<key>Begins scrolling when the recording starts</key>
 	<string>录制开始时开始滚动</string>
 	<key>Behavior</key>
@@ -812,6 +820,8 @@
 	<string>前置全部窗口</string>
 	<key>Bring captions to life: words that pop in, a karaoke fill, a typewriter, and more.</key>
 	<string>让字幕更生动：弹出的字词、卡拉 OK 填充、打字机效果等。</string>
+	<key>Bubble</key>
+	<string>气泡</string>
 	<key>Built-in</key>
 	<string>内置</string>
 	<key>Built-in (San Francisco)</key>
@@ -834,6 +844,8 @@
 	<string>标注气泡：按住要指向的东西，向外拖出气泡，然后输入文字。</string>
 	<key>Camera</key>
 	<string>摄像头</string>
+	<key>Camera %@</key>
+	<string>摄像头 %@</string>
 	<key>Camera Side by Side at Playhead</key>
 	<string>在播放头处并排显示摄像头</string>
 	<key>Camera access is off — allow LF Studios in System Settings → Privacy &amp; Security → Camera.</key>
@@ -876,6 +888,8 @@
 	<string>摄像头布局</string>
 	<key>Camera layouts — drag to move, drag an edge to retime, click to change</key>
 	<string>摄像头布局 — 拖移可移动，拖移边缘可调整时间，点按可更改</string>
+	<key>Camera only</key>
+	<string>仅摄像头</string>
 	<key>Camera panel ▸ Behavior ▸ Shrink while zoomed.</key>
 	<string>“摄像头”面板 ▸ 行为 ▸ 缩放时缩小。</string>
 	<key>Camera panel ▸ Camera video ▸ Add camera video….</key>
@@ -902,6 +916,10 @@
 	<string>摄像头形状：圆形、圆角矩形、正方形、横向、竖向、4:3、3:4、自由或抠像（只有你，没有背景）。</string>
 	<key>Camera shape: how the camera looks in the video. The preview shows it.</key>
 	<string>摄像头形状：摄像头在视频中的样子。预览会显示出来。</string>
+	<key>Camera side</key>
+	<string>摄像头位置</string>
+	<key>Camera side, Split size (from 30/70 to 70/30, 50/50 to start), and Gap, with the video's background in between.</key>
+	<string>摄像头位置、分屏比例（从 30/70 到 70/30，起始为 50/50）和间距，中间显示视频的背景。</string>
 	<key>Camera stopped</key>
 	<string>摄像头已停止</string>
 	<key>Camera unplugged: the screen recording keeps going without it.</key>
@@ -1150,6 +1168,8 @@
 	<string>选择图像…</string>
 	<key>Choose LF Studios ▸ Check for Updates….</key>
 	<string>选择“LF Studios ▸ 检查更新…”。</string>
+	<key>Choose Layout ▸ Split screen. The frame becomes the screen's part, like 8:9 for a 16:9 video split in half, and the camera preview fills the camera's part.</key>
+	<string>选择“布局 ▸ 分屏”。录制框会变成屏幕部分，例如对半分的 16:9 视频为 8:9，摄像头预览会填满摄像头部分。</string>
 	<key>Choose Location…</key>
 	<string>选择位置…</string>
 	<key>Choose MP4.</key>
@@ -1728,6 +1748,8 @@
 	<string>创建交付</string>
 	<key>Creative Handoff</key>
 	<string>创意交付</string>
+	<key>Creative Handoff's README.txt says where each part goes, in pixels, for your editing app.</key>
+	<string>创意交付中的 README.txt 会以像素说明每个部分的位置，方便你在剪辑应用中使用。</string>
 	<key>Creative Handoff…</key>
 	<string>创意交付…</string>
 	<key>Crimson Ridge</key>
@@ -2066,6 +2088,8 @@
 	<string>在时间线上拖移缩放的边缘，设定它的长度。</string>
 	<key>Drag to capture  ·  Hold ⇧ as you let go to adjust first  ·  Space moves  ·  Esc cancels</key>
 	<string>拖移以捕捉  ·  松开时按住 ⇧ 可先调整  ·  空格键移动选区  ·  按 Esc 键取消</string>
+	<key>Drag to change how much of the video the camera takes</key>
+	<string>拖移可更改摄像头在视频中所占的比例</string>
 	<key>Drag to change where this clip ends</key>
 	<string>拖移可更改此片段的结尾</string>
 	<key>Drag to change where this clip starts</key>
@@ -2624,6 +2648,10 @@
 	<string>GIF 可以嵌入任何地方 — README、拉取请求、文档。尽量保持简短：它们很快就会变大。</string>
 	<key>GIFs get big quickly: keep them short and choose a smaller size.</key>
 	<string>GIF 文件很快就会变大：请尽量简短，并选择较小的尺寸。</string>
+	<key>Gap</key>
+	<string>间距</string>
+	<key>Gap between the parts</key>
+	<string>两部分之间的间距</string>
 	<key>General</key>
 	<string>通用</string>
 	<key>Get the area exactly right: a magnifier, the size as you drag, and keys to fine-tune.</key>
@@ -2890,6 +2918,8 @@
 	<string>在编辑器中，确认“音频”面板中的“视频静音”已关闭，并且预览没有被静音（按 M 键）。</string>
 	<key>In the editor, click Add typing zooms.</key>
 	<string>在编辑器中，点按“添加打字缩放”。</string>
+	<key>In the editor, drag the divider on the video to change the split. Zooms happen inside the screen's part; captions go over the whole video.</key>
+	<string>在编辑器中，拖移视频上的分隔线可更改分屏比例。缩放发生在屏幕部分内；字幕覆盖整个视频。</string>
 	<key>In the editor, the camera snaps to the corners, the edges and the center. Each drag is one ⌘Z. Reset size in Camera ▸ Position goes back to the usual size.</key>
 	<string>在编辑器中，摄像头会吸附到角、边缘和中间。每次拖移可用一次 ⌘Z 撤销。“摄像头 ▸ 位置”中的“重置大小”可恢复为通常大小。</string>
 	<key>In the export window ▸ Captions.</key>
@@ -3206,6 +3236,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>泻湖</string>
 	<key>Landscape (16:9)</key>
 	<string>横向（16:9）</string>
+	<key>Landscape videos (16:9, 4:3, 21:9) split side by side; square and vertical ones (1:1, 4:5, 9:16) one above the other.</key>
+	<string>横向视频（16:9、4:3、21:9）左右分屏；方形和竖向视频（1:1、4:5、9:16）上下分屏。</string>
 	<key>Language</key>
 	<string>语言</string>
 	<key>Languages</key>
@@ -3230,6 +3262,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>薰衣草玻璃</string>
 	<key>Layout</key>
 	<string>布局</string>
+	<key>Layout also has Screen only and Camera only. The screen and the camera are always both recorded, so you can change your mind later.</key>
+	<string>“布局”中还有“仅屏幕”和“仅摄像头”。屏幕和摄像头始终都会录制，所以你之后可以改变主意。</string>
+	<key>Layout: the camera in a bubble, split screen with the screen, or only one of them. Both are always recorded.</key>
+	<string>布局：摄像头显示在气泡中、与屏幕分屏，或只显示其中之一。两者始终都会录制。</string>
 	<key>Layouts</key>
 	<string>布局</string>
 	<key>Leaves out the background: the video, its rounded corners and shadow, and a cut-out camera sit on transparency, ready to place over anything</key>
@@ -3486,8 +3522,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>拖移时移动区域</string>
 	<key>Move the frame (with ⇧: 10 points)</key>
 	<string>移动录制框（按住 ⇧：10 点）</string>
-	<key>Move the playhead and click Full camera, Side by side, or Hidden.</key>
-	<string>移动播放头，然后点按“全屏摄像头”“并排”或“隐藏”。</string>
+	<key>Move the playhead and click Full camera, Side by side, or Hidden (on a split video, also Bubble).</key>
+	<string>移动播放头，然后点按“全屏摄像头”“并排”或“隐藏”（分屏视频还可选“气泡”）。</string>
 	<key>Move the playhead and press S to split the clip there.</key>
 	<string>移动播放头，然后按 S 键在那里分割片段。</string>
 	<key>Move the playhead inside a clip to split</key>
@@ -3836,6 +3872,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>已在剪贴板中 · %@</string>
 	<key>Once a day. When there's a new version, LF Studios shows what's new and installs it only when you click Install Update. Your projects, recordings, settings and permissions stay.</key>
 	<string>每天一次。有新版本时，LF Studios 会显示新内容，只有在你点按“安装更新”后才会安装。你的项目、录制、设置和权限都会保留。</string>
+	<key>One above the other on this video. Drag the divider on the video to change the split; the background (Style) shows in the gap.</key>
+	<string>此视频为上下排列。拖移视频上的分隔线可更改比例；间距中显示背景（样式）。</string>
 	<key>One word at a time</key>
 	<string>逐词显示</string>
 	<key>One ⌘Z undoes it.</key>
@@ -4388,6 +4426,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>开启“跟踪打字位置”后录制，即可缩放到打字处</string>
 	<key>Record your voice.</key>
 	<string>录下你的声音。</string>
+	<key>Record. The video opens in the editor already split.</key>
+	<string>开始录制。视频在编辑器中打开时已经分屏。</string>
 	<key>Record. The video opens in the editor with the camera in that shape.</key>
 	<string>开始录制。视频会在编辑器中打开，摄像头就是这个形状。</string>
 	<key>Recorded at %@. Drag its dot on the timeline to retime it; ripples and Auto Zoom follow.</key>
@@ -5124,6 +5164,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>需要屏幕录制权限</string>
 	<key>Screen clips, camera, voice, computer sound, music, pictures, captions, and fonts.</key>
 	<string>屏幕片段、摄像头、人声、电脑声音、音乐、图片、字幕和字体。</string>
+	<key>Screen only</key>
+	<string>仅屏幕</string>
 	<key>Screen recording</key>
 	<string>屏幕录制内容</string>
 	<key>Screen recording didn't start in time. Try again.</key>
@@ -5470,6 +5512,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>随机选择背景</string>
 	<key>Side by side</key>
 	<string>并排</string>
+	<key>Side by side on this video. Drag the divider on the video to change the split; the background (Style) shows in the gap.</key>
+	<string>此视频为并排排列。拖移视频上的分隔线可更改比例；间距中显示背景（样式）。</string>
+	<key>Side by side uses Split screen's options (Camera panel ▸ Layout): the camera's side, the split size, and the gap. Each change eases in and out.</key>
+	<string>“并排”使用分屏的选项（“摄像头”面板 ▸ 布局）：摄像头位置、分屏比例和间距。每次切换都会平滑过渡。</string>
 	<key>Side rail</key>
 	<string>侧边按钮栏</string>
 	<key>Side rail, Full rail, or Minimal. It shows only in the preview, never in the export.</key>
@@ -5606,6 +5652,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>在播放头处分割</string>
 	<key>Split at the playhead (S)</key>
 	<string>在播放头处分割（S）</string>
+	<key>Split screen</key>
+	<string>分屏</string>
+	<key>Split screen divider</key>
+	<string>分屏分隔线</string>
+	<key>Split size</key>
+	<string>分屏比例</string>
 	<key>Split the clips at every marker</key>
 	<string>在每个标记处分割片段</string>
 	<key>Split the video (S) to make cuts; each can dissolve or dip to black.</key>
@@ -5892,6 +5944,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>摄像头始终完整录制：形状只是一项设置，所以你之后可以更改，创意交付也会得到完整的摄像头画面。</string>
 	<key>The camera is saved separately and whole, so in the editor you can move it, resize it, restyle it, or hide it.</key>
 	<string>摄像头会单独完整存储，所以你可以在编辑器中移动、调整大小、更改样式或隐藏它。</string>
+	<key>The camera is still in the recording: choose another layout to show it.</key>
+	<string>摄像头仍在录制内容中：选择其他布局即可显示它。</string>
 	<key>The camera keeps your cursor in view and glides after it.</key>
 	<string>镜头会让指针保持在画面中，并平滑地跟随它。</string>
 	<key>The camera stopped. The recording continues without it.</key>
@@ -6020,6 +6074,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>存储面板未返回存储位置。请再次尝试存储。</string>
 	<key>The save window appears after each recording. Settings ▸ Recording ▸ Saving has Ask where to save after each recording and the Recording folder.</key>
 	<string>每次录制后都会出现存储窗口。“设置 ▸ 录制 ▸ 存储”中有“每次录制后询问存储位置”和“录制文件夹”。</string>
+	<key>The screen and your camera each fill one part of the video: side by side, or one above the other.</key>
+	<string>屏幕和摄像头各自填满视频的一部分：并排或上下排列。</string>
 	<key>The screen recording</key>
 	<string>屏幕录制内容</string>
 	<key>The screenshot has no image data.</key>
@@ -6960,6 +7016,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>“窗口”“全屏”和“手动选择区域”：改用其他方式录制。</string>
 	<key>Windows in front of it don't get in the way: only the window you click is captured.</key>
 	<string>挡在前面的窗口不会碍事：只会捕捉你点按的那个窗口。</string>
+	<key>With Camera on and Layout ▸ Split screen, the frame is the screen's part of the video, and the camera's part shows beside it.</key>
+	<string>打开“摄像头”并选择“布局 ▸ 分屏”时，录制框是视频的屏幕部分，摄像头部分显示在旁边。</string>
 	<key>With a transcript, you can also cut by deleting words: Captions ▸ Edit by text.</key>
 	<string>有了文字稿，你还可以通过删除文字来剪辑：“字幕 ▸ 按文字编辑”。</string>
 	<key>With more than one screen, click Record next to the one you want.</key>

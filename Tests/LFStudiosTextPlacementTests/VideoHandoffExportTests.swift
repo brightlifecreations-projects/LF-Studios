@@ -450,4 +450,35 @@ struct VideoHandoffExportTests {
         #expect(items.count >= 4)
         print("Premiere XML: \(paths.count) files, \(items.count) clips")
     }
+
+    /// Split screen (1.10.0): the timelines are the whole split video's
+    /// size, README.txt spells out where each part goes, and the finished
+    /// video and the project keep the split.
+    @Test func aSplitScreenHandoffSaysWhereEachPartGoes() async throws {
+        var fixture = try await fixture()
+        defer { try? FileManager.default.removeItem(at: fixture.folder) }
+        fixture.input.project.webcam = VideoRecordingCameraSetup.LayoutChoice.split.applied(to: fixture.input.project.webcam)
+        fixture.input.project.webcam.split = VideoWebcamSettings.Split(cameraSide: .first, cameraShare: 0.4)
+        fixture.input.project.aspectPreset = .widescreen
+        let destination = fixture.folder.appendingPathComponent("Out split", isDirectory: true)
+        try FileManager.default.createDirectory(at: destination, withIntermediateDirectories: true)
+        var options = VideoHandoffOptions()
+        options.includeFinal = true
+        let result = try await write(fixture, options: options, into: destination)
+
+        let readme = try String(contentsOf: result.folder.appendingPathComponent("README.txt"), encoding: .utf8)
+        #expect(readme.contains("SPLIT SCREEN"))
+        #expect(readme.contains("the screen on the right, the camera on the left"))
+        let split = try #require(fixture.input.split)
+        #expect(split.video == CGSize(width: 1280, height: 720))
+        #expect(readme.contains("Camera: \(Int(split.camera.width)) × 720 at x 0, y 0"))
+        let fcpxml = try String(contentsOf: result.folder.appendingPathComponent("Timeline.fcpxml"), encoding: .utf8)
+        #expect(fcpxml.contains("width=\"1280\" height=\"720\""))
+
+        let project = try VideoProjectPackage.open(result.folder.appendingPathComponent("Demo.lfsp"))
+        #expect(project.contents.project.webcam.effectiveLayout == .split)
+        #expect(project.contents.project.webcam.split?.cameraShare == 0.4)
+        let finals = try FileManager.default.contentsOfDirectory(atPath: result.folder.appendingPathComponent("06 Final").path)
+        #expect(!finals.isEmpty, "the finished video, split")
+    }
 }

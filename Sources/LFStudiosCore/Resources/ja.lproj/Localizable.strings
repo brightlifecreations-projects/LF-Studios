@@ -68,6 +68,8 @@
 	<string>%@ · %@ × %@の画像</string>
 	<key>%@ · %lld fps</key>
 	<string>%@ · %lld fps</string>
+	<key>%@ · Screen part of a %@ split video</key>
+	<string>%1$@ · %2$@分割ビデオの画面部分</string>
 	<key>%@ · about %@</key>
 	<string>%@ · 約%@</string>
 	<key>%@ · on your clipboard — paste it anywhere</key>
@@ -320,6 +322,8 @@
 	<string>この比率に合わせる</string>
 	<key>Adapt to this ratio</key>
 	<string>この比率に合わせる</string>
+	<key>Adapt to this ratio turns side by side into one above the other: left becomes top, right becomes bottom.</key>
+	<string>“この比率に合わせる”を使うと、横並びが上下の並びに変わります。左は上に、右は下になります。</string>
 	<key>Adapt to this ratio, next to the aspect ratio menu after you change it.</key>
 	<string>アスペクト比を変更したあと、アスペクト比メニューの横に表示される“この比率に合わせる”。</string>
 	<key>Adapted to %@: %@</key>
@@ -616,6 +620,8 @@
 	<string>アクアマーブル</string>
 	<key>Area</key>
 	<string>範囲</string>
+	<key>Arrange what you'll show inside the frame: it fills the screen's part exactly, without stretching or black bars.</key>
+	<string>見せたいものを枠の中に並べます。画面部分にぴったり収まり、引き伸ばしや黒帯はありません。</string>
 	<key>Arrow</key>
 	<string>矢印</string>
 	<key>Arrow head</key>
@@ -734,6 +740,8 @@
 	<string>収録前: “カメラ”をオンにして、収録バーの上の“サイズを選択”を使います。エディタでは: プレビュー上でカメラをドラッグします。</string>
 	<key>Before recording: turn on Camera, then Camera shape above the recording bar. In the editor: Camera panel ▸ Camera ▸ Camera shape.</key>
 	<string>収録前: “カメラ”をオンにして、収録バーの上の“カメラの形”を使います。エディタでは: “カメラ”パネル＞“カメラ”＞“カメラの形”。</string>
+	<key>Before recording: turn on Camera, then Layout ▸ Split screen above the recording bar. In the editor: Camera panel ▸ Layout.</key>
+	<string>収録前: “カメラ”をオンにして、収録バーの上の“レイアウト”＞“分割画面”を選びます。エディタでは: “カメラ”パネル＞“レイアウト”。</string>
 	<key>Begins scrolling when the recording starts</key>
 	<string>収録の開始と同時にスクロールを始めます</string>
 	<key>Behavior</key>
@@ -812,6 +820,8 @@
 	<string>すべてを手前に移動</string>
 	<key>Bring captions to life: words that pop in, a karaoke fill, a typewriter, and more.</key>
 	<string>字幕に動きを付けます: ポップインする単語、カラオケ塗り、タイプライターなど。</string>
+	<key>Bubble</key>
+	<string>ワイプ</string>
 	<key>Built-in</key>
 	<string>内蔵</string>
 	<key>Built-in (San Francisco)</key>
@@ -834,6 +844,8 @@
 	<string>吹き出し: 指し示したいものの上で押して、吹き出しを外側へドラッグしてから入力します。</string>
 	<key>Camera</key>
 	<string>カメラ</string>
+	<key>Camera %@</key>
+	<string>カメラ %@</string>
 	<key>Camera Side by Side at Playhead</key>
 	<string>再生ヘッドの位置でカメラを横並びに</string>
 	<key>Camera access is off — allow LF Studios in System Settings → Privacy &amp; Security → Camera.</key>
@@ -876,6 +888,8 @@
 	<string>カメラのレイアウト</string>
 	<key>Camera layouts — drag to move, drag an edge to retime, click to change</key>
 	<string>カメラのレイアウト: ドラッグで移動、端をドラッグで長さを変更、クリックで変更</string>
+	<key>Camera only</key>
+	<string>カメラのみ</string>
 	<key>Camera panel ▸ Behavior ▸ Shrink while zoomed.</key>
 	<string>“カメラ”パネル＞“動作”＞“ズーム中は縮小”。</string>
 	<key>Camera panel ▸ Camera video ▸ Add camera video….</key>
@@ -902,6 +916,10 @@
 	<string>カメラの形: 円形、角丸長方形、正方形、横長、縦長、4:3、3:4、自由形式、切り抜き（背景なしで自分だけ）。</string>
 	<key>Camera shape: how the camera looks in the video. The preview shows it.</key>
 	<string>カメラの形: ビデオでのカメラの見た目です。プレビューに表示されます。</string>
+	<key>Camera side</key>
+	<string>カメラの側</string>
+	<key>Camera side, Split size (from 30/70 to 70/30, 50/50 to start), and Gap, with the video's background in between.</key>
+	<string>“カメラの側”、“分割の比率”（30/70〜70/30、最初は50/50）、“間隔”（間にビデオの背景が見えます）。</string>
 	<key>Camera stopped</key>
 	<string>カメラ停止</string>
 	<key>Camera unplugged: the screen recording keeps going without it.</key>
@@ -1150,6 +1168,8 @@
 	<string>画像を選択…</string>
 	<key>Choose LF Studios ▸ Check for Updates….</key>
 	<string>“LF Studios”＞“アップデートを確認…”を選択します。</string>
+	<key>Choose Layout ▸ Split screen. The frame becomes the screen's part, like 8:9 for a 16:9 video split in half, and the camera preview fills the camera's part.</key>
+	<string>“レイアウト”＞“分割画面”を選びます。枠が画面部分（16:9のビデオを半分に分けるなら8:9など）になり、カメラのプレビューがカメラ部分を埋めます。</string>
 	<key>Choose Location…</key>
 	<string>場所を選択…</string>
 	<key>Choose MP4.</key>
@@ -1728,6 +1748,8 @@
 	<string>受け渡しを作成</string>
 	<key>Creative Handoff</key>
 	<string>クリエイティブ受け渡し</string>
+	<key>Creative Handoff's README.txt says where each part goes, in pixels, for your editing app.</key>
+	<string>クリエイティブ受け渡しのREADME.txtには、編集アプリのために各部分の位置がピクセル単位で書かれます。</string>
 	<key>Creative Handoff…</key>
 	<string>クリエイティブ受け渡し…</string>
 	<key>Crimson Ridge</key>
@@ -2066,6 +2088,8 @@
 	<string>タイムラインでズームの端をドラッグして、長さを設定します。</string>
 	<key>Drag to capture  ·  Hold ⇧ as you let go to adjust first  ·  Space moves  ·  Esc cancels</key>
 	<string>ドラッグして取り込む  ·  ⇧を押しながら放すと取り込む前に調整  ·  スペースバーで移動  ·  Escキーでキャンセル</string>
+	<key>Drag to change how much of the video the camera takes</key>
+	<string>ドラッグしてカメラがビデオに占める割合を変えます</string>
 	<key>Drag to change where this clip ends</key>
 	<string>ドラッグしてこのクリップの終了位置を変更</string>
 	<key>Drag to change where this clip starts</key>
@@ -2624,6 +2648,10 @@
 	<string>GIFはREADME、プルリクエスト、ドキュメントなど、どこにでも埋め込めます。すぐにファイルが大きくなるので、短めにしてください。</string>
 	<key>GIFs get big quickly: keep them short and choose a smaller size.</key>
 	<string>GIFはすぐにファイルサイズが大きくなります。短めにして、小さいサイズを選びましょう。</string>
+	<key>Gap</key>
+	<string>間隔</string>
+	<key>Gap between the parts</key>
+	<string>部分の間に間隔を空ける</string>
 	<key>General</key>
 	<string>一般</string>
 	<key>Get the area exactly right: a magnifier, the size as you drag, and keys to fine-tune.</key>
@@ -2890,6 +2918,8 @@
 	<string>エディタで、“オーディオ”パネルの“ビデオを消音”がオフになっていること、プレビューが消音されていないこと（Mキーを押します）を確認します。</string>
 	<key>In the editor, click Add typing zooms.</key>
 	<string>エディタで“入力箇所のズームを追加”をクリックします。</string>
+	<key>In the editor, drag the divider on the video to change the split. Zooms happen inside the screen's part; captions go over the whole video.</key>
+	<string>エディタでは、ビデオ上の区切り線をドラッグして分割を変えます。ズームは画面部分の中で行われ、字幕はビデオ全体の上に表示されます。</string>
 	<key>In the editor, the camera snaps to the corners, the edges and the center. Each drag is one ⌘Z. Reset size in Camera ▸ Position goes back to the usual size.</key>
 	<string>エディタでは、カメラは角、端、中央に吸着します。ドラッグ1回は⌘Z 1回で取り消せます。“カメラ”＞“位置”の“サイズをリセット”でいつものサイズに戻ります。</string>
 	<key>In the export window ▸ Captions.</key>
@@ -3206,6 +3236,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ラグーン</string>
 	<key>Landscape (16:9)</key>
 	<string>横長（16:9）</string>
+	<key>Landscape videos (16:9, 4:3, 21:9) split side by side; square and vertical ones (1:1, 4:5, 9:16) one above the other.</key>
+	<string>横長のビデオ（16:9、4:3、21:9）は左右に、正方形や縦長のビデオ（1:1、4:5、9:16）は上下に分割されます。</string>
 	<key>Language</key>
 	<string>言語</string>
 	<key>Languages</key>
@@ -3230,6 +3262,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ラベンダーガラス</string>
 	<key>Layout</key>
 	<string>レイアウト</string>
+	<key>Layout also has Screen only and Camera only. The screen and the camera are always both recorded, so you can change your mind later.</key>
+	<string>“レイアウト”には“画面のみ”と“カメラのみ”もあります。画面とカメラは常に両方収録されるので、後から変えられます。</string>
+	<key>Layout: the camera in a bubble, split screen with the screen, or only one of them. Both are always recorded.</key>
+	<string>レイアウト: カメラをワイプで表示、画面と分割、またはどちらか一方のみ。どちらも常に収録されます。</string>
 	<key>Layouts</key>
 	<string>レイアウト</string>
 	<key>Leaves out the background: the video, its rounded corners and shadow, and a cut-out camera sit on transparency, ready to place over anything</key>
@@ -3486,8 +3522,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ドラッグ中に範囲を移動</string>
 	<key>Move the frame (with ⇧: 10 points)</key>
 	<string>枠を移動（⇧で10ポイントずつ）</string>
-	<key>Move the playhead and click Full camera, Side by side, or Hidden.</key>
-	<string>再生ヘッドを移動して、“カメラ全面”、“横並び”、“非表示”のいずれかをクリックします。</string>
+	<key>Move the playhead and click Full camera, Side by side, or Hidden (on a split video, also Bubble).</key>
+	<string>再生ヘッドを動かして、“カメラ全面”、“横並び”、“非表示”（分割ビデオでは“ワイプ”も）をクリックします。</string>
 	<key>Move the playhead and press S to split the clip there.</key>
 	<string>再生ヘッドを移動してSキーを押すと、その位置でクリップを分割します。</string>
 	<key>Move the playhead inside a clip to split</key>
@@ -3836,6 +3872,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>クリップボードにあります · %@</string>
 	<key>Once a day. When there's a new version, LF Studios shows what's new and installs it only when you click Install Update. Your projects, recordings, settings and permissions stay.</key>
 	<string>1日に1回。新しいバージョンがあると、LF Studiosは新機能を表示し、「アップデートをインストール」をクリックしたときだけインストールします。プロジェクト、収録、設定、アクセス許可はそのまま残ります。</string>
+	<key>One above the other on this video. Drag the divider on the video to change the split; the background (Style) shows in the gap.</key>
+	<string>このビデオでは上下に並びます。ビデオ上の区切り線をドラッグして分割を変えます。間隔には背景（スタイル）が見えます。</string>
 	<key>One word at a time</key>
 	<string>1語ずつ</string>
 	<key>One ⌘Z undoes it.</key>
@@ -4388,6 +4426,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>入力箇所をズームするには、“入力場所を追跡”をオンにして収録してください</string>
 	<key>Record your voice.</key>
 	<string>声を収録します。</string>
+	<key>Record. The video opens in the editor already split.</key>
+	<string>収録します。ビデオはすでに分割された状態でエディタに開きます。</string>
 	<key>Record. The video opens in the editor with the camera in that shape.</key>
 	<string>収録します。ビデオはその形のカメラでエディタに開きます。</string>
 	<key>Recorded at %@. Drag its dot on the timeline to retime it; ripples and Auto Zoom follow.</key>
@@ -5124,6 +5164,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>画面収録のアクセス許可が必要です</string>
 	<key>Screen clips, camera, voice, computer sound, music, pictures, captions, and fonts.</key>
 	<string>画面のクリップ、カメラ、声、システムオーディオ、音楽、画像、字幕、フォント。</string>
+	<key>Screen only</key>
+	<string>画面のみ</string>
 	<key>Screen recording</key>
 	<string>画面収録</string>
 	<key>Screen recording didn't start in time. Try again.</key>
@@ -5470,6 +5512,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>背景をシャッフル</string>
 	<key>Side by side</key>
 	<string>横並び</string>
+	<key>Side by side on this video. Drag the divider on the video to change the split; the background (Style) shows in the gap.</key>
+	<string>このビデオでは横に並びます。ビデオ上の区切り線をドラッグして分割を変えます。間隔には背景（スタイル）が見えます。</string>
+	<key>Side by side uses Split screen's options (Camera panel ▸ Layout): the camera's side, the split size, and the gap. Each change eases in and out.</key>
+	<string>“横並び”は分割画面のオプション（“カメラ”パネル＞“レイアウト”）を使います: カメラの側、分割の比率、間隔。切り替えはなめらかに行われます。</string>
 	<key>Side rail</key>
 	<string>サイドレール</string>
 	<key>Side rail, Full rail, or Minimal. It shows only in the preview, never in the export.</key>
@@ -5606,6 +5652,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>再生ヘッドの位置で分割</string>
 	<key>Split at the playhead (S)</key>
 	<string>再生ヘッドの位置で分割（S）</string>
+	<key>Split screen</key>
+	<string>分割画面</string>
+	<key>Split screen divider</key>
+	<string>分割画面の区切り線</string>
+	<key>Split size</key>
+	<string>分割の比率</string>
 	<key>Split the clips at every marker</key>
 	<string>すべてのマーカー位置でクリップを分割</string>
 	<key>Split the video (S) to make cuts; each can dissolve or dip to black.</key>
@@ -5892,6 +5944,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>カメラは常に全体が収録されます。形は設定にすぎないので後から変更でき、クリエイティブ受け渡しにはカメラ映像全体が渡されます。</string>
 	<key>The camera is saved separately and whole, so in the editor you can move it, resize it, restyle it, or hide it.</key>
 	<string>カメラは別に、全体が保存されるので、エディタで移動、サイズ変更、スタイル変更、非表示ができます。</string>
+	<key>The camera is still in the recording: choose another layout to show it.</key>
+	<string>カメラは収録に残っています。表示するには別のレイアウトを選びます。</string>
 	<key>The camera keeps your cursor in view and glides after it.</key>
 	<string>カメラがポインタを画面内にとらえ、滑らかに追いかけます。</string>
 	<key>The camera stopped. The recording continues without it.</key>
@@ -6020,6 +6074,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>保存パネルから保存先を取得できませんでした。もう一度保存してください。</string>
 	<key>The save window appears after each recording. Settings ▸ Recording ▸ Saving has Ask where to save after each recording and the Recording folder.</key>
 	<string>収録のたびに保存ウインドウが表示されます。“収録のたびに保存先を確認する”と“収録のフォルダ”は、“設定”＞“収録”＞“保存”にあります。</string>
+	<key>The screen and your camera each fill one part of the video: side by side, or one above the other.</key>
+	<string>画面とカメラがそれぞれビデオの一部を埋めます。横並び、または上下に。</string>
 	<key>The screen recording</key>
 	<string>画面収録</string>
 	<key>The screenshot has no image data.</key>
@@ -6960,6 +7016,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>“ウインドウ”、“画面全体”、“範囲を手動で選択”: 別の方法で収録します。</string>
 	<key>Windows in front of it don't get in the way: only the window you click is captured.</key>
 	<string>手前にあるウインドウは邪魔になりません。クリックしたウインドウだけが取り込まれます。</string>
+	<key>With Camera on and Layout ▸ Split screen, the frame is the screen's part of the video, and the camera's part shows beside it.</key>
+	<string>“カメラ”がオンで“レイアウト”＞“分割画面”のとき、枠はビデオの画面部分になり、その隣にカメラ部分が表示されます。</string>
 	<key>With a transcript, you can also cut by deleting words: Captions ▸ Edit by text.</key>
 	<string>文字起こしがある場合は、単語を削除してカットすることもできます: “字幕”＞“テキストで編集”。</string>
 	<key>With more than one screen, click Record next to the one you want.</key>

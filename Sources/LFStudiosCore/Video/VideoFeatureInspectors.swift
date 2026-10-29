@@ -755,6 +755,8 @@ struct VideoCameraInspector: View {
                 }
                 .disabled(false)
 
+                VideoCameraLayoutSection(model: model)
+
                 cameraLook
 
                 VideoInspectorSection(L("Position")) {
@@ -807,7 +809,8 @@ struct VideoCameraInspector: View {
                         .foregroundStyle(VideoEditorTheme.textTertiary)
                         .fixedSize(horizontal: false, vertical: true)
                     HStack(spacing: 8) {
-                        ForEach(VideoCameraLayoutRegion.Layout.allCases) { layout in
+                        // Bubble only means something on a split or camera-only video.
+                        ForEach(VideoCameraLayoutRegion.Layout.allCases.filter { $0 != .bubble || model.project.webcam.effectiveLayout != .bubble }) { layout in
                             Button {
                                 model.addCameraLayout(layout)
                             } label: {
@@ -982,6 +985,64 @@ struct VideoCameraShapeMenu: View {
                     .font(.system(size: 11, weight: .medium).monospacedDigit())
                     .foregroundStyle(VideoEditorTheme.textSecondary)
                     .help(L("Drag the camera's edges on the video to change its width and height."))
+            }
+        }
+    }
+}
+
+/// Layout: Bubble, Split screen, Screen only or Camera only, and Split
+/// screen's options (VideoSplitScreen.swift).
+struct VideoCameraLayoutSection: View {
+    @ObservedObject var model: VideoEditorModel
+
+    var body: some View {
+        let webcam = model.project.webcam
+        let choice = VideoRecordingCameraSetup.LayoutChoice.of(webcam)
+        let sideBySide = VideoSplitLayout.isSideBySide(model.plan.outputCanvasSize)
+        VideoInspectorSection(L("Layout")) {
+            VideoSegmented(
+                options: VideoRecordingCameraSetup.LayoutChoice.allCases.map { ($0, $0.title) },
+                selection: Binding(get: { choice }, set: { newChoice in model.setStyle { $0.webcam = newChoice.applied(to: $0.webcam) } })
+            )
+            if choice == .split {
+                let split = webcam.effectiveSplit
+                HStack(spacing: 10) {
+                    Text(L("Camera side"))
+                        .font(.system(size: 12, weight: .medium))
+                        .foregroundStyle(VideoEditorTheme.textPrimary)
+                        .fixedSize()
+                    VideoSegmented(
+                        options: VideoWebcamSettings.Split.Side.allCases.map { ($0, $0.title(sideBySide: sideBySide)) },
+                        selection: Binding(get: { split.cameraSide }, set: { side in model.setStyle { $0.webcam.split = $0.webcam.effectiveSplit; $0.webcam.split?.cameraSide = side } })
+                    )
+                }
+                VideoSliderRow(
+                    title: L("Split size"),
+                    value: Binding(get: { split.keptShare }, set: { value in model.setStyle(coalesce: "split-share") { $0.webcam.split = $0.webcam.effectiveSplit; $0.webcam.split?.cameraShare = value } }),
+                    range: VideoWebcamSettings.Split.shareRange,
+                    defaultValue: 0.5,
+                    format: { L("Camera \(VideoEditorFormat.percent($0))") },
+                    onEditingEnded: { model.endGesture() }
+                )
+                VideoSliderRow(
+                    title: L("Gap"),
+                    value: Binding(get: { split.keptGap }, set: { value in model.setStyle(coalesce: "split-gap") { $0.webcam.split = $0.webcam.effectiveSplit; $0.webcam.split?.gap = value } }),
+                    range: VideoWebcamSettings.Split.gapRange,
+                    defaultValue: 0,
+                    format: { $0 < 0.0005 ? L("None") : VideoEditorFormat.percent($0 / VideoWebcamSettings.Split.gapRange.upperBound) },
+                    onEditingEnded: { model.endGesture() }
+                )
+                Text(sideBySide
+                     ? L("Side by side on this video. Drag the divider on the video to change the split; the background (Style) shows in the gap.")
+                     : L("One above the other on this video. Drag the divider on the video to change the split; the background (Style) shows in the gap."))
+                    .font(.system(size: 10.5))
+                    .foregroundStyle(VideoEditorTheme.textTertiary)
+                    .fixedSize(horizontal: false, vertical: true)
+            } else if choice == .screenOnly {
+                Text(L("The camera is still in the recording: choose another layout to show it."))
+                    .font(.system(size: 10.5))
+                    .foregroundStyle(VideoEditorTheme.textTertiary)
+                    .fixedSize(horizontal: false, vertical: true)
             }
         }
     }
