@@ -210,6 +210,7 @@ extension VideoEditorModel {
     /// stays one; ⇧⌘S always asks, and writes a `.lfs`.
     func saveProject(as saveAs: Bool = false) {
         guard isReady else { return }
+        dropUnusedGeneratedSources()
         saveDraftNow()
         var destination = projectFileURL
         var mode = projectMediaMode ?? .included
@@ -242,6 +243,9 @@ extension VideoEditorModel {
             case .success:
                 projectFileURL = url
                 projectMediaMode = mode
+                // Made videos (pictures on the main track, freeze frames,
+                // reversed clips) nothing uses any more go now.
+                VideoGeneratedMedia.removeUnused(inUse: VideoDemoEditorWindowController.assetPathsInUse().union(assetPathsInHistory()), draftTexts: VideoGeneratedMedia.draftTexts())
                 // Saved there on purpose: the folder is the project's now.
                 if mode == .folder { VideoFileIdentity.unprotect(url.deletingLastPathComponent()) }
                 VideoProjectRecents.add(url)

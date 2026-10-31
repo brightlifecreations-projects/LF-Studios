@@ -371,7 +371,7 @@ enum VideoDemoDraftStore {
         try? FileManager.default.moveItem(at: url, to: aside)
     }
 
-    private static func directory(baseDirectory: URL?) -> URL {
+    static func directory(baseDirectory: URL? = nil) -> URL {
         let root = baseDirectory ?? VideoStorageLocation.root
         return root
             .appendingPathComponent("LF Studios", isDirectory: true)

@@ -69,6 +69,14 @@ struct VideoEditorRootView: View {
             }
             // With the export sheet up, the message shows on the
             // sheet instead (see VideoOverlayNotice).
+            // Reversing a clip, recording a voiceover (1.14.0).
+            VStack(spacing: 8) {
+                VideoShortcutsChangedNotice()
+                VideoGenerationPill(model: model)
+                VideoVoiceoverPill(model: model)
+            }
+            // Under a notice that's showing, not on it.
+            .padding(.top, model.notice != nil && !model.isExportPresented ? 132 : 80)
             if let notice = model.notice, !model.isExportPresented {
                 VideoNoticePill(notice: notice)
                     .padding(.top, model.isCropping ? 12 : 80)
@@ -92,7 +100,7 @@ struct VideoEditorRootView: View {
         .clipped()
         // Files dropped on the player go in at the playhead (videos at
         // the end).
-        .onDrop(of: [.fileURL], delegate: VideoMediaDrop(model: model) { _ in nil })
+        .onDrop(of: [.fileURL], delegate: VideoMediaDrop(model: model) { _ in (nil, .layer(.automatic)) })
     }
 
     /// A border between panels dragged by `delta`: the Library's (left)
@@ -557,7 +565,7 @@ extension VideoEditorModel {
         // clip after clip, a held T stack up texts). Arrows, J/L, and the
         // timeline scale keys still repeat.
         if event.isARepeat, modifiers.isEmpty || modifiers == [.shift],
-           [51, 117].contains(code) || ["t", "h", "a", "b", "z", "s", "c", "i", "o", "m", " ", "1", "2", "3", "4", "5", "?"].contains(key) {
+           [51, 117].contains(code) || ["a", "b", "z", "s", "c", "i", "o", "m", "q", "w", "p", "n", "v", "`", "[", "]", " ", "1", "2", "3", "4", "5", "?"].contains(key) {
             return true
         }
 
@@ -611,6 +619,12 @@ extension VideoEditorModel {
             }
         }
 
+        // The timeline's commands (VideoEditCommands.swift).
+        if let command = VideoEditCommand.command(key: key, modifiers: modifiers) {
+            perform(command)
+            return true
+        }
+
         switch (modifiers, key) {
         case ([.command], "z"): undo(); return true
         case ([.command, .shift], "z"): redo(); return true
@@ -621,8 +635,6 @@ extension VideoEditorModel {
         case ([.command], "e"):
             withAnimation(.easeOut(duration: 0.15)) { isExportPresented = true }
             return true
-        case ([.command], "b"): splitAtPlayhead(); return true
-        case ([.command], "c"): copyCurrentFrame(); return true
         case ([.command], "f"): findInTranscript(); return true
         case ([.command], "d"):
             if let id = selectedZoomID {
@@ -653,8 +665,9 @@ extension VideoEditorModel {
             deleteSelection()
             return true
         case 53:
-            // Full-screen preview first, then the selection, then playback.
-            if isPlayerFullScreen { isPlayerFullScreen = false } else if selection != .none { selection = .none } else if isPlaying { pause() }
+            // Full-screen preview first, the split tool, then the
+            // selection, then playback.
+            if isPlayerFullScreen { isPlayerFullScreen = false } else if timelineTool != .select { timelineTool = .select } else if selection != .none { selection = .none } else if isPlaying { pause() }
             return true
         default:
             break
@@ -668,14 +681,8 @@ extension VideoEditorModel {
 
         switch key {
         case " ": togglePlay()
-        case "s", "c": splitAtPlayhead()
+        case "c": perform(.split)
         case "z": addZoom(at: clock.time)
-        case "t": addOverlay(.text)
-        case "h": addOverlay(.highlight)
-        case "a": addOverlay(.arrow)
-        case "b": addOverlay(.blur)
-        case "i": trimSelectedClipToPlayhead(leading: true)
-        case "o": trimSelectedClipToPlayhead(leading: false)
         case "j": shuttleBackward()
         case "k": pause()
         case "l": shuttleForward()
@@ -814,17 +821,17 @@ struct VideoCommandPalette: View {
         [
             Command(id: "export", title: L("Export…"), symbol: "square.and.arrow.up", shortcut: "⌘E") { model.isExportPresented = true },
             Command(id: "play", title: model.isPlaying ? L("Pause") : L("Play"), symbol: "playpause.fill", shortcut: L("Space")) { model.togglePlay() },
-            Command(id: "split", title: L("Split at Playhead"), symbol: "scissors", shortcut: "S") { model.splitAtPlayhead() },
+            Command(id: "split", title: L("Split at Playhead"), symbol: "scissors", shortcut: "⌘B") { model.perform(.split) },
             Command(id: "zoom", title: L("Add Zoom at Playhead"), symbol: "plus.magnifyingglass", shortcut: "Z") { model.addZoom(at: model.clock.time) },
             Command(id: "auto", title: model.project.autoZoom ? L("Turn Off Auto-Zoom on Clicks") : L("Turn On Auto-Zoom on Clicks"), symbol: "sparkles", shortcut: "") { model.setAutoZoom(!model.project.autoZoom) },
             Command(id: "my-style", title: L("Apply My Style"), symbol: "wand.and.stars", shortcut: "⇧⌘Y") { model.applyMyStyle() },
             Command(id: "remove-zooms", title: L("Remove All Zooms"), symbol: "trash", shortcut: "") { model.removeAllZooms() },
             Command(id: "idle", title: L("Speed Up Idle Moments"), symbol: "hare", shortcut: "") { model.speedUpIdle() },
             Command(id: "crop", title: L("Crop the Recording…"), symbol: "crop", shortcut: "") { model.beginCrop() },
-            Command(id: "text", title: L("Add Text"), symbol: "textformat", shortcut: "T") { model.addOverlay(.text) },
-            Command(id: "highlight", title: L("Add Highlight"), symbol: "rectangle.dashed", shortcut: "H") { model.addOverlay(.highlight) },
-            Command(id: "arrow", title: L("Add Arrow"), symbol: "arrow.up.right", shortcut: "A") { model.addOverlay(.arrow) },
-            Command(id: "blur", title: L("Add Blur"), symbol: "eye.slash", shortcut: "B") { model.addOverlay(.blur) },
+            Command(id: "text", title: L("Add Text"), symbol: "textformat", shortcut: "⌥T") { model.addOverlay(.text) },
+            Command(id: "highlight", title: L("Add Highlight"), symbol: "rectangle.dashed", shortcut: "⌥H") { model.addOverlay(.highlight) },
+            Command(id: "arrow", title: L("Add Arrow"), symbol: "arrow.up.right", shortcut: "⌥A") { model.addOverlay(.arrow) },
+            Command(id: "blur", title: L("Add Blur"), symbol: "eye.slash", shortcut: "⌥B") { model.addOverlay(.blur) },
             Command(id: "find-private", title: L("Find Private Info…"), symbol: "eye.trianglebadge.exclamationmark", shortcut: "") { model.showPrivacyScan() },
             Command(id: "adapt-ratio", title: L("Adapt to This Ratio"), symbol: "wand.and.rays", shortcut: "") { model.adaptToRatio() },
             Command(id: "spotlight", title: L("Add Spotlight (Dim Around a Spot)"), symbol: VideoDemoOverlayEffectKind.spotlight.icon, shortcut: "") { model.addOverlay(.spotlight) },
@@ -834,9 +841,12 @@ struct VideoCommandPalette: View {
             },
             Command(id: "save-look", title: L("Save This Look as My Style"), symbol: "checkmark.seal", shortcut: "") { model.saveStyleAsDefault() },
             Command(id: "reset-look", title: L("Reset to the LF Studios Look"), symbol: "arrow.counterclockwise", shortcut: "") { model.resetStyle() },
-            Command(id: "copy-frame", title: L("Copy Current Frame"), symbol: "photo.on.rectangle", shortcut: "⌘C") { model.copyCurrentFrame() },
+            Command(id: "copy-frame", title: L("Copy Current Frame"), symbol: "photo.on.rectangle", shortcut: "") { model.copyCurrentFrame() },
             Command(id: "undo", title: VideoEditDescription.undoTitle(model.undoLabel), symbol: "arrow.uturn.backward", shortcut: "⌘Z") { model.undo() },
             Command(id: "redo", title: VideoEditDescription.redoTitle(model.redoLabel), symbol: "arrow.uturn.forward", shortcut: "⇧⌘Z") { model.redo() },
+        ] + VideoEditCommand.allCases.filter { ![.undo, .redo, .addText, .addArrow, .addHighlight, .addBlur].contains($0) }.map { command in
+            Command(id: "command-\(command.rawValue)", title: command.title, symbol: command.symbol, shortcut: command.keys) { model.perform(command) }
+        } + [
             Command(id: "start", title: L("Go to Start"), symbol: "backward.end.fill", shortcut: "⌘←") { model.seek(to: 0) },
             Command(id: "end", title: L("Go to End"), symbol: "forward.end.fill", shortcut: "⌘→") { model.seek(to: model.timelineDuration) },
             Command(id: "reveal", title: L("Show Recording in Finder"), symbol: "folder", shortcut: "") { model.revealSource() },
@@ -964,10 +974,10 @@ struct VideoShortcutsSheet: View {
     static var groups: [(String, [(String, String)])] {
         [
             (L("Playback"), [(L("Space"), L("Play / pause")), ("J  K  L", L("Back · pause · faster")), ("← →", L("Previous / next frame")), ("⇧← ⇧→", L("Jump one second")), ("⌘← ⌘→", L("Start / end")), (L("Home  End"), L("Start / end")), ("M", L("Mute the preview (or the selected clip)"))]),
-            (L("Editing"), [("S  C  ⌘B", L("Split at playhead")), (L("⇧-drag"), L("Select a range to cut")), (L("⇧/⌘-click"), L("Select several items")), ("I  O", L("Clip starts / ends here")), ("⌫", L("Delete selection")), ("⌥← ⌥→", L("Select previous / next item")), ("⌘Z  ⇧⌘Z", L("Undo / redo"))]),
-            (L("Zooms & annotations"), [("Z", L("Add zoom at playhead")), ("1 – 5", L("Zoom level (zoom selected)")), ("⌘D", L("Duplicate zoom or annotation")), ("T  H  A  B", L("Text · highlight · arrow · blur")), (L("Double-click"), L("Type in a text annotation"))]),
-            (L("Timeline"), [("=  −", L("Show more / less detail")), ("⌘=  ⌘−", L("Show more / less detail")), (L("⌘ scroll"), L("Zoom in at the pointer"))]),
-            (L("General"), [("⌘E", L("Export")), ("⇧⌘Y", L("Apply my style")), ("⌘K", L("All commands")), ("⌘C", L("Copy current frame")), ("⌘F", L("Find in the transcript")), ("?", L("This list")), (L("Esc"), L("Deselect / close"))]),
+            (L("Editing"), [("⌘B  C", L("Split at playhead")), ("⇧⌘B", L("Split all tracks")), ("A  B", L("Select tool · split tool")), ("Q  W", L("Delete left / right of the playhead")), (L("⇧-drag"), L("Select a range to cut")), (L("⇧/⌘-click"), L("Select several items")), ("I  O", L("Mark in / out")), ("[  ]", L("Select left / right of the playhead")), ("V", L("Turn a clip on or off")), ("⌫", L("Delete selection")), ("⌘C  ⌘V", L("Copy / paste clips")), ("⌘G  ⇧⌘G", L("Group / ungroup")), ("⌥← ⌥→", L("Select previous / next item")), ("⌘Z  ⇧⌘Z", L("Undo / redo"))]),
+            (L("Zooms & annotations"), [("Z", L("Add zoom at playhead")), ("1 – 5", L("Zoom level (zoom selected)")), ("⌘D", L("Duplicate zoom or annotation")), ("⌥T  ⌥H  ⌥A  ⌥B", L("Text · highlight · arrow · blur")), (L("Double-click"), L("Type in a text annotation"))]),
+            (L("Timeline"), [("=  −", L("Show more / less detail")), ("⌘=  ⌘−", L("Show more / less detail")), ("⇧Z", L("Fit the whole video")), (L("⌘ scroll"), L("Zoom in at the pointer")), ("P", L("Main track magnet")), ("N", L("Auto snapping")), ("`", L("Linkage")), ("S", L("Preview axis")), ("⇧⌘A", L("Extract audio"))]),
+            (L("General"), [("⌘E", L("Export")), ("⇧⌘Y", L("Apply my style")), ("⌘K", L("All commands")), ("⌘C", L("Copy current frame (nothing selected)")), ("⌘F", L("Find in the transcript")), ("?", L("This list")), (L("Esc"), L("Deselect / close"))]),
         ]
     }
 
@@ -1195,10 +1205,10 @@ struct VideoToolDock: View {
     /// Each tool's tooltip, with its key where it has one.
     static func help(_ kind: VideoDemoOverlayEffectKind) -> String {
         switch kind {
-        case .text: return L("Add text at the playhead (T)")
-        case .arrow: return L("Add arrow at the playhead (A)")
-        case .highlight: return L("Add highlight at the playhead (H)")
-        case .blur: return L("Add blur at the playhead (B)")
+        case .text: return L("Add text at the playhead (⌥T)")
+        case .arrow: return L("Add arrow at the playhead (⌥A)")
+        case .highlight: return L("Add highlight at the playhead (⌥H)")
+        case .blur: return L("Add blur at the playhead (⌥B)")
         case .spotlight: return L("Add spotlight at the playhead")
         case .image: return L("Add image at the playhead")
         }
@@ -1322,8 +1332,8 @@ struct VideoTipsBar: View {
     static var pages: [[(String, String)]] {
         [
             [(L("Space"), L("play")), (L("Hover the Zoom track"), L("add a zoom")), (L("Click a zoom"), L("aim or resize it")), ("⌘E", L("export"))],
-            [("S", L("split at the playhead")), (L("⇧-drag the timeline"), L("select a part to cut")), ("I  O", L("trim to the playhead"))],
-            [("T H A B", L("text, highlight, arrow, blur")), (L("Click it on the video"), L("select it")), (L("Double-click text"), L("type"))],
+            [("⌘B", L("split at the playhead")), (L("⇧-drag the timeline"), L("select a part to cut")), ("Q  W", L("delete left / right of the playhead"))],
+            [("⌥T ⌥H ⌥A ⌥B", L("text, highlight, arrow, blur")), (L("Click it on the video"), L("select it")), (L("Double-click text"), L("type"))],
             [("⌥← ⌥→", L("step through the timeline")), (L("⌘-scroll"), L("zoom the timeline")), ("M", L("mute the preview"))],
             [(L("Captions tab"), L("cut by editing words")), ("⌘K", L("every command")), ("?", L("all shortcuts"))],
         ]

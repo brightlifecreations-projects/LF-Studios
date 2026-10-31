@@ -16,6 +16,8 @@
 	<string>%@（編集済み）</string>
 	<key>%@ (original)</key>
 	<string>%@（オリジナル）</string>
+	<key>%@ (reversed)</key>
+	<string>%@（逆再生）</string>
 	<key>%@ (⇧⌘Z)</key>
 	<string>%@（⇧⌘Z）</string>
 	<key>%@ (⌘Z)</key>
@@ -382,8 +384,6 @@
 	<string>マーカーを追加</string>
 	<key>Add a marker (%@)</key>
 	<string>マーカーを追加（%@）</string>
-	<key>Add a marker at the playhead — markers become chapters</key>
-	<string>再生ヘッドの位置にマーカーを追加 — マーカーはチャプターになります</string>
 	<key>Add a marker — set a shortcut in Settings → Shortcuts</key>
 	<string>マーカーを追加 — ショートカットは“設定”＞“ショートカット”で設定できます</string>
 	<key>Add a second set of captions in another language.</key>
@@ -402,12 +402,12 @@
 	<string>このビデオの後ろに別の収録やビデオを追加できます。LF Studiosで収録したビデオは、ポインタ、クリック、ショートカットを保持します。</string>
 	<key>Add another recording to the end of this one, to make one video.</key>
 	<string>別の収録をこのビデオの最後に追加して、1本のビデオにします。</string>
-	<key>Add arrow at the playhead (A)</key>
-	<string>再生ヘッドの位置に矢印を追加（A）</string>
+	<key>Add arrow at the playhead (⌥A)</key>
+	<string>再生ヘッドの位置に矢印を追加（⌥A）</string>
 	<key>Add audio…</key>
 	<string>オーディオを追加…</string>
-	<key>Add blur at the playhead (B)</key>
-	<string>再生ヘッドの位置にぼかしを追加（B）</string>
+	<key>Add blur at the playhead (⌥B)</key>
+	<string>再生ヘッドの位置にぼかしを追加（⌥B）</string>
 	<key>Add camera video…</key>
 	<string>カメラ映像を追加…</string>
 	<key>Add captions</key>
@@ -424,12 +424,14 @@
 	<string>マーカーからチャプターを追加</string>
 	<key>Add chapters from markers puts chapters in MP4 and ProRes files.</key>
 	<string>“マーカーからチャプターを追加”では、MP4とProResのファイルにチャプターを入れます。</string>
-	<key>Add highlight at the playhead (H)</key>
-	<string>再生ヘッドの位置にハイライトを追加（H）</string>
+	<key>Add highlight at the playhead (⌥H)</key>
+	<string>再生ヘッドの位置にハイライトを追加（⌥H）</string>
 	<key>Add image at the playhead</key>
 	<string>再生ヘッドの位置に画像を追加</string>
 	<key>Add labels, speech-bubble callouts, and numbered circles for step-by-step guides.</key>
 	<string>ラベル、吹き出し、番号付きの丸を追加して、手順を説明するガイドを作れます。</string>
+	<key>Add marker</key>
+	<string>マーカーを追加</string>
 	<key>Add markers first — each one starts a chapter</key>
 	<string>まずマーカーを追加してください — マーカーごとにチャプターが始まります</string>
 	<key>Add markers while recording</key>
@@ -442,8 +444,8 @@
 	<string>サウンドファイルを追加</string>
 	<key>Add spotlight at the playhead</key>
 	<string>再生ヘッドの位置にスポットライトを追加</string>
-	<key>Add text at the playhead (T)</key>
-	<string>再生ヘッドの位置にテキストを追加（T）</string>
+	<key>Add text at the playhead (⌥T)</key>
+	<string>再生ヘッドの位置にテキストを追加（⌥T）</string>
 	<key>Add text, arrows, highlights, and spotlights on top of the video.</key>
 	<string>ビデオの上にテキスト、矢印、ハイライト、スポットライトを追加します。</string>
 	<key>Add text, arrows, highlights, blur or pictures with the tools above the preview</key>
@@ -702,6 +704,14 @@
 	<string>自動調整</string>
 	<key>Auto adjust picks settings for you; Reset goes back.</key>
 	<string>“自動調整”では設定を自動で選び、“リセット”で元に戻します。</string>
+	<key>Auto snapping</key>
+	<string>自動スナップ</string>
+	<key>Auto snapping (N): what you drag lands on the playhead, other clips' edges and markers.</key>
+	<string>自動スナップ（N）: ドラッグしたものが再生ヘッド、ほかのクリップの端、マーカーに吸着します。</string>
+	<key>Auto snapping off</key>
+	<string>自動スナップ: オフ</string>
+	<key>Auto snapping on</key>
+	<string>自動スナップ: オン</string>
 	<key>Auto zoom — %lld zooms</key>
 	<string>自動ズーム: %lld個のズーム</string>
 	<key>Auto-dismiss overlay</key>
@@ -1464,6 +1474,8 @@
 	<string>収録バーの“キーボードショートカットを表示”（⌘）をクリックするか、“設定”＞“収録”＞“キーボードショートカットを表示”。</string>
 	<key>Click Speaker notes in the recording bar, or in the bar while recording.</key>
 	<string>収録バー、または収録中のバーで“スピーカーノート”をクリックします。</string>
+	<key>Click Stop. Your voice is on a new track called Voiceover.</key>
+	<string>“停止”をクリックします。声は“ナレーション”という新しいトラックに入ります。</string>
 	<key>Click System audio in the recording bar, or Settings ▸ Recording ▸ Audio ▸ Record system audio.</key>
 	<string>収録バーの“システムオーディオ”をクリックするか、“設定”＞“収録”＞“オーディオ”＞“システムオーディオを録音”。</string>
 	<key>Click Take screenshot in Home.</key>
@@ -1474,6 +1486,10 @@
 	<string>“文字起こし”をクリックします。聞き取りの間も編集を続けられます。</string>
 	<key>Click Zoom above the preview, or click the zoom lane on the timeline.</key>
 	<string>プレビューの上の“ズーム”をクリックするか、タイムラインのズームトラックをクリックします。</string>
+	<key>Click a clip on the player to move it, drag a corner to resize it, or turn it with the round knob.</key>
+	<string>プレーヤーでクリップをクリックすると移動でき、角をドラッグするとサイズ変更、丸いノブで回転できます。</string>
+	<key>Click a clip to split it there. A or Esc goes back to Select.</key>
+	<string>クリップをクリックするとその位置で分割します。A または Esc で“選択”に戻ります。</string>
 	<key>Click a line to edit its words; click its time to jump there; × removes it.</key>
 	<string>行をクリックすると言葉を編集でき、時間をクリックするとその位置に移動します。×で削除します。</string>
 	<key>Click a marker to jump there; double-click to rename it; right-click to delete it.</key>
@@ -1526,6 +1542,8 @@
 	<string>メニューバーのLF Studiosアイコンをクリックします。</string>
 	<key>Click the field next to a command.</key>
 	<string>コマンドの横のフィールドをクリックします。</string>
+	<key>Click the microphone. After 3, 2, 1 the video plays, silent, while you talk.</key>
+	<string>マイクをクリックします。3、2、1 のあとビデオが無音で再生されるので、話してください。</string>
 	<key>Click the notice that appears after Capture Text (“click for options”).</key>
 	<string>“テキストを取り込む”のあとに表示される通知（“クリックするとオプションを表示します”）をクリックします。</string>
 	<key>Click the notice to open the recovered video. Pointer, click, and marker details from that take can't be recovered.</key>
@@ -1572,10 +1590,12 @@
 	<string>クリップの開始位置をここに設定しました</string>
 	<key>Clip removed — ⌘Z to undo</key>
 	<string>クリップを削除しました。⌘Zで取り消せます</string>
+	<key>Clip removed, gap left (magnet off) — ⌘Z to undo</key>
+	<string>クリップを削除し、空きを残しました（マグネットはオフ）— ⌘Zで取り消し</string>
+	<key>Clip reversed — ⌘Z to undo</key>
+	<string>クリップを逆再生にしました — ⌘Zで取り消し</string>
 	<key>Clip split</key>
 	<string>クリップを分割しました</string>
-	<key>Clip starts / ends here</key>
-	<string>ここをクリップの開始/終了位置に</string>
 	<key>Clips</key>
 	<string>クリップ</string>
 	<key>Close</key>
@@ -1630,16 +1650,22 @@
 	<string>コントラスト</string>
 	<key>Copied</key>
 	<string>コピーしました</string>
+	<key>Copied %lld clips — ⌘V pastes them at the playhead</key>
+	<string>%lld 個のクリップをコピーしました — ⌘Vで再生ヘッドの位置にペースト</string>
 	<key>Copied to clipboard</key>
 	<string>クリップボードにコピーしました</string>
 	<key>Copied — paste it anywhere</key>
 	<string>コピーしました。どこにでもペーストできます</string>
+	<key>Copied — ⌘V pastes it at the playhead</key>
+	<string>コピーしました — ⌘Vで再生ヘッドの位置にペースト</string>
 	<key>Copy</key>
 	<string>コピー</string>
 	<key>Copy %@</key>
 	<string>%@をコピー</string>
 	<key>Copy (⌘C)</key>
 	<string>コピー（⌘C）</string>
+	<key>Copy / paste clips</key>
+	<string>クリップをコピー / ペースト</string>
 	<key>Copy Chapters</key>
 	<string>チャプターをコピー</string>
 	<key>Copy Chapters copies them as text for a YouTube description.</key>
@@ -1662,6 +1688,8 @@
 	<string>スクリーンショットをクリップボードにコピー</string>
 	<key>Copy current frame</key>
 	<string>現在のフレームをコピー</string>
+	<key>Copy current frame (nothing selected)</key>
+	<string>現在のフレームをコピー（何も選択していないとき）</string>
 	<key>Copy image to clipboard</key>
 	<string>画像をクリップボードにコピー</string>
 	<key>Copy notes</key>
@@ -1738,10 +1766,16 @@
 	<string>字幕を作成できませんでした</string>
 	<key>Couldn't make the click sound. Turn off Click sounds (Audio tab), then export again.</key>
 	<string>クリック音を作成できませんでした。“オーディオ”タブで“クリック音”をオフにしてから、もう一度書き出してください。</string>
+	<key>Couldn't make the freeze frame</key>
+	<string>フリーズフレームを作成できませんでした</string>
 	<key>Couldn't open that image</key>
 	<string>その画像を開けませんでした</string>
+	<key>Couldn't open that video</key>
+	<string>そのビデオを開けませんでした</string>
 	<key>Couldn't open that video — %@</key>
 	<string>そのビデオを開けませんでした。%@</string>
+	<key>Couldn't open the microphone</key>
+	<string>マイクを開けませんでした</string>
 	<key>Couldn't open this video</key>
 	<string>このビデオを開けませんでした</string>
 	<key>Couldn't open “%@”</key>
@@ -1754,6 +1788,10 @@
 	<string>ビデオを準備できませんでした。もう一度書き出してください。問題が続く場合は、LF Studiosを再起動してください。</string>
 	<key>Couldn't read that audio file</key>
 	<string>そのオーディオファイルを読み込めませんでした</string>
+	<key>Couldn't read that frame</key>
+	<string>そのフレームを読み込めませんでした</string>
+	<key>Couldn't read that part of the video</key>
+	<string>ビデオのその部分を読み込めませんでした</string>
 	<key>Couldn't read the recording for the GIF. Try exporting a shorter part, or choose MP4.</key>
 	<string>GIF用に収録を読み込めませんでした。短い部分を書き出すか、MP4を選択してください。</string>
 	<key>Couldn't read the recording. Check that its file is still there, then export again.</key>
@@ -1762,6 +1800,8 @@
 	<string>音声を読み込めませんでした</string>
 	<key>Couldn't read the video</key>
 	<string>ビデオを読み込めませんでした</string>
+	<key>Couldn't reverse it — %@</key>
+	<string>逆再生にできませんでした — %@</string>
 	<key>Couldn't save the captions file</key>
 	<string>字幕ファイルを保存できませんでした</string>
 	<key>Couldn't save the presets file</key>
@@ -1792,6 +1832,8 @@
 	<string>ビデオを書き込めませんでした。空き容量があり、そのフォルダに保存できるか確認してから、もう一度書き出してください。</string>
 	<key>Countdown</key>
 	<string>カウントダウン</string>
+	<key>Covers the whole video; the edges may be cut off</key>
+	<string>ビデオ全体を覆います。端が切れることがあります</string>
 	<key>Create</key>
 	<string>作成</string>
 	<key>Create Handoff</key>
@@ -1808,6 +1850,8 @@
 	<string>鮮明でコンパクトな、最適な標準設定</string>
 	<key>Crop</key>
 	<string>切り取り</string>
+	<key>Crop it in Properties ▸ Crop</key>
+	<string>“プロパティ”＞“切り取り”で切り取れます</string>
 	<key>Crop the Recording…</key>
 	<string>収録を切り取る…</string>
 	<key>Crop the camera</key>
@@ -1928,8 +1972,12 @@
 	<string>クリップを削除</string>
 	<key>Delete Folder</key>
 	<string>フォルダを削除</string>
+	<key>Delete Left of Playhead</key>
+	<string>再生ヘッドの左を削除</string>
 	<key>Delete Marker</key>
 	<string>マーカーを削除</string>
+	<key>Delete Right of Playhead</key>
+	<string>再生ヘッドの右を削除</string>
 	<key>Delete Screenshot</key>
 	<string>スクリーンショットを削除</string>
 	<key>Delete Screenshots</key>
@@ -1942,10 +1990,14 @@
 	<string>保存されているすべてのスクリーンショットを削除します</string>
 	<key>Delete from Project</key>
 	<string>プロジェクトから削除</string>
+	<key>Delete left</key>
+	<string>左を削除</string>
+	<key>Delete left / right of the playhead</key>
+	<string>再生ヘッドの左 / 右を削除</string>
+	<key>Delete right</key>
+	<string>右を削除</string>
 	<key>Delete selection</key>
 	<string>選択項目を削除</string>
-	<key>Delete selection (⌫)</key>
-	<string>選択項目を削除（⌫）</string>
 	<key>Delete the %@ model?</key>
 	<string>%@モデルを削除しますか？</string>
 	<key>Delete the selected mark</key>
@@ -2070,8 +2122,8 @@
 	<string>言語モデルをダウンロード中…</string>
 	<key>Drag a clip by its name to move it. Click a clip and press ⌫ to delete it.</key>
 	<string>クリップは名前の部分をドラッグして移動します。クリップをクリックして⌫キーを押すと削除できます。</string>
-	<key>Drag a clip's edge to trim it, or press I or O to make it start or end at the playhead.</key>
-	<string>クリップの端をドラッグするとトリミングできます。IキーまたはOキーを押すと、再生ヘッドの位置から始まる、または終わるようにできます。</string>
+	<key>Drag a clip's edge to trim it, or press Q or W to cut what's left or right of the playhead.</key>
+	<string>クリップの端をドラッグしてトリミングするか、Q または W で再生ヘッドの左または右を削除します。</string>
 	<key>Drag a corner to resize it. The shape stays the same.</key>
 	<string>角をドラッグするとサイズが変わります。形はそのままです。</string>
 	<key>Drag a file onto the timeline or the player, or click the + on its thumbnail. A video goes at the end of the video; a picture or a sound starts at the playhead, or where you drop it on the timeline.</key>
@@ -2080,6 +2132,8 @@
 	<string>枠をドラッグします。枠の内側をドラッグすると移動、端をドラッグするとサイズを変更できます。</string>
 	<key>Drag a screenshot out of History and drop it where you want it.</key>
 	<string>スクリーンショットを履歴からドラッグして、置きたい場所でドロップします。</string>
+	<key>Drag a video or a picture from Finder or the Library onto the timeline, above Video clips.</key>
+	<string>ビデオか画像をFinderまたはライブラリからタイムラインの“ビデオクリップ”の上にドラッグします。</string>
 	<key>Drag an edge or a corner to resize it, the middle to move it.</key>
 	<string>端や角をドラッグするとサイズ変更、中央をドラッグすると移動します。</string>
 	<key>Drag captions on the preview to place them anywhere</key>
@@ -2096,10 +2150,14 @@
 	<string>プレビュー上でドラッグすると移動、角をドラッグするとサイズ変更、ダブルクリックすると入力ができます。表示するタイミングはタイムライン上のバーで設定します。</string>
 	<key>Drag it on the preview to place it; drag a corner to resize it.</key>
 	<string>プレビュー上でドラッグして配置し、隅をドラッグしてサイズを変更します。</string>
+	<key>Drag it on the timeline to another time or track; drag its ends to trim. ⌥-drag inside a video to slip it.</key>
+	<string>タイムライン上で別の時間やトラックにドラッグし、両端をドラッグしてトリミングします。ビデオ内で⌥を押しながらドラッグすると中身をずらせます。</string>
 	<key>Drag it over what you want to show.</key>
 	<string>見せたいものの上にドラッグします。</string>
 	<key>Drag it to move it; drag an edge to resize it.</key>
 	<string>ドラッグで移動、端をドラッグでサイズ変更できます。</string>
+	<key>Drag its ends to trim it. ⌥-drag a video inside its clip to slip it (another part of it, same place).</key>
+	<string>両端をドラッグしてトリミングします。ビデオクリップ内で⌥を押しながらドラッグすると、位置はそのままで別の部分を使えます。</string>
 	<key>Drag on the screenshot to draw.</key>
 	<string>スクリーンショットの上をドラッグして描きます。</string>
 	<key>Drag one of them on the timeline to move them all together; ⌫ removes them all. ⇧- or ⌘-click adds or takes one out.</key>
@@ -2134,6 +2192,8 @@
 	<string>プレビュー上で、見られたくない部分に枠をドラッグして重ねます。ぼかしはズームに追従し、バーの終わりまで表示されます。</string>
 	<key>Drag the camera's edges on the video to change its width and height.</key>
 	<string>ビデオ上でカメラの端をドラッグすると、幅と高さを変えられます。</string>
+	<key>Drag the clip to another time or track; drop it above the top track for a new track.</key>
+	<string>クリップを別の時間やトラックにドラッグします。一番上のトラックの上にドロップすると新しいトラックができます。</string>
 	<key>Drag the divider on the video to change the split; the background (Style) shows in the gap.</key>
 	<string>ビデオ上の区切り線をドラッグして分割を変えます。間隔には背景（スタイル）が見えます。</string>
 	<key>Drag the frame on the preview to aim; drag its corners to zoom in or out.</key>
@@ -2160,8 +2220,8 @@
 	<string>ビデオ内でカメラを置きたい場所にプレビューをドラッグします。収録枠のうちプレビューが重なる場所が、カメラの位置になります。</string>
 	<key>Drag the spot on the preview; drag a corner to resize it. Everything around it dims while its bar on the timeline runs.</key>
 	<string>プレビュー上でスポットをドラッグし、角をドラッグしてサイズを変更します。タイムライン上のバーの間は、その周囲がすべて暗くなります。</string>
-	<key>Drag the track on the timeline to move it; drag an edge to trim it; click it and press S to split it, or ⌫ to delete a piece.</key>
-	<string>タイムライン上でトラックをドラッグすると移動、端をドラッグするとトリミングできます。クリックしてSキーを押すと分割、⌫キーを押すとその部分を削除できます。</string>
+	<key>Drag the track on the timeline to move it; drag an edge to trim it; click it and press ⌘B to split it, or ⌫ to delete a piece.</key>
+	<string>タイムライン上でトラックをドラッグして移動し、端をドラッグしてトリミングします。クリックして⌘Bで分割、⌫で一部を削除します。</string>
 	<key>Drag the zoom's edges on the timeline to set its length.</key>
 	<string>タイムラインでズームの端をドラッグして、長さを設定します。</string>
 	<key>Drag to capture  ·  Hold ⇧ as you let go to adjust first  ·  Space moves  ·  Esc cancels</key>
@@ -2192,6 +2252,8 @@
 	<string>ドラッグして選択してから調整  ·  ⇧を押しながら放すとすぐに取り込む  ·  Escキーでキャンセル</string>
 	<key>Drag to turn it; hold ⇧ for steps of 15°</key>
 	<string>ドラッグで回転。⇧を押したままにすると15°ずつ</string>
+	<key>Drag to turn it; hold ⇧ for steps of 15°. Double-click to put it upright.</key>
+	<string>ドラッグで回転。⇧で15°ずつ。ダブルクリックでまっすぐに戻ります。</string>
 	<key>Draw attention to something, or hide it.</key>
 	<string>何かに注目を集めたり、隠したりします。</string>
 	<key>Draw from the center</key>
@@ -2202,6 +2264,8 @@
 	<string>描画</string>
 	<key>Drop a screenshot straight into an email, a chat, a document, or Finder.</key>
 	<string>スクリーンショットを、メール、チャット、書類、Finderに直接ドロップします。</string>
+	<key>Dropped on Video clips instead, a video joins the main track at that spot (a picture becomes a 5-second clip).</key>
+	<string>“ビデオクリップ”にドロップすると、ビデオはその位置でメイントラックに入ります（画像は5秒のクリップになります）。</string>
 	<key>Duplicate</key>
 	<string>複製</string>
 	<key>Duplicate zoom or annotation</key>
@@ -2212,14 +2276,16 @@
 	<string>ズーム中は、表示範囲がポインタと一緒に動くので、指しているものが画面から外れません。その間、プレビューには“カメラがポインタに追従”と表示されます。</string>
 	<key>Dusk</key>
 	<string>夕暮れ</string>
-	<key>Each file is its own track: drag it on the timeline, trim its ends, split it with S. MP3, WAV, M4A, AAC, AIFF, FLAC, or CAF — or drop files on the timeline.</key>
-	<string>各ファイルが専用のトラックになります: タイムライン上でドラッグ、両端をトリミング、Sキーで分割できます。MP3、WAV、M4A、AAC、AIFF、FLAC、CAFに対応。タイムラインにファイルをドロップしても追加できます。</string>
+	<key>Each file is its own track: drag it on the timeline, trim its ends, split it with ⌘B. MP3, WAV, M4A, AAC, AIFF, FLAC, or CAF — or drop files on the timeline.</key>
+	<string>ファイルごとに独立したトラックです。タイムライン上でドラッグし、両端をトリミングし、⌘Bで分割します。MP3、WAV、M4A、AAC、AIFF、FLAC、CAF に対応。ファイルをタイムラインにドロップすることもできます。</string>
 	<key>Each recording in its own folder</key>
 	<string>収録ごとに専用のフォルダ</string>
 	<key>Each recording keeps its own pointer, clicks, and shortcuts. Reorder them here; cut and trim them on the timeline like any clip.</key>
 	<string>各収録はそれぞれのポインタ、クリック、ショートカットを保持します。ここで順番を並べ替え、ほかのクリップと同じようにタイムラインでカットやトリミングができます。</string>
 	<key>Each shape keeps its own version: switch back and forth without losing anything. Cuts, words, and styles stay shared.</key>
 	<string>形ごとに独自のバージョンが保存されるので、何も失わずに切り替えられます。カット、言葉、スタイルは共通です。</string>
+	<key>Each track has its own Hide, Mute and Lock in its header.</key>
+	<string>各トラックの見出しに“非表示”、“消音”、“ロック”があります。</string>
 	<key>Each track's eye hides it and its speaker mutes it, in the preview and the export. The lock keeps everything on it from changing.</key>
 	<string>トラックの目のボタンで非表示、スピーカーで消音になります（プレビューと書き出しの両方）。鍵をかけると、その上のものは変更できなくなります。</string>
 	<key>Each video is looked through only once: the second time is instant.</key>
@@ -2466,6 +2532,8 @@
 	<string>オーディオを抽出</string>
 	<key>Extract Audio puts a video's sound in the Audio tab as its own file; the video keeps its sound.</key>
 	<string>“オーディオを抽出”は、ビデオのサウンドを別ファイルとして“オーディオ”タブに入れます。ビデオのサウンドはそのままです。</string>
+	<key>Extract audio</key>
+	<string>オーディオを抽出</string>
 	<key>Extracting the sound…</key>
 	<string>サウンドを抽出中…</string>
 	<key>Face</key>
@@ -2514,6 +2582,8 @@
 	<string>可能な限りファイルはそのままコピーします。変更が必要なもの（編集に合わせてカットしたクリップ、背景を削除したカメラ）だけをProResに再エンコードします。</string>
 	<key>Files move only once the recording is finished and checked. If something goes wrong, the recording stays where it was.</key>
 	<string>ファイルが移動されるのは、収録が完了して確認が済んでからです。問題が起きた場合、収録は元の場所に残ります。</string>
+	<key>Fill</key>
+	<string>フィル</string>
 	<key>Fill the Frame, Follow the Cursor</key>
 	<string>画面いっぱいに表示してポインタに追従</string>
 	<key>Fill the frame, follow the cursor</key>
@@ -2586,6 +2656,8 @@
 	<string>ウインドウを枠に合わせる…</string>
 	<key>Fit a window to the frame…: choose a window of another app, and it takes exactly the frame's place and size.</key>
 	<string>“ウインドウを枠に合わせる…”: ほかのアプリのウインドウを選ぶと、枠とまったく同じ位置とサイズになります。</string>
+	<key>Fit the whole video</key>
+	<string>ビデオ全体を表示</string>
 	<key>Fit zooms around camera</key>
 	<string>カメラを避けてズーム</string>
 	<key>Fit zooms around the camera</key>
@@ -2714,6 +2786,16 @@
 	<string>フリーハンド蛍光ペン</string>
 	<key>Freehand highlight</key>
 	<string>フリーハンドのハイライト</string>
+	<key>Freeze Frame</key>
+	<string>フリーズフレーム</string>
+	<key>Freeze frame</key>
+	<string>フリーズフレーム</string>
+	<key>Freeze frame added — 3 seconds</key>
+	<string>フリーズフレームを追加しました — 3秒</string>
+	<key>Freeze frame holds the frame under the playhead for 3 seconds. Reverse plays a clip backwards (it takes a moment; Cancel stops it).</key>
+	<string>フリーズフレームは再生ヘッドの位置のフレームを3秒間表示します。逆再生はクリップを逆向きに再生します（少し時間がかかります。“キャンセル”で止められます）。</string>
+	<key>Freeze frames and reversed clips are videos LF Studios makes. When nothing uses one any more, it's removed the next time you save the project.</key>
+	<string>フリーズフレームと逆再生クリップはLF Studiosが作るビデオです。使われなくなったものは、次にプロジェクトを保存したときに削除されます。</string>
 	<key>From sharp corners to a circle</key>
 	<string>角ばった形から円まで</string>
 	<key>From your Mac</key>
@@ -2802,6 +2884,12 @@
 	<string>グラファイト</string>
 	<key>Green</key>
 	<string>グリーン</string>
+	<key>Group</key>
+	<string>グループ化</string>
+	<key>Group / ungroup</key>
+	<string>グループ化 / 解除</string>
+	<key>Grouped: they move and delete together</key>
+	<string>グループ化しました。一緒に移動・削除されます</string>
 	<key>Guide</key>
 	<string>ガイド</string>
 	<key>H.264 plays everywhere. HEVC makes smaller files, but some browsers and Windows PCs can't play it.</key>
@@ -2884,6 +2972,8 @@
 	<string>ビデオ編集アプリ向けの高品質なファイルです。ProRes 4444では背景を取り除けるので、どんなものの上にも重ねられます。</string>
 	<key>Higher glides calmly after you; lower keeps up with quick moves</key>
 	<string>高いほど穏やかに追いかけ、低いほど素早い動きについていきます</string>
+	<key>Higher tracks show over lower ones; all of them show over the screen recording and under the camera, captions and keys.</key>
+	<string>上のトラックは下のトラックの上に表示され、すべて画面収録の上、カメラ・字幕・キーの下に表示されます。</string>
 	<key>Highlight</key>
 	<string>ハイライト</string>
 	<key>Highlight box</key>
@@ -2962,6 +3052,8 @@
 	<string>ワイプの中で顔が占める大きさ</string>
 	<key>How strongly blur and pixelate hide what's under them</key>
 	<string>ぼかしとモザイクで下の内容を隠す強さ</string>
+	<key>I and O mark a part: Export can export just that part, and ⌫ cuts it.</key>
+	<string>I と O で範囲をマークします。書き出しではその部分だけを書き出せ、⌫でカットできます。</string>
 	<key>If LF Studios quit unexpectedly, it offers to report it next time it opens.</key>
 	<string>LF Studiosが予期せず終了した場合は、次に開いたときに報告するかどうか確認されます。</string>
 	<key>If a model is too much for this Mac, LF Studios says so and suggests a smaller one. Manage models in Settings ▸ General ▸ Whisper Models.</key>
@@ -3086,8 +3178,8 @@
 	<string>ビデオエディタで“書き出す”（⌘E）をクリックします。</string>
 	<key>In the video editor, click Find private info above the preview.</key>
 	<string>ビデオエディタで、プレビューの上の“個人情報”をクリックします。</string>
-	<key>In the video editor, move the playhead to where the mistake starts and press S to split the clip there.</key>
-	<string>ビデオエディタで、失敗が始まる位置に再生ヘッドを移動し、Sキーを押してクリップをそこで分割します。</string>
+	<key>In the video editor, move the playhead to where the mistake starts and press ⌘B to split the clip there.</key>
+	<string>ビデオエディタで再生ヘッドをミスの始まりに移動し、⌘Bでクリップを分割します。</string>
 	<key>In the video editor, move the playhead to where the zoom should start.</key>
 	<string>ビデオエディタで、ズームを始めたい位置に再生ヘッドを移動します。</string>
 	<key>In the video editor, open the Audio panel.</key>
@@ -3168,6 +3260,8 @@
 	<string>ガイド線が表示され、中央や安全な端の位置にぴったり合います。</string>
 	<key>It tells you how many zooms it changed, and one ⌘Z undoes it.</key>
 	<string>変更したズームの数が表示され、⌘Zを1回押すと取り消せます。</string>
+	<key>It uses the microphone chosen in Settings ▸ Recording (or the Mac's own).</key>
+	<string>“設定”＞“収録”で選んだマイク（またはMac内蔵のマイク）を使います。</string>
 	<key>It was edited after the project was saved. Open those newer edits, or the project as it was saved?</key>
 	<string>プロジェクトの保存後に編集されています。新しい編集を開きますか？それとも保存時のプロジェクトを開きますか？</string>
 	<key>It was moved, renamed, or deleted. Open it from where it is now.</key>
@@ -3262,6 +3356,8 @@
 	<string>キーボードショートカット（?）</string>
 	<key>Keyboard shortcuts are on</key>
 	<string>キーボードショートカットの表示がオンになりました</string>
+	<key>Keyboard shortcuts changed</key>
+	<string>キーボードショートカットが変わりました</string>
 	<key>Keyboard shortcuts — click one to select it, ⌫ hides it</key>
 	<string>キーボードショートカット: クリックで選択、⌫で非表示</string>
 	<key>Keys</key>
@@ -3330,6 +3426,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>LF Studiosで画面を取り込むには、画面収録のアクセス許可が必要です。
 
 “システム設定”＞“プライバシーとセキュリティ”＞“画面収録とシステムオーディオ録音”でオンにしてください。</string>
+	<key>LF Studios needs the microphone: System Settings ▸ Privacy &amp; Security ▸ Microphone</key>
+	<string>LF Studiosにはマイクが必要です: システム設定＞プライバシーとセキュリティ＞マイク</string>
 	<key>LF Studios never records what you type. See Privacy for exactly what these options save.</key>
 	<string>LF Studiosが入力内容を記録することはありません。これらのオプションで何が保存されるかは、“プライバシー”で確認できます。</string>
 	<key>LF Studios quit unexpectedly last time</key>
@@ -3470,6 +3568,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>メディアにリンク（小さい、このMacのみ）</string>
 	<key>Link to media: smaller, for this Mac only.</key>
 	<string>メディアにリンク: ファイルが小さくなりますが、このMac専用です。</string>
+	<key>Linkage</key>
+	<string>リンク</string>
+	<key>Linkage (`) keeps them with the part of the recording under them when you cut or move the main track.</key>
+	<string>リンク（`）をオンにすると、メイントラックをカットしたり動かしたりしても、下の収録部分についていきます。</string>
+	<key>Linkage (`): clips above the main track move with the part of the recording under them.</key>
+	<string>リンク（`）: メイントラックの上のクリップは、下の収録部分と一緒に動きます。</string>
+	<key>Linkage off: clips on other tracks stay where they are</key>
+	<string>リンク: オフ — ほかのトラックのクリップはその場にとどまります</string>
+	<key>Linkage on: clips on other tracks move with the main track</key>
+	<string>リンク: オン — ほかのトラックのクリップはメイントラックと一緒に動きます</string>
 	<key>Links</key>
 	<string>リンク</string>
 	<key>Links (%lld of %lld)</key>
@@ -3522,6 +3630,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>無料のオープンソース（MITライセンス）</string>
 	<key>Mac screen</key>
 	<string>Macの画面</string>
+	<key>Main track magnet</key>
+	<string>メイントラックのマグネット</string>
+	<key>Main track magnet (P): deleting a clip closes the gap; off, a black gap of its length stays.</key>
+	<string>メイントラックのマグネット（P）: クリップを削除すると隙間が詰まります。オフにすると同じ長さの黒い隙間が残ります。</string>
+	<key>Main track magnet off: deleting a clip leaves a black gap</key>
+	<string>マグネット: オフ — クリップを削除すると黒い隙間が残ります</string>
+	<key>Main track magnet on: deleting a clip closes the gap</key>
+	<string>マグネット: オン — クリップを削除すると隙間が詰まります</string>
 	<key>Make Full Zoom</key>
 	<string>全体ズームにする</string>
 	<key>Make Loupe</key>
@@ -3546,12 +3662,24 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ズーム中にワイプを小さくして、隠れる部分を減らします。</string>
 	<key>Manage</key>
 	<string>管理</string>
+	<key>Mark In</key>
+	<string>インをマーク</string>
+	<key>Mark Out</key>
+	<string>アウトをマーク</string>
 	<key>Mark important moments while you record. They show as flags in the editor and can become chapters.</key>
 	<string>収録しながら大事な場面に印を付けます。マーカーはエディタで旗として表示され、チャプターにすることもできます。</string>
+	<key>Mark in</key>
+	<string>インをマーク</string>
+	<key>Mark in / out</key>
+	<string>イン / アウトをマーク</string>
+	<key>Mark out</key>
+	<string>アウトをマーク</string>
 	<key>Mark up the screenshot.</key>
 	<string>スクリーンショットに注釈を付けます。</string>
-	<key>Marker</key>
-	<string>マーカー</string>
+	<key>Marked in at %@</key>
+	<string>%@ にインをマークしました</string>
+	<key>Marked out at %@</key>
+	<string>%@ にアウトをマークしました</string>
 	<key>Marker %lld</key>
 	<string>マーカー%lld</string>
 	<key>Marker name</key>
@@ -3630,6 +3758,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>左右反転</string>
 	<key>Mirror flips it like a mirror.</key>
 	<string>“左右反転”では、鏡のように左右を反転します。</string>
+	<key>Mirror, Rotate (90° at a time) and Crop work on the selected clip, or the one under the playhead.</key>
+	<string>左右反転、回転（90°ずつ）、切り取りは、選択したクリップか再生ヘッドの位置のクリップに使います。</string>
 	<key>Missing</key>
 	<string>見つかりません</string>
 	<key>Missing — Locate… finds it</key>
@@ -3684,8 +3814,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>枠を移動（⇧で10ポイントずつ）</string>
 	<key>Move the playhead and click Full camera, Side by side, or Hidden (on a split video, also Bubble).</key>
 	<string>再生ヘッドを動かして、“カメラ全面”、“横並び”、“非表示”（分割ビデオでは“ワイプ”も）をクリックします。</string>
-	<key>Move the playhead and press S to split the clip there.</key>
-	<string>再生ヘッドを移動してSキーを押すと、その位置でクリップを分割します。</string>
+	<key>Move the playhead and press ⌘B to split the clip there.</key>
+	<string>再生ヘッドを移動し、⌘Bでその位置のクリップを分割します。</string>
 	<key>Move the playhead inside a clip to split</key>
 	<string>分割するには、再生ヘッドをクリップ内に移動してください</string>
 	<key>Move the playhead into the sound to split it</key>
@@ -3696,6 +3826,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>カメラが映っている位置に再生ヘッドを移動してからクロップしてください</string>
 	<key>Move the playhead to where the zoom should start.</key>
 	<string>ズームを始めたい位置に再生ヘッドを移動します。</string>
+	<key>Move the playhead to where your voice should start.</key>
+	<string>声を入れ始めたい位置に再生ヘッドを移動します。</string>
 	<key>Move the pointer across a video's thumbnail to look through it. The time in its corner is its length.</key>
 	<string>ビデオのサムネールの上でポインタを動かすと中身を確認できます。隅の時間はその長さです。</string>
 	<key>Move the pointer over a window: it lights up.</key>
@@ -3706,8 +3838,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>フォルダに移動</string>
 	<key>Move to Trash</key>
 	<string>ゴミ箱に入れる</string>
-	<key>Move to where it ends and press S again.</key>
-	<string>終わる位置に移動して、もう一度Sキーを押します。</string>
+	<key>Move to where it ends and press ⌘B again.</key>
+	<string>終わる位置に移動して、もう一度⌘Bを押します。</string>
 	<key>Move “%@” to the Trash?</key>
 	<string>“%@”をゴミ箱に入れますか?</string>
 	<key>Moved clear of the camera bubble.</key>
@@ -3900,6 +4032,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>短縮できる長い無音部分はありません</string>
 	<key>No microphone connected</key>
 	<string>マイクが接続されていません</string>
+	<key>No microphone found</key>
+	<string>マイクが見つかりません</string>
 	<key>No microphone is connected, so this recording has no mic.</key>
 	<string>マイクが接続されていないため、この収録にはマイクの音声が入りません。</string>
 	<key>No music</key>
@@ -3998,6 +4132,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>個人情報は見つかりませんでした</string>
 	<key>Nothing to clean up — everything belongs to recordings you still have</key>
 	<string>クリーンアップするものはありません。すべて現在ある収録のデータです</string>
+	<key>Nothing to split at the playhead</key>
+	<string>再生ヘッドの位置に分割できるものはありません</string>
+	<key>Nothing was recorded</key>
+	<string>何も録音されませんでした</string>
 	<key>Nothing was recorded — the screen didn't send any picture. Try again.</key>
 	<string>何も収録されませんでした。画面から映像を受信できませんでした。もう一度お試しください。</string>
 	<key>Nudge the area (with ⇧: 10 points)</key>
@@ -4018,6 +4156,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ビデオの幅に対する割合です。</string>
 	<key>Of the video's width</key>
 	<string>ビデオの幅に対して</string>
+	<key>Of the video's width. Or drag a corner on the player.</key>
+	<string>ビデオの幅に対する割合。プレーヤーで角をドラッグしても変えられます。</string>
 	<key>Off</key>
 	<string>オフ</string>
 	<key>Off to start with. Needs Accessibility.</key>
@@ -4026,6 +4166,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>オンにするまではオフです。オンにするとクリックの位置にズームし、下のオプションもオンになります。オフにすると自動のズームは削除されます。</string>
 	<key>Off, Light, Smooth, or Silky.</key>
 	<string>“オフ”、“軽め”、“滑らか”、“シルキー”。</string>
+	<key>Off, it stays on the timeline but isn't seen or heard (V)</key>
+	<string>オフにするとタイムラインには残りますが、見えず聞こえません（V）</string>
 	<key>Offset</key>
 	<string>オフセット</string>
 	<key>Older</key>
@@ -4034,6 +4176,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>古いプロジェクトも開けます: LF Studios 1.9〜1.11の.lfsp、1.8以前の.lfstudios、ShotStyleの.shotstyle。LF Studiosがその名前を変えることはありません。</string>
 	<key>Older than 1.4.1? Download the latest version once by hand from the LF Studios releases page. After that, it updates itself.</key>
 	<string>1.4.1より前のバージョンの場合は、LF Studiosのリリースページから最新バージョンを一度だけ手動でダウンロードしてください。そのあとは自動的にアップデートされます。</string>
+	<key>On</key>
+	<string>オン</string>
 	<key>On macOS 13, a window is captured as you see it on screen, including anything in front of it.</key>
 	<string>macOS 13では、ウインドウは画面に見えているとおりに、手前にあるものも含めて取り込まれます。</string>
 	<key>On macOS 15 and earlier, it needs Speech Recognition allowed, and Dictation set up for that language.</key>
@@ -4186,6 +4330,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>タイムライン上のバーをドラッグすることもできます。</string>
 	<key>Or drag the camera on the video: it snaps to the corners, edges and center. Drag its edges and corners to resize it.</key>
 	<string>またはビデオ上でカメラをドラッグします。角、端、中央に吸着します。端や角をドラッグするとサイズを変えられます。</string>
+	<key>Or drag the round knob above it on the player</key>
+	<string>またはプレーヤーで上の丸いノブをドラッグします</string>
 	<key>Or drag the round knob above the picture</key>
 	<string>または画像の上の丸いノブをドラッグします</string>
 	<key>Or hold ⇧ and drag across the timeline to select a part, then click Cut this part.</key>
@@ -4314,6 +4460,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>画像</string>
 	<key>Picture “%@” — the file is missing</key>
 	<string>画像“%@” — ファイルが見つかりません</string>
+	<key>Pictures can't be reversed</key>
+	<string>画像は逆再生にできません</string>
 	<key>Pin</key>
 	<string>画面に固定</string>
 	<key>Pin a screenshot on screen</key>
@@ -4474,6 +4622,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>プレビュー</string>
 	<key>Preview after capture</key>
 	<string>取り込み後のプレビュー</string>
+	<key>Preview axis</key>
+	<string>プレビュー軸</string>
+	<key>Preview axis (S): the player shows the frame under the pointer while the playhead stays put.</key>
+	<string>プレビュー軸（S）: 再生ヘッドはそのままで、ポインタの位置のフレームをプレーヤーに表示します。</string>
+	<key>Preview axis off</key>
+	<string>プレビュー軸: オフ</string>
+	<key>Preview axis on: the player shows the frame under the pointer</key>
+	<string>プレビュー軸: オン — ポインタの位置のフレームを表示します</string>
 	<key>Preview how a phone app's buttons and captions sit over this video, with the covered parts shaded — never in the export</key>
 	<string>スマートフォンのアプリのボタンや文字がこのビデオにどう重なるかをプレビューし、隠れる部分を暗く表示します — 書き出しには入りません</string>
 	<key>Preview muted — the export keeps its sound</key>
@@ -4500,14 +4656,20 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>プロジェクト</string>
 	<key>Projects shows your recordings, screenshots, and saved projects, newest first. Click one to open it. Right-click for Show in Finder, Creative Handoff…, or Delete.</key>
 	<string>“プロジェクト”には、収録したビデオ、スクリーンショット、保存したプロジェクトが新しい順に表示されます。クリックすると開きます。右クリックすると、“Finderに表示”、“クリエイティブ受け渡し…”、“削除”を選べます。</string>
+	<key>Projects with these tracks open in LF Studios 1.14.0 or later.</key>
+	<string>これらのトラックを含むプロジェクトはLF Studios 1.14.0以降で開けます。</string>
 	<key>Properties (right): the settings of what you selected, in the Style, Cursor, Zoom, Camera, Captions, and Audio tabs.</key>
 	<string>プロパティ（右）: 選択したものの設定。“スタイル”、“ポインタ”、“ズーム”、“カメラ”、“字幕”、“オーディオ”タブにあります。</string>
+	<key>Properties: Show, Opacity, Size, Rotation, Mirror, Rotate 90°, Fit, Fill, Crop, and for videos Volume and Speed.</key>
+	<string>プロパティ: 表示、不透明度、サイズ、回転、左右反転、90°回転、フィット、フィル、切り取り、ビデオでは音量と速度。</string>
 	<key>Pure</key>
 	<string>ピュア</string>
 	<key>Purple</key>
 	<string>パープル</string>
 	<key>Put a logo, a watermark, or a picture on the video.</key>
 	<string>ロゴ、透かし、画像をビデオに入れます。</string>
+	<key>Put videos and pictures over your recording: picture-in-picture, b-roll, logos. Each plays at its own time, on its own track.</key>
+	<string>収録の上にビデオや画像を重ねます: ピクチャ・イン・ピクチャ、Bロール、ロゴ。それぞれ自分のトラックで、自分のタイミングで再生されます。</string>
 	<key>Put your recording on a wallpaper, a gradient, a color, or your own picture.</key>
 	<string>収録を、壁紙、グラデーション、単色、または自分の画像の上に置きます。</string>
 	<key>Put your screenshot on a gradient, a color, or a picture, with rounded corners and a shadow: ready to share.</key>
@@ -4574,6 +4736,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>範囲を収録</string>
 	<key>Record Fullscreen</key>
 	<string>画面全体を収録</string>
+	<key>Record Voiceover</key>
+	<string>ナレーションを録音</string>
 	<key>Record When Keys Are Pressed</key>
 	<string>キーを押したタイミングを記録</string>
 	<key>Record Window</key>
@@ -4582,6 +4746,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>声と、ワイプに映した自分の顔と一緒にデモを収録します。</string>
 	<key>Record a short demo, tidy it up, and save it as a video.</key>
 	<string>短いデモを収録し、整えてから、ビデオとして保存します。</string>
+	<key>Record a voiceover</key>
+	<string>ナレーションを録音</string>
 	<key>Record a window</key>
 	<string>ウインドウを収録する</string>
 	<key>Record a window at an exact size</key>
@@ -4618,6 +4784,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ビデオやアプリのサウンドなど、Macで再生される音を収録します。</string>
 	<key>Record the whole screen instead</key>
 	<string>代わりに画面全体を収録</string>
+	<key>Record voiceover</key>
+	<string>ナレーションを録音</string>
 	<key>Record when keys are pressed</key>
 	<string>キーを押したタイミングを記録</string>
 	<key>Record when keys are pressed: only the moment each key goes down. Never which key.</key>
@@ -4670,6 +4838,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>カメラを収録中</string>
 	<key>Recording time</key>
 	<string>収録時間</string>
+	<key>Recording voiceover in %lld…</key>
+	<string>%lld 秒後にナレーションの録音を開始…</string>
+	<key>Recording voiceover — %@</key>
+	<string>ナレーションを録音中 — %@</string>
 	<key>Recording without the camera.</key>
 	<string>カメラなしで収録します。</string>
 	<key>Recording — click to stop (%@)</key>
@@ -4744,6 +4916,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ズームの追加をやり直す</string>
 	<key>Redo Add Zooms</key>
 	<string>ズームの追加をやり直す</string>
+	<key>Redo Add to Track</key>
+	<string>トラックへの追加をやり直す</string>
 	<key>Redo Annotation Change</key>
 	<string>注釈の変更をやり直す</string>
 	<key>Redo Annotations</key>
@@ -4792,6 +4966,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>クリック音の変更をやり直す</string>
 	<key>Redo Clicks</key>
 	<string>クリックの変更をやり直す</string>
+	<key>Redo Clip Change</key>
+	<string>クリップの変更をやり直す</string>
 	<key>Redo Collapse Track</key>
 	<string>トラックの折りたたみをやり直す</string>
 	<key>Redo Crop</key>
@@ -4858,8 +5034,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>顔の追跡をやり直す</string>
 	<key>Redo Fade</key>
 	<string>フェードの変更をやり直す</string>
+	<key>Redo Fill</key>
+	<string>フィルをやり直す</string>
+	<key>Redo Fit</key>
+	<string>フィットをやり直す</string>
 	<key>Redo Fit Zooms Around Camera</key>
 	<string>カメラを避けるズームをやり直す</string>
+	<key>Redo Freeze Frame</key>
+	<string>フリーズフレームをやり直す</string>
+	<key>Redo Group</key>
+	<string>グループ化をやり直す</string>
 	<key>Redo Hide Camera During Silences</key>
 	<string>無音の間のカメラ非表示をやり直す</string>
 	<key>Redo Hide Shortcut</key>
@@ -4880,6 +5064,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>トラックのロックをやり直す</string>
 	<key>Redo Markers</key>
 	<string>マーカーの変更をやり直す</string>
+	<key>Redo Mirror</key>
+	<string>左右反転をやり直す</string>
 	<key>Redo Move %lld Items</key>
 	<string>%lld項目の移動をやり直す</string>
 	<key>Redo Move Arrow</key>
@@ -4922,10 +5108,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ビデオの消音をやり直す</string>
 	<key>Redo New Folder</key>
 	<string>新規フォルダをやり直す</string>
+	<key>Redo Paste</key>
+	<string>ペーストをやり直す</string>
 	<key>Redo Podcast Mode Off</key>
 	<string>ポッドキャストモードのオフをやり直す</string>
 	<key>Redo Podcast Mode On</key>
 	<string>ポッドキャストモードのオンをやり直す</string>
+	<key>Redo Record Voiceover</key>
+	<string>ナレーションの録音をやり直す</string>
 	<key>Redo Remove All Zooms</key>
 	<string>すべてのズームの削除をやり直す</string>
 	<key>Redo Remove Audio</key>
@@ -4970,6 +5160,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>単語の復元をやり直す</string>
 	<key>Redo Restore Words</key>
 	<string>単語の復元をやり直す</string>
+	<key>Redo Reverse</key>
+	<string>逆再生をやり直す</string>
+	<key>Redo Rotate</key>
+	<string>回転をやり直す</string>
 	<key>Redo Shortcut Style</key>
 	<string>ショートカットのスタイル変更をやり直す</string>
 	<key>Redo Shortcuts</key>
@@ -4980,6 +5174,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>無音部分の短縮をやり直す</string>
 	<key>Redo Show Track</key>
 	<string>トラックの表示をやり直す</string>
+	<key>Redo Slip Clip</key>
+	<string>クリップのスリップをやり直す</string>
 	<key>Redo Sound Change</key>
 	<string>サウンドの変更をやり直す</string>
 	<key>Redo Speed Change</key>
@@ -4992,6 +5188,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>分割をやり直す</string>
 	<key>Redo Split Audio</key>
 	<string>オーディオの分割をやり直す</string>
+	<key>Redo Split Clip</key>
+	<string>クリップの分割をやり直す</string>
 	<key>Redo Split at Markers</key>
 	<string>マーカー位置での分割をやり直す</string>
 	<key>Redo Spotlight Style</key>
@@ -5016,6 +5214,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>トリミングをやり直す</string>
 	<key>Redo Trim Audio</key>
 	<string>オーディオのトリミングをやり直す</string>
+	<key>Redo Trim Clip</key>
+	<string>クリップのトリミングをやり直す</string>
+	<key>Redo Turn Off Clip</key>
+	<string>クリップのオフをやり直す</string>
+	<key>Redo Turn On Clip</key>
+	<string>クリップのオンをやり直す</string>
+	<key>Redo Ungroup</key>
+	<string>グループ解除をやり直す</string>
 	<key>Redo Unlock Track</key>
 	<string>トラックのロック解除をやり直す</string>
 	<key>Redo Unmute Clip</key>
@@ -5224,6 +5430,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Finderに表示</string>
 	<key>Reveal shows the file in Finder; Copy Path copies where it is.</key>
 	<string>“表示”ではファイルをFinderに表示し、“パスをコピー”では保存場所をコピーします。</string>
+	<key>Reverse</key>
+	<string>逆再生</string>
+	<key>Reversing clip…</key>
+	<string>クリップを逆再生に変換中…</string>
+	<key>Reversing “%@”…</key>
+	<string>“%@”を逆再生に変換中…</string>
 	<key>Review Changes…</key>
 	<string>変更内容を確認…</string>
 	<key>Review the decoded email payload before copying.</key>
@@ -5266,6 +5478,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>波紋</string>
 	<key>Rose Smoke</key>
 	<string>ローズスモーク</string>
+	<key>Rotate</key>
+	<string>回転</string>
+	<key>Rotate 90°</key>
+	<string>90°回転</string>
 	<key>Rotation</key>
 	<string>回転</string>
 	<key>Rounded</key>
@@ -5492,12 +5708,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>カメラ映像が収録より何秒後に始まるか（マイナス：前）</string>
 	<key>Security</key>
 	<string>セキュリティ</string>
+	<key>See all shortcuts</key>
+	<string>すべてのショートカット</string>
 	<key>See also</key>
 	<string>関連項目</string>
 	<key>See where a phone app's buttons and captions would cover your vertical video.</key>
 	<string>縦型ビデオで、スマートフォンのアプリのボタンや説明文に隠れる部分を確認します。</string>
 	<key>Select</key>
 	<string>選択</string>
+	<key>Select (A) moves things; Split tool (B) splits whatever you click, where you click.</key>
+	<string>選択（A）で動かし、分割ツール（B）でクリックしたものをクリックした位置で分割します。</string>
 	<key>Select All</key>
 	<string>すべてを選択</string>
 	<key>Select None</key>
@@ -5520,16 +5740,26 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ビデオの好きな範囲を選んで取り除きます。複数のクリップにまたがっていてもかまいません。</string>
 	<key>Select area manually</key>
 	<string>範囲を手動で選択</string>
+	<key>Select left / right of the playhead</key>
+	<string>再生ヘッドの左 / 右を選択</string>
+	<key>Select left of playhead</key>
+	<string>再生ヘッドの左を選択</string>
 	<key>Select one caption first to move only that one. Apply this position to all captions moves the rest there too.</key>
 	<string>1つの字幕だけを動かすには、先にその字幕を選択します。“この位置をすべての字幕に適用”で、ほかの字幕もそこに移動します。</string>
 	<key>Select previous / next item</key>
 	<string>前/次の項目を選択</string>
+	<key>Select right of playhead</key>
+	<string>再生ヘッドの右を選択</string>
 	<key>Select several items</key>
 	<string>複数の項目を選択</string>
 	<key>Select several to drag them all at once.</key>
 	<string>複数を選択すると、まとめてドラッグできます。</string>
 	<key>Select size</key>
 	<string>サイズを選択</string>
+	<key>Select tool · split tool</key>
+	<string>選択ツール · 分割ツール</string>
+	<key>Select two or more clips above the main track to group them (⇧-click)</key>
+	<string>メイントラックの上のクリップを2つ以上選択するとグループ化できます（⇧-クリック）</string>
 	<key>Select which display to record fullscreen</key>
 	<string>画面全体を収録するディスプレイを選択します</string>
 	<key>Select words and press ⌫ to cut them from the video — ⌫ again on crossed-out words puts them back. Click a word to jump there; ⌘F finds.</key>
@@ -5552,10 +5782,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>選択範囲: 幅%@ポイント、高さ%@ポイント。矢印キーで移動、Returnキーで取り込み、Escキーでキャンセルします。</string>
 	<key>Send everything to a video editor</key>
 	<string>すべてをビデオ編集アプリに渡す</string>
-	<key>Set In to Playhead</key>
-	<string>イン点を再生ヘッドの位置に設定</string>
-	<key>Set Out to Playhead</key>
-	<string>アウト点を再生ヘッドの位置に設定</string>
 	<key>Set Padding, Radius (rounded corners), and Shadow.</key>
 	<string>“余白”、“角の丸み”、“シャドウ”を設定します。</string>
 	<key>Set Size and Opacity. Turn on Show for the whole video for a watermark.</key>
@@ -5898,6 +6124,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>速度は0.5×から16×まで。</string>
 	<key>Split</key>
 	<string>分割</string>
+	<key>Split (⌘B), Delete left (Q) and right (W) of the playhead, Delete (⌫), and Marker.</key>
+	<string>分割（⌘B）、再生ヘッドの左（Q）・右（W）を削除、削除（⌫）、マーカー。</string>
+	<key>Split All Tracks</key>
+	<string>すべてのトラックを分割</string>
+	<key>Split all tracks</key>
+	<string>すべてのトラックを分割</string>
 	<key>Split at %lld markers</key>
 	<string>%lld個のマーカー位置で分割しました</string>
 	<key>Split at Markers</key>
@@ -5910,18 +6142,22 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>再生ヘッドの位置で分割</string>
 	<key>Split at the playhead</key>
 	<string>再生ヘッドの位置で分割</string>
-	<key>Split at the playhead (S)</key>
-	<string>再生ヘッドの位置で分割（S）</string>
+	<key>Split every track at the playhead</key>
+	<string>再生ヘッドの位置ですべてのトラックを分割しました</string>
 	<key>Split screen</key>
 	<string>分割画面</string>
 	<key>Split screen divider</key>
 	<string>分割画面の区切り線</string>
 	<key>Split size</key>
 	<string>分割の比率</string>
+	<key>Split the clip where one recording meets the next, then reverse each part</key>
+	<string>収録が切り替わる位置でクリップを分割してから、それぞれを逆再生にしてください</string>
 	<key>Split the clips at every marker</key>
 	<string>すべてのマーカー位置でクリップを分割</string>
-	<key>Split the video (S) to make cuts; each can dissolve or dip to black.</key>
-	<string>ビデオを分割（S）するとつなぎ目ができます。それぞれにディゾルブや黒にフェードを設定できます。</string>
+	<key>Split the video (⌘B) to make cuts; each can dissolve or dip to black.</key>
+	<string>ビデオを分割（⌘B）してカットを作ります。それぞれディゾルブか黒へのフェードにできます。</string>
+	<key>Split tool</key>
+	<string>分割ツール</string>
 	<key>Split, trim &amp; reorder clips</key>
 	<string>クリップの分割、トリミング、並べ替え</string>
 	<key>Spoken word</key>
@@ -5986,6 +6222,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>それでも開けない場合や、アプリが壊れていると表示される場合は、ターミナルを開いて次の行をペーストし、Returnキーを押します: xattr -dr com.apple.quarantine "/Applications/LF Studios.app"</string>
 	<key>Stitching…</key>
 	<string>結合中…</string>
+	<key>Stop</key>
+	<string>停止</string>
 	<key>Stop Enhancing Voice</key>
 	<string>声の補正を停止</string>
 	<key>Stop Recording</key>
@@ -6098,6 +6336,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>“スクリーンショットを撮る”では範囲を取り込みます。“スクロールして取り込む”では長いページを取り込み、“ビデオを開く…”ではビデオをエディタで開きます。</string>
 	<key>Take your first screenshot</key>
 	<string>最初のスクリーンショットを撮る</string>
+	<key>Talk over the video: your voice goes on its own sound track, from where you started.</key>
+	<string>ビデオに合わせて話します。声は始めた位置から専用のサウンドトラックに入ります。</string>
 	<key>Tangerine</key>
 	<string>タンジェリン</string>
 	<key>Template</key>
@@ -6194,6 +6434,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>エディタのツールバーにある“取り消す”ボタンと“やり直す”ボタン。</string>
 	<key>The aspect ratio menu under the player.</key>
 	<string>プレーヤーの下のアスペクト比メニュー。</string>
+	<key>The bar above the timeline. Hover a button for its name and key.</key>
+	<string>タイムラインの上のバー。ボタンにポインタを置くと名前とキーが表示されます。</string>
 	<key>The bars move out of the frame's way. Drag them anywhere by the handle on the left.</key>
 	<string>バーは枠の邪魔にならない位置に移動します。左側のハンドルをドラッグすると、どこにでも動かせます。</string>
 	<key>The bottom of the video editor.</key>
@@ -6206,6 +6448,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ワイプが顔を追いかけるようになりました</string>
 	<key>The bubble's framing follows your face</key>
 	<string>ワイプのフレーミングが顔を追いかけます</string>
+	<key>The buttons above the timeline, with the keys CapCut uses: split, trim, freeze, reverse, mirror, rotate, and the timeline's switches.</key>
+	<string>タイムラインの上のボタン。CapCutと同じキーで分割、トリミング、フリーズ、逆再生、左右反転、回転、タイムラインのスイッチを使えます。</string>
 	<key>The camera bubble</key>
 	<string>カメラのワイプ</string>
 	<key>The camera couldn't start.</key>
@@ -6254,6 +6498,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>初回は、macOSがマイクとカメラの許可を確認します。</string>
 	<key>The first time, macOS asks to allow the microphone.</key>
 	<string>初回は、macOSがマイクの許可を確認します。</string>
+	<key>The first time, macOS asks to let LF Studios use the microphone.</key>
+	<string>初回はmacOSがLF Studiosにマイクの使用を許可するか確認します。</string>
 	<key>The flag button in the bar while recording.</key>
 	<string>収録中のバーにある旗のボタン。</string>
 	<key>The folder couldn't be made: %@</key>
@@ -6284,6 +6530,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>メニューバーのアイコンが見つからない</string>
 	<key>The message after a crash ▸ Report on GitHub. Or Settings ▸ About ▸ Report Issue.</key>
 	<string>クラッシュ後に表示されるメッセージ＞“GitHubで報告”。または“設定”＞“情報”＞“問題を報告”。</string>
+	<key>The microphone button on the right of the timeline's bar, or Timeline ▸ Record Voiceover.</key>
+	<string>タイムラインのバー右側のマイクボタン、または“タイムライン”＞“ナレーションを録音”。</string>
 	<key>The microphone couldn't start, so this recording has no mic.</key>
 	<string>マイクを起動できなかったため、この収録にはマイクの音声が入りません。</string>
 	<key>The microphone stopped working. The recording continues without it.</key>
@@ -6392,6 +6640,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>画面と一緒に収録したサウンド</string>
 	<key>The strip above the recording bar, after Home ▸ New recording.</key>
 	<string>ホーム＞“新規収録”のあと、収録バーの上に表示される列。</string>
+	<key>The switches stay as you leave them, on this Mac.</key>
+	<string>スイッチはこのMacで最後の状態のまま保たれます。</string>
 	<key>The text is now on the clipboard: paste it anywhere with ⌘V.</key>
 	<string>テキストがクリップボードにコピーされます。⌘Vでどこにでもペーストできます。</string>
 	<key>The timeline and its tracks</key>
@@ -6400,6 +6650,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ビデオエディタの下部にあるタイムライン。</string>
 	<key>The timeline is empty. Restore a clip, then export again.</key>
 	<string>タイムラインが空です。クリップを復元してから、もう一度書き出してください。</string>
+	<key>The timeline now uses CapCut's keys: ⌘B splits (C still does), S turns the preview axis on and off, I and O mark in and out, and Q and W delete left and right of the playhead. Text, arrow, highlight and blur are ⌥T, ⌥A, ⌥H and ⌥B.</key>
+	<string>タイムラインはCapCutのキーを使うようになりました: ⌘Bで分割（Cも使えます）、Sでプレビュー軸のオン/オフ、IとOでイン/アウト、QとWで再生ヘッドの左/右を削除。テキスト、矢印、ハイライト、ぼかしは⌥T、⌥A、⌥H、⌥Bです。</string>
+	<key>The timeline's tools</key>
+	<string>タイムラインのツール</string>
+	<key>The timeline: the rows above Video clips (the main track). Drop a file there from Finder or the Library.</key>
+	<string>タイムライン: “ビデオクリップ”（メイントラック）の上の行。Finderかライブラリからファイルをドロップします。</string>
 	<key>The tool buttons above the preview: Text, Arrow, Highlight, Blur, Spotlight, and Image.</key>
 	<string>プレビューの上にあるツールボタン: “テキスト”、“矢印”、“ハイライト”、“ぼかし”、“スポットライト”、“画像”。</string>
 	<key>The trash button in the bar while recording.</key>
@@ -6432,6 +6688,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>画面全体がズームします。</string>
 	<key>The whole mix at −16 LUFS, peaks under −1 dB</key>
 	<string>ミックス全体を−16 LUFSに、ピークは−1 dB未満に</string>
+	<key>The whole picture, as big as the video allows</key>
+	<string>全体を、ビデオに収まる最大の大きさで</string>
 	<key>The window you're recording closed. Stop when you're ready — the recording keeps going.</key>
 	<string>収録中のウインドウが閉じられました。収録は続いています。準備ができたら停止してください。</string>
 	<key>The “Recording saved” panel lets you edit the video, show it in Finder, or copy where it is.</key>
@@ -6580,8 +6838,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>矢印を曲げるには、矢印を選択して中央の点をドラッグします。</string>
 	<key>To blur something yourself, press B and drag the blur over it.</key>
 	<string>自分でぼかすには、Bキーを押して、隠したいものの上にぼかしをドラッグします。</string>
-	<key>To cut a mistake, move the playhead to it, press S to split, click the bad part, and press ⌫.</key>
-	<string>失敗した部分をカットするには、再生ヘッドをそこに移動してSキーを押して分割し、不要な部分をクリックして⌫キーを押します。</string>
+	<key>To cut a mistake, move the playhead to it, press ⌘B to split, click the bad part, and press ⌫.</key>
+	<string>ミスをカットするには、再生ヘッドをそこに移動し、⌘Bで分割し、不要な部分をクリックして⌫を押します。</string>
 	<key>To drag out any area yourself, click Select area manually above the recording bar.</key>
 	<string>範囲を自分でドラッグして選ぶには、収録バーの上の“範囲を手動で選択”をクリックします。</string>
 	<key>To get the preview out of the way, drag it outside the frame: the label says “Not in video”, and the editor puts the camera in its usual corner.</key>
@@ -6626,6 +6884,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>“入力場所を追跡”: 画面上のテキストカーソルの位置だけを、1秒に数回保存します。テキストやキーは保存されません。</string>
 	<key>Tracks</key>
 	<string>トラック</string>
+	<key>Tracks above the main track</key>
+	<string>メイントラックの上のトラック</string>
 	<key>Transcribe</key>
 	<string>文字起こし</string>
 	<key>Transcribe Again</key>
@@ -6668,10 +6928,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>字幕を翻訳する</string>
 	<key>Transparent background</key>
 	<string>透明な背景</string>
-	<key>Trim the clip's end to the playhead (O)</key>
-	<string>クリップの最後を再生ヘッドの位置までトリミング（O）</string>
-	<key>Trim the clip's start to the playhead (I)</key>
-	<string>クリップの最初を再生ヘッドの位置までトリミング（I）</string>
+	<key>Trim the clip's end to the playhead (W)</key>
+	<string>クリップの終わりを再生ヘッドまでトリミング（W）</string>
+	<key>Trim the clip's start to the playhead (Q)</key>
+	<string>クリップの始まりを再生ヘッドまでトリミング（Q）</string>
 	<key>Trim the screenshot to just the part that matters.</key>
 	<string>スクリーンショットを、必要な部分だけに切り取ります。</string>
 	<key>Trim toolbars, the menu bar, or empty space off the edges of the recording.</key>
@@ -6686,6 +6946,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>今すぐ試してみましょう。“範囲を取り込む”はメニューバーからも使えます。</string>
 	<key>Try to open LF Studios once, and close the message.</key>
 	<string>一度LF Studiosを開こうとしてから、メッセージを閉じます。</string>
+	<key>Turn Clip On or Off</key>
+	<string>クリップをオン/オフ</string>
 	<key>Turn Off Auto-Zoom on Clicks</key>
 	<string>クリックで自動ズームをオフにする</string>
 	<key>Turn Off Click Sounds</key>
@@ -6694,12 +6956,20 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>オンにする</string>
 	<key>Turn On Auto-Zoom on Clicks</key>
 	<string>クリックで自動ズームをオンにする</string>
+	<key>Turn a clip on or off</key>
+	<string>クリップをオン/オフ</string>
 	<key>Turn a wide recording into a 9:16 video for phones.</key>
 	<string>横長の収録を、スマートフォン向けの9:16のビデオにします。</string>
 	<key>Turn around</key>
 	<string>向きを反転</string>
+	<key>Turn clip on or off</key>
+	<string>クリップをオン/オフ</string>
+	<key>Turn it</key>
+	<string>回転</string>
 	<key>Turn it on in Settings ▸ General ▸ After Capture ▸ Show the preview after capture.</key>
 	<string>“設定”＞“一般”＞“取り込み後”＞“キャプチャ後にプレビューを表示”でオンにします。</string>
+	<key>Turn it with the round knob above it on the preview; hold ⇧ for steps of 15°, double-click the knob to put it upright.</key>
+	<string>プレビューで上の丸いノブを使って回転します。⇧で15°ずつ、ノブをダブルクリックするとまっすぐに戻ります。</string>
 	<key>Turn markers into chapters, and copy them for your video's description.</key>
 	<string>マーカーをチャプターにして、ビデオの説明欄用にコピーします。</string>
 	<key>Turn off podcast mode</key>
@@ -6736,8 +7006,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>サウンドを収録するには、収録する前にマイクまたはシステムオーディオをオンにしてください。</string>
 	<key>Turn shaky mouse moves into calm, smooth glides.</key>
 	<string>ぶれたマウスの動きを、落ち着いた滑らかな動きにします。</string>
+	<key>Turn text with the round knob above it; hold ⇧ for steps of 15°.</key>
+	<string>テキストは上の丸いノブで回転します。⇧で15°ずつ。</string>
+	<key>Turn the camera</key>
+	<string>カメラを回転</string>
 	<key>Turn the picture</key>
 	<string>画像を回転</string>
+	<key>Turn the text</key>
+	<string>テキストを回転</string>
 	<key>Turn the video's sound back on</key>
 	<string>ビデオのサウンドを再びオンにする</string>
 	<key>Turn what you say into captions, right on your Mac.</key>
@@ -6832,6 +7108,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ズームの追加を取り消す</string>
 	<key>Undo Add Zooms</key>
 	<string>ズームの追加を取り消す</string>
+	<key>Undo Add to Track</key>
+	<string>トラックへの追加を取り消す</string>
 	<key>Undo Annotation Change</key>
 	<string>注釈の変更を取り消す</string>
 	<key>Undo Annotations</key>
@@ -6880,6 +7158,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>クリック音の変更を取り消す</string>
 	<key>Undo Clicks</key>
 	<string>クリックの変更を取り消す</string>
+	<key>Undo Clip Change</key>
+	<string>クリップの変更を取り消す</string>
 	<key>Undo Collapse Track</key>
 	<string>トラックの折りたたみを取り消す</string>
 	<key>Undo Crop</key>
@@ -6946,8 +7226,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>顔の追跡を取り消す</string>
 	<key>Undo Fade</key>
 	<string>フェードの変更を取り消す</string>
+	<key>Undo Fill</key>
+	<string>フィルを取り消す</string>
+	<key>Undo Fit</key>
+	<string>フィットを取り消す</string>
 	<key>Undo Fit Zooms Around Camera</key>
 	<string>カメラを避けるズームを取り消す</string>
+	<key>Undo Freeze Frame</key>
+	<string>フリーズフレームを取り消す</string>
+	<key>Undo Group</key>
+	<string>グループ化を取り消す</string>
 	<key>Undo Hide Camera During Silences</key>
 	<string>無音の間のカメラ非表示を取り消す</string>
 	<key>Undo Hide Shortcut</key>
@@ -6968,6 +7256,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>トラックのロックを取り消す</string>
 	<key>Undo Markers</key>
 	<string>マーカーの変更を取り消す</string>
+	<key>Undo Mirror</key>
+	<string>左右反転を取り消す</string>
 	<key>Undo Move %lld Items</key>
 	<string>%lld項目の移動を取り消す</string>
 	<key>Undo Move Arrow</key>
@@ -7010,10 +7300,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ビデオの消音を取り消す</string>
 	<key>Undo New Folder</key>
 	<string>新規フォルダを取り消す</string>
+	<key>Undo Paste</key>
+	<string>ペーストを取り消す</string>
 	<key>Undo Podcast Mode Off</key>
 	<string>ポッドキャストモードのオフを取り消す</string>
 	<key>Undo Podcast Mode On</key>
 	<string>ポッドキャストモードのオンを取り消す</string>
+	<key>Undo Record Voiceover</key>
+	<string>ナレーションの録音を取り消す</string>
 	<key>Undo Remove All Zooms</key>
 	<string>すべてのズームの削除を取り消す</string>
 	<key>Undo Remove Audio</key>
@@ -7058,6 +7352,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>単語の復元を取り消す</string>
 	<key>Undo Restore Words</key>
 	<string>単語の復元を取り消す</string>
+	<key>Undo Reverse</key>
+	<string>逆再生を取り消す</string>
+	<key>Undo Rotate</key>
+	<string>回転を取り消す</string>
 	<key>Undo Shortcut Style</key>
 	<string>ショートカットのスタイル変更を取り消す</string>
 	<key>Undo Shortcuts</key>
@@ -7068,6 +7366,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>無音部分の短縮を取り消す</string>
 	<key>Undo Show Track</key>
 	<string>トラックの表示を取り消す</string>
+	<key>Undo Slip Clip</key>
+	<string>クリップのスリップを取り消す</string>
 	<key>Undo Sound Change</key>
 	<string>サウンドの変更を取り消す</string>
 	<key>Undo Speed Change</key>
@@ -7080,6 +7380,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>分割を取り消す</string>
 	<key>Undo Split Audio</key>
 	<string>オーディオの分割を取り消す</string>
+	<key>Undo Split Clip</key>
+	<string>クリップの分割を取り消す</string>
 	<key>Undo Split at Markers</key>
 	<string>マーカー位置での分割を取り消す</string>
 	<key>Undo Spotlight Style</key>
@@ -7104,6 +7406,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>トリミングを取り消す</string>
 	<key>Undo Trim Audio</key>
 	<string>オーディオのトリミングを取り消す</string>
+	<key>Undo Trim Clip</key>
+	<string>クリップのトリミングを取り消す</string>
+	<key>Undo Turn Off Clip</key>
+	<string>クリップのオフを取り消す</string>
+	<key>Undo Turn On Clip</key>
+	<string>クリップのオンを取り消す</string>
+	<key>Undo Ungroup</key>
+	<string>グループ解除を取り消す</string>
 	<key>Undo Unlock Track</key>
 	<string>トラックのロック解除を取り消す</string>
 	<key>Undo Unmute Clip</key>
@@ -7126,6 +7436,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>カメラ回避を元に戻す</string>
 	<key>Undo, redo &amp; start over</key>
 	<string>取り消し、やり直し、最初からやり直す</string>
+	<key>Ungroup</key>
+	<string>グループ解除</string>
 	<key>Unlock %@</key>
 	<string>“%@”のロックを解除</string>
 	<key>Unlock “%@”</key>
@@ -7204,6 +7516,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>バージョン%@</string>
 	<key>Video</key>
 	<string>ビデオ</string>
+	<key>Video %lld</key>
+	<string>ビデオ %lld</string>
 	<key>Video clips</key>
 	<string>ビデオクリップ</string>
 	<key>Video copied</key>
@@ -7240,6 +7554,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>このMacでは声の補正を使用できません。元のサウンドのままにするには、“声を補正”をオフにしてください。</string>
 	<key>Voice enhancement stopped partway. Turn Enhance voice off and on again to retry.</key>
 	<string>声の補正が途中で停止しました。もう一度試すには、“声を補正”をオフにしてから再度オンにしてください。</string>
+	<key>Voiceover</key>
+	<string>ナレーション</string>
+	<key>Voiceover %lld</key>
+	<string>ナレーション %lld</string>
 	<key>Volume</key>
 	<string>音量</string>
 	<key>Volume &amp; mute</key>
@@ -7526,6 +7844,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>プレーヤーをズーム</string>
 	<key>Zoom to %@ (key %@)</key>
 	<string>%@にズーム（%@キー）</string>
+	<key>Zoom to fit</key>
+	<string>全体を表示</string>
 	<key>Zoom — drag to move, drag an edge to resize, click to edit</key>
 	<string>ズーム: ドラッグで移動、端をドラッグで長さを変更、クリックで編集</string>
 	<key>Zooms</key>
@@ -7566,6 +7886,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>チャプター</string>
 	<key>cut by editing words</key>
 	<string>テキストを編集してカット</string>
+	<key>delete left / right of the playhead</key>
+	<string>再生ヘッドの左 / 右を削除</string>
 	<key>dips under your voice</key>
 	<string>話している間は音量が下がる</string>
 	<key>every command</key>
@@ -7660,8 +7982,6 @@ Appleのショートカットは、“システム設定”＞“キーボード
 	<string>左上</string>
 	<key>top right</key>
 	<string>右上</string>
-	<key>trim to the playhead</key>
-	<string>再生ヘッドまでトリミング</string>
 	<key>type</key>
 	<string>入力</string>
 	<key>up to %@ GB/min</key>
@@ -7684,6 +8004,8 @@ Appleのショートカットは、“システム設定”＞“キーボード
 	<string>· 入力に追従</string>
 	<key>“%@” (was in %@)</key>
 	<string>“%@”（%@にありました）</string>
+	<key>“%@” can't be found. Put it back where it was, or find it with Locate… in the Library, then export again.</key>
+	<string>“%@”が見つかりません。元の場所に戻すか、ライブラリの“場所を指定…”で見つけてから、もう一度書き出してください。</string>
 	<key>“%@” can't be found. Put it back where it was, or remove it from this video (Style → Recordings), then export again.</key>
 	<string>“%@”が見つかりません。元の場所に戻すか、このビデオから削除してから（“スタイル”＞“収録したビデオ”）、もう一度書き出してください。</string>
 	<key>“%@” can't be read — it may be damaged, still being saved, or in a format this Mac can't play. Remove it from this video (Style → Recordings), or put a working copy in its place, then export again.</key>
@@ -7714,8 +8036,12 @@ Appleのショートカットは、“システム設定”＞“キーボード
 	<string>“%@”はこのウインドウを%@ × %@ピクセル以上に保つため、%@ × %@にはできません。</string>
 	<key>“%@” keeps this window at most %@ × %@ pixels, so it can't be made %@ × %@.</key>
 	<string>“%@”はこのウインドウを%@ × %@ピクセル以下に保つため、%@ × %@にはできません。</string>
+	<key>“%@” on Video %lld — the file is missing</key>
+	<string>ビデオ %2$lld の“%1$@” — ファイルがありません</string>
 	<key>“%@” was saved by a newer LF Studios. Update LF Studios to open it.</key>
 	<string>“%@”は新しいバージョンのLF Studiosで保存されています。開くにはLF Studiosをアップデートしてください。</string>
+	<key>“%@” — drag to move it in time or to another track, drag an end to trim, ⌥-drag a video to slip it</key>
+	<string>“%@” — ドラッグで時間や別のトラックへ移動、端をドラッグでトリミング、⌥-ドラッグでビデオの中身をずらします</string>
 	<key>“%@” — drag to move, drag an edge to trim, click to change it in Audio</key>
 	<string>“%@”: ドラッグで移動、端をドラッグでトリミング、クリックで“オーディオ”で変更</string>
 	<key>“Made with LF Studios” end card (2s)</key>

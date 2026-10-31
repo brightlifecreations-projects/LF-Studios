@@ -97,6 +97,8 @@ struct VideoMediaEntry: Identifiable, Equatable {
         case music
         case sound(UUID)
         case picture
+        /// On a track above the main track (1.14.0).
+        case layer
         case imported(UUID)
     }
 
@@ -126,7 +128,7 @@ struct VideoMediaEntry: Identifiable, Equatable {
     /// Replace… and Locate… work on it.
     var canReplace: Bool {
         switch origin {
-        case .imported, .picture, .sound, .music: return true
+        case .imported, .picture, .sound, .music, .layer: return true
         case .recording, .addedRecording, .camera: return false
         }
     }
@@ -175,6 +177,10 @@ extension VideoDemoProject {
         for effect in overlayEffects {
             guard let image = effect.image else { continue }
             add(Self.pathKey(image.path), image.path, image.name, .image, .picture)
+        }
+        // On the tracks above the main track.
+        for (_, item) in layerItems {
+            add(Self.pathKey(item.path), item.path, item.name, item.kind, .layer, duration: item.isVideo ? item.fileDuration : nil)
         }
 
         let inVideo = pathsInVideo
@@ -257,28 +263,67 @@ extension VideoEditorModel {
         return items
     }
 
+    /// Where a dropped file goes (1.14.0): the main track, a track above
+    /// it, or wherever it fits (videos and pictures on a track above the
+    /// main track, sound on a track of its own).
+    enum DropTarget: Equatable {
+        case main
+        case layer(LayerPlace)
+        case anywhere
+    }
+
     /// Dropped on the timeline or the player, or dragged there from the
-    /// Library: into the Library and into the video. A video goes at the
-    /// end of the main track, a picture and a sound file at `time` (nil:
-    /// the playhead).
-    func placeMedia(_ urls: [URL], at time: Double?) async {
-        let at = time ?? clock.time
+    /// Library: into the Library and into the video, at `time` (nil: the
+    /// playhead), on the track it was dropped on. Several files follow one
+    /// another.
+    func placeMedia(_ urls: [URL], at time: Double?, target: DropTarget = .anywhere) async {
+        var at = time ?? clock.time
         for url in urls {
             guard let kind = VideoMediaKind.of(url) else { continue }
             let item = importMedia([url]).first
-            switch kind {
-            case .video:
-                await appendVideo(url)
-            case .image:
-                if let id = addImageOverlay(from: url, at: at),
-                   let placed = project.overlayEffects.first(where: { $0.id == id })?.image?.path {
-                    notePlaced(item, placed)
-                }
-            case .audio:
+            switch (kind, target) {
+            case (.audio, _):
                 let ids = await addAudio([url], at: at)
-                for id in ids { if let track = audioTrack(id) { notePlaced(item, track.path) } }
+                for id in ids { if let track = audioTrack(id) { notePlaced(item, track.path); at = track.pieces.last?.end ?? at } }
+            case (_, .main):
+                if let end = await insertOnMainTrack(url, at: at) { at = end }
+            case (_, .layer(let place)):
+                if let id = await addLayerItem(from: url, at: at, place: place), let added = project.layerItem(id) { at = added.end }
+            case (_, .anywhere):
+                if let id = await addLayerItem(from: url, at: at, place: .automatic), let added = project.layerItem(id) { at = added.end }
             }
         }
+    }
+
+    /// A video (or a picture, as a still video) on the main track at
+    /// `time`: a clip there is split, and the rest moves along. One ⌘Z
+    /// takes it back. Returns where it ends.
+    @discardableResult
+    func insertOnMainTrack(_ url: URL, at time: Double) async -> Double? {
+        if refuseLocked(.clips) { return nil }
+        var video = url
+        let isPicture = VideoMediaKind.of(url) == .image
+        if isPicture {
+            do {
+                video = try await VideoGeneratedMedia.stillVideo(fromPicture: url, size: CGSize(width: project.sourceWidth, height: project.sourceHeight), seconds: VideoLayerItem.pictureLength)
+            } catch {
+                showNotice(L("Couldn't open that image"), symbol: "exclamationmark.triangle.fill")
+                return nil
+            }
+        }
+        let before = Set(project.sources.map(\.id))
+        guard await appendVideo(video) else { return nil }
+        // (The first one added also makes the project's own recording a source.)
+        guard let source = project.sources.last(where: { !before.contains($0.id) && !$0.isPrimary }) else { return nil }
+        let total = sourceDuration
+        mutate(label: "Add to Track") { project in
+            if isPicture, let index = project.sources.firstIndex(where: { $0.id == source.id }) { project.sources[index].name = url.lastPathComponent }
+            project.moveSourceClips(source, toTimeline: time, totalDuration: total)
+        }
+        joinLastUndoSteps(label: "Add to Track")
+        let placed = segments.first { $0.clip.sourceStart >= source.offset - 0.001 && $0.clip.sourceEnd <= source.end + 0.001 }
+        if let placed { seek(to: placed.timelineStart) }
+        return placed?.timelineEnd
     }
 
     /// Library ▸ Add to Timeline.
@@ -360,6 +405,8 @@ extension VideoEditorModel {
             }
             project.overlayEffects.removeAll { effect in effect.image.map { paths.contains($0.path) } ?? false }
             project.audioTracks.removeAll { paths.contains($0.path) }
+            for t in project.layerTracks.indices { project.layerTracks[t].items.removeAll { paths.contains($0.path) } }
+            project.dropEmptyLayerTracks()
             if let music = project.music, paths.contains(music.path) { project.music = nil }
             project.mediaBin?.names[entry.key] = nil
             project.mediaBin?.folderOf[entry.key] = nil
@@ -407,6 +454,26 @@ extension VideoEditorModel {
         // What the video's own copies become.
         var picture: VideoOverlayImage?
         var sound: (path: String, duration: Double)?
+        // On the tracks above the main track the file is used where it is.
+        var layerMedia: (aspect: Double, duration: Double)?
+        if project.layerItems.contains(where: { uses.contains($0.item.path) }) {
+            switch entry.kind {
+            case .image:
+                guard let size = VideoImageOverlayRenderer.pixelSize(of: url) else {
+                    showNotice(L("Couldn't open that image"), symbol: "exclamationmark.triangle.fill")
+                    return false
+                }
+                layerMedia = (Double(size.width / max(size.height, 1)), 0)
+            case .video:
+                guard let tracks = try? await VideoSourceTracks.load(url: url) else {
+                    showNotice(L("Couldn't open that video"), symbol: "exclamationmark.triangle.fill")
+                    return false
+                }
+                layerMedia = (Double(tracks.size.width / max(tracks.size.height, 1)), tracks.duration)
+            case .audio:
+                break
+            }
+        }
         let placedInVideo = project.overlayEffects.contains { $0.image.map { uses.contains($0.path) } ?? false }
             || project.audioTracks.contains { uses.contains($0.path) }
             || project.music.map { uses.contains($0.path) } == true
@@ -431,6 +498,23 @@ extension VideoEditorModel {
             }
         }
         mutate(label: "Replace Media") { project in
+            if let layerMedia {
+                for t in project.layerTracks.indices {
+                    for i in project.layerTracks[t].items.indices where uses.contains(project.layerTracks[t].items[i].path) {
+                        project.layerTracks[t].items[i].path = path
+                        project.layerTracks[t].items[i].name = url.lastPathComponent
+                        project.layerTracks[t].items[i].aspect = layerMedia.aspect
+                        if project.layerTracks[t].items[i].isVideo {
+                            // Kept inside the new video's length.
+                            let item = project.layerTracks[t].items[i]
+                            project.layerTracks[t].items[i].fileDuration = layerMedia.duration
+                            project.layerTracks[t].items[i].fileStart = min(item.fileStart, max(layerMedia.duration - VideoLayerItem.minimumLength, 0))
+                            let room = (layerMedia.duration - project.layerTracks[t].items[i].fileStart) / item.normalizedSpeed
+                            project.layerTracks[t].items[i].length = max(min(item.length, room), VideoLayerItem.minimumLength)
+                        }
+                    }
+                }
+            }
             if let picture {
                 for index in project.overlayEffects.indices {
                     guard let old = project.overlayEffects[index].image, uses.contains(old.path) else { continue }
@@ -524,18 +608,19 @@ extension VideoEditorModel {
 /// point) or the player (at the playhead).
 struct VideoMediaDrop: DropDelegate {
     let model: VideoEditorModel
-    /// Edit time at the drop point (nil: the playhead).
-    let time: (CGPoint) -> Double?
+    /// Edit time at the drop point (nil: the playhead) and the track under
+    /// it.
+    let place: (CGPoint) -> (time: Double?, target: VideoEditorModel.DropTarget)
 
     func validateDrop(info: DropInfo) -> Bool { info.hasItemsConforming(to: [.fileURL]) }
 
     func performDrop(info: DropInfo) -> Bool {
-        let at = time(info.location)
+        let spot = place(info.location)
         let providers = info.itemProviders(for: [.fileURL])
         guard !providers.isEmpty else { return false }
         Task { @MainActor in
             let urls = await VideoMediaDrop.urls(from: providers)
-            if !urls.isEmpty { await model.placeMedia(urls, at: at) }
+            if !urls.isEmpty { await model.placeMedia(urls, at: spot.time, target: spot.target) }
         }
         return true
     }
@@ -551,5 +636,44 @@ struct VideoMediaDrop: DropDelegate {
             }
         }
         return urls
+    }
+}
+
+extension VideoDemoProject {
+    /// The clips of `source` (just added, at the end) moved to `time` on
+    /// the timeline; a clip there is split in two around them.
+    mutating func moveSourceClips(_ source: VideoProjectSource, toTimeline time: Double, totalDuration: Double) {
+        var clips = normalizedTimelineClips(totalDuration: totalDuration)
+        let isMoving: (VideoDemoTimelineClip) -> Bool = { $0.sourceStart >= source.offset - 0.001 && $0.sourceEnd <= source.end + 0.001 }
+        let moving = clips.filter(isMoving)
+        guard !moving.isEmpty else { return }
+        clips.removeAll(where: isMoving)
+        var index = clips.count
+        var start = timelineLeadIn
+        for (position, clip) in clips.enumerated() {
+            let end = start + clip.outputDuration
+            if time <= start + Self.minimumClipDuration {
+                index = position
+                break
+            }
+            if time < end - Self.minimumClipDuration {
+                // In the middle of this clip: split it.
+                let cut = clip.sourceStart + (time - start) * clip.normalizedSpeed
+                var first = clip
+                first.sourceEnd = cut
+                first.fadeOut = 0
+                var second = clip
+                second.id = UUID()
+                second.sourceStart = cut
+                second.fadeIn = 0
+                clips.replaceSubrange(position...position, with: [first, second])
+                index = position + 1
+                break
+            }
+            start = end
+        }
+        clips.insert(contentsOf: moving, at: index)
+        timelineClips = clips
+        syncTrimToTimeline(totalDuration: totalDuration)
     }
 }

@@ -119,6 +119,10 @@ extension VideoDemoProject {
         paths.formUnion(audioTracks.map(\.path))
         // Sound taken out of a video lives in the store too.
         if let mediaBin { paths.formUnion(mediaBin.imported.map(\.path)) }
+        // And the videos LF Studios made for the main track (1.14.0), and
+        // what's on the tracks above it.
+        paths.formUnion(sources.map(\.path).filter(VideoGeneratedMedia.isGenerated))
+        paths.formUnion(layerTracks.flatMap { $0.items.map(\.path) })
         return paths
     }
 }

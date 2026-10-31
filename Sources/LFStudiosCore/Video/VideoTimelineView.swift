@@ -11,6 +11,8 @@ enum VideoTimelineMetrics {
     static var zoomTrackHeight: CGFloat { scaled(34) }
     static let clickLaneHeight: CGFloat = 14
     static var clipTrackHeight: CGFloat { scaled(66) }
+    /// A video or picture track above the main track (1.14.0).
+    static var layerLaneHeight: CGFloat { scaled(40) }
     static var overlayLaneHeight: CGFloat { scaled(26) }
     static let overlayLaneGap: CGFloat = 4
     static var captionLaneHeight: CGFloat { scaled(22) }
@@ -86,76 +88,82 @@ struct VideoTimelineToolbar: View {
     @ObservedObject var clock: VideoDemoPlaybackClock
 
     var body: some View {
-        HStack(spacing: 10) {
+        HStack(spacing: 6) {
             // Play, pause and the time are under the player (1.13.0).
-            toolButton(symbol: "scissors", title: L("Split"), help: L("Split at the playhead (S)")) { model.splitAtPlayhead() }
-            toolButton(symbol: "plus.magnifyingglass", title: L("Zoom"), help: L("Add a zoom at the playhead (Z)")) {
-                model.addZoom(at: clock.time)
+            // Tools (1.14.0): what they do and their keys show on hover.
+            HStack(spacing: 2) {
+                command(.selectTool)
+                command(.splitTool)
             }
+            .padding(2)
+            .background(RoundedRectangle(cornerRadius: 8, style: .continuous).fill(VideoEditorTheme.ink.opacity(0.05)))
+            command(.undo).disabled(!model.canUndo)
+            command(.redo).disabled(!model.canRedo)
             toolbarDivider
-
-            toolButton(symbol: model.project.autoZoom ? "sparkles.rectangle.stack.fill" : "sparkles", title: L("Auto Zoom"), help: model.project.autoZoom ? L("Auto-zoom on clicks is on — click to turn it off and remove its zooms") : L("Turn on Auto-zoom on clicks — keeps zooms you placed by hand")) { model.setAutoZoom(!model.project.autoZoom) }
-            toolButton(symbol: "hare", title: L("Speed Up Idle"), help: L("Fast-forward moments where nothing happens")) { model.speedUpIdle() }
+            command(.split)
+            command(.deleteLeft)
+            command(.deleteRight)
+            command(.delete).disabled(model.selection == .none && model.selectedAudioPiece == nil)
             toolbarDivider
-            toolButton(symbol: "flag", title: L("Marker"), help: L("Add a marker at the playhead — markers become chapters")) { model.addMarker() }
+            command(.addMarker)
+            command(.freezeFrame)
+            command(.reverse).disabled(model.generating != nil)
+            command(.mirror)
+            command(.rotate)
+            command(.crop)
+            toolbarDivider
+            iconButton(symbol: "plus.magnifyingglass", help: L("Add a zoom at the playhead (Z)"), label: L("Zoom")) { model.addZoom(at: clock.time) }
+            iconButton(symbol: model.project.autoZoom ? "sparkles.rectangle.stack.fill" : "sparkles", help: model.project.autoZoom ? L("Auto-zoom on clicks is on — click to turn it off and remove its zooms") : L("Turn on Auto-zoom on clicks — keeps zooms you placed by hand"), label: L("Auto Zoom")) { model.setAutoZoom(!model.project.autoZoom) }
+            iconButton(symbol: "hare", help: L("Fast-forward moments where nothing happens"), label: L("Speed Up Idle")) { model.speedUpIdle() }
             if !model.project.markers.isEmpty {
-                toolButton(symbol: "scissors.badge.ellipsis", title: L("Split at Markers"), help: L("Split the clips at every marker")) { model.splitAtMarkers() }
+                iconButton(symbol: "flag.2.crossed", help: L("Split the clips at every marker"), label: L("Split at Markers")) { model.splitAtMarkers() }
             }
 
             Spacer(minLength: 8)
 
-            if model.selectedClipID != nil || model.selection != .none {
-                Button {
-                    model.deleteSelection()
-                } label: {
-                    Image(systemName: "trash")
-                        .font(.system(size: 12, weight: .semibold))
-                        .frame(width: 28, height: 24)
-                }
-                .buttonStyle(VideoToolButtonStyle())
-                .help(L("Delete selection (⌫)"))
-                .accessibilityLabel(L("Delete selection"))
-            }
+            command(.recordVoiceover)
+            toolbarDivider
+            command(.toggleMagnet)
+            command(.toggleSnapping)
+            command(.toggleLinkage)
+            command(.togglePreviewAxis)
+            toolbarDivider
 
             if model.hasAudio {
-                Button {
-                    model.togglePreviewMute()
-                } label: {
-                    Image(systemName: model.previewMuted ? "speaker.slash.fill" : "speaker.wave.2.fill")
-                        .font(.system(size: 12, weight: .semibold))
-                        .frame(width: 28, height: 24)
-                }
-                .buttonStyle(VideoToolButtonStyle())
-                .help(model.previewMuted ? L("Unmute the preview (M)") : L("Mute the preview (M) — the export keeps its sound"))
-                .accessibilityLabel(model.previewMuted ? L("Unmute preview") : L("Mute preview"))
+                iconButton(symbol: model.previewMuted ? "speaker.slash.fill" : "speaker.wave.2.fill",
+                           help: model.previewMuted ? L("Unmute the preview (M)") : L("Mute the preview (M) — the export keeps its sound"),
+                           label: model.previewMuted ? L("Unmute preview") : L("Mute preview")) { model.togglePreviewMute() }
             }
 
             HStack(spacing: 6) {
                 Button {
                     model.zoomTimeline(by: 1 / 1.4)
                 } label: {
-                    Image(systemName: "arrow.right.and.line.vertical.and.arrow.left")
+                    Image(systemName: "minus.magnifyingglass")
                 }
                 .buttonStyle(.plain)
                 .foregroundStyle(VideoEditorTheme.textSecondary)
                 .accessibilityLabel(L("Show more of the timeline"))
                 Slider(value: Binding(get: { log(model.timelineZoom) / log(model.maxTimelineZoom) }, set: { model.timelineZoom = pow(model.maxTimelineZoom, $0) }), in: 0...1)
-                    .frame(width: 90)
+                    .frame(width: 80)
                     .controlSize(.small)
                     .accessibilityLabel(L("Timeline scale"))
                 Button {
                     model.zoomTimeline(by: 1.4)
                 } label: {
-                    Image(systemName: "arrow.left.and.line.vertical.and.arrow.right")
+                    Image(systemName: "plus.magnifyingglass")
                 }
                 .buttonStyle(.plain)
                 .foregroundStyle(VideoEditorTheme.textSecondary)
                 .accessibilityLabel(L("Show the timeline in more detail"))
+                command(.zoomToFit)
             }
             .font(.system(size: 12, weight: .semibold))
             .help(L("Timeline scale (pinch, or ⌘-scroll)"))
         }
-        .padding(.horizontal, 14)
+        .padding(.horizontal, 12)
+        // The switches live in Settings: redraw when one changes.
+        .id(model.switchesVersion)
     }
 
     private var toolbarDivider: some View {
@@ -164,15 +172,35 @@ struct VideoTimelineToolbar: View {
             .frame(width: 1, height: 18)
     }
 
-    private func toolButton(symbol: String, title: String, help: String, action: @escaping () -> Void) -> some View {
-        Button(action: action) {
-            Label(title, systemImage: symbol)
+    /// A command's button: its symbol, its name and keys on hover; a
+    /// switch or a tool shows whether it's on.
+    private func command(_ command: VideoEditCommand) -> some View {
+        let on = model.isOn(command)
+        let shows = command.isSwitch || command == .selectTool || command == .splitTool || command == .recordVoiceover
+        return Button {
+            model.perform(command)
+        } label: {
+            Image(systemName: command == .recordVoiceover && on ? "mic.fill" : command.symbol)
                 .font(.system(size: 12, weight: .semibold))
-                .padding(.horizontal, 8)
-                .frame(height: 26)
+                .foregroundStyle(shows && on ? (command == .recordVoiceover ? Color.red : Color.accentColor) : VideoEditorTheme.textPrimary)
+                .frame(width: 26, height: 24)
+                .background(RoundedRectangle(cornerRadius: 6, style: .continuous).fill(shows && on && !command.isSwitch ? Color.accentColor.opacity(0.16) : Color.clear))
+        }
+        .buttonStyle(VideoToolButtonStyle())
+        .help(command.keys.isEmpty ? command.title : L("\(command.title) (\(command.keys))"))
+        .accessibilityLabel(command.title)
+        .accessibilityValue(command.isSwitch ? (on ? L("On") : L("Off")) : "")
+    }
+
+    private func iconButton(symbol: String, help: String, label: String, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            Image(systemName: symbol)
+                .font(.system(size: 12, weight: .semibold))
+                .frame(width: 26, height: 24)
         }
         .buttonStyle(VideoToolButtonStyle())
         .help(help)
+        .accessibilityLabel(label)
     }
 }
 
@@ -206,7 +234,9 @@ struct VideoTimelineSurface: View {
 
     private typealias M = VideoTimelineMetrics
 
-    private var duration: Double { max(model.timelineDuration, model.layoutDurationLock ?? 0, 0.1) }
+    /// The main track, or further when something above it runs past its
+    /// end (shown, so it can be moved back; the video ends with the main track).
+    private var duration: Double { max(model.timelineDuration, model.layoutDurationLock ?? 0, model.project.layerItems.map(\.item.end).max() ?? 0, 0.1) }
     private var contentWidth: CGFloat { max(viewport.width - M.headerWidth - 1 - M.inset * 2, 100) * CGFloat(model.timelineZoom) }
     private var pointsPerSecond: CGFloat { contentWidth / CGFloat(duration) }
 
@@ -344,10 +374,12 @@ struct VideoTimelineSurface: View {
 
     private func lanes(rows: VideoTimelineRowLayout, height: CGFloat) -> some View {
         ZStack(alignment: .topLeading) {
-            // Files dropped on the timeline (from Finder or the Library):
-            // pictures and sound start there, videos go at the end.
+            // Files dropped on the timeline (from Finder or the Library)
+            // land on the track and at the time under the pointer.
             Color.clear
-                .onDrop(of: [.fileURL], delegate: VideoMediaDrop(model: model) { max(geometry.time($0.x), 0) })
+                .onDrop(of: [.fileURL], delegate: VideoMediaDrop(model: model) { location in
+                    (max(geometry.time(location.x), 0), Self.dropTarget(atY: location.y, rows: rows, project: model.project))
+                })
             // Scrub anywhere that isn't an object.
             Color.clear
                 .contentShape(Rectangle())
@@ -355,6 +387,25 @@ struct VideoTimelineSurface: View {
             VideoTimelineRowBackgrounds(rows: rows, width: contentWidth + M.inset * 2, locked: Set(rows.rows.filter { model.project.isTrackLocked($0.track) }.map(\.track)))
 
             trackLook(.zooms) { zoomTrack }
+            // The tracks above the main track (1.14.0).
+            let layerTops = model.project.layerTracks.map { rows.contentTop(.layer($0.id)) ?? rows.row(.layer($0.id))?.top ?? 0 }
+            ForEach(Array(model.project.layerTracks.enumerated()), id: \.element.id) { index, track in
+                if let top = rows.contentTop(.layer(track.id)) {
+                    trackLook(.layer(track.id)) {
+                        VideoLayerLane(
+                            track: track,
+                            index: index,
+                            rowTops: layerTops,
+                            selected: model.selectedIDs { if case .layer(let id) = $0 { return id } else { return nil } },
+                            geometry: geometry,
+                            model: model,
+                            hover: hover
+                        )
+                        .equatable()
+                        .offset(y: top)
+                    }
+                }
+            }
             trackLook(.clips) {
                 ZStack(alignment: .topLeading) {
                     if !model.project.clickEvents.isEmpty {
@@ -431,6 +482,8 @@ struct VideoTimelineSurface: View {
                 linesTop: 0
             )
             VideoTimelinePlayhead(clock: model.clock, x: { x($0) }, height: height, showsKnob: false)
+            // The split tool (B): a click splits what's under it there.
+            VideoSplitToolLayer(model: model, rows: rows, time: { time($0) })
             VideoTimelinePlayheadFollower(clock: model.clock, model: model, scroller: scroller, x: { x($0) })
         }
         .frame(width: contentWidth + M.inset * 2, height: height, alignment: .topLeading)
@@ -440,9 +493,12 @@ struct VideoTimelineSurface: View {
             case .active(let location):
                 hover.update(time: time(location.x), overZoomTrack: location.y >= zoomTop && location.y <= zoomTop + M.zoomTrackHeight)
                 scroller.pointerIsOver(true)
+                // The preview axis (S): the player shows what's under the pointer.
+                if !hover.dragging { model.previewAxis(at: time(location.x)) }
             case .ended:
                 hover.update(time: nil, overZoomTrack: false)
                 scroller.pointerIsOver(false)
+                model.previewAxis(at: nil)
             }
         }
         .gesture(
@@ -482,6 +538,18 @@ struct VideoTimelineSurface: View {
                 }
                 rangeStart = nil
             }
+    }
+
+    /// The track under a drop: the main track, a track above it, a new
+    /// track on top (over the highest one), or anywhere it fits.
+    static func dropTarget(atY y: CGFloat, rows: VideoTimelineRowLayout, project: VideoDemoProject) -> VideoEditorModel.DropTarget {
+        guard let row = rows.rows.first(where: { y >= $0.top && y < $0.top + $0.height + VideoTimelineRowLayout.separator }) else { return .anywhere }
+        switch row.track {
+        case .clips: return .main
+        case .layer(let id): return .layer(project.layerTracks.firstIndex { $0.id == id }.map { .track($0) } ?? .automatic)
+        case .zooms: return .layer(.newTrack(project.layerTracks.count))
+        default: return .anywhere
+        }
     }
 
     private var isRangeSelection: Bool {

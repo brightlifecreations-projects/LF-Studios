@@ -51,6 +51,12 @@ final class HomeWindowController: NSWindowController, NSWindowDelegate {
         shared?.showHome()
     }
 
+    /// Home's Guide, open on `page` (the editor's "See all shortcuts").
+    static func showGuide(at page: GuidePage) {
+        shared?.model.guide.jump(to: page)
+        show(section: .guide)
+    }
+
     static var isVisible: Bool {
         shared?.window?.isVisible ?? false
     }

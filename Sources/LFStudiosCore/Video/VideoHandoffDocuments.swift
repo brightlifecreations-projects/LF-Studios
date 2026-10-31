@@ -94,6 +94,19 @@ enum VideoHandoffReadme {
 /// screen and the camera go in it, in pixels with the origin at the top
 /// left (as editing apps measure). README.txt spells it out; the timeline
 /// files are that size.
+extension VideoHandoffReadme {
+    /// Where an item above the main track plays and sits, for README.txt.
+    static func layerPlace(_ item: VideoLayerItem, track: Int) -> String {
+        var place = "on track Video \(track + 2) from \(clock(item.at)) to \(clock(item.end)); its middle \(Int((item.x * 100).rounded()))% across and \(Int((item.y * 100).rounded()))% down the frame, \(Int((item.width * 100).rounded()))% of its width"
+        if abs(item.rotation) > 0.01 { place += ", turned \(Int(item.rotation.rounded()))°" }
+        if item.mirrored { place += ", mirrored" }
+        if item.opacity < 0.999 { place += ", \(Int((item.opacity * 100).rounded()))% opacity" }
+        if item.crop.map({ !$0.normalized.isFull }) == true { place += ", cropped" }
+        if !item.enabled { place += " (turned off)" }
+        return place
+    }
+}
+
 struct VideoHandoffSplit: Equatable {
     let video: CGSize
     let screen: CGRect
@@ -180,7 +193,7 @@ struct VideoHandoffTimebase {
 
 /// What goes on the timeline: each media file and where it plays.
 struct VideoHandoffTimelineClip: Equatable {
-    enum Kind: Equatable { case screen, camera, audio }
+    enum Kind: Equatable { case screen, camera, audio, picture }
     var kind: Kind
     var file: String
     /// Lane: 1 = screen, 2… = cameras, −1… = sound.
@@ -198,6 +211,26 @@ enum VideoHandoffTimeline {
     /// Trimmed handoffs already hold the edit, so each file plays from its
     /// own position; uncut ones are cut and sped up here like the edit.
     static func clips(plan: VideoHandoffPlan, input: VideoHandoffInput) -> [VideoHandoffTimelineClip] {
+        let base = baseClips(plan: plan, input: input)
+        return base + layerClips(plan: plan, input: input, above: base.map(\.lane).max() ?? 1)
+    }
+
+    /// The tracks above the main track (1.14.0), on video lanes above the
+    /// screen and the camera, at their times on the edit's timeline.
+    static func layerClips(plan: VideoHandoffPlan, input: VideoHandoffInput, above lane: Int) -> [VideoHandoffTimelineClip] {
+        var clips: [VideoHandoffTimelineClip] = []
+        for (track, item) in input.project.layerItems where item.enabled {
+            let path = URL(fileURLWithPath: item.path).standardizedFileURL.path
+            guard let file = plan.items.first(where: { if case .copy(let url) = $0.work { return url.standardizedFileURL.path == path } else { return false } }),
+                  item.at < input.timelineDuration else { continue }
+            let length = min(item.length, input.timelineDuration - item.at)
+            clips.append(.init(kind: item.isVideo ? .screen : .picture, file: file.relativePath, lane: max(lane, 1) + 1 + track,
+                               offset: item.at, start: item.isVideo ? item.fileStart : 0, duration: length, speed: item.isVideo ? item.normalizedSpeed : 1))
+        }
+        return clips
+    }
+
+    private static func baseClips(plan: VideoHandoffPlan, input: VideoHandoffInput) -> [VideoHandoffTimelineClip] {
         var clips: [VideoHandoffTimelineClip] = []
         let lineUp = plan.options.lineUp
         // The originals kept for the LF Studios project aren't on the timelines.
@@ -215,6 +248,7 @@ enum VideoHandoffTimeline {
                     case .screen: lane = 1
                     case .camera: lane = cameraLane; cameraLane += 1
                     case .audio: lane = audioLane; audioLane -= 1
+                    case .picture: continue
                     }
                     if kind == .screen {
                         // The clip's own stretch of the lined-up file.
@@ -296,6 +330,13 @@ enum VideoHandoffTimeline {
             ids[file] = id
             let item = plan.items.first { $0.relativePath == file }
             let isVideo = item?.folder == .screen || item?.folder == .camera
+            if item?.folder == .graphics {
+                // A still: no length of its own.
+                resources.append("    <asset id=\"\(id)\" name=\"\(escape((file as NSString).lastPathComponent))\" start=\"0s\" duration=\"0s\" hasVideo=\"1\" format=\"r1\">")
+                resources.append("      <media-rep kind=\"original-media\" src=\"\(escape(fileURL(folder, file)))\"/>")
+                resources.append("    </asset>")
+                continue
+            }
             let length = durations[file] ?? item?.duration ?? total
             resources.append("    <asset id=\"\(id)\" name=\"\(escape((file as NSString).lastPathComponent))\" start=\"0s\" duration=\"\(base.fcp(length))\" hasVideo=\"\(isVideo ? 1 : 0)\" hasAudio=\"\(isVideo ? 0 : 1)\"\(isVideo ? " format=\"r1\"" : " audioSources=\"1\" audioChannels=\"2\" audioRate=\"48000\"")>")
             resources.append("      <media-rep kind=\"original-media\" src=\"\(escape(fileURL(folder, file)))\"/>")
@@ -305,6 +346,10 @@ enum VideoHandoffTimeline {
         for clip in clips.sorted(by: { ($0.lane, $0.offset) > ($1.lane, $1.offset) }) {
             guard let ref = ids[clip.file] else { continue }
             let name = escape((clip.file as NSString).lastPathComponent)
+            if clip.kind == .picture {
+                connected.append("          <video ref=\"\(ref)\" lane=\"\(clip.lane)\" offset=\"\(base.fcp(clip.offset))\" name=\"\(name)\" start=\"0s\" duration=\"\(base.fcp(clip.duration))\"/>")
+                continue
+            }
             var element = "          <asset-clip ref=\"\(ref)\" lane=\"\(clip.lane)\" offset=\"\(base.fcp(clip.offset))\" name=\"\(name)\" start=\"\(base.fcp(clip.start))\" duration=\"\(base.fcp(clip.duration))\""
             if abs(clip.speed - 1) > 0.001 {
                 // Media time runs `speed` times faster than the clip's own.

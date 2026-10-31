@@ -184,6 +184,10 @@ extension VideoDemoProject {
         for index in project.audioTracks.indices where !project.audioTracks[index].lockedToRecording {
             for piece in project.audioTracks[index].pieces.indices { project.audioTracks[index].pieces[piece].at -= lower }
         }
+        // The tracks above the main track keep their place in the part.
+        for track in project.layerTracks.indices {
+            for item in project.layerTracks[track].items.indices { project.layerTracks[track].items[item].at -= lower }
+        }
         if cards.outro.enabled, upper > outroStart + 0.05 {
             project.cards.outro = cards.outro
             if lower > outroStart { project.cards.outro.skip = lower - outroStart }

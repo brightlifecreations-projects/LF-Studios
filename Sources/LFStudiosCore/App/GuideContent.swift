@@ -15,7 +15,7 @@ import Foundation
 @MainActor
 enum GuideContent {
     /// Pages from these versions get a New badge and fill What's new.
-    nonisolated static let newVersions: [String] = ["1.13.0", "1.12.0", "1.11.1", "1.11.0", "1.10.0", "1.9.0", "1.8.0", "1.7.0"]
+    nonisolated static let newVersions: [String] = ["1.14.0", "1.13.0", "1.12.0", "1.11.1", "1.11.0", "1.10.0", "1.9.0", "1.8.0", "1.7.0"]
 
     static func chapters() -> [GuideChapter] {
         let features = featureCategories()
@@ -154,7 +154,7 @@ enum GuideContent {
                     L("In the recording bar, turn on Microphone (and Camera, if you like), then click Record or press Return."),
                     L("Do your demo. When you're done, click the red stop button or press ⌃⌘Esc."),
                     L("Click Edit Video in the “Recording saved” panel. The video editor opens."),
-                    L("To cut a mistake, move the playhead to it, press S to split, click the bad part, and press ⌫."),
+                    L("To cut a mistake, move the playhead to it, press ⌘B to split, click the bad part, and press ⌫."),
                     L("Click Export (or press ⌘E), choose MP4, and click Export…."),
                 ],
                 keys: [.fixed("⌃⌘Esc", L("Stop recording, from any app")), .fixed("⌘E", L("Export"))],
@@ -251,12 +251,12 @@ enum GuideContent {
                 id: "howto-cut", symbol: "scissors", title: L("Cut out mistakes"),
                 summary: L("Remove the parts you don't want."),
                 steps: [
-                    L("In the video editor, move the playhead to where the mistake starts and press S to split the clip there."),
-                    L("Move to where it ends and press S again."),
+                    L("In the video editor, move the playhead to where the mistake starts and press ⌘B to split the clip there."),
+                    L("Move to where it ends and press ⌘B again."),
                     L("Click the part in between and press ⌫."),
                     L("Or hold ⇧ and drag across the timeline to select a part, then click Cut this part."),
                 ],
-                keys: [.fixed("S", L("Split at the playhead")), .fixed("⌫", L("Delete the selection")), .fixed("⌘Z", L("Undo"))],
+                keys: [.fixed("⌘B", L("Split at the playhead")), .fixed("⌫", L("Delete the selection")), .fixed("⌘Z", L("Undo"))],
                 tips: [
                     L("Changed your mind? Click the yellow marker on the timeline to bring a cut part back."),
                     L("With a transcript, you can also cut by deleting words: Captions ▸ Edit by text."),
@@ -311,7 +311,7 @@ enum GuideContent {
                     L("Click Find Private Info. You can keep editing while it looks."),
                     L("Tick what to hide, then click Blur Selected."),
                 ],
-                keys: [.fixed("B", L("Add a blur at the playhead"))],
+                keys: [.fixed("⌥B", L("Add a blur at the playhead"))],
                 tips: [L("To blur something yourself, press B and drag the blur over it.")],
                 related: ["privacy-find", "privacy-blur", "editor-highlight-blur"]
             ),
@@ -1217,6 +1217,87 @@ enum GuideContent {
                 related: ["video-layout", "video-timeline"]
             ),
             GuideEntry(
+                id: "video-tracks", symbol: "square.2.layers.3d.top.filled", title: L("Tracks above the main track"),
+                summary: L("Put videos and pictures over your recording: picture-in-picture, b-roll, logos. Each plays at its own time, on its own track."),
+                location: L("The timeline: the rows above Video clips (the main track). Drop a file there from Finder or the Library."),
+                points: [
+                    L("Higher tracks show over lower ones; all of them show over the screen recording and under the camera, captions and keys."),
+                    L("Click a clip on the player to move it, drag a corner to resize it, or turn it with the round knob."),
+                    L("Properties: Show, Opacity, Size, Rotation, Mirror, Rotate 90°, Fit, Fill, Crop, and for videos Volume and Speed."),
+                    L("Linkage (`) keeps them with the part of the recording under them when you cut or move the main track."),
+                ],
+                steps: [
+                    L("Drag a video or a picture from Finder or the Library onto the timeline, above Video clips."),
+                    L("Drag the clip to another time or track; drop it above the top track for a new track."),
+                    L("Drag its ends to trim it. ⌥-drag a video inside its clip to slip it (another part of it, same place)."),
+                ],
+                keys: [
+                    .fixed("⌘B", L("Split at the playhead")),
+                    .fixed("V", L("Turn a clip on or off")),
+                    .fixed("⌘G  ⇧⌘G", L("Group / ungroup")),
+                    .fixed("⌘C  ⌘V", L("Copy / paste clips")),
+                ],
+                tips: [
+                    L("Dropped on Video clips instead, a video joins the main track at that spot (a picture becomes a 5-second clip)."),
+                    L("Each track has its own Hide, Mute and Lock in its header."),
+                    L("Projects with these tracks open in LF Studios 1.14.0 or later."),
+                ],
+                since: "1.14.0",
+                related: ["video-tools", "video-timeline", "video-media"]
+            ),
+            GuideEntry(
+                id: "video-tools", symbol: "scissors", title: L("The timeline's tools"),
+                summary: L("The buttons above the timeline, with the keys CapCut uses: split, trim, freeze, reverse, mirror, rotate, and the timeline's switches."),
+                location: L("The bar above the timeline. Hover a button for its name and key."),
+                points: [
+                    L("Select (A) moves things; Split tool (B) splits whatever you click, where you click."),
+                    L("Split (⌘B), Delete left (Q) and right (W) of the playhead, Delete (⌫), and Marker."),
+                    L("Freeze frame holds the frame under the playhead for 3 seconds. Reverse plays a clip backwards (it takes a moment; Cancel stops it)."),
+                    L("Mirror, Rotate (90° at a time) and Crop work on the selected clip, or the one under the playhead."),
+                    L("Main track magnet (P): deleting a clip closes the gap; off, a black gap of its length stays."),
+                    L("Auto snapping (N): what you drag lands on the playhead, other clips' edges and markers."),
+                    L("Linkage (`): clips above the main track move with the part of the recording under them."),
+                    L("Preview axis (S): the player shows the frame under the pointer while the playhead stays put."),
+                ],
+                keys: [
+                    .fixed("A  B", L("Select tool · split tool")),
+                    .fixed("⌘B", L("Split at the playhead")),
+                    .fixed("⇧⌘B", L("Split all tracks")),
+                    .fixed("Q  W", L("Delete left / right of the playhead")),
+                    .fixed("I  O", L("Mark in / out")),
+                    .fixed("[  ]", L("Select left / right of the playhead")),
+                    .fixed("P", L("Main track magnet")),
+                    .fixed("N", L("Auto snapping")),
+                    .fixed("`", L("Linkage")),
+                    .fixed("S", L("Preview axis")),
+                    .fixed("⇧Z", L("Fit the whole video")),
+                    .fixed("⇧⌘A", L("Extract audio")),
+                ],
+                tips: [
+                    L("The switches stay as you leave them, on this Mac."),
+                    L("Freeze frames and reversed clips are videos LF Studios makes. When nothing uses one any more, it's removed the next time you save the project."),
+                    L("I and O mark a part: Export can export just that part, and ⌫ cuts it."),
+                ],
+                since: "1.14.0",
+                related: ["video-tracks", "video-clips", "video-voiceover"]
+            ),
+            GuideEntry(
+                id: "video-voiceover", symbol: "mic", title: L("Record a voiceover"),
+                summary: L("Talk over the video: your voice goes on its own sound track, from where you started."),
+                location: L("The microphone button on the right of the timeline's bar, or Timeline ▸ Record Voiceover."),
+                steps: [
+                    L("Move the playhead to where your voice should start."),
+                    L("Click the microphone. After 3, 2, 1 the video plays, silent, while you talk."),
+                    L("Click Stop. Your voice is on a new track called Voiceover."),
+                ],
+                tips: [
+                    L("It uses the microphone chosen in Settings ▸ Recording (or the Mac's own)."),
+                    L("The first time, macOS asks to let LF Studios use the microphone."),
+                ],
+                since: "1.14.0",
+                related: ["video-tools"]
+            ),
+            GuideEntry(
                 id: "video-play", symbol: "play.circle", title: L("Playing & moving around"),
                 summary: L("Play the video and move the playhead (the line that shows where you are) to any moment."),
                 location: L("The timeline at the bottom of the video editor."),
@@ -1257,13 +1338,13 @@ enum GuideContent {
                 summary: L("Cut the recording into clips, shorten them, and change their order."),
                 location: L("The clips lane on the timeline, and the Timeline menu."),
                 steps: [
-                    L("Move the playhead and press S to split the clip there."),
-                    L("Drag a clip's edge to trim it, or press I or O to make it start or end at the playhead."),
+                    L("Move the playhead and press ⌘B to split the clip there."),
+                    L("Drag a clip's edge to trim it, or press Q or W to cut what's left or right of the playhead."),
                     L("Drag a clip by its name to move it. Click a clip and press ⌫ to delete it."),
                 ],
                 keys: [
-                    .fixed("S", L("Split at the playhead")),
-                    .fixed("I  O", L("Clip starts / ends here")),
+                    .fixed("⌘B", L("Split at the playhead")),
+                    .fixed("Q  W", L("Delete left / right of the playhead")),
                     .fixed("⌫", L("Delete the selection")),
                 ],
                 tips: [L("Right-click a clip for Speed, Mute Clip, Move Earlier, and Move Later.")]
@@ -1322,10 +1403,13 @@ enum GuideContent {
                     L("On the timeline, drag its edges to set how long it shows."),
                 ],
                 keys: [
-                    .fixed("T", L("Text")), .fixed("A", L("Arrow")), .fixed("H", L("Highlight")), .fixed("B", L("Blur")),
+                    .fixed("⌥T", L("Text")), .fixed("⌥A", L("Arrow")), .fixed("⌥H", L("Highlight")), .fixed("⌥B", L("Blur")),
                     .fixed("⌘D", L("Duplicate zoom or annotation")),
                 ],
-                tips: [L("Double-click text on the preview to change it. New ones keep the last color and size you used.")]
+                tips: [
+                    L("Double-click text on the preview to change it. New ones keep the last color and size you used."),
+                    L("Turn text with the round knob above it; hold ⇧ for steps of 15°."),
+                ]
             ),
             GuideEntry(
                 id: "video-images", symbol: "photo", title: L("Images & logos"),
@@ -1589,6 +1673,7 @@ enum GuideContent {
                     L("Camera shape: Circle, Rounded rectangle, Square, Landscape, Portrait, 4:3, 3:4, Free, or Cutout (just you, without the background)."),
                     L("Position and Size: drag the camera on the preview, drag its edges and corners to resize it, or pick one of eight spots."),
                     L("Mirror flips it like a mirror."),
+                    L("Turn it with the round knob above it on the preview; hold ⇧ for steps of 15°, double-click the knob to put it upright."),
                 ],
                 tips: [needsCamera],
                 showMe: .editor(.camera),
@@ -1943,11 +2028,11 @@ enum GuideContent {
                 location: L("Audio panel ▸ Added sound ▸ Add audio…, or drop sound files on the timeline."),
                 steps: [
                     L("Click Add audio… and choose one or more files: MP3, WAV, M4A, AAC, AIFF, FLAC, or CAF."),
-                    L("Drag the track on the timeline to move it; drag an edge to trim it; click it and press S to split it, or ⌫ to delete a piece."),
+                    L("Drag the track on the timeline to move it; drag an edge to trim it; click it and press ⌘B to split it, or ⌫ to delete a piece."),
                     L("Set its Volume, Fade in, and Fade out, or Mute it, in the Audio panel."),
                     L("Recorded at the same time as the video? Click Sync by sound: it lines up with the recording and follows your cuts from then on."),
                 ],
-                keys: [.fixed("S", L("Split at the playhead")), .fixed("⌫", L("Delete the selection"))],
+                keys: [.fixed("⌘B", L("Split at the playhead")), .fixed("⌫", L("Delete the selection"))],
                 tips: [
                     L("A new track sits on the edit's timeline, where you put it. After Sync by sound it follows the recording instead."),
                     L("Added sound is in the export, Full Mix, Creative Handoff, and the timeline files, and saved in a recording's folder (03 Audio)."),
@@ -2129,7 +2214,7 @@ enum GuideContent {
                     L("Set its Strength in the panel on the right."),
                     L("On the timeline, drag its edges to set how long it lasts."),
                 ],
-                keys: [.fixed("B", L("Add a blur at the playhead"))]
+                keys: [.fixed("⌥B", L("Add a blur at the playhead"))]
             ),
         ]
     }
@@ -2734,11 +2819,18 @@ enum GuideContent {
             .fixed("⌘C", L("Copy")),
             .fixed("⌘V", L("Paste")),
             .fixed("⌘A", L("Select All")),
-            .fixed("S", L("Split at Playhead")),
+            .fixed("⌘B", L("Split at Playhead")),
+            .fixed("⇧⌘B", L("Split All Tracks")),
             .fixed("⌫", L("Delete Selection")),
-            .fixed("I", L("Set In to Playhead")),
-            .fixed("O", L("Set Out to Playhead")),
+            .fixed("Q", L("Delete Left of Playhead")),
+            .fixed("W", L("Delete Right of Playhead")),
+            .fixed("I", L("Mark In")),
+            .fixed("O", L("Mark Out")),
             .fixed("M", L("Mute Clip")),
+            .fixed("V", L("Turn Clip On or Off")),
+            .fixed("⇧⌘A", L("Extract Audio")),
+            .fixed("⌘G", L("Group")),
+            .fixed("⇧⌘G", L("Ungroup")),
             .fixed("⌘M", L("Minimize")),
         ]
     }

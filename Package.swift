@@ -42,7 +42,9 @@ let package = Package(
                 "LFStudiosCore",
                 .product(name: "KeyboardShortcuts", package: "KeyboardShortcuts"),
             ],
-            path: "Tests/LFStudiosCoreTests"
+            path: "Tests/LFStudiosCoreTests",
+            // 1.13.0's frames, read by path (OldProjectPixelTests).
+            exclude: ["Fixtures"]
         ),
         // Swift Testing (runs with `swift test` next to the XCTest suite).
         .testTarget(

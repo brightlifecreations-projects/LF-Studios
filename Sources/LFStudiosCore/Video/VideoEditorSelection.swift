@@ -7,7 +7,7 @@ extension VideoEditorModel.Selection {
     /// The selected object's id (nil for nothing or a range).
     var itemID: UUID? {
         switch self {
-        case .zoom(let id), .clip(let id), .overlay(let id), .click(let id), .caption(let id), .keystroke(let id), .cameraLayout(let id): return id
+        case .zoom(let id), .clip(let id), .overlay(let id), .click(let id), .caption(let id), .keystroke(let id), .cameraLayout(let id), .layer(let id): return id
         case .range, .none: return nil
         }
     }
@@ -79,6 +79,7 @@ extension VideoEditorModel {
         case .keystroke(let id): return project.keystrokes.contains { $0.id == id }
         case .cameraLayout(let id): return project.cameraLayouts.contains { $0.id == id }
         case .clip(let id): return project.timelineClips.contains { $0.id == id }
+        case .layer(let id): return project.layerItem(id) != nil
         }
     }
 
@@ -99,6 +100,8 @@ extension VideoEditorModel {
             return project.keystrokes.first { $0.id == id }.flatMap { timelineTime(forSource: $0.time) }.map { ($0, $0) }
         case .clip(let id):
             return segments.first { $0.id == id }.map { ($0.timelineStart, $0.timelineEnd) }
+        case .layer(let id):
+            return project.layerItem(id).map { ($0.at, $0.end) }
         case .range(let range):
             return (range.normalized.start, range.normalized.end)
         case .none:
@@ -120,6 +123,7 @@ extension VideoEditorModel {
         for event in project.keystrokes { if let time = timelineTime(forSource: event.time) { items.append((.keystroke(event.id), time)) } }
         for click in project.clickEvents { if let time = timelineTime(forSource: click.time) { items.append((.click(click.id), time)) } }
         for segment in segments { items.append((.clip(segment.id), segment.timelineStart)) }
+        for (_, item) in project.layerItems { items.append((.layer(item.id), item.at)) }
         return items.sorted { $0.start < $1.start }
     }
 
@@ -195,6 +199,9 @@ extension VideoEditorModel {
             return L("Shortcut \(project.keystrokes.first { $0.id == id }?.keys.joined() ?? "")") + at(span)
         case .click:
             return L("Click") + at(span)
+        case .layer(let id):
+            guard let item = project.layerItem(id) else { return L("Clip") }
+            return item.name + at(span)
         case .clip(let id):
             guard let index = segments.firstIndex(where: { $0.id == id }) else { return L("Clip") }
             return Self.spokenClip(index: index, segment: segments[index])
@@ -270,7 +277,7 @@ extension VideoEditorModel {
         var clips: [UUID] = []
         for item in items {
             switch item {
-            case .zoom(let id), .overlay(let id), .click(let id), .caption(let id), .keystroke(let id), .cameraLayout(let id): ids.insert(id)
+            case .zoom(let id), .overlay(let id), .click(let id), .caption(let id), .keystroke(let id), .cameraLayout(let id), .layer(let id): ids.insert(id)
             case .clip(let id): clips.append(id)
             case .range, .none: break
             }
@@ -283,6 +290,8 @@ extension VideoEditorModel {
             project.captions.removeAll { ids.contains($0.id) }
             project.keystrokes.removeAll { ids.contains($0.id) }
             project.cameraLayouts.removeAll { ids.contains($0.id) }
+            for t in project.layerTracks.indices { project.layerTracks[t].items.removeAll { ids.contains($0.id) } }
+            project.dropEmptyLayerTracks()
             for id in clips where project.deleteClip(id: id, totalDuration: sourceDuration) != nil {
                 removedClips += 1
             }

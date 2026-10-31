@@ -28,6 +28,8 @@ final class VideoEditorLayoutSnapshotTests: XCTestCase {
         _ = NSApplication.shared
         suiteName = "LFStudiosCoreTests.EditorSnapshots.\(UUID().uuidString)"
         Settings.defaults = UserDefaults(suiteName: suiteName)!
+        // The one-time notice shows in its own shot only.
+        Settings.videoShortcutsChangeSeen = true
         VideoEditorPanelStore.shared.reload()
     }
 
@@ -104,9 +106,14 @@ final class VideoEditorLayoutSnapshotTests: XCTestCase {
             try picture("Screenshot.png", CIColor(red: 0.94, green: 0.58, blue: 0.2), size: CGSize(width: 1600, height: 1000)),
             try tone("Whoosh.wav", seconds: 1),
         ])
+        // 1.14.0: b-roll on a second track above the main track, picked.
+        await model.placeMedia([try await video("B-roll — office.mov", seconds: 8, size: CGSize(width: 1280, height: 720))], at: 2.5, target: .layer(.newTrack(model.project.layerTracks.count)))
+        if let broll = model.project.layerItems.first(where: { $0.item.isVideo }) {
+            model.setLayerItem(broll.item.id) { $0.width = 0.38; $0.x = 0.72; $0.y = 0.3; $0.rotation = -4 }
+        }
         let folder = model.newMediaFolder(named: "Interviews")
         model.importMedia([try await video("Interview 1.mov", seconds: 10, size: CGSize(width: 1280, height: 720))], into: folder)
-        model.selection = .none
+        model.selection = model.project.layerItems.first { $0.item.isVideo }.map { .layer($0.item.id) } ?? .none
         model.seek(to: 3.2)
         return model
     }
@@ -126,7 +133,7 @@ final class VideoEditorLayoutSnapshotTests: XCTestCase {
         host.layoutSubtreeIfNeeded()
         let rep = try XCTUnwrap(host.bitmapImageRepForCachingDisplay(in: host.bounds))
         host.cacheDisplay(in: host.bounds, to: rep)
-        let folder = FileManager.default.temporaryDirectory.appendingPathComponent("lfstudios-editor-113", isDirectory: true)
+        let folder = FileManager.default.temporaryDirectory.appendingPathComponent("lfstudios-editor-114", isDirectory: true)
         try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
         let url = folder.appendingPathComponent("\(name).png")
         try XCTUnwrap(rep.representation(using: .png, properties: [:])).write(to: url)
@@ -148,6 +155,13 @@ final class VideoEditorLayoutSnapshotTests: XCTestCase {
         // The smallest window, Player First, and the Audio tab as a list.
         L10n.use("en")
         let model = try await demoModel()
+        // Once, for people who edited before: the keys changed (1.14.0).
+        VideoShortcutsChangedNotice.editedBefore = true
+        Settings.videoShortcutsChangeSeen = false
+        model.timelineTool = .split
+        try await render(model, size: CGSize(width: 1440, height: 900), look: .aqua, name: "editor-en-light-shortcuts-notice")
+        Settings.videoShortcutsChangeSeen = true
+        model.timelineTool = .select
         try await render(model, size: CGSize(width: 1080, height: 700), look: .aqua, name: "editor-en-light-smallest")
         VideoEditorPanelStore.shared.choose(.playerFirst)
         try await render(model, size: CGSize(width: 1440, height: 900), look: .darkAqua, name: "editor-en-dark-player-first")

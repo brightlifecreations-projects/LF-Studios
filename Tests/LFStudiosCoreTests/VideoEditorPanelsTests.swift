@@ -161,8 +161,8 @@ final class VideoEditorPanelsTests: XCTestCase {
 
     func testANewerKindOfProjectAsksForANewerVersion() throws {
         func manifest(_ object: [String: Any]) throws -> Data { try JSONSerialization.data(withJSONObject: object) }
-        // A later project format (1.14.0 writes "lfstudios-project-3").
-        XCTAssertThrowsError(try VideoProjectDocument.decode(manifest(["format": "lfstudios-project-3", "version": 3]))) { error in
+        // A later project format than this one reads.
+        XCTAssertThrowsError(try VideoProjectDocument.decode(manifest(["format": "lfstudios-project-4", "version": 4]))) { error in
             XCTAssertEqual(error as? VideoProjectDocument.ReadError, .needsNewerVersion)
         }
         // One that says it needs a later version.

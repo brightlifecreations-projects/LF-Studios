@@ -21,6 +21,8 @@ final class VideoPreviewRenderer: NSObject, MTKViewDelegate {
     /// The camera frame composed with `lastBuffer` (kept so a missed lookup
     /// never blinks the bubble).
     private var lastCameraFrame: VideoCameraFrame?
+    /// The newest frame of each video track above the main track.
+    private var lastLayerFrames: [UUID: CIImage] = [:]
     private var playingTime: Double?
     private var dirty = true
     private var peekImage: CIImage?
@@ -66,6 +68,7 @@ final class VideoPreviewRenderer: NSObject, MTKViewDelegate {
             if let camera = model.playback.cameraPicture(at: frame.time) {
                 lastCameraFrame = camera
             }
+            lastLayerFrames.merge(model.playback.layerFrames(at: frame.time)) { _, new in new }
             dirty = true
         }
         // While playing, redraw every display refresh at the exact playback
@@ -105,6 +108,7 @@ final class VideoPreviewRenderer: NSObject, MTKViewDelegate {
         options.solidOverlay = Self.editedOverlay(model)
         options.webcamFrame = model.plan.webcam == nil ? nil : lastCameraFrame?.image
         options.webcamMask = model.plan.webcam == nil ? nil : lastCameraFrame?.mask
+        options.layerFrames = lastLayerFrames
         var source = lastBuffer.map { CIImage(cvPixelBuffer: $0) }
         var time = playingTime ?? lastBufferTime
         if model.isCropping {
@@ -198,6 +202,7 @@ final class VideoPreviewRenderer: NSObject, MTKViewDelegate {
         if let request = model.plan.heldFrameRequest(at: time) {
             options.transitionFrame = model.media.frames(for: model.project).image(at: request.sourceTime)
         }
+        options.layerFrames = VideoLayerStills.frames(for: model.plan.layers, at: time)
         let pixels = CGSize(width: size.width * 2, height: size.height * 2)
         let image = renderer.render(source: frame.map { CIImage(cgImage: $0) }, timelineTime: time, plan: model.plan, outputSize: pixels, options: options)
         guard let cgImage = context.createCGImage(image, from: CGRect(origin: .zero, size: pixels), format: .RGBA8, colorSpace: CGColorSpace(name: CGColorSpace.sRGB)) else { return nil }
@@ -210,6 +215,7 @@ final class VideoPreviewRenderer: NSObject, MTKViewDelegate {
         var options = VideoFrameRenderer.Options(frameRate: 60)
         options.webcamFrame = lastCameraFrame?.image
         options.webcamMask = lastCameraFrame?.mask
+        options.layerFrames = lastLayerFrames
         let image = renderer.render(source: lastBuffer.map { CIImage(cvPixelBuffer: $0) }, timelineTime: lastBufferTime, plan: model.plan, outputSize: size, options: options)
         guard let cgImage = context.createCGImage(image, from: CGRect(origin: .zero, size: size), format: .RGBA8, colorSpace: CGColorSpace(name: CGColorSpace.sRGB)) else { return nil }
         return NSImage(cgImage: cgImage, size: size)
@@ -369,6 +375,12 @@ struct VideoStageInteractionLayer: View {
                 }
             }
 
+            // The selected item on a track above the main track (1.14.0).
+            if !model.isPlaying, let item = model.selectedLayerItem, item.isShowing(at: clock.time),
+               let track = model.project.layerTrackIndex(of: item.id), !model.isTrackLocked(.layer(model.project.layerTracks[track].id)) {
+                VideoLayerItemHandles(model: model, item: item, viewSize: viewSize)
+            }
+
             // The bubble handle only where the bubble is (not during a full
             // camera, side by side, or hidden stretch).
             if let webcam = model.plan.webcam, webcam.visible, !model.isAimingZoom, !model.isTrackLocked(.camera), model.plan.showsBubble(at: clock.time), model.plan.hasCameraFootage(at: clock.time) {
@@ -403,13 +415,32 @@ struct VideoStageInteractionLayer: View {
         return nil
     }
 
+    /// The frontmost item of the tracks above the main track under `point`.
+    func layerItem(at point: CGPoint) -> VideoLayerItem? {
+        for layer in model.plan.layers.reversed() where layer.item.isShowing(at: clock.time) {
+            let r = layer.item.rect(in: viewSize)
+            let box = CGRect(x: r.minX, y: viewSize.height - r.maxY, width: r.width, height: r.height)
+            // Measured along its own sides when it's turned.
+            let along = VideoImageOverlayHandles.unturn(CGSize(width: point.x - box.midX, height: point.y - box.midY), by: layer.item.rotation)
+            if abs(along.width) <= box.width / 2, abs(along.height) <= box.height / 2 { return layer.item }
+        }
+        return nil
+    }
+
     private var pictureGesture: some Gesture {
         DragGesture(minimumDistance: 0, coordinateSpace: .named(Self.space))
             .onChanged { value in
                 if !pressStarted {
                     pressStarted = true
                     pressedOverlay = nil
-                    if let effect = annotation(at: value.startLocation) {
+                    if annotation(at: value.startLocation) == nil, let item = layerItem(at: value.startLocation) {
+                        // An item on a track above the main track: selected;
+                        // its box moves it (VideoTransformBox.swift).
+                        if model.isPlaying { model.pause() }
+                        model.selection = .layer(item.id)
+                        pressedOverlay = item.id
+                        overlayOrigin = nil
+                    } else if let effect = annotation(at: value.startLocation) {
                         pressedOverlay = effect.id
                         overlayOrigin = effect
                         // Editing needs a still frame.
@@ -571,6 +602,12 @@ struct VideoStageInteractionLayer: View {
                 }
                 .gesture(bubbleGesture(.move, rect: rect, settings: settings))
                 .help(L("Camera — drag to move it, drag its edges to resize it, click for options"))
+            if showsHandles, bubbleDrag == nil {
+                // The bubble turns (1.14.0): the knob above it.
+                VideoRotateKnob(rect: rect, label: L("Turn the camera"), turned: { degrees in
+                    model.setStyle(coalesce: "camera-rotate") { $0.webcam.rotation = degrees }
+                }, ended: { model.endGesture() })
+            }
             if showsHandles {
                 ForEach(VideoCameraHandle.resizing, id: \.self) { handle in
                     let unit = handle.unit
@@ -830,6 +867,12 @@ struct VideoStageInteractionLayer: View {
         let stageHeightInView = stage.height * viewScale
 
         return ZStack(alignment: .topLeading) {
+            // Text turns (1.14.0): the knob above it.
+            if effect.kind == .text {
+                VideoRotateKnob(rect: rect, label: L("Turn the text"), turned: { degrees in
+                    model.updateOverlay(effect.id, coalesce: "text-rotate-\(effect.id)") { $0.rotation = degrees }
+                }, ended: { model.endGesture() })
+            }
             // Just the outline: pressing inside reaches the picture layer,
             // which moves it (and spots a double-click on text).
             Group {
@@ -841,6 +884,7 @@ struct VideoStageInteractionLayer: View {
                 }
             }
             .frame(width: rect.width, height: rect.height)
+            .rotationEffect(.degrees(effect.kind == .text ? effect.rotation ?? 0 : 0))
             .offset(x: rect.minX, y: rect.minY)
             .allowsHitTesting(false)
 

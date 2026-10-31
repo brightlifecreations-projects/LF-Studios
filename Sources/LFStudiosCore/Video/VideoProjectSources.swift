@@ -660,7 +660,7 @@ extension VideoCameraComposition {
         guard layout.entries.contains(where: { $0.camera != nil }),
               let track = composition.addMutableTrack(withMediaType: .video, preferredTrackID: kCMPersistentTrackID_Invalid) else { return nil }
         var inserted = false
-        for placement in placements {
+        for placement in placements where !placement.segment.clip.disabled {
             let clip = placement.segment.clip
             let speed = clip.normalizedSpeed
             for (entry, piece) in layout.pieces(from: clip.sourceStart, to: clip.sourceEnd) {
