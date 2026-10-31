@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.16.0]
+
+### Added
+- **Zoom cut:** a quick punch-in on the clip after a cut, with its own button in the timeline's bar (⌥Z). Set how far (Scale) and how long (Duration) with ⌄. It's zoom keyframes on that clip, so you can change them in Properties ▸ Zoom or remove them.
+
+- **Project settings:** click the project's name for its resolution (720p to 4K), frame rate (24 to 60) and colour space (Rec. 709 or Display P3). Export starts from them; the export window also gets a Colour space choice. Projects that never set them export as before.
+
+### Changed
+- **Remove ums** shows the ums it found first, each with the words around it and ▶ to hear it. Untick the ones to keep; only the ticked ones are cut.
+
+### Fixed
+- Check for Updates no longer fails with "An error occurred while launching the installer" when LF Studios was replaced while it was open: it asks you to reopen it first.
+
 ## [1.15.0] - 2026-10-31
 
 ### Added

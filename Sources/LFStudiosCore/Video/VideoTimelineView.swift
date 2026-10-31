@@ -113,6 +113,7 @@ struct VideoTimelineToolbar: View {
             command(.crop)
             toolbarDivider
             iconButton(symbol: "plus.magnifyingglass", help: L("Add a zoom at the playhead (Z)"), label: L("Zoom")) { model.addZoom(at: clock.time) }
+            VideoZoomCutButton(model: model)
             iconButton(symbol: model.project.autoZoom ? "sparkles.rectangle.stack.fill" : "sparkles", help: model.project.autoZoom ? L("Auto-zoom on clicks is on — click to turn it off and remove its zooms") : L("Turn on Auto-zoom on clicks — keeps zooms you placed by hand"), label: L("Auto Zoom")) { model.setAutoZoom(!model.project.autoZoom) }
             iconButton(symbol: "hare", help: L("Fast-forward moments where nothing happens"), label: L("Speed Up Idle")) { model.speedUpIdle() }
             if !model.project.markers.isEmpty {
@@ -1112,6 +1113,21 @@ struct VideoTimelineClipView: View, Equatable {
             }
         }
         .frame(width: width, height: M.clipTrackHeight)
+        // Its zoom keyframes (a zoom cut), as diamonds along its bottom edge.
+        .overlay(alignment: .bottomLeading) {
+            if let times = segment.clip.keys?.times, !times.isEmpty {
+                ZStack(alignment: .bottomLeading) {
+                    ForEach(times, id: \.self) { time in
+                        Image(systemName: "diamond.fill")
+                            .font(.system(size: 7, weight: .bold))
+                            .foregroundStyle(.white)
+                            .shadow(color: .black.opacity(0.6), radius: 1)
+                            .offset(x: CGFloat(time) * pointsPerSecond - 3.5, y: -2)
+                    }
+                }
+                .allowsHitTesting(false)
+            }
+        }
         .contentShape(Rectangle())
         .onHover { hovered = $0 }
         .gesture(scrubGesture)

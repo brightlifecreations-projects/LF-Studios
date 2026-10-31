@@ -298,6 +298,10 @@
 	<string>画像: 自分の画像。</string>
 	<key>A preset saves the background, frame, cursor, zooms, captions, keys, and camera. Tick Include aspect ratio to save the shape too.</key>
 	<string>プリセットには、背景、枠、ポインタ、ズーム、字幕、キー表示、カメラが保存されます。形も保存するには、“アスペクト比を含める”にチェックを付けます。</string>
+	<key>A project you never set them for exports as before, from the export window's last choices.</key>
+	<string>設定したことのないプロジェクトは、これまでどおり書き出しウインドウの前回の選択で書き出されます。</string>
+	<key>A quick punch-in right after a cut: the picture jumps closer, then eases back.</key>
+	<string>カットの直後にすばやくズームイン：映像が一気に寄り、なめらかに戻ります。</string>
 	<key>A report helps fix this. You'll see everything before it's sent, and it never includes your screenshots or recordings.</key>
 	<string>レポートはこの問題の修正に役立ちます。送信前にすべての内容を確認でき、スクリーンショットや収録したビデオが含まれることはありません。</string>
 	<key>A round magnifier over one spot, while the rest of the video stays in view.</key>
@@ -412,6 +416,8 @@
 	<string>スポットライトを追加（周囲を暗くする）</string>
 	<key>Add Text</key>
 	<string>テキストを追加</string>
+	<key>Add Zoom Cut</key>
+	<string>ズームカットを追加</string>
 	<key>Add Zoom at Playhead</key>
 	<string>再生ヘッドの位置にズームを追加</string>
 	<key>Add a blur at the playhead</key>
@@ -1388,6 +1394,8 @@
 	<string>“画面全体を収録”を選択します。</string>
 	<key>Choose Record Window.</key>
 	<string>“ウインドウを収録”を選択します。</string>
+	<key>Choose Resolution (720p to 4K), Frame rate (24 to 60) and Colour space.</key>
+	<string>解像度（720p〜4K）、フレームレート（24〜60）、色空間を選びます。</string>
 	<key>Choose Scan QR Code.</key>
 	<string>“QRコードをスキャン”を選択します。</string>
 	<key>Choose Timed Capture and drag over the area.</key>
@@ -1466,6 +1474,8 @@
 	<string>表示する隅（“左”または“右”）と表示時間は、同じ設定セクションで選べます。ポインタを置いている間は表示されたままです。</string>
 	<key>Choose the screen recording, the camera video if there is one, and the sound files to add as tracks. Nothing in the folder changes until you save.</key>
 	<string>画面収録、カメラ映像（ある場合）、トラックとして追加するサウンドファイルを選びます。保存するまで、フォルダ内は何も変更されません。</string>
+	<key>Choose the video's resolution, frame rate and colour space once, for the whole project. Export starts from them.</key>
+	<string>ビデオの解像度、フレームレート、色空間をプロジェクト全体で一度に選びます。書き出しはこの設定から始まります。</string>
 	<key>Choose the video's shape for where it's going.</key>
 	<string>公開先に合わせて、ビデオの形を選びます。</string>
 	<key>Choose videos, pictures, or sound files to add to the Library</key>
@@ -1624,6 +1634,8 @@
 	<string>最後まで来たら、“完了”をクリックするかEscキーを押します。</string>
 	<key>Click Done, or press Return.</key>
 	<string>“完了”をクリックするか、Returnキーを押します。</string>
+	<key>Click Done. The export window now starts from these.</key>
+	<string>“完了”をクリックします。書き出しウインドウはこの設定から始まります。</string>
 	<key>Click Download the first time. Models range from Tiny (about 75 MB, fastest) to Large v3 Turbo (about 630 MB, most accurate).</key>
 	<string>初回は“ダウンロード”をクリックします。モデルは、Tiny（約75MB、最速）からLarge v3 Turbo（約630MB、最も正確）まであります。</string>
 	<key>Click Edit Video in the “Recording saved” panel. The video editor opens.</key>
@@ -1668,6 +1680,10 @@
 	<string>“収録”をクリックします。</string>
 	<key>Click Record. Press Space to pause and resume the scrolling.</key>
 	<string>“収録”をクリックします。スペースバーを押すと、スクロールを一時停止・再開できます。</string>
+	<key>Click Remove ums. A list shows every um found, with the words around it.</key>
+	<string>“フィラーを削除”をクリックします。見つかったフィラーが、前後の言葉と一緒に一覧で表示されます。</string>
+	<key>Click Remove. Only the ticked ones are cut.</key>
+	<string>“削除”をクリックします。チェックしたものだけがカットされます。</string>
 	<key>Click Scroll capture in Home, or choose Scrolling Capture in the LF Studios menu.</key>
 	<string>ホームで“スクロールして取り込む”をクリックするか、LF Studiosメニューで“スクロールして取り込む”を選択します。</string>
 	<key>Click Select size. Handles appear on the camera preview.</key>
@@ -1732,6 +1748,8 @@
 	<string>タイムラインやプレビューで項目をクリックすると、右側のパネルで変更できます。</string>
 	<key>Click effects</key>
 	<string>クリックの効果</string>
+	<key>Click for Project Settings. Double-click to show the recording in Finder.</key>
+	<string>クリックでプロジェクト設定。ダブルクリックで収録をFinderに表示します。</string>
 	<key>Click it in Home to open the screenshot editor: add arrows, text, blur, and more, then click Copy or Save.</key>
 	<string>ホームでクリックするとスクリーンショットエディタが開きます。矢印、テキスト、ぼかしなどを追加して、“コピー”または“保存”をクリックします。</string>
 	<key>Click it on the video</key>
@@ -1764,6 +1782,8 @@
 	<string>その間の部分をクリックして、⌫キーを押します。</string>
 	<key>Click the picture where it points.</key>
 	<string>画像の指す位置をクリックしてください。</string>
+	<key>Click the project's name. Project Settings opens.</key>
+	<string>プロジェクト名をクリックします。プロジェクト設定が開きます。</string>
 	<key>Click the trash button, then Discard.</key>
 	<string>ゴミ箱ボタンをクリックしてから、“破棄”をクリックします。</string>
 	<key>Click to add a point, drag to move it, double-click to take it away.</key>
@@ -1776,6 +1796,8 @@
 	<string>クリックすると取り込まれます。</string>
 	<key>Click volume</key>
 	<string>クリック音の音量</string>
+	<key>Click ▶ to hear one. Untick the ones to keep.</key>
+	<string>▶をクリックすると聞けます。残したいもののチェックを外します。</string>
 	<key>Click ◆ next to a setting to animate it: set a keyframe, move the playhead, change the setting.</key>
 	<string>設定の横の◆をクリックするとアニメーションを付けられます。キーフレームを設定し、再生ヘッドを動かして、設定を変更します。</string>
 	<key>Clicked Don't Allow by mistake? Click Open System Settings below and turn on LF Studios under Camera.</key>
@@ -1858,6 +1880,8 @@
 	<string>カラー、サイズ、太字</string>
 	<key>Colour</key>
 	<string>カラー</string>
+	<key>Colour space</key>
+	<string>色空間</string>
 	<key>Colour to take out</key>
 	<string>取り除く色</string>
 	<key>Columns, tables, and right-to-left languages come out in reading order.</key>
@@ -2376,6 +2400,8 @@
 	<string>ディスプレイ%lld</string>
 	<key>Display %lld · Main</key>
 	<string>ディスプレイ%lld · メイン</string>
+	<key>Display P3: wider colours for Apple screens. Elsewhere it looks like Rec. 709.</key>
+	<string>Display P3：Appleの画面向けの広い色域。ほかの画面ではRec. 709と同じに見えます。</string>
 	<key>Dissolve</key>
 	<string>ディゾルブ</string>
 	<key>Dissolve Between Clips</key>
@@ -2414,8 +2440,6 @@
 	<string>プレビュー上のテキストをダブルクリックすると変更できます。新しく追加したものには、最後に使ったカラーとサイズが使われます。</string>
 	<key>Double-click to edit, or drag into another app. Command-C copies, Command-S saves, Escape dismisses.</key>
 	<string>ダブルクリックで編集、またはほかのアプリにドラッグします。Command-Cでコピー、Command-Sで保存、Escキーで閉じます。</string>
-	<key>Double-click to show the recording in Finder</key>
-	<string>ダブルクリックで収録をFinderに表示</string>
 	<key>Down</key>
 	<string>縦</string>
 	<key>Download</key>
@@ -2600,6 +2624,8 @@
 	<string>ズームまたは注釈を複製</string>
 	<key>Duplicated</key>
 	<string>複製しました</string>
+	<key>Duration</key>
+	<string>長さ</string>
 	<key>During a zoom, the view moves with your pointer, so what you point at stays in the picture. The preview says “Camera follows your cursor” while it does.</key>
 	<string>ズーム中は、表示範囲がポインタと一緒に動くので、指しているものが画面から外れません。その間、プレビューには“カメラがポインタに追従”と表示されます。</string>
 	<key>Dusk</key>
@@ -2838,6 +2864,8 @@
 	<string>選択範囲だけ、またはインポイントとアウトポイントの間だけを書き出します。</string>
 	<key>Export part of the video</key>
 	<string>ビデオの一部を書き出す</string>
+	<key>Export starts from these. You can still choose something else in the export window.</key>
+	<string>書き出しはこの設定から始まります。書き出しウインドウでほかの設定も選べます。</string>
 	<key>Export to</key>
 	<string>書き出し先</string>
 	<key>Export with the captions burned in, or save the translation as a subtitles file.</key>
@@ -3640,6 +3668,8 @@
 	<string>ビデオエディタで“書き出す”（⌘E）をクリックします。</string>
 	<key>In the video editor, click Find private info above the preview.</key>
 	<string>ビデオエディタで、プレビューの上の“個人情報”をクリックします。</string>
+	<key>In the video editor, click the project's name at the top left.</key>
+	<string>ビデオエディタで、左上のプロジェクト名をクリックします。</string>
 	<key>In the video editor, move the playhead to where the mistake starts and press ⌘B to split the clip there.</key>
 	<string>ビデオエディタで再生ヘッドをミスの始まりに移動し、⌘Bでクリップを分割します。</string>
 	<key>In the video editor, move the playhead to where the zoom should start.</key>
@@ -3754,6 +3784,8 @@
 	<string>オフになっているか、メニューバーがいっぱいでmacOSが隠しています。</string>
 	<key>It's your My Style, so Apply my style will have nothing to apply until you choose another. Videos that use this preset keep their look.</key>
 	<string>これはマイスタイルなので、別のものを選ぶまで「マイスタイルを適用」で適用するものがなくなります。このプリセットを使っているビデオの見た目は変わりません。</string>
+	<key>It's zoom keyframes on the clip after the cut. Change them in Properties ▸ Zoom: move the playhead, change Zoom, or click ◆.</key>
+	<string>カットの後のクリップに付いたズームのキーフレームです。“プロパティ”＞“ズーム”で変更できます：再生ヘッドを動かしてズームを変えるか、◆をクリックします。</string>
 	<key>Italic</key>
 	<string>イタリック</string>
 	<key>Its clips keep their own settings: break it apart to change one.</key>
@@ -3772,6 +3804,8 @@
 	<string>ここに移動</string>
 	<key>Jump one second</key>
 	<string>1秒移動</string>
+	<key>Jumps in at the cut, then eases back out. It's zoom keyframes on the clip: change or remove them in Properties ▸ Zoom.</key>
+	<string>カットで寄り、なめらかに戻ります。クリップに付いたズームのキーフレームなので、“プロパティ”＞“ズーム”で変更や削除ができます。</string>
 	<key>Karaoke</key>
 	<string>カラオケ</string>
 	<key>Karaoke fill</key>
@@ -4440,6 +4474,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>分割するには、再生ヘッドをクリップ内に移動してください</string>
 	<key>Move the playhead into the sound to split it</key>
 	<string>分割するには、再生ヘッドをサウンドの範囲内に移動してください</string>
+	<key>Move the playhead near the cut and click Zoom cut (or press ⌥Z).</key>
+	<string>再生ヘッドをカットの近くに動かし、“ズームカット”をクリックします（または⌥Zを押します）。</string>
 	<key>Move the playhead onto the clip to add a keyframe</key>
 	<string>キーフレームを追加するには、再生ヘッドをクリップ上に移動してください</string>
 	<key>Move the playhead onto the sound to add a keyframe</key>
@@ -5236,8 +5272,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>速く再生</string>
 	<key>Play from Here</key>
 	<string>ここから再生</string>
+	<key>Play it with the words around it</key>
+	<string>前後の言葉と一緒に再生</string>
 	<key>Play the video and move the playhead (the line that shows where you are) to any moment.</key>
 	<string>ビデオを再生し、再生ヘッド（現在位置を示す線）を好きな場面に移動します。</string>
+	<key>Play “%@”</key>
+	<string>“%@”を再生</string>
 	<key>Playback</key>
 	<string>再生</string>
 	<key>Player First</key>
@@ -5396,6 +5436,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ProResは常に.movです</string>
 	<key>Processed on your Mac.</key>
 	<string>Mac上で処理されます。</string>
+	<key>Project Settings</key>
+	<string>プロジェクト設定</string>
+	<key>Project Settings…</key>
+	<string>プロジェクト設定…</string>
+	<key>Project settings</key>
+	<string>プロジェクト設定</string>
 	<key>Projects</key>
 	<string>プロジェクト</string>
 	<key>Projects shows your recordings, screenshots, and saved projects, newest first. Click one to open it. Right-click for Show in Finder, Creative Handoff…, or Delete.</key>
@@ -5506,6 +5552,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>プリセット</string>
 	<key>Ready-made caption looks, and captions from a subtitles file.</key>
 	<string>すぐに使える字幕のスタイルと、字幕ファイルからの字幕。</string>
+	<key>Rec. 709: standard video colours, the same on every screen and site.</key>
+	<string>Rec. 709：標準のビデオの色。どの画面やサイトでも同じです。</string>
 	<key>Recent Exports</key>
 	<string>最近の書き出し</string>
 	<key>Recognized Text</key>
@@ -5954,6 +6002,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ポッドキャストモードのオフをやり直す</string>
 	<key>Redo Podcast Mode On</key>
 	<string>ポッドキャストモードのオンをやり直す</string>
+	<key>Redo Project Settings</key>
+	<string>“プロジェクト設定”をやり直す</string>
 	<key>Redo Record Voiceover</key>
 	<string>ナレーションの録音をやり直す</string>
 	<key>Redo Remove All Zooms</key>
@@ -5978,6 +6028,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>収録の削除をやり直す</string>
 	<key>Redo Remove Ums</key>
 	<string>フィラーの削除をやり直す</string>
+	<key>Redo Remove Zoom</key>
+	<string>“ズームを削除”をやり直す</string>
 	<key>Redo Rename Folder</key>
 	<string>フォルダの名称変更をやり直す</string>
 	<key>Redo Rename Marker</key>
@@ -6088,6 +6140,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ビデオの消音解除をやり直す</string>
 	<key>Redo Zoom Change</key>
 	<string>ズームの変更をやり直す</string>
+	<key>Redo Zoom Cut</key>
+	<string>“ズームカット”をやり直す</string>
 	<key>Redo Zoom Level for All</key>
 	<string>ズーム倍率の一括変更をやり直す</string>
 	<key>Redo Zooms</key>
@@ -6124,6 +6178,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>オープニングカードを削除</string>
 	<key>Remove Music</key>
 	<string>音楽を削除</string>
+	<key>Remove None</key>
+	<string>削除なし</string>
 	<key>Remove Outro Card</key>
 	<string>エンディングカードを削除</string>
 	<key>Remove Track</key>
@@ -6132,6 +6188,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>文字起こしと字幕を削除</string>
 	<key>Remove Ums</key>
 	<string>フィラーを削除</string>
+	<key>Remove Zoom</key>
+	<string>ズームを削除</string>
+	<key>Remove Zoom in Properties takes it away. ⌘Z undoes it in one step.</key>
+	<string>“プロパティ”の“ズームを削除”で取り除けます。⌘Zで一度に取り消せます。</string>
 	<key>Remove all %lld</key>
 	<string>%lld項目をすべて削除</string>
 	<key>Remove all zooms</key>
@@ -6162,6 +6222,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>翻訳を削除</string>
 	<key>Remove ums &amp; shorten pauses</key>
 	<string>フィラーを削除し、間を短くする</string>
+	<key>Remove “%@”</key>
+	<string>“%@”を削除</string>
 	<key>Removed %@ — click to restore</key>
 	<string>%@を削除。クリックすると復元できます</string>
 	<key>Removed %@ — ⌘Z to undo</key>
@@ -6506,6 +6568,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>画面収録を保存しています</string>
 	<key>Saving…</key>
 	<string>保存中…</string>
+	<key>Scale</key>
+	<string>拡大率</string>
 	<key>Scan Again</key>
 	<string>もう一度調べる</string>
 	<key>Scan QR Code</key>
@@ -7120,6 +7184,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ビデオを分割（⌘B）してカットを作ります。それぞれディゾルブか黒へのフェードにできます。</string>
 	<key>Split the video (⌘B) to make cuts; transitions go between clips on the main track.</key>
 	<string>ビデオを分割して（⌘B）つなぎ目を作ります。トランジションはメイントラックのクリップの間に入ります。</string>
+	<key>Split the video (⌘B) where you want the cut.</key>
+	<string>カットしたい位置でビデオを分割します（⌘B）。</string>
+	<key>Split the video first: a zoom cut goes on the clip after a cut</key>
+	<string>先にビデオを分割してください。ズームカットはカットの後のクリップに付きます</string>
 	<key>Split tool</key>
 	<string>分割ツール</string>
 	<key>Split, trim &amp; reorder clips</key>
@@ -7140,6 +7208,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>正方形、円、45°単位の直線</string>
 	<key>Stacked</key>
 	<string>上下</string>
+	<key>Standard video colours. Looks the same on every screen and site.</key>
+	<string>標準のビデオの色。どの画面やサイトでも同じに見えます。</string>
 	<key>Star</key>
 	<string>星</string>
 	<key>Star on GitHub</key>
@@ -7730,6 +7800,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>全体を、ビデオに収まる最大の大きさで</string>
 	<key>The window you're recording closed. Stop when you're ready — the recording keeps going.</key>
 	<string>収録中のウインドウが閉じられました。収録は続いています。準備ができたら停止してください。</string>
+	<key>The zoom cut button in the timeline's bar, or press ⌥Z.</key>
+	<string>タイムラインのバーにある“ズームカット”ボタン、または⌥Z。</string>
 	<key>The “Recording saved” panel lets you edit the video, show it in Finder, or copy where it is.</key>
 	<string>“収録を保存しました”パネルでは、ビデオを編集したり、Finderに表示したり、保存場所をコピーしたりできます。</string>
 	<key>The “Selected” panel appears at the top right when something is selected.</key>
@@ -7842,6 +7914,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>サムネール</string>
 	<key>Tick</key>
 	<string>チェックマーク</string>
+	<key>Tick All</key>
+	<string>すべてチェック</string>
 	<key>Tick what to hide and click Blur Selected.</key>
 	<string>隠すものにチェックを付けて、“選択項目をぼかす”をクリックします。</string>
 	<key>Tick what to hide, then click Blur Selected.</key>
@@ -7888,6 +7962,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>矢印を曲げるには、矢印を選択して中央の点をドラッグします。</string>
 	<key>To blur something yourself, press B and drag the blur over it.</key>
 	<string>自分でぼかすには、Bキーを押して、隠したいものの上にぼかしをドラッグします。</string>
+	<key>To change how far it zooms and for how long, click ⌄ next to the button: Scale and Duration.</key>
+	<string>ズームの大きさと長さを変えるには、ボタンの横の⌄をクリックします：拡大率と長さ。</string>
 	<key>To cut a mistake, move the playhead to it, press ⌘B to split, click the bad part, and press ⌫.</key>
 	<string>ミスをカットするには、再生ヘッドをそこに移動し、⌘Bで分割し、不要な部分をクリックして⌫を押します。</string>
 	<key>To drag out any area yourself, click Select area manually above the recording bar.</key>
@@ -8420,6 +8496,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ポッドキャストモードのオフを取り消す</string>
 	<key>Undo Podcast Mode On</key>
 	<string>ポッドキャストモードのオンを取り消す</string>
+	<key>Undo Project Settings</key>
+	<string>“プロジェクト設定”を取り消す</string>
 	<key>Undo Record Voiceover</key>
 	<string>ナレーションの録音を取り消す</string>
 	<key>Undo Remove All Zooms</key>
@@ -8444,6 +8522,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>収録の削除を取り消す</string>
 	<key>Undo Remove Ums</key>
 	<string>フィラーの削除を取り消す</string>
+	<key>Undo Remove Zoom</key>
+	<string>“ズームを削除”を取り消す</string>
 	<key>Undo Rename Folder</key>
 	<string>フォルダの名称変更を取り消す</string>
 	<key>Undo Rename Marker</key>
@@ -8554,6 +8634,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ビデオの消音解除を取り消す</string>
 	<key>Undo Zoom Change</key>
 	<string>ズームの変更を取り消す</string>
+	<key>Undo Zoom Cut</key>
+	<string>“ズームカット”を取り消す</string>
 	<key>Undo Zoom Level for All</key>
 	<string>ズーム倍率の一括変更を取り消す</string>
 	<key>Undo Zooms</key>
@@ -8582,6 +8664,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>プレビューの消音を解除（M）</string>
 	<key>Unmute “%@”</key>
 	<string>“%@”の消音を解除</string>
+	<key>Untick All</key>
+	<string>すべてのチェックを外す</string>
+	<key>Untick the ones to keep. ▶ plays each one with the words around it.</key>
+	<string>残したいもののチェックを外します。▶で前後の言葉と一緒に再生します。</string>
 	<key>Up to 30,000 pixels tall. It stops by itself after 10 minutes.</key>
 	<string>高さは最大30,000ピクセルです。10分たつと自動的に停止します。</string>
 	<key>Update with Current Style</key>
@@ -8832,6 +8918,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Wi-Fi</string>
 	<key>Wi-Fi QR found</key>
 	<string>Wi-FiのQRコードが見つかりました</string>
+	<key>Wider colours for Apple screens. Elsewhere it looks like Rec. 709.</key>
+	<string>Appleの画面向けの広い色域。ほかの画面ではRec. 709と同じに見えます。</string>
 	<key>Width</key>
 	<string>幅</string>
 	<key>Width and height, like 3:2 or 2.39:1.</key>
@@ -8890,6 +8978,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>DockのLF Studiosアイコンにビデオファイルをドロップしても開けます。</string>
 	<key>You can close this — the handoff keeps going.</key>
 	<string>閉じても大丈夫です — 受け渡しは続きます。</string>
+	<key>You can still pick something else in the export window. Double-click the name to show the recording in Finder.</key>
+	<string>書き出しウインドウでほかの設定も選べます。名前をダブルクリックすると、収録をFinderに表示します。</string>
 	<key>You have unsaved edits in %lld screenshots.</key>
 	<string>%lld件のスクリーンショットに未保存の編集があります。</string>
 	<key>You see the report before anything is sent, and you send it yourself.</key>
@@ -8996,6 +9086,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ズーム%@</string>
 	<key>Zoom Level</key>
 	<string>ズーム倍率</string>
+	<key>Zoom cut</key>
+	<string>ズームカット</string>
+	<key>Zoom cut (⌥Z) punches in here at a cut. Or click ◆, move the playhead and change the zoom.</key>
+	<string>“ズームカット”（⌥Z）でカットの位置にズームインします。または◆をクリックし、再生ヘッドを動かしてズームを変えます。</string>
+	<key>Zoom cut added. Change it in Properties ▸ Zoom.</key>
+	<string>ズームカットを追加しました。“プロパティ”＞“ズーム”で変更できます。</string>
+	<key>Zoom cut settings</key>
+	<string>ズームカットの設定</string>
 	<key>Zoom in</key>
 	<string>ズームイン</string>
 	<key>Zoom in / out</key>
@@ -9054,6 +9152,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>入力中のテキストカーソルを追いかけるズームです。視聴者が入力内容を読みながら見られます。</string>
 	<key>Zooms, styles, annotations, and title cards — older handoffs don't include them</key>
 	<string>ズーム、スタイル、注釈、タイトルカード — 以前の受け渡しには含まれていません</string>
+	<key>a quick punch-in on the clip after the nearest cut</key>
+	<string>いちばん近いカットの後のクリップに、すばやくズームイン</string>
 	<key>a table</key>
 	<string>表</string>
 	<key>a transparent background</key>

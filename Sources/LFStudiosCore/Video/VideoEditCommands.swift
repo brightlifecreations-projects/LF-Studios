@@ -53,6 +53,16 @@ enum VideoEditCommand: Equatable, CaseIterable, Identifiable {
     /// Compound clips (VideoCompounds.swift).
     case makeCompound
     case breakApart
+    /// Zoom cut on the clip after the nearest cut (VideoZoomCut.swift).
+    case zoomCut
+    /// The Project settings window (VideoProjectSettings.swift).
+    case showProjectSettings
+    /// The project's resolution, frame rate and colour space.
+    case projectSettings(VideoProjectSettings)
+    /// Remove ums: the list of ums found, to check (VideoFillerReview.swift).
+    case reviewFillers
+    /// Cuts the ums starting at these transcript words.
+    case removeFillers([Int])
     /// An edit with values (a setting at the playhead, a mode, a mask…) on
     /// the selected item above the main track (VideoItemEdits.swift).
     case edit(VideoItemEdit)
@@ -60,6 +70,8 @@ enum VideoEditCommand: Equatable, CaseIterable, Identifiable {
     case clip(VideoClipEdit)
     /// A sound's volume keys, loudness, beats.
     case audio(VideoAudioEdit)
+    /// A main-track clip's zoom keyframes.
+    case zoom(VideoClipZoomEdit)
 
     /// The commands without values (keys, menus, the command palette).
     static let allCases: [VideoEditCommand] = [
@@ -67,7 +79,7 @@ enum VideoEditCommand: Equatable, CaseIterable, Identifiable {
         .freezeFrame, .reverse, .mirror, .rotate, .crop, .recordVoiceover, .toggleMagnet, .toggleSnapping, .toggleLinkage,
         .togglePreviewAxis, .zoomToFit, .toggleEnabled, .group, .ungroup, .extractAudio, .selectLeft, .selectRight,
         .copy, .paste, .markIn, .markOut, .addText, .addArrow, .addHighlight, .addBlur, .addKeyframe, .previousKeyframe, .nextKeyframe,
-        .addTextClip, .makeCompound, .breakApart,
+        .addTextClip, .makeCompound, .breakApart, .zoomCut, .showProjectSettings, .reviewFillers,
     ]
 
     /// A stable name (menus keep it; a future MCP connection can send it).
@@ -75,6 +87,9 @@ enum VideoEditCommand: Equatable, CaseIterable, Identifiable {
         if case .edit(let edit) = self { return "edit." + edit.name }
         if case .clip(let edit) = self { return "clip." + edit.name }
         if case .audio(let edit) = self { return "audio." + edit.name }
+        if case .zoom(let edit) = self { return "zoom." + edit.name }
+        if case .removeFillers(let ids) = self { return "removeFillers." + ids.map(String.init).joined(separator: ",") }
+        if case .projectSettings(let s) = self { return "projectSettings.\(s.height).\(s.frameRate).\(s.colorSpace.rawValue)" }
         return String(describing: self)
     }
 
@@ -128,9 +143,14 @@ enum VideoEditCommand: Equatable, CaseIterable, Identifiable {
         case .addTextClip: return L("Text clip")
         case .makeCompound: return L("Make compound clip")
         case .breakApart: return L("Break apart")
+        case .zoomCut: return L("Zoom cut")
+        case .showProjectSettings: return L("Project Settings…")
+        case .projectSettings: return L("Project Settings")
+        case .reviewFillers, .removeFillers: return L("Remove Ums")
         case .edit(let edit): return edit.title
         case .clip(let edit): return edit.title
         case .audio(let edit): return edit.title
+        case .zoom(let edit): return edit.title
         }
     }
 
@@ -177,7 +197,10 @@ enum VideoEditCommand: Equatable, CaseIterable, Identifiable {
         case .addTextClip: return "character.textbox"
         case .makeCompound: return "square.stack.3d.down.right"
         case .breakApart: return "square.stack.3d.up.slash"
-        case .edit, .clip, .audio: return "slider.horizontal.3"
+        case .zoomCut: return "arrow.up.left.and.arrow.down.right"
+        case .showProjectSettings, .projectSettings: return "gearshape"
+        case .reviewFillers, .removeFillers: return "wand.and.stars"
+        case .edit, .clip, .audio, .zoom: return "slider.horizontal.3"
         }
     }
 
@@ -229,7 +252,8 @@ enum VideoEditCommand: Equatable, CaseIterable, Identifiable {
         case .addTextClip: return "⌥⇧T"
         case .makeCompound: return "⌥G"
         case .breakApart: return "⌥⇧G"
-        case .addMarker, .freezeFrame, .reverse, .mirror, .rotate, .crop, .recordVoiceover, .edit, .clip, .audio: return ""
+        case .zoomCut: return "⌥Z"
+        case .addMarker, .freezeFrame, .reverse, .mirror, .rotate, .crop, .recordVoiceover, .edit, .clip, .audio, .zoom, .showProjectSettings, .projectSettings, .reviewFillers, .removeFillers: return ""
         }
     }
 
@@ -363,6 +387,19 @@ extension VideoEditorModel {
         case .clip(let edit):
             return perform(edit)
         case .audio(let edit):
+            return perform(edit)
+        case .zoomCut:
+            return addZoomCut()
+        case .showProjectSettings:
+            withAnimation(.easeOut(duration: 0.15)) { isProjectSettingsPresented = true }
+        case .projectSettings(let settings):
+            setProjectSettings(settings)
+        case .reviewFillers:
+            guard hasTranscript else { return false }
+            reviewFillers()
+        case .removeFillers(let ids):
+            return removeFillers(Set(ids))
+        case .zoom(let edit):
             return perform(edit)
         }
         return true

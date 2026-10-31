@@ -213,6 +213,16 @@ struct VideoEditorRootView: View {
                     .transition(.opacity)
                     .accessibilityAddTraits(.isModal)
             }
+            if model.isProjectSettingsPresented {
+                VideoProjectSettingsSheet(model: model)
+                    .transition(.opacity)
+                    .accessibilityAddTraits(.isModal)
+            }
+            if model.fillerReview != nil {
+                VideoFillerReviewSheet(model: model)
+                    .transition(.opacity)
+                    .accessibilityAddTraits(.isModal)
+            }
             if !model.isReady {
                 loadingOverlay
                     .accessibilityAddTraits(.isModal)
@@ -274,8 +284,12 @@ struct VideoEditorToolbar: View {
                         .foregroundStyle(VideoEditorTheme.textTertiary)
                         .lineLimit(1)
                 }
+                .contentShape(Rectangle())
                 .onTapGesture(count: 2) { model.revealSource() }
-                .help(L("Double-click to show the recording in Finder"))
+                .onTapGesture { model.perform(.showProjectSettings) }
+                .help(L("Click for Project Settings. Double-click to show the recording in Finder."))
+                .accessibilityAddTraits(.isButton)
+                .accessibilityAction(named: L("Project Settings…")) { model.perform(.showProjectSettings) }
 
                 Spacer(minLength: 12)
 
@@ -354,6 +368,13 @@ struct VideoEditorToolbar: View {
     private var subtitle: String {
         let size = model.project.sourceSize
         var parts: [String] = [VideoEditorModel.timecode(model.timelineDuration)]
+        if let settings = model.project.projectSettings {
+            // Set in Project Settings: what the video is made at.
+            parts.append(settings.resolution.title)
+            parts.append("\(settings.frameRate) fps")
+            if settings.colorSpace != .rec709 { parts.append(settings.colorSpace.title) }
+            return parts.joined(separator: " · ")
+        }
         if size.width > 0 { parts.append("\(Int(size.width))×\(Int(size.height))") }
         parts.append("\(Int(model.sourceFrameRate.rounded())) fps")
         return parts.joined(separator: " · ")
@@ -605,12 +626,17 @@ extension VideoEditorModel {
             if [36, 76, 48, 49, 123, 124, 125, 126].contains(code) { return false }
             return modifiers.isEmpty || isUndoKey
         }
-        if isCommandPalettePresented || isShortcutsPresented {
+        if isCommandPalettePresented || isShortcutsPresented || isProjectSettingsPresented || fillerReview != nil {
             if code == 53 {
                 isCommandPalettePresented = false
                 isShortcutsPresented = false
+                isProjectSettingsPresented = false
+                fillerPreview?.cancel()
+                fillerReview = nil
                 return true
             }
+            // Return presses Done (or Remove); Tab and Space reach the ticks.
+            if isProjectSettingsPresented || fillerReview != nil, [36, 76, 48, 49, 123, 124, 125, 126].contains(code) { return false }
             return isUndoKey
         }
 
@@ -880,7 +906,7 @@ extension VideoCommandPalette {
             })
         }
         if model.hasTranscript {
-            commands.append(Command(id: "fillers", title: L("Remove Ums"), symbol: "wand.and.stars", shortcut: "") { model.removeFillers() })
+            commands.append(Command(id: "fillers", title: L("Remove Ums"), symbol: "wand.and.stars", shortcut: "") { model.perform(.reviewFillers) })
             commands.append(Command(id: "pauses", title: L("Shorten Pauses"), symbol: "forward.end", shortcut: "") { model.shortenPauses() })
             commands.append(Command(id: "find", title: L("Find in Transcript"), symbol: "magnifyingglass", shortcut: "⌘F") { model.findInTranscript() })
         }
@@ -989,7 +1015,7 @@ struct VideoShortcutsSheet: View {
             (L("Playback"), [(L("Space"), L("Play / pause")), ("J  K  L", L("Back · pause · faster")), ("← →", L("Previous / next frame")), ("⇧← ⇧→", L("Jump one second")), ("⌘← ⌘→", L("Start / end")), (L("Home  End"), L("Start / end")), ("M", L("Mute the preview (or the selected clip)"))]),
             (L("Editing"), [("⌘B  C", L("Split at playhead")), ("⇧⌘B", L("Split all tracks")), ("A  B", L("Select tool · split tool")), ("Q  W", L("Delete left / right of the playhead")), (L("⇧-drag"), L("Select a range to cut")), (L("⇧/⌘-click"), L("Select several items")), ("I  O", L("Mark in / out")), ("[  ]", L("Select left / right of the playhead")), ("V", L("Turn a clip on or off")), ("⌫", L("Delete selection")), ("⌘C  ⌘V", L("Copy / paste clips")), ("⌘G  ⇧⌘G", L("Group / ungroup")), ("⌥G  ⌥⇧G", L("Make compound clip / break apart")), ("⌥← ⌥→", L("Select previous / next item")), ("⌘Z  ⇧⌘Z", L("Undo / redo"))]),
             (L("Keyframes"), [("⌥K", L("Add keyframe")), ("⌥[  ⌥]", L("Previous / next keyframe"))]),
-            (L("Zooms & annotations"), [("Z", L("Add zoom at playhead")), ("1 – 5", L("Zoom level (zoom selected)")), ("⌘D", L("Duplicate zoom or annotation")), ("⌥T  ⌥H  ⌥A  ⌥B", L("Text · highlight · arrow · blur")), ("⌥⇧T", L("Text clip")), (L("Double-click"), L("Type in a text annotation"))]),
+            (L("Zooms & annotations"), [("Z", L("Add zoom at playhead")), ("1 – 5", L("Zoom level (zoom selected)")), ("⌘D", L("Duplicate zoom or annotation")), ("⌥T  ⌥H  ⌥A  ⌥B", L("Text · highlight · arrow · blur")), ("⌥⇧T", L("Text clip")), ("⌥Z", L("Zoom cut")), (L("Double-click"), L("Type in a text annotation"))]),
             (L("Timeline"), [("=  −", L("Show more / less detail")), ("⌘=  ⌘−", L("Show more / less detail")), ("⇧Z", L("Fit the whole video")), (L("⌘ scroll"), L("Zoom in at the pointer")), ("P", L("Main track magnet")), ("N", L("Auto snapping")), ("`", L("Linkage")), ("S", L("Preview axis")), ("⇧⌘A", L("Extract audio"))]),
             (L("General"), [("⌘E", L("Export")), ("⇧⌘Y", L("Apply my style")), ("⌘K", L("All commands")), ("⌘C", L("Copy current frame (nothing selected)")), ("⌘F", L("Find in the transcript")), ("?", L("This list")), (L("Esc"), L("Deselect / close"))]),
         ]

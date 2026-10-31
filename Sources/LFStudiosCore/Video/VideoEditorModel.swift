@@ -299,7 +299,16 @@ final class VideoEditorModel: ObservableObject {
     /// in the visible strip (nil: the playhead, wherever it is).
     var pendingZoomAnchor: (time: Double, viewportX: CGFloat)?
     @Published var isCommandPalettePresented = false
-    @Published var isExportPresented = false
+    @Published var isExportPresented = false {
+        // The export window starts from the project's settings (1.16.0).
+        didSet { if isExportPresented, !oldValue { applyProjectSettingsToExport() } }
+    }
+    /// Project settings (VideoProjectSettings.swift): click the name.
+    @Published var isProjectSettingsPresented = false
+    /// Remove ums' list, while it's open (VideoFillerReview.swift).
+    @Published var fillerReview: VideoFillerReview?
+    /// ▶ in that list: stops after the um.
+    var fillerPreview: Task<Void, Never>?
     /// Creative Handoff's dialog, and the handoff being written.
     @Published var isHandoffPresented = false
     /// "Find private info" (VideoPrivacyPanel.swift): the dialog, and its

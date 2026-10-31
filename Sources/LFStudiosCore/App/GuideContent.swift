@@ -15,7 +15,7 @@ import Foundation
 @MainActor
 enum GuideContent {
     /// Pages from these versions get a New badge and fill What's new.
-    nonisolated static let newVersions: [String] = ["1.15.0", "1.14.0", "1.13.0", "1.12.0", "1.11.1", "1.11.0", "1.10.0", "1.9.0", "1.8.0", "1.7.0"]
+    nonisolated static let newVersions: [String] = ["1.16.0", "1.15.0", "1.14.0", "1.13.0", "1.12.0", "1.11.1", "1.11.0", "1.10.0", "1.9.0", "1.8.0", "1.7.0"]
 
     static func chapters() -> [GuideChapter] {
         let features = featureCategories()
@@ -645,6 +645,23 @@ enum GuideContent {
                 ],
                 since: "1.15.0",
                 related: ["captions-transcribe", "captions-subtitles"]
+            ),
+            GuideEntry(
+                id: "video-zoom-cut", symbol: "arrow.up.left.and.arrow.down.right", title: L("Zoom cut"),
+                summary: L("A quick punch-in right after a cut: the picture jumps closer, then eases back."),
+                location: L("The zoom cut button in the timeline's bar, or press ⌥Z."),
+                steps: [
+                    L("Split the video (⌘B) where you want the cut."),
+                    L("Move the playhead near the cut and click Zoom cut (or press ⌥Z)."),
+                    L("To change how far it zooms and for how long, click ⌄ next to the button: Scale and Duration."),
+                ],
+                keys: [.fixed("⌥Z", L("Zoom cut"))],
+                tips: [
+                    L("It's zoom keyframes on the clip after the cut. Change them in Properties ▸ Zoom: move the playhead, change Zoom, or click ◆."),
+                    L("Remove Zoom in Properties takes it away. ⌘Z undoes it in one step."),
+                ],
+                since: "1.16.0",
+                related: ["video-keyframes", "video-clips"]
             ),
             GuideEntry(
                 id: "video-compound", symbol: "square.stack.3d.down.right", title: L("Compound clips"),
@@ -2141,8 +2158,14 @@ enum GuideContent {
                 id: "captions-cleanup", symbol: "wand.and.stars", title: L("Remove ums & shorten pauses"),
                 summary: L("Cut filler words like “um” and “uh”, and long pauses, in one click each."),
                 location: L("Captions panel ▸ Edit by text ▸ Remove ums and Shorten pauses."),
+                steps: [
+                    L("Click Remove ums. A list shows every um found, with the words around it."),
+                    L("Click ▶ to hear one. Untick the ones to keep."),
+                    L("Click Remove. Only the ticked ones are cut."),
+                ],
                 tips: [L("Pauses longer than a second become short ones, except where you're clicking, typing, or moving the pointer. ⌘Z undoes either one.")],
-                showMe: .editor(.captions)
+                showMe: .editor(.captions),
+                since: "1.16.0"
             ),
             GuideEntry(
                 id: "captions-look", symbol: "textformat.size", title: L("Caption style"),
@@ -2497,6 +2520,26 @@ enum GuideContent {
                 ],
                 tips: [L("Finder, QuickTime and Photos show it; some video sites choose their own.")],
                 since: "1.15.0",
+                related: ["export-mp4"]
+            ),
+            GuideEntry(
+                id: "video-project-settings", symbol: "gearshape", title: L("Project settings"),
+                summary: L("Choose the video's resolution, frame rate and colour space once, for the whole project. Export starts from them."),
+                location: L("In the video editor, click the project's name at the top left."),
+                points: [
+                    L("Rec. 709: standard video colours, the same on every screen and site."),
+                    L("Display P3: wider colours for Apple screens. Elsewhere it looks like Rec. 709."),
+                ],
+                steps: [
+                    L("Click the project's name. Project Settings opens."),
+                    L("Choose Resolution (720p to 4K), Frame rate (24 to 60) and Colour space."),
+                    L("Click Done. The export window now starts from these."),
+                ],
+                tips: [
+                    L("A project you never set them for exports as before, from the export window's last choices."),
+                    L("You can still pick something else in the export window. Double-click the name to show the recording in Finder."),
+                ],
+                since: "1.16.0",
                 related: ["export-mp4"]
             ),
             GuideEntry(

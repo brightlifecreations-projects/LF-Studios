@@ -38,6 +38,8 @@ enum VideoKeyProperty: String, Codable, CaseIterable, Identifiable {
     case maskX, maskY, maskSize, maskRotation, maskFeather
     case volume
     case intensity
+    /// A main-track clip's zoom (1.16.0, zoom cut): 1 is none.
+    case zoom
 
     var id: String { rawValue }
     var title: String {
@@ -50,6 +52,7 @@ enum VideoKeyProperty: String, Codable, CaseIterable, Identifiable {
         case .maskX, .maskY, .maskSize, .maskRotation, .maskFeather: return L("Mask")
         case .volume: return L("Volume")
         case .intensity: return L("Intensity")
+        case .zoom: return L("Zoom")
         }
     }
 
@@ -132,6 +135,23 @@ struct VideoKeyframes: Codable, Equatable {
         }
     }
 
+    /// Cut in two at `time` (a split): each side keeps its keys, plus one at
+    /// the cut with the value there, so nothing jumps.
+    func split(at time: Double, length: Double) -> (VideoKeyframes?, VideoKeyframes?) {
+        var before = self, after = self
+        before.shift(by: 0, length: time)
+        after.shift(by: -time, length: max(length - time, 0))
+        for (name, keys) in tracks where !keys.isEmpty {
+            guard let property = VideoKeyProperty(rawValue: name) else { continue }
+            let value = self.value(property, at: time, base: keys[0].value)
+            let easing = keys.last(where: { $0.time <= time })?.easing ?? .linear
+            before.set(property, at: time, value: value)
+            after.set(property, at: 0, value: value)
+            after.setEasing(easing, at: 0)
+        }
+        return (before.isEmpty ? nil : before, after.isEmpty ? nil : after)
+    }
+
     /// Keys moved by `delta` seconds and kept inside `0…length` (a trim at
     /// the start shifts them; one at the end drops those past it).
     mutating func shift(by delta: Double, length: Double) {
@@ -168,6 +188,7 @@ extension VideoLayerItem {
         case .maskFeather: return mask.feather
         case .volume: return volume
         case .intensity: return intensity
+        case .zoom: return 1
         }
     }
 
@@ -200,6 +221,7 @@ extension VideoLayerItem {
             self.mask = mask
         case .volume: volume = value
         case .intensity: intensity = value
+        case .zoom: break
         }
     }
 

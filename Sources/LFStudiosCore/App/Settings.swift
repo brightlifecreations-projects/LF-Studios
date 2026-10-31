@@ -346,6 +346,17 @@ enum Settings {
         set { defaults.set(newValue, forKey: "videoTransitionLength") }
     }
 
+    /// Zoom cut (1.16.0): how far it punches in, and for how long.
+    static var videoZoomCutScale: Double {
+        get { (defaults.object(forKey: "videoZoomCutScale") as? Double).map { min(max($0, VideoZoomCut.scaleRange.lowerBound), VideoZoomCut.scaleRange.upperBound) } ?? VideoZoomCut.defaultScale }
+        set { defaults.set(newValue, forKey: "videoZoomCutScale") }
+    }
+
+    static var videoZoomCutLength: Double {
+        get { (defaults.object(forKey: "videoZoomCutLength") as? Double).map { min(max($0, VideoZoomCut.lengthRange.lowerBound), VideoZoomCut.lengthRange.upperBound) } ?? VideoZoomCut.defaultLength }
+        set { defaults.set(newValue, forKey: "videoZoomCutLength") }
+    }
+
     /// Library items starred in the video editor ("tab/id").
     static var videoLibraryFavourites: [String] {
         get { defaults.stringArray(forKey: "videoLibraryFavourites") ?? [] }

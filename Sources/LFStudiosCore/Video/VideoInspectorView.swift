@@ -1112,6 +1112,8 @@ struct VideoSelectionInspector: View {
     private func clipEditor(_ segment: VideoDemoTimelineSegment) -> some View {
         // Normal or Curve (VideoSpeed.swift, 1.15.0).
         VideoClipSpeedSection(model: model, segment: segment)
+        // Zoom cut's keyframes (VideoZoomCut.swift, 1.16.0).
+        VideoClipZoomSection(model: model, clock: model.clock, segment: segment)
 
         VideoInspectorSection(L("Sound")) {
             VideoToggleRow(title: L("Mute this clip"), isOn: Binding(get: { segment.clip.muted }, set: { model.setClipMuted(segment.id, $0) }))

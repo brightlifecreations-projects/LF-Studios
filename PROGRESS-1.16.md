@@ -20,9 +20,9 @@ from the first unticked box.
 - [x] 7. CI on main passes again (run 41226948148, by hand on 85b9b67)
 - [x] Update error: found, fixed, rehearsal in publish-release.sh
 - [x] 6. CHANGELOG dates from tags; publish script dates new headings
-- [ ] 1. Zoom cut
-- [ ] 2. Project settings window
-- [ ] 3. Remove ums: review list before cutting
+- [x] 1. Zoom cut
+- [x] 2. Project settings window
+- [x] 3. Remove ums: review list before cutting
 - [ ] 4. Ducking under voiceover and imported speech (switches, off)
 - [ ] 5. Compound clip in its own timeline
 - [ ] Guide pages, shortcuts page, 7 languages, CHANGELOG [1.16.0]
@@ -41,3 +41,18 @@ from the first unticked box.
   `-AppleLanguages (en)` so the menu and buttons have known names.
 - For the CHANGELOG entry: "Check for Updates no longer fails when LF
   Studios was replaced while open: it asks to reopen."
+- Zoom cut: main-track clips gained `keys` (VideoKeyframes, only `.zoom`,
+  seconds from the clip's start; encoded only when set, format 4). The
+  renderer scales the finished frame about its middle (before the camera,
+  captions and shortcuts, which stay put). A split keeps the zoom where it
+  was (`VideoKeyframes.split`). Command `.zoomCut` (⌥Z) and `.zoom(...)`
+  edits; Properties ▸ Zoom for the clip; ◆ marks on the clip.
+- Project settings: `project.projectSettings` (nil until set; format 4
+  then). Opened only by clicking the name (or the command palette). The
+  export window takes them each time it opens; it gained a Colour space
+  row. Display P3 renders into P3 and tags the file P3 (same colours).
+- Remove ums: `.reviewFillers` opens VideoFillerReviewSheet (all ticked,
+  words around each, ▶ plays from a second before); `.removeFillers(ids)`
+  cuts the ticked ones in one step. The old `removeFillers()` (all) stays
+  for tests and scripts.
+
