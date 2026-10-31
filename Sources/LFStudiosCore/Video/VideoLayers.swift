@@ -127,6 +127,38 @@ extension VideoDemoProject {
         layerTracks.removeAll { $0.items.isEmpty }
     }
 
+    /// Linkage (~): each item above the main track keeps to the moment of
+    /// the recording under its start, wherever that moment now plays (a
+    /// moved, trimmed or retimed clip takes it along). An item whose moment
+    /// was cut goes to the cut with the magnet on, and stays put with it
+    /// off. Items after the main track's end keep their distance from it.
+    mutating func followMainTrack(from old: VideoDemoProject, oldTotal: Double, newTotal: Double, magnet: Bool) {
+        let before = old.timelineSegments(totalDuration: oldTotal)
+        let after = timelineSegments(totalDuration: newTotal)
+        guard let oldFirst = before.first, let oldLast = before.last, let newLast = after.last else { return }
+        func moved(_ time: Double) -> Double {
+            if time >= oldLast.timelineEnd - 0.0005 { return max(time + newLast.timelineEnd - oldLast.timelineEnd, 0) }
+            guard time >= oldFirst.timelineStart - 0.0005,
+                  let segment = before.first(where: { time >= $0.timelineStart - 0.0005 && time < $0.timelineEnd }) else { return time }
+            let source = segment.sourceTime(forTimelineTime: time)
+            // The same clip first, then wherever that moment plays now.
+            if let same = after.first(where: { $0.id == segment.id && $0.contains(sourceTime: source) }) { return same.timelineTime(forSourceTime: source) }
+            if let now = Self.timelineTimeIfIncluded(sourceTime: source, segments: after) { return now }
+            guard magnet else { return time }
+            return after.first(where: { $0.clip.sourceStart >= source })?.timelineStart ?? newLast.timelineEnd
+        }
+        for t in layerTracks.indices {
+            for i in layerTracks[t].items.indices {
+                layerTracks[t].items[i].at = moved(layerTracks[t].items[i].at)
+            }
+            // Two that landed on each other: the later one waits its turn.
+            layerTracks[t].sort()
+            for i in layerTracks[t].items.indices.dropFirst() where layerTracks[t].items[i].at < layerTracks[t].items[i - 1].end {
+                layerTracks[t].items[i].at = layerTracks[t].items[i - 1].end
+            }
+        }
+    }
+
     /// The videos above the main track (to load).
     var layerVideoPaths: [String] {
         Array(Set(layerTracks.flatMap { $0.items.filter(\.isVideo).map(\.path) })).sorted()

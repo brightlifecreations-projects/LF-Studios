@@ -252,6 +252,20 @@ final class VideoEditorModel: ObservableObject {
     @Published var libraryTab: VideoLibraryTab = .media
     /// Extract Audio is writing the sound out.
     @Published var isExtractingAudio = false
+    /// The timeline's pointer: Select (A) or Split (B) (1.14.0).
+    @Published var timelineTool: VideoTimelineTool = .select
+    /// Bumped when a timeline switch (P, N, ~, S) changes, so the toolbar
+    /// redraws (they're kept in Settings).
+    @Published var switchesVersion = 0
+    /// The preview axis (S): the moment under the pointer the player shows
+    /// while the playhead stays put (nil: the playhead's).
+    var previewAxisTime: Double?
+    /// Items above the main track copied with ⌘C.
+    var clipboardLayerItems: [VideoLayerItem] = []
+    /// Recording a voiceover (VideoVoiceover.swift).
+    @Published var voiceover: VideoVoiceoverSession?
+    /// Making a reversed clip or a freeze frame (VideoGeneratedMedia.swift).
+    @Published var generating: VideoGenerationJob?
     /// The player's zoom: 1 fits it, more looks closer (it scrolls).
     @Published var previewZoom: CGFloat = 1
     /// Full-screen preview: only the player shows (Esc leaves).
@@ -523,6 +537,8 @@ final class VideoEditorModel: ObservableObject {
             // While paused and scrubbing, the player reports each finished
             // seek — an older spot than the playhead already shows.
             guard self.isPlaying || !self.playback.isSeeking else { return }
+            // The preview axis shows another moment; the playhead stays.
+            guard self.isPlaying || self.previewAxisTime == nil else { return }
             if self.clock.time != time { self.clock.time = time }
             if self.isPlaying { self.previewRenderer.invalidate() }
         }
@@ -823,6 +839,12 @@ final class VideoEditorModel: ObservableObject {
         var next = project
         change(&next)
         guard next != project else { return }
+        // Linkage (~): what's on the tracks above the main track follows
+        // the main track's clips (VideoLayers.swift).
+        if Settings.videoTimelineLinkage, !project.layerTracks.isEmpty, next.layerTracks == project.layerTracks,
+           next.timelineClips != project.timelineClips || next.timelineLeadIn != project.timelineLeadIn {
+            next.followMainTrack(from: project, oldTotal: sourceDuration, newTotal: next.sourceAxisDuration ?? sourceDuration, magnet: Settings.videoTimelineMagnet)
+        }
         let now = Date()
         if key == nil || key != lastCoalesceKey || now.timeIntervalSince(lastMutation) > 1.5 {
             undoStack.append(UndoStep(project: project, label: label ?? pendingUndoLabel ?? VideoEditDescription.describe(from: project, to: next)))
@@ -840,6 +862,15 @@ final class VideoEditorModel: ObservableObject {
     /// Ends a coalesced gesture so the next edit starts a new undo step.
     func endGesture() {
         lastCoalesceKey = nil
+    }
+
+    /// The last edit joins the one before it: one ⌘Z takes back both (an
+    /// action made of two steps, like adding a recording and moving it).
+    func joinLastUndoSteps(label: String? = nil) {
+        guard undoStack.count >= 2 else { return }
+        let last = undoStack.removeLast()
+        if let label { undoStack[undoStack.count - 1].label = label } else { _ = last }
+        canUndo = !undoStack.isEmpty
     }
 
     /// Something is being dragged (a slider, a clip edge, the playhead).
@@ -1054,6 +1085,7 @@ final class VideoEditorModel: ObservableObject {
 
     func seek(to time: Double, fast: Bool = false) {
         let target = min(max(time, 0), timelineDuration)
+        previewAxisTime = nil
         clock.time = target
         // Fast seeks come while the playhead is dragged; the exact one on
         // release ends it.
@@ -1138,6 +1170,14 @@ final class VideoEditorModel: ObservableObject {
     }
 
     func deleteClip(_ id: UUID) {
+        // Magnet off (P): the clip stays as a black, silent gap of its
+        // length (V turns it back on).
+        if !Settings.videoTimelineMagnet, let index = project.timelineClips.firstIndex(where: { $0.id == id }) {
+            if refuseLocked(.clips) { return }
+            mutate(label: "Delete Clip") { $0.timelineClips[index].disabled = true }
+            showNotice(L("Clip removed, gap left (magnet off) — ⌘Z to undo"), symbol: "trash")
+            return
+        }
         guard segments.count > 1 else {
             showNotice(L("A video needs at least one clip"), symbol: "exclamationmark.triangle")
             return
@@ -1423,7 +1463,14 @@ final class VideoEditorModel: ObservableObject {
     /// every zoom, annotation, caption, and camera layout but the ones being
     /// dragged.
     func snapTargets(excluding ids: Set<UUID>) -> [Double] {
+        // Auto snapping off (N): everything lands where it's let go.
+        guard Settings.videoTimelineSnapping else { return [] }
         var targets: [Double] = [0, timelineDuration, clock.time]
+        for (_, item) in project.layerItems where !ids.contains(item.id) {
+            targets.append(item.at)
+            targets.append(item.end)
+        }
+        for marker in project.markers { if let time = timelineTime(forSource: marker.time) { targets.append(time) } }
         for segment in segments {
             targets.append(segment.timelineStart)
             targets.append(segment.timelineEnd)

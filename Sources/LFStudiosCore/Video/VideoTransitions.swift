@@ -250,7 +250,7 @@ struct VideoTransitionsSection: View {
             }
             Text(model.segments.count > 1
                  ? L("Applies at every cut. Click a cut's marker on the timeline, or select a clip, to choose one for that cut only.")
-                 : L("Split the video (S) to make cuts; each can dissolve or dip to black."))
+                 : L("Split the video (⌘B) to make cuts; each can dissolve or dip to black."))
                 .font(.system(size: 10.5))
                 .foregroundStyle(VideoEditorTheme.textTertiary)
                 .fixedSize(horizontal: false, vertical: true)

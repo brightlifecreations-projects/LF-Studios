@@ -375,6 +375,12 @@ struct VideoStageInteractionLayer: View {
                 }
             }
 
+            // The selected item on a track above the main track (1.14.0).
+            if !model.isPlaying, let item = model.selectedLayerItem, item.isShowing(at: clock.time),
+               let track = model.project.layerTrackIndex(of: item.id), !model.isTrackLocked(.layer(model.project.layerTracks[track].id)) {
+                VideoLayerItemHandles(model: model, item: item, viewSize: viewSize)
+            }
+
             // The bubble handle only where the bubble is (not during a full
             // camera, side by side, or hidden stretch).
             if let webcam = model.plan.webcam, webcam.visible, !model.isAimingZoom, !model.isTrackLocked(.camera), model.plan.showsBubble(at: clock.time), model.plan.hasCameraFootage(at: clock.time) {
@@ -409,13 +415,32 @@ struct VideoStageInteractionLayer: View {
         return nil
     }
 
+    /// The frontmost item of the tracks above the main track under `point`.
+    func layerItem(at point: CGPoint) -> VideoLayerItem? {
+        for layer in model.plan.layers.reversed() where layer.item.isShowing(at: clock.time) {
+            let r = layer.item.rect(in: viewSize)
+            let box = CGRect(x: r.minX, y: viewSize.height - r.maxY, width: r.width, height: r.height)
+            // Measured along its own sides when it's turned.
+            let along = VideoImageOverlayHandles.unturn(CGSize(width: point.x - box.midX, height: point.y - box.midY), by: layer.item.rotation)
+            if abs(along.width) <= box.width / 2, abs(along.height) <= box.height / 2 { return layer.item }
+        }
+        return nil
+    }
+
     private var pictureGesture: some Gesture {
         DragGesture(minimumDistance: 0, coordinateSpace: .named(Self.space))
             .onChanged { value in
                 if !pressStarted {
                     pressStarted = true
                     pressedOverlay = nil
-                    if let effect = annotation(at: value.startLocation) {
+                    if annotation(at: value.startLocation) == nil, let item = layerItem(at: value.startLocation) {
+                        // An item on a track above the main track: selected;
+                        // its box moves it (VideoTransformBox.swift).
+                        if model.isPlaying { model.pause() }
+                        model.selection = .layer(item.id)
+                        pressedOverlay = item.id
+                        overlayOrigin = nil
+                    } else if let effect = annotation(at: value.startLocation) {
                         pressedOverlay = effect.id
                         overlayOrigin = effect
                         // Editing needs a still frame.

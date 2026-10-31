@@ -372,6 +372,33 @@ enum Settings {
         }
     }
 
+    /// The timeline's switches (1.14.0), all on until turned off: the main
+    /// track's magnet (P), auto snapping (N), linkage (~) and the preview
+    /// axis (S).
+    static var videoTimelineMagnet: Bool {
+        get { defaults.object(forKey: "videoTimelineMagnet") as? Bool ?? true }
+        set { defaults.set(newValue, forKey: "videoTimelineMagnet") }
+    }
+    static var videoTimelineSnapping: Bool {
+        get { defaults.object(forKey: "videoTimelineSnapping") as? Bool ?? true }
+        set { defaults.set(newValue, forKey: "videoTimelineSnapping") }
+    }
+    static var videoTimelineLinkage: Bool {
+        get { defaults.object(forKey: "videoTimelineLinkage") as? Bool ?? true }
+        set { defaults.set(newValue, forKey: "videoTimelineLinkage") }
+    }
+    static var videoTimelinePreviewAxis: Bool {
+        get { defaults.object(forKey: "videoTimelinePreviewAxis") as? Bool ?? true }
+        set { defaults.set(newValue, forKey: "videoTimelinePreviewAxis") }
+    }
+
+    /// The editor's one-time "Keyboard shortcuts changed" notice (1.14.0)
+    /// was closed.
+    static var videoShortcutsChangeSeen: Bool {
+        get { defaults.bool(forKey: "videoShortcutsChangeSeen") }
+        set { defaults.set(newValue, forKey: "videoShortcutsChangeSeen") }
+    }
+
     /// The Library's media as a list instead of thumbnails.
     static var videoMediaBinAsList: Bool {
         get { defaults.bool(forKey: "videoMediaBinAsList") }

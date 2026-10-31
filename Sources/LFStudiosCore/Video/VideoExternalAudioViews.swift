@@ -120,7 +120,7 @@ struct VideoExternalAudioSection: View {
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(VideoSecondaryButtonStyle())
-                Text(L("Each file is its own track: drag it on the timeline, trim its ends, split it with S. MP3, WAV, M4A, AAC, AIFF, FLAC, or CAF — or drop files on the timeline."))
+                Text(L("Each file is its own track: drag it on the timeline, trim its ends, split it with ⌘B. MP3, WAV, M4A, AAC, AIFF, FLAC, or CAF — or drop files on the timeline."))
                     .font(.system(size: 10.5))
                     .foregroundStyle(VideoEditorTheme.textTertiary)
                     .fixedSize(horizontal: false, vertical: true)

@@ -120,20 +120,37 @@ final class VideoMediaBinTests: XCTestCase {
 
     // MARK: Dropping
 
-    func testDroppedFilesGoIntoTheVideo() async throws {
+    func testDroppedFilesLandWhereTheyAreDropped() async throws {
         let model = try await makeModel()
         let logo = try picture("logo.png")
         let voice = try sound("voice.wav")
         let clip = try await video("clip.mov")
         let before = model.timelineDuration
-        await model.placeMedia([logo, voice, clip], at: 1)
-
-        let image = try XCTUnwrap(model.project.overlayEffects.first { $0.kind == .image })
-        XCTAssertEqual(image.time, 1, accuracy: 0.05, "the picture starts where it was dropped")
+        // Anywhere but the main track: one after another from the drop point.
+        await model.placeMedia([logo, voice], at: 1)
+        let picture = try XCTUnwrap(model.project.layerItems.first?.item)
+        XCTAssertEqual(picture.kind, .image)
+        XCTAssertEqual(picture.at, 1, accuracy: 0.001, "the picture starts where it was dropped, on a track above the main track")
         let track = try XCTUnwrap(model.project.audioTracks.first)
-        XCTAssertEqual(track.pieces.first?.at ?? -1, 1, accuracy: 0.001, "so does the sound")
-        XCTAssertEqual(model.project.sources.filter { !$0.isPrimary }.map(\.name), ["clip.mov"], "the video goes at the end")
+        XCTAssertEqual(track.pieces.first?.at ?? -1, picture.end, accuracy: 0.001, "the sound follows it")
+        XCTAssertEqual(model.timelineDuration, before, accuracy: 0.01, "nothing on the main track moved")
+
+        // On the main track at 2 s: the clip there splits around the video.
+        await model.placeMedia([clip], at: 2, target: .main)
+        XCTAssertEqual(model.project.sources.filter { !$0.isPrimary }.map(\.name), ["clip.mov"])
         XCTAssertEqual(model.timelineDuration, before + 2, accuracy: 0.1)
+        XCTAssertEqual(model.segments.count, 3, "before it, it, after it")
+        XCTAssertEqual(model.segments[1].timelineStart, 2, accuracy: 0.05)
+        XCTAssertEqual(model.segments[2].clip.sourceStart, 2, accuracy: 0.05, "the rest of the recording follows")
+        model.undo()
+        XCTAssertEqual(model.timelineDuration, before, accuracy: 0.01, "one ⌘Z takes the insert back")
+        XCTAssertTrue(model.project.sources.filter { !$0.isPrimary }.isEmpty)
+        model.redo()
+
+        // On a given track above the main track, and on top of everything.
+        await model.placeMedia([logo], at: 1, target: .layer(.newTrack(model.project.layerTracks.count)))
+        XCTAssertEqual(model.project.layerTracks.count, 2)
+        XCTAssertEqual(model.project.layerTracks[1].items.first?.at ?? 0, 1, accuracy: 0.001)
 
         // Each shows once in the Library, as the import, marked Added.
         let entries = model.mediaEntries
@@ -141,12 +158,17 @@ final class VideoMediaBinTests: XCTestCase {
         XCTAssertEqual(entries.filter { $0.name == "voice.wav" }.count, 1)
         XCTAssertEqual(entries.filter { $0.name == "clip.mov" }.count, 1)
         XCTAssertTrue(entries.filter(\.isImported).allSatisfy(\.isInVideo))
-        XCTAssertEqual(entries.filter(\.isImported).count, 3)
+    }
 
-        // Dropped again from the Library: in the video twice, the Library once.
-        await model.placeMedia([logo], at: 2)
-        XCTAssertEqual(model.project.overlayEffects.filter { $0.kind == .image }.count, 2)
-        XCTAssertEqual(model.mediaEntries.filter { $0.name == "logo.png" }.count, 1)
+    func testAPictureOnTheMainTrackBecomesAStillVideo() async throws {
+        let model = try await makeModel()
+        let before = model.timelineDuration
+        await model.placeMedia([try picture("slide.png")], at: model.timelineDuration, target: .main)
+        let added = try XCTUnwrap(model.project.sources.first { !$0.isPrimary })
+        XCTAssertEqual(added.name, "slide.png", "named after the picture")
+        XCTAssertTrue(VideoGeneratedMedia.isGenerated(added.path), "a video LF Studios made")
+        XCTAssertEqual(added.duration, VideoLayerItem.pictureLength, accuracy: 0.1)
+        XCTAssertEqual(model.timelineDuration, before + VideoLayerItem.pictureLength, accuracy: 0.1, "at the end, where it was dropped")
     }
 
     func testDraggedFilesArriveInOrder() async throws {
@@ -216,15 +238,15 @@ final class VideoMediaBinTests: XCTestCase {
     func testDeleteFromProjectTakesItOutOfTheVideoToo() async throws {
         let model = try await makeModel()
         await model.placeMedia([try picture("logo.png"), try sound("voice.wav")], at: 0)
-        XCTAssertEqual(model.project.overlayEffects.count, 1)
+        XCTAssertEqual(model.project.layerItems.count, 1)
         XCTAssertEqual(model.project.audioTracks.count, 1)
         let logo = try XCTUnwrap(model.mediaEntries.first { $0.name == "logo.png" })
         model.deleteMedia(logo)
-        XCTAssertTrue(model.project.overlayEffects.isEmpty, "out of the video")
+        XCTAssertTrue(model.project.layerTracks.isEmpty, "out of the video")
         XCTAssertNil(model.mediaEntries.first { $0.name == "logo.png" }, "and the Library")
         XCTAssertTrue(FileManager.default.fileExists(atPath: directory.appendingPathComponent("logo.png").path), "the file stays")
         model.undo()
-        XCTAssertEqual(model.project.overlayEffects.count, 1, "⌘Z brings it back")
+        XCTAssertEqual(model.project.layerItems.count, 1, "⌘Z brings it back")
         XCTAssertNotNil(model.mediaEntries.first { $0.name == "logo.png" })
 
         // A sound in the video: its track goes.
@@ -249,19 +271,19 @@ final class VideoMediaBinTests: XCTestCase {
         XCTAssertFalse(entry.isMissing)
         XCTAssertEqual(entry.path, moved.standardizedFileURL.resolvingSymlinksInPath().path)
         XCTAssertTrue(entry.isInVideo)
+        XCTAssertEqual(model.project.layerItems.first?.item.path, entry.path, "the track uses the found file")
 
         // Replace…: a wider picture on the same spot, same width.
         let wide = directory.appendingPathComponent("wide.png")
         try VideoTestSupport.writePNG(CIImage(color: CIColor(red: 0, green: 0, blue: 1)).cropped(to: CGRect(x: 0, y: 0, width: 400, height: 100)), size: CGSize(width: 400, height: 100), to: wide)
-        let before = try XCTUnwrap(model.project.overlayEffects.first)
+        let before = try XCTUnwrap(model.project.layerItems.first?.item)
         let replaced = await model.replaceMedia(entry, with: wide)
         XCTAssertTrue(replaced)
-        let after = try XCTUnwrap(model.project.overlayEffects.first)
-        XCTAssertEqual(after.image?.name, "wide.png")
-        XCTAssertEqual(after.image?.aspect ?? 0, 4, accuracy: 0.01)
+        let after = try XCTUnwrap(model.project.layerItems.first?.item)
+        XCTAssertEqual(after.name, "wide.png")
+        XCTAssertEqual(after.aspect, 4, accuracy: 0.01)
         XCTAssertEqual(after.width, before.width)
-        XCTAssertEqual(after.height, before.height / 2, accuracy: 0.001)
-        XCTAssertEqual(after.time, before.time)
+        XCTAssertEqual(after.at, before.at)
         XCTAssertEqual(model.mediaEntries.filter { $0.kind == .image }.count, 1, "still one entry")
         // Another kind doesn't take its place.
         let refused = await model.replaceMedia(try XCTUnwrap(model.mediaEntries.first(where: \.isImported)), with: try sound("voice.wav"))

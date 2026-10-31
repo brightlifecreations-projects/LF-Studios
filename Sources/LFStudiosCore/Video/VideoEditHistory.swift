@@ -191,6 +191,24 @@ extension VideoEditDescription {
         }
         switch name {
         // Recordings, music, cards, transitions.
+        // The timeline's tracks and tools (1.14.0).
+        case "Freeze Frame": return (L("Undo Freeze Frame"), L("Redo Freeze Frame"))
+        case "Group": return (L("Undo Group"), L("Redo Group"))
+        case "Ungroup": return (L("Undo Ungroup"), L("Redo Ungroup"))
+        case "Paste": return (L("Undo Paste"), L("Redo Paste"))
+        case "Record Voiceover": return (L("Undo Record Voiceover"), L("Redo Record Voiceover"))
+        case "Reverse": return (L("Undo Reverse"), L("Redo Reverse"))
+        case "Add to Track": return (L("Undo Add to Track"), L("Redo Add to Track"))
+        case "Fill": return (L("Undo Fill"), L("Redo Fill"))
+        case "Fit": return (L("Undo Fit"), L("Redo Fit"))
+        case "Mirror": return (L("Undo Mirror"), L("Redo Mirror"))
+        case "Rotate": return (L("Undo Rotate"), L("Redo Rotate"))
+        case "Slip Clip": return (L("Undo Slip Clip"), L("Redo Slip Clip"))
+        case "Split Clip": return (L("Undo Split Clip"), L("Redo Split Clip"))
+        case "Trim Clip": return (L("Undo Trim Clip"), L("Redo Trim Clip"))
+        case "Clip Change": return (L("Undo Clip Change"), L("Redo Clip Change"))
+        case "Turn On Clip": return (L("Undo Turn On Clip"), L("Redo Turn On Clip"))
+        case "Turn Off Clip": return (L("Undo Turn Off Clip"), L("Redo Turn Off Clip"))
         // The Library's media (VideoMediaBin.swift).
         case "Import Media": return (L("Undo Import Media"), L("Redo Import Media"))
         case "Rename Media": return (L("Undo Rename Media"), L("Redo Rename Media"))

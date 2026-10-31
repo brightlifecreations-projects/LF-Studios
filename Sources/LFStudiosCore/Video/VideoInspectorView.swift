@@ -1171,7 +1171,7 @@ struct VideoSelectionInspector: View {
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(VideoSecondaryButtonStyle())
-                .help(L("Trim the clip's start to the playhead (I)"))
+                .help(L("Trim the clip's start to the playhead (Q)"))
                 Button {
                     model.trimSelectedClipToPlayhead(leading: false)
                 } label: {
@@ -1179,7 +1179,7 @@ struct VideoSelectionInspector: View {
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(VideoSecondaryButtonStyle())
-                .help(L("Trim the clip's end to the playhead (O)"))
+                .help(L("Trim the clip's end to the playhead (W)"))
             }
             Button {
                 model.splitAtPlayhead()

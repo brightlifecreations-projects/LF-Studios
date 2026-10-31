@@ -1313,7 +1313,7 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
         syncTrimToTimeline(totalDuration: total)
     }
 
-    private mutating func syncTrimToTimeline(totalDuration: Double) {
+    mutating func syncTrimToTimeline(totalDuration: Double) {
         let clips = normalizedTimelineClips(totalDuration: totalDuration)
         guard let first = clips.first, let last = clips.last else {
             trimStart = 0

@@ -154,7 +154,7 @@ enum GuideContent {
                     L("In the recording bar, turn on Microphone (and Camera, if you like), then click Record or press Return."),
                     L("Do your demo. When you're done, click the red stop button or press ⌃⌘Esc."),
                     L("Click Edit Video in the “Recording saved” panel. The video editor opens."),
-                    L("To cut a mistake, move the playhead to it, press S to split, click the bad part, and press ⌫."),
+                    L("To cut a mistake, move the playhead to it, press ⌘B to split, click the bad part, and press ⌫."),
                     L("Click Export (or press ⌘E), choose MP4, and click Export…."),
                 ],
                 keys: [.fixed("⌃⌘Esc", L("Stop recording, from any app")), .fixed("⌘E", L("Export"))],
@@ -251,12 +251,12 @@ enum GuideContent {
                 id: "howto-cut", symbol: "scissors", title: L("Cut out mistakes"),
                 summary: L("Remove the parts you don't want."),
                 steps: [
-                    L("In the video editor, move the playhead to where the mistake starts and press S to split the clip there."),
-                    L("Move to where it ends and press S again."),
+                    L("In the video editor, move the playhead to where the mistake starts and press ⌘B to split the clip there."),
+                    L("Move to where it ends and press ⌘B again."),
                     L("Click the part in between and press ⌫."),
                     L("Or hold ⇧ and drag across the timeline to select a part, then click Cut this part."),
                 ],
-                keys: [.fixed("S", L("Split at the playhead")), .fixed("⌫", L("Delete the selection")), .fixed("⌘Z", L("Undo"))],
+                keys: [.fixed("⌘B", L("Split at the playhead")), .fixed("⌫", L("Delete the selection")), .fixed("⌘Z", L("Undo"))],
                 tips: [
                     L("Changed your mind? Click the yellow marker on the timeline to bring a cut part back."),
                     L("With a transcript, you can also cut by deleting words: Captions ▸ Edit by text."),
@@ -311,7 +311,7 @@ enum GuideContent {
                     L("Click Find Private Info. You can keep editing while it looks."),
                     L("Tick what to hide, then click Blur Selected."),
                 ],
-                keys: [.fixed("B", L("Add a blur at the playhead"))],
+                keys: [.fixed("⌥B", L("Add a blur at the playhead"))],
                 tips: [L("To blur something yourself, press B and drag the blur over it.")],
                 related: ["privacy-find", "privacy-blur", "editor-highlight-blur"]
             ),
@@ -1257,13 +1257,13 @@ enum GuideContent {
                 summary: L("Cut the recording into clips, shorten them, and change their order."),
                 location: L("The clips lane on the timeline, and the Timeline menu."),
                 steps: [
-                    L("Move the playhead and press S to split the clip there."),
+                    L("Move the playhead and press ⌘B to split the clip there."),
                     L("Drag a clip's edge to trim it, or press I or O to make it start or end at the playhead."),
                     L("Drag a clip by its name to move it. Click a clip and press ⌫ to delete it."),
                 ],
                 keys: [
-                    .fixed("S", L("Split at the playhead")),
-                    .fixed("I  O", L("Clip starts / ends here")),
+                    .fixed("⌘B", L("Split at the playhead")),
+                    .fixed("Q  W", L("Delete left / right of the playhead")),
                     .fixed("⌫", L("Delete the selection")),
                 ],
                 tips: [L("Right-click a clip for Speed, Mute Clip, Move Earlier, and Move Later.")]
@@ -1322,7 +1322,7 @@ enum GuideContent {
                     L("On the timeline, drag its edges to set how long it shows."),
                 ],
                 keys: [
-                    .fixed("T", L("Text")), .fixed("A", L("Arrow")), .fixed("H", L("Highlight")), .fixed("B", L("Blur")),
+                    .fixed("⌥T", L("Text")), .fixed("⌥A", L("Arrow")), .fixed("⌥H", L("Highlight")), .fixed("⌥B", L("Blur")),
                     .fixed("⌘D", L("Duplicate zoom or annotation")),
                 ],
                 tips: [L("Double-click text on the preview to change it. New ones keep the last color and size you used.")]
@@ -1943,11 +1943,11 @@ enum GuideContent {
                 location: L("Audio panel ▸ Added sound ▸ Add audio…, or drop sound files on the timeline."),
                 steps: [
                     L("Click Add audio… and choose one or more files: MP3, WAV, M4A, AAC, AIFF, FLAC, or CAF."),
-                    L("Drag the track on the timeline to move it; drag an edge to trim it; click it and press S to split it, or ⌫ to delete a piece."),
+                    L("Drag the track on the timeline to move it; drag an edge to trim it; click it and press ⌘B to split it, or ⌫ to delete a piece."),
                     L("Set its Volume, Fade in, and Fade out, or Mute it, in the Audio panel."),
                     L("Recorded at the same time as the video? Click Sync by sound: it lines up with the recording and follows your cuts from then on."),
                 ],
-                keys: [.fixed("S", L("Split at the playhead")), .fixed("⌫", L("Delete the selection"))],
+                keys: [.fixed("⌘B", L("Split at the playhead")), .fixed("⌫", L("Delete the selection"))],
                 tips: [
                     L("A new track sits on the edit's timeline, where you put it. After Sync by sound it follows the recording instead."),
                     L("Added sound is in the export, Full Mix, Creative Handoff, and the timeline files, and saved in a recording's folder (03 Audio)."),
@@ -2129,7 +2129,7 @@ enum GuideContent {
                     L("Set its Strength in the panel on the right."),
                     L("On the timeline, drag its edges to set how long it lasts."),
                 ],
-                keys: [.fixed("B", L("Add a blur at the playhead"))]
+                keys: [.fixed("⌥B", L("Add a blur at the playhead"))]
             ),
         ]
     }
@@ -2734,11 +2734,18 @@ enum GuideContent {
             .fixed("⌘C", L("Copy")),
             .fixed("⌘V", L("Paste")),
             .fixed("⌘A", L("Select All")),
-            .fixed("S", L("Split at Playhead")),
+            .fixed("⌘B", L("Split at Playhead")),
+            .fixed("⇧⌘B", L("Split All Tracks")),
             .fixed("⌫", L("Delete Selection")),
-            .fixed("I", L("Set In to Playhead")),
-            .fixed("O", L("Set Out to Playhead")),
+            .fixed("Q", L("Delete Left of Playhead")),
+            .fixed("W", L("Delete Right of Playhead")),
+            .fixed("I", L("Mark In")),
+            .fixed("O", L("Mark Out")),
             .fixed("M", L("Mute Clip")),
+            .fixed("V", L("Turn Clip On or Off")),
+            .fixed("⇧⌘A", L("Extract Audio")),
+            .fixed("⌘G", L("Group")),
+            .fixed("⇧⌘G", L("Ungroup")),
             .fixed("⌘M", L("Minimize")),
         ]
     }

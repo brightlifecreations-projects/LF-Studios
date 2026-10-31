@@ -471,12 +471,32 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
         let timelineMenuItem = NSMenuItem()
         let timelineMenu = NSMenu(title: L("Timeline"))
-        timelineMenu.addItem(menuItem(L("Split at Playhead"), action: #selector(timelineSplit(_:)), key: "s", modifiers: []))
+        // CapCut's keys (1.14.0): each item runs its VideoEditCommand.
+        func command(_ title: String, _ command: VideoEditCommand, key: String = "", modifiers: NSEvent.ModifierFlags = []) {
+            let item = menuItem(title, action: #selector(timelineCommand(_:)), key: key, modifiers: modifiers)
+            item.representedObject = command.rawValue
+            timelineMenu.addItem(item)
+        }
+        command(L("Split at Playhead"), .split, key: "b", modifiers: [.command])
+        command(L("Split All Tracks"), .splitAllTracks, key: "B", modifiers: [.command, .shift])
         timelineMenu.addItem(menuItem(L("Delete Selection"), action: #selector(timelineDeleteSelection(_:)), key: "\u{8}", modifiers: []))
+        command(L("Delete Left of Playhead"), .deleteLeft, key: "q")
+        command(L("Delete Right of Playhead"), .deleteRight, key: "w")
         timelineMenu.addItem(NSMenuItem.separator())
-        timelineMenu.addItem(menuItem(L("Set In to Playhead"), action: #selector(timelineTrimIn(_:)), key: "i", modifiers: []))
-        timelineMenu.addItem(menuItem(L("Set Out to Playhead"), action: #selector(timelineTrimOut(_:)), key: "o", modifiers: []))
+        command(L("Mark In"), .markIn, key: "i")
+        command(L("Mark Out"), .markOut, key: "o")
         timelineMenu.addItem(menuItem(L("Mute Clip"), action: #selector(timelineMuteClip(_:)), key: "m", modifiers: []))
+        command(L("Turn Clip On or Off"), .toggleEnabled, key: "v")
+        timelineMenu.addItem(NSMenuItem.separator())
+        command(L("Freeze Frame"), .freezeFrame)
+        command(L("Reverse"), .reverse)
+        command(L("Mirror"), .mirror)
+        command(L("Rotate 90°"), .rotate)
+        command(L("Record Voiceover"), .recordVoiceover)
+        command(L("Extract Audio"), .extractAudio, key: "A", modifiers: [.command, .shift])
+        timelineMenu.addItem(NSMenuItem.separator())
+        command(L("Group"), .group, key: "g", modifiers: [.command])
+        command(L("Ungroup"), .ungroup, key: "G", modifiers: [.command, .shift])
         timelineMenu.addItem(NSMenuItem.separator())
         timelineMenu.addItem(menuItem(L("Undo Timeline Edit"), action: #selector(timelineUndo(_:)), key: "z", modifiers: [.command]))
         timelineMenu.addItem(menuItem(L("Redo Timeline Edit"), action: #selector(timelineRedo(_:)), key: "Z", modifiers: [.command, .shift]))
@@ -636,6 +656,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     @objc func openAbout()           { PreferencesWindowController.shared.show(tab: .about) }
     @objc func checkForUpdates(_ sender: Any?) { updateController?.checkForUpdates(sender) }
     @objc func timelineSplit(_ sender: Any?) { VideoDemoEditorWindowController.splitActiveEditor() }
+    @objc func timelineCommand(_ sender: NSMenuItem) {
+        guard let raw = sender.representedObject as? String, let command = VideoEditCommand(rawValue: raw),
+              let model = VideoDemoEditorWindowController.keyModel, !model.hasOverlayOpen else { return }
+        model.perform(command)
+    }
     @objc func timelineDeleteSelection(_ sender: Any?) { VideoDemoEditorWindowController.deleteActiveSelection() }
     @objc func timelineTrimIn(_ sender: Any?) { VideoDemoEditorWindowController.trimActiveInToPlayhead() }
     @objc func timelineTrimOut(_ sender: Any?) { VideoDemoEditorWindowController.trimActiveOutToPlayhead() }
