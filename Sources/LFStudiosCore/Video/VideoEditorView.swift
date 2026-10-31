@@ -974,8 +974,13 @@ struct VideoArrowKeyCatcher: NSViewRepresentable {
 struct VideoShortcutsSheet: View {
     @ObservedObject var model: VideoEditorModel
     @AppStorage("videoEditorTipsDismissed") private var tipsDismissed = false
-    @State private var customizing = false
+    @State private var customizing: Bool
     @State private var keymap = VideoKeymap.current
+
+    init(model: VideoEditorModel, customizing: Bool = false) {
+        self.model = model
+        _customizing = State(initialValue: customizing)
+    }
 
     /// Every key the editor answers to (VideoEditorModel.handleKey). Keys
     /// keep their symbols; only the ones with words are translated.
