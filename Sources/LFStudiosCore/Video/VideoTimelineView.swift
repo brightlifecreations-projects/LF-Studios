@@ -377,7 +377,7 @@ struct VideoTimelineSurface: View {
             // Files dropped on the timeline (from Finder or the Library)
             // land on the track and at the time under the pointer.
             Color.clear
-                .onDrop(of: [.fileURL], delegate: VideoMediaDrop(model: model) { location in
+                .onDrop(of: [.fileURL, .plainText], delegate: VideoMediaDrop(model: model) { location in
                     (max(geometry.time(location.x), 0), Self.dropTarget(atY: location.y, rows: rows, project: model.project))
                 })
             // Scrub anywhere that isn't an object.
@@ -388,6 +388,7 @@ struct VideoTimelineSurface: View {
 
             trackLook(.zooms) { zoomTrack }
             // The tracks above the main track (1.14.0).
+            let compoundBlocks = VideoCompoundBlock.blocks(model.project)
             let layerTops = model.project.layerTracks.map { rows.contentTop(.layer($0.id)) ?? rows.row(.layer($0.id))?.top ?? 0 }
             ForEach(Array(model.project.layerTracks.enumerated()), id: \.element.id) { index, track in
                 if let top = rows.contentTop(.layer(track.id)) {
@@ -399,7 +400,8 @@ struct VideoTimelineSurface: View {
                             selected: model.selectedIDs { if case .layer(let id) = $0 { return id } else { return nil } },
                             geometry: geometry,
                             model: model,
-                            hover: hover
+                            hover: hover,
+                            compounds: compoundBlocks
                         )
                         .equatable()
                         .offset(y: top)

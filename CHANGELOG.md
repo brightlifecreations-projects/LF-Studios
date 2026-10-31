@@ -1,5 +1,39 @@
 # Changelog
 
+## [1.15.0]
+
+### Added
+- **Keyframes.** Every setting of a clip above the main track (place, size, turn, opacity, crop, mask, volume, an effect's strength) can change over time: click ◆ next to it, move the playhead, change it. Linear, Ease in, Ease out or Ease in-out between keyframes; diamonds on the clip; ⌥K adds keyframes, ⌥[ and ⌥] jump between them.
+- **Blend modes, cutout and masks.** Screen, Multiply, Overlay and nine more; Remove background (the person, found on your Mac) and Chroma key with a colour picker, Strength and Shadow; Linear, Mirror, Circle and Rectangle masks with Feather and Invert.
+- **In, Out and Combo animations** with a length, for videos, pictures, text and stickers.
+- **Speed from 0.1× to 100×**, with Keep pitch (off: faster sounds higher), and **speed curves**: Montage, Hero, Bullet, Jump cut, Flash in, Flash out, or your own.
+- **Audio tools:** volume keyframes on sound files, fades on a video's sound, Normalize (−16 LUFS), and Detect beats, which marks the beat for clips to snap to.
+- **Text clips on their own track**: font, size, bold, italic, underline, colour, outline, background, shadow, letter and line spacing, alignment (⌥⇧T). Only fonts that come with macOS, so a project looks the same on every Mac.
+- **Motion tracking:** text, a sticker or a picture follows something that moves in the video (Track, then drag a box over it).
+- **The Library has every tab now**, in CapCut's order, each with search and Favourites:
+  - Text: 16 templates and 10 styles, previewed on hover.
+  - Stickers: 28 drawn for LF Studios, plus Import sticker for your own PNG or GIF (GIFs play).
+  - Effects: Blur, Glow, Glitch, Shake, VHS, Zoom pulse, Vignette, Film grain, RGB split, Pixelate, Black & white, Strobe, Cinema bars, Mirror; on a clip, or as an effect clip over everything under it.
+  - Transitions: Dissolve, Dip to black, Dip to white, Slide, Push, Wipe, Zoom, Blur, Spin, with a length and Apply to all cuts.
+  - Captions: Auto captions, 12 caption styles, Import .srt or .vtt, Export .srt.
+  - Filters: 16 looks with a strength, and Import .cube LUT.
+  - Adjust: adjustment clips, and Exposure, Contrast, Highlights, Shadows, Whites, Blacks, Saturation, Vibrance, Temperature, Tint, Sharpen, Vignette, Grain and Fade; HSL for 8 colours; RGB, red, green and blue curves; colour wheels (shadows, midtones, highlights, everything).
+  - Audio ▸ Sound effects: 17 made for LF Studios, heard on hover.
+  - Every sticker, sound, look and template is LF Studios' own and free to use in anything you make (LICENSES.md).
+- **Compound clips:** make several clips one (⌥G), move, size, turn and fade it as one, Break apart (⌥⇧G).
+- **Change the editor's keys:** press ? ▸ Customize…; keys like LF Studios, Final Cut Pro or Premiere Pro; conflict warnings; reset.
+- **Proxies:** Create Proxies… (ProRes 422 Proxy at half size; it says how much space first), then Edit with Proxies. Exports always use the originals; Clean Up removes proxies; another Mac plays the originals.
+- **A new export window:** Name and folder, resolution up to 4K, bit rate (Lower, Recommended, Higher or your own), codec (H.264, HEVC, ProRes), MP4 or MOV, 24, 25, 30, 50 or 60 fps.
+- **Cover:** a frame or a picture of your own, saved in the video file as its artwork.
+- Move to a Track turns a text or picture annotation into a clip in the tracks' order.
+
+### Changed
+- The editor opens with the filmstrip and waveform at once the second time, and makes text, stickers, filters and adjustments ahead of the playhead while it plays.
+- Export saves straight to the folder in the export window (Replace or Keep Both when the name is taken).
+
+### Compatibility
+- Projects that use anything new in 1.15.0 are saved in a new kind of project file; LF Studios 1.13 and 1.14 say they need a newer version. Every other project is saved exactly as before.
+
 ## [1.14.0]
 
 ### Added

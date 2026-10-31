@@ -100,7 +100,7 @@ struct VideoEditorRootView: View {
         .clipped()
         // Files dropped on the player go in at the playhead (videos at
         // the end).
-        .onDrop(of: [.fileURL], delegate: VideoMediaDrop(model: model) { _ in (nil, .layer(.automatic)) })
+        .onDrop(of: [.fileURL, .plainText], delegate: VideoMediaDrop(model: model) { _ in (nil, .layer(.automatic)) })
     }
 
     /// A border between panels dragged by `delta`: the Library's (left)
@@ -569,6 +569,12 @@ extension VideoEditorModel {
             return true
         }
 
+        // A new key being picked for a command (VideoKeymap.swift).
+        if recordingShortcut != nil {
+            recordShortcut(event)
+            return true
+        }
+
         // Modal surfaces first. Undo never reaches the edit behind them.
         let isUndoKey = key == "z" && (modifiers == [.command] || modifiers == [.command, .shift])
         if isPrivacyPresented {
@@ -968,20 +974,35 @@ struct VideoArrowKeyCatcher: NSViewRepresentable {
 struct VideoShortcutsSheet: View {
     @ObservedObject var model: VideoEditorModel
     @AppStorage("videoEditorTipsDismissed") private var tipsDismissed = false
+    @State private var customizing: Bool
+    @State private var keymap = VideoKeymap.current
+
+    init(model: VideoEditorModel, customizing: Bool = false) {
+        self.model = model
+        _customizing = State(initialValue: customizing)
+    }
 
     /// Every key the editor answers to (VideoEditorModel.handleKey). Keys
     /// keep their symbols; only the ones with words are translated.
     static var groups: [(String, [(String, String)])] {
         [
             (L("Playback"), [(L("Space"), L("Play / pause")), ("J  K  L", L("Back · pause · faster")), ("← →", L("Previous / next frame")), ("⇧← ⇧→", L("Jump one second")), ("⌘← ⌘→", L("Start / end")), (L("Home  End"), L("Start / end")), ("M", L("Mute the preview (or the selected clip)"))]),
-            (L("Editing"), [("⌘B  C", L("Split at playhead")), ("⇧⌘B", L("Split all tracks")), ("A  B", L("Select tool · split tool")), ("Q  W", L("Delete left / right of the playhead")), (L("⇧-drag"), L("Select a range to cut")), (L("⇧/⌘-click"), L("Select several items")), ("I  O", L("Mark in / out")), ("[  ]", L("Select left / right of the playhead")), ("V", L("Turn a clip on or off")), ("⌫", L("Delete selection")), ("⌘C  ⌘V", L("Copy / paste clips")), ("⌘G  ⇧⌘G", L("Group / ungroup")), ("⌥← ⌥→", L("Select previous / next item")), ("⌘Z  ⇧⌘Z", L("Undo / redo"))]),
-            (L("Zooms & annotations"), [("Z", L("Add zoom at playhead")), ("1 – 5", L("Zoom level (zoom selected)")), ("⌘D", L("Duplicate zoom or annotation")), ("⌥T  ⌥H  ⌥A  ⌥B", L("Text · highlight · arrow · blur")), (L("Double-click"), L("Type in a text annotation"))]),
+            (L("Editing"), [("⌘B  C", L("Split at playhead")), ("⇧⌘B", L("Split all tracks")), ("A  B", L("Select tool · split tool")), ("Q  W", L("Delete left / right of the playhead")), (L("⇧-drag"), L("Select a range to cut")), (L("⇧/⌘-click"), L("Select several items")), ("I  O", L("Mark in / out")), ("[  ]", L("Select left / right of the playhead")), ("V", L("Turn a clip on or off")), ("⌫", L("Delete selection")), ("⌘C  ⌘V", L("Copy / paste clips")), ("⌘G  ⇧⌘G", L("Group / ungroup")), ("⌥G  ⌥⇧G", L("Make compound clip / break apart")), ("⌥← ⌥→", L("Select previous / next item")), ("⌘Z  ⇧⌘Z", L("Undo / redo"))]),
+            (L("Keyframes"), [("⌥K", L("Add keyframe")), ("⌥[  ⌥]", L("Previous / next keyframe"))]),
+            (L("Zooms & annotations"), [("Z", L("Add zoom at playhead")), ("1 – 5", L("Zoom level (zoom selected)")), ("⌘D", L("Duplicate zoom or annotation")), ("⌥T  ⌥H  ⌥A  ⌥B", L("Text · highlight · arrow · blur")), ("⌥⇧T", L("Text clip")), (L("Double-click"), L("Type in a text annotation"))]),
             (L("Timeline"), [("=  −", L("Show more / less detail")), ("⌘=  ⌘−", L("Show more / less detail")), ("⇧Z", L("Fit the whole video")), (L("⌘ scroll"), L("Zoom in at the pointer")), ("P", L("Main track magnet")), ("N", L("Auto snapping")), ("`", L("Linkage")), ("S", L("Preview axis")), ("⇧⌘A", L("Extract audio"))]),
             (L("General"), [("⌘E", L("Export")), ("⇧⌘Y", L("Apply my style")), ("⌘K", L("All commands")), ("⌘C", L("Copy current frame (nothing selected)")), ("⌘F", L("Find in the transcript")), ("?", L("This list")), (L("Esc"), L("Deselect / close"))]),
         ]
     }
 
-    private var groups: [(String, [(String, String)])] { Self.groups }
+    /// Your own keys (a preset's or changed) first: they replace the ones
+    /// listed under them.
+    private var groups: [(String, [(String, String)])] {
+        let changed = VideoKeymap.editable.filter { $0.keys != $0.standardKeys }
+        guard !changed.isEmpty else { return Self.groups }
+        let yours = changed.map { ($0.keys.isEmpty ? L("None") : $0.keys, $0.title) }
+        return [(L("Your keys (they replace the ones below)"), yours)] + Self.groups
+    }
 
     /// The keys' column: 92 pt, wider only when a language's key names
     /// ("Double-click") need more.
@@ -1014,6 +1035,12 @@ struct VideoShortcutsSheet: View {
                     .font(.system(size: 16, weight: .bold))
                     .foregroundStyle(VideoEditorTheme.textPrimary)
                 Spacer()
+                Button(customizing ? L("Done") : L("Customize…")) {
+                    model.recordingShortcut = nil
+                    customizing.toggle()
+                }
+                .buttonStyle(VideoSecondaryButtonStyle())
+                .help(L("Change the timeline's keys, or use Final Cut Pro or Premiere Pro keys"))
                 Button { model.isShortcutsPresented = false } label: {
                     Image(systemName: "xmark").frame(width: 26, height: 26)
                 }
@@ -1021,6 +1048,9 @@ struct VideoShortcutsSheet: View {
                 .help(L("Close (Esc)"))
                 .accessibilityLabel(L("Close"))
             }
+            if customizing {
+                VideoShortcutsEditor(model: model)
+            } else {
             HStack(alignment: .top, spacing: 28) {
                 ForEach(0..<2, id: \.self) { column in
                     VStack(alignment: .leading, spacing: 18) {
@@ -1047,6 +1077,7 @@ struct VideoShortcutsSheet: View {
                     .frame(width: columnWidth, alignment: .leading)
                 }
             }
+            }
             if tipsDismissed {
                 Button(L("Show tips under the video again")) { tipsDismissed = false }
                     .buttonStyle(.plain)
@@ -1059,6 +1090,7 @@ struct VideoShortcutsSheet: View {
         .background(RoundedRectangle(cornerRadius: 16, style: .continuous).fill(VideoEditorTheme.popover))
         .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous).strokeBorder(VideoEditorTheme.cardStroke, lineWidth: 1))
         .shadow(color: VideoEditorTheme.shadow, radius: 30, y: 16)
+        .onReceive(NotificationCenter.default.publisher(for: .lfstudiosKeymapChanged)) { _ in keymap = VideoKeymap.current }
     }
 }
 

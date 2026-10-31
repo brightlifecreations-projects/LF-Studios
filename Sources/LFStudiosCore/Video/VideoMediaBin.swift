@@ -179,7 +179,7 @@ extension VideoDemoProject {
             add(Self.pathKey(image.path), image.path, image.name, .image, .picture)
         }
         // On the tracks above the main track.
-        for (_, item) in layerItems {
+        for (_, item) in layerItems where item.hasFile {
             add(Self.pathKey(item.path), item.path, item.name, item.kind, .layer, duration: item.isVideo ? item.fileDuration : nil)
         }
 
@@ -612,10 +612,18 @@ struct VideoMediaDrop: DropDelegate {
     /// it.
     let place: (CGPoint) -> (time: Double?, target: VideoEditorModel.DropTarget)
 
-    func validateDrop(info: DropInfo) -> Bool { info.hasItemsConforming(to: [.fileURL]) }
+    func validateDrop(info: DropInfo) -> Bool { info.hasItemsConforming(to: [.fileURL]) || info.hasItemsConforming(to: [.plainText]) }
 
     func performDrop(info: DropInfo) -> Bool {
         let spot = place(info.location)
+        // Something from a Library tab (a text template, a sticker…).
+        if !info.hasItemsConforming(to: [.fileURL]) {
+            let providers = info.itemProviders(for: [.plainText])
+            Task { @MainActor in
+                for payload in await VideoMediaDrop.payloads(from: providers) { model.placeLibraryItem(payload, at: spot.time, target: spot.target) }
+            }
+            return !providers.isEmpty
+        }
         let providers = info.itemProviders(for: [.fileURL])
         guard !providers.isEmpty else { return false }
         Task { @MainActor in

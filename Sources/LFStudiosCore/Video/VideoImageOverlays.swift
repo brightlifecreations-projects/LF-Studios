@@ -122,7 +122,10 @@ extension VideoDemoProject {
         // And the videos LF Studios made for the main track (1.14.0), and
         // what's on the tracks above it.
         paths.formUnion(sources.map(\.path).filter(VideoGeneratedMedia.isGenerated))
-        paths.formUnion(layerTracks.flatMap { $0.items.map(\.path) })
+        paths.formUnion(layerTracks.flatMap { $0.items.filter(\.hasFile).map(\.path) })
+        if let cover = cover?.imagePath { paths.insert(cover) }
+        // Imported .cube LUTs (VideoFilters.swift).
+        paths.formUnion(layerTracks.flatMap { $0.items.compactMap { $0.filter?.cubePath } })
         return paths
     }
 }

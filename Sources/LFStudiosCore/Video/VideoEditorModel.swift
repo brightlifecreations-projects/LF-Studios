@@ -319,6 +319,20 @@ final class VideoEditorModel: ObservableObject {
         didSet { refreshTimeline() }
     }
     @Published var notice: VideoEditorNotice?
+    /// Motion tracking: the box being picked, or the run (VideoMotionTracking.swift).
+    @Published var motionTracking: VideoMotionTrackingState?
+    /// Starred Library items (VideoLibraryItems.swift).
+    @Published var libraryFavourites: [String] = Settings.videoLibraryFavourites
+    /// Keyboard Shortcuts ▸ Customize: the command waiting for its new key.
+    @Published var recordingShortcut: VideoEditCommand?
+    /// Proxies being made, and whether the editor plays them (VideoProxies.swift).
+    @Published var proxyJob: VideoProxyJob?
+    /// The export window's name and folder (VideoExportDestination.swift).
+    @Published var exportNameEdited: String?
+    @Published var exportFolderPath = Settings.videoExportFolder
+    @Published var usesProxies = Settings.videoEditWithProxies
+    let proxyCancelFlag = VideoAtomicFlag()
+    let trackingCancelFlag = VideoAtomicFlag()
     @Published private(set) var canUndo = false
     @Published private(set) var canRedo = false
     @Published private(set) var restoredDraft = false
@@ -567,6 +581,8 @@ final class VideoEditorModel: ObservableObject {
         didLoad = true
         do {
             let source = try await playback.load(url: project.sourceURL)
+            // Edit with proxies: the picture from the proxy, when this Mac has one.
+            if usesProxies { playback.replaceSource(await VideoProxies.swapping(source), original: source) }
             sourceDuration = source.duration
             sourceFrameRate = source.frameRate
             hasAudio = !source.audio.isEmpty
@@ -1087,6 +1103,7 @@ final class VideoEditorModel: ObservableObject {
         let target = min(max(time, 0), timelineDuration)
         previewAxisTime = nil
         clock.time = target
+        if !fast { VideoRenderWarmup.warm(project, from: target, height: 1080) }
         // Fast seeks come while the playhead is dragged; the exact one on
         // release ends it.
         isScrubbing = fast
@@ -1470,6 +1487,8 @@ final class VideoEditorModel: ObservableObject {
             targets.append(item.at)
             targets.append(item.end)
         }
+        // Detect beats (1.15.0): clips land on the beat.
+        targets += beatTimes
         for marker in project.markers { if let time = timelineTime(forSource: marker.time) { targets.append(time) } }
         for segment in segments {
             targets.append(segment.timelineStart)
@@ -2141,19 +2160,9 @@ final class VideoEditorModel: ObservableObject {
             try? FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
             destination = folder.appendingPathComponent("\(exportBaseName).\(settings.fileExtension)")
         } else {
-            let panel = NSSavePanel()
-            switch settings.format {
-            case .gif: panel.allowedContentTypes = [.gif]
-            case .m4a: panel.allowedContentTypes = [.mpeg4Audio]
-            case .wav: panel.allowedContentTypes = [.wav]
-            case .aiff: panel.allowedContentTypes = [.aiff]
-            default: panel.allowedContentTypes = settings.format.isProRes ? [.quickTimeMovie] : [.mpeg4Movie]
-            }
-            panel.canCreateDirectories = true
-            panel.nameFieldStringValue = "\(exportBaseName).\(settings.fileExtension)"
-            panel.directoryURL = URL(fileURLWithPath: Settings.recordingFolder, isDirectory: true)
-            guard panel.runModal() == .OK, let url = panel.url else { return }
-            destination = url
+            // The name and folder from the export window (1.15.0).
+            guard let chosen = exportDestination(settings: settings) else { return }
+            destination = chosen
         }
         enqueueExport(to: destination, settings: settings, toClipboard: toClipboard, range: range)
     }
@@ -2263,6 +2272,11 @@ final class VideoEditorModel: ObservableObject {
         // Several recordings load their filmstrip together (VideoEditorMedia).
         guard duration > 0, !project.hasAppendedSources else { return }
         let count = min(max(Int(duration / 1.2), 12), 160)
+        // Kept from last time (VideoPerformance.swift).
+        if let cached = await Task.detached(priority: .userInitiated, operation: { VideoTimelineCache.thumbnails(for: url, count: count) }).value {
+            thumbnails = cached
+            return
+        }
         let times = (0..<count).map { duration * (Double($0) + 0.5) / Double(count) }
         let images = await Task.detached(priority: .utility) { () -> [VideoTimelineThumbnail] in
             let generator = AVAssetImageGenerator(asset: AVURLAsset(url: url))
@@ -2270,7 +2284,9 @@ final class VideoEditorModel: ObservableObject {
             generator.maximumSize = CGSize(width: 320, height: 200)
             generator.requestedTimeToleranceBefore = CMTime(value: 1, timescale: 2)
             generator.requestedTimeToleranceAfter = CMTime(value: 1, timescale: 2)
-            return await VideoTimelineThumbnail.generate(with: generator, at: times)
+            let made = await VideoTimelineThumbnail.generate(with: generator, at: times)
+            VideoTimelineCache.save(made, for: url, count: count)
+            return made
         }.value
         thumbnails = images
     }
@@ -2278,6 +2294,10 @@ final class VideoEditorModel: ObservableObject {
     private func loadWaveform() async {
         let url = project.sourceURL
         guard !project.hasAppendedSources else { return }
+        if let cached = await Task.detached(priority: .userInitiated, operation: { VideoTimelineCache.waveform(for: url) }).value {
+            waveform = VideoWaveform(peaks: cached)
+            return
+        }
         let peaks = await Task.detached(priority: .utility) { () -> [Float]? in
             let asset = AVURLAsset(url: url)
             guard let tracks = try? await asset.loadTracks(withMediaType: .audio), !tracks.isEmpty,
@@ -2327,6 +2347,7 @@ final class VideoEditorModel: ObservableObject {
         }.value
         if let peaks {
             waveform = VideoWaveform(peaks: peaks)
+            Task.detached(priority: .utility) { VideoTimelineCache.save(waveform: peaks, for: url) }
         }
     }
 

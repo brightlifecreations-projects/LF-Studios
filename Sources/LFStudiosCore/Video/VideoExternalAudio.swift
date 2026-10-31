@@ -47,6 +47,10 @@ struct VideoExternalAudioTrack: Codable, Equatable, Identifiable {
     /// Lower while the voice speaks. Off to start with (manual only).
     var dipUnderVoice = false
     var dipLevel = 0.3
+    /// Volume keyframes, in the file's own seconds (1.15.0).
+    var volumeKeys: VideoKeyframes?
+    /// Detect beats: the file's beats, in its own seconds.
+    var beats: [Double]?
 
     var url: URL { URL(fileURLWithPath: path) }
 
@@ -58,7 +62,7 @@ struct VideoExternalAudioTrack: Codable, Equatable, Identifiable {
     }
 
     private enum CodingKeys: String, CodingKey {
-        case id, path, name, duration, pieces, volume, muted, fadeIn, fadeOut, lockedToRecording, useAsVoice, dipUnderVoice, dipLevel
+        case id, path, name, duration, pieces, volume, muted, fadeIn, fadeOut, lockedToRecording, useAsVoice, dipUnderVoice, dipLevel, volumeKeys, beats
     }
 
     init(from decoder: Decoder) throws {
@@ -76,6 +80,8 @@ struct VideoExternalAudioTrack: Codable, Equatable, Identifiable {
         useAsVoice = (try? c.decodeIfPresent(Bool.self, forKey: .useAsVoice)) ?? false
         dipUnderVoice = (try? c.decodeIfPresent(Bool.self, forKey: .dipUnderVoice)) ?? false
         dipLevel = (try? c.decodeIfPresent(Double.self, forKey: .dipLevel)) ?? 0.3
+        volumeKeys = (try? c.decodeIfPresent(VideoKeyframes.self, forKey: .volumeKeys)).flatMap { $0 }
+        beats = (try? c.decodeIfPresent([Double].self, forKey: .beats)).flatMap { $0 }
     }
 
     /// Edit-time stretches each piece plays (several when a locked piece
@@ -215,8 +221,28 @@ struct VideoExternalAudioInput {
         if settings.useAsVoice { level *= audio.voiceVolume }
         params.setVolume(0, at: .zero)
         for piece in placed {
-            let keyframes = Self.envelope(level: level, piece: piece, fadeIn: settings.fadeIn, fadeOut: settings.fadeOut,
+            var keyframes = Self.envelope(level: level, piece: piece, fadeIn: settings.fadeIn, fadeOut: settings.fadeOut,
                                           dip: settings.dipUnderVoice && !settings.useAsVoice ? settings.dipLevel : nil, voice: voice)
+            // Volume keyframes (1.15.0): the level follows them, sampled
+            // every tenth of a second.
+            if let keys = settings.volumeKeys, keys.isAnimated(.volume), settings.volume > 0.000_1 {
+                func factor(_ t: Double) -> Double {
+                    let fileTime = piece.fileStart + (t - piece.timelineStart) * piece.speed
+                    return keys.value(.volume, at: fileTime, base: settings.volume) / settings.volume
+                }
+                var times = Set(keyframes.map(\.time))
+                var t = piece.timelineStart
+                while t < piece.timelineEnd { times.insert((t * 1000).rounded() / 1000); t += 0.1 }
+                let base = Self.envelope(level: level, piece: piece, fadeIn: settings.fadeIn, fadeOut: settings.fadeOut,
+                                         dip: settings.dipUnderVoice && !settings.useAsVoice ? settings.dipLevel : nil, voice: voice)
+                func envelopeGain(_ t: Double) -> Double {
+                    guard let i = base.lastIndex(where: { $0.time <= t }) else { return base.first?.gain ?? level }
+                    guard i + 1 < base.count else { return base[i].gain }
+                    let a = base[i], b = base[i + 1]
+                    return a.gain + (b.gain - a.gain) * (t - a.time) / max(b.time - a.time, 0.000_001)
+                }
+                keyframes = times.sorted().map { ($0, envelopeGain($0) * factor($0)) }
+            }
             for (index, keyframe) in keyframes.enumerated() {
                 let time = VideoCompositionBuilder.time(keyframe.time)
                 if index + 1 < keyframes.count {

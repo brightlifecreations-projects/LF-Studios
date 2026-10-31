@@ -50,8 +50,14 @@
 	<string>这台 Mac 不支持用%@生成字幕。请选择其他语言。</string>
 	<key>%@ long</key>
 	<string>时长 %@</string>
+	<key>%@ moved from “%@”, which has no key now</key>
+	<string>%1$@ 已从“%2$@”移到此处，该命令现在没有快捷键</string>
 	<key>%@ of recording plays in %@.</key>
 	<string>%@ 的录制内容在 %@ 内播完。</string>
+	<key>%@ on every cut</key>
+	<string>所有剪切点都使用 %@</string>
+	<key>%@ on “%@”</key>
+	<string>“%2$@”上的 %1$@</string>
 	<key>%@ pt</key>
 	<string>%@ 磅</string>
 	<key>%@ quality · %@</key>
@@ -116,6 +122,8 @@
 	<string>%@，作为单独的轨道</string>
 	<key>%@: %@</key>
 	<string>%@：%@</string>
+	<key>%@: on the selected text clip, or a new one</key>
+	<string>%@：用于所选文字片段，或新建一个</string>
 	<key>%@s</key>
 	<string>%@ 秒</string>
 	<key>%@–%@ only</key>
@@ -132,6 +140,8 @@
 	<string>%lld 个标注，正在裁剪</string>
 	<key>%lld barcodes found</key>
 	<string>找到 %lld 个条形码</string>
+	<key>%lld beats marked — clips snap to them</key>
+	<string>已标记 %lld 个节拍 — 片段会吸附到节拍上</string>
 	<key>%lld camera layouts</key>
 	<string>%lld 个摄像头布局</string>
 	<key>%lld captions</key>
@@ -152,6 +162,8 @@
 	<string>%lld 个电子邮件地址</string>
 	<key>%lld files, about %@</key>
 	<string>%1$lld 个文件，约 %2$@</string>
+	<key>%lld keyframes. Change a setting with ◆ lit to add one at the playhead.</key>
+	<string>%lld 个关键帧。在 ◆ 亮起时更改设置，即可在播放头处添加一个。</string>
 	<key>%lld lines</key>
 	<string>%lld 行</string>
 	<key>%lld lines changed since translating</key>
@@ -224,6 +236,10 @@
 	<string>07 Data：指针、点按和按键。还有 README.txt，说明每个文件是什么。</string>
 	<key>A 2-second “Made with LF Studios” outro on your background — your own outro card is in Style</key>
 	<string>在你的背景上显示 2 秒的“Made with LF Studios”结尾 — 你自己的片尾卡在“样式”中</string>
+	<key>A 3D LUT from another app (.cube)</key>
+	<string>来自其他应用的 3D LUT（.cube）</string>
+	<key>A 3D LUT from another app: on the selected clip, or as a filter clip</key>
+	<string>来自其他应用的 3D LUT：用于所选片段，或作为滤镜片段</string>
 	<key>A README lists every file. Include speaker notes adds your notes.</key>
 	<string>README 文件会列出所有文件。“包括演讲者备注”会加入你的备注。</string>
 	<key>A big GIF — about %@ and %@ of memory to make. A smaller size, fewer fps, or MP4 is lighter.</key>
@@ -254,20 +270,32 @@
 	<string>由 LF Studios 1.11 或更早版本创建的文件夹会保留自己的 .lfsp 或 .lfstudios 项目文件，并像以前一样随时更新。</string>
 	<key>A folder with an LF Studios project in it opens that project, exactly as it was saved.</key>
 	<string>包含 LF Studios 项目的文件夹会打开该项目，与存储时完全一样。</string>
+	<key>A frame</key>
+	<string>一帧画面</string>
 	<key>A frame appears in the middle of the screen. Choose its shape above the recording bar, like 16:9.</key>
 	<string>屏幕中间会出现一个录制框。在录制栏上方选择它的比例，例如 16:9。</string>
 	<key>A frame of an exact shape and size, so your video comes out ready for YouTube, Reels, or Instagram.</key>
 	<string>一个比例和大小都精确的录制框，让你的视频直接适合 YouTube、Reels 或 Instagram。</string>
+	<key>A frame: the one at the playhead (Use the playhead picks again).</key>
+	<string>一帧画面：播放头处的那一帧（点按“使用播放头”可重新选择）。</string>
 	<key>A hairline that separates dark recordings from the background</key>
 	<string>一条细线，将深色录制内容与背景分开</string>
+	<key>A keyframe for position, size, rotation and opacity at the playhead</key>
+	<string>在播放头处为位置、大小、旋转和不透明度添加关键帧</string>
 	<key>A magnifier over one spot at the playhead; the rest of the frame stays in view</key>
 	<string>在播放头处放大一个位置；画面其余部分保持可见</string>
 	<key>A magnifier over one spot; the rest of the frame stays in view.</key>
 	<string>放大一个位置；画面其余部分保持可见。</string>
+	<key>A new chapter</key>
+	<string>新的篇章</string>
 	<key>A new recording opens just as you recorded it. Zooms, backgrounds, and effects stay off until you turn them on.</key>
 	<string>新的录制内容打开时，和你录下的样子完全一样。缩放、背景和各种效果都保持关闭，直到你打开它们。</string>
 	<key>A new track sits on the edit's timeline, where you put it. After Sync by sound it follows the recording instead.</key>
 	<string>新轨道位于剪辑的时间线上你放置的位置。使用“按声音同步”后，它会改为跟随录制内容。</string>
+	<key>A picture</key>
+	<string>一张图片</string>
+	<key>A picture: one of your own.</key>
+	<string>一张图片：你自己的图片。</string>
 	<key>A preset saves the background, frame, cursor, zooms, captions, keys, and camera. Tick Include aspect ratio to save the shape too.</key>
 	<string>预设会存储背景、边框、指针、缩放、字幕、按键和摄像头。勾选“包括宽高比”可同时存储画面比例。</string>
 	<key>A report helps fix this. You'll see everything before it's sent, and it never includes your screenshots or recordings.</key>
@@ -298,6 +326,10 @@
 	<string>一列更高的按钮、旋转唱片的位置、底部导航栏</string>
 	<key>A teleprompter for your script. It never shows up in a recording, a screenshot, or screen sharing.</key>
 	<string>为你的讲稿准备的提词器。它绝不会出现在录制内容、截屏或屏幕共享中。</string>
+	<key>A text clip on a track of its own, at the playhead (⌥⇧T)</key>
+	<string>在播放头处添加文字片段，放在单独的轨道上（⌥⇧T）</string>
+	<key>A text note pinned over the video (⌥T), as before</key>
+	<string>固定在视频上方的文字注释（⌥T），和以前一样</string>
 	<key>A thin outline shows what's being recorded. It never appears in the video.</key>
 	<string>一条细边框会标出正在录制的范围。它绝不会出现在视频中。</string>
 	<key>A timeline for Final Cut Pro, DaVinci Resolve, and Adobe Premiere Pro.</key>
@@ -308,6 +340,8 @@
 	<string>视频至少需要一个片段</string>
 	<key>A voice chain for spoken audio: noise removal, de-essing, a warm and clear EQ, compression, and the podcast loudness standard. Each step can be turned off. Processed on this Mac.</key>
 	<string>适用于人声的处理链：降噪、齿音消除、温暖清晰的均衡、压缩，以及播客响度标准。每一步都可以关闭。在这台 Mac 上处理。</string>
+	<key>A volume keyframe at the playhead: set one, move, change the volume</key>
+	<string>播放头处的音量关键帧：设置一个，移动播放头，再更改音量</string>
 	<key>A window that size would be bigger than the screen. The largest of the same shape that fits is %@ × %@.</key>
 	<string>这么大的窗口会超出屏幕。能放下的同比例最大尺寸是 %@ × %@。</string>
 	<key>A yellow marker shows where something was cut. Click it to bring the part back.</key>
@@ -324,12 +358,16 @@
 	<string>关于 LF Studios</string>
 	<key>Above the recording bar, choose 16:9 for YouTube, 9:16 for Reels, TikTok, and Shorts, or 4:5 for the Instagram feed.</key>
 	<string>在录制栏上方，为 YouTube 选择 16:9，为 Reels、TikTok 和 Shorts 选择 9:16，为 Instagram 动态选择 4:5。</string>
+	<key>Accent bar</key>
+	<string>强调条</string>
 	<key>Accuracy</key>
 	<string>准确度</string>
 	<key>Accuracy: Accurate reads more carefully; Fast is quicker but knows fewer languages.</key>
 	<string>准确度：“精确”识别得更仔细；“快速”速度更快，但支持的语言较少。</string>
 	<key>Accurate</key>
 	<string>精确</string>
+	<key>Across</key>
+	<string>水平</string>
 	<key>Actual size</key>
 	<string>实际大小</string>
 	<key>Adapt to This Ratio</key>
@@ -342,6 +380,8 @@
 	<string>更改宽高比后，宽高比菜单旁边的“适配此比例”。</string>
 	<key>Adapted to %@: %@</key>
 	<string>已适配 %@：%@</string>
+	<key>Add</key>
+	<string>添加</string>
 	<key>Add Arrow</key>
 	<string>添加箭头</string>
 	<key>Add Blur</key>
@@ -380,6 +420,8 @@
 	<string>添加手机拍摄的摄像头视频</string>
 	<key>Add a caption at the playhead</key>
 	<string>在播放头处添加字幕</string>
+	<key>Add a keyframe at the playhead: %@</key>
+	<string>在播放头处添加关键帧：%@</string>
 	<key>Add a marker</key>
 	<string>添加标记</string>
 	<key>Add a marker (%@)</key>
@@ -404,6 +446,8 @@
 	<string>把另一段录制内容接到这一段的末尾，合成一个视频。</string>
 	<key>Add arrow at the playhead (⌥A)</key>
 	<string>在播放头处添加箭头（⌥A）</string>
+	<key>Add at the playhead</key>
+	<string>在播放头处添加</string>
 	<key>Add audio…</key>
 	<string>添加音频…</string>
 	<key>Add blur at the playhead (⌥B)</key>
@@ -428,6 +472,10 @@
 	<string>在播放头处添加高亮（⌥H）</string>
 	<key>Add image at the playhead</key>
 	<string>在播放头处添加图像</string>
+	<key>Add keyframe</key>
+	<string>添加关键帧</string>
+	<key>Add keyframe: %@</key>
+	<string>添加关键帧：%@</string>
 	<key>Add labels, speech-bubble callouts, and numbered circles for step-by-step guides.</key>
 	<string>添加标签、对话气泡式标注，以及用于分步指南的编号圆圈。</string>
 	<key>Add marker</key>
@@ -444,6 +492,8 @@
 	<string>添加声音文件</string>
 	<key>Add spotlight at the playhead</key>
 	<string>在播放头处添加聚光灯</string>
+	<key>Add text</key>
+	<string>添加文字</string>
 	<key>Add text at the playhead (⌥T)</key>
 	<string>在播放头处添加文字（⌥T）</string>
 	<key>Add text, arrows, highlights, and spotlights on top of the video.</key>
@@ -452,6 +502,8 @@
 	<string>使用预览上方的工具添加文本、箭头、高亮、模糊或图片</string>
 	<key>Add to Timeline</key>
 	<string>添加到时间线</string>
+	<key>Add to favourites</key>
+	<string>添加到收藏</string>
 	<key>Add typing zooms</key>
 	<string>添加打字缩放</string>
 	<key>Add zoom at playhead</key>
@@ -486,10 +538,18 @@
 	<string>为每段至少这么长的停顿添加一个“隐藏摄像头”块。可在摄像头轨道上拖移或删除；再次按下只替换这些块。</string>
 	<key>Adds a zoom wherever you clicked while recording.</key>
 	<string>在你录制时点按过的每个地方添加缩放。</string>
+	<key>Adjust</key>
+	<string>调节</string>
+	<key>Adjust and adjustment clips</key>
+	<string>调节和调节片段</string>
 	<key>Adjust to move it half a second</key>
 	<string>调整可将其移动半秒</string>
 	<key>Adjusted %lld zooms — ⌘Z to undo.</key>
 	<string>已调整 %lld 个缩放 — 按 ⌘Z 撤销。</string>
+	<key>Adjustment</key>
+	<string>调节</string>
+	<key>Adjustment clip</key>
+	<string>调节片段</string>
 	<key>Advanced Tools</key>
 	<string>高级工具</string>
 	<key>After Capture</key>
@@ -512,6 +572,12 @@
 	<string>手动对准</string>
 	<key>Aim by hand</key>
 	<string>手动对准</string>
+	<key>Alex Morgan · Designer</key>
+	<string>Alex Morgan · 设计师</string>
+	<key>Align left</key>
+	<string>左对齐</string>
+	<key>Align right</key>
+	<string>右对齐</string>
 	<key>All Captures</key>
 	<string>所有截屏</string>
 	<key>All Captures: show only Area, Window, Fullscreen, Scrolling, or Text captures.</key>
@@ -562,12 +628,18 @@
 	<string>同时查找这些词</string>
 	<key>Also scan the camera video</key>
 	<string>同时扫描摄像头视频</string>
+	<key>Also “%@” — it loses this key</key>
+	<string>还有“%@” — 它将失去此快捷键</string>
 	<key>Always show the arrow</key>
 	<string>始终显示箭头</string>
 	<key>Amber Fold</key>
 	<string>琥珀褶皱</string>
 	<key>An LF Studios project (Name.lfs): open the folder in LF Studios 1.12.0 or later to edit the video again. With clips cut to your edit, Include originals so it reopens in LF Studios adds the untouched recordings it needs.</key>
 	<string>LF Studios 项目（名称.lfs）：在 LF Studios 1.12.0 或更高版本中打开该文件夹，即可再次编辑视频。如果片段已按你的剪辑裁剪，“包含原始文件，以便在 LF Studios 中重新打开”会加入所需的未改动的录制内容。</string>
+	<key>An adjustment clip changes everything under it while it plays: drag its ends to set when.</key>
+	<string>调节片段播放时会改变其下方的所有内容：拖移它的两端来设定时间。</string>
+	<key>An adjustment clip changes everything under it while it plays: set it up in Properties ▸ Adjust (exposure, HSL, curves, colour wheels) and Filter.</key>
+	<string>调节片段播放时会改变其下方的所有内容：在“属性 ▸ 调节”（曝光、HSL、曲线、色轮）和“滤镜”中设置。</string>
 	<key>An older Creative Handoff is put back together from its files: the screen, the cuts, the camera at its place, captions, markers, and the pointer. A summary says what came back.</key>
 	<string>较早的创意交付会根据其中的文件重新组合：屏幕、剪切、位置正确的摄像头画面、字幕、标记和指针。摘要会说明恢复了哪些内容。</string>
 	<key>An optional 2-second “Made with LF Studios” card at the end.</key>
@@ -576,6 +648,8 @@
 	<string>角度</string>
 	<key>Angle, distance, softness, opacity, color, and an inner edge</key>
 	<string>角度、距离、柔和度、不透明度、颜色和内边缘</string>
+	<key>Animate a clip above the main track: set a value at one moment, another value later, and it moves between them.</key>
+	<string>为主轨道上方的片段制作动画：在某一时刻设定一个值，稍后设定另一个值，片段就会在两者之间过渡。</string>
 	<key>Animation</key>
 	<string>动画</string>
 	<key>Annotate Last Screenshot</key>
@@ -640,8 +714,16 @@
 	<string>应用裁剪（Return 键）</string>
 	<key>Apply this position to all captions</key>
 	<string>将此位置应用到所有字幕</string>
+	<key>Apply to all cuts</key>
+	<string>应用到所有剪切点</string>
+	<key>Apply to all cuts puts the same transition on every cut.</key>
+	<string>“应用到所有剪切点”会在每个剪切点使用相同的转场。</string>
+	<key>Apply to all cuts…</key>
+	<string>应用到所有剪切点…</string>
 	<key>Apply to all zooms</key>
 	<string>应用到所有缩放</string>
+	<key>Aqua</key>
+	<string>水蓝</string>
 	<key>Aqua Marble</key>
 	<string>水色大理石</string>
 	<key>Area</key>
@@ -656,6 +738,10 @@
 	<string>箭头尾部</string>
 	<key>Arrows, shapes &amp; lines</key>
 	<string>箭头、形状和线条</string>
+	<key>As a clip it gets keyframes, animations, effects and filters too.</key>
+	<string>作为片段，它也能使用关键帧、动画、特效和滤镜。</string>
+	<key>As an effect clip: drag an effect onto the timeline. It changes the main track and the tracks under it while it plays.</key>
+	<string>作为特效片段：将特效拖到时间线上。它播放时会改变主轨道以及它下方的轨道。</string>
 	<key>Ask where to save after each recording</key>
 	<string>每次录制后询问存储位置</string>
 	<key>Aspect Ratio %@ — %@</key>
@@ -704,6 +790,10 @@
 	<string>自动调整</string>
 	<key>Auto adjust picks settings for you; Reset goes back.</key>
 	<string>“自动调整”会为你选择设置；“重置”可恢复原样。</string>
+	<key>Auto captions</key>
+	<string>自动字幕</string>
+	<key>Auto captions makes captions from what's said, on this Mac.</key>
+	<string>“自动字幕”会在这台 Mac 上根据语音生成字幕。</string>
 	<key>Auto snapping</key>
 	<string>自动吸附</string>
 	<key>Auto snapping (N): what you drag lands on the playhead, other clips' edges and markers.</key>
@@ -730,12 +820,18 @@
 	<string>自动</string>
 	<key>Automatic detects each capture's language; pick languages when it guesses wrong. Accurate reads small text best — Fast answers sooner but knows fewer languages. Used by Capture Text, Copy Text, and History search.</key>
 	<string>“自动”会检测每张截屏的语言；识别有误时可手动选择语言。“精确”最适合识别小字 — “快速”响应更快，但支持的语言更少。用于“提取文字”、“拷贝文字”和历史记录搜索。</string>
+	<key>BREAKING</key>
+	<string>突发</string>
 	<key>Back</key>
 	<string>返回</string>
 	<key>Back to the LF Studios look</key>
 	<string>已恢复为 LF Studios 风格</string>
 	<key>Back to the original recording — ⌘Z to undo</key>
 	<string>已恢复为原始录制内容 — 按 ⌘Z 撤销</string>
+	<key>Back to the preset's key</key>
+	<string>恢复预设的快捷键</string>
+	<key>Back to the preset's keys</key>
+	<string>恢复预设的快捷键</string>
 	<key>Back to the start</key>
 	<string>回到开头</string>
 	<key>Back to the usual size, in the spot chosen above</key>
@@ -766,6 +862,14 @@
 	<string>Base</string>
 	<key>Based on Shotnix (MIT License)</key>
 	<string>基于 Shotnix（MIT 许可证）</string>
+	<key>Basic</key>
+	<string>基础</string>
+	<key>Basic: Exposure, Contrast, Highlights, Shadows, Whites, Blacks, Saturation, Vibrance, Temperature, Tint, Sharpen, Vignette, Grain, Fade.</key>
+	<string>基础：曝光、对比度、高光、阴影、白色色阶、黑色色阶、饱和度、自然饱和度、色温、色调、锐化、暗角、颗粒、褪色。</string>
+	<key>Beats</key>
+	<string>节拍</string>
+	<key>Beats marks where the beat is; dragged clips snap to the marks.</key>
+	<string>“节拍”会标记节拍位置；拖移的片段会吸附到标记上。</string>
 	<key>Before recording, turn on Microphone in the recording bar and check that its level meter moves when you speak.</key>
 	<string>录制前，在录制栏中打开“麦克风”，并确认说话时它的电平表会跳动。</string>
 	<key>Before recording, turn on Track where I type.</key>
@@ -788,12 +892,28 @@
 	<string>片段之间</string>
 	<key>Between clips: Hard cut, Dissolve, or Dip to black, with a Length.</key>
 	<string>片段之间：“硬切”“叠化”或“黑场过渡”，并可设定“时长”。</string>
+	<key>Between the clips</key>
+	<string>片段之间</string>
+	<key>Big title</key>
+	<string>大标题</string>
 	<key>Big, sharp videos take longer and need more space.</key>
 	<string>又大又清晰的视频需要更长时间和更多空间。</string>
+	<key>Bit rate</key>
+	<string>比特率</string>
 	<key>Black</key>
 	<string>黑色</string>
+	<key>Black &amp; white</key>
+	<string>黑白</string>
+	<key>Blacks</key>
+	<string>黑色色阶</string>
+	<key>Blend</key>
+	<string>混合</string>
 	<key>Blend from one clip into the next, and fade in and out of black.</key>
 	<string>从一个片段平滑过渡到下一个，并从黑色淡入、淡出到黑色。</string>
+	<key>Blend, cutout and masks</key>
+	<string>混合、抠像和蒙版</string>
+	<key>Blend: Screen lightens, Multiply darkens, Overlay adds contrast, and more.</key>
+	<string>混合：“滤色”变亮，“正片叠底”变暗，“叠加”增加对比度，还有更多。</string>
 	<key>Blossom</key>
 	<string>花开</string>
 	<key>Blue</key>
@@ -814,6 +934,8 @@
 	<string>模糊或移除背景</string>
 	<key>Blur what's behind you, or remove it completely.</key>
 	<string>模糊你身后的背景，或把它完全移除。</string>
+	<key>Blur, Glow, Glitch, Shake, VHS, Zoom pulse, Vignette, Film grain and more.</key>
+	<string>模糊、发光、故障、抖动、VHS、缩放脉冲、暗角、胶片颗粒等。</string>
 	<key>Blurred</key>
 	<string>已模糊</string>
 	<key>Blurred %lld items — adjust or delete them on the timeline</key>
@@ -824,10 +946,14 @@
 	<string>像真实摄像机一样模糊快速的镜头移动。</string>
 	<key>Bold</key>
 	<string>粗体</string>
+	<key>Bold caption</key>
+	<string>粗体字幕</string>
 	<key>Bold outline</key>
 	<string>粗描边</string>
 	<key>Bone</key>
 	<string>骨白</string>
+	<key>Boom</key>
+	<string>轰隆</string>
 	<key>Border</key>
 	<string>边框</string>
 	<key>Border color</key>
@@ -844,8 +970,18 @@
 	<string>右下</string>
 	<key>Bounce</key>
 	<string>弹跳</string>
+	<key>Box size</key>
+	<string>框大小</string>
+	<key>Break Apart</key>
+	<string>拆开</string>
+	<key>Break Apart (⌥⇧G) gives the clips back, looking as they do.</key>
+	<string>“拆开”（⌥⇧G）会还原出各个片段，外观保持不变。</string>
+	<key>Break apart</key>
+	<string>拆开</string>
 	<key>Bright</key>
 	<string>明亮</string>
+	<key>Brighten</key>
+	<string>提亮</string>
 	<key>Brightness</key>
 	<string>亮度</string>
 	<key>Brightness, Contrast, Saturation, Warmth, Tint, and Sharpness.</key>
@@ -860,12 +996,16 @@
 	<string>内置</string>
 	<key>Built-in (San Francisco)</key>
 	<string>内置（San Francisco）</string>
+	<key>Bullet</key>
+	<string>子弹时间</string>
 	<key>Burn captions into the picture, and save a subtitles file next to the video.</key>
 	<string>把字幕嵌入画面，并在视频旁边存储一个字幕文件。</string>
 	<key>Burn captions into the video</key>
 	<string>将字幕嵌入视频</string>
 	<key>Burn captions into the video: they're always visible.</key>
 	<string>将字幕嵌入视频：字幕会一直显示。</string>
+	<key>Burst</key>
+	<string>爆炸框</string>
 	<key>Buttons on the right, caption bottom-left, tabs at the top</key>
 	<string>按钮在右侧，说明文字在左下，标签页在顶部</string>
 	<key>Call</key>
@@ -876,6 +1016,8 @@
 	<string>标注气泡：%@</string>
 	<key>Callout: press on the thing to point at, drag the bubble out, then type.</key>
 	<string>标注气泡：按住要指向的东西，向外拖出气泡，然后输入文字。</string>
+	<key>Callouts</key>
+	<string>标注气泡</string>
 	<key>Camera</key>
 	<string>摄像头</string>
 	<key>Camera %@</key>
@@ -952,6 +1094,8 @@
 	<string>摄像头形状：圆形、圆角矩形、正方形、横向、竖向、4:3、3:4、自由或抠像（只有你，没有背景）。</string>
 	<key>Camera shape: how the camera looks in the video. The preview shows it.</key>
 	<string>摄像头形状：摄像头在视频中的样子。预览会显示出来。</string>
+	<key>Camera shutter</key>
+	<string>相机快门</string>
 	<key>Camera side</key>
 	<string>摄像头位置</string>
 	<key>Camera side, Split size (from 30/70 to 70/30, 50/50 to start), and Gap, with the video's background in between.</key>
@@ -1022,6 +1166,10 @@
 	<string>字幕样式</string>
 	<key>Caption style %@</key>
 	<string>字幕样式：%@</string>
+	<key>Caption styles</key>
+	<string>字幕样式</string>
+	<key>Caption styles and .srt files</key>
+	<string>字幕样式和 .srt 文件</string>
 	<key>Caption — drag to move it, right-click for more</key>
 	<string>字幕 — 拖移可移动，右键点按查看更多</string>
 	<key>Caption “%@”</key>
@@ -1036,14 +1184,16 @@
 	<string>字幕会绘制在画面中。</string>
 	<key>Captions are hidden in the editor (Captions tab → Show captions).</key>
 	<string>字幕已在编辑器中隐藏（“字幕”标签页→“显示字幕”）。</string>
+	<key>Captions from an .srt or .vtt file, in place of these</key>
+	<string>用 .srt 或 .vtt 文件中的字幕替换这些字幕</string>
+	<key>Captions from what's said, made on this Mac (language and Whisper in the Captions panel)</key>
+	<string>根据语音生成的字幕，在这台 Mac 上制作（语言和 Whisper 在“字幕”面板中设定）</string>
 	<key>Captions from your narration — and cut the video by editing its words</key>
 	<string>根据你的解说生成字幕 — 还能通过编辑文字来剪辑视频</string>
 	<key>Captions in %@</key>
 	<string>%@字幕</string>
 	<key>Captions in the export</key>
 	<string>导出视频中的字幕</string>
-	<key>Captions live in the Captions panel on the right: make them from your voice, type them, translate and style them.</key>
-	<string>字幕位于右侧的“字幕”面板中：可以根据你的语音生成、手动输入、翻译并设置样式。</string>
 	<key>Captions look like this</key>
 	<string>字幕 效果 就是 这样</string>
 	<key>Captions panel ▸ Edit by text (after transcribing).</key>
@@ -1142,6 +1292,8 @@
 	<string>卡片使用你的背景，时间线会随之延长。“Made with LF Studios”结尾画面是单独的 — 它位于导出选项中。</string>
 	<key>Center</key>
 	<string>居中</string>
+	<key>Centre</key>
+	<string>居中</string>
 	<key>Change Shortcuts in Settings</key>
 	<string>在设置中更改快捷键</string>
 	<key>Change a zoom</key>
@@ -1152,14 +1304,26 @@
 	<string>更改指针的外观：macOS 经典、白色、轮廓、触控圆点、圆环，或你自己的图片。</string>
 	<key>Change keyboard shortcuts</key>
 	<string>更改快捷键</string>
+	<key>Change the editor's keys</key>
+	<string>更改编辑器的快捷键</string>
 	<key>Change the order with Move earlier and Move later, or remove one with Remove from this video.</key>
 	<string>用“前移”和“后移”更改顺序，或用“从此视频中移除”去掉其中一段。</string>
 	<key>Change the text</key>
 	<string>修改文本</string>
+	<key>Change the timeline's keys, or use Final Cut Pro or Premiere Pro keys</key>
+	<string>更改时间线的快捷键，或使用 Final Cut Pro 或 Premiere Pro 的快捷键</string>
+	<key>Change the volume over time, fade sound in and out, even out loudness, and find the beat.</key>
+	<string>随时间改变音量、让声音淡入淡出、统一响度，以及找到节拍。</string>
 	<key>Changed your mind? Click the yellow marker on the timeline to bring a cut part back.</key>
 	<string>改变主意了？点按时间线上的黄色标记，即可恢复剪掉的部分。</string>
 	<key>Changes only the camera, never your screen.</key>
 	<string>只会更改摄像头画面，绝不会更改你的屏幕。</string>
+	<key>Changes the main track and the tracks under this one while it plays.</key>
+	<string>播放时会改变主轨道以及此片段下方的轨道。</string>
+	<key>Changes the main track and the tracks under this one while it plays. Drag its ends on the timeline to make it longer or shorter.</key>
+	<string>播放时会改变主轨道以及此片段下方的轨道。在时间线上拖移它的两端，可使其变长或变短。</string>
+	<key>Chapter 2</key>
+	<string>第 2 章</string>
 	<key>Chapters</key>
 	<string>章节</string>
 	<key>Chapters as text (“0:00 Start”) for a YouTube description</key>
@@ -1200,20 +1364,22 @@
 	<string>在 LF Studios 菜单中选择“捕捉区域”即可开始</string>
 	<key>Choose Capture Text, or press its shortcut.</key>
 	<string>选择“提取文字”，或按下它的快捷键。</string>
+	<key>Choose Create Proxies…. LF Studios says how much space they take first.</key>
+	<string>选取“创建代理…”。LF Studios 会先告诉你它们占用多少空间。</string>
 	<key>Choose Crop, or press C.</key>
 	<string>选择“裁剪”，或按 C 键。</string>
 	<key>Choose Gradient, Solid Color, or Image, then a preset. Upload Custom Image uses your own picture.</key>
 	<string>选择“渐变”“纯色”或“图像”，然后选择一个预设。“选取自定图像”可使用你自己的图片。</string>
 	<key>Choose Image…</key>
 	<string>选择图像…</string>
+	<key>Choose In, Out or Combo.</key>
+	<string>选择“入场”“出场”或“组合”。</string>
 	<key>Choose LF Studios ▸ Check for Updates….</key>
 	<string>选择“LF Studios ▸ 检查更新…”。</string>
 	<key>Choose Layout ▸ Split screen, and a Direction. The frame becomes the screen's part, like 8:9 for a 16:9 video split side by side, or 32:9 stacked, and the camera preview fills the camera's part.</key>
 	<string>选择“布局 ▸ 分屏”和一个方向。录制框会变成屏幕部分，例如 16:9 视频并排时为 8:9，上下排列时为 32:9，摄像头预览会填满摄像头部分。</string>
 	<key>Choose Location…</key>
 	<string>选择位置…</string>
-	<key>Choose MP4.</key>
-	<string>选择 MP4。</string>
 	<key>Choose My Style first: Presets ▸ Edit Presets ▸ Use as My Style (⇧⌘Y)</key>
 	<string>请先选择我的风格：预设 ▸ 编辑预设 ▸ 用作我的风格（⇧⌘Y）</string>
 	<key>Choose Off, 3, 5, or 10 seconds. Click the countdown to cancel it.</key>
@@ -1322,18 +1488,34 @@
 	<string>在录制栏中选择你的选项。</string>
 	<key>Choose...</key>
 	<string>选取…</string>
+	<key>Choose…</key>
+	<string>选取…</string>
+	<key>Chroma key</key>
+	<string>色度抠图</string>
+	<key>Chroma key takes out one colour, like a green screen; pick the colour, then set Strength and Shadow.</key>
+	<string>“色度抠图”会去除一种颜色，就像绿幕；选取颜色，然后设定“强度”和“阴影”。</string>
+	<key>Cinema</key>
+	<string>影院</string>
+	<key>Cinema bars</key>
+	<string>电影黑边</string>
 	<key>Cinematic</key>
 	<string>电影感</string>
 	<key>Circle</key>
 	<string>圆形</string>
+	<key>Circle scribble</key>
+	<string>涂鸦圆圈</string>
 	<key>Circle, Rounded rectangle, Square (1:1), Landscape (16:9), Portrait (9:16), 4:3, 3:4, or Free (any width and height).</key>
 	<string>圆形、圆角矩形、正方形（1:1）、横向（16:9）、竖向（9:16）、4:3、3:4 或自由（任意宽度和高度）。</string>
 	<key>Citrus</key>
 	<string>柑橘</string>
+	<key>Clap</key>
+	<string>拍手</string>
 	<key>Classic</key>
 	<string>经典</string>
 	<key>Clay</key>
 	<string>陶土</string>
+	<key>Clean</key>
+	<string>简洁</string>
 	<key>Clean Up</key>
 	<string>清理</string>
 	<key>Clean Up History?</key>
@@ -1344,6 +1526,8 @@
 	<string>清理…</string>
 	<key>Clean Up… empties History's trash and removes leftover files.</key>
 	<string>“清理…”会清空“历史记录”的废纸篓，并移除残留的文件。</string>
+	<key>Clean title</key>
+	<string>简洁标题</string>
 	<key>Clean up video data</key>
 	<string>清理视频数据</string>
 	<key>Cleaning Up…</key>
@@ -1368,12 +1552,28 @@
 	<string>清除历史记录</string>
 	<key>Clear History?</key>
 	<string>要清除历史记录吗？</string>
+	<key>Clear beats</key>
+	<string>清除节拍</string>
 	<key>Clear search</key>
 	<string>清除搜索</string>
 	<key>Clear the search</key>
 	<string>清除搜索</string>
 	<key>Click</key>
 	<string>点按</string>
+	<key>Click + for a filter clip at the playhead (over the selected clip), or drag one onto the timeline.</key>
+	<string>点按 + 在播放头处添加滤镜片段（位于所选片段上方），或将滤镜拖到时间线上。</string>
+	<key>Click + for a filter clip at the playhead.</key>
+	<string>点按 + 在播放头处添加滤镜片段。</string>
+	<key>Click + for an effect clip at the playhead (over the selected clip), or drag one onto the timeline.</key>
+	<string>点按 + 在播放头处添加特效片段（位于所选片段上方），或将特效拖到时间线上。</string>
+	<key>Click + for an effect clip at the playhead, or drag one onto the timeline.</key>
+	<string>点按 + 在播放头处添加特效片段，或将特效拖到时间线上。</string>
+	<key>Click + to put a filter on “%@”, or drag one onto the timeline for a filter clip.</key>
+	<string>点按 + 为“%@”添加滤镜，或将滤镜拖到时间线上作为滤镜片段。</string>
+	<key>Click + to put an effect on “%@”, or drag it onto the timeline for an effect clip.</key>
+	<string>点按 + 为“%@”添加特效，或将特效拖到时间线上作为特效片段。</string>
+	<key>Click + to put one on the selected clip's cut (or the cut nearest the playhead), or drag one onto a cut on the timeline.</key>
+	<string>点按 + 将转场添加到所选片段的剪切点（或离播放头最近的剪切点），或将转场拖到时间线上的剪切点。</string>
 	<key>Click Adapt to this ratio: zooms, the camera bubble, and captions move to fit.</key>
 	<string>点按“适配此比例”：缩放、摄像头气泡和字幕会移到合适的位置。</string>
 	<key>Click Add Loupe.</key>
@@ -1382,6 +1582,8 @@
 	<string>点按“添加音频…”，然后选择一个或多个文件：MP3、WAV、M4A、AAC、AIFF、FLAC 或 CAF。</string>
 	<key>Click Add camera video… and choose the video.</key>
 	<string>点按“添加摄像头视频…”，然后选择视频。</string>
+	<key>Click Add text, or drag a template onto the timeline.</key>
+	<string>点按“添加文字”，或将模板拖到时间线上。</string>
 	<key>Click Apply, or press Return.</key>
 	<string>点按“应用”，或按下 Return 键。</string>
 	<key>Click Background.</key>
@@ -1474,6 +1676,8 @@
 	<string>点按录制栏中的“显示快捷键”（⌘），或前往“设置 ▸ 录制 ▸ 显示快捷键”。</string>
 	<key>Click Speaker notes in the recording bar, or in the bar while recording.</key>
 	<string>点按录制栏中的“演讲者备注”，录制期间也可以在录制栏中点按。</string>
+	<key>Click Start tracking. The clip follows it to the clip's end.</key>
+	<string>点按“开始跟踪”。片段会一直跟踪它，直到片段结束。</string>
 	<key>Click Stop. Your voice is on a new track called Voiceover.</key>
 	<string>点按“停止”。你的声音会放在名为“配音”的新轨道上。</string>
 	<key>Click System audio in the recording bar, or Settings ▸ Recording ▸ Audio ▸ Record system audio.</key>
@@ -1490,18 +1694,26 @@
 	<string>点按播放器中的片段即可移动它，拖移角可调整大小，或用圆形旋钮旋转。</string>
 	<key>Click a clip to split it there. A or Esc goes back to Select.</key>
 	<string>点按片段即可在该处分割。按 A 或 Esc 返回“选择”。</string>
+	<key>Click a command's key, then press the new one (Esc stops, ⌫ leaves it without a key).</key>
+	<string>点按命令的快捷键，然后按下新的快捷键（按 Esc 停止，按 ⌫ 则不设快捷键）。</string>
+	<key>Click a key to change it, then press the new one (Esc stops, ⌫ leaves it without a key). Space, ⌘Z, ⌘K, ⌘E and the arrows stay as they are.</key>
+	<string>点按快捷键进行更改，然后按下新的快捷键（按 Esc 停止，按 ⌫ 则不设快捷键）。空格键、⌘Z、⌘K、⌘E 和箭头键保持不变。</string>
 	<key>Click a line to edit its words; click its time to jump there; × removes it.</key>
 	<string>点按一行可编辑其文字；点按它的时间可跳到那里；点按 × 可将其移除。</string>
 	<key>Click a marker to jump there; double-click to rename it; right-click to delete it.</key>
 	<string>点按标记可跳到那里；连按两次可重新命名；右键点按可删除。</string>
 	<key>Click a picture on the player to move it, resize it from a corner, or turn it with the round knob. It lands on the middle and the edges, with a line showing where; hold ⌘ to move it freely.</key>
 	<string>点按播放器中的图片即可移动它、拖移角调整大小，或用圆形旋钮旋转。它会吸附到中间和边缘，并有线条标出位置；按住 ⌘ 可自由移动。</string>
+	<key>Click a preset (Fade, Zoom, Slide, Spin, Pop, Blur…), then set its Length.</key>
+	<string>点按一个预设（淡化、缩放、滑动、旋转、弹出、模糊…），然后设定“时长”。</string>
 	<key>Click a project to open it.</key>
 	<string>点按一个项目即可打开。</string>
 	<key>Click a recording in Home, click Edit Video after recording, or click Open video… in Home. The LF Studios menu ▸ Edit Last Recording opens the newest one.</key>
 	<string>在“主页”中点按一段录制内容，在录制后点按“编辑视频”，或点按“主页”中的“打开视频…”。“LF Studios 菜单 ▸ 编辑上一段录制内容”会打开最新的一段。</string>
 	<key>Click a screenshot in Home, or choose Edit in History or on the preview after capture. The LF Studios menu ▸ Annotate Last Screenshot opens the newest one.</key>
 	<string>在“主页”中点按一张截屏，或在“历史记录”或截取后预览中选择“编辑”。“LF Studios 菜单 ▸ 标注上一张截屏”会打开最新的一张。</string>
+	<key>Click a style to use it for every caption.</key>
+	<string>点按一种样式，用于所有字幕。</string>
 	<key>Click a tool, or press its key.</key>
 	<string>点按一个工具，或按下它的按键。</string>
 	<key>Click a window to capture it  ·  Esc cancels</key>
@@ -1554,6 +1766,8 @@
 	<string>在图片上点按它所指的位置。</string>
 	<key>Click the trash button, then Discard.</key>
 	<string>点按废纸篓按钮，然后点按“丢弃”。</string>
+	<key>Click to add a point, drag to move it, double-click to take it away.</key>
+	<string>点按以添加点，拖移以移动点，连按两次以移除点。</string>
 	<key>Click to add a zoom — or press Z at the playhead</key>
 	<string>点按即可添加缩放 — 或在播放头处按下 Z</string>
 	<key>Click to add the next step</key>
@@ -1562,6 +1776,8 @@
 	<string>点按即可捕捉。</string>
 	<key>Click volume</key>
 	<string>点按音量</string>
+	<key>Click ◆ next to a setting to animate it: set a keyframe, move the playhead, change the setting.</key>
+	<string>点按设置旁边的 ◆ 为其制作动画：设定关键帧，移动播放头，再更改设置。</string>
 	<key>Clicked Don't Allow by mistake? Click Open System Settings below and turn on LF Studios under Camera.</key>
 	<string>不小心点了“不允许”？点按下方的“打开系统设置”，然后在“摄像头”下打开 LF Studios。</string>
 	<key>Clicked Don't Allow by mistake? Click Open System Settings below and turn on LF Studios under Microphone.</key>
@@ -1598,6 +1814,8 @@
 	<string>已分割片段</string>
 	<key>Clips</key>
 	<string>片段</string>
+	<key>Clock tick</key>
+	<string>时钟滴答</string>
 	<key>Close</key>
 	<string>关闭</string>
 	<key>Close (Esc)</key>
@@ -1614,22 +1832,42 @@
 	<string>完成后关闭窗口。如果你还没有存储，LF Studios 会先询问。</string>
 	<key>Closing the editor stops it.</key>
 	<string>关闭编辑器会停止此操作。</string>
+	<key>Cloud</key>
+	<string>云朵</string>
 	<key>Coastal Haze</key>
 	<string>海岸薄雾</string>
 	<key>Cobalt Drapes</key>
 	<string>钴蓝帷幕</string>
+	<key>Code</key>
+	<string>代码</string>
+	<key>Codec</key>
+	<string>编解码器</string>
+	<key>Coin</key>
+	<string>硬币</string>
 	<key>Collapse %@</key>
 	<string>折叠“%@”</string>
 	<key>Collapse this track</key>
 	<string>折叠此轨道</string>
 	<key>Color</key>
 	<string>颜色</string>
+	<key>Color burn</key>
+	<string>颜色加深</string>
+	<key>Color dodge</key>
+	<string>颜色减淡</string>
 	<key>Colors, sizes &amp; bold</key>
 	<string>颜色、大小和粗体</string>
+	<key>Colour</key>
+	<string>颜色</string>
+	<key>Colour to take out</key>
+	<string>要去除的颜色</string>
 	<key>Columns, tables, and right-to-left languages come out in reading order.</key>
 	<string>分栏、表格和从右向左书写的语言都会按阅读顺序输出。</string>
+	<key>Combo</key>
+	<string>组合</string>
 	<key>Come back to LF Studios: the option you picked turns on by itself.</key>
 	<string>回到 LF Studios：你选择的选项会自动打开。</string>
+	<key>Comic</key>
+	<string>漫画</string>
 	<key>Command Center</key>
 	<string>命令中心</string>
 	<key>Commands</key>
@@ -1638,16 +1876,28 @@
 	<string>命令和快捷键列表</string>
 	<key>Compose Email</key>
 	<string>撰写邮件</string>
+	<key>Compound clip</key>
+	<string>复合片段</string>
+	<key>Compound clip %lld</key>
+	<string>复合片段 %lld</string>
+	<key>Compound clips</key>
+	<string>复合片段</string>
 	<key>Compressed AAC (256 kbps): small, and plays everywhere — for podcasts and sharing</key>
 	<string>压缩的 AAC（256 kbps）：文件小，到处都能播放 — 适合播客和分享</string>
 	<key>Compression</key>
 	<string>压缩</string>
 	<key>Computer sound</key>
 	<string>电脑声音</string>
+	<key>Confetti</key>
+	<string>彩纸</string>
 	<key>Conflict detected</key>
 	<string>检测到冲突</string>
 	<key>Contrast</key>
 	<string>对比度</string>
+	<key>Cool</key>
+	<string>冷调</string>
+	<key>Cool down</key>
+	<string>降温</string>
 	<key>Copied</key>
 	<string>已拷贝</string>
 	<key>Copied %lld clips — ⌘V pastes them at the playhead</key>
@@ -1748,6 +1998,8 @@
 	<string>无法开始录制（%@）。</string>
 	<key>Couldn't add that song — %@</key>
 	<string>无法添加这首歌 — %@</string>
+	<key>Couldn't add the cover</key>
+	<string>无法添加封面</string>
 	<key>Couldn't copy the screenshot. Try again, or save it instead.</key>
 	<string>无法拷贝截屏。请重试，或改为存储。</string>
 	<key>Couldn't create the GIF file. Check that you can save to that folder, then export again.</key>
@@ -1762,18 +2014,32 @@
 	<string>找不到要调整大小的窗口。请重新选择后再试一次。</string>
 	<key>Couldn't finish the file</key>
 	<string>无法完成该文件</string>
+	<key>Couldn't follow it: %@</key>
+	<string>无法跟踪：%@</string>
+	<key>Couldn't follow that — try a bigger box over something with clear edges</key>
+	<string>无法跟踪 — 试试用更大的框框住边缘清晰的物体</string>
+	<key>Couldn't make a proxy of “%@”: %@</key>
+	<string>无法为“%@”创建代理：%@</string>
 	<key>Couldn't make captions</key>
 	<string>无法生成字幕</string>
+	<key>Couldn't make that sound: %@</key>
+	<string>无法生成该声音：%@</string>
 	<key>Couldn't make the click sound. Turn off Click sounds (Audio tab), then export again.</key>
 	<string>无法生成点按音效。请关闭“点按音效”（“音频”标签页），然后重新导出。</string>
+	<key>Couldn't make the cover</key>
+	<string>无法生成封面</string>
 	<key>Couldn't make the freeze frame</key>
 	<string>无法制作定格画面</string>
 	<key>Couldn't open that image</key>
 	<string>无法打开该图像</string>
+	<key>Couldn't open that picture</key>
+	<string>无法打开该图片</string>
 	<key>Couldn't open that video</key>
 	<string>无法打开该视频</string>
 	<key>Couldn't open that video — %@</key>
 	<string>无法打开该视频 — %@</string>
+	<key>Couldn't open the cover picture</key>
+	<string>无法打开封面图片</string>
 	<key>Couldn't open the microphone</key>
 	<string>无法打开麦克风</string>
 	<key>Couldn't open this video</key>
@@ -1800,6 +2066,8 @@
 	<string>无法读取声音</string>
 	<key>Couldn't read the video</key>
 	<string>无法读取视频</string>
+	<key>Couldn't read the video to follow</key>
+	<string>无法读取要跟踪的视频</string>
 	<key>Couldn't reverse it — %@</key>
 	<string>无法倒放 — %@</string>
 	<key>Couldn't save the captions file</key>
@@ -1828,16 +2096,26 @@
 	<string>无法写入一帧</string>
 	<key>Couldn't write the GIF. Check that there's free space, or export a shorter part.</key>
 	<string>无法写入 GIF。请确认有足够的可用空间，或导出较短的部分。</string>
+	<key>Couldn't write the proxy</key>
+	<string>无法写入代理</string>
 	<key>Couldn't write the video. Check that there's free space and that you can save to that folder, then export again.</key>
 	<string>无法写入视频。请确认有足够的可用空间且你可以存储到该文件夹，然后重新导出。</string>
 	<key>Countdown</key>
 	<string>倒计时</string>
+	<key>Cover</key>
+	<string>封面</string>
 	<key>Covers the whole video; the edges may be cut off</key>
 	<string>铺满整个视频；边缘可能会被裁掉</string>
 	<key>Create</key>
 	<string>创建</string>
 	<key>Create Handoff</key>
 	<string>创建交付</string>
+	<key>Create Proxies</key>
+	<string>创建代理</string>
+	<key>Create Proxies…</key>
+	<string>创建代理…</string>
+	<key>Create proxies for %lld videos?</key>
+	<string>要为 %lld 个视频创建代理吗？</string>
 	<key>Creative Handoff</key>
 	<string>创意交付</string>
 	<key>Creative Handoff's README.txt says where each part goes, in pixels, for your editing app.</key>
@@ -1846,6 +2124,8 @@
 	<string>创意交付…</string>
 	<key>Crimson Ridge</key>
 	<string>绯红山脊</string>
+	<key>Crisp</key>
+	<string>清透</string>
 	<key>Crisp and compact — the best default</key>
 	<string>清晰且紧凑 — 最佳默认选项</string>
 	<key>Crop</key>
@@ -1868,6 +2148,10 @@
 	<string>裁剪…</string>
 	<key>Crop…: drag a frame over the camera picture to choose what the bubble shows.</key>
 	<string>裁剪…：在摄像头画面上拖移一个框，选择气泡要显示的部分。</string>
+	<key>Cross</key>
+	<string>叉号</string>
+	<key>Cross process</key>
+	<string>交叉冲印</string>
 	<key>Cursor</key>
 	<string>指针</string>
 	<key>Cursor &amp; editable cursor</key>
@@ -1894,6 +2178,16 @@
 	<string>指针、点按和快捷键</string>
 	<key>Cursor: shows the pointer in the video.</key>
 	<string>指针：在视频中显示指针。</string>
+	<key>Curve</key>
+	<string>曲线</string>
+	<key>Curve point</key>
+	<string>曲线点</string>
+	<key>Curve: Montage, Hero, Bullet, Jump cut, Flash in or Flash out, or drag the points of your own.</key>
+	<string>曲线：蒙太奇、英雄时刻、子弹时间、跳接、闪进或闪出，或拖移点自行绘制。</string>
+	<key>Curved arrow</key>
+	<string>曲线箭头</string>
+	<key>Curves</key>
+	<string>曲线</string>
 	<key>Custom</key>
 	<string>自定</string>
 	<key>Custom Size…</key>
@@ -1914,6 +2208,8 @@
 	<string>自定比例</string>
 	<key>Custom: %@</key>
 	<string>自定图像：%@</string>
+	<key>Customize…</key>
+	<string>自定…</string>
 	<key>Custom…</key>
 	<string>自定…</string>
 	<key>Custom… for any other shape: type it like 3:2 or 2.39:1. Choose Custom… again to change it.</key>
@@ -1950,6 +2246,10 @@
 	<string>剪切和速度调整（%lld 个片段）</string>
 	<key>Dark Mode</key>
 	<string>深色</string>
+	<key>Dark box</key>
+	<string>深色框</string>
+	<key>Darken</key>
+	<string>变暗</string>
 	<key>Date Added</key>
 	<string>添加日期</string>
 	<key>De-esser</key>
@@ -2026,8 +2326,18 @@
 	<string>取消选择/关闭</string>
 	<key>Desert Violet</key>
 	<string>沙漠紫罗兰</string>
+	<key>Detect beats</key>
+	<string>检测节拍</string>
+	<key>Detect beats: marks on the track where the beat is; clips snap to them</key>
+	<string>检测节拍：在轨道上标记节拍位置；片段会吸附到标记上</string>
+	<key>Difference</key>
+	<string>差值</string>
+	<key>Ding</key>
+	<string>叮</string>
 	<key>Dip to black</key>
 	<string>黑场过渡</string>
+	<key>Dip to white</key>
+	<string>白场过渡</string>
 	<key>Dip under voice</key>
 	<string>人声时降低</string>
 	<key>Dip under voice: an added track (like background sound) gets quieter while you talk. It's off until you turn it on.</key>
@@ -2070,6 +2380,8 @@
 	<string>叠化</string>
 	<key>Dissolve Between Clips</key>
 	<string>片段之间叠化</string>
+	<key>Dissolve, dip to black or white, slide, push, wipe, zoom, blur or spin between clips on the main track.</key>
+	<string>在主轨道的片段之间叠化、黑场或白场过渡、滑动、推移、擦除、缩放、模糊或旋转。</string>
 	<key>Distance</key>
 	<string>距离</string>
 	<key>Do you want to review them before quitting?</key>
@@ -2104,6 +2416,8 @@
 	<string>连按两次以编辑，或拖移到其他 App。Command-C 拷贝，Command-S 存储，Esc 键关闭。</string>
 	<key>Double-click to show the recording in Finder</key>
 	<string>连按两次以在“访达”中显示录制内容</string>
+	<key>Down</key>
+	<string>垂直</string>
 	<key>Download</key>
 	<string>下载</string>
 	<key>Download %@ (%@)</key>
@@ -2130,8 +2444,14 @@
 	<string>将文件拖到时间线或播放器上，或点按缩略图上的 +。视频会放在末尾；图片或声音从播放头处开始，或从你在时间线上放下的位置开始。</string>
 	<key>Drag a frame. Drag inside it to move it, or drag its edges to resize it.</key>
 	<string>拖移出一个框。在框内拖移可移动它，拖移边缘可调整大小。</string>
+	<key>Drag a point up for faster, down for slower. Double-click to add a point; double-click a point to take it away.</key>
+	<string>向上拖移点以加快，向下拖移以减慢。连按两次以添加点；连按两次点以移除。</string>
 	<key>Drag a screenshot out of History and drop it where you want it.</key>
 	<string>把截屏从“历史记录”中拖出来，放到你想要的地方。</string>
+	<key>Drag a sticker onto the timeline; move, size and animate it like any clip.</key>
+	<string>将贴纸拖到时间线上；像其他片段一样移动它、调整大小并添加动画。</string>
+	<key>Drag a transition onto the cut, or select a clip and click +.</key>
+	<string>将转场拖到剪切点上，或选择一个片段并点按 +。</string>
 	<key>Drag a video or a picture from Finder or the Library onto the timeline, above Video clips.</key>
 	<string>将视频或图片从“访达”或素材库拖到时间线上“视频片段”的上方。</string>
 	<key>Drag an edge or a corner to resize it, the middle to move it.</key>
@@ -2152,6 +2472,8 @@
 	<string>在预览上拖移它来放置；拖移一角可调整大小。</string>
 	<key>Drag it on the timeline to another time or track; drag its ends to trim. ⌥-drag inside a video to slip it.</key>
 	<string>在时间线上将它拖到其他时间或轨道；拖移两端可修剪。在视频内按住 ⌥ 拖移可滑动内容。</string>
+	<key>Drag it onto the timeline, or click + to add it at the playhead.</key>
+	<string>将其拖到时间线上，或点按 + 在播放头处添加。</string>
 	<key>Drag it over what you want to show.</key>
 	<string>把它拖到你想展示的内容上。</string>
 	<key>Drag it to move it; drag an edge to resize it.</key>
@@ -2188,6 +2510,8 @@
 	<string>拖移“摄像头”轨道上的块可移动它，拖移其边缘可更改持续时间。每次切换都会平滑过渡。</string>
 	<key>Drag the blur over what you want to hide.</key>
 	<string>把模糊框拖到你想隐藏的内容上。</string>
+	<key>Drag the box on the player over what the clip should follow, then click Start tracking. It follows from the playhead to the clip's end.</key>
+	<string>在播放器中将框拖到片段要跟踪的物体上，然后点按“开始跟踪”。片段会从播放头处一直跟踪到片段结束。</string>
 	<key>Drag the box on the preview over anything private. Blur follows zooms and stays until its bar ends.</key>
 	<string>在预览中将方框拖到任何隐私内容上。模糊效果会跟随缩放，并持续到其条块结束。</string>
 	<key>Drag the camera's edges on the video to change its width and height.</key>
@@ -2222,6 +2546,8 @@
 	<string>在预览中拖移聚光区域；拖移某个角可调整其大小。在其时间线条块持续期间，周围的一切都会变暗。</string>
 	<key>Drag the track on the timeline to move it; drag an edge to trim it; click it and press ⌘B to split it, or ⌫ to delete a piece.</key>
 	<string>在时间线上拖移轨道可移动它；拖移边缘可修剪；点按它后按 ⌘B 分割，或按 ⌫ 删除一段。</string>
+	<key>Drag the yellow box over it, and set Box size.</key>
+	<string>将黄色框拖到它上面，并设定“框大小”。</string>
 	<key>Drag the zoom's edges on the timeline to set its length.</key>
 	<string>在时间线上拖移缩放的边缘，设定它的长度。</string>
 	<key>Drag to capture  ·  Hold ⇧ as you let go to adjust first  ·  Space moves  ·  Esc cancels</key>
@@ -2234,6 +2560,8 @@
 	<string>拖移可更改此片段的开头</string>
 	<key>Drag to move the bars</key>
 	<string>拖移以移动两条栏</string>
+	<key>Drag to move the compound clip; drag a corner to size it</key>
+	<string>拖移以移动复合片段；拖移角以调整大小</string>
 	<key>Drag to move this clip to another place in the video</key>
 	<string>拖移可将此片段移到视频中的其他位置</string>
 	<key>Drag to move where the arrow starts</key>
@@ -2290,6 +2618,14 @@
 	<string>轨道的眼睛图标可在预览和导出中隐藏它，扬声器图标可使其静音。锁可防止其中的内容被更改。</string>
 	<key>Each video is looked through only once: the second time is instant.</key>
 	<string>每个视频只需检查一次：第二次会立即完成。</string>
+	<key>Ease in</key>
+	<string>缓入</string>
+	<key>Ease in and out</key>
+	<string>缓入缓出</string>
+	<key>Ease out</key>
+	<string>缓出</string>
+	<key>Easing</key>
+	<string>缓动</string>
 	<key>Edge highlight</key>
 	<string>边缘描边</string>
 	<key>Edit</key>
@@ -2312,6 +2648,8 @@
 	<string>编辑字幕行</string>
 	<key>Edit the selected screenshot</key>
 	<string>编辑所选截屏</string>
+	<key>Edit with Proxies</key>
+	<string>使用代理剪辑</string>
 	<key>Edit your video like a document: delete words, and that part of the video goes.</key>
 	<string>像编辑文稿一样编辑视频：删掉文字，视频中对应的部分也会随之删除。</string>
 	<key>Editable Cursor</key>
@@ -2326,6 +2664,12 @@
 	<string>编辑</string>
 	<key>Editor tips</key>
 	<string>编辑器提示</string>
+	<key>Effect</key>
+	<string>特效</string>
+	<key>Effects</key>
+	<string>特效</string>
+	<key>Elegant</key>
+	<string>优雅</string>
 	<key>Ellipse</key>
 	<string>椭圆</string>
 	<key>Email</key>
@@ -2350,8 +2694,6 @@
 	<string>在“系统设置”中启用 LF Studios，然后退出并重新打开，以便 macOS 应用更改。</string>
 	<key>Enabled</key>
 	<string>已启用</string>
-	<key>Encoding</key>
-	<string>编码</string>
 	<key>End card</key>
 	<string>结尾画面</string>
 	<key>End here</key>
@@ -2372,6 +2714,8 @@
 	<string>喜欢 LF Studios 吗？在 GitHub 上加个星标，让更多人发现它。</string>
 	<key>Enter a width and a height from %@ to %@ pixels.</key>
 	<string>请输入 %@ 到 %@ 像素之间的宽度和高度。</string>
+	<key>Error</key>
+	<string>错误</string>
 	<key>Esc</key>
 	<string>Esc</string>
 	<key>Esc and the arrow keys work after you click the frame's border or the bars.</key>
@@ -2422,8 +2766,14 @@
 	<string>这里列出所有快捷键，按键与这台 Mac 当前的设定一致。在任何应用中都能用的快捷键，可以在“设置 ▸ 快捷键”中更改。</string>
 	<key>Every sound level is at 0 (Audio tab) — this export will have no sound.</key>
 	<string>所有音量都为 0（“音频”标签页）— 此导出将没有声音。</string>
+	<key>Every video here has a proxy</key>
+	<string>这里的每个视频都有代理</string>
 	<key>Every video, picture, and sound file of the project in one place: what's in the video, and what you imported to use.</key>
 	<string>项目中的所有视频、图片和声音文件集中在一处：视频中已有的，以及你导入备用的。</string>
+	<key>Everyday</key>
+	<string>日常</string>
+	<key>Everything (offset)</key>
+	<string>全部（偏移）</string>
 	<key>Everything LF Studios can do, section by section. Effects start off: each one is turned on by its own button or switch.</key>
 	<string>LF Studios 的全部功能，按类别逐一介绍。所有效果一开始都是关闭的，每个效果都要用它自己的按钮或开关来打开。</string>
 	<key>Everything for the recording, before you start: sound, camera, cursor, quality, and more.</key>
@@ -2436,12 +2786,16 @@
 	<string>一切就绪</string>
 	<key>Everything stays on your Mac</key>
 	<string>一切都留在你的 Mac 上</string>
+	<key>Everything to add to a video, in tabs: Media, Audio, Text, Stickers, Effects, Transitions, Captions, Filters and Adjust.</key>
+	<string>要添加到视频的所有内容，按标签页分类：媒体、音频、文字、贴纸、特效、转场、字幕、滤镜和调节。</string>
 	<key>Exactly as recorded.</key>
 	<string>与录制时完全一致。</string>
 	<key>Export</key>
 	<string>导出</string>
 	<key>Export (⌘E)</key>
 	<string>导出（⌘E）</string>
+	<key>Export .srt…</key>
+	<string>导出 .srt…</string>
 	<key>Export All Ratios…</key>
 	<string>导出所有比例…</string>
 	<key>Export Format</key>
@@ -2458,8 +2812,8 @@
 	<string>导出视频…</string>
 	<key>Export a GIF or audio only</key>
 	<string>导出 GIF 或仅导出音频</string>
-	<key>Export a video (MP4)</key>
-	<string>导出视频（MP4）</string>
+	<key>Export a video (MP4 or MOV)</key>
+	<string>导出视频（MP4 或 MOV）</string>
 	<key>Export all ratios</key>
 	<string>导出所有比例</string>
 	<key>Export all ratios, next to the aspect ratio menu, once you've adapted more than one shape.</key>
@@ -2484,6 +2838,8 @@
 	<string>只导出所选内容，或入点和出点之间的部分。</string>
 	<key>Export part of the video</key>
 	<string>导出视频的一部分</string>
+	<key>Export to</key>
+	<string>导出到</string>
 	<key>Export with the captions burned in, or save the translation as a subtitles file.</key>
 	<string>导出时将字幕嵌入视频，或将译文存储为字幕文件。</string>
 	<key>Export: %@</key>
@@ -2526,6 +2882,10 @@
 	<string>导出时不含声音 — 若只想让预览静音，请按 M</string>
 	<key>Export…</key>
 	<string>导出…</string>
+	<key>Exposure</key>
+	<string>曝光</string>
+	<key>Exposure, contrast, highlights, shadows, colour, HSL, curves and colour wheels, on a clip or over everything under it.</key>
+	<string>曝光、对比度、高光、阴影、颜色、HSL、曲线和色轮，用于单个片段或其下方的所有内容。</string>
 	<key>Extra-fluid curves for slow, cinematic demos.</key>
 	<string>超流畅的曲线，适合慢节奏、电影感的演示。</string>
 	<key>Extract Audio</key>
@@ -2536,6 +2896,8 @@
 	<string>提取音频</string>
 	<key>Extracting the sound…</key>
 	<string>正在提取声音…</string>
+	<key>FOLLOW</key>
+	<string>关注</string>
 	<key>Face</key>
 	<string>人脸</string>
 	<key>Face tracking</key>
@@ -2544,6 +2906,8 @@
 	<string>已取消面部跟踪</string>
 	<key>Faces, email addresses, phone and card numbers, keys and passwords on screen, and your own words. Read on this Mac with Apple's Vision; nothing is blurred until you choose.</key>
 	<string>人脸、电子邮件地址、电话和银行卡号、屏幕上的密钥和密码，以及你自己的词语。在此 Mac 上用 Apple 的 Vision 识别；在你选择之前不会模糊任何内容。</string>
+	<key>Fade</key>
+	<string>淡化</string>
 	<key>Fade in</key>
 	<string>淡入</string>
 	<key>Fade in from black</key>
@@ -2566,6 +2930,10 @@
 	<string>快进没有动静的时刻</string>
 	<key>Fastest, least accurate</key>
 	<string>最快，最不准确</string>
+	<key>Favourites</key>
+	<string>收藏</string>
+	<key>Feather</key>
+	<string>羽化</string>
 	<key>File</key>
 	<string>文件</string>
 	<key>File %lld of %lld: %@</key>
@@ -2596,12 +2964,24 @@
 	<string>实心圆角矩形</string>
 	<key>Filling the frame — the view follows your cursor</key>
 	<string>正在填满画面 — 视图会跟随你的指针</string>
+	<key>Film</key>
+	<string>胶片</string>
+	<key>Film grain</key>
+	<string>胶片颗粒</string>
 	<key>Filmed yourself on a phone or camera? Add that video and it shows in the bubble, lined up by sound.</key>
 	<string>用手机或相机拍了自己？添加该视频，它会显示在气泡中，并按声音对齐。</string>
 	<key>Filmed yourself with a phone or a camera? Put that video in the bubble instead.</key>
 	<string>用手机或相机拍了自己？把那段视频放进气泡里。</string>
+	<key>Filter</key>
+	<string>滤镜</string>
 	<key>Filter, select &amp; delete</key>
 	<string>筛选、选择和删除</string>
+	<key>Filters</key>
+	<string>滤镜</string>
+	<key>Filters and LUTs</key>
+	<string>滤镜和 LUT</string>
+	<key>Final Cut Pro style</key>
+	<string>Final Cut Pro 风格</string>
 	<key>Find Private Info</key>
 	<string>查找隐私信息</string>
 	<key>Find Private Info…</key>
@@ -2628,6 +3008,8 @@
 	<string>在“主页 ▸ 截屏”或“历史记录”中找到这张截屏。</string>
 	<key>Find “%@”</key>
 	<string>查找“%@”</string>
+	<key>Finder, QuickTime and Photos show it; some video sites choose their own.</key>
+	<string>“访达”、QuickTime 和“照片”会显示它；有些视频网站会自行选择。</string>
 	<key>Finds typing and plays it faster, as speed blocks you can change</key>
 	<string>找到打字部分并加快播放，生成可修改的变速块</string>
 	<key>Finds your face in the camera video on this Mac, then the bubble's framing follows it. Where no face is found, it keeps the last good framing.</key>
@@ -2672,8 +3054,14 @@
 	<string>修改字词、调整时间，以及手动添加字幕。</string>
 	<key>Flags on the timeline for important moments. They can split the video and become chapters.</key>
 	<string>时间线上标示重要时刻的旗帜。它们可以用来分割视频，也可以变成章节。</string>
+	<key>Flame</key>
+	<string>火焰</string>
 	<key>Flamingo</key>
 	<string>火烈鸟</string>
+	<key>Flash in</key>
+	<string>闪进</string>
+	<key>Flash out</key>
+	<string>闪出</string>
 	<key>Flip like a selfie</key>
 	<string>像自拍一样翻转</string>
 	<key>Float a screenshot above all your windows, as a reference while you work.</key>
@@ -2682,6 +3070,8 @@
 	<string>文件夹 %@</string>
 	<key>Folder name:</key>
 	<string>文件夹名称：</string>
+	<key>Follow</key>
+	<string>关注</string>
 	<key>Follow Cursor</key>
 	<string>跟随指针</string>
 	<key>Follow Typing</key>
@@ -2690,6 +3080,8 @@
 	<string>跟随指针</string>
 	<key>Follow typing</key>
 	<string>跟随打字</string>
+	<key>Following it — play to see</key>
+	<string>正在跟踪 — 播放即可查看</string>
 	<key>Follows cursor</key>
 	<string>跟随指针</string>
 	<key>Follows the recording</key>
@@ -2710,6 +3102,8 @@
 	<string>字体</string>
 	<key>Fonts added to LF Studios always go along. Check that a font's license lets you share it before sending.</key>
 	<string>添加到 LF Studios 的字体总会一起带上。发送前请确认字体的许可允许你分享它。</string>
+	<key>Fonts are ones that come with every Mac, so a project looks the same on any Mac.</key>
+	<string>字体都是每台 Mac 自带的，因此项目在任何 Mac 上看起来都一样。</string>
 	<key>Fonts you added to LF Studios always go along. Fonts installed on this Mac (in Font Book) go only with Include fonts installed on this Mac turned on: check that the font's license lets you share it first. Without them, README.txt lists the fonts left out.</key>
 	<string>你添加到 LF Studios 的字体总会一起带上。安装在这台 Mac 上的字体（在“字体册”中）只有在打开“包括这台 Mac 上安装的字体”时才会带上：请先确认该字体的许可允许你分享。如果没有带上，README.txt 会列出未包含的字体。</string>
 	<key>For Custom image…, choose a PNG, then click the spot in it that points.</key>
@@ -2834,6 +3228,8 @@
 	<string>全屏预览只显示播放器。按 Esc 退出。</string>
 	<key>Fullscreen</key>
 	<string>全屏</string>
+	<key>Fun</key>
+	<string>趣味</string>
 	<key>GIF</key>
 	<string>GIF</string>
 	<key>GIFs embed anywhere — READMEs, pull requests, docs. Keep them short: they get big fast.</key>
@@ -2856,8 +3252,12 @@
 	<string>正在准备…</string>
 	<key>Getting started</key>
 	<string>入门</string>
+	<key>Ghost</key>
+	<string>幽灵</string>
 	<key>Give another editor, or an app like Final Cut Pro, every part of your video as separate files.</key>
 	<string>把视频的每个部分作为单独的文件，交给其他剪辑师或 Final Cut Pro 等应用。</string>
+	<key>Give any timeline command your own key, or use Final Cut Pro or Premiere Pro keys.</key>
+	<string>为任何时间线命令设定你自己的快捷键，或使用 Final Cut Pro 或 Premiere Pro 的快捷键。</string>
 	<key>Give the video space around it, rounded corners, and a shadow.</key>
 	<string>在视频周围留出空间，加上圆角和阴影。</string>
 	<key>Glacier</key>
@@ -2868,14 +3268,22 @@
 	<string>“滑回时长”设定滑回去需要多久。非常适合 GIF。</string>
 	<key>Glides without lagging behind — clicks still land exactly.</key>
 	<string>流畅跟随、毫不拖沓 — 点按位置依然精准。</string>
+	<key>Glitch</key>
+	<string>故障</string>
+	<key>Glow</key>
+	<string>发光</string>
 	<key>Go to End</key>
 	<string>前往结尾</string>
 	<key>Go to Start</key>
 	<string>前往开头</string>
+	<key>Golden hour</key>
+	<string>黄金时刻</string>
 	<key>Good to know</key>
 	<string>小提示</string>
 	<key>Gradient</key>
 	<string>渐变</string>
+	<key>Grain</key>
+	<string>颗粒</string>
 	<key>Grant Screen Recording first, then try it here.</key>
 	<string>请先授予屏幕录制权限，然后在这里试试。</string>
 	<key>Granted — captures, recordings, and OCR are ready.</key>
@@ -2894,6 +3302,10 @@
 	<string>使用指南</string>
 	<key>H.264 plays everywhere. HEVC makes smaller files, but some browsers and Windows PCs can't play it.</key>
 	<string>H.264 随处都能播放。HEVC 文件更小，但部分浏览器和 Windows 电脑无法播放。</string>
+	<key>HSL</key>
+	<string>HSL</string>
+	<key>HSL changes one colour at a time. Curves: RGB, Red, Green, Blue. Wheels: Shadows, Midtones, Highlights, Everything.</key>
+	<string>HSL 一次更改一种颜色。曲线：RGB、红色、绿色、蓝色。色轮：阴影、中间调、高光、全部。</string>
 	<key>Handles on the camera preview: drag an edge or corner to resize it, the middle to move it.</key>
 	<string>摄像头预览上的控制点：拖移边缘或角可调整大小，拖移中间可移动。</string>
 	<key>Handoff didn't finish</key>
@@ -2904,6 +3316,8 @@
 	<string>交付 — %@</string>
 	<key>Handoff — getting ready</key>
 	<string>交付 — 正在准备</string>
+	<key>Handwritten</key>
+	<string>手写</string>
 	<key>Happens by itself the next time LF Studios opens.</key>
 	<string>下次打开 LF Studios 时会自动进行。</string>
 	<key>Happens by itself, for every recording.</key>
@@ -2912,20 +3326,30 @@
 	<string>片段之间硬切</string>
 	<key>Hard cut</key>
 	<string>硬切</string>
+	<key>Hard light</key>
+	<string>强光</string>
 	<key>Headers and sidebars that stay in place show only once.</key>
 	<string>固定不动的页眉和边栏只会出现一次。</string>
 	<key>Health</key>
 	<string>状态</string>
 	<key>Health shows whether everything is ready, and offers a Fix when something isn't.</key>
 	<string>“状态”会显示一切是否就绪，如果有问题，会提供“修复”。</string>
+	<key>Heart</key>
+	<string>爱心</string>
+	<key>Heartbeat</key>
+	<string>心跳</string>
 	<key>Height</key>
 	<string>高度</string>
+	<key>Height compared with width</key>
+	<string>高度与宽度之比</string>
 	<key>Help</key>
 	<string>帮助</string>
 	<key>Help for every part of LF Studios, with search, steps, and a Show me button that takes you there.</key>
 	<string>LF Studios 各部分的帮助，提供搜索和步骤说明，还有一个“带我去看”按钮可以直接带你过去。</string>
 	<key>Here “camera” means the view of your screen, not your camera bubble.</key>
 	<string>这里的“镜头”指的是你屏幕的视角，而不是摄像头气泡。</string>
+	<key>Hero</key>
+	<string>英雄时刻</string>
 	<key>Hidden</key>
 	<string>隐藏</string>
 	<key>Hidden network</key>
@@ -2964,12 +3388,16 @@
 	<string>隐藏 — 导出会继续进行（Esc）</string>
 	<key>Hide “%@” in the preview and the export</key>
 	<string>在预览和导出中隐藏“%@”</string>
+	<key>Hides what's inside the shape instead</key>
+	<string>改为隐藏形状内部的内容</string>
 	<key>Hiding or muting a track never deletes anything: turn it back on, and it's all there.</key>
 	<string>隐藏轨道或将其静音不会删除任何内容：重新打开后一切都在。</string>
 	<key>High</key>
 	<string>高</string>
 	<key>High-quality files for video editing apps. ProRes 4444 can drop the background, ready to place over anything.</key>
 	<string>适合视频剪辑软件的高质量文件。ProRes 4444 可以去掉背景，直接叠放在任何画面上。</string>
+	<key>Higher</key>
+	<string>较高</string>
 	<key>Higher glides calmly after you; lower keeps up with quick moves</key>
 	<string>越高跟随越平缓；越低越能跟上快速移动</string>
 	<key>Higher tracks show over lower ones; all of them show over the screen recording and under the camera, captions and keys.</key>
@@ -2990,6 +3418,10 @@
 	<string>荧光笔</string>
 	<key>Highlighter: a see-through marker, in a straight line or freehand.</key>
 	<string>荧光笔：半透明的记号笔，可画直线或手绘。</string>
+	<key>Highlights</key>
+	<string>高光</string>
+	<key>Highlights (gain)</key>
+	<string>高光（增益）</string>
 	<key>History</key>
 	<string>历史记录</string>
 	<key>History &amp; pins</key>
@@ -3036,6 +3468,8 @@
 	<string>主页 ▸ 截屏，或菜单栏中的 LF Studios 菜单 ▸ 捕捉区域。</string>
 	<key>Hotkeys are system-wide and active while LF Studios is running. The ⌘⇧3 default works best after Apple's screenshot shortcut is disabled.</key>
 	<string>快捷键在 LF Studios 运行时全局有效。停用 Apple 的截屏快捷键后，默认的 ⌘⇧3 效果最佳。</string>
+	<key>Hover a sound effect to hear it; drag it onto the timeline.</key>
+	<string>将指针悬停在音效上即可试听；将其拖到时间线上。</string>
 	<key>Hover over Undo to see what it will undo.</key>
 	<string>将指针悬停在“撤销”上，可查看它将撤销什么。</string>
 	<key>Hover over the thumbnail for Edit, Close, Delete, Pin, Copy, Save, and Text (copies the text in it).</key>
@@ -3046,12 +3480,18 @@
 	<string>将指针悬停在缩放轨道上并点按即可添加缩放，或在播放头处按下 Z。拖移缩放可移动它；拖移其边缘可更改持续时间。</string>
 	<key>How do I…?</key>
 	<string>如何…？</string>
+	<key>How it mixes with what's under it: Screen lightens, Multiply darkens, Overlay adds contrast.</key>
+	<string>它与下方内容的混合方式：“滤色”变亮，“正片叠底”变暗，“叠加”增加对比度。</string>
 	<key>How long the loupe takes to grow in and fade out</key>
 	<string>放大镜展开和淡出所需的时间</string>
 	<key>How much of the bubble your face fills</key>
 	<string>面部占气泡的比例</string>
+	<key>How much of the shadows on the screen stays</key>
+	<string>保留多少屏幕上的阴影</string>
 	<key>How strongly blur and pixelate hide what's under them</key>
 	<string>模糊和像素化遮盖下方内容的程度</string>
+	<key>Hue</key>
+	<string>色相</string>
 	<key>I and O mark a part: Export can export just that part, and ⌫ cuts it.</key>
 	<string>I 和 O 标记一部分：导出时可以只导出这部分，按 ⌫ 可剪掉它。</string>
 	<key>If LF Studios quit unexpectedly, it offers to report it next time it opens.</key>
@@ -3090,18 +3530,36 @@
 	<string>图像</string>
 	<key>Images &amp; logos</key>
 	<string>图像和标志</string>
+	<key>Impact</key>
+	<string>冲击</string>
 	<key>Import</key>
 	<string>导入</string>
+	<key>Import .cube LUT…</key>
+	<string>导入 .cube LUT…</string>
+	<key>Import .cube LUT… uses a 3D LUT from another app.</key>
+	<string>“导入 .cube LUT…”会使用来自其他应用的 3D LUT。</string>
+	<key>Import .cube…</key>
+	<string>导入 .cube…</string>
+	<key>Import .srt…</key>
+	<string>导入 .srt…</string>
+	<key>Import .srt… brings captions from an .srt or .vtt file; Export .srt… saves them.</key>
+	<string>“导入 .srt…”会从 .srt 或 .vtt 文件导入字幕；“导出 .srt…”会存储字幕。</string>
 	<key>Import Folder</key>
 	<string>导入文件夹</string>
 	<key>Import Media…</key>
 	<string>导入媒体…</string>
 	<key>Import Presets…</key>
 	<string>导入预设…</string>
+	<key>Import sticker…</key>
+	<string>导入贴纸…</string>
+	<key>Import sticker… adds your own PNG or GIF (GIFs play).</key>
+	<string>“导入贴纸…”会添加你自己的 PNG 或 GIF（GIF 会播放）。</string>
 	<key>Import videos, pictures, and sound files (⌘I)</key>
 	<string>导入视频、图片和声音文件（⌘I）</string>
 	<key>Import videos, pictures, and sound files, or drag them here from Finder.</key>
 	<string>导入视频、图片和声音文件，或将它们从“访达”拖到这里。</string>
+	<key>Imported %lld captions from “%@”</key>
+	<string>已从“%2$@”导入 %1$lld 条字幕</string>
 	<key>Imported %lld presets</key>
 	<string>已导入 %lld 个预设</string>
 	<key>Imported Preset</key>
@@ -3138,12 +3596,16 @@
 	<string>在编辑器中，点按“添加打字缩放”。</string>
 	<key>In the editor, drag the divider on the video to change the split. Zooms happen inside the screen's part; captions go over the whole video.</key>
 	<string>在编辑器中，拖移视频上的分隔线可更改分屏比例。缩放发生在屏幕部分内；字幕覆盖整个视频。</string>
+	<key>In the editor, press ? ▸ Customize….</key>
+	<string>在编辑器中，按 ? ▸ 自定…。</string>
 	<key>In the editor, the camera snaps to the corners, the edges and the center. Each drag is one ⌘Z. Reset size in Camera ▸ Position goes back to the usual size.</key>
 	<string>在编辑器中，摄像头会吸附到角、边缘和中间。每次拖移可用一次 ⌘Z 撤销。“摄像头 ▸ 位置”中的“重置大小”可恢复为通常大小。</string>
 	<key>In the export window ▸ Captions.</key>
 	<string>导出窗口 ▸ 字幕。</string>
 	<key>In the export window ▸ Chapters.</key>
 	<string>导出窗口 ▸ 章节。</string>
+	<key>In the export window ▸ Cover.</key>
+	<string>导出窗口 ▸ 封面。</string>
 	<key>In the export window ▸ End card.</key>
 	<string>导出窗口 ▸ 结尾画面。</string>
 	<key>In the export window ▸ Range: Whole video, Selection, or In &amp; out.</key>
@@ -3192,6 +3654,8 @@
 	<string>在视频编辑器中：“文件 ▸ 存储项目”（⌘S）或“项目存储为…”（⇧⌘S）。</string>
 	<key>In your next video, click Apply my style (⇧⌘Y).</key>
 	<string>在下一个视频中，点按“应用我的风格”（⇧⌘Y）。</string>
+	<key>In, Out and Combo animations</key>
+	<string>入场、出场和组合动画</string>
 	<key>Include a timeline for editing apps</key>
 	<string>附带剪辑软件用的时间线</string>
 	<key>Include aspect ratio (%@)</key>
@@ -3226,6 +3690,10 @@
 	<string>安装更新：下载并安装更新，然后重新打开 LF Studios。</string>
 	<key>Instant</key>
 	<string>即时</string>
+	<key>Intensity</key>
+	<string>强度</string>
+	<key>Interface</key>
+	<string>界面</string>
 	<key>Intro</key>
 	<string>片头</string>
 	<key>Intro &amp; outro</key>
@@ -3240,6 +3708,8 @@
 	<string>片头卡“%@”，%@ 至 %@</string>
 	<key>Intro card, %@ to %@</key>
 	<string>片头卡，%@ 至 %@</string>
+	<key>Invert</key>
+	<string>反转</string>
 	<key>Iris</key>
 	<string>鸢尾</string>
 	<key>It also comes out of the video. The file stays where it is, and ⌘Z brings it back.</key>
@@ -3270,30 +3740,46 @@
 	<string>指针已录入画面像素中，因此无法调整大小或平滑处理。新录制内容默认会捕捉可编辑的指针（“设置”→“录制”）。</string>
 	<key>It won't fit there. Choose another location, or pick Smaller files.</key>
 	<string>那里放不下。请选择其他位置，或选择“较小的文件”。</string>
+	<key>It works on this Mac: nothing is uploaded.</key>
+	<string>它在这台 Mac 上运行：不会上传任何内容。</string>
 	<key>It works on your Mac with Apple's face detection. If your face isn't found for a while, the last framing holds.</key>
 	<string>它使用 Apple 的面部检测，在你的 Mac 上运行。如果一段时间内找不到你的脸，会保持上一次的取景。</string>
 	<key>It's never applied by itself: only when you click it.</key>
 	<string>它绝不会自动应用：只在你点按时才应用。</string>
 	<key>It's saved separately from your voice, so you can set each one's volume in the editor. LF Studios' own sounds are left out.</key>
 	<string>它与你的人声分开存储，所以可以在编辑器中分别设定音量。LF Studios 自己的声音不会被录进去。</string>
+	<key>It's silent: nothing to normalize</key>
+	<string>没有声音：无需统一响度</string>
 	<key>It's turned off, or the menu bar is too full and macOS hid it.</key>
 	<string>图标被关闭了，或者菜单栏太满，被 macOS 隐藏了。</string>
 	<key>It's your My Style, so Apply my style will have nothing to apply until you choose another. Videos that use this preset keep their look.</key>
 	<string>这是你的我的风格，删除后“应用我的风格”将无可应用，直到你另选一个。使用此预设的视频会保留原样。</string>
+	<key>Italic</key>
+	<string>斜体</string>
+	<key>Its clips keep their own settings: break it apart to change one.</key>
+	<string>其中的片段保留各自的设置：拆开后才能更改单个片段。</string>
+	<key>Its clips on their own again, looking as they do now (⇧⌥G)</key>
+	<string>让其中的片段重新各自独立，外观保持现状（⇧⌥G）</string>
 	<key>Its own arrow, text and hand pointers, drawn for the video.</key>
 	<string>专为视频绘制的箭头、文本和手形指针。</string>
 	<key>Its screen recording can't be read.</key>
 	<string>无法读取它的屏幕录制内容。</string>
 	<key>JPEG Quality</key>
 	<string>JPEG 质量</string>
+	<key>Jump cut</key>
+	<string>跳接</string>
 	<key>Jump here</key>
 	<string>跳转到这里</string>
 	<key>Jump one second</key>
 	<string>跳转一秒</string>
+	<key>Karaoke</key>
+	<string>卡拉 OK</string>
 	<key>Karaoke fill</key>
 	<string>卡拉 OK 填充</string>
 	<key>Keep</key>
 	<string>保留</string>
+	<key>Keep Both</key>
+	<string>两者都保留</string>
 	<key>Keep Editing</key>
 	<string>继续编辑</string>
 	<key>Keep Editing closes the export window; the export carries on.</key>
@@ -3328,6 +3814,8 @@
 	<string>保持面部居中</string>
 	<key>Keep files on your desktop out of your screenshots.</key>
 	<string>不让桌面上的文件出现在截屏中。</string>
+	<key>Keep pitch</key>
+	<string>保持音调</string>
 	<key>Keeping 30 days removes %lld older captures from History now. This can't be undone.</key>
 	<string>选择“30 天”将立即从历史记录中移除 %lld 张较早的截屏。此操作无法撤销。</string>
 	<key>Keeping 7 days removes %lld older captures from History now. This can't be undone.</key>
@@ -3340,10 +3828,16 @@
 	<string>选择“最近 100 张截屏”将立即从历史记录中移除 %lld 张较早的截屏。此操作无法撤销。</string>
 	<key>Keeping last 500 captures removes %lld older captures from History now. This can't be undone.</key>
 	<string>选择“最近 500 张截屏”将立即从历史记录中移除 %lld 张较早的截屏。此操作无法撤销。</string>
+	<key>Keeps just the person, found on this Mac</key>
+	<string>只保留人物，在这台 Mac 上识别</string>
 	<key>Keeps loud and quiet words close together</key>
 	<string>让响亮和轻柔的词音量接近</string>
 	<key>Keeps the camera bubble from covering what a zoom shows.</key>
 	<string>避免摄像头气泡挡住缩放要展示的内容。</string>
+	<key>Kept for %@</key>
+	<string>已保留给“%@”</string>
+	<key>Key for %@: %@</key>
+	<string>“%@”的快捷键：%@</string>
 	<key>Key or password</key>
 	<string>密钥或密码</string>
 	<key>Keyboard</key>
@@ -3360,14 +3854,30 @@
 	<string>键盘快捷键已更改</string>
 	<key>Keyboard shortcuts — click one to select it, ⌫ hides it</key>
 	<string>快捷键 — 点按即可选择，按 ⌫ 可隐藏</string>
+	<key>Keyed here</key>
+	<string>此处有关键帧</string>
+	<key>Keyed: a change adds a keyframe at the playhead</key>
+	<string>已设关键帧：更改会在播放头处添加关键帧</string>
+	<key>Keyframe: %@</key>
+	<string>关键帧：%@</string>
+	<key>Keyframes</key>
+	<string>关键帧</string>
+	<key>Keyframes show as diamonds on the clip in the timeline.</key>
+	<string>关键帧在时间线的片段上显示为菱形。</string>
 	<key>Keys</key>
 	<string>按键</string>
+	<key>Keys like</key>
+	<string>快捷键风格</string>
 	<key>Keys on screen</key>
 	<string>屏幕按键</string>
+	<key>Kick drum</key>
+	<string>底鼓</string>
 	<key>Kind</key>
 	<string>种类</string>
 	<key>L</key>
 	<string>大</string>
+	<key>LF Studios</key>
+	<string>LF Studios</string>
 	<key>LF Studios 1.11 and earlier can't open .lfs files: whoever you send one to needs LF Studios 1.12.0 or later.</key>
 	<string>LF Studios 1.11 及更早版本无法打开 .lfs 文件：收到文件的人需要 LF Studios 1.12.0 或更高版本。</string>
 	<key>LF Studios Guide</key>
@@ -3468,6 +3978,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>LF Studios 自己的浮动窗口不会出现在你的屏幕录制内容和截屏中。</string>
 	<key>LFSTUDIOS LIBRARY</key>
 	<string>LFSTUDIOS 资源库</string>
+	<key>LIKE</key>
+	<string>点赞</string>
+	<key>LUT</key>
+	<string>LUT</string>
+	<key>Labels</key>
+	<string>标签</string>
 	<key>Lagoon</key>
 	<string>泻湖</string>
 	<key>Landscape (16:9)</key>
@@ -3490,6 +4006,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>最近 %lld 张截屏</string>
 	<key>Later</key>
 	<string>稍后</string>
+	<key>Laugh</key>
+	<string>大笑</string>
 	<key>Launch LF Studios at login</key>
 	<string>登录时打开 LF Studios</string>
 	<key>Lavender Glass</key>
@@ -3524,6 +4042,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>松开即可捕捉。</string>
 	<key>Lets LF Studios show the shortcuts you press in a video, follow where you type, and resize a window to an exact size. Everything else works without it.</key>
 	<string>允许后，LF Studios 可以在视频中显示你按下的快捷键、跟随你打字的位置，并把窗口调整为精确的大小。其他功能不需要此权限也能使用。</string>
+	<key>Letter spacing</key>
+	<string>字间距</string>
 	<key>Letterbox Instead of Following the Cursor</key>
 	<string>加黑边，不跟随指针</string>
 	<key>Level</key>
@@ -3532,12 +4052,40 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>素材库（左上）：媒体、音频、文字、字幕和转场。</string>
 	<key>Library options</key>
 	<string>素材库选项</string>
+	<key>Library ▸ Captions.</key>
+	<string>素材库 ▸ 字幕。</string>
+	<key>Library ▸ Effects.</key>
+	<string>素材库 ▸ 特效。</string>
+	<key>Library ▸ Filters, and Properties ▸ Filter.</key>
+	<string>素材库 ▸ 滤镜，以及属性 ▸ 滤镜。</string>
+	<key>Library ▸ Stickers, and Library ▸ Audio ▸ Sound effects.</key>
+	<string>素材库 ▸ 贴纸，以及素材库 ▸ 音频 ▸ 音效。</string>
+	<key>Library ▸ Text, or press ⌥⇧T.</key>
+	<string>素材库 ▸ 文字，或按 ⌥⇧T。</string>
+	<key>Library ▸ Transitions.</key>
+	<string>素材库 ▸ 转场。</string>
+	<key>Library, effects &amp; keyframes</key>
+	<string>素材库、特效和关键帧</string>
+	<key>Lifted blacks</key>
+	<string>提亮黑色</string>
 	<key>Light</key>
 	<string>轻度</string>
 	<key>Light &amp; dark appearance</key>
 	<string>浅色和深色外观</string>
 	<key>Light Mode</key>
 	<string>浅色</string>
+	<key>Light box</key>
+	<string>浅色框</string>
+	<key>Light card</key>
+	<string>浅色卡片</string>
+	<key>Lighten</key>
+	<string>变亮</string>
+	<key>Lighter copies of the videos, for smooth editing of big recordings. Exports always use the originals.</key>
+	<string>视频的轻量副本，让大型录制内容也能流畅剪辑。导出始终使用原始文件。</string>
+	<key>Lightning</key>
+	<string>闪电</string>
+	<key>Like</key>
+	<string>点赞</string>
 	<key>Like ProRes 422 with even more detail, for color grading and effects — about half again as big</key>
 	<string>与 ProRes 422 相似但细节更丰富，适合调色和特效 — 文件约大一半</string>
 	<key>Lime Signal</key>
@@ -3550,8 +4098,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>“全部对齐”会让每个文件都从同一时刻开始。</string>
 	<key>Line it up with the recording's own sound; then it follows your cuts</key>
 	<string>与录制内容本身的声音对齐，之后会跟随你的剪切</string>
+	<key>Line spacing</key>
+	<string>行间距</string>
 	<key>Line width</key>
 	<string>线条粗细</string>
+	<key>Linear</key>
+	<string>线性</string>
 	<key>Linen</key>
 	<string>亚麻</string>
 	<key>Lines the camera up by the sound both recorded. Or drag the camera strip on the timeline.</key>
@@ -3564,6 +4116,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>找到链接二维码</string>
 	<key>Link copied</key>
 	<string>已拷贝链接</string>
+	<key>Link in bio</key>
+	<string>简介有链接</string>
 	<key>Link to media (small, this Mac only)</key>
 	<string>链接到媒体（体积小，仅限此 Mac）</string>
 	<key>Link to media: smaller, for this Mac only.</key>
@@ -3604,6 +4158,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>正在摄像头视频中寻找面部。只需进行一次，结果会被保留。</string>
 	<key>Looking through the video…</key>
 	<string>正在检查视频…</string>
+	<key>Looks like Warm, Film, Teal &amp; orange or Noir, at the strength you want, or a .cube LUT of your own.</key>
+	<string>“暖调”“胶片”“青橙”或“黑色电影”等风格，强度随你设定，或使用你自己的 .cube LUT。</string>
 	<key>Looks through your video for faces, email addresses, phone and card numbers, passwords, and words you choose, so you can blur them.</key>
 	<string>在视频中查找人脸、电子邮件地址、电话号码和银行卡号、密码以及你指定的字词，以便将它们模糊处理。</string>
 	<key>Looks: Natural, Warm, Bright, or Cinematic.</key>
@@ -3616,10 +4172,20 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>循环指针</string>
 	<key>Loose</key>
 	<string>宽松</string>
+	<key>Lost sight of it at %@ — it holds still from there</key>
+	<string>在 %@ 处跟丢了 — 从那里起保持不动</string>
+	<key>Loud</key>
+	<string>醒目</string>
 	<key>Loupe</key>
 	<string>放大镜</string>
+	<key>Lower</key>
+	<string>较低</string>
+	<key>Lower thirds</key>
+	<string>人名条</string>
 	<key>Lower under your voice</key>
 	<string>避让人声</string>
+	<key>Luminance</key>
+	<string>明亮度</string>
 	<key>M</key>
 	<string>中</string>
 	<key>M only quiets the preview; the export keeps its sound.</key>
@@ -3628,8 +4194,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>M4A（体积小）、WAV 或 AIFF（两者均为完整音质）。</string>
 	<key>MIT License — Free and open source</key>
 	<string>MIT 许可证 — 免费开源</string>
+	<key>MP4 plays everywhere; MOV is QuickTime's own</key>
+	<string>MP4 到处都能播放；MOV 是 QuickTime 的原生格式</string>
 	<key>Mac screen</key>
 	<string>Mac 屏幕</string>
+	<key>Magenta</key>
+	<string>洋红</string>
 	<key>Main track magnet</key>
 	<string>主轨道磁吸</string>
 	<key>Main track magnet (P): deleting a clip closes the gap; off, a black gap of its length stays.</key>
@@ -3642,14 +4212,26 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>改为全画面缩放</string>
 	<key>Make Loupe</key>
 	<string>改为放大镜</string>
+	<key>Make a clip come in, go out, or keep moving while it shows.</key>
+	<string>让片段入场、出场，或在显示期间持续运动。</string>
 	<key>Make a vertical video for Reels or TikTok</key>
 	<string>为 Reels 或 TikTok 制作竖屏视频</string>
+	<key>Make captions again</key>
+	<string>重新生成字幕</string>
+	<key>Make compound clip</key>
+	<string>创建复合片段</string>
+	<key>Make compound clip / break apart</key>
+	<string>创建复合片段 / 拆开</string>
 	<key>Make it lighter: %@, %@ fps</key>
 	<string>减轻体积：%@，%@ fps</string>
 	<key>Make my videos look the same every time</key>
 	<string>让每个视频的风格都保持一致</string>
+	<key>Make several clips above the main track into one: moved, sized, turned and faded together.</key>
+	<string>将主轨道上方的多个片段合为一个：一起移动、调整大小、旋转和淡化。</string>
 	<key>Make sure LF Studios is allowed under Microphone in System Settings. It appears there only after it has asked once, and there's no + button: turn on Microphone in the recording bar and click Allow.</key>
 	<string>请确认在“系统设置”中，LF Studios 已在“麦克风”下获得允许。它只有在请求过一次之后才会出现在那里，而且没有 + 按钮：在录制栏中打开“麦克风”，然后点按“允许”。</string>
+	<key>Make text, a sticker or a picture follow something that moves in the video.</key>
+	<string>让文字、贴纸或图片跟随视频中移动的物体。</string>
 	<key>Make the area bigger or smaller</key>
 	<string>放大或缩小区域</string>
 	<key>Make your camera look its best: brighter, warmer, or more cinematic.</key>
@@ -3658,10 +4240,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>让录制内容正好是 1920 × 1080（或其他尺寸），无需反复估算。</string>
 	<key>Make your voice sound like a podcast: clean, warm, and clear.</key>
 	<string>让你的声音听起来像播客：干净、温暖、清晰。</string>
+	<key>Makes it a clip above the main track: it takes its place in the tracks' order and gets keyframes, animations and effects</key>
+	<string>将其变为主轨道上方的片段：它会按轨道顺序排列，并可使用关键帧、动画和特效</string>
 	<key>Makes the bubble smaller during zooms, so it covers less.</key>
 	<string>在缩放时让气泡变小，减少遮挡。</string>
+	<key>Makes this clip follow something that moves in the video</key>
+	<string>让此片段跟随视频中移动的物体</string>
 	<key>Manage</key>
 	<string>管理</string>
+	<key>Map pin</key>
+	<string>地图图钉</string>
 	<key>Mark In</key>
 	<string>标记入点</string>
 	<key>Mark Out</key>
@@ -3690,14 +4278,24 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>标记</string>
 	<key>Markers you added.</key>
 	<string>你添加的标记。</string>
+	<key>Mask</key>
+	<string>蒙版</string>
+	<key>Mask: %@</key>
+	<string>蒙版：%@</string>
+	<key>Mask: Linear, Mirror, Circle or Rectangle, with Feather and Invert. Its place and size take keyframes.</key>
+	<string>蒙版：线性、镜面、圆形或矩形，可设定羽化和反转。其位置和大小可设关键帧。</string>
 	<key>Match the recording</key>
 	<string>与录制内容一致</string>
+	<key>Matte</key>
+	<string>哑光</string>
 	<key>Max</key>
 	<string>最高</string>
 	<key>Maximum detail for further editing</key>
 	<string>最大细节，适合后期编辑</string>
 	<key>Maximum length reached</key>
 	<string>已达到最大长度</string>
+	<key>Mbit/s</key>
+	<string>Mbit/s</string>
 	<key>Meadow</key>
 	<string>草地</string>
 	<key>Media</key>
@@ -3746,6 +4344,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>午夜</string>
 	<key>Midnight Graphite</key>
 	<string>午夜石墨</string>
+	<key>Midtones (gamma)</key>
+	<string>中间调（伽马）</string>
 	<key>Minimal</key>
 	<string>极简</string>
 	<key>Minimize</key>
@@ -3766,10 +4366,18 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>缺失 — 使用“查找…”找到它</string>
 	<key>Mist</key>
 	<string>薄雾</string>
+	<key>Mix a clip with what's under it, cut out its background, or show only part of it.</key>
+	<string>将片段与下方内容混合、抠除其背景，或只显示其中一部分。</string>
 	<key>Model</key>
 	<string>模型</string>
 	<key>Models are downloaded only when you click Download, and can be deleted to free up space.</key>
 	<string>只有在你点按“下载”时才会下载模型，你也可以删除模型来释放空间。</string>
+	<key>Mono</key>
+	<string>单色</string>
+	<key>Montage</key>
+	<string>蒙太奇</string>
+	<key>Moody</key>
+	<string>情绪</string>
 	<key>More</key>
 	<string>更多</string>
 	<key>More caption options</key>
@@ -3790,6 +4398,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>动态模糊</string>
 	<key>Motion blur adds a soft trail when the pointer moves fast.</key>
 	<string>“动态模糊”会在指针快速移动时加上柔和的拖尾。</string>
+	<key>Motion tracking</key>
+	<string>运动跟踪</string>
 	<key>Move %@ earlier</key>
 	<string>将 %@ 前移</string>
 	<key>Move %@ later</key>
@@ -3798,8 +4408,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>向前移动</string>
 	<key>Move Later</key>
 	<string>向后移动</string>
+	<key>Move an annotation to a track</key>
+	<string>将标注移到轨道</string>
 	<key>Move earlier</key>
 	<string>前移</string>
+	<key>Move it on the player or the timeline; set its place, size, turn and opacity in Properties.</key>
+	<string>在播放器或时间线上移动它；在“属性”中设定其位置、大小、旋转和不透明度。</string>
 	<key>Move later</key>
 	<string>后移</string>
 	<key>Move or rename the folder in Finder as you like, or copy it to another Mac: it still opens.</key>
@@ -3812,18 +4426,28 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>拖移时移动区域</string>
 	<key>Move the frame (with ⇧: 10 points)</key>
 	<string>移动录制框（按住 ⇧：10 点）</string>
+	<key>Move the playhead again and change the setting: a new keyframe is made there.</key>
+	<string>再次移动播放头并更改设置：会在那里创建新的关键帧。</string>
 	<key>Move the playhead and click Full camera, Side by side, or Hidden (on a split video, also Bubble).</key>
 	<string>移动播放头，然后点按“全屏摄像头”“并排”或“隐藏”（分屏视频还可选“气泡”）。</string>
+	<key>Move the playhead and click ◆ next to a setting (or press ⌥K for place, size, turn and opacity).</key>
+	<string>移动播放头，然后点按设置旁边的 ◆（或按 ⌥K 设定位置、大小、旋转和不透明度）。</string>
 	<key>Move the playhead and press ⌘B to split the clip there.</key>
 	<string>移动播放头，然后按 ⌘B 在该处分割片段。</string>
 	<key>Move the playhead inside a clip to split</key>
 	<string>将播放头移到片段内以进行分割</string>
 	<key>Move the playhead into the sound to split it</key>
 	<string>将播放头移到声音范围内即可分割</string>
+	<key>Move the playhead onto the clip to add a keyframe</key>
+	<string>将播放头移到片段上即可添加关键帧</string>
+	<key>Move the playhead onto the sound to add a keyframe</key>
+	<string>将播放头移到声音上即可添加关键帧</string>
 	<key>Move the playhead to where it should appear.</key>
 	<string>将播放头移到它应出现的地方。</string>
 	<key>Move the playhead to where the camera shows, then crop</key>
 	<string>将播放头移到显示摄像头画面的位置，然后再裁剪</string>
+	<key>Move the playhead to where the thing first shows. Click Track.</key>
+	<string>将播放头移到该物体首次出现的位置。点按“跟踪”。</string>
 	<key>Move the playhead to where the zoom should start.</key>
 	<string>将播放头移到缩放应开始的地方。</string>
 	<key>Move the playhead to where your voice should start.</key>
@@ -3838,6 +4462,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>移到文件夹</string>
 	<key>Move to Trash</key>
 	<string>移到废纸篓</string>
+	<key>Move to a Track</key>
+	<string>移到轨道</string>
 	<key>Move to where it ends and press ⌘B again.</key>
 	<string>移到它结束的位置，再按一次 ⌘B。</string>
 	<key>Move “%@” to the Trash?</key>
@@ -3850,10 +4476,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>移动</string>
 	<key>Moving a project to another Mac? Save it with Include media, so everything comes along.</key>
 	<string>要把项目移到另一台 Mac？存储时选择“包含媒体”，这样所有内容都会一起带过去。</string>
+	<key>Multiply</key>
+	<string>正片叠底</string>
 	<key>Music</key>
 	<string>音乐</string>
 	<key>Music added — it dips while you talk</key>
 	<string>已添加音乐 — 说话时会降低音量</string>
+	<key>Music note</key>
+	<string>音符</string>
 	<key>Music options</key>
 	<string>音乐选项</string>
 	<key>Music removed — ⌘Z to undo</key>
@@ -3892,6 +4522,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>“视频静音”已打开（“音频”标签页）— 此导出将没有声音。</string>
 	<key>Mute “%@” in the preview and the export</key>
 	<string>在预览和导出中将“%@”静音</string>
+	<key>Muted</key>
+	<string>淡雅</string>
 	<key>My Look</key>
 	<string>我的外观</string>
 	<key>My Preset</key>
@@ -3906,8 +4538,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>我的录制内容是黑屏，或只显示墙纸</string>
 	<key>My shortcuts don't work</key>
 	<string>我的快捷键不起作用</string>
+	<key>NEW</key>
+	<string>最新</string>
 	<key>Name</key>
 	<string>名称</string>
+	<key>Name bar</key>
+	<string>姓名条</string>
 	<key>Natural</key>
 	<string>自然</string>
 	<key>Nebula</key>
@@ -3946,6 +4582,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>需要 LF Studios 录下的指针。没有的话，视频会改为带黑边显示。</string>
 	<key>Neo Pop</key>
 	<string>新波普</string>
+	<key>Neon</key>
+	<string>霓虹</string>
 	<key>Network</key>
 	<string>网络</string>
 	<key>Never</key>
@@ -3960,6 +4598,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>新建文件夹</string>
 	<key>New Folder…</key>
 	<string>新建文件夹…</string>
+	<key>New badge</key>
+	<string>“最新”标签</string>
 	<key>New caption</key>
 	<string>新字幕</string>
 	<key>New in LF Studios %@</key>
@@ -3978,12 +4618,18 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>初次使用 LF Studios？从这里开始，大约只需五分钟。</string>
 	<key>New zooms</key>
 	<string>新缩放</string>
+	<key>News</key>
+	<string>新闻</string>
 	<key>Next frame (→)</key>
 	<string>下一帧（→）</string>
+	<key>Next keyframe</key>
+	<string>下一个关键帧</string>
 	<key>Next to the video, LF Studios keeps the details the editor needs, on your Mac.</key>
 	<string>LF Studios 会在你的 Mac 上、视频旁边保存编辑器所需的信息。</string>
 	<key>Nice shot. You're all set.</key>
 	<string>截得漂亮！一切就绪。</string>
+	<key>Night</key>
+	<string>夜晚</string>
 	<key>Night Current</key>
 	<string>夜之流</string>
 	<key>No</key>
@@ -4006,6 +4652,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>未找到摄像头。</string>
 	<key>No camera in this recording</key>
 	<string>此录制内容中没有摄像头画面</string>
+	<key>No captions found in “%@”</key>
+	<string>在“%@”中找不到字幕</string>
 	<key>No captions in the picture — add a subtitles file to upload them separately.</key>
 	<string>画面中无字幕 — 添加字幕文件以单独上传。</string>
 	<key>No captures contain “%@”</key>
@@ -4014,6 +4662,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>没有此类截屏</string>
 	<key>No captures yet</key>
 	<string>还没有截屏</string>
+	<key>No clear beat found</key>
+	<string>找不到清晰的节拍</string>
 	<key>No clicks were recorded in this video</key>
 	<string>此视频中没有录制到点按</string>
 	<key>No clicks were recorded, so add zooms by hand: hover the zoom track and click.</key>
@@ -4024,6 +4674,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>此视频中没有指针数据</string>
 	<key>No face found in the camera video</key>
 	<string>摄像头视频中未找到面部</string>
+	<key>No favourites yet: hover an item and click its star.</key>
+	<string>还没有收藏：将指针悬停在项目上，然后点按其星标。</string>
 	<key>No idle moments found — nice and tight</key>
 	<string>未发现空闲片段 — 节奏紧凑</string>
 	<key>No location chosen</key>
@@ -4082,6 +4734,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>已没有语气词</string>
 	<key>No zooms are under the camera</key>
 	<string>没有缩放被摄像头遮住</string>
+	<key>Noir</key>
+	<string>黑色电影</string>
 	<key>Noise removal</key>
 	<string>降噪</string>
 	<key>Noise removal, De-esser (softens “s” sounds), Warm and clear EQ, Compression, and Podcast loudness: each with its own switch.</key>
@@ -4090,8 +4744,22 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>无</string>
 	<key>None in this recording. Turn on “Show keyboard shortcuts” in Settings → Recording and every ⌘ shortcut you press appears as keycaps. Plain typing is never recorded.</key>
 	<string>此录制内容中没有。在“设置”→“录制”中打开“显示快捷键”后，你按下的每个 ⌘ 快捷键都会以按键形式显示。普通打字永远不会被录制。</string>
+	<key>None takes the animation off.</key>
+	<string>选择“无”可移除动画。</string>
 	<key>None, Pop-in words, One word at a time, Karaoke fill, Typewriter, Bounce, Fade up, or Highlight box.</key>
 	<string>“无”“弹出词语”“逐词显示”“卡拉 OK 填充”“打字机”“弹跳”“上浮淡入”或“高亮框”。</string>
+	<key>Normal</key>
+	<string>正常</string>
+	<key>Normal: one speed for the whole clip. Keep pitch off lets faster sound higher, like a tape.</key>
+	<string>正常：整个片段使用同一速度。关闭“保持音调”后，加快时声音会变高，就像磁带一样。</string>
+	<key>Normalize</key>
+	<string>统一响度</string>
+	<key>Normalize loudness</key>
+	<string>统一响度</string>
+	<key>Normalize sets the volume so it's as loud as video sites expect (−16 LUFS).</key>
+	<string>“统一响度”会调整音量，使其达到视频网站期望的响度（−16 LUFS）。</string>
+	<key>Normalized to −16 LUFS — volume %lld%%</key>
+	<string>已统一为 −16 LUFS — 音量 %lld%%</string>
 	<key>Not Now</key>
 	<string>以后</string>
 	<key>Not allowed yet</key>
@@ -4128,6 +4796,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>不会上传任何内容。第一次使用时，macOS 可能需要下载该语言，这需要联网一次。</string>
 	<key>Nothing matches “%@”</key>
 	<string>没有与“%@”匹配的内容</string>
+	<key>Nothing matches “%@”.</key>
+	<string>没有与“%@”匹配的内容。</string>
 	<key>Nothing private found</key>
 	<string>未发现隐私信息</string>
 	<key>Nothing to clean up — everything belongs to recordings you still have</key>
@@ -4138,6 +4808,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>没有录到任何内容</string>
 	<key>Nothing was recorded — the screen didn't send any picture. Try again.</key>
 	<string>未录制任何内容 — 屏幕没有传送画面。请重试。</string>
+	<key>Notification</key>
+	<string>通知</string>
 	<key>Nudge the area (with ⇧: 10 points)</key>
 	<string>微调区域（按住 ⇧：10 点）</string>
 	<key>Nudge the selected mark (with ⇧: 10 points)</key>
@@ -4166,8 +4838,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>在你开启前一直关闭。开启后，它会在你的点按处放大，并打开下方的选项；关闭后，它生成的缩放会被移除。</string>
 	<key>Off, Light, Smooth, or Silky.</key>
 	<string>“关闭”“轻度”“平滑”或“丝滑”。</string>
+	<key>Off, it stays on the timeline but does nothing (V)</key>
+	<string>关闭后，它保留在时间线上但不起作用（V）</string>
 	<key>Off, it stays on the timeline but isn't seen or heard (V)</key>
 	<string>关闭后它仍在时间线上，但看不到也听不到（V）</string>
+	<key>Off: faster sounds higher, slower lower. The sound is silent faster than 32× or slower than 1/32×.</key>
+	<string>关闭：加快时声音变高，减慢时变低。快于 32× 或慢于 1/32× 时没有声音。</string>
 	<key>Offset</key>
 	<string>偏移</string>
 	<key>Older</key>
@@ -4178,6 +4854,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>版本低于 1.4.1？请从 LF Studios 的发布页面手动下载一次最新版本。之后它就会自行更新。</string>
 	<key>On</key>
 	<string>开</string>
+	<key>On a clip: select a clip above the main track, then click + on an effect.</key>
+	<string>用于片段：选择主轨道上方的片段，然后点按特效上的 +。</string>
+	<key>On a clip: select it and click + on a filter.</key>
+	<string>用于片段：选择片段，然后点按滤镜上的 +。</string>
+	<key>On another Mac the project plays the originals until you create proxies there.</key>
+	<string>在其他 Mac 上，项目会播放原始文件，直到你在那台 Mac 上创建代理。</string>
 	<key>On macOS 13, a window is captured as you see it on screen, including anything in front of it.</key>
 	<string>在 macOS 13 上，窗口会按你在屏幕上看到的样子捕捉，包括挡在它前面的任何内容。</string>
 	<key>On macOS 15 and earlier, it needs Speech Recognition allowed, and Dictation set up for that language.</key>
@@ -4194,10 +4876,18 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>在时间线上拖移它的边缘，设定持续多久。</string>
 	<key>On the timeline, drag its edges to set how long it shows.</key>
 	<string>在时间线上拖移它的边缘，设定显示多久。</string>
+	<key>On the video (above the player's tools)</key>
+	<string>在视频上（播放器工具上方）</string>
 	<key>On your clipboard · %@</key>
 	<string>已在剪贴板中 · %@</string>
 	<key>Once a day. When there's a new version, LF Studios shows what's new and installs it only when you click Install Update. Your projects, recordings, settings and permissions stay.</key>
 	<string>每天一次。有新版本时，LF Studios 会显示新内容，只有在你点按“安装更新”后才会安装。你的项目、录制、设置和权限都会保留。</string>
+	<key>Once upon a time</key>
+	<string>很久很久以前</string>
+	<key>One cycle</key>
+	<string>一个周期</string>
+	<key>One word</key>
+	<string>逐词</string>
 	<key>One word at a time</key>
 	<string>逐词显示</string>
 	<key>One ⌘Z undoes it.</key>
@@ -4210,6 +4900,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>只有在你打开相应选项时：快捷键、打字位置和时间，以及你的演讲者备注。</string>
 	<key>Only shortcuts with ⌘ or ⌃ (and a few keys like Esc) are saved, never ordinary typing.</key>
 	<string>只会存储带 ⌘ 或 ⌃ 的快捷键（以及 Esc 等少数按键），绝不会存储普通打字。</string>
+	<key>Only text and picture annotations can move to a track</key>
+	<string>只有文字和图片标注可以移到轨道</string>
 	<key>Opacity</key>
 	<string>不透明度</string>
 	<key>Open</key>
@@ -4218,8 +4910,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>打开 %@</string>
 	<key>Open Another Video…</key>
 	<string>打开其他视频…</string>
-	<key>Open Captions</key>
-	<string>打开字幕</string>
 	<key>Open Command Center</key>
 	<string>打开命令中心</string>
 	<key>Open Editor After Recording</key>
@@ -4258,8 +4948,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>打开“系统设置 ▸ 隐私与安全性”，向下滚动，然后点按 LF Studios 旁边的“仍要打开”。</string>
 	<key>Open Timeline.fcpxml in Final Cut Pro or DaVinci Resolve, or “Timeline (Premiere).xml” in Premiere Pro.</key>
 	<string>在 Final Cut Pro 或 DaVinci Resolve 中打开 Timeline.fcpxml，或在 Premiere Pro 中打开“Timeline (Premiere).xml”。</string>
-	<key>Open Transitions</key>
-	<string>打开转场</string>
 	<key>Open Video Editor</key>
 	<string>打开视频编辑器</string>
 	<key>Open a folder of files as one project: a recording's folder, a Creative Handoff, or any folder with videos in it.</key>
@@ -4352,8 +5040,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>原始</string>
 	<key>Original shape</key>
 	<string>原始比例</string>
+	<key>Originals</key>
+	<string>原始文件</string>
 	<key>Otherwise, LF Studios switches languages the next time it opens.</key>
 	<string>否则，LF Studios 会在下次打开时切换语言。</string>
+	<key>Our own sound effects, free to use in anything you make. Hover to listen; drag one onto the timeline or click +.</key>
+	<string>我们自己的音效，可免费用于你制作的任何内容。悬停即可试听；将其拖到时间线上或点按 +。</string>
 	<key>Out</key>
 	<string>出点</string>
 	<key>Out earlier</key>
@@ -4374,8 +5066,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>片尾卡“%@”，%@ 至 %@</string>
 	<key>Outro card, %@ to %@</key>
 	<string>片尾卡，%@ 至 %@</string>
+	<key>Over everything: drag a filter onto the timeline (a filter clip).</key>
+	<string>用于全部内容：将滤镜拖到时间线上（滤镜片段）。</string>
+	<key>Overlay</key>
+	<string>叠加</string>
 	<key>Overlay position</key>
 	<string>缩略图位置</string>
+	<key>POW!</key>
+	<string>砰！</string>
 	<key>Padding</key>
 	<string>边距</string>
 	<key>Padding, Roundness, and Shadow.</key>
@@ -4394,6 +5092,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>在此粘贴或输入备注。它们不会出现在任何录制中。</string>
 	<key>Paste or type your notes, then click Read.</key>
 	<string>粘贴或输入你的备注，然后点按“阅读”。</string>
+	<key>Pastel</key>
+	<string>粉彩</string>
 	<key>Pause</key>
 	<string>暂停</string>
 	<key>Pause &amp; resume</key>
@@ -4440,16 +5140,26 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>手机界面叠层</string>
 	<key>Phone overlay, above the preview, for 9:16 videos.</key>
 	<string>预览上方的“手机界面叠层”，适用于 9:16 视频。</string>
-	<key>Pick a Resolution (720p to 4K), a Frame rate, and a Quality: Web, Social, or Studio.</key>
-	<string>选取“分辨率”（720p 到 4K）、“帧速率”和“质量”：“网页”“社交媒体”或“专业”。</string>
+	<key>Pick Keys like: LF Studios, Final Cut Pro style or Premiere Pro style.</key>
+	<string>选择“快捷键风格”：LF Studios、Final Cut Pro 风格或 Premiere Pro 风格。</string>
+	<key>Pick a Resolution (720p to 4K), a Bit rate (Lower, Recommended, Higher or your own), a Codec, MP4 or MOV, and a Frame rate.</key>
+	<string>选择“分辨率”（720p 到 4K）、“比特率”（“较低”“推荐”“较高”或自定）、“编解码器”、MP4 或 MOV，以及“帧速率”。</string>
 	<key>Pick a font and a weight; add Outline or Shadow to make it easier to read.</key>
 	<string>选取字体和字重；添加“描边”或“阴影”可让文字更易读。</string>
+	<key>Pick a letter, number or symbol key</key>
+	<string>请选择字母、数字或符号键</string>
 	<key>Pick a preset as My Style (Presets ▸ Edit Presets ▸ Use as My Style), then one click puts it on any video.</key>
 	<string>选一个预设作为我的风格（预设 ▸ 编辑预设 ▸ 用作我的风格），之后点一下就能用到任何视频上。</string>
 	<key>Pick a preset from the menu to apply it. ⌘Z undoes it.</key>
 	<string>从菜单中选取一个预设即可应用。按 ⌘Z 可撤销。</string>
+	<key>Pick a tab. Hover an item to see (or hear) it.</key>
+	<string>选择一个标签页。将指针悬停在项目上即可预览（或试听）。</string>
 	<key>Pick a tool in the toolbar, or press its key.</key>
 	<string>在工具栏中选取一个工具，或按下它的按键。</string>
+	<key>Pick how it moves between them: Linear, Ease in, Ease out or Ease in-out.</key>
+	<string>选择它在两者之间的运动方式：“线性”“缓入”“缓出”或“缓入缓出”。</string>
+	<key>Pick one in Library ▸ Effects while this clip is selected.</key>
+	<string>选中此片段时，在“素材库 ▸ 特效”中选取一个。</string>
 	<key>Pick the Select tool (V) and click a mark to change it, or set things before you draw.</key>
 	<string>选取“选择”工具（V），点按一个标注即可更改它；也可以在绘制前先设定好。</string>
 	<key>Pick the right microphone in the menu above the bar.</key>
@@ -4476,6 +5186,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>通过捏合、按住 ⌘ 滚动、⌘+ 和 ⌘−，或右侧的滑块来查看更多或更少的视频内容。</string>
 	<key>Pine Dusk</key>
 	<string>松林暮色</string>
+	<key>Pink pill</key>
+	<string>粉色胶囊</string>
 	<key>Pinned Screenshot</key>
 	<string>贴图</string>
 	<key>Pinned screenshot</key>
@@ -4490,6 +5202,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>把字幕放在任意位置</string>
 	<key>Placement</key>
 	<string>位置</string>
+	<key>Plain</key>
+	<string>朴素</string>
 	<key>Plain Esc belongs to the app you're recording, so it stops only when LF Studios is in front. ⌃⌘Esc works everywhere.</key>
 	<string>单独按 Esc 键时，它属于你正在录制的应用，所以只有 LF Studios 位于最前面时才会停止。⌃⌘Esc 在任何地方都有效。</string>
 	<key>Plans zooms around your %lld clicks. Zooms you placed by hand are kept.</key>
@@ -4504,14 +5218,20 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>播放点按音效</string>
 	<key>Play a click on each click</key>
 	<string>每次点按时播放点按声</string>
+	<key>Play a clip from 0.1× to 100×, or let its speed change along a curve.</key>
+	<string>以 0.1× 到 100× 的速度播放片段，或让其速度沿曲线变化。</string>
 	<key>Play a soft click sound on every mouse click in the video.</key>
 	<string>在视频中每次点按鼠标时播放轻柔的点按声。</string>
 	<key>Play a song quietly under your video.</key>
 	<string>为视频配上一首轻柔的背景音乐。</string>
 	<key>Play a song under your video. It loops, fades in and out, and gets quieter while you talk.</key>
 	<string>在视频下方播放一首歌。它会循环播放、淡入淡出，并在你说话时变小。</string>
+	<key>Play backwards</key>
+	<string>倒放</string>
 	<key>Play capture sound</key>
 	<string>截屏时播放声音</string>
+	<key>Play faster</key>
+	<string>加速播放</string>
 	<key>Play from Here</key>
 	<string>从这里播放</string>
 	<key>Play the video and move the playhead (the line that shows where you are) to any moment.</key>
@@ -4528,6 +5248,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>正在以 %lld× 速度播放</string>
 	<key>Playing &amp; moving around</key>
 	<string>播放和定位</string>
+	<key>Playing lighter copies of the videos (exports use the originals)</key>
+	<string>正在播放视频的轻量副本（导出使用原始文件）</string>
 	<key>Plays after the last clip, before the end card</key>
 	<string>在最后一个片段之后、结尾画面之前播放</string>
 	<key>Plays before the first clip</key>
@@ -4556,8 +5278,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>播客人声已就绪</string>
 	<key>Point at things and frame them: arrows, rectangles, ellipses, lines, and freehand drawing.</key>
 	<string>指向和框出重点：箭头、矩形、椭圆、直线和手绘。</string>
+	<key>Point things out</key>
+	<string>指示</string>
 	<key>Polar Dawn</key>
 	<string>极地晨光</string>
+	<key>Pop</key>
+	<string>弹出</string>
+	<key>Pop title</key>
+	<string>弹出标题</string>
 	<key>Pop-in words</key>
 	<string>弹出词语</string>
 	<key>Porcelain</key>
@@ -4566,8 +5294,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>竖向（9:16）</string>
 	<key>Position</key>
 	<string>位置</string>
+	<key>Position across</key>
+	<string>水平位置</string>
 	<key>Position and Size: drag the camera on the preview, drag its edges and corners to resize it, or pick one of eight spots.</key>
 	<string>位置和大小：在预览上拖移摄像头，拖移其边缘和角可调整大小，或选取八个位置之一。</string>
+	<key>Position down</key>
+	<string>垂直位置</string>
 	<key>Positions only: no text, no keys</key>
 	<string>仅位置：不含文本和按键</string>
 	<key>Possible key</key>
@@ -4576,6 +5308,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>想每次都先调整？在“设置 ▸ 截屏”中关闭“选择后立即截屏”。</string>
 	<key>Preferences</key>
 	<string>设置</string>
+	<key>Premiere Pro style</key>
+	<string>Premiere Pro 风格</string>
 	<key>Preparing to copy…</key>
 	<string>正在准备拷贝…</string>
 	<key>Preparing your video…</key>
@@ -4606,6 +5340,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>按 Z 键，或点按预览上方的“缩放”。</string>
 	<key>Press Z, or click Zoom.</key>
 	<string>按 Z 键，或点按“缩放”。</string>
+	<key>Press a key…</key>
+	<string>请按下按键…</string>
 	<key>Press the keys you want. To remove one, click the ×.</key>
 	<string>按下你想要的按键。要移除，请点按 ×。</string>
 	<key>Press the shortcut, or choose Capture Window.</key>
@@ -4640,8 +5376,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>预览目标，然后继续设置录制。</string>
 	<key>Previous / next frame</key>
 	<string>上一帧/下一帧</string>
+	<key>Previous / next keyframe</key>
+	<string>上一个 / 下一个关键帧</string>
 	<key>Previous frame (←)</key>
 	<string>上一帧（←）</string>
+	<key>Previous keyframe</key>
+	<string>上一个关键帧</string>
 	<key>Prism Sweep</key>
 	<string>棱镜流光</string>
 	<key>Privacy</key>
@@ -4650,22 +5390,52 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ProRes 和透明背景</string>
 	<key>ProRes files are big. Turn on Transparent background with ProRes 4444.</key>
 	<string>ProRes 文件很大。使用 ProRes 4444 时可打开“透明背景”。</string>
+	<key>ProRes is always a .mov</key>
+	<string>ProRes 始终为 .mov</string>
 	<key>Processed on your Mac.</key>
 	<string>在你的 Mac 上处理。</string>
 	<key>Projects</key>
 	<string>项目</string>
 	<key>Projects shows your recordings, screenshots, and saved projects, newest first. Click one to open it. Right-click for Show in Finder, Creative Handoff…, or Delete.</key>
 	<string>“项目”按从新到旧显示你的录制内容、截屏和已存储的项目。点按一项即可打开。右键点按可选择“在‘访达’中显示”“创意交付…”或“删除”。</string>
+	<key>Projects with keyframes or any other 1.15.0 feature open in LF Studios 1.15.0 or later.</key>
+	<string>包含关键帧或任何其他 1.15.0 功能的项目需要用 LF Studios 1.15.0 或更高版本打开。</string>
 	<key>Projects with these tracks open in LF Studios 1.14.0 or later.</key>
 	<string>含有这些轨道的项目需要 LF Studios 1.14.0 或更高版本才能打开。</string>
 	<key>Properties (right): the settings of what you selected, in the Style, Cursor, Zoom, Camera, Captions, and Audio tabs.</key>
 	<string>属性（右侧）：所选内容的设置，位于“样式”“指针”“缩放”“摄像头”“字幕”和“音频”标签中。</string>
+	<key>Properties ▸ Adjust; Library ▸ Adjust for an adjustment clip.</key>
+	<string>属性 ▸ 调节；素材库 ▸ 调节可添加调节片段。</string>
+	<key>Properties ▸ Animation, with a clip above the main track selected.</key>
+	<string>属性 ▸ 动画，需选中主轨道上方的片段。</string>
+	<key>Properties ▸ Blend, Cutout and Mask, with a clip above the main track selected.</key>
+	<string>属性 ▸ 混合、抠像和蒙版，需选中主轨道上方的片段。</string>
+	<key>Properties ▸ Keyframes, and the ◆ next to each setting of the selected clip.</key>
+	<string>属性 ▸ 关键帧，以及所选片段每项设置旁边的 ◆。</string>
+	<key>Properties ▸ Speed, with a clip selected.</key>
+	<string>属性 ▸ 速度，需选中片段。</string>
+	<key>Properties ▸ Tracking, with a clip above the main track selected.</key>
+	<string>属性 ▸ 跟踪，需选中主轨道上方的片段。</string>
 	<key>Properties: Show, Opacity, Size, Rotation, Mirror, Rotate 90°, Fit, Fill, Crop, and for videos Volume and Speed.</key>
 	<string>属性：显示、不透明度、大小、旋转、镜像、旋转 90°、适合、填充、裁剪，视频还有音量和速度。</string>
+	<key>Proxies</key>
+	<string>代理</string>
+	<key>Proxies ready — the editor plays them; exports use the originals</key>
+	<string>代理已就绪 — 编辑器播放代理；导出使用原始文件</string>
+	<key>Proxies: lighter copies for smooth editing</key>
+	<string>代理：用于流畅剪辑的轻量副本</string>
+	<key>Proxy</key>
+	<string>代理</string>
+	<key>Pulse</key>
+	<string>脉冲</string>
+	<key>Punchy</key>
+	<string>强烈</string>
 	<key>Pure</key>
 	<string>纯白</string>
 	<key>Purple</key>
 	<string>紫色</string>
+	<key>Push</key>
+	<string>推移</string>
 	<key>Put a logo, a watermark, or a picture on the video.</key>
 	<string>在视频上放置标志、水印或图片。</string>
 	<key>Put videos and pictures over your recording: picture-in-picture, b-roll, logos. Each plays at its own time, on its own track.</key>
@@ -4686,10 +5456,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>质量</string>
 	<key>Quality: Balanced, High, or Max. Frame rate: 30 or 60 fps. The estimate under them shows how much space a minute takes.</key>
 	<string>质量：“均衡”“高”或“最高”。帧速率：30 或 60 fps。下方的估算显示每分钟会占用多少空间。</string>
+	<key>Question</key>
+	<string>问号</string>
 	<key>Quick</key>
 	<string>快速</string>
 	<key>Quieter while you talk</key>
 	<string>说话时变小声</string>
+	<key>Quit</key>
+	<string>退出</string>
 	<key>Quit &amp; Reopen</key>
 	<string>退出并重新打开</string>
 	<key>Quit LF Studios</key>
@@ -4698,6 +5472,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>退出 LF Studios，然后重新打开。</string>
 	<key>Quit LF Studios?</key>
 	<string>要退出 LF Studios 吗？</string>
+	<key>Quote</key>
+	<string>引言</string>
+	<key>RGB</key>
+	<string>RGB</string>
+	<key>RGB split</key>
+	<string>RGB 分离</string>
 	<key>Radius</key>
 	<string>圆角</string>
 	<key>Range</key>
@@ -4720,6 +5500,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>就绪</string>
 	<key>Ready · %lld optional off</key>
 	<string>就绪 · %lld 个可选快捷键未设置</string>
+	<key>Ready-made</key>
+	<string>现成</string>
+	<key>Ready-made caption looks, and captions from a subtitles file.</key>
+	<string>现成的字幕外观，以及来自字幕文件的字幕。</string>
 	<key>Recent Exports</key>
 	<string>最近导出</string>
 	<key>Recognized Text</key>
@@ -4728,6 +5512,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>识别出的文字</string>
 	<key>Recognized text, links &amp; tables</key>
 	<string>识别出的文字、链接和表格</string>
+	<key>Recommended</key>
+	<string>推荐</string>
 	<key>Record</key>
 	<string>录制</string>
 	<key>Record (Return)</key>
@@ -4804,6 +5590,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>录制于 %@。在时间线上拖移它的圆点即可调整时间；波纹和自动缩放会随之更新。</string>
 	<key>Recorded at the same time as the video? Click Sync by sound: it lines up with the recording and follows your cuts from then on.</key>
 	<string>与视频同时录制的？点按“按声音同步”：它会与录制内容对齐，此后跟随你的剪切。</string>
+	<key>Recorded live</key>
+	<string>现场录制</string>
 	<key>Recorded your voice separately, or re-recorded it? Use that file in place of the recording's microphone.</key>
 	<string>单独录了人声，或者重新录了一遍？用那个文件替代录制内容的麦克风声音。</string>
 	<key>Recording</key>
@@ -4870,6 +5658,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做</string>
 	<key>Redo Adapt to This Ratio</key>
 	<string>重做“适配此比例”</string>
+	<key>Redo Add Adjustment</key>
+	<string>重做添加调节</string>
 	<key>Redo Add Arrow</key>
 	<string>重做添加箭头</string>
 	<key>Redo Add Audio</key>
@@ -4890,12 +5680,18 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做添加点按</string>
 	<key>Redo Add Clicks</key>
 	<string>重做添加点按</string>
+	<key>Redo Add Effect</key>
+	<string>重做添加特效</string>
+	<key>Redo Add Filter</key>
+	<string>重做添加滤镜</string>
 	<key>Redo Add Highlight</key>
 	<string>重做添加高亮</string>
 	<key>Redo Add Image</key>
 	<string>重做添加图像</string>
 	<key>Redo Add Intro Card</key>
 	<string>重做添加片头卡</string>
+	<key>Redo Add Keyframe</key>
+	<string>重做添加关键帧</string>
 	<key>Redo Add Loupe</key>
 	<string>重做添加放大镜</string>
 	<key>Redo Add Marker</key>
@@ -4908,6 +5704,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做添加录制内容</string>
 	<key>Redo Add Spotlight</key>
 	<string>重做添加聚光灯</string>
+	<key>Redo Add Sticker</key>
+	<string>重做添加贴纸</string>
 	<key>Redo Add Text</key>
 	<string>重做添加文字</string>
 	<key>Redo Add Typing Zooms</key>
@@ -4918,6 +5716,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做添加缩放</string>
 	<key>Redo Add to Track</key>
 	<string>重做添加到轨道</string>
+	<key>Redo Adjust</key>
+	<string>重做调节</string>
+	<key>Redo Animation</key>
+	<string>重做动画</string>
 	<key>Redo Annotation Change</key>
 	<string>重做标注更改</string>
 	<key>Redo Annotations</key>
@@ -4942,10 +5744,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做开启自动缩放</string>
 	<key>Redo Background</key>
 	<string>重做背景更改</string>
+	<key>Redo Blend</key>
+	<string>重做混合</string>
 	<key>Redo Blur Private Info</key>
 	<string>重做“模糊隐私信息”</string>
 	<key>Redo Blur Style</key>
 	<string>重做模糊样式更改</string>
+	<key>Redo Break Apart</key>
+	<string>重做拆开</string>
 	<key>Redo Camera Change</key>
 	<string>重做摄像头更改</string>
 	<key>Redo Camera Layout Change</key>
@@ -4962,6 +5768,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做字幕更改</string>
 	<key>Redo Change Loupe</key>
 	<string>重做更改放大镜</string>
+	<key>Redo Change Pitch</key>
+	<string>重做更改音调</string>
+	<key>Redo Chroma Key</key>
+	<string>重做色度抠图</string>
+	<key>Redo Clear Beats</key>
+	<string>重做清除节拍</string>
 	<key>Redo Click Sounds</key>
 	<string>重做点按音效更改</string>
 	<key>Redo Clicks</key>
@@ -4970,6 +5782,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做片段更改</string>
 	<key>Redo Collapse Track</key>
 	<string>重做折叠轨道</string>
+	<key>Redo Compound Clip</key>
+	<string>重做复合片段</string>
+	<key>Redo Cover</key>
+	<string>重做封面</string>
 	<key>Redo Crop</key>
 	<string>重做裁剪</string>
 	<key>Redo Cursor Change</key>
@@ -5022,10 +5838,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做删除缩放</string>
 	<key>Redo Delete from Project</key>
 	<string>重做从项目中删除</string>
+	<key>Redo Detect Beats</key>
+	<string>重做检测节拍</string>
 	<key>Redo Edit Caption</key>
 	<string>重做编辑字幕</string>
 	<key>Redo Edit Text</key>
 	<string>重做编辑文字</string>
+	<key>Redo Effects</key>
+	<string>重做特效</string>
 	<key>Redo Enhance Voice</key>
 	<string>重做增强人声</string>
 	<key>Redo Extract Audio</key>
@@ -5036,6 +5856,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做淡入淡出</string>
 	<key>Redo Fill</key>
 	<string>重做填充</string>
+	<key>Redo Filter</key>
+	<string>重做滤镜</string>
 	<key>Redo Fit</key>
 	<string>重做适合</string>
 	<key>Redo Fit Zooms Around Camera</key>
@@ -5054,16 +5876,28 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做高亮样式更改</string>
 	<key>Redo Image Style</key>
 	<string>重做图像样式更改</string>
+	<key>Redo Import Captions</key>
+	<string>重做导入字幕</string>
 	<key>Redo Import Media</key>
 	<string>重做导入媒体</string>
 	<key>Redo Intro and Outro</key>
 	<string>重做摄像头片头和片尾</string>
+	<key>Redo Keep Background</key>
+	<string>重做保留背景</string>
 	<key>Redo Keep Face Centered</key>
 	<string>重做保持面部居中</string>
+	<key>Redo Keep Pitch</key>
+	<string>重做保持音调</string>
+	<key>Redo Keyframe Easing</key>
+	<string>重做关键帧缓动</string>
 	<key>Redo Lock Track</key>
 	<string>重做锁定轨道</string>
+	<key>Redo Make Compound Clip</key>
+	<string>重做创建复合片段</string>
 	<key>Redo Markers</key>
 	<string>重做标记更改</string>
+	<key>Redo Mask</key>
+	<string>重做蒙版</string>
 	<key>Redo Mirror</key>
 	<string>重做镜像</string>
 	<key>Redo Move %lld Items</key>
@@ -5096,6 +5930,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做移动聚光灯</string>
 	<key>Redo Move Text</key>
 	<string>重做移动文字</string>
+	<key>Redo Move to Track</key>
+	<string>重做移到轨道</string>
 	<key>Redo Music Change</key>
 	<string>重做音乐更改</string>
 	<key>Redo Mute Clip</key>
@@ -5108,6 +5944,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做视频静音</string>
 	<key>Redo New Folder</key>
 	<string>重做新建文件夹</string>
+	<key>Redo Normalize Loudness</key>
+	<string>重做统一响度</string>
 	<key>Redo Paste</key>
 	<string>重做粘贴</string>
 	<key>Redo Podcast Mode Off</key>
@@ -5120,12 +5958,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做移除所有缩放</string>
 	<key>Redo Remove Audio</key>
 	<string>重做移除音频</string>
+	<key>Redo Remove Background</key>
+	<string>重做移除背景</string>
 	<key>Redo Remove Camera Video</key>
 	<string>重做移除摄像头视频</string>
 	<key>Redo Remove Captions</key>
 	<string>重做移除字幕</string>
 	<key>Redo Remove Intro Card</key>
 	<string>重做移除片头卡</string>
+	<key>Redo Remove Keyframe</key>
+	<string>重做移除关键帧</string>
 	<key>Redo Remove Music</key>
 	<string>重做移除音乐</string>
 	<key>Redo Remove Outro Card</key>
@@ -5178,8 +6020,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做滑动片段</string>
 	<key>Redo Sound Change</key>
 	<string>重做声音更改</string>
+	<key>Redo Speed</key>
+	<string>重做速度</string>
 	<key>Redo Speed Change</key>
 	<string>重做速度更改</string>
+	<key>Redo Speed Curve</key>
+	<string>重做曲线变速</string>
 	<key>Redo Speed Up Idle</key>
 	<string>重做加速空闲片段</string>
 	<key>Redo Speed Up Typing</key>
@@ -5196,16 +6042,22 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做聚光灯样式更改</string>
 	<key>Redo Start Over</key>
 	<string>重做从头开始</string>
+	<key>Redo Stop Following</key>
+	<string>重做停止跟踪</string>
 	<key>Redo Style Change</key>
 	<string>重做样式更改</string>
 	<key>Redo Sync Audio by Sound</key>
 	<string>重做按声音同步音频</string>
+	<key>Redo Text Change</key>
+	<string>重做文字更改</string>
 	<key>Redo Text Style</key>
 	<string>重做文字样式更改</string>
 	<key>Redo Timeline Edit</key>
 	<string>重做时间线编辑</string>
 	<key>Redo Title Card</key>
 	<string>重做标题卡更改</string>
+	<key>Redo Track Motion</key>
+	<string>重做运动跟踪</string>
 	<key>Redo Transcribe</key>
 	<string>重做转录</string>
 	<key>Redo Transitions</key>
@@ -5284,10 +6136,20 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>移除所有缩放</string>
 	<key>Remove anything, any time.</key>
 	<string>随时移除任何内容。</string>
+	<key>Remove background</key>
+	<string>移除背景</string>
+	<key>Remove background keeps just the person, found on this Mac.</key>
+	<string>“移除背景”只保留人物，在这台 Mac 上识别。</string>
 	<key>Remove caption</key>
 	<string>移除字幕</string>
+	<key>Remove from favourites</key>
+	<string>从收藏中移除</string>
 	<key>Remove from this video</key>
 	<string>从此视频中移除</string>
+	<key>Remove keyframe: %@</key>
+	<string>移除关键帧：%@</string>
+	<key>Remove the keyframe at the playhead</key>
+	<string>移除播放头处的关键帧</string>
 	<key>Remove the parts you don't want.</key>
 	<string>删掉你不想要的部分。</string>
 	<key>Remove this caption</key>
@@ -5340,10 +6202,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>正在为剪贴板渲染…%lld%%</string>
 	<key>Rendering, then copying to your clipboard</key>
 	<string>正在渲染，完成后拷贝到剪贴板</string>
+	<key>Replace</key>
+	<string>替换</string>
 	<key>Replace Music…</key>
 	<string>替换音乐…</string>
+	<key>Replace it, or keep both (the new one gets a number)?</key>
+	<string>要替换它，还是两者都保留（新的会加上编号）？</string>
 	<key>Replaced with “%@”</key>
 	<string>已替换为“%@”</string>
+	<key>Replaces %@</key>
+	<string>替换“%@”</string>
 	<key>Replace…</key>
 	<string>替换…</string>
 	<key>Report Issue</key>
@@ -5356,6 +6224,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重置</string>
 	<key>Reset %@</key>
 	<string>重置%@</string>
+	<key>Reset Adjust</key>
+	<string>重置调节</string>
+	<key>Reset All</key>
+	<string>全部重置</string>
+	<key>Reset All goes back to the preset's keys. The Timeline menu shows the keys you set.</key>
+	<string>“全部重置”会恢复预设的快捷键。“时间线”菜单会显示你设定的快捷键。</string>
 	<key>Reset Crop</key>
 	<string>重置裁剪</string>
 	<key>Reset Defaults</key>
@@ -5422,6 +6296,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>继续录制</string>
 	<key>Resume recording (%@)</key>
 	<string>继续录制（%@）</string>
+	<key>Retro</key>
+	<string>复古</string>
+	<key>Retro and glitch</key>
+	<string>复古和故障</string>
 	<key>Return to start at the end</key>
 	<string>结尾时回到起点</string>
 	<key>Reveal</key>
@@ -5456,6 +6334,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>拷贝前请检查网络详情。</string>
 	<key>Review the phone number before opening.</key>
 	<string>打开前请检查电话号码。</string>
+	<key>Rhythm</key>
+	<string>节奏</string>
 	<key>Right</key>
 	<string>右侧</string>
 	<key>Right-click a clip for Speed, Mute Clip, Move Earlier, and Move Later.</key>
@@ -5476,6 +6356,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>圆环</string>
 	<key>Ripple</key>
 	<string>波纹</string>
+	<key>Riser</key>
+	<string>渐强</string>
 	<key>Rose Smoke</key>
 	<string>玫瑰烟雾</string>
 	<key>Rotate</key>
@@ -5500,6 +6382,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>圆角：从直角一直到完整的圆形。</string>
 	<key>S</key>
 	<string>小</string>
+	<key>STORY</key>
+	<string>故事</string>
 	<key>Saturation</key>
 	<string>饱和度</string>
 	<key>Save</key>
@@ -5620,6 +6504,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重新扫描</string>
 	<key>Scan QR Code</key>
 	<string>扫描二维码</string>
+	<key>Screen</key>
+	<string>滤色</string>
 	<key>Screen Recording</key>
 	<string>屏幕录制</string>
 	<key>Screen Recording Permission Required</key>
@@ -5690,6 +6576,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>滚动速度</string>
 	<key>Search</key>
 	<string>搜索</string>
+	<key>Search at the top of each tab; click a star to keep an item in Favourites.</key>
+	<string>在每个标签页顶部搜索；点按星标可将项目保留在“收藏”中。</string>
 	<key>Search commands</key>
 	<string>搜索命令</string>
 	<key>Search projects</key>
@@ -5724,14 +6612,22 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>全不选</string>
 	<key>Select a caption on the timeline to change when it starts and ends.</key>
 	<string>在时间线上选中一条字幕，即可更改它开始和结束的时间。</string>
+	<key>Select a clip above the main track first</key>
+	<string>请先选择主轨道上方的片段</string>
+	<key>Select a clip above the main track to add a keyframe</key>
+	<string>选择主轨道上方的片段以添加关键帧</string>
 	<key>Select a clip for Mute this clip, Fade in, and Fade out. Or ⇧-drag a part and choose Mute this part.</key>
 	<string>选择一个片段，可使用“将此片段静音”“淡入”和“淡出”。或者按住 ⇧ 拖移选出一段，然后选择“将此部分静音”。</string>
 	<key>Select a clip on the timeline to mute it or fade it in and out.</key>
 	<string>在时间线上选择一个片段即可将其静音或设置淡入淡出。</string>
 	<key>Select a clip, or ⇧-drag a part, and choose its Speed in the panel on the right.</key>
 	<string>选择一个片段，或按住 ⇧ 拖移选出一段，然后在右侧面板中选择它的“速度”。</string>
+	<key>Select a compound clip to break it apart</key>
+	<string>选择复合片段以将其拆开</string>
 	<key>Select a range to cut</key>
 	<string>选择要剪掉的范围</string>
+	<key>Select a text or picture annotation ▸ Move to a Track.</key>
+	<string>选择文字或图片标注 ▸ 移到轨道。</string>
 	<key>Select a window to record without blocking other apps</key>
 	<string>选择要录制的窗口，不影响其他 App 的使用</string>
 	<key>Select an area, then wait a few seconds before the shot: time to open a menu or hover over something.</key>
@@ -5740,6 +6636,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>选择视频中的任意一段并移除它，即使跨越多个片段也可以。</string>
 	<key>Select area manually</key>
 	<string>手动选择区域</string>
+	<key>Select clips above the main track to make a compound clip</key>
+	<string>选择主轨道上方的片段以创建复合片段</string>
+	<key>Select clips above the main track, then press ⌥G.</key>
+	<string>选择主轨道上方的片段，然后按 ⌥G。</string>
 	<key>Select left / right of the playhead</key>
 	<string>选择播放头左侧 / 右侧</string>
 	<key>Select left of playhead</key>
@@ -5756,6 +6656,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>选择多张可一次全部拖出。</string>
 	<key>Select size</key>
 	<string>选择大小</string>
+	<key>Select the clips (⇧-click to add more), then press ⌥G.</key>
+	<string>选择片段（⇧-点按可添加更多），然后按 ⌥G。</string>
 	<key>Select tool · split tool</key>
 	<string>选择工具 · 分割工具</string>
 	<key>Select two or more clips above the main track to group them (⇧-click)</key>
@@ -5782,12 +6684,18 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>选区宽 %@ 点、高 %@ 点。方向键可移动选区，按 Return 键捕捉，按 Esc 键取消。</string>
 	<key>Send everything to a video editor</key>
 	<string>把所有素材交给其他剪辑软件</string>
+	<key>Sepia</key>
+	<string>棕褐色</string>
+	<key>Set Length at the top of the tab first, or later in the clip's Transition in.</key>
+	<string>先在标签页顶部设定“时长”，或稍后在片段的“入场转场”中设定。</string>
 	<key>Set Padding, Radius (rounded corners), and Shadow.</key>
 	<string>设定“边距”“圆角”和“阴影”。</string>
 	<key>Set Size and Opacity. Turn on Show for the whole video for a watermark.</key>
 	<string>设定“大小”和“不透明度”。要用作水印，请打开“在整个视频中显示”。</string>
 	<key>Set Smoothness (how calmly it follows) and Framing (how close it is).</key>
 	<string>设定“平滑度”（跟随得有多平稳）和“取景”（拉得有多近）。</string>
+	<key>Set an effect clip's Strength in Properties; it takes keyframes.</key>
+	<string>在“属性”中设定特效片段的“强度”；它可设关键帧。</string>
 	<key>Set how loud your voice and your Mac's sound are, or mute the video.</key>
 	<string>设定你的声音和 Mac 声音的音量，或将视频静音。</string>
 	<key>Set its Strength in the panel on the right.</key>
@@ -5812,6 +6720,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>在工具栏中设定文字大小和“粗体”。拖移文字的一角可放大或缩小。</string>
 	<key>Set your own keys for captures and recordings. They work in every app.</key>
 	<string>为截屏和录制设定你自己的按键。它们在所有应用中都有效。</string>
+	<key>Sets the volume so it's as loud as video sites expect (−16 LUFS)</key>
+	<string>调整音量，使其达到视频网站期望的响度（−16 LUFS）</string>
 	<key>Settings</key>
 	<string>设置</string>
 	<key>Settings ▸ General ▸ After Capture.</key>
@@ -5854,6 +6764,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>阴影和透明边距</string>
 	<key>Shadow color</key>
 	<string>阴影颜色</string>
+	<key>Shadows</key>
+	<string>阴影</string>
+	<key>Shadows (lift)</key>
+	<string>阴影（提升）</string>
+	<key>Shake</key>
+	<string>抖动</string>
 	<key>Shape</key>
 	<string>形状</string>
 	<key>Shapes: 16:9 for YouTube, 9:16 for Reels, TikTok, and Shorts, 1:1 for square posts, 4:5 for the Instagram feed, 4:3 for slides and iPad, 16:10 for a Mac screen, 21:9 for a cinematic look. Point at one to see what it's for.</key>
@@ -5864,6 +6780,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>“共享”可通过邮件、信息、隔空投送等方式发送。</string>
 	<key>Share — Mail, Messages, AirDrop…</key>
 	<string>共享 — “邮件”、“信息”、隔空投送…</string>
+	<key>Sharpen</key>
+	<string>锐化</string>
 	<key>Sharpness</key>
 	<string>锐度</string>
 	<key>Shift the Zooms</key>
@@ -5954,6 +6872,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>只显示某类截屏</string>
 	<key>Show one kind of capture, select several at once, and undo a delete.</key>
 	<string>只显示某类截屏、一次选择多张，以及撤销删除。</string>
+	<key>Show only favourites</key>
+	<string>仅显示收藏</string>
 	<key>Show or hide the LF Studios icon in the menu bar.</key>
 	<string>在菜单栏中显示或隐藏 LF Studios 图标。</string>
 	<key>Show or hide the pointer, and make it bigger so viewers can follow it.</key>
@@ -6028,6 +6948,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>天空</string>
 	<key>Sky Wash</key>
 	<string>天空水彩</string>
+	<key>Slide</key>
+	<string>滑动</string>
+	<key>Slide down</key>
+	<string>向下滑动</string>
+	<key>Slide left</key>
+	<string>向左滑动</string>
+	<key>Slide right</key>
+	<string>向右滑动</string>
+	<key>Slide up</key>
+	<string>向上滑动</string>
 	<key>Slides / iPad</key>
 	<string>幻灯片 / iPad</string>
 	<key>Slow</key>
@@ -6038,6 +6968,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>较小的文件（ProRes 422）</string>
 	<key>Smallest files, great for docs and chat</key>
 	<string>文件最小，适合文档和聊天</string>
+	<key>Smile</key>
+	<string>微笑</string>
 	<key>Smooth</key>
 	<string>平滑</string>
 	<key>Smooth cursor movement</key>
@@ -6048,6 +6980,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>社交媒体</string>
 	<key>Social feeds</key>
 	<string>社交媒体信息流</string>
+	<key>Soft</key>
+	<string>柔和</string>
+	<key>Soft light</key>
+	<string>柔光</string>
+	<key>Soft rise</key>
+	<string>缓缓升起</string>
 	<key>Soft streaks on fast moves</key>
 	<string>快速移动时产生柔和拖影</string>
 	<key>Softens sharp “s” and “sh” sounds</key>
@@ -6068,12 +7006,18 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>排序方式</string>
 	<key>Sound</key>
 	<string>声音</string>
+	<key>Sound effects</key>
+	<string>音效</string>
 	<key>Sounds</key>
 	<string>声音</string>
 	<key>Space</key>
 	<string>空格键</string>
 	<key>Space Gray</key>
 	<string>深空灰色</string>
+	<key>Spaced out</key>
+	<string>宽字距</string>
+	<key>Sparkle</key>
+	<string>闪光</string>
 	<key>Speak and watch the level meter move.</key>
 	<string>说几句话，看看电平表有没有跳动。</string>
 	<key>Speaker Notes</key>
@@ -6094,8 +7038,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>已加速 %lld 个空闲片段 — 节省了 %@ · 请检查打字的片段</string>
 	<key>Sped up %lld typing stretches to %@ — %@ shorter</key>
 	<string>已将 %lld 段打字加速到 %@ — 缩短了 %@</string>
-	<key>Sped up by Speed up typing — pick another speed here, or press it again.</key>
-	<string>由“加速打字”加速 — 可在此选择其他速度，或再次按下。</string>
+	<key>Speech bubble</key>
+	<string>对话气泡</string>
 	<key>Speech recognition is turned off for LF Studios in System Settings → Privacy &amp; Security → Speech Recognition. Turn it on, then try again.</key>
 	<string>LF Studios 的语音识别已在“系统设置”→“隐私与安全性”→“语音识别”中关闭。请将其打开，然后重试。</string>
 	<key>Speech recognition isn't available on this Mac right now. Try again in a moment.</key>
@@ -6110,8 +7054,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>时间线上的“加速空闲片段”会快进没有任何动静的时刻。</string>
 	<key>Speed Up Idle works on LF Studios recordings — it watches the pointer</key>
 	<string>“加速空闲片段”适用于 LF Studios 录制内容 — 它会追踪指针</string>
+	<key>Speed and speed curves</key>
+	<string>速度和曲线变速</string>
+	<key>Speed curve</key>
+	<string>曲线变速</string>
 	<key>Speed of this part</key>
 	<string>此部分的速度</string>
+	<key>Speed point: %@</key>
+	<string>速度点：%@</string>
 	<key>Speed through the parts where you type, so viewers don't wait.</key>
 	<string>快速跳过你打字的部分，不让观众久等。</string>
 	<key>Speed up slow parts, or slow down fast ones.</key>
@@ -6120,8 +7070,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>加速打字</string>
 	<key>Speed up typing to</key>
 	<string>将打字加速到</string>
-	<key>Speeds from 0.5× to 16×.</key>
-	<string>速度范围为 0.5× 到 16×。</string>
+	<key>Speeds from 0.1× to 100×; see Speed and speed curves.</key>
+	<string>速度范围为 0.1× 到 100×；请参阅“速度和曲线变速”。</string>
+	<key>Spin</key>
+	<string>旋转</string>
 	<key>Split</key>
 	<string>分割</string>
 	<key>Split (⌘B), Delete left (Q) and right (W) of the playhead, Delete (⌫), and Marker.</key>
@@ -6154,8 +7106,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>先在两段录制的交界处分割片段，再分别倒放每一部分</string>
 	<key>Split the clips at every marker</key>
 	<string>在每个标记处分割片段</string>
+	<key>Split the video (⌘B) to make a cut for a transition</key>
+	<string>分割视频（⌘B）以创建用于转场的剪切点</string>
+	<key>Split the video (⌘B) to make a cut.</key>
+	<string>分割视频（⌘B）以创建剪切点。</string>
 	<key>Split the video (⌘B) to make cuts; each can dissolve or dip to black.</key>
 	<string>分割视频（⌘B）以制作剪辑点；每个剪辑点都可以叠化或黑场过渡。</string>
+	<key>Split the video (⌘B) to make cuts; transitions go between clips on the main track.</key>
+	<string>分割视频（⌘B）以创建剪切点；转场位于主轨道的片段之间。</string>
 	<key>Split tool</key>
 	<string>分割工具</string>
 	<key>Split, trim &amp; reorder clips</key>
@@ -6176,6 +7134,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>正方形、圆形或 45° 直线</string>
 	<key>Stacked</key>
 	<string>上下</string>
+	<key>Star</key>
+	<string>星星</string>
 	<key>Star on GitHub</key>
 	<string>在 GitHub 上加星标</string>
 	<key>Start</key>
@@ -6200,6 +7160,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>开始滚动（空格键）</string>
 	<key>Start the song at</key>
 	<string>歌曲起始位置</string>
+	<key>Start tracking</key>
+	<string>开始跟踪</string>
 	<key>Start with recording</key>
 	<string>随录制开始</string>
 	<key>Start, and press again to finish</key>
@@ -6214,6 +7176,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>步骤 %lld</string>
 	<key>Steps</key>
 	<string>步骤</string>
+	<key>Stickers</key>
+	<string>贴纸</string>
+	<key>Stickers and sound effects</key>
+	<string>贴纸和音效</string>
+	<key>Stickers and sound effects made for LF Studios, free to use in anything you make.</key>
+	<string>专为 LF Studios 制作的贴纸和音效，可免费用于你制作的任何内容。</string>
 	<key>Still saving the last recording — try again in a moment.</key>
 	<string>仍在存储上一段录制内容 — 请稍后再试。</string>
 	<key>Still saving the recording…</key>
@@ -6226,12 +7194,18 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>停止</string>
 	<key>Stop Enhancing Voice</key>
 	<string>停止增强人声</string>
+	<key>Stop Making Proxies</key>
+	<string>停止创建代理</string>
 	<key>Stop Recording</key>
 	<string>停止录制</string>
 	<key>Stop Using as My Style</key>
 	<string>不再用作我的风格</string>
 	<key>Stop and Close</key>
 	<string>停止并关闭</string>
+	<key>Stop following</key>
+	<string>停止跟踪</string>
+	<key>Stop following takes it off; a box over something with clear edges follows best.</key>
+	<string>“停止跟踪”可将其移除；框住边缘清晰的物体时跟踪效果最好。</string>
 	<key>Stop recording</key>
 	<string>停止录制</string>
 	<key>Stop recording (%@)</key>
@@ -6240,10 +7214,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>在任何应用中停止录制</string>
 	<key>Stop, while LF Studios is the app in front</key>
 	<string>在 LF Studios 位于最前面时停止</string>
+	<key>Stopped making proxies</key>
+	<string>已停止创建代理</string>
 	<key>Storage</key>
 	<string>存储空间</string>
 	<key>Strength</key>
 	<string>强度</string>
+	<key>Strobe</key>
+	<string>频闪</string>
+	<key>Stroke</key>
+	<string>描边</string>
 	<key>Studio</key>
 	<string>专业</string>
 	<key>Style</key>
@@ -6270,6 +7250,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>“样式”面板 ▸ 转场，或点按时间线上两个片段之间的 +。</string>
 	<key>Style presets</key>
 	<string>样式预设</string>
+	<key>Style set — make or import captions to see it</key>
+	<string>已设定样式 — 生成或导入字幕即可看到效果</string>
+	<key>Styles</key>
+	<string>样式</string>
 	<key>Styles are saved in presets and project files.</key>
 	<string>样式会存储在预设和项目文件中。</string>
 	<key>Styles: Classic, Bold outline, Minimal, or Highlight.</key>
@@ -6282,12 +7266,20 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>字幕文件</string>
 	<key>Subtitles file: .srt or .vtt, for players that can turn captions on and off.</key>
 	<string>字幕文件：.srt 或 .vtt，适用于可以打开和关闭字幕的播放器。</string>
+	<key>Success</key>
+	<string>成功</string>
+	<key>Sun</key>
+	<string>太阳</string>
 	<key>Sunset</key>
 	<string>日落</string>
 	<key>Sunset Coral</key>
 	<string>日落珊瑚</string>
+	<key>Surprised</key>
+	<string>惊讶</string>
 	<key>Swap the arrow's head and tail</key>
 	<string>交换箭头的头尾</string>
+	<key>Swing</key>
+	<string>摇摆</string>
 	<key>Swipe it sideways to dismiss it.</key>
 	<string>向侧边轻扫即可关闭。</string>
 	<key>Switch the camera to full screen for talking points, or put it side by side with the screen — at the playhead. Each shows on the Camera lane.</key>
@@ -6322,6 +7314,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>标签颜色</string>
 	<key>Tahoe Ice</key>
 	<string>太浩冰蓝</string>
+	<key>Take %@ off</key>
+	<string>移除%@</string>
 	<key>Take a Test Screenshot</key>
 	<string>进行测试截屏</string>
 	<key>Take a break in the middle of a recording. The pause is left out of the video.</key>
@@ -6334,12 +7328,22 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>截屏</string>
 	<key>Take screenshot captures an area. Scroll capture captures a long page, and Open video… opens a video in the editor.</key>
 	<string>“截屏”可捕捉一个区域。“滚动截屏”可捕捉长页面，“打开视频…”可在编辑器中打开视频。</string>
+	<key>Take this effect off</key>
+	<string>移除此特效</string>
 	<key>Take your first screenshot</key>
 	<string>截取你的第一张截屏</string>
+	<key>Takes out one colour, like a green screen</key>
+	<string>去除一种颜色，就像绿幕</string>
 	<key>Talk over the video: your voice goes on its own sound track, from where you started.</key>
 	<string>边看视频边说：你的声音会从开始的位置放到一条独立的声音轨道上。</string>
 	<key>Tangerine</key>
 	<string>橘色</string>
+	<key>Teal &amp; orange</key>
+	<string>青橙</string>
+	<key>Teal shadows</key>
+	<string>青色阴影</string>
+	<key>Temperature</key>
+	<string>色温</string>
 	<key>Template</key>
 	<string>模板</string>
 	<key>Text</key>
@@ -6350,10 +7354,20 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>找到文字二维码</string>
 	<key>Text Recognition</key>
 	<string>文字识别</string>
+	<key>Text and picture annotations draw over every track. Move to a Track makes one a clip that takes its place in the tracks' order.</key>
+	<string>文字和图片标注会绘制在所有轨道之上。“移到轨道”会将其变为按轨道顺序排列的片段。</string>
+	<key>Text clip</key>
+	<string>文字片段</string>
+	<key>Text clips and templates</key>
+	<string>文字片段和模板</string>
 	<key>Text copied</key>
 	<string>已拷贝文字</string>
 	<key>Text copied to clipboard</key>
 	<string>已将文字拷贝到剪贴板</string>
+	<key>Text note</key>
+	<string>文字注释</string>
+	<key>Text on a track of its own: any words, font, size, colour, outline, background, shadow, spacing and alignment.</key>
+	<string>放在单独轨道上的文字：任意文字、字体、大小、颜色、描边、背景、阴影、间距和对齐方式。</string>
 	<key>Text recognition failed</key>
 	<string>文字识别失败</string>
 	<key>Text recognition settings</key>
@@ -6368,8 +7382,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>文字“%@”</string>
 	<key>Text, arrows &amp; highlights</key>
 	<string>文字、箭头和高亮</string>
-	<key>Text, arrows, highlights, blur and pictures go on the video with the tools above the player. Pick one here to add it at the playhead.</key>
-	<string>文本、箭头、高亮、模糊和图片可使用播放器上方的工具添加到视频中。在这里选择一个，即可添加到播放头处。</string>
 	<key>Text, callouts &amp; numbered steps</key>
 	<string>文字、标注气泡和编号步骤</string>
 	<key>Text: %@</key>
@@ -6388,6 +7400,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>该磁盘为只读。请选择其他存储位置，然后重新导出。</string>
 	<key>That file isn't a font LF Studios can use</key>
 	<string>该文件不是 LF Studios 可以使用的字体</string>
+	<key>That isn't a 3D LUT LF Studios can read (.cube with LUT_3D_SIZE)</key>
+	<string>这不是 LF Studios 可读取的 3D LUT（需为带有 LUT_3D_SIZE 的 .cube）</string>
 	<key>That isn't a ratio. Try 3:2 or 2.39:1.</key>
 	<string>这不是有效的比例。请试试 3:2 或 2.39:1。</string>
 	<key>That isn't an LF Studios presets file</key>
@@ -6428,8 +7442,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>菜单栏中的 LF Studios 菜单 ▸ 定时截屏。</string>
 	<key>The LF Studios project — it needs the original files: turn on Include originals so it reopens in LF Studios</key>
 	<string>LF Studios 项目 — 它需要原始文件：请打开“包含原始文件，以便在 LF Studios 中重新打开”</string>
+	<key>The Library</key>
+	<string>素材库</string>
 	<key>The Library's Media and Audio tabs, at the top left of the video editor. File ▸ Import Media… (⌘I).</key>
 	<string>视频编辑器左上方素材库的“媒体”和“音频”标签。文件 ▸ 导入媒体…（⌘I）。</string>
+	<key>The Proxy menu under the player.</key>
+	<string>播放器下方的“代理”菜单。</string>
 	<key>The Undo and Redo buttons in the editor's toolbar.</key>
 	<string>编辑器工具栏中的“撤销”和“重做”按钮。</string>
 	<key>The aspect ratio menu under the player.</key>
@@ -6476,6 +7494,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>卡片使用与视频相同的背景。用字体菜单选择它们的字体。</string>
 	<key>The clips lane on the timeline, and the Timeline menu.</key>
 	<string>时间线上的片段轨道，以及“时间线”菜单。</string>
+	<key>The cover couldn't be added: %@</key>
+	<string>无法添加封面：%@</string>
 	<key>The cursor is part of this video</key>
 	<string>指针已录入此视频</string>
 	<key>The cursor, zooms, and clicks follow the crop.</key>
@@ -6506,6 +7526,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>无法创建文件夹：%@</string>
 	<key>The font menu next to captions, text, title cards, and Keys on screen.</key>
 	<string>字幕、文字、标题卡和“屏幕按键”旁边的字体菜单。</string>
+	<key>The frame at %@</key>
+	<string>%@ 处的画面</string>
 	<key>The frame bar</key>
 	<string>录制框栏</string>
 	<key>The frame, the dimming, and the bars are never in the video. Nothing is recorded until you click Record.</key>
@@ -6552,10 +7574,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>你在录制时阅读的备注。它们随项目存储，只有在你选择时才会放入“创意交付”。</string>
 	<key>The panel appears at the top right of the screen after you stop.</key>
 	<string>停止录制后，面板会出现在屏幕右上角。</string>
+	<key>The panel at the top left of the video editor.</key>
+	<string>视频编辑器左上方的面板。</string>
 	<key>The panel closes by itself after a few seconds; hover over it to keep it.</key>
 	<string>面板几秒钟后会自动关闭；将指针悬停在上面可让它保持显示。</string>
 	<key>The pause button in the bar while recording.</key>
 	<string>录制期间录制栏中的暂停按钮。</string>
+	<key>The picture a video file shows before it plays: a frame of the video, or a picture of your own.</key>
+	<string>视频文件播放前显示的图片：视频中的一帧画面，或你自己的图片。</string>
 	<key>The picture is saved in History too, so you can search for its text later.</key>
 	<string>图片也会保存在“历史记录”中，所以之后可以搜索其中的文字。</string>
 	<key>The picture's file is gone — choose it again with Replace.</key>
@@ -6596,6 +7622,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>录制内容、其摄像头画面、添加的录制、音乐、声音文件和图片都已在其中。“已添加”标记视频中已有的内容。</string>
 	<key>The red stop button in the bar while recording, or the red timer in the menu bar.</key>
 	<string>录制期间录制栏中的红色停止按钮，或菜单栏中的红色计时器。</string>
+	<key>The same transition on every cut between clips</key>
+	<string>在片段之间的每个剪切点使用相同的转场</string>
 	<key>The save panel did not return a destination. Please try saving again.</key>
 	<string>存储面板未返回存储位置。请再次尝试存储。</string>
 	<key>The save window appears after each recording. Settings ▸ Recording ▸ Saving has Ask where to save after each recording and the Recording folder.</key>
@@ -6636,8 +7664,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>无法读取声音。请重新导出。</string>
 	<key>The sound is in the Library as “%@”</key>
 	<string>声音已作为“%@”放入素材库</string>
+	<key>The sound is silent faster than 32× or slower than 1/32×.</key>
+	<string>快于 32× 或慢于 1/32× 时没有声音。</string>
 	<key>The sound recorded with the screen</key>
 	<string>与屏幕一同录制的声音</string>
+	<key>The sound's settings (select a sound file, the music, or a video above the main track).</key>
+	<string>声音的设置（选择声音文件、音乐，或主轨道上方的视频）。</string>
 	<key>The strip above the recording bar, after Home ▸ New recording.</key>
 	<string>录制栏上方的那一条，在“主页 ▸ 新录制”之后出现。</string>
 	<key>The switches stay as you leave them, on this Mac.</key>
@@ -6724,6 +7756,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>动画会跟随你说的话，在预览和导出的视频中看起来完全一样。</string>
 	<key>They look through the whole video on your Mac, which takes longer for long or 4K videos.</key>
 	<string>它们会在你的 Mac 上检查整个视频，视频较长或是 4K 视频时需要更久。</string>
+	<key>They take about %@ on this Mac (ProRes 422 Proxy at half size). The editor plays them instead of the originals; exports always use the originals. Clean Up in Settings removes them.</key>
+	<string>它们在这台 Mac 上大约占用 %@（半尺寸的 ProRes 422 Proxy）。编辑器会播放代理而非原始文件；导出始终使用原始文件。“设置”中的“清理”可将其移除。</string>
+	<key>They're kept on this Mac only, never in a project or a Creative Handoff. Settings ▸ Clean Up removes them.</key>
+	<string>它们只保存在这台 Mac 上，绝不会放进项目或创意交付中。“设置 ▸ 清理”可将其移除。</string>
 	<key>Thickness</key>
 	<string>粗细</string>
 	<key>Thin</key>
@@ -6784,16 +7820,22 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>此视频已不存在</string>
 	<key>This video was recorded with your camera, but “%@” isn't in %@ anymore. Put it back there and open the video again to get the camera bubble back.</key>
 	<string>此视频录制时使用了摄像头，但“%@”已不在 %@ 中。请将它放回原处并重新打开视频，即可恢复摄像头气泡。</string>
+	<key>Thought bubble</key>
+	<string>思考气泡</string>
 	<key>Three quick steps and you're capturing.</key>
 	<string>只需三个简单步骤即可开始截屏。</string>
 	<key>Three quick steps the first time you open LF Studios: allow Screen Recording, free up shortcuts, and take a test screenshot.</key>
 	<string>第一次打开 LF Studios 时的三个快速步骤：允许屏幕录制、腾出快捷键，以及进行测试截屏。</string>
 	<key>Three recording options look at your keyboard. None of them ever saves what you type.</key>
 	<string>有三个录制选项会关注你的键盘。它们都绝不会存储你输入的内容。</string>
+	<key>Through a colour</key>
+	<string>颜色过渡</string>
 	<key>Throw away a recording that went wrong and start again.</key>
 	<string>丢掉出了问题的录制内容，重新开始。</string>
 	<key>Thumbnails</key>
 	<string>缩略图</string>
+	<key>Tick</key>
+	<string>对勾</string>
 	<key>Tick what to hide and click Blur Selected.</key>
 	<string>勾选要隐藏的内容，然后点按“模糊所选项”。</string>
 	<key>Tick what to hide, then click Blur Selected.</key>
@@ -6827,6 +7869,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<key>Tips</key>
 	<string>提示</string>
 	<key>Title</key>
+	<string>标题</string>
+	<key>Titles</key>
 	<string>标题</string>
 	<key>To</key>
 	<string>收件人</string>
@@ -6864,10 +7908,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>顶部</string>
 	<key>Top left</key>
 	<string>左上</string>
+	<key>Top line</key>
+	<string>顶部单行</string>
 	<key>Top right</key>
 	<string>右上</string>
 	<key>Touch dot</key>
 	<string>触控圆点</string>
+	<key>Track</key>
+	<string>跟踪</string>
 	<key>Track Where I Type</key>
 	<string>跟踪打字位置</string>
 	<key>Track height</key>
@@ -6882,6 +7930,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>“跟踪打字位置”只存储文本光标在屏幕上的位置，以便编辑器缩放到打字处。“记录按键时刻”只存储每次按键按下的时刻，以便编辑器加速打字部分。不会记录任何文本，也不会记下是哪些键。密码栏处于焦点时，两者都不存储任何内容。两者在你开启前都保持关闭；macOS 会请求“辅助功能”权限。</string>
 	<key>Track where I type: only where the text cursor is on screen, a few times a second. Never the text, never the keys.</key>
 	<string>跟踪打字位置：只记录文本光标在屏幕上的位置，每秒几次。绝不记录文字，也绝不记录按键。</string>
+	<key>Tracking</key>
+	<string>跟踪</string>
+	<key>Tracking box</key>
+	<string>跟踪框</string>
+	<key>Tracking stopped</key>
+	<string>已停止跟踪</string>
 	<key>Tracks</key>
 	<string>轨道</string>
 	<key>Tracks above the main track</key>
@@ -6918,8 +7972,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>转场</string>
 	<key>Transitions &amp; fades</key>
 	<string>转场和淡入淡出</string>
-	<key>Transitions go on the cuts between clips: click the + between two clips on the timeline, or set them all in Style ▸ Transitions.</key>
-	<string>转场位于片段之间的剪辑点：点按时间线上两个片段之间的 +，或在“样式 ▸ 转场”中统一设置。</string>
 	<key>Translate</key>
 	<string>翻译</string>
 	<key>Translate captions</key>
@@ -7024,12 +8076,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>关闭它会再次移除它添加的缩放；你自己添加的缩放会保留。</string>
 	<key>Type</key>
 	<string>类型</string>
+	<key>Type a Name and choose where to Export to.</key>
+	<string>输入“名称”，然后选择“导出到”的位置。</string>
 	<key>Type a Title and Subtitle, and set the Length.</key>
 	<string>输入“标题”和“副标题”，并设定“时长”。</string>
 	<key>Type a shape like 3:2 or 2.39:1.</key>
 	<string>输入比例，例如 3:2 或 2.39:1。</string>
 	<key>Type here…</key>
 	<string>在此输入…</string>
+	<key>Type in Properties ▸ Text, and pick its look there or click a Style.</key>
+	<string>在“属性 ▸ 文字”中输入，并在那里选择外观，或点按一种“样式”。</string>
 	<key>Type in a text annotation</key>
 	<string>在文字标注中输入</string>
 	<key>Typewriter</key>
@@ -7056,12 +8112,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>在视频预览下方。点按 × 可隐藏；可从快捷键列表（?）中重新显示。</string>
 	<key>Under the voice</key>
 	<string>人声时音量</string>
+	<key>Underline</key>
+	<string>下划线</string>
 	<key>Undo</key>
 	<string>撤销</string>
 	<key>Undo / redo</key>
 	<string>撤销/重做</string>
 	<key>Undo Adapt to This Ratio</key>
 	<string>撤销“适配此比例”</string>
+	<key>Undo Add Adjustment</key>
+	<string>撤销添加调节</string>
 	<key>Undo Add Arrow</key>
 	<string>撤销添加箭头</string>
 	<key>Undo Add Audio</key>
@@ -7082,12 +8142,18 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销添加点按</string>
 	<key>Undo Add Clicks</key>
 	<string>撤销添加点按</string>
+	<key>Undo Add Effect</key>
+	<string>撤销添加特效</string>
+	<key>Undo Add Filter</key>
+	<string>撤销添加滤镜</string>
 	<key>Undo Add Highlight</key>
 	<string>撤销添加高亮</string>
 	<key>Undo Add Image</key>
 	<string>撤销添加图像</string>
 	<key>Undo Add Intro Card</key>
 	<string>撤销添加片头卡</string>
+	<key>Undo Add Keyframe</key>
+	<string>撤销添加关键帧</string>
 	<key>Undo Add Loupe</key>
 	<string>撤销添加放大镜</string>
 	<key>Undo Add Marker</key>
@@ -7100,6 +8166,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销添加录制内容</string>
 	<key>Undo Add Spotlight</key>
 	<string>撤销添加聚光灯</string>
+	<key>Undo Add Sticker</key>
+	<string>撤销添加贴纸</string>
 	<key>Undo Add Text</key>
 	<string>撤销添加文字</string>
 	<key>Undo Add Typing Zooms</key>
@@ -7110,6 +8178,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销添加缩放</string>
 	<key>Undo Add to Track</key>
 	<string>撤销添加到轨道</string>
+	<key>Undo Adjust</key>
+	<string>撤销调节</string>
+	<key>Undo Animation</key>
+	<string>撤销动画</string>
 	<key>Undo Annotation Change</key>
 	<string>撤销标注更改</string>
 	<key>Undo Annotations</key>
@@ -7134,10 +8206,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销开启自动缩放</string>
 	<key>Undo Background</key>
 	<string>撤销背景更改</string>
+	<key>Undo Blend</key>
+	<string>撤销混合</string>
 	<key>Undo Blur Private Info</key>
 	<string>撤销“模糊隐私信息”</string>
 	<key>Undo Blur Style</key>
 	<string>撤销模糊样式更改</string>
+	<key>Undo Break Apart</key>
+	<string>撤销拆开</string>
 	<key>Undo Camera Change</key>
 	<string>撤销摄像头更改</string>
 	<key>Undo Camera Layout Change</key>
@@ -7154,6 +8230,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销字幕更改</string>
 	<key>Undo Change Loupe</key>
 	<string>撤销更改放大镜</string>
+	<key>Undo Change Pitch</key>
+	<string>撤销更改音调</string>
+	<key>Undo Chroma Key</key>
+	<string>撤销色度抠图</string>
+	<key>Undo Clear Beats</key>
+	<string>撤销清除节拍</string>
 	<key>Undo Click Sounds</key>
 	<string>撤销点按音效更改</string>
 	<key>Undo Clicks</key>
@@ -7162,6 +8244,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销片段更改</string>
 	<key>Undo Collapse Track</key>
 	<string>撤销折叠轨道</string>
+	<key>Undo Compound Clip</key>
+	<string>撤销复合片段</string>
+	<key>Undo Cover</key>
+	<string>撤销封面</string>
 	<key>Undo Crop</key>
 	<string>撤销裁剪</string>
 	<key>Undo Cursor Change</key>
@@ -7214,10 +8300,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销删除缩放</string>
 	<key>Undo Delete from Project</key>
 	<string>撤销从项目中删除</string>
+	<key>Undo Detect Beats</key>
+	<string>撤销检测节拍</string>
 	<key>Undo Edit Caption</key>
 	<string>撤销编辑字幕</string>
 	<key>Undo Edit Text</key>
 	<string>撤销编辑文字</string>
+	<key>Undo Effects</key>
+	<string>撤销特效</string>
 	<key>Undo Enhance Voice</key>
 	<string>撤销增强人声</string>
 	<key>Undo Extract Audio</key>
@@ -7228,6 +8318,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销淡入淡出</string>
 	<key>Undo Fill</key>
 	<string>撤销填充</string>
+	<key>Undo Filter</key>
+	<string>撤销滤镜</string>
 	<key>Undo Fit</key>
 	<string>撤销适合</string>
 	<key>Undo Fit Zooms Around Camera</key>
@@ -7246,16 +8338,28 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销高亮样式更改</string>
 	<key>Undo Image Style</key>
 	<string>撤销图像样式更改</string>
+	<key>Undo Import Captions</key>
+	<string>撤销导入字幕</string>
 	<key>Undo Import Media</key>
 	<string>撤销导入媒体</string>
 	<key>Undo Intro and Outro</key>
 	<string>撤销摄像头片头和片尾</string>
+	<key>Undo Keep Background</key>
+	<string>撤销保留背景</string>
 	<key>Undo Keep Face Centered</key>
 	<string>撤销保持面部居中</string>
+	<key>Undo Keep Pitch</key>
+	<string>撤销保持音调</string>
+	<key>Undo Keyframe Easing</key>
+	<string>撤销关键帧缓动</string>
 	<key>Undo Lock Track</key>
 	<string>撤销锁定轨道</string>
+	<key>Undo Make Compound Clip</key>
+	<string>撤销创建复合片段</string>
 	<key>Undo Markers</key>
 	<string>撤销标记更改</string>
+	<key>Undo Mask</key>
+	<string>撤销蒙版</string>
 	<key>Undo Mirror</key>
 	<string>撤销镜像</string>
 	<key>Undo Move %lld Items</key>
@@ -7288,6 +8392,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销移动聚光灯</string>
 	<key>Undo Move Text</key>
 	<string>撤销移动文字</string>
+	<key>Undo Move to Track</key>
+	<string>撤销移到轨道</string>
 	<key>Undo Music Change</key>
 	<string>撤销音乐更改</string>
 	<key>Undo Mute Clip</key>
@@ -7300,6 +8406,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销视频静音</string>
 	<key>Undo New Folder</key>
 	<string>撤销新建文件夹</string>
+	<key>Undo Normalize Loudness</key>
+	<string>撤销统一响度</string>
 	<key>Undo Paste</key>
 	<string>撤销粘贴</string>
 	<key>Undo Podcast Mode Off</key>
@@ -7312,12 +8420,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销移除所有缩放</string>
 	<key>Undo Remove Audio</key>
 	<string>撤销移除音频</string>
+	<key>Undo Remove Background</key>
+	<string>撤销移除背景</string>
 	<key>Undo Remove Camera Video</key>
 	<string>撤销移除摄像头视频</string>
 	<key>Undo Remove Captions</key>
 	<string>撤销移除字幕</string>
 	<key>Undo Remove Intro Card</key>
 	<string>撤销移除片头卡</string>
+	<key>Undo Remove Keyframe</key>
+	<string>撤销移除关键帧</string>
 	<key>Undo Remove Music</key>
 	<string>撤销移除音乐</string>
 	<key>Undo Remove Outro Card</key>
@@ -7370,8 +8482,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销滑动片段</string>
 	<key>Undo Sound Change</key>
 	<string>撤销声音更改</string>
+	<key>Undo Speed</key>
+	<string>撤销速度</string>
 	<key>Undo Speed Change</key>
 	<string>撤销速度更改</string>
+	<key>Undo Speed Curve</key>
+	<string>撤销曲线变速</string>
 	<key>Undo Speed Up Idle</key>
 	<string>撤销加速空闲片段</string>
 	<key>Undo Speed Up Typing</key>
@@ -7388,16 +8504,22 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销聚光灯样式更改</string>
 	<key>Undo Start Over</key>
 	<string>撤销从头开始</string>
+	<key>Undo Stop Following</key>
+	<string>撤销停止跟踪</string>
 	<key>Undo Style Change</key>
 	<string>撤销样式更改</string>
 	<key>Undo Sync Audio by Sound</key>
 	<string>撤销按声音同步音频</string>
+	<key>Undo Text Change</key>
+	<string>撤销文字更改</string>
 	<key>Undo Text Style</key>
 	<string>撤销文字样式更改</string>
 	<key>Undo Timeline Edit</key>
 	<string>撤销时间线编辑</string>
 	<key>Undo Title Card</key>
 	<string>撤销标题卡更改</string>
+	<key>Undo Track Motion</key>
+	<string>撤销运动跟踪</string>
 	<key>Undo Transcribe</key>
 	<string>撤销转录</string>
 	<key>Undo Transitions</key>
@@ -7498,6 +8620,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>请使用你有权使用的音乐。点按时间线上的音乐轨道即可回到这里。</string>
 	<key>Use the largest size that fits (%@ × %@)</key>
 	<string>使用能放下的最大尺寸（%@ × %@）</string>
+	<key>Use the playhead</key>
+	<string>使用播放头</string>
 	<key>Use this color</key>
 	<string>使用此颜色</string>
 	<key>Use this level for every zoom</key>
@@ -7510,10 +8634,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>使用你打字时文本光标的移动。</string>
 	<key>Utility</key>
 	<string>实用工具</string>
+	<key>VHS</key>
+	<string>VHS</string>
 	<key>Version</key>
 	<string>版本</string>
 	<key>Version %@</key>
 	<string>版本 %@</string>
+	<key>Vibrance</key>
+	<string>自然饱和度</string>
 	<key>Video</key>
 	<string>视频</string>
 	<key>Video %lld</key>
@@ -7540,10 +8668,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>显示</string>
 	<key>View, sort, folders, and Extract Audio</key>
 	<string>显示、排序、文件夹和提取音频</string>
+	<key>Vignette</key>
+	<string>暗角</string>
+	<key>Vintage</key>
+	<string>怀旧</string>
 	<key>Violet</key>
 	<string>紫罗兰</string>
 	<key>Violet Bloom</key>
 	<string>紫罗兰绽放</string>
+	<key>Vivid</key>
+	<string>鲜艳</string>
 	<key>Voice</key>
 	<string>人声</string>
 	<key>Voice and Computer sound each have their own slider.</key>
@@ -7562,8 +8696,20 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>音量</string>
 	<key>Volume &amp; mute</key>
 	<string>音量和静音</string>
+	<key>Volume keyframe</key>
+	<string>音量关键帧</string>
+	<key>Volume keyframes, fades, loudness and beats</key>
+	<string>音量关键帧、淡入淡出、响度和节拍</string>
+	<key>Volume ◆</key>
+	<string>音量 ◆</string>
+	<key>Volume ◆ sets a volume keyframe at the playhead.</key>
+	<string>“音量 ◆”会在播放头处设定音量关键帧。</string>
 	<key>Volume, and Lower under your voice.</key>
 	<string>音量和“避让人声”。</string>
+	<key>WOW!</key>
+	<string>哇！</string>
+	<key>Wait for it…</key>
+	<string>等着瞧…</string>
 	<key>Waiting…</key>
 	<string>等待中…</string>
 	<key>Wallpaper</key>
@@ -7580,6 +8726,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>暖色</string>
 	<key>Warm and clear EQ</key>
 	<string>温暖清晰的均衡</string>
+	<key>Warm up</key>
+	<string>升温</string>
 	<key>Warmth</key>
 	<string>色温</string>
 	<key>Warning</key>
@@ -7596,6 +8744,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>欢迎清单</string>
 	<key>Welcome to LF Studios</key>
 	<string>欢迎使用 LF Studios</string>
+	<key>What Finder, QuickTime and video sites show before it plays.</key>
+	<string>“访达”、QuickTime 和视频网站在播放前显示的内容。</string>
 	<key>What LF Studios does</key>
 	<string>LF Studios 能做什么</string>
 	<key>What LF Studios keeps, and what it never does.</key>
@@ -7604,18 +8754,28 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>录制内容会保存什么</string>
 	<key>What is each file in “%@”?</key>
 	<string>“%@”中的每个文件分别是什么？</string>
+	<key>What the clip follows: drag it over the thing that moves</key>
+	<string>片段跟踪的对象：将它拖到移动的物体上</string>
 	<key>What was playing on your Mac</key>
 	<string>你的 Mac 上播放的声音</string>
 	<key>What's New</key>
 	<string>新功能</string>
 	<key>What's new</key>
 	<string>新功能</string>
+	<key>Wheels</key>
+	<string>色轮</string>
 	<key>When LF Studios uses the internet</key>
 	<string>LF Studios 何时会使用网络</string>
+	<key>When a file with that name is there already, choose Replace or Keep Both.</key>
+	<string>如果已有同名文件，请选择“替换”或“两者都保留”。</string>
+	<key>When a key is taken, LF Studios says which command loses it.</key>
+	<string>当某个快捷键已被占用时，LF Studios 会告诉你哪个命令将失去它。</string>
 	<key>When recording a window: the Window size menu in the row above the recording bar.</key>
 	<string>录制窗口时：录制栏上方那一行中的“窗口大小”菜单。</string>
 	<key>When the text has links, email addresses, or a table, LF Studios offers more ways to use it.</key>
 	<string>当文字中有链接、电子邮件地址或表格时，LF Studios 会提供更多用法。</string>
+	<key>When they're ready, Edit with Proxies turns on.</key>
+	<string>代理就绪后，“使用代理剪辑”会打开。</string>
 	<key>When you export, keep Burn captions into the video on, or save a subtitles file.</key>
 	<string>导出时，保持“将字幕嵌入视频”打开，或者存储一个字幕文件。</string>
 	<key>When you're done, click the red stop button or press ⌃⌘Esc.</key>
@@ -7656,8 +8816,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Whisper 在此 Mac 上运行。模型只需从 Hugging Face 下载一次；你的录制内容绝不会上传。</string>
 	<key>White</key>
 	<string>白色</string>
+	<key>Whites</key>
+	<string>白色色阶</string>
 	<key>Whole video</key>
 	<string>整个视频</string>
+	<key>Whoosh</key>
+	<string>嗖</string>
 	<key>Wi-Fi</key>
 	<string>无线局域网</string>
 	<key>Wi-Fi QR found</key>
@@ -7684,20 +8848,30 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>“窗口”“全屏”和“手动选择区域”：改用其他方式录制。</string>
 	<key>Windows in front of it don't get in the way: only the window you click is captured.</key>
 	<string>挡在前面的窗口不会碍事：只会捕捉你点按的那个窗口。</string>
+	<key>Wipe</key>
+	<string>擦除</string>
 	<key>With Camera on and Layout ▸ Split screen, the frame is the screen's part of the video, and the camera's part shows beside it.</key>
 	<string>打开“摄像头”并选择“布局 ▸ 分屏”时，录制框是视频的屏幕部分，摄像头部分显示在旁边。</string>
+	<key>With a clip above the main track selected, + puts an effect, filter or adjustment on that clip.</key>
+	<string>选中主轨道上方的片段时，+ 会将特效、滤镜或调节添加到该片段。</string>
 	<key>With a transcript, you can also cut by deleting words: Captions ▸ Edit by text.</key>
 	<string>有了文字稿，你还可以通过删除文字来剪辑：“字幕 ▸ 按文字编辑”。</string>
 	<key>With more than one screen, click Record next to the one you want.</key>
 	<string>如果有多个屏幕，请点按你想要的那个屏幕旁边的“录制”。</string>
 	<key>With the LF Studios project, the folder opens the whole edit again. Clips cut to your edit need the untouched recordings alongside.</key>
 	<string>有了 LF Studios 项目，打开该文件夹即可重现整个剪辑。按你的剪辑裁剪的片段需要旁边附带未改动的录制内容。</string>
+	<key>Wobble</key>
+	<string>摇晃</string>
+	<key>Word box</key>
+	<string>单词框</string>
 	<key>Words light up as they're spoken</key>
 	<string>说到哪个词，哪个词就会亮起</string>
 	<key>Works best with Record when keys are pressed on while recording. For older recordings, LF Studios guesses from the screen and says so.</key>
 	<string>录制时打开“记录按键时刻”效果最好。对于较早的录制内容，LF Studios 会根据屏幕画面推测，并会告诉你。</string>
 	<key>Works with Auto-zoom on clicks.</key>
 	<string>可与“点按时自动缩放”搭配使用。</string>
+	<key>Wow!</key>
+	<string>哇！</string>
 	<key>Writable</key>
 	<string>可写入</string>
 	<key>Yellow</key>
@@ -7762,6 +8936,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>第一次录制、编辑和导出</string>
 	<key>Your first screenshot</key>
 	<string>你的第一张截屏</string>
+	<key>Your keys (they replace the ones below)</key>
+	<string>你的快捷键（会替换下方的快捷键）</string>
 	<key>Your marks stay editable. Reset shows the whole screenshot again, and ⌘Z undoes a crop.</key>
 	<string>你的标注仍然可以编辑。“重置”会重新显示整张截屏，⌘Z 可撤销裁剪。</string>
 	<key>Your media in the Library</key>
@@ -7776,6 +8952,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>你的备注会被记住。打开备注时录制的内容会保留一份副本，显示在编辑器的“字幕”面板中。</string>
 	<key>Your notes from recording, as Notes.txt</key>
 	<string>你录制时的备注，保存为 Notes.txt</string>
+	<key>Your own PNG or GIF (GIFs play)</key>
+	<string>你自己的 PNG 或 GIF（GIF 会播放）</string>
 	<key>Your own look, one click away.</key>
 	<string>你自己的外观，一键即可应用。</string>
 	<key>Your presets, fonts, capture history, and recording edits came along too. ShotStyle's own copy is untouched, so you can delete the old app whenever you're ready.</key>
@@ -7792,6 +8970,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>无论哪种外观，你的截屏和视频看起来都一样。</string>
 	<key>Your screenshots, recordings, and edits are yours. LF Studios has no account, and sends nothing about you or your work anywhere.</key>
 	<string>你的截屏、录制内容和编辑都属于你。LF Studios 不需要帐户，也不会把关于你或你作品的任何信息发送到任何地方。</string>
+	<key>Your sounds</key>
+	<string>你的声音</string>
 	<key>Your text</key>
 	<string>你的文字</string>
 	<key>Your video's background shows behind you — found on this Mac, frame by frame.</key>
@@ -7802,12 +8982,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>你的词语</string>
 	<key>Your words, as text</key>
 	<string>把你的话变成文字</string>
+	<key>Zap</key>
+	<string>电击</string>
 	<key>Zoom</key>
 	<string>缩放</string>
 	<key>Zoom %@</key>
 	<string>缩放 %@</string>
 	<key>Zoom Level</key>
 	<string>缩放级别</string>
+	<key>Zoom in</key>
+	<string>放大</string>
 	<key>Zoom in / out</key>
 	<string>放大 / 缩小</string>
 	<key>Zoom in at the pointer</key>
@@ -7828,6 +9012,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>缩放动效</string>
 	<key>Zoom moves</key>
 	<string>缩放效果</string>
+	<key>Zoom out</key>
+	<string>缩小</string>
 	<key>Zoom panel ▸ Add Loupe. Or select a zoom and choose Type ▸ Loupe.</key>
 	<string>“缩放”面板 ▸ 添加放大镜。或选择一个缩放，然后选择“类型 ▸ 放大镜”。</string>
 	<key>Zoom panel ▸ Add typing zooms.</key>
@@ -7838,6 +9024,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>“缩放”面板 ▸ 让缩放避开摄像头。</string>
 	<key>Zoom panel ▸ Motion: Slow, Smooth, Quick, or Instant, plus Motion blur.</key>
 	<string>“缩放”面板 ▸ 运动：“慢速”“平滑”“快速”或“即时”，另有“动态模糊”。</string>
+	<key>Zoom pulse</key>
+	<string>缩放脉冲</string>
 	<key>Zoom removed — ⌘Z to undo</key>
 	<string>已移除缩放 — 按 ⌘Z 撤销</string>
 	<key>Zoom the player</key>
@@ -7960,6 +9148,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>选择要剪掉的部分</string>
 	<key>select it</key>
 	<string>选中它</string>
+	<key>so good</key>
+	<string>太棒了</string>
 	<key>split at the playhead</key>
 	<string>在播放头处分割</string>
 	<key>step through the timeline</key>
@@ -8018,6 +9208,10 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>在 %2$lld 张截屏中找到“%1$@”（共 %3$lld 张）</string>
 	<key>“%@” has no sound</key>
 	<string>“%@”没有声音</string>
+	<key>“%@” is a clip on its own track now</key>
+	<string>“%@”现在是单独轨道上的片段</string>
+	<key>“%@” is already there</key>
+	<string>“%@”已存在</string>
 	<key>“%@” is locked. Unlock it in its header to change it.</key>
 	<string>“%@”已锁定。请在轨道标题中解锁后再更改。</string>
 	<key>“%@” is your My Style — Apply my style (⇧⌘Y) puts it on a video</key>
@@ -8040,6 +9234,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>视频 %2$lld 上的“%1$@”— 文件缺失</string>
 	<key>“%@” was saved by a newer LF Studios. Update LF Studios to open it.</key>
 	<string>“%@”是用更新版本的 LF Studios 存储的。请更新 LF Studios 后再打开。</string>
+	<key>“%@” — drag onto the timeline, or double-click to add it at the playhead</key>
+	<string>“%@” — 拖到时间线上，或连按两次在播放头处添加</string>
 	<key>“%@” — drag to move it in time or to another track, drag an end to trim, ⌥-drag a video to slip it</key>
 	<string>“%@”— 拖移可在时间上移动或移到其他轨道，拖移一端可修剪，按住 ⌥ 拖移视频可滑动内容</string>
 	<key>“%@” — drag to move, drag an edge to trim, click to change it in Audio</key>
@@ -8048,6 +9244,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>“Made with LF Studios”结尾画面（2 秒）</string>
 	<key>“Possible key” is a guess: long, random-looking text that might be a password.</key>
 	<string>“可能是密钥”只是推测：一段很长、看起来随机的文字，可能是密码。</string>
+	<key>“Simple is better”</key>
+	<string>“简单就是美”</string>
 	<key>“Skipping frames”: your Mac can't keep up. Try Balanced quality or 30 fps.</key>
 	<string>“正在丢帧”：你的 Mac 跟不上了。试试“均衡”质量或 30 fps。</string>
 	<key>• %lld small notes about recordings that are gone</key>
@@ -8058,10 +9256,14 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>• 找不到或已更改的录制内容的清理后人声 — %lld 个文件，%@</string>
 	<key>• Clipboard exports older than a day — %lld files, %@</key>
 	<string>• 超过一天的剪贴板导出 — %lld 个文件，%@</string>
+	<key>• Edit proxies — %lld files, %@ (Create Proxies makes them again)</key>
+	<string>• 剪辑代理 — %lld 个文件，%@（“创建代理”会重新生成）</string>
 	<key>• Edits, recording details, and camera footage of %lld recordings LF Studios can't find (%@): %@</key>
 	<string>• LF Studios 找不到的 %lld 个录制内容的编辑、录制详情和摄像头素材（%@）：%@</string>
 	<key>• Pictures and songs no video uses — %lld files, %@</key>
 	<string>• 没有视频使用的图片和歌曲 — %lld 个文件，%@</string>
+	<key>• Timeline pictures and waveforms — %@ (made again when a video opens)</key>
+	<string>• 时间线缩略图和波形 — %@（打开视频时重新生成）</string>
 	<key>⇧-drag</key>
 	<string>⇧-拖移</string>
 	<key>⇧-drag on the timeline to select a part first.</key>
@@ -8090,6 +9292,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>⌘-滚动</string>
 	<key>⌥-drag</key>
 	<string>⌥-拖移</string>
+	<key>⌥T still adds a text note pinned over the video, as before.</key>
+	<string>⌥T 仍会添加固定在视频上方的文字注释，和以前一样。</string>
 	<key>✓ Copied to clipboard</key>
 	<string>✓ 已拷贝到剪贴板</string>
 	<key>✓ Saved screenshot</key>

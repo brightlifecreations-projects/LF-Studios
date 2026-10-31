@@ -88,8 +88,12 @@ final class VideoEditorPanelsTests: XCTestCase {
     // MARK: The Library and the player
 
     func testTheLibraryShowsOnlyTabsWithSomethingInThem() {
-        XCTAssertEqual(VideoLibraryTab.allCases, [.media, .audio, .text, .captions, .transitions])
+        // CapCut's order (1.15.0): every tab has its own content.
+        XCTAssertEqual(VideoLibraryTab.allCases, [.media, .audio, .text, .stickers, .effects, .transitions, .captions, .filters, .adjustment])
         for tab in VideoLibraryTab.allCases { XCTAssertFalse(tab.title.isEmpty) }
+        // Every Library item kind has a handler (drag, + and double-click).
+        let kinds = Set(VideoEditorModel.libraryHandlers.map(\.kind))
+        XCTAssertEqual(kinds, ["text", "sticker", "effect", "transition", "caption", "filter", "adjustment", "sound"])
     }
 
     func testThePlayersZoom() {
@@ -162,7 +166,7 @@ final class VideoEditorPanelsTests: XCTestCase {
     func testANewerKindOfProjectAsksForANewerVersion() throws {
         func manifest(_ object: [String: Any]) throws -> Data { try JSONSerialization.data(withJSONObject: object) }
         // A later project format than this one reads.
-        XCTAssertThrowsError(try VideoProjectDocument.decode(manifest(["format": "lfstudios-project-4", "version": 4]))) { error in
+        XCTAssertThrowsError(try VideoProjectDocument.decode(manifest(["format": "lfstudios-project-5", "version": 5]))) { error in
             XCTAssertEqual(error as? VideoProjectDocument.ReadError, .needsNewerVersion)
         }
         // One that says it needs a later version.

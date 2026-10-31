@@ -41,8 +41,46 @@ struct VideoLayerItem: Codable, Equatable, Identifiable {
     var muted = false
     /// Grouped items (⌘G) move and delete together.
     var group: UUID?
+    // 1.15.0 (all optional: 1.14.0's files read as they are).
+    /// Animated properties (VideoKeyframes.swift).
+    var keys: VideoKeyframes?
+    /// A shape that shows (or hides) part of it (VideoMasks.swift).
+    var mask: VideoMask?
+    /// An effect's or a filter's strength, 0…1 (nil: full).
+    var level: Double?
+    /// How it mixes with what's under it (nil: normal).
+    var blend: VideoBlendMode?
+    /// Cutout: just the person (Vision), or a colour taken out.
+    var removesBackground: Bool?
+    var chroma: VideoChromaKey?
+    /// In, Out and Combo animations (VideoAnimations.swift).
+    var animation: VideoItemAnimation?
+    /// Keep pitch off: faster sounds higher (nil: kept).
+    var keepsPitch: Bool?
+    /// A video's sound fading in and out at its ends (seconds).
+    var soundFadeIn: Double?
+    var soundFadeOut: Double?
+    /// A text clip's words and look (VideoTextClips.swift); no file then.
+    var text: VideoTextContent?
+    /// Follows something in the video (VideoMotionTracking.swift).
+    var tracking: VideoMotionTrack?
+    /// An effect or adjustment clip (VideoEffects.swift); nil: media or text.
+    var role: VideoLayerRole?
+    /// Effects on its own picture, or (an effect clip) on what's under it.
+    var effects: [VideoAppliedEffect]?
+    /// A filter on its picture, or (an adjustment clip) on what's under it.
+    var filter: VideoAppliedFilter?
+    /// Properties ▸ Adjust (VideoAdjust.swift).
+    var adjust: VideoAdjustSettings?
+    /// One of our stickers (VideoStickers.swift); no file then.
+    var sticker: String?
 
-    static let speedRange: ClosedRange<Double> = 0.25...4
+    var intensity: Double {
+        get { level ?? 1 }
+        set { level = abs(newValue - 1) < 0.0005 ? nil : min(max(newValue, 0), 1) }
+    }
+
+    static let speedRange: ClosedRange<Double> = 0.1...100
     static let minimumLength = 0.1
     /// A picture's length when it's placed.
     static let pictureLength = 5.0
@@ -129,6 +167,7 @@ extension VideoDemoProject {
     /// Takes empty tracks away (the timeline shows one empty row to drop on).
     mutating func dropEmptyLayerTracks() {
         layerTracks.removeAll { $0.items.isEmpty }
+        dropEmptyCompounds()
     }
 
     /// Linkage (~): each item above the main track keeps to the moment of
@@ -166,6 +205,12 @@ extension VideoDemoProject {
     /// The videos above the main track (to load).
     var layerVideoPaths: [String] {
         Array(Set(layerTracks.flatMap { $0.items.filter(\.isVideo).map(\.path) })).sorted()
+    }
+
+    /// What only 1.15.0 and later can show: written as project format 4.
+    var needsFormat4: Bool {
+        layerTracks.contains { $0.items.contains { $0.needsFormat4 } } || timelineClips.contains { $0.needsFormat4 }
+            || audioTracks.contains { $0.volumeKeys != nil || $0.beats != nil } || music?.beats != nil || usesNewTransitions || compounds != nil || cover != nil
     }
 
     /// What only 1.14.0 and later can show: written as project format 3.
@@ -213,7 +258,7 @@ struct VideoLayerInput {
 
     var structureKey: StructureKey {
         StructureKey(items: tracks.map { track in
-            track.id.uuidString + ":" + track.items.filter(\.isVideo).map { "\($0.path)|\($0.at)|\($0.length)|\($0.fileStart)|\($0.normalizedSpeed)|\($0.enabled)" }.joined(separator: ";")
+            track.id.uuidString + ":" + track.items.filter(\.isVideo).map { "\($0.path)|\($0.at)|\($0.length)|\($0.fileStart)|\($0.normalizedSpeed)|\($0.enabled)|\($0.keepsPitch != false)" }.joined(separator: ";")
         })
     }
 
@@ -237,8 +282,11 @@ struct VideoLayerInput {
             guard !items.isEmpty else { continue }
             guard let video = composition.addMutableTrack(withMediaType: .video, preferredTrackID: kCMPersistentTrackID_Invalid) else { continue }
             let audio = composition.addMutableTrack(withMediaType: .audio, preferredTrackID: kCMPersistentTrackID_Invalid)
+            // Keep pitch off: a sound track of its own (pitch is per track).
+            var varispeed: AVMutableCompositionTrack?
             var placedVideo = false
             var placedSound: [VideoLayerItem] = []
+            var placedVarispeed: [VideoLayerItem] = []
             for item in items {
                 guard let file = input.files[item.path] else { continue }
                 // Before the start of a range export: only the part inside.
@@ -259,13 +307,17 @@ struct VideoLayerInput {
                 } catch {
                     continue
                 }
-                if let audio, let sound = file.audio {
+                let audible = speed >= 1.0 / 32 - 0.000_1 && speed <= 32 + 0.000_1
+                if item.keepsPitch == false, varispeed == nil, audible, file.audio != nil {
+                    varispeed = composition.addMutableTrack(withMediaType: .audio, preferredTrackID: kCMPersistentTrackID_Invalid)
+                }
+                if audible, let target = item.keepsPitch == false ? varispeed : audio, let sound = file.audio {
                     do {
-                        try audio.insertTimeRange(range, of: sound, at: at)
+                        try target.insertTimeRange(range, of: sound, at: at)
                         if abs(speed - 1) > 0.0001 {
-                            audio.scaleTimeRange(CMTimeRange(start: at, duration: range.duration), toDuration: VideoCompositionBuilder.time(range.duration.seconds / speed))
+                            target.scaleTimeRange(CMTimeRange(start: at, duration: range.duration), toDuration: VideoCompositionBuilder.time(range.duration.seconds / speed))
                         }
-                        placedSound.append(item)
+                        if item.keepsPitch == false { placedVarispeed.append(item) } else { placedSound.append(item) }
                     } catch {}
                 }
             }
@@ -277,6 +329,9 @@ struct VideoLayerInput {
             if let audio {
                 if placedSound.isEmpty { composition.removeTrack(audio) } else { sounds.append((input.id, audio, placedSound)) }
             }
+            if let varispeed {
+                if placedVarispeed.isEmpty { composition.removeTrack(varispeed) } else { sounds.append((input.id, varispeed, placedVarispeed)) }
+            }
         }
         return (videos, sounds)
     }
@@ -285,9 +340,40 @@ struct VideoLayerInput {
     func apply(to params: AVMutableAudioMixInputParameters, track id: UUID, items: [VideoLayerItem], audio: VideoAudioSettings) {
         let trackMuted = tracks.first { $0.id == id }?.muted ?? false
         params.setVolume(0, at: .zero)
+        if items.contains(where: { $0.keepsPitch == false }) { params.audioTimePitchAlgorithm = .varispeed }
         for item in items {
-            let level: Float = audio.muted || trackMuted || item.muted ? 0 : Float(min(max(item.volume, 0), 2) * audio.volume)
-            params.setVolume(level, at: VideoCompositionBuilder.time(max(item.at, 0)))
+            let silent = audio.muted || trackMuted || item.muted
+            func level(_ volume: Double) -> Float { silent ? 0 : Float(min(max(volume, 0), 2) * audio.volume) }
+            let keys = item.keys?.keys(.volume) ?? []
+            if keys.isEmpty {
+                params.setVolume(level(item.volume), at: VideoCompositionBuilder.time(max(item.at, 0)))
+            } else {
+                // Volume keyframes: ramps between them, eased in steps.
+                params.setVolume(level(item.value(.volume, at: item.at)), at: VideoCompositionBuilder.time(max(item.at, 0)))
+                let steps = 8
+                for (a, b) in zip(keys, keys.dropFirst()) {
+                    for step in 0..<steps {
+                        let t0 = a.time + (b.time - a.time) * Double(step) / Double(steps)
+                        let t1 = a.time + (b.time - a.time) * Double(step + 1) / Double(steps)
+                        let start = item.at + t0
+                        guard start >= 0, t1 > t0 else { continue }
+                        params.setVolumeRamp(fromStartVolume: level(item.value(.volume, at: item.at + t0)), toEndVolume: level(item.value(.volume, at: item.at + t1)),
+                                             timeRange: CMTimeRange(start: VideoCompositionBuilder.time(start), duration: VideoCompositionBuilder.time(t1 - t0)))
+                    }
+                }
+            }
+            // Fades at its ends (volume keys, when it has them, do the
+            // shaping instead: ramps can't overlap).
+            let fadeIn = keys.isEmpty ? min(item.soundFadeIn ?? 0, item.length / 2) : 0
+            let fadeOut = keys.isEmpty ? min(item.soundFadeOut ?? 0, item.length / 2) : 0
+            if fadeIn > 0.01, item.at >= 0 {
+                params.setVolumeRamp(fromStartVolume: 0, toEndVolume: level(item.value(.volume, at: item.at + fadeIn)),
+                                     timeRange: CMTimeRange(start: VideoCompositionBuilder.time(item.at), duration: VideoCompositionBuilder.time(fadeIn)))
+            }
+            if fadeOut > 0.01, item.end - fadeOut >= 0 {
+                params.setVolumeRamp(fromStartVolume: level(item.value(.volume, at: item.end - fadeOut)), toEndVolume: 0,
+                                     timeRange: CMTimeRange(start: VideoCompositionBuilder.time(item.end - fadeOut), duration: VideoCompositionBuilder.time(fadeOut)))
+            }
             params.setVolume(0, at: VideoCompositionBuilder.time(max(item.end, 0)))
         }
     }
@@ -352,15 +438,34 @@ final class VideoLayerFrameStore: @unchecked Sendable {
 enum VideoLayerRenderer {
     /// `frame` (a video's) or the picture, cropped, mirrored, placed and
     /// turned on an output `size`.
-    static func image(for item: VideoLayerItem, frame: CIImage?, outputSize: CGSize) -> CIImage? {
-        guard item.enabled, item.opacity > 0.001 else { return nil }
+    static func image(for item: VideoLayerItem, frame: CIImage?, outputSize: CGSize, time: Double = 0) -> CIImage? {
+        guard item.enabled, item.opacity > 0.001, item.role == nil else { return nil }
+        // (`item` is already resolved at the moment drawn: keys applied.)
         var media: CIImage
-        if item.isVideo {
+        if let text = item.text {
+            let height = item.rect(in: outputSize).height
+            guard let image = VideoTextClipRenderer.image(text, pixelHeight: height) else { return nil }
+            media = image
+        } else if let sticker = item.sticker {
+            guard let image = VideoStickerRenderer.image(sticker, pixelHeight: item.rect(in: outputSize).height) else { return nil }
+            media = image
+        } else if item.isVideo {
             guard let frame else { return nil }
             media = frame
         } else {
-            guard let picture = VideoImageOverlayRenderer.picture(path: item.path) else { return nil }
-            media = picture
+            if item.path.lowercased().hasSuffix(".gif"), let gif = VideoGIF.load(item.path) {
+                // An animated GIF plays (and loops) from the clip's start.
+                media = gif.frame(at: time - item.at)
+            } else {
+                guard let picture = VideoImageOverlayRenderer.picture(path: item.path) else { return nil }
+                media = picture
+            }
+        }
+        // Cutout first: on the whole picture, before it's cut down.
+        if let key = item.chroma { media = VideoCutout.chroma(media, key: key) }
+        if item.removesBackground == true {
+            let frameTime = item.isVideo ? ((item.fileStart + (time - item.at) * item.normalizedSpeed) * 30).rounded() / 30 : 0
+            media = VideoCutout.person(media, key: "\(item.path)@\(frameTime)")
         }
         let extent = media.extent
         if let crop = item.crop?.normalized, !crop.isFull {
@@ -373,6 +478,10 @@ enum VideoLayerRenderer {
             let shown = media.extent
             media = media.transformed(by: CGAffineTransform(a: -1, b: 0, c: 0, d: 1, tx: shown.minX + shown.maxX, ty: 0))
         }
+        if let adjust = item.adjust { media = VideoAdjustRenderer.apply(adjust, to: media, time: time - item.at) }
+        if let filter = item.filter { media = VideoFilterRenderer.apply(filter, to: media) }
+        if let effects = item.effects, !effects.isEmpty { media = VideoEffectRenderer.apply(effects, to: media, time: time - item.at) }
+        if let mask = item.mask { media = mask.apply(to: media) }
         return VideoImageOverlayRenderer.placed(media, in: item.rect(in: outputSize), opacity: min(max(item.opacity, 0), 1), rotation: item.rotation)
     }
 }
@@ -393,5 +502,12 @@ enum VideoLayerStills {
             }
         }
         return frames
+    }
+}
+
+extension VideoLayerItem {
+    /// Uses something only 1.15.0 shows.
+    var needsFormat4: Bool {
+        (keys.map { !$0.isEmpty } ?? false) || mask != nil || level != nil || blend != nil || removesBackground != nil || chroma != nil || text != nil || tracking != nil || role != nil || effects != nil || filter != nil || adjust != nil || sticker != nil || animation != nil || keepsPitch != nil || soundFadeIn != nil || soundFadeOut != nil || speed < 0.25 - 0.000_1 || speed > 4 + 0.000_1
     }
 }

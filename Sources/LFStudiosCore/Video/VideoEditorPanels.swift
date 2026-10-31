@@ -207,6 +207,7 @@ struct VideoPlayerBar: View {
             }
             .fixedSize()
             Spacer(minLength: 6)
+            VideoProxyMenu(model: model)
             VideoAspectMenu(model: model)
             Menu {
                 ForEach(VideoEditorModel.previewZooms, id: \.self) { zoom in

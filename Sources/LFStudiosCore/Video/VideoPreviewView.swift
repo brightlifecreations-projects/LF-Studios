@@ -376,9 +376,15 @@ struct VideoStageInteractionLayer: View {
             }
 
             // The selected item on a track above the main track (1.14.0).
-            if !model.isPlaying, let item = model.selectedLayerItem, item.isShowing(at: clock.time),
+            if !model.isPlaying, let item = model.selectedLayerItem, item.role == nil, item.isShowing(at: clock.time),
                let track = model.project.layerTrackIndex(of: item.id), !model.isTrackLocked(.layer(model.project.layerTracks[track].id)) {
-                VideoLayerItemHandles(model: model, item: item, viewSize: viewSize)
+                if let compound = model.project.compound(of: item) {
+                    VideoCompoundHandles(model: model, clock: clock, compound: compound, viewSize: viewSize)
+                } else if let tracking = model.motionTracking, tracking.item == item.id {
+                    if tracking.progress == nil { VideoMotionTrackingBox(model: model, region: tracking.region, viewSize: viewSize) }
+                } else {
+                    VideoLayerItemHandles(model: model, clock: clock, stored: item, viewSize: viewSize)
+                }
             }
 
             // The bubble handle only where the bubble is (not during a full
@@ -417,11 +423,13 @@ struct VideoStageInteractionLayer: View {
 
     /// The frontmost item of the tracks above the main track under `point`.
     func layerItem(at point: CGPoint) -> VideoLayerItem? {
-        for layer in model.plan.layers.reversed() where layer.item.isShowing(at: clock.time) {
-            let r = layer.item.rect(in: viewSize)
+        for layer in model.plan.layers.reversed() where layer.item.isShowing(at: clock.time) && layer.item.role == nil {
+            var shown = layer.item.placed(at: clock.time)
+            if let compound = model.project.compound(of: layer.item) { shown = compound.apply(to: shown, canvas: viewSize) }
+            let r = shown.rect(in: viewSize)
             let box = CGRect(x: r.minX, y: viewSize.height - r.maxY, width: r.width, height: r.height)
             // Measured along its own sides when it's turned.
-            let along = VideoImageOverlayHandles.unturn(CGSize(width: point.x - box.midX, height: point.y - box.midY), by: layer.item.rotation)
+            let along = VideoImageOverlayHandles.unturn(CGSize(width: point.x - box.midX, height: point.y - box.midY), by: shown.rotation)
             if abs(along.width) <= box.width / 2, abs(along.height) <= box.height / 2 { return layer.item }
         }
         return nil

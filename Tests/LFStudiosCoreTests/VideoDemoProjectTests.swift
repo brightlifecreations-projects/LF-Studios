@@ -125,12 +125,12 @@ final class VideoDemoProjectTests: XCTestCase {
         var project = project(duration: 4)
         project.timelineClips = [VideoDemoTimelineClip(id: clipID, sourceStart: 0, sourceEnd: 4)]
         XCTAssertTrue(project.updateClip(id: clipID, totalDuration: 4) { clip in
-            clip.speed = 64
+            clip.speed = 640
             clip.fadeIn = 99
             clip.fadeOut = 99
         })
         let clip = try XCTUnwrap(project.timelineSegments(totalDuration: 4).first?.clip)
-        XCTAssertEqual(clip.normalizedSpeed, 16, accuracy: 0.001)
+        XCTAssertEqual(clip.normalizedSpeed, 100, accuracy: 0.001, "up to 100× (1.15.0)")
         XCTAssertEqual(clip.fadeIn, clip.outputDuration / 2, accuracy: 0.001)
     }
 

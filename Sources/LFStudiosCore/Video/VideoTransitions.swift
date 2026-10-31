@@ -11,6 +11,17 @@ enum VideoTransitionKind: String, Codable, CaseIterable, Identifiable {
     case dissolve
     /// Out to black, then in from black.
     case fadeThroughBlack
+    // 1.15.0
+    case fadeThroughWhite
+    /// The next clip slides in over this one.
+    case slide
+    /// The next clip pushes this one out.
+    case push
+    /// A soft edge sweeps across.
+    case wipe
+    case zoom
+    case blur
+    case spin
 
     var id: String { rawValue }
 
@@ -19,6 +30,13 @@ enum VideoTransitionKind: String, Codable, CaseIterable, Identifiable {
         case .none: return L("Hard cut")
         case .dissolve: return L("Dissolve")
         case .fadeThroughBlack: return L("Dip to black")
+        case .fadeThroughWhite: return L("Dip to white")
+        case .slide: return L("Slide")
+        case .push: return L("Push")
+        case .wipe: return L("Wipe")
+        case .zoom: return L("Zoom")
+        case .blur: return L("Blur")
+        case .spin: return L("Spin")
         }
     }
 
@@ -27,6 +45,30 @@ enum VideoTransitionKind: String, Codable, CaseIterable, Identifiable {
         case .none: return "scissors"
         case .dissolve: return "square.on.square.intersection.dashed"
         case .fadeThroughBlack: return "circle.lefthalf.filled"
+        case .fadeThroughWhite: return "circle.righthalf.filled"
+        case .slide: return "rectangle.righthalf.inset.filled.arrow.right"
+        case .push: return "arrow.left.square"
+        case .wipe: return "rectangle.lefthalf.filled"
+        case .zoom: return "arrow.up.left.and.arrow.down.right"
+        case .blur: return "drop"
+        case .spin: return "arrow.clockwise"
+        }
+    }
+
+    /// Shows both clips at once (the side that isn't playing holds its
+    /// frame at the cut).
+    var usesBothSides: Bool {
+        switch self {
+        case .none, .fadeThroughBlack, .fadeThroughWhite: return false
+        default: return true
+        }
+    }
+
+    /// Only 1.15.0 and later know it.
+    var isNew: Bool {
+        switch self {
+        case .none, .dissolve, .fadeThroughBlack: return false
+        default: return true
         }
     }
 }
@@ -119,6 +161,8 @@ enum VideoTransitionTiming {
             let after = segments[index]
             let chosen = settings.transition(into: after.id)
             guard chosen.kind != .none else { continue }
+            // Inside a speed curve the pieces are one clip: no transition.
+            if let group = after.clip.curve?.id, before.clip.curve?.id == group { continue }
             let room = min(before.duration, after.duration)
             let duration = min(max(chosen.duration, VideoTransitionSettings.durationRange.lowerBound), VideoTransitionSettings.durationRange.upperBound, room)
             guard duration >= 0.05 else { continue }
@@ -170,7 +214,7 @@ extension VideoRenderPlan {
     /// The source frame a dissolve at `time` holds on its other side (nil
     /// when nothing is needed). Preview and export fetch it the same way.
     func heldFrameRequest(at time: Double) -> VideoHeldFrameRequest? {
-        guard let span = transition(at: time), span.kind == .dissolve else { return nil }
+        guard let span = transition(at: time), span.kind.usesBothSides else { return nil }
         return VideoHeldFrameRequest(sourceTime: time < span.time ? span.incomingSource : span.outgoingSource)
     }
 }
@@ -179,7 +223,8 @@ extension VideoRenderPlan {
 
 extension VideoEditorModel {
     func setTransition(into clipID: UUID, kind: VideoTransitionKind?, duration: Double? = nil) {
-        mutate(coalesce: duration == nil ? nil : "transition-\(clipID)") { project in
+        if refuseLocked(.clips) { return }
+        mutate(coalesce: duration == nil ? nil : "transition-\(clipID)", label: "Transitions") { project in
             var overrides = project.transitions.overrides
             let current = project.transitions.transition(into: clipID)
             overrides.removeAll { $0.clipID == clipID }
@@ -233,10 +278,7 @@ struct VideoTransitionsSection: View {
                 Text(L("Between clips"))
                     .font(.system(size: 12, weight: .medium))
                     .foregroundStyle(VideoEditorTheme.textPrimary)
-                VideoSegmented(options: VideoTransitionKind.allCases.map { ($0, $0.title) }, selection: Binding(
-                    get: { settings.betweenClips },
-                    set: { value in model.setStyle { $0.transitions.betweenClips = value } }
-                ))
+                VideoTransitionPicker(selection: settings.betweenClips) { value in model.setStyle { $0.transitions.betweenClips = value } }
             }
             if settings.betweenClips != .none {
                 VideoSliderRow(
@@ -267,10 +309,7 @@ struct VideoClipTransitionSection: View {
         if let index = model.segments.firstIndex(where: { $0.id == segment.id }), index > 0 {
             let current = model.project.transitions.transition(into: segment.id)
             VideoInspectorSection(L("Transition in")) {
-                VideoSegmented(options: VideoTransitionKind.allCases.map { ($0, $0.title) }, selection: Binding(
-                    get: { current.kind },
-                    set: { value in model.setTransition(into: segment.id, kind: value) }
-                ))
+                VideoTransitionPicker(selection: current.kind) { value in model.setTransition(into: segment.id, kind: value) }
                 if current.kind != .none {
                     VideoSliderRow(
                         title: L("Length"),

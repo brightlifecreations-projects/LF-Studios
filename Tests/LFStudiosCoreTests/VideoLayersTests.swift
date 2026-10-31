@@ -185,7 +185,7 @@ final class VideoLayersTests: XCTestCase {
         mirrored.timelineClips[0].mirrored = true
         XCTAssertEqual(VideoProjectDocument(mediaMode: .linked, project: mirrored, recording: nil).format, VideoProjectDocument.layersFormat)
         // A later one still asks for a newer version.
-        let later = try JSONSerialization.data(withJSONObject: ["format": "lfstudios-project-4", "version": 4])
+        let later = try JSONSerialization.data(withJSONObject: ["format": "lfstudios-project-5", "version": 5])
         XCTAssertThrowsError(try VideoProjectDocument.decode(later)) { XCTAssertEqual($0 as? VideoProjectDocument.ReadError, .needsNewerVersion) }
     }
 

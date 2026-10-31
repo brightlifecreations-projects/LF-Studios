@@ -6,6 +6,7 @@ import ScreenCaptureKit
 final class AppDelegate: NSObject, NSApplicationDelegate {
 
     private var statusItem: NSStatusItem!
+    private var keymapObserver: NSObjectProtocol?
     private var captureEngine: CaptureEngine!
     var hotkeyManager: HotkeyManager!
     var historyManager: HistoryManager!
@@ -472,8 +473,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         let timelineMenuItem = NSMenuItem()
         let timelineMenu = NSMenu(title: L("Timeline"))
         // CapCut's keys (1.14.0): each item runs its VideoEditCommand.
+        // Keys from Keyboard Shortcuts (VideoKeymap.swift); `key` and
+        // `modifiers` are LF Studios' own, for reading here.
         func command(_ title: String, _ command: VideoEditCommand, key: String = "", modifiers: NSEvent.ModifierFlags = []) {
-            let item = menuItem(title, action: #selector(timelineCommand(_:)), key: key, modifiers: modifiers)
+            let binding = VideoKeymap.current.binding(for: command)
+            let item = menuItem(title, action: #selector(timelineCommand(_:)), key: binding?.key ?? "", modifiers: binding?.modifiers ?? [])
             item.representedObject = command.rawValue
             timelineMenu.addItem(item)
         }
@@ -485,7 +489,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         timelineMenu.addItem(NSMenuItem.separator())
         command(L("Mark In"), .markIn, key: "i")
         command(L("Mark Out"), .markOut, key: "o")
-        timelineMenu.addItem(menuItem(L("Mute Clip"), action: #selector(timelineMuteClip(_:)), key: "m", modifiers: []))
+        let mute = menuItem(L("Mute Clip"), action: #selector(timelineMuteClip(_:)), key: "m", modifiers: [])
+        mute.identifier = NSUserInterfaceItemIdentifier("timeline.mute")
+        timelineMenu.addItem(mute)
         command(L("Turn Clip On or Off"), .toggleEnabled, key: "v")
         timelineMenu.addItem(NSMenuItem.separator())
         command(L("Freeze Frame"), .freezeFrame)
@@ -502,6 +508,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         timelineMenu.addItem(menuItem(L("Redo Timeline Edit"), action: #selector(timelineRedo(_:)), key: "Z", modifiers: [.command, .shift]))
         timelineMenuItem.submenu = timelineMenu
         mainMenu.addItem(timelineMenuItem)
+        refreshTimelineKeys(timelineMenu)
+        keymapObserver = NotificationCenter.default.addObserver(forName: .lfstudiosKeymapChanged, object: nil, queue: .main) { [weak timelineMenu] _ in
+            MainActor.assumeIsolated { if let timelineMenu { AppDelegate.refreshTimelineKeysStatic(timelineMenu) } }
+        }
 
         // Minimal Window menu with the standard window-management commands.
         let windowMenuItem = NSMenuItem()
@@ -656,6 +666,24 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     @objc func openAbout()           { PreferencesWindowController.shared.show(tab: .about) }
     @objc func checkForUpdates(_ sender: Any?) { updateController?.checkForUpdates(sender) }
     @objc func timelineSplit(_ sender: Any?) { VideoDemoEditorWindowController.splitActiveEditor() }
+    private func refreshTimelineKeys(_ menu: NSMenu) { Self.refreshTimelineKeysStatic(menu) }
+
+    /// The Timeline menu shows the keys set in Keyboard Shortcuts; Mute
+    /// gives up M when a command has it.
+    static func refreshTimelineKeysStatic(_ menu: NSMenu) {
+        let keymap = VideoKeymap.current
+        for item in menu.items {
+            if let raw = item.representedObject as? String, let command = VideoEditCommand(rawValue: raw) {
+                let binding = keymap.binding(for: command)
+                item.keyEquivalent = binding?.key ?? ""
+                item.keyEquivalentModifierMask = binding?.modifiers ?? []
+            } else if item.identifier?.rawValue == "timeline.mute" {
+                item.keyEquivalent = keymap.command(key: "m", modifiers: []) == nil ? "m" : ""
+                item.keyEquivalentModifierMask = []
+            }
+        }
+    }
+
     @objc func timelineCommand(_ sender: NSMenuItem) {
         guard let raw = sender.representedObject as? String, let command = VideoEditCommand(rawValue: raw),
               let model = VideoDemoEditorWindowController.keyModel, !model.hasOverlayOpen else { return }

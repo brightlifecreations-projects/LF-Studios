@@ -8,7 +8,7 @@ import SwiftUI
 /// run with `VideoEditorModel.perform(_:)`. Each makes one ⌘Z step and
 /// refuses on a locked track, so anything that drives the editor (a key, a
 /// button, a future MCP connection) gets the same result.
-enum VideoEditCommand: String, CaseIterable, Identifiable {
+enum VideoEditCommand: Equatable, CaseIterable, Identifiable {
     case selectTool
     case splitTool
     case undo
@@ -44,6 +44,44 @@ enum VideoEditCommand: String, CaseIterable, Identifiable {
     case addArrow
     case addHighlight
     case addBlur
+    // 1.15.0
+    case addKeyframe
+    case previousKeyframe
+    case nextKeyframe
+    /// A text clip on a track of its own (VideoTextClips.swift).
+    case addTextClip
+    /// Compound clips (VideoCompounds.swift).
+    case makeCompound
+    case breakApart
+    /// An edit with values (a setting at the playhead, a mode, a mask…) on
+    /// the selected item above the main track (VideoItemEdits.swift).
+    case edit(VideoItemEdit)
+    /// An edit of the main track's clip (selected, or under the playhead).
+    case clip(VideoClipEdit)
+    /// A sound's volume keys, loudness, beats.
+    case audio(VideoAudioEdit)
+
+    /// The commands without values (keys, menus, the command palette).
+    static let allCases: [VideoEditCommand] = [
+        .selectTool, .splitTool, .undo, .redo, .split, .splitAllTracks, .deleteLeft, .deleteRight, .delete, .addMarker,
+        .freezeFrame, .reverse, .mirror, .rotate, .crop, .recordVoiceover, .toggleMagnet, .toggleSnapping, .toggleLinkage,
+        .togglePreviewAxis, .zoomToFit, .toggleEnabled, .group, .ungroup, .extractAudio, .selectLeft, .selectRight,
+        .copy, .paste, .markIn, .markOut, .addText, .addArrow, .addHighlight, .addBlur, .addKeyframe, .previousKeyframe, .nextKeyframe,
+        .addTextClip, .makeCompound, .breakApart,
+    ]
+
+    /// A stable name (menus keep it; a future MCP connection can send it).
+    var rawValue: String {
+        if case .edit(let edit) = self { return "edit." + edit.name }
+        if case .clip(let edit) = self { return "clip." + edit.name }
+        if case .audio(let edit) = self { return "audio." + edit.name }
+        return String(describing: self)
+    }
+
+    init?(rawValue: String) {
+        guard let command = Self.allCases.first(where: { $0.rawValue == rawValue }) else { return nil }
+        self = command
+    }
 
     var id: String { rawValue }
 
@@ -84,6 +122,15 @@ enum VideoEditCommand: String, CaseIterable, Identifiable {
         case .addArrow: return L("Arrow")
         case .addHighlight: return L("Highlight")
         case .addBlur: return L("Blur")
+        case .addKeyframe: return L("Add keyframe")
+        case .previousKeyframe: return L("Previous keyframe")
+        case .nextKeyframe: return L("Next keyframe")
+        case .addTextClip: return L("Text clip")
+        case .makeCompound: return L("Make compound clip")
+        case .breakApart: return L("Break apart")
+        case .edit(let edit): return edit.title
+        case .clip(let edit): return edit.title
+        case .audio(let edit): return edit.title
         }
     }
 
@@ -124,11 +171,29 @@ enum VideoEditCommand: String, CaseIterable, Identifiable {
         case .addArrow: return "arrow.up.right"
         case .addHighlight: return "rectangle.dashed"
         case .addBlur: return "eye.slash"
+        case .addKeyframe: return "diamond"
+        case .previousKeyframe: return "chevron.left.to.line"
+        case .nextKeyframe: return "chevron.right.to.line"
+        case .addTextClip: return "character.textbox"
+        case .makeCompound: return "square.stack.3d.down.right"
+        case .breakApart: return "square.stack.3d.up.slash"
+        case .edit, .clip, .audio: return "slider.horizontal.3"
         }
     }
 
-    /// The keys, as the Guide and the menus write them ("" for none).
+    /// The keys, as the Guide and the menus write them ("" for none):
+    /// the ones set in Keyboard Shortcuts.
     var keys: String {
+        switch self {
+        case .undo: return "⌘Z"
+        case .redo: return "⇧⌘Z"
+        case .delete: return "⌫"
+        default: return VideoKeymap.current.binding(for: self)?.display ?? ""
+        }
+    }
+
+    /// LF Studios' own keys (before any preset or change).
+    var standardKeys: String {
         switch self {
         case .selectTool: return "A"
         case .splitTool: return "B"
@@ -158,41 +223,20 @@ enum VideoEditCommand: String, CaseIterable, Identifiable {
         case .addArrow: return "⌥A"
         case .addHighlight: return "⌥H"
         case .addBlur: return "⌥B"
-        case .addMarker, .freezeFrame, .reverse, .mirror, .rotate, .crop, .recordVoiceover: return ""
+        case .addKeyframe: return "⌥K"
+        case .previousKeyframe: return "⌥["
+        case .nextKeyframe: return "⌥]"
+        case .addTextClip: return "⌥⇧T"
+        case .makeCompound: return "⌥G"
+        case .breakApart: return "⌥⇧G"
+        case .addMarker, .freezeFrame, .reverse, .mirror, .rotate, .crop, .recordVoiceover, .edit, .clip, .audio: return ""
         }
     }
 
-    /// The command for a key press in the editor (nil: not one of these).
+    /// The command for a key press in the editor (nil: not one of these):
+    /// LF Studios' keys, a preset's, or your own (VideoKeymap.swift).
     static func command(key: String, modifiers: NSEvent.ModifierFlags) -> VideoEditCommand? {
-        let mods = modifiers.intersection([.command, .shift, .option, .control])
-        switch (mods, key) {
-        case ([], "a"): return .selectTool
-        case ([], "b"): return .splitTool
-        case ([.command], "b"): return .split
-        case ([.command, .shift], "b"): return .splitAllTracks
-        case ([], "q"): return .deleteLeft
-        case ([], "w"): return .deleteRight
-        case ([], "p"): return .toggleMagnet
-        case ([], "n"): return .toggleSnapping
-        case ([], "`"), ([.shift], "~"), ([.shift], "`"): return .toggleLinkage
-        case ([], "s"): return .togglePreviewAxis
-        case ([.shift], "z"): return .zoomToFit
-        case ([], "v"): return .toggleEnabled
-        case ([.command], "g"): return .group
-        case ([.command, .shift], "g"): return .ungroup
-        case ([.command, .shift], "a"): return .extractAudio
-        case ([], "["): return .selectLeft
-        case ([], "]"): return .selectRight
-        case ([.command], "c"): return .copy
-        case ([.command], "v"): return .paste
-        case ([], "i"): return .markIn
-        case ([], "o"): return .markOut
-        case ([.option], "t"), ([.option], "†"): return .addText
-        case ([.option], "a"), ([.option], "å"): return .addArrow
-        case ([.option], "h"), ([.option], "˙"): return .addHighlight
-        case ([.option], "b"), ([.option], "∫"): return .addBlur
-        default: return nil
-        }
+        VideoKeymap.current.command(key: key, modifiers: modifiers.intersection([.command, .shift, .option, .control]))
     }
 
     /// A switch (P, N, ~, S): its state.
@@ -298,6 +342,28 @@ extension VideoEditorModel {
             addOverlay(.highlight)
         case .addBlur:
             addOverlay(.blur)
+        case .addKeyframe:
+            guard let item = selectedLayerItem else {
+                showNotice(L("Select a clip above the main track to add a keyframe"), symbol: "diamond")
+                return false
+            }
+            return addKeyframes(item.id)
+        case .previousKeyframe:
+            return jumpToKeyframe(forward: false)
+        case .nextKeyframe:
+            return jumpToKeyframe(forward: true)
+        case .addTextClip:
+            addTextClip()
+        case .makeCompound:
+            return makeCompoundClip()
+        case .breakApart:
+            return breakApartCompound()
+        case .edit(let edit):
+            return perform(edit)
+        case .clip(let edit):
+            return perform(edit)
+        case .audio(let edit):
+            return perform(edit)
         }
         return true
     }
@@ -630,4 +696,9 @@ struct VideoShortcutsChangedNotice: View {
         Settings.videoShortcutsChangeSeen = true
         seen = true
     }
+}
+
+/// Commands as dictionary keys and in sets (by their stable name).
+extension VideoEditCommand: Hashable {
+    func hash(into hasher: inout Hasher) { hasher.combine(rawValue) }
 }

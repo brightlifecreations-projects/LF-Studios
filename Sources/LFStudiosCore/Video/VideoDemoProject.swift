@@ -5,7 +5,8 @@ import Foundation
 // MARK: - Timeline clips
 
 struct VideoDemoTimelineClip: Codable, Equatable, Identifiable {
-    static let speedRange: ClosedRange<Double> = 0.25...16
+    /// 0.1× to 100× (1.15.0; before: 0.25× to 16×).
+    static let speedRange: ClosedRange<Double> = 0.1...100
 
     var id: UUID
     var sourceStart: Double
@@ -22,6 +23,13 @@ struct VideoDemoTimelineClip: Codable, Equatable, Identifiable {
     var quarterTurns = 0
     /// Off (V, 1.14.0): kept on the timeline, shown black and silent.
     var disabled = false
+    /// Keep pitch off: faster sounds higher (1.15.0; nil: kept).
+    var keepsPitch: Bool?
+    /// One piece of a clip played with a speed curve (VideoSpeed.swift).
+    var curve: VideoSpeedCurveGroup?
+
+    /// Only 1.15.0 and later play it as it is.
+    var needsFormat4: Bool { keepsPitch == false || curve != nil || speed < 0.25 - 0.000_1 || speed > 16 + 0.000_1 }
 
     /// Mirror, Rotate or off: only 1.14.0 and later show it.
     var needsLayerFormat: Bool { mirrored || quarterTurns % 4 != 0 || disabled }
@@ -60,7 +68,7 @@ struct VideoDemoTimelineClip: Codable, Equatable, Identifiable {
     }
 
     private enum CodingKeys: String, CodingKey {
-        case id, sourceStart, sourceEnd, speed, muted, fadeIn, fadeOut, typingSpeedUp, mirrored, quarterTurns, disabled
+        case id, sourceStart, sourceEnd, speed, muted, fadeIn, fadeOut, typingSpeedUp, mirrored, quarterTurns, disabled, keepsPitch, curve
     }
 
     init(from decoder: Decoder) throws {
@@ -76,6 +84,8 @@ struct VideoDemoTimelineClip: Codable, Equatable, Identifiable {
         mirrored = (try? container.decodeIfPresent(Bool.self, forKey: .mirrored)) ?? false
         quarterTurns = (try? container.decodeIfPresent(Int.self, forKey: .quarterTurns)) ?? 0
         disabled = (try? container.decodeIfPresent(Bool.self, forKey: .disabled)) ?? false
+        keepsPitch = (try? container.decodeIfPresent(Bool.self, forKey: .keepsPitch)).flatMap { $0 }
+        curve = (try? container.decodeIfPresent(VideoSpeedCurveGroup.self, forKey: .curve)).flatMap { $0 }
     }
 
     func encode(to encoder: Encoder) throws {
@@ -92,6 +102,8 @@ struct VideoDemoTimelineClip: Codable, Equatable, Identifiable {
         if mirrored { try container.encode(true, forKey: .mirrored) }
         if turns != 0 { try container.encode(turns, forKey: .quarterTurns) }
         if disabled { try container.encode(true, forKey: .disabled) }
+        try container.encodeIfPresent(keepsPitch, forKey: .keepsPitch)
+        try container.encodeIfPresent(curve, forKey: .curve)
     }
 }
 
@@ -930,6 +942,11 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
     /// Video and picture tracks above the main track, lowest first
     /// (VideoLayers.swift, 1.14.0).
     var layerTracks: [VideoLayerTrack] = []
+    /// Compound clips (1.15.0; VideoCompounds.swift): their clips are on
+    /// `layerTracks`, grouped by the compound's id.
+    var compounds: [VideoCompoundClip]?
+    /// The exported file's cover (1.15.0; VideoCover.swift).
+    var cover: VideoCover?
 
     var sourceURL: URL { URL(fileURLWithPath: sourcePath) }
     var sourceSize: CGSize { CGSize(width: sourceWidth, height: sourceHeight) }
@@ -1481,7 +1498,7 @@ extension VideoDemoProject {
         case webcam, cameraLayouts, importedCamera, splitVideoAspect, customAspect, trackStates, autoZoom, reframe, captions, transcriptLanguage, captionStyle, keystrokes, keystrokeStyle, crop
         case cards, music, audioTracks, clickSounds, transitions, captionTracks, sources, imageOverlayEffects, markers
         case textCursor, keyPresses, loupeStyle, faceTracking, carriedVoices, speakerNotes
-        case ratioVersions, ratioShared, ratioBase, previousRatio, reframeFollowsZooms, mediaBin, layerTracks
+        case ratioVersions, ratioShared, ratioBase, previousRatio, reframeFollowsZooms, mediaBin, layerTracks, compounds, cover
         // Legacy (v1) keys
         case backgroundPreset, customBackgroundPath, stageInset, shadowStrength, zoomKeyframes
         case showCursorOverlay, enlargeCursor, showClickRipple, smoothCursor, cursorScale, clickSpotlight, cursorMotionBlur
@@ -1542,6 +1559,8 @@ extension VideoDemoProject {
         reframeFollowsZooms = (try? container.decodeIfPresent(Bool.self, forKey: .reframeFollowsZooms)) ?? false
         mediaBin = (try? container.decodeIfPresent(VideoMediaBin.self, forKey: .mediaBin)).flatMap { $0 }
         layerTracks = (try? container.decodeIfPresent([VideoLayerTrack].self, forKey: .layerTracks)).flatMap { $0 } ?? []
+        compounds = (try? container.decodeIfPresent([VideoCompoundClip].self, forKey: .compounds)).flatMap { $0 }
+        cover = (try? container.decodeIfPresent(VideoCover.self, forKey: .cover)).flatMap { $0 }
 
         let storedVersion = try container.decodeIfPresent(Int.self, forKey: .version) ?? 1
         if storedVersion >= 2 {
@@ -1637,6 +1656,8 @@ extension VideoDemoProject {
         if reframeFollowsZooms { try container.encode(true, forKey: .reframeFollowsZooms) }
         if let mediaBin, !mediaBin.isEmpty { try container.encode(mediaBin, forKey: .mediaBin) }
         if !layerTracks.isEmpty { try container.encode(layerTracks, forKey: .layerTracks) }
+        if let compounds, !compounds.isEmpty { try container.encode(compounds, forKey: .compounds) }
+        if let cover { try container.encode(cover, forKey: .cover) }
         try container.encode(cursorSamples, forKey: .cursorSamples)
         try container.encode(clickEvents, forKey: .clickEvents)
         try container.encode(nativeCursorVisible, forKey: .nativeCursorVisible)

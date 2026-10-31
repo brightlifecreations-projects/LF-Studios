@@ -321,6 +321,37 @@ enum Settings {
         set { defaults.set(newValue, forKey: "recordingKeyTiming") }
     }
 
+    /// Where Export saves (the export window's folder; empty: the
+    /// recordings folder).
+    static var videoExportFolder: String {
+        get { defaults.string(forKey: "videoExportFolder") ?? "" }
+        set { defaults.set(newValue, forKey: "videoExportFolder") }
+    }
+
+    /// The video editor plays proxies where there are some (VideoProxies).
+    static var videoEditWithProxies: Bool {
+        get { defaults.bool(forKey: "videoEditWithProxies") }
+        set { defaults.set(newValue, forKey: "videoEditWithProxies") }
+    }
+
+    /// The video editor's keys (VideoKeymap, JSON; nil: LF Studios' own).
+    static var videoKeymap: Data? {
+        get { defaults.data(forKey: "videoKeymap") }
+        set { defaults.set(newValue, forKey: "videoKeymap") }
+    }
+
+    /// Library ▸ Transitions: the length a transition gets when it's placed.
+    static var videoTransitionLength: Double {
+        get { (defaults.object(forKey: "videoTransitionLength") as? Double).map { min(max($0, 0.2), 2) } ?? 0.5 }
+        set { defaults.set(newValue, forKey: "videoTransitionLength") }
+    }
+
+    /// Library items starred in the video editor ("tab/id").
+    static var videoLibraryFavourites: [String] {
+        get { defaults.stringArray(forKey: "videoLibraryFavourites") ?? [] }
+        set { defaults.set(newValue, forKey: "videoLibraryFavourites") }
+    }
+
     /// Language for generated captions (BCP-47; empty = the Mac's language).
     static var videoCaptionLanguage: String {
         get { defaults.string(forKey: "videoCaptionLanguage") ?? "" }
@@ -552,7 +583,7 @@ enum Settings {
     static var videoExportFPS: Int {
         get {
             let v = defaults.integer(forKey: "videoExportFPS")
-            return [24, 30, 60].contains(v) ? v : 60
+            return [24, 25, 30, 50, 60].contains(v) ? v : 60
         }
         set { defaults.set([24, 30, 60].contains(newValue) ? newValue : 60, forKey: "videoExportFPS") }
     }

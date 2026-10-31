@@ -142,6 +142,26 @@
 			<string>Найдено %lld штрихкода</string>
 		</dict>
 	</dict>
+	<key>%lld beats marked — clips snap to them</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>few</key>
+			<string>Отмечено %lld бита — клипы прилипают к меткам</string>
+			<key>many</key>
+			<string>Отмечено %lld битов — клипы прилипают к меткам</string>
+			<key>one</key>
+			<string>Отмечен %lld бит — клипы прилипают к меткам</string>
+			<key>other</key>
+			<string>Отмечено %lld бита — клипы прилипают к меткам</string>
+		</dict>
+	</dict>
 	<key>%lld camera layouts</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -320,6 +340,26 @@
 			<string>%lld адрес e-mail</string>
 			<key>other</key>
 			<string>%lld адреса e-mail</string>
+		</dict>
+	</dict>
+	<key>%lld keyframes. Change a setting with ◆ lit to add one at the playhead.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>few</key>
+			<string>%lld ключевых кадра. Измените параметр с горящим ◆, чтобы добавить кадр у указателя воспроизведения.</string>
+			<key>many</key>
+			<string>%lld ключевых кадров. Измените параметр с горящим ◆, чтобы добавить кадр у указателя воспроизведения.</string>
+			<key>one</key>
+			<string>%lld ключевой кадр. Измените параметр с горящим ◆, чтобы добавить кадр у указателя воспроизведения.</string>
+			<key>other</key>
+			<string>%lld ключевого кадра. Измените параметр с горящим ◆, чтобы добавить кадр у указателя воспроизведения.</string>
 		</dict>
 	</dict>
 	<key>%lld lines</key>
@@ -762,6 +802,26 @@
 			<string>Субтитры готовы — %lld строки</string>
 		</dict>
 	</dict>
+	<key>Create proxies for %lld videos?</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>few</key>
+			<string>Создать прокси для %lld видео?</string>
+			<key>many</key>
+			<string>Создать прокси для %lld видео?</string>
+			<key>one</key>
+			<string>Создать прокси для %lld видео?</string>
+			<key>other</key>
+			<string>Создать прокси для %lld видео?</string>
+		</dict>
+	</dict>
 	<key>Cut %lld words — ⌘Z to undo</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -920,6 +980,26 @@
 			<string>История занимает … (%lld снимок)</string>
 			<key>other</key>
 			<string>История занимает … (%lld снимка)</string>
+		</dict>
+	</dict>
+	<key>Imported %lld captions from “%@”</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>few</key>
+			<string>Импортировано %lld субтитра из «%@»</string>
+			<key>many</key>
+			<string>Импортировано %lld субтитров из «%@»</string>
+			<key>one</key>
+			<string>Импортирован %lld субтитр из «%@»</string>
+			<key>other</key>
+			<string>Импортировано %lld субтитра из «%@»</string>
 		</dict>
 	</dict>
 	<key>Imported %lld presets</key>
@@ -1660,6 +1740,26 @@
 			<string>• Экспорты в буфер обмена старше суток — %lld файл, %@</string>
 			<key>other</key>
 			<string>• Экспорты в буфер обмена старше суток — %lld файла, %@</string>
+		</dict>
+	</dict>
+	<key>• Edit proxies — %lld files, %@ (Create Proxies makes them again)</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>few</key>
+			<string>• Прокси для монтажа — %lld файла, %@ («Создать прокси» создаст их снова)</string>
+			<key>many</key>
+			<string>• Прокси для монтажа — %lld файлов, %@ («Создать прокси» создаст их снова)</string>
+			<key>one</key>
+			<string>• Прокси для монтажа — %lld файл, %@ («Создать прокси» создаст их снова)</string>
+			<key>other</key>
+			<string>• Прокси для монтажа — %lld файла, %@ («Создать прокси» создаст их снова)</string>
 		</dict>
 	</dict>
 	<key>• Edits, recording details, and camera footage of %lld recordings LF Studios can't find (%@): %@</key>

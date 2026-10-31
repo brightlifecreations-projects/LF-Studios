@@ -15,7 +15,7 @@ import Foundation
 @MainActor
 enum GuideContent {
     /// Pages from these versions get a New badge and fill What's new.
-    nonisolated static let newVersions: [String] = ["1.14.0", "1.13.0", "1.12.0", "1.11.1", "1.11.0", "1.10.0", "1.9.0", "1.8.0", "1.7.0"]
+    nonisolated static let newVersions: [String] = ["1.15.0", "1.14.0", "1.13.0", "1.12.0", "1.11.1", "1.11.0", "1.10.0", "1.9.0", "1.8.0", "1.7.0"]
 
     static func chapters() -> [GuideChapter] {
         let features = featureCategories()
@@ -440,6 +440,7 @@ enum GuideContent {
             GuideCategory(id: "history", title: L("History & pins"), symbol: "clock.arrow.circlepath", entries: historyFeatures()),
             GuideCategory(id: "recording", title: L("Recording"), symbol: "record.circle", entries: recordingFeatures()),
             GuideCategory(id: "video-editor", title: L("Video editor"), symbol: "film", entries: videoEditorFeatures()),
+            GuideCategory(id: "video-creative", title: L("Library, effects & keyframes"), symbol: "sparkles", entries: creativeFeatures()),
             GuideCategory(id: "zoom", title: L("Zoom"), symbol: "plus.magnifyingglass", entries: zoomFeatures()),
             GuideCategory(id: "cursor", title: L("Cursor"), symbol: "cursorarrow.motionlines", entries: cursorFeatures()),
             GuideCategory(id: "camera", title: L("Camera"), symbol: "person.crop.circle", entries: cameraFeatures()),
@@ -452,6 +453,251 @@ enum GuideContent {
             GuideCategory(id: "projects", title: L("Projects"), symbol: "folder", entries: projectFeatures()),
             GuideCategory(id: "settings", title: L("Settings"), symbol: "gearshape", entries: settingsFeatures()),
         ].filter { !$0.entries.isEmpty }
+    }
+
+    // MARK: Library, effects & keyframes (1.15.0)
+
+    static func creativeFeatures() -> [GuideEntry] {
+        [
+            GuideEntry(
+                id: "video-library", symbol: "square.grid.2x2", title: L("The Library"),
+                summary: L("Everything to add to a video, in tabs: Media, Audio, Text, Stickers, Effects, Transitions, Captions, Filters and Adjust."),
+                location: L("The panel at the top left of the video editor."),
+                steps: [
+                    L("Pick a tab. Hover an item to see (or hear) it."),
+                    L("Drag it onto the timeline, or click + to add it at the playhead."),
+                    L("Search at the top of each tab; click a star to keep an item in Favourites."),
+                ],
+                tips: [L("With a clip above the main track selected, + puts an effect, filter or adjustment on that clip.")],
+                since: "1.15.0",
+                related: ["video-text-clips", "video-effects", "video-stickers"]
+            ),
+            GuideEntry(
+                id: "video-keyframes", symbol: "diamond", title: L("Keyframes"),
+                summary: L("Animate a clip above the main track: set a value at one moment, another value later, and it moves between them."),
+                location: L("Properties ▸ Keyframes, and the ◆ next to each setting of the selected clip."),
+                steps: [
+                    L("Move the playhead and click ◆ next to a setting (or press ⌥K for place, size, turn and opacity)."),
+                    L("Move the playhead again and change the setting: a new keyframe is made there."),
+                    L("Pick how it moves between them: Linear, Ease in, Ease out or Ease in-out."),
+                ],
+                keys: [
+                    .fixed("⌥K", L("Add keyframe")),
+                    .fixed("⌥[  ⌥]", L("Previous / next keyframe")),
+                ],
+                tips: [
+                    L("Keyframes show as diamonds on the clip in the timeline."),
+                    L("Projects with keyframes or any other 1.15.0 feature open in LF Studios 1.15.0 or later."),
+                ],
+                since: "1.15.0",
+                related: ["video-tracks", "video-animations"]
+            ),
+            GuideEntry(
+                id: "video-look", symbol: "square.2.layers.3d", title: L("Blend, cutout and masks"),
+                summary: L("Mix a clip with what's under it, cut out its background, or show only part of it."),
+                location: L("Properties ▸ Blend, Cutout and Mask, with a clip above the main track selected."),
+                points: [
+                    L("Blend: Screen lightens, Multiply darkens, Overlay adds contrast, and more."),
+                    L("Remove background keeps just the person, found on this Mac."),
+                    L("Chroma key takes out one colour, like a green screen; pick the colour, then set Strength and Shadow."),
+                    L("Mask: Linear, Mirror, Circle or Rectangle, with Feather and Invert. Its place and size take keyframes."),
+                ],
+                since: "1.15.0",
+                related: ["video-keyframes"]
+            ),
+            GuideEntry(
+                id: "video-animations", symbol: "wand.and.rays", title: L("In, Out and Combo animations"),
+                summary: L("Make a clip come in, go out, or keep moving while it shows."),
+                location: L("Properties ▸ Animation, with a clip above the main track selected."),
+                steps: [
+                    L("Choose In, Out or Combo."),
+                    L("Click a preset (Fade, Zoom, Slide, Spin, Pop, Blur…), then set its Length."),
+                ],
+                tips: [L("None takes the animation off.")],
+                since: "1.15.0",
+                related: ["video-keyframes", "video-text-clips"]
+            ),
+            GuideEntry(
+                id: "video-speed-curves", symbol: "speedometer", title: L("Speed and speed curves"),
+                summary: L("Play a clip from 0.1× to 100×, or let its speed change along a curve."),
+                location: L("Properties ▸ Speed, with a clip selected."),
+                points: [
+                    L("Normal: one speed for the whole clip. Keep pitch off lets faster sound higher, like a tape."),
+                    L("Curve: Montage, Hero, Bullet, Jump cut, Flash in or Flash out, or drag the points of your own."),
+                ],
+                tips: [L("The sound is silent faster than 32× or slower than 1/32×.")],
+                since: "1.15.0",
+                related: ["video-clips"]
+            ),
+            GuideEntry(
+                id: "video-audio-tools", symbol: "waveform.badge.checkmark", title: L("Volume keyframes, fades, loudness and beats"),
+                summary: L("Change the volume over time, fade sound in and out, even out loudness, and find the beat."),
+                location: L("The sound's settings (select a sound file, the music, or a video above the main track)."),
+                points: [
+                    L("Volume ◆ sets a volume keyframe at the playhead."),
+                    L("Normalize sets the volume so it's as loud as video sites expect (−16 LUFS)."),
+                    L("Beats marks where the beat is; dragged clips snap to the marks."),
+                ],
+                since: "1.15.0",
+                related: ["audio-added"]
+            ),
+            GuideEntry(
+                id: "video-text-clips", symbol: "character.textbox", title: L("Text clips and templates"),
+                summary: L("Text on a track of its own: any words, font, size, colour, outline, background, shadow, spacing and alignment."),
+                location: L("Library ▸ Text, or press ⌥⇧T."),
+                steps: [
+                    L("Click Add text, or drag a template onto the timeline."),
+                    L("Type in Properties ▸ Text, and pick its look there or click a Style."),
+                ],
+                keys: [.fixed("⌥⇧T", L("Text clip"))],
+                tips: [
+                    L("Fonts are ones that come with every Mac, so a project looks the same on any Mac."),
+                    L("⌥T still adds a text note pinned over the video, as before."),
+                ],
+                since: "1.15.0",
+                related: ["video-library", "video-animations", "video-to-track"]
+            ),
+            GuideEntry(
+                id: "video-tracking", symbol: "scope", title: L("Motion tracking"),
+                summary: L("Make text, a sticker or a picture follow something that moves in the video."),
+                location: L("Properties ▸ Tracking, with a clip above the main track selected."),
+                steps: [
+                    L("Move the playhead to where the thing first shows. Click Track."),
+                    L("Drag the yellow box over it, and set Box size."),
+                    L("Click Start tracking. The clip follows it to the clip's end."),
+                ],
+                tips: [
+                    L("It works on this Mac: nothing is uploaded."),
+                    L("Stop following takes it off; a box over something with clear edges follows best."),
+                ],
+                since: "1.15.0",
+                related: ["video-keyframes"]
+            ),
+            GuideEntry(
+                id: "video-effects", symbol: "sparkles", title: L("Effects"),
+                summary: L("Blur, Glow, Glitch, Shake, VHS, Zoom pulse, Vignette, Film grain and more."),
+                location: L("Library ▸ Effects."),
+                points: [
+                    L("On a clip: select a clip above the main track, then click + on an effect."),
+                    L("As an effect clip: drag an effect onto the timeline. It changes the main track and the tracks under it while it plays."),
+                ],
+                tips: [L("Set an effect clip's Strength in Properties; it takes keyframes.")],
+                since: "1.15.0",
+                related: ["video-library", "video-adjust"]
+            ),
+            GuideEntry(
+                id: "video-transitions-library", symbol: "rectangle.portrait.on.rectangle.portrait.angled", title: L("Transitions"),
+                summary: L("Dissolve, dip to black or white, slide, push, wipe, zoom, blur or spin between clips on the main track."),
+                location: L("Library ▸ Transitions."),
+                steps: [
+                    L("Split the video (⌘B) to make a cut."),
+                    L("Drag a transition onto the cut, or select a clip and click +."),
+                    L("Set Length at the top of the tab first, or later in the clip's Transition in."),
+                ],
+                tips: [L("Apply to all cuts puts the same transition on every cut.")],
+                since: "1.15.0",
+                related: ["video-library"]
+            ),
+            GuideEntry(
+                id: "video-filters", symbol: "camera.filters", title: L("Filters and LUTs"),
+                summary: L("Looks like Warm, Film, Teal & orange or Noir, at the strength you want, or a .cube LUT of your own."),
+                location: L("Library ▸ Filters, and Properties ▸ Filter."),
+                points: [
+                    L("On a clip: select it and click + on a filter."),
+                    L("Over everything: drag a filter onto the timeline (a filter clip)."),
+                    L("Import .cube LUT… uses a 3D LUT from another app."),
+                ],
+                since: "1.15.0",
+                related: ["video-adjust"]
+            ),
+            GuideEntry(
+                id: "video-adjust", symbol: "slider.horizontal.3", title: L("Adjust and adjustment clips"),
+                summary: L("Exposure, contrast, highlights, shadows, colour, HSL, curves and colour wheels, on a clip or over everything under it."),
+                location: L("Properties ▸ Adjust; Library ▸ Adjust for an adjustment clip."),
+                points: [
+                    L("Basic: Exposure, Contrast, Highlights, Shadows, Whites, Blacks, Saturation, Vibrance, Temperature, Tint, Sharpen, Vignette, Grain, Fade."),
+                    L("HSL changes one colour at a time. Curves: RGB, Red, Green, Blue. Wheels: Shadows, Midtones, Highlights, Everything."),
+                ],
+                tips: [L("An adjustment clip changes everything under it while it plays: drag its ends to set when.")],
+                since: "1.15.0",
+                related: ["video-filters", "video-effects"]
+            ),
+            GuideEntry(
+                id: "video-stickers", symbol: "face.smiling", title: L("Stickers and sound effects"),
+                summary: L("Stickers and sound effects made for LF Studios, free to use in anything you make."),
+                location: L("Library ▸ Stickers, and Library ▸ Audio ▸ Sound effects."),
+                points: [
+                    L("Drag a sticker onto the timeline; move, size and animate it like any clip."),
+                    L("Import sticker… adds your own PNG or GIF (GIFs play)."),
+                    L("Hover a sound effect to hear it; drag it onto the timeline."),
+                ],
+                since: "1.15.0",
+                related: ["video-library"]
+            ),
+            GuideEntry(
+                id: "video-captions-library", symbol: "captions.bubble", title: L("Caption styles and .srt files"),
+                summary: L("Ready-made caption looks, and captions from a subtitles file."),
+                location: L("Library ▸ Captions."),
+                points: [
+                    L("Auto captions makes captions from what's said, on this Mac."),
+                    L("Click a style to use it for every caption."),
+                    L("Import .srt… brings captions from an .srt or .vtt file; Export .srt… saves them."),
+                ],
+                since: "1.15.0",
+                related: ["captions-transcribe", "captions-subtitles"]
+            ),
+            GuideEntry(
+                id: "video-compound", symbol: "square.stack.3d.down.right", title: L("Compound clips"),
+                summary: L("Make several clips above the main track into one: moved, sized, turned and faded together."),
+                location: L("Select clips above the main track, then press ⌥G."),
+                steps: [
+                    L("Select the clips (⇧-click to add more), then press ⌥G."),
+                    L("Move it on the player or the timeline; set its place, size, turn and opacity in Properties."),
+                    L("Break Apart (⌥⇧G) gives the clips back, looking as they do."),
+                ],
+                keys: [.fixed("⌥G  ⌥⇧G", L("Make compound clip / break apart"))],
+                since: "1.15.0",
+                related: ["video-tracks"]
+            ),
+            GuideEntry(
+                id: "video-proxies", symbol: "film.stack", title: L("Proxies"),
+                summary: L("Lighter copies of the videos, for smooth editing of big recordings. Exports always use the originals."),
+                location: L("The Proxy menu under the player."),
+                steps: [
+                    L("Choose Create Proxies…. LF Studios says how much space they take first."),
+                    L("When they're ready, Edit with Proxies turns on."),
+                ],
+                tips: [
+                    L("They're kept on this Mac only, never in a project or a Creative Handoff. Settings ▸ Clean Up removes them."),
+                    L("On another Mac the project plays the originals until you create proxies there."),
+                ],
+                since: "1.15.0",
+                related: ["export-mp4"]
+            ),
+            GuideEntry(
+                id: "video-custom-keys", symbol: "keyboard", title: L("Change the editor's keys"),
+                summary: L("Give any timeline command your own key, or use Final Cut Pro or Premiere Pro keys."),
+                location: L("In the editor, press ? ▸ Customize…."),
+                steps: [
+                    L("Pick Keys like: LF Studios, Final Cut Pro style or Premiere Pro style."),
+                    L("Click a command's key, then press the new one (Esc stops, ⌫ leaves it without a key)."),
+                ],
+                tips: [
+                    L("When a key is taken, LF Studios says which command loses it."),
+                    L("Reset All goes back to the preset's keys. The Timeline menu shows the keys you set."),
+                ],
+                since: "1.15.0",
+                related: ["video-tools"]
+            ),
+            GuideEntry(
+                id: "video-to-track", symbol: "square.2.layers.3d.top.filled", title: L("Move an annotation to a track"),
+                summary: L("Text and picture annotations draw over every track. Move to a Track makes one a clip that takes its place in the tracks' order."),
+                location: L("Select a text or picture annotation ▸ Move to a Track."),
+                tips: [L("As a clip it gets keyframes, animations, effects and filters too.")],
+                since: "1.15.0",
+                related: ["video-text-clips", "video-tracks"]
+            ),
+        ]
     }
 
     // MARK: Screenshots
@@ -1366,7 +1612,7 @@ enum GuideContent {
                 summary: L("Speed up slow parts, or slow down fast ones."),
                 location: L("Select a clip, or ⇧-drag a part, and choose its Speed in the panel on the right."),
                 points: [
-                    L("Speeds from 0.5× to 16×."),
+                    L("Speeds from 0.1× to 100×; see Speed and speed curves."),
                     L("Speed Up Idle on the timeline fast-forwards the moments when nothing happens."),
                 ],
                 related: ["cursor-typing-speed"]
@@ -2225,19 +2471,33 @@ enum GuideContent {
         let sheet = L("Click Export in the video editor's toolbar (⌘E).")
         return [
             GuideEntry(
-                id: "export-mp4", symbol: "square.and.arrow.up", title: L("Export a video (MP4)"),
+                id: "export-mp4", symbol: "square.and.arrow.up", title: L("Export a video (MP4 or MOV)"),
                 summary: L("Save your edit as a video that plays everywhere."),
                 location: sheet,
                 steps: [
-                    L("Choose MP4."),
-                    L("Pick a Resolution (720p to 4K), a Frame rate, and a Quality: Web, Social, or Studio."),
+                    L("Type a Name and choose where to Export to."),
+                    L("Pick a Resolution (720p to 4K), a Bit rate (Lower, Recommended, Higher or your own), a Codec, MP4 or MOV, and a Frame rate."),
                     L("Click Export…."),
                 ],
                 keys: [.fixed("⌘E", L("Export"))],
                 tips: [
                     L("H.264 plays everywhere. HEVC makes smaller files, but some browsers and Windows PCs can't play it."),
                     L("The size estimate tells you how big the file will be, and warns when the disk is too full."),
-                ]
+                    L("When a file with that name is there already, choose Replace or Keep Both."),
+                ],
+                since: "1.15.0"
+            ),
+            GuideEntry(
+                id: "export-cover", symbol: "photo", title: L("Cover"),
+                summary: L("The picture a video file shows before it plays: a frame of the video, or a picture of your own."),
+                location: L("In the export window ▸ Cover."),
+                points: [
+                    L("A frame: the one at the playhead (Use the playhead picks again)."),
+                    L("A picture: one of your own."),
+                ],
+                tips: [L("Finder, QuickTime and Photos show it; some video sites choose their own.")],
+                since: "1.15.0",
+                related: ["export-mp4"]
             ),
             GuideEntry(
                 id: "export-prores", symbol: "film.circle", title: L("ProRes & a transparent background"),

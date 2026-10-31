@@ -1,0 +1,5006 @@
+{
+  "%@ moved from “%@”, which has no key now": {
+    "de": "%@ wurde von „%@“ verschoben, das jetzt keine Taste mehr hat",
+    "fr": "%1$@ déplacé depuis « %2$@ », qui n’a plus de raccourci",
+    "ja": "%1$@を“%2$@”から移動しました。そのコマンドにはキーがなくなりました",
+    "ru": "%@ перенесено с «%@» — теперь у этой команды нет клавиши",
+    "uk": "%1$@ перенесено з «%2$@» — ця команда тепер без клавіші",
+    "zh-Hans": "%1$@ 已从“%2$@”移到此处，该命令现在没有快捷键"
+  },
+  "%@ on every cut": {
+    "de": "%@ an jedem Schnitt",
+    "fr": "%@ sur chaque coupe",
+    "ja": "%@をすべてのつなぎ目に適用しました",
+    "ru": "%@ на всех склейках",
+    "uk": "%@ на кожній склейці",
+    "zh-Hans": "所有剪切点都使用 %@"
+  },
+  "%@ on “%@”": {
+    "de": "%@ auf „%@“",
+    "fr": "%1$@ sur « %2$@ »",
+    "ja": "“%2$@”に%1$@",
+    "ru": "%@ на «%@»",
+    "uk": "%1$@ на «%2$@»",
+    "zh-Hans": "“%2$@”上的 %1$@"
+  },
+  "%@: on the selected text clip, or a new one": {
+    "de": "%@: auf dem ausgewählten Textclip oder einem neuen",
+    "fr": "%@ : sur le clip de texte sélectionné, ou un nouveau",
+    "ja": "%@: 選択したテキストクリップ、または新しいテキストクリップに適用",
+    "ru": "%@: на выбранном текстовом клипе или на новом",
+    "uk": "%@: на вибраному текстовому кліпі або на новому",
+    "zh-Hans": "%@：用于所选文字片段，或新建一个"
+  },
+  "%lld beats marked — clips snap to them": {
+    "de": {
+      "one": "%lld Beat markiert – Clips rasten daran ein",
+      "other": "%lld Beats markiert – Clips rasten an ihnen ein"
+    },
+    "en": {
+      "one": "%lld beat marked — clips snap to it",
+      "other": "%lld beats marked — clips snap to them"
+    },
+    "fr": {
+      "one": "%lld battement marqué — les clips s’y aimantent",
+      "other": "%lld battements marqués — les clips s’y aimantent"
+    },
+    "ja": "%lld個のビートをマークしました — クリップはビートにスナップします",
+    "ru": {
+      "few": "Отмечено %lld бита — клипы прилипают к меткам",
+      "many": "Отмечено %lld битов — клипы прилипают к меткам",
+      "one": "Отмечен %lld бит — клипы прилипают к меткам",
+      "other": "Отмечено %lld бита — клипы прилипают к меткам"
+    },
+    "uk": {
+      "few": "Позначено %lld біти — кліпи прилипають до позначок",
+      "many": "Позначено %lld бітів — кліпи прилипають до позначок",
+      "one": "Позначено %lld біт — кліпи прилипають до позначок",
+      "other": "Позначено %lld біта — кліпи прилипають до позначок"
+    },
+    "zh-Hans": "已标记 %lld 个节拍 — 片段会吸附到节拍上"
+  },
+  "%lld keyframes. Change a setting with ◆ lit to add one at the playhead.": {
+    "de": {
+      "one": "%lld Keyframe. Ändere eine Einstellung mit leuchtendem ◆, um an der Abspielposition einen hinzuzufügen.",
+      "other": "%lld Keyframes. Ändere eine Einstellung mit leuchtendem ◆, um an der Abspielposition einen hinzuzufügen."
+    },
+    "en": {
+      "one": "%lld keyframe. Change a setting with ◆ lit to add one at the playhead.",
+      "other": "%lld keyframes. Change a setting with ◆ lit to add one at the playhead."
+    },
+    "fr": {
+      "one": "%lld image clé. Modifiez un réglage dont le ◆ est allumé pour en ajouter une à la tête de lecture.",
+      "other": "%lld images clés. Modifiez un réglage dont le ◆ est allumé pour en ajouter une à la tête de lecture."
+    },
+    "ja": "%lld個のキーフレーム。◆が点灯している設定を変更すると、再生ヘッドの位置にキーフレームが追加されます。",
+    "ru": {
+      "few": "%lld ключевых кадра. Измените параметр с горящим ◆, чтобы добавить кадр у указателя воспроизведения.",
+      "many": "%lld ключевых кадров. Измените параметр с горящим ◆, чтобы добавить кадр у указателя воспроизведения.",
+      "one": "%lld ключевой кадр. Измените параметр с горящим ◆, чтобы добавить кадр у указателя воспроизведения.",
+      "other": "%lld ключевого кадра. Измените параметр с горящим ◆, чтобы добавить кадр у указателя воспроизведения."
+    },
+    "uk": {
+      "few": "%lld ключові кадри. Змініть параметр із підсвіченим ◆, щоб додати ще один на покажчику відтворення.",
+      "many": "%lld ключових кадрів. Змініть параметр із підсвіченим ◆, щоб додати ще один на покажчику відтворення.",
+      "one": "%lld ключовий кадр. Змініть параметр із підсвіченим ◆, щоб додати ще один на покажчику відтворення.",
+      "other": "%lld ключового кадру. Змініть параметр із підсвіченим ◆, щоб додати ще один на покажчику відтворення."
+    },
+    "zh-Hans": "%lld 个关键帧。在 ◆ 亮起时更改设置，即可在播放头处添加一个。"
+  },
+  "A 3D LUT from another app (.cube)": {
+    "de": "Eine 3D-LUT aus einer anderen App (.cube)",
+    "fr": "Une LUT 3D d’une autre app (.cube)",
+    "ja": "ほかのアプリの3D LUT（.cube）",
+    "ru": "3D LUT из другой программы (.cube)",
+    "uk": "3D LUT з іншої програми (.cube)",
+    "zh-Hans": "来自其他应用的 3D LUT（.cube）"
+  },
+  "A 3D LUT from another app: on the selected clip, or as a filter clip": {
+    "de": "Eine 3D-LUT aus einer anderen App: auf dem ausgewählten Clip oder als Filterclip",
+    "fr": "Une LUT 3D d’une autre app : sur le clip sélectionné, ou en clip de filtre",
+    "ja": "ほかのアプリの3D LUT: 選択したクリップに適用するか、フィルタクリップとして追加",
+    "ru": "3D LUT из другой программы: на выбранный клип или как клип фильтра",
+    "uk": "3D LUT з іншої програми: на вибраному кліпі або як кліп фільтра",
+    "zh-Hans": "来自其他应用的 3D LUT：用于所选片段，或作为滤镜片段"
+  },
+  "A frame": {
+    "de": "Ein Bild aus dem Video",
+    "fr": "Une image de la vidéo",
+    "ja": "フレーム",
+    "ru": "Кадр",
+    "uk": "Кадр",
+    "zh-Hans": "一帧画面"
+  },
+  "A frame: the one at the playhead (Use the playhead picks again).": {
+    "de": "Ein Bild aus dem Video: das an der Abspielposition („Abspielposition verwenden“ wählt neu).",
+    "fr": "Une image de la vidéo : celle à la tête de lecture (Utiliser la tête de lecture la choisit à nouveau).",
+    "ja": "フレーム: 再生ヘッドの位置のフレーム（“再生ヘッドを使用”で選び直せます）。",
+    "ru": "Кадр: тот, что у указателя воспроизведения («По указателю» выбирает заново).",
+    "uk": "Кадр: той, що на покажчику відтворення («Взяти з покажчика» вибирає знову).",
+    "zh-Hans": "一帧画面：播放头处的那一帧（点按“使用播放头”可重新选择）。"
+  },
+  "A keyframe for position, size, rotation and opacity at the playhead": {
+    "de": "Ein Keyframe für Position, Größe, Drehung und Deckkraft an der Abspielposition",
+    "fr": "Une image clé pour la position, la taille, la rotation et l’opacité à la tête de lecture",
+    "ja": "再生ヘッドの位置に、位置、サイズ、回転、不透明度のキーフレームを追加",
+    "ru": "Ключевой кадр положения, размера, поворота и непрозрачности у указателя воспроизведения",
+    "uk": "Ключовий кадр для позиції, розміру, повороту й непрозорості на покажчику відтворення",
+    "zh-Hans": "在播放头处为位置、大小、旋转和不透明度添加关键帧"
+  },
+  "A new chapter": {
+    "de": "Ein neues Kapitel",
+    "fr": "Un nouveau chapitre",
+    "ja": "新しい章",
+    "ru": "Новая глава",
+    "uk": "Новий розділ",
+    "zh-Hans": "新的篇章"
+  },
+  "A picture": {
+    "de": "Ein Bild",
+    "fr": "Votre image",
+    "ja": "画像",
+    "ru": "Картинка",
+    "uk": "Зображення",
+    "zh-Hans": "一张图片"
+  },
+  "A picture: one of your own.": {
+    "de": "Ein Bild: eines von dir.",
+    "fr": "Votre image : une image à vous.",
+    "ja": "画像: 自分の画像。",
+    "ru": "Картинка: ваша собственная.",
+    "uk": "Зображення: будь-яке ваше власне.",
+    "zh-Hans": "一张图片：你自己的图片。"
+  },
+  "A text clip on a track of its own, at the playhead (⌥⇧T)": {
+    "de": "Ein Textclip auf einer eigenen Spur, an der Abspielposition (⌥⇧T)",
+    "fr": "Un clip de texte sur sa propre piste, à la tête de lecture (⌥⇧T)",
+    "ja": "再生ヘッドの位置に、専用のトラックでテキストクリップを追加（⌥⇧T）",
+    "ru": "Текстовый клип на отдельной дорожке у указателя воспроизведения (⌥⇧T)",
+    "uk": "Текстовий кліп на окремій доріжці, на покажчику відтворення (⌥⇧T)",
+    "zh-Hans": "在播放头处添加文字片段，放在单独的轨道上（⌥⇧T）"
+  },
+  "A text note pinned over the video (⌥T), as before": {
+    "de": "Eine Textnotiz über dem Video (⌥T), wie bisher",
+    "fr": "Une note de texte épinglée sur la vidéo (⌥T), comme avant",
+    "ja": "これまでどおり、ビデオの上に固定されるテキストメモ（⌥T）",
+    "ru": "Текстовая заметка поверх видео (⌥T), как раньше",
+    "uk": "Текстова примітка, закріплена поверх відео (⌥T), як і раніше",
+    "zh-Hans": "固定在视频上方的文字注释（⌥T），和以前一样"
+  },
+  "A volume keyframe at the playhead: set one, move, change the volume": {
+    "de": "Ein Lautstärke-Keyframe an der Abspielposition: setz einen, bewege die Abspielposition, ändere die Lautstärke",
+    "fr": "Une image clé de volume à la tête de lecture : placez-en une, déplacez la tête, changez le volume",
+    "ja": "再生ヘッドの位置の音量キーフレーム: 設定して移動し、音量を変更します",
+    "ru": "Ключевой кадр громкости у указателя воспроизведения: поставьте его, переместитесь, измените громкость",
+    "uk": "Ключовий кадр гучності на покажчику відтворення: поставте його, перемістіться, змініть гучність",
+    "zh-Hans": "播放头处的音量关键帧：设置一个，移动播放头，再更改音量"
+  },
+  "Accent bar": {
+    "de": "Akzentbalken",
+    "fr": "Barre d’accent",
+    "ja": "アクセントバー",
+    "ru": "Акцентная полоса",
+    "uk": "Акцентна смуга",
+    "zh-Hans": "强调条"
+  },
+  "Across": {
+    "de": "Waagerecht",
+    "fr": "Horizontale",
+    "ja": "横",
+    "ru": "По горизонтали",
+    "uk": "По горизонталі",
+    "zh-Hans": "水平"
+  },
+  "Add": {
+    "de": "Hinzufügen",
+    "fr": "Ajouter",
+    "ja": "追加",
+    "ru": "Добавить",
+    "uk": "Додавання",
+    "zh-Hans": "添加"
+  },
+  "Add a keyframe at the playhead: %@": {
+    "de": "Keyframe an der Abspielposition hinzufügen: %@",
+    "fr": "Ajouter une image clé à la tête de lecture : %@",
+    "ja": "再生ヘッドの位置にキーフレームを追加: %@",
+    "ru": "Добавить ключевой кадр у указателя воспроизведения: %@",
+    "uk": "Додати ключовий кадр на покажчику відтворення: %@",
+    "zh-Hans": "在播放头处添加关键帧：%@"
+  },
+  "Add at the playhead": {
+    "de": "An der Abspielposition hinzufügen",
+    "fr": "Ajouter à la tête de lecture",
+    "ja": "再生ヘッドの位置に追加",
+    "ru": "Добавить у указателя воспроизведения",
+    "uk": "Додати на покажчику відтворення",
+    "zh-Hans": "在播放头处添加"
+  },
+  "Add keyframe": {
+    "de": "Keyframe hinzufügen",
+    "fr": "Ajouter une image clé",
+    "ja": "キーフレームを追加",
+    "ru": "Добавить ключевой кадр",
+    "uk": "Додати ключовий кадр",
+    "zh-Hans": "添加关键帧"
+  },
+  "Add keyframe: %@": {
+    "de": "Keyframe hinzufügen: %@",
+    "fr": "Ajouter une image clé : %@",
+    "ja": "キーフレームを追加: %@",
+    "ru": "Добавить ключевой кадр: %@",
+    "uk": "Додати ключовий кадр: %@",
+    "zh-Hans": "添加关键帧：%@"
+  },
+  "Add text": {
+    "de": "Text hinzufügen",
+    "fr": "Ajouter du texte",
+    "ja": "テキストを追加",
+    "ru": "Добавить текст",
+    "uk": "Додати текст",
+    "zh-Hans": "添加文字"
+  },
+  "Add to favourites": {
+    "de": "Zu Favoriten hinzufügen",
+    "fr": "Ajouter aux favoris",
+    "ja": "お気に入りに追加",
+    "ru": "Добавить в избранное",
+    "uk": "Додати у вибране",
+    "zh-Hans": "添加到收藏"
+  },
+  "Adjust": {
+    "de": "Anpassen",
+    "fr": "Ajustements",
+    "ja": "調整",
+    "ru": "Коррекция",
+    "uk": "Корекція",
+    "zh-Hans": "调节"
+  },
+  "Adjust and adjustment clips": {
+    "de": "Anpassen und Anpassungsclips",
+    "fr": "Ajustements et clips d’ajustement",
+    "ja": "調整と調整クリップ",
+    "ru": "Коррекция и корректирующие клипы",
+    "uk": "Корекція і кліпи корекції",
+    "zh-Hans": "调节和调节片段"
+  },
+  "Adjustment": {
+    "de": "Anpassung",
+    "fr": "Ajustement",
+    "ja": "調整",
+    "ru": "Коррекция",
+    "uk": "Корекція",
+    "zh-Hans": "调节"
+  },
+  "Adjustment clip": {
+    "de": "Anpassungsclip",
+    "fr": "Clip d’ajustement",
+    "ja": "調整クリップ",
+    "ru": "Корректирующий клип",
+    "uk": "Кліп корекції",
+    "zh-Hans": "调节片段"
+  },
+  "Alex Morgan · Designer": {
+    "de": "Alex Morgan · Designer",
+    "fr": "Alex Morgan · Designer",
+    "ja": "Alex Morgan · デザイナー",
+    "ru": "Алекс Морган · дизайнер",
+    "uk": "Alex Morgan · дизайнер",
+    "zh-Hans": "Alex Morgan · 设计师"
+  },
+  "Align left": {
+    "de": "Linksbündig",
+    "fr": "Aligner à gauche",
+    "ja": "左揃え",
+    "ru": "По левому краю",
+    "uk": "Вирівняти ліворуч",
+    "zh-Hans": "左对齐"
+  },
+  "Align right": {
+    "de": "Rechtsbündig",
+    "fr": "Aligner à droite",
+    "ja": "右揃え",
+    "ru": "По правому краю",
+    "uk": "Вирівняти праворуч",
+    "zh-Hans": "右对齐"
+  },
+  "Also “%@” — it loses this key": {
+    "de": "Auch „%@“ – verliert diese Taste",
+    "fr": "Aussi « %@ » — cette commande perd ce raccourci",
+    "ja": "“%@”にも割り当て済み — そちらからは外れます",
+    "ru": "Также «%@» — эта команда лишится клавиши",
+    "uk": "Також «%@» — ця команда втратить клавішу",
+    "zh-Hans": "还有“%@” — 它将失去此快捷键"
+  },
+  "An adjustment clip changes everything under it while it plays: drag its ends to set when.": {
+    "de": "Ein Anpassungsclip ändert alles darunter, solange er läuft: Zieh an seinen Enden, um festzulegen, wann.",
+    "fr": "Un clip d’ajustement modifie tout ce qui est en dessous pendant sa lecture : faites glisser ses bords pour choisir quand.",
+    "ja": "調整クリップは、再生中にその下にあるものすべてを変更します。端をドラッグしてタイミングを設定します。",
+    "ru": "Корректирующий клип меняет все, что под ним, пока он идет: перетягивайте его края, чтобы задать, когда.",
+    "uk": "Кліп корекції змінює все під ним, поки він відтворюється: перетягніть його краї, щоб задати, коли саме.",
+    "zh-Hans": "调节片段播放时会改变其下方的所有内容：拖移它的两端来设定时间。"
+  },
+  "An adjustment clip changes everything under it while it plays: set it up in Properties ▸ Adjust (exposure, HSL, curves, colour wheels) and Filter.": {
+    "de": "Ein Anpassungsclip ändert alles darunter, solange er läuft: Richte ihn unter Eigenschaften ▸ Anpassen (Belichtung, HSL, Kurven, Farbräder) und Filter ein.",
+    "fr": "Un clip d’ajustement modifie tout ce qui est en dessous pendant sa lecture : réglez-le dans Propriétés ▸ Ajustements (exposition, TSL, courbes, roues chromatiques) et Filtre.",
+    "ja": "調整クリップは、再生中にその下にあるものすべてを変更します。“プロパティ”＞“調整”（露出、HSL、カーブ、カラーホイール）と“フィルタ”で設定します。",
+    "ru": "Корректирующий клип меняет все, что под ним, пока он идет: настройте его в Свойства ▸ Коррекция (экспозиция, HSL, кривые, цветовые круги) и Фильтр.",
+    "uk": "Кліп корекції змінює все під ним, поки він відтворюється: налаштуйте його у Властивості ▸ Корекція (експозиція, HSL, криві, кольорові круги) і Фільтр.",
+    "zh-Hans": "调节片段播放时会改变其下方的所有内容：在“属性 ▸ 调节”（曝光、HSL、曲线、色轮）和“滤镜”中设置。"
+  },
+  "Animate a clip above the main track: set a value at one moment, another value later, and it moves between them.": {
+    "de": "Animiere einen Clip über der Hauptspur: Setz einen Wert an einer Stelle, später einen anderen, und er bewegt sich dazwischen.",
+    "fr": "Animez un clip au-dessus de la piste principale : choisissez une valeur à un moment, une autre plus tard, et il passe de l’une à l’autre.",
+    "ja": "メイントラックの上のクリップにアニメーションを付けます。ある時点で値を設定し、あとの時点で別の値を設定すると、その間を動きます。",
+    "ru": "Анимируйте клип над основной дорожкой: задайте значение в один момент, другое — позже, и клип плавно перейдет от одного к другому.",
+    "uk": "Анімуйте кліп над основною доріжкою: задайте значення в один момент, інше — пізніше, і кліп плавно переходить між ними.",
+    "zh-Hans": "为主轨道上方的片段制作动画：在某一时刻设定一个值，稍后设定另一个值，片段就会在两者之间过渡。"
+  },
+  "Apply to all cuts": {
+    "de": "Auf alle Schnitte anwenden",
+    "fr": "Appliquer à toutes les coupes",
+    "ja": "すべてのつなぎ目に適用",
+    "ru": "Применить ко всем склейкам",
+    "uk": "Застосувати до всіх склейок",
+    "zh-Hans": "应用到所有剪切点"
+  },
+  "Apply to all cuts puts the same transition on every cut.": {
+    "de": "„Auf alle Schnitte anwenden“ setzt denselben Übergang an jeden Schnitt.",
+    "fr": "Appliquer à toutes les coupes met la même transition sur chaque coupe.",
+    "ja": "“すべてのつなぎ目に適用”では、すべてのつなぎ目に同じトランジションを適用します。",
+    "ru": "«Применить ко всем склейкам» ставит один и тот же переход на каждую склейку.",
+    "uk": "«Застосувати до всіх склейок» ставить той самий перехід на кожну склейку.",
+    "zh-Hans": "“应用到所有剪切点”会在每个剪切点使用相同的转场。"
+  },
+  "Apply to all cuts…": {
+    "de": "Auf alle Schnitte anwenden …",
+    "fr": "Appliquer à toutes les coupes…",
+    "ja": "すべてのつなぎ目に適用…",
+    "ru": "Применить ко всем склейкам…",
+    "uk": "Застосувати до всіх склейок…",
+    "zh-Hans": "应用到所有剪切点…"
+  },
+  "Aqua": {
+    "de": "Aqua",
+    "fr": "Turquoise",
+    "ja": "アクア",
+    "ru": "Аква",
+    "uk": "Аква",
+    "zh-Hans": "水蓝"
+  },
+  "As a clip it gets keyframes, animations, effects and filters too.": {
+    "de": "Als Clip bekommt er auch Keyframes, Animationen, Effekte und Filter.",
+    "fr": "En tant que clip, il reçoit aussi des images clés, des animations, des effets et des filtres.",
+    "ja": "クリップにすると、キーフレーム、アニメーション、エフェクト、フィルタも使えます。",
+    "ru": "Как клип он получает и ключевые кадры, анимации, эффекты и фильтры.",
+    "uk": "Як кліп вона також отримує ключові кадри, анімації, ефекти й фільтри.",
+    "zh-Hans": "作为片段，它也能使用关键帧、动画、特效和滤镜。"
+  },
+  "As an effect clip: drag an effect onto the timeline. It changes the main track and the tracks under it while it plays.": {
+    "de": "Als Effektclip: Zieh einen Effekt auf die Zeitleiste. Er ändert die Hauptspur und die Spuren darunter, solange er läuft.",
+    "fr": "En clip d’effet : faites glisser un effet sur la timeline. Il modifie la piste principale et les pistes en dessous pendant sa lecture.",
+    "ja": "エフェクトクリップとして: エフェクトをタイムラインにドラッグします。再生中、メイントラックとエフェクトクリップより下のトラックを変化させます。",
+    "ru": "Как клип эффекта: перетяните эффект на шкалу времени. Пока он идет, он меняет основную дорожку и дорожки под ним.",
+    "uk": "Як кліп ефекту: перетягніть ефект на шкалу часу. Він змінює основну доріжку й доріжки під ним, поки відтворюється.",
+    "zh-Hans": "作为特效片段：将特效拖到时间线上。它播放时会改变主轨道以及它下方的轨道。"
+  },
+  "Auto captions": {
+    "de": "Automatische Untertitel",
+    "fr": "Sous-titres automatiques",
+    "ja": "自動字幕",
+    "ru": "Автосубтитры",
+    "uk": "Автосубтитри",
+    "zh-Hans": "自动字幕"
+  },
+  "Auto captions makes captions from what's said, on this Mac.": {
+    "de": "„Automatische Untertitel“ erstellt Untertitel aus dem Gesprochenen, auf diesem Mac.",
+    "fr": "Sous-titres automatiques crée des sous-titres à partir de ce qui est dit, sur ce Mac.",
+    "ja": "“自動字幕”では、話した内容からこのMac上で字幕を作成します。",
+    "ru": "«Автосубтитры» создают субтитры из речи прямо на этом Mac.",
+    "uk": "«Автосубтитри» створюють субтитри з мовлення на цьому Mac.",
+    "zh-Hans": "“自动字幕”会在这台 Mac 上根据语音生成字幕。"
+  },
+  "BREAKING": {
+    "de": "EILMELDUNG",
+    "fr": "FLASH INFO",
+    "ja": "速報",
+    "ru": "СРОЧНО",
+    "uk": "ТЕРМІНОВО",
+    "zh-Hans": "突发"
+  },
+  "Back to the preset's key": {
+    "de": "Zurück zur Taste der Vorgabe",
+    "fr": "Revenir à la touche du préréglage",
+    "ja": "プリセットのキーに戻す",
+    "ru": "Вернуть клавишу набора",
+    "uk": "Повернути клавішу набору",
+    "zh-Hans": "恢复预设的快捷键"
+  },
+  "Back to the preset's keys": {
+    "de": "Zurück zu den Tasten der Vorgabe",
+    "fr": "Revenir aux touches du préréglage",
+    "ja": "プリセットのキーに戻す",
+    "ru": "Вернуть клавиши набора",
+    "uk": "Повернути клавіші набору",
+    "zh-Hans": "恢复预设的快捷键"
+  },
+  "Basic": {
+    "de": "Basis",
+    "fr": "De base",
+    "ja": "基本",
+    "ru": "Основные",
+    "uk": "Основні",
+    "zh-Hans": "基础"
+  },
+  "Basic: Exposure, Contrast, Highlights, Shadows, Whites, Blacks, Saturation, Vibrance, Temperature, Tint, Sharpen, Vignette, Grain, Fade.": {
+    "de": "Basis: Belichtung, Kontrast, Lichter, Tiefen, Weiß, Schwarz, Sättigung, Dynamik, Temperatur, Tönung, Schärfen, Vignette, Körnung, Verblassen.",
+    "fr": "De base : Exposition, Contraste, Hautes lumières, Ombres, Blancs, Noirs, Saturation, Vibrance, Température, Teinte, Netteté, Vignettage, Grain, Fondu.",
+    "ja": "基本: 露出、コントラスト、ハイライト、シャドウ、白レベル、黒レベル、彩度、自然な彩度、色温度、色かぶり、シャープ、ビネット、粒子、フェード。",
+    "ru": "Основные: экспозиция, контраст, света, тени, белые, черные, насыщенность, красочность, температура, оттенок, резкость, виньетка, зерно, выцветание.",
+    "uk": "Основні: «Експозиція», «Контраст», «Світлі ділянки», «Тіні», «Білі», «Чорні», «Насиченість», «Яскравість кольорів», «Температура», «Відтінок», «Різкість», «Віньєтка», «Зернистість», «Згасання».",
+    "zh-Hans": "基础：曝光、对比度、高光、阴影、白色色阶、黑色色阶、饱和度、自然饱和度、色温、色调、锐化、暗角、颗粒、褪色。"
+  },
+  "Beats": {
+    "de": "Beats",
+    "fr": "Battements",
+    "ja": "ビート",
+    "ru": "Биты",
+    "uk": "Біти",
+    "zh-Hans": "节拍"
+  },
+  "Beats marks where the beat is; dragged clips snap to the marks.": {
+    "de": "„Beats“ markiert, wo der Beat liegt; gezogene Clips rasten an den Marken ein.",
+    "fr": "Battements marque l’emplacement des temps ; les clips que vous faites glisser s’aimantent aux marques.",
+    "ja": "“ビート”ではビートの位置にマークを付けます。ドラッグしたクリップはマークにスナップします。",
+    "ru": "«Биты» отмечают, где звучит бит; перетаскиваемые клипы прилипают к меткам.",
+    "uk": "«Біти» позначають, де звучить біт; перетягнуті кліпи прилипають до позначок.",
+    "zh-Hans": "“节拍”会标记节拍位置；拖移的片段会吸附到标记上。"
+  },
+  "Between the clips": {
+    "de": "Zwischen den Clips",
+    "fr": "Entre les clips",
+    "ja": "クリップの間",
+    "ru": "Между клипами",
+    "uk": "Між кліпами",
+    "zh-Hans": "片段之间"
+  },
+  "Big title": {
+    "de": "Großer Titel",
+    "fr": "Grand titre",
+    "ja": "大きなタイトル",
+    "ru": "Крупный заголовок",
+    "uk": "Великий заголовок",
+    "zh-Hans": "大标题"
+  },
+  "Bit rate": {
+    "de": "Bitrate",
+    "fr": "Débit",
+    "ja": "ビットレート",
+    "ru": "Битрейт",
+    "uk": "Бітрейт",
+    "zh-Hans": "比特率"
+  },
+  "Black & white": {
+    "de": "Schwarzweiß",
+    "fr": "Noir et blanc",
+    "ja": "白黒",
+    "ru": "Черно-белый",
+    "uk": "Чорно-біле",
+    "zh-Hans": "黑白"
+  },
+  "Blacks": {
+    "de": "Schwarz",
+    "fr": "Noirs",
+    "ja": "黒レベル",
+    "ru": "Черные",
+    "uk": "Чорні",
+    "zh-Hans": "黑色色阶"
+  },
+  "Blend": {
+    "de": "Füllmethode",
+    "fr": "Fusion",
+    "ja": "ブレンド",
+    "ru": "Наложение",
+    "uk": "Накладання",
+    "zh-Hans": "混合"
+  },
+  "Blend, cutout and masks": {
+    "de": "Füllmethode, Freistellen und Masken",
+    "fr": "Fusion, détourage et masques",
+    "ja": "ブレンド、切り抜き、マスク",
+    "ru": "Наложение, силуэт и маски",
+    "uk": "Накладання, силует і маски",
+    "zh-Hans": "混合、抠像和蒙版"
+  },
+  "Blend: Screen lightens, Multiply darkens, Overlay adds contrast, and more.": {
+    "de": "Füllmethode: „Negativ multiplizieren“ hellt auf, „Multiplizieren“ dunkelt ab, „Ineinanderkopieren“ erhöht den Kontrast und mehr.",
+    "fr": "Fusion : Superposition éclaircit, Produit assombrit, Incrustation ajoute du contraste, et plus encore.",
+    "ja": "ブレンド: “スクリーン”は明るく、“乗算”は暗く、“オーバーレイ”はコントラストを強くするなど。",
+    "ru": "Наложение: «Экран» осветляет, «Умножение» затемняет, «Перекрытие» добавляет контраст, и не только.",
+    "uk": "Накладання: «Екран» освітлює, «Множення» затемнює, «Перекриття» додає контрасту тощо.",
+    "zh-Hans": "混合：“滤色”变亮，“正片叠底”变暗，“叠加”增加对比度，还有更多。"
+  },
+  "Blur, Glow, Glitch, Shake, VHS, Zoom pulse, Vignette, Film grain and more.": {
+    "de": "Weichzeichnen, Leuchten, Glitch, Wackeln, VHS, Zoom-Puls, Vignette, Filmkorn und mehr.",
+    "fr": "Flou, Lueur, Glitch, Tremblement, VHS, Pulsation zoom, Vignettage, Grain de film et plus encore.",
+    "ja": "ぼかし、グロー、グリッチ、シェイク、VHS、ズームパルス、ビネット、フィルムグレインなど。",
+    "ru": "Размытие, свечение, глитч, тряска, VHS, пульсация масштаба, виньетка, зерно пленки и другие.",
+    "uk": "«Розмиття», «Сяйво», «Глітч», «Тремтіння», «VHS», «Пульсація масштабу», «Віньєтка», «Плівкове зерно» тощо.",
+    "zh-Hans": "模糊、发光、故障、抖动、VHS、缩放脉冲、暗角、胶片颗粒等。"
+  },
+  "Bold caption": {
+    "de": "Fetter Untertitel",
+    "fr": "Sous-titre gras",
+    "ja": "太字の字幕",
+    "ru": "Жирные субтитры",
+    "uk": "Жирні субтитри",
+    "zh-Hans": "粗体字幕"
+  },
+  "Boom": {
+    "de": "Boom",
+    "fr": "Boum",
+    "ja": "ドーン",
+    "ru": "Бум",
+    "uk": "Бум",
+    "zh-Hans": "轰隆"
+  },
+  "Box size": {
+    "de": "Rahmengröße",
+    "fr": "Taille du cadre",
+    "ja": "ボックスのサイズ",
+    "ru": "Размер рамки",
+    "uk": "Розмір рамки",
+    "zh-Hans": "框大小"
+  },
+  "Break Apart": {
+    "de": "Auflösen",
+    "fr": "Décomposer",
+    "ja": "分解",
+    "ru": "Разобрать",
+    "uk": "Розібрати",
+    "zh-Hans": "拆开"
+  },
+  "Break Apart (⌥⇧G) gives the clips back, looking as they do.": {
+    "de": "„Auflösen“ (⌥⇧G) gibt die Clips zurück, so wie sie aussehen.",
+    "fr": "« Décomposer » (⌥⇧G) rend les clips séparés, tels qu’ils apparaissent.",
+    "ja": "“分解”（⌥⇧G）で、今の見た目のまま元のクリップに戻します。",
+    "ru": "«Разобрать» (⌥⇧G) возвращает отдельные клипы в их нынешнем виде.",
+    "uk": "«Розібрати» (⌥⇧G) повертає окремі кліпи такими, якими вони виглядають.",
+    "zh-Hans": "“拆开”（⌥⇧G）会还原出各个片段，外观保持不变。"
+  },
+  "Break apart": {
+    "de": "Auflösen",
+    "fr": "Décomposer",
+    "ja": "分解",
+    "ru": "Разобрать",
+    "uk": "Розібрати",
+    "zh-Hans": "拆开"
+  },
+  "Brighten": {
+    "de": "Heller",
+    "fr": "Éclaircir",
+    "ja": "明るく",
+    "ru": "Осветление",
+    "uk": "Світліше",
+    "zh-Hans": "提亮"
+  },
+  "Bullet": {
+    "de": "Bullet",
+    "fr": "Balle",
+    "ja": "バレット",
+    "ru": "Пуля",
+    "uk": "Куля",
+    "zh-Hans": "子弹时间"
+  },
+  "Burst": {
+    "de": "Strahlen",
+    "fr": "Explosion",
+    "ja": "バースト",
+    "ru": "Взрыв",
+    "uk": "Вибух",
+    "zh-Hans": "爆炸框"
+  },
+  "Callouts": {
+    "de": "Hinweise",
+    "fr": "Bulles",
+    "ja": "コールアウト",
+    "ru": "Выноски",
+    "uk": "Виноски",
+    "zh-Hans": "标注气泡"
+  },
+  "Camera shutter": {
+    "de": "Kameraauslöser",
+    "fr": "Obturateur",
+    "ja": "カメラのシャッター",
+    "ru": "Затвор камеры",
+    "uk": "Затвор камери",
+    "zh-Hans": "相机快门"
+  },
+  "Caption styles": {
+    "de": "Untertitelstile",
+    "fr": "Styles de sous-titres",
+    "ja": "字幕のスタイル",
+    "ru": "Стили субтитров",
+    "uk": "Стилі субтитрів",
+    "zh-Hans": "字幕样式"
+  },
+  "Caption styles and .srt files": {
+    "de": "Untertitelstile und .srt-Dateien",
+    "fr": "Styles de sous-titres et fichiers .srt",
+    "ja": "字幕のスタイルと.srtファイル",
+    "ru": "Стили субтитров и файлы .srt",
+    "uk": "Стилі субтитрів і файли .srt",
+    "zh-Hans": "字幕样式和 .srt 文件"
+  },
+  "Captions from an .srt or .vtt file, in place of these": {
+    "de": "Untertitel aus einer .srt- oder .vtt-Datei, anstelle dieser",
+    "fr": "Des sous-titres d’un fichier .srt ou .vtt, à la place de ceux-ci",
+    "ja": "現在の字幕の代わりに、.srtまたは.vttファイルの字幕を使用",
+    "ru": "Субтитры из файла .srt или .vtt вместо этих",
+    "uk": "Субтитри з файлу .srt або .vtt замість цих",
+    "zh-Hans": "用 .srt 或 .vtt 文件中的字幕替换这些字幕"
+  },
+  "Captions from what's said, made on this Mac (language and Whisper in the Captions panel)": {
+    "de": "Untertitel aus dem Gesprochenen, erstellt auf diesem Mac (Sprache und Whisper im Panel „Untertitel“)",
+    "fr": "Des sous-titres à partir de ce qui est dit, créés sur ce Mac (langue et Whisper dans le panneau Sous-titres)",
+    "ja": "話した内容からこのMac上で作成する字幕（言語とWhisperは“字幕”パネルで設定）",
+    "ru": "Субтитры из речи, созданные на этом Mac (язык и Whisper — на панели «Субтитры»)",
+    "uk": "Субтитри з мовлення, створені на цьому Mac (мова й Whisper — на панелі «Субтитри»)",
+    "zh-Hans": "根据语音生成的字幕，在这台 Mac 上制作（语言和 Whisper 在“字幕”面板中设定）"
+  },
+  "Centre": {
+    "de": "Mitte",
+    "fr": "Centrer",
+    "ja": "中央",
+    "ru": "По центру",
+    "uk": "По центру",
+    "zh-Hans": "居中"
+  },
+  "Change the editor's keys": {
+    "de": "Tasten des Editors ändern",
+    "fr": "Modifier les touches de l’éditeur",
+    "ja": "エディタのキーを変更",
+    "ru": "Изменить клавиши редактора",
+    "uk": "Змінити клавіші редактора",
+    "zh-Hans": "更改编辑器的快捷键"
+  },
+  "Change the timeline's keys, or use Final Cut Pro or Premiere Pro keys": {
+    "de": "Tasten der Zeitleiste ändern oder Tasten von Final Cut Pro oder Premiere Pro nutzen",
+    "fr": "Modifier les touches de la timeline, ou utiliser celles de Final Cut Pro ou de Premiere Pro",
+    "ja": "タイムラインのキーを変更するか、Final Cut ProやPremiere Proのキーを使用",
+    "ru": "Измените клавиши шкалы времени или используйте клавиши Final Cut Pro или Premiere Pro",
+    "uk": "Змініть клавіші шкали часу або використовуйте клавіші Final Cut Pro чи Premiere Pro",
+    "zh-Hans": "更改时间线的快捷键，或使用 Final Cut Pro 或 Premiere Pro 的快捷键"
+  },
+  "Change the volume over time, fade sound in and out, even out loudness, and find the beat.": {
+    "de": "Ändere die Lautstärke im Zeitverlauf, blende Ton ein und aus, gleiche die Lautheit an und finde den Beat.",
+    "fr": "Faites varier le volume dans le temps, ajoutez des fondus au son, égalisez le volume sonore et trouvez le rythme.",
+    "ja": "時間に沿って音量を変えたり、サウンドをフェードイン/フェードアウトしたり、音量を均一にしたり、ビートを見つけたりします。",
+    "ru": "Меняйте громкость во времени, плавно вводите и выводите звук, выравнивайте громкость и находите бит.",
+    "uk": "Змінюйте гучність із часом, плавно вмикайте й вимикайте звук, вирівнюйте гучність і знаходьте біт.",
+    "zh-Hans": "随时间改变音量、让声音淡入淡出、统一响度，以及找到节拍。"
+  },
+  "Changes the main track and the tracks under this one while it plays.": {
+    "de": "Ändert die Hauptspur und die Spuren unter dieser, solange er läuft.",
+    "fr": "Modifie la piste principale et les pistes sous celle-ci pendant sa lecture.",
+    "ja": "再生中、メイントラックとこのトラックより下のトラックを変化させます。",
+    "ru": "Пока идет, меняет основную дорожку и дорожки под этой.",
+    "uk": "Змінює основну доріжку й доріжки під цією, поки відтворюється.",
+    "zh-Hans": "播放时会改变主轨道以及此片段下方的轨道。"
+  },
+  "Changes the main track and the tracks under this one while it plays. Drag its ends on the timeline to make it longer or shorter.": {
+    "de": "Ändert die Hauptspur und die Spuren unter dieser, solange er läuft. Zieh seine Enden auf der Zeitleiste, um ihn länger oder kürzer zu machen.",
+    "fr": "Modifie la piste principale et les pistes sous celle-ci pendant sa lecture. Faites glisser ses bords sur la timeline pour l’allonger ou le raccourcir.",
+    "ja": "再生中、メイントラックとこのトラックより下のトラックを変化させます。タイムライン上で端をドラッグすると長さを変更できます。",
+    "ru": "Пока идет, меняет основную дорожку и дорожки под этой. Перетяните его края на шкале времени, чтобы удлинить или укоротить.",
+    "uk": "Змінює основну доріжку й доріжки під цією, поки відтворюється. Перетягніть його краї на шкалі часу, щоб зробити довшим чи коротшим.",
+    "zh-Hans": "播放时会改变主轨道以及此片段下方的轨道。在时间线上拖移它的两端，可使其变长或变短。"
+  },
+  "Chapter 2": {
+    "de": "Kapitel 2",
+    "fr": "Chapitre 2",
+    "ja": "第2章",
+    "ru": "Глава 2",
+    "uk": "Розділ 2",
+    "zh-Hans": "第 2 章"
+  },
+  "Choose Create Proxies…. LF Studios says how much space they take first.": {
+    "de": "Wähle „Proxys erstellen …“. LF Studios zeigt vorher, wie viel Platz sie brauchen.",
+    "fr": "Choisissez Créer des proxys…. LF Studios indique d’abord l’espace qu’ils occupent.",
+    "ja": "“プロキシを作成…”を選びます。先に、必要な容量がLF Studiosに表示されます。",
+    "ru": "Выберите «Создать прокси…». LF Studios сначала скажет, сколько места они займут.",
+    "uk": "Виберіть «Створити проксі…». LF Studios спершу покаже, скільки місця вони займуть.",
+    "zh-Hans": "选取“创建代理…”。LF Studios 会先告诉你它们占用多少空间。"
+  },
+  "Choose In, Out or Combo.": {
+    "de": "Wähle „Eingang“, „Ausgang“ oder „Kombi“.",
+    "fr": "Choisissez Entrée, Sortie ou Combo.",
+    "ja": "“イン”、“アウト”、“コンボ”から選びます。",
+    "ru": "Выберите «Начало», «Конец» или «Комбо».",
+    "uk": "Виберіть «Початок», «Кінець» або «Комбо».",
+    "zh-Hans": "选择“入场”“出场”或“组合”。"
+  },
+  "Choose…": {
+    "de": "Auswählen …",
+    "fr": "Choisir…",
+    "ja": "選択…",
+    "ru": "Выбрать…",
+    "uk": "Вибрати…",
+    "zh-Hans": "选取…"
+  },
+  "Chroma key": {
+    "de": "Chroma-Key",
+    "fr": "Clé chromatique",
+    "ja": "クロマキー",
+    "ru": "Хромакей",
+    "uk": "Хромакей",
+    "zh-Hans": "色度抠图"
+  },
+  "Chroma key takes out one colour, like a green screen; pick the colour, then set Strength and Shadow.": {
+    "de": "„Chroma-Key“ entfernt eine Farbe, wie bei einem Greenscreen; wähle die Farbe und stell dann „Stärke“ und „Schatten“ ein.",
+    "fr": "Clé chromatique retire une couleur, comme un fond vert ; choisissez la couleur, puis réglez Intensité et Ombre.",
+    "ja": "“クロマキー”はグリーンバックのように1つの色を取り除きます。色を選んでから、“強さ”と“シャドウ”を設定します。",
+    "ru": "«Хромакей» убирает один цвет, как зеленый экран: выберите цвет, затем задайте «Сила» и «Тень».",
+    "uk": "«Хромакей» прибирає один колір, як зелений екран; виберіть колір, а тоді задайте «Силу» й «Тінь».",
+    "zh-Hans": "“色度抠图”会去除一种颜色，就像绿幕；选取颜色，然后设定“强度”和“阴影”。"
+  },
+  "Cinema": {
+    "de": "Kino",
+    "fr": "Cinéma",
+    "ja": "シネマ",
+    "ru": "Кино",
+    "uk": "Кіно",
+    "zh-Hans": "影院"
+  },
+  "Cinema bars": {
+    "de": "Kinobalken",
+    "fr": "Bandes cinéma",
+    "ja": "シネマバー",
+    "ru": "Кинополосы",
+    "uk": "Кіносмуги",
+    "zh-Hans": "电影黑边"
+  },
+  "Circle scribble": {
+    "de": "Kreis-Kritzel",
+    "fr": "Cercle griffonné",
+    "ja": "丸囲み",
+    "ru": "Обводка от руки",
+    "uk": "Обведене коло",
+    "zh-Hans": "涂鸦圆圈"
+  },
+  "Clap": {
+    "de": "Klatschen",
+    "fr": "Clap",
+    "ja": "拍手",
+    "ru": "Хлопок",
+    "uk": "Оплески",
+    "zh-Hans": "拍手"
+  },
+  "Clean": {
+    "de": "Klar",
+    "fr": "Épuré",
+    "ja": "クリーン",
+    "ru": "Чистый",
+    "uk": "Чистий",
+    "zh-Hans": "简洁"
+  },
+  "Clean title": {
+    "de": "Schlichter Titel",
+    "fr": "Titre épuré",
+    "ja": "クリーンなタイトル",
+    "ru": "Чистый заголовок",
+    "uk": "Чистий заголовок",
+    "zh-Hans": "简洁标题"
+  },
+  "Clear beats": {
+    "de": "Beats löschen",
+    "fr": "Effacer les battements",
+    "ja": "ビートを消去",
+    "ru": "Убрать биты",
+    "uk": "Прибрати біти",
+    "zh-Hans": "清除节拍"
+  },
+  "Click + for a filter clip at the playhead (over the selected clip), or drag one onto the timeline.": {
+    "de": "Klicke auf +, um einen Filterclip an der Abspielposition (über dem ausgewählten Clip) einzufügen, oder zieh einen auf die Zeitleiste.",
+    "fr": "Cliquez sur + pour un clip de filtre à la tête de lecture (au-dessus du clip sélectionné), ou faites-en glisser un sur la timeline.",
+    "ja": "＋をクリックすると、再生ヘッドの位置（選択したクリップの上）にフィルタクリップを追加します。タイムラインにドラッグしても追加できます。",
+    "ru": "Нажмите +, чтобы добавить клип фильтра у указателя воспроизведения (над выбранным клипом), или перетяните фильтр на шкалу времени.",
+    "uk": "Клацніть +, щоб додати кліп фільтра на покажчику відтворення (над вибраним кліпом), або перетягніть фільтр на шкалу часу.",
+    "zh-Hans": "点按 + 在播放头处添加滤镜片段（位于所选片段上方），或将滤镜拖到时间线上。"
+  },
+  "Click + for a filter clip at the playhead.": {
+    "de": "Klicke auf +, um einen Filterclip an der Abspielposition einzufügen.",
+    "fr": "Cliquez sur + pour un clip de filtre à la tête de lecture.",
+    "ja": "＋をクリックすると、再生ヘッドの位置にフィルタクリップを追加します。",
+    "ru": "Нажмите +, чтобы добавить клип фильтра у указателя воспроизведения.",
+    "uk": "Клацніть +, щоб додати кліп фільтра на покажчику відтворення.",
+    "zh-Hans": "点按 + 在播放头处添加滤镜片段。"
+  },
+  "Click + for an effect clip at the playhead (over the selected clip), or drag one onto the timeline.": {
+    "de": "Klicke auf +, um einen Effektclip an der Abspielposition (über dem ausgewählten Clip) einzufügen, oder zieh einen auf die Zeitleiste.",
+    "fr": "Cliquez sur + pour un clip d’effet à la tête de lecture (au-dessus du clip sélectionné), ou faites-en glisser un sur la timeline.",
+    "ja": "＋をクリックすると、再生ヘッドの位置（選択したクリップの上）にエフェクトクリップを追加します。タイムラインにドラッグしても追加できます。",
+    "ru": "Нажмите +, чтобы добавить клип эффекта у указателя воспроизведения (над выбранным клипом), или перетяните эффект на шкалу времени.",
+    "uk": "Клацніть +, щоб додати кліп ефекту на покажчику відтворення (над вибраним кліпом), або перетягніть ефект на шкалу часу.",
+    "zh-Hans": "点按 + 在播放头处添加特效片段（位于所选片段上方），或将特效拖到时间线上。"
+  },
+  "Click + for an effect clip at the playhead, or drag one onto the timeline.": {
+    "de": "Klicke auf +, um einen Effektclip an der Abspielposition einzufügen, oder zieh einen auf die Zeitleiste.",
+    "fr": "Cliquez sur + pour un clip d’effet à la tête de lecture, ou faites-en glisser un sur la timeline.",
+    "ja": "＋をクリックすると、再生ヘッドの位置にエフェクトクリップを追加します。タイムラインにドラッグしても追加できます。",
+    "ru": "Нажмите +, чтобы добавить клип эффекта у указателя воспроизведения, или перетяните эффект на шкалу времени.",
+    "uk": "Клацніть +, щоб додати кліп ефекту на покажчику відтворення, або перетягніть ефект на шкалу часу.",
+    "zh-Hans": "点按 + 在播放头处添加特效片段，或将特效拖到时间线上。"
+  },
+  "Click + to put a filter on “%@”, or drag one onto the timeline for a filter clip.": {
+    "de": "Klicke auf +, um einen Filter auf „%@“ zu legen, oder zieh einen auf die Zeitleiste für einen Filterclip.",
+    "fr": "Cliquez sur + pour appliquer un filtre à « %@ », ou faites-en glisser un sur la timeline pour un clip de filtre.",
+    "ja": "＋をクリックすると“%@”にフィルタを適用します。タイムラインにドラッグするとフィルタクリップになります。",
+    "ru": "Нажмите +, чтобы наложить фильтр на «%@», или перетяните его на шкалу времени, чтобы получить клип фильтра.",
+    "uk": "Клацніть +, щоб накласти фільтр на «%@», або перетягніть фільтр на шкалу часу, щоб створити кліп фільтра.",
+    "zh-Hans": "点按 + 为“%@”添加滤镜，或将滤镜拖到时间线上作为滤镜片段。"
+  },
+  "Click + to put an effect on “%@”, or drag it onto the timeline for an effect clip.": {
+    "de": "Klicke auf +, um einen Effekt auf „%@“ zu legen, oder zieh ihn auf die Zeitleiste für einen Effektclip.",
+    "fr": "Cliquez sur + pour appliquer un effet à « %@ », ou faites-le glisser sur la timeline pour un clip d’effet.",
+    "ja": "＋をクリックすると“%@”にエフェクトを適用します。タイムラインにドラッグするとエフェクトクリップになります。",
+    "ru": "Нажмите +, чтобы наложить эффект на «%@», или перетяните его на шкалу времени, чтобы получить клип эффекта.",
+    "uk": "Клацніть +, щоб накласти ефект на «%@», або перетягніть його на шкалу часу, щоб створити кліп ефекту.",
+    "zh-Hans": "点按 + 为“%@”添加特效，或将特效拖到时间线上作为特效片段。"
+  },
+  "Click + to put one on the selected clip's cut (or the cut nearest the playhead), or drag one onto a cut on the timeline.": {
+    "de": "Klicke auf +, um einen an den Schnitt des ausgewählten Clips (oder den Schnitt nächst der Abspielposition) zu setzen, oder zieh einen auf einen Schnitt in der Zeitleiste.",
+    "fr": "Cliquez sur + pour en placer une sur la coupe du clip sélectionné (ou la coupe la plus proche de la tête de lecture), ou faites-en glisser une sur une coupe de la timeline.",
+    "ja": "＋をクリックすると、選択したクリップのつなぎ目（または再生ヘッドにいちばん近いつなぎ目）に追加します。タイムライン上のつなぎ目にドラッグしても追加できます。",
+    "ru": "Нажмите +, чтобы поставить переход на склейку выбранного клипа (или на ближайшую к указателю воспроизведения), или перетяните его на склейку на шкале времени.",
+    "uk": "Клацніть +, щоб поставити перехід на склейку вибраного кліпу (або найближчу до покажчика відтворення), чи перетягніть його на склейку на шкалі часу.",
+    "zh-Hans": "点按 + 将转场添加到所选片段的剪切点（或离播放头最近的剪切点），或将转场拖到时间线上的剪切点。"
+  },
+  "Click Add text, or drag a template onto the timeline.": {
+    "de": "Klicke auf „Text hinzufügen“ oder zieh eine Vorlage auf die Zeitleiste.",
+    "fr": "Cliquez sur Ajouter du texte, ou faites glisser un modèle sur la timeline.",
+    "ja": "“テキストを追加”をクリックするか、テンプレートをタイムラインにドラッグします。",
+    "ru": "Нажмите «Добавить текст» или перетяните шаблон на шкалу времени.",
+    "uk": "Клацніть «Додати текст» або перетягніть шаблон на шкалу часу.",
+    "zh-Hans": "点按“添加文字”，或将模板拖到时间线上。"
+  },
+  "Click Start tracking. The clip follows it to the clip's end.": {
+    "de": "Klicke auf „Verfolgung starten“. Der Clip folgt ihm bis zum Ende des Clips.",
+    "fr": "Cliquez sur Lancer le suivi. Le clip le suit jusqu’à sa fin.",
+    "ja": "“追跡を開始”をクリックします。クリップの終わりまで、クリップが対象に追従します。",
+    "ru": "Нажмите «Начать отслеживание». Клип будет следовать за объектом до своего конца.",
+    "uk": "Клацніть «Почати відстеження». Кліп стежитиме за об’єктом до свого кінця.",
+    "zh-Hans": "点按“开始跟踪”。片段会一直跟踪它，直到片段结束。"
+  },
+  "Click a command's key, then press the new one (Esc stops, ⌫ leaves it without a key).": {
+    "de": "Klicke auf die Taste eines Befehls und drück dann die neue (Esc bricht ab, ⌫ lässt ihn ohne Taste).",
+    "fr": "Cliquez sur la touche d’une commande, puis appuyez sur la nouvelle (Échap arrête, ⌫ la laisse sans touche).",
+    "ja": "コマンドのキーをクリックしてから、新しいキーを押します（Escで中止、⌫でキーなしにします）。",
+    "ru": "Нажмите клавишу команды, затем нажмите новую (Esc — отмена, ⌫ — оставить без клавиши).",
+    "uk": "Клацніть клавішу команди, а тоді натисніть нову (Esc — зупинити, ⌫ — залишити без клавіші).",
+    "zh-Hans": "点按命令的快捷键，然后按下新的快捷键（按 Esc 停止，按 ⌫ 则不设快捷键）。"
+  },
+  "Click a key to change it, then press the new one (Esc stops, ⌫ leaves it without a key). Space, ⌘Z, ⌘K, ⌘E and the arrows stay as they are.": {
+    "de": "Klicke auf eine Taste, um sie zu ändern, und drück dann die neue (Esc bricht ab, ⌫ lässt sie ohne Taste). Leertaste, ⌘Z, ⌘K, ⌘E und die Pfeiltasten bleiben, wie sie sind.",
+    "fr": "Cliquez sur une touche pour la modifier, puis appuyez sur la nouvelle (Échap arrête, ⌫ la laisse sans touche). Espace, ⌘Z, ⌘K, ⌘E et les flèches restent telles quelles.",
+    "ja": "変更するキーをクリックしてから、新しいキーを押します（Escで中止、⌫でキーなしにします）。スペース、⌘Z、⌘K、⌘E、矢印キーは変更されません。",
+    "ru": "Нажмите клавишу, чтобы изменить ее, затем нажмите новую (Esc — отмена, ⌫ — оставить без клавиши). Пробел, ⌘Z, ⌘K, ⌘E и стрелки не меняются.",
+    "uk": "Клацніть клавішу, щоб змінити її, а тоді натисніть нову (Esc — зупинити, ⌫ — залишити без клавіші). Пробіл, ⌘Z, ⌘K, ⌘E і стрілки не змінюються.",
+    "zh-Hans": "点按快捷键进行更改，然后按下新的快捷键（按 Esc 停止，按 ⌫ 则不设快捷键）。空格键、⌘Z、⌘K、⌘E 和箭头键保持不变。"
+  },
+  "Click a preset (Fade, Zoom, Slide, Spin, Pop, Blur…), then set its Length.": {
+    "de": "Klicke auf eine Vorgabe (Blende, Zoom, Gleiten, Drehen, Pop, Weichzeichnen …) und stell dann ihre Dauer ein.",
+    "fr": "Cliquez sur un préréglage (Fondu, Zoom, Glisser, Tourbillon, Pop, Flou…), puis réglez sa Durée.",
+    "ja": "プリセット（フェード、ズーム、スライド、スピン、ポップ、ぼかし…）をクリックしてから、“長さ”を設定します。",
+    "ru": "Нажмите готовый вариант («Выцветание», «Масштаб», «Сдвиг», «Вращение», «Всплытие», «Размытие»…), затем задайте «Длительность».",
+    "uk": "Клацніть готовий варіант («Згасання», «Масштаб», «Зсув», «Обертання», «Поп», «Розмиття»…), а тоді задайте «Тривалість».",
+    "zh-Hans": "点按一个预设（淡化、缩放、滑动、旋转、弹出、模糊…），然后设定“时长”。"
+  },
+  "Click a style to use it for every caption.": {
+    "de": "Klicke auf einen Stil, um ihn für alle Untertitel zu verwenden.",
+    "fr": "Cliquez sur un style pour l’utiliser pour tous les sous-titres.",
+    "ja": "スタイルをクリックすると、すべての字幕に使われます。",
+    "ru": "Нажмите стиль, чтобы применить его ко всем субтитрам.",
+    "uk": "Клацніть стиль, щоб застосувати його до всіх субтитрів.",
+    "zh-Hans": "点按一种样式，用于所有字幕。"
+  },
+  "Click to add a point, drag to move it, double-click to take it away.": {
+    "de": "Klicke, um einen Punkt hinzuzufügen, zieh, um ihn zu bewegen, doppelklicke, um ihn zu entfernen.",
+    "fr": "Cliquez pour ajouter un point, faites-le glisser pour le déplacer, double-cliquez pour le retirer.",
+    "ja": "クリックでポイントを追加、ドラッグで移動、ダブルクリックで削除します。",
+    "ru": "Нажмите, чтобы добавить точку, перетяните, чтобы сдвинуть, дважды нажмите, чтобы убрать.",
+    "uk": "Клацніть, щоб додати точку, перетягніть, щоб перемістити, двічі клацніть, щоб прибрати.",
+    "zh-Hans": "点按以添加点，拖移以移动点，连按两次以移除点。"
+  },
+  "Click ◆ next to a setting to animate it: set a keyframe, move the playhead, change the setting.": {
+    "de": "Klicke auf ◆ neben einer Einstellung, um sie zu animieren: Setz einen Keyframe, bewege die Abspielposition, ändere die Einstellung.",
+    "fr": "Cliquez sur ◆ à côté d’un réglage pour l’animer : placez une image clé, déplacez la tête de lecture, modifiez le réglage.",
+    "ja": "設定の横の◆をクリックするとアニメーションを付けられます。キーフレームを設定し、再生ヘッドを動かして、設定を変更します。",
+    "ru": "Нажмите ◆ рядом с параметром, чтобы анимировать его: поставьте ключевой кадр, сдвиньте указатель воспроизведения, измените параметр.",
+    "uk": "Клацніть ◆ поруч із параметром, щоб анімувати його: поставте ключовий кадр, перемістіть покажчик відтворення, змініть параметр.",
+    "zh-Hans": "点按设置旁边的 ◆ 为其制作动画：设定关键帧，移动播放头，再更改设置。"
+  },
+  "Clock tick": {
+    "de": "Uhrticken",
+    "fr": "Tic-tac",
+    "ja": "時計のチクタク",
+    "ru": "Тиканье часов",
+    "uk": "Цокання годинника",
+    "zh-Hans": "时钟滴答"
+  },
+  "Cloud": {
+    "de": "Wolke",
+    "fr": "Nuage",
+    "ja": "雲",
+    "ru": "Облако",
+    "uk": "Хмарка",
+    "zh-Hans": "云朵"
+  },
+  "Code": {
+    "de": "Code",
+    "fr": "Code",
+    "ja": "コード",
+    "ru": "Код",
+    "uk": "Код",
+    "zh-Hans": "代码"
+  },
+  "Codec": {
+    "de": "Codec",
+    "fr": "Codec",
+    "ja": "コーデック",
+    "ru": "Кодек",
+    "uk": "Кодек",
+    "zh-Hans": "编解码器"
+  },
+  "Coin": {
+    "de": "Münze",
+    "fr": "Pièce",
+    "ja": "コイン",
+    "ru": "Монета",
+    "uk": "Монета",
+    "zh-Hans": "硬币"
+  },
+  "Color burn": {
+    "de": "Farbig nachbelichten",
+    "fr": "Densité couleur +",
+    "ja": "焼き込みカラー",
+    "ru": "Затемнение основы",
+    "uk": "Затемнення основи",
+    "zh-Hans": "颜色加深"
+  },
+  "Color dodge": {
+    "de": "Farbig abwedeln",
+    "fr": "Densité couleur −",
+    "ja": "覆い焼きカラー",
+    "ru": "Осветление основы",
+    "uk": "Освітлення основи",
+    "zh-Hans": "颜色减淡"
+  },
+  "Colour": {
+    "de": "Farbe",
+    "fr": "Couleur",
+    "ja": "カラー",
+    "ru": "Цвет",
+    "uk": "Колір",
+    "zh-Hans": "颜色"
+  },
+  "Colour to take out": {
+    "de": "Zu entfernende Farbe",
+    "fr": "Couleur à retirer",
+    "ja": "取り除く色",
+    "ru": "Цвет, который нужно убрать",
+    "uk": "Колір, який прибрати",
+    "zh-Hans": "要去除的颜色"
+  },
+  "Combo": {
+    "de": "Kombi",
+    "fr": "Combo",
+    "ja": "コンボ",
+    "ru": "Комбо",
+    "uk": "Комбо",
+    "zh-Hans": "组合"
+  },
+  "Comic": {
+    "de": "Comic",
+    "fr": "BD",
+    "ja": "コミック",
+    "ru": "Комикс",
+    "uk": "Комікс",
+    "zh-Hans": "漫画"
+  },
+  "Compound clip": {
+    "de": "Zusammengesetzter Clip",
+    "fr": "Clip composé",
+    "ja": "複合クリップ",
+    "ru": "Составной клип",
+    "uk": "Складений кліп",
+    "zh-Hans": "复合片段"
+  },
+  "Compound clip %lld": {
+    "de": "Zusammengesetzter Clip %lld",
+    "fr": "Clip composé %lld",
+    "ja": "複合クリップ%lld",
+    "ru": "Составной клип %lld",
+    "uk": "Складений кліп %lld",
+    "zh-Hans": "复合片段 %lld"
+  },
+  "Compound clips": {
+    "de": "Zusammengesetzte Clips",
+    "fr": "Clips composés",
+    "ja": "複合クリップ",
+    "ru": "Составные клипы",
+    "uk": "Складені кліпи",
+    "zh-Hans": "复合片段"
+  },
+  "Confetti": {
+    "de": "Konfetti",
+    "fr": "Confettis",
+    "ja": "紙吹雪",
+    "ru": "Конфетти",
+    "uk": "Конфеті",
+    "zh-Hans": "彩纸"
+  },
+  "Cool": {
+    "de": "Kühl",
+    "fr": "Froid",
+    "ja": "クール",
+    "ru": "Холодный",
+    "uk": "Холодний",
+    "zh-Hans": "冷调"
+  },
+  "Cool down": {
+    "de": "Abkühlen",
+    "fr": "Refroidir",
+    "ja": "涼しげに",
+    "ru": "Охлаждение",
+    "uk": "Холодніше",
+    "zh-Hans": "降温"
+  },
+  "Couldn't add the cover": {
+    "de": "Titelbild konnte nicht hinzugefügt werden",
+    "fr": "Impossible d’ajouter la couverture",
+    "ja": "カバーを追加できませんでした",
+    "ru": "Не удалось добавить обложку",
+    "uk": "Не вдалося додати обкладинку",
+    "zh-Hans": "无法添加封面"
+  },
+  "Couldn't follow it: %@": {
+    "de": "Folgen nicht möglich: %@",
+    "fr": "Impossible de le suivre : %@",
+    "ja": "追従できませんでした: %@",
+    "ru": "Не удалось отследить: %@",
+    "uk": "Не вдалося відстежити: %@",
+    "zh-Hans": "无法跟踪：%@"
+  },
+  "Couldn't follow that — try a bigger box over something with clear edges": {
+    "de": "Folgen nicht möglich – versuch einen größeren Rahmen über etwas mit klaren Kanten",
+    "fr": "Impossible de suivre cela — essayez un cadre plus grand sur quelque chose aux contours nets",
+    "ja": "追従できませんでした — 輪郭のはっきりしたものに、もっと大きなボックスを重ねてみてください",
+    "ru": "Не удалось отследить — попробуйте рамку побольше над чем-то с четкими краями",
+    "uk": "Не вдалося відстежити — спробуйте більшу рамку над чимось із чіткими краями",
+    "zh-Hans": "无法跟踪 — 试试用更大的框框住边缘清晰的物体"
+  },
+  "Couldn't make a proxy of “%@”: %@": {
+    "de": "Proxy von „%@“ konnte nicht erstellt werden: %@",
+    "fr": "Impossible de créer un proxy de « %1$@ » : %2$@",
+    "ja": "“%@”のプロキシを作成できませんでした: %@",
+    "ru": "Не удалось создать прокси для «%@»: %@",
+    "uk": "Не вдалося створити проксі для «%1$@»: %2$@",
+    "zh-Hans": "无法为“%@”创建代理：%@"
+  },
+  "Couldn't make that sound: %@": {
+    "de": "Dieser Ton konnte nicht erstellt werden: %@",
+    "fr": "Impossible de créer ce son : %@",
+    "ja": "そのサウンドを作成できませんでした: %@",
+    "ru": "Не удалось создать этот звук: %@",
+    "uk": "Не вдалося створити цей звук: %@",
+    "zh-Hans": "无法生成该声音：%@"
+  },
+  "Couldn't make the cover": {
+    "de": "Titelbild konnte nicht erstellt werden",
+    "fr": "Impossible de créer la couverture",
+    "ja": "カバーを作成できませんでした",
+    "ru": "Не удалось создать обложку",
+    "uk": "Не вдалося створити обкладинку",
+    "zh-Hans": "无法生成封面"
+  },
+  "Couldn't open that picture": {
+    "de": "Dieses Bild konnte nicht geöffnet werden",
+    "fr": "Impossible d’ouvrir cette image",
+    "ja": "その画像を開けませんでした",
+    "ru": "Не удалось открыть эту картинку",
+    "uk": "Не вдалося відкрити це зображення",
+    "zh-Hans": "无法打开该图片"
+  },
+  "Couldn't open the cover picture": {
+    "de": "Das Bild für das Titelbild konnte nicht geöffnet werden",
+    "fr": "Impossible d’ouvrir l’image de couverture",
+    "ja": "カバーの画像を開けませんでした",
+    "ru": "Не удалось открыть картинку обложки",
+    "uk": "Не вдалося відкрити зображення обкладинки",
+    "zh-Hans": "无法打开封面图片"
+  },
+  "Couldn't read the video to follow": {
+    "de": "Das Video zum Folgen konnte nicht gelesen werden",
+    "fr": "Impossible de lire la vidéo à suivre",
+    "ja": "追従するビデオを読み込めませんでした",
+    "ru": "Не удалось прочитать видео для отслеживания",
+    "uk": "Не вдалося прочитати відео для відстеження",
+    "zh-Hans": "无法读取要跟踪的视频"
+  },
+  "Couldn't write the proxy": {
+    "de": "Proxy konnte nicht gesichert werden",
+    "fr": "Impossible d’écrire le proxy",
+    "ja": "プロキシを書き込めませんでした",
+    "ru": "Не удалось записать прокси",
+    "uk": "Не вдалося записати проксі",
+    "zh-Hans": "无法写入代理"
+  },
+  "Cover": {
+    "de": "Titelbild",
+    "fr": "Couverture",
+    "ja": "カバー",
+    "ru": "Обложка",
+    "uk": "Обкладинка",
+    "zh-Hans": "封面"
+  },
+  "Create Proxies": {
+    "de": "Proxys erstellen",
+    "fr": "Créer des proxys",
+    "ja": "プロキシを作成",
+    "ru": "Создать прокси",
+    "uk": "Створити проксі",
+    "zh-Hans": "创建代理"
+  },
+  "Create Proxies…": {
+    "de": "Proxys erstellen …",
+    "fr": "Créer des proxys…",
+    "ja": "プロキシを作成…",
+    "ru": "Создать прокси…",
+    "uk": "Створити проксі…",
+    "zh-Hans": "创建代理…"
+  },
+  "Create proxies for %lld videos?": {
+    "de": {
+      "one": "Proxy für %lld Video erstellen?",
+      "other": "Proxys für %lld Videos erstellen?"
+    },
+    "en": {
+      "one": "Create a proxy for %lld video?",
+      "other": "Create proxies for %lld videos?"
+    },
+    "fr": {
+      "one": "Créer un proxy pour %lld vidéo ?",
+      "other": "Créer des proxys pour %lld vidéos ?"
+    },
+    "ja": "%lld個のビデオのプロキシを作成しますか?",
+    "ru": {
+      "few": "Создать прокси для %lld видео?",
+      "many": "Создать прокси для %lld видео?",
+      "one": "Создать прокси для %lld видео?",
+      "other": "Создать прокси для %lld видео?"
+    },
+    "uk": {
+      "few": "Створити проксі для %lld відео?",
+      "many": "Створити проксі для %lld відео?",
+      "one": "Створити проксі для %lld відео?",
+      "other": "Створити проксі для %lld відео?"
+    },
+    "zh-Hans": "要为 %lld 个视频创建代理吗？"
+  },
+  "Crisp": {
+    "de": "Knackig",
+    "fr": "Net",
+    "ja": "くっきり",
+    "ru": "Четкий",
+    "uk": "Чіткий",
+    "zh-Hans": "清透"
+  },
+  "Cross": {
+    "de": "Kreuz",
+    "fr": "Croix",
+    "ja": "バツ印",
+    "ru": "Крестик",
+    "uk": "Хрестик",
+    "zh-Hans": "叉号"
+  },
+  "Cross process": {
+    "de": "Crossentwicklung",
+    "fr": "Traitement croisé",
+    "ja": "クロスプロセス",
+    "ru": "Кросс-процесс",
+    "uk": "Крос-процес",
+    "zh-Hans": "交叉冲印"
+  },
+  "Curve": {
+    "de": "Kurve",
+    "fr": "Courbe",
+    "ja": "カーブ",
+    "ru": "Кривая",
+    "uk": "Крива",
+    "zh-Hans": "曲线"
+  },
+  "Curve point": {
+    "de": "Kurvenpunkt",
+    "fr": "Point de courbe",
+    "ja": "カーブのポイント",
+    "ru": "Точка кривой",
+    "uk": "Точка кривої",
+    "zh-Hans": "曲线点"
+  },
+  "Curve: Montage, Hero, Bullet, Jump cut, Flash in or Flash out, or drag the points of your own.": {
+    "de": "Kurve: Montage, Held, Bullet, Jump Cut, Blitz rein oder Blitz raus – oder zieh die Punkte deiner eigenen.",
+    "fr": "Courbe : Montage, Héros, Balle, Jump cut, Flash entrant ou Flash sortant, ou faites glisser les points de la vôtre.",
+    "ja": "カーブ: “モンタージュ”、“ヒーロー”、“バレット”、“ジャンプカット”、“フラッシュイン”、“フラッシュアウト”から選ぶか、自分でポイントをドラッグします。",
+    "ru": "Кривая: «Монтаж», «Герой», «Пуля», «Джамп-кат», «Вспышка в начале» или «Вспышка в конце» — или перетягивайте точки своей кривой.",
+    "uk": "Крива: «Монтаж», «Герой», «Куля», «Джамп-кат», «Спалах на вході» чи «Спалах на виході», або перетягуйте точки власної.",
+    "zh-Hans": "曲线：蒙太奇、英雄时刻、子弹时间、跳接、闪进或闪出，或拖移点自行绘制。"
+  },
+  "Curved arrow": {
+    "de": "Gebogener Pfeil",
+    "fr": "Flèche courbe",
+    "ja": "曲線の矢印",
+    "ru": "Изогнутая стрелка",
+    "uk": "Вигнута стрілка",
+    "zh-Hans": "曲线箭头"
+  },
+  "Curves": {
+    "de": "Kurven",
+    "fr": "Courbes",
+    "ja": "カーブ",
+    "ru": "Кривые",
+    "uk": "Криві",
+    "zh-Hans": "曲线"
+  },
+  "Customize…": {
+    "de": "Anpassen …",
+    "fr": "Personnaliser…",
+    "ja": "カスタマイズ…",
+    "ru": "Настроить…",
+    "uk": "Налаштувати…",
+    "zh-Hans": "自定…"
+  },
+  "Dark box": {
+    "de": "Dunkler Kasten",
+    "fr": "Encadré sombre",
+    "ja": "ダークボックス",
+    "ru": "Темная плашка",
+    "uk": "Темна плашка",
+    "zh-Hans": "深色框"
+  },
+  "Darken": {
+    "de": "Abdunkeln",
+    "fr": "Obscurcir",
+    "ja": "比較（暗）",
+    "ru": "Замена темным",
+    "uk": "Заміна темним",
+    "zh-Hans": "变暗"
+  },
+  "Detect beats": {
+    "de": "Beats erkennen",
+    "fr": "Détecter les battements",
+    "ja": "ビートを検出",
+    "ru": "Найти биты",
+    "uk": "Знайти біти",
+    "zh-Hans": "检测节拍"
+  },
+  "Detect beats: marks on the track where the beat is; clips snap to them": {
+    "de": "Beats erkennen: Marken auf der Spur, wo der Beat liegt; Clips rasten an ihnen ein",
+    "fr": "Détecter les battements : des marques sur la piste aux temps forts ; les clips s’y aimantent",
+    "ja": "ビートを検出: トラック上のビートの位置にマークを付けます。クリップはマークにスナップします",
+    "ru": "Найти биты: метки на дорожке там, где звучит бит; клипы прилипают к ним",
+    "uk": "Знайти біти: позначки на доріжці там, де звучить біт; кліпи прилипають до них",
+    "zh-Hans": "检测节拍：在轨道上标记节拍位置；片段会吸附到标记上"
+  },
+  "Difference": {
+    "de": "Differenz",
+    "fr": "Différence",
+    "ja": "差の絶対値",
+    "ru": "Разница",
+    "uk": "Різниця",
+    "zh-Hans": "差值"
+  },
+  "Ding": {
+    "de": "Ding",
+    "fr": "Ding",
+    "ja": "チーン",
+    "ru": "Дзынь",
+    "uk": "Дзинь",
+    "zh-Hans": "叮"
+  },
+  "Dip to white": {
+    "de": "Weißblende",
+    "fr": "Fondu au blanc",
+    "ja": "白にフェード",
+    "ru": "Переход через белый",
+    "uk": "Висвітлення",
+    "zh-Hans": "白场过渡"
+  },
+  "Dissolve, dip to black or white, slide, push, wipe, zoom, blur or spin between clips on the main track.": {
+    "de": "Überblenden, Schwarz- oder Weißblende, Gleiten, Schieben, Wischen, Zoom, Weichzeichnen oder Drehen zwischen Clips auf der Hauptspur.",
+    "fr": "Fondu, fondu au noir ou au blanc, glissement, poussée, balayage, zoom, flou ou tourbillon entre les clips de la piste principale.",
+    "ja": "メイントラックのクリップの間に、ディゾルブ、黒/白にフェード、スライド、プッシュ、ワイプ、ズーム、ぼかし、スピンを入れます。",
+    "ru": "Растворение, затемнение, переход через белый, сдвиг, выталкивание, шторка, масштаб, размытие или вращение между клипами на основной дорожке.",
+    "uk": "Розчинення, затемнення чи висвітлення, зсув, виштовхування, шторка, масштаб, розмиття або обертання між кліпами на основній доріжці.",
+    "zh-Hans": "在主轨道的片段之间叠化、黑场或白场过渡、滑动、推移、擦除、缩放、模糊或旋转。"
+  },
+  "Down": {
+    "de": "Senkrecht",
+    "fr": "Verticale",
+    "ja": "縦",
+    "ru": "По вертикали",
+    "uk": "По вертикалі",
+    "zh-Hans": "垂直"
+  },
+  "Drag a point up for faster, down for slower. Double-click to add a point; double-click a point to take it away.": {
+    "de": "Zieh einen Punkt nach oben für schneller, nach unten für langsamer. Doppelklicke, um einen Punkt hinzuzufügen; doppelklicke auf einen Punkt, um ihn zu entfernen.",
+    "fr": "Faites glisser un point vers le haut pour accélérer, vers le bas pour ralentir. Double-cliquez pour ajouter un point ; double-cliquez sur un point pour le retirer.",
+    "ja": "ポイントを上にドラッグすると速く、下にドラッグすると遅くなります。ダブルクリックでポイントを追加し、ポイントをダブルクリックすると削除します。",
+    "ru": "Тяните точку вверх — быстрее, вниз — медленнее. Дважды нажмите, чтобы добавить точку; дважды нажмите на точку, чтобы убрать ее.",
+    "uk": "Тягніть точку вгору — швидше, вниз — повільніше. Двічі клацніть, щоб додати точку; двічі клацніть точку, щоб прибрати її.",
+    "zh-Hans": "向上拖移点以加快，向下拖移以减慢。连按两次以添加点；连按两次点以移除。"
+  },
+  "Drag a sticker onto the timeline; move, size and animate it like any clip.": {
+    "de": "Zieh einen Sticker auf die Zeitleiste; bewege, skaliere und animiere ihn wie jeden Clip.",
+    "fr": "Faites glisser un autocollant sur la timeline ; déplacez-le, redimensionnez-le et animez-le comme n’importe quel clip.",
+    "ja": "ステッカーをタイムラインにドラッグします。ほかのクリップと同じように、移動、サイズ変更、アニメーションができます。",
+    "ru": "Перетяните стикер на шкалу времени; перемещайте, меняйте размер и анимируйте его, как любой клип.",
+    "uk": "Перетягніть стікер на шкалу часу; переміщуйте, змінюйте розмір і анімуйте його, як будь-який кліп.",
+    "zh-Hans": "将贴纸拖到时间线上；像其他片段一样移动它、调整大小并添加动画。"
+  },
+  "Drag a transition onto the cut, or select a clip and click +.": {
+    "de": "Zieh einen Übergang auf den Schnitt oder wähle einen Clip aus und klicke auf +.",
+    "fr": "Faites glisser une transition sur la coupe, ou sélectionnez un clip et cliquez sur +.",
+    "ja": "トランジションをつなぎ目にドラッグするか、クリップを選択して＋をクリックします。",
+    "ru": "Перетяните переход на склейку или выберите клип и нажмите +.",
+    "uk": "Перетягніть перехід на склейку або виберіть кліп і клацніть +.",
+    "zh-Hans": "将转场拖到剪切点上，或选择一个片段并点按 +。"
+  },
+  "Drag it onto the timeline, or click + to add it at the playhead.": {
+    "de": "Zieh es auf die Zeitleiste oder klicke auf +, um es an der Abspielposition hinzuzufügen.",
+    "fr": "Faites-le glisser sur la timeline, ou cliquez sur + pour l’ajouter à la tête de lecture.",
+    "ja": "タイムラインにドラッグするか、＋をクリックして再生ヘッドの位置に追加します。",
+    "ru": "Перетяните на шкалу времени или нажмите +, чтобы добавить у указателя воспроизведения.",
+    "uk": "Перетягніть його на шкалу часу або клацніть +, щоб додати на покажчику відтворення.",
+    "zh-Hans": "将其拖到时间线上，或点按 + 在播放头处添加。"
+  },
+  "Drag the box on the player over what the clip should follow, then click Start tracking. It follows from the playhead to the clip's end.": {
+    "de": "Zieh den Rahmen im Player über das, dem der Clip folgen soll, und klicke dann auf „Verfolgung starten“. Er folgt ab der Abspielposition bis zum Ende des Clips.",
+    "fr": "Faites glisser le cadre du lecteur sur ce que le clip doit suivre, puis cliquez sur Lancer le suivi. Il suit à partir de la tête de lecture jusqu’à la fin du clip.",
+    "ja": "プレーヤー上で、クリップを追従させたいものにボックスをドラッグして重ね、“追跡を開始”をクリックします。再生ヘッドからクリップの終わりまで追従します。",
+    "ru": "Перетяните рамку в плеере на то, за чем должен следовать клип, затем нажмите «Начать отслеживание». Он следует от указателя воспроизведения до конца клипа.",
+    "uk": "Перетягніть рамку в плеєрі на те, за чим має стежити кліп, а тоді клацніть «Почати відстеження». Він стежить від покажчика відтворення до кінця кліпу.",
+    "zh-Hans": "在播放器中将框拖到片段要跟踪的物体上，然后点按“开始跟踪”。片段会从播放头处一直跟踪到片段结束。"
+  },
+  "Drag the yellow box over it, and set Box size.": {
+    "de": "Zieh den gelben Rahmen darüber und stell die Rahmengröße ein.",
+    "fr": "Faites glisser le cadre jaune dessus, et réglez Taille du cadre.",
+    "ja": "黄色のボックスをその上にドラッグし、“ボックスのサイズ”を設定します。",
+    "ru": "Перетяните на него желтую рамку и задайте «Размер рамки».",
+    "uk": "Перетягніть на нього жовту рамку й задайте «Розмір рамки».",
+    "zh-Hans": "将黄色框拖到它上面，并设定“框大小”。"
+  },
+  "Drag to move the compound clip; drag a corner to size it": {
+    "de": "Ziehen bewegt den zusammengesetzten Clip; Ziehen an einer Ecke ändert die Größe",
+    "fr": "Faites glisser pour déplacer le clip composé ; faites glisser un coin pour le redimensionner",
+    "ja": "ドラッグで複合クリップを移動、角をドラッグでサイズを変更",
+    "ru": "Перетяните, чтобы сдвинуть составной клип; тяните за угол, чтобы изменить размер",
+    "uk": "Тягніть, щоб перемістити складений кліп; тягніть кут, щоб змінити розмір",
+    "zh-Hans": "拖移以移动复合片段；拖移角以调整大小"
+  },
+  "Ease in": {
+    "de": "Sanft hinein",
+    "fr": "Lissage en entrée",
+    "ja": "イーズイン",
+    "ru": "Плавное начало",
+    "uk": "Повільний початок",
+    "zh-Hans": "缓入"
+  },
+  "Ease in and out": {
+    "de": "Sanft hinein und hinaus",
+    "fr": "Lissage en entrée et en sortie",
+    "ja": "イーズインアウト",
+    "ru": "Плавные начало и конец",
+    "uk": "Повільні початок і кінець",
+    "zh-Hans": "缓入缓出"
+  },
+  "Ease out": {
+    "de": "Sanft hinaus",
+    "fr": "Lissage en sortie",
+    "ja": "イーズアウト",
+    "ru": "Плавный конец",
+    "uk": "Повільний кінець",
+    "zh-Hans": "缓出"
+  },
+  "Easing": {
+    "de": "Beschleunigung",
+    "fr": "Lissage",
+    "ja": "イージング",
+    "ru": "Сглаживание",
+    "uk": "Згладжування",
+    "zh-Hans": "缓动"
+  },
+  "Edit with Proxies": {
+    "de": "Mit Proxys bearbeiten",
+    "fr": "Monter avec les proxys",
+    "ja": "プロキシで編集",
+    "ru": "Монтаж с прокси",
+    "uk": "Монтувати з проксі",
+    "zh-Hans": "使用代理剪辑"
+  },
+  "Effect": {
+    "de": "Effekt",
+    "fr": "Effet",
+    "ja": "エフェクト",
+    "ru": "Эффект",
+    "uk": "Ефект",
+    "zh-Hans": "特效"
+  },
+  "Effects": {
+    "de": "Effekte",
+    "fr": "Effets",
+    "ja": "エフェクト",
+    "ru": "Эффекты",
+    "uk": "Ефекти",
+    "zh-Hans": "特效"
+  },
+  "Elegant": {
+    "de": "Elegant",
+    "fr": "Élégant",
+    "ja": "エレガント",
+    "ru": "Элегантный",
+    "uk": "Елегантний",
+    "zh-Hans": "优雅"
+  },
+  "Error": {
+    "de": "Fehler",
+    "fr": "Erreur",
+    "ja": "エラー",
+    "ru": "Ошибка",
+    "uk": "Помилка",
+    "zh-Hans": "错误"
+  },
+  "Every video here has a proxy": {
+    "de": "Jedes Video hier hat einen Proxy",
+    "fr": "Chaque vidéo ici a un proxy",
+    "ja": "ここにあるすべてのビデオにプロキシがあります",
+    "ru": "У каждого видео здесь есть прокси",
+    "uk": "Кожне відео тут уже має проксі",
+    "zh-Hans": "这里的每个视频都有代理"
+  },
+  "Everyday": {
+    "de": "Alltag",
+    "fr": "Quotidien",
+    "ja": "日常",
+    "ru": "На каждый день",
+    "uk": "Повсякденне",
+    "zh-Hans": "日常"
+  },
+  "Everything (offset)": {
+    "de": "Alles (Offset)",
+    "fr": "Tout (offset)",
+    "ja": "全体（オフセット）",
+    "ru": "Все (смещение)",
+    "uk": "Усе (зсув)",
+    "zh-Hans": "全部（偏移）"
+  },
+  "Everything to add to a video, in tabs: Media, Audio, Text, Stickers, Effects, Transitions, Captions, Filters and Adjust.": {
+    "de": "Alles, was du einem Video hinzufügen kannst, in Tabs: Medien, Audio, Text, Sticker, Effekte, Übergänge, Untertitel, Filter und Anpassen.",
+    "fr": "Tout ce qu’on peut ajouter à une vidéo, par onglets : Médias, Audio, Texte, Autocollants, Effets, Transitions, Sous-titres, Filtres et Ajustements.",
+    "ja": "ビデオに追加するものすべてがタブに分かれています: メディア、オーディオ、テキスト、ステッカー、エフェクト、トランジション、字幕、フィルタ、調整。",
+    "ru": "Все, что можно добавить в видео, по вкладкам: Медиа, Аудио, Текст, Стикеры, Эффекты, Переходы, Субтитры, Фильтры и Коррекция.",
+    "uk": "Усе, що можна додати до відео, на вкладках: «Медіа», «Аудіо», «Текст», «Стікери», «Ефекти», «Переходи», «Субтитри», «Фільтри» й «Корекція».",
+    "zh-Hans": "要添加到视频的所有内容，按标签页分类：媒体、音频、文字、贴纸、特效、转场、字幕、滤镜和调节。"
+  },
+  "Export .srt…": {
+    "de": ".srt exportieren …",
+    "fr": "Exporter en .srt…",
+    "ja": ".srtを書き出す…",
+    "ru": "Экспортировать .srt…",
+    "uk": "Експортувати .srt…",
+    "zh-Hans": "导出 .srt…"
+  },
+  "Export a video (MP4 or MOV)": {
+    "de": "Ein Video exportieren (MP4 oder MOV)",
+    "fr": "Exporter une vidéo (MP4 ou MOV)",
+    "ja": "ビデオを書き出す（MP4またはMOV）",
+    "ru": "Экспорт видео (MP4 или MOV)",
+    "uk": "Експорт відео (MP4 або MOV)",
+    "zh-Hans": "导出视频（MP4 或 MOV）"
+  },
+  "Export to": {
+    "de": "Exportieren nach",
+    "fr": "Exporter vers",
+    "ja": "書き出し先",
+    "ru": "Куда",
+    "uk": "Експортувати в",
+    "zh-Hans": "导出到"
+  },
+  "Exposure": {
+    "de": "Belichtung",
+    "fr": "Exposition",
+    "ja": "露出",
+    "ru": "Экспозиция",
+    "uk": "Експозиція",
+    "zh-Hans": "曝光"
+  },
+  "Exposure, contrast, highlights, shadows, colour, HSL, curves and colour wheels, on a clip or over everything under it.": {
+    "de": "Belichtung, Kontrast, Lichter, Tiefen, Farbe, HSL, Kurven und Farbräder – auf einem Clip oder über allem darunter.",
+    "fr": "Exposition, contraste, hautes lumières, ombres, couleur, TSL, courbes et roues chromatiques, sur un clip ou sur tout ce qui est en dessous.",
+    "ja": "露出、コントラスト、ハイライト、シャドウ、カラー、HSL、カーブ、カラーホイールを、1つのクリップに、またはその下にあるものすべてに適用します。",
+    "ru": "Экспозиция, контраст, света, тени, цвет, HSL, кривые и цветовые круги — на клипе или поверх всего, что под ним.",
+    "uk": "Експозиція, контраст, світлі ділянки, тіні, колір, HSL, криві й кольорові круги — на кліпі або поверх усього під ним.",
+    "zh-Hans": "曝光、对比度、高光、阴影、颜色、HSL、曲线和色轮，用于单个片段或其下方的所有内容。"
+  },
+  "FOLLOW": {
+    "de": "FOLGEN",
+    "fr": "S’ABONNER",
+    "ja": "フォロー",
+    "ru": "ПОДПИШИСЬ",
+    "uk": "ПІДПИШИСЬ",
+    "zh-Hans": "关注"
+  },
+  "Fade": {
+    "de": "Blende",
+    "fr": "Fondu",
+    "ja": "フェード",
+    "ru": "Выцветание",
+    "uk": "Згасання",
+    "zh-Hans": "淡化"
+  },
+  "Favourites": {
+    "de": "Favoriten",
+    "fr": "Favoris",
+    "ja": "お気に入り",
+    "ru": "Избранное",
+    "uk": "Вибране",
+    "zh-Hans": "收藏"
+  },
+  "Feather": {
+    "de": "Weiche Kante",
+    "fr": "Adoucissement",
+    "ja": "フェザー",
+    "ru": "Растушевка",
+    "uk": "Розтушовування",
+    "zh-Hans": "羽化"
+  },
+  "Film": {
+    "de": "Film",
+    "fr": "Film",
+    "ja": "フィルム",
+    "ru": "Пленка",
+    "uk": "Плівка",
+    "zh-Hans": "胶片"
+  },
+  "Film grain": {
+    "de": "Filmkorn",
+    "fr": "Grain de film",
+    "ja": "フィルムグレイン",
+    "ru": "Зерно пленки",
+    "uk": "Плівкове зерно",
+    "zh-Hans": "胶片颗粒"
+  },
+  "Filter": {
+    "de": "Filter",
+    "fr": "Filtre",
+    "ja": "フィルタ",
+    "ru": "Фильтр",
+    "uk": "Фільтр",
+    "zh-Hans": "滤镜"
+  },
+  "Filters": {
+    "de": "Filter",
+    "fr": "Filtres",
+    "ja": "フィルタ",
+    "ru": "Фильтры",
+    "uk": "Фільтри",
+    "zh-Hans": "滤镜"
+  },
+  "Filters and LUTs": {
+    "de": "Filter und LUTs",
+    "fr": "Filtres et LUT",
+    "ja": "フィルタとLUT",
+    "ru": "Фильтры и LUT",
+    "uk": "Фільтри й LUT",
+    "zh-Hans": "滤镜和 LUT"
+  },
+  "Final Cut Pro style": {
+    "de": "Final-Cut-Pro-Stil",
+    "fr": "Style Final Cut Pro",
+    "ja": "Final Cut Pro風",
+    "ru": "Как в Final Cut Pro",
+    "uk": "Як у Final Cut Pro",
+    "zh-Hans": "Final Cut Pro 风格"
+  },
+  "Finder, QuickTime and Photos show it; some video sites choose their own.": {
+    "de": "Finder, QuickTime und Fotos zeigen es; manche Videoportale wählen ihr eigenes.",
+    "fr": "Le Finder, QuickTime et Photos l’affichent ; certains sites vidéo choisissent la leur.",
+    "ja": "Finder、QuickTime、“写真”に表示されます。動画サイトによっては独自に選ぶ場合があります。",
+    "ru": "Ее показывают Finder, QuickTime и «Фото»; некоторые видеосайты выбирают свою.",
+    "uk": "Її показують Finder, QuickTime і Фотографії; деякі відеосайти вибирають власну.",
+    "zh-Hans": "“访达”、QuickTime 和“照片”会显示它；有些视频网站会自行选择。"
+  },
+  "Flame": {
+    "de": "Flamme",
+    "fr": "Flamme",
+    "ja": "炎",
+    "ru": "Пламя",
+    "uk": "Полум’я",
+    "zh-Hans": "火焰"
+  },
+  "Flash in": {
+    "de": "Blitz rein",
+    "fr": "Flash entrant",
+    "ja": "フラッシュイン",
+    "ru": "Вспышка в начале",
+    "uk": "Спалах на вході",
+    "zh-Hans": "闪进"
+  },
+  "Flash out": {
+    "de": "Blitz raus",
+    "fr": "Flash sortant",
+    "ja": "フラッシュアウト",
+    "ru": "Вспышка в конце",
+    "uk": "Спалах на виході",
+    "zh-Hans": "闪出"
+  },
+  "Follow": {
+    "de": "Folgen",
+    "fr": "S’abonner",
+    "ja": "フォロー",
+    "ru": "Следовать",
+    "uk": "Підписка",
+    "zh-Hans": "关注"
+  },
+  "Following it — play to see": {
+    "de": "Folgt ihm – spiel ab, um es zu sehen",
+    "fr": "Suivi en cours — lancez la lecture pour voir",
+    "ja": "追従中 — 再生すると確認できます",
+    "ru": "Отслеживание готово — воспроизведите, чтобы увидеть",
+    "uk": "Відстежується — відтворіть, щоб побачити",
+    "zh-Hans": "正在跟踪 — 播放即可查看"
+  },
+  "Fonts are ones that come with every Mac, so a project looks the same on any Mac.": {
+    "de": "Die Schriften sind auf jedem Mac vorhanden, daher sieht ein Projekt auf jedem Mac gleich aus.",
+    "fr": "Les polices sont celles fournies avec chaque Mac : un projet a donc le même aspect sur n’importe quel Mac.",
+    "ja": "フォントはどのMacにも入っているものなので、どのMacでもプロジェクトは同じように表示されます。",
+    "ru": "Шрифты — из тех, что есть на любом Mac, поэтому проект выглядит одинаково на любом Mac.",
+    "uk": "Шрифти — ті, що є на кожному Mac, тож проєкт виглядає однаково на будь-якому Mac.",
+    "zh-Hans": "字体都是每台 Mac 自带的，因此项目在任何 Mac 上看起来都一样。"
+  },
+  "Fun": {
+    "de": "Spaß",
+    "fr": "Ludique",
+    "ja": "楽しい",
+    "ru": "Веселый",
+    "uk": "Весело",
+    "zh-Hans": "趣味"
+  },
+  "Ghost": {
+    "de": "Geist",
+    "fr": "Fantôme",
+    "ja": "ゴースト",
+    "ru": "Призрак",
+    "uk": "Привид",
+    "zh-Hans": "幽灵"
+  },
+  "Give any timeline command your own key, or use Final Cut Pro or Premiere Pro keys.": {
+    "de": "Gib jedem Befehl der Zeitleiste deine eigene Taste oder nutze die Tasten von Final Cut Pro oder Premiere Pro.",
+    "fr": "Attribuez votre propre touche à n’importe quelle commande de la timeline, ou utilisez les touches de Final Cut Pro ou de Premiere Pro.",
+    "ja": "タイムラインのどのコマンドにも自分でキーを割り当てたり、Final Cut ProやPremiere Proのキーを使ったりできます。",
+    "ru": "Назначьте свою клавишу любой команде шкалы времени или используйте клавиши Final Cut Pro или Premiere Pro.",
+    "uk": "Призначте будь-якій команді шкали часу власну клавішу або використовуйте клавіші Final Cut Pro чи Premiere Pro.",
+    "zh-Hans": "为任何时间线命令设定你自己的快捷键，或使用 Final Cut Pro 或 Premiere Pro 的快捷键。"
+  },
+  "Glitch": {
+    "de": "Glitch",
+    "fr": "Glitch",
+    "ja": "グリッチ",
+    "ru": "Глитч",
+    "uk": "Глітч",
+    "zh-Hans": "故障"
+  },
+  "Glow": {
+    "de": "Leuchten",
+    "fr": "Lueur",
+    "ja": "グロー",
+    "ru": "Свечение",
+    "uk": "Сяйво",
+    "zh-Hans": "发光"
+  },
+  "Golden hour": {
+    "de": "Goldene Stunde",
+    "fr": "Heure dorée",
+    "ja": "ゴールデンアワー",
+    "ru": "Золотой час",
+    "uk": "Золота година",
+    "zh-Hans": "黄金时刻"
+  },
+  "Grain": {
+    "de": "Körnung",
+    "fr": "Grain",
+    "ja": "粒子",
+    "ru": "Зерно",
+    "uk": "Зернистість",
+    "zh-Hans": "颗粒"
+  },
+  "HSL": {
+    "de": "HSL",
+    "fr": "TSL",
+    "ja": "HSL",
+    "ru": "HSL",
+    "uk": "HSL",
+    "zh-Hans": "HSL"
+  },
+  "HSL changes one colour at a time. Curves: RGB, Red, Green, Blue. Wheels: Shadows, Midtones, Highlights, Everything.": {
+    "de": "HSL ändert jeweils eine Farbe. Kurven: RGB, Rot, Grün, Blau. Räder: Tiefen, Mitteltöne, Lichter, Alles.",
+    "fr": "TSL modifie une couleur à la fois. Courbes : RVB, Rouge, Vert, Bleu. Roues : Ombres, Tons moyens, Hautes lumières, Tout.",
+    "ja": "HSLでは色を1つずつ変更します。カーブ: RGB、赤、緑、青。ホイール: シャドウ、中間調、ハイライト、全体。",
+    "ru": "HSL меняет один цвет за раз. Кривые: RGB, красный, зеленый, синий. Круги: тени, средние тона, света, все.",
+    "uk": "HSL змінює по одному кольору. Криві: RGB, червоний, зелений, синій. Круги: тіні, середні тони, світлі ділянки, усе.",
+    "zh-Hans": "HSL 一次更改一种颜色。曲线：RGB、红色、绿色、蓝色。色轮：阴影、中间调、高光、全部。"
+  },
+  "Handwritten": {
+    "de": "Handschrift",
+    "fr": "Manuscrit",
+    "ja": "手書き",
+    "ru": "Рукописный",
+    "uk": "Рукописний",
+    "zh-Hans": "手写"
+  },
+  "Hard light": {
+    "de": "Hartes Licht",
+    "fr": "Lumière crue",
+    "ja": "ハードライト",
+    "ru": "Жесткий свет",
+    "uk": "Жорстке світло",
+    "zh-Hans": "强光"
+  },
+  "Heart": {
+    "de": "Herz",
+    "fr": "Cœur",
+    "ja": "ハート",
+    "ru": "Сердце",
+    "uk": "Серце",
+    "zh-Hans": "爱心"
+  },
+  "Heartbeat": {
+    "de": "Herzschlag",
+    "fr": "Battement de cœur",
+    "ja": "心音",
+    "ru": "Сердцебиение",
+    "uk": "Серцебиття",
+    "zh-Hans": "心跳"
+  },
+  "Height compared with width": {
+    "de": "Höhe im Verhältnis zur Breite",
+    "fr": "Hauteur par rapport à la largeur",
+    "ja": "幅に対する高さ",
+    "ru": "Высота относительно ширины",
+    "uk": "Висота відносно ширини",
+    "zh-Hans": "高度与宽度之比"
+  },
+  "Hero": {
+    "de": "Held",
+    "fr": "Héros",
+    "ja": "ヒーロー",
+    "ru": "Герой",
+    "uk": "Герой",
+    "zh-Hans": "英雄时刻"
+  },
+  "Hides what's inside the shape instead": {
+    "de": "Verbirgt stattdessen, was in der Form liegt",
+    "fr": "Masque plutôt l’intérieur de la forme",
+    "ja": "代わりに形の内側を隠します",
+    "ru": "Вместо этого скрывает то, что внутри фигуры",
+    "uk": "Натомість ховає те, що всередині фігури",
+    "zh-Hans": "改为隐藏形状内部的内容"
+  },
+  "Higher": {
+    "de": "Höher",
+    "fr": "Plus élevé",
+    "ja": "高",
+    "ru": "Выше",
+    "uk": "Вищий",
+    "zh-Hans": "较高"
+  },
+  "Highlights": {
+    "de": "Lichter",
+    "fr": "Hautes lumières",
+    "ja": "ハイライト",
+    "ru": "Света",
+    "uk": "Світлі ділянки",
+    "zh-Hans": "高光"
+  },
+  "Highlights (gain)": {
+    "de": "Lichter (Gain)",
+    "fr": "Hautes lumières (gain)",
+    "ja": "ハイライト（ゲイン）",
+    "ru": "Света (усиление)",
+    "uk": "Світлі ділянки (підсилення)",
+    "zh-Hans": "高光（增益）"
+  },
+  "Hover a sound effect to hear it; drag it onto the timeline.": {
+    "de": "Zeig auf einen Soundeffekt, um ihn zu hören; zieh ihn auf die Zeitleiste.",
+    "fr": "Survolez un effet sonore pour l’écouter ; faites-le glisser sur la timeline.",
+    "ja": "効果音にポインタを置くと試聴できます。タイムラインにドラッグして追加します。",
+    "ru": "Наведите указатель на звуковой эффект, чтобы прослушать; перетяните его на шкалу времени.",
+    "uk": "Наведіть на звуковий ефект, щоб почути його; перетягніть його на шкалу часу.",
+    "zh-Hans": "将指针悬停在音效上即可试听；将其拖到时间线上。"
+  },
+  "How it mixes with what's under it: Screen lightens, Multiply darkens, Overlay adds contrast.": {
+    "de": "Wie er sich mit dem darunter mischt: „Negativ multiplizieren“ hellt auf, „Multiplizieren“ dunkelt ab, „Ineinanderkopieren“ erhöht den Kontrast.",
+    "fr": "Sa façon de se mélanger avec ce qui est en dessous : Superposition éclaircit, Produit assombrit, Incrustation ajoute du contraste.",
+    "ja": "下にあるものとの混ぜ方: “スクリーン”は明るく、“乗算”は暗く、“オーバーレイ”はコントラストを強くします。",
+    "ru": "Как он смешивается с тем, что под ним: «Экран» осветляет, «Умножение» затемняет, «Перекрытие» добавляет контраст.",
+    "uk": "Як він змішується з тим, що під ним: «Екран» освітлює, «Множення» затемнює, «Перекриття» додає контрасту.",
+    "zh-Hans": "它与下方内容的混合方式：“滤色”变亮，“正片叠底”变暗，“叠加”增加对比度。"
+  },
+  "How much of the shadows on the screen stays": {
+    "de": "Wie viel von den Schatten auf dem Greenscreen bleibt",
+    "fr": "Quantité des ombres sur le fond qui est conservée",
+    "ja": "背景スクリーン上の影を残す量",
+    "ru": "Сколько теней на экране остается",
+    "uk": "Скільки тіней на екрані залишається",
+    "zh-Hans": "保留多少屏幕上的阴影"
+  },
+  "Hue": {
+    "de": "Farbton",
+    "fr": "Teinte",
+    "ja": "色相",
+    "ru": "Тон",
+    "uk": "Тон",
+    "zh-Hans": "色相"
+  },
+  "Impact": {
+    "de": "Aufprall",
+    "fr": "Impact",
+    "ja": "インパクト",
+    "ru": "Удар",
+    "uk": "Удар",
+    "zh-Hans": "冲击"
+  },
+  "Import .cube LUT…": {
+    "de": ".cube-LUT importieren …",
+    "fr": "Importer une LUT .cube…",
+    "ja": ".cube LUTを読み込む…",
+    "ru": "Импортировать LUT .cube…",
+    "uk": "Імпортувати LUT .cube…",
+    "zh-Hans": "导入 .cube LUT…"
+  },
+  "Import .cube LUT… uses a 3D LUT from another app.": {
+    "de": "„.cube-LUT importieren …“ nutzt eine 3D-LUT aus einer anderen App.",
+    "fr": "Importer une LUT .cube… utilise une LUT 3D d’une autre app.",
+    "ja": "“.cube LUTを読み込む…”で、ほかのアプリの3D LUTを使えます。",
+    "ru": "«Импортировать LUT .cube…» использует 3D LUT из другой программы.",
+    "uk": "«Імпортувати LUT .cube…» використовує 3D LUT з іншої програми.",
+    "zh-Hans": "“导入 .cube LUT…”会使用来自其他应用的 3D LUT。"
+  },
+  "Import .cube…": {
+    "de": ".cube importieren …",
+    "fr": "Importer un .cube…",
+    "ja": ".cubeを読み込む…",
+    "ru": "Импортировать .cube…",
+    "uk": "Імпортувати .cube…",
+    "zh-Hans": "导入 .cube…"
+  },
+  "Import .srt…": {
+    "de": ".srt importieren …",
+    "fr": "Importer un .srt…",
+    "ja": ".srtを読み込む…",
+    "ru": "Импортировать .srt…",
+    "uk": "Імпортувати .srt…",
+    "zh-Hans": "导入 .srt…"
+  },
+  "Import .srt… brings captions from an .srt or .vtt file; Export .srt… saves them.": {
+    "de": "„.srt importieren …“ holt Untertitel aus einer .srt- oder .vtt-Datei; „.srt exportieren …“ sichert sie.",
+    "fr": "Importer un .srt… apporte les sous-titres d’un fichier .srt ou .vtt ; Exporter en .srt… les enregistre.",
+    "ja": "“.srtを読み込む…”で.srtまたは.vttファイルから字幕を読み込み、“.srtを書き出す…”で保存します。",
+    "ru": "«Импортировать .srt…» загружает субтитры из файла .srt или .vtt; «Экспортировать .srt…» сохраняет их.",
+    "uk": "«Імпортувати .srt…» додає субтитри з файлу .srt або .vtt; «Експортувати .srt…» зберігає їх.",
+    "zh-Hans": "“导入 .srt…”会从 .srt 或 .vtt 文件导入字幕；“导出 .srt…”会存储字幕。"
+  },
+  "Import sticker…": {
+    "de": "Sticker importieren …",
+    "fr": "Importer un autocollant…",
+    "ja": "ステッカーを読み込む…",
+    "ru": "Импортировать стикер…",
+    "uk": "Імпортувати стікер…",
+    "zh-Hans": "导入贴纸…"
+  },
+  "Import sticker… adds your own PNG or GIF (GIFs play).": {
+    "de": "„Sticker importieren …“ fügt dein eigenes PNG oder GIF hinzu (GIFs werden abgespielt).",
+    "fr": "Importer un autocollant… ajoute votre propre PNG ou GIF (les GIF sont animés).",
+    "ja": "“ステッカーを読み込む…”で、自分のPNGやGIFを追加できます（GIFは動きます）。",
+    "ru": "«Импортировать стикер…» добавляет ваш PNG или GIF (GIF воспроизводятся).",
+    "uk": "«Імпортувати стікер…» додає ваш власний PNG або GIF (GIF відтворюються).",
+    "zh-Hans": "“导入贴纸…”会添加你自己的 PNG 或 GIF（GIF 会播放）。"
+  },
+  "Imported %lld captions from “%@”": {
+    "de": {
+      "one": "%lld Untertitel aus „%@“ importiert",
+      "other": "%lld Untertitel aus „%@“ importiert"
+    },
+    "en": {
+      "one": "Imported %lld caption from “%@”",
+      "other": "Imported %lld captions from “%@”"
+    },
+    "fr": {
+      "one": "%1$lld sous-titre importé depuis « %2$@ »",
+      "other": "%1$lld sous-titres importés depuis « %2$@ »"
+    },
+    "ja": "“%2$@”から%1$lld個の字幕を読み込みました",
+    "ru": {
+      "few": "Импортировано %lld субтитра из «%@»",
+      "many": "Импортировано %lld субтитров из «%@»",
+      "one": "Импортирован %lld субтитр из «%@»",
+      "other": "Импортировано %lld субтитра из «%@»"
+    },
+    "uk": {
+      "few": "Імпортовано %lld субтитри з «%@»",
+      "many": "Імпортовано %lld субтитрів із «%@»",
+      "one": "Імпортовано %lld субтитр із «%@»",
+      "other": "Імпортовано %lld субтитру з «%@»"
+    },
+    "zh-Hans": "已从“%2$@”导入 %1$lld 条字幕"
+  },
+  "In the editor, press ? ▸ Customize….": {
+    "de": "Drück im Editor ? ▸ Anpassen ….",
+    "fr": "Dans l’éditeur, appuyez sur ? ▸ Personnaliser….",
+    "ja": "エディタで?キー＞“カスタマイズ…”。",
+    "ru": "В редакторе нажмите ? ▸ Настроить….",
+    "uk": "У редакторі натисніть ? ▸ Налаштувати….",
+    "zh-Hans": "在编辑器中，按 ? ▸ 自定…。"
+  },
+  "In the export window ▸ Cover.": {
+    "de": "Im Exportfenster ▸ Titelbild.",
+    "fr": "Dans la fenêtre d’exportation ▸ Couverture.",
+    "ja": "書き出しウインドウ＞“カバー”。",
+    "ru": "Окно экспорта ▸ Обложка.",
+    "uk": "У вікні експорту ▸ Обкладинка.",
+    "zh-Hans": "导出窗口 ▸ 封面。"
+  },
+  "In, Out and Combo animations": {
+    "de": "Animationen: Eingang, Ausgang und Kombi",
+    "fr": "Animations d’entrée, de sortie et combo",
+    "ja": "イン、アウト、コンボのアニメーション",
+    "ru": "Анимации: начало, конец и комбо",
+    "uk": "Анімації «Початок», «Кінець» і «Комбо»",
+    "zh-Hans": "入场、出场和组合动画"
+  },
+  "Intensity": {
+    "de": "Intensität",
+    "fr": "Intensité",
+    "ja": "強度",
+    "ru": "Интенсивность",
+    "uk": "Інтенсивність",
+    "zh-Hans": "强度"
+  },
+  "Interface": {
+    "de": "Oberfläche",
+    "fr": "Interface",
+    "ja": "インターフェイス",
+    "ru": "Интерфейс",
+    "uk": "Інтерфейс",
+    "zh-Hans": "界面"
+  },
+  "Invert": {
+    "de": "Umkehren",
+    "fr": "Inverser",
+    "ja": "反転",
+    "ru": "Инвертировать",
+    "uk": "Інвертувати",
+    "zh-Hans": "反转"
+  },
+  "It works on this Mac: nothing is uploaded.": {
+    "de": "Es läuft auf diesem Mac: Nichts wird hochgeladen.",
+    "fr": "Tout se fait sur ce Mac : rien n’est envoyé en ligne.",
+    "ja": "このMac上で処理され、何もアップロードされません。",
+    "ru": "Все работает на этом Mac: ничего не загружается в сеть.",
+    "uk": "Усе працює на цьому Mac: нічого не вивантажується.",
+    "zh-Hans": "它在这台 Mac 上运行：不会上传任何内容。"
+  },
+  "It's silent: nothing to normalize": {
+    "de": "Es ist still: nichts zu normalisieren",
+    "fr": "Silencieux : rien à normaliser",
+    "ja": "無音のため、ノーマライズするものがありません",
+    "ru": "Здесь тишина: нечего нормализовать",
+    "uk": "Тут тиша: нічого нормалізувати",
+    "zh-Hans": "没有声音：无需统一响度"
+  },
+  "Italic": {
+    "de": "Kursiv",
+    "fr": "Italique",
+    "ja": "イタリック",
+    "ru": "Курсив",
+    "uk": "Курсив",
+    "zh-Hans": "斜体"
+  },
+  "Its clips keep their own settings: break it apart to change one.": {
+    "de": "Seine Clips behalten ihre eigenen Einstellungen: Löse ihn auf, um einen zu ändern.",
+    "fr": "Ses clips gardent leurs propres réglages : dissociez-le pour en modifier un.",
+    "ja": "中のクリップはそれぞれの設定を保持しています。1つを変更するには分解してください。",
+    "ru": "Его клипы сохраняют свои настройки: разберите его, чтобы изменить какой-то из них.",
+    "uk": "Його кліпи зберігають власні параметри: розберіть його, щоб змінити один із них.",
+    "zh-Hans": "其中的片段保留各自的设置：拆开后才能更改单个片段。"
+  },
+  "Its clips on their own again, looking as they do now (⇧⌥G)": {
+    "de": "Seine Clips wieder einzeln, so wie sie jetzt aussehen (⇧⌥G)",
+    "fr": "Ses clips de nouveau séparés, tels qu’ils apparaissent maintenant (⇧⌥G)",
+    "ja": "中のクリップを今の見た目のまま個別に戻します（⇧⌥G）",
+    "ru": "Снова отдельные клипы в их нынешнем виде (⇧⌥G)",
+    "uk": "Знову окремі кліпи, що виглядають так, як зараз (⇧⌥G)",
+    "zh-Hans": "让其中的片段重新各自独立，外观保持现状（⇧⌥G）"
+  },
+  "Jump cut": {
+    "de": "Jump Cut",
+    "fr": "Jump cut",
+    "ja": "ジャンプカット",
+    "ru": "Джамп-кат",
+    "uk": "Джамп-кат",
+    "zh-Hans": "跳接"
+  },
+  "Karaoke": {
+    "de": "Karaoke",
+    "fr": "Karaoké",
+    "ja": "カラオケ",
+    "ru": "Караоке",
+    "uk": "Караоке",
+    "zh-Hans": "卡拉 OK"
+  },
+  "Keep Both": {
+    "de": "Beide behalten",
+    "fr": "Garder les deux",
+    "ja": "両方とも残す",
+    "ru": "Оставить оба",
+    "uk": "Залишити обидва",
+    "zh-Hans": "两者都保留"
+  },
+  "Keep pitch": {
+    "de": "Tonhöhe beibehalten",
+    "fr": "Conserver la hauteur",
+    "ja": "ピッチを保持",
+    "ru": "Сохранять тон",
+    "uk": "Зберігати висоту тону",
+    "zh-Hans": "保持音调"
+  },
+  "Keeps just the person, found on this Mac": {
+    "de": "Behält nur die Person, erkannt auf diesem Mac",
+    "fr": "Ne garde que la personne, détectée sur ce Mac",
+    "ja": "このMac上で人物を検出し、人物だけを残します",
+    "ru": "Оставляет только человека; распознавание на этом Mac",
+    "uk": "Залишає тільки людину, знайдену на цьому Mac",
+    "zh-Hans": "只保留人物，在这台 Mac 上识别"
+  },
+  "Kept for %@": {
+    "de": "Behalten für %@",
+    "fr": "Réservé à %@",
+    "ja": "%@用に予約済み",
+    "ru": "Оставлено для «%@»",
+    "uk": "Зарезервовано для «%@»",
+    "zh-Hans": "已保留给“%@”"
+  },
+  "Key for %@: %@": {
+    "de": "Taste für %@: %@",
+    "fr": "Touche de %1$@ : %2$@",
+    "ja": "%1$@のキー: %2$@",
+    "ru": "Клавиша для «%@»: %@",
+    "uk": "Клавіша для «%1$@»: %2$@",
+    "zh-Hans": "“%@”的快捷键：%@"
+  },
+  "Keyed here": {
+    "de": "Keyframe hier",
+    "fr": "Image clé ici",
+    "ja": "キーフレームあり",
+    "ru": "Ключевой кадр здесь",
+    "uk": "Ключовий кадр тут",
+    "zh-Hans": "此处有关键帧"
+  },
+  "Keyed: a change adds a keyframe at the playhead": {
+    "de": "Keyframes an: Eine Änderung fügt an der Abspielposition einen Keyframe hinzu",
+    "fr": "Avec images clés : une modification ajoute une image clé à la tête de lecture",
+    "ja": "キーフレーム設定済み: 変更すると再生ヘッドの位置にキーフレームが追加されます",
+    "ru": "С ключевыми кадрами: изменение добавляет кадр у указателя воспроизведения",
+    "uk": "Із ключовими кадрами: зміна додає ключовий кадр на покажчику відтворення",
+    "zh-Hans": "已设关键帧：更改会在播放头处添加关键帧"
+  },
+  "Keyframe: %@": {
+    "de": "Keyframe: %@",
+    "fr": "Image clé : %@",
+    "ja": "キーフレーム: %@",
+    "ru": "Ключевой кадр: %@",
+    "uk": "Ключовий кадр: %@",
+    "zh-Hans": "关键帧：%@"
+  },
+  "Keyframes": {
+    "de": "Keyframes",
+    "fr": "Images clés",
+    "ja": "キーフレーム",
+    "ru": "Ключевые кадры",
+    "uk": "Ключові кадри",
+    "zh-Hans": "关键帧"
+  },
+  "Keyframes show as diamonds on the clip in the timeline.": {
+    "de": "Keyframes erscheinen als Rauten auf dem Clip in der Zeitleiste.",
+    "fr": "Les images clés apparaissent sous forme de losanges sur le clip dans la timeline.",
+    "ja": "キーフレームは、タイムラインのクリップ上にひし形で表示されます。",
+    "ru": "Ключевые кадры видны ромбиками на клипе на шкале времени.",
+    "uk": "Ключові кадри показано ромбиками на кліпі на шкалі часу.",
+    "zh-Hans": "关键帧在时间线的片段上显示为菱形。"
+  },
+  "Keys like": {
+    "de": "Tasten wie",
+    "fr": "Jeu de touches",
+    "ja": "キー配置",
+    "ru": "Раскладка клавиш",
+    "uk": "Клавіші як у",
+    "zh-Hans": "快捷键风格"
+  },
+  "Kick drum": {
+    "de": "Bassdrum",
+    "fr": "Grosse caisse",
+    "ja": "キックドラム",
+    "ru": "Бочка",
+    "uk": "Бас-барабан",
+    "zh-Hans": "底鼓"
+  },
+  "LF Studios": {
+    "de": "LF Studios",
+    "fr": "LF Studios",
+    "ja": "LF Studios",
+    "ru": "LF Studios",
+    "uk": "LF Studios",
+    "zh-Hans": "LF Studios"
+  },
+  "LIKE": {
+    "de": "LIKE",
+    "fr": "J’AIME",
+    "ja": "いいね",
+    "ru": "ЛАЙК",
+    "uk": "ВПОДОБАЙ",
+    "zh-Hans": "点赞"
+  },
+  "LUT": {
+    "de": "LUT",
+    "fr": "LUT",
+    "ja": "LUT",
+    "ru": "LUT",
+    "uk": "LUT",
+    "zh-Hans": "LUT"
+  },
+  "Labels": {
+    "de": "Beschriftungen",
+    "fr": "Étiquettes",
+    "ja": "ラベル",
+    "ru": "Подписи",
+    "uk": "Мітки",
+    "zh-Hans": "标签"
+  },
+  "Laugh": {
+    "de": "Lachen",
+    "fr": "Rire",
+    "ja": "大笑い",
+    "ru": "Смех",
+    "uk": "Сміх",
+    "zh-Hans": "大笑"
+  },
+  "Letter spacing": {
+    "de": "Zeichenabstand",
+    "fr": "Espacement des lettres",
+    "ja": "文字間隔",
+    "ru": "Межбуквенный интервал",
+    "uk": "Міжлітерний інтервал",
+    "zh-Hans": "字间距"
+  },
+  "Library ▸ Captions.": {
+    "de": "Bibliothek ▸ Untertitel.",
+    "fr": "Bibliothèque ▸ Sous-titres.",
+    "ja": "“ライブラリ”＞“字幕”。",
+    "ru": "Библиотека ▸ Субтитры.",
+    "uk": "Бібліотека ▸ Субтитри.",
+    "zh-Hans": "素材库 ▸ 字幕。"
+  },
+  "Library ▸ Effects.": {
+    "de": "Bibliothek ▸ Effekte.",
+    "fr": "Bibliothèque ▸ Effets.",
+    "ja": "“ライブラリ”＞“エフェクト”。",
+    "ru": "Библиотека ▸ Эффекты.",
+    "uk": "Бібліотека ▸ Ефекти.",
+    "zh-Hans": "素材库 ▸ 特效。"
+  },
+  "Library ▸ Filters, and Properties ▸ Filter.": {
+    "de": "Bibliothek ▸ Filter und Eigenschaften ▸ Filter.",
+    "fr": "Bibliothèque ▸ Filtres, et Propriétés ▸ Filtre.",
+    "ja": "“ライブラリ”＞“フィルタ”と“プロパティ”＞“フィルタ”。",
+    "ru": "Библиотека ▸ Фильтры и Свойства ▸ Фильтр.",
+    "uk": "Бібліотека ▸ Фільтри і Властивості ▸ Фільтр.",
+    "zh-Hans": "素材库 ▸ 滤镜，以及属性 ▸ 滤镜。"
+  },
+  "Library ▸ Stickers, and Library ▸ Audio ▸ Sound effects.": {
+    "de": "Bibliothek ▸ Sticker und Bibliothek ▸ Audio ▸ Soundeffekte.",
+    "fr": "Bibliothèque ▸ Autocollants, et Bibliothèque ▸ Audio ▸ Effets sonores.",
+    "ja": "“ライブラリ”＞“ステッカー”と“ライブラリ”＞“オーディオ”＞“効果音”。",
+    "ru": "Библиотека ▸ Стикеры и Библиотека ▸ Аудио ▸ Звуковые эффекты.",
+    "uk": "Бібліотека ▸ Стікери і Бібліотека ▸ Аудіо ▸ Звукові ефекти.",
+    "zh-Hans": "素材库 ▸ 贴纸，以及素材库 ▸ 音频 ▸ 音效。"
+  },
+  "Library ▸ Text, or press ⌥⇧T.": {
+    "de": "Bibliothek ▸ Text, oder drück ⌥⇧T.",
+    "fr": "Bibliothèque ▸ Texte, ou appuyez sur ⌥⇧T.",
+    "ja": "“ライブラリ”＞“テキスト”、または⌥⇧Tを押します。",
+    "ru": "Библиотека ▸ Текст или нажмите ⌥⇧T.",
+    "uk": "Бібліотека ▸ Текст або натисніть ⌥⇧T.",
+    "zh-Hans": "素材库 ▸ 文字，或按 ⌥⇧T。"
+  },
+  "Library ▸ Transitions.": {
+    "de": "Bibliothek ▸ Übergänge.",
+    "fr": "Bibliothèque ▸ Transitions.",
+    "ja": "“ライブラリ”＞“トランジション”。",
+    "ru": "Библиотека ▸ Переходы.",
+    "uk": "Бібліотека ▸ Переходи.",
+    "zh-Hans": "素材库 ▸ 转场。"
+  },
+  "Library, effects & keyframes": {
+    "de": "Bibliothek, Effekte & Keyframes",
+    "fr": "Bibliothèque, effets et images clés",
+    "ja": "ライブラリ、エフェクト、キーフレーム",
+    "ru": "Библиотека, эффекты и ключевые кадры",
+    "uk": "Бібліотека, ефекти й ключові кадри",
+    "zh-Hans": "素材库、特效和关键帧"
+  },
+  "Lifted blacks": {
+    "de": "Angehobenes Schwarz",
+    "fr": "Noirs relevés",
+    "ja": "黒浮き",
+    "ru": "Приподнятые черные",
+    "uk": "Підняті чорні",
+    "zh-Hans": "提亮黑色"
+  },
+  "Light box": {
+    "de": "Heller Kasten",
+    "fr": "Encadré clair",
+    "ja": "ライトボックス",
+    "ru": "Светлая плашка",
+    "uk": "Світла плашка",
+    "zh-Hans": "浅色框"
+  },
+  "Light card": {
+    "de": "Helle Karte",
+    "fr": "Carte claire",
+    "ja": "ライトカード",
+    "ru": "Светлая карточка",
+    "uk": "Світла картка",
+    "zh-Hans": "浅色卡片"
+  },
+  "Lighten": {
+    "de": "Aufhellen",
+    "fr": "Éclaircir",
+    "ja": "比較（明）",
+    "ru": "Замена светлым",
+    "uk": "Заміна світлим",
+    "zh-Hans": "变亮"
+  },
+  "Lighter copies of the videos, for smooth editing of big recordings. Exports always use the originals.": {
+    "de": "Leichtere Kopien der Videos, für flüssiges Bearbeiten großer Aufnahmen. Exporte nutzen immer die Originale.",
+    "fr": "Des copies plus légères des vidéos, pour un montage fluide des longs enregistrements. Les exportations utilisent toujours les originaux.",
+    "ja": "大きな収録をスムーズに編集するための、ビデオの軽量コピーです。書き出しには常にオリジナルが使われます。",
+    "ru": "Облегченные копии видео для плавного монтажа больших записей. При экспорте всегда используются оригиналы.",
+    "uk": "Легші копії відео для плавного монтажу великих записів. Експорт завжди використовує оригінали.",
+    "zh-Hans": "视频的轻量副本，让大型录制内容也能流畅剪辑。导出始终使用原始文件。"
+  },
+  "Lightning": {
+    "de": "Blitz",
+    "fr": "Éclair",
+    "ja": "稲妻",
+    "ru": "Молния",
+    "uk": "Блискавка",
+    "zh-Hans": "闪电"
+  },
+  "Like": {
+    "de": "Gefällt mir",
+    "fr": "J’aime",
+    "ja": "いいね",
+    "ru": "Лайк",
+    "uk": "Вподобайка",
+    "zh-Hans": "点赞"
+  },
+  "Line spacing": {
+    "de": "Zeilenabstand",
+    "fr": "Interligne",
+    "ja": "行間",
+    "ru": "Межстрочный интервал",
+    "uk": "Міжрядковий інтервал",
+    "zh-Hans": "行间距"
+  },
+  "Linear": {
+    "de": "Linear",
+    "fr": "Linéaire",
+    "ja": "リニア",
+    "ru": "Линейная",
+    "uk": "Лінійно",
+    "zh-Hans": "线性"
+  },
+  "Link in bio": {
+    "de": "Link in der Bio",
+    "fr": "Lien en bio",
+    "ja": "プロフィールのリンクから",
+    "ru": "Ссылка в профиле",
+    "uk": "Посилання в біо",
+    "zh-Hans": "简介有链接"
+  },
+  "Looks like Warm, Film, Teal & orange or Noir, at the strength you want, or a .cube LUT of your own.": {
+    "de": "Looks wie Warm, Film, Teal & Orange oder Noir, in der gewünschten Stärke, oder eine eigene .cube-LUT.",
+    "fr": "Des looks comme Chaud, Film, Bleu et orange ou Noir, à l’intensité voulue, ou une LUT .cube à vous.",
+    "ja": "“ウォーム”、“フィルム”、“ティール＆オレンジ”、“ノアール”などのルックを好みの強さで、または自分の.cube LUTを使えます。",
+    "ru": "Стили вроде «Тёплый», «Пленка», «Бирюза и оранжевый» или «Нуар» с нужной силой — или ваш собственный LUT .cube.",
+    "uk": "Стилі на кшталт «Теплий», «Плівка», «Бірюза й помаранч» чи «Нуар» із потрібною силою або ваш власний LUT .cube.",
+    "zh-Hans": "“暖调”“胶片”“青橙”或“黑色电影”等风格，强度随你设定，或使用你自己的 .cube LUT。"
+  },
+  "Lost sight of it at %@ — it holds still from there": {
+    "de": "Bei %@ aus den Augen verloren – ab da bleibt es stehen",
+    "fr": "Perdu de vue à %@ — il reste immobile à partir de là",
+    "ja": "%@で見失いました — そこからは静止します",
+    "ru": "Объект потерян на %@ — дальше клип стоит на месте",
+    "uk": "Об’єкт втрачено на %@ — далі кліп стоїть на місці",
+    "zh-Hans": "在 %@ 处跟丢了 — 从那里起保持不动"
+  },
+  "Loud": {
+    "de": "Laut",
+    "fr": "Tapageur",
+    "ja": "ラウド",
+    "ru": "Броский",
+    "uk": "Гучний",
+    "zh-Hans": "醒目"
+  },
+  "Lower": {
+    "de": "Niedriger",
+    "fr": "Plus bas",
+    "ja": "低",
+    "ru": "Ниже",
+    "uk": "Нижчий",
+    "zh-Hans": "较低"
+  },
+  "Lower thirds": {
+    "de": "Bauchbinden",
+    "fr": "Bandeaux",
+    "ja": "ロワーサード",
+    "ru": "Нижние титры",
+    "uk": "Нижні титри",
+    "zh-Hans": "人名条"
+  },
+  "Luminance": {
+    "de": "Luminanz",
+    "fr": "Luminance",
+    "ja": "輝度",
+    "ru": "Яркость",
+    "uk": "Яскравість",
+    "zh-Hans": "明亮度"
+  },
+  "MP4 plays everywhere; MOV is QuickTime's own": {
+    "de": "MP4 läuft überall; MOV ist das Format von QuickTime",
+    "fr": "Le MP4 se lit partout ; le MOV est le format de QuickTime",
+    "ja": "MP4はどこでも再生でき、MOVはQuickTime独自の形式です",
+    "ru": "MP4 воспроизводится везде; MOV — родной формат QuickTime",
+    "uk": "MP4 відтворюється всюди; MOV — власний формат QuickTime",
+    "zh-Hans": "MP4 到处都能播放；MOV 是 QuickTime 的原生格式"
+  },
+  "Magenta": {
+    "de": "Magenta",
+    "fr": "Magenta",
+    "ja": "マゼンタ",
+    "ru": "Пурпурный",
+    "uk": "Пурпуровий",
+    "zh-Hans": "洋红"
+  },
+  "Make a clip come in, go out, or keep moving while it shows.": {
+    "de": "Lass einen Clip hereinkommen, hinausgehen oder in Bewegung bleiben, solange er zu sehen ist.",
+    "fr": "Faites entrer ou sortir un clip, ou faites-le bouger tant qu’il est affiché.",
+    "ja": "クリップを登場させたり、退場させたり、表示中に動かし続けたりします。",
+    "ru": "Сделайте так, чтобы клип появлялся, исчезал или двигался, пока он на экране.",
+    "uk": "Нехай кліп з’являється, зникає або рухається, поки його видно.",
+    "zh-Hans": "让片段入场、出场，或在显示期间持续运动。"
+  },
+  "Make captions again": {
+    "de": "Untertitel neu erstellen",
+    "fr": "Recréer les sous-titres",
+    "ja": "字幕を作り直す",
+    "ru": "Создать субтитры заново",
+    "uk": "Створити субтитри знову",
+    "zh-Hans": "重新生成字幕"
+  },
+  "Make compound clip": {
+    "de": "Zusammengesetzten Clip erstellen",
+    "fr": "Créer un clip composé",
+    "ja": "複合クリップを作成",
+    "ru": "Создать составной клип",
+    "uk": "Створити складений кліп",
+    "zh-Hans": "创建复合片段"
+  },
+  "Make compound clip / break apart": {
+    "de": "Zusammengesetzten Clip erstellen / auflösen",
+    "fr": "Créer un clip composé / dissocier",
+    "ja": "複合クリップを作成/分解",
+    "ru": "Создать составной клип / разобрать",
+    "uk": "Створити складений кліп / розібрати",
+    "zh-Hans": "创建复合片段 / 拆开"
+  },
+  "Make several clips above the main track into one: moved, sized, turned and faded together.": {
+    "de": "Mach mehrere Clips über der Hauptspur zu einem: zusammen bewegt, skaliert, gedreht und ausgeblendet.",
+    "fr": "Réunissez plusieurs clips au-dessus de la piste principale en un seul : déplacés, redimensionnés, pivotés et estompés ensemble.",
+    "ja": "メイントラックの上の複数のクリップを1つにまとめます。移動、サイズ変更、回転、フェードがまとめて行われます。",
+    "ru": "Объедините несколько клипов над основной дорожкой в один: они вместе перемещаются, меняют размер, поворачиваются и становятся прозрачнее.",
+    "uk": "Об’єднайте кілька кліпів над основною доріжкою в один: їх переміщують, масштабують, повертають і згасають разом.",
+    "zh-Hans": "将主轨道上方的多个片段合为一个：一起移动、调整大小、旋转和淡化。"
+  },
+  "Make text, a sticker or a picture follow something that moves in the video.": {
+    "de": "Lass Text, einen Sticker oder ein Bild etwas folgen, das sich im Video bewegt.",
+    "fr": "Faites suivre à un texte, un autocollant ou une image quelque chose qui bouge dans la vidéo.",
+    "ja": "テキスト、ステッカー、画像を、ビデオ内で動くものに追従させます。",
+    "ru": "Пусть текст, стикер или картинка следуют за тем, что движется в видео.",
+    "uk": "Нехай текст, стікер чи зображення стежать за чимось, що рухається у відео.",
+    "zh-Hans": "让文字、贴纸或图片跟随视频中移动的物体。"
+  },
+  "Makes it a clip above the main track: it takes its place in the tracks' order and gets keyframes, animations and effects": {
+    "de": "Macht es zu einem Clip über der Hauptspur: Es reiht sich in die Reihenfolge der Spuren ein und bekommt Keyframes, Animationen und Effekte",
+    "fr": "En fait un clip au-dessus de la piste principale : il prend sa place dans l’ordre des pistes et reçoit images clés, animations et effets",
+    "ja": "メイントラックの上のクリップにします。トラックの順序に従って表示され、キーフレーム、アニメーション、エフェクトを使えるようになります",
+    "ru": "Делает его клипом над основной дорожкой: он встает в общий порядок дорожек и получает ключевые кадры, анимации и эффекты",
+    "uk": "Робить її кліпом над основною доріжкою: він займає місце в порядку доріжок і отримує ключові кадри, анімації та ефекти",
+    "zh-Hans": "将其变为主轨道上方的片段：它会按轨道顺序排列，并可使用关键帧、动画和特效"
+  },
+  "Makes this clip follow something that moves in the video": {
+    "de": "Lässt diesen Clip etwas folgen, das sich im Video bewegt",
+    "fr": "Fait suivre à ce clip quelque chose qui bouge dans la vidéo",
+    "ja": "このクリップをビデオ内で動くものに追従させます",
+    "ru": "Клип будет следовать за тем, что движется в видео",
+    "uk": "Кліп стежитиме за чимось, що рухається у відео",
+    "zh-Hans": "让此片段跟随视频中移动的物体"
+  },
+  "Map pin": {
+    "de": "Stecknadel",
+    "fr": "Épingle",
+    "ja": "マップピン",
+    "ru": "Метка на карте",
+    "uk": "Мітка на мапі",
+    "zh-Hans": "地图图钉"
+  },
+  "Mask": {
+    "de": "Maske",
+    "fr": "Masque",
+    "ja": "マスク",
+    "ru": "Маска",
+    "uk": "Маска",
+    "zh-Hans": "蒙版"
+  },
+  "Mask: %@": {
+    "de": "Maske: %@",
+    "fr": "Masque : %@",
+    "ja": "マスク: %@",
+    "ru": "Маска: %@",
+    "uk": "Маска: %@",
+    "zh-Hans": "蒙版：%@"
+  },
+  "Mask: Linear, Mirror, Circle or Rectangle, with Feather and Invert. Its place and size take keyframes.": {
+    "de": "Maske: Linear, Spiegel, Kreis oder Rechteck, mit weicher Kante und Umkehren. Position und Größe lassen sich mit Keyframes animieren.",
+    "fr": "Masque : Linéaire, Miroir, Cercle ou Rectangle, avec Adoucissement et Inverser. Sa position et sa taille acceptent des images clés.",
+    "ja": "マスク: “リニア”、“左右反転”、“円形”、“長方形”に、“フェザー”と“反転”。位置とサイズにはキーフレームを設定できます。",
+    "ru": "Маска: «Линейная», «Зеркальное отражение», «Круг» или «Прямоугольник», с растушевкой и инверсией. Для ее положения и размера можно ставить ключевые кадры.",
+    "uk": "Маска: «Лінійно», «Віддзеркалити», «Коло» чи «Прямокутник», із «Розтушовуванням» та «Інвертувати». Її положення й розмір підтримують ключові кадри.",
+    "zh-Hans": "蒙版：线性、镜面、圆形或矩形，可设定羽化和反转。其位置和大小可设关键帧。"
+  },
+  "Matte": {
+    "de": "Matt",
+    "fr": "Mat",
+    "ja": "マット",
+    "ru": "Матовый",
+    "uk": "Матовий",
+    "zh-Hans": "哑光"
+  },
+  "Mbit/s": {
+    "de": "Mbit/s",
+    "fr": "Mbit/s",
+    "ja": "Mbit/s",
+    "ru": "Мбит/с",
+    "uk": "Mbit/s",
+    "zh-Hans": "Mbit/s"
+  },
+  "Midtones (gamma)": {
+    "de": "Mitteltöne (Gamma)",
+    "fr": "Tons moyens (gamma)",
+    "ja": "中間調（ガンマ）",
+    "ru": "Средние тона (гамма)",
+    "uk": "Середні тони (гамма)",
+    "zh-Hans": "中间调（伽马）"
+  },
+  "Mix a clip with what's under it, cut out its background, or show only part of it.": {
+    "de": "Mische einen Clip mit dem darunter, stell seinen Hintergrund frei oder zeig nur einen Teil davon.",
+    "fr": "Mélangez un clip avec ce qui est en dessous, retirez son arrière-plan, ou n’en montrez qu’une partie.",
+    "ja": "クリップを下にあるものと混ぜたり、背景を切り抜いたり、一部だけを表示したりします。",
+    "ru": "Смешайте клип с тем, что под ним, вырежьте его фон или покажите только его часть.",
+    "uk": "Змішайте кліп із тим, що під ним, приберіть його тло або покажіть лише частину.",
+    "zh-Hans": "将片段与下方内容混合、抠除其背景，或只显示其中一部分。"
+  },
+  "Mono": {
+    "de": "Mono",
+    "fr": "Mono",
+    "ja": "モノ",
+    "ru": "Моно",
+    "uk": "Монохром",
+    "zh-Hans": "单色"
+  },
+  "Montage": {
+    "de": "Montage",
+    "fr": "Montage",
+    "ja": "モンタージュ",
+    "ru": "Монтаж",
+    "uk": "Монтаж",
+    "zh-Hans": "蒙太奇"
+  },
+  "Moody": {
+    "de": "Düster",
+    "fr": "Mélancolique",
+    "ja": "ムーディー",
+    "ru": "Мрачный",
+    "uk": "Похмурий",
+    "zh-Hans": "情绪"
+  },
+  "Motion tracking": {
+    "de": "Bewegungsverfolgung",
+    "fr": "Suivi de mouvement",
+    "ja": "モーショントラッキング",
+    "ru": "Отслеживание движения",
+    "uk": "Відстеження руху",
+    "zh-Hans": "运动跟踪"
+  },
+  "Move an annotation to a track": {
+    "de": "Anmerkung auf eine Spur bewegen",
+    "fr": "Déplacer une annotation vers une piste",
+    "ja": "注釈をトラックに移動",
+    "ru": "Перенести элемент разметки на дорожку",
+    "uk": "Перенести розмітку на доріжку",
+    "zh-Hans": "将标注移到轨道"
+  },
+  "Move it on the player or the timeline; set its place, size, turn and opacity in Properties.": {
+    "de": "Bewege es im Player oder auf der Zeitleiste; stell Position, Größe, Drehung und Deckkraft unter Eigenschaften ein.",
+    "fr": "Déplacez-le sur le lecteur ou la timeline ; réglez sa position, sa taille, sa rotation et son opacité dans Propriétés.",
+    "ja": "プレーヤーまたはタイムライン上で移動し、位置、サイズ、回転、不透明度は“プロパティ”で設定します。",
+    "ru": "Перемещайте его в плеере или на шкале времени; положение, размер, поворот и непрозрачность задаются в «Свойствах».",
+    "uk": "Переміщуйте його в плеєрі чи на шкалі часу; положення, розмір, поворот і непрозорість задайте у «Властивостях».",
+    "zh-Hans": "在播放器或时间线上移动它；在“属性”中设定其位置、大小、旋转和不透明度。"
+  },
+  "Move the playhead again and change the setting: a new keyframe is made there.": {
+    "de": "Bewege die Abspielposition erneut und ändere die Einstellung: Dort entsteht ein neuer Keyframe.",
+    "fr": "Déplacez à nouveau la tête de lecture et modifiez le réglage : une nouvelle image clé y est créée.",
+    "ja": "もう一度再生ヘッドを動かして設定を変更すると、その位置に新しいキーフレームが作成されます。",
+    "ru": "Снова сдвиньте указатель воспроизведения и измените параметр: там появится новый ключевой кадр.",
+    "uk": "Знову перемістіть покажчик відтворення й змініть параметр: там з’явиться новий ключовий кадр.",
+    "zh-Hans": "再次移动播放头并更改设置：会在那里创建新的关键帧。"
+  },
+  "Move the playhead and click ◆ next to a setting (or press ⌥K for place, size, turn and opacity).": {
+    "de": "Bewege die Abspielposition und klicke auf ◆ neben einer Einstellung (oder drück ⌥K für Position, Größe, Drehung und Deckkraft).",
+    "fr": "Déplacez la tête de lecture et cliquez sur ◆ à côté d’un réglage (ou appuyez sur ⌥K pour la position, la taille, la rotation et l’opacité).",
+    "ja": "再生ヘッドを動かし、設定の横の◆をクリックします（位置、サイズ、回転、不透明度は⌥Kでも追加できます）。",
+    "ru": "Сдвиньте указатель воспроизведения и нажмите ◆ рядом с параметром (или нажмите ⌥K для положения, размера, поворота и непрозрачности).",
+    "uk": "Перемістіть покажчик відтворення й клацніть ◆ поруч із параметром (або натисніть ⌥K для положення, розміру, повороту й непрозорості).",
+    "zh-Hans": "移动播放头，然后点按设置旁边的 ◆（或按 ⌥K 设定位置、大小、旋转和不透明度）。"
+  },
+  "Move the playhead onto the clip to add a keyframe": {
+    "de": "Bewege die Abspielposition auf den Clip, um einen Keyframe hinzuzufügen",
+    "fr": "Placez la tête de lecture sur le clip pour ajouter une image clé",
+    "ja": "キーフレームを追加するには、再生ヘッドをクリップ上に移動してください",
+    "ru": "Наведите указатель воспроизведения на клип, чтобы добавить ключевой кадр",
+    "uk": "Перемістіть покажчик відтворення на кліп, щоб додати ключовий кадр",
+    "zh-Hans": "将播放头移到片段上即可添加关键帧"
+  },
+  "Move the playhead onto the sound to add a keyframe": {
+    "de": "Bewege die Abspielposition auf den Ton, um einen Keyframe hinzuzufügen",
+    "fr": "Placez la tête de lecture sur le son pour ajouter une image clé",
+    "ja": "キーフレームを追加するには、再生ヘッドをサウンド上に移動してください",
+    "ru": "Наведите указатель воспроизведения на звук, чтобы добавить ключевой кадр",
+    "uk": "Перемістіть покажчик відтворення на звук, щоб додати ключовий кадр",
+    "zh-Hans": "将播放头移到声音上即可添加关键帧"
+  },
+  "Move the playhead to where the thing first shows. Click Track.": {
+    "de": "Bewege die Abspielposition dorthin, wo das Objekt zuerst zu sehen ist. Klicke auf „Verfolgen“.",
+    "fr": "Placez la tête de lecture là où l’objet apparaît pour la première fois. Cliquez sur Suivre.",
+    "ja": "対象が最初に表示される位置に再生ヘッドを移動します。“追跡”をクリックします。",
+    "ru": "Поставьте указатель воспроизведения туда, где объект появляется впервые. Нажмите «Отследить».",
+    "uk": "Перемістіть покажчик відтворення туди, де об’єкт з’являється вперше. Клацніть «Відстежити».",
+    "zh-Hans": "将播放头移到该物体首次出现的位置。点按“跟踪”。"
+  },
+  "Move to a Track": {
+    "de": "Auf eine Spur bewegen",
+    "fr": "Déplacer vers une piste",
+    "ja": "トラックに移動",
+    "ru": "Перенести на дорожку",
+    "uk": "Перенести на доріжку",
+    "zh-Hans": "移到轨道"
+  },
+  "Multiply": {
+    "de": "Multiplizieren",
+    "fr": "Produit",
+    "ja": "乗算",
+    "ru": "Умножение",
+    "uk": "Множення",
+    "zh-Hans": "正片叠底"
+  },
+  "Music note": {
+    "de": "Musiknote",
+    "fr": "Note de musique",
+    "ja": "音符",
+    "ru": "Нота",
+    "uk": "Нота",
+    "zh-Hans": "音符"
+  },
+  "Muted": {
+    "de": "Stumm",
+    "fr": "Atténué",
+    "ja": "落ち着いた色",
+    "ru": "Без звука",
+    "uk": "Приглушений",
+    "zh-Hans": "淡雅"
+  },
+  "NEW": {
+    "de": "NEU",
+    "fr": "NOUVEAU",
+    "ja": "NEW",
+    "ru": "НОВОЕ",
+    "uk": "НОВЕ",
+    "zh-Hans": "最新"
+  },
+  "Name bar": {
+    "de": "Namensbalken",
+    "fr": "Bandeau de nom",
+    "ja": "名前バー",
+    "ru": "Плашка с именем",
+    "uk": "Плашка з іменем",
+    "zh-Hans": "姓名条"
+  },
+  "Neon": {
+    "de": "Neon",
+    "fr": "Néon",
+    "ja": "ネオン",
+    "ru": "Неон",
+    "uk": "Неон",
+    "zh-Hans": "霓虹"
+  },
+  "New badge": {
+    "de": "Neu-Abzeichen",
+    "fr": "Badge Nouveau",
+    "ja": "NEWバッジ",
+    "ru": "Значок «Новое»",
+    "uk": "Значок «Нове»",
+    "zh-Hans": "“最新”标签"
+  },
+  "News": {
+    "de": "Nachrichten",
+    "fr": "Actualités",
+    "ja": "ニュース",
+    "ru": "Новости",
+    "uk": "Новини",
+    "zh-Hans": "新闻"
+  },
+  "Next keyframe": {
+    "de": "Nächster Keyframe",
+    "fr": "Image clé suivante",
+    "ja": "次のキーフレーム",
+    "ru": "Следующий ключевой кадр",
+    "uk": "Наступний ключовий кадр",
+    "zh-Hans": "下一个关键帧"
+  },
+  "Night": {
+    "de": "Nacht",
+    "fr": "Nuit",
+    "ja": "ナイト",
+    "ru": "Ночь",
+    "uk": "Ніч",
+    "zh-Hans": "夜晚"
+  },
+  "No captions found in “%@”": {
+    "de": "Keine Untertitel in „%@“ gefunden",
+    "fr": "Aucun sous-titre trouvé dans « %@ »",
+    "ja": "“%@”に字幕が見つかりません",
+    "ru": "В «%@» не найдено субтитров",
+    "uk": "У «%@» не знайдено субтитрів",
+    "zh-Hans": "在“%@”中找不到字幕"
+  },
+  "No clear beat found": {
+    "de": "Kein klarer Beat gefunden",
+    "fr": "Aucun rythme net trouvé",
+    "ja": "はっきりしたビートが見つかりません",
+    "ru": "Четкий бит не найден",
+    "uk": "Чіткого біту не знайдено",
+    "zh-Hans": "找不到清晰的节拍"
+  },
+  "No favourites yet: hover an item and click its star.": {
+    "de": "Noch keine Favoriten: Zeig auf ein Objekt und klicke auf seinen Stern.",
+    "fr": "Aucun favori pour l’instant : survolez un élément et cliquez sur son étoile.",
+    "ja": "お気に入りはまだありません。項目にポインタを置いて星をクリックします。",
+    "ru": "В избранном пока пусто: наведите указатель на элемент и нажмите его звездочку.",
+    "uk": "У вибраному поки порожньо: наведіть на елемент і клацніть його зірочку.",
+    "zh-Hans": "还没有收藏：将指针悬停在项目上，然后点按其星标。"
+  },
+  "Noir": {
+    "de": "Noir",
+    "fr": "Noir",
+    "ja": "ノアール",
+    "ru": "Нуар",
+    "uk": "Нуар",
+    "zh-Hans": "黑色电影"
+  },
+  "None takes the animation off.": {
+    "de": "„Ohne“ entfernt die Animation.",
+    "fr": "Aucune retire l’animation.",
+    "ja": "“なし”を選ぶとアニメーションを外します。",
+    "ru": "«Нет» убирает анимацию.",
+    "uk": "«Немає» прибирає анімацію.",
+    "zh-Hans": "选择“无”可移除动画。"
+  },
+  "Normal": {
+    "de": "Normal",
+    "fr": "Normal",
+    "ja": "標準",
+    "ru": "Обычный",
+    "uk": "Звичайний",
+    "zh-Hans": "正常"
+  },
+  "Normal: one speed for the whole clip. Keep pitch off lets faster sound higher, like a tape.": {
+    "de": "Normal: ein Tempo für den ganzen Clip. Ist „Tonhöhe beibehalten“ aus, klingt schnellerer Ton höher, wie bei einem Tonband.",
+    "fr": "Normal : une seule vitesse pour tout le clip. Conserver la hauteur désactivé laisse le son accéléré devenir plus aigu, comme une cassette.",
+    "ja": "標準: クリップ全体を1つの速度で再生します。“ピッチを保持”をオフにすると、テープのように速いほど音が高くなります。",
+    "ru": "Обычная: одна скорость на весь клип. Если «Сохранять тон» выключено, ускоренный звук становится выше, как на кассете.",
+    "uk": "«Звичайний»: одна швидкість для всього кліпу. Якщо вимкнути «Зберігати висоту тону», швидший звук звучить вище, як на касеті.",
+    "zh-Hans": "正常：整个片段使用同一速度。关闭“保持音调”后，加快时声音会变高，就像磁带一样。"
+  },
+  "Normalize": {
+    "de": "Normalisieren",
+    "fr": "Normaliser",
+    "ja": "ノーマライズ",
+    "ru": "Нормализовать",
+    "uk": "Нормалізувати",
+    "zh-Hans": "统一响度"
+  },
+  "Normalize loudness": {
+    "de": "Lautheit normalisieren",
+    "fr": "Normaliser le volume sonore",
+    "ja": "ラウドネスをノーマライズ",
+    "ru": "Нормализовать громкость",
+    "uk": "Нормалізувати гучність",
+    "zh-Hans": "统一响度"
+  },
+  "Normalize sets the volume so it's as loud as video sites expect (−16 LUFS).": {
+    "de": "„Normalisieren“ stellt die Lautstärke so ein, dass es so laut ist, wie Videoportale es erwarten (−16 LUFS).",
+    "fr": "Normaliser règle le volume pour qu’il soit aussi fort que l’attendent les sites vidéo (−16 LUFS).",
+    "ja": "“ノーマライズ”では、動画サイトが想定する大きさ（−16 LUFS）になるように音量を設定します。",
+    "ru": "«Нормализовать» выставляет громкость, которую ожидают видеосайты (−16 LUFS).",
+    "uk": "«Нормалізувати» встановлює гучність на рівні, якого очікують відеосайти (−16 LUFS).",
+    "zh-Hans": "“统一响度”会调整音量，使其达到视频网站期望的响度（−16 LUFS）。"
+  },
+  "Normalized to −16 LUFS — volume %lld%%": {
+    "de": "Auf −16 LUFS normalisiert – Lautstärke %lld %%",
+    "fr": "Normalisé à −16 LUFS — volume %lld %%",
+    "ja": "−16 LUFSにノーマライズしました — 音量%lld%%",
+    "ru": "Нормализовано до −16 LUFS — громкость %lld%%",
+    "uk": "Нормалізовано до −16 LUFS — гучність %lld%%",
+    "zh-Hans": "已统一为 −16 LUFS — 音量 %lld%%"
+  },
+  "Nothing matches “%@”.": {
+    "de": "Nichts passt zu „%@“.",
+    "fr": "Aucun résultat pour « %@ ».",
+    "ja": "“%@”に一致する項目はありません。",
+    "ru": "Ничего не найдено по запросу «%@».",
+    "uk": "Ніщо не відповідає «%@».",
+    "zh-Hans": "没有与“%@”匹配的内容。"
+  },
+  "Notification": {
+    "de": "Mitteilung",
+    "fr": "Notification",
+    "ja": "通知",
+    "ru": "Уведомление",
+    "uk": "Сповіщення",
+    "zh-Hans": "通知"
+  },
+  "Off, it stays on the timeline but does nothing (V)": {
+    "de": "Aus: bleibt auf der Zeitleiste, bewirkt aber nichts (V)",
+    "fr": "Désactivé, il reste sur la timeline mais n’a aucun effet (V)",
+    "ja": "オフにすると、タイムラインには残りますが何もしません（V）",
+    "ru": "Выключенный, он остается на шкале времени, но ничего не делает (V)",
+    "uk": "Вимкнений, він залишається на шкалі часу, але нічого не робить (V)",
+    "zh-Hans": "关闭后，它保留在时间线上但不起作用（V）"
+  },
+  "Off: faster sounds higher, slower lower. The sound is silent faster than 32× or slower than 1/32×.": {
+    "de": "Aus: Schneller klingt höher, langsamer tiefer. Schneller als 32× oder langsamer als 1/32× ist der Ton stumm.",
+    "fr": "Désactivé : plus rapide sonne plus aigu, plus lent plus grave. Le son est coupé au-delà de 32× ou en deçà de 1/32×.",
+    "ja": "オフ: 速いほど音が高く、遅いほど低くなります。32×より速い、または1/32×より遅い場合は無音になります。",
+    "ru": "Выкл.: быстрее — выше, медленнее — ниже. Быстрее 32× или медленнее 1/32× звук отключается.",
+    "uk": "Вимкнено: швидше звучить вище, повільніше — нижче. Звук вимикається при швидкості понад 32× або менше 1/32×.",
+    "zh-Hans": "关闭：加快时声音变高，减慢时变低。快于 32× 或慢于 1/32× 时没有声音。"
+  },
+  "On a clip: select a clip above the main track, then click + on an effect.": {
+    "de": "Auf einem Clip: Wähle einen Clip über der Hauptspur aus und klicke dann bei einem Effekt auf +.",
+    "fr": "Sur un clip : sélectionnez un clip au-dessus de la piste principale, puis cliquez sur + sur un effet.",
+    "ja": "クリップに適用: メイントラックの上のクリップを選択してから、エフェクトの＋をクリックします。",
+    "ru": "На клип: выберите клип над основной дорожкой, затем нажмите + на эффекте.",
+    "uk": "На кліпі: виберіть кліп над основною доріжкою, а тоді клацніть + на ефекті.",
+    "zh-Hans": "用于片段：选择主轨道上方的片段，然后点按特效上的 +。"
+  },
+  "On a clip: select it and click + on a filter.": {
+    "de": "Auf einem Clip: Wähle ihn aus und klicke bei einem Filter auf +.",
+    "fr": "Sur un clip : sélectionnez-le et cliquez sur + sur un filtre.",
+    "ja": "クリップに適用: クリップを選択し、フィルタの＋をクリックします。",
+    "ru": "На клип: выберите его и нажмите + на фильтре.",
+    "uk": "На кліпі: виберіть його й клацніть + на фільтрі.",
+    "zh-Hans": "用于片段：选择片段，然后点按滤镜上的 +。"
+  },
+  "On another Mac the project plays the originals until you create proxies there.": {
+    "de": "Auf einem anderen Mac spielt das Projekt die Originale ab, bis du dort Proxys erstellst.",
+    "fr": "Sur un autre Mac, le projet lit les originaux jusqu’à ce que vous y créiez des proxys.",
+    "ja": "ほかのMacでは、そのMacでプロキシを作成するまでオリジナルが再生されます。",
+    "ru": "На другом Mac проект воспроизводит оригиналы, пока вы не создадите прокси там.",
+    "uk": "На іншому Mac проєкт відтворює оригінали, доки ви не створите там проксі.",
+    "zh-Hans": "在其他 Mac 上，项目会播放原始文件，直到你在那台 Mac 上创建代理。"
+  },
+  "On the video (above the player's tools)": {
+    "de": "Auf dem Video (über den Werkzeugen des Players)",
+    "fr": "Sur la vidéo (au-dessus des outils du lecteur)",
+    "ja": "ビデオ上（プレーヤーのツールの上）",
+    "ru": "На видео (над инструментами плеера)",
+    "uk": "На відео (над інструментами плеєра)",
+    "zh-Hans": "在视频上（播放器工具上方）"
+  },
+  "Once upon a time": {
+    "de": "Es war einmal",
+    "fr": "Il était une fois",
+    "ja": "むかしむかし",
+    "ru": "Жили-были",
+    "uk": "Колись давно",
+    "zh-Hans": "很久很久以前"
+  },
+  "One cycle": {
+    "de": "Ein Durchlauf",
+    "fr": "Un cycle",
+    "ja": "1周期",
+    "ru": "Один цикл",
+    "uk": "Один цикл",
+    "zh-Hans": "一个周期"
+  },
+  "One word": {
+    "de": "Ein Wort",
+    "fr": "Un mot",
+    "ja": "1語ずつ",
+    "ru": "По одному слову",
+    "uk": "Одне слово",
+    "zh-Hans": "逐词"
+  },
+  "Only text and picture annotations can move to a track": {
+    "de": "Nur Text- und Bildanmerkungen können auf eine Spur",
+    "fr": "Seules les annotations de texte et d’image peuvent aller sur une piste",
+    "ja": "トラックに移動できるのはテキストと画像の注釈だけです",
+    "ru": "На дорожку можно перенести только текстовые элементы и картинки",
+    "uk": "На доріжку можна перенести лише текстову розмітку й зображення",
+    "zh-Hans": "只有文字和图片标注可以移到轨道"
+  },
+  "Originals": {
+    "de": "Originale",
+    "fr": "Originaux",
+    "ja": "オリジナル",
+    "ru": "Оригиналы",
+    "uk": "Оригінали",
+    "zh-Hans": "原始文件"
+  },
+  "Our own sound effects, free to use in anything you make. Hover to listen; drag one onto the timeline or click +.": {
+    "de": "Unsere eigenen Soundeffekte, frei nutzbar in allem, was du machst. Zeig darauf zum Anhören; zieh einen auf die Zeitleiste oder klicke auf +.",
+    "fr": "Nos propres effets sonores, libres d’utilisation dans tout ce que vous créez. Survolez pour écouter ; faites-en glisser un sur la timeline ou cliquez sur +.",
+    "ja": "LF Studiosオリジナルの効果音で、どんな作品にも無料で使えます。ポインタを置くと試聴できます。タイムラインにドラッグするか、＋をクリックします。",
+    "ru": "Наши собственные звуковые эффекты — бесплатно для любых ваших работ. Наведите указатель, чтобы прослушать; перетяните эффект на шкалу времени или нажмите +.",
+    "uk": "Наші власні звукові ефекти, які можна безплатно використовувати в будь-яких ваших роботах. Наведіть, щоб послухати; перетягніть на шкалу часу або клацніть +.",
+    "zh-Hans": "我们自己的音效，可免费用于你制作的任何内容。悬停即可试听；将其拖到时间线上或点按 +。"
+  },
+  "Over everything: drag a filter onto the timeline (a filter clip).": {
+    "de": "Über allem: Zieh einen Filter auf die Zeitleiste (ein Filterclip).",
+    "fr": "Sur tout : faites glisser un filtre sur la timeline (un clip de filtre).",
+    "ja": "全体に適用: フィルタをタイムラインにドラッグします（フィルタクリップ）。",
+    "ru": "Поверх всего: перетяните фильтр на шкалу времени (клип фильтра).",
+    "uk": "Поверх усього: перетягніть фільтр на шкалу часу (кліп фільтра).",
+    "zh-Hans": "用于全部内容：将滤镜拖到时间线上（滤镜片段）。"
+  },
+  "Overlay": {
+    "de": "Ineinanderkopieren",
+    "fr": "Incrustation",
+    "ja": "オーバーレイ",
+    "ru": "Перекрытие",
+    "uk": "Перекриття",
+    "zh-Hans": "叠加"
+  },
+  "POW!": {
+    "de": "POW!",
+    "fr": "BAM !",
+    "ja": "バーン!",
+    "ru": "БАХ!",
+    "uk": "БАЦ!",
+    "zh-Hans": "砰！"
+  },
+  "Pastel": {
+    "de": "Pastell",
+    "fr": "Pastel",
+    "ja": "パステル",
+    "ru": "Пастель",
+    "uk": "Пастель",
+    "zh-Hans": "粉彩"
+  },
+  "Pick Keys like: LF Studios, Final Cut Pro style or Premiere Pro style.": {
+    "de": "Wähle unter „Tasten wie“: LF Studios, Final-Cut-Pro-Stil oder Premiere-Pro-Stil.",
+    "fr": "Choisissez un Jeu de touches : LF Studios, Style Final Cut Pro ou Style Premiere Pro.",
+    "ja": "“キー配置”を選びます: “LF Studios”、“Final Cut Pro風”、“Premiere Pro風”。",
+    "ru": "В «Раскладке клавиш» выберите LF Studios, «Как в Final Cut Pro» или «Как в Premiere Pro».",
+    "uk": "Виберіть у «Клавіші як у»: LF Studios, «Як у Final Cut Pro» або «Як у Premiere Pro».",
+    "zh-Hans": "选择“快捷键风格”：LF Studios、Final Cut Pro 风格或 Premiere Pro 风格。"
+  },
+  "Pick a Resolution (720p to 4K), a Bit rate (Lower, Recommended, Higher or your own), a Codec, MP4 or MOV, and a Frame rate.": {
+    "de": "Wähle eine Auflösung (720p bis 4K), eine Bitrate (Niedriger, Empfohlen, Höher oder eigene), einen Codec, MP4 oder MOV und eine Bildrate.",
+    "fr": "Choisissez une Résolution (de 720p à 4K), un Débit (Plus bas, Recommandé, Plus élevé ou le vôtre), un Codec, MP4 ou MOV, et une Fréquence d’images.",
+    "ja": "“解像度”（720p〜4K）、“ビットレート”（“低”、“推奨”、“高”、またはカスタム）、“コーデック”、MP4かMOV、“フレームレート”を選びます。",
+    "ru": "Выберите разрешение (от 720p до 4K), битрейт (ниже, рекомендуемый, выше или свой), кодек, MP4 или MOV и частоту кадров.",
+    "uk": "Виберіть «Роздільність» (від 720p до 4K), «Бітрейт» («Нижчий», «Рекомендований», «Вищий» чи власний), «Кодек», MP4 або MOV і «Частоту кадрів».",
+    "zh-Hans": "选择“分辨率”（720p 到 4K）、“比特率”（“较低”“推荐”“较高”或自定）、“编解码器”、MP4 或 MOV，以及“帧速率”。"
+  },
+  "Pick a letter, number or symbol key": {
+    "de": "Wähle eine Buchstaben-, Zahlen- oder Symboltaste",
+    "fr": "Choisissez une touche de lettre, de chiffre ou de symbole",
+    "ja": "文字、数字、記号のキーを選んでください",
+    "ru": "Выберите клавишу с буквой, цифрой или символом",
+    "uk": "Виберіть клавішу з літерою, цифрою чи символом",
+    "zh-Hans": "请选择字母、数字或符号键"
+  },
+  "Pick a tab. Hover an item to see (or hear) it.": {
+    "de": "Wähle einen Tab. Zeig auf ein Objekt, um es zu sehen (oder zu hören).",
+    "fr": "Choisissez un onglet. Survolez un élément pour le voir (ou l’entendre).",
+    "ja": "タブを選びます。項目にポインタを置くとプレビュー（または試聴）できます。",
+    "ru": "Выберите вкладку. Наведите указатель на элемент, чтобы увидеть (или услышать) его.",
+    "uk": "Виберіть вкладку. Наведіть на елемент, щоб побачити (або почути) його.",
+    "zh-Hans": "选择一个标签页。将指针悬停在项目上即可预览（或试听）。"
+  },
+  "Pick how it moves between them: Linear, Ease in, Ease out or Ease in-out.": {
+    "de": "Wähle, wie es sich dazwischen bewegt: Linear, Sanft hinein, Sanft hinaus oder Sanft hinein und hinaus.",
+    "fr": "Choisissez comment il passe de l’une à l’autre : Linéaire, Lissage en entrée, Lissage en sortie ou Lissage en entrée et en sortie.",
+    "ja": "その間の動き方を選びます: “リニア”、“イーズイン”、“イーズアウト”、“イーズインアウト”。",
+    "ru": "Выберите, как происходит переход между ними: «Линейная», «Плавное начало», «Плавный конец» или «Плавные начало и конец».",
+    "uk": "Виберіть, як відбувається перехід між ними: «Лінійно», «Повільний початок», «Повільний кінець» або «Повільні початок і кінець».",
+    "zh-Hans": "选择它在两者之间的运动方式：“线性”“缓入”“缓出”或“缓入缓出”。"
+  },
+  "Pick one in Library ▸ Effects while this clip is selected.": {
+    "de": "Wähle einen unter Bibliothek ▸ Effekte, während dieser Clip ausgewählt ist.",
+    "fr": "Choisissez-en un dans Bibliothèque ▸ Effets pendant que ce clip est sélectionné.",
+    "ja": "このクリップを選択した状態で、“ライブラリ”＞“エフェクト”から選びます。",
+    "ru": "Выберите эффект в Библиотека ▸ Эффекты, пока этот клип выбран.",
+    "uk": "Виберіть ефект у Бібліотека ▸ Ефекти, поки цей кліп вибрано.",
+    "zh-Hans": "选中此片段时，在“素材库 ▸ 特效”中选取一个。"
+  },
+  "Pink pill": {
+    "de": "Rosa Pille",
+    "fr": "Pilule rose",
+    "ja": "ピンクのピル",
+    "ru": "Розовая капсула",
+    "uk": "Рожева пігулка",
+    "zh-Hans": "粉色胶囊"
+  },
+  "Plain": {
+    "de": "Schlicht",
+    "fr": "Simple",
+    "ja": "プレーン",
+    "ru": "Простой",
+    "uk": "Простий",
+    "zh-Hans": "朴素"
+  },
+  "Play a clip from 0.1× to 100×, or let its speed change along a curve.": {
+    "de": "Spiel einen Clip mit 0,1× bis 100× ab, oder lass sein Tempo entlang einer Kurve wechseln.",
+    "fr": "Lisez un clip de 0,1× à 100×, ou faites varier sa vitesse le long d’une courbe.",
+    "ja": "クリップを0.1×〜100×で再生したり、カーブに沿って速度を変化させたりします。",
+    "ru": "Воспроизводите клип со скоростью от 0,1× до 100× или меняйте скорость по кривой.",
+    "uk": "Відтворюйте кліп зі швидкістю від 0.1× до 100× або змінюйте її за кривою.",
+    "zh-Hans": "以 0.1× 到 100× 的速度播放片段，或让其速度沿曲线变化。"
+  },
+  "Play backwards": {
+    "de": "Rückwärts abspielen",
+    "fr": "Lire à l’envers",
+    "ja": "逆再生",
+    "ru": "Воспроизвести назад",
+    "uk": "Відтворювати назад",
+    "zh-Hans": "倒放"
+  },
+  "Play faster": {
+    "de": "Schneller abspielen",
+    "fr": "Lire plus vite",
+    "ja": "速く再生",
+    "ru": "Воспроизвести быстрее",
+    "uk": "Пришвидшити",
+    "zh-Hans": "加速播放"
+  },
+  "Playing lighter copies of the videos (exports use the originals)": {
+    "de": "Leichtere Kopien der Videos werden abgespielt (Exporte nutzen die Originale)",
+    "fr": "Lecture de copies plus légères des vidéos (les exportations utilisent les originaux)",
+    "ja": "ビデオの軽量コピーを再生中（書き出しにはオリジナルを使用）",
+    "ru": "Воспроизводятся облегченные копии видео (при экспорте — оригиналы)",
+    "uk": "Відтворюються легші копії відео (експорт використовує оригінали)",
+    "zh-Hans": "正在播放视频的轻量副本（导出使用原始文件）"
+  },
+  "Point things out": {
+    "de": "Auf Dinge hinweisen",
+    "fr": "Signaler",
+    "ja": "指し示す",
+    "ru": "Указатели",
+    "uk": "Вказівки",
+    "zh-Hans": "指示"
+  },
+  "Pop": {
+    "de": "Pop",
+    "fr": "Pop",
+    "ja": "ポップ",
+    "ru": "Всплытие",
+    "uk": "Поп",
+    "zh-Hans": "弹出"
+  },
+  "Pop title": {
+    "de": "Pop-Titel",
+    "fr": "Titre pop",
+    "ja": "ポップなタイトル",
+    "ru": "Всплывающий заголовок",
+    "uk": "Поп-заголовок",
+    "zh-Hans": "弹出标题"
+  },
+  "Position across": {
+    "de": "Position waagerecht",
+    "fr": "Position horizontale",
+    "ja": "横の位置",
+    "ru": "Положение по горизонтали",
+    "uk": "Позиція по горизонталі",
+    "zh-Hans": "水平位置"
+  },
+  "Position down": {
+    "de": "Position senkrecht",
+    "fr": "Position verticale",
+    "ja": "縦の位置",
+    "ru": "Положение по вертикали",
+    "uk": "Позиція по вертикалі",
+    "zh-Hans": "垂直位置"
+  },
+  "Premiere Pro style": {
+    "de": "Premiere-Pro-Stil",
+    "fr": "Style Premiere Pro",
+    "ja": "Premiere Pro風",
+    "ru": "Как в Premiere Pro",
+    "uk": "Як у Premiere Pro",
+    "zh-Hans": "Premiere Pro 风格"
+  },
+  "Press a key…": {
+    "de": "Drück eine Taste …",
+    "fr": "Appuyez sur une touche…",
+    "ja": "キーを押してください…",
+    "ru": "Нажмите клавишу…",
+    "uk": "Натисніть клавішу…",
+    "zh-Hans": "请按下按键…"
+  },
+  "Previous / next keyframe": {
+    "de": "Vorheriger / nächster Keyframe",
+    "fr": "Image clé précédente / suivante",
+    "ja": "前/次のキーフレーム",
+    "ru": "Предыдущий / следующий ключевой кадр",
+    "uk": "Попередній / наступний ключовий кадр",
+    "zh-Hans": "上一个 / 下一个关键帧"
+  },
+  "Previous keyframe": {
+    "de": "Vorheriger Keyframe",
+    "fr": "Image clé précédente",
+    "ja": "前のキーフレーム",
+    "ru": "Предыдущий ключевой кадр",
+    "uk": "Попередній ключовий кадр",
+    "zh-Hans": "上一个关键帧"
+  },
+  "ProRes is always a .mov": {
+    "de": "ProRes ist immer eine .mov",
+    "fr": "Le ProRes est toujours un .mov",
+    "ja": "ProResは常に.movです",
+    "ru": "ProRes всегда в .mov",
+    "uk": "ProRes завжди зберігається як .mov",
+    "zh-Hans": "ProRes 始终为 .mov"
+  },
+  "Projects with keyframes or any other 1.15.0 feature open in LF Studios 1.15.0 or later.": {
+    "de": "Projekte mit Keyframes oder einer anderen Funktion aus 1.15.0 öffnen sich in LF Studios 1.15.0 oder neuer.",
+    "fr": "Les projets avec des images clés ou toute autre fonction de la 1.15.0 s’ouvrent dans LF Studios 1.15.0 ou ultérieur.",
+    "ja": "キーフレームなど1.15.0の機能を使ったプロジェクトは、LF Studios 1.15.0以降で開けます。",
+    "ru": "Проекты с ключевыми кадрами или другими функциями 1.15.0 открываются в LF Studios 1.15.0 или новее.",
+    "uk": "Проєкти з ключовими кадрами чи іншими функціями 1.15.0 відкриваються в LF Studios 1.15.0 або новіших.",
+    "zh-Hans": "包含关键帧或任何其他 1.15.0 功能的项目需要用 LF Studios 1.15.0 或更高版本打开。"
+  },
+  "Properties ▸ Adjust; Library ▸ Adjust for an adjustment clip.": {
+    "de": "Eigenschaften ▸ Anpassen; Bibliothek ▸ Anpassen für einen Anpassungsclip.",
+    "fr": "Propriétés ▸ Ajustements ; Bibliothèque ▸ Ajustements pour un clip d’ajustement.",
+    "ja": "“プロパティ”＞“調整”。調整クリップは“ライブラリ”＞“調整”。",
+    "ru": "Свойства ▸ Коррекция; Библиотека ▸ Коррекция — для корректирующего клипа.",
+    "uk": "Властивості ▸ Корекція; Бібліотека ▸ Корекція — для кліпу корекції.",
+    "zh-Hans": "属性 ▸ 调节；素材库 ▸ 调节可添加调节片段。"
+  },
+  "Properties ▸ Animation, with a clip above the main track selected.": {
+    "de": "Eigenschaften ▸ Animation, wenn ein Clip über der Hauptspur ausgewählt ist.",
+    "fr": "Propriétés ▸ Animation, avec un clip au-dessus de la piste principale sélectionné.",
+    "ja": "メイントラックの上のクリップを選択した状態で、“プロパティ”＞“アニメーション”。",
+    "ru": "Свойства ▸ Анимация, когда выбран клип над основной дорожкой.",
+    "uk": "Властивості ▸ Анімація, коли вибрано кліп над основною доріжкою.",
+    "zh-Hans": "属性 ▸ 动画，需选中主轨道上方的片段。"
+  },
+  "Properties ▸ Blend, Cutout and Mask, with a clip above the main track selected.": {
+    "de": "Eigenschaften ▸ Füllmethode, Freistellen und Maske, wenn ein Clip über der Hauptspur ausgewählt ist.",
+    "fr": "Propriétés ▸ Fusion, Détouré et Masque, avec un clip au-dessus de la piste principale sélectionné.",
+    "ja": "メイントラックの上のクリップを選択した状態で、“プロパティ”＞“ブレンド”、“切り抜き”、“マスク”。",
+    "ru": "Свойства ▸ Наложение, Силуэт и Маска, когда выбран клип над основной дорожкой.",
+    "uk": "Властивості ▸ Накладання, Силует і Маска, коли вибрано кліп над основною доріжкою.",
+    "zh-Hans": "属性 ▸ 混合、抠像和蒙版，需选中主轨道上方的片段。"
+  },
+  "Properties ▸ Keyframes, and the ◆ next to each setting of the selected clip.": {
+    "de": "Eigenschaften ▸ Keyframes, und das ◆ neben jeder Einstellung des ausgewählten Clips.",
+    "fr": "Propriétés ▸ Images clés, et le ◆ à côté de chaque réglage du clip sélectionné.",
+    "ja": "“プロパティ”＞“キーフレーム”と、選択したクリップの各設定の横にある◆。",
+    "ru": "Свойства ▸ Ключевые кадры и ◆ рядом с каждым параметром выбранного клипа.",
+    "uk": "Властивості ▸ Ключові кадри і ◆ поруч із кожним параметром вибраного кліпу.",
+    "zh-Hans": "属性 ▸ 关键帧，以及所选片段每项设置旁边的 ◆。"
+  },
+  "Properties ▸ Speed, with a clip selected.": {
+    "de": "Eigenschaften ▸ Tempo, wenn ein Clip ausgewählt ist.",
+    "fr": "Propriétés ▸ Vitesse, avec un clip sélectionné.",
+    "ja": "クリップを選択した状態で、“プロパティ”＞“速度”。",
+    "ru": "Свойства ▸ Скорость, когда выбран клип.",
+    "uk": "Властивості ▸ Швидкість, коли вибрано кліп.",
+    "zh-Hans": "属性 ▸ 速度，需选中片段。"
+  },
+  "Properties ▸ Tracking, with a clip above the main track selected.": {
+    "de": "Eigenschaften ▸ Verfolgung, wenn ein Clip über der Hauptspur ausgewählt ist.",
+    "fr": "Propriétés ▸ Suivi, avec un clip au-dessus de la piste principale sélectionné.",
+    "ja": "メイントラックの上のクリップを選択した状態で、“プロパティ”＞“トラッキング”。",
+    "ru": "Свойства ▸ Отслеживание, когда выбран клип над основной дорожкой.",
+    "uk": "Властивості ▸ Відстеження, коли вибрано кліп над основною доріжкою.",
+    "zh-Hans": "属性 ▸ 跟踪，需选中主轨道上方的片段。"
+  },
+  "Proxies": {
+    "de": "Proxys",
+    "fr": "Proxys",
+    "ja": "プロキシ",
+    "ru": "Прокси",
+    "uk": "Проксі",
+    "zh-Hans": "代理"
+  },
+  "Proxies ready — the editor plays them; exports use the originals": {
+    "de": "Proxys bereit – der Editor spielt sie ab; Exporte nutzen die Originale",
+    "fr": "Proxys prêts — l’éditeur les lit ; les exportations utilisent les originaux",
+    "ja": "プロキシの準備ができました — エディタではプロキシを再生し、書き出しにはオリジナルを使います",
+    "ru": "Прокси готовы — редактор воспроизводит их; при экспорте используются оригиналы",
+    "uk": "Проксі готові — редактор відтворює їх; експорт використовує оригінали",
+    "zh-Hans": "代理已就绪 — 编辑器播放代理；导出使用原始文件"
+  },
+  "Proxies: lighter copies for smooth editing": {
+    "de": "Proxys: leichtere Kopien für flüssiges Bearbeiten",
+    "fr": "Proxys : des copies plus légères pour un montage fluide",
+    "ja": "プロキシ: スムーズに編集するための軽量コピー",
+    "ru": "Прокси: облегченные копии для плавного монтажа",
+    "uk": "Проксі: легші копії для плавного монтажу",
+    "zh-Hans": "代理：用于流畅剪辑的轻量副本"
+  },
+  "Proxy": {
+    "de": "Proxy",
+    "fr": "Proxy",
+    "ja": "プロキシ",
+    "ru": "Прокси",
+    "uk": "Проксі",
+    "zh-Hans": "代理"
+  },
+  "Pulse": {
+    "de": "Puls",
+    "fr": "Pulsation",
+    "ja": "パルス",
+    "ru": "Пульс",
+    "uk": "Пульсація",
+    "zh-Hans": "脉冲"
+  },
+  "Punchy": {
+    "de": "Kräftig",
+    "fr": "Percutant",
+    "ja": "メリハリ",
+    "ru": "Сочный",
+    "uk": "Соковитий",
+    "zh-Hans": "强烈"
+  },
+  "Push": {
+    "de": "Schieben",
+    "fr": "Poussée",
+    "ja": "プッシュ",
+    "ru": "Выталкивание",
+    "uk": "Виштовхування",
+    "zh-Hans": "推移"
+  },
+  "Question": {
+    "de": "Frage",
+    "fr": "Question",
+    "ja": "はてな",
+    "ru": "Вопрос",
+    "uk": "Питання",
+    "zh-Hans": "问号"
+  },
+  "Quit": {
+    "de": "Beenden",
+    "fr": "Quitter",
+    "ja": "終了",
+    "ru": "Завершить",
+    "uk": "Завершити",
+    "zh-Hans": "退出"
+  },
+  "Quote": {
+    "de": "Zitat",
+    "fr": "Citation",
+    "ja": "引用",
+    "ru": "Цитата",
+    "uk": "Цитата",
+    "zh-Hans": "引言"
+  },
+  "RGB": {
+    "de": "RGB",
+    "fr": "RVB",
+    "ja": "RGB",
+    "ru": "RGB",
+    "uk": "RGB",
+    "zh-Hans": "RGB"
+  },
+  "RGB split": {
+    "de": "RGB-Versatz",
+    "fr": "Séparation RVB",
+    "ja": "RGBスプリット",
+    "ru": "Разделение RGB",
+    "uk": "Розщеплення RGB",
+    "zh-Hans": "RGB 分离"
+  },
+  "Ready-made": {
+    "de": "Vorgefertigt",
+    "fr": "Prêts à l’emploi",
+    "ja": "プリセット",
+    "ru": "Готовые",
+    "uk": "Готові",
+    "zh-Hans": "现成"
+  },
+  "Ready-made caption looks, and captions from a subtitles file.": {
+    "de": "Fertige Looks für Untertitel und Untertitel aus einer Untertiteldatei.",
+    "fr": "Des looks de sous-titres prêts à l’emploi, et des sous-titres depuis un fichier de sous-titres.",
+    "ja": "すぐに使える字幕のスタイルと、字幕ファイルからの字幕。",
+    "ru": "Готовые стили субтитров и субтитры из файла.",
+    "uk": "Готові стилі субтитрів і субтитри з файлу.",
+    "zh-Hans": "现成的字幕外观，以及来自字幕文件的字幕。"
+  },
+  "Recommended": {
+    "de": "Empfohlen",
+    "fr": "Recommandé",
+    "ja": "推奨",
+    "ru": "Рекомендуемый",
+    "uk": "Рекомендований",
+    "zh-Hans": "推荐"
+  },
+  "Recorded live": {
+    "de": "Live aufgezeichnet",
+    "fr": "Enregistré en direct",
+    "ja": "ライブ収録",
+    "ru": "Живая запись",
+    "uk": "Записано наживо",
+    "zh-Hans": "现场录制"
+  },
+  "Redo Add Adjustment": {
+    "de": "Hinzufügen der Anpassung wiederholen",
+    "fr": "Rétablir l’ajout d’un ajustement",
+    "ja": "調整の追加をやり直す",
+    "ru": "Повторить добавление коррекции",
+    "uk": "Повторити додавання корекції",
+    "zh-Hans": "重做添加调节"
+  },
+  "Redo Add Effect": {
+    "de": "Hinzufügen des Effekts wiederholen",
+    "fr": "Rétablir l’ajout d’un effet",
+    "ja": "エフェクトの追加をやり直す",
+    "ru": "Повторить добавление эффекта",
+    "uk": "Повторити додавання ефекту",
+    "zh-Hans": "重做添加特效"
+  },
+  "Redo Add Filter": {
+    "de": "Hinzufügen des Filters wiederholen",
+    "fr": "Rétablir l’ajout d’un filtre",
+    "ja": "フィルタの追加をやり直す",
+    "ru": "Повторить добавление фильтра",
+    "uk": "Повторити додавання фільтра",
+    "zh-Hans": "重做添加滤镜"
+  },
+  "Redo Add Keyframe": {
+    "de": "Hinzufügen des Keyframes wiederholen",
+    "fr": "Rétablir l’ajout d’une image clé",
+    "ja": "キーフレームの追加をやり直す",
+    "ru": "Повторить добавление ключевого кадра",
+    "uk": "Повторити додавання ключового кадру",
+    "zh-Hans": "重做添加关键帧"
+  },
+  "Redo Add Sticker": {
+    "de": "Hinzufügen des Stickers wiederholen",
+    "fr": "Rétablir l’ajout d’un autocollant",
+    "ja": "ステッカーの追加をやり直す",
+    "ru": "Повторить добавление стикера",
+    "uk": "Повторити додавання стікера",
+    "zh-Hans": "重做添加贴纸"
+  },
+  "Redo Adjust": {
+    "de": "Anpassen wiederholen",
+    "fr": "Rétablir les ajustements",
+    "ja": "調整の変更をやり直す",
+    "ru": "Повторить коррекцию",
+    "uk": "Повторити зміну корекції",
+    "zh-Hans": "重做调节"
+  },
+  "Redo Animation": {
+    "de": "Animation wiederholen",
+    "fr": "Rétablir l’animation",
+    "ja": "アニメーションの変更をやり直す",
+    "ru": "Повторить изменение анимации",
+    "uk": "Повторити зміну анімації",
+    "zh-Hans": "重做动画"
+  },
+  "Redo Blend": {
+    "de": "Füllmethode wiederholen",
+    "fr": "Rétablir la fusion",
+    "ja": "ブレンドの変更をやり直す",
+    "ru": "Повторить изменение наложения",
+    "uk": "Повторити зміну накладання",
+    "zh-Hans": "重做混合"
+  },
+  "Redo Break Apart": {
+    "de": "Auflösen wiederholen",
+    "fr": "Rétablir la dissociation",
+    "ja": "分解をやり直す",
+    "ru": "Повторить разбор составного клипа",
+    "uk": "Повторити розбирання кліпу",
+    "zh-Hans": "重做拆开"
+  },
+  "Redo Change Pitch": {
+    "de": "Tonhöhenänderung wiederholen",
+    "fr": "Rétablir le changement de hauteur",
+    "ja": "ピッチの変更をやり直す",
+    "ru": "Повторить изменение высоты тона",
+    "uk": "Повторити зміну висоти тону",
+    "zh-Hans": "重做更改音调"
+  },
+  "Redo Chroma Key": {
+    "de": "Chroma-Key wiederholen",
+    "fr": "Rétablir la clé chromatique",
+    "ja": "クロマキーの変更をやり直す",
+    "ru": "Повторить изменение хромакея",
+    "uk": "Повторити зміну хромакею",
+    "zh-Hans": "重做色度抠图"
+  },
+  "Redo Clear Beats": {
+    "de": "Löschen der Beats wiederholen",
+    "fr": "Rétablir l’effacement des battements",
+    "ja": "ビートの消去をやり直す",
+    "ru": "Повторить удаление битов",
+    "uk": "Повторити прибирання бітів",
+    "zh-Hans": "重做清除节拍"
+  },
+  "Redo Compound Clip": {
+    "de": "Zusammengesetzten Clip wiederholen",
+    "fr": "Rétablir le clip composé",
+    "ja": "複合クリップの変更をやり直す",
+    "ru": "Повторить изменение составного клипа",
+    "uk": "Повторити зміну складеного кліпу",
+    "zh-Hans": "重做复合片段"
+  },
+  "Redo Cover": {
+    "de": "Titelbild wiederholen",
+    "fr": "Rétablir la couverture",
+    "ja": "カバーの変更をやり直す",
+    "ru": "Повторить изменение обложки",
+    "uk": "Повторити зміну обкладинки",
+    "zh-Hans": "重做封面"
+  },
+  "Redo Detect Beats": {
+    "de": "Erkennen der Beats wiederholen",
+    "fr": "Rétablir la détection des battements",
+    "ja": "ビートの検出をやり直す",
+    "ru": "Повторить поиск битов",
+    "uk": "Повторити пошук бітів",
+    "zh-Hans": "重做检测节拍"
+  },
+  "Redo Effects": {
+    "de": "Effekte wiederholen",
+    "fr": "Rétablir les effets",
+    "ja": "エフェクトの変更をやり直す",
+    "ru": "Повторить изменение эффектов",
+    "uk": "Повторити зміну ефектів",
+    "zh-Hans": "重做特效"
+  },
+  "Redo Filter": {
+    "de": "Filter wiederholen",
+    "fr": "Rétablir le filtre",
+    "ja": "フィルタの変更をやり直す",
+    "ru": "Повторить изменение фильтра",
+    "uk": "Повторити зміну фільтра",
+    "zh-Hans": "重做滤镜"
+  },
+  "Redo Import Captions": {
+    "de": "Importieren der Untertitel wiederholen",
+    "fr": "Rétablir l’importation des sous-titres",
+    "ja": "字幕の読み込みをやり直す",
+    "ru": "Повторить импорт субтитров",
+    "uk": "Повторити імпорт субтитрів",
+    "zh-Hans": "重做导入字幕"
+  },
+  "Redo Keep Background": {
+    "de": "Hintergrund behalten wiederholen",
+    "fr": "Rétablir la conservation de l’arrière-plan",
+    "ja": "背景の保持をやり直す",
+    "ru": "Повторить возврат фона",
+    "uk": "Повторити збереження тла",
+    "zh-Hans": "重做保留背景"
+  },
+  "Redo Keep Pitch": {
+    "de": "Tonhöhe beibehalten wiederholen",
+    "fr": "Rétablir la conservation de la hauteur",
+    "ja": "ピッチの保持をやり直す",
+    "ru": "Повторить изменение сохранения тона",
+    "uk": "Повторити збереження висоти тону",
+    "zh-Hans": "重做保持音调"
+  },
+  "Redo Keyframe Easing": {
+    "de": "Keyframe-Beschleunigung wiederholen",
+    "fr": "Rétablir le lissage de l’image clé",
+    "ja": "キーフレームのイージングの変更をやり直す",
+    "ru": "Повторить изменение сглаживания ключевого кадра",
+    "uk": "Повторити зміну згладжування ключового кадру",
+    "zh-Hans": "重做关键帧缓动"
+  },
+  "Redo Make Compound Clip": {
+    "de": "Erstellen des zusammengesetzten Clips wiederholen",
+    "fr": "Rétablir la création du clip composé",
+    "ja": "複合クリップの作成をやり直す",
+    "ru": "Повторить создание составного клипа",
+    "uk": "Повторити створення складеного кліпу",
+    "zh-Hans": "重做创建复合片段"
+  },
+  "Redo Mask": {
+    "de": "Maske wiederholen",
+    "fr": "Rétablir le masque",
+    "ja": "マスクの変更をやり直す",
+    "ru": "Повторить изменение маски",
+    "uk": "Повторити зміну маски",
+    "zh-Hans": "重做蒙版"
+  },
+  "Redo Move to Track": {
+    "de": "Bewegen auf eine Spur wiederholen",
+    "fr": "Rétablir le déplacement vers une piste",
+    "ja": "トラックへの移動をやり直す",
+    "ru": "Повторить перенос на дорожку",
+    "uk": "Повторити перенесення на доріжку",
+    "zh-Hans": "重做移到轨道"
+  },
+  "Redo Normalize Loudness": {
+    "de": "Normalisieren der Lautheit wiederholen",
+    "fr": "Rétablir la normalisation du volume sonore",
+    "ja": "ラウドネスのノーマライズをやり直す",
+    "ru": "Повторить нормализацию громкости",
+    "uk": "Повторити нормалізацію гучності",
+    "zh-Hans": "重做统一响度"
+  },
+  "Redo Remove Background": {
+    "de": "Entfernen des Hintergrunds wiederholen",
+    "fr": "Rétablir la suppression de l’arrière-plan",
+    "ja": "背景の削除をやり直す",
+    "ru": "Повторить удаление фона",
+    "uk": "Повторити прибирання тла",
+    "zh-Hans": "重做移除背景"
+  },
+  "Redo Remove Keyframe": {
+    "de": "Entfernen des Keyframes wiederholen",
+    "fr": "Rétablir la suppression de l’image clé",
+    "ja": "キーフレームの削除をやり直す",
+    "ru": "Повторить удаление ключевого кадра",
+    "uk": "Повторити вилучення ключового кадру",
+    "zh-Hans": "重做移除关键帧"
+  },
+  "Redo Speed": {
+    "de": "Tempo wiederholen",
+    "fr": "Rétablir la vitesse",
+    "ja": "速度の変更をやり直す",
+    "ru": "Повторить изменение скорости",
+    "uk": "Повторити зміну швидкості",
+    "zh-Hans": "重做速度"
+  },
+  "Redo Speed Curve": {
+    "de": "Tempokurve wiederholen",
+    "fr": "Rétablir la courbe de vitesse",
+    "ja": "速度カーブの変更をやり直す",
+    "ru": "Повторить изменение кривой скорости",
+    "uk": "Повторити зміну кривої швидкості",
+    "zh-Hans": "重做曲线变速"
+  },
+  "Redo Stop Following": {
+    "de": "Folgen beenden wiederholen",
+    "fr": "Rétablir l’arrêt du suivi",
+    "ja": "追従の停止をやり直す",
+    "ru": "Повторить остановку отслеживания",
+    "uk": "Повторити припинення відстеження",
+    "zh-Hans": "重做停止跟踪"
+  },
+  "Redo Text Change": {
+    "de": "Textänderung wiederholen",
+    "fr": "Rétablir la modification du texte",
+    "ja": "テキストの変更をやり直す",
+    "ru": "Повторить изменение текста",
+    "uk": "Повторити зміну тексту",
+    "zh-Hans": "重做文字更改"
+  },
+  "Redo Track Motion": {
+    "de": "Bewegungsverfolgung wiederholen",
+    "fr": "Rétablir le suivi de mouvement",
+    "ja": "モーショントラッキングをやり直す",
+    "ru": "Повторить отслеживание движения",
+    "uk": "Повторити відстеження руху",
+    "zh-Hans": "重做运动跟踪"
+  },
+  "Remove background": {
+    "de": "Hintergrund entfernen",
+    "fr": "Supprimer l’arrière-plan",
+    "ja": "背景を削除",
+    "ru": "Удалить фон",
+    "uk": "Прибрати тло",
+    "zh-Hans": "移除背景"
+  },
+  "Remove background keeps just the person, found on this Mac.": {
+    "de": "„Hintergrund entfernen“ behält nur die Person, erkannt auf diesem Mac.",
+    "fr": "Supprimer l’arrière-plan ne garde que la personne, détectée sur ce Mac.",
+    "ja": "“背景を削除”では、このMac上で人物を検出して人物だけを残します。",
+    "ru": "«Удалить фон» оставляет только человека; распознавание выполняется на этом Mac.",
+    "uk": "«Прибрати тло» залишає лише людину, знайдену на цьому Mac.",
+    "zh-Hans": "“移除背景”只保留人物，在这台 Mac 上识别。"
+  },
+  "Remove from favourites": {
+    "de": "Aus Favoriten entfernen",
+    "fr": "Retirer des favoris",
+    "ja": "お気に入りから削除",
+    "ru": "Удалить из избранного",
+    "uk": "Вилучити з вибраного",
+    "zh-Hans": "从收藏中移除"
+  },
+  "Remove keyframe: %@": {
+    "de": "Keyframe entfernen: %@",
+    "fr": "Supprimer l’image clé : %@",
+    "ja": "キーフレームを削除: %@",
+    "ru": "Удалить ключевой кадр: %@",
+    "uk": "Вилучити ключовий кадр: %@",
+    "zh-Hans": "移除关键帧：%@"
+  },
+  "Remove the keyframe at the playhead": {
+    "de": "Keyframe an der Abspielposition entfernen",
+    "fr": "Supprimer l’image clé à la tête de lecture",
+    "ja": "再生ヘッドの位置のキーフレームを削除",
+    "ru": "Удалить ключевой кадр у указателя воспроизведения",
+    "uk": "Вилучити ключовий кадр на покажчику відтворення",
+    "zh-Hans": "移除播放头处的关键帧"
+  },
+  "Replace": {
+    "de": "Ersetzen",
+    "fr": "Remplacer",
+    "ja": "置き換える",
+    "ru": "Заменить",
+    "uk": "Замінити",
+    "zh-Hans": "替换"
+  },
+  "Replace it, or keep both (the new one gets a number)?": {
+    "de": "Ersetzen oder beide behalten (die neue Datei bekommt eine Nummer)?",
+    "fr": "Le remplacer, ou garder les deux (le nouveau reçoit un numéro) ?",
+    "ja": "置き換えますか? それとも両方とも残しますか?（新しい方には番号が付きます）",
+    "ru": "Заменить или оставить оба (к новому добавится номер)?",
+    "uk": "Замінити його чи залишити обидва (новий отримає номер)?",
+    "zh-Hans": "要替换它，还是两者都保留（新的会加上编号）？"
+  },
+  "Replaces %@": {
+    "de": "Ersetzt %@",
+    "fr": "Remplace %@",
+    "ja": "%@を置き換えます",
+    "ru": "Заменяет %@",
+    "uk": "Замінює «%@»",
+    "zh-Hans": "替换“%@”"
+  },
+  "Reset Adjust": {
+    "de": "Anpassen zurücksetzen",
+    "fr": "Réinitialiser les ajustements",
+    "ja": "調整をリセット",
+    "ru": "Сбросить коррекцию",
+    "uk": "Скинути корекцію",
+    "zh-Hans": "重置调节"
+  },
+  "Reset All": {
+    "de": "Alle zurücksetzen",
+    "fr": "Tout réinitialiser",
+    "ja": "すべてリセット",
+    "ru": "Сбросить все",
+    "uk": "Скинути все",
+    "zh-Hans": "全部重置"
+  },
+  "Reset All goes back to the preset's keys. The Timeline menu shows the keys you set.": {
+    "de": "„Alle zurücksetzen“ kehrt zu den Tasten der Vorgabe zurück. Das Menü „Zeitleiste“ zeigt die Tasten, die du festgelegt hast.",
+    "fr": "Tout réinitialiser revient aux touches du préréglage. Le menu Timeline affiche les touches que vous avez choisies.",
+    "ja": "“すべてリセット”でプリセットのキーに戻ります。“タイムライン”メニューに、設定したキーが表示されます。",
+    "ru": "«Сбросить все» возвращает клавиши набора. В меню «Шкала времени» видны заданные вами клавиши.",
+    "uk": "«Скинути все» повертає клавіші набору. Меню «Шкала часу» показує задані вами клавіші.",
+    "zh-Hans": "“全部重置”会恢复预设的快捷键。“时间线”菜单会显示你设定的快捷键。"
+  },
+  "Retro": {
+    "de": "Retro",
+    "fr": "Rétro",
+    "ja": "レトロ",
+    "ru": "Ретро",
+    "uk": "Ретро",
+    "zh-Hans": "复古"
+  },
+  "Retro and glitch": {
+    "de": "Retro und Glitch",
+    "fr": "Rétro et glitch",
+    "ja": "レトロとグリッチ",
+    "ru": "Ретро и глитч",
+    "uk": "Ретро й глітч",
+    "zh-Hans": "复古和故障"
+  },
+  "Rhythm": {
+    "de": "Rhythmus",
+    "fr": "Rythme",
+    "ja": "リズム",
+    "ru": "Ритм",
+    "uk": "Ритм",
+    "zh-Hans": "节奏"
+  },
+  "Riser": {
+    "de": "Riser",
+    "fr": "Montée",
+    "ja": "ライザー",
+    "ru": "Райзер",
+    "uk": "Наростання",
+    "zh-Hans": "渐强"
+  },
+  "STORY": {
+    "de": "STORY",
+    "fr": "STORY",
+    "ja": "ストーリー",
+    "ru": "ИСТОРИЯ",
+    "uk": "ІСТОРІЯ",
+    "zh-Hans": "故事"
+  },
+  "Screen": {
+    "de": "Negativ multiplizieren",
+    "fr": "Superposition",
+    "ja": "スクリーン",
+    "ru": "Экран",
+    "uk": "Екран",
+    "zh-Hans": "滤色"
+  },
+  "Search at the top of each tab; click a star to keep an item in Favourites.": {
+    "de": "Oben in jedem Tab kannst du suchen; klicke auf einen Stern, um ein Objekt in den Favoriten zu behalten.",
+    "fr": "Recherchez en haut de chaque onglet ; cliquez sur une étoile pour garder un élément dans Favoris.",
+    "ja": "各タブの上部で検索できます。星をクリックすると、項目を“お気に入り”に保存できます。",
+    "ru": "Поиск — вверху каждой вкладки; нажмите звездочку, чтобы сохранить элемент в избранном.",
+    "uk": "Пошук — угорі кожної вкладки; клацніть зірочку, щоб зберегти елемент у «Вибраному».",
+    "zh-Hans": "在每个标签页顶部搜索；点按星标可将项目保留在“收藏”中。"
+  },
+  "Select a clip above the main track first": {
+    "de": "Wähle zuerst einen Clip über der Hauptspur aus",
+    "fr": "Sélectionnez d’abord un clip au-dessus de la piste principale",
+    "ja": "まずメイントラックの上のクリップを選択してください",
+    "ru": "Сначала выберите клип над основной дорожкой",
+    "uk": "Спершу виберіть кліп над основною доріжкою",
+    "zh-Hans": "请先选择主轨道上方的片段"
+  },
+  "Select a clip above the main track to add a keyframe": {
+    "de": "Wähle einen Clip über der Hauptspur aus, um einen Keyframe hinzuzufügen",
+    "fr": "Sélectionnez un clip au-dessus de la piste principale pour ajouter une image clé",
+    "ja": "キーフレームを追加するには、メイントラックの上のクリップを選択してください",
+    "ru": "Выберите клип над основной дорожкой, чтобы добавить ключевой кадр",
+    "uk": "Виберіть кліп над основною доріжкою, щоб додати ключовий кадр",
+    "zh-Hans": "选择主轨道上方的片段以添加关键帧"
+  },
+  "Select a compound clip to break it apart": {
+    "de": "Wähle einen zusammengesetzten Clip aus, um ihn aufzulösen",
+    "fr": "Sélectionnez un clip composé pour le dissocier",
+    "ja": "分解するには複合クリップを選択してください",
+    "ru": "Выберите составной клип, чтобы разобрать его",
+    "uk": "Виберіть складений кліп, щоб розібрати його",
+    "zh-Hans": "选择复合片段以将其拆开"
+  },
+  "Select a text or picture annotation ▸ Move to a Track.": {
+    "de": "Wähle eine Text- oder Bildanmerkung aus ▸ Auf eine Spur bewegen.",
+    "fr": "Sélectionnez une annotation de texte ou d’image ▸ Déplacer vers une piste.",
+    "ja": "テキストまたは画像の注釈を選択＞“トラックに移動”。",
+    "ru": "Выберите текстовый элемент или картинку ▸ Перенести на дорожку.",
+    "uk": "Виберіть текстову розмітку чи зображення ▸ Перенести на доріжку.",
+    "zh-Hans": "选择文字或图片标注 ▸ 移到轨道。"
+  },
+  "Select clips above the main track to make a compound clip": {
+    "de": "Wähle Clips über der Hauptspur aus, um einen zusammengesetzten Clip zu erstellen",
+    "fr": "Sélectionnez des clips au-dessus de la piste principale pour créer un clip composé",
+    "ja": "複合クリップを作成するには、メイントラックの上のクリップを選択してください",
+    "ru": "Выберите клипы над основной дорожкой, чтобы создать составной клип",
+    "uk": "Виберіть кліпи над основною доріжкою, щоб створити складений кліп",
+    "zh-Hans": "选择主轨道上方的片段以创建复合片段"
+  },
+  "Select clips above the main track, then press ⌥G.": {
+    "de": "Wähle Clips über der Hauptspur aus und drück dann ⌥G.",
+    "fr": "Sélectionnez des clips au-dessus de la piste principale, puis appuyez sur ⌥G.",
+    "ja": "メイントラックの上のクリップを選択してから、⌥Gを押します。",
+    "ru": "Выберите клипы над основной дорожкой, затем нажмите ⌥G.",
+    "uk": "Виберіть кліпи над основною доріжкою, а тоді натисніть ⌥G.",
+    "zh-Hans": "选择主轨道上方的片段，然后按 ⌥G。"
+  },
+  "Select the clips (⇧-click to add more), then press ⌥G.": {
+    "de": "Wähle die Clips aus (⇧-Klick für weitere) und drück dann ⌥G.",
+    "fr": "Sélectionnez les clips (⇧-clic pour en ajouter), puis appuyez sur ⌥G.",
+    "ja": "クリップを選択し（⇧-クリックで追加）、⌥Gを押します。",
+    "ru": "Выберите клипы (⇧-щелчок, чтобы добавить еще), затем нажмите ⌥G.",
+    "uk": "Виберіть кліпи (⇧-клацання додає ще), а тоді натисніть ⌥G.",
+    "zh-Hans": "选择片段（⇧-点按可添加更多），然后按 ⌥G。"
+  },
+  "Sepia": {
+    "de": "Sepia",
+    "fr": "Sépia",
+    "ja": "セピア",
+    "ru": "Сепия",
+    "uk": "Сепія",
+    "zh-Hans": "棕褐色"
+  },
+  "Set Length at the top of the tab first, or later in the clip's Transition in.": {
+    "de": "Stell zuerst oben im Tab die Dauer ein, oder später unter „Übergang davor“ des Clips.",
+    "fr": "Réglez d’abord la Durée en haut de l’onglet, ou plus tard dans Transition d’entrée du clip.",
+    "ja": "先にタブの上部で“長さ”を設定するか、あとでクリップの“このクリップへのトランジション”で設定します。",
+    "ru": "Сначала задайте «Длительность» вверху вкладки или позже — в разделе «Переход в начале» клипа.",
+    "uk": "Спершу задайте «Тривалість» угорі вкладки або пізніше в «Перехід на початку» кліпу.",
+    "zh-Hans": "先在标签页顶部设定“时长”，或稍后在片段的“入场转场”中设定。"
+  },
+  "Set an effect clip's Strength in Properties; it takes keyframes.": {
+    "de": "Stell die Stärke eines Effektclips unter Eigenschaften ein; sie lässt sich mit Keyframes animieren.",
+    "fr": "Réglez l’Intensité d’un clip d’effet dans Propriétés ; elle accepte des images clés.",
+    "ja": "エフェクトクリップの“強さ”は“プロパティ”で設定します。キーフレームも設定できます。",
+    "ru": "Задайте «Сила» клипа эффекта в «Свойствах»; для нее можно ставить ключевые кадры.",
+    "uk": "Задайте «Силу» кліпу ефекту у «Властивостях»; вона підтримує ключові кадри.",
+    "zh-Hans": "在“属性”中设定特效片段的“强度”；它可设关键帧。"
+  },
+  "Sets the volume so it's as loud as video sites expect (−16 LUFS)": {
+    "de": "Stellt die Lautstärke so ein, dass es so laut ist, wie Videoportale es erwarten (−16 LUFS)",
+    "fr": "Règle le volume pour qu’il soit aussi fort que l’attendent les sites vidéo (−16 LUFS)",
+    "ja": "動画サイトが想定する大きさ（−16 LUFS）になるように音量を設定します",
+    "ru": "Выставляет громкость, которую ожидают видеосайты (−16 LUFS)",
+    "uk": "Встановлює гучність на рівні, якого очікують відеосайти (−16 LUFS)",
+    "zh-Hans": "调整音量，使其达到视频网站期望的响度（−16 LUFS）"
+  },
+  "Shadows": {
+    "de": "Tiefen",
+    "fr": "Ombres",
+    "ja": "シャドウ",
+    "ru": "Тени",
+    "uk": "Тіні",
+    "zh-Hans": "阴影"
+  },
+  "Shadows (lift)": {
+    "de": "Tiefen (Lift)",
+    "fr": "Ombres (lift)",
+    "ja": "シャドウ（リフト）",
+    "ru": "Тени (подъем)",
+    "uk": "Тіні (підйом)",
+    "zh-Hans": "阴影（提升）"
+  },
+  "Shake": {
+    "de": "Wackeln",
+    "fr": "Tremblement",
+    "ja": "シェイク",
+    "ru": "Тряска",
+    "uk": "Тремтіння",
+    "zh-Hans": "抖动"
+  },
+  "Sharpen": {
+    "de": "Schärfen",
+    "fr": "Netteté",
+    "ja": "シャープ",
+    "ru": "Резкость",
+    "uk": "Різкість",
+    "zh-Hans": "锐化"
+  },
+  "Show only favourites": {
+    "de": "Nur Favoriten zeigen",
+    "fr": "Afficher uniquement les favoris",
+    "ja": "お気に入りだけを表示",
+    "ru": "Показать только избранное",
+    "uk": "Показувати лише вибране",
+    "zh-Hans": "仅显示收藏"
+  },
+  "Slide": {
+    "de": "Gleiten",
+    "fr": "Glisser",
+    "ja": "スライド",
+    "ru": "Сдвиг",
+    "uk": "Зсув",
+    "zh-Hans": "滑动"
+  },
+  "Slide down": {
+    "de": "Nach unten gleiten",
+    "fr": "Glisser vers le bas",
+    "ja": "下へスライド",
+    "ru": "Сдвиг вниз",
+    "uk": "Зсув униз",
+    "zh-Hans": "向下滑动"
+  },
+  "Slide left": {
+    "de": "Nach links gleiten",
+    "fr": "Glisser vers la gauche",
+    "ja": "左へスライド",
+    "ru": "Сдвиг влево",
+    "uk": "Зсув ліворуч",
+    "zh-Hans": "向左滑动"
+  },
+  "Slide right": {
+    "de": "Nach rechts gleiten",
+    "fr": "Glisser vers la droite",
+    "ja": "右へスライド",
+    "ru": "Сдвиг вправо",
+    "uk": "Зсув праворуч",
+    "zh-Hans": "向右滑动"
+  },
+  "Slide up": {
+    "de": "Nach oben gleiten",
+    "fr": "Glisser vers le haut",
+    "ja": "上へスライド",
+    "ru": "Сдвиг вверх",
+    "uk": "Зсув угору",
+    "zh-Hans": "向上滑动"
+  },
+  "Smile": {
+    "de": "Lächeln",
+    "fr": "Sourire",
+    "ja": "笑顔",
+    "ru": "Улыбка",
+    "uk": "Усмішка",
+    "zh-Hans": "微笑"
+  },
+  "Soft": {
+    "de": "Weich",
+    "fr": "Doux",
+    "ja": "ソフト",
+    "ru": "Мягкий",
+    "uk": "М’який",
+    "zh-Hans": "柔和"
+  },
+  "Soft light": {
+    "de": "Weiches Licht",
+    "fr": "Lumière tamisée",
+    "ja": "ソフトライト",
+    "ru": "Мягкий свет",
+    "uk": "М’яке світло",
+    "zh-Hans": "柔光"
+  },
+  "Soft rise": {
+    "de": "Sanfter Anstieg",
+    "fr": "Montée douce",
+    "ja": "ふわっと表示",
+    "ru": "Мягкий подъем",
+    "uk": "М’яке наростання",
+    "zh-Hans": "缓缓升起"
+  },
+  "Sound effects": {
+    "de": "Soundeffekte",
+    "fr": "Effets sonores",
+    "ja": "効果音",
+    "ru": "Звуковые эффекты",
+    "uk": "Звукові ефекти",
+    "zh-Hans": "音效"
+  },
+  "Spaced out": {
+    "de": "Gesperrt",
+    "fr": "Espacé",
+    "ja": "字間広め",
+    "ru": "Разреженный",
+    "uk": "Розріджений",
+    "zh-Hans": "宽字距"
+  },
+  "Sparkle": {
+    "de": "Funkeln",
+    "fr": "Étincelles",
+    "ja": "キラキラ",
+    "ru": "Блеск",
+    "uk": "Блиск",
+    "zh-Hans": "闪光"
+  },
+  "Speech bubble": {
+    "de": "Sprechblase",
+    "fr": "Bulle de dialogue",
+    "ja": "吹き出し",
+    "ru": "Облачко реплики",
+    "uk": "Мовна бульбашка",
+    "zh-Hans": "对话气泡"
+  },
+  "Speed and speed curves": {
+    "de": "Tempo und Tempokurven",
+    "fr": "Vitesse et courbes de vitesse",
+    "ja": "速度と速度カーブ",
+    "ru": "Скорость и кривые скорости",
+    "uk": "Швидкість і криві швидкості",
+    "zh-Hans": "速度和曲线变速"
+  },
+  "Speed curve": {
+    "de": "Tempokurve",
+    "fr": "Courbe de vitesse",
+    "ja": "速度カーブ",
+    "ru": "Кривая скорости",
+    "uk": "Крива швидкості",
+    "zh-Hans": "曲线变速"
+  },
+  "Speed point: %@": {
+    "de": "Tempopunkt: %@",
+    "fr": "Point de vitesse : %@",
+    "ja": "速度ポイント: %@",
+    "ru": "Точка скорости: %@",
+    "uk": "Точка швидкості: %@",
+    "zh-Hans": "速度点：%@"
+  },
+  "Speeds from 0.1× to 100×; see Speed and speed curves.": {
+    "de": "Tempo von 0,1× bis 100×; siehe „Tempo und Tempokurven“.",
+    "fr": "Vitesses de 0,1× à 100× ; voir « Vitesse et courbes de vitesse ».",
+    "ja": "速度は0.1×から100×まで。“速度と速度カーブ”を参照してください。",
+    "ru": "Скорость от 0,1× до 100×; см. «Скорость и кривые скорости».",
+    "uk": "Швидкість від 0,1× до 100×; див. «Швидкість і криві швидкості».",
+    "zh-Hans": "速度范围为 0.1× 到 100×；请参阅“速度和曲线变速”。"
+  },
+  "Spin": {
+    "de": "Drehen",
+    "fr": "Tourbillon",
+    "ja": "スピン",
+    "ru": "Вращение",
+    "uk": "Обертання",
+    "zh-Hans": "旋转"
+  },
+  "Split the video (⌘B) to make a cut for a transition": {
+    "de": "Teile das Video (⌘B), um einen Schnitt für einen Übergang zu machen",
+    "fr": "Scindez la vidéo (⌘B) pour créer une coupe pour une transition",
+    "ja": "トランジション用のつなぎ目を作るには、ビデオを分割してください（⌘B）",
+    "ru": "Разделите видео (⌘B), чтобы получить склейку для перехода",
+    "uk": "Розділіть відео (⌘B), щоб створити склейку для переходу",
+    "zh-Hans": "分割视频（⌘B）以创建用于转场的剪切点"
+  },
+  "Split the video (⌘B) to make a cut.": {
+    "de": "Teile das Video (⌘B), um einen Schnitt zu machen.",
+    "fr": "Scindez la vidéo (⌘B) pour créer une coupe.",
+    "ja": "ビデオを分割して（⌘B）つなぎ目を作ります。",
+    "ru": "Разделите видео (⌘B), чтобы получить склейку.",
+    "uk": "Розділіть відео (⌘B), щоб створити склейку.",
+    "zh-Hans": "分割视频（⌘B）以创建剪切点。"
+  },
+  "Split the video (⌘B) to make cuts; transitions go between clips on the main track.": {
+    "de": "Teile das Video (⌘B), um Schnitte zu machen; Übergänge liegen zwischen Clips auf der Hauptspur.",
+    "fr": "Scindez la vidéo (⌘B) pour créer des coupes ; les transitions se placent entre les clips de la piste principale.",
+    "ja": "ビデオを分割して（⌘B）つなぎ目を作ります。トランジションはメイントラックのクリップの間に入ります。",
+    "ru": "Разделите видео (⌘B), чтобы получить склейки; переходы ставятся между клипами на основной дорожке.",
+    "uk": "Розділіть відео (⌘B), щоб створити склейки; переходи ставляться між кліпами на основній доріжці.",
+    "zh-Hans": "分割视频（⌘B）以创建剪切点；转场位于主轨道的片段之间。"
+  },
+  "Star": {
+    "de": "Stern",
+    "fr": "Étoile",
+    "ja": "星",
+    "ru": "Звезда",
+    "uk": "Зірка",
+    "zh-Hans": "星星"
+  },
+  "Start tracking": {
+    "de": "Verfolgung starten",
+    "fr": "Lancer le suivi",
+    "ja": "追跡を開始",
+    "ru": "Начать отслеживание",
+    "uk": "Почати відстеження",
+    "zh-Hans": "开始跟踪"
+  },
+  "Stickers": {
+    "de": "Sticker",
+    "fr": "Autocollants",
+    "ja": "ステッカー",
+    "ru": "Стикеры",
+    "uk": "Стікери",
+    "zh-Hans": "贴纸"
+  },
+  "Stickers and sound effects": {
+    "de": "Sticker und Soundeffekte",
+    "fr": "Autocollants et effets sonores",
+    "ja": "ステッカーと効果音",
+    "ru": "Стикеры и звуковые эффекты",
+    "uk": "Стікери й звукові ефекти",
+    "zh-Hans": "贴纸和音效"
+  },
+  "Stickers and sound effects made for LF Studios, free to use in anything you make.": {
+    "de": "Sticker und Soundeffekte für LF Studios, frei nutzbar in allem, was du machst.",
+    "fr": "Des autocollants et des effets sonores conçus pour LF Studios, libres d’utilisation dans tout ce que vous créez.",
+    "ja": "LF Studios用に作られたステッカーと効果音で、どんな作品にも無料で使えます。",
+    "ru": "Стикеры и звуковые эффекты, сделанные для LF Studios, — бесплатно для любых ваших работ.",
+    "uk": "Стікери й звукові ефекти, створені для LF Studios, які можна безплатно використовувати в будь-яких ваших роботах.",
+    "zh-Hans": "专为 LF Studios 制作的贴纸和音效，可免费用于你制作的任何内容。"
+  },
+  "Stop Making Proxies": {
+    "de": "Proxys nicht mehr erstellen",
+    "fr": "Arrêter la création des proxys",
+    "ja": "プロキシの作成を停止",
+    "ru": "Остановить создание прокси",
+    "uk": "Припинити створення проксі",
+    "zh-Hans": "停止创建代理"
+  },
+  "Stop following": {
+    "de": "Nicht mehr folgen",
+    "fr": "Arrêter le suivi",
+    "ja": "追従を停止",
+    "ru": "Остановить отслеживание",
+    "uk": "Припинити відстеження",
+    "zh-Hans": "停止跟踪"
+  },
+  "Stop following takes it off; a box over something with clear edges follows best.": {
+    "de": "„Nicht mehr folgen“ entfernt es; ein Rahmen über etwas mit klaren Kanten folgt am besten.",
+    "fr": "Arrêter le suivi le retire ; un cadre placé sur quelque chose aux contours nets suit mieux.",
+    "ja": "“追従を停止”で追従を外します。輪郭のはっきりしたものにボックスを重ねると、いちばんよく追従します。",
+    "ru": "«Остановить отслеживание» отключает его; лучше всего отслеживается рамка над чем-то с четкими краями.",
+    "uk": "«Припинити відстеження» вимикає його; найкраще відстежується рамка над чимось із чіткими краями.",
+    "zh-Hans": "“停止跟踪”可将其移除；框住边缘清晰的物体时跟踪效果最好。"
+  },
+  "Stopped making proxies": {
+    "de": "Proxy-Erstellung gestoppt",
+    "fr": "Création des proxys arrêtée",
+    "ja": "プロキシの作成を停止しました",
+    "ru": "Создание прокси остановлено",
+    "uk": "Створення проксі припинено",
+    "zh-Hans": "已停止创建代理"
+  },
+  "Strobe": {
+    "de": "Stroboskop",
+    "fr": "Stroboscope",
+    "ja": "ストロボ",
+    "ru": "Стробоскоп",
+    "uk": "Стробоскоп",
+    "zh-Hans": "频闪"
+  },
+  "Stroke": {
+    "de": "Kontur",
+    "fr": "Contour",
+    "ja": "ストローク",
+    "ru": "Обводка",
+    "uk": "Обведення",
+    "zh-Hans": "描边"
+  },
+  "Style set — make or import captions to see it": {
+    "de": "Stil gesetzt – erstelle oder importiere Untertitel, um ihn zu sehen",
+    "fr": "Style choisi — créez ou importez des sous-titres pour le voir",
+    "ja": "スタイルを設定しました — 字幕を作成するか読み込むと確認できます",
+    "ru": "Стиль задан — создайте или импортируйте субтитры, чтобы увидеть его",
+    "uk": "Стиль задано — створіть чи імпортуйте субтитри, щоб його побачити",
+    "zh-Hans": "已设定样式 — 生成或导入字幕即可看到效果"
+  },
+  "Styles": {
+    "de": "Stile",
+    "fr": "Styles",
+    "ja": "スタイル",
+    "ru": "Стили",
+    "uk": "Стилі",
+    "zh-Hans": "样式"
+  },
+  "Success": {
+    "de": "Erfolg",
+    "fr": "Succès",
+    "ja": "成功",
+    "ru": "Успех",
+    "uk": "Успіх",
+    "zh-Hans": "成功"
+  },
+  "Sun": {
+    "de": "Sonne",
+    "fr": "Soleil",
+    "ja": "太陽",
+    "ru": "Солнце",
+    "uk": "Сонце",
+    "zh-Hans": "太阳"
+  },
+  "Surprised": {
+    "de": "Überrascht",
+    "fr": "Surpris",
+    "ja": "驚き",
+    "ru": "Удивление",
+    "uk": "Здивування",
+    "zh-Hans": "惊讶"
+  },
+  "Swing": {
+    "de": "Schwung",
+    "fr": "Balancement",
+    "ja": "スイング",
+    "ru": "Качание",
+    "uk": "Гойдання",
+    "zh-Hans": "摇摆"
+  },
+  "Take %@ off": {
+    "de": "%@ entfernen",
+    "fr": "Retirer %@",
+    "ja": "%@を外す",
+    "ru": "Убрать %@",
+    "uk": "Прибрати «%@»",
+    "zh-Hans": "移除%@"
+  },
+  "Take this effect off": {
+    "de": "Diesen Effekt entfernen",
+    "fr": "Retirer cet effet",
+    "ja": "このエフェクトを外す",
+    "ru": "Убрать этот эффект",
+    "uk": "Прибрати цей ефект",
+    "zh-Hans": "移除此特效"
+  },
+  "Takes out one colour, like a green screen": {
+    "de": "Entfernt eine Farbe, wie bei einem Greenscreen",
+    "fr": "Retire une couleur, comme un fond vert",
+    "ja": "グリーンバックのように1つの色を取り除きます",
+    "ru": "Убирает один цвет, как зеленый экран",
+    "uk": "Прибирає один колір, як зелений екран",
+    "zh-Hans": "去除一种颜色，就像绿幕"
+  },
+  "Teal & orange": {
+    "de": "Teal & Orange",
+    "fr": "Bleu et orange",
+    "ja": "ティール＆オレンジ",
+    "ru": "Бирюза и оранжевый",
+    "uk": "Бірюза й помаранч",
+    "zh-Hans": "青橙"
+  },
+  "Teal shadows": {
+    "de": "Blaugrüne Tiefen",
+    "fr": "Ombres bleutées",
+    "ja": "ティールシャドウ",
+    "ru": "Бирюзовые тени",
+    "uk": "Бірюзові тіні",
+    "zh-Hans": "青色阴影"
+  },
+  "Temperature": {
+    "de": "Temperatur",
+    "fr": "Température",
+    "ja": "色温度",
+    "ru": "Температура",
+    "uk": "Температура",
+    "zh-Hans": "色温"
+  },
+  "Text and picture annotations draw over every track. Move to a Track makes one a clip that takes its place in the tracks' order.": {
+    "de": "Text- und Bildanmerkungen liegen über allen Spuren. „Auf eine Spur bewegen“ macht eine davon zu einem Clip, der sich in die Reihenfolge der Spuren einreiht.",
+    "fr": "Les annotations de texte et d’image s’affichent par-dessus toutes les pistes. Déplacer vers une piste en fait un clip qui prend sa place dans l’ordre des pistes.",
+    "ja": "テキストと画像の注釈は、すべてのトラックの上に表示されます。“トラックに移動”を使うと、トラックの順序に従って表示されるクリップになります。",
+    "ru": "Текстовые элементы и картинки разметки рисуются поверх всех дорожек. «Перенести на дорожку» превращает элемент в клип, который встает в общий порядок дорожек.",
+    "uk": "Текстова розмітка й зображення малюються поверх усіх доріжок. «Перенести на доріжку» робить таку розмітку кліпом, що займає місце в порядку доріжок.",
+    "zh-Hans": "文字和图片标注会绘制在所有轨道之上。“移到轨道”会将其变为按轨道顺序排列的片段。"
+  },
+  "Text clip": {
+    "de": "Textclip",
+    "fr": "Clip de texte",
+    "ja": "テキストクリップ",
+    "ru": "Текстовый клип",
+    "uk": "Текстовий кліп",
+    "zh-Hans": "文字片段"
+  },
+  "Text clips and templates": {
+    "de": "Textclips und Vorlagen",
+    "fr": "Clips de texte et modèles",
+    "ja": "テキストクリップとテンプレート",
+    "ru": "Текстовые клипы и шаблоны",
+    "uk": "Текстові кліпи й шаблони",
+    "zh-Hans": "文字片段和模板"
+  },
+  "Text note": {
+    "de": "Textnotiz",
+    "fr": "Note de texte",
+    "ja": "テキストメモ",
+    "ru": "Текстовая заметка",
+    "uk": "Текстова примітка",
+    "zh-Hans": "文字注释"
+  },
+  "Text on a track of its own: any words, font, size, colour, outline, background, shadow, spacing and alignment.": {
+    "de": "Text auf einer eigenen Spur: beliebige Wörter, Schrift, Größe, Farbe, Kontur, Hintergrund, Schatten, Abstände und Ausrichtung.",
+    "fr": "Du texte sur sa propre piste : n’importe quels mots, police, taille, couleur, contour, arrière-plan, ombre, espacement et alignement.",
+    "ja": "専用のトラックに置くテキスト: 好きな文字、フォント、サイズ、カラー、縁取り、背景、シャドウ、間隔、配置を設定できます。",
+    "ru": "Текст на отдельной дорожке: любые слова, шрифт, размер, цвет, контур, фон, тень, интервалы и выравнивание.",
+    "uk": "Текст на окремій доріжці: будь-які слова, шрифт, розмір, колір, контур, тло, тінь, інтервали й вирівнювання.",
+    "zh-Hans": "放在单独轨道上的文字：任意文字、字体、大小、颜色、描边、背景、阴影、间距和对齐方式。"
+  },
+  "That isn't a 3D LUT LF Studios can read (.cube with LUT_3D_SIZE)": {
+    "de": "Das ist keine 3D-LUT, die LF Studios lesen kann (.cube mit LUT_3D_SIZE)",
+    "fr": "Ce n’est pas une LUT 3D que LF Studios peut lire (.cube avec LUT_3D_SIZE)",
+    "ja": "LF Studiosで読み込める3D LUT（LUT_3D_SIZEを含む.cube）ではありません",
+    "ru": "LF Studios не может прочитать этот 3D LUT (нужен .cube с LUT_3D_SIZE)",
+    "uk": "Це не 3D LUT, який може прочитати LF Studios (.cube з LUT_3D_SIZE)",
+    "zh-Hans": "这不是 LF Studios 可读取的 3D LUT（需为带有 LUT_3D_SIZE 的 .cube）"
+  },
+  "The Library": {
+    "de": "Die Bibliothek",
+    "fr": "La Bibliothèque",
+    "ja": "ライブラリ",
+    "ru": "Библиотека",
+    "uk": "Бібліотека",
+    "zh-Hans": "素材库"
+  },
+  "The Proxy menu under the player.": {
+    "de": "Das Menü „Proxy“ unter dem Player.",
+    "fr": "Le menu Proxy sous le lecteur.",
+    "ja": "プレーヤーの下の“プロキシ”メニュー。",
+    "ru": "Меню «Прокси» под плеером.",
+    "uk": "Меню «Проксі» під плеєром.",
+    "zh-Hans": "播放器下方的“代理”菜单。"
+  },
+  "The cover couldn't be added: %@": {
+    "de": "Das Titelbild konnte nicht hinzugefügt werden: %@",
+    "fr": "Impossible d’ajouter la couverture : %@",
+    "ja": "カバーを追加できませんでした: %@",
+    "ru": "Не удалось добавить обложку: %@",
+    "uk": "Не вдалося додати обкладинку: %@",
+    "zh-Hans": "无法添加封面：%@"
+  },
+  "The frame at %@": {
+    "de": "Das Bild bei %@",
+    "fr": "L’image à %@",
+    "ja": "%@の位置のフレーム",
+    "ru": "Кадр на %@",
+    "uk": "Кадр на %@",
+    "zh-Hans": "%@ 处的画面"
+  },
+  "The panel at the top left of the video editor.": {
+    "de": "Das Panel oben links im Video-Editor.",
+    "fr": "Le panneau en haut à gauche de l’éditeur vidéo.",
+    "ja": "ビデオエディタの左上のパネル。",
+    "ru": "Панель в левом верхнем углу видеоредактора.",
+    "uk": "Панель угорі ліворуч у відеоредакторі.",
+    "zh-Hans": "视频编辑器左上方的面板。"
+  },
+  "The picture a video file shows before it plays: a frame of the video, or a picture of your own.": {
+    "de": "Das Bild, das eine Videodatei vor dem Abspielen zeigt: ein Bild aus dem Video oder ein eigenes Bild.",
+    "fr": "L’image qu’un fichier vidéo affiche avant sa lecture : une image de la vidéo, ou une image à vous.",
+    "ja": "ビデオファイルを再生する前に表示される画像です。ビデオのフレームか、自分の画像を使えます。",
+    "ru": "Картинка, которую видеофайл показывает до воспроизведения: кадр из видео или ваша собственная картинка.",
+    "uk": "Зображення, яке відеофайл показує до відтворення: кадр із відео або ваше власне зображення.",
+    "zh-Hans": "视频文件播放前显示的图片：视频中的一帧画面，或你自己的图片。"
+  },
+  "The same transition on every cut between clips": {
+    "de": "Derselbe Übergang an jedem Schnitt zwischen Clips",
+    "fr": "La même transition sur chaque coupe entre les clips",
+    "ja": "クリップ間のすべてのつなぎ目に同じトランジションを適用",
+    "ru": "Один и тот же переход на всех склейках между клипами",
+    "uk": "Той самий перехід на кожній склейці між кліпами",
+    "zh-Hans": "在片段之间的每个剪切点使用相同的转场"
+  },
+  "The sound is silent faster than 32× or slower than 1/32×.": {
+    "de": "Schneller als 32× oder langsamer als 1/32× ist der Ton stumm.",
+    "fr": "Le son est coupé au-delà de 32× ou en deçà de 1/32×.",
+    "ja": "32×より速い、または1/32×より遅い場合、サウンドは無音になります。",
+    "ru": "Быстрее 32× или медленнее 1/32× звук отключается.",
+    "uk": "Звук вимикається при швидкості понад 32× або менше 1/32×.",
+    "zh-Hans": "快于 32× 或慢于 1/32× 时没有声音。"
+  },
+  "The sound's settings (select a sound file, the music, or a video above the main track).": {
+    "de": "Die Einstellungen des Tons (wähle eine Tondatei, die Musik oder ein Video über der Hauptspur aus).",
+    "fr": "Les réglages du son (sélectionnez un fichier son, la musique, ou une vidéo au-dessus de la piste principale).",
+    "ja": "サウンドの設定（サウンドファイル、音楽、またはメイントラックの上のビデオを選択します）。",
+    "ru": "Настройки звука (выберите звуковой файл, музыку или видео над основной дорожкой).",
+    "uk": "Параметри звуку (виберіть звуковий файл, музику або відео над основною доріжкою).",
+    "zh-Hans": "声音的设置（选择声音文件、音乐，或主轨道上方的视频）。"
+  },
+  "They take about %@ on this Mac (ProRes 422 Proxy at half size). The editor plays them instead of the originals; exports always use the originals. Clean Up in Settings removes them.": {
+    "de": "Sie brauchen etwa %@ auf diesem Mac (ProRes 422 Proxy in halber Größe). Der Editor spielt sie statt der Originale ab; Exporte nutzen immer die Originale. „Aufräumen“ in den Einstellungen entfernt sie.",
+    "fr": "Ils occupent environ %@ sur ce Mac (ProRes 422 Proxy en demi-taille). L’éditeur les lit à la place des originaux ; les exportations utilisent toujours les originaux. Nettoyer, dans Réglages, les supprime.",
+    "ja": "このMac上で約%@を使用します（半分のサイズのProRes 422 Proxy）。エディタではオリジナルの代わりにプロキシを再生しますが、書き出しには常にオリジナルを使います。“設定”の“クリーンアップ”で削除できます。",
+    "ru": "Они займут около %@ на этом Mac (ProRes 422 Proxy в половинном размере). Редактор воспроизводит их вместо оригиналов; при экспорте всегда используются оригиналы. «Убрать лишнее» в настройках удаляет их.",
+    "uk": "Вони займуть близько %@ на цьому Mac (ProRes 422 Proxy у половинному розмірі). Редактор відтворює їх замість оригіналів; експорт завжди використовує оригінали. «Прибрати» в Параметрах вилучає їх.",
+    "zh-Hans": "它们在这台 Mac 上大约占用 %@（半尺寸的 ProRes 422 Proxy）。编辑器会播放代理而非原始文件；导出始终使用原始文件。“设置”中的“清理”可将其移除。"
+  },
+  "They're kept on this Mac only, never in a project or a Creative Handoff. Settings ▸ Clean Up removes them.": {
+    "de": "Sie bleiben nur auf diesem Mac, nie in einem Projekt oder einer Kreativen Übergabe. Einstellungen ▸ Aufräumen entfernt sie.",
+    "fr": "Ils sont conservés sur ce Mac uniquement, jamais dans un projet ni une Transmission créative. Réglages ▸ Nettoyer les supprime.",
+    "ja": "プロキシはこのMacにだけ保存され、プロジェクトやクリエイティブ受け渡しには含まれません。“設定”＞“クリーンアップ”で削除できます。",
+    "ru": "Они хранятся только на этом Mac — никогда в проекте или творческой передаче. Настройки ▸ Убрать лишнее удаляет их.",
+    "uk": "Вони зберігаються лише на цьому Mac, ніколи в проєкті чи «Творчому передаванні». Параметри ▸ Прибрати вилучає їх.",
+    "zh-Hans": "它们只保存在这台 Mac 上，绝不会放进项目或创意交付中。“设置 ▸ 清理”可将其移除。"
+  },
+  "Thought bubble": {
+    "de": "Denkblase",
+    "fr": "Bulle de pensée",
+    "ja": "考え中の吹き出し",
+    "ru": "Облачко мыслей",
+    "uk": "Бульбашка думок",
+    "zh-Hans": "思考气泡"
+  },
+  "Through a colour": {
+    "de": "Über eine Farbe",
+    "fr": "Par une couleur",
+    "ja": "色を経由",
+    "ru": "Через цвет",
+    "uk": "Через колір",
+    "zh-Hans": "颜色过渡"
+  },
+  "Tick": {
+    "de": "Häkchen",
+    "fr": "Coche",
+    "ja": "チェックマーク",
+    "ru": "Галочка",
+    "uk": "Галочка",
+    "zh-Hans": "对勾"
+  },
+  "Titles": {
+    "de": "Titel",
+    "fr": "Titres",
+    "ja": "タイトル",
+    "ru": "Заголовки",
+    "uk": "Заголовки",
+    "zh-Hans": "标题"
+  },
+  "Top line": {
+    "de": "Obere Zeile",
+    "fr": "Ligne du haut",
+    "ja": "上に1行",
+    "ru": "Верхняя строка",
+    "uk": "Верхній рядок",
+    "zh-Hans": "顶部单行"
+  },
+  "Track": {
+    "de": "Verfolgen",
+    "fr": "Suivre",
+    "ja": "追跡",
+    "ru": "Отследить",
+    "uk": "Відстежити",
+    "zh-Hans": "跟踪"
+  },
+  "Tracking": {
+    "de": "Verfolgung",
+    "fr": "Suivi",
+    "ja": "トラッキング",
+    "ru": "Отслеживание",
+    "uk": "Відстеження",
+    "zh-Hans": "跟踪"
+  },
+  "Tracking box": {
+    "de": "Verfolgungsrahmen",
+    "fr": "Cadre de suivi",
+    "ja": "追跡ボックス",
+    "ru": "Рамка отслеживания",
+    "uk": "Рамка відстеження",
+    "zh-Hans": "跟踪框"
+  },
+  "Tracking stopped": {
+    "de": "Verfolgung gestoppt",
+    "fr": "Suivi arrêté",
+    "ja": "追跡を停止しました",
+    "ru": "Отслеживание остановлено",
+    "uk": "Відстеження зупинено",
+    "zh-Hans": "已停止跟踪"
+  },
+  "Type a Name and choose where to Export to.": {
+    "de": "Gib einen Namen ein und wähle unter „Exportieren nach“ einen Ort.",
+    "fr": "Saisissez un Nom et choisissez où Exporter vers.",
+    "ja": "“名前”を入力し、“書き出し先”を選びます。",
+    "ru": "Введите имя и выберите, куда экспортировать.",
+    "uk": "Введіть «Назву» й виберіть, куди «Експортувати в».",
+    "zh-Hans": "输入“名称”，然后选择“导出到”的位置。"
+  },
+  "Type in Properties ▸ Text, and pick its look there or click a Style.": {
+    "de": "Tippe unter Eigenschaften ▸ Text, und wähle dort das Aussehen oder klicke auf einen Stil.",
+    "fr": "Tapez dans Propriétés ▸ Texte, et choisissez-y son apparence ou cliquez sur un Style.",
+    "ja": "“プロパティ”＞“テキスト”で入力し、そこで見た目を選ぶか、スタイルをクリックします。",
+    "ru": "Введите текст в Свойства ▸ Текст и выберите там его вид или нажмите стиль.",
+    "uk": "Введіть текст у Властивості ▸ Текст і виберіть там його вигляд або клацніть стиль.",
+    "zh-Hans": "在“属性 ▸ 文字”中输入，并在那里选择外观，或点按一种“样式”。"
+  },
+  "Underline": {
+    "de": "Unterstrichen",
+    "fr": "Souligné",
+    "ja": "下線",
+    "ru": "Подчеркивание",
+    "uk": "Підкреслення",
+    "zh-Hans": "下划线"
+  },
+  "Undo Add Adjustment": {
+    "de": "Hinzufügen der Anpassung widerrufen",
+    "fr": "Annuler l’ajout d’un ajustement",
+    "ja": "調整の追加を取り消す",
+    "ru": "Отменить добавление коррекции",
+    "uk": "Відмінити додавання корекції",
+    "zh-Hans": "撤销添加调节"
+  },
+  "Undo Add Effect": {
+    "de": "Hinzufügen des Effekts widerrufen",
+    "fr": "Annuler l’ajout d’un effet",
+    "ja": "エフェクトの追加を取り消す",
+    "ru": "Отменить добавление эффекта",
+    "uk": "Відмінити додавання ефекту",
+    "zh-Hans": "撤销添加特效"
+  },
+  "Undo Add Filter": {
+    "de": "Hinzufügen des Filters widerrufen",
+    "fr": "Annuler l’ajout d’un filtre",
+    "ja": "フィルタの追加を取り消す",
+    "ru": "Отменить добавление фильтра",
+    "uk": "Відмінити додавання фільтра",
+    "zh-Hans": "撤销添加滤镜"
+  },
+  "Undo Add Keyframe": {
+    "de": "Hinzufügen des Keyframes widerrufen",
+    "fr": "Annuler l’ajout d’une image clé",
+    "ja": "キーフレームの追加を取り消す",
+    "ru": "Отменить добавление ключевого кадра",
+    "uk": "Відмінити додавання ключового кадру",
+    "zh-Hans": "撤销添加关键帧"
+  },
+  "Undo Add Sticker": {
+    "de": "Hinzufügen des Stickers widerrufen",
+    "fr": "Annuler l’ajout d’un autocollant",
+    "ja": "ステッカーの追加を取り消す",
+    "ru": "Отменить добавление стикера",
+    "uk": "Відмінити додавання стікера",
+    "zh-Hans": "撤销添加贴纸"
+  },
+  "Undo Adjust": {
+    "de": "Anpassen widerrufen",
+    "fr": "Annuler les ajustements",
+    "ja": "調整の変更を取り消す",
+    "ru": "Отменить коррекцию",
+    "uk": "Відмінити зміну корекції",
+    "zh-Hans": "撤销调节"
+  },
+  "Undo Animation": {
+    "de": "Animation widerrufen",
+    "fr": "Annuler l’animation",
+    "ja": "アニメーションの変更を取り消す",
+    "ru": "Отменить изменение анимации",
+    "uk": "Відмінити зміну анімації",
+    "zh-Hans": "撤销动画"
+  },
+  "Undo Blend": {
+    "de": "Füllmethode widerrufen",
+    "fr": "Annuler la fusion",
+    "ja": "ブレンドの変更を取り消す",
+    "ru": "Отменить изменение наложения",
+    "uk": "Відмінити зміну накладання",
+    "zh-Hans": "撤销混合"
+  },
+  "Undo Break Apart": {
+    "de": "Auflösen widerrufen",
+    "fr": "Annuler la dissociation",
+    "ja": "分解を取り消す",
+    "ru": "Отменить разбор составного клипа",
+    "uk": "Відмінити розбирання кліпу",
+    "zh-Hans": "撤销拆开"
+  },
+  "Undo Change Pitch": {
+    "de": "Tonhöhenänderung widerrufen",
+    "fr": "Annuler le changement de hauteur",
+    "ja": "ピッチの変更を取り消す",
+    "ru": "Отменить изменение высоты тона",
+    "uk": "Відмінити зміну висоти тону",
+    "zh-Hans": "撤销更改音调"
+  },
+  "Undo Chroma Key": {
+    "de": "Chroma-Key widerrufen",
+    "fr": "Annuler la clé chromatique",
+    "ja": "クロマキーの変更を取り消す",
+    "ru": "Отменить изменение хромакея",
+    "uk": "Відмінити зміну хромакею",
+    "zh-Hans": "撤销色度抠图"
+  },
+  "Undo Clear Beats": {
+    "de": "Löschen der Beats widerrufen",
+    "fr": "Annuler l’effacement des battements",
+    "ja": "ビートの消去を取り消す",
+    "ru": "Отменить удаление битов",
+    "uk": "Відмінити прибирання бітів",
+    "zh-Hans": "撤销清除节拍"
+  },
+  "Undo Compound Clip": {
+    "de": "Zusammengesetzten Clip widerrufen",
+    "fr": "Annuler le clip composé",
+    "ja": "複合クリップの変更を取り消す",
+    "ru": "Отменить изменение составного клипа",
+    "uk": "Відмінити зміну складеного кліпу",
+    "zh-Hans": "撤销复合片段"
+  },
+  "Undo Cover": {
+    "de": "Titelbild widerrufen",
+    "fr": "Annuler la couverture",
+    "ja": "カバーの変更を取り消す",
+    "ru": "Отменить изменение обложки",
+    "uk": "Відмінити зміну обкладинки",
+    "zh-Hans": "撤销封面"
+  },
+  "Undo Detect Beats": {
+    "de": "Erkennen der Beats widerrufen",
+    "fr": "Annuler la détection des battements",
+    "ja": "ビートの検出を取り消す",
+    "ru": "Отменить поиск битов",
+    "uk": "Відмінити пошук бітів",
+    "zh-Hans": "撤销检测节拍"
+  },
+  "Undo Effects": {
+    "de": "Effekte widerrufen",
+    "fr": "Annuler les effets",
+    "ja": "エフェクトの変更を取り消す",
+    "ru": "Отменить изменение эффектов",
+    "uk": "Відмінити зміну ефектів",
+    "zh-Hans": "撤销特效"
+  },
+  "Undo Filter": {
+    "de": "Filter widerrufen",
+    "fr": "Annuler le filtre",
+    "ja": "フィルタの変更を取り消す",
+    "ru": "Отменить изменение фильтра",
+    "uk": "Відмінити зміну фільтра",
+    "zh-Hans": "撤销滤镜"
+  },
+  "Undo Import Captions": {
+    "de": "Importieren der Untertitel widerrufen",
+    "fr": "Annuler l’importation des sous-titres",
+    "ja": "字幕の読み込みを取り消す",
+    "ru": "Отменить импорт субтитров",
+    "uk": "Відмінити імпорт субтитрів",
+    "zh-Hans": "撤销导入字幕"
+  },
+  "Undo Keep Background": {
+    "de": "Hintergrund behalten widerrufen",
+    "fr": "Annuler la conservation de l’arrière-plan",
+    "ja": "背景の保持を取り消す",
+    "ru": "Отменить возврат фона",
+    "uk": "Відмінити збереження тла",
+    "zh-Hans": "撤销保留背景"
+  },
+  "Undo Keep Pitch": {
+    "de": "Tonhöhe beibehalten widerrufen",
+    "fr": "Annuler la conservation de la hauteur",
+    "ja": "ピッチの保持を取り消す",
+    "ru": "Отменить изменение сохранения тона",
+    "uk": "Відмінити збереження висоти тону",
+    "zh-Hans": "撤销保持音调"
+  },
+  "Undo Keyframe Easing": {
+    "de": "Keyframe-Beschleunigung widerrufen",
+    "fr": "Annuler le lissage de l’image clé",
+    "ja": "キーフレームのイージングの変更を取り消す",
+    "ru": "Отменить изменение сглаживания ключевого кадра",
+    "uk": "Відмінити зміну згладжування ключового кадру",
+    "zh-Hans": "撤销关键帧缓动"
+  },
+  "Undo Make Compound Clip": {
+    "de": "Erstellen des zusammengesetzten Clips widerrufen",
+    "fr": "Annuler la création du clip composé",
+    "ja": "複合クリップの作成を取り消す",
+    "ru": "Отменить создание составного клипа",
+    "uk": "Відмінити створення складеного кліпу",
+    "zh-Hans": "撤销创建复合片段"
+  },
+  "Undo Mask": {
+    "de": "Maske widerrufen",
+    "fr": "Annuler le masque",
+    "ja": "マスクの変更を取り消す",
+    "ru": "Отменить изменение маски",
+    "uk": "Відмінити зміну маски",
+    "zh-Hans": "撤销蒙版"
+  },
+  "Undo Move to Track": {
+    "de": "Bewegen auf eine Spur widerrufen",
+    "fr": "Annuler le déplacement vers une piste",
+    "ja": "トラックへの移動を取り消す",
+    "ru": "Отменить перенос на дорожку",
+    "uk": "Відмінити перенесення на доріжку",
+    "zh-Hans": "撤销移到轨道"
+  },
+  "Undo Normalize Loudness": {
+    "de": "Normalisieren der Lautheit widerrufen",
+    "fr": "Annuler la normalisation du volume sonore",
+    "ja": "ラウドネスのノーマライズを取り消す",
+    "ru": "Отменить нормализацию громкости",
+    "uk": "Відмінити нормалізацію гучності",
+    "zh-Hans": "撤销统一响度"
+  },
+  "Undo Remove Background": {
+    "de": "Entfernen des Hintergrunds widerrufen",
+    "fr": "Annuler la suppression de l’arrière-plan",
+    "ja": "背景の削除を取り消す",
+    "ru": "Отменить удаление фона",
+    "uk": "Відмінити прибирання тла",
+    "zh-Hans": "撤销移除背景"
+  },
+  "Undo Remove Keyframe": {
+    "de": "Entfernen des Keyframes widerrufen",
+    "fr": "Annuler la suppression de l’image clé",
+    "ja": "キーフレームの削除を取り消す",
+    "ru": "Отменить удаление ключевого кадра",
+    "uk": "Відмінити вилучення ключового кадру",
+    "zh-Hans": "撤销移除关键帧"
+  },
+  "Undo Speed": {
+    "de": "Tempo widerrufen",
+    "fr": "Annuler la vitesse",
+    "ja": "速度の変更を取り消す",
+    "ru": "Отменить изменение скорости",
+    "uk": "Відмінити зміну швидкості",
+    "zh-Hans": "撤销速度"
+  },
+  "Undo Speed Curve": {
+    "de": "Tempokurve widerrufen",
+    "fr": "Annuler la courbe de vitesse",
+    "ja": "速度カーブの変更を取り消す",
+    "ru": "Отменить изменение кривой скорости",
+    "uk": "Відмінити зміну кривої швидкості",
+    "zh-Hans": "撤销曲线变速"
+  },
+  "Undo Stop Following": {
+    "de": "Folgen beenden widerrufen",
+    "fr": "Annuler l’arrêt du suivi",
+    "ja": "追従の停止を取り消す",
+    "ru": "Отменить остановку отслеживания",
+    "uk": "Відмінити припинення відстеження",
+    "zh-Hans": "撤销停止跟踪"
+  },
+  "Undo Text Change": {
+    "de": "Textänderung widerrufen",
+    "fr": "Annuler la modification du texte",
+    "ja": "テキストの変更を取り消す",
+    "ru": "Отменить изменение текста",
+    "uk": "Відмінити зміну тексту",
+    "zh-Hans": "撤销文字更改"
+  },
+  "Undo Track Motion": {
+    "de": "Bewegungsverfolgung widerrufen",
+    "fr": "Annuler le suivi de mouvement",
+    "ja": "モーショントラッキングを取り消す",
+    "ru": "Отменить отслеживание движения",
+    "uk": "Відмінити відстеження руху",
+    "zh-Hans": "撤销运动跟踪"
+  },
+  "Use the playhead": {
+    "de": "Abspielposition verwenden",
+    "fr": "Utiliser la tête de lecture",
+    "ja": "再生ヘッドを使用",
+    "ru": "По указателю",
+    "uk": "Взяти з покажчика",
+    "zh-Hans": "使用播放头"
+  },
+  "VHS": {
+    "de": "VHS",
+    "fr": "VHS",
+    "ja": "VHS",
+    "ru": "VHS",
+    "uk": "VHS",
+    "zh-Hans": "VHS"
+  },
+  "Vibrance": {
+    "de": "Dynamik",
+    "fr": "Vibrance",
+    "ja": "自然な彩度",
+    "ru": "Красочность",
+    "uk": "Яскравість кольорів",
+    "zh-Hans": "自然饱和度"
+  },
+  "Vignette": {
+    "de": "Vignette",
+    "fr": "Vignettage",
+    "ja": "ビネット",
+    "ru": "Виньетка",
+    "uk": "Віньєтка",
+    "zh-Hans": "暗角"
+  },
+  "Vintage": {
+    "de": "Vintage",
+    "fr": "Vintage",
+    "ja": "ビンテージ",
+    "ru": "Винтаж",
+    "uk": "Вінтаж",
+    "zh-Hans": "怀旧"
+  },
+  "Vivid": {
+    "de": "Lebendig",
+    "fr": "Vif",
+    "ja": "ビビッド",
+    "ru": "Яркий",
+    "uk": "Насичений",
+    "zh-Hans": "鲜艳"
+  },
+  "Volume keyframe": {
+    "de": "Lautstärke-Keyframe",
+    "fr": "Image clé de volume",
+    "ja": "音量キーフレーム",
+    "ru": "Ключевой кадр громкости",
+    "uk": "Ключовий кадр гучності",
+    "zh-Hans": "音量关键帧"
+  },
+  "Volume keyframes, fades, loudness and beats": {
+    "de": "Lautstärke-Keyframes, Blenden, Lautheit und Beats",
+    "fr": "Images clés de volume, fondus, volume sonore et battements",
+    "ja": "音量キーフレーム、フェード、ラウドネス、ビート",
+    "ru": "Ключевые кадры громкости, нарастание и затухание, громкость и биты",
+    "uk": "Ключові кадри гучності, згасання, гучність і біти",
+    "zh-Hans": "音量关键帧、淡入淡出、响度和节拍"
+  },
+  "Volume ◆": {
+    "de": "Lautstärke ◆",
+    "fr": "Volume ◆",
+    "ja": "音量 ◆",
+    "ru": "Громкость ◆",
+    "uk": "Гучність ◆",
+    "zh-Hans": "音量 ◆"
+  },
+  "Volume ◆ sets a volume keyframe at the playhead.": {
+    "de": "„Lautstärke ◆“ setzt einen Lautstärke-Keyframe an der Abspielposition.",
+    "fr": "Volume ◆ place une image clé de volume à la tête de lecture.",
+    "ja": "“音量 ◆”で、再生ヘッドの位置に音量キーフレームを設定します。",
+    "ru": "«Громкость ◆» ставит ключевой кадр громкости у указателя воспроизведения.",
+    "uk": "«Гучність ◆» ставить ключовий кадр гучності на покажчику відтворення.",
+    "zh-Hans": "“音量 ◆”会在播放头处设定音量关键帧。"
+  },
+  "WOW!": {
+    "de": "WOW!",
+    "fr": "WAOUH !",
+    "ja": "ワオ!",
+    "ru": "ВАУ!",
+    "uk": "ВАУ!",
+    "zh-Hans": "哇！"
+  },
+  "Wait for it…": {
+    "de": "Gleich kommt’s …",
+    "fr": "Attendez…",
+    "ja": "お楽しみに…",
+    "ru": "Сейчас будет…",
+    "uk": "Чекайте…",
+    "zh-Hans": "等着瞧…"
+  },
+  "Warm up": {
+    "de": "Aufwärmen",
+    "fr": "Réchauffer",
+    "ja": "暖かく",
+    "ru": "Потепление",
+    "uk": "Тепліше",
+    "zh-Hans": "升温"
+  },
+  "What Finder, QuickTime and video sites show before it plays.": {
+    "de": "Was Finder, QuickTime und Videoportale vor dem Abspielen zeigen.",
+    "fr": "Ce que le Finder, QuickTime et les sites vidéo affichent avant la lecture.",
+    "ja": "再生前にFinder、QuickTime、動画サイトに表示される画像です。",
+    "ru": "То, что Finder, QuickTime и видеосайты показывают до воспроизведения.",
+    "uk": "Що Finder, QuickTime і відеосайти показують до відтворення.",
+    "zh-Hans": "“访达”、QuickTime 和视频网站在播放前显示的内容。"
+  },
+  "What the clip follows: drag it over the thing that moves": {
+    "de": "Dem folgt der Clip: Zieh ihn über das, was sich bewegt",
+    "fr": "Ce que le clip suit : faites-le glisser sur l’objet qui bouge",
+    "ja": "クリップが追従する対象: 動くものの上にドラッグします",
+    "ru": "То, за чем следует клип: перетяните рамку на движущийся объект",
+    "uk": "За чим стежить кліп: перетягніть рамку на рухомий об’єкт",
+    "zh-Hans": "片段跟踪的对象：将它拖到移动的物体上"
+  },
+  "Wheels": {
+    "de": "Räder",
+    "fr": "Roues",
+    "ja": "ホイール",
+    "ru": "Круги",
+    "uk": "Круги",
+    "zh-Hans": "色轮"
+  },
+  "When a file with that name is there already, choose Replace or Keep Both.": {
+    "de": "Ist schon eine Datei mit diesem Namen da, wähle „Ersetzen“ oder „Beide behalten“.",
+    "fr": "Si un fichier de ce nom existe déjà, choisissez Remplacer ou Garder les deux.",
+    "ja": "同じ名前のファイルがすでにある場合は、“置き換える”か“両方とも残す”を選びます。",
+    "ru": "Если файл с таким именем уже есть, выберите «Заменить» или «Оставить оба».",
+    "uk": "Якщо файл із такою назвою вже є, виберіть «Замінити» або «Залишити обидва».",
+    "zh-Hans": "如果已有同名文件，请选择“替换”或“两者都保留”。"
+  },
+  "When a key is taken, LF Studios says which command loses it.": {
+    "de": "Ist eine Taste schon belegt, sagt LF Studios, welcher Befehl sie verliert.",
+    "fr": "Quand une touche est déjà prise, LF Studios indique quelle commande la perd.",
+    "ja": "キーがすでに使われている場合は、どのコマンドから外れるかがLF Studiosに表示されます。",
+    "ru": "Если клавиша занята, LF Studios сообщит, какая команда ее лишится.",
+    "uk": "Якщо клавіша вже зайнята, LF Studios покаже, яка команда її втратить.",
+    "zh-Hans": "当某个快捷键已被占用时，LF Studios 会告诉你哪个命令将失去它。"
+  },
+  "When they're ready, Edit with Proxies turns on.": {
+    "de": "Sind sie fertig, wird „Mit Proxys bearbeiten“ eingeschaltet.",
+    "fr": "Quand ils sont prêts, Monter avec les proxys s’active.",
+    "ja": "準備ができると、“プロキシで編集”がオンになります。",
+    "ru": "Когда они будут готовы, включится «Монтаж с прокси».",
+    "uk": "Коли вони будуть готові, увімкнеться «Монтувати з проксі».",
+    "zh-Hans": "代理就绪后，“使用代理剪辑”会打开。"
+  },
+  "Whites": {
+    "de": "Weiß",
+    "fr": "Blancs",
+    "ja": "白レベル",
+    "ru": "Белые",
+    "uk": "Білі",
+    "zh-Hans": "白色色阶"
+  },
+  "Whoosh": {
+    "de": "Wusch",
+    "fr": "Whoosh",
+    "ja": "ヒュッ",
+    "ru": "Вжух",
+    "uk": "Свист",
+    "zh-Hans": "嗖"
+  },
+  "Wipe": {
+    "de": "Wischen",
+    "fr": "Balayage",
+    "ja": "ワイプ",
+    "ru": "Шторка",
+    "uk": "Шторка",
+    "zh-Hans": "擦除"
+  },
+  "With a clip above the main track selected, + puts an effect, filter or adjustment on that clip.": {
+    "de": "Ist ein Clip über der Hauptspur ausgewählt, legt + einen Effekt, Filter oder eine Anpassung auf diesen Clip.",
+    "fr": "Avec un clip au-dessus de la piste principale sélectionné, + applique un effet, un filtre ou un ajustement à ce clip.",
+    "ja": "メイントラックの上のクリップを選択した状態で＋をクリックすると、そのクリップにエフェクト、フィルタ、調整を適用します。",
+    "ru": "Если выбран клип над основной дорожкой, + накладывает эффект, фильтр или коррекцию на этот клип.",
+    "uk": "Коли вибрано кліп над основною доріжкою, + накладає на нього ефект, фільтр чи корекцію.",
+    "zh-Hans": "选中主轨道上方的片段时，+ 会将特效、滤镜或调节添加到该片段。"
+  },
+  "Wobble": {
+    "de": "Wabern",
+    "fr": "Ondulation",
+    "ja": "ゆらゆら",
+    "ru": "Колебание",
+    "uk": "Хитання",
+    "zh-Hans": "摇晃"
+  },
+  "Word box": {
+    "de": "Wortkasten",
+    "fr": "Mot encadré",
+    "ja": "ワードボックス",
+    "ru": "Слово в рамке",
+    "uk": "Слово в рамці",
+    "zh-Hans": "单词框"
+  },
+  "Wow!": {
+    "de": "Wow!",
+    "fr": "Waouh !",
+    "ja": "すごい!",
+    "ru": "Вау!",
+    "uk": "Вау!",
+    "zh-Hans": "哇！"
+  },
+  "Your keys (they replace the ones below)": {
+    "de": "Deine Tasten (sie ersetzen die unten)",
+    "fr": "Vos touches (elles remplacent celles ci-dessous)",
+    "ja": "自分のキー（下のキーより優先されます）",
+    "ru": "Ваши клавиши (заменяют те, что ниже)",
+    "uk": "Ваші клавіші (вони замінюють наведені нижче)",
+    "zh-Hans": "你的快捷键（会替换下方的快捷键）"
+  },
+  "Your own PNG or GIF (GIFs play)": {
+    "de": "Dein eigenes PNG oder GIF (GIFs werden abgespielt)",
+    "fr": "Votre propre PNG ou GIF (les GIF sont animés)",
+    "ja": "自分のPNGまたはGIF（GIFは動きます）",
+    "ru": "Ваш PNG или GIF (GIF воспроизводятся)",
+    "uk": "Ваш власний PNG або GIF (GIF відтворюються)",
+    "zh-Hans": "你自己的 PNG 或 GIF（GIF 会播放）"
+  },
+  "Your sounds": {
+    "de": "Deine Töne",
+    "fr": "Vos sons",
+    "ja": "自分のサウンド",
+    "ru": "Ваши звуки",
+    "uk": "Ваші звуки",
+    "zh-Hans": "你的声音"
+  },
+  "Zap": {
+    "de": "Zapp",
+    "fr": "Zap",
+    "ja": "ビリッ",
+    "ru": "Разряд",
+    "uk": "Зап",
+    "zh-Hans": "电击"
+  },
+  "Zoom in": {
+    "de": "Einzoomen",
+    "fr": "Zoom avant",
+    "ja": "ズームイン",
+    "ru": "Увеличение",
+    "uk": "Наближення",
+    "zh-Hans": "放大"
+  },
+  "Zoom out": {
+    "de": "Auszoomen",
+    "fr": "Zoom arrière",
+    "ja": "ズームアウト",
+    "ru": "Уменьшение",
+    "uk": "Віддалення",
+    "zh-Hans": "缩小"
+  },
+  "Zoom pulse": {
+    "de": "Zoom-Puls",
+    "fr": "Pulsation zoom",
+    "ja": "ズームパルス",
+    "ru": "Пульсация масштаба",
+    "uk": "Пульсація масштабу",
+    "zh-Hans": "缩放脉冲"
+  },
+  "so good": {
+    "de": "so gut",
+    "fr": "trop bien",
+    "ja": "最高",
+    "ru": "просто супер",
+    "uk": "просто клас",
+    "zh-Hans": "太棒了"
+  },
+  "“%@” is a clip on its own track now": {
+    "de": "„%@“ ist jetzt ein Clip auf einer eigenen Spur",
+    "fr": "« %@ » est maintenant un clip sur sa propre piste",
+    "ja": "“%@”は専用のトラック上のクリップになりました",
+    "ru": "«%@» теперь клип на отдельной дорожке",
+    "uk": "«%@» тепер кліп на окремій доріжці",
+    "zh-Hans": "“%@”现在是单独轨道上的片段"
+  },
+  "“%@” is already there": {
+    "de": "„%@“ ist schon vorhanden",
+    "fr": "« %@ » existe déjà",
+    "ja": "“%@”はすでにあります",
+    "ru": "«%@» уже существует",
+    "uk": "«%@» уже існує",
+    "zh-Hans": "“%@”已存在"
+  },
+  "“%@” — drag onto the timeline, or double-click to add it at the playhead": {
+    "de": "„%@“ – auf die Zeitleiste ziehen oder doppelklicken, um es an der Abspielposition hinzuzufügen",
+    "fr": "« %@ » — faites-le glisser sur la timeline, ou double-cliquez pour l’ajouter à la tête de lecture",
+    "ja": "“%@” — タイムラインにドラッグするか、ダブルクリックして再生ヘッドの位置に追加",
+    "ru": "«%@» — перетяните на шкалу времени или дважды нажмите, чтобы добавить у указателя воспроизведения",
+    "uk": "«%@» — перетягніть на шкалу часу або двічі клацніть, щоб додати на покажчику відтворення",
+    "zh-Hans": "“%@” — 拖到时间线上，或连按两次在播放头处添加"
+  },
+  "“Simple is better”": {
+    "de": "„Einfach ist besser“",
+    "fr": "« Simple, c’est mieux »",
+    "ja": "“シンプルがいちばん”",
+    "ru": "«Проще — лучше»",
+    "uk": "«Простіше — краще»",
+    "zh-Hans": "“简单就是美”"
+  },
+  "• Edit proxies — %lld files, %@ (Create Proxies makes them again)": {
+    "de": {
+      "one": "• Proxys zum Bearbeiten – %lld Datei, %@ („Proxys erstellen“ erstellt sie neu)",
+      "other": "• Proxys zum Bearbeiten – %lld Dateien, %@ („Proxys erstellen“ erstellt sie neu)"
+    },
+    "en": {
+      "one": "• Edit proxies — %lld file, %@ (Create Proxies makes it again)",
+      "other": "• Edit proxies — %lld files, %@ (Create Proxies makes them again)"
+    },
+    "fr": {
+      "one": "• Proxys de montage — %lld fichier, %@ (Créer des proxys le recrée)",
+      "other": "• Proxys de montage — %lld fichiers, %@ (Créer des proxys les recrée)"
+    },
+    "ja": "• 編集用プロキシ: %lld個のファイル、%@（“プロキシを作成”で再作成されます）",
+    "ru": {
+      "few": "• Прокси для монтажа — %lld файла, %@ («Создать прокси» создаст их снова)",
+      "many": "• Прокси для монтажа — %lld файлов, %@ («Создать прокси» создаст их снова)",
+      "one": "• Прокси для монтажа — %lld файл, %@ («Создать прокси» создаст их снова)",
+      "other": "• Прокси для монтажа — %lld файла, %@ («Создать прокси» создаст их снова)"
+    },
+    "uk": {
+      "few": "• Проксі для монтажу — %lld файли, %@ («Створити проксі» створює їх знову)",
+      "many": "• Проксі для монтажу — %lld файлів, %@ («Створити проксі» створює їх знову)",
+      "one": "• Проксі для монтажу — %lld файл, %@ («Створити проксі» створює їх знову)",
+      "other": "• Проксі для монтажу — %lld файлу, %@ («Створити проксі» створює їх знову)"
+    },
+    "zh-Hans": "• 剪辑代理 — %lld 个文件，%@（“创建代理”会重新生成）"
+  },
+  "• Timeline pictures and waveforms — %@ (made again when a video opens)": {
+    "de": "• Bilder und Wellenformen der Zeitleiste – %@ (neu erstellt, wenn ein Video geöffnet wird)",
+    "fr": "• Images et formes d’onde de la timeline — %@ (recréées à l’ouverture d’une vidéo)",
+    "ja": "• タイムラインの画像と波形: %@（ビデオを開くと再作成されます）",
+    "ru": "• Кадры и звуковые волны шкалы времени — %@ (создаются снова при открытии видео)",
+    "uk": "• Мініатюри й хвилі шкали часу — %@ (створюються знову, коли відкривається відео)",
+    "zh-Hans": "• 时间线缩略图和波形 — %@（打开视频时重新生成）"
+  },
+  "⌥T still adds a text note pinned over the video, as before.": {
+    "de": "⌥T fügt weiterhin eine Textnotiz über dem Video hinzu, wie bisher.",
+    "fr": "⌥T ajoute toujours une note de texte épinglée sur la vidéo, comme avant.",
+    "ja": "⌥Tでは、これまでどおりビデオの上に固定されるテキストメモを追加できます。",
+    "ru": "⌥T, как и раньше, добавляет текстовую заметку поверх видео.",
+    "uk": "⌥T, як і раніше, додає текстову примітку, закріплену поверх відео.",
+    "zh-Hans": "⌥T 仍会添加固定在视频上方的文字注释，和以前一样。"
+  }
+}

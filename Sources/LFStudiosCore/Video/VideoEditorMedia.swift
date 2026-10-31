@@ -252,7 +252,8 @@ extension VideoEditorModel {
         Task {
             defer { media.end("layers") }
             for path in wanted where media.layerFiles[path] == nil {
-                if let file = await VideoLayerFile.load(URL(fileURLWithPath: path)) { media.layerFiles[path] = file }
+                let url = URL(fileURLWithPath: path)
+                if let file = usesProxies ? await VideoProxies.layerFile(url) : await VideoLayerFile.load(url) { media.layerFiles[path] = file }
             }
             refreshPlayback()
             // More may have been added while these loaded.
@@ -303,6 +304,7 @@ extension VideoEditorModel {
             clock.time = moved
         }
         previewRenderer.invalidate()
+        VideoRenderWarmup.warm(project, from: clock.time, height: 1080)
         refreshTimeline()
     }
 
@@ -353,7 +355,7 @@ extension VideoEditorModel {
         guard let primary = playback.source else { return }
         if project.hasAppendedSources {
             let audio = playback.audioSources ?? VideoAudioSource.sources(from: primary, kinds: audioKinds)
-            media.layout = await VideoSourceLayout.load(project: project, primary: primary, primaryAudio: audio, primaryCamera: playback.camera, voice: project.audio.voiceRecipe)
+            media.layout = await VideoSourceLayout.load(project: project, primary: primary, primaryAudio: audio, primaryCamera: playback.camera, voice: project.audio.voiceRecipe, proxies: usesProxies)
             await loadAppendedMetadata()
         } else {
             media.layout = nil
@@ -452,7 +454,7 @@ extension VideoEditorModel {
         let center = time ?? clock.time
         let frames = media.frames(for: project)
         let renderer = previewRenderer
-        for span in plan.transitions where span.kind == .dissolve && span.end >= center - 1 && span.start <= center + Self.heldFrameWindow {
+        for span in plan.transitions where span.kind.usesBothSides && span.end >= center - 1 && span.start <= center + Self.heldFrameWindow {
             for sourceTime in [span.incomingSource, span.outgoingSource] where !frames.isCachedOrPending(sourceTime) {
                 _ = frames.cachedImage(at: sourceTime) { MainActor.assumeIsolated { renderer.invalidate() } }
             }
