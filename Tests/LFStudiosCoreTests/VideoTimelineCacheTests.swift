@@ -64,13 +64,13 @@ final class VideoTimelineCacheTests: XCTestCase {
         project.layerTracks = [VideoLayerTrack(items: [soon, later]), VideoLayerTrack(items: [adjustment])]
         let jobs = VideoRenderWarmup.jobs(for: project, from: 0, seconds: 8, height: 1080)
         XCTAssertEqual(jobs.count, 2, "the text and the adjustment within 8 s, not the sticker at 40 s")
+        let h = soon.rect(in: CGSize(width: 1920, height: 1080)).height
+        XCTAssertFalse(VideoTextClipRenderer.isCached(text, pixelHeight: h))
+        XCTAssertFalse(VideoAdjustRenderer.isCached(adjustment.adjust!))
         VideoRenderWarmup.warm(project, from: 0, height: 1080)
         VideoRenderWarmup.wait()
-        // Made already: asking again is instant (the same cached image).
-        let h = soon.rect(in: CGSize(width: 1920, height: 1080)).height
-        let start = CFAbsoluteTimeGetCurrent()
-        XCTAssertNotNil(VideoTextClipRenderer.image(text, pixelHeight: h))
-        _ = VideoAdjustRenderer.cube(adjustment.adjust!)
-        XCTAssertLessThan(CFAbsoluteTimeGetCurrent() - start, 0.005)
+        // Made already, ready for playback.
+        XCTAssertTrue(VideoTextClipRenderer.isCached(text, pixelHeight: h))
+        XCTAssertTrue(VideoAdjustRenderer.isCached(adjustment.adjust!))
     }
 }

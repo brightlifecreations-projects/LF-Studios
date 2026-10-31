@@ -56,9 +56,22 @@ LF Studios bundles no fonts. Text clips, templates and stickers use only
 these fonts, which come with every copy of macOS 13 and later and are
 licensed by Apple to the Mac's user:
 
-Helvetica Neue, Avenir Next, Futura, Gill Sans, Optima, Georgia,
-Baskerville, Didot, American Typewriter, Menlo, Rockwell, Impact, Marker
-Felt, Chalkboard SE, Noteworthy, Copperplate.
+- Helvetica Neue
+- Avenir Next
+- Futura
+- Gill Sans
+- Optima
+- Georgia
+- Baskerville
+- Didot
+- American Typewriter
+- Menlo
+- Rockwell
+- Impact
+- Marker Felt
+- Chalkboard SE
+- Noteworthy
+- Copperplate
 
 The list is `VideoTextFonts.families`; a project never asks for a font a
 user happens to have installed (any other name falls back to Helvetica

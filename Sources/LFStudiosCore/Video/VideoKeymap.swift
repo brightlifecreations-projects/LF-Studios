@@ -52,7 +52,8 @@ struct VideoKeyBinding: Hashable {
     static let optionCharacters: [Character: Character] = {
         let plain = Array("abcdefghijklmnopqrstuvwxyz1234567890-=[];',./")
         let option = Array("å∫ç∂´ƒ©˙ˆ∆˚¬µ˜øπœ®ß†¨√∑≈¥Ω¡™£¢∞§¶•ªº–≠“‘…æ≤≥÷")
-        let shifted = Array("ÅıÇÎ´Ï˝ÓˆÔÒÂ˜ØŒ‰Íˇ¨◊„˛Á¸")
+        // ⌥⇧K is the Apple logo (U+F8FF).
+        let shifted = Array("ÅıÇÎ´Ï˝ÓˆÔ\u{F8FF}ÒÂ˜Ø∏Œ‰Íˇ¨◊„˛Á¸")
         var map: [Character: Character] = [:]
         for (p, o) in zip(plain, option) { map[o] = p }
         for (p, o) in zip(plain.prefix(26), shifted) where map[o] == nil { map[o] = p }

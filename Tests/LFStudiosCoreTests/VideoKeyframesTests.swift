@@ -102,7 +102,8 @@ final class VideoKeyframesTests: XCTestCase {
     func testKeysFollowTrimsAndSplits() async throws {
         let (model, id) = try await makeModel()
         model.seek(to: 1); model.toggleKeyframe(id, .opacity)
-        model.seek(to: 3); model.setLayerAnimated(id) { $0.opacity = 0.2 }; model.toggleKeyframe(id, .opacity)
+        // Animated: a change at 3 s makes a key there.
+        model.seek(to: 3); model.setLayerAnimated(id) { $0.opacity = 0.2 }
         XCTAssertEqual(model.project.layerItem(id)?.keys?.keys(.opacity).map(\.time), [1, 3])
         // Trimming the start by half a second keeps keys on their moments.
         model.trimLayerItem(id, leading: true, to: 0.5, coalesce: false)

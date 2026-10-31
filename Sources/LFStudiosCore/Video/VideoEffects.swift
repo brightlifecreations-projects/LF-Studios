@@ -176,10 +176,12 @@ enum VideoEffectRenderer {
     /// Red one way, blue the other.
     private static func channelSplit(_ image: CIImage, by shift: CGFloat, extent: CGRect) -> CIImage {
         guard shift > 0.2 else { return image }
+        // One channel each; only green carries the opacity (added up, three
+        // would make it 3).
         func only(_ r: CGFloat, _ g: CGFloat, _ b: CGFloat) -> CIImage {
             image.clampedToExtent().applyingFilter("CIColorMatrix", parameters: [
                 "inputRVector": CIVector(x: r, y: 0, z: 0, w: 0), "inputGVector": CIVector(x: 0, y: g, z: 0, w: 0),
-                "inputBVector": CIVector(x: 0, y: 0, z: b, w: 0), "inputAVector": CIVector(x: 0, y: 0, z: 0, w: 1),
+                "inputBVector": CIVector(x: 0, y: 0, z: b, w: 0), "inputAVector": CIVector(x: 0, y: 0, z: 0, w: g),
             ])
         }
         let red = only(1, 0, 0).transformed(by: CGAffineTransform(translationX: shift, y: 0))

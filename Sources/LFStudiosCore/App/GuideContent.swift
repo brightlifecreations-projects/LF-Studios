@@ -518,7 +518,7 @@ enum GuideContent {
                 related: ["video-keyframes", "video-text-clips"]
             ),
             GuideEntry(
-                id: "video-speed", symbol: "speedometer", title: L("Speed and speed curves"),
+                id: "video-speed-curves", symbol: "speedometer", title: L("Speed and speed curves"),
                 summary: L("Play a clip from 0.1× to 100×, or let its speed change along a curve."),
                 location: L("Properties ▸ Speed, with a clip selected."),
                 points: [
@@ -1612,7 +1612,7 @@ enum GuideContent {
                 summary: L("Speed up slow parts, or slow down fast ones."),
                 location: L("Select a clip, or ⇧-drag a part, and choose its Speed in the panel on the right."),
                 points: [
-                    L("Speeds from 0.5× to 16×."),
+                    L("Speeds from 0.1× to 100×; see Speed and speed curves."),
                     L("Speed Up Idle on the timeline fast-forwards the moments when nothing happens."),
                 ],
                 related: ["cursor-typing-speed"]

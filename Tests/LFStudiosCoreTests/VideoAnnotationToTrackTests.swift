@@ -46,7 +46,7 @@ final class VideoAnnotationToTrackTests: XCTestCase {
         XCTAssertTrue(model.project.overlayEffects.contains { $0.id == text.id })
         // Arrows stay annotations.
         model.addOverlay(.arrow)
-        let arrow = try XCTUnwrap(model.project.overlayEffects.last)
+        let arrow = try XCTUnwrap(model.project.overlayEffects.first { $0.kind == .arrow })
         XCTAssertNil(model.moveAnnotationToTrack(arrow.id))
     }
 

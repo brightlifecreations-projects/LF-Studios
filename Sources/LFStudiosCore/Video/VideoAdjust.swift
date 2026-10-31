@@ -267,9 +267,16 @@ enum VideoAdjustRenderer {
         init(_ cube: VideoColorCube) { self.cube = cube }
     }
 
+    private static func key(_ settings: VideoAdjustSettings) -> NSString {
+        String(decoding: (try? VideoCacheKey.encoder.encode(settings)) ?? Data(), as: UTF8.self) as NSString
+    }
+
+    /// Made already (background rendering, tests).
+    static func isCached(_ settings: VideoAdjustSettings) -> Bool { cache.object(forKey: key(settings)) != nil }
+
     /// The colour part, baked into a 33³ LUT (cached by the settings).
     static func cube(_ settings: VideoAdjustSettings) -> VideoColorCube {
-        let key = String(decoding: (try? JSONEncoder().encode(settings)) ?? Data(), as: UTF8.self) as NSString
+        let key = key(settings)
         if let box = cache.object(forKey: key) { return box.cube }
         let cube = VideoColorCube.bake(size: 33, settings.transform)
         cache.setObject(VideoColorCubeBox(cube), forKey: key)

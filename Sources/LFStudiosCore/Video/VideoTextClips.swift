@@ -148,11 +148,20 @@ extension VideoTextContent {
 enum VideoTextClipRenderer {
     private static let cache = NSCache<NSString, CIImage>()
 
+    private static func key(_ content: VideoTextContent, _ pixelHeight: CGFloat) -> (key: NSString, bucket: CGFloat) {
+        let bucket = max((pixelHeight / 8).rounded(.up) * 8, 8)
+        let data = (try? VideoCacheKey.encoder.encode(content)) ?? Data()
+        return ("\(bucket)|" + String(decoding: data, as: UTF8.self) as NSString, bucket)
+    }
+
+    /// Made already (background rendering, tests).
+    static func isCached(_ content: VideoTextContent, pixelHeight: CGFloat) -> Bool {
+        cache.object(forKey: key(content, pixelHeight).key) != nil
+    }
+
     /// The text at about `pixelHeight` (cached by look and size).
     static func image(_ content: VideoTextContent, pixelHeight: CGFloat) -> CIImage? {
-        let bucket = max((pixelHeight / 8).rounded(.up) * 8, 8)
-        let data = (try? JSONEncoder().encode(content)) ?? Data()
-        let key = "\(bucket)|\(data.hashValue)|\(data.count)" as NSString
+        let (key, bucket) = key(content, pixelHeight)
         if let cached = cache.object(forKey: key) { return cached }
         guard let cg = content.image(pixelHeight: bucket) else { return nil }
         let image = CIImage(cgImage: cg)

@@ -260,7 +260,7 @@ struct VideoTextLookPreview: View {
     private static let cache = NSCache<NSString, NSImage>()
 
     static func image(_ content: VideoTextContent) -> NSImage? {
-        let key = (String(decoding: (try? JSONEncoder().encode(content)) ?? Data(), as: UTF8.self)) as NSString
+        let key = (String(decoding: (try? VideoCacheKey.encoder.encode(content)) ?? Data(), as: UTF8.self)) as NSString
         if let cached = cache.object(forKey: key) { return cached }
         guard let cg = content.image(pixelHeight: 120) else { return nil }
         let image = NSImage(cgImage: cg, size: NSSize(width: CGFloat(cg.width) / 2, height: CGFloat(cg.height) / 2))

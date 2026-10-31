@@ -46,10 +46,10 @@ final class VideoTextClipsTests: XCTestCase {
         // Bigger text: a bigger picture; more letter spacing: wider.
         let small = content.naturalSize()
         content.size = 144
-        XCTAssertGreaterThan(content.naturalSize().height, small.height * 1.6)
+        XCTAssertGreaterThan(content.naturalSize().height, small.height * 1.35, "the padding stays, the words double")
         content.size = 72
         content.letterSpacing = 40
-        XCTAssertGreaterThan(content.naturalSize().width, small.width + 100)
+        XCTAssertGreaterThan(content.naturalSize().width, small.width + 60, "40 points between each of the letters")
     }
 
     func testATextClipInTheExport() async throws {

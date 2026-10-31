@@ -24,7 +24,9 @@ enum VideoProxies {
     /// and date, so a changed file gets a new one).
     static func url(for original: URL) -> URL {
         let path = original.standardizedFileURL.resolvingSymlinksInPath().path
-        let values = try? original.resourceValues(forKeys: [.fileSizeKey, .contentModificationDateKey])
+        // A fresh URL: a URL keeps the values it read once (a changed file
+        // would keep its old name).
+        let values = try? URL(fileURLWithPath: path).resourceValues(forKeys: [.fileSizeKey, .contentModificationDateKey])
         let stamp = "\(path)|\(values?.fileSize ?? 0)|\(values?.contentModificationDate?.timeIntervalSince1970 ?? 0)"
         let digest = SHA256.hash(data: Data(stamp.utf8)).prefix(12).map { String(format: "%02x", $0) }.joined()
         return folder.appendingPathComponent("\(digest)-half.mov")

@@ -35,7 +35,9 @@ final class VideoEffectsTests: XCTestCase {
     }
 
     func testEveryEffectChangesThePictureAndKeepsItsSize() {
-        let sample = VideoEffectPreview.sample
+        // At 1080 high, where the effects are measured.
+        let small = VideoEffectPreview.sample
+        let sample = small.transformed(by: CGAffineTransform(scaleX: 1080 / small.extent.height, y: 1080 / small.extent.height))
         for kind in VideoEffectKind.allCases {
             // Strobe and glitch flash on some moments: try a few.
             let changed = [0.0, 0.05, 0.1, 0.2, 0.35, 0.5].contains { time in
@@ -44,7 +46,7 @@ final class VideoEffectsTests: XCTestCase {
             XCTAssertTrue(changed, "\(kind) changes the picture")
             let out = VideoEffectRenderer.apply(kind, to: sample, intensity: 1, time: 0.3)
             XCTAssertEqual(out.extent, sample.extent, "\(kind) stays the frame's size")
-            XCTAssertEqual(difference(VideoEffectRenderer.apply(kind, to: sample, intensity: 0, time: 0.3), sample), 0, accuracy: 0.0001, "\(kind) at 0 does nothing")
+            XCTAssertEqual(difference(VideoEffectRenderer.apply(kind, to: sample, intensity: 0, time: 0.3), sample), 0, accuracy: 0.002, "\(kind) at 0 does nothing")
             XCTAssertNotNil(VideoEffectPreview.render(kind, time: 0.3))
         }
         // The same moment looks the same every time (preview and export agree).

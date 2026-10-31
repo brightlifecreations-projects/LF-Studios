@@ -18,7 +18,9 @@ enum VideoTimelineCache {
 
     private static func key(_ url: URL) -> String {
         let path = url.standardizedFileURL.resolvingSymlinksInPath().path
-        let values = try? url.resourceValues(forKeys: [.fileSizeKey, .contentModificationDateKey])
+        // A fresh URL: a URL keeps the values it read once (a changed file
+        // would keep its old name).
+        let values = try? URL(fileURLWithPath: path).resourceValues(forKeys: [.fileSizeKey, .contentModificationDateKey])
         let stamp = "\(path)|\(values?.fileSize ?? 0)|\(values?.contentModificationDate?.timeIntervalSince1970 ?? 0)"
         return SHA256.hash(data: Data(stamp.utf8)).prefix(12).map { String(format: "%02x", $0) }.joined()
     }
@@ -124,4 +126,14 @@ enum VideoRenderWarmup {
 
     /// Waits for the background work (tests).
     static func wait() { queue.sync {} }
+}
+
+/// Cache keys from a value's JSON: keys sorted, or two encodings of the
+/// same value could differ (and every lookup would miss).
+enum VideoCacheKey {
+    static var encoder: JSONEncoder {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .sortedKeys
+        return encoder
+    }
 }
