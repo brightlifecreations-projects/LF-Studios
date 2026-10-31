@@ -31,7 +31,7 @@ the first unticked box.
 - [x] A1 Keyframes (diamond buttons, marks on clips, prev/next, easing)
 - [x] A2 Video: transform, opacity, blend modes; Cutout (Remove background, Chroma key); Masks
 - [x] A3 Animation: In / Out / Combo presets with duration
-- [ ] A4 Speed: Normal 0.1×–100× (keep pitch) and Curve presets + custom curve
+- [x] A4 Speed: Normal 0.1×–100× (keep pitch) and Curve presets + custom curve
 - [ ] A5 Audio: volume keyframes, fades, normalize, Detect beats
 - [ ] A6 Text on its own track: font, size, B/I/U, colour, stroke, background, shadow, spacing, alignment
 - [ ] A7 Motion tracking (Track button, Vision object tracking)
@@ -80,3 +80,12 @@ the first unticked box.
 - A3: VideoItemAnimation (in/out presets ×10, combo ×5, lengths), applied
   by `VideoLayerItem.shown(at:)` after keyframes (renderer uses it). Text
   items (A6) must go through the same path.
+- A4: main clips 0.1–100×, `keepsPitch` (separate varispeed sound tracks,
+  per-input pitch algorithm), silent outside 1/32–32×. Curves are baked into
+  8–40 sub-clips sharing `VideoDemoTimelineClip.curve` (group id + curve);
+  transitions skip cuts inside a group. `.clip(VideoClipEdit)` commands
+  (setSpeed/setKeepPitch/setSpeedCurve). Items above: 0.1–100× + keep pitch
+  (curves on main-track clips only). Watch in final pass: whether the
+  per-input varispeed algorithm is honoured by the export reader (test
+  VideoSpeedTests.testKeepPitchInTheExport); if not, keep-pitch-off moves to
+  next update.

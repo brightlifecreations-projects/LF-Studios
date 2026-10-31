@@ -23,6 +23,7 @@ final class VideoPlaybackController: NSObject {
             let start: Double
             let end: Double
             let speed: Double
+            var keepsPitch = true
         }
         let timings: [Timing]
         let audioSources: [String]
@@ -156,7 +157,7 @@ final class VideoPlaybackController: NSObject {
         guard let source else { return nil }
         var next = EditStructure(
             timings: segments.filter { $0.clip.sourceDuration > 0.001 }.map {
-                EditStructure.Timing(start: $0.clip.sourceStart, end: $0.clip.sourceEnd, speed: $0.clip.normalizedSpeed)
+                EditStructure.Timing(start: $0.clip.sourceStart, end: $0.clip.sourceEnd, speed: $0.clip.normalizedSpeed, keepsPitch: $0.clip.keepsPitch != false)
             },
             audioSources: audioSources?.map(\.identity) ?? [],
             hasCamera: camera != nil

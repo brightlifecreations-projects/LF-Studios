@@ -51,6 +51,8 @@ enum VideoEditCommand: Equatable, CaseIterable, Identifiable {
     /// An edit with values (a setting at the playhead, a mode, a mask…) on
     /// the selected item above the main track (VideoItemEdits.swift).
     case edit(VideoItemEdit)
+    /// An edit of the main track's clip (selected, or under the playhead).
+    case clip(VideoClipEdit)
 
     /// The commands without values (keys, menus, the command palette).
     static let allCases: [VideoEditCommand] = [
@@ -63,6 +65,7 @@ enum VideoEditCommand: Equatable, CaseIterable, Identifiable {
     /// A stable name (menus keep it; a future MCP connection can send it).
     var rawValue: String {
         if case .edit(let edit) = self { return "edit." + edit.name }
+        if case .clip(let edit) = self { return "clip." + edit.name }
         return String(describing: self)
     }
 
@@ -114,6 +117,7 @@ enum VideoEditCommand: Equatable, CaseIterable, Identifiable {
         case .previousKeyframe: return L("Previous keyframe")
         case .nextKeyframe: return L("Next keyframe")
         case .edit(let edit): return edit.title
+        case .clip(let edit): return edit.title
         }
     }
 
@@ -157,7 +161,7 @@ enum VideoEditCommand: Equatable, CaseIterable, Identifiable {
         case .addKeyframe: return "diamond"
         case .previousKeyframe: return "chevron.left.to.line"
         case .nextKeyframe: return "chevron.right.to.line"
-        case .edit: return "slider.horizontal.3"
+        case .edit, .clip: return "slider.horizontal.3"
         }
     }
 
@@ -195,7 +199,7 @@ enum VideoEditCommand: Equatable, CaseIterable, Identifiable {
         case .addKeyframe: return "⌥K"
         case .previousKeyframe: return "⌥["
         case .nextKeyframe: return "⌥]"
-        case .addMarker, .freezeFrame, .reverse, .mirror, .rotate, .crop, .recordVoiceover, .edit: return ""
+        case .addMarker, .freezeFrame, .reverse, .mirror, .rotate, .crop, .recordVoiceover, .edit, .clip: return ""
         }
     }
 
@@ -349,6 +353,8 @@ extension VideoEditorModel {
         case .nextKeyframe:
             return jumpToKeyframe(forward: true)
         case .edit(let edit):
+            return perform(edit)
+        case .clip(let edit):
             return perform(edit)
         }
         return true

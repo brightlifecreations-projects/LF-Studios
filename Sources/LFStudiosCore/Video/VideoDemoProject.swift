@@ -5,7 +5,8 @@ import Foundation
 // MARK: - Timeline clips
 
 struct VideoDemoTimelineClip: Codable, Equatable, Identifiable {
-    static let speedRange: ClosedRange<Double> = 0.25...16
+    /// 0.1× to 100× (1.15.0; before: 0.25× to 16×).
+    static let speedRange: ClosedRange<Double> = 0.1...100
 
     var id: UUID
     var sourceStart: Double
@@ -22,6 +23,13 @@ struct VideoDemoTimelineClip: Codable, Equatable, Identifiable {
     var quarterTurns = 0
     /// Off (V, 1.14.0): kept on the timeline, shown black and silent.
     var disabled = false
+    /// Keep pitch off: faster sounds higher (1.15.0; nil: kept).
+    var keepsPitch: Bool?
+    /// One piece of a clip played with a speed curve (VideoSpeed.swift).
+    var curve: VideoSpeedCurveGroup?
+
+    /// Only 1.15.0 and later play it as it is.
+    var needsFormat4: Bool { keepsPitch == false || curve != nil || speed < 0.25 - 0.000_1 || speed > 16 + 0.000_1 }
 
     /// Mirror, Rotate or off: only 1.14.0 and later show it.
     var needsLayerFormat: Bool { mirrored || quarterTurns % 4 != 0 || disabled }
@@ -60,7 +68,7 @@ struct VideoDemoTimelineClip: Codable, Equatable, Identifiable {
     }
 
     private enum CodingKeys: String, CodingKey {
-        case id, sourceStart, sourceEnd, speed, muted, fadeIn, fadeOut, typingSpeedUp, mirrored, quarterTurns, disabled
+        case id, sourceStart, sourceEnd, speed, muted, fadeIn, fadeOut, typingSpeedUp, mirrored, quarterTurns, disabled, keepsPitch, curve
     }
 
     init(from decoder: Decoder) throws {
@@ -76,6 +84,8 @@ struct VideoDemoTimelineClip: Codable, Equatable, Identifiable {
         mirrored = (try? container.decodeIfPresent(Bool.self, forKey: .mirrored)) ?? false
         quarterTurns = (try? container.decodeIfPresent(Int.self, forKey: .quarterTurns)) ?? 0
         disabled = (try? container.decodeIfPresent(Bool.self, forKey: .disabled)) ?? false
+        keepsPitch = (try? container.decodeIfPresent(Bool.self, forKey: .keepsPitch)).flatMap { $0 }
+        curve = (try? container.decodeIfPresent(VideoSpeedCurveGroup.self, forKey: .curve)).flatMap { $0 }
     }
 
     func encode(to encoder: Encoder) throws {
@@ -92,6 +102,8 @@ struct VideoDemoTimelineClip: Codable, Equatable, Identifiable {
         if mirrored { try container.encode(true, forKey: .mirrored) }
         if turns != 0 { try container.encode(turns, forKey: .quarterTurns) }
         if disabled { try container.encode(true, forKey: .disabled) }
+        try container.encodeIfPresent(keepsPitch, forKey: .keepsPitch)
+        try container.encodeIfPresent(curve, forKey: .curve)
     }
 }
 

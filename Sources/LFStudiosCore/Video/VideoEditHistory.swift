@@ -192,6 +192,10 @@ extension VideoEditDescription {
         switch name {
         // Recordings, music, cards, transitions.
         // The timeline's tracks and tools (1.14.0).
+        case "Speed Curve": return (L("Undo Speed Curve"), L("Redo Speed Curve"))
+        case "Change Pitch": return (L("Undo Change Pitch"), L("Redo Change Pitch"))
+        case "Keep Pitch": return (L("Undo Keep Pitch"), L("Redo Keep Pitch"))
+        case "Speed": return (L("Undo Speed"), L("Redo Speed"))
         case "Animation": return (L("Undo Animation"), L("Redo Animation"))
         case "Blend": return (L("Undo Blend"), L("Redo Blend"))
         case "Remove Background": return (L("Undo Remove Background"), L("Redo Remove Background"))

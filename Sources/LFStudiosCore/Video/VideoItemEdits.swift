@@ -18,6 +18,8 @@ enum VideoItemEdit: Equatable {
     case setChromaKey(VideoChromaKey?)
     case setMask(VideoMask?)
     case setAnimation(VideoItemAnimation?)
+    case setSpeed(Double)
+    case setKeepPitch(Bool)
 
     var name: String {
         switch self {
@@ -28,6 +30,8 @@ enum VideoItemEdit: Equatable {
         case .setRemoveBackground(let on): return "setRemoveBackground.\(on)"
         case .setChromaKey(let c): return "setChromaKey.\(c == nil ? "off" : "on")"
         case .setMask(let m): return "setMask.\(m?.shape.rawValue ?? "none")"
+        case .setSpeed(let s): return "setSpeed.\(s)"
+        case .setKeepPitch(let on): return "setKeepPitch.\(on)"
         case .setAnimation(let a): return "setAnimation.\(a?.inPreset?.rawValue ?? "-").\(a?.outPreset?.rawValue ?? "-").\(a?.combo?.rawValue ?? "-")"
         }
     }
@@ -42,6 +46,8 @@ enum VideoItemEdit: Equatable {
         case .setChromaKey: return L("Chroma key")
         case .setMask: return L("Mask")
         case .setAnimation: return L("Animation")
+        case .setSpeed: return L("Speed")
+        case .setKeepPitch: return L("Keep pitch")
         }
     }
 }
@@ -78,6 +84,12 @@ extension VideoEditorModel {
                 }
                 if mask == nil { stored.removeKeys(VideoKeyProperty.group(.maskX)) }
             }
+        case .setSpeed(let speed):
+            guard item.isVideo else { return false }
+            setLayerSpeed(item.id, speed)
+        case .setKeepPitch(let on):
+            guard item.isVideo else { return false }
+            setLayerItem(item.id, label: on ? "Keep Pitch" : "Change Pitch") { $0.keepsPitch = on ? nil : false }
         case .setAnimation(let animation):
             setLayerItem(item.id, coalesce: "animation-\(item.id)", label: "Animation") { $0.animation = animation?.isEmpty == true ? nil : animation }
         }

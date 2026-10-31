@@ -39,6 +39,8 @@ struct VideoEditComposition {
     /// composition track per layer track, and their sound.
     var layerVideoTracks: [(id: UUID, track: AVMutableCompositionTrack)] = []
     var layerAudioTracks: [(id: UUID, track: AVMutableCompositionTrack, items: [VideoLayerItem])] = []
+    /// Sound tracks whose clips change pitch with speed (Keep pitch off).
+    var varispeedTrackIDs: Set<CMPersistentTrackID> = []
 
     /// Every sound track, for reading the final mix.
     var mixedAudioTracks: [AVMutableCompositionTrack] {
@@ -307,6 +309,7 @@ enum VideoCompositionBuilder {
         // changing them never rebuilds the player.
         var audioTracks: [AVMutableCompositionTrack] = []
         var audioKinds: [VideoAudioKind] = []
+        var varispeedTrackIDs = Set<CMPersistentTrackID>()
         if includeAudio {
             // One lane per sound track of the primary recording; an added
             // recording's tracks join a lane of the same kind (their pieces
@@ -328,11 +331,22 @@ enum VideoCompositionBuilder {
                 }
             }
             for lane in lanes {
-                guard let track = composition.addMutableTrack(withMediaType: .audio, preferredTrackID: kCMPersistentTrackID_Invalid) else { continue }
+                guard let pitched = composition.addMutableTrack(withMediaType: .audio, preferredTrackID: kCMPersistentTrackID_Invalid) else { continue }
+                // Clips with Keep pitch off go on a track of their own (pitch
+                // is a track's setting in the mix).
+                var varispeed: AVMutableCompositionTrack?
                 var inserted = false
+                var insertedVarispeed = false
                 for placement in placements where !placement.segment.clip.disabled {
                     let clip = placement.segment.clip
                     let speed = clip.normalizedSpeed
+                    // Too fast or too slow to hear (as in other editors): silent.
+                    guard speed >= 1.0 / 32 - 0.000_1, speed <= 32 + 0.000_1 else { continue }
+                    let keepsPitch = clip.keepsPitch != false
+                    if !keepsPitch, varispeed == nil {
+                        varispeed = composition.addMutableTrack(withMediaType: .audio, preferredTrackID: kCMPersistentTrackID_Invalid)
+                    }
+                    guard let track = keepsPitch ? pitched : varispeed else { continue }
                     for piece in pieces(of: clip, primary: source, primaryAudio: sources, camera: camera, layout: layout) {
                         let key = piece.source.map { $0.isPrimary ? "primary" : $0.id.uuidString } ?? "primary"
                         guard let audioSource = lane.sources[key] else { continue }
@@ -351,14 +365,23 @@ enum VideoCompositionBuilder {
                         if abs(speed - 1) > 0.0001 {
                             track.scaleTimeRange(CMTimeRange(start: insertAt, duration: sourceRange.duration), toDuration: time(sourceRange.duration.seconds / speed))
                         }
-                        inserted = true
+                        if keepsPitch { inserted = true } else { insertedVarispeed = true }
                     }
                 }
                 if inserted {
-                    audioTracks.append(track)
+                    audioTracks.append(pitched)
                     audioKinds.append(lane.kind)
                 } else {
-                    composition.removeTrack(track)
+                    composition.removeTrack(pitched)
+                }
+                if let varispeed {
+                    if insertedVarispeed {
+                        audioTracks.append(varispeed)
+                        audioKinds.append(lane.kind)
+                        varispeedTrackIDs.insert(varispeed.trackID)
+                    } else {
+                        composition.removeTrack(varispeed)
+                    }
                 }
             }
         }
@@ -400,6 +423,7 @@ enum VideoCompositionBuilder {
             pieceTransforms: pieceTransforms
         )
         edit.externalTracks = external
+        edit.varispeedTrackIDs = varispeedTrackIDs
         edit.layerVideoTracks = layers?.video ?? []
         edit.layerAudioTracks = layers?.audio ?? []
         edit.audioMix = audioMix(for: edit, segments: segments, audio: audio, extras: extras)
@@ -422,6 +446,7 @@ enum VideoCompositionBuilder {
             let kind = edit.audioKinds.indices.contains(index) ? edit.audioKinds[index] : .mixed
             let volume: Float = voiceReplaced && kind == .microphone ? 0 : audio.effectiveVolume(for: kind)
             let params = AVMutableAudioMixInputParameters(track: track)
+            if edit.varispeedTrackIDs.contains(track.trackID) { params.audioTimePitchAlgorithm = .varispeed }
             for (placementIndex, placement) in edit.placements.enumerated() {
                 let clip = aligned ? current[placementIndex].clip : placement.segment.clip
                 applyVolume(clip.muted ? 0 : volume, fades: clip, start: placement.start, duration: placement.duration, to: params)

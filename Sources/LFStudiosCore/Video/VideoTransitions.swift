@@ -119,6 +119,8 @@ enum VideoTransitionTiming {
             let after = segments[index]
             let chosen = settings.transition(into: after.id)
             guard chosen.kind != .none else { continue }
+            // Inside a speed curve the pieces are one clip: no transition.
+            if let group = after.clip.curve?.id, before.clip.curve?.id == group { continue }
             let room = min(before.duration, after.duration)
             let duration = min(max(chosen.duration, VideoTransitionSettings.durationRange.lowerBound), VideoTransitionSettings.durationRange.upperBound, room)
             guard duration >= 0.05 else { continue }

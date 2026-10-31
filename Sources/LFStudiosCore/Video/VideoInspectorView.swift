@@ -1110,34 +1110,8 @@ struct VideoSelectionInspector: View {
 
     @ViewBuilder
     private func clipEditor(_ segment: VideoDemoTimelineSegment) -> some View {
-        VideoInspectorSection(L("Speed")) {
-            LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 6), count: 4), spacing: 6) {
-                ForEach([0.5, 1.0, 1.5, 2.0, 3.0, 4.0, 8.0, 16.0], id: \.self) { speed in
-                    let selected = abs(segment.clip.normalizedSpeed - speed) < 0.01
-                    Button {
-                        model.setClipSpeed(segment.id, speed)
-                        model.endGesture()
-                    } label: {
-                        Text(VideoEditorModel.formatScale(speed))
-                            .font(.system(size: 11.5, weight: selected ? .bold : .semibold))
-                            .foregroundStyle(selected ? Color.black : VideoEditorTheme.textPrimary)
-                            .frame(maxWidth: .infinity)
-                            .frame(height: 26)
-                            .background(RoundedRectangle(cornerRadius: 6, style: .continuous).fill(selected ? VideoEditorTheme.clip : VideoEditorTheme.card))
-                    }
-                    .buttonStyle(.plain)
-                }
-            }
-            Text(L("\(VideoEditorModel.format(segment.clip.sourceDuration)) of recording plays in \(VideoEditorModel.format(segment.duration))."))
-                .font(.system(size: 10.5))
-                .foregroundStyle(VideoEditorTheme.textTertiary)
-            if segment.clip.typingSpeedUp {
-                Text(L("Sped up by Speed up typing — pick another speed here, or press it again."))
-                    .font(.system(size: 10.5))
-                    .foregroundStyle(VideoEditorTheme.textTertiary)
-                    .fixedSize(horizontal: false, vertical: true)
-            }
-        }
+        // Normal or Curve (VideoSpeed.swift, 1.15.0).
+        VideoClipSpeedSection(model: model, segment: segment)
 
         VideoInspectorSection(L("Sound")) {
             VideoToggleRow(title: L("Mute this clip"), isOn: Binding(get: { segment.clip.muted }, set: { model.setClipMuted(segment.id, $0) }))

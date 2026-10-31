@@ -55,13 +55,15 @@ struct VideoLayerItem: Codable, Equatable, Identifiable {
     var chroma: VideoChromaKey?
     /// In, Out and Combo animations (VideoAnimations.swift).
     var animation: VideoItemAnimation?
+    /// Keep pitch off: faster sounds higher (nil: kept).
+    var keepsPitch: Bool?
 
     var intensity: Double {
         get { level ?? 1 }
         set { level = abs(newValue - 1) < 0.0005 ? nil : min(max(newValue, 0), 1) }
     }
 
-    static let speedRange: ClosedRange<Double> = 0.25...4
+    static let speedRange: ClosedRange<Double> = 0.1...100
     static let minimumLength = 0.1
     /// A picture's length when it's placed.
     static let pictureLength = 5.0
@@ -189,7 +191,7 @@ extension VideoDemoProject {
 
     /// What only 1.15.0 and later can show: written as project format 4.
     var needsFormat4: Bool {
-        layerTracks.contains { $0.items.contains { $0.needsFormat4 } }
+        layerTracks.contains { $0.items.contains { $0.needsFormat4 } } || timelineClips.contains { $0.needsFormat4 }
     }
 
     /// What only 1.14.0 and later can show: written as project format 3.
@@ -237,7 +239,7 @@ struct VideoLayerInput {
 
     var structureKey: StructureKey {
         StructureKey(items: tracks.map { track in
-            track.id.uuidString + ":" + track.items.filter(\.isVideo).map { "\($0.path)|\($0.at)|\($0.length)|\($0.fileStart)|\($0.normalizedSpeed)|\($0.enabled)" }.joined(separator: ";")
+            track.id.uuidString + ":" + track.items.filter(\.isVideo).map { "\($0.path)|\($0.at)|\($0.length)|\($0.fileStart)|\($0.normalizedSpeed)|\($0.enabled)|\($0.keepsPitch != false)" }.joined(separator: ";")
         })
     }
 
@@ -261,8 +263,11 @@ struct VideoLayerInput {
             guard !items.isEmpty else { continue }
             guard let video = composition.addMutableTrack(withMediaType: .video, preferredTrackID: kCMPersistentTrackID_Invalid) else { continue }
             let audio = composition.addMutableTrack(withMediaType: .audio, preferredTrackID: kCMPersistentTrackID_Invalid)
+            // Keep pitch off: a sound track of its own (pitch is per track).
+            var varispeed: AVMutableCompositionTrack?
             var placedVideo = false
             var placedSound: [VideoLayerItem] = []
+            var placedVarispeed: [VideoLayerItem] = []
             for item in items {
                 guard let file = input.files[item.path] else { continue }
                 // Before the start of a range export: only the part inside.
@@ -283,13 +288,17 @@ struct VideoLayerInput {
                 } catch {
                     continue
                 }
-                if let audio, let sound = file.audio {
+                let audible = speed >= 1.0 / 32 - 0.000_1 && speed <= 32 + 0.000_1
+                if item.keepsPitch == false, varispeed == nil, audible, file.audio != nil {
+                    varispeed = composition.addMutableTrack(withMediaType: .audio, preferredTrackID: kCMPersistentTrackID_Invalid)
+                }
+                if audible, let target = item.keepsPitch == false ? varispeed : audio, let sound = file.audio {
                     do {
-                        try audio.insertTimeRange(range, of: sound, at: at)
+                        try target.insertTimeRange(range, of: sound, at: at)
                         if abs(speed - 1) > 0.0001 {
-                            audio.scaleTimeRange(CMTimeRange(start: at, duration: range.duration), toDuration: VideoCompositionBuilder.time(range.duration.seconds / speed))
+                            target.scaleTimeRange(CMTimeRange(start: at, duration: range.duration), toDuration: VideoCompositionBuilder.time(range.duration.seconds / speed))
                         }
-                        placedSound.append(item)
+                        if item.keepsPitch == false { placedVarispeed.append(item) } else { placedSound.append(item) }
                     } catch {}
                 }
             }
@@ -301,6 +310,9 @@ struct VideoLayerInput {
             if let audio {
                 if placedSound.isEmpty { composition.removeTrack(audio) } else { sounds.append((input.id, audio, placedSound)) }
             }
+            if let varispeed {
+                if placedVarispeed.isEmpty { composition.removeTrack(varispeed) } else { sounds.append((input.id, varispeed, placedVarispeed)) }
+            }
         }
         return (videos, sounds)
     }
@@ -309,6 +321,7 @@ struct VideoLayerInput {
     func apply(to params: AVMutableAudioMixInputParameters, track id: UUID, items: [VideoLayerItem], audio: VideoAudioSettings) {
         let trackMuted = tracks.first { $0.id == id }?.muted ?? false
         params.setVolume(0, at: .zero)
+        if items.contains(where: { $0.keepsPitch == false }) { params.audioTimePitchAlgorithm = .varispeed }
         for item in items {
             let silent = audio.muted || trackMuted || item.muted
             func level(_ volume: Double) -> Float { silent ? 0 : Float(min(max(volume, 0), 2) * audio.volume) }
@@ -449,6 +462,6 @@ enum VideoLayerStills {
 extension VideoLayerItem {
     /// Uses something only 1.15.0 shows.
     var needsFormat4: Bool {
-        (keys.map { !$0.isEmpty } ?? false) || mask != nil || level != nil || blend != nil || removesBackground != nil || chroma != nil || animation != nil
+        (keys.map { !$0.isEmpty } ?? false) || mask != nil || level != nil || blend != nil || removesBackground != nil || chroma != nil || animation != nil || keepsPitch != nil || speed < 0.25 - 0.000_1 || speed > 4 + 0.000_1
     }
 }

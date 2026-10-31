@@ -149,15 +149,16 @@ struct VideoLayerItemEditor: View {
                 keyed(L("Volume"), .volume, range: 0...200, scale: 100, defaultValue: 100, format: Self.percent)
             }
             VideoInspectorSection(L("Speed")) {
-                LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 6), count: 4), spacing: 6) {
-                    ForEach([0.25, 0.5, 1.0, 1.5, 2.0, 3.0, 4.0], id: \.self) { speed in
-                        let selected = abs(item.normalizedSpeed - speed) < 0.01
+                LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 6), count: 5), spacing: 6) {
+                    ForEach([0.1, 0.25, 0.5, 1.0, 1.5, 2.0, 4.0, 8.0, 16.0, 100.0], id: \.self) { speed in
+                        let selected = abs(item.normalizedSpeed - speed) < 0.001
                         Button {
-                            model.setLayerSpeed(item.id, speed)
+                            model.selection = .layer(item.id)
+                            model.perform(.edit(.setSpeed(speed)))
                             model.endGesture()
                         } label: {
                             Text(VideoEditorModel.formatScale(speed))
-                                .font(.system(size: 11.5, weight: selected ? .bold : .semibold))
+                                .font(.system(size: 11, weight: selected ? .bold : .semibold))
                                 .foregroundStyle(selected ? Color.black : VideoEditorTheme.textPrimary)
                                 .frame(maxWidth: .infinity)
                                 .frame(height: 26)
@@ -166,6 +167,11 @@ struct VideoLayerItemEditor: View {
                         .buttonStyle(.plain)
                     }
                 }
+                VideoToggleRow(title: L("Keep pitch"), detail: L("Off: faster sounds higher, slower lower. The sound is silent faster than 32× or slower than 1/32×."),
+                               isOn: Binding(get: { item.keepsPitch != false }, set: { on in
+                                   model.selection = .layer(item.id)
+                                   model.perform(.edit(.setKeepPitch(on)))
+                               }))
             }
         }
 
