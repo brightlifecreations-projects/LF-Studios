@@ -63,6 +63,77 @@ struct VideoLayerItemEditor: View {
             }
         }
 
+        VideoInspectorSection(L("Blend")) {
+            Picker(L("Blend"), selection: Binding(get: { item.blend ?? .normal }, set: { blend in
+                model.selection = .layer(item.id)
+                model.perform(.edit(.setBlend(blend)))
+            })) {
+                ForEach(VideoBlendMode.allCases) { Text($0.title).tag($0) }
+            }
+            .labelsHidden()
+            .pickerStyle(.menu)
+            Text(L("How it mixes with what's under it: Screen lightens, Multiply darkens, Overlay adds contrast."))
+                .font(.system(size: 10.5))
+                .foregroundStyle(VideoEditorTheme.textTertiary)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+
+        VideoInspectorSection(L("Cutout")) {
+            VideoToggleRow(title: L("Remove background"), detail: L("Keeps just the person, found on this Mac"),
+                           isOn: Binding(get: { item.removesBackground == true }, set: { on in
+                               model.selection = .layer(item.id)
+                               model.perform(.edit(.setRemoveBackground(on)))
+                           }))
+            VideoToggleRow(title: L("Chroma key"), detail: L("Takes out one colour, like a green screen"),
+                           isOn: Binding(get: { item.chroma != nil }, set: { on in
+                               model.selection = .layer(item.id)
+                               model.perform(.edit(.setChromaKey(on ? VideoChromaKey() : nil)))
+                               model.endGesture()
+                           }))
+            if let key = item.chroma {
+                ColorPicker(L("Colour to take out"), selection: Binding(get: { Color(red: key.color.r, green: key.color.g, blue: key.color.b) }, set: { color in
+                    guard let rgb = NSColor(color).usingColorSpace(.sRGB) else { return }
+                    var next = key
+                    next.color = VideoRGBA(Double(rgb.redComponent), Double(rgb.greenComponent), Double(rgb.blueComponent))
+                    model.perform(.edit(.setChromaKey(next)))
+                }), supportsOpacity: false)
+                .font(.system(size: 12, weight: .medium))
+                VideoSliderRow(title: L("Strength"), value: Binding(get: { key.strength * 100 }, set: { value in
+                    var next = key; next.strength = value / 100
+                    model.perform(.edit(.setChromaKey(next)))
+                }), range: 0...100, defaultValue: 35, format: Self.percent, onEditingEnded: { model.endGesture() })
+                VideoSliderRow(title: L("Shadow"), value: Binding(get: { key.shadow * 100 }, set: { value in
+                    var next = key; next.shadow = value / 100
+                    model.perform(.edit(.setChromaKey(next)))
+                }), range: 0...100, defaultValue: 0, format: Self.percent, detail: L("How much of the shadows on the screen stays"), onEditingEnded: { model.endGesture() })
+            }
+        }
+
+        VideoInspectorSection(L("Mask")) {
+            HStack(spacing: 4) {
+                maskButton(nil, title: L("None"), symbol: "nosign")
+                ForEach(VideoMask.Shape.allCases) { shape in maskButton(shape, title: shape.title, symbol: shape.symbol) }
+            }
+            if let mask = item.mask {
+                keyed(L("Across"), .maskX, range: 0...100, scale: 100, defaultValue: 50, format: Self.percent)
+                keyed(L("Down"), .maskY, range: 0...100, scale: 100, defaultValue: 50, format: Self.percent, diamond: false)
+                keyed(L("Size"), .maskSize, range: 1...200, scale: 100, defaultValue: nil, format: Self.percent, diamond: false)
+                keyed(L("Rotation"), .maskRotation, range: -180...180, scale: 1, defaultValue: 0, format: { L("\(Int($0.rounded()))°") }, diamond: false)
+                keyed(L("Feather"), .maskFeather, range: 0...50, scale: 100, defaultValue: 5, format: Self.percent, diamond: false)
+                if mask.shape == .circle || mask.shape == .rectangle {
+                    VideoSliderRow(title: L("Shape"), value: Binding(get: { mask.aspect * 100 }, set: { value in
+                        var next = mask; next.aspect = value / 100
+                        model.perform(.edit(.setMask(next)))
+                    }), range: 10...300, defaultValue: 100, format: Self.percent, detail: L("Height compared with width"), onEditingEnded: { model.endGesture() })
+                }
+                VideoToggleRow(title: L("Invert"), detail: L("Hides what's inside the shape instead"), isOn: Binding(get: { mask.invert }, set: { on in
+                    var next = mask; next.invert = on
+                    model.perform(.edit(.setMask(next)))
+                    model.endGesture()
+                }))
+            }
+        }
+
         VideoInspectorSection(L("Crop")) {
             keyed(L("Left"), .cropX, range: 0...90, scale: 100, defaultValue: 0, format: Self.percent)
             keyed(L("Top"), .cropY, range: 0...90, scale: 100, defaultValue: 0, format: Self.percent, diamond: false)
@@ -114,6 +185,27 @@ struct VideoLayerItemEditor: View {
 
     static func percent(_ value: Double) -> String { L("\(Int(value.rounded()))%") }
 
+    private func maskButton(_ shape: VideoMask.Shape?, title: String, symbol: String) -> some View {
+        let selected = item.mask?.shape == shape
+        return Button {
+            model.selection = .layer(item.id)
+            model.perform(.edit(.setMask(shape.map { VideoMask(shape: $0) })))
+            model.endGesture()
+        } label: {
+            VStack(spacing: 3) {
+                Image(systemName: symbol).font(.system(size: 13, weight: .semibold))
+                Text(title).font(.system(size: 9.5, weight: .semibold)).lineLimit(1).minimumScaleFactor(0.7)
+            }
+            .frame(maxWidth: .infinity)
+            .frame(height: 40)
+            .foregroundStyle(selected ? VideoEditorTheme.textPrimary : VideoEditorTheme.textSecondary)
+            .background(RoundedRectangle(cornerRadius: 7, style: .continuous).fill(selected ? VideoEditorTheme.layer.opacity(0.25) : VideoEditorTheme.card))
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel(L("Mask: \(title)"))
+        .accessibilityAddTraits(selected ? .isSelected : [])
+    }
+
     /// A slider for an animatable property, showing its value at the
     /// playhead, with its diamond (keyframe at the playhead).
     func keyed(_ title: String, _ property: VideoKeyProperty, range: ClosedRange<Double>, scale: Double, defaultValue: Double?, format: @escaping (Double) -> String, detail: String? = nil, diamond: Bool = true) -> some View {
@@ -121,7 +213,8 @@ struct VideoLayerItemEditor: View {
             VideoSliderRow(
                 title: title,
                 value: Binding(get: { shown.base(property) * scale }, set: { value in
-                    model.setLayerAnimated(item.id, coalesce: "layer-\(property.rawValue)-\(item.id)") { $0.setBase(property, value / scale) }
+                    model.selection = .layer(item.id)
+                    model.perform(.edit(.setValue(property, value / scale)))
                 }),
                 range: range, defaultValue: defaultValue, format: format, detail: detail,
                 onEditingEnded: { model.endGesture() }

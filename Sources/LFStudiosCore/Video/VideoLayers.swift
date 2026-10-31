@@ -48,6 +48,11 @@ struct VideoLayerItem: Codable, Equatable, Identifiable {
     var mask: VideoMask?
     /// An effect's or a filter's strength, 0…1 (nil: full).
     var level: Double?
+    /// How it mixes with what's under it (nil: normal).
+    var blend: VideoBlendMode?
+    /// Cutout: just the person (Vision), or a colour taken out.
+    var removesBackground: Bool?
+    var chroma: VideoChromaKey?
 
     var intensity: Double {
         get { level ?? 1 }
@@ -387,7 +392,7 @@ final class VideoLayerFrameStore: @unchecked Sendable {
 enum VideoLayerRenderer {
     /// `frame` (a video's) or the picture, cropped, mirrored, placed and
     /// turned on an output `size`.
-    static func image(for item: VideoLayerItem, frame: CIImage?, outputSize: CGSize) -> CIImage? {
+    static func image(for item: VideoLayerItem, frame: CIImage?, outputSize: CGSize, time: Double = 0) -> CIImage? {
         guard item.enabled, item.opacity > 0.001 else { return nil }
         // (`item` is already resolved at the moment drawn: keys applied.)
         var media: CIImage
@@ -397,6 +402,12 @@ enum VideoLayerRenderer {
         } else {
             guard let picture = VideoImageOverlayRenderer.picture(path: item.path) else { return nil }
             media = picture
+        }
+        // Cutout first: on the whole picture, before it's cut down.
+        if let key = item.chroma { media = VideoCutout.chroma(media, key: key) }
+        if item.removesBackground == true {
+            let frameTime = item.isVideo ? ((item.fileStart + (time - item.at) * item.normalizedSpeed) * 30).rounded() / 30 : 0
+            media = VideoCutout.person(media, key: "\(item.path)@\(frameTime)")
         }
         let extent = media.extent
         if let crop = item.crop?.normalized, !crop.isFull {
@@ -436,6 +447,6 @@ enum VideoLayerStills {
 extension VideoLayerItem {
     /// Uses something only 1.15.0 shows.
     var needsFormat4: Bool {
-        (keys.map { !$0.isEmpty } ?? false) || mask != nil || level != nil
+        (keys.map { !$0.isEmpty } ?? false) || mask != nil || level != nil || blend != nil || removesBackground != nil || chroma != nil
     }
 }

@@ -192,6 +192,11 @@ extension VideoEditDescription {
         switch name {
         // Recordings, music, cards, transitions.
         // The timeline's tracks and tools (1.14.0).
+        case "Blend": return (L("Undo Blend"), L("Redo Blend"))
+        case "Remove Background": return (L("Undo Remove Background"), L("Redo Remove Background"))
+        case "Keep Background": return (L("Undo Keep Background"), L("Redo Keep Background"))
+        case "Chroma Key": return (L("Undo Chroma Key"), L("Redo Chroma Key"))
+        case "Mask": return (L("Undo Mask"), L("Redo Mask"))
         case "Add Keyframe": return (L("Undo Add Keyframe"), L("Redo Add Keyframe"))
         case "Remove Keyframe": return (L("Undo Remove Keyframe"), L("Redo Remove Keyframe"))
         case "Keyframe Easing": return (L("Undo Keyframe Easing"), L("Redo Keyframe Easing"))

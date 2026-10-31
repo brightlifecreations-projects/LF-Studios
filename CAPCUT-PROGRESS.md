@@ -29,7 +29,7 @@ the first unticked box.
 
 ## Part A: keyframes and clip properties
 - [x] A1 Keyframes (diamond buttons, marks on clips, prev/next, easing)
-- [ ] A2 Video: transform, opacity, blend modes; Cutout (Remove background, Chroma key); Masks
+- [x] A2 Video: transform, opacity, blend modes; Cutout (Remove background, Chroma key); Masks
 - [ ] A3 Animation: In / Out / Combo presets with duration
 - [ ] A4 Speed: Normal 0.1×–100× (keep pitch) and Curve presets + custom curve
 - [ ] A5 Audio: volume keyframes, fades, normalize, Detect beats
@@ -72,3 +72,8 @@ the first unticked box.
   Per-property diamonds call `toggleKeyframe` (one undo step, lock-checked).
   Keyframes apply to items above the main track (main-track clips have no
   transform to animate). Format 4 is in place (`needsFormat4`).
+- A2: VideoEditCommand now has `.edit(VideoItemEdit)` for edits with values
+  (setValue/toggleKeyframe/setEasing/setBlend/setRemoveBackground/
+  setChromaKey/setMask; add more cases there). Blend modes, chroma key (colour
+  cube), remove background (Vision person segmentation, cached per frame),
+  masks (linear, mirror, circle, rectangle; feather, invert, keyed).

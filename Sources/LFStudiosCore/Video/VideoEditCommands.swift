@@ -8,7 +8,7 @@ import SwiftUI
 /// run with `VideoEditorModel.perform(_:)`. Each makes one ⌘Z step and
 /// refuses on a locked track, so anything that drives the editor (a key, a
 /// button, a future MCP connection) gets the same result.
-enum VideoEditCommand: String, CaseIterable, Identifiable {
+enum VideoEditCommand: Equatable, CaseIterable, Identifiable {
     case selectTool
     case splitTool
     case undo
@@ -48,6 +48,28 @@ enum VideoEditCommand: String, CaseIterable, Identifiable {
     case addKeyframe
     case previousKeyframe
     case nextKeyframe
+    /// An edit with values (a setting at the playhead, a mode, a mask…) on
+    /// the selected item above the main track (VideoItemEdits.swift).
+    case edit(VideoItemEdit)
+
+    /// The commands without values (keys, menus, the command palette).
+    static let allCases: [VideoEditCommand] = [
+        .selectTool, .splitTool, .undo, .redo, .split, .splitAllTracks, .deleteLeft, .deleteRight, .delete, .addMarker,
+        .freezeFrame, .reverse, .mirror, .rotate, .crop, .recordVoiceover, .toggleMagnet, .toggleSnapping, .toggleLinkage,
+        .togglePreviewAxis, .zoomToFit, .toggleEnabled, .group, .ungroup, .extractAudio, .selectLeft, .selectRight,
+        .copy, .paste, .markIn, .markOut, .addText, .addArrow, .addHighlight, .addBlur, .addKeyframe, .previousKeyframe, .nextKeyframe,
+    ]
+
+    /// A stable name (menus keep it; a future MCP connection can send it).
+    var rawValue: String {
+        if case .edit(let edit) = self { return "edit." + edit.name }
+        return String(describing: self)
+    }
+
+    init?(rawValue: String) {
+        guard let command = Self.allCases.first(where: { $0.rawValue == rawValue }) else { return nil }
+        self = command
+    }
 
     var id: String { rawValue }
 
@@ -91,6 +113,7 @@ enum VideoEditCommand: String, CaseIterable, Identifiable {
         case .addKeyframe: return L("Add keyframe")
         case .previousKeyframe: return L("Previous keyframe")
         case .nextKeyframe: return L("Next keyframe")
+        case .edit(let edit): return edit.title
         }
     }
 
@@ -134,6 +157,7 @@ enum VideoEditCommand: String, CaseIterable, Identifiable {
         case .addKeyframe: return "diamond"
         case .previousKeyframe: return "chevron.left.to.line"
         case .nextKeyframe: return "chevron.right.to.line"
+        case .edit: return "slider.horizontal.3"
         }
     }
 
@@ -171,7 +195,7 @@ enum VideoEditCommand: String, CaseIterable, Identifiable {
         case .addKeyframe: return "⌥K"
         case .previousKeyframe: return "⌥["
         case .nextKeyframe: return "⌥]"
-        case .addMarker, .freezeFrame, .reverse, .mirror, .rotate, .crop, .recordVoiceover: return ""
+        case .addMarker, .freezeFrame, .reverse, .mirror, .rotate, .crop, .recordVoiceover, .edit: return ""
         }
     }
 
@@ -324,6 +348,8 @@ extension VideoEditorModel {
             return jumpToKeyframe(forward: false)
         case .nextKeyframe:
             return jumpToKeyframe(forward: true)
+        case .edit(let edit):
+            return perform(edit)
         }
         return true
     }
