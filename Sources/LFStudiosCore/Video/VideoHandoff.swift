@@ -549,7 +549,8 @@ enum VideoHandoffPlanner {
         // is (videos in 01 Screen, pictures here), with where it plays.
         var layerNames: Set<String> = Set(items.filter { $0.folder == .screen }.map(\.fileName))
         var layerCopied = Set<String>()
-        for (track, item) in input.project.layerItems {
+        // (Text clips are in the edit's own video: no file to copy.)
+        for (track, item) in input.project.layerItems where !item.isText {
             let url = URL(fileURLWithPath: item.path)
             guard FileManager.default.fileExists(atPath: item.path) else {
                 skipped.append(L("“\(item.name)” on Video \(track + 2) — the file is missing"))

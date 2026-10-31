@@ -22,6 +22,8 @@ enum VideoItemEdit: Equatable {
     case setKeepPitch(Bool)
     case setSoundFades(Double, Double)
     case normalize
+    /// A text clip's words and look (its size follows).
+    case setText(VideoTextContent)
 
     var name: String {
         switch self {
@@ -36,6 +38,7 @@ enum VideoItemEdit: Equatable {
         case .setKeepPitch(let on): return "setKeepPitch.\(on)"
         case .setSoundFades(let a, let b): return "setSoundFades.\(a).\(b)"
         case .normalize: return "normalize"
+        case .setText(let t): return "setText.\(t.string.count)"
         case .setAnimation(let a): return "setAnimation.\(a?.inPreset?.rawValue ?? "-").\(a?.outPreset?.rawValue ?? "-").\(a?.combo?.rawValue ?? "-")"
         }
     }
@@ -54,6 +57,7 @@ enum VideoItemEdit: Equatable {
         case .setKeepPitch: return L("Keep pitch")
         case .setSoundFades: return L("Fade")
         case .normalize: return L("Normalize loudness")
+        case .setText: return L("Text")
         }
     }
 }
@@ -113,6 +117,9 @@ extension VideoEditorModel {
                 }
                 setLayerItem(id, label: "Normalize Loudness") { $0.volume = volume }
             }
+        case .setText(let content):
+            guard item.isText else { return false }
+            setTextContent(item.id, content)
         case .setAnimation(let animation):
             setLayerItem(item.id, coalesce: "animation-\(item.id)", label: "Animation") { $0.animation = animation?.isEmpty == true ? nil : animation }
         }

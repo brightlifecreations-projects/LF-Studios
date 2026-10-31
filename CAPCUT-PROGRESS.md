@@ -33,7 +33,7 @@ the first unticked box.
 - [x] A3 Animation: In / Out / Combo presets with duration
 - [x] A4 Speed: Normal 0.1×–100× (keep pitch) and Curve presets + custom curve
 - [x] A5 Audio: volume keyframes, fades, normalize, Detect beats
-- [ ] A6 Text on its own track: font, size, B/I/U, colour, stroke, background, shadow, spacing, alignment
+- [x] A6 Text on its own track: font, size, B/I/U, colour, stroke, background, shadow, spacing, alignment
 - [ ] A7 Motion tracking (Track button, Vision object tracking)
 
 ## Part B: Library content
@@ -94,3 +94,11 @@ the first unticked box.
   volume keys on sound files in file seconds; beats on sound files and music
   (ticks on lanes, snap targets). Items above: `.edit(.setSoundFades)`,
   `.edit(.normalize)`; volume keys there come from A1.
+- A6: text clips are `VideoLayerItem`s with `text: VideoTextContent`
+  (kind .image, empty path; `isText`). Rendered by VideoTextClipRenderer
+  (cached CGImage at the drawn height) inside VideoLayerRenderer, so keys,
+  animations, blend and masks all apply. Fonts: VideoTextFonts.families
+  (macOS only; anything else falls back). `.addTextClip` (⌥⇧T; ⌥T stays the
+  1.14 text annotation) and `.edit(.setText)`; size follows the words and
+  look, keeping a hand-set scale. Media paths skip text (Library, handoff,
+  project packaging, thumbnails). Guide/translations: final batch.

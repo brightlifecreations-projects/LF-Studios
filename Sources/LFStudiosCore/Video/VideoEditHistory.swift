@@ -192,6 +192,7 @@ extension VideoEditDescription {
         switch name {
         // Recordings, music, cards, transitions.
         // The timeline's tracks and tools (1.14.0).
+        case "Text Change": return (L("Undo Text Change"), L("Redo Text Change"))
         case "Clear Beats": return (L("Undo Clear Beats"), L("Redo Clear Beats"))
         case "Detect Beats": return (L("Undo Detect Beats"), L("Redo Detect Beats"))
         case "Normalize Loudness": return (L("Undo Normalize Loudness"), L("Redo Normalize Loudness"))

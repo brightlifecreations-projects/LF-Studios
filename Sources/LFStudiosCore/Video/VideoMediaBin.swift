@@ -179,7 +179,7 @@ extension VideoDemoProject {
             add(Self.pathKey(image.path), image.path, image.name, .image, .picture)
         }
         // On the tracks above the main track.
-        for (_, item) in layerItems {
+        for (_, item) in layerItems where !item.isText {
             add(Self.pathKey(item.path), item.path, item.name, item.kind, .layer, duration: item.isVideo ? item.fileDuration : nil)
         }
 

@@ -19,7 +19,11 @@ struct VideoLayerItemEditor: View {
             VideoKeyframeBar(model: model, clock: clock, item: item)
         }
 
-        VideoInspectorSection(L("Picture")) {
+        if let text = item.text {
+            VideoTextClipSection(model: model, item: item, content: text)
+        }
+
+        VideoInspectorSection(item.isText ? L("Placement") : L("Picture")) {
             VideoToggleRow(title: L("Show"), detail: L("Off, it stays on the timeline but isn't seen or heard (V)"),
                            isOn: Binding(get: { item.enabled }, set: { on in model.setLayerItem(item.id, label: on ? "Turn On Clip" : "Turn Off Clip") { $0.enabled = on } }))
             keyed(L("Position across"), .x, range: -50...150, scale: 100, defaultValue: 50, format: Self.percent)
@@ -80,6 +84,7 @@ struct VideoLayerItemEditor: View {
                 .fixedSize(horizontal: false, vertical: true)
         }
 
+        if !item.isText {
         VideoInspectorSection(L("Cutout")) {
             VideoToggleRow(title: L("Remove background"), detail: L("Keeps just the person, found on this Mac"),
                            isOn: Binding(get: { item.removesBackground == true }, set: { on in
@@ -110,6 +115,7 @@ struct VideoLayerItemEditor: View {
                 }), range: 0...100, defaultValue: 0, format: Self.percent, detail: L("How much of the shadows on the screen stays"), onEditingEnded: { model.endGesture() })
             }
         }
+        }
 
         VideoInspectorSection(L("Mask")) {
             HStack(spacing: 4) {
@@ -136,11 +142,13 @@ struct VideoLayerItemEditor: View {
             }
         }
 
+        if !item.isText {
         VideoInspectorSection(L("Crop")) {
             keyed(L("Left"), .cropX, range: 0...90, scale: 100, defaultValue: 0, format: Self.percent)
             keyed(L("Top"), .cropY, range: 0...90, scale: 100, defaultValue: 0, format: Self.percent, diamond: false)
             keyed(L("Width"), .cropWidth, range: 8...100, scale: 100, defaultValue: 100, format: Self.percent, diamond: false)
             keyed(L("Height"), .cropHeight, range: 8...100, scale: 100, defaultValue: 100, format: Self.percent, diamond: false)
+        }
         }
 
         if item.isVideo {

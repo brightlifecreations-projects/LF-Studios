@@ -60,6 +60,8 @@ struct VideoLayerItem: Codable, Equatable, Identifiable {
     /// A video's sound fading in and out at its ends (seconds).
     var soundFadeIn: Double?
     var soundFadeOut: Double?
+    /// A text clip's words and look (VideoTextClips.swift); no file then.
+    var text: VideoTextContent?
 
     var intensity: Double {
         get { level ?? 1 }
@@ -427,7 +429,11 @@ enum VideoLayerRenderer {
         guard item.enabled, item.opacity > 0.001 else { return nil }
         // (`item` is already resolved at the moment drawn: keys applied.)
         var media: CIImage
-        if item.isVideo {
+        if let text = item.text {
+            let height = item.rect(in: outputSize).height
+            guard let image = VideoTextClipRenderer.image(text, pixelHeight: height) else { return nil }
+            media = image
+        } else if item.isVideo {
             guard let frame else { return nil }
             media = frame
         } else {
@@ -478,6 +484,6 @@ enum VideoLayerStills {
 extension VideoLayerItem {
     /// Uses something only 1.15.0 shows.
     var needsFormat4: Bool {
-        (keys.map { !$0.isEmpty } ?? false) || mask != nil || level != nil || blend != nil || removesBackground != nil || chroma != nil || animation != nil || keepsPitch != nil || soundFadeIn != nil || soundFadeOut != nil || speed < 0.25 - 0.000_1 || speed > 4 + 0.000_1
+        (keys.map { !$0.isEmpty } ?? false) || mask != nil || level != nil || blend != nil || removesBackground != nil || chroma != nil || text != nil || animation != nil || keepsPitch != nil || soundFadeIn != nil || soundFadeOut != nil || speed < 0.25 - 0.000_1 || speed > 4 + 0.000_1
     }
 }

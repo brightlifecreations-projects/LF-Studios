@@ -74,7 +74,7 @@ private struct VideoLayerBlock: View {
             }
             if width > 50 {
                 HStack(spacing: 4) {
-                    Image(systemName: item.isVideo ? "film" : "photo")
+                    Image(systemName: item.isText ? "textformat" : item.isVideo ? "film" : "photo")
                         .font(.system(size: 9, weight: .bold))
                     Text(item.name)
                         .font(.system(size: 10, weight: .semibold))
@@ -113,6 +113,7 @@ private struct VideoLayerBlock: View {
         .onTapGesture { model.click(.layer(item.id)) }
         .gesture(moveGesture)
         .task(id: item.path) {
+            guard !item.isText else { return }
             thumbnail = await VideoMediaThumbnails.shared.image(item.path, kind: item.kind, frame: nil)
         }
         .help(L("“\(item.name)” — drag to move it in time or to another track, drag an end to trim, ⌥-drag a video to slip it"))

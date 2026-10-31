@@ -306,7 +306,7 @@ struct VideoProjectContents {
         if project.faceTracking?.analysisPath != nil { map(&project.faceTracking!.analysisPath!, .data) }
         // The tracks above the main track (VideoLayers.swift).
         for t in project.layerTracks.indices {
-            for i in project.layerTracks[t].items.indices {
+            for i in project.layerTracks[t].items.indices where !project.layerTracks[t].items[i].isText {
                 map(&project.layerTracks[t].items[i].path, project.layerTracks[t].items[i].kind.projectKind)
             }
         }
