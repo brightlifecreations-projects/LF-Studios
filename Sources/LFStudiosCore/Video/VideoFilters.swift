@@ -382,6 +382,7 @@ struct VideoAdjustmentClipSection: View {
                 .foregroundStyle(VideoEditorTheme.textTertiary)
                 .fixedSize(horizontal: false, vertical: true)
         }
+        VideoAdjustSection(model: model, item: item)
         VideoFilterSection(model: model, item: item)
     }
 }

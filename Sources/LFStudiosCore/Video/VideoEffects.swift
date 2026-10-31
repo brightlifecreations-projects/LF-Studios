@@ -234,6 +234,7 @@ extension VideoLayerItem {
         let strength = value(.intensity, at: time)
         if role == .adjustment {
             var adjusted = scene
+            if let adjust { adjusted = VideoAdjustRenderer.apply(adjust, to: adjusted, time: time - at) }
             if let filter { adjusted = VideoFilterRenderer.apply(filter, to: adjusted) }
             guard strength < 0.999 else { return adjusted }
             return adjusted.applyingFilter("CIDissolveTransition", parameters: [kCIInputImageKey: scene, kCIInputTargetImageKey: adjusted, kCIInputTimeKey: max(strength, 0)]).cropped(to: scene.extent)

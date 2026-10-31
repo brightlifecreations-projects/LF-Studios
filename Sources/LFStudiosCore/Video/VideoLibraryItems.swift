@@ -73,6 +73,10 @@ extension VideoEditorModel {
                 guard let look = VideoFilterLook(rawValue: id) else { return false }
                 return model.addFilter(VideoAppliedFilter(look: look), at: time, place: place, onSelection: time == nil)
             },
+            LibraryHandler(kind: "adjustment") { model, id, time, place in
+                guard let preset = VideoAdjustPreset.all.first(where: { $0.id == id }) else { return false }
+                return model.addAdjustment(preset, at: time, place: place, onSelection: time == nil)
+            },
             LibraryHandler(kind: "effect") { model, id, time, place in
                 guard let kind = VideoEffectKind(rawValue: id) else { return false }
                 // Dropped somewhere: an effect clip there; + : on the selection.

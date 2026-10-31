@@ -11,6 +11,7 @@ enum VideoLibraryTab: String, CaseIterable, Identifiable {
     case text
     case effects
     case filters
+    case adjustment
     case captions
     case transitions
 
@@ -22,6 +23,7 @@ enum VideoLibraryTab: String, CaseIterable, Identifiable {
         case .text: return L("Text")
         case .effects: return L("Effects")
         case .filters: return L("Filters")
+        case .adjustment: return L("Adjust")
         case .captions: return L("Captions")
         case .transitions: return L("Transitions")
         }
@@ -33,6 +35,7 @@ enum VideoLibraryTab: String, CaseIterable, Identifiable {
         case .text: return "textformat"
         case .effects: return "sparkles"
         case .filters: return "camera.filters"
+        case .adjustment: return "slider.horizontal.3"
         case .captions: return "captions.bubble"
         case .transitions: return "rectangle.portrait.on.rectangle.portrait.angled"
         }
@@ -79,6 +82,7 @@ struct VideoLibraryPanel: View {
                 case .text: VideoTextLibraryTab(model: model)
                 case .effects: VideoEffectsLibraryTab(model: model)
                 case .filters: VideoFiltersLibraryTab(model: model)
+                case .adjustment: VideoAdjustmentLibraryTab(model: model)
                 case .captions: captionsTab
                 case .transitions: VideoTransitionsLibraryTab(model: model)
                 }

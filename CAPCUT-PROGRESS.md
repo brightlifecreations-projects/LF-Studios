@@ -41,7 +41,7 @@ the first unticked box.
 - [x] B9 Effects tab: Core Image effects with intensity, on a clip or as an effect clip
 - [x] B10 Transitions tab: dissolve, fade black/white, slide, push, wipe, zoom, blur, spin; duration; Apply to all
 - [x] B11 Filters tab: own LUT looks with intensity
-- [ ] B12 Adjustment tab: adjustment layer; full Adjust panel (HSL, curves, wheels, .cube import)
+- [x] B12 Adjustment tab: adjustment layer; full Adjust panel (HSL, curves, wheels, .cube import)
 - [ ] B13 Stickers and sound effects (own/CC0, LICENSES.md), Import sticker (PNG/GIF)
 - [ ] B14 Captions tab: auto captions, style templates, SRT import/export
 - [ ] B15 Show Stickers/Effects/Filters/Adjustment tabs; favourites and search in every tab
@@ -150,3 +150,12 @@ the first unticked box.
   clip). Import .cube: VideoColorCube.parse (3D, DOMAIN_MIN/MAX), copied to
   VideoAssetStore, in assetPaths and project packaging (.data).
   VideoAdjustmentClipSection is a stub for B12's Adjust panel.
+- B12: VideoAdjustSettings (14 sliders, HSL ×8, curves RGB/R/G/B with
+  monotone interpolation, wheels lift/gamma/gain/offset) on any clip above
+  the main track or an adjustment clip. All colour work is baked into a 33³
+  LUT cached per settings (VideoAdjustRenderer), sharpen/vignette/grain run
+  after. Properties ▸ Adjust (Basic/HSL/Curves/Wheels, Reset);
+  `.edit(.setAdjust)` (neutral → nil). Library ▸ Adjust: Adjustment clip +
+  9 own presets (+ → on the selected clip; drop → adjustment clip). .cube
+  import came with B11. Main-track clips get Adjust through an adjustment
+  clip over them (+ with the clip selected).

@@ -81,6 +81,8 @@ struct VideoLayerItemEditor: View {
 
         VideoMotionTrackingSection(model: model, item: item)
 
+        VideoAdjustSection(model: model, item: item)
+
         VideoFilterSection(model: model, item: item)
 
         VideoItemEffectsSection(model: model, item: item)
