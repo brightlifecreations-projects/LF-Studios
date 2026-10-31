@@ -43,7 +43,7 @@ the first unticked box.
 - [x] B11 Filters tab: own LUT looks with intensity
 - [x] B12 Adjustment tab: adjustment layer; full Adjust panel (HSL, curves, wheels, .cube import)
 - [x] B13 Stickers and sound effects (own/CC0, LICENSES.md), Import sticker (PNG/GIF)
-- [ ] B14 Captions tab: auto captions, style templates, SRT import/export
+- [x] B14 Captions tab: auto captions, style templates, SRT import/export
 - [ ] B15 Show Stickers/Effects/Filters/Adjustment tabs; favourites and search in every tab
 
 ## Part C: pro tools and export
@@ -167,3 +167,9 @@ the first unticked box.
   to the store), hover plays them. Audio tab: Your sounds | Sound effects.
   LICENSES.md (repo root) lists stickers, sounds, looks, templates and the
   macOS fonts; VideoStickersSoundsTests checks it stays in step.
+- B14: Library ▸ Captions: Auto captions (the existing generateCaptions,
+  Apple or Whisper), Import .srt/.vtt (VideoSubtitleImport → source-clock
+  lines with even word timings, replaces captions and translations, one
+  step "Import Captions"), Export .srt (existing), 12 caption templates
+  (VideoCaptionTemplate: look + macOS font + highlight + animation + size +
+  position, one step "Caption Style"), previews by the real renderer.

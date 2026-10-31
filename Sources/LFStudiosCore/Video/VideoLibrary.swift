@@ -87,7 +87,7 @@ struct VideoLibraryPanel: View {
                 case .effects: VideoEffectsLibraryTab(model: model)
                 case .filters: VideoFiltersLibraryTab(model: model)
                 case .adjustment: VideoAdjustmentLibraryTab(model: model)
-                case .captions: captionsTab
+                case .captions: VideoCaptionsLibraryTab(model: model)
                 case .transitions: VideoTransitionsLibraryTab(model: model)
                 }
             }
@@ -97,13 +97,6 @@ struct VideoLibraryPanel: View {
     }
 
     // MARK: Pointers to where these live today
-
-    private var captionsTab: some View {
-        VideoLibraryPointer(
-            text: L("Captions live in the Captions panel on the right: make them from your voice, type them, translate and style them."),
-            actions: [(L("Open Captions"), "captions.bubble", { model.selection = .none; model.inspectorTab = .captions })]
-        )
-    }
 }
 
 /// A short note on where a feature lives, with buttons that go there.

@@ -77,6 +77,10 @@ extension VideoEditorModel {
                 guard let preset = VideoAdjustPreset.all.first(where: { $0.id == id }) else { return false }
                 return model.addAdjustment(preset, at: time, place: place, onSelection: time == nil)
             },
+            LibraryHandler(kind: "caption") { model, id, _, _ in
+                guard let template = VideoCaptionTemplate.all.first(where: { $0.id == id }) else { return false }
+                return model.applyCaptionTemplate(template)
+            },
             LibraryHandler(kind: "sound") { model, id, time, _ in
                 guard let effect = VideoSoundEffect(rawValue: id) else { return false }
                 Task { await model.addSoundEffect(effect, at: time) }
