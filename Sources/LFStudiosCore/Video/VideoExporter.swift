@@ -478,7 +478,7 @@ enum VideoDemoExporter {
         await phase(.rendering(0))
 
         let proRes = settings.format.proResCodec
-        let writer = try AVAssetWriter(outputURL: url, fileType: proRes == nil ? .mp4 : .mov)
+        let writer = try AVAssetWriter(outputURL: url, fileType: settings.movieFileType)
         writer.shouldOptimizeForNetworkUse = proRes == nil
         var compression: [String: Any] = [
             AVVideoAverageBitRateKey: settings.videoBitrate(for: outputSize),

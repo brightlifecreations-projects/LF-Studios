@@ -50,7 +50,7 @@ the first unticked box.
 - [x] C16 Keyboard shortcuts editor with presets, conflicts, reset
 - [x] C17 Proxy mode (ProRes Proxy, half res, estimate first)
 - [x] C18 Compound clips: make, break apart, open in own timeline
-- [ ] C19 Export window (CapCut structure)
+- [x] C19 Export window (CapCut structure)
 - [ ] C20 Cover frame/image embedded in the export
 - [ ] C21 Performance: background rendering, thumbnail/waveform cache, 30-min synthetic project
 
@@ -212,3 +212,11 @@ the first unticked box.
   moved in time only. `.makeCompound` (⌥G) / `.breakApart` (⌥⇧G, bakes
   the look in). Properties ▸ Compound clip. Open in own timeline → next
   update.
+- C19: export window in CapCut's order: Name, Export to (folder, Choose…;
+  Settings.videoExportFolder), Video | Audio only | GIF, Resolution (to 4K),
+  Bit rate (Lower/Recommended/Higher = quality web/social/studio, Custom
+  Mbit/s → customBitrate), Codec (H.264, HEVC, ProRes 422/HQ/4444), Format
+  (MP4/MOV container; ProRes forces MOV; `movieFileType`), Frame rate
+  24/25/30/50/60; captions .srt/.vtt, chapters, end card, range, Copy and
+  Creative Handoff kept; Export all ratios still in the ratio menu. Export
+  no longer opens a save panel: exportDestination (Replace/Keep Both).

@@ -151,7 +151,35 @@ struct VideoExportSettings: Equatable {
         }
     }
 
+    /// H.264 and HEVC in an .mp4 or a .mov (ProRes is always .mov).
+    enum Container: String, CaseIterable, Identifiable {
+        case mp4
+        case mov
+
+        var id: String { rawValue }
+        var title: String { self == .mp4 ? "MP4" : "MOV" } // l10n-ignore: format names
+    }
+
+    /// Bit rate as the export window offers it: the three qualities, or
+    /// your own number.
+    enum BitRate: String, CaseIterable, Identifiable {
+        case lower, recommended, higher, custom
+
+        var id: String { rawValue }
+        var title: String {
+            switch self {
+            case .lower: return L("Lower")
+            case .recommended: return L("Recommended")
+            case .higher: return L("Higher")
+            case .custom: return L("Custom")
+            }
+        }
+    }
+
     var format: Format = .mp4
+    var container: Container = .mp4
+    /// Your own bit rate (bits per second; nil: from `quality`).
+    var customBitrate: Int?
     var resolution: Resolution = .p1080
     var fps: Int = 60
     var quality: Quality = .social
@@ -174,7 +202,8 @@ struct VideoExportSettings: Equatable {
     /// The file keeps an alpha channel.
     var keepsTransparency: Bool { format == .proRes4444 && transparentBackground }
 
-    static let frameRates = [24, 30, 60]
+    static let frameRates = [24, 25, 30, 50, 60]
+    static let customBitrateRange: ClosedRange<Double> = 1...200
     static let gifFrameRates = [10, 15, 20, 24]
 
     /// Frames a GIF keeps in memory until it's written: past this, making
@@ -213,7 +242,7 @@ struct VideoExportSettings: Equatable {
     var fileExtension: String {
         switch format {
         case .gif: return "gif"
-        case .mp4: return "mp4"
+        case .mp4: return container == .mov ? "mov" : "mp4"
         case .proRes422, .proRes422HQ, .proRes4444: return "mov"
         case .m4a: return "m4a"
         case .wav: return "wav"
@@ -240,7 +269,30 @@ struct VideoExportSettings: Equatable {
         return CGSize(width: even(canvas.width * scale), height: even(canvas.height * scale))
     }
 
+    var bitRate: BitRate {
+        get {
+            if customBitrate != nil { return .custom }
+            switch quality {
+            case .web: return .lower
+            case .social: return .recommended
+            case .studio: return .higher
+            }
+        }
+        set {
+            switch newValue {
+            case .lower: quality = .web; customBitrate = nil
+            case .recommended: quality = .social; customBitrate = nil
+            case .higher: quality = .studio; customBitrate = nil
+            case .custom: customBitrate = customBitrate ?? videoBitrate(for: CGSize(width: 1920, height: 1080))
+            }
+        }
+    }
+
+    /// The file type the movie is written as.
+    var movieFileType: AVFileType { format.isProRes || (format == .mp4 && container == .mov) ? .mov : .mp4 }
+
     func videoBitrate(for size: CGSize) -> Int {
+        if let customBitrate { return min(max(customBitrate, 1_000_000), 200_000_000) }
         let pixels = Double(size.width * size.height)
         let fpsFactor = pow(Double(max(fps, 1)) / 30, 0.6)
         var bitrate = pixels * 30 * quality.bitsPerPixel * fpsFactor
@@ -296,6 +348,12 @@ struct VideoExportSettings: Equatable {
         if let raw = defaults.object(forKey: "videoExportGIFFPS") as? Int, gifFrameRates.contains(raw) {
             settings.gifFPS = raw
         }
+        if let raw = defaults.string(forKey: "videoExportContainer"), let value = Container(rawValue: raw) {
+            settings.container = value
+        }
+        if let raw = defaults.object(forKey: "videoExportCustomBitrate") as? Int, raw > 0 {
+            settings.customBitrate = raw
+        }
         settings.burnCaptions = Settings.videoExportBurnCaptions
         settings.subtitles = VideoSubtitleFormat(rawValue: Settings.videoExportSubtitles)
         return settings
@@ -311,6 +369,8 @@ struct VideoExportSettings: Equatable {
         defaults.set(codec.rawValue, forKey: "videoExportCodec")
         defaults.set(gifSize.rawValue, forKey: "videoExportGIFSize")
         defaults.set(gifFPS, forKey: "videoExportGIFFPS")
+        defaults.set(container.rawValue, forKey: "videoExportContainer")
+        defaults.set(customBitrate ?? 0, forKey: "videoExportCustomBitrate")
         Settings.videoExportBurnCaptions = burnCaptions
         Settings.videoExportSubtitles = subtitles?.rawValue ?? ""
     }

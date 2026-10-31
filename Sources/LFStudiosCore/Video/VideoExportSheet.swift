@@ -140,14 +140,36 @@ struct VideoExportSheet: View {
 
     private var optionsView: some View {
         VStack(alignment: .leading, spacing: 16) {
-            VideoSegmented(options: [(false, L("Video")), (true, L("Audio only"))], selection: Binding(
-                get: { settings.format.isAudioOnly },
-                set: { audio in
-                    guard audio != settings.format.isAudioOnly else { return }
-                    model.exportSettings.format = audio ? .m4a : .mp4
+            row(L("Name")) {
+                TextField(L("Name"), text: Binding(get: { model.exportName }, set: { model.exportName = $0 }))
+                    .textFieldStyle(.roundedBorder)
+            }
+            row(L("Export to")) {
+                HStack(spacing: 6) {
+                    Image(systemName: "folder").foregroundStyle(VideoEditorTheme.textTertiary)
+                    Text(model.exportFolder.lastPathComponent)
+                        .font(.system(size: 12))
+                        .lineLimit(1)
+                        .truncationMode(.middle)
+                        .help(model.exportFolder.path)
+                    Spacer(minLength: 4)
+                    Button(L("Choose…")) { model.chooseExportFolder() }
+                        .buttonStyle(VideoSecondaryButtonStyle())
+                }
+            }
+            VideoSegmented(options: [(ExportKind.video, L("Video")), (.audio, L("Audio only")), (.gif, L("GIF"))], selection: Binding(
+                get: { settings.format.isAudioOnly ? .audio : settings.format == .gif ? .gif : .video },
+                set: { kind in
+                    switch kind {
+                    case .video: if !settings.format.isMovie { model.exportSettings.format = .mp4 }
+                    case .audio: if !settings.format.isAudioOnly { model.exportSettings.format = .m4a }
+                    case .gif: model.exportSettings.format = .gif
+                    }
                 }
             ))
-            VideoSegmented(options: (settings.format.isAudioOnly ? VideoExportSettings.Format.audioFormats : VideoExportSettings.Format.videoFormats).map { ($0, $0.title) }, selection: $model.exportSettings.format)
+            if settings.format.isAudioOnly {
+                VideoSegmented(options: VideoExportSettings.Format.audioFormats.map { ($0, $0.title) }, selection: $model.exportSettings.format)
+            }
 
             if let detail = settings.format.detail {
                 note(detail)
@@ -157,9 +179,41 @@ struct VideoExportSheet: View {
                 row(L("Resolution")) {
                     VideoSegmented(options: VideoExportSettings.Resolution.allCases.map { ($0, $0.title) }, selection: $model.exportSettings.resolution)
                 }
+                if settings.format == .mp4 {
+                    row(L("Bit rate")) {
+                        VStack(alignment: .leading, spacing: 5) {
+                            VideoSegmented(options: VideoExportSettings.BitRate.allCases.map { ($0, $0.title) }, selection: $model.exportSettings.bitRate)
+                            if settings.bitRate == .custom {
+                                VideoSliderRow(title: L("Mbit/s"), value: Binding(get: { Double(settings.customBitrate ?? 10_000_000) / 1_000_000 }, set: { value in
+                                    model.exportSettings.customBitrate = Int(value.rounded()) * 1_000_000
+                                }), range: VideoExportSettings.customBitrateRange, defaultValue: nil, format: { "\(Int($0.rounded())) Mbit/s" }) // l10n-ignore: a unit
+                            } else {
+                                note(settings.quality.detail)
+                            }
+                        }
+                    }
+                }
+                row(L("Codec")) {
+                    VStack(alignment: .leading, spacing: 5) {
+                        Picker(L("Codec"), selection: Binding(get: { codecChoice }, set: { setCodec($0) })) {
+                            ForEach(CodecChoice.allCases) { Text($0.title).tag($0) }
+                        }
+                        .labelsHidden()
+                        .pickerStyle(.menu)
+                        if settings.format == .mp4 { note(settings.codec.detail) }
+                    }
+                }
+                row(L("Format")) {
+                    VideoSegmented(options: VideoExportSettings.Container.allCases.map { ($0, $0.title) }, selection: Binding(
+                        get: { settings.format.isProRes ? .mov : settings.container },
+                        set: { model.exportSettings.container = $0 }
+                    ))
+                    .disabled(settings.format.isProRes)
+                    .help(settings.format.isProRes ? L("ProRes is always a .mov") : L("MP4 plays everywhere; MOV is QuickTime's own"))
+                }
                 row(L("Frame rate")) {
                     // "fps" is the same in every language.
-                    VideoSegmented(options: VideoExportSettings.frameRates.map { ($0, "\($0) fps") }, selection: $model.exportSettings.fps)
+                    VideoSegmented(options: VideoExportSettings.frameRates.map { ($0, "\($0)") }, selection: $model.exportSettings.fps)
                 }
             }
             if settings.format == .proRes4444 {
@@ -169,20 +223,7 @@ struct VideoExportSheet: View {
                     isOn: $model.exportSettings.transparentBackground
                 )
             }
-            if settings.format == .mp4 {
-                row(L("Quality")) {
-                    VStack(alignment: .leading, spacing: 5) {
-                        VideoSegmented(options: VideoExportSettings.Quality.allCases.map { ($0, $0.title) }, selection: $model.exportSettings.quality)
-                        note(settings.quality.detail)
-                    }
-                }
-                row(L("Encoding")) {
-                    VStack(alignment: .leading, spacing: 5) {
-                        VideoSegmented(options: VideoExportSettings.Codec.allCases.map { ($0, $0.title) }, selection: $model.exportSettings.codec)
-                        note(settings.codec.detail)
-                    }
-                }
-            } else if settings.format == .gif {
+            if settings.format == .gif {
                 row(L("Size")) {
                     VideoSegmented(options: VideoExportSettings.GIFSize.allCases.map { ($0, $0.title) }, selection: $model.exportSettings.gifSize)
                 }
@@ -310,6 +351,42 @@ struct VideoExportSheet: View {
         }
     }
 
+    enum ExportKind: Hashable { case video, audio, gif }
+
+    /// H.264, HEVC or one of the ProRes, as one choice.
+    enum CodecChoice: String, CaseIterable, Identifiable {
+        case h264, hevc, proRes422, proRes422HQ, proRes4444
+        var id: String { rawValue }
+        var title: String {
+            switch self {
+            case .h264: return "H.264" // l10n-ignore: a codec name
+            case .hevc: return "HEVC (H.265)" // l10n-ignore: a codec name
+            case .proRes422: return "ProRes 422" // l10n-ignore: a codec name
+            case .proRes422HQ: return "ProRes 422 HQ" // l10n-ignore: a codec name
+            case .proRes4444: return "ProRes 4444" // l10n-ignore: a codec name
+            }
+        }
+    }
+
+    private var codecChoice: CodecChoice {
+        switch settings.format {
+        case .proRes422: return .proRes422
+        case .proRes422HQ: return .proRes422HQ
+        case .proRes4444: return .proRes4444
+        default: return settings.codec == .hevc ? .hevc : .h264
+        }
+    }
+
+    private func setCodec(_ choice: CodecChoice) {
+        switch choice {
+        case .h264: model.exportSettings.format = .mp4; model.exportSettings.codec = .h264
+        case .hevc: model.exportSettings.format = .mp4; model.exportSettings.codec = .hevc
+        case .proRes422: model.exportSettings.format = .proRes422
+        case .proRes422HQ: model.exportSettings.format = .proRes422HQ
+        case .proRes4444: model.exportSettings.format = .proRes4444
+        }
+    }
+
     private func export(toClipboard: Bool) {
         model.beginExport(toClipboard: toClipboard, range: exportRange.map { .timeline($0) } ?? .whole)
     }
@@ -401,7 +478,7 @@ struct VideoExportSheet: View {
     /// The titles' column: 78 pt, wider only when a language's titles
     /// (Japanese フレームレート) need more, so none of them wraps.
     static var titleColumnWidth: CGFloat {
-        let titles = [L("Resolution"), L("Frame rate"), L("Quality"), L("Encoding"), L("Size"), L("Range"), L("Captions")]
+        let titles = [L("Name"), L("Export to"), L("Resolution"), L("Bit rate"), L("Codec"), L("Format"), L("Frame rate"), L("Size"), L("Range"), L("Captions")]
         return max(78, (TextFitting.widest(titles, font: .systemFont(ofSize: 12, weight: .medium)) + 4).rounded(.up))
     }
 

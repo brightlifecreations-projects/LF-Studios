@@ -327,6 +327,9 @@ final class VideoEditorModel: ObservableObject {
     @Published var recordingShortcut: VideoEditCommand?
     /// Proxies being made, and whether the editor plays them (VideoProxies.swift).
     @Published var proxyJob: VideoProxyJob?
+    /// The export window's name and folder (VideoExportDestination.swift).
+    @Published var exportNameEdited: String?
+    @Published var exportFolderPath = Settings.videoExportFolder
     @Published var usesProxies = Settings.videoEditWithProxies
     let proxyCancelFlag = VideoAtomicFlag()
     let trackingCancelFlag = VideoAtomicFlag()
@@ -2156,19 +2159,9 @@ final class VideoEditorModel: ObservableObject {
             try? FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
             destination = folder.appendingPathComponent("\(exportBaseName).\(settings.fileExtension)")
         } else {
-            let panel = NSSavePanel()
-            switch settings.format {
-            case .gif: panel.allowedContentTypes = [.gif]
-            case .m4a: panel.allowedContentTypes = [.mpeg4Audio]
-            case .wav: panel.allowedContentTypes = [.wav]
-            case .aiff: panel.allowedContentTypes = [.aiff]
-            default: panel.allowedContentTypes = settings.format.isProRes ? [.quickTimeMovie] : [.mpeg4Movie]
-            }
-            panel.canCreateDirectories = true
-            panel.nameFieldStringValue = "\(exportBaseName).\(settings.fileExtension)"
-            panel.directoryURL = URL(fileURLWithPath: Settings.recordingFolder, isDirectory: true)
-            guard panel.runModal() == .OK, let url = panel.url else { return }
-            destination = url
+            // The name and folder from the export window (1.15.0).
+            guard let chosen = exportDestination(settings: settings) else { return }
+            destination = chosen
         }
         enqueueExport(to: destination, settings: settings, toClipboard: toClipboard, range: range)
     }
