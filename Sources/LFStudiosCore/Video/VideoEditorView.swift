@@ -569,6 +569,12 @@ extension VideoEditorModel {
             return true
         }
 
+        // A new key being picked for a command (VideoKeymap.swift).
+        if recordingShortcut != nil {
+            recordShortcut(event)
+            return true
+        }
+
         // Modal surfaces first. Undo never reaches the edit behind them.
         let isUndoKey = key == "z" && (modifiers == [.command] || modifiers == [.command, .shift])
         if isPrivacyPresented {
@@ -968,6 +974,8 @@ struct VideoArrowKeyCatcher: NSViewRepresentable {
 struct VideoShortcutsSheet: View {
     @ObservedObject var model: VideoEditorModel
     @AppStorage("videoEditorTipsDismissed") private var tipsDismissed = false
+    @State private var customizing = false
+    @State private var keymap = VideoKeymap.current
 
     /// Every key the editor answers to (VideoEditorModel.handleKey). Keys
     /// keep their symbols; only the ones with words are translated.
@@ -981,7 +989,14 @@ struct VideoShortcutsSheet: View {
         ]
     }
 
-    private var groups: [(String, [(String, String)])] { Self.groups }
+    /// Your own keys (a preset's or changed) first: they replace the ones
+    /// listed under them.
+    private var groups: [(String, [(String, String)])] {
+        let changed = VideoKeymap.editable.filter { $0.keys != $0.standardKeys }
+        guard !changed.isEmpty else { return Self.groups }
+        let yours = changed.map { ($0.keys.isEmpty ? L("None") : $0.keys, $0.title) }
+        return [(L("Your keys (they replace the ones below)"), yours)] + Self.groups
+    }
 
     /// The keys' column: 92 pt, wider only when a language's key names
     /// ("Double-click") need more.
@@ -1014,6 +1029,12 @@ struct VideoShortcutsSheet: View {
                     .font(.system(size: 16, weight: .bold))
                     .foregroundStyle(VideoEditorTheme.textPrimary)
                 Spacer()
+                Button(customizing ? L("Done") : L("Customize…")) {
+                    model.recordingShortcut = nil
+                    customizing.toggle()
+                }
+                .buttonStyle(VideoSecondaryButtonStyle())
+                .help(L("Change the timeline's keys, or use Final Cut Pro or Premiere Pro keys"))
                 Button { model.isShortcutsPresented = false } label: {
                     Image(systemName: "xmark").frame(width: 26, height: 26)
                 }
@@ -1021,6 +1042,9 @@ struct VideoShortcutsSheet: View {
                 .help(L("Close (Esc)"))
                 .accessibilityLabel(L("Close"))
             }
+            if customizing {
+                VideoShortcutsEditor(model: model)
+            } else {
             HStack(alignment: .top, spacing: 28) {
                 ForEach(0..<2, id: \.self) { column in
                     VStack(alignment: .leading, spacing: 18) {
@@ -1047,6 +1071,7 @@ struct VideoShortcutsSheet: View {
                     .frame(width: columnWidth, alignment: .leading)
                 }
             }
+            }
             if tipsDismissed {
                 Button(L("Show tips under the video again")) { tipsDismissed = false }
                     .buttonStyle(.plain)
@@ -1059,6 +1084,7 @@ struct VideoShortcutsSheet: View {
         .background(RoundedRectangle(cornerRadius: 16, style: .continuous).fill(VideoEditorTheme.popover))
         .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous).strokeBorder(VideoEditorTheme.cardStroke, lineWidth: 1))
         .shadow(color: VideoEditorTheme.shadow, radius: 30, y: 16)
+        .onReceive(NotificationCenter.default.publisher(for: .lfstudiosKeymapChanged)) { _ in keymap = VideoKeymap.current }
     }
 }
 

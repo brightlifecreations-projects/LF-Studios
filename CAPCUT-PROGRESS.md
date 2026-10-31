@@ -47,7 +47,7 @@ the first unticked box.
 - [x] B15 Show Stickers/Effects/Filters/Adjustment tabs; favourites and search in every tab
 
 ## Part C: pro tools and export
-- [ ] C16 Keyboard shortcuts editor with presets, conflicts, reset
+- [x] C16 Keyboard shortcuts editor with presets, conflicts, reset
 - [ ] C17 Proxy mode (ProRes Proxy, half res, estimate first)
 - [ ] C18 Compound clips: make, break apart, open in own timeline
 - [ ] C19 Export window (CapCut structure)
@@ -179,3 +179,13 @@ the first unticked box.
   (search + favourites); Media/Your sounds keep their search and gain a
   favourites filter + stars (payload "media/<path>"). Library snapshots need
   re-recording in the final pass.
+- C16: VideoKeymap (preset + custom, JSON in Settings.videoKeymap, cached;
+  .lfstudiosKeymapChanged). VideoEditCommand.command(key:) and `.keys` read
+  it (undo/redo/delete stay); `standardKeys` keeps LF Studios' own. Presets
+  LF Studios / Final Cut Pro style / Premiere Pro style change only
+  commands LF Studios has. Conflicts: reserved (Space, ⌘Z, ⌘K, ⌘E, ⌘W, ⌘S,
+  ⌘Q, ?) refuse; another command loses the key; editor keys (J K L Z M C
+  1–5 ⌘D ⌘F ⇧⌘Y) are taken over with a warning. Keyboard Shortcuts sheet ▸
+  Customize… (VideoShortcutsEditor; model.recordingShortcut gets the next
+  key in handleKey). The Timeline menu follows the keymap.
+  VideoKeymapSettingsTests is SERIAL.

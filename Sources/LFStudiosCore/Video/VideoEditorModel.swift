@@ -323,6 +323,8 @@ final class VideoEditorModel: ObservableObject {
     @Published var motionTracking: VideoMotionTrackingState?
     /// Starred Library items (VideoLibraryItems.swift).
     @Published var libraryFavourites: [String] = Settings.videoLibraryFavourites
+    /// Keyboard Shortcuts ▸ Customize: the command waiting for its new key.
+    @Published var recordingShortcut: VideoEditCommand?
     let trackingCancelFlag = VideoAtomicFlag()
     @Published private(set) var canUndo = false
     @Published private(set) var canRedo = false

@@ -321,6 +321,12 @@ enum Settings {
         set { defaults.set(newValue, forKey: "recordingKeyTiming") }
     }
 
+    /// The video editor's keys (VideoKeymap, JSON; nil: LF Studios' own).
+    static var videoKeymap: Data? {
+        get { defaults.data(forKey: "videoKeymap") }
+        set { defaults.set(newValue, forKey: "videoKeymap") }
+    }
+
     /// Library ▸ Transitions: the length a transition gets when it's placed.
     static var videoTransitionLength: Double {
         get { (defaults.object(forKey: "videoTransitionLength") as? Double).map { min(max($0, 0.2), 2) } ?? 0.5 }

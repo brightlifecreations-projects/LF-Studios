@@ -174,8 +174,19 @@ enum VideoEditCommand: Equatable, CaseIterable, Identifiable {
         }
     }
 
-    /// The keys, as the Guide and the menus write them ("" for none).
+    /// The keys, as the Guide and the menus write them ("" for none):
+    /// the ones set in Keyboard Shortcuts.
     var keys: String {
+        switch self {
+        case .undo: return "⌘Z"
+        case .redo: return "⇧⌘Z"
+        case .delete: return "⌫"
+        default: return VideoKeymap.current.binding(for: self)?.display ?? ""
+        }
+    }
+
+    /// LF Studios' own keys (before any preset or change).
+    var standardKeys: String {
         switch self {
         case .selectTool: return "A"
         case .splitTool: return "B"
@@ -213,41 +224,10 @@ enum VideoEditCommand: Equatable, CaseIterable, Identifiable {
         }
     }
 
-    /// The command for a key press in the editor (nil: not one of these).
+    /// The command for a key press in the editor (nil: not one of these):
+    /// LF Studios' keys, a preset's, or your own (VideoKeymap.swift).
     static func command(key: String, modifiers: NSEvent.ModifierFlags) -> VideoEditCommand? {
-        let mods = modifiers.intersection([.command, .shift, .option, .control])
-        switch (mods, key) {
-        case ([], "a"): return .selectTool
-        case ([], "b"): return .splitTool
-        case ([.command], "b"): return .split
-        case ([.command, .shift], "b"): return .splitAllTracks
-        case ([], "q"): return .deleteLeft
-        case ([], "w"): return .deleteRight
-        case ([], "p"): return .toggleMagnet
-        case ([], "n"): return .toggleSnapping
-        case ([], "`"), ([.shift], "~"), ([.shift], "`"): return .toggleLinkage
-        case ([], "s"): return .togglePreviewAxis
-        case ([.shift], "z"): return .zoomToFit
-        case ([], "v"): return .toggleEnabled
-        case ([.command], "g"): return .group
-        case ([.command, .shift], "g"): return .ungroup
-        case ([.command, .shift], "a"): return .extractAudio
-        case ([], "["): return .selectLeft
-        case ([], "]"): return .selectRight
-        case ([.command], "c"): return .copy
-        case ([.command], "v"): return .paste
-        case ([], "i"): return .markIn
-        case ([], "o"): return .markOut
-        case ([.option], "t"), ([.option], "†"): return .addText
-        case ([.option], "a"), ([.option], "å"): return .addArrow
-        case ([.option], "h"), ([.option], "˙"): return .addHighlight
-        case ([.option], "b"), ([.option], "∫"): return .addBlur
-        case ([.option], "k"), ([.option], "˚"): return .addKeyframe
-        case ([.option], "["), ([.option], "“"): return .previousKeyframe
-        case ([.option], "]"), ([.option], "‘"): return .nextKeyframe
-        case ([.option, .shift], "t"), ([.option, .shift], "ˇ"), ([.option, .shift], "T"): return .addTextClip
-        default: return nil
-        }
+        VideoKeymap.current.command(key: key, modifiers: modifiers.intersection([.command, .shift, .option, .control]))
     }
 
     /// A switch (P, N, ~, S): its state.
@@ -703,4 +683,9 @@ struct VideoShortcutsChangedNotice: View {
         Settings.videoShortcutsChangeSeen = true
         seen = true
     }
+}
+
+/// Commands as dictionary keys and in sets (by their stable name).
+extension VideoEditCommand: Hashable {
+    func hash(into hasher: inout Hasher) { hasher.combine(rawValue) }
 }
