@@ -24,6 +24,10 @@ enum VideoItemEdit: Equatable {
     case normalize
     /// A text clip's words and look (its size follows).
     case setText(VideoTextContent)
+    /// Motion tracking: follow what's in this box (shares of the frame)
+    /// from the playhead; or stop following.
+    case trackMotion(CGRect)
+    case clearTracking
 
     var name: String {
         switch self {
@@ -39,6 +43,8 @@ enum VideoItemEdit: Equatable {
         case .setSoundFades(let a, let b): return "setSoundFades.\(a).\(b)"
         case .normalize: return "normalize"
         case .setText(let t): return "setText.\(t.string.count)"
+        case .trackMotion: return "trackMotion"
+        case .clearTracking: return "clearTracking"
         case .setAnimation(let a): return "setAnimation.\(a?.inPreset?.rawValue ?? "-").\(a?.outPreset?.rawValue ?? "-").\(a?.combo?.rawValue ?? "-")"
         }
     }
@@ -58,6 +64,8 @@ enum VideoItemEdit: Equatable {
         case .setSoundFades: return L("Fade")
         case .normalize: return L("Normalize loudness")
         case .setText: return L("Text")
+        case .trackMotion: return L("Track")
+        case .clearTracking: return L("Stop following")
         }
     }
 }
@@ -120,6 +128,11 @@ extension VideoEditorModel {
         case .setText(let content):
             guard item.isText else { return false }
             setTextContent(item.id, content)
+        case .trackMotion(let region):
+            Task { await trackMotion(item.id, region: region) }
+        case .clearTracking:
+            guard item.tracking != nil else { return false }
+            setLayerItem(item.id, label: "Stop Following") { $0.tracking = nil }
         case .setAnimation(let animation):
             setLayerItem(item.id, coalesce: "animation-\(item.id)", label: "Animation") { $0.animation = animation?.isEmpty == true ? nil : animation }
         }

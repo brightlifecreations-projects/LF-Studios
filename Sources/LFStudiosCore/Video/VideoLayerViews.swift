@@ -69,6 +69,8 @@ struct VideoLayerItemEditor: View {
 
         VideoAnimationSection(model: model, item: item)
 
+        VideoMotionTrackingSection(model: model, item: item)
+
         VideoInspectorSection(L("Blend")) {
             Picker(L("Blend"), selection: Binding(get: { item.blend ?? .normal }, set: { blend in
                 model.selection = .layer(item.id)

@@ -34,7 +34,7 @@ the first unticked box.
 - [x] A4 Speed: Normal 0.1×–100× (keep pitch) and Curve presets + custom curve
 - [x] A5 Audio: volume keyframes, fades, normalize, Detect beats
 - [x] A6 Text on its own track: font, size, B/I/U, colour, stroke, background, shadow, spacing, alignment
-- [ ] A7 Motion tracking (Track button, Vision object tracking)
+- [x] A7 Motion tracking (Track button, Vision object tracking)
 
 ## Part B: Library content
 - [ ] B8 Text tab: templates and styles, hover preview, drag onto timeline
@@ -102,3 +102,12 @@ the first unticked box.
   1.14 text annotation) and `.edit(.setText)`; size follows the words and
   look, keeping a hand-set scale. Media paths skip text (Library, handoff,
   project packaging, thumbnails). Guide/translations: final batch.
+- A7: `VideoLayerItem.tracking: VideoMotionTrack` (offset points in item
+  seconds), applied by `placed(at:)` (resolved + tracking), which `shown`,
+  the handles (drag subtracts the offset) and the hit test use. Track →
+  a yellow box on the player (drag; Box size slider) → Start:
+  `.edit(.trackMotion(rect))` renders the edit under the clip (tracks from
+  its own up left out) at 720p from the playhead to the clip's end, then
+  VNTrackObjectRequest; one undo step "Track Motion"; Stop following
+  (`.edit(.clearTracking)`). Ships only if VideoMotionTrackingTests pass in
+  the final pass and nothing suggests drift; otherwise next update.

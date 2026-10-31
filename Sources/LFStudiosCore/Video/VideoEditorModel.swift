@@ -319,6 +319,9 @@ final class VideoEditorModel: ObservableObject {
         didSet { refreshTimeline() }
     }
     @Published var notice: VideoEditorNotice?
+    /// Motion tracking: the box being picked, or the run (VideoMotionTracking.swift).
+    @Published var motionTracking: VideoMotionTrackingState?
+    let trackingCancelFlag = VideoAtomicFlag()
     @Published private(set) var canUndo = false
     @Published private(set) var canRedo = false
     @Published private(set) var restoredDraft = false

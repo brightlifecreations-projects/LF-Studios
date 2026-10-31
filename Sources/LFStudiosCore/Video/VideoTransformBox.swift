@@ -139,8 +139,9 @@ struct VideoLayerItemHandles: View {
     let viewSize: CGSize
 
     var body: some View {
-        // Where it is at the playhead (keyframes applied).
-        let item = stored.resolved(at: clock.time)
+        // Where it is at the playhead (keyframes and tracking applied).
+        let item = stored.placed(at: clock.time)
+        let follow = stored.tracking?.offset(at: clock.time - stored.at) ?? .zero
         let r = item.rect(in: viewSize)
         VideoTransformBox(
             rect: CGRect(x: r.minX, y: viewSize.height - r.maxY, width: r.width, height: r.height),
@@ -151,8 +152,8 @@ struct VideoLayerItemHandles: View {
             changed: { rect in
                 model.setLayerAnimated(item.id, coalesce: "layer-place-\(item.id)", label: "Move Clip") { placed in
                     placed.width = Double(rect.width / max(viewSize.width, 1))
-                    placed.x = Double(rect.midX / max(viewSize.width, 1))
-                    placed.y = Double(rect.midY / max(viewSize.height, 1))
+                    placed.x = Double(rect.midX / max(viewSize.width, 1)) - follow.dx
+                    placed.y = Double(rect.midY / max(viewSize.height, 1)) - follow.dy
                 }
             },
             turned: { degrees in

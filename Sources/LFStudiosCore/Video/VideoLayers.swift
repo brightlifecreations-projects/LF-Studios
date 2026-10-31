@@ -62,6 +62,8 @@ struct VideoLayerItem: Codable, Equatable, Identifiable {
     var soundFadeOut: Double?
     /// A text clip's words and look (VideoTextClips.swift); no file then.
     var text: VideoTextContent?
+    /// Follows something in the video (VideoMotionTracking.swift).
+    var tracking: VideoMotionTrack?
 
     var intensity: Double {
         get { level ?? 1 }
@@ -484,6 +486,6 @@ enum VideoLayerStills {
 extension VideoLayerItem {
     /// Uses something only 1.15.0 shows.
     var needsFormat4: Bool {
-        (keys.map { !$0.isEmpty } ?? false) || mask != nil || level != nil || blend != nil || removesBackground != nil || chroma != nil || text != nil || animation != nil || keepsPitch != nil || soundFadeIn != nil || soundFadeOut != nil || speed < 0.25 - 0.000_1 || speed > 4 + 0.000_1
+        (keys.map { !$0.isEmpty } ?? false) || mask != nil || level != nil || blend != nil || removesBackground != nil || chroma != nil || text != nil || tracking != nil || animation != nil || keepsPitch != nil || soundFadeIn != nil || soundFadeOut != nil || speed < 0.25 - 0.000_1 || speed > 4 + 0.000_1
     }
 }

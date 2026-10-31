@@ -222,10 +222,12 @@ extension VideoEditorModel {
         second.fileStart = item.fileStart + (time - item.at) * item.normalizedSpeed
         // Each half keeps its own keys (the second's from its new start).
         second.keys?.shift(by: -(time - item.at), length: second.length)
+        second.tracking?.shift(by: -(time - item.at), length: second.length)
         mutate(label: "Split Clip") { project in
             project.updateLayerItem(id) { first in
                 first.length = time - first.at
                 first.keys?.shift(by: 0, length: first.length)
+                first.tracking?.shift(by: 0, length: first.length)
             }
             project.layerTracks[track].items.append(second)
             project.layerTracks[track].sort()
@@ -316,6 +318,7 @@ extension VideoDemoProject {
                 // Keys stay on the frames they were on.
                 let delta = item.at - start, kept = item.end - start
                 item.keys?.shift(by: delta, length: kept)
+                item.tracking?.shift(by: delta, length: kept)
                 item.length = item.end - start
                 item.at = start
             } else {

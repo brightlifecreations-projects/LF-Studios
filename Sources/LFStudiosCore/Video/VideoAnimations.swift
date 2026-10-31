@@ -153,7 +153,7 @@ extension VideoLayerItem {
     /// As drawn at timeline `time`: keys and animations applied, and how
     /// much it's blurred by an animation.
     func shown(at time: Double) -> (item: VideoLayerItem, blur: Double) {
-        var item = resolved(at: time)
+        var item = placed(at: time)
         guard let animation, !animation.isEmpty else { return (item, 0) }
         let c = animation.change(at: time - at, length: length)
         item.opacity *= c.opacity
