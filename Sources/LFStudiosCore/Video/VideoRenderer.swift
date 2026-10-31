@@ -899,7 +899,7 @@ final class VideoFrameRenderer {
         // under the camera, pictures, captions and keys.
         for layer in plan.layers where layer.item.isShowing(at: timelineTime) {
             // An effect clip changes what's under it.
-            if layer.item.role == .effect {
+            if layer.item.role != nil {
                 scene = layer.item.applyAsLayer(to: scene, at: timelineTime).cropped(to: outputRect)
                 continue
             }

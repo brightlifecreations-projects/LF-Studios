@@ -40,7 +40,7 @@ the first unticked box.
 - [x] B8 Text tab: templates and styles, hover preview, drag onto timeline
 - [x] B9 Effects tab: Core Image effects with intensity, on a clip or as an effect clip
 - [x] B10 Transitions tab: dissolve, fade black/white, slide, push, wipe, zoom, blur, spin; duration; Apply to all
-- [ ] B11 Filters tab: own LUT looks with intensity
+- [x] B11 Filters tab: own LUT looks with intensity
 - [ ] B12 Adjustment tab: adjustment layer; full Adjust panel (HSL, curves, wheels, .cube import)
 - [ ] B13 Stickers and sound effects (own/CC0, LICENSES.md), Import sticker (PNG/GIF)
 - [ ] B14 Captions tab: auto captions, style templates, SRT import/export
@@ -141,3 +141,12 @@ the first unticked box.
   main track is locked. Library tab with a Length (Settings.
   videoTransitionLength) and hover previews; VideoTransitionPicker grid
   replaces the segmented control in Style and the clip inspector.
+- B11: VideoFilterLook ×16 (our formulas baked into 32³ CIColorCube LUTs,
+  cached), VideoAppliedFilter (look or imported .cube path + name,
+  intensity). `filter` on a media/text clip, or on an adjustment clip
+  (role .adjustment, VideoLayerItem.adjustmentClip) = a filter clip; the
+  clip's keyed .intensity mixes the result with what's under it.
+  `.edit(.setFilter)`, `addFilter` (+ → on the selected clip; drop → filter
+  clip). Import .cube: VideoColorCube.parse (3D, DOMAIN_MIN/MAX), copied to
+  VideoAssetStore, in assetPaths and project packaging (.data).
+  VideoAdjustmentClipSection is a stub for B12's Adjust panel.

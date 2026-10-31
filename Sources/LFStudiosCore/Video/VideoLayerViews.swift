@@ -20,6 +20,8 @@ struct VideoLayerItemEditor: View {
         }
         if item.role == .effect {
             VideoEffectClipSection(model: model, editor: self, item: item)
+        } else if item.role == .adjustment {
+            VideoAdjustmentClipSection(model: model, editor: self, item: item)
         } else {
             mediaSections
         }
@@ -78,6 +80,8 @@ struct VideoLayerItemEditor: View {
         VideoAnimationSection(model: model, item: item)
 
         VideoMotionTrackingSection(model: model, item: item)
+
+        VideoFilterSection(model: model, item: item)
 
         VideoItemEffectsSection(model: model, item: item)
 

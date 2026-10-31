@@ -230,8 +230,15 @@ extension VideoLayerItem {
     /// What the effect clip does to `scene` at timeline `time` (its
     /// strength keyed with ◆).
     func applyAsLayer(to scene: CIImage, at time: Double) -> CIImage {
-        guard enabled, role == .effect, let effects else { return scene }
+        guard enabled else { return scene }
         let strength = value(.intensity, at: time)
+        if role == .adjustment {
+            var adjusted = scene
+            if let filter { adjusted = VideoFilterRenderer.apply(filter, to: adjusted) }
+            guard strength < 0.999 else { return adjusted }
+            return adjusted.applyingFilter("CIDissolveTransition", parameters: [kCIInputImageKey: scene, kCIInputTargetImageKey: adjusted, kCIInputTimeKey: max(strength, 0)]).cropped(to: scene.extent)
+        }
+        guard role == .effect, let effects else { return scene }
         let local = time - at
         return effects.reduce(scene) { VideoEffectRenderer.apply($1.kind, to: $0, intensity: $1.intensity * strength, time: local) }
     }

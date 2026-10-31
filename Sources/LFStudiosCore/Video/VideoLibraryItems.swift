@@ -69,6 +69,10 @@ extension VideoEditorModel {
                 model.setTransition(into: cut, kind: kind, duration: Settings.videoTransitionLength)
                 return true
             },
+            LibraryHandler(kind: "filter") { model, id, time, place in
+                guard let look = VideoFilterLook(rawValue: id) else { return false }
+                return model.addFilter(VideoAppliedFilter(look: look), at: time, place: place, onSelection: time == nil)
+            },
             LibraryHandler(kind: "effect") { model, id, time, place in
                 guard let kind = VideoEffectKind(rawValue: id) else { return false }
                 // Dropped somewhere: an effect clip there; + : on the selection.

@@ -309,6 +309,9 @@ struct VideoProjectContents {
             for i in project.layerTracks[t].items.indices where project.layerTracks[t].items[i].hasFile {
                 map(&project.layerTracks[t].items[i].path, project.layerTracks[t].items[i].kind.projectKind)
             }
+            for i in project.layerTracks[t].items.indices where project.layerTracks[t].items[i].filter?.cubePath != nil {
+                map(&project.layerTracks[t].items[i].filter!.cubePath!, .data)
+            }
         }
         // The Library's imported media (VideoMediaBin.swift).
         if project.mediaBin != nil { project.mediaBin!.mapPaths { path, kind in transform(path, kind) } }

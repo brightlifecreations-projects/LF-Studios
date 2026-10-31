@@ -68,6 +68,8 @@ struct VideoLayerItem: Codable, Equatable, Identifiable {
     var role: VideoLayerRole?
     /// Effects on its own picture, or (an effect clip) on what's under it.
     var effects: [VideoAppliedEffect]?
+    /// A filter on its picture, or (an adjustment clip) on what's under it.
+    var filter: VideoAppliedFilter?
 
     var intensity: Double {
         get { level ?? 1 }
@@ -463,6 +465,7 @@ enum VideoLayerRenderer {
             let shown = media.extent
             media = media.transformed(by: CGAffineTransform(a: -1, b: 0, c: 0, d: 1, tx: shown.minX + shown.maxX, ty: 0))
         }
+        if let filter = item.filter { media = VideoFilterRenderer.apply(filter, to: media) }
         if let effects = item.effects, !effects.isEmpty { media = VideoEffectRenderer.apply(effects, to: media, time: time - item.at) }
         if let mask = item.mask { media = mask.apply(to: media) }
         return VideoImageOverlayRenderer.placed(media, in: item.rect(in: outputSize), opacity: min(max(item.opacity, 0), 1), rotation: item.rotation)
@@ -491,6 +494,6 @@ enum VideoLayerStills {
 extension VideoLayerItem {
     /// Uses something only 1.15.0 shows.
     var needsFormat4: Bool {
-        (keys.map { !$0.isEmpty } ?? false) || mask != nil || level != nil || blend != nil || removesBackground != nil || chroma != nil || text != nil || tracking != nil || role != nil || effects != nil || animation != nil || keepsPitch != nil || soundFadeIn != nil || soundFadeOut != nil || speed < 0.25 - 0.000_1 || speed > 4 + 0.000_1
+        (keys.map { !$0.isEmpty } ?? false) || mask != nil || level != nil || blend != nil || removesBackground != nil || chroma != nil || text != nil || tracking != nil || role != nil || effects != nil || filter != nil || animation != nil || keepsPitch != nil || soundFadeIn != nil || soundFadeOut != nil || speed < 0.25 - 0.000_1 || speed > 4 + 0.000_1
     }
 }
