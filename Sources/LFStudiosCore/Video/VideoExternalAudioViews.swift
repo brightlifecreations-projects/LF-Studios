@@ -58,6 +58,18 @@ private struct VideoExternalAudioBlock: View {
                         .padding(.horizontal, 8)
                 }
             }
+            // Detected beats (1.15.0): ticks along the bottom.
+            .overlay(alignment: .bottomLeading) {
+                if let beats = track.beats {
+                    ZStack(alignment: .bottomLeading) {
+                        ForEach(beats.filter { $0 >= piece.fileStart && $0 <= piece.fileStart + piece.fileLength }, id: \.self) { beat in
+                            Rectangle().fill(VideoEditorTheme.laneText(0.9)).frame(width: 1.5, height: 6)
+                                .offset(x: CGFloat((beat - piece.fileStart) / piece.speed) * geometry.pointsPerSecond - leading)
+                        }
+                    }
+                    .allowsHitTesting(false)
+                }
+            }
             .overlay(alignment: .leading) { edge(leading: true) }
             .overlay(alignment: .trailing) { edge(leading: false) }
             .frame(width: max(width - leading + trailing, 6), height: VideoTimelineMetrics.musicLaneHeight)
@@ -182,12 +194,16 @@ struct VideoExternalAudioSection: View {
             }
             VideoSliderRow(
                 title: L("Volume"),
-                value: Binding(get: { track.volume }, set: { value in model.setAudioTrack(track.id) { $0.volume = value } }),
+                value: Binding(get: { track.volumeKeys?.isAnimated(.volume) == true ? (model.fileTime(ofSound: track.id, atTimeline: model.clock.time).map { track.volumeKeys!.value(.volume, at: $0, base: track.volume) } ?? track.volume) : track.volume },
+                               set: { value in model.perform(.audio(.setVolume(track.id, value))) }),
                 range: VideoExternalAudioTrack.volumeRange,
                 defaultValue: 1,
                 format: { VideoEditorModel.formatPercent($0) },
+                detail: track.volumeKeys?.isAnimated(.volume) == true ? L("Keyed: a change adds a keyframe at the playhead") : nil,
                 onEditingEnded: { model.endGesture() }
             )
+            // Volume ◆, Normalize, Detect beats (1.15.0).
+            VideoSoundTools(model: model, target: .sound(track.id))
             HStack(spacing: 12) {
                 VideoSliderRow(
                     title: L("Fade in"),

@@ -20,6 +20,8 @@ enum VideoItemEdit: Equatable {
     case setAnimation(VideoItemAnimation?)
     case setSpeed(Double)
     case setKeepPitch(Bool)
+    case setSoundFades(Double, Double)
+    case normalize
 
     var name: String {
         switch self {
@@ -32,6 +34,8 @@ enum VideoItemEdit: Equatable {
         case .setMask(let m): return "setMask.\(m?.shape.rawValue ?? "none")"
         case .setSpeed(let s): return "setSpeed.\(s)"
         case .setKeepPitch(let on): return "setKeepPitch.\(on)"
+        case .setSoundFades(let a, let b): return "setSoundFades.\(a).\(b)"
+        case .normalize: return "normalize"
         case .setAnimation(let a): return "setAnimation.\(a?.inPreset?.rawValue ?? "-").\(a?.outPreset?.rawValue ?? "-").\(a?.combo?.rawValue ?? "-")"
         }
     }
@@ -48,6 +52,8 @@ enum VideoItemEdit: Equatable {
         case .setAnimation: return L("Animation")
         case .setSpeed: return L("Speed")
         case .setKeepPitch: return L("Keep pitch")
+        case .setSoundFades: return L("Fade")
+        case .normalize: return L("Normalize loudness")
         }
     }
 }
@@ -90,6 +96,23 @@ extension VideoEditorModel {
         case .setKeepPitch(let on):
             guard item.isVideo else { return false }
             setLayerItem(item.id, label: on ? "Keep Pitch" : "Change Pitch") { $0.keepsPitch = on ? nil : false }
+        case .setSoundFades(let fadeIn, let fadeOut):
+            guard item.isVideo else { return false }
+            setLayerItem(item.id, coalesce: "sound-fades-\(item.id)", label: "Audio Track Change") { item in
+                item.soundFadeIn = fadeIn > 0.01 ? min(fadeIn, 10) : nil
+                item.soundFadeOut = fadeOut > 0.01 ? min(fadeOut, 10) : nil
+            }
+        case .normalize:
+            guard item.isVideo else { return false }
+            let url = URL(fileURLWithPath: item.path), id = item.id
+            Task {
+                let volume = await Task.detached(priority: .userInitiated) { VideoAudioAnalysis.normalizedVolume(url) }.value
+                guard let volume else {
+                    showNotice(L("It's silent: nothing to normalize"), symbol: "speaker.slash")
+                    return
+                }
+                setLayerItem(id, label: "Normalize Loudness") { $0.volume = volume }
+            }
         case .setAnimation(let animation):
             setLayerItem(item.id, coalesce: "animation-\(item.id)", label: "Animation") { $0.animation = animation?.isEmpty == true ? nil : animation }
         }

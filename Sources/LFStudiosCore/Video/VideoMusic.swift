@@ -39,8 +39,11 @@ struct VideoMusicTrack: Codable, Equatable {
     /// The part of the song that plays (and loops).
     var playableLength: Double { max(duration - min(max(startOffset, 0), duration), 0) }
 
+    /// Detect beats (1.15.0): the song's beats, in its own seconds.
+    var beats: [Double]?
+
     private enum CodingKeys: String, CodingKey {
-        case path, name, duration, volume, fadeIn, fadeOut, loops, startOffset, ducking, duckLevel
+        case path, name, duration, volume, fadeIn, fadeOut, loops, startOffset, ducking, duckLevel, beats
     }
 
     init(from decoder: Decoder) throws {
@@ -55,6 +58,7 @@ struct VideoMusicTrack: Codable, Equatable {
         startOffset = try c.decodeIfPresent(Double.self, forKey: .startOffset) ?? 0
         ducking = try c.decodeIfPresent(Bool.self, forKey: .ducking) ?? true
         duckLevel = try c.decodeIfPresent(Double.self, forKey: .duckLevel) ?? 0.3
+        beats = (try? c.decodeIfPresent([Double].self, forKey: .beats)).flatMap { $0 }
     }
 }
 
@@ -549,6 +553,8 @@ struct VideoMusicSection: View {
                         .foregroundStyle(Color.orange)
                         .fixedSize(horizontal: false, vertical: true)
                 }
+                // Normalize and Detect beats (1.15.0).
+                VideoSoundTools(model: model, target: .music)
                 VideoSliderRow(
                     title: L("Volume"),
                     value: Binding(get: { music.volume }, set: { value in model.updateMusic(coalesce: "music-volume") { $0.volume = value } }),
@@ -671,6 +677,17 @@ struct VideoMusicLane: View, Equatable {
                     if index == 0 { line.move(to: point) } else { line.addLine(to: point) }
                 }
                 inner.stroke(line, with: .color(VideoEditorTheme.laneText(0.85)), lineWidth: 1.2)
+            }
+            // Detected beats (1.15.0): ticks along the bottom.
+            if let beats = music.beats {
+                var ticks = Path()
+                for beat in beats {
+                    for piece in pieces where beat >= piece.fileStart && beat <= piece.fileStart + piece.length {
+                        let x = geometry.x(piece.start + beat - piece.fileStart)
+                        ticks.addRect(CGRect(x: x - 0.75, y: size.height - 7, width: 1.5, height: 6))
+                    }
+                }
+                inner.fill(ticks, with: .color(VideoEditorTheme.laneText(0.9)))
             }
             if frame.width > 60 {
                 inner.draw(

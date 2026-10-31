@@ -147,6 +147,24 @@ struct VideoLayerItemEditor: View {
             VideoInspectorSection(L("Sound")) {
                 VideoToggleRow(title: L("Mute this clip"), isOn: Binding(get: { item.muted }, set: { muted in model.setLayerItem(item.id, label: muted ? "Mute Clip" : "Unmute Clip") { $0.muted = muted } }))
                 keyed(L("Volume"), .volume, range: 0...200, scale: 100, defaultValue: 100, format: Self.percent)
+                HStack(spacing: 12) {
+                    VideoSliderRow(title: L("Fade in"), value: Binding(get: { item.soundFadeIn ?? 0 }, set: { value in
+                        model.selection = .layer(item.id)
+                        model.perform(.edit(.setSoundFades((value * 10).rounded() / 10, item.soundFadeOut ?? 0)))
+                    }), range: 0...5, defaultValue: 0, format: { VideoEditorModel.format($0) }, onEditingEnded: { model.endGesture() })
+                    VideoSliderRow(title: L("Fade out"), value: Binding(get: { item.soundFadeOut ?? 0 }, set: { value in
+                        model.selection = .layer(item.id)
+                        model.perform(.edit(.setSoundFades(item.soundFadeIn ?? 0, (value * 10).rounded() / 10)))
+                    }), range: 0...5, defaultValue: 0, format: { VideoEditorModel.format($0) }, onEditingEnded: { model.endGesture() })
+                }
+                Button {
+                    model.selection = .layer(item.id)
+                    model.perform(.edit(.normalize))
+                } label: {
+                    Label(L("Normalize"), systemImage: "waveform.badge.checkmark").frame(maxWidth: .infinity)
+                }
+                .buttonStyle(VideoSecondaryButtonStyle())
+                .help(L("Sets the volume so it's as loud as video sites expect (−16 LUFS)"))
             }
             VideoInspectorSection(L("Speed")) {
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 6), count: 5), spacing: 6) {

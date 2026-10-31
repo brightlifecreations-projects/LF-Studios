@@ -57,6 +57,9 @@ struct VideoLayerItem: Codable, Equatable, Identifiable {
     var animation: VideoItemAnimation?
     /// Keep pitch off: faster sounds higher (nil: kept).
     var keepsPitch: Bool?
+    /// A video's sound fading in and out at its ends (seconds).
+    var soundFadeIn: Double?
+    var soundFadeOut: Double?
 
     var intensity: Double {
         get { level ?? 1 }
@@ -192,6 +195,7 @@ extension VideoDemoProject {
     /// What only 1.15.0 and later can show: written as project format 4.
     var needsFormat4: Bool {
         layerTracks.contains { $0.items.contains { $0.needsFormat4 } } || timelineClips.contains { $0.needsFormat4 }
+            || audioTracks.contains { $0.volumeKeys != nil || $0.beats != nil } || music?.beats != nil
     }
 
     /// What only 1.14.0 and later can show: written as project format 3.
@@ -343,6 +347,18 @@ struct VideoLayerInput {
                     }
                 }
             }
+            // Fades at its ends (volume keys, when it has them, do the
+            // shaping instead: ramps can't overlap).
+            let fadeIn = keys.isEmpty ? min(item.soundFadeIn ?? 0, item.length / 2) : 0
+            let fadeOut = keys.isEmpty ? min(item.soundFadeOut ?? 0, item.length / 2) : 0
+            if fadeIn > 0.01, item.at >= 0 {
+                params.setVolumeRamp(fromStartVolume: 0, toEndVolume: level(item.value(.volume, at: item.at + fadeIn)),
+                                     timeRange: CMTimeRange(start: VideoCompositionBuilder.time(item.at), duration: VideoCompositionBuilder.time(fadeIn)))
+            }
+            if fadeOut > 0.01, item.end - fadeOut >= 0 {
+                params.setVolumeRamp(fromStartVolume: level(item.value(.volume, at: item.end - fadeOut)), toEndVolume: 0,
+                                     timeRange: CMTimeRange(start: VideoCompositionBuilder.time(item.end - fadeOut), duration: VideoCompositionBuilder.time(fadeOut)))
+            }
             params.setVolume(0, at: VideoCompositionBuilder.time(max(item.end, 0)))
         }
     }
@@ -462,6 +478,6 @@ enum VideoLayerStills {
 extension VideoLayerItem {
     /// Uses something only 1.15.0 shows.
     var needsFormat4: Bool {
-        (keys.map { !$0.isEmpty } ?? false) || mask != nil || level != nil || blend != nil || removesBackground != nil || chroma != nil || animation != nil || keepsPitch != nil || speed < 0.25 - 0.000_1 || speed > 4 + 0.000_1
+        (keys.map { !$0.isEmpty } ?? false) || mask != nil || level != nil || blend != nil || removesBackground != nil || chroma != nil || animation != nil || keepsPitch != nil || soundFadeIn != nil || soundFadeOut != nil || speed < 0.25 - 0.000_1 || speed > 4 + 0.000_1
     }
 }

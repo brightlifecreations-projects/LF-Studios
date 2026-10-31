@@ -53,6 +53,8 @@ enum VideoEditCommand: Equatable, CaseIterable, Identifiable {
     case edit(VideoItemEdit)
     /// An edit of the main track's clip (selected, or under the playhead).
     case clip(VideoClipEdit)
+    /// A sound's volume keys, loudness, beats.
+    case audio(VideoAudioEdit)
 
     /// The commands without values (keys, menus, the command palette).
     static let allCases: [VideoEditCommand] = [
@@ -66,6 +68,7 @@ enum VideoEditCommand: Equatable, CaseIterable, Identifiable {
     var rawValue: String {
         if case .edit(let edit) = self { return "edit." + edit.name }
         if case .clip(let edit) = self { return "clip." + edit.name }
+        if case .audio(let edit) = self { return "audio." + edit.name }
         return String(describing: self)
     }
 
@@ -118,6 +121,7 @@ enum VideoEditCommand: Equatable, CaseIterable, Identifiable {
         case .nextKeyframe: return L("Next keyframe")
         case .edit(let edit): return edit.title
         case .clip(let edit): return edit.title
+        case .audio(let edit): return edit.title
         }
     }
 
@@ -161,7 +165,7 @@ enum VideoEditCommand: Equatable, CaseIterable, Identifiable {
         case .addKeyframe: return "diamond"
         case .previousKeyframe: return "chevron.left.to.line"
         case .nextKeyframe: return "chevron.right.to.line"
-        case .edit, .clip: return "slider.horizontal.3"
+        case .edit, .clip, .audio: return "slider.horizontal.3"
         }
     }
 
@@ -199,7 +203,7 @@ enum VideoEditCommand: Equatable, CaseIterable, Identifiable {
         case .addKeyframe: return "⌥K"
         case .previousKeyframe: return "⌥["
         case .nextKeyframe: return "⌥]"
-        case .addMarker, .freezeFrame, .reverse, .mirror, .rotate, .crop, .recordVoiceover, .edit, .clip: return ""
+        case .addMarker, .freezeFrame, .reverse, .mirror, .rotate, .crop, .recordVoiceover, .edit, .clip, .audio: return ""
         }
     }
 
@@ -355,6 +359,8 @@ extension VideoEditorModel {
         case .edit(let edit):
             return perform(edit)
         case .clip(let edit):
+            return perform(edit)
+        case .audio(let edit):
             return perform(edit)
         }
         return true

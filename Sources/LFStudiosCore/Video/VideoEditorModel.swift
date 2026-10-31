@@ -1470,6 +1470,8 @@ final class VideoEditorModel: ObservableObject {
             targets.append(item.at)
             targets.append(item.end)
         }
+        // Detect beats (1.15.0): clips land on the beat.
+        targets += beatTimes
         for marker in project.markers { if let time = timelineTime(forSource: marker.time) { targets.append(time) } }
         for segment in segments {
             targets.append(segment.timelineStart)

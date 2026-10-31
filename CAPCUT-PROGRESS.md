@@ -32,7 +32,7 @@ the first unticked box.
 - [x] A2 Video: transform, opacity, blend modes; Cutout (Remove background, Chroma key); Masks
 - [x] A3 Animation: In / Out / Combo presets with duration
 - [x] A4 Speed: Normal 0.1×–100× (keep pitch) and Curve presets + custom curve
-- [ ] A5 Audio: volume keyframes, fades, normalize, Detect beats
+- [x] A5 Audio: volume keyframes, fades, normalize, Detect beats
 - [ ] A6 Text on its own track: font, size, B/I/U, colour, stroke, background, shadow, spacing, alignment
 - [ ] A7 Motion tracking (Track button, Vision object tracking)
 
@@ -89,3 +89,8 @@ the first unticked box.
   per-input varispeed algorithm is honoured by the export reader (test
   VideoSpeedTests.testKeepPitchInTheExport); if not, keep-pitch-off moves to
   next update.
+- A5: `.audio(VideoAudioEdit)` (toggleVolumeKey/setVolume/normalize/
+  detectBeats/clearBeats) for sound files and music (VideoAudioTarget);
+  volume keys on sound files in file seconds; beats on sound files and music
+  (ticks on lanes, snap targets). Items above: `.edit(.setSoundFades)`,
+  `.edit(.normalize)`; volume keys there come from A1.
