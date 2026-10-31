@@ -316,7 +316,10 @@ final class VideoEditCommandsTests: XCTestCase {
         let model = try await makeModel()
         let writer = try VideoVoiceoverWriter(url: directory.appendingPathComponent("vo.m4a"))
         // A second of a quiet tone, as the microphone would hand it over.
-        let samples = (0..<48_000).map { Float(sin(Double($0) / 48_000 * 2 * .pi * 300) * 0.2) }
+        let samples: [Float] = (0..<48_000).map { index in
+            let phase: Double = Double(index) / 48_000 * 2 * Double.pi * 300
+            return Float(sin(phase) * 0.2)
+        }
         for chunk in stride(from: 0, to: samples.count, by: 4_800) { writer.append(Array(samples[chunk..<min(chunk + 4_800, samples.count)])) }
         XCTAssertEqual(writer.seconds, 1, accuracy: 0.001)
         let depth = model.undoDepth
