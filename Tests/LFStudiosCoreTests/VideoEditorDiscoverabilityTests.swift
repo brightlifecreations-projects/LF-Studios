@@ -75,8 +75,9 @@ final class VideoEditorDiscoverabilityTests: XCTestCase {
 
         let menu = NSMenu(title: "File")
         VideoEditorFileMenu.shared.addItems(to: menu)
-        // Projects first (VideoProjectFiles.swift), then exports and Creative Handoff.
-        XCTAssertEqual(menu.items.map(\.title), ["Open…", "Save Project", "Save Project As…", "", "Export Video…", "Creative Handoff…", "Save Subtitles (.srt)…", "Recent Exports"])
+        // Projects first (VideoProjectFiles.swift) and Import Media… (the
+        // Library), then exports and Creative Handoff.
+        XCTAssertEqual(menu.items.map(\.title), ["Open…", "Save Project", "Save Project As…", "Import Media…", "", "Export Video…", "Creative Handoff…", "Save Subtitles (.srt)…", "Recent Exports"])
         let recent = try XCTUnwrap(menu.items.last?.submenu)
         VideoEditorFileMenu.shared.menuNeedsUpdate(recent)
         XCTAssertTrue(recent.items.contains { $0.title == "rec (edited).mp4" })
