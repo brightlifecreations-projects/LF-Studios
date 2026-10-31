@@ -898,7 +898,9 @@ final class VideoFrameRenderer {
         // The tracks above the main track, lowest first: over the screen,
         // under the camera, pictures, captions and keys.
         for layer in plan.layers where layer.item.isShowing(at: timelineTime) {
-            if let image = VideoLayerRenderer.image(for: layer.item.resolved(at: timelineTime), frame: options.layerFrames[layer.track], outputSize: outputSize, time: timelineTime) {
+            let shown = layer.item.shown(at: timelineTime)
+            if var image = VideoLayerRenderer.image(for: shown.item, frame: options.layerFrames[layer.track], outputSize: outputSize, time: timelineTime) {
+                if shown.blur > 0.05 { image = image.applyingGaussianBlur(sigma: shown.blur * Double(outputSize.height) / 1080) }
                 scene = layer.item.blend?.composite(image, over: scene) ?? image.composited(over: scene)
             }
         }

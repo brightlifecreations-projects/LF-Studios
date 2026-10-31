@@ -53,6 +53,8 @@ struct VideoLayerItem: Codable, Equatable, Identifiable {
     /// Cutout: just the person (Vision), or a colour taken out.
     var removesBackground: Bool?
     var chroma: VideoChromaKey?
+    /// In, Out and Combo animations (VideoAnimations.swift).
+    var animation: VideoItemAnimation?
 
     var intensity: Double {
         get { level ?? 1 }
@@ -447,6 +449,6 @@ enum VideoLayerStills {
 extension VideoLayerItem {
     /// Uses something only 1.15.0 shows.
     var needsFormat4: Bool {
-        (keys.map { !$0.isEmpty } ?? false) || mask != nil || level != nil || blend != nil || removesBackground != nil || chroma != nil
+        (keys.map { !$0.isEmpty } ?? false) || mask != nil || level != nil || blend != nil || removesBackground != nil || chroma != nil || animation != nil
     }
 }

@@ -17,6 +17,7 @@ enum VideoItemEdit: Equatable {
     case setRemoveBackground(Bool)
     case setChromaKey(VideoChromaKey?)
     case setMask(VideoMask?)
+    case setAnimation(VideoItemAnimation?)
 
     var name: String {
         switch self {
@@ -27,6 +28,7 @@ enum VideoItemEdit: Equatable {
         case .setRemoveBackground(let on): return "setRemoveBackground.\(on)"
         case .setChromaKey(let c): return "setChromaKey.\(c == nil ? "off" : "on")"
         case .setMask(let m): return "setMask.\(m?.shape.rawValue ?? "none")"
+        case .setAnimation(let a): return "setAnimation.\(a?.inPreset?.rawValue ?? "-").\(a?.outPreset?.rawValue ?? "-").\(a?.combo?.rawValue ?? "-")"
         }
     }
 
@@ -39,6 +41,7 @@ enum VideoItemEdit: Equatable {
         case .setRemoveBackground: return L("Remove background")
         case .setChromaKey: return L("Chroma key")
         case .setMask: return L("Mask")
+        case .setAnimation: return L("Animation")
         }
     }
 }
@@ -75,6 +78,8 @@ extension VideoEditorModel {
                 }
                 if mask == nil { stored.removeKeys(VideoKeyProperty.group(.maskX)) }
             }
+        case .setAnimation(let animation):
+            setLayerItem(item.id, coalesce: "animation-\(item.id)", label: "Animation") { $0.animation = animation?.isEmpty == true ? nil : animation }
         }
         return true
     }

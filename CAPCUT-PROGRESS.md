@@ -30,7 +30,7 @@ the first unticked box.
 ## Part A: keyframes and clip properties
 - [x] A1 Keyframes (diamond buttons, marks on clips, prev/next, easing)
 - [x] A2 Video: transform, opacity, blend modes; Cutout (Remove background, Chroma key); Masks
-- [ ] A3 Animation: In / Out / Combo presets with duration
+- [x] A3 Animation: In / Out / Combo presets with duration
 - [ ] A4 Speed: Normal 0.1×–100× (keep pitch) and Curve presets + custom curve
 - [ ] A5 Audio: volume keyframes, fades, normalize, Detect beats
 - [ ] A6 Text on its own track: font, size, B/I/U, colour, stroke, background, shadow, spacing, alignment
@@ -77,3 +77,6 @@ the first unticked box.
   setChromaKey/setMask; add more cases there). Blend modes, chroma key (colour
   cube), remove background (Vision person segmentation, cached per frame),
   masks (linear, mirror, circle, rectangle; feather, invert, keyed).
+- A3: VideoItemAnimation (in/out presets ×10, combo ×5, lengths), applied
+  by `VideoLayerItem.shown(at:)` after keyframes (renderer uses it). Text
+  items (A6) must go through the same path.
