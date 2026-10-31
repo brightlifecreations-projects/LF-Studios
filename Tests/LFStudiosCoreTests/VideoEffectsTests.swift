@@ -116,4 +116,14 @@ final class VideoEffectsTests: XCTestCase {
         XCTAssertFalse(model.addEffect(.blur, at: nil))
         XCTAssertEqual(model.project.layerTracks, before)
     }
+
+    func testLibraryTilesRestUntilHovered() {
+        // A tile at rest is one picture made once (a grid ticking 15 times a
+        // second kept the CPU busy and the window never settled).
+        for kind in VideoEffectKind.allCases {
+            let first = VideoEffectPreview.still(kind)
+            XCTAssertNotNil(first, kind.rawValue)
+            XCTAssertTrue(first === VideoEffectPreview.still(kind), "\(kind.rawValue) is kept")
+        }
+    }
 }

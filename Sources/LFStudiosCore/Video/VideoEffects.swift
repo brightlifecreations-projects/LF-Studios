@@ -378,12 +378,33 @@ struct VideoEffectPreview: View {
     private static let context = CIContext(options: [.cacheIntermediates: false])
 
     var body: some View {
-        TimelineView(.periodic(from: .now, by: 1.0 / 15)) { timeline in
-            let time = hovering ? timeline.date.timeIntervalSinceReferenceDate.truncatingRemainder(dividingBy: 60) : 0.4
-            if let image = Self.render(kind, time: time) {
-                Image(decorative: image, scale: 1).resizable().aspectRatio(contentMode: .fill)
+        // Still until hovered: a grid of tiles ticking all the time costs a
+        // render each per frame (and never lets the window settle).
+        if hovering {
+            TimelineView(.periodic(from: .now, by: 1.0 / 15)) { timeline in
+                picture(Self.render(kind, time: timeline.date.timeIntervalSinceReferenceDate.truncatingRemainder(dividingBy: 60)))
             }
+        } else {
+            picture(Self.still(kind))
         }
+    }
+
+    @ViewBuilder
+    private func picture(_ image: CGImage?) -> some View {
+        if let image {
+            Image(decorative: image, scale: 1).resizable().aspectRatio(contentMode: .fill)
+        }
+    }
+
+    @MainActor private static var stills: [VideoEffectKind: CGImage] = [:]
+
+    /// The tile at rest, made once.
+    @MainActor
+    static func still(_ kind: VideoEffectKind) -> CGImage? {
+        if let image = stills[kind] { return image }
+        let image = render(kind, time: 0.4)
+        stills[kind] = image
+        return image
     }
 
     /// A sunset over hills: shapes and colours that show every effect.

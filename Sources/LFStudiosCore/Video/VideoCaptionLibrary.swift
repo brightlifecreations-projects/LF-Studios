@@ -215,15 +215,23 @@ struct VideoCaptionTemplatePreview: View {
     var body: some View {
         ZStack {
             LinearGradient(colors: [Color(red: 0.24, green: 0.3, blue: 0.46), Color(red: 0.42, green: 0.3, blue: 0.5)], startPoint: .topLeading, endPoint: .bottomTrailing)
-            TimelineView(.periodic(from: .now, by: 0.35)) { timeline in
-                let spoken = hovering ? Int(timeline.date.timeIntervalSinceReferenceDate / 0.35) % 3 : 1
-                if let image = Self.image(template, spoken: spoken) {
-                    Image(nsImage: image).resizable().aspectRatio(contentMode: .fit).padding(.horizontal, 6)
+            if hovering {
+                TimelineView(.periodic(from: .now, by: 0.35)) { timeline in
+                    line(spoken: Int(timeline.date.timeIntervalSinceReferenceDate / 0.35) % 3)
                 }
+            } else {
+                line(spoken: 1)
             }
             if selected {
                 Image(systemName: "checkmark.circle.fill").font(.system(size: 12)).foregroundStyle(.white).frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading).padding(4)
             }
+        }
+    }
+
+    @ViewBuilder
+    private func line(spoken: Int) -> some View {
+        if let image = Self.image(template, spoken: spoken) {
+            Image(nsImage: image).resizable().aspectRatio(contentMode: .fit).padding(.horizontal, 6)
         }
     }
 
