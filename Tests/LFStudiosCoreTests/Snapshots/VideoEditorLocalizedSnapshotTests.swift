@@ -225,7 +225,8 @@ final class VideoEditorLocalizedSnapshotTests: XCTestCase {
             let english = Set(["Export…", "Split at Playhead", "Keyboard Shortcuts", "Go to Start", "Show Recording in Finder"])
             let titles = VideoCommandPalette(model: model).commands.map(\.title)
             XCTAssertTrue(english.isDisjoint(with: titles), "\(language): \(english.intersection(titles))")
-            XCTAssertEqual(Set(titles).count, titles.count, "\(language): two commands share a title")
+            let shared = Dictionary(grouping: titles, by: { $0 }).filter { $0.value.count > 1 }.keys.sorted()
+            XCTAssertEqual(shared, [], "\(language): two commands share a title")
         }
     }
 

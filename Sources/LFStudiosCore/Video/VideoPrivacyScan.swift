@@ -259,7 +259,7 @@ enum VideoPrivacyTracker {
                 for (index, track) in open.enumerated() where !taken.contains(index) && track.kind == find.kind && track.key == key {
                     guard let last = track.keys.last, last.time < time else { continue }
                     let distance = hypot(last.box.center.x - find.box.center.x, last.box.center.y - find.box.center.y)
-                    if distance < reach, distance < (best?.distance ?? .infinity) { best = (index, distance) }
+                    if distance < reach, distance < (best?.distance ?? .infinity) { best = (index, Double(distance)) }
                 }
                 if let best {
                     open[best.index].keys.append(.init(time: time, box: find.box))
