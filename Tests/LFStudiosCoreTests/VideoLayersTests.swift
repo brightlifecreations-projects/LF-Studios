@@ -234,6 +234,26 @@ final class VideoLayersTests: XCTestCase {
         XCTAssertTrue(premiere.contains("<name>logo.png</name>"))
     }
 
+    func testNewItemsStartInsideTheFrame() {
+        let canvas = CGSize(width: 1920, height: 1080)
+        func shown(_ item: VideoLayerItem) -> CGSize {
+            let rect = item.rect(in: canvas)
+            return CGSize(width: rect.width / canvas.width, height: rect.height / canvas.height)
+        }
+        // A wide video fills the width; a square one fits the height.
+        XCTAssertEqual(shown(.make(kind: .video, path: "/v", name: "v", at: 0, length: 1, fileDuration: 1, aspect: 16.0 / 9, canvas: canvas)).width, 1, accuracy: 0.001)
+        let square = shown(.make(kind: .video, path: "/v", name: "v", at: 0, length: 1, fileDuration: 1, aspect: 1, canvas: canvas))
+        XCTAssertEqual(square.height, 1, accuracy: 0.001)
+        XCTAssertLessThan(square.width, 1)
+        // A picture: within 40% of the frame both ways.
+        for aspect in [0.5, 1, 2, 4] {
+            let picture = shown(.make(kind: .image, path: "/p", name: "p", at: 0, length: 5, fileDuration: 0, aspect: aspect, canvas: canvas))
+            XCTAssertLessThanOrEqual(picture.width, 0.4001)
+            XCTAssertLessThanOrEqual(picture.height, 0.4001)
+            XCTAssertEqual(max(picture.width, picture.height), 0.4, accuracy: 0.001, "\(aspect)")
+        }
+    }
+
     // MARK: Editing
 
     func testMovingTrimmingAndSplitting() {

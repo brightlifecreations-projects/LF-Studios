@@ -78,8 +78,12 @@ struct VideoLayerItem: Codable, Equatable, Identifiable {
         var item = VideoLayerItem(kind: kind, path: path, name: name, at: max(at, 0), length: max(length, minimumLength), fileDuration: fileDuration, aspect: max(aspect, 0.01))
         // Fits inside the frame: as wide as it can be, or as tall.
         let canvasAspect = Double(canvas.width / max(canvas.height, 1))
-        let fit = min(1, canvasAspect / max(aspect, 0.01))
-        item.width = kind == .video ? fit : min(0.5, fit)
+        // The widest it can be with its height inside the frame (width is a
+        // share of the frame's width; its height then takes width × frame
+        // aspect ÷ its aspect of the frame's height).
+        let fit = min(1, max(aspect, 0.01) / canvasAspect)
+        // A picture starts within 40% of the frame both ways (a logo, not a wall).
+        item.width = kind == .video ? fit : 0.4 * fit
         return item
     }
 }

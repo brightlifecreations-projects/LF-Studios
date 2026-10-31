@@ -582,7 +582,7 @@ struct VideoShortcutsChangedNotice: View {
 
     /// Someone who edited a video before this launch (a draft older than
     /// it): only they had the old keys to unlearn.
-    static let editedBefore: Bool = {
+    static var editedBefore: Bool = {
         let start = NSRunningApplication.current.launchDate ?? Date()
         let drafts = (try? FileManager.default.contentsOfDirectory(at: VideoDemoDraftStore.directory(), includingPropertiesForKeys: [.contentModificationDateKey])) ?? []
         return drafts.contains { url in

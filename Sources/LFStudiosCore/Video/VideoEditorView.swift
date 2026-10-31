@@ -75,7 +75,8 @@ struct VideoEditorRootView: View {
                 VideoGenerationPill(model: model)
                 VideoVoiceoverPill(model: model)
             }
-            .padding(.top, 80)
+            // Under a notice that's showing, not on it.
+            .padding(.top, model.notice != nil && !model.isExportPresented ? 132 : 80)
             if let notice = model.notice, !model.isExportPresented {
                 VideoNoticePill(notice: notice)
                     .padding(.top, model.isCropping ? 12 : 80)
