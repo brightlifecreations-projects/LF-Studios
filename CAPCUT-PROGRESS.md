@@ -44,7 +44,7 @@ the first unticked box.
 - [x] B12 Adjustment tab: adjustment layer; full Adjust panel (HSL, curves, wheels, .cube import)
 - [x] B13 Stickers and sound effects (own/CC0, LICENSES.md), Import sticker (PNG/GIF)
 - [x] B14 Captions tab: auto captions, style templates, SRT import/export
-- [ ] B15 Show Stickers/Effects/Filters/Adjustment tabs; favourites and search in every tab
+- [x] B15 Show Stickers/Effects/Filters/Adjustment tabs; favourites and search in every tab
 
 ## Part C: pro tools and export
 - [ ] C16 Keyboard shortcuts editor with presets, conflicts, reset
@@ -173,3 +173,9 @@ the first unticked box.
   step "Import Captions"), Export .srt (existing), 12 caption templates
   (VideoCaptionTemplate: look + macOS font + highlight + animation + size +
   position, one step "Caption Style"), previews by the real renderer.
+- B15: VideoLibraryTab in CapCut order (media, audio, text, stickers,
+  effects, transitions, captions, filters, adjustment) on an adaptive grid
+  (two rows when narrow). Every non-media tab is on VideoLibraryGrid
+  (search + favourites); Media/Your sounds keep their search and gain a
+  favourites filter + stars (payload "media/<path>"). Library snapshots need
+  re-recording in the final pass.

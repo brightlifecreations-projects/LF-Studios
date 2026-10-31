@@ -3,18 +3,19 @@ import SwiftUI
 
 // MARK: - The Library panel (1.13.0)
 
-/// The editor's top-left panel: the project's media, its sound, and the
-/// way to text, captions and transitions.
+/// The editor's top-left panel: the project's media and sound, and (1.15.0)
+/// text, stickers, effects, transitions, captions, filters and adjustments
+/// to drag onto the timeline.
 enum VideoLibraryTab: String, CaseIterable, Identifiable {
     case media
     case audio
     case text
     case stickers
     case effects
+    case transitions
+    case captions
     case filters
     case adjustment
-    case captions
-    case transitions
 
     var id: String { rawValue }
     var title: String {
@@ -50,27 +51,28 @@ struct VideoLibraryPanel: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            // Five tabs share the width (no scrolling to find one).
-            HStack(spacing: 2) {
+            // Nine tabs in rows that share the width (no scrolling to find one).
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: 54), spacing: 2)], spacing: 2) {
                     ForEach(VideoLibraryTab.allCases) { tab in
                         Button {
                             model.libraryTab = tab
                         } label: {
-                            VStack(spacing: 3) {
+                            VStack(spacing: 2) {
                                 Image(systemName: tab.symbol)
-                                    .font(.system(size: 13, weight: .semibold))
+                                    .font(.system(size: 12.5, weight: .semibold))
                                 Text(tab.title)
-                                    .font(.system(size: 10.5, weight: .semibold))
+                                    .font(.system(size: 10, weight: .semibold))
                                     .lineLimit(1)
-                                    .minimumScaleFactor(0.75)
+                                    .minimumScaleFactor(0.7)
                             }
                             .frame(maxWidth: .infinity)
-                            .frame(height: 44)
+                            .frame(height: 36)
                             .foregroundStyle(model.libraryTab == tab ? VideoEditorTheme.textPrimary : VideoEditorTheme.textSecondary)
                             .background(RoundedRectangle(cornerRadius: 8, style: .continuous).fill(model.libraryTab == tab ? VideoEditorTheme.ink.opacity(0.08) : Color.clear))
                             .contentShape(Rectangle())
                         }
                         .buttonStyle(.plain)
+                        .help(tab.title)
                         .accessibilityLabel(tab.title)
                         .accessibilityAddTraits(model.libraryTab == tab ? .isSelected : [])
                     }

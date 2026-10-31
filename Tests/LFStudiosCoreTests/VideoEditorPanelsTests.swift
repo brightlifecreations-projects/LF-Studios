@@ -88,8 +88,12 @@ final class VideoEditorPanelsTests: XCTestCase {
     // MARK: The Library and the player
 
     func testTheLibraryShowsOnlyTabsWithSomethingInThem() {
-        XCTAssertEqual(VideoLibraryTab.allCases, [.media, .audio, .text, .captions, .transitions])
+        // CapCut's order (1.15.0): every tab has its own content.
+        XCTAssertEqual(VideoLibraryTab.allCases, [.media, .audio, .text, .stickers, .effects, .transitions, .captions, .filters, .adjustment])
         for tab in VideoLibraryTab.allCases { XCTAssertFalse(tab.title.isEmpty) }
+        // Every Library item kind has a handler (drag, + and double-click).
+        let kinds = Set(VideoEditorModel.libraryHandlers.map(\.kind))
+        XCTAssertEqual(kinds, ["text", "sticker", "effect", "transition", "caption", "filter", "adjustment", "sound"])
     }
 
     func testThePlayersZoom() {

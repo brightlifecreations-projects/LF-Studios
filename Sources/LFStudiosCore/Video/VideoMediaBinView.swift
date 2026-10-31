@@ -133,6 +133,7 @@ struct VideoMediaBinView: View {
     let kinds: Set<VideoMediaKind>
 
     @State private var query = ""
+    @State private var onlyFavourites = false
     @State private var folder: UUID?
     @State private var asList = Settings.videoMediaBinAsList
     @State private var sort = VideoMediaSort.remembered
@@ -146,10 +147,12 @@ struct VideoMediaBinView: View {
 
     var body: some View {
         let all = model.mediaEntries
-        let shown = VideoMediaArrangement.entries(all, kinds: kinds, folder: folder, flat: flat, query: query, sort: sort) { entry in
+        let arranged = VideoMediaArrangement.entries(all, kinds: kinds, folder: onlyFavourites ? nil : folder, flat: flat || onlyFavourites, query: query, sort: sort) { entry in
             entry.duration ?? durations[entry.path]
         }
-        let folders = flat || !query.isEmpty || folder != nil ? [] : (model.project.mediaBin?.folders ?? [])
+        // Favourites: starred files from every folder.
+        let shown = onlyFavourites ? arranged.filter { model.isFavourite(Self.payload($0)) } : arranged
+        let folders = flat || onlyFavourites || !query.isEmpty || folder != nil ? [] : (model.project.mediaBin?.folders ?? [])
         VStack(spacing: 0) {
             header(all: all)
             if let folder, query.isEmpty, !flat, let current = model.project.mediaBin?.folders.first(where: { $0.id == folder }) {
@@ -214,6 +217,19 @@ struct VideoMediaBinView: View {
             .padding(.horizontal, 8)
             .frame(height: 26)
             .background(RoundedRectangle(cornerRadius: 7, style: .continuous).fill(VideoEditorTheme.well))
+            Button {
+                onlyFavourites.toggle()
+            } label: {
+                Image(systemName: onlyFavourites ? "star.fill" : "star")
+                    .font(.system(size: 12, weight: .semibold))
+                    .foregroundStyle(onlyFavourites ? Color.yellow : VideoEditorTheme.textSecondary)
+                    .frame(width: 26, height: 26)
+                    .background(RoundedRectangle(cornerRadius: 7, style: .continuous).fill(VideoEditorTheme.card))
+            }
+            .buttonStyle(.plain)
+            .help(L("Show only favourites"))
+            .accessibilityLabel(L("Favourites"))
+            .accessibilityAddTraits(onlyFavourites ? .isSelected : [])
             if model.isExtractingAudio {
                 ProgressView().controlSize(.small).help(L("Extracting the sound…"))
             }
@@ -309,6 +325,11 @@ struct VideoMediaBinView: View {
 
     // MARK: Tiles and rows
 
+    /// A file's key among the favourites (kept for every project).
+    static func payload(_ entry: VideoMediaEntry) -> VideoLibraryPayload {
+        VideoLibraryPayload(kind: "media", id: entry.path)
+    }
+
     private func tile(_ entry: VideoMediaEntry) -> some View {
         VideoMediaTile(model: model, entry: entry, duration: entry.duration ?? durations[entry.path], selected: selected == entry.key) { length in
             durations[entry.path] = length
@@ -390,6 +411,7 @@ struct VideoMediaBinView: View {
     private func menu(_ entry: VideoMediaEntry) -> some View {
         Button(L("Add to Timeline")) { Task { await model.placeEntry(entry) } }
             .disabled(entry.isMissing)
+        Button(model.isFavourite(Self.payload(entry)) ? L("Remove from favourites") : L("Add to favourites")) { model.toggleFavourite(Self.payload(entry)) }
         if entry.kind == .video {
             Button(L("Extract Audio")) { Task { await model.extractAudio(entry) } }
                 .disabled(entry.isMissing || model.isExtractingAudio)
@@ -496,6 +518,19 @@ struct VideoMediaTile: View {
                                 .help(L("In the video"))
                         }
                         Spacer()
+                        let favourite = model.isFavourite(VideoMediaBinView.payload(entry))
+                        if hovering || favourite {
+                            Button { model.toggleFavourite(VideoMediaBinView.payload(entry)) } label: {
+                                Image(systemName: favourite ? "star.fill" : "star")
+                                    .font(.system(size: 10, weight: .bold))
+                                    .foregroundStyle(favourite ? Color.yellow : Color.white)
+                                    .shadow(color: .black.opacity(0.6), radius: 1.5)
+                                    .frame(width: 20, height: 20)
+                            }
+                            .buttonStyle(.plain)
+                            .help(favourite ? L("Remove from favourites") : L("Add to favourites"))
+                            .accessibilityLabel(favourite ? L("Remove from favourites") : L("Add to favourites"))
+                        }
                         if hovering, !entry.isMissing {
                             Button {
                                 Task { await model.placeEntry(entry) }
