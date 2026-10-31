@@ -98,6 +98,22 @@
 			<string>%lld Strichcodes gefunden</string>
 		</dict>
 	</dict>
+	<key>%lld beats marked — clips snap to them</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>one</key>
+			<string>%lld Beat markiert – Clips rasten daran ein</string>
+			<key>other</key>
+			<string>%lld Beats markiert – Clips rasten an ihnen ein</string>
+		</dict>
+	</dict>
 	<key>%lld camera layouts</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -224,6 +240,22 @@
 			<string>%lld E-Mail-Adresse</string>
 			<key>other</key>
 			<string>%lld E-Mail-Adressen</string>
+		</dict>
+	</dict>
+	<key>%lld keyframes. Change a setting with ◆ lit to add one at the playhead.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>one</key>
+			<string>%lld Keyframe. Ändere eine Einstellung mit leuchtendem ◆, um an der Abspielposition einen hinzuzufügen.</string>
+			<key>other</key>
+			<string>%lld Keyframes. Ändere eine Einstellung mit leuchtendem ◆, um an der Abspielposition einen hinzuzufügen.</string>
 		</dict>
 	</dict>
 	<key>%lld lines</key>
@@ -562,6 +594,22 @@
 			<string>Untertitel fertig – %lld Zeilen</string>
 		</dict>
 	</dict>
+	<key>Create proxies for %lld videos?</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>one</key>
+			<string>Proxy für %lld Video erstellen?</string>
+			<key>other</key>
+			<string>Proxys für %lld Videos erstellen?</string>
+		</dict>
+	</dict>
 	<key>Cut %lld words — ⌘Z to undo</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -688,6 +736,22 @@
 			<string>Verlauf belegt … (%lld Bildschirmfoto)</string>
 			<key>other</key>
 			<string>Verlauf belegt … (%lld Bildschirmfotos)</string>
+		</dict>
+	</dict>
+	<key>Imported %lld captions from “%@”</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>one</key>
+			<string>%lld Untertitel aus „%@“ importiert</string>
+			<key>other</key>
+			<string>%lld Untertitel aus „%@“ importiert</string>
 		</dict>
 	</dict>
 	<key>Imported %lld presets</key>
@@ -1280,6 +1344,22 @@
 			<string>• Exporte für die Zwischenablage, älter als ein Tag – %lld Datei, %@</string>
 			<key>other</key>
 			<string>• Exporte für die Zwischenablage, älter als ein Tag – %lld Dateien, %@</string>
+		</dict>
+	</dict>
+	<key>• Edit proxies — %lld files, %@ (Create Proxies makes them again)</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>one</key>
+			<string>• Proxys zum Bearbeiten – %lld Datei, %@ („Proxys erstellen“ erstellt sie neu)</string>
+			<key>other</key>
+			<string>• Proxys zum Bearbeiten – %lld Dateien, %@ („Proxys erstellen“ erstellt sie neu)</string>
 		</dict>
 	</dict>
 	<key>• Edits, recording details, and camera footage of %lld recordings LF Studios can't find (%@): %@</key>

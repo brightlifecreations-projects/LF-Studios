@@ -564,7 +564,7 @@ enum GuideContent {
                 steps: [
                     L("Move the playhead to where the thing first shows. Click Track."),
                     L("Drag the yellow box over it, and set Box size."),
-                    L("Click Start. The clip follows it to the clip's end."),
+                    L("Click Start tracking. The clip follows it to the clip's end."),
                 ],
                 tips: [
                     L("It works on this Mac: nothing is uploaded."),

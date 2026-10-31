@@ -226,7 +226,7 @@ struct VideoMotionTrackingSection: View {
                     Button(L("Stop")) { model.cancelMotionTracking() }
                         .buttonStyle(VideoSecondaryButtonStyle())
                 } else {
-                    Text(L("Drag the box on the player over what the clip should follow, then click Start. It follows from the playhead to the clip's end."))
+                    Text(L("Drag the box on the player over what the clip should follow, then click Start tracking. It follows from the playhead to the clip's end."))
                         .font(.system(size: 10.5))
                         .foregroundStyle(VideoEditorTheme.textTertiary)
                         .fixedSize(horizontal: false, vertical: true)
@@ -244,7 +244,7 @@ struct VideoMotionTrackingSection: View {
                             model.selection = .layer(item.id)
                             model.perform(.edit(.trackMotion(state.region)))
                         } label: {
-                            Label(L("Start"), systemImage: "scope").frame(maxWidth: .infinity)
+                            Label(L("Start tracking"), systemImage: "scope").frame(maxWidth: .infinity)
                         }
                         .buttonStyle(VideoSecondaryButtonStyle())
                     }

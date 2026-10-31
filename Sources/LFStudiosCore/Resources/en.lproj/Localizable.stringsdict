@@ -98,6 +98,22 @@
 			<string>%lld barcodes found</string>
 		</dict>
 	</dict>
+	<key>%lld beats marked — clips snap to them</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>one</key>
+			<string>%lld beat marked — clips snap to it</string>
+			<key>other</key>
+			<string>%lld beats marked — clips snap to them</string>
+		</dict>
+	</dict>
 	<key>%lld camera layouts</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -240,6 +256,22 @@
 			<string>%lld email address</string>
 			<key>other</key>
 			<string>%lld email addresses</string>
+		</dict>
+	</dict>
+	<key>%lld keyframes. Change a setting with ◆ lit to add one at the playhead.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>one</key>
+			<string>%lld keyframe. Change a setting with ◆ lit to add one at the playhead.</string>
+			<key>other</key>
+			<string>%lld keyframes. Change a setting with ◆ lit to add one at the playhead.</string>
 		</dict>
 	</dict>
 	<key>%lld lines</key>
@@ -562,6 +594,22 @@
 			<string>Captions ready — %lld lines</string>
 		</dict>
 	</dict>
+	<key>Create proxies for %lld videos?</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>one</key>
+			<string>Create a proxy for %lld video?</string>
+			<key>other</key>
+			<string>Create proxies for %lld videos?</string>
+		</dict>
+	</dict>
 	<key>Cut %lld words — ⌘Z to undo</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -688,6 +736,22 @@
 			<string>History uses … (%lld capture)</string>
 			<key>other</key>
 			<string>History uses … (%lld captures)</string>
+		</dict>
+	</dict>
+	<key>Imported %lld captions from “%@”</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>one</key>
+			<string>Imported %lld caption from “%@”</string>
+			<key>other</key>
+			<string>Imported %lld captions from “%@”</string>
 		</dict>
 	</dict>
 	<key>Imported %lld presets</key>
@@ -1264,6 +1328,22 @@
 			<string>• Clipboard exports older than a day — %lld file, %@</string>
 			<key>other</key>
 			<string>• Clipboard exports older than a day — %lld files, %@</string>
+		</dict>
+	</dict>
+	<key>• Edit proxies — %lld files, %@ (Create Proxies makes them again)</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>one</key>
+			<string>• Edit proxies — %lld file, %@ (Create Proxies makes it again)</string>
+			<key>other</key>
+			<string>• Edit proxies — %lld files, %@ (Create Proxies makes them again)</string>
 		</dict>
 	</dict>
 	<key>• Edits, recording details, and camera footage of %lld recordings LF Studios can't find (%@): %@</key>

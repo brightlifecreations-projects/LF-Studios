@@ -240,7 +240,7 @@ struct VideoProxyMenu: View {
                 } else {
                     Image(systemName: "film.stack")
                 }
-                Text(model.usesProxies ? L("Proxy") : L("Full"))
+                Text(model.usesProxies ? L("Proxy") : L("Originals"))
             }
             .font(.system(size: 11, weight: .semibold))
         }
