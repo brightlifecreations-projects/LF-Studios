@@ -189,6 +189,51 @@ final class VideoLayersTests: XCTestCase {
         XCTAssertThrowsError(try VideoProjectDocument.decode(later)) { XCTAssertEqual($0 as? VideoProjectDocument.ReadError, .needsNewerVersion) }
     }
 
+    func testHandoffAndTimelinesCarryTheTracks() throws {
+        let clip = directory.appendingPathComponent("b-roll.mov")
+        let logo = directory.appendingPathComponent("logo.png")
+        try Data("video".utf8).write(to: clip)
+        try VideoInspection.writePNG(to: logo, size: CGSize(width: 100, height: 100), color: .green)
+        var project = VideoDemoProject.make(sourceURL: URL(fileURLWithPath: "/tmp/handoff/Screen.mov"), duration: 10, sourceSize: CGSize(width: 1280, height: 720))
+        var video = item(.video, clip, at: 2, length: 3, fileDuration: 8, width: 0.5, x: 0.25)
+        video.fileStart = 1
+        var picture = item(.image, logo, at: 4, length: 2, width: 0.2)
+        picture.rotation = 15
+        project.layerTracks = [VideoLayerTrack(items: [video]), VideoLayerTrack(items: [picture])]
+        let screen = URL(fileURLWithPath: "/tmp/handoff/Screen.mov")
+        let recordings = [VideoHandoffRecording(id: UUID(), url: screen, name: "Screen.mov", offset: 0, duration: 10, size: CGSize(width: 1280, height: 720), frameRate: 30, audioKinds: [.mixed], camera: nil, metadata: nil)]
+        let input = VideoHandoffInput(name: "Demo", project: project, recordings: recordings, exportSettings: VideoExportSettings(), recording: nil)
+        let plan = VideoHandoffPlanner.plan(input, options: VideoHandoffOptions(), folderName: "x")
+        // The files, as they are, where they belong, saying where they play.
+        let videoItem = try XCTUnwrap(plan.items.first { $0.relativePath == "01 Screen/b-roll.mov" })
+        XCTAssertEqual(videoItem.work, .copy(clip))
+        XCTAssertTrue(videoItem.description.contains("Video 2 from 0:02"), videoItem.description)
+        let pictureItem = try XCTUnwrap(plan.items.first { $0.relativePath == "04 Graphics/logo.png" })
+        XCTAssertTrue(pictureItem.description.contains("Video 3"), pictureItem.description)
+        XCTAssertTrue(pictureItem.description.contains("turned 15°"), pictureItem.description)
+        // The handoff's own project points at the copies, and says 1.14.0.
+        let projectItem = try XCTUnwrap(plan.items.first { if case .project = $0.work { return true } else { return false } })
+        if case .project(let mapping) = projectItem.work {
+            XCTAssertEqual(mapping[clip.standardizedFileURL.path], "01 Screen/b-roll.mov")
+        }
+        XCTAssertTrue(projectItem.description.contains("1.14.0"), projectItem.description)
+
+        // On lanes above the screen in Final Cut and Premiere.
+        let folder = URL(fileURLWithPath: "/tmp/handoff/x")
+        let clips = VideoHandoffTimeline.clips(plan: plan, input: input)
+        let lanes = clips.filter { $0.file == "01 Screen/b-roll.mov" || $0.file == "04 Graphics/logo.png" }
+        XCTAssertEqual(lanes.count, 2)
+        XCTAssertTrue(lanes.allSatisfy { $0.lane >= 2 })
+        XCTAssertGreaterThan(lanes.first { $0.kind == .picture }?.lane ?? 0, lanes.first { $0.kind == .screen }?.lane ?? 0, "Video 3 above Video 2")
+        XCTAssertEqual(lanes.first { $0.kind == .screen }?.start ?? 0, 1, accuracy: 0.001, "from a second into it")
+        let fcp = VideoHandoffTimeline.fcpxml(plan: plan, input: input, folder: folder, durations: [:])
+        XCTAssertTrue(fcp.contains("name=\"b-roll.mov\" start=\"30/30s\" duration=\"90/30s\""), fcp)
+        XCTAssertTrue(fcp.contains("<video ref="), "the picture as a still")
+        let premiere = VideoHandoffTimeline.premiereXML(plan: plan, input: input, folder: folder, durations: [:])
+        XCTAssertTrue(premiere.contains("<name>b-roll.mov</name>"))
+        XCTAssertTrue(premiere.contains("<name>logo.png</name>"))
+    }
+
     // MARK: Editing
 
     func testMovingTrimmingAndSplitting() {

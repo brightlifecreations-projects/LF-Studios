@@ -545,6 +545,29 @@ enum VideoHandoffPlanner {
         if case .image(let path) = input.project.background {
             addGraphic(path, "The background picture")
         }
+        // The tracks above the main track (1.14.0): each file once, as it
+        // is (videos in 01 Screen, pictures here), with where it plays.
+        var layerNames: Set<String> = Set(items.filter { $0.folder == .screen }.map(\.fileName))
+        var layerCopied = Set<String>()
+        for (track, item) in input.project.layerItems {
+            let url = URL(fileURLWithPath: item.path)
+            guard FileManager.default.fileExists(atPath: item.path) else {
+                skipped.append(L("“\(item.name)” on Video \(track + 2) — the file is missing"))
+                continue
+            }
+            let place = VideoHandoffReadme.layerPlace(item, track: track)
+            if !layerCopied.insert(url.standardizedFileURL.path).inserted {
+                // Used again: its description gains the other place.
+                if let index = items.firstIndex(where: { if case .copy(let copied) = $0.work { return copied.standardizedFileURL.path == url.standardizedFileURL.path } else { return false } }) {
+                    items[index].description += "; and " + place
+                }
+                continue
+            }
+            let folder: VideoHandoffItem.Folder = item.isVideo ? .screen : .graphics
+            let name = item.isVideo ? unique(url.lastPathComponent, in: &layerNames) : unique(url.lastPathComponent, in: &graphicNames)
+            items.append(VideoHandoffItem(folder: folder, fileName: name, description: (item.isVideo ? "Video above the main track, " : "Picture above the main track, ") + place,
+                                          work: .copy(url), treatment: .original, duration: item.isVideo ? item.fileDuration : nil, frameRate: nil, startOffset: nil, estimatedBytes: fileSize(url)))
+        }
         if case .systemWallpaper(let path) = input.project.background {
             addGraphic(path, "The background picture (a macOS wallpaper)")
         }
@@ -667,7 +690,7 @@ enum VideoHandoffPlanner {
             mapping[original.url.standardizedFileURL.path] = item.relativePath
         }
         plan.items.append(VideoHandoffItem(folder: .root, fileName: "\(VideoRecordingFolder.safeName(input.name)).\(VideoProjectDocument.fileExtension)",
-                                           description: "The LF Studios project: open it, or this whole folder, in LF Studios (\(VideoProjectDocument.firstVersionOpeningFileExtension) or later) to edit the video again",
+                                           description: "The LF Studios project: open it, or this whole folder, in LF Studios (\(VideoProjectDocument.firstVersionOpening(input.project)) or later) to edit the video again",
                                            work: .project(mapping), treatment: .written, duration: nil, frameRate: nil, startOffset: nil, estimatedBytes: 500_000))
     }
 

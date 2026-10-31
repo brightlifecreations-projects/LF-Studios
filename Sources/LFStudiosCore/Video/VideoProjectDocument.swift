@@ -58,6 +58,14 @@ struct VideoProjectDocument: Codable {
     static let typeIdentifier = "com.lfstudios.lfs"
     /// The first version that opens a `.lfs` (what README.txt says).
     static let firstVersionOpeningFileExtension = "1.12.0"
+    /// The first version that opens a project with tracks above the main
+    /// track (`layersFormat`).
+    static let firstVersionOpeningLayers = "1.14.0"
+
+    /// What README.txt says opens `project`.
+    static func firstVersionOpening(_ project: VideoDemoProject) -> String {
+        project.needsLayerFormat ? firstVersionOpeningLayers : firstVersionOpeningFileExtension
+    }
     static let manifestName = "project.json"
     static let mediaFolder = "Media"
     static let fontsFolder = "Fonts"

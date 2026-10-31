@@ -1,5 +1,6 @@
 import AppKit
 import AVFoundation
+import CoreImage
 import XCTest
 @testable import LFStudiosCore
 
@@ -271,6 +272,44 @@ final class VideoEditCommandsTests: XCTestCase {
         XCTAssertEqual(model.timelineDuration, 4, accuracy: 0.1)
         let sound = try await AVURLAsset(url: URL(fileURLWithPath: reversed.path)).loadTracks(withMediaType: .audio)
         XCTAssertFalse(sound.isEmpty, "its sound comes along")
+    }
+
+    /// Saving, and waiting for it.
+    private func save(_ model: VideoEditorModel) async throws {
+        model.projectFileURL = directory.appendingPathComponent("Demo.lfs")
+        model.projectMediaMode = .linked
+        model.saveProject()
+        let deadline = Date().addingTimeInterval(20)
+        while model.isSavingProject, Date() < deadline { try await Task.sleep(nanoseconds: 50_000_000) }
+        XCTAssertFalse(model.isSavingProject)
+    }
+
+    func testUnusedMadeVideosGoWhenTheProjectIsSaved() async throws {
+        let model = try await makeModel()
+        model.seek(to: 1)
+        await model.freezeFrame()
+        let frozen = try XCTUnwrap(model.project.sources.last { VideoGeneratedMedia.isGenerated($0.path) })
+        // One nothing uses (left over from an edit long gone).
+        let orphan = try await VideoGeneratedMedia.stillVideo(CIImage(color: .red).cropped(to: CGRect(x: 0, y: 0, width: 64, height: 64)), size: CGSize(width: 64, height: 64), seconds: 1)
+        XCTAssertTrue(FileManager.default.fileExists(atPath: orphan.path))
+        try await save(model)
+        XCTAssertFalse(FileManager.default.fileExists(atPath: orphan.path), "nothing used it: gone")
+        XCTAssertTrue(FileManager.default.fileExists(atPath: frozen.path), "the freeze frame is in the video: kept")
+
+        // The freeze frame deleted: it leaves the project when it's saved…
+        let clip = try XCTUnwrap(model.segments.first { $0.clip.sourceStart >= frozen.offset - 0.001 })
+        model.deleteClip(clip.id)
+        try await save(model)
+        XCTAssertFalse(model.project.sources.contains { $0.id == frozen.id }, "no clip plays it: out of the project")
+        XCTAssertTrue(FileManager.default.fileExists(atPath: frozen.path), "⌘Z can still bring it back: kept")
+        // …and once nothing can bring it back (a fresh editor, no undo),
+        // its file goes on the next save.
+        let url = directory.appendingPathComponent("rec.mp4")
+        let reopened = VideoEditorModel(videoURL: url)
+        await reopened.load()
+        XCTAssertFalse(reopened.project.sources.contains { $0.id == frozen.id })
+        try await save(reopened)
+        XCTAssertFalse(FileManager.default.fileExists(atPath: frozen.path), "used nowhere: gone")
     }
 
     func testAVoiceoverBecomesATrackAtThePlayhead() async throws {

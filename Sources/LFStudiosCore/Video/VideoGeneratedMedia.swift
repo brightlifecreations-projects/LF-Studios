@@ -100,6 +100,39 @@ enum VideoGeneratedMedia {
     }
 }
 
+// MARK: - Removing the ones nothing uses
+
+extension VideoGeneratedMedia {
+    /// Every video LF Studios made that's still on disk.
+    static func all() -> [URL] {
+        ((try? FileManager.default.contentsOfDirectory(at: VideoAssetStore.folder, includingPropertiesForKeys: nil)) ?? [])
+            .filter { $0.lastPathComponent.hasPrefix(prefix) }
+    }
+
+    /// Removes the made videos nothing uses: not `inUse` (open editors,
+    /// their undo and redo, closed editors' kept history, queued exports),
+    /// and no saved draft names them. Returns what was removed.
+    @discardableResult
+    static func removeUnused(inUse: Set<String>, draftTexts: [String]) -> [URL] {
+        let kept = Set(inUse.map { URL(fileURLWithPath: $0).lastPathComponent })
+        var removed: [URL] = []
+        for url in all() {
+            let name = url.lastPathComponent
+            guard !kept.contains(name), !draftTexts.contains(where: { $0.contains(name) }) else { continue }
+            if (try? FileManager.default.removeItem(at: url)) != nil { removed.append(url) }
+        }
+        return removed
+    }
+
+    /// The saved drafts' text (each names the files its edit uses).
+    static func draftTexts() -> [String] {
+        let folder = VideoDemoDraftStore.directory()
+        return ((try? FileManager.default.contentsOfDirectory(at: folder, includingPropertiesForKeys: nil)) ?? [])
+            .filter { $0.pathExtension == "json" }
+            .compactMap { try? String(contentsOf: $0, encoding: .utf8) }
+    }
+}
+
 // MARK: - Reversed clips
 
 extension VideoGeneratedMedia {
@@ -365,6 +398,21 @@ extension VideoEditorModel {
             showNotice(L("Couldn't reverse it — \(error.localizedDescription)"), symbol: "exclamationmark.triangle.fill", duration: 5)
         }
         return nil
+    }
+
+    /// Made videos on the main track that no clip plays any more (a deleted
+    /// freeze frame, a reversed clip cut away) leave the project; one ⌘Z
+    /// brings them back. Their files go once nothing uses them.
+    func dropUnusedGeneratedSources() {
+        let unused = project.sources.filter { source in
+            !source.isPrimary && VideoGeneratedMedia.isGenerated(source.path)
+                && !project.timelineClips.contains { $0.sourceEnd > source.offset + 0.001 && $0.sourceStart < source.end - 0.001 }
+        }
+        guard !unused.isEmpty else { return }
+        mutate(label: "Remove Recording") { project in
+            for source in unused { _ = project.removeSource(id: source.id) }
+        }
+        Task { await reloadSources() }
     }
 
     private func renameLastSource(_ name: String) {

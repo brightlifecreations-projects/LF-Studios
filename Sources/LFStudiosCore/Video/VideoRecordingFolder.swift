@@ -445,7 +445,7 @@ enum VideoRecordingFolderWriter {
             "FILES",
             "",
             "\(name).\(VideoProjectDocument.fileExtension)",
-            "  The project: the whole edit, kept up to date as you edit. It opens in LF Studios \(VideoProjectDocument.firstVersionOpeningFileExtension) or later.",
+            "  The project: the whole edit, kept up to date as you edit. It opens in LF Studios \(VideoProjectDocument.firstVersionOpeningFileExtension) or later (\(VideoProjectDocument.firstVersionOpeningLayers) once it has tracks above the main track).",
             "",
             "\(VideoRecordingFolder.Layout.screen)/\(video.lastPathComponent)",
             "  The screen recording, untouched, with its sound tracks inside.",
