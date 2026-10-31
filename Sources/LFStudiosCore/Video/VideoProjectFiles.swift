@@ -146,6 +146,9 @@ enum VideoProjectOpener {
         let opened: VideoProjectPackage.Opened
         do {
             opened = try VideoProjectPackage.open(url)
+        } catch VideoProjectDocument.ReadError.needsNewerVersion {
+            showNeedsNewerVersion(name)
+            return
         } catch {
             showProblem(L("Couldn't open “\(name)”"), detail: L("It isn't an LF Studios project, or it's damaged."))
             return
@@ -160,6 +163,24 @@ enum VideoProjectOpener {
         VideoProjectRecents.add(opened.package)
         if opened.document.isFromNewerVersion {
             VideoDemoEditorWindowController.keyModel?.showNotice(L("Saved by a newer LF Studios — some settings may not show"), symbol: "exclamationmark.triangle.fill", duration: 5)
+        }
+    }
+
+    /// Saved by a newer LF Studios: the words, and Check for Updates.
+    static func newerVersionMessage(_ name: String) -> (title: String, detail: String) {
+        (L("This project needs a newer version of LF Studios"),
+         L("“\(name)” was saved by a newer LF Studios. Update LF Studios to open it."))
+    }
+
+    private static func showNeedsNewerVersion(_ name: String) {
+        let message = newerVersionMessage(name)
+        let alert = NSAlert()
+        alert.messageText = message.title
+        alert.informativeText = message.detail
+        alert.addButton(withTitle: L("Check for Updates"))
+        alert.addButton(withTitle: L("OK"))
+        if alert.runModal() == .alertFirstButtonReturn {
+            (NSApp.delegate as? AppDelegate)?.checkForUpdates(nil)
         }
     }
 

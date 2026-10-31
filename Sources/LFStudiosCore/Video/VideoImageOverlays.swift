@@ -18,6 +18,8 @@ struct VideoOverlayImage: Codable, Equatable {
     /// Width / height.
     var aspect: Double
     var opacity: Double = 1
+    /// Turned on the video, in degrees clockwise (nil: upright; 1.13.0).
+    var rotation: Double?
 
     init(path: String, name: String, aspect: Double, opacity: Double = 1) {
         self.path = path
@@ -26,7 +28,7 @@ struct VideoOverlayImage: Codable, Equatable {
         self.opacity = opacity
     }
 
-    private enum CodingKeys: String, CodingKey { case path, name, aspect, opacity }
+    private enum CodingKeys: String, CodingKey { case path, name, aspect, opacity, rotation }
 
     init(from decoder: Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
@@ -34,6 +36,16 @@ struct VideoOverlayImage: Codable, Equatable {
         name = try c.decodeIfPresent(String.self, forKey: .name) ?? URL(fileURLWithPath: path).lastPathComponent
         aspect = try c.decodeIfPresent(Double.self, forKey: .aspect) ?? 1
         opacity = try c.decodeIfPresent(Double.self, forKey: .opacity) ?? 1
+        rotation = (try? c.decodeIfPresent(Double.self, forKey: .rotation)).flatMap { $0 }
+    }
+
+    /// The turn, kept between -180 and 180 (0: upright).
+    var keptRotation: Double {
+        guard let rotation, rotation.isFinite else { return 0 }
+        var turn = rotation.truncatingRemainder(dividingBy: 360)
+        if turn > 180 { turn -= 360 }
+        if turn <= -180 { turn += 360 }
+        return turn
     }
 }
 
@@ -105,6 +117,8 @@ extension VideoDemoProject {
         var paths = Set(overlayEffects.compactMap { $0.image?.path })
         if let music { paths.insert(music.path) }
         paths.formUnion(audioTracks.map(\.path))
+        // Sound taken out of a video lives in the store too.
+        if let mediaBin { paths.formUnion(mediaBin.imported.map(\.path)) }
         return paths
     }
 }
@@ -174,6 +188,18 @@ enum VideoImageOverlayRenderer {
         // EXIF orientations 5–8 are rotated a quarter turn.
         let orientation = properties[kCGImagePropertyOrientation] as? Int ?? 1
         return orientation >= 5 ? CGSize(width: height, height: width) : CGSize(width: width, height: height)
+    }
+
+    /// The image placed into `rect` (output pixels), turned `rotation`
+    /// degrees clockwise about its middle, faded to `opacity`.
+    static func placed(_ picture: CIImage, in rect: CGRect, opacity: Double, rotation: Double) -> CIImage {
+        let image = placed(picture, in: rect, opacity: opacity)
+        guard abs(rotation) > 0.01 else { return image }
+        // Bottom-left origin: clockwise on screen is a negative angle.
+        let turn = CGAffineTransform(translationX: -rect.midX, y: -rect.midY)
+            .concatenating(CGAffineTransform(rotationAngle: -CGFloat(rotation) * .pi / 180))
+            .concatenating(CGAffineTransform(translationX: rect.midX, y: rect.midY))
+        return image.transformed(by: turn)
     }
 
     /// The image placed into `rect` (output pixels), faded to `opacity`.
@@ -311,70 +337,138 @@ struct VideoImageOverlayHandles: View {
     let viewSize: CGSize
 
     @State private var origin: VideoDemoOverlayEffect?
+    /// The alignment guides showing while it's moved.
+    @State private var guides: [VideoAlignmentGuides.Guide] = []
 
     private var rect: CGRect {
         let r = effect.imageRect(in: viewSize)
         return CGRect(x: r.minX, y: viewSize.height - r.maxY, width: r.width, height: r.height)
     }
 
+    private var rotation: Double { effect.image?.keptRotation ?? 0 }
+
     var body: some View {
         let frame = rect
         ZStack(alignment: .topLeading) {
-            RoundedRectangle(cornerRadius: 3, style: .continuous)
-                .strokeBorder(Color.accentColor, style: StrokeStyle(lineWidth: 1.5, dash: [5, 4]))
-                .background(Color.white.opacity(0.001))
-                .frame(width: frame.width, height: frame.height)
-                .offset(x: frame.minX, y: frame.minY)
-                .onHover { inside in (inside ? NSCursor.openHand : NSCursor.arrow).set() }
-                .gesture(
-                    DragGesture(minimumDistance: 1, coordinateSpace: .global)
-                        .onChanged { value in
-                            if origin?.id != effect.id { origin = effect }
-                            guard let origin else { return }
-                            NSCursor.closedHand.set()
-                            model.updateOverlay(effect.id, coalesce: "image-move-\(effect.id)") { overlay in
-                                overlay.x = origin.x + Double(value.translation.width / max(viewSize.width, 1))
-                                overlay.y = origin.y + Double(value.translation.height / max(viewSize.height, 1))
-                            }
-                        }
-                        .onEnded { _ in
-                            origin = nil
-                            model.endGesture()
-                        }
-                )
-                .help(L("Drag to move; drag a corner to resize"))
-
-            ForEach(0..<4, id: \.self) { corner in
-                let isRight = corner == 1 || corner == 3
-                let isBottom = corner >= 2
+            ForEach(Array(guides.enumerated()), id: \.offset) { _, guide in
+                guideLine(guide)
+            }
+            ZStack {
+                RoundedRectangle(cornerRadius: 3, style: .continuous)
+                    .strokeBorder(Color.accentColor, style: StrokeStyle(lineWidth: 1.5, dash: [5, 4]))
+                    .background(Color.white.opacity(0.001))
+                    .onHover { inside in (inside ? NSCursor.openHand : NSCursor.arrow).set() }
+                    .gesture(moveGesture)
+                    .help(L("Drag to move; drag a corner to resize, the round knob to turn it"))
+                ForEach(0..<4, id: \.self) { corner in
+                    let isRight = corner == 1 || corner == 3
+                    let isBottom = corner >= 2
+                    Circle()
+                        .fill(Color.white)
+                        .overlay(Circle().stroke(Color.accentColor, lineWidth: 1.5))
+                        .frame(width: 11, height: 11)
+                        .contentShape(Circle().inset(by: -7))
+                        .position(x: isRight ? frame.width : 0, y: isBottom ? frame.height : 0)
+                        .onHover { inside in (inside ? NSCursor.crosshair : NSCursor.arrow).set() }
+                        .gesture(
+                            DragGesture(minimumDistance: 0, coordinateSpace: .global)
+                                .onChanged { value in
+                                    if origin?.id != effect.id { origin = effect }
+                                    guard let origin else { return }
+                                    // Dragged on a turned picture: measured along its own sides.
+                                    let unturned = Self.unturn(value.translation, by: rotation)
+                                    resize(from: origin, isRight: isRight, isBottom: isBottom, translation: unturned)
+                                }
+                                .onEnded { _ in
+                                    origin = nil
+                                    model.endGesture()
+                                }
+                        )
+                }
+                // The rotate knob, above the top edge.
+                Rectangle()
+                    .fill(Color.accentColor)
+                    .frame(width: 1.5, height: 16)
+                    .position(x: frame.width / 2, y: -8)
+                    .allowsHitTesting(false)
                 Circle()
                     .fill(Color.white)
                     .overlay(Circle().stroke(Color.accentColor, lineWidth: 1.5))
-                    .frame(width: 11, height: 11)
-                    .contentShape(Circle().inset(by: -7))
-                    .offset(x: (isRight ? frame.maxX : frame.minX) - 5.5, y: (isBottom ? frame.maxY : frame.minY) - 5.5)
-                    .onHover { inside in (inside ? NSCursor.crosshair : NSCursor.arrow).set() }
-                    .gesture(
-                        DragGesture(minimumDistance: 0, coordinateSpace: .global)
-                            .onChanged { value in
-                                if origin?.id != effect.id { origin = effect }
-                                guard let origin else { return }
-                                resize(from: origin, isRight: isRight, isBottom: isBottom, translation: value.translation)
-                            }
-                            .onEnded { _ in
-                                origin = nil
-                                model.endGesture()
-                            }
-                    )
+                    .overlay(Image(systemName: "arrow.clockwise").font(.system(size: 7, weight: .bold)).foregroundStyle(Color.accentColor))
+                    .frame(width: 14, height: 14)
+                    .contentShape(Circle().inset(by: -6))
+                    .position(x: frame.width / 2, y: -20)
+                    .onHover { inside in (inside ? NSCursor.pointingHand : NSCursor.arrow).set() }
+                    .gesture(rotateGesture(center: CGPoint(x: frame.midX, y: frame.midY)))
+                    .help(L("Drag to turn it; hold ⇧ for steps of 15°"))
+                    .accessibilityLabel(L("Turn the picture"))
             }
+            .frame(width: frame.width, height: frame.height)
+            .rotationEffect(.degrees(rotation))
+            .offset(x: frame.minX, y: frame.minY)
         }
+    }
+
+    private var moveGesture: some Gesture {
+        DragGesture(minimumDistance: 1, coordinateSpace: .global)
+            .onChanged { value in
+                if origin?.id != effect.id { origin = effect }
+                guard let origin else { return }
+                NSCursor.closedHand.set()
+                let start = origin.imageRect(in: viewSize)
+                let startTop = CGRect(x: start.minX, y: viewSize.height - start.maxY, width: start.width, height: start.height)
+                let moved = startTop.offsetBy(dx: value.translation.width, dy: value.translation.height)
+                // Snaps to the middle and the edges of the video; ⌘ moves freely.
+                let snap = NSEvent.modifierFlags.contains(.command)
+                    ? (rect: moved, guides: [])
+                    : VideoAlignmentGuides.snap(moved, in: viewSize, threshold: 6)
+                guides = snap.guides
+                model.updateOverlay(effect.id, coalesce: "image-move-\(effect.id)") { overlay in
+                    overlay.x = Double(snap.rect.midX / max(viewSize.width, 1))
+                    overlay.y = Double(snap.rect.midY / max(viewSize.height, 1))
+                }
+            }
+            .onEnded { _ in
+                origin = nil
+                guides = []
+                model.endGesture()
+            }
+    }
+
+    private func rotateGesture(center: CGPoint) -> some Gesture {
+        DragGesture(minimumDistance: 0, coordinateSpace: .named(VideoStageInteractionLayer.space))
+            .onChanged { value in
+                let degrees = VideoAlignmentGuides.rotation(from: center, to: value.location, steps: NSEvent.modifierFlags.contains(.shift))
+                model.updateOverlay(effect.id, coalesce: "image-rotate-\(effect.id)") { overlay in
+                    overlay.image?.rotation = abs(degrees) < 0.01 ? nil : degrees
+                }
+            }
+            .onEnded { _ in model.endGesture() }
+    }
+
+    private func guideLine(_ guide: VideoAlignmentGuides.Guide) -> some View {
+        let vertical = guide.axis == .vertical
+        return Rectangle()
+            .fill(Color.accentColor.opacity(0.9))
+            .frame(width: vertical ? 1 : viewSize.width, height: vertical ? viewSize.height : 1)
+            .offset(x: vertical ? guide.position : 0, y: vertical ? 0 : guide.position)
+            .allowsHitTesting(false)
+    }
+
+    /// A drag on screen, measured along a picture turned `degrees` clockwise.
+    static func unturn(_ translation: CGSize, by degrees: Double) -> CGSize {
+        let angle = -degrees * .pi / 180
+        return CGSize(width: translation.width * cos(angle) - translation.height * sin(angle),
+                      height: translation.width * sin(angle) + translation.height * cos(angle))
     }
 
     private func resize(from origin: VideoDemoOverlayEffect, isRight: Bool, isBottom: Bool, translation: CGSize) {
         let aspect = CGFloat(max(origin.image?.aspect ?? 1, 0.01))
         let start = origin.imageRect(in: viewSize)
-        // Top-left space: the corner opposite the one dragged stays put.
+        // Top-left space: the corner opposite the one dragged stays put
+        // (around the middle when it's turned: it keeps its center).
         let startTop = CGRect(x: start.minX, y: viewSize.height - start.maxY, width: start.width, height: start.height)
+        let turned = abs(origin.image?.keptRotation ?? 0) > 0.01
         let fixed = CGPoint(x: isRight ? startTop.minX : startTop.maxX, y: isBottom ? startTop.minY : startTop.maxY)
         let dragged = CGPoint(x: (isRight ? startTop.maxX : startTop.minX) + translation.width, y: (isBottom ? startTop.maxY : startTop.minY) + translation.height)
         // Follow whichever direction moved further, at the picture's shape.
@@ -382,13 +476,58 @@ struct VideoImageOverlayHandles: View {
         let widthFromY = abs(dragged.y - fixed.y) * aspect
         let width = max(max(widthFromX, widthFromY), viewSize.width * 0.04)
         let height = width / aspect
-        let minX = isRight ? fixed.x : fixed.x - width
-        let minY = isBottom ? fixed.y : fixed.y - height
+        let minX = turned ? startTop.midX - width / 2 : (isRight ? fixed.x : fixed.x - width)
+        let minY = turned ? startTop.midY - height / 2 : (isBottom ? fixed.y : fixed.y - height)
         model.updateOverlay(effect.id, coalesce: "image-resize-\(effect.id)") { overlay in
             overlay.width = Double(width / max(viewSize.width, 1))
             overlay.x = Double((minX + width / 2) / max(viewSize.width, 1))
             overlay.y = Double((minY + height / 2) / max(viewSize.height, 1))
         }
+    }
+}
+
+/// Alignment guides on the player (1.13.0): a moved item lands on the
+/// video's middle and edges, with a line showing where; a turned one on
+/// whole angles.
+enum VideoAlignmentGuides {
+    struct Guide: Equatable {
+        enum Axis: Equatable { case vertical, horizontal }
+        let axis: Axis
+        /// Points from the left (vertical) or the top (horizontal).
+        let position: CGFloat
+    }
+
+    /// `rect` (top-left origin) pulled onto the middle or an edge of a
+    /// video `size` big when it's within `threshold` points.
+    static func snap(_ rect: CGRect, in size: CGSize, threshold: CGFloat) -> (rect: CGRect, guides: [Guide]) {
+        var result = rect
+        var guides: [Guide] = []
+        func nearest(_ candidates: [(value: CGFloat, target: CGFloat, line: CGFloat)]) -> (delta: CGFloat, line: CGFloat)? {
+            candidates.map { ($0.target - $0.value, $0.line) }.filter { abs($0.0) <= threshold }.min { abs($0.0) < abs($1.0) }
+        }
+        if let x = nearest([(rect.midX, size.width / 2, size.width / 2), (rect.minX, 0, 0), (rect.maxX, size.width, size.width)]) {
+            result.origin.x += x.delta
+            guides.append(Guide(axis: .vertical, position: x.line))
+        }
+        if let y = nearest([(rect.midY, size.height / 2, size.height / 2), (rect.minY, 0, 0), (rect.maxY, size.height, size.height)]) {
+            result.origin.y += y.delta
+            guides.append(Guide(axis: .horizontal, position: y.line))
+        }
+        return (result, guides)
+    }
+
+    /// Degrees clockwise for the knob dragged to `point` around `center`
+    /// (top-left origin): straight up is 0. Within 4° of a quarter turn it
+    /// settles there; `steps`: whole 15°.
+    static func rotation(from center: CGPoint, to point: CGPoint, steps: Bool) -> Double {
+        var degrees = atan2(Double(point.x - center.x), Double(center.y - point.y)) * 180 / .pi
+        if steps {
+            degrees = (degrees / 15).rounded() * 15
+        } else if let quarter = [-180.0, -90, 0, 90, 180].first(where: { abs($0 - degrees) <= 4 }) {
+            degrees = quarter
+        }
+        if degrees <= -180 { degrees += 360 }
+        return degrees
     }
 }
 
@@ -428,6 +567,17 @@ struct VideoImageOverlayInspector: View {
                     range: 0.05...1,
                     defaultValue: 1,
                     format: { VideoEditorModel.formatPercent($0) },
+                    onEditingEnded: { model.endGesture() }
+                )
+                VideoSliderRow(
+                    title: L("Rotation"),
+                    value: Binding(get: { image.keptRotation }, set: { value in
+                        model.updateOverlay(overlay.id, coalesce: "image-rotate-\(overlay.id)") { $0.image?.rotation = abs(value) < 0.5 ? nil : value.rounded() }
+                    }),
+                    range: -180...180,
+                    defaultValue: 0,
+                    format: { L("\(Int($0.rounded()))°") },
+                    detail: L("Or drag the round knob above the picture"),
                     onEditingEnded: { model.endGesture() }
                 )
                 VideoSliderRow(

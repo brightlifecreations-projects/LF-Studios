@@ -15,7 +15,7 @@ import Foundation
 @MainActor
 enum GuideContent {
     /// Pages from these versions get a New badge and fill What's new.
-    nonisolated static let newVersions: [String] = ["1.12.0", "1.11.1", "1.11.0", "1.10.0", "1.9.0", "1.8.0", "1.7.0"]
+    nonisolated static let newVersions: [String] = ["1.13.0", "1.12.0", "1.11.1", "1.11.0", "1.10.0", "1.9.0", "1.8.0", "1.7.0"]
 
     static func chapters() -> [GuideChapter] {
         let features = featureCategories()
@@ -1167,9 +1167,54 @@ enum GuideContent {
                 location: L("Click a recording in Home, click Edit Video after recording, or click Open video… in Home. The LF Studios menu ▸ Edit Last Recording opens the newest one."),
                 tips: [
                     L("You can also drop a video file on the LF Studios icon in the Dock."),
-                    L("The editor has six panels on the right: Style, Cursor, Zoom, Camera, Captions, and Audio."),
+                    L("The editor has the Library on the left, the player in the middle, Properties on the right (Style, Cursor, Zoom, Camera, Captions, and Audio), and the timeline below."),
                 ],
                 showMe: .home(.recordings)
+            ),
+            GuideEntry(
+                id: "video-layout", symbol: "rectangle.3.group", title: L("The editor's layout"),
+                summary: L("Four panels: the Library with your media, the player, Properties for whatever is selected, and the timeline."),
+                location: L("The video editor. Layout in its toolbar arranges the panels."),
+                points: [
+                    L("Library (top left): Media, Audio, Text, Captions, and Transitions."),
+                    L("Player: play, step one frame, the time, the aspect ratio, Fit or a closer zoom, and full-screen preview."),
+                    L("Properties (right): the settings of what you selected, in the Style, Cursor, Zoom, Camera, Captions, and Audio tabs."),
+                ],
+                steps: [
+                    L("Drag the line between two panels to make one wider; double-click it to put it back."),
+                    L("Layout ▸ Player First makes the player as big as it gets. Layout ▸ Reset Layout puts every panel back where it starts."),
+                ],
+                tips: [
+                    L("LF Studios remembers the layout on this Mac."),
+                    L("Click a picture on the player to move it, resize it from a corner, or turn it with the round knob. It lands on the middle and the edges, with a line showing where; hold ⌘ to move it freely."),
+                    L("Full-screen preview shows only the player. Press Esc to leave."),
+                ],
+                since: "1.13.0",
+                related: ["video-media", "video-timeline"]
+            ),
+            GuideEntry(
+                id: "video-media", symbol: "photo.on.rectangle", title: L("Your media in the Library"),
+                summary: L("Every video, picture, and sound file of the project in one place: what's in the video, and what you imported to use."),
+                location: L("The Library's Media and Audio tabs, at the top left of the video editor. File ▸ Import Media… (⌘I)."),
+                points: [
+                    L("The recording, its camera, added recordings, music, sound files, and pictures are already there. Added marks what's in the video."),
+                    L("Move the pointer across a video's thumbnail to look through it. The time in its corner is its length."),
+                    L("Search, Thumbnails or List, Sort By, and New Folder… are at the top of the Library."),
+                    L("Imported files stay where they are until you save the project with Include media."),
+                ],
+                steps: [
+                    L("Click Import, or drag files from Finder onto the Library."),
+                    L("Drag a file onto the timeline or the player, or click the + on its thumbnail. A video goes at the end of the video; a picture or a sound starts at the playhead, or where you drop it on the timeline."),
+                    L("Right-click a file for Reveal in Finder, Rename…, Move to Folder, Replace…, Extract Audio, and Delete from Project."),
+                ],
+                keys: [.fixed("⌘I", L("Import Media…"))],
+                tips: [
+                    L("A file that moved shows Missing: Locate… finds it again."),
+                    L("Extract Audio puts a video's sound in the Audio tab as its own file; the video keeps its sound."),
+                    L("Rename… changes the name in the Library only. The file keeps its own."),
+                ],
+                since: "1.13.0",
+                related: ["video-layout", "video-timeline"]
             ),
             GuideEntry(
                 id: "video-play", symbol: "play.circle", title: L("Playing & moving around"),
@@ -2011,7 +2056,7 @@ enum GuideContent {
             GuideEntry(
                 id: "size-ratio", symbol: "aspectratio", title: L("Aspect ratio"),
                 summary: L("Choose the video's shape for where it's going."),
-                location: L("The aspect ratio menu in the video editor's toolbar."),
+                location: L("The aspect ratio menu under the player."),
                 points: [
                     L("Auto (like the recording), 16:9 for YouTube, 9:16 for Reels, TikTok, and Shorts, 1:1, 4:5 for Instagram, 4:3, 16:10 like a Mac screen, or 21:9 for a cinematic look."),
                     L("Custom… for any other shape: type it like 3:2 or 2.39:1. Choose Custom… again to change it."),
@@ -2680,6 +2725,7 @@ enum GuideContent {
             .fixed("⌘O", L("Open…")),
             .fixed("⌘S", L("Save Project")),
             .fixed("⇧⌘S", L("Save Project As…")),
+            .fixed("⌘I", L("Import Media…")),
             .fixed("⌘E", L("Export Video…")),
             .fixed("⇧⌘E", L("Creative Handoff…")),
             .fixed("⌘Z", L("Undo")),

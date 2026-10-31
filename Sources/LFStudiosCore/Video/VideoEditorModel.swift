@@ -246,6 +246,14 @@ final class VideoEditorModel: ObservableObject {
     @Published var timelineZoom: Double = 1 {
         didSet { refreshTimeline() }
     }
+    /// The Library panel's tab.
+    @Published var libraryTab: VideoLibraryTab = .media
+    /// Extract Audio is writing the sound out.
+    @Published var isExtractingAudio = false
+    /// The player's zoom: 1 fits it, more looks closer (it scrolls).
+    @Published var previewZoom: CGFloat = 1
+    /// Full-screen preview: only the player shows (Esc leaves).
+    @Published var isPlayerFullScreen = false
     /// Small, Medium or Large lanes: chosen (remembered on this Mac), or
     /// the start for the window's height (`fitTrackHeight`).
     @Published private(set) var timelineTrackHeight: VideoTimelineTrackHeight = Settings.videoTimelineTrackHeight ?? .medium {
@@ -620,6 +628,16 @@ final class VideoEditorModel: ObservableObject {
     // MARK: Project changes
 
     private func projectDidChange(from old: VideoDemoProject) {
+        // Only the media bin (a name, a folder, an import): nothing to
+        // play differently, just saved.
+        if old.mediaBin != project.mediaBin {
+            var unbinned = project
+            unbinned.mediaBin = old.mediaBin
+            if unbinned == old {
+                if isReady { scheduleAutosave() }
+                return
+            }
+        }
         // Added recordings set the source axis's length (right away, so no
         // edit ever lays clips out against the old one).
         if let axis = project.sourceAxisDuration, abs(axis - sourceDuration) > 0.0005 {

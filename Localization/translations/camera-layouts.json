@@ -1238,5 +1238,973 @@
     "ru": "LF Studios 1.11 и более ранние версии не открывают файлы .lfs: получателю нужен LF Studios 1.12.0 или новее.",
     "uk": "LF Studios 1.11 і давніші версії не відкривають файли .lfs: отримувачу потрібен LF Studios 1.12.0 або новіший.",
     "ja": "LF Studios 1.11以前では.lfsファイルを開けません。送る相手にはLF Studios 1.12.0以降が必要です。"
+  },
+  "%lld°": {
+    "de": "%lld°",
+    "fr": "%lld°",
+    "zh-Hans": "%lld°",
+    "ru": "%lld°",
+    "uk": "%lld°",
+    "ja": "%lld°"
+  },
+  "Captions live in the Captions panel on the right: make them from your voice, type them, translate and style them.": {
+    "de": "Untertitel findest du im Panel „Untertitel“ rechts: Erstelle sie aus deiner Stimme, tippe, übersetze und gestalte sie.",
+    "fr": "Les sous-titres sont dans le panneau Sous-titres à droite : créez-les depuis votre voix, tapez-les, traduisez-les et mettez-les en forme.",
+    "zh-Hans": "字幕位于右侧的“字幕”面板中：可以根据你的语音生成、手动输入、翻译并设置样式。",
+    "ru": "Субтитры — на панели «Субтитры» справа: создавайте их по голосу, вводите, переводите и оформляйте.",
+    "uk": "Субтитри — на панелі «Субтитри» праворуч: створюйте їх за голосом, вводьте, перекладайте й оформлюйте.",
+    "ja": "字幕は右の“字幕”パネルにあります。声から作成、入力、翻訳、スタイル設定ができます。"
+  },
+  "Click a picture on the player to move it, resize it from a corner, or turn it with the round knob. It lands on the middle and the edges, with a line showing where; hold ⌘ to move it freely.": {
+    "de": "Klicke im Player auf ein Bild, um es zu verschieben, an einer Ecke die Größe zu ändern oder es mit dem runden Knopf zu drehen. Es rastet in der Mitte und an den Rändern ein, eine Linie zeigt wo; halte ⌘, um es frei zu bewegen.",
+    "fr": "Cliquez sur une image dans le lecteur pour la déplacer, la redimensionner par un coin ou la faire pivoter avec le bouton rond. Elle s’aimante au milieu et aux bords, une ligne montre où ; maintenez ⌘ pour la déplacer librement.",
+    "zh-Hans": "点按播放器中的图片即可移动它、拖移角调整大小，或用圆形旋钮旋转。它会吸附到中间和边缘，并有线条标出位置；按住 ⌘ 可自由移动。",
+    "ru": "Нажмите на картинку в плеере, чтобы переместить ее, изменить размер за угол или повернуть круглой ручкой. Она прилипает к середине и краям, линия показывает где; удерживайте ⌘, чтобы двигать свободно.",
+    "uk": "Клацніть картинку в плеєрі, щоб перемістити її, змінити розмір за кут або повернути круглою ручкою. Вона прилипає до середини й країв, лінія показує де; утримуйте ⌘, щоб рухати вільно.",
+    "ja": "プレーヤーで画像をクリックすると、移動したり、角でサイズを変えたり、丸いノブで回転したりできます。中央や端に吸着し、位置が線で示されます。⌘を押したままにすると自由に動かせます。"
+  },
+  "Default": {
+    "de": "Standard",
+    "fr": "Par défaut",
+    "zh-Hans": "默认",
+    "ru": "По умолчанию",
+    "uk": "Типово",
+    "ja": "デフォルト"
+  },
+  "Drag the line between two panels to make one wider; double-click it to put it back.": {
+    "de": "Zieh die Linie zwischen zwei Panels, um eines breiter zu machen; ein Doppelklick stellt sie wieder her.",
+    "fr": "Faites glisser la ligne entre deux panneaux pour en élargir un ; double-cliquez pour la remettre en place.",
+    "zh-Hans": "拖移两个面板之间的线可以加宽其中一个；连按两次可恢复。",
+    "ru": "Перетащите линию между панелями, чтобы сделать одну шире; двойной щелчок возвращает как было.",
+    "uk": "Перетягніть лінію між панелями, щоб зробити одну ширшою; подвійне клацання повертає як було.",
+    "ja": "パネルの間の線をドラッグすると幅を変えられます。ダブルクリックで元に戻ります。"
+  },
+  "Drag to move; drag a corner to resize, the round knob to turn it": {
+    "de": "Ziehen zum Verschieben; an einer Ecke ziehen für die Größe, am runden Knopf zum Drehen",
+    "fr": "Faites glisser pour déplacer ; un coin pour redimensionner, le bouton rond pour faire pivoter",
+    "zh-Hans": "拖移可移动；拖移角可调整大小，拖移圆形旋钮可旋转",
+    "ru": "Перетащите, чтобы переместить; за угол — изменить размер, за круглую ручку — повернуть",
+    "uk": "Перетягніть, щоб перемістити; за кут — змінити розмір, за круглу ручку — повернути",
+    "ja": "ドラッグで移動、角のドラッグでサイズ変更、丸いノブで回転"
+  },
+  "Drag to resize the panels. Double-click to reset.": {
+    "de": "Ziehen, um die Panels anzupassen. Doppelklick zum Zurücksetzen.",
+    "fr": "Faites glisser pour redimensionner les panneaux. Double-cliquez pour réinitialiser.",
+    "zh-Hans": "拖移可调整面板大小。连按两次可重置。",
+    "ru": "Перетащите, чтобы изменить размер панелей. Двойной щелчок — сбросить.",
+    "uk": "Перетягніть, щоб змінити розмір панелей. Подвійне клацання — скинути.",
+    "ja": "ドラッグしてパネルのサイズを変えます。ダブルクリックでリセットします。"
+  },
+  "Drag to turn it; hold ⇧ for steps of 15°": {
+    "de": "Ziehen zum Drehen; halte ⇧ für Schritte von 15°",
+    "fr": "Faites glisser pour faire pivoter ; maintenez ⇧ pour des pas de 15°",
+    "zh-Hans": "拖移可旋转；按住 ⇧ 以 15° 为步长",
+    "ru": "Перетащите, чтобы повернуть; удерживайте ⇧ для шага 15°",
+    "uk": "Перетягніть, щоб повернути; утримуйте ⇧ для кроку 15°",
+    "ja": "ドラッグで回転。⇧を押したままにすると15°ずつ"
+  },
+  "Fit": {
+    "de": "Einpassen",
+    "fr": "Ajuster",
+    "zh-Hans": "适合",
+    "ru": "Вписать",
+    "uk": "Вписати",
+    "ja": "フィット"
+  },
+  "Four panels: the Library with your media, the player, Properties for whatever is selected, and the timeline.": {
+    "de": "Vier Panels: die Bibliothek mit deinen Medien, der Player, Eigenschaften für das Ausgewählte und die Timeline.",
+    "fr": "Quatre panneaux : la Bibliothèque avec vos médias, le lecteur, les Propriétés de l’élément sélectionné et la timeline.",
+    "zh-Hans": "四个面板：包含你的媒体的素材库、播放器、所选内容的属性，以及时间线。",
+    "ru": "Четыре панели: Библиотека с вашими медиафайлами, плеер, Свойства выбранного и таймлайн.",
+    "uk": "Чотири панелі: Бібліотека з вашими медіафайлами, плеєр, Властивості вибраного й таймлайн.",
+    "ja": "4つのパネル: メディアのあるライブラリ、プレーヤー、選択したもののプロパティ、タイムライン。"
+  },
+  "Full-screen preview": {
+    "de": "Vorschau im Vollbild",
+    "fr": "Aperçu en plein écran",
+    "zh-Hans": "全屏预览",
+    "ru": "Предпросмотр во весь экран",
+    "uk": "Перегляд на весь екран",
+    "ja": "フルスクリーンプレビュー"
+  },
+  "Full-screen preview shows only the player. Press Esc to leave.": {
+    "de": "Die Vorschau im Vollbild zeigt nur den Player. Mit Esc verlässt du sie.",
+    "fr": "L’aperçu en plein écran n’affiche que le lecteur. Appuyez sur Échap pour en sortir.",
+    "zh-Hans": "全屏预览只显示播放器。按 Esc 退出。",
+    "ru": "Предпросмотр во весь экран показывает только плеер. Нажмите Esc, чтобы выйти.",
+    "uk": "Перегляд на весь екран показує лише плеєр. Натисніть Esc, щоб вийти.",
+    "ja": "フルスクリーンプレビューではプレーヤーだけが表示されます。Escで終了します。"
+  },
+  "LF Studios remembers the layout on this Mac.": {
+    "de": "LF Studios merkt sich das Layout auf diesem Mac.",
+    "fr": "LF Studios retient la disposition sur ce Mac.",
+    "zh-Hans": "LF Studios 会在这台 Mac 上记住布局。",
+    "ru": "LF Studios запоминает расположение на этом Mac.",
+    "uk": "LF Studios запам’ятовує макет на цьому Mac.",
+    "ja": "LF StudiosはこのMacでのレイアウトを記憶します。"
+  },
+  "Layout ▸ Player First makes the player as big as it gets. Layout ▸ Reset Layout puts every panel back where it starts.": {
+    "de": "Layout ▸ Player zuerst macht den Player so groß wie möglich. Layout ▸ Layout zurücksetzen stellt alle Panels wieder her.",
+    "fr": "Disposition ▸ Lecteur d’abord agrandit le lecteur au maximum. Disposition ▸ Réinitialiser la disposition remet chaque panneau en place.",
+    "zh-Hans": "“布局 ▸ 播放器优先”会让播放器尽可能大。“布局 ▸ 重置布局”会让所有面板恢复原位。",
+    "ru": "Расположение ▸ Сначала плеер делает плеер как можно больше. Расположение ▸ Сбросить расположение возвращает все панели на место.",
+    "uk": "Макет ▸ Спершу плеєр робить плеєр якомога більшим. Макет ▸ Скинути макет повертає всі панелі на місце.",
+    "ja": "“レイアウト”＞“プレーヤー優先”でプレーヤーをできるだけ大きくします。“レイアウト”＞“レイアウトをリセット”ですべてのパネルを元に戻します。"
+  },
+  "Layout: how the editor's panels are arranged": {
+    "de": "Layout: wie die Panels des Editors angeordnet sind",
+    "fr": "Disposition : l’agencement des panneaux de l’éditeur",
+    "zh-Hans": "布局：编辑器面板的排列方式",
+    "ru": "Расположение: как устроены панели редактора",
+    "uk": "Макет: як розташовано панелі редактора",
+    "ja": "レイアウト: エディタのパネルの配置"
+  },
+  "Leave full screen": {
+    "de": "Vollbild beenden",
+    "fr": "Quitter le plein écran",
+    "zh-Hans": "退出全屏",
+    "ru": "Выйти из полноэкранного режима",
+    "uk": "Вийти з повноекранного режиму",
+    "ja": "フルスクリーンを終了"
+  },
+  "Leave full screen (Esc)": {
+    "de": "Vollbild beenden (Esc)",
+    "fr": "Quitter le plein écran (Échap)",
+    "zh-Hans": "退出全屏（Esc）",
+    "ru": "Выйти из полноэкранного режима (Esc)",
+    "uk": "Вийти з повноекранного режиму (Esc)",
+    "ja": "フルスクリーンを終了（Esc）"
+  },
+  "Library (top left): Media, Audio, Text, Captions, and Transitions.": {
+    "de": "Bibliothek (oben links): Medien, Audio, Text, Untertitel und Übergänge.",
+    "fr": "Bibliothèque (en haut à gauche) : Médias, Audio, Texte, Sous-titres et Transitions.",
+    "zh-Hans": "素材库（左上）：媒体、音频、文字、字幕和转场。",
+    "ru": "Библиотека (вверху слева): Медиа, Аудио, Текст, Субтитры и Переходы.",
+    "uk": "Бібліотека (угорі ліворуч): Медіа, Аудіо, Текст, Субтитри й Переходи.",
+    "ja": "ライブラリ（左上）: メディア、オーディオ、テキスト、字幕、トランジション。"
+  },
+  "Media": {
+    "de": "Medien",
+    "fr": "Médias",
+    "zh-Hans": "媒体",
+    "ru": "Медиа",
+    "uk": "Медіа",
+    "ja": "メディア"
+  },
+  "Next frame (→)": {
+    "de": "Nächstes Bild (→)",
+    "fr": "Image suivante (→)",
+    "zh-Hans": "下一帧（→）",
+    "ru": "Следующий кадр (→)",
+    "uk": "Наступний кадр (→)",
+    "ja": "次のフレーム（→）"
+  },
+  "Open Captions": {
+    "de": "Untertitel öffnen",
+    "fr": "Ouvrir les sous-titres",
+    "zh-Hans": "打开字幕",
+    "ru": "Открыть субтитры",
+    "uk": "Відкрити субтитри",
+    "ja": "字幕を開く"
+  },
+  "Open Transitions": {
+    "de": "Übergänge öffnen",
+    "fr": "Ouvrir les transitions",
+    "zh-Hans": "打开转场",
+    "ru": "Открыть переходы",
+    "uk": "Відкрити переходи",
+    "ja": "トランジションを開く"
+  },
+  "Or drag the round knob above the picture": {
+    "de": "Oder zieh am runden Knopf über dem Bild",
+    "fr": "Ou faites glisser le bouton rond au-dessus de l’image",
+    "zh-Hans": "也可以拖移图片上方的圆形旋钮",
+    "ru": "Или перетащите круглую ручку над картинкой",
+    "uk": "Або перетягніть круглу ручку над картинкою",
+    "ja": "または画像の上の丸いノブをドラッグします"
+  },
+  "Panel border": {
+    "de": "Panel-Rand",
+    "fr": "Bord du panneau",
+    "zh-Hans": "面板边界",
+    "ru": "Граница панели",
+    "uk": "Межа панелі",
+    "ja": "パネルの境界"
+  },
+  "Player First": {
+    "de": "Player zuerst",
+    "fr": "Lecteur d’abord",
+    "zh-Hans": "播放器优先",
+    "ru": "Сначала плеер",
+    "uk": "Спершу плеєр",
+    "ja": "プレーヤー優先"
+  },
+  "Player zoom": {
+    "de": "Player-Zoom",
+    "fr": "Zoom du lecteur",
+    "zh-Hans": "播放器缩放",
+    "ru": "Масштаб плеера",
+    "uk": "Масштаб плеєра",
+    "ja": "プレーヤーのズーム"
+  },
+  "Player: play, step one frame, the time, the aspect ratio, Fit or a closer zoom, and full-screen preview.": {
+    "de": "Player: Abspielen, ein Bild weiter, die Zeit, das Seitenverhältnis, Einpassen oder ein näherer Zoom und die Vorschau im Vollbild.",
+    "fr": "Lecteur : lecture, image par image, le temps, le format, Ajuster ou un zoom plus proche, et l’aperçu en plein écran.",
+    "zh-Hans": "播放器：播放、逐帧前进、时间、宽高比、适合或放大，以及全屏预览。",
+    "ru": "Плеер: воспроизведение, шаг на кадр, время, формат, Вписать или увеличение и предпросмотр во весь экран.",
+    "uk": "Плеєр: відтворення, крок на кадр, час, формат, Вписати чи збільшення та перегляд на весь екран.",
+    "ja": "プレーヤー: 再生、1フレーム送り、時間、アスペクト比、フィットまたは拡大、フルスクリーンプレビュー。"
+  },
+  "Previous frame (←)": {
+    "de": "Vorheriges Bild (←)",
+    "fr": "Image précédente (←)",
+    "zh-Hans": "上一帧（←）",
+    "ru": "Предыдущий кадр (←)",
+    "uk": "Попередній кадр (←)",
+    "ja": "前のフレーム（←）"
+  },
+  "Properties (right): the settings of what you selected, in the Style, Cursor, Zoom, Camera, Captions, and Audio tabs.": {
+    "de": "Eigenschaften (rechts): die Einstellungen des Ausgewählten in den Tabs Stil, Zeiger, Zoom, Kamera, Untertitel und Audio.",
+    "fr": "Propriétés (à droite) : les réglages de l’élément sélectionné, dans les onglets Style, Curseur, Zoom, Caméra, Sous-titres et Audio.",
+    "zh-Hans": "属性（右侧）：所选内容的设置，位于“样式”“指针”“缩放”“摄像头”“字幕”和“音频”标签中。",
+    "ru": "Свойства (справа): настройки выбранного на вкладках Стиль, Курсор, Масштаб, Камера, Субтитры и Аудио.",
+    "uk": "Властивості (праворуч): налаштування вибраного на вкладках Стиль, Курсор, Масштаб, Камера, Субтитри й Аудіо.",
+    "ja": "プロパティ（右）: 選択したものの設定。“スタイル”、“ポインタ”、“ズーム”、“カメラ”、“字幕”、“オーディオ”タブにあります。"
+  },
+  "Reset Layout": {
+    "de": "Layout zurücksetzen",
+    "fr": "Réinitialiser la disposition",
+    "zh-Hans": "重置布局",
+    "ru": "Сбросить расположение",
+    "uk": "Скинути макет",
+    "ja": "レイアウトをリセット"
+  },
+  "Rotation": {
+    "de": "Drehung",
+    "fr": "Rotation",
+    "zh-Hans": "旋转",
+    "ru": "Поворот",
+    "uk": "Поворот",
+    "ja": "回転"
+  },
+  "Text, arrows, highlights, blur and pictures go on the video with the tools above the player. Pick one here to add it at the playhead.": {
+    "de": "Text, Pfeile, Markierungen, Weichzeichner und Bilder kommen mit den Werkzeugen über dem Player ins Video. Wähle hier eines, um es an der Abspielposition hinzuzufügen.",
+    "fr": "Le texte, les flèches, les surlignages, le flou et les images s’ajoutent avec les outils au-dessus du lecteur. Choisissez-en un ici pour l’ajouter à la tête de lecture.",
+    "zh-Hans": "文本、箭头、高亮、模糊和图片可使用播放器上方的工具添加到视频中。在这里选择一个，即可添加到播放头处。",
+    "ru": "Текст, стрелки, выделения, размытие и картинки добавляются инструментами над плеером. Выберите здесь, чтобы добавить на позиции воспроизведения.",
+    "uk": "Текст, стрілки, виділення, розмиття й картинки додаються інструментами над плеєром. Виберіть тут, щоб додати в позиції відтворення.",
+    "ja": "テキスト、矢印、ハイライト、ぼかし、画像は、プレーヤーの上のツールでビデオに追加します。ここで選ぶと再生ヘッドの位置に追加されます。"
+  },
+  "The aspect ratio menu under the player.": {
+    "de": "Das Menü für das Seitenverhältnis unter dem Player.",
+    "fr": "Le menu du format sous le lecteur.",
+    "zh-Hans": "播放器下方的宽高比菜单。",
+    "ru": "Меню формата под плеером.",
+    "uk": "Меню формату під плеєром.",
+    "ja": "プレーヤーの下のアスペクト比メニュー。"
+  },
+  "The editor has the Library on the left, the player in the middle, Properties on the right (Style, Cursor, Zoom, Camera, Captions, and Audio), and the timeline below.": {
+    "de": "Der Editor hat links die Bibliothek, in der Mitte den Player, rechts die Eigenschaften (Stil, Zeiger, Zoom, Kamera, Untertitel und Audio) und unten die Timeline.",
+    "fr": "L’éditeur a la Bibliothèque à gauche, le lecteur au milieu, les Propriétés à droite (Style, Curseur, Zoom, Caméra, Sous-titres et Audio) et la timeline en bas.",
+    "zh-Hans": "编辑器左侧是素材库，中间是播放器，右侧是属性（样式、指针、缩放、摄像头、字幕和音频），下方是时间线。",
+    "ru": "В редакторе слева Библиотека, в середине плеер, справа Свойства (Стиль, Курсор, Масштаб, Камера, Субтитры и Аудио), внизу таймлайн.",
+    "uk": "У редакторі ліворуч Бібліотека, посередині плеєр, праворуч Властивості (Стиль, Курсор, Масштаб, Камера, Субтитри й Аудіо), унизу таймлайн.",
+    "ja": "エディタは左にライブラリ、中央にプレーヤー、右にプロパティ（スタイル、ポインタ、ズーム、カメラ、字幕、オーディオ）、下にタイムラインがあります。"
+  },
+  "The editor's layout": {
+    "de": "Das Layout des Editors",
+    "fr": "La disposition de l’éditeur",
+    "zh-Hans": "编辑器布局",
+    "ru": "Расположение редактора",
+    "uk": "Макет редактора",
+    "ja": "エディタのレイアウト"
+  },
+  "The video editor. Layout in its toolbar arranges the panels.": {
+    "de": "Der Video-Editor. „Layout“ in seiner Symbolleiste ordnet die Panels an.",
+    "fr": "L’éditeur vidéo. Disposition, dans sa barre d’outils, agence les panneaux.",
+    "zh-Hans": "视频编辑器。其工具栏中的“布局”用于排列面板。",
+    "ru": "Видеоредактор. «Расположение» на его панели инструментов упорядочивает панели.",
+    "uk": "Відеоредактор. «Макет» на його панелі інструментів упорядковує панелі.",
+    "ja": "ビデオエディタ。ツールバーの“レイアウト”でパネルを配置します。"
+  },
+  "This project needs a newer version of LF Studios": {
+    "de": "Dieses Projekt braucht eine neuere Version von LF Studios",
+    "fr": "Ce projet nécessite une version plus récente de LF Studios",
+    "zh-Hans": "此项目需要更新版本的 LF Studios",
+    "ru": "Для этого проекта нужна более новая версия LF Studios",
+    "uk": "Для цього проєкту потрібна новіша версія LF Studios",
+    "ja": "このプロジェクトには新しいバージョンのLF Studiosが必要です"
+  },
+  "Transitions go on the cuts between clips: click the + between two clips on the timeline, or set them all in Style ▸ Transitions.": {
+    "de": "Übergänge gehören auf die Schnitte zwischen Clips: Klicke auf das + zwischen zwei Clips in der Timeline oder lege sie alle unter Stil ▸ Übergänge fest.",
+    "fr": "Les transitions se placent sur les coupes entre clips : cliquez sur le + entre deux clips dans la timeline, ou réglez-les toutes dans Style ▸ Transitions.",
+    "zh-Hans": "转场位于片段之间的剪辑点：点按时间线上两个片段之间的 +，或在“样式 ▸ 转场”中统一设置。",
+    "ru": "Переходы ставятся на стыки клипов: нажмите + между двумя клипами на таймлайне или задайте все в Стиль ▸ Переходы.",
+    "uk": "Переходи ставляться на стики кліпів: клацніть + між двома кліпами на таймлайні або задайте всі в Стиль ▸ Переходи.",
+    "ja": "トランジションはクリップの間のカットに付けます。タイムラインの2つのクリップの間の＋をクリックするか、“スタイル”＞“トランジション”でまとめて設定します。"
+  },
+  "Turn the picture": {
+    "de": "Bild drehen",
+    "fr": "Faire pivoter l’image",
+    "zh-Hans": "旋转图片",
+    "ru": "Повернуть картинку",
+    "uk": "Повернути картинку",
+    "ja": "画像を回転"
+  },
+  "Zoom the player": {
+    "de": "Player zoomen",
+    "fr": "Zoomer le lecteur",
+    "zh-Hans": "缩放播放器",
+    "ru": "Масштаб плеера",
+    "uk": "Масштабувати плеєр",
+    "ja": "プレーヤーをズーム"
+  },
+  "“%@” was saved by a newer LF Studios. Update LF Studios to open it.": {
+    "de": "„%@“ wurde mit einer neueren Version von LF Studios gesichert. Aktualisiere LF Studios, um es zu öffnen.",
+    "fr": "« %@ » a été enregistré par une version plus récente de LF Studios. Mettez LF Studios à jour pour l’ouvrir.",
+    "zh-Hans": "“%@”是用更新版本的 LF Studios 存储的。请更新 LF Studios 后再打开。",
+    "ru": "«%@» сохранен в более новой версии LF Studios. Обновите LF Studios, чтобы открыть его.",
+    "uk": "«%@» збережено в новішій версії LF Studios. Оновіть LF Studios, щоб відкрити його.",
+    "ja": "“%@”は新しいバージョンのLF Studiosで保存されています。開くにはLF Studiosをアップデートしてください。"
+  },
+  "%@ (audio).m4a": {
+    "de": "%@ (Audio).m4a",
+    "fr": "%@ (audio).m4a",
+    "zh-Hans": "%@（音频）.m4a",
+    "ru": "%@ (аудио).m4a",
+    "uk": "%@ (аудіо).m4a",
+    "ja": "%@（オーディオ）.m4a"
+  },
+  "A file that moved shows Missing: Locate… finds it again.": {
+    "de": "Eine verschobene Datei zeigt „Fehlt“: Mit „Suchen …“ findest du sie wieder.",
+    "fr": "Un fichier déplacé affiche « Manquant » : Localiser… le retrouve.",
+    "zh-Hans": "移动过的文件会显示“缺失”：使用“查找…”可重新找到它。",
+    "ru": "Перемещенный файл помечается «Нет файла»: «Найти…» находит его снова.",
+    "uk": "Переміщений файл позначається «Немає файлу»: «Знайти…» знаходить його знову.",
+    "ja": "移動したファイルには“見つかりません”と表示されます。“場所を指定…”で見つけ直せます。"
+  },
+  "Add to Timeline": {
+    "de": "Zur Timeline hinzufügen",
+    "fr": "Ajouter à la timeline",
+    "zh-Hans": "添加到时间线",
+    "ru": "Добавить на таймлайн",
+    "uk": "Додати на таймлайн",
+    "ja": "タイムラインに追加"
+  },
+  "Added": {
+    "de": "Hinzugefügt",
+    "fr": "Ajouté",
+    "zh-Hans": "已添加",
+    "ru": "Добавлено",
+    "uk": "Додано",
+    "ja": "追加済み"
+  },
+  "All media": {
+    "de": "Alle Medien",
+    "fr": "Tous les médias",
+    "zh-Hans": "所有媒体",
+    "ru": "Все медиафайлы",
+    "uk": "Усі медіафайли",
+    "ja": "すべてのメディア"
+  },
+  "Camera — %@": {
+    "de": "Kamera – %@",
+    "fr": "Caméra — %@",
+    "zh-Hans": "摄像头 — %@",
+    "ru": "Камера — %@",
+    "uk": "Камера — %@",
+    "ja": "カメラ — %@"
+  },
+  "Choose a file of the same kind": {
+    "de": "Wähle eine Datei derselben Art",
+    "fr": "Choisissez un fichier du même type",
+    "zh-Hans": "请选择同类文件",
+    "ru": "Выберите файл того же типа",
+    "uk": "Виберіть файл того самого типу",
+    "ja": "同じ種類のファイルを選んでください"
+  },
+  "Choose a file to use in place of “%@”": {
+    "de": "Wähle eine Datei, die „%@“ ersetzt",
+    "fr": "Choisissez un fichier à utiliser à la place de « %@ »",
+    "zh-Hans": "选择一个文件来替代“%@”",
+    "ru": "Выберите файл вместо «%@»",
+    "uk": "Виберіть файл замість «%@»",
+    "ja": "“%@”の代わりに使うファイルを選んでください"
+  },
+  "Choose videos, pictures, or sound files to add to the Library": {
+    "de": "Wähle Videos, Bilder oder Tondateien für die Bibliothek",
+    "fr": "Choisissez des vidéos, des images ou des fichiers audio à ajouter à la Bibliothèque",
+    "zh-Hans": "选择要添加到素材库的视频、图片或声音文件",
+    "ru": "Выберите видео, картинки или звуковые файлы для Библиотеки",
+    "uk": "Виберіть відео, картинки або звукові файли для Бібліотеки",
+    "ja": "ライブラリに追加するビデオ、画像、サウンドファイルを選んでください"
+  },
+  "Clear search": {
+    "de": "Suche löschen",
+    "fr": "Effacer la recherche",
+    "zh-Hans": "清除搜索",
+    "ru": "Очистить поиск",
+    "uk": "Очистити пошук",
+    "ja": "検索をクリア"
+  },
+  "Click Import, or drag files from Finder onto the Library.": {
+    "de": "Klicke auf „Importieren“ oder zieh Dateien aus dem Finder in die Bibliothek.",
+    "fr": "Cliquez sur Importer, ou faites glisser des fichiers du Finder vers la Bibliothèque.",
+    "zh-Hans": "点按“导入”，或将文件从“访达”拖到素材库。",
+    "ru": "Нажмите «Импорт» или перетащите файлы из Finder в Библиотеку.",
+    "uk": "Натисніть «Імпорт» або перетягніть файли з Finder у Бібліотеку.",
+    "ja": "“読み込む”をクリックするか、Finderからライブラリにファイルをドラッグします。"
+  },
+  "Couldn't extract the sound — %@": {
+    "de": "Der Ton konnte nicht extrahiert werden – %@",
+    "fr": "Impossible d’extraire le son — %@",
+    "zh-Hans": "无法提取声音 — %@",
+    "ru": "Не удалось извлечь звук — %@",
+    "uk": "Не вдалося витягти звук — %@",
+    "ja": "サウンドを抽出できませんでした — %@"
+  },
+  "Create": {
+    "de": "Erstellen",
+    "fr": "Créer",
+    "zh-Hans": "创建",
+    "ru": "Создать",
+    "uk": "Створити",
+    "ja": "作成"
+  },
+  "Date Added": {
+    "de": "Hinzugefügt am",
+    "fr": "Date d’ajout",
+    "zh-Hans": "添加日期",
+    "ru": "Дата добавления",
+    "uk": "Дата додавання",
+    "ja": "追加日"
+  },
+  "Delete Folder": {
+    "de": "Ordner löschen",
+    "fr": "Supprimer le dossier",
+    "zh-Hans": "删除文件夹",
+    "ru": "Удалить папку",
+    "uk": "Видалити папку",
+    "ja": "フォルダを削除"
+  },
+  "Delete from Project": {
+    "de": "Aus dem Projekt löschen",
+    "fr": "Supprimer du projet",
+    "zh-Hans": "从项目中删除",
+    "ru": "Удалить из проекта",
+    "uk": "Видалити з проєкту",
+    "ja": "プロジェクトから削除"
+  },
+  "Delete “%@” from the project?": {
+    "de": "„%@“ aus dem Projekt löschen?",
+    "fr": "Supprimer « %@ » du projet ?",
+    "zh-Hans": "要从项目中删除“%@”吗？",
+    "ru": "Удалить «%@» из проекта?",
+    "uk": "Видалити «%@» з проєкту?",
+    "ja": "“%@”をプロジェクトから削除しますか？"
+  },
+  "Deleted from the project — ⌘Z to undo": {
+    "de": "Aus dem Projekt gelöscht – ⌘Z zum Widerrufen",
+    "fr": "Supprimé du projet — ⌘Z pour annuler",
+    "zh-Hans": "已从项目中删除 — 按 ⌘Z 撤销",
+    "ru": "Удалено из проекта — ⌘Z, чтобы отменить",
+    "uk": "Видалено з проєкту — ⌘Z, щоб відмінити",
+    "ja": "プロジェクトから削除しました — ⌘Zで取り消し"
+  },
+  "Drag a file onto the timeline or the player, or click the + on its thumbnail. A video goes at the end of the video; a picture or a sound starts at the playhead, or where you drop it on the timeline.": {
+    "de": "Zieh eine Datei auf die Timeline oder den Player oder klicke auf das + in ihrem Vorschaubild. Ein Video kommt ans Ende; ein Bild oder ein Ton beginnt an der Abspielposition oder dort, wo du ihn auf der Timeline ablegst.",
+    "fr": "Faites glisser un fichier sur la timeline ou le lecteur, ou cliquez sur le + de sa vignette. Une vidéo va à la fin ; une image ou un son commence à la tête de lecture, ou là où vous le déposez sur la timeline.",
+    "zh-Hans": "将文件拖到时间线或播放器上，或点按缩略图上的 +。视频会放在末尾；图片或声音从播放头处开始，或从你在时间线上放下的位置开始。",
+    "ru": "Перетащите файл на таймлайн или в плеер либо нажмите + на миниатюре. Видео встает в конец; картинка или звук — на позицию воспроизведения или туда, куда вы бросили их на таймлайне.",
+    "uk": "Перетягніть файл на таймлайн або в плеєр чи натисніть + на мініатюрі. Відео стає в кінець; картинка або звук — у позицію відтворення або туди, куди ви кинули їх на таймлайні.",
+    "ja": "ファイルをタイムラインかプレーヤーにドラッグするか、サムネールの＋をクリックします。ビデオは末尾に、画像やサウンドは再生ヘッドの位置、またはタイムラインでドロップした位置から始まります。"
+  },
+  "Every video, picture, and sound file of the project in one place: what's in the video, and what you imported to use.": {
+    "de": "Alle Videos, Bilder und Tondateien des Projekts an einem Ort: was im Video ist und was du zum Verwenden importiert hast.",
+    "fr": "Toutes les vidéos, images et fichiers audio du projet au même endroit : ce qui est dans la vidéo, et ce que vous avez importé pour l’utiliser.",
+    "zh-Hans": "项目中的所有视频、图片和声音文件集中在一处：视频中已有的，以及你导入备用的。",
+    "ru": "Все видео, картинки и звуковые файлы проекта в одном месте: то, что уже в видео, и то, что вы импортировали для работы.",
+    "uk": "Усі відео, картинки й звукові файли проєкту в одному місці: те, що вже у відео, і те, що ви імпортували для роботи.",
+    "ja": "プロジェクトのビデオ、画像、サウンドファイルをひとまとめに。ビデオに使っているものも、使うために読み込んだものも。"
+  },
+  "Extract Audio": {
+    "de": "Audio extrahieren",
+    "fr": "Extraire l’audio",
+    "zh-Hans": "提取音频",
+    "ru": "Извлечь аудио",
+    "uk": "Витягти аудіо",
+    "ja": "オーディオを抽出"
+  },
+  "Extract Audio puts a video's sound in the Audio tab as its own file; the video keeps its sound.": {
+    "de": "„Audio extrahieren“ legt den Ton eines Videos als eigene Datei in den Tab „Audio“; das Video behält seinen Ton.",
+    "fr": "Extraire l’audio place le son d’une vidéo dans l’onglet Audio, en fichier séparé ; la vidéo garde son son.",
+    "zh-Hans": "“提取音频”会将视频的声音作为单独的文件放入“音频”标签中；视频本身的声音保持不变。",
+    "ru": "«Извлечь аудио» кладет звук видео на вкладку «Аудио» отдельным файлом; у видео звук остается.",
+    "uk": "«Витягти аудіо» кладе звук відео на вкладку «Аудіо» окремим файлом; у відео звук лишається.",
+    "ja": "“オーディオを抽出”は、ビデオのサウンドを別ファイルとして“オーディオ”タブに入れます。ビデオのサウンドはそのままです。"
+  },
+  "Extracting the sound…": {
+    "de": "Ton wird extrahiert …",
+    "fr": "Extraction du son…",
+    "zh-Hans": "正在提取声音…",
+    "ru": "Извлечение звука…",
+    "uk": "Видобування звуку…",
+    "ja": "サウンドを抽出中…"
+  },
+  "Folder %@": {
+    "de": "Ordner %@",
+    "fr": "Dossier %@",
+    "zh-Hans": "文件夹 %@",
+    "ru": "Папка %@",
+    "uk": "Папка %@",
+    "ja": "フォルダ %@"
+  },
+  "Found “%@”": {
+    "de": "„%@“ gefunden",
+    "fr": "« %@ » retrouvé",
+    "zh-Hans": "已找到“%@”",
+    "ru": "«%@» найден",
+    "uk": "«%@» знайдено",
+    "ja": "“%@”が見つかりました"
+  },
+  "Import": {
+    "de": "Importieren",
+    "fr": "Importer",
+    "zh-Hans": "导入",
+    "ru": "Импорт",
+    "uk": "Імпорт",
+    "ja": "読み込む"
+  },
+  "Import Media…": {
+    "de": "Medien importieren …",
+    "fr": "Importer des médias…",
+    "zh-Hans": "导入媒体…",
+    "ru": "Импортировать медиа…",
+    "uk": "Імпортувати медіа…",
+    "ja": "メディアを読み込む…"
+  },
+  "Import videos, pictures, and sound files (⌘I)": {
+    "de": "Videos, Bilder und Tondateien importieren (⌘I)",
+    "fr": "Importer des vidéos, des images et des fichiers audio (⌘I)",
+    "zh-Hans": "导入视频、图片和声音文件（⌘I）",
+    "ru": "Импортировать видео, картинки и звуковые файлы (⌘I)",
+    "uk": "Імпортувати відео, картинки й звукові файли (⌘I)",
+    "ja": "ビデオ、画像、サウンドファイルを読み込む（⌘I）"
+  },
+  "Import videos, pictures, and sound files, or drag them here from Finder.": {
+    "de": "Importiere Videos, Bilder und Tondateien oder zieh sie aus dem Finder hierher.",
+    "fr": "Importez des vidéos, des images et des fichiers audio, ou faites-les glisser ici depuis le Finder.",
+    "zh-Hans": "导入视频、图片和声音文件，或将它们从“访达”拖到这里。",
+    "ru": "Импортируйте видео, картинки и звуковые файлы или перетащите их сюда из Finder.",
+    "uk": "Імпортуйте відео, картинки й звукові файли або перетягніть їх сюди з Finder.",
+    "ja": "ビデオ、画像、サウンドファイルを読み込むか、Finderからここにドラッグします。"
+  },
+  "Imported files stay where they are until you save the project with Include media.": {
+    "de": "Importierte Dateien bleiben, wo sie sind, bis du das Projekt mit „Medien einschließen“ sicherst.",
+    "fr": "Les fichiers importés restent où ils sont jusqu’à ce que vous enregistriez le projet avec Inclure les médias.",
+    "zh-Hans": "导入的文件会留在原处，直到你以“包含媒体”方式存储项目。",
+    "ru": "Импортированные файлы остаются на месте, пока вы не сохраните проект с «Включить медиафайлы».",
+    "uk": "Імпортовані файли лишаються на місці, доки ви не збережете проєкт із «Включити медіафайли».",
+    "ja": "読み込んだファイルは、“メディアを含める”でプロジェクトを保存するまで元の場所に置かれたままです。"
+  },
+  "In the video": {
+    "de": "Im Video",
+    "fr": "Dans la vidéo",
+    "zh-Hans": "已在视频中",
+    "ru": "В видео",
+    "uk": "У відео",
+    "ja": "ビデオ内"
+  },
+  "It also comes out of the video. The file stays where it is, and ⌘Z brings it back.": {
+    "de": "Es wird auch aus dem Video entfernt. Die Datei bleibt, wo sie ist, und ⌘Z holt es zurück.",
+    "fr": "Il est aussi retiré de la vidéo. Le fichier reste où il est, et ⌘Z le rétablit.",
+    "zh-Hans": "它也会从视频中移除。文件保留在原处，按 ⌘Z 可恢复。",
+    "ru": "Он также уйдет из видео. Файл останется на месте, а ⌘Z все вернет.",
+    "uk": "Він також зникне з відео. Файл лишиться на місці, а ⌘Z усе поверне.",
+    "ja": "ビデオからも取り除かれます。ファイルは元の場所に残り、⌘Zで元に戻せます。"
+  },
+  "Kind": {
+    "de": "Art",
+    "fr": "Type",
+    "zh-Hans": "种类",
+    "ru": "Тип",
+    "uk": "Тип",
+    "ja": "種類"
+  },
+  "Library options": {
+    "de": "Optionen der Bibliothek",
+    "fr": "Options de la Bibliothèque",
+    "zh-Hans": "素材库选项",
+    "ru": "Параметры Библиотеки",
+    "uk": "Параметри Бібліотеки",
+    "ja": "ライブラリのオプション"
+  },
+  "List": {
+    "de": "Liste",
+    "fr": "Liste",
+    "zh-Hans": "列表",
+    "ru": "Список",
+    "uk": "Список",
+    "ja": "リスト"
+  },
+  "Missing": {
+    "de": "Fehlt",
+    "fr": "Manquant",
+    "zh-Hans": "缺失",
+    "ru": "Нет файла",
+    "uk": "Немає файлу",
+    "ja": "見つかりません"
+  },
+  "Missing — Locate… finds it": {
+    "de": "Fehlt – „Suchen …“ findet die Datei",
+    "fr": "Manquant — Localiser… le retrouve",
+    "zh-Hans": "缺失 — 使用“查找…”找到它",
+    "ru": "Нет файла — «Найти…» найдет его",
+    "uk": "Немає файлу — «Знайти…» знайде його",
+    "ja": "見つかりません — “場所を指定…”で見つけられます"
+  },
+  "Move the pointer across a video's thumbnail to look through it. The time in its corner is its length.": {
+    "de": "Bewege den Zeiger über das Vorschaubild eines Videos, um es durchzusehen. Die Zeit in der Ecke ist seine Länge.",
+    "fr": "Passez le pointeur sur la vignette d’une vidéo pour la parcourir. Le temps dans son coin est sa durée.",
+    "zh-Hans": "将指针移过视频的缩略图即可浏览其内容。角落里的时间是它的时长。",
+    "ru": "Ведите указатель по миниатюре видео, чтобы просмотреть его. Время в углу — его длина.",
+    "uk": "Ведіть вказівник по мініатюрі відео, щоб переглянути його. Час у куті — його тривалість.",
+    "ja": "ビデオのサムネールの上でポインタを動かすと中身を確認できます。隅の時間はその長さです。"
+  },
+  "Move to Folder": {
+    "de": "In Ordner bewegen",
+    "fr": "Déplacer vers un dossier",
+    "zh-Hans": "移到文件夹",
+    "ru": "Переместить в папку",
+    "uk": "Перемістити в папку",
+    "ja": "フォルダに移動"
+  },
+  "Name": {
+    "de": "Name",
+    "fr": "Nom",
+    "zh-Hans": "名称",
+    "ru": "Имя",
+    "uk": "Назва",
+    "ja": "名前"
+  },
+  "New Folder": {
+    "de": "Neuer Ordner",
+    "fr": "Nouveau dossier",
+    "zh-Hans": "新建文件夹",
+    "ru": "Новая папка",
+    "uk": "Нова папка",
+    "ja": "新規フォルダ"
+  },
+  "New Folder…": {
+    "de": "Neuer Ordner …",
+    "fr": "Nouveau dossier…",
+    "zh-Hans": "新建文件夹…",
+    "ru": "Новая папка…",
+    "uk": "Нова папка…",
+    "ja": "新規フォルダ…"
+  },
+  "No sound yet": {
+    "de": "Noch kein Ton",
+    "fr": "Pas encore de son",
+    "zh-Hans": "还没有声音",
+    "ru": "Звука пока нет",
+    "uk": "Звуку поки немає",
+    "ja": "サウンドはまだありません"
+  },
+  "Nothing here yet": {
+    "de": "Hier ist noch nichts",
+    "fr": "Rien pour l’instant",
+    "zh-Hans": "这里还没有内容",
+    "ru": "Здесь пока пусто",
+    "uk": "Тут поки порожньо",
+    "ja": "まだ何もありません"
+  },
+  "Nothing matches “%@”": {
+    "de": "Nichts passt zu „%@“",
+    "fr": "Aucun résultat pour « %@ »",
+    "zh-Hans": "没有与“%@”匹配的内容",
+    "ru": "Ничего не найдено по «%@»",
+    "uk": "Нічого не знайдено за «%@»",
+    "ja": "“%@”に一致するものはありません"
+  },
+  "Picture": {
+    "de": "Bild",
+    "fr": "Image",
+    "zh-Hans": "图片",
+    "ru": "Картинка",
+    "uk": "Картинка",
+    "ja": "画像"
+  },
+  "Undo Delete Folder": {
+    "de": "Löschen des Ordners widerrufen",
+    "fr": "Annuler la suppression du dossier",
+    "zh-Hans": "撤销删除文件夹",
+    "ru": "Отменить удаление папки",
+    "uk": "Відмінити видалення папки",
+    "ja": "フォルダの削除を取り消す"
+  },
+  "Redo Delete Folder": {
+    "de": "Löschen des Ordners wiederholen",
+    "fr": "Rétablir la suppression du dossier",
+    "zh-Hans": "重做删除文件夹",
+    "ru": "Повторить удаление папки",
+    "uk": "Повторити видалення папки",
+    "ja": "フォルダの削除をやり直す"
+  },
+  "Undo Delete from Project": {
+    "de": "Löschen aus dem Projekt widerrufen",
+    "fr": "Annuler la suppression du projet",
+    "zh-Hans": "撤销从项目中删除",
+    "ru": "Отменить удаление из проекта",
+    "uk": "Відмінити видалення з проєкту",
+    "ja": "プロジェクトからの削除を取り消す"
+  },
+  "Redo Delete from Project": {
+    "de": "Löschen aus dem Projekt wiederholen",
+    "fr": "Rétablir la suppression du projet",
+    "zh-Hans": "重做从项目中删除",
+    "ru": "Повторить удаление из проекта",
+    "uk": "Повторити видалення з проєкту",
+    "ja": "プロジェクトからの削除をやり直す"
+  },
+  "Undo Extract Audio": {
+    "de": "Extrahieren des Audios widerrufen",
+    "fr": "Annuler l’extraction de l’audio",
+    "zh-Hans": "撤销提取音频",
+    "ru": "Отменить извлечение аудио",
+    "uk": "Відмінити видобування аудіо",
+    "ja": "オーディオの抽出を取り消す"
+  },
+  "Redo Extract Audio": {
+    "de": "Extrahieren des Audios wiederholen",
+    "fr": "Rétablir l’extraction de l’audio",
+    "zh-Hans": "重做提取音频",
+    "ru": "Повторить извлечение аудио",
+    "uk": "Повторити видобування аудіо",
+    "ja": "オーディオの抽出をやり直す"
+  },
+  "Undo Import Media": {
+    "de": "Importieren der Medien widerrufen",
+    "fr": "Annuler l’importation des médias",
+    "zh-Hans": "撤销导入媒体",
+    "ru": "Отменить импорт медиа",
+    "uk": "Відмінити імпорт медіа",
+    "ja": "メディアの読み込みを取り消す"
+  },
+  "Redo Import Media": {
+    "de": "Importieren der Medien wiederholen",
+    "fr": "Rétablir l’importation des médias",
+    "zh-Hans": "重做导入媒体",
+    "ru": "Повторить импорт медиа",
+    "uk": "Повторити імпорт медіа",
+    "ja": "メディアの読み込みをやり直す"
+  },
+  "Undo Move Media": {
+    "de": "Bewegen der Medien widerrufen",
+    "fr": "Annuler le déplacement du média",
+    "zh-Hans": "撤销移动媒体",
+    "ru": "Отменить перемещение медиа",
+    "uk": "Відмінити переміщення медіа",
+    "ja": "メディアの移動を取り消す"
+  },
+  "Redo Move Media": {
+    "de": "Bewegen der Medien wiederholen",
+    "fr": "Rétablir le déplacement du média",
+    "zh-Hans": "重做移动媒体",
+    "ru": "Повторить перемещение медиа",
+    "uk": "Повторити переміщення медіа",
+    "ja": "メディアの移動をやり直す"
+  },
+  "Undo New Folder": {
+    "de": "Neuen Ordner widerrufen",
+    "fr": "Annuler le nouveau dossier",
+    "zh-Hans": "撤销新建文件夹",
+    "ru": "Отменить создание папки",
+    "uk": "Відмінити створення папки",
+    "ja": "新規フォルダを取り消す"
+  },
+  "Redo New Folder": {
+    "de": "Neuen Ordner wiederholen",
+    "fr": "Rétablir le nouveau dossier",
+    "zh-Hans": "重做新建文件夹",
+    "ru": "Повторить создание папки",
+    "uk": "Повторити створення папки",
+    "ja": "新規フォルダをやり直す"
+  },
+  "Undo Rename Folder": {
+    "de": "Umbenennen des Ordners widerrufen",
+    "fr": "Annuler le changement de nom du dossier",
+    "zh-Hans": "撤销重新命名文件夹",
+    "ru": "Отменить переименование папки",
+    "uk": "Відмінити перейменування папки",
+    "ja": "フォルダの名称変更を取り消す"
+  },
+  "Redo Rename Folder": {
+    "de": "Umbenennen des Ordners wiederholen",
+    "fr": "Rétablir le changement de nom du dossier",
+    "zh-Hans": "重做重新命名文件夹",
+    "ru": "Повторить переименование папки",
+    "uk": "Повторити перейменування папки",
+    "ja": "フォルダの名称変更をやり直す"
+  },
+  "Undo Rename Media": {
+    "de": "Umbenennen der Medien widerrufen",
+    "fr": "Annuler le changement de nom du média",
+    "zh-Hans": "撤销重新命名媒体",
+    "ru": "Отменить переименование медиа",
+    "uk": "Відмінити перейменування медіа",
+    "ja": "メディアの名称変更を取り消す"
+  },
+  "Redo Rename Media": {
+    "de": "Umbenennen der Medien wiederholen",
+    "fr": "Rétablir le changement de nom du média",
+    "zh-Hans": "重做重新命名媒体",
+    "ru": "Повторить переименование медиа",
+    "uk": "Повторити перейменування медіа",
+    "ja": "メディアの名称変更をやり直す"
+  },
+  "Undo Replace Media": {
+    "de": "Ersetzen der Medien widerrufen",
+    "fr": "Annuler le remplacement du média",
+    "zh-Hans": "撤销替换媒体",
+    "ru": "Отменить замену медиа",
+    "uk": "Відмінити заміну медіа",
+    "ja": "メディアの置き換えを取り消す"
+  },
+  "Redo Replace Media": {
+    "de": "Ersetzen der Medien wiederholen",
+    "fr": "Rétablir le remplacement du média",
+    "zh-Hans": "重做替换媒体",
+    "ru": "Повторить замену медиа",
+    "uk": "Повторити заміну медіа",
+    "ja": "メディアの置き換えをやり直す"
+  },
+  "Rename “%@”": {
+    "de": "„%@“ umbenennen",
+    "fr": "Renommer « %@ »",
+    "zh-Hans": "重新命名“%@”",
+    "ru": "Переименовать «%@»",
+    "uk": "Перейменувати «%@»",
+    "ja": "“%@”の名称を変更"
+  },
+  "Rename… changes the name in the Library only. The file keeps its own.": {
+    "de": "„Umbenennen …“ ändert nur den Namen in der Bibliothek. Die Datei behält ihren.",
+    "fr": "Renommer… ne change que le nom dans la Bibliothèque. Le fichier garde le sien.",
+    "zh-Hans": "“重新命名…”只更改素材库中的名称，文件本身的名称不变。",
+    "ru": "«Переименовать…» меняет имя только в Библиотеке. У файла остается свое.",
+    "uk": "«Перейменувати…» змінює назву лише в Бібліотеці. Файл зберігає свою.",
+    "ja": "“名称変更…”はライブラリでの名前だけを変えます。ファイル名はそのままです。"
+  },
+  "Replaced with “%@”": {
+    "de": "Durch „%@“ ersetzt",
+    "fr": "Remplacé par « %@ »",
+    "zh-Hans": "已替换为“%@”",
+    "ru": "Заменено на «%@»",
+    "uk": "Замінено на «%@»",
+    "ja": "“%@”に置き換えました"
+  },
+  "Right-click a file for Reveal in Finder, Rename…, Move to Folder, Replace…, Extract Audio, and Delete from Project.": {
+    "de": "Klicke mit der rechten Maustaste auf eine Datei für „Im Finder zeigen“, „Umbenennen …“, „In Ordner bewegen“, „Ersetzen …“, „Audio extrahieren“ und „Aus dem Projekt löschen“.",
+    "fr": "Cliquez droit sur un fichier pour Afficher dans le Finder, Renommer…, Déplacer vers un dossier, Remplacer…, Extraire l’audio et Supprimer du projet.",
+    "zh-Hans": "右键点按文件可使用“在‘访达’中显示”“重新命名…”“移到文件夹”“替换…”“提取音频”和“从项目中删除”。",
+    "ru": "Щелкните файл правой кнопкой: «Показать в Finder», «Переименовать…», «Переместить в папку», «Заменить…», «Извлечь аудио» и «Удалить из проекта».",
+    "uk": "Клацніть файл правою кнопкою: «Показати у Finder», «Перейменувати…», «Перемістити в папку», «Замінити…», «Витягти аудіо» й «Видалити з проєкту».",
+    "ja": "ファイルを右クリックすると、“Finderに表示”、“名称変更…”、“フォルダに移動”、“置き換える…”、“オーディオを抽出”、“プロジェクトから削除”が使えます。"
+  },
+  "Search, Thumbnails or List, Sort By, and New Folder… are at the top of the Library.": {
+    "de": "Suchen, Vorschaubilder oder Liste, Sortieren nach und Neuer Ordner … findest du oben in der Bibliothek.",
+    "fr": "Rechercher, Vignettes ou Liste, Trier par et Nouveau dossier… sont en haut de la Bibliothèque.",
+    "zh-Hans": "搜索、缩略图或列表、排序方式和“新建文件夹…”位于素材库顶部。",
+    "ru": "Поиск, Миниатюры или Список, Сортировка и «Новая папка…» — вверху Библиотеки.",
+    "uk": "Пошук, Мініатюри чи Список, Сортування й «Нова папка…» — угорі Бібліотеки.",
+    "ja": "検索、サムネールまたはリスト、並べ替え、“新規フォルダ…”はライブラリの上部にあります。"
+  },
+  "Some files weren't added: LF Studios takes videos, pictures, and sound files": {
+    "de": "Einige Dateien wurden nicht hinzugefügt: LF Studios nimmt Videos, Bilder und Tondateien",
+    "fr": "Certains fichiers n’ont pas été ajoutés : LF Studios accepte les vidéos, les images et les fichiers audio",
+    "zh-Hans": "部分文件未添加：LF Studios 只接受视频、图片和声音文件",
+    "ru": "Некоторые файлы не добавлены: LF Studios принимает видео, картинки и звуковые файлы",
+    "uk": "Деякі файли не додано: LF Studios приймає відео, картинки й звукові файли",
+    "ja": "一部のファイルは追加されませんでした。LF Studiosで使えるのはビデオ、画像、サウンドファイルです"
+  },
+  "Sort By": {
+    "de": "Sortieren nach",
+    "fr": "Trier par",
+    "zh-Hans": "排序方式",
+    "ru": "Сортировка",
+    "uk": "Сортування",
+    "ja": "並べ替え"
+  },
+  "The Library's Media and Audio tabs, at the top left of the video editor. File ▸ Import Media… (⌘I).": {
+    "de": "Die Tabs „Medien“ und „Audio“ der Bibliothek, oben links im Video-Editor. Ablage ▸ Medien importieren … (⌘I).",
+    "fr": "Les onglets Médias et Audio de la Bibliothèque, en haut à gauche de l’éditeur vidéo. Fichier ▸ Importer des médias… (⌘I).",
+    "zh-Hans": "视频编辑器左上方素材库的“媒体”和“音频”标签。文件 ▸ 导入媒体…（⌘I）。",
+    "ru": "Вкладки «Медиа» и «Аудио» Библиотеки, вверху слева в видеоредакторе. Файл ▸ Импортировать медиа… (⌘I).",
+    "uk": "Вкладки «Медіа» й «Аудіо» Бібліотеки, угорі ліворуч у відеоредакторі. Файл ▸ Імпортувати медіа… (⌘I).",
+    "ja": "ビデオエディタ左上のライブラリの“メディア”と“オーディオ”タブ。“ファイル”＞“メディアを読み込む…”（⌘I）。"
+  },
+  "The name in the Library. The file keeps its own.": {
+    "de": "Der Name in der Bibliothek. Die Datei behält ihren.",
+    "fr": "Le nom dans la Bibliothèque. Le fichier garde le sien.",
+    "zh-Hans": "素材库中的名称。文件本身的名称不变。",
+    "ru": "Имя в Библиотеке. У файла остается свое.",
+    "uk": "Назва в Бібліотеці. Файл зберігає свою.",
+    "ja": "ライブラリでの名前です。ファイル名はそのままです。"
+  },
+  "The recording, its camera, added recordings, music, sound files, and pictures are already there. Added marks what's in the video.": {
+    "de": "Die Aufzeichnung, ihre Kamera, hinzugefügte Aufzeichnungen, Musik, Tondateien und Bilder sind schon da. „Hinzugefügt“ markiert, was im Video ist.",
+    "fr": "L’enregistrement, sa caméra, les enregistrements ajoutés, la musique, les fichiers audio et les images y sont déjà. « Ajouté » marque ce qui est dans la vidéo.",
+    "zh-Hans": "录制内容、其摄像头画面、添加的录制、音乐、声音文件和图片都已在其中。“已添加”标记视频中已有的内容。",
+    "ru": "Запись, ее камера, добавленные записи, музыка, звуковые файлы и картинки уже там. «Добавлено» отмечает то, что есть в видео.",
+    "uk": "Запис, його камера, додані записи, музика, звукові файли й картинки вже там. «Додано» позначає те, що є у відео.",
+    "ja": "収録、そのカメラ、追加した収録、音楽、サウンドファイル、画像はすでに入っています。“追加済み”はビデオに使われているものを示します。"
+  },
+  "The sound is in the Library as “%@”": {
+    "de": "Der Ton ist als „%@“ in der Bibliothek",
+    "fr": "Le son est dans la Bibliothèque sous le nom « %@ »",
+    "zh-Hans": "声音已作为“%@”放入素材库",
+    "ru": "Звук добавлен в Библиотеку как «%@»",
+    "uk": "Звук додано в Бібліотеку як «%@»",
+    "ja": "サウンドを“%@”としてライブラリに追加しました"
+  },
+  "Thumbnails": {
+    "de": "Vorschaubilder",
+    "fr": "Vignettes",
+    "zh-Hans": "缩略图",
+    "ru": "Миниатюры",
+    "uk": "Мініатюри",
+    "ja": "サムネール"
+  },
+  "View": {
+    "de": "Darstellung",
+    "fr": "Présentation",
+    "zh-Hans": "显示",
+    "ru": "Вид",
+    "uk": "Вигляд",
+    "ja": "表示"
+  },
+  "View, sort, folders, and Extract Audio": {
+    "de": "Darstellung, Sortierung, Ordner und Audio extrahieren",
+    "fr": "Présentation, tri, dossiers et Extraire l’audio",
+    "zh-Hans": "显示、排序、文件夹和提取音频",
+    "ru": "Вид, сортировка, папки и «Извлечь аудио»",
+    "uk": "Вигляд, сортування, папки й «Витягти аудіо»",
+    "ja": "表示、並べ替え、フォルダ、オーディオを抽出"
+  },
+  "Your media in the Library": {
+    "de": "Deine Medien in der Bibliothek",
+    "fr": "Vos médias dans la Bibliothèque",
+    "zh-Hans": "素材库中的媒体",
+    "ru": "Ваши медиафайлы в Библиотеке",
+    "uk": "Ваші медіафайли в Бібліотеці",
+    "ja": "ライブラリのメディア"
+  },
+  "“%@” has no sound": {
+    "de": "„%@“ hat keinen Ton",
+    "fr": "« %@ » n’a pas de son",
+    "zh-Hans": "“%@”没有声音",
+    "ru": "В «%@» нет звука",
+    "uk": "У «%@» немає звуку",
+    "ja": "“%@”にはサウンドがありません"
   }
 }

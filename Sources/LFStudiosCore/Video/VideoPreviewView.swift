@@ -253,7 +253,11 @@ struct VideoStageView: View {
     var body: some View {
         GeometryReader { proxy in
             let canvas = model.isCropping ? model.project.sourceSize : model.project.canvasSize()
-            let fitted = Self.fit(canvas, in: proxy.size)
+            // The player's zoom (Fit, 150%…): larger than the space, it scrolls.
+            let zoom = model.isCropping ? 1 : max(model.previewZoom, 1)
+            let base = Self.fit(canvas, in: proxy.size)
+            let fitted = CGSize(width: (base.width * zoom).rounded(), height: (base.height * zoom).rounded())
+            ScrollView(zoom > 1.001 ? [.horizontal, .vertical] : [], showsIndicators: zoom > 1.001) {
             ZStack {
                 Group {
                     if Self.drawsStills, let still = model.previewRenderer.still(size: fitted, at: model.clock.time) {
@@ -279,7 +283,8 @@ struct VideoStageView: View {
                     }
                 }
             }
-            .frame(width: proxy.size.width, height: proxy.size.height)
+            .frame(width: max(proxy.size.width, fitted.width), height: max(proxy.size.height, fitted.height))
+            }
         }
     }
 

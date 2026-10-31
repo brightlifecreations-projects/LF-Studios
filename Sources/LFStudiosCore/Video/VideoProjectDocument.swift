@@ -37,6 +37,10 @@ struct VideoProjectDocument: Codable {
     static let lfspTypeIdentifier = "com.lfstudios.lfsp"
     /// Every name opens.
     static let openableExtensions: Set<String> = [fileExtension, lfspFileExtension, previousFileExtension, legacyFileExtension]
+    /// In a manifest: the oldest project version that can open it (a newer
+    /// one than this means "needs a newer LF Studios"). Projects that every
+    /// version since 1.13.0 can read leave it out.
+    static let requiresKey = "requires"
     /// Bump when the layout changes, and teach `migrate` the step up, so
     /// every older project still opens.
     /// 2: folder projects (`@folder/` paths). Projects without them are
@@ -168,12 +172,21 @@ struct VideoProjectDocument: Codable {
     enum ReadError: Error, Equatable {
         case notAProject
         case damaged
+        /// Saved by a newer LF Studios in a form this one can't read: it
+        /// says so, with Check for Updates (1.13.0).
+        case needsNewerVersion
     }
 
     /// The manifest of any version, brought up to this one.
     static func decode(_ data: Data) throws -> VideoProjectDocument {
         guard var object = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else { throw ReadError.damaged }
-        guard let found = object["format"] as? String, found == format || found == legacyFormat else { throw ReadError.notAProject }
+        guard let found = object["format"] as? String else { throw ReadError.notAProject }
+        guard found == format || found == legacyFormat else {
+            // A later kind of LF Studios project ("lfstudios-project-3"…).
+            throw found.hasPrefix(format) ? ReadError.needsNewerVersion : ReadError.notAProject
+        }
+        // A project that says this version can't show it as it is.
+        if let required = object[Self.requiresKey] as? Int, required > currentVersion { throw ReadError.needsNewerVersion }
         object = migrate(object, from: object["version"] as? Int ?? 1)
         do {
             let upgraded = try JSONSerialization.data(withJSONObject: object)
@@ -265,6 +278,8 @@ struct VideoProjectContents {
         // This Mac's caches the edit uses (VideoProjectCaches.swift).
         for index in project.carriedVoices.indices { map(&project.carriedVoices[index].path, .audio) }
         if project.faceTracking?.analysisPath != nil { map(&project.faceTracking!.analysisPath!, .data) }
+        // The Library's imported media (VideoMediaBin.swift).
+        if project.mediaBin != nil { project.mediaBin!.mapPaths { path, kind in transform(path, kind) } }
         if recording != nil {
             map(&recording!.videoURLPath, .screen)
             if recording!.webcam != nil { map(&recording!.webcam!.path, .camera) }

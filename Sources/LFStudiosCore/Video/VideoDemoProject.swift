@@ -903,6 +903,10 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
     var previousRatio: AspectPreset?
     /// The reframing window keeps zoom targets in view (set by Adapt).
     var reframeFollowsZooms = false
+    /// The Library's media: files imported but not (yet) in the video, and
+    /// the names and folders given there (nil: never used,
+    /// VideoMediaBin.swift).
+    var mediaBin: VideoMediaBin?
 
     var sourceURL: URL { URL(fileURLWithPath: sourcePath) }
     var sourceSize: CGSize { CGSize(width: sourceWidth, height: sourceHeight) }
@@ -1480,7 +1484,7 @@ extension VideoDemoProject {
         case webcam, cameraLayouts, importedCamera, splitVideoAspect, customAspect, trackStates, autoZoom, reframe, captions, transcriptLanguage, captionStyle, keystrokes, keystrokeStyle, crop
         case cards, music, audioTracks, clickSounds, transitions, captionTracks, sources, imageOverlayEffects, markers
         case textCursor, keyPresses, loupeStyle, faceTracking, carriedVoices, speakerNotes
-        case ratioVersions, ratioShared, ratioBase, previousRatio, reframeFollowsZooms
+        case ratioVersions, ratioShared, ratioBase, previousRatio, reframeFollowsZooms, mediaBin
         // Legacy (v1) keys
         case backgroundPreset, customBackgroundPath, stageInset, shadowStrength, zoomKeyframes
         case showCursorOverlay, enlargeCursor, showClickRipple, smoothCursor, cursorScale, clickSpotlight, cursorMotionBlur
@@ -1539,6 +1543,7 @@ extension VideoDemoProject {
         ratioBase = try? container.decodeIfPresent(AspectPreset.self, forKey: .ratioBase)
         previousRatio = try? container.decodeIfPresent(AspectPreset.self, forKey: .previousRatio)
         reframeFollowsZooms = (try? container.decodeIfPresent(Bool.self, forKey: .reframeFollowsZooms)) ?? false
+        mediaBin = (try? container.decodeIfPresent(VideoMediaBin.self, forKey: .mediaBin)).flatMap { $0 }
 
         let storedVersion = try container.decodeIfPresent(Int.self, forKey: .version) ?? 1
         if storedVersion >= 2 {
@@ -1632,6 +1637,7 @@ extension VideoDemoProject {
         try container.encodeIfPresent(ratioBase, forKey: .ratioBase)
         try container.encodeIfPresent(previousRatio, forKey: .previousRatio)
         if reframeFollowsZooms { try container.encode(true, forKey: .reframeFollowsZooms) }
+        if let mediaBin, !mediaBin.isEmpty { try container.encode(mediaBin, forKey: .mediaBin) }
         try container.encode(cursorSamples, forKey: .cursorSamples)
         try container.encode(clickEvents, forKey: .clickEvents)
         try container.encode(nativeCursorVisible, forKey: .nativeCursorVisible)
