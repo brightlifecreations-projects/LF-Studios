@@ -671,9 +671,12 @@ enum GuideContent {
                     L("Select the clips (⇧-click to add more), then press ⌥G."),
                     L("Move it on the player or the timeline; set its place, size, turn and opacity in Properties."),
                     L("Break Apart (⌥⇧G) gives the clips back, looking as they do."),
+                    L("To change a clip inside, double-click the compound (or click Open in Properties). Its clips show one by one; the rest of the video waits, dimmed."),
+                    L("Click Back above the timeline, or press Esc, to return to the whole video."),
                 ],
                 keys: [.fixed("⌥G  ⌥⇧G", L("Make compound clip / break apart"))],
-                since: "1.15.0",
+                tips: [L("Anything you add while it's open joins it. Nothing outside it can change until you go back.")],
+                since: "1.16.0",
                 related: ["video-tracks"]
             ),
             GuideEntry(
@@ -2317,10 +2320,11 @@ enum GuideContent {
                 points: [
                     L("Use as my voice: the recording's microphone goes quiet and this track is the voice. Enhance voice and Podcast mode clean it up, and the music dips under it."),
                     L("Dip under voice: an added track (like background sound) gets quieter while you talk. It's off until you turn it on."),
+                    L("Music ducks under this: the music also gets quieter while a voiceover or another added voice speaks. It's off until you turn it on, and needs Lower under your voice on in the music."),
                 ],
                 tips: [L("Sync it by sound first, so captions made from it line up with the video.")],
                 showMe: .editor(.audio),
-                since: "1.7.0",
+                since: "1.16.0",
                 related: ["audio-added", "audio-enhance", "audio-podcast"]
             ),
             GuideEntry(

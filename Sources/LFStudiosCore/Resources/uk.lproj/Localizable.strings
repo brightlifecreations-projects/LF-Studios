@@ -604,6 +604,8 @@
 	<string>Будь-яка інша папка: «Імпорт папки» показує список відео та звукових файлів. Виберіть, що з них запис екрана, що — відео з камери, який звук додати як доріжки і коли кожен починається.</string>
 	<key>Any shape, like 3:2</key>
 	<string>Будь-яка форма, як-от 3:2</string>
+	<key>Anything you add while it's open joins it. Nothing outside it can change until you go back.</key>
+	<string>Усе, що ви додасте, поки його відкрито, увійде до нього. Нічого зовні не зміниться, доки ви не повернетеся.</string>
 	<key>App</key>
 	<string>Програма</string>
 	<key>Appearance</key>
@@ -770,6 +772,10 @@
 	<string>На початок</string>
 	<key>Back to the usual size, in the spot chosen above</key>
 	<string>Повернути звичний розмір у вибраному вище місці</string>
+	<key>Back to the whole video</key>
+	<string>Назад до всього відео</string>
+	<key>Back to the whole video (Esc)</key>
+	<string>Назад до всього відео (Esc)</string>
 	<key>Back · pause · faster</key>
 	<string>Назад · пауза · швидше</string>
 	<key>Background</key>
@@ -1518,6 +1524,8 @@
 	<string>Клацніть «Додати текст» або перетягніть шаблон на шкалу часу.</string>
 	<key>Click Apply, or press Return.</key>
 	<string>Клацніть «Застосувати» або натисніть Return.</string>
+	<key>Click Back above the timeline, or press Esc, to return to the whole video.</key>
+	<string>Натисніть «Назад» над таймлайном або Esc, щоб повернутися до всього відео.</string>
 	<key>Click Background.</key>
 	<string>Клацніть «Тло».</string>
 	<key>Click Blur above the preview, or press B.</key>
@@ -3610,6 +3618,12 @@
 	<string>Містить: %@</string>
 	<key>Inset</key>
 	<string>Внутрішня</string>
+	<key>Inside a compound clip only its clips change. Esc goes back to the whole video.</key>
+	<string>Усередині складеного кліпу змінюються лише його кліпи. Esc повертає до всього відео.</string>
+	<key>Inside compound clip “%@”</key>
+	<string>Усередині складеного кліпу «%@»</string>
+	<key>Inside “%@”: change its clips here. Esc goes back.</key>
+	<string>Усередині «%@»: змінюйте його кліпи тут. Esc — назад.</string>
 	<key>Inspector tabs</key>
 	<string>Вкладки інспектора</string>
 	<key>Instagram feed</key>
@@ -3688,8 +3702,10 @@
 	<string>Це ключові кадри масштабу на кліпі після склейки. Змінюйте їх у «Властивості ▸ Масштаб»: пересуньте покажчик відтворення, змініть масштаб або натисніть ◆.</string>
 	<key>Italic</key>
 	<string>Курсив</string>
-	<key>Its clips keep their own settings: break it apart to change one.</key>
-	<string>Його кліпи зберігають власні параметри: розберіть його, щоб змінити один із них.</string>
+	<key>Its clips keep their own settings. Open it (or double-click it) to change one.</key>
+	<string>Його кліпи зберігають власні налаштування. Відкрийте його (або двічі клацніть), щоб змінити один із них.</string>
+	<key>Its clips on a timeline of their own, to change one (or double-click it)</key>
+	<string>Його кліпи на окремому таймлайні, щоб змінити один (або двічі клацніть)</string>
 	<key>Its clips on their own again, looking as they do now (⇧⌥G)</key>
 	<string>Знову окремі кліпи, що виглядають так, як зараз (⇧⌥G)</string>
 	<key>Its own arrow, text and hand pointers, drawn for the video.</key>
@@ -4406,6 +4422,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Музика</string>
 	<key>Music added — it dips while you talk</key>
 	<string>Музику додано — вона стишується, коли ви говорите</string>
+	<key>Music ducks under this</key>
+	<string>Стишувати музику під цю доріжку</string>
+	<key>Music ducks under this: the music also gets quieter while a voiceover or another added voice speaks. It's off until you turn it on, and needs Lower under your voice on in the music.</key>
+	<string>Стишувати музику під цю доріжку: музика стає тихішою й тоді, коли звучить закадровий голос чи інший доданий голос. Вимкнено, доки ви не ввімкнете; у музиці має бути ввімкнено «Стишувати під голос».</string>
 	<key>Music note</key>
 	<string>Нота</string>
 	<key>Music options</key>
@@ -4822,6 +4842,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Лише для цього, і ніколи — щоб надіслати вашу роботу:</string>
 	<key>Only if you turned them on: shortcuts, typing positions and times, and your speaker notes.</key>
 	<string>Лише якщо ви їх увімкнули: скорочення, положення й моменти набору тексту та ваші нотатки доповідача.</string>
+	<key>Only its clips change here.</key>
+	<string>Тут змінюються лише його кліпи.</string>
 	<key>Only shortcuts with ⌘ or ⌃ (and a few keys like Esc) are saved, never ordinary typing.</key>
 	<string>Зберігаються лише скорочення з ⌘ чи ⌃ (і кілька клавіш, як-от Esc), але ніколи звичайний набір тексту.</string>
 	<key>Only text and picture annotations can move to a track</key>
@@ -4896,6 +4918,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Поява й зникнення</string>
 	<key>Open at login</key>
 	<string>Відкривати під час входу</string>
+	<key>Open compound clip</key>
+	<string>Відкрити складений кліп</string>
 	<key>Open in annotation editor</key>
 	<string>Відкрити в редакторі знімків</string>
 	<key>Open or copy each link and email address.</key>
@@ -5770,6 +5794,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторити видалення з проєкту</string>
 	<key>Redo Detect Beats</key>
 	<string>Повторити пошук бітів</string>
+	<key>Redo Duck Music</key>
+	<string>Повторити стишування музики</string>
 	<key>Redo Edit Caption</key>
 	<string>Повторити редагування субтитру</string>
 	<key>Redo Edit Text</key>
@@ -5974,6 +6000,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторити зміну стилю прожектора</string>
 	<key>Redo Start Over</key>
 	<string>Повторити повернення до оригіналу</string>
+	<key>Redo Stop Ducking Music</key>
+	<string>Повторити вимкнення стишування музики</string>
 	<key>Redo Stop Following</key>
 	<string>Повторити припинення відстеження</string>
 	<key>Redo Style Change</key>
@@ -6554,6 +6582,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Виберіть кліп або виділіть частину, перетягнувши з ⇧, і задайте «Швидкість» на панелі праворуч.</string>
 	<key>Select a compound clip to break it apart</key>
 	<string>Виберіть складений кліп, щоб розібрати його</string>
+	<key>Select a compound clip to open it</key>
+	<string>Виберіть складений кліп, щоб відкрити його</string>
 	<key>Select a range to cut</key>
 	<string>Вибрати проміжок для вирізання</string>
 	<key>Select a text or picture annotation ▸ Move to a Track.</key>
@@ -7488,6 +7518,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Модель один раз завантажується з Hugging Face. Після цього Whisper працює без інтернету, а ваш запис ніколи не вивантажується.</string>
 	<key>The music</key>
 	<string>Музика</string>
+	<key>The music gets quieter while this track speaks, as it does under your voice</key>
+	<string>Музика стає тихішою, поки звучить мова на цій доріжці, як під вашим голосом</string>
 	<key>The name in the Library. The file keeps its own.</key>
 	<string>Назва в Бібліотеці. Файл зберігає свою.</string>
 	<key>The notes never appear in a recording, a screenshot, or screen sharing.</key>
@@ -7808,6 +7840,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Щоб вигнути стрілку, виберіть її й потягніть точку посередині.</string>
 	<key>To blur something yourself, press B and drag the blur over it.</key>
 	<string>Щоб розмити щось самостійно, натисніть B і перетягніть розмиття на потрібне місце.</string>
+	<key>To change a clip inside, double-click the compound (or click Open in Properties). Its clips show one by one; the rest of the video waits, dimmed.</key>
+	<string>Щоб змінити кліп усередині, двічі клацніть складений кліп (або «Відкрити» у властивостях). Його кліпи з’являться окремо, а решта відео чекає, притемнена.</string>
 	<key>To change how far it zooms and for how long, click ⌄ next to the button: Scale and Duration.</key>
 	<string>Щоб змінити силу й тривалість наближення, натисніть ⌄ поруч із кнопкою: «Масштаб» і «Тривалість».</string>
 	<key>To cut a mistake, move the playhead to it, press ⌘B to split, click the bad part, and press ⌫.</key>
@@ -7974,6 +8008,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Увімкніть «Вступна заставка» чи «Завершальна заставка».</string>
 	<key>Turn on Keep face centered. LF Studios looks for your face once, with progress and Cancel.</key>
 	<string>Увімкніть «Тримати обличчя в центрі». LF Studios один раз шукає ваше обличчя — з індикатором поступу й кнопкою «Скасувати».</string>
+	<key>Turn on Lower under your voice in the music's settings first</key>
+	<string>Спершу ввімкніть «Стишувати під голос» у налаштуваннях музики</string>
 	<key>Turn on Microphone in the recording bar. macOS asks once: click Allow.</key>
 	<string>Увімкніть «Мікрофон» на панелі запису. macOS запитає один раз: клацніть «Дозволити».</string>
 	<key>Turn on Microphone.</key>
@@ -8228,6 +8264,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Відмінити видалення з проєкту</string>
 	<key>Undo Detect Beats</key>
 	<string>Відмінити пошук бітів</string>
+	<key>Undo Duck Music</key>
+	<string>Скасувати стишування музики</string>
 	<key>Undo Edit Caption</key>
 	<string>Відмінити редагування субтитру</string>
 	<key>Undo Edit Text</key>
@@ -8432,6 +8470,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Відмінити зміну стилю прожектора</string>
 	<key>Undo Start Over</key>
 	<string>Відмінити повернення до оригіналу</string>
+	<key>Undo Stop Ducking Music</key>
+	<string>Скасувати вимкнення стишування музики</string>
 	<key>Undo Stop Following</key>
 	<string>Відмінити припинення відстеження</string>
 	<key>Undo Style Change</key>

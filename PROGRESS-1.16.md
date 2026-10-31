@@ -23,8 +23,8 @@ from the first unticked box.
 - [x] 1. Zoom cut
 - [x] 2. Project settings window
 - [x] 3. Remove ums: review list before cutting
-- [ ] 4. Ducking under voiceover and imported speech (switches, off)
-- [ ] 5. Compound clip in its own timeline
+- [x] 4. Ducking under voiceover and imported speech (switches, off)
+- [x] 5. Compound clip in its own timeline
 - [ ] Guide pages, shortcuts page, 7 languages, CHANGELOG [1.16.0]
 - [ ] test-full green, PR, CI green, merge, publish 1.16.0
 
@@ -55,4 +55,15 @@ from the first unticked box.
   words around each, ▶ plays from a second before); `.removeFillers(ids)`
   cuts the ticked ones in one step. The old `removeFillers()` (all) stays
   for tests and scripts.
+- Ducking: `VideoExternalAudioTrack.ducksMusic` (nil = off; format 4 when
+  on). `VideoMusicDucking.musicVoice` = the voice as before + those tracks'
+  own speech (energy-based, their files' seconds → where their pieces
+  play). Preview loads their speech in loadExternalAudio; export too.
+  Command `.audio(.ducksMusic(id, on))`.
+- Compound timeline: no second timeline model. `openCompound` shows that
+  compound's clips one by one (its block left out, others dimmed and not
+  reachable) and the preview drops its transform so handles line up. One
+  guard in `mutate` (`allowsInsideOpenCompound`): the project minus that
+  compound's clips must stay the same; items added inside join it. Esc,
+  Back, or the compound disappearing (undo, break apart) closes it.
 

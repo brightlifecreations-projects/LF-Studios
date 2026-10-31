@@ -81,7 +81,7 @@ extension VideoEditorModel {
     var compoundCandidates: [UUID] {
         var ids: [UUID] = []
         for selection in [selection] + extraSelection {
-            if case .layer(let id) = selection { ids += project.groupMates(of: id) }
+            if case .layer(let id) = selection { ids += groupMates(of: id) }
         }
         return Array(Set(ids))
     }
@@ -183,7 +183,14 @@ struct VideoCompoundSection: View {
             }
             .buttonStyle(VideoSecondaryButtonStyle())
             .help(L("Its clips on their own again, looking as they do now (⇧⌥G)"))
-            Text(L("Its clips keep their own settings: break it apart to change one."))
+            Button {
+                model.perform(.openCompound)
+            } label: {
+                Label(L("Open"), systemImage: "arrow.down.right.square").frame(maxWidth: .infinity)
+            }
+            .buttonStyle(VideoSecondaryButtonStyle())
+            .help(L("Its clips on a timeline of their own, to change one (or double-click it)"))
+            Text(L("Its clips keep their own settings. Open it (or double-click it) to change one."))
                 .font(.system(size: 10.5))
                 .foregroundStyle(VideoEditorTheme.textTertiary)
                 .fixedSize(horizontal: false, vertical: true)
@@ -243,5 +250,105 @@ struct VideoCompoundHandles: View {
         probe.y = Double(point.y)
         let moved = compound.apply(to: probe, canvas: size)
         return CGPoint(x: moved.x, y: moved.y)
+    }
+}
+
+// MARK: - Open in its own timeline (1.16.0)
+
+extension VideoEditorModel {
+    /// The compound shown for `item`: none while it's the open one (inside,
+    /// its clips show and change one by one, without its move, size, turn).
+    func shownCompound(of item: VideoLayerItem) -> VideoCompoundClip? {
+        guard item.group != openCompound else { return nil }
+        return project.compound(of: item)
+    }
+
+    /// Clips that move and go together: one by one inside an open compound.
+    func groupMates(of id: UUID) -> Set<UUID> {
+        if let open = openCompound, project.layerItem(id)?.group == open { return [id] }
+        return project.groupMates(of: id)
+    }
+
+    /// Open: the selected compound's clips, on their own timeline.
+    @discardableResult
+    func openSelectedCompound() -> Bool {
+        guard openCompound == nil, let item = selectedLayerItem, let compound = project.compound(of: item) else {
+            showNotice(L("Select a compound clip to open it"), symbol: "square.stack.3d.down.right")
+            return false
+        }
+        openCompound = compound.id
+        selection = .layer(item.id)
+        let members = project.compoundMembers(compound.id)
+        if let first = members.first, !(first.item.at...(members.map(\.item.end).max() ?? first.item.end)).contains(clock.time) {
+            seek(to: first.item.at)
+        }
+        rebuildPlanForCompound()
+        showNotice(L("Inside “\(compound.name)”: change its clips here. Esc goes back."), symbol: "square.stack.3d.down.right")
+        return true
+    }
+
+    @discardableResult
+    func closeCompound() -> Bool {
+        guard let open = openCompound else { return false }
+        openCompound = nil
+        if let first = project.compoundMembers(open).first { selection = .layer(first.item.id) }
+        rebuildPlanForCompound()
+        return true
+    }
+
+    /// While a compound is open, an edit may change only its clips (what
+    /// you add inside joins it). False: refused, `next` untouched.
+    func allowsInsideOpenCompound(from old: VideoDemoProject, to next: inout VideoDemoProject) -> Bool {
+        guard let open = openCompound else { return true }
+        let before = Set(old.layerItems.map(\.item.id))
+        for t in next.layerTracks.indices {
+            for i in next.layerTracks[t].items.indices where !before.contains(next.layerTracks[t].items[i].id) {
+                next.layerTracks[t].items[i].group = open
+            }
+        }
+        return Self.outside(open, of: old) == Self.outside(open, of: next)
+    }
+
+    /// The project without an open compound's clips (and the tracks they
+    /// leave empty): what must stay the same while it's open.
+    private static func outside(_ open: UUID, of project: VideoDemoProject) -> VideoDemoProject {
+        var rest = project
+        for t in rest.layerTracks.indices { rest.layerTracks[t].items.removeAll { $0.group == open } }
+        rest.layerTracks.removeAll { $0.items.isEmpty }
+        return rest
+    }
+}
+
+/// Above the timeline while a compound is open: where you are, and Back.
+struct VideoCompoundBreadcrumb: View {
+    @ObservedObject var model: VideoEditorModel
+
+    var body: some View {
+        if let open = model.openCompound, let compound = model.project.compound(open) {
+            HStack(spacing: 6) {
+                Button { model.perform(.closeCompound) } label: {
+                    Label(L("Back"), systemImage: "chevron.left")
+                        .font(.system(size: 11.5, weight: .semibold))
+                }
+                .buttonStyle(VideoSecondaryButtonStyle())
+                .help(L("Back to the whole video (Esc)"))
+                Text(L("Video"))
+                    .foregroundStyle(VideoEditorTheme.textTertiary)
+                Image(systemName: "chevron.right")
+                    .font(.system(size: 9, weight: .bold))
+                    .foregroundStyle(VideoEditorTheme.textTertiary)
+                Label(compound.name, systemImage: "square.stack.3d.down.right")
+                    .foregroundStyle(VideoEditorTheme.textPrimary)
+                Text(L("Only its clips change here."))
+                    .foregroundStyle(VideoEditorTheme.textTertiary)
+                Spacer(minLength: 0)
+            }
+            .font(.system(size: 11.5, weight: .medium))
+            .padding(.horizontal, 12)
+            .padding(.vertical, 5)
+            .background(VideoEditorTheme.layer.opacity(0.12))
+            .accessibilityElement(children: .contain)
+            .accessibilityLabel(L("Inside compound clip “\(compound.name)”"))
+        }
     }
 }

@@ -305,6 +305,10 @@ final class VideoEditorModel: ObservableObject {
     }
     /// Project settings (VideoProjectSettings.swift): click the name.
     @Published var isProjectSettingsPresented = false
+    /// The compound clip open in its own timeline (VideoCompounds.swift).
+    @Published var openCompound: UUID? {
+        didSet { if openCompound != oldValue { refreshTimeline() } }
+    }
     /// Remove ums' list, while it's open (VideoFillerReview.swift).
     @Published var fillerReview: VideoFillerReview?
     /// ▶ in that list: stops after the um.
@@ -497,6 +501,7 @@ final class VideoEditorModel: ObservableObject {
         let tracks: [String: VideoTrackState]
         let recordingMuted: Bool
         let trackScale: CGFloat
+        let openCompound: UUID?
     }
 
     /// Bumps the timeline's revision when anything it draws changed.
@@ -520,7 +525,8 @@ final class VideoEditorModel: ObservableObject {
             extras: timelineExtrasSignature,
             tracks: project.trackStates,
             recordingMuted: project.audio.muted,
-            trackScale: VideoTimelineMetrics.rowScale
+            trackScale: VideoTimelineMetrics.rowScale,
+            openCompound: openCompound
         )
         guard signature != timelineSignature else { return }
         timelineSignature = signature
@@ -749,7 +755,15 @@ final class VideoEditorModel: ObservableObject {
 
     var undoDepth: Int { undoStack.count }
 
+    /// The preview again after opening or closing a compound.
+    func rebuildPlanForCompound() {
+        rebuildPlan()
+        refreshPlayback()
+    }
+
     private func rebuildPlan() {
+        // A compound that's gone (undone, broken apart) isn't open any more.
+        if let open = openCompound, self.project.compound(open) == nil { openCompound = nil }
         // As it plays: hidden tracks left out (the timeline's headers).
         let project = self.project.forOutput()
         let key = CursorTrackKey(
@@ -781,7 +795,10 @@ final class VideoEditorModel: ObservableObject {
         }
         // Reframing renders the recording's own shape, then crops a moving
         // window: the camera path is built for that landscape scene.
-        let layoutProject = project.reframeActive ? project.reframeScene() : project
+        var layoutProject = project.reframeActive ? project.reframeScene() : project
+        // An open compound shows its clips as they are (without its move,
+        // size and turn), so their handles line up (1.16.0).
+        if let open = openCompound { layoutProject.compounds = layoutProject.compounds?.filter { $0.id != open } }
         let canvas = layoutProject.canvasSize()
         let stage = layoutProject.stageRect(in: canvas)
         let normalizedStage = CGRect(x: stage.minX / canvas.width, y: stage.minY / canvas.height, width: stage.width / canvas.width, height: stage.height / canvas.height)
@@ -864,6 +881,11 @@ final class VideoEditorModel: ObservableObject {
         var next = project
         change(&next)
         guard next != project else { return }
+        // Inside an open compound only its clips change (1.16.0).
+        guard allowsInsideOpenCompound(from: project, to: &next) else {
+            showNotice(L("Inside a compound clip only its clips change. Esc goes back to the whole video."), symbol: "square.stack.3d.down.right")
+            return
+        }
         // Linkage (~): what's on the tracks above the main track follows
         // the main track's clips (VideoLayers.swift).
         if Settings.videoTimelineLinkage, !project.layerTracks.isEmpty, next.layerTracks == project.layerTracks,

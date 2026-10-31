@@ -210,7 +210,7 @@ extension VideoDemoProject {
     /// What only 1.15.0 and later can show: written as project format 4.
     var needsFormat4: Bool {
         layerTracks.contains { $0.items.contains { $0.needsFormat4 } } || timelineClips.contains { $0.needsFormat4 }
-            || audioTracks.contains { $0.volumeKeys != nil || $0.beats != nil } || music?.beats != nil || usesNewTransitions || compounds != nil || cover != nil || projectSettings != nil
+            || audioTracks.contains { $0.volumeKeys != nil || $0.beats != nil || $0.ducksMusic == true } || music?.beats != nil || usesNewTransitions || compounds != nil || cover != nil || projectSettings != nil
     }
 
     /// What only 1.14.0 and later can show: written as project format 3.

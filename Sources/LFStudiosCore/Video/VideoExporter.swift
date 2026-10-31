@@ -98,6 +98,7 @@ enum VideoDemoExporter {
             extras.layout = layout
         }
         let allKinds = kinds + project.sources.filter { !$0.isPrimary }.flatMap(\.audioKinds)
+        var musicSpeech: [String: [ClosedRange<Double>]] = [:]
         if let music = project.music, let file = await VideoAudioFile.load(music.url) {
             var speech: [String: [ClosedRange<Double>]] = [:]
             if music.ducking {
@@ -108,8 +109,12 @@ enum VideoDemoExporter {
                     guard let index = VideoAudioKind.voiceTrackIndex(in: added.audioKinds), let url = VideoSourceLocator.resolve(added) else { continue }
                     speech[added.id.uuidString] = await VideoVoiceActivity.speech(url: url, trackIndex: index)
                 }
+                for track in project.duckingTracks {
+                    speech["track:\(track.id.uuidString)"] = await VideoVoiceActivity.speech(url: track.url, trackIndex: 0)
+                }
+                musicSpeech = speech
             }
-            let voice = VideoMusicDucking.voiceOnTimeline(project: project, primaryKinds: kinds, speech: speech, segments: segments)
+            let voice = VideoMusicDucking.musicVoice(project: project, primaryKinds: kinds, speech: speech, segments: segments)
             extras.music = VideoMusicInput(file: file, settings: music, voice: voice, timelineOffset: musicOffset)
             // The song carries on under the end card and fades out at the
             // very end of the file.
@@ -133,9 +138,11 @@ enum VideoDemoExporter {
             }
             let timeline = VideoMusicDucking.speechOnTimeline(project: project, primaryKinds: kinds, speech: speech, segments: segments)
             extras.externalAudio = VideoExternalAudioInput(tracks: tracks, voice: needsVoice ? timeline : [])
-            // The music ducks under the added voice, not the recording's microphone.
+            // The music ducks under the added voice, not the recording's
+            // microphone (and under the tracks set to duck it).
             if project.externalVoice != nil, let music = extras.music, music.settings.ducking {
-                extras.music?.voice = timeline
+                speech.merge(musicSpeech) { own, _ in own }
+                extras.music?.voice = VideoMusicDucking.musicVoice(project: project, primaryKinds: kinds, speech: speech, segments: segments)
             }
         }
         if project.clickSounds.enabled {

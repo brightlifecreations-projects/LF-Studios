@@ -378,7 +378,7 @@ struct VideoStageInteractionLayer: View {
             // The selected item on a track above the main track (1.14.0).
             if !model.isPlaying, let item = model.selectedLayerItem, item.role == nil, item.isShowing(at: clock.time),
                let track = model.project.layerTrackIndex(of: item.id), !model.isTrackLocked(.layer(model.project.layerTracks[track].id)) {
-                if let compound = model.project.compound(of: item) {
+                if let compound = model.shownCompound(of: item) {
                     VideoCompoundHandles(model: model, clock: clock, compound: compound, viewSize: viewSize)
                 } else if let tracking = model.motionTracking, tracking.item == item.id {
                     if tracking.progress == nil { VideoMotionTrackingBox(model: model, region: tracking.region, viewSize: viewSize) }
@@ -425,7 +425,7 @@ struct VideoStageInteractionLayer: View {
     func layerItem(at point: CGPoint) -> VideoLayerItem? {
         for layer in model.plan.layers.reversed() where layer.item.isShowing(at: clock.time) && layer.item.role == nil {
             var shown = layer.item.placed(at: clock.time)
-            if let compound = model.project.compound(of: layer.item) { shown = compound.apply(to: shown, canvas: viewSize) }
+            if let compound = model.shownCompound(of: layer.item) { shown = compound.apply(to: shown, canvas: viewSize) }
             let r = shown.rect(in: viewSize)
             let box = CGRect(x: r.minX, y: viewSize.height - r.maxY, width: r.width, height: r.height)
             // Measured along its own sides when it's turned.

@@ -640,6 +640,12 @@ extension VideoEditorModel {
             return isUndoKey
         }
 
+        // Esc leaves an open compound clip (1.16.0).
+        if openCompound != nil, code == 53, !isCropping, timelineTool == .select {
+            closeCompound()
+            return true
+        }
+
         if isCropping {
             switch code {
             case 53: cancelCrop(); return true

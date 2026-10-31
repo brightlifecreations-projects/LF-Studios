@@ -317,6 +317,8 @@ extension VideoEditDescription {
         case "Zooms": return (L("Undo Zooms"), L("Redo Zooms"))
         case "Zoom Change": return (L("Undo Zoom Change"), L("Redo Zoom Change"))
         case "Zoom Cut": return (L("Undo Zoom Cut"), L("Redo Zoom Cut"))
+        case "Duck Music": return (L("Undo Duck Music"), L("Redo Duck Music"))
+        case "Stop Ducking Music": return (L("Undo Stop Ducking Music"), L("Redo Stop Ducking Music"))
         case "Project Settings": return (L("Undo Project Settings"), L("Redo Project Settings"))
         case "Remove Zoom": return (L("Undo Remove Zoom"), L("Redo Remove Zoom"))
         case "Zoom Level for All": return (L("Undo Zoom Level for All"), L("Redo Zoom Level for All"))

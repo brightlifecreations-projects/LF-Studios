@@ -602,6 +602,8 @@
 	<string>Tout autre dossier : Importer le dossier liste les vidéos et les fichiers audio. Choisissez lequel est l’enregistrement de l’écran, lequel est la caméra, quels sons ajouter en pistes, et quand chacun commence.</string>
 	<key>Any shape, like 3:2</key>
 	<string>N’importe quelle forme, comme 3:2</string>
+	<key>Anything you add while it's open joins it. Nothing outside it can change until you go back.</key>
+	<string>Tout ce que vous ajoutez pendant qu’il est ouvert en fait partie. Rien en dehors ne peut changer avant que vous reveniez.</string>
 	<key>App</key>
 	<string>App</string>
 	<key>Appearance</key>
@@ -768,6 +770,10 @@
 	<string>Revenir au début</string>
 	<key>Back to the usual size, in the spot chosen above</key>
 	<string>Revenir à la taille habituelle, à l’emplacement choisi ci-dessus</string>
+	<key>Back to the whole video</key>
+	<string>Retour à toute la vidéo</string>
+	<key>Back to the whole video (Esc)</key>
+	<string>Retour à toute la vidéo (Échap)</string>
 	<key>Back · pause · faster</key>
 	<string>Arrière · pause · plus vite</string>
 	<key>Background</key>
@@ -1516,6 +1522,8 @@
 	<string>Cliquez sur Ajouter du texte, ou faites glisser un modèle sur la timeline.</string>
 	<key>Click Apply, or press Return.</key>
 	<string>Cliquez sur Appliquer, ou appuyez sur Retour.</string>
+	<key>Click Back above the timeline, or press Esc, to return to the whole video.</key>
+	<string>Cliquez sur Retour au-dessus de la timeline, ou appuyez sur Échap, pour revenir à toute la vidéo.</string>
 	<key>Click Background.</key>
 	<string>Cliquez sur Arrière-plan.</string>
 	<key>Click Blur above the preview, or press B.</key>
@@ -3608,6 +3616,12 @@
 	<string>Contenu : %@</string>
 	<key>Inset</key>
 	<string>Intérieure</string>
+	<key>Inside a compound clip only its clips change. Esc goes back to the whole video.</key>
+	<string>Dans un clip composé, seuls ses clips changent. Échap ramène à toute la vidéo.</string>
+	<key>Inside compound clip “%@”</key>
+	<string>Dans le clip composé « %@ »</string>
+	<key>Inside “%@”: change its clips here. Esc goes back.</key>
+	<string>Dans « %@ » : modifiez ses clips ici. Échap pour revenir.</string>
 	<key>Inspector tabs</key>
 	<string>Onglets de l’inspecteur</string>
 	<key>Instagram feed</key>
@@ -3686,8 +3700,10 @@
 	<string>Ce sont des images clés de zoom sur le clip après la coupe. Modifiez-les dans Propriétés ▸ Zoom : déplacez la tête de lecture, changez le zoom ou cliquez sur ◆.</string>
 	<key>Italic</key>
 	<string>Italique</string>
-	<key>Its clips keep their own settings: break it apart to change one.</key>
-	<string>Ses clips gardent leurs propres réglages : dissociez-le pour en modifier un.</string>
+	<key>Its clips keep their own settings. Open it (or double-click it) to change one.</key>
+	<string>Ses clips gardent leurs propres réglages. Ouvrez-le (ou double-cliquez dessus) pour en modifier un.</string>
+	<key>Its clips on a timeline of their own, to change one (or double-click it)</key>
+	<string>Ses clips sur une timeline à part, pour en modifier un (ou double-cliquez dessus)</string>
 	<key>Its clips on their own again, looking as they do now (⇧⌥G)</key>
 	<string>Ses clips de nouveau séparés, tels qu’ils apparaissent maintenant (⇧⌥G)</string>
 	<key>Its own arrow, text and hand pointers, drawn for the video.</key>
@@ -4404,6 +4420,10 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Musique</string>
 	<key>Music added — it dips while you talk</key>
 	<string>Musique ajoutée — elle baisse quand vous parlez</string>
+	<key>Music ducks under this</key>
+	<string>La musique baisse sous cette piste</string>
+	<key>Music ducks under this: the music also gets quieter while a voiceover or another added voice speaks. It's off until you turn it on, and needs Lower under your voice on in the music.</key>
+	<string>La musique baisse sous cette piste : la musique baisse aussi pendant qu’une voix off ou une autre voix ajoutée parle. Désactivé tant que vous ne l’activez pas ; il faut Baisser sous votre voix activé dans la musique.</string>
 	<key>Music note</key>
 	<string>Note de musique</string>
 	<key>Music options</key>
@@ -4820,6 +4840,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Seulement pour ceci, et jamais pour envoyer votre travail :</string>
 	<key>Only if you turned them on: shortcuts, typing positions and times, and your speaker notes.</key>
 	<string>Seulement si vous les avez activés : les raccourcis, les positions et moments de saisie, et vos notes de l’orateur.</string>
+	<key>Only its clips change here.</key>
+	<string>Seuls ses clips changent ici.</string>
 	<key>Only shortcuts with ⌘ or ⌃ (and a few keys like Esc) are saved, never ordinary typing.</key>
 	<string>Seuls les raccourcis avec ⌘ ou ⌃ (et quelques touches comme Esc) sont conservés, jamais la saisie ordinaire.</string>
 	<key>Only text and picture annotations can move to a track</key>
@@ -4894,6 +4916,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Ouverture et fermeture</string>
 	<key>Open at login</key>
 	<string>Ouvrir à l’ouverture de session</string>
+	<key>Open compound clip</key>
+	<string>Ouvrir le clip composé</string>
 	<key>Open in annotation editor</key>
 	<string>Ouvrir dans l’éditeur de captures</string>
 	<key>Open or copy each link and email address.</key>
@@ -5768,6 +5792,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Rétablir la suppression du projet</string>
 	<key>Redo Detect Beats</key>
 	<string>Rétablir la détection des battements</string>
+	<key>Redo Duck Music</key>
+	<string>Rétablir Baisser la musique</string>
 	<key>Redo Edit Caption</key>
 	<string>Rétablir la modification du sous-titre</string>
 	<key>Redo Edit Text</key>
@@ -5972,6 +5998,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Rétablir la modification du style du projecteur</string>
 	<key>Redo Start Over</key>
 	<string>Rétablir le retour à l’original</string>
+	<key>Redo Stop Ducking Music</key>
+	<string>Rétablir Ne plus baisser la musique</string>
 	<key>Redo Stop Following</key>
 	<string>Rétablir l’arrêt du suivi</string>
 	<key>Redo Style Change</key>
@@ -6552,6 +6580,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Sélectionnez un clip, ou un passage avec ⇧ en faisant glisser, et choisissez sa Vitesse dans le panneau de droite.</string>
 	<key>Select a compound clip to break it apart</key>
 	<string>Sélectionnez un clip composé pour le dissocier</string>
+	<key>Select a compound clip to open it</key>
+	<string>Sélectionnez un clip composé pour l’ouvrir</string>
 	<key>Select a range to cut</key>
 	<string>Sélectionner un passage à couper</string>
 	<key>Select a text or picture annotation ▸ Move to a Track.</key>
@@ -7486,6 +7516,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Le modèle est téléchargé une seule fois depuis Hugging Face. Ensuite, Whisper fonctionne hors ligne, et votre enregistrement n’est jamais envoyé.</string>
 	<key>The music</key>
 	<string>La musique</string>
+	<key>The music gets quieter while this track speaks, as it does under your voice</key>
+	<string>La musique baisse pendant que cette piste parle, comme sous votre voix</string>
 	<key>The name in the Library. The file keeps its own.</key>
 	<string>Le nom dans la Bibliothèque. Le fichier garde le sien.</string>
 	<key>The notes never appear in a recording, a screenshot, or screen sharing.</key>
@@ -7806,6 +7838,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Pour courber une flèche, sélectionnez-la et faites glisser le point en son milieu.</string>
 	<key>To blur something yourself, press B and drag the blur over it.</key>
 	<string>Pour flouter quelque chose vous-même, appuyez sur B et faites glisser le flou dessus.</string>
+	<key>To change a clip inside, double-click the compound (or click Open in Properties). Its clips show one by one; the rest of the video waits, dimmed.</key>
+	<string>Pour modifier un clip à l’intérieur, double-cliquez sur le clip composé (ou cliquez sur Ouvrir dans Propriétés). Ses clips s’affichent un par un ; le reste de la vidéo attend, estompé.</string>
 	<key>To change how far it zooms and for how long, click ⌄ next to the button: Scale and Duration.</key>
 	<string>Pour changer l’ampleur et la durée du zoom, cliquez sur ⌄ à côté du bouton : Échelle et Durée.</string>
 	<key>To cut a mistake, move the playhead to it, press ⌘B to split, click the bad part, and press ⌫.</key>
@@ -7972,6 +8006,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Activez Carton d’intro ou Carton de fin.</string>
 	<key>Turn on Keep face centered. LF Studios looks for your face once, with progress and Cancel.</key>
 	<string>Activez Garder le visage centré. LF Studios recherche votre visage une fois, avec une barre de progression et Annuler.</string>
+	<key>Turn on Lower under your voice in the music's settings first</key>
+	<string>Activez d’abord Baisser sous votre voix dans les réglages de la musique</string>
 	<key>Turn on Microphone in the recording bar. macOS asks once: click Allow.</key>
 	<string>Activez Micro dans la barre d’enregistrement. macOS le demande une fois : cliquez sur Autoriser.</string>
 	<key>Turn on Microphone.</key>
@@ -8226,6 +8262,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Annuler la suppression du projet</string>
 	<key>Undo Detect Beats</key>
 	<string>Annuler la détection des battements</string>
+	<key>Undo Duck Music</key>
+	<string>Annuler Baisser la musique</string>
 	<key>Undo Edit Caption</key>
 	<string>Annuler la modification du sous-titre</string>
 	<key>Undo Edit Text</key>
@@ -8430,6 +8468,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Annuler la modification du style du projecteur</string>
 	<key>Undo Start Over</key>
 	<string>Annuler le retour à l’original</string>
+	<key>Undo Stop Ducking Music</key>
+	<string>Annuler Ne plus baisser la musique</string>
 	<key>Undo Stop Following</key>
 	<string>Annuler l’arrêt du suivi</string>
 	<key>Undo Style Change</key>

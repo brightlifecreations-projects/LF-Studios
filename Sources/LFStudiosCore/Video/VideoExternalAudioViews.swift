@@ -230,6 +230,12 @@ struct VideoExternalAudioSection: View {
                     detail: L("Quieter while you talk"),
                     isOn: Binding(get: { track.dipUnderVoice }, set: { value in model.setAudioTrack(track.id) { $0.dipUnderVoice = value } })
                 )
+                // 1.16.0: a voiceover or an interview the music should make room for.
+                VideoToggleRow(
+                    title: L("Music ducks under this"),
+                    detail: model.project.music?.ducking == true ? L("The music gets quieter while this track speaks, as it does under your voice") : L("Turn on Lower under your voice in the music's settings first"),
+                    isOn: Binding(get: { track.ducksMusic == true }, set: { model.perform(.audio(.ducksMusic(track.id, $0))) })
+                )
             }
         }
         .padding(10)

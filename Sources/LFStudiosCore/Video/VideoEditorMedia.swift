@@ -223,7 +223,7 @@ extension VideoEditorModel {
 
     /// Where the voice is heard on the timeline (what the music ducks under).
     var voiceTimelineRanges: [ClosedRange<Double>] {
-        VideoMusicDucking.voiceOnTimeline(project: project, primaryKinds: audioKinds, speech: media.speech, segments: segments)
+        VideoMusicDucking.musicVoice(project: project, primaryKinds: audioKinds, speech: media.speech, segments: segments)
     }
 
     /// The project changed: load whatever it newly needs.
@@ -236,7 +236,8 @@ extension VideoEditorModel {
             loadClickSound()
         }
         if project.audioTracks.map(\.path) != old.audioTracks.map(\.path) || project.externalVoice?.id != old.externalVoice?.id
-            || project.audioTracks.map(\.dipUnderVoice) != old.audioTracks.map(\.dipUnderVoice) || project.audio.voiceRecipe != old.audio.voiceRecipe {
+            || project.audioTracks.map(\.dipUnderVoice) != old.audioTracks.map(\.dipUnderVoice) || project.audio.voiceRecipe != old.audio.voiceRecipe
+            || project.duckingTracks.map(\.id) != old.duckingTracks.map(\.id) {
             loadExternalAudio()
         }
         if project.sources.map(\.id) != old.sources.map(\.id) || project.sources.map(\.offset) != old.sources.map(\.offset) {
@@ -291,6 +292,10 @@ extension VideoEditorModel {
                 media.speech["track:\(voice.id.uuidString)"] = await VideoVoiceActivity.speech(url: voice.url, trackIndex: 0)
             }
             if project.audioTracks.contains(where: \.dipUnderVoice) { await loadSpeech() }
+            // Tracks the music ducks under (1.16.0): their own speech.
+            for track in project.duckingTracks where media.speech["track:\(track.id.uuidString)"] == nil {
+                media.speech["track:\(track.id.uuidString)"] = await VideoVoiceActivity.speech(url: track.url, trackIndex: 0)
+            }
             refreshPlayback()
             // A track used as the voice gets the voice's clean-up too.
             if project.externalVoice != nil, project.audio.voiceRecipe != nil { startVoiceEnhancementIfNeeded() }
@@ -505,6 +510,30 @@ enum VideoMusicDucking {
     static func voiceOnTimeline(project: VideoDemoProject, primaryKinds: [VideoAudioKind], speech: [String: [ClosedRange<Double>]], segments: [VideoDemoTimelineSegment]) -> [ClosedRange<Double>] {
         guard project.music?.ducking == true else { return [] }
         return speechOnTimeline(project: project, primaryKinds: primaryKinds, speech: speech, segments: segments)
+    }
+
+    /// What the music ducks under: the voice (`speechOnTimeline`), plus the
+    /// sound tracks set to "Music ducks under this" ("track:<id>" in
+    /// `speech`, in their files' seconds). Nothing when ducking is off.
+    static func musicVoice(project: VideoDemoProject, primaryKinds: [VideoAudioKind], speech: [String: [ClosedRange<Double>]], segments: [VideoDemoTimelineSegment]) -> [ClosedRange<Double>] {
+        guard project.music?.ducking == true else { return [] }
+        var ranges = speechOnTimeline(project: project, primaryKinds: primaryKinds, speech: speech, segments: segments)
+        let total = project.outputDuration(segments: segments)
+        for track in project.duckingTracks {
+            ranges += onTimeline(speech["track:\(track.id.uuidString)"] ?? [], of: track, segments: segments, total: total)
+        }
+        return ranges.sorted { $0.lowerBound < $1.lowerBound }
+    }
+
+    /// A track's speech (its file's seconds) where its pieces play.
+    static func onTimeline(_ heard: [ClosedRange<Double>], of track: VideoExternalAudioTrack, segments: [VideoDemoTimelineSegment], total: Double) -> [ClosedRange<Double>] {
+        track.placed(segments: segments, timelineDuration: total).flatMap { piece in
+            heard.compactMap { range -> ClosedRange<Double>? in
+                let a = max(range.lowerBound, piece.fileStart), b = min(range.upperBound, piece.fileStart + piece.fileLength)
+                guard b > a else { return nil }
+                return (piece.timelineStart + (a - piece.fileStart) / piece.speed)...(piece.timelineStart + (b - piece.fileStart) / piece.speed)
+            }
+        }
     }
 
     /// Where the voice speaks on the timeline: an added track used as the

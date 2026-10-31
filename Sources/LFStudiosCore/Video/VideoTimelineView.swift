@@ -73,6 +73,8 @@ struct VideoTimelineView: View, Equatable {
             VideoTimelineToolbar(model: model, clock: model.clock)
                 .frame(height: 44)
             Rectangle().fill(VideoEditorTheme.hairline).frame(height: 1)
+            // Inside a compound clip (1.16.0): where you are, and Back.
+            VideoCompoundBreadcrumb(model: model)
             GeometryReader { proxy in
                 VideoTimelineSurface(model: model, timeline: timeline, viewport: proxy.size)
             }
@@ -368,9 +370,13 @@ struct VideoTimelineSurface: View {
     /// touched while locked.
     private func trackLook<Content: View>(_ track: VideoTimelineTrack, @ViewBuilder _ content: () -> Content) -> some View {
         let state = model.project.trackState(track)
+        // Inside an open compound only its clips (above the main track) can
+        // be reached; the rest stays in view, dimmed.
+        var outside = model.openCompound != nil
+        if case .layer = track { outside = false }
         return content()
-            .opacity(state.hidden ? 0.4 : 1)
-            .allowsHitTesting(!state.locked)
+            .opacity(state.hidden ? 0.4 : outside ? 0.3 : 1)
+            .allowsHitTesting(!state.locked && !outside)
     }
 
     private func lanes(rows: VideoTimelineRowLayout, height: CGFloat) -> some View {
@@ -389,7 +395,7 @@ struct VideoTimelineSurface: View {
 
             trackLook(.zooms) { zoomTrack }
             // The tracks above the main track (1.14.0).
-            let compoundBlocks = VideoCompoundBlock.blocks(model.project)
+            let compoundBlocks = VideoCompoundBlock.blocks(model.project).filter { $0.id != model.openCompound }
             let layerTops = model.project.layerTracks.map { rows.contentTop(.layer($0.id)) ?? rows.row(.layer($0.id))?.top ?? 0 }
             ForEach(Array(model.project.layerTracks.enumerated()), id: \.element.id) { index, track in
                 if let top = rows.contentTop(.layer(track.id)) {
@@ -402,7 +408,8 @@ struct VideoTimelineSurface: View {
                             geometry: geometry,
                             model: model,
                             hover: hover,
-                            compounds: compoundBlocks
+                            compounds: compoundBlocks,
+                            openCompound: model.openCompound
                         )
                         .equatable()
                         .offset(y: top)

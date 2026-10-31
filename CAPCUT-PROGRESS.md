@@ -63,6 +63,7 @@ the first unticked box.
 - [ ] CHANGELOG (dated), merge, publish 1.15.0
 
 ## Next update (moved out, with why)
+(Done in 1.16.0: compound clips open in their own timeline.)
 - Compound clips: "open in its own timeline". The timeline, its lanes,
   selection and every edit command work on the project's own tracks;
   showing and editing another set of tracks safely means threading a

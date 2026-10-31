@@ -674,6 +674,8 @@
 	<string>其他任何文件夹：“导入文件夹”会列出其中的视频和声音文件。选择哪个是屏幕录制、哪个是摄像头视频、哪些声音要添加为轨道，以及每个文件从何时开始。</string>
 	<key>Any shape, like 3:2</key>
 	<string>任意比例，例如 3:2</string>
+	<key>Anything you add while it's open joins it. Nothing outside it can change until you go back.</key>
+	<string>打开期间添加的内容都会并入其中。返回之前，外部的任何内容都不会改变。</string>
 	<key>App</key>
 	<string>App</string>
 	<key>Appearance</key>
@@ -842,6 +844,10 @@
 	<string>回到开头</string>
 	<key>Back to the usual size, in the spot chosen above</key>
 	<string>恢复为通常大小，位于上方选择的位置</string>
+	<key>Back to the whole video</key>
+	<string>返回整个视频</string>
+	<key>Back to the whole video (Esc)</key>
+	<string>返回整个视频（Esc）</string>
 	<key>Back · pause · faster</key>
 	<string>后退 · 暂停 · 加快</string>
 	<key>Background</key>
@@ -1596,6 +1602,8 @@
 	<string>点按“添加文字”，或将模板拖到时间线上。</string>
 	<key>Click Apply, or press Return.</key>
 	<string>点按“应用”，或按下 Return 键。</string>
+	<key>Click Back above the timeline, or press Esc, to return to the whole video.</key>
+	<string>点按时间线上方的“返回”或按 Esc，即可回到整个视频。</string>
 	<key>Click Background.</key>
 	<string>点按“背景”。</string>
 	<key>Click Blur above the preview, or press B.</key>
@@ -3710,6 +3718,12 @@
 	<string>包含：%@</string>
 	<key>Inset</key>
 	<string>内阴影</string>
+	<key>Inside a compound clip only its clips change. Esc goes back to the whole video.</key>
+	<string>在复合片段内只能更改其中的片段。按 Esc 返回整个视频。</string>
+	<key>Inside compound clip “%@”</key>
+	<string>在复合片段“%@”内</string>
+	<key>Inside “%@”: change its clips here. Esc goes back.</key>
+	<string>在“%@”内：在此更改其中的片段。按 Esc 返回。</string>
 	<key>Inspector tabs</key>
 	<string>检查器标签页</string>
 	<key>Instagram feed</key>
@@ -3788,8 +3802,10 @@
 	<string>它是剪切点后片段上的缩放关键帧。在“属性 ▸ 缩放”中更改：移动播放头、调整缩放，或点按 ◆。</string>
 	<key>Italic</key>
 	<string>斜体</string>
-	<key>Its clips keep their own settings: break it apart to change one.</key>
-	<string>其中的片段保留各自的设置：拆开后才能更改单个片段。</string>
+	<key>Its clips keep their own settings. Open it (or double-click it) to change one.</key>
+	<string>其中的片段保留各自的设置。打开它（或连按两次）即可更改其中一个。</string>
+	<key>Its clips on a timeline of their own, to change one (or double-click it)</key>
+	<string>在单独的时间线上显示其中的片段以便更改（或连按两次）</string>
 	<key>Its clips on their own again, looking as they do now (⇧⌥G)</key>
 	<string>让其中的片段重新各自独立，外观保持现状（⇧⌥G）</string>
 	<key>Its own arrow, text and hand pointers, drawn for the video.</key>
@@ -4520,6 +4536,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>音乐</string>
 	<key>Music added — it dips while you talk</key>
 	<string>已添加音乐 — 说话时会降低音量</string>
+	<key>Music ducks under this</key>
+	<string>此轨道时降低音乐</string>
+	<key>Music ducks under this: the music also gets quieter while a voiceover or another added voice speaks. It's off until you turn it on, and needs Lower under your voice on in the music.</key>
+	<string>此轨道时降低音乐：画外音或其他添加的人声说话时，音乐也会变小声。默认关闭，需要你手动打开，且音乐中的“避让人声”需处于打开状态。</string>
 	<key>Music note</key>
 	<string>音符</string>
 	<key>Music options</key>
@@ -4936,6 +4956,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>只有以下几种情况，而且绝不会发送你的作品：</string>
 	<key>Only if you turned them on: shortcuts, typing positions and times, and your speaker notes.</key>
 	<string>只有在你打开相应选项时：快捷键、打字位置和时间，以及你的演讲者备注。</string>
+	<key>Only its clips change here.</key>
+	<string>此处只能更改其中的片段。</string>
 	<key>Only shortcuts with ⌘ or ⌃ (and a few keys like Esc) are saved, never ordinary typing.</key>
 	<string>只会存储带 ⌘ 或 ⌃ 的快捷键（以及 Esc 等少数按键），绝不会存储普通打字。</string>
 	<key>Only text and picture annotations can move to a track</key>
@@ -5010,6 +5032,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>展开和收起</string>
 	<key>Open at login</key>
 	<string>登录时打开</string>
+	<key>Open compound clip</key>
+	<string>打开复合片段</string>
 	<key>Open in annotation editor</key>
 	<string>在截屏编辑器中打开</string>
 	<key>Open or copy each link and email address.</key>
@@ -5890,6 +5914,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做从项目中删除</string>
 	<key>Redo Detect Beats</key>
 	<string>重做检测节拍</string>
+	<key>Redo Duck Music</key>
+	<string>重做降低音乐</string>
 	<key>Redo Edit Caption</key>
 	<string>重做编辑字幕</string>
 	<key>Redo Edit Text</key>
@@ -6096,6 +6122,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做聚光灯样式更改</string>
 	<key>Redo Start Over</key>
 	<string>重做从头开始</string>
+	<key>Redo Stop Ducking Music</key>
+	<string>重做不再降低音乐</string>
 	<key>Redo Stop Following</key>
 	<string>重做停止跟踪</string>
 	<key>Redo Style Change</key>
@@ -6694,6 +6722,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>选择一个片段，或按住 ⇧ 拖移选出一段，然后在右侧面板中选择它的“速度”。</string>
 	<key>Select a compound clip to break it apart</key>
 	<string>选择复合片段以将其拆开</string>
+	<key>Select a compound clip to open it</key>
+	<string>选择一个复合片段以打开它</string>
 	<key>Select a range to cut</key>
 	<string>选择要剪掉的范围</string>
 	<key>Select a text or picture annotation ▸ Move to a Track.</key>
@@ -7640,6 +7670,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>模型只需从 Hugging Face 下载一次。之后 Whisper 可离线使用，你的录制内容绝不会被上传。</string>
 	<key>The music</key>
 	<string>音乐</string>
+	<key>The music gets quieter while this track speaks, as it does under your voice</key>
+	<string>此轨道说话时音乐会变小声，就像在你的人声下一样</string>
 	<key>The name in the Library. The file keeps its own.</key>
 	<string>素材库中的名称。文件本身的名称不变。</string>
 	<key>The notes never appear in a recording, a screenshot, or screen sharing.</key>
@@ -7962,6 +7994,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>要弯曲箭头，请选中它，然后拖移中间的圆点。</string>
 	<key>To blur something yourself, press B and drag the blur over it.</key>
 	<string>要自己模糊某处，请按 B 键，然后把模糊框拖到它上面。</string>
+	<key>To change a clip inside, double-click the compound (or click Open in Properties). Its clips show one by one; the rest of the video waits, dimmed.</key>
+	<string>要更改其中的片段，请连按两次复合片段（或在“属性”中点按“打开”）。其中的片段会逐个显示，视频的其余部分变暗等待。</string>
 	<key>To change how far it zooms and for how long, click ⌄ next to the button: Scale and Duration.</key>
 	<string>要更改缩放程度和时长，请点按按钮旁的 ⌄：缩放比例和时长。</string>
 	<key>To cut a mistake, move the playhead to it, press ⌘B to split, click the bad part, and press ⌫.</key>
@@ -8128,6 +8162,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>打开“片头卡”或“片尾卡”。</string>
 	<key>Turn on Keep face centered. LF Studios looks for your face once, with progress and Cancel.</key>
 	<string>打开“保持面部居中”。LF Studios 会查找一次你的脸，并显示进度和“取消”按钮。</string>
+	<key>Turn on Lower under your voice in the music's settings first</key>
+	<string>请先在音乐设置中打开“避让人声”</string>
 	<key>Turn on Microphone in the recording bar. macOS asks once: click Allow.</key>
 	<string>在录制栏中打开“麦克风”。macOS 会询问一次：点按“允许”。</string>
 	<key>Turn on Microphone.</key>
@@ -8384,6 +8420,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销从项目中删除</string>
 	<key>Undo Detect Beats</key>
 	<string>撤销检测节拍</string>
+	<key>Undo Duck Music</key>
+	<string>撤销降低音乐</string>
 	<key>Undo Edit Caption</key>
 	<string>撤销编辑字幕</string>
 	<key>Undo Edit Text</key>
@@ -8590,6 +8628,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销聚光灯样式更改</string>
 	<key>Undo Start Over</key>
 	<string>撤销从头开始</string>
+	<key>Undo Stop Ducking Music</key>
+	<string>撤销不再降低音乐</string>
 	<key>Undo Stop Following</key>
 	<string>撤销停止跟踪</string>
 	<key>Undo Style Change</key>

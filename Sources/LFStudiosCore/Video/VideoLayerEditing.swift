@@ -64,7 +64,7 @@ extension VideoEditorModel {
     func moveLayerItem(_ id: UUID, to time: Double, track: Int, newTrack: Bool = false, coalesce: Bool = false) {
         guard let item = project.layerItem(id), let from = project.layerTrackIndex(of: id) else { return }
         if refuseLockedLayer(from) { return }
-        let moving = project.groupMates(of: id)
+        let moving = groupMates(of: id)
         let delta = max(time, 0) - item.at
         mutate(coalesce: coalesce ? "layer-move-\(id)" : nil, label: "Move Clip") { project in
             project.moveLayerItems(moving, by: delta, fromTrack: from, toTrack: track, newTrack: newTrack)
@@ -202,7 +202,7 @@ extension VideoEditorModel {
 
     func deleteLayerItem(_ id: UUID) {
         guard let track = project.layerTrackIndex(of: id), !refuseLockedLayer(track) else { return }
-        let gone = project.groupMates(of: id)
+        let gone = groupMates(of: id)
         mutate(label: "Delete Clip") { project in
             for t in project.layerTracks.indices { project.layerTracks[t].items.removeAll { gone.contains($0.id) } }
             project.dropEmptyLayerTracks()

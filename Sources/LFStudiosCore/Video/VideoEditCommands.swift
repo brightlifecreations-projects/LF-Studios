@@ -59,6 +59,9 @@ enum VideoEditCommand: Equatable, CaseIterable, Identifiable {
     case showProjectSettings
     /// The project's resolution, frame rate and colour space.
     case projectSettings(VideoProjectSettings)
+    /// A compound clip in its own timeline, and back (VideoCompounds.swift).
+    case openCompound
+    case closeCompound
     /// Remove ums: the list of ums found, to check (VideoFillerReview.swift).
     case reviewFillers
     /// Cuts the ums starting at these transcript words.
@@ -79,7 +82,7 @@ enum VideoEditCommand: Equatable, CaseIterable, Identifiable {
         .freezeFrame, .reverse, .mirror, .rotate, .crop, .recordVoiceover, .toggleMagnet, .toggleSnapping, .toggleLinkage,
         .togglePreviewAxis, .zoomToFit, .toggleEnabled, .group, .ungroup, .extractAudio, .selectLeft, .selectRight,
         .copy, .paste, .markIn, .markOut, .addText, .addArrow, .addHighlight, .addBlur, .addKeyframe, .previousKeyframe, .nextKeyframe,
-        .addTextClip, .makeCompound, .breakApart, .zoomCut, .showProjectSettings, .reviewFillers,
+        .addTextClip, .makeCompound, .breakApart, .zoomCut, .showProjectSettings, .reviewFillers, .openCompound, .closeCompound,
     ]
 
     /// A stable name (menus keep it; a future MCP connection can send it).
@@ -147,6 +150,8 @@ enum VideoEditCommand: Equatable, CaseIterable, Identifiable {
         case .showProjectSettings: return L("Project Settings…")
         case .projectSettings: return L("Project Settings")
         case .reviewFillers, .removeFillers: return L("Remove Ums")
+        case .openCompound: return L("Open compound clip")
+        case .closeCompound: return L("Back to the whole video")
         case .edit(let edit): return edit.title
         case .clip(let edit): return edit.title
         case .audio(let edit): return edit.title
@@ -200,6 +205,8 @@ enum VideoEditCommand: Equatable, CaseIterable, Identifiable {
         case .zoomCut: return "arrow.up.left.and.arrow.down.right"
         case .showProjectSettings, .projectSettings: return "gearshape"
         case .reviewFillers, .removeFillers: return "wand.and.stars"
+        case .openCompound: return "square.stack.3d.down.right"
+        case .closeCompound: return "chevron.left"
         case .edit, .clip, .audio, .zoom: return "slider.horizontal.3"
         }
     }
@@ -253,7 +260,7 @@ enum VideoEditCommand: Equatable, CaseIterable, Identifiable {
         case .makeCompound: return "⌥G"
         case .breakApart: return "⌥⇧G"
         case .zoomCut: return "⌥Z"
-        case .addMarker, .freezeFrame, .reverse, .mirror, .rotate, .crop, .recordVoiceover, .edit, .clip, .audio, .zoom, .showProjectSettings, .projectSettings, .reviewFillers, .removeFillers: return ""
+        case .addMarker, .freezeFrame, .reverse, .mirror, .rotate, .crop, .recordVoiceover, .edit, .clip, .audio, .zoom, .showProjectSettings, .projectSettings, .reviewFillers, .removeFillers, .openCompound, .closeCompound: return ""
         }
     }
 
@@ -399,6 +406,10 @@ extension VideoEditorModel {
             reviewFillers()
         case .removeFillers(let ids):
             return removeFillers(Set(ids))
+        case .openCompound:
+            return openSelectedCompound()
+        case .closeCompound:
+            return closeCompound()
         case .zoom(let edit):
             return perform(edit)
         }

@@ -674,6 +674,8 @@
 	<string>そのほかのフォルダ: “フォルダを読み込む”でビデオとサウンドファイルが一覧表示されます。どれが画面収録で、どれがカメラか、どのサウンドをトラックとして追加するか、それぞれの開始位置を選びます。</string>
 	<key>Any shape, like 3:2</key>
 	<string>3:2など、任意の形</string>
+	<key>Anything you add while it's open joins it. Nothing outside it can change until you go back.</key>
+	<string>開いている間に追加したものは、その中に入ります。戻るまで、外側は何も変わりません。</string>
 	<key>App</key>
 	<string>アプリ</string>
 	<key>Appearance</key>
@@ -842,6 +844,10 @@
 	<string>最初に戻る</string>
 	<key>Back to the usual size, in the spot chosen above</key>
 	<string>上で選んだ位置で、いつものサイズに戻します</string>
+	<key>Back to the whole video</key>
+	<string>ビデオ全体に戻る</string>
+	<key>Back to the whole video (Esc)</key>
+	<string>ビデオ全体に戻る（esc）</string>
 	<key>Back · pause · faster</key>
 	<string>逆再生 · 一時停止 · 早送り</string>
 	<key>Background</key>
@@ -1596,6 +1602,8 @@
 	<string>“テキストを追加”をクリックするか、テンプレートをタイムラインにドラッグします。</string>
 	<key>Click Apply, or press Return.</key>
 	<string>“適用”をクリックするか、Returnキーを押します。</string>
+	<key>Click Back above the timeline, or press Esc, to return to the whole video.</key>
+	<string>タイムラインの上の“戻る”をクリックするか、escキーを押すと、ビデオ全体に戻ります。</string>
 	<key>Click Background.</key>
 	<string>“背景”をクリックします。</string>
 	<key>Click Blur above the preview, or press B.</key>
@@ -3710,6 +3718,12 @@
 	<string>内容: %@</string>
 	<key>Inset</key>
 	<string>内側</string>
+	<key>Inside a compound clip only its clips change. Esc goes back to the whole video.</key>
+	<string>複合クリップの中では、その中のクリップだけが変わります。escでビデオ全体に戻ります。</string>
+	<key>Inside compound clip “%@”</key>
+	<string>複合クリップ“%@”の中</string>
+	<key>Inside “%@”: change its clips here. Esc goes back.</key>
+	<string>“%@”の中：ここでクリップを変更できます。escで戻ります。</string>
 	<key>Inspector tabs</key>
 	<string>インスペクタのタブ</string>
 	<key>Instagram feed</key>
@@ -3788,8 +3802,10 @@
 	<string>カットの後のクリップに付いたズームのキーフレームです。“プロパティ”＞“ズーム”で変更できます：再生ヘッドを動かしてズームを変えるか、◆をクリックします。</string>
 	<key>Italic</key>
 	<string>イタリック</string>
-	<key>Its clips keep their own settings: break it apart to change one.</key>
-	<string>中のクリップはそれぞれの設定を保持しています。1つを変更するには分解してください。</string>
+	<key>Its clips keep their own settings. Open it (or double-click it) to change one.</key>
+	<string>中のクリップはそれぞれの設定を保ちます。変更するには開きます（またはダブルクリック）。</string>
+	<key>Its clips on a timeline of their own, to change one (or double-click it)</key>
+	<string>中のクリップを専用のタイムラインに表示して変更します（またはダブルクリック）</string>
 	<key>Its clips on their own again, looking as they do now (⇧⌥G)</key>
 	<string>中のクリップを今の見た目のまま個別に戻します（⇧⌥G）</string>
 	<key>Its own arrow, text and hand pointers, drawn for the video.</key>
@@ -4520,6 +4536,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>音楽</string>
 	<key>Music added — it dips while you talk</key>
 	<string>音楽を追加しました。話している間は音量が下がります</string>
+	<key>Music ducks under this</key>
+	<string>この音声の間は音楽を下げる</string>
+	<key>Music ducks under this: the music also gets quieter while a voiceover or another added voice speaks. It's off until you turn it on, and needs Lower under your voice on in the music.</key>
+	<string>この音声の間は音楽を下げる：ナレーションなど追加した声が話している間も音楽が小さくなります。オンにするまではオフです。音楽の“話している間は音量を下げる”もオンにしておく必要があります。</string>
 	<key>Music note</key>
 	<string>音符</string>
 	<key>Music options</key>
@@ -4936,6 +4956,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>次の場合だけで、作品を送信することはありません:</string>
 	<key>Only if you turned them on: shortcuts, typing positions and times, and your speaker notes.</key>
 	<string>オンにした場合のみ: ショートカット、入力の位置とタイミング、スピーカーノート。</string>
+	<key>Only its clips change here.</key>
+	<string>ここでは中のクリップだけが変わります。</string>
 	<key>Only shortcuts with ⌘ or ⌃ (and a few keys like Esc) are saved, never ordinary typing.</key>
 	<string>保存されるのは、⌘や⌃を使ったショートカット（とEscなど一部のキー）だけです。通常の文字入力が保存されることはありません。</string>
 	<key>Only text and picture annotations can move to a track</key>
@@ -5010,6 +5032,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>開閉</string>
 	<key>Open at login</key>
 	<string>ログイン時に開く</string>
+	<key>Open compound clip</key>
+	<string>複合クリップを開く</string>
 	<key>Open in annotation editor</key>
 	<string>スクリーンショットエディタで開く</string>
 	<key>Open or copy each link and email address.</key>
@@ -5890,6 +5914,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>プロジェクトからの削除をやり直す</string>
 	<key>Redo Detect Beats</key>
 	<string>ビートの検出をやり直す</string>
+	<key>Redo Duck Music</key>
+	<string>“音楽を下げる”をやり直す</string>
 	<key>Redo Edit Caption</key>
 	<string>字幕の編集をやり直す</string>
 	<key>Redo Edit Text</key>
@@ -6096,6 +6122,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>スポットライトのスタイル変更をやり直す</string>
 	<key>Redo Start Over</key>
 	<string>元の収録への復元をやり直す</string>
+	<key>Redo Stop Ducking Music</key>
+	<string>“音楽を下げない”をやり直す</string>
 	<key>Redo Stop Following</key>
 	<string>追従の停止をやり直す</string>
 	<key>Redo Style Change</key>
@@ -6694,6 +6722,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>クリップを選択するか、⇧キーを押しながら範囲をドラッグして、右側のパネルで“速度”を選びます。</string>
 	<key>Select a compound clip to break it apart</key>
 	<string>分解するには複合クリップを選択してください</string>
+	<key>Select a compound clip to open it</key>
+	<string>開くには複合クリップを選択してください</string>
 	<key>Select a range to cut</key>
 	<string>カットする範囲を選択</string>
 	<key>Select a text or picture annotation ▸ Move to a Track.</key>
@@ -7640,6 +7670,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>モデルはHugging Faceから一度だけダウンロードされます。そのあとはWhisperはオフラインで動作し、収録がアップロードされることはありません。</string>
 	<key>The music</key>
 	<string>音楽</string>
+	<key>The music gets quieter while this track speaks, as it does under your voice</key>
+	<string>このトラックが話している間、あなたの声のときと同じように音楽が小さくなります</string>
 	<key>The name in the Library. The file keeps its own.</key>
 	<string>ライブラリでの名前です。ファイル名はそのままです。</string>
 	<key>The notes never appear in a recording, a screenshot, or screen sharing.</key>
@@ -7962,6 +7994,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>矢印を曲げるには、矢印を選択して中央の点をドラッグします。</string>
 	<key>To blur something yourself, press B and drag the blur over it.</key>
 	<string>自分でぼかすには、Bキーを押して、隠したいものの上にぼかしをドラッグします。</string>
+	<key>To change a clip inside, double-click the compound (or click Open in Properties). Its clips show one by one; the rest of the video waits, dimmed.</key>
+	<string>中のクリップを変更するには、複合クリップをダブルクリックします（または“プロパティ”の“開く”をクリック）。中のクリップが1つずつ表示され、ビデオのほかの部分は暗く表示されます。</string>
 	<key>To change how far it zooms and for how long, click ⌄ next to the button: Scale and Duration.</key>
 	<string>ズームの大きさと長さを変えるには、ボタンの横の⌄をクリックします：拡大率と長さ。</string>
 	<key>To cut a mistake, move the playhead to it, press ⌘B to split, click the bad part, and press ⌫.</key>
@@ -8128,6 +8162,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>“オープニングカード”または“エンディングカード”をオンにします。</string>
 	<key>Turn on Keep face centered. LF Studios looks for your face once, with progress and Cancel.</key>
 	<string>“顔を中央に保つ”をオンにします。LF Studiosが一度だけ顔を探します。その間は進行状況と“キャンセル”が表示されます。</string>
+	<key>Turn on Lower under your voice in the music's settings first</key>
+	<string>まず音楽の設定で“話している間は音量を下げる”をオンにしてください</string>
 	<key>Turn on Microphone in the recording bar. macOS asks once: click Allow.</key>
 	<string>収録バーで“マイク”をオンにします。macOSが一度だけ確認するので、“許可”をクリックします。</string>
 	<key>Turn on Microphone.</key>
@@ -8384,6 +8420,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>プロジェクトからの削除を取り消す</string>
 	<key>Undo Detect Beats</key>
 	<string>ビートの検出を取り消す</string>
+	<key>Undo Duck Music</key>
+	<string>“音楽を下げる”を取り消す</string>
 	<key>Undo Edit Caption</key>
 	<string>字幕の編集を取り消す</string>
 	<key>Undo Edit Text</key>
@@ -8590,6 +8628,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>スポットライトのスタイル変更を取り消す</string>
 	<key>Undo Start Over</key>
 	<string>元の収録への復元を取り消す</string>
+	<key>Undo Stop Ducking Music</key>
+	<string>“音楽を下げない”を取り消す</string>
 	<key>Undo Stop Following</key>
 	<string>追従の停止を取り消す</string>
 	<key>Undo Style Change</key>

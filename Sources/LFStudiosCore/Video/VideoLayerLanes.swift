@@ -19,9 +19,12 @@ struct VideoLayerLane: View, Equatable {
     /// Compound clips: one block each, on its earliest clip's track (its
     /// clips aren't drawn on their own).
     var compounds: [VideoCompoundBlock] = []
+    /// A compound open in its own timeline: only its clips can be reached.
+    var openCompound: UUID?
 
     nonisolated static func == (a: Self, b: Self) -> Bool {
         a.track == b.track && a.index == b.index && a.rowTops == b.rowTops && a.selected == b.selected && a.geometry == b.geometry && a.compounds == b.compounds
+            && a.openCompound == b.openCompound
     }
 
     var body: some View {
@@ -30,9 +33,14 @@ struct VideoLayerLane: View, Equatable {
                 if let group = item.group, let block = compounds.first(where: { $0.id == group }) {
                     if block.first == item.id {
                         VideoLayerBlock(item: block.item(from: item), trackIndex: index, rowTops: rowTops, isSelected: selected.contains(item.id), geometry: geometry, model: model, hover: hover, isCompound: true)
+                            .opacity(openCompound != nil ? 0.3 : 1)
+                            .allowsHitTesting(openCompound == nil)
                     }
                 } else {
+                    let outside = openCompound != nil && item.group != openCompound
                     VideoLayerBlock(item: item, trackIndex: index, rowTops: rowTops, isSelected: selected.contains(item.id), geometry: geometry, model: model, hover: hover)
+                        .opacity(outside ? 0.3 : 1)
+                        .allowsHitTesting(!outside)
                 }
             }
         }
@@ -145,7 +153,9 @@ private struct VideoLayerBlock: View {
         .offset(x: x + (slipping ? 0 : move.width) + leading, y: move.height)
         .zIndex(move == .zero ? 0 : 1)
         .contentShape(Rectangle())
+        // A compound: double-click opens it in its own timeline (1.16.0).
         .onTapGesture { model.click(.layer(item.id)) }
+        .simultaneousGesture(TapGesture(count: 2).onEnded { if isCompound { model.perform(.openCompound) } })
         .gesture(moveGesture)
         .task(id: item.path) {
             if let sticker = item.sticker.flatMap(VideoSticker.init(rawValue:)) { thumbnail = VideoStickerPreview.image(sticker); return }
