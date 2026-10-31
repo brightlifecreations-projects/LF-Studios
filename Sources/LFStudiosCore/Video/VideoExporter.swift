@@ -144,6 +144,17 @@ enum VideoDemoExporter {
                 extras.clicks = VideoClickSoundInput(file: file, times: times, volume: project.clickSounds.volume)
             }
         }
+        if !project.layerVideoPaths.isEmpty {
+            var files: [String: VideoLayerFile] = [:]
+            for path in project.layerVideoPaths {
+                guard let file = await VideoLayerFile.load(URL(fileURLWithPath: path)) else {
+                    let name = project.layerItems.first { $0.item.path == path }?.item.name ?? URL(fileURLWithPath: path).lastPathComponent
+                    throw VideoDemoExportError.exportFailed(L("“\(name)” can't be found. Put it back where it was, or find it with Locate… in the Library, then export again."))
+                }
+                files[path] = file
+            }
+            extras.layers = VideoLayerInput.make(project: project, files: files)
+        }
 
         let edit = try VideoCompositionBuilder.build(
             source: source,
@@ -308,10 +319,9 @@ enum VideoDemoExporter {
 
     /// Reader output for the edit: the screen alone, or screen + camera
     /// through the pass-through compositor (camera frames land in `store`).
-    fileprivate static func videoOutput(for edit: VideoEditComposition, frameRate: Double, store: VideoCameraFrameStore, settings: [String: Any]) -> AVAssetReaderVideoCompositionOutput {
-        if let cameraTrack = edit.cameraTrack,
-           let composition = VideoCameraComposition.videoComposition(for: edit, frameRate: frameRate, store: store) {
-            let output = AVAssetReaderVideoCompositionOutput(videoTracks: [edit.videoTrack, cameraTrack], videoSettings: settings)
+    fileprivate static func videoOutput(for edit: VideoEditComposition, frameRate: Double, store: VideoCameraFrameStore, layerStore: VideoLayerFrameStore, settings: [String: Any]) -> AVAssetReaderVideoCompositionOutput {
+        if let composition = VideoCameraComposition.videoComposition(for: edit, frameRate: frameRate, store: store, layerStore: layerStore) {
+            let output = AVAssetReaderVideoCompositionOutput(videoTracks: edit.readVideoTracks, videoSettings: settings)
             output.videoComposition = composition
             return output
         }
@@ -425,7 +435,8 @@ enum VideoDemoExporter {
         let reader = try AVAssetReader(asset: edit.composition)
         let cameraStore = VideoCameraFrameStore(capacity: 48)
         cameraStore.setFindsPerson(plan.webcam?.needsPersonMask ?? false)
-        let videoOutput = videoOutput(for: edit, frameRate: fps, store: cameraStore, settings: [
+        let layerStore = VideoLayerFrameStore()
+        let videoOutput = videoOutput(for: edit, frameRate: fps, store: cameraStore, layerStore: layerStore, settings: [
             kCVPixelBufferPixelFormatTypeKey as String: kCVPixelFormatType_32BGRA,
             kCVPixelBufferIOSurfacePropertiesKey as String: [:] as [String: Any],
             kCVPixelBufferMetalCompatibilityKey as String: true,
@@ -559,6 +570,7 @@ enum VideoDemoExporter {
             plan: plan,
             frames: frames,
             cameraStore: edit.cameraTrack == nil ? nil : cameraStore,
+            layerStore: edit.layerVideoTracks.isEmpty ? nil : layerStore,
             outputSize: outputSize,
             fps: fps,
             duration: duration,
@@ -718,6 +730,7 @@ enum VideoDemoExporter {
         /// Held frames for dissolves (nil: none in this video).
         let frames: VideoSourceFrames?
         let cameraStore: VideoCameraFrameStore?
+        let layerStore: VideoLayerFrameStore?
         let outputSize: CGSize
         let fps: Double
         let duration: Double
@@ -756,6 +769,7 @@ enum VideoDemoExporter {
             plan: VideoRenderPlan,
             frames: VideoSourceFrames?,
             cameraStore: VideoCameraFrameStore?,
+            layerStore: VideoLayerFrameStore?,
             outputSize: CGSize,
             fps: Double,
             duration: Double,
@@ -775,6 +789,7 @@ enum VideoDemoExporter {
             self.plan = plan
             self.frames = frames
             self.cameraStore = cameraStore
+            self.layerStore = layerStore
             self.outputSize = outputSize
             self.fps = fps
             self.duration = duration
@@ -873,6 +888,7 @@ enum VideoDemoExporter {
         private var currentSample: CMSampleBuffer?
         private var pendingSample: CMSampleBuffer?
         private var lastCameraFrame: VideoCameraFrame?
+        private var lastLayerFrames: [UUID: CIImage] = [:]
         private var sourceFinished = false
 
         /// Returns false when the timeline is exhausted.
@@ -906,6 +922,10 @@ enum VideoDemoExporter {
                 }
                 options.webcamFrame = lastCameraFrame?.image
                 options.webcamMask = lastCameraFrame?.mask
+            }
+            if let layerStore, let sample = currentSample {
+                lastLayerFrames.merge(layerStore.frames(at: CMSampleBufferGetPresentationTimeStamp(sample).seconds, tolerance: 0.02)) { _, new in new }
+                options.layerFrames = lastLayerFrames
             }
             if let frames, let request = plan.heldFrameRequest(at: seconds) {
                 options.transitionFrame = frames.image(at: request.sourceTime)
@@ -994,12 +1014,14 @@ enum VideoDemoExporter {
         let reader = try AVAssetReader(asset: edit.composition)
         let cameraStore = VideoCameraFrameStore(capacity: 48)
         cameraStore.setFindsPerson(plan.webcam?.needsPersonMask ?? false)
-        let output = videoOutput(for: edit, frameRate: fps, store: cameraStore, settings: [
+        let layerStore = VideoLayerFrameStore()
+        let output = videoOutput(for: edit, frameRate: fps, store: cameraStore, layerStore: layerStore, settings: [
             kCVPixelBufferPixelFormatTypeKey as String: kCVPixelFormatType_32BGRA,
             kCVPixelBufferIOSurfacePropertiesKey as String: [:] as [String: Any],
         ])
         output.alwaysCopiesSampleData = false
         var lastCameraFrame: VideoCameraFrame?
+        var lastLayerFrames: [UUID: CIImage] = [:]
         guard reader.canAdd(output) else { throw VideoDemoExportError.exportFailed(L("Couldn't read the recording for the GIF. Try exporting a shorter part, or choose MP4.")) }
         reader.add(output)
         guard reader.startReading() else {
@@ -1044,6 +1066,10 @@ enum VideoDemoExporter {
                     if let frame = cameraStore.camera(at: time, tolerance: 0.02) { lastCameraFrame = frame }
                     options.webcamFrame = lastCameraFrame?.image
                     options.webcamMask = lastCameraFrame?.mask
+                }
+                if !edit.layerVideoTracks.isEmpty {
+                    lastLayerFrames.merge(layerStore.frames(at: time, tolerance: 0.02)) { _, new in new }
+                    options.layerFrames = lastLayerFrames
                 }
                 if let frames, let request = plan.heldFrameRequest(at: time) {
                     options.transitionFrame = frames.image(at: request.sourceTime)

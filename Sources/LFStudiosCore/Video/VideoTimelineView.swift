@@ -11,6 +11,8 @@ enum VideoTimelineMetrics {
     static var zoomTrackHeight: CGFloat { scaled(34) }
     static let clickLaneHeight: CGFloat = 14
     static var clipTrackHeight: CGFloat { scaled(66) }
+    /// A video or picture track above the main track (1.14.0).
+    static var layerLaneHeight: CGFloat { scaled(40) }
     static var overlayLaneHeight: CGFloat { scaled(26) }
     static let overlayLaneGap: CGFloat = 4
     static var captionLaneHeight: CGFloat { scaled(22) }

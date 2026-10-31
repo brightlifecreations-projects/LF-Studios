@@ -35,10 +35,19 @@ struct VideoEditComposition {
     /// With several recordings: the transform that fits each stretch of
     /// the video track into `sourceSize` (starts, in order).
     var pieceTransforms: [(start: CMTime, transform: CGAffineTransform)] = []
+    /// Videos on the tracks above the main track (VideoLayers.swift), one
+    /// composition track per layer track, and their sound.
+    var layerVideoTracks: [(id: UUID, track: AVMutableCompositionTrack)] = []
+    var layerAudioTracks: [(id: UUID, track: AVMutableCompositionTrack, items: [VideoLayerItem])] = []
 
     /// Every sound track, for reading the final mix.
     var mixedAudioTracks: [AVMutableCompositionTrack] {
-        audioTracks + [musicTrack, clickTrack].compactMap { $0 } + externalTracks.map(\.track)
+        audioTracks + [musicTrack, clickTrack].compactMap { $0 } + externalTracks.map(\.track) + layerAudioTracks.map(\.track)
+    }
+
+    /// Every video track the compositor reads (screen, camera, layers).
+    var readVideoTracks: [AVMutableCompositionTrack] {
+        [videoTrack] + [cameraTrack].compactMap { $0 } + layerVideoTracks.map(\.track)
     }
 
     /// What a video composition must cover: the whole asset, including
@@ -109,6 +118,8 @@ struct VideoEditExtras {
     var clicks: VideoClickSoundInput?
     /// Sound files added to the video.
     var externalAudio: VideoExternalAudioInput?
+    /// Videos on the tracks above the main track.
+    var layers: VideoLayerInput?
 
     static let none = VideoEditExtras()
 
@@ -120,6 +131,7 @@ struct VideoEditExtras {
         let music: VideoMusicInput.StructureKey?
         let clicks: VideoClickSoundInput.StructureKey?
         let externalAudio: VideoExternalAudioInput.StructureKey?
+        var layers: VideoLayerInput.StructureKey? = nil
     }
 
     /// What only the mix depends on.
@@ -127,13 +139,14 @@ struct VideoEditExtras {
         let music: VideoMusicInput.MixKey?
         let clickVolume: Double?
         let externalAudio: VideoExternalAudioInput.MixKey?
+        var layers: VideoLayerInput.MixKey? = nil
     }
 
     var structureKey: StructureKey {
-        StructureKey(tail: (tail * 1000).rounded() / 1000, musicTail: musicTail, layout: layout?.identity ?? [], music: music?.structureKey, clicks: clicks?.structureKey, externalAudio: externalAudio?.structureKey)
+        StructureKey(tail: (tail * 1000).rounded() / 1000, musicTail: musicTail, layout: layout?.identity ?? [], music: music?.structureKey, clicks: clicks?.structureKey, externalAudio: externalAudio?.structureKey, layers: layers?.structureKey)
     }
 
-    var mixKey: MixKey { MixKey(music: music?.mixKey, clickVolume: clicks?.volume, externalAudio: externalAudio?.mixKey) }
+    var mixKey: MixKey { MixKey(music: music?.mixKey, clickVolume: clicks?.volume, externalAudio: externalAudio?.mixKey, layers: layers?.mixKey) }
 }
 
 enum VideoCompositionBuilder {
@@ -258,6 +271,12 @@ enum VideoCompositionBuilder {
 
         for segment in clips {
             let start = cursor
+            // Off (V): black and silent for its length.
+            if segment.clip.disabled {
+                gap(segment.clip.outputDuration)
+                placements.append(Placement(start: start, duration: cursor - start, segment: segment))
+                continue
+            }
             let speed = segment.clip.normalizedSpeed
             var covered = segment.clip.sourceStart
             for piece in pieces(of: segment.clip, primary: source, primaryAudio: sources, camera: camera, layout: layout) {
@@ -311,7 +330,7 @@ enum VideoCompositionBuilder {
             for lane in lanes {
                 guard let track = composition.addMutableTrack(withMediaType: .audio, preferredTrackID: kCMPersistentTrackID_Invalid) else { continue }
                 var inserted = false
-                for placement in placements {
+                for placement in placements where !placement.segment.clip.disabled {
                     let clip = placement.segment.clip
                     let speed = clip.normalizedSpeed
                     for piece in pieces(of: clip, primary: source, primaryAudio: sources, camera: camera, layout: layout) {
@@ -361,6 +380,7 @@ enum VideoCompositionBuilder {
         let music = extras.music?.insert(into: composition, duration: musicLength)
         let clicks = extras.clicks?.insert(into: composition, duration: total)
         let external = extras.externalAudio?.insert(into: composition, segments: segments, duration: total) ?? []
+        let layers = extras.layers?.insert(into: composition, duration: total)
 
         var edit = VideoEditComposition(
             composition: composition,
@@ -380,6 +400,8 @@ enum VideoCompositionBuilder {
             pieceTransforms: pieceTransforms
         )
         edit.externalTracks = external
+        edit.layerVideoTracks = layers?.video ?? []
+        edit.layerAudioTracks = layers?.audio ?? []
         edit.audioMix = audioMix(for: edit, segments: segments, audio: audio, extras: extras)
         return edit
     }
@@ -423,6 +445,13 @@ enum VideoCompositionBuilder {
             for entry in edit.externalTracks {
                 let params = AVMutableAudioMixInputParameters(track: entry.track)
                 external.apply(to: params, track: entry.id, placed: entry.placed, audio: audio)
+                parameters.append(params)
+            }
+        }
+        if let layers = extras.layers {
+            for entry in edit.layerAudioTracks {
+                let params = AVMutableAudioMixInputParameters(track: entry.track)
+                layers.apply(to: params, track: entry.id, items: entry.items, audio: audio)
                 parameters.append(params)
             }
         }

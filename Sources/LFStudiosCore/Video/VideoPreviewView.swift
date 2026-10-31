@@ -21,6 +21,8 @@ final class VideoPreviewRenderer: NSObject, MTKViewDelegate {
     /// The camera frame composed with `lastBuffer` (kept so a missed lookup
     /// never blinks the bubble).
     private var lastCameraFrame: VideoCameraFrame?
+    /// The newest frame of each video track above the main track.
+    private var lastLayerFrames: [UUID: CIImage] = [:]
     private var playingTime: Double?
     private var dirty = true
     private var peekImage: CIImage?
@@ -66,6 +68,7 @@ final class VideoPreviewRenderer: NSObject, MTKViewDelegate {
             if let camera = model.playback.cameraPicture(at: frame.time) {
                 lastCameraFrame = camera
             }
+            lastLayerFrames.merge(model.playback.layerFrames(at: frame.time)) { _, new in new }
             dirty = true
         }
         // While playing, redraw every display refresh at the exact playback
@@ -105,6 +108,7 @@ final class VideoPreviewRenderer: NSObject, MTKViewDelegate {
         options.solidOverlay = Self.editedOverlay(model)
         options.webcamFrame = model.plan.webcam == nil ? nil : lastCameraFrame?.image
         options.webcamMask = model.plan.webcam == nil ? nil : lastCameraFrame?.mask
+        options.layerFrames = lastLayerFrames
         var source = lastBuffer.map { CIImage(cvPixelBuffer: $0) }
         var time = playingTime ?? lastBufferTime
         if model.isCropping {
@@ -198,6 +202,7 @@ final class VideoPreviewRenderer: NSObject, MTKViewDelegate {
         if let request = model.plan.heldFrameRequest(at: time) {
             options.transitionFrame = model.media.frames(for: model.project).image(at: request.sourceTime)
         }
+        options.layerFrames = VideoLayerStills.frames(for: model.plan.layers, at: time)
         let pixels = CGSize(width: size.width * 2, height: size.height * 2)
         let image = renderer.render(source: frame.map { CIImage(cgImage: $0) }, timelineTime: time, plan: model.plan, outputSize: pixels, options: options)
         guard let cgImage = context.createCGImage(image, from: CGRect(origin: .zero, size: pixels), format: .RGBA8, colorSpace: CGColorSpace(name: CGColorSpace.sRGB)) else { return nil }
@@ -210,6 +215,7 @@ final class VideoPreviewRenderer: NSObject, MTKViewDelegate {
         var options = VideoFrameRenderer.Options(frameRate: 60)
         options.webcamFrame = lastCameraFrame?.image
         options.webcamMask = lastCameraFrame?.mask
+        options.layerFrames = lastLayerFrames
         let image = renderer.render(source: lastBuffer.map { CIImage(cvPixelBuffer: $0) }, timelineTime: lastBufferTime, plan: model.plan, outputSize: size, options: options)
         guard let cgImage = context.createCGImage(image, from: CGRect(origin: .zero, size: size), format: .RGBA8, colorSpace: CGColorSpace(name: CGColorSpace.sRGB)) else { return nil }
         return NSImage(cgImage: cgImage, size: size)

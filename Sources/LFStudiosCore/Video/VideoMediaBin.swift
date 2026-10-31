@@ -97,6 +97,8 @@ struct VideoMediaEntry: Identifiable, Equatable {
         case music
         case sound(UUID)
         case picture
+        /// On a track above the main track (1.14.0).
+        case layer
         case imported(UUID)
     }
 
@@ -126,7 +128,7 @@ struct VideoMediaEntry: Identifiable, Equatable {
     /// Replace… and Locate… work on it.
     var canReplace: Bool {
         switch origin {
-        case .imported, .picture, .sound, .music: return true
+        case .imported, .picture, .sound, .music, .layer: return true
         case .recording, .addedRecording, .camera: return false
         }
     }
@@ -175,6 +177,10 @@ extension VideoDemoProject {
         for effect in overlayEffects {
             guard let image = effect.image else { continue }
             add(Self.pathKey(image.path), image.path, image.name, .image, .picture)
+        }
+        // On the tracks above the main track.
+        for (_, item) in layerItems {
+            add(Self.pathKey(item.path), item.path, item.name, item.kind, .layer, duration: item.isVideo ? item.fileDuration : nil)
         }
 
         let inVideo = pathsInVideo

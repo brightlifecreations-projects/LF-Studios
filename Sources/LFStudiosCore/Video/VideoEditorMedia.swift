@@ -135,6 +135,8 @@ final class VideoEditorMedia {
     /// Speech on each recording's voice track, in its own seconds ("" is
     /// the project's own recording; others by source ID).
     var speech: [String: [ClosedRange<Double>]] = [:]
+    /// Videos on the tracks above the main track, loaded, by path.
+    var layerFiles: [String: VideoLayerFile] = [:]
     /// Added recordings, loaded.
     var layout: VideoSourceLayout?
     /// Added recordings' own data (pointer pictures), by source ID.
@@ -189,6 +191,7 @@ extension VideoEditorModel {
             let needsVoice = project.audioTracks.contains { $0.dipUnderVoice && !$0.useAsVoice }
             extras.externalAudio = VideoExternalAudioInput(tracks: tracks, voice: needsVoice ? VideoMusicDucking.speechOnTimeline(project: project, primaryKinds: audioKinds, speech: media.speech, segments: segments) : [])
         }
+        extras.layers = VideoLayerInput.make(project: project, files: media.layerFiles)
         return extras
     }
 
@@ -239,6 +242,22 @@ extension VideoEditorModel {
         if project.sources.map(\.id) != old.sources.map(\.id) || project.sources.map(\.offset) != old.sources.map(\.offset) {
             Task { await reloadSources() }
         }
+        if project.layerVideoPaths != old.layerVideoPaths { loadLayerFiles() }
+    }
+
+    /// Loads the videos on the tracks above the main track.
+    func loadLayerFiles() {
+        let wanted = project.layerVideoPaths.filter { media.layerFiles[$0] == nil }
+        guard !wanted.isEmpty, media.begin("layers") else { return }
+        Task {
+            defer { media.end("layers") }
+            for path in wanted where media.layerFiles[path] == nil {
+                if let file = await VideoLayerFile.load(URL(fileURLWithPath: path)) { media.layerFiles[path] = file }
+            }
+            refreshPlayback()
+            // More may have been added while these loaded.
+            if project.layerVideoPaths.contains(where: { media.layerFiles[$0] == nil && FileManager.default.fileExists(atPath: $0) }) { loadLayerFiles() }
+        }
     }
 
     /// Loads what the project needs once the recording is open.
@@ -248,6 +267,7 @@ extension VideoEditorModel {
         if project.music != nil { loadMusic() }
         if project.clickSounds.enabled { loadClickSound() }
         if !project.audioTracks.isEmpty { loadExternalAudio() }
+        if !project.layerVideoPaths.isEmpty { loadLayerFiles() }
     }
 
     /// Loads the added sound files (and where the voice speaks, for those

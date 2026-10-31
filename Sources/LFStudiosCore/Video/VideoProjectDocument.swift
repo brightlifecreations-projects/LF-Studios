@@ -23,6 +23,10 @@ import Foundation
 ///         01 Screen/  02 Camera/  03 Audio/  04 Graphics/  05 Captions/  07 Data/  Fonts/
 struct VideoProjectDocument: Codable {
     static let format = "lfstudios-project"
+    /// Projects with tracks above the main track, or clips turned,
+    /// mirrored or off (1.14.0): 1.12 and earlier refuse the name, 1.13
+    /// says it needs a newer version, instead of opening them without.
+    static let layersFormat = "lfstudios-project-3"
     /// Projects saved while the app was called ShotStyle.
     static let legacyFormat = "shotstyle-project"
     static let legacyFileExtension = "shotstyle"
@@ -45,7 +49,9 @@ struct VideoProjectDocument: Codable {
     /// every older project still opens.
     /// 2: folder projects (`@folder/` paths). Projects without them are
     /// still written as 1, so older versions of LF Studios open them as before.
-    static let currentVersion = 2
+    /// 3: tracks above the main track (`layersFormat`); written only by
+    /// projects that use them.
+    static let currentVersion = 3
     /// LF Studios Project. New projects, Creative Handoffs and recording
     /// folders write it (since 1.12.0; `.lfsp` from 1.9.0).
     static let fileExtension = "lfs"
@@ -123,11 +129,13 @@ struct VideoProjectDocument: Codable {
 
     private enum CodingKeys: String, CodingKey {
         case format, version, savedAt, appVersion, mediaMode, project, recording, sourceRecordings, origins, bookmarks, folder
+        case requires
     }
 
     init(format: String = Self.format, version: Int? = nil, savedAt: Date = Date(), appVersion: String? = nil, mediaMode: MediaMode, project: VideoDemoProject, recording: VideoDemoRecordingMetadata?, sourceRecordings: [String: VideoDemoRecordingMetadata] = [:], origins: [String: Origin] = [:], bookmarks: [String: Data] = [:], folder: FolderInfo? = nil) {
-        self.format = format
-        self.version = version ?? (mediaMode == .folder ? 2 : 1)
+        // What only 1.14.0 and later can show goes under its own name.
+        self.format = project.needsLayerFormat && format == Self.format ? Self.layersFormat : format
+        self.version = project.needsLayerFormat ? max(version ?? 3, 3) : version ?? (mediaMode == .folder ? 2 : 1)
         self.folder = folder
         self.savedAt = savedAt
         self.appVersion = appVersion
@@ -158,6 +166,7 @@ struct VideoProjectDocument: Codable {
         var c = encoder.container(keyedBy: CodingKeys.self)
         try c.encode(format, forKey: .format)
         try c.encode(version, forKey: .version)
+        if format == Self.layersFormat { try c.encode(3, forKey: .requires) }
         try c.encode(savedAt, forKey: .savedAt)
         try c.encodeIfPresent(appVersion, forKey: .appVersion)
         try c.encode(mediaMode, forKey: .mediaMode)
@@ -181,7 +190,7 @@ struct VideoProjectDocument: Codable {
     static func decode(_ data: Data) throws -> VideoProjectDocument {
         guard var object = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else { throw ReadError.damaged }
         guard let found = object["format"] as? String else { throw ReadError.notAProject }
-        guard found == format || found == legacyFormat else {
+        guard found == format || found == layersFormat || found == legacyFormat else {
             // A later kind of LF Studios project ("lfstudios-project-3"…).
             throw found.hasPrefix(format) ? ReadError.needsNewerVersion : ReadError.notAProject
         }
@@ -278,6 +287,12 @@ struct VideoProjectContents {
         // This Mac's caches the edit uses (VideoProjectCaches.swift).
         for index in project.carriedVoices.indices { map(&project.carriedVoices[index].path, .audio) }
         if project.faceTracking?.analysisPath != nil { map(&project.faceTracking!.analysisPath!, .data) }
+        // The tracks above the main track (VideoLayers.swift).
+        for t in project.layerTracks.indices {
+            for i in project.layerTracks[t].items.indices {
+                map(&project.layerTracks[t].items[i].path, project.layerTracks[t].items[i].kind.projectKind)
+            }
+        }
         // The Library's imported media (VideoMediaBin.swift).
         if project.mediaBin != nil { project.mediaBin!.mapPaths { path, kind in transform(path, kind) } }
         if recording != nil {

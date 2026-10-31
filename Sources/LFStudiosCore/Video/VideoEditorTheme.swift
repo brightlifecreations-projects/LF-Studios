@@ -67,6 +67,8 @@ enum VideoEditorTheme {
     static let destructive = Color.adaptive(dark: NSColor(srgbRed: 1, green: 0.47, blue: 0.47, alpha: 1), light: NSColor(srgbRed: 0.8, green: 0.13, blue: 0.13, alpha: 1))
     static let zoom = Color(red: 0.43, green: 0.39, blue: 1.0)
     static let clip = Color(red: 0.94, green: 0.58, blue: 0.2)
+    /// Items on the tracks above the main track (1.14.0).
+    static let layer = Color(red: 0.23, green: 0.66, blue: 0.86)
     static let playhead = Color(red: 1.0, green: 0.31, blue: 0.43)
     static let accent = Color.accentColor
     /// Primary buttons: a fixed blue, so white text stays readable whatever

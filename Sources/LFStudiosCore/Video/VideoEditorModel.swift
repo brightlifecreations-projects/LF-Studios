@@ -129,6 +129,8 @@ final class VideoEditorModel: ObservableObject {
         case caption(UUID)
         case keystroke(UUID)
         case cameraLayout(UUID)
+        /// An item on a track above the main track (1.14.0).
+        case layer(UUID)
         case range(VideoDemoTimelineRange)
     }
 
@@ -1884,6 +1886,8 @@ final class VideoEditorModel: ObservableObject {
             deleteKeystroke(id)
         case .cameraLayout(let id):
             deleteCameraLayout(id)
+        case .layer(let id):
+            deleteLayerItem(id)
         case .clip(let id):
             deleteClip(id)
         case .range(let range):

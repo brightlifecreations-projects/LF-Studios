@@ -41,12 +41,15 @@ final class VideoCameraFrameStore: @unchecked Sendable {
     private let segmentation = VNGeneratePersonSegmentationRequest()
     private let sequence = VNSequenceRequestHandler()
     private let capacity: Int
+    /// Frames are kept at most this tall.
+    private let maximumHeight: Double
     private var pool: CVPixelBufferPool?
     private var poolSize: CGSize = .zero
     private let context = CIContext(options: [.cacheIntermediates: false, .name: "lfstudios.camera-store"])
 
-    init(capacity: Int = 24) {
+    init(capacity: Int = 24, maximumHeight: Double = 720) {
         self.capacity = capacity
+        self.maximumHeight = maximumHeight
         segmentation.qualityLevel = .balanced
         segmentation.outputPixelFormat = kCVPixelFormatType_OneComponent8
     }
@@ -142,7 +145,7 @@ final class VideoCameraFrameStore: @unchecked Sendable {
         let width = CVPixelBufferGetWidth(buffer)
         let height = CVPixelBufferGetHeight(buffer)
         guard width > 0, height > 0 else { return nil }
-        let scale = min(1, 720 / Double(height))
+        let scale = min(1, maximumHeight / Double(height))
         let size = CGSize(width: (Double(width) * scale).rounded(), height: (Double(height) * scale).rounded())
         if pool == nil || poolSize != size {
             var created: CVPixelBufferPool?
@@ -178,19 +181,29 @@ final class VideoCameraInstruction: NSObject, AVVideoCompositionInstructionProto
     let requiredSourceTrackIDs: [NSValue]?
     let passthroughTrackID = kCMPersistentTrackID_Invalid
     let screenTrackID: CMPersistentTrackID
+    /// Invalid: no camera (only tracks above the main track).
     let cameraTrackID: CMPersistentTrackID
     let store: VideoCameraFrameStore
+    /// Video tracks above the main track, and where their frames go.
+    let layerTrackIDs: [(id: UUID, trackID: CMPersistentTrackID)]
+    let layerStore: VideoLayerFrameStore?
     /// With several recordings: how each stretch of the screen track is
     /// turned upright and fitted into the edit's frame (starts in seconds).
     let pieceTransforms: [(start: Double, transform: CGAffineTransform)]
 
-    init(timeRange: CMTimeRange, screenTrackID: CMPersistentTrackID, cameraTrackID: CMPersistentTrackID, store: VideoCameraFrameStore, pieceTransforms: [(start: Double, transform: CGAffineTransform)] = []) {
+    init(timeRange: CMTimeRange, screenTrackID: CMPersistentTrackID, cameraTrackID: CMPersistentTrackID, store: VideoCameraFrameStore, pieceTransforms: [(start: Double, transform: CGAffineTransform)] = [],
+         layerTrackIDs: [(id: UUID, trackID: CMPersistentTrackID)] = [], layerStore: VideoLayerFrameStore? = nil) {
         self.timeRange = timeRange
         self.screenTrackID = screenTrackID
         self.cameraTrackID = cameraTrackID
         self.store = store
         self.pieceTransforms = pieceTransforms
-        requiredSourceTrackIDs = [NSNumber(value: screenTrackID), NSNumber(value: cameraTrackID)]
+        self.layerTrackIDs = layerTrackIDs
+        self.layerStore = layerStore
+        var required = [NSNumber(value: screenTrackID)]
+        if cameraTrackID != kCMPersistentTrackID_Invalid { required.append(NSNumber(value: cameraTrackID)) }
+        required += layerTrackIDs.map { NSNumber(value: $0.trackID) }
+        requiredSourceTrackIDs = required
     }
 
     /// The transform for the stretch playing at `time` (nil: one recording).
@@ -258,7 +271,14 @@ final class VideoCameraCompositor: NSObject, AVVideoCompositing {
             return
         }
         let time = request.compositionTime.seconds
-        instruction.store.put(request.sourceFrame(byTrackID: instruction.cameraTrackID), at: time)
+        if instruction.cameraTrackID != kCMPersistentTrackID_Invalid {
+            instruction.store.put(request.sourceFrame(byTrackID: instruction.cameraTrackID), at: time)
+        }
+        if let layerStore = instruction.layerStore {
+            for layer in instruction.layerTrackIDs {
+                layerStore.put(request.sourceFrame(byTrackID: layer.trackID), track: layer.id, at: time)
+            }
+        }
         if let screen = request.sourceFrame(byTrackID: instruction.screenTrackID) {
             let composed = instruction.transform(at: time).map { placed(screen, transform: $0, into: request.renderContext) } ?? fitted(screen, into: request.renderContext)
             request.finish(withComposedVideoFrame: composed ?? screen)
@@ -283,7 +303,7 @@ enum VideoCameraComposition {
         guard let track = composition.addMutableTrack(withMediaType: .video, preferredTrackID: kCMPersistentTrackID_Invalid) else { return nil }
         let available = CMTimeRange(start: .zero, duration: VideoCompositionBuilder.time(camera.duration))
         var inserted = false
-        for placement in placements {
+        for placement in placements where !placement.segment.clip.disabled {
             let clip = placement.segment.clip
             let speed = clip.normalizedSpeed
             let wantedStart = clip.sourceStart - camera.offset
@@ -308,9 +328,14 @@ enum VideoCameraComposition {
         return track
     }
 
-    /// Video composition that runs the pass-through compositor.
-    static func videoComposition(for edit: VideoEditComposition, frameRate: Double, store: VideoCameraFrameStore) -> AVMutableVideoComposition? {
-        guard let cameraTrack = edit.cameraTrack else { return nil }
+    /// Video composition that runs the pass-through compositor (nil: no
+    /// camera and nothing above the main track).
+    static func videoComposition(for edit: VideoEditComposition, frameRate: Double, store: VideoCameraFrameStore, layerStore: VideoLayerFrameStore? = nil) -> AVMutableVideoComposition? {
+        guard edit.cameraTrack != nil || (!edit.layerVideoTracks.isEmpty && layerStore != nil) else { return nil }
+        // A turned recording alone: the compositor turns it upright (the
+        // reader's own composition would otherwise).
+        var transforms = edit.pieceTransforms.map { ($0.start.seconds, $0.transform) }
+        if transforms.isEmpty, !edit.orientation.isIdentity, edit.cameraTrack == nil { transforms = [(0, edit.orientation)] }
         let videoComposition = AVMutableVideoComposition()
         videoComposition.customVideoCompositorClass = VideoCameraCompositor.self
         videoComposition.renderSize = CGSize(width: max(edit.sourceSize.width, 2), height: max(edit.sourceSize.height, 2))
@@ -318,9 +343,11 @@ enum VideoCameraComposition {
         videoComposition.instructions = [VideoCameraInstruction(
             timeRange: CMTimeRange(start: .zero, duration: edit.coveredDuration),
             screenTrackID: edit.videoTrack.trackID,
-            cameraTrackID: cameraTrack.trackID,
+            cameraTrackID: edit.cameraTrack?.trackID ?? kCMPersistentTrackID_Invalid,
             store: store,
-            pieceTransforms: edit.pieceTransforms.map { ($0.start.seconds, $0.transform) }
+            pieceTransforms: transforms,
+            layerTrackIDs: layerStore == nil ? [] : edit.layerVideoTracks.map { ($0.id, $0.track.trackID) },
+            layerStore: layerStore
         )]
         return videoComposition
     }

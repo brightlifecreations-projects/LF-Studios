@@ -766,6 +766,7 @@ struct VideoSelectionInspector: View {
         case .caption: return L("Caption")
         case .keystroke: return L("Shortcut")
         case .cameraLayout: return L("Camera layout")
+        case .layer: return model.selectedLayerItem?.name ?? L("Clip")
         case .range(let range): return L("Selected \(VideoEditorModel.format(range.duration))")
         case .none: return ""
         }
@@ -781,6 +782,7 @@ struct VideoSelectionInspector: View {
         case .caption: return "captions.bubble"
         case .keystroke: return "keyboard"
         case .cameraLayout: return "person.crop.rectangle"
+        case .layer: return model.selectedLayerItem?.isVideo == true ? "film" : "photo"
         case .range: return "selection.pin.in.out"
         case .none: return ""
         }
@@ -795,6 +797,7 @@ struct VideoSelectionInspector: View {
         case .caption: return VideoEditorTheme.caption
         case .keystroke: return VideoEditorTheme.keys
         case .cameraLayout: return VideoEditorTheme.camera
+        case .layer: return VideoEditorTheme.layer
         default: return VideoEditorTheme.textSecondary
         }
     }
@@ -835,7 +838,7 @@ struct VideoSelectionInspector: View {
         init(_ item: VideoEditorModel.Selection) {
             switch item {
             case .zoom: self = .zoom
-            case .clip: self = .clip
+            case .clip, .layer: self = .clip
             case .overlay: self = .annotation
             case .click: self = .click
             case .caption: self = .caption
@@ -898,6 +901,10 @@ struct VideoSelectionInspector: View {
                         .foregroundStyle(VideoEditorTheme.textSecondary)
                         .fixedSize(horizontal: false, vertical: true)
                 }
+            }
+        case .layer(let id):
+            if let item = model.project.layerItem(id) {
+                VideoLayerItemEditor(model: model, item: item)
             }
         case .cameraLayout(let id):
             if let region = model.project.cameraLayouts.first(where: { $0.id == id }) {

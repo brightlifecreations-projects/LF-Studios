@@ -37,6 +37,8 @@ final class VideoPlaybackController: NSObject {
     /// The camera recorded with the screen, if any.
     private(set) var camera: VideoCameraSource?
     let cameraStore = VideoCameraFrameStore()
+    /// Frames of the videos above the main track (VideoLayers.swift).
+    let layerStore = VideoLayerFrameStore()
     private(set) var edit: VideoEditComposition?
     private var structure: EditStructure?
     /// The sound sources (kinds, enhanced voice) the edit is built from.
@@ -133,6 +135,11 @@ final class VideoPlaybackController: NSObject {
     /// This recording's camera, or an added recording's.
     private var hasCameraTrack: Bool { camera != nil || edit?.cameraTrack != nil }
 
+    /// Each video track above the main track's frame for timeline `time`.
+    func layerFrames(at time: Double) -> [UUID: CIImage] {
+        edit?.layerVideoTracks.isEmpty == false ? layerStore.frames(at: time) : [:]
+    }
+
     /// Re-composes the frame under the playhead (e.g. once person masks
     /// are wanted, so the paused preview updates).
     func refreshCurrentFrame() {
@@ -176,8 +183,9 @@ final class VideoPlaybackController: NSObject {
         let wasPlaying = isPlaying
         let item = AVPlayerItem(asset: built.composition)
         item.audioMix = built.audioMix
-        if let videoComposition = VideoCameraComposition.videoComposition(for: built, frameRate: max(source.frameRate, 30), store: cameraStore) {
+        if let videoComposition = VideoCameraComposition.videoComposition(for: built, frameRate: max(source.frameRate, 30), store: cameraStore, layerStore: layerStore) {
             cameraStore.removeAll()
+            layerStore.removeAll()
             item.videoComposition = videoComposition
         } else if !source.orientation.isIdentity || !built.pieceTransforms.isEmpty {
             // A rotated video (a portrait phone clip), or recordings of

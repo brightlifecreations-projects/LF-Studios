@@ -17,6 +17,8 @@ enum VideoTimelineTrack: Hashable, Identifiable {
     case music
     /// A sound file added to the video.
     case sound(UUID)
+    /// A video or picture track above the main track (1.14.0).
+    case layer(UUID)
 
     var id: String { key }
 
@@ -31,6 +33,7 @@ enum VideoTimelineTrack: Hashable, Identifiable {
         case .annotations: return "annotations"
         case .music: return "music"
         case .sound(let id): return "sound-\(id.uuidString)"
+        case .layer(let id): return "layer-\(id.uuidString)"
         }
     }
 
@@ -44,6 +47,7 @@ enum VideoTimelineTrack: Hashable, Identifiable {
         case .annotations: return "textformat"
         case .music: return "music.note"
         case .sound: return "waveform"
+        case .layer: return "square.2.layers.3d.top.filled"
         }
     }
 
@@ -58,7 +62,7 @@ enum VideoTimelineTrack: Hashable, Identifiable {
     /// Mute: not heard in the preview and the export.
     var canMute: Bool {
         switch self {
-        case .clips, .music, .sound: return true
+        case .clips, .music, .sound, .layer: return true
         default: return false
         }
     }
@@ -91,7 +95,8 @@ extension VideoDemoProject {
     /// Every track, top to bottom: the ones that are always there, then a
     /// row per added sound file.
     var timelineTracks: [VideoTimelineTrack] {
-        [.zooms, .clips, .camera, .captions, .keys, .annotations, .music] + audioTracks.map { .sound($0.id) }
+        // The tracks above the main track, highest first, over it.
+        [.zooms] + layerTracks.reversed().map { .layer($0.id) } + [.clips, .camera, .captions, .keys, .annotations, .music] + audioTracks.map { .sound($0.id) }
     }
 
     /// A track's switches. The keys' Hide and a sound file's or the
@@ -168,6 +173,9 @@ extension VideoTimelineTrack {
         case .annotations: return L("Text & annotations")
         case .music: return L("Music")
         case .sound(let id): return project.audioTracks.first { $0.id == id }?.name ?? L("Sound")
+        case .layer(let id):
+            let number = (project.layerTracks.firstIndex { $0.id == id } ?? 0) + 2
+            return L("Video \(number)")
         }
     }
 }
@@ -213,6 +221,7 @@ extension VideoEditorModel {
         case .caption: return .captions
         case .keystroke: return .keys
         case .cameraLayout: return .camera
+        case .layer(let id): return project.layerTrackIndex(of: id).map { .layer(project.layerTracks[$0].id) }
         case .none, .range: return nil
         }
     }
@@ -322,13 +331,14 @@ struct VideoTimelineRowLayout: Equatable {
             return lanes == 0 ? 0 : CGFloat(lanes) * M.overlayLaneHeight + CGFloat(lanes - 1) * M.overlayLaneGap
         case .music: return project.music == nil ? 0 : M.musicLaneHeight
         case .sound: return M.musicLaneHeight
+        case .layer: return M.layerLaneHeight
         }
     }
 
     /// The hint on an empty row.
     static func hint(_ track: VideoTimelineTrack) -> String {
         switch track {
-        case .zooms, .clips, .sound: return ""
+        case .zooms, .clips, .sound, .layer: return ""
         case .camera: return L("Camera layouts and added camera video show here: Camera panel ▸ Layouts")
         case .captions: return L("Add captions in the Captions panel")
         case .keys: return L("Shortcuts pressed while recording show here")

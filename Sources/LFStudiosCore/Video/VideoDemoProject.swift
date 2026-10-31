@@ -16,6 +16,16 @@ struct VideoDemoTimelineClip: Codable, Equatable, Identifiable {
     var fadeOut: Double
     /// Sped up by "Speed up typing" — pressing it again changes its speed.
     var typingSpeedUp = false
+    /// Flipped left to right (Mirror, 1.14.0).
+    var mirrored = false
+    /// Quarter turns clockwise (Rotate, 1.14.0): 0…3.
+    var quarterTurns = 0
+    /// Off (V, 1.14.0): kept on the timeline, shown black and silent.
+    var disabled = false
+
+    /// Mirror, Rotate or off: only 1.14.0 and later show it.
+    var needsLayerFormat: Bool { mirrored || quarterTurns % 4 != 0 || disabled }
+    var turns: Int { ((quarterTurns % 4) + 4) % 4 }
 
     init(
         id: UUID = UUID(),
@@ -50,7 +60,7 @@ struct VideoDemoTimelineClip: Codable, Equatable, Identifiable {
     }
 
     private enum CodingKeys: String, CodingKey {
-        case id, sourceStart, sourceEnd, speed, muted, fadeIn, fadeOut, typingSpeedUp
+        case id, sourceStart, sourceEnd, speed, muted, fadeIn, fadeOut, typingSpeedUp, mirrored, quarterTurns, disabled
     }
 
     init(from decoder: Decoder) throws {
@@ -63,6 +73,9 @@ struct VideoDemoTimelineClip: Codable, Equatable, Identifiable {
         fadeIn = try container.decodeIfPresent(Double.self, forKey: .fadeIn) ?? 0
         fadeOut = try container.decodeIfPresent(Double.self, forKey: .fadeOut) ?? 0
         typingSpeedUp = (try? container.decodeIfPresent(Bool.self, forKey: .typingSpeedUp)) ?? false
+        mirrored = (try? container.decodeIfPresent(Bool.self, forKey: .mirrored)) ?? false
+        quarterTurns = (try? container.decodeIfPresent(Int.self, forKey: .quarterTurns)) ?? 0
+        disabled = (try? container.decodeIfPresent(Bool.self, forKey: .disabled)) ?? false
     }
 
     func encode(to encoder: Encoder) throws {
@@ -75,6 +88,10 @@ struct VideoDemoTimelineClip: Codable, Equatable, Identifiable {
         try container.encode(fadeIn, forKey: .fadeIn)
         try container.encode(fadeOut, forKey: .fadeOut)
         if typingSpeedUp { try container.encode(true, forKey: .typingSpeedUp) }
+        // Only once used: older files stay byte for byte as they were.
+        if mirrored { try container.encode(true, forKey: .mirrored) }
+        if turns != 0 { try container.encode(turns, forKey: .quarterTurns) }
+        if disabled { try container.encode(true, forKey: .disabled) }
     }
 }
 
@@ -907,6 +924,9 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
     /// the names and folders given there (nil: never used,
     /// VideoMediaBin.swift).
     var mediaBin: VideoMediaBin?
+    /// Video and picture tracks above the main track, lowest first
+    /// (VideoLayers.swift, 1.14.0).
+    var layerTracks: [VideoLayerTrack] = []
 
     var sourceURL: URL { URL(fileURLWithPath: sourcePath) }
     var sourceSize: CGSize { CGSize(width: sourceWidth, height: sourceHeight) }
@@ -1024,16 +1044,10 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
             let start = min(max(clip.sourceStart, 0), max(total - Self.minimumClipDuration, 0))
             let end = min(max(clip.sourceEnd, start + Self.minimumClipDuration), total)
             guard end - start >= Self.minimumClipDuration else { return nil }
-            return VideoDemoTimelineClip(
-                id: clip.id,
-                sourceStart: start,
-                sourceEnd: end,
-                speed: clip.speed,
-                muted: clip.muted,
-                fadeIn: clip.fadeIn,
-                fadeOut: clip.fadeOut,
-                typingSpeedUp: clip.typingSpeedUp
-            )
+            var kept = clip
+            kept.sourceStart = start
+            kept.sourceEnd = end
+            return kept
         }
     }
 
@@ -1130,27 +1144,17 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
             return nil
         }
 
+        // Both halves keep everything else about the clip (speed, sound,
+        // mirror, turn, on/off).
         let original = clips[index]
-        let first = VideoDemoTimelineClip(
-            id: original.id,
-            sourceStart: original.sourceStart,
-            sourceEnd: sourceTime,
-            speed: original.speed,
-            muted: original.muted,
-            fadeIn: original.fadeIn,
-            fadeOut: 0
-        )
-        let second = VideoDemoTimelineClip(
-            sourceStart: sourceTime,
-            sourceEnd: original.sourceEnd,
-            speed: original.speed,
-            muted: original.muted,
-            fadeIn: 0,
-            fadeOut: original.fadeOut
-        )
-        var halves = [first, second]
-        for half in halves.indices { halves[half].typingSpeedUp = original.typingSpeedUp }
-        clips.replaceSubrange(index...index, with: halves)
+        var first = original
+        first.sourceEnd = sourceTime
+        first.fadeOut = 0
+        var second = original
+        second.id = UUID()
+        second.sourceStart = sourceTime
+        second.fadeIn = 0
+        clips.replaceSubrange(index...index, with: [first, second])
         timelineClips = clips
         syncTrimToTimeline(totalDuration: totalDuration)
         return second.id
@@ -1186,31 +1190,21 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
             if rangeStart > segment.timelineStart + Self.minimumClipDuration {
                 let sourceEnd = segment.sourceTime(forTimelineTime: min(rangeStart, segment.timelineEnd))
                 if sourceEnd - segment.clip.sourceStart >= Self.minimumClipDuration {
-                    remaining.append(VideoDemoTimelineClip(
-                        id: segment.clip.id,
-                        sourceStart: segment.clip.sourceStart,
-                        sourceEnd: sourceEnd,
-                        speed: segment.clip.speed,
-                        muted: segment.clip.muted,
-                        fadeIn: segment.clip.fadeIn,
-                        fadeOut: 0,
-                        typingSpeedUp: segment.clip.typingSpeedUp
-                    ))
+                    var kept = segment.clip
+                    kept.sourceEnd = sourceEnd
+                    kept.fadeOut = 0
+                    remaining.append(kept)
                 }
             }
 
             if rangeEnd < segment.timelineEnd - Self.minimumClipDuration {
                 let sourceStart = segment.sourceTime(forTimelineTime: max(rangeEnd, segment.timelineStart))
                 if segment.clip.sourceEnd - sourceStart >= Self.minimumClipDuration {
-                    remaining.append(VideoDemoTimelineClip(
-                        sourceStart: sourceStart,
-                        sourceEnd: segment.clip.sourceEnd,
-                        speed: segment.clip.speed,
-                        muted: segment.clip.muted,
-                        fadeIn: 0,
-                        fadeOut: segment.clip.fadeOut,
-                        typingSpeedUp: segment.clip.typingSpeedUp
-                    ))
+                    var kept = segment.clip
+                    kept.id = UUID()
+                    kept.sourceStart = sourceStart
+                    kept.fadeIn = 0
+                    remaining.append(kept)
                 }
             }
         }
@@ -1484,7 +1478,7 @@ extension VideoDemoProject {
         case webcam, cameraLayouts, importedCamera, splitVideoAspect, customAspect, trackStates, autoZoom, reframe, captions, transcriptLanguage, captionStyle, keystrokes, keystrokeStyle, crop
         case cards, music, audioTracks, clickSounds, transitions, captionTracks, sources, imageOverlayEffects, markers
         case textCursor, keyPresses, loupeStyle, faceTracking, carriedVoices, speakerNotes
-        case ratioVersions, ratioShared, ratioBase, previousRatio, reframeFollowsZooms, mediaBin
+        case ratioVersions, ratioShared, ratioBase, previousRatio, reframeFollowsZooms, mediaBin, layerTracks
         // Legacy (v1) keys
         case backgroundPreset, customBackgroundPath, stageInset, shadowStrength, zoomKeyframes
         case showCursorOverlay, enlargeCursor, showClickRipple, smoothCursor, cursorScale, clickSpotlight, cursorMotionBlur
@@ -1544,6 +1538,7 @@ extension VideoDemoProject {
         previousRatio = try? container.decodeIfPresent(AspectPreset.self, forKey: .previousRatio)
         reframeFollowsZooms = (try? container.decodeIfPresent(Bool.self, forKey: .reframeFollowsZooms)) ?? false
         mediaBin = (try? container.decodeIfPresent(VideoMediaBin.self, forKey: .mediaBin)).flatMap { $0 }
+        layerTracks = (try? container.decodeIfPresent([VideoLayerTrack].self, forKey: .layerTracks)).flatMap { $0 } ?? []
 
         let storedVersion = try container.decodeIfPresent(Int.self, forKey: .version) ?? 1
         if storedVersion >= 2 {
@@ -1638,6 +1633,7 @@ extension VideoDemoProject {
         try container.encodeIfPresent(previousRatio, forKey: .previousRatio)
         if reframeFollowsZooms { try container.encode(true, forKey: .reframeFollowsZooms) }
         if let mediaBin, !mediaBin.isEmpty { try container.encode(mediaBin, forKey: .mediaBin) }
+        if !layerTracks.isEmpty { try container.encode(layerTracks, forKey: .layerTracks) }
         try container.encode(cursorSamples, forKey: .cursorSamples)
         try container.encode(clickEvents, forKey: .clickEvents)
         try container.encode(nativeCursorVisible, forKey: .nativeCursorVisible)

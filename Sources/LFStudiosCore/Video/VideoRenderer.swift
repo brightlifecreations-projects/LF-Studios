@@ -345,6 +345,24 @@ final class VideoRenderPlan: @unchecked Sendable {
     /// Hide on the Video clips track: the screen recording (and its
     /// pointer) isn't drawn.
     let hidesScreen: Bool
+    /// Main-track clips turned, mirrored or off (1.14.0), where they play.
+    let clipLooks: [ClipLook]
+    /// Items on the tracks above the main track, lowest track first
+    /// (hidden tracks left out).
+    let layers: [(track: UUID, item: VideoLayerItem)]
+
+    struct ClipLook {
+        let start: Double
+        let end: Double
+        let mirrored: Bool
+        let turns: Int
+        let disabled: Bool
+    }
+
+    /// How the main track's clip at `time` is shown (nil: as recorded).
+    func clipLook(at time: Double) -> ClipLook? {
+        clipLooks.first { time >= $0.start - 0.0005 && time < $0.end - 0.0005 }
+    }
     /// The frame the video is exported at (differs from `canvasSize` when
     /// reframing: the scene is landscape, the output is not).
     let outputCanvasSize: CGSize
@@ -416,6 +434,9 @@ final class VideoRenderPlan: @unchecked Sendable {
     ) {
         webcam = hasWebcam ? project.webcam : nil
         hidesScreen = project.hidesScreen
+        layers = project.layerTracks.enumerated().flatMap { index, track -> [(track: UUID, item: VideoLayerItem)] in
+            project.isTrackHidden(.layer(track.id)) ? [] : track.items.filter(\.enabled).map { (track.id, $0) }
+        }
         self.faceCrop = hasWebcam ? faceCrop : nil
         self.typingTrack = typingTrack
         canvasSize = project.canvasSize()
@@ -439,6 +460,11 @@ final class VideoRenderPlan: @unchecked Sendable {
         fullBleed = project.usesRawSourceFrame
         segments = project.timelineSegments(totalDuration: sourceDuration)
         timelineDuration = project.outputDuration(segments: segments)
+        clipLooks = segments.compactMap { segment in
+            let clip = segment.clip
+            guard clip.needsLayerFormat else { return nil }
+            return ClipLook(start: segment.timelineStart, end: segment.timelineEnd, mirrored: clip.mirrored, turns: clip.turns, disabled: clip.disabled)
+        }
         cards = project.cards
         introEnd = segments.first?.timelineStart ?? 0
         outroStart = segments.last?.timelineEnd ?? 0
@@ -622,6 +648,8 @@ final class VideoFrameRenderer {
         var rawSource = false
         /// The camera frame for this moment (nil: no bubble).
         var webcamFrame: CIImage?
+        /// Each video track above the main track's frame for this moment.
+        var layerFrames: [UUID: CIImage] = [:]
         /// Where the person is in `webcamFrame` (blur/remove/cutout looks).
         var webcamMask: CIImage?
         /// Render only the scene (reframing draws output layers itself).
@@ -779,10 +807,13 @@ final class VideoFrameRenderer {
         // 3. The recording.
         let stageOut = geometry.rect(plan.stageRect)
         let radius = CGFloat(plan.cornerRadius) * geometry.pixelScale
-        if plan.hidesScreen {
-            // Hidden: the background shows where the recording was.
+        let look = plan.clipLook(at: timelineTime)
+        if plan.hidesScreen || look?.disabled == true {
+            // Hidden (or the clip is off): the background shows where the
+            // recording was.
         } else if let source {
-            let video = placedVideo(source, plan: plan, geometry: geometry, stageOut: stageOut, draft: options.draft)
+            let shown = look.map { Self.turned(source, mirrored: $0.mirrored, turns: $0.turns) } ?? source
+            let video = placedVideo(shown, plan: plan, geometry: geometry, stageOut: stageOut, draft: options.draft)
             if plan.fullBleed || radius < 0.5 {
                 scene = video.cropped(to: stageOut).composited(over: scene)
             } else {
@@ -826,8 +857,9 @@ final class VideoFrameRenderer {
         }
 
         // 6. Click ripples and the pointer.
-        if plan.hidesScreen {
-            // The pointer belongs to the hidden recording.
+        if plan.hidesScreen || look?.disabled == true || look?.mirrored == true || (look?.turns ?? 0) != 0 {
+            // The pointer belongs to the hidden recording (or to pixels
+            // turned away from where it was).
         } else if plan.rendersCursor, let track = plan.cursorTrack {
             let recordedAlpha = track.alpha(at: sourceTime)
             let alpha = plan.cursorLoop?.alpha(recordedAlpha, at: timelineTime) ?? recordedAlpha
@@ -863,6 +895,13 @@ final class VideoFrameRenderer {
     ) -> CIImage {
         var scene = input
         let outputRect = CGRect(origin: .zero, size: outputSize)
+        // The tracks above the main track, lowest first: over the screen,
+        // under the camera, pictures, captions and keys.
+        for layer in plan.layers where layer.item.isShowing(at: timelineTime) {
+            if let image = VideoLayerRenderer.image(for: layer.item, frame: options.layerFrames[layer.track], outputSize: outputSize) {
+                scene = image.composited(over: scene)
+            }
+        }
         /// Where the camera bubble sits — text steps around it (fully, or
         /// easing away while a layout takes the camera elsewhere).
         var avoid: CGRect?
@@ -920,6 +959,22 @@ final class VideoFrameRenderer {
         scene = drawImages(on: scene, plan: plan, outputSize: outputSize, time: timelineTime, options: options)
         scene = drawTextLayers(on: scene, plan: plan, outputSize: outputSize, timelineTime: timelineTime, sourceTime: sourceTime, avoid: avoid, avoidWeight: avoidWeight, options: options)
         return scene
+    }
+
+    /// A main-track clip's frame mirrored and turned by quarter turns,
+    /// fitted back into the frame's own size (black around it).
+    static func turned(_ source: CIImage, mirrored: Bool, turns: Int) -> CIImage {
+        let extent = source.extent
+        guard extent.width > 0, extent.height > 0, mirrored || turns != 0 else { return source }
+        var image = source.transformed(by: CGAffineTransform(translationX: -extent.midX, y: -extent.midY))
+        if mirrored { image = image.transformed(by: CGAffineTransform(scaleX: -1, y: 1)) }
+        // Clockwise on screen: a negative angle (bottom-left origin).
+        image = image.transformed(by: CGAffineTransform(rotationAngle: -CGFloat(turns) * .pi / 2))
+        let turnedSize = turns % 2 == 1 ? CGSize(width: extent.height, height: extent.width) : extent.size
+        let scale = min(extent.width / turnedSize.width, extent.height / turnedSize.height)
+        image = image.transformed(by: CGAffineTransform(scaleX: scale, y: scale))
+            .transformed(by: CGAffineTransform(translationX: extent.midX, y: extent.midY))
+        return image.composited(over: CIImage(color: CIColor.black).cropped(to: extent)).cropped(to: extent)
     }
 
     /// Image annotations, pinned to the output frame (lower lanes first).
