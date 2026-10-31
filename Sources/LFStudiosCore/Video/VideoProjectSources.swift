@@ -632,7 +632,8 @@ struct VideoSourceLayout {
 
     /// Loads the added recordings (the primary's tracks are passed in),
     /// each voice swapped for its cleaned-up version when that's wanted.
-    static func load(project: VideoDemoProject, primary: VideoSourceTracks, primaryAudio: [VideoAudioSource], primaryCamera: VideoCameraSource?, includeCameras: Bool = true, voice: VideoVoiceRecipe? = nil) async -> VideoSourceLayout? {
+    /// `proxies`: the editor's preview plays their proxies (VideoProxies.swift).
+    static func load(project: VideoDemoProject, primary: VideoSourceTracks, primaryAudio: [VideoAudioSource], primaryCamera: VideoCameraSource?, includeCameras: Bool = true, voice: VideoVoiceRecipe? = nil, proxies: Bool = false) async -> VideoSourceLayout? {
         guard project.hasAppendedSources else { return nil }
         var entries: [Entry] = []
         for source in project.sources {
@@ -641,7 +642,8 @@ struct VideoSourceLayout {
                 continue
             }
             guard let url = VideoSourceLocator.resolve(source),
-                  let tracks = try? await VideoSourceTracks.load(url: url) else { continue }
+                  let loaded = try? await VideoSourceTracks.load(url: url) else { continue }
+            let tracks = proxies ? await VideoProxies.swapping(loaded) : loaded
             let kinds = VideoAudioKind.resolve(recorded: source.audioKinds.isEmpty ? nil : source.audioKinds, channelCounts: tracks.audioChannelCounts)
             var camera: VideoCameraSource?
             if includeCameras, let webcam = source.webcam {

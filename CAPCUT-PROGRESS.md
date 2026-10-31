@@ -48,7 +48,7 @@ the first unticked box.
 
 ## Part C: pro tools and export
 - [x] C16 Keyboard shortcuts editor with presets, conflicts, reset
-- [ ] C17 Proxy mode (ProRes Proxy, half res, estimate first)
+- [x] C17 Proxy mode (ProRes Proxy, half res, estimate first)
 - [ ] C18 Compound clips: make, break apart, open in own timeline
 - [ ] C19 Export window (CapCut structure)
 - [ ] C20 Cover frame/image embedded in the export
@@ -189,3 +189,13 @@ the first unticked box.
   Customize… (VideoShortcutsEditor; model.recordingShortcut gets the next
   key in handleKey). The Timeline menu follows the keymap.
   VideoKeymapSettingsTests is SERIAL.
+- C17: VideoProxies (ProRes 422 Proxy, half size, picture only, same
+  transform; LF Studios/VideoProxies/<sha of path+size+date>-half.mov).
+  Player bar ▸ Proxy menu: Edit with Proxies (Settings.
+  videoEditWithProxies) and Create Proxies… (estimate in an alert first;
+  VideoProxyJob progress; stop). The preview swaps only the picture track
+  (`VideoProxies.swapping`, playback.replaceSource/originalSource) for the
+  main recording, added recordings (VideoSourceLayout.load(proxies:)) and
+  videos above the main track (VideoProxies.layerFile); exports and stills
+  never look. Never in a project, so never in handoff/Include media. Clean
+  Up: `Plan.proxies` (all, any age), editors fall back to originals.

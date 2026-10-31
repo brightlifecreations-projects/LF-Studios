@@ -19,6 +19,11 @@ final class VideoDemoEditorWindowController: NSWindowController, NSWindowDelegat
         return paths
     }
 
+    /// Clean Up removed the proxies: open editors play the originals.
+    static func proxiesRemoved() {
+        for controller in openControllers { Task { await controller.model.applyProxySetting() } }
+    }
+
     static func open(videoURL: URL) {
         // A recording in its own folder opens through that folder's project,
         // so the edit there stays up to date (VideoRecordingFolder.swift).

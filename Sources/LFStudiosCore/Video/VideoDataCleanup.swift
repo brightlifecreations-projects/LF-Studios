@@ -58,7 +58,7 @@ enum VideoDataCleanup {
 
     /// Every folder the video editor writes to.
     static var folders: [URL] {
-        ["VideoCameras", "VideoAudio", "VideoDrafts", "VideoMetadata", "VideoIDs", "VideoAssets"].map {
+        ["VideoCameras", "VideoAudio", "VideoDrafts", "VideoMetadata", "VideoIDs", "VideoAssets", "VideoProxies"].map {
             lfstudiosFolder.appendingPathComponent($0, isDirectory: true)
         } + [clipboardExports]
     }
@@ -297,9 +297,11 @@ enum VideoDataCleanup {
         var oldClipboardExports: [URL] = []
         /// Small ID notes of recordings nothing knows any more.
         var staleIDNotes: [URL] = []
+        /// Edit proxies (VideoProxies.swift): always made again on request.
+        var proxies: [URL] = []
 
         var files: [URL] {
-            missingRecordings.flatMap(\.dataFiles) + unusedCameraFootage + unusedVoice + unusedAssets + oldClipboardExports + staleIDNotes
+            missingRecordings.flatMap(\.dataFiles) + unusedCameraFootage + unusedVoice + unusedAssets + oldClipboardExports + staleIDNotes + proxies
         }
 
         var isEmpty: Bool { files.isEmpty }
@@ -336,6 +338,9 @@ enum VideoDataCleanup {
             }
             if !staleIDNotes.isEmpty {
                 lines.append(L("• \(staleIDNotes.count) small notes about recordings that are gone"))
+            }
+            if !proxies.isEmpty {
+                lines.append(L("• Edit proxies — \(proxies.count) files, \(size(proxies)) (Create Proxies makes them again)"))
             }
             return lines.joined(separator: "\n")
         }
@@ -387,6 +392,9 @@ enum VideoDataCleanup {
         }
 
         plan.oldClipboardExports = oldClipboardExports(now: now)
+        // Proxies: all of them (an open editor goes back to the originals).
+        plan.proxies = ((try? FileManager.default.contentsOfDirectory(at: VideoProxies.folder, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles])) ?? [])
+            .filter { $0.pathExtension == "mov" }
 
         // ID notes of recordings nothing still knows.
         let liveIDs = Set(live.compactMap(\.id))
@@ -401,7 +409,7 @@ enum VideoDataCleanup {
     @discardableResult
     static func perform(_ plan: Plan, now: Date = Date()) -> Report {
         var report = Report()
-        for url in plan.files where isOld(url, now: now) || plan.oldClipboardExports.contains(url) {
+        for url in plan.files where isOld(url, now: now) || plan.oldClipboardExports.contains(url) || plan.proxies.contains(url) {
             remove(url, into: &report)
         }
         var ledger = loadLedger()
@@ -547,6 +555,7 @@ struct VideoDataSettingsRow: View {
                 return
             }
             let report = await Task.detached(priority: .userInitiated) { VideoDataCleanup.perform(plan) }.value
+            if !plan.proxies.isEmpty { VideoDemoEditorWindowController.proxiesRemoved() }
             working = false
             result = L("Freed \(ByteCountFormatter.string(fromByteCount: report.freedBytes, countStyle: .file)) (\(report.removedFiles) files)")
             await measure()

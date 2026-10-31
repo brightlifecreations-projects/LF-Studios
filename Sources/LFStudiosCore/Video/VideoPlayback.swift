@@ -35,6 +35,9 @@ final class VideoPlaybackController: NSObject {
 
     let player = AVPlayer()
     private(set) var source: VideoSourceTracks?
+    /// The recording itself while `source` plays its proxy (nil: it's
+    /// playing the recording).
+    private(set) var originalSource: VideoSourceTracks?
     /// The camera recorded with the screen, if any.
     private(set) var camera: VideoCameraSource?
     let cameraStore = VideoCameraFrameStore()
@@ -108,7 +111,16 @@ final class VideoPlaybackController: NSObject {
     func load(url: URL) async throws -> VideoSourceTracks {
         let tracks = try await VideoSourceTracks.load(url: url)
         source = tracks
+        originalSource = nil
         return tracks
+    }
+
+    /// Plays `tracks` (a proxy's picture) in place of `original`; the next
+    /// `apply` rebuilds the edit.
+    func replaceSource(_ tracks: VideoSourceTracks, original: VideoSourceTracks) {
+        source = tracks
+        originalSource = tracks.video === original.video ? nil : original
+        structure = nil
     }
 
     /// Adds the camera footage; the next `apply` builds it into the edit.

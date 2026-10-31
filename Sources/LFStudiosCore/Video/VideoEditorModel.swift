@@ -325,6 +325,10 @@ final class VideoEditorModel: ObservableObject {
     @Published var libraryFavourites: [String] = Settings.videoLibraryFavourites
     /// Keyboard Shortcuts ▸ Customize: the command waiting for its new key.
     @Published var recordingShortcut: VideoEditCommand?
+    /// Proxies being made, and whether the editor plays them (VideoProxies.swift).
+    @Published var proxyJob: VideoProxyJob?
+    @Published var usesProxies = Settings.videoEditWithProxies
+    let proxyCancelFlag = VideoAtomicFlag()
     let trackingCancelFlag = VideoAtomicFlag()
     @Published private(set) var canUndo = false
     @Published private(set) var canRedo = false
@@ -574,6 +578,8 @@ final class VideoEditorModel: ObservableObject {
         didLoad = true
         do {
             let source = try await playback.load(url: project.sourceURL)
+            // Edit with proxies: the picture from the proxy, when this Mac has one.
+            if usesProxies { playback.replaceSource(await VideoProxies.swapping(source), original: source) }
             sourceDuration = source.duration
             sourceFrameRate = source.frameRate
             hasAudio = !source.audio.isEmpty

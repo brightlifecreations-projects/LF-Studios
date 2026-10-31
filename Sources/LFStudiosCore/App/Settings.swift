@@ -321,6 +321,12 @@ enum Settings {
         set { defaults.set(newValue, forKey: "recordingKeyTiming") }
     }
 
+    /// The video editor plays proxies where there are some (VideoProxies).
+    static var videoEditWithProxies: Bool {
+        get { defaults.bool(forKey: "videoEditWithProxies") }
+        set { defaults.set(newValue, forKey: "videoEditWithProxies") }
+    }
+
     /// The video editor's keys (VideoKeymap, JSON; nil: LF Studios' own).
     static var videoKeymap: Data? {
         get { defaults.data(forKey: "videoKeymap") }
