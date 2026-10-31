@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.16.0]
+## [1.16.0] - 2026-11-01
 
 ### Added
 - **Zoom cut:** a quick punch-in on the clip after a cut, with its own button in the timeline's bar (⌥Z). Set how far (Scale) and how long (Duration) with ⌄. It's zoom keyframes on that clip, so you can change them in Properties ▸ Zoom or remove them.
