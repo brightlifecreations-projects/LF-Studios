@@ -55,11 +55,11 @@ the first unticked box.
 - [x] C21 Performance: background rendering, thumbnail/waveform cache, 30-min synthetic project
 
 ## Final pass
-- [ ] Work through TESTING-LATER.md
-- [ ] test-quick green
-- [ ] test-full green
-- [ ] Old projects (.lfs, .lfsp, .lfstudios, .shotstyle) pixel-identical to 1.14.0
-- [ ] Screenshots page (light/dark, en/de, 1920×1200 and 13")
+- [x] Work through TESTING-LATER.md
+- [x] test-quick green
+- [x] test-full green
+- [x] Old projects (.lfs, .lfsp, .lfstudios, .shotstyle) pixel-identical to 1.14.0
+- [x] Screenshots page (light/dark, en/de, 1920×1200 and 13"): https://claude.ai/artifact/JMsBpQyqY4vN4a5FAWMqVc
 - [ ] CHANGELOG (dated), merge, publish 1.15.0
 
 ## Next update (moved out, with why)
@@ -71,6 +71,10 @@ the first unticked box.
   and make it again.
 
 ## Notes
+- Final pass: test-full found two more. The Effects and caption Library
+  tiles re-rendered every frame even when not hovered (busy CPU; the 1.15
+  screenshot test never settled): they now rest until hovered. French used
+  "Dissocier" for both Break Apart and Ungroup: Break Apart is "Décomposer".
 - A1: keyframes live on VideoLayerItem.keys; edits go through
   `setLayerAnimated` (keys at the playhead when a property is animated).
   Commands: addKeyframe (⌥K), previousKeyframe (⌥[), nextKeyframe (⌥]).
