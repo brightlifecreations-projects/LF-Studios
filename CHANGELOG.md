@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.14.0]
+
+### Added
+- **Video and picture tracks above the main track.** Drop a video or a picture on the timeline above your recording and it plays there, over the screen, on the timeline's own clock. Higher tracks draw over lower ones. Each clip can be moved and resized on the player, turned, mirrored, cropped, faded with Opacity, sped up or slowed down, and switched off; videos keep their sound, with their own volume. Drag a clip to another time or track (above the top one makes a new track), drag its ends to trim it, ⌥-drag a video to slip it.
+- **Files land where you drop them.** On the main track, a clip splits around the dropped video (a picture becomes a 5-second clip there); on a track above it, it plays from the drop point; sound gets a track of its own. From Finder or the Library.
+- **A CapCut-style timeline toolbar:** Select and Split tools (A, B), Undo, Redo, Split (⌘B), Delete left and right of the playhead (Q, W), Delete, Marker, Freeze frame (3 seconds of the frame under the playhead), Reverse (with a progress pill and Cancel), Mirror, Rotate, Crop, Record voiceover, and four switches:
+  - Main track magnet (P, on): deleting a clip closes the gap. Off, a black gap of its length stays.
+  - Auto snapping (N, on): dragged clips and edges land on the playhead, other clips' edges and markers.
+  - Linkage (`, on): clips above the main track move with the part of the recording under them when you cut, move or trim the main track.
+  - Preview axis (S, on): the player shows the frame under the pointer as you move over the timeline; the playhead stays put.
+- **More keys:** ⇧⌘B splits every track at the playhead, V turns a clip off and on, ⌘G and ⇧⌘G group and ungroup clips, [ and ] select everything left or right of the playhead, ⌘C and ⌘V copy and paste clips, I and O mark in and out, ⇧⌘A extracts audio, ⇧Z fits the timeline.
+- **Record voiceover:** 3, 2, 1, then the video plays (silent) while you talk; Stop puts your voice on its own track where you started.
+- **The camera bubble and text annotations turn** with a round knob above them (⇧ for steps of 15°, double-click to put them upright).
+- Creative Handoff and the Final Cut and Premiere timelines carry the new tracks: their files come along, on video lanes above the screen, and README.txt says where each one plays and sits.
+
+### Changed
+- **Keyboard shortcuts follow CapCut's.** ⌘B splits (C still does), S is the preview axis, I and O mark in and out, Q and W trim to the playhead, and text, arrow, highlight and blur are ⌥T, ⌥A, ⌥H and ⌥B. Z, M and C stay. The editor says so once, with a button to the full list.
+- Videos LF Studios makes for the main track (pictures on it, freeze frames, reversed clips) are removed when you save the project, once nothing can bring them back.
+
+### Compatibility
+- Projects that use the new tracks, or a turned, mirrored or switched-off clip, or a turned camera or text, are saved in a new kind of project file. LF Studios 1.13 says they need a newer version (with Check for Updates); 1.12 and earlier don't open them. Every other project is saved exactly as before and still opens in older versions.
+
 ## [1.13.0]
 
 ### Added
