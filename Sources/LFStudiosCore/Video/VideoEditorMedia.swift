@@ -304,6 +304,7 @@ extension VideoEditorModel {
             clock.time = moved
         }
         previewRenderer.invalidate()
+        VideoRenderWarmup.warm(project, from: clock.time, height: 1080)
         refreshTimeline()
     }
 

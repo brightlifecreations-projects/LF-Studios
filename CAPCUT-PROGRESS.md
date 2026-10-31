@@ -52,7 +52,7 @@ the first unticked box.
 - [x] C18 Compound clips: make, break apart, open in own timeline
 - [x] C19 Export window (CapCut structure)
 - [x] C20 Cover frame/image embedded in the export
-- [ ] C21 Performance: background rendering, thumbnail/waveform cache, 30-min synthetic project
+- [x] C21 Performance: background rendering, thumbnail/waveform cache, 30-min synthetic project
 
 ## Final pass
 - [ ] Work through TESTING-LATER.md
@@ -228,3 +228,9 @@ the first unticked box.
   MP4, QuickTime artwork for MOV, plus the common artwork key) with a
   pass-through AVAssetExportSession (no re-encoding). A failure is a
   warning, not a failed export.
+- C21: VideoTimelineCache (filmstrip + waveform on disk, keyed by path +
+  size + date; Clean Up lists them). VideoRenderWarmup makes the next 8 s
+  of text/sticker images, adjust/filter LUTs, pictures and GIF frames on a
+  background queue (on seek and after each edit). Budget test
+  VideoLongProjectPerformanceTests (SERIAL): 30-min synthetic media, 60
+  clips with dissolves, 420 clips on 4 tracks.

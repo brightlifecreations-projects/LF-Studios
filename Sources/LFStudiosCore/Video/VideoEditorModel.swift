@@ -1103,6 +1103,7 @@ final class VideoEditorModel: ObservableObject {
         let target = min(max(time, 0), timelineDuration)
         previewAxisTime = nil
         clock.time = target
+        if !fast { VideoRenderWarmup.warm(project, from: target, height: 1080) }
         // Fast seeks come while the playhead is dragged; the exact one on
         // release ends it.
         isScrubbing = fast
@@ -2271,6 +2272,11 @@ final class VideoEditorModel: ObservableObject {
         // Several recordings load their filmstrip together (VideoEditorMedia).
         guard duration > 0, !project.hasAppendedSources else { return }
         let count = min(max(Int(duration / 1.2), 12), 160)
+        // Kept from last time (VideoPerformance.swift).
+        if let cached = await Task.detached(priority: .userInitiated, operation: { VideoTimelineCache.thumbnails(for: url, count: count) }).value {
+            thumbnails = cached
+            return
+        }
         let times = (0..<count).map { duration * (Double($0) + 0.5) / Double(count) }
         let images = await Task.detached(priority: .utility) { () -> [VideoTimelineThumbnail] in
             let generator = AVAssetImageGenerator(asset: AVURLAsset(url: url))
@@ -2278,7 +2284,9 @@ final class VideoEditorModel: ObservableObject {
             generator.maximumSize = CGSize(width: 320, height: 200)
             generator.requestedTimeToleranceBefore = CMTime(value: 1, timescale: 2)
             generator.requestedTimeToleranceAfter = CMTime(value: 1, timescale: 2)
-            return await VideoTimelineThumbnail.generate(with: generator, at: times)
+            let made = await VideoTimelineThumbnail.generate(with: generator, at: times)
+            VideoTimelineCache.save(made, for: url, count: count)
+            return made
         }.value
         thumbnails = images
     }
@@ -2286,6 +2294,10 @@ final class VideoEditorModel: ObservableObject {
     private func loadWaveform() async {
         let url = project.sourceURL
         guard !project.hasAppendedSources else { return }
+        if let cached = await Task.detached(priority: .userInitiated, operation: { VideoTimelineCache.waveform(for: url) }).value {
+            waveform = VideoWaveform(peaks: cached)
+            return
+        }
         let peaks = await Task.detached(priority: .utility) { () -> [Float]? in
             let asset = AVURLAsset(url: url)
             guard let tracks = try? await asset.loadTracks(withMediaType: .audio), !tracks.isEmpty,
@@ -2335,6 +2347,7 @@ final class VideoEditorModel: ObservableObject {
         }.value
         if let peaks {
             waveform = VideoWaveform(peaks: peaks)
+            Task.detached(priority: .utility) { VideoTimelineCache.save(waveform: peaks, for: url) }
         }
     }
 

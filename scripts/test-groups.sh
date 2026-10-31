@@ -14,13 +14,14 @@
 #   VideoEditorDiscoverabilityTests, VideoInspectorLayoutTests,
 #   VideoLibraryFavouritesTests, VideoKeymapSettingsTests — change settings
 #   every test process shares (UserDefaults.standard).
-#   VideoPerformanceTests, VideoLongTakeTests — check how fast exports and
+#   VideoPerformanceTests, VideoLongProjectPerformanceTests,
+#   VideoLongTakeTests — check how fast exports and
 #   long edits are; with other tests using the Mac they miss their limits.
 #   RecordingFrameTests — puts the frame bar on the real screen and asks
 #   the window server what a click hits; another test's window would be
 #   in the way. It also takes the ⌃⌘Esc shortcut.
 SNAPSHOTS='SnapshotTests'
-SERIAL='VideoLibraryFavouritesTests|VideoKeymapSettingsTests|RecordingEngineIntegrationTests|EditorMemoryValidationTests|VideoTimelineInteractionTests|VideoEditorLifecycleTests|VideoEditorDiscoverabilityTests|VideoInspectorLayoutTests|VideoPerformanceTests|VideoLongTakeTests|RecordingFrameTests'
+SERIAL='VideoLibraryFavouritesTests|VideoKeymapSettingsTests|RecordingEngineIntegrationTests|EditorMemoryValidationTests|VideoTimelineInteractionTests|VideoEditorLifecycleTests|VideoEditorDiscoverabilityTests|VideoInspectorLayoutTests|VideoPerformanceTests|VideoLongProjectPerformanceTests|VideoLongTakeTests|RecordingFrameTests'
 
 # Each test process keeps its drafts and presets in a folder of its own
 # in here (VideoTestStorage.swift); start each run with it empty.
