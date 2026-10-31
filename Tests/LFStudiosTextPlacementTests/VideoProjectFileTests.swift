@@ -3,7 +3,7 @@ import Foundation
 import Testing
 @testable import LFStudiosCore
 
-/// project files (`.lfsp`, and the older `.lfstudios`) (VideoProjectDocument.swift, VideoProjectFiles.swift).
+/// project files (`.lfs`, and the older `.lfsp` and `.lfstudios`) (VideoProjectDocument.swift, VideoProjectFiles.swift).
 @Suite("Project files", .serialized)
 struct VideoProjectFileTests {
     /// A scratch folder with every kind of media a project can point at.

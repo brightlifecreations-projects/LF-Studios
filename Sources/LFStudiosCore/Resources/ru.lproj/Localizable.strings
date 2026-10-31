@@ -178,6 +178,8 @@
 	<string>Файл с таким именем уже существует. Выберите другое имя и экспортируйте снова.</string>
 	<key>A fixed shape (Circle, 1:1, 16:9…) keeps its shape as you resize. With Free, width and height change on their own; hold ⇧ to keep the shape.</key>
 	<string>Фиксированная форма (Круг, 1:1, 16:9…) сохраняется при изменении размера. В режиме «Произвольно» ширина и высота меняются отдельно; удерживайте ⇧, чтобы сохранить форму.</string>
+	<key>A folder made by LF Studios 1.11 or earlier keeps its own .lfsp or .lfstudios project file, kept up to date as before.</key>
+	<string>Папка, созданная LF Studios 1.11 или раньше, сохраняет свой файл проекта .lfsp или .lfstudios и обновляет его, как прежде.</string>
 	<key>A folder with an LF Studios project in it opens that project, exactly as it was saved.</key>
 	<string>Папка с проектом LF Studios открывает этот проект точно таким, каким он был сохранен.</string>
 	<key>A frame appears in the middle of the screen. Choose its shape above the recording bar, like 16:9.</key>
@@ -482,8 +484,8 @@
 	<string>Всегда показывать стрелку</string>
 	<key>Amber Fold</key>
 	<string>Янтарная складка</string>
-	<key>An LF Studios project: open the folder in LF Studios to edit the video again. With clips cut to your edit, Include originals so it reopens in LF Studios adds the untouched recordings it needs.</key>
-	<string>Проект LF Studios: откройте папку в LF Studios, чтобы снова редактировать видео. Если клипы обрезаны под монтаж, параметр «Добавить оригиналы для повторного открытия в LF Studios» добавит нужные исходные записи.</string>
+	<key>An LF Studios project (Name.lfs): open the folder in LF Studios 1.12.0 or later to edit the video again. With clips cut to your edit, Include originals so it reopens in LF Studios adds the untouched recordings it needs.</key>
+	<string>Проект LF Studios (Имя.lfs): откройте папку в LF Studios 1.12.0 или новее, чтобы снова редактировать видео. Если клипы обрезаны под монтаж, параметр «Добавить оригиналы для повторного открытия в LF Studios» добавит нужные исходные записи.</string>
 	<key>An older Creative Handoff is put back together from its files: the screen, the cuts, the camera at its place, captions, markers, and the pointer. A summary says what came back.</key>
 	<string>Старая «Творческая передача» собирается заново из своих файлов: экран, вырезанные фрагменты, камера на своем месте, субтитры, маркеры и указатель. В сводке видно, что удалось восстановить.</string>
 	<key>An optional 2-second “Made with LF Studios” card at the end.</key>
@@ -3076,6 +3078,8 @@
 	<string>Клавиши на экране</string>
 	<key>L</key>
 	<string>L</string>
+	<key>LF Studios 1.11 and earlier can't open .lfs files: whoever you send one to needs LF Studios 1.12.0 or later.</key>
+	<string>LF Studios 1.11 и более ранние версии не открывают файлы .lfs: получателю нужен LF Studios 1.12.0 или новее.</string>
 	<key>LF Studios Guide</key>
 	<string>Руководство LF Studios</string>
 	<key>LF Studios Home</key>
@@ -3604,8 +3608,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Новое в последних версиях. Нажмите на пункт, чтобы узнать, как это работает.</string>
 	<key>New loupes take the look of the last one you changed.</key>
 	<string>Новые лупы получают вид той, которую вы меняли последней.</string>
-	<key>New projects are saved as .lfsp files. Save Project (⌘S) keeps an older .lfstudios project's name; Save Project As… (⇧⌘S) makes a .lfsp.</key>
-	<string>Новые проекты сохраняются как файлы .lfsp. «Сохранить проект» (⌘S) оставляет старому проекту .lfstudios его имя; «Сохранить проект как…» (⇧⌘S) создает файл .lfsp.</string>
+	<key>New projects are saved as .lfs files. Save Project (⌘S) keeps an older .lfsp or .lfstudios project's name and ending; Save Project As… (⇧⌘S) makes a .lfs.</key>
+	<string>Новые проекты сохраняются как файлы .lfs. «Сохранить проект» (⌘S) оставляет старому проекту .lfsp или .lfstudios его имя и расширение; «Сохранить проект как…» (⇧⌘S) создает файл .lfs.</string>
 	<key>New recording</key>
 	<string>Новая запись</string>
 	<key>New recording records an area of the screen, a window, or the whole screen.</key>
@@ -3790,8 +3794,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Сдвиг</string>
 	<key>Older</key>
 	<string>Ранее</string>
-	<key>Older projects open too: .lfstudios from LF Studios 1.8 and earlier, and .shotstyle from ShotStyle. LF Studios never renames them.</key>
-	<string>Старые проекты тоже открываются: .lfstudios из LF Studios 1.8 и более ранних версий и .shotstyle из ShotStyle. LF Studios никогда их не переименовывает.</string>
+	<key>Older projects open too: .lfsp from LF Studios 1.9–1.11, .lfstudios from 1.8 and earlier, and .shotstyle from ShotStyle. LF Studios never renames them.</key>
+	<string>Старые проекты тоже открываются: .lfsp из LF Studios 1.9–1.11, .lfstudios из 1.8 и более ранних версий и .shotstyle из ShotStyle. LF Studios никогда их не переименовывает.</string>
 	<key>Older than 1.4.1? Download the latest version once by hand from the LF Studios releases page. After that, it updates itself.</key>
 	<string>Версия старше 1.4.1? Один раз загрузите последнюю версию вручную со страницы выпусков LF Studios. После этого приложение будет обновляться само.</string>
 	<key>On macOS 13, a window is captured as you see it on screen, including anything in front of it.</key>
@@ -3884,8 +3888,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Сначала откройте запись в видеоредакторе, затем нажмите «Показать».</string>
 	<key>Open a recording, or any MP4 or MOV video, in the video editor.</key>
 	<string>Откройте в видеоредакторе запись или любое видео MP4 или MOV.</string>
-	<key>Open a saved .lfsp project, a recording's folder, or a video.</key>
-	<string>Откройте сохраненный проект .lfsp, папку записи или видео.</string>
+	<key>Open a saved .lfs project, a recording's folder, or a video.</key>
+	<string>Откройте сохраненный проект .lfs, папку записи или видео.</string>
 	<key>Open a screenshot from Home, History, or the preview after capture. The tools are in the toolbar at the top.</key>
 	<string>Откройте снимок с главной, из истории или из превью после снимка. Инструменты — на панели инструментов вверху.</string>
 	<key>Open a screenshot to mark it up, then copy or save the result.</key>
@@ -5984,8 +5988,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Превью появляется, только если в разделе Настройки ▸ Основные включено «Показывать превью после снимка».</string>
 	<key>The preview you see while recording never shows up in the screen recording itself.</key>
 	<string>Предпросмотр, который вы видите во время записи, никогда не попадает в саму запись экрана.</string>
-	<key>The project file opens everything again, exactly as you left it. LF Studios keeps it up to date as you edit.</key>
-	<string>Файл проекта снова открывает все точно так, как вы оставили. LF Studios обновляет его, пока вы редактируете.</string>
+	<key>The project file (Name.lfs) opens everything again, exactly as you left it. LF Studios keeps it up to date as you edit.</key>
+	<string>Файл проекта (Имя.lfs) снова открывает все точно так, как вы оставили. LF Studios обновляет его, пока вы редактируете.</string>
 	<key>The recording bar</key>
 	<string>Панель записи</string>
 	<key>The recording bar, the camera bubble preview, Speaker notes, the countdown, and notices.</key>

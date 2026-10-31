@@ -53,6 +53,11 @@ extension UTType {
     }
 
     /// A `.lfstudios` project from LF Studios 1.1–1.8 (still opens).
+    static var lfstudiosLFSPProject: UTType {
+        UTType(VideoProjectDocument.lfspTypeIdentifier) ?? UTType(filenameExtension: VideoProjectDocument.lfspFileExtension, conformingTo: .package) ?? .package
+    }
+
+    /// A `.lfstudios` project from LF Studios 1.1–1.8 (still opens).
     static var lfstudiosPreviousProject: UTType {
         UTType(VideoProjectDocument.previousTypeIdentifier) ?? UTType(filenameExtension: VideoProjectDocument.previousFileExtension, conformingTo: .package) ?? .package
     }
@@ -63,14 +68,19 @@ extension UTType {
     }
 }
 
-/// Opening a project (`.lfsp`, or an older `.lfstudios`/`.shotstyle`) in the video editor.
+/// Opening a project (`.lfs`, or an older `.lfsp`/`.lfstudios`/`.shotstyle`) in the video editor.
 @MainActor
 enum VideoProjectOpener {
     /// File ▸ Open… (⌘O) and Home's Open…: a project, a folder (a
     /// recording's own, a Creative Handoff, any other), or a video.
+    /// What Open… takes: every project file, old and new, folders and videos.
+    static var openableContentTypes: [UTType] {
+        [.lfstudiosProject, .lfstudiosLFSPProject, .lfstudiosPreviousProject, .shotstyleProject, .folder, .mpeg4Movie, .quickTimeMovie, .movie]
+    }
+
     static func chooseAndOpen() {
         let panel = NSOpenPanel()
-        panel.allowedContentTypes = [.lfstudiosProject, .lfstudiosPreviousProject, .shotstyleProject, .folder, .mpeg4Movie, .quickTimeMovie, .movie]
+        panel.allowedContentTypes = openableContentTypes
         panel.allowsMultipleSelection = false
         panel.canChooseDirectories = true
         panel.treatsFilePackagesAsDirectories = false
@@ -176,7 +186,7 @@ extension VideoEditorModel {
 
     /// ⌘S: into the project file this edit came from or was saved to (asks
     /// where the first time), under its own name, so an older `.lfstudios`
-    /// stays one; ⇧⌘S always asks, and writes a `.lfsp`.
+    /// stays one; ⇧⌘S always asks, and writes a `.lfs`.
     func saveProject(as saveAs: Bool = false) {
         guard isReady else { return }
         saveDraftNow()

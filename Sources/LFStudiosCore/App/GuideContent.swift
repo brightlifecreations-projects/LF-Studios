@@ -15,7 +15,7 @@ import Foundation
 @MainActor
 enum GuideContent {
     /// Pages from these versions get a New badge and fill What's new.
-    nonisolated static let newVersions: [String] = ["1.11.1", "1.11.0", "1.10.0", "1.9.0", "1.8.0", "1.7.0"]
+    nonisolated static let newVersions: [String] = ["1.12.0", "1.11.1", "1.11.0", "1.10.0", "1.9.0", "1.8.0", "1.7.0"]
 
     static func chapters() -> [GuideChapter] {
         let features = featureCategories()
@@ -1126,15 +1126,16 @@ enum GuideContent {
                     L("01 Screen: the screen recording. 02 Camera: the camera video, if you recorded one."),
                     L("03 Audio: your microphone and the Mac's sound as separate files. 05 Captions: your captions, once you make them."),
                     L("07 Data: the pointer, clicks, and keys. And README.txt, which says what each file is."),
-                    L("The project file opens everything again, exactly as you left it. LF Studios keeps it up to date as you edit."),
+                    L("The project file (Name.lfs) opens everything again, exactly as you left it. LF Studios keeps it up to date as you edit."),
                 ],
                 tips: [
                     L("Click Cancel, or turn off asking, and it goes in the Recording folder, laid out the same way. Nothing is ever lost."),
+                    L("A folder made by LF Studios 1.11 or earlier keeps its own .lfsp or .lfstudios project file, kept up to date as before."),
                     L("Move or rename the folder in Finder as you like, or copy it to another Mac: it still opens."),
                     L("Files move only once the recording is finished and checked. If something goes wrong, the recording stays where it was."),
                 ],
                 showMe: .settings(.recording),
-                since: "1.6.0",
+                since: "1.12.0",
                 related: ["project-folder", "app-files"]
             ),
             GuideEntry(
@@ -2178,7 +2179,7 @@ enum GuideContent {
                     L("A timeline for Final Cut Pro, DaVinci Resolve, and Adobe Premiere Pro."),
                     L("Line everything up makes every file start at the same moment."),
                     L("A README lists every file. Include speaker notes adds your notes."),
-                    L("An LF Studios project: open the folder in LF Studios to edit the video again. With clips cut to your edit, Include originals so it reopens in LF Studios adds the untouched recordings it needs."),
+                    L("An LF Studios project (Name.lfs): open the folder in LF Studios 1.12.0 or later to edit the video again. With clips cut to your edit, Include originals so it reopens in LF Studios adds the untouched recordings it needs."),
                 ],
                 keys: [.fixed("⇧⌘E", L("Creative Handoff"))],
                 tips: [
@@ -2186,7 +2187,7 @@ enum GuideContent {
                     L("Fonts you added to LF Studios always go along. Fonts installed on this Mac (in Font Book) go only with Include fonts installed on this Mac turned on: check that the font's license lets you share it first. Without them, README.txt lists the fonts left out."),
                     L("Opened on another Mac, the project looks and sounds the same: the cleaned-up voice, Keep face centered, the pointer's own picture, and a macOS wallpaper background travel in the folder."),
                 ],
-                since: "1.8.0",
+                since: "1.12.0",
                 related: ["howto-handoff", "project-folder"]
             ),
         ]
@@ -2214,18 +2215,21 @@ enum GuideContent {
                     L("Include media: the project opens on any Mac."),
                     L("Link to media: smaller, for this Mac only."),
                     L("Include fonts installed on this Mac: fonts from Font Book go along too. Check that a font's license lets you share it first. Fonts you added to LF Studios always go."),
-                    L("New projects are saved as .lfsp files. Save Project (⌘S) keeps an older .lfstudios project's name; Save Project As… (⇧⌘S) makes a .lfsp."),
+                    L("New projects are saved as .lfs files. Save Project (⌘S) keeps an older .lfsp or .lfstudios project's name and ending; Save Project As… (⇧⌘S) makes a .lfs."),
                 ],
                 keys: [.fixed("⌘S", L("Save Project")), .fixed("⇧⌘S", L("Save Project As…"))],
-                since: "1.9.0"
+                since: "1.12.0"
             ),
             GuideEntry(
                 id: "project-open", symbol: "folder", title: L("Open a project"),
-                summary: L("Open a saved .lfsp project, a recording's folder, or a video."),
+                summary: L("Open a saved .lfs project, a recording's folder, or a video."),
                 location: L("Open… in Home, File ▸ Open… (⌘O), or double-click the project in Finder."),
                 keys: [.fixed("⌘O", L("Open…"))],
-                tips: [L("Older projects open too: .lfstudios from LF Studios 1.8 and earlier, and .shotstyle from ShotStyle. LF Studios never renames them.")],
-                since: "1.9.0",
+                tips: [
+                    L("Older projects open too: .lfsp from LF Studios 1.9–1.11, .lfstudios from 1.8 and earlier, and .shotstyle from ShotStyle. LF Studios never renames them."),
+                    L("LF Studios 1.11 and earlier can't open .lfs files: whoever you send one to needs LF Studios 1.12.0 or later."),
+                ],
+                since: "1.12.0",
                 related: ["project-folder"]
             ),
             GuideEntry(

@@ -99,7 +99,8 @@ final class GuideTests: XCTestCase {
         XCTAssertEqual(top.map { String($0.dropFirst(4).prefix { $0 != "]" }) }, GuideContent.newVersions.first, "put the new version first in GuideContent.newVersions")
         XCTAssertTrue(listed.contains("audio-added"))
         XCTAssertTrue(listed.contains("rec-frame"))
-        XCTAssertFalse(listed.contains("rec-folder"), "1.6.0 has left What's new")
+        XCTAssertFalse(listed.contains("project-folder"), "1.6.0 has left What's new")
+        XCTAssertTrue(listed.contains("rec-folder"), "changed in 1.12.0 (its project is a .lfs): new again")
         XCTAssertFalse(listed.contains("camera-face"), "older versions' pages leave What's new")
         for entry in features {
             XCTAssertEqual(entry.isNew, listed.contains(entry.id), entry.id)

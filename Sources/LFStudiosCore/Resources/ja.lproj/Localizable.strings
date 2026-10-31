@@ -242,6 +242,8 @@
 	<string>同じ名前のファイルがすでにあります。別の名前を付けて、もう一度書き出してください。</string>
 	<key>A fixed shape (Circle, 1:1, 16:9…) keeps its shape as you resize. With Free, width and height change on their own; hold ⇧ to keep the shape.</key>
 	<string>固定の形（円形、1:1、16:9…）はサイズを変えても形が保たれます。“自由形式”では幅と高さが別々に変わります。⇧を押したままにすると形が保たれます。</string>
+	<key>A folder made by LF Studios 1.11 or earlier keeps its own .lfsp or .lfstudios project file, kept up to date as before.</key>
+	<string>LF Studios 1.11以前で作ったフォルダは、それまでの.lfspまたは.lfstudiosプロジェクトファイルをそのまま使い、これまでどおり更新されます。</string>
 	<key>A folder with an LF Studios project in it opens that project, exactly as it was saved.</key>
 	<string>LF Studiosのプロジェクトが入ったフォルダは、そのプロジェクトが保存したときのとおりに開きます。</string>
 	<key>A frame appears in the middle of the screen. Choose its shape above the recording bar, like 16:9.</key>
@@ -550,8 +552,8 @@
 	<string>常に矢印を表示</string>
 	<key>Amber Fold</key>
 	<string>琥珀のひだ</string>
-	<key>An LF Studios project: open the folder in LF Studios to edit the video again. With clips cut to your edit, Include originals so it reopens in LF Studios adds the untouched recordings it needs.</key>
-	<string>LF Studiosのプロジェクト: フォルダをLF Studiosで開くと、ビデオをもう一度編集できます。クリップを編集に合わせてカットする場合は、“LF Studiosで再び開けるようにオリジナルを含める”で、必要な元の収録がそのまま追加されます。</string>
+	<key>An LF Studios project (Name.lfs): open the folder in LF Studios 1.12.0 or later to edit the video again. With clips cut to your edit, Include originals so it reopens in LF Studios adds the untouched recordings it needs.</key>
+	<string>LF Studiosのプロジェクト（名前.lfs）: フォルダをLF Studios 1.12.0以降で開くと、ビデオをもう一度編集できます。クリップを編集に合わせてカットする場合は、“LF Studiosで再び開けるようにオリジナルを含める”で、必要な元の収録がそのまま追加されます。</string>
 	<key>An older Creative Handoff is put back together from its files: the screen, the cuts, the camera at its place, captions, markers, and the pointer. A summary says what came back.</key>
 	<string>以前のクリエイティブ受け渡しは、そのファイルから組み立て直されます: 画面、カット、元の位置のカメラ、字幕、マーカー、ポインタ。復元できた内容は概要に表示されます。</string>
 	<key>An optional 2-second “Made with LF Studios” card at the end.</key>
@@ -3182,6 +3184,8 @@
 	<string>キー表示</string>
 	<key>L</key>
 	<string>大</string>
+	<key>LF Studios 1.11 and earlier can't open .lfs files: whoever you send one to needs LF Studios 1.12.0 or later.</key>
+	<string>LF Studios 1.11以前では.lfsファイルを開けません。送る相手にはLF Studios 1.12.0以降が必要です。</string>
 	<key>LF Studios Guide</key>
 	<string>LF Studiosガイド</string>
 	<key>LF Studios Home</key>
@@ -3712,8 +3716,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>最近のバージョンで追加された機能です。クリックすると使いかたを読めます。</string>
 	<key>New loupes take the look of the last one you changed.</key>
 	<string>新しいルーペには、最後に変更したルーペの見た目が使われます。</string>
-	<key>New projects are saved as .lfsp files. Save Project (⌘S) keeps an older .lfstudios project's name; Save Project As… (⇧⌘S) makes a .lfsp.</key>
-	<string>新しいプロジェクトは.lfspファイルとして保存されます。“プロジェクトを保存”（⌘S）では古い.lfstudiosプロジェクトの名前はそのままです。“プロジェクトを別名で保存…”（⇧⌘S）では.lfspが作られます。</string>
+	<key>New projects are saved as .lfs files. Save Project (⌘S) keeps an older .lfsp or .lfstudios project's name and ending; Save Project As… (⇧⌘S) makes a .lfs.</key>
+	<string>新しいプロジェクトは.lfsファイルとして保存されます。“プロジェクトを保存”（⌘S）では古い.lfspや.lfstudiosプロジェクトの名前と拡張子はそのままです。“プロジェクトを別名で保存…”（⇧⌘S）では.lfsが作られます。</string>
 	<key>New recording</key>
 	<string>新規収録</string>
 	<key>New recording records an area of the screen, a window, or the whole screen.</key>
@@ -3898,8 +3902,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>オフセット</string>
 	<key>Older</key>
 	<string>それ以前</string>
-	<key>Older projects open too: .lfstudios from LF Studios 1.8 and earlier, and .shotstyle from ShotStyle. LF Studios never renames them.</key>
-	<string>古いプロジェクトも開けます: LF Studios 1.8以前の.lfstudiosと、ShotStyleの.shotstyle。LF Studiosがその名前を変えることはありません。</string>
+	<key>Older projects open too: .lfsp from LF Studios 1.9–1.11, .lfstudios from 1.8 and earlier, and .shotstyle from ShotStyle. LF Studios never renames them.</key>
+	<string>古いプロジェクトも開けます: LF Studios 1.9〜1.11の.lfsp、1.8以前の.lfstudios、ShotStyleの.shotstyle。LF Studiosがその名前を変えることはありません。</string>
 	<key>Older than 1.4.1? Download the latest version once by hand from the LF Studios releases page. After that, it updates itself.</key>
 	<string>1.4.1より前のバージョンの場合は、LF Studiosのリリースページから最新バージョンを一度だけ手動でダウンロードしてください。そのあとは自動的にアップデートされます。</string>
 	<key>On macOS 13, a window is captured as you see it on screen, including anything in front of it.</key>
@@ -3992,8 +3996,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>先にビデオエディタで収録を開いてから、“見てみる”をクリックしてください。</string>
 	<key>Open a recording, or any MP4 or MOV video, in the video editor.</key>
 	<string>収録したビデオや、MP4またはMOVのビデオをビデオエディタで開きます。</string>
-	<key>Open a saved .lfsp project, a recording's folder, or a video.</key>
-	<string>保存した.lfspプロジェクト、収録のフォルダ、またはビデオを開きます。</string>
+	<key>Open a saved .lfs project, a recording's folder, or a video.</key>
+	<string>保存した.lfsプロジェクト、収録のフォルダ、またはビデオを開きます。</string>
 	<key>Open a screenshot from Home, History, or the preview after capture. The tools are in the toolbar at the top.</key>
 	<string>ホーム、履歴、または取り込み後のプレビューからスクリーンショットを開きます。ツールは上部のツールバーにあります。</string>
 	<key>Open a screenshot to mark it up, then copy or save the result.</key>
@@ -6130,8 +6134,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>プレビューは、“設定”＞“一般”で“キャプチャ後にプレビューを表示”がオンの場合にだけ表示されます。</string>
 	<key>The preview you see while recording never shows up in the screen recording itself.</key>
 	<string>収録中に見えるプレビューは、画面収録そのものには決して映りません。</string>
-	<key>The project file opens everything again, exactly as you left it. LF Studios keeps it up to date as you edit.</key>
-	<string>プロジェクトファイルを開くと、すべてが最後の状態のとおりに開きます。編集すると、LF Studiosが随時更新します。</string>
+	<key>The project file (Name.lfs) opens everything again, exactly as you left it. LF Studios keeps it up to date as you edit.</key>
+	<string>プロジェクトファイル（名前.lfs）を開くと、すべてが最後の状態のとおりに開きます。編集すると、LF Studiosが随時更新します。</string>
 	<key>The recording bar</key>
 	<string>収録バー</string>
 	<key>The recording bar, the camera bubble preview, Speaker notes, the countdown, and notices.</key>

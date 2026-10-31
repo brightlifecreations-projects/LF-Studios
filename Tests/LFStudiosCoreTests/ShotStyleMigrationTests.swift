@@ -148,7 +148,7 @@ final class ShotStyleMigrationTests: XCTestCase {
         XCTAssertEqual(opened.contents.project.sourcePath, video.path)
         XCTAssertTrue(VideoProjectDocument.openableExtensions.contains("shotstyle"))
         XCTAssertTrue(VideoProjectDocument.openableExtensions.contains("lfstudios"))
-        XCTAssertEqual(VideoProjectDocument.fileExtension, "lfsp", "new projects save as .lfsp")
+        XCTAssertEqual(VideoProjectDocument.fileExtension, "lfs", "new projects save as .lfs")
     }
 
     func testShotStylePresetsStillImportWithTheirPictures() throws {
@@ -224,7 +224,7 @@ final class ShotStyleMigrationTests: XCTestCase {
         XCTAssertEqual(plist["CFBundleName"] as? String, "LF Studios")
         XCTAssertEqual(plist["CFBundleIdentifier"] as? String, "com.lfstudios.app")
         let types = (plist["CFBundleDocumentTypes"] as? [[String: Any]] ?? []).flatMap { $0["LSItemContentTypes"] as? [String] ?? [] }
-        for type in ["com.lfstudios.lfsp", "com.lfstudios.project", "com.shotstyle.project", "com.lfstudios.style", "com.lfstudios.presets", "com.shotstyle.presets"] {
+        for type in ["com.lfstudios.lfs", "com.lfstudios.lfsp", "com.lfstudios.project", "com.shotstyle.project", "com.lfstudios.style", "com.lfstudios.presets", "com.shotstyle.presets"] {
             XCTAssertTrue(types.contains(type), "\(type) opens")
         }
         for script in ["scripts/publish-release.sh", ".github/workflows/release.yml"] {

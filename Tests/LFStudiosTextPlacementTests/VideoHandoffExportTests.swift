@@ -301,12 +301,12 @@ struct VideoHandoffExportTests {
         options.clips = clips
         options.includeFinal = false
         let result = try await write(fixture, options: options, into: destination)
-        let package = result.folder.appendingPathComponent("Demo.lfsp")
+        let package = result.folder.appendingPathComponent("Demo.lfs")
         #expect(FileManager.default.fileExists(atPath: VideoProjectPackage.manifestURL(package).path))
         // Moved elsewhere first: it's found relative to the folder.
         let moved = fixture.folder.appendingPathComponent("Moved \(clips.rawValue)", isDirectory: true)
         try FileManager.default.moveItem(at: result.folder, to: moved)
-        let opened = try VideoProjectPackage.open(moved.appendingPathComponent("Demo.lfsp"))
+        let opened = try VideoProjectPackage.open(moved.appendingPathComponent("Demo.lfs"))
         #expect(opened.document.folder?.kind == .handoff)
         let movedPath = moved.standardizedFileURL.path
         for path in opened.contents.paths {
@@ -324,7 +324,8 @@ struct VideoHandoffExportTests {
         // The screen it plays is the untouched recording.
         #expect(try await duration(project.sourceURL) == (try await duration(fixture.input.recordings[0].url!)))
         let readme = try String(contentsOf: moved.appendingPathComponent("README.txt"), encoding: .utf8)
-        #expect(readme.contains("Demo.lfsp"))
+        #expect(readme.contains("Demo.lfs"))
+        #expect(readme.contains("LF Studios (1.12.0 or later)"), "it says which LF Studios opens it")
         if clips == .trimmed {
             #expect(FileManager.default.fileExists(atPath: moved.appendingPathComponent("01 Screen/Originals/Demo.mov").path))
             let timeline = try String(contentsOf: moved.appendingPathComponent("Timeline.fcpxml"), encoding: .utf8)
@@ -348,7 +349,7 @@ struct VideoHandoffExportTests {
         #expect(full.includesProject)
         #expect(full.originalsBytes > 0, "the dialog shows what the originals add")
         let result = try await write(fixture, options: options, into: destination)
-        #expect(!FileManager.default.fileExists(atPath: result.folder.appendingPathComponent("Demo.lfsp").path))
+        #expect(!FileManager.default.fileExists(atPath: result.folder.appendingPathComponent("Demo.lfs").path))
         #expect(!FileManager.default.fileExists(atPath: result.folder.appendingPathComponent("01 Screen/Originals").path))
         let readme = try String(contentsOf: result.folder.appendingPathComponent("README.txt"), encoding: .utf8)
         #expect(readme.contains("Include originals so it reopens in LF Studios"))
@@ -475,7 +476,7 @@ struct VideoHandoffExportTests {
         let fcpxml = try String(contentsOf: result.folder.appendingPathComponent("Timeline.fcpxml"), encoding: .utf8)
         #expect(fcpxml.contains("width=\"1280\" height=\"720\""))
 
-        let project = try VideoProjectPackage.open(result.folder.appendingPathComponent("Demo.lfsp"))
+        let project = try VideoProjectPackage.open(result.folder.appendingPathComponent("Demo.lfs"))
         #expect(project.contents.project.webcam.effectiveLayout == .split)
         #expect(project.contents.project.webcam.split?.cameraShare == 0.4)
         let finals = try FileManager.default.contentsOfDirectory(atPath: result.folder.appendingPathComponent("06 Final").path)

@@ -184,6 +184,8 @@
 	<string>Eine Datei mit diesem Namen ist im Weg. Wähle einen anderen Namen und exportiere erneut.</string>
 	<key>A fixed shape (Circle, 1:1, 16:9…) keeps its shape as you resize. With Free, width and height change on their own; hold ⇧ to keep the shape.</key>
 	<string>Eine feste Form (Kreis, 1:1, 16:9 …) bleibt beim Ändern der Größe erhalten. Mit „Frei“ ändern sich Breite und Höhe einzeln; halte ⇧, um die Form zu behalten.</string>
+	<key>A folder made by LF Studios 1.11 or earlier keeps its own .lfsp or .lfstudios project file, kept up to date as before.</key>
+	<string>Ein Ordner aus LF Studios 1.11 oder früher behält seine eigene .lfsp- oder .lfstudios-Projektdatei, die wie bisher aktuell gehalten wird.</string>
 	<key>A folder with an LF Studios project in it opens that project, exactly as it was saved.</key>
 	<string>Ein Ordner mit einem LF-Studios-Projekt darin öffnet dieses Projekt, genau so, wie es gesichert wurde.</string>
 	<key>A frame appears in the middle of the screen. Choose its shape above the recording bar, like 16:9.</key>
@@ -488,8 +490,8 @@
 	<string>Immer den Pfeil zeigen</string>
 	<key>Amber Fold</key>
 	<string>Bernsteinfalte</string>
-	<key>An LF Studios project: open the folder in LF Studios to edit the video again. With clips cut to your edit, Include originals so it reopens in LF Studios adds the untouched recordings it needs.</key>
-	<string>Ein LF-Studios-Projekt: Öffne den Ordner in LF Studios, um das Video weiter zu bearbeiten. Sind die Clips auf deinen Schnitt gekürzt, fügt „Originale beilegen, damit es sich in LF Studios wieder öffnet“ die unbearbeiteten Aufnahmen hinzu, die es braucht.</string>
+	<key>An LF Studios project (Name.lfs): open the folder in LF Studios 1.12.0 or later to edit the video again. With clips cut to your edit, Include originals so it reopens in LF Studios adds the untouched recordings it needs.</key>
+	<string>Ein LF-Studios-Projekt (Name.lfs): Öffne den Ordner in LF Studios 1.12.0 oder neuer, um das Video weiter zu bearbeiten. Sind die Clips auf deinen Schnitt gekürzt, fügt „Originale beilegen, damit es sich in LF Studios wieder öffnet“ die unbearbeiteten Aufnahmen hinzu, die es braucht.</string>
 	<key>An older Creative Handoff is put back together from its files: the screen, the cuts, the camera at its place, captions, markers, and the pointer. A summary says what came back.</key>
 	<string>Eine ältere Kreative Übergabe wird aus ihren Dateien wieder zusammengesetzt: der Bildschirm, die Schnitte, die Kamera an ihrer Stelle, Untertitel, Marker und der Zeiger. Eine Übersicht zeigt, was zurückgekommen ist.</string>
 	<key>An optional 2-second “Made with LF Studios” card at the end.</key>
@@ -3082,6 +3084,8 @@
 	<string>Tasten im Bild</string>
 	<key>L</key>
 	<string>L</string>
+	<key>LF Studios 1.11 and earlier can't open .lfs files: whoever you send one to needs LF Studios 1.12.0 or later.</key>
+	<string>LF Studios 1.11 und früher können .lfs-Dateien nicht öffnen: Wer eine von dir bekommt, braucht LF Studios 1.12.0 oder neuer.</string>
 	<key>LF Studios Guide</key>
 	<string>LF-Studios-Anleitung</string>
 	<key>LF Studios Home</key>
@@ -3610,8 +3614,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Neu in den letzten Versionen. Klicke auf einen Eintrag, um zu lesen, wie es funktioniert.</string>
 	<key>New loupes take the look of the last one you changed.</key>
 	<string>Neue Lupen übernehmen das Aussehen der zuletzt geänderten.</string>
-	<key>New projects are saved as .lfsp files. Save Project (⌘S) keeps an older .lfstudios project's name; Save Project As… (⇧⌘S) makes a .lfsp.</key>
-	<string>Neue Projekte werden als .lfsp-Dateien gesichert. „Projekt sichern“ (⌘S) behält den Namen eines älteren .lfstudios-Projekts; „Projekt sichern unter …“ (⇧⌘S) erstellt eine .lfsp-Datei.</string>
+	<key>New projects are saved as .lfs files. Save Project (⌘S) keeps an older .lfsp or .lfstudios project's name and ending; Save Project As… (⇧⌘S) makes a .lfs.</key>
+	<string>Neue Projekte werden als .lfs-Dateien gesichert. „Projekt sichern“ (⌘S) behält Namen und Endung eines älteren .lfsp- oder .lfstudios-Projekts; „Projekt sichern unter …“ (⇧⌘S) erstellt eine .lfs-Datei.</string>
 	<key>New recording</key>
 	<string>Neue Aufnahme</string>
 	<key>New recording records an area of the screen, a window, or the whole screen.</key>
@@ -3796,8 +3800,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Versatz</string>
 	<key>Older</key>
 	<string>Älter</string>
-	<key>Older projects open too: .lfstudios from LF Studios 1.8 and earlier, and .shotstyle from ShotStyle. LF Studios never renames them.</key>
-	<string>Ältere Projekte öffnen sich auch: .lfstudios aus LF Studios 1.8 und früher und .shotstyle aus ShotStyle. LF Studios benennt sie nie um.</string>
+	<key>Older projects open too: .lfsp from LF Studios 1.9–1.11, .lfstudios from 1.8 and earlier, and .shotstyle from ShotStyle. LF Studios never renames them.</key>
+	<string>Ältere Projekte öffnen sich auch: .lfsp aus LF Studios 1.9–1.11, .lfstudios aus 1.8 und früher und .shotstyle aus ShotStyle. LF Studios benennt sie nie um.</string>
 	<key>Older than 1.4.1? Download the latest version once by hand from the LF Studios releases page. After that, it updates itself.</key>
 	<string>Älter als 1.4.1? Lade die neueste Version einmal von Hand von der Release-Seite von LF Studios. Danach aktualisiert es sich selbst.</string>
 	<key>On macOS 13, a window is captured as you see it on screen, including anything in front of it.</key>
@@ -3890,8 +3894,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Öffne zuerst eine Aufnahme im Video-Editor und klicke dann auf „Zeig’s mir“.</string>
 	<key>Open a recording, or any MP4 or MOV video, in the video editor.</key>
 	<string>Öffne eine Aufnahme oder ein beliebiges MP4- oder MOV-Video im Video-Editor.</string>
-	<key>Open a saved .lfsp project, a recording's folder, or a video.</key>
-	<string>Öffne ein gesichertes .lfsp-Projekt, den Ordner einer Aufnahme oder ein Video.</string>
+	<key>Open a saved .lfs project, a recording's folder, or a video.</key>
+	<string>Öffne ein gesichertes .lfs-Projekt, den Ordner einer Aufnahme oder ein Video.</string>
 	<key>Open a screenshot from Home, History, or the preview after capture. The tools are in the toolbar at the top.</key>
 	<string>Öffne ein Bildschirmfoto über Start, den Verlauf oder die Vorschau nach der Aufnahme. Die Werkzeuge sind in der Symbolleiste oben.</string>
 	<key>Open a screenshot to mark it up, then copy or save the result.</key>
@@ -5990,8 +5994,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Die Vorschau erscheint nur, wenn „Nach der Aufnahme die Vorschau zeigen“ unter Einstellungen ▸ Allgemein eingeschaltet ist.</string>
 	<key>The preview you see while recording never shows up in the screen recording itself.</key>
 	<string>Die Vorschau, die du beim Aufnehmen siehst, erscheint nie in der Bildschirmaufnahme selbst.</string>
-	<key>The project file opens everything again, exactly as you left it. LF Studios keeps it up to date as you edit.</key>
-	<string>Die Projektdatei öffnet alles wieder, genau so, wie du es verlassen hast. LF Studios hält sie beim Bearbeiten aktuell.</string>
+	<key>The project file (Name.lfs) opens everything again, exactly as you left it. LF Studios keeps it up to date as you edit.</key>
+	<string>Die Projektdatei (Name.lfs) öffnet alles wieder, genau so, wie du es verlassen hast. LF Studios hält sie beim Bearbeiten aktuell.</string>
 	<key>The recording bar</key>
 	<string>Die Aufzeichnungsleiste</string>
 	<key>The recording bar, the camera bubble preview, Speaker notes, the countdown, and notices.</key>
