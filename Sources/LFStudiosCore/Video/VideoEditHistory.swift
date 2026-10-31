@@ -196,6 +196,7 @@ extension VideoEditDescription {
         case "Stop Following": return (L("Undo Stop Following"), L("Redo Stop Following"))
         case "Import Captions": return (L("Undo Import Captions"), L("Redo Import Captions"))
         case "Caption Style": return (L("Undo Caption Style"), L("Redo Caption Style"))
+        case "Cover": return (L("Undo Cover"), L("Redo Cover"))
         case "Make Compound Clip": return (L("Undo Make Compound Clip"), L("Redo Make Compound Clip"))
         case "Break Apart": return (L("Undo Break Apart"), L("Redo Break Apart"))
         case "Compound Clip": return (L("Undo Compound Clip"), L("Redo Compound Clip"))

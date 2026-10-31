@@ -232,6 +232,10 @@ struct VideoExportSheet: View {
                 }
             }
 
+            if settings.format.isMovie {
+                row(L("Cover")) { VideoCoverRow(model: model) }
+            }
+
             row(L("Range")) {
                 VStack(alignment: .leading, spacing: 6) {
                     VideoSegmented(options: [(RangeMode.whole, L("Whole video")), (.selection, L("Selection")), (.custom, L("In & out"))], selection: $rangeMode)
@@ -478,7 +482,7 @@ struct VideoExportSheet: View {
     /// The titles' column: 78 pt, wider only when a language's titles
     /// (Japanese フレームレート) need more, so none of them wraps.
     static var titleColumnWidth: CGFloat {
-        let titles = [L("Name"), L("Export to"), L("Resolution"), L("Bit rate"), L("Codec"), L("Format"), L("Frame rate"), L("Size"), L("Range"), L("Captions")]
+        let titles = [L("Name"), L("Export to"), L("Resolution"), L("Bit rate"), L("Codec"), L("Format"), L("Frame rate"), L("Size"), L("Cover"), L("Range"), L("Captions")]
         return max(78, (TextFitting.widest(titles, font: .systemFont(ofSize: 12, weight: .medium)) + 4).rounded(.up))
     }
 

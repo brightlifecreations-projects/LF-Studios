@@ -945,6 +945,8 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
     /// Compound clips (1.15.0; VideoCompounds.swift): their clips are on
     /// `layerTracks`, grouped by the compound's id.
     var compounds: [VideoCompoundClip]?
+    /// The exported file's cover (1.15.0; VideoCover.swift).
+    var cover: VideoCover?
 
     var sourceURL: URL { URL(fileURLWithPath: sourcePath) }
     var sourceSize: CGSize { CGSize(width: sourceWidth, height: sourceHeight) }
@@ -1496,7 +1498,7 @@ extension VideoDemoProject {
         case webcam, cameraLayouts, importedCamera, splitVideoAspect, customAspect, trackStates, autoZoom, reframe, captions, transcriptLanguage, captionStyle, keystrokes, keystrokeStyle, crop
         case cards, music, audioTracks, clickSounds, transitions, captionTracks, sources, imageOverlayEffects, markers
         case textCursor, keyPresses, loupeStyle, faceTracking, carriedVoices, speakerNotes
-        case ratioVersions, ratioShared, ratioBase, previousRatio, reframeFollowsZooms, mediaBin, layerTracks, compounds
+        case ratioVersions, ratioShared, ratioBase, previousRatio, reframeFollowsZooms, mediaBin, layerTracks, compounds, cover
         // Legacy (v1) keys
         case backgroundPreset, customBackgroundPath, stageInset, shadowStrength, zoomKeyframes
         case showCursorOverlay, enlargeCursor, showClickRipple, smoothCursor, cursorScale, clickSpotlight, cursorMotionBlur
@@ -1558,6 +1560,7 @@ extension VideoDemoProject {
         mediaBin = (try? container.decodeIfPresent(VideoMediaBin.self, forKey: .mediaBin)).flatMap { $0 }
         layerTracks = (try? container.decodeIfPresent([VideoLayerTrack].self, forKey: .layerTracks)).flatMap { $0 } ?? []
         compounds = (try? container.decodeIfPresent([VideoCompoundClip].self, forKey: .compounds)).flatMap { $0 }
+        cover = (try? container.decodeIfPresent(VideoCover.self, forKey: .cover)).flatMap { $0 }
 
         let storedVersion = try container.decodeIfPresent(Int.self, forKey: .version) ?? 1
         if storedVersion >= 2 {
@@ -1654,6 +1657,7 @@ extension VideoDemoProject {
         if let mediaBin, !mediaBin.isEmpty { try container.encode(mediaBin, forKey: .mediaBin) }
         if !layerTracks.isEmpty { try container.encode(layerTracks, forKey: .layerTracks) }
         if let compounds, !compounds.isEmpty { try container.encode(compounds, forKey: .compounds) }
+        if let cover { try container.encode(cover, forKey: .cover) }
         try container.encode(cursorSamples, forKey: .cursorSamples)
         try container.encode(clickEvents, forKey: .clickEvents)
         try container.encode(nativeCursorVisible, forKey: .nativeCursorVisible)

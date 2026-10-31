@@ -51,7 +51,7 @@ the first unticked box.
 - [x] C17 Proxy mode (ProRes Proxy, half res, estimate first)
 - [x] C18 Compound clips: make, break apart, open in own timeline
 - [x] C19 Export window (CapCut structure)
-- [ ] C20 Cover frame/image embedded in the export
+- [x] C20 Cover frame/image embedded in the export
 - [ ] C21 Performance: background rendering, thumbnail/waveform cache, 30-min synthetic project
 
 ## Final pass
@@ -220,3 +220,11 @@ the first unticked box.
   24/25/30/50/60; captions .srt/.vtt, chapters, end card, range, Copy and
   Creative Handoff kept; Export all ratios still in the ratio menu. Export
   no longer opens a save panel: exportDestination (Replace/Keep Both).
+- C20: project.cover (VideoCover: timeline time or a stored picture;
+  format 4; in assetPaths and packaging). Export window ▸ Cover: None / A
+  frame (the playhead) / A picture. After a movie is written,
+  VideoCoverEmbedder takes the frame from the finished file (range offset
+  applied) or the picture, and adds it as artwork (iTunes cover art for
+  MP4, QuickTime artwork for MOV, plus the common artwork key) with a
+  pass-through AVAssetExportSession (no re-encoding). A failure is a
+  warning, not a failed export.

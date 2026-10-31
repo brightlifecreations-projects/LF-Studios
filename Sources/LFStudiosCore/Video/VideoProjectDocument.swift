@@ -313,6 +313,7 @@ struct VideoProjectContents {
                 map(&project.layerTracks[t].items[i].filter!.cubePath!, .data)
             }
         }
+        if project.cover?.imagePath != nil { map(&project.cover!.imagePath!, .graphic) }
         // The Library's imported media (VideoMediaBin.swift).
         if project.mediaBin != nil { project.mediaBin!.mapPaths { path, kind in transform(path, kind) } }
         if recording != nil {

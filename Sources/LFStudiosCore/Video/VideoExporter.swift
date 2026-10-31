@@ -255,10 +255,29 @@ enum VideoDemoExporter {
             )
         }
 
+        // The cover, as the file's artwork (movies only).
+        var allWarnings = warnings
+        if settings.format.isMovie, let cover = inputProject.cover {
+            do {
+                let jpeg: Data
+                if let path = cover.imagePath {
+                    guard let data = VideoCoverEmbedder.picture(path, longSide: max(outputSize.width, outputSize.height)) else { throw VideoDemoExportError.exportFailed(L("Couldn't open the cover picture")) }
+                    jpeg = data
+                } else {
+                    var offset = 0.0
+                    if case .timeline(let span) = range { offset = span.lowerBound }
+                    jpeg = try await VideoCoverEmbedder.frame(of: temporaryURL, at: (cover.time ?? 0) - offset)
+                }
+                try await VideoCoverEmbedder.embed(jpeg, into: temporaryURL, fileType: settings.movieFileType)
+            } catch {
+                allWarnings.append(L("The cover couldn't be added: \(error.localizedDescription)"))
+            }
+        }
+
         // Swapped in whole: an existing file stays until the new one is ready.
         try VideoExportFiles.replace(destinationURL, with: temporaryURL)
         await progress(1)
-        return warnings
+        return allWarnings
     }
 
     static func makePlan(project: VideoDemoProject, sourceDuration: Double, recording: VideoDemoRecordingMetadata?, hasWebcam: Bool = false, appendedMetadata: [UUID: VideoDemoRecordingMetadata] = [:]) -> VideoRenderPlan {
