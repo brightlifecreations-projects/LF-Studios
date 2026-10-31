@@ -103,32 +103,6 @@ private struct VideoExternalAudioBlock: View {
     }
 }
 
-/// Sound files dropped on the timeline: each becomes a track where it was dropped.
-struct VideoAudioDrop: DropDelegate {
-    let model: VideoEditorModel
-    let geometry: VideoTimelineGeometry
-
-    func validateDrop(info: DropInfo) -> Bool { info.hasItemsConforming(to: [.fileURL]) }
-
-    func performDrop(info: DropInfo) -> Bool {
-        let time = max(geometry.time(info.location.x), 0)
-        let providers = info.itemProviders(for: [.fileURL])
-        guard !providers.isEmpty else { return false }
-        Task { @MainActor in
-            var urls: [URL] = []
-            for provider in providers {
-                if let url = await withCheckedContinuation({ (done: CheckedContinuation<URL?, Never>) in
-                    _ = provider.loadObject(ofClass: URL.self) { url, _ in done.resume(returning: url) }
-                }), VideoExternalAudioTrack.fileExtensions.contains(url.pathExtension.lowercased()) {
-                    urls.append(url)
-                }
-            }
-            if !urls.isEmpty { await model.addAudio(urls, at: time) }
-        }
-        return true
-    }
-}
-
 /// Audio panel ▸ Added sound: Add audio…, and each track's settings.
 struct VideoExternalAudioSection: View {
     @ObservedObject var model: VideoEditorModel

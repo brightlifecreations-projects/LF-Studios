@@ -278,6 +278,8 @@ struct VideoProjectContents {
         // This Mac's caches the edit uses (VideoProjectCaches.swift).
         for index in project.carriedVoices.indices { map(&project.carriedVoices[index].path, .audio) }
         if project.faceTracking?.analysisPath != nil { map(&project.faceTracking!.analysisPath!, .data) }
+        // The Library's imported media (VideoMediaBin.swift).
+        if project.mediaBin != nil { project.mediaBin!.mapPaths { path, kind in transform(path, kind) } }
         if recording != nil {
             map(&recording!.videoURLPath, .screen)
             if recording!.webcam != nil { map(&recording!.webcam!.path, .camera) }

@@ -8,6 +8,12 @@
   - Properties holds the panels that were on the right (Style, Cursor, Zoom, Camera, Captions, Audio), unchanged.
   - The Library's Text, Captions, and Transitions tabs lead to where those features are.
   - Pictures on the player turn with a round knob (or Properties ▸ Rotation) and snap to the middle and the edges of the video, with a line showing where.
+- **Your media in the Library.** The Media tab shows every video, picture, and sound file of the project: the recording, its camera, added recordings, music, sound files, pictures, and anything you import. "Added" marks what's in the video.
+  - Import with File ▸ Import Media… (⌘I), the Import button, or by dragging files from Finder onto the Library. Imported files stay where they are until you save the project with Include media.
+  - Drag a file onto the timeline or the player (or click the + on its thumbnail): a video goes at the end of the video, a picture or a sound starts at the playhead, or where you drop it on the timeline.
+  - Move the pointer across a video's thumbnail to look through it. Search, Thumbnails or List, Sort By (Date Added, Name, Length, Kind), and folders.
+  - Right-click for Reveal in Finder, Rename…, Move to Folder, Replace…, Extract Audio, and Delete from Project. A file that moved shows Missing, with Locate….
+  - The Audio tab lists the sound files, and Extract Audio adds a video's sound there as its own file.
 - **Projects saved by a newer LF Studios** that this version can't read say "This project needs a newer version of LF Studios", with Check for Updates, instead of "not an LF Studios project".
 
 ## [1.12.0]

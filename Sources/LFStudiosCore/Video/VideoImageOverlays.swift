@@ -117,6 +117,8 @@ extension VideoDemoProject {
         var paths = Set(overlayEffects.compactMap { $0.image?.path })
         if let music { paths.insert(music.path) }
         paths.formUnion(audioTracks.map(\.path))
+        // Sound taken out of a video lives in the store too.
+        if let mediaBin { paths.formUnion(mediaBin.imported.map(\.path)) }
         return paths
     }
 }

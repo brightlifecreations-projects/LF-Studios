@@ -191,6 +191,16 @@ extension VideoEditDescription {
         }
         switch name {
         // Recordings, music, cards, transitions.
+        // The Library's media (VideoMediaBin.swift).
+        case "Import Media": return (L("Undo Import Media"), L("Redo Import Media"))
+        case "Rename Media": return (L("Undo Rename Media"), L("Redo Rename Media"))
+        case "Move Media": return (L("Undo Move Media"), L("Redo Move Media"))
+        case "New Folder": return (L("Undo New Folder"), L("Redo New Folder"))
+        case "Rename Folder": return (L("Undo Rename Folder"), L("Redo Rename Folder"))
+        case "Delete Folder": return (L("Undo Delete Folder"), L("Redo Delete Folder"))
+        case "Delete from Project": return (L("Undo Delete from Project"), L("Redo Delete from Project"))
+        case "Replace Media": return (L("Undo Replace Media"), L("Redo Replace Media"))
+        case "Extract Audio": return (L("Undo Extract Audio"), L("Redo Extract Audio"))
         case "Add Recording": return (L("Undo Add Recording"), L("Redo Add Recording"))
         case "Remove Recording": return (L("Undo Remove Recording"), L("Redo Remove Recording"))
         case "Move Recording": return (L("Undo Move Recording"), L("Redo Move Recording"))

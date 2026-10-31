@@ -344,9 +344,10 @@ struct VideoTimelineSurface: View {
 
     private func lanes(rows: VideoTimelineRowLayout, height: CGFloat) -> some View {
         ZStack(alignment: .topLeading) {
-            // Sound files dropped on the timeline become tracks there.
+            // Files dropped on the timeline (from Finder or the Library):
+            // pictures and sound start there, videos go at the end.
             Color.clear
-                .onDrop(of: [.fileURL], delegate: VideoAudioDrop(model: model, geometry: geometry))
+                .onDrop(of: [.fileURL], delegate: VideoMediaDrop(model: model) { max(geometry.time($0.x), 0) })
             // Scrub anywhere that isn't an object.
             Color.clear
                 .contentShape(Rectangle())

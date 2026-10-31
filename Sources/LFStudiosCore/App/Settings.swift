@@ -372,6 +372,18 @@ enum Settings {
         }
     }
 
+    /// The Library's media as a list instead of thumbnails.
+    static var videoMediaBinAsList: Bool {
+        get { defaults.bool(forKey: "videoMediaBinAsList") }
+        set { defaults.set(newValue, forKey: "videoMediaBinAsList") }
+    }
+
+    /// How the Library sorts its media (VideoMediaSort raw value).
+    static var videoMediaBinSort: String? {
+        get { defaults.string(forKey: "videoMediaBinSort") }
+        set { defaults.set(newValue, forKey: "videoMediaBinSort") }
+    }
+
     static var recordingCameraDeviceID: String {
         get { defaults.string(forKey: "recordingCameraDeviceID") ?? "" }
         set { defaults.set(newValue, forKey: "recordingCameraDeviceID") }

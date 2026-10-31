@@ -1190,7 +1190,31 @@ enum GuideContent {
                     L("Full-screen preview shows only the player. Press Esc to leave."),
                 ],
                 since: "1.13.0",
-                related: ["video-timeline"]
+                related: ["video-media", "video-timeline"]
+            ),
+            GuideEntry(
+                id: "video-media", symbol: "photo.on.rectangle", title: L("Your media in the Library"),
+                summary: L("Every video, picture, and sound file of the project in one place: what's in the video, and what you imported to use."),
+                location: L("The Library's Media and Audio tabs, at the top left of the video editor. File ▸ Import Media… (⌘I)."),
+                points: [
+                    L("The recording, its camera, added recordings, music, sound files, and pictures are already there. Added marks what's in the video."),
+                    L("Move the pointer across a video's thumbnail to look through it. The time in its corner is its length."),
+                    L("Search, Thumbnails or List, Sort By, and New Folder… are at the top of the Library."),
+                    L("Imported files stay where they are until you save the project with Include media."),
+                ],
+                steps: [
+                    L("Click Import, or drag files from Finder onto the Library."),
+                    L("Drag a file onto the timeline or the player, or click the + on its thumbnail. A video goes at the end of the video; a picture or a sound starts at the playhead, or where you drop it on the timeline."),
+                    L("Right-click a file for Reveal in Finder, Rename…, Move to Folder, Replace…, Extract Audio, and Delete from Project."),
+                ],
+                keys: [.fixed("⌘I", L("Import Media…"))],
+                tips: [
+                    L("A file that moved shows Missing: Locate… finds it again."),
+                    L("Extract Audio puts a video's sound in the Audio tab as its own file; the video keeps its sound."),
+                    L("Rename… changes the name in the Library only. The file keeps its own."),
+                ],
+                since: "1.13.0",
+                related: ["video-layout", "video-timeline"]
             ),
             GuideEntry(
                 id: "video-play", symbol: "play.circle", title: L("Playing & moving around"),
@@ -2701,6 +2725,7 @@ enum GuideContent {
             .fixed("⌘O", L("Open…")),
             .fixed("⌘S", L("Save Project")),
             .fixed("⇧⌘S", L("Save Project As…")),
+            .fixed("⌘I", L("Import Media…")),
             .fixed("⌘E", L("Export Video…")),
             .fixed("⇧⌘E", L("Creative Handoff…")),
             .fixed("⌘Z", L("Undo")),

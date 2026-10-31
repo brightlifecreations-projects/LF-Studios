@@ -45,8 +45,14 @@ struct VideoEditorRootView: View {
             VStack(spacing: 0) {
                 // The picture tools, centered above the preview.
                 if !model.isCropping {
-                    VideoToolDock(model: model)
-                        .padding(.top, 12)
+                    // A narrow player (the smallest window, wide side
+                    // panels): the tools as symbols.
+                    ViewThatFits(in: .horizontal) {
+                        VideoToolDock(model: model)
+                        VideoToolDock(model: model, compact: true)
+                    }
+                    .padding(.horizontal, 12)
+                    .padding(.top, 12)
                 }
                 VideoStageView(model: model)
                     .padding(.horizontal, 28)
@@ -82,6 +88,11 @@ struct VideoEditorRootView: View {
                 }
             }
         }
+        // Nothing reaches over the Library or Properties.
+        .clipped()
+        // Files dropped on the player go in at the playhead (videos at
+        // the end).
+        .onDrop(of: [.fileURL], delegate: VideoMediaDrop(model: model) { _ in nil })
     }
 
     /// A border between panels dragged by `delta`: the Library's (left)
@@ -1178,6 +1189,8 @@ struct VideoLoadFailureView: View {
 /// effect at the playhead, selected, with handles on the video.
 struct VideoToolDock: View {
     @ObservedObject var model: VideoEditorModel
+    /// Symbols only, for a narrow player (the names show on hover).
+    var compact = false
 
     /// Each tool's tooltip, with its key where it has one.
     static func help(_ kind: VideoDemoOverlayEffectKind) -> String {
@@ -1205,7 +1218,8 @@ struct VideoToolDock: View {
                         symbol: kind.icon,
                         tint: VideoEditorTheme.overlayTint(kind),
                         active: selectedKind == kind,
-                        help: Self.help(kind)
+                        help: Self.help(kind),
+                        compact: compact
                     ) {
                         model.addOverlay(kind)
                     }
@@ -1218,7 +1232,8 @@ struct VideoToolDock: View {
                     symbol: "eye.trianglebadge.exclamationmark",
                     tint: VideoEditorTheme.overlayTint(.blur),
                     active: model.isPrivacyPresented,
-                    help: L("Find faces, emails, phone and card numbers, and keys in the video, then choose what to blur")
+                    help: L("Find faces, emails, phone and card numbers, and keys in the video, then choose what to blur"),
+                    compact: compact
                 ) {
                     model.showPrivacyScan()
                 }
@@ -1229,7 +1244,8 @@ struct VideoToolDock: View {
                     symbol: "plus.magnifyingglass",
                     tint: VideoEditorTheme.zoom,
                     active: model.selectedZoomID != nil,
-                    help: L("Add a zoom at the playhead (Z)")
+                    help: L("Add a zoom at the playhead (Z)"),
+                    compact: compact
                 ) {
                     model.addZoom(at: model.clock.time)
                     model.inspectorTab = .zoom
@@ -1260,6 +1276,7 @@ struct VideoDockButton: View {
     let tint: Color
     let active: Bool
     let help: String
+    var compact = false
     let action: () -> Void
 
     @State private var hovered = false
@@ -1271,14 +1288,16 @@ struct VideoDockButton: View {
                     .font(.system(size: 14, weight: .semibold))
                     .foregroundStyle(active || hovered ? tint : VideoEditorTheme.textPrimary)
                     .frame(height: 17)
-                Text(title)
-                    .font(.system(size: 10, weight: .semibold))
-                    .foregroundStyle(active ? VideoEditorTheme.textPrimary : VideoEditorTheme.textSecondary)
-                    .fixedSize()
+                if !compact {
+                    Text(title)
+                        .font(.system(size: 10, weight: .semibold))
+                        .foregroundStyle(active ? VideoEditorTheme.textPrimary : VideoEditorTheme.textSecondary)
+                        .fixedSize()
+                }
             }
-            .padding(.horizontal, 6)
-            .frame(minWidth: 62)
-            .frame(height: 42)
+            .padding(.horizontal, compact ? 4 : 6)
+            .frame(minWidth: compact ? 34 : 62)
+            .frame(height: compact ? 34 : 42)
             .background(
                 RoundedRectangle(cornerRadius: 9, style: .continuous)
                     .fill(active ? tint.opacity(0.22) : (hovered ? VideoEditorTheme.ink.opacity(0.08) : Color.clear))

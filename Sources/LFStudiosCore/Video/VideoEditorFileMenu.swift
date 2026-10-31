@@ -11,6 +11,7 @@ final class VideoEditorFileMenu: NSObject, NSMenuDelegate, NSMenuItemValidation 
     private weak var saveProjectItem: NSMenuItem?
     private weak var saveProjectAsItem: NSMenuItem?
     private weak var handoffItem: NSMenuItem?
+    private weak var importItem: NSMenuItem?
     private var keyWindowObserver: NSObjectProtocol?
 
     /// Adds the editor's items to `menu` as their own section.
@@ -30,6 +31,11 @@ final class VideoEditorFileMenu: NSObject, NSMenuDelegate, NSMenuItemValidation 
         saveAs.target = self
         menu.addItem(saveAs)
         saveProjectAsItem = saveAs
+        // Into the Library (VideoMediaBin.swift).
+        let importMedia = NSMenuItem(title: L("Import Media…"), action: #selector(importMedia(_:)), keyEquivalent: "")
+        importMedia.target = self
+        menu.addItem(importMedia)
+        importItem = importMedia
         menu.addItem(.separator())
         let export = NSMenuItem(title: L("Export Video…"), action: #selector(exportVideo(_:)), keyEquivalent: "")
         export.target = self
@@ -73,6 +79,8 @@ final class VideoEditorFileMenu: NSObject, NSMenuDelegate, NSMenuItemValidation 
         saveProjectAsItem?.keyEquivalentModifierMask = [.command, .shift]
         handoffItem?.keyEquivalent = editing ? "E" : ""
         handoffItem?.keyEquivalentModifierMask = [.command, .shift]
+        importItem?.keyEquivalent = editing ? "i" : ""
+        importItem?.keyEquivalentModifierMask = [.command]
     }
 
     @objc func openProject(_ sender: Any?) {
@@ -85,6 +93,12 @@ final class VideoEditorFileMenu: NSObject, NSMenuDelegate, NSMenuItemValidation 
 
     @objc func saveProjectAs(_ sender: Any?) {
         VideoDemoEditorWindowController.saveActiveProject(as: true)
+    }
+
+    @objc func importMedia(_ sender: Any?) {
+        guard let model = VideoDemoEditorWindowController.keyModel else { return }
+        model.libraryTab = .media
+        model.chooseMediaToImport()
     }
 
     @objc func exportVideo(_ sender: Any?) {
@@ -108,6 +122,7 @@ final class VideoEditorFileMenu: NSObject, NSMenuDelegate, NSMenuItemValidation 
         let model = VideoDemoEditorWindowController.keyModel
         switch menuItem.action {
         case #selector(exportVideo(_:)), #selector(creativeHandoff(_:)): return model?.isReady == true && model?.isCropping == false
+        case #selector(importMedia(_:)): return model?.isReady == true
         case #selector(saveSubtitles(_:)): return model.map { !$0.project.captions.isEmpty } ?? false
         case #selector(revealExport(_:)): return true
         case #selector(openProject(_:)): return true
