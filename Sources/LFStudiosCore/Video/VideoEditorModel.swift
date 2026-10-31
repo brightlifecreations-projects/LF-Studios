@@ -321,6 +321,8 @@ final class VideoEditorModel: ObservableObject {
     @Published var notice: VideoEditorNotice?
     /// Motion tracking: the box being picked, or the run (VideoMotionTracking.swift).
     @Published var motionTracking: VideoMotionTrackingState?
+    /// Starred Library items (VideoLibraryItems.swift).
+    @Published var libraryFavourites: [String] = Settings.videoLibraryFavourites
     let trackingCancelFlag = VideoAtomicFlag()
     @Published private(set) var canUndo = false
     @Published private(set) var canRedo = false

@@ -377,7 +377,7 @@ struct VideoTimelineSurface: View {
             // Files dropped on the timeline (from Finder or the Library)
             // land on the track and at the time under the pointer.
             Color.clear
-                .onDrop(of: [.fileURL], delegate: VideoMediaDrop(model: model) { location in
+                .onDrop(of: [.fileURL, .plainText], delegate: VideoMediaDrop(model: model) { location in
                     (max(geometry.time(location.x), 0), Self.dropTarget(atY: location.y, rows: rows, project: model.project))
                 })
             // Scrub anywhere that isn't an object.

@@ -100,7 +100,7 @@ struct VideoEditorRootView: View {
         .clipped()
         // Files dropped on the player go in at the playhead (videos at
         // the end).
-        .onDrop(of: [.fileURL], delegate: VideoMediaDrop(model: model) { _ in (nil, .layer(.automatic)) })
+        .onDrop(of: [.fileURL, .plainText], delegate: VideoMediaDrop(model: model) { _ in (nil, .layer(.automatic)) })
     }
 
     /// A border between panels dragged by `delta`: the Library's (left)

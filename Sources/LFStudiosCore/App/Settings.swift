@@ -321,6 +321,12 @@ enum Settings {
         set { defaults.set(newValue, forKey: "recordingKeyTiming") }
     }
 
+    /// Library items starred in the video editor ("tab/id").
+    static var videoLibraryFavourites: [String] {
+        get { defaults.stringArray(forKey: "videoLibraryFavourites") ?? [] }
+        set { defaults.set(newValue, forKey: "videoLibraryFavourites") }
+    }
+
     /// Language for generated captions (BCP-47; empty = the Mac's language).
     static var videoCaptionLanguage: String {
         get { defaults.string(forKey: "videoCaptionLanguage") ?? "" }

@@ -37,7 +37,7 @@ the first unticked box.
 - [x] A7 Motion tracking (Track button, Vision object tracking)
 
 ## Part B: Library content
-- [ ] B8 Text tab: templates and styles, hover preview, drag onto timeline
+- [x] B8 Text tab: templates and styles, hover preview, drag onto timeline
 - [ ] B9 Effects tab: Core Image effects with intensity, on a clip or as an effect clip
 - [ ] B10 Transitions tab: dissolve, fade black/white, slide, push, wipe, zoom, blur, spin; duration; Apply to all
 - [ ] B11 Filters tab: own LUT looks with intensity
@@ -111,3 +111,13 @@ the first unticked box.
   VNTrackObjectRequest; one undo step "Track Motion"; Stop following
   (`.edit(.clearTracking)`). Ships only if VideoMotionTrackingTests pass in
   the final pass and nothing suggests drift; otherwise next update.
+- B8: shared Library grid (VideoLibraryItems.swift): `VideoLibraryPayload`
+  ("lfstudios-library:kind/id" as plain text) dragged onto the timeline or
+  player (VideoMediaDrop takes .plainText) or added with + / double-click;
+  `model.placeLibraryItem` dispatches by kind through
+  `VideoEditorModel.libraryHandlers` (add a handler per tab). Search
+  (`VideoLibraryTile.matching`) and favourites (Settings.
+  videoLibraryFavourites; VideoLibraryFavouritesTests is SERIAL) are built
+  in, so B15 only needs every tab on the grid. Text tab: 16 templates
+  (own designs, macOS fonts, some with In/Out/Combo), 10 styles, Add text,
+  and the 1.14 annotation tools in a row.

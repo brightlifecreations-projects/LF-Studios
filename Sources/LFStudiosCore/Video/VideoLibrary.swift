@@ -70,7 +70,7 @@ struct VideoLibraryPanel: View {
                 switch model.libraryTab {
                 case .media: VideoMediaBinView(model: model, kinds: [.video, .image, .audio])
                 case .audio: VideoMediaBinView(model: model, kinds: [.audio])
-                case .text: textTab
+                case .text: VideoTextLibraryTab(model: model)
                 case .captions: captionsTab
                 case .transitions: transitionsTab
                 }
@@ -81,20 +81,6 @@ struct VideoLibraryPanel: View {
     }
 
     // MARK: Pointers to where these live today
-
-    private var textTab: some View {
-        VideoLibraryPointer(
-            text: L("Text, arrows, highlights, blur and pictures go on the video with the tools above the player. Pick one here to add it at the playhead."),
-            actions: [
-                (L("Text"), "textformat", { model.addOverlay(.text) }),
-                (L("Arrow"), "arrow.up.right", { model.addOverlay(.arrow) }),
-                (L("Highlight"), "rectangle.dashed", { model.addOverlay(.highlight) }),
-                (L("Blur"), "eye.slash", { model.addOverlay(.blur) }),
-                (L("Spotlight"), "circle.dashed.inset.filled", { model.addOverlay(.spotlight) }),
-                (L("Image"), "photo", { model.addOverlay(.image) }),
-            ]
-        )
-    }
 
     private var captionsTab: some View {
         VideoLibraryPointer(
