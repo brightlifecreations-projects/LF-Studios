@@ -602,6 +602,12 @@ struct VideoStageInteractionLayer: View {
                 }
                 .gesture(bubbleGesture(.move, rect: rect, settings: settings))
                 .help(L("Camera — drag to move it, drag its edges to resize it, click for options"))
+            if showsHandles, bubbleDrag == nil {
+                // The bubble turns (1.14.0): the knob above it.
+                VideoRotateKnob(rect: rect, label: L("Turn the camera"), turned: { degrees in
+                    model.setStyle(coalesce: "camera-rotate") { $0.webcam.rotation = degrees }
+                }, ended: { model.endGesture() })
+            }
             if showsHandles {
                 ForEach(VideoCameraHandle.resizing, id: \.self) { handle in
                     let unit = handle.unit
@@ -861,6 +867,12 @@ struct VideoStageInteractionLayer: View {
         let stageHeightInView = stage.height * viewScale
 
         return ZStack(alignment: .topLeading) {
+            // Text turns (1.14.0): the knob above it.
+            if effect.kind == .text {
+                VideoRotateKnob(rect: rect, label: L("Turn the text"), turned: { degrees in
+                    model.updateOverlay(effect.id, coalesce: "text-rotate-\(effect.id)") { $0.rotation = degrees }
+                }, ended: { model.endGesture() })
+            }
             // Just the outline: pressing inside reaches the picture layer,
             // which moves it (and spots a double-click on text).
             Group {
@@ -872,6 +884,7 @@ struct VideoStageInteractionLayer: View {
                 }
             }
             .frame(width: rect.width, height: rect.height)
+            .rotationEffect(.degrees(effect.kind == .text ? effect.rotation ?? 0 : 0))
             .offset(x: rect.minX, y: rect.minY)
             .allowsHitTesting(false)
 

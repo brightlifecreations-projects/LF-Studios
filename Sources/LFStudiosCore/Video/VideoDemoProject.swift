@@ -230,6 +230,8 @@ struct VideoDemoOverlayEffect: Codable, Equatable, Identifiable {
     var motion: [VideoOverlayMotionKey]?
     /// Over the camera picture rather than the recording (true only).
     var onCamera: Bool?
+    /// A text annotation turned, degrees clockwise (1.14.0; nil: upright).
+    var rotation: Double?
 
     init(
         id: UUID = UUID(),
@@ -287,6 +289,7 @@ struct VideoDemoOverlayEffect: Codable, Equatable, Identifiable {
         font = try? container.decodeIfPresent(VideoFontChoice.self, forKey: .font)
         motion = try? container.decodeIfPresent([VideoOverlayMotionKey].self, forKey: .motion)
         onCamera = try? container.decodeIfPresent(Bool.self, forKey: .onCamera)
+        rotation = (try? container.decodeIfPresent(Double.self, forKey: .rotation)).flatMap { $0 }
     }
 }
 

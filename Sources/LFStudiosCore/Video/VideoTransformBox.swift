@@ -159,3 +159,45 @@ struct VideoLayerItemHandles: View {
         )
     }
 }
+
+/// A round knob above something on the player that turns it (text
+/// annotations and the camera bubble, 1.14.0). `rect` is where it is, in
+/// the player's own coordinates.
+struct VideoRotateKnob: View {
+    let rect: CGRect
+    let label: String
+    let turned: (Double?) -> Void
+    let ended: () -> Void
+
+    var body: some View {
+        ZStack(alignment: .topLeading) {
+            Rectangle()
+                .fill(Color.accentColor)
+                .frame(width: 1.5, height: 14)
+                .offset(x: rect.midX - 0.75, y: rect.minY - 14)
+                .allowsHitTesting(false)
+            Circle()
+                .fill(Color.white)
+                .overlay(Circle().stroke(Color.accentColor, lineWidth: 1.5))
+                .overlay(Image(systemName: "arrow.clockwise").font(.system(size: 7, weight: .bold)).foregroundStyle(Color.accentColor))
+                .frame(width: 14, height: 14)
+                .contentShape(Circle().inset(by: -6))
+                .offset(x: rect.midX - 7, y: rect.minY - 27)
+                .onHover { inside in (inside ? NSCursor.pointingHand : NSCursor.arrow).set() }
+                .gesture(
+                    DragGesture(minimumDistance: 0, coordinateSpace: .named(VideoStageInteractionLayer.space))
+                        .onChanged { value in
+                            let degrees = VideoAlignmentGuides.rotation(from: CGPoint(x: rect.midX, y: rect.midY), to: value.location, steps: NSEvent.modifierFlags.contains(.shift))
+                            turned(abs(degrees) < 0.01 ? nil : degrees)
+                        }
+                        .onEnded { _ in ended() }
+                )
+                .help(L("Drag to turn it; hold ⇧ for steps of 15°. Double-click to put it upright."))
+                .accessibilityLabel(label)
+                .onTapGesture(count: 2) {
+                    turned(nil)
+                    ended()
+                }
+        }
+    }
+}

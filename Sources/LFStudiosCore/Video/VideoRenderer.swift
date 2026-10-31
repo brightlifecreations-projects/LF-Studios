@@ -951,7 +951,16 @@ final class VideoFrameRenderer {
                 avoidWeight = CGFloat(1 - progress)
             default:
                 let look = CameraLook(radius: bubbleRadius, rim: 1, shadow: 1, opacity: 1, cutout: webcam.shape == .cutout)
-                scene = drawCamera(camera, in: bubble, look: look, plan: plan, outputSize: outputSize, k: k, over: scene)
+                if let degrees = webcam.rotation, abs(degrees) > 0.01 {
+                    // Turned about its middle (1.14.0).
+                    let drawn = drawCamera(camera, in: bubble, look: look, plan: plan, outputSize: outputSize, k: k, over: CIImage.empty())
+                    let turn = CGAffineTransform(translationX: -bubble.midX, y: -bubble.midY)
+                        .concatenating(CGAffineTransform(rotationAngle: -CGFloat(degrees) * .pi / 180))
+                        .concatenating(CGAffineTransform(translationX: bubble.midX, y: bubble.midY))
+                    scene = drawn.transformed(by: turn).composited(over: scene)
+                } else {
+                    scene = drawCamera(camera, in: bubble, look: look, plan: plan, outputSize: outputSize, k: k, over: scene)
+                }
                 avoid = bubble
             }
             }
@@ -1313,7 +1322,14 @@ final class VideoFrameRenderer {
             guard let image = textImage(effect.text, box: rect.size, unit: unit, background: effect.resolvedColor, font: effect.font) else { return scene }
             let x = rect.midX - image.extent.width / 2
             let y = rect.midY - image.extent.height / 2
-            return faded(image, opacity).transformed(by: CGAffineTransform(translationX: x.rounded(), y: y.rounded())).composited(over: scene)
+            var placed = faded(image, opacity).transformed(by: CGAffineTransform(translationX: x.rounded(), y: y.rounded()))
+            if let degrees = effect.rotation, abs(degrees) > 0.01 {
+                // Turned about its middle (clockwise on screen: a negative angle).
+                placed = placed.transformed(by: CGAffineTransform(translationX: -rect.midX, y: -rect.midY)
+                    .concatenating(CGAffineTransform(rotationAngle: -CGFloat(degrees) * .pi / 180))
+                    .concatenating(CGAffineTransform(translationX: rect.midX, y: rect.midY)))
+            }
+            return placed.composited(over: scene)
         case .image:
             // Drawn with the output layers (pinned to the frame).
             return scene

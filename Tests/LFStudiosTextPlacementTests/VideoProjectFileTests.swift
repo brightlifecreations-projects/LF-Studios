@@ -64,7 +64,7 @@ struct VideoProjectFileTests {
         #expect(!decoded.isFromNewerVersion)
         let folder = VideoProjectDocument(appVersion: "1.6.0", mediaMode: .folder, project: project, recording: nil, folder: .init(kind: .recording))
         let decodedFolder = try VideoProjectDocument.decode(try folder.encoded())
-        #expect(decodedFolder.version == VideoProjectDocument.currentVersion)
+        #expect(decodedFolder.version == 2, "folder projects are version 2; 3 is for projects with tracks above the main track")
         #expect(decodedFolder.folder?.kind == .recording)
         #expect(!decodedFolder.isFromNewerVersion)
     }

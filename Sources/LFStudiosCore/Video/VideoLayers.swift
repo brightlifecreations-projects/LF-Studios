@@ -167,6 +167,7 @@ extension VideoDemoProject {
     /// What only 1.14.0 and later can show: written as project format 3.
     var needsLayerFormat: Bool {
         !layerTracks.isEmpty || timelineClips.contains { $0.needsLayerFormat }
+            || (webcam.rotation ?? 0) != 0 || overlayEffects.contains { ($0.rotation ?? 0) != 0 }
     }
 }
 

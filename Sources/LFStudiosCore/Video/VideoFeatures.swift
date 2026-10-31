@@ -260,6 +260,8 @@ struct VideoWebcamSettings: Codable, Equatable {
     var shadowStrength: Double?
     /// The camera picture's color and sharpness (nil: as filmed).
     var color: VideoCameraColor?
+    /// The bubble turned, degrees clockwise (1.14.0; nil: upright).
+    var rotation: Double?
     /// Free's width / height (nil: 1).
     var freeAspect: Double?
     /// Placed by hand (nil: at `anchor`, `size` big).
@@ -337,7 +339,7 @@ struct VideoWebcamSettings: Codable, Equatable {
 
     init() {}
 
-    private enum CodingKeys: String, CodingKey { case visible, size, anchor, shape, mirror, shrinkWhenZoomed, backdrop, crop, roundness, border, shadowStrength, color, freeAspect, placement, layout, split }
+    private enum CodingKeys: String, CodingKey { case visible, size, anchor, shape, mirror, shrinkWhenZoomed, backdrop, crop, roundness, border, shadowStrength, color, freeAspect, placement, layout, split, rotation }
 
     init(from decoder: Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
@@ -358,6 +360,7 @@ struct VideoWebcamSettings: Codable, Equatable {
         placement = try? c.decodeIfPresent(Placement.self, forKey: .placement)
         layout = try? c.decodeIfPresent(Layout.self, forKey: .layout)
         split = try? c.decodeIfPresent(Split.self, forKey: .split)
+        rotation = (try? c.decodeIfPresent(Double.self, forKey: .rotation)).flatMap { $0 }
     }
 }
 

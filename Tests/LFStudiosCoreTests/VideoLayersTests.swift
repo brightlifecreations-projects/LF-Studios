@@ -129,6 +129,37 @@ final class VideoLayersTests: XCTestCase {
         XCTAssertLessThan(max(sides.r, sides.g, sides.b), 0.1, "fitted inside, black beside it \(sides)")
     }
 
+    func testTextAndTheCameraTurn() async throws {
+        var project = try await whiteProject()
+        // A wide, short text in the middle; turned a quarter, it stands up.
+        var text = VideoDemoOverlayEffect(kind: .text, time: 0, duration: 3, x: 0.5, y: 0.5, width: 0.8, height: 0.12, text: "TURNED TEXT")
+        text.color = VideoRGBA(0.1, 0.1, 0.9)
+        project.overlayEffects = [text]
+        let flat = directory.appendingPathComponent("flat.mp4")
+        try await VideoDemoExporter.export(project: project, destinationURL: flat, settings: VideoInspection.mp4Settings())
+        project.overlayEffects[0].rotation = 90
+        XCTAssertTrue(project.needsLayerFormat, "only 1.14 shows it turned")
+        let turned = directory.appendingPathComponent("turned.mp4")
+        try await VideoDemoExporter.export(project: project, destinationURL: turned, settings: VideoInspection.mp4Settings())
+        // Above the middle: white before, the text's blue once it's turned.
+        let above = (x: 0.5, y: 0.38)
+        let before = VideoInspection.color(of: try VideoInspection.frame(of: flat, at: 1), x: above.x, y: above.y)
+        let after = VideoInspection.color(of: try VideoInspection.frame(of: turned, at: 1), x: above.x, y: above.y)
+        XCTAssertGreaterThan(before.r, 0.85, "upright: nothing above it \(before)")
+        XCTAssertGreaterThan(after.b, after.r + 0.3, "turned: its box reaches up \(after)")
+
+        // The camera's turn: saved only when set.
+        var camera = VideoWebcamSettings()
+        XCTAssertFalse(String(decoding: try JSONEncoder().encode(camera), as: UTF8.self).contains("rotation"))
+        camera.rotation = -20
+        let read = try JSONDecoder().decode(VideoWebcamSettings.self, from: try JSONEncoder().encode(camera))
+        XCTAssertEqual(read.rotation, -20)
+        var withCamera = VideoDemoProject.make(sourceURL: URL(fileURLWithPath: "/tmp/rec.mov"), duration: 4, sourceSize: size)
+        XCTAssertFalse(withCamera.needsLayerFormat)
+        withCamera.webcam.rotation = 15
+        XCTAssertTrue(withCamera.needsLayerFormat)
+    }
+
     // MARK: The project
 
     func testProjectsWithTracksAreFormat3AndOthersAreUnchanged() throws {
