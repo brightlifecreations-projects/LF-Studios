@@ -234,3 +234,8 @@ the first unticked box.
   background queue (on seek and after each edit). Budget test
   VideoLongProjectPerformanceTests (SERIAL): 30-min synthetic media, 60
   clips with dissolves, 420 clips on 4 tracks.
+- Layer order for old projects: annotations still draw over every track
+  (1.14 look). Annotation inspector ▸ Move to a Track (text and picture
+  annotations): a clip on a new top track at the same time/place (text:
+  stage → frame coordinates; pictures were frame-pinned already), one step
+  "Move to Track". Arrows, highlights, blurs, spotlights stay annotations.

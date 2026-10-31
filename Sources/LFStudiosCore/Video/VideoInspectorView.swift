@@ -1190,6 +1190,7 @@ struct VideoSelectionInspector: View {
 
     @ViewBuilder
     private func overlayEditor(_ overlay: VideoDemoOverlayEffect) -> some View {
+        VideoMoveToTrackButton(model: model, overlay: overlay)
         if overlay.kind == .image {
             VideoImageOverlayInspector(model: model, overlay: overlay)
         }
