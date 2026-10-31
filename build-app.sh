@@ -287,10 +287,28 @@ if [[ ! "$INSTALL" =~ ^(1|true|yes|on)$ ]]; then
     exit 0
 fi
 
-echo "▶ Copying to /Applications…"
 APPS_DEST="/Applications/$APP_NAME.app"
+# Replacing a running app's files breaks it until it's quit: its next
+# Check for Updates says "An error occurred while launching the installer".
+# Quit it the normal way first (it saves, and says if it's busy), and open
+# the new one after.
+REOPEN=false
+if pgrep -f "$APPS_DEST/Contents/MacOS/" >/dev/null; then
+    echo "▶ Quitting LF Studios to replace it…"
+    osascript -e 'tell application id "com.lfstudios.app" to quit' >/dev/null 2>&1 || true
+    for _ in $(seq 1 30); do pgrep -f "$APPS_DEST/Contents/MacOS/" >/dev/null || break; sleep 1; done
+    if pgrep -f "$APPS_DEST/Contents/MacOS/" >/dev/null; then
+        echo "✗ LF Studios is still open (a recording or export running?). Quit it, then run this again."
+        echo "  The new build is at $APP_BUNDLE"
+        exit 1
+    fi
+    REOPEN=true
+fi
+
+echo "▶ Copying to /Applications…"
 rm -rf "$APPS_DEST"
 cp -R "$APP_BUNDLE" "$APPS_DEST"
+if $REOPEN; then open "$APPS_DEST"; fi
 
 echo ""
 echo "✓ Done!  LF Studios.app deployed to /Applications."

@@ -13,6 +13,7 @@ final class AppUpdateController: NSObject, SPUUpdaterDelegate {
     override init() {
         super.init()
         Self.shared = self
+        _ = AppBundleStamp.atLaunch
 
         guard AppUpdateConfiguration.current != nil else {
             print("[LF Studios] Sparkle updates are disabled because SUPublicEDKey is not configured.")
@@ -44,6 +45,14 @@ final class AppUpdateController: NSObject, SPUUpdaterDelegate {
         }
     }
 
+    /// No check while LF Studios' files have been replaced since it opened:
+    /// Sparkle couldn't start its installer. A daily check waits for the
+    /// next launch; Check for Updates… asks to reopen (`checkForUpdates`).
+    nonisolated func updater(_ updater: SPUUpdater, mayPerform updateCheck: SPUUpdateCheck) throws {
+        guard AppBundleStamp.wasReplacedSinceLaunch else { return }
+        throw NSError(domain: "com.lfstudios.app.update", code: 1, userInfo: [NSLocalizedDescriptionKey: AppBundleStamp.replacedMessage])
+    }
+
     var canCheckForUpdates: Bool {
         updater?.canCheckForUpdates ?? true
     }
@@ -63,7 +72,44 @@ final class AppUpdateController: NSObject, SPUUpdaterDelegate {
             NSWorkspace.shared.open(Self.releasesURL)
             return
         }
+        if AppBundleStamp.wasReplacedSinceLaunch {
+            let alert = NSAlert()
+            alert.messageText = L("Reopen LF Studios to check for updates")
+            alert.informativeText = AppBundleStamp.replacedMessage
+            alert.addButton(withTitle: L("Reopen LF Studios"))
+            alert.addButton(withTitle: L("Cancel"))
+            if alert.runModal() == .alertFirstButtonReturn { AppRelaunch.restart() }
+            return
+        }
         updater.checkForUpdates()
+    }
+}
+
+/// LF Studios' program file as it was when it opened. Replaced since (a new
+/// copy dragged over the running one, or a build installed over it), the
+/// running app can't start Sparkle's installer ("An error occurred while
+/// launching the installer") until it's reopened.
+struct AppBundleStamp: Equatable {
+    let fileNumber: UInt64
+    let modified: Date?
+
+    /// Read fresh from the disk each time (no cached file values).
+    static func of(_ file: URL?) -> AppBundleStamp? {
+        guard let path = file?.path,
+              let attributes = try? FileManager.default.attributesOfItem(atPath: path),
+              let number = attributes[.systemFileNumber] as? NSNumber else { return nil }
+        return AppBundleStamp(fileNumber: number.uint64Value, modified: attributes[.modificationDate] as? Date)
+    }
+
+    static let atLaunch = of(Bundle.main.executableURL)
+
+    static var wasReplacedSinceLaunch: Bool {
+        guard let atLaunch else { return false }
+        return of(Bundle.main.executableURL) != atLaunch
+    }
+
+    static var replacedMessage: String {
+        L("LF Studios was replaced by another copy while it was open. Reopen it, then check again.")
     }
 }
 

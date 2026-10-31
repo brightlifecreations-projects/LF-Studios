@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.15.0]
+## [1.15.0] - 2026-10-31
 
 ### Added
 - **Keyframes.** Every setting of a clip above the main track (place, size, turn, opacity, crop, mask, volume, an effect's strength) can change over time: click ◆ next to it, move the playhead, change it. Linear, Ease in, Ease out or Ease in-out between keyframes; diamonds on the clip; ⌥K adds keyframes, ⌥[ and ⌥] jump between them.
@@ -34,7 +34,7 @@
 ### Compatibility
 - Projects that use anything new in 1.15.0 are saved in a new kind of project file; LF Studios 1.13 and 1.14 say they need a newer version. Every other project is saved exactly as before.
 
-## [1.14.0]
+## [1.14.0] - 2026-10-31
 
 ### Added
 - **Video and picture tracks above the main track.** Drop a video or a picture on the timeline above your recording and it plays there, over the screen, on the timeline's own clock. Higher tracks draw over lower ones. Each clip can be moved and resized on the player, turned, mirrored, cropped, faded with Opacity, sped up or slowed down, and switched off; videos keep their sound, with their own volume. Drag a clip to another time or track (above the top one makes a new track), drag its ends to trim it, ⌥-drag a video to slip it.
@@ -56,7 +56,7 @@
 ### Compatibility
 - Projects that use the new tracks, or a turned, mirrored or switched-off clip, or a turned camera or text, are saved in a new kind of project file. LF Studios 1.13 says they need a newer version (with Check for Updates); 1.12 and earlier don't open them. Every other project is saved exactly as before and still opens in older versions.
 
-## [1.13.0]
+## [1.13.0] - 2026-10-31
 
 ### Added
 - **A new editor layout.** The video editor is now four panels: the Library (top left), the player (middle), Properties (right), and the timeline (bottom). Drag the line between two panels to resize them, double-click it to put it back, and choose Layout ▸ Default, Player First, or Reset Layout. LF Studios remembers the layout on this Mac, and it works down to the smallest editor window.
@@ -72,7 +72,7 @@
   - The Audio tab lists the sound files, and Extract Audio adds a video's sound there as its own file.
 - **Projects saved by a newer LF Studios** that this version can't read say "This project needs a newer version of LF Studios", with Check for Updates, instead of "not an LF Studios project".
 
-## [1.12.0]
+## [1.12.0] - 2026-10-31
 
 ### Changed
 - **Projects are now ".lfs" files.** Save Project, Creative Handoff and a recording's folder write an LF Studios Project ending in ".lfs". It opens by double-click, from Open…, from Home, and when you open a folder that holds one. Style presets stay ".lfss".
@@ -80,7 +80,7 @@
   - A folder with more than one project file opens the one saved last.
   - LF Studios 1.11 and earlier can't open ".lfs" files: whoever you send one to needs 1.12.0 or later. README.txt in handoffs and recording folders says so.
 
-## [1.11.1]
+## [1.11.1] - 2026-10-29
 
 ### Changed
 - **More of the timeline on smaller screens.** In a window shorter than about 1000 points (a 13" MacBook's), the video editor starts with Small tracks and gives the timeline about 40% of the height, so Zooms, Video clips, Camera and Captions show without scrolling. Larger windows start as before. A track height or divider place you chose still wins; double-clicking the divider goes back to the start for that window.
@@ -88,7 +88,7 @@
 ### Fixed
 - Changing the track height now resizes the video clips straight away; they kept their old height until something else changed.
 
-## [1.11.0]
+## [1.11.0] - 2026-10-29
 
 ### Added
 - **Split screen in both directions.** Split screen has a Direction: Side by side (left and right) or Stacked (top and bottom), on a video of any shape. Camera side follows it (Left/Right or Top/Bottom), and the split size, the divider and the gap work both ways. It's in the recording bar (Layout ▸ Direction), where the frame becomes the screen's part for that direction ("Screen part of a 16:9 stacked video"), and in the editor's Camera panel. Until you choose, a split goes the way it did before (side by side on landscape videos, stacked on square and vertical ones), and Adapt to this ratio keeps a direction you chose.
@@ -99,7 +99,7 @@
   - Empty tracks are thin rows that say how to add something, and any track folds away. The ruler and the track names stay in place while you scroll; pinch, ⌘-scroll, ⌘+ / ⌘− and the slider zoom the timeline as before. Dragging, trimming, splitting, selecting and ⌘Z work as they did.
 - **16:10, 21:9 and Custom… in the aspect ratio menu**, like the frame bar's. Custom… takes any shape, typed like 3:2 or 2.39:1. They work with Adapt to this ratio, Export all ratios, and presets saved with Include aspect ratio.
 
-## [1.10.0]
+## [1.10.0] - 2026-10-29
 
 ### Added
 - **Camera shape, chosen before you record.** With Camera on, a Camera shape menu sits above the recording bar: Circle, Rounded rectangle, Square (1:1), Landscape (16:9), Portrait (9:16), 4:3, 3:4, or Free, with Roundness. The camera preview takes the shape right away so you can frame yourself; it's still never in the screen recording.
@@ -114,7 +114,7 @@
   - The Camera lane's layouts keep working, with smooth changes, and Side by side now uses the split's options on new recordings (older projects keep their Side by side look). On a split video there's also a Bubble block. Adapt to this ratio turns side by side into one above the other.
   - In every export, ProRes with transparency (the gap is see-through), Creative Handoff (its timeline files are the whole split video's size, and README.txt says where each part goes), and the .lfsp project. “Wide” is now called Rounded rectangle, “Rounded” is Square (1:1); older projects look exactly as before.
 
-## [1.9.0]
+## [1.9.0] - 2026-10-29
 
 ### Changed
 - **New file names: ".lfsp" for projects, ".lfss" for styles.** Save Project, Creative Handoff and a recording's folder now write an LF Studios Project (".lfsp"), and Export Presets… writes an LF Studios Style file (".lfss"). Both open by double-click.
@@ -122,7 +122,7 @@
   - Save Project (⌘S) keeps an older project's name and ending; Save Project As… (⇧⌘S) saves a ".lfsp".
   - LF Studios 1.8 and earlier can't open ".lfsp" or ".lfss" files: whoever you send one to needs 1.9.0 or later.
 
-## [1.8.0]
+## [1.8.0] - 2026-10-29
 
 ### Added
 - **The frame bar.** New recording (in Home), Record Area and its shortcut now show a frame: a highlighted area of an exact shape and size in the middle of the screen, the rest dimmed, with its size shown (like 1920 × 1080). A strip above the recording bar sets it up:
@@ -139,7 +139,7 @@
 - **Projects and handoffs look and sound the same on another Mac.** The cleaned-up voice (Enhance voice, Podcast mode), Keep face centered, the pointer's own picture and a macOS wallpaper background now travel in the project's folder or the handoff, so opening it elsewhere exports exactly the same video. A handoff's finished video and Full Mix now clean up the voice first when it hasn't been yet.
 - The Guide explains the microphone and camera permissions as they really work: LF Studios appears in System Settings only after it has asked once, and how to make it ask again.
 
-## [1.7.0]
+## [1.7.0] - 2026-10-28
 
 ### Added
 - **Add sound files.** The Audio panel has **Add audio…** (and sound files can be dropped on the timeline): MP3, WAV, M4A, AAC, AIFF, FLAC, and CAF. Each file becomes its own track under the music: drag it to move it, drag an edge to trim it, click it and press S to split it or ⌫ to delete a piece; set its volume, fades, or mute. Several tracks play at once.
@@ -152,7 +152,7 @@
 ### Fixed
 - A recording's folder no longer collects a new copy of a song or a picture each time its project is kept up to date: the first copy is used again.
 
-## [1.6.0]
+## [1.6.0] - 2026-10-28
 
 ### Added
 - **Every recording in its own folder.** When a recording finishes, LF Studios asks “Where do you want to save this recording?” (a name and a folder), then makes a new folder there with everything the recording is made of: the project file, 01 Screen (the recording, untouched), 02 Camera, 03 Audio (Microphone.wav and System Audio.wav, as separate files), 05 Captions (once there are captions), 07 Data (pointer, clicks, keys, typing, markers), the speaker notes, and a README. Cancel saves it to the Recording folder the same way, so nothing is ever lost. Settings ▸ Recording ▸ **Ask where to save after each recording** (on) turns the question off.
@@ -169,7 +169,7 @@
 ### Changed
 - **Two save folders.** Settings ▸ Screenshots ▸ **Screenshot folder** is for screenshots; Settings ▸ Recording ▸ **Recording folder** is for recordings. Both start as the folder you used before.
 
-## [1.5.0]
+## [1.5.0] - 2026-10-28
 
 ### Added
 - **The Guide.** Home's sidebar has a new **Guide**, below Settings, and Help ▸ **LF Studios Guide** (⌘?) opens it. It's help for every part of LF Studios, written for people who've just installed it, in all seven languages:

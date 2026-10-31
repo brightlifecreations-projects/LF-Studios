@@ -34,7 +34,10 @@ File types (Info.plist declares each, so they open by double-click):
 
 ## Build and run
 - Build + install: `bash build-app.sh` (release build, ad-hoc signed by default,
-  copies the app to /Applications/LF Studios.app).
+  copies the app to /Applications/LF Studios.app). It quits a running LF
+  Studios first and opens it again after: replacing a running app's files
+  makes its next update fail ("An error occurred while launching the
+  installer") until it's reopened.
 - Run: `pkill LFStudios; open "/Applications/LF Studios.app"`
 - See launch errors: `"/Applications/LF Studios.app/Contents/MacOS/LFStudios"`
 - Universal (Apple Silicon + Intel): `bash build-app.sh --universal`;
@@ -72,11 +75,21 @@ both first.
 First run `bash scripts/test-full.sh` once; it must pass. Then run
 `bash scripts/publish-release.sh <version>` on main with everything
 committed and pushed. CHANGELOG.md must have a `## [<version>]` section first.
-The script sets the version in Info.plist, dates the CHANGELOG section,
+The script sets the version in Info.plist, dates the CHANGELOG section
+(`## [1.16.0] - 2026-11-01`; every heading carries its release date),
 commits and pushes, builds the universal app, zips it, signs the zip with
 the update key, writes the update feed (appcast.xml, via generate-appcast.sh;
-the update window shows that CHANGELOG section), and creates the GitHub
-Releases. It builds on this Mac, so it uses no GitHub Actions minutes.
+the update window shows that CHANGELOG section), rehearses the update, and
+creates the GitHub Releases. It builds on this Mac, so it uses no GitHub
+Actions minutes.
+
+The rehearsal (`scripts/rehearse-update.sh`) proves the update works, not
+just that the feed offers it: it runs the latest published release from a
+temporary folder, points it at the new feed served from this Mac, clicks
+Check for Updates… and Install Update, and checks that it comes back as the
+new version. Nothing is published if it fails. It quits LF Studios first
+(and opens it again after), and needs Accessibility for the app running the
+script (Terminal or the code editor).
 
 Updates (Sparkle):
 - The source repo is private, so downloads and the feed live in the public
