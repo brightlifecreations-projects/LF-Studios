@@ -194,6 +194,8 @@ extension VideoEditDescription {
         // The timeline's tracks and tools (1.14.0).
         case "Track Motion": return (L("Undo Track Motion"), L("Redo Track Motion"))
         case "Stop Following": return (L("Undo Stop Following"), L("Redo Stop Following"))
+        case "Add Effect": return (L("Undo Add Effect"), L("Redo Add Effect"))
+        case "Effects": return (L("Undo Effects"), L("Redo Effects"))
         case "Text Change": return (L("Undo Text Change"), L("Redo Text Change"))
         case "Clear Beats": return (L("Undo Clear Beats"), L("Redo Clear Beats"))
         case "Detect Beats": return (L("Undo Detect Beats"), L("Redo Detect Beats"))

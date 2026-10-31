@@ -18,7 +18,15 @@ struct VideoLayerItemEditor: View {
         VideoInspectorSection(L("Keyframes")) {
             VideoKeyframeBar(model: model, clock: clock, item: item)
         }
+        if item.role == .effect {
+            VideoEffectClipSection(model: model, editor: self, item: item)
+        } else {
+            mediaSections
+        }
+        editSection
+    }
 
+    @ViewBuilder private var mediaSections: some View {
         if let text = item.text {
             VideoTextClipSection(model: model, item: item, content: text)
         }
@@ -70,6 +78,8 @@ struct VideoLayerItemEditor: View {
         VideoAnimationSection(model: model, item: item)
 
         VideoMotionTrackingSection(model: model, item: item)
+
+        VideoItemEffectsSection(model: model, item: item)
 
         VideoInspectorSection(L("Blend")) {
             Picker(L("Blend"), selection: Binding(get: { item.blend ?? .normal }, set: { blend in
@@ -202,7 +212,9 @@ struct VideoLayerItemEditor: View {
                                }))
             }
         }
+    }
 
+    @ViewBuilder private var editSection: some View {
         VideoInspectorSection(L("Edit")) {
             Button {
                 _ = model.splitLayerItem(item.id, at: model.clock.time)

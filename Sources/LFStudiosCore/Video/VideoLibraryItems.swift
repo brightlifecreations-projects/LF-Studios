@@ -62,6 +62,11 @@ extension VideoEditorModel {
                 model.addTextTemplate(template, at: time, place: place)
                 return true
             },
+            LibraryHandler(kind: "effect") { model, id, time, place in
+                guard let kind = VideoEffectKind(rawValue: id) else { return false }
+                // Dropped somewhere: an effect clip there; + : on the selection.
+                return model.addEffect(kind, at: time, place: place, onSelection: time == nil)
+            },
         ]
     }
 

@@ -898,6 +898,11 @@ final class VideoFrameRenderer {
         // The tracks above the main track, lowest first: over the screen,
         // under the camera, pictures, captions and keys.
         for layer in plan.layers where layer.item.isShowing(at: timelineTime) {
+            // An effect clip changes what's under it.
+            if layer.item.role == .effect {
+                scene = layer.item.applyAsLayer(to: scene, at: timelineTime).cropped(to: outputRect)
+                continue
+            }
             let shown = layer.item.shown(at: timelineTime)
             if var image = VideoLayerRenderer.image(for: shown.item, frame: options.layerFrames[layer.track], outputSize: outputSize, time: timelineTime) {
                 if shown.blur > 0.05 { image = image.applyingGaussianBlur(sigma: shown.blur * Double(outputSize.height) / 1080) }

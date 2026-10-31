@@ -376,7 +376,7 @@ struct VideoStageInteractionLayer: View {
             }
 
             // The selected item on a track above the main track (1.14.0).
-            if !model.isPlaying, let item = model.selectedLayerItem, item.isShowing(at: clock.time),
+            if !model.isPlaying, let item = model.selectedLayerItem, item.role == nil, item.isShowing(at: clock.time),
                let track = model.project.layerTrackIndex(of: item.id), !model.isTrackLocked(.layer(model.project.layerTracks[track].id)) {
                 if let tracking = model.motionTracking, tracking.item == item.id {
                     if tracking.progress == nil { VideoMotionTrackingBox(model: model, region: tracking.region, viewSize: viewSize) }
@@ -421,7 +421,7 @@ struct VideoStageInteractionLayer: View {
 
     /// The frontmost item of the tracks above the main track under `point`.
     func layerItem(at point: CGPoint) -> VideoLayerItem? {
-        for layer in model.plan.layers.reversed() where layer.item.isShowing(at: clock.time) {
+        for layer in model.plan.layers.reversed() where layer.item.isShowing(at: clock.time) && layer.item.role == nil {
             let shown = layer.item.placed(at: clock.time)
             let r = shown.rect(in: viewSize)
             let box = CGRect(x: r.minX, y: viewSize.height - r.maxY, width: r.width, height: r.height)

@@ -38,7 +38,7 @@ the first unticked box.
 
 ## Part B: Library content
 - [x] B8 Text tab: templates and styles, hover preview, drag onto timeline
-- [ ] B9 Effects tab: Core Image effects with intensity, on a clip or as an effect clip
+- [x] B9 Effects tab: Core Image effects with intensity, on a clip or as an effect clip
 - [ ] B10 Transitions tab: dissolve, fade black/white, slide, push, wipe, zoom, blur, spin; duration; Apply to all
 - [ ] B11 Filters tab: own LUT looks with intensity
 - [ ] B12 Adjustment tab: adjustment layer; full Adjust panel (HSL, curves, wheels, .cube import)
@@ -121,3 +121,14 @@ the first unticked box.
   in, so B15 only needs every tab on the grid. Text tab: 16 templates
   (own designs, macOS fonts, some with In/Out/Combo), 10 styles, Add text,
   and the 1.14 annotation tools in a row.
+- B9: `VideoLayerItem.role` (.effect / .adjustment) for clips that aren't
+  media or text (`hasFile` false: skipped by Library, handoff, packaging,
+  thumbnails, hit test, handles). `effects: [VideoAppliedEffect]` on a
+  media/text clip (drawn in VideoLayerRenderer before the mask) or one
+  effect on an effect clip, whose strength is `level` (keyed .intensity),
+  applied to the scene in drawOutputLayers (main track + tracks under it;
+  the camera, captions and annotations draw after). 14 own CI effects
+  (VideoEffectRenderer, deterministic random). + → on the selected clip, or
+  an effect clip over the selected main clip, or 3 s at the playhead; a
+  drop → effect clip there. `.edit(.setEffects)`. Effects tab added to
+  VideoLibraryTab (B15 still has to make the tab bar fit 9 tabs).

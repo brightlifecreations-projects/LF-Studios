@@ -28,6 +28,8 @@ enum VideoItemEdit: Equatable {
     /// from the playhead; or stop following.
     case trackMotion(CGRect)
     case clearTracking
+    /// The clip's effects (an effect clip: its one effect).
+    case setEffects([VideoAppliedEffect])
 
     var name: String {
         switch self {
@@ -45,6 +47,7 @@ enum VideoItemEdit: Equatable {
         case .setText(let t): return "setText.\(t.string.count)"
         case .trackMotion: return "trackMotion"
         case .clearTracking: return "clearTracking"
+        case .setEffects(let e): return "setEffects.\(e.map(\.kind.rawValue).joined(separator: "+"))"
         case .setAnimation(let a): return "setAnimation.\(a?.inPreset?.rawValue ?? "-").\(a?.outPreset?.rawValue ?? "-").\(a?.combo?.rawValue ?? "-")"
         }
     }
@@ -66,6 +69,7 @@ enum VideoItemEdit: Equatable {
         case .setText: return L("Text")
         case .trackMotion: return L("Track")
         case .clearTracking: return L("Stop following")
+        case .setEffects: return L("Effects")
         }
     }
 }
@@ -133,6 +137,8 @@ extension VideoEditorModel {
         case .clearTracking:
             guard item.tracking != nil else { return false }
             setLayerItem(item.id, label: "Stop Following") { $0.tracking = nil }
+        case .setEffects(let effects):
+            setLayerItem(item.id, coalesce: "effects-\(item.id)", label: "Effects") { $0.effects = effects.isEmpty ? (item.role == .effect ? $0.effects : nil) : effects }
         case .setAnimation(let animation):
             setLayerItem(item.id, coalesce: "animation-\(item.id)", label: "Animation") { $0.animation = animation?.isEmpty == true ? nil : animation }
         }

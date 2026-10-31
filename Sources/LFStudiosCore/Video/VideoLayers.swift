@@ -64,6 +64,10 @@ struct VideoLayerItem: Codable, Equatable, Identifiable {
     var text: VideoTextContent?
     /// Follows something in the video (VideoMotionTracking.swift).
     var tracking: VideoMotionTrack?
+    /// An effect or adjustment clip (VideoEffects.swift); nil: media or text.
+    var role: VideoLayerRole?
+    /// Effects on its own picture, or (an effect clip) on what's under it.
+    var effects: [VideoAppliedEffect]?
 
     var intensity: Double {
         get { level ?? 1 }
@@ -428,7 +432,7 @@ enum VideoLayerRenderer {
     /// `frame` (a video's) or the picture, cropped, mirrored, placed and
     /// turned on an output `size`.
     static func image(for item: VideoLayerItem, frame: CIImage?, outputSize: CGSize, time: Double = 0) -> CIImage? {
-        guard item.enabled, item.opacity > 0.001 else { return nil }
+        guard item.enabled, item.opacity > 0.001, item.role == nil else { return nil }
         // (`item` is already resolved at the moment drawn: keys applied.)
         var media: CIImage
         if let text = item.text {
@@ -459,6 +463,7 @@ enum VideoLayerRenderer {
             let shown = media.extent
             media = media.transformed(by: CGAffineTransform(a: -1, b: 0, c: 0, d: 1, tx: shown.minX + shown.maxX, ty: 0))
         }
+        if let effects = item.effects, !effects.isEmpty { media = VideoEffectRenderer.apply(effects, to: media, time: time - item.at) }
         if let mask = item.mask { media = mask.apply(to: media) }
         return VideoImageOverlayRenderer.placed(media, in: item.rect(in: outputSize), opacity: min(max(item.opacity, 0), 1), rotation: item.rotation)
     }
@@ -486,6 +491,6 @@ enum VideoLayerStills {
 extension VideoLayerItem {
     /// Uses something only 1.15.0 shows.
     var needsFormat4: Bool {
-        (keys.map { !$0.isEmpty } ?? false) || mask != nil || level != nil || blend != nil || removesBackground != nil || chroma != nil || text != nil || tracking != nil || animation != nil || keepsPitch != nil || soundFadeIn != nil || soundFadeOut != nil || speed < 0.25 - 0.000_1 || speed > 4 + 0.000_1
+        (keys.map { !$0.isEmpty } ?? false) || mask != nil || level != nil || blend != nil || removesBackground != nil || chroma != nil || text != nil || tracking != nil || role != nil || effects != nil || animation != nil || keepsPitch != nil || soundFadeIn != nil || soundFadeOut != nil || speed < 0.25 - 0.000_1 || speed > 4 + 0.000_1
     }
 }
