@@ -98,6 +98,7 @@ enum VideoDemoExporter {
             extras.layout = layout
         }
         let allKinds = kinds + project.sources.filter { !$0.isPrimary }.flatMap(\.audioKinds)
+        var musicSpeech: [String: [ClosedRange<Double>]] = [:]
         if let music = project.music, let file = await VideoAudioFile.load(music.url) {
             var speech: [String: [ClosedRange<Double>]] = [:]
             if music.ducking {
@@ -108,8 +109,12 @@ enum VideoDemoExporter {
                     guard let index = VideoAudioKind.voiceTrackIndex(in: added.audioKinds), let url = VideoSourceLocator.resolve(added) else { continue }
                     speech[added.id.uuidString] = await VideoVoiceActivity.speech(url: url, trackIndex: index)
                 }
+                for track in project.duckingTracks {
+                    speech["track:\(track.id.uuidString)"] = await VideoVoiceActivity.speech(url: track.url, trackIndex: 0)
+                }
+                musicSpeech = speech
             }
-            let voice = VideoMusicDucking.voiceOnTimeline(project: project, primaryKinds: kinds, speech: speech, segments: segments)
+            let voice = VideoMusicDucking.musicVoice(project: project, primaryKinds: kinds, speech: speech, segments: segments)
             extras.music = VideoMusicInput(file: file, settings: music, voice: voice, timelineOffset: musicOffset)
             // The song carries on under the end card and fades out at the
             // very end of the file.
@@ -133,9 +138,11 @@ enum VideoDemoExporter {
             }
             let timeline = VideoMusicDucking.speechOnTimeline(project: project, primaryKinds: kinds, speech: speech, segments: segments)
             extras.externalAudio = VideoExternalAudioInput(tracks: tracks, voice: needsVoice ? timeline : [])
-            // The music ducks under the added voice, not the recording's microphone.
+            // The music ducks under the added voice, not the recording's
+            // microphone (and under the tracks set to duck it).
             if project.externalVoice != nil, let music = extras.music, music.settings.ducking {
-                extras.music?.voice = timeline
+                speech.merge(musicSpeech) { own, _ in own }
+                extras.music?.voice = VideoMusicDucking.musicVoice(project: project, primaryKinds: kinds, speech: speech, segments: segments)
             }
         }
         if project.clickSounds.enabled {
@@ -510,7 +517,7 @@ enum VideoDemoExporter {
             compression[AVVideoH264EntropyModeKey] = AVVideoH264EntropyModeCABAC
         }
         let colors: [String: Any] = [
-            AVVideoColorPrimariesKey: AVVideoColorPrimaries_ITU_R_709_2,
+            AVVideoColorPrimariesKey: settings.colorSpace == .displayP3 ? AVVideoColorPrimaries_P3_D65 : AVVideoColorPrimaries_ITU_R_709_2,
             AVVideoTransferFunctionKey: AVVideoTransferFunction_ITU_R_709_2,
             AVVideoYCbCrMatrixKey: AVVideoYCbCrMatrix_ITU_R_709_2,
         ]
@@ -595,6 +602,7 @@ enum VideoDemoExporter {
             duration: duration,
             endCard: settings.endCard ? EndCard(background: project.background) : nil,
             transparent: settings.keepsTransparency,
+            wideColor: settings.colorSpace == .displayP3,
             cancel: cancel,
             progress: { value in
                 await progress(value)
@@ -766,7 +774,9 @@ enum VideoDemoExporter {
         /// and tagged so; the encoder converts them to HD video colors.
         /// (Rendering straight into Rec.709 used the camera curve, which
         /// players don't undo: mid-tones came out ~7% lighter.)
-        private let colorSpace = CGColorSpace(name: CGColorSpace.sRGB) ?? CGColorSpaceCreateDeviceRGB()
+        /// Display P3 (Project settings ▸ Colour space): the same colours,
+        /// rendered into the wider space and tagged so.
+        private let colorSpace: CGColorSpace
         private let videoQueue = DispatchQueue(label: "com.lfstudios.export.video", qos: .userInitiated)
         private let audioQueue = DispatchQueue(label: "com.lfstudios.export.audio", qos: .userInitiated)
         private var lastFrame: CIImage?
@@ -794,6 +804,7 @@ enum VideoDemoExporter {
             duration: Double,
             endCard: EndCard?,
             transparent: Bool,
+            wideColor: Bool = false,
             cancel: CancellationFlag,
             progress: @escaping @Sendable (Double) async -> Void
         ) {
@@ -814,6 +825,7 @@ enum VideoDemoExporter {
             self.duration = duration
             self.endCard = endCard
             self.transparent = transparent
+            self.colorSpace = CGColorSpace(name: wideColor ? CGColorSpace.displayP3 : CGColorSpace.sRGB) ?? CGColorSpaceCreateDeviceRGB()
             self.cancel = cancel
             self.progress = progress
         }

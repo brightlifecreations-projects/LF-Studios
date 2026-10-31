@@ -18,7 +18,7 @@ struct VideoLayerItemEditor: View {
         VideoInspectorSection(L("Keyframes")) {
             VideoKeyframeBar(model: model, clock: clock, item: item)
         }
-        if let compound = model.project.compound(of: item) {
+        if let compound = model.shownCompound(of: item) {
             VideoCompoundSection(model: model, compound: compound)
         } else if item.role == .effect {
             VideoEffectClipSection(model: model, editor: self, item: item)

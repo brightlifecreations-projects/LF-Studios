@@ -1,7 +1,9 @@
 #!/bin/bash
 # Publishes an LF Studios release from this Mac (no GitHub Actions minutes):
 # sets the version, builds one app for Apple Silicon and Intel, zips it,
-# signs it with the Sparkle update key, and creates the GitHub Releases: on
+# signs it with the Sparkle update key, checks that the version users have
+# now really updates to it (scripts/rehearse-update.sh), and creates the
+# GitHub Releases: on
 # the public LF-Studios-Releases repo (LF-Studios.zip and appcast.xml, the
 # feed installed apps check for updates) and on this repo (the zip, for the
 # record).
@@ -102,8 +104,9 @@ if [ "${VERSION}" != "${CURRENT}" ]; then
     /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString ${VERSION}" "$PLIST"
     /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $((BUILD + 1))" "$PLIST"
 fi
-# "## [1.0.0] - Unreleased" becomes "## [1.0.0] - 2026-10-26".
-sed -i '' -E "s/^## \[${VERSION}\] - Unreleased$/## [${VERSION}] - $TODAY/" "$CHANGELOG"
+# "## [1.0.0]" (or "## [1.0.0] - Unreleased") becomes "## [1.0.0] - 2026-10-26".
+sed -i '' -E "s/^## \[${VERSION//./\\.}\]( - Unreleased)?$/## [${VERSION}] - $TODAY/" "$CHANGELOG"
+grep -qE "^## \[${VERSION//./\\.}\] - [0-9]{4}-[0-9]{2}-[0-9]{2}$" "$CHANGELOG" || fail "CHANGELOG.md's “## [${VERSION}]” heading should be “## [${VERSION}]” or “## [${VERSION}] - <date>”."
 if [ -n "$(git status --porcelain --untracked-files=no)" ]; then
     git commit -q -am "LF Studios ${VERSION}"
     git push -q origin main
@@ -132,6 +135,12 @@ echo "▶ Zipped: $DIST/LF-Studios.zip ($(du -h "$DIST/LF-Studios.zip" | cut -f1
 bash "$ROOT/generate-appcast.sh" "${VERSION}" "$DIST/LF-Studios.zip"
 SIGNATURE="$(sed -nE 's/.*sparkle:edSignature="([^"]+)".*/\1/p' "$DIST/appcast.xml" | head -1)"
 "$SPARKLE_BIN/sign_update" --verify "$DIST/LF-Studios.zip" "$SIGNATURE" || fail "The zip's update signature doesn't verify."
+
+# MARK: Update rehearsal
+
+# The version users have now must really update to this one through Check
+# for Updates (not just see it in the feed): nothing is published otherwise.
+bash "$ROOT/scripts/rehearse-update.sh" "$DIST" "${VERSION}" || fail "The update rehearsal failed: nothing was published. Fix it and run this again."
 
 # MARK: Release notes
 

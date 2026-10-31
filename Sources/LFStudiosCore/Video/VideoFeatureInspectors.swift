@@ -213,7 +213,7 @@ struct VideoTranscriptPanel: View {
                     symbol: "wand.and.stars",
                     help: L("Cut filler words like um and uh"),
                     enabled: fillers > 0,
-                    action: model.removeFillers
+                    action: { model.perform(.reviewFillers) }
                 )
                 cleanup(
                     title: pauses.isEmpty ? L("No pauses to shorten") : L("Shorten \(pauses.count) pauses"),

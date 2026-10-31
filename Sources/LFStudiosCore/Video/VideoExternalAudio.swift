@@ -47,6 +47,10 @@ struct VideoExternalAudioTrack: Codable, Equatable, Identifiable {
     /// Lower while the voice speaks. Off to start with (manual only).
     var dipUnderVoice = false
     var dipLevel = 0.3
+    /// The music ducks under this track's speech too (a voiceover, an
+    /// interview): 1.16.0, off to start with (nil). The recording's voice
+    /// and a track used as the voice always count.
+    var ducksMusic: Bool?
     /// Volume keyframes, in the file's own seconds (1.15.0).
     var volumeKeys: VideoKeyframes?
     /// Detect beats: the file's beats, in its own seconds.
@@ -62,7 +66,7 @@ struct VideoExternalAudioTrack: Codable, Equatable, Identifiable {
     }
 
     private enum CodingKeys: String, CodingKey {
-        case id, path, name, duration, pieces, volume, muted, fadeIn, fadeOut, lockedToRecording, useAsVoice, dipUnderVoice, dipLevel, volumeKeys, beats
+        case id, path, name, duration, pieces, volume, muted, fadeIn, fadeOut, lockedToRecording, useAsVoice, dipUnderVoice, dipLevel, volumeKeys, beats, ducksMusic
     }
 
     init(from decoder: Decoder) throws {
@@ -82,6 +86,7 @@ struct VideoExternalAudioTrack: Codable, Equatable, Identifiable {
         dipLevel = (try? c.decodeIfPresent(Double.self, forKey: .dipLevel)) ?? 0.3
         volumeKeys = (try? c.decodeIfPresent(VideoKeyframes.self, forKey: .volumeKeys)).flatMap { $0 }
         beats = (try? c.decodeIfPresent([Double].self, forKey: .beats)).flatMap { $0 }
+        ducksMusic = (try? c.decodeIfPresent(Bool.self, forKey: .ducksMusic)).flatMap { $0 }
     }
 
     /// Edit-time stretches each piece plays (several when a locked piece
@@ -144,6 +149,10 @@ struct VideoExternalAudioTrack: Codable, Equatable, Identifiable {
 extension VideoDemoProject {
     /// The added track used as the voice, if any.
     var externalVoice: VideoExternalAudioTrack? { audioTracks.first { $0.useAsVoice && !$0.muted } }
+    /// Sound tracks the music ducks under besides the voice (heard ones).
+    var duckingTracks: [VideoExternalAudioTrack] {
+        audioTracks.filter { $0.ducksMusic == true && !$0.useAsVoice && !$0.muted && !trackState(.sound($0.id)).muted }
+    }
 }
 
 // MARK: - Into the composition

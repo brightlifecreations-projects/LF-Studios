@@ -215,6 +215,11 @@ struct VideoExportSheet: View {
                     // "fps" is the same in every language.
                     VideoSegmented(options: VideoExportSettings.frameRates.map { ($0, "\($0)") }, selection: $model.exportSettings.fps)
                 }
+                // From Project Settings when the project has some (1.16.0).
+                row(L("Colour space")) {
+                    VideoSegmented(options: VideoColorSpace.allCases.map { ($0, $0.title) }, selection: $model.exportSettings.colorSpace)
+                        .help(settings.colorSpace.detail)
+                }
             }
             if settings.format == .proRes4444 {
                 VideoToggleRow(

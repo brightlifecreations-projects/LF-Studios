@@ -1,0 +1,69 @@
+# LF Studios 1.16.0: progress
+
+Branch `next-1.16`. Each part: build-app.sh, test-quick, commit. Tests with
+synthetic audio only. If context is lost: re-read this file and carry on
+from the first unticked box.
+
+## Decisions (from the owner)
+- Already there, don't rebuild: Edit by text, Remove ums, Shorten pauses,
+  music ducking (under the recording's voice).
+- Project settings: opened only by clicking the project name (and a Guide
+  page). Never opened or offered automatically.
+- Zoom cut: 120 %, 0.6 s by default. Colour space: Rec. 709 or Display P3
+  only. Compound clip timeline last; moves to next update if not solid.
+- Before publishing: an installed previous version must really update
+  through Check for Updates (scripts/rehearse-update.sh, run by
+  publish-release.sh).
+- Release PRs are merged by Claude, after tests and CI pass.
+
+## Checklist
+- [x] 7. CI on main passes again (run 41226948148, by hand on 85b9b67)
+- [x] Update error: found, fixed, rehearsal in publish-release.sh
+- [x] 6. CHANGELOG dates from tags; publish script dates new headings
+- [x] 1. Zoom cut
+- [x] 2. Project settings window
+- [x] 3. Remove ums: review list before cutting
+- [x] 4. Ducking under voiceover and imported speech (switches, off)
+- [x] 5. Compound clip in its own timeline
+- [ ] Guide pages, shortcuts page, 7 languages, CHANGELOG [1.16.0]
+- [ ] test-full green, PR, CI green, merge, publish 1.16.0
+
+## Notes
+- Update error ("An error occurred while launching the installer"):
+  reproduced by replacing a running app's files (build-app.sh did
+  `rm -rf /Applications/LF Studios.app` + copy while it ran), then Install
+  Update. A clean 1.14.0 → 1.15.0 update works (tested with the published
+  zips). Fixes: build-app.sh quits LF Studios first and reopens it; the app
+  notices it was replaced (AppBundleStamp) and Check for Updates asks to
+  reopen instead of failing; publish-release.sh runs rehearse-update.sh.
+- The rehearsal points the old version at a local feed with the launch
+  argument `-SUFeedURL` (Sparkle reads it from the user defaults), and
+  `-AppleLanguages (en)` so the menu and buttons have known names.
+- For the CHANGELOG entry: "Check for Updates no longer fails when LF
+  Studios was replaced while open: it asks to reopen."
+- Zoom cut: main-track clips gained `keys` (VideoKeyframes, only `.zoom`,
+  seconds from the clip's start; encoded only when set, format 4). The
+  renderer scales the finished frame about its middle (before the camera,
+  captions and shortcuts, which stay put). A split keeps the zoom where it
+  was (`VideoKeyframes.split`). Command `.zoomCut` (⌥Z) and `.zoom(...)`
+  edits; Properties ▸ Zoom for the clip; ◆ marks on the clip.
+- Project settings: `project.projectSettings` (nil until set; format 4
+  then). Opened only by clicking the name (or the command palette). The
+  export window takes them each time it opens; it gained a Colour space
+  row. Display P3 renders into P3 and tags the file P3 (same colours).
+- Remove ums: `.reviewFillers` opens VideoFillerReviewSheet (all ticked,
+  words around each, ▶ plays from a second before); `.removeFillers(ids)`
+  cuts the ticked ones in one step. The old `removeFillers()` (all) stays
+  for tests and scripts.
+- Ducking: `VideoExternalAudioTrack.ducksMusic` (nil = off; format 4 when
+  on). `VideoMusicDucking.musicVoice` = the voice as before + those tracks'
+  own speech (energy-based, their files' seconds → where their pieces
+  play). Preview loads their speech in loadExternalAudio; export too.
+  Command `.audio(.ducksMusic(id, on))`.
+- Compound timeline: no second timeline model. `openCompound` shows that
+  compound's clips one by one (its block left out, others dimmed and not
+  reachable) and the preview drops its transform so handles line up. One
+  guard in `mutate` (`allowsInsideOpenCompound`): the project minus that
+  compound's clips must stay the same; items added inside join it. Esc,
+  Back, or the compound disappearing (undo, break apart) closes it.
+

@@ -182,6 +182,8 @@ struct VideoExportSettings: Equatable {
     var customBitrate: Int?
     var resolution: Resolution = .p1080
     var fps: Int = 60
+    /// Rec. 709 (every screen) or Display P3 (wider colours; 1.16.0).
+    var colorSpace: VideoColorSpace = .rec709
     var quality: Quality = .social
     var codec: Codec = .h264
     var endCard: Bool = false

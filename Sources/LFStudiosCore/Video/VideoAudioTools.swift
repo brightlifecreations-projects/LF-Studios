@@ -86,6 +86,8 @@ enum VideoAudioEdit: Equatable {
     case normalize(VideoAudioTarget)
     case detectBeats(VideoAudioTarget)
     case clearBeats(VideoAudioTarget)
+    /// Music ducks under this sound track's speech (1.16.0).
+    case ducksMusic(UUID, Bool)
 
     var name: String {
         switch self {
@@ -94,6 +96,7 @@ enum VideoAudioEdit: Equatable {
         case .normalize(let t): return "normalize.\(t)"
         case .detectBeats(let t): return "detectBeats.\(t)"
         case .clearBeats(let t): return "clearBeats.\(t)"
+        case .ducksMusic(let id, let on): return "ducksMusic.\(id).\(on)"
         }
     }
 
@@ -104,6 +107,7 @@ enum VideoAudioEdit: Equatable {
         case .normalize: return L("Normalize loudness")
         case .detectBeats: return L("Detect beats")
         case .clearBeats: return L("Clear beats")
+        case .ducksMusic: return L("Music ducks under this")
         }
     }
 }
@@ -121,6 +125,13 @@ extension VideoEditorModel {
 
     func perform(_ edit: VideoAudioEdit) -> Bool {
         switch edit {
+        case .ducksMusic(let id, let on):
+            guard !refuseLocked(.sound(id)), let track = audioTrack(id), (track.ducksMusic == true) != on else { return false }
+            mutate(label: on ? "Duck Music" : "Stop Ducking Music") { project in
+                guard let i = project.audioTracks.firstIndex(where: { $0.id == id }) else { return }
+                project.audioTracks[i].ducksMusic = on ? true : nil
+            }
+            return true
         case .toggleVolumeKey(let id):
             guard !refuseLocked(.sound(id)), let track = audioTrack(id) else { return false }
             guard let fileTime = fileTime(ofSound: id, atTimeline: clock.time) else {

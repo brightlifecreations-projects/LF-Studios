@@ -27,9 +27,12 @@ struct VideoDemoTimelineClip: Codable, Equatable, Identifiable {
     var keepsPitch: Bool?
     /// One piece of a clip played with a speed curve (VideoSpeed.swift).
     var curve: VideoSpeedCurveGroup?
+    /// Keyframes (1.16.0; only `.zoom`: a zoom cut, VideoZoomCut.swift),
+    /// in seconds from the clip's start on the timeline.
+    var keys: VideoKeyframes?
 
     /// Only 1.15.0 and later play it as it is.
-    var needsFormat4: Bool { keepsPitch == false || curve != nil || speed < 0.25 - 0.000_1 || speed > 16 + 0.000_1 }
+    var needsFormat4: Bool { keepsPitch == false || curve != nil || speed < 0.25 - 0.000_1 || speed > 16 + 0.000_1 || keys?.isEmpty == false }
 
     /// Mirror, Rotate or off: only 1.14.0 and later show it.
     var needsLayerFormat: Bool { mirrored || quarterTurns % 4 != 0 || disabled }
@@ -68,7 +71,7 @@ struct VideoDemoTimelineClip: Codable, Equatable, Identifiable {
     }
 
     private enum CodingKeys: String, CodingKey {
-        case id, sourceStart, sourceEnd, speed, muted, fadeIn, fadeOut, typingSpeedUp, mirrored, quarterTurns, disabled, keepsPitch, curve
+        case id, sourceStart, sourceEnd, speed, muted, fadeIn, fadeOut, typingSpeedUp, mirrored, quarterTurns, disabled, keepsPitch, curve, keys
     }
 
     init(from decoder: Decoder) throws {
@@ -86,6 +89,7 @@ struct VideoDemoTimelineClip: Codable, Equatable, Identifiable {
         disabled = (try? container.decodeIfPresent(Bool.self, forKey: .disabled)) ?? false
         keepsPitch = (try? container.decodeIfPresent(Bool.self, forKey: .keepsPitch)).flatMap { $0 }
         curve = (try? container.decodeIfPresent(VideoSpeedCurveGroup.self, forKey: .curve)).flatMap { $0 }
+        keys = (try? container.decodeIfPresent(VideoKeyframes.self, forKey: .keys)).flatMap { $0 }
     }
 
     func encode(to encoder: Encoder) throws {
@@ -104,6 +108,7 @@ struct VideoDemoTimelineClip: Codable, Equatable, Identifiable {
         if disabled { try container.encode(true, forKey: .disabled) }
         try container.encodeIfPresent(keepsPitch, forKey: .keepsPitch)
         try container.encodeIfPresent(curve, forKey: .curve)
+        if keys?.isEmpty == false { try container.encode(keys, forKey: .keys) }
     }
 }
 
@@ -947,6 +952,9 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
     var compounds: [VideoCompoundClip]?
     /// The exported file's cover (1.15.0; VideoCover.swift).
     var cover: VideoCover?
+    /// Resolution, frame rate and colour space (1.16.0; Project settings,
+    /// VideoProjectSettings.swift). nil: never set, as before.
+    var projectSettings: VideoProjectSettings?
 
     var sourceURL: URL { URL(fileURLWithPath: sourcePath) }
     var sourceSize: CGSize { CGSize(width: sourceWidth, height: sourceHeight) }
@@ -1174,6 +1182,11 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
         second.id = UUID()
         second.sourceStart = sourceTime
         second.fadeIn = 0
+        // Keyframes stay where they were on the timeline: each half keeps
+        // the ones inside it.
+        if let keys = original.keys, !keys.isEmpty {
+            (first.keys, second.keys) = keys.split(at: first.outputDuration, length: original.outputDuration)
+        }
         clips.replaceSubrange(index...index, with: [first, second])
         timelineClips = clips
         syncTrimToTimeline(totalDuration: totalDuration)
@@ -1498,7 +1511,7 @@ extension VideoDemoProject {
         case webcam, cameraLayouts, importedCamera, splitVideoAspect, customAspect, trackStates, autoZoom, reframe, captions, transcriptLanguage, captionStyle, keystrokes, keystrokeStyle, crop
         case cards, music, audioTracks, clickSounds, transitions, captionTracks, sources, imageOverlayEffects, markers
         case textCursor, keyPresses, loupeStyle, faceTracking, carriedVoices, speakerNotes
-        case ratioVersions, ratioShared, ratioBase, previousRatio, reframeFollowsZooms, mediaBin, layerTracks, compounds, cover
+        case ratioVersions, ratioShared, ratioBase, previousRatio, reframeFollowsZooms, mediaBin, layerTracks, compounds, cover, projectSettings
         // Legacy (v1) keys
         case backgroundPreset, customBackgroundPath, stageInset, shadowStrength, zoomKeyframes
         case showCursorOverlay, enlargeCursor, showClickRipple, smoothCursor, cursorScale, clickSpotlight, cursorMotionBlur
@@ -1561,6 +1574,7 @@ extension VideoDemoProject {
         layerTracks = (try? container.decodeIfPresent([VideoLayerTrack].self, forKey: .layerTracks)).flatMap { $0 } ?? []
         compounds = (try? container.decodeIfPresent([VideoCompoundClip].self, forKey: .compounds)).flatMap { $0 }
         cover = (try? container.decodeIfPresent(VideoCover.self, forKey: .cover)).flatMap { $0 }
+        projectSettings = (try? container.decodeIfPresent(VideoProjectSettings.self, forKey: .projectSettings)).flatMap { $0 }
 
         let storedVersion = try container.decodeIfPresent(Int.self, forKey: .version) ?? 1
         if storedVersion >= 2 {
@@ -1658,6 +1672,7 @@ extension VideoDemoProject {
         if !layerTracks.isEmpty { try container.encode(layerTracks, forKey: .layerTracks) }
         if let compounds, !compounds.isEmpty { try container.encode(compounds, forKey: .compounds) }
         if let cover { try container.encode(cover, forKey: .cover) }
+        if let projectSettings { try container.encode(projectSettings, forKey: .projectSettings) }
         try container.encode(cursorSamples, forKey: .cursorSamples)
         try container.encode(clickEvents, forKey: .clickEvents)
         try container.encode(nativeCursorVisible, forKey: .nativeCursorVisible)

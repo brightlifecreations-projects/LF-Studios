@@ -73,6 +73,8 @@ struct VideoTimelineView: View, Equatable {
             VideoTimelineToolbar(model: model, clock: model.clock)
                 .frame(height: 44)
             Rectangle().fill(VideoEditorTheme.hairline).frame(height: 1)
+            // Inside a compound clip (1.16.0): where you are, and Back.
+            VideoCompoundBreadcrumb(model: model)
             GeometryReader { proxy in
                 VideoTimelineSurface(model: model, timeline: timeline, viewport: proxy.size)
             }
@@ -113,6 +115,7 @@ struct VideoTimelineToolbar: View {
             command(.crop)
             toolbarDivider
             iconButton(symbol: "plus.magnifyingglass", help: L("Add a zoom at the playhead (Z)"), label: L("Zoom")) { model.addZoom(at: clock.time) }
+            VideoZoomCutButton(model: model)
             iconButton(symbol: model.project.autoZoom ? "sparkles.rectangle.stack.fill" : "sparkles", help: model.project.autoZoom ? L("Auto-zoom on clicks is on — click to turn it off and remove its zooms") : L("Turn on Auto-zoom on clicks — keeps zooms you placed by hand"), label: L("Auto Zoom")) { model.setAutoZoom(!model.project.autoZoom) }
             iconButton(symbol: "hare", help: L("Fast-forward moments where nothing happens"), label: L("Speed Up Idle")) { model.speedUpIdle() }
             if !model.project.markers.isEmpty {
@@ -367,9 +370,13 @@ struct VideoTimelineSurface: View {
     /// touched while locked.
     private func trackLook<Content: View>(_ track: VideoTimelineTrack, @ViewBuilder _ content: () -> Content) -> some View {
         let state = model.project.trackState(track)
+        // Inside an open compound only its clips (above the main track) can
+        // be reached; the rest stays in view, dimmed.
+        var outside = model.openCompound != nil
+        if case .layer = track { outside = false }
         return content()
-            .opacity(state.hidden ? 0.4 : 1)
-            .allowsHitTesting(!state.locked)
+            .opacity(state.hidden ? 0.4 : outside ? 0.3 : 1)
+            .allowsHitTesting(!state.locked && !outside)
     }
 
     private func lanes(rows: VideoTimelineRowLayout, height: CGFloat) -> some View {
@@ -388,7 +395,7 @@ struct VideoTimelineSurface: View {
 
             trackLook(.zooms) { zoomTrack }
             // The tracks above the main track (1.14.0).
-            let compoundBlocks = VideoCompoundBlock.blocks(model.project)
+            let compoundBlocks = VideoCompoundBlock.blocks(model.project).filter { $0.id != model.openCompound }
             let layerTops = model.project.layerTracks.map { rows.contentTop(.layer($0.id)) ?? rows.row(.layer($0.id))?.top ?? 0 }
             ForEach(Array(model.project.layerTracks.enumerated()), id: \.element.id) { index, track in
                 if let top = rows.contentTop(.layer(track.id)) {
@@ -401,7 +408,8 @@ struct VideoTimelineSurface: View {
                             geometry: geometry,
                             model: model,
                             hover: hover,
-                            compounds: compoundBlocks
+                            compounds: compoundBlocks,
+                            openCompound: model.openCompound
                         )
                         .equatable()
                         .offset(y: top)
@@ -1112,6 +1120,21 @@ struct VideoTimelineClipView: View, Equatable {
             }
         }
         .frame(width: width, height: M.clipTrackHeight)
+        // Its zoom keyframes (a zoom cut), as diamonds along its bottom edge.
+        .overlay(alignment: .bottomLeading) {
+            if let times = segment.clip.keys?.times, !times.isEmpty {
+                ZStack(alignment: .bottomLeading) {
+                    ForEach(times, id: \.self) { time in
+                        Image(systemName: "diamond.fill")
+                            .font(.system(size: 7, weight: .bold))
+                            .foregroundStyle(.white)
+                            .shadow(color: .black.opacity(0.6), radius: 1)
+                            .offset(x: CGFloat(time) * pointsPerSecond - 3.5, y: -2)
+                    }
+                }
+                .allowsHitTesting(false)
+            }
+        }
         .contentShape(Rectangle())
         .onHover { hovered = $0 }
         .gesture(scrubGesture)

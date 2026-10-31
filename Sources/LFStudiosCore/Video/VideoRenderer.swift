@@ -359,6 +359,14 @@ final class VideoRenderPlan: @unchecked Sendable {
         let mirrored: Bool
         let turns: Int
         let disabled: Bool
+        /// Zoom keyframes (a zoom cut), from the clip's start.
+        var keys: VideoKeyframes? = nil
+
+        /// How much the frame is zoomed at timeline `time` (1: not).
+        func zoom(at time: Double) -> Double {
+            guard let keys, keys.isAnimated(.zoom) else { return 1 }
+            return max(keys.value(.zoom, at: time - start, base: 1), 0.1)
+        }
     }
 
     /// How the main track's clip at `time` is shown (nil: as recorded).
@@ -465,8 +473,9 @@ final class VideoRenderPlan: @unchecked Sendable {
         timelineDuration = project.outputDuration(segments: segments)
         clipLooks = segments.compactMap { segment in
             let clip = segment.clip
-            guard clip.needsLayerFormat else { return nil }
-            return ClipLook(start: segment.timelineStart, end: segment.timelineEnd, mirrored: clip.mirrored, turns: clip.turns, disabled: clip.disabled)
+            let keys = clip.keys?.isAnimated(.zoom) == true ? clip.keys : nil
+            guard clip.needsLayerFormat || keys != nil else { return nil }
+            return ClipLook(start: segment.timelineStart, end: segment.timelineEnd, mirrored: clip.mirrored, turns: clip.turns, disabled: clip.disabled, keys: keys)
         }
         cards = project.cards
         introEnd = segments.first?.timelineStart ?? 0
@@ -872,6 +881,15 @@ final class VideoFrameRenderer {
         } else if plan.cursorSettings.clickEffect == .ripple, !plan.clicks.isEmpty {
             // Baked-cursor recordings still get ripples at the click spots.
             scene = drawRipples(on: scene, plan: plan, geometry: geometry, time: timelineTime, pointerHeight: 28 * geometry.pixelScale * plan.stageScale * CGFloat(plan.pointerScale(at: sourceTime)))
+        }
+
+        // A zoom cut: the whole frame, about its middle (1.16.0).
+        if let zoom = look?.zoom(at: timelineTime), abs(zoom - 1) > 0.000_1 {
+            let middle = CGPoint(x: outputRect.midX, y: outputRect.midY)
+            let transform = CGAffineTransform(translationX: -middle.x, y: -middle.y)
+                .concatenating(CGAffineTransform(scaleX: zoom, y: zoom))
+                .concatenating(CGAffineTransform(translationX: middle.x, y: middle.y))
+            scene = scene.transformed(by: transform).cropped(to: outputRect)
         }
 
         // 7. The camera, captions, and shortcuts — on the output, not the

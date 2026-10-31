@@ -29,4 +29,25 @@ final class AppUpdateConfigurationTests: XCTestCase {
         XCTAssertEqual(plist["SUAutomaticallyUpdate"] as? Bool, false, "an update must never install by itself")
         XCTAssertEqual(plist["SUAllowsAutomaticUpdates"] as? Bool, false, "the update window must not offer silent installs")
     }
+
+    /// A copy put over the running app (as build-app.sh did) is noticed, so
+    /// Check for Updates asks to reopen instead of failing in Sparkle.
+    func testNoticesTheAppReplacedWhileOpen() throws {
+        let folder = FileManager.default.temporaryDirectory.appendingPathComponent("lfstudios-stamp-\(UUID().uuidString)", isDirectory: true)
+        try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: folder) }
+        let program = folder.appendingPathComponent("LFStudios")
+        try Data("old".utf8).write(to: program)
+        let opened = try XCTUnwrap(AppBundleStamp.of(program))
+        XCTAssertEqual(AppBundleStamp.of(program), opened, "untouched: the same")
+        // rm -rf, then a fresh copy: a new file in the same place.
+        let copy = folder.appendingPathComponent("new")
+        try Data("new".utf8).write(to: copy)
+        try FileManager.default.removeItem(at: program)
+        try FileManager.default.moveItem(at: copy, to: program)
+        XCTAssertNotEqual(AppBundleStamp.of(program), opened)
+        XCTAssertNil(AppBundleStamp.of(folder.appendingPathComponent("missing")))
+        // The test runner itself hasn't been replaced.
+        XCTAssertFalse(AppBundleStamp.wasReplacedSinceLaunch)
+    }
 }

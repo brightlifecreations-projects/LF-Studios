@@ -99,7 +99,7 @@ struct VideoKeymap: Equatable, Codable {
         .group: "⌘G", .ungroup: "⇧⌘G", .extractAudio: "⇧⌘A", .selectLeft: "[", .selectRight: "]", .copy: "⌘C", .paste: "⌘V",
         .markIn: "I", .markOut: "O", .addText: "⌥T", .addArrow: "⌥A", .addHighlight: "⌥H", .addBlur: "⌥B",
         .addKeyframe: "⌥K", .previousKeyframe: "⌥[", .nextKeyframe: "⌥]", .addTextClip: "⌥⇧T",
-        .makeCompound: "⌥G", .breakApart: "⌥⇧G",
+        .makeCompound: "⌥G", .breakApart: "⌥⇧G", .zoomCut: "⌥Z",
     ]
 
     /// Each preset changes only the keys of commands LF Studios has.
