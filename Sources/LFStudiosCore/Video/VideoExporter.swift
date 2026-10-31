@@ -191,7 +191,7 @@ enum VideoDemoExporter {
         let canvas = plan.outputCanvasSize
         let outputSize = settings.outputSize(canvas: canvas)
         let timelineDuration = edit.duration.seconds
-        let frames = plan.transitions.contains { $0.kind == .dissolve } ? VideoSourceFrames(project: project) : nil
+        let frames = plan.transitions.contains { $0.kind.usesBothSides } ? VideoSourceFrames(project: project) : nil
 
         if settings.format == .gif {
             let working = settings.gifWorkingBytes(duration: timelineDuration, canvas: canvas)

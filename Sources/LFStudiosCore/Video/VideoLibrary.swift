@@ -76,7 +76,7 @@ struct VideoLibraryPanel: View {
                 case .text: VideoTextLibraryTab(model: model)
                 case .effects: VideoEffectsLibraryTab(model: model)
                 case .captions: captionsTab
-                case .transitions: transitionsTab
+                case .transitions: VideoTransitionsLibraryTab(model: model)
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
@@ -90,13 +90,6 @@ struct VideoLibraryPanel: View {
         VideoLibraryPointer(
             text: L("Captions live in the Captions panel on the right: make them from your voice, type them, translate and style them."),
             actions: [(L("Open Captions"), "captions.bubble", { model.selection = .none; model.inspectorTab = .captions })]
-        )
-    }
-
-    private var transitionsTab: some View {
-        VideoLibraryPointer(
-            text: L("Transitions go on the cuts between clips: click the + between two clips on the timeline, or set them all in Style ▸ Transitions."),
-            actions: [(L("Open Transitions"), "rectangle.portrait.on.rectangle.portrait.angled", { model.selection = .none; model.inspectorTab = .background })]
         )
     }
 }

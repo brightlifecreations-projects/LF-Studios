@@ -39,7 +39,7 @@ the first unticked box.
 ## Part B: Library content
 - [x] B8 Text tab: templates and styles, hover preview, drag onto timeline
 - [x] B9 Effects tab: Core Image effects with intensity, on a clip or as an effect clip
-- [ ] B10 Transitions tab: dissolve, fade black/white, slide, push, wipe, zoom, blur, spin; duration; Apply to all
+- [x] B10 Transitions tab: dissolve, fade black/white, slide, push, wipe, zoom, blur, spin; duration; Apply to all
 - [ ] B11 Filters tab: own LUT looks with intensity
 - [ ] B12 Adjustment tab: adjustment layer; full Adjust panel (HSL, curves, wheels, .cube import)
 - [ ] B13 Stickers and sound effects (own/CC0, LICENSES.md), Import sticker (PNG/GIF)
@@ -132,3 +132,12 @@ the first unticked box.
   an effect clip over the selected main clip, or 3 s at the playhead; a
   drop → effect clip there. `.edit(.setEffects)`. Effects tab added to
   VideoLibraryTab (B15 still has to make the tab bar fit 9 tabs).
+- B10: VideoTransitionKind + fadeThroughWhite, slide, push, wipe, zoom,
+  blur, spin (`usesBothSides` → the held-frame path dissolve already used;
+  `isNew` → format 4 via `usesNewTransitions`). VideoTransitionRenderer.
+  blend in VideoRenderer.finish. `.clip(.setTransition(kind, length))` (the
+  selected clip's cut, or nearest the playhead), `.clip(.transitionEverywhere)`
+  (Apply to all: clears per-cut choices), both one step, refused when the
+  main track is locked. Library tab with a Length (Settings.
+  videoTransitionLength) and hover previews; VideoTransitionPicker grid
+  replaces the segmented control in Style and the clip inspector.

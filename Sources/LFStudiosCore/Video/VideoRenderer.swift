@@ -1040,6 +1040,18 @@ final class VideoFrameRenderer {
                 if black > 0.001 {
                     frame = CIImage(color: CIColor(red: 0, green: 0, blue: 0, alpha: CGFloat(black))).cropped(to: outputRect).composited(over: frame)
                 }
+            case .fadeThroughWhite:
+                let white = VideoTransitionTiming.dip(span, at: time)
+                if white > 0.001 {
+                    frame = CIImage(color: CIColor(red: 1, green: 1, blue: 1, alpha: CGFloat(white))).cropped(to: outputRect).composited(over: frame)
+                }
+            case .slide, .push, .wipe, .zoom, .blur, .spin:
+                if let held = options.transitionFrame {
+                    let incoming = time < span.time
+                    let still = heldSide(span, incoming: incoming, source: held, plan: plan, outputSize: outputSize, options: options)
+                    frame = VideoTransitionRenderer.blend(span.kind, from: incoming ? frame : still, to: incoming ? still : frame,
+                                                          progress: VideoCameraEasing.glide(span.progress(at: time)), rect: outputRect)
+                }
             case .none:
                 break
             }

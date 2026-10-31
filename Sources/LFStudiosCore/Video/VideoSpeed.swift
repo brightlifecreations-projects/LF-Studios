@@ -126,12 +126,18 @@ enum VideoClipEdit: Equatable {
     case setSpeed(Double)
     case setKeepPitch(Bool)
     case setSpeedCurve(VideoSpeedCurve?)
+    /// A transition on the clip's cut (nil length: as it was).
+    case setTransition(VideoTransitionKind, Double?)
+    /// The same transition on every cut.
+    case transitionEverywhere(VideoTransitionKind, Double)
 
     var name: String {
         switch self {
         case .setSpeed(let s): return "setSpeed.\(s)"
         case .setKeepPitch(let on): return "setKeepPitch.\(on)"
         case .setSpeedCurve(let c): return "setSpeedCurve.\(c?.preset?.rawValue ?? "none")"
+        case .setTransition(let k, let d): return "setTransition.\(k.rawValue).\(d.map { "\($0)" } ?? "-")"
+        case .transitionEverywhere(let k, let d): return "transitionEverywhere.\(k.rawValue).\(d)"
         }
     }
 
@@ -140,6 +146,8 @@ enum VideoClipEdit: Equatable {
         case .setSpeed: return L("Speed")
         case .setKeepPitch: return L("Keep pitch")
         case .setSpeedCurve: return L("Speed curve")
+        case .setTransition(let k, _): return k.title
+        case .transitionEverywhere: return L("Apply to all cuts")
         }
     }
 }
@@ -167,6 +175,15 @@ extension VideoEditorModel {
                     project.timelineClips[index].keepsPitch = on ? nil : false
                 }
             }
+        case .setTransition(let kind, let duration):
+            guard let cut = transitionCutClip() else {
+                showNotice(L("Split the video (⌘B) to make a cut for a transition"), symbol: "scissors")
+                return false
+            }
+            setTransition(into: cut, kind: kind, duration: duration)
+        case .transitionEverywhere(let kind, let duration):
+            guard segments.count > 1 else { return false }
+            applyTransitionToAll(kind, duration: duration)
         case .setSpeedCurve(let curve):
             mutate(coalesce: curve?.preset == .custom ? "curve-\(segment.id)" : nil, label: "Speed Curve") { project in
                 project.applySpeedCurve(to: segment.id, curve, speed: 1, totalDuration: total)

@@ -62,6 +62,13 @@ extension VideoEditorModel {
                 model.addTextTemplate(template, at: time, place: place)
                 return true
             },
+            LibraryHandler(kind: "transition") { model, id, time, _ in
+                guard let kind = VideoTransitionKind(rawValue: id) else { return false }
+                if time == nil { return model.perform(.clip(.setTransition(kind, Settings.videoTransitionLength))) }
+                guard !model.refuseLocked(.clips), let cut = model.transitionCutClip(near: time) else { return false }
+                model.setTransition(into: cut, kind: kind, duration: Settings.videoTransitionLength)
+                return true
+            },
             LibraryHandler(kind: "effect") { model, id, time, place in
                 guard let kind = VideoEffectKind(rawValue: id) else { return false }
                 // Dropped somewhere: an effect clip there; + : on the selection.

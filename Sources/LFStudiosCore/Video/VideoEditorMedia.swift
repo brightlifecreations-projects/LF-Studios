@@ -452,7 +452,7 @@ extension VideoEditorModel {
         let center = time ?? clock.time
         let frames = media.frames(for: project)
         let renderer = previewRenderer
-        for span in plan.transitions where span.kind == .dissolve && span.end >= center - 1 && span.start <= center + Self.heldFrameWindow {
+        for span in plan.transitions where span.kind.usesBothSides && span.end >= center - 1 && span.start <= center + Self.heldFrameWindow {
             for sourceTime in [span.incomingSource, span.outgoingSource] where !frames.isCachedOrPending(sourceTime) {
                 _ = frames.cachedImage(at: sourceTime) { MainActor.assumeIsolated { renderer.invalidate() } }
             }

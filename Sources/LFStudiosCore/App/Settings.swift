@@ -321,6 +321,12 @@ enum Settings {
         set { defaults.set(newValue, forKey: "recordingKeyTiming") }
     }
 
+    /// Library ▸ Transitions: the length a transition gets when it's placed.
+    static var videoTransitionLength: Double {
+        get { (defaults.object(forKey: "videoTransitionLength") as? Double).map { min(max($0, 0.2), 2) } ?? 0.5 }
+        set { defaults.set(newValue, forKey: "videoTransitionLength") }
+    }
+
     /// Library items starred in the video editor ("tab/id").
     static var videoLibraryFavourites: [String] {
         get { defaults.stringArray(forKey: "videoLibraryFavourites") ?? [] }
