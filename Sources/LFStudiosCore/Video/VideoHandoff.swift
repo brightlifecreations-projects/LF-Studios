@@ -622,7 +622,7 @@ enum VideoHandoffPlanner {
 
     // MARK: The LF Studios project
 
-    /// `<Project>.lfsp`, holding the whole edit and pointing at the
+    /// `<Project>.lfs`, holding the whole edit and pointing at the
     /// handoff's own untouched copies. Files the handoff cut or re-encoded
     /// (clips, a lined-up camera, the laid-out song) can't carry the edit:
     /// their originals come along in Originals/, or — with that off — there's
@@ -667,7 +667,7 @@ enum VideoHandoffPlanner {
             mapping[original.url.standardizedFileURL.path] = item.relativePath
         }
         plan.items.append(VideoHandoffItem(folder: .root, fileName: "\(VideoRecordingFolder.safeName(input.name)).\(VideoProjectDocument.fileExtension)",
-                                           description: "The LF Studios project: open it, or this whole folder, in LF Studios (1.9.0 or later) to edit the video again",
+                                           description: "The LF Studios project: open it, or this whole folder, in LF Studios (\(VideoProjectDocument.firstVersionOpeningFileExtension) or later) to edit the video again",
                                            work: .project(mapping), treatment: .written, duration: nil, frameRate: nil, startOffset: nil, estimatedBytes: 500_000))
     }
 

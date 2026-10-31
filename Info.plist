@@ -43,6 +43,20 @@
 			<string>Owner</string>
 			<key>LSItemContentTypes</key>
 			<array>
+				<string>com.lfstudios.lfs</string>
+			</array>
+			<key>LSTypeIsPackage</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>LF Studios Project (1.9–1.11)</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSHandlerRank</key>
+			<string>Owner</string>
+			<key>LSItemContentTypes</key>
+			<array>
 				<string>com.lfstudios.lfsp</string>
 			</array>
 			<key>LSTypeIsPackage</key>
@@ -172,6 +186,24 @@
 			</array>
 			<key>UTTypeDescription</key>
 			<string>LF Studios Project</string>
+			<key>UTTypeIdentifier</key>
+			<string>com.lfstudios.lfs</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>lfs</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>com.apple.package</string>
+				<string>public.composite-content</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>LF Studios Project (1.9–1.11)</string>
 			<key>UTTypeIdentifier</key>
 			<string>com.lfstudios.lfsp</string>
 			<key>UTTypeTagSpecification</key>

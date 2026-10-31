@@ -257,7 +257,7 @@ struct VideoOtherMacTests {
             CTFontManagerUnregisterFontURLs(copies as CFArray, .process, nil)
         }
         try await TestVideos.withStorage(storage) {
-            let opened = try VideoProjectPackage.open(copied.appendingPathComponent("Demo.lfsp"))
+            let opened = try VideoProjectPackage.open(copied.appendingPathComponent("Demo.lfs"))
             let contents = opened.contents
             let inside = copied.standardizedFileURL.path + "/"
             let project = contents.project
@@ -315,7 +315,7 @@ struct VideoOtherMacTests {
         #expect(!plan.skipped.contains { $0.contains(Self.installedFamily) })
 
         // Save Project: the same switch, for project files and folders.
-        let package = thisMac.appendingPathComponent("Saved/Demo.lfsp")
+        let package = thisMac.appendingPathComponent("Saved/Demo.lfs")
         let contents = VideoProjectContents(project: fixture.project, recording: fixture.metadata, sourceRecordings: [:])
         try VideoProjectPackage.save(contents, to: package, mode: .folder, folder: .init(kind: .opened), fontFiles: { VideoFonts.carriedFontFiles(forFamily: $0, includeInstalled: false) })
         let fonts = package.deletingLastPathComponent().appendingPathComponent("Fonts")

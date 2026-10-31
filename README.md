@@ -32,7 +32,7 @@ A native macOS menu-bar app. No account, no cloud: your captures stay on your Ma
 - Show your camera in any shape and size, chosen before you record, or split screen with the screen, side by side or one above the other.
 - Add captions from your narration (made on your Mac), music, title cards, transitions, logos and image overlays.
 - Export MP4 up to 4K at 60 fps, or GIF.
-- Save a whole edit as one `.lfsp` file (LF Studios Project), and share your looks as a `.lfss` file (LF Studios Style). Projects (`.lfstudios`) and presets (`.lfstudiospresets`) from LF Studios 1.8 and earlier, and ShotStyle's, still open.
+- Save a whole edit as one `.lfs` file (LF Studios Project), and share your looks as a `.lfss` file (LF Studios Style). Projects from earlier versions (`.lfsp` from 1.9–1.11, `.lfstudios` from 1.8 and earlier), presets (`.lfstudiospresets`), and ShotStyle's still open.
 
 <img src="assets/readme/recording-bar.png" width="100%" alt="The LF Studios recording bar: area, audio, microphone, pointer, camera and shortcut toggles, quality and frame rate, and the record button." />
 

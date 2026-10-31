@@ -140,7 +140,7 @@ final class VideoCursorStyleTests: XCTestCase {
         let contents = VideoProjectContents(project: project, recording: nil, sourceRecordings: [:])
         XCTAssertTrue(contents.paths.contains(png.path))
 
-        let package = folder.appendingPathComponent("Demo.lfsp")
+        let package = folder.appendingPathComponent("Demo.lfs")
         _ = try VideoProjectPackage.save(contents, to: package, mode: .included)
         try FileManager.default.removeItem(at: png)
         let opened = try VideoProjectPackage.open(package)

@@ -37,7 +37,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     /// Videos dropped on the app (Finder "Open With", `open -an LF Studios`)
     /// open straight in the video editor.
     func application(_ application: NSApplication, open urls: [URL]) {
-        // A double-clicked .lfsp project, or an older .lfstudios or
+        // A double-clicked .lfs project, or an older .lfsp, .lfstudios or
         // .shotstyle one (VideoProjectFiles.swift).
         for project in urls where VideoProjectDocument.openableExtensions.contains(project.pathExtension.lowercased()) {
             VideoProjectOpener.open(project)

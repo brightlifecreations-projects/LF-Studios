@@ -290,7 +290,7 @@ struct VideoSplitScreenTests {
         let folder = FileManager.default.temporaryDirectory.appendingPathComponent("split-project-\(UUID().uuidString)", isDirectory: true)
         try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
         defer { try? FileManager.default.removeItem(at: folder) }
-        let package = folder.appendingPathComponent("Split.lfsp")
+        let package = folder.appendingPathComponent("Split.lfs")
         try VideoProjectPackage.save(VideoProjectContents(project: project, recording: nil, sourceRecordings: [:]), to: package, mode: .linked)
         let opened = try VideoProjectPackage.open(package)
         #expect(opened.contents.project.webcam == project.webcam)

@@ -10,15 +10,20 @@ projects and `.shotstylepresets` files still open. Keep those, the
 name prefix: existing users' files depend on them.
 
 File types (Info.plist declares each, so they open by double-click):
-- `.lfsp` (LF Studios Project, `com.lfstudios.lfsp`) and `.lfss` (LF Studios
-  Style, `com.lfstudios.style`): what 1.9.0 and later write for new projects,
-  Creative Handoffs, recording folders and preset exports.
-- `.lfstudios` (`com.lfstudios.project`) and `.lfstudiospresets`
-  (`com.lfstudios.presets`), from 1.1–1.8, and the ShotStyle ones still
-  open. Never rename users' files: ⌘S saves an old project under its own
-  name and extension; only Save Project As… writes `.lfsp`. Code that looks
-  for projects uses `VideoProjectDocument.openableExtensions` (presets:
-  `VideoStylePresetFile.openableExtensions`), never one extension.
+- `.lfs` (LF Studios Project, `com.lfstudios.lfs`): what 1.12.0 and later
+  write for new projects, Creative Handoffs and recording folders.
+- `.lfss` (LF Studios Style, `com.lfstudios.style`): preset exports, since
+  1.9.0.
+- Older ones that still open: `.lfsp` (`com.lfstudios.lfsp`, shown as "LF
+  Studios Project (1.9–1.11)"), `.lfstudios` (`com.lfstudios.project`) and
+  `.lfstudiospresets` (`com.lfstudios.presets`) from 1.1–1.8, and the
+  ShotStyle ones. Never rename users' files: ⌘S saves an old project under
+  its own name and extension, and an older recording folder keeps updating
+  its own project file; only Save Project As… writes `.lfs`. Code that
+  looks for projects uses `VideoProjectDocument.openableExtensions`
+  (presets: `VideoStylePresetFile.openableExtensions`), never one extension.
+  README.txt's "opens in LF Studios … or later" comes from
+  `VideoProjectDocument.firstVersionOpeningFileExtension`.
 
 ## Git
 - Repo: https://github.com/brightlifecreations-projects/LF-Studios (private).

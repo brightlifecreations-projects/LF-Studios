@@ -36,12 +36,12 @@ struct VideoProjectFileExportTests {
         let before = folder.appendingPathComponent("before.mp4")
         try await TestVideos.export(project, to: before)
 
-        let package = folder.appendingPathComponent("Demo.lfsp")
+        let package = folder.appendingPathComponent("Demo.lfs")
         try VideoProjectPackage.save(VideoProjectContents(project: project, recording: nil, sourceRecordings: [:]), to: package, mode: .included)
         try FileManager.default.removeItem(at: source)
         let elsewhere = FileManager.default.temporaryDirectory.appendingPathComponent("lfstudios-project-elsewhere-\(UUID().uuidString)", isDirectory: true)
         try FileManager.default.createDirectory(at: elsewhere, withIntermediateDirectories: true)
-        let moved = elsewhere.appendingPathComponent("Demo.lfsp")
+        let moved = elsewhere.appendingPathComponent("Demo.lfs")
         try FileManager.default.moveItem(at: package, to: moved)
 
         let opened = try VideoProjectPackage.open(moved)

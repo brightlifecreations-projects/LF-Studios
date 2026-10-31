@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.12.0]
+
+### Changed
+- **Projects are now ".lfs" files.** Save Project, Creative Handoff and a recording's folder write an LF Studios Project ending in ".lfs". It opens by double-click, from Open…, from Home, and when you open a folder that holds one. Style presets stay ".lfss".
+  - Your older files are never renamed: ".lfsp" projects (LF Studios 1.9–1.11, shown in Finder as "LF Studios Project (1.9–1.11)"), ".lfstudios" projects and ShotStyle's ".shotstyle" open just as before. Save Project (⌘S) keeps an older project's name and ending, and a recording folder made earlier keeps updating its own project file; Save Project As… (⇧⌘S) saves a ".lfs".
+  - A folder with more than one project file opens the one saved last.
+  - LF Studios 1.11 and earlier can't open ".lfs" files: whoever you send one to needs 1.12.0 or later. README.txt in handoffs and recording folders says so.
+
 ## [1.11.1]
 
 ### Changed

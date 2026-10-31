@@ -1,10 +1,10 @@
 import Foundation
 
-/// An LF Studios project file: `Name.lfsp`, a folder macOS shows as one
+/// An LF Studios project file: `Name.lfs`, a folder macOS shows as one
 /// file. It holds `project.json` (the edit and every recording's pointer,
 /// click, and key data) and, with "Include media", the media itself:
 ///
-///     Name.lfsp/
+///     Name.lfs/
 ///         project.json
 ///         Media/      the recordings, camera videos, music, pictures
 ///         Fonts/      fonts added to LF Studios that the project uses
@@ -19,7 +19,7 @@ import Foundation
 /// whole folder can be moved or renamed:
 ///
 ///     Name/
-///         Name.lfsp/project.json
+///         Name.lfs/project.json
 ///         01 Screen/  02 Camera/  03 Audio/  04 Graphics/  05 Captions/  07 Data/  Fonts/
 struct VideoProjectDocument: Codable {
     static let format = "lfstudios-project"
@@ -27,21 +27,27 @@ struct VideoProjectDocument: Codable {
     static let legacyFormat = "shotstyle-project"
     static let legacyFileExtension = "shotstyle"
     static let legacyTypeIdentifier = "com.shotstyle.project"
-    /// Projects saved by LF Studios 1.1–1.8. They keep their name: Save
-    /// (⌘S) writes them where they are, only Save Project As… makes a `.lfsp`.
+    /// Projects saved by LF Studios 1.1–1.8. Older projects keep their
+    /// name: Save (⌘S) writes them where they are, only Save Project As…
+    /// makes a `.lfs`.
     static let previousFileExtension = "lfstudios"
     static let previousTypeIdentifier = "com.lfstudios.project"
+    /// Projects saved by LF Studios 1.9–1.11.
+    static let lfspFileExtension = "lfsp"
+    static let lfspTypeIdentifier = "com.lfstudios.lfsp"
     /// Every name opens.
-    static let openableExtensions: Set<String> = [fileExtension, previousFileExtension, legacyFileExtension]
+    static let openableExtensions: Set<String> = [fileExtension, lfspFileExtension, previousFileExtension, legacyFileExtension]
     /// Bump when the layout changes, and teach `migrate` the step up, so
     /// every older project still opens.
     /// 2: folder projects (`@folder/` paths). Projects without them are
     /// still written as 1, so older versions of LF Studios open them as before.
     static let currentVersion = 2
     /// LF Studios Project. New projects, Creative Handoffs and recording
-    /// folders write it (since 1.9.0).
-    static let fileExtension = "lfsp"
-    static let typeIdentifier = "com.lfstudios.lfsp"
+    /// folders write it (since 1.12.0; `.lfsp` from 1.9.0).
+    static let fileExtension = "lfs"
+    static let typeIdentifier = "com.lfstudios.lfs"
+    /// The first version that opens a `.lfs` (what README.txt says).
+    static let firstVersionOpeningFileExtension = "1.12.0"
     static let manifestName = "project.json"
     static let mediaFolder = "Media"
     static let fontsFolder = "Fonts"
@@ -51,12 +57,12 @@ struct VideoProjectDocument: Codable {
     static let folderPrefix = "@folder/"
 
     /// Save Project As…: the name the panel suggests, the project's (or the
-    /// video's) as a `.lfsp`, also for an older `.lfstudios` project.
+    /// video's) as a `.lfs`, also for an older `.lfsp` or `.lfstudios` project.
     static func saveAsName(current: URL?, source: URL) -> String {
         "\((current ?? source).deletingPathExtension().lastPathComponent).\(fileExtension)"
     }
 
-    /// Save Project As…: the chosen file, ending in `.lfsp`.
+    /// Save Project As…: the chosen file, ending in `.lfs`.
     static func saveAsURL(_ chosen: URL) -> URL {
         chosen.pathExtension.lowercased() == fileExtension ? chosen : chosen.appendingPathExtension(fileExtension)
     }
