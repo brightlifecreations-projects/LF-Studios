@@ -74,7 +74,7 @@ private struct VideoLayerBlock: View {
             }
             if width > 50 {
                 HStack(spacing: 4) {
-                    Image(systemName: item.role == .effect ? "sparkles" : item.role == .adjustment ? "slider.horizontal.3" : item.isText ? "textformat" : item.isVideo ? "film" : "photo")
+                    Image(systemName: item.sticker != nil ? "face.smiling" : item.role == .effect ? "sparkles" : item.role == .adjustment ? "slider.horizontal.3" : item.isText ? "textformat" : item.isVideo ? "film" : "photo")
                         .font(.system(size: 9, weight: .bold))
                     Text(item.name)
                         .font(.system(size: 10, weight: .semibold))
@@ -113,6 +113,7 @@ private struct VideoLayerBlock: View {
         .onTapGesture { model.click(.layer(item.id)) }
         .gesture(moveGesture)
         .task(id: item.path) {
+            if let sticker = item.sticker.flatMap(VideoSticker.init(rawValue:)) { thumbnail = VideoStickerPreview.image(sticker); return }
             guard item.hasFile else { return }
             thumbnail = await VideoMediaThumbnails.shared.image(item.path, kind: item.kind, frame: nil)
         }

@@ -72,6 +72,8 @@ struct VideoLayerItem: Codable, Equatable, Identifiable {
     var filter: VideoAppliedFilter?
     /// Properties ▸ Adjust (VideoAdjust.swift).
     var adjust: VideoAdjustSettings?
+    /// One of our stickers (VideoStickers.swift); no file then.
+    var sticker: String?
 
     var intensity: Double {
         get { level ?? 1 }
@@ -443,12 +445,20 @@ enum VideoLayerRenderer {
             let height = item.rect(in: outputSize).height
             guard let image = VideoTextClipRenderer.image(text, pixelHeight: height) else { return nil }
             media = image
+        } else if let sticker = item.sticker {
+            guard let image = VideoStickerRenderer.image(sticker, pixelHeight: item.rect(in: outputSize).height) else { return nil }
+            media = image
         } else if item.isVideo {
             guard let frame else { return nil }
             media = frame
         } else {
-            guard let picture = VideoImageOverlayRenderer.picture(path: item.path) else { return nil }
-            media = picture
+            if item.path.lowercased().hasSuffix(".gif"), let gif = VideoGIF.load(item.path) {
+                // An animated GIF plays (and loops) from the clip's start.
+                media = gif.frame(at: time - item.at)
+            } else {
+                guard let picture = VideoImageOverlayRenderer.picture(path: item.path) else { return nil }
+                media = picture
+            }
         }
         // Cutout first: on the whole picture, before it's cut down.
         if let key = item.chroma { media = VideoCutout.chroma(media, key: key) }
@@ -497,6 +507,6 @@ enum VideoLayerStills {
 extension VideoLayerItem {
     /// Uses something only 1.15.0 shows.
     var needsFormat4: Bool {
-        (keys.map { !$0.isEmpty } ?? false) || mask != nil || level != nil || blend != nil || removesBackground != nil || chroma != nil || text != nil || tracking != nil || role != nil || effects != nil || filter != nil || adjust != nil || animation != nil || keepsPitch != nil || soundFadeIn != nil || soundFadeOut != nil || speed < 0.25 - 0.000_1 || speed > 4 + 0.000_1
+        (keys.map { !$0.isEmpty } ?? false) || mask != nil || level != nil || blend != nil || removesBackground != nil || chroma != nil || text != nil || tracking != nil || role != nil || effects != nil || filter != nil || adjust != nil || sticker != nil || animation != nil || keepsPitch != nil || soundFadeIn != nil || soundFadeOut != nil || speed < 0.25 - 0.000_1 || speed > 4 + 0.000_1
     }
 }

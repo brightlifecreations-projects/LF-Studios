@@ -42,7 +42,7 @@ the first unticked box.
 - [x] B10 Transitions tab: dissolve, fade black/white, slide, push, wipe, zoom, blur, spin; duration; Apply to all
 - [x] B11 Filters tab: own LUT looks with intensity
 - [x] B12 Adjustment tab: adjustment layer; full Adjust panel (HSL, curves, wheels, .cube import)
-- [ ] B13 Stickers and sound effects (own/CC0, LICENSES.md), Import sticker (PNG/GIF)
+- [x] B13 Stickers and sound effects (own/CC0, LICENSES.md), Import sticker (PNG/GIF)
 - [ ] B14 Captions tab: auto captions, style templates, SRT import/export
 - [ ] B15 Show Stickers/Effects/Filters/Adjustment tabs; favourites and search in every tab
 
@@ -159,3 +159,11 @@ the first unticked box.
   9 own presets (+ → on the selected clip; drop → adjustment clip). .cube
   import came with B11. Main-track clips get Adjust through an adjustment
   clip over them (+ with the clip selected).
+- B13: VideoSticker ×28 drawn in Core Graphics (no symbols/art files),
+  `sticker` on VideoLayerItem (no file), cached by height. Animated GIFs:
+  VideoGIF (frames + delays, loops) for any .gif picture clip. Import
+  sticker = PNG/GIF through placeMedia. VideoSoundEffect ×17 synthesised in
+  code into SoundEffects/v1-<id>/<Title>.caf, added with addAudio (copied
+  to the store), hover plays them. Audio tab: Your sounds | Sound effects.
+  LICENSES.md (repo root) lists stickers, sounds, looks, templates and the
+  macOS fonts; VideoStickersSoundsTests checks it stays in step.

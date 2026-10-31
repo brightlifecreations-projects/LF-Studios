@@ -77,6 +77,16 @@ extension VideoEditorModel {
                 guard let preset = VideoAdjustPreset.all.first(where: { $0.id == id }) else { return false }
                 return model.addAdjustment(preset, at: time, place: place, onSelection: time == nil)
             },
+            LibraryHandler(kind: "sound") { model, id, time, _ in
+                guard let effect = VideoSoundEffect(rawValue: id) else { return false }
+                Task { await model.addSoundEffect(effect, at: time) }
+                return true
+            },
+            LibraryHandler(kind: "sticker") { model, id, time, place in
+                guard let sticker = VideoSticker(rawValue: id) else { return false }
+                model.addSticker(sticker, at: time, place: place)
+                return true
+            },
             LibraryHandler(kind: "effect") { model, id, time, place in
                 guard let kind = VideoEffectKind(rawValue: id) else { return false }
                 // Dropped somewhere: an effect clip there; + : on the selection.

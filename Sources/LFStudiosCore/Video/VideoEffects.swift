@@ -215,7 +215,7 @@ enum VideoEffectRenderer {
 
 extension VideoLayerItem {
     /// Not a file: text, an effect or an adjustment clip.
-    var hasFile: Bool { text == nil && role == nil }
+    var hasFile: Bool { text == nil && role == nil && sticker == nil }
 
     /// An effect clip `length` long at `time`.
     static func effectClip(_ kind: VideoEffectKind, at time: Double, length: Double = 3) -> VideoLayerItem {
