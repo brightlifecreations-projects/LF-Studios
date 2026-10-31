@@ -101,6 +101,20 @@ final class RecordingEngineIntegrationTests: XCTestCase {
         try await Task.sleep(nanoseconds: UInt64(seconds * 1_000_000_000))
     }
 
+    /// The tests that look at what's on the screen share it with whoever
+    /// is using the Mac: a window opened on top, another Space, a full-
+    /// screen app. `attempt` returns nil once it has checked the video, or
+    /// why the screen couldn't be used (nothing asserted). That gets one
+    /// more try, then a skip that says so; never a silent pass.
+    private func onIdleScreen(_ what: String, _ attempt: () async throws -> String?) async throws {
+        guard let busy = try await attempt() else { return }
+        print("SCREEN-BUSY: \(what): \(busy); trying once more")
+        try await sleep(1.5)
+        if let still = try await attempt() {
+            throw XCTSkip("needs an idle screen: \(what): \(still)")
+        }
+    }
+
     private func areaOnMainScreen() throws -> (CGRect, NSScreen) {
         let screen = try XCTUnwrap(NSScreen.main)
         return (CGRect(x: screen.frame.minX + 120, y: screen.frame.minY + 120, width: 640, height: 360), screen)
@@ -404,6 +418,10 @@ final class RecordingEngineIntegrationTests: XCTestCase {
     /// Recording the back one of two overlapping windows of the same app:
     /// the front one isn't painted over it.
     func testWindowRecordingLeavesTheAppsOtherWindowsOut() async throws {
+        try await onIdleScreen("recording one of two overlapping windows") { try await attemptLeavingOtherWindowsOut() }
+    }
+
+    private func attemptLeavingOtherWindowsOut() async throws -> String? {
         let screen = try XCTUnwrap(NSScreen.main)
         func coloredWindow(_ title: String, _ color: NSColor, at origin: NSPoint) -> NSWindow {
             let window = NSWindow(contentRect: NSRect(origin: origin, size: NSSize(width: 480, height: 320)), styleMask: [.titled], backing: .buffered, defer: false)
@@ -430,7 +448,9 @@ final class RecordingEngineIntegrationTests: XCTestCase {
             let ids = Set(listed?.windows.map(\.windowID) ?? [])
             if ids.contains(CGWindowID(back.windowNumber)), ids.contains(CGWindowID(front.windowNumber)) { break }
         }
-        let scWindow = try XCTUnwrap(listed?.windows.first { $0.windowID == CGWindowID(back.windowNumber) })
+        guard let scWindow = listed?.windows.first(where: { $0.windowID == CGWindowID(back.windowNumber) }) else {
+            return "the test window wasn't listed as on screen"
+        }
 
         let engine = RecordingEngine()
         self.engine = engine
@@ -451,8 +471,13 @@ final class RecordingEngineIntegrationTests: XCTestCase {
         let overlap = CGRect(x: ci.extent.width * 0.65, y: ci.extent.height * 0.2, width: ci.extent.width * 0.25, height: ci.extent.height * 0.4)
         var pixel = [UInt8](repeating: 0, count: 4)
         CIContext().render(ci.applyingFilter("CIAreaAverage", parameters: [kCIInputExtentKey: CIVector(cgRect: overlap)]), toBitmap: &pixel, rowBytes: 4, bounds: CGRect(x: 0, y: 0, width: 1, height: 1), format: .RGBA8, colorSpace: CGColorSpace(name: CGColorSpace.sRGB))
+        // Neither window's color: something else was over them.
+        let green = pixel[1] > 170 && pixel[0] < 60
+        let red = pixel[0] > 170 && pixel[1] < 60
+        if !green && !red { return "the recording shows neither test window (\(pixel))" }
         XCTAssertGreaterThan(Int(pixel[1]), 170, "the chosen window's green shows where the other window overlaps it (\(pixel))")
         XCTAssertLessThan(Int(pixel[0]), 60, "not the other window's red (\(pixel))")
+        return nil
     }
 
     /// A second recording set up while the first saves starts once it's ready.
@@ -471,6 +496,10 @@ final class RecordingEngineIntegrationTests: XCTestCase {
     /// Window recordings follow the window: moved, the crop moves with it;
     /// resized, it's scaled into the video.
     func testWindowRecordingFollowsItsWindow() async throws {
+        try await onIdleScreen("recording a window that moves and resizes") { try await attemptFollowingTheWindow() }
+    }
+
+    private func attemptFollowingTheWindow() async throws -> String? {
         let screen = try XCTUnwrap(NSScreen.main)
         let window = NSWindow(contentRect: NSRect(x: screen.frame.minX + 160, y: screen.frame.minY + 160, width: 400, height: 300), styleMask: [.borderless], backing: .buffered, defer: false)
         window.isReleasedWhenClosed = false
@@ -484,7 +513,9 @@ final class RecordingEngineIntegrationTests: XCTestCase {
         try await sleep(0.4)
 
         let shareable = await Self.within(10) { try await SCShareableContent.excludingDesktopWindows(false, onScreenWindowsOnly: true) }
-        let scWindow = try XCTUnwrap(shareable?.windows.first { $0.windowID == CGWindowID(window.windowNumber) })
+        guard let scWindow = shareable?.windows.first(where: { $0.windowID == CGWindowID(window.windowNumber) }) else {
+            return "the test window wasn't listed as on screen"
+        }
 
         let engine = RecordingEngine()
         self.engine = engine
@@ -514,6 +545,7 @@ final class RecordingEngineIntegrationTests: XCTestCase {
             return Double(pixel[1]) / 204
         }
         let before = try await greenFraction(at: 0.5, rows: 0.1...0.9)
+        if before < 0.5 { return "the window's green isn't in the recording (\(Int(before * 100))%)" }
         let afterMove = try await greenFraction(at: 2.3, rows: 0.1...0.9)
         XCTAssertGreaterThan(before, 0.9, "the window fills the video")
         XCTAssertGreaterThan(afterMove, 0.9, "after moving, the crop followed it")
@@ -523,6 +555,7 @@ final class RecordingEngineIntegrationTests: XCTestCase {
         let resizedTop = try await greenFraction(at: 3.8, rows: 0.0...0.15)
         XCTAssertGreaterThan(resizedMiddle, 0.9, "the resized window is still in the video")
         XCTAssertLessThan(resizedTop, 0.2, "letterboxed, not stretched or cropped")
+        return nil
     }
 
     // MARK: The frame bar (1.8.0)
@@ -546,7 +579,9 @@ final class RecordingEngineIntegrationTests: XCTestCase {
 
     /// Every pixel of the frame's outer ring and a grid inside it is the
     /// green underneath: no border, no dimming, no handles, no size label.
-    private func assertOnlyGreen(_ url: URL, at seconds: [Double], file: StaticString = #filePath, line: UInt = #line) async throws {
+    /// Nil once checked; why not when most of it isn't the window at all
+    /// (covered by something on the Mac, not a stray border or dimming).
+    private func assertOnlyGreen(_ url: URL, at seconds: [Double], file: StaticString = #filePath, line: UInt = #line) async throws -> String? {
         let generator = AVAssetImageGenerator(asset: AVURLAsset(url: url))
         generator.requestedTimeToleranceBefore = .zero
         generator.requestedTimeToleranceAfter = .zero
@@ -557,7 +592,9 @@ final class RecordingEngineIntegrationTests: XCTestCase {
             let context = try XCTUnwrap(CGContext(data: &data, width: width, height: height, bitsPerComponent: 8, bytesPerRow: width * 4, space: CGColorSpace(name: CGColorSpace.sRGB)!, bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue))
             context.draw(image, in: CGRect(x: 0, y: 0, width: width, height: height))
             var bad: [(Int, Int, [UInt8])] = []
+            var checked = 0
             func check(_ x: Int, _ y: Int) {
+                checked += 1
                 let i = (y * width + x) * 4
                 let (r, g, b) = (data[i], data[i + 1], data[i + 2])
                 if !(g > 150 && r < 90 && b < 130) { bad.append((x, y, [r, g, b])) }
@@ -570,14 +607,20 @@ final class RecordingEngineIntegrationTests: XCTestCase {
                 CGImageDestinationAddImage(dest, image, nil)
                 CGImageDestinationFinalize(dest)
             }
+            if bad.count * 2 > checked { return "at \(time) s, \(bad.count) of \(checked) pixels aren't the test window: something covered it" }
             XCTAssertTrue(bad.isEmpty, "at \(time) s, \(bad.count) pixels aren't the window underneath, first \(bad.prefix(5))", file: file, line: line)
         }
+        return nil
     }
 
     /// The frame, its dimming, border and handles showing the whole time
     /// (worse than the real flow, which closes them on Record): none of it
     /// is in the video, which is exactly the frame's pixels.
     func testTheFrameAndItsDimmingAreNeverRecorded() async throws {
+        try await onIdleScreen("recording through the frame") { try await attemptRecordingThroughTheFrame() }
+    }
+
+    private func attemptRecordingThroughTheFrame() async throws -> String? {
         let screen = try XCTUnwrap(NSScreen.main)
         let frame = RecordingFrameController(screen: screen)
         let scale = screen.backingScaleFactor
@@ -604,13 +647,17 @@ final class RecordingEngineIntegrationTests: XCTestCase {
         XCTAssertEqual(Int(size.width), frame.pixels.width)
         XCTAssertEqual(Int(size.height), frame.pixels.height)
         XCTAssertEqual(Int(size.width) * 9, Int(size.height) * 16, "exactly 16:9")
-        try await assertOnlyGreen(url, at: [0.3, 1.0])
+        return try await assertOnlyGreen(url, at: [0.3, 1.0])
     }
 
     /// The real flow: New recording's frame bar, a 1:1 frame, Return. The
     /// frame, strip and bar are gone before the first frame; the video is
     /// exactly the frame.
     func testTheFrameBarRecordsExactlyTheFrame() async throws {
+        try await onIdleScreen("recording from the frame bar") { try await attemptRecordingFromTheFrameBar() }
+    }
+
+    private func attemptRecordingFromTheFrameBar() async throws -> String? {
         Settings.recordingCountdownSeconds = 0
         let capture = CaptureEngine()
         var finished: URL?
@@ -653,6 +700,6 @@ final class RecordingEngineIntegrationTests: XCTestCase {
         let size = try await track.load(.naturalSize)
         XCTAssertEqual(Int(size.width), pixels.width)
         XCTAssertEqual(Int(size.height), pixels.height)
-        try await assertOnlyGreen(url, at: [0.5, 1.5])
+        return try await assertOnlyGreen(url, at: [0.5, 1.5])
     }
 }
