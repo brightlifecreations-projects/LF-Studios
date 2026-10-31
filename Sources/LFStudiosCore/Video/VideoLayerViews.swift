@@ -7,32 +7,26 @@ import SwiftUI
 /// picture on a track above the main track.
 struct VideoLayerItemEditor: View {
     @ObservedObject var model: VideoEditorModel
+    /// The playhead: keyed values show as they are there.
+    @ObservedObject var clock: VideoDemoPlaybackClock
     let item: VideoLayerItem
 
+    /// The item as it is at the playhead.
+    private var shown: VideoLayerItem { item.resolved(at: clock.time) }
+
     var body: some View {
+        VideoInspectorSection(L("Keyframes")) {
+            VideoKeyframeBar(model: model, clock: clock, item: item)
+        }
+
         VideoInspectorSection(L("Picture")) {
             VideoToggleRow(title: L("Show"), detail: L("Off, it stays on the timeline but isn't seen or heard (V)"),
                            isOn: Binding(get: { item.enabled }, set: { on in model.setLayerItem(item.id, label: on ? "Turn On Clip" : "Turn Off Clip") { $0.enabled = on } }))
-            VideoSliderRow(
-                title: L("Opacity"),
-                value: Binding(get: { item.opacity * 100 }, set: { value in model.setLayerItem(item.id, coalesce: "layer-opacity-\(item.id)") { $0.opacity = value / 100 } }),
-                range: 0...100, defaultValue: 100, format: { L("\(Int($0.rounded()))%") },
-                onEditingEnded: { model.endGesture() }
-            )
-            VideoSliderRow(
-                title: L("Size"),
-                value: Binding(get: { item.width * 100 }, set: { value in model.setLayerItem(item.id, coalesce: "layer-size-\(item.id)") { $0.width = value / 100 } }),
-                range: 5...200, defaultValue: nil, format: { L("\(Int($0.rounded()))%") },
-                detail: L("Of the video's width. Or drag a corner on the player."),
-                onEditingEnded: { model.endGesture() }
-            )
-            VideoSliderRow(
-                title: L("Rotation"),
-                value: Binding(get: { item.rotation }, set: { value in model.setLayerItem(item.id, coalesce: "layer-rotate-\(item.id)") { $0.rotation = value } }),
-                range: -180...180, defaultValue: 0, format: { L("\(Int($0.rounded()))°") },
-                detail: L("Or drag the round knob above it on the player"),
-                onEditingEnded: { model.endGesture() }
-            )
+            keyed(L("Position across"), .x, range: -50...150, scale: 100, defaultValue: 50, format: Self.percent)
+            keyed(L("Position down"), .y, range: -50...150, scale: 100, defaultValue: 50, format: Self.percent, diamond: false)
+            keyed(L("Size"), .width, range: 5...200, scale: 100, defaultValue: nil, format: Self.percent, detail: L("Of the video's width. Or drag a corner on the player."))
+            keyed(L("Rotation"), .rotation, range: -180...180, scale: 1, defaultValue: 0, format: { L("\(Int($0.rounded()))°") }, detail: L("Or drag the round knob above it on the player"))
+            keyed(L("Opacity"), .opacity, range: 0...100, scale: 100, defaultValue: 100, format: Self.percent)
             HStack(spacing: 8) {
                 Button {
                     model.setLayerItem(item.id, label: "Mirror") { $0.mirrored.toggle() }
@@ -42,7 +36,7 @@ struct VideoLayerItemEditor: View {
                 }
                 .buttonStyle(VideoSecondaryButtonStyle())
                 Button {
-                    model.setLayerItem(item.id, label: "Rotate") { $0.rotation = VideoLayerItem.nextQuarterTurn(after: $0.rotation) }
+                    model.setLayerAnimated(item.id, label: "Rotate") { $0.rotation = VideoLayerItem.nextQuarterTurn(after: $0.rotation) }
                 } label: {
                     Label(L("Rotate 90°"), systemImage: "rotate.right")
                         .frame(maxWidth: .infinity)
@@ -51,7 +45,7 @@ struct VideoLayerItemEditor: View {
             }
             HStack(spacing: 8) {
                 Button {
-                    model.setLayerItem(item.id, label: "Fit") { $0.fit(in: model.project.canvasSize(), filling: false) }
+                    model.setLayerAnimated(item.id, label: "Fit") { $0.fit(in: model.project.canvasSize(), filling: false) }
                 } label: {
                     Label(L("Fit"), systemImage: "arrow.down.right.and.arrow.up.left")
                         .frame(maxWidth: .infinity)
@@ -59,7 +53,7 @@ struct VideoLayerItemEditor: View {
                 .buttonStyle(VideoSecondaryButtonStyle())
                 .help(L("The whole picture, as big as the video allows"))
                 Button {
-                    model.setLayerItem(item.id, label: "Fill") { $0.fit(in: model.project.canvasSize(), filling: true) }
+                    model.setLayerAnimated(item.id, label: "Fill") { $0.fit(in: model.project.canvasSize(), filling: true) }
                 } label: {
                     Label(L("Fill"), systemImage: "arrow.up.left.and.arrow.down.right")
                         .frame(maxWidth: .infinity)
@@ -70,22 +64,16 @@ struct VideoLayerItemEditor: View {
         }
 
         VideoInspectorSection(L("Crop")) {
-            let crop = (item.crop ?? .full).normalized
-            VideoSliderRow(title: L("Left"), value: cropBinding(\.x, crop), range: 0...0.9, defaultValue: 0, format: Self.percent, onEditingEnded: { model.endGesture() })
-            VideoSliderRow(title: L("Right"), value: Binding(get: { 1 - crop.x - crop.width }, set: { value in setCrop { $0.width = 1 - $0.x - value } }), range: 0...0.9, defaultValue: 0, format: Self.percent, onEditingEnded: { model.endGesture() })
-            VideoSliderRow(title: L("Top"), value: cropBinding(\.y, crop), range: 0...0.9, defaultValue: 0, format: Self.percent, onEditingEnded: { model.endGesture() })
-            VideoSliderRow(title: L("Bottom"), value: Binding(get: { 1 - crop.y - crop.height }, set: { value in setCrop { $0.height = 1 - $0.y - value } }), range: 0...0.9, defaultValue: 0, format: Self.percent, onEditingEnded: { model.endGesture() })
+            keyed(L("Left"), .cropX, range: 0...90, scale: 100, defaultValue: 0, format: Self.percent)
+            keyed(L("Top"), .cropY, range: 0...90, scale: 100, defaultValue: 0, format: Self.percent, diamond: false)
+            keyed(L("Width"), .cropWidth, range: 8...100, scale: 100, defaultValue: 100, format: Self.percent, diamond: false)
+            keyed(L("Height"), .cropHeight, range: 8...100, scale: 100, defaultValue: 100, format: Self.percent, diamond: false)
         }
 
         if item.isVideo {
             VideoInspectorSection(L("Sound")) {
                 VideoToggleRow(title: L("Mute this clip"), isOn: Binding(get: { item.muted }, set: { muted in model.setLayerItem(item.id, label: muted ? "Mute Clip" : "Unmute Clip") { $0.muted = muted } }))
-                VideoSliderRow(
-                    title: L("Volume"),
-                    value: Binding(get: { item.volume * 100 }, set: { value in model.setLayerItem(item.id, coalesce: "layer-volume-\(item.id)") { $0.volume = value / 100 } }),
-                    range: 0...200, defaultValue: 100, format: { L("\(Int($0.rounded()))%") },
-                    onEditingEnded: { model.endGesture() }
-                )
+                keyed(L("Volume"), .volume, range: 0...200, scale: 100, defaultValue: 100, format: Self.percent)
             }
             VideoInspectorSection(L("Speed")) {
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 6), count: 4), spacing: 6) {
@@ -116,7 +104,7 @@ struct VideoLayerItemEditor: View {
                     .frame(maxWidth: .infinity)
             }
             .buttonStyle(VideoSecondaryButtonStyle())
-            .disabled(!item.isShowing(at: model.clock.time))
+            .disabled(!item.isShowing(at: clock.time))
             Text(L("Drag it on the timeline to another time or track; drag its ends to trim. ⌥-drag inside a video to slip it."))
                 .font(.system(size: 10.5))
                 .foregroundStyle(VideoEditorTheme.textTertiary)
@@ -124,25 +112,105 @@ struct VideoLayerItemEditor: View {
         }
     }
 
-    private static func percent(_ value: Double) -> String { L("\(Int((value * 100).rounded()))%") }
+    static func percent(_ value: Double) -> String { L("\(Int(value.rounded()))%") }
 
-    private func cropBinding(_ key: WritableKeyPath<VideoCropRect, Double>, _ crop: VideoCropRect) -> Binding<Double> {
-        Binding(get: { crop[keyPath: key] }, set: { value in
-            setCrop { rect in
-                // The far edge stays put.
-                if key == \VideoCropRect.x { rect.width += rect.x - value } else { rect.height += rect.y - value }
-                rect[keyPath: key] = value
+    /// A slider for an animatable property, showing its value at the
+    /// playhead, with its diamond (keyframe at the playhead).
+    func keyed(_ title: String, _ property: VideoKeyProperty, range: ClosedRange<Double>, scale: Double, defaultValue: Double?, format: @escaping (Double) -> String, detail: String? = nil, diamond: Bool = true) -> some View {
+        HStack(alignment: .top, spacing: 6) {
+            VideoSliderRow(
+                title: title,
+                value: Binding(get: { shown.base(property) * scale }, set: { value in
+                    model.setLayerAnimated(item.id, coalesce: "layer-\(property.rawValue)-\(item.id)") { $0.setBase(property, value / scale) }
+                }),
+                range: range, defaultValue: defaultValue, format: format, detail: detail,
+                onEditingEnded: { model.endGesture() }
+            )
+            if diamond {
+                VideoKeyDiamond(model: model, clock: clock, item: item, property: property)
+            } else {
+                Color.clear.frame(width: 18, height: 18)
             }
-        })
+        }
+    }
+}
+
+/// ◆: a keyframe for a property (and the ones keyed with it) at the
+/// playhead. Filled: there is one; tinted: the property is animated.
+struct VideoKeyDiamond: View {
+    @ObservedObject var model: VideoEditorModel
+    @ObservedObject var clock: VideoDemoPlaybackClock
+    let item: VideoLayerItem
+    let property: VideoKeyProperty
+
+    var body: some View {
+        let local = clock.time - item.at
+        let here = VideoKeyProperty.group(property).allSatisfy { item.keys?.hasKey($0, at: local) == true }
+        let animated = item.keys?.isAnimated(property) == true
+        Button {
+            model.toggleKeyframe(item.id, property)
+        } label: {
+            Image(systemName: here ? "diamond.fill" : "diamond")
+                .font(.system(size: 11, weight: .bold))
+                .foregroundStyle(here || animated ? VideoEditorTheme.layer : VideoEditorTheme.textTertiary)
+                .frame(width: 18, height: 18)
+        }
+        .buttonStyle(.plain)
+        .help(here ? L("Remove the keyframe at the playhead") : L("Add a keyframe at the playhead: \(property.title)"))
+        .accessibilityLabel(here ? L("Remove keyframe: \(property.title)") : L("Add keyframe: \(property.title)"))
+    }
+}
+
+/// ◀ ◆ ▶ and the easing of the keys at the playhead.
+struct VideoKeyframeBar: View {
+    @ObservedObject var model: VideoEditorModel
+    @ObservedObject var clock: VideoDemoPlaybackClock
+    let item: VideoLayerItem
+
+    var body: some View {
+        let local = clock.time - item.at
+        let times = item.keys?.times ?? []
+        let atKey = times.contains { abs($0 - local) < 1.0 / 120 }
+        VStack(alignment: .leading, spacing: 8) {
+            HStack(spacing: 8) {
+                Button { model.perform(.previousKeyframe) } label: { Image(systemName: "chevron.left").frame(width: 26, height: 24) }
+                    .buttonStyle(VideoToolButtonStyle())
+                    .disabled(!times.contains { $0 < local - 0.001 })
+                    .help(L("Previous keyframe"))
+                    .accessibilityLabel(L("Previous keyframe"))
+                Button { model.perform(.addKeyframe) } label: {
+                    Label(atKey ? L("Keyed here") : L("Add keyframe"), systemImage: atKey ? "diamond.fill" : "diamond")
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(VideoSecondaryButtonStyle())
+                .help(L("A keyframe for position, size, rotation and opacity at the playhead"))
+                Button { model.perform(.nextKeyframe) } label: { Image(systemName: "chevron.right").frame(width: 26, height: 24) }
+                    .buttonStyle(VideoToolButtonStyle())
+                    .disabled(!times.contains { $0 > local + 0.001 })
+                    .help(L("Next keyframe"))
+                    .accessibilityLabel(L("Next keyframe"))
+            }
+            if atKey {
+                Picker(L("Easing"), selection: Binding(get: { Self.easing(item, at: local) }, set: { model.setKeyEasing(item.id, $0) })) {
+                    ForEach(VideoEasing.allCases) { Text($0.title).tag($0) }
+                }
+                .pickerStyle(.menu)
+                .font(.system(size: 12))
+            }
+            Text(times.isEmpty
+                 ? L("Click ◆ next to a setting to animate it: set a keyframe, move the playhead, change the setting.")
+                 : L("\(times.count) keyframes. Change a setting with ◆ lit to add one at the playhead."))
+                .font(.system(size: 10.5))
+                .foregroundStyle(VideoEditorTheme.textTertiary)
+                .fixedSize(horizontal: false, vertical: true)
+        }
     }
 
-    private func setCrop(_ change: @escaping (inout VideoCropRect) -> Void) {
-        model.setLayerItem(item.id, coalesce: "layer-crop-\(item.id)", label: "Crop") { item in
-            var rect = (item.crop ?? .full).normalized
-            change(&rect)
-            rect = rect.normalized
-            item.crop = rect.isFull ? nil : rect
+    static func easing(_ item: VideoLayerItem, at local: Double) -> VideoEasing {
+        for property in VideoKeyProperty.allCases {
+            if let key = item.keys?.keys(property).first(where: { abs($0.time - local) < 1.0 / 120 }) { return key.easing }
         }
+        return .linear
     }
 }
 

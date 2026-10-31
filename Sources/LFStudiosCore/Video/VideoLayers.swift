@@ -41,6 +41,18 @@ struct VideoLayerItem: Codable, Equatable, Identifiable {
     var muted = false
     /// Grouped items (⌘G) move and delete together.
     var group: UUID?
+    // 1.15.0 (all optional: 1.14.0's files read as they are).
+    /// Animated properties (VideoKeyframes.swift).
+    var keys: VideoKeyframes?
+    /// A shape that shows (or hides) part of it (VideoMasks.swift).
+    var mask: VideoMask?
+    /// An effect's or a filter's strength, 0…1 (nil: full).
+    var level: Double?
+
+    var intensity: Double {
+        get { level ?? 1 }
+        set { level = abs(newValue - 1) < 0.0005 ? nil : min(max(newValue, 0), 1) }
+    }
 
     static let speedRange: ClosedRange<Double> = 0.25...4
     static let minimumLength = 0.1
@@ -168,6 +180,11 @@ extension VideoDemoProject {
         Array(Set(layerTracks.flatMap { $0.items.filter(\.isVideo).map(\.path) })).sorted()
     }
 
+    /// What only 1.15.0 and later can show: written as project format 4.
+    var needsFormat4: Bool {
+        layerTracks.contains { $0.items.contains { $0.needsFormat4 } }
+    }
+
     /// What only 1.14.0 and later can show: written as project format 3.
     var needsLayerFormat: Bool {
         !layerTracks.isEmpty || timelineClips.contains { $0.needsLayerFormat }
@@ -286,8 +303,26 @@ struct VideoLayerInput {
         let trackMuted = tracks.first { $0.id == id }?.muted ?? false
         params.setVolume(0, at: .zero)
         for item in items {
-            let level: Float = audio.muted || trackMuted || item.muted ? 0 : Float(min(max(item.volume, 0), 2) * audio.volume)
-            params.setVolume(level, at: VideoCompositionBuilder.time(max(item.at, 0)))
+            let silent = audio.muted || trackMuted || item.muted
+            func level(_ volume: Double) -> Float { silent ? 0 : Float(min(max(volume, 0), 2) * audio.volume) }
+            let keys = item.keys?.keys(.volume) ?? []
+            if keys.isEmpty {
+                params.setVolume(level(item.volume), at: VideoCompositionBuilder.time(max(item.at, 0)))
+            } else {
+                // Volume keyframes: ramps between them, eased in steps.
+                params.setVolume(level(item.value(.volume, at: item.at)), at: VideoCompositionBuilder.time(max(item.at, 0)))
+                let steps = 8
+                for (a, b) in zip(keys, keys.dropFirst()) {
+                    for step in 0..<steps {
+                        let t0 = a.time + (b.time - a.time) * Double(step) / Double(steps)
+                        let t1 = a.time + (b.time - a.time) * Double(step + 1) / Double(steps)
+                        let start = item.at + t0
+                        guard start >= 0, t1 > t0 else { continue }
+                        params.setVolumeRamp(fromStartVolume: level(item.value(.volume, at: item.at + t0)), toEndVolume: level(item.value(.volume, at: item.at + t1)),
+                                             timeRange: CMTimeRange(start: VideoCompositionBuilder.time(start), duration: VideoCompositionBuilder.time(t1 - t0)))
+                    }
+                }
+            }
             params.setVolume(0, at: VideoCompositionBuilder.time(max(item.end, 0)))
         }
     }
@@ -354,6 +389,7 @@ enum VideoLayerRenderer {
     /// turned on an output `size`.
     static func image(for item: VideoLayerItem, frame: CIImage?, outputSize: CGSize) -> CIImage? {
         guard item.enabled, item.opacity > 0.001 else { return nil }
+        // (`item` is already resolved at the moment drawn: keys applied.)
         var media: CIImage
         if item.isVideo {
             guard let frame else { return nil }
@@ -373,6 +409,7 @@ enum VideoLayerRenderer {
             let shown = media.extent
             media = media.transformed(by: CGAffineTransform(a: -1, b: 0, c: 0, d: 1, tx: shown.minX + shown.maxX, ty: 0))
         }
+        if let mask = item.mask { media = mask.apply(to: media) }
         return VideoImageOverlayRenderer.placed(media, in: item.rect(in: outputSize), opacity: min(max(item.opacity, 0), 1), rotation: item.rotation)
     }
 }
@@ -393,5 +430,12 @@ enum VideoLayerStills {
             }
         }
         return frames
+    }
+}
+
+extension VideoLayerItem {
+    /// Uses something only 1.15.0 shows.
+    var needsFormat4: Bool {
+        (keys.map { !$0.isEmpty } ?? false) || mask != nil || level != nil
     }
 }

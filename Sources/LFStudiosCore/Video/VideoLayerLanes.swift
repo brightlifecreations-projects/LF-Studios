@@ -89,6 +89,21 @@ private struct VideoLayerBlock: View {
             }
         }
         .overlay(RoundedRectangle(cornerRadius: 6, style: .continuous).strokeBorder(isSelected ? Color.white : tint.opacity(0.75), lineWidth: isSelected ? 2 : 1))
+        // Its keyframes, as diamonds along its bottom edge.
+        .overlay(alignment: .bottomLeading) {
+            if let times = item.keys?.times, !times.isEmpty {
+                ZStack(alignment: .bottomLeading) {
+                    ForEach(times, id: \.self) { time in
+                        Image(systemName: "diamond.fill")
+                            .font(.system(size: 7, weight: .bold))
+                            .foregroundStyle(.white)
+                            .shadow(color: .black.opacity(0.6), radius: 1)
+                            .offset(x: CGFloat(time) * geometry.pointsPerSecond - 3.5, y: -2)
+                    }
+                }
+                .allowsHitTesting(false)
+            }
+        }
         .overlay(alignment: .leading) { edge(leading: true) }
         .overlay(alignment: .trailing) { edge(leading: false) }
         .frame(width: max(width - leading + trailing, 8), height: M.layerLaneHeight)

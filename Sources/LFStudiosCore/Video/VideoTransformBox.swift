@@ -134,10 +134,13 @@ struct VideoTransformBox: View {
 /// The handles of the item selected on a track above the main track.
 struct VideoLayerItemHandles: View {
     @ObservedObject var model: VideoEditorModel
-    let item: VideoLayerItem
+    @ObservedObject var clock: VideoDemoPlaybackClock
+    let stored: VideoLayerItem
     let viewSize: CGSize
 
     var body: some View {
+        // Where it is at the playhead (keyframes applied).
+        let item = stored.resolved(at: clock.time)
         let r = item.rect(in: viewSize)
         VideoTransformBox(
             rect: CGRect(x: r.minX, y: viewSize.height - r.maxY, width: r.width, height: r.height),
@@ -146,14 +149,14 @@ struct VideoLayerItemHandles: View {
             help: L("Drag to move; drag a corner to resize, the round knob to turn it"),
             rotateLabel: L("Turn it"),
             changed: { rect in
-                model.setLayerItem(item.id, coalesce: "layer-place-\(item.id)", label: "Move Clip") { placed in
+                model.setLayerAnimated(item.id, coalesce: "layer-place-\(item.id)", label: "Move Clip") { placed in
                     placed.width = Double(rect.width / max(viewSize.width, 1))
                     placed.x = Double(rect.midX / max(viewSize.width, 1))
                     placed.y = Double(rect.midY / max(viewSize.height, 1))
                 }
             },
             turned: { degrees in
-                model.setLayerItem(item.id, coalesce: "layer-rotate-\(item.id)", label: "Rotate") { $0.rotation = degrees }
+                model.setLayerAnimated(item.id, coalesce: "layer-rotate-\(item.id)", label: "Rotate") { $0.rotation = degrees }
             },
             ended: { model.endGesture() }
         )

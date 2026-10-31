@@ -192,6 +192,9 @@ extension VideoEditDescription {
         switch name {
         // Recordings, music, cards, transitions.
         // The timeline's tracks and tools (1.14.0).
+        case "Add Keyframe": return (L("Undo Add Keyframe"), L("Redo Add Keyframe"))
+        case "Remove Keyframe": return (L("Undo Remove Keyframe"), L("Redo Remove Keyframe"))
+        case "Keyframe Easing": return (L("Undo Keyframe Easing"), L("Redo Keyframe Easing"))
         case "Freeze Frame": return (L("Undo Freeze Frame"), L("Redo Freeze Frame"))
         case "Group": return (L("Undo Group"), L("Redo Group"))
         case "Ungroup": return (L("Undo Ungroup"), L("Redo Ungroup"))

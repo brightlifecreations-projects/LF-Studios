@@ -27,6 +27,8 @@ struct VideoProjectDocument: Codable {
     /// mirrored or off (1.14.0): 1.12 and earlier refuse the name, 1.13
     /// says it needs a newer version, instead of opening them without.
     static let layersFormat = "lfstudios-project-3"
+    /// Projects with keyframes, masks, effects, text tracks… (1.15.0).
+    static let format4 = "lfstudios-project-4"
     /// Projects saved while the app was called ShotStyle.
     static let legacyFormat = "shotstyle-project"
     static let legacyFileExtension = "shotstyle"
@@ -51,7 +53,7 @@ struct VideoProjectDocument: Codable {
     /// still written as 1, so older versions of LF Studios open them as before.
     /// 3: tracks above the main track (`layersFormat`); written only by
     /// projects that use them.
-    static let currentVersion = 3
+    static let currentVersion = 4
     /// LF Studios Project. New projects, Creative Handoffs and recording
     /// folders write it (since 1.12.0; `.lfsp` from 1.9.0).
     static let fileExtension = "lfs"
@@ -61,10 +63,11 @@ struct VideoProjectDocument: Codable {
     /// The first version that opens a project with tracks above the main
     /// track (`layersFormat`).
     static let firstVersionOpeningLayers = "1.14.0"
+    static let firstVersionOpeningFormat4 = "1.15.0"
 
     /// What README.txt says opens `project`.
     static func firstVersionOpening(_ project: VideoDemoProject) -> String {
-        project.needsLayerFormat ? firstVersionOpeningLayers : firstVersionOpeningFileExtension
+        project.needsFormat4 ? firstVersionOpeningFormat4 : project.needsLayerFormat ? firstVersionOpeningLayers : firstVersionOpeningFileExtension
     }
     static let manifestName = "project.json"
     static let mediaFolder = "Media"
@@ -142,8 +145,13 @@ struct VideoProjectDocument: Codable {
 
     init(format: String = Self.format, version: Int? = nil, savedAt: Date = Date(), appVersion: String? = nil, mediaMode: MediaMode, project: VideoDemoProject, recording: VideoDemoRecordingMetadata?, sourceRecordings: [String: VideoDemoRecordingMetadata] = [:], origins: [String: Origin] = [:], bookmarks: [String: Data] = [:], folder: FolderInfo? = nil) {
         // What only 1.14.0 and later can show goes under its own name.
-        self.format = project.needsLayerFormat && format == Self.format ? Self.layersFormat : format
-        self.version = project.needsLayerFormat ? max(version ?? 3, 3) : version ?? (mediaMode == .folder ? 2 : 1)
+        if project.needsFormat4, format == Self.format {
+            self.format = Self.format4
+            self.version = max(version ?? 4, 4)
+        } else {
+            self.format = project.needsLayerFormat && format == Self.format ? Self.layersFormat : format
+            self.version = project.needsLayerFormat ? max(version ?? 3, 3) : version ?? (mediaMode == .folder ? 2 : 1)
+        }
         self.folder = folder
         self.savedAt = savedAt
         self.appVersion = appVersion
@@ -175,6 +183,7 @@ struct VideoProjectDocument: Codable {
         try c.encode(format, forKey: .format)
         try c.encode(version, forKey: .version)
         if format == Self.layersFormat { try c.encode(3, forKey: .requires) }
+        if format == Self.format4 { try c.encode(4, forKey: .requires) }
         try c.encode(savedAt, forKey: .savedAt)
         try c.encodeIfPresent(appVersion, forKey: .appVersion)
         try c.encode(mediaMode, forKey: .mediaMode)
@@ -198,7 +207,7 @@ struct VideoProjectDocument: Codable {
     static func decode(_ data: Data) throws -> VideoProjectDocument {
         guard var object = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else { throw ReadError.damaged }
         guard let found = object["format"] as? String else { throw ReadError.notAProject }
-        guard found == format || found == layersFormat || found == legacyFormat else {
+        guard found == format || found == layersFormat || found == format4 || found == legacyFormat else {
             // A later kind of LF Studios project ("lfstudios-project-3"…).
             throw found.hasPrefix(format) ? ReadError.needsNewerVersion : ReadError.notAProject
         }

@@ -904,7 +904,7 @@ struct VideoSelectionInspector: View {
             }
         case .layer(let id):
             if let item = model.project.layerItem(id) {
-                VideoLayerItemEditor(model: model, item: item)
+                VideoLayerItemEditor(model: model, clock: model.clock, item: item)
             }
         case .cameraLayout(let id):
             if let region = model.project.cameraLayouts.first(where: { $0.id == id }) {

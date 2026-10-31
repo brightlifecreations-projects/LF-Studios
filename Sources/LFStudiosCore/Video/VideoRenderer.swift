@@ -898,7 +898,7 @@ final class VideoFrameRenderer {
         // The tracks above the main track, lowest first: over the screen,
         // under the camera, pictures, captions and keys.
         for layer in plan.layers where layer.item.isShowing(at: timelineTime) {
-            if let image = VideoLayerRenderer.image(for: layer.item, frame: options.layerFrames[layer.track], outputSize: outputSize) {
+            if let image = VideoLayerRenderer.image(for: layer.item.resolved(at: timelineTime), frame: options.layerFrames[layer.track], outputSize: outputSize) {
                 scene = image.composited(over: scene)
             }
         }

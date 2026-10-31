@@ -44,6 +44,10 @@ enum VideoEditCommand: String, CaseIterable, Identifiable {
     case addArrow
     case addHighlight
     case addBlur
+    // 1.15.0
+    case addKeyframe
+    case previousKeyframe
+    case nextKeyframe
 
     var id: String { rawValue }
 
@@ -84,6 +88,9 @@ enum VideoEditCommand: String, CaseIterable, Identifiable {
         case .addArrow: return L("Arrow")
         case .addHighlight: return L("Highlight")
         case .addBlur: return L("Blur")
+        case .addKeyframe: return L("Add keyframe")
+        case .previousKeyframe: return L("Previous keyframe")
+        case .nextKeyframe: return L("Next keyframe")
         }
     }
 
@@ -124,6 +131,9 @@ enum VideoEditCommand: String, CaseIterable, Identifiable {
         case .addArrow: return "arrow.up.right"
         case .addHighlight: return "rectangle.dashed"
         case .addBlur: return "eye.slash"
+        case .addKeyframe: return "diamond"
+        case .previousKeyframe: return "chevron.left.to.line"
+        case .nextKeyframe: return "chevron.right.to.line"
         }
     }
 
@@ -158,6 +168,9 @@ enum VideoEditCommand: String, CaseIterable, Identifiable {
         case .addArrow: return "⌥A"
         case .addHighlight: return "⌥H"
         case .addBlur: return "⌥B"
+        case .addKeyframe: return "⌥K"
+        case .previousKeyframe: return "⌥["
+        case .nextKeyframe: return "⌥]"
         case .addMarker, .freezeFrame, .reverse, .mirror, .rotate, .crop, .recordVoiceover: return ""
         }
     }
@@ -191,6 +204,9 @@ enum VideoEditCommand: String, CaseIterable, Identifiable {
         case ([.option], "a"), ([.option], "å"): return .addArrow
         case ([.option], "h"), ([.option], "˙"): return .addHighlight
         case ([.option], "b"), ([.option], "∫"): return .addBlur
+        case ([.option], "k"), ([.option], "˚"): return .addKeyframe
+        case ([.option], "["), ([.option], "“"): return .previousKeyframe
+        case ([.option], "]"), ([.option], "‘"): return .nextKeyframe
         default: return nil
         }
     }
@@ -298,6 +314,16 @@ extension VideoEditorModel {
             addOverlay(.highlight)
         case .addBlur:
             addOverlay(.blur)
+        case .addKeyframe:
+            guard let item = selectedLayerItem else {
+                showNotice(L("Select a clip above the main track to add a keyframe"), symbol: "diamond")
+                return false
+            }
+            return addKeyframes(item.id)
+        case .previousKeyframe:
+            return jumpToKeyframe(forward: false)
+        case .nextKeyframe:
+            return jumpToKeyframe(forward: true)
         }
         return true
     }

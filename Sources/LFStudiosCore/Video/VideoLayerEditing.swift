@@ -86,12 +86,108 @@ extension VideoEditorModel {
         mutate(coalesce: coalesce, label: label) { project in
             project.updateLayerItem(id) { item in
                 change(&item)
-                item.opacity = min(max(item.opacity, 0), 1)
-                item.volume = min(max(item.volume, 0), 2)
-                item.speed = min(max(item.speed, VideoLayerItem.speedRange.lowerBound), VideoLayerItem.speedRange.upperBound)
-                item.width = min(max(item.width, 0.02), 4)
+                item.clampValues()
             }
         }
+    }
+
+    /// A change made to the item as it is at the playhead (on the player,
+    /// or in Properties): a keyed property gets a key there; the rest change
+    /// for the whole clip (1.15.0).
+    func setLayerAnimated(_ id: UUID, coalesce: String? = nil, label: String = "Clip Change", _ change: (inout VideoLayerItem) -> Void) {
+        guard let stored = project.layerItem(id), let track = project.layerTrackIndex(of: id), !refuseLockedLayer(track) else { return }
+        let time = clock.time
+        let before = stored.resolved(at: time)
+        var after = before
+        change(&after)
+        after.clampValues()
+        mutate(coalesce: coalesce, label: label) { project in
+            project.updateLayerItem(id) { item in
+                var next = after
+                var keys = item.keys
+                for property in VideoKeyProperty.allCases where keys?.isAnimated(property) == true {
+                    let value = after.base(property)
+                    // The base stays; the change is a key at the playhead.
+                    next.setBase(property, item.base(property))
+                    if abs(value - before.base(property)) > 0.000_000_1 {
+                        keys?.set(property, at: time - item.at, value: value)
+                    }
+                }
+                next.keys = keys
+                item = next
+            }
+        }
+    }
+
+    /// The diamond next to a property: a key at the playhead (with the value
+    /// shown there), or, when there is one, it goes.
+    func toggleKeyframe(_ id: UUID, _ property: VideoKeyProperty) {
+        guard let item = project.layerItem(id), let track = project.layerTrackIndex(of: id), !refuseLockedLayer(track) else { return }
+        let local = clock.time - item.at
+        guard local >= -0.0005, local <= item.length + 0.0005 else {
+            showNotice(L("Move the playhead onto the clip to add a keyframe"), symbol: "diamond")
+            return
+        }
+        let group = VideoKeyProperty.group(property)
+        let shown = item.resolved(at: clock.time)
+        let removing = group.allSatisfy { item.keys?.hasKey($0, at: local) == true }
+        mutate(label: removing ? "Remove Keyframe" : "Add Keyframe") { project in
+            project.updateLayerItem(id) { item in
+                var keys = item.keys ?? VideoKeyframes()
+                for p in group {
+                    if removing {
+                        keys.remove(p, at: local)
+                    } else {
+                        keys.set(p, at: local, value: shown.base(p))
+                    }
+                }
+                item.keys = keys.isEmpty ? nil : keys
+            }
+        }
+    }
+
+    /// ⌥K: keys for position, size, rotation and opacity at the playhead,
+    /// in one step.
+    @discardableResult
+    func addKeyframes(_ id: UUID) -> Bool {
+        guard let item = project.layerItem(id), let track = project.layerTrackIndex(of: id), !refuseLockedLayer(track) else { return false }
+        let local = clock.time - item.at
+        guard local >= -0.0005, local <= item.length + 0.0005 else {
+            showNotice(L("Move the playhead onto the clip to add a keyframe"), symbol: "diamond")
+            return false
+        }
+        let shown = item.resolved(at: clock.time)
+        mutate(label: "Add Keyframe") { project in
+            project.updateLayerItem(id) { item in
+                var keys = item.keys ?? VideoKeyframes()
+                for p in [VideoKeyProperty.x, .y, .width, .rotation, .opacity] { keys.set(p, at: local, value: shown.base(p)) }
+                item.keys = keys
+            }
+        }
+        return true
+    }
+
+    /// The keys' times on the selected item (timeline seconds).
+    var selectedKeyTimes: [Double] {
+        guard let item = selectedLayerItem, let keys = item.keys else { return [] }
+        return keys.times.map { $0 + item.at }
+    }
+
+    /// ◀ / ▶ next to the keyframes: the playhead to the previous or next key.
+    @discardableResult
+    func jumpToKeyframe(forward: Bool) -> Bool {
+        let now = clock.time
+        let times = selectedKeyTimes
+        guard let target = forward ? times.first(where: { $0 > now + 0.001 }) : times.last(where: { $0 < now - 0.001 }) else { return false }
+        seek(to: target)
+        return true
+    }
+
+    /// How the keys at the playhead travel to the next ones.
+    func setKeyEasing(_ id: UUID, _ easing: VideoEasing) {
+        guard let item = project.layerItem(id) else { return }
+        let local = clock.time - item.at
+        setLayerItem(id, label: "Keyframe Easing") { $0.keys?.setEasing(easing, at: local) }
     }
 
     /// Speed: the item keeps its start; its length follows (a video can't
@@ -124,8 +220,13 @@ extension VideoEditorModel {
         second.at = time
         second.length = item.end - time
         second.fileStart = item.fileStart + (time - item.at) * item.normalizedSpeed
+        // Each half keeps its own keys (the second's from its new start).
+        second.keys?.shift(by: -(time - item.at), length: second.length)
         mutate(label: "Split Clip") { project in
-            project.updateLayerItem(id) { $0.length = time - $0.at }
+            project.updateLayerItem(id) { first in
+                first.length = time - first.at
+                first.keys?.shift(by: 0, length: first.length)
+            }
             project.layerTracks[track].items.append(second)
             project.layerTracks[track].sort()
         }
@@ -212,6 +313,9 @@ extension VideoDemoProject {
                     start = max(start, item.at - item.fileStart / speed)
                     item.fileStart += (start - item.at) * speed
                 }
+                // Keys stay on the frames they were on.
+                let delta = item.at - start, kept = item.end - start
+                item.keys?.shift(by: delta, length: kept)
                 item.length = item.end - start
                 item.at = start
             } else {
@@ -235,6 +339,21 @@ extension VideoDemoProject {
                     moved.length = max(end - moved.at, VideoLayerItem.minimumLength)
                 }
             }
+        }
+    }
+}
+
+extension VideoLayerItem {
+    /// Values kept in their ranges after an edit.
+    mutating func clampValues() {
+        opacity = min(max(opacity, 0), 1)
+        volume = min(max(volume, 0), 2)
+        speed = min(max(speed, Self.speedRange.lowerBound), Self.speedRange.upperBound)
+        width = min(max(width, 0.02), 4)
+        if var mask {
+            mask.size = min(max(mask.size, 0.01), 4)
+            mask.feather = min(max(mask.feather, 0), 0.5)
+            self.mask = mask
         }
     }
 }
