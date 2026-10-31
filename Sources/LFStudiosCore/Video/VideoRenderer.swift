@@ -350,6 +350,8 @@ final class VideoRenderPlan: @unchecked Sendable {
     /// Items on the tracks above the main track, lowest track first
     /// (hidden tracks left out).
     let layers: [(track: UUID, item: VideoLayerItem)]
+    /// Compound clips by id (VideoCompounds.swift).
+    let compounds: [UUID: VideoCompoundClip]
 
     struct ClipLook {
         let start: Double
@@ -434,6 +436,7 @@ final class VideoRenderPlan: @unchecked Sendable {
     ) {
         webcam = hasWebcam ? project.webcam : nil
         hidesScreen = project.hidesScreen
+        compounds = Dictionary((project.compounds ?? []).map { ($0.id, $0) }, uniquingKeysWith: { first, _ in first })
         layers = project.layerTracks.enumerated().flatMap { index, track -> [(track: UUID, item: VideoLayerItem)] in
             project.isTrackHidden(.layer(track.id)) ? [] : track.items.filter(\.enabled).map { (track.id, $0) }
         }
@@ -903,7 +906,9 @@ final class VideoFrameRenderer {
                 scene = layer.item.applyAsLayer(to: scene, at: timelineTime).cropped(to: outputRect)
                 continue
             }
-            let shown = layer.item.shown(at: timelineTime)
+            var shown = layer.item.shown(at: timelineTime)
+            // In a compound clip: moved, sized, turned and faded with it.
+            if let group = layer.item.group, let compound = plan.compounds[group] { shown.item = compound.apply(to: shown.item, canvas: outputSize) }
             if var image = VideoLayerRenderer.image(for: shown.item, frame: options.layerFrames[layer.track], outputSize: outputSize, time: timelineTime) {
                 if shown.blur > 0.05 { image = image.applyingGaussianBlur(sigma: shown.blur * Double(outputSize.height) / 1080) }
                 scene = layer.item.blend?.composite(image, over: scene) ?? image.composited(over: scene)

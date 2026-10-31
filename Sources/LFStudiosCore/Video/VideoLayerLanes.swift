@@ -16,18 +16,51 @@ struct VideoLayerLane: View, Equatable {
     let geometry: VideoTimelineGeometry
     let model: VideoEditorModel
     let hover: VideoTimelineHover
+    /// Compound clips: one block each, on its earliest clip's track (its
+    /// clips aren't drawn on their own).
+    var compounds: [VideoCompoundBlock] = []
 
     nonisolated static func == (a: Self, b: Self) -> Bool {
-        a.track == b.track && a.index == b.index && a.rowTops == b.rowTops && a.selected == b.selected && a.geometry == b.geometry
+        a.track == b.track && a.index == b.index && a.rowTops == b.rowTops && a.selected == b.selected && a.geometry == b.geometry && a.compounds == b.compounds
     }
 
     var body: some View {
         ZStack(alignment: .topLeading) {
             ForEach(track.items) { item in
-                VideoLayerBlock(item: item, trackIndex: index, rowTops: rowTops, isSelected: selected.contains(item.id), geometry: geometry, model: model, hover: hover)
+                if let group = item.group, let block = compounds.first(where: { $0.id == group }) {
+                    if block.first == item.id {
+                        VideoLayerBlock(item: block.item(from: item), trackIndex: index, rowTops: rowTops, isSelected: selected.contains(item.id), geometry: geometry, model: model, hover: hover, isCompound: true)
+                    }
+                } else {
+                    VideoLayerBlock(item: item, trackIndex: index, rowTops: rowTops, isSelected: selected.contains(item.id), geometry: geometry, model: model, hover: hover)
+                }
             }
         }
         .frame(width: geometry.width, height: VideoTimelineMetrics.layerLaneHeight, alignment: .topLeading)
+    }
+}
+
+/// A compound clip as the timeline draws it.
+struct VideoCompoundBlock: Equatable {
+    let id: UUID
+    let name: String
+    /// Its earliest clip (the block stands for it), and where it ends.
+    let first: UUID
+    let end: Double
+
+    func item(from first: VideoLayerItem) -> VideoLayerItem {
+        var item = first
+        item.name = name
+        item.length = max(end - first.at, VideoLayerItem.minimumLength)
+        return item
+    }
+
+    static func blocks(_ project: VideoDemoProject) -> [VideoCompoundBlock] {
+        (project.compounds ?? []).compactMap { compound in
+            let members = project.compoundMembers(compound.id)
+            guard let first = members.first else { return nil }
+            return VideoCompoundBlock(id: compound.id, name: compound.name, first: first.item.id, end: members.map(\.item.end).max() ?? first.item.end)
+        }
     }
 }
 
@@ -39,6 +72,8 @@ private struct VideoLayerBlock: View {
     let geometry: VideoTimelineGeometry
     let model: VideoEditorModel
     let hover: VideoTimelineHover
+    /// A compound clip: moved in time only, not trimmed or slipped.
+    var isCompound = false
 
     @State private var move: CGSize = .zero
     @State private var trim: (leading: Bool, width: CGFloat)?
@@ -74,7 +109,7 @@ private struct VideoLayerBlock: View {
             }
             if width > 50 {
                 HStack(spacing: 4) {
-                    Image(systemName: item.sticker != nil ? "face.smiling" : item.role == .effect ? "sparkles" : item.role == .adjustment ? "slider.horizontal.3" : item.isText ? "textformat" : item.isVideo ? "film" : "photo")
+                    Image(systemName: isCompound ? "square.stack.3d.down.right" : item.sticker != nil ? "face.smiling" : item.role == .effect ? "sparkles" : item.role == .adjustment ? "slider.horizontal.3" : item.isText ? "textformat" : item.isVideo ? "film" : "photo")
                         .font(.system(size: 9, weight: .bold))
                     Text(item.name)
                         .font(.system(size: 10, weight: .semibold))
@@ -104,8 +139,8 @@ private struct VideoLayerBlock: View {
                 .allowsHitTesting(false)
             }
         }
-        .overlay(alignment: .leading) { edge(leading: true) }
-        .overlay(alignment: .trailing) { edge(leading: false) }
+        .overlay(alignment: .leading) { if !isCompound { edge(leading: true) } }
+        .overlay(alignment: .trailing) { if !isCompound { edge(leading: false) } }
         .frame(width: max(width - leading + trailing, 8), height: M.layerLaneHeight)
         .offset(x: x + (slipping ? 0 : move.width) + leading, y: move.height)
         .zIndex(move == .zero ? 0 : 1)
@@ -129,7 +164,7 @@ private struct VideoLayerBlock: View {
             .onChanged { value in
                 if snapper == nil {
                     snapper = VideoTimelineSnapper(targets: model.snapTargets(excluding: [item.id]), pointsPerSecond: geometry.pointsPerSecond)
-                    slipping = item.isVideo && NSEvent.modifierFlags.contains(.option)
+                    slipping = !isCompound && item.isVideo && NSEvent.modifierFlags.contains(.option)
                     hover.setDragging(true)
                     if !model.isSelected(.layer(item.id)) { model.selection = .layer(item.id) }
                 }
@@ -145,7 +180,7 @@ private struct VideoLayerBlock: View {
                 let shift = snapper?.shift(start: raw, end: raw + item.length)
                 hover.setSnap(shift?.target)
                 let start = max(raw + (shift?.delta ?? 0), 0)
-                move = CGSize(width: CGFloat(start - item.at) * geometry.pointsPerSecond, height: value.translation.height)
+                move = CGSize(width: CGFloat(start - item.at) * geometry.pointsPerSecond, height: isCompound ? 0 : value.translation.height)
             }
             .onEnded { value in
                 defer {
@@ -159,7 +194,7 @@ private struct VideoLayerBlock: View {
                     return
                 }
                 let start = item.at + Double(move.width / geometry.pointsPerSecond)
-                let target = Self.target(fromTrack: trackIndex, rowTops: rowTops, dy: value.translation.height)
+                let target = isCompound ? (track: trackIndex, newTrack: false) : Self.target(fromTrack: trackIndex, rowTops: rowTops, dy: value.translation.height)
                 if abs(start - item.at) < 0.0005, target.track == trackIndex, !target.newTrack { return }
                 model.moveLayerItem(item.id, to: start, track: target.track, newTrack: target.newTrack)
                 model.endGesture()

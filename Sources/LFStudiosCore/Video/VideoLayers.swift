@@ -167,6 +167,7 @@ extension VideoDemoProject {
     /// Takes empty tracks away (the timeline shows one empty row to drop on).
     mutating func dropEmptyLayerTracks() {
         layerTracks.removeAll { $0.items.isEmpty }
+        dropEmptyCompounds()
     }
 
     /// Linkage (~): each item above the main track keeps to the moment of
@@ -209,7 +210,7 @@ extension VideoDemoProject {
     /// What only 1.15.0 and later can show: written as project format 4.
     var needsFormat4: Bool {
         layerTracks.contains { $0.items.contains { $0.needsFormat4 } } || timelineClips.contains { $0.needsFormat4 }
-            || audioTracks.contains { $0.volumeKeys != nil || $0.beats != nil } || music?.beats != nil || usesNewTransitions
+            || audioTracks.contains { $0.volumeKeys != nil || $0.beats != nil } || music?.beats != nil || usesNewTransitions || compounds != nil
     }
 
     /// What only 1.14.0 and later can show: written as project format 3.

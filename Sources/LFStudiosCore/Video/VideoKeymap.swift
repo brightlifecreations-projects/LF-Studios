@@ -98,6 +98,7 @@ struct VideoKeymap: Equatable, Codable {
         .group: "⌘G", .ungroup: "⇧⌘G", .extractAudio: "⇧⌘A", .selectLeft: "[", .selectRight: "]", .copy: "⌘C", .paste: "⌘V",
         .markIn: "I", .markOut: "O", .addText: "⌥T", .addArrow: "⌥A", .addHighlight: "⌥H", .addBlur: "⌥B",
         .addKeyframe: "⌥K", .previousKeyframe: "⌥[", .nextKeyframe: "⌥]", .addTextClip: "⌥⇧T",
+        .makeCompound: "⌥G", .breakApart: "⌥⇧G",
     ]
 
     /// Each preset changes only the keys of commands LF Studios has.
@@ -108,7 +109,8 @@ struct VideoKeymap: Equatable, Codable {
             break
         case .finalCut:
             // Trim start / end, add marker, freeze frame, detach audio,
-            // compound clip, crop, previous / next keyframe.
+            // crop, previous / next keyframe (⌥G is already its New
+            // Compound Clip).
             keys[.deleteLeft] = "⌥["
             keys[.deleteRight] = "⌥]"
             keys[.previousKeyframe] = "⌥;"
@@ -116,7 +118,6 @@ struct VideoKeymap: Equatable, Codable {
             keys[.addMarker] = "M"
             keys[.freezeFrame] = "⌥F"
             keys[.extractAudio] = "⌃⇧S"
-            keys[.group] = "⌥G"
             keys[.crop] = "⇧C"
         case .premiere:
             // Selection V, razor C, enable ⇧E, marker M, zoom to fit \,

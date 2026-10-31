@@ -50,6 +50,9 @@ enum VideoEditCommand: Equatable, CaseIterable, Identifiable {
     case nextKeyframe
     /// A text clip on a track of its own (VideoTextClips.swift).
     case addTextClip
+    /// Compound clips (VideoCompounds.swift).
+    case makeCompound
+    case breakApart
     /// An edit with values (a setting at the playhead, a mode, a mask…) on
     /// the selected item above the main track (VideoItemEdits.swift).
     case edit(VideoItemEdit)
@@ -64,7 +67,7 @@ enum VideoEditCommand: Equatable, CaseIterable, Identifiable {
         .freezeFrame, .reverse, .mirror, .rotate, .crop, .recordVoiceover, .toggleMagnet, .toggleSnapping, .toggleLinkage,
         .togglePreviewAxis, .zoomToFit, .toggleEnabled, .group, .ungroup, .extractAudio, .selectLeft, .selectRight,
         .copy, .paste, .markIn, .markOut, .addText, .addArrow, .addHighlight, .addBlur, .addKeyframe, .previousKeyframe, .nextKeyframe,
-        .addTextClip,
+        .addTextClip, .makeCompound, .breakApart,
     ]
 
     /// A stable name (menus keep it; a future MCP connection can send it).
@@ -123,6 +126,8 @@ enum VideoEditCommand: Equatable, CaseIterable, Identifiable {
         case .previousKeyframe: return L("Previous keyframe")
         case .nextKeyframe: return L("Next keyframe")
         case .addTextClip: return L("Text clip")
+        case .makeCompound: return L("Make compound clip")
+        case .breakApart: return L("Break apart")
         case .edit(let edit): return edit.title
         case .clip(let edit): return edit.title
         case .audio(let edit): return edit.title
@@ -170,6 +175,8 @@ enum VideoEditCommand: Equatable, CaseIterable, Identifiable {
         case .previousKeyframe: return "chevron.left.to.line"
         case .nextKeyframe: return "chevron.right.to.line"
         case .addTextClip: return "character.textbox"
+        case .makeCompound: return "square.stack.3d.down.right"
+        case .breakApart: return "square.stack.3d.up.slash"
         case .edit, .clip, .audio: return "slider.horizontal.3"
         }
     }
@@ -220,6 +227,8 @@ enum VideoEditCommand: Equatable, CaseIterable, Identifiable {
         case .previousKeyframe: return "⌥["
         case .nextKeyframe: return "⌥]"
         case .addTextClip: return "⌥⇧T"
+        case .makeCompound: return "⌥G"
+        case .breakApart: return "⌥⇧G"
         case .addMarker, .freezeFrame, .reverse, .mirror, .rotate, .crop, .recordVoiceover, .edit, .clip, .audio: return ""
         }
     }
@@ -345,6 +354,10 @@ extension VideoEditorModel {
             return jumpToKeyframe(forward: true)
         case .addTextClip:
             addTextClip()
+        case .makeCompound:
+            return makeCompoundClip()
+        case .breakApart:
+            return breakApartCompound()
         case .edit(let edit):
             return perform(edit)
         case .clip(let edit):

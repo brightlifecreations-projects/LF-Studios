@@ -942,6 +942,9 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
     /// Video and picture tracks above the main track, lowest first
     /// (VideoLayers.swift, 1.14.0).
     var layerTracks: [VideoLayerTrack] = []
+    /// Compound clips (1.15.0; VideoCompounds.swift): their clips are on
+    /// `layerTracks`, grouped by the compound's id.
+    var compounds: [VideoCompoundClip]?
 
     var sourceURL: URL { URL(fileURLWithPath: sourcePath) }
     var sourceSize: CGSize { CGSize(width: sourceWidth, height: sourceHeight) }
@@ -1493,7 +1496,7 @@ extension VideoDemoProject {
         case webcam, cameraLayouts, importedCamera, splitVideoAspect, customAspect, trackStates, autoZoom, reframe, captions, transcriptLanguage, captionStyle, keystrokes, keystrokeStyle, crop
         case cards, music, audioTracks, clickSounds, transitions, captionTracks, sources, imageOverlayEffects, markers
         case textCursor, keyPresses, loupeStyle, faceTracking, carriedVoices, speakerNotes
-        case ratioVersions, ratioShared, ratioBase, previousRatio, reframeFollowsZooms, mediaBin, layerTracks
+        case ratioVersions, ratioShared, ratioBase, previousRatio, reframeFollowsZooms, mediaBin, layerTracks, compounds
         // Legacy (v1) keys
         case backgroundPreset, customBackgroundPath, stageInset, shadowStrength, zoomKeyframes
         case showCursorOverlay, enlargeCursor, showClickRipple, smoothCursor, cursorScale, clickSpotlight, cursorMotionBlur
@@ -1554,6 +1557,7 @@ extension VideoDemoProject {
         reframeFollowsZooms = (try? container.decodeIfPresent(Bool.self, forKey: .reframeFollowsZooms)) ?? false
         mediaBin = (try? container.decodeIfPresent(VideoMediaBin.self, forKey: .mediaBin)).flatMap { $0 }
         layerTracks = (try? container.decodeIfPresent([VideoLayerTrack].self, forKey: .layerTracks)).flatMap { $0 } ?? []
+        compounds = (try? container.decodeIfPresent([VideoCompoundClip].self, forKey: .compounds)).flatMap { $0 }
 
         let storedVersion = try container.decodeIfPresent(Int.self, forKey: .version) ?? 1
         if storedVersion >= 2 {
@@ -1649,6 +1653,7 @@ extension VideoDemoProject {
         if reframeFollowsZooms { try container.encode(true, forKey: .reframeFollowsZooms) }
         if let mediaBin, !mediaBin.isEmpty { try container.encode(mediaBin, forKey: .mediaBin) }
         if !layerTracks.isEmpty { try container.encode(layerTracks, forKey: .layerTracks) }
+        if let compounds, !compounds.isEmpty { try container.encode(compounds, forKey: .compounds) }
         try container.encode(cursorSamples, forKey: .cursorSamples)
         try container.encode(clickEvents, forKey: .clickEvents)
         try container.encode(nativeCursorVisible, forKey: .nativeCursorVisible)

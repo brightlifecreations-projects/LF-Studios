@@ -49,7 +49,7 @@ the first unticked box.
 ## Part C: pro tools and export
 - [x] C16 Keyboard shortcuts editor with presets, conflicts, reset
 - [x] C17 Proxy mode (ProRes Proxy, half res, estimate first)
-- [ ] C18 Compound clips: make, break apart, open in own timeline
+- [x] C18 Compound clips: make, break apart, open in own timeline
 - [ ] C19 Export window (CapCut structure)
 - [ ] C20 Cover frame/image embedded in the export
 - [ ] C21 Performance: background rendering, thumbnail/waveform cache, 30-min synthetic project
@@ -63,7 +63,12 @@ the first unticked box.
 - [ ] CHANGELOG (dated), merge, publish 1.15.0
 
 ## Next update (moved out, with why)
-(none yet)
+- Compound clips: "open in its own timeline". The timeline, its lanes,
+  selection and every edit command work on the project's own tracks;
+  showing and editing another set of tracks safely means threading a
+  "which timeline" through all of them. 1.15.0 ships make, break apart,
+  and move/size/turn/fade as one; to change a clip inside, break it apart
+  and make it again.
 
 ## Notes
 - A1: keyframes live on VideoLayerItem.keys; edits go through
@@ -199,3 +204,11 @@ the first unticked box.
   videos above the main track (VideoProxies.layerFile); exports and stills
   never look. Never in a project, so never in handoff/Include media. Clean
   Up: `Plan.proxies` (all, any age), editors fall back to originals.
+- C18: VideoCompoundClip (name, x, y, scale, rotation, opacity) in
+  project.compounds; its clips stay on their tracks with `group` = its id
+  (so moving/deleting work as for groups). The renderer, hit test and
+  handles apply `compound.apply(to:canvas:)` after the clip's own look.
+  Timeline: one block (VideoCompoundBlock) on the earliest clip's track,
+  moved in time only. `.makeCompound` (⌥G) / `.breakApart` (⌥⇧G, bakes
+  the look in). Properties ▸ Compound clip. Open in own timeline → next
+  update.
