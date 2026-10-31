@@ -196,6 +196,8 @@
 	<string>音量%lld%%</string>
 	<key>%lld/%lld configured</key>
 	<string>設定済み: %lld/%lld</string>
+	<key>%lld°</key>
+	<string>%lld°</string>
 	<key>(estimated from screen changes — check the speed blocks)</key>
 	<string>（画面の変化からの推定です。速度ブロックを確認してください）</string>
 	<key>+ adds a caption at the playhead. No transcript? Use Or type one at the playhead.</key>
@@ -1018,6 +1020,8 @@
 	<string>%@の字幕</string>
 	<key>Captions in the export</key>
 	<string>書き出すビデオの字幕</string>
+	<key>Captions live in the Captions panel on the right: make them from your voice, type them, translate and style them.</key>
+	<string>字幕は右の“字幕”パネルにあります。声から作成、入力、翻訳、スタイル設定ができます。</string>
 	<key>Captions look like this</key>
 	<string>字幕は このように 表示されます</string>
 	<key>Captions panel ▸ Edit by text (after transcribing).</key>
@@ -1452,6 +1456,8 @@
 	<string>行をクリックすると言葉を編集でき、時間をクリックするとその位置に移動します。×で削除します。</string>
 	<key>Click a marker to jump there; double-click to rename it; right-click to delete it.</key>
 	<string>マーカーをクリックするとその位置に移動し、ダブルクリックすると名前を変更、右クリックすると削除できます。</string>
+	<key>Click a picture on the player to move it, resize it from a corner, or turn it with the round knob. It lands on the middle and the edges, with a line showing where; hold ⌘ to move it freely.</key>
+	<string>プレーヤーで画像をクリックすると、移動したり、角でサイズを変えたり、丸いノブで回転したりできます。中央や端に吸着し、位置が線で示されます。⌘を押したままにすると自由に動かせます。</string>
 	<key>Click a project to open it.</key>
 	<string>プロジェクトをクリックすると開きます。</string>
 	<key>Click a recording in Home, click Edit Video after recording, or click Open video… in Home. The LF Studios menu ▸ Edit Last Recording opens the newest one.</key>
@@ -1878,6 +1884,8 @@
 	<string>ディエッサー</string>
 	<key>Decoded details</key>
 	<string>読み取った内容</string>
+	<key>Default</key>
+	<string>デフォルト</string>
 	<key>Delete</key>
 	<string>削除</string>
 	<key>Delete %lld Captures?</key>
@@ -2106,6 +2114,8 @@
 	<string>プレビューでキーをドラッグすると、好きな位置に配置できます</string>
 	<key>Drag the line above the timeline to make it taller or shorter; double-click it for the usual size. LF Studios remembers it.</key>
 	<string>タイムラインの上の線をドラッグすると高さを変えられます。ダブルクリックでいつものサイズに戻ります。LF Studiosはこれを記憶します。</string>
+	<key>Drag the line between two panels to make one wider; double-click it to put it back.</key>
+	<string>パネルの間の線をドラッグすると幅を変えられます。ダブルクリックで元に戻ります。</string>
 	<key>Drag the pin to move it; drag an edge to resize it.</key>
 	<string>固定したスクリーンショットはドラッグで移動、端をドラッグでサイズ変更できます。</string>
 	<key>Drag the preview where you want the camera in the video: what it covers of the recording frame is where the camera goes.</key>
@@ -2132,14 +2142,18 @@
 	<string>ドラッグして矢印の始点を移動</string>
 	<key>Drag to move. Press Command-C to copy, Escape to close.</key>
 	<string>ドラッグして移動します。Command-Cでコピー、Escキーで閉じます。</string>
-	<key>Drag to move; drag a corner to resize</key>
-	<string>ドラッグで移動、角をドラッグでサイズを変更</string>
+	<key>Drag to move; drag a corner to resize, the round knob to turn it</key>
+	<string>ドラッグで移動、角のドラッグでサイズ変更、丸いノブで回転</string>
 	<key>Drag to point the arrow</key>
 	<string>ドラッグして矢印の向きを変更</string>
+	<key>Drag to resize the panels. Double-click to reset.</key>
+	<string>ドラッグしてパネルのサイズを変えます。ダブルクリックでリセットします。</string>
 	<key>Drag to resize the timeline. Double-click for the usual size.</key>
 	<string>ドラッグしてタイムラインのサイズを変えます。ダブルクリックでいつものサイズに戻ります。</string>
 	<key>Drag to select, then adjust  ·  Hold ⇧ as you let go to capture right away  ·  Esc cancels</key>
 	<string>ドラッグして選択してから調整  ·  ⇧を押しながら放すとすぐに取り込む  ·  Escキーでキャンセル</string>
+	<key>Drag to turn it; hold ⇧ for steps of 15°</key>
+	<string>ドラッグで回転。⇧を押したままにすると15°ずつ</string>
 	<key>Draw attention to something, or hide it.</key>
 	<string>何かに注目を集めたり、隠したりします。</string>
 	<key>Draw from the center</key>
@@ -2518,6 +2532,8 @@
 	<string>収録を終了して保存します。</string>
 	<key>Finish typing</key>
 	<string>入力を終了</string>
+	<key>Fit</key>
+	<string>フィット</string>
 	<key>Fit a window to the frame needs Accessibility. LF Studios asks for it the first time.</key>
 	<string>“ウインドウを枠に合わせる”には“アクセシビリティ”が必要です。初回にLF Studiosが許可を求めます。</string>
 	<key>Fit a window to the frame…</key>
@@ -2612,6 +2628,8 @@
 	<string>フォーマット</string>
 	<key>Found %lld</key>
 	<string>%lld件見つかりました</string>
+	<key>Four panels: the Library with your media, the player, Properties for whatever is selected, and the timeline.</key>
+	<string>4つのパネル: メディアのあるライブラリ、プレーヤー、選択したもののプロパティ、タイムライン。</string>
 	<key>Frame</key>
 	<string>枠</string>
 	<key>Frame border: drag to move</key>
@@ -2678,6 +2696,10 @@
 	<string>オープニングとエンディングをカメラ全面に</string>
 	<key>Full-screen camera for your intro and outro</key>
 	<string>オープニングとエンディングをカメラ全面にしました</string>
+	<key>Full-screen preview</key>
+	<string>フルスクリーンプレビュー</string>
+	<key>Full-screen preview shows only the player. Press Esc to leave.</key>
+	<string>フルスクリーンプレビューではプレーヤーだけが表示されます。Escで終了します。</string>
 	<key>Fullscreen</key>
 	<string>画面全体</string>
 	<key>GIF</key>
@@ -3252,6 +3274,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>LF Studiosは終了するまで範囲を記憶しています。まだ範囲がない場合は、いつもどおりに選択します。</string>
 	<key>LF Studios remembers the last shape, size, and place on each screen.</key>
 	<string>LF Studiosは、画面ごとに最後に使った形、サイズ、位置を記憶します。</string>
+	<key>LF Studios remembers the layout on this Mac.</key>
+	<string>LF StudiosはこのMacでのレイアウトを記憶します。</string>
 	<key>LF Studios remembers your last shape for the next recording.</key>
 	<string>LF Studiosは前回の形を次の収録のために記憶します。</string>
 	<key>LF Studios remembers your last tool, color, and sizes for next time.</key>
@@ -3310,10 +3334,18 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>レイアウト</string>
 	<key>Layout also has Screen only and Camera only. The screen and the camera are always both recorded, so you can change your mind later.</key>
 	<string>“レイアウト”には“画面のみ”と“カメラのみ”もあります。画面とカメラは常に両方収録されるので、後から変えられます。</string>
+	<key>Layout ▸ Player First makes the player as big as it gets. Layout ▸ Reset Layout puts every panel back where it starts.</key>
+	<string>“レイアウト”＞“プレーヤー優先”でプレーヤーをできるだけ大きくします。“レイアウト”＞“レイアウトをリセット”ですべてのパネルを元に戻します。</string>
+	<key>Layout: how the editor's panels are arranged</key>
+	<string>レイアウト: エディタのパネルの配置</string>
 	<key>Layout: the camera in a bubble, split screen with the screen, or only one of them. Both are always recorded.</key>
 	<string>レイアウト: カメラをワイプで表示、画面と分割、またはどちらか一方のみ。どちらも常に収録されます。</string>
 	<key>Layouts</key>
 	<string>レイアウト</string>
+	<key>Leave full screen</key>
+	<string>フルスクリーンを終了</string>
+	<key>Leave full screen (Esc)</key>
+	<string>フルスクリーンを終了（Esc）</string>
 	<key>Leaves out the background: the video, its rounded corners and shadow, and a cut-out camera sit on transparency, ready to place over anything</key>
 	<string>背景を省きます：ビデオとその角丸・シャドウ、切り抜いたカメラが透明の上に置かれ、何の上にも重ねられます</string>
 	<key>Left</key>
@@ -3332,6 +3364,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ポインタに追従せずレターボックスで表示</string>
 	<key>Level</key>
 	<string>倍率</string>
+	<key>Library (top left): Media, Audio, Text, Captions, and Transitions.</key>
+	<string>ライブラリ（左上）: メディア、オーディオ、テキスト、字幕、トランジション。</string>
 	<key>Light</key>
 	<string>軽め</string>
 	<key>Light &amp; dark appearance</key>
@@ -3468,6 +3502,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>最大の長さに達しました</string>
 	<key>Meadow</key>
 	<string>草原</string>
+	<key>Media</key>
+	<string>メディア</string>
 	<key>Media:</key>
 	<string>メディア：</string>
 	<key>Medium</key>
@@ -3726,6 +3762,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>LF Studiosを初めて使う場合は、ここから始めましょう。5分ほどで終わります。</string>
 	<key>New zooms</key>
 	<string>新しいズーム</string>
+	<key>Next frame (→)</key>
+	<string>次のフレーム（→）</string>
 	<key>Next to the video, LF Studios keeps the details the editor needs, on your Mac.</key>
 	<string>LF Studiosは、エディタに必要な情報をビデオと一緒にMac上に保存します。</string>
 	<key>Nice shot. You're all set.</key>
@@ -3946,6 +3984,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>%@を開く</string>
 	<key>Open Another Video…</key>
 	<string>別のビデオを開く…</string>
+	<key>Open Captions</key>
+	<string>字幕を開く</string>
 	<key>Open Command Center</key>
 	<string>コマンドセンターを開く</string>
 	<key>Open Editor After Recording</key>
@@ -3984,6 +4024,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>“システム設定”＞“プライバシーとセキュリティ”を開いて下にスクロールし、LF Studiosの横にある“このまま開く”をクリックします。</string>
 	<key>Open Timeline.fcpxml in Final Cut Pro or DaVinci Resolve, or “Timeline (Premiere).xml” in Premiere Pro.</key>
 	<string>Final Cut ProまたはDaVinci ResolveでTimeline.fcpxmlを開くか、Premiere Proで“Timeline (Premiere).xml”を開きます。</string>
+	<key>Open Transitions</key>
+	<string>トランジションを開く</string>
 	<key>Open Video Editor</key>
 	<string>ビデオエディタを開く</string>
 	<key>Open a folder of files as one project: a recording's folder, a Creative Handoff, or any folder with videos in it.</key>
@@ -4054,6 +4096,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>タイムライン上のバーをドラッグすることもできます。</string>
 	<key>Or drag the camera on the video: it snaps to the corners, edges and center. Drag its edges and corners to resize it.</key>
 	<string>またはビデオ上でカメラをドラッグします。角、端、中央に吸着します。端や角をドラッグするとサイズを変えられます。</string>
+	<key>Or drag the round knob above the picture</key>
+	<string>または画像の上の丸いノブをドラッグします</string>
 	<key>Or hold ⇧ and drag across the timeline to select a part, then click Cut this part.</key>
 	<string>または、⇧キーを押したままタイムライン上をドラッグして範囲を選択し、“この部分をカット”をクリックします。</string>
 	<key>Or try the Whisper engine instead.</key>
@@ -4100,6 +4144,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>余白</string>
 	<key>Padding, Roundness, and Shadow.</key>
 	<string>“余白”、“角の丸み”、“シャドウ”。</string>
+	<key>Panel border</key>
+	<string>パネルの境界</string>
 	<key>Part of the recording couldn't be read — the file may be damaged. Try exporting a shorter part of the video.</key>
 	<string>収録の一部を読み込めませんでした。ファイルが破損している可能性があります。ビデオの短い部分を書き出してみてください。</string>
 	<key>Password</key>
@@ -4232,6 +4278,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ビデオを再生し、再生ヘッド（現在位置を示す線）を好きな場面に移動します。</string>
 	<key>Playback</key>
 	<string>再生</string>
+	<key>Player First</key>
+	<string>プレーヤー優先</string>
+	<key>Player zoom</key>
+	<string>プレーヤーのズーム</string>
+	<key>Player: play, step one frame, the time, the aspect ratio, Fit or a closer zoom, and full-screen preview.</key>
+	<string>プレーヤー: 再生、1フレーム送り、時間、アスペクト比、フィットまたは拡大、フルスクリーンプレビュー。</string>
 	<key>Playing %lld×</key>
 	<string>%lld倍速で再生中</string>
 	<key>Playing &amp; moving around</key>
@@ -4340,6 +4392,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>対象をプレビューしてから、収録コントロールに進みます。</string>
 	<key>Previous / next frame</key>
 	<string>前/次のフレーム</string>
+	<key>Previous frame (←)</key>
+	<string>前のフレーム（←）</string>
 	<key>Prism Sweep</key>
 	<string>プリズムの光</string>
 	<key>Privacy</key>
@@ -4354,6 +4408,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>プロジェクト</string>
 	<key>Projects shows your recordings, screenshots, and saved projects, newest first. Click one to open it. Right-click for Show in Finder, Creative Handoff…, or Delete.</key>
 	<string>“プロジェクト”には、収録したビデオ、スクリーンショット、保存したプロジェクトが新しい順に表示されます。クリックすると開きます。右クリックすると、“Finderに表示”、“クリエイティブ受け渡し…”、“削除”を選べます。</string>
+	<key>Properties (right): the settings of what you selected, in the Style, Cursor, Zoom, Camera, Captions, and Audio tabs.</key>
+	<string>プロパティ（右）: 選択したものの設定。“スタイル”、“ポインタ”、“ズーム”、“カメラ”、“字幕”、“オーディオ”タブにあります。</string>
 	<key>Pure</key>
 	<string>ピュア</string>
 	<key>Purple</key>
@@ -4982,6 +5038,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>クロップをリセット</string>
 	<key>Reset Defaults</key>
 	<string>デフォルトに戻す</string>
+	<key>Reset Layout</key>
+	<string>レイアウトをリセット</string>
 	<key>Reset crop</key>
 	<string>切り取りをリセット</string>
 	<key>Reset position</key>
@@ -5090,6 +5148,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>波紋</string>
 	<key>Rose Smoke</key>
 	<string>ローズスモーク</string>
+	<key>Rotation</key>
+	<string>回転</string>
 	<key>Rounded</key>
 	<string>角丸</string>
 	<key>Rounded Corners (⌥R)</key>
@@ -5944,6 +6004,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>テキスト“%@”</string>
 	<key>Text, arrows &amp; highlights</key>
 	<string>テキスト、矢印、ハイライト</string>
+	<key>Text, arrows, highlights, blur and pictures go on the video with the tools above the player. Pick one here to add it at the playhead.</key>
+	<string>テキスト、矢印、ハイライト、ぼかし、画像は、プレーヤーの上のツールでビデオに追加します。ここで選ぶと再生ヘッドの位置に追加されます。</string>
 	<key>Text, callouts &amp; numbered steps</key>
 	<string>テキスト、吹き出し、番号付きステップ</string>
 	<key>Text: %@</key>
@@ -6004,8 +6066,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>LF Studiosのプロジェクト — 元のファイルが必要です: “LF Studiosで再び開けるようにオリジナルを含める”をオンにしてください</string>
 	<key>The Undo and Redo buttons in the editor's toolbar.</key>
 	<string>エディタのツールバーにある“取り消す”ボタンと“やり直す”ボタン。</string>
-	<key>The aspect ratio menu in the video editor's toolbar.</key>
-	<string>ビデオエディタのツールバーにあるアスペクト比メニュー。</string>
+	<key>The aspect ratio menu under the player.</key>
+	<string>プレーヤーの下のアスペクト比メニュー。</string>
 	<key>The bars move out of the frame's way. Drag them anywhere by the handle on the left.</key>
 	<string>バーは枠の邪魔にならない位置に移動します。左側のハンドルをドラッグすると、どこにでも動かせます。</string>
 	<key>The bottom of the video editor.</key>
@@ -6050,8 +6112,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ポインタ、ズーム、クリックは切り取りに合わせて調整されます。</string>
 	<key>The dice button picks one at random.</key>
 	<string>サイコロのボタンを押すと、ランダムに選ばれます。</string>
-	<key>The editor has six panels on the right: Style, Cursor, Zoom, Camera, Captions, and Audio.</key>
-	<string>エディタの右側には6つのパネルがあります: “スタイル”、“ポインタ”、“ズーム”、“カメラ”、“字幕”、“オーディオ”。</string>
+	<key>The editor has the Library on the left, the player in the middle, Properties on the right (Style, Cursor, Zoom, Camera, Captions, and Audio), and the timeline below.</key>
+	<string>エディタは左にライブラリ、中央にプレーヤー、右にプロパティ（スタイル、ポインタ、ズーム、カメラ、字幕、オーディオ）、下にタイムラインがあります。</string>
+	<key>The editor's layout</key>
+	<string>エディタのレイアウト</string>
 	<key>The export carries on in the background (Esc)</key>
 	<string>書き出しはバックグラウンドで続行されます（Esc）</string>
 	<key>The export progress in the editor's toolbar; past exports in File ▸ Recent Exports.</key>
@@ -6208,6 +6272,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>プレビューの上にあるツールボタン: “テキスト”、“矢印”、“ハイライト”、“ぼかし”、“スポットライト”、“画像”。</string>
 	<key>The trash button in the bar while recording.</key>
 	<string>収録中のバーにあるゴミ箱ボタン。</string>
+	<key>The video editor. Layout in its toolbar arranges the panels.</key>
+	<string>ビデオエディタ。ツールバーの“レイアウト”でパネルを配置します。</string>
 	<key>The video encoder is busy — another app may be recording or exporting. Wait a moment and try again, or choose H.264.</key>
 	<string>ビデオエンコーダが使用中です。別のアプリが収録中または書き出し中の可能性があります。しばらく待ってからもう一度試すか、H.264を選択してください。</string>
 	<key>The video has exactly the shape you chose, like 1080 × 1920 for 9:16.</key>
@@ -6288,6 +6354,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>このアプリ</string>
 	<key>This list</key>
 	<string>この一覧</string>
+	<key>This project needs a newer version of LF Studios</key>
+	<string>このプロジェクトには新しいバージョンのLF Studiosが必要です</string>
 	<key>This recording didn't save key timing or screen changes, so typing can't be found</key>
 	<string>この収録にはキーのタイミングも画面の変化も保存されていないため、入力を見つけられません</string>
 	<key>This recording didn't save key timing, so typing is estimated from screen changes while the pointer holds still. Check the speed blocks it makes.</key>
@@ -6456,6 +6524,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>トランジション</string>
 	<key>Transitions &amp; fades</key>
 	<string>トランジションとフェード</string>
+	<key>Transitions go on the cuts between clips: click the + between two clips on the timeline, or set them all in Style ▸ Transitions.</key>
+	<string>トランジションはクリップの間のカットに付けます。タイムラインの2つのクリップの間の＋をクリックするか、“スタイル”＞“トランジション”でまとめて設定します。</string>
 	<key>Translate</key>
 	<string>翻訳</string>
 	<key>Translate captions</key>
@@ -6532,6 +6602,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>サウンドを収録するには、収録する前にマイクまたはシステムオーディオをオンにしてください。</string>
 	<key>Turn shaky mouse moves into calm, smooth glides.</key>
 	<string>ぶれたマウスの動きを、落ち着いた滑らかな動きにします。</string>
+	<key>Turn the picture</key>
+	<string>画像を回転</string>
 	<key>Turn the video's sound back on</key>
 	<string>ビデオのサウンドを再びオンにする</string>
 	<key>Turn what you say into captions, right on your Mac.</key>
@@ -7292,6 +7364,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>“ズーム”パネル＞“モーション”: “ゆっくり”、“滑らか”、“速め”、“瞬時”と、“モーションブラー”。</string>
 	<key>Zoom removed — ⌘Z to undo</key>
 	<string>ズームを削除しました。⌘Zで取り消せます</string>
+	<key>Zoom the player</key>
+	<string>プレーヤーをズーム</string>
 	<key>Zoom to %@ (key %@)</key>
 	<string>%@にズーム（%@キー）</string>
 	<key>Zoom — drag to move, drag an edge to resize, click to edit</key>
@@ -7480,6 +7554,8 @@ Appleのショートカットは、“システム設定”＞“キーボード
 	<string>“%@”はこのウインドウを%@ × %@ピクセル以上に保つため、%@ × %@にはできません。</string>
 	<key>“%@” keeps this window at most %@ × %@ pixels, so it can't be made %@ × %@.</key>
 	<string>“%@”はこのウインドウを%@ × %@ピクセル以下に保つため、%@ × %@にはできません。</string>
+	<key>“%@” was saved by a newer LF Studios. Update LF Studios to open it.</key>
+	<string>“%@”は新しいバージョンのLF Studiosで保存されています。開くにはLF Studiosをアップデートしてください。</string>
 	<key>“%@” — drag to move, drag an edge to trim, click to change it in Audio</key>
 	<string>“%@”: ドラッグで移動、端をドラッグでトリミング、クリックで“オーディオ”で変更</string>
 	<key>“Made with LF Studios” end card (2s)</key>

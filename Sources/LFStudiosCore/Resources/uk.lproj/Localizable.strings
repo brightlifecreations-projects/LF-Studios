@@ -136,6 +136,8 @@
 	<string>гучність %lld%%</string>
 	<key>%lld/%lld configured</key>
 	<string>Налаштовано %lld/%lld</string>
+	<key>%lld°</key>
+	<string>%lld°</string>
 	<key>(estimated from screen changes — check the speed blocks)</key>
 	<string>(оцінка за змінами на екрані — перевірте блоки швидкості)</string>
 	<key>+ adds a caption at the playhead. No transcript? Use Or type one at the playhead.</key>
@@ -946,6 +948,8 @@
 	<string>Субтитри: %@</string>
 	<key>Captions in the export</key>
 	<string>Субтитри в експорті</string>
+	<key>Captions live in the Captions panel on the right: make them from your voice, type them, translate and style them.</key>
+	<string>Субтитри — на панелі «Субтитри» праворуч: створюйте їх за голосом, вводьте, перекладайте й оформлюйте.</string>
 	<key>Captions look like this</key>
 	<string>Ось такі субтитри</string>
 	<key>Captions panel ▸ Edit by text (after transcribing).</key>
@@ -1378,6 +1382,8 @@
 	<string>Клацніть рядок, щоб змінити слова; клацніть його час, щоб перейти туди; × вилучає рядок.</string>
 	<key>Click a marker to jump there; double-click to rename it; right-click to delete it.</key>
 	<string>Клацніть маркер, щоб перейти до нього; двічі клацніть, щоб перейменувати; клацніть правою кнопкою, щоб видалити.</string>
+	<key>Click a picture on the player to move it, resize it from a corner, or turn it with the round knob. It lands on the middle and the edges, with a line showing where; hold ⌘ to move it freely.</key>
+	<string>Клацніть картинку в плеєрі, щоб перемістити її, змінити розмір за кут або повернути круглою ручкою. Вона прилипає до середини й країв, лінія показує де; утримуйте ⌘, щоб рухати вільно.</string>
 	<key>Click a project to open it.</key>
 	<string>Клацніть проєкт, щоб відкрити його.</string>
 	<key>Click a recording in Home, click Edit Video after recording, or click Open video… in Home. The LF Studios menu ▸ Edit Last Recording opens the newest one.</key>
@@ -1802,6 +1808,8 @@
 	<string>Приглушення шиплячих</string>
 	<key>Decoded details</key>
 	<string>Розкодовані дані</string>
+	<key>Default</key>
+	<string>Типово</string>
 	<key>Delete</key>
 	<string>Видалити</string>
 	<key>Delete (⌫)</key>
@@ -2026,6 +2034,8 @@
 	<string>Перетягуйте клавіші в попередньому перегляді, щоб розмістити їх будь-де</string>
 	<key>Drag the line above the timeline to make it taller or shorter; double-click it for the usual size. LF Studios remembers it.</key>
 	<string>Перетягніть лінію над таймлайном, щоб зробити його вищим або нижчим; подвійне клацання повертає звичний розмір. LF Studios запам’ятовує його.</string>
+	<key>Drag the line between two panels to make one wider; double-click it to put it back.</key>
+	<string>Перетягніть лінію між панелями, щоб зробити одну ширшою; подвійне клацання повертає як було.</string>
 	<key>Drag the pin to move it; drag an edge to resize it.</key>
 	<string>Перетягніть закріплений знімок, щоб перемістити його; тягніть край, щоб змінити розмір.</string>
 	<key>Drag the preview where you want the camera in the video: what it covers of the recording frame is where the camera goes.</key>
@@ -2052,14 +2062,18 @@
 	<string>Перетягніть, щоб перемістити початок стрілки</string>
 	<key>Drag to move. Press Command-C to copy, Escape to close.</key>
 	<string>Перетягніть, щоб перемістити. Натисніть Command-C, щоб скопіювати, або Escape, щоб закрити.</string>
-	<key>Drag to move; drag a corner to resize</key>
-	<string>Перетягніть, щоб перемістити; тягніть кут, щоб змінити розмір</string>
+	<key>Drag to move; drag a corner to resize, the round knob to turn it</key>
+	<string>Перетягніть, щоб перемістити; за кут — змінити розмір, за круглу ручку — повернути</string>
 	<key>Drag to point the arrow</key>
 	<string>Перетягніть, щоб спрямувати стрілку</string>
+	<key>Drag to resize the panels. Double-click to reset.</key>
+	<string>Перетягніть, щоб змінити розмір панелей. Подвійне клацання — скинути.</string>
 	<key>Drag to resize the timeline. Double-click for the usual size.</key>
 	<string>Перетягніть, щоб змінити розмір таймлайна. Подвійне клацання — звичний розмір.</string>
 	<key>Drag to select, then adjust  ·  Hold ⇧ as you let go to capture right away  ·  Esc cancels</key>
 	<string>Перетягніть, щоб вибрати, а потім налаштуйте  ·  Утримуйте ⇧, коли відпускаєте, щоб зняти одразу  ·  Esc — скасувати</string>
+	<key>Drag to turn it; hold ⇧ for steps of 15°</key>
+	<string>Перетягніть, щоб повернути; утримуйте ⇧ для кроку 15°</string>
 	<key>Draw attention to something, or hide it.</key>
 	<string>Привертайте увагу до чогось або приховуйте це.</string>
 	<key>Draw from the center</key>
@@ -2434,6 +2448,8 @@
 	<string>Завершіть запис і збережіть його.</string>
 	<key>Finish typing</key>
 	<string>Завершити введення</string>
+	<key>Fit</key>
+	<string>Вписати</string>
 	<key>Fit a window to the frame needs Accessibility. LF Studios asks for it the first time.</key>
 	<string>Для «Підігнати вікно під рамку…» потрібна доступність. LF Studios попросить її першого разу.</string>
 	<key>Fit a window to the frame…</key>
@@ -2528,6 +2544,8 @@
 	<string>Формат</string>
 	<key>Found %lld</key>
 	<string>Знайдено: %lld</string>
+	<key>Four panels: the Library with your media, the player, Properties for whatever is selected, and the timeline.</key>
+	<string>Чотири панелі: Бібліотека з вашими медіафайлами, плеєр, Властивості вибраного й таймлайн.</string>
 	<key>Frame</key>
 	<string>Рамка</string>
 	<key>Frame border: drag to move</key>
@@ -2592,6 +2610,10 @@
 	<string>Вступ і завершення лише з камерою</string>
 	<key>Full-screen camera for your intro and outro</key>
 	<string>Лише камера у вступі й завершенні</string>
+	<key>Full-screen preview</key>
+	<string>Перегляд на весь екран</string>
+	<key>Full-screen preview shows only the player. Press Esc to leave.</key>
+	<string>Перегляд на весь екран показує лише плеєр. Натисніть Esc, щоб вийти.</string>
 	<key>Fullscreen</key>
 	<string>Весь екран</string>
 	<key>GIF</key>
@@ -3148,6 +3170,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>LF Studios пам’ятає область, доки ви не завершите програму. Якщо області ще немає, ви вибираєте її як зазвичай.</string>
 	<key>LF Studios remembers the last shape, size, and place on each screen.</key>
 	<string>LF Studios запам’ятовує останні форму, розмір і місце на кожному екрані.</string>
+	<key>LF Studios remembers the layout on this Mac.</key>
+	<string>LF Studios запам’ятовує макет на цьому Mac.</string>
 	<key>LF Studios remembers your last shape for the next recording.</key>
 	<string>LF Studios запам’ятовує останню форму для наступного запису.</string>
 	<key>LF Studios remembers your last tool, color, and sizes for next time.</key>
@@ -3204,10 +3228,18 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Макет</string>
 	<key>Layout also has Screen only and Camera only. The screen and the camera are always both recorded, so you can change your mind later.</key>
 	<string>У «Макеті» є також «Лише екран» і «Тільки камера». Екран і камера завжди записуються обидва, тож можна передумати пізніше.</string>
+	<key>Layout ▸ Player First makes the player as big as it gets. Layout ▸ Reset Layout puts every panel back where it starts.</key>
+	<string>Макет ▸ Спершу плеєр робить плеєр якомога більшим. Макет ▸ Скинути макет повертає всі панелі на місце.</string>
+	<key>Layout: how the editor's panels are arranged</key>
+	<string>Макет: як розташовано панелі редактора</string>
 	<key>Layout: the camera in a bubble, split screen with the screen, or only one of them. Both are always recorded.</key>
 	<string>Макет: камера в бульбашці, розділений екран з екраном або лише щось одне. Записується завжди і те, і те.</string>
 	<key>Layouts</key>
 	<string>Макети</string>
+	<key>Leave full screen</key>
+	<string>Вийти з повноекранного режиму</string>
+	<key>Leave full screen (Esc)</key>
+	<string>Вийти з повноекранного режиму (Esc)</string>
 	<key>Leaves out the background: the video, its rounded corners and shadow, and a cut-out camera sit on transparency, ready to place over anything</key>
 	<string>Без тла: відео з його заокругленими кутами й тінню та вирізана камера лежать на прозорості — їх можна накласти на будь-що</string>
 	<key>Left</key>
@@ -3226,6 +3258,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Вписати з полями замість стеження за курсором</string>
 	<key>Level</key>
 	<string>Рівень</string>
+	<key>Library (top left): Media, Audio, Text, Captions, and Transitions.</key>
+	<string>Бібліотека (угорі ліворуч): Медіа, Аудіо, Текст, Субтитри й Переходи.</string>
 	<key>Light</key>
 	<string>Злегка</string>
 	<key>Light &amp; dark appearance</key>
@@ -3362,6 +3396,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Досягнуто максимальної довжини</string>
 	<key>Meadow</key>
 	<string>Луг</string>
+	<key>Media</key>
+	<string>Медіа</string>
 	<key>Media:</key>
 	<string>Медіафайли:</string>
 	<key>Medium</key>
@@ -3620,6 +3656,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Уперше в LF Studios? Почніть звідси — це займе близько п’яти хвилин.</string>
 	<key>New zooms</key>
 	<string>Нові наближення</string>
+	<key>Next frame (→)</key>
+	<string>Наступний кадр (→)</string>
 	<key>Next to the video, LF Studios keeps the details the editor needs, on your Mac.</key>
 	<string>Поруч із відео LF Studios зберігає дані, потрібні редактору, — на вашому Mac.</string>
 	<key>Nice shot. You're all set.</key>
@@ -3840,6 +3878,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Відкрити %@</string>
 	<key>Open Another Video…</key>
 	<string>Відкрити інше відео…</string>
+	<key>Open Captions</key>
+	<string>Відкрити субтитри</string>
 	<key>Open Command Center</key>
 	<string>Відкрити командний центр</string>
 	<key>Open Editor After Recording</key>
@@ -3878,6 +3918,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Відкрийте Системні параметри ▸ Приватність і безпека, прокрутіть униз і клацніть «Усе одно відкрити» поруч із LF Studios.</string>
 	<key>Open Timeline.fcpxml in Final Cut Pro or DaVinci Resolve, or “Timeline (Premiere).xml” in Premiere Pro.</key>
 	<string>Відкрийте Timeline.fcpxml у Final Cut Pro чи DaVinci Resolve або “Timeline (Premiere).xml” у Premiere Pro.</string>
+	<key>Open Transitions</key>
+	<string>Відкрити переходи</string>
 	<key>Open Video Editor</key>
 	<string>Відкрити відеоредактор</string>
 	<key>Open a folder of files as one project: a recording's folder, a Creative Handoff, or any folder with videos in it.</key>
@@ -3948,6 +3990,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Або перетягніть його смугу на шкалі часу.</string>
 	<key>Or drag the camera on the video: it snaps to the corners, edges and center. Drag its edges and corners to resize it.</key>
 	<string>Або перетягніть камеру на відео: вона прилипає до кутів, країв і центру. Тягніть її краї й кути, щоб змінити розмір.</string>
+	<key>Or drag the round knob above the picture</key>
+	<string>Або перетягніть круглу ручку над картинкою</string>
 	<key>Or hold ⇧ and drag across the timeline to select a part, then click Cut this part.</key>
 	<string>Або утримуйте ⇧ і перетягніть по шкалі часу, щоб виділити частину, а тоді клацніть «Вирізати цю частину».</string>
 	<key>Or try the Whisper engine instead.</key>
@@ -3994,6 +4038,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Відступ</string>
 	<key>Padding, Roundness, and Shadow.</key>
 	<string>«Відступ», «Заокруглення» й «Тінь».</string>
+	<key>Panel border</key>
+	<string>Межа панелі</string>
 	<key>Part of the recording couldn't be read — the file may be damaged. Try exporting a shorter part of the video.</key>
 	<string>Частину запису не вдалося прочитати — можливо, файл пошкоджено. Спробуйте експортувати коротшу частину відео.</string>
 	<key>Password</key>
@@ -4124,6 +4170,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Відтворюйте відео й переміщуйте покажчик відтворення (лінію, яка показує, де ви зараз) до будь-якого моменту.</string>
 	<key>Playback</key>
 	<string>Відтворення</string>
+	<key>Player First</key>
+	<string>Спершу плеєр</string>
+	<key>Player zoom</key>
+	<string>Масштаб плеєра</string>
+	<key>Player: play, step one frame, the time, the aspect ratio, Fit or a closer zoom, and full-screen preview.</key>
+	<string>Плеєр: відтворення, крок на кадр, час, формат, Вписати чи збільшення та перегляд на весь екран.</string>
 	<key>Playing %lld×</key>
 	<string>Відтворення %lld×</string>
 	<key>Playing &amp; moving around</key>
@@ -4232,6 +4284,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Перевірте, що буде записано, а потім перейдіть до керування записом.</string>
 	<key>Previous / next frame</key>
 	<string>Попередній/наступний кадр</string>
+	<key>Previous frame (←)</key>
+	<string>Попередній кадр (←)</string>
 	<key>Prism Sweep</key>
 	<string>Призматична хвиля</string>
 	<key>Privacy</key>
@@ -4246,6 +4300,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Проєкти</string>
 	<key>Projects shows your recordings, screenshots, and saved projects, newest first. Click one to open it. Right-click for Show in Finder, Creative Handoff…, or Delete.</key>
 	<string>У «Проєктах» — ваші записи, знімки та збережені проєкти, найновіші вгорі. Клацніть, щоб відкрити. Клацніть правою кнопкою, щоб вибрати «Показати у Finder», «Творче передавання…» або «Видалити».</string>
+	<key>Properties (right): the settings of what you selected, in the Style, Cursor, Zoom, Camera, Captions, and Audio tabs.</key>
+	<string>Властивості (праворуч): налаштування вибраного на вкладках Стиль, Курсор, Масштаб, Камера, Субтитри й Аудіо.</string>
 	<key>Pure</key>
 	<string>Чистий</string>
 	<key>Purple</key>
@@ -4858,6 +4914,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Скинути обрізку</string>
 	<key>Reset Defaults</key>
 	<string>Відновити типові</string>
+	<key>Reset Layout</key>
+	<string>Скинути макет</string>
 	<key>Reset crop</key>
 	<string>Скинути обрізання</string>
 	<key>Reset position</key>
@@ -4962,6 +5020,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Хвиля</string>
 	<key>Rose Smoke</key>
 	<string>Рожевий дим</string>
+	<key>Rotation</key>
+	<string>Поворот</string>
 	<key>Rounded</key>
 	<string>Заокруглена</string>
 	<key>Rounded Corners (⌥R)</key>
@@ -5800,6 +5860,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Текст «%@»</string>
 	<key>Text, arrows &amp; highlights</key>
 	<string>Текст, стрілки й виділення</string>
+	<key>Text, arrows, highlights, blur and pictures go on the video with the tools above the player. Pick one here to add it at the playhead.</key>
+	<string>Текст, стрілки, виділення, розмиття й картинки додаються інструментами над плеєром. Виберіть тут, щоб додати в позиції відтворення.</string>
 	<key>Text, callouts &amp; numbered steps</key>
 	<string>Текст, виноски й нумеровані кроки</string>
 	<key>Text: %@</key>
@@ -5860,8 +5922,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Проєкт LF Studios — йому потрібні оригінальні файли: увімкніть «Додати оригінали, щоб знову відкрити в LF Studios»</string>
 	<key>The Undo and Redo buttons in the editor's toolbar.</key>
 	<string>Кнопки «Відмінити» й «Повторити» на панелі інструментів редактора.</string>
-	<key>The aspect ratio menu in the video editor's toolbar.</key>
-	<string>Меню формату на панелі інструментів відеоредактора.</string>
+	<key>The aspect ratio menu under the player.</key>
+	<string>Меню формату під плеєром.</string>
 	<key>The bars move out of the frame's way. Drag them anywhere by the handle on the left.</key>
 	<string>Панелі відсуваються, щоб не заступати рамку. Їх можна перетягнути будь-куди за ручку ліворуч.</string>
 	<key>The bottom of the video editor.</key>
@@ -5906,8 +5968,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Курсор, наближення й клацання підлаштовуються під обрізання.</string>
 	<key>The dice button picks one at random.</key>
 	<string>Кнопка з кубиком вибирає варіант навмання.</string>
-	<key>The editor has six panels on the right: Style, Cursor, Zoom, Camera, Captions, and Audio.</key>
-	<string>У редакторі праворуч шість панелей: «Стиль», «Курсор», «Масштаб», «Камера», «Субтитри» й «Аудіо».</string>
+	<key>The editor has the Library on the left, the player in the middle, Properties on the right (Style, Cursor, Zoom, Camera, Captions, and Audio), and the timeline below.</key>
+	<string>У редакторі ліворуч Бібліотека, посередині плеєр, праворуч Властивості (Стиль, Курсор, Масштаб, Камера, Субтитри й Аудіо), унизу таймлайн.</string>
+	<key>The editor's layout</key>
+	<string>Макет редактора</string>
 	<key>The export carries on in the background (Esc)</key>
 	<string>Експорт триває у фоні (Esc)</string>
 	<key>The export progress in the editor's toolbar; past exports in File ▸ Recent Exports.</key>
@@ -6064,6 +6128,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Кнопки інструментів над переглядом: «Текст», «Стрілка», «Виділення», «Розмиття», «Прожектор» і «Зображення».</string>
 	<key>The trash button in the bar while recording.</key>
 	<string>Кнопка кошика на панелі під час запису.</string>
+	<key>The video editor. Layout in its toolbar arranges the panels.</key>
+	<string>Відеоредактор. «Макет» на його панелі інструментів упорядковує панелі.</string>
 	<key>The video encoder is busy — another app may be recording or exporting. Wait a moment and try again, or choose H.264.</key>
 	<string>Відеокодер зайнятий — можливо, інша програма записує чи експортує. Зачекайте трохи й спробуйте ще раз або виберіть H.264.</string>
 	<key>The video has exactly the shape you chose, like 1080 × 1920 for 9:16.</key>
@@ -6144,6 +6210,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Цей застосунок</string>
 	<key>This list</key>
 	<string>Цей список</string>
+	<key>This project needs a newer version of LF Studios</key>
+	<string>Для цього проєкту потрібна новіша версія LF Studios</string>
 	<key>This recording didn't save key timing or screen changes, so typing can't be found</key>
 	<string>Цей запис не зберіг ні моментів натискань, ні змін на екрані, тож набір тексту не знайти</string>
 	<key>This recording didn't save key timing, so typing is estimated from screen changes while the pointer holds still. Check the speed blocks it makes.</key>
@@ -6310,6 +6378,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Переходи</string>
 	<key>Transitions &amp; fades</key>
 	<string>Переходи й плавна поява</string>
+	<key>Transitions go on the cuts between clips: click the + between two clips on the timeline, or set them all in Style ▸ Transitions.</key>
+	<string>Переходи ставляться на стики кліпів: клацніть + між двома кліпами на таймлайні або задайте всі в Стиль ▸ Переходи.</string>
 	<key>Translate</key>
 	<string>Перекласти</string>
 	<key>Translate captions</key>
@@ -6386,6 +6456,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Щоб записати звук, перед записом увімкніть мікрофон або системний звук.</string>
 	<key>Turn shaky mouse moves into calm, smooth glides.</key>
 	<string>Перетворіть тремтливі рухи миші на спокійне плавне ковзання.</string>
+	<key>Turn the picture</key>
+	<string>Повернути картинку</string>
 	<key>Turn the video's sound back on</key>
 	<string>Знову ввімкнути звук відео</string>
 	<key>Turn what you say into captions, right on your Mac.</key>
@@ -7136,6 +7208,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Панель «Масштаб» ▸ Рух: «Повільно», «Плавно», «Швидко» чи «Миттєво», а також «Розмиття руху».</string>
 	<key>Zoom removed — ⌘Z to undo</key>
 	<string>Наближення вилучено — ⌘Z, щоб відмінити</string>
+	<key>Zoom the player</key>
+	<string>Масштабувати плеєр</string>
 	<key>Zoom to %@ (key %@)</key>
 	<string>Наблизити до %@ (клавіша %@)</string>
 	<key>Zoom — drag to move, drag an edge to resize, click to edit</key>
@@ -7324,6 +7398,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>«%@» не дає зробити це вікно меншим за %@ × %@ пікселів, тому розмір %@ × %@ недоступний.</string>
 	<key>“%@” keeps this window at most %@ × %@ pixels, so it can't be made %@ × %@.</key>
 	<string>«%@» не дає зробити це вікно більшим за %@ × %@ пікселів, тому розмір %@ × %@ недоступний.</string>
+	<key>“%@” was saved by a newer LF Studios. Update LF Studios to open it.</key>
+	<string>«%@» збережено в новішій версії LF Studios. Оновіть LF Studios, щоб відкрити його.</string>
 	<key>“%@” — drag to move, drag an edge to trim, click to change it in Audio</key>
 	<string>«%@» — перетягніть, щоб перемістити, тягніть край, щоб підрізати, клацніть, щоб змінити на панелі «Аудіо»</string>
 	<key>“Made with LF Studios” end card (2s)</key>

@@ -87,30 +87,7 @@ struct VideoTimelineToolbar: View {
 
     var body: some View {
         HStack(spacing: 10) {
-            Button {
-                model.togglePlay()
-            } label: {
-                Image(systemName: model.isPlaying ? "pause.fill" : "play.fill")
-                    .font(.system(size: 13, weight: .bold))
-                    .frame(width: 30, height: 26)
-            }
-            .buttonStyle(VideoToolButtonStyle(prominent: true))
-            .help(model.isPlaying ? L("Pause (Space)") : L("Play (Space)"))
-            .accessibilityLabel(model.isPlaying ? L("Pause") : L("Play"))
-
-            HStack(spacing: 3) {
-                Text(VideoEditorModel.timecode(clock.time))
-                    .foregroundStyle(VideoEditorTheme.textPrimary)
-                Text(verbatim: "/")
-                    .foregroundStyle(VideoEditorTheme.textTertiary)
-                Text(VideoEditorModel.timecode(model.timelineDuration))
-                    .foregroundStyle(VideoEditorTheme.textSecondary)
-            }
-            .font(.system(size: 12, weight: .semibold, design: .monospaced))
-            .frame(minWidth: 118, alignment: .leading)
-
-            toolbarDivider
-
+            // Play, pause and the time are under the player (1.13.0).
             toolButton(symbol: "scissors", title: L("Split"), help: L("Split at the playhead (S)")) { model.splitAtPlayhead() }
             toolButton(symbol: "plus.magnifyingglass", title: L("Zoom"), help: L("Add a zoom at the playhead (Z)")) {
                 model.addZoom(at: clock.time)

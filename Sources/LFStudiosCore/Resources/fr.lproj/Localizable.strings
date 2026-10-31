@@ -132,6 +132,8 @@
 	<string>volume %lld %%</string>
 	<key>%lld/%lld configured</key>
 	<string>Configurés : %lld/%lld</string>
+	<key>%lld°</key>
+	<string>%lld°</string>
 	<key>(estimated from screen changes — check the speed blocks)</key>
 	<string>(estimation d’après les changements à l’écran — vérifiez les blocs de vitesse)</string>
 	<key>+ adds a caption at the playhead. No transcript? Use Or type one at the playhead.</key>
@@ -944,6 +946,8 @@
 	<string>Sous-titres en %@</string>
 	<key>Captions in the export</key>
 	<string>Sous-titres dans l’export</string>
+	<key>Captions live in the Captions panel on the right: make them from your voice, type them, translate and style them.</key>
+	<string>Les sous-titres sont dans le panneau Sous-titres à droite : créez-les depuis votre voix, tapez-les, traduisez-les et mettez-les en forme.</string>
 	<key>Captions look like this</key>
 	<string>Voici vos sous-titres</string>
 	<key>Captions panel ▸ Edit by text (after transcribing).</key>
@@ -1376,6 +1380,8 @@
 	<string>Cliquez sur une ligne pour modifier ses mots ; cliquez sur son heure pour y aller ; × la supprime.</string>
 	<key>Click a marker to jump there; double-click to rename it; right-click to delete it.</key>
 	<string>Cliquez sur un marqueur pour y aller ; double-cliquez pour le renommer ; clic droit pour le supprimer.</string>
+	<key>Click a picture on the player to move it, resize it from a corner, or turn it with the round knob. It lands on the middle and the edges, with a line showing where; hold ⌘ to move it freely.</key>
+	<string>Cliquez sur une image dans le lecteur pour la déplacer, la redimensionner par un coin ou la faire pivoter avec le bouton rond. Elle s’aimante au milieu et aux bords, une ligne montre où ; maintenez ⌘ pour la déplacer librement.</string>
 	<key>Click a project to open it.</key>
 	<string>Cliquez sur un projet pour l’ouvrir.</string>
 	<key>Click a recording in Home, click Edit Video after recording, or click Open video… in Home. The LF Studios menu ▸ Edit Last Recording opens the newest one.</key>
@@ -1800,6 +1806,8 @@
 	<string>De-esser</string>
 	<key>Decoded details</key>
 	<string>Détails décodés</string>
+	<key>Default</key>
+	<string>Par défaut</string>
 	<key>Delete</key>
 	<string>Supprimer</string>
 	<key>Delete (⌫)</key>
@@ -2024,6 +2032,8 @@
 	<string>Faites glisser les touches dans l’aperçu pour les placer où vous voulez</string>
 	<key>Drag the line above the timeline to make it taller or shorter; double-click it for the usual size. LF Studios remembers it.</key>
 	<string>Faites glisser la ligne au-dessus de la timeline pour l’agrandir ou la réduire ; double-cliquez pour la taille habituelle. LF Studios s’en souvient.</string>
+	<key>Drag the line between two panels to make one wider; double-click it to put it back.</key>
+	<string>Faites glisser la ligne entre deux panneaux pour en élargir un ; double-cliquez pour la remettre en place.</string>
 	<key>Drag the pin to move it; drag an edge to resize it.</key>
 	<string>Faites glisser la capture épinglée pour la déplacer ; faites glisser un bord pour la redimensionner.</string>
 	<key>Drag the preview where you want the camera in the video: what it covers of the recording frame is where the camera goes.</key>
@@ -2050,14 +2060,18 @@
 	<string>Faites glisser pour déplacer le départ de la flèche</string>
 	<key>Drag to move. Press Command-C to copy, Escape to close.</key>
 	<string>Faites glisser pour déplacer. Appuyez sur Commande + C pour copier, sur Échap pour fermer.</string>
-	<key>Drag to move; drag a corner to resize</key>
-	<string>Faites glisser pour déplacer ; faites glisser un coin pour redimensionner</string>
+	<key>Drag to move; drag a corner to resize, the round knob to turn it</key>
+	<string>Faites glisser pour déplacer ; un coin pour redimensionner, le bouton rond pour faire pivoter</string>
 	<key>Drag to point the arrow</key>
 	<string>Faites glisser pour orienter la flèche</string>
+	<key>Drag to resize the panels. Double-click to reset.</key>
+	<string>Faites glisser pour redimensionner les panneaux. Double-cliquez pour réinitialiser.</string>
 	<key>Drag to resize the timeline. Double-click for the usual size.</key>
 	<string>Faites glisser pour redimensionner la timeline. Double-cliquez pour la taille habituelle.</string>
 	<key>Drag to select, then adjust  ·  Hold ⇧ as you let go to capture right away  ·  Esc cancels</key>
 	<string>Faites glisser pour sélectionner, puis ajustez  ·  Maintenez ⇧ en relâchant pour capturer aussitôt  ·  Échap pour annuler</string>
+	<key>Drag to turn it; hold ⇧ for steps of 15°</key>
+	<string>Faites glisser pour faire pivoter ; maintenez ⇧ pour des pas de 15°</string>
 	<key>Draw attention to something, or hide it.</key>
 	<string>Attirez l’attention sur quelque chose, ou cachez-le.</string>
 	<key>Draw from the center</key>
@@ -2432,6 +2446,8 @@
 	<string>Terminez l’enregistrement et sauvegardez-le.</string>
 	<key>Finish typing</key>
 	<string>Terminer la saisie</string>
+	<key>Fit</key>
+	<string>Ajuster</string>
 	<key>Fit a window to the frame needs Accessibility. LF Studios asks for it the first time.</key>
 	<string>Ajuster une fenêtre au cadre nécessite Accessibilité. LF Studios la demande la première fois.</string>
 	<key>Fit a window to the frame…</key>
@@ -2526,6 +2542,8 @@
 	<string>Format</string>
 	<key>Found %lld</key>
 	<string>%lld trouvé(s)</string>
+	<key>Four panels: the Library with your media, the player, Properties for whatever is selected, and the timeline.</key>
+	<string>Quatre panneaux : la Bibliothèque avec vos médias, le lecteur, les Propriétés de l’élément sélectionné et la timeline.</string>
 	<key>Frame</key>
 	<string>Cadre</string>
 	<key>Frame border: drag to move</key>
@@ -2590,6 +2608,10 @@
 	<string>Intro et fin avec caméra en plein écran</string>
 	<key>Full-screen camera for your intro and outro</key>
 	<string>Caméra en plein écran pour votre intro et votre fin</string>
+	<key>Full-screen preview</key>
+	<string>Aperçu en plein écran</string>
+	<key>Full-screen preview shows only the player. Press Esc to leave.</key>
+	<string>L’aperçu en plein écran n’affiche que le lecteur. Appuyez sur Échap pour en sortir.</string>
 	<key>Fullscreen</key>
 	<string>Plein écran</string>
 	<key>GIF</key>
@@ -3146,6 +3168,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>LF Studios garde la zone en mémoire jusqu’à ce que vous le quittiez. S’il n’y a pas encore de zone, vous en sélectionnez une comme d’habitude.</string>
 	<key>LF Studios remembers the last shape, size, and place on each screen.</key>
 	<string>LF Studios retient la dernière forme, la dernière taille et le dernier emplacement sur chaque écran.</string>
+	<key>LF Studios remembers the layout on this Mac.</key>
+	<string>LF Studios retient la disposition sur ce Mac.</string>
 	<key>LF Studios remembers your last shape for the next recording.</key>
 	<string>LF Studios retient votre dernière forme pour le prochain enregistrement.</string>
 	<key>LF Studios remembers your last tool, color, and sizes for next time.</key>
@@ -3202,10 +3226,18 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Disposition</string>
 	<key>Layout also has Screen only and Camera only. The screen and the camera are always both recorded, so you can change your mind later.</key>
 	<string>Disposition propose aussi Écran seul et Caméra seule. L’écran et la caméra sont toujours enregistrés tous les deux : vous pouvez changer d’avis plus tard.</string>
+	<key>Layout ▸ Player First makes the player as big as it gets. Layout ▸ Reset Layout puts every panel back where it starts.</key>
+	<string>Disposition ▸ Lecteur d’abord agrandit le lecteur au maximum. Disposition ▸ Réinitialiser la disposition remet chaque panneau en place.</string>
+	<key>Layout: how the editor's panels are arranged</key>
+	<string>Disposition : l’agencement des panneaux de l’éditeur</string>
 	<key>Layout: the camera in a bubble, split screen with the screen, or only one of them. Both are always recorded.</key>
 	<string>Disposition : la caméra dans une bulle, en écran partagé avec l’écran, ou l’un des deux seulement. Les deux sont toujours enregistrés.</string>
 	<key>Layouts</key>
 	<string>Dispositions</string>
+	<key>Leave full screen</key>
+	<string>Quitter le plein écran</string>
+	<key>Leave full screen (Esc)</key>
+	<string>Quitter le plein écran (Échap)</string>
 	<key>Leaves out the background: the video, its rounded corners and shadow, and a cut-out camera sit on transparency, ready to place over anything</key>
 	<string>Retire l’arrière-plan : la vidéo, ses coins arrondis et son ombre, et une caméra détourée reposent sur de la transparence, prêtes à être posées sur n’importe quoi</string>
 	<key>Left</key>
@@ -3224,6 +3256,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Ajouter des bandes au lieu de suivre le pointeur</string>
 	<key>Level</key>
 	<string>Niveau</string>
+	<key>Library (top left): Media, Audio, Text, Captions, and Transitions.</key>
+	<string>Bibliothèque (en haut à gauche) : Médias, Audio, Texte, Sous-titres et Transitions.</string>
 	<key>Light</key>
 	<string>Léger</string>
 	<key>Light &amp; dark appearance</key>
@@ -3360,6 +3394,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Longueur maximale atteinte</string>
 	<key>Meadow</key>
 	<string>Prairie</string>
+	<key>Media</key>
+	<string>Médias</string>
 	<key>Media:</key>
 	<string>Médias :</string>
 	<key>Medium</key>
@@ -3618,6 +3654,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Vous découvrez LF Studios ? Commencez ici : cela prend environ cinq minutes.</string>
 	<key>New zooms</key>
 	<string>Nouveaux zooms</string>
+	<key>Next frame (→)</key>
+	<string>Image suivante (→)</string>
 	<key>Next to the video, LF Studios keeps the details the editor needs, on your Mac.</key>
 	<string>À côté de la vidéo, LF Studios conserve les détails dont l’éditeur a besoin, sur votre Mac.</string>
 	<key>Nice shot. You're all set.</key>
@@ -3838,6 +3876,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Ouvrir %@</string>
 	<key>Open Another Video…</key>
 	<string>Ouvrir une autre vidéo…</string>
+	<key>Open Captions</key>
+	<string>Ouvrir les sous-titres</string>
 	<key>Open Command Center</key>
 	<string>Ouvrir le centre de commande</string>
 	<key>Open Editor After Recording</key>
@@ -3876,6 +3916,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Ouvrez Réglages Système ▸ Confidentialité et sécurité, faites défiler vers le bas et cliquez sur Ouvrir quand même à côté de LF Studios.</string>
 	<key>Open Timeline.fcpxml in Final Cut Pro or DaVinci Resolve, or “Timeline (Premiere).xml” in Premiere Pro.</key>
 	<string>Ouvrez Timeline.fcpxml dans Final Cut Pro ou DaVinci Resolve, ou “Timeline (Premiere).xml” dans Premiere Pro.</string>
+	<key>Open Transitions</key>
+	<string>Ouvrir les transitions</string>
 	<key>Open Video Editor</key>
 	<string>Ouvrir l’éditeur vidéo</string>
 	<key>Open a folder of files as one project: a recording's folder, a Creative Handoff, or any folder with videos in it.</key>
@@ -3946,6 +3988,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Ou faites glisser sa barre dans la timeline.</string>
 	<key>Or drag the camera on the video: it snaps to the corners, edges and center. Drag its edges and corners to resize it.</key>
 	<string>Ou faites glisser la caméra sur la vidéo : elle s’aimante aux coins, aux bords et au centre. Tirez ses bords et ses coins pour la redimensionner.</string>
+	<key>Or drag the round knob above the picture</key>
+	<string>Ou faites glisser le bouton rond au-dessus de l’image</string>
 	<key>Or hold ⇧ and drag across the timeline to select a part, then click Cut this part.</key>
 	<string>Ou maintenez ⇧ et faites glisser sur la timeline pour sélectionner un passage, puis cliquez sur Couper ce passage.</string>
 	<key>Or try the Whisper engine instead.</key>
@@ -3992,6 +4036,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Marge</string>
 	<key>Padding, Roundness, and Shadow.</key>
 	<string>Marge, Arrondi et Ombre.</string>
+	<key>Panel border</key>
+	<string>Bord du panneau</string>
 	<key>Part of the recording couldn't be read — the file may be damaged. Try exporting a shorter part of the video.</key>
 	<string>Une partie de l’enregistrement n’a pas pu être lue — le fichier est peut-être endommagé. Essayez d’exporter une partie plus courte de la vidéo.</string>
 	<key>Password</key>
@@ -4122,6 +4168,12 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Lisez la vidéo et placez la tête de lecture (la ligne qui montre où vous êtes) à n’importe quel moment.</string>
 	<key>Playback</key>
 	<string>Lecture</string>
+	<key>Player First</key>
+	<string>Lecteur d’abord</string>
+	<key>Player zoom</key>
+	<string>Zoom du lecteur</string>
+	<key>Player: play, step one frame, the time, the aspect ratio, Fit or a closer zoom, and full-screen preview.</key>
+	<string>Lecteur : lecture, image par image, le temps, le format, Ajuster ou un zoom plus proche, et l’aperçu en plein écran.</string>
 	<key>Playing %lld×</key>
 	<string>Lecture à %lld×</string>
 	<key>Playing &amp; moving around</key>
@@ -4230,6 +4282,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Vérifiez l’aperçu, puis passez à l’enregistrement.</string>
 	<key>Previous / next frame</key>
 	<string>Image précédente/suivante</string>
+	<key>Previous frame (←)</key>
+	<string>Image précédente (←)</string>
 	<key>Prism Sweep</key>
 	<string>Balayage prismatique</string>
 	<key>Privacy</key>
@@ -4244,6 +4298,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Projets</string>
 	<key>Projects shows your recordings, screenshots, and saved projects, newest first. Click one to open it. Right-click for Show in Finder, Creative Handoff…, or Delete.</key>
 	<string>Projets affiche vos enregistrements, captures et projets enregistrés, du plus récent au plus ancien. Cliquez sur l’un d’eux pour l’ouvrir. Clic droit pour Afficher dans le Finder, Transmission créative… ou Supprimer.</string>
+	<key>Properties (right): the settings of what you selected, in the Style, Cursor, Zoom, Camera, Captions, and Audio tabs.</key>
+	<string>Propriétés (à droite) : les réglages de l’élément sélectionné, dans les onglets Style, Curseur, Zoom, Caméra, Sous-titres et Audio.</string>
 	<key>Pure</key>
 	<string>Pur</string>
 	<key>Purple</key>
@@ -4856,6 +4912,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Réinitialiser le recadrage</string>
 	<key>Reset Defaults</key>
 	<string>Rétablir les valeurs par défaut</string>
+	<key>Reset Layout</key>
+	<string>Réinitialiser la disposition</string>
 	<key>Reset crop</key>
 	<string>Réinitialiser le rognage</string>
 	<key>Reset position</key>
@@ -4960,6 +5018,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Onde</string>
 	<key>Rose Smoke</key>
 	<string>Fumée rose</string>
+	<key>Rotation</key>
+	<string>Rotation</string>
 	<key>Rounded</key>
 	<string>Arrondi</string>
 	<key>Rounded Corners (⌥R)</key>
@@ -5798,6 +5858,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Texte « %@ »</string>
 	<key>Text, arrows &amp; highlights</key>
 	<string>Texte, flèches et surlignages</string>
+	<key>Text, arrows, highlights, blur and pictures go on the video with the tools above the player. Pick one here to add it at the playhead.</key>
+	<string>Le texte, les flèches, les surlignages, le flou et les images s’ajoutent avec les outils au-dessus du lecteur. Choisissez-en un ici pour l’ajouter à la tête de lecture.</string>
 	<key>Text, callouts &amp; numbered steps</key>
 	<string>Texte, bulles et étapes numérotées</string>
 	<key>Text: %@</key>
@@ -5858,8 +5920,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Le projet LF Studios — il a besoin des fichiers originaux : activez Inclure les originaux pour rouvrir dans LF Studios</string>
 	<key>The Undo and Redo buttons in the editor's toolbar.</key>
 	<string>Les boutons Annuler et Rétablir dans la barre d’outils de l’éditeur.</string>
-	<key>The aspect ratio menu in the video editor's toolbar.</key>
-	<string>Le menu du format d’image dans la barre d’outils de l’éditeur vidéo.</string>
+	<key>The aspect ratio menu under the player.</key>
+	<string>Le menu du format sous le lecteur.</string>
 	<key>The bars move out of the frame's way. Drag them anywhere by the handle on the left.</key>
 	<string>Les barres s’écartent du cadre. Faites-les glisser où vous voulez par la poignée à gauche.</string>
 	<key>The bottom of the video editor.</key>
@@ -5904,8 +5966,10 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Le pointeur, les zooms et les clics suivent le recadrage.</string>
 	<key>The dice button picks one at random.</key>
 	<string>Le bouton dé en choisit un au hasard.</string>
-	<key>The editor has six panels on the right: Style, Cursor, Zoom, Camera, Captions, and Audio.</key>
-	<string>L’éditeur a six panneaux à droite : Style, Pointeur, Zoom, Caméra, Sous-titres et Audio.</string>
+	<key>The editor has the Library on the left, the player in the middle, Properties on the right (Style, Cursor, Zoom, Camera, Captions, and Audio), and the timeline below.</key>
+	<string>L’éditeur a la Bibliothèque à gauche, le lecteur au milieu, les Propriétés à droite (Style, Curseur, Zoom, Caméra, Sous-titres et Audio) et la timeline en bas.</string>
+	<key>The editor's layout</key>
+	<string>La disposition de l’éditeur</string>
 	<key>The export carries on in the background (Esc)</key>
 	<string>L’exportation se poursuit en arrière-plan (Échap)</string>
 	<key>The export progress in the editor's toolbar; past exports in File ▸ Recent Exports.</key>
@@ -6062,6 +6126,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Les boutons d’outils au-dessus de l’aperçu : Texte, Flèche, Surlignage, Flou, Projecteur et Image.</string>
 	<key>The trash button in the bar while recording.</key>
 	<string>Le bouton corbeille dans la barre pendant l’enregistrement.</string>
+	<key>The video editor. Layout in its toolbar arranges the panels.</key>
+	<string>L’éditeur vidéo. Disposition, dans sa barre d’outils, agence les panneaux.</string>
 	<key>The video encoder is busy — another app may be recording or exporting. Wait a moment and try again, or choose H.264.</key>
 	<string>L’encodeur vidéo est occupé — une autre app enregistre ou exporte peut-être. Patientez un instant et réessayez, ou choisissez H.264.</string>
 	<key>The video has exactly the shape you chose, like 1080 × 1920 for 9:16.</key>
@@ -6142,6 +6208,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Cette app</string>
 	<key>This list</key>
 	<string>Cette liste</string>
+	<key>This project needs a newer version of LF Studios</key>
+	<string>Ce projet nécessite une version plus récente de LF Studios</string>
 	<key>This recording didn't save key timing or screen changes, so typing can't be found</key>
 	<string>Cet enregistrement n’a conservé ni le moment des touches ni les changements à l’écran : impossible de trouver la saisie</string>
 	<key>This recording didn't save key timing, so typing is estimated from screen changes while the pointer holds still. Check the speed blocks it makes.</key>
@@ -6308,6 +6376,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Transitions</string>
 	<key>Transitions &amp; fades</key>
 	<string>Transitions et fondus</string>
+	<key>Transitions go on the cuts between clips: click the + between two clips on the timeline, or set them all in Style ▸ Transitions.</key>
+	<string>Les transitions se placent sur les coupes entre clips : cliquez sur le + entre deux clips dans la timeline, ou réglez-les toutes dans Style ▸ Transitions.</string>
 	<key>Translate</key>
 	<string>Traduire</string>
 	<key>Translate captions</key>
@@ -6384,6 +6454,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Activez le micro ou le son de l’ordinateur avant l’enregistrement pour capturer le son.</string>
 	<key>Turn shaky mouse moves into calm, smooth glides.</key>
 	<string>Transformez les mouvements de souris saccadés en glissements calmes et fluides.</string>
+	<key>Turn the picture</key>
+	<string>Faire pivoter l’image</string>
 	<key>Turn the video's sound back on</key>
 	<string>Réactiver le son de la vidéo</string>
 	<key>Turn what you say into captions, right on your Mac.</key>
@@ -7134,6 +7206,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Panneau Zoom ▸ Mouvement : Lent, Fluide, Rapide ou Instantané, plus Flou de mouvement.</string>
 	<key>Zoom removed — ⌘Z to undo</key>
 	<string>Zoom supprimé — ⌘Z pour annuler</string>
+	<key>Zoom the player</key>
+	<string>Zoomer le lecteur</string>
 	<key>Zoom to %@ (key %@)</key>
 	<string>Zoomer à %@ (touche %@)</string>
 	<key>Zoom — drag to move, drag an edge to resize, click to edit</key>
@@ -7322,6 +7396,8 @@ Vous pouvez réactiver les raccourcis d’Apple à tout moment dans Réglages Sy
 	<string>« %@ » garde cette fenêtre à au moins %@ × %@ pixels : elle ne peut pas faire %@ × %@.</string>
 	<key>“%@” keeps this window at most %@ × %@ pixels, so it can't be made %@ × %@.</key>
 	<string>« %@ » limite cette fenêtre à %@ × %@ pixels au plus : elle ne peut pas faire %@ × %@.</string>
+	<key>“%@” was saved by a newer LF Studios. Update LF Studios to open it.</key>
+	<string>« %@ » a été enregistré par une version plus récente de LF Studios. Mettez LF Studios à jour pour l’ouvrir.</string>
 	<key>“%@” — drag to move, drag an edge to trim, click to change it in Audio</key>
 	<string>« %@ » — faites glisser pour déplacer, faites glisser un bord pour ajuster, cliquez pour modifier dans Audio</string>
 	<key>“Made with LF Studios” end card (2s)</key>

@@ -196,6 +196,8 @@
 	<string>音量 %lld%%</string>
 	<key>%lld/%lld configured</key>
 	<string>已设置 %lld/%lld</string>
+	<key>%lld°</key>
+	<string>%lld°</string>
 	<key>(estimated from screen changes — check the speed blocks)</key>
 	<string>（根据屏幕变化估算 — 请检查变速块）</string>
 	<key>+ adds a caption at the playhead. No transcript? Use Or type one at the playhead.</key>
@@ -1018,6 +1020,8 @@
 	<string>%@字幕</string>
 	<key>Captions in the export</key>
 	<string>导出视频中的字幕</string>
+	<key>Captions live in the Captions panel on the right: make them from your voice, type them, translate and style them.</key>
+	<string>字幕位于右侧的“字幕”面板中：可以根据你的语音生成、手动输入、翻译并设置样式。</string>
 	<key>Captions look like this</key>
 	<string>字幕 效果 就是 这样</string>
 	<key>Captions panel ▸ Edit by text (after transcribing).</key>
@@ -1452,6 +1456,8 @@
 	<string>点按一行可编辑其文字；点按它的时间可跳到那里；点按 × 可将其移除。</string>
 	<key>Click a marker to jump there; double-click to rename it; right-click to delete it.</key>
 	<string>点按标记可跳到那里；连按两次可重新命名；右键点按可删除。</string>
+	<key>Click a picture on the player to move it, resize it from a corner, or turn it with the round knob. It lands on the middle and the edges, with a line showing where; hold ⌘ to move it freely.</key>
+	<string>点按播放器中的图片即可移动它、拖移角调整大小，或用圆形旋钮旋转。它会吸附到中间和边缘，并有线条标出位置；按住 ⌘ 可自由移动。</string>
 	<key>Click a project to open it.</key>
 	<string>点按一个项目即可打开。</string>
 	<key>Click a recording in Home, click Edit Video after recording, or click Open video… in Home. The LF Studios menu ▸ Edit Last Recording opens the newest one.</key>
@@ -1878,6 +1884,8 @@
 	<string>齿音消除</string>
 	<key>Decoded details</key>
 	<string>解码详情</string>
+	<key>Default</key>
+	<string>默认</string>
 	<key>Delete</key>
 	<string>删除</string>
 	<key>Delete %lld Captures?</key>
@@ -2106,6 +2114,8 @@
 	<string>在预览中拖移按键，即可放到任意位置</string>
 	<key>Drag the line above the timeline to make it taller or shorter; double-click it for the usual size. LF Studios remembers it.</key>
 	<string>拖移时间线上方的线可以调高或调低时间线；连按两次恢复通常大小。LF Studios 会记住它。</string>
+	<key>Drag the line between two panels to make one wider; double-click it to put it back.</key>
+	<string>拖移两个面板之间的线可以加宽其中一个；连按两次可恢复。</string>
 	<key>Drag the pin to move it; drag an edge to resize it.</key>
 	<string>拖移贴图可移动它；拖移边缘可调整大小。</string>
 	<key>Drag the preview where you want the camera in the video: what it covers of the recording frame is where the camera goes.</key>
@@ -2132,14 +2142,18 @@
 	<string>拖移以移动箭头起点</string>
 	<key>Drag to move. Press Command-C to copy, Escape to close.</key>
 	<string>拖移以移动。按下 Command-C 拷贝，按下 Esc 键关闭。</string>
-	<key>Drag to move; drag a corner to resize</key>
-	<string>拖移以移动；拖移角以调整大小</string>
+	<key>Drag to move; drag a corner to resize, the round knob to turn it</key>
+	<string>拖移可移动；拖移角可调整大小，拖移圆形旋钮可旋转</string>
 	<key>Drag to point the arrow</key>
 	<string>拖移以调整箭头指向</string>
+	<key>Drag to resize the panels. Double-click to reset.</key>
+	<string>拖移可调整面板大小。连按两次可重置。</string>
 	<key>Drag to resize the timeline. Double-click for the usual size.</key>
 	<string>拖移可调整时间线的大小。连按两次恢复通常大小。</string>
 	<key>Drag to select, then adjust  ·  Hold ⇧ as you let go to capture right away  ·  Esc cancels</key>
 	<string>拖移以选择，然后调整  ·  松开时按住 ⇧ 可立即捕捉  ·  按 Esc 键取消</string>
+	<key>Drag to turn it; hold ⇧ for steps of 15°</key>
+	<string>拖移可旋转；按住 ⇧ 以 15° 为步长</string>
 	<key>Draw attention to something, or hide it.</key>
 	<string>突出某样东西，或把它隐藏起来。</string>
 	<key>Draw from the center</key>
@@ -2518,6 +2532,8 @@
 	<string>结束录制并存储。</string>
 	<key>Finish typing</key>
 	<string>完成输入</string>
+	<key>Fit</key>
+	<string>适合</string>
 	<key>Fit a window to the frame needs Accessibility. LF Studios asks for it the first time.</key>
 	<string>“让窗口适配录制框”需要“辅助功能”权限。LF Studios 会在第一次使用时请求。</string>
 	<key>Fit a window to the frame…</key>
@@ -2612,6 +2628,8 @@
 	<string>格式</string>
 	<key>Found %lld</key>
 	<string>找到 %lld 项</string>
+	<key>Four panels: the Library with your media, the player, Properties for whatever is selected, and the timeline.</key>
+	<string>四个面板：包含你的媒体的素材库、播放器、所选内容的属性，以及时间线。</string>
 	<key>Frame</key>
 	<string>边框</string>
 	<key>Frame border: drag to move</key>
@@ -2678,6 +2696,10 @@
 	<string>全屏摄像头片头和片尾</string>
 	<key>Full-screen camera for your intro and outro</key>
 	<string>片头和片尾显示全屏摄像头</string>
+	<key>Full-screen preview</key>
+	<string>全屏预览</string>
+	<key>Full-screen preview shows only the player. Press Esc to leave.</key>
+	<string>全屏预览只显示播放器。按 Esc 退出。</string>
 	<key>Fullscreen</key>
 	<string>全屏</string>
 	<key>GIF</key>
@@ -3252,6 +3274,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>LF Studios 在退出前会一直记住该区域。如果还没有区域，就照常选择一个。</string>
 	<key>LF Studios remembers the last shape, size, and place on each screen.</key>
 	<string>LF Studios 会记住每个屏幕上次使用的比例、大小和位置。</string>
+	<key>LF Studios remembers the layout on this Mac.</key>
+	<string>LF Studios 会在这台 Mac 上记住布局。</string>
 	<key>LF Studios remembers your last shape for the next recording.</key>
 	<string>LF Studios 会记住你上次的形状，用于下一次录制。</string>
 	<key>LF Studios remembers your last tool, color, and sizes for next time.</key>
@@ -3310,10 +3334,18 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>布局</string>
 	<key>Layout also has Screen only and Camera only. The screen and the camera are always both recorded, so you can change your mind later.</key>
 	<string>“布局”中还有“仅屏幕”和“仅摄像头”。屏幕和摄像头始终都会录制，所以你之后可以改变主意。</string>
+	<key>Layout ▸ Player First makes the player as big as it gets. Layout ▸ Reset Layout puts every panel back where it starts.</key>
+	<string>“布局 ▸ 播放器优先”会让播放器尽可能大。“布局 ▸ 重置布局”会让所有面板恢复原位。</string>
+	<key>Layout: how the editor's panels are arranged</key>
+	<string>布局：编辑器面板的排列方式</string>
 	<key>Layout: the camera in a bubble, split screen with the screen, or only one of them. Both are always recorded.</key>
 	<string>布局：摄像头显示在气泡中、与屏幕分屏，或只显示其中之一。两者始终都会录制。</string>
 	<key>Layouts</key>
 	<string>布局</string>
+	<key>Leave full screen</key>
+	<string>退出全屏</string>
+	<key>Leave full screen (Esc)</key>
+	<string>退出全屏（Esc）</string>
 	<key>Leaves out the background: the video, its rounded corners and shadow, and a cut-out camera sit on transparency, ready to place over anything</key>
 	<string>去掉背景：视频及其圆角和阴影，以及抠出的摄像头画面都位于透明层上，可叠放在任何内容之上</string>
 	<key>Left</key>
@@ -3332,6 +3364,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>加黑边，不跟随指针</string>
 	<key>Level</key>
 	<string>级别</string>
+	<key>Library (top left): Media, Audio, Text, Captions, and Transitions.</key>
+	<string>素材库（左上）：媒体、音频、文字、字幕和转场。</string>
 	<key>Light</key>
 	<string>轻度</string>
 	<key>Light &amp; dark appearance</key>
@@ -3468,6 +3502,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>已达到最大长度</string>
 	<key>Meadow</key>
 	<string>草地</string>
+	<key>Media</key>
+	<string>媒体</string>
 	<key>Media:</key>
 	<string>媒体：</string>
 	<key>Medium</key>
@@ -3726,6 +3762,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>初次使用 LF Studios？从这里开始，大约只需五分钟。</string>
 	<key>New zooms</key>
 	<string>新缩放</string>
+	<key>Next frame (→)</key>
+	<string>下一帧（→）</string>
 	<key>Next to the video, LF Studios keeps the details the editor needs, on your Mac.</key>
 	<string>LF Studios 会在你的 Mac 上、视频旁边保存编辑器所需的信息。</string>
 	<key>Nice shot. You're all set.</key>
@@ -3946,6 +3984,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>打开 %@</string>
 	<key>Open Another Video…</key>
 	<string>打开其他视频…</string>
+	<key>Open Captions</key>
+	<string>打开字幕</string>
 	<key>Open Command Center</key>
 	<string>打开命令中心</string>
 	<key>Open Editor After Recording</key>
@@ -3984,6 +4024,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>打开“系统设置 ▸ 隐私与安全性”，向下滚动，然后点按 LF Studios 旁边的“仍要打开”。</string>
 	<key>Open Timeline.fcpxml in Final Cut Pro or DaVinci Resolve, or “Timeline (Premiere).xml” in Premiere Pro.</key>
 	<string>在 Final Cut Pro 或 DaVinci Resolve 中打开 Timeline.fcpxml，或在 Premiere Pro 中打开“Timeline (Premiere).xml”。</string>
+	<key>Open Transitions</key>
+	<string>打开转场</string>
 	<key>Open Video Editor</key>
 	<string>打开视频编辑器</string>
 	<key>Open a folder of files as one project: a recording's folder, a Creative Handoff, or any folder with videos in it.</key>
@@ -4054,6 +4096,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>也可以在时间线上拖移其条块。</string>
 	<key>Or drag the camera on the video: it snaps to the corners, edges and center. Drag its edges and corners to resize it.</key>
 	<string>也可以在视频上拖移摄像头：它会吸附到角、边缘和中间。拖移其边缘和角可调整大小。</string>
+	<key>Or drag the round knob above the picture</key>
+	<string>也可以拖移图片上方的圆形旋钮</string>
 	<key>Or hold ⇧ and drag across the timeline to select a part, then click Cut this part.</key>
 	<string>或者按住 ⇧ 在时间线上拖移以选择一段，然后点按“剪掉这一段”。</string>
 	<key>Or try the Whisper engine instead.</key>
@@ -4100,6 +4144,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>边距</string>
 	<key>Padding, Roundness, and Shadow.</key>
 	<string>边距、圆角和阴影。</string>
+	<key>Panel border</key>
+	<string>面板边界</string>
 	<key>Part of the recording couldn't be read — the file may be damaged. Try exporting a shorter part of the video.</key>
 	<string>录制内容的部分内容无法读取 — 文件可能已损坏。请尝试导出视频中较短的部分。</string>
 	<key>Password</key>
@@ -4232,6 +4278,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>播放视频，并把播放头（标示当前位置的那条线）移到任意时刻。</string>
 	<key>Playback</key>
 	<string>播放</string>
+	<key>Player First</key>
+	<string>播放器优先</string>
+	<key>Player zoom</key>
+	<string>播放器缩放</string>
+	<key>Player: play, step one frame, the time, the aspect ratio, Fit or a closer zoom, and full-screen preview.</key>
+	<string>播放器：播放、逐帧前进、时间、宽高比、适合或放大，以及全屏预览。</string>
 	<key>Playing %lld×</key>
 	<string>正在以 %lld× 速度播放</string>
 	<key>Playing &amp; moving around</key>
@@ -4340,6 +4392,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>预览目标，然后继续设置录制。</string>
 	<key>Previous / next frame</key>
 	<string>上一帧/下一帧</string>
+	<key>Previous frame (←)</key>
+	<string>上一帧（←）</string>
 	<key>Prism Sweep</key>
 	<string>棱镜流光</string>
 	<key>Privacy</key>
@@ -4354,6 +4408,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>项目</string>
 	<key>Projects shows your recordings, screenshots, and saved projects, newest first. Click one to open it. Right-click for Show in Finder, Creative Handoff…, or Delete.</key>
 	<string>“项目”按从新到旧显示你的录制内容、截屏和已存储的项目。点按一项即可打开。右键点按可选择“在‘访达’中显示”“创意交付…”或“删除”。</string>
+	<key>Properties (right): the settings of what you selected, in the Style, Cursor, Zoom, Camera, Captions, and Audio tabs.</key>
+	<string>属性（右侧）：所选内容的设置，位于“样式”“指针”“缩放”“摄像头”“字幕”和“音频”标签中。</string>
 	<key>Pure</key>
 	<string>纯白</string>
 	<key>Purple</key>
@@ -4982,6 +5038,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重置裁剪</string>
 	<key>Reset Defaults</key>
 	<string>恢复默认设置</string>
+	<key>Reset Layout</key>
+	<string>重置布局</string>
 	<key>Reset crop</key>
 	<string>重置裁剪</string>
 	<key>Reset position</key>
@@ -5090,6 +5148,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>波纹</string>
 	<key>Rose Smoke</key>
 	<string>玫瑰烟雾</string>
+	<key>Rotation</key>
+	<string>旋转</string>
 	<key>Rounded</key>
 	<string>圆角</string>
 	<key>Rounded Corners (⌥R)</key>
@@ -5944,6 +6004,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>文字“%@”</string>
 	<key>Text, arrows &amp; highlights</key>
 	<string>文字、箭头和高亮</string>
+	<key>Text, arrows, highlights, blur and pictures go on the video with the tools above the player. Pick one here to add it at the playhead.</key>
+	<string>文本、箭头、高亮、模糊和图片可使用播放器上方的工具添加到视频中。在这里选择一个，即可添加到播放头处。</string>
 	<key>Text, callouts &amp; numbered steps</key>
 	<string>文字、标注气泡和编号步骤</string>
 	<key>Text: %@</key>
@@ -6004,8 +6066,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>LF Studios 项目 — 它需要原始文件：请打开“包含原始文件，以便在 LF Studios 中重新打开”</string>
 	<key>The Undo and Redo buttons in the editor's toolbar.</key>
 	<string>编辑器工具栏中的“撤销”和“重做”按钮。</string>
-	<key>The aspect ratio menu in the video editor's toolbar.</key>
-	<string>视频编辑器工具栏中的宽高比菜单。</string>
+	<key>The aspect ratio menu under the player.</key>
+	<string>播放器下方的宽高比菜单。</string>
 	<key>The bars move out of the frame's way. Drag them anywhere by the handle on the left.</key>
 	<string>两条栏会避开录制框。拖移左侧的把手，可将它们移到任意位置。</string>
 	<key>The bottom of the video editor.</key>
@@ -6050,8 +6112,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>指针、缩放和点按都会随裁剪调整。</string>
 	<key>The dice button picks one at random.</key>
 	<string>骰子按钮会随机选择一个。</string>
-	<key>The editor has six panels on the right: Style, Cursor, Zoom, Camera, Captions, and Audio.</key>
-	<string>编辑器右侧有六个面板：样式、指针、缩放、摄像头、字幕和音频。</string>
+	<key>The editor has the Library on the left, the player in the middle, Properties on the right (Style, Cursor, Zoom, Camera, Captions, and Audio), and the timeline below.</key>
+	<string>编辑器左侧是素材库，中间是播放器，右侧是属性（样式、指针、缩放、摄像头、字幕和音频），下方是时间线。</string>
+	<key>The editor's layout</key>
+	<string>编辑器布局</string>
 	<key>The export carries on in the background (Esc)</key>
 	<string>导出会在后台继续（Esc）</string>
 	<key>The export progress in the editor's toolbar; past exports in File ▸ Recent Exports.</key>
@@ -6208,6 +6272,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>预览上方的工具按钮：文字、箭头、高亮、模糊、聚光灯和图像。</string>
 	<key>The trash button in the bar while recording.</key>
 	<string>录制期间录制栏中的废纸篓按钮。</string>
+	<key>The video editor. Layout in its toolbar arranges the panels.</key>
+	<string>视频编辑器。其工具栏中的“布局”用于排列面板。</string>
 	<key>The video encoder is busy — another app may be recording or exporting. Wait a moment and try again, or choose H.264.</key>
 	<string>视频编码器正忙 — 可能有其他 App 正在录制或导出。请稍候再试，或选择 H.264。</string>
 	<key>The video has exactly the shape you chose, like 1080 × 1920 for 9:16.</key>
@@ -6288,6 +6354,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>此应用</string>
 	<key>This list</key>
 	<string>此列表</string>
+	<key>This project needs a newer version of LF Studios</key>
+	<string>此项目需要更新版本的 LF Studios</string>
 	<key>This recording didn't save key timing or screen changes, so typing can't be found</key>
 	<string>此录制未存储按键时刻或屏幕变化，因此无法找到打字部分</string>
 	<key>This recording didn't save key timing, so typing is estimated from screen changes while the pointer holds still. Check the speed blocks it makes.</key>
@@ -6456,6 +6524,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>转场</string>
 	<key>Transitions &amp; fades</key>
 	<string>转场和淡入淡出</string>
+	<key>Transitions go on the cuts between clips: click the + between two clips on the timeline, or set them all in Style ▸ Transitions.</key>
+	<string>转场位于片段之间的剪辑点：点按时间线上两个片段之间的 +，或在“样式 ▸ 转场”中统一设置。</string>
 	<key>Translate</key>
 	<string>翻译</string>
 	<key>Translate captions</key>
@@ -6532,6 +6602,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>录制前打开麦克风或电脑声音即可录制声音。</string>
 	<key>Turn shaky mouse moves into calm, smooth glides.</key>
 	<string>把抖动的鼠标移动变成平稳、顺滑的滑动。</string>
+	<key>Turn the picture</key>
+	<string>旋转图片</string>
 	<key>Turn the video's sound back on</key>
 	<string>重新打开视频声音</string>
 	<key>Turn what you say into captions, right on your Mac.</key>
@@ -7292,6 +7364,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>“缩放”面板 ▸ 运动：“慢速”“平滑”“快速”或“即时”，另有“动态模糊”。</string>
 	<key>Zoom removed — ⌘Z to undo</key>
 	<string>已移除缩放 — 按 ⌘Z 撤销</string>
+	<key>Zoom the player</key>
+	<string>缩放播放器</string>
 	<key>Zoom to %@ (key %@)</key>
 	<string>缩放到 %@（按键 %@）</string>
 	<key>Zoom — drag to move, drag an edge to resize, click to edit</key>
@@ -7480,6 +7554,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>“%@”要求此窗口至少为 %@ × %@ 像素，因此无法调整为 %@ × %@。</string>
 	<key>“%@” keeps this window at most %@ × %@ pixels, so it can't be made %@ × %@.</key>
 	<string>“%@”限制此窗口最大为 %@ × %@ 像素，因此无法调整为 %@ × %@。</string>
+	<key>“%@” was saved by a newer LF Studios. Update LF Studios to open it.</key>
+	<string>“%@”是用更新版本的 LF Studios 存储的。请更新 LF Studios 后再打开。</string>
 	<key>“%@” — drag to move, drag an edge to trim, click to change it in Audio</key>
 	<string>“%@” — 拖移可移动，拖移边缘可修剪，点按可在“音频”中更改</string>
 	<key>“Made with LF Studios” end card (2s)</key>

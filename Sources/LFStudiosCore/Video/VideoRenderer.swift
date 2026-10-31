@@ -935,7 +935,7 @@ final class VideoFrameRenderer {
             }
             opacity *= min(max(image.opacity, 0), 1)
             guard opacity > 0.001 else { continue }
-            let placed = VideoImageOverlayRenderer.placed(picture, in: overlay.effect.imageRect(in: outputSize), opacity: opacity)
+            let placed = VideoImageOverlayRenderer.placed(picture, in: overlay.effect.imageRect(in: outputSize), opacity: opacity, rotation: image.keptRotation)
             scene = placed.composited(over: scene)
         }
         return scene

@@ -363,6 +363,15 @@ enum Settings {
         }
     }
 
+    /// The video editor's Library and Properties widths, once changed
+    /// (nil: the Default layout).
+    static var videoEditorPanels: VideoEditorPanelLayout? {
+        get { defaults.data(forKey: "videoEditorPanels").flatMap { try? JSONDecoder().decode(VideoEditorPanelLayout.self, from: $0) } }
+        set {
+            if let newValue, let data = try? JSONEncoder().encode(newValue) { defaults.set(data, forKey: "videoEditorPanels") } else { defaults.removeObject(forKey: "videoEditorPanels") }
+        }
+    }
+
     static var recordingCameraDeviceID: String {
         get { defaults.string(forKey: "recordingCameraDeviceID") ?? "" }
         set { defaults.set(newValue, forKey: "recordingCameraDeviceID") }

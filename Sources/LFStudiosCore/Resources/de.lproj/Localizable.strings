@@ -138,6 +138,8 @@
 	<string>Lautstärke %lld %%</string>
 	<key>%lld/%lld configured</key>
 	<string>%lld/%lld eingerichtet</string>
+	<key>%lld°</key>
+	<string>%lld°</string>
 	<key>(estimated from screen changes — check the speed blocks)</key>
 	<string>(geschätzt anhand von Bildschirmänderungen – prüfe die Tempoblöcke)</string>
 	<key>+ adds a caption at the playhead. No transcript? Use Or type one at the playhead.</key>
@@ -950,6 +952,8 @@
 	<string>Untertitel auf %@</string>
 	<key>Captions in the export</key>
 	<string>Untertitel im Export</string>
+	<key>Captions live in the Captions panel on the right: make them from your voice, type them, translate and style them.</key>
+	<string>Untertitel findest du im Panel „Untertitel“ rechts: Erstelle sie aus deiner Stimme, tippe, übersetze und gestalte sie.</string>
 	<key>Captions look like this</key>
 	<string>So sehen Untertitel aus</string>
 	<key>Captions panel ▸ Edit by text (after transcribing).</key>
@@ -1382,6 +1386,8 @@
 	<string>Klicke auf eine Zeile, um ihre Wörter zu bearbeiten; klicke auf ihre Zeit, um dorthin zu springen; × entfernt sie.</string>
 	<key>Click a marker to jump there; double-click to rename it; right-click to delete it.</key>
 	<string>Klicke auf einen Marker, um dorthin zu springen; doppelklicke, um ihn umzubenennen; klicke mit der rechten Maustaste, um ihn zu löschen.</string>
+	<key>Click a picture on the player to move it, resize it from a corner, or turn it with the round knob. It lands on the middle and the edges, with a line showing where; hold ⌘ to move it freely.</key>
+	<string>Klicke im Player auf ein Bild, um es zu verschieben, an einer Ecke die Größe zu ändern oder es mit dem runden Knopf zu drehen. Es rastet in der Mitte und an den Rändern ein, eine Linie zeigt wo; halte ⌘, um es frei zu bewegen.</string>
 	<key>Click a project to open it.</key>
 	<string>Klicke auf ein Projekt, um es zu öffnen.</string>
 	<key>Click a recording in Home, click Edit Video after recording, or click Open video… in Home. The LF Studios menu ▸ Edit Last Recording opens the newest one.</key>
@@ -1806,6 +1812,8 @@
 	<string>De-Esser</string>
 	<key>Decoded details</key>
 	<string>Decodierte Details</string>
+	<key>Default</key>
+	<string>Standard</string>
 	<key>Delete</key>
 	<string>Löschen</string>
 	<key>Delete (⌫)</key>
@@ -2030,6 +2038,8 @@
 	<string>Zieh die Tasten in der Vorschau an eine beliebige Stelle</string>
 	<key>Drag the line above the timeline to make it taller or shorter; double-click it for the usual size. LF Studios remembers it.</key>
 	<string>Zieh die Linie über der Timeline, um sie höher oder niedriger zu machen; ein Doppelklick stellt die übliche Größe her. LF Studios merkt sich das.</string>
+	<key>Drag the line between two panels to make one wider; double-click it to put it back.</key>
+	<string>Zieh die Linie zwischen zwei Panels, um eines breiter zu machen; ein Doppelklick stellt sie wieder her.</string>
 	<key>Drag the pin to move it; drag an edge to resize it.</key>
 	<string>Zieh das angeheftete Bild, um es zu bewegen; zieh an einem Rand, um die Größe zu ändern.</string>
 	<key>Drag the preview where you want the camera in the video: what it covers of the recording frame is where the camera goes.</key>
@@ -2056,14 +2066,18 @@
 	<string>Ziehen, um den Anfang des Pfeils zu verschieben</string>
 	<key>Drag to move. Press Command-C to copy, Escape to close.</key>
 	<string>Ziehen zum Bewegen. Drücke Befehl-C zum Kopieren und Escape zum Schließen.</string>
-	<key>Drag to move; drag a corner to resize</key>
-	<string>Zum Bewegen ziehen; zum Ändern der Größe an einer Ecke ziehen</string>
+	<key>Drag to move; drag a corner to resize, the round knob to turn it</key>
+	<string>Ziehen zum Verschieben; an einer Ecke ziehen für die Größe, am runden Knopf zum Drehen</string>
 	<key>Drag to point the arrow</key>
 	<string>Ziehen, um den Pfeil auszurichten</string>
+	<key>Drag to resize the panels. Double-click to reset.</key>
+	<string>Ziehen, um die Panels anzupassen. Doppelklick zum Zurücksetzen.</string>
 	<key>Drag to resize the timeline. Double-click for the usual size.</key>
 	<string>Ziehen, um die Größe der Timeline zu ändern. Doppelklick für die übliche Größe.</string>
 	<key>Drag to select, then adjust  ·  Hold ⇧ as you let go to capture right away  ·  Esc cancels</key>
 	<string>Ziehen zum Auswählen, dann anpassen  ·  Beim Loslassen ⇧ halten, um sofort aufzunehmen  ·  Esc bricht ab</string>
+	<key>Drag to turn it; hold ⇧ for steps of 15°</key>
+	<string>Ziehen zum Drehen; halte ⇧ für Schritte von 15°</string>
 	<key>Draw attention to something, or hide it.</key>
 	<string>Lenk den Blick auf etwas – oder verberge es.</string>
 	<key>Draw from the center</key>
@@ -2438,6 +2452,8 @@
 	<string>Beende die Aufzeichnung und sichere sie.</string>
 	<key>Finish typing</key>
 	<string>Tippen beenden</string>
+	<key>Fit</key>
+	<string>Einpassen</string>
 	<key>Fit a window to the frame needs Accessibility. LF Studios asks for it the first time.</key>
 	<string>„Fenster an Rahmen anpassen …“ braucht die Bedienungshilfen. LF Studios fragt beim ersten Mal danach.</string>
 	<key>Fit a window to the frame…</key>
@@ -2532,6 +2548,8 @@
 	<string>Format</string>
 	<key>Found %lld</key>
 	<string>%lld gefunden</string>
+	<key>Four panels: the Library with your media, the player, Properties for whatever is selected, and the timeline.</key>
+	<string>Vier Panels: die Bibliothek mit deinen Medien, der Player, Eigenschaften für das Ausgewählte und die Timeline.</string>
 	<key>Frame</key>
 	<string>Rahmen</string>
 	<key>Frame border: drag to move</key>
@@ -2596,6 +2614,10 @@
 	<string>Intro und Outro mit Kamera im Vollbild</string>
 	<key>Full-screen camera for your intro and outro</key>
 	<string>Kamera im Vollbild für Intro und Outro</string>
+	<key>Full-screen preview</key>
+	<string>Vorschau im Vollbild</string>
+	<key>Full-screen preview shows only the player. Press Esc to leave.</key>
+	<string>Die Vorschau im Vollbild zeigt nur den Player. Mit Esc verlässt du sie.</string>
 	<key>Fullscreen</key>
 	<string>Vollbild</string>
 	<key>GIF</key>
@@ -3152,6 +3174,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>LF Studios merkt sich den Bereich, bis es beendet wird. Gibt es noch keinen Bereich, wählst du wie gewohnt einen aus.</string>
 	<key>LF Studios remembers the last shape, size, and place on each screen.</key>
 	<string>LF Studios merkt sich auf jedem Bildschirm die letzte Form, Größe und Position.</string>
+	<key>LF Studios remembers the layout on this Mac.</key>
+	<string>LF Studios merkt sich das Layout auf diesem Mac.</string>
 	<key>LF Studios remembers your last shape for the next recording.</key>
 	<string>LF Studios merkt sich deine letzte Form für die nächste Aufnahme.</string>
 	<key>LF Studios remembers your last tool, color, and sizes for next time.</key>
@@ -3208,10 +3232,18 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Layout</string>
 	<key>Layout also has Screen only and Camera only. The screen and the camera are always both recorded, so you can change your mind later.</key>
 	<string>Unter „Layout“ gibt es auch „Nur Bildschirm“ und „Nur Kamera“. Bildschirm und Kamera werden immer beide aufgenommen, du kannst es dir also später anders überlegen.</string>
+	<key>Layout ▸ Player First makes the player as big as it gets. Layout ▸ Reset Layout puts every panel back where it starts.</key>
+	<string>Layout ▸ Player zuerst macht den Player so groß wie möglich. Layout ▸ Layout zurücksetzen stellt alle Panels wieder her.</string>
+	<key>Layout: how the editor's panels are arranged</key>
+	<string>Layout: wie die Panels des Editors angeordnet sind</string>
 	<key>Layout: the camera in a bubble, split screen with the screen, or only one of them. Both are always recorded.</key>
 	<string>Layout: die Kamera in einer Blase, geteilter Bildschirm mit dem Bildschirm oder nur eines von beiden. Beides wird immer aufgenommen.</string>
 	<key>Layouts</key>
 	<string>Layouts</string>
+	<key>Leave full screen</key>
+	<string>Vollbild beenden</string>
+	<key>Leave full screen (Esc)</key>
+	<string>Vollbild beenden (Esc)</string>
 	<key>Leaves out the background: the video, its rounded corners and shadow, and a cut-out camera sit on transparency, ready to place over anything</key>
 	<string>Lässt den Hintergrund weg: Das Video mit seinen abgerundeten Ecken und dem Schatten und eine freigestellte Kamera liegen auf Transparenz – bereit, über alles gelegt zu werden</string>
 	<key>Left</key>
@@ -3230,6 +3262,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Mit Rändern einpassen statt dem Zeiger folgen</string>
 	<key>Level</key>
 	<string>Stufe</string>
+	<key>Library (top left): Media, Audio, Text, Captions, and Transitions.</key>
+	<string>Bibliothek (oben links): Medien, Audio, Text, Untertitel und Übergänge.</string>
 	<key>Light</key>
 	<string>Leicht</string>
 	<key>Light &amp; dark appearance</key>
@@ -3366,6 +3400,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Maximale Länge erreicht</string>
 	<key>Meadow</key>
 	<string>Wiese</string>
+	<key>Media</key>
+	<string>Medien</string>
 	<key>Media:</key>
 	<string>Medien:</string>
 	<key>Medium</key>
@@ -3624,6 +3660,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Neu bei LF Studios? Fang hier an – es dauert etwa fünf Minuten.</string>
 	<key>New zooms</key>
 	<string>Neue Zooms</string>
+	<key>Next frame (→)</key>
+	<string>Nächstes Bild (→)</string>
 	<key>Next to the video, LF Studios keeps the details the editor needs, on your Mac.</key>
 	<string>Neben dem Video speichert LF Studios die Details, die der Editor braucht, auf deinem Mac.</string>
 	<key>Nice shot. You're all set.</key>
@@ -3844,6 +3882,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>%@ öffnen</string>
 	<key>Open Another Video…</key>
 	<string>Anderes Video öffnen …</string>
+	<key>Open Captions</key>
+	<string>Untertitel öffnen</string>
 	<key>Open Command Center</key>
 	<string>Kommandozentrale öffnen</string>
 	<key>Open Editor After Recording</key>
@@ -3882,6 +3922,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Öffne „Systemeinstellungen“ ▸ „Datenschutz &amp; Sicherheit“, scrolle nach unten und klicke neben LF Studios auf „Dennoch öffnen“.</string>
 	<key>Open Timeline.fcpxml in Final Cut Pro or DaVinci Resolve, or “Timeline (Premiere).xml” in Premiere Pro.</key>
 	<string>Öffne Timeline.fcpxml in Final Cut Pro oder DaVinci Resolve, oder „Timeline (Premiere).xml“ in Premiere Pro.</string>
+	<key>Open Transitions</key>
+	<string>Übergänge öffnen</string>
 	<key>Open Video Editor</key>
 	<string>Video-Editor öffnen</string>
 	<key>Open a folder of files as one project: a recording's folder, a Creative Handoff, or any folder with videos in it.</key>
@@ -3952,6 +3994,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Oder zieh seinen Balken auf der Zeitleiste.</string>
 	<key>Or drag the camera on the video: it snaps to the corners, edges and center. Drag its edges and corners to resize it.</key>
 	<string>Oder zieh die Kamera im Video: Sie rastet an Ecken, Rändern und der Mitte ein. Zieh an ihren Rändern und Ecken, um die Größe zu ändern.</string>
+	<key>Or drag the round knob above the picture</key>
+	<string>Oder zieh am runden Knopf über dem Bild</string>
 	<key>Or hold ⇧ and drag across the timeline to select a part, then click Cut this part.</key>
 	<string>Oder halte ⇧ gedrückt und zieh über die Zeitleiste, um einen Abschnitt auszuwählen. Klicke dann auf „Abschnitt herausschneiden“.</string>
 	<key>Or try the Whisper engine instead.</key>
@@ -3998,6 +4042,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Rand</string>
 	<key>Padding, Roundness, and Shadow.</key>
 	<string>Rand, Rundung und Schatten.</string>
+	<key>Panel border</key>
+	<string>Panel-Rand</string>
 	<key>Part of the recording couldn't be read — the file may be damaged. Try exporting a shorter part of the video.</key>
 	<string>Ein Teil der Aufnahme konnte nicht gelesen werden – die Datei ist eventuell beschädigt. Exportiere einen kürzeren Teil des Videos.</string>
 	<key>Password</key>
@@ -4128,6 +4174,12 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Spiel das Video ab und bewege die Abspielposition (die Linie, die zeigt, wo du bist) an jede beliebige Stelle.</string>
 	<key>Playback</key>
 	<string>Wiedergabe</string>
+	<key>Player First</key>
+	<string>Player zuerst</string>
+	<key>Player zoom</key>
+	<string>Player-Zoom</string>
+	<key>Player: play, step one frame, the time, the aspect ratio, Fit or a closer zoom, and full-screen preview.</key>
+	<string>Player: Abspielen, ein Bild weiter, die Zeit, das Seitenverhältnis, Einpassen oder ein näherer Zoom und die Vorschau im Vollbild.</string>
 	<key>Playing %lld×</key>
 	<string>Wiedergabe mit %lld×</string>
 	<key>Playing &amp; moving around</key>
@@ -4236,6 +4288,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Vorschau prüfen, dann weiter zur Aufzeichnung.</string>
 	<key>Previous / next frame</key>
 	<string>Vorheriges/nächstes Bild</string>
+	<key>Previous frame (←)</key>
+	<string>Vorheriges Bild (←)</string>
 	<key>Prism Sweep</key>
 	<string>Prismenschwung</string>
 	<key>Privacy</key>
@@ -4250,6 +4304,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Projekte</string>
 	<key>Projects shows your recordings, screenshots, and saved projects, newest first. Click one to open it. Right-click for Show in Finder, Creative Handoff…, or Delete.</key>
 	<string>„Projekte“ zeigt deine Aufnahmen, Bildschirmfotos und gesicherten Projekte, die neuesten zuerst. Klicke auf eines, um es zu öffnen. Mit einem Rechtsklick findest du „Im Finder zeigen“, „Kreative Übergabe …“ und „Löschen“.</string>
+	<key>Properties (right): the settings of what you selected, in the Style, Cursor, Zoom, Camera, Captions, and Audio tabs.</key>
+	<string>Eigenschaften (rechts): die Einstellungen des Ausgewählten in den Tabs Stil, Zeiger, Zoom, Kamera, Untertitel und Audio.</string>
 	<key>Pure</key>
 	<string>Rein</string>
 	<key>Purple</key>
@@ -4862,6 +4918,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Beschnitt zurücksetzen</string>
 	<key>Reset Defaults</key>
 	<string>Standards wiederherstellen</string>
+	<key>Reset Layout</key>
+	<string>Layout zurücksetzen</string>
 	<key>Reset crop</key>
 	<string>Zuschnitt zurücksetzen</string>
 	<key>Reset position</key>
@@ -4966,6 +5024,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Welle</string>
 	<key>Rose Smoke</key>
 	<string>Rosenrauch</string>
+	<key>Rotation</key>
+	<string>Drehung</string>
 	<key>Rounded</key>
 	<string>Abgerundet</string>
 	<key>Rounded Corners (⌥R)</key>
@@ -5804,6 +5864,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Text „%@“</string>
 	<key>Text, arrows &amp; highlights</key>
 	<string>Text, Pfeile &amp; Markierungen</string>
+	<key>Text, arrows, highlights, blur and pictures go on the video with the tools above the player. Pick one here to add it at the playhead.</key>
+	<string>Text, Pfeile, Markierungen, Weichzeichner und Bilder kommen mit den Werkzeugen über dem Player ins Video. Wähle hier eines, um es an der Abspielposition hinzuzufügen.</string>
 	<key>Text, callouts &amp; numbered steps</key>
 	<string>Text, Sprechblasen &amp; nummerierte Schritte</string>
 	<key>Text: %@</key>
@@ -5864,8 +5926,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Das LF-Studios-Projekt – es braucht die Originaldateien: Schalte „Originale beilegen, damit es sich in LF Studios wieder öffnet“ ein</string>
 	<key>The Undo and Redo buttons in the editor's toolbar.</key>
 	<string>Die Knöpfe „Widerrufen“ und „Wiederholen“ in der Symbolleiste des Editors.</string>
-	<key>The aspect ratio menu in the video editor's toolbar.</key>
-	<string>Das Menü für das Seitenverhältnis in der Symbolleiste des Video-Editors.</string>
+	<key>The aspect ratio menu under the player.</key>
+	<string>Das Menü für das Seitenverhältnis unter dem Player.</string>
 	<key>The bars move out of the frame's way. Drag them anywhere by the handle on the left.</key>
 	<string>Die Leisten weichen dem Rahmen aus. Zieh sie am Griff links an eine beliebige Stelle.</string>
 	<key>The bottom of the video editor.</key>
@@ -5910,8 +5972,10 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Zeiger, Zooms und Klicks folgen dem Beschnitt.</string>
 	<key>The dice button picks one at random.</key>
 	<string>Der Würfelknopf wählt zufällig eins aus.</string>
-	<key>The editor has six panels on the right: Style, Cursor, Zoom, Camera, Captions, and Audio.</key>
-	<string>Der Editor hat rechts sechs Panels: Stil, Zeiger, Zoom, Kamera, Untertitel und Audio.</string>
+	<key>The editor has the Library on the left, the player in the middle, Properties on the right (Style, Cursor, Zoom, Camera, Captions, and Audio), and the timeline below.</key>
+	<string>Der Editor hat links die Bibliothek, in der Mitte den Player, rechts die Eigenschaften (Stil, Zeiger, Zoom, Kamera, Untertitel und Audio) und unten die Timeline.</string>
+	<key>The editor's layout</key>
+	<string>Das Layout des Editors</string>
 	<key>The export carries on in the background (Esc)</key>
 	<string>Der Export läuft im Hintergrund weiter (Esc)</string>
 	<key>The export progress in the editor's toolbar; past exports in File ▸ Recent Exports.</key>
@@ -6068,6 +6132,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Die Werkzeugknöpfe über der Vorschau: Text, Pfeil, Markierung, Weichzeichnen, Fokus und Bild.</string>
 	<key>The trash button in the bar while recording.</key>
 	<string>Die Papierkorbtaste in der Leiste während der Aufzeichnung.</string>
+	<key>The video editor. Layout in its toolbar arranges the panels.</key>
+	<string>Der Video-Editor. „Layout“ in seiner Symbolleiste ordnet die Panels an.</string>
 	<key>The video encoder is busy — another app may be recording or exporting. Wait a moment and try again, or choose H.264.</key>
 	<string>Der Video-Encoder ist belegt – eventuell zeichnet oder exportiert gerade eine andere App. Warte einen Moment und versuche es erneut, oder wähle H.264.</string>
 	<key>The video has exactly the shape you chose, like 1080 × 1920 for 9:16.</key>
@@ -6148,6 +6214,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Diese App</string>
 	<key>This list</key>
 	<string>Diese Liste</string>
+	<key>This project needs a newer version of LF Studios</key>
+	<string>Dieses Projekt braucht eine neuere Version von LF Studios</string>
 	<key>This recording didn't save key timing or screen changes, so typing can't be found</key>
 	<string>Diese Aufnahme hat weder Tastenzeitpunkte noch Bildschirmänderungen gesichert, daher lässt sich kein Tippen finden</string>
 	<key>This recording didn't save key timing, so typing is estimated from screen changes while the pointer holds still. Check the speed blocks it makes.</key>
@@ -6314,6 +6382,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Übergänge</string>
 	<key>Transitions &amp; fades</key>
 	<string>Übergänge &amp; Blenden</string>
+	<key>Transitions go on the cuts between clips: click the + between two clips on the timeline, or set them all in Style ▸ Transitions.</key>
+	<string>Übergänge gehören auf die Schnitte zwischen Clips: Klicke auf das + zwischen zwei Clips in der Timeline oder lege sie alle unter Stil ▸ Übergänge fest.</string>
 	<key>Translate</key>
 	<string>Übersetzen</string>
 	<key>Translate captions</key>
@@ -6390,6 +6460,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Schalte vor der Aufzeichnung das Mikrofon oder den Systemton ein, um Ton aufzuzeichnen.</string>
 	<key>Turn shaky mouse moves into calm, smooth glides.</key>
 	<string>Mach aus zittrigen Mausbewegungen ruhiges, sanftes Gleiten.</string>
+	<key>Turn the picture</key>
+	<string>Bild drehen</string>
 	<key>Turn the video's sound back on</key>
 	<string>Ton des Videos wieder einschalten</string>
 	<key>Turn what you say into captions, right on your Mac.</key>
@@ -7140,6 +7212,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Panel „Zoom“ ▸ Bewegung: Langsam, Sanft, Schnell oder Sofort, dazu Bewegungsunschärfe.</string>
 	<key>Zoom removed — ⌘Z to undo</key>
 	<string>Zoom entfernt – ⌘Z zum Widerrufen</string>
+	<key>Zoom the player</key>
+	<string>Player zoomen</string>
 	<key>Zoom to %@ (key %@)</key>
 	<string>Auf %@ zoomen (Taste %@)</string>
 	<key>Zoom — drag to move, drag an edge to resize, click to edit</key>
@@ -7328,6 +7402,8 @@ Du kannst Apples Kurzbefehle jederzeit unter „Systemeinstellungen“ → „Ta
 	<string>„%@“ hält dieses Fenster mindestens %@ × %@ Pixel groß, daher kann es nicht %@ × %@ werden.</string>
 	<key>“%@” keeps this window at most %@ × %@ pixels, so it can't be made %@ × %@.</key>
 	<string>„%@“ hält dieses Fenster höchstens %@ × %@ Pixel groß, daher kann es nicht %@ × %@ werden.</string>
+	<key>“%@” was saved by a newer LF Studios. Update LF Studios to open it.</key>
+	<string>„%@“ wurde mit einer neueren Version von LF Studios gesichert. Aktualisiere LF Studios, um es zu öffnen.</string>
 	<key>“%@” — drag to move, drag an edge to trim, click to change it in Audio</key>
 	<string>„%@“ – ziehen zum Verschieben, Rand ziehen zum Trimmen, klicken zum Ändern in „Audio“</string>
 	<key>“Made with LF Studios” end card (2s)</key>

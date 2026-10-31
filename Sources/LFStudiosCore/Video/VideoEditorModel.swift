@@ -246,6 +246,12 @@ final class VideoEditorModel: ObservableObject {
     @Published var timelineZoom: Double = 1 {
         didSet { refreshTimeline() }
     }
+    /// The Library panel's tab.
+    @Published var libraryTab: VideoLibraryTab = .media
+    /// The player's zoom: 1 fits it, more looks closer (it scrolls).
+    @Published var previewZoom: CGFloat = 1
+    /// Full-screen preview: only the player shows (Esc leaves).
+    @Published var isPlayerFullScreen = false
     /// Small, Medium or Large lanes: chosen (remembered on this Mac), or
     /// the start for the window's height (`fitTrackHeight`).
     @Published private(set) var timelineTrackHeight: VideoTimelineTrackHeight = Settings.videoTimelineTrackHeight ?? .medium {

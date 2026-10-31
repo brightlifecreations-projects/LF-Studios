@@ -7,10 +7,21 @@ struct VideoEditorRootView: View {
     /// The divider between the preview and the timeline, once dragged
     /// (nil: where it starts for this window, VideoEditorLayout).
     @State private var chosenFraction = Settings.videoTimelineFraction
+    /// The Library, player and Properties widths (VideoEditorPanels.swift).
+    @ObservedObject private var panels = VideoEditorPanelStore.shared
+    /// Where the panels were when a border drag began.
+    @State private var panelDragStart: VideoEditorPanelLayout?
 
     var body: some View {
         GeometryReader { proxy in
-            editor(height: proxy.size.height)
+            editor(height: proxy.size.height, width: proxy.size.width)
+                // Full-screen preview: the window goes full screen with it.
+                .onChange(of: model.isPlayerFullScreen) { on in
+                    guard let window = NSApp.keyWindow else { return }
+                    if window.styleMask.contains(.fullScreen) != on { window.toggleFullScreen(nil) }
+                }
+                // Layout ▸ Reset Layout: the timeline where it starts, too.
+                .onReceive(NotificationCenter.default.publisher(for: .lfstudiosEditorLayoutReset)) { _ in chosenFraction = nil }
                 // Small tracks on a short window, until one is chosen.
                 .onAppear { model.fitTrackHeight(windowHeight: proxy.size.height) }
                 .onChange(of: proxy.size.height) { model.fitTrackHeight(windowHeight: $0) }
@@ -27,58 +38,105 @@ struct VideoEditorRootView: View {
         return tipsDismissed && !model.suggestsTranscript ? 22 : 58
     }
 
-    private func editor(height: CGFloat) -> some View {
-        ZStack {
+    /// The player: the picture tools, the preview, and the notes under it.
+    private var playerArea: some View {
+        ZStack(alignment: .top) {
+            VideoEditorTheme.stage
+            VStack(spacing: 0) {
+                // The picture tools, centered above the preview.
+                if !model.isCropping {
+                    VideoToolDock(model: model)
+                        .padding(.top, 12)
+                }
+                VideoStageView(model: model)
+                    .padding(.horizontal, 28)
+                    .padding(.top, model.isCropping ? 22 : 12)
+                    .padding(.bottom, stageBottomInset)
+            }
+            // Vertical videos: the phone overlay's button, above
+            // the preview on the right.
+            if model.canShowPhoneOverlay, !model.isCropping {
+                VideoPhoneOverlayButton(model: model)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                    .padding(.top, 16)
+                    .padding(.trailing, 20)
+            }
+            // With the export sheet up, the message shows on the
+            // sheet instead (see VideoOverlayNotice).
+            if let notice = model.notice, !model.isExportPresented {
+                VideoNoticePill(notice: notice)
+                    .padding(.top, model.isCropping ? 12 : 80)
+                    .transition(.move(edge: .top).combined(with: .opacity))
+            }
+            VStack {
+                Spacer()
+                if model.isCropping {
+                    VideoCropBar(model: model)
+                        .padding(.bottom, 12)
+                } else if model.suggestsTranscript {
+                    VideoTranscribeSuggestion(model: model)
+                        .padding(.bottom, 10)
+                } else {
+                    VideoTipsBar()
+                        .padding(.bottom, 10)
+                }
+            }
+        }
+    }
+
+    /// A border between panels dragged by `delta`: the Library's (left)
+    /// or Properties' (right), kept in range (VideoEditorPanelLayout).
+    private func dragBorder(library: Bool, by delta: CGFloat, done: Bool, width: CGFloat) {
+        let start = panelDragStart ?? panels.layout
+        if panelDragStart == nil { panelDragStart = start }
+        var moved = start
+        let fitted = start.fitted(windowWidth: width)
+        if library {
+            moved.library = min(max(fitted.library + delta, VideoEditorPanelLayout.libraryRange.lowerBound), min(VideoEditorPanelLayout.libraryRange.upperBound, fitted.library + fitted.player - VideoEditorPanelLayout.minimumPlayer))
+        } else {
+            moved.properties = min(max(fitted.properties - delta, VideoEditorPanelLayout.propertiesRange.lowerBound), min(VideoEditorPanelLayout.propertiesRange.upperBound, fitted.properties + fitted.player - VideoEditorPanelLayout.minimumPlayer))
+        }
+        panels.set(moved, remember: done)
+        if done { panelDragStart = nil }
+    }
+
+    private func editor(height: CGFloat, width: CGFloat) -> some View {
+        let widths = panels.layout.fitted(windowWidth: width)
+        return ZStack {
+            if model.isPlayerFullScreen {
+                // Full-screen preview: the player alone (Esc leaves).
+                VStack(spacing: 0) {
+                    playerArea
+                    VideoPlayerBar(model: model, clock: model.clock)
+                }
+                .background(VideoEditorTheme.stage)
+            } else {
             VStack(spacing: 0) {
                 VideoEditorToolbar(model: model)
                     .frame(height: 52)
                 Rectangle().fill(VideoEditorTheme.hairline).frame(height: 1)
                 HStack(spacing: 0) {
-                    ZStack(alignment: .top) {
-                        VideoEditorTheme.stage
-                        VStack(spacing: 0) {
-                            // The picture tools, centered above the preview.
-                            if !model.isCropping {
-                                VideoToolDock(model: model)
-                                    .padding(.top, 12)
-                            }
-                            VideoStageView(model: model)
-                                .padding(.horizontal, 28)
-                                .padding(.top, model.isCropping ? 22 : 12)
-                                .padding(.bottom, stageBottomInset)
-                        }
-                        // Vertical videos: the phone overlay's button, above
-                        // the preview on the right.
-                        if model.canShowPhoneOverlay, !model.isCropping {
-                            VideoPhoneOverlayButton(model: model)
-                                .frame(maxWidth: .infinity, alignment: .trailing)
-                                .padding(.top, 16)
-                                .padding(.trailing, 20)
-                        }
-                        // With the export sheet up, the message shows on the
-                        // sheet instead (see VideoOverlayNotice).
-                        if let notice = model.notice, !model.isExportPresented {
-                            VideoNoticePill(notice: notice)
-                                .padding(.top, model.isCropping ? 12 : 80)
-                                .transition(.move(edge: .top).combined(with: .opacity))
-                        }
-                        VStack {
-                            Spacer()
-                            if model.isCropping {
-                                VideoCropBar(model: model)
-                                    .padding(.bottom, 12)
-                            } else if model.suggestsTranscript {
-                                VideoTranscribeSuggestion(model: model)
-                                    .padding(.bottom, 10)
-                            } else {
-                                VideoTipsBar()
-                                    .padding(.bottom, 10)
-                            }
-                        }
+                    VideoLibraryPanel(model: model)
+                        .frame(width: widths.library)
+                    VideoPanelBorder(
+                        moved: { delta, done in dragBorder(library: true, by: delta, done: done, width: width) },
+                        reset: { panels.set(VideoEditorPanelLayout(library: VideoEditorPanelLayout.standard.library, properties: panels.layout.properties), remember: true) }
+                    )
+                    VStack(spacing: 0) {
+                        playerArea
+                        Rectangle().fill(VideoEditorTheme.hairline).frame(height: 1)
+                        VideoPlayerBar(model: model, clock: model.clock)
+                            .background(VideoEditorTheme.panel)
                     }
-                    Rectangle().fill(VideoEditorTheme.hairline).frame(width: 1)
+                    .frame(width: widths.player)
+                    VideoPanelBorder(
+                        moved: { delta, done in dragBorder(library: false, by: delta, done: done, width: width) },
+                        reset: { panels.set(VideoEditorPanelLayout(library: panels.layout.library, properties: VideoEditorPanelLayout.standard.properties), remember: true) }
+                    )
+                    // Properties: the selected thing's settings (the panels
+                    // that were the inspector).
                     VideoInspectorView(model: model)
-                        .frame(width: 318)
+                        .frame(width: widths.properties)
                 }
                 VideoTimelineDivider(
                     fraction: VideoEditorLayout.fraction(chosen: chosenFraction, windowHeight: height),
@@ -97,6 +155,7 @@ struct VideoEditorRootView: View {
             }
             // Behind a sheet or the palette, VoiceOver stays in front.
             .accessibilityHidden(model.hasOverlayOpen || !model.isReady)
+            }
 
             if model.isExportPresented {
                 VideoExportSheet(model: model)
@@ -213,9 +272,9 @@ struct VideoEditorToolbar: View {
                 .buttonStyle(.plain)
                 .help(L("Crop the recording — trim away toolbars or empty space"))
 
-                aspectMenu
                 // Adapt to this ratio, Export all ratios (VideoRatioEditor.swift).
                 VideoRatioButtons(model: model)
+                VideoLayoutMenu()
 
                 HStack(spacing: 2) {
                     Button { model.undo() } label: {
@@ -280,8 +339,14 @@ struct VideoEditorToolbar: View {
         parts.append("\(Int(model.sourceFrameRate.rounded())) fps")
         return parts.joined(separator: " · ")
     }
+}
 
-    private var aspectMenu: some View {
+/// The aspect ratio menu, with Fill the Frame, Adapt to This Ratio and
+/// Export All Ratios… (under the player since 1.13.0).
+struct VideoAspectMenu: View {
+    @ObservedObject var model: VideoEditorModel
+
+    var body: some View {
         Menu {
             ForEach(VideoDemoProject.AspectPreset.allCases) { preset in
                 Button {
@@ -577,7 +642,8 @@ extension VideoEditorModel {
             deleteSelection()
             return true
         case 53:
-            if selection != .none { selection = .none } else if isPlaying { pause() }
+            // Full-screen preview first, then the selection, then playback.
+            if isPlayerFullScreen { isPlayerFullScreen = false } else if selection != .none { selection = .none } else if isPlaying { pause() }
             return true
         default:
             break
