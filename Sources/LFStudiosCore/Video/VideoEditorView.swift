@@ -27,6 +27,8 @@ struct VideoEditorRootView: View {
                 .onChange(of: proxy.size.height) { model.fitTrackHeight(windowHeight: $0) }
         }
         .background(VideoEditorTheme.window)
+        // A new look (Layout menu): everything drawn again in it.
+        .id(panels.style)
         .background(VideoKeyboardBridge(model: model).frame(width: 0, height: 0))
         .ignoresSafeArea()
         .task { await model.load() }
@@ -35,6 +37,7 @@ struct VideoEditorRootView: View {
     /// The crop bar and the tips sit under the picture, never over it.
     private var stageBottomInset: CGFloat {
         if model.isCropping { return 66 }
+        if VideoEditorStyle.current.isNew { return model.suggestsTranscript ? 58 : 16 }
         return tipsDismissed && !model.suggestsTranscript ? 22 : 58
     }
 
@@ -51,8 +54,10 @@ struct VideoEditorRootView: View {
                         VideoToolDock(model: model)
                         VideoToolDock(model: model, compact: true)
                     }
-                    .padding(.horizontal, 12)
-                    .padding(.top, 12)
+                    // LF Studios (new): a strip along the monitor's top.
+                    .frame(maxWidth: VideoEditorStyle.current.isNew ? .infinity : nil, alignment: .leading)
+                    .padding(.horizontal, VideoEditorStyle.current.isNew ? 8 : 12)
+                    .padding(.top, VideoEditorStyle.current.isNew ? 6 : 12)
                 }
                 VideoStageView(model: model)
                     .padding(.horizontal, 28)
@@ -90,7 +95,8 @@ struct VideoEditorRootView: View {
                 } else if model.suggestsTranscript {
                     VideoTranscribeSuggestion(model: model)
                         .padding(.bottom, 10)
-                } else {
+                } else if !VideoEditorStyle.current.isNew {
+                    // LF Studios (new): the keys are in the status strip.
                     VideoTipsBar()
                         .padding(.bottom, 10)
                 }
@@ -119,6 +125,102 @@ struct VideoEditorRootView: View {
         if done { panelDragStart = nil }
     }
 
+    /// CapCut style: exactly 1.16.0's editor.
+    private func capCutEditor(height: CGFloat, width: CGFloat, widths: (library: CGFloat, player: CGFloat, properties: CGFloat)) -> some View {
+    VStack(spacing: 0) {
+        VideoEditorToolbar(model: model)
+            .frame(height: 52)
+        Rectangle().fill(VideoEditorTheme.hairline).frame(height: 1)
+        HStack(spacing: 0) {
+            VideoLibraryPanel(model: model)
+                .frame(width: widths.library)
+            VideoPanelBorder(
+                moved: { delta, done in dragBorder(library: true, by: delta, done: done, width: width) },
+                reset: { panels.set(VideoEditorPanelLayout(library: VideoEditorPanelLayout.standard.library, properties: panels.layout.properties), remember: true) }
+            )
+            VStack(spacing: 0) {
+                playerArea
+                Rectangle().fill(VideoEditorTheme.hairline).frame(height: 1)
+                VideoPlayerBar(model: model, clock: model.clock)
+                    .background(VideoEditorTheme.panel)
+            }
+            .frame(width: widths.player)
+            VideoPanelBorder(
+                moved: { delta, done in dragBorder(library: false, by: delta, done: done, width: width) },
+                reset: { panels.set(VideoEditorPanelLayout(library: panels.layout.library, properties: VideoEditorPanelLayout.standard.properties), remember: true) }
+            )
+            // Properties: the selected thing's settings (the panels
+            // that were the inspector).
+            VideoInspectorView(model: model)
+                .frame(width: widths.properties)
+        }
+        VideoTimelineDivider(
+            fraction: VideoEditorLayout.fraction(chosen: chosenFraction, windowHeight: height),
+            windowHeight: height,
+            moved: { fraction, done in
+                chosenFraction = fraction
+                if done { Settings.videoTimelineFraction = fraction }
+            },
+            reset: {
+                chosenFraction = nil
+                Settings.videoTimelineFraction = nil
+            }
+        )
+        VideoTimelineView(model: model).equatable()
+            .frame(height: timelineHeight(windowHeight: height))
+    }
+    }
+
+    /// LF Studios (new): tools down the left, the Library, the Program
+    /// monitor and Properties across the top, the timeline, a status strip.
+    private func newEditor(height: CGFloat, width: CGFloat) -> some View {
+        let widths = panels.layout.fitted(windowWidth: width - VideoEditorNewMetrics.railWidth - 1)
+        return VStack(spacing: 0) {
+            VideoEditorToolbar(model: model)
+                .frame(height: 44)
+            Rectangle().fill(VideoEditorTheme.hairline).frame(height: 1)
+            HStack(spacing: 0) {
+                VideoToolRail(model: model)
+                Rectangle().fill(VideoEditorTheme.hairline).frame(width: 1)
+                VideoLibraryPanel(model: model)
+                    .frame(width: widths.library)
+                VideoPanelBorder(
+                    moved: { delta, done in dragBorder(library: true, by: delta, done: done, width: width - VideoEditorNewMetrics.railWidth - 1) },
+                    reset: { panels.set(VideoEditorPanelLayout(library: VideoEditorPanelLayout.standard.library, properties: panels.layout.properties), remember: true) }
+                )
+                VStack(spacing: 0) {
+                    playerArea
+                    Rectangle().fill(VideoEditorTheme.hairline).frame(height: 1)
+                    VideoPlayerBar(model: model, clock: model.clock)
+                        .background(VideoEditorTheme.panel)
+                }
+                .frame(width: widths.player)
+                VideoPanelBorder(
+                    moved: { delta, done in dragBorder(library: false, by: delta, done: done, width: width - VideoEditorNewMetrics.railWidth - 1) },
+                    reset: { panels.set(VideoEditorPanelLayout(library: panels.layout.library, properties: VideoEditorPanelLayout.standard.properties), remember: true) }
+                )
+                VideoPropertiesPanel(model: model)
+                    .frame(width: widths.properties)
+            }
+            VideoTimelineDivider(
+                fraction: VideoEditorLayout.fraction(chosen: chosenFraction, windowHeight: height),
+                windowHeight: height,
+                moved: { fraction, done in
+                    chosenFraction = fraction
+                    if done { Settings.videoTimelineFraction = fraction }
+                },
+                reset: {
+                    chosenFraction = nil
+                    Settings.videoTimelineFraction = nil
+                }
+            )
+            VideoTimelineView(model: model).equatable()
+                .frame(height: max(timelineHeight(windowHeight: height) - VideoEditorNewMetrics.statusHeight - 1, 120))
+            Rectangle().fill(VideoEditorTheme.hairline).frame(height: 1)
+            VideoStatusStrip(model: model)
+        }
+    }
+
     private func editor(height: CGFloat, width: CGFloat) -> some View {
         let widths = panels.layout.fitted(windowWidth: width)
         return ZStack {
@@ -130,47 +232,12 @@ struct VideoEditorRootView: View {
                 }
                 .background(VideoEditorTheme.stage)
             } else {
-            VStack(spacing: 0) {
-                VideoEditorToolbar(model: model)
-                    .frame(height: 52)
-                Rectangle().fill(VideoEditorTheme.hairline).frame(height: 1)
-                HStack(spacing: 0) {
-                    VideoLibraryPanel(model: model)
-                        .frame(width: widths.library)
-                    VideoPanelBorder(
-                        moved: { delta, done in dragBorder(library: true, by: delta, done: done, width: width) },
-                        reset: { panels.set(VideoEditorPanelLayout(library: VideoEditorPanelLayout.standard.library, properties: panels.layout.properties), remember: true) }
-                    )
-                    VStack(spacing: 0) {
-                        playerArea
-                        Rectangle().fill(VideoEditorTheme.hairline).frame(height: 1)
-                        VideoPlayerBar(model: model, clock: model.clock)
-                            .background(VideoEditorTheme.panel)
-                    }
-                    .frame(width: widths.player)
-                    VideoPanelBorder(
-                        moved: { delta, done in dragBorder(library: false, by: delta, done: done, width: width) },
-                        reset: { panels.set(VideoEditorPanelLayout(library: panels.layout.library, properties: VideoEditorPanelLayout.standard.properties), remember: true) }
-                    )
-                    // Properties: the selected thing's settings (the panels
-                    // that were the inspector).
-                    VideoInspectorView(model: model)
-                        .frame(width: widths.properties)
+            Group {
+                if panels.style.isNew {
+                    newEditor(height: height, width: width)
+                } else {
+                    capCutEditor(height: height, width: width, widths: widths)
                 }
-                VideoTimelineDivider(
-                    fraction: VideoEditorLayout.fraction(chosen: chosenFraction, windowHeight: height),
-                    windowHeight: height,
-                    moved: { fraction, done in
-                        chosenFraction = fraction
-                        if done { Settings.videoTimelineFraction = fraction }
-                    },
-                    reset: {
-                        chosenFraction = nil
-                        Settings.videoTimelineFraction = nil
-                    }
-                )
-                VideoTimelineView(model: model).equatable()
-                    .frame(height: timelineHeight(windowHeight: height))
             }
             // Behind a sheet or the palette, VoiceOver stays in front.
             .accessibilityHidden(model.hasOverlayOpen || !model.isReady)
@@ -293,6 +360,12 @@ struct VideoEditorToolbar: View {
 
                 Spacer(minLength: 12)
 
+                // LF Studios (new): one search for everything (⌘K).
+                if VideoEditorStyle.current.isNew {
+                    VideoSearchField(model: model)
+                    Spacer(minLength: 12)
+                }
+
                 Button {
                     model.isCropping ? model.endCrop() : model.beginCrop()
                 } label: {
@@ -327,6 +400,9 @@ struct VideoEditorToolbar: View {
                 }
                 .font(.system(size: 13, weight: .semibold))
 
+                // LF Studios (new): Search is in the middle, the keys in
+                // the status strip.
+                if !VideoEditorStyle.current.isNew {
                 Button {
                     withAnimation(.easeOut(duration: 0.15)) { model.isCommandPalettePresented = true }
                 } label: {
@@ -348,6 +424,7 @@ struct VideoEditorToolbar: View {
                 .buttonStyle(VideoToolButtonStyle())
                 .help(L("Keyboard shortcuts (?)"))
                 .accessibilityLabel(L("Keyboard shortcuts"))
+                }
 
                 // Background exports (VideoExportJobs.swift).
                 VideoExportToolbarStatus(model: model)
@@ -756,7 +833,13 @@ extension VideoEditorModel {
 
 struct VideoCommandPalette: View {
     @ObservedObject var model: VideoEditorModel
-    @State private var query = ""
+    @State private var query: String
+
+    /// `query`: what's typed when it opens (the Guide's picture).
+    init(model: VideoEditorModel, query: String = "") {
+        self.model = model
+        _query = State(initialValue: query)
+    }
     @State private var highlighted = 0
     /// Read once per opening (a file on disk), not on every keystroke.
     @State private var recent: [VideoDemoRecentExport]?
@@ -781,11 +864,11 @@ struct VideoCommandPalette: View {
                 HStack(spacing: 10) {
                     Image(systemName: "magnifyingglass")
                         .foregroundStyle(VideoEditorTheme.textSecondary)
-                    TextField(L("Search commands"), text: $query)
+                    TextField(VideoEditorStyle.current.isNew ? L("Search commands, media, clips, captions, markers") : L("Search commands"), text: $query)
                         .textFieldStyle(.plain)
                         .font(.system(size: 15, weight: .medium))
                         .focused($focused)
-                        .onSubmit { run(filtered.indices.contains(highlighted) ? filtered[highlighted] : filtered.first) }
+                        .onSubmit { choose(rows.indices.contains(highlighted) ? rows[highlighted] : rows.first) }
                         .onChange(of: query) { _ in highlighted = 0 }
                 }
                 .padding(.horizontal, 14)
@@ -793,24 +876,33 @@ struct VideoCommandPalette: View {
                 Rectangle().fill(VideoEditorTheme.hairline).frame(height: 1)
                 ScrollView {
                     VStack(spacing: 2) {
-                        ForEach(Array(filtered.enumerated()), id: \.element.id) { index, command in
+                        ForEach(Array(rows.enumerated()), id: \.element.id) { index, row in
+                            // LF Studios layout: each kind under its name.
+                            if let group = row.groupStart {
+                                VideoSectionLabel(group.title)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding(.horizontal, 12)
+                                    .padding(.top, index == 0 ? 4 : 10)
+                                    .padding(.bottom, 2)
+                            }
                             Button {
-                                run(command)
+                                choose(row)
                             } label: {
                                 HStack(spacing: 10) {
-                                    Image(systemName: command.symbol)
+                                    Image(systemName: row.symbol)
                                         .font(.system(size: 12, weight: .semibold))
                                         .frame(width: 20)
                                         .foregroundStyle(VideoEditorTheme.textSecondary)
-                                    Text(command.title)
+                                    Text(row.title)
                                         .font(.system(size: 13, weight: .medium))
                                         .foregroundStyle(VideoEditorTheme.textPrimary)
                                         .lineLimit(1)
                                         .minimumScaleFactor(0.85)
                                     Spacer()
-                                    Text(command.shortcut)
+                                    Text(row.detail)
                                         .font(.system(size: 11, weight: .semibold, design: .monospaced))
                                         .foregroundStyle(VideoEditorTheme.textTertiary)
+                                        .lineLimit(1)
                                 }
                                 .padding(.horizontal, 12)
                                 .frame(height: 34)
@@ -837,8 +929,8 @@ struct VideoCommandPalette: View {
         }
         .background(
             VideoArrowKeyCatcher { delta in
-                guard !filtered.isEmpty else { return }
-                highlighted = min(max(highlighted + delta, 0), filtered.count - 1)
+                guard !rows.isEmpty else { return }
+                highlighted = min(max(highlighted + delta, 0), rows.count - 1)
             }
         )
     }
@@ -847,6 +939,40 @@ struct VideoCommandPalette: View {
         guard let command else { return }
         model.isCommandPalettePresented = false
         command.action()
+    }
+
+    /// One row of the list: a command, or (LF Studios layout) something
+    /// found in the video.
+    struct Row: Identifiable {
+        let id: String
+        let title: String
+        let detail: String
+        let symbol: String
+        /// The first row of its kind: its name goes above it.
+        var groupStart: VideoGlobalSearch.Group?
+        let command: Command?
+        let result: VideoGlobalSearch.Result?
+    }
+
+    private var rows: [Row] {
+        var rows = filtered.map { Row(id: $0.id, title: $0.title, detail: $0.shortcut, symbol: $0.symbol, command: $0, result: nil) }
+        guard VideoEditorStyle.current.isNew, !query.trimmingCharacters(in: .whitespaces).isEmpty else { return rows }
+        if !rows.isEmpty { rows[0].groupStart = .commands }
+        var last: VideoGlobalSearch.Group?
+        for result in VideoGlobalSearch.results(query, in: model) {
+            rows.append(Row(id: result.id, title: result.title, detail: result.detail, symbol: result.symbol,
+                            groupStart: result.group == last ? nil : result.group, command: nil, result: result))
+            last = result.group
+        }
+        return rows
+    }
+
+    private func choose(_ row: Row?) {
+        guard let row else { return }
+        if let command = row.command { return run(command) }
+        guard let result = row.result else { return }
+        model.isCommandPalettePresented = false
+        VideoGlobalSearch.show(result.target, in: model)
     }
 
     private var filtered: [Command] {

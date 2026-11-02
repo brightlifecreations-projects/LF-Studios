@@ -282,9 +282,22 @@ private struct GuideEntryBody: View {
                 }
             }
 
+            if let picture = entry.picture, let url = LFStudiosResources.url(forResource: picture, withExtension: "jpg"), let image = NSImage(contentsOf: url) {
+                Image(nsImage: image)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(maxWidth: 560)
+                    .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                    .overlay(RoundedRectangle(cornerRadius: 8, style: .continuous).stroke(HomeColors.ink.opacity(0.1)))
+                    .accessibilityLabel(L("Picture: \(entry.title)"))
+            }
             if let location = entry.location {
                 GuideBlock(title: L("Where to find it"), symbol: "mappin.and.ellipse") {
                     GuideParagraph(text: location)
+                    // The panel's place in the LF Studios layout (1.17.0).
+                    if VideoEditorStyle.current.isNew, case .editor(let tab) = entry.showMe {
+                        GuideParagraph(text: GuideContent.newLayoutPlace(of: tab), opacity: 0.65)
+                    }
                 }
             }
             if !entry.steps.isEmpty {

@@ -97,6 +97,11 @@ struct VideoTrackHeader: View {
     @ObservedObject var model: VideoEditorModel
     let row: VideoTimelineRowLayout.Row
 
+    private var curveOpen: Bool {
+        guard VideoEditorStyle.current.isNew, case .layer(let id) = row.track, row.showsContent else { return false }
+        return model.curveLanes[id] != nil
+    }
+
     var body: some View {
         let track = row.track
         let state = model.project.trackState(track)
@@ -130,6 +135,12 @@ struct VideoTrackHeader: View {
                 .truncationMode(.tail)
                 .help(title)
             Spacer(minLength: 2)
+            // LF Studios layout: the keyframe curve lane under this track.
+            if VideoEditorStyle.current.isNew, case .layer(let id) = track, row.showsContent {
+                headerButton(VideoCurveLane.symbol, on: model.curveLanes[id] != nil,
+                             help: model.curveLanes[id] != nil ? L("Hide the keyframe curve") : L("Show a keyframe curve under this track"),
+                             label: L("Keyframe curve: \(title)")) { model.toggleCurveLane(id) }
+            }
             if track.canHide {
                 headerButton(state.hidden ? "eye.slash" : "eye", on: state.hidden,
                              help: state.hidden ? L("Show “\(title)” in the video") : L("Hide “\(title)” in the preview and the export"),
@@ -147,6 +158,16 @@ struct VideoTrackHeader: View {
         .padding(.leading, 6)
         .padding(.trailing, 6)
         .frame(maxHeight: .infinity)
+        // The curve lane's setting, beside the lane (LF Studios layout).
+        .frame(height: curveOpen ? VideoTimelineMetrics.layerLaneHeight + VideoTimelineRowLayout.padding * 2 : nil)
+        .frame(maxHeight: .infinity, alignment: .top)
+        .overlay(alignment: .bottomLeading) {
+            if curveOpen, case .layer(let id) = track {
+                VideoCurveLaneHeader(model: model, track: id)
+                    .padding(.leading, 34)
+                    .padding(.bottom, VideoCurveLane.height / 2 - 8)
+            }
+        }
         .background(VideoEditorTheme.ink.opacity(row.isEmpty ? 0.015 : 0.03))
         .accessibilityElement(children: .contain)
         .accessibilityLabel(title)

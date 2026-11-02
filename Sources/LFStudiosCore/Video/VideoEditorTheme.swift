@@ -15,33 +15,87 @@ extension NSColor {
             appearance.bestMatch(from: [.darkAqua, .aqua]) == .darkAqua ? dark : light
         }
     }
+
+    /// The CapCut style's pair, or the LF Studios style's (1.17.0), by the
+    /// style chosen on this Mac (Layout menu).
+    static func styled(dark: NSColor, light: NSColor, newDark: NSColor, newLight: NSColor) -> NSColor {
+        NSColor(name: nil) { appearance in
+            let isDark = appearance.bestMatch(from: [.darkAqua, .aqua]) == .darkAqua
+            switch VideoEditorStyle.current {
+            case .capCut: return isDark ? dark : light
+            case .lfStudios: return isDark ? newDark : newLight
+            }
+        }
+    }
+}
+
+extension Color {
+    static func styled(dark: NSColor, light: NSColor, newDark: NSColor, newLight: NSColor) -> Color {
+        Color(nsColor: .styled(dark: dark, light: light, newDark: newDark, newLight: newLight))
+    }
+}
+
+/// How the video editor looks and is laid out (1.17.0): LF Studios' own
+/// (a Program monitor, effect controls and a dense dark look), or CapCut
+/// style (exactly as 1.16.0). Layout menu; remembered on this Mac. Only the
+/// window changes: never the video.
+enum VideoEditorStyle: String, CaseIterable, Identifiable {
+    case lfStudios
+    case capCut
+
+    var id: String { rawValue }
+    var title: String {
+        switch self {
+        case .lfStudios: return L("LF Studios (new)")
+        case .capCut: return L("CapCut style")
+        }
+    }
+
+    /// Read when colours are drawn, so kept in memory (Settings writes it).
+    nonisolated(unsafe) static var current: VideoEditorStyle = Settings.videoEditorStyle
+
+    var isNew: Bool { self == .lfStudios }
 }
 
 /// The editor's content-first palette, dark or light. The video itself
 /// never uses it: the renderer has its own colors.
 enum VideoEditorTheme {
-    static let window = Color.adaptive(dark: NSColor(srgbRed: 0.047, green: 0.047, blue: 0.055, alpha: 1), light: NSColor(srgbRed: 0.925, green: 0.925, blue: 0.937, alpha: 1))
-    static let stage = Color.adaptive(dark: NSColor(srgbRed: 0.035, green: 0.035, blue: 0.043, alpha: 1), light: NSColor(srgbRed: 0.878, green: 0.882, blue: 0.898, alpha: 1))
-    static let panel = Color.adaptive(dark: NSColor(srgbRed: 0.075, green: 0.075, blue: 0.086, alpha: 1), light: NSColor(srgbRed: 0.976, green: 0.976, blue: 0.98, alpha: 1))
+    static let window = Color.styled(dark: NSColor(srgbRed: 0.047, green: 0.047, blue: 0.055, alpha: 1), light: NSColor(srgbRed: 0.925, green: 0.925, blue: 0.937, alpha: 1),
+                                    newDark: NSColor(srgbRed: 0.047, green: 0.055, blue: 0.071, alpha: 1), newLight: NSColor(srgbRed: 0.965, green: 0.969, blue: 0.976, alpha: 1))
+    static let stage = Color.styled(dark: NSColor(srgbRed: 0.035, green: 0.035, blue: 0.043, alpha: 1), light: NSColor(srgbRed: 0.878, green: 0.882, blue: 0.898, alpha: 1),
+                                    newDark: NSColor(srgbRed: 0.031, green: 0.035, blue: 0.043, alpha: 1), newLight: NSColor(srgbRed: 0.914, green: 0.925, blue: 0.941, alpha: 1))
+    static let panel = Color.styled(dark: NSColor(srgbRed: 0.075, green: 0.075, blue: 0.086, alpha: 1), light: NSColor(srgbRed: 0.976, green: 0.976, blue: 0.98, alpha: 1),
+                                    newDark: NSColor(srgbRed: 0.067, green: 0.078, blue: 0.098, alpha: 1), newLight: NSColor(srgbRed: 1.000, green: 1.000, blue: 1.000, alpha: 1))
     /// What chrome is drawn in: white on the dark look, black on the light
     /// one (fills and lines use it faintly).
     static let ink = Color.adaptive(dark: .white, light: .black)
-    static let card = Color.adaptive(dark: NSColor.white.withAlphaComponent(0.045), light: NSColor.black.withAlphaComponent(0.04))
-    static let cardHover = Color.adaptive(dark: NSColor.white.withAlphaComponent(0.075), light: NSColor.black.withAlphaComponent(0.065))
-    static let cardStroke = Color.adaptive(dark: NSColor.white.withAlphaComponent(0.075), light: NSColor.black.withAlphaComponent(0.1))
-    static let hairline = Color.adaptive(dark: NSColor.white.withAlphaComponent(0.07), light: NSColor.black.withAlphaComponent(0.1))
+    static let card = Color.styled(dark: NSColor.white.withAlphaComponent(0.045), light: NSColor.black.withAlphaComponent(0.04),
+                                    newDark: NSColor(srgbRed: 0.094, green: 0.110, blue: 0.137, alpha: 1), newLight: NSColor(srgbRed: 0.945, green: 0.953, blue: 0.965, alpha: 1))
+    static let cardHover = Color.styled(dark: NSColor.white.withAlphaComponent(0.075), light: NSColor.black.withAlphaComponent(0.065),
+                                    newDark: NSColor(srgbRed: 0.122, green: 0.141, blue: 0.176, alpha: 1), newLight: NSColor(srgbRed: 0.910, green: 0.922, blue: 0.937, alpha: 1))
+    static let cardStroke = Color.styled(dark: NSColor.white.withAlphaComponent(0.075), light: NSColor.black.withAlphaComponent(0.1),
+                                    newDark: NSColor(srgbRed: 0.145, green: 0.165, blue: 0.204, alpha: 1), newLight: NSColor(srgbRed: 0.851, green: 0.867, blue: 0.890, alpha: 1))
+    static let hairline = Color.styled(dark: NSColor.white.withAlphaComponent(0.07), light: NSColor.black.withAlphaComponent(0.1),
+                                    newDark: NSColor(srgbRed: 0.145, green: 0.165, blue: 0.204, alpha: 1), newLight: NSColor(srgbRed: 0.851, green: 0.867, blue: 0.890, alpha: 1))
     /// A recessed field (segmented controls, text fields).
-    static let well = Color.adaptive(dark: NSColor.black.withAlphaComponent(0.28), light: NSColor.black.withAlphaComponent(0.055))
+    static let well = Color.styled(dark: NSColor.black.withAlphaComponent(0.28), light: NSColor.black.withAlphaComponent(0.055),
+                                    newDark: NSColor(srgbRed: 0.031, green: 0.035, blue: 0.043, alpha: 1), newLight: NSColor(srgbRed: 0.933, green: 0.941, blue: 0.953, alpha: 1))
     /// The selected segment, a hovered row.
-    static let selectedFill = Color.adaptive(dark: NSColor.white.withAlphaComponent(0.14), light: NSColor.white)
-    static let textPrimary = Color.adaptive(dark: NSColor.white.withAlphaComponent(0.93), light: NSColor.black.withAlphaComponent(0.88))
-    static let textSecondary = Color.adaptive(dark: NSColor.white.withAlphaComponent(0.58), light: NSColor.black.withAlphaComponent(0.62))
+    static let selectedFill = Color.styled(dark: NSColor.white.withAlphaComponent(0.14), light: NSColor.white,
+                                    newDark: NSColor(srgbRed: 0.180, green: 0.208, blue: 0.255, alpha: 1), newLight: NSColor(srgbRed: 1.000, green: 1.000, blue: 1.000, alpha: 1))
+    static let textPrimary = Color.styled(dark: NSColor.white.withAlphaComponent(0.93), light: NSColor.black.withAlphaComponent(0.88),
+                                    newDark: NSColor(srgbRed: 0.898, green: 0.906, blue: 0.922, alpha: 1), newLight: NSColor(srgbRed: 0.067, green: 0.094, blue: 0.153, alpha: 1))
+    static let textSecondary = Color.styled(dark: NSColor.white.withAlphaComponent(0.58), light: NSColor.black.withAlphaComponent(0.62),
+                                    newDark: NSColor(srgbRed: 0.612, green: 0.639, blue: 0.686, alpha: 1), newLight: NSColor(srgbRed: 0.294, green: 0.333, blue: 0.388, alpha: 1))
     /// Helper text: still readable on the panel (about 5:1).
-    static let textTertiary = Color.adaptive(dark: NSColor.white.withAlphaComponent(0.5), light: NSColor.black.withAlphaComponent(0.55))
+    static let textTertiary = Color.styled(dark: NSColor.white.withAlphaComponent(0.5), light: NSColor.black.withAlphaComponent(0.55),
+                                    newDark: NSColor(srgbRed: 0.541, green: 0.576, blue: 0.639, alpha: 1), newLight: NSColor(srgbRed: 0.420, green: 0.447, blue: 0.502, alpha: 1))
     /// Floating panels inside the editor (⌘K, the shortcuts list).
-    static let popover = Color.adaptive(dark: NSColor(white: 0.11, alpha: 1), light: NSColor(white: 0.995, alpha: 1))
+    static let popover = Color.styled(dark: NSColor(white: 0.11, alpha: 1), light: NSColor(white: 0.995, alpha: 1),
+                                    newDark: NSColor(srgbRed: 0.110, green: 0.125, blue: 0.157, alpha: 1), newLight: NSColor(srgbRed: 1.000, green: 1.000, blue: 1.000, alpha: 1))
     /// The tools dock over the stage.
-    static let dock = Color.adaptive(dark: NSColor(srgbRed: 0.1, green: 0.1, blue: 0.115, alpha: 0.94), light: NSColor(white: 1, alpha: 0.96))
+    static let dock = Color.styled(dark: NSColor(srgbRed: 0.1, green: 0.1, blue: 0.115, alpha: 0.94), light: NSColor(white: 1, alpha: 0.96),
+                                    newDark: NSColor(srgbRed: 0.067, green: 0.078, blue: 0.098, alpha: 1), newLight: NSColor(srgbRed: 1.000, green: 1.000, blue: 1.000, alpha: 1))
     /// Tips and suggestions floating over the stage.
     static let floatingPill = Color.adaptive(dark: NSColor.black.withAlphaComponent(0.72), light: NSColor(white: 1, alpha: 0.94))
     /// Shadows read softer on the light look.
@@ -69,11 +123,16 @@ enum VideoEditorTheme {
     static let clip = Color(red: 0.94, green: 0.58, blue: 0.2)
     /// Items on the tracks above the main track (1.14.0).
     static let layer = Color(red: 0.23, green: 0.66, blue: 0.86)
-    static let playhead = Color(red: 1.0, green: 0.31, blue: 0.43)
+    static let playhead = Color.styled(dark: NSColor(srgbRed: 1.0, green: 0.31, blue: 0.43, alpha: 1), light: NSColor(srgbRed: 1.0, green: 0.31, blue: 0.43, alpha: 1),
+                                       newDark: NSColor(srgbRed: 0.937, green: 0.267, blue: 0.267, alpha: 1), newLight: NSColor(srgbRed: 0.863, green: 0.149, blue: 0.149, alpha: 1))
+    /// A track's lane on the timeline (LF Studios style; CapCut style: none).
+    static let trackLane = Color.styled(dark: .clear, light: .clear,
+                                        newDark: NSColor(srgbRed: 0.078, green: 0.090, blue: 0.114, alpha: 1), newLight: NSColor(srgbRed: 0.933, green: 0.941, blue: 0.953, alpha: 1))
     static let accent = Color.accentColor
     /// Primary buttons: a fixed blue, so white text stays readable whatever
     /// accent color the Mac uses (yellow, orange, green…).
-    static let primary = Color(red: 0.04, green: 0.42, blue: 1.0)
+    static let primary = Color.styled(dark: NSColor(srgbRed: 0.04, green: 0.42, blue: 1.0, alpha: 1), light: NSColor(srgbRed: 0.04, green: 0.42, blue: 1.0, alpha: 1),
+                                      newDark: NSColor(srgbRed: 0.145, green: 0.388, blue: 0.922, alpha: 1), newLight: NSColor(srgbRed: 0.145, green: 0.388, blue: 0.922, alpha: 1))
 
     static func overlayTint(_ kind: VideoDemoOverlayEffectKind) -> Color {
         switch kind {
@@ -224,11 +283,7 @@ struct VideoInspectorSection<Content: View, Trailing: View>: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 11) {
             HStack {
-                Text(title)
-                    .font(.system(size: 11, weight: .semibold))
-                    .foregroundStyle(VideoEditorTheme.textSecondary)
-                    .textCase(.uppercase)
-                    .tracking(0.5)
+                VideoSectionLabel(title)
                 Spacer()
                 trailing()
             }
@@ -432,3 +487,30 @@ struct VideoWindowDragArea: NSViewRepresentable {
     func makeNSView(context: Context) -> NSView { DragView() }
     func updateNSView(_ nsView: NSView, context: Context) {}
 }
+
+/// A section's name: uppercase. In the LF Studios style it's monospaced and
+/// smaller, and a long one wraps rather than being cut off (German,
+/// Russian, Ukrainian); Chinese and Japanese have no case to change.
+struct VideoSectionLabel: View {
+    let title: String
+    init(_ title: String) { self.title = title }
+
+    var body: some View {
+        if VideoEditorStyle.current.isNew {
+            Text(title)
+                .font(.system(size: 10.5, weight: .semibold, design: .monospaced))
+                .foregroundStyle(VideoEditorTheme.textSecondary)
+                .textCase(.uppercase)
+                .tracking(0.6)
+                .lineLimit(2)
+                .fixedSize(horizontal: false, vertical: true)
+        } else {
+            Text(title)
+                .font(.system(size: 11, weight: .semibold))
+                .foregroundStyle(VideoEditorTheme.textSecondary)
+                .textCase(.uppercase)
+                .tracking(0.5)
+        }
+    }
+}
+

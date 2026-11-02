@@ -98,8 +98,10 @@ private struct VideoLayerBlock: View {
         let trailing = trim?.leading == false ? trim!.width : 0
         let tint = VideoEditorTheme.layer
         ZStack(alignment: .leading) {
+            // LF Studios layout: solid blocks, so the white names read on the
+            // light look too.
             RoundedRectangle(cornerRadius: 6, style: .continuous)
-                .fill(tint.opacity(item.enabled ? 0.28 : 0.1))
+                .fill(tint.opacity(item.enabled ? (VideoEditorStyle.current.isNew ? 0.78 : 0.28) : 0.1))
             if let thumbnail, width > 30 {
                 // The first frame (or the picture), repeated along the block.
                 GeometryReader { box in
@@ -131,7 +133,7 @@ private struct VideoLayerBlock: View {
                 .padding(.horizontal, 7)
             }
         }
-        .overlay(RoundedRectangle(cornerRadius: 6, style: .continuous).strokeBorder(isSelected ? Color.white : tint.opacity(0.75), lineWidth: isSelected ? 2 : 1))
+        .overlay(RoundedRectangle(cornerRadius: 6, style: .continuous).strokeBorder(isSelected ? (VideoEditorStyle.current.isNew ? VideoEditorTheme.textPrimary : Color.white) : tint.opacity(0.75), lineWidth: isSelected ? 2 : 1))
         // Its keyframes, as diamonds along its bottom edge.
         .overlay(alignment: .bottomLeading) {
             if let times = item.keys?.times, !times.isEmpty {

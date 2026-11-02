@@ -15,7 +15,7 @@ import Foundation
 @MainActor
 enum GuideContent {
     /// Pages from these versions get a New badge and fill What's new.
-    nonisolated static let newVersions: [String] = ["1.16.0", "1.15.0", "1.14.0", "1.13.0", "1.12.0", "1.11.1", "1.11.0", "1.10.0", "1.9.0", "1.8.0", "1.7.0"]
+    nonisolated static let newVersions: [String] = ["1.17.0", "1.16.0", "1.15.0", "1.14.0", "1.13.0", "1.12.0", "1.11.1", "1.11.0", "1.10.0", "1.9.0", "1.8.0", "1.7.0"]
 
     static func chapters() -> [GuideChapter] {
         let features = featureCategories()
@@ -1449,14 +1449,18 @@ enum GuideContent {
                 steps: [
                     L("Drag the line between two panels to make one wider; double-click it to put it back."),
                     L("Layout ▸ Player First makes the player as big as it gets. Layout ▸ Reset Layout puts every panel back where it starts."),
+                    L("Layout ▸ LF Studios (new) or CapCut style: the new layout has the tools down the left, Search in the middle of the top bar and the keys along the bottom; CapCut style is the editor as it was in 1.16. This Mac remembers your choice."),
                 ],
                 tips: [
                     L("LF Studios remembers the layout on this Mac."),
                     L("Click a picture on the player to move it, resize it from a corner, or turn it with the round knob. It lands on the middle and the edges, with a line showing where; hold ⌘ to move it freely."),
                     L("Full-screen preview shows only the player. Press Esc to leave."),
+                    L("In the LF Studios layout, Properties has At playhead on top (what plays now and what comes next; click one to select it) and four tabs: Clip, Effects, Captions and Video (Style, Cursor, Zoom, Camera, Audio)."),
+                    L("The tracks are named A roll (the main track), V2 · B roll, V3 and so on, with Captions on top. These are names only: projects are the same in both layouts."),
                 ],
-                since: "1.13.0",
-                related: ["video-media", "video-timeline"]
+                since: "1.17.0",
+                related: ["video-media", "video-timeline", "video-search", "video-effect-chain"],
+                picture: "guide-editor-layout"
             ),
             GuideEntry(
                 id: "video-media", symbol: "photo.on.rectangle", title: L("Your media in the Library"),
@@ -1712,8 +1716,72 @@ enum GuideContent {
             GuideEntry(
                 id: "video-commands", symbol: "command.square", title: L("Commands & shortcuts list"),
                 summary: L("Find any action by typing its name, and see every key the editor knows."),
-                location: L("The ⌘ and ? buttons in the editor's toolbar."),
+                location: L("The ⌘ and ? buttons in the editor's toolbar. In the LF Studios layout: Search in the top bar, and All keys at the right of the bottom strip."),
                 keys: [.fixed("⌘K", L("All commands")), .fixed("?", L("Keyboard Shortcuts"))],
+                since: "1.17.0"
+            ),
+            GuideEntry(
+                id: "video-search", symbol: "magnifyingglass", title: L("Search everything"),
+                summary: L("One search for commands, media, clips, captions and markers. Type a few letters, then choose."),
+                location: L("Search in the top bar, or press ⌘K (LF Studios layout)."),
+                steps: [
+                    L("Press ⌘K and type: a command's name, a file's, a clip's, words from a caption, or a marker's name."),
+                    L("Results come in groups: Commands, Media, Clips, Captions, Markers."),
+                    L("Choose one with the arrow keys and Return, or click it. A command runs; anything else is selected and the playhead goes there."),
+                ],
+                keys: [.fixed("⌘K", L("All commands"))],
+                tips: [L("Choosing a result never starts playing, and never changes the video.")],
+                since: "1.17.0",
+                related: ["video-commands"],
+                picture: "guide-search"
+            ),
+            GuideEntry(
+                id: "video-effect-chain", symbol: "sparkles", title: L("Effect chain"),
+                summary: L("A clip's effects as cards, in the order they're drawn: drag one to change the order, switch one off to compare."),
+                location: L("Properties ▸ Effects, with a clip above the main track selected (LF Studios layout)."),
+                steps: [
+                    L("Select a clip above the main track, then click Effects in Properties."),
+                    L("Drag a card up or down to change the order; ⌘Z puts it back."),
+                    L("Use the switch on a card to turn that effect off without losing it, and Strength to set how much."),
+                ],
+                tips: [
+                    L("Adjust and Filter are drawn first; change them in Properties ▸ Clip."),
+                    L("Add effects from Library ▸ Effects."),
+                ],
+                since: "1.17.0",
+                related: ["video-effects", "video-filters", "video-adjust"],
+                picture: "guide-effect-chain"
+            ),
+            GuideEntry(
+                id: "video-curve-lane", symbol: "point.topleft.down.curvedto.point.bottomright.up", title: L("Keyframe curve"),
+                summary: L("See how a setting changes over time under a track, and drag its keyframes there."),
+                location: L("The curve button in a track's header, above the main track (LF Studios layout)."),
+                steps: [
+                    L("Click the curve button in the track's header. A lane opens under the track."),
+                    L("Choose the setting it shows: Opacity, Size, Rotation, Position or Volume."),
+                    L("Drag a point up or down to change the value, or sideways to change when it happens. One drag is one ⌘Z step."),
+                ],
+                tips: [
+                    L("The points are the clip's own keyframes: the ◆ marks on the clip and in Properties ▸ Clip change with them."),
+                    L("Add keyframes with ◆ in Properties ▸ Clip, or ⌥K."),
+                ],
+                since: "1.17.0",
+                related: ["video-keyframes"],
+                picture: "guide-curve-lane"
+            ),
+            GuideEntry(
+                id: "video-caption-list", symbol: "captions.bubble", title: L("Caption list and Restyle all"),
+                summary: L("Every caption in a list, ready to edit, and one restyle for all of them."),
+                location: L("Properties ▸ Captions ▸ Captions (LF Studios layout)."),
+                steps: [
+                    L("Click a caption's time to go there; click its words to change them, then press Return."),
+                    L("Under Restyle all captions, choose a style, a size and Top or Bottom."),
+                    L("Click Apply to Every Caption. ⌘Z puts them all back."),
+                ],
+                tips: [L("Restyle all also brings captions you moved one by one back to the shared place.")],
+                since: "1.17.0",
+                related: ["captions-look", "video-captions-library"],
+                picture: "guide-caption-list"
             ),
             GuideEntry(
                 id: "video-markers", symbol: "flag", title: L("Markers"),
@@ -3005,6 +3073,19 @@ enum GuideContent {
     }
 
     // MARK: - Keyboard shortcuts
+
+    /// Where a panel is in the LF Studios layout (1.17.0), under "Where
+    /// to find it" on the pages that name it.
+    static func newLayoutPlace(of tab: VideoEditorModel.InspectorTab) -> String {
+        switch tab {
+        case .background: return L("In the LF Studios layout: Properties ▸ Video ▸ Style.")
+        case .cursor: return L("In the LF Studios layout: Properties ▸ Video ▸ Cursor.")
+        case .zoom: return L("In the LF Studios layout: Properties ▸ Video ▸ Zoom.")
+        case .camera: return L("In the LF Studios layout: Properties ▸ Video ▸ Camera.")
+        case .captions: return L("In the LF Studios layout: Properties ▸ Captions ▸ Transcript.")
+        case .audio: return L("In the LF Studios layout: Properties ▸ Video ▸ Audio.")
+        }
+    }
 
     static func shortcutGroups() -> [GuideShortcutGroup] {
         [

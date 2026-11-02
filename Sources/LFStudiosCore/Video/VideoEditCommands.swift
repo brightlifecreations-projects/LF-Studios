@@ -62,6 +62,12 @@ enum VideoEditCommand: Equatable, CaseIterable, Identifiable {
     /// A compound clip in its own timeline, and back (VideoCompounds.swift).
     case openCompound
     case closeCompound
+    /// A caption's words (Properties ▸ Captions' list, 1.17.0).
+    case setCaptionText(UUID, String)
+    /// Every caption in one style, in one step: a caption style from the
+    /// Library (or as it is), its size and place; single captions' own
+    /// places go (VideoCaptionsPanel.swift).
+    case restyleCaptions(template: String?, size: VideoTextSize, position: VideoTextPosition)
     /// Remove ums: the list of ums found, to check (VideoFillerReview.swift).
     case reviewFillers
     /// Cuts the ums starting at these transcript words.
@@ -92,6 +98,8 @@ enum VideoEditCommand: Equatable, CaseIterable, Identifiable {
         if case .audio(let edit) = self { return "audio." + edit.name }
         if case .zoom(let edit) = self { return "zoom." + edit.name }
         if case .removeFillers(let ids) = self { return "removeFillers." + ids.map(String.init).joined(separator: ",") }
+        if case .setCaptionText(let id, let text) = self { return "setCaptionText.\(id).\(text.count)" }
+        if case .restyleCaptions(let t, let size, let position) = self { return "restyleCaptions.\(t ?? "-").\(size.rawValue).\(position.rawValue)" }
         if case .projectSettings(let s) = self { return "projectSettings.\(s.height).\(s.frameRate).\(s.colorSpace.rawValue)" }
         return String(describing: self)
     }
@@ -150,6 +158,8 @@ enum VideoEditCommand: Equatable, CaseIterable, Identifiable {
         case .showProjectSettings: return L("Project Settings…")
         case .projectSettings: return L("Project Settings")
         case .reviewFillers, .removeFillers: return L("Remove Ums")
+        case .setCaptionText: return L("Caption text")
+        case .restyleCaptions: return L("Restyle all captions")
         case .openCompound: return L("Open compound clip")
         case .closeCompound: return L("Back to the whole video")
         case .edit(let edit): return edit.title
@@ -205,6 +215,7 @@ enum VideoEditCommand: Equatable, CaseIterable, Identifiable {
         case .zoomCut: return "arrow.up.left.and.arrow.down.right"
         case .showProjectSettings, .projectSettings: return "gearshape"
         case .reviewFillers, .removeFillers: return "wand.and.stars"
+        case .setCaptionText, .restyleCaptions: return "captions.bubble"
         case .openCompound: return "square.stack.3d.down.right"
         case .closeCompound: return "chevron.left"
         case .edit, .clip, .audio, .zoom: return "slider.horizontal.3"
@@ -260,7 +271,7 @@ enum VideoEditCommand: Equatable, CaseIterable, Identifiable {
         case .makeCompound: return "⌥G"
         case .breakApart: return "⌥⇧G"
         case .zoomCut: return "⌥Z"
-        case .addMarker, .freezeFrame, .reverse, .mirror, .rotate, .crop, .recordVoiceover, .edit, .clip, .audio, .zoom, .showProjectSettings, .projectSettings, .reviewFillers, .removeFillers, .openCompound, .closeCompound: return ""
+        case .addMarker, .freezeFrame, .reverse, .mirror, .rotate, .crop, .recordVoiceover, .edit, .clip, .audio, .zoom, .showProjectSettings, .projectSettings, .reviewFillers, .removeFillers, .openCompound, .closeCompound, .setCaptionText, .restyleCaptions: return ""
         }
     }
 
@@ -406,6 +417,12 @@ extension VideoEditorModel {
             reviewFillers()
         case .removeFillers(let ids):
             return removeFillers(Set(ids))
+        case .setCaptionText(let id, let text):
+            if refuseLocked(.captions) { return false }
+            guard project.captions.contains(where: { $0.id == id && $0.text != text }) else { return false }
+            updateCaption(id, text: text)
+        case .restyleCaptions(let template, let size, let position):
+            return restyleCaptions(template: template, size: size, position: position)
         case .openCompound:
             return openSelectedCompound()
         case .closeCompound:

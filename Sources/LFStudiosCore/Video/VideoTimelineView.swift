@@ -20,7 +20,9 @@ enum VideoTimelineMetrics {
     static var cameraLaneHeight: CGFloat { scaled(22) }
     static let gap: CGFloat = 7
     /// The track headers on the left.
-    static let headerWidth: CGFloat = 204
+    /// Wider in the LF Studios layout: its tracks' names and the curve
+    /// switch, in German, Russian and Ukrainian too (1.17.0).
+    static var headerWidth: CGFloat { VideoEditorStyle.current.isNew ? 236 : 204 }
 
     /// The annotation layers that get a lane, lowest first: one sitting
     /// wholly in a part that was cut away draws nothing and takes none.
@@ -93,15 +95,19 @@ struct VideoTimelineToolbar: View {
         HStack(spacing: 6) {
             // Play, pause and the time are under the player (1.13.0).
             // Tools (1.14.0): what they do and their keys show on hover.
-            HStack(spacing: 2) {
-                command(.selectTool)
-                command(.splitTool)
+            // LF Studios layout: Select, Split tool, undo and redo are in the
+            // tool rail and the top bar.
+            if !VideoEditorStyle.current.isNew {
+                HStack(spacing: 2) {
+                    command(.selectTool)
+                    command(.splitTool)
+                }
+                .padding(2)
+                .background(RoundedRectangle(cornerRadius: 8, style: .continuous).fill(VideoEditorTheme.ink.opacity(0.05)))
+                command(.undo).disabled(!model.canUndo)
+                command(.redo).disabled(!model.canRedo)
+                toolbarDivider
             }
-            .padding(2)
-            .background(RoundedRectangle(cornerRadius: 8, style: .continuous).fill(VideoEditorTheme.ink.opacity(0.05)))
-            command(.undo).disabled(!model.canUndo)
-            command(.redo).disabled(!model.canRedo)
-            toolbarDivider
             command(.split)
             command(.deleteLeft)
             command(.deleteRight)
@@ -251,7 +257,9 @@ struct VideoTimelineSurface: View {
     private func time(_ x: CGFloat) -> Double { min(max(Double((x - M.inset) / pointsPerSecond), 0), duration) }
 
     /// Every track's row (VideoTimelineTracks.swift), below the ruler.
-    private var rows: VideoTimelineRowLayout { VideoTimelineRowLayout(project: model.project, hasCamera: model.hasWebcamFootage) }
+    private var rows: VideoTimelineRowLayout {
+        VideoTimelineRowLayout(project: model.project, hasCamera: model.hasWebcamFootage, curves: VideoEditorStyle.current.isNew ? Set(model.curveLanes.keys) : [])
+    }
     /// Far above the lanes: a row that shows nothing.
     private static let nowhere: CGFloat = -10_000
     private var captionTop: CGFloat { rows.contentTop(.captions) ?? Self.nowhere }
@@ -413,6 +421,11 @@ struct VideoTimelineSurface: View {
                         )
                         .equatable()
                         .offset(y: top)
+                        // Its keyframe curve lane, when open (LF Studios layout).
+                        if VideoEditorStyle.current.isNew, let property = model.curveLanes[track.id] {
+                            VideoCurveLaneView(model: model, track: track, property: property, geometry: geometry)
+                                .offset(y: top + VideoTimelineMetrics.layerLaneHeight + VideoCurveLane.gap)
+                        }
                     }
                 }
             }
@@ -1303,7 +1316,9 @@ struct VideoClipFilmstrip: View {
         Canvas { context, size in
             context.fill(Path(CGRect(origin: .zero, size: size)), with: .color(Color(white: 0.16)))
             let aspect = sourceAspect
-            let tileWidth = max(size.height * CGFloat(aspect), 20)
+            // LF Studios layout: the pictures above the sound strip.
+            let pictures = VideoEditorStyle.current.isNew && waveform != nil ? size.height - min(18, size.height * 0.3) : size.height
+            let tileWidth = max(pictures * CGFloat(aspect), 20)
             if !thumbnails.isEmpty {
                 var x: CGFloat = 0
                 while x < size.width {
@@ -1311,12 +1326,29 @@ struct VideoClipFilmstrip: View {
                     let sourceTime = segment.clip.sourceStart + segment.clip.sourceDuration * min(max(fraction, 0), 1)
                     let nearest = thumbnails.min { abs($0.time - sourceTime) < abs($1.time - sourceTime) }
                     if let nearest {
-                        context.draw(Image(nsImage: nearest.image), in: CGRect(x: x, y: 0, width: tileWidth, height: size.height))
+                        context.draw(Image(nsImage: nearest.image), in: CGRect(x: x, y: 0, width: tileWidth, height: pictures))
                     }
                     x += tileWidth
                 }
             }
-            if let waveform {
+            // LF Studios layout (1.17.0): the sound as its own strip under
+            // the pictures.
+            if VideoEditorStyle.current.isNew, let waveform {
+                let strip = min(18, size.height * 0.3)
+                let band = CGRect(x: 0, y: size.height - strip, width: size.width, height: strip)
+                context.fill(Path(band), with: .color(Color(red: 0.05, green: 0.16, blue: 0.13)))
+                let middle = band.midY
+                var path = Path()
+                var x: CGFloat = 1
+                while x < size.width - 1 {
+                    let a = segment.clip.sourceStart + segment.clip.sourceDuration * Double(x / size.width)
+                    let b = segment.clip.sourceStart + segment.clip.sourceDuration * Double((x + 2) / size.width)
+                    let h = max(CGFloat(waveform.peak(from: a, to: b)) * (strip - 4), 1)
+                    path.addRect(CGRect(x: x, y: middle - h / 2, width: 1.5, height: h))
+                    x += 2
+                }
+                context.fill(path, with: .color(segment.clip.muted ? Color.white.opacity(0.25) : Color(red: 0.2, green: 0.83, blue: 0.6)))
+            } else if let waveform {
                 let barWidth: CGFloat = 2
                 let spacing: CGFloat = 1
                 let baseline = size.height - 3

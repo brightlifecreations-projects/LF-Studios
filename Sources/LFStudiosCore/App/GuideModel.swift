@@ -55,6 +55,9 @@ struct GuideEntry: Identifiable {
     var since: String?
     /// Other pages worth reading next.
     var related: [String] = []
+    /// A picture of it (a JPEG in the app's resources, without ".jpg"),
+    /// taken from the LF Studios layout (1.17.0).
+    var picture: String?
 
     /// Everything search looks through.
     var searchText: String {

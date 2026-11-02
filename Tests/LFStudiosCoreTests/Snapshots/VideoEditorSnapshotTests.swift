@@ -12,7 +12,13 @@ final class VideoEditorSnapshotTests: XCTestCase {
         VideoTestStorage.isolate()
     }
 
-    private func render<V: View>(_ view: V, size: CGSize, name: String) throws -> URL {
+    @discardableResult
+    private func render<V: View>(_ view: V, size: CGSize, name: String) async throws -> URL {
+        // Both layouts (1.17.0): LF Studios (new), and CapCut style ("-capcut").
+        try await inEditorStyles { try renderOne(view, size: size, name: name + $0) }
+    }
+
+    private func renderOne<V: View>(_ view: V, size: CGSize, name: String) throws -> URL {
         let host = NSHostingView(rootView: view.frame(width: size.width, height: size.height).environment(\.colorScheme, .dark))
         host.frame = NSRect(origin: .zero, size: size)
         let window = NSWindow(contentRect: host.frame, styleMask: [.borderless], backing: .buffered, defer: false)
@@ -60,21 +66,21 @@ final class VideoEditorSnapshotTests: XCTestCase {
         model.splitAtPlayhead()
         model.selection = .none
         let height = 44 + 1 + VideoTimelineMetrics.contentHeight(model.project) + 10
-        _ = try render(VideoTimelineView(model: model), size: CGSize(width: 1400, height: height), name: "timeline")
+        _ = try await render(VideoTimelineView(model: model), size: CGSize(width: 1400, height: height), name: "timeline")
     }
 
     func testEditorLayout() async throws {
         let model = try await demoModel()
-        _ = try render(VideoEditorRootView(model: model), size: CGSize(width: 1512, height: 944), name: "editor")
+        _ = try await render(VideoEditorRootView(model: model), size: CGSize(width: 1512, height: 944), name: "editor")
         model.selection = .zoom(model.project.zoomRegions[0].id)
-        _ = try render(VideoInspectorView(model: model), size: CGSize(width: 318, height: 900), name: "inspector-zoom")
+        _ = try await render(VideoInspectorView(model: model), size: CGSize(width: 318, height: 900), name: "inspector-zoom")
         model.selection = .none
         model.inspectorTab = .cursor
-        _ = try render(VideoInspectorView(model: model), size: CGSize(width: 318, height: 900), name: "inspector-cursor")
+        _ = try await render(VideoInspectorView(model: model), size: CGSize(width: 318, height: 900), name: "inspector-cursor")
         model.inspectorTab = .zoom
-        _ = try render(VideoInspectorView(model: model), size: CGSize(width: 318, height: 900), name: "inspector-zoomtab")
+        _ = try await render(VideoInspectorView(model: model), size: CGSize(width: 318, height: 900), name: "inspector-zoomtab")
         model.isExportPresented = true
-        _ = try render(VideoExportSheet(model: model), size: CGSize(width: 900, height: 760), name: "export")
+        _ = try await render(VideoExportSheet(model: model), size: CGSize(width: 900, height: 760), name: "export")
     }
 
     func testCaptionsKeysAndCameraSurfaces() async throws {
@@ -82,9 +88,9 @@ final class VideoEditorSnapshotTests: XCTestCase {
         model.isExportPresented = false
         // Empty states first.
         model.inspectorTab = .captions
-        _ = try render(VideoInspectorView(model: model), size: CGSize(width: 318, height: 700), name: "inspector-captions-empty")
+        _ = try await render(VideoInspectorView(model: model), size: CGSize(width: 318, height: 700), name: "inspector-captions-empty")
         model.inspectorTab = .camera
-        _ = try render(VideoInspectorView(model: model), size: CGSize(width: 318, height: 500), name: "inspector-camera-empty")
+        _ = try await render(VideoInspectorView(model: model), size: CGSize(width: 318, height: 500), name: "inspector-camera-empty")
 
         let words: [(String, Double)] = [("Open", 1.0), ("the", 1.3), ("settings", 1.45), ("panel.", 1.9), ("Then", 3.0), ("pick", 3.3), ("a", 3.5), ("theme", 3.6), ("and", 4.1), ("save.", 4.3)]
         let timed = words.map { VideoCaptionWord(text: $0.0, start: $0.1, end: $0.1 + 0.3) }
@@ -99,17 +105,17 @@ final class VideoEditorSnapshotTests: XCTestCase {
         model.seek(to: 1.6)
         try? await Task.sleep(nanoseconds: 300_000_000)
         model.inspectorTab = .captions
-        _ = try render(VideoInspectorView(model: model), size: CGSize(width: 318, height: 900), name: "inspector-captions")
+        _ = try await render(VideoInspectorView(model: model), size: CGSize(width: 318, height: 900), name: "inspector-captions")
         model.inspectorTab = .cursor
-        _ = try render(VideoInspectorView(model: model), size: CGSize(width: 318, height: 1100), name: "inspector-cursor-keys")
+        _ = try await render(VideoInspectorView(model: model), size: CGSize(width: 318, height: 1100), name: "inspector-cursor-keys")
         model.selection = .caption(model.project.captions[0].id)
-        _ = try render(VideoInspectorView(model: model), size: CGSize(width: 318, height: 600), name: "inspector-caption-selected")
+        _ = try await render(VideoInspectorView(model: model), size: CGSize(width: 318, height: 600), name: "inspector-caption-selected")
         model.selection = .none
         model.seek(to: 4)
         model.addOverlay(.text)
         model.selection = .none
         let height = 44 + 1 + VideoTimelineMetrics.contentHeight(model.project) + 10
-        _ = try render(VideoTimelineView(model: model), size: CGSize(width: 1400, height: height), name: "timeline-text-lanes")
-        _ = try render(VideoEditorRootView(model: model), size: CGSize(width: 1512, height: 944), name: "editor-features")
+        _ = try await render(VideoTimelineView(model: model), size: CGSize(width: 1400, height: height), name: "timeline-text-lanes")
+        _ = try await render(VideoEditorRootView(model: model), size: CGSize(width: 1512, height: 944), name: "editor-features")
     }
 }

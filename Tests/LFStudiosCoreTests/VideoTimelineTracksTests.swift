@@ -142,41 +142,47 @@ final class VideoTimelineTracksTests: XCTestCase {
     // MARK: Rows
 
     func testEveryKindOfContentHasItsRowInOrder() async throws {
-        let model = try await makeModel()
-        var layout = VideoTimelineRowLayout(project: model.project, hasCamera: true)
-        XCTAssertEqual(layout.rows.map(\.track), [.zooms, .clips, .camera, .captions, .keys, .annotations, .music])
-        // Empty: thin rows with a hint; zooms and clips are always open.
-        for row in layout.rows where row.track != .zooms && row.track != .clips {
-            XCTAssertTrue(row.isEmpty, "\(row.track)")
-            XCTAssertEqual(row.height, VideoTimelineRowLayout.thinHeight)
-            XCTAssertFalse(VideoTimelineRowLayout.hint(row.track).isEmpty, "\(row.track) says how to add something")
-        }
-        XCTAssertFalse(try XCTUnwrap(layout.row(.zooms)).isEmpty)
-        XCTAssertFalse(try XCTUnwrap(layout.row(.clips)).isEmpty)
+        // Both layouts (1.17.0).
+        try await forEachEditorStyle { style in
+            let model = try await makeModel()
+            var layout = VideoTimelineRowLayout(project: model.project, hasCamera: true)
+            // LF Studios layout: the captions row on top; CapCut style as in 1.16.
+            let empty: [VideoTimelineTrack] = style == .lfStudios ? [.captions, .zooms, .clips, .camera, .keys, .annotations, .music] : [.zooms, .clips, .camera, .captions, .keys, .annotations, .music]
+            XCTAssertEqual(layout.rows.map(\.track), empty)
+            // Empty: thin rows with a hint; zooms and clips are always open.
+            for row in layout.rows where row.track != .zooms && row.track != .clips {
+                XCTAssertTrue(row.isEmpty, "\(row.track)")
+                XCTAssertEqual(row.height, VideoTimelineRowLayout.thinHeight)
+                XCTAssertFalse(VideoTimelineRowLayout.hint(row.track).isEmpty, "\(row.track) says how to add something")
+            }
+            XCTAssertFalse(try XCTUnwrap(layout.row(.zooms)).isEmpty)
+            XCTAssertFalse(try XCTUnwrap(layout.row(.clips)).isEmpty)
 
-        // Something of every kind.
-        let sound = VideoExternalAudioTrack(path: directory.appendingPathComponent("a.wav").path, name: "Voiceover", duration: 2, at: 1)
-        model.mutate { project in
-            project.zoomRegions = [VideoZoomRegion(start: 1, end: 3, scale: 2, followsCursor: false)]
-            project.captions = [VideoCaptionLine(start: 1, end: 2, text: "Hi")]
-            project.keystrokes = [VideoKeystrokeEvent(time: 2, keys: ["⌘", "S"])]
-            project.overlayEffects = [VideoDemoOverlayEffect(kind: .text, time: 1, duration: 2, text: "Note"), VideoDemoOverlayEffect(kind: .arrow, time: 1.5, duration: 2, layer: 1)]
-            project.cameraLayouts = [VideoCameraLayoutRegion(start: 2, end: 4, layout: .fullscreen)]
-            project.music = VideoMusicTrack(path: self.directory.appendingPathComponent("song.m4a").path, name: "Song", duration: 30)
-            project.audioTracks = [sound]
+            // Something of every kind.
+            let sound = VideoExternalAudioTrack(path: directory.appendingPathComponent("a.wav").path, name: "Voiceover", duration: 2, at: 1)
+            model.mutate { project in
+                project.zoomRegions = [VideoZoomRegion(start: 1, end: 3, scale: 2, followsCursor: false)]
+                project.captions = [VideoCaptionLine(start: 1, end: 2, text: "Hi")]
+                project.keystrokes = [VideoKeystrokeEvent(time: 2, keys: ["⌘", "S"])]
+                project.overlayEffects = [VideoDemoOverlayEffect(kind: .text, time: 1, duration: 2, text: "Note"), VideoDemoOverlayEffect(kind: .arrow, time: 1.5, duration: 2, layer: 1)]
+                project.cameraLayouts = [VideoCameraLayoutRegion(start: 2, end: 4, layout: .fullscreen)]
+                project.music = VideoMusicTrack(path: self.directory.appendingPathComponent("song.m4a").path, name: "Song", duration: 30)
+                project.audioTracks = [sound]
+            }
+            layout = VideoTimelineRowLayout(project: model.project, hasCamera: true)
+            XCTAssertEqual(layout.rows.map(\.track), empty + [.sound(sound.id)])
+            for row in layout.rows {
+                XCTAssertFalse(row.isEmpty, "\(row.track) shows its lanes")
+                XCTAssertNotNil(layout.contentTop(row.track))
+            }
+            XCTAssertEqual(try XCTUnwrap(layout.row(.annotations)).height, 2 * VideoTimelineMetrics.overlayLaneHeight + VideoTimelineMetrics.overlayLaneGap + 2 * VideoTimelineRowLayout.padding, "a lane per layer")
+            // Rows follow each other without overlapping.
+            for (a, b) in zip(layout.rows, layout.rows.dropFirst()) {
+                XCTAssertEqual(b.top, a.top + a.height + VideoTimelineRowLayout.separator, accuracy: 0.001)
+            }
+            XCTAssertEqual(model.project.timelineTracks.last?.title(in: model.project), "Voiceover")
+    
         }
-        layout = VideoTimelineRowLayout(project: model.project, hasCamera: true)
-        XCTAssertEqual(layout.rows.map(\.track), [.zooms, .clips, .camera, .captions, .keys, .annotations, .music, .sound(sound.id)])
-        for row in layout.rows {
-            XCTAssertFalse(row.isEmpty, "\(row.track) shows its lanes")
-            XCTAssertNotNil(layout.contentTop(row.track))
-        }
-        XCTAssertEqual(try XCTUnwrap(layout.row(.annotations)).height, 2 * VideoTimelineMetrics.overlayLaneHeight + VideoTimelineMetrics.overlayLaneGap + 2 * VideoTimelineRowLayout.padding, "a lane per layer")
-        // Rows follow each other without overlapping.
-        for (a, b) in zip(layout.rows, layout.rows.dropFirst()) {
-            XCTAssertEqual(b.top, a.top + a.height + VideoTimelineRowLayout.separator, accuracy: 0.001)
-        }
-        XCTAssertEqual(model.project.timelineTracks.last?.title(in: model.project), "Voiceover")
     }
 
     func testTrackHeightScalesTheRowsAndCollapsingFoldsOne() async throws {

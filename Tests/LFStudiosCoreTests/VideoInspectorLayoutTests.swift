@@ -58,64 +58,72 @@ final class VideoInspectorLayoutTests: XCTestCase {
     }
 
     func testSelectingKeepsTheTabAndItsPlace() async throws {
-        let model = try await T.make(in: directory, T.Options(seconds: 8))
-        model.inspectorTab = .background
-        let host = await mount(VideoInspectorView(model: model), size: CGSize(width: 318, height: 700))
-        let tabScroll = try XCTUnwrap(scrollViews(in: host).max { ($0.documentView?.frame.height ?? 0) < ($1.documentView?.frame.height ?? 0) })
-        tabScroll.contentView.scroll(to: NSPoint(x: 0, y: 180))
-        tabScroll.reflectScrolledClipView(tabScroll.contentView)
-        let offset = tabScroll.contentView.bounds.minY
+        // Both layouts (1.17.0).
+        try await forEachEditorStyle { _ in
+            let model = try await T.make(in: directory, T.Options(seconds: 8))
+            model.inspectorTab = .background
+            let host = await mount(VideoInspectorView(model: model), size: CGSize(width: 318, height: 700))
+            let tabScroll = try XCTUnwrap(scrollViews(in: host).max { ($0.documentView?.frame.height ?? 0) < ($1.documentView?.frame.height ?? 0) })
+            tabScroll.contentView.scroll(to: NSPoint(x: 0, y: 180))
+            tabScroll.reflectScrolledClipView(tabScroll.contentView)
+            let offset = tabScroll.contentView.bounds.minY
 
-        model.selection = .clip(model.segments[0].id)
-        await T.settle(0.3)
-        XCTAssertTrue(scrollViews(in: host).contains { $0 === tabScroll }, "the tab stays on screen under the clip's settings")
-        model.selection = .none
-        await T.settle(0.3)
-        XCTAssertTrue(scrollViews(in: host).contains { $0 === tabScroll }, "the same list, not a new one")
-        XCTAssertEqual(tabScroll.contentView.bounds.minY, offset, accuracy: 1, "scrolled where it was")
+            model.selection = .clip(model.segments[0].id)
+            await T.settle(0.3)
+            XCTAssertTrue(scrollViews(in: host).contains { $0 === tabScroll }, "the tab stays on screen under the clip's settings")
+            model.selection = .none
+            await T.settle(0.3)
+            XCTAssertTrue(scrollViews(in: host).contains { $0 === tabScroll }, "the same list, not a new one")
+            XCTAssertEqual(tabScroll.contentView.bounds.minY, offset, accuracy: 1, "scrolled where it was")
 
-        // The transcript isn't rebuilt either.
-        words(model)
-        model.inspectorTab = .captions
-        UserDefaults.standard.set("transcript", forKey: "videoScriptMode")
-        await T.settle(0.4)
-        let text = try XCTUnwrap(textView(in: host))
-        let rebuilds = try XCTUnwrap(text.coordinator).rebuilds
-        model.selection = .clip(model.segments[0].id)
-        await T.settle(0.3)
-        model.selection = .none
-        await T.settle(0.3)
-        XCTAssertTrue(textView(in: host) === text, "the transcript stays")
-        XCTAssertEqual(text.coordinator?.rebuilds, rebuilds)
+            // The transcript isn't rebuilt either.
+            words(model)
+            model.inspectorTab = .captions
+            UserDefaults.standard.set("transcript", forKey: "videoScriptMode")
+            await T.settle(0.4)
+            let text = try XCTUnwrap(textView(in: host))
+            let rebuilds = try XCTUnwrap(text.coordinator).rebuilds
+            model.selection = .clip(model.segments[0].id)
+            await T.settle(0.3)
+            model.selection = .none
+            await T.settle(0.3)
+            XCTAssertTrue(textView(in: host) === text, "the transcript stays")
+            XCTAssertEqual(text.coordinator?.rebuilds, rebuilds)
 
-        model.selection = .clip(model.segments[0].id)
-        try await VideoEditorFixesSnapshotTests.render(VideoInspectorView(model: model), size: CGSize(width: 318, height: 760), name: "fix-09-selection-over-tabs")
+            model.selection = .clip(model.segments[0].id)
+            try await VideoEditorFixesSnapshotTests.render(VideoInspectorView(model: model), size: CGSize(width: 318, height: 760), name: "fix-09-selection-over-tabs")
+    
+        }
     }
 
     func testDeleteInTheTranscriptCutsWordsNotTheSelectedClip() async throws {
-        var options = T.Options(seconds: 8)
-        options.audio = true
-        let model = try await T.make(in: directory, options)
-        words(model)
-        let host = await mount(VideoTranscriptPanel(model: model, timeline: model.timelineState), size: CGSize(width: 320, height: 500))
-        let text = try XCTUnwrap(textView(in: host))
-        // A clip was clicked on the timeline, then the transcript.
-        model.selection = .clip(model.segments[0].id)
-        let before = model.timelineDuration
-        let caret = (text.string as NSString).range(of: "open").upperBound
-        window?.makeFirstResponder(text)
-        text.setSelectedRange(NSRange(location: caret, length: 0))
-        let delete = NSEvent.keyEvent(with: .keyDown, location: .zero, modifierFlags: [], timestamp: 0, windowNumber: window?.windowNumber ?? 0, context: nil, characters: "\u{7f}", charactersIgnoringModifiers: "\u{7f}", isARepeat: false, keyCode: 51)!
-        text.keyDown(with: delete)
-        let all = model.transcriptWords
-        XCTAssertFalse(model.isIncluded(all[2]), "the word before the cursor is cut")
-        XCTAssertTrue(model.isIncluded(all[3]))
-        XCTAssertGreaterThan(model.timelineDuration, before - 1, "not the whole clip")
-        XCTAssertEqual(model.segments.count, 2, "the clip is split around the word, not removed")
-        // ⌫ again on the cut word puts it back.
-        await T.settle(0.2)
-        text.setSelectedRange(NSRange(location: (text.string as NSString).range(of: "open").upperBound, length: 0))
-        text.keyDown(with: delete)
-        XCTAssertTrue(model.isIncluded(model.transcriptWords[2]))
+        // Both layouts (1.17.0).
+        try await forEachEditorStyle { _ in
+            var options = T.Options(seconds: 8)
+            options.audio = true
+            let model = try await T.make(in: directory, options)
+            words(model)
+            let host = await mount(VideoTranscriptPanel(model: model, timeline: model.timelineState), size: CGSize(width: 320, height: 500))
+            let text = try XCTUnwrap(textView(in: host))
+            // A clip was clicked on the timeline, then the transcript.
+            model.selection = .clip(model.segments[0].id)
+            let before = model.timelineDuration
+            let caret = (text.string as NSString).range(of: "open").upperBound
+            window?.makeFirstResponder(text)
+            text.setSelectedRange(NSRange(location: caret, length: 0))
+            let delete = NSEvent.keyEvent(with: .keyDown, location: .zero, modifierFlags: [], timestamp: 0, windowNumber: window?.windowNumber ?? 0, context: nil, characters: "\u{7f}", charactersIgnoringModifiers: "\u{7f}", isARepeat: false, keyCode: 51)!
+            text.keyDown(with: delete)
+            let all = model.transcriptWords
+            XCTAssertFalse(model.isIncluded(all[2]), "the word before the cursor is cut")
+            XCTAssertTrue(model.isIncluded(all[3]))
+            XCTAssertGreaterThan(model.timelineDuration, before - 1, "not the whole clip")
+            XCTAssertEqual(model.segments.count, 2, "the clip is split around the word, not removed")
+            // ⌫ again on the cut word puts it back.
+            await T.settle(0.2)
+            text.setSelectedRange(NSRange(location: (text.string as NSString).range(of: "open").upperBound, length: 0))
+            text.keyDown(with: delete)
+            XCTAssertTrue(model.isIncluded(model.transcriptWords[2]))
+    
+        }
     }
 }

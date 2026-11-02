@@ -48,12 +48,16 @@
 	<string>%@ слишком тяжела для этого Mac: будет очень медленно или не получится. Попробуйте %@.</string>
 	<key>%@ isn't supported for captions on this Mac. Pick another language.</key>
 	<string>Язык «%@» не поддерживается для субтитров на этом Mac. Выберите другой язык.</string>
+	<key>%@ left</key>
+	<string>осталось %@</string>
 	<key>%@ long</key>
 	<string>длительность %@</string>
 	<key>%@ moved from “%@”, which has no key now</key>
 	<string>%@ перенесено с «%@» — теперь у этой команды нет клавиши</string>
 	<key>%@ of recording plays in %@.</key>
 	<string>%@ записи воспроизводится за %@.</string>
+	<key>%@ on</key>
+	<string>%@: вкл.</string>
 	<key>%@ on every cut</key>
 	<string>%@ на всех склейках</string>
 	<key>%@ on “%@”</key>
@@ -120,6 +124,8 @@
 	<string>%@ — отдельной дорожкой</string>
 	<key>%@: %@</key>
 	<string>%@: %@</string>
+	<key>%@: drag to change it and when it happens</key>
+	<string>%@: перетащите, чтобы изменить значение и момент</string>
 	<key>%@: on the selected text clip, or a new one</key>
 	<string>%@: на выбранном текстовом клипе или на новом</string>
 	<key>%@s</key>
@@ -184,6 +190,8 @@
 	<string>Не хватает видео с камеры или шрифта</string>
 	<key>A clean picture plus a subtitles file to upload.</key>
 	<string>Чистое изображение плюс файл субтитров для загрузки.</string>
+	<key>A clip's effects as cards, in the order they're drawn: drag one to change the order, switch one off to compare.</key>
+	<string>Эффекты клипа в виде карточек в порядке применения: перетащите карточку, чтобы изменить порядок, выключите, чтобы сравнить.</string>
 	<key>A contrasting edge around the letters</key>
 	<string>Контрастный контур вокруг букв</string>
 	<key>A cut — click to add a transition</key>
@@ -236,6 +244,8 @@
 	<string>Быстрое приближение сразу после склейки: картинка резко приближается, а затем плавно возвращается.</string>
 	<key>A report helps fix this. You'll see everything before it's sent, and it never includes your screenshots or recordings.</key>
 	<string>Отчет поможет это исправить. Вы увидите его целиком перед отправкой, и в нем никогда не будет ваших снимков экрана и записей.</string>
+	<key>A roll</key>
+	<string>A-ролл</string>
 	<key>A round magnifier over one spot, while the rest of the video stays in view.</key>
 	<string>Круглая лупа над одним местом, а остальное видео остается в кадре.</string>
 	<key>A second caption track you can show, burn in, or save as subtitles. Translated on this Mac — nothing is uploaded.</key>
@@ -384,6 +394,8 @@
 	<string>Добавьте другую запись в конец этой, чтобы получилось одно видео.</string>
 	<key>Add arrow at the playhead (⌥A)</key>
 	<string>Добавить стрелку у указателя воспроизведения (⌥A)</string>
+	<key>Add at Playhead</key>
+	<string>Добавить у указателя</string>
 	<key>Add at the playhead</key>
 	<string>Добавить у указателя воспроизведения</string>
 	<key>Add audio…</key>
@@ -406,6 +418,8 @@
 	<string>Добавить главы по маркерам</string>
 	<key>Add chapters from markers puts chapters in MP4 and ProRes files.</key>
 	<string>«Добавить главы по маркерам» добавляет главы в файлы MP4 и ProRes.</string>
+	<key>Add effects from Library ▸ Effects.</key>
+	<string>Эффекты добавляются из «Библиотека ▸ Эффекты».</string>
 	<key>Add highlight at the playhead (⌥H)</key>
 	<string>Добавить выделение у указателя воспроизведения (⌥H)</string>
 	<key>Add image at the playhead</key>
@@ -414,6 +428,8 @@
 	<string>Добавить ключевой кадр</string>
 	<key>Add keyframe: %@</key>
 	<string>Добавить ключевой кадр: %@</string>
+	<key>Add keyframes with ◆ in Properties ▸ Clip, or ⌥K.</key>
+	<string>Ключевые кадры добавляются кнопкой ◆ в «Свойства ▸ Клип» или клавишами ⌥K.</string>
 	<key>Add labels, speech-bubble callouts, and numbered circles for step-by-step guides.</key>
 	<string>Добавляйте подписи, выноски-облачка и кружки с номерами для пошаговых инструкций.</string>
 	<key>Add marker</key>
@@ -476,6 +492,8 @@
 	<string>Добавляет увеличение везде, где вы нажимали во время записи.</string>
 	<key>Adjust</key>
 	<string>Коррекция</string>
+	<key>Adjust and Filter are drawn first; change them in Properties ▸ Clip.</key>
+	<string>Коррекция и фильтр применяются первыми; меняйте их в «Свойства ▸ Клип».</string>
 	<key>Adjust and adjustment clips</key>
 	<string>Коррекция и корректирующие клипы</string>
 	<key>Adjust to move it half a second</key>
@@ -530,6 +548,8 @@
 	<string>Все функции</string>
 	<key>All files</key>
 	<string>Все файлы</string>
+	<key>All keys (?)</key>
+	<string>Все клавиши (?)</string>
 	<key>All media</key>
 	<string>Все медиафайлы</string>
 	<key>All of these start off. Every screenshot is still kept in History and Home, and a short notice says so.</key>
@@ -650,6 +670,8 @@
 	<string>Применить обрезку (Return)</string>
 	<key>Apply this position to all captions</key>
 	<string>Применить это положение ко всем субтитрам</string>
+	<key>Apply to Every Caption</key>
+	<string>Применить ко всем субтитрам</string>
 	<key>Apply to all cuts</key>
 	<string>Применить ко всем склейкам</string>
 	<key>Apply to all cuts puts the same transition on every cut.</key>
@@ -1088,12 +1110,16 @@
 	<string>Отменено — недоделанная папка удалена</string>
 	<key>Canyon Silk</key>
 	<string>Шелк каньона</string>
+	<key>CapCut style</key>
+	<string>В стиле CapCut</string>
 	<key>Caption</key>
 	<string>Субтитр</string>
 	<key>Caption animation</key>
 	<string>Анимация субтитров</string>
 	<key>Caption animations</key>
 	<string>Анимация субтитров</string>
+	<key>Caption list and Restyle all</key>
+	<string>Список субтитров и стиль для всех</string>
 	<key>Caption removed</key>
 	<string>Субтитр удален</string>
 	<key>Caption style</key>
@@ -1104,6 +1130,8 @@
 	<string>Стили субтитров</string>
 	<key>Caption styles and .srt files</key>
 	<string>Стили субтитров и файлы .srt</string>
+	<key>Caption text</key>
+	<string>Текст субтитра</string>
 	<key>Caption — drag to move it, right-click for more</key>
 	<string>Субтитр — перетяните, чтобы переместить; правый клик — другие действия</string>
 	<key>Caption “%@”</key>
@@ -1234,6 +1262,10 @@
 	<string>Измените вид разметки до или после рисования.</string>
 	<key>Change how the pointer looks: macOS classic, White, Outlined, Touch dot, Ring, or your own picture.</key>
 	<string>Измените вид указателя: «Классический macOS», «Белый», «Контур», «Точка касания», «Кольцо» или своя картинка.</string>
+	<key>Change it in Clip ▸ Adjust</key>
+	<string>Измените в «Клип ▸ Коррекция»</string>
+	<key>Change it in Clip ▸ Filter</key>
+	<string>Измените в «Клип ▸ Фильтр»</string>
 	<key>Change keyboard shortcuts</key>
 	<string>Изменение сочетаний клавиш</string>
 	<key>Change the editor's keys</key>
@@ -1386,6 +1418,8 @@
 	<string>Выберите, насколько быстро и плавно движутся увеличения.</string>
 	<key>Choose light or dark windows, or follow your Mac.</key>
 	<string>Выберите светлые или темные окна или оформление как на Mac.</string>
+	<key>Choose one with the arrow keys and Return, or click it. A command runs; anything else is selected and the playhead goes there.</key>
+	<string>Выберите стрелками и Return или щелчком. Команда выполняется; всё остальное выделяется, и указатель переходит туда.</string>
 	<key>Choose screen</key>
 	<string>Выбрать экран</string>
 	<key>Choose sound files to add as tracks of their own</key>
@@ -1400,6 +1434,8 @@
 	<string>Угол («Слева» или «Справа») и время показа выбираются в том же разделе настроек. Пока указатель над миниатюрой, она не исчезает.</string>
 	<key>Choose the screen recording, the camera video if there is one, and the sound files to add as tracks. Nothing in the folder changes until you save.</key>
 	<string>Выберите запись экрана, видео с камеры, если оно есть, и звуковые файлы, которые нужно добавить дорожками. До сохранения в папке ничего не меняется.</string>
+	<key>Choose the setting it shows: Opacity, Size, Rotation, Position or Volume.</key>
+	<string>Выберите, что она показывает: непрозрачность, размер, поворот, положение или громкость.</string>
 	<key>Choose the video's resolution, frame rate and colour space once, for the whole project. Export starts from them.</key>
 	<string>Выберите разрешение, частоту кадров и цветовое пространство видео один раз для всего проекта. Экспорт начинается с них.</string>
 	<key>Choose the video's shape for where it's going.</key>
@@ -1426,6 +1462,8 @@
 	<string>Выбрать…</string>
 	<key>Choose…</key>
 	<string>Выбрать…</string>
+	<key>Choosing a result never starts playing, and never changes the video.</key>
+	<string>Выбор результата никогда не запускает воспроизведение и не меняет видео.</string>
 	<key>Chroma key</key>
 	<string>Хромакей</string>
 	<key>Chroma key takes out one colour, like a green screen; pick the colour, then set Strength and Shadow.</key>
@@ -1520,6 +1558,8 @@
 	<string>Нажмите «Добавить видео с камеры…» и выберите видео.</string>
 	<key>Click Add text, or drag a template onto the timeline.</key>
 	<string>Нажмите «Добавить текст» или перетяните шаблон на шкалу времени.</string>
+	<key>Click Apply to Every Caption. ⌘Z puts them all back.</key>
+	<string>Нажмите «Применить ко всем субтитрам». ⌘Z вернёт всё как было.</string>
 	<key>Click Apply, or press Return.</key>
 	<string>Нажмите «Применить» или Return.</string>
 	<key>Click Back above the timeline, or press Esc, to return to the whole video.</key>
@@ -1634,6 +1674,8 @@
 	<string>Нажмите «Расшифровать». Пока идет распознавание, можно продолжать монтаж.</string>
 	<key>Click Zoom above the preview, or click the zoom lane on the timeline.</key>
 	<string>Нажмите «Масштаб» над предпросмотром или нажмите на дорожку масштаба на шкале времени.</string>
+	<key>Click a caption's time to go there; click its words to change them, then press Return.</key>
+	<string>Нажмите на время субтитра, чтобы перейти к нему; нажмите на слова, чтобы изменить их, затем Return.</string>
 	<key>Click a clip on the player to move it, drag a corner to resize it, or turn it with the round knob.</key>
 	<string>Нажмите на клип в плеере, чтобы переместить его, потяните за угол, чтобы изменить размер, или поверните круглой ручкой.</string>
 	<key>Click a clip to split it there. A or Esc goes back to Select.</key>
@@ -1698,6 +1740,8 @@
 	<string>Нажмите значок LF Studios в Dock, чтобы снова открыть это окно.</string>
 	<key>Click the LF Studios icon in the menu bar.</key>
 	<string>Нажмите значок LF Studios в строке меню.</string>
+	<key>Click the curve button in the track's header. A lane opens under the track.</key>
+	<string>Нажмите кнопку кривой в заголовке дорожки. Под дорожкой откроется полоса.</string>
 	<key>Click the field next to a command.</key>
 	<string>Нажмите на поле рядом с командой.</string>
 	<key>Click the microphone. After 3, 2, 1 the video plays, silent, while you talk.</key>
@@ -2378,6 +2422,8 @@
 	<string>Загрузка модели Whisper — и только когда вы нажмете «Загрузить».</string>
 	<key>Downloading the language model…</key>
 	<string>Загрузка языковой модели…</string>
+	<key>Drag a card up or down to change the order; ⌘Z puts it back.</key>
+	<string>Перетащите карточку вверх или вниз, чтобы изменить порядок; ⌘Z вернёт как было.</string>
 	<key>Drag a clip by its name to move it. Click a clip and press ⌫ to delete it.</key>
 	<string>Перетяните клип за название, чтобы переместить его. Выберите клип и нажмите ⌫, чтобы удалить его.</string>
 	<key>Drag a clip's edge to trim it, or press Q or W to cut what's left or right of the playhead.</key>
@@ -2390,6 +2436,8 @@
 	<string>Нарисуйте рамку. Перетаскивайте ее изнутри, чтобы переместить, или за края, чтобы изменить размер.</string>
 	<key>Drag a point up for faster, down for slower. Double-click to add a point; double-click a point to take it away.</key>
 	<string>Тяните точку вверх — быстрее, вниз — медленнее. Дважды нажмите, чтобы добавить точку; дважды нажмите на точку, чтобы убрать ее.</string>
+	<key>Drag a point up or down to change the value, or sideways to change when it happens. One drag is one ⌘Z step.</key>
+	<string>Перетащите точку вверх или вниз, чтобы изменить значение, или вбок, чтобы изменить момент. Одно перетаскивание — один шаг ⌘Z.</string>
 	<key>Drag a screenshot out of History and drop it where you want it.</key>
 	<string>Перетяните снимок из истории туда, где он нужен.</string>
 	<key>Drag a sticker onto the timeline; move, size and animate it like any clip.</key>
@@ -2498,6 +2546,8 @@
 	<string>Выделите область, чтобы снять  ·  ⇧ при отпускании — сначала настроить  ·  Пробел — сдвиг  ·  Esc — отмена</string>
 	<key>Drag to change how much of the video the camera takes</key>
 	<string>Перетащите, чтобы изменить, какую часть видео занимает камера</string>
+	<key>Drag to change the order</key>
+	<string>Перетащите, чтобы изменить порядок</string>
 	<key>Drag to change where this clip ends</key>
 	<string>Перетяните, чтобы изменить конец клипа</string>
 	<key>Drag to change where this clip starts</key>
@@ -2534,6 +2584,8 @@
 	<string>Рисуйте выбранным инструментом. Клавиши инструментов: V — выбор, A — стрелка, R — прямоугольник, T — текст, O — выноска, H — маркер, B — размытие, P — пикселизация, S — прожектор, C — обрезка.</string>
 	<key>Drawing</key>
 	<string>Рисунок</string>
+	<key>Drawn top to bottom. Drag a card to change the order.</key>
+	<string>Применяются сверху вниз. Перетащите карточку, чтобы изменить порядок.</string>
 	<key>Drop a screenshot straight into an email, a chat, a document, or Finder.</key>
 	<string>Перетяните снимок прямо в письмо, чат, документ или Finder.</string>
 	<key>Dropped on Video clips instead, a video joins the main track at that spot (a picture becomes a 5-second clip).</key>
@@ -2612,8 +2664,12 @@
 	<string>Подсказки в редакторе</string>
 	<key>Effect</key>
 	<string>Эффект</string>
+	<key>Effect chain</key>
+	<string>Цепочка эффектов</string>
 	<key>Effects</key>
 	<string>Эффекты</string>
+	<key>Effects belong to clips above the main track. Select one, or drag an effect from Library ▸ Effects onto the timeline.</key>
+	<string>Эффекты применяются к клипам над основной дорожкой. Выберите клип или перетащите эффект из «Библиотека ▸ Эффекты» на таймлайн.</string>
 	<key>Elegant</key>
 	<string>Элегантный</string>
 	<key>Ellipse</key>
@@ -2676,6 +2732,10 @@
 	<string>Оценка…</string>
 	<key>Even out loudness</key>
 	<string>Выравнивание громкости</string>
+	<key>Every caption in a list, ready to edit, and one restyle for all of them.</key>
+	<string>Все субтитры в одном списке, готовые к правке, и один стиль для всех.</string>
+	<key>Every caption restyled</key>
+	<string>Стиль всех субтитров изменён</string>
 	<key>Every capture, recording, and tool, from the LF Studios icon in the menu bar.</key>
 	<string>Все снимки, записи и инструменты — из значка LF Studios в строке меню.</string>
 	<key>Every change can be undone, step by step.</key>
@@ -3218,6 +3278,8 @@
 	<string>Перейти в конец</string>
 	<key>Go to Start</key>
 	<string>Перейти в начало</string>
+	<key>Go to this caption</key>
+	<string>Перейти к этому субтитру</string>
 	<key>Golden hour</key>
 	<string>Золотой час</string>
 	<key>Good to know</key>
@@ -3318,6 +3380,8 @@
 	<string>Скрыть значок в строке меню?</string>
 	<key>Hide the camera whenever you're not talking, and bring it back when you speak.</key>
 	<string>Скрывайте камеру, когда вы молчите, и возвращайте ее, когда говорите.</string>
+	<key>Hide the keyframe curve</key>
+	<string>Скрыть кривую ключевых кадров</string>
 	<key>Hide the move to Stop</key>
 	<string>Скрыть движение к кнопке «Остановить»</string>
 	<key>Hide tips (bring them back from ⌘K or the shortcuts list)</key>
@@ -3522,6 +3586,20 @@
 	<string>Начало позже</string>
 	<key>In place of the recording's microphone — Enhance voice and Podcast mode clean it up</key>
 	<string>Вместо микрофона записи — «Улучшение голоса» и «Режим подкаста» очищают ее</string>
+	<key>In the LF Studios layout, Properties has At playhead on top (what plays now and what comes next; click one to select it) and four tabs: Clip, Effects, Captions and Video (Style, Cursor, Zoom, Camera, Audio).</key>
+	<string>В макете LF Studios в «Свойствах» сверху блок «Сейчас» (что идёт сейчас и что дальше; нажмите, чтобы выбрать) и четыре вкладки: «Клип», «Эффекты», «Субтитры» и «Видео» (Стиль, Указатель, Масштаб, Камера, Аудио).</string>
+	<key>In the LF Studios layout: Properties ▸ Captions ▸ Transcript.</key>
+	<string>В макете LF Studios: «Свойства ▸ Субтитры ▸ Расшифровка».</string>
+	<key>In the LF Studios layout: Properties ▸ Video ▸ Audio.</key>
+	<string>В макете LF Studios: «Свойства ▸ Видео ▸ Аудио».</string>
+	<key>In the LF Studios layout: Properties ▸ Video ▸ Camera.</key>
+	<string>В макете LF Studios: «Свойства ▸ Видео ▸ Камера».</string>
+	<key>In the LF Studios layout: Properties ▸ Video ▸ Cursor.</key>
+	<string>В макете LF Studios: «Свойства ▸ Видео ▸ Указатель».</string>
+	<key>In the LF Studios layout: Properties ▸ Video ▸ Style.</key>
+	<string>В макете LF Studios: «Свойства ▸ Видео ▸ Стиль».</string>
+	<key>In the LF Studios layout: Properties ▸ Video ▸ Zoom.</key>
+	<string>В макете LF Studios: «Свойства ▸ Видео ▸ Масштаб».</string>
 	<key>In the Style panel, open Presets and choose Save as Preset….</key>
 	<string>На панели «Стиль» откройте «Стили» и выберите «Сохранить как стиль…».</string>
 	<key>In the editor, check that Mute video is off in the Audio panel, and that the preview isn't muted (press M).</key>
@@ -3764,6 +3842,8 @@
 	<string>Пусть файлы на рабочем столе не попадают на снимки.</string>
 	<key>Keep pitch</key>
 	<string>Сохранять тон</string>
+	<key>Keep the current style</key>
+	<string>Оставить текущий стиль</string>
 	<key>Keeps just the person, found on this Mac</key>
 	<string>Оставляет только человека; распознавание на этом Mac</string>
 	<key>Keeps loud and quiet words close together</key>
@@ -3794,6 +3874,10 @@
 	<string>Ключевой кадр здесь</string>
 	<key>Keyed: a change adds a keyframe at the playhead</key>
 	<string>С ключевыми кадрами: изменение добавляет кадр у указателя воспроизведения</string>
+	<key>Keyframe curve</key>
+	<string>Кривая ключевых кадров</string>
+	<key>Keyframe curve: %@</key>
+	<string>Кривая ключевых кадров: %@</string>
 	<key>Keyframe: %@</key>
 	<string>Ключевой кадр: %@</string>
 	<key>Keyframes</key>
@@ -3814,6 +3898,8 @@
 	<string>L</string>
 	<key>LF Studios</key>
 	<string>LF Studios</string>
+	<key>LF Studios (new)</key>
+	<string>LF Studios (новый)</string>
 	<key>LF Studios 1.11 and earlier can't open .lfs files: whoever you send one to needs LF Studios 1.12.0 or later.</key>
 	<string>LF Studios 1.11 и более ранние версии не открывают файлы .lfs: получателю нужен LF Studios 1.12.0 или новее.</string>
 	<key>LF Studios Guide</key>
@@ -3952,6 +4038,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Расположение</string>
 	<key>Layout also has Screen only and Camera only. The screen and the camera are always both recorded, so you can change your mind later.</key>
 	<string>В «Расположении» есть также «Только экран» и «Только камера». Экран и камера всегда записываются оба, так что передумать можно позже.</string>
+	<key>Layout ▸ LF Studios (new) or CapCut style: the new layout has the tools down the left, Search in the middle of the top bar and the keys along the bottom; CapCut style is the editor as it was in 1.16. This Mac remembers your choice.</key>
+	<string>«Расположение» ▸ «LF Studios (новый)» или «В стиле CapCut»: в новом макете инструменты слева, поиск в центре верхней панели, а клавиши внизу; стиль CapCut — это редактор как в 1.16. Этот Mac запоминает ваш выбор.</string>
 	<key>Layout ▸ Player First makes the player as big as it gets. Layout ▸ Reset Layout puts every panel back where it starts.</key>
 	<string>Расположение ▸ Сначала плеер делает плеер как можно больше. Расположение ▸ Сбросить расположение возвращает все панели на место.</string>
 	<key>Layout: how the editor's panels are arranged</key>
@@ -4318,6 +4406,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Еще</string>
 	<key>More caption options</key>
 	<string>Другие параметры субтитров</string>
+	<key>More for %@</key>
+	<string>Ещё для «%@»</string>
 	<key>More recording options</key>
 	<string>Другие параметры записи</string>
 	<key>More tips</key>
@@ -4340,10 +4430,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Сдвинуть «%@» раньше</string>
 	<key>Move %@ later</key>
 	<string>Сдвинуть «%@» позже</string>
+	<key>Move Down</key>
+	<string>Переместить вниз</string>
 	<key>Move Earlier</key>
 	<string>Сдвинуть раньше</string>
 	<key>Move Later</key>
 	<string>Сдвинуть позже</string>
+	<key>Move Up</key>
+	<string>Переместить вверх</string>
 	<key>Move an annotation to a track</key>
 	<string>Перенести элемент разметки на дорожку</string>
 	<key>Move earlier</key>
@@ -4488,6 +4582,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Плашка с именем</string>
 	<key>Natural</key>
 	<string>Естественный</string>
+	<key>Nearby</key>
+	<string>Рядом</string>
 	<key>Nebula</key>
 	<string>Туманность</string>
 	<key>Needed for every screenshot and every recording. Without it, LF Studios can only see your wallpaper.</key>
@@ -4598,6 +4694,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>В «%@» не найдено субтитров</string>
 	<key>No captions in the picture — add a subtitles file to upload them separately.</key>
 	<string>Субтитров в изображении нет — добавьте файл субтитров, чтобы загрузить их отдельно.</string>
+	<key>No captions yet. Transcribe the narration (Transcript), import an .srt or .vtt file from Library ▸ Captions, or add one at the playhead.</key>
+	<string>Субтитров пока нет. Расшифруйте речь («Расшифровка»), импортируйте файл .srt или .vtt из «Библиотека ▸ Субтитры» или добавьте субтитр у указателя.</string>
 	<key>No captures contain “%@”</key>
 	<string>Нет снимков с текстом «%@»</string>
 	<key>No captures of this type</key>
@@ -4614,6 +4712,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Нет конфликтов</string>
 	<key>No cursor data in this video</key>
 	<string>В этом видео нет данных указателя</string>
+	<key>No effects yet: drag one from Library ▸ Effects onto this clip, or click + on an effect there.</key>
+	<string>Эффектов пока нет: перетащите эффект из «Библиотека ▸ Эффекты» на этот клип или нажмите + у эффекта там.</string>
 	<key>No face found in the camera video</key>
 	<string>В видео с камеры лицо не найдено</string>
 	<key>No favourites yet: hover an item and click its star.</key>
@@ -4724,6 +4824,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Не сейчас</string>
 	<key>Not set</key>
 	<string>Не задано</string>
+	<key>Nothing at the playhead</key>
+	<string>У указателя ничего нет</string>
 	<key>Nothing here yet</key>
 	<string>Здесь пока пусто</string>
 	<key>Nothing in the Guide matches your search. Try a shorter word, like “zoom” or “camera”.</key>
@@ -4752,6 +4854,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Ничего не записано — экран не передал изображение. Повторите попытку.</string>
 	<key>Notification</key>
 	<string>Уведомление</string>
+	<key>Now playing</key>
+	<string>Сейчас</string>
 	<key>Nudge the area (with ⇧: 10 points)</key>
 	<string>Сдвинуть область (с ⇧ — на 10 точек)</string>
 	<key>Nudge the selected mark (with ⇧: 10 points)</key>
@@ -4828,6 +4932,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Жили-были</string>
 	<key>One cycle</key>
 	<string>Один цикл</string>
+	<key>One search for commands, media, clips, captions and markers. Type a few letters, then choose.</key>
+	<string>Один поиск по командам, медиа, клипам, субтитрам и маркерам. Введите несколько букв и выберите.</string>
+	<key>One step: ⌘Z puts every caption back as it was. Captions moved on their own go back to the shared place.</key>
+	<string>Один шаг: ⌘Z вернёт все субтитры как было. Субтитры, перемещённые по отдельности, вернутся на общее место.</string>
 	<key>One word</key>
 	<string>По одному слову</string>
 	<key>One word at a time</key>
@@ -4944,6 +5052,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Открытие видео</string>
 	<key>Opening, saving, copying &amp; undo</key>
 	<string>Открытие, сохранение, копирование и отмена</string>
+	<key>Opening…</key>
+	<string>Открытие…</string>
 	<key>Opens its title and length in Style</key>
 	<string>Открывает его название и длительность во вкладке «Стиль»</string>
 	<key>Opens its volume, fades, and ducking in Audio</key>
@@ -5116,6 +5226,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Картинка</string>
 	<key>Picture “%@” — the file is missing</key>
 	<string>Изображение «%@» — файл не найден</string>
+	<key>Picture: %@</key>
+	<string>Картинка: %@</string>
 	<key>Pictures can't be reversed</key>
 	<string>Картинки нельзя перевернуть</string>
 	<key>Pin</key>
@@ -5298,6 +5410,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Нажмите сочетание клавиш или «Сделать снимок экрана».</string>
 	<key>Press ⌘C in the video editor, or choose Copy Current Frame in the commands (⌘K).</key>
 	<string>Нажмите ⌘C в видеоредакторе или выберите «Скопировать текущий кадр» в командах (⌘K).</string>
+	<key>Press ⌘K and type: a command's name, a file's, a clip's, words from a caption, or a marker's name.</key>
+	<string>Нажмите ⌘K и введите: название команды, файла, клипа, слова из субтитра или название маркера.</string>
 	<key>Press ⌫ again on crossed-out words to bring them back.</key>
 	<string>Нажмите ⌫ еще раз на зачеркнутых словах, чтобы вернуть их.</string>
 	<key>Pressed at %@. Press ⌫ to hide it from the video — handy for a stray ⌘Tab.</key>
@@ -5364,6 +5478,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Свойства ▸ Анимация, когда выбран клип над основной дорожкой.</string>
 	<key>Properties ▸ Blend, Cutout and Mask, with a clip above the main track selected.</key>
 	<string>Свойства ▸ Наложение, Силуэт и Маска, когда выбран клип над основной дорожкой.</string>
+	<key>Properties ▸ Captions ▸ Captions (LF Studios layout).</key>
+	<string>«Свойства ▸ Субтитры ▸ Субтитры» (макет LF Studios).</string>
+	<key>Properties ▸ Effects, with a clip above the main track selected (LF Studios layout).</key>
+	<string>«Свойства ▸ Эффекты», когда выбран клип над основной дорожкой (макет LF Studios).</string>
 	<key>Properties ▸ Keyframes, and the ◆ next to each setting of the selected clip.</key>
 	<string>Свойства ▸ Ключевые кадры и ◆ рядом с каждым параметром выбранного клипа.</string>
 	<key>Properties ▸ Speed, with a clip selected.</key>
@@ -5872,6 +5990,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторить перемещение выделения</string>
 	<key>Redo Move Image</key>
 	<string>Повторить перемещение изображения</string>
+	<key>Redo Move Keyframe</key>
+	<string>Повторить перемещение ключевого кадра</string>
 	<key>Redo Move Media</key>
 	<string>Повторить перемещение медиа</string>
 	<key>Redo Move Recording</key>
@@ -5918,6 +6038,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторить удаление видео с камеры</string>
 	<key>Redo Remove Captions</key>
 	<string>Повторить удаление всех субтитров</string>
+	<key>Redo Remove Effect</key>
+	<string>Повторить удаление эффекта</string>
 	<key>Redo Remove Intro Card</key>
 	<string>Повторить удаление начального титра</string>
 	<key>Redo Remove Keyframe</key>
@@ -5938,6 +6060,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторить переименование маркера</string>
 	<key>Redo Rename Media</key>
 	<string>Повторить переименование медиа</string>
+	<key>Redo Reorder Effects</key>
+	<string>Повторить изменение порядка эффектов</string>
 	<key>Redo Replace Camera Video</key>
 	<string>Повторить замену видео с камеры</string>
 	<key>Redo Replace Media</key>
@@ -5958,6 +6082,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторить восстановление слова</string>
 	<key>Redo Restore Words</key>
 	<string>Повторить восстановление слов</string>
+	<key>Redo Restyle Captions</key>
+	<string>Повторить смену стиля субтитров</string>
 	<key>Redo Reverse</key>
 	<string>Повторить реверс</string>
 	<key>Redo Rotate</key>
@@ -6026,6 +6152,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторить подрезку аудио</string>
 	<key>Redo Trim Clip</key>
 	<string>Повторить обрезку клипа</string>
+	<key>Redo Turn Effect Off</key>
+	<string>Повторить выключение эффекта</string>
+	<key>Redo Turn Effect On</key>
+	<string>Повторить включение эффекта</string>
 	<key>Redo Turn Off Clip</key>
 	<string>Повторить выключение клипа</string>
 	<key>Redo Turn On Clip</key>
@@ -6106,6 +6236,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>«Удалить фон» оставляет только человека; распознавание выполняется на этом Mac.</string>
 	<key>Remove caption</key>
 	<string>Удалить субтитр</string>
+	<key>Remove effect</key>
+	<string>Удалить эффект</string>
 	<key>Remove from favourites</key>
 	<string>Удалить из избранного</string>
 	<key>Remove from this video</key>
@@ -6164,6 +6296,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Открыть LF Studios заново</string>
 	<key>Reopen LF Studios to check for updates</key>
 	<string>Откройте LF Studios заново, чтобы проверить обновления</string>
+	<key>Reorder effects</key>
+	<string>Изменить порядок эффектов</string>
 	<key>Replace</key>
 	<string>Заменить</string>
 	<key>Replace Music…</key>
@@ -6248,6 +6382,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Вернуть размер — вернуть окно как было</string>
 	<key>Restored %@</key>
 	<string>Восстановлено %@</string>
+	<key>Restyle all also brings captions you moved one by one back to the shared place.</key>
+	<string>Стиль для всех также возвращает на общее место субтитры, перемещённые по отдельности.</string>
+	<key>Restyle all captions</key>
+	<string>Стиль всех субтитров</string>
+	<key>Results come in groups: Commands, Media, Clips, Captions, Markers.</key>
+	<string>Результаты сгруппированы: команды, медиа, клипы, субтитры, маркеры.</string>
 	<key>Resume Recording</key>
 	<string>Продолжить запись</string>
 	<key>Resume recording</key>
@@ -6536,6 +6676,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Поиск — вверху каждой вкладки; нажмите звездочку, чтобы сохранить элемент в избранном.</string>
 	<key>Search commands</key>
 	<string>Поиск команд</string>
+	<key>Search commands, media, clips, captions and markers (⌘K)</key>
+	<string>Поиск команд, медиа, клипов, субтитров и маркеров (⌘K)</string>
+	<key>Search commands, media, clips, captions, markers</key>
+	<string>Поиск команд, медиа, клипов, субтитров, маркеров</string>
+	<key>Search everything</key>
+	<string>Поиск по всему</string>
+	<key>Search in the top bar, or press ⌘K (LF Studios layout).</key>
+	<string>Поиск в верхней панели или ⌘K (макет LF Studios).</string>
 	<key>Search projects</key>
 	<string>Поиск проектов</string>
 	<key>Search results</key>
@@ -6556,6 +6704,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Все сочетания клавиш</string>
 	<key>See also</key>
 	<string>См. также</string>
+	<key>See how a setting changes over time under a track, and drag its keyframes there.</key>
+	<string>Под дорожкой видно, как настройка меняется со временем, и там же можно перетаскивать её ключевые кадры.</string>
 	<key>See where a phone app's buttons and captions would cover your vertical video.</key>
 	<string>Посмотрите, где кнопки и подписи приложения на телефоне закроют ваше вертикальное видео.</string>
 	<key>Select</key>
@@ -6572,10 +6722,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Сначала выберите клип над основной дорожкой</string>
 	<key>Select a clip above the main track to add a keyframe</key>
 	<string>Выберите клип над основной дорожкой, чтобы добавить ключевой кадр</string>
+	<key>Select a clip above the main track, then click Effects in Properties.</key>
+	<string>Выберите клип над основной дорожкой, затем нажмите «Эффекты» в «Свойствах».</string>
 	<key>Select a clip for Mute this clip, Fade in, and Fade out. Or ⇧-drag a part and choose Mute this part.</key>
 	<string>Выберите клип, чтобы увидеть «Выключить звук этого клипа», «Нарастание» и «Затухание». Или выделите фрагмент, проведя с ⇧, и выберите «Выключить звук этого фрагмента».</string>
 	<key>Select a clip on the timeline to mute it or fade it in and out.</key>
 	<string>Выберите клип на шкале времени, чтобы выключить его звук или настроить нарастание и затухание.</string>
+	<key>Select a clip, a zoom or an annotation to change it here.</key>
+	<string>Выберите клип, увеличение или пометку, чтобы изменить их здесь.</string>
 	<key>Select a clip, or ⇧-drag a part, and choose its Speed in the panel on the right.</key>
 	<string>Выберите клип или выделите фрагмент, проведя с ⇧, и задайте «Скорость» на панели справа.</string>
 	<key>Select a compound clip to break it apart</key>
@@ -6790,6 +6944,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Показать запись в Finder</string>
 	<key>Show Video Editor</key>
 	<string>Показать видеоредактор</string>
+	<key>Show a keyframe curve under this track</key>
+	<string>Показать кривую ключевых кадров под этой дорожкой</string>
 	<key>Show a video from a phone or camera instead of the recorded camera, lined up by sound.</key>
 	<string>Показывать видео с телефона или камеры вместо записанной камеры, совмещённое по звуку.</string>
 	<key>Show background</key>
@@ -7452,6 +7608,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Указатель — часть этого видео</string>
 	<key>The cursor, zooms, and clicks follow the crop.</key>
 	<string>Указатель, увеличения и нажатия подстраиваются под обрезку.</string>
+	<key>The curve button in a track's header, above the main track (LF Studios layout).</key>
+	<string>Кнопка кривой в заголовке дорожки над основной (макет LF Studios).</string>
 	<key>The dice button picks one at random.</key>
 	<string>Кнопка с кубиком выбирает случайный вариант.</string>
 	<key>The editor has the Library on the left, the player in the middle, Properties on the right (Style, Cursor, Zoom, Camera, Captions, and Audio), and the timeline below.</key>
@@ -7550,6 +7708,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Указатель плавно возвращается туда, откуда начал, и видео зацикливается без скачка</string>
 	<key>The pointer, clicks, and keyboard shortcuts</key>
 	<string>Указатель, нажатия и сочетания клавиш</string>
+	<key>The points are the clip's own keyframes: the ◆ marks on the clip and in Properties ▸ Clip change with them.</key>
+	<string>Точки — это ключевые кадры самого клипа: значки ◆ на клипе и в «Свойства ▸ Клип» меняются вместе с ними.</string>
 	<key>The preview shows only when Show the preview after capture is on in Settings ▸ General.</key>
 	<string>Превью появляется, только если в разделе Настройки ▸ Основные включено «Показывать превью после снимка».</string>
 	<key>The preview you see while recording never shows up in the screen recording itself.</key>
@@ -7644,6 +7804,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Таймлайн: строки над «Клипами» (основной дорожкой). Бросьте туда файл из Finder или Библиотеки.</string>
 	<key>The tool buttons above the preview: Text, Arrow, Highlight, Blur, Spotlight, and Image.</key>
 	<string>Кнопки инструментов над предпросмотром: «Текст», «Стрелка», «Выделение», «Размытие», «Прожектор» и «Изображение».</string>
+	<key>The tracks are named A roll (the main track), V2 · B roll, V3 and so on, with Captions on top. These are names only: projects are the same in both layouts.</key>
+	<string>Дорожки называются A-ролл (основная), V2 · B-ролл, V3 и так далее, субтитры сверху. Это только названия: проекты одинаковы в обоих макетах.</string>
 	<key>The trash button in the bar while recording.</key>
 	<string>Кнопка корзины на панели во время записи.</string>
 	<key>The video editor. Layout in its toolbar arranges the panels.</key>
@@ -7684,8 +7846,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>В окне «Запись сохранена» можно отредактировать видео, показать его в Finder или скопировать путь к нему.</string>
 	<key>The “Selected” panel appears at the top right when something is selected.</key>
 	<string>Когда что-то выбрано, вверху справа появляется панель с параметрами выбранного.</string>
-	<key>The ⌘ and ? buttons in the editor's toolbar.</key>
-	<string>Кнопки ⌘ и ? на панели инструментов редактора.</string>
+	<key>The ⌘ and ? buttons in the editor's toolbar. In the LF Studios layout: Search in the top bar, and All keys at the right of the bottom strip.</key>
+	<string>Кнопки ⌘ и ? на панели редактора. В макете LF Studios: «Поиск» в верхней панели и «Все клавиши» справа в нижней полосе.</string>
 	<key>There are no captions to translate yet. Transcribe or add captions first.</key>
 	<string>Субтитров для перевода пока нет. Сначала расшифруйте речь или добавьте субтитры.</string>
 	<key>There isn't enough free space on this disk: this export needs about %@ and %@ is free. Free up some space (empty the Trash, delete old recordings) or export to another drive.</key>
@@ -7736,6 +7898,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Это приложение</string>
 	<key>This list</key>
 	<string>Этот список</string>
+	<key>This part is cut from the video</key>
+	<string>Этот фрагмент вырезан из видео</string>
 	<key>This project needs a newer version of LF Studios</key>
 	<string>Для этого проекта нужна более новая версия LF Studios</string>
 	<key>This recording didn't save key timing or screen changes, so typing can't be found</key>
@@ -7976,6 +8140,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Развернуть</string>
 	<key>Turn clip on or off</key>
 	<string>Включить или выключить клип</string>
+	<key>Turn effect off</key>
+	<string>Выключить эффект</string>
+	<key>Turn effect on</key>
+	<string>Включить эффект</string>
 	<key>Turn it</key>
 	<string>Повернуть</string>
 	<key>Turn it on in Settings ▸ General ▸ After Capture ▸ Show the preview after capture.</key>
@@ -8070,6 +8238,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>В разделе «Языки» выберите язык и нажмите «Перевести».</string>
 	<key>Under Music, click Add Music… and choose a song.</key>
 	<string>В разделе «Музыка» нажмите «Добавить музыку…» и выберите трек.</string>
+	<key>Under Restyle all captions, choose a style, a size and Top or Bottom.</key>
+	<string>В разделе «Стиль всех субтитров» выберите стиль, размер и «Вверху» или «Внизу».</string>
 	<key>Under the video preview. Hide them with ×; bring them back from the shortcuts list (?).</key>
 	<string>Под предпросмотром видео. Скройте их кнопкой ×; вернуть их можно из списка сочетаний клавиш (?).</string>
 	<key>Under the voice</key>
@@ -8342,6 +8512,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Отменить перемещение выделения</string>
 	<key>Undo Move Image</key>
 	<string>Отменить перемещение изображения</string>
+	<key>Undo Move Keyframe</key>
+	<string>Отменить перемещение ключевого кадра</string>
 	<key>Undo Move Media</key>
 	<string>Отменить перемещение медиа</string>
 	<key>Undo Move Recording</key>
@@ -8388,6 +8560,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Отменить удаление видео с камеры</string>
 	<key>Undo Remove Captions</key>
 	<string>Отменить удаление всех субтитров</string>
+	<key>Undo Remove Effect</key>
+	<string>Отменить удаление эффекта</string>
 	<key>Undo Remove Intro Card</key>
 	<string>Отменить удаление начального титра</string>
 	<key>Undo Remove Keyframe</key>
@@ -8408,6 +8582,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Отменить переименование маркера</string>
 	<key>Undo Rename Media</key>
 	<string>Отменить переименование медиа</string>
+	<key>Undo Reorder Effects</key>
+	<string>Отменить изменение порядка эффектов</string>
 	<key>Undo Replace Camera Video</key>
 	<string>Отменить замену видео с камеры</string>
 	<key>Undo Replace Media</key>
@@ -8428,6 +8604,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Отменить восстановление слова</string>
 	<key>Undo Restore Words</key>
 	<string>Отменить восстановление слов</string>
+	<key>Undo Restyle Captions</key>
+	<string>Отменить смену стиля субтитров</string>
 	<key>Undo Reverse</key>
 	<string>Отменить реверс</string>
 	<key>Undo Rotate</key>
@@ -8496,6 +8674,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Отменить подрезку аудио</string>
 	<key>Undo Trim Clip</key>
 	<string>Отменить обрезку клипа</string>
+	<key>Undo Turn Effect Off</key>
+	<string>Отменить выключение эффекта</string>
+	<key>Undo Turn Effect On</key>
+	<string>Отменить включение эффекта</string>
 	<key>Undo Turn Off Clip</key>
 	<string>Отменить выключение клипа</string>
 	<key>Undo Turn On Clip</key>
@@ -8594,6 +8776,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Взять самый большой размер, который помещается (%@ × %@)</string>
 	<key>Use the playhead</key>
 	<string>По указателю</string>
+	<key>Use the switch on a card to turn that effect off without losing it, and Strength to set how much.</key>
+	<string>Переключателем на карточке эффект выключается, не пропадая, а «Сила» задаёт, насколько он заметен.</string>
 	<key>Use this color</key>
 	<string>Использовать этот цвет</string>
 	<key>Use this level for every zoom</key>
@@ -8606,6 +8790,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Использует перемещения текстового курсора во время набора.</string>
 	<key>Utility</key>
 	<string>Утилиты</string>
+	<key>V%lld</key>
+	<string>V%lld</string>
+	<key>V2 · B roll</key>
+	<string>V2 · B-ролл</string>
 	<key>VHS</key>
 	<string>VHS</string>
 	<key>Version</key>
@@ -8762,6 +8950,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Куда двигался указатель и где вы нажимали.</string>
 	<key>Where to find it</key>
 	<string>Где найти</string>
+	<key>Which setting the curve shows</key>
+	<string>Какую настройку показывает кривая</string>
 	<key>While a password field is in use, the typing options save nothing at all, not even the moments just before.</key>
 	<string>Пока используется поле пароля, параметры набора не сохраняют вообще ничего — даже моменты прямо перед этим.</string>
 	<key>While capturing, the icons are covered with your wallpaper for a moment. Nothing on the desktop is moved.</key>
@@ -9064,6 +9254,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>экспорт</string>
 	<key>follows the cursor</key>
 	<string>следует за указателем</string>
+	<key>in %@</key>
+	<string>через %@</string>
 	<key>in step with the recording</key>
 	<string>одновременно с записью</string>
 	<key>intro card</key>

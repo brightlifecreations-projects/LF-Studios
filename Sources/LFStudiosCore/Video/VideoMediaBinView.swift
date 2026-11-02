@@ -238,6 +238,9 @@ struct VideoMediaBinView: View {
             } label: {
                 Label(L("Import"), systemImage: "plus")
                     .font(.system(size: 11.5, weight: .semibold))
+                    // LF Studios layout: one line (a narrower Library, long words).
+                    .lineLimit(VideoEditorStyle.current.isNew ? 1 : nil)
+                    .minimumScaleFactor(VideoEditorStyle.current.isNew ? 0.8 : 1)
             }
             .buttonStyle(VideoSecondaryButtonStyle())
             .help(L("Import videos, pictures, and sound files (⌘I)"))

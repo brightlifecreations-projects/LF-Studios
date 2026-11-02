@@ -188,79 +188,87 @@ final class VideoEditingPowerTests: XCTestCase {
     }
 
     func testDraggingOneOfSeveralMovesThemAll() async throws {
-        let model = try await T.make(in: directory, T.Options(seconds: 10, pointer: false))
-        let first = VideoDemoOverlayEffect(kind: .text, time: 1, duration: 1.5, text: "One", layer: 0)
-        let second = VideoDemoOverlayEffect(kind: .highlight, time: 5, duration: 1.5, layer: 0)
-        model.mutate { $0.overlayEffects = [first, second] }
-        model.endGesture()
-        model.selection = .overlay(first.id)
-        model.toggleSelection(.overlay(second.id))
-        // The track headers (1.11.0) on the left; today's lane sizes (Small).
-        let lanesX = VideoTimelineMetrics.headerWidth + 1
-        VideoTimelineMetrics.rowScale = VideoTimelineTrackHeight.small.scale
-        let rows = VideoTimelineRowLayout(project: model.project, hasCamera: model.hasWebcamFootage)
-        let lanesTop = 45 + VideoTimelineMetrics.rulerHeight + 1
-        let size = CGSize(width: 1036 + lanesX, height: 300)
-        let window = NSWindow(contentRect: NSRect(origin: .zero, size: size), styleMask: [.borderless], backing: .buffered, defer: false)
-        window.contentView = Host(rootView: AnyView(VideoTimelineView(model: model).frame(width: size.width, height: size.height)))
-        window.orderFrontRegardless()
-        self.window = window
-        await T.settle(0.3)
-        func send(_ type: NSEvent.EventType, _ point: CGPoint) {
-            let event = NSEvent.mouseEvent(with: type, location: NSPoint(x: point.x, y: size.height - point.y), modifierFlags: [], timestamp: ProcessInfo.processInfo.systemUptime, windowNumber: window.windowNumber, context: nil, eventNumber: 0, clickCount: 1, pressure: 1)!
-            window.sendEvent(event)
+        // Both layouts (1.17.0).
+        try await forEachEditorStyle { _ in
+            let model = try await T.make(in: directory, T.Options(seconds: 10, pointer: false))
+            let first = VideoDemoOverlayEffect(kind: .text, time: 1, duration: 1.5, text: "One", layer: 0)
+            let second = VideoDemoOverlayEffect(kind: .highlight, time: 5, duration: 1.5, layer: 0)
+            model.mutate { $0.overlayEffects = [first, second] }
+            model.endGesture()
+            model.selection = .overlay(first.id)
+            model.toggleSelection(.overlay(second.id))
+            // The track headers (1.11.0) on the left; today's lane sizes (Small).
+            let lanesX = VideoTimelineMetrics.headerWidth + 1
+            VideoTimelineMetrics.rowScale = VideoTimelineTrackHeight.small.scale
+            let rows = VideoTimelineRowLayout(project: model.project, hasCamera: model.hasWebcamFootage)
+            let lanesTop = 45 + VideoTimelineMetrics.rulerHeight + 1
+            let size = CGSize(width: 1036 + lanesX, height: 300)
+            let window = NSWindow(contentRect: NSRect(origin: .zero, size: size), styleMask: [.borderless], backing: .buffered, defer: false)
+            window.contentView = Host(rootView: AnyView(VideoTimelineView(model: model).frame(width: size.width, height: size.height)))
+            window.orderFrontRegardless()
+            self.window = window
+            await T.settle(0.3)
+            func send(_ type: NSEvent.EventType, _ point: CGPoint) {
+                let event = NSEvent.mouseEvent(with: type, location: NSPoint(x: point.x, y: size.height - point.y), modifierFlags: [], timestamp: ProcessInfo.processInfo.systemUptime, windowNumber: window.windowNumber, context: nil, eventNumber: 0, clickCount: 1, pressure: 1)!
+                window.sendEvent(event)
+            }
+            // The annotation lane on its row (x = 18 + 100·t past the headers):
+            // drag the first by 1.2 s.
+            let start = CGPoint(x: lanesX + 18 + 150, y: lanesTop + (rows.contentTop(.annotations) ?? 0) + 13)
+            send(.leftMouseDown, start)
+            await T.settle(0.05)
+            for step in 1...10 {
+                send(.leftMouseDragged, CGPoint(x: start.x + CGFloat(step) * 12, y: start.y))
+                await T.settle(0.03)
+            }
+            send(.leftMouseUp, CGPoint(x: start.x + 120, y: start.y))
+            await T.settle(0.2)
+            let moved = model.project.overlayEffects
+            XCTAssertEqual(moved.first { $0.id == first.id }?.time ?? 0, 2.2, accuracy: 0.05)
+            XCTAssertEqual(moved.first { $0.id == second.id }?.time ?? 0, 6.2, accuracy: 0.05, "the other came along")
+            XCTAssertEqual(model.selectedItems.count, 2, "both still selected")
+            model.undo()
+            XCTAssertEqual(model.project.overlayEffects.first { $0.id == second.id }?.time ?? 0, 5, accuracy: 0.01, "one undo step")
+    
         }
-        // The annotation lane on its row (x = 18 + 100·t past the headers):
-        // drag the first by 1.2 s.
-        let start = CGPoint(x: lanesX + 18 + 150, y: lanesTop + (rows.contentTop(.annotations) ?? 0) + 13)
-        send(.leftMouseDown, start)
-        await T.settle(0.05)
-        for step in 1...10 {
-            send(.leftMouseDragged, CGPoint(x: start.x + CGFloat(step) * 12, y: start.y))
-            await T.settle(0.03)
-        }
-        send(.leftMouseUp, CGPoint(x: start.x + 120, y: start.y))
-        await T.settle(0.2)
-        let moved = model.project.overlayEffects
-        XCTAssertEqual(moved.first { $0.id == first.id }?.time ?? 0, 2.2, accuracy: 0.05)
-        XCTAssertEqual(moved.first { $0.id == second.id }?.time ?? 0, 6.2, accuracy: 0.05, "the other came along")
-        XCTAssertEqual(model.selectedItems.count, 2, "both still selected")
-        model.undo()
-        XCTAssertEqual(model.project.overlayEffects.first { $0.id == second.id }?.time ?? 0, 5, accuracy: 0.01, "one undo step")
     }
 
     func testDraggingAClipByItsNameMovesIt() async throws {
-        let model = try await T.make(in: directory, T.Options(seconds: 10, pointer: false))
-        model.seek(to: 5)
-        model.splitAtPlayhead()
-        model.selection = .none
-        let ids = model.segments.map(\.id)
-        // The track headers (1.11.0) on the left; today's lane sizes (Small).
-        let lanesX = VideoTimelineMetrics.headerWidth + 1
-        VideoTimelineMetrics.rowScale = VideoTimelineTrackHeight.small.scale
-        let rows = VideoTimelineRowLayout(project: model.project, hasCamera: model.hasWebcamFootage)
-        let lanesTop = 45 + VideoTimelineMetrics.rulerHeight + 1
-        let size = CGSize(width: 1036 + lanesX, height: 300)
-        let window = NSWindow(contentRect: NSRect(origin: .zero, size: size), styleMask: [.borderless], backing: .buffered, defer: false)
-        window.contentView = Host(rootView: AnyView(VideoTimelineView(model: model).frame(width: size.width, height: size.height)))
-        window.orderFrontRegardless()
-        self.window = window
-        await T.settle(0.3)
-        func send(_ type: NSEvent.EventType, _ point: CGPoint) {
-            let event = NSEvent.mouseEvent(with: type, location: NSPoint(x: point.x, y: size.height - point.y), modifierFlags: [], timestamp: ProcessInfo.processInfo.systemUptime, windowNumber: window.windowNumber, context: nil, eventNumber: 0, clickCount: 1, pressure: 1)!
-            window.sendEvent(event)
+        // Both layouts (1.17.0).
+        try await forEachEditorStyle { _ in
+            let model = try await T.make(in: directory, T.Options(seconds: 10, pointer: false))
+            model.seek(to: 5)
+            model.splitAtPlayhead()
+            model.selection = .none
+            let ids = model.segments.map(\.id)
+            // The track headers (1.11.0) on the left; today's lane sizes (Small).
+            let lanesX = VideoTimelineMetrics.headerWidth + 1
+            VideoTimelineMetrics.rowScale = VideoTimelineTrackHeight.small.scale
+            let rows = VideoTimelineRowLayout(project: model.project, hasCamera: model.hasWebcamFootage)
+            let lanesTop = 45 + VideoTimelineMetrics.rulerHeight + 1
+            let size = CGSize(width: 1036 + lanesX, height: 300)
+            let window = NSWindow(contentRect: NSRect(origin: .zero, size: size), styleMask: [.borderless], backing: .buffered, defer: false)
+            window.contentView = Host(rootView: AnyView(VideoTimelineView(model: model).frame(width: size.width, height: size.height)))
+            window.orderFrontRegardless()
+            self.window = window
+            await T.settle(0.3)
+            func send(_ type: NSEvent.EventType, _ point: CGPoint) {
+                let event = NSEvent.mouseEvent(with: type, location: NSPoint(x: point.x, y: size.height - point.y), modifierFlags: [], timestamp: ProcessInfo.processInfo.systemUptime, windowNumber: window.windowNumber, context: nil, eventNumber: 0, clickCount: 1, pressure: 1)!
+                window.sendEvent(event)
+            }
+            // The first clip's name chip sits at its top left: x 19 + 5…, on the
+            // Video clips row.
+            let chip = CGPoint(x: lanesX + 18 + 1 + 5 + 20, y: lanesTop + (rows.contentTop(.clips) ?? 0) + 5 + 9)
+            send(.leftMouseDown, chip)
+            await T.settle(0.05)
+            for step in 1...12 {
+                send(.leftMouseDragged, CGPoint(x: chip.x + CGFloat(step) * 55, y: chip.y))
+                await T.settle(0.03)
+            }
+            send(.leftMouseUp, CGPoint(x: chip.x + 660, y: chip.y))
+            await T.settle(0.3)
+            XCTAssertEqual(model.segments.map(\.id), [ids[1], ids[0]], "dropped after the other clip")
+    
         }
-        // The first clip's name chip sits at its top left: x 19 + 5…, on the
-        // Video clips row.
-        let chip = CGPoint(x: lanesX + 18 + 1 + 5 + 20, y: lanesTop + (rows.contentTop(.clips) ?? 0) + 5 + 9)
-        send(.leftMouseDown, chip)
-        await T.settle(0.05)
-        for step in 1...12 {
-            send(.leftMouseDragged, CGPoint(x: chip.x + CGFloat(step) * 55, y: chip.y))
-            await T.settle(0.03)
-        }
-        send(.leftMouseUp, CGPoint(x: chip.x + 660, y: chip.y))
-        await T.settle(0.3)
-        XCTAssertEqual(model.segments.map(\.id), [ids[1], ids[0]], "dropped after the other clip")
     }
 }

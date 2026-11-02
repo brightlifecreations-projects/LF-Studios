@@ -49,8 +49,8 @@ final class VideoTimelineSnappingTests: XCTestCase {
 
     /// 10 s in a timeline 1000 pt wide: x = 18 + 100·t.
     /// The track headers (1.11.0) on the left, then the lanes.
-    private static let lanesX = VideoTimelineMetrics.headerWidth + 1
-    private static let size = CGSize(width: 1036 + lanesX, height: 360)
+    private static var lanesX: CGFloat { VideoTimelineMetrics.headerWidth + 1 }
+    private static var size: CGSize { CGSize(width: 1036 + lanesX, height: 360) }
     private static let surfaceTop: CGFloat = 45
 
     private func x(_ time: Double) -> CGFloat { Self.lanesX + 18 + CGFloat(time) * 100 }
@@ -95,60 +95,68 @@ final class VideoTimelineSnappingTests: XCTestCase {
     }
 
     func testAnnotationsAndCaptionsSnapToThePlayheadAndEachOther() async throws {
-        let model = try await makeModel()
-        model.mutate { project in
-            project.overlayEffects = [VideoDemoOverlayEffect(kind: .text, time: 1, duration: 2, x: 0.5, y: 0.5, width: 0.4, height: 0.1, text: "Hi")]
-        }
-        model.endGesture()
-        model.seek(to: 5)
-        await mount(model)
-        // One annotation lane right under the ruler; drag its start from 1 s
-        // to 4.95 s — 5 pt short of the playhead.
-        let y = y(.annotations, in: model, 13)
-        await drag(from: CGPoint(x: x(1.5), y: y), to: CGPoint(x: x(5.45), y: y))
-        let moved = try XCTUnwrap(model.project.overlayEffects.first)
-        XCTAssertEqual(moved.time, 5, accuracy: 0.001, "lands on the playhead")
-        XCTAssertEqual(moved.duration, 2, accuracy: 0.01)
+        // Both layouts (1.17.0).
+        try await forEachEditorStyle { _ in
+            let model = try await makeModel()
+            model.mutate { project in
+                project.overlayEffects = [VideoDemoOverlayEffect(kind: .text, time: 1, duration: 2, x: 0.5, y: 0.5, width: 0.4, height: 0.1, text: "Hi")]
+            }
+            model.endGesture()
+            model.seek(to: 5)
+            await mount(model)
+            // One annotation lane right under the ruler; drag its start from 1 s
+            // to 4.95 s — 5 pt short of the playhead.
+            let y = y(.annotations, in: model, 13)
+            await drag(from: CGPoint(x: x(1.5), y: y), to: CGPoint(x: x(5.45), y: y))
+            let moved = try XCTUnwrap(model.project.overlayEffects.first)
+            XCTAssertEqual(moved.time, 5, accuracy: 0.001, "lands on the playhead")
+            XCTAssertEqual(moved.duration, 2, accuracy: 0.01)
 
-        // A caption's end lands on the annotation's start.
-        model.mutate { project in
-            project.captions = [VideoCaptionLine(start: 2, end: 3, text: "Hello there")]
+            // A caption's end lands on the annotation's start.
+            model.mutate { project in
+                project.captions = [VideoCaptionLine(start: 2, end: 3, text: "Hello there")]
+            }
+            model.endGesture()
+            await T.settle(0.2)
+            let captionY = self.y(.captions, in: model, 11)
+            await drag(from: CGPoint(x: x(3) - 3, y: captionY), to: CGPoint(x: x(4.94) - 3, y: captionY))
+            let line = try XCTUnwrap(model.project.captions.first)
+            XCTAssertEqual(line.start, 2, accuracy: 0.01)
+            XCTAssertEqual(line.end, 5, accuracy: 0.001, "the caption's edge meets the annotation's")
+    
         }
-        model.endGesture()
-        await T.settle(0.2)
-        let captionY = self.y(.captions, in: model, 11)
-        await drag(from: CGPoint(x: x(3) - 3, y: captionY), to: CGPoint(x: x(4.94) - 3, y: captionY))
-        let line = try XCTUnwrap(model.project.captions.first)
-        XCTAssertEqual(line.start, 2, accuracy: 0.01)
-        XCTAssertEqual(line.end, 5, accuracy: 0.001, "the caption's edge meets the annotation's")
     }
 
     func testAnnotationsInsideACutTakeNoLane() async throws {
-        let model = try await makeModel()
-        let visibleLow = VideoDemoOverlayEffect(kind: .highlight, time: 1, duration: 2, layer: 0)
-        let hidden = VideoDemoOverlayEffect(kind: .blur, time: 5.2, duration: 0.5, layer: 1)
-        let visibleHigh = VideoDemoOverlayEffect(kind: .text, time: 1.5, duration: 1, text: "Top", layer: 2)
-        model.mutate { project in
-            project.overlayEffects = [visibleLow, hidden, visibleHigh]
-        }
-        XCTAssertEqual(VideoTimelineMetrics.overlayLanes(model.project), 3)
-        // Cut away the part the blur sits in.
-        model.deleteRange(VideoDemoTimelineRange(start: 5, end: 6))
-        XCTAssertEqual(model.project.overlayEffects.count, 3, "it's still there (restoring the cut brings it back)")
-        XCTAssertEqual(VideoTimelineMetrics.overlayLanes(model.project), 2, "but takes no lane while cut away")
-        XCTAssertEqual(VideoTimelineMetrics.overlayLayers(model.project), [0, 2])
-        // One lane up from the bottom is the next lane on show.
-        XCTAssertEqual(VideoTimelineMetrics.layer(movedFrom: 0, by: 1, in: [0, 2]), 2)
-        XCTAssertEqual(VideoTimelineMetrics.layer(movedFrom: 2, by: 1, in: [0, 2]), 3, "above the top: a new lane")
-        XCTAssertEqual(VideoTimelineMetrics.layer(movedFrom: 2, by: -1, in: [0, 2]), 0)
+        // Both layouts (1.17.0).
+        try await forEachEditorStyle { _ in
+            let model = try await makeModel()
+            let visibleLow = VideoDemoOverlayEffect(kind: .highlight, time: 1, duration: 2, layer: 0)
+            let hidden = VideoDemoOverlayEffect(kind: .blur, time: 5.2, duration: 0.5, layer: 1)
+            let visibleHigh = VideoDemoOverlayEffect(kind: .text, time: 1.5, duration: 1, text: "Top", layer: 2)
+            model.mutate { project in
+                project.overlayEffects = [visibleLow, hidden, visibleHigh]
+            }
+            XCTAssertEqual(VideoTimelineMetrics.overlayLanes(model.project), 3)
+            // Cut away the part the blur sits in.
+            model.deleteRange(VideoDemoTimelineRange(start: 5, end: 6))
+            XCTAssertEqual(model.project.overlayEffects.count, 3, "it's still there (restoring the cut brings it back)")
+            XCTAssertEqual(VideoTimelineMetrics.overlayLanes(model.project), 2, "but takes no lane while cut away")
+            XCTAssertEqual(VideoTimelineMetrics.overlayLayers(model.project), [0, 2])
+            // One lane up from the bottom is the next lane on show.
+            XCTAssertEqual(VideoTimelineMetrics.layer(movedFrom: 0, by: 1, in: [0, 2]), 2)
+            XCTAssertEqual(VideoTimelineMetrics.layer(movedFrom: 2, by: 1, in: [0, 2]), 3, "above the top: a new lane")
+            XCTAssertEqual(VideoTimelineMetrics.layer(movedFrom: 2, by: -1, in: [0, 2]), 0)
 
-        await mount(model)
-        let height = VideoTimelineMetrics.contentHeight(model.project)
-        let rep = try XCTUnwrap(window?.contentView?.bitmapImageRepForCachingDisplay(in: window!.contentView!.bounds))
-        window?.contentView?.cacheDisplay(in: window!.contentView!.bounds, to: rep)
-        let url = FileManager.default.temporaryDirectory.appendingPathComponent("lfstudios-ux-fixes/fix-12-compact-lanes.png")
-        try FileManager.default.createDirectory(at: url.deletingLastPathComponent(), withIntermediateDirectories: true)
-        try XCTUnwrap(rep.representation(using: .png, properties: [:])).write(to: url)
-        print("SNAPSHOT: \(url.path) (content \(height) pt)")
+            await mount(model)
+            let height = VideoTimelineMetrics.contentHeight(model.project)
+            let rep = try XCTUnwrap(window?.contentView?.bitmapImageRepForCachingDisplay(in: window!.contentView!.bounds))
+            window?.contentView?.cacheDisplay(in: window!.contentView!.bounds, to: rep)
+            let url = FileManager.default.temporaryDirectory.appendingPathComponent("lfstudios-ux-fixes/fix-12-compact-lanes.png")
+            try FileManager.default.createDirectory(at: url.deletingLastPathComponent(), withIntermediateDirectories: true)
+            try XCTUnwrap(rep.representation(using: .png, properties: [:])).write(to: url)
+            print("SNAPSHOT: \(url.path) (content \(height) pt)")
+    
+        }
     }
 }
