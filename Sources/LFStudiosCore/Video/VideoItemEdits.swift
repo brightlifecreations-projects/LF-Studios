@@ -41,6 +41,11 @@ enum VideoItemEdit: Equatable {
     /// from the clip's start) dragged to `to` with `value`. The same keys
     /// the ◆ marks and Properties show.
     case moveKey(VideoKeyProperty, from: Double, to: Double, value: Double)
+    /// A video's sound apart from its picture, so it can move (1.19.0), or
+    /// with it again; and moved (seconds after its picture).
+    case unlinkAudio
+    case linkAudio
+    case setAudioOffset(Double)
 
     var name: String {
         switch self {
@@ -66,6 +71,9 @@ enum VideoItemEdit: Equatable {
         case .setEffectOn(let id, let on): return "setEffectOn.\(id).\(on)"
         case .removeEffect(let id): return "removeEffect.\(id)"
         case .moveKey(let p, let a, let b, let v): return "moveKey.\(p.rawValue).\(a).\(b).\(v)"
+        case .unlinkAudio: return "unlinkAudio"
+        case .linkAudio: return "linkAudio"
+        case .setAudioOffset(let o): return "setAudioOffset.\(o)"
         }
     }
 
@@ -93,6 +101,9 @@ enum VideoItemEdit: Equatable {
         case .setEffectOn(_, let on): return on ? L("Turn effect on") : L("Turn effect off")
         case .removeEffect: return L("Remove effect")
         case .moveKey(let p, _, _, _): return L("Keyframe: \(p.title)")
+        case .unlinkAudio: return L("Unlink Audio")
+        case .linkAudio: return L("Link Audio")
+        case .setAudioOffset: return L("Move Audio")
         }
     }
 }
@@ -197,6 +208,18 @@ extension VideoEditorModel {
                 }
                 stored.keys = moved
             }
+        case .unlinkAudio:
+            guard item.isVideo, item.audioOffset == nil, media.layerFiles[item.path]?.audio != nil else { return false }
+            setLayerItem(item.id, label: "Unlink Audio") { $0.audioOffset = 0 }
+        case .linkAudio:
+            guard item.audioOffset != nil else { return false }
+            setLayerItem(item.id, label: "Link Audio") { $0.audioOffset = nil }
+        case .setAudioOffset(let offset):
+            guard let current = item.audioOffset else { return false }
+            // Never before the start of the video.
+            let clamped = max(offset, -item.at)
+            guard abs(clamped - current) > 0.000_1 else { return false }
+            setLayerItem(item.id, coalesce: "layer-audio-offset-\(item.id)", label: "Move Audio") { $0.audioOffset = clamped }
         case .removeEffect(let id):
             // An effect clip keeps its one effect (delete the clip instead).
             guard item.role != .effect, let effects = item.effects, effects.contains(where: { $0.id == id }) else { return false }

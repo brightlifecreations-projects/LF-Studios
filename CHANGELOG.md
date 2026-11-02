@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.19.0]
+
+### Added
+- **Unlink Audio for videos on the tracks above the main track:** right-click a video's sound under it ▸ Unlink Audio to drag it on its own; Link Audio puts it back.
+- A one-time tip shows where to pick up a panel: drag its top edge.
+
 ## [1.18.0] - 2026-11-02
 
 ### Added

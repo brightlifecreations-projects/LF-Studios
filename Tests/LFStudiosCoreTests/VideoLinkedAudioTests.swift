@@ -184,4 +184,43 @@ final class VideoLinkedAudioTests: XCTestCase {
             XCTAssertGreaterThan(VideoInspection.rms(samples, from: edge + 1.1, to: edge + 1.4), 0.3, "\(name): the clip after at its level")
         }
     }
+
+    /// A video on a track above (1.19.0): its sound unlinked and moved
+    /// plays later; one ⌘Z step each; the new format only then.
+    func testAVideoAboveTheMainTrackUnlinksToo() async throws {
+        let url = directory.appendingPathComponent("rec.mp4")
+        try await VideoInspection.writeColorVideo(to: url, size: CGSize(width: 320, height: 180), colors: [(.white, 5)])
+        VideoDemoDraftStore.delete(for: url)
+        let model = VideoEditorModel(videoURL: url)
+        await model.load()
+        let above = directory.appendingPathComponent("above.mp4")
+        try await VideoInspection.writeColorVideo(to: above, size: CGSize(width: 320, height: 180), colors: [(.red, 1)], toneSeconds: 1)
+        await model.placeMedia([above], at: 1, target: .layer(.newTrack(0)))
+        for _ in 0..<40 where model.media.layerFiles.isEmpty { try await Task.sleep(nanoseconds: 50_000_000) }
+        let item = try XCTUnwrap(model.project.layerTracks.first?.items.first)
+        model.selection = .layer(item.id)
+        XCTAssertTrue(model.timelineSoundRows.layers.contains(try XCTUnwrap(model.project.layerTracks.first?.id)))
+        XCTAssertFalse(model.project.needsFormat5)
+        let linked = try await export(model, "layer-linked")
+        XCTAssertGreaterThan(VideoInspection.rms(linked, from: 1.1, to: 1.9), 0.05, "its sound with its picture")
+
+        var depth = model.undoDepth
+        XCTAssertTrue(model.perform(.edit(.unlinkAudio)))
+        XCTAssertEqual(model.undoDepth, depth + 1)
+        depth = model.undoDepth
+        for offset in stride(from: 0.25, through: 2, by: 0.25) { XCTAssertTrue(model.perform(.edit(.setAudioOffset(offset)))) }
+        model.endGesture()
+        XCTAssertEqual(model.undoDepth, depth + 1, "one ⌘Z step for the drag")
+        XCTAssertTrue(model.project.needsFormat5, "1.18 would play it linked: it says it needs a newer version")
+        let moved = try await export(model, "layer-moved")
+        XCTAssertLessThan(VideoInspection.rms(moved, from: 1.1, to: 2.9), 0.01, "nothing under its picture")
+        XCTAssertGreaterThan(VideoInspection.rms(moved, from: 3.1, to: 3.9), 0.05, "two seconds later")
+        // Never before the start of the video.
+        XCTAssertTrue(model.perform(.edit(.setAudioOffset(-10))))
+        model.endGesture()
+        XCTAssertEqual(model.project.layerItem(item.id)?.audioOffset ?? 0, -1, accuracy: 0.000_1)
+        XCTAssertTrue(model.perform(.edit(.linkAudio)))
+        XCTAssertNil(model.project.layerItem(item.id)?.audioOffset)
+        XCTAssertFalse(model.project.needsFormat5)
+    }
 }

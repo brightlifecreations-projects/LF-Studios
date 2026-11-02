@@ -8,7 +8,7 @@ test run delete that run's temp files ($TMPDIR/lfstudios-*).
 
 ## Checklist
 - [x] 1. One-time panel tip
-- [ ] 2. Unlink/Link Audio for videos above the main track
+- [x] 2. Unlink/Link Audio for videos above the main track
 - [ ] 3. Bézier tangent handles on the curve lane
 - [ ] 4. MCP server (loopback, token, rebinding) + Settings ▸ Agent + token
 - [ ] 5. Read tools
@@ -20,3 +20,4 @@ test run delete that run's temp files ($TMPDIR/lfstudios-*).
       merge, rehearsal, publish, REPORT-1.19.md
 
 ## Notes
+- 1.2: VideoLayerItem.audioOffset (format 5), own composition track, lane menu + drag. Found: layer video sound fades across its clip (DECISIONS 2), not fixed.

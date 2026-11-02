@@ -15,7 +15,7 @@ import Foundation
 @MainActor
 enum GuideContent {
     /// Pages from these versions get a New badge and fill What's new.
-    nonisolated static let newVersions: [String] = ["1.18.0", "1.17.0", "1.16.0", "1.15.0", "1.14.0", "1.13.0", "1.12.0", "1.11.1", "1.11.0", "1.10.0", "1.9.0", "1.8.0", "1.7.0"]
+    nonisolated static let newVersions: [String] = ["1.19.0", "1.18.0", "1.17.0", "1.16.0", "1.15.0", "1.14.0", "1.13.0", "1.12.0", "1.11.1", "1.11.0", "1.10.0", "1.9.0", "1.8.0", "1.7.0"]
 
     static func chapters() -> [GuideChapter] {
         let features = featureCategories()
@@ -1652,6 +1652,7 @@ enum GuideContent {
                 tips: [
                     L("Projects from earlier versions open with their sound on these tracks and sound exactly the same."),
                     L("A project with unlinked sound needs LF Studios 1.18 or later to open."),
+                    L("Videos on the tracks above the main track have their sound under them too, and unlink the same way (1.19.0)."),
                 ],
                 since: "1.18.0",
                 related: ["video-timeline", "video-clips"]
