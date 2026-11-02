@@ -1459,8 +1459,26 @@ enum GuideContent {
                     L("The tracks are named A roll (the main track), V2 · B roll, V3 and so on, with Captions on top. These are names only: projects are the same in both layouts."),
                 ],
                 since: "1.17.0",
-                related: ["video-media", "video-timeline", "video-search", "video-effect-chain"],
+                related: ["video-move-panels", "video-media", "video-timeline", "video-search", "video-effect-chain"],
                 picture: "guide-editor-layout"
+            ),
+            GuideEntry(
+                id: "video-move-panels", symbol: "rectangle.3.group.fill", title: L("Moving panels"),
+                summary: L("Put the Library, the player, Properties and the timeline wherever you like, or in windows of their own, even on another screen."),
+                location: L("Each panel's header. In the usual layout, move the pointer to the very top edge of a panel and its header appears."),
+                steps: [
+                    L("Drag a panel's header onto another panel. A blue area shows where it will go: the left, right, top or bottom of that panel."),
+                    L("Drag a header outside the editor window, or click Float on the header, to put the panel in a window of its own."),
+                    L("To put it back, drag its header onto the editor, or click Dock (or its window's close button)."),
+                    L("Drag the line between two panels to make one bigger."),
+                ],
+                tips: [
+                    L("Layout ▸ Save Layout… keeps the arrangement by name, in the Layout menu. Layout ▸ Reset Layout puts every panel back."),
+                    L("Floating panels belong to their project's window: they hide with it, and come back where they were when you open the project again (on the main screen if that screen isn't connected)."),
+                    L("The editor's keys, like Space, B and ⌘Z, work whichever panel you clicked last."),
+                ],
+                since: "1.18.0",
+                related: ["video-layout"]
             ),
             GuideEntry(
                 id: "video-media", symbol: "photo.on.rectangle", title: L("Your media in the Library"),

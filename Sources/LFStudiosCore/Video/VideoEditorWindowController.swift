@@ -6,6 +6,9 @@ final class VideoDemoEditorWindowController: NSWindowController, NSWindowDelegat
     private static var openControllers: [VideoDemoEditorWindowController] = []
     let model: VideoEditorModel
     private let sourceURL: URL
+    /// Panels dragged by their headers, and those floating (1.18.0).
+    let dock = VideoDockDrag()
+    private(set) var floatingPanels: VideoFloatingPanels!
 
     static var hasOpenEditors: Bool { !openControllers.isEmpty }
 
@@ -105,9 +108,16 @@ final class VideoDemoEditorWindowController: NSWindowController, NSWindowDelegat
         model.setClipMuted(id, !clip.muted)
     }
 
-    /// The editor in the key window (menu items act on it only).
+    /// The editor in the key window, or whose floating panel is key (menu
+    /// items act on it only).
     static var keyModel: VideoEditorModel? {
-        (NSApplication.shared.keyWindow?.delegate as? VideoDemoEditorWindowController)?.model
+        controller(for: NSApplication.shared.keyWindow)?.model
+    }
+
+    /// The editor a window belongs to: its own, or one of its floating
+    /// panels (1.18.0).
+    static func controller(for window: NSWindow?) -> VideoDemoEditorWindowController? {
+        (window?.delegate as? VideoDemoEditorWindowController) ?? (window as? VideoFloatingPanelWindow)?.editor
     }
 
     static func exportActive() {
@@ -134,7 +144,7 @@ final class VideoDemoEditorWindowController: NSWindowController, NSWindowDelegat
     }
 
     private static func frontController() -> VideoDemoEditorWindowController? {
-        openControllers.first(where: { $0.window?.isKeyWindow == true })
+        openControllers.first(where: { $0.window?.isKeyWindow == true || $0.floatingPanels.isKey })
             ?? openControllers.first(where: { $0.window?.isVisible == true })
             ?? openControllers.last
     }
@@ -164,7 +174,7 @@ final class VideoDemoEditorWindowController: NSWindowController, NSWindowDelegat
         window.isReleasedWhenClosed = false
         window.tabbingMode = .disallowed
         window.titlebarSeparatorStyle = .none
-        let hosting = VideoEditorHostingView(rootView: VideoEditorRootView(model: model))
+        let hosting = VideoEditorHostingView(rootView: VideoEditorRootView(model: model, dock: dock))
         window.contentView = hosting
         window.center()
         window.setFrameAutosaveName("LFStudiosVideoEditor")
@@ -172,6 +182,8 @@ final class VideoDemoEditorWindowController: NSWindowController, NSWindowDelegat
         super.init(window: window)
         window.delegate = self
         model.closeEditor = { [weak self] in self?.window?.performClose(nil) }
+        dock.window = window
+        floatingPanels = VideoFloatingPanels(owner: self, model: model, dock: dock)
     }
 
     required init?(coder: NSCoder) {
@@ -227,6 +239,7 @@ final class VideoDemoEditorWindowController: NSWindowController, NSWindowDelegat
     }
 
     func windowWillClose(_ notification: Notification) {
+        floatingPanels.closeAll()
         model.stop()
         Self.openControllers.removeAll { $0 === self }
         LFStudiosEditorActivation.sync()
@@ -264,6 +277,8 @@ final class VideoDemoEditorWindowController: NSWindowController, NSWindowDelegat
         window.level = .floating
         window.makeKeyAndOrderFront(nil)
         window.orderFrontRegardless()
+        // Its floating panels, where they were (1.18.0).
+        floatingPanels.start()
         // The editor is open now, so the stop-to-editor foreground hold
         // can end (the editor keeps the app regular on its own).
         LFStudiosEditorActivation.releaseForeground()

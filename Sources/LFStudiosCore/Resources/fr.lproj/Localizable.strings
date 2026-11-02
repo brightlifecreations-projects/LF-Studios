@@ -2276,6 +2276,8 @@
 	<string>Supprimer le marqueur</string>
 	<key>Delete Right of Playhead</key>
 	<string>Supprimer à droite de la tête de lecture</string>
+	<key>Delete Saved Layout</key>
+	<string>Supprimer une disposition enregistrée</string>
 	<key>Delete Screenshot</key>
 	<string>Supprimer la capture</string>
 	<key>Delete Screenshots</key>
@@ -2386,6 +2388,14 @@
 	<string>Voulez-vous les passer en revue avant de quitter ?</string>
 	<key>Do your demo. When you're done, click the red stop button or press ⌃⌘Esc.</key>
 	<string>Faites votre démo. Quand vous avez fini, cliquez sur le bouton d’arrêt rouge ou appuyez sur ⌃⌘Esc.</string>
+	<key>Dock</key>
+	<string>Ancrer</string>
+	<key>Dock All Panels</key>
+	<string>Ancrer tous les panneaux</string>
+	<key>Dock next to %@</key>
+	<string>Ancrer à côté de %@</string>
+	<key>Dock: put it back in the editor window</key>
+	<string>Ancrer : le remettre dans la fenêtre de l’éditeur</string>
 	<key>Docs, slides</key>
 	<string>Documents, diapositives</string>
 	<key>Don't Ask Again</key>
@@ -2444,6 +2454,10 @@
 	<string>Faites glisser un fichier sur la timeline ou le lecteur, ou cliquez sur le + de sa vignette. Une vidéo va à la fin ; une image ou un son commence à la tête de lecture, ou là où vous le déposez sur la timeline.</string>
 	<key>Drag a frame. Drag inside it to move it, or drag its edges to resize it.</key>
 	<string>Tracez un cadre. Faites-le glisser par l’intérieur pour le déplacer, ou par ses bords pour le redimensionner.</string>
+	<key>Drag a header outside the editor window, or click Float on the header, to put the panel in a window of its own.</key>
+	<string>Faites glisser un en-tête hors de la fenêtre de l’éditeur, ou cliquez sur Flottant dans l’en-tête, pour mettre le panneau dans sa propre fenêtre.</string>
+	<key>Drag a panel's header onto another panel. A blue area shows where it will go: the left, right, top or bottom of that panel.</key>
+	<string>Faites glisser l’en-tête d’un panneau sur un autre panneau. Une zone bleue montre où il ira : à gauche, à droite, en haut ou en bas de ce panneau.</string>
 	<key>Drag a point up for faster, down for slower. Double-click to add a point; double-click a point to take it away.</key>
 	<string>Faites glisser un point vers le haut pour accélérer, vers le bas pour ralentir. Double-cliquez pour ajouter un point ; double-cliquez sur un point pour le retirer.</string>
 	<key>Drag a point up or down to change the value, or sideways to change when it happens. One drag is one ⌘Z step.</key>
@@ -2486,6 +2500,8 @@
 	<string>Faites glisser sur la capture pour dessiner.</string>
 	<key>Drag one of them on the timeline to move them all together; ⌫ removes them all. ⇧- or ⌘-click adds or takes one out.</key>
 	<string>Faites glisser l’un d’eux dans la timeline pour tous les déplacer ensemble ; ⌫ les supprime tous. Un clic avec ⇧ ou ⌘ en ajoute ou en retire un.</string>
+	<key>Drag onto the editor to dock it</key>
+	<string>Faites-le glisser sur l’éditeur pour l’ancrer</string>
 	<key>Drag out any area instead, of any shape</key>
 	<string>Tracer plutôt une zone libre, de n’importe quelle forme</string>
 	<key>Drag over any part of the screen to capture it.</key>
@@ -2540,6 +2556,8 @@
 	<string>Faites glisser les touches dans l’aperçu pour les placer où vous voulez</string>
 	<key>Drag the line above the timeline to make it taller or shorter; double-click it for the usual size. LF Studios remembers it.</key>
 	<string>Faites glisser la ligne au-dessus de la timeline pour l’agrandir ou la réduire ; double-cliquez pour la taille habituelle. LF Studios s’en souvient.</string>
+	<key>Drag the line between two panels to make one bigger.</key>
+	<string>Faites glisser la ligne entre deux panneaux pour agrandir l’un d’eux.</string>
 	<key>Drag the line between two panels to make one wider; double-click it to put it back.</key>
 	<string>Faites glisser la ligne entre deux panneaux pour en élargir un ; double-cliquez pour la remettre en place.</string>
 	<key>Drag the pin to move it; drag an edge to resize it.</key>
@@ -2574,6 +2592,8 @@
 	<string>Faites glisser pour déplacer la tête de lecture</string>
 	<key>Drag to move this clip to another place in the video</key>
 	<string>Faites glisser pour déplacer ce clip ailleurs dans la vidéo</string>
+	<key>Drag to move this panel; drop it outside the window to float it</key>
+	<string>Faites glisser pour déplacer ce panneau ; déposez-le hors de la fenêtre pour le rendre flottant</string>
 	<key>Drag to move where the arrow starts</key>
 	<string>Faites glisser pour déplacer le départ de la flèche</string>
 	<key>Drag to move. Press Command-C to copy, Escape to close.</key>
@@ -2582,6 +2602,8 @@
 	<string>Faites glisser pour déplacer ; un coin pour redimensionner, le bouton rond pour faire pivoter</string>
 	<key>Drag to point the arrow</key>
 	<string>Faites glisser pour orienter la flèche</string>
+	<key>Drag to resize the panels</key>
+	<string>Faites glisser pour redimensionner les panneaux</string>
 	<key>Drag to resize the panels. Double-click to reset.</key>
 	<string>Faites glisser pour redimensionner les panneaux. Double-cliquez pour réinitialiser.</string>
 	<key>Drag to resize the timeline. Double-click for the usual size.</key>
@@ -2620,6 +2642,8 @@
 	<string>Crépuscule</string>
 	<key>Each file is its own track: drag it on the timeline, trim its ends, split it with ⌘B. MP3, WAV, M4A, AAC, AIFF, FLAC, or CAF — or drop files on the timeline.</key>
 	<string>Chaque fichier est sa propre piste : faites-le glisser sur la timeline, raccourcissez ses extrémités, scindez-le avec ⌘B. MP3, WAV, M4A, AAC, AIFF, FLAC ou CAF — ou déposez des fichiers sur la timeline.</string>
+	<key>Each panel's header. In the usual layout, move the pointer to the very top edge of a panel and its header appears.</key>
+	<string>L’en-tête de chaque panneau. Dans la disposition habituelle, placez le pointeur tout en haut d’un panneau et son en-tête apparaît.</string>
 	<key>Each recording in its own folder</key>
 	<string>Chaque enregistrement dans son propre dossier</string>
 	<key>Each recording keeps its own pointer, clicks, and shortcuts. Reorder them here; cut and trim them on the timeline like any clip.</key>
@@ -3086,8 +3110,14 @@
 	<string>Flash sortant</string>
 	<key>Flip like a selfie</key>
 	<string>Inverser comme un selfie</string>
+	<key>Float</key>
+	<string>Flottant</string>
 	<key>Float a screenshot above all your windows, as a reference while you work.</key>
 	<string>Faites flotter une capture au-dessus de toutes vos fenêtres, comme référence pendant que vous travaillez.</string>
+	<key>Float: in a window of its own</key>
+	<string>Flottant : dans sa propre fenêtre</string>
+	<key>Floating panels belong to their project's window: they hide with it, and come back where they were when you open the project again (on the main screen if that screen isn't connected).</key>
+	<string>Les panneaux flottants appartiennent à la fenêtre de leur projet : ils se masquent avec elle et reviennent à leur place quand vous rouvrez le projet (sur l’écran principal si cet écran n’est pas branché).</string>
 	<key>Folder %@</key>
 	<string>Dossier %@</string>
 	<key>Folder name:</key>
@@ -4056,10 +4086,14 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Disposition</string>
 	<key>Layout also has Screen only and Camera only. The screen and the camera are always both recorded, so you can change your mind later.</key>
 	<string>Disposition propose aussi Écran seul et Caméra seule. L’écran et la caméra sont toujours enregistrés tous les deux : vous pouvez changer d’avis plus tard.</string>
+	<key>Layout name</key>
+	<string>Nom de la disposition</string>
 	<key>Layout ▸ LF Studios (new) or CapCut style: the new layout has the tools down the left, Search in the middle of the top bar and the keys along the bottom; CapCut style is the editor as it was in 1.16. This Mac remembers your choice.</key>
 	<string>Disposition ▸ LF Studios (nouveau) ou Style CapCut : la nouvelle disposition a les outils à gauche, la recherche au milieu de la barre du haut et les raccourcis en bas ; le style CapCut est l’éditeur tel qu’il était en 1.16. Ce Mac retient votre choix.</string>
 	<key>Layout ▸ Player First makes the player as big as it gets. Layout ▸ Reset Layout puts every panel back where it starts.</key>
 	<string>Disposition ▸ Lecteur d’abord agrandit le lecteur au maximum. Disposition ▸ Réinitialiser la disposition remet chaque panneau en place.</string>
+	<key>Layout ▸ Save Layout… keeps the arrangement by name, in the Layout menu. Layout ▸ Reset Layout puts every panel back.</key>
+	<string>Disposition ▸ Enregistrer la disposition… garde l’arrangement sous un nom, dans le menu Disposition. Disposition ▸ Réinitialiser la disposition remet chaque panneau en place.</string>
 	<key>Layout: how the editor's panels are arranged</key>
 	<string>Disposition : l’agencement des panneaux de l’éditeur</string>
 	<key>Layout: the camera in a bubble, split screen with the screen, or only one of them. Both are always recorded.</key>
@@ -4082,6 +4116,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Moins de grondement et de résonance, plus de présence</string>
 	<key>Let go to capture it.</key>
 	<string>Relâchez pour la capturer.</string>
+	<key>Let go to float</key>
+	<string>Relâchez pour le rendre flottant</string>
 	<key>Lets LF Studios show the shortcuts you press in a video, follow where you type, and resize a window to an exact size. Everything else works without it.</key>
 	<string>Permet à LF Studios d’afficher dans une vidéo les raccourcis que vous utilisez, de suivre l’endroit où vous tapez et de donner une taille exacte à une fenêtre. Tout le reste fonctionne sans.</string>
 	<key>Letter spacing</key>
@@ -4090,6 +4126,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Ajouter des bandes au lieu de suivre le pointeur</string>
 	<key>Level</key>
 	<string>Niveau</string>
+	<key>Library</key>
+	<string>Bibliothèque</string>
 	<key>Library (top left): Media, Audio, Text, Captions, and Transitions.</key>
 	<string>Bibliothèque (en haut à gauche) : Médias, Audio, Texte, Sous-titres et Transitions.</string>
 	<key>Library options</key>
@@ -4536,6 +4574,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Mouvement</string>
 	<key>Moving a project to another Mac? Save it with Include media, so everything comes along.</key>
 	<string>Vous déplacez un projet vers un autre Mac ? Enregistrez-le avec Inclure les médias, pour que tout suive.</string>
+	<key>Moving panels</key>
+	<string>Déplacer les panneaux</string>
 	<key>Multiply</key>
 	<string>Produit</string>
 	<key>Music</key>
@@ -4608,6 +4648,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Nom</string>
 	<key>Name bar</key>
 	<string>Bandeau de nom</string>
+	<key>Name this layout. It's kept on this Mac, in the Layout menu.</key>
+	<string>Nommez cette disposition. Elle est conservée sur ce Mac, dans le menu Disposition.</string>
 	<key>Natural</key>
 	<string>Naturel</string>
 	<key>Nearby</key>
@@ -5328,6 +5370,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Lire « %@ »</string>
 	<key>Playback</key>
 	<string>Lecture</string>
+	<key>Player</key>
+	<string>Lecteur</string>
 	<key>Player First</key>
 	<string>Lecteur d’abord</string>
 	<key>Player zoom</key>
@@ -5504,6 +5548,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Les projets avec des images clés ou toute autre fonction de la 1.15.0 s’ouvrent dans LF Studios 1.15.0 ou ultérieur.</string>
 	<key>Projects with these tracks open in LF Studios 1.14.0 or later.</key>
 	<string>Les projets avec ces pistes s’ouvrent dans LF Studios 1.14.0 ou ultérieur.</string>
+	<key>Properties</key>
+	<string>Propriétés</string>
 	<key>Properties (right): the settings of what you selected, in the Style, Cursor, Zoom, Camera, Captions, and Audio tabs.</key>
 	<string>Propriétés (à droite) : les réglages de l’élément sélectionné, dans les onglets Style, Curseur, Zoom, Caméra, Sous-titres et Audio.</string>
 	<key>Properties ▸ Adjust; Library ▸ Adjust for an adjustment clip.</key>
@@ -5544,6 +5590,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Poussée</string>
 	<key>Put a logo, a watermark, or a picture on the video.</key>
 	<string>Placez un logo, un filigrane ou une image sur la vidéo.</string>
+	<key>Put the Library, the player, Properties and the timeline wherever you like, or in windows of their own, even on another screen.</key>
+	<string>Placez la Bibliothèque, le lecteur, les Propriétés et la timeline où vous voulez, ou dans leurs propres fenêtres, même sur un autre écran.</string>
 	<key>Put videos and pictures over your recording: picture-in-picture, b-roll, logos. Each plays at its own time, on its own track.</key>
 	<string>Placez des vidéos et des images par-dessus votre enregistrement : incrustation, plans de coupe, logos. Chacune joue à son moment, sur sa propre piste.</string>
 	<key>Put your recording on a wallpaper, a gradient, a color, or your own picture.</key>
@@ -6534,6 +6582,10 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Enregistrer sous…</string>
 	<key>Save Folder</key>
 	<string>Dossier d’enregistrement</string>
+	<key>Save Layout</key>
+	<string>Enregistrer la disposition</string>
+	<key>Save Layout…</key>
+	<string>Enregistrer la disposition…</string>
 	<key>Save Location</key>
 	<string>Emplacement d’enregistrement</string>
 	<key>Save Project</key>
@@ -7658,6 +7710,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Le bouton dé en choisit un au hasard.</string>
 	<key>The editor has the Library on the left, the player in the middle, Properties on the right (Style, Cursor, Zoom, Camera, Captions, and Audio), and the timeline below.</key>
 	<string>L’éditeur a la Bibliothèque à gauche, le lecteur au milieu, les Propriétés à droite (Style, Curseur, Zoom, Caméra, Sous-titres et Audio) et la timeline en bas.</string>
+	<key>The editor's keys, like Space, B and ⌘Z, work whichever panel you clicked last.</key>
+	<string>Les touches de l’éditeur, comme Espace, B et ⌘Z, fonctionnent quel que soit le dernier panneau cliqué.</string>
 	<key>The editor's layout</key>
 	<string>La disposition de l’éditeur</string>
 	<key>The export carries on in the background (Esc)</key>
@@ -8074,6 +8128,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Pour en masquer un, cliquez dessus dans la timeline et appuyez sur ⌫.</string>
 	<key>To move the sound on its own, right-click it on its track and choose Unlink Audio.</key>
 	<string>Pour déplacer le son seul, faites un clic droit dessus sur sa piste et choisissez Délier l’audio.</string>
+	<key>To put it back, drag its header onto the editor, or click Dock (or its window's close button).</key>
+	<string>Pour le remettre, faites glisser son en-tête sur l’éditeur, ou cliquez sur Ancrer (ou le bouton de fermeture de sa fenêtre).</string>
 	<key>To remove it again, untick Apply background to this image.</key>
 	<string>Pour le retirer, décochez Appliquer un arrière-plan à cette image.</string>
 	<key>To skip the panel and go straight to the editor, turn on Open the video editor after recording in Settings ▸ General.</key>

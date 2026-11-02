@@ -2282,6 +2282,8 @@
 	<string>Marker löschen</string>
 	<key>Delete Right of Playhead</key>
 	<string>Rechts der Abspielposition löschen</string>
+	<key>Delete Saved Layout</key>
+	<string>Gesichertes Layout löschen</string>
 	<key>Delete Screenshot</key>
 	<string>Bildschirmfoto löschen</string>
 	<key>Delete Screenshots</key>
@@ -2392,6 +2394,14 @@
 	<string>Möchtest du sie vor dem Beenden durchsehen?</string>
 	<key>Do your demo. When you're done, click the red stop button or press ⌃⌘Esc.</key>
 	<string>Führ deine Demo vor. Wenn du fertig bist, klicke auf die rote Stopptaste oder drück ⌃⌘Esc.</string>
+	<key>Dock</key>
+	<string>Andocken</string>
+	<key>Dock All Panels</key>
+	<string>Alle Panels andocken</string>
+	<key>Dock next to %@</key>
+	<string>Neben %@ andocken</string>
+	<key>Dock: put it back in the editor window</key>
+	<string>Andocken: zurück ins Editorfenster</string>
 	<key>Docs, slides</key>
 	<string>Dokumente, Folien</string>
 	<key>Don't Ask Again</key>
@@ -2450,6 +2460,10 @@
 	<string>Zieh eine Datei auf die Timeline oder den Player oder klicke auf das + in ihrem Vorschaubild. Ein Video kommt ans Ende; ein Bild oder ein Ton beginnt an der Abspielposition oder dort, wo du ihn auf der Timeline ablegst.</string>
 	<key>Drag a frame. Drag inside it to move it, or drag its edges to resize it.</key>
 	<string>Zieh einen Rahmen auf. Zieh darin, um ihn zu verschieben, oder an seinen Rändern, um die Größe zu ändern.</string>
+	<key>Drag a header outside the editor window, or click Float on the header, to put the panel in a window of its own.</key>
+	<string>Ziehe einen Kopf aus dem Editorfenster oder klicke im Kopf auf „Schweben“, um das Panel in ein eigenes Fenster zu legen.</string>
+	<key>Drag a panel's header onto another panel. A blue area shows where it will go: the left, right, top or bottom of that panel.</key>
+	<string>Ziehe den Kopf eines Panels auf ein anderes Panel. Ein blauer Bereich zeigt, wo es landet: links, rechts, oben oder unten an diesem Panel.</string>
 	<key>Drag a point up for faster, down for slower. Double-click to add a point; double-click a point to take it away.</key>
 	<string>Zieh einen Punkt nach oben für schneller, nach unten für langsamer. Doppelklicke, um einen Punkt hinzuzufügen; doppelklicke auf einen Punkt, um ihn zu entfernen.</string>
 	<key>Drag a point up or down to change the value, or sideways to change when it happens. One drag is one ⌘Z step.</key>
@@ -2492,6 +2506,8 @@
 	<string>Zieh auf dem Bildschirmfoto, um zu zeichnen.</string>
 	<key>Drag one of them on the timeline to move them all together; ⌫ removes them all. ⇧- or ⌘-click adds or takes one out.</key>
 	<string>Ziehe eines davon in der Zeitleiste, um alle gemeinsam zu bewegen; ⌫ entfernt alle. ⇧- oder ⌘-Klick fügt eines hinzu oder nimmt es heraus.</string>
+	<key>Drag onto the editor to dock it</key>
+	<string>Auf den Editor ziehen, um es anzudocken</string>
 	<key>Drag out any area instead, of any shape</key>
 	<string>Stattdessen einen beliebigen Bereich aufziehen, in jeder Form</string>
 	<key>Drag over any part of the screen to capture it.</key>
@@ -2546,6 +2562,8 @@
 	<string>Zieh die Tasten in der Vorschau an eine beliebige Stelle</string>
 	<key>Drag the line above the timeline to make it taller or shorter; double-click it for the usual size. LF Studios remembers it.</key>
 	<string>Zieh die Linie über der Timeline, um sie höher oder niedriger zu machen; ein Doppelklick stellt die übliche Größe her. LF Studios merkt sich das.</string>
+	<key>Drag the line between two panels to make one bigger.</key>
+	<string>Ziehe die Linie zwischen zwei Panels, um eines größer zu machen.</string>
 	<key>Drag the line between two panels to make one wider; double-click it to put it back.</key>
 	<string>Zieh die Linie zwischen zwei Panels, um eines breiter zu machen; ein Doppelklick stellt sie wieder her.</string>
 	<key>Drag the pin to move it; drag an edge to resize it.</key>
@@ -2580,6 +2598,8 @@
 	<string>Ziehen, um die Abspielposition zu verschieben</string>
 	<key>Drag to move this clip to another place in the video</key>
 	<string>Ziehen, um diesen Clip an eine andere Stelle im Video zu verschieben</string>
+	<key>Drag to move this panel; drop it outside the window to float it</key>
+	<string>Ziehen, um dieses Panel zu verschieben; außerhalb des Fensters loslassen, damit es schwebt</string>
 	<key>Drag to move where the arrow starts</key>
 	<string>Ziehen, um den Anfang des Pfeils zu verschieben</string>
 	<key>Drag to move. Press Command-C to copy, Escape to close.</key>
@@ -2588,6 +2608,8 @@
 	<string>Ziehen zum Verschieben; an einer Ecke ziehen für die Größe, am runden Knopf zum Drehen</string>
 	<key>Drag to point the arrow</key>
 	<string>Ziehen, um den Pfeil auszurichten</string>
+	<key>Drag to resize the panels</key>
+	<string>Ziehen, um die Panels anzupassen</string>
 	<key>Drag to resize the panels. Double-click to reset.</key>
 	<string>Ziehen, um die Panels anzupassen. Doppelklick zum Zurücksetzen.</string>
 	<key>Drag to resize the timeline. Double-click for the usual size.</key>
@@ -2626,6 +2648,8 @@
 	<string>Dämmerung</string>
 	<key>Each file is its own track: drag it on the timeline, trim its ends, split it with ⌘B. MP3, WAV, M4A, AAC, AIFF, FLAC, or CAF — or drop files on the timeline.</key>
 	<string>Jede Datei ist eine eigene Spur: zieh sie auf der Timeline, kürze die Enden, teile sie mit ⌘B. MP3, WAV, M4A, AAC, AIFF, FLAC oder CAF – oder leg Dateien auf der Timeline ab.</string>
+	<key>Each panel's header. In the usual layout, move the pointer to the very top edge of a panel and its header appears.</key>
+	<string>Der Kopf jedes Panels. Im üblichen Layout erscheint er, wenn du den Zeiger an den obersten Rand eines Panels bewegst.</string>
 	<key>Each recording in its own folder</key>
 	<string>Jede Aufnahme in einem eigenen Ordner</string>
 	<key>Each recording keeps its own pointer, clicks, and shortcuts. Reorder them here; cut and trim them on the timeline like any clip.</key>
@@ -3092,8 +3116,14 @@
 	<string>Blitz raus</string>
 	<key>Flip like a selfie</key>
 	<string>Wie ein Selfie umdrehen</string>
+	<key>Float</key>
+	<string>Schweben</string>
 	<key>Float a screenshot above all your windows, as a reference while you work.</key>
 	<string>Lass ein Bildschirmfoto über allen Fenstern schweben, als Vorlage beim Arbeiten.</string>
+	<key>Float: in a window of its own</key>
+	<string>Schweben: in einem eigenen Fenster</string>
+	<key>Floating panels belong to their project's window: they hide with it, and come back where they were when you open the project again (on the main screen if that screen isn't connected).</key>
+	<string>Schwebende Panels gehören zum Fenster ihres Projekts: Sie werden mit ihm ausgeblendet und erscheinen wieder an ihrem Platz, wenn du das Projekt erneut öffnest (auf dem Hauptbildschirm, wenn jener Bildschirm nicht angeschlossen ist).</string>
 	<key>Folder %@</key>
 	<string>Ordner %@</string>
 	<key>Folder name:</key>
@@ -4062,10 +4092,14 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Layout</string>
 	<key>Layout also has Screen only and Camera only. The screen and the camera are always both recorded, so you can change your mind later.</key>
 	<string>Unter „Layout“ gibt es auch „Nur Bildschirm“ und „Nur Kamera“. Bildschirm und Kamera werden immer beide aufgenommen, du kannst es dir also später anders überlegen.</string>
+	<key>Layout name</key>
+	<string>Layoutname</string>
 	<key>Layout ▸ LF Studios (new) or CapCut style: the new layout has the tools down the left, Search in the middle of the top bar and the keys along the bottom; CapCut style is the editor as it was in 1.16. This Mac remembers your choice.</key>
 	<string>Layout ▸ LF Studios (neu) oder CapCut-Stil: Das neue Layout hat die Werkzeuge links, die Suche oben in der Mitte und die Tasten unten; der CapCut-Stil ist der Editor wie in 1.16. Dieser Mac merkt sich deine Wahl.</string>
 	<key>Layout ▸ Player First makes the player as big as it gets. Layout ▸ Reset Layout puts every panel back where it starts.</key>
 	<string>Layout ▸ Player zuerst macht den Player so groß wie möglich. Layout ▸ Layout zurücksetzen stellt alle Panels wieder her.</string>
+	<key>Layout ▸ Save Layout… keeps the arrangement by name, in the Layout menu. Layout ▸ Reset Layout puts every panel back.</key>
+	<string>„Layout“ ▸ „Layout sichern …“ behält die Anordnung unter einem Namen im Menü „Layout“. „Layout“ ▸ „Layout zurücksetzen“ legt jedes Panel zurück.</string>
 	<key>Layout: how the editor's panels are arranged</key>
 	<string>Layout: wie die Panels des Editors angeordnet sind</string>
 	<key>Layout: the camera in a bubble, split screen with the screen, or only one of them. Both are always recorded.</key>
@@ -4088,6 +4122,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Weniger Rumpeln und Dröhnen, mehr Präsenz</string>
 	<key>Let go to capture it.</key>
 	<string>Lass los, um ihn aufzunehmen.</string>
+	<key>Let go to float</key>
+	<string>Loslassen zum Schweben</string>
 	<key>Lets LF Studios show the shortcuts you press in a video, follow where you type, and resize a window to an exact size. Everything else works without it.</key>
 	<string>Damit kann LF Studios die gedrückten Kurzbefehle im Video zeigen, verfolgen, wo du tippst, und ein Fenster auf eine genaue Größe bringen. Alles andere funktioniert auch ohne.</string>
 	<key>Letter spacing</key>
@@ -4096,6 +4132,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Mit Rändern einpassen statt dem Zeiger folgen</string>
 	<key>Level</key>
 	<string>Stufe</string>
+	<key>Library</key>
+	<string>Bibliothek</string>
 	<key>Library (top left): Media, Audio, Text, Captions, and Transitions.</key>
 	<string>Bibliothek (oben links): Medien, Audio, Text, Untertitel und Übergänge.</string>
 	<key>Library options</key>
@@ -4542,6 +4580,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Bewegung</string>
 	<key>Moving a project to another Mac? Save it with Include media, so everything comes along.</key>
 	<string>Projekt auf einen anderen Mac bringen? Sichere es mit „Medien einschließen“, damit alles mitkommt.</string>
+	<key>Moving panels</key>
+	<string>Panels verschieben</string>
 	<key>Multiply</key>
 	<string>Multiplizieren</string>
 	<key>Music</key>
@@ -4614,6 +4654,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Name</string>
 	<key>Name bar</key>
 	<string>Namensbalken</string>
+	<key>Name this layout. It's kept on this Mac, in the Layout menu.</key>
+	<string>Gib diesem Layout einen Namen. Es bleibt auf diesem Mac, im Menü „Layout“.</string>
 	<key>Natural</key>
 	<string>Natürlich</string>
 	<key>Nearby</key>
@@ -5334,6 +5376,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>„%@“ abspielen</string>
 	<key>Playback</key>
 	<string>Wiedergabe</string>
+	<key>Player</key>
+	<string>Player</string>
 	<key>Player First</key>
 	<string>Player zuerst</string>
 	<key>Player zoom</key>
@@ -5510,6 +5554,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Projekte mit Keyframes oder einer anderen Funktion aus 1.15.0 öffnen sich in LF Studios 1.15.0 oder neuer.</string>
 	<key>Projects with these tracks open in LF Studios 1.14.0 or later.</key>
 	<string>Projekte mit diesen Spuren öffnen sich in LF Studios 1.14.0 oder neuer.</string>
+	<key>Properties</key>
+	<string>Eigenschaften</string>
 	<key>Properties (right): the settings of what you selected, in the Style, Cursor, Zoom, Camera, Captions, and Audio tabs.</key>
 	<string>Eigenschaften (rechts): die Einstellungen des Ausgewählten in den Tabs Stil, Zeiger, Zoom, Kamera, Untertitel und Audio.</string>
 	<key>Properties ▸ Adjust; Library ▸ Adjust for an adjustment clip.</key>
@@ -5550,6 +5596,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Schieben</string>
 	<key>Put a logo, a watermark, or a picture on the video.</key>
 	<string>Leg ein Logo, ein Wasserzeichen oder ein Bild über das Video.</string>
+	<key>Put the Library, the player, Properties and the timeline wherever you like, or in windows of their own, even on another screen.</key>
+	<string>Lege Bibliothek, Player, Eigenschaften und Timeline, wohin du willst, oder in eigene Fenster, auch auf einem anderen Bildschirm.</string>
 	<key>Put videos and pictures over your recording: picture-in-picture, b-roll, logos. Each plays at its own time, on its own track.</key>
 	<string>Leg Videos und Bilder über deine Aufnahme: Bild-in-Bild, Zwischenschnitte, Logos. Jedes läuft zu seiner Zeit, auf seiner eigenen Spur.</string>
 	<key>Put your recording on a wallpaper, a gradient, a color, or your own picture.</key>
@@ -6540,6 +6588,10 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Sichern unter …</string>
 	<key>Save Folder</key>
 	<string>Zielordner</string>
+	<key>Save Layout</key>
+	<string>Layout sichern</string>
+	<key>Save Layout…</key>
+	<string>Layout sichern …</string>
 	<key>Save Location</key>
 	<string>Speicherort</string>
 	<key>Save Project</key>
@@ -7664,6 +7716,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Der Würfelknopf wählt zufällig eins aus.</string>
 	<key>The editor has the Library on the left, the player in the middle, Properties on the right (Style, Cursor, Zoom, Camera, Captions, and Audio), and the timeline below.</key>
 	<string>Der Editor hat links die Bibliothek, in der Mitte den Player, rechts die Eigenschaften (Stil, Zeiger, Zoom, Kamera, Untertitel und Audio) und unten die Timeline.</string>
+	<key>The editor's keys, like Space, B and ⌘Z, work whichever panel you clicked last.</key>
+	<string>Die Tasten des Editors wie Leertaste, B und ⌘Z funktionieren, egal welches Panel du zuletzt angeklickt hast.</string>
 	<key>The editor's layout</key>
 	<string>Das Layout des Editors</string>
 	<key>The export carries on in the background (Esc)</key>
@@ -8080,6 +8134,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Um einen auszublenden, klicke auf der Zeitleiste darauf und drück ⌫.</string>
 	<key>To move the sound on its own, right-click it on its track and choose Unlink Audio.</key>
 	<string>Um den Ton allein zu verschieben, klicke ihn auf seiner Spur mit der rechten Maustaste an und wähle „Audio trennen“.</string>
+	<key>To put it back, drag its header onto the editor, or click Dock (or its window's close button).</key>
+	<string>Zum Zurücklegen ziehe seinen Kopf auf den Editor oder klicke auf „Andocken“ (oder die Schließtaste seines Fensters).</string>
 	<key>To remove it again, untick Apply background to this image.</key>
 	<string>Um ihn wieder zu entfernen, nimm das Häkchen bei „Hintergrund auf dieses Bild anwenden“ weg.</string>
 	<key>To skip the panel and go straight to the editor, turn on Open the video editor after recording in Settings ▸ General.</key>

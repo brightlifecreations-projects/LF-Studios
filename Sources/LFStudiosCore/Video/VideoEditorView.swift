@@ -11,17 +11,29 @@ struct VideoEditorRootView: View {
     @ObservedObject private var panels = VideoEditorPanelStore.shared
     /// Where the panels were when a border drag began.
     @State private var panelDragStart: VideoEditorPanelLayout?
+    /// A panel dragged by its header (1.18.0).
+    @StateObject private var dock: VideoDockDrag
+
+    init(model: VideoEditorModel, dock: VideoDockDrag? = nil) {
+        self.model = model
+        _dock = StateObject(wrappedValue: dock ?? VideoDockDrag())
+    }
 
     var body: some View {
         GeometryReader { proxy in
             editor(height: proxy.size.height, width: proxy.size.width)
                 // Full-screen preview: the window goes full screen with it.
                 .onChange(of: model.isPlayerFullScreen) { on in
-                    guard let window = NSApp.keyWindow else { return }
+                    // The editor's window, even from a floating player.
+                    guard let window = dock.window ?? NSApp.keyWindow else { return }
                     if window.styleMask.contains(.fullScreen) != on { window.toggleFullScreen(nil) }
                 }
                 // Layout ▸ Reset Layout: the timeline where it starts, too.
                 .onReceive(NotificationCenter.default.publisher(for: .lfstudiosEditorLayoutReset)) { _ in chosenFraction = nil }
+                // A saved layout: its timeline height.
+                .onReceive(NotificationCenter.default.publisher(for: .lfstudiosEditorLayoutApplied)) { note in
+                    chosenFraction = note.userInfo?["fraction"] as? Double
+                }
                 // Small tracks on a short window, until one is chosen.
                 .onAppear { model.fitTrackHeight(windowHeight: proxy.size.height) }
                 .onChange(of: proxy.size.height) { model.fitTrackHeight(windowHeight: $0) }
@@ -34,6 +46,15 @@ struct VideoEditorRootView: View {
         .task { await model.load() }
     }
 
+    private var playerArea: some View { VideoPlayerPanel(model: model) }
+}
+
+/// The player: the picture tools, the preview, and the notes under it
+/// (docked or floating, 1.18.0).
+struct VideoPlayerPanel: View {
+    @ObservedObject var model: VideoEditorModel
+    @AppStorage("videoEditorTipsDismissed") private var tipsDismissed = false
+
     /// The crop bar and the tips sit under the picture, never over it.
     private var stageBottomInset: CGFloat {
         if model.isCropping { return 66 }
@@ -41,8 +62,7 @@ struct VideoEditorRootView: View {
         return tipsDismissed && !model.suggestsTranscript ? 22 : 58
     }
 
-    /// The player: the picture tools, the preview, and the notes under it.
-    private var playerArea: some View {
+    var body: some View {
         ZStack(alignment: .top) {
             VideoEditorTheme.stage
             VStack(spacing: 0) {
@@ -108,6 +128,9 @@ struct VideoEditorRootView: View {
         // the end).
         .onDrop(of: [.fileURL, .plainText], delegate: VideoMediaDrop(model: model) { _ in (nil, .layer(.automatic)) })
     }
+}
+
+extension VideoEditorRootView {
 
     /// A border between panels dragged by `delta`: the Library's (left)
     /// or Properties' (right), kept in range (VideoEditorPanelLayout).
@@ -134,6 +157,7 @@ struct VideoEditorRootView: View {
         HStack(spacing: 0) {
             VideoLibraryPanel(model: model)
                 .frame(width: widths.library)
+                .dockPanel(.library, dock: dock, permanent: false)
             VideoPanelBorder(
                 moved: { delta, done in dragBorder(library: true, by: delta, done: done, width: width) },
                 reset: { panels.set(VideoEditorPanelLayout(library: VideoEditorPanelLayout.standard.library, properties: panels.layout.properties), remember: true) }
@@ -145,6 +169,7 @@ struct VideoEditorRootView: View {
                     .background(VideoEditorTheme.panel)
             }
             .frame(width: widths.player)
+            .dockPanel(.player, dock: dock, permanent: false)
             VideoPanelBorder(
                 moved: { delta, done in dragBorder(library: false, by: delta, done: done, width: width) },
                 reset: { panels.set(VideoEditorPanelLayout(library: panels.layout.library, properties: VideoEditorPanelLayout.standard.properties), remember: true) }
@@ -153,6 +178,7 @@ struct VideoEditorRootView: View {
             // that were the inspector).
             VideoInspectorView(model: model)
                 .frame(width: widths.properties)
+                .dockPanel(.properties, dock: dock, permanent: false)
         }
         VideoTimelineDivider(
             fraction: VideoEditorLayout.fraction(chosen: chosenFraction, windowHeight: height),
@@ -168,6 +194,7 @@ struct VideoEditorRootView: View {
         )
         VideoTimelineView(model: model).equatable()
             .frame(height: timelineHeight(windowHeight: height))
+            .dockPanel(.timeline, dock: dock, permanent: false)
     }
     }
 
@@ -184,6 +211,7 @@ struct VideoEditorRootView: View {
                 Rectangle().fill(VideoEditorTheme.hairline).frame(width: 1)
                 VideoLibraryPanel(model: model)
                     .frame(width: widths.library)
+                    .dockPanel(.library, dock: dock, permanent: false)
                 VideoPanelBorder(
                     moved: { delta, done in dragBorder(library: true, by: delta, done: done, width: width - VideoEditorNewMetrics.railWidth - 1) },
                     reset: { panels.set(VideoEditorPanelLayout(library: VideoEditorPanelLayout.standard.library, properties: panels.layout.properties), remember: true) }
@@ -195,12 +223,14 @@ struct VideoEditorRootView: View {
                         .background(VideoEditorTheme.panel)
                 }
                 .frame(width: widths.player)
+                .dockPanel(.player, dock: dock, permanent: false)
                 VideoPanelBorder(
                     moved: { delta, done in dragBorder(library: false, by: delta, done: done, width: width - VideoEditorNewMetrics.railWidth - 1) },
                     reset: { panels.set(VideoEditorPanelLayout(library: panels.layout.library, properties: VideoEditorPanelLayout.standard.properties), remember: true) }
                 )
                 VideoPropertiesPanel(model: model)
                     .frame(width: widths.properties)
+                    .dockPanel(.properties, dock: dock, permanent: false)
             }
             VideoTimelineDivider(
                 fraction: VideoEditorLayout.fraction(chosen: chosenFraction, windowHeight: height),
@@ -216,8 +246,31 @@ struct VideoEditorRootView: View {
             )
             VideoTimelineView(model: model).equatable()
                 .frame(height: max(timelineHeight(windowHeight: height) - VideoEditorNewMetrics.statusHeight - 1, 120))
+                .dockPanel(.timeline, dock: dock, permanent: false)
             Rectangle().fill(VideoEditorTheme.hairline).frame(height: 1)
             VideoStatusStrip(model: model)
+        }
+    }
+
+    /// Panels moved (1.18.0): each with its header, where the arrangement
+    /// puts them; the toolbar on top, and in the new layout the tools down
+    /// the left and the status strip along the bottom.
+    private func dockedEditor() -> some View {
+        VStack(spacing: 0) {
+            VideoEditorToolbar(model: model)
+                .frame(height: panels.style.isNew ? 44 : 52)
+            Rectangle().fill(VideoEditorTheme.hairline).frame(height: 1)
+            HStack(spacing: 0) {
+                if panels.style.isNew {
+                    VideoToolRail(model: model)
+                    Rectangle().fill(VideoEditorTheme.hairline).frame(width: 1)
+                }
+                VideoDockArea(node: panels.arrangement.docked, model: model, dock: dock)
+            }
+            if panels.style.isNew {
+                Rectangle().fill(VideoEditorTheme.hairline).frame(height: 1)
+                VideoStatusStrip(model: model)
+            }
         }
     }
 
@@ -233,7 +286,9 @@ struct VideoEditorRootView: View {
                 .background(VideoEditorTheme.stage)
             } else {
             Group {
-                if panels.style.isNew {
+                if !panels.arrangement.isStandard {
+                    dockedEditor()
+                } else if panels.style.isNew {
                     newEditor(height: height, width: width)
                 } else {
                     capCutEditor(height: height, width: width, widths: widths)
@@ -241,6 +296,8 @@ struct VideoEditorRootView: View {
             }
             // Behind a sheet or the palette, VoiceOver stays in front.
             .accessibilityHidden(model.hasOverlayOpen || !model.isReady)
+            // Where a dragged panel would land.
+            VideoDockDropZone(dock: dock)
             }
 
             if model.isExportPresented {
@@ -295,6 +352,17 @@ struct VideoEditorRootView: View {
                     .accessibilityAddTraits(.isModal)
             }
         }
+        // Panels' frames, measured in the editor (docking, 1.18.0).
+        .coordinateSpace(name: VideoDockDrag.space)
+        .onPreferenceChange(VideoDockFramesKey.self) { frames in
+            MainActor.assumeIsolated { dock.frames = frames }
+        }
+        .background(GeometryReader { proxy in
+            let room = proxy.frame(in: .global)
+            Color.clear
+                .onAppear { dock.room = room }
+                .onChange(of: room) { dock.room = $0 }
+        })
     }
 
     /// Where the divider puts it (remembered on this Mac), kept so that
@@ -576,6 +644,30 @@ struct VideoExportSoundWarning: View {
 struct VideoKeyboardBridge: NSViewRepresentable {
     let model: VideoEditorModel
 
+    /// The editor's window, or one of its floating panels (1.18.0): the
+    /// editor's keys work in each.
+    static func belongs(_ window: NSWindow, to editor: NSWindow) -> Bool {
+        window === editor || (window as? VideoFloatingPanelWindow)?.editor?.window === editor
+    }
+
+    /// A key pressed in `event`'s window (key: in front): the editor's,
+    /// when it's the editor's window or one of its floating panels and no
+    /// text is being typed. True: used.
+    static func route(_ event: NSEvent, editor: NSWindow, isKey: Bool, model: VideoEditorModel) -> Bool {
+        guard let window = event.window, isKey, belongs(window, to: editor) else { return false }
+        if let responder = window.firstResponder, responder is NSText || responder is NSTextField {
+            // Esc leaves a text field (and closes the command
+            // palette it belongs to); everything else types.
+            if event.keyCode == 53 {
+                window.makeFirstResponder(nil)
+                if model.isCommandPalettePresented { model.isCommandPalettePresented = false }
+                return true
+            }
+            return false
+        }
+        return model.handleKey(event)
+    }
+
     func makeCoordinator() -> Coordinator { Coordinator(model: model) }
 
     func makeNSView(context: Context) -> NSView {
@@ -605,7 +697,8 @@ struct VideoKeyboardBridge: NSViewRepresentable {
             clickMonitor = NSEvent.addLocalMonitorForEvents(matching: .leftMouseDown) { [weak self] incoming in
                 nonisolated(unsafe) let event = incoming
                 MainActor.assumeIsolated {
-                    guard let self, let window = self.view?.window, event.window === window,
+                    guard let self, let editor = self.view?.window, let window = event.window,
+                          VideoKeyboardBridge.belongs(window, to: editor),
                           let responder = window.firstResponder as? NSView,
                           responder is NSText || responder is NSTextField,
                           // The command palette keeps its search field.
@@ -625,21 +718,8 @@ struct VideoKeyboardBridge: NSViewRepresentable {
             monitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { [weak self] incoming in
                 nonisolated(unsafe) let event = incoming
                 let consumed: Bool = MainActor.assumeIsolated {
-                    guard let self,
-                          let window = self.view?.window,
-                          window.isKeyWindow,
-                          event.window === window else { return false }
-                    if let responder = window.firstResponder, responder is NSText || responder is NSTextField {
-                        // Esc leaves a text field (and closes the command
-                        // palette it belongs to); everything else types.
-                        if event.keyCode == 53 {
-                            window.makeFirstResponder(nil)
-                            if self.model.isCommandPalettePresented { self.model.isCommandPalettePresented = false }
-                            return true
-                        }
-                        return false
-                    }
-                    return self.model.handleKey(event)
+                    guard let self, let editor = self.view?.window else { return false }
+                    return VideoKeyboardBridge.route(event, editor: editor, isKey: event.window?.isKeyWindow ?? false, model: self.model)
                 }
                 return consumed ? nil : incoming
             }
