@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.18.0]
+## [1.18.0] - 2026-11-02
 
 ### Added
 - **Movable panels:** drag a panel's header (in the usual layout it shows at the panel's top edge) onto another panel to dock it on that side, with a blue area showing where it goes. Drag it out of the window, or click **Float**, to give it a window of its own, on any screen. Floating panels hide with their project's window and come back where they were when the project opens again (on the main screen if that screen is gone). **Dock** or the window's close button puts one back.
