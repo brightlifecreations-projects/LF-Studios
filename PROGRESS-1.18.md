@@ -55,3 +55,4 @@ lost: re-read this file and carry on from the first unticked box.
   VideoKeyboardBridge.route (floating windows clear AppKit's auto-focus of
   the Library search). Test windows can't become key, so the key test
   calls route() with isKey: true.
+- test-full green (1106 s). Screenshots: https://claude.ai/artifact/BWj33T6WgSKDdG3yXzf58g
