@@ -463,6 +463,13 @@ enum Settings {
 
     /// The editor's one-time "Keyboard shortcuts changed" notice (1.14.0)
     /// was closed.
+    /// The one-time "drag a panel's top edge" tip was closed (1.19.0), or
+    /// a panel was moved.
+    static var videoPanelTipSeen: Bool {
+        get { defaults.bool(forKey: "videoPanelTipSeen") }
+        set { defaults.set(newValue, forKey: "videoPanelTipSeen") }
+    }
+
     static var videoShortcutsChangeSeen: Bool {
         get { defaults.bool(forKey: "videoShortcutsChangeSeen") }
         set { defaults.set(newValue, forKey: "videoShortcutsChangeSeen") }

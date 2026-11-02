@@ -113,6 +113,8 @@ final class VideoEditorPanelStore: ObservableObject {
     /// as in 1.17.0).
     func arrange(_ next: VideoDockArrangement, remember: Bool = true) {
         let next = next.isStandard ? VideoDockArrangement.standard : next
+        // Found how to move panels: the tip has done its job.
+        if next != .standard { Settings.videoPanelTipSeen = true }
         if next != arrangement { arrangement = next }
         if remember { Settings.videoEditorArrangement = next == .standard ? nil : next }
     }

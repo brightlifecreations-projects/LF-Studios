@@ -170,6 +170,15 @@ final class VideoDockTests: XCTestCase {
         XCTAssertEqual(fallback.size, frame.size)
     }
 
+    /// The one-time tip (1.19.0): until it's closed, or a panel moves.
+    func testThePanelTipGoesOnceAPanelMoves() {
+        Settings.videoPanelTipSeen = false
+        store.arrange(.standard)
+        XCTAssertFalse(Settings.videoPanelTipSeen, "nothing moved yet: still to show")
+        store.float(.timeline, frame: CGRect(x: 0, y: 0, width: 900, height: 300), screen: nil, current: .standard)
+        XCTAssertTrue(Settings.videoPanelTipSeen, "found how to move panels")
+    }
+
     // MARK: Saved layouts and Reset
 
     func testSavedLayoutsAndReset() throws {

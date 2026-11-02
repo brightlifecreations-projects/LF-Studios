@@ -100,6 +100,39 @@ final class VideoDockDrag: ObservableObject {
     }
 }
 
+/// Once, the first time the editor opens in 1.19.0: panels move by their
+/// top edge (closed with OK, or once a panel is moved).
+struct VideoPanelTipNotice: View {
+    @State private var seen = Settings.videoPanelTipSeen
+    @ObservedObject private var store = VideoEditorPanelStore.shared
+
+    var body: some View {
+        if !seen, store.arrangement == .standard {
+            HStack(spacing: 10) {
+                Image(systemName: "rectangle.3.group")
+                    .font(.system(size: 14, weight: .semibold))
+                    .foregroundStyle(Color.accentColor)
+                Text(L("Tip: drag a panel's top edge to move it"))
+                    .font(.system(size: 12, weight: .medium))
+                    .foregroundStyle(VideoEditorTheme.textPrimary)
+                    .fixedSize(horizontal: false, vertical: true)
+                Button(L("OK")) {
+                    Settings.videoPanelTipSeen = true
+                    seen = true
+                }
+                .buttonStyle(VideoSecondaryButtonStyle())
+            }
+            .padding(.horizontal, 12)
+            .padding(.vertical, 8)
+            .frame(maxWidth: 460)
+            .background(RoundedRectangle(cornerRadius: 10, style: .continuous).fill(VideoEditorTheme.popover))
+            .overlay(RoundedRectangle(cornerRadius: 10, style: .continuous).strokeBorder(VideoEditorTheme.cardStroke))
+            .shadow(color: VideoEditorTheme.shadow, radius: 10, y: 4)
+            .accessibilityElement(children: .contain)
+        }
+    }
+}
+
 /// Each docked panel's frame, measured where it's drawn.
 struct VideoDockFramesKey: PreferenceKey {
     static let defaultValue: [VideoPanelKind: CGRect] = [:]

@@ -97,6 +97,7 @@ struct VideoPlayerPanel: View {
             // Reversing a clip, recording a voiceover (1.14.0).
             VStack(spacing: 8) {
                 VideoShortcutsChangedNotice()
+                VideoPanelTipNotice()
                 VideoGenerationPill(model: model)
                 VideoVoiceoverPill(model: model)
             }

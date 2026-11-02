@@ -30,6 +30,7 @@ final class VideoEditorLayoutSnapshotTests: XCTestCase {
         Settings.defaults = UserDefaults(suiteName: suiteName)!
         // The one-time notice shows in its own shot only.
         Settings.videoShortcutsChangeSeen = true
+        Settings.videoPanelTipSeen = true
         VideoEditorPanelStore.shared.reload()
     }
 
@@ -166,6 +167,7 @@ final class VideoEditorLayoutSnapshotTests: XCTestCase {
         model.timelineTool = .split
         try await render(model, size: CGSize(width: 1440, height: 900), look: .aqua, name: "editor-en-light-shortcuts-notice")
         Settings.videoShortcutsChangeSeen = true
+        Settings.videoPanelTipSeen = true
         model.timelineTool = .select
         try await render(model, size: CGSize(width: 1080, height: 700), look: .aqua, name: "editor-en-light-smallest")
         VideoEditorPanelStore.shared.choose(.playerFirst)
