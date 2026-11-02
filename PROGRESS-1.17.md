@@ -27,7 +27,7 @@ context is lost: re-read this file and carry on from the first unticked box.
 - [x] 4. Timeline: A/B naming, fixed top rows, waveform strip, curve lane
 - [x] 5. Global search ⌘K (commands, media, clips, captions, markers)
 - [x] 6. Caption cue list + Restyle all
-- [ ] 7. Guide (new locations + screenshots), translations, test-full,
+- [x] 7. Guide (new locations + screenshots), translations, test-full,
       screenshots page, PR, CI, merge, rehearsal from 1.16.0, publish
 
 ## Notes
@@ -76,4 +76,6 @@ context is lost: re-read this file and carry on from the first unticked box.
   with LFSTUDIOS_GUIDE_PICTURES=1 testGuidePictures).
 - VideoEveryFeatureReachableTests: every command in ⌘K, every panel, every
   Library tab, in both layouts.
+- test-full green (1052 s), both layouts. Screenshots page:
+  https://claude.ai/artifact/4iU5eSoeGruc7xGhNr4rJ8
 
