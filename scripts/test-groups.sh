@@ -20,8 +20,12 @@
 #   RecordingFrameTests — puts the frame bar on the real screen and asks
 #   the window server what a click hits; another test's window would be
 #   in the way. It also takes the ⌃⌘Esc shortcut.
+#   VideoDockTests, VideoFloatingPanelTests — the panel layout is a setting
+#   every test process shares, and floating panels are real windows.
+#   VideoAgentTests — the agent connection's switch, token and port are
+#   shared settings, and it serves on this Mac.
 SNAPSHOTS='SnapshotTests'
-SERIAL='VideoLibraryFavouritesTests|VideoKeymapSettingsTests|RecordingEngineIntegrationTests|EditorMemoryValidationTests|VideoTimelineInteractionTests|VideoEditorLifecycleTests|VideoEditorDiscoverabilityTests|VideoInspectorLayoutTests|VideoPerformanceTests|VideoLongProjectPerformanceTests|VideoLongTakeTests|RecordingFrameTests'
+SERIAL='VideoLibraryFavouritesTests|VideoKeymapSettingsTests|RecordingEngineIntegrationTests|EditorMemoryValidationTests|VideoTimelineInteractionTests|VideoEditorLifecycleTests|VideoEditorDiscoverabilityTests|VideoInspectorLayoutTests|VideoPerformanceTests|VideoLongProjectPerformanceTests|VideoLongTakeTests|RecordingFrameTests|VideoDockTests|VideoFloatingPanelTests|VideoAgentTests'
 
 # Each test process keeps its drafts and presets in a folder of its own
 # in here (VideoTestStorage.swift); start each run with it empty.
