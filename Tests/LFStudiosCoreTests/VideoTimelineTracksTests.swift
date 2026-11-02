@@ -146,9 +146,12 @@ final class VideoTimelineTracksTests: XCTestCase {
         try await forEachEditorStyle { style in
             let model = try await makeModel()
             var layout = VideoTimelineRowLayout(project: model.project, hasCamera: true)
-            // LF Studios layout: the captions row on top; CapCut style as in 1.16.
-            let empty: [VideoTimelineTrack] = style == .lfStudios ? [.captions, .zooms, .clips, .camera, .keys, .annotations, .music] : [.zooms, .clips, .camera, .captions, .keys, .annotations, .music]
-            XCTAssertEqual(layout.rows.map(\.track), empty)
+            // The captions row on top, in both layouts (1.18.0).
+            let empty: [VideoTimelineTrack] = [.captions, .zooms, .clips, .camera, .keys, .annotations, .music]
+            XCTAssertEqual(layout.rows.map(\.track), empty, "\(style)")
+            // The recording's sound: a row per sound track, under the clips.
+            let withSound = VideoTimelineRowLayout(project: model.project, hasCamera: true, sound: VideoTimelineSoundRows(kinds: [.microphone, .system]))
+            XCTAssertEqual(withSound.rows.map(\.track), [.captions, .zooms, .clips, .clipSound(0, .microphone), .clipSound(1, .system), .camera, .keys, .annotations, .music])
             // Empty: thin rows with a hint; zooms and clips are always open.
             for row in layout.rows where row.track != .zooms && row.track != .clips {
                 XCTAssertTrue(row.isEmpty, "\(row.track)")

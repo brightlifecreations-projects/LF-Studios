@@ -424,6 +424,23 @@ enum Settings {
         }
     }
 
+    /// Where the editor's panels are docked and which float (1.18.0; nil:
+    /// as in 1.17.0).
+    static var videoEditorArrangement: VideoDockArrangement? {
+        get { defaults.data(forKey: "videoEditorArrangement").flatMap { try? JSONDecoder().decode(VideoDockArrangement.self, from: $0) } }
+        set {
+            if let newValue, let data = try? JSONEncoder().encode(newValue) { defaults.set(data, forKey: "videoEditorArrangement") } else { defaults.removeObject(forKey: "videoEditorArrangement") }
+        }
+    }
+
+    /// Layout ▸ Save Layout…'s layouts, on this Mac (1.18.0).
+    static var videoSavedLayouts: [VideoSavedLayout] {
+        get { defaults.data(forKey: "videoSavedLayouts").flatMap { try? JSONDecoder().decode([VideoSavedLayout].self, from: $0) } ?? [] }
+        set {
+            if !newValue.isEmpty, let data = try? JSONEncoder().encode(newValue) { defaults.set(data, forKey: "videoSavedLayouts") } else { defaults.removeObject(forKey: "videoSavedLayouts") }
+        }
+    }
+
     /// The timeline's switches (1.14.0), all on until turned off: the main
     /// track's magnet (P), auto snapping (N), linkage (~) and the preview
     /// axis (S).

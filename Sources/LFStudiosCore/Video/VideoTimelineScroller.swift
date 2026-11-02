@@ -173,6 +173,15 @@ final class VideoTimelineScroller {
 
     /// Playing: when the playhead reaches the right edge (or is off to
     /// either side), the next page comes into view with it near the left.
+    /// Not playing: a playhead that jumped out of view (Go to End, a
+    /// search result, a marker) is brought in, a third of the way across
+    /// (1.18.0). One already in view stays where it is.
+    func reveal(playheadX x: CGFloat) {
+        let visible = self.visible
+        guard visible.width > 60, x > visible.maxX - 8 || x < visible.minX + 8 else { return }
+        scroll(toX: max(x - visible.width / 3, 0))
+    }
+
     func follow(playheadX x: CGFloat) {
         guard followsPlayhead else { return }
         let visible = self.visible
@@ -221,7 +230,7 @@ struct VideoTimelinePlayheadFollower: View {
         Color.clear
             .frame(width: 0, height: 0)
             .onChange(of: clock.time) { time in
-                if model.isPlaying { scroller.follow(playheadX: x(time)) }
+                if model.isPlaying { scroller.follow(playheadX: x(time)) } else { scroller.reveal(playheadX: x(time)) }
             }
             .onChange(of: model.isPlaying) { playing in
                 // Each play follows again, from wherever the playhead is.

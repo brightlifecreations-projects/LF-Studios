@@ -208,8 +208,12 @@ extension VideoDemoProject {
     }
 
     /// What only 1.15.0 and later can show: written as project format 4.
+    /// Sound moved apart from its picture (1.18.0): only 1.18.0 and later
+    /// play it there, so older versions say they need a newer one.
+    var needsFormat5: Bool { timelineClips.contains { $0.needsFormat5 } }
+
     var needsFormat4: Bool {
-        layerTracks.contains { $0.items.contains { $0.needsFormat4 } } || timelineClips.contains { $0.needsFormat4 }
+        needsFormat5 || layerTracks.contains { $0.items.contains { $0.needsFormat4 } } || timelineClips.contains { $0.needsFormat4 }
             || audioTracks.contains { $0.volumeKeys != nil || $0.beats != nil || $0.ducksMusic == true } || music?.beats != nil || usesNewTransitions || compounds != nil || cover != nil || projectSettings != nil
     }
 

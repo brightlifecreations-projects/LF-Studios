@@ -130,6 +130,12 @@ enum VideoClipEdit: Equatable {
     case setTransition(VideoTransitionKind, Double?)
     /// The same transition on every cut.
     case transitionEverywhere(VideoTransitionKind, Double)
+    /// The clip's sound apart from its picture, so it can move (1.18.0),
+    /// or with it again.
+    case unlinkAudio
+    case linkAudio
+    /// Unlinked sound moved: seconds after its picture (a drag is one step).
+    case setAudioOffset(Double)
 
     var name: String {
         switch self {
@@ -138,6 +144,9 @@ enum VideoClipEdit: Equatable {
         case .setSpeedCurve(let c): return "setSpeedCurve.\(c?.preset?.rawValue ?? "none")"
         case .setTransition(let k, let d): return "setTransition.\(k.rawValue).\(d.map { "\($0)" } ?? "-")"
         case .transitionEverywhere(let k, let d): return "transitionEverywhere.\(k.rawValue).\(d)"
+        case .unlinkAudio: return "unlinkAudio"
+        case .linkAudio: return "linkAudio"
+        case .setAudioOffset(let o): return "setAudioOffset.\(o)"
         }
     }
 
@@ -148,6 +157,9 @@ enum VideoClipEdit: Equatable {
         case .setSpeedCurve: return L("Speed curve")
         case .setTransition(let k, _): return k.title
         case .transitionEverywhere: return L("Apply to all cuts")
+        case .unlinkAudio: return L("Unlink Audio")
+        case .linkAudio: return L("Link Audio")
+        case .setAudioOffset: return L("Move Audio")
         }
     }
 }
@@ -184,6 +196,27 @@ extension VideoEditorModel {
         case .transitionEverywhere(let kind, let duration):
             guard segments.count > 1 else { return false }
             applyTransitionToAll(kind, duration: duration)
+        case .unlinkAudio:
+            guard segment.clip.audioOffset == nil, hasAudio else { return false }
+            mutate(label: "Unlink Audio") { project in
+                guard let i = project.timelineClips.firstIndex(where: { $0.id == segment.id }) else { return }
+                project.timelineClips[i].audioOffset = 0
+            }
+        case .linkAudio:
+            guard segment.clip.audioOffset != nil else { return false }
+            mutate(label: "Link Audio") { project in
+                guard let i = project.timelineClips.firstIndex(where: { $0.id == segment.id }) else { return }
+                project.timelineClips[i].audioOffset = nil
+            }
+        case .setAudioOffset(let offset):
+            guard segment.clip.audioOffset != nil else { return false }
+            // Never before the start of the video.
+            let clamped = max(offset, -segment.timelineStart)
+            guard abs(clamped - (segment.clip.audioOffset ?? 0)) > 0.000_1 else { return false }
+            mutate(coalesce: "audio-offset-\(segment.id)", label: "Move Audio") { project in
+                guard let i = project.timelineClips.firstIndex(where: { $0.id == segment.id }) else { return }
+                project.timelineClips[i].audioOffset = clamped
+            }
         case .setSpeedCurve(let curve):
             mutate(coalesce: curve?.preset == .custom ? "curve-\(segment.id)" : nil, label: "Speed Curve") { project in
                 project.applySpeedCurve(to: segment.id, curve, speed: 1, totalDuration: total)

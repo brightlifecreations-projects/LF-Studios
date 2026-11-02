@@ -30,6 +30,13 @@ struct VideoDemoTimelineClip: Codable, Equatable, Identifiable {
     /// Keyframes (1.16.0; only `.zoom`: a zoom cut, VideoZoomCut.swift),
     /// in seconds from the clip's start on the timeline.
     var keys: VideoKeyframes?
+    /// Unlink audio (1.18.0): the clip's sound plays this many seconds
+    /// after its picture (0: unlinked, not moved yet). nil: linked, as
+    /// always before; only then is nothing new written.
+    var audioOffset: Double?
+
+    /// Only 1.18.0 and later play its sound where it was moved.
+    var needsFormat5: Bool { audioOffset != nil }
 
     /// Only 1.15.0 and later play it as it is.
     var needsFormat4: Bool { keepsPitch == false || curve != nil || speed < 0.25 - 0.000_1 || speed > 16 + 0.000_1 || keys?.isEmpty == false }
@@ -71,7 +78,7 @@ struct VideoDemoTimelineClip: Codable, Equatable, Identifiable {
     }
 
     private enum CodingKeys: String, CodingKey {
-        case id, sourceStart, sourceEnd, speed, muted, fadeIn, fadeOut, typingSpeedUp, mirrored, quarterTurns, disabled, keepsPitch, curve, keys
+        case id, sourceStart, sourceEnd, speed, muted, fadeIn, fadeOut, typingSpeedUp, mirrored, quarterTurns, disabled, keepsPitch, curve, keys, audioOffset
     }
 
     init(from decoder: Decoder) throws {
@@ -90,6 +97,7 @@ struct VideoDemoTimelineClip: Codable, Equatable, Identifiable {
         keepsPitch = (try? container.decodeIfPresent(Bool.self, forKey: .keepsPitch)).flatMap { $0 }
         curve = (try? container.decodeIfPresent(VideoSpeedCurveGroup.self, forKey: .curve)).flatMap { $0 }
         keys = (try? container.decodeIfPresent(VideoKeyframes.self, forKey: .keys)).flatMap { $0 }
+        audioOffset = (try? container.decodeIfPresent(Double.self, forKey: .audioOffset)).flatMap { $0 }
     }
 
     func encode(to encoder: Encoder) throws {
@@ -109,6 +117,7 @@ struct VideoDemoTimelineClip: Codable, Equatable, Identifiable {
         try container.encodeIfPresent(keepsPitch, forKey: .keepsPitch)
         try container.encodeIfPresent(curve, forKey: .curve)
         if keys?.isEmpty == false { try container.encode(keys, forKey: .keys) }
+        try container.encodeIfPresent(audioOffset, forKey: .audioOffset)
     }
 }
 

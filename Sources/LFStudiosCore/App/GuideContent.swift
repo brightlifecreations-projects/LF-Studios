@@ -15,7 +15,7 @@ import Foundation
 @MainActor
 enum GuideContent {
     /// Pages from these versions get a New badge and fill What's new.
-    nonisolated static let newVersions: [String] = ["1.17.0", "1.16.0", "1.15.0", "1.14.0", "1.13.0", "1.12.0", "1.11.1", "1.11.0", "1.10.0", "1.9.0", "1.8.0", "1.7.0"]
+    nonisolated static let newVersions: [String] = ["1.18.0", "1.17.0", "1.16.0", "1.15.0", "1.14.0", "1.13.0", "1.12.0", "1.11.1", "1.11.0", "1.10.0", "1.9.0", "1.8.0", "1.7.0"]
 
     static func chapters() -> [GuideChapter] {
         let features = featureCategories()
@@ -1459,8 +1459,26 @@ enum GuideContent {
                     L("The tracks are named A roll (the main track), V2 · B roll, V3 and so on, with Captions on top. These are names only: projects are the same in both layouts."),
                 ],
                 since: "1.17.0",
-                related: ["video-media", "video-timeline", "video-search", "video-effect-chain"],
+                related: ["video-move-panels", "video-media", "video-timeline", "video-search", "video-effect-chain"],
                 picture: "guide-editor-layout"
+            ),
+            GuideEntry(
+                id: "video-move-panels", symbol: "rectangle.3.group.fill", title: L("Moving panels"),
+                summary: L("Put the Library, the player, Properties and the timeline wherever you like, or in windows of their own, even on another screen."),
+                location: L("Each panel's header. In the usual layout, move the pointer to the very top edge of a panel and its header appears."),
+                steps: [
+                    L("Drag a panel's header onto another panel. A blue area shows where it will go: the left, right, top or bottom of that panel."),
+                    L("Drag a header outside the editor window, or click Float on the header, to put the panel in a window of its own."),
+                    L("To put it back, drag its header onto the editor, or click Dock (or its window's close button)."),
+                    L("Drag the line between two panels to make one bigger."),
+                ],
+                tips: [
+                    L("Layout ▸ Save Layout… keeps the arrangement by name, in the Layout menu. Layout ▸ Reset Layout puts every panel back."),
+                    L("Floating panels belong to their project's window: they hide with it, and come back where they were when you open the project again (on the main screen if that screen isn't connected)."),
+                    L("The editor's keys, like Space, B and ⌘Z, work whichever panel you clicked last."),
+                ],
+                since: "1.18.0",
+                related: ["video-layout"]
             ),
             GuideEntry(
                 id: "video-media", symbol: "photo.on.rectangle", title: L("Your media in the Library"),
@@ -1587,7 +1605,7 @@ enum GuideContent {
             ),
             GuideEntry(
                 id: "video-timeline", symbol: "rectangle.split.1x2", title: L("The timeline and its tracks"),
-                summary: L("Every part of the video on its own track, top to bottom: Zooms, Video clips, Camera, Captions, Keys, Text & annotations, Music, and each sound you added."),
+                summary: L("Every part of the video on its own track, top to bottom: Captions, Zooms, Video clips and their sound, Camera, Keys, Text & annotations, Music, and each sound you added."),
                 location: L("The bottom of the video editor."),
                 points: [
                     L("Drag the line above the timeline to make it taller or shorter; double-click it for the usual size. LF Studios remembers it."),
@@ -1601,7 +1619,42 @@ enum GuideContent {
                 ],
                 tips: [L("Hiding or muting a track never deletes anything: turn it back on, and it's all there.")],
                 since: "1.11.0",
-                related: ["video-play", "video-clips"]
+                related: ["video-play", "video-clips", "video-linked-audio", "video-playhead"]
+            ),
+            GuideEntry(
+                id: "video-playhead", symbol: "arrowtriangle.down.fill", title: L("The playhead"),
+                summary: L("The red line on the timeline is the moment the player shows. Its handle sits on top of the ruler."),
+                location: L("The top of the timeline, above the tracks."),
+                steps: [
+                    L("Drag the handle to move through the video; the player follows."),
+                    L("Click anywhere on the ruler to jump there."),
+                ],
+                tips: [
+                    L("The line runs down through every track, so you can see what's under it."),
+                    L("When you jump to a moment that's out of view, the timeline scrolls to show the playhead."),
+                ],
+                since: "1.18.0",
+                related: ["video-timeline", "video-play"]
+            ),
+            GuideEntry(
+                id: "video-linked-audio", symbol: "waveform", title: L("A video's sound on its own track"),
+                summary: L("Under the video track is its sound, on a track of its own. A recording's microphone and the Mac's sound each get one."),
+                location: L("The timeline, under the video track. A video on a track above has its sound under it too."),
+                points: [
+                    L("The sound is linked to its video: trimming, splitting, moving or deleting the video does the same to its sound, in one ⌘Z step."),
+                    L("The speaker on the sound track's name mutes it. Volume is in Properties ▸ Audio; a clip's fades and Mute Clip work on its sound."),
+                ],
+                steps: [
+                    L("To move the sound on its own, right-click it on its track and choose Unlink Audio."),
+                    L("Drag the unlinked sound left or right. It shows a dashed outline."),
+                    L("Right-click it and choose Link Audio to put it back under its video."),
+                ],
+                tips: [
+                    L("Projects from earlier versions open with their sound on these tracks and sound exactly the same."),
+                    L("A project with unlinked sound needs LF Studios 1.18 or later to open."),
+                ],
+                since: "1.18.0",
+                related: ["video-timeline", "video-clips"]
             ),
             GuideEntry(
                 id: "video-clips", symbol: "scissors", title: L("Split, trim & reorder clips"),
@@ -2279,7 +2332,12 @@ enum GuideContent {
                     L("+ adds a caption at the playhead. No transcript? Use Or type one at the playhead."),
                     L("Select a caption on the timeline to change when it starts and ends."),
                 ],
-                showMe: .editor(.captions)
+                steps: [
+                    L("On the Captions track at the top of the timeline, drag a caption to move it, or drag its ends to change when it starts and ends."),
+                    L("Double-click a caption on the timeline to change its words. Press Return to keep them or Esc to leave them as they were."),
+                ],
+                showMe: .editor(.captions),
+                since: "1.18.0"
             ),
             GuideEntry(
                 id: "captions-translate", symbol: "globe", title: L("Translate captions"),

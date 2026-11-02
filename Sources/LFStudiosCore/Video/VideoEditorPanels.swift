@@ -74,6 +74,10 @@ final class VideoEditorPanelStore: ObservableObject {
     @Published private(set) var layout: VideoEditorPanelLayout = Settings.videoEditorPanels ?? .standard
     /// LF Studios (new) or CapCut style (1.17.0), remembered on this Mac.
     @Published private(set) var style: VideoEditorStyle = Settings.videoEditorStyle
+    /// Where the panels are docked and which float (1.18.0).
+    @Published private(set) var arrangement: VideoDockArrangement = Settings.videoEditorArrangement ?? .standard
+    /// Layout ▸ Save Layout…'s, by name.
+    @Published private(set) var savedLayouts: [VideoSavedLayout] = Settings.videoSavedLayouts
 
     /// Layout ▸ LF Studios (new) or CapCut style: every open editor redraws.
     func choose(_ style: VideoEditorStyle) {
@@ -94,12 +98,101 @@ final class VideoEditorPanelStore: ObservableObject {
     }
 
     /// Layout ▸ Reset Layout: the panels, the timeline's height and the
-    /// track height back to where they start.
+    /// track height back to where they start, every panel docked.
     func reset() {
         layout = .standard
         Settings.videoEditorPanels = nil
         Settings.videoTimelineFraction = nil
+        arrange(.standard)
         NotificationCenter.default.post(name: .lfstudiosEditorLayoutReset, object: nil)
+    }
+
+    // MARK: Docking and floating (1.18.0)
+
+    /// A new arrangement (the standard one, whatever its shares, is drawn
+    /// as in 1.17.0).
+    func arrange(_ next: VideoDockArrangement, remember: Bool = true) {
+        let next = next.isStandard ? VideoDockArrangement.standard : next
+        if next != arrangement { arrangement = next }
+        if remember { Settings.videoEditorArrangement = next == .standard ? nil : next }
+    }
+
+    /// A panel dragged next to another (`current`: the docked panels with
+    /// their shares as drawn). A floating one docks there.
+    func move(_ kind: VideoPanelKind, to side: VideoDockSide, of target: VideoPanelKind, current: VideoDockNode) {
+        guard let docked = current.moving(kind, to: side, of: target) else { return }
+        var next = arrangement
+        next.docked = docked
+        next.floating.removeAll { $0.kind == kind }
+        arrange(next)
+    }
+
+    /// A panel in a window of its own (never the last docked one).
+    func float(_ kind: VideoPanelKind, frame: CGRect, screen: UInt32?, current: VideoDockNode) {
+        var base = arrangement
+        base.docked = current
+        guard let next = base.floating(kind, frame: frame, screen: screen) else { return }
+        arrange(next)
+    }
+
+    /// A floating panel back in the editor (Dock, or its close button).
+    func dock(_ kind: VideoPanelKind) {
+        arrange(arrangement.docking(kind))
+    }
+
+    /// Every floating panel back in the editor.
+    func dockAll() {
+        var next = arrangement
+        for panel in arrangement.floating { next = next.docking(panel.kind) }
+        arrange(next)
+    }
+
+    /// A floating panel moved or resized: remembered there.
+    func moveFloating(_ kind: VideoPanelKind, frame: CGRect, screen: UInt32?) {
+        guard let index = arrangement.floating.firstIndex(where: { $0.kind == kind }) else { return }
+        var next = arrangement
+        next.floating[index].frame = frame
+        next.floating[index].screen = screen
+        guard next != arrangement else { return }
+        arrange(next)
+    }
+
+    /// A border between docked panels dragged (`remember`: let go).
+    func resizeDocked(_ docked: VideoDockNode, remember: Bool) {
+        var next = arrangement
+        next.docked = docked
+        arrange(next, remember: remember)
+    }
+
+    // MARK: Saved layouts
+
+    /// Layout ▸ Save Layout…: everything as it is now, by name (the same
+    /// name: replaced).
+    func saveLayout(named name: String) {
+        let name = name.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !name.isEmpty else { return }
+        var saved = savedLayouts.filter { $0.name != name }
+        saved.append(VideoSavedLayout(name: name, arrangement: arrangement, widths: layout, timelineFraction: Settings.videoTimelineFraction))
+        savedLayouts = saved
+        Settings.videoSavedLayouts = saved
+    }
+
+    /// Layout ▸ a saved layout: its panels, widths and timeline height.
+    func apply(_ saved: VideoSavedLayout) {
+        set(saved.widths, remember: true)
+        Settings.videoTimelineFraction = saved.timelineFraction
+        arrange(saved.arrangement)
+        NotificationCenter.default.post(name: .lfstudiosEditorLayoutApplied, object: nil, userInfo: saved.timelineFraction.map { ["fraction": $0] })
+    }
+
+    func deleteLayout(named name: String) {
+        savedLayouts.removeAll { $0.name == name }
+        Settings.videoSavedLayouts = savedLayouts
+    }
+
+    /// The saved layout it is now, if any.
+    var currentSavedLayout: VideoSavedLayout? {
+        savedLayouts.last { $0.arrangement == arrangement && $0.widths == layout }
     }
 
     /// Tests: start from nothing remembered.
@@ -107,12 +200,27 @@ final class VideoEditorPanelStore: ObservableObject {
         layout = Settings.videoEditorPanels ?? .standard
         style = Settings.videoEditorStyle
         VideoEditorStyle.current = style
+        arrangement = Settings.videoEditorArrangement ?? .standard
+        savedLayouts = Settings.videoSavedLayouts
     }
+}
+
+/// A layout saved by name (Layout ▸ Save Layout…, 1.18.0).
+struct VideoSavedLayout: Codable, Equatable, Identifiable {
+    var name: String
+    var arrangement: VideoDockArrangement
+    var widths: VideoEditorPanelLayout
+    var timelineFraction: Double?
+
+    var id: String { name }
 }
 
 extension Notification.Name {
     /// Reset Layout: open editors put the timeline back where it starts.
     static let lfstudiosEditorLayoutReset = Notification.Name("lfstudiosEditorLayoutReset")
+    /// A saved layout chosen: open editors take its timeline height
+    /// (userInfo "fraction", none: where it starts).
+    static let lfstudiosEditorLayoutApplied = Notification.Name("lfstudiosEditorLayoutApplied")
 }
 
 /// Layout ▸ Default, Player First, Reset Layout (in the editor's toolbar).
@@ -145,6 +253,30 @@ struct VideoLayoutMenu: View {
                     }
                 }
             }
+            // Saved layouts (1.18.0).
+            Divider()
+            ForEach(store.savedLayouts) { saved in
+                Button {
+                    store.apply(saved)
+                } label: {
+                    if store.currentSavedLayout == saved {
+                        Label(saved.name, systemImage: "checkmark")
+                    } else {
+                        Text(verbatim: saved.name)
+                    }
+                }
+            }
+            Button(L("Save Layout…")) { Self.askToSave(store) }
+            if !store.savedLayouts.isEmpty {
+                Menu(L("Delete Saved Layout")) {
+                    ForEach(store.savedLayouts) { saved in
+                        Button { store.deleteLayout(named: saved.name) } label: { Text(verbatim: saved.name) }
+                    }
+                }
+            }
+            if !store.arrangement.floating.isEmpty {
+                Button(L("Dock All Panels")) { store.dockAll() }
+            }
             Divider()
             Button(L("Reset Layout")) { store.reset() }
         } label: {
@@ -158,6 +290,23 @@ struct VideoLayoutMenu: View {
         .background(RoundedRectangle(cornerRadius: 7, style: .continuous).fill(VideoEditorTheme.ink.opacity(0.06)))
         .help(L("Layout: how the editor's panels are arranged"))
         .accessibilityLabel(L("Layout"))
+    }
+}
+
+extension VideoLayoutMenu {
+    /// Save Layout…: asks for a name.
+    static func askToSave(_ store: VideoEditorPanelStore) {
+        let alert = NSAlert()
+        alert.messageText = L("Save Layout")
+        alert.informativeText = L("Name this layout. It's kept on this Mac, in the Layout menu.")
+        let field = NSTextField(frame: NSRect(x: 0, y: 0, width: 240, height: 24))
+        field.placeholderString = L("Layout name")
+        alert.accessoryView = field
+        alert.addButton(withTitle: L("Save"))
+        alert.addButton(withTitle: L("Cancel"))
+        alert.window.initialFirstResponder = field
+        guard alert.runModal() == .alertFirstButtonReturn else { return }
+        store.saveLayout(named: field.stringValue)
     }
 }
 

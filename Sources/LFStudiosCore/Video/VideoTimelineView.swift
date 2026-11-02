@@ -13,6 +13,8 @@ enum VideoTimelineMetrics {
     static var clipTrackHeight: CGFloat { scaled(66) }
     /// A video or picture track above the main track (1.14.0).
     static var layerLaneHeight: CGFloat { scaled(40) }
+    /// A sound track under a video track (1.18.0).
+    static var soundLaneHeight: CGFloat { scaled(34) }
     static var overlayLaneHeight: CGFloat { scaled(26) }
     static let overlayLaneGap: CGFloat = 4
     static var captionLaneHeight: CGFloat { scaled(22) }
@@ -258,7 +260,7 @@ struct VideoTimelineSurface: View {
 
     /// Every track's row (VideoTimelineTracks.swift), below the ruler.
     private var rows: VideoTimelineRowLayout {
-        VideoTimelineRowLayout(project: model.project, hasCamera: model.hasWebcamFootage, curves: VideoEditorStyle.current.isNew ? Set(model.curveLanes.keys) : [])
+        VideoTimelineRowLayout(project: model.project, hasCamera: model.hasWebcamFootage, curves: VideoEditorStyle.current.isNew ? Set(model.curveLanes.keys) : [], sound: model.timelineSoundRows)
     }
     /// Far above the lanes: a row that shows nothing.
     private static let nowhere: CGFloat = -10_000
@@ -332,6 +334,12 @@ struct VideoTimelineSurface: View {
                     }
                 }
             }
+            .coordinateSpace(name: "lanesArea")
+            // The playhead's handle (1.18.0): over the ruler and the lanes,
+            // never clipped by either; drag it to move the playhead.
+            .overlay(alignment: .topLeading) {
+                VideoPlayheadHandle(model: model, clock: model.clock, offsets: offsets, x: { x($0) }, time: { time($0) }, width: lanesViewport.width)
+            }
         }
         .onAppear {
             scroller.pointsPerSecond = pointsPerSecond
@@ -368,7 +376,6 @@ struct VideoTimelineSurface: View {
                 if !model.project.markers.isEmpty {
                     VideoMarkerFlags(model: model, geometry: geometry, height: M.rulerHeight)
                 }
-                VideoTimelinePlayhead(clock: model.clock, x: { x($0) }, height: M.rulerHeight)
             }
             .frame(width: contentWidth + M.inset * 2, height: M.rulerHeight, alignment: .topLeading)
         }
@@ -445,6 +452,34 @@ struct VideoTimelineSurface: View {
                         .offset(y: clickTop)
                     }
                     clipTrack
+                }
+            }
+            // The main track's sound, one row per sound track (1.18.0).
+            let soundRows = model.timelineSoundRows
+            ForEach(Array(soundRows.kinds.enumerated()), id: \.offset) { index, kind in
+                if let top = rows.contentTop(.clipSound(index, kind)) {
+                    trackLook(.clipSound(index, kind)) {
+                        VideoClipSoundLane(
+                            model: model, index: index, kind: kind,
+                            waveform: model.soundWaveforms[index] ?? model.waveform,
+                            geometry: geometry, segments: model.segments,
+                            selected: model.selectedIDs { if case .clip(let id) = $0 { return id } else { return nil } },
+                            muted: model.project.trackState(.clipSound(index, kind)).muted
+                        )
+                        .offset(y: top)
+                    }
+                }
+            }
+            // The sound of the videos above the main track.
+            ForEach(model.project.layerTracks.filter { soundRows.layers.contains($0.id) }) { track in
+                if let top = rows.contentTop(.layerSound(track.id)) {
+                    trackLook(.layerSound(track.id)) {
+                        VideoLayerSoundLane(
+                            model: model, track: track, geometry: geometry,
+                            selected: model.selectedIDs { if case .layer(let id) = $0 { return id } else { return nil } }
+                        )
+                        .offset(y: top)
+                    }
                 }
             }
             // Cards, cut markers and recording boundaries on the clips;
@@ -837,7 +872,8 @@ struct VideoTimelineSurface: View {
                     pointsPerSecond: pointsPerSecond,
                     selected: model.isSelected(.clip(segment.id)),
                     thumbnails: model.thumbnails,
-                    waveform: model.waveform,
+                    // Its sound has a row of its own under it (1.18.0).
+                    waveform: model.timelineSoundRows.kinds.isEmpty ? model.waveform : nil,
                     sourceAspect: model.project.sourceHeight > 0 ? model.project.sourceWidth / model.project.sourceHeight : 16 / 9,
                     hover: hover
                 )
@@ -1437,9 +1473,54 @@ struct VideoTimelinePlayhead: View {
                     .shadow(color: .black.opacity(0.4), radius: 2, y: 1)
             }
         }
-        .offset(x: position - 6.5)
+        // Centred on the moment: by the knob's half when it has one, else
+        // the line's (it used to sit 5.5 pt left of the handle).
+        .offset(x: position - (showsKnob ? 6.5 : 1))
         .opacity(Self.hiddenInSnapshots ? 0 : 1)
         .allowsHitTesting(false)
+    }
+}
+
+/// The playhead's handle at the top of the ruler, with the line down to
+/// the lanes (where the lanes' own line carries on). Its whole shape shows
+/// at any zoom, track height, scroll position and window size; dragging it
+/// moves the playhead.
+struct VideoPlayheadHandle: View {
+    let model: VideoEditorModel
+    @ObservedObject var clock: VideoDemoPlaybackClock
+    @ObservedObject var offsets: VideoTimelineScrollOffsets
+    let x: (Double) -> CGFloat
+    let time: (CGFloat) -> Double
+    /// The lanes' visible width: off it, the handle hides.
+    let width: CGFloat
+
+    static let size = CGSize(width: 13, height: 17)
+    /// From the ruler's top edge: room for its rounded top.
+    static let top: CGFloat = 2
+
+    var body: some View {
+        let position = x(clock.time) - offsets.x
+        if position >= -Self.size.width, position <= width + Self.size.width, !VideoTimelinePlayhead.hiddenInSnapshots {
+            ZStack(alignment: .top) {
+                Rectangle()
+                    .fill(VideoEditorTheme.playhead)
+                    .frame(width: 2, height: VideoTimelineMetrics.rulerHeight + 1 - Self.top)
+                PlayheadKnob()
+                    .fill(VideoEditorTheme.playhead)
+                    .frame(width: Self.size.width, height: Self.size.height)
+                    .shadow(color: .black.opacity(0.35), radius: 1.5, y: 1)
+                    .contentShape(Rectangle().inset(by: -4))
+                    .gesture(
+                        DragGesture(minimumDistance: 0, coordinateSpace: .named("lanesArea"))
+                            .onChanged { drag in model.seek(to: max(time(drag.location.x + offsets.x), 0), fast: true) }
+                            .onEnded { drag in model.seek(to: max(time(drag.location.x + offsets.x), 0)) }
+                    )
+                    .help(L("Drag to move the playhead"))
+                    .accessibilityLabel(L("Playhead"))
+                    .accessibilityValue(VideoEditorModel.timecode(clock.time))
+            }
+            .offset(x: position - Self.size.width / 2, y: Self.top)
+        }
     }
 }
 

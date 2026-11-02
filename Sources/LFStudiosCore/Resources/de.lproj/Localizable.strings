@@ -244,6 +244,8 @@
 	<string>Ein Bild: eines von dir.</string>
 	<key>A preset saves the background, frame, cursor, zooms, captions, keys, and camera. Tick Include aspect ratio to save the shape too.</key>
 	<string>Eine Voreinstellung sichert Hintergrund, Rahmen, Zeiger, Zooms, Untertitel, Tasten und Kamera. Hak „Seitenverhältnis einbeziehen“ an, um auch die Form zu sichern.</string>
+	<key>A project with unlinked sound needs LF Studios 1.18 or later to open.</key>
+	<string>Ein Projekt mit getrenntem Ton lässt sich erst ab LF Studios 1.18 öffnen.</string>
 	<key>A project you never set them for exports as before, from the export window's last choices.</key>
 	<string>Ein Projekt, für das du sie nie festgelegt hast, wird wie bisher exportiert, mit den letzten Werten aus dem Exportfenster.</string>
 	<key>A quick punch-in right after a cut: the picture jumps closer, then eases back.</key>
@@ -290,6 +292,8 @@
 	<string>Eine leere Spur ist eine schmale Zeile, die sagt, wie du etwas hinzufügst. Mit dem Pfeil neben dem Namen klappst du eine Spur ein.</string>
 	<key>A video needs at least one clip</key>
 	<string>Ein Video braucht mindestens einen Clip</string>
+	<key>A video's sound on its own track</key>
+	<string>Der Ton eines Videos auf einer eigenen Spur</string>
 	<key>A voice chain for spoken audio: noise removal, de-essing, a warm and clear EQ, compression, and the podcast loudness standard. Each step can be turned off. Processed on this Mac.</key>
 	<string>Eine Stimmkette für gesprochenen Ton: Rauschentfernung, De-Essing, ein warmer, klarer EQ, Kompression und der Podcast-Lautheitsstandard. Jeder Schritt lässt sich ausschalten. Verarbeitet auf diesem Mac.</string>
 	<key>A volume keyframe at the playhead: set one, move, change the volume</key>
@@ -740,6 +744,8 @@
 	<string>Panel „Audio“ ▸ Stimme ▸ Stimme verbessern.</string>
 	<key>Audio track</key>
 	<string>Audiospur</string>
+	<key>Audio · %@</key>
+	<string>Audio · %@</string>
 	<key>Aurora</key>
 	<string>Polarlicht</string>
 	<key>Aurora Blue</key>
@@ -1722,6 +1728,8 @@
 	<string>Klicke auf eine Beschriftung, um sie zu bearbeiten</string>
 	<key>Click anything on the timeline or the preview to change it in the panel on the right.</key>
 	<string>Klicke auf irgendetwas auf der Zeitleiste oder in der Vorschau, um es im Panel rechts zu ändern.</string>
+	<key>Click anywhere on the ruler to jump there.</key>
+	<string>Klicke irgendwo auf das Lineal, um dorthin zu springen.</string>
 	<key>Click effects</key>
 	<string>Klickeffekte</string>
 	<key>Click for Project Settings. Double-click to show the recording in Finder.</key>
@@ -2274,6 +2282,8 @@
 	<string>Marker löschen</string>
 	<key>Delete Right of Playhead</key>
 	<string>Rechts der Abspielposition löschen</string>
+	<key>Delete Saved Layout</key>
+	<string>Gesichertes Layout löschen</string>
 	<key>Delete Screenshot</key>
 	<string>Bildschirmfoto löschen</string>
 	<key>Delete Screenshots</key>
@@ -2384,6 +2394,14 @@
 	<string>Möchtest du sie vor dem Beenden durchsehen?</string>
 	<key>Do your demo. When you're done, click the red stop button or press ⌃⌘Esc.</key>
 	<string>Führ deine Demo vor. Wenn du fertig bist, klicke auf die rote Stopptaste oder drück ⌃⌘Esc.</string>
+	<key>Dock</key>
+	<string>Andocken</string>
+	<key>Dock All Panels</key>
+	<string>Alle Panels andocken</string>
+	<key>Dock next to %@</key>
+	<string>Neben %@ andocken</string>
+	<key>Dock: put it back in the editor window</key>
+	<string>Andocken: zurück ins Editorfenster</string>
 	<key>Docs, slides</key>
 	<string>Dokumente, Folien</string>
 	<key>Don't Ask Again</key>
@@ -2398,6 +2416,8 @@
 	<string>Fertig (Esc)</string>
 	<key>Double-click</key>
 	<string>Doppelklick</string>
+	<key>Double-click a caption on the timeline to change its words. Press Return to keep them or Esc to leave them as they were.</key>
+	<string>Doppelklicke auf einen Untertitel in der Timeline, um seinen Text zu ändern. Drücke Return zum Übernehmen oder Esc, um ihn zu lassen, wie er war.</string>
 	<key>Double-click a marker to give it a name.</key>
 	<string>Doppelklicke auf einen Marker, um ihm einen Namen zu geben.</string>
 	<key>Double-click any text to change it.</key>
@@ -2440,6 +2460,10 @@
 	<string>Zieh eine Datei auf die Timeline oder den Player oder klicke auf das + in ihrem Vorschaubild. Ein Video kommt ans Ende; ein Bild oder ein Ton beginnt an der Abspielposition oder dort, wo du ihn auf der Timeline ablegst.</string>
 	<key>Drag a frame. Drag inside it to move it, or drag its edges to resize it.</key>
 	<string>Zieh einen Rahmen auf. Zieh darin, um ihn zu verschieben, oder an seinen Rändern, um die Größe zu ändern.</string>
+	<key>Drag a header outside the editor window, or click Float on the header, to put the panel in a window of its own.</key>
+	<string>Ziehe einen Kopf aus dem Editorfenster oder klicke im Kopf auf „Schweben“, um das Panel in ein eigenes Fenster zu legen.</string>
+	<key>Drag a panel's header onto another panel. A blue area shows where it will go: the left, right, top or bottom of that panel.</key>
+	<string>Ziehe den Kopf eines Panels auf ein anderes Panel. Ein blauer Bereich zeigt, wo es landet: links, rechts, oben oder unten an diesem Panel.</string>
 	<key>Drag a point up for faster, down for slower. Double-click to add a point; double-click a point to take it away.</key>
 	<string>Zieh einen Punkt nach oben für schneller, nach unten für langsamer. Doppelklicke, um einen Punkt hinzuzufügen; doppelklicke auf einen Punkt, um ihn zu entfernen.</string>
 	<key>Drag a point up or down to change the value, or sideways to change when it happens. One drag is one ⌘Z step.</key>
@@ -2482,6 +2506,8 @@
 	<string>Zieh auf dem Bildschirmfoto, um zu zeichnen.</string>
 	<key>Drag one of them on the timeline to move them all together; ⌫ removes them all. ⇧- or ⌘-click adds or takes one out.</key>
 	<string>Ziehe eines davon in der Zeitleiste, um alle gemeinsam zu bewegen; ⌫ entfernt alle. ⇧- oder ⌘-Klick fügt eines hinzu oder nimmt es heraus.</string>
+	<key>Drag onto the editor to dock it</key>
+	<string>Auf den Editor ziehen, um es anzudocken</string>
 	<key>Drag out any area instead, of any shape</key>
 	<string>Stattdessen einen beliebigen Bereich aufziehen, in jeder Form</string>
 	<key>Drag over any part of the screen to capture it.</key>
@@ -2530,10 +2556,14 @@
 	<string>Zieh an den Rändern des Rahmens oder wähle eine Form wie 16:9.</string>
 	<key>Drag the frame, or its corners, over the part of the camera picture the bubble should show.</key>
 	<string>Zieh den Rahmen oder seine Ecken über den Teil des Kamerabilds, den die Blase zeigen soll.</string>
+	<key>Drag the handle to move through the video; the player follows.</key>
+	<string>Ziehe den Griff, um dich durch das Video zu bewegen; der Player folgt.</string>
 	<key>Drag the keys on the preview to place them anywhere</key>
 	<string>Zieh die Tasten in der Vorschau an eine beliebige Stelle</string>
 	<key>Drag the line above the timeline to make it taller or shorter; double-click it for the usual size. LF Studios remembers it.</key>
 	<string>Zieh die Linie über der Timeline, um sie höher oder niedriger zu machen; ein Doppelklick stellt die übliche Größe her. LF Studios merkt sich das.</string>
+	<key>Drag the line between two panels to make one bigger.</key>
+	<string>Ziehe die Linie zwischen zwei Panels, um eines größer zu machen.</string>
 	<key>Drag the line between two panels to make one wider; double-click it to put it back.</key>
 	<string>Zieh die Linie zwischen zwei Panels, um eines breiter zu machen; ein Doppelklick stellt sie wieder her.</string>
 	<key>Drag the pin to move it; drag an edge to resize it.</key>
@@ -2544,6 +2574,8 @@
 	<string>Ziehe den Fokus in der Vorschau; ziehe an einer Ecke, um die Größe zu ändern. Alles darum herum wird abgedunkelt, solange sein Balken in der Zeitleiste läuft.</string>
 	<key>Drag the track on the timeline to move it; drag an edge to trim it; click it and press ⌘B to split it, or ⌫ to delete a piece.</key>
 	<string>Zieh die Spur auf der Timeline, um sie zu verschieben; zieh an einem Rand zum Kürzen; klicke sie an und drück ⌘B zum Teilen oder ⌫ zum Löschen eines Stücks.</string>
+	<key>Drag the unlinked sound left or right. It shows a dashed outline.</key>
+	<string>Ziehe den getrennten Ton nach links oder rechts. Er hat einen gestrichelten Rahmen.</string>
 	<key>Drag the yellow box over it, and set Box size.</key>
 	<string>Zieh den gelben Rahmen darüber und stell die Rahmengröße ein.</string>
 	<key>Drag the zoom's edges on the timeline to set its length.</key>
@@ -2562,8 +2594,12 @@
 	<string>Ziehen, um die Leisten zu verschieben</string>
 	<key>Drag to move the compound clip; drag a corner to size it</key>
 	<string>Ziehen bewegt den zusammengesetzten Clip; Ziehen an einer Ecke ändert die Größe</string>
+	<key>Drag to move the playhead</key>
+	<string>Ziehen, um die Abspielposition zu verschieben</string>
 	<key>Drag to move this clip to another place in the video</key>
 	<string>Ziehen, um diesen Clip an eine andere Stelle im Video zu verschieben</string>
+	<key>Drag to move this panel; drop it outside the window to float it</key>
+	<string>Ziehen, um dieses Panel zu verschieben; außerhalb des Fensters loslassen, damit es schwebt</string>
 	<key>Drag to move where the arrow starts</key>
 	<string>Ziehen, um den Anfang des Pfeils zu verschieben</string>
 	<key>Drag to move. Press Command-C to copy, Escape to close.</key>
@@ -2572,6 +2608,8 @@
 	<string>Ziehen zum Verschieben; an einer Ecke ziehen für die Größe, am runden Knopf zum Drehen</string>
 	<key>Drag to point the arrow</key>
 	<string>Ziehen, um den Pfeil auszurichten</string>
+	<key>Drag to resize the panels</key>
+	<string>Ziehen, um die Panels anzupassen</string>
 	<key>Drag to resize the panels. Double-click to reset.</key>
 	<string>Ziehen, um die Panels anzupassen. Doppelklick zum Zurücksetzen.</string>
 	<key>Drag to resize the timeline. Double-click for the usual size.</key>
@@ -2610,6 +2648,8 @@
 	<string>Dämmerung</string>
 	<key>Each file is its own track: drag it on the timeline, trim its ends, split it with ⌘B. MP3, WAV, M4A, AAC, AIFF, FLAC, or CAF — or drop files on the timeline.</key>
 	<string>Jede Datei ist eine eigene Spur: zieh sie auf der Timeline, kürze die Enden, teile sie mit ⌘B. MP3, WAV, M4A, AAC, AIFF, FLAC oder CAF – oder leg Dateien auf der Timeline ab.</string>
+	<key>Each panel's header. In the usual layout, move the pointer to the very top edge of a panel and its header appears.</key>
+	<string>Der Kopf jedes Panels. Im üblichen Layout erscheint er, wenn du den Zeiger an den obersten Rand eines Panels bewegst.</string>
 	<key>Each recording in its own folder</key>
 	<string>Jede Aufnahme in einem eigenen Ordner</string>
 	<key>Each recording keeps its own pointer, clicks, and shortcuts. Reorder them here; cut and trim them on the timeline like any clip.</key>
@@ -2642,6 +2682,8 @@
 	<string>Voreinstellungen bearbeiten</string>
 	<key>Edit Presets renames, updates, or deletes them.</key>
 	<string>Mit „Voreinstellungen bearbeiten“ kannst du sie umbenennen, aktualisieren oder löschen.</string>
+	<key>Edit Text</key>
+	<string>Text bearbeiten</string>
 	<key>Edit Video</key>
 	<string>Video bearbeiten</string>
 	<key>Edit Video opens the video editor.</key>
@@ -2756,8 +2798,8 @@
 	<string>Alle Schnitte, Zooms, Beschriftungen, Untertitel und Stiländerungen an diesem Video werden entfernt. Du kannst das widerrufen.</string>
 	<key>Every file starts at the same moment and is as long as the others: drop them all at 0:00 and they play in sync, the camera too.</key>
 	<string>Jede Datei beginnt im selben Moment und ist so lang wie die anderen: Lege alle bei 0:00 ab, und sie laufen synchron – die Kamera auch.</string>
-	<key>Every part of the video on its own track, top to bottom: Zooms, Video clips, Camera, Captions, Keys, Text &amp; annotations, Music, and each sound you added.</key>
-	<string>Jeder Teil des Videos auf einer eigenen Spur, von oben nach unten: Zooms, Videoclips, Kamera, Untertitel, Tasten, Text &amp; Anmerkungen, Musik und jeder hinzugefügte Ton.</string>
+	<key>Every part of the video on its own track, top to bottom: Captions, Zooms, Video clips and their sound, Camera, Keys, Text &amp; annotations, Music, and each sound you added.</key>
+	<string>Jeder Teil des Videos auf einer eigenen Spur, von oben nach unten: Untertitel, Zooms, Videoclips und ihr Ton, Kamera, Tasten, Text &amp; Anmerkungen, Musik und jeder hinzugefügte Ton.</string>
 	<key>Every part of this video as its own file — screen, camera, sound, captions, the finished video, and a timeline for editing apps (⇧⌘E)</key>
 	<string>Jeder Teil dieses Videos als eigene Datei – Bildschirm, Kamera, Ton, Untertitel, das fertige Video und eine Timeline für Schnittprogramme (⇧⌘E)</string>
 	<key>Every part of this video as its own file, in a new folder — for another editor or editing app.</key>
@@ -3074,8 +3116,14 @@
 	<string>Blitz raus</string>
 	<key>Flip like a selfie</key>
 	<string>Wie ein Selfie umdrehen</string>
+	<key>Float</key>
+	<string>Schweben</string>
 	<key>Float a screenshot above all your windows, as a reference while you work.</key>
 	<string>Lass ein Bildschirmfoto über allen Fenstern schweben, als Vorlage beim Arbeiten.</string>
+	<key>Float: in a window of its own</key>
+	<string>Schweben: in einem eigenen Fenster</string>
+	<key>Floating panels belong to their project's window: they hide with it, and come back where they were when you open the project again (on the main screen if that screen isn't connected).</key>
+	<string>Schwebende Panels gehören zum Fenster ihres Projekts: Sie werden mit ihm ausgeblendet und erscheinen wieder an ihrem Platz, wenn du das Projekt erneut öffnest (auf dem Hauptbildschirm, wenn jener Bildschirm nicht angeschlossen ist).</string>
 	<key>Folder %@</key>
 	<string>Ordner %@</string>
 	<key>Folder name:</key>
@@ -4044,10 +4092,14 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Layout</string>
 	<key>Layout also has Screen only and Camera only. The screen and the camera are always both recorded, so you can change your mind later.</key>
 	<string>Unter „Layout“ gibt es auch „Nur Bildschirm“ und „Nur Kamera“. Bildschirm und Kamera werden immer beide aufgenommen, du kannst es dir also später anders überlegen.</string>
+	<key>Layout name</key>
+	<string>Layoutname</string>
 	<key>Layout ▸ LF Studios (new) or CapCut style: the new layout has the tools down the left, Search in the middle of the top bar and the keys along the bottom; CapCut style is the editor as it was in 1.16. This Mac remembers your choice.</key>
 	<string>Layout ▸ LF Studios (neu) oder CapCut-Stil: Das neue Layout hat die Werkzeuge links, die Suche oben in der Mitte und die Tasten unten; der CapCut-Stil ist der Editor wie in 1.16. Dieser Mac merkt sich deine Wahl.</string>
 	<key>Layout ▸ Player First makes the player as big as it gets. Layout ▸ Reset Layout puts every panel back where it starts.</key>
 	<string>Layout ▸ Player zuerst macht den Player so groß wie möglich. Layout ▸ Layout zurücksetzen stellt alle Panels wieder her.</string>
+	<key>Layout ▸ Save Layout… keeps the arrangement by name, in the Layout menu. Layout ▸ Reset Layout puts every panel back.</key>
+	<string>„Layout“ ▸ „Layout sichern …“ behält die Anordnung unter einem Namen im Menü „Layout“. „Layout“ ▸ „Layout zurücksetzen“ legt jedes Panel zurück.</string>
 	<key>Layout: how the editor's panels are arranged</key>
 	<string>Layout: wie die Panels des Editors angeordnet sind</string>
 	<key>Layout: the camera in a bubble, split screen with the screen, or only one of them. Both are always recorded.</key>
@@ -4070,6 +4122,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Weniger Rumpeln und Dröhnen, mehr Präsenz</string>
 	<key>Let go to capture it.</key>
 	<string>Lass los, um ihn aufzunehmen.</string>
+	<key>Let go to float</key>
+	<string>Loslassen zum Schweben</string>
 	<key>Lets LF Studios show the shortcuts you press in a video, follow where you type, and resize a window to an exact size. Everything else works without it.</key>
 	<string>Damit kann LF Studios die gedrückten Kurzbefehle im Video zeigen, verfolgen, wo du tippst, und ein Fenster auf eine genaue Größe bringen. Alles andere funktioniert auch ohne.</string>
 	<key>Letter spacing</key>
@@ -4078,6 +4132,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Mit Rändern einpassen statt dem Zeiger folgen</string>
 	<key>Level</key>
 	<string>Stufe</string>
+	<key>Library</key>
+	<string>Bibliothek</string>
 	<key>Library (top left): Media, Audio, Text, Captions, and Transitions.</key>
 	<string>Bibliothek (oben links): Medien, Audio, Text, Untertitel und Übergänge.</string>
 	<key>Library options</key>
@@ -4142,6 +4198,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Zeilen · %lld</string>
 	<key>Link</key>
 	<string>Link</string>
+	<key>Link Audio</key>
+	<string>Audio verknüpfen</string>
 	<key>Link QR found</key>
 	<string>QR-Code mit Link gefunden</string>
 	<key>Link copied</key>
@@ -4162,6 +4220,10 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Verknüpfung aus: Clips auf anderen Spuren bleiben, wo sie sind</string>
 	<key>Linkage on: clips on other tracks move with the main track</key>
 	<string>Verknüpfung an: Clips auf anderen Spuren bewegen sich mit der Hauptspur</string>
+	<key>Linked to its clip: trims, splits, moves and deletes with it</key>
+	<string>Mit dem Clip verknüpft: wird mit ihm gekürzt, geteilt, verschoben und gelöscht</string>
+	<key>Linked to its video: moves, trims and splits with it</key>
+	<string>Mit dem Video verknüpft: wird mit ihm verschoben, gekürzt und geteilt</string>
 	<key>Links</key>
 	<string>Links</string>
 	<key>Links (%lld of %lld)</key>
@@ -4228,6 +4290,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>MP4 läuft überall; MOV ist das Format von QuickTime</string>
 	<key>Mac screen</key>
 	<string>Mac-Bildschirm</string>
+	<key>Mac sound</key>
+	<string>Mac-Ton</string>
 	<key>Magenta</key>
 	<string>Magenta</string>
 	<key>Main track magnet</key>
@@ -4436,6 +4500,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>%@ nach vorn verschieben</string>
 	<key>Move %@ later</key>
 	<string>%@ nach hinten verschieben</string>
+	<key>Move Audio</key>
+	<string>Audio verschieben</string>
 	<key>Move Down</key>
 	<string>Nach unten</string>
 	<key>Move Earlier</key>
@@ -4514,6 +4580,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Bewegung</string>
 	<key>Moving a project to another Mac? Save it with Include media, so everything comes along.</key>
 	<string>Projekt auf einen anderen Mac bringen? Sichere es mit „Medien einschließen“, damit alles mitkommt.</string>
+	<key>Moving panels</key>
+	<string>Panels verschieben</string>
 	<key>Multiply</key>
 	<string>Multiplizieren</string>
 	<key>Music</key>
@@ -4586,6 +4654,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Name</string>
 	<key>Name bar</key>
 	<string>Namensbalken</string>
+	<key>Name this layout. It's kept on this Mac, in the Layout menu.</key>
+	<string>Gib diesem Layout einen Namen. Es bleibt auf diesem Mac, im Menü „Layout“.</string>
 	<key>Natural</key>
 	<string>Natürlich</string>
 	<key>Nearby</key>
@@ -4918,6 +4988,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Unter macOS 15 und älter muss die „Spracherkennung“ erlaubt und das Diktat für diese Sprache eingerichtet sein.</string>
 	<key>On macOS 15 and earlier: allow LF Studios under Speech Recognition, and turn on Dictation for that language in System Settings ▸ Keyboard.</key>
 	<string>Unter macOS 15 und älter: Erlaube LF Studios unter „Spracherkennung“ und schalte in „Systemeinstellungen“ ▸ „Tastatur“ das Diktat für diese Sprache ein.</string>
+	<key>On the Captions track at the top of the timeline, drag a caption to move it, or drag its ends to change when it starts and ends.</key>
+	<string>Ziehe auf der Untertitelspur oben in der Timeline einen Untertitel, um ihn zu verschieben, oder seine Enden, um Anfang und Ende zu ändern.</string>
 	<key>On the edit's timeline</key>
 	<string>Auf der Zeitleiste des Schnitts</string>
 	<key>On the preview after capture, click Text, or right-click and choose Copy Text.</key>
@@ -5304,12 +5376,16 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>„%@“ abspielen</string>
 	<key>Playback</key>
 	<string>Wiedergabe</string>
+	<key>Player</key>
+	<string>Player</string>
 	<key>Player First</key>
 	<string>Player zuerst</string>
 	<key>Player zoom</key>
 	<string>Player-Zoom</string>
 	<key>Player: play, step one frame, the time, the aspect ratio, Fit or a closer zoom, and full-screen preview.</key>
 	<string>Player: Abspielen, ein Bild weiter, die Zeit, das Seitenverhältnis, Einpassen oder ein näherer Zoom und die Vorschau im Vollbild.</string>
+	<key>Playhead</key>
+	<string>Abspielposition</string>
 	<key>Playing %lld×</key>
 	<string>Wiedergabe mit %lld×</string>
 	<key>Playing &amp; moving around</key>
@@ -5470,12 +5546,16 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Projekteinstellungen</string>
 	<key>Projects</key>
 	<string>Projekte</string>
+	<key>Projects from earlier versions open with their sound on these tracks and sound exactly the same.</key>
+	<string>Projekte aus früheren Versionen öffnen sich mit ihrem Ton auf diesen Spuren und klingen genau gleich.</string>
 	<key>Projects shows your recordings, screenshots, and saved projects, newest first. Click one to open it. Right-click for Show in Finder, Creative Handoff…, or Delete.</key>
 	<string>„Projekte“ zeigt deine Aufnahmen, Bildschirmfotos und gesicherten Projekte, die neuesten zuerst. Klicke auf eines, um es zu öffnen. Mit einem Rechtsklick findest du „Im Finder zeigen“, „Kreative Übergabe …“ und „Löschen“.</string>
 	<key>Projects with keyframes or any other 1.15.0 feature open in LF Studios 1.15.0 or later.</key>
 	<string>Projekte mit Keyframes oder einer anderen Funktion aus 1.15.0 öffnen sich in LF Studios 1.15.0 oder neuer.</string>
 	<key>Projects with these tracks open in LF Studios 1.14.0 or later.</key>
 	<string>Projekte mit diesen Spuren öffnen sich in LF Studios 1.14.0 oder neuer.</string>
+	<key>Properties</key>
+	<string>Eigenschaften</string>
 	<key>Properties (right): the settings of what you selected, in the Style, Cursor, Zoom, Camera, Captions, and Audio tabs.</key>
 	<string>Eigenschaften (rechts): die Einstellungen des Ausgewählten in den Tabs Stil, Zeiger, Zoom, Kamera, Untertitel und Audio.</string>
 	<key>Properties ▸ Adjust; Library ▸ Adjust for an adjustment clip.</key>
@@ -5516,6 +5596,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Schieben</string>
 	<key>Put a logo, a watermark, or a picture on the video.</key>
 	<string>Leg ein Logo, ein Wasserzeichen oder ein Bild über das Video.</string>
+	<key>Put the Library, the player, Properties and the timeline wherever you like, or in windows of their own, even on another screen.</key>
+	<string>Lege Bibliothek, Player, Eigenschaften und Timeline, wohin du willst, oder in eigene Fenster, auch auf einem anderen Bildschirm.</string>
 	<key>Put videos and pictures over your recording: picture-in-picture, b-roll, logos. Each plays at its own time, on its own track.</key>
 	<string>Leg Videos und Bilder über deine Aufnahme: Bild-in-Bild, Zwischenschnitte, Logos. Jedes läuft zu seiner Zeit, auf seiner eigenen Spur.</string>
 	<key>Put your recording on a wallpaper, a gradient, a color, or your own picture.</key>
@@ -5968,6 +6050,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Tonhöhe beibehalten wiederholen</string>
 	<key>Redo Keyframe Easing</key>
 	<string>Keyframe-Beschleunigung wiederholen</string>
+	<key>Redo Link Audio</key>
+	<string>Audio verknüpfen wiederholen</string>
 	<key>Redo Lock Track</key>
 	<string>Sperren der Spur wiederholen</string>
 	<key>Redo Make Compound Clip</key>
@@ -6168,6 +6252,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Einschalten des Clips wiederholen</string>
 	<key>Redo Ungroup</key>
 	<string>Aufheben der Gruppierung wiederholen</string>
+	<key>Redo Unlink Audio</key>
+	<string>Audio trennen wiederholen</string>
 	<key>Redo Unlock Track</key>
 	<string>Entsperren der Spur wiederholen</string>
 	<key>Redo Unmute Clip</key>
@@ -6454,6 +6540,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Mit einem Rechtsklick findest du „Öffnen“, „Im Finder zeigen“, „Kreative Übergabe …“ und „Löschen“ (legt es in den Papierkorb; beim Ordner einer Aufnahme nach Rückfrage den ganzen Ordner).</string>
 	<key>Right-click for Save As…, Pin to Screen, and Delete.</key>
 	<string>Mit einem Rechtsklick findest du „Sichern unter …“, „Auf dem Bildschirm anheften“ und „Löschen“.</string>
+	<key>Right-click it and choose Link Audio to put it back under its video.</key>
+	<string>Klicke mit der rechten Maustaste darauf und wähle „Audio verknüpfen“, um ihn wieder unter sein Video zu legen.</string>
 	<key>Right-click it for Copy, Save As…, Edit, Close Pin, or Close All Pins.</key>
 	<string>Mit einem Rechtsklick findest du „Kopieren“, „Sichern unter …“, „Bearbeiten“, „Schließen“ und „Alle schließen“.</string>
 	<key>Ring</key>
@@ -6500,6 +6588,10 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Sichern unter …</string>
 	<key>Save Folder</key>
 	<string>Zielordner</string>
+	<key>Save Layout</key>
+	<string>Layout sichern</string>
+	<key>Save Layout…</key>
+	<string>Layout sichern …</string>
 	<key>Save Location</key>
 	<string>Speicherort</string>
 	<key>Save Project</key>
@@ -7124,6 +7216,10 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Ton</string>
 	<key>Sound effects</key>
 	<string>Soundeffekte</string>
+	<key>Sound of %@</key>
+	<string>Ton von %@</string>
+	<key>Sound of clip %lld</key>
+	<string>Ton von Clip %lld</string>
 	<key>Sounds</key>
 	<string>Töne</string>
 	<key>Space</key>
@@ -7620,6 +7716,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Der Würfelknopf wählt zufällig eins aus.</string>
 	<key>The editor has the Library on the left, the player in the middle, Properties on the right (Style, Cursor, Zoom, Camera, Captions, and Audio), and the timeline below.</key>
 	<string>Der Editor hat links die Bibliothek, in der Mitte den Player, rechts die Eigenschaften (Stil, Zeiger, Zoom, Kamera, Untertitel und Audio) und unten die Timeline.</string>
+	<key>The editor's keys, like Space, B and ⌘Z, work whichever panel you clicked last.</key>
+	<string>Die Tasten des Editors wie Leertaste, B und ⌘Z funktionieren, egal welches Panel du zuletzt angeklickt hast.</string>
 	<key>The editor's layout</key>
 	<string>Das Layout des Editors</string>
 	<key>The export carries on in the background (Esc)</key>
@@ -7654,6 +7752,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Die höchste Qualität und die einzige, die Transparenz behalten kann</string>
 	<key>The label under it says how wide the camera is and where it goes in the video. The editor opens with exactly that.</key>
 	<string>Die Beschriftung darunter zeigt, wie breit die Kamera ist und wo sie im Video sitzt. Der Editor öffnet sich genau so.</string>
+	<key>The line runs down through every track, so you can see what's under it.</key>
+	<string>Die Linie läuft durch alle Spuren, so siehst du, was darunter liegt.</string>
 	<key>The loupe stays over the text cursor.</key>
 	<string>Die Lupe bleibt über dem Textcursor.</string>
 	<key>The loupe stays over your cursor.</key>
@@ -7706,6 +7806,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Die Bilddatei fehlt – wähle sie mit „Ersetzen“ erneut aus.</string>
 	<key>The pictures in 04 Graphics — older handoffs don't say where they were placed</key>
 	<string>Die Bilder in 04 Graphics – ältere Übergaben geben nicht an, wo sie platziert waren</string>
+	<key>The playhead</key>
+	<string>Die Abspielposition</string>
 	<key>The pointer data — it fits only an uncut recording</key>
 	<string>Die Zeigerdaten – sie passen nur zu einer ungeschnittenen Aufnahme</string>
 	<key>The pointer glides back to where it started at the end, so the video loops without a jump.</key>
@@ -7740,6 +7842,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Die Datei der Aufnahme wurde nicht gefunden – sie wurde eventuell bewegt oder gelöscht. Lege sie zurück und exportiere erneut.</string>
 	<key>The recording, its camera, added recordings, music, sound files, and pictures are already there. Added marks what's in the video.</key>
 	<string>Die Aufzeichnung, ihre Kamera, hinzugefügte Aufzeichnungen, Musik, Tondateien und Bilder sind schon da. „Hinzugefügt“ markiert, was im Video ist.</string>
+	<key>The red line on the timeline is the moment the player shows. Its handle sits on top of the ruler.</key>
+	<string>Die rote Linie in der Timeline ist der Moment, den der Player zeigt. Ihr Griff sitzt oben auf dem Lineal.</string>
 	<key>The red stop button in the bar while recording, or the red timer in the menu bar.</key>
 	<string>Die rote Stopptaste in der Leiste während der Aufzeichnung oder der rote Timer in der Menüleiste.</string>
 	<key>The same transition on every cut between clips</key>
@@ -7784,12 +7888,16 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Der Ton konnte nicht gelesen werden. Exportiere erneut.</string>
 	<key>The sound is in the Library as “%@”</key>
 	<string>Der Ton ist als „%@“ in der Bibliothek</string>
+	<key>The sound is linked to its video: trimming, splitting, moving or deleting the video does the same to its sound, in one ⌘Z step.</key>
+	<string>Der Ton ist mit seinem Video verknüpft: Kürzen, Teilen, Verschieben oder Löschen des Videos wirkt genauso auf den Ton, in einem ⌘Z-Schritt.</string>
 	<key>The sound is silent faster than 32× or slower than 1/32×.</key>
 	<string>Schneller als 32× oder langsamer als 1/32× ist der Ton stumm.</string>
 	<key>The sound recorded with the screen</key>
 	<string>Der mit dem Bildschirm aufgezeichnete Ton</string>
 	<key>The sound's settings (select a sound file, the music, or a video above the main track).</key>
 	<string>Die Einstellungen des Tons (wähle eine Tondatei, die Musik oder ein Video über der Hauptspur aus).</string>
+	<key>The speaker on the sound track's name mutes it. Volume is in Properties ▸ Audio; a clip's fades and Mute Clip work on its sound.</key>
+	<string>Der Lautsprecher beim Namen der Tonspur schaltet sie stumm. Die Lautstärke findest du unter Eigenschaften ▸ Audio; die Blenden eines Clips und „Clip stummschalten“ wirken auf seinen Ton.</string>
 	<key>The strip above the recording bar, after Home ▸ New recording.</key>
 	<string>Die Leiste über der Aufzeichnungsleiste, nach Start ▸ Neue Aufnahme.</string>
 	<key>The switches stay as you leave them, on this Mac.</key>
@@ -7806,10 +7914,14 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Die Timeline nutzt jetzt die Kurzbefehle von CapCut: ⌘B teilt (C weiterhin auch), S schaltet die Vorschau-Achse ein und aus, I und O setzen In- und Out-Punkt, Q und W löschen links und rechts der Abspielposition. Text, Pfeil, Markierung und Weichzeichner sind ⌥T, ⌥A, ⌥H und ⌥B.</string>
 	<key>The timeline's tools</key>
 	<string>Die Werkzeuge der Timeline</string>
+	<key>The timeline, under the video track. A video on a track above has its sound under it too.</key>
+	<string>Die Timeline, unter der Videospur. Ein Video auf einer Spur darüber hat seinen Ton ebenfalls darunter.</string>
 	<key>The timeline: the rows above Video clips (the main track). Drop a file there from Finder or the Library.</key>
 	<string>Die Timeline: die Zeilen über „Videoclips“ (der Hauptspur). Leg dort eine Datei aus dem Finder oder der Bibliothek ab.</string>
 	<key>The tool buttons above the preview: Text, Arrow, Highlight, Blur, Spotlight, and Image.</key>
 	<string>Die Werkzeugknöpfe über der Vorschau: Text, Pfeil, Markierung, Weichzeichnen, Fokus und Bild.</string>
+	<key>The top of the timeline, above the tracks.</key>
+	<string>Oben in der Timeline, über den Spuren.</string>
 	<key>The tracks are named A roll (the main track), V2 · B roll, V3 and so on, with Captions on top. These are names only: projects are the same in both layouts.</key>
 	<string>Die Spuren heißen A-Roll (die Hauptspur), V2 · B-Roll, V3 und so weiter, mit Untertiteln ganz oben. Das sind nur Namen: Projekte sind in beiden Layouts gleich.</string>
 	<key>The trash button in the bar while recording.</key>
@@ -8020,6 +8132,10 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Um die Vorschau aus dem Weg zu räumen, zieh sie aus dem Rahmen: Die Beschriftung zeigt „Nicht im Video“, und der Editor setzt die Kamera in ihre übliche Ecke.</string>
 	<key>To hide one, click it on the timeline and press ⌫.</key>
 	<string>Um einen auszublenden, klicke auf der Zeitleiste darauf und drück ⌫.</string>
+	<key>To move the sound on its own, right-click it on its track and choose Unlink Audio.</key>
+	<string>Um den Ton allein zu verschieben, klicke ihn auf seiner Spur mit der rechten Maustaste an und wähle „Audio trennen“.</string>
+	<key>To put it back, drag its header onto the editor, or click Dock (or its window's close button).</key>
+	<string>Zum Zurücklegen ziehe seinen Kopf auf den Editor oder klicke auf „Andocken“ (oder die Schließtaste seines Fensters).</string>
 	<key>To remove it again, untick Apply background to this image.</key>
 	<string>Um ihn wieder zu entfernen, nimm das Häkchen bei „Hintergrund auf dieses Bild anwenden“ weg.</string>
 	<key>To skip the panel and go straight to the editor, turn on Open the video editor after recording in Settings ▸ General.</key>
@@ -8248,6 +8364,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Wähle unter „Alle Untertitel neu gestalten“ einen Stil, eine Größe und Oben oder Unten.</string>
 	<key>Under the video preview. Hide them with ×; bring them back from the shortcuts list (?).</key>
 	<string>Unter der Videovorschau. Blende sie mit × aus; über die Kurzbefehlsliste (?) holst du sie zurück.</string>
+	<key>Under the video track is its sound, on a track of its own. A recording's microphone and the Mac's sound each get one.</key>
+	<string>Unter der Videospur liegt ihr Ton auf einer eigenen Spur. Mikrofon und Mac-Ton einer Aufnahme bekommen je eine.</string>
 	<key>Under the voice</key>
 	<string>Unter der Stimme</string>
 	<key>Underline</key>
@@ -8490,6 +8608,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Tonhöhe beibehalten widerrufen</string>
 	<key>Undo Keyframe Easing</key>
 	<string>Keyframe-Beschleunigung widerrufen</string>
+	<key>Undo Link Audio</key>
+	<string>Audio verknüpfen widerrufen</string>
 	<key>Undo Lock Track</key>
 	<string>Sperren der Spur widerrufen</string>
 	<key>Undo Make Compound Clip</key>
@@ -8690,6 +8810,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Einschalten des Clips widerrufen</string>
 	<key>Undo Ungroup</key>
 	<string>Aufheben der Gruppierung widerrufen</string>
+	<key>Undo Unlink Audio</key>
+	<string>Audio trennen widerrufen</string>
 	<key>Undo Unlock Track</key>
 	<string>Entsperren der Spur widerrufen</string>
 	<key>Undo Unmute Clip</key>
@@ -8716,6 +8838,10 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Widerrufen, wiederholen &amp; neu beginnen</string>
 	<key>Ungroup</key>
 	<string>Gruppierung aufheben</string>
+	<key>Unlink Audio</key>
+	<string>Audio trennen</string>
+	<key>Unlinked sound: drag to move it</key>
+	<string>Getrennter Ton: zum Verschieben ziehen</string>
 	<key>Unlock %@</key>
 	<string>%@ entsperren</string>
 	<key>Unlock “%@”</key>
@@ -8944,6 +9070,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Sind sie fertig, wird „Mit Proxys bearbeiten“ eingeschaltet.</string>
 	<key>When you export, keep Burn captions into the video on, or save a subtitles file.</key>
 	<string>Lass beim Exportieren „Untertitel ins Video einbrennen“ an oder sichere eine Untertiteldatei.</string>
+	<key>When you jump to a moment that's out of view, the timeline scrolls to show the playhead.</key>
+	<string>Springst du zu einer Stelle außerhalb der Ansicht, scrollt die Timeline zur Abspielposition.</string>
 	<key>When you're done, click the red stop button or press ⌃⌘Esc.</key>
 	<string>Wenn du fertig bist, klicke auf die rote Stopptaste oder drück ⌃⌘Esc.</string>
 	<key>Whenever you capture or record an area.</key>

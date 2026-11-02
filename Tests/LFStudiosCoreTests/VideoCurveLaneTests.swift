@@ -134,7 +134,7 @@ final class VideoCurveLaneTests: XCTestCase {
             case .capCut:
                 XCTAssertEqual(VideoTimelineTrack.clips.title(in: model.project), L("Video clips"))
                 XCTAssertEqual(VideoTimelineTrack.layer(track).title(in: model.project), L("Video 2"))
-                XCTAssertEqual(model.project.timelineTracks.first, .zooms, "as in 1.16")
+                XCTAssertEqual(model.project.timelineTracks.first, .captions, "captions on top in both layouts (1.18.0)")
             }
             XCTAssertEqual(try encoder.encode(model.project), json, "nothing in the project file")
         }

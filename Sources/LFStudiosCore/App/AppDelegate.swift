@@ -737,8 +737,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             undoManager.undo()
             return
         }
-        // The video editor's timeline undo stack is separate from NSUndoManager.
-        if NSApp.keyWindow?.delegate is VideoDemoEditorWindowController {
+        // The video editor's timeline undo stack is separate from NSUndoManager
+        // (its floating panels too).
+        if VideoDemoEditorWindowController.controller(for: NSApp.keyWindow) != nil {
             VideoDemoEditorWindowController.undoActiveTimelineEdit()
             return
         }
@@ -751,7 +752,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             undoManager.redo()
             return
         }
-        if NSApp.keyWindow?.delegate is VideoDemoEditorWindowController {
+        if VideoDemoEditorWindowController.controller(for: NSApp.keyWindow) != nil {
             VideoDemoEditorWindowController.redoActiveTimelineEdit()
             return
         }

@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.18.0]
+
+### Added
+- **Movable panels:** drag a panel's header (in the usual layout it shows at the panel's top edge) onto another panel to dock it on that side, with a blue area showing where it goes. Drag it out of the window, or click **Float**, to give it a window of its own, on any screen. Floating panels hide with their project's window and come back where they were when the project opens again (on the main screen if that screen is gone). **Dock** or the window's close button puts one back.
+- **Layout ▸ Save Layout…** keeps an arrangement by name; **Reset Layout** puts every panel back. Remembered on this Mac. Until you move something, the editor looks as before, in both layouts.
+- The editor's keys (Space, A, B, V, ⌘B, Q, W, ⌘Z, ⌘K…) work whichever panel or floating window you clicked last.
+- **A video's sound on its own track,** under the video: a recording's microphone and the Mac's sound each get one, and a video on a track above has its sound under it. It stays linked: trimming, splitting, moving or deleting the video does the same to its sound, in one ⌘Z step. Right-click ▸ **Unlink Audio** to drag the sound on its own; **Link Audio** puts it back.
+- **Captions track on top,** in both layouts: drag a caption to move it, drag its ends to change its timing, double-click it to change its words.
+- **A full playhead handle** above the ruler, never cut off at any zoom, track height or window size. Drag it to move through the video; the line runs down through every track.
+
+### Fixed
+- A muted clip next to other clips played half loud, and the clip before it faded out. Each clip now keeps its own level.
+
+### Compatibility
+- Projects from earlier versions open with their sound on the new tracks and export the same picture and sound. A project with unlinked sound needs 1.18 or later.
+
 ## [1.17.0] - 2026-11-02
 
 ### Added
