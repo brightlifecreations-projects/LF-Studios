@@ -126,6 +126,8 @@
 	<string>%@，作为单独的轨道</string>
 	<key>%@: %@</key>
 	<string>%@：%@</string>
+	<key>%@: drag to change it and when it happens</key>
+	<string>%@：拖移可更改数值和时间点</string>
 	<key>%@: on the selected text clip, or a new one</key>
 	<string>%@：用于所选文字片段，或新建一个</string>
 	<key>%@s</key>
@@ -458,6 +460,8 @@
 	<string>把另一段录制内容接到这一段的末尾，合成一个视频。</string>
 	<key>Add arrow at the playhead (⌥A)</key>
 	<string>在播放头处添加箭头（⌥A）</string>
+	<key>Add at Playhead</key>
+	<string>在播放头处添加</string>
 	<key>Add at the playhead</key>
 	<string>在播放头处添加</string>
 	<key>Add audio…</key>
@@ -730,6 +734,8 @@
 	<string>应用裁剪（Return 键）</string>
 	<key>Apply this position to all captions</key>
 	<string>将此位置应用到所有字幕</string>
+	<key>Apply to Every Caption</key>
+	<string>应用到所有字幕</string>
 	<key>Apply to all cuts</key>
 	<string>应用到所有剪切点</string>
 	<key>Apply to all cuts puts the same transition on every cut.</key>
@@ -1192,6 +1198,8 @@
 	<string>字幕样式</string>
 	<key>Caption styles and .srt files</key>
 	<string>字幕样式和 .srt 文件</string>
+	<key>Caption text</key>
+	<string>字幕文本</string>
 	<key>Caption — drag to move it, right-click for more</key>
 	<string>字幕 — 拖移可移动，右键点按查看更多</string>
 	<key>Caption “%@”</key>
@@ -2784,6 +2792,8 @@
 	<string>正在估算…</string>
 	<key>Even out loudness</key>
 	<string>统一响度</string>
+	<key>Every caption restyled</key>
+	<string>所有字幕已更换样式</string>
 	<key>Every capture, recording, and tool, from the LF Studios icon in the menu bar.</key>
 	<string>从菜单栏中的 LF Studios 图标使用所有截屏、录制和工具功能。</string>
 	<key>Every change can be undone, step by step.</key>
@@ -3332,6 +3342,8 @@
 	<string>前往结尾</string>
 	<key>Go to Start</key>
 	<string>前往开头</string>
+	<key>Go to this caption</key>
+	<string>前往此字幕</string>
 	<key>Golden hour</key>
 	<string>黄金时刻</string>
 	<key>Good to know</key>
@@ -3432,6 +3444,8 @@
 	<string>要隐藏菜单栏图标吗？</string>
 	<key>Hide the camera whenever you're not talking, and bring it back when you speak.</key>
 	<string>不说话时隐藏摄像头，开口说话时再显示出来。</string>
+	<key>Hide the keyframe curve</key>
+	<string>隐藏关键帧曲线</string>
 	<key>Hide the move to Stop</key>
 	<string>隐藏移向“停止”的动作</string>
 	<key>Hide tips (bring them back from ⌘K or the shortcuts list)</key>
@@ -3886,6 +3900,8 @@
 	<string>不让桌面上的文件出现在截屏中。</string>
 	<key>Keep pitch</key>
 	<string>保持音调</string>
+	<key>Keep the current style</key>
+	<string>保留当前样式</string>
 	<key>Keeping 30 days removes %lld older captures from History now. This can't be undone.</key>
 	<string>选择“30 天”将立即从历史记录中移除 %lld 张较早的截屏。此操作无法撤销。</string>
 	<key>Keeping 7 days removes %lld older captures from History now. This can't be undone.</key>
@@ -3928,6 +3944,8 @@
 	<string>此处有关键帧</string>
 	<key>Keyed: a change adds a keyframe at the playhead</key>
 	<string>已设关键帧：更改会在播放头处添加关键帧</string>
+	<key>Keyframe curve: %@</key>
+	<string>关键帧曲线：%@</string>
 	<key>Keyframe: %@</key>
 	<string>关键帧：%@</string>
 	<key>Keyframes</key>
@@ -4746,6 +4764,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>在“%@”中找不到字幕</string>
 	<key>No captions in the picture — add a subtitles file to upload them separately.</key>
 	<string>画面中无字幕 — 添加字幕文件以单独上传。</string>
+	<key>No captions yet. Transcribe the narration (Transcript), import an .srt or .vtt file from Library ▸ Captions, or add one at the playhead.</key>
+	<string>还没有字幕。可转写旁白（文字稿），从“素材库 ▸ 字幕”导入 .srt 或 .vtt 文件，或在播放头处添加。</string>
 	<key>No captures contain “%@”</key>
 	<string>没有截屏包含“%@”</string>
 	<key>No captures of this type</key>
@@ -4982,6 +5002,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>很久很久以前</string>
 	<key>One cycle</key>
 	<string>一个周期</string>
+	<key>One step: ⌘Z puts every caption back as it was. Captions moved on their own go back to the shared place.</key>
+	<string>一步完成：⌘Z 可让所有字幕恢复原样。单独移动过的字幕会回到统一的位置。</string>
 	<key>One word</key>
 	<string>逐词</string>
 	<key>One word at a time</key>
@@ -6036,6 +6058,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做移动高亮</string>
 	<key>Redo Move Image</key>
 	<string>重做移动图像</string>
+	<key>Redo Move Keyframe</key>
+	<string>重做移动关键帧</string>
 	<key>Redo Move Media</key>
 	<string>重做移动媒体</string>
 	<key>Redo Move Recording</key>
@@ -6126,6 +6150,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做恢复字词</string>
 	<key>Redo Restore Words</key>
 	<string>重做恢复字词</string>
+	<key>Redo Restyle Captions</key>
+	<string>重做更换字幕样式</string>
 	<key>Redo Reverse</key>
 	<string>重做倒放</string>
 	<key>Redo Rotate</key>
@@ -6438,6 +6464,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>已恢复 %lld 处剪切 — %@</string>
 	<key>Restored %lld words</key>
 	<string>已恢复 %lld 个词</string>
+	<key>Restyle all captions</key>
+	<string>更换所有字幕样式</string>
 	<key>Resume Recording</key>
 	<string>继续录制</string>
 	<key>Resume recording</key>
@@ -6732,6 +6760,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>搜索命令</string>
 	<key>Search commands, media, clips, captions and markers (⌘K)</key>
 	<string>搜索命令、媒体、片段、字幕和标记（⌘K）</string>
+	<key>Search commands, media, clips, captions, markers</key>
+	<string>搜索命令、媒体、片段、字幕、标记</string>
 	<key>Search projects</key>
 	<string>搜索项目</string>
 	<key>Search results</key>
@@ -6992,6 +7022,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>在“访达”中显示录制内容</string>
 	<key>Show Video Editor</key>
 	<string>显示视频编辑器</string>
+	<key>Show a keyframe curve under this track</key>
+	<string>在此轨道下方显示关键帧曲线</string>
 	<key>Show a video from a phone or camera instead of the recorded camera, lined up by sound.</key>
 	<string>显示来自手机或相机的视频来代替录制的摄像头画面，并按声音对齐。</string>
 	<key>Show background</key>
@@ -7946,6 +7978,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>此应用</string>
 	<key>This list</key>
 	<string>此列表</string>
+	<key>This part is cut from the video</key>
+	<string>这部分已从视频中剪掉</string>
 	<key>This project needs a newer version of LF Studios</key>
 	<string>此项目需要更新版本的 LF Studios</string>
 	<key>This recording didn't save key timing or screen changes, so typing can't be found</key>
@@ -8562,6 +8596,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销移动高亮</string>
 	<key>Undo Move Image</key>
 	<string>撤销移动图像</string>
+	<key>Undo Move Keyframe</key>
+	<string>撤销移动关键帧</string>
 	<key>Undo Move Media</key>
 	<string>撤销移动媒体</string>
 	<key>Undo Move Recording</key>
@@ -8652,6 +8688,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销恢复字词</string>
 	<key>Undo Restore Words</key>
 	<string>撤销恢复字词</string>
+	<key>Undo Restyle Captions</key>
+	<string>撤销更换字幕样式</string>
 	<key>Undo Reverse</key>
 	<string>撤销倒放</string>
 	<key>Undo Rotate</key>
@@ -8994,6 +9032,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>指针移动的路径，以及你点按的位置。</string>
 	<key>Where to find it</key>
 	<string>在哪里找到</string>
+	<key>Which setting the curve shows</key>
+	<string>曲线显示的设置</string>
 	<key>While a password field is in use, the typing options save nothing at all, not even the moments just before.</key>
 	<string>正在使用密码栏时，打字选项什么都不存储，连之前一刻的内容也不存储。</string>
 	<key>While capturing, the icons are covered with your wallpaper for a moment. Nothing on the desktop is moved.</key>

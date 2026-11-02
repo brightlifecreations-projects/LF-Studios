@@ -24,9 +24,9 @@ context is lost: re-read this file and carry on from the first unticked box.
 - [x] 1. Style setting + theme tokens + labels + Layout menu
 - [x] 2. New frame: top bar search, tool rail, monitor strip, status strip
 - [x] 3. Right panel: At playhead + Clip / Effects / Captions / Video
-- [ ] 4. Timeline: A/B naming, fixed top rows, waveform strip, curve lane
-- [ ] 5. Global search ⌘K (commands, media, clips, captions, markers)
-- [ ] 6. Caption cue list + Restyle all
+- [x] 4. Timeline: A/B naming, fixed top rows, waveform strip, curve lane
+- [x] 5. Global search ⌘K (commands, media, clips, captions, markers)
+- [x] 6. Caption cue list + Restyle all
 - [ ] 7. Guide (new locations + screenshots), translations, test-full,
       screenshots page, PR, CI, merge, rehearsal from 1.16.0, publish
 
@@ -51,4 +51,19 @@ context is lost: re-read this file and carry on from the first unticked box.
   layout only (CapCut keeps "Video clips", "Video 2"); nothing in the file.
   The curve lane reads and writes the same keys as the ◆ marks and the Clip
   tab: a test checks both directions.
+- Timeline (new layout): Captions row on top; A roll / V2 · B roll / V3
+  labels (`title(in:)`, by style); waveform as its own strip under the
+  pictures (same clip height, so rows don't change); solid layer blocks.
+  Curve lane: `model.curveLanes` (window only), row taller by the lane;
+  `.edit(.moveKey)` edits the clip's own keys (one ⌘Z step a drag, kept
+  between neighbours, Position's x and y together). VideoCurveLaneTests
+  checks the lane, the ◆ marks and the Clip tab agree both ways.
+- Search (VideoGlobalSearch.swift): in the new layout the ⌘K palette lists
+  the matching commands, then MEDIA, CLIPS, CAPTIONS, MARKERS (6 each).
+  Commands run; others select and seek (never play). CapCut style keeps the
+  1.16 palette.
+- Captions (VideoCaptionsPanel.swift): Captions | Transcript. Every cue
+  with its time (click: go there) and editable words (`.setCaptionText`);
+  Restyle all (`.restyleCaptions`): a Library caption style (or keep), size,
+  place; single captions' own places cleared; one ⌘Z step.
 

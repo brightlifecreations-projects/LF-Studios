@@ -95,8 +95,12 @@ extension VideoDemoProject {
     /// Every track, top to bottom: the ones that are always there, then a
     /// row per added sound file.
     var timelineTracks: [VideoTimelineTrack] {
+        // LF Studios layout (1.17.0): the captions row on top.
+        if VideoEditorStyle.current.isNew {
+            return [.captions, .zooms] + layerTracks.reversed().map { .layer($0.id) } + [.clips, .camera, .keys, .annotations, .music] + audioTracks.map { .sound($0.id) }
+        }
         // The tracks above the main track, highest first, over it.
-        [.zooms] + layerTracks.reversed().map { .layer($0.id) } + [.clips, .camera, .captions, .keys, .annotations, .music] + audioTracks.map { .sound($0.id) }
+        return [.zooms] + layerTracks.reversed().map { .layer($0.id) } + [.clips, .camera, .captions, .keys, .annotations, .music] + audioTracks.map { .sound($0.id) }
     }
 
     /// A track's switches. The keys' Hide and a sound file's or the
@@ -166,7 +170,9 @@ extension VideoTimelineTrack {
     func title(in project: VideoDemoProject) -> String {
         switch self {
         case .zooms: return L("Zooms")
-        case .clips: return L("Video clips")
+        // LF Studios layout (1.17.0): A roll, V2 · B roll, V3… (labels
+        // only; nothing in the project).
+        case .clips: return VideoEditorStyle.current.isNew ? VideoTrackNames.mainTrack : L("Video clips")
         case .camera: return L("Camera")
         case .captions: return L("Captions")
         case .keys: return L("Keys")
@@ -174,8 +180,9 @@ extension VideoTimelineTrack {
         case .music: return L("Music")
         case .sound(let id): return project.audioTracks.first { $0.id == id }?.name ?? L("Sound")
         case .layer(let id):
-            let number = (project.layerTracks.firstIndex { $0.id == id } ?? 0) + 2
-            return L("Video \(number)")
+            let index = project.layerTracks.firstIndex { $0.id == id } ?? 0
+            if VideoEditorStyle.current.isNew { return VideoTrackNames.layer(index) }
+            return L("Video \(index + 2)")
         }
     }
 }
@@ -288,12 +295,15 @@ struct VideoTimelineRowLayout: Equatable {
     /// All the rows, with a little room under the last.
     let height: CGFloat
 
-    init(project: VideoDemoProject, hasCamera: Bool) {
+    /// `curves`: tracks above the main track with their curve lane open
+    /// (LF Studios layout): those rows are taller by the lane.
+    init(project: VideoDemoProject, hasCamera: Bool, curves: Set<UUID> = []) {
         typealias M = VideoTimelineMetrics
         var rows: [Row] = []
         var top: CGFloat = 0
         for track in project.timelineTracks {
-            let content = Self.contentHeight(track, project: project, hasCamera: hasCamera)
+            var content = Self.contentHeight(track, project: project, hasCamera: hasCamera)
+            if case .layer(let id) = track, curves.contains(id) { content += VideoCurveLane.gap + VideoCurveLane.height }
             // The zooms and the recording always show (they're where you click to add).
             let alwaysOpen = track == .zooms || track == .clips
             let collapsed = !alwaysOpen && project.trackState(track).collapsed

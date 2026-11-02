@@ -126,6 +126,8 @@
 	<string>%@ — окремою доріжкою</string>
 	<key>%@: %@</key>
 	<string>%@: %@</string>
+	<key>%@: drag to change it and when it happens</key>
+	<string>%@: перетягніть, щоб змінити значення і момент</string>
 	<key>%@: on the selected text clip, or a new one</key>
 	<string>%@: на вибраному текстовому кліпі або на новому</string>
 	<key>%@s</key>
@@ -394,6 +396,8 @@
 	<string>Додайте ще один запис у кінець цього, щоб вийшло одне відео.</string>
 	<key>Add arrow at the playhead (⌥A)</key>
 	<string>Додати стрілку на покажчику відтворення (⌥A)</string>
+	<key>Add at Playhead</key>
+	<string>Додати на покажчику</string>
 	<key>Add at the playhead</key>
 	<string>Додати на покажчику відтворення</string>
 	<key>Add audio…</key>
@@ -660,6 +664,8 @@
 	<string>Застосувати обрізання (Return)</string>
 	<key>Apply this position to all captions</key>
 	<string>Застосувати цю позицію до всіх субтитрів</string>
+	<key>Apply to Every Caption</key>
+	<string>Застосувати до всіх субтитрів</string>
 	<key>Apply to all cuts</key>
 	<string>Застосувати до всіх склейок</string>
 	<key>Apply to all cuts puts the same transition on every cut.</key>
@@ -1116,6 +1122,8 @@
 	<string>Стилі субтитрів</string>
 	<key>Caption styles and .srt files</key>
 	<string>Стилі субтитрів і файли .srt</string>
+	<key>Caption text</key>
+	<string>Текст субтитру</string>
 	<key>Caption — drag to move it, right-click for more</key>
 	<string>Субтитр — перетягніть, щоб перемістити, клацніть правою кнопкою, щоб побачити більше</string>
 	<key>Caption “%@”</key>
@@ -2698,6 +2706,8 @@
 	<string>Оцінювання…</string>
 	<key>Even out loudness</key>
 	<string>Вирівняти гучність</string>
+	<key>Every caption restyled</key>
+	<string>Стиль усіх субтитрів змінено</string>
 	<key>Every capture, recording, and tool, from the LF Studios icon in the menu bar.</key>
 	<string>Усі знімки, записи й інструменти — зі значка LF Studios у смузі меню.</string>
 	<key>Every change can be undone, step by step.</key>
@@ -3240,6 +3250,8 @@
 	<string>Перейти в кінець</string>
 	<key>Go to Start</key>
 	<string>Перейти на початок</string>
+	<key>Go to this caption</key>
+	<string>Перейти до цього субтитру</string>
 	<key>Golden hour</key>
 	<string>Золота година</string>
 	<key>Good to know</key>
@@ -3340,6 +3352,8 @@
 	<string>Сховати значок у смузі меню?</string>
 	<key>Hide the camera whenever you're not talking, and bring it back when you speak.</key>
 	<string>Ховайте камеру, коли ви мовчите, і повертайте, коли говорите.</string>
+	<key>Hide the keyframe curve</key>
+	<string>Сховати криву ключових кадрів</string>
 	<key>Hide the move to Stop</key>
 	<string>Сховати рух до «Зупинити»</string>
 	<key>Hide tips (bring them back from ⌘K or the shortcuts list)</key>
@@ -3786,6 +3800,8 @@
 	<string>Нехай файли з робочого столу не потрапляють у ваші знімки.</string>
 	<key>Keep pitch</key>
 	<string>Зберігати висоту тону</string>
+	<key>Keep the current style</key>
+	<string>Залишити поточний стиль</string>
 	<key>Keeps just the person, found on this Mac</key>
 	<string>Залишає тільки людину, знайдену на цьому Mac</string>
 	<key>Keeps loud and quiet words close together</key>
@@ -3816,6 +3832,8 @@
 	<string>Ключовий кадр тут</string>
 	<key>Keyed: a change adds a keyframe at the playhead</key>
 	<string>Із ключовими кадрами: зміна додає ключовий кадр на покажчику відтворення</string>
+	<key>Keyframe curve: %@</key>
+	<string>Крива ключових кадрів: %@</string>
 	<key>Keyframe: %@</key>
 	<string>Ключовий кадр: %@</string>
 	<key>Keyframes</key>
@@ -4632,6 +4650,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>У «%@» не знайдено субтитрів</string>
 	<key>No captions in the picture — add a subtitles file to upload them separately.</key>
 	<string>Без субтитрів у кадрі — додайте файл субтитрів, щоб вивантажити їх окремо.</string>
+	<key>No captions yet. Transcribe the narration (Transcript), import an .srt or .vtt file from Library ▸ Captions, or add one at the playhead.</key>
+	<string>Субтитрів поки немає. Розшифруйте мовлення («Розшифровка»), імпортуйте файл .srt або .vtt із «Бібліотека ▸ Субтитри» або додайте субтитр на покажчику.</string>
 	<key>No captures contain “%@”</key>
 	<string>Жоден знімок не містить «%@»</string>
 	<key>No captures of this type</key>
@@ -4868,6 +4888,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Колись давно</string>
 	<key>One cycle</key>
 	<string>Один цикл</string>
+	<key>One step: ⌘Z puts every caption back as it was. Captions moved on their own go back to the shared place.</key>
+	<string>Один крок: ⌘Z поверне всі субтитри як було. Субтитри, переміщені окремо, повернуться на спільне місце.</string>
 	<key>One word</key>
 	<string>Одне слово</string>
 	<key>One word at a time</key>
@@ -5914,6 +5936,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторити переміщення виділення</string>
 	<key>Redo Move Image</key>
 	<string>Повторити переміщення зображення</string>
+	<key>Redo Move Keyframe</key>
+	<string>Повторити переміщення ключового кадру</string>
 	<key>Redo Move Media</key>
 	<string>Повторити переміщення медіа</string>
 	<key>Redo Move Recording</key>
@@ -6004,6 +6028,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторити відновлення слова</string>
 	<key>Redo Restore Words</key>
 	<string>Повторити відновлення слів</string>
+	<key>Redo Restyle Captions</key>
+	<string>Повторити зміну стилю субтитрів</string>
 	<key>Redo Reverse</key>
 	<string>Повторити реверс</string>
 	<key>Redo Rotate</key>
@@ -6302,6 +6328,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повернути розмір — повернути вікно як було</string>
 	<key>Restored %@</key>
 	<string>Відновлено %@</string>
+	<key>Restyle all captions</key>
+	<string>Стиль усіх субтитрів</string>
 	<key>Resume Recording</key>
 	<string>Продовжити запис</string>
 	<key>Resume recording</key>
@@ -6592,6 +6620,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Шукати команди</string>
 	<key>Search commands, media, clips, captions and markers (⌘K)</key>
 	<string>Пошук команд, медіа, кліпів, субтитрів і маркерів (⌘K)</string>
+	<key>Search commands, media, clips, captions, markers</key>
+	<string>Пошук команд, медіа, кліпів, субтитрів, маркерів</string>
 	<key>Search projects</key>
 	<string>Шукати проєкти</string>
 	<key>Search results</key>
@@ -6848,6 +6878,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Показати запис у Finder</string>
 	<key>Show Video Editor</key>
 	<string>Показати відеоредактор</string>
+	<key>Show a keyframe curve under this track</key>
+	<string>Показати криву ключових кадрів під цією доріжкою</string>
 	<key>Show a video from a phone or camera instead of the recorded camera, lined up by sound.</key>
 	<string>Показувати відео з телефона чи камери замість записаної камери, узгоджене за звуком.</string>
 	<key>Show background</key>
@@ -7794,6 +7826,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Цей застосунок</string>
 	<key>This list</key>
 	<string>Цей список</string>
+	<key>This part is cut from the video</key>
+	<string>Цей фрагмент вирізано з відео</string>
 	<key>This project needs a newer version of LF Studios</key>
 	<string>Для цього проєкту потрібна новіша версія LF Studios</string>
 	<key>This recording didn't save key timing or screen changes, so typing can't be found</key>
@@ -8404,6 +8438,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Відмінити переміщення виділення</string>
 	<key>Undo Move Image</key>
 	<string>Відмінити переміщення зображення</string>
+	<key>Undo Move Keyframe</key>
+	<string>Скасувати переміщення ключового кадру</string>
 	<key>Undo Move Media</key>
 	<string>Відмінити переміщення медіа</string>
 	<key>Undo Move Recording</key>
@@ -8494,6 +8530,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Відмінити відновлення слова</string>
 	<key>Undo Restore Words</key>
 	<string>Відмінити відновлення слів</string>
+	<key>Undo Restyle Captions</key>
+	<string>Скасувати зміну стилю субтитрів</string>
 	<key>Undo Reverse</key>
 	<string>Відмінити реверс</string>
 	<key>Undo Rotate</key>
@@ -8836,6 +8874,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Куди рухався курсор і де ви клацали.</string>
 	<key>Where to find it</key>
 	<string>Де знайти</string>
+	<key>Which setting the curve shows</key>
+	<string>Яке налаштування показує крива</string>
 	<key>While a password field is in use, the typing options save nothing at all, not even the moments just before.</key>
 	<string>Поки використовується поле пароля, параметри набору тексту не зберігають нічого — навіть моментів перед цим.</string>
 	<key>While capturing, the icons are covered with your wallpaper for a moment. Nothing on the desktop is moved.</key>

@@ -313,6 +313,11 @@ final class VideoEditorModel: ObservableObject {
     }
     /// Project settings (VideoProjectSettings.swift): click the name.
     @Published var isProjectSettingsPresented = false
+    /// Tracks with their keyframe curve lane open, and the setting each
+    /// shows (LF Studios layout; this window only, not the project).
+    @Published var curveLanes: [UUID: VideoKeyProperty] = [:] {
+        didSet { if curveLanes != oldValue { refreshTimeline() } }
+    }
     /// The compound clip open in its own timeline (VideoCompounds.swift).
     @Published var openCompound: UUID? {
         didSet { if openCompound != oldValue { refreshTimeline() } }
@@ -512,6 +517,7 @@ final class VideoEditorModel: ObservableObject {
         let recordingMuted: Bool
         let trackScale: CGFloat
         let openCompound: UUID?
+        let curveLanes: [UUID: VideoKeyProperty]
     }
 
     /// Bumps the timeline's revision when anything it draws changed.
@@ -536,7 +542,8 @@ final class VideoEditorModel: ObservableObject {
             tracks: project.trackStates,
             recordingMuted: project.audio.muted,
             trackScale: VideoTimelineMetrics.rowScale,
-            openCompound: openCompound
+            openCompound: openCompound,
+            curveLanes: curveLanes
         )
         guard signature != timelineSignature else { return }
         timelineSignature = signature

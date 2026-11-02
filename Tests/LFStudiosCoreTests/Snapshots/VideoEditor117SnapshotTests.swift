@@ -101,6 +101,10 @@ final class VideoEditor117SnapshotTests: XCTestCase {
     /// While building: the main window in a few looks.
     func testQuickLook() async throws {
         let model = try await demoModel()
+        // The title's track with its curve lane open (LF Studios layout).
+        if let title = model.selectedLayerItem, let track = model.project.layerTrackIndex(of: title.id) {
+            model.curveLanes[model.project.layerTracks[track].id] = .width
+        }
         for (styleName, s) in [("new", VideoEditorStyle.lfStudios), ("capcut", .capCut)] {
             style(s)
             try await render(VideoEditorRootView(model: model), size: CGSize(width: 1920, height: 1200), look: .darkAqua, name: "quick-\(styleName)-dark-large")

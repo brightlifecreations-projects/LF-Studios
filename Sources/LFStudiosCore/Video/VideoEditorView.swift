@@ -858,11 +858,11 @@ struct VideoCommandPalette: View {
                 HStack(spacing: 10) {
                     Image(systemName: "magnifyingglass")
                         .foregroundStyle(VideoEditorTheme.textSecondary)
-                    TextField(L("Search commands"), text: $query)
+                    TextField(VideoEditorStyle.current.isNew ? L("Search commands, media, clips, captions, markers") : L("Search commands"), text: $query)
                         .textFieldStyle(.plain)
                         .font(.system(size: 15, weight: .medium))
                         .focused($focused)
-                        .onSubmit { run(filtered.indices.contains(highlighted) ? filtered[highlighted] : filtered.first) }
+                        .onSubmit { choose(rows.indices.contains(highlighted) ? rows[highlighted] : rows.first) }
                         .onChange(of: query) { _ in highlighted = 0 }
                 }
                 .padding(.horizontal, 14)
@@ -870,24 +870,33 @@ struct VideoCommandPalette: View {
                 Rectangle().fill(VideoEditorTheme.hairline).frame(height: 1)
                 ScrollView {
                     VStack(spacing: 2) {
-                        ForEach(Array(filtered.enumerated()), id: \.element.id) { index, command in
+                        ForEach(Array(rows.enumerated()), id: \.element.id) { index, row in
+                            // LF Studios layout: each kind under its name.
+                            if let group = row.groupStart {
+                                VideoSectionLabel(group.title)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding(.horizontal, 12)
+                                    .padding(.top, index == 0 ? 4 : 10)
+                                    .padding(.bottom, 2)
+                            }
                             Button {
-                                run(command)
+                                choose(row)
                             } label: {
                                 HStack(spacing: 10) {
-                                    Image(systemName: command.symbol)
+                                    Image(systemName: row.symbol)
                                         .font(.system(size: 12, weight: .semibold))
                                         .frame(width: 20)
                                         .foregroundStyle(VideoEditorTheme.textSecondary)
-                                    Text(command.title)
+                                    Text(row.title)
                                         .font(.system(size: 13, weight: .medium))
                                         .foregroundStyle(VideoEditorTheme.textPrimary)
                                         .lineLimit(1)
                                         .minimumScaleFactor(0.85)
                                     Spacer()
-                                    Text(command.shortcut)
+                                    Text(row.detail)
                                         .font(.system(size: 11, weight: .semibold, design: .monospaced))
                                         .foregroundStyle(VideoEditorTheme.textTertiary)
+                                        .lineLimit(1)
                                 }
                                 .padding(.horizontal, 12)
                                 .frame(height: 34)
@@ -914,8 +923,8 @@ struct VideoCommandPalette: View {
         }
         .background(
             VideoArrowKeyCatcher { delta in
-                guard !filtered.isEmpty else { return }
-                highlighted = min(max(highlighted + delta, 0), filtered.count - 1)
+                guard !rows.isEmpty else { return }
+                highlighted = min(max(highlighted + delta, 0), rows.count - 1)
             }
         )
     }
@@ -924,6 +933,40 @@ struct VideoCommandPalette: View {
         guard let command else { return }
         model.isCommandPalettePresented = false
         command.action()
+    }
+
+    /// One row of the list: a command, or (LF Studios layout) something
+    /// found in the video.
+    struct Row: Identifiable {
+        let id: String
+        let title: String
+        let detail: String
+        let symbol: String
+        /// The first row of its kind: its name goes above it.
+        var groupStart: VideoGlobalSearch.Group?
+        let command: Command?
+        let result: VideoGlobalSearch.Result?
+    }
+
+    private var rows: [Row] {
+        var rows = filtered.map { Row(id: $0.id, title: $0.title, detail: $0.shortcut, symbol: $0.symbol, command: $0, result: nil) }
+        guard VideoEditorStyle.current.isNew, !query.trimmingCharacters(in: .whitespaces).isEmpty else { return rows }
+        if !rows.isEmpty { rows[0].groupStart = .commands }
+        var last: VideoGlobalSearch.Group?
+        for result in VideoGlobalSearch.results(query, in: model) {
+            rows.append(Row(id: result.id, title: result.title, detail: result.detail, symbol: result.symbol,
+                            groupStart: result.group == last ? nil : result.group, command: nil, result: result))
+            last = result.group
+        }
+        return rows
+    }
+
+    private func choose(_ row: Row?) {
+        guard let row else { return }
+        if let command = row.command { return run(command) }
+        guard let result = row.result else { return }
+        model.isCommandPalettePresented = false
+        VideoGlobalSearch.show(result.target, in: model)
     }
 
     private var filtered: [Command] {

@@ -318,6 +318,8 @@ extension VideoEditDescription {
         case "Zoom Change": return (L("Undo Zoom Change"), L("Redo Zoom Change"))
         case "Zoom Cut": return (L("Undo Zoom Cut"), L("Redo Zoom Cut"))
         case "Reorder Effects": return (L("Undo Reorder Effects"), L("Redo Reorder Effects"))
+        case "Restyle Captions": return (L("Undo Restyle Captions"), L("Redo Restyle Captions"))
+        case "Move Keyframe": return (L("Undo Move Keyframe"), L("Redo Move Keyframe"))
         case "Turn Effect On": return (L("Undo Turn Effect On"), L("Redo Turn Effect On"))
         case "Turn Effect Off": return (L("Undo Turn Effect Off"), L("Redo Turn Effect Off"))
         case "Remove Effect": return (L("Undo Remove Effect"), L("Redo Remove Effect"))

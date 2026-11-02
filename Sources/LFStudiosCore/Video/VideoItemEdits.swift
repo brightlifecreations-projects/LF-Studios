@@ -37,6 +37,10 @@ enum VideoItemEdit: Equatable {
     case moveEffect(UUID, Int)
     case setEffectOn(UUID, Bool)
     case removeEffect(UUID)
+    /// The curve lane (1.17.0): the key of `property` at `from` (seconds
+    /// from the clip's start) dragged to `to` with `value`. The same keys
+    /// the ◆ marks and Properties show.
+    case moveKey(VideoKeyProperty, from: Double, to: Double, value: Double)
 
     var name: String {
         switch self {
@@ -61,6 +65,7 @@ enum VideoItemEdit: Equatable {
         case .moveEffect(let id, let i): return "moveEffect.\(id).\(i)"
         case .setEffectOn(let id, let on): return "setEffectOn.\(id).\(on)"
         case .removeEffect(let id): return "removeEffect.\(id)"
+        case .moveKey(let p, let a, let b, let v): return "moveKey.\(p.rawValue).\(a).\(b).\(v)"
         }
     }
 
@@ -87,6 +92,7 @@ enum VideoItemEdit: Equatable {
         case .moveEffect: return L("Reorder effects")
         case .setEffectOn(_, let on): return on ? L("Turn effect on") : L("Turn effect off")
         case .removeEffect: return L("Remove effect")
+        case .moveKey(let p, _, _, _): return L("Keyframe: \(p.title)")
         }
     }
 }
@@ -171,6 +177,26 @@ extension VideoEditorModel {
         case .setEffectOn(let id, let on):
             guard let effects = item.effects, let i = effects.firstIndex(where: { $0.id == id }), effects[i].isOn != on else { return false }
             setLayerItem(item.id, label: on ? "Turn Effect On" : "Turn Effect Off") { $0.effects?[i].off = on ? nil : true }
+        case .moveKey(let property, let from, let to, let value):
+            guard let keys = item.keys, keys.hasKey(property, at: from) else { return false }
+            // Kept between its neighbours, and inside the clip.
+            let others = keys.keys(property).filter { abs($0.time - from) > 1.0 / 120 }
+            let before = others.last { $0.time < from }?.time ?? 0
+            let after = others.first { $0.time > from }?.time ?? item.length
+            let time = min(max(to, before + 1.0 / 60), after - 1.0 / 60)
+            setLayerItem(item.id, coalesce: "curve-\(item.id)-\(property.rawValue)", label: "Move Keyframe") { stored in
+                guard var moved = stored.keys else { return }
+                // The keys set together with it (Position's x and y) move in
+                // time together; each keeps its easing.
+                for p in VideoKeyProperty.group(property) {
+                    guard var list = moved.tracks[p.rawValue], let i = list.firstIndex(where: { abs($0.time - from) <= 1.0 / 120 }) else { continue }
+                    list[i].time = time
+                    if p == property { list[i].value = value }
+                    list.sort { $0.time < $1.time }
+                    moved.tracks[p.rawValue] = list
+                }
+                stored.keys = moved
+            }
         case .removeEffect(let id):
             // An effect clip keeps its one effect (delete the clip instead).
             guard item.role != .effect, let effects = item.effects, effects.contains(where: { $0.id == id }) else { return false }

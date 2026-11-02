@@ -126,6 +126,8 @@
 	<string>%@（専用のトラック）</string>
 	<key>%@: %@</key>
 	<string>%@: %@</string>
+	<key>%@: drag to change it and when it happens</key>
+	<string>%@：ドラッグで値とタイミングを変更</string>
 	<key>%@: on the selected text clip, or a new one</key>
 	<string>%@: 選択したテキストクリップ、または新しいテキストクリップに適用</string>
 	<key>%@s</key>
@@ -458,6 +460,8 @@
 	<string>別の収録をこのビデオの最後に追加して、1本のビデオにします。</string>
 	<key>Add arrow at the playhead (⌥A)</key>
 	<string>再生ヘッドの位置に矢印を追加（⌥A）</string>
+	<key>Add at Playhead</key>
+	<string>再生ヘッドに追加</string>
 	<key>Add at the playhead</key>
 	<string>再生ヘッドの位置に追加</string>
 	<key>Add audio…</key>
@@ -730,6 +734,8 @@
 	<string>切り取りを適用（Returnキー）</string>
 	<key>Apply this position to all captions</key>
 	<string>この位置をすべての字幕に適用</string>
+	<key>Apply to Every Caption</key>
+	<string>すべての字幕に適用</string>
 	<key>Apply to all cuts</key>
 	<string>すべてのつなぎ目に適用</string>
 	<key>Apply to all cuts puts the same transition on every cut.</key>
@@ -1192,6 +1198,8 @@
 	<string>字幕のスタイル</string>
 	<key>Caption styles and .srt files</key>
 	<string>字幕のスタイルと.srtファイル</string>
+	<key>Caption text</key>
+	<string>字幕のテキスト</string>
 	<key>Caption — drag to move it, right-click for more</key>
 	<string>字幕: ドラッグで移動、右クリックでその他の操作</string>
 	<key>Caption “%@”</key>
@@ -2784,6 +2792,8 @@
 	<string>残り時間を計算中…</string>
 	<key>Even out loudness</key>
 	<string>音量を均一化</string>
+	<key>Every caption restyled</key>
+	<string>すべての字幕のスタイルを変更しました</string>
 	<key>Every capture, recording, and tool, from the LF Studios icon in the menu bar.</key>
 	<string>メニューバーのLF Studiosアイコンから、すべての取り込み、収録、ツールを使えます。</string>
 	<key>Every change can be undone, step by step.</key>
@@ -3332,6 +3342,8 @@
 	<string>最後に移動</string>
 	<key>Go to Start</key>
 	<string>最初に移動</string>
+	<key>Go to this caption</key>
+	<string>この字幕へ移動</string>
 	<key>Golden hour</key>
 	<string>ゴールデンアワー</string>
 	<key>Good to know</key>
@@ -3432,6 +3444,8 @@
 	<string>メニューバーのアイコンを非表示にしますか?</string>
 	<key>Hide the camera whenever you're not talking, and bring it back when you speak.</key>
 	<string>話していない間はカメラを隠し、話し始めると再び表示します。</string>
+	<key>Hide the keyframe curve</key>
+	<string>キーフレームのカーブを隠す</string>
 	<key>Hide the move to Stop</key>
 	<string>“停止”への移動を非表示</string>
 	<key>Hide tips (bring them back from ⌘K or the shortcuts list)</key>
@@ -3886,6 +3900,8 @@
 	<string>デスクトップ上のファイルがスクリーンショットに写らないようにします。</string>
 	<key>Keep pitch</key>
 	<string>ピッチを保持</string>
+	<key>Keep the current style</key>
+	<string>今のスタイルのまま</string>
 	<key>Keeping 30 days removes %lld older captures from History now. This can't be undone.</key>
 	<string>保存期間を“30日”にすると、それより古い%lld件のスクリーンショットが今すぐ履歴から削除されます。この操作は取り消せません。</string>
 	<key>Keeping 7 days removes %lld older captures from History now. This can't be undone.</key>
@@ -3928,6 +3944,8 @@
 	<string>キーフレームあり</string>
 	<key>Keyed: a change adds a keyframe at the playhead</key>
 	<string>キーフレーム設定済み: 変更すると再生ヘッドの位置にキーフレームが追加されます</string>
+	<key>Keyframe curve: %@</key>
+	<string>キーフレームのカーブ：%@</string>
 	<key>Keyframe: %@</key>
 	<string>キーフレーム: %@</string>
 	<key>Keyframes</key>
@@ -4746,6 +4764,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>“%@”に字幕が見つかりません</string>
 	<key>No captions in the picture — add a subtitles file to upload them separately.</key>
 	<string>映像に字幕は入りません。別にアップロードするには字幕ファイルを追加してください。</string>
+	<key>No captions yet. Transcribe the narration (Transcript), import an .srt or .vtt file from Library ▸ Captions, or add one at the playhead.</key>
+	<string>字幕はまだありません。ナレーションを文字起こしするか（文字起こし）、“ライブラリ”＞“字幕”から.srtまたは.vttファイルを読み込むか、再生ヘッドに追加します。</string>
 	<key>No captures contain “%@”</key>
 	<string>“%@”を含むスクリーンショットはありません</string>
 	<key>No captures of this type</key>
@@ -4982,6 +5002,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>むかしむかし</string>
 	<key>One cycle</key>
 	<string>1周期</string>
+	<key>One step: ⌘Z puts every caption back as it was. Captions moved on their own go back to the shared place.</key>
+	<string>1ステップです。⌘Zですべての字幕が元に戻ります。個別に動かした字幕は共通の位置に戻ります。</string>
 	<key>One word</key>
 	<string>1語ずつ</string>
 	<key>One word at a time</key>
@@ -6036,6 +6058,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ハイライトの移動をやり直す</string>
 	<key>Redo Move Image</key>
 	<string>画像の移動をやり直す</string>
+	<key>Redo Move Keyframe</key>
+	<string>“キーフレームを移動”をやり直す</string>
 	<key>Redo Move Media</key>
 	<string>メディアの移動をやり直す</string>
 	<key>Redo Move Recording</key>
@@ -6126,6 +6150,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>単語の復元をやり直す</string>
 	<key>Redo Restore Words</key>
 	<string>単語の復元をやり直す</string>
+	<key>Redo Restyle Captions</key>
+	<string>“字幕のスタイル変更”をやり直す</string>
 	<key>Redo Reverse</key>
 	<string>逆再生をやり直す</string>
 	<key>Redo Rotate</key>
@@ -6438,6 +6464,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>%lld箇所のカット（計%@）を復元しました</string>
 	<key>Restored %lld words</key>
 	<string>%lld語を復元しました</string>
+	<key>Restyle all captions</key>
+	<string>すべての字幕のスタイルを変更</string>
 	<key>Resume Recording</key>
 	<string>収録を再開</string>
 	<key>Resume recording</key>
@@ -6732,6 +6760,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>コマンドを検索</string>
 	<key>Search commands, media, clips, captions and markers (⌘K)</key>
 	<string>コマンド、メディア、クリップ、字幕、マーカーを検索（⌘K）</string>
+	<key>Search commands, media, clips, captions, markers</key>
+	<string>コマンド、メディア、クリップ、字幕、マーカーを検索</string>
 	<key>Search projects</key>
 	<string>プロジェクトを検索</string>
 	<key>Search results</key>
@@ -6992,6 +7022,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>収録をFinderに表示</string>
 	<key>Show Video Editor</key>
 	<string>ビデオエディタを表示</string>
+	<key>Show a keyframe curve under this track</key>
+	<string>このトラックの下にキーフレームのカーブを表示</string>
 	<key>Show a video from a phone or camera instead of the recorded camera, lined up by sound.</key>
 	<string>収録したカメラの代わりに、スマートフォンやカメラの映像を音声で合わせて表示します。</string>
 	<key>Show background</key>
@@ -7946,6 +7978,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>このアプリ</string>
 	<key>This list</key>
 	<string>この一覧</string>
+	<key>This part is cut from the video</key>
+	<string>この部分はビデオからカットされています</string>
 	<key>This project needs a newer version of LF Studios</key>
 	<string>このプロジェクトには新しいバージョンのLF Studiosが必要です</string>
 	<key>This recording didn't save key timing or screen changes, so typing can't be found</key>
@@ -8562,6 +8596,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ハイライトの移動を取り消す</string>
 	<key>Undo Move Image</key>
 	<string>画像の移動を取り消す</string>
+	<key>Undo Move Keyframe</key>
+	<string>“キーフレームを移動”を取り消す</string>
 	<key>Undo Move Media</key>
 	<string>メディアの移動を取り消す</string>
 	<key>Undo Move Recording</key>
@@ -8652,6 +8688,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>単語の復元を取り消す</string>
 	<key>Undo Restore Words</key>
 	<string>単語の復元を取り消す</string>
+	<key>Undo Restyle Captions</key>
+	<string>“字幕のスタイル変更”を取り消す</string>
 	<key>Undo Reverse</key>
 	<string>逆再生を取り消す</string>
 	<key>Undo Rotate</key>
@@ -8994,6 +9032,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ポインタの動きと、クリックした場所。</string>
 	<key>Where to find it</key>
 	<string>場所</string>
+	<key>Which setting the curve shows</key>
+	<string>カーブに表示する設定</string>
 	<key>While a password field is in use, the typing options save nothing at all, not even the moments just before.</key>
 	<string>パスワードフィールドの使用中は、入力に関するオプションは何も保存しません。直前のタイミングも保存されません。</string>
 	<key>While capturing, the icons are covered with your wallpaper for a moment. Nothing on the desktop is moved.</key>
