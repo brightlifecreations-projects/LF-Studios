@@ -4,6 +4,7 @@
 
 ### Added
 - **Unlink Audio for videos on the tracks above the main track:** right-click a video's sound under it ▸ Unlink Audio to drag it on its own; Link Audio puts it back.
+- **Curve handles:** on the keyframe curve, a selected clip's points have Bézier handles; drag one to bend the curve (one ⌘Z step a drag), double-click it to go back to the easing.
 - A one-time tip shows where to pick up a panel: drag its top edge.
 
 ## [1.18.0] - 2026-11-02

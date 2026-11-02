@@ -1814,6 +1814,7 @@ enum GuideContent {
                     L("Click the curve button in the track's header. A lane opens under the track."),
                     L("Choose the setting it shows: Opacity, Size, Rotation, Position or Volume."),
                     L("Drag a point up or down to change the value, or sideways to change when it happens. One drag is one ⌘Z step."),
+                    L("Select the clip to see its curve handles (small diamonds beside each point). Drag one up or down to bend the curve; double-click it to go back to the easing (1.19.0)."),
                 ],
                 tips: [
                     L("The points are the clip's own keyframes: the ◆ marks on the clip and in Properties ▸ Clip change with them."),

@@ -41,6 +41,50 @@ final class VideoCurveLaneTests: XCTestCase {
         return (model, id)
     }
 
+    /// Bézier handles (1.19.0): drawn a third of the way along the curve,
+    /// dragged into a slope that reshapes it between the keys (ends stay),
+    /// one ⌘Z step a drag; an easing chosen clears it; the new format only
+    /// once a handle moves.
+    func testCurveHandlesShapeTheCurveInOneStep() async throws {
+        let (model, id) = try await makeModel()
+        var item = try XCTUnwrap(model.project.layerItem(id))
+        let handles = VideoCurveLane.handles(item, .opacity)
+        XCTAssertEqual(handles.count, 2, "leaving the first key, arriving at the second")
+        let out = try XCTUnwrap(handles.first { $0.side == .outgoing })
+        XCTAssertEqual(out.time, 1 + 1 + 2.0 / 3, accuracy: 0.001, "a third of the way")
+        XCTAssertEqual(out.value, 1 - 0.8 / 3, accuracy: 0.001, "on the straight line")
+        let middle = item.value(.opacity, at: 3)
+        XCTAssertEqual(middle, 0.6, accuracy: 0.001, "linear before")
+        XCTAssertFalse(model.project.needsFormat5)
+
+        // A drag: many slopes, one ⌘Z step.
+        let depth = model.undoDepth
+        for slope in [-0.3, -0.2, -0.1, 0.0] {
+            XCTAssertTrue(model.perform(.edit(.setKeySlope(.opacity, at: 1, side: .outgoing, slope: slope))))
+        }
+        model.endGesture()
+        XCTAssertEqual(model.undoDepth, depth + 1)
+        item = try XCTUnwrap(model.project.layerItem(id))
+        XCTAssertEqual(item.value(.opacity, at: 2), 1, accuracy: 0.000_1, "the keys stay")
+        XCTAssertEqual(item.value(.opacity, at: 4), 0.2, accuracy: 0.000_1)
+        XCTAssertGreaterThan(item.value(.opacity, at: 3), middle + 0.05, "flat leaving the first key: higher in the middle")
+        XCTAssertEqual(VideoCurveLane.handles(item, .opacity).first { $0.side == .outgoing }?.value ?? 0, 1, accuracy: 0.001, "the handle where it was dragged")
+        XCTAssertTrue(model.project.needsFormat5, "1.18 would draw a different curve")
+        let json = String(decoding: try JSONEncoder().encode(model.project), as: UTF8.self)
+        XCTAssertTrue(json.contains("outSlope"))
+
+        // An easing chosen: it shapes the curve again.
+        model.seek(to: 2)
+        model.perform(.edit(.setEasing(.easeInOut)))
+        item = try XCTUnwrap(model.project.layerItem(id))
+        XCTAssertNil(item.keys?.keys(.opacity).first?.outSlope)
+        model.undo()
+        model.undo()
+        item = try XCTUnwrap(model.project.layerItem(id))
+        XCTAssertEqual(item.value(.opacity, at: 3), middle, accuracy: 0.001, "⌘Z: straight again")
+        XCTAssertFalse(String(decoding: try JSONEncoder().encode(model.project), as: UTF8.self).contains("Slope"), "older keys write nothing new")
+    }
+
     /// What each of the three shows, in timeline seconds.
     private func lanePoints(_ model: VideoEditorModel, _ id: UUID) throws -> [Double] {
         VideoCurveLane.points(try XCTUnwrap(model.project.layerItem(id)), .opacity).map(\.time)

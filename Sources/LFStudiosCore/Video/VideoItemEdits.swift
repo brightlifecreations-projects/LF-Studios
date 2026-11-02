@@ -46,6 +46,10 @@ enum VideoItemEdit: Equatable {
     case unlinkAudio
     case linkAudio
     case setAudioOffset(Double)
+    /// The curve lane's Bézier handle of the key of `property` at `at`
+    /// (seconds from the clip's start) dragged to `slope` (value per
+    /// second; nil: back to the easing's), 1.19.0.
+    case setKeySlope(VideoKeyProperty, at: Double, side: VideoKeySide, slope: Double?)
 
     var name: String {
         switch self {
@@ -74,6 +78,7 @@ enum VideoItemEdit: Equatable {
         case .unlinkAudio: return "unlinkAudio"
         case .linkAudio: return "linkAudio"
         case .setAudioOffset(let o): return "setAudioOffset.\(o)"
+        case .setKeySlope(let p, let t, let side, let s): return "setKeySlope.\(p.rawValue).\(t).\(side.rawValue).\(s.map { "\($0)" } ?? "-")"
         }
     }
 
@@ -104,6 +109,7 @@ enum VideoItemEdit: Equatable {
         case .unlinkAudio: return L("Unlink Audio")
         case .linkAudio: return L("Link Audio")
         case .setAudioOffset: return L("Move Audio")
+        case .setKeySlope(let p, _, _, _): return L("Keyframe: \(p.title)")
         }
     }
 }
@@ -214,6 +220,11 @@ extension VideoEditorModel {
         case .linkAudio:
             guard item.audioOffset != nil else { return false }
             setLayerItem(item.id, label: "Link Audio") { $0.audioOffset = nil }
+        case .setKeySlope(let property, let time, let side, let slope):
+            guard let keys = item.keys, keys.hasKey(property, at: time) else { return false }
+            setLayerItem(item.id, coalesce: "slope-\(item.id)-\(property.rawValue)-\(side.rawValue)", label: "Keyframe Curve") {
+                $0.keys?.setSlope(slope.map { min(max($0, -10_000), 10_000) }, property: property, at: time, side: side)
+            }
         case .setAudioOffset(let offset):
             guard let current = item.audioOffset else { return false }
             // Never before the start of the video.

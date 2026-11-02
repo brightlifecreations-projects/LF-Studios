@@ -74,6 +74,30 @@ struct VideoKey: Codable, Equatable {
     var value: Double
     /// How it travels to the next key.
     var easing: VideoEasing = .linear
+    /// Bézier handles dragged on the curve lane (1.19.0): the curve's slope
+    /// (value per second) arriving at this key and leaving it. nil: from
+    /// the easing.
+    var inSlope: Double?
+    var outSlope: Double?
+}
+
+/// A key's handle: the one toward the key before it, or after it.
+enum VideoKeySide: String, Codable, Equatable {
+    case incoming
+    case outgoing
+}
+
+extension VideoEasing {
+    /// The slopes it leaves and arrives with, as a share of the straight
+    /// line's (t³ starts flat and arrives at three times the line…).
+    var slopes: (out: Double, in: Double) {
+        switch self {
+        case .linear: return (1, 1)
+        case .easeIn: return (0, 3)
+        case .easeOut: return (3, 0)
+        case .easeInOut: return (0, 0)
+        }
+    }
 }
 
 /// Each animated property's keys, sorted by time.
@@ -100,7 +124,37 @@ struct VideoKeyframes: Codable, Equatable {
         guard let index = keys.lastIndex(where: { $0.time <= time }), index + 1 < keys.count else { return last.value }
         let a = keys[index], b = keys[index + 1]
         let span = max(b.time - a.time, 0.000_001)
-        return a.value + (b.value - a.value) * a.easing.apply((time - a.time) / span)
+        let t = (time - a.time) / span
+        guard a.outSlope != nil || b.inSlope != nil else {
+            return a.value + (b.value - a.value) * a.easing.apply(t)
+        }
+        // Handles: a cubic through both keys with those slopes.
+        let (m0, m1) = Self.slopes(from: a, to: b)
+        let t2 = t * t, t3 = t2 * t
+        return (2 * t3 - 3 * t2 + 1) * a.value + (t3 - 2 * t2 + t) * span * m0 + (-2 * t3 + 3 * t2) * b.value + (t3 - t2) * span * m1
+    }
+
+    /// The slopes leaving `a` and arriving at `b`: the handles', or the
+    /// easing's.
+    static func slopes(from a: VideoKey, to b: VideoKey) -> (out: Double, in: Double) {
+        let chord = (b.value - a.value) / max(b.time - a.time, 0.000_001)
+        let eased = a.easing.slopes
+        return (a.outSlope ?? eased.out * chord, b.inSlope ?? eased.in * chord)
+    }
+
+    /// Any handle dragged (only 1.19.0 and later draw them).
+    var hasTangents: Bool {
+        tracks.values.contains { $0.contains { $0.inSlope != nil || $0.outSlope != nil } }
+    }
+
+    /// A key's handle set (nil: back to the easing's).
+    mutating func setSlope(_ slope: Double?, property: VideoKeyProperty, at time: Double, side: VideoKeySide, tolerance: Double = 1.0 / 120) {
+        guard var list = tracks[property.rawValue], let i = list.firstIndex(where: { abs($0.time - time) <= tolerance }) else { return }
+        switch side {
+        case .incoming: list[i].inSlope = slope
+        case .outgoing: list[i].outSlope = slope
+        }
+        tracks[property.rawValue] = list
     }
 
     /// A key at `time` (within a frame, `tolerance`): replaced, or added.
@@ -129,7 +183,11 @@ struct VideoKeyframes: Codable, Equatable {
         for (name, keys) in tracks {
             tracks[name] = keys.map { key in
                 var key = key
-                if abs(key.time - time) <= tolerance { key.easing = easing }
+                if abs(key.time - time) <= tolerance {
+                    key.easing = easing
+                    // An easing chosen: it shapes the curve again.
+                    key.outSlope = nil
+                }
                 return key
             }
         }

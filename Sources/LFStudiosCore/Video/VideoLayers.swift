@@ -533,7 +533,7 @@ enum VideoLayerStills {
 extension VideoLayerItem {
     /// Uses something only 1.15.0 shows.
     /// Only 1.19.0 and later play it right.
-    var needsFormat5: Bool { audioOffset != nil }
+    var needsFormat5: Bool { audioOffset != nil || (keys?.hasTangents ?? false) }
 
     var needsFormat4: Bool {
         needsFormat5 || (keys.map { !$0.isEmpty } ?? false) || mask != nil || level != nil || blend != nil || removesBackground != nil || chroma != nil || text != nil || tracking != nil || role != nil || effects != nil || filter != nil || adjust != nil || sticker != nil || animation != nil || keepsPitch != nil || soundFadeIn != nil || soundFadeOut != nil || speed < 0.25 - 0.000_1 || speed > 4 + 0.000_1
