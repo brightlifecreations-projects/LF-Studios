@@ -37,8 +37,8 @@ final class VideoTimelineInteractionTests: XCTestCase {
     /// 10 s recording in a timeline whose content is exactly 1000 pt wide
     /// (100 pt per second, x = 18 + 100·t).
     /// The track headers (1.11.0) on the left, then the lanes.
-    private static let lanesX = VideoTimelineMetrics.headerWidth + 1
-    private static let size = CGSize(width: 1036 + lanesX, height: 360)
+    private static var lanesX: CGFloat { VideoTimelineMetrics.headerWidth + 1 }
+    private static var size: CGSize { CGSize(width: 1036 + lanesX, height: 360) }
     private static let surfaceTop: CGFloat = 45 // toolbar + hairline
 
     private func makeModel() async throws -> VideoEditorModel {

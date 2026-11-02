@@ -49,8 +49,8 @@ final class VideoTimelineSnappingTests: XCTestCase {
 
     /// 10 s in a timeline 1000 pt wide: x = 18 + 100·t.
     /// The track headers (1.11.0) on the left, then the lanes.
-    private static let lanesX = VideoTimelineMetrics.headerWidth + 1
-    private static let size = CGSize(width: 1036 + lanesX, height: 360)
+    private static var lanesX: CGFloat { VideoTimelineMetrics.headerWidth + 1 }
+    private static var size: CGSize { CGSize(width: 1036 + lanesX, height: 360) }
     private static let surfaceTop: CGFloat = 45
 
     private func x(_ time: Double) -> CGFloat { Self.lanesX + 18 + CGFloat(time) * 100 }

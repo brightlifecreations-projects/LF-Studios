@@ -20,7 +20,9 @@ enum VideoTimelineMetrics {
     static var cameraLaneHeight: CGFloat { scaled(22) }
     static let gap: CGFloat = 7
     /// The track headers on the left.
-    static let headerWidth: CGFloat = 204
+    /// Wider in the LF Studios layout: its tracks' names and the curve
+    /// switch, in German, Russian and Ukrainian too (1.17.0).
+    static var headerWidth: CGFloat { VideoEditorStyle.current.isNew ? 236 : 204 }
 
     /// The annotation layers that get a lane, lowest first: one sitting
     /// wholly in a part that was cut away draws nothing and takes none.

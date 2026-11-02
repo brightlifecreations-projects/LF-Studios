@@ -66,4 +66,14 @@ context is lost: re-read this file and carry on from the first unticked box.
   with its time (click: go there) and editable words (`.setCaptionText`);
   Restyle all (`.restyleCaptions`): a Library caption style (or keep), size,
   place; single captions' own places cleared; one ⌘Z step.
+- Labels at 13" (de, ru, uk, ja checked by eye, VideoEditor117SnapshotTests
+  testLongLanguagesFitAt13Inch): track header 236 pt in the new layout;
+  ru/uk track names A-ролл / V2 · B-ролл (A-рол / V2 · B-рол); Import keeps
+  one line. Tabs shrink a little rather than wrap.
+- Guide: pages that name a panel get "In the LF Studios layout: Properties ▸
+  Video ▸ …" (from their Show me); new pages Search everything, Effect chain,
+  Keyframe curve, Caption list; pictures guide-*.jpg (English, dark; made
+  with LFSTUDIOS_GUIDE_PICTURES=1 testGuidePictures).
+- VideoEveryFeatureReachableTests: every command in ⌘K, every panel, every
+  Library tab, in both layouts.
 

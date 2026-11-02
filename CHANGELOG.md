@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.17.0]
+
+### Added
+- **A new editor layout, LF Studios (new)**, now the default:
+  - Tools down the left (Select, Split tool, Split, Delete left and right, Group, Zoom cut, keyframe, marker, voiceover) with your keys.
+  - Search in the top bar, the picture tools in a strip on the monitor, and a strip along the bottom with the last message and the main keys.
+  - A darker, denser look with uppercase labels, and a matching light look.
+  - **Layout ▸ CapCut style** keeps the editor exactly as it was in 1.16. Your choice is remembered on this Mac.
+- **Properties, rearranged** (new layout): At playhead (what plays now and next) on top, then Clip, Effects, Captions and Video (Style, Cursor, Zoom, Camera, Audio).
+- **Effect chain:** a clip's effects as cards in the order they're drawn. Drag a card to change the order (one ⌘Z step), switch one off to compare.
+- **Keyframe curve:** a lane under a track shows how a setting changes over time. Drag its points to change the value or the timing. The ◆ marks change with it.
+- **Search everything (⌘K):** commands, media, clips, captions and markers in one list.
+- **Caption list:** every caption with its time, editable in place, and **Restyle all captions** in one step.
+- Track names in the new layout: A roll, V2 · B roll, V3…, with Captions on top. Names only: projects are the same in both layouts.
+- Guide pages for each, with pictures, and where each panel is in the new layout.
+
+### Compatibility
+- Only the window changes: every project opens and exports exactly as before, in both layouts. Effects keep their order; an effect switched off is saved only when you switch one off.
+
 ## [1.16.0] - 2026-11-01
 
 ### Added

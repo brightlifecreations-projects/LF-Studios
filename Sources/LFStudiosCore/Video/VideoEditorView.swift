@@ -833,7 +833,13 @@ extension VideoEditorModel {
 
 struct VideoCommandPalette: View {
     @ObservedObject var model: VideoEditorModel
-    @State private var query = ""
+    @State private var query: String
+
+    /// `query`: what's typed when it opens (the Guide's picture).
+    init(model: VideoEditorModel, query: String = "") {
+        self.model = model
+        _query = State(initialValue: query)
+    }
     @State private var highlighted = 0
     /// Read once per opening (a file on disk), not on every keystroke.
     @State private var recent: [VideoDemoRecentExport]?

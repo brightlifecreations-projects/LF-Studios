@@ -38,7 +38,7 @@ final class VideoLongTimelineTests: XCTestCase {
 
     /// 10 s in a timeline whose lanes are 1000 pt wide (x = 18 + 100·t at 1×).
     /// The lanes 1036 pt wide, past the track headers (1.11.0).
-    private static let size = CGSize(width: 1036 + VideoTimelineMetrics.headerWidth + 1, height: 300)
+    private static var size: CGSize { CGSize(width: 1036 + VideoTimelineMetrics.headerWidth + 1, height: 300) }
 
     private func mount(_ model: VideoEditorModel) async {
         let window = NSWindow(contentRect: NSRect(origin: .zero, size: Self.size), styleMask: [.borderless], backing: .buffered, defer: false)
