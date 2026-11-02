@@ -308,7 +308,10 @@ enum VideoAgentTools {
             VideoAgentTool(name: "begin_agent_session", description: "Start a run: everything you change from now on is grouped, shown to the user in the Agent panel's feed, and at the end they choose Keep or Revert all. Say what you're about to do in `goal`.", properties: ["goal": text("What you're going to do, in a sentence the user will read.")]) { model, args, dryRun in
                 guard !dryRun else { return VideoAgentToolResult(json: .object(["ok": .bool(true), "dry_run": .bool(true)])) }
                 let hub = VideoAgentHub.shared
-                if let run = hub.run(for: model), run.reviewing { hub.keep(on: model) }
+                // The user decides about the last run first (Keep or Revert all).
+                if let run = hub.run(for: model), run.reviewing {
+                    return .error("The user is still reviewing your last run (Keep or Revert all in the Agent panel). Wait until they've chosen, then begin again.")
+                }
                 let run = hub.begin(on: model, goal: args["goal"]?.string ?? "")
                 return VideoAgentToolResult(json: .object(["ok": .bool(true), "changes_so_far": .number(Double(run.changes.count))]))
             },

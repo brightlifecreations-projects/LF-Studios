@@ -59,6 +59,41 @@ enum VideoAgentSetup: String, CaseIterable, Identifiable {
     }
 }
 
+/// A Settings row whose detail wraps (the setup steps are long).
+private struct AgentSettingsRow<Trailing: View>: View {
+    let title: String
+    let detail: String?
+    let trailing: Trailing
+
+    init(_ title: String, detail: String? = nil, @ViewBuilder trailing: () -> Trailing) {
+        self.title = title
+        self.detail = detail
+        self.trailing = trailing()
+    }
+
+    var body: some View {
+        HStack(spacing: 12) {
+            VStack(alignment: .leading, spacing: 2) {
+                Text(title)
+                    .font(.system(size: 13, weight: .semibold))
+                    .foregroundStyle(LFStudiosTheme.ink.opacity(0.88))
+                if let detail {
+                    Text(detail)
+                        .font(.system(size: 11, weight: .medium))
+                        .foregroundStyle(LFStudiosTheme.ink.opacity(0.5))
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+            }
+            Spacer(minLength: 12)
+            trailing
+                .controlSize(.small)
+        }
+        .frame(maxWidth: .infinity, minHeight: 44, alignment: .leading)
+        .padding(.horizontal, 12)
+        .padding(.vertical, 6)
+    }
+}
+
 /// Settings ▸ Agent.
 struct AgentSettingsView: View {
     @ObservedObject private var hub = VideoAgentHub.shared
@@ -68,7 +103,7 @@ struct AgentSettingsView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 18) {
                 PreferenceSection(L("AI agents")) {
-                    PreferenceRow(L("Allow AI agents to edit"), detail: L("Off until you turn it on. Only apps on this Mac can connect.")) {
+                    AgentSettingsRow(L("Allow AI agents to edit"), detail: L("Off until you turn it on. Only apps on this Mac can connect.")) {
                         Toggle("", isOn: Binding(get: { hub.isEnabled }, set: { hub.setEnabled($0) }))
                             .labelsHidden()
                             .toggleStyle(.switch)
@@ -76,7 +111,7 @@ struct AgentSettingsView: View {
                     }
                     if hub.isEnabled {
                         PreferenceDivider()
-                        PreferenceRow(L("Status"), detail: status) {
+                        AgentSettingsRow(L("Status"), detail: status) {
                             if hub.isConnected {
                                 Button(L("Disconnect")) { hub.disconnect() }
                             }
@@ -86,7 +121,7 @@ struct AgentSettingsView: View {
                 if hub.isEnabled {
                     PreferenceSection(L("Connect an agent")) {
                         ForEach(VideoAgentSetup.allCases) { setup in
-                            PreferenceRow(setup.title, detail: setup.whereItGoes) {
+                            AgentSettingsRow(setup.title, detail: setup.whereItGoes) {
                                 Button(copied == setup ? L("Copied") : L("Copy setup")) {
                                     NSPasteboard.general.clearContents()
                                     NSPasteboard.general.setString(setup.snippet(), forType: .string)
@@ -97,12 +132,12 @@ struct AgentSettingsView: View {
                         }
                     }
                     PreferenceSection(L("Instructions for the agent")) {
-                        PreferenceRow(L("How to edit in LF Studios"), detail: L("Tools, habits and limits, as a file the agent can read (also a Claude skill).")) {
+                        AgentSettingsRow(L("How to edit in LF Studios"), detail: L("Tools, habits and limits, as a file the agent can read (also a Claude skill).")) {
                             Button(L("Save…")) { VideoAgentInstructions.save() }
                         }
                     }
                     PreferenceSection(L("Token")) {
-                        PreferenceRow(L("New token"), detail: L("Apps that connect directly need the new one; the setups above keep working.")) {
+                        AgentSettingsRow(L("New token"), detail: L("Apps that connect directly need the new one; the setups above keep working.")) {
                             Button(L("New Token")) { hub.renewToken() }
                         }
                     }
@@ -137,18 +172,19 @@ struct VideoAgentDot: View {
 
     var body: some View {
         if hub.isEnabled, let client = hub.connectedClient {
-            Menu {
-                Text(L("Connected: \(client)"))
-                Button(L("Disconnect")) { hub.disconnect() }
-            } label: {
-                HStack(spacing: 5) {
-                    Circle().fill(Color.green).frame(width: 7, height: 7)
+            // The dot outside the menu: a menu's label is drawn in one colour.
+            HStack(spacing: 5) {
+                Circle().fill(Color.green).frame(width: 7, height: 7)
+                Menu {
+                    Text(L("Connected: \(client)"))
+                    Button(L("Disconnect")) { hub.disconnect() }
+                } label: {
                     Text(L("Agent"))
                         .font(.system(size: 11, weight: .semibold))
                 }
+                .menuStyle(.borderlessButton)
+                .fixedSize()
             }
-            .menuStyle(.borderlessButton)
-            .fixedSize()
             .help(L("An AI agent is connected: click to disconnect it"))
             .accessibilityLabel(L("AI agent connected"))
         }
