@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.17.0]
+## [1.17.0] - 2026-11-02
 
 ### Added
 - **A new editor layout, LF Studios (new)**, now the default:
