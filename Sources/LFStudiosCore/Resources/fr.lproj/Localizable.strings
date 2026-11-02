@@ -48,12 +48,16 @@
 	<string>%@ est trop lourd pour ce Mac : ce serait très lent ou échouerait. Essayez plutôt %@.</string>
 	<key>%@ isn't supported for captions on this Mac. Pick another language.</key>
 	<string>La langue %@ n’est pas prise en charge pour les sous-titres sur ce Mac. Choisissez une autre langue.</string>
+	<key>%@ left</key>
+	<string>%@ restantes</string>
 	<key>%@ long</key>
 	<string>durée %@</string>
 	<key>%@ moved from “%@”, which has no key now</key>
 	<string>%1$@ déplacé depuis « %2$@ », qui n’a plus de raccourci</string>
 	<key>%@ of recording plays in %@.</key>
 	<string>%@ d’enregistrement lus en %@.</string>
+	<key>%@ on</key>
+	<string>%@ activé</string>
 	<key>%@ on every cut</key>
 	<string>%@ sur chaque coupe</string>
 	<key>%@ on “%@”</key>
@@ -236,6 +240,8 @@
 	<string>Un zoom rapide juste après une coupe : l’image se rapproche d’un coup, puis revient en douceur.</string>
 	<key>A report helps fix this. You'll see everything before it's sent, and it never includes your screenshots or recordings.</key>
 	<string>Un rapport aide à corriger le problème. Vous verrez tout avant l’envoi, et il ne contient jamais vos captures ni vos enregistrements.</string>
+	<key>A roll</key>
+	<string>Plan A</string>
 	<key>A round magnifier over one spot, while the rest of the video stays in view.</key>
 	<string>Une loupe ronde sur un point, pendant que le reste de la vidéo reste visible.</string>
 	<key>A second caption track you can show, burn in, or save as subtitles. Translated on this Mac — nothing is uploaded.</key>
@@ -530,6 +536,8 @@
 	<string>Toutes les fonctions</string>
 	<key>All files</key>
 	<string>Tous les fichiers</string>
+	<key>All keys (?)</key>
+	<string>Tous les raccourcis (?)</string>
 	<key>All media</key>
 	<string>Tous les médias</string>
 	<key>All of these start off. Every screenshot is still kept in History and Home, and a short notice says so.</key>
@@ -1088,6 +1096,8 @@
 	<string>Annulé — le dossier en partie créé a été supprimé</string>
 	<key>Canyon Silk</key>
 	<string>Soie de canyon</string>
+	<key>CapCut style</key>
+	<string>Style CapCut</string>
 	<key>Caption</key>
 	<string>Sous-titre</string>
 	<key>Caption animation</key>
@@ -1234,6 +1244,10 @@
 	<string>Changez l’aspect d’une annotation, avant ou après l’avoir dessinée.</string>
 	<key>Change how the pointer looks: macOS classic, White, Outlined, Touch dot, Ring, or your own picture.</key>
 	<string>Changez l’apparence du pointeur : macOS classique, Blanc, Contour, Point tactile, Anneau ou votre propre image.</string>
+	<key>Change it in Clip ▸ Adjust</key>
+	<string>Modifiez-le dans Clip ▸ Ajustements</string>
+	<key>Change it in Clip ▸ Filter</key>
+	<string>Modifiez-le dans Clip ▸ Filtre</string>
 	<key>Change keyboard shortcuts</key>
 	<string>Modifier les raccourcis clavier</string>
 	<key>Change the editor's keys</key>
@@ -2498,6 +2512,8 @@
 	<string>Faites glisser pour capturer  ·  Maintenez ⇧ en relâchant pour ajuster d’abord  ·  Espace pour déplacer  ·  Échap pour annuler</string>
 	<key>Drag to change how much of the video the camera takes</key>
 	<string>Faites glisser pour changer la part de la vidéo occupée par la caméra</string>
+	<key>Drag to change the order</key>
+	<string>Faites glisser pour changer l’ordre</string>
 	<key>Drag to change where this clip ends</key>
 	<string>Faites glisser pour modifier la fin de ce clip</string>
 	<key>Drag to change where this clip starts</key>
@@ -2534,6 +2550,8 @@
 	<string>Dessinez avec l’outil sélectionné. Raccourcis des outils : V sélection, A flèche, R rectangle, T texte, O bulle, H surligneur, B flou, P pixélisation, S projecteur, C rognage.</string>
 	<key>Drawing</key>
 	<string>Dessin</string>
+	<key>Drawn top to bottom. Drag a card to change the order.</key>
+	<string>Appliqués de haut en bas. Faites glisser une carte pour changer l’ordre.</string>
 	<key>Drop a screenshot straight into an email, a chat, a document, or Finder.</key>
 	<string>Déposez une capture directement dans un e-mail, une discussion, un document ou le Finder.</string>
 	<key>Dropped on Video clips instead, a video joins the main track at that spot (a picture becomes a 5-second clip).</key>
@@ -2614,6 +2632,8 @@
 	<string>Effet</string>
 	<key>Effects</key>
 	<string>Effets</string>
+	<key>Effects belong to clips above the main track. Select one, or drag an effect from Library ▸ Effects onto the timeline.</key>
+	<string>Les effets s’appliquent aux clips au-dessus de la piste principale. Sélectionnez-en un, ou faites glisser un effet de Bibliothèque ▸ Effets sur la timeline.</string>
 	<key>Elegant</key>
 	<string>Élégant</string>
 	<key>Ellipse</key>
@@ -3814,6 +3834,8 @@
 	<string>L</string>
 	<key>LF Studios</key>
 	<string>LF Studios</string>
+	<key>LF Studios (new)</key>
+	<string>LF Studios (nouveau)</string>
 	<key>LF Studios 1.11 and earlier can't open .lfs files: whoever you send one to needs LF Studios 1.12.0 or later.</key>
 	<string>LF Studios 1.11 et versions antérieures ne peuvent pas ouvrir les fichiers .lfs : la personne à qui vous en envoyez un a besoin de LF Studios 1.12.0 ou ultérieur.</string>
 	<key>LF Studios Guide</key>
@@ -3952,6 +3974,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Disposition</string>
 	<key>Layout also has Screen only and Camera only. The screen and the camera are always both recorded, so you can change your mind later.</key>
 	<string>Disposition propose aussi Écran seul et Caméra seule. L’écran et la caméra sont toujours enregistrés tous les deux : vous pouvez changer d’avis plus tard.</string>
+	<key>Layout ▸ LF Studios (new) or CapCut style: the new layout has the tools down the left, Search in the middle of the top bar and the keys along the bottom; CapCut style is the editor as it was in 1.16. This Mac remembers your choice.</key>
+	<string>Disposition ▸ LF Studios (nouveau) ou Style CapCut : la nouvelle disposition a les outils à gauche, la recherche au milieu de la barre du haut et les raccourcis en bas ; le style CapCut est l’éditeur tel qu’il était en 1.16. Ce Mac retient votre choix.</string>
 	<key>Layout ▸ Player First makes the player as big as it gets. Layout ▸ Reset Layout puts every panel back where it starts.</key>
 	<string>Disposition ▸ Lecteur d’abord agrandit le lecteur au maximum. Disposition ▸ Réinitialiser la disposition remet chaque panneau en place.</string>
 	<key>Layout: how the editor's panels are arranged</key>
@@ -4318,6 +4342,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Plus</string>
 	<key>More caption options</key>
 	<string>Autres options de sous-titres</string>
+	<key>More for %@</key>
+	<string>Plus pour %@</string>
 	<key>More recording options</key>
 	<string>Autres options d’enregistrement</string>
 	<key>More tips</key>
@@ -4340,10 +4366,14 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Déplacer %@ plus tôt</string>
 	<key>Move %@ later</key>
 	<string>Déplacer %@ plus tard</string>
+	<key>Move Down</key>
+	<string>Descendre</string>
 	<key>Move Earlier</key>
 	<string>Déplacer plus tôt</string>
 	<key>Move Later</key>
 	<string>Déplacer plus tard</string>
+	<key>Move Up</key>
+	<string>Monter</string>
 	<key>Move an annotation to a track</key>
 	<string>Déplacer une annotation vers une piste</string>
 	<key>Move earlier</key>
@@ -4488,6 +4518,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Bandeau de nom</string>
 	<key>Natural</key>
 	<string>Naturel</string>
+	<key>Nearby</key>
+	<string>À proximité</string>
 	<key>Nebula</key>
 	<string>Nébuleuse</string>
 	<key>Needed for every screenshot and every recording. Without it, LF Studios can only see your wallpaper.</key>
@@ -4614,6 +4646,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Aucun conflit</string>
 	<key>No cursor data in this video</key>
 	<string>Aucune donnée de pointeur dans cette vidéo</string>
+	<key>No effects yet: drag one from Library ▸ Effects onto this clip, or click + on an effect there.</key>
+	<string>Aucun effet pour l’instant : faites-en glisser un depuis Bibliothèque ▸ Effets sur ce clip, ou cliquez sur + sur un effet.</string>
 	<key>No face found in the camera video</key>
 	<string>Aucun visage trouvé dans la vidéo de la caméra</string>
 	<key>No favourites yet: hover an item and click its star.</key>
@@ -4724,6 +4758,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Plus tard</string>
 	<key>Not set</key>
 	<string>Non défini</string>
+	<key>Nothing at the playhead</key>
+	<string>Rien à la tête de lecture</string>
 	<key>Nothing here yet</key>
 	<string>Rien pour l’instant</string>
 	<key>Nothing in the Guide matches your search. Try a shorter word, like “zoom” or “camera”.</key>
@@ -4752,6 +4788,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Rien n’a été enregistré — l’écran n’a envoyé aucune image. Réessayez.</string>
 	<key>Notification</key>
 	<string>Notification</string>
+	<key>Now playing</key>
+	<string>En cours</string>
 	<key>Nudge the area (with ⇧: 10 points)</key>
 	<string>Décaler la zone (avec ⇧ : 10 points)</string>
 	<key>Nudge the selected mark (with ⇧: 10 points)</key>
@@ -4944,6 +4982,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Ouvrir une vidéo</string>
 	<key>Opening, saving, copying &amp; undo</key>
 	<string>Ouvrir, enregistrer, copier et annuler</string>
+	<key>Opening…</key>
+	<string>Ouverture…</string>
 	<key>Opens its title and length in Style</key>
 	<string>Ouvre son titre et sa durée dans Style</string>
 	<key>Opens its volume, fades, and ducking in Audio</key>
@@ -5918,6 +5958,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Rétablir la suppression de la vidéo de caméra</string>
 	<key>Redo Remove Captions</key>
 	<string>Rétablir la suppression des sous-titres</string>
+	<key>Redo Remove Effect</key>
+	<string>Rétablir Supprimer l’effet</string>
 	<key>Redo Remove Intro Card</key>
 	<string>Rétablir la suppression du carton d’intro</string>
 	<key>Redo Remove Keyframe</key>
@@ -5938,6 +5980,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Rétablir le changement de nom du marqueur</string>
 	<key>Redo Rename Media</key>
 	<string>Rétablir le changement de nom du média</string>
+	<key>Redo Reorder Effects</key>
+	<string>Rétablir Réordonner les effets</string>
 	<key>Redo Replace Camera Video</key>
 	<string>Rétablir le remplacement de la vidéo de caméra</string>
 	<key>Redo Replace Media</key>
@@ -6026,6 +6070,10 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Rétablir l’ajustement de l’audio</string>
 	<key>Redo Trim Clip</key>
 	<string>Rétablir le raccourcissement du clip</string>
+	<key>Redo Turn Effect Off</key>
+	<string>Rétablir Désactiver l’effet</string>
+	<key>Redo Turn Effect On</key>
+	<string>Rétablir Activer l’effet</string>
 	<key>Redo Turn Off Clip</key>
 	<string>Rétablir la désactivation du clip</string>
 	<key>Redo Turn On Clip</key>
@@ -6106,6 +6154,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Supprimer l’arrière-plan ne garde que la personne, détectée sur ce Mac.</string>
 	<key>Remove caption</key>
 	<string>Supprimer le sous-titre</string>
+	<key>Remove effect</key>
+	<string>Supprimer l’effet</string>
 	<key>Remove from favourites</key>
 	<string>Retirer des favoris</string>
 	<key>Remove from this video</key>
@@ -6164,6 +6214,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Rouvrir LF Studios</string>
 	<key>Reopen LF Studios to check for updates</key>
 	<string>Rouvrez LF Studios pour rechercher des mises à jour</string>
+	<key>Reorder effects</key>
+	<string>Réordonner les effets</string>
 	<key>Replace</key>
 	<string>Remplacer</string>
 	<key>Replace Music…</key>
@@ -6536,6 +6588,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Recherchez en haut de chaque onglet ; cliquez sur une étoile pour garder un élément dans Favoris.</string>
 	<key>Search commands</key>
 	<string>Rechercher des commandes</string>
+	<key>Search commands, media, clips, captions and markers (⌘K)</key>
+	<string>Rechercher des commandes, médias, clips, sous-titres et marqueurs (⌘K)</string>
 	<key>Search projects</key>
 	<string>Rechercher des projets</string>
 	<key>Search results</key>
@@ -6576,6 +6630,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Sélectionnez un clip pour Couper le son de ce clip, Fondu d’entrée et Fondu de sortie. Ou sélectionnez un passage avec ⇧ en faisant glisser et choisissez Couper le son de ce passage.</string>
 	<key>Select a clip on the timeline to mute it or fade it in and out.</key>
 	<string>Sélectionnez un clip dans la timeline pour couper son son ou lui appliquer un fondu.</string>
+	<key>Select a clip, a zoom or an annotation to change it here.</key>
+	<string>Sélectionnez un clip, un zoom ou une annotation pour le modifier ici.</string>
 	<key>Select a clip, or ⇧-drag a part, and choose its Speed in the panel on the right.</key>
 	<string>Sélectionnez un clip, ou un passage avec ⇧ en faisant glisser, et choisissez sa Vitesse dans le panneau de droite.</string>
 	<key>Select a compound clip to break it apart</key>
@@ -7976,6 +8032,10 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Inverser</string>
 	<key>Turn clip on or off</key>
 	<string>Activer ou désactiver le clip</string>
+	<key>Turn effect off</key>
+	<string>Désactiver l’effet</string>
+	<key>Turn effect on</key>
+	<string>Activer l’effet</string>
 	<key>Turn it</key>
 	<string>Faire pivoter</string>
 	<key>Turn it on in Settings ▸ General ▸ After Capture ▸ Show the preview after capture.</key>
@@ -8388,6 +8448,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Annuler la suppression de la vidéo de caméra</string>
 	<key>Undo Remove Captions</key>
 	<string>Annuler la suppression des sous-titres</string>
+	<key>Undo Remove Effect</key>
+	<string>Annuler Supprimer l’effet</string>
 	<key>Undo Remove Intro Card</key>
 	<string>Annuler la suppression du carton d’intro</string>
 	<key>Undo Remove Keyframe</key>
@@ -8408,6 +8470,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Annuler le changement de nom du marqueur</string>
 	<key>Undo Rename Media</key>
 	<string>Annuler le changement de nom du média</string>
+	<key>Undo Reorder Effects</key>
+	<string>Annuler Réordonner les effets</string>
 	<key>Undo Replace Camera Video</key>
 	<string>Annuler le remplacement de la vidéo de caméra</string>
 	<key>Undo Replace Media</key>
@@ -8496,6 +8560,10 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Annuler l’ajustement de l’audio</string>
 	<key>Undo Trim Clip</key>
 	<string>Annuler le raccourcissement du clip</string>
+	<key>Undo Turn Effect Off</key>
+	<string>Annuler Désactiver l’effet</string>
+	<key>Undo Turn Effect On</key>
+	<string>Annuler Activer l’effet</string>
 	<key>Undo Turn Off Clip</key>
 	<string>Annuler la désactivation du clip</string>
 	<key>Undo Turn On Clip</key>
@@ -8606,6 +8674,10 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Utilise les déplacements du curseur de texte pendant la saisie.</string>
 	<key>Utility</key>
 	<string>Utilitaires</string>
+	<key>V%lld</key>
+	<string>V%lld</string>
+	<key>V2 · B roll</key>
+	<string>V2 · Plan B</string>
 	<key>VHS</key>
 	<string>VHS</string>
 	<key>Version</key>
@@ -9064,6 +9136,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>exporter</string>
 	<key>follows the cursor</key>
 	<string>suit le pointeur</string>
+	<key>in %@</key>
+	<string>dans %@</string>
 	<key>in step with the recording</key>
 	<string>en même temps que l’enregistrement</string>
 	<key>intro card</key>

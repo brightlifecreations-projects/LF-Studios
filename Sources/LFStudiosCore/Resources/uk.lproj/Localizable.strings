@@ -48,12 +48,16 @@
 	<string>%@ надто важка для цього Mac: буде дуже повільно або не вийде. Спробуйте %@.</string>
 	<key>%@ isn't supported for captions on this Mac. Pick another language.</key>
 	<string>Мова «%@» не підтримується для субтитрів на цьому Mac. Виберіть іншу мову.</string>
+	<key>%@ left</key>
+	<string>лишилося %@</string>
 	<key>%@ long</key>
 	<string>тривалість %@</string>
 	<key>%@ moved from “%@”, which has no key now</key>
 	<string>%1$@ перенесено з «%2$@» — ця команда тепер без клавіші</string>
 	<key>%@ of recording plays in %@.</key>
 	<string>%@ запису відтворюється за %@.</string>
+	<key>%@ on</key>
+	<string>%@: увімк.</string>
 	<key>%@ on every cut</key>
 	<string>%@ на кожній склейці</string>
 	<key>%@ on “%@”</key>
@@ -240,6 +244,8 @@
 	<string>Швидке наближення одразу після склейки: зображення різко наближається, а потім плавно повертається.</string>
 	<key>A report helps fix this. You'll see everything before it's sent, and it never includes your screenshots or recordings.</key>
 	<string>Звіт допоможе це виправити. Ви побачите його повністю перед надсиланням, і він ніколи не містить ваших знімків екрана чи записів.</string>
+	<key>A roll</key>
+	<string>Доріжка A</string>
 	<key>A round magnifier over one spot, while the rest of the video stays in view.</key>
 	<string>Кругла лупа над одним місцем, а решта відео лишається видимою.</string>
 	<key>A second caption track you can show, burn in, or save as subtitles. Translated on this Mac — nothing is uploaded.</key>
@@ -532,6 +538,8 @@
 	<string>Усі функції</string>
 	<key>All files</key>
 	<string>Усі файли</string>
+	<key>All keys (?)</key>
+	<string>Усі клавіші (?)</string>
 	<key>All media</key>
 	<string>Усі медіафайли</string>
 	<key>All of these start off. Every screenshot is still kept in History and Home, and a short notice says so.</key>
@@ -1090,6 +1098,8 @@
 	<string>Скасовано — недороблену папку вилучено</string>
 	<key>Canyon Silk</key>
 	<string>Шовк каньйону</string>
+	<key>CapCut style</key>
+	<string>У стилі CapCut</string>
 	<key>Caption</key>
 	<string>Субтитр</string>
 	<key>Caption animation</key>
@@ -1236,6 +1246,10 @@
 	<string>Змінюйте вигляд позначки до чи після малювання.</string>
 	<key>Change how the pointer looks: macOS classic, White, Outlined, Touch dot, Ring, or your own picture.</key>
 	<string>Змініть вигляд курсора: «Класичний macOS», «Білий», «Контур», «Точка дотику», «Кільце» або власне зображення.</string>
+	<key>Change it in Clip ▸ Adjust</key>
+	<string>Змініть у «Кліп ▸ Корекція»</string>
+	<key>Change it in Clip ▸ Filter</key>
+	<string>Змініть у «Кліп ▸ Фільтр»</string>
 	<key>Change keyboard shortcuts</key>
 	<string>Змінити клавіатурні скорочення</string>
 	<key>Change the editor's keys</key>
@@ -2500,6 +2514,8 @@
 	<string>Перетягніть, щоб зняти  ·  Утримуйте ⇧, коли відпускаєте, щоб спершу налаштувати  ·  Пробіл — перемістити  ·  Esc — скасувати</string>
 	<key>Drag to change how much of the video the camera takes</key>
 	<string>Перетягніть, щоб змінити, яку частину відео займає камера</string>
+	<key>Drag to change the order</key>
+	<string>Перетягніть, щоб змінити порядок</string>
 	<key>Drag to change where this clip ends</key>
 	<string>Перетягніть, щоб змінити кінець кліпу</string>
 	<key>Drag to change where this clip starts</key>
@@ -2536,6 +2552,8 @@
 	<string>Малюйте вибраним інструментом. Скорочення інструментів: V — вибір, A — стрілка, R — прямокутник, T — текст, O — виноска, H — маркер, B — розмиття, P — пікселізація, S — прожектор, C — обрізання.</string>
 	<key>Drawing</key>
 	<string>Малюнок</string>
+	<key>Drawn top to bottom. Drag a card to change the order.</key>
+	<string>Застосовуються згори донизу. Перетягніть картку, щоб змінити порядок.</string>
 	<key>Drop a screenshot straight into an email, a chat, a document, or Finder.</key>
 	<string>Киньте знімок просто в лист, чат, документ або Finder.</string>
 	<key>Dropped on Video clips instead, a video joins the main track at that spot (a picture becomes a 5-second clip).</key>
@@ -2616,6 +2634,8 @@
 	<string>Ефект</string>
 	<key>Effects</key>
 	<string>Ефекти</string>
+	<key>Effects belong to clips above the main track. Select one, or drag an effect from Library ▸ Effects onto the timeline.</key>
+	<string>Ефекти застосовуються до кліпів над основною доріжкою. Виберіть кліп або перетягніть ефект із «Бібліотека ▸ Ефекти» на таймлайн.</string>
 	<key>Elegant</key>
 	<string>Елегантний</string>
 	<key>Ellipse</key>
@@ -3816,6 +3836,8 @@
 	<string>L</string>
 	<key>LF Studios</key>
 	<string>LF Studios</string>
+	<key>LF Studios (new)</key>
+	<string>LF Studios (новий)</string>
 	<key>LF Studios 1.11 and earlier can't open .lfs files: whoever you send one to needs LF Studios 1.12.0 or later.</key>
 	<string>LF Studios 1.11 і давніші версії не відкривають файли .lfs: отримувачу потрібен LF Studios 1.12.0 або новіший.</string>
 	<key>LF Studios Guide</key>
@@ -3954,6 +3976,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Макет</string>
 	<key>Layout also has Screen only and Camera only. The screen and the camera are always both recorded, so you can change your mind later.</key>
 	<string>У «Макеті» є також «Лише екран» і «Тільки камера». Екран і камера завжди записуються обидва, тож можна передумати пізніше.</string>
+	<key>Layout ▸ LF Studios (new) or CapCut style: the new layout has the tools down the left, Search in the middle of the top bar and the keys along the bottom; CapCut style is the editor as it was in 1.16. This Mac remembers your choice.</key>
+	<string>«Макет» ▸ «LF Studios (новий)» або «У стилі CapCut»: у новому макеті інструменти ліворуч, пошук посередині верхньої панелі, а клавіші внизу; стиль CapCut — це редактор як у 1.16. Цей Mac запам’ятовує ваш вибір.</string>
 	<key>Layout ▸ Player First makes the player as big as it gets. Layout ▸ Reset Layout puts every panel back where it starts.</key>
 	<string>Макет ▸ Спершу плеєр робить плеєр якомога більшим. Макет ▸ Скинути макет повертає всі панелі на місце.</string>
 	<key>Layout: how the editor's panels are arranged</key>
@@ -4320,6 +4344,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Більше</string>
 	<key>More caption options</key>
 	<string>Інші параметри субтитрів</string>
+	<key>More for %@</key>
+	<string>Ще для «%@»</string>
 	<key>More recording options</key>
 	<string>Інші параметри запису</string>
 	<key>More tips</key>
@@ -4342,10 +4368,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Перемістити «%@» раніше</string>
 	<key>Move %@ later</key>
 	<string>Перемістити «%@» пізніше</string>
+	<key>Move Down</key>
+	<string>Перемістити вниз</string>
 	<key>Move Earlier</key>
 	<string>Перемістити раніше</string>
 	<key>Move Later</key>
 	<string>Перемістити пізніше</string>
+	<key>Move Up</key>
+	<string>Перемістити вгору</string>
 	<key>Move an annotation to a track</key>
 	<string>Перенести розмітку на доріжку</string>
 	<key>Move earlier</key>
@@ -4490,6 +4520,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Плашка з іменем</string>
 	<key>Natural</key>
 	<string>Природний</string>
+	<key>Nearby</key>
+	<string>Поруч</string>
 	<key>Nebula</key>
 	<string>Туманність</string>
 	<key>Needed for every screenshot and every recording. Without it, LF Studios can only see your wallpaper.</key>
@@ -4616,6 +4648,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Конфліктів немає</string>
 	<key>No cursor data in this video</key>
 	<string>У цьому відео немає даних курсора</string>
+	<key>No effects yet: drag one from Library ▸ Effects onto this clip, or click + on an effect there.</key>
+	<string>Ефектів поки немає: перетягніть ефект із «Бібліотека ▸ Ефекти» на цей кліп або натисніть + біля ефекту там.</string>
 	<key>No face found in the camera video</key>
 	<string>У відео з камери обличчя не знайдено</string>
 	<key>No favourites yet: hover an item and click its star.</key>
@@ -4726,6 +4760,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Не зараз</string>
 	<key>Not set</key>
 	<string>Не задано</string>
+	<key>Nothing at the playhead</key>
+	<string>На покажчику нічого немає</string>
 	<key>Nothing here yet</key>
 	<string>Тут поки порожньо</string>
 	<key>Nothing in the Guide matches your search. Try a shorter word, like “zoom” or “camera”.</key>
@@ -4754,6 +4790,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Нічого не записано — екран не передав жодного зображення. Спробуйте ще раз.</string>
 	<key>Notification</key>
 	<string>Сповіщення</string>
+	<key>Now playing</key>
+	<string>Зараз</string>
 	<key>Nudge the area (with ⇧: 10 points)</key>
 	<string>Зсунути область (із ⇧: на 10 точок)</string>
 	<key>Nudge the selected mark (with ⇧: 10 points)</key>
@@ -4946,6 +4984,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Відкриття відео</string>
 	<key>Opening, saving, copying &amp; undo</key>
 	<string>Відкриття, збереження, копіювання й відміна</string>
+	<key>Opening…</key>
+	<string>Відкриття…</string>
 	<key>Opens its title and length in Style</key>
 	<string>Відкриває назву й тривалість у вкладці «Стиль»</string>
 	<key>Opens its volume, fades, and ducking in Audio</key>
@@ -5920,6 +5960,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторити вилучення відео з камери</string>
 	<key>Redo Remove Captions</key>
 	<string>Повторити вилучення субтитрів</string>
+	<key>Redo Remove Effect</key>
+	<string>Повторити вилучення ефекту</string>
 	<key>Redo Remove Intro Card</key>
 	<string>Повторити вилучення вступної заставки</string>
 	<key>Redo Remove Keyframe</key>
@@ -5940,6 +5982,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторити перейменування маркера</string>
 	<key>Redo Rename Media</key>
 	<string>Повторити перейменування медіа</string>
+	<key>Redo Reorder Effects</key>
+	<string>Повторити зміну порядку ефектів</string>
 	<key>Redo Replace Camera Video</key>
 	<string>Повторити заміну відео з камери</string>
 	<key>Redo Replace Media</key>
@@ -6028,6 +6072,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторити підрізання аудіо</string>
 	<key>Redo Trim Clip</key>
 	<string>Повторити обрізання кліпу</string>
+	<key>Redo Turn Effect Off</key>
+	<string>Повторити вимкнення ефекту</string>
+	<key>Redo Turn Effect On</key>
+	<string>Повторити ввімкнення ефекту</string>
 	<key>Redo Turn Off Clip</key>
 	<string>Повторити вимкнення кліпу</string>
 	<key>Redo Turn On Clip</key>
@@ -6108,6 +6156,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>«Прибрати тло» залишає лише людину, знайдену на цьому Mac.</string>
 	<key>Remove caption</key>
 	<string>Вилучити субтитр</string>
+	<key>Remove effect</key>
+	<string>Вилучити ефект</string>
 	<key>Remove from favourites</key>
 	<string>Вилучити з вибраного</string>
 	<key>Remove from this video</key>
@@ -6166,6 +6216,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Відкрити LF Studios знову</string>
 	<key>Reopen LF Studios to check for updates</key>
 	<string>Відкрийте LF Studios знову, щоб перевірити оновлення</string>
+	<key>Reorder effects</key>
+	<string>Змінити порядок ефектів</string>
 	<key>Replace</key>
 	<string>Замінити</string>
 	<key>Replace Music…</key>
@@ -6538,6 +6590,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Пошук — угорі кожної вкладки; клацніть зірочку, щоб зберегти елемент у «Вибраному».</string>
 	<key>Search commands</key>
 	<string>Шукати команди</string>
+	<key>Search commands, media, clips, captions and markers (⌘K)</key>
+	<string>Пошук команд, медіа, кліпів, субтитрів і маркерів (⌘K)</string>
 	<key>Search projects</key>
 	<string>Шукати проєкти</string>
 	<key>Search results</key>
@@ -6578,6 +6632,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Виберіть кліп, щоб побачити «Вимкнути звук цього кліпу», «Поява» й «Зникнення». Або виділіть частину, перетягнувши з ⇧, і виберіть «Вимкнути звук цієї частини».</string>
 	<key>Select a clip on the timeline to mute it or fade it in and out.</key>
 	<string>Виберіть кліп на шкалі часу, щоб вимкнути його звук або додати плавну появу й зникнення.</string>
+	<key>Select a clip, a zoom or an annotation to change it here.</key>
+	<string>Виберіть кліп, наближення чи позначку, щоб змінити їх тут.</string>
 	<key>Select a clip, or ⇧-drag a part, and choose its Speed in the panel on the right.</key>
 	<string>Виберіть кліп або виділіть частину, перетягнувши з ⇧, і задайте «Швидкість» на панелі праворуч.</string>
 	<key>Select a compound clip to break it apart</key>
@@ -7978,6 +8034,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Розвернути</string>
 	<key>Turn clip on or off</key>
 	<string>Увімкнути або вимкнути кліп</string>
+	<key>Turn effect off</key>
+	<string>Вимкнути ефект</string>
+	<key>Turn effect on</key>
+	<string>Увімкнути ефект</string>
 	<key>Turn it</key>
 	<string>Повернути</string>
 	<key>Turn it on in Settings ▸ General ▸ After Capture ▸ Show the preview after capture.</key>
@@ -8390,6 +8450,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Скасувати вилучення відео з камери</string>
 	<key>Undo Remove Captions</key>
 	<string>Відмінити вилучення субтитрів</string>
+	<key>Undo Remove Effect</key>
+	<string>Скасувати вилучення ефекту</string>
 	<key>Undo Remove Intro Card</key>
 	<string>Відмінити вилучення вступної заставки</string>
 	<key>Undo Remove Keyframe</key>
@@ -8410,6 +8472,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Відмінити перейменування маркера</string>
 	<key>Undo Rename Media</key>
 	<string>Відмінити перейменування медіа</string>
+	<key>Undo Reorder Effects</key>
+	<string>Скасувати зміну порядку ефектів</string>
 	<key>Undo Replace Camera Video</key>
 	<string>Скасувати заміну відео з камери</string>
 	<key>Undo Replace Media</key>
@@ -8498,6 +8562,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Відмінити підрізання аудіо</string>
 	<key>Undo Trim Clip</key>
 	<string>Відмінити обрізання кліпу</string>
+	<key>Undo Turn Effect Off</key>
+	<string>Скасувати вимкнення ефекту</string>
+	<key>Undo Turn Effect On</key>
+	<string>Скасувати ввімкнення ефекту</string>
 	<key>Undo Turn Off Clip</key>
 	<string>Відмінити вимкнення кліпу</string>
 	<key>Undo Turn On Clip</key>
@@ -8608,6 +8676,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Використовує переміщення текстового курсора під час набору.</string>
 	<key>Utility</key>
 	<string>Утиліти</string>
+	<key>V%lld</key>
+	<string>V%lld</string>
+	<key>V2 · B roll</key>
+	<string>V2 · Доріжка B</string>
 	<key>VHS</key>
 	<string>VHS</string>
 	<key>Version</key>
@@ -9066,6 +9138,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>експортувати</string>
 	<key>follows the cursor</key>
 	<string>стежить за курсором</string>
+	<key>in %@</key>
+	<string>через %@</string>
 	<key>in step with the recording</key>
 	<string>одночасно із записом</string>
 	<key>intro card</key>

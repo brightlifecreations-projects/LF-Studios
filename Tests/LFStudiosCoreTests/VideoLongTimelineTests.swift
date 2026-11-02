@@ -71,49 +71,57 @@ final class VideoLongTimelineTests: XCTestCase {
     }
 
     func testZoomKeepsThePlayheadAndThePointerInPlace() async throws {
-        let model = try await T.make(in: directory, T.Options(seconds: 10, pointer: false))
-        model.seek(to: 7)
-        await mount(model)
-        let scroll = try horizontalScrollView()
-        XCTAssertEqual(scroll.contentView.bounds.minX, 0, accuracy: 0.5)
-        // The playhead is 718 pt in; after 4× it stays there on screen.
-        model.zoomTimeline(by: 4)
-        await T.settle(0.3)
-        let playheadX = 18 + 7 * 400.0
-        XCTAssertEqual(scroll.contentView.bounds.minX, playheadX - 718, accuracy: 2, "the playhead stays under your eyes")
+        // Both layouts (1.17.0).
+        try await forEachEditorStyle { _ in
+            let model = try await T.make(in: directory, T.Options(seconds: 10, pointer: false))
+            model.seek(to: 7)
+            await mount(model)
+            let scroll = try horizontalScrollView()
+            XCTAssertEqual(scroll.contentView.bounds.minX, 0, accuracy: 0.5)
+            // The playhead is 718 pt in; after 4× it stays there on screen.
+            model.zoomTimeline(by: 4)
+            await T.settle(0.3)
+            let playheadX = 18 + 7 * 400.0
+            XCTAssertEqual(scroll.contentView.bounds.minX, playheadX - 718, accuracy: 2, "the playhead stays under your eyes")
 
-        // ⌘-scroll or a pinch anchors on the pointer instead: 3 s sits 200
-        // pt into the view and stays there.
-        model.pendingZoomAnchor = (3, 200)
-        model.zoomTimeline(by: 2)
-        await T.settle(0.3)
-        XCTAssertEqual(scroll.contentView.bounds.minX, 18 + 3 * 800 - 200, accuracy: 2, "the moment under the pointer stays put")
+            // ⌘-scroll or a pinch anchors on the pointer instead: 3 s sits 200
+            // pt into the view and stays there.
+            model.pendingZoomAnchor = (3, 200)
+            model.zoomTimeline(by: 2)
+            await T.settle(0.3)
+            XCTAssertEqual(scroll.contentView.bounds.minX, 18 + 3 * 800 - 200, accuracy: 2, "the moment under the pointer stays put")
+    
+        }
     }
 
     func testPlaybackPagesAlongUntilYouScroll() async throws {
-        let model = try await T.make(in: directory, T.Options(seconds: 10, pointer: false))
-        await mount(model)
-        model.zoomTimeline(by: 4)
-        await T.settle(0.3)
-        let scroll = try horizontalScrollView()
-        scroll.contentView.scroll(to: .zero)
-        scroll.reflectScrolledClipView(scroll.contentView)
-        model.seek(to: 2.2)
-        await T.settle(0.2)
-        // The visible strip ends at 2.5 s; playing past it turns the page.
-        model.togglePlay()
-        for _ in 0..<30 where scroll.contentView.bounds.minX < 1 {
-            await T.settle(0.1)
-        }
-        XCTAssertGreaterThan(scroll.contentView.bounds.minX, 500, "the timeline followed the playhead")
+        // Both layouts (1.17.0).
+        try await forEachEditorStyle { _ in
+            let model = try await T.make(in: directory, T.Options(seconds: 10, pointer: false))
+            await mount(model)
+            model.zoomTimeline(by: 4)
+            await T.settle(0.3)
+            let scroll = try horizontalScrollView()
+            scroll.contentView.scroll(to: .zero)
+            scroll.reflectScrolledClipView(scroll.contentView)
+            model.seek(to: 2.2)
+            await T.settle(0.2)
+            // The visible strip ends at 2.5 s; playing past it turns the page.
+            model.togglePlay()
+            for _ in 0..<30 where scroll.contentView.bounds.minX < 1 {
+                await T.settle(0.1)
+            }
+            XCTAssertGreaterThan(scroll.contentView.bounds.minX, 500, "the timeline followed the playhead")
 
-        // Scrolling by hand stops the following.
-        NotificationCenter.default.post(name: NSScrollView.willStartLiveScrollNotification, object: scroll)
-        scroll.contentView.scroll(to: NSPoint(x: 100, y: scroll.contentView.bounds.minY))
-        scroll.reflectScrolledClipView(scroll.contentView)
-        await T.settle(1.2)
-        XCTAssertEqual(scroll.contentView.bounds.minX, 100, accuracy: 1, "left where you put it")
-        model.pause()
+            // Scrolling by hand stops the following.
+            NotificationCenter.default.post(name: NSScrollView.willStartLiveScrollNotification, object: scroll)
+            scroll.contentView.scroll(to: NSPoint(x: 100, y: scroll.contentView.bounds.minY))
+            scroll.reflectScrolledClipView(scroll.contentView)
+            await T.settle(1.2)
+            XCTAssertEqual(scroll.contentView.bounds.minX, 100, accuracy: 1, "left where you put it")
+            model.pause()
+    
+        }
     }
 
     func testRestoreMarkersGroupWhenTheyCrowd() async throws {

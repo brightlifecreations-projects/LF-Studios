@@ -48,12 +48,16 @@
 	<string>%@ ist zu viel für diesen Mac und wäre sehr langsam oder würde scheitern. Versuch stattdessen %@.</string>
 	<key>%@ isn't supported for captions on this Mac. Pick another language.</key>
 	<string>%@ wird auf diesem Mac für Untertitel nicht unterstützt. Wähle eine andere Sprache.</string>
+	<key>%@ left</key>
+	<string>noch %@</string>
 	<key>%@ long</key>
 	<string>%@ lang</string>
 	<key>%@ moved from “%@”, which has no key now</key>
 	<string>%@ wurde von „%@“ verschoben, das jetzt keine Taste mehr hat</string>
 	<key>%@ of recording plays in %@.</key>
 	<string>%@ der Aufnahme laufen in %@ ab.</string>
+	<key>%@ on</key>
+	<string>%@ an</string>
 	<key>%@ on every cut</key>
 	<string>%@ an jedem Schnitt</string>
 	<key>%@ on “%@”</key>
@@ -242,6 +246,8 @@
 	<string>Ein kurzer Zoom direkt nach einem Schnitt: Das Bild springt näher heran und gleitet dann zurück.</string>
 	<key>A report helps fix this. You'll see everything before it's sent, and it never includes your screenshots or recordings.</key>
 	<string>Ein Bericht hilft, das zu beheben. Du siehst alles, bevor es gesendet wird, und er enthält nie deine Bildschirmfotos oder Aufnahmen.</string>
+	<key>A roll</key>
+	<string>A-Roll</string>
 	<key>A round magnifier over one spot, while the rest of the video stays in view.</key>
 	<string>Eine runde Lupe über einer Stelle, während der Rest des Videos sichtbar bleibt.</string>
 	<key>A second caption track you can show, burn in, or save as subtitles. Translated on this Mac — nothing is uploaded.</key>
@@ -536,6 +542,8 @@
 	<string>Alle Funktionen</string>
 	<key>All files</key>
 	<string>Alle Dateien</string>
+	<key>All keys (?)</key>
+	<string>Alle Tasten (?)</string>
 	<key>All media</key>
 	<string>Alle Medien</string>
 	<key>All of these start off. Every screenshot is still kept in History and Home, and a short notice says so.</key>
@@ -1094,6 +1102,8 @@
 	<string>Abgebrochen – der halb fertige Ordner wurde entfernt</string>
 	<key>Canyon Silk</key>
 	<string>Canyonseide</string>
+	<key>CapCut style</key>
+	<string>CapCut-Stil</string>
 	<key>Caption</key>
 	<string>Untertitel</string>
 	<key>Caption animation</key>
@@ -1240,6 +1250,10 @@
 	<string>Ändere, wie eine Beschriftung aussieht – vor oder nach dem Zeichnen.</string>
 	<key>Change how the pointer looks: macOS classic, White, Outlined, Touch dot, Ring, or your own picture.</key>
 	<string>Ändere, wie der Zeiger aussieht: macOS klassisch, Weiß, Umriss, Touch-Punkt, Ring oder dein eigenes Bild.</string>
+	<key>Change it in Clip ▸ Adjust</key>
+	<string>Ändern unter Clip ▸ Anpassen</string>
+	<key>Change it in Clip ▸ Filter</key>
+	<string>Ändern unter Clip ▸ Filter</string>
 	<key>Change keyboard shortcuts</key>
 	<string>Tastaturkurzbefehle ändern</string>
 	<key>Change the editor's keys</key>
@@ -2504,6 +2518,8 @@
 	<string>Ziehen zum Aufnehmen  ·  Beim Loslassen ⇧ halten, um erst anzupassen  ·  Leertaste verschiebt  ·  Esc bricht ab</string>
 	<key>Drag to change how much of the video the camera takes</key>
 	<string>Ziehen, um zu ändern, wie viel vom Video die Kamera einnimmt</string>
+	<key>Drag to change the order</key>
+	<string>Ziehen, um die Reihenfolge zu ändern</string>
 	<key>Drag to change where this clip ends</key>
 	<string>Ziehen, um das Ende dieses Clips zu ändern</string>
 	<key>Drag to change where this clip starts</key>
@@ -2540,6 +2556,8 @@
 	<string>Mit dem ausgewählten Werkzeug zeichnen. Kurzbefehle: V Auswählen, A Pfeil, R Rechteck, T Text, O Sprechblase, H Textmarker, B Weichzeichnen, P Verpixeln, S Fokus, C Beschneiden.</string>
 	<key>Drawing</key>
 	<string>Zeichnung</string>
+	<key>Drawn top to bottom. Drag a card to change the order.</key>
+	<string>Von oben nach unten angewendet. Ziehe eine Karte, um die Reihenfolge zu ändern.</string>
 	<key>Drop a screenshot straight into an email, a chat, a document, or Finder.</key>
 	<string>Leg ein Bildschirmfoto direkt in einer E-Mail, einem Chat, einem Dokument oder im Finder ab.</string>
 	<key>Dropped on Video clips instead, a video joins the main track at that spot (a picture becomes a 5-second clip).</key>
@@ -2620,6 +2638,8 @@
 	<string>Effekt</string>
 	<key>Effects</key>
 	<string>Effekte</string>
+	<key>Effects belong to clips above the main track. Select one, or drag an effect from Library ▸ Effects onto the timeline.</key>
+	<string>Effekte gehören zu Clips über der Hauptspur. Wähle einen aus oder ziehe einen Effekt aus Bibliothek ▸ Effekte auf die Zeitleiste.</string>
 	<key>Elegant</key>
 	<string>Elegant</string>
 	<key>Ellipse</key>
@@ -3820,6 +3840,8 @@
 	<string>L</string>
 	<key>LF Studios</key>
 	<string>LF Studios</string>
+	<key>LF Studios (new)</key>
+	<string>LF Studios (neu)</string>
 	<key>LF Studios 1.11 and earlier can't open .lfs files: whoever you send one to needs LF Studios 1.12.0 or later.</key>
 	<string>LF Studios 1.11 und früher können .lfs-Dateien nicht öffnen: Wer eine von dir bekommt, braucht LF Studios 1.12.0 oder neuer.</string>
 	<key>LF Studios Guide</key>
@@ -3958,6 +3980,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Layout</string>
 	<key>Layout also has Screen only and Camera only. The screen and the camera are always both recorded, so you can change your mind later.</key>
 	<string>Unter „Layout“ gibt es auch „Nur Bildschirm“ und „Nur Kamera“. Bildschirm und Kamera werden immer beide aufgenommen, du kannst es dir also später anders überlegen.</string>
+	<key>Layout ▸ LF Studios (new) or CapCut style: the new layout has the tools down the left, Search in the middle of the top bar and the keys along the bottom; CapCut style is the editor as it was in 1.16. This Mac remembers your choice.</key>
+	<string>Layout ▸ LF Studios (neu) oder CapCut-Stil: Das neue Layout hat die Werkzeuge links, die Suche oben in der Mitte und die Tasten unten; der CapCut-Stil ist der Editor wie in 1.16. Dieser Mac merkt sich deine Wahl.</string>
 	<key>Layout ▸ Player First makes the player as big as it gets. Layout ▸ Reset Layout puts every panel back where it starts.</key>
 	<string>Layout ▸ Player zuerst macht den Player so groß wie möglich. Layout ▸ Layout zurücksetzen stellt alle Panels wieder her.</string>
 	<key>Layout: how the editor's panels are arranged</key>
@@ -4324,6 +4348,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Mehr</string>
 	<key>More caption options</key>
 	<string>Weitere Untertiteloptionen</string>
+	<key>More for %@</key>
+	<string>Mehr für %@</string>
 	<key>More recording options</key>
 	<string>Weitere Aufzeichnungsoptionen</string>
 	<key>More tips</key>
@@ -4346,10 +4372,14 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>%@ nach vorn verschieben</string>
 	<key>Move %@ later</key>
 	<string>%@ nach hinten verschieben</string>
+	<key>Move Down</key>
+	<string>Nach unten</string>
 	<key>Move Earlier</key>
 	<string>Nach vorn verschieben</string>
 	<key>Move Later</key>
 	<string>Nach hinten verschieben</string>
+	<key>Move Up</key>
+	<string>Nach oben</string>
 	<key>Move an annotation to a track</key>
 	<string>Anmerkung auf eine Spur bewegen</string>
 	<key>Move earlier</key>
@@ -4494,6 +4524,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Namensbalken</string>
 	<key>Natural</key>
 	<string>Natürlich</string>
+	<key>Nearby</key>
+	<string>In der Nähe</string>
 	<key>Nebula</key>
 	<string>Nebel</string>
 	<key>Needed for every screenshot and every recording. Without it, LF Studios can only see your wallpaper.</key>
@@ -4620,6 +4652,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Kein Konflikt</string>
 	<key>No cursor data in this video</key>
 	<string>Keine Zeigerdaten in diesem Video</string>
+	<key>No effects yet: drag one from Library ▸ Effects onto this clip, or click + on an effect there.</key>
+	<string>Noch keine Effekte: Ziehe einen aus Bibliothek ▸ Effekte auf diesen Clip oder klicke dort bei einem Effekt auf +.</string>
 	<key>No face found in the camera video</key>
 	<string>Im Kameravideo wurde kein Gesicht gefunden</string>
 	<key>No favourites yet: hover an item and click its star.</key>
@@ -4730,6 +4764,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Nicht jetzt</string>
 	<key>Not set</key>
 	<string>Nicht belegt</string>
+	<key>Nothing at the playhead</key>
+	<string>Nichts an der Abspielposition</string>
 	<key>Nothing here yet</key>
 	<string>Hier ist noch nichts</string>
 	<key>Nothing in the Guide matches your search. Try a shorter word, like “zoom” or “camera”.</key>
@@ -4758,6 +4794,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Es wurde nichts aufgezeichnet – der Bildschirm hat kein Bild geliefert. Versuche es erneut.</string>
 	<key>Notification</key>
 	<string>Mitteilung</string>
+	<key>Now playing</key>
+	<string>Läuft gerade</string>
 	<key>Nudge the area (with ⇧: 10 points)</key>
 	<string>Bereich verschieben (mit ⇧: 10 Punkte)</string>
 	<key>Nudge the selected mark (with ⇧: 10 points)</key>
@@ -4950,6 +4988,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Ein Video öffnen</string>
 	<key>Opening, saving, copying &amp; undo</key>
 	<string>Öffnen, sichern, kopieren &amp; widerrufen</string>
+	<key>Opening…</key>
+	<string>Wird geöffnet …</string>
 	<key>Opens its title and length in Style</key>
 	<string>Öffnet Titel und Länge in „Stil“</string>
 	<key>Opens its volume, fades, and ducking in Audio</key>
@@ -5924,6 +5964,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Kameravideo entfernen wiederholen</string>
 	<key>Redo Remove Captions</key>
 	<string>Entfernen der Untertitel wiederholen</string>
+	<key>Redo Remove Effect</key>
+	<string>„Effekt entfernen“ wiederholen</string>
 	<key>Redo Remove Intro Card</key>
 	<string>Entfernen der Intro-Karte wiederholen</string>
 	<key>Redo Remove Keyframe</key>
@@ -5944,6 +5986,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Umbenennen des Markers wiederholen</string>
 	<key>Redo Rename Media</key>
 	<string>Umbenennen der Medien wiederholen</string>
+	<key>Redo Reorder Effects</key>
+	<string>„Effekte neu ordnen“ wiederholen</string>
 	<key>Redo Replace Camera Video</key>
 	<string>Kameravideo ersetzen wiederholen</string>
 	<key>Redo Replace Media</key>
@@ -6032,6 +6076,10 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Trimmen des Audios wiederholen</string>
 	<key>Redo Trim Clip</key>
 	<string>Kürzen des Clips wiederholen</string>
+	<key>Redo Turn Effect Off</key>
+	<string>„Effekt ausschalten“ wiederholen</string>
+	<key>Redo Turn Effect On</key>
+	<string>„Effekt einschalten“ wiederholen</string>
 	<key>Redo Turn Off Clip</key>
 	<string>Ausschalten des Clips wiederholen</string>
 	<key>Redo Turn On Clip</key>
@@ -6112,6 +6160,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>„Hintergrund entfernen“ behält nur die Person, erkannt auf diesem Mac.</string>
 	<key>Remove caption</key>
 	<string>Untertitel entfernen</string>
+	<key>Remove effect</key>
+	<string>Effekt entfernen</string>
 	<key>Remove from favourites</key>
 	<string>Aus Favoriten entfernen</string>
 	<key>Remove from this video</key>
@@ -6170,6 +6220,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>LF Studios neu öffnen</string>
 	<key>Reopen LF Studios to check for updates</key>
 	<string>LF Studios neu öffnen, um nach Updates zu suchen</string>
+	<key>Reorder effects</key>
+	<string>Effekte neu ordnen</string>
 	<key>Replace</key>
 	<string>Ersetzen</string>
 	<key>Replace Music…</key>
@@ -6542,6 +6594,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Oben in jedem Tab kannst du suchen; klicke auf einen Stern, um ein Objekt in den Favoriten zu behalten.</string>
 	<key>Search commands</key>
 	<string>Befehle suchen</string>
+	<key>Search commands, media, clips, captions and markers (⌘K)</key>
+	<string>Befehle, Medien, Clips, Untertitel und Marker durchsuchen (⌘K)</string>
 	<key>Search projects</key>
 	<string>Projekte durchsuchen</string>
 	<key>Search results</key>
@@ -6582,6 +6636,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Wähle einen Clip aus für „Diesen Clip stummschalten“, „Einblenden“ und „Ausblenden“. Oder zieh mit ⇧ über einen Abschnitt und wähle „Diesen Abschnitt stummschalten“.</string>
 	<key>Select a clip on the timeline to mute it or fade it in and out.</key>
 	<string>Wähle einen Clip in der Zeitleiste aus, um ihn stummzuschalten oder ein- und auszublenden.</string>
+	<key>Select a clip, a zoom or an annotation to change it here.</key>
+	<string>Wähle einen Clip, einen Zoom oder eine Anmerkung aus, um sie hier zu ändern.</string>
 	<key>Select a clip, or ⇧-drag a part, and choose its Speed in the panel on the right.</key>
 	<string>Wähle einen Clip aus oder zieh mit ⇧ über einen Abschnitt und wähle im Panel rechts sein Tempo.</string>
 	<key>Select a compound clip to break it apart</key>
@@ -7982,6 +8038,10 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Umdrehen</string>
 	<key>Turn clip on or off</key>
 	<string>Clip ein- oder ausschalten</string>
+	<key>Turn effect off</key>
+	<string>Effekt ausschalten</string>
+	<key>Turn effect on</key>
+	<string>Effekt einschalten</string>
 	<key>Turn it</key>
 	<string>Drehen</string>
 	<key>Turn it on in Settings ▸ General ▸ After Capture ▸ Show the preview after capture.</key>
@@ -8394,6 +8454,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Kameravideo entfernen widerrufen</string>
 	<key>Undo Remove Captions</key>
 	<string>Entfernen der Untertitel widerrufen</string>
+	<key>Undo Remove Effect</key>
+	<string>„Effekt entfernen“ widerrufen</string>
 	<key>Undo Remove Intro Card</key>
 	<string>Entfernen der Intro-Karte widerrufen</string>
 	<key>Undo Remove Keyframe</key>
@@ -8414,6 +8476,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Umbenennen des Markers widerrufen</string>
 	<key>Undo Rename Media</key>
 	<string>Umbenennen der Medien widerrufen</string>
+	<key>Undo Reorder Effects</key>
+	<string>„Effekte neu ordnen“ widerrufen</string>
 	<key>Undo Replace Camera Video</key>
 	<string>Kameravideo ersetzen widerrufen</string>
 	<key>Undo Replace Media</key>
@@ -8502,6 +8566,10 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Trimmen des Audios widerrufen</string>
 	<key>Undo Trim Clip</key>
 	<string>Kürzen des Clips widerrufen</string>
+	<key>Undo Turn Effect Off</key>
+	<string>„Effekt ausschalten“ widerrufen</string>
+	<key>Undo Turn Effect On</key>
+	<string>„Effekt einschalten“ widerrufen</string>
 	<key>Undo Turn Off Clip</key>
 	<string>Ausschalten des Clips widerrufen</string>
 	<key>Undo Turn On Clip</key>
@@ -8612,6 +8680,10 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Nutzt, wohin sich der Textcursor beim Tippen bewegt hat.</string>
 	<key>Utility</key>
 	<string>Extras</string>
+	<key>V%lld</key>
+	<string>V%lld</string>
+	<key>V2 · B roll</key>
+	<string>V2 · B-Roll</string>
 	<key>VHS</key>
 	<string>VHS</string>
 	<key>Version</key>
@@ -9070,6 +9142,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>exportieren</string>
 	<key>follows the cursor</key>
 	<string>folgt dem Zeiger</string>
+	<key>in %@</key>
+	<string>in %@</string>
 	<key>in step with the recording</key>
 	<string>gleichzeitig mit der Aufnahme</string>
 	<key>intro card</key>

@@ -94,69 +94,85 @@ final class VideoTimelineInteractionTests: XCTestCase {
     }
 
     func testZoomBlockMovesOneToOne() async throws {
-        let model = try await makeModel()
-        model.mutate { $0.zoomRegions = [VideoZoomRegion(start: 2, end: 4, scale: 2, followsCursor: false)] }
-        await mount(model)
-        // Zoom track: block inset 2, 30 tall.
-        let y = y(.zooms, in: model, 2 + 15)
-        await drag(from: CGPoint(x: x(2.8), y: y), to: CGPoint(x: x(4.3), y: y))
-        let region = try XCTUnwrap(model.project.zoomRegions.first)
-        XCTAssertEqual(region.start, 3.5, accuracy: 0.05, "moved 150 pt = 1.5 s")
-        XCTAssertEqual(region.end, 5.5, accuracy: 0.05)
+        // Both layouts (1.17.0).
+        try await forEachEditorStyle { _ in
+            let model = try await makeModel()
+            model.mutate { $0.zoomRegions = [VideoZoomRegion(start: 2, end: 4, scale: 2, followsCursor: false)] }
+            await mount(model)
+            // Zoom track: block inset 2, 30 tall.
+            let y = y(.zooms, in: model, 2 + 15)
+            await drag(from: CGPoint(x: x(2.8), y: y), to: CGPoint(x: x(4.3), y: y))
+            let region = try XCTUnwrap(model.project.zoomRegions.first)
+            XCTAssertEqual(region.start, 3.5, accuracy: 0.05, "moved 150 pt = 1.5 s")
+            XCTAssertEqual(region.end, 5.5, accuracy: 0.05)
 
-        // Trailing edge resize.
-        await drag(from: CGPoint(x: x(5.5) - 4, y: y), to: CGPoint(x: x(6.5) - 4, y: y))
-        let resized = try XCTUnwrap(model.project.zoomRegions.first)
-        XCTAssertEqual(resized.start, 3.5, accuracy: 0.05)
-        XCTAssertEqual(resized.end, 6.5, accuracy: 0.05)
+            // Trailing edge resize.
+            await drag(from: CGPoint(x: x(5.5) - 4, y: y), to: CGPoint(x: x(6.5) - 4, y: y))
+            let resized = try XCTUnwrap(model.project.zoomRegions.first)
+            XCTAssertEqual(resized.start, 3.5, accuracy: 0.05)
+            XCTAssertEqual(resized.end, 6.5, accuracy: 0.05)
+    
+        }
     }
 
     func testAnnotationMovesOneToOneAndStacksUp() async throws {
-        let model = try await makeModel()
-        model.mutate { project in
-            project.overlayEffects = [VideoDemoOverlayEffect(kind: .text, time: 5, duration: 2, x: 0.5, y: 0.5, width: 0.4, height: 0.1, text: "Hi")]
+        // Both layouts (1.17.0).
+        try await forEachEditorStyle { _ in
+            let model = try await makeModel()
+            model.mutate { project in
+                project.overlayEffects = [VideoDemoOverlayEffect(kind: .text, time: 5, duration: 2, x: 0.5, y: 0.5, width: 0.4, height: 0.1, text: "Hi")]
+            }
+            await mount(model)
+            // The one annotation lane, on its row.
+            let y = y(.annotations, in: model, 13)
+            await drag(from: CGPoint(x: x(6), y: y), to: CGPoint(x: x(5), y: y))
+            let moved = try XCTUnwrap(model.project.overlayEffects.first)
+            XCTAssertEqual(moved.time, 4, accuracy: 0.05, "moved 100 pt left = 1 s earlier")
+            XCTAssertEqual(moved.duration, 2, accuracy: 0.05)
+    
         }
-        await mount(model)
-        // The one annotation lane, on its row.
-        let y = y(.annotations, in: model, 13)
-        await drag(from: CGPoint(x: x(6), y: y), to: CGPoint(x: x(5), y: y))
-        let moved = try XCTUnwrap(model.project.overlayEffects.first)
-        XCTAssertEqual(moved.time, 4, accuracy: 0.05, "moved 100 pt left = 1 s earlier")
-        XCTAssertEqual(moved.duration, 2, accuracy: 0.05)
     }
 
     func testCaptionChipMovesAndResizes() async throws {
-        let model = try await makeModel()
-        model.mutate { project in
-            project.captions = [VideoCaptionLine(start: 3, end: 5, text: "Hello there", words: [
-                VideoCaptionWord(text: "Hello", start: 3.1, end: 3.5),
-                VideoCaptionWord(text: "there", start: 3.6, end: 4.2),
-            ])]
-        }
-        await mount(model)
-        let y = y(.captions, in: model, 11)
-        await drag(from: CGPoint(x: x(4), y: y), to: CGPoint(x: x(4.5), y: y))
-        let line = try XCTUnwrap(model.project.captions.first)
-        XCTAssertEqual(line.start, 3.5, accuracy: 0.05)
-        XCTAssertEqual(line.end, 5.5, accuracy: 0.05)
-        XCTAssertEqual(line.words.first?.start ?? 0, 3.6, accuracy: 0.05, "words travel with the line")
+        // Both layouts (1.17.0).
+        try await forEachEditorStyle { _ in
+            let model = try await makeModel()
+            model.mutate { project in
+                project.captions = [VideoCaptionLine(start: 3, end: 5, text: "Hello there", words: [
+                    VideoCaptionWord(text: "Hello", start: 3.1, end: 3.5),
+                    VideoCaptionWord(text: "there", start: 3.6, end: 4.2),
+                ])]
+            }
+            await mount(model)
+            let y = y(.captions, in: model, 11)
+            await drag(from: CGPoint(x: x(4), y: y), to: CGPoint(x: x(4.5), y: y))
+            let line = try XCTUnwrap(model.project.captions.first)
+            XCTAssertEqual(line.start, 3.5, accuracy: 0.05)
+            XCTAssertEqual(line.end, 5.5, accuracy: 0.05)
+            XCTAssertEqual(line.words.first?.start ?? 0, 3.6, accuracy: 0.05, "words travel with the line")
 
-        // Leading edge: start later, end stays.
-        await drag(from: CGPoint(x: x(3.5) + 4, y: y), to: CGPoint(x: x(4.0) + 4, y: y))
-        let trimmed = try XCTUnwrap(model.project.captions.first)
-        XCTAssertEqual(trimmed.start, 4.0, accuracy: 0.05)
-        XCTAssertEqual(trimmed.end, 5.5, accuracy: 0.05)
+            // Leading edge: start later, end stays.
+            await drag(from: CGPoint(x: x(3.5) + 4, y: y), to: CGPoint(x: x(4.0) + 4, y: y))
+            let trimmed = try XCTUnwrap(model.project.captions.first)
+            XCTAssertEqual(trimmed.start, 4.0, accuracy: 0.05)
+            XCTAssertEqual(trimmed.end, 5.5, accuracy: 0.05)
+    
+        }
     }
 
     func testClipEndTrimTracksThePointer() async throws {
-        let model = try await makeModel()
-        await mount(model)
-        // The recording's own track, its middle.
-        let y = y(.clips, in: model, 33)
-        await drag(from: CGPoint(x: x(10) - 5, y: y), to: CGPoint(x: x(8) - 5, y: y), steps: 16)
-        let clip = try XCTUnwrap(model.project.timelineClips.first)
-        XCTAssertEqual(clip.sourceEnd, 8, accuracy: 0.06, "200 pt left = 2 s trimmed, even as the timeline shrinks")
-        XCTAssertNil(model.layoutDurationLock)
+        // Both layouts (1.17.0).
+        try await forEachEditorStyle { _ in
+            let model = try await makeModel()
+            await mount(model)
+            // The recording's own track, its middle.
+            let y = y(.clips, in: model, 33)
+            await drag(from: CGPoint(x: x(10) - 5, y: y), to: CGPoint(x: x(8) - 5, y: y), steps: 16)
+            let clip = try XCTUnwrap(model.project.timelineClips.first)
+            XCTAssertEqual(clip.sourceEnd, 8, accuracy: 0.06, "200 pt left = 2 s trimmed, even as the timeline shrinks")
+            XCTAssertNil(model.layoutDurationLock)
+    
+        }
     }
 
 
@@ -182,40 +198,44 @@ final class VideoTimelineInteractionTests: XCTestCase {
     }
 
     func testZoomedTimelineShowsItsScrollBarUnderThePointer() async throws {
-        // Issue #28: overlay scroll bars only showed while scrolling, so a
-        // zoomed-in timeline gave no sign that it scrolls.
-        try XCTSkipIf(CGDisplayIsAsleep(CGMainDisplayID()) != 0, "The display is asleep")
-        try XCTSkipIf(NSScroller.preferredScrollerStyle == .legacy, "Scroll bars are always shown on this Mac")
-        let model = try await makeModel()
-        await mount(model)
-        model.timelineZoom = 3
-        await settle(0.3)
-        guard (try? await scrollBarPixels()) != nil else { throw XCTSkip("No screen capture permission") }
-        // The real pointer resting on this window would keep them up.
-        try XCTSkipIf(window?.frame.contains(NSEvent.mouseLocation) == true, "The pointer is over the test window")
-        let afterZoom = try await scrollBarPixels()
-        XCTAssertGreaterThan(afterZoom, 40, "zooming in shows the scroll bar once")
-        await settle(2.5)
-        let faded = try await scrollBarPixels()
-        XCTAssertLessThan(faded, 10, "it fades when nothing happens")
+        // Both layouts (1.17.0).
+        try await forEachEditorStyle { _ in
+            // Issue #28: overlay scroll bars only showed while scrolling, so a
+            // zoomed-in timeline gave no sign that it scrolls.
+            try XCTSkipIf(CGDisplayIsAsleep(CGMainDisplayID()) != 0, "The display is asleep")
+            try XCTSkipIf(NSScroller.preferredScrollerStyle == .legacy, "Scroll bars are always shown on this Mac")
+            let model = try await makeModel()
+            await mount(model)
+            model.timelineZoom = 3
+            await settle(0.3)
+            guard (try? await scrollBarPixels()) != nil else { throw XCTSkip("No screen capture permission") }
+            // The real pointer resting on this window would keep them up.
+            try XCTSkipIf(window?.frame.contains(NSEvent.mouseLocation) == true, "The pointer is over the test window")
+            let afterZoom = try await scrollBarPixels()
+            XCTAssertGreaterThan(afterZoom, 40, "zooming in shows the scroll bar once")
+            await settle(2.5)
+            let faded = try await scrollBarPixels()
+            XCTAssertLessThan(faded, 10, "it fades when nothing happens")
 
-        // The pointer over the timeline calls this (synthesized moves can't
-        // reach hover tracking, which follows the real cursor). It stays up
-        // while the pointer rests there, and fades once it leaves.
-        let horizontal = try XCTUnwrap(scrollViews(in: try XCTUnwrap(window?.contentView)).first { ($0.documentView?.frame.width ?? 0) > $0.contentSize.width + 100 })
-        let scroller = VideoTimelineScroller()
-        scroller.attach(horizontal, model: model)
-        scroller.pointerIsOver(true)
-        await settle(0.25)
-        let hovered = try await scrollBarPixels()
-        XCTAssertGreaterThan(hovered, 40, "the pointer over the timeline shows it")
-        await settle(2.5)
-        let resting = try await scrollBarPixels()
-        XCTAssertGreaterThan(resting, 40, "it stays while the pointer rests there")
-        scroller.pointerIsOver(false)
-        await settle(2.5)
-        let left = try await scrollBarPixels()
-        XCTAssertLessThan(left, 10, "it fades once the pointer leaves")
+            // The pointer over the timeline calls this (synthesized moves can't
+            // reach hover tracking, which follows the real cursor). It stays up
+            // while the pointer rests there, and fades once it leaves.
+            let horizontal = try XCTUnwrap(scrollViews(in: try XCTUnwrap(window?.contentView)).first { ($0.documentView?.frame.width ?? 0) > $0.contentSize.width + 100 })
+            let scroller = VideoTimelineScroller()
+            scroller.attach(horizontal, model: model)
+            scroller.pointerIsOver(true)
+            await settle(0.25)
+            let hovered = try await scrollBarPixels()
+            XCTAssertGreaterThan(hovered, 40, "the pointer over the timeline shows it")
+            await settle(2.5)
+            let resting = try await scrollBarPixels()
+            XCTAssertGreaterThan(resting, 40, "it stays while the pointer rests there")
+            scroller.pointerIsOver(false)
+            await settle(2.5)
+            let left = try await scrollBarPixels()
+            XCTAssertLessThan(left, 10, "it fades once the pointer leaves")
+    
+        }
     }
 
     private func scrollViews(in view: NSView) -> [NSScrollView] {
@@ -234,44 +254,48 @@ final class VideoTimelineInteractionTests: XCTestCase {
     }
 
     func testLanesThatDontFitScrollVertically() async throws {
-        // Scroll views only move while a display is awake (locked, asleep
-        // Macs skip this).
-        try XCTSkipIf(CGDisplayIsAsleep(CGMainDisplayID()) != 0, "The display is asleep")
-        let model = try await makeModel()
-        // Eight overlapping annotations stack into eight lanes: taller than
-        // the timeline, so the clip track must be reached by scrolling.
-        for index in 0..<8 {
-            model.seek(to: 1 + Double(index) * 0.3)
-            model.addOverlay(.highlight)
-        }
-        model.selection = .none
-        XCTAssertGreaterThan(VideoTimelineMetrics.contentHeight(model.project), Self.size.height - Self.surfaceTop + 40)
-        await mount(model)
-        let views = scrollViews(in: try XCTUnwrap(window?.contentView))
-        let vertical = try XCTUnwrap(views.first { ($0.documentView?.frame.height ?? 0) > $0.contentSize.height + 20 }, "an outer vertical scroller")
-        // It opens at the top: the zooms and the recording come first (1.11.0).
-        let visible = vertical.contentView.bounds
-        // Either way (the Mac's scroll direction setting flips it).
-        let before = visible.origin.y
-        scroll(dy: 60, at: CGPoint(x: 500, y: 200))
-        await settle(0.4)
-        if abs(vertical.contentView.bounds.origin.y - before) < 1 {
-            scroll(dy: -60, at: CGPoint(x: 500, y: 200))
+        // Both layouts (1.17.0).
+        try await forEachEditorStyle { _ in
+            // Scroll views only move while a display is awake (locked, asleep
+            // Macs skip this).
+            try XCTSkipIf(CGDisplayIsAsleep(CGMainDisplayID()) != 0, "The display is asleep")
+            let model = try await makeModel()
+            // Eight overlapping annotations stack into eight lanes: taller than
+            // the timeline, so the clip track must be reached by scrolling.
+            for index in 0..<8 {
+                model.seek(to: 1 + Double(index) * 0.3)
+                model.addOverlay(.highlight)
+            }
+            model.selection = .none
+            XCTAssertGreaterThan(VideoTimelineMetrics.contentHeight(model.project), Self.size.height - Self.surfaceTop + 40)
+            await mount(model)
+            let views = scrollViews(in: try XCTUnwrap(window?.contentView))
+            let vertical = try XCTUnwrap(views.first { ($0.documentView?.frame.height ?? 0) > $0.contentSize.height + 20 }, "an outer vertical scroller")
+            // It opens at the top: the zooms and the recording come first (1.11.0).
+            let visible = vertical.contentView.bounds
+            // Either way (the Mac's scroll direction setting flips it).
+            let before = visible.origin.y
+            scroll(dy: 60, at: CGPoint(x: 500, y: 200))
             await settle(0.4)
-        }
-        XCTAssertGreaterThan(abs(vertical.contentView.bounds.origin.y - before), 20, "vertical scrolling over the lanes moves them")
+            if abs(vertical.contentView.bounds.origin.y - before) < 1 {
+                scroll(dy: -60, at: CGPoint(x: 500, y: 200))
+                await settle(0.4)
+            }
+            XCTAssertGreaterThan(abs(vertical.contentView.bounds.origin.y - before), 20, "vertical scrolling over the lanes moves them")
 
-        // Zoomed in, sideways scrolling still pans the timeline.
-        model.timelineZoom = 3
-        await settle(0.3)
-        let horizontal = try XCTUnwrap(scrollViews(in: try XCTUnwrap(window?.contentView)).first { ($0.documentView?.frame.width ?? 0) > $0.contentSize.width + 100 })
-        let left = horizontal.contentView.bounds.origin.x
-        scroll(dx: -120, at: CGPoint(x: 500, y: 200))
-        await settle(0.4)
-        if abs(horizontal.contentView.bounds.origin.x - left) < 1 {
-            scroll(dx: 120, at: CGPoint(x: 500, y: 200))
+            // Zoomed in, sideways scrolling still pans the timeline.
+            model.timelineZoom = 3
+            await settle(0.3)
+            let horizontal = try XCTUnwrap(scrollViews(in: try XCTUnwrap(window?.contentView)).first { ($0.documentView?.frame.width ?? 0) > $0.contentSize.width + 100 })
+            let left = horizontal.contentView.bounds.origin.x
+            scroll(dx: -120, at: CGPoint(x: 500, y: 200))
             await settle(0.4)
+            if abs(horizontal.contentView.bounds.origin.x - left) < 1 {
+                scroll(dx: 120, at: CGPoint(x: 500, y: 200))
+                await settle(0.4)
+            }
+            XCTAssertGreaterThan(abs(horizontal.contentView.bounds.origin.x - left), 40, "sideways scrolling pans")
+    
         }
-        XCTAssertGreaterThan(abs(horizontal.contentView.bounds.origin.x - left), 40, "sideways scrolling pans")
     }
 }

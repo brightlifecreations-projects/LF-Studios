@@ -32,6 +32,11 @@ enum VideoItemEdit: Equatable {
     case setEffects([VideoAppliedEffect])
     case setFilter(VideoAppliedFilter?)
     case setAdjust(VideoAdjustSettings?)
+    /// The effect chain (1.17.0): an effect moved to `index` (dragged), on
+    /// or off, or removed.
+    case moveEffect(UUID, Int)
+    case setEffectOn(UUID, Bool)
+    case removeEffect(UUID)
 
     var name: String {
         switch self {
@@ -53,6 +58,9 @@ enum VideoItemEdit: Equatable {
         case .setFilter(let f): return "setFilter.\(f?.look?.rawValue ?? (f == nil ? "none" : "cube"))"
         case .setEffects(let e): return "setEffects.\(e.map(\.kind.rawValue).joined(separator: "+"))"
         case .setAnimation(let a): return "setAnimation.\(a?.inPreset?.rawValue ?? "-").\(a?.outPreset?.rawValue ?? "-").\(a?.combo?.rawValue ?? "-")"
+        case .moveEffect(let id, let i): return "moveEffect.\(id).\(i)"
+        case .setEffectOn(let id, let on): return "setEffectOn.\(id).\(on)"
+        case .removeEffect(let id): return "removeEffect.\(id)"
         }
     }
 
@@ -76,6 +84,9 @@ enum VideoItemEdit: Equatable {
         case .setEffects: return L("Effects")
         case .setFilter: return L("Filter")
         case .setAdjust: return L("Adjust")
+        case .moveEffect: return L("Reorder effects")
+        case .setEffectOn(_, let on): return on ? L("Turn effect on") : L("Turn effect off")
+        case .removeEffect: return L("Remove effect")
         }
     }
 }
@@ -151,6 +162,20 @@ extension VideoEditorModel {
             setLayerItem(item.id, coalesce: "filter-\(item.id)", label: "Filter") { $0.filter = filter }
         case .setEffects(let effects):
             setLayerItem(item.id, coalesce: "effects-\(item.id)", label: "Effects") { $0.effects = effects.isEmpty ? (item.role == .effect ? $0.effects : nil) : effects }
+        case .moveEffect(let id, let index):
+            guard var effects = item.effects, let from = effects.firstIndex(where: { $0.id == id }) else { return false }
+            let to = min(max(index, 0), effects.count - 1)
+            guard to != from else { return false }
+            effects.insert(effects.remove(at: from), at: to)
+            setLayerItem(item.id, label: "Reorder Effects") { $0.effects = effects }
+        case .setEffectOn(let id, let on):
+            guard let effects = item.effects, let i = effects.firstIndex(where: { $0.id == id }), effects[i].isOn != on else { return false }
+            setLayerItem(item.id, label: on ? "Turn Effect On" : "Turn Effect Off") { $0.effects?[i].off = on ? nil : true }
+        case .removeEffect(let id):
+            // An effect clip keeps its one effect (delete the clip instead).
+            guard item.role != .effect, let effects = item.effects, effects.contains(where: { $0.id == id }) else { return false }
+            let rest = effects.filter { $0.id != id }
+            setLayerItem(item.id, label: "Remove Effect") { $0.effects = rest.isEmpty ? nil : rest }
         case .setAnimation(let animation):
             setLayerItem(item.id, coalesce: "animation-\(item.id)", label: "Animation") { $0.animation = animation?.isEmpty == true ? nil : animation }
         }

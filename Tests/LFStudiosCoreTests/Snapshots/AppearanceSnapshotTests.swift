@@ -285,6 +285,11 @@ final class AppearanceSnapshotTests: XCTestCase {
     /// A SwiftUI view in an offscreen window, once in each look: its colors
     /// come from the window's appearance, as in the app.
     private func render<V: View>(_ view: V, size: CGSize, name: String) async throws {
+        // Both layouts (1.17.0): LF Studios (new), and CapCut style ("-capcut").
+        try await inEditorStyles { try await renderOne(view, size: size, name: name + $0) }
+    }
+
+    private func renderOne<V: View>(_ view: V, size: CGSize, name: String) async throws {
         for look in Self.looks {
             let host = NSHostingView(rootView: view.frame(width: size.width, height: size.height))
             host.frame = NSRect(origin: .zero, size: size)

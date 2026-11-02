@@ -72,6 +72,15 @@ final class VideoEditorPanelStore: ObservableObject {
     static let shared = VideoEditorPanelStore()
 
     @Published private(set) var layout: VideoEditorPanelLayout = Settings.videoEditorPanels ?? .standard
+    /// LF Studios (new) or CapCut style (1.17.0), remembered on this Mac.
+    @Published private(set) var style: VideoEditorStyle = Settings.videoEditorStyle
+
+    /// Layout ▸ LF Studios (new) or CapCut style: every open editor redraws.
+    func choose(_ style: VideoEditorStyle) {
+        guard style != self.style else { return }
+        Settings.videoEditorStyle = style
+        self.style = style
+    }
 
     /// Dragging a border (`done`: the drag ended, remember it).
     func set(_ layout: VideoEditorPanelLayout, remember: Bool) {
@@ -96,6 +105,8 @@ final class VideoEditorPanelStore: ObservableObject {
     /// Tests: start from nothing remembered.
     func reload() {
         layout = Settings.videoEditorPanels ?? .standard
+        style = Settings.videoEditorStyle
+        VideoEditorStyle.current = style
     }
 }
 
@@ -110,6 +121,19 @@ struct VideoLayoutMenu: View {
 
     var body: some View {
         Menu {
+            // The editor's look and layout (1.17.0).
+            ForEach(VideoEditorStyle.allCases) { style in
+                Button {
+                    store.choose(style)
+                } label: {
+                    if store.style == style {
+                        Label(style.title, systemImage: "checkmark")
+                    } else {
+                        Text(style.title)
+                    }
+                }
+            }
+            Divider()
             ForEach(VideoEditorPanelLayout.Preset.allCases) { preset in
                 Button {
                     store.choose(preset)

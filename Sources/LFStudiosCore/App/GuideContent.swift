@@ -1449,6 +1449,7 @@ enum GuideContent {
                 steps: [
                     L("Drag the line between two panels to make one wider; double-click it to put it back."),
                     L("Layout ▸ Player First makes the player as big as it gets. Layout ▸ Reset Layout puts every panel back where it starts."),
+                    L("Layout ▸ LF Studios (new) or CapCut style: the new layout has the tools down the left, Search in the middle of the top bar and the keys along the bottom; CapCut style is the editor as it was in 1.16. This Mac remembers your choice."),
                 ],
                 tips: [
                     L("LF Studios remembers the layout on this Mac."),

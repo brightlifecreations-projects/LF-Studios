@@ -346,6 +346,16 @@ enum Settings {
         set { defaults.set(newValue, forKey: "videoTransitionLength") }
     }
 
+    /// The video editor's look and layout (1.17.0): LF Studios' own unless
+    /// CapCut style is chosen (Layout menu). On this Mac only.
+    static var videoEditorStyle: VideoEditorStyle {
+        get { defaults.string(forKey: "videoEditorStyle").flatMap(VideoEditorStyle.init(rawValue:)) ?? .lfStudios }
+        set {
+            defaults.set(newValue.rawValue, forKey: "videoEditorStyle")
+            VideoEditorStyle.current = newValue
+        }
+    }
+
     /// Zoom cut (1.16.0): how far it punches in, and for how long.
     static var videoZoomCutScale: Double {
         get { (defaults.object(forKey: "videoZoomCutScale") as? Double).map { min(max($0, VideoZoomCut.scaleRange.lowerBound), VideoZoomCut.scaleRange.upperBound) } ?? VideoZoomCut.defaultScale }

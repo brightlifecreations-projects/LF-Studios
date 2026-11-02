@@ -233,6 +233,11 @@ final class VideoEditorLocalizedSnapshotTests: XCTestCase {
     // MARK: Rendering
 
     private static func render<V: View>(_ view: V, size: CGSize, language: String, name: String) async throws {
+        // Both layouts (1.17.0): LF Studios (new), and CapCut style ("-capcut").
+        try await inEditorStyles { try await Self.renderOne(view, size: size, language: language, name: name + $0) }
+    }
+
+    private static func renderOne<V: View>(_ view: V, size: CGSize, language: String, name: String) async throws {
         let host = NSHostingView(rootView: view.frame(width: size.width, height: size.height).environment(\.colorScheme, .dark))
         host.frame = NSRect(origin: .zero, size: size)
         let window = NSWindow(contentRect: host.frame, styleMask: [.borderless], backing: .buffered, defer: false)

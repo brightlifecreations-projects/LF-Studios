@@ -81,6 +81,11 @@ final class VideoTimelineSnapshotTests: XCTestCase {
     }
 
     private func render(_ model: VideoEditorModel, size: CGSize, look: NSAppearance.Name, name: String) async throws {
+        // Both layouts (1.17.0): LF Studios (new), and CapCut style ("-capcut").
+        try await inEditorStyles { try await renderOne(model, size: size, look: look, name: name + $0) }
+    }
+
+    private func renderOne(_ model: VideoEditorModel, size: CGSize, look: NSAppearance.Name, name: String) async throws {
         let dark = look == .darkAqua
         NSApp.appearance = NSAppearance(named: look)
         let host = NSHostingView(rootView: VideoEditorRootView(model: model).frame(width: size.width, height: size.height).environment(\.colorScheme, dark ? .dark : .light))

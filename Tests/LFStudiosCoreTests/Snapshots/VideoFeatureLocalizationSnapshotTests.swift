@@ -44,6 +44,12 @@ final class VideoFeatureLocalizationSnapshotTests: XCTestCase {
 
     @discardableResult
     private func render<V: View>(_ view: V, size: CGSize, name: String) async throws -> URL {
+        // Both layouts (1.17.0): LF Studios (new), and CapCut style ("-capcut").
+        return try await inEditorStyles { try await renderOne(view, size: size, name: name + $0) }
+    }
+
+    @discardableResult
+    private func renderOne<V: View>(_ view: V, size: CGSize, name: String) async throws -> URL {
         let host = NSHostingView(rootView: view.frame(width: size.width, height: size.height).environment(\.colorScheme, .dark))
         host.frame = NSRect(origin: .zero, size: size)
         let window = NSWindow(contentRect: host.frame, styleMask: [.borderless], backing: .buffered, defer: false)

@@ -936,6 +936,46 @@
         }
       }
     },
+    "%@ left" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "noch %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ restantes"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "残り%@"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "осталось %@"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "лишилося %@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "剩余 %@"
+          }
+        }
+      }
+    },
     "%@ long" : {
       "comment" : "VoiceOver: a clip's length",
       "localizations" : {
@@ -1054,6 +1094,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ 的录制内容在 %@ 内播完。"
+          }
+        }
+      }
+    },
+    "%@ on" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ an"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ activé"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ オン"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@: вкл."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@: увімк."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ 开启"
           }
         }
       }
@@ -2314,6 +2394,7 @@
         }
       }
     },
+    "%@, %@, %@" : {},
     "%@, and %lld more" : {
       "localizations" : {
         "de" : {
@@ -9014,6 +9095,46 @@
         }
       }
     },
+    "A roll" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A-Roll"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan A"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aロール"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дорожка A"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Доріжка A"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A 轨"
+          }
+        }
+      }
+    },
     "A round magnifier over one spot, while the rest of the video stays in view." : {
       "localizations" : {
         "de" : {
@@ -15180,6 +15301,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "所有文件"
+          }
+        }
+      }
+    },
+    "All keys (?)" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle Tasten (?)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tous les raccourcis (?)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "すべてのキー（?）"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Все клавиши (?)"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Усі клавіші (?)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "全部按键（?）"
           }
         }
       }
@@ -26757,6 +26918,46 @@
         }
       }
     },
+    "CapCut style" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CapCut-Stil"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Style CapCut"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CapCutスタイル"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "В стиле CapCut"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "У стилі CapCut"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CapCut 风格"
+          }
+        }
+      }
+    },
     "Caption" : {
       "comment" : "One caption line",
       "localizations" : {
@@ -29810,6 +30011,86 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "更改指针的外观：macOS 经典、白色、轮廓、触控圆点、圆环，或你自己的图片。"
+          }
+        }
+      }
+    },
+    "Change it in Clip ▸ Adjust" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ändern unter Clip ▸ Anpassen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modifiez-le dans Clip ▸ Ajustements"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“クリップ”＞“調整”で変更"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Измените в «Клип ▸ Коррекция»"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Змініть у «Кліп ▸ Корекція»"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在“片段 ▸ 调节”中更改"
+          }
+        }
+      }
+    },
+    "Change it in Clip ▸ Filter" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ändern unter Clip ▸ Filter"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modifiez-le dans Clip ▸ Filtre"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“クリップ”＞“フィルタ”で変更"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Измените в «Клип ▸ Фильтр»"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Змініть у «Кліп ▸ Фільтр»"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在“片段 ▸ 滤镜”中更改"
           }
         }
       }
@@ -55651,6 +55932,46 @@
         }
       }
     },
+    "Drag to change the order" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ziehen, um die Reihenfolge zu ändern"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Faites glisser pour changer l’ordre"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ドラッグして順番を変更"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Перетащите, чтобы изменить порядок"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Перетягніть, щоб змінити порядок"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "拖移以更改顺序"
+          }
+        }
+      }
+    },
     "Drag to change where this clip ends" : {
       "localizations" : {
         "de" : {
@@ -56368,6 +56689,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "手绘"
+          }
+        }
+      }
+    },
+    "Drawn top to bottom. Drag a card to change the order." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Von oben nach unten angewendet. Ziehe eine Karte, um die Reihenfolge zu ändern."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appliqués de haut en bas. Faites glisser une carte pour changer l’ordre."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "上から順に適用されます。カードをドラッグして順番を変更します。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Применяются сверху вниз. Перетащите карточку, чтобы изменить порядок."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Застосовуються згори донизу. Перетягніть картку, щоб змінити порядок."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "从上到下依次应用。拖移卡片可更改顺序。"
           }
         }
       }
@@ -57968,6 +58329,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "特效"
+          }
+        }
+      }
+    },
+    "Effects belong to clips above the main track. Select one, or drag an effect from Library ▸ Effects onto the timeline." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Effekte gehören zu Clips über der Hauptspur. Wähle einen aus oder ziehe einen Effekt aus Bibliothek ▸ Effekte auf die Zeitleiste."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les effets s’appliquent aux clips au-dessus de la piste principale. Sélectionnez-en un, ou faites glisser un effet de Bibliothèque ▸ Effets sur la timeline."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "エフェクトはメイントラックより上のクリップに付きます。クリップを選択するか、“ライブラリ”＞“エフェクト”からタイムラインにドラッグします。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Эффекты применяются к клипам над основной дорожкой. Выберите клип или перетащите эффект из «Библиотека ▸ Эффекты» на таймлайн."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ефекти застосовуються до кліпів над основною доріжкою. Виберіть кліп або перетягніть ефект із «Бібліотека ▸ Ефекти» на таймлайн."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "特效作用于主轨道上方的片段。请选择一个片段，或从“素材库 ▸ 特效”拖到时间线上。"
           }
         }
       }
@@ -83696,6 +84097,46 @@
         }
       }
     },
+    "LF Studios (new)" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LF Studios (neu)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LF Studios (nouveau)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LF Studios（新）"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LF Studios (новый)"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LF Studios (новий)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LF Studios（新版）"
+          }
+        }
+      }
+    },
     "LF Studios 1.11 and earlier can't open .lfs files: whoever you send one to needs LF Studios 1.12.0 or later." : {
       "localizations" : {
         "de" : {
@@ -86469,6 +86910,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "“布局”中还有“仅屏幕”和“仅摄像头”。屏幕和摄像头始终都会录制，所以你之后可以改变主意。"
+          }
+        }
+      }
+    },
+    "Layout ▸ LF Studios (new) or CapCut style: the new layout has the tools down the left, Search in the middle of the top bar and the keys along the bottom; CapCut style is the editor as it was in 1.16. This Mac remembers your choice." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Layout ▸ LF Studios (neu) oder CapCut-Stil: Das neue Layout hat die Werkzeuge links, die Suche oben in der Mitte und die Tasten unten; der CapCut-Stil ist der Editor wie in 1.16. Dieser Mac merkt sich deine Wahl."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disposition ▸ LF Studios (nouveau) ou Style CapCut : la nouvelle disposition a les outils à gauche, la recherche au milieu de la barre du haut et les raccourcis en bas ; le style CapCut est l’éditeur tel qu’il était en 1.16. Ce Mac retient votre choix."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“レイアウト”＞“LF Studios（新）”または“CapCutスタイル”：新しいレイアウトは左にツール、上部バーの中央に検索、下にキーがあります。CapCutスタイルは1.16のままのエディタです。このMacが選択を覚えています。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "«Расположение» ▸ «LF Studios (новый)» или «В стиле CapCut»: в новом макете инструменты слева, поиск в центре верхней панели, а клавиши внизу; стиль CapCut — это редактор как в 1.16. Этот Mac запоминает ваш выбор."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "«Макет» ▸ «LF Studios (новий)» або «У стилі CapCut»: у новому макеті інструменти ліворуч, пошук посередині верхньої панелі, а клавіші внизу; стиль CapCut — це редактор як у 1.16. Цей Mac запам’ятовує ваш вибір."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“布局”▸“LF Studios（新版）”或“CapCut 风格”：新布局的工具在左侧，搜索在顶部栏中间，按键在底部；CapCut 风格就是 1.16 中的编辑器。这台 Mac 会记住你的选择。"
           }
         }
       }
@@ -93807,6 +94288,46 @@
         }
       }
     },
+    "More for %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mehr für %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plus pour %@"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@のその他"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ещё для «%@»"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ще для «%@»"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ 的更多选项"
+          }
+        }
+      }
+    },
     "More recording options" : {
       "localizations" : {
         "de" : {
@@ -94248,6 +94769,46 @@
         }
       }
     },
+    "Move Down" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nach unten"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Descendre"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下へ移動"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Переместить вниз"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Перемістити вниз"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下移"
+          }
+        }
+      }
+    },
     "Move Earlier" : {
       "localizations" : {
         "de" : {
@@ -94324,6 +94885,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "向后移动"
+          }
+        }
+      }
+    },
+    "Move Up" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nach oben"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monter"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "上へ移動"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Переместить вверх"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Перемістити вгору"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "上移"
           }
         }
       }
@@ -97212,6 +97813,46 @@
         }
       }
     },
+    "Nearby" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In der Nähe"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "À proximité"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "近く"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Рядом"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поруч"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "附近"
+          }
+        }
+      }
+    },
     "Nebula" : {
       "localizations" : {
         "de" : {
@@ -99735,6 +100376,46 @@
         }
       }
     },
+    "No effects yet: drag one from Library ▸ Effects onto this clip, or click + on an effect there." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Noch keine Effekte: Ziehe einen aus Bibliothek ▸ Effekte auf diesen Clip oder klicke dort bei einem Effekt auf +."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucun effet pour l’instant : faites-en glisser un depuis Bibliothèque ▸ Effets sur ce clip, ou cliquez sur + sur un effet."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "エフェクトはまだありません。“ライブラリ”＞“エフェクト”からこのクリップにドラッグするか、エフェクトの＋をクリックします。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Эффектов пока нет: перетащите эффект из «Библиотека ▸ Эффекты» на этот клип или нажмите + у эффекта там."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ефектів поки немає: перетягніть ефект із «Бібліотека ▸ Ефекти» на цей кліп або натисніть + біля ефекту там."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "还没有特效：从“素材库 ▸ 特效”拖一个到此片段上，或在那里点按特效上的 +。"
+          }
+        }
+      }
+    },
     "No face found in the camera video" : {
       "localizations" : {
         "de" : {
@@ -101940,6 +102621,46 @@
         }
       }
     },
+    "Nothing at the playhead" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nichts an der Abspielposition"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rien à la tête de lecture"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "再生ヘッドの位置には何もありません"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "У указателя ничего нет"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "На покажчику нічого немає"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "播放头处没有内容"
+          }
+        }
+      }
+    },
     "Nothing here yet" : {
       "localizations" : {
         "de" : {
@@ -102496,6 +103217,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "通知"
+          }
+        }
+      }
+    },
+    "Now playing" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Läuft gerade"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En cours"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "再生中"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сейчас"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зараз"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正在播放"
           }
         }
       }
@@ -106343,6 +107104,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "打开、存储、拷贝和撤销"
+          }
+        }
+      }
+    },
+    "Opening…" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wird geöffnet …"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ouverture…"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開いています…"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Открытие…"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Відкриття…"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正在打开…"
           }
         }
       }
@@ -126356,6 +127157,46 @@
         }
       }
     },
+    "Redo Remove Effect" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "„Effekt entfernen“ wiederholen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rétablir Supprimer l’effet"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“エフェクトを削除”をやり直す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторить удаление эффекта"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторити вилучення ефекту"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重做移除特效"
+          }
+        }
+      }
+    },
     "Redo Remove Intro Card" : {
       "localizations" : {
         "de" : {
@@ -126752,6 +127593,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "重做重新命名媒体"
+          }
+        }
+      }
+    },
+    "Redo Reorder Effects" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "„Effekte neu ordnen“ wiederholen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rétablir Réordonner les effets"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“エフェクトの並べ替え”をやり直す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторить изменение порядка эффектов"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторити зміну порядку ефектів"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重做重新排列特效"
           }
         }
       }
@@ -128516,6 +129397,86 @@
         }
       }
     },
+    "Redo Turn Effect Off" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "„Effekt ausschalten“ wiederholen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rétablir Désactiver l’effet"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“エフェクトをオフ”をやり直す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторить выключение эффекта"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторити вимкнення ефекту"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重做关闭特效"
+          }
+        }
+      }
+    },
+    "Redo Turn Effect On" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "„Effekt einschalten“ wiederholen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rétablir Activer l’effet"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“エフェクトをオン”をやり直す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторить включение эффекта"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторити ввімкнення ефекту"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重做开启特效"
+          }
+        }
+      }
+    },
     "Redo Turn Off Clip" : {
       "localizations" : {
         "de" : {
@@ -130249,6 +131210,46 @@
         }
       }
     },
+    "Remove effect" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Effekt entfernen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supprimer l’effet"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "エフェクトを削除"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалить эффект"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вилучити ефект"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "移除特效"
+          }
+        }
+      }
+    },
     "Remove from favourites" : {
       "localizations" : {
         "de" : {
@@ -131926,6 +132927,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "重新打开 LF Studios 以检查更新"
+          }
+        }
+      }
+    },
+    "Reorder effects" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Effekte neu ordnen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réordonner les effets"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "エフェクトを並べ替え"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Изменить порядок эффектов"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Змінити порядок ефектів"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重新排列特效"
           }
         }
       }
@@ -139915,6 +140956,46 @@
         }
       }
     },
+    "Search commands, media, clips, captions and markers (⌘K)" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Befehle, Medien, Clips, Untertitel und Marker durchsuchen (⌘K)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rechercher des commandes, médias, clips, sous-titres et marqueurs (⌘K)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コマンド、メディア、クリップ、字幕、マーカーを検索（⌘K）"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поиск команд, медиа, клипов, субтитров и маркеров (⌘K)"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пошук команд, медіа, кліпів, субтитрів і маркерів (⌘K)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "搜索命令、媒体、片段、字幕和标记（⌘K）"
+          }
+        }
+      }
+    },
     "Search projects" : {
       "comment" : "Home window search field placeholder",
       "localizations" : {
@@ -140713,6 +141794,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "在时间线上选择一个片段即可将其静音或设置淡入淡出。"
+          }
+        }
+      }
+    },
+    "Select a clip, a zoom or an annotation to change it here." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wähle einen Clip, einen Zoom oder eine Anmerkung aus, um sie hier zu ändern."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sélectionnez un clip, un zoom ou une annotation pour le modifier ici."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "クリップ、ズーム、注釈を選択すると、ここで変更できます。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выберите клип, увеличение или пометку, чтобы изменить их здесь."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Виберіть кліп, наближення чи позначку, щоб змінити їх тут."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择一个片段、缩放或标注即可在此更改。"
           }
         }
       }
@@ -169663,6 +170784,86 @@
         }
       }
     },
+    "Turn effect off" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Effekt ausschalten"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Désactiver l’effet"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "エフェクトをオフ"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выключить эффект"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вимкнути ефект"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "关闭特效"
+          }
+        }
+      }
+    },
+    "Turn effect on" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Effekt einschalten"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activer l’effet"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "エフェクトをオン"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Включить эффект"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Увімкнути ефект"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "开启特效"
+          }
+        }
+      }
+    },
     "Turn it" : {
       "localizations" : {
         "de" : {
@@ -178166,6 +179367,46 @@
         }
       }
     },
+    "Undo Remove Effect" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "„Effekt entfernen“ widerrufen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler Supprimer l’effet"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“エフェクトを削除”を取り消す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отменить удаление эффекта"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скасувати вилучення ефекту"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "撤销移除特效"
+          }
+        }
+      }
+    },
     "Undo Remove Intro Card" : {
       "localizations" : {
         "de" : {
@@ -178562,6 +179803,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "撤销重新命名媒体"
+          }
+        }
+      }
+    },
+    "Undo Reorder Effects" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "„Effekte neu ordnen“ widerrufen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler Réordonner les effets"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“エフェクトの並べ替え”を取り消す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отменить изменение порядка эффектов"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скасувати зміну порядку ефектів"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "撤销重新排列特效"
           }
         }
       }
@@ -180322,6 +181603,86 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "撤销修剪片段"
+          }
+        }
+      }
+    },
+    "Undo Turn Effect Off" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "„Effekt ausschalten“ widerrufen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler Désactiver l’effet"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“エフェクトをオフ”を取り消す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отменить выключение эффекта"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скасувати вимкнення ефекту"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "撤销关闭特效"
+          }
+        }
+      }
+    },
+    "Undo Turn Effect On" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "„Effekt einschalten“ widerrufen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler Activer l’effet"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“エフェクトをオン”を取り消す"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отменить включение эффекта"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скасувати ввімкнення ефекту"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "撤销开启特效"
           }
         }
       }
@@ -182524,6 +183885,86 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "实用工具"
+          }
+        }
+      }
+    },
+    "V%lld" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "V%lld"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "V%lld"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "V%lld"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "V%lld"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "V%lld"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "V%lld"
+          }
+        }
+      }
+    },
+    "V2 · B roll" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "V2 · B-Roll"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "V2 · Plan B"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "V2 · Bロール"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "V2 · Дорожка B"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "V2 · Доріжка B"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "V2 · B 轨"
           }
         }
       }
@@ -192090,6 +193531,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "跟随指针"
+          }
+        }
+      }
+    },
+    "in %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "in %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dans %@"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@後"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "через %@"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "через %@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ 后"
           }
         }
       }

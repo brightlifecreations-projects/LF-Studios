@@ -86,6 +86,11 @@ struct VideoAppliedEffect: Codable, Equatable, Identifiable {
     var id = UUID()
     var kind: VideoEffectKind
     var intensity = 0.6
+    /// Switched off in the effect chain (1.17.0): kept, not drawn. nil: on,
+    /// so older files are written as before.
+    var off: Bool?
+
+    var isOn: Bool { off != true }
 }
 
 enum VideoEffectRenderer {
@@ -170,7 +175,8 @@ enum VideoEffectRenderer {
     }
 
     static func apply(_ effects: [VideoAppliedEffect], to image: CIImage, time: Double) -> CIImage {
-        effects.reduce(image) { apply($1.kind, to: $0, intensity: $1.intensity, time: time) }
+        // In the chain's order; switched-off ones are skipped.
+        effects.filter(\.isOn).reduce(image) { apply($1.kind, to: $0, intensity: $1.intensity, time: time) }
     }
 
     /// Red one way, blue the other.

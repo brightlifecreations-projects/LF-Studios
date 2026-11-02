@@ -12,12 +12,17 @@ final class VideoAnnotationStyleTests: XCTestCase {
     }
 
     override func tearDown() {
+        Self.forgetStyles()
+        super.tearDown()
+    }
+
+    /// Each kind back to its own color, thickness and strength.
+    private static func forgetStyles() {
         for kind in VideoDemoOverlayEffectKind.allCases {
             VideoOverlayStyleMemory.setColor(nil, for: kind)
             UserDefaults.standard.removeObject(forKey: "videoOverlayThickness.\(kind.rawValue)")
         }
         VideoOverlayStyleMemory.blurStrength = nil
-        super.tearDown()
     }
 
     private func average(_ image: CIImage, in rect: CGRect) -> (r: Double, g: Double, b: Double) {
@@ -266,58 +271,63 @@ final class VideoAnnotationStyleTests: XCTestCase {
     }
 
     func testPickedColorBecomesTheDefault() async throws {
-        let directory = FileManager.default.temporaryDirectory.appendingPathComponent("lfstudios-style-\(UUID().uuidString)", isDirectory: true)
-        try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
-        defer { try? FileManager.default.removeItem(at: directory) }
-        let url = directory.appendingPathComponent("rec.mp4")
-        try await VideoTestSupport.writeFakeRecording(to: url, size: CGSize(width: 640, height: 400), seconds: 4, fps: 30)
-        VideoDemoDraftStore.delete(for: url)
-        let model = VideoEditorModel(videoURL: url)
-        await model.load()
-        model.addOverlay(.arrow)
-        let first = try XCTUnwrap(model.selectedOverlay)
-        XCTAssertNil(first.color)
-        model.setOverlayColor(first.id, VideoRGBA(hex: 0x0A84FF))
-        model.setOverlayThickness(first.id, .bold)
-        model.seek(to: 2)
-        model.addOverlay(.arrow)
-        let second = try XCTUnwrap(model.selectedOverlay)
-        XCTAssertEqual(second.color, VideoRGBA(hex: 0x0A84FF), "new arrows start with the last color")
-        XCTAssertEqual(second.thickness, .bold)
-        // Other kinds keep their own defaults.
-        model.addOverlay(.highlight)
-        XCTAssertNil(model.selectedOverlay?.color)
-        // Undo restores the old color in one step.
-        model.selection = .overlay(first.id)
-        model.setOverlayColor(first.id, VideoRGBA(hex: 0xFF453A))
-        model.undo()
-        XCTAssertEqual(model.project.overlayEffects.first { $0.id == first.id }?.color, VideoRGBA(hex: 0x0A84FF))
+        // Both layouts (1.17.0), each from nothing remembered.
+        try await forEachEditorStyle { _ in
+            Self.forgetStyles()
+            let directory = FileManager.default.temporaryDirectory.appendingPathComponent("lfstudios-style-\(UUID().uuidString)", isDirectory: true)
+            try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+            defer { try? FileManager.default.removeItem(at: directory) }
+            let url = directory.appendingPathComponent("rec.mp4")
+            try await VideoTestSupport.writeFakeRecording(to: url, size: CGSize(width: 640, height: 400), seconds: 4, fps: 30)
+            VideoDemoDraftStore.delete(for: url)
+            let model = VideoEditorModel(videoURL: url)
+            await model.load()
+            model.addOverlay(.arrow)
+            let first = try XCTUnwrap(model.selectedOverlay)
+            XCTAssertNil(first.color)
+            model.setOverlayColor(first.id, VideoRGBA(hex: 0x0A84FF))
+            model.setOverlayThickness(first.id, .bold)
+            model.seek(to: 2)
+            model.addOverlay(.arrow)
+            let second = try XCTUnwrap(model.selectedOverlay)
+            XCTAssertEqual(second.color, VideoRGBA(hex: 0x0A84FF), "new arrows start with the last color")
+            XCTAssertEqual(second.thickness, .bold)
+            // Other kinds keep their own defaults.
+            model.addOverlay(.highlight)
+            XCTAssertNil(model.selectedOverlay?.color)
+            // Undo restores the old color in one step.
+            model.selection = .overlay(first.id)
+            model.setOverlayColor(first.id, VideoRGBA(hex: 0xFF453A))
+            model.undo()
+            XCTAssertEqual(model.project.overlayEffects.first { $0.id == first.id }?.color, VideoRGBA(hex: 0x0A84FF))
 
-        // The color panel recolors the selected annotation, one undo step
-        // for a whole drag, and stops once it's deselected.
-        model.selection = .overlay(first.id)
-        var forwarded: [VideoRGBA] = []
-        VideoColorPanel.shared.open(color: NSColor.systemBlue, showsAlpha: false) { forwarded.append($0) }
-        XCTAssertTrue(forwarded.isEmpty, "opening doesn't recolor")
-        NSColorPanel.shared.color = NSColor(srgbRed: 0.2, green: 0.8, blue: 0.4, alpha: 1)
-        XCTAssertEqual(forwarded.count, 1)
-        XCTAssertEqual(forwarded.first?.g ?? 0, 0.8, accuracy: 0.01)
-        NSColorPanel.shared.close()
+            // The color panel recolors the selected annotation, one undo step
+            // for a whole drag, and stops once it's deselected.
+            model.selection = .overlay(first.id)
+            var forwarded: [VideoRGBA] = []
+            VideoColorPanel.shared.open(color: NSColor.systemBlue, showsAlpha: false) { forwarded.append($0) }
+            XCTAssertTrue(forwarded.isEmpty, "opening doesn't recolor")
+            NSColorPanel.shared.color = NSColor(srgbRed: 0.2, green: 0.8, blue: 0.4, alpha: 1)
+            XCTAssertEqual(forwarded.count, 1)
+            XCTAssertEqual(forwarded.first?.g ?? 0, 0.8, accuracy: 0.01)
+            NSColorPanel.shared.close()
 
-        // The inspector with the color picker.
-        model.selection = .overlay(first.id)
-        let host = NSHostingView(rootView: VideoInspectorView(model: model).frame(width: 318, height: 520).environment(\.colorScheme, .dark))
-        host.frame = NSRect(x: 0, y: 0, width: 318, height: 520)
-        let window = NSWindow(contentRect: host.frame, styleMask: [.borderless], backing: .buffered, defer: false)
-        window.appearance = NSAppearance(named: .darkAqua)
-        window.contentView = host
-        host.layoutSubtreeIfNeeded()
-        try await Task.sleep(nanoseconds: 300_000_000)
-        let rep = try XCTUnwrap(host.bitmapImageRepForCachingDisplay(in: host.bounds))
-        host.cacheDisplay(in: host.bounds, to: rep)
-        let snapshot = FileManager.default.temporaryDirectory.appendingPathComponent("lfstudios-inspector-annotation-color.png")
-        try XCTUnwrap(rep.representation(using: .png, properties: [:])).write(to: snapshot)
-        print("SNAPSHOT: \(snapshot.path)")
-        VideoDemoDraftStore.delete(for: url)
+            // The inspector with the color picker.
+            model.selection = .overlay(first.id)
+            let host = NSHostingView(rootView: VideoInspectorView(model: model).frame(width: 318, height: 520).environment(\.colorScheme, .dark))
+            host.frame = NSRect(x: 0, y: 0, width: 318, height: 520)
+            let window = NSWindow(contentRect: host.frame, styleMask: [.borderless], backing: .buffered, defer: false)
+            window.appearance = NSAppearance(named: .darkAqua)
+            window.contentView = host
+            host.layoutSubtreeIfNeeded()
+            try await Task.sleep(nanoseconds: 300_000_000)
+            let rep = try XCTUnwrap(host.bitmapImageRepForCachingDisplay(in: host.bounds))
+            host.cacheDisplay(in: host.bounds, to: rep)
+            let snapshot = FileManager.default.temporaryDirectory.appendingPathComponent("lfstudios-inspector-annotation-color.png")
+            try XCTUnwrap(rep.representation(using: .png, properties: [:])).write(to: snapshot)
+            print("SNAPSHOT: \(snapshot.path)")
+            VideoDemoDraftStore.delete(for: url)
+    
+        }
     }
 }

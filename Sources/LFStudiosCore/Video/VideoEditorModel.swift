@@ -218,6 +218,8 @@ final class VideoEditorModel: ObservableObject {
     @Published var isSyncingAudio: UUID?
     @Published var selection: Selection = .none {
         didSet {
+            // LF Studios layout: something newly selected shows its settings.
+            if selection != .none, selection != oldValue, propertiesTab == .video { propertiesTab = .clip }
             if selection != .none { selectedAudioPiece = nil }
             // Picking something on its own (even one already picked) drops
             // the others.
@@ -238,7 +240,13 @@ final class VideoEditorModel: ObservableObject {
     var pendingUndoLabel: String?
     /// Where each selected item was when a group move began.
     var groupMoveOrigins: [(item: Selection, start: Double, end: Double)] = []
-    @Published var inspectorTab: InspectorTab = .background
+    @Published var inspectorTab: InspectorTab = .background {
+        // LF Studios layout: a panel opened from elsewhere (⌘F, a command)
+        // shows in its tab.
+        didSet { if inspectorTab != oldValue { propertiesTab = inspectorTab == .captions ? .captions : .video } }
+    }
+    /// The right panel's tab in the LF Studios layout (1.17.0).
+    @Published var propertiesTab: VideoPropertiesTab = .clip
     @Published private(set) var isPlaying = false
     /// Silences the editor's player only — never the export (M, or the
     /// speaker next to the timeline scale).
@@ -332,6 +340,8 @@ final class VideoEditorModel: ObservableObject {
         didSet { refreshTimeline() }
     }
     @Published var notice: VideoEditorNotice?
+    /// The last message, kept for the status strip (LF Studios layout).
+    @Published private(set) var lastNotice: VideoEditorNotice?
     /// Motion tracking: the box being picked, or the run (VideoMotionTracking.swift).
     @Published var motionTracking: VideoMotionTrackingState?
     /// Starred Library items (VideoLibraryItems.swift).
@@ -2117,6 +2127,7 @@ final class VideoEditorModel: ObservableObject {
         withAnimation(.spring(response: 0.3, dampingFraction: 0.86)) {
             notice = VideoEditorNotice(message: message, symbol: symbol)
         }
+        lastNotice = notice
         let work = DispatchWorkItem { [weak self] in
             withAnimation(.easeOut(duration: 0.25)) { self?.notice = nil }
         }
