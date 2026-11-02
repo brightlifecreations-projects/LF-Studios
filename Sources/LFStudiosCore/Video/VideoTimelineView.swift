@@ -332,6 +332,12 @@ struct VideoTimelineSurface: View {
                     }
                 }
             }
+            .coordinateSpace(name: "lanesArea")
+            // The playhead's handle (1.18.0): over the ruler and the lanes,
+            // never clipped by either; drag it to move the playhead.
+            .overlay(alignment: .topLeading) {
+                VideoPlayheadHandle(model: model, clock: model.clock, offsets: offsets, x: { x($0) }, time: { time($0) }, width: lanesViewport.width)
+            }
         }
         .onAppear {
             scroller.pointsPerSecond = pointsPerSecond
@@ -368,7 +374,6 @@ struct VideoTimelineSurface: View {
                 if !model.project.markers.isEmpty {
                     VideoMarkerFlags(model: model, geometry: geometry, height: M.rulerHeight)
                 }
-                VideoTimelinePlayhead(clock: model.clock, x: { x($0) }, height: M.rulerHeight)
             }
             .frame(width: contentWidth + M.inset * 2, height: M.rulerHeight, alignment: .topLeading)
         }
@@ -1437,9 +1442,54 @@ struct VideoTimelinePlayhead: View {
                     .shadow(color: .black.opacity(0.4), radius: 2, y: 1)
             }
         }
-        .offset(x: position - 6.5)
+        // Centred on the moment: by the knob's half when it has one, else
+        // the line's (it used to sit 5.5 pt left of the handle).
+        .offset(x: position - (showsKnob ? 6.5 : 1))
         .opacity(Self.hiddenInSnapshots ? 0 : 1)
         .allowsHitTesting(false)
+    }
+}
+
+/// The playhead's handle at the top of the ruler, with the line down to
+/// the lanes (where the lanes' own line carries on). Its whole shape shows
+/// at any zoom, track height, scroll position and window size; dragging it
+/// moves the playhead.
+struct VideoPlayheadHandle: View {
+    let model: VideoEditorModel
+    @ObservedObject var clock: VideoDemoPlaybackClock
+    @ObservedObject var offsets: VideoTimelineScrollOffsets
+    let x: (Double) -> CGFloat
+    let time: (CGFloat) -> Double
+    /// The lanes' visible width: off it, the handle hides.
+    let width: CGFloat
+
+    static let size = CGSize(width: 13, height: 17)
+    /// From the ruler's top edge: room for its rounded top.
+    static let top: CGFloat = 2
+
+    var body: some View {
+        let position = x(clock.time) - offsets.x
+        if position >= -Self.size.width, position <= width + Self.size.width, !VideoTimelinePlayhead.hiddenInSnapshots {
+            ZStack(alignment: .top) {
+                Rectangle()
+                    .fill(VideoEditorTheme.playhead)
+                    .frame(width: 2, height: VideoTimelineMetrics.rulerHeight + 1 - Self.top)
+                PlayheadKnob()
+                    .fill(VideoEditorTheme.playhead)
+                    .frame(width: Self.size.width, height: Self.size.height)
+                    .shadow(color: .black.opacity(0.35), radius: 1.5, y: 1)
+                    .contentShape(Rectangle().inset(by: -4))
+                    .gesture(
+                        DragGesture(minimumDistance: 0, coordinateSpace: .named("lanesArea"))
+                            .onChanged { drag in model.seek(to: max(time(drag.location.x + offsets.x), 0), fast: true) }
+                            .onEnded { drag in model.seek(to: max(time(drag.location.x + offsets.x), 0)) }
+                    )
+                    .help(L("Drag to move the playhead"))
+                    .accessibilityLabel(L("Playhead"))
+                    .accessibilityValue(VideoEditorModel.timecode(clock.time))
+            }
+            .offset(x: position - Self.size.width / 2, y: Self.top)
+        }
     }
 }
 
