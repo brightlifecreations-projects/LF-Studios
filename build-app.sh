@@ -22,6 +22,8 @@ done
 # executable inside it (no space).
 APP_NAME="LF Studios"
 PRODUCT="LFStudios"
+# The AI agents' bridge, in Contents/Helpers (1.19.0).
+BRIDGE="lfstudios-mcp"
 # Assembled inside .build, in a .noindex folder: Spotlight skips it, so
 # only the copy in /Applications shows up as an app.
 APP_BUNDLE="$SCRIPT_DIR/.build/app.noindex/$APP_NAME.app"
@@ -126,6 +128,7 @@ if [[ "$UNIVERSAL" =~ ^(1|true|yes|on)$ ]]; then
     # usual build layout, so resource bundles and Sparkle are the same as in
     # a normal build (two --arch flags at once switch to a different builder).
     ARCH_BINARIES=()
+    BRIDGE_BINARIES=()
     BUILD_DIR=""
     for arch in arm64 x86_64; do
         echo "▶ Building $APP_NAME (release, $arch)…"
@@ -140,11 +143,16 @@ if [[ "$UNIVERSAL" =~ ^(1|true|yes|on)$ ]]; then
         mkdir -p "$SCRIPT_DIR/.build/universal"
         cp "$ARCH_DIR/$PRODUCT" "$SCRIPT_DIR/.build/universal/$PRODUCT-$arch"
         ARCH_BINARIES+=("$SCRIPT_DIR/.build/universal/$PRODUCT-$arch")
+        # The AI agents' bridge (1.19.0), built alongside.
+        cp "$ARCH_DIR/$BRIDGE" "$SCRIPT_DIR/.build/universal/$BRIDGE-$arch"
+        BRIDGE_BINARIES+=("$SCRIPT_DIR/.build/universal/$BRIDGE-$arch")
         # Resource bundles and Sparkle.framework come from the first build.
         [ -n "$BUILD_DIR" ] || BUILD_DIR="$ARCH_DIR"
     done
     BINARY="$SCRIPT_DIR/.build/universal/$PRODUCT"
     lipo -create "${ARCH_BINARIES[@]}" -output "$BINARY"
+    BRIDGE_BINARY="$SCRIPT_DIR/.build/universal/$BRIDGE"
+    lipo -create "${BRIDGE_BINARIES[@]}" -output "$BRIDGE_BINARY"
     ARCHS="$(lipo -archs "$BINARY")"
     echo "  Architectures: $ARCHS"
     if [[ "$ARCHS" != *arm64* || "$ARCHS" != *x86_64* ]]; then
@@ -156,6 +164,12 @@ else
     release_build
     BUILD_DIR="$(swift build -c release --show-bin-path)"
     BINARY="$BUILD_DIR/$PRODUCT"
+    BRIDGE_BINARY="$BUILD_DIR/$BRIDGE"
+fi
+
+if [ ! -f "$BRIDGE_BINARY" ]; then
+    echo "✗ Build failed — the agent bridge isn't at $BRIDGE_BINARY"
+    exit 1
 fi
 
 if [ ! -f "$BINARY" ]; then
@@ -169,6 +183,9 @@ mkdir -p "$APP_BUNDLE/Contents/MacOS"
 mkdir -p "$APP_BUNDLE/Contents/Resources"
 
 cp "$BINARY"              "$APP_BUNDLE/Contents/MacOS/$PRODUCT"
+# The AI agents' bridge (lfstudios-mcp): agent apps start it from here.
+mkdir -p "$APP_BUNDLE/Contents/Helpers"
+cp "$BRIDGE_BINARY" "$APP_BUNDLE/Contents/Helpers/$BRIDGE"
 cp "$SCRIPT_DIR/Info.plist" "$APP_BUNDLE/Contents/Info.plist"
 
 if [ -n "$SPARKLE_PUBLIC_ED_KEY" ]; then
@@ -279,6 +296,8 @@ case "$TIMESTAMP_MODE" in
         ;;
 esac
 
+# The bridge first, with the app's own signature (no entitlements needed).
+codesign --force --sign "$SIGN_IDENTITY" "$APP_BUNDLE/Contents/Helpers/$BRIDGE"
 codesign "${SIGN_ARGS[@]}" "$APP_BUNDLE"
 
 if [[ ! "$INSTALL" =~ ^(1|true|yes|on)$ ]]; then

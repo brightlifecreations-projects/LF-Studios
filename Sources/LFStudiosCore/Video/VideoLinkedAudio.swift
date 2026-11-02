@@ -225,11 +225,13 @@ struct VideoClipSoundLane: View {
 
 /// The sound of the videos on a track above the main track, under them.
 /// Linked: click selects the video; it moves, trims and splits with it.
+/// Unlinked (1.19.0): dragged on its own; right-click: Unlink or Link.
 struct VideoLayerSoundLane: View {
     let model: VideoEditorModel
     let track: VideoLayerTrack
     let geometry: VideoTimelineGeometry
     let selected: Set<UUID>
+    @State private var dragStart: Double?
 
     var body: some View {
         ZStack(alignment: .topLeading) {
@@ -240,15 +242,43 @@ struct VideoLayerSoundLane: View {
                     from: item.fileStart, to: item.fileStart + item.length * item.normalizedSpeed,
                     width: width, height: VideoTimelineMetrics.soundLaneHeight - 2,
                     muted: !item.enabled || item.volume < 0.000_1 || model.project.trackState(.layer(track.id)).muted,
-                    unlinked: false, selected: selected.contains(item.id), name: item.name
+                    unlinked: item.audioOffset != nil, selected: selected.contains(item.id), name: item.name
                 )
-                .offset(x: geometry.x(item.at) + 1, y: 1)
+                .offset(x: geometry.x(item.at + (item.audioOffset ?? 0)) + 1, y: 1)
                 .onTapGesture { model.click(.layer(item.id)) }
-                .help(L("Linked to its video: moves, trims and splits with it"))
+                .gesture(moveGesture(item), including: item.audioOffset != nil ? .all : .none)
+                .contextMenu {
+                    if item.audioOffset == nil {
+                        Button(L("Unlink Audio")) {
+                            model.selection = .layer(item.id)
+                            model.perform(.edit(.unlinkAudio))
+                        }
+                    } else {
+                        Button(L("Link Audio")) {
+                            model.selection = .layer(item.id)
+                            model.perform(.edit(.linkAudio))
+                        }
+                    }
+                }
+                .help(item.audioOffset != nil ? L("Unlinked sound: drag to move it") : L("Linked to its video: moves, trims and splits with it"))
                 .accessibilityElement(children: .ignore)
                 .accessibilityLabel(L("Sound of \(item.name)"))
             }
         }
         .frame(width: geometry.width, height: VideoTimelineMetrics.soundLaneHeight, alignment: .topLeading)
+    }
+
+    private func moveGesture(_ item: VideoLayerItem) -> some Gesture {
+        DragGesture(minimumDistance: 3)
+            .onChanged { drag in
+                let start = dragStart ?? (item.audioOffset ?? 0)
+                if dragStart == nil { dragStart = start }
+                model.selection = .layer(item.id)
+                model.perform(.edit(.setAudioOffset(start + Double(drag.translation.width / max(geometry.pointsPerSecond, 0.001)))))
+            }
+            .onEnded { _ in
+                dragStart = nil
+                model.endGesture()
+            }
     }
 }

@@ -52,12 +52,12 @@ final class VideoDockTests: XCTestCase {
     }
 
     func testDockingOnEverySideOfEveryPanel() throws {
-        for kind in VideoPanelKind.allCases {
-            for target in VideoPanelKind.allCases where target != kind {
+        for kind in VideoPanelKind.editorPanels {
+            for target in VideoPanelKind.editorPanels where target != kind {
                 for side in VideoDockSide.allCases {
                     let name = "\(kind) \(side) of \(target)"
                     let moved = try XCTUnwrap(VideoDockNode.standard.moving(kind, to: side, of: target), name)
-                    XCTAssertEqual(Set(moved.panels), Set(VideoPanelKind.allCases), "\(name): every panel once")
+                    XCTAssertEqual(Set(moved.panels), Set(VideoPanelKind.editorPanels), "\(name): every panel once")
                     XCTAssertEqual(moved.panels.count, 4, name)
                     let layout = VideoDockLayout(moved, in: room)
                     assertNoOverlaps(layout, in: room, name)
@@ -139,7 +139,7 @@ final class VideoDockTests: XCTestCase {
         XCTAssertNil(Settings.videoEditorArrangement)
 
         // Each panel floats and docks back next to where it was.
-        for kind in VideoPanelKind.allCases {
+        for kind in VideoPanelKind.editorPanels {
             store.float(kind, frame: frame, screen: nil, current: .standard)
             store.dock(kind)
             XCTAssertEqual(store.arrangement, .standard, "\(kind) docks back where it was")
@@ -156,7 +156,7 @@ final class VideoDockTests: XCTestCase {
         XCTAssertFalse(store.arrangement.floating.contains { $0.kind == .player })
         store.dockAll()
         XCTAssertTrue(store.arrangement.floating.isEmpty)
-        XCTAssertEqual(Set(store.arrangement.docked.panels), Set(VideoPanelKind.allCases))
+        XCTAssertEqual(Set(store.arrangement.docked.panels), Set(VideoPanelKind.editorPanels))
     }
 
     func testAFloatingPanelReopensOnItsScreenOrTheMainOne() {
@@ -168,6 +168,15 @@ final class VideoDockTests: XCTestCase {
         let fallback = VideoFloatingPanel.restoredFrame(frame, screen: 2, screens: [(1, main)], main: main)
         XCTAssertTrue(main.contains(fallback), "that screen is gone: on the main one")
         XCTAssertEqual(fallback.size, frame.size)
+    }
+
+    /// The one-time tip (1.19.0): until it's closed, or a panel moves.
+    func testThePanelTipGoesOnceAPanelMoves() {
+        Settings.videoPanelTipSeen = false
+        store.arrange(.standard)
+        XCTAssertFalse(Settings.videoPanelTipSeen, "nothing moved yet: still to show")
+        store.float(.timeline, frame: CGRect(x: 0, y: 0, width: 900, height: 300), screen: nil, current: .standard)
+        XCTAssertTrue(Settings.videoPanelTipSeen, "found how to move panels")
     }
 
     // MARK: Saved layouts and Reset
@@ -265,7 +274,7 @@ final class VideoDockTests: XCTestCase {
             let window = try await host(model, dock: dock)
             defer { window.orderOut(nil) }
             // The standard layout: each panel measured where 1.17.0 drew it.
-            XCTAssertEqual(Set(dock.frames.keys), Set(VideoPanelKind.allCases), "\(style)")
+            XCTAssertEqual(Set(dock.frames.keys), Set(VideoPanelKind.editorPanels), "\(style)")
             let player = try XCTUnwrap(dock.frames[.player])
             let library = try XCTUnwrap(dock.frames[.library])
 
@@ -304,7 +313,7 @@ final class VideoDockTests: XCTestCase {
 
             store.reset()
             await T.settle(0.3)
-            XCTAssertEqual(Set(dock.frames.keys), Set(VideoPanelKind.allCases), "\(style): Reset Layout docks everything")
+            XCTAssertEqual(Set(dock.frames.keys), Set(VideoPanelKind.editorPanels), "\(style): Reset Layout docks everything")
         }
     }
 }

@@ -74,6 +74,9 @@ struct VideoLayerItem: Codable, Equatable, Identifiable {
     var adjust: VideoAdjustSettings?
     /// One of our stickers (VideoStickers.swift); no file then.
     var sticker: String?
+    /// A video's sound apart from its picture (Unlink Audio, 1.19.0):
+    /// seconds after it. nil: linked.
+    var audioOffset: Double?
 
     var intensity: Double {
         get { level ?? 1 }
@@ -210,7 +213,9 @@ extension VideoDemoProject {
     /// What only 1.15.0 and later can show: written as project format 4.
     /// Sound moved apart from its picture (1.18.0): only 1.18.0 and later
     /// play it there, so older versions say they need a newer one.
-    var needsFormat5: Bool { timelineClips.contains { $0.needsFormat5 } }
+    var needsFormat5: Bool {
+        timelineClips.contains { $0.needsFormat5 } || layerTracks.contains { $0.items.contains { $0.needsFormat5 } }
+    }
 
     var needsFormat4: Bool {
         needsFormat5 || layerTracks.contains { $0.items.contains { $0.needsFormat4 } } || timelineClips.contains { $0.needsFormat4 }
@@ -268,7 +273,7 @@ struct VideoLayerInput {
 
     var mixKey: MixKey {
         MixKey(sound: tracks.map { track in
-            "\(track.muted)" + track.items.filter(\.isVideo).map { "\($0.id)|\($0.volume)|\($0.muted)|\($0.enabled)" }.joined(separator: ";")
+            "\(track.muted)" + track.items.filter(\.isVideo).map { "\($0.id)|\($0.volume)|\($0.muted)|\($0.enabled)|\($0.audioOffset ?? 0)" }.joined(separator: ";")
         })
     }
 
@@ -315,7 +320,23 @@ struct VideoLayerInput {
                 if item.keepsPitch == false, varispeed == nil, audible, file.audio != nil {
                     varispeed = composition.addMutableTrack(withMediaType: .audio, preferredTrackID: kCMPersistentTrackID_Invalid)
                 }
-                if audible, let target = item.keepsPitch == false ? varispeed : audio, let sound = file.audio {
+                if audible, let offset = item.audioOffset, let sound = file.audio {
+                    // Unlinked (1.19.0): its sound on a track of its own, moved.
+                    if let own = composition.addMutableTrack(withMediaType: .audio, preferredTrackID: kCMPersistentTrackID_Invalid) {
+                        let movedAt = VideoCompositionBuilder.time(max(item.at + skip + offset, 0))
+                        do {
+                            try own.insertTimeRange(range, of: sound, at: movedAt)
+                            if abs(speed - 1) > 0.0001 {
+                                own.scaleTimeRange(CMTimeRange(start: movedAt, duration: range.duration), toDuration: VideoCompositionBuilder.time(range.duration.seconds / speed))
+                            }
+                            var moved = item
+                            moved.at += offset
+                            sounds.append((input.id, own, [moved]))
+                        } catch {
+                            composition.removeTrack(own)
+                        }
+                    }
+                } else if audible, let target = item.keepsPitch == false ? varispeed : audio, let sound = file.audio {
                     do {
                         try target.insertTimeRange(range, of: sound, at: at)
                         if abs(speed - 1) > 0.0001 {
@@ -511,7 +532,10 @@ enum VideoLayerStills {
 
 extension VideoLayerItem {
     /// Uses something only 1.15.0 shows.
+    /// Only 1.19.0 and later play it right.
+    var needsFormat5: Bool { audioOffset != nil || (keys?.hasTangents ?? false) }
+
     var needsFormat4: Bool {
-        (keys.map { !$0.isEmpty } ?? false) || mask != nil || level != nil || blend != nil || removesBackground != nil || chroma != nil || text != nil || tracking != nil || role != nil || effects != nil || filter != nil || adjust != nil || sticker != nil || animation != nil || keepsPitch != nil || soundFadeIn != nil || soundFadeOut != nil || speed < 0.25 - 0.000_1 || speed > 4 + 0.000_1
+        needsFormat5 || (keys.map { !$0.isEmpty } ?? false) || mask != nil || level != nil || blend != nil || removesBackground != nil || chroma != nil || text != nil || tracking != nil || role != nil || effects != nil || filter != nil || adjust != nil || sticker != nil || animation != nil || keepsPitch != nil || soundFadeIn != nil || soundFadeOut != nil || speed < 0.25 - 0.000_1 || speed > 4 + 0.000_1
     }
 }

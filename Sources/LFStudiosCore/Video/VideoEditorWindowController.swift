@@ -143,6 +143,9 @@ final class VideoDemoEditorWindowController: NSWindowController, NSWindowDelegat
         return url
     }
 
+    /// The editor an agent works on (1.19.0).
+    static func frontControllerForAgent() -> VideoDemoEditorWindowController? { frontController() }
+
     private static func frontController() -> VideoDemoEditorWindowController? {
         openControllers.first(where: { $0.window?.isKeyWindow == true || $0.floatingPanels.isKey })
             ?? openControllers.first(where: { $0.window?.isVisible == true })
@@ -240,6 +243,7 @@ final class VideoDemoEditorWindowController: NSWindowController, NSWindowDelegat
 
     func windowWillClose(_ notification: Notification) {
         floatingPanels.closeAll()
+        VideoAgentHub.shared.forget(model)
         model.stop()
         Self.openControllers.removeAll { $0 === self }
         LFStudiosEditorActivation.sync()

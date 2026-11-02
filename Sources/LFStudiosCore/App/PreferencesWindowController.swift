@@ -9,6 +9,8 @@ enum PreferencesTab: Int, CaseIterable {
     case shortcuts = 1
     case screenshots = 2
     case recording = 3
+    /// AI agents (1.19.0).
+    case agent = 5
     case about = 4
 
     var title: String {
@@ -17,6 +19,7 @@ enum PreferencesTab: Int, CaseIterable {
         case .shortcuts: return L("Shortcuts")
         case .screenshots: return L("Screenshots")
         case .recording: return L("Recording")
+        case .agent: return L("Agent")
         case .about: return L("About")
         }
     }
@@ -27,6 +30,7 @@ enum PreferencesTab: Int, CaseIterable {
         case .shortcuts: return "keyboard"
         case .screenshots: return "camera"
         case .recording: return "record.circle"
+        case .agent: return "sparkles"
         case .about: return "info.circle"
         }
     }
@@ -54,7 +58,8 @@ final class PreferencesWindowController: NSWindowController, NSWindowDelegate {
         window.backgroundColor = LFStudiosColors.editorStageTop
         window.isOpaque = false
         window.isMovableByWindowBackground = true
-        window.setContentSize(NSSize(width: 560, height: 620))
+        // Six tabs since Agent (1.19.0): wide enough for each at its design width.
+        window.setContentSize(NSSize(width: 640, height: 620))
         window.minSize = NSSize(width: 520, height: 520)
         window.center()
         window.isReleasedWhenClosed = false
@@ -106,6 +111,8 @@ struct PreferencesRootView: View {
                         ScreenshotsSettingsView()
                     case .recording:
                         RecordingSettingsView()
+                    case .agent:
+                        AgentSettingsView()
                     case .about:
                         AboutSettingsView()
                     }
@@ -113,7 +120,7 @@ struct PreferencesRootView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
-        .frame(minWidth: 520, idealWidth: 560, minHeight: 520, idealHeight: 620)
+        .frame(minWidth: 520, idealWidth: 640, minHeight: 520, idealHeight: 620)
     }
 }
 

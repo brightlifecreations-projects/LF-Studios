@@ -28,6 +28,7 @@ final class VideoEditor118SnapshotTests: XCTestCase {
         suiteName = "LFStudiosCoreTests.Editor118.\(UUID().uuidString)"
         Settings.defaults = UserDefaults(suiteName: suiteName)!
         Settings.videoShortcutsChangeSeen = true
+        Settings.videoPanelTipSeen = true
         VideoEditorPanelStore.shared.reload()
     }
 

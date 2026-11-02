@@ -1,4 +1,5 @@
 import AppKit
+import Combine
 import KeyboardShortcuts
 import ScreenCaptureKit
 
@@ -144,6 +145,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         let launchedAsLoginItem = Self.launchedAsLoginItem
         setupMainMenu()
         setupStatusItem()
+        watchAgentConnection()
         registerHotkeys()
         recoverInterruptedRecording()
         CaptureEngine.warmCaptureSound()
@@ -326,10 +328,35 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     private func restoreIdleStatusItem() {
         guard let button = statusItem.button else { return }
-        statusItem.length = NSStatusItem.squareLength
-        button.attributedTitle = NSAttributedString(string: "")
         button.image = idleStatusIcon
-        button.toolTip = nil
+        // An AI agent connected (1.19.0): a green dot beside the icon.
+        if VideoAgentHub.shared.isEnabled, let client = VideoAgentHub.shared.connectedClient {
+            statusItem.length = NSStatusItem.variableLength
+            button.imagePosition = .imageLeading
+            button.attributedTitle = NSAttributedString(string: "●", attributes: [
+                .font: NSFont.systemFont(ofSize: 8, weight: .bold),
+                .foregroundColor: NSColor.systemGreen,
+                .baselineOffset: 2,
+            ])
+            button.toolTip = L("Connected: \(client)")
+        } else {
+            statusItem.length = NSStatusItem.squareLength
+            button.attributedTitle = NSAttributedString(string: "")
+            button.toolTip = nil
+        }
+    }
+
+    /// The menu bar's dot follows the agent connection (1.19.0).
+    private var agentDotWatch: AnyCancellable?
+
+    private func watchAgentConnection() {
+        agentDotWatch = VideoAgentHub.shared.$connectedClient.receive(on: RunLoop.main).sink { [weak self] _ in
+            MainActor.assumeIsolated {
+                guard let self, self.captureEngine.recordingElapsedSeconds == nil, !self.captureEngine.recordingIsSaving else { return }
+                self.restoreIdleStatusItem()
+            }
+        }
+        VideoAgentHub.shared.startIfEnabled()
     }
 
     private func registerHotkeys() {

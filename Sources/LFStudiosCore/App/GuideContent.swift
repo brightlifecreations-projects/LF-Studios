@@ -15,7 +15,7 @@ import Foundation
 @MainActor
 enum GuideContent {
     /// Pages from these versions get a New badge and fill What's new.
-    nonisolated static let newVersions: [String] = ["1.18.0", "1.17.0", "1.16.0", "1.15.0", "1.14.0", "1.13.0", "1.12.0", "1.11.1", "1.11.0", "1.10.0", "1.9.0", "1.8.0", "1.7.0"]
+    nonisolated static let newVersions: [String] = ["1.19.0", "1.18.0", "1.17.0", "1.16.0", "1.15.0", "1.14.0", "1.13.0", "1.12.0", "1.11.1", "1.11.0", "1.10.0", "1.9.0", "1.8.0", "1.7.0"]
 
     static func chapters() -> [GuideChapter] {
         let features = featureCategories()
@@ -451,6 +451,7 @@ enum GuideContent {
             GuideCategory(id: "privacy-features", title: L("Privacy"), symbol: "eye.slash", entries: privacyFeatures()),
             GuideCategory(id: "export", title: L("Export"), symbol: "square.and.arrow.up", entries: exportFeatures()),
             GuideCategory(id: "projects", title: L("Projects"), symbol: "folder", entries: projectFeatures()),
+            GuideCategory(id: "ai-agents", title: L("AI agents"), symbol: "wand.and.sparkles", entries: agentFeatures()),
             GuideCategory(id: "settings", title: L("Settings"), symbol: "gearshape", entries: settingsFeatures()),
         ].filter { !$0.entries.isEmpty }
     }
@@ -1423,6 +1424,81 @@ enum GuideContent {
             ),
         ]
     }
+    // MARK: AI agents (1.19.0)
+
+    static func agentFeatures() -> [GuideEntry] {
+        [
+            GuideEntry(
+                id: "agent-connect", symbol: "point.3.connected.trianglepath.dotted", title: L("Connect Claude Desktop"),
+                summary: L("Let an AI agent such as Claude edit the project you have open, while you watch."),
+                location: L("LF Studios ▸ Settings ▸ Agent."),
+                steps: [
+                    L("Open LF Studios ▸ Settings ▸ Agent and turn on Allow AI agents to edit."),
+                    L("Next to Claude Desktop, click Copy setup."),
+                    L("In Claude Desktop, choose Claude ▸ Settings ▸ Developer ▸ Edit Config."),
+                    L("Paste the setup into claude_desktop_config.json, save it, and quit and reopen Claude."),
+                    L("Open a project in LF Studios. In Claude, ask for an edit, for example: Remove the ums and tighten the pauses."),
+                ],
+                tips: [
+                    L("Claude Code, Cursor and Codex have their own Copy setup buttons."),
+                    L("Settings ▸ Agent ▸ Save… gives the agent a guide to LF Studios' tools (for Claude Code, a skill)."),
+                    L("A green dot in the menu bar and the editor shows an agent is connected; click it to disconnect."),
+                    L("Only apps on this Mac can connect, with a secret token. New token makes the old one stop working."),
+                ],
+                since: "1.19.0",
+                related: ["agent-limits", "agent-review", "agent-tacks"]
+            ),
+            GuideEntry(
+                id: "agent-limits", symbol: "checklist", title: L("What an agent can and can't do"),
+                summary: L("An agent edits with the editor's own commands, and you stay in charge."),
+                location: L("The project open in the front editor window."),
+                points: [
+                    L("It can read the timeline, the transcript, the captions, the markers and the keyframes, and look at frames."),
+                    L("It can split, trim, delete, add markers, titles and keyframes, fix captions, remove ums, and place files that are already in the project or its folder."),
+                    L("It can't export, record sound or video, use the clipboard, or open files from anywhere else. Locked tracks stay as they are."),
+                    L("Every change it makes is one ⌘Z step, like yours."),
+                ],
+                tips: [
+                    L("Click or type in the editor while it works and it pauses: its next change waits until you click Resume in the Agent panel."),
+                    L("Agents are off until you turn them on in Settings ▸ Agent."),
+                ],
+                since: "1.19.0",
+                related: ["agent-connect", "agent-review"]
+            ),
+            GuideEntry(
+                id: "agent-review", symbol: "checkmark.arrow.trianglehead.counterclockwise", title: L("Keep or Revert all"),
+                summary: L("When an agent finishes, see what it changed and keep it, or go back to how the project was."),
+                location: L("The Agent panel (Layout ▸ Agent Panel). It opens when an agent starts."),
+                steps: [
+                    L("Watch the changes come in, in the Agent panel. Click one to go to it."),
+                    L("When the agent is done, its changes are marked on the timeline in orange."),
+                    L("Click Keep to keep them, or Revert All to go back to how the project was before it started."),
+                ],
+                tips: [
+                    L("After Revert All, ⌘Z brings the changes back."),
+                    L("The Agent panel moves and floats like the others; its × hides it."),
+                ],
+                since: "1.19.0",
+                related: ["agent-tacks", "agent-limits"]
+            ),
+            GuideEntry(
+                id: "agent-tacks", symbol: "pin", title: L("Tacks"),
+                summary: L("Notes and questions an agent pins to a moment of the video."),
+                location: L("Orange pins on the timeline's ruler, and the Agent panel."),
+                points: [
+                    L("A Tack stays with its moment: when the clip moves or is trimmed, it moves along."),
+                    L("Click a pin to go there."),
+                ],
+                steps: [
+                    L("To answer a question, type in its Answer field in the Agent panel and click Send. The agent reads your answer."),
+                    L("Click Dismiss to put a Tack away."),
+                ],
+                since: "1.19.0",
+                related: ["agent-review"]
+            ),
+        ]
+    }
+
     // MARK: Video editor
 
     static func videoEditorFeatures() -> [GuideEntry] {
@@ -1652,6 +1728,7 @@ enum GuideContent {
                 tips: [
                     L("Projects from earlier versions open with their sound on these tracks and sound exactly the same."),
                     L("A project with unlinked sound needs LF Studios 1.18 or later to open."),
+                    L("Videos on the tracks above the main track have their sound under them too, and unlink the same way (1.19.0)."),
                 ],
                 since: "1.18.0",
                 related: ["video-timeline", "video-clips"]
@@ -1813,6 +1890,7 @@ enum GuideContent {
                     L("Click the curve button in the track's header. A lane opens under the track."),
                     L("Choose the setting it shows: Opacity, Size, Rotation, Position or Volume."),
                     L("Drag a point up or down to change the value, or sideways to change when it happens. One drag is one ⌘Z step."),
+                    L("Select the clip to see its curve handles (small diamonds beside each point). Drag one up or down to bend the curve; double-click it to go back to the easing (1.19.0)."),
                 ],
                 tips: [
                     L("The points are the clip's own keyframes: the ◆ marks on the clip and in Properties ▸ Clip change with them."),

@@ -788,6 +788,44 @@ final class VideoEditorModel: ObservableObject {
 
     var undoDepth: Int { undoStack.count }
 
+    /// What an agent's dry run puts back (VideoAgent.swift, 1.19.0).
+    struct TryingSnapshot {
+        let project: VideoDemoProject
+        let undo: [UndoStep]
+        let redo: [UndoStep]
+        let coalesce: String?
+        let lastMutation: Date
+        let selection: Selection
+        let extra: [Selection]
+        let time: Double
+        let tool: VideoTimelineTool
+        let notice: VideoEditorNotice?
+        let lastNotice: VideoEditorNotice?
+        let canUndo: Bool
+        let canRedo: Bool
+    }
+
+    func snapshotForTrying() -> TryingSnapshot {
+        TryingSnapshot(project: project, undo: undoStack, redo: redoStack, coalesce: lastCoalesceKey, lastMutation: lastMutation, selection: selection,
+                       extra: extraSelection, time: clock.time, tool: timelineTool, notice: notice, lastNotice: lastNotice, canUndo: canUndo, canRedo: canRedo)
+    }
+
+    func restore(_ saved: TryingSnapshot) {
+        if project != saved.project { project = saved.project }
+        undoStack = saved.undo
+        redoStack = saved.redo
+        lastCoalesceKey = saved.coalesce
+        lastMutation = saved.lastMutation
+        if selection != saved.selection { selection = saved.selection }
+        if extraSelection != saved.extra { extraSelection = saved.extra }
+        if timelineTool != saved.tool { timelineTool = saved.tool }
+        notice = saved.notice
+        lastNotice = saved.lastNotice
+        canUndo = saved.canUndo
+        canRedo = saved.canRedo
+        if abs(clock.time - saved.time) > 0.000_1 { seek(to: saved.time) }
+    }
+
     /// The preview again after opening or closing a compound.
     func rebuildPlanForCompound() {
         rebuildPlan()

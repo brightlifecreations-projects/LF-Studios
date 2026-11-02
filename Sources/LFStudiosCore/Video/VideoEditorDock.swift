@@ -10,6 +10,11 @@ enum VideoPanelKind: String, Codable, CaseIterable, Identifiable {
     case player
     case properties
     case timeline
+    /// AI agents' run (1.19.0): shown when one starts, hidden by the user.
+    case agent
+
+    /// The editor's own four (always there, docked or floating).
+    static let editorPanels: [VideoPanelKind] = [.library, .player, .properties, .timeline]
 
     var id: String { rawValue }
 
@@ -19,6 +24,7 @@ enum VideoPanelKind: String, Codable, CaseIterable, Identifiable {
         case .player: return L("Player")
         case .properties: return L("Properties")
         case .timeline: return L("Timeline")
+        case .agent: return L("Agent")
         }
     }
 
@@ -28,6 +34,7 @@ enum VideoPanelKind: String, Codable, CaseIterable, Identifiable {
         case .player: return "play.rectangle"
         case .properties: return "slider.horizontal.3"
         case .timeline: return "timeline.selection"
+        case .agent: return "sparkles"
         }
     }
 
@@ -41,6 +48,7 @@ enum VideoPanelKind: String, Codable, CaseIterable, Identifiable {
         case .properties: return CGSize(width: VideoEditorPanelLayout.propertiesRange.lowerBound, height: 180)
         // Its toolbar's width (in 1.17.0 it always had the window's).
         case .timeline: return CGSize(width: VideoEditorStyle.current.isNew ? 840 : 975, height: 150)
+        case .agent: return CGSize(width: 260, height: 200)
         }
     }
 }
@@ -375,6 +383,7 @@ struct VideoDockArrangement: Codable, Equatable {
             .player: [(.right, .library), (.left, .properties), (.top, .timeline)],
             .properties: [(.right, .player), (.right, .library), (.top, .timeline)],
             .timeline: [(.bottom, .player), (.bottom, .library), (.bottom, .properties)],
+            .agent: [(.bottom, .properties), (.right, .player), (.right, .library)],
         ]
         for (side, target) in choices[kind] ?? [] where node.contains(target) {
             if kind == .timeline {

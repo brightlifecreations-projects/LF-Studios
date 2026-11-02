@@ -122,7 +122,7 @@ final class VideoFloatingPanelTests: XCTestCase {
             editorModel = model
             // The editor window itself (its docked panels), then each panel
             // floating with its window in front.
-            for focus in [nil] + VideoPanelKind.allCases.map(Optional.some) {
+            for focus in [nil] + VideoPanelKind.editorPanels.map(Optional.some) {
                 let name = "\(style), \(focus.map { "floating \($0)" } ?? "docked")"
                 store.reset()
                 if let focus {

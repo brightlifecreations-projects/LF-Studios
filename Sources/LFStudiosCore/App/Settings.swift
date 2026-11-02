@@ -463,6 +463,30 @@ enum Settings {
 
     /// The editor's one-time "Keyboard shortcuts changed" notice (1.14.0)
     /// was closed.
+    /// Settings ▸ Agent ▸ Allow AI agents to edit (1.19.0): off until turned on.
+    static var videoAgentEnabled: Bool {
+        get { defaults.bool(forKey: "videoAgentEnabled") }
+        set { defaults.set(newValue, forKey: "videoAgentEnabled") }
+    }
+
+    /// The agent connection's token and last port (1.19.0).
+    static var videoAgentToken: String? {
+        get { defaults.string(forKey: "videoAgentToken") }
+        set { defaults.set(newValue, forKey: "videoAgentToken") }
+    }
+
+    static var videoAgentPort: Int? {
+        get { defaults.object(forKey: "videoAgentPort") as? Int }
+        set { defaults.set(newValue, forKey: "videoAgentPort") }
+    }
+
+    /// The one-time "drag a panel's top edge" tip was closed (1.19.0), or
+    /// a panel was moved.
+    static var videoPanelTipSeen: Bool {
+        get { defaults.bool(forKey: "videoPanelTipSeen") }
+        set { defaults.set(newValue, forKey: "videoPanelTipSeen") }
+    }
+
     static var videoShortcutsChangeSeen: Bool {
         get { defaults.bool(forKey: "videoShortcutsChangeSeen") }
         set { defaults.set(newValue, forKey: "videoShortcutsChangeSeen") }

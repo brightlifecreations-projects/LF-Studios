@@ -134,6 +134,8 @@
 	<string>%@ с</string>
 	<key>%@–%@ only</key>
 	<string>лише %@–%@</string>
+	<key>%lld changes</key>
+	<string>Змін: %lld</string>
 	<key>%lld files, about %@</key>
 	<string>Файлів: %1$lld, близько %2$@</string>
 	<key>%lld markers</key>
@@ -184,6 +186,8 @@
 	<string>3D LUT з іншої програми: на вибраному кліпі або як кліп фільтра</string>
 	<key>A README lists every file. Include speaker notes adds your notes.</key>
 	<string>Файл README перелічує всі файли. «Додати нотатки доповідача» додає ваші нотатки.</string>
+	<key>A Tack stays with its moment: when the clip moves or is trimmed, it moves along.</key>
+	<string>Мітка тримається свого моменту: якщо кліп посунути чи обрізати, вона переміститься разом із ним.</string>
 	<key>A big GIF — about %@ and %@ of memory to make. A smaller size, fewer fps, or MP4 is lighter.</key>
 	<string>Великий GIF — приблизно %@, і для створення потрібно %@ пам’яті. Менший розмір, менше fps або MP4 — легший варіант.</string>
 	<key>A block appears on the Camera lane: drag it to move it, drag its edges to change its length.</key>
@@ -222,6 +226,8 @@
 	<string>Рамка точної форми й розміру, щоб ваше відео одразу було готове для YouTube, Reels чи Instagram.</string>
 	<key>A frame: the one at the playhead (Use the playhead picks again).</key>
 	<string>Кадр: той, що на покажчику відтворення («Взяти з покажчика» вибирає знову).</string>
+	<key>A green dot in the menu bar and the editor shows an agent is connected; click it to disconnect.</key>
+	<string>Зелена крапка в рядку меню та в редакторі показує, що агента під’єднано; натисніть її, щоб від’єднати.</string>
 	<key>A hairline that separates dark recordings from the background</key>
 	<string>Тонка лінія, що відділяє темні записи від тла</string>
 	<key>A keyframe for position, size, rotation and opacity at the playhead</key>
@@ -300,6 +306,14 @@
 	<string>Вікно такого розміру більше за екран. Найбільший розмір тієї ж форми, що вміщається, — %@ × %@.</string>
 	<key>A yellow marker shows where something was cut. Click it to bring the part back.</key>
 	<string>Жовта позначка показує, де щось вирізано. Клацніть її, щоб повернути частину.</string>
+	<key>AI agent</key>
+	<string>ШІ-агент</string>
+	<key>AI agent connected</key>
+	<string>ШІ-агента під’єднано</string>
+	<key>AI agents</key>
+	<string>ШІ-агенти</string>
+	<key>AI agents are off: Settings ▸ Agent.</key>
+	<string>ШІ-агентів вимкнено: Параметри ▸ Агент.</string>
 	<key>About</key>
 	<string>Про програму</string>
 	<key>About %lld min left</key>
@@ -514,6 +528,8 @@
 	<string>Додаткові інструменти</string>
 	<key>After Capture</key>
 	<string>Після створення знімка</string>
+	<key>After Revert All, ⌘Z brings the changes back.</key>
+	<string>Після «Скасувати все» ⌘Z повертає зміни.</string>
 	<key>After capture</key>
 	<string>Після знімка</string>
 	<key>After changing the shape, move zooms, the camera, and captions so everything fits.</key>
@@ -528,6 +544,14 @@
 	<string>Коли ви зупините запис, LF Studios запитає, куди його зберегти, а тоді покладе все з нього в одну нову папку: відео, камеру, звук і проєкт, який усе це відкриває.</string>
 	<key>Afterwards, click Restore size to put the window back.</key>
 	<string>Після запису клацніть «Повернути розмір», щоб повернути вікну попередній вигляд.</string>
+	<key>Agent</key>
+	<string>Агент</string>
+	<key>Agent Panel</key>
+	<string>Панель «Агент»</string>
+	<key>Agent editing</key>
+	<string>Агент редагує</string>
+	<key>Agents are off until you turn them on in Settings ▸ Agent.</key>
+	<string>Агентів вимкнено, доки ви не ввімкнете їх у Параметрах ▸ Агент.</string>
 	<key>Aim by Hand</key>
 	<string>Навести вручну</string>
 	<key>Aim by hand</key>
@@ -566,6 +590,8 @@
 	<string>Усі три вимкнені, доки ви їх не ввімкнете, і їм потрібна доступність.</string>
 	<key>All zooms set to %@</key>
 	<string>Для всіх наближень встановлено %@</string>
+	<key>Allow AI agents to edit</key>
+	<string>Дозволити ШІ-агентам редагувати</string>
 	<key>Allow Accessibility (optional)</key>
 	<string>Дозвольте доступність (необов’язково)</string>
 	<key>Allow Access…</key>
@@ -594,12 +620,20 @@
 	<string>Завжди показувати стрілку</string>
 	<key>Amber Fold</key>
 	<string>Бурштинова складка</string>
+	<key>An AI agent is connected: click to disconnect it</key>
+	<string>ШІ-агента під’єднано: натисніть, щоб від’єднати</string>
+	<key>An AI agent is editing. Click or type in the editor to take over.</key>
+	<string>ШІ-агент редагує. Натисніть або почніть друкувати в редакторі, щоб перехопити керування.</string>
 	<key>An LF Studios project (Name.lfs): open the folder in LF Studios 1.12.0 or later to edit the video again. With clips cut to your edit, Include originals so it reopens in LF Studios adds the untouched recordings it needs.</key>
 	<string>Проєкт LF Studios (Назва.lfs): відкрийте папку в LF Studios 1.12.0 або новішій, щоб знову редагувати відео. Якщо кліпи обрізано за вашим монтажем, «Додати оригінали, щоб знову відкрити в LF Studios» додає потрібні необрізані записи.</string>
 	<key>An adjustment clip changes everything under it while it plays: drag its ends to set when.</key>
 	<string>Кліп корекції змінює все під ним, поки він відтворюється: перетягніть його краї, щоб задати, коли саме.</string>
 	<key>An adjustment clip changes everything under it while it plays: set it up in Properties ▸ Adjust (exposure, HSL, curves, colour wheels) and Filter.</key>
 	<string>Кліп корекції змінює все під ним, поки він відтворюється: налаштуйте його у Властивості ▸ Корекція (експозиція, HSL, криві, кольорові круги) і Фільтр.</string>
+	<key>An agent can read the open project and edit it with the editor's own commands, each one ⌘Z step. It can't export, record, or open files outside the project and its folder. You see every change in the Agent panel and choose Keep or Revert all at the end.</key>
+	<string>Агент може читати відкритий проєкт і редагувати його командами редактора, кожна — один крок ⌘Z. Він не може експортувати, записувати чи відкривати файли поза проєктом і його папкою. Кожну зміну видно на панелі «Агент», а наприкінці ви вибираєте «Залишити» або «Скасувати все».</string>
+	<key>An agent edits with the editor's own commands, and you stay in charge.</key>
+	<string>Агент редагує командами редактора, а керування лишається за вами.</string>
 	<key>An older Creative Handoff is put back together from its files: the screen, the cuts, the camera at its place, captions, markers, and the pointer. A summary says what came back.</key>
 	<string>Старіше «Творче передавання» відновлюється з його файлів: екран, вирізані фрагменти, камера на своєму місці, субтитри, маркери й курсор. Підсумок показує, що вдалося відновити.</string>
 	<key>An optional 2-second “Made with LF Studios” card at the end.</key>
@@ -622,6 +656,8 @@
 	<string>Інструменти розмітки</string>
 	<key>Another app may use the same keys: choose different ones.</key>
 	<string>Інша програма може використовувати ті самі клавіші: виберіть інші.</string>
+	<key>Answer</key>
+	<string>Відповідь</string>
 	<key>Any color…</key>
 	<string>Будь-який колір…</string>
 	<key>Any other folder: Import Folder lists the videos and sound files. Choose which is the screen recording, which the camera, and which sound to add as tracks, and when each starts.</key>
@@ -686,6 +722,8 @@
 	<string>Застосувати до всіх склейок…</string>
 	<key>Apply to all zooms</key>
 	<string>Застосувати до всіх наближень</string>
+	<key>Apps that connect directly need the new one; the setups above keep working.</key>
+	<string>Застосункам із прямим підключенням потрібен новий токен; налаштування вище й далі працюють.</string>
 	<key>Aqua</key>
 	<string>Аква</string>
 	<key>Aqua Marble</key>
@@ -788,6 +826,8 @@
 	<string>ТЕРМІНОВО</string>
 	<key>Back</key>
 	<string>Назад</string>
+	<key>Back to how the project was before the agent started (⌘Z brings the changes back)</key>
+	<string>Повернути проєкт до вигляду перед роботою агента (⌘Z поверне зміни)</string>
 	<key>Back to the LF Studios look</key>
 	<string>Відновлено стиль LF Studios</string>
 	<key>Back to the original recording — ⌘Z to undo</key>
@@ -1288,6 +1328,8 @@
 	<string>Змінюйте гучність із часом, плавно вмикайте й вимикайте звук, вирівнюйте гучність і знаходьте біт.</string>
 	<key>Changed your mind? Click the yellow marker on the timeline to bring a cut part back.</key>
 	<string>Передумали? Клацніть жовту позначку на шкалі часу, щоб повернути вирізану частину.</string>
+	<key>Changes</key>
+	<string>Зміни</string>
 	<key>Changes only the camera, never your screen.</key>
 	<string>Змінює лише камеру, але ніколи ваш екран.</string>
 	<key>Changes the main track and the tracks under this one while it plays.</key>
@@ -1494,6 +1536,10 @@
 	<string>Оплески</string>
 	<key>Classic</key>
 	<string>Класичний</string>
+	<key>Claude Code, Cursor and Codex have their own Copy setup buttons.</key>
+	<string>Claude Code, Cursor і Codex мають власні кнопки «Скопіювати налаштування».</string>
+	<key>Claude ▸ Settings ▸ Developer ▸ Edit Config: paste it into claude_desktop_config.json, save, and restart Claude.</key>
+	<string>Claude ▸ Параметри ▸ Розробник ▸ Змінити конфігурацію: вставте в claude_desktop_config.json, збережіть і перезапустіть Claude.</string>
 	<key>Clay</key>
 	<string>Глина</string>
 	<key>Clean</key>
@@ -1604,6 +1650,8 @@
 	<string>Клацніть «Обрізання».</string>
 	<key>Click Cut this part in the panel on the right.</key>
 	<string>Клацніть «Вирізати цю частину» на панелі праворуч.</string>
+	<key>Click Dismiss to put a Tack away.</key>
+	<string>Натисніть «Сховати», щоб прибрати мітку.</string>
 	<key>Click Done or press Esc to finish.</key>
 	<string>Щоб завершити, клацніть «Готово» або натисніть Esc.</string>
 	<key>Click Done, or press Esc, when you reach the end.</key>
@@ -1634,6 +1682,8 @@
 	<string>Клацніть «Зображення» над переглядом.</string>
 	<key>Click Import, or drag files from Finder onto the Library.</key>
 	<string>Натисніть «Імпорт» або перетягніть файли з Finder у Бібліотеку.</string>
+	<key>Click Keep to keep them, or Revert All to go back to how the project was before it started.</key>
+	<string>Натисніть «Залишити», щоб зберегти їх, або «Скасувати все», щоб повернути проєкт до вигляду перед початком.</string>
 	<key>Click Marker on the timeline's toolbar. Markers added while recording are there too.</key>
 	<string>Клацніть «Маркер» на панелі інструментів шкали часу. Маркери, додані під час запису, теж там.</string>
 	<key>Click Microphone in the recording bar. A menu above the bar picks which microphone.</key>
@@ -1698,6 +1748,8 @@
 	<string>Клацніть маркер, щоб перейти до нього; двічі клацніть, щоб перейменувати; клацніть правою кнопкою, щоб видалити.</string>
 	<key>Click a picture on the player to move it, resize it from a corner, or turn it with the round knob. It lands on the middle and the edges, with a line showing where; hold ⌘ to move it freely.</key>
 	<string>Клацніть картинку в плеєрі, щоб перемістити її, змінити розмір за кут або повернути круглою ручкою. Вона прилипає до середини й країв, лінія показує де; утримуйте ⌘, щоб рухати вільно.</string>
+	<key>Click a pin to go there.</key>
+	<string>Натисніть шпильку, щоб перейти туди.</string>
 	<key>Click a preset (Fade, Zoom, Slide, Spin, Pop, Blur…), then set its Length.</key>
 	<string>Клацніть готовий варіант («Згасання», «Масштаб», «Зсув», «Обертання», «Поп», «Розмиття»…), а тоді задайте «Тривалість».</string>
 	<key>Click a project to open it.</key>
@@ -1740,6 +1792,8 @@
 	<string>Клацніть чи тягніть будь-де на шкалі часу, щоб перейти туди.</string>
 	<key>Click or press Esc to cancel</key>
 	<string>Клацніть або натисніть Esc, щоб скасувати</string>
+	<key>Click or type in the editor while it works and it pauses: its next change waits until you click Resume in the Agent panel.</key>
+	<string>Натисніть або почніть друкувати в редакторі під час його роботи, і він стане на паузу: наступна зміна чекатиме, доки ви не натиснете «Продовжити» на панелі «Агент».</string>
 	<key>Click play, press Space, or tick Start with recording.</key>
 	<string>Клацніть кнопку відтворення, натисніть пробіл або позначте «Разом із записом».</string>
 	<key>Click removed — ⌘Z to undo</key>
@@ -1898,6 +1952,12 @@
 	<string>Конфеті</string>
 	<key>Conflict detected</key>
 	<string>Виявлено конфлікт</string>
+	<key>Connect Claude Desktop</key>
+	<string>Під’єднати Claude Desktop</string>
+	<key>Connect an agent</key>
+	<string>Під’єднати агента</string>
+	<key>Connected: %@</key>
+	<string>Під’єднано: %@</string>
 	<key>Contrast</key>
 	<string>Контраст</string>
 	<key>Cool</key>
@@ -1956,6 +2016,8 @@
 	<string>Копіювати знімки в буфер обміну</string>
 	<key>Copy screenshots to the clipboard.</key>
 	<string>Копіювати знімки в буфер обміну.</string>
+	<key>Copy setup</key>
+	<string>Скопіювати налаштування</string>
 	<key>Copy text &amp; QR codes</key>
 	<string>Копіювання тексту та QR-кодів</string>
 	<key>Copy text from a screenshot</key>
@@ -2178,12 +2240,18 @@
 	<string>Панель «Курсор» ▸ Набір тексту ▸ Прискорити набір до 2×, 3×, 4×, 6× чи 8×.</string>
 	<key>Cursor styles</key>
 	<string>Стилі курсора</string>
+	<key>Cursor ▸ Settings ▸ MCP ▸ Add new MCP server: paste it into mcp.json and save.</key>
+	<string>Cursor ▸ Параметри ▸ MCP ▸ Додати MCP-сервер: вставте в mcp.json і збережіть.</string>
 	<key>Cursor, clicks, and keyboard shortcuts</key>
 	<string>Курсор, клацання й клавіатурні скорочення</string>
 	<key>Cursor: shows the pointer in the video.</key>
 	<string>«Курсор»: показує курсор у відео.</string>
 	<key>Curve</key>
 	<string>Крива</string>
+	<key>Curve handle: %@</key>
+	<string>Ручка кривої: %@</string>
+	<key>Curve handle: drag to shape the curve; double-click to reset it</key>
+	<string>Ручка кривої: перетягніть, щоб змінити криву; подвійне натискання скидає її</string>
 	<key>Curve point</key>
 	<string>Точка кривої</string>
 	<key>Curve: Montage, Hero, Bullet, Jump cut, Flash in or Flash out, or drag the points of your own.</key>
@@ -2362,6 +2430,8 @@
 	<string>Відкинути запис</string>
 	<key>Discard this recording?</key>
 	<string>Відкинути запис?</string>
+	<key>Disconnect</key>
+	<string>Від’єднати</string>
 	<key>Disk almost full</key>
 	<string>Диск майже повний</string>
 	<key>Disk almost full: it warns you, then stops and saves the recording before the disk is full.</key>
@@ -2410,6 +2480,8 @@
 	<string>Готово</string>
 	<key>Done (Esc)</key>
 	<string>Готово (Esc)</string>
+	<key>Done: review the changes</key>
+	<string>Готово: перевірте зміни</string>
 	<key>Double-click</key>
 	<string>Двічі клацнути</string>
 	<key>Double-click a caption on the timeline to change its words. Press Return to keep them or Esc to leave them as they were.</key>
@@ -2786,6 +2858,8 @@
 	<string>Будь-яку зміну можна відмінити, крок за кроком.</string>
 	<key>Every change is saved as you go. Close the editor and open the recording again: your edit is still there.</key>
 	<string>Кожна зміна зберігається на ходу. Закрийте редактор і знову відкрийте запис — ваш монтаж на місці.</string>
+	<key>Every change it makes is one ⌘Z step, like yours.</key>
+	<string>Кожна його зміна — один крок ⌘Z, як і ваші.</string>
 	<key>Every clip is muted — this export will have no sound.</key>
 	<string>Звук усіх кліпів вимкнено — цей експорт буде без звуку.</string>
 	<key>Every cut, zoom, annotation, caption, and style change on this video is removed — the recordings you added stay. You can undo this.</key>
@@ -3324,6 +3398,8 @@
 	<string>Глітч</string>
 	<key>Glow</key>
 	<string>Сяйво</string>
+	<key>Go there</key>
+	<string>Перейти туди</string>
 	<key>Go to End</key>
 	<string>Перейти в кінець</string>
 	<key>Go to Start</key>
@@ -3426,6 +3502,8 @@
 	<string>Ховати значки робочого столу під час знімання</string>
 	<key>Hide private info</key>
 	<string>Приховати особисті дані</string>
+	<key>Hide the Agent panel</key>
+	<string>Сховати панель «Агент»</string>
 	<key>Hide the Menu Bar Icon?</key>
 	<string>Сховати значок у смузі меню?</string>
 	<key>Hide the camera whenever you're not talking, and bring it back when you speak.</key>
@@ -3542,6 +3620,8 @@
 	<string>Скільки тіней на екрані залишається</string>
 	<key>How strongly blur and pixelate hide what's under them</key>
 	<string>Наскільки сильно розмиття й пікселізація приховують вміст під ними</string>
+	<key>How to edit in LF Studios</key>
+	<string>Як редагувати в LF Studios</string>
 	<key>Hue</key>
 	<string>Тон</string>
 	<key>I and O mark a part: Export can export just that part, and ⌫ cuts it.</key>
@@ -3618,6 +3698,8 @@
 	<string>Початок</string>
 	<key>In &amp; out</key>
 	<string>Початок і кінець</string>
+	<key>In Claude Desktop, choose Claude ▸ Settings ▸ Developer ▸ Edit Config.</key>
+	<string>У Claude Desktop виберіть Claude ▸ Параметри ▸ Розробник ▸ Змінити конфігурацію.</string>
 	<key>In History, or from the preview after capture.</key>
 	<string>В історії або з перегляду після знімка.</string>
 	<key>In History: the All Captures menu at the top, and the screenshots themselves.</key>
@@ -3760,6 +3842,8 @@
 	<string>«Встановити оновлення»: завантажує оновлення, встановлює його й знову відкриває LF Studios.</string>
 	<key>Instant</key>
 	<string>Миттєво</string>
+	<key>Instructions for the agent</key>
+	<string>Інструкції для агента</string>
 	<key>Intensity</key>
 	<string>Інтенсивність</string>
 	<key>Interface</key>
@@ -3784,6 +3868,12 @@
 	<string>Ірис</string>
 	<key>It also comes out of the video. The file stays where it is, and ⌘Z brings it back.</key>
 	<string>Він також зникне з відео. Файл лишиться на місці, а ⌘Z усе поверне.</string>
+	<key>It can read the timeline, the transcript, the captions, the markers and the keyframes, and look at frames.</key>
+	<string>Він може читати таймлайн, розшифровку, субтитри, маркери та ключові кадри й переглядати кадри.</string>
+	<key>It can split, trim, delete, add markers, titles and keyframes, fix captions, remove ums, and place files that are already in the project or its folder.</key>
+	<string>Він може розрізати, обрізати, видаляти, додавати маркери, титри та ключові кадри, виправляти субтитри, прибирати «еее» і розміщувати файли, які вже є в проєкті чи його папці.</string>
+	<key>It can't export, record sound or video, use the clipboard, or open files from anywhere else. Locked tracks stay as they are.</key>
+	<string>Він не може експортувати, записувати звук чи відео, користуватися буфером обміну або відкривати файли з інших місць. Заблоковані доріжки не змінюються.</string>
 	<key>It checks the free space first, and shows how much the originals add. Cancel removes the half-made folder.</key>
 	<string>Спершу перевіряється вільне місце й показується, скільки додадуть оригінали. «Скасувати» вилучає недороблену папку.</string>
 	<key>It happens by itself. The bar while recording shows a short note, and a notice explains it.</key>
@@ -3890,8 +3980,12 @@
 	<string>Тримати обличчя в центрі</string>
 	<key>Keep files on your desktop out of your screenshots.</key>
 	<string>Нехай файли з робочого столу не потрапляють у ваші знімки.</string>
+	<key>Keep or Revert all</key>
+	<string>Залишити чи скасувати все</string>
 	<key>Keep pitch</key>
 	<string>Зберігати висоту тону</string>
+	<key>Keep the agent's changes (each still undoes with ⌘Z)</key>
+	<string>Залишити зміни агента (кожну й далі можна скасувати ⌘Z)</string>
 	<key>Keep the current style</key>
 	<string>Залишити поточний стиль</string>
 	<key>Keeps just the person, found on this Mac</key>
@@ -3902,6 +3996,8 @@
 	<string>Не дає бульбашці камери закривати те, що показує наближення.</string>
 	<key>Kept for %@</key>
 	<string>Зарезервовано для «%@»</string>
+	<key>Kept the agent's changes</key>
+	<string>Зміни агента залишено</string>
 	<key>Key for %@: %@</key>
 	<string>Клавіша для «%1$@»: %2$@</string>
 	<key>Key or password</key>
@@ -4048,6 +4144,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>LF Studios — Історія знімків</string>
 	<key>LF Studios ▸ Check for Updates…, and Settings ▸ General ▸ Updates ▸ Check for updates automatically.</key>
 	<string>LF Studios ▸ Перевірити оновлення… і Параметри ▸ Загальні ▸ Оновлення ▸ Перевіряти оновлення автоматично.</string>
+	<key>LF Studios ▸ Settings ▸ Agent.</key>
+	<string>LF Studios ▸ Параметри ▸ Агент.</string>
 	<key>LF Studios' own floating windows stay out of your screen recordings and screenshots.</key>
 	<string>Власні плаваючі вікна LF Studios не потрапляють у ваші записи екрана й знімки.</string>
 	<key>LFSTUDIOS LIBRARY</key>
@@ -4116,6 +4214,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Тривалість</string>
 	<key>Less rumble and boom, more presence</key>
 	<string>Менше гулу й бубоніння, більше чіткості</string>
+	<key>Let an AI agent such as Claude edit the project you have open, while you watch.</key>
+	<string>Дозвольте ШІ-агентові, наприклад Claude, редагувати відкритий проєкт у вас на очах.</string>
 	<key>Let go to capture it.</key>
 	<string>Відпустіть, щоб зняти її.</string>
 	<key>Let go to float</key>
@@ -4708,6 +4808,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Нова папка</string>
 	<key>New Folder…</key>
 	<string>Нова папка…</string>
+	<key>New Token</key>
+	<string>Новий токен</string>
 	<key>New badge</key>
 	<string>Значок «Нове»</string>
 	<key>New caption</key>
@@ -4726,6 +4828,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>«Новий запис» записує область екрана, вікно або весь екран.</string>
 	<key>New to LF Studios? Start here: it takes about five minutes.</key>
 	<string>Уперше в LF Studios? Почніть звідси — це займе близько п’яти хвилин.</string>
+	<key>New token</key>
+	<string>Новий токен</string>
 	<key>New zooms</key>
 	<string>Нові наближення</string>
 	<key>News</key>
@@ -4734,6 +4838,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Наступний кадр (→)</string>
 	<key>Next keyframe</key>
 	<string>Наступний ключовий кадр</string>
+	<key>Next to Claude Desktop, click Copy setup.</key>
+	<string>Біля Claude Desktop натисніть «Скопіювати налаштування».</string>
 	<key>Next to the video, LF Studios keeps the details the editor needs, on your Mac.</key>
 	<string>Поруч із відео LF Studios зберігає дані, потрібні редактору, — на вашому Mac.</string>
 	<key>Nice shot. You're all set.</key>
@@ -4750,6 +4856,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>«Мій стиль» не вибрано</string>
 	<key>No My Style yet — open Presets ▸ Edit Presets and choose Use as My Style on one</key>
 	<string>«Мій стиль» ще не вибрано — відкрийте Стилі ▸ Змінити стилі й виберіть в одного «Використовувати як „Мій стиль“»</string>
+	<key>No agent is editing this project.</key>
+	<string>Цей проєкт не редагує жоден агент.</string>
 	<key>No background</key>
 	<string>Без тла</string>
 	<key>No background — text only</key>
@@ -4896,8 +5004,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Не зараз</string>
 	<key>Not set</key>
 	<string>Не задано</string>
+	<key>Notes and questions an agent pins to a moment of the video.</key>
+	<string>Нотатки й запитання, які агент прикріплює до моменту відео.</string>
 	<key>Nothing at the playhead</key>
 	<string>На покажчику нічого немає</string>
+	<key>Nothing changed yet.</key>
+	<string>Поки нічого не змінено.</string>
 	<key>Nothing here yet</key>
 	<string>Тут поки порожньо</string>
 	<key>Nothing in the Guide matches your search. Try a shorter word, like “zoom” or “camera”.</key>
@@ -4954,6 +5066,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Спершу вимкнено. Потрібна доступність.</string>
 	<key>Off until you turn it on. On, it zooms in on your clicks and switches on its options below; off, its zooms go.</key>
 	<string>Вимкнено, доки ви не ввімкнете. Увімкнене, воно наближає місця клацань і вмикає свої параметри нижче; вимкнене — його наближення прибираються.</string>
+	<key>Off until you turn it on. Only apps on this Mac can connect.</key>
+	<string>Вимкнено, доки ви не ввімкнете. Під’єднатися можуть лише застосунки на цьому Mac.</string>
 	<key>Off, Light, Smooth, or Silky.</key>
 	<string>«Вимкнено», «Злегка», «Плавно» чи «Шовковисто».</string>
 	<key>Off, it stays on the timeline but does nothing (V)</key>
@@ -5018,6 +5132,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Одне ⌘Z відміняє це.</string>
 	<key>Only %@ free on your disk — this may not fit. Free up space or save to another drive.</key>
 	<string>На диску вільно лише %@ — цього може не вистачити. Звільніть місце або збережіть на інший диск.</string>
+	<key>Only apps on this Mac can connect, with a secret token. New token makes the old one stop working.</key>
+	<string>Під’єднатися можуть лише застосунки на цьому Mac із секретним токеном. «Новий токен» вимикає старий.</string>
 	<key>Only for these, and never to send your work:</key>
 	<string>Лише для цього, і ніколи — щоб надіслати вашу роботу:</string>
 	<key>Only if you turned them on: shortcuts, typing positions and times, and your speaker notes.</key>
@@ -5048,6 +5164,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Відкрийте історію з меню LF Studios, клацніть знімок правою кнопкою й виберіть «Закріпити на екрані».</string>
 	<key>Open Keyboard Settings</key>
 	<string>Відкрити параметри клавіатури</string>
+	<key>Open LF Studios ▸ Settings ▸ Agent and turn on Allow AI agents to edit.</key>
+	<string>Відкрийте LF Studios ▸ Параметри ▸ Агент і ввімкніть «Дозволити ШІ-агентам редагувати».</string>
 	<key>Open Link</key>
 	<string>Відкрити посилання</string>
 	<key>Open Messages</key>
@@ -5080,6 +5198,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Відкрийте папку з файлами як один проєкт: папку запису, «Творче передавання» або будь-яку папку з відео.</string>
 	<key>Open a project</key>
 	<string>Відкриття проєкту</string>
+	<key>Open a project in LF Studios. In Claude, ask for an edit, for example: Remove the ums and tighten the pauses.</key>
+	<string>Відкрийте проєкт у LF Studios. У Claude попросіть правку, наприклад: «Прибери „еее“ і скороти паузи».</string>
 	<key>Open a project, a recording's folder, a Creative Handoff, or a video</key>
 	<string>Відкрити проєкт, папку запису, «Творче передавання» або відео</string>
 	<key>Open a recording in the video editor first, then click Show me.</key>
@@ -5164,6 +5284,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Або, якщо ввімкнено перегляд після знімка, клацніть «Закріпити» на мініатюрі.</string>
 	<key>Orange</key>
 	<string>Помаранчевий</string>
+	<key>Orange pins on the timeline's ruler, and the Agent panel.</key>
+	<string>Помаранчеві шпильки на лінійці таймлайна і панель «Агент».</string>
 	<key>Orchid</key>
 	<string>Орхідея</string>
 	<key>Original</key>
@@ -5218,10 +5340,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Вставити</string>
 	<key>Paste it anywhere with ⌘V.</key>
 	<string>Вставте його будь-де за допомогою ⌘V.</string>
+	<key>Paste it into Terminal and press Return.</key>
+	<string>Вставте в Термінал і натисніть Return.</string>
+	<key>Paste it into ~/.codex/config.toml and save.</key>
+	<string>Вставте в ~/.codex/config.toml і збережіть.</string>
 	<key>Paste or type your notes here. They stay out of every recording.</key>
 	<string>Вставте або введіть нотатки тут. Вони не потрапляють у жоден запис.</string>
 	<key>Paste or type your notes, then click Read.</key>
 	<string>Вставте або введіть нотатки, а тоді клацніть «Читати».</string>
+	<key>Paste the setup into claude_desktop_config.json, save it, and quit and reopen Claude.</key>
+	<string>Вставте налаштування в claude_desktop_config.json, збережіть, закрийте й знову відкрийте Claude.</string>
 	<key>Pastel</key>
 	<string>Пастель</string>
 	<key>Pause</key>
@@ -5252,6 +5380,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Призупиніть відео й перетягніть субтитр на перегляді.</string>
 	<key>Paused</key>
 	<string>Призупинено</string>
+	<key>Paused: you took over</key>
+	<string>Пауза: ви перехопили керування</string>
 	<key>Pauses longer than a second become short ones, except where you're clicking, typing, or moving the pointer. ⌘Z undoes either one.</key>
 	<string>Паузи, довші за секунду, стають короткими, крім місць, де ви клацаєте, друкуєте чи рухаєте курсор. ⌘Z відміняє будь-яку з цих дій.</string>
 	<key>Peach</key>
@@ -6044,6 +6174,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторити «Тримати обличчя в центрі»</string>
 	<key>Redo Keep Pitch</key>
 	<string>Повторити збереження висоти тону</string>
+	<key>Redo Keyframe Curve</key>
+	<string>Повторити криву ключового кадру</string>
 	<key>Redo Keyframe Easing</key>
 	<string>Повторити зміну згладжування ключового кадру</string>
 	<key>Redo Link Audio</key>
@@ -6172,6 +6304,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторити зміну стилю субтитрів</string>
 	<key>Redo Reverse</key>
 	<string>Повторити реверс</string>
+	<key>Redo Revert Agent Changes</key>
+	<string>Повторити скасування змін агента</string>
 	<key>Redo Rotate</key>
 	<string>Повторити поворот</string>
 	<key>Redo Shortcut Style</key>
@@ -6476,6 +6610,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Стиль усіх субтитрів</string>
 	<key>Results come in groups: Commands, Media, Clips, Captions, Markers.</key>
 	<string>Результати згруповано: команди, медіа, кліпи, субтитри, маркери.</string>
+	<key>Resume</key>
+	<string>Продовжити</string>
 	<key>Resume Recording</key>
 	<string>Продовжити запис</string>
 	<key>Resume recording</key>
@@ -6500,6 +6636,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Обертаємо кліп…</string>
 	<key>Reversing “%@”…</key>
 	<string>Обертаємо «%@»…</string>
+	<key>Revert All</key>
+	<string>Скасувати все</string>
+	<key>Reverted the agent's changes</key>
+	<string>Зміни агента скасовано</string>
 	<key>Review Changes…</key>
 	<string>Переглянути зміни…</string>
 	<key>Review the decoded email payload before copying.</key>
@@ -6632,6 +6772,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Зберегти знімок екрана на диск</string>
 	<key>Save subtitles</key>
 	<string>Збереження субтитрів</string>
+	<key>Save the agent instructions. For Claude Code, save them as SKILL.md in a folder named lfstudios-editing inside ~/.claude/skills.</key>
+	<string>Збережіть інструкції для агента. Для Claude Code збережіть їх як SKILL.md у папці lfstudios-editing всередині ~/.claude/skills.</string>
 	<key>Save your edit as a video that plays everywhere.</key>
 	<string>Збережіть змонтоване відео у форматі, який відтворюється будь-де.</string>
 	<key>Save your look once, then put it on any video in one click.</key>
@@ -6862,6 +7004,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Виберіть кілька, щоб перетягнути їх усі разом.</string>
 	<key>Select size</key>
 	<string>Вибрати розмір</string>
+	<key>Select the clip to see its curve handles (small diamonds beside each point). Drag one up or down to bend the curve; double-click it to go back to the easing (1.19.0).</key>
+	<string>Виберіть кліп, щоб побачити ручки кривої (маленькі ромби біля точок). Перетягніть ручку вгору чи вниз, щоб вигнути криву; подвійне натискання повертає згладжування (1.19.0).</string>
 	<key>Select the clips (⇧-click to add more), then press ⌥G.</key>
 	<string>Виберіть кліпи (⇧-клацання додає ще), а тоді натисніть ⌥G.</string>
 	<key>Select tool · split tool</key>
@@ -6888,6 +7032,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Вибір: %@ на %@ точок</string>
 	<key>Selection %@ by %@ points. Arrow keys move it, Return captures, Escape cancels.</key>
 	<string>Вибір: %@ на %@ точок. Клавіші зі стрілками переміщують його, Return знімає, Escape скасовує.</string>
+	<key>Send</key>
+	<string>Надіслати</string>
 	<key>Send everything to a video editor</key>
 	<string>Передати все у відеоредактор</string>
 	<key>Sepia</key>
@@ -6930,6 +7076,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Встановлює гучність на рівні, якого очікують відеосайти (−16 LUFS)</string>
 	<key>Settings</key>
 	<string>Параметри</string>
+	<key>Settings ▸ Agent ▸ Save… gives the agent a guide to LF Studios' tools (for Claude Code, a skill).</key>
+	<string>Параметри ▸ Агент ▸ Зберегти… дає агентові посібник з інструментів LF Studios (для Claude Code — навичка).</string>
 	<key>Settings ▸ General ▸ After Capture.</key>
 	<string>Параметри ▸ Загальні ▸ Після створення знімка.</string>
 	<key>Settings ▸ General ▸ Appearance: System, Light Mode, or Dark Mode.</key>
@@ -7372,12 +7520,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Разом із записом</string>
 	<key>Start, and press again to finish</key>
 	<string>Почати, а натиснути ще раз — завершити</string>
+	<key>Starting…</key>
+	<string>Запуск…</string>
 	<key>Starts</key>
 	<string>Початок</string>
 	<key>Starts after the screen by</key>
 	<string>Починається пізніше за екран на</string>
 	<key>Startup</key>
 	<string>Запуск</string>
+	<key>Status</key>
+	<string>Стан</string>
 	<key>Step %lld</key>
 	<string>Крок %lld</string>
 	<key>Steps</key>
@@ -7514,6 +7666,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>«Системний звук», «Мікрофон», «Курсор», «Камера», «Показувати клавіатурні скорочення» й «Нотатки доповідача»: клацніть, щоб увімкнути чи вимкнути кожен.</string>
 	<key>Table copied — paste it into a spreadsheet</key>
 	<string>Таблицю скопійовано — вставте її в електронну таблицю</string>
+	<key>Tack: %@</key>
+	<string>Мітка: %@</string>
+	<key>Tacks</key>
+	<string>Мітки</string>
 	<key>Tag</key>
 	<string>Плашка</string>
 	<key>Tag color</key>
@@ -7622,6 +7778,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Це відео порожнє</string>
 	<key>That window closed before recording could start.</key>
 	<string>Вікно закрилося до початку запису.</string>
+	<key>The Agent panel (Layout ▸ Agent Panel). It opens when an agent starts.</key>
+	<string>Панель «Агент» (Макет ▸ Панель «Агент»). Вона відкривається, коли агент починає роботу.</string>
+	<key>The Agent panel moves and floats like the others; its × hides it.</key>
+	<string>Панель «Агент» переміщується й відкривається окремо, як інші; її × ховає її.</string>
 	<key>The Home window</key>
 	<string>Вікно «Головна»</string>
 	<key>The LF Studios menu (Command Center)</key>
@@ -7656,6 +7816,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Меню «Проксі» під плеєром.</string>
 	<key>The Undo and Redo buttons in the editor's toolbar.</key>
 	<string>Кнопки «Відмінити» й «Повторити» на панелі інструментів редактора.</string>
+	<key>The agent connection couldn't start: %@</key>
+	<string>Не вдалося запустити підключення агентів: %@</string>
 	<key>The aspect ratio menu under the player.</key>
 	<string>Меню формату під плеєром.</string>
 	<key>The bar above the timeline. Hover a button for its name and key.</key>
@@ -7820,6 +7982,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Перегляд, який ви бачите під час запису, ніколи не потрапляє в сам запис екрана.</string>
 	<key>The project file (Name.lfs) opens everything again, exactly as you left it. LF Studios keeps it up to date as you edit.</key>
 	<string>Файл проєкту (Назва.lfs) знову відкриває все саме так, як ви залишили. LF Studios оновлює його, поки ви редагуєте.</string>
+	<key>The project open in the front editor window.</key>
+	<string>Проєкт, відкритий у передньому вікні редактора.</string>
 	<key>The recording bar</key>
 	<string>Панель запису</string>
 	<key>The recording bar, the camera bubble preview, Speaker notes, the countdown, and notices.</key>
@@ -8100,6 +8264,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Відтінок</string>
 	<key>Tiny</key>
 	<string>Tiny</string>
+	<key>Tip: drag a panel's top edge to move it</key>
+	<string>Порада: перетягніть верхній край панелі, щоб перемістити її</string>
 	<key>Tips</key>
 	<string>Поради</string>
 	<key>Title</key>
@@ -8108,6 +8274,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Заголовки</string>
 	<key>To</key>
 	<string>Кому</string>
+	<key>To answer a question, type in its Answer field in the Agent panel and click Send. The agent reads your answer.</key>
+	<string>Щоб відповісти на запитання, введіть текст у поле «Відповідь» на панелі «Агент» і натисніть «Надіслати». Агент прочитає вашу відповідь.</string>
 	<key>To attach the full report, drag it from Finder onto the GitHub page.</key>
 	<string>Щоб додати повний звіт, перетягніть його з Finder на сторінку GitHub.</string>
 	<key>To begin again, open the commands (⌘K) and choose Start Over from the Original Recording…. It asks first, and can be undone too.</key>
@@ -8138,6 +8306,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Щоб пропустити панель і одразу перейти в редактор, увімкніть «Відкривати відеоредактор після запису» в Параметри ▸ Загальні.</string>
 	<key>Today</key>
 	<string>Сьогодні</string>
+	<key>Token</key>
+	<string>Токен</string>
 	<key>Too long for a GIF at this size — it would need about %@ of memory. Make it lighter, export a part, or choose MP4.</key>
 	<string>Задовго для GIF такого розміру — потрібно приблизно %@ пам’яті. Полегште його, експортуйте частину чи виберіть MP4.</string>
 	<key>Too many icons? Remove some, or set an Open Command Center shortcut in Settings ▸ Shortcuts.</key>
@@ -8146,6 +8316,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Закоротке для вступу й завершення</string>
 	<key>Tools</key>
 	<string>Інструменти</string>
+	<key>Tools, habits and limits, as a file the agent can read (also a Claude skill).</key>
+	<string>Інструменти, звички та обмеження — файлом, який агент може прочитати (це й навичка Claude).</string>
 	<key>Top</key>
 	<string>Угорі</string>
 	<key>Top left</key>
@@ -8602,6 +8774,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Скасувати «Тримати обличчя в центрі»</string>
 	<key>Undo Keep Pitch</key>
 	<string>Відмінити збереження висоти тону</string>
+	<key>Undo Keyframe Curve</key>
+	<string>Скасувати криву ключового кадру</string>
 	<key>Undo Keyframe Easing</key>
 	<string>Відмінити зміну згладжування ключового кадру</string>
 	<key>Undo Link Audio</key>
@@ -8730,6 +8904,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Скасувати зміну стилю субтитрів</string>
 	<key>Undo Reverse</key>
 	<string>Відмінити реверс</string>
+	<key>Undo Revert Agent Changes</key>
+	<string>Скасувати скасування змін агента</string>
 	<key>Undo Rotate</key>
 	<string>Відмінити поворот</string>
 	<key>Undo Shortcut Style</key>
@@ -8950,6 +9126,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Перегляд відео</string>
 	<key>Video sizes</key>
 	<string>Розміри відео</string>
+	<key>Videos on the tracks above the main track have their sound under them too, and unlink the same way (1.19.0).</key>
+	<string>У відео на доріжках над основною звук теж під ними, і він відв’язується так само (1.19.0).</string>
 	<key>Videos that use this preset keep their look.</key>
 	<string>Відео з цим стилем збережуть свій вигляд.</string>
 	<key>View</key>
@@ -8998,6 +9176,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ВАУ!</string>
 	<key>Wait for it…</key>
 	<string>Чекайте…</string>
+	<key>Waiting for an agent</key>
+	<string>Очікування агента</string>
 	<key>Waiting…</key>
 	<string>Очікування…</string>
 	<key>Wallpaper</key>
@@ -9020,6 +9200,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Теплота</string>
 	<key>Warning</key>
 	<string>Попередження</string>
+	<key>Watch the changes come in, in the Agent panel. Click one to go to it.</key>
+	<string>Стежте за змінами на панелі «Агент». Натисніть будь-яку, щоб перейти до неї.</string>
 	<key>Watch the result, then change or delete any zoom.</key>
 	<string>Перегляньте результат, а тоді змініть чи видаліть будь-яке наближення.</string>
 	<key>Web</key>
@@ -9040,6 +9222,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Що LF Studios зберігає і чого не робить ніколи.</string>
 	<key>What a recording keeps</key>
 	<string>Що зберігає запис</string>
+	<key>What an agent can and can't do</key>
+	<string>Що агент може і чого не може</string>
 	<key>What is each file in “%@”?</key>
 	<string>Що за файли в «%@»?</string>
 	<key>What the clip follows: drag it over the thing that moves</key>
@@ -9058,8 +9242,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Якщо файл із такою назвою вже є, виберіть «Замінити» або «Залишити обидва».</string>
 	<key>When a key is taken, LF Studios says which command loses it.</key>
 	<string>Якщо клавіша вже зайнята, LF Studios покаже, яка команда її втратить.</string>
+	<key>When an agent finishes, see what it changed and keep it, or go back to how the project was.</key>
+	<string>Коли агент закінчить, перегляньте його зміни й залиште їх або поверніть проєкт до попереднього вигляду.</string>
 	<key>When recording a window: the Window size menu in the row above the recording bar.</key>
 	<string>Під час запису вікна: меню «Розмір вікна» в рядку над панеллю запису.</string>
+	<key>When the agent is done, its changes are marked on the timeline in orange.</key>
+	<string>Коли агент закінчить, його зміни позначаються на таймлайні помаранчевим.</string>
 	<key>When the text has links, email addresses, or a table, LF Studios offers more ways to use it.</key>
 	<string>Якщо в тексті є посилання, адреси ел. пошти чи таблиця, LF Studios пропонує більше способів ними скористатися.</string>
 	<key>When they're ready, Edit with Proxies turns on.</key>
@@ -9174,6 +9362,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Так</string>
 	<key>Yesterday</key>
 	<string>Учора</string>
+	<key>You answered: %@</key>
+	<string>Ваша відповідь: %@</string>
 	<key>You can also drop a video file on the LF Studios icon in the Dock.</key>
 	<string>Можна також кинути відеофайл на значок LF Studios у Dock.</string>
 	<key>You can close this — the handoff keeps going.</key>

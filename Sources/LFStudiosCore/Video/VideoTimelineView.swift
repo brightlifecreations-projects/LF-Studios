@@ -338,6 +338,8 @@ struct VideoTimelineSurface: View {
             // The playhead's handle (1.18.0): over the ruler and the lanes,
             // never clipped by either; drag it to move the playhead.
             .overlay(alignment: .topLeading) {
+                // An agent's Tacks, and its changes in review (1.19.0).
+                VideoAgentTimelineMarks(model: model, offsets: offsets, x: { x($0) })
                 VideoPlayheadHandle(model: model, clock: model.clock, offsets: offsets, x: { x($0) }, time: { time($0) }, width: lanesViewport.width)
             }
         }

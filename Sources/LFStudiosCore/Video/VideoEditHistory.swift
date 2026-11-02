@@ -320,6 +320,8 @@ extension VideoEditDescription {
         case "Reorder Effects": return (L("Undo Reorder Effects"), L("Redo Reorder Effects"))
         case "Unlink Audio": return (L("Undo Unlink Audio"), L("Redo Unlink Audio"))
         case "Link Audio": return (L("Undo Link Audio"), L("Redo Link Audio"))
+        case "Revert Agent Changes": return (L("Undo Revert Agent Changes"), L("Redo Revert Agent Changes"))
+        case "Keyframe Curve": return (L("Undo Keyframe Curve"), L("Redo Keyframe Curve"))
         case "Move Audio": return (L("Undo Move Audio"), L("Redo Move Audio"))
         case "Restyle Captions": return (L("Undo Restyle Captions"), L("Redo Restyle Captions"))
         case "Move Keyframe": return (L("Undo Move Keyframe"), L("Redo Move Keyframe"))
