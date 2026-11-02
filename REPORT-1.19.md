@@ -57,14 +57,26 @@ Every choice made while you were away: DECISIONS-1.19.md (summarised below).
   handles, the panel tip, Project118SoundTests (old projects' picture and
   sound against LF Studios 1.18.0's own measurements, 6 kinds of project),
   VideoEditor119SnapshotTests. No real camera or microphone anywhere.
-- test-quick after every commit: green. test-full: see below.
+- test-quick after every commit: green.
+- test-full: green on the third run (1172 s). The first run failed three
+  screen-recording tests because a macOS prompt ("Visual Studio Code is
+  requesting to bypass the system private window picker…") was on screen
+  over what they record; v1.18.0's code failed them the same way at that
+  moment, so it was the screen, not the code. The prompt was gone by the
+  second run. That run found a real test problem: the panel and agent tests
+  share settings, so they now run one after another (scripts/test-groups.sh).
+  The first run also found a real layout problem (six Settings tabs),
+  fixed: Settings opens 640 pt wide.
+- CI green on the merged commit. Update rehearsal: 1.18.0 updated itself to
+  1.19.0 through Check for Updates. Published with 15–16 GB free.
 
 ## Links
 - Screenshots: https://claude.ai/artifact/5yfmhmTAPM1V9tKNLobGpY
-- Release: (filled in after publishing)
+- Release: https://github.com/brightlifecreations-projects/LF-Studios-Releases/releases/tag/v1.19.0
+- PR: https://github.com/brightlifecreations-projects/LF-Studios/pull/12 (merged)
 
 ## Moved to the next update
-- (none yet)
+- Nothing was moved: every planned piece shipped.
 
 ## Decisions (DECISIONS-1.19.md, in short)
 1. 15 GB free was enough (your answer); stop before publishing under 6 GB.
@@ -99,3 +111,6 @@ Every choice made while you were away: DECISIONS-1.19.md (summarised below).
    above, LF Studios layout).
 6. Right-click the sound under a video on a track above ▸ Unlink Audio,
    drag it, Link Audio.
+7. The macOS prompt about Visual Studio Code bypassing the private window
+   picker: answer it if it's still pending (it's macOS's periodic check for
+   apps that record the screen; the recording tests need it).
