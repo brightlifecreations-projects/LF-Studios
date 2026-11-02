@@ -58,7 +58,8 @@ final class PreferencesWindowController: NSWindowController, NSWindowDelegate {
         window.backgroundColor = LFStudiosColors.editorStageTop
         window.isOpaque = false
         window.isMovableByWindowBackground = true
-        window.setContentSize(NSSize(width: 560, height: 620))
+        // Six tabs since Agent (1.19.0): wide enough for each at its design width.
+        window.setContentSize(NSSize(width: 640, height: 620))
         window.minSize = NSSize(width: 520, height: 520)
         window.center()
         window.isReleasedWhenClosed = false
@@ -119,7 +120,7 @@ struct PreferencesRootView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
-        .frame(minWidth: 520, idealWidth: 560, minHeight: 520, idealHeight: 620)
+        .frame(minWidth: 520, idealWidth: 640, minHeight: 520, idealHeight: 620)
     }
 }
 
