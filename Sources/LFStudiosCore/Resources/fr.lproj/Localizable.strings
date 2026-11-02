@@ -132,6 +132,8 @@
 	<string>%@ s</string>
 	<key>%@–%@ only</key>
 	<string>%@–%@ uniquement</string>
+	<key>%lld changes</key>
+	<string>%lld modifications</string>
 	<key>%lld files, about %@</key>
 	<string>%1$lld fichiers, environ %2$@</string>
 	<key>%lld markers</key>
@@ -180,6 +182,8 @@
 	<string>Une LUT 3D d’une autre app : sur le clip sélectionné, ou en clip de filtre</string>
 	<key>A README lists every file. Include speaker notes adds your notes.</key>
 	<string>Un fichier README liste tous les fichiers. Inclure les notes de l’orateur ajoute vos notes.</string>
+	<key>A Tack stays with its moment: when the clip moves or is trimmed, it moves along.</key>
+	<string>Une note reste attachée à son moment : si le clip est déplacé ou coupé, elle suit.</string>
 	<key>A big GIF — about %@ and %@ of memory to make. A smaller size, fewer fps, or MP4 is lighter.</key>
 	<string>Un GIF volumineux — environ %@, et %@ de mémoire pour le créer. Une taille plus petite, moins de fps ou le MP4 sont plus légers.</string>
 	<key>A block appears on the Camera lane: drag it to move it, drag its edges to change its length.</key>
@@ -218,6 +222,8 @@
 	<string>Un cadre d’une forme et d’une taille exactes, pour que votre vidéo soit prête pour YouTube, Reels ou Instagram.</string>
 	<key>A frame: the one at the playhead (Use the playhead picks again).</key>
 	<string>Une image de la vidéo : celle à la tête de lecture (Utiliser la tête de lecture la choisit à nouveau).</string>
+	<key>A green dot in the menu bar and the editor shows an agent is connected; click it to disconnect.</key>
+	<string>Un point vert dans la barre des menus et l’éditeur indique qu’un agent est connecté ; cliquez dessus pour le déconnecter.</string>
 	<key>A hairline that separates dark recordings from the background</key>
 	<string>Un filet fin détache les enregistrements sombres de l’arrière-plan</string>
 	<key>A keyframe for position, size, rotation and opacity at the playhead</key>
@@ -296,6 +302,14 @@
 	<string>Une fenêtre de cette taille serait plus grande que l’écran. La plus grande taille de même forme qui tient est %@ × %@.</string>
 	<key>A yellow marker shows where something was cut. Click it to bring the part back.</key>
 	<string>Un repère jaune indique l’endroit d’une coupe. Cliquez dessus pour récupérer le passage.</string>
+	<key>AI agent</key>
+	<string>Agent IA</string>
+	<key>AI agent connected</key>
+	<string>Agent IA connecté</string>
+	<key>AI agents</key>
+	<string>Agents IA</string>
+	<key>AI agents are off: Settings ▸ Agent.</key>
+	<string>Les agents IA sont désactivés : Réglages ▸ Agent.</string>
 	<key>About</key>
 	<string>À propos</string>
 	<key>About %lld min left</key>
@@ -510,6 +524,8 @@
 	<string>Outils avancés</string>
 	<key>After Capture</key>
 	<string>Après la capture</string>
+	<key>After Revert All, ⌘Z brings the changes back.</key>
+	<string>Après Tout annuler, ⌘Z rétablit les modifications.</string>
 	<key>After capture</key>
 	<string>Après la capture</string>
 	<key>After changing the shape, move zooms, the camera, and captions so everything fits.</key>
@@ -524,6 +540,14 @@
 	<string>Quand vous arrêtez, LF Studios vous demande où enregistrer, puis place tout dans un nouveau dossier : la vidéo, la caméra, le son et le projet qui ouvre le tout.</string>
 	<key>Afterwards, click Restore size to put the window back.</key>
 	<string>Ensuite, cliquez sur Rétablir la taille pour remettre la fenêtre comme avant.</string>
+	<key>Agent</key>
+	<string>Agent</string>
+	<key>Agent Panel</key>
+	<string>Panneau Agent</string>
+	<key>Agent editing</key>
+	<string>L’agent modifie</string>
+	<key>Agents are off until you turn them on in Settings ▸ Agent.</key>
+	<string>Les agents sont désactivés jusqu’à ce que vous les activiez dans Réglages ▸ Agent.</string>
 	<key>Aim by Hand</key>
 	<string>Viser à la main</string>
 	<key>Aim by hand</key>
@@ -564,6 +588,8 @@
 	<string>Les trois sont désactivées jusqu’à ce que vous les activiez, et nécessitent l’accessibilité.</string>
 	<key>All zooms set to %@</key>
 	<string>Tous les zooms réglés sur %@</string>
+	<key>Allow AI agents to edit</key>
+	<string>Autoriser les agents IA à modifier</string>
 	<key>Allow Accessibility (optional)</key>
 	<string>Autoriser l’accessibilité (facultatif)</string>
 	<key>Allow Access…</key>
@@ -592,12 +618,20 @@
 	<string>Toujours afficher la flèche</string>
 	<key>Amber Fold</key>
 	<string>Pli d’ambre</string>
+	<key>An AI agent is connected: click to disconnect it</key>
+	<string>Un agent IA est connecté : cliquez pour le déconnecter</string>
+	<key>An AI agent is editing. Click or type in the editor to take over.</key>
+	<string>Un agent IA modifie le projet. Cliquez ou tapez dans l’éditeur pour reprendre la main.</string>
 	<key>An LF Studios project (Name.lfs): open the folder in LF Studios 1.12.0 or later to edit the video again. With clips cut to your edit, Include originals so it reopens in LF Studios adds the untouched recordings it needs.</key>
 	<string>Un projet LF Studios (Nom.lfs) : ouvrez le dossier dans LF Studios 1.12.0 ou ultérieur pour modifier à nouveau la vidéo. Si les clips sont coupés selon votre montage, Inclure les originaux pour rouvrir dans LF Studios ajoute les enregistrements intacts nécessaires.</string>
 	<key>An adjustment clip changes everything under it while it plays: drag its ends to set when.</key>
 	<string>Un clip d’ajustement modifie tout ce qui est en dessous pendant sa lecture : faites glisser ses bords pour choisir quand.</string>
 	<key>An adjustment clip changes everything under it while it plays: set it up in Properties ▸ Adjust (exposure, HSL, curves, colour wheels) and Filter.</key>
 	<string>Un clip d’ajustement modifie tout ce qui est en dessous pendant sa lecture : réglez-le dans Propriétés ▸ Ajustements (exposition, TSL, courbes, roues chromatiques) et Filtre.</string>
+	<key>An agent can read the open project and edit it with the editor's own commands, each one ⌘Z step. It can't export, record, or open files outside the project and its folder. You see every change in the Agent panel and choose Keep or Revert all at the end.</key>
+	<string>Un agent peut lire le projet ouvert et le modifier avec les commandes de l’éditeur, chacune en une étape ⌘Z. Il ne peut ni exporter, ni enregistrer, ni ouvrir des fichiers hors du projet et de son dossier. Vous voyez chaque modification dans le panneau Agent et choisissez à la fin Conserver ou Tout annuler.</string>
+	<key>An agent edits with the editor's own commands, and you stay in charge.</key>
+	<string>Un agent modifie avec les commandes de l’éditeur, et vous gardez la main.</string>
 	<key>An older Creative Handoff is put back together from its files: the screen, the cuts, the camera at its place, captions, markers, and the pointer. A summary says what came back.</key>
 	<string>Une ancienne Transmission créative est reconstituée à partir de ses fichiers : l’écran, les coupes, la caméra à sa place, les sous-titres, les marqueurs et le pointeur. Un résumé indique ce qui a été récupéré.</string>
 	<key>An optional 2-second “Made with LF Studios” card at the end.</key>
@@ -620,6 +654,8 @@
 	<string>Outils d’annotation</string>
 	<key>Another app may use the same keys: choose different ones.</key>
 	<string>Une autre app utilise peut-être les mêmes touches : choisissez-en d’autres.</string>
+	<key>Answer</key>
+	<string>Réponse</string>
 	<key>Any color…</key>
 	<string>Toute couleur…</string>
 	<key>Any other folder: Import Folder lists the videos and sound files. Choose which is the screen recording, which the camera, and which sound to add as tracks, and when each starts.</key>
@@ -684,6 +720,8 @@
 	<string>Appliquer à toutes les coupes…</string>
 	<key>Apply to all zooms</key>
 	<string>Appliquer à tous les zooms</string>
+	<key>Apps that connect directly need the new one; the setups above keep working.</key>
+	<string>Les apps qui se connectent directement en ont besoin ; les configurations ci-dessus continuent de fonctionner.</string>
 	<key>Aqua</key>
 	<string>Turquoise</string>
 	<key>Aqua Marble</key>
@@ -786,6 +824,8 @@
 	<string>FLASH INFO</string>
 	<key>Back</key>
 	<string>Retour</string>
+	<key>Back to how the project was before the agent started (⌘Z brings the changes back)</key>
+	<string>Revenir au projet tel qu’il était avant l’agent (⌘Z rétablit les modifications)</string>
 	<key>Back to the LF Studios look</key>
 	<string>Retour au style LF Studios</string>
 	<key>Back to the original recording — ⌘Z to undo</key>
@@ -1286,6 +1326,8 @@
 	<string>Faites varier le volume dans le temps, ajoutez des fondus au son, égalisez le volume sonore et trouvez le rythme.</string>
 	<key>Changed your mind? Click the yellow marker on the timeline to bring a cut part back.</key>
 	<string>Vous avez changé d’avis ? Cliquez sur le repère jaune de la timeline pour récupérer un passage coupé.</string>
+	<key>Changes</key>
+	<string>Modifications</string>
 	<key>Changes only the camera, never your screen.</key>
 	<string>Ne modifie que la caméra, jamais votre écran.</string>
 	<key>Changes the main track and the tracks under this one while it plays.</key>
@@ -1492,6 +1534,10 @@
 	<string>Clap</string>
 	<key>Classic</key>
 	<string>Classique</string>
+	<key>Claude Code, Cursor and Codex have their own Copy setup buttons.</key>
+	<string>Claude Code, Cursor et Codex ont leur propre bouton Copier la configuration.</string>
+	<key>Claude ▸ Settings ▸ Developer ▸ Edit Config: paste it into claude_desktop_config.json, save, and restart Claude.</key>
+	<string>Claude ▸ Réglages ▸ Développeur ▸ Modifier la configuration : collez-le dans claude_desktop_config.json, enregistrez et relancez Claude.</string>
 	<key>Clay</key>
 	<string>Argile</string>
 	<key>Clean</key>
@@ -1602,6 +1648,8 @@
 	<string>Cliquez sur Rognage.</string>
 	<key>Click Cut this part in the panel on the right.</key>
 	<string>Cliquez sur Couper ce passage dans le panneau de droite.</string>
+	<key>Click Dismiss to put a Tack away.</key>
+	<string>Cliquez sur Ignorer pour ranger une note.</string>
 	<key>Click Done or press Esc to finish.</key>
 	<string>Cliquez sur Terminé ou appuyez sur Esc pour finir.</string>
 	<key>Click Done, or press Esc, when you reach the end.</key>
@@ -1632,6 +1680,8 @@
 	<string>Cliquez sur Image au-dessus de l’aperçu.</string>
 	<key>Click Import, or drag files from Finder onto the Library.</key>
 	<string>Cliquez sur Importer, ou faites glisser des fichiers du Finder vers la Bibliothèque.</string>
+	<key>Click Keep to keep them, or Revert All to go back to how the project was before it started.</key>
+	<string>Cliquez sur Conserver pour les garder, ou sur Tout annuler pour revenir au projet tel qu’il était avant.</string>
 	<key>Click Marker on the timeline's toolbar. Markers added while recording are there too.</key>
 	<string>Cliquez sur Marqueur dans la barre d’outils de la timeline. Les marqueurs ajoutés pendant l’enregistrement y sont aussi.</string>
 	<key>Click Microphone in the recording bar. A menu above the bar picks which microphone.</key>
@@ -1696,6 +1746,8 @@
 	<string>Cliquez sur un marqueur pour y aller ; double-cliquez pour le renommer ; clic droit pour le supprimer.</string>
 	<key>Click a picture on the player to move it, resize it from a corner, or turn it with the round knob. It lands on the middle and the edges, with a line showing where; hold ⌘ to move it freely.</key>
 	<string>Cliquez sur une image dans le lecteur pour la déplacer, la redimensionner par un coin ou la faire pivoter avec le bouton rond. Elle s’aimante au milieu et aux bords, une ligne montre où ; maintenez ⌘ pour la déplacer librement.</string>
+	<key>Click a pin to go there.</key>
+	<string>Cliquez sur une épingle pour y aller.</string>
 	<key>Click a preset (Fade, Zoom, Slide, Spin, Pop, Blur…), then set its Length.</key>
 	<string>Cliquez sur un préréglage (Fondu, Zoom, Glisser, Tourbillon, Pop, Flou…), puis réglez sa Durée.</string>
 	<key>Click a project to open it.</key>
@@ -1738,6 +1790,8 @@
 	<string>Cliquez ou faites glisser n’importe où sur la timeline pour y aller.</string>
 	<key>Click or press Esc to cancel</key>
 	<string>Cliquez ou appuyez sur Échap pour annuler</string>
+	<key>Click or type in the editor while it works and it pauses: its next change waits until you click Resume in the Agent panel.</key>
+	<string>Cliquez ou tapez dans l’éditeur pendant qu’il travaille et il se met en pause : sa prochaine modification attend que vous cliquiez sur Reprendre dans le panneau Agent.</string>
 	<key>Click play, press Space, or tick Start with recording.</key>
 	<string>Cliquez sur lecture, appuyez sur Espace, ou cochez Démarrer avec l’enregistrement.</string>
 	<key>Click removed — ⌘Z to undo</key>
@@ -1896,6 +1950,12 @@
 	<string>Confettis</string>
 	<key>Conflict detected</key>
 	<string>Conflit détecté</string>
+	<key>Connect Claude Desktop</key>
+	<string>Connecter Claude Desktop</string>
+	<key>Connect an agent</key>
+	<string>Connecter un agent</string>
+	<key>Connected: %@</key>
+	<string>Connecté : %@</string>
 	<key>Contrast</key>
 	<string>Contraste</string>
 	<key>Cool</key>
@@ -1954,6 +2014,8 @@
 	<string>Copier les captures d’écran dans le presse-papiers</string>
 	<key>Copy screenshots to the clipboard.</key>
 	<string>Copier les captures dans le presse-papiers.</string>
+	<key>Copy setup</key>
+	<string>Copier la configuration</string>
 	<key>Copy text &amp; QR codes</key>
 	<string>Copier du texte et des codes QR</string>
 	<key>Copy text from a screenshot</key>
@@ -2176,6 +2238,8 @@
 	<string>Panneau Pointeur ▸ Saisie ▸ Accélérer la saisie à 2×, 3×, 4×, 6× ou 8×.</string>
 	<key>Cursor styles</key>
 	<string>Styles de pointeur</string>
+	<key>Cursor ▸ Settings ▸ MCP ▸ Add new MCP server: paste it into mcp.json and save.</key>
+	<string>Cursor ▸ Réglages ▸ MCP ▸ Ajouter un serveur MCP : collez-le dans mcp.json et enregistrez.</string>
 	<key>Cursor, clicks, and keyboard shortcuts</key>
 	<string>Pointeur, clics et raccourcis clavier</string>
 	<key>Cursor: shows the pointer in the video.</key>
@@ -2364,6 +2428,8 @@
 	<string>Supprimer l’enregistrement</string>
 	<key>Discard this recording?</key>
 	<string>Supprimer cette vidéo ?</string>
+	<key>Disconnect</key>
+	<string>Déconnecter</string>
 	<key>Disk almost full</key>
 	<string>Disque presque plein</string>
 	<key>Disk almost full: it warns you, then stops and saves the recording before the disk is full.</key>
@@ -2412,6 +2478,8 @@
 	<string>Terminé</string>
 	<key>Done (Esc)</key>
 	<string>Terminé (Échap)</string>
+	<key>Done: review the changes</key>
+	<string>Terminé : vérifiez les modifications</string>
 	<key>Double-click</key>
 	<string>Double-clic</string>
 	<key>Double-click a caption on the timeline to change its words. Press Return to keep them or Esc to leave them as they were.</key>
@@ -2788,6 +2856,8 @@
 	<string>Chaque modification peut être annulée, étape par étape.</string>
 	<key>Every change is saved as you go. Close the editor and open the recording again: your edit is still there.</key>
 	<string>Chaque modification est enregistrée au fur et à mesure. Fermez l’éditeur et rouvrez l’enregistrement : votre montage est toujours là.</string>
+	<key>Every change it makes is one ⌘Z step, like yours.</key>
+	<string>Chaque modification qu’il fait est une étape ⌘Z, comme les vôtres.</string>
 	<key>Every clip is muted — this export will have no sound.</key>
 	<string>Tous les clips sont coupés — cette exportation n’aura pas de son.</string>
 	<key>Every cut, zoom, annotation, caption, and style change on this video is removed — the recordings you added stay. You can undo this.</key>
@@ -3326,6 +3396,8 @@
 	<string>Glitch</string>
 	<key>Glow</key>
 	<string>Lueur</string>
+	<key>Go there</key>
+	<string>Y aller</string>
 	<key>Go to End</key>
 	<string>Aller à la fin</string>
 	<key>Go to Start</key>
@@ -3428,6 +3500,8 @@
 	<string>Masquer les icônes du bureau pendant la capture</string>
 	<key>Hide private info</key>
 	<string>Masquer les infos privées</string>
+	<key>Hide the Agent panel</key>
+	<string>Masquer le panneau Agent</string>
 	<key>Hide the Menu Bar Icon?</key>
 	<string>Masquer l’icône de la barre des menus ?</string>
 	<key>Hide the camera whenever you're not talking, and bring it back when you speak.</key>
@@ -3544,6 +3618,8 @@
 	<string>Quantité des ombres sur le fond qui est conservée</string>
 	<key>How strongly blur and pixelate hide what's under them</key>
 	<string>Degré de masquage du flou et de la pixélisation</string>
+	<key>How to edit in LF Studios</key>
+	<string>Comment modifier dans LF Studios</string>
 	<key>Hue</key>
 	<string>Teinte</string>
 	<key>I and O mark a part: Export can export just that part, and ⌫ cuts it.</key>
@@ -3620,6 +3696,8 @@
 	<string>Entrée</string>
 	<key>In &amp; out</key>
 	<string>Entrée et sortie</string>
+	<key>In Claude Desktop, choose Claude ▸ Settings ▸ Developer ▸ Edit Config.</key>
+	<string>Dans Claude Desktop, choisissez Claude ▸ Réglages ▸ Développeur ▸ Modifier la configuration.</string>
 	<key>In History, or from the preview after capture.</key>
 	<string>Dans l’historique, ou depuis l’aperçu après la capture.</string>
 	<key>In History: the All Captures menu at the top, and the screenshots themselves.</key>
@@ -3762,6 +3840,8 @@
 	<string>Installer la mise à jour : la télécharge, l’installe et rouvre LF Studios.</string>
 	<key>Instant</key>
 	<string>Instantané</string>
+	<key>Instructions for the agent</key>
+	<string>Instructions pour l’agent</string>
 	<key>Intensity</key>
 	<string>Intensité</string>
 	<key>Interface</key>
@@ -3786,6 +3866,12 @@
 	<string>Iris</string>
 	<key>It also comes out of the video. The file stays where it is, and ⌘Z brings it back.</key>
 	<string>Il est aussi retiré de la vidéo. Le fichier reste où il est, et ⌘Z le rétablit.</string>
+	<key>It can read the timeline, the transcript, the captions, the markers and the keyframes, and look at frames.</key>
+	<string>Il peut lire la timeline, la transcription, les sous-titres, les marqueurs et les images clés, et regarder des images.</string>
+	<key>It can split, trim, delete, add markers, titles and keyframes, fix captions, remove ums, and place files that are already in the project or its folder.</key>
+	<string>Il peut scinder, couper, supprimer, ajouter des marqueurs, des titres et des images clés, corriger les sous-titres, retirer les « euh » et placer des fichiers déjà présents dans le projet ou son dossier.</string>
+	<key>It can't export, record sound or video, use the clipboard, or open files from anywhere else. Locked tracks stay as they are.</key>
+	<string>Il ne peut pas exporter, enregistrer du son ou de la vidéo, utiliser le presse-papiers ou ouvrir des fichiers d’ailleurs. Les pistes verrouillées restent telles quelles.</string>
 	<key>It checks the free space first, and shows how much the originals add. Cancel removes the half-made folder.</key>
 	<string>L’espace libre est vérifié d’abord, avec la taille ajoutée par les originaux. Annuler supprime le dossier en partie créé.</string>
 	<key>It happens by itself. The bar while recording shows a short note, and a notice explains it.</key>
@@ -3892,8 +3978,12 @@
 	<string>Garder le visage centré</string>
 	<key>Keep files on your desktop out of your screenshots.</key>
 	<string>Gardez les fichiers de votre bureau hors de vos captures.</string>
+	<key>Keep or Revert all</key>
+	<string>Conserver ou tout annuler</string>
 	<key>Keep pitch</key>
 	<string>Conserver la hauteur</string>
+	<key>Keep the agent's changes (each still undoes with ⌘Z)</key>
+	<string>Conserver les modifications de l’agent (chacune s’annule encore avec ⌘Z)</string>
 	<key>Keep the current style</key>
 	<string>Garder le style actuel</string>
 	<key>Keeps just the person, found on this Mac</key>
@@ -3904,6 +3994,8 @@
 	<string>Empêche la bulle de caméra de cacher ce que montre un zoom.</string>
 	<key>Kept for %@</key>
 	<string>Réservé à %@</string>
+	<key>Kept the agent's changes</key>
+	<string>Modifications de l’agent conservées</string>
 	<key>Key for %@: %@</key>
 	<string>Touche de %1$@ : %2$@</string>
 	<key>Key or password</key>
@@ -4050,6 +4142,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>LF Studios – Historique des captures</string>
 	<key>LF Studios ▸ Check for Updates…, and Settings ▸ General ▸ Updates ▸ Check for updates automatically.</key>
 	<string>LF Studios ▸ Rechercher des mises à jour…, et Réglages ▸ Général ▸ Mises à jour ▸ Rechercher les mises à jour automatiquement.</string>
+	<key>LF Studios ▸ Settings ▸ Agent.</key>
+	<string>LF Studios ▸ Réglages ▸ Agent.</string>
 	<key>LF Studios' own floating windows stay out of your screen recordings and screenshots.</key>
 	<string>Les fenêtres flottantes de LF Studios restent hors de vos enregistrements d’écran et de vos captures.</string>
 	<key>LFSTUDIOS LIBRARY</key>
@@ -4118,6 +4212,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Durée</string>
 	<key>Less rumble and boom, more presence</key>
 	<string>Moins de grondement et de résonance, plus de présence</string>
+	<key>Let an AI agent such as Claude edit the project you have open, while you watch.</key>
+	<string>Laissez un agent IA comme Claude modifier le projet ouvert pendant que vous regardez.</string>
 	<key>Let go to capture it.</key>
 	<string>Relâchez pour la capturer.</string>
 	<key>Let go to float</key>
@@ -4710,6 +4806,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Nouveau dossier</string>
 	<key>New Folder…</key>
 	<string>Nouveau dossier…</string>
+	<key>New Token</key>
+	<string>Nouveau jeton</string>
 	<key>New badge</key>
 	<string>Badge Nouveau</string>
 	<key>New caption</key>
@@ -4728,6 +4826,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Nouvel enregistrement enregistre une zone de l’écran, une fenêtre ou tout l’écran.</string>
 	<key>New to LF Studios? Start here: it takes about five minutes.</key>
 	<string>Vous découvrez LF Studios ? Commencez ici : cela prend environ cinq minutes.</string>
+	<key>New token</key>
+	<string>Nouveau jeton</string>
 	<key>New zooms</key>
 	<string>Nouveaux zooms</string>
 	<key>News</key>
@@ -4736,6 +4836,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Image suivante (→)</string>
 	<key>Next keyframe</key>
 	<string>Image clé suivante</string>
+	<key>Next to Claude Desktop, click Copy setup.</key>
+	<string>À côté de Claude Desktop, cliquez sur Copier la configuration.</string>
 	<key>Next to the video, LF Studios keeps the details the editor needs, on your Mac.</key>
 	<string>À côté de la vidéo, LF Studios conserve les détails dont l’éditeur a besoin, sur votre Mac.</string>
 	<key>Nice shot. You're all set.</key>
@@ -4752,6 +4854,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Plus de Mon style</string>
 	<key>No My Style yet — open Presets ▸ Edit Presets and choose Use as My Style on one</key>
 	<string>Pas encore de Mon style — ouvrez Préréglages ▸ Modifier les préréglages et choisissez Utiliser comme Mon style sur l’un d’eux</string>
+	<key>No agent is editing this project.</key>
+	<string>Aucun agent ne modifie ce projet.</string>
 	<key>No background</key>
 	<string>Aucun arrière-plan</string>
 	<key>No background — text only</key>
@@ -4898,8 +5002,12 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Plus tard</string>
 	<key>Not set</key>
 	<string>Non défini</string>
+	<key>Notes and questions an agent pins to a moment of the video.</key>
+	<string>Des notes et des questions qu’un agent épingle à un moment de la vidéo.</string>
 	<key>Nothing at the playhead</key>
 	<string>Rien à la tête de lecture</string>
+	<key>Nothing changed yet.</key>
+	<string>Rien n’a encore changé.</string>
 	<key>Nothing here yet</key>
 	<string>Rien pour l’instant</string>
 	<key>Nothing in the Guide matches your search. Try a shorter word, like “zoom” or “camera”.</key>
@@ -4956,6 +5064,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Désactivé au départ. Nécessite l’accessibilité.</string>
 	<key>Off until you turn it on. On, it zooms in on your clicks and switches on its options below; off, its zooms go.</key>
 	<string>Désactivé tant que vous ne l’activez pas. Activé, il zoome sur vos clics et active ses options ci-dessous ; désactivé, ses zooms disparaissent.</string>
+	<key>Off until you turn it on. Only apps on this Mac can connect.</key>
+	<string>Désactivé jusqu’à ce que vous l’activiez. Seules les apps de ce Mac peuvent se connecter.</string>
 	<key>Off, Light, Smooth, or Silky.</key>
 	<string>Désactivé, Léger, Fluide ou Soyeux.</string>
 	<key>Off, it stays on the timeline but does nothing (V)</key>
@@ -5020,6 +5130,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Un seul ⌘Z l’annule.</string>
 	<key>Only %@ free on your disk — this may not fit. Free up space or save to another drive.</key>
 	<string>Seulement %@ libres sur votre disque — cela risque de ne pas suffire. Libérez de l’espace ou enregistrez sur un autre disque.</string>
+	<key>Only apps on this Mac can connect, with a secret token. New token makes the old one stop working.</key>
+	<string>Seules les apps de ce Mac peuvent se connecter, avec un jeton secret. Nouveau jeton rend l’ancien inutilisable.</string>
 	<key>Only for these, and never to send your work:</key>
 	<string>Seulement pour ceci, et jamais pour envoyer votre travail :</string>
 	<key>Only if you turned them on: shortcuts, typing positions and times, and your speaker notes.</key>
@@ -5050,6 +5162,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Ouvrez l’historique depuis le menu LF Studios, faites un clic droit sur une capture et choisissez Épingler à l’écran.</string>
 	<key>Open Keyboard Settings</key>
 	<string>Ouvrir les réglages Clavier</string>
+	<key>Open LF Studios ▸ Settings ▸ Agent and turn on Allow AI agents to edit.</key>
+	<string>Ouvrez LF Studios ▸ Réglages ▸ Agent et activez Autoriser les agents IA à modifier.</string>
 	<key>Open Link</key>
 	<string>Ouvrir le lien</string>
 	<key>Open Messages</key>
@@ -5082,6 +5196,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Ouvrez un dossier de fichiers comme un seul projet : le dossier d’un enregistrement, une Transmission créative ou tout dossier contenant des vidéos.</string>
 	<key>Open a project</key>
 	<string>Ouvrir un projet</string>
+	<key>Open a project in LF Studios. In Claude, ask for an edit, for example: Remove the ums and tighten the pauses.</key>
+	<string>Ouvrez un projet dans LF Studios. Dans Claude, demandez une modification, par exemple : Retire les « euh » et raccourcis les pauses.</string>
 	<key>Open a project, a recording's folder, a Creative Handoff, or a video</key>
 	<string>Ouvrir un projet, le dossier d’un enregistrement, une Transmission créative ou une vidéo</string>
 	<key>Open a recording in the video editor first, then click Show me.</key>
@@ -5166,6 +5282,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Ou, avec l’aperçu après la capture activé, cliquez sur Épingler sur la vignette.</string>
 	<key>Orange</key>
 	<string>Orange</string>
+	<key>Orange pins on the timeline's ruler, and the Agent panel.</key>
+	<string>Les épingles orange sur la règle de la timeline, et le panneau Agent.</string>
 	<key>Orchid</key>
 	<string>Orchidée</string>
 	<key>Original</key>
@@ -5220,10 +5338,16 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Coller</string>
 	<key>Paste it anywhere with ⌘V.</key>
 	<string>Collez-le où vous voulez avec ⌘V.</string>
+	<key>Paste it into Terminal and press Return.</key>
+	<string>Collez-le dans Terminal et appuyez sur Retour.</string>
+	<key>Paste it into ~/.codex/config.toml and save.</key>
+	<string>Collez-le dans ~/.codex/config.toml et enregistrez.</string>
 	<key>Paste or type your notes here. They stay out of every recording.</key>
 	<string>Collez ou tapez vos notes ici. Elles n’apparaissent dans aucun enregistrement.</string>
 	<key>Paste or type your notes, then click Read.</key>
 	<string>Collez ou tapez vos notes, puis cliquez sur Lire.</string>
+	<key>Paste the setup into claude_desktop_config.json, save it, and quit and reopen Claude.</key>
+	<string>Collez la configuration dans claude_desktop_config.json, enregistrez, puis quittez et rouvrez Claude.</string>
 	<key>Pastel</key>
 	<string>Pastel</string>
 	<key>Pause</key>
@@ -5254,6 +5378,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Mettez la vidéo en pause et faites glisser le sous-titre sur l’aperçu.</string>
 	<key>Paused</key>
 	<string>En pause</string>
+	<key>Paused: you took over</key>
+	<string>En pause : vous avez repris la main</string>
 	<key>Pauses longer than a second become short ones, except where you're clicking, typing, or moving the pointer. ⌘Z undoes either one.</key>
 	<string>Les pauses de plus d’une seconde deviennent courtes, sauf là où vous cliquez, tapez ou déplacez le pointeur. ⌘Z annule l’une ou l’autre.</string>
 	<key>Peach</key>
@@ -6046,6 +6172,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Rétablir « Garder le visage centré »</string>
 	<key>Redo Keep Pitch</key>
 	<string>Rétablir la conservation de la hauteur</string>
+	<key>Redo Keyframe Curve</key>
+	<string>Rétablir la courbe d’image clé</string>
 	<key>Redo Keyframe Easing</key>
 	<string>Rétablir le lissage de l’image clé</string>
 	<key>Redo Link Audio</key>
@@ -6174,6 +6302,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Rétablir Nouveau style des sous-titres</string>
 	<key>Redo Reverse</key>
 	<string>Rétablir l’inversion</string>
+	<key>Redo Revert Agent Changes</key>
+	<string>Rétablir l’annulation des modifications de l’agent</string>
 	<key>Redo Rotate</key>
 	<string>Rétablir la rotation</string>
 	<key>Redo Shortcut Style</key>
@@ -6478,6 +6608,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Nouveau style pour tous les sous-titres</string>
 	<key>Results come in groups: Commands, Media, Clips, Captions, Markers.</key>
 	<string>Les résultats sont groupés : Commandes, Médias, Clips, Sous-titres, Marqueurs.</string>
+	<key>Resume</key>
+	<string>Reprendre</string>
 	<key>Resume Recording</key>
 	<string>Reprendre l’enregistrement</string>
 	<key>Resume recording</key>
@@ -6502,6 +6634,10 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Inversion du clip…</string>
 	<key>Reversing “%@”…</key>
 	<string>Inversion de « %@ »…</string>
+	<key>Revert All</key>
+	<string>Tout annuler</string>
+	<key>Reverted the agent's changes</key>
+	<string>Modifications de l’agent annulées</string>
 	<key>Review Changes…</key>
 	<string>Vérifier les modifications…</string>
 	<key>Review the decoded email payload before copying.</key>
@@ -6634,6 +6770,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Enregistrer la capture d’écran sur le disque</string>
 	<key>Save subtitles</key>
 	<string>Enregistrer les sous-titres</string>
+	<key>Save the agent instructions. For Claude Code, save them as SKILL.md in a folder named lfstudios-editing inside ~/.claude/skills.</key>
+	<string>Enregistrez les instructions pour l’agent. Pour Claude Code, enregistrez-les sous SKILL.md dans un dossier nommé lfstudios-editing dans ~/.claude/skills.</string>
 	<key>Save your edit as a video that plays everywhere.</key>
 	<string>Enregistrez votre montage en une vidéo lisible partout.</string>
 	<key>Save your look once, then put it on any video in one click.</key>
@@ -6892,6 +7030,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Sélection de %@ sur %@ points</string>
 	<key>Selection %@ by %@ points. Arrow keys move it, Return captures, Escape cancels.</key>
 	<string>Sélection de %@ sur %@ points. Les flèches la déplacent, Retour capture, Échap annule.</string>
+	<key>Send</key>
+	<string>Envoyer</string>
 	<key>Send everything to a video editor</key>
 	<string>Tout envoyer vers un logiciel de montage</string>
 	<key>Sepia</key>
@@ -6934,6 +7074,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Règle le volume pour qu’il soit aussi fort que l’attendent les sites vidéo (−16 LUFS)</string>
 	<key>Settings</key>
 	<string>Réglages</string>
+	<key>Settings ▸ Agent ▸ Save… gives the agent a guide to LF Studios' tools (for Claude Code, a skill).</key>
+	<string>Réglages ▸ Agent ▸ Enregistrer… donne à l’agent un guide des outils de LF Studios (pour Claude Code, une skill).</string>
 	<key>Settings ▸ General ▸ After Capture.</key>
 	<string>Réglages ▸ Général ▸ Après la capture.</string>
 	<key>Settings ▸ General ▸ Appearance: System, Light Mode, or Dark Mode.</key>
@@ -7376,12 +7518,16 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Démarrer avec l’enregistrement</string>
 	<key>Start, and press again to finish</key>
 	<string>Démarrer, puis appuyer de nouveau pour finir</string>
+	<key>Starting…</key>
+	<string>Démarrage…</string>
 	<key>Starts</key>
 	<string>Début</string>
 	<key>Starts after the screen by</key>
 	<string>Décalage après l’écran :</string>
 	<key>Startup</key>
 	<string>Démarrage</string>
+	<key>Status</key>
+	<string>État</string>
 	<key>Step %lld</key>
 	<string>Étape %lld</string>
 	<key>Steps</key>
@@ -7518,6 +7664,10 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Son de l’ordinateur, Micro, Pointeur, Caméra, Afficher les raccourcis clavier et Notes de l’orateur : cliquez pour activer ou désactiver chacun.</string>
 	<key>Table copied — paste it into a spreadsheet</key>
 	<string>Tableau copié — collez-le dans un tableur</string>
+	<key>Tack: %@</key>
+	<string>Note : %@</string>
+	<key>Tacks</key>
+	<string>Notes</string>
 	<key>Tag</key>
 	<string>Étiquette</string>
 	<key>Tag color</key>
@@ -7626,6 +7776,10 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Cette vidéo est vide</string>
 	<key>That window closed before recording could start.</key>
 	<string>La fenêtre s’est fermée avant le début de l’enregistrement.</string>
+	<key>The Agent panel (Layout ▸ Agent Panel). It opens when an agent starts.</key>
+	<string>Le panneau Agent (Disposition ▸ Panneau Agent). Il s’ouvre quand un agent commence.</string>
+	<key>The Agent panel moves and floats like the others; its × hides it.</key>
+	<string>Le panneau Agent se déplace et flotte comme les autres ; son × le masque.</string>
 	<key>The Home window</key>
 	<string>La fenêtre Accueil</string>
 	<key>The LF Studios menu (Command Center)</key>
@@ -7660,6 +7814,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Le menu Proxy sous le lecteur.</string>
 	<key>The Undo and Redo buttons in the editor's toolbar.</key>
 	<string>Les boutons Annuler et Rétablir dans la barre d’outils de l’éditeur.</string>
+	<key>The agent connection couldn't start: %@</key>
+	<string>La connexion des agents n’a pas pu démarrer : %@</string>
 	<key>The aspect ratio menu under the player.</key>
 	<string>Le menu du format sous le lecteur.</string>
 	<key>The bar above the timeline. Hover a button for its name and key.</key>
@@ -7824,6 +7980,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>L’aperçu que vous voyez pendant l’enregistrement n’apparaît jamais dans l’enregistrement de l’écran lui-même.</string>
 	<key>The project file (Name.lfs) opens everything again, exactly as you left it. LF Studios keeps it up to date as you edit.</key>
 	<string>Le fichier de projet (Nom.lfs) rouvre tout, exactement comme vous l’avez laissé. LF Studios le tient à jour pendant que vous modifiez.</string>
+	<key>The project open in the front editor window.</key>
+	<string>Le projet ouvert dans la fenêtre d’éditeur au premier plan.</string>
 	<key>The recording bar</key>
 	<string>La barre d’enregistrement</string>
 	<key>The recording bar, the camera bubble preview, Speaker notes, the countdown, and notices.</key>
@@ -8114,6 +8272,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Titres</string>
 	<key>To</key>
 	<string>À</string>
+	<key>To answer a question, type in its Answer field in the Agent panel and click Send. The agent reads your answer.</key>
+	<string>Pour répondre à une question, tapez dans son champ Réponse du panneau Agent et cliquez sur Envoyer. L’agent lit votre réponse.</string>
 	<key>To attach the full report, drag it from Finder onto the GitHub page.</key>
 	<string>Pour joindre le rapport complet, faites-le glisser du Finder vers la page GitHub.</string>
 	<key>To begin again, open the commands (⌘K) and choose Start Over from the Original Recording…. It asks first, and can be undone too.</key>
@@ -8144,6 +8304,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Pour sauter le panneau et aller directement à l’éditeur, activez Ouvrir l’éditeur vidéo après l’enregistrement dans Réglages ▸ Général.</string>
 	<key>Today</key>
 	<string>Aujourd’hui</string>
+	<key>Token</key>
+	<string>Jeton</string>
 	<key>Too long for a GIF at this size — it would need about %@ of memory. Make it lighter, export a part, or choose MP4.</key>
 	<string>Trop long pour un GIF de cette taille — il faudrait environ %@ de mémoire. Allégez-le, exportez une partie, ou choisissez MP4.</string>
 	<key>Too many icons? Remove some, or set an Open Command Center shortcut in Settings ▸ Shortcuts.</key>
@@ -8152,6 +8314,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Trop court pour une intro et une fin</string>
 	<key>Tools</key>
 	<string>Outils</string>
+	<key>Tools, habits and limits, as a file the agent can read (also a Claude skill).</key>
+	<string>Outils, habitudes et limites, dans un fichier que l’agent peut lire (aussi une skill Claude).</string>
 	<key>Top</key>
 	<string>En haut</string>
 	<key>Top left</key>
@@ -8608,6 +8772,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Annuler « Garder le visage centré »</string>
 	<key>Undo Keep Pitch</key>
 	<string>Annuler la conservation de la hauteur</string>
+	<key>Undo Keyframe Curve</key>
+	<string>Annuler la courbe d’image clé</string>
 	<key>Undo Keyframe Easing</key>
 	<string>Annuler le lissage de l’image clé</string>
 	<key>Undo Link Audio</key>
@@ -8736,6 +8902,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Annuler Nouveau style des sous-titres</string>
 	<key>Undo Reverse</key>
 	<string>Annuler l’inversion</string>
+	<key>Undo Revert Agent Changes</key>
+	<string>Annuler l’annulation des modifications de l’agent</string>
 	<key>Undo Rotate</key>
 	<string>Annuler la rotation</string>
 	<key>Undo Shortcut Style</key>
@@ -9006,6 +9174,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>WAOUH !</string>
 	<key>Wait for it…</key>
 	<string>Attendez…</string>
+	<key>Waiting for an agent</key>
+	<string>En attente d’un agent</string>
 	<key>Waiting…</key>
 	<string>En attente…</string>
 	<key>Wallpaper</key>
@@ -9028,6 +9198,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Chaleur</string>
 	<key>Warning</key>
 	<string>Avertissement</string>
+	<key>Watch the changes come in, in the Agent panel. Click one to go to it.</key>
+	<string>Regardez les modifications arriver dans le panneau Agent. Cliquez sur l’une d’elles pour y aller.</string>
 	<key>Watch the result, then change or delete any zoom.</key>
 	<string>Regardez le résultat, puis modifiez ou supprimez n’importe quel zoom.</string>
 	<key>Web</key>
@@ -9048,6 +9220,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Ce que LF Studios conserve, et ce qu’il ne fait jamais.</string>
 	<key>What a recording keeps</key>
 	<string>Ce que conserve un enregistrement</string>
+	<key>What an agent can and can't do</key>
+	<string>Ce qu’un agent peut faire ou non</string>
 	<key>What is each file in “%@”?</key>
 	<string>À quoi sert chaque fichier de « %@ » ?</string>
 	<key>What the clip follows: drag it over the thing that moves</key>
@@ -9066,8 +9240,12 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Si un fichier de ce nom existe déjà, choisissez Remplacer ou Garder les deux.</string>
 	<key>When a key is taken, LF Studios says which command loses it.</key>
 	<string>Quand une touche est déjà prise, LF Studios indique quelle commande la perd.</string>
+	<key>When an agent finishes, see what it changed and keep it, or go back to how the project was.</key>
+	<string>Quand un agent a fini, voyez ce qu’il a changé et gardez-le, ou revenez au projet d’avant.</string>
 	<key>When recording a window: the Window size menu in the row above the recording bar.</key>
 	<string>Pour l’enregistrement d’une fenêtre : le menu Taille de la fenêtre, dans la rangée au-dessus de la barre d’enregistrement.</string>
+	<key>When the agent is done, its changes are marked on the timeline in orange.</key>
+	<string>Quand l’agent a fini, ses modifications sont marquées en orange sur la timeline.</string>
 	<key>When the text has links, email addresses, or a table, LF Studios offers more ways to use it.</key>
 	<string>Quand le texte contient des liens, des adresses e-mail ou un tableau, LF Studios propose d’autres façons de l’utiliser.</string>
 	<key>When they're ready, Edit with Proxies turns on.</key>
@@ -9182,6 +9360,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Oui</string>
 	<key>Yesterday</key>
 	<string>Hier</string>
+	<key>You answered: %@</key>
+	<string>Votre réponse : %@</string>
 	<key>You can also drop a video file on the LF Studios icon in the Dock.</key>
 	<string>Vous pouvez aussi déposer un fichier vidéo sur l’icône LF Studios dans le Dock.</string>
 	<key>You can close this — the handoff keeps going.</key>

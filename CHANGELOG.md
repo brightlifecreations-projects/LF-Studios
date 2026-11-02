@@ -3,6 +3,12 @@
 ## [1.19.0]
 
 ### Added
+- **AI agents can edit with you (MCP):** turn on Settings ▸ Agent ▸ Allow AI agents to edit (off until you do), then Copy setup for Claude Desktop, Claude Code, Cursor or Codex. Only apps on this Mac can connect, with a token; the bridge (lfstudios-mcp) inside LF Studios keeps working across restarts and new tokens.
+  - An agent reads the project (timeline, linked sound, transcript with word times, captions, markers, keyframes, frames) and edits with the editor's own commands, each one ⌘Z step, with a dry run first when it likes. Locked tracks refuse it; it can only place files already in the project or its folder, and it never exports.
+  - The **Agent panel** shows its goal and a live feed of changes (click one to go there). When it's done, its changes are marked on the timeline and you choose **Keep** or **Revert all**.
+  - Click or type in the editor and the agent waits until you click **Resume**.
+  - **Tacks:** notes and questions it pins to a moment (they follow their clip); answer or dismiss them in the Agent panel.
+  - A green dot in the menu bar and the editor shows a connected agent; click it to disconnect. Settings ▸ Agent ▸ Save… gives agents a guide (a Claude skill).
 - **Unlink Audio for videos on the tracks above the main track:** right-click a video's sound under it ▸ Unlink Audio to drag it on its own; Link Audio puts it back.
 - **Curve handles:** on the keyframe curve, a selected clip's points have Bézier handles; drag one to bend the curve (one ⌘Z step a drag), double-click it to go back to the easing.
 - A one-time tip shows where to pick up a panel: drag its top edge.

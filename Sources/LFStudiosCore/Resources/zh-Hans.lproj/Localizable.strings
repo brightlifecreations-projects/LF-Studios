@@ -152,6 +152,8 @@
 	<string>%lld 个摄像头布局</string>
 	<key>%lld captions</key>
 	<string>%lld 条字幕</string>
+	<key>%lld changes</key>
+	<string>%lld 项更改</string>
 	<key>%lld chapters — players like QuickTime Player list them, and so do editing apps</key>
 	<string>%lld 个章节 — QuickTime Player 等播放器和剪辑软件都会列出</string>
 	<key>%lld clicks</key>
@@ -248,6 +250,8 @@
 	<string>来自其他应用的 3D LUT：用于所选片段，或作为滤镜片段</string>
 	<key>A README lists every file. Include speaker notes adds your notes.</key>
 	<string>README 文件会列出所有文件。“包括演讲者备注”会加入你的备注。</string>
+	<key>A Tack stays with its moment: when the clip moves or is trimmed, it moves along.</key>
+	<string>标注会停留在其时刻：片段移动或修剪时，它会随之移动。</string>
 	<key>A big GIF — about %@ and %@ of memory to make. A smaller size, fewer fps, or MP4 is lighter.</key>
 	<string>这个 GIF 很大 — 约 %@，生成时需要 %@ 内存。更小的尺寸、更少的 fps 或 MP4 会更轻量。</string>
 	<key>A block appears on the Camera lane: drag it to move it, drag its edges to change its length.</key>
@@ -286,6 +290,8 @@
 	<string>一个比例和大小都精确的录制框，让你的视频直接适合 YouTube、Reels 或 Instagram。</string>
 	<key>A frame: the one at the playhead (Use the playhead picks again).</key>
 	<string>一帧画面：播放头处的那一帧（点按“使用播放头”可重新选择）。</string>
+	<key>A green dot in the menu bar and the editor shows an agent is connected; click it to disconnect.</key>
+	<string>菜单栏和编辑器中的绿色圆点表示代理已连接；点按它即可断开连接。</string>
 	<key>A hairline that separates dark recordings from the background</key>
 	<string>一条细线，将深色录制内容与背景分开</string>
 	<key>A keyframe for position, size, rotation and opacity at the playhead</key>
@@ -364,6 +370,14 @@
 	<string>这么大的窗口会超出屏幕。能放下的同比例最大尺寸是 %@ × %@。</string>
 	<key>A yellow marker shows where something was cut. Click it to bring the part back.</key>
 	<string>黄色标记显示剪掉内容的位置。点按它即可恢复那一段。</string>
+	<key>AI agent</key>
+	<string>AI 代理</string>
+	<key>AI agent connected</key>
+	<string>AI 代理已连接</string>
+	<key>AI agents</key>
+	<string>AI 代理</string>
+	<key>AI agents are off: Settings ▸ Agent.</key>
+	<string>AI 代理已关闭：设置 ▸ 代理。</string>
 	<key>About</key>
 	<string>关于</string>
 	<key>About %lld min left</key>
@@ -582,6 +596,8 @@
 	<string>高级工具</string>
 	<key>After Capture</key>
 	<string>截屏后</string>
+	<key>After Revert All, ⌘Z brings the changes back.</key>
+	<string>“全部还原”后，⌘Z 可恢复更改。</string>
 	<key>After capture</key>
 	<string>截屏后</string>
 	<key>After changing the shape, move zooms, the camera, and captions so everything fits.</key>
@@ -596,6 +612,14 @@
 	<string>停止录制后，LF Studios 会询问录制内容的存储位置，然后把所有内容放进一个新文件夹：视频、摄像头画面、声音，以及能打开这一切的项目。</string>
 	<key>Afterwards, click Restore size to put the window back.</key>
 	<string>录制结束后，点按“恢复大小”让窗口恢复原样。</string>
+	<key>Agent</key>
+	<string>代理</string>
+	<key>Agent Panel</key>
+	<string>代理面板</string>
+	<key>Agent editing</key>
+	<string>代理正在编辑</string>
+	<key>Agents are off until you turn them on in Settings ▸ Agent.</key>
+	<string>在“设置 ▸ 代理”中打开之前，代理处于关闭状态。</string>
 	<key>Aim by Hand</key>
 	<string>手动对准</string>
 	<key>Aim by hand</key>
@@ -636,6 +660,8 @@
 	<string>这三项在你打开之前都是关闭的，并且需要“辅助功能”权限。</string>
 	<key>All zooms set to %@</key>
 	<string>所有缩放已设为 %@</string>
+	<key>Allow AI agents to edit</key>
+	<string>允许 AI 代理编辑</string>
 	<key>Allow Accessibility (optional)</key>
 	<string>允许辅助功能（可选）</string>
 	<key>Allow Access…</key>
@@ -664,12 +690,20 @@
 	<string>始终显示箭头</string>
 	<key>Amber Fold</key>
 	<string>琥珀褶皱</string>
+	<key>An AI agent is connected: click to disconnect it</key>
+	<string>AI 代理已连接：点按以断开连接</string>
+	<key>An AI agent is editing. Click or type in the editor to take over.</key>
+	<string>AI 代理正在编辑。在编辑器中点按或键入即可接管。</string>
 	<key>An LF Studios project (Name.lfs): open the folder in LF Studios 1.12.0 or later to edit the video again. With clips cut to your edit, Include originals so it reopens in LF Studios adds the untouched recordings it needs.</key>
 	<string>LF Studios 项目（名称.lfs）：在 LF Studios 1.12.0 或更高版本中打开该文件夹，即可再次编辑视频。如果片段已按你的剪辑裁剪，“包含原始文件，以便在 LF Studios 中重新打开”会加入所需的未改动的录制内容。</string>
 	<key>An adjustment clip changes everything under it while it plays: drag its ends to set when.</key>
 	<string>调节片段播放时会改变其下方的所有内容：拖移它的两端来设定时间。</string>
 	<key>An adjustment clip changes everything under it while it plays: set it up in Properties ▸ Adjust (exposure, HSL, curves, colour wheels) and Filter.</key>
 	<string>调节片段播放时会改变其下方的所有内容：在“属性 ▸ 调节”（曝光、HSL、曲线、色轮）和“滤镜”中设置。</string>
+	<key>An agent can read the open project and edit it with the editor's own commands, each one ⌘Z step. It can't export, record, or open files outside the project and its folder. You see every change in the Agent panel and choose Keep or Revert all at the end.</key>
+	<string>代理可以读取打开的项目，并使用编辑器自己的命令编辑它，每条命令一步 ⌘Z。它不能导出、录制，也不能打开项目及其文件夹之外的文件。你可以在“代理”面板中看到每项更改，并在最后选择“保留”或“全部还原”。</string>
+	<key>An agent edits with the editor's own commands, and you stay in charge.</key>
+	<string>代理使用编辑器自己的命令进行编辑，而你始终掌控全局。</string>
 	<key>An older Creative Handoff is put back together from its files: the screen, the cuts, the camera at its place, captions, markers, and the pointer. A summary says what came back.</key>
 	<string>较早的创意交付会根据其中的文件重新组合：屏幕、剪切、位置正确的摄像头画面、字幕、标记和指针。摘要会说明恢复了哪些内容。</string>
 	<key>An optional 2-second “Made with LF Studios” card at the end.</key>
@@ -692,6 +726,8 @@
 	<string>标注工具</string>
 	<key>Another app may use the same keys: choose different ones.</key>
 	<string>另一个应用可能使用了相同的按键：请换用其他按键。</string>
+	<key>Answer</key>
+	<string>回答</string>
 	<key>Any color…</key>
 	<string>任意颜色…</string>
 	<key>Any other folder: Import Folder lists the videos and sound files. Choose which is the screen recording, which the camera, and which sound to add as tracks, and when each starts.</key>
@@ -756,6 +792,8 @@
 	<string>应用到所有剪切点…</string>
 	<key>Apply to all zooms</key>
 	<string>应用到所有缩放</string>
+	<key>Apps that connect directly need the new one; the setups above keep working.</key>
+	<string>直接连接的 App 需要新令牌；上面的设置会继续有效。</string>
 	<key>Aqua</key>
 	<string>水蓝</string>
 	<key>Aqua Marble</key>
@@ -860,6 +898,8 @@
 	<string>突发</string>
 	<key>Back</key>
 	<string>返回</string>
+	<key>Back to how the project was before the agent started (⌘Z brings the changes back)</key>
+	<string>回到代理开始之前的项目（⌘Z 可恢复更改）</string>
 	<key>Back to the LF Studios look</key>
 	<string>已恢复为 LF Studios 风格</string>
 	<key>Back to the original recording — ⌘Z to undo</key>
@@ -1366,6 +1406,8 @@
 	<string>随时间改变音量、让声音淡入淡出、统一响度，以及找到节拍。</string>
 	<key>Changed your mind? Click the yellow marker on the timeline to bring a cut part back.</key>
 	<string>改变主意了？点按时间线上的黄色标记，即可恢复剪掉的部分。</string>
+	<key>Changes</key>
+	<string>更改</string>
 	<key>Changes only the camera, never your screen.</key>
 	<string>只会更改摄像头画面，绝不会更改你的屏幕。</string>
 	<key>Changes the main track and the tracks under this one while it plays.</key>
@@ -1572,6 +1614,10 @@
 	<string>拍手</string>
 	<key>Classic</key>
 	<string>经典</string>
+	<key>Claude Code, Cursor and Codex have their own Copy setup buttons.</key>
+	<string>Claude Code、Cursor 和 Codex 都有各自的“拷贝设置”按钮。</string>
+	<key>Claude ▸ Settings ▸ Developer ▸ Edit Config: paste it into claude_desktop_config.json, save, and restart Claude.</key>
+	<string>Claude ▸ 设置 ▸ 开发者 ▸ 编辑配置：粘贴到 claude_desktop_config.json，存储并重新启动 Claude。</string>
 	<key>Clay</key>
 	<string>陶土</string>
 	<key>Clean</key>
@@ -1682,6 +1728,8 @@
 	<string>点按“裁剪”。</string>
 	<key>Click Cut this part in the panel on the right.</key>
 	<string>点按右侧面板中的“剪掉这一段”。</string>
+	<key>Click Dismiss to put a Tack away.</key>
+	<string>点按“忽略”即可移除标注。</string>
 	<key>Click Done or press Esc to finish.</key>
 	<string>点按“完成”或按下 Esc 键结束。</string>
 	<key>Click Done, or press Esc, when you reach the end.</key>
@@ -1712,6 +1760,8 @@
 	<string>点按预览上方的“图像”。</string>
 	<key>Click Import, or drag files from Finder onto the Library.</key>
 	<string>点按“导入”，或将文件从“访达”拖到素材库。</string>
+	<key>Click Keep to keep them, or Revert All to go back to how the project was before it started.</key>
+	<string>点按“保留”以保留更改，或点按“全部还原”回到它开始之前的项目。</string>
 	<key>Click Marker on the timeline's toolbar. Markers added while recording are there too.</key>
 	<string>点按时间线工具栏中的“标记”。录制时添加的标记也会显示在这里。</string>
 	<key>Click Microphone in the recording bar. A menu above the bar picks which microphone.</key>
@@ -1776,6 +1826,8 @@
 	<string>点按标记可跳到那里；连按两次可重新命名；右键点按可删除。</string>
 	<key>Click a picture on the player to move it, resize it from a corner, or turn it with the round knob. It lands on the middle and the edges, with a line showing where; hold ⌘ to move it freely.</key>
 	<string>点按播放器中的图片即可移动它、拖移角调整大小，或用圆形旋钮旋转。它会吸附到中间和边缘，并有线条标出位置；按住 ⌘ 可自由移动。</string>
+	<key>Click a pin to go there.</key>
+	<string>点按图钉即可前往该位置。</string>
 	<key>Click a preset (Fade, Zoom, Slide, Spin, Pop, Blur…), then set its Length.</key>
 	<string>点按一个预设（淡化、缩放、滑动、旋转、弹出、模糊…），然后设定“时长”。</string>
 	<key>Click a project to open it.</key>
@@ -1818,6 +1870,8 @@
 	<string>在时间线上任意位置点按或拖移，即可跳到那里。</string>
 	<key>Click or press Esc to cancel</key>
 	<string>点按或按下 Esc 键以取消</string>
+	<key>Click or type in the editor while it works and it pauses: its next change waits until you click Resume in the Agent panel.</key>
+	<string>在它工作时于编辑器中点按或键入，它就会暂停：下一项更改会等到你在代理面板中点按“继续”。</string>
 	<key>Click play, press Space, or tick Start with recording.</key>
 	<string>点按播放、按空格键，或勾选“随录制开始”。</string>
 	<key>Click removed — ⌘Z to undo</key>
@@ -1976,6 +2030,12 @@
 	<string>彩纸</string>
 	<key>Conflict detected</key>
 	<string>检测到冲突</string>
+	<key>Connect Claude Desktop</key>
+	<string>连接 Claude Desktop</string>
+	<key>Connect an agent</key>
+	<string>连接代理</string>
+	<key>Connected: %@</key>
+	<string>已连接：%@</string>
 	<key>Contrast</key>
 	<string>对比度</string>
 	<key>Cool</key>
@@ -2034,6 +2094,8 @@
 	<string>将截屏拷贝到剪贴板</string>
 	<key>Copy screenshots to the clipboard.</key>
 	<string>将截屏拷贝到剪贴板。</string>
+	<key>Copy setup</key>
+	<string>拷贝设置</string>
 	<key>Copy text &amp; QR codes</key>
 	<string>拷贝文字和二维码</string>
 	<key>Copy text from a screenshot</key>
@@ -2258,6 +2320,8 @@
 	<string>“指针”面板 ▸ 打字 ▸ 将打字加速到 2×、3×、4×、6× 或 8×。</string>
 	<key>Cursor styles</key>
 	<string>指针样式</string>
+	<key>Cursor ▸ Settings ▸ MCP ▸ Add new MCP server: paste it into mcp.json and save.</key>
+	<string>Cursor ▸ 设置 ▸ MCP ▸ 添加新的 MCP 服务器：粘贴到 mcp.json 并存储。</string>
 	<key>Cursor, clicks, and keyboard shortcuts</key>
 	<string>指针、点按和快捷键</string>
 	<key>Cursor: shows the pointer in the video.</key>
@@ -2452,6 +2516,8 @@
 	<string>丢弃录制内容</string>
 	<key>Discard this recording?</key>
 	<string>要丢弃此录制内容吗？</string>
+	<key>Disconnect</key>
+	<string>断开连接</string>
 	<key>Disk almost full</key>
 	<string>磁盘将满</string>
 	<key>Disk almost full: it warns you, then stops and saves the recording before the disk is full.</key>
@@ -2500,6 +2566,8 @@
 	<string>完成</string>
 	<key>Done (Esc)</key>
 	<string>完成（Esc）</string>
+	<key>Done: review the changes</key>
+	<string>完成：检查更改</string>
 	<key>Double-click</key>
 	<string>连按两次</string>
 	<key>Double-click a caption on the timeline to change its words. Press Return to keep them or Esc to leave them as they were.</key>
@@ -2876,6 +2944,8 @@
 	<string>每项更改都可以一步一步撤销。</string>
 	<key>Every change is saved as you go. Close the editor and open the recording again: your edit is still there.</key>
 	<string>每处更改都会随时存储。关闭编辑器后再次打开录制内容，你的编辑依然还在。</string>
+	<key>Every change it makes is one ⌘Z step, like yours.</key>
+	<string>它做的每项更改都是一步 ⌘Z，与你的更改一样。</string>
 	<key>Every clip is muted — this export will have no sound.</key>
 	<string>所有片段都已静音 — 此导出将没有声音。</string>
 	<key>Every cut, zoom, annotation, caption, and style change on this video is removed — the recordings you added stay. You can undo this.</key>
@@ -3420,6 +3490,8 @@
 	<string>故障</string>
 	<key>Glow</key>
 	<string>发光</string>
+	<key>Go there</key>
+	<string>前往</string>
 	<key>Go to End</key>
 	<string>前往结尾</string>
 	<key>Go to Start</key>
@@ -3522,6 +3594,8 @@
 	<string>截屏时隐藏桌面图标</string>
 	<key>Hide private info</key>
 	<string>隐藏隐私信息</string>
+	<key>Hide the Agent panel</key>
+	<string>隐藏代理面板</string>
 	<key>Hide the Menu Bar Icon?</key>
 	<string>要隐藏菜单栏图标吗？</string>
 	<key>Hide the camera whenever you're not talking, and bring it back when you speak.</key>
@@ -3642,6 +3716,8 @@
 	<string>保留多少屏幕上的阴影</string>
 	<key>How strongly blur and pixelate hide what's under them</key>
 	<string>模糊和像素化遮盖下方内容的程度</string>
+	<key>How to edit in LF Studios</key>
+	<string>如何在 LF Studios 中编辑</string>
 	<key>Hue</key>
 	<string>色相</string>
 	<key>I and O mark a part: Export can export just that part, and ⌫ cuts it.</key>
@@ -3722,6 +3798,8 @@
 	<string>入点</string>
 	<key>In &amp; out</key>
 	<string>入点和出点</string>
+	<key>In Claude Desktop, choose Claude ▸ Settings ▸ Developer ▸ Edit Config.</key>
+	<string>在 Claude Desktop 中，选取 Claude ▸ 设置 ▸ 开发者 ▸ 编辑配置。</string>
 	<key>In History, or from the preview after capture.</key>
 	<string>在“历史记录”中，或从截取后预览中。</string>
 	<key>In History: the All Captures menu at the top, and the screenshots themselves.</key>
@@ -3864,6 +3942,8 @@
 	<string>安装更新：下载并安装更新，然后重新打开 LF Studios。</string>
 	<key>Instant</key>
 	<string>即时</string>
+	<key>Instructions for the agent</key>
+	<string>给代理的说明</string>
 	<key>Intensity</key>
 	<string>强度</string>
 	<key>Interface</key>
@@ -3888,6 +3968,12 @@
 	<string>鸢尾</string>
 	<key>It also comes out of the video. The file stays where it is, and ⌘Z brings it back.</key>
 	<string>它也会从视频中移除。文件保留在原处，按 ⌘Z 可恢复。</string>
+	<key>It can read the timeline, the transcript, the captions, the markers and the keyframes, and look at frames.</key>
+	<string>它可以读取时间线、转写文本、字幕、标记和关键帧，并查看画面。</string>
+	<key>It can split, trim, delete, add markers, titles and keyframes, fix captions, remove ums, and place files that are already in the project or its folder.</key>
+	<string>它可以分割、修剪、删除，添加标记、标题和关键帧，修正字幕，去除“嗯”，并放置项目或其文件夹中已有的文件。</string>
+	<key>It can't export, record sound or video, use the clipboard, or open files from anywhere else. Locked tracks stay as they are.</key>
+	<string>它不能导出、录制声音或视频、使用剪贴板，也不能打开其他位置的文件。锁定的轨道保持不变。</string>
 	<key>It checks the free space first, and shows how much the originals add. Cancel removes the half-made folder.</key>
 	<string>它会先检查可用空间，并显示原始文件会增加多少大小。“取消”会删除做了一半的文件夹。</string>
 	<key>It happens by itself. The bar while recording shows a short note, and a notice explains it.</key>
@@ -3994,8 +4080,12 @@
 	<string>保持面部居中</string>
 	<key>Keep files on your desktop out of your screenshots.</key>
 	<string>不让桌面上的文件出现在截屏中。</string>
+	<key>Keep or Revert all</key>
+	<string>保留或全部还原</string>
 	<key>Keep pitch</key>
 	<string>保持音调</string>
+	<key>Keep the agent's changes (each still undoes with ⌘Z)</key>
+	<string>保留代理的更改（每项仍可用 ⌘Z 撤销）</string>
 	<key>Keep the current style</key>
 	<string>保留当前样式</string>
 	<key>Keeping 30 days removes %lld older captures from History now. This can't be undone.</key>
@@ -4018,6 +4108,8 @@
 	<string>避免摄像头气泡挡住缩放要展示的内容。</string>
 	<key>Kept for %@</key>
 	<string>已保留给“%@”</string>
+	<key>Kept the agent's changes</key>
+	<string>已保留代理的更改</string>
 	<key>Key for %@: %@</key>
 	<string>“%@”的快捷键：%@</string>
 	<key>Key or password</key>
@@ -4164,6 +4256,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>LF Studios – 截屏历史记录</string>
 	<key>LF Studios ▸ Check for Updates…, and Settings ▸ General ▸ Updates ▸ Check for updates automatically.</key>
 	<string>“LF Studios ▸ 检查更新…”，以及“设置 ▸ 通用 ▸ 更新 ▸ 自动检查更新”。</string>
+	<key>LF Studios ▸ Settings ▸ Agent.</key>
+	<string>LF Studios ▸ 设置 ▸ 代理。</string>
 	<key>LF Studios' own floating windows stay out of your screen recordings and screenshots.</key>
 	<string>LF Studios 自己的浮动窗口不会出现在你的屏幕录制内容和截屏中。</string>
 	<key>LFSTUDIOS LIBRARY</key>
@@ -4234,6 +4328,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>时长</string>
 	<key>Less rumble and boom, more presence</key>
 	<string>减少隆隆声和轰鸣，增加临场感</string>
+	<key>Let an AI agent such as Claude edit the project you have open, while you watch.</key>
+	<string>让 Claude 等 AI 代理在你观看时编辑你打开的项目。</string>
 	<key>Let go to capture it.</key>
 	<string>松开即可捕捉。</string>
 	<key>Let go to float</key>
@@ -4826,6 +4922,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>新建文件夹</string>
 	<key>New Folder…</key>
 	<string>新建文件夹…</string>
+	<key>New Token</key>
+	<string>新令牌</string>
 	<key>New badge</key>
 	<string>“最新”标签</string>
 	<key>New caption</key>
@@ -4844,6 +4942,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>“新录制”可录制屏幕的某个区域、某个窗口或整个屏幕。</string>
 	<key>New to LF Studios? Start here: it takes about five minutes.</key>
 	<string>初次使用 LF Studios？从这里开始，大约只需五分钟。</string>
+	<key>New token</key>
+	<string>新令牌</string>
 	<key>New zooms</key>
 	<string>新缩放</string>
 	<key>News</key>
@@ -4852,6 +4952,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>下一帧（→）</string>
 	<key>Next keyframe</key>
 	<string>下一个关键帧</string>
+	<key>Next to Claude Desktop, click Copy setup.</key>
+	<string>在 Claude Desktop 旁边，点按“拷贝设置”。</string>
 	<key>Next to the video, LF Studios keeps the details the editor needs, on your Mac.</key>
 	<string>LF Studios 会在你的 Mac 上、视频旁边保存编辑器所需的信息。</string>
 	<key>Nice shot. You're all set.</key>
@@ -4868,6 +4970,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>现在没有我的风格</string>
 	<key>No My Style yet — open Presets ▸ Edit Presets and choose Use as My Style on one</key>
 	<string>还没有我的风格 — 打开预设 ▸ 编辑预设，在其中一个上选择“用作我的风格”</string>
+	<key>No agent is editing this project.</key>
+	<string>没有代理在编辑此项目。</string>
 	<key>No background</key>
 	<string>无背景</string>
 	<key>No background — text only</key>
@@ -5014,8 +5118,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>以后再说</string>
 	<key>Not set</key>
 	<string>未设定</string>
+	<key>Notes and questions an agent pins to a moment of the video.</key>
+	<string>代理固定在视频某一时刻的备注和问题。</string>
 	<key>Nothing at the playhead</key>
 	<string>播放头处没有内容</string>
+	<key>Nothing changed yet.</key>
+	<string>尚无更改。</string>
 	<key>Nothing here yet</key>
 	<string>这里还没有内容</string>
 	<key>Nothing in the Guide matches your search. Try a shorter word, like “zoom” or “camera”.</key>
@@ -5072,6 +5180,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>一开始是关闭的。需要“辅助功能”权限。</string>
 	<key>Off until you turn it on. On, it zooms in on your clicks and switches on its options below; off, its zooms go.</key>
 	<string>在你开启前一直关闭。开启后，它会在你的点按处放大，并打开下方的选项；关闭后，它生成的缩放会被移除。</string>
+	<key>Off until you turn it on. Only apps on this Mac can connect.</key>
+	<string>在你打开之前保持关闭。只有这台 Mac 上的 App 可以连接。</string>
 	<key>Off, Light, Smooth, or Silky.</key>
 	<string>“关闭”“轻度”“平滑”或“丝滑”。</string>
 	<key>Off, it stays on the timeline but does nothing (V)</key>
@@ -5136,6 +5246,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>按一次 ⌘Z 即可撤销。</string>
 	<key>Only %@ free on your disk — this may not fit. Free up space or save to another drive.</key>
 	<string>你的磁盘上仅剩 %@ 可用空间 — 可能放不下。请释放空间或存储到其他磁盘。</string>
+	<key>Only apps on this Mac can connect, with a secret token. New token makes the old one stop working.</key>
+	<string>只有这台 Mac 上的 App 可以使用秘密令牌连接。“新令牌”会让旧令牌失效。</string>
 	<key>Only for these, and never to send your work:</key>
 	<string>只有以下几种情况，而且绝不会发送你的作品：</string>
 	<key>Only if you turned them on: shortcuts, typing positions and times, and your speaker notes.</key>
@@ -5166,6 +5278,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>从 LF Studios 菜单打开“历史记录”，右键点按一张截屏，然后选择“贴到屏幕”。</string>
 	<key>Open Keyboard Settings</key>
 	<string>打开键盘设置</string>
+	<key>Open LF Studios ▸ Settings ▸ Agent and turn on Allow AI agents to edit.</key>
+	<string>打开 LF Studios ▸ 设置 ▸ 代理，然后打开“允许 AI 代理编辑”。</string>
 	<key>Open Link</key>
 	<string>打开链接</string>
 	<key>Open Messages</key>
@@ -5198,6 +5312,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>把一个文件夹中的文件作为一个项目打开：录制内容的文件夹、创意交付，或任何包含视频的文件夹。</string>
 	<key>Open a project</key>
 	<string>打开项目</string>
+	<key>Open a project in LF Studios. In Claude, ask for an edit, for example: Remove the ums and tighten the pauses.</key>
+	<string>在 LF Studios 中打开项目。在 Claude 中请求编辑，例如：去掉“嗯”并缩短停顿。</string>
 	<key>Open a project, a recording's folder, a Creative Handoff, or a video</key>
 	<string>打开项目、录制内容的文件夹、创意交付或视频</string>
 	<key>Open a recording in the video editor first, then click Show me.</key>
@@ -5282,6 +5398,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>或者，在打开截取后预览时，点按缩略图上的“贴到屏幕”。</string>
 	<key>Orange</key>
 	<string>橙色</string>
+	<key>Orange pins on the timeline's ruler, and the Agent panel.</key>
+	<string>时间线标尺上的橙色图钉，以及代理面板。</string>
 	<key>Orchid</key>
 	<string>兰花</string>
 	<key>Original</key>
@@ -5336,10 +5454,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>粘贴</string>
 	<key>Paste it anywhere with ⌘V.</key>
 	<string>用 ⌘V 粘贴到任何地方。</string>
+	<key>Paste it into Terminal and press Return.</key>
+	<string>粘贴到“终端”中并按下 Return 键。</string>
+	<key>Paste it into ~/.codex/config.toml and save.</key>
+	<string>粘贴到 ~/.codex/config.toml 并存储。</string>
 	<key>Paste or type your notes here. They stay out of every recording.</key>
 	<string>在此粘贴或输入备注。它们不会出现在任何录制中。</string>
 	<key>Paste or type your notes, then click Read.</key>
 	<string>粘贴或输入你的备注，然后点按“阅读”。</string>
+	<key>Paste the setup into claude_desktop_config.json, save it, and quit and reopen Claude.</key>
+	<string>将设置粘贴到 claude_desktop_config.json，存储，然后退出并重新打开 Claude。</string>
 	<key>Pastel</key>
 	<string>粉彩</string>
 	<key>Pause</key>
@@ -5370,6 +5494,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>暂停视频，然后在预览上拖移字幕。</string>
 	<key>Paused</key>
 	<string>已暂停</string>
+	<key>Paused: you took over</key>
+	<string>已暂停：你已接管</string>
 	<key>Pauses longer than a second become short ones, except where you're clicking, typing, or moving the pointer. ⌘Z undoes either one.</key>
 	<string>超过一秒的停顿会变短，但你正在点按、打字或移动指针的地方除外。按 ⌘Z 可撤销其中任何一项。</string>
 	<key>Peach</key>
@@ -6168,6 +6294,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做保持面部居中</string>
 	<key>Redo Keep Pitch</key>
 	<string>重做保持音调</string>
+	<key>Redo Keyframe Curve</key>
+	<string>重做关键帧曲线</string>
 	<key>Redo Keyframe Easing</key>
 	<string>重做关键帧缓动</string>
 	<key>Redo Link Audio</key>
@@ -6298,6 +6426,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>重做更换字幕样式</string>
 	<key>Redo Reverse</key>
 	<string>重做倒放</string>
+	<key>Redo Revert Agent Changes</key>
+	<string>重做还原代理的更改</string>
 	<key>Redo Rotate</key>
 	<string>重做旋转</string>
 	<key>Redo Shortcut Style</key>
@@ -6616,6 +6746,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>更换所有字幕样式</string>
 	<key>Results come in groups: Commands, Media, Clips, Captions, Markers.</key>
 	<string>结果按组显示：命令、媒体、片段、字幕、标记。</string>
+	<key>Resume</key>
+	<string>继续</string>
 	<key>Resume Recording</key>
 	<string>继续录制</string>
 	<key>Resume recording</key>
@@ -6640,6 +6772,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>正在倒放片段…</string>
 	<key>Reversing “%@”…</key>
 	<string>正在倒放“%@”…</string>
+	<key>Revert All</key>
+	<string>全部还原</string>
+	<key>Reverted the agent's changes</key>
+	<string>已还原代理的更改</string>
 	<key>Review Changes…</key>
 	<string>检查更改…</string>
 	<key>Review the decoded email payload before copying.</key>
@@ -6772,6 +6908,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>将截屏存储到磁盘</string>
 	<key>Save subtitles</key>
 	<string>存储字幕</string>
+	<key>Save the agent instructions. For Claude Code, save them as SKILL.md in a folder named lfstudios-editing inside ~/.claude/skills.</key>
+	<string>存储给代理的说明。若用于 Claude Code，请在 ~/.claude/skills 中名为 lfstudios-editing 的文件夹里将其存储为 SKILL.md。</string>
 	<key>Save your edit as a video that plays everywhere.</key>
 	<string>把你的编辑存储为随处都能播放的视频。</string>
 	<key>Save your look once, then put it on any video in one click.</key>
@@ -7034,6 +7172,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>选区宽 %@ 点、高 %@ 点</string>
 	<key>Selection %@ by %@ points. Arrow keys move it, Return captures, Escape cancels.</key>
 	<string>选区宽 %@ 点、高 %@ 点。方向键可移动选区，按 Return 键捕捉，按 Esc 键取消。</string>
+	<key>Send</key>
+	<string>发送</string>
 	<key>Send everything to a video editor</key>
 	<string>把所有素材交给其他剪辑软件</string>
 	<key>Sepia</key>
@@ -7076,6 +7216,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>调整音量，使其达到视频网站期望的响度（−16 LUFS）</string>
 	<key>Settings</key>
 	<string>设置</string>
+	<key>Settings ▸ Agent ▸ Save… gives the agent a guide to LF Studios' tools (for Claude Code, a skill).</key>
+	<string>“设置 ▸ 代理 ▸ 存储…”可为代理提供 LF Studios 工具指南（对 Claude Code 而言是一项技能）。</string>
 	<key>Settings ▸ General ▸ After Capture.</key>
 	<string>设置 ▸ 通用 ▸ 截屏后。</string>
 	<key>Settings ▸ General ▸ Appearance: System, Light Mode, or Dark Mode.</key>
@@ -7530,12 +7672,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>随录制开始</string>
 	<key>Start, and press again to finish</key>
 	<string>开始，再按一次结束</string>
+	<key>Starting…</key>
+	<string>正在启动…</string>
 	<key>Starts</key>
 	<string>开始</string>
 	<key>Starts after the screen by</key>
 	<string>晚于屏幕</string>
 	<key>Startup</key>
 	<string>启动</string>
+	<key>Status</key>
+	<string>状态</string>
 	<key>Step %lld</key>
 	<string>步骤 %lld</string>
 	<key>Steps</key>
@@ -7672,6 +7818,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>“电脑声音”“麦克风”“指针”“摄像头”“显示快捷键”和“演讲者备注”：点按即可逐个打开或关闭。</string>
 	<key>Table copied — paste it into a spreadsheet</key>
 	<string>已拷贝表格 — 可粘贴到电子表格中</string>
+	<key>Tack: %@</key>
+	<string>标注：%@</string>
+	<key>Tacks</key>
+	<string>标注</string>
 	<key>Tag</key>
 	<string>标签</string>
 	<key>Tag color</key>
@@ -7780,6 +7930,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>该视频为空</string>
 	<key>That window closed before recording could start.</key>
 	<string>窗口在录制开始前已关闭。</string>
+	<key>The Agent panel (Layout ▸ Agent Panel). It opens when an agent starts.</key>
+	<string>代理面板（布局 ▸ 代理面板）。代理开始工作时它会打开。</string>
+	<key>The Agent panel moves and floats like the others; its × hides it.</key>
+	<string>代理面板可像其他面板一样移动和浮动；点按它的 × 即可隐藏。</string>
 	<key>The Home window</key>
 	<string>“主页”窗口</string>
 	<key>The LF Studios menu (Command Center)</key>
@@ -7814,6 +7968,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>播放器下方的“代理”菜单。</string>
 	<key>The Undo and Redo buttons in the editor's toolbar.</key>
 	<string>编辑器工具栏中的“撤销”和“重做”按钮。</string>
+	<key>The agent connection couldn't start: %@</key>
+	<string>代理连接无法启动：%@</string>
 	<key>The aspect ratio menu under the player.</key>
 	<string>播放器下方的宽高比菜单。</string>
 	<key>The bar above the timeline. Hover a button for its name and key.</key>
@@ -7978,6 +8134,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>录制时看到的预览绝不会出现在屏幕录制本身中。</string>
 	<key>The project file (Name.lfs) opens everything again, exactly as you left it. LF Studios keeps it up to date as you edit.</key>
 	<string>项目文件（名称.lfs）会让一切按你离开时的样子重新打开。LF Studios 会在你编辑时随时更新它。</string>
+	<key>The project open in the front editor window.</key>
+	<string>最前面编辑器窗口中打开的项目。</string>
 	<key>The recording bar</key>
 	<string>录制栏</string>
 	<key>The recording bar, the camera bubble preview, Speaker notes, the countdown, and notices.</key>
@@ -8270,6 +8428,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>标题</string>
 	<key>To</key>
 	<string>收件人</string>
+	<key>To answer a question, type in its Answer field in the Agent panel and click Send. The agent reads your answer.</key>
+	<string>要回答问题，请在代理面板的“回答”栏中键入并点按“发送”。代理会读取你的回答。</string>
 	<key>To attach the full report, drag it from Finder onto the GitHub page.</key>
 	<string>若要附加完整报告，请将其从“访达”拖到 GitHub 页面上。</string>
 	<key>To begin again, open the commands (⌘K) and choose Start Over from the Original Recording…. It asks first, and can be undone too.</key>
@@ -8300,6 +8460,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>要跳过面板直接进入编辑器，请在“设置 ▸ 通用”中打开“录制后打开视频编辑器”。</string>
 	<key>Today</key>
 	<string>今天</string>
+	<key>Token</key>
+	<string>令牌</string>
 	<key>Too long for a GIF at this size — it would need about %@ of memory. Make it lighter, export a part, or choose MP4.</key>
 	<string>以此尺寸制作 GIF 过长 — 大约需要 %@ 内存。请减轻体积、导出一部分，或选择 MP4。</string>
 	<key>Too many icons? Remove some, or set an Open Command Center shortcut in Settings ▸ Shortcuts.</key>
@@ -8308,6 +8470,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>太短，无法添加片头和片尾</string>
 	<key>Tools</key>
 	<string>工具</string>
+	<key>Tools, habits and limits, as a file the agent can read (also a Claude skill).</key>
+	<string>以代理可读的文件提供工具、习惯和限制（也可作为 Claude 技能）。</string>
 	<key>Top</key>
 	<string>顶部</string>
 	<key>Top left</key>
@@ -8766,6 +8930,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销保持面部居中</string>
 	<key>Undo Keep Pitch</key>
 	<string>撤销保持音调</string>
+	<key>Undo Keyframe Curve</key>
+	<string>撤销关键帧曲线</string>
 	<key>Undo Keyframe Easing</key>
 	<string>撤销关键帧缓动</string>
 	<key>Undo Link Audio</key>
@@ -8896,6 +9062,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>撤销更换字幕样式</string>
 	<key>Undo Reverse</key>
 	<string>撤销倒放</string>
+	<key>Undo Revert Agent Changes</key>
+	<string>撤销还原代理的更改</string>
 	<key>Undo Rotate</key>
 	<string>撤销旋转</string>
 	<key>Undo Shortcut Style</key>
@@ -9166,6 +9334,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>哇！</string>
 	<key>Wait for it…</key>
 	<string>等着瞧…</string>
+	<key>Waiting for an agent</key>
+	<string>正在等待代理</string>
 	<key>Waiting…</key>
 	<string>等待中…</string>
 	<key>Wallpaper</key>
@@ -9188,6 +9358,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>色温</string>
 	<key>Warning</key>
 	<string>警告</string>
+	<key>Watch the changes come in, in the Agent panel. Click one to go to it.</key>
+	<string>在代理面板中查看陆续到来的更改。点按任一项即可前往。</string>
 	<key>Watch the result, then change or delete any zoom.</key>
 	<string>查看效果，然后更改或删除任何缩放。</string>
 	<key>Web</key>
@@ -9208,6 +9380,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>LF Studios 会保存什么，以及绝不会做什么。</string>
 	<key>What a recording keeps</key>
 	<string>录制内容会保存什么</string>
+	<key>What an agent can and can't do</key>
+	<string>代理能做什么、不能做什么</string>
 	<key>What is each file in “%@”?</key>
 	<string>“%@”中的每个文件分别是什么？</string>
 	<key>What the clip follows: drag it over the thing that moves</key>
@@ -9226,8 +9400,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>如果已有同名文件，请选择“替换”或“两者都保留”。</string>
 	<key>When a key is taken, LF Studios says which command loses it.</key>
 	<string>当某个快捷键已被占用时，LF Studios 会告诉你哪个命令将失去它。</string>
+	<key>When an agent finishes, see what it changed and keep it, or go back to how the project was.</key>
+	<string>代理完成后，查看它的更改并保留，或回到项目原来的样子。</string>
 	<key>When recording a window: the Window size menu in the row above the recording bar.</key>
 	<string>录制窗口时：录制栏上方那一行中的“窗口大小”菜单。</string>
+	<key>When the agent is done, its changes are marked on the timeline in orange.</key>
+	<string>代理完成后，它的更改会在时间线上以橙色标出。</string>
 	<key>When the text has links, email addresses, or a table, LF Studios offers more ways to use it.</key>
 	<string>当文字中有链接、电子邮件地址或表格时，LF Studios 会提供更多用法。</string>
 	<key>When they're ready, Edit with Proxies turns on.</key>
@@ -9342,6 +9520,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>是</string>
 	<key>Yesterday</key>
 	<string>昨天</string>
+	<key>You answered: %@</key>
+	<string>你的回答：%@</string>
 	<key>You can also drop a video file on the LF Studios icon in the Dock.</key>
 	<string>你也可以把视频文件拖到程序坞中的 LF Studios 图标上。</string>
 	<key>You can close this — the handoff keeps going.</key>

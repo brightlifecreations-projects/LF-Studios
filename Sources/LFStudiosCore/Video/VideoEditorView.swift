@@ -450,6 +450,8 @@ struct VideoEditorToolbar: View {
                 // Adapt to this ratio, Export all ratios (VideoRatioEditor.swift).
                 VideoRatioButtons(model: model)
                 VideoLayoutMenu()
+                // An agent connected (CapCut style; the new layout: the status strip).
+                if !VideoEditorStyle.current.isNew { VideoAgentDot() }
 
                 HStack(spacing: 2) {
                     Button { model.undo() } label: {
@@ -656,6 +658,8 @@ struct VideoKeyboardBridge: NSViewRepresentable {
     /// text is being typed. True: used.
     static func route(_ event: NSEvent, editor: NSWindow, isKey: Bool, model: VideoEditorModel) -> Bool {
         guard let window = event.window, isKey, belongs(window, to: editor) else { return false }
+        // Typing while an agent edits: it waits for Resume (1.19.0).
+        VideoAgentHub.shared.userTookOver(model)
         if let responder = window.firstResponder, responder is NSText || responder is NSTextField {
             // Esc leaves a text field (and closes the command
             // palette it belongs to); everything else types.
@@ -697,6 +701,12 @@ struct VideoKeyboardBridge: NSViewRepresentable {
             // editing, so the editor's keys work again.
             clickMonitor = NSEvent.addLocalMonitorForEvents(matching: .leftMouseDown) { [weak self] incoming in
                 nonisolated(unsafe) let event = incoming
+                MainActor.assumeIsolated {
+                    // Clicking while an agent edits: it waits for Resume (1.19.0).
+                    if let self, let editor = self.view?.window, let window = event.window, VideoKeyboardBridge.belongs(window, to: editor) {
+                        VideoAgentHub.shared.userTookOver(self.model)
+                    }
+                }
                 MainActor.assumeIsolated {
                     guard let self, let editor = self.view?.window, let window = event.window,
                           VideoKeyboardBridge.belongs(window, to: editor),

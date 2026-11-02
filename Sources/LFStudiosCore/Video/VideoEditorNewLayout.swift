@@ -74,6 +74,7 @@ struct VideoStatusStrip: View {
                 .truncationMode(.tail)
                 .layoutPriority(1)
             Spacer(minLength: 12)
+            VideoAgentDot()
             ViewThatFits(in: .horizontal) {
                 hints(Self.keyed)
                 hints(Array(Self.keyed.prefix(4)))

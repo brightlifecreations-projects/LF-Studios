@@ -10,15 +10,17 @@ test run delete that run's temp files ($TMPDIR/lfstudios-*).
 - [x] 1. One-time panel tip
 - [x] 2. Unlink/Link Audio for videos above the main track
 - [x] 3. Bézier tangent handles on the curve lane
-- [ ] 4. MCP server (loopback, token, rebinding) + Settings ▸ Agent + token
-- [ ] 5. Read tools
-- [ ] 6. Edit tools + dry_run + locked tracks + imports rule
-- [ ] 7. Sessions, checkpoints, Keep / Revert all, take over / Resume
-- [ ] 8. Agent panel (change feed) + Tacks + status dot / Disconnect
-- [ ] 9. lfstudios-mcp stdio bridge in the bundle + Copy setup + instructions file
+- [x] 4. MCP server (loopback, token, rebinding) + Settings ▸ Agent + token
+- [x] 5. Read tools
+- [x] 6. Edit tools + dry_run + locked tracks + imports rule
+- [x] 7. Sessions, checkpoints, Keep / Revert all, take over / Resume
+- [x] 8. Agent panel (change feed) + Tacks + status dot / Disconnect
+- [x] 9. lfstudios-mcp stdio bridge in the bundle + Copy setup + instructions file
 - [ ] 10. Guide, translations, CHANGELOG, test-full, screenshots, PR, CI,
       merge, rehearsal, publish, REPORT-1.19.md
 
 ## Notes
 - 1.2: VideoLayerItem.audioOffset (format 5), own composition track, lane menu + drag. Found: layer video sound fades across its clip (DECISIONS 2), not fixed.
 - 1.3: VideoKey inSlope/outSlope (Hermite between keys; nil = from the easing); handles shown for the selected clip; setEasing clears the out slope; format 5 when any is set.
+- Agent: VideoAgentServer (NWListener 127.0.0.1, gate: token/Host/Origin/peer), VideoAgentProtocol + VideoAgentTools, VideoAgentHub (runs, checkpoints, take over, tacks), VideoAgentViews (Settings ▸ Agent, dot, panel, timeline marks), VideoAgentInstructions, Sources/lfstudios-mcp (bridge, Contents/Helpers, signed in build-app.sh). VideoAgentTests: 7 tests over real HTTP + the bridge.
+- Still to do in 10: Project118 identity test (1.18.0 refs from a worktree), screenshots, test-full, PR, CI, merge, publish.

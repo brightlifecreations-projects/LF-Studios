@@ -29,6 +29,12 @@ let package = Package(
             path: "Sources/LFStudiosCore",
             resources: [.process("Resources")]
         ),
+        // lfstudios-mcp (1.19.0): the bridge an AI agent's app starts; it
+        // passes MCP messages to LF Studios on this Mac. In the app bundle.
+        .executableTarget(
+            name: "lfstudios-mcp",
+            path: "Sources/lfstudios-mcp"
+        ),
         .executableTarget(
             name: "LFStudios",
             dependencies: [
@@ -40,6 +46,7 @@ let package = Package(
             name: "LFStudiosCoreTests",
             dependencies: [
                 "LFStudiosCore",
+                "lfstudios-mcp",
                 .product(name: "KeyboardShortcuts", package: "KeyboardShortcuts"),
             ],
             path: "Tests/LFStudiosCoreTests",

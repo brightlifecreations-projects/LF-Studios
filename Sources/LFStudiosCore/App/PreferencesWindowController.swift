@@ -9,6 +9,8 @@ enum PreferencesTab: Int, CaseIterable {
     case shortcuts = 1
     case screenshots = 2
     case recording = 3
+    /// AI agents (1.19.0).
+    case agent = 5
     case about = 4
 
     var title: String {
@@ -17,6 +19,7 @@ enum PreferencesTab: Int, CaseIterable {
         case .shortcuts: return L("Shortcuts")
         case .screenshots: return L("Screenshots")
         case .recording: return L("Recording")
+        case .agent: return L("Agent")
         case .about: return L("About")
         }
     }
@@ -27,6 +30,7 @@ enum PreferencesTab: Int, CaseIterable {
         case .shortcuts: return "keyboard"
         case .screenshots: return "camera"
         case .recording: return "record.circle"
+        case .agent: return "sparkles"
         case .about: return "info.circle"
         }
     }
@@ -106,6 +110,8 @@ struct PreferencesRootView: View {
                         ScreenshotsSettingsView()
                     case .recording:
                         RecordingSettingsView()
+                    case .agent:
+                        AgentSettingsView()
                     case .about:
                         AboutSettingsView()
                     }

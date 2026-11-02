@@ -152,6 +152,8 @@
 	<string>%lld個のカメラのレイアウト</string>
 	<key>%lld captions</key>
 	<string>%lld個の字幕</string>
+	<key>%lld changes</key>
+	<string>%lld件の変更</string>
 	<key>%lld chapters — players like QuickTime Player list them, and so do editing apps</key>
 	<string>%lld個のチャプター — QuickTime Playerなどのプレーヤーや編集アプリで一覧表示されます</string>
 	<key>%lld clicks</key>
@@ -248,6 +250,8 @@
 	<string>ほかのアプリの3D LUT: 選択したクリップに適用するか、フィルタクリップとして追加</string>
 	<key>A README lists every file. Include speaker notes adds your notes.</key>
 	<string>READMEにすべてのファイルが記載されます。“スピーカーノートを含める”でメモも追加されます。</string>
+	<key>A Tack stays with its moment: when the clip moves or is trimmed, it moves along.</key>
+	<string>タックはその瞬間に留まります。クリップを移動やトリムすると一緒に動きます。</string>
 	<key>A big GIF — about %@ and %@ of memory to make. A smaller size, fewer fps, or MP4 is lighter.</key>
 	<string>大きなGIFです。約%@で、作成に%@のメモリが必要です。サイズを小さくするか、fpsを下げるか、MP4にすると軽くなります。</string>
 	<key>A block appears on the Camera lane: drag it to move it, drag its edges to change its length.</key>
@@ -286,6 +290,8 @@
 	<string>正確な形とサイズの枠です。YouTube、Reels、Instagramにそのまま使えるビデオになります。</string>
 	<key>A frame: the one at the playhead (Use the playhead picks again).</key>
 	<string>フレーム: 再生ヘッドの位置のフレーム（“再生ヘッドを使用”で選び直せます）。</string>
+	<key>A green dot in the menu bar and the editor shows an agent is connected; click it to disconnect.</key>
+	<string>メニューバーとエディタの緑の点は、エージェントが接続中であることを示します。クリックで切断します。</string>
 	<key>A hairline that separates dark recordings from the background</key>
 	<string>暗い映像と背景の境目に細い線を引きます</string>
 	<key>A keyframe for position, size, rotation and opacity at the playhead</key>
@@ -364,6 +370,14 @@
 	<string>このサイズのウインドウは画面より大きくなります。同じ形で収まる最大のサイズは%@ × %@です。</string>
 	<key>A yellow marker shows where something was cut. Click it to bring the part back.</key>
 	<string>カットした場所には黄色いマーカーが表示されます。クリックすると、その部分を元に戻せます。</string>
+	<key>AI agent</key>
+	<string>AIエージェント</string>
+	<key>AI agent connected</key>
+	<string>AIエージェント接続中</string>
+	<key>AI agents</key>
+	<string>AIエージェント</string>
+	<key>AI agents are off: Settings ▸ Agent.</key>
+	<string>AIエージェントはオフです：設定 ▸ エージェント。</string>
 	<key>About</key>
 	<string>情報</string>
 	<key>About %lld min left</key>
@@ -582,6 +596,8 @@
 	<string>高度なツール</string>
 	<key>After Capture</key>
 	<string>取り込み後</string>
+	<key>After Revert All, ⌘Z brings the changes back.</key>
+	<string>「すべて元に戻す」の後、⌘Zで変更が戻ります。</string>
 	<key>After capture</key>
 	<string>取り込み後</string>
 	<key>After changing the shape, move zooms, the camera, and captions so everything fits.</key>
@@ -596,6 +612,14 @@
 	<string>収録を停止すると、LF Studiosが保存先を確認し、収録したものすべてを1つの新しいフォルダにまとめます: ビデオ、カメラ映像、サウンド、そしてそれらをすべて開くプロジェクトです。</string>
 	<key>Afterwards, click Restore size to put the window back.</key>
 	<string>終わったら、“サイズを元に戻す”をクリックしてウインドウを元に戻します。</string>
+	<key>Agent</key>
+	<string>エージェント</string>
+	<key>Agent Panel</key>
+	<string>エージェントパネル</string>
+	<key>Agent editing</key>
+	<string>エージェントが編集中</string>
+	<key>Agents are off until you turn them on in Settings ▸ Agent.</key>
+	<string>設定 ▸ エージェントでオンにするまで、エージェントはオフです。</string>
 	<key>Aim by Hand</key>
 	<string>手動で位置を指定</string>
 	<key>Aim by hand</key>
@@ -636,6 +660,8 @@
 	<string>3つとも、オンにするまではオフです。アクセシビリティが必要です。</string>
 	<key>All zooms set to %@</key>
 	<string>すべてのズームを%@に設定しました</string>
+	<key>Allow AI agents to edit</key>
+	<string>AIエージェントによる編集を許可</string>
 	<key>Allow Accessibility (optional)</key>
 	<string>アクセシビリティを許可（オプション）</string>
 	<key>Allow Access…</key>
@@ -664,12 +690,20 @@
 	<string>常に矢印を表示</string>
 	<key>Amber Fold</key>
 	<string>琥珀のひだ</string>
+	<key>An AI agent is connected: click to disconnect it</key>
+	<string>AIエージェントが接続中です：クリックで切断</string>
+	<key>An AI agent is editing. Click or type in the editor to take over.</key>
+	<string>AIエージェントが編集中です。エディタでクリックまたは入力すると交代できます。</string>
 	<key>An LF Studios project (Name.lfs): open the folder in LF Studios 1.12.0 or later to edit the video again. With clips cut to your edit, Include originals so it reopens in LF Studios adds the untouched recordings it needs.</key>
 	<string>LF Studiosのプロジェクト（名前.lfs）: フォルダをLF Studios 1.12.0以降で開くと、ビデオをもう一度編集できます。クリップを編集に合わせてカットする場合は、“LF Studiosで再び開けるようにオリジナルを含める”で、必要な元の収録がそのまま追加されます。</string>
 	<key>An adjustment clip changes everything under it while it plays: drag its ends to set when.</key>
 	<string>調整クリップは、再生中にその下にあるものすべてを変更します。端をドラッグしてタイミングを設定します。</string>
 	<key>An adjustment clip changes everything under it while it plays: set it up in Properties ▸ Adjust (exposure, HSL, curves, colour wheels) and Filter.</key>
 	<string>調整クリップは、再生中にその下にあるものすべてを変更します。“プロパティ”＞“調整”（露出、HSL、カーブ、カラーホイール）と“フィルタ”で設定します。</string>
+	<key>An agent can read the open project and edit it with the editor's own commands, each one ⌘Z step. It can't export, record, or open files outside the project and its folder. You see every change in the Agent panel and choose Keep or Revert all at the end.</key>
+	<string>エージェントは開いているプロジェクトを読み取り、エディタのコマンドで編集できます（それぞれ⌘Zで1ステップ）。書き出し、収録、プロジェクトとそのフォルダ外のファイルを開くことはできません。すべての変更は「エージェント」パネルに表示され、最後に「保持」か「すべて元に戻す」を選びます。</string>
+	<key>An agent edits with the editor's own commands, and you stay in charge.</key>
+	<string>エージェントはエディタのコマンドで編集し、主導権はあなたにあります。</string>
 	<key>An older Creative Handoff is put back together from its files: the screen, the cuts, the camera at its place, captions, markers, and the pointer. A summary says what came back.</key>
 	<string>以前のクリエイティブ受け渡しは、そのファイルから組み立て直されます: 画面、カット、元の位置のカメラ、字幕、マーカー、ポインタ。復元できた内容は概要に表示されます。</string>
 	<key>An optional 2-second “Made with LF Studios” card at the end.</key>
@@ -692,6 +726,8 @@
 	<string>注釈ツール</string>
 	<key>Another app may use the same keys: choose different ones.</key>
 	<string>ほかのアプリが同じキーを使っている場合があります。別のキーを選んでください。</string>
+	<key>Answer</key>
+	<string>回答</string>
 	<key>Any color…</key>
 	<string>その他のカラー…</string>
 	<key>Any other folder: Import Folder lists the videos and sound files. Choose which is the screen recording, which the camera, and which sound to add as tracks, and when each starts.</key>
@@ -756,6 +792,8 @@
 	<string>すべてのつなぎ目に適用…</string>
 	<key>Apply to all zooms</key>
 	<string>すべてのズームに適用</string>
+	<key>Apps that connect directly need the new one; the setups above keep working.</key>
+	<string>直接接続するアプリには新しいトークンが必要です。上の設定はそのまま使えます。</string>
 	<key>Aqua</key>
 	<string>アクア</string>
 	<key>Aqua Marble</key>
@@ -860,6 +898,8 @@
 	<string>速報</string>
 	<key>Back</key>
 	<string>戻る</string>
+	<key>Back to how the project was before the agent started (⌘Z brings the changes back)</key>
+	<string>エージェントが始める前のプロジェクトに戻します（⌘Zで変更が戻ります）</string>
 	<key>Back to the LF Studios look</key>
 	<string>LF Studiosの標準スタイルに戻しました</string>
 	<key>Back to the original recording — ⌘Z to undo</key>
@@ -1366,6 +1406,8 @@
 	<string>時間に沿って音量を変えたり、サウンドをフェードイン/フェードアウトしたり、音量を均一にしたり、ビートを見つけたりします。</string>
 	<key>Changed your mind? Click the yellow marker on the timeline to bring a cut part back.</key>
 	<string>気が変わったら、タイムライン上の黄色いマーカーをクリックすると、カットした部分を元に戻せます。</string>
+	<key>Changes</key>
+	<string>変更</string>
 	<key>Changes only the camera, never your screen.</key>
 	<string>変更されるのはカメラだけで、画面は変わりません。</string>
 	<key>Changes the main track and the tracks under this one while it plays.</key>
@@ -1572,6 +1614,10 @@
 	<string>拍手</string>
 	<key>Classic</key>
 	<string>クラシック</string>
+	<key>Claude Code, Cursor and Codex have their own Copy setup buttons.</key>
+	<string>Claude Code、Cursor、Codexにもそれぞれ「設定をコピー」ボタンがあります。</string>
+	<key>Claude ▸ Settings ▸ Developer ▸ Edit Config: paste it into claude_desktop_config.json, save, and restart Claude.</key>
+	<string>Claude ▸ 設定 ▸ 開発者 ▸ 構成を編集：claude_desktop_config.jsonに貼り付けて保存し、Claudeを再起動します。</string>
 	<key>Clay</key>
 	<string>クレイ</string>
 	<key>Clean</key>
@@ -1682,6 +1728,8 @@
 	<string>“切り取り”をクリックします。</string>
 	<key>Click Cut this part in the panel on the right.</key>
 	<string>右側のパネルで“この部分をカット”をクリックします。</string>
+	<key>Click Dismiss to put a Tack away.</key>
+	<string>「閉じる」をクリックするとタックを片付けます。</string>
 	<key>Click Done or press Esc to finish.</key>
 	<string>終わるには、“完了”をクリックするかEscキーを押します。</string>
 	<key>Click Done, or press Esc, when you reach the end.</key>
@@ -1712,6 +1760,8 @@
 	<string>プレビューの上の“画像”をクリックします。</string>
 	<key>Click Import, or drag files from Finder onto the Library.</key>
 	<string>“読み込む”をクリックするか、Finderからライブラリにファイルをドラッグします。</string>
+	<key>Click Keep to keep them, or Revert All to go back to how the project was before it started.</key>
+	<string>「保持」で残すか、「すべて元に戻す」で開始前のプロジェクトに戻します。</string>
 	<key>Click Marker on the timeline's toolbar. Markers added while recording are there too.</key>
 	<string>タイムラインのツールバーで“マーカー”をクリックします。収録中に追加したマーカーもここに表示されます。</string>
 	<key>Click Microphone in the recording bar. A menu above the bar picks which microphone.</key>
@@ -1776,6 +1826,8 @@
 	<string>マーカーをクリックするとその位置に移動し、ダブルクリックすると名前を変更、右クリックすると削除できます。</string>
 	<key>Click a picture on the player to move it, resize it from a corner, or turn it with the round knob. It lands on the middle and the edges, with a line showing where; hold ⌘ to move it freely.</key>
 	<string>プレーヤーで画像をクリックすると、移動したり、角でサイズを変えたり、丸いノブで回転したりできます。中央や端に吸着し、位置が線で示されます。⌘を押したままにすると自由に動かせます。</string>
+	<key>Click a pin to go there.</key>
+	<string>ピンをクリックするとその位置に移動します。</string>
 	<key>Click a preset (Fade, Zoom, Slide, Spin, Pop, Blur…), then set its Length.</key>
 	<string>プリセット（フェード、ズーム、スライド、スピン、ポップ、ぼかし…）をクリックしてから、“長さ”を設定します。</string>
 	<key>Click a project to open it.</key>
@@ -1818,6 +1870,8 @@
 	<string>タイムライン上のどこかをクリックまたはドラッグすると、その位置に移動します。</string>
 	<key>Click or press Esc to cancel</key>
 	<string>クリックするかEscキーを押してキャンセル</string>
+	<key>Click or type in the editor while it works and it pauses: its next change waits until you click Resume in the Agent panel.</key>
+	<string>作業中にエディタでクリックまたは入力すると一時停止し、エージェントパネルで「再開」をクリックするまで次の変更は待機します。</string>
 	<key>Click play, press Space, or tick Start with recording.</key>
 	<string>再生ボタンをクリックするか、スペースバーを押すか、“収録と同時に開始”にチェックを付けます。</string>
 	<key>Click removed — ⌘Z to undo</key>
@@ -1976,6 +2030,12 @@
 	<string>紙吹雪</string>
 	<key>Conflict detected</key>
 	<string>競合あり</string>
+	<key>Connect Claude Desktop</key>
+	<string>Claude Desktopを接続</string>
+	<key>Connect an agent</key>
+	<string>エージェントを接続</string>
+	<key>Connected: %@</key>
+	<string>接続中：%@</string>
 	<key>Contrast</key>
 	<string>コントラスト</string>
 	<key>Cool</key>
@@ -2034,6 +2094,8 @@
 	<string>スクリーンショットをクリップボードにコピー</string>
 	<key>Copy screenshots to the clipboard.</key>
 	<string>スクリーンショットをクリップボードにコピー。</string>
+	<key>Copy setup</key>
+	<string>設定をコピー</string>
 	<key>Copy text &amp; QR codes</key>
 	<string>テキストとQRコードをコピー</string>
 	<key>Copy text from a screenshot</key>
@@ -2258,6 +2320,8 @@
 	<string>“ポインタ”パネル＞“入力”＞“入力を早送り”で、2×、3×、4×、6×、8×から選びます。</string>
 	<key>Cursor styles</key>
 	<string>ポインタのスタイル</string>
+	<key>Cursor ▸ Settings ▸ MCP ▸ Add new MCP server: paste it into mcp.json and save.</key>
+	<string>Cursor ▸ 設定 ▸ MCP ▸ 新しいMCPサーバを追加：mcp.jsonに貼り付けて保存します。</string>
 	<key>Cursor, clicks, and keyboard shortcuts</key>
 	<string>ポインタ、クリック、キーボードショートカット</string>
 	<key>Cursor: shows the pointer in the video.</key>
@@ -2452,6 +2516,8 @@
 	<string>収録を破棄</string>
 	<key>Discard this recording?</key>
 	<string>この収録を破棄しますか?</string>
+	<key>Disconnect</key>
+	<string>切断</string>
 	<key>Disk almost full</key>
 	<string>ディスク残量わずか</string>
 	<key>Disk almost full: it warns you, then stops and saves the recording before the disk is full.</key>
@@ -2500,6 +2566,8 @@
 	<string>完了</string>
 	<key>Done (Esc)</key>
 	<string>完了（Esc）</string>
+	<key>Done: review the changes</key>
+	<string>完了：変更を確認してください</string>
 	<key>Double-click</key>
 	<string>ダブルクリック</string>
 	<key>Double-click a caption on the timeline to change its words. Press Return to keep them or Esc to leave them as they were.</key>
@@ -2876,6 +2944,8 @@
 	<string>すべての変更は、1つずつ取り消せます。</string>
 	<key>Every change is saved as you go. Close the editor and open the recording again: your edit is still there.</key>
 	<string>変更はすべて、その都度保存されます。エディタを閉じて収録をもう一度開いても、編集内容はそのまま残っています。</string>
+	<key>Every change it makes is one ⌘Z step, like yours.</key>
+	<string>エージェントの変更は、あなたの変更と同じく1つずつ⌘Zで戻せます。</string>
 	<key>Every clip is muted — this export will have no sound.</key>
 	<string>すべてのクリップが消音されているため、書き出したビデオにはサウンドが入りません。</string>
 	<key>Every cut, zoom, annotation, caption, and style change on this video is removed — the recordings you added stay. You can undo this.</key>
@@ -3420,6 +3490,8 @@
 	<string>グリッチ</string>
 	<key>Glow</key>
 	<string>グロー</string>
+	<key>Go there</key>
+	<string>そこへ移動</string>
 	<key>Go to End</key>
 	<string>最後に移動</string>
 	<key>Go to Start</key>
@@ -3522,6 +3594,8 @@
 	<string>取り込み中はデスクトップのアイコンを非表示</string>
 	<key>Hide private info</key>
 	<string>個人情報を隠す</string>
+	<key>Hide the Agent panel</key>
+	<string>エージェントパネルを隠す</string>
 	<key>Hide the Menu Bar Icon?</key>
 	<string>メニューバーのアイコンを非表示にしますか?</string>
 	<key>Hide the camera whenever you're not talking, and bring it back when you speak.</key>
@@ -3642,6 +3716,8 @@
 	<string>背景スクリーン上の影を残す量</string>
 	<key>How strongly blur and pixelate hide what's under them</key>
 	<string>ぼかしとモザイクで下の内容を隠す強さ</string>
+	<key>How to edit in LF Studios</key>
+	<string>LF Studiosでの編集方法</string>
 	<key>Hue</key>
 	<string>色相</string>
 	<key>I and O mark a part: Export can export just that part, and ⌫ cuts it.</key>
@@ -3722,6 +3798,8 @@
 	<string>イン点</string>
 	<key>In &amp; out</key>
 	<string>イン/アウト</string>
+	<key>In Claude Desktop, choose Claude ▸ Settings ▸ Developer ▸ Edit Config.</key>
+	<string>Claude Desktopで、Claude ▸ 設定 ▸ 開発者 ▸ 構成を編集を選びます。</string>
 	<key>In History, or from the preview after capture.</key>
 	<string>履歴、または取り込み後のプレビューから。</string>
 	<key>In History: the All Captures menu at the top, and the screenshots themselves.</key>
@@ -3864,6 +3942,8 @@
 	<string>“アップデートをインストール”: ダウンロードしてインストールし、LF Studiosを再度開きます。</string>
 	<key>Instant</key>
 	<string>瞬時</string>
+	<key>Instructions for the agent</key>
+	<string>エージェント向けの説明</string>
 	<key>Intensity</key>
 	<string>強度</string>
 	<key>Interface</key>
@@ -3888,6 +3968,12 @@
 	<string>アイリス</string>
 	<key>It also comes out of the video. The file stays where it is, and ⌘Z brings it back.</key>
 	<string>ビデオからも取り除かれます。ファイルは元の場所に残り、⌘Zで元に戻せます。</string>
+	<key>It can read the timeline, the transcript, the captions, the markers and the keyframes, and look at frames.</key>
+	<string>タイムライン、文字起こし、字幕、マーカー、キーフレームを読み、フレームを見ることができます。</string>
+	<key>It can split, trim, delete, add markers, titles and keyframes, fix captions, remove ums, and place files that are already in the project or its folder.</key>
+	<string>分割、トリム、削除、マーカー・タイトル・キーフレームの追加、字幕の修正、つなぎ言葉の削除、プロジェクトやそのフォルダにあるファイルの配置ができます。</string>
+	<key>It can't export, record sound or video, use the clipboard, or open files from anywhere else. Locked tracks stay as they are.</key>
+	<string>書き出し、音声やビデオの収録、クリップボードの使用、他の場所のファイルを開くことはできません。ロックされたトラックはそのままです。</string>
 	<key>It checks the free space first, and shows how much the originals add. Cancel removes the half-made folder.</key>
 	<string>最初に空き容量を確認し、オリジナルでどれだけ増えるかを表示します。“キャンセル”を押すと、作成途中のフォルダは削除されます。</string>
 	<key>It happens by itself. The bar while recording shows a short note, and a notice explains it.</key>
@@ -3994,8 +4080,12 @@
 	<string>顔を中央に保つ</string>
 	<key>Keep files on your desktop out of your screenshots.</key>
 	<string>デスクトップ上のファイルがスクリーンショットに写らないようにします。</string>
+	<key>Keep or Revert all</key>
+	<string>保持またはすべて元に戻す</string>
 	<key>Keep pitch</key>
 	<string>ピッチを保持</string>
+	<key>Keep the agent's changes (each still undoes with ⌘Z)</key>
+	<string>エージェントの変更を保持（それぞれ⌘Zで取り消せます）</string>
 	<key>Keep the current style</key>
 	<string>今のスタイルのまま</string>
 	<key>Keeping 30 days removes %lld older captures from History now. This can't be undone.</key>
@@ -4018,6 +4108,8 @@
 	<string>ズームで見せている部分を、カメラのワイプが隠さないようにします。</string>
 	<key>Kept for %@</key>
 	<string>%@用に予約済み</string>
+	<key>Kept the agent's changes</key>
+	<string>エージェントの変更を保持しました</string>
 	<key>Key for %@: %@</key>
 	<string>%1$@のキー: %2$@</string>
 	<key>Key or password</key>
@@ -4164,6 +4256,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>LF Studios – スクリーンショットの履歴</string>
 	<key>LF Studios ▸ Check for Updates…, and Settings ▸ General ▸ Updates ▸ Check for updates automatically.</key>
 	<string>“LF Studios”＞“アップデートを確認…”と、“設定”＞“一般”＞“アップデート”＞“アップデートを自動的に確認”。</string>
+	<key>LF Studios ▸ Settings ▸ Agent.</key>
+	<string>LF Studios ▸ 設定 ▸ エージェント。</string>
 	<key>LF Studios' own floating windows stay out of your screen recordings and screenshots.</key>
 	<string>LF Studios自身のフローティングウインドウは、画面収録やスクリーンショットに映りません。</string>
 	<key>LFSTUDIOS LIBRARY</key>
@@ -4234,6 +4328,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>長さ</string>
 	<key>Less rumble and boom, more presence</key>
 	<string>低音のこもりを抑え、声を前に出します</string>
+	<key>Let an AI agent such as Claude edit the project you have open, while you watch.</key>
+	<string>Claudeなどのエージェントに、開いているプロジェクトを目の前で編集させます。</string>
 	<key>Let go to capture it.</key>
 	<string>指を離すと取り込まれます。</string>
 	<key>Let go to float</key>
@@ -4826,6 +4922,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>新規フォルダ</string>
 	<key>New Folder…</key>
 	<string>新規フォルダ…</string>
+	<key>New Token</key>
+	<string>新しいトークン</string>
 	<key>New badge</key>
 	<string>NEWバッジ</string>
 	<key>New caption</key>
@@ -4844,6 +4942,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>“新規収録”では、画面の一部、ウインドウ、または画面全体を収録できます。</string>
 	<key>New to LF Studios? Start here: it takes about five minutes.</key>
 	<string>LF Studiosを初めて使う場合は、ここから始めましょう。5分ほどで終わります。</string>
+	<key>New token</key>
+	<string>新しいトークン</string>
 	<key>New zooms</key>
 	<string>新しいズーム</string>
 	<key>News</key>
@@ -4852,6 +4952,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>次のフレーム（→）</string>
 	<key>Next keyframe</key>
 	<string>次のキーフレーム</string>
+	<key>Next to Claude Desktop, click Copy setup.</key>
+	<string>Claude Desktopの横の「設定をコピー」をクリックします。</string>
 	<key>Next to the video, LF Studios keeps the details the editor needs, on your Mac.</key>
 	<string>LF Studiosは、エディタに必要な情報をビデオと一緒にMac上に保存します。</string>
 	<key>Nice shot. You're all set.</key>
@@ -4868,6 +4970,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>マイスタイルを解除しました</string>
 	<key>No My Style yet — open Presets ▸ Edit Presets and choose Use as My Style on one</key>
 	<string>マイスタイルがまだありません — プリセット ▸ プリセットを編集で、いずれかの「マイスタイルとして使用」を選んでください</string>
+	<key>No agent is editing this project.</key>
+	<string>このプロジェクトを編集しているエージェントはありません。</string>
 	<key>No background</key>
 	<string>背景なし</string>
 	<key>No background — text only</key>
@@ -5014,8 +5118,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>今はしない</string>
 	<key>Not set</key>
 	<string>未設定</string>
+	<key>Notes and questions an agent pins to a moment of the video.</key>
+	<string>エージェントがビデオの瞬間に留めるメモや質問。</string>
 	<key>Nothing at the playhead</key>
 	<string>再生ヘッドの位置には何もありません</string>
+	<key>Nothing changed yet.</key>
+	<string>まだ変更はありません。</string>
 	<key>Nothing here yet</key>
 	<string>まだ何もありません</string>
 	<key>Nothing in the Guide matches your search. Try a shorter word, like “zoom” or “camera”.</key>
@@ -5072,6 +5180,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>最初はオフです。アクセシビリティが必要です。</string>
 	<key>Off until you turn it on. On, it zooms in on your clicks and switches on its options below; off, its zooms go.</key>
 	<string>オンにするまではオフです。オンにするとクリックの位置にズームし、下のオプションもオンになります。オフにすると自動のズームは削除されます。</string>
+	<key>Off until you turn it on. Only apps on this Mac can connect.</key>
+	<string>オンにするまでオフです。このMac上のアプリだけが接続できます。</string>
 	<key>Off, Light, Smooth, or Silky.</key>
 	<string>“オフ”、“軽め”、“滑らか”、“シルキー”。</string>
 	<key>Off, it stays on the timeline but does nothing (V)</key>
@@ -5136,6 +5246,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>⌘Zを1回押すと取り消せます。</string>
 	<key>Only %@ free on your disk — this may not fit. Free up space or save to another drive.</key>
 	<string>ディスクの空き容量が%@しかないため、収まらない可能性があります。空き容量を増やすか、別のドライブに保存してください。</string>
+	<key>Only apps on this Mac can connect, with a secret token. New token makes the old one stop working.</key>
+	<string>このMac上のアプリだけが秘密のトークンで接続できます。「新しいトークン」で古いものは使えなくなります。</string>
 	<key>Only for these, and never to send your work:</key>
 	<string>次の場合だけで、作品を送信することはありません:</string>
 	<key>Only if you turned them on: shortcuts, typing positions and times, and your speaker notes.</key>
@@ -5166,6 +5278,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>LF Studiosメニューから履歴を開き、スクリーンショットを右クリックして“画面に固定”を選択します。</string>
 	<key>Open Keyboard Settings</key>
 	<string>キーボード設定を開く</string>
+	<key>Open LF Studios ▸ Settings ▸ Agent and turn on Allow AI agents to edit.</key>
+	<string>LF Studios ▸ 設定 ▸ エージェントを開き、「AIエージェントによる編集を許可」をオンにします。</string>
 	<key>Open Link</key>
 	<string>リンクを開く</string>
 	<key>Open Messages</key>
@@ -5198,6 +5312,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ファイルの入ったフォルダを1つのプロジェクトとして開きます: 収録のフォルダ、クリエイティブ受け渡し、またはビデオの入った任意のフォルダ。</string>
 	<key>Open a project</key>
 	<string>プロジェクトを開く</string>
+	<key>Open a project in LF Studios. In Claude, ask for an edit, for example: Remove the ums and tighten the pauses.</key>
+	<string>LF Studiosでプロジェクトを開き、Claudeに編集を頼みます。例：「えー」を削除して間を詰めて。</string>
 	<key>Open a project, a recording's folder, a Creative Handoff, or a video</key>
 	<string>プロジェクト、収録のフォルダ、クリエイティブ受け渡し、またはビデオを開く</string>
 	<key>Open a recording in the video editor first, then click Show me.</key>
@@ -5282,6 +5398,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>または、取り込み後のプレビューがオンの場合は、サムネールの“画面に固定”をクリックします。</string>
 	<key>Orange</key>
 	<string>オレンジ</string>
+	<key>Orange pins on the timeline's ruler, and the Agent panel.</key>
+	<string>タイムラインのルーラー上のオレンジ色のピンと、エージェントパネル。</string>
 	<key>Orchid</key>
 	<string>オーキッド</string>
 	<key>Original</key>
@@ -5336,10 +5454,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ペースト</string>
 	<key>Paste it anywhere with ⌘V.</key>
 	<string>⌘Vでどこにでもペーストできます。</string>
+	<key>Paste it into Terminal and press Return.</key>
+	<string>ターミナルに貼り付けてReturnキーを押します。</string>
+	<key>Paste it into ~/.codex/config.toml and save.</key>
+	<string>~/.codex/config.tomlに貼り付けて保存します。</string>
 	<key>Paste or type your notes here. They stay out of every recording.</key>
 	<string>ここにメモを貼り付けるか入力します。メモはどの収録にも映りません。</string>
 	<key>Paste or type your notes, then click Read.</key>
 	<string>メモをペーストまたは入力して、“読む”をクリックします。</string>
+	<key>Paste the setup into claude_desktop_config.json, save it, and quit and reopen Claude.</key>
+	<string>設定をclaude_desktop_config.jsonに貼り付けて保存し、Claudeを終了して再度開きます。</string>
 	<key>Pastel</key>
 	<string>パステル</string>
 	<key>Pause</key>
@@ -5370,6 +5494,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ビデオを一時停止して、プレビュー上の字幕をドラッグします。</string>
 	<key>Paused</key>
 	<string>一時停止中</string>
+	<key>Paused: you took over</key>
+	<string>一時停止：あなたが交代しました</string>
 	<key>Pauses longer than a second become short ones, except where you're clicking, typing, or moving the pointer. ⌘Z undoes either one.</key>
 	<string>1秒より長い間は短くなります。ただし、クリック、入力、ポインタの移動をしている部分は除きます。どちらも⌘Zで取り消せます。</string>
 	<key>Peach</key>
@@ -6168,6 +6294,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>「顔を中央に保つ」をやり直す</string>
 	<key>Redo Keep Pitch</key>
 	<string>ピッチの保持をやり直す</string>
+	<key>Redo Keyframe Curve</key>
+	<string>キーフレームのカーブをやり直す</string>
 	<key>Redo Keyframe Easing</key>
 	<string>キーフレームのイージングの変更をやり直す</string>
 	<key>Redo Link Audio</key>
@@ -6298,6 +6426,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>“字幕のスタイル変更”をやり直す</string>
 	<key>Redo Reverse</key>
 	<string>逆再生をやり直す</string>
+	<key>Redo Revert Agent Changes</key>
+	<string>エージェントの変更の取り消しをやり直す</string>
 	<key>Redo Rotate</key>
 	<string>回転をやり直す</string>
 	<key>Redo Shortcut Style</key>
@@ -6616,6 +6746,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>すべての字幕のスタイルを変更</string>
 	<key>Results come in groups: Commands, Media, Clips, Captions, Markers.</key>
 	<string>結果はグループごとに表示されます：コマンド、メディア、クリップ、字幕、マーカー。</string>
+	<key>Resume</key>
+	<string>再開</string>
 	<key>Resume Recording</key>
 	<string>収録を再開</string>
 	<key>Resume recording</key>
@@ -6640,6 +6772,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>クリップを逆再生に変換中…</string>
 	<key>Reversing “%@”…</key>
 	<string>“%@”を逆再生に変換中…</string>
+	<key>Revert All</key>
+	<string>すべて元に戻す</string>
+	<key>Reverted the agent's changes</key>
+	<string>エージェントの変更を元に戻しました</string>
 	<key>Review Changes…</key>
 	<string>変更内容を確認…</string>
 	<key>Review the decoded email payload before copying.</key>
@@ -6772,6 +6908,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>スクリーンショットをディスクに保存</string>
 	<key>Save subtitles</key>
 	<string>字幕ファイルを保存する</string>
+	<key>Save the agent instructions. For Claude Code, save them as SKILL.md in a folder named lfstudios-editing inside ~/.claude/skills.</key>
+	<string>エージェント向けの説明を保存します。Claude Codeでは、~/.claude/skills内のlfstudios-editingというフォルダにSKILL.mdとして保存します。</string>
 	<key>Save your edit as a video that plays everywhere.</key>
 	<string>編集したものを、どこでも再生できるビデオとして保存します。</string>
 	<key>Save your look once, then put it on any video in one click.</key>
@@ -7034,6 +7172,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>選択範囲: 幅%@ポイント、高さ%@ポイント</string>
 	<key>Selection %@ by %@ points. Arrow keys move it, Return captures, Escape cancels.</key>
 	<string>選択範囲: 幅%@ポイント、高さ%@ポイント。矢印キーで移動、Returnキーで取り込み、Escキーでキャンセルします。</string>
+	<key>Send</key>
+	<string>送信</string>
 	<key>Send everything to a video editor</key>
 	<string>すべてをビデオ編集アプリに渡す</string>
 	<key>Sepia</key>
@@ -7076,6 +7216,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>動画サイトが想定する大きさ（−16 LUFS）になるように音量を設定します</string>
 	<key>Settings</key>
 	<string>設定</string>
+	<key>Settings ▸ Agent ▸ Save… gives the agent a guide to LF Studios' tools (for Claude Code, a skill).</key>
+	<string>設定 ▸ エージェント ▸ 保存…で、エージェントにLF Studiosのツールの説明を渡せます（Claude Codeではスキル）。</string>
 	<key>Settings ▸ General ▸ After Capture.</key>
 	<string>“設定”＞“一般”＞“取り込み後”。</string>
 	<key>Settings ▸ General ▸ Appearance: System, Light Mode, or Dark Mode.</key>
@@ -7530,12 +7672,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>収録と同時に開始</string>
 	<key>Start, and press again to finish</key>
 	<string>開始（もう一度押すと終了）</string>
+	<key>Starting…</key>
+	<string>開始中…</string>
 	<key>Starts</key>
 	<string>開始</string>
 	<key>Starts after the screen by</key>
 	<string>画面からの開始の遅れ</string>
 	<key>Startup</key>
 	<string>起動</string>
+	<key>Status</key>
+	<string>状態</string>
 	<key>Step %lld</key>
 	<string>ステップ%lld</string>
 	<key>Steps</key>
@@ -7672,6 +7818,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>“システムオーディオ”、“マイク”、“ポインタ”、“カメラ”、“キーボードショートカットを表示”、“スピーカーノート”: それぞれクリックしてオン／オフを切り替えます。</string>
 	<key>Table copied — paste it into a spreadsheet</key>
 	<string>表をコピーしました。スプレッドシートにペーストできます。</string>
+	<key>Tack: %@</key>
+	<string>タック：%@</string>
+	<key>Tacks</key>
+	<string>タック</string>
 	<key>Tag</key>
 	<string>背景</string>
 	<key>Tag color</key>
@@ -7780,6 +7930,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>そのビデオは空です</string>
 	<key>That window closed before recording could start.</key>
 	<string>収録を開始する前にウインドウが閉じられました。</string>
+	<key>The Agent panel (Layout ▸ Agent Panel). It opens when an agent starts.</key>
+	<string>エージェントパネル（レイアウト ▸ エージェントパネル）。エージェントが始めると開きます。</string>
+	<key>The Agent panel moves and floats like the others; its × hides it.</key>
+	<string>エージェントパネルも他と同じく移動・フローティングでき、×で隠せます。</string>
 	<key>The Home window</key>
 	<string>ホームウインドウ</string>
 	<key>The LF Studios menu (Command Center)</key>
@@ -7814,6 +7968,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>プレーヤーの下の“プロキシ”メニュー。</string>
 	<key>The Undo and Redo buttons in the editor's toolbar.</key>
 	<string>エディタのツールバーにある“取り消す”ボタンと“やり直す”ボタン。</string>
+	<key>The agent connection couldn't start: %@</key>
+	<string>エージェント接続を開始できませんでした：%@</string>
 	<key>The aspect ratio menu under the player.</key>
 	<string>プレーヤーの下のアスペクト比メニュー。</string>
 	<key>The bar above the timeline. Hover a button for its name and key.</key>
@@ -7978,6 +8134,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>収録中に見えるプレビューは、画面収録そのものには決して映りません。</string>
 	<key>The project file (Name.lfs) opens everything again, exactly as you left it. LF Studios keeps it up to date as you edit.</key>
 	<string>プロジェクトファイル（名前.lfs）を開くと、すべてが最後の状態のとおりに開きます。編集すると、LF Studiosが随時更新します。</string>
+	<key>The project open in the front editor window.</key>
+	<string>最前面のエディタウインドウで開いているプロジェクト。</string>
 	<key>The recording bar</key>
 	<string>収録バー</string>
 	<key>The recording bar, the camera bubble preview, Speaker notes, the countdown, and notices.</key>
@@ -8270,6 +8428,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>タイトル</string>
 	<key>To</key>
 	<string>宛先</string>
+	<key>To answer a question, type in its Answer field in the Agent panel and click Send. The agent reads your answer.</key>
+	<string>質問に答えるには、エージェントパネルの「回答」欄に入力して「送信」をクリックします。エージェントがあなたの回答を読みます。</string>
 	<key>To attach the full report, drag it from Finder onto the GitHub page.</key>
 	<string>レポート全文を添付するには、FinderからGitHubのページにドラッグしてください。</string>
 	<key>To begin again, open the commands (⌘K) and choose Start Over from the Original Recording…. It asks first, and can be undone too.</key>
@@ -8300,6 +8460,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>パネルを表示せずにすぐエディタを開くには、“設定”＞“一般”で“収録後にビデオエディタを開く”をオンにします。</string>
 	<key>Today</key>
 	<string>今日</string>
+	<key>Token</key>
+	<string>トークン</string>
 	<key>Too long for a GIF at this size — it would need about %@ of memory. Make it lighter, export a part, or choose MP4.</key>
 	<string>このサイズのGIFには長すぎます。約%@のメモリが必要です。軽くするか、一部を書き出すか、MP4を選択してください。</string>
 	<key>Too many icons? Remove some, or set an Open Command Center shortcut in Settings ▸ Shortcuts.</key>
@@ -8308,6 +8470,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>短すぎてオープニングとエンディングを追加できません</string>
 	<key>Tools</key>
 	<string>ツール</string>
+	<key>Tools, habits and limits, as a file the agent can read (also a Claude skill).</key>
+	<string>ツール、習慣、制限をエージェントが読めるファイルで（Claudeのスキルとしても使えます）。</string>
 	<key>Top</key>
 	<string>上</string>
 	<key>Top left</key>
@@ -8766,6 +8930,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>「顔を中央に保つ」を取り消す</string>
 	<key>Undo Keep Pitch</key>
 	<string>ピッチの保持を取り消す</string>
+	<key>Undo Keyframe Curve</key>
+	<string>キーフレームのカーブを取り消す</string>
 	<key>Undo Keyframe Easing</key>
 	<string>キーフレームのイージングの変更を取り消す</string>
 	<key>Undo Link Audio</key>
@@ -8896,6 +9062,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>“字幕のスタイル変更”を取り消す</string>
 	<key>Undo Reverse</key>
 	<string>逆再生を取り消す</string>
+	<key>Undo Revert Agent Changes</key>
+	<string>エージェントの変更の取り消しを取り消す</string>
 	<key>Undo Rotate</key>
 	<string>回転を取り消す</string>
 	<key>Undo Shortcut Style</key>
@@ -9166,6 +9334,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ワオ!</string>
 	<key>Wait for it…</key>
 	<string>お楽しみに…</string>
+	<key>Waiting for an agent</key>
+	<string>エージェントを待っています</string>
 	<key>Waiting…</key>
 	<string>待機中…</string>
 	<key>Wallpaper</key>
@@ -9188,6 +9358,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>色温度</string>
 	<key>Warning</key>
 	<string>警告</string>
+	<key>Watch the changes come in, in the Agent panel. Click one to go to it.</key>
+	<string>エージェントパネルで変更が届くのを確認します。クリックするとその位置に移動します。</string>
 	<key>Watch the result, then change or delete any zoom.</key>
 	<string>結果を確認して、必要に応じてズームを変更または削除します。</string>
 	<key>Web</key>
@@ -9208,6 +9380,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>LF Studiosが保存するもの、そして決してしないこと。</string>
 	<key>What a recording keeps</key>
 	<string>収録に保存される内容</string>
+	<key>What an agent can and can't do</key>
+	<string>エージェントにできること、できないこと</string>
 	<key>What is each file in “%@”?</key>
 	<string>“%@”の各ファイルの内容</string>
 	<key>What the clip follows: drag it over the thing that moves</key>
@@ -9226,8 +9400,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>同じ名前のファイルがすでにある場合は、“置き換える”か“両方とも残す”を選びます。</string>
 	<key>When a key is taken, LF Studios says which command loses it.</key>
 	<string>キーがすでに使われている場合は、どのコマンドから外れるかがLF Studiosに表示されます。</string>
+	<key>When an agent finishes, see what it changed and keep it, or go back to how the project was.</key>
+	<string>エージェントが終わったら、変更を確認して保持するか、元のプロジェクトに戻します。</string>
 	<key>When recording a window: the Window size menu in the row above the recording bar.</key>
 	<string>ウインドウを収録する場合: 収録バーの上の列にある“ウインドウのサイズ”メニュー。</string>
+	<key>When the agent is done, its changes are marked on the timeline in orange.</key>
+	<string>エージェントが終わると、変更箇所がタイムライン上にオレンジ色で示されます。</string>
 	<key>When the text has links, email addresses, or a table, LF Studios offers more ways to use it.</key>
 	<string>テキストにリンク、メールアドレス、表が含まれている場合は、LF Studiosがほかの使いかたも提案します。</string>
 	<key>When they're ready, Edit with Proxies turns on.</key>
@@ -9342,6 +9520,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>はい</string>
 	<key>Yesterday</key>
 	<string>昨日</string>
+	<key>You answered: %@</key>
+	<string>あなたの回答：%@</string>
 	<key>You can also drop a video file on the LF Studios icon in the Dock.</key>
 	<string>DockのLF Studiosアイコンにビデオファイルをドロップしても開けます。</string>
 	<key>You can close this — the handoff keeps going.</key>

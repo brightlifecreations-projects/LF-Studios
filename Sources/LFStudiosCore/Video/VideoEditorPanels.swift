@@ -142,6 +142,25 @@ final class VideoEditorPanelStore: ObservableObject {
         arrange(arrangement.docking(kind))
     }
 
+    /// The Agent panel shows (docked where it goes), when it's hidden.
+    func showAgentPanel() {
+        guard !arrangement.docked.contains(.agent), !arrangement.floating.contains(where: { $0.kind == .agent }) else { return }
+        arrange(arrangement.docking(.agent))
+    }
+
+    /// A panel put away (only the Agent panel can be).
+    func hide(_ kind: VideoPanelKind) {
+        guard kind == .agent else { return }
+        var next = arrangement
+        next.floating.removeAll { $0.kind == kind }
+        if let rest = next.docked.removing(kind) { next.docked = rest }
+        arrange(next)
+    }
+
+    var showsAgentPanel: Bool {
+        arrangement.docked.contains(.agent) || arrangement.floating.contains { $0.kind == .agent }
+    }
+
     /// Every floating panel back in the editor.
     func dockAll() {
         var next = arrangement
@@ -278,6 +297,12 @@ struct VideoLayoutMenu: View {
             }
             if !store.arrangement.floating.isEmpty {
                 Button(L("Dock All Panels")) { store.dockAll() }
+            }
+            // AI agents' panel (1.19.0).
+            Button {
+                if store.showsAgentPanel { store.hide(.agent) } else { store.showAgentPanel() }
+            } label: {
+                if store.showsAgentPanel { Label(L("Agent Panel"), systemImage: "checkmark") } else { Text(L("Agent Panel")) }
             }
             Divider()
             Button(L("Reset Layout")) { store.reset() }
