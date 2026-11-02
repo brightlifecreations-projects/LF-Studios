@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.19.0]
+## [1.19.0] - 2026-11-02
 
 ### Added
 - **AI agents can edit with you (MCP):** turn on Settings ▸ Agent ▸ Allow AI agents to edit (off until you do), then Copy setup for Claude Desktop, Claude Code, Cursor or Codex. Only apps on this Mac can connect, with a token; the bridge (lfstudios-mcp) inside LF Studios keeps working across restarts and new tokens.
