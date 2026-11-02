@@ -341,6 +341,15 @@ final class VideoEditorModel: ObservableObject {
     @Published private(set) var thumbnails: [VideoTimelineThumbnail] = [] {
         didSet { refreshTimeline() }
     }
+    /// Each sound track of the recording on its own (1.18.0: the main
+    /// track's sound rows), by track index.
+    @Published var soundWaveforms: [Int: VideoWaveform] = [:] {
+        didSet { refreshTimeline() }
+    }
+    /// The sound of videos above the main track, by file path.
+    @Published var layerSoundWaveforms: [String: VideoWaveform] = [:] {
+        didSet { refreshTimeline() }
+    }
     @Published private(set) var waveform: VideoWaveform? {
         didSet { refreshTimeline() }
     }
@@ -518,6 +527,8 @@ final class VideoEditorModel: ObservableObject {
         let trackScale: CGFloat
         let openCompound: UUID?
         let curveLanes: [UUID: VideoKeyProperty]
+        let sound: VideoTimelineSoundRows
+        let soundWaves: Int
     }
 
     /// Bumps the timeline's revision when anything it draws changed.
@@ -543,7 +554,9 @@ final class VideoEditorModel: ObservableObject {
             recordingMuted: project.audio.muted,
             trackScale: VideoTimelineMetrics.rowScale,
             openCompound: openCompound,
-            curveLanes: curveLanes
+            curveLanes: curveLanes,
+            sound: timelineSoundRows,
+            soundWaves: soundWaveforms.count + layerSoundWaveforms.count
         )
         guard signature != timelineSignature else { return }
         timelineSignature = signature
@@ -680,7 +693,10 @@ final class VideoEditorModel: ObservableObject {
                 showNotice(L("“\(missing)” isn't on this Mac — using the built-in font"), symbol: "exclamationmark.triangle.fill", duration: 5)
             }
             Task { await loadThumbnails() }
-            Task { await loadWaveform() }
+            Task {
+                await loadWaveform()
+                await loadSoundWaveforms()
+            }
             if project.audio.voiceRecipe != nil {
                 enhanceVoiceChanged()
             }

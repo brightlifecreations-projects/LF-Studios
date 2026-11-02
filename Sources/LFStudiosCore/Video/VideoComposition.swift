@@ -40,6 +40,8 @@ struct VideoEditComposition {
     var layerVideoTracks: [(id: UUID, track: AVMutableCompositionTrack)] = []
     var layerAudioTracks: [(id: UUID, track: AVMutableCompositionTrack, items: [VideoLayerItem])] = []
     /// Sound tracks whose clips change pitch with speed (Keep pitch off).
+    /// Unlinked sound's tracks (1.18.0): which clip, and how far it moved.
+    var unlinkedTracks: [CMPersistentTrackID: (placement: Int, shift: Double)] = [:]
     var varispeedTrackIDs: Set<CMPersistentTrackID> = []
 
     /// Every sound track, for reading the final mix.
@@ -310,6 +312,9 @@ enum VideoCompositionBuilder {
         var audioTracks: [AVMutableCompositionTrack] = []
         var audioKinds: [VideoAudioKind] = []
         var varispeedTrackIDs = Set<CMPersistentTrackID>()
+        // Unlinked sound (1.18.0): each clip's on a track of its own, moved
+        // by its offset (never pushing into another's).
+        var unlinkedTracks: [CMPersistentTrackID: (placement: Int, shift: Double)] = [:]
         if includeAudio {
             // One lane per sound track of the primary recording; an added
             // recording's tracks join a lane of the same kind (their pieces
@@ -337,16 +342,35 @@ enum VideoCompositionBuilder {
                 var varispeed: AVMutableCompositionTrack?
                 var inserted = false
                 var insertedVarispeed = false
-                for placement in placements where !placement.segment.clip.disabled {
+                for (placementIndex, placement) in placements.enumerated() where !placement.segment.clip.disabled {
                     let clip = placement.segment.clip
                     let speed = clip.normalizedSpeed
+                    // Moved apart from its picture: its own track, later on.
+                    let shift = clip.audioOffset ?? 0
+                    var own: AVMutableCompositionTrack?
+                    if clip.audioOffset != nil {
+                        own = composition.addMutableTrack(withMediaType: .audio, preferredTrackID: kCMPersistentTrackID_Invalid)
+                    }
+                    var ownInserted = false
+                    defer {
+                        if let own {
+                            if ownInserted {
+                                audioTracks.append(own)
+                                audioKinds.append(lane.kind)
+                                unlinkedTracks[own.trackID] = (placementIndex, shift)
+                                if clip.keepsPitch == false { varispeedTrackIDs.insert(own.trackID) }
+                            } else {
+                                composition.removeTrack(own)
+                            }
+                        }
+                    }
                     // Too fast or too slow to hear (as in other editors): silent.
                     guard speed >= 1.0 / 32 - 0.000_1, speed <= 32 + 0.000_1 else { continue }
                     let keepsPitch = clip.keepsPitch != false
                     if !keepsPitch, varispeed == nil {
                         varispeed = composition.addMutableTrack(withMediaType: .audio, preferredTrackID: kCMPersistentTrackID_Invalid)
                     }
-                    guard let track = keepsPitch ? pitched : varispeed else { continue }
+                    guard let track = own ?? (keepsPitch ? pitched : varispeed) else { continue }
                     for piece in pieces(of: clip, primary: source, primaryAudio: sources, camera: camera, layout: layout) {
                         let key = piece.source.map { $0.isPrimary ? "primary" : $0.id.uuidString } ?? "primary"
                         guard let audioSource = lane.sources[key] else { continue }
@@ -356,7 +380,7 @@ enum VideoCompositionBuilder {
                         // for more fails the whole insert.
                         let sourceRange = wanted.intersection(audioSource.available)
                         guard sourceRange.duration.seconds > 0.001 else { continue }
-                        let insertAt = placement.start + time((piece.offsetInClip + (sourceRange.start - wanted.start).seconds) / speed)
+                        let insertAt = placement.start + time(max(shift, -placement.start.seconds)) + time((piece.offsetInClip + (sourceRange.start - wanted.start).seconds) / speed)
                         do {
                             try track.insertTimeRange(sourceRange, of: audioSource.track, at: insertAt)
                         } catch {
@@ -365,7 +389,7 @@ enum VideoCompositionBuilder {
                         if abs(speed - 1) > 0.0001 {
                             track.scaleTimeRange(CMTimeRange(start: insertAt, duration: sourceRange.duration), toDuration: time(sourceRange.duration.seconds / speed))
                         }
-                        if keepsPitch { inserted = true } else { insertedVarispeed = true }
+                        if own != nil { ownInserted = true } else if keepsPitch { inserted = true } else { insertedVarispeed = true }
                     }
                 }
                 if inserted {
@@ -424,6 +448,7 @@ enum VideoCompositionBuilder {
         )
         edit.externalTracks = external
         edit.varispeedTrackIDs = varispeedTrackIDs
+        edit.unlinkedTracks = unlinkedTracks
         edit.layerVideoTracks = layers?.video ?? []
         edit.layerAudioTracks = layers?.audio ?? []
         edit.audioMix = audioMix(for: edit, segments: segments, audio: audio, extras: extras)
@@ -447,6 +472,16 @@ enum VideoCompositionBuilder {
             let volume: Float = voiceReplaced && kind == .microphone ? 0 : audio.effectiveVolume(for: kind)
             let params = AVMutableAudioMixInputParameters(track: track)
             if edit.varispeedTrackIDs.contains(track.trackID) { params.audioTimePitchAlgorithm = .varispeed }
+            if let unlinked = edit.unlinkedTracks[track.trackID], edit.placements.indices.contains(unlinked.placement) {
+                // Unlinked sound: its clip's volume and fades, moved with it.
+                let placement = edit.placements[unlinked.placement]
+                let clip = aligned ? current[unlinked.placement].clip : placement.segment.clip
+                let start = placement.start + time(max(unlinked.shift, -placement.start.seconds))
+                params.setVolume(0, at: .zero)
+                applyVolume(clip.muted ? 0 : volume, fades: clip, start: start, duration: placement.duration, to: params)
+                parameters.append(params)
+                continue
+            }
             for (placementIndex, placement) in edit.placements.enumerated() {
                 let clip = aligned ? current[placementIndex].clip : placement.segment.clip
                 applyVolume(clip.muted ? 0 : volume, fades: clip, start: placement.start, duration: placement.duration, to: params)
@@ -493,14 +528,24 @@ enum VideoCompositionBuilder {
         to parameters: AVMutableAudioMixInputParameters
     ) {
         let total = duration.seconds
-        parameters.setVolume(volume, at: start)
+        let end = start + duration
         let fadeIn = min(max(clip.fadeIn, 0), total / 2)
+        let fadeOut = min(max(clip.fadeOut, 0), total / 2)
+        // The whole clip held at its level (1.18.0): a lone level point
+        // blends into the next clip's, so a muted clip played half loud and
+        // the clip before it faded out. It stops just short of the clip's
+        // end, never touching the next clip's.
+        let steadyStart = fadeIn > 0.001 ? start + time(fadeIn) : start
+        let steadyEnd = (fadeOut > 0.001 ? end - time(fadeOut) : end) - time(0.000_5)
+        let holds = steadyEnd.seconds - steadyStart.seconds > 0.001
+        if fadeIn > 0.001 || !holds { parameters.setVolume(volume, at: start) }
         if fadeIn > 0.001 {
             parameters.setVolumeRamp(fromStartVolume: 0, toEndVolume: volume, timeRange: CMTimeRange(start: start, duration: time(fadeIn)))
         }
-        let fadeOut = min(max(clip.fadeOut, 0), total / 2)
+        if holds {
+            parameters.setVolumeRamp(fromStartVolume: volume, toEndVolume: volume, timeRange: CMTimeRange(start: steadyStart, end: steadyEnd))
+        }
         if fadeOut > 0.001 {
-            let end = start + duration
             parameters.setVolumeRamp(fromStartVolume: volume, toEndVolume: 0, timeRange: CMTimeRange(start: end - time(fadeOut), duration: time(fadeOut)))
         }
     }

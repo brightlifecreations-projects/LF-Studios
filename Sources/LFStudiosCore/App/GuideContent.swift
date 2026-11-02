@@ -15,7 +15,7 @@ import Foundation
 @MainActor
 enum GuideContent {
     /// Pages from these versions get a New badge and fill What's new.
-    nonisolated static let newVersions: [String] = ["1.17.0", "1.16.0", "1.15.0", "1.14.0", "1.13.0", "1.12.0", "1.11.1", "1.11.0", "1.10.0", "1.9.0", "1.8.0", "1.7.0"]
+    nonisolated static let newVersions: [String] = ["1.18.0", "1.17.0", "1.16.0", "1.15.0", "1.14.0", "1.13.0", "1.12.0", "1.11.1", "1.11.0", "1.10.0", "1.9.0", "1.8.0", "1.7.0"]
 
     static func chapters() -> [GuideChapter] {
         let features = featureCategories()
@@ -1587,7 +1587,7 @@ enum GuideContent {
             ),
             GuideEntry(
                 id: "video-timeline", symbol: "rectangle.split.1x2", title: L("The timeline and its tracks"),
-                summary: L("Every part of the video on its own track, top to bottom: Zooms, Video clips, Camera, Captions, Keys, Text & annotations, Music, and each sound you added."),
+                summary: L("Every part of the video on its own track, top to bottom: Captions, Zooms, Video clips and their sound, Camera, Keys, Text & annotations, Music, and each sound you added."),
                 location: L("The bottom of the video editor."),
                 points: [
                     L("Drag the line above the timeline to make it taller or shorter; double-click it for the usual size. LF Studios remembers it."),
@@ -1601,7 +1601,42 @@ enum GuideContent {
                 ],
                 tips: [L("Hiding or muting a track never deletes anything: turn it back on, and it's all there.")],
                 since: "1.11.0",
-                related: ["video-play", "video-clips"]
+                related: ["video-play", "video-clips", "video-linked-audio", "video-playhead"]
+            ),
+            GuideEntry(
+                id: "video-playhead", symbol: "arrowtriangle.down.fill", title: L("The playhead"),
+                summary: L("The red line on the timeline is the moment the player shows. Its handle sits on top of the ruler."),
+                location: L("The top of the timeline, above the tracks."),
+                steps: [
+                    L("Drag the handle to move through the video; the player follows."),
+                    L("Click anywhere on the ruler to jump there."),
+                ],
+                tips: [
+                    L("The line runs down through every track, so you can see what's under it."),
+                    L("When you jump to a moment that's out of view, the timeline scrolls to show the playhead."),
+                ],
+                since: "1.18.0",
+                related: ["video-timeline", "video-play"]
+            ),
+            GuideEntry(
+                id: "video-linked-audio", symbol: "waveform", title: L("A video's sound on its own track"),
+                summary: L("Under the video track is its sound, on a track of its own. A recording's microphone and the Mac's sound each get one."),
+                location: L("The timeline, under the video track. A video on a track above has its sound under it too."),
+                points: [
+                    L("The sound is linked to its video: trimming, splitting, moving or deleting the video does the same to its sound, in one ⌘Z step."),
+                    L("The speaker on the sound track's name mutes it. Volume is in Properties ▸ Audio; a clip's fades and Mute Clip work on its sound."),
+                ],
+                steps: [
+                    L("To move the sound on its own, right-click it on its track and choose Unlink Audio."),
+                    L("Drag the unlinked sound left or right. It shows a dashed outline."),
+                    L("Right-click it and choose Link Audio to put it back under its video."),
+                ],
+                tips: [
+                    L("Projects from earlier versions open with their sound on these tracks and sound exactly the same."),
+                    L("A project with unlinked sound needs LF Studios 1.18 or later to open."),
+                ],
+                since: "1.18.0",
+                related: ["video-timeline", "video-clips"]
             ),
             GuideEntry(
                 id: "video-clips", symbol: "scissors", title: L("Split, trim & reorder clips"),
@@ -2279,7 +2314,12 @@ enum GuideContent {
                     L("+ adds a caption at the playhead. No transcript? Use Or type one at the playhead."),
                     L("Select a caption on the timeline to change when it starts and ends."),
                 ],
-                showMe: .editor(.captions)
+                steps: [
+                    L("On the Captions track at the top of the timeline, drag a caption to move it, or drag its ends to change when it starts and ends."),
+                    L("Double-click a caption on the timeline to change its words. Press Return to keep them or Esc to leave them as they were."),
+                ],
+                showMe: .editor(.captions),
+                since: "1.18.0"
             ),
             GuideEntry(
                 id: "captions-translate", symbol: "globe", title: L("Translate captions"),

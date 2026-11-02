@@ -19,6 +19,11 @@ enum VideoTimelineTrack: Hashable, Identifiable {
     case sound(UUID)
     /// A video or picture track above the main track (1.14.0).
     case layer(UUID)
+    /// The main track's sound, one per sound track of the recording (its
+    /// microphone, the Mac's sound), linked to the clips (1.18.0).
+    case clipSound(Int, VideoAudioKind)
+    /// The sound of the videos on a track above the main track (1.18.0).
+    case layerSound(UUID)
 
     var id: String { key }
 
@@ -34,6 +39,8 @@ enum VideoTimelineTrack: Hashable, Identifiable {
         case .music: return "music"
         case .sound(let id): return "sound-\(id.uuidString)"
         case .layer(let id): return "layer-\(id.uuidString)"
+        case .clipSound(let index, _): return "clipSound-\(index)"
+        case .layerSound(let id): return "layerSound-\(id.uuidString)"
         }
     }
 
@@ -48,13 +55,15 @@ enum VideoTimelineTrack: Hashable, Identifiable {
         case .music: return "music.note"
         case .sound: return "waveform"
         case .layer: return "square.2.layers.3d.top.filled"
+        case .clipSound(_, let kind): return kind == .microphone ? "mic" : kind == .system ? "speaker.wave.2" : "waveform"
+        case .layerSound: return "waveform"
         }
     }
 
     /// Hide: not drawn in the preview and the export.
     var canHide: Bool {
         switch self {
-        case .music, .sound: return false
+        case .music, .sound, .clipSound, .layerSound: return false
         default: return true
         }
     }
@@ -62,10 +71,19 @@ enum VideoTimelineTrack: Hashable, Identifiable {
     /// Mute: not heard in the preview and the export.
     var canMute: Bool {
         switch self {
-        case .clips, .music, .sound, .layer: return true
+        case .clips, .music, .sound, .layer, .clipSound, .layerSound: return true
         default: return false
         }
     }
+}
+
+/// Which sound rows the timeline shows (1.18.0): the recording's sound
+/// tracks under the main track, and the video tracks above it whose videos
+/// have sound. Worked out by the editor; nothing in the project.
+struct VideoTimelineSoundRows: Equatable {
+    var kinds: [VideoAudioKind] = []
+    var layers: Set<UUID> = []
+    static let none = VideoTimelineSoundRows()
 }
 
 /// A track's switches. All off: as before 1.11.0.
@@ -75,12 +93,14 @@ struct VideoTrackState: Codable, Equatable {
     var locked = false
     /// Shown as a thin row in the timeline (nothing else changes).
     var collapsed = false
+    /// A sound track's level before Mute (1.18.0), to bring it back.
+    var restoreVolume: Double?
 
     var isDefault: Bool { self == VideoTrackState() }
 
     init() {}
 
-    private enum CodingKeys: String, CodingKey { case hidden, muted, locked, collapsed }
+    private enum CodingKeys: String, CodingKey { case hidden, muted, locked, collapsed, restoreVolume }
 
     init(from decoder: Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
@@ -88,19 +108,24 @@ struct VideoTrackState: Codable, Equatable {
         muted = (try? c.decodeIfPresent(Bool.self, forKey: .muted)) ?? false
         locked = (try? c.decodeIfPresent(Bool.self, forKey: .locked)) ?? false
         collapsed = (try? c.decodeIfPresent(Bool.self, forKey: .collapsed)) ?? false
+        restoreVolume = (try? c.decodeIfPresent(Double.self, forKey: .restoreVolume)).flatMap { $0 }
     }
 }
 
 extension VideoDemoProject {
     /// Every track, top to bottom: the ones that are always there, then a
     /// row per added sound file.
-    var timelineTracks: [VideoTimelineTrack] {
-        // LF Studios layout (1.17.0): the captions row on top.
-        if VideoEditorStyle.current.isNew {
-            return [.captions, .zooms] + layerTracks.reversed().map { .layer($0.id) } + [.clips, .camera, .keys, .annotations, .music] + audioTracks.map { .sound($0.id) }
+    var timelineTracks: [VideoTimelineTrack] { timelineTracks(sound: .none) }
+
+    /// The rows, top to bottom (1.18.0, both layouts): Captions on top, the
+    /// tracks above the main track (each video track with its sound under
+    /// it), the main track and its sound tracks, then the rest.
+    func timelineTracks(sound: VideoTimelineSoundRows) -> [VideoTimelineTrack] {
+        let layers = layerTracks.reversed().flatMap { track -> [VideoTimelineTrack] in
+            sound.layers.contains(track.id) ? [.layer(track.id), .layerSound(track.id)] : [.layer(track.id)]
         }
-        // The tracks above the main track, highest first, over it.
-        return [.zooms] + layerTracks.reversed().map { .layer($0.id) } + [.clips, .camera, .captions, .keys, .annotations, .music] + audioTracks.map { .sound($0.id) }
+        let mainSound = sound.kinds.enumerated().map { VideoTimelineTrack.clipSound($0.offset, $0.element) }
+        return [.captions, .zooms] + layers + [.clips] + mainSound + [.camera, .keys, .annotations, .music] + audioTracks.map { .sound($0.id) }
     }
 
     /// A track's switches. The keys' Hide and a sound file's or the
@@ -112,6 +137,15 @@ extension VideoDemoProject {
         case .keys: state.hidden = !keystrokeStyle.visible
         case .clips: state.muted = audio.muted
         case .sound(let id): state.muted = audioTracks.first { $0.id == id }?.muted ?? false
+        // The main track's sound: locked with it; mute is its kind's level.
+        case .clipSound(_, let kind):
+            state.locked = trackState(.clips).locked
+            state.muted = audio.muted || audio.effectiveVolume(for: kind) < 0.000_1
+        // A video track's sound: its track's lock and mute.
+        case .layerSound(let id):
+            let layer = trackState(.layer(id))
+            state.locked = layer.locked
+            state.muted = layer.muted
         default: break
         }
         return state
@@ -129,6 +163,25 @@ extension VideoDemoProject {
             state.muted = false
         case .sound(let id):
             if let index = audioTracks.firstIndex(where: { $0.id == id }) { audioTracks[index].muted = state.muted }
+            state.muted = false
+        case .clipSound(_, let kind):
+            setTrackState(.clips) { $0.locked = state.locked }
+            if state.muted != (audio.effectiveVolume(for: kind) < 0.000_1) {
+                // Mute: its level to nothing; back on: the level it had.
+                switch kind {
+                case .microphone:
+                    if state.muted { state.restoreVolume = audio.voiceVolume; audio.voiceVolume = 0 } else { audio.voiceVolume = state.restoreVolume ?? 1; state.restoreVolume = nil }
+                case .system:
+                    if state.muted { state.restoreVolume = audio.systemVolume; audio.systemVolume = 0 } else { audio.systemVolume = state.restoreVolume ?? 1; state.restoreVolume = nil }
+                case .mixed:
+                    audio.muted = state.muted
+                }
+            }
+            state.locked = false
+            state.muted = false
+        case .layerSound(let id):
+            setTrackState(.layer(id)) { $0.locked = state.locked; $0.muted = state.muted }
+            state.locked = false
             state.muted = false
         default: break
         }
@@ -183,6 +236,15 @@ extension VideoTimelineTrack {
             let index = project.layerTracks.firstIndex { $0.id == id } ?? 0
             if VideoEditorStyle.current.isNew { return VideoTrackNames.layer(index) }
             return L("Video \(index + 2)")
+        case .clipSound(_, let kind):
+            switch kind {
+            case .microphone: return L("Microphone")
+            case .system: return L("Mac sound")
+            case .mixed: return L("Audio")
+            }
+        case .layerSound(let id):
+            let index = project.layerTracks.firstIndex { $0.id == id } ?? 0
+            return L("Audio · \(VideoEditorStyle.current.isNew ? VideoTrackNames.layer(index) : L("Video \(index + 2)"))")
         }
     }
 }
@@ -297,11 +359,11 @@ struct VideoTimelineRowLayout: Equatable {
 
     /// `curves`: tracks above the main track with their curve lane open
     /// (LF Studios layout): those rows are taller by the lane.
-    init(project: VideoDemoProject, hasCamera: Bool, curves: Set<UUID> = []) {
+    init(project: VideoDemoProject, hasCamera: Bool, curves: Set<UUID> = [], sound: VideoTimelineSoundRows = .none) {
         typealias M = VideoTimelineMetrics
         var rows: [Row] = []
         var top: CGFloat = 0
-        for track in project.timelineTracks {
+        for track in project.timelineTracks(sound: sound) {
             var content = Self.contentHeight(track, project: project, hasCamera: hasCamera)
             if case .layer(let id) = track, curves.contains(id) { content += VideoCurveLane.gap + VideoCurveLane.height }
             // The zooms and the recording always show (they're where you click to add).
@@ -342,13 +404,14 @@ struct VideoTimelineRowLayout: Equatable {
         case .music: return project.music == nil ? 0 : M.musicLaneHeight
         case .sound: return M.musicLaneHeight
         case .layer: return M.layerLaneHeight
+        case .clipSound, .layerSound: return M.soundLaneHeight
         }
     }
 
     /// The hint on an empty row.
     static func hint(_ track: VideoTimelineTrack) -> String {
         switch track {
-        case .zooms, .clips, .sound, .layer: return ""
+        case .zooms, .clips, .sound, .layer, .clipSound, .layerSound: return ""
         case .camera: return L("Camera layouts and added camera video show here: Camera panel ▸ Layouts")
         case .captions: return L("Add captions in the Captions panel")
         case .keys: return L("Shortcuts pressed while recording show here")

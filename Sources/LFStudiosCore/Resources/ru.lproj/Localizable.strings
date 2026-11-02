@@ -238,6 +238,8 @@
 	<string>Картинка: ваша собственная.</string>
 	<key>A preset saves the background, frame, cursor, zooms, captions, keys, and camera. Tick Include aspect ratio to save the shape too.</key>
 	<string>Стиль сохраняет фон, рамку, указатель, увеличения, субтитры, клавиши и камеру. Отметьте «Включить соотношение сторон», чтобы сохранить и формат.</string>
+	<key>A project with unlinked sound needs LF Studios 1.18 or later to open.</key>
+	<string>Проект с отвязанным звуком открывается в LF Studios 1.18 или новее.</string>
 	<key>A project you never set them for exports as before, from the export window's last choices.</key>
 	<string>Проект, для которого вы их не задавали, экспортируется как раньше — с последними выбранными в окне экспорта настройками.</string>
 	<key>A quick punch-in right after a cut: the picture jumps closer, then eases back.</key>
@@ -284,6 +286,8 @@
 	<string>Пустая дорожка — узкая строка с подсказкой, как что-то добавить. Стрелка рядом с названием сворачивает дорожку.</string>
 	<key>A video needs at least one clip</key>
 	<string>В видео должен быть хотя бы один клип</string>
+	<key>A video's sound on its own track</key>
+	<string>Звук видео на отдельной дорожке</string>
 	<key>A voice chain for spoken audio: noise removal, de-essing, a warm and clear EQ, compression, and the podcast loudness standard. Each step can be turned off. Processed on this Mac.</key>
 	<string>Цепочка обработки речи: шумоподавление, подавление шипящих, тёплый и чистый эквалайзер, компрессия и стандарт громкости подкастов. Каждый шаг можно выключить. Обработка на этом Mac.</string>
 	<key>A volume keyframe at the playhead: set one, move, change the volume</key>
@@ -734,6 +738,8 @@
 	<string>Панель «Аудио» ▸ Голос ▸ Улучшение голоса.</string>
 	<key>Audio track</key>
 	<string>Аудиодорожка</string>
+	<key>Audio · %@</key>
+	<string>Аудио · %@</string>
 	<key>Aurora</key>
 	<string>Сияние</string>
 	<key>Aurora Blue</key>
@@ -1716,6 +1722,8 @@
 	<string>Нажмите объект, чтобы изменить его</string>
 	<key>Click anything on the timeline or the preview to change it in the panel on the right.</key>
 	<string>Нажмите на что угодно на шкале времени или в предпросмотре, чтобы изменить это на панели справа.</string>
+	<key>Click anywhere on the ruler to jump there.</key>
+	<string>Нажмите в любом месте линейки, чтобы перейти туда.</string>
 	<key>Click effects</key>
 	<string>Эффекты нажатий</string>
 	<key>Click for Project Settings. Double-click to show the recording in Finder.</key>
@@ -2392,6 +2400,8 @@
 	<string>Готово (Esc)</string>
 	<key>Double-click</key>
 	<string>Двойное нажатие</string>
+	<key>Double-click a caption on the timeline to change its words. Press Return to keep them or Esc to leave them as they were.</key>
+	<string>Дважды нажмите на субтитр на таймлайне, чтобы изменить текст. Return сохраняет его, Esc оставляет как было.</string>
 	<key>Double-click a marker to give it a name.</key>
 	<string>Дважды нажмите на маркер, чтобы дать ему название.</string>
 	<key>Double-click any text to change it.</key>
@@ -2524,6 +2534,8 @@
 	<string>Перетяните края рамки или выберите пропорции, например 16:9.</string>
 	<key>Drag the frame, or its corners, over the part of the camera picture the bubble should show.</key>
 	<string>Перетащите рамку или её углы на ту часть изображения с камеры, которую должно показывать окошко.</string>
+	<key>Drag the handle to move through the video; the player follows.</key>
+	<string>Перетащите ручку, чтобы двигаться по видео; плеер следует за ней.</string>
 	<key>Drag the keys on the preview to place them anywhere</key>
 	<string>Перетаскивайте клавиши в просмотре, чтобы разместить их где угодно</string>
 	<key>Drag the line above the timeline to make it taller or shorter; double-click it for the usual size. LF Studios remembers it.</key>
@@ -2538,6 +2550,8 @@
 	<string>Перетяните пятно в предпросмотре; тяните за угол, чтобы изменить его размер. Все вокруг затемняется, пока идет его полоса на шкале времени.</string>
 	<key>Drag the track on the timeline to move it; drag an edge to trim it; click it and press ⌘B to split it, or ⌫ to delete a piece.</key>
 	<string>Перетащите дорожку на таймлайне, чтобы переместить; потяните за край, чтобы обрезать; нажмите на нее и ⌘B, чтобы разделить, или ⌫, чтобы удалить кусок.</string>
+	<key>Drag the unlinked sound left or right. It shows a dashed outline.</key>
+	<string>Перетащите отвязанный звук влево или вправо. У него пунктирная рамка.</string>
 	<key>Drag the yellow box over it, and set Box size.</key>
 	<string>Перетяните на него желтую рамку и задайте «Размер рамки».</string>
 	<key>Drag the zoom's edges on the timeline to set its length.</key>
@@ -2638,6 +2652,8 @@
 	<string>Изменить стили</string>
 	<key>Edit Presets renames, updates, or deletes them.</key>
 	<string>«Изменить стили» позволяет переименовывать, обновлять и удалять их.</string>
+	<key>Edit Text</key>
+	<string>Изменить текст</string>
 	<key>Edit Video</key>
 	<string>Редактировать видео</string>
 	<key>Edit Video opens the video editor.</key>
@@ -2752,8 +2768,8 @@
 	<string>Все вырезки, увеличения, разметка, субтитры и изменения стиля в этом видео будут удалены. Это действие можно отменить.</string>
 	<key>Every file starts at the same moment and is as long as the others: drop them all at 0:00 and they play in sync, the camera too.</key>
 	<string>Каждый файл начинается в один момент и такой же длины, как остальные: положите все на 0:00 — и они идут синхронно, камера тоже.</string>
-	<key>Every part of the video on its own track, top to bottom: Zooms, Video clips, Camera, Captions, Keys, Text &amp; annotations, Music, and each sound you added.</key>
-	<string>Каждая часть видео на своей дорожке, сверху вниз: Увеличения, Клипы, Камера, Субтитры, Клавиши, Текст и пометки, Музыка и каждый добавленный звук.</string>
+	<key>Every part of the video on its own track, top to bottom: Captions, Zooms, Video clips and their sound, Camera, Keys, Text &amp; annotations, Music, and each sound you added.</key>
+	<string>Каждая часть видео на своей дорожке, сверху вниз: субтитры, зумы, видеоклипы и их звук, камера, клавиши, текст и пометки, музыка и каждый добавленный звук.</string>
 	<key>Every part of this video as its own file — screen, camera, sound, captions, the finished video, and a timeline for editing apps (⇧⌘E)</key>
 	<string>Каждая часть этого видео отдельным файлом — экран, камера, звук, субтитры, готовое видео и таймлайн для программ монтажа (⇧⌘E)</string>
 	<key>Every part of this video as its own file, in a new folder — for another editor or editing app.</key>
@@ -4138,6 +4154,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Строки · %lld</string>
 	<key>Link</key>
 	<string>Ссылка</string>
+	<key>Link Audio</key>
+	<string>Связать звук</string>
 	<key>Link QR found</key>
 	<string>Найден QR-код со ссылкой</string>
 	<key>Link copied</key>
@@ -4158,6 +4176,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Связь выключена: клипы на других дорожках остаются на месте</string>
 	<key>Linkage on: clips on other tracks move with the main track</key>
 	<string>Связь включена: клипы на других дорожках движутся с основной</string>
+	<key>Linked to its clip: trims, splits, moves and deletes with it</key>
+	<string>Связан с клипом: обрезается, разрезается, перемещается и удаляется вместе с ним</string>
+	<key>Linked to its video: moves, trims and splits with it</key>
+	<string>Связан с видео: перемещается, обрезается и разрезается вместе с ним</string>
 	<key>Links</key>
 	<string>Ссылки</string>
 	<key>Links (%lld of %lld)</key>
@@ -4224,6 +4246,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>MP4 воспроизводится везде; MOV — родной формат QuickTime</string>
 	<key>Mac screen</key>
 	<string>Экран Mac</string>
+	<key>Mac sound</key>
+	<string>Звук Mac</string>
 	<key>Magenta</key>
 	<string>Пурпурный</string>
 	<key>Main track magnet</key>
@@ -4432,6 +4456,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Сдвинуть «%@» раньше</string>
 	<key>Move %@ later</key>
 	<string>Сдвинуть «%@» позже</string>
+	<key>Move Audio</key>
+	<string>Переместить звук</string>
 	<key>Move Down</key>
 	<string>Переместить вниз</string>
 	<key>Move Earlier</key>
@@ -4914,6 +4940,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>В macOS 15 и более ранних версиях нужно разрешить «Распознавание речи» и настроить диктовку для этого языка.</string>
 	<key>On macOS 15 and earlier: allow LF Studios under Speech Recognition, and turn on Dictation for that language in System Settings ▸ Keyboard.</key>
 	<string>В macOS 15 и более ранних версиях: разрешите LF Studios доступ в разделе «Распознавание речи» и включите диктовку для этого языка в разделе Системные настройки ▸ Клавиатура.</string>
+	<key>On the Captions track at the top of the timeline, drag a caption to move it, or drag its ends to change when it starts and ends.</key>
+	<string>На дорожке субтитров вверху таймлайна перетащите субтитр, чтобы сдвинуть его, или его края, чтобы изменить начало и конец.</string>
 	<key>On the edit's timeline</key>
 	<string>На шкале времени монтажа</string>
 	<key>On the preview after capture, click Text, or right-click and choose Copy Text.</key>
@@ -5468,6 +5496,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Настройки проекта</string>
 	<key>Projects</key>
 	<string>Проекты</string>
+	<key>Projects from earlier versions open with their sound on these tracks and sound exactly the same.</key>
+	<string>Проекты из прежних версий открываются со звуком на этих дорожках и звучат точно так же.</string>
 	<key>Projects shows your recordings, screenshots, and saved projects, newest first. Click one to open it. Right-click for Show in Finder, Creative Handoff…, or Delete.</key>
 	<string>В разделе «Проекты» — ваши записи, снимки и сохраненные проекты, сначала новые. Нажмите на любой, чтобы открыть его. Правой кнопкой мыши — «Показать в Finder», «Творческая передача…» или «Удалить».</string>
 	<key>Projects with keyframes or any other 1.15.0 feature open in LF Studios 1.15.0 or later.</key>
@@ -5966,6 +5996,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторить изменение сохранения тона</string>
 	<key>Redo Keyframe Easing</key>
 	<string>Повторить изменение сглаживания ключевого кадра</string>
+	<key>Redo Link Audio</key>
+	<string>Повторить связывание звука</string>
 	<key>Redo Lock Track</key>
 	<string>Повторить блокировку дорожки</string>
 	<key>Redo Make Compound Clip</key>
@@ -6166,6 +6198,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повторить включение клипа</string>
 	<key>Redo Ungroup</key>
 	<string>Повторить разгруппировку</string>
+	<key>Redo Unlink Audio</key>
+	<string>Повторить отвязку звука</string>
 	<key>Redo Unlock Track</key>
 	<string>Повторить разблокировку дорожки</string>
 	<key>Redo Unmute Clip</key>
@@ -6452,6 +6486,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Правой кнопкой мыши — «Открыть», «Показать в Finder», «Творческая передача…» или «Удалить» (перемещает в Корзину; для папки записи — всю папку, после подтверждения).</string>
 	<key>Right-click for Save As…, Pin to Screen, and Delete.</key>
 	<string>Правой кнопкой мыши — «Сохранить как…», «Закрепить на экране» и «Удалить».</string>
+	<key>Right-click it and choose Link Audio to put it back under its video.</key>
+	<string>Нажмите правой кнопкой и выберите «Связать звук», чтобы вернуть его под видео.</string>
 	<key>Right-click it for Copy, Save As…, Edit, Close Pin, or Close All Pins.</key>
 	<string>Правой кнопкой мыши — «Скопировать», «Сохранить как…», «Правка», «Закрыть» или «Закрыть все».</string>
 	<key>Ring</key>
@@ -7122,6 +7158,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Звук</string>
 	<key>Sound effects</key>
 	<string>Звуковые эффекты</string>
+	<key>Sound of %@</key>
+	<string>Звук: %@</string>
+	<key>Sound of clip %lld</key>
+	<string>Звук клипа %lld</string>
 	<key>Sounds</key>
 	<string>Звуки</string>
 	<key>Space</key>
@@ -7652,6 +7692,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Самое высокое качество — и единственный формат, который сохраняет прозрачность</string>
 	<key>The label under it says how wide the camera is and where it goes in the video. The editor opens with exactly that.</key>
 	<string>Подпись под ней показывает ширину камеры и ее место в видео. Редактор откроется именно так.</string>
+	<key>The line runs down through every track, so you can see what's under it.</key>
+	<string>Линия проходит через все дорожки, так видно, что под ней.</string>
 	<key>The loupe stays over the text cursor.</key>
 	<string>Лупа держится над текстовым курсором.</string>
 	<key>The loupe stays over your cursor.</key>
@@ -7704,6 +7746,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Файл изображения пропал — выберите его снова с помощью «Заменить».</string>
 	<key>The pictures in 04 Graphics — older handoffs don't say where they were placed</key>
 	<string>Изображения в 04 Graphics — в старых передачах не указано, где они были размещены</string>
+	<key>The playhead</key>
+	<string>Указатель воспроизведения</string>
 	<key>The pointer data — it fits only an uncut recording</key>
 	<string>Данные указателя — подходят только для необрезанной записи</string>
 	<key>The pointer glides back to where it started at the end, so the video loops without a jump.</key>
@@ -7738,6 +7782,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Файл записи не найден — возможно, его переместили или удалили. Верните его на место и экспортируйте снова.</string>
 	<key>The recording, its camera, added recordings, music, sound files, and pictures are already there. Added marks what's in the video.</key>
 	<string>Запись, ее камера, добавленные записи, музыка, звуковые файлы и картинки уже там. «Добавлено» отмечает то, что есть в видео.</string>
+	<key>The red line on the timeline is the moment the player shows. Its handle sits on top of the ruler.</key>
+	<string>Красная линия на таймлайне — момент, который показывает плеер. Её ручка находится над линейкой.</string>
 	<key>The red stop button in the bar while recording, or the red timer in the menu bar.</key>
 	<string>Красная кнопка остановки на панели во время записи или красный таймер в строке меню.</string>
 	<key>The same transition on every cut between clips</key>
@@ -7782,12 +7828,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Не удалось прочитать звук. Экспортируйте снова.</string>
 	<key>The sound is in the Library as “%@”</key>
 	<string>Звук добавлен в Библиотеку как «%@»</string>
+	<key>The sound is linked to its video: trimming, splitting, moving or deleting the video does the same to its sound, in one ⌘Z step.</key>
+	<string>Звук связан со своим видео: обрезка, разрезание, перемещение или удаление видео делает то же со звуком, за один шаг ⌘Z.</string>
 	<key>The sound is silent faster than 32× or slower than 1/32×.</key>
 	<string>Быстрее 32× или медленнее 1/32× звук отключается.</string>
 	<key>The sound recorded with the screen</key>
 	<string>Звук, записанный вместе с экраном</string>
 	<key>The sound's settings (select a sound file, the music, or a video above the main track).</key>
 	<string>Настройки звука (выберите звуковой файл, музыку или видео над основной дорожкой).</string>
+	<key>The speaker on the sound track's name mutes it. Volume is in Properties ▸ Audio; a clip's fades and Mute Clip work on its sound.</key>
+	<string>Динамик у названия звуковой дорожки выключает её звук. Громкость — в «Свойства» ▸ «Аудио»; затухания клипа и «Выключить звук клипа» действуют на его звук.</string>
 	<key>The strip above the recording bar, after Home ▸ New recording.</key>
 	<string>Полоса над панелью записи после Главная ▸ Новая запись.</string>
 	<key>The switches stay as you leave them, on this Mac.</key>
@@ -7804,10 +7854,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Таймлайн теперь использует клавиши CapCut: ⌘B делит (C тоже), S включает и выключает ось предпросмотра, I и O отмечают начало и конец, Q и W удаляют слева и справа от указателя. Текст, стрелка, выделение и размытие — ⌥T, ⌥A, ⌥H и ⌥B.</string>
 	<key>The timeline's tools</key>
 	<string>Инструменты таймлайна</string>
+	<key>The timeline, under the video track. A video on a track above has its sound under it too.</key>
+	<string>Таймлайн, под видеодорожкой. У видео на дорожке выше звук тоже под ним.</string>
 	<key>The timeline: the rows above Video clips (the main track). Drop a file there from Finder or the Library.</key>
 	<string>Таймлайн: строки над «Клипами» (основной дорожкой). Бросьте туда файл из Finder или Библиотеки.</string>
 	<key>The tool buttons above the preview: Text, Arrow, Highlight, Blur, Spotlight, and Image.</key>
 	<string>Кнопки инструментов над предпросмотром: «Текст», «Стрелка», «Выделение», «Размытие», «Прожектор» и «Изображение».</string>
+	<key>The top of the timeline, above the tracks.</key>
+	<string>Верх таймлайна, над дорожками.</string>
 	<key>The tracks are named A roll (the main track), V2 · B roll, V3 and so on, with Captions on top. These are names only: projects are the same in both layouts.</key>
 	<string>Дорожки называются A-ролл (основная), V2 · B-ролл, V3 и так далее, субтитры сверху. Это только названия: проекты одинаковы в обоих макетах.</string>
 	<key>The trash button in the bar while recording.</key>
@@ -8018,6 +8072,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Чтобы убрать предпросмотр с дороги, перетащите его за рамку: подпись покажет «Не в видео», а редактор поставит камеру в обычный угол.</string>
 	<key>To hide one, click it on the timeline and press ⌫.</key>
 	<string>Чтобы скрыть одно сочетание, нажмите на него на шкале времени и нажмите ⌫.</string>
+	<key>To move the sound on its own, right-click it on its track and choose Unlink Audio.</key>
+	<string>Чтобы двигать звук отдельно, нажмите на него правой кнопкой на его дорожке и выберите «Отвязать звук».</string>
 	<key>To remove it again, untick Apply background to this image.</key>
 	<string>Чтобы убрать фон, снимите флажок «Применить фон к этому изображению».</string>
 	<key>To skip the panel and go straight to the editor, turn on Open the video editor after recording in Settings ▸ General.</key>
@@ -8246,6 +8302,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>В разделе «Стиль всех субтитров» выберите стиль, размер и «Вверху» или «Внизу».</string>
 	<key>Under the video preview. Hide them with ×; bring them back from the shortcuts list (?).</key>
 	<string>Под предпросмотром видео. Скройте их кнопкой ×; вернуть их можно из списка сочетаний клавиш (?).</string>
+	<key>Under the video track is its sound, on a track of its own. A recording's microphone and the Mac's sound each get one.</key>
+	<string>Под видеодорожкой — её звук на отдельной дорожке. Микрофон и звук Mac в записи получают по своей.</string>
 	<key>Under the voice</key>
 	<string>Под голосом</string>
 	<key>Underline</key>
@@ -8488,6 +8546,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Отменить изменение сохранения тона</string>
 	<key>Undo Keyframe Easing</key>
 	<string>Отменить изменение сглаживания ключевого кадра</string>
+	<key>Undo Link Audio</key>
+	<string>Отменить связывание звука</string>
 	<key>Undo Lock Track</key>
 	<string>Отменить блокировку дорожки</string>
 	<key>Undo Make Compound Clip</key>
@@ -8688,6 +8748,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Отменить включение клипа</string>
 	<key>Undo Ungroup</key>
 	<string>Отменить разгруппировку</string>
+	<key>Undo Unlink Audio</key>
+	<string>Отменить отвязку звука</string>
 	<key>Undo Unlock Track</key>
 	<string>Отменить разблокировку дорожки</string>
 	<key>Undo Unmute Clip</key>
@@ -8714,6 +8776,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Отмена, повтор и начать заново</string>
 	<key>Ungroup</key>
 	<string>Разгруппировать</string>
+	<key>Unlink Audio</key>
+	<string>Отвязать звук</string>
+	<key>Unlinked sound: drag to move it</key>
+	<string>Отвязанный звук: перетащите, чтобы переместить</string>
 	<key>Unlock %@</key>
 	<string>Разблокировать «%@»</string>
 	<key>Unlock “%@”</key>
@@ -8942,6 +9008,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Когда они будут готовы, включится «Монтаж с прокси».</string>
 	<key>When you export, keep Burn captions into the video on, or save a subtitles file.</key>
 	<string>При экспорте оставьте включенным «Встроить субтитры в видео» или сохраните файл субтитров.</string>
+	<key>When you jump to a moment that's out of view, the timeline scrolls to show the playhead.</key>
+	<string>Если перейти к моменту вне видимой части, таймлайн прокрутится к указателю воспроизведения.</string>
 	<key>When you're done, click the red stop button or press ⌃⌘Esc.</key>
 	<string>Когда закончите, нажмите красную кнопку остановки или ⌃⌘Esc.</string>
 	<key>Whenever you capture or record an area.</key>

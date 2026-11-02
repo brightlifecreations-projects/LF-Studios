@@ -257,6 +257,8 @@ extension VideoEditorModel {
                 if let file = usesProxies ? await VideoProxies.layerFile(url) : await VideoLayerFile.load(url) { media.layerFiles[path] = file }
             }
             refreshPlayback()
+            // Their sound's waveforms, for their sound rows (1.18.0).
+            await loadLayerSoundWaveforms()
             // More may have been added while these loaded.
             if project.layerVideoPaths.contains(where: { media.layerFiles[$0] == nil && FileManager.default.fileExists(atPath: $0) }) { loadLayerFiles() }
         }

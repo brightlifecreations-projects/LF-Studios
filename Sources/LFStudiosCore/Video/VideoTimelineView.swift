@@ -13,6 +13,8 @@ enum VideoTimelineMetrics {
     static var clipTrackHeight: CGFloat { scaled(66) }
     /// A video or picture track above the main track (1.14.0).
     static var layerLaneHeight: CGFloat { scaled(40) }
+    /// A sound track under a video track (1.18.0).
+    static var soundLaneHeight: CGFloat { scaled(34) }
     static var overlayLaneHeight: CGFloat { scaled(26) }
     static let overlayLaneGap: CGFloat = 4
     static var captionLaneHeight: CGFloat { scaled(22) }
@@ -258,7 +260,7 @@ struct VideoTimelineSurface: View {
 
     /// Every track's row (VideoTimelineTracks.swift), below the ruler.
     private var rows: VideoTimelineRowLayout {
-        VideoTimelineRowLayout(project: model.project, hasCamera: model.hasWebcamFootage, curves: VideoEditorStyle.current.isNew ? Set(model.curveLanes.keys) : [])
+        VideoTimelineRowLayout(project: model.project, hasCamera: model.hasWebcamFootage, curves: VideoEditorStyle.current.isNew ? Set(model.curveLanes.keys) : [], sound: model.timelineSoundRows)
     }
     /// Far above the lanes: a row that shows nothing.
     private static let nowhere: CGFloat = -10_000
@@ -450,6 +452,34 @@ struct VideoTimelineSurface: View {
                         .offset(y: clickTop)
                     }
                     clipTrack
+                }
+            }
+            // The main track's sound, one row per sound track (1.18.0).
+            let soundRows = model.timelineSoundRows
+            ForEach(Array(soundRows.kinds.enumerated()), id: \.offset) { index, kind in
+                if let top = rows.contentTop(.clipSound(index, kind)) {
+                    trackLook(.clipSound(index, kind)) {
+                        VideoClipSoundLane(
+                            model: model, index: index, kind: kind,
+                            waveform: model.soundWaveforms[index] ?? model.waveform,
+                            geometry: geometry, segments: model.segments,
+                            selected: model.selectedIDs { if case .clip(let id) = $0 { return id } else { return nil } },
+                            muted: model.project.trackState(.clipSound(index, kind)).muted
+                        )
+                        .offset(y: top)
+                    }
+                }
+            }
+            // The sound of the videos above the main track.
+            ForEach(model.project.layerTracks.filter { soundRows.layers.contains($0.id) }) { track in
+                if let top = rows.contentTop(.layerSound(track.id)) {
+                    trackLook(.layerSound(track.id)) {
+                        VideoLayerSoundLane(
+                            model: model, track: track, geometry: geometry,
+                            selected: model.selectedIDs { if case .layer(let id) = $0 { return id } else { return nil } }
+                        )
+                        .offset(y: top)
+                    }
                 }
             }
             // Cards, cut markers and recording boundaries on the clips;
@@ -842,7 +872,8 @@ struct VideoTimelineSurface: View {
                     pointsPerSecond: pointsPerSecond,
                     selected: model.isSelected(.clip(segment.id)),
                     thumbnails: model.thumbnails,
-                    waveform: model.waveform,
+                    // Its sound has a row of its own under it (1.18.0).
+                    waveform: model.timelineSoundRows.kinds.isEmpty ? model.waveform : nil,
                     sourceAspect: model.project.sourceHeight > 0 ? model.project.sourceWidth / model.project.sourceHeight : 16 / 9,
                     hover: hover
                 )

@@ -179,6 +179,37 @@ struct VideoTimelineHoverLayer: View {
 
 /// Every caption as a chip on one canvas: drag to move, drag an edge to
 /// retime, click to select. One view for hundreds of captions.
+/// A caption's words, typed on its block (Return or clicking elsewhere
+/// keeps them, Esc doesn't): one ⌘Z step.
+struct VideoCaptionTextField: View {
+    @State var text: String
+    /// The words to keep, or nil.
+    let done: (String?) -> Void
+    @FocusState private var focused: Bool
+    @State private var finished = false
+
+    var body: some View {
+        TextField(L("Caption"), text: $text)
+            .textFieldStyle(.plain)
+            .font(.system(size: 10.5, weight: .medium))
+            .padding(.horizontal, 6)
+            .background(RoundedRectangle(cornerRadius: 6, style: .continuous).fill(Color(nsColor: .textBackgroundColor)))
+            .overlay(RoundedRectangle(cornerRadius: 6, style: .continuous).strokeBorder(Color.accentColor, lineWidth: 1.5))
+            .focused($focused)
+            .onAppear { focused = true }
+            .onSubmit { finish(text) }
+            .onExitCommand { finish(nil) }
+            .onChange(of: focused) { now in if !now { finish(text) } }
+    }
+
+    private func finish(_ words: String?) {
+        guard !finished else { return }
+        finished = true
+        let trimmed = words?.trimmingCharacters(in: .whitespacesAndNewlines)
+        done(trimmed?.isEmpty == false ? trimmed : nil)
+    }
+}
+
 struct VideoCaptionLane: View, Equatable {
     struct Item: Equatable {
         let id: UUID
@@ -211,6 +242,8 @@ struct VideoCaptionLane: View, Equatable {
     }
 
     @State private var drag: Drag?
+    /// The caption whose words are being typed (double-click, 1.18.0).
+    @State private var editing: Item?
     private typealias M = VideoTimelineMetrics
     private static let edge: CGFloat = 7
 
@@ -277,6 +310,21 @@ struct VideoCaptionLane: View, Equatable {
             (mode == .move ? NSCursor.openHand : NSCursor.resizeLeftRight).set()
         }
         .gesture(dragGesture)
+        // Double-click: type its words right there.
+        .simultaneousGesture(SpatialTapGesture(count: 2).onEnded { tap in
+            if let (item, _) = hit(tap.location) { editing = item }
+        })
+        .overlay(alignment: .topLeading) {
+            if let editing {
+                let frame = rect(editing)
+                VideoCaptionTextField(text: editing.text) { text in
+                    if let text { model.perform(.setCaptionText(editing.id, text)) }
+                    self.editing = nil
+                }
+                .frame(width: max(frame.width, 180), height: M.captionLaneHeight)
+                .offset(x: frame.minX)
+            }
+        }
         // Drawn chips have no views: VoiceOver gets one element for each.
         .accessibilityElement(children: .contain)
         .accessibilityLabel(L("Captions"))
@@ -292,6 +340,7 @@ struct VideoCaptionLane: View, Equatable {
                         .accessibilityAddTraits(selectedIDs.contains(item.id) ? [.isButton, .isSelected] : .isButton)
                         .accessibilityAction { model.selectCaption(item.id) }
                         .accessibilityAction(named: L("Delete")) { model.deleteCaption(item.id) }
+                        .accessibilityAction(named: L("Edit Text")) { editing = item }
                 }
             }
         }
