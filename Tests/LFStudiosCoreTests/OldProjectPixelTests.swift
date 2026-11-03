@@ -21,7 +21,7 @@ final class OldProjectPixelTests: XCTestCase {
     private func file(_ name: String) -> URL { Self.fixtures.appendingPathComponent(name) }
 
     /// The recordings every frame is made from (written once, then kept).
-    private func media() async throws -> (screen: URL, camera: URL, logo: URL) {
+    func media() async throws -> (screen: URL, camera: URL, logo: URL) {
         try FileManager.default.createDirectory(at: Self.fixtures, withIntermediateDirectories: true)
         let screen = file("screen.mp4"), camera = file("camera.mp4"), logo = file("logo.png")
         if !FileManager.default.fileExists(atPath: screen.path) {
@@ -34,7 +34,7 @@ final class OldProjectPixelTests: XCTestCase {
     }
 
     /// Each kind of project from before 1.14.0, and the moments compared.
-    private func projects(_ media: (screen: URL, camera: URL, logo: URL)) -> [(name: String, project: VideoDemoProject, recording: VideoDemoRecordingMetadata?, camera: Bool, times: [Double])] {
+    func projects(_ media: (screen: URL, camera: URL, logo: URL)) -> [(name: String, project: VideoDemoProject, recording: VideoDemoRecordingMetadata?, camera: Bool, times: [Double])] {
         let size = CGSize(width: 960, height: 600)
         func base() -> VideoDemoProject { VideoDemoProject.make(sourceURL: media.screen, duration: 4, sourceSize: size) }
         let (samples, clicks) = VideoTestSupport.scriptedPointer(duration: 4)

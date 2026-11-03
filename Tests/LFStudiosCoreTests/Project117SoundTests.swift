@@ -30,7 +30,7 @@ final class Project117SoundTests: XCTestCase {
 
     private func file(_ name: String) -> URL { Self.fixtures.appendingPathComponent(name) }
 
-    private struct Media {
+    struct Media {
         let tone: URL
         let twoTracks: URL
         let voiceover: URL
@@ -38,7 +38,7 @@ final class Project117SoundTests: XCTestCase {
     }
 
     /// What every export is made from (written once, then kept).
-    private func media() async throws -> Media {
+    func media() async throws -> Media {
         try FileManager.default.createDirectory(at: Self.fixtures, withIntermediateDirectories: true)
         let media = Media(tone: file("tone.mp4"), twoTracks: file("two-tracks.mov"), voiceover: file("voiceover.m4a"), song: file("song.m4a"))
         func missing(_ url: URL) throws -> Bool {
@@ -95,10 +95,10 @@ final class Project117SoundTests: XCTestCase {
         XCTAssertEqual(session.status, .completed, session.error?.localizedDescription ?? "")
     }
 
-    private typealias Kind = (name: String, project: VideoDemoProject, recording: VideoDemoRecordingMetadata?)
+    typealias Kind = (name: String, project: VideoDemoProject, recording: VideoDemoRecordingMetadata?)
 
     /// Each kind of project with sound, as 1.17.0 saved them.
-    private func projects(_ media: Media) -> [Kind] {
+    func projects(_ media: Media) -> [Kind] {
         func base(_ url: URL) -> VideoDemoProject {
             var project = VideoDemoProject.make(sourceURL: url, duration: 4, sourceSize: CGSize(width: 320, height: 180))
             project.audio.normalizeLoudness = false
