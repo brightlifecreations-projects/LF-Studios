@@ -268,6 +268,26 @@ final class VideoEditorModel: ObservableObject {
     /// The preview axis (S): the moment under the pointer the player shows
     /// while the playhead stays put (nil: the playhead's).
     var previewAxisTime: Double?
+    /// The moment under the pointer while it's over the timeline's lanes
+    /// (nil: anywhere else). Not published: the pointer moves a lot.
+    var timelinePointerTime: Double? {
+        didSet {
+            let skimming = skimmerTime != nil
+            if skimming != isSkimming { isSkimming = skimming }
+        }
+    }
+    /// The skimmer is showing (redraws only when it comes or goes).
+    @Published private(set) var isSkimming = false
+    /// 1.21.0, the skimmer (Final Cut Pro's word for the preview axis line):
+    /// with the preview axis on, the pointer over the timeline and nothing
+    /// playing, zooming keeps its moment in place and ⌘B / ⇧⌘B split
+    /// there. nil: they use the playhead.
+    var skimmerTime: Double? {
+        guard Settings.videoTimelinePreviewAxis, !isPlaying, let time = timelinePointerTime else { return nil }
+        return min(max(time, 0), timelineDuration)
+    }
+    /// Where ⌘B and ⇧⌘B act: the skimmer, else the playhead.
+    var editTime: Double { skimmerTime ?? clock.time }
     /// Items above the main track copied with ⌘C.
     var clipboardLayerItems: [VideoLayerItem] = []
     /// Recording a voiceover (VideoVoiceover.swift).
@@ -1188,7 +1208,8 @@ final class VideoEditorModel: ObservableObject {
         max(40, timelineDuration * 150 / Double(max(timelineViewportWidth, 100)))
     }
 
-    /// = / − and the buttons: in or out around the playhead.
+    /// = / − and the buttons: in or out around the skimmer, else the
+    /// playhead (VideoTimelineScroller.anchor).
     func zoomTimeline(by factor: Double) {
         timelineZoom = min(max(timelineZoom * factor, 1), maxTimelineZoom)
     }

@@ -3820,6 +3820,8 @@
 	<string>Вместо микрофона записи — «Улучшение голоса» и «Режим подкаста» очищают ее</string>
 	<key>In the LF Studios layout, Properties has At playhead on top (what plays now and what comes next; click one to select it) and four tabs: Clip, Effects, Captions and Video (Style, Cursor, Zoom, Camera, Audio).</key>
 	<string>В макете LF Studios в «Свойствах» сверху блок «Сейчас» (что идёт сейчас и что дальше; нажмите, чтобы выбрать) и четыре вкладки: «Клип», «Эффекты», «Субтитры» и «Видео» (Стиль, Указатель, Масштаб, Камера, Аудио).</string>
+	<key>In the LF Studios layout, the strip at the bottom says where ⌘B splits: at the skimmer or at the playhead.</key>
+	<string>В раскладке LF Studios полоса внизу показывает, где разделит ⌘B: у скиммера или у указателя.</string>
 	<key>In the LF Studios layout: Properties ▸ Captions ▸ Transcript.</key>
 	<string>В макете LF Studios: «Свойства ▸ Субтитры ▸ Расшифровка».</string>
 	<key>In the LF Studios layout: Properties ▸ Video ▸ Audio.</key>
@@ -5168,6 +5170,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Убирать нечего — все данные относятся к вашим записям</string>
 	<key>Nothing to split at the playhead</key>
 	<string>У указателя нечего разделять</string>
+	<key>Nothing to split at the skimmer</key>
+	<string>У скиммера нечего разделять</string>
 	<key>Nothing was recorded</key>
 	<string>Ничего не записано</string>
 	<key>Nothing was recorded — the screen didn't send any picture. Try again.</key>
@@ -5476,6 +5480,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Финальный титр, с %@ до %@</string>
 	<key>Over everything: drag a filter onto the timeline (a filter clip).</key>
 	<string>Поверх всего: перетяните фильтр на шкалу времени (клип фильтра).</string>
+	<key>Over the timeline, with Preview axis (S) on.</key>
+	<string>Над шкалой времени, когда включена ось предпросмотра (S).</string>
 	<key>Overlay</key>
 	<string>Перекрытие</string>
 	<key>Overlay position</key>
@@ -5716,6 +5722,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Указывайте на детали и обводите их: стрелки, прямоугольники, эллипсы, линии и рисование от руки.</string>
 	<key>Point things out</key>
 	<string>Указатели</string>
+	<key>Pointer over the timeline</key>
+	<string>Указатель мыши над шкалой времени</string>
 	<key>Polar Dawn</key>
 	<string>Полярный рассвет</string>
 	<key>Pop</key>
@@ -7620,18 +7628,28 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Разделить все дорожки</string>
 	<key>Split all tracks</key>
 	<string>Разделить все дорожки</string>
+	<key>Split all tracks at the skimmer, else the playhead</key>
+	<string>Разделить все дорожки у скиммера, иначе у указателя</string>
 	<key>Split at Markers</key>
 	<string>Разделить по маркерам</string>
 	<key>Split at Markers splits the clips at every marker.</key>
 	<string>«Разделить по маркерам» разделяет клипы на каждом маркере.</string>
 	<key>Split at Playhead</key>
 	<string>Разделить по указателю воспроизведения</string>
+	<key>Split at Skimmer or Playhead</key>
+	<string>Разделить у скиммера или указателя</string>
 	<key>Split at playhead</key>
 	<string>Разделить здесь</string>
+	<key>Split at skimmer</key>
+	<string>Разделить у скиммера</string>
 	<key>Split at the playhead</key>
 	<string>Разделить у указателя воспроизведения</string>
+	<key>Split at the skimmer, else the playhead</key>
+	<string>Разделить у скиммера, иначе у указателя</string>
 	<key>Split every track at the playhead</key>
 	<string>Все дорожки разделены у указателя</string>
+	<key>Split every track at the skimmer</key>
+	<string>Все дорожки разделены у скиммера</string>
 	<key>Split screen</key>
 	<string>Разделенный экран</string>
 	<key>Split screen divider</key>
@@ -8144,6 +8162,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Подпись под ней показывает ширину камеры и ее место в видео. Редактор откроется именно так.</string>
 	<key>The line runs down through every track, so you can see what's under it.</key>
 	<string>Линия проходит через все дорожки, так видно, что под ней.</string>
+	<key>The line that follows the pointer over the timeline. Zooming keeps the moment under it in place, and ⌘B splits there.</key>
+	<string>Линия, которая следует за указателем мыши над шкалой времени. При масштабировании момент под ней остаётся на месте, а ⌘B разделяет именно там.</string>
 	<key>The loupe stays over the text cursor.</key>
 	<string>Лупа держится над текстовым курсором.</string>
 	<key>The loupe stays over your cursor.</key>
@@ -8290,6 +8310,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Размер записи в пикселях.</string>
 	<key>The size shows while you drag.</key>
 	<string>Размер виден, пока вы ведете мышью.</string>
+	<key>The skimmer</key>
+	<string>Скиммер</string>
+	<key>The slider and the zoom buttons are away from the timeline, so they zoom around the playhead.</key>
+	<string>Ползунок и кнопки масштаба находятся вне шкалы времени, поэтому масштабируют вокруг указателя воспроизведения.</string>
 	<key>The song is shorter than the video</key>
 	<string>Песня короче видео</string>
 	<key>The song's file is gone — choose it again with Replace.</key>
@@ -9626,6 +9650,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Если экранов несколько, нажмите «Записать» рядом с нужным.</string>
 	<key>With the LF Studios project, the folder opens the whole edit again. Clips cut to your edit need the untouched recordings alongside.</key>
 	<string>С проектом LF Studios папка снова открывает весь монтаж. Клипам, обрезанным под монтаж, нужны рядом нетронутые исходные записи.</string>
+	<key>With the pointer away from the timeline, or Preview axis off, zooming and splitting use the red playhead. If the playhead is out of view, zooming brings it to the middle.</key>
+	<string>Если указатель мыши не над шкалой времени или ось предпросмотра выключена, масштаб и разделение используют красный указатель воспроизведения. Если его не видно, масштабирование выводит его в середину.</string>
+	<key>With the pointer over the timeline, pinch, ⌘-scroll, and ⌘+ or ⌘− keep the skimmer's moment where it is on screen.</key>
+	<string>Когда указатель мыши над шкалой времени, щипок, ⌘-прокрутка и ⌘+ или ⌘− оставляют момент скиммера на том же месте экрана.</string>
 	<key>Wobble</key>
 	<string>Колебание</string>
 	<key>Word box</key>
@@ -9760,6 +9788,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Увеличение %@</string>
 	<key>Zoom Level</key>
 	<string>Уровень увеличения</string>
+	<key>Zoom and ⌘B keep to the skimmer, else the playhead</key>
+	<string>Масштаб и ⌘B — у скиммера, иначе у указателя</string>
 	<key>Zoom cut</key>
 	<string>Зум на склейке</string>
 	<key>Zoom cut (⌥Z) punches in here at a cut. Or click ◆, move the playhead and change the zoom.</key>
@@ -9772,8 +9802,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Увеличение</string>
 	<key>Zoom in / out</key>
 	<string>Увеличить / уменьшить</string>
-	<key>Zoom in at the pointer</key>
-	<string>Увеличить в точке указателя</string>
 	<key>Zoom in on part of the video so details are easy to see.</key>
 	<string>Увеличьте часть видео, чтобы детали было легко разглядеть.</string>
 	<key>Zoom in so viewers can see the details.</key>
@@ -9808,6 +9836,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Увеличение удалено — ⌘Z, чтобы отменить</string>
 	<key>Zoom the player</key>
 	<string>Масштаб плеера</string>
+	<key>Zoom the timeline</key>
+	<string>Масштаб шкалы времени</string>
 	<key>Zoom to %@ (key %@)</key>
 	<string>Увеличить до %@ (клавиша %@)</string>
 	<key>Zoom to fit</key>
@@ -9938,8 +9968,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>выбрать</string>
 	<key>so good</key>
 	<string>просто супер</string>
-	<key>split at the playhead</key>
-	<string>разделить по указателю воспроизведения</string>
+	<key>split at the skimmer or the playhead</key>
+	<string>разделить у скиммера или указателя</string>
 	<key>step through the timeline</key>
 	<string>шаг по шкале времени</string>
 	<key>sys+mic</key>
@@ -9968,8 +9998,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>до %@ ГБ/мин</string>
 	<key>up to %@ MB/min</key>
 	<string>до %@ МБ/мин</string>
-	<key>zoom the timeline</key>
-	<string>масштаб шкалы времени</string>
+	<key>zoom around the skimmer</key>
+	<string>масштаб вокруг скиммера</string>
 	<key>© 2026 Bright Life Creations</key>
 	<string>© 2026 Bright Life Creations</string>
 	<key>© 2026 Shotnix Contributors</key>
@@ -10066,6 +10096,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>Нажмите с ⌘ или ⇧, чтобы выбрать несколько; клавиши со стрелками перемещают выбор.</string>
 	<key>⌘-scroll</key>
 	<string>⌘-прокрутка</string>
+	<key>⌘B and ⇧⌘B split at the skimmer. The playhead stays where it is.</key>
+	<string>⌘B и ⇧⌘B разделяют у скиммера. Указатель воспроизведения остаётся на месте.</string>
 	<key>⌥-drag</key>
 	<string>Перетягивание с ⌥</string>
 	<key>⌥T still adds a text note pinned over the video, as before.</key>

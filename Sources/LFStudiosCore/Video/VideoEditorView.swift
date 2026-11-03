@@ -1076,7 +1076,7 @@ struct VideoCommandPalette: View {
         [
             Command(id: "export", title: L("Export…"), symbol: "square.and.arrow.up", shortcut: "⌘E") { model.isExportPresented = true },
             Command(id: "play", title: model.isPlaying ? L("Pause") : L("Play"), symbol: "playpause.fill", shortcut: L("Space")) { model.togglePlay() },
-            Command(id: "split", title: L("Split at Playhead"), symbol: "scissors", shortcut: "⌘B") { model.perform(.split) },
+            Command(id: "split", title: L("Split at Skimmer or Playhead"), symbol: "scissors", shortcut: "⌘B") { model.perform(.split) },
             Command(id: "zoom", title: L("Add Zoom at Playhead"), symbol: "plus.magnifyingglass", shortcut: "Z") { model.addZoom(at: model.clock.time) },
             Command(id: "auto", title: model.project.autoZoom ? L("Turn Off Auto-Zoom on Clicks") : L("Turn On Auto-Zoom on Clicks"), symbol: "sparkles", shortcut: "") { model.setAutoZoom(!model.project.autoZoom) },
             Command(id: "my-style", title: L("Apply My Style"), symbol: "wand.and.stars", shortcut: "⇧⌘Y") { model.applyMyStyle() },
@@ -1236,10 +1236,10 @@ struct VideoShortcutsSheet: View {
     static var groups: [(String, [(String, String)])] {
         [
             (L("Playback"), [(L("Space"), L("Play / pause")), ("J  K  L", L("Back · pause · faster")), ("← →", L("Previous / next frame")), ("⇧← ⇧→", L("Jump one second")), ("⌘← ⌘→", L("Start / end")), (L("Home  End"), L("Start / end")), ("M", L("Mute the preview (or the selected clip)"))]),
-            (L("Editing"), [("⌘B  C", L("Split at playhead")), ("⇧⌘B", L("Split all tracks")), ("A  B", L("Select tool · split tool")), ("Q  W", L("Delete left / right of the playhead")), (L("⇧-drag"), L("Select a range to cut")), (L("⇧/⌘-click"), L("Select several items")), ("I  O", L("Mark in / out")), ("[  ]", L("Select left / right of the playhead")), ("V", L("Turn a clip on or off")), ("⌫", L("Delete selection")), ("⌘C  ⌘V", L("Copy / paste clips")), ("⌘G  ⇧⌘G", L("Group / ungroup")), ("⌥G  ⌥⇧G", L("Make compound clip / break apart")), ("⌥← ⌥→", L("Select previous / next item")), ("⌘Z  ⇧⌘Z", L("Undo / redo"))]),
+            (L("Editing"), [("⌘B  C", L("Split at the skimmer, else the playhead")), ("⇧⌘B", L("Split all tracks at the skimmer, else the playhead")), ("A  B", L("Select tool · split tool")), ("Q  W", L("Delete left / right of the playhead")), (L("⇧-drag"), L("Select a range to cut")), (L("⇧/⌘-click"), L("Select several items")), ("I  O", L("Mark in / out")), ("[  ]", L("Select left / right of the playhead")), ("V", L("Turn a clip on or off")), ("⌫", L("Delete selection")), ("⌘C  ⌘V", L("Copy / paste clips")), ("⌘G  ⇧⌘G", L("Group / ungroup")), ("⌥G  ⌥⇧G", L("Make compound clip / break apart")), ("⌥← ⌥→", L("Select previous / next item")), ("⌘Z  ⇧⌘Z", L("Undo / redo"))]),
             (L("Keyframes"), [("⌥K", L("Add keyframe")), ("⌥[  ⌥]", L("Previous / next keyframe"))]),
             (L("Zooms & annotations"), [("Z", L("Add zoom at playhead")), ("1 – 5", L("Zoom level (zoom selected)")), ("⌘D", L("Duplicate zoom or annotation")), ("⌥T  ⌥H  ⌥A  ⌥B", L("Text · highlight · arrow · blur")), ("⌥⇧T", L("Text clip")), ("⌥Z", L("Zoom cut")), (L("Double-click"), L("Type in a text annotation"))]),
-            (L("Timeline"), [("=  −", L("Show more / less detail")), ("⌘=  ⌘−", L("Show more / less detail")), ("⇧Z", L("Fit the whole video")), (L("⌘ scroll"), L("Zoom in at the pointer")), ("P", L("Main track magnet")), ("N", L("Auto snapping")), ("`", L("Linkage")), ("S", L("Preview axis")), ("⇧⌘A", L("Extract audio"))]),
+            (L("Timeline"), [("=  −", L("Show more / less detail")), ("⌘=  ⌘−", L("Show more / less detail")), ("⇧Z", L("Fit the whole video")), (L("⌘ scroll"), L("Zoom the timeline")), (L("Pointer over the timeline"), L("Zoom and ⌘B keep to the skimmer, else the playhead")), ("P", L("Main track magnet")), ("N", L("Auto snapping")), ("`", L("Linkage")), ("S", L("Preview axis")), ("⇧⌘A", L("Extract audio"))]),
             (L("General"), [("⌘E", L("Export")), ("⇧⌘Y", L("Apply my style")), ("⌘K", L("All commands")), ("⌘C", L("Copy current frame (nothing selected)")), ("⌘F", L("Find in the transcript")), ("?", L("This list")), (L("Esc"), L("Deselect / close"))]),
         ]
     }
@@ -1613,9 +1613,9 @@ struct VideoTipsBar: View {
     static var pages: [[(String, String)]] {
         [
             [(L("Space"), L("play")), (L("Hover the Zoom track"), L("add a zoom")), (L("Click a zoom"), L("aim or resize it")), ("⌘E", L("export"))],
-            [("⌘B", L("split at the playhead")), (L("⇧-drag the timeline"), L("select a part to cut")), ("Q  W", L("delete left / right of the playhead"))],
+            [("⌘B", L("split at the skimmer or the playhead")), (L("⇧-drag the timeline"), L("select a part to cut")), ("Q  W", L("delete left / right of the playhead"))],
             [("⌥T ⌥H ⌥A ⌥B", L("text, highlight, arrow, blur")), (L("Click it on the video"), L("select it")), (L("Double-click text"), L("type"))],
-            [("⌥← ⌥→", L("step through the timeline")), (L("⌘-scroll"), L("zoom the timeline")), ("M", L("mute the preview"))],
+            [("⌥← ⌥→", L("step through the timeline")), (L("⌘-scroll"), L("zoom around the skimmer")), ("M", L("mute the preview"))],
             [(L("Captions tab"), L("cut by editing words")), ("⌘K", L("every command")), ("?", L("all shortcuts"))],
         ]
     }

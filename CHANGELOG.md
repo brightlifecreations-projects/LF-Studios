@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.21.0]
+
+### Changed
+- **The recording bar is one row.** Everything that sat in the two rows above it (the frame's shapes and size, Fit a window to the frame, Window, Full screen, Select area manually, Window size, the microphone menu, and the camera's shape, size and layout) is now under **Area**, the first button in the bar. It shows what you're recording, like *Area · 960 × 1080*, *Full screen* or *Window · Safari*. Esc or a click outside closes it.
+- **The skimmer.** With the pointer over the timeline (and Preview axis on), zooming keeps the moment under the pointer in place, and **⌘B** and **⇧⌘B** split there. Away from the timeline, both use the playhead, and zooming brings a playhead that's out of view to the middle.
+
 ## [1.20.0] - 2026-11-03
 
 ### Added

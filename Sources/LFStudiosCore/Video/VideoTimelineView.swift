@@ -552,11 +552,13 @@ struct VideoTimelineSurface: View {
             switch phase {
             case .active(let location):
                 hover.update(time: time(location.x), overZoomTrack: location.y >= zoomTop && location.y <= zoomTop + M.zoomTrackHeight)
+                model.timelinePointerTime = time(location.x)
                 scroller.pointerIsOver(true)
                 // The preview axis (S): the player shows what's under the pointer.
                 if !hover.dragging { model.previewAxis(at: time(location.x)) }
             case .ended:
                 hover.update(time: nil, overZoomTrack: false)
+                model.timelinePointerTime = nil
                 scroller.pointerIsOver(false)
                 model.previewAxis(at: nil)
             }
@@ -565,8 +567,7 @@ struct VideoTimelineSurface: View {
             MagnificationGesture()
                 .onChanged { value in
                     if pinchBase == nil { pinchBase = model.timelineZoom }
-                    // Pinching zooms around the pointer.
-                    if let time = hover.time { model.pendingZoomAnchor = (time, x(time) - scroller.visible.minX) }
+                    // Pinching zooms around the skimmer, else the playhead.
                     model.timelineZoom = min(max((pinchBase ?? 1) * value, 1), model.maxTimelineZoom)
                 }
                 .onEnded { _ in pinchBase = nil }

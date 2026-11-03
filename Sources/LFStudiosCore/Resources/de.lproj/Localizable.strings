@@ -3826,6 +3826,8 @@
 	<string>Anstelle des Mikrofons der Aufnahme – „Stimme verbessern“ und der Podcast-Modus bereinigen sie</string>
 	<key>In the LF Studios layout, Properties has At playhead on top (what plays now and what comes next; click one to select it) and four tabs: Clip, Effects, Captions and Video (Style, Cursor, Zoom, Camera, Audio).</key>
 	<string>Im Layout LF Studios zeigt Eigenschaften oben „Läuft gerade“ (was jetzt läuft und was als Nächstes kommt; klicke darauf, um es auszuwählen) und vier Tabs: Clip, Effekte, Untertitel und Video (Stil, Zeiger, Zoom, Kamera, Audio).</string>
+	<key>In the LF Studios layout, the strip at the bottom says where ⌘B splits: at the skimmer or at the playhead.</key>
+	<string>Im LF Studios-Layout zeigt die Leiste unten, wo ⌘B teilt: am Skimmer oder an der Abspielposition.</string>
 	<key>In the LF Studios layout: Properties ▸ Captions ▸ Transcript.</key>
 	<string>Im Layout LF Studios: Eigenschaften ▸ Untertitel ▸ Transkript.</string>
 	<key>In the LF Studios layout: Properties ▸ Video ▸ Audio.</key>
@@ -5174,6 +5176,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Nichts aufzuräumen – alles gehört zu Aufnahmen, die du noch hast</string>
 	<key>Nothing to split at the playhead</key>
 	<string>An der Abspielposition gibt es nichts zu teilen</string>
+	<key>Nothing to split at the skimmer</key>
+	<string>Am Skimmer gibt es nichts zu teilen</string>
 	<key>Nothing was recorded</key>
 	<string>Es wurde nichts aufgenommen</string>
 	<key>Nothing was recorded — the screen didn't send any picture. Try again.</key>
@@ -5482,6 +5486,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Outro-Karte, %@ bis %@</string>
 	<key>Over everything: drag a filter onto the timeline (a filter clip).</key>
 	<string>Über allem: Zieh einen Filter auf die Zeitleiste (ein Filterclip).</string>
+	<key>Over the timeline, with Preview axis (S) on.</key>
+	<string>Über der Zeitleiste, wenn die Vorschau-Achse (S) eingeschaltet ist.</string>
 	<key>Overlay</key>
 	<string>Ineinanderkopieren</string>
 	<key>Overlay position</key>
@@ -5722,6 +5728,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Zeig auf Dinge und rahme sie ein: Pfeile, Rechtecke, Ellipsen, Linien und Freihandzeichnen.</string>
 	<key>Point things out</key>
 	<string>Auf Dinge hinweisen</string>
+	<key>Pointer over the timeline</key>
+	<string>Zeiger über der Zeitleiste</string>
 	<key>Polar Dawn</key>
 	<string>Polarmorgen</string>
 	<key>Pop</key>
@@ -7626,18 +7634,28 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Alle Spuren teilen</string>
 	<key>Split all tracks</key>
 	<string>Alle Spuren teilen</string>
+	<key>Split all tracks at the skimmer, else the playhead</key>
+	<string>Alle Spuren am Skimmer teilen, sonst an der Abspielposition</string>
 	<key>Split at Markers</key>
 	<string>An Markern teilen</string>
 	<key>Split at Markers splits the clips at every marker.</key>
 	<string>„An Markern teilen“ teilt die Clips an jedem Marker.</string>
 	<key>Split at Playhead</key>
 	<string>An der Abspielposition teilen</string>
+	<key>Split at Skimmer or Playhead</key>
+	<string>Am Skimmer oder an der Abspielposition teilen</string>
 	<key>Split at playhead</key>
 	<string>An der Abspielposition teilen</string>
+	<key>Split at skimmer</key>
+	<string>Am Skimmer teilen</string>
 	<key>Split at the playhead</key>
 	<string>An der Abspielposition teilen</string>
+	<key>Split at the skimmer, else the playhead</key>
+	<string>Am Skimmer teilen, sonst an der Abspielposition</string>
 	<key>Split every track at the playhead</key>
 	<string>Alle Spuren an der Abspielposition geteilt</string>
+	<key>Split every track at the skimmer</key>
+	<string>Alle Spuren am Skimmer geteilt</string>
 	<key>Split screen</key>
 	<string>Geteilter Bildschirm</string>
 	<key>Split screen divider</key>
@@ -8150,6 +8168,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Die Beschriftung darunter zeigt, wie breit die Kamera ist und wo sie im Video sitzt. Der Editor öffnet sich genau so.</string>
 	<key>The line runs down through every track, so you can see what's under it.</key>
 	<string>Die Linie läuft durch alle Spuren, so siehst du, was darunter liegt.</string>
+	<key>The line that follows the pointer over the timeline. Zooming keeps the moment under it in place, and ⌘B splits there.</key>
+	<string>Die Linie, die dem Zeiger über der Zeitleiste folgt. Beim Zoomen bleibt der Moment darunter an seinem Platz, und ⌘B teilt dort.</string>
 	<key>The loupe stays over the text cursor.</key>
 	<string>Die Lupe bleibt über dem Textcursor.</string>
 	<key>The loupe stays over your cursor.</key>
@@ -8296,6 +8316,10 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Die Größe der Aufnahme in Pixeln.</string>
 	<key>The size shows while you drag.</key>
 	<string>Beim Ziehen wird die Größe angezeigt.</string>
+	<key>The skimmer</key>
+	<string>Der Skimmer</string>
+	<key>The slider and the zoom buttons are away from the timeline, so they zoom around the playhead.</key>
+	<string>Der Regler und die Zoomtasten liegen außerhalb der Zeitleiste, daher zoomen sie um die Abspielposition.</string>
 	<key>The song is shorter than the video</key>
 	<string>Der Song ist kürzer als das Video</string>
 	<key>The song's file is gone — choose it again with Replace.</key>
@@ -9632,6 +9656,10 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Bei mehreren Bildschirmen klickst du neben dem gewünschten auf „Aufzeichnen“.</string>
 	<key>With the LF Studios project, the folder opens the whole edit again. Clips cut to your edit need the untouched recordings alongside.</key>
 	<string>Mit dem LF-Studios-Projekt öffnet der Ordner den ganzen Schnitt wieder. Auf deinen Schnitt gekürzte Clips brauchen die unbearbeiteten Aufnahmen daneben.</string>
+	<key>With the pointer away from the timeline, or Preview axis off, zooming and splitting use the red playhead. If the playhead is out of view, zooming brings it to the middle.</key>
+	<string>Ist der Zeiger nicht über der Zeitleiste oder die Vorschau-Achse aus, nutzen Zoomen und Teilen die rote Abspielposition. Ist sie nicht zu sehen, holt das Zoomen sie in die Mitte.</string>
+	<key>With the pointer over the timeline, pinch, ⌘-scroll, and ⌘+ or ⌘− keep the skimmer's moment where it is on screen.</key>
+	<string>Mit dem Zeiger über der Zeitleiste halten Zusammenziehen, ⌘-Scrollen und ⌘+ oder ⌘− den Moment des Skimmers an seiner Stelle auf dem Bildschirm.</string>
 	<key>Wobble</key>
 	<string>Wabern</string>
 	<key>Word box</key>
@@ -9766,6 +9794,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Zoom %@</string>
 	<key>Zoom Level</key>
 	<string>Zoomstufe</string>
+	<key>Zoom and ⌘B keep to the skimmer, else the playhead</key>
+	<string>Zoom und ⌘B halten sich an den Skimmer, sonst an die Abspielposition</string>
 	<key>Zoom cut</key>
 	<string>Zoom-Schnitt</string>
 	<key>Zoom cut (⌥Z) punches in here at a cut. Or click ◆, move the playhead and change the zoom.</key>
@@ -9778,8 +9808,6 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Einzoomen</string>
 	<key>Zoom in / out</key>
 	<string>Vergrößern / Verkleinern</string>
-	<key>Zoom in at the pointer</key>
-	<string>Am Zeiger hineinzoomen</string>
 	<key>Zoom in on part of the video so details are easy to see.</key>
 	<string>Zoome in einen Teil des Videos, damit Details gut zu sehen sind.</string>
 	<key>Zoom in so viewers can see the details.</key>
@@ -9814,6 +9842,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Zoom entfernt – ⌘Z zum Widerrufen</string>
 	<key>Zoom the player</key>
 	<string>Player zoomen</string>
+	<key>Zoom the timeline</key>
+	<string>Zeitleiste zoomen</string>
 	<key>Zoom to %@ (key %@)</key>
 	<string>Auf %@ zoomen (Taste %@)</string>
 	<key>Zoom to fit</key>
@@ -9944,8 +9974,8 @@ Du kannst Apples Kurzbefehle jederzeit unter „Systemeinstellungen“ → „Ta
 	<string>auswählen</string>
 	<key>so good</key>
 	<string>so gut</string>
-	<key>split at the playhead</key>
-	<string>an der Abspielposition teilen</string>
+	<key>split at the skimmer or the playhead</key>
+	<string>am Skimmer oder an der Abspielposition teilen</string>
 	<key>step through the timeline</key>
 	<string>durch die Zeitleiste springen</string>
 	<key>sys+mic</key>
@@ -9974,8 +10004,8 @@ Du kannst Apples Kurzbefehle jederzeit unter „Systemeinstellungen“ → „Ta
 	<string>bis zu %@ GB/Min.</string>
 	<key>up to %@ MB/min</key>
 	<string>bis zu %@ MB/Min.</string>
-	<key>zoom the timeline</key>
-	<string>Zeitleiste zoomen</string>
+	<key>zoom around the skimmer</key>
+	<string>um den Skimmer zoomen</string>
 	<key>© 2026 Bright Life Creations</key>
 	<string>© 2026 Bright Life Creations</string>
 	<key>© 2026 Shotnix Contributors</key>
@@ -10072,6 +10102,8 @@ Du kannst Apples Kurzbefehle jederzeit unter „Systemeinstellungen“ → „Ta
 	<string>Mit ⌘-Klick oder ⇧-Klick wählst du mehrere aus; die Pfeiltasten bewegen die Auswahl.</string>
 	<key>⌘-scroll</key>
 	<string>⌘-Scrollen</string>
+	<key>⌘B and ⇧⌘B split at the skimmer. The playhead stays where it is.</key>
+	<string>⌘B und ⇧⌘B teilen am Skimmer. Die Abspielposition bleibt, wo sie ist.</string>
 	<key>⌥-drag</key>
 	<string>Mit ⌥ ziehen</string>
 	<key>⌥T still adds a text note pinned over the video, as before.</key>

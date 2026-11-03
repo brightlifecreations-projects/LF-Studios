@@ -3820,6 +3820,8 @@
 	<string>À la place du micro de l’enregistrement — Améliorer la voix et Mode podcast le nettoient</string>
 	<key>In the LF Studios layout, Properties has At playhead on top (what plays now and what comes next; click one to select it) and four tabs: Clip, Effects, Captions and Video (Style, Cursor, Zoom, Camera, Audio).</key>
 	<string>Dans la disposition LF Studios, Propriétés affiche En cours en haut (ce qui joue maintenant et ce qui suit ; cliquez pour le sélectionner) et quatre onglets : Clip, Effets, Sous-titres et Vidéo (Style, Pointeur, Zoom, Caméra, Audio).</string>
+	<key>In the LF Studios layout, the strip at the bottom says where ⌘B splits: at the skimmer or at the playhead.</key>
+	<string>Dans la disposition LF Studios, la bande du bas indique où ⌘B scinde : au skimmer ou à la tête de lecture.</string>
 	<key>In the LF Studios layout: Properties ▸ Captions ▸ Transcript.</key>
 	<string>Dans la disposition LF Studios : Propriétés ▸ Sous-titres ▸ Transcription.</string>
 	<key>In the LF Studios layout: Properties ▸ Video ▸ Audio.</key>
@@ -5168,6 +5170,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Rien à nettoyer — tout appartient à des enregistrements que vous avez encore</string>
 	<key>Nothing to split at the playhead</key>
 	<string>Rien à scinder à la tête de lecture</string>
+	<key>Nothing to split at the skimmer</key>
+	<string>Rien à scinder au skimmer</string>
 	<key>Nothing was recorded</key>
 	<string>Rien n’a été enregistré</string>
 	<key>Nothing was recorded — the screen didn't send any picture. Try again.</key>
@@ -5476,6 +5480,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Carton de fin, de %@ à %@</string>
 	<key>Over everything: drag a filter onto the timeline (a filter clip).</key>
 	<string>Sur tout : faites glisser un filtre sur la timeline (un clip de filtre).</string>
+	<key>Over the timeline, with Preview axis (S) on.</key>
+	<string>Sur la timeline, avec l’Axe d’aperçu (S) activé.</string>
 	<key>Overlay</key>
 	<string>Incrustation</string>
 	<key>Overlay position</key>
@@ -5716,6 +5722,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Montrez et encadrez : flèches, rectangles, ellipses, lignes et dessin à main levée.</string>
 	<key>Point things out</key>
 	<string>Signaler</string>
+	<key>Pointer over the timeline</key>
+	<string>Pointeur sur la timeline</string>
 	<key>Polar Dawn</key>
 	<string>Aube polaire</string>
 	<key>Pop</key>
@@ -7620,18 +7628,28 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Scinder toutes les pistes</string>
 	<key>Split all tracks</key>
 	<string>Scinder toutes les pistes</string>
+	<key>Split all tracks at the skimmer, else the playhead</key>
+	<string>Scinder toutes les pistes au skimmer, sinon à la tête de lecture</string>
 	<key>Split at Markers</key>
 	<string>Scinder aux marqueurs</string>
 	<key>Split at Markers splits the clips at every marker.</key>
 	<string>Scinder aux marqueurs scinde les clips à chaque marqueur.</string>
 	<key>Split at Playhead</key>
 	<string>Scinder à la tête de lecture</string>
+	<key>Split at Skimmer or Playhead</key>
+	<string>Scinder au skimmer ou à la tête de lecture</string>
 	<key>Split at playhead</key>
 	<string>Scinder à la tête de lecture</string>
+	<key>Split at skimmer</key>
+	<string>Scinder au skimmer</string>
 	<key>Split at the playhead</key>
 	<string>Scinder à la tête de lecture</string>
+	<key>Split at the skimmer, else the playhead</key>
+	<string>Scinder au skimmer, sinon à la tête de lecture</string>
 	<key>Split every track at the playhead</key>
 	<string>Toutes les pistes scindées à la tête de lecture</string>
+	<key>Split every track at the skimmer</key>
+	<string>Toutes les pistes scindées au skimmer</string>
 	<key>Split screen</key>
 	<string>Écran partagé</string>
 	<key>Split screen divider</key>
@@ -8144,6 +8162,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>L’étiquette en dessous indique la largeur de la caméra et sa place dans la vidéo. L’éditeur s’ouvre exactement ainsi.</string>
 	<key>The line runs down through every track, so you can see what's under it.</key>
 	<string>La ligne traverse toutes les pistes : vous voyez ce qui se trouve dessous.</string>
+	<key>The line that follows the pointer over the timeline. Zooming keeps the moment under it in place, and ⌘B splits there.</key>
+	<string>La ligne qui suit le pointeur sur la timeline. Le zoom garde en place l’instant qui se trouve dessous, et ⌘B scinde à cet endroit.</string>
 	<key>The loupe stays over the text cursor.</key>
 	<string>La loupe reste sur le curseur de texte.</string>
 	<key>The loupe stays over your cursor.</key>
@@ -8290,6 +8310,10 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>La taille de l’enregistrement, en pixels.</string>
 	<key>The size shows while you drag.</key>
 	<string>La taille s’affiche pendant que vous faites glisser.</string>
+	<key>The skimmer</key>
+	<string>Le skimmer</string>
+	<key>The slider and the zoom buttons are away from the timeline, so they zoom around the playhead.</key>
+	<string>Le curseur et les boutons de zoom sont hors de la timeline : ils zooment autour de la tête de lecture.</string>
 	<key>The song is shorter than the video</key>
 	<string>Le morceau est plus court que la vidéo</string>
 	<key>The song's file is gone — choose it again with Replace.</key>
@@ -9626,6 +9650,10 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Avec plusieurs écrans, cliquez sur Enregistrer à côté de celui que vous voulez.</string>
 	<key>With the LF Studios project, the folder opens the whole edit again. Clips cut to your edit need the untouched recordings alongside.</key>
 	<string>Avec le projet LF Studios, le dossier rouvre tout le montage. Les clips coupés selon votre montage ont besoin des enregistrements intacts à côté.</string>
+	<key>With the pointer away from the timeline, or Preview axis off, zooming and splitting use the red playhead. If the playhead is out of view, zooming brings it to the middle.</key>
+	<string>Avec le pointeur hors de la timeline, ou l’Axe d’aperçu désactivé, le zoom et la scission utilisent la tête de lecture rouge. Si elle n’est pas visible, le zoom l’amène au milieu.</string>
+	<key>With the pointer over the timeline, pinch, ⌘-scroll, and ⌘+ or ⌘− keep the skimmer's moment where it is on screen.</key>
+	<string>Avec le pointeur sur la timeline, le pincement, ⌘-défilement, et ⌘+ ou ⌘− gardent l’instant du skimmer à sa place à l’écran.</string>
 	<key>Wobble</key>
 	<string>Ondulation</string>
 	<key>Word box</key>
@@ -9760,6 +9788,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Zoom %@</string>
 	<key>Zoom Level</key>
 	<string>Niveau de zoom</string>
+	<key>Zoom and ⌘B keep to the skimmer, else the playhead</key>
+	<string>Le zoom et ⌘B suivent le skimmer, sinon la tête de lecture</string>
 	<key>Zoom cut</key>
 	<string>Coupe zoom</string>
 	<key>Zoom cut (⌥Z) punches in here at a cut. Or click ◆, move the playhead and change the zoom.</key>
@@ -9772,8 +9802,6 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Zoom avant</string>
 	<key>Zoom in / out</key>
 	<string>Zoom avant / arrière</string>
-	<key>Zoom in at the pointer</key>
-	<string>Zoomer sur le pointeur</string>
 	<key>Zoom in on part of the video so details are easy to see.</key>
 	<string>Zoomez sur une partie de la vidéo pour que les détails soient faciles à voir.</string>
 	<key>Zoom in so viewers can see the details.</key>
@@ -9808,6 +9836,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Zoom supprimé — ⌘Z pour annuler</string>
 	<key>Zoom the player</key>
 	<string>Zoomer le lecteur</string>
+	<key>Zoom the timeline</key>
+	<string>Zoomer dans la timeline</string>
 	<key>Zoom to %@ (key %@)</key>
 	<string>Zoomer à %@ (touche %@)</string>
 	<key>Zoom to fit</key>
@@ -9938,8 +9968,8 @@ Vous pouvez réactiver les raccourcis d’Apple à tout moment dans Réglages Sy
 	<string>le sélectionner</string>
 	<key>so good</key>
 	<string>trop bien</string>
-	<key>split at the playhead</key>
-	<string>scinder à la tête de lecture</string>
+	<key>split at the skimmer or the playhead</key>
+	<string>scinder au skimmer ou à la tête de lecture</string>
 	<key>step through the timeline</key>
 	<string>parcourir la timeline</string>
 	<key>sys+mic</key>
@@ -9968,8 +9998,8 @@ Vous pouvez réactiver les raccourcis d’Apple à tout moment dans Réglages Sy
 	<string>jusqu’à %@ Go/min</string>
 	<key>up to %@ MB/min</key>
 	<string>jusqu’à %@ Mo/min</string>
-	<key>zoom the timeline</key>
-	<string>zoomer dans la timeline</string>
+	<key>zoom around the skimmer</key>
+	<string>zoomer autour du skimmer</string>
 	<key>© 2026 Bright Life Creations</key>
 	<string>© 2026 Bright Life Creations</string>
 	<key>© 2026 Shotnix Contributors</key>
@@ -10066,6 +10096,8 @@ Vous pouvez réactiver les raccourcis d’Apple à tout moment dans Réglages Sy
 	<string>⌘-clic ou ⇧-clic pour en sélectionner plusieurs ; les touches fléchées déplacent la sélection.</string>
 	<key>⌘-scroll</key>
 	<string>⌘-défiler</string>
+	<key>⌘B and ⇧⌘B split at the skimmer. The playhead stays where it is.</key>
+	<string>⌘B et ⇧⌘B scindent au skimmer. La tête de lecture reste où elle est.</string>
 	<key>⌥-drag</key>
 	<string>Glisser avec ⌥</string>
 	<key>⌥T still adds a text note pinned over the video, as before.</key>

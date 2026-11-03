@@ -98,12 +98,19 @@ struct VideoStatusStrip: View {
         .accessibilityElement(children: .contain)
     }
 
+    /// Split says where it splits (1.21.0): at the skimmer while the
+    /// pointer is over the timeline, else at the playhead.
+    private func title(_ command: VideoEditCommand) -> String {
+        guard command == .split else { return command.title }
+        return model.isSkimming ? L("Split at skimmer") : L("Split at playhead")
+    }
+
     private func hints(_ commands: [VideoEditCommand]) -> some View {
         HStack(spacing: 12) {
             ForEach(commands.filter { !$0.keys.isEmpty }, id: \.self) { command in
                 HStack(spacing: 4) {
                     Text(command.keys).foregroundStyle(VideoEditorTheme.textPrimary)
-                    Text(command.title).foregroundStyle(VideoEditorTheme.textTertiary)
+                    Text(title(command)).foregroundStyle(VideoEditorTheme.textTertiary)
                 }
                 .lineLimit(1)
                 .fixedSize()

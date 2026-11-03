@@ -3922,6 +3922,8 @@
 	<string>替代录制内容的麦克风声音 — 由“增强人声”和“播客模式”进行清理</string>
 	<key>In the LF Studios layout, Properties has At playhead on top (what plays now and what comes next; click one to select it) and four tabs: Clip, Effects, Captions and Video (Style, Cursor, Zoom, Camera, Audio).</key>
 	<string>在 LF Studios 布局中，“属性”顶部是“正在播放”（当前播放的内容和接下来的内容；点按即可选中），下方有四个标签：片段、特效、字幕和视频（样式、指针、缩放、摄像头、音频）。</string>
+	<key>In the LF Studios layout, the strip at the bottom says where ⌘B splits: at the skimmer or at the playhead.</key>
+	<string>在 LF Studios 布局中，底部的栏会显示 ⌘B 在哪里分割：浏览条处或播放头处。</string>
 	<key>In the LF Studios layout: Properties ▸ Captions ▸ Transcript.</key>
 	<string>在 LF Studios 布局中：属性 ▸ 字幕 ▸ 文字稿。</string>
 	<key>In the LF Studios layout: Properties ▸ Video ▸ Audio.</key>
@@ -5284,6 +5286,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>没有可清理的内容 — 所有数据都属于你仍保留的录制内容</string>
 	<key>Nothing to split at the playhead</key>
 	<string>播放头处没有可分割的内容</string>
+	<key>Nothing to split at the skimmer</key>
+	<string>浏览条处没有可分割的内容</string>
 	<key>Nothing was recorded</key>
 	<string>没有录到任何内容</string>
 	<key>Nothing was recorded — the screen didn't send any picture. Try again.</key>
@@ -5592,6 +5596,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>片尾卡，%@ 至 %@</string>
 	<key>Over everything: drag a filter onto the timeline (a filter clip).</key>
 	<string>用于全部内容：将滤镜拖到时间线上（滤镜片段）。</string>
+	<key>Over the timeline, with Preview axis (S) on.</key>
+	<string>打开预览轴（S）时，在时间线上。</string>
 	<key>Overlay</key>
 	<string>叠加</string>
 	<key>Overlay position</key>
@@ -5834,6 +5840,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>指向和框出重点：箭头、矩形、椭圆、直线和手绘。</string>
 	<key>Point things out</key>
 	<string>指示</string>
+	<key>Pointer over the timeline</key>
+	<string>指针在时间线上</string>
 	<key>Polar Dawn</key>
 	<string>极地晨光</string>
 	<key>Pop</key>
@@ -7772,6 +7780,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>分割所有轨道</string>
 	<key>Split all tracks</key>
 	<string>分割所有轨道</string>
+	<key>Split all tracks at the skimmer, else the playhead</key>
+	<string>在浏览条处分割所有轨道，否则在播放头处</string>
 	<key>Split at %lld markers</key>
 	<string>已在 %lld 个标记处分割</string>
 	<key>Split at Markers</key>
@@ -7780,12 +7790,20 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>“在标记处分割”会在每个标记处分割片段。</string>
 	<key>Split at Playhead</key>
 	<string>在播放头处分割</string>
+	<key>Split at Skimmer or Playhead</key>
+	<string>在浏览条或播放头处分割</string>
 	<key>Split at playhead</key>
 	<string>在播放头处分割</string>
+	<key>Split at skimmer</key>
+	<string>在浏览条处分割</string>
 	<key>Split at the playhead</key>
 	<string>在播放头处分割</string>
+	<key>Split at the skimmer, else the playhead</key>
+	<string>在浏览条处分割，否则在播放头处</string>
 	<key>Split every track at the playhead</key>
 	<string>已在播放头处分割所有轨道</string>
+	<key>Split every track at the skimmer</key>
+	<string>已在浏览条处分割所有轨道</string>
 	<key>Split screen</key>
 	<string>分屏</string>
 	<key>Split screen divider</key>
@@ -8298,6 +8316,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>下方的标签会说明摄像头的宽度以及它在视频中的位置。编辑器打开时正是这样。</string>
 	<key>The line runs down through every track, so you can see what's under it.</key>
 	<string>这条线贯穿所有轨道，方便你看到它下面的内容。</string>
+	<key>The line that follows the pointer over the timeline. Zooming keeps the moment under it in place, and ⌘B splits there.</key>
+	<string>在时间线上跟随指针的那条线。缩放时它所在的时刻保持不动，⌘B 会在那里分割。</string>
 	<key>The loupe stays over the text cursor.</key>
 	<string>放大镜停在文本光标上方。</string>
 	<key>The loupe stays over your cursor.</key>
@@ -8444,6 +8464,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>录制内容的尺寸（像素）。</string>
 	<key>The size shows while you drag.</key>
 	<string>拖移时会显示尺寸。</string>
+	<key>The skimmer</key>
+	<string>浏览条</string>
+	<key>The slider and the zoom buttons are away from the timeline, so they zoom around the playhead.</key>
+	<string>滑块和缩放按钮不在时间线上，所以它们围绕播放头缩放。</string>
 	<key>The song is shorter than the video</key>
 	<string>歌曲比视频短</string>
 	<key>The song's file is gone — choose it again with Replace.</key>
@@ -9786,6 +9810,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>如果有多个屏幕，请点按你想要的那个屏幕旁边的“录制”。</string>
 	<key>With the LF Studios project, the folder opens the whole edit again. Clips cut to your edit need the untouched recordings alongside.</key>
 	<string>有了 LF Studios 项目，打开该文件夹即可重现整个剪辑。按你的剪辑裁剪的片段需要旁边附带未改动的录制内容。</string>
+	<key>With the pointer away from the timeline, or Preview axis off, zooming and splitting use the red playhead. If the playhead is out of view, zooming brings it to the middle.</key>
+	<string>指针不在时间线上或预览轴关闭时，缩放和分割使用红色播放头。播放头不在视野内时，缩放会把它移到中间。</string>
+	<key>With the pointer over the timeline, pinch, ⌘-scroll, and ⌘+ or ⌘− keep the skimmer's moment where it is on screen.</key>
+	<string>指针在时间线上时，捏合、⌘-滚动以及 ⌘+ 或 ⌘− 会让浏览条所在的时刻在屏幕上保持原位。</string>
 	<key>Wobble</key>
 	<string>摇晃</string>
 	<key>Word box</key>
@@ -9926,6 +9954,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>缩放 %@</string>
 	<key>Zoom Level</key>
 	<string>缩放级别</string>
+	<key>Zoom and ⌘B keep to the skimmer, else the playhead</key>
+	<string>缩放和 ⌘B 以浏览条为准，否则以播放头为准</string>
 	<key>Zoom cut</key>
 	<string>缩放剪切</string>
 	<key>Zoom cut (⌥Z) punches in here at a cut. Or click ◆, move the playhead and change the zoom.</key>
@@ -9938,8 +9968,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>放大</string>
 	<key>Zoom in / out</key>
 	<string>放大 / 缩小</string>
-	<key>Zoom in at the pointer</key>
-	<string>在指针处放大</string>
 	<key>Zoom in on part of the video so details are easy to see.</key>
 	<string>放大视频的一部分，让细节一目了然。</string>
 	<key>Zoom in so viewers can see the details.</key>
@@ -9974,6 +10002,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>已移除缩放 — 按 ⌘Z 撤销</string>
 	<key>Zoom the player</key>
 	<string>缩放播放器</string>
+	<key>Zoom the timeline</key>
+	<string>缩放时间线</string>
 	<key>Zoom to %@ (key %@)</key>
 	<string>缩放到 %@（按键 %@）</string>
 	<key>Zoom to fit</key>
@@ -10104,8 +10134,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>选中它</string>
 	<key>so good</key>
 	<string>太棒了</string>
-	<key>split at the playhead</key>
-	<string>在播放头处分割</string>
+	<key>split at the skimmer or the playhead</key>
+	<string>在浏览条或播放头处分割</string>
 	<key>step through the timeline</key>
 	<string>逐项浏览时间线</string>
 	<key>sys+mic</key>
@@ -10134,8 +10164,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>最多 %@ GB/分钟</string>
 	<key>up to %@ MB/min</key>
 	<string>最多 %@ MB/分钟</string>
-	<key>zoom the timeline</key>
-	<string>缩放时间线</string>
+	<key>zoom around the skimmer</key>
+	<string>围绕浏览条缩放</string>
 	<key>© 2026 Bright Life Creations</key>
 	<string>© 2026 Bright Life Creations</string>
 	<key>© 2026 Shotnix Contributors</key>
@@ -10246,6 +10276,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>按住 ⌘ 点按或按住 ⇧ 点按可选择多张；方向键可移动选择。</string>
 	<key>⌘-scroll</key>
 	<string>⌘-滚动</string>
+	<key>⌘B and ⇧⌘B split at the skimmer. The playhead stays where it is.</key>
+	<string>⌘B 和 ⇧⌘B 在浏览条处分割，播放头保持不动。</string>
 	<key>⌥-drag</key>
 	<string>⌥-拖移</string>
 	<key>⌥T still adds a text note pinned over the video, as before.</key>

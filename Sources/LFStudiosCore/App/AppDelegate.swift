@@ -508,7 +508,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             item.representedObject = command.rawValue
             timelineMenu.addItem(item)
         }
-        command(L("Split at Playhead"), .split, key: "b", modifiers: [.command])
+        command(L("Split at Skimmer or Playhead"), .split, key: "b", modifiers: [.command])
         command(L("Split All Tracks"), .splitAllTracks, key: "B", modifiers: [.command, .shift])
         timelineMenu.addItem(menuItem(L("Delete Selection"), action: #selector(timelineDeleteSelection(_:)), key: "\u{8}", modifiers: []))
         command(L("Delete Left of Playhead"), .deleteLeft, key: "q")

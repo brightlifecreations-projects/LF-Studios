@@ -453,10 +453,10 @@ extension VideoEditorModel {
     }
 
     /// S with a piece selected: the track splits at the playhead.
-    func splitAudioTrack(_ id: UUID) {
+    func splitAudioTrack(_ id: UUID, at time: Double? = nil) {
         guard let index = project.audioTracks.firstIndex(where: { $0.id == id }) else { return }
         var track = project.audioTracks[index]
-        guard track.split(at: clock.time, segments: segments) else {
+        guard track.split(at: time ?? clock.time, segments: segments) else {
             showNotice(L("Move the playhead into the sound to split it"), symbol: "scissors")
             return
         }

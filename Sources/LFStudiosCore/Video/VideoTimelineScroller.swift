@@ -2,8 +2,8 @@ import AppKit
 import SwiftUI
 
 /// Drives the timeline's horizontal scrolling: zooming stays anchored
-/// (under the pointer for ⌘-scroll and pinch, on the playhead for the keys
-/// and buttons), and during playback the strip pages along with the
+/// (on the skimmer when it shows, else on the playhead), and during
+/// playback the strip pages along with the
 /// playhead until you scroll it yourself.
 @MainActor
 final class VideoTimelineScroller {
@@ -74,8 +74,8 @@ final class VideoTimelineScroller {
         scrollMonitor = nil
     }
 
-    /// ⌘-scroll zooms the timeline around the pointer (in this editor's
-    /// own window only — two editors can be open).
+    /// ⌘-scroll zooms the timeline around the skimmer, else the playhead
+    /// (in this editor's own window only — two editors can be open).
     private func installScrollZoom() {
         guard scrollMonitor == nil else { return }
         scrollMonitor = NSEvent.addLocalMonitorForEvents(matching: .scrollWheel) { [weak self] incoming in
@@ -85,11 +85,7 @@ final class VideoTimelineScroller {
                       event.modifierFlags.contains(.command), event.window === scrollView.window else { return false }
                 let delta = event.scrollingDeltaY != 0 ? event.scrollingDeltaY : event.scrollingDeltaX
                 let factor = pow(1.01, Double(delta) * (event.hasPreciseScrollingDeltas ? 1 : 6))
-                let visible = scrollView.contentView.bounds
-                let x = scrollView.contentView.convert(event.locationInWindow, from: nil).x
-                if let time = self.time(atContentX: x) {
-                    model.pendingZoomAnchor = (time, x - visible.minX)
-                }
+                // Around the skimmer when it shows, else the playhead (anchor).
                 model.zoomTimeline(by: factor)
                 return true
             }
@@ -109,19 +105,24 @@ final class VideoTimelineScroller {
     var visible: CGRect { scrollView?.contentView.bounds ?? .zero }
 
     /// Before the strip gets its new width: which moment should stay where
-    /// on screen — the one asked for, else the playhead if it's in view,
-    /// else whatever is in the middle.
+    /// on screen — the one asked for, else the skimmer (the pointer over
+    /// the timeline with the preview axis on), else the playhead: where it
+    /// is when it's in view, else brought into the middle (1.21.0; the
+    /// middle of the strip before).
     func anchor(playhead: Double) -> (time: Double, viewportX: CGFloat) {
         if let pending = model?.pendingZoomAnchor {
             model?.pendingZoomAnchor = nil
             return pending
         }
         let visible = self.visible
+        if let skimmer = model?.skimmerTime {
+            return (skimmer, inset + CGFloat(skimmer) * pointsPerSecond - visible.minX)
+        }
         let playheadX = inset + CGFloat(playhead) * pointsPerSecond
         if visible.width > 0, playheadX >= visible.minX, playheadX <= visible.maxX {
             return (playhead, playheadX - visible.minX)
         }
-        return (time(atContentX: visible.midX) ?? playhead, visible.width / 2)
+        return (playhead, visible.width / 2)
     }
 
     /// After the new width is laid out: puts `anchor` back where it was.

@@ -309,9 +309,9 @@ extension VideoEditorModel {
             guard canRedo else { return false }
             redo()
         case .split:
-            return splitSelectedOrMain(at: clock.time)
+            return splitSelectedOrMain(at: editTime)
         case .splitAllTracks:
-            return splitAllTracks(at: clock.time)
+            return splitAllTracks(at: editTime)
         case .deleteLeft:
             return deleteSide(leading: true)
         case .deleteRight:
@@ -459,8 +459,9 @@ extension VideoEditorModel {
         if let item = selectedLayerItem, item.isShowing(at: time) {
             return splitLayerItem(item.id, at: time) != nil
         }
-        if selectedAudioPiece != nil {
-            splitAtPlayhead()
+        if let piece = selectedAudioPiece {
+            if refuseLocked(.sound(piece.track)) { return false }
+            splitAudioTrack(piece.track, at: time)
             return true
         }
         return splitMain(at: time)
@@ -496,12 +497,12 @@ extension VideoEditorModel {
             if project.audioTracks != before { steps += 1 }
         }
         guard steps > 0 else {
-            showNotice(L("Nothing to split at the playhead"), symbol: "scissors")
+            showNotice(skimmerTime != nil ? L("Nothing to split at the skimmer") : L("Nothing to split at the playhead"), symbol: "scissors")
             return false
         }
         for _ in 1..<steps { joinLastUndoSteps(label: "Split") }
         selection = .none
-        showNotice(L("Split every track at the playhead"), symbol: "scissors")
+        showNotice(skimmerTime != nil ? L("Split every track at the skimmer") : L("Split every track at the playhead"), symbol: "scissors")
         return true
     }
 

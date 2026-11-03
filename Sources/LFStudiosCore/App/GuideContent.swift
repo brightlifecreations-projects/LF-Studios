@@ -15,7 +15,7 @@ import Foundation
 @MainActor
 enum GuideContent {
     /// Pages from these versions get a New badge and fill What's new.
-    nonisolated static let newVersions: [String] = ["1.20.0", "1.19.1", "1.19.0", "1.18.0", "1.17.0", "1.16.0", "1.15.0", "1.14.0", "1.13.0", "1.12.0", "1.11.1", "1.11.0", "1.10.0", "1.9.0", "1.8.0", "1.7.0"]
+    nonisolated static let newVersions: [String] = ["1.21.0", "1.20.0", "1.19.1", "1.19.0", "1.18.0", "1.17.0", "1.16.0", "1.15.0", "1.14.0", "1.13.0", "1.12.0", "1.11.1", "1.11.0", "1.10.0", "1.9.0", "1.8.0", "1.7.0"]
 
     static func chapters() -> [GuideChapter] {
         let features = featureCategories()
@@ -1314,7 +1314,7 @@ enum GuideContent {
                 showMe: .settings(.recording)
             ),
             GuideEntry(
-                id: "rec-area", symbol: "rectangle.dashed", title: L("The Area button"),
+                id: "rec-area-button", symbol: "rectangle.dashed", title: L("The Area button"),
                 summary: L("The recording bar is one row. Area shows what you're recording, like Area · 1920 × 1080, Full screen, or Window · Safari, and holds the rest of the options."),
                 location: L("The first button in the recording bar."),
                 points: [
@@ -1766,6 +1766,26 @@ enum GuideContent {
                 related: ["video-tools", "video-timeline", "video-media"]
             ),
             GuideEntry(
+                id: "video-skimmer", symbol: "line.diagonal", title: L("The skimmer"),
+                summary: L("The line that follows the pointer over the timeline. Zooming keeps the moment under it in place, and ⌘B splits there."),
+                location: L("Over the timeline, with Preview axis (S) on."),
+                points: [
+                    L("With the pointer over the timeline, pinch, ⌘-scroll, and ⌘+ or ⌘− keep the skimmer's moment where it is on screen."),
+                    L("⌘B and ⇧⌘B split at the skimmer. The playhead stays where it is."),
+                    L("With the pointer away from the timeline, or Preview axis off, zooming and splitting use the red playhead. If the playhead is out of view, zooming brings it to the middle."),
+                    L("The slider and the zoom buttons are away from the timeline, so they zoom around the playhead."),
+                    L("In the LF Studios layout, the strip at the bottom says where ⌘B splits: at the skimmer or at the playhead."),
+                ],
+                keys: [
+                    .fixed("⌘B", L("Split at the skimmer, else the playhead")),
+                    .fixed("⇧⌘B", L("Split all tracks at the skimmer, else the playhead")),
+                    .fixed("⌘+  ⌘−", L("Show more / less detail")),
+                    .fixed("S", L("Preview axis")),
+                ],
+                since: "1.21.0",
+                related: ["video-tools", "video-timeline"]
+            ),
+            GuideEntry(
                 id: "video-tools", symbol: "scissors", title: L("The timeline's tools"),
                 summary: L("The buttons above the timeline, with the keys CapCut uses: split, trim, freeze, reverse, mirror, rotate, and the timeline's switches."),
                 location: L("The bar above the timeline. Hover a button for its name and key."),
@@ -1781,8 +1801,8 @@ enum GuideContent {
                 ],
                 keys: [
                     .fixed("A  B", L("Select tool · split tool")),
-                    .fixed("⌘B", L("Split at the playhead")),
-                    .fixed("⇧⌘B", L("Split all tracks")),
+                    .fixed("⌘B", L("Split at the skimmer, else the playhead")),
+                    .fixed("⇧⌘B", L("Split all tracks at the skimmer, else the playhead")),
                     .fixed("Q  W", L("Delete left / right of the playhead")),
                     .fixed("I  O", L("Mark in / out")),
                     .fixed("[  ]", L("Select left / right of the playhead")),
@@ -3499,7 +3519,7 @@ enum GuideContent {
             .fixed("⌘C", L("Copy")),
             .fixed("⌘V", L("Paste")),
             .fixed("⌘A", L("Select All")),
-            .fixed("⌘B", L("Split at Playhead")),
+            .fixed("⌘B", L("Split at Skimmer or Playhead")),
             .fixed("⇧⌘B", L("Split All Tracks")),
             .fixed("⌫", L("Delete Selection")),
             .fixed("Q", L("Delete Left of Playhead")),

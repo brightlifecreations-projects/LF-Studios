@@ -3922,6 +3922,8 @@
 	<string>収録のマイクの代わりに使います。“声を補正”と“ポッドキャストモード”で音声を整えられます</string>
 	<key>In the LF Studios layout, Properties has At playhead on top (what plays now and what comes next; click one to select it) and four tabs: Clip, Effects, Captions and Video (Style, Cursor, Zoom, Camera, Audio).</key>
 	<string>LF Studiosレイアウトでは、“プロパティ”の上部に“再生中”（今流れているものと次に来るもの。クリックで選択）があり、その下に4つのタブ：クリップ、エフェクト、字幕、ビデオ（スタイル、ポインタ、ズーム、カメラ、オーディオ）があります。</string>
+	<key>In the LF Studios layout, the strip at the bottom says where ⌘B splits: at the skimmer or at the playhead.</key>
+	<string>LF Studios レイアウトでは、下のバーに ⌘B で分割する位置（スキマーか再生ヘッドか）が表示されます。</string>
 	<key>In the LF Studios layout: Properties ▸ Captions ▸ Transcript.</key>
 	<string>LF Studiosレイアウトでは：“プロパティ”＞“字幕”＞“文字起こし”。</string>
 	<key>In the LF Studios layout: Properties ▸ Video ▸ Audio.</key>
@@ -5284,6 +5286,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>クリーンアップするものはありません。すべて現在ある収録のデータです</string>
 	<key>Nothing to split at the playhead</key>
 	<string>再生ヘッドの位置に分割できるものはありません</string>
+	<key>Nothing to split at the skimmer</key>
+	<string>スキマーの位置に分割できるものはありません</string>
 	<key>Nothing was recorded</key>
 	<string>何も録音されませんでした</string>
 	<key>Nothing was recorded — the screen didn't send any picture. Try again.</key>
@@ -5592,6 +5596,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>エンディングカード、%@から%@</string>
 	<key>Over everything: drag a filter onto the timeline (a filter clip).</key>
 	<string>全体に適用: フィルタをタイムラインにドラッグします（フィルタクリップ）。</string>
+	<key>Over the timeline, with Preview axis (S) on.</key>
+	<string>プレビュー軸（S）がオンのときのタイムライン上。</string>
 	<key>Overlay</key>
 	<string>オーバーレイ</string>
 	<key>Overlay position</key>
@@ -5834,6 +5840,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>矢印、長方形、楕円、線、フリーハンドで、ものを指し示したり囲んだりします。</string>
 	<key>Point things out</key>
 	<string>指し示す</string>
+	<key>Pointer over the timeline</key>
+	<string>ポインタがタイムライン上</string>
 	<key>Polar Dawn</key>
 	<string>極地の夜明け</string>
 	<key>Pop</key>
@@ -7772,6 +7780,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>すべてのトラックを分割</string>
 	<key>Split all tracks</key>
 	<string>すべてのトラックを分割</string>
+	<key>Split all tracks at the skimmer, else the playhead</key>
+	<string>スキマーの位置ですべてのトラックを分割（なければ再生ヘッド）</string>
 	<key>Split at %lld markers</key>
 	<string>%lld個のマーカー位置で分割しました</string>
 	<key>Split at Markers</key>
@@ -7780,12 +7790,20 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>“マーカー位置で分割”では、すべてのマーカーの位置でクリップを分割します。</string>
 	<key>Split at Playhead</key>
 	<string>再生ヘッドの位置で分割</string>
+	<key>Split at Skimmer or Playhead</key>
+	<string>スキマーまたは再生ヘッドの位置で分割</string>
 	<key>Split at playhead</key>
 	<string>再生ヘッドの位置で分割</string>
+	<key>Split at skimmer</key>
+	<string>スキマーで分割</string>
 	<key>Split at the playhead</key>
 	<string>再生ヘッドの位置で分割</string>
+	<key>Split at the skimmer, else the playhead</key>
+	<string>スキマーの位置で分割（なければ再生ヘッド）</string>
 	<key>Split every track at the playhead</key>
 	<string>再生ヘッドの位置ですべてのトラックを分割しました</string>
+	<key>Split every track at the skimmer</key>
+	<string>スキマーの位置ですべてのトラックを分割しました</string>
 	<key>Split screen</key>
 	<string>分割画面</string>
 	<key>Split screen divider</key>
@@ -8298,6 +8316,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>下のラベルに、カメラの幅とビデオ内での位置が表示されます。エディタはそのとおりに開きます。</string>
 	<key>The line runs down through every track, so you can see what's under it.</key>
 	<string>線はすべてのトラックを貫くので、その下にあるものがわかります。</string>
+	<key>The line that follows the pointer over the timeline. Zooming keeps the moment under it in place, and ⌘B splits there.</key>
+	<string>タイムライン上でポインタを追う線です。拡大/縮小してもその位置の瞬間は動かず、⌘B はそこで分割します。</string>
 	<key>The loupe stays over the text cursor.</key>
 	<string>ルーペがテキストカーソルの上にとどまります。</string>
 	<key>The loupe stays over your cursor.</key>
@@ -8444,6 +8464,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>収録のサイズ（ピクセル）。</string>
 	<key>The size shows while you drag.</key>
 	<string>ドラッグ中はサイズが表示されます。</string>
+	<key>The skimmer</key>
+	<string>スキマー</string>
+	<key>The slider and the zoom buttons are away from the timeline, so they zoom around the playhead.</key>
+	<string>スライダと拡大/縮小ボタンはタイムラインの外にあるので、再生ヘッドを中心に拡大/縮小します。</string>
 	<key>The song is shorter than the video</key>
 	<string>曲がビデオより短いです</string>
 	<key>The song's file is gone — choose it again with Replace.</key>
@@ -9786,6 +9810,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>画面が複数ある場合は、収録したい画面の横にある“収録”をクリックします。</string>
 	<key>With the LF Studios project, the folder opens the whole edit again. Clips cut to your edit need the untouched recordings alongside.</key>
 	<string>LF Studiosのプロジェクトがあれば、フォルダを開くと編集全体がもう一度開きます。編集に合わせてカットしたクリップには、元のままの収録も一緒に必要です。</string>
+	<key>With the pointer away from the timeline, or Preview axis off, zooming and splitting use the red playhead. If the playhead is out of view, zooming brings it to the middle.</key>
+	<string>ポインタがタイムラインの外にあるときやプレビュー軸がオフのときは、拡大/縮小と分割は赤い再生ヘッドを使います。再生ヘッドが見えていなければ、拡大/縮小で中央に表示されます。</string>
+	<key>With the pointer over the timeline, pinch, ⌘-scroll, and ⌘+ or ⌘− keep the skimmer's moment where it is on screen.</key>
+	<string>ポインタがタイムライン上にあるときは、ピンチ、⌘-スクロール、⌘+ / ⌘− でスキマーの瞬間が画面上の同じ位置に残ります。</string>
 	<key>Wobble</key>
 	<string>ゆらゆら</string>
 	<key>Word box</key>
@@ -9926,6 +9954,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ズーム%@</string>
 	<key>Zoom Level</key>
 	<string>ズーム倍率</string>
+	<key>Zoom and ⌘B keep to the skimmer, else the playhead</key>
+	<string>拡大/縮小と ⌘B はスキマーの位置（なければ再生ヘッド）</string>
 	<key>Zoom cut</key>
 	<string>ズームカット</string>
 	<key>Zoom cut (⌥Z) punches in here at a cut. Or click ◆, move the playhead and change the zoom.</key>
@@ -9938,8 +9968,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ズームイン</string>
 	<key>Zoom in / out</key>
 	<string>拡大／縮小</string>
-	<key>Zoom in at the pointer</key>
-	<string>ポインタの位置で拡大</string>
 	<key>Zoom in on part of the video so details are easy to see.</key>
 	<string>ビデオの一部をズームして、細かい部分を見やすくします。</string>
 	<key>Zoom in so viewers can see the details.</key>
@@ -9974,6 +10002,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ズームを削除しました。⌘Zで取り消せます</string>
 	<key>Zoom the player</key>
 	<string>プレーヤーをズーム</string>
+	<key>Zoom the timeline</key>
+	<string>タイムラインを拡大/縮小</string>
 	<key>Zoom to %@ (key %@)</key>
 	<string>%@にズーム（%@キー）</string>
 	<key>Zoom to fit</key>
@@ -10104,8 +10134,8 @@ Appleのショートカットは、“システム設定”＞“キーボード
 	<string>選択</string>
 	<key>so good</key>
 	<string>最高</string>
-	<key>split at the playhead</key>
-	<string>再生ヘッドの位置で分割</string>
+	<key>split at the skimmer or the playhead</key>
+	<string>スキマーか再生ヘッドの位置で分割</string>
 	<key>step through the timeline</key>
 	<string>タイムラインの項目を順に選択</string>
 	<key>sys+mic</key>
@@ -10134,8 +10164,8 @@ Appleのショートカットは、“システム設定”＞“キーボード
 	<string>最大%@ GB/分</string>
 	<key>up to %@ MB/min</key>
 	<string>最大%@ MB/分</string>
-	<key>zoom the timeline</key>
-	<string>タイムラインを拡大/縮小</string>
+	<key>zoom around the skimmer</key>
+	<string>スキマーを中心に拡大/縮小</string>
 	<key>© 2026 Bright Life Creations</key>
 	<string>© 2026 Bright Life Creations</string>
 	<key>© 2026 Shotnix Contributors</key>
@@ -10246,6 +10276,8 @@ Appleのショートカットは、“システム設定”＞“キーボード
 	<string>⌘キーまたは⇧キーを押しながらクリックすると、複数を選択できます。矢印キーで選択を移動できます。</string>
 	<key>⌘-scroll</key>
 	<string>⌘スクロール</string>
+	<key>⌘B and ⇧⌘B split at the skimmer. The playhead stays where it is.</key>
+	<string>⌘B と ⇧⌘B はスキマーの位置で分割します。再生ヘッドは動きません。</string>
 	<key>⌥-drag</key>
 	<string>⌥キーを押しながらドラッグ</string>
 	<key>⌥T still adds a text note pinned over the video, as before.</key>

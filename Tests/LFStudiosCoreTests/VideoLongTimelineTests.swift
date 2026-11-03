@@ -94,6 +94,61 @@ final class VideoLongTimelineTests: XCTestCase {
         }
     }
 
+    /// 1.21.0: with the pointer over the timeline (the skimmer), zooming
+    /// keeps the skimmer's moment where it is on screen. Away from the
+    /// timeline, or with the preview axis off, the playhead; a playhead out
+    /// of view is brought into the middle.
+    func testZoomKeepsTheSkimmerMomentFixed() async throws {
+        let previewAxis = Settings.videoTimelinePreviewAxis
+        defer { Settings.videoTimelinePreviewAxis = previewAxis }
+        try await forEachEditorStyle { _ in
+            Settings.videoTimelinePreviewAxis = true
+            let model = try await T.make(in: directory, T.Options(seconds: 10, pointer: false))
+            model.seek(to: 7)
+            await mount(model)
+            let scroll = try horizontalScrollView()
+            model.zoomTimeline(by: 4)
+            await T.settle(0.3)
+            // The skimmer at 6.2 s, wherever it is on screen now.
+            model.timelinePointerTime = 6.2
+            let before = 18 + 6.2 * 400 - scroll.contentView.bounds.minX
+            for factor in [2.0, 1.5, 1 / 3.0] {
+                model.zoomTimeline(by: factor)
+                await T.settle(0.3)
+                let perSecond = 1000 * model.timelineZoom / 10
+                let after = 18 + 6.2 * perSecond - scroll.contentView.bounds.minX
+                XCTAssertEqual(after, before, accuracy: 2, "×\(factor): the skimmer's moment stays under it")
+            }
+
+            // The pointer leaves: the playhead stays put instead.
+            model.timelinePointerTime = nil
+            let playheadBefore = 18 + 7 * 1000 * model.timelineZoom / 10 - scroll.contentView.bounds.minX
+            model.zoomTimeline(by: 2)
+            await T.settle(0.3)
+            let playheadAfter = 18 + 7 * 1000 * model.timelineZoom / 10 - scroll.contentView.bounds.minX
+            XCTAssertEqual(playheadAfter, playheadBefore, accuracy: 2, "the playhead stays put")
+
+            // The preview axis off: the pointer over the timeline doesn't count.
+            Settings.videoTimelinePreviewAxis = false
+            model.timelinePointerTime = 2
+            let offBefore = 18 + 7 * 1000 * model.timelineZoom / 10 - scroll.contentView.bounds.minX
+            model.zoomTimeline(by: 1.4)
+            await T.settle(0.3)
+            let offAfter = 18 + 7 * 1000 * model.timelineZoom / 10 - scroll.contentView.bounds.minX
+            XCTAssertEqual(offAfter, offBefore, accuracy: 2, "preview axis off: the playhead")
+            model.timelinePointerTime = nil
+
+            // The playhead out of view: zooming brings it into the middle.
+            scroll.contentView.scroll(to: .zero)
+            scroll.reflectScrolledClipView(scroll.contentView)
+            XCTAssertGreaterThan(18 + 7 * 1000 * model.timelineZoom / 10, scroll.contentView.bounds.maxX, "off to the right")
+            model.zoomTimeline(by: 1.2)
+            await T.settle(0.3)
+            let shown = 18 + 7 * 1000 * model.timelineZoom / 10 - scroll.contentView.bounds.minX
+            XCTAssertEqual(shown, scroll.contentView.bounds.width / 2, accuracy: 2, "in the middle of the timeline")
+        }
+    }
+
     func testPlaybackPagesAlongUntilYouScroll() async throws {
         // Both layouts (1.17.0).
         try await forEachEditorStyle { _ in
