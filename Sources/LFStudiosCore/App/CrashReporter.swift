@@ -329,7 +329,8 @@ struct CrashReportFile: Equatable {
             result = result.replacingOccurrences(of: "/Users/\(user)", with: "~")
             result = result.replacingOccurrences(of: user, with: "user")
         }
-        return result
+        // Never an AI key (1.20.0), should one ever be in the text.
+        return VideoAIKeys.scrubbedPatterns(result)
     }
 }
 
