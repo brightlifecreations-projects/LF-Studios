@@ -249,6 +249,7 @@ final class VideoCameraFrameStoreTests: XCTestCase {
             store.put(buffers[index % 4], at: Double(index) / 60)
             _ = store.frame(at: Double(index) / 60)
         }
-        XCTAssertNotNil(store.frame(at: 199.0 / 60, tolerance: 1))
+        // Which put lands last is up to the threads (one far back starts the store over): any of them.
+        XCTAssertNotNil(store.frame(at: 100.0 / 60, tolerance: 2))
     }
 }

@@ -650,12 +650,12 @@ final class VideoEditorModel: ObservableObject {
             if self.isPlaying { self.previewRenderer.invalidate() }
             self.loopIfNeeded(at: time)
         }
+        playback.onPlayedToEnd = { [weak self] in self?.loopAtVideoEnd() }
         playback.onPlayingChanged = { [weak self] playing in
             guard let self else { return }
             self.isPlaying = playing
             if !playing { self.shuttleRate = 1 }
             if playing, self.showsMeters { self.meters.start() } else { self.meters.stop() }
-            if !playing { self.loopIfNeeded(at: self.clock.time, stopped: true) }
             self.updatePreviewQuality()
             self.previewRenderer.invalidate()
         }

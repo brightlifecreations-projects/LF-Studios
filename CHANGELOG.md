@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.21.1]
+
+### Fixed
+- **Loop playback:** pausing in the last moment of the loop now pauses, instead of starting the loop again.
+- **Delete Gaps After Playhead** with no gaps to close no longer adds a step to Undo that does nothing.
+- **⇧⌘V while typing** in a caption or any text field pastes the text there, as ⌘V does, instead of opening Paste Attributes.
+
 ## [1.21.0] - 2026-11-03
 
 ### Added

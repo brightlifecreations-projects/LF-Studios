@@ -94,6 +94,8 @@ final class VideoPlaybackController: NSObject {
 
     var onTick: ((Double) -> Void)?
     var onPlayingChanged: ((Bool) -> Void)?
+    /// The player stopped because it reached the video's end (not a pause).
+    var onPlayedToEnd: (() -> Void)?
 
     override init() {
         super.init()
@@ -230,6 +232,7 @@ final class VideoPlaybackController: NSObject {
         endObserver = NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: item, queue: .main) { [weak self] _ in
             MainActor.assumeIsolated {
                 self?.player.pause()
+                self?.onPlayedToEnd?()
             }
         }
         player.replaceCurrentItem(with: item)
