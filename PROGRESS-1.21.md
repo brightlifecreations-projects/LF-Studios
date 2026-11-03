@@ -39,3 +39,8 @@ plain "Loop" (that's the cursor's Inspector switch).
   playback start. The second was real: the meters' tap made Play start
   0.1–0.15 s later (measured). Fixed by making the meters a switch, off to
   start with (DECISIONS 19).
+- test-full #2: one miss, Project117SoundTests ("edited": loudness at
+  2.2 s), at a different moment than before. Stressed with 10 busy cores:
+  main (1.20.0) failed it too (1 run in 4), the branch didn't (0 in 4).
+  An older weakness of exports under heavy load, not this update; told
+  the owner. test-full #3 next.
