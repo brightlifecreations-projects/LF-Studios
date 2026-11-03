@@ -22,6 +22,8 @@
 	<string>%@ (⇧⌘Z)</string>
 	<key>%@ (⌘Z)</key>
 	<string>%@ (⌘Z)</string>
+	<key>%@ API key</key>
+	<string>Ключ API %@</string>
 	<key>%@ It's in “%@” and opens as before.</key>
 	<string>%@ Запись находится в папке «%@» и открывается как раньше.</string>
 	<key>%@ Loupe</key>
@@ -44,6 +46,8 @@
 	<string>%@ весь экран</string>
 	<key>%@ has its own version now</key>
 	<string>У %@ теперь своя версия</string>
+	<key>%@ in · %@ out tokens</key>
+	<string>%@ на входе · %@ на выходе (токены)</string>
 	<key>%@ is too much for this Mac and would be very slow or fail. Try %@ instead.</key>
 	<string>%@ слишком тяжела для этого Mac: будет очень медленно или не получится. Попробуйте %@.</string>
 	<key>%@ isn't supported for captions on this Mac. Pick another language.</key>
@@ -304,6 +308,8 @@
 	<string>Окно такого размера больше экрана. Самый большой размер той же формы, который помещается, — %@ × %@.</string>
 	<key>A yellow marker shows where something was cut. Click it to bring the part back.</key>
 	<string>Желтая метка показывает, где был вырезан фрагмент. Нажмите на нее, чтобы вернуть его.</string>
+	<key>AI</key>
+	<string>ИИ</string>
 	<key>AI agent</key>
 	<string>ИИ-агент</string>
 	<key>AI agent connected</key>
@@ -312,6 +318,8 @@
 	<string>ИИ-агенты</string>
 	<key>AI agents are off: Settings ▸ Agent.</key>
 	<string>ИИ-агенты выключены: Настройки ▸ Агент.</string>
+	<key>API key</key>
+	<string>Ключ API</string>
 	<key>About</key>
 	<string>О программе</string>
 	<key>About %lld min left</key>
@@ -388,6 +396,8 @@
 	<string>Видео с камеры телефона</string>
 	<key>Add a caption at the playhead</key>
 	<string>Добавить субтитр у указателя воспроизведения</string>
+	<key>Add a key below, then choose its provider.</key>
+	<string>Добавьте ключ ниже, затем выберите его провайдера.</string>
 	<key>Add a keyframe at the playhead: %@</key>
 	<string>Добавить ключевой кадр у указателя воспроизведения: %@</string>
 	<key>Add a marker</key>
@@ -408,6 +418,8 @@
 	<string>Добавить увеличение у указателя воспроизведения</string>
 	<key>Add a zoom at the playhead (Z)</key>
 	<string>Добавить увеличение у указателя воспроизведения (Z)</string>
+	<key>Add an API key for Claude, OpenAI or Gemini in Settings ▸ AI, then choose its provider.</key>
+	<string>Добавьте ключ API для Claude, OpenAI или Gemini в «Настройки ▸ ИИ», затем выберите его провайдера.</string>
 	<key>Add an API key in Settings ▸ AI first.</key>
 	<string>Сначала добавьте ключ API в «Настройки ▸ ИИ».</string>
 	<key>Add another recording or video after this one — LF Studios recordings keep their pointer, clicks, and shortcuts.</key>
@@ -748,6 +760,10 @@
 	<string>Как клип он получает и ключевые кадры, анимации, эффекты и фильтры.</string>
 	<key>As an effect clip: drag an effect onto the timeline. It changes the main track and the tracks under it while it plays.</key>
 	<string>Как клип эффекта: перетяните эффект на шкалу времени. Пока он идет, он меняет основную дорожку и дорожки под ним.</string>
+	<key>Ask for an edit: “Cut the long pauses”, “Add captions and fix the typos”, “Mark where the settings open”.</key>
+	<string>Попросите отредактировать: «Убери длинные паузы», «Добавь субтитры и исправь опечатки», «Отметь, где открываются настройки».</string>
+	<key>Ask the Assistant to edit…</key>
+	<string>Попросите Ассистента что-то изменить…</string>
 	<key>Ask where to save after each recording</key>
 	<string>Спрашивать, куда сохранять каждую запись</string>
 	<key>Aspect Ratio %@ — %@</key>
@@ -756,6 +772,12 @@
 	<string>Соотношение сторон</string>
 	<key>Aspect ratio menu ▸ Fill the Frame, Follow the Cursor.</key>
 	<string>Меню соотношения сторон ▸ Заполнить кадр и следовать за указателем.</string>
+	<key>Assistant</key>
+	<string>Ассистент</string>
+	<key>Assistant Panel</key>
+	<string>Панель «Ассистент»</string>
+	<key>Assistant editing</key>
+	<string>Ассистент редактирует</string>
 	<key>At playhead</key>
 	<string>Текущее время</string>
 	<key>At the top of the Captions panel, for recordings made with Speaker notes open.</key>
@@ -832,6 +854,8 @@
 	<string>Назад</string>
 	<key>Back to how the project was before the agent started (⌘Z brings the changes back)</key>
 	<string>Вернуть проект к виду до начала работы агента (⌘Z вернёт изменения)</string>
+	<key>Back to how the project was before this request (⌘Z brings the changes back)</key>
+	<string>Вернуть проект к состоянию до этого запроса (⌘Z вернёт изменения)</string>
 	<key>Back to the LF Studios look</key>
 	<string>Вернуть стиль LF Studios</string>
 	<key>Back to the original recording — ⌘Z to undo</key>
@@ -1348,6 +1372,8 @@
 	<string>Главы текстом («0:00 Начало») для описания на YouTube</string>
 	<key>Chapters copied — paste them into the video's description</key>
 	<string>Главы скопированы — вставьте их в описание видео</string>
+	<key>Chat with an AI that edits this video with you, using your own API key. Requests go straight from this Mac to the provider.</key>
+	<string>Общайтесь с ИИ, который редактирует видео вместе с вами, по вашему собственному ключу API. Запросы идут напрямую с этого Mac к провайдеру.</string>
 	<key>Check</key>
 	<string>Проверить</string>
 	<key>Check Settings ▸ General ▸ Show menu bar icon.</key>
@@ -1436,6 +1462,8 @@
 	<string>Выберите язык и нажмите «Перевести».</string>
 	<key>Choose a logo, watermark, or screenshot to place on the video</key>
 	<string>Выберите логотип, водяной знак или снимок экрана, чтобы разместить его на видео</string>
+	<key>Choose a model</key>
+	<string>Выберите модель</string>
 	<key>Choose a picture.</key>
 	<string>Выберите картинку.</string>
 	<key>Choose a project, a folder, or a video</key>
@@ -1730,6 +1758,8 @@
 	<string>Нажмите «Системный звук» на панели записи или Настройки ▸ Запись ▸ Аудио ▸ Записывать системный звук.</string>
 	<key>Click Take screenshot in Home.</key>
 	<string>Нажмите «Сделать снимок экрана» на главной.</string>
+	<key>Click Test Key to load the models.</key>
+	<string>Нажмите «Проверить ключ», чтобы загрузить модели.</string>
 	<key>Click Transcribe with Whisper.</key>
 	<string>Нажмите «Расшифровать с Whisper».</string>
 	<key>Click Transcribe. Keep editing while it listens.</key>
@@ -2726,6 +2756,8 @@
 	<string>Каждая запись в своей папке</string>
 	<key>Each recording keeps its own pointer, clicks, and shortcuts. Reorder them here; cut and trim them on the timeline like any clip.</key>
 	<string>Каждая запись сохраняет свой указатель, нажатия и сочетания клавиш. Меняйте их порядок здесь, а вырезайте и подрезайте на шкале времени, как любой клип.</string>
+	<key>Each request is billed to your account by the provider; the Assistant shows the tokens each reply used. Keys are kept only in your Mac's Keychain.</key>
+	<string>Каждый запрос оплачивается с вашего счёта у провайдера; Ассистент показывает, сколько токенов ушло на каждый ответ. Ключи хранятся только в связке ключей вашего Mac.</string>
 	<key>Each shape keeps its own version: switch back and forth without losing anything. Cuts, words, and styles stay shared.</key>
 	<string>У каждого формата своя версия: переключайтесь туда и обратно, ничего не теряя. Вырезки, слова и стили остаются общими.</string>
 	<key>Each track has its own Hide, Mute and Lock in its header.</key>
@@ -3374,6 +3406,8 @@
 	<string>Промежуток между частями</string>
 	<key>General</key>
 	<string>Основные</string>
+	<key>Get a key</key>
+	<string>Получить ключ</string>
 	<key>Get the area exactly right: a magnifier, the size as you drag, and keys to fine-tune.</key>
 	<string>Выделите область точно: лупа, размер во время выделения и клавиши для точной подстройки.</string>
 	<key>Get things ready while the countdown runs.</key>
@@ -3510,6 +3544,8 @@
 	<string>Скрыть личные данные</string>
 	<key>Hide the Agent panel</key>
 	<string>Скрыть панель «Агент»</string>
+	<key>Hide the Assistant panel</key>
+	<string>Скрыть панель «Ассистент»</string>
 	<key>Hide the Menu Bar Icon?</key>
 	<string>Скрыть значок в строке меню?</string>
 	<key>Hide the camera whenever you're not talking, and bring it back when you speak.</key>
@@ -3994,6 +4030,8 @@
 	<string>Сохранять тон</string>
 	<key>Keep the agent's changes (each still undoes with ⌘Z)</key>
 	<string>Оставить изменения агента (каждое по-прежнему отменяется ⌘Z)</string>
+	<key>Keep the changes (each still undoes with ⌘Z)</key>
+	<string>Оставить изменения (каждое по-прежнему отменяется ⌘Z)</string>
 	<key>Keep the current style</key>
 	<string>Оставить текущий стиль</string>
 	<key>Keeps just the person, found on this Mac</key>
@@ -4006,6 +4044,8 @@
 	<string>Оставлено для «%@»</string>
 	<key>Kept the agent's changes</key>
 	<string>Изменения агента оставлены</string>
+	<key>Key ending in %@</key>
+	<string>Ключ, оканчивающийся на %@</string>
 	<key>Key for %@: %@</key>
 	<string>Клавиша для «%@»: %@</string>
 	<key>Key or password</key>
@@ -4342,6 +4382,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Прослушивание…</string>
 	<key>Listens on this Mac — nothing is uploaded</key>
 	<string>Работает на этом Mac — ничего не отправляется в сеть</string>
+	<key>Load the provider's current models</key>
+	<string>Загрузить текущие модели провайдера</string>
 	<key>Loaded:</key>
 	<string>Загружено:</string>
 	<key>Locate…</key>
@@ -4428,6 +4470,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Облегчить: %@, %@ fps</string>
 	<key>Make my videos look the same every time</key>
 	<string>Одинаковое оформление для всех видео</string>
+	<key>Make one on the provider's website; it bills your account there.</key>
+	<string>Создайте его на сайте провайдера; оплата — с вашего счёта там.</string>
 	<key>Make several clips above the main track into one: moved, sized, turned and faded together.</key>
 	<string>Объедините несколько клипов над основной дорожкой в один: они вместе перемещаются, меняют размер, поворачиваются и становятся прозрачнее.</string>
 	<key>Make sure LF Studios is allowed under Microphone in System Settings. It appears there only after it has asked once, and there's no + button: turn on Microphone in the recording bar and click Allow.</key>
@@ -4520,6 +4564,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Сообщение</string>
 	<key>Message QR found</key>
 	<string>Найден QR-код с сообщением</string>
+	<key>Message to the Assistant</key>
+	<string>Сообщение Ассистенту</string>
 	<key>Mic disconnected</key>
 	<string>Микрофон отключен</string>
 	<key>Mic stopped</key>
@@ -4816,6 +4862,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Не превращаться в текстовый курсор или руку</string>
 	<key>New</key>
 	<string>Новое</string>
+	<key>New Chat</key>
+	<string>Новый чат</string>
 	<key>New Folder</key>
 	<string>Новая папка</string>
 	<key>New Folder…</key>
@@ -5088,6 +5136,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Выключенный, он остается на таймлайне, но не виден и не слышен (V)</string>
 	<key>Off: faster sounds higher, slower lower. The sound is silent faster than 32× or slower than 1/32×.</key>
 	<string>Выкл.: быстрее — выше, медленнее — ниже. Быстрее 32× или медленнее 1/32× звук отключается.</string>
+	<key>Off: only the timeline, the transcript and the captions are sent. On: the AI can also look at frames of the video.</key>
+	<string>Выкл.: отправляются только таймлайн, расшифровка и субтитры. Вкл.: ИИ может также смотреть кадры видео.</string>
 	<key>Offset</key>
 	<string>Сдвиг</string>
 	<key>Older</key>
@@ -5206,6 +5256,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Откройте Timeline.fcpxml в Final Cut Pro или DaVinci Resolve либо “Timeline (Premiere).xml” в Premiere Pro.</string>
 	<key>Open Video Editor</key>
 	<string>Открыть видеоредактор</string>
+	<key>Open Website</key>
+	<string>Открыть сайт</string>
 	<key>Open a folder of files as one project: a recording's folder, a Creative Handoff, or any folder with videos in it.</key>
 	<string>Откройте папку с файлами как один проект: папку записи, «Творческую передачу» или любую папку с видео.</string>
 	<key>Open a project</key>
@@ -5236,6 +5288,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Открыть в редакторе снимков</string>
 	<key>Open or copy each link and email address.</key>
 	<string>Откройте или скопируйте каждую ссылку и адрес электронной почты.</string>
+	<key>Open the Assistant from Layout ▸ Assistant Panel.</key>
+	<string>Откройте Ассистента через «Расположение ▸ Панель «Ассистент»».</string>
 	<key>Open the LF Studios menu and, under Health, click Fix next to Apple Shortcuts.</key>
 	<string>Откройте меню LF Studios и в разделе «Состояние» нажмите «Исправить» рядом с «Сочетания клавиш Apple».</string>
 	<key>Open the LF Studios menu in the menu bar and choose Capture Text.</key>
@@ -5350,12 +5404,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Пароль</string>
 	<key>Paste</key>
 	<string>Вставить</string>
+	<key>Paste a key that starts with %@</key>
+	<string>Вставьте ключ, начинающийся с %@</string>
 	<key>Paste it anywhere with ⌘V.</key>
 	<string>Вставьте его куда угодно с помощью ⌘V.</string>
 	<key>Paste it into Terminal and press Return.</key>
 	<string>Вставьте в Терминал и нажмите Return.</string>
 	<key>Paste it into ~/.codex/config.toml and save.</key>
 	<string>Вставьте в ~/.codex/config.toml и сохраните.</string>
+	<key>Paste key</key>
+	<string>Вставьте ключ</string>
 	<key>Paste or type your notes here. They stay out of every recording.</key>
 	<string>Вставьте или введите заметки здесь. Они не попадают ни в одну запись.</string>
 	<key>Paste or type your notes, then click Read.</key>
@@ -5716,6 +5774,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Свойства ▸ Отслеживание, когда выбран клип над основной дорожкой.</string>
 	<key>Properties: Show, Opacity, Size, Rotation, Mirror, Rotate 90°, Fit, Fill, Crop, and for videos Volume and Speed.</key>
 	<string>Свойства: Показывать, Непрозрачность, Размер, Поворот, Зеркало, Повернуть на 90°, Вписать, Заполнить, Обрезка, а у видео — Громкость и Скорость.</string>
+	<key>Provider</key>
+	<string>Провайдер</string>
+	<key>Provider and model</key>
+	<string>Провайдер и модель</string>
 	<key>Proxies</key>
 	<string>Прокси</string>
 	<key>Proxies ready — the editor plays them; exports use the originals</key>
@@ -6422,6 +6484,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Reels, TikTok, Shorts</string>
 	<key>Reframes zooms, moves the camera bubble, and keeps captions in the safe area for %@. This ratio then keeps its own version.</key>
 	<string>Перестраивает зумы, двигает пузырь камеры и держит субтитры в безопасной зоне для %@. Затем у этого формата будет своя версия.</string>
+	<key>Refresh</key>
+	<string>Обновить</string>
 	<key>Regular</key>
 	<string>Обычный</string>
 	<key>Releasing the mouse takes the shot. Hold ⇧ as you release to adjust the selection first — drag its edges, nudge it with the arrow keys, then press Return.</key>
@@ -6444,6 +6508,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Удалить все увеличения</string>
 	<key>Remove Intro Card</key>
 	<string>Удалить начальный титр</string>
+	<key>Remove Key</key>
+	<string>Удалить ключ</string>
 	<key>Remove Music</key>
 	<string>Удалить музыку</string>
 	<key>Remove None</key>
@@ -6804,6 +6870,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Сохранено более новой версией LF Studios — некоторые настройки могут не отображаться</string>
 	<key>Saved capture</key>
 	<string>Сохраненный снимок</string>
+	<key>Saved in the Keychain</key>
+	<string>Сохранён в связке ключей</string>
 	<key>Saved preset “%@”</key>
 	<string>Стиль «%@» сохранён</string>
 	<key>Saved to %@: %@</key>
@@ -7050,6 +7118,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Отправить</string>
 	<key>Send everything to a video editor</key>
 	<string>Передать все в другой видеоредактор</string>
+	<key>Send video frames to the AI</key>
+	<string>Отправлять кадры видео ИИ</string>
 	<key>Sepia</key>
 	<string>Сепия</string>
 	<key>Set Length at the top of the tab first, or later in the clip's Transition in.</key>
@@ -7090,6 +7160,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Выставляет громкость, которую ожидают видеосайты (−16 LUFS)</string>
 	<key>Settings</key>
 	<string>Настройки</string>
+	<key>Settings ▸ AI…</key>
+	<string>Настройки ▸ ИИ…</string>
 	<key>Settings ▸ Agent ▸ Save… gives the agent a guide to LF Studios' tools (for Claude Code, a skill).</key>
 	<string>Настройки ▸ Агент ▸ Сохранить… даёт агенту руководство по инструментам LF Studios (для Claude Code — навык).</string>
 	<key>Settings ▸ General ▸ After Capture.</key>
@@ -7522,6 +7594,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Начало здесь</string>
 	<key>Start over from the original recording?</key>
 	<string>Начать заново с исходной записи?</string>
+	<key>Start over: this chat is removed from the project</key>
+	<string>Начать заново: этот чат удаляется из проекта</string>
 	<key>Start recording</key>
 	<string>Начать запись</string>
 	<key>Start scrolling (Space)</key>
@@ -7578,6 +7652,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Остановить отслеживание</string>
 	<key>Stop following takes it off; a box over something with clear edges follows best.</key>
 	<string>«Остановить отслеживание» отключает его; лучше всего отслеживается рамка над чем-то с четкими краями.</string>
+	<key>Stop now: what it changed so far waits for Keep or Revert All</key>
+	<string>Остановить сейчас: сделанные изменения ждут «Оставить» или «Отменить всё»</string>
 	<key>Stop recording</key>
 	<string>Остановить запись</string>
 	<key>Stop recording (%@)</key>
@@ -7728,6 +7804,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Температура</string>
 	<key>Template</key>
 	<string>Шаблон</string>
+	<key>Test Key</key>
+	<string>Проверить ключ</string>
+	<key>Testing…</key>
+	<string>Проверка…</string>
 	<key>Text</key>
 	<string>Текст</string>
 	<key>Text &amp; annotations</key>
@@ -7936,6 +8016,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Передача готова</string>
 	<key>The highest quality, and the only one that can keep transparency</key>
 	<string>Самое высокое качество — и единственный формат, который сохраняет прозрачность</string>
+	<key>The key works, but it has no chat models.</key>
+	<string>Ключ работает, но чат-моделей для него нет.</string>
+	<key>The key works: %lld models</key>
+	<string>Ключ работает: моделей — %lld</string>
 	<key>The label under it says how wide the camera is and where it goes in the video. The editor opens with exactly that.</key>
 	<string>Подпись под ней показывает ширину камеры и ее место в видео. Редактор откроется именно так.</string>
 	<key>The line runs down through every track, so you can see what's under it.</key>
@@ -8200,6 +8284,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Толщина</string>
 	<key>Thin</key>
 	<string>Тонкий</string>
+	<key>Thinking…</key>
+	<string>Думает…</string>
 	<key>This GIF is too long for its size — it would need about %@ of memory. Pick a smaller size or fewer frames per second, export part of the video, or choose MP4.</key>
 	<string>Этот GIF слишком длинный для такого размера — понадобится около %@ памяти. Выберите меньший размер или меньше кадров в секунду, экспортируйте часть видео или выберите MP4.</string>
 	<key>This Guide</key>
@@ -8214,6 +8300,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>На этой неделе</string>
 	<key>This app</key>
 	<string>Это приложение</string>
+	<key>This chat: %@ in · %@ out tokens</key>
+	<string>Этот чат: %@ на входе · %@ на выходе (токены)</string>
 	<key>This list</key>
 	<string>Этот список</string>
 	<key>This part is cut from the video</key>

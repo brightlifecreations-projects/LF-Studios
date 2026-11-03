@@ -60,7 +60,7 @@ enum VideoAgentSetup: String, CaseIterable, Identifiable {
 }
 
 /// A Settings row whose detail wraps (the setup steps are long).
-private struct AgentSettingsRow<Trailing: View>: View {
+struct AgentSettingsRow<Trailing: View>: View {
     let title: String
     let detail: String?
     let trailing: Trailing

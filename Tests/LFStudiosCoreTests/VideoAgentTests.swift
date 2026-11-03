@@ -169,7 +169,9 @@ final class VideoAgentTests: XCTestCase {
                      "begin_agent_session", "end_agent_session", "split", "delete_left", "delete", "add_marker", "undo", "place_media", "add_tack", "list_tacks"] {
             XCTAssertTrue(names.contains(name), name)
         }
-        XCTAssertFalse(names.contains { $0.contains("export") }, "export is the user's")
+        // Export is the user's: prepare_export (1.20.0) only fills in the
+        // Export window.
+        XCTAssertEqual(names.filter { $0.contains("export") }, ["prepare_export"], "export is the user's")
         XCTAssertFalse(names.contains("record_voiceover"), "never the microphone")
         // Every edit tool takes dry_run.
         for tool in list["tools"]?.array ?? [] where tool["annotations"]?["readOnlyHint"]?.bool == false {

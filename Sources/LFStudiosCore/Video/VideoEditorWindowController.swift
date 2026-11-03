@@ -244,6 +244,7 @@ final class VideoDemoEditorWindowController: NSWindowController, NSWindowDelegat
     func windowWillClose(_ notification: Notification) {
         floatingPanels.closeAll()
         VideoAgentHub.shared.forget(model)
+        VideoAIAssistant.forget(model)
         model.stop()
         Self.openControllers.removeAll { $0 === self }
         LFStudiosEditorActivation.sync()

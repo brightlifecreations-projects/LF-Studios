@@ -221,16 +221,17 @@ struct VideoPanelHeader: View {
             .foregroundStyle(VideoEditorTheme.textSecondary)
             .help(floating ? L("Dock: put it back in the editor window") : L("Float: in a window of its own"))
             .accessibilityLabel(floating ? L("Dock") : L("Float"))
-            // The Agent panel can be put away (Layout ▸ Agent Panel brings it back).
-            if kind == .agent {
-                Button { VideoEditorPanelStore.shared.hide(.agent) } label: {
+            // The Agent and Assistant panels can be put away (Layout brings
+            // them back).
+            if VideoPanelKind.optionalPanels.contains(kind) {
+                Button { VideoEditorPanelStore.shared.hide(kind) } label: {
                     Image(systemName: "xmark")
                         .font(.system(size: 9.5, weight: .bold))
                         .frame(width: 20, height: 18)
                 }
                 .buttonStyle(.plain)
                 .foregroundStyle(VideoEditorTheme.textSecondary)
-                .help(L("Hide the Agent panel"))
+                .help(kind == .agent ? L("Hide the Agent panel") : L("Hide the Assistant panel"))
                 .accessibilityLabel(L("Hide"))
             }
         }
@@ -316,6 +317,8 @@ struct VideoPanelContent: View {
             VideoTimelineView(model: model).equatable()
         case .agent:
             VideoAgentPanel(model: model)
+        case .assistant:
+            VideoAssistantPanel(model: model)
         }
     }
 }

@@ -143,23 +143,28 @@ final class VideoEditorPanelStore: ObservableObject {
     }
 
     /// The Agent panel shows (docked where it goes), when it's hidden.
-    func showAgentPanel() {
-        guard !arrangement.docked.contains(.agent), !arrangement.floating.contains(where: { $0.kind == .agent }) else { return }
-        arrange(arrangement.docking(.agent))
+    func showAgentPanel() { show(.agent) }
+
+    /// An optional panel (Agent, Assistant) shows, docked where it goes.
+    func show(_ kind: VideoPanelKind) {
+        guard VideoPanelKind.optionalPanels.contains(kind), !shows(kind) else { return }
+        arrange(arrangement.docking(kind))
     }
 
-    /// A panel put away (only the Agent panel can be).
+    /// A panel put away (only the Agent and Assistant panels can be).
     func hide(_ kind: VideoPanelKind) {
-        guard kind == .agent else { return }
+        guard VideoPanelKind.optionalPanels.contains(kind) else { return }
         var next = arrangement
         next.floating.removeAll { $0.kind == kind }
         if let rest = next.docked.removing(kind) { next.docked = rest }
         arrange(next)
     }
 
-    var showsAgentPanel: Bool {
-        arrangement.docked.contains(.agent) || arrangement.floating.contains { $0.kind == .agent }
+    func shows(_ kind: VideoPanelKind) -> Bool {
+        arrangement.docked.contains(kind) || arrangement.floating.contains { $0.kind == kind }
     }
+
+    var showsAgentPanel: Bool { shows(.agent) }
 
     /// Every floating panel back in the editor.
     func dockAll() {
@@ -298,7 +303,12 @@ struct VideoLayoutMenu: View {
             if !store.arrangement.floating.isEmpty {
                 Button(L("Dock All Panels")) { store.dockAll() }
             }
-            // AI agents' panel (1.19.0).
+            // AI agents' panel (1.19.0) and the Assistant (1.20.0).
+            Button {
+                if store.shows(.assistant) { store.hide(.assistant) } else { store.show(.assistant) }
+            } label: {
+                if store.shows(.assistant) { Label(L("Assistant Panel"), systemImage: "checkmark") } else { Text(L("Assistant Panel")) }
+            }
             Button {
                 if store.showsAgentPanel { store.hide(.agent) } else { store.showAgentPanel() }
             } label: {

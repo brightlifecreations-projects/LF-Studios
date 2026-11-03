@@ -22,6 +22,8 @@
 	<string>%@（⇧⌘Z）</string>
 	<key>%@ (⌘Z)</key>
 	<string>%@（⌘Z）</string>
+	<key>%@ API key</key>
+	<string>%@ の API キー</string>
 	<key>%@ It's in “%@” and opens as before.</key>
 	<string>%@ 収録は“%@”にあり、これまでどおり開けます。</string>
 	<key>%@ Loupe</key>
@@ -44,6 +46,8 @@
 	<string>%@: 画面全体</string>
 	<key>%@ has its own version now</key>
 	<string>%@に専用のバージョンができました</string>
+	<key>%@ in · %@ out tokens</key>
+	<string>入力 %@ · 出力 %@ トークン</string>
 	<key>%@ is too much for this Mac and would be very slow or fail. Try %@ instead.</key>
 	<string>%@はこのMacには重すぎて、とても遅いか失敗します。代わりに%@をお試しください。</string>
 	<key>%@ isn't supported for captions on this Mac. Pick another language.</key>
@@ -372,6 +376,8 @@
 	<string>このサイズのウインドウは画面より大きくなります。同じ形で収まる最大のサイズは%@ × %@です。</string>
 	<key>A yellow marker shows where something was cut. Click it to bring the part back.</key>
 	<string>カットした場所には黄色いマーカーが表示されます。クリックすると、その部分を元に戻せます。</string>
+	<key>AI</key>
+	<string>AI</string>
 	<key>AI agent</key>
 	<string>AIエージェント</string>
 	<key>AI agent connected</key>
@@ -380,6 +386,8 @@
 	<string>AIエージェント</string>
 	<key>AI agents are off: Settings ▸ Agent.</key>
 	<string>AIエージェントはオフです：設定 ▸ エージェント。</string>
+	<key>API key</key>
+	<string>API キー</string>
 	<key>About</key>
 	<string>情報</string>
 	<key>About %lld min left</key>
@@ -456,6 +464,8 @@
 	<string>スマートフォンで撮ったカメラ映像を追加する</string>
 	<key>Add a caption at the playhead</key>
 	<string>再生ヘッドの位置に字幕を追加</string>
+	<key>Add a key below, then choose its provider.</key>
+	<string>下でキーを追加してから、そのプロバイダを選んでください。</string>
 	<key>Add a keyframe at the playhead: %@</key>
 	<string>再生ヘッドの位置にキーフレームを追加: %@</string>
 	<key>Add a marker</key>
@@ -476,6 +486,8 @@
 	<string>再生ヘッドの位置にズームを追加</string>
 	<key>Add a zoom at the playhead (Z)</key>
 	<string>再生ヘッドの位置にズームを追加（Z）</string>
+	<key>Add an API key for Claude, OpenAI or Gemini in Settings ▸ AI, then choose its provider.</key>
+	<string>「設定」▸「AI」で Claude、OpenAI、Gemini のいずれかの API キーを追加し、そのプロバイダを選んでください。</string>
 	<key>Add an API key in Settings ▸ AI first.</key>
 	<string>まず「設定」▸「AI」で API キーを追加してください。</string>
 	<key>Add another recording or video after this one — LF Studios recordings keep their pointer, clicks, and shortcuts.</key>
@@ -820,6 +832,10 @@
 	<string>クリップにすると、キーフレーム、アニメーション、エフェクト、フィルタも使えます。</string>
 	<key>As an effect clip: drag an effect onto the timeline. It changes the main track and the tracks under it while it plays.</key>
 	<string>エフェクトクリップとして: エフェクトをタイムラインにドラッグします。再生中、メイントラックとエフェクトクリップより下のトラックを変化させます。</string>
+	<key>Ask for an edit: “Cut the long pauses”, “Add captions and fix the typos”, “Mark where the settings open”.</key>
+	<string>編集を依頼しましょう：「長い間を詰めて」「字幕を付けて誤字を直して」「設定が開く場所にマーカーを付けて」。</string>
+	<key>Ask the Assistant to edit…</key>
+	<string>アシスタントに編集を依頼…</string>
 	<key>Ask where to save after each recording</key>
 	<string>収録のたびに保存先を確認する</string>
 	<key>Aspect Ratio %@ — %@</key>
@@ -828,6 +844,12 @@
 	<string>アスペクト比</string>
 	<key>Aspect ratio menu ▸ Fill the Frame, Follow the Cursor.</key>
 	<string>アスペクト比メニュー＞“画面いっぱいに表示してポインタに追従”。</string>
+	<key>Assistant</key>
+	<string>アシスタント</string>
+	<key>Assistant Panel</key>
+	<string>アシスタントパネル</string>
+	<key>Assistant editing</key>
+	<string>アシスタントが編集中</string>
 	<key>At playhead</key>
 	<string>再生ヘッドに合わせる</string>
 	<key>At the top of the Captions panel, for recordings made with Speaker notes open.</key>
@@ -906,6 +928,8 @@
 	<string>戻る</string>
 	<key>Back to how the project was before the agent started (⌘Z brings the changes back)</key>
 	<string>エージェントが始める前のプロジェクトに戻します（⌘Zで変更が戻ります）</string>
+	<key>Back to how the project was before this request (⌘Z brings the changes back)</key>
+	<string>この依頼の前のプロジェクトに戻します（⌘Z で変更を元に戻せます）</string>
 	<key>Back to the LF Studios look</key>
 	<string>LF Studiosの標準スタイルに戻しました</string>
 	<key>Back to the original recording — ⌘Z to undo</key>
@@ -1428,6 +1452,8 @@
 	<string>YouTubeの説明欄用のチャプターテキスト（“0:00 スタート”）</string>
 	<key>Chapters copied — paste them into the video's description</key>
 	<string>チャプターをコピーしました — ビデオの説明欄にペーストしてください</string>
+	<key>Chat with an AI that edits this video with you, using your own API key. Requests go straight from this Mac to the provider.</key>
+	<string>自分の API キーを使って、一緒にビデオを編集する AI とチャットできます。リクエストはこの Mac からプロバイダへ直接送られます。</string>
 	<key>Check</key>
 	<string>確認</string>
 	<key>Check Settings ▸ General ▸ Show menu bar icon.</key>
@@ -1516,6 +1542,8 @@
 	<string>言語を選び、“翻訳”をクリックします。</string>
 	<key>Choose a logo, watermark, or screenshot to place on the video</key>
 	<string>ビデオに配置するロゴ、透かし、またはスクリーンショットを選択してください</string>
+	<key>Choose a model</key>
+	<string>モデルを選択</string>
 	<key>Choose a picture.</key>
 	<string>画像を選びます。</string>
 	<key>Choose a project, a folder, or a video</key>
@@ -1810,6 +1838,8 @@
 	<string>収録バーの“システムオーディオ”をクリックするか、“設定”＞“収録”＞“オーディオ”＞“システムオーディオを録音”。</string>
 	<key>Click Take screenshot in Home.</key>
 	<string>ホームで“スクリーンショットを撮る”をクリックします。</string>
+	<key>Click Test Key to load the models.</key>
+	<string>「キーをテスト」をクリックするとモデルを読み込みます。</string>
 	<key>Click Transcribe with Whisper.</key>
 	<string>“Whisperで文字起こし”をクリックします。</string>
 	<key>Click Transcribe. Keep editing while it listens.</key>
@@ -2814,6 +2844,8 @@
 	<string>収録ごとに専用のフォルダ</string>
 	<key>Each recording keeps its own pointer, clicks, and shortcuts. Reorder them here; cut and trim them on the timeline like any clip.</key>
 	<string>各収録はそれぞれのポインタ、クリック、ショートカットを保持します。ここで順番を並べ替え、ほかのクリップと同じようにタイムラインでカットやトリミングができます。</string>
+	<key>Each request is billed to your account by the provider; the Assistant shows the tokens each reply used. Keys are kept only in your Mac's Keychain.</key>
+	<string>各リクエストはプロバイダからあなたのアカウントに請求されます。アシスタントは各回答で使ったトークン数を表示します。キーはこの Mac のキーチェーンにだけ保管されます。</string>
 	<key>Each shape keeps its own version: switch back and forth without losing anything. Cuts, words, and styles stay shared.</key>
 	<string>形ごとに独自のバージョンが保存されるので、何も失わずに切り替えられます。カット、言葉、スタイルは共通です。</string>
 	<key>Each track has its own Hide, Mute and Lock in its header.</key>
@@ -3468,6 +3500,8 @@
 	<string>部分の間に間隔を空ける</string>
 	<key>General</key>
 	<string>一般</string>
+	<key>Get a key</key>
+	<string>キーを入手</string>
 	<key>Get the area exactly right: a magnifier, the size as you drag, and keys to fine-tune.</key>
 	<string>拡大鏡、ドラッグ中のサイズ表示、微調整用のキーで、範囲をぴったり合わせます。</string>
 	<key>Get things ready while the countdown runs.</key>
@@ -3604,6 +3638,8 @@
 	<string>個人情報を隠す</string>
 	<key>Hide the Agent panel</key>
 	<string>エージェントパネルを隠す</string>
+	<key>Hide the Assistant panel</key>
+	<string>アシスタントパネルを隠す</string>
 	<key>Hide the Menu Bar Icon?</key>
 	<string>メニューバーのアイコンを非表示にしますか?</string>
 	<key>Hide the camera whenever you're not talking, and bring it back when you speak.</key>
@@ -4096,6 +4132,8 @@
 	<string>ピッチを保持</string>
 	<key>Keep the agent's changes (each still undoes with ⌘Z)</key>
 	<string>エージェントの変更を保持（それぞれ⌘Zで取り消せます）</string>
+	<key>Keep the changes (each still undoes with ⌘Z)</key>
+	<string>変更を残します（それぞれ ⌘Z で取り消せます）</string>
 	<key>Keep the current style</key>
 	<string>今のスタイルのまま</string>
 	<key>Keeping 30 days removes %lld older captures from History now. This can't be undone.</key>
@@ -4120,6 +4158,8 @@
 	<string>%@用に予約済み</string>
 	<key>Kept the agent's changes</key>
 	<string>エージェントの変更を保持しました</string>
+	<key>Key ending in %@</key>
+	<string>末尾が %@ のキー</string>
 	<key>Key for %@: %@</key>
 	<string>%1$@のキー: %2$@</string>
 	<key>Key or password</key>
@@ -4458,6 +4498,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>聞き取り中…</string>
 	<key>Listens on this Mac — nothing is uploaded</key>
 	<string>このMac上で聞き取ります。何もアップロードされません</string>
+	<key>Load the provider's current models</key>
+	<string>プロバイダの現在のモデルを読み込む</string>
 	<key>Loaded:</key>
 	<string>読み込んだもの:</string>
 	<key>Locate…</key>
@@ -4544,6 +4586,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>軽くする: %@、%@ fps</string>
 	<key>Make my videos look the same every time</key>
 	<string>ビデオをいつも同じ見た目にする</string>
+	<key>Make one on the provider's website; it bills your account there.</key>
+	<string>プロバイダのウェブサイトで作成します。料金はそこでのアカウントに請求されます。</string>
 	<key>Make several clips above the main track into one: moved, sized, turned and faded together.</key>
 	<string>メイントラックの上の複数のクリップを1つにまとめます。移動、サイズ変更、回転、フェードがまとめて行われます。</string>
 	<key>Make sure LF Studios is allowed under Microphone in System Settings. It appears there only after it has asked once, and there's no + button: turn on Microphone in the recording bar and click Allow.</key>
@@ -4636,6 +4680,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>メッセージ</string>
 	<key>Message QR found</key>
 	<string>メッセージのQRコードが見つかりました</string>
+	<key>Message to the Assistant</key>
+	<string>アシスタントへのメッセージ</string>
 	<key>Mic disconnected</key>
 	<string>マイク未接続</string>
 	<key>Mic stopped</key>
@@ -4932,6 +4978,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Iビームや手の形のポインタに切り替えません</string>
 	<key>New</key>
 	<string>新機能</string>
+	<key>New Chat</key>
+	<string>新しいチャット</string>
 	<key>New Folder</key>
 	<string>新規フォルダ</string>
 	<key>New Folder…</key>
@@ -5204,6 +5252,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>オフにするとタイムラインには残りますが、見えず聞こえません（V）</string>
 	<key>Off: faster sounds higher, slower lower. The sound is silent faster than 32× or slower than 1/32×.</key>
 	<string>オフ: 速いほど音が高く、遅いほど低くなります。32×より速い、または1/32×より遅い場合は無音になります。</string>
+	<key>Off: only the timeline, the transcript and the captions are sent. On: the AI can also look at frames of the video.</key>
+	<string>オフ：タイムライン、文字起こし、字幕だけを送ります。オン：AI がビデオのフレームも見られます。</string>
 	<key>Offset</key>
 	<string>オフセット</string>
 	<key>Older</key>
@@ -5322,6 +5372,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Final Cut ProまたはDaVinci ResolveでTimeline.fcpxmlを開くか、Premiere Proで“Timeline (Premiere).xml”を開きます。</string>
 	<key>Open Video Editor</key>
 	<string>ビデオエディタを開く</string>
+	<key>Open Website</key>
+	<string>ウェブサイトを開く</string>
 	<key>Open a folder of files as one project: a recording's folder, a Creative Handoff, or any folder with videos in it.</key>
 	<string>ファイルの入ったフォルダを1つのプロジェクトとして開きます: 収録のフォルダ、クリエイティブ受け渡し、またはビデオの入った任意のフォルダ。</string>
 	<key>Open a project</key>
@@ -5352,6 +5404,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>スクリーンショットエディタで開く</string>
 	<key>Open or copy each link and email address.</key>
 	<string>リンクやメールアドレスを、それぞれ開いたりコピーしたりできます。</string>
+	<key>Open the Assistant from Layout ▸ Assistant Panel.</key>
+	<string>「レイアウト」▸「アシスタントパネル」からアシスタントを開きます。</string>
 	<key>Open the LF Studios menu and, under Health, click Fix next to Apple Shortcuts.</key>
 	<string>LF Studiosメニューを開き、“状態”の“Appleのショートカット”の横にある“修正”をクリックします。</string>
 	<key>Open the LF Studios menu in the menu bar and choose Capture Text.</key>
@@ -5466,12 +5520,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>パスワード</string>
 	<key>Paste</key>
 	<string>ペースト</string>
+	<key>Paste a key that starts with %@</key>
+	<string>%@ で始まるキーを貼り付けます</string>
 	<key>Paste it anywhere with ⌘V.</key>
 	<string>⌘Vでどこにでもペーストできます。</string>
 	<key>Paste it into Terminal and press Return.</key>
 	<string>ターミナルに貼り付けてReturnキーを押します。</string>
 	<key>Paste it into ~/.codex/config.toml and save.</key>
 	<string>~/.codex/config.tomlに貼り付けて保存します。</string>
+	<key>Paste key</key>
+	<string>キーを貼り付け</string>
 	<key>Paste or type your notes here. They stay out of every recording.</key>
 	<string>ここにメモを貼り付けるか入力します。メモはどの収録にも映りません。</string>
 	<key>Paste or type your notes, then click Read.</key>
@@ -5834,6 +5892,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>メイントラックの上のクリップを選択した状態で、“プロパティ”＞“トラッキング”。</string>
 	<key>Properties: Show, Opacity, Size, Rotation, Mirror, Rotate 90°, Fit, Fill, Crop, and for videos Volume and Speed.</key>
 	<string>プロパティ: 表示、不透明度、サイズ、回転、左右反転、90°回転、フィット、フィル、切り取り、ビデオでは音量と速度。</string>
+	<key>Provider</key>
+	<string>プロバイダ</string>
+	<key>Provider and model</key>
+	<string>プロバイダとモデル</string>
 	<key>Proxies</key>
 	<string>プロキシ</string>
 	<key>Proxies ready — the editor plays them; exports use the originals</key>
@@ -6546,6 +6608,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Reels、TikTok、Shorts</string>
 	<key>Reframes zooms, moves the camera bubble, and keeps captions in the safe area for %@. This ratio then keeps its own version.</key>
 	<string>%@向けにズームを組み直し、カメラのバブルを動かし、字幕をセーフエリアに収めます。以後この比率は専用のバージョンを持ちます。</string>
+	<key>Refresh</key>
+	<string>更新</string>
 	<key>Regular</key>
 	<string>標準</string>
 	<key>Releasing the mouse takes the shot. Hold ⇧ as you release to adjust the selection first — drag its edges, nudge it with the arrow keys, then press Return.</key>
@@ -6570,6 +6634,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>すべてのズームを削除</string>
 	<key>Remove Intro Card</key>
 	<string>オープニングカードを削除</string>
+	<key>Remove Key</key>
+	<string>キーを削除</string>
 	<key>Remove Music</key>
 	<string>音楽を削除</string>
 	<key>Remove None</key>
@@ -6942,6 +7008,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>新しいバージョンのLF Studiosで保存されています。一部の設定は表示されない場合があります</string>
 	<key>Saved capture</key>
 	<string>保存済みのスクリーンショット</string>
+	<key>Saved in the Keychain</key>
+	<string>キーチェーンに保存済み</string>
 	<key>Saved preset “%@”</key>
 	<string>プリセット“%@”を保存しました</string>
 	<key>Saved to %@: %@</key>
@@ -7192,6 +7260,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>送信</string>
 	<key>Send everything to a video editor</key>
 	<string>すべてをビデオ編集アプリに渡す</string>
+	<key>Send video frames to the AI</key>
+	<string>ビデオのフレームを AI に送る</string>
 	<key>Sepia</key>
 	<string>セピア</string>
 	<key>Set Length at the top of the tab first, or later in the clip's Transition in.</key>
@@ -7232,6 +7302,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>動画サイトが想定する大きさ（−16 LUFS）になるように音量を設定します</string>
 	<key>Settings</key>
 	<string>設定</string>
+	<key>Settings ▸ AI…</key>
+	<string>「設定」▸「AI」…</string>
 	<key>Settings ▸ Agent ▸ Save… gives the agent a guide to LF Studios' tools (for Claude Code, a skill).</key>
 	<string>設定 ▸ エージェント ▸ 保存…で、エージェントにLF Studiosのツールの説明を渡せます（Claude Codeではスキル）。</string>
 	<key>Settings ▸ General ▸ After Capture.</key>
@@ -7676,6 +7748,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ここから開始</string>
 	<key>Start over from the original recording?</key>
 	<string>元の収録に戻しますか?</string>
+	<key>Start over: this chat is removed from the project</key>
+	<string>最初からやり直します：このチャットはプロジェクトから削除されます</string>
 	<key>Start recording</key>
 	<string>収録を開始</string>
 	<key>Start scrolling (Space)</key>
@@ -7732,6 +7806,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>追従を停止</string>
 	<key>Stop following takes it off; a box over something with clear edges follows best.</key>
 	<string>“追従を停止”で追従を外します。輪郭のはっきりしたものにボックスを重ねると、いちばんよく追従します。</string>
+	<key>Stop now: what it changed so far waits for Keep or Revert All</key>
+	<string>今すぐ停止：ここまでの変更は「続ける」か「すべて元に戻す」を待ちます</string>
 	<key>Stop recording</key>
 	<string>収録を停止</string>
 	<key>Stop recording (%@)</key>
@@ -7882,6 +7958,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>色温度</string>
 	<key>Template</key>
 	<string>テンプレート</string>
+	<key>Test Key</key>
+	<string>キーをテスト</string>
+	<key>Testing…</key>
+	<string>テスト中…</string>
 	<key>Text</key>
 	<string>テキスト</string>
 	<key>Text &amp; annotations</key>
@@ -8090,6 +8170,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>受け渡しの準備ができました</string>
 	<key>The highest quality, and the only one that can keep transparency</key>
 	<string>最高画質で、透明部分を保てる唯一のフォーマットです</string>
+	<key>The key works, but it has no chat models.</key>
+	<string>キーは有効ですが、チャット用のモデルがありません。</string>
+	<key>The key works: %lld models</key>
+	<string>キーは有効です：%lld 個のモデル</string>
 	<key>The label under it says how wide the camera is and where it goes in the video. The editor opens with exactly that.</key>
 	<string>下のラベルに、カメラの幅とビデオ内での位置が表示されます。エディタはそのとおりに開きます。</string>
 	<key>The line runs down through every track, so you can see what's under it.</key>
@@ -8354,6 +8438,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>太さ</string>
 	<key>Thin</key>
 	<string>細い</string>
+	<key>Thinking…</key>
+	<string>考え中…</string>
 	<key>This GIF is too long for its size — it would need about %@ of memory. Pick a smaller size or fewer frames per second, export part of the video, or choose MP4.</key>
 	<string>このGIFはサイズに対して長すぎます。約%@のメモリが必要です。サイズやフレームレートを下げるか、ビデオの一部を書き出すか、MP4を選択してください。</string>
 	<key>This Guide</key>
@@ -8368,6 +8454,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>今週</string>
 	<key>This app</key>
 	<string>このアプリ</string>
+	<key>This chat: %@ in · %@ out tokens</key>
+	<string>このチャット：入力 %@ · 出力 %@ トークン</string>
 	<key>This list</key>
 	<string>この一覧</string>
 	<key>This part is cut from the video</key>

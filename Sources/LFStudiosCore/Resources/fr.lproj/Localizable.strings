@@ -22,6 +22,8 @@
 	<string>%@ (⇧⌘Z)</string>
 	<key>%@ (⌘Z)</key>
 	<string>%@ (⌘Z)</string>
+	<key>%@ API key</key>
+	<string>Clé API %@</string>
 	<key>%@ It's in “%@” and opens as before.</key>
 	<string>%@ Il se trouve dans « %@ » et s’ouvre comme avant.</string>
 	<key>%@ Loupe</key>
@@ -44,6 +46,8 @@
 	<string>%@ plein écran</string>
 	<key>%@ has its own version now</key>
 	<string>%@ a maintenant sa propre version</string>
+	<key>%@ in · %@ out tokens</key>
+	<string>%@ entrée · %@ sortie (jetons)</string>
 	<key>%@ is too much for this Mac and would be very slow or fail. Try %@ instead.</key>
 	<string>%@ est trop lourd pour ce Mac : ce serait très lent ou échouerait. Essayez plutôt %@.</string>
 	<key>%@ isn't supported for captions on this Mac. Pick another language.</key>
@@ -304,6 +308,8 @@
 	<string>Une fenêtre de cette taille serait plus grande que l’écran. La plus grande taille de même forme qui tient est %@ × %@.</string>
 	<key>A yellow marker shows where something was cut. Click it to bring the part back.</key>
 	<string>Un repère jaune indique l’endroit d’une coupe. Cliquez dessus pour récupérer le passage.</string>
+	<key>AI</key>
+	<string>IA</string>
 	<key>AI agent</key>
 	<string>Agent IA</string>
 	<key>AI agent connected</key>
@@ -312,6 +318,8 @@
 	<string>Agents IA</string>
 	<key>AI agents are off: Settings ▸ Agent.</key>
 	<string>Les agents IA sont désactivés : Réglages ▸ Agent.</string>
+	<key>API key</key>
+	<string>Clé API</string>
 	<key>About</key>
 	<string>À propos</string>
 	<key>About %lld min left</key>
@@ -388,6 +396,8 @@
 	<string>Ajouter une vidéo de caméra filmée avec un téléphone</string>
 	<key>Add a caption at the playhead</key>
 	<string>Ajouter un sous-titre à la tête de lecture</string>
+	<key>Add a key below, then choose its provider.</key>
+	<string>Ajoutez une clé ci-dessous, puis choisissez son fournisseur.</string>
 	<key>Add a keyframe at the playhead: %@</key>
 	<string>Ajouter une image clé à la tête de lecture : %@</string>
 	<key>Add a marker</key>
@@ -408,6 +418,8 @@
 	<string>Ajouter un zoom à la tête de lecture</string>
 	<key>Add a zoom at the playhead (Z)</key>
 	<string>Ajouter un zoom à la tête de lecture (Z)</string>
+	<key>Add an API key for Claude, OpenAI or Gemini in Settings ▸ AI, then choose its provider.</key>
+	<string>Ajoutez une clé API pour Claude, OpenAI ou Gemini dans Réglages ▸ IA, puis choisissez son fournisseur.</string>
 	<key>Add an API key in Settings ▸ AI first.</key>
 	<string>Ajoutez d’abord une clé API dans Réglages ▸ IA.</string>
 	<key>Add another recording or video after this one — LF Studios recordings keep their pointer, clicks, and shortcuts.</key>
@@ -748,6 +760,10 @@
 	<string>En tant que clip, il reçoit aussi des images clés, des animations, des effets et des filtres.</string>
 	<key>As an effect clip: drag an effect onto the timeline. It changes the main track and the tracks under it while it plays.</key>
 	<string>En clip d’effet : faites glisser un effet sur la timeline. Il modifie la piste principale et les pistes en dessous pendant sa lecture.</string>
+	<key>Ask for an edit: “Cut the long pauses”, “Add captions and fix the typos”, “Mark where the settings open”.</key>
+	<string>Demandez une modification : « Coupe les longues pauses », « Ajoute des sous-titres et corrige les fautes », « Marque l’endroit où s’ouvrent les réglages ».</string>
+	<key>Ask the Assistant to edit…</key>
+	<string>Demandez une modification à l’Assistant…</string>
 	<key>Ask where to save after each recording</key>
 	<string>Demander l’emplacement après chaque enregistrement</string>
 	<key>Aspect Ratio %@ — %@</key>
@@ -756,6 +772,12 @@
 	<string>Format d’image</string>
 	<key>Aspect ratio menu ▸ Fill the Frame, Follow the Cursor.</key>
 	<string>Menu du format d’image ▸ Remplir le cadre et suivre le pointeur.</string>
+	<key>Assistant</key>
+	<string>Assistant</string>
+	<key>Assistant Panel</key>
+	<string>Panneau Assistant</string>
+	<key>Assistant editing</key>
+	<string>L’Assistant modifie</string>
 	<key>At playhead</key>
 	<string>À la tête de lecture</string>
 	<key>At the top of the Captions panel, for recordings made with Speaker notes open.</key>
@@ -832,6 +854,8 @@
 	<string>Retour</string>
 	<key>Back to how the project was before the agent started (⌘Z brings the changes back)</key>
 	<string>Revenir au projet tel qu’il était avant l’agent (⌘Z rétablit les modifications)</string>
+	<key>Back to how the project was before this request (⌘Z brings the changes back)</key>
+	<string>Revenir au projet tel qu’il était avant cette demande (⌘Z rétablit les modifications)</string>
 	<key>Back to the LF Studios look</key>
 	<string>Retour au style LF Studios</string>
 	<key>Back to the original recording — ⌘Z to undo</key>
@@ -1348,6 +1372,8 @@
 	<string>Les chapitres en texte (« 0:00 Début ») pour une description YouTube</string>
 	<key>Chapters copied — paste them into the video's description</key>
 	<string>Chapitres copiés — collez-les dans la description de la vidéo</string>
+	<key>Chat with an AI that edits this video with you, using your own API key. Requests go straight from this Mac to the provider.</key>
+	<string>Discutez avec une IA qui modifie cette vidéo avec vous, avec votre propre clé API. Les demandes vont directement de ce Mac au fournisseur.</string>
 	<key>Check</key>
 	<string>Vérifier</string>
 	<key>Check Settings ▸ General ▸ Show menu bar icon.</key>
@@ -1436,6 +1462,8 @@
 	<string>Choisissez une langue et cliquez sur Traduire.</string>
 	<key>Choose a logo, watermark, or screenshot to place on the video</key>
 	<string>Choisissez un logo, un filigrane ou une capture d’écran à placer sur la vidéo</string>
+	<key>Choose a model</key>
+	<string>Choisir un modèle</string>
 	<key>Choose a picture.</key>
 	<string>Choisissez une image.</string>
 	<key>Choose a project, a folder, or a video</key>
@@ -1730,6 +1758,8 @@
 	<string>Cliquez sur Son de l’ordinateur dans la barre d’enregistrement, ou Réglages ▸ Enregistrement ▸ Audio ▸ Enregistrer le son de l’ordinateur.</string>
 	<key>Click Take screenshot in Home.</key>
 	<string>Cliquez sur Faire une capture d’écran dans l’accueil.</string>
+	<key>Click Test Key to load the models.</key>
+	<string>Cliquez sur Tester la clé pour charger les modèles.</string>
 	<key>Click Transcribe with Whisper.</key>
 	<string>Cliquez sur Transcrire avec Whisper.</string>
 	<key>Click Transcribe. Keep editing while it listens.</key>
@@ -2726,6 +2756,8 @@
 	<string>Chaque enregistrement dans son propre dossier</string>
 	<key>Each recording keeps its own pointer, clicks, and shortcuts. Reorder them here; cut and trim them on the timeline like any clip.</key>
 	<string>Chaque enregistrement conserve son pointeur, ses clics et ses raccourcis. Réorganisez-les ici ; coupez-les et raccourcissez-les dans la timeline comme n’importe quel clip.</string>
+	<key>Each request is billed to your account by the provider; the Assistant shows the tokens each reply used. Keys are kept only in your Mac's Keychain.</key>
+	<string>Chaque demande est facturée sur votre compte par le fournisseur ; l’Assistant indique les jetons utilisés par chaque réponse. Les clés restent uniquement dans le trousseau de votre Mac.</string>
 	<key>Each shape keeps its own version: switch back and forth without losing anything. Cuts, words, and styles stay shared.</key>
 	<string>Chaque forme garde sa propre version : passez de l’une à l’autre sans rien perdre. Les coupes, les mots et les styles restent communs.</string>
 	<key>Each track has its own Hide, Mute and Lock in its header.</key>
@@ -3374,6 +3406,8 @@
 	<string>Espace entre les parties</string>
 	<key>General</key>
 	<string>Général</string>
+	<key>Get a key</key>
+	<string>Obtenir une clé</string>
 	<key>Get the area exactly right: a magnifier, the size as you drag, and keys to fine-tune.</key>
 	<string>Obtenez exactement la bonne zone : une loupe, la taille pendant que vous faites glisser et des touches pour l’ajuster.</string>
 	<key>Get things ready while the countdown runs.</key>
@@ -3510,6 +3544,8 @@
 	<string>Masquer les infos privées</string>
 	<key>Hide the Agent panel</key>
 	<string>Masquer le panneau Agent</string>
+	<key>Hide the Assistant panel</key>
+	<string>Masquer le panneau Assistant</string>
 	<key>Hide the Menu Bar Icon?</key>
 	<string>Masquer l’icône de la barre des menus ?</string>
 	<key>Hide the camera whenever you're not talking, and bring it back when you speak.</key>
@@ -3994,6 +4030,8 @@
 	<string>Conserver la hauteur</string>
 	<key>Keep the agent's changes (each still undoes with ⌘Z)</key>
 	<string>Conserver les modifications de l’agent (chacune s’annule encore avec ⌘Z)</string>
+	<key>Keep the changes (each still undoes with ⌘Z)</key>
+	<string>Garder les modifications (chacune s’annule encore avec ⌘Z)</string>
 	<key>Keep the current style</key>
 	<string>Garder le style actuel</string>
 	<key>Keeps just the person, found on this Mac</key>
@@ -4006,6 +4044,8 @@
 	<string>Réservé à %@</string>
 	<key>Kept the agent's changes</key>
 	<string>Modifications de l’agent conservées</string>
+	<key>Key ending in %@</key>
+	<string>Clé se terminant par %@</string>
 	<key>Key for %@: %@</key>
 	<string>Touche de %1$@ : %2$@</string>
 	<key>Key or password</key>
@@ -4342,6 +4382,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Écoute…</string>
 	<key>Listens on this Mac — nothing is uploaded</key>
 	<string>L’écoute se fait sur ce Mac — rien n’est envoyé</string>
+	<key>Load the provider's current models</key>
+	<string>Charger les modèles actuels du fournisseur</string>
 	<key>Loaded:</key>
 	<string>Chargé :</string>
 	<key>Locate…</key>
@@ -4428,6 +4470,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Alléger : %@, %@ fps</string>
 	<key>Make my videos look the same every time</key>
 	<string>Donner le même style à toutes mes vidéos</string>
+	<key>Make one on the provider's website; it bills your account there.</key>
+	<string>Créez-en une sur le site du fournisseur ; il facture votre compte chez lui.</string>
 	<key>Make several clips above the main track into one: moved, sized, turned and faded together.</key>
 	<string>Réunissez plusieurs clips au-dessus de la piste principale en un seul : déplacés, redimensionnés, pivotés et estompés ensemble.</string>
 	<key>Make sure LF Studios is allowed under Microphone in System Settings. It appears there only after it has asked once, and there's no + button: turn on Microphone in the recording bar and click Allow.</key>
@@ -4520,6 +4564,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Message</string>
 	<key>Message QR found</key>
 	<string>Code QR avec message détecté</string>
+	<key>Message to the Assistant</key>
+	<string>Message à l’Assistant</string>
 	<key>Mic disconnected</key>
 	<string>Micro déconnecté</string>
 	<key>Mic stopped</key>
@@ -4816,6 +4862,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Ne jamais passer au curseur de texte ni à la main</string>
 	<key>New</key>
 	<string>Nouveau</string>
+	<key>New Chat</key>
+	<string>Nouveau chat</string>
 	<key>New Folder</key>
 	<string>Nouveau dossier</string>
 	<key>New Folder…</key>
@@ -5088,6 +5136,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Désactivé, il reste sur la timeline mais n’est ni vu ni entendu (V)</string>
 	<key>Off: faster sounds higher, slower lower. The sound is silent faster than 32× or slower than 1/32×.</key>
 	<string>Désactivé : plus rapide sonne plus aigu, plus lent plus grave. Le son est coupé au-delà de 32× ou en deçà de 1/32×.</string>
+	<key>Off: only the timeline, the transcript and the captions are sent. On: the AI can also look at frames of the video.</key>
+	<string>Désactivé : seuls la timeline, la transcription et les sous-titres sont envoyés. Activé : l’IA peut aussi regarder des images de la vidéo.</string>
 	<key>Offset</key>
 	<string>Décalage</string>
 	<key>Older</key>
@@ -5206,6 +5256,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Ouvrez Timeline.fcpxml dans Final Cut Pro ou DaVinci Resolve, ou “Timeline (Premiere).xml” dans Premiere Pro.</string>
 	<key>Open Video Editor</key>
 	<string>Ouvrir l’éditeur vidéo</string>
+	<key>Open Website</key>
+	<string>Ouvrir le site</string>
 	<key>Open a folder of files as one project: a recording's folder, a Creative Handoff, or any folder with videos in it.</key>
 	<string>Ouvrez un dossier de fichiers comme un seul projet : le dossier d’un enregistrement, une Transmission créative ou tout dossier contenant des vidéos.</string>
 	<key>Open a project</key>
@@ -5236,6 +5288,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Ouvrir dans l’éditeur de captures</string>
 	<key>Open or copy each link and email address.</key>
 	<string>Ouvrez ou copiez chaque lien et chaque adresse e-mail.</string>
+	<key>Open the Assistant from Layout ▸ Assistant Panel.</key>
+	<string>Ouvrez l’Assistant depuis Disposition ▸ Panneau Assistant.</string>
 	<key>Open the LF Studios menu and, under Health, click Fix next to Apple Shortcuts.</key>
 	<string>Ouvrez le menu LF Studios et, sous État, cliquez sur Corriger à côté de Raccourcis Apple.</string>
 	<key>Open the LF Studios menu in the menu bar and choose Capture Text.</key>
@@ -5350,12 +5404,16 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Mot de passe</string>
 	<key>Paste</key>
 	<string>Coller</string>
+	<key>Paste a key that starts with %@</key>
+	<string>Collez une clé commençant par %@</string>
 	<key>Paste it anywhere with ⌘V.</key>
 	<string>Collez-le où vous voulez avec ⌘V.</string>
 	<key>Paste it into Terminal and press Return.</key>
 	<string>Collez-le dans Terminal et appuyez sur Retour.</string>
 	<key>Paste it into ~/.codex/config.toml and save.</key>
 	<string>Collez-le dans ~/.codex/config.toml et enregistrez.</string>
+	<key>Paste key</key>
+	<string>Coller la clé</string>
 	<key>Paste or type your notes here. They stay out of every recording.</key>
 	<string>Collez ou tapez vos notes ici. Elles n’apparaissent dans aucun enregistrement.</string>
 	<key>Paste or type your notes, then click Read.</key>
@@ -5716,6 +5774,10 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Propriétés ▸ Suivi, avec un clip au-dessus de la piste principale sélectionné.</string>
 	<key>Properties: Show, Opacity, Size, Rotation, Mirror, Rotate 90°, Fit, Fill, Crop, and for videos Volume and Speed.</key>
 	<string>Propriétés : Afficher, Opacité, Taille, Rotation, Miroir, Pivoter de 90°, Ajuster, Remplir, Rognage, et pour les vidéos Volume et Vitesse.</string>
+	<key>Provider</key>
+	<string>Fournisseur</string>
+	<key>Provider and model</key>
+	<string>Fournisseur et modèle</string>
 	<key>Proxies</key>
 	<string>Proxys</string>
 	<key>Proxies ready — the editor plays them; exports use the originals</key>
@@ -6422,6 +6484,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Reels, TikTok, Shorts</string>
 	<key>Reframes zooms, moves the camera bubble, and keeps captions in the safe area for %@. This ratio then keeps its own version.</key>
 	<string>Recadre les zooms, déplace la bulle de caméra et garde les sous-titres dans la zone sûre pour le %@. Ce format garde ensuite sa propre version.</string>
+	<key>Refresh</key>
+	<string>Actualiser</string>
 	<key>Regular</key>
 	<string>Normal</string>
 	<key>Releasing the mouse takes the shot. Hold ⇧ as you release to adjust the selection first — drag its edges, nudge it with the arrow keys, then press Return.</key>
@@ -6444,6 +6508,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Supprimer tous les zooms</string>
 	<key>Remove Intro Card</key>
 	<string>Supprimer le carton d’intro</string>
+	<key>Remove Key</key>
+	<string>Supprimer la clé</string>
 	<key>Remove Music</key>
 	<string>Supprimer la musique</string>
 	<key>Remove None</key>
@@ -6804,6 +6870,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Enregistré par une version plus récente de LF Studios : certains réglages peuvent ne pas apparaître</string>
 	<key>Saved capture</key>
 	<string>Capture enregistrée</string>
+	<key>Saved in the Keychain</key>
+	<string>Enregistrée dans le trousseau</string>
 	<key>Saved preset “%@”</key>
 	<string>Préréglage « %@ » enregistré</string>
 	<key>Saved to %@: %@</key>
@@ -7050,6 +7118,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Envoyer</string>
 	<key>Send everything to a video editor</key>
 	<string>Tout envoyer vers un logiciel de montage</string>
+	<key>Send video frames to the AI</key>
+	<string>Envoyer des images de la vidéo à l’IA</string>
 	<key>Sepia</key>
 	<string>Sépia</string>
 	<key>Set Length at the top of the tab first, or later in the clip's Transition in.</key>
@@ -7090,6 +7160,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Règle le volume pour qu’il soit aussi fort que l’attendent les sites vidéo (−16 LUFS)</string>
 	<key>Settings</key>
 	<string>Réglages</string>
+	<key>Settings ▸ AI…</key>
+	<string>Réglages ▸ IA…</string>
 	<key>Settings ▸ Agent ▸ Save… gives the agent a guide to LF Studios' tools (for Claude Code, a skill).</key>
 	<string>Réglages ▸ Agent ▸ Enregistrer… donne à l’agent un guide des outils de LF Studios (pour Claude Code, une skill).</string>
 	<key>Settings ▸ General ▸ After Capture.</key>
@@ -7522,6 +7594,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Commencer ici</string>
 	<key>Start over from the original recording?</key>
 	<string>Recommencer à partir de l’enregistrement d’origine ?</string>
+	<key>Start over: this chat is removed from the project</key>
+	<string>Recommencer : ce chat est retiré du projet</string>
 	<key>Start recording</key>
 	<string>Démarrer l’enregistrement</string>
 	<key>Start scrolling (Space)</key>
@@ -7578,6 +7652,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Arrêter le suivi</string>
 	<key>Stop following takes it off; a box over something with clear edges follows best.</key>
 	<string>Arrêter le suivi le retire ; un cadre placé sur quelque chose aux contours nets suit mieux.</string>
+	<key>Stop now: what it changed so far waits for Keep or Revert All</key>
+	<string>Arrêter maintenant : les modifications déjà faites attendent Garder ou Tout annuler</string>
 	<key>Stop recording</key>
 	<string>Arrêter l’enregistrement</string>
 	<key>Stop recording (%@)</key>
@@ -7728,6 +7804,10 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Température</string>
 	<key>Template</key>
 	<string>Modèle</string>
+	<key>Test Key</key>
+	<string>Tester la clé</string>
+	<key>Testing…</key>
+	<string>Test…</string>
 	<key>Text</key>
 	<string>Texte</string>
 	<key>Text &amp; annotations</key>
@@ -7936,6 +8016,10 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>La transmission est prête</string>
 	<key>The highest quality, and the only one that can keep transparency</key>
 	<string>La meilleure qualité, et la seule qui peut garder la transparence</string>
+	<key>The key works, but it has no chat models.</key>
+	<string>La clé fonctionne, mais elle n’a aucun modèle de chat.</string>
+	<key>The key works: %lld models</key>
+	<string>La clé fonctionne : %lld modèles</string>
 	<key>The label under it says how wide the camera is and where it goes in the video. The editor opens with exactly that.</key>
 	<string>L’étiquette en dessous indique la largeur de la caméra et sa place dans la vidéo. L’éditeur s’ouvre exactement ainsi.</string>
 	<key>The line runs down through every track, so you can see what's under it.</key>
@@ -8200,6 +8284,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Épaisseur</string>
 	<key>Thin</key>
 	<string>Fin</string>
+	<key>Thinking…</key>
+	<string>Réflexion…</string>
 	<key>This GIF is too long for its size — it would need about %@ of memory. Pick a smaller size or fewer frames per second, export part of the video, or choose MP4.</key>
 	<string>Ce GIF est trop long pour sa taille — il faudrait environ %@ de mémoire. Choisissez une taille plus petite ou moins d’images par seconde, exportez une partie de la vidéo, ou choisissez MP4.</string>
 	<key>This Guide</key>
@@ -8214,6 +8300,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Cette semaine</string>
 	<key>This app</key>
 	<string>Cette app</string>
+	<key>This chat: %@ in · %@ out tokens</key>
+	<string>Ce chat : %@ entrée · %@ sortie (jetons)</string>
 	<key>This list</key>
 	<string>Cette liste</string>
 	<key>This part is cut from the video</key>
