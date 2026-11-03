@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.19.1]
+
+### Changed
+- **Tacks are saved with the project:** close it and open it again, and an agent's notes and questions are still there, with your answers, even when no agent is connected. Answering or dismissing one isn't a ⌘Z step, and Revert all keeps them.
+
+### Fixed
+- A video on a track above the main track faded from full to nearly silent across its length. It now keeps its level to its end, with its fades and volume keyframes as you set them.
+- An agent can leave a Tack while you've taken over the editor, as it's told it can (1.19.0 refused it).
+
+### Compatibility
+- Projects with a video on a track above the main track now sound different from 1.18.0 and 1.19.0 there: the video's sound stays at its level instead of fading out. That's the fix, not a new setting. Every other project exports the same picture and sound as before.
+- A project with Tacks needs 1.19.1 or later; older versions say it needs a newer version. Projects without Tacks are saved as before.
+
 ## [1.19.0] - 2026-11-02
 
 ### Added

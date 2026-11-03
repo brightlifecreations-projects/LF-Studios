@@ -280,6 +280,10 @@ final class VideoAgentTests: XCTestCase {
         XCTAssertTrue(paused.json["error"]?.string?.contains("took over") ?? false)
         XCTAssertEqual(model.project.timelineClips.count, 1)
         _ = try await tool("get_timeline")  // reading still works
+        let asked = try await tool("add_tack", ["time": .number(2), "text": .string("Shall I split here?"), "question": .bool(true)])
+        XCTAssertFalse(asked.isError, "a Tack can still be left")
+        XCTAssertEqual(model.project.tacks?.count, 1)
+        XCTAssertTrue(hub.run(for: model)?.paused ?? false, "and the run stays paused")
         hub.resume(model)
         let resumed = try await tool("split", ["time": .number(2)])
         XCTAssertFalse(resumed.isError)
@@ -327,10 +331,78 @@ final class VideoAgentTests: XCTestCase {
         tacks = try await tool("list_tacks").json["tacks"]?.array ?? []
         XCTAssertEqual(tacks.first?["time"]?.double ?? 0, 2, accuracy: 0.05, "with its clip")
         // The user answers.
-        let run = try XCTUnwrap(hub.run(for: model))
-        run.tacks[0].answer = "Yes"
+        model.changeTacks { $0[0].answer = "Yes" }
         tacks = try await tool("list_tacks").json["tacks"]?.array ?? []
         XCTAssertEqual(tacks.first?["answer"]?.string, "Yes")
+    }
+
+    /// Tacks are saved with the project (1.19.1): they come back when it
+    /// opens again, and ⌘Z and Revert all leave them be. Only a project
+    /// with Tacks is written as format 6, which 1.19.0 (format 5) refuses
+    /// as "needs a newer version"; without them it's written as before.
+    func testTacksAreSavedWithTheProject() async throws {
+        try await turnOn()
+        try await initialize()
+        XCTAssertFalse(model.project.needsFormat6)
+        let plain = VideoProjectDocument(mediaMode: .linked, project: model.project, recording: nil)
+        XCTAssertLessThan(plain.version, 6)
+        XCTAssertFalse(String(decoding: try plain.encoded(), as: UTF8.self).contains("\"tacks\""), "no Tacks: written as 1.19.0 wrote it")
+
+        let before = model.project.timelineClips
+        _ = try await tool("begin_agent_session", ["goal": .string("Tighten it")])
+        _ = try await tool("split", ["time": .number(2)])
+        XCTAssertNotEqual(model.project.timelineClips, before)
+        let depth = model.undoDepth
+        _ = try await tool("add_tack", ["time": .number(3), "text": .string("Cut this pause?"), "question": .bool(true)])
+        _ = try await tool("add_tack", ["time": .number(1), "text": .string("I split at 2 s.")])
+        XCTAssertEqual(model.project.tacks?.count, 2)
+        // The user answers one and dismisses the other: notes, not ⌘Z steps.
+        model.changeTacks { tacks in
+            tacks[0].answer = "Yes"
+            tacks[1].dismissed = true
+        }
+        XCTAssertEqual(model.undoDepth, depth, "a Tack is never a ⌘Z step")
+        model.undo()
+        XCTAssertEqual(model.project.timelineClips, before, "⌘Z takes back the split")
+        XCTAssertEqual(model.project.tacks?.count, 2, "and leaves the Tacks")
+        model.redo()
+        XCTAssertEqual(model.project.tacks?.first?.answer, "Yes")
+        hub.revertAll(on: model)
+        XCTAssertEqual(model.project.timelineClips, before, "Revert all takes back the split")
+        XCTAssertEqual(model.project.tacks?.first?.answer, "Yes", "and keeps the answer")
+        XCTAssertEqual(model.project.tacks?.last?.dismissed, true)
+
+        // The file: format 6, which 1.19.0 and earlier refuse.
+        XCTAssertTrue(model.project.needsFormat6)
+        let document = VideoProjectDocument(mediaMode: .linked, project: model.project, recording: nil)
+        XCTAssertEqual(document.version, 6)
+        XCTAssertEqual(document.format, VideoProjectDocument.format4)
+        XCTAssertTrue(String(decoding: try document.encoded(), as: UTF8.self).contains("\"requires\" : 6"))
+        XCTAssertEqual(VideoProjectDocument.firstVersionOpening(model.project), "1.19.1")
+
+        // Saved, then opened in an editor of its own.
+        let package = directory.appendingPathComponent("Tacked.lfs", isDirectory: true)
+        try VideoProjectPackage.save(model.projectContents, to: package, mode: .linked)
+        let opened = try VideoProjectPackage.open(package)
+        XCTAssertEqual(opened.contents.project.tacks, model.project.tacks)
+        hub.forget(model)
+        let primary = try XCTUnwrap(VideoProjectOpener.prepare(opened, ask: { _ in false }))
+        let reopened = VideoEditorModel(videoURL: primary)
+        reopened.projectFileURL = package
+        reopened.projectMediaMode = .linked
+        await reopened.load()
+        model = reopened
+        XCTAssertNil(hub.run(for: reopened), "no agent working")
+        let listed = try await tool("list_tacks").json["tacks"]?.array ?? []
+        XCTAssertEqual(listed.count, 2, "the agent reads them in a new session")
+        XCTAssertEqual(listed.first?["answer"]?.string, "Yes")
+        XCTAssertEqual(listed.first?["time"]?.double ?? 0, 3, accuracy: 0.05)
+        XCTAssertEqual(listed.last?["dismissed"]?.bool, true)
+
+        // Without its last Tack, a project goes back to the earlier format.
+        reopened.changeTacks { $0.removeAll() }
+        XCTAssertNil(reopened.project.tacks)
+        XCTAssertLessThan(VideoProjectDocument(mediaMode: .linked, project: reopened.project, recording: nil).version, 6)
     }
 
     // MARK: The bridge

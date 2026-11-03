@@ -185,6 +185,69 @@ final class VideoLinkedAudioTests: XCTestCase {
         }
     }
 
+    /// A video on a track above keeps its level to its end (before 1.19.1
+    /// it faded from full to nearly silent across the item), with fades,
+    /// volume keyframes, unlinked sound and a muted neighbour; muted stays
+    /// silent.
+    func testAVideoAboveTheMainTrackKeepsItsLevel() async throws {
+        let silent = directory.appendingPathComponent("silent.mp4")
+        try await VideoInspection.writeColorVideo(to: silent, size: CGSize(width: 320, height: 180), colors: [(.white, 8)])
+        let toned = directory.appendingPathComponent("toned.mp4")
+        try await VideoInspection.writeColorVideo(to: toned, size: CGSize(width: 320, height: 180), colors: [(.red, 4)], toneSeconds: 4)
+        func item(at: Double) -> VideoLayerItem {
+            VideoLayerItem(kind: .video, path: toned.path, name: "toned.mp4", at: at, length: 3, fileDuration: 4, aspect: 16.0 / 9)
+        }
+        func exported(_ name: String, _ items: [VideoLayerItem], trackMuted: Bool = false) async throws -> [Float] {
+            var project = VideoDemoProject.make(sourceURL: silent, duration: 8, sourceSize: CGSize(width: 320, height: 180))
+            project.audio.normalizeLoudness = false
+            let track = VideoLayerTrack(items: items)
+            project.layerTracks = [track]
+            if trackMuted { project.setTrackState(.layer(track.id)) { $0.muted = true } }
+            let out = directory.appendingPathComponent("\(name).mp4")
+            try await VideoDemoExporter.export(project: project, recording: nil, destinationURL: out, settings: settings)
+            return try VideoInspection.audio(of: out)
+        }
+        func steady(_ samples: [Float], from start: Double, to end: Double, _ name: String) {
+            let first = VideoInspection.rms(samples, from: start, to: start + 0.3)
+            let last = VideoInspection.rms(samples, from: end - 0.3, to: end)
+            XCTAssertGreaterThan(first, 0.1, "\(name): heard")
+            XCTAssertEqual(last, first, accuracy: first * 0.1, "\(name): as loud at its end as at its start")
+        }
+
+        steady(try await exported("plain", [item(at: 1)]), from: 1.1, to: 3.9, "plain")
+
+        var faded = item(at: 1)
+        faded.soundFadeIn = 0.5
+        faded.soundFadeOut = 0.5
+        let fadedSound = try await exported("faded", [faded])
+        steady(fadedSound, from: 1.6, to: 3.4, "between its fades")
+        XCTAssertLessThan(VideoInspection.rms(fadedSound, from: 3.9, to: 4), VideoInspection.rms(fadedSound, from: 3.1, to: 3.4) * 0.5, "the fade out still fades")
+
+        var keyed = item(at: 1)
+        keyed.volume = 1
+        var keys = VideoKeyframes()
+        keys.set(.volume, at: 1, value: 1)
+        keys.set(.volume, at: 1.5, value: 0.5)
+        keyed.keys = keys
+        let keyedSound = try await exported("keyed", [keyed])
+        steady(keyedSound, from: 1.1, to: 1.9, "before the first key")
+        steady(keyedSound, from: 2.6, to: 3.9, "after the last key")
+        XCTAssertEqual(VideoInspection.rms(keyedSound, from: 3.4, to: 3.9), VideoInspection.rms(keyedSound, from: 1.2, to: 1.7) * 0.5, accuracy: 0.03, "at the last key's level")
+
+        var unlinked = item(at: 1)
+        unlinked.audioOffset = 1
+        steady(try await exported("unlinked", [unlinked]), from: 2.1, to: 4.9, "unlinked and moved")
+
+        var quiet = item(at: 4)
+        quiet.muted = true
+        let neighbours = try await exported("neighbours", [item(at: 1), quiet])
+        steady(neighbours, from: 1.1, to: 3.9, "before a muted item")
+        XCTAssertLessThan(VideoInspection.rms(neighbours, from: 4.1, to: 6.9), 0.001, "the muted item is silent")
+
+        let mutedTrack = try await exported("muted-track", [item(at: 1)], trackMuted: true)
+        XCTAssertLessThan(VideoInspection.rms(mutedTrack, from: 1.1, to: 3.9), 0.001, "a muted track is silent")
+    }
+
     /// A video on a track above (1.19.0): its sound unlinked and moved
     /// plays later; one ⌘Z step each; the new format only then.
     func testAVideoAboveTheMainTrackUnlinksToo() async throws {

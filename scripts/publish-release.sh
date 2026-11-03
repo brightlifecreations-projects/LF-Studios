@@ -196,3 +196,19 @@ FEED="$(curl -fsL "${RELEASES_URL}/releases/latest/download/appcast.xml" || true
 echo ""
 echo "✓ Published: ${RELEASES_URL}/releases/tag/${TAG}"
 echo "  (and $REPO_URL/releases/tag/${TAG})"
+
+# MARK: Clean up
+
+# The release's own files, now on GitHub: the zip, feed and notes, the
+# universal app and each architecture's release build. The next rehearsal
+# downloads the published release, so nothing here is needed again. The
+# shared compile cache stays (tests and the next build reuse it). Only
+# after a successful publish: a failed one leaves them to look at.
+FREED_BEFORE="$(df -k "$ROOT" | awk 'NR==2 { print $4 }')"
+RELEASE_PRODUCTS="$(swift build -c release --show-bin-path 2>/dev/null || true)"
+rm -rf "$DIST" "$ROOT/.build/universal" "$ROOT/.build/app.noindex"
+case "$RELEASE_PRODUCTS" in
+    "$ROOT"/.build/*) rm -rf "$RELEASE_PRODUCTS" ;;
+esac
+FREED_AFTER="$(df -k "$ROOT" | awk 'NR==2 { print $4 }')"
+echo "▶ Cleaned up the release's build files ($(( (FREED_AFTER - FREED_BEFORE) / 1024 )) MB)"

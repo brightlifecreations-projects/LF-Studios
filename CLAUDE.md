@@ -80,8 +80,9 @@ The script sets the version in Info.plist, dates the CHANGELOG section
 commits and pushes, builds the universal app, zips it, signs the zip with
 the update key, writes the update feed (appcast.xml, via generate-appcast.sh;
 the update window shows that CHANGELOG section), rehearses the update, and
-creates the GitHub Releases. It builds on this Mac, so it uses no GitHub
-Actions minutes.
+creates the GitHub Releases. After a successful publish it deletes that
+release's build files (zip, feed, universal app, release products). It
+builds on this Mac, so it uses no GitHub Actions minutes.
 
 The rehearsal (`scripts/rehearse-update.sh`) proves the update works, not
 just that the feed offers it: it runs the latest published release from a

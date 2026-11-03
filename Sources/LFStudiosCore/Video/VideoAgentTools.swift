@@ -114,7 +114,9 @@ final class VideoAgentProtocol {
         }
         let hub = VideoAgentHub.shared
         let dryRun = args["dry_run"]?.bool ?? false
-        if !tool.readOnly, !dryRun, tool.name != "begin_agent_session", tool.name != "end_agent_session" {
+        // A Tack is a note, not an edit: it can always be left, also while
+        // the user has taken over (1.19.1; 1.19.0 refused it then).
+        if !tool.readOnly, !dryRun, !["begin_agent_session", "end_agent_session", "add_tack"].contains(tool.name) {
             if let run = hub.run(for: model) {
                 if run.paused {
                     return .error("The user took over the editor. Wait, then try again after they click Resume in the Agent panel. You can still read, and leave a Tack.")
@@ -523,14 +525,14 @@ enum VideoAgentTools {
                 guard let time = args["time"]?.double, let words = args["text"]?.string, !words.isEmpty else { throw VideoAgentToolError.forAgent("time and text are needed") }
                 if dryRun { return VideoAgentToolResult(json: .object(["ok": .bool(true), "dry_run": .bool(true)])) }
                 let hub = VideoAgentHub.shared
-                let run = hub.run(for: model) ?? hub.begin(on: model, goal: "")
+                if hub.run(for: model) == nil { hub.begin(on: model, goal: "") }
                 let tack = VideoTack(anchor: model.tackAnchor(at: time, item: try uuid(args, "item_id")), text: words, isQuestion: args["question"]?.bool ?? false)
-                run.tacks.append(tack)
+                model.changeTacks { $0.append(tack) }
                 hub.record(VideoAgentChange(date: Date(), title: (tack.isQuestion ? "? " : "") + words, tool: "add_tack", time: time, selection: nil, refused: true), on: model)
                 return VideoAgentToolResult(json: .object(["ok": .bool(true), "tack_id": .string(tack.id.uuidString)]))
             },
-            VideoAgentTool(name: "list_tacks", description: "Your notes and questions, where they are now, and the user's answers (or that they dismissed them).", properties: [:], readOnly: true) { model, _, _ in
-                let tacks = VideoAgentHub.shared.run(for: model)?.tacks ?? []
+            VideoAgentTool(name: "list_tacks", description: "The project's notes and questions (yours, and any left in earlier sessions: they're saved with the project), where they are now, and the user's answers (or that they dismissed them).", properties: [:], readOnly: true) { model, _, _ in
+                let tacks = model.project.tacks ?? []
                 return VideoAgentToolResult(json: .object(["tacks": .array(tacks.map { tack in
                     .object(["id": .string(tack.id.uuidString), "text": .string(tack.text), "question": .bool(tack.isQuestion), "time": model.timelineTime(of: tack).map { round($0) } ?? .null,
                              "answer": tack.answer.map { .string($0) } ?? .null, "dismissed": .bool(tack.dismissed)])

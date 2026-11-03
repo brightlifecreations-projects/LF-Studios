@@ -964,6 +964,9 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
     /// Resolution, frame rate and colour space (1.16.0; Project settings,
     /// VideoProjectSettings.swift). nil: never set, as before.
     var projectSettings: VideoProjectSettings?
+    /// An agent's notes and questions pinned to moments (1.19.1;
+    /// VideoAgent.swift). nil or empty: none, written as before.
+    var tacks: [VideoTack]?
 
     var sourceURL: URL { URL(fileURLWithPath: sourcePath) }
     var sourceSize: CGSize { CGSize(width: sourceWidth, height: sourceHeight) }
@@ -1520,7 +1523,7 @@ extension VideoDemoProject {
         case webcam, cameraLayouts, importedCamera, splitVideoAspect, customAspect, trackStates, autoZoom, reframe, captions, transcriptLanguage, captionStyle, keystrokes, keystrokeStyle, crop
         case cards, music, audioTracks, clickSounds, transitions, captionTracks, sources, imageOverlayEffects, markers
         case textCursor, keyPresses, loupeStyle, faceTracking, carriedVoices, speakerNotes
-        case ratioVersions, ratioShared, ratioBase, previousRatio, reframeFollowsZooms, mediaBin, layerTracks, compounds, cover, projectSettings
+        case ratioVersions, ratioShared, ratioBase, previousRatio, reframeFollowsZooms, mediaBin, layerTracks, compounds, cover, projectSettings, tacks
         // Legacy (v1) keys
         case backgroundPreset, customBackgroundPath, stageInset, shadowStrength, zoomKeyframes
         case showCursorOverlay, enlargeCursor, showClickRipple, smoothCursor, cursorScale, clickSpotlight, cursorMotionBlur
@@ -1584,6 +1587,7 @@ extension VideoDemoProject {
         compounds = (try? container.decodeIfPresent([VideoCompoundClip].self, forKey: .compounds)).flatMap { $0 }
         cover = (try? container.decodeIfPresent(VideoCover.self, forKey: .cover)).flatMap { $0 }
         projectSettings = (try? container.decodeIfPresent(VideoProjectSettings.self, forKey: .projectSettings)).flatMap { $0 }
+        tacks = (try? container.decodeIfPresent([VideoTack].self, forKey: .tacks)).flatMap { $0 }
 
         let storedVersion = try container.decodeIfPresent(Int.self, forKey: .version) ?? 1
         if storedVersion >= 2 {
@@ -1682,6 +1686,7 @@ extension VideoDemoProject {
         if let compounds, !compounds.isEmpty { try container.encode(compounds, forKey: .compounds) }
         if let cover { try container.encode(cover, forKey: .cover) }
         if let projectSettings { try container.encode(projectSettings, forKey: .projectSettings) }
+        if let tacks, !tacks.isEmpty { try container.encode(tacks, forKey: .tacks) }
         try container.encode(cursorSamples, forKey: .cursorSamples)
         try container.encode(clickEvents, forKey: .clickEvents)
         try container.encode(nativeCursorVisible, forKey: .nativeCursorVisible)

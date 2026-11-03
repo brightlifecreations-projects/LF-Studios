@@ -8,6 +8,11 @@ import XCTest
 /// project's export, measured, against what 1.17.0 measured of the same
 /// recordings (Fixtures/Projects118, written by running this test there
 /// with LF_PIXEL_RECORD=1).
+///
+/// One intended difference (1.19.1): the "layered" project's video above
+/// the main track used to fade from full to nearly silent across its 2.5 s;
+/// it now keeps its level. Its sound there is checked to be steady
+/// instead; its picture, and its sound before and after it, still match.
 @MainActor
 final class Project118SoundTests: XCTestCase {
     override class func setUp() {
@@ -191,13 +196,25 @@ final class Project118SoundTests: XCTestCase {
                 continue
             }
             let saved = try JSONDecoder().decode(Fingerprint.self, from: Data(contentsOf: reference))
+            // The layered project's video above plays from 0.5 s to 3 s.
+            let changed: (Double, Double) -> Bool = { start, end in kind.name == "layered" && end > 0.5 && start < 3 }
             XCTAssertEqual(measured.rms.count, saved.rms.count, "\(kind.name): as long as before")
-            for (i, (a, b)) in zip(measured.rms, saved.rms).enumerated() {
+            for (i, (a, b)) in zip(measured.rms, saved.rms).enumerated() where !changed(Double(i) / 10, Double(i + 1) / 10) {
                 XCTAssertEqual(a, b, accuracy: 0.005 + b * 0.03, "\(kind.name): loudness at \(Double(i) / 10) s")
             }
             for (tone, levels) in saved.tones {
-                for (i, (a, b)) in zip(measured.tones[tone] ?? [], levels).enumerated() {
+                for (i, (a, b)) in zip(measured.tones[tone] ?? [], levels).enumerated() where !changed(Double(i) / 2, Double(i + 1) / 2) {
                     XCTAssertEqual(a, b, accuracy: 0.005 + b * 0.03, "\(kind.name): \(tone) Hz at \(Double(i) / 2) s")
+                }
+            }
+            if kind.name == "layered" {
+                // Its sound (its first sound track, the microphone), as loud
+                // at its end as at its start.
+                for tone in ["440"] {
+                    let levels = measured.tones[tone] ?? []
+                    guard levels.count > 5 else { XCTFail("layered: \(tone) Hz measured"); continue }
+                    XCTAssertGreaterThan(levels[2], 0.01, "layered: \(tone) Hz heard")
+                    XCTAssertEqual(levels[5], levels[2], accuracy: levels[2] * 0.15, "layered: \(tone) Hz keeps its level")
                 }
             }
             XCTAssertEqual(measured.frames.count, saved.frames.count)

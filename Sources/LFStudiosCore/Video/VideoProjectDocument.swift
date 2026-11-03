@@ -56,7 +56,8 @@ struct VideoProjectDocument: Codable {
     /// 5: sound unlinked from its picture (1.18.0): still `format4`'s
     /// name, so 1.15–1.17 read the manifest and say they need a newer
     /// version.
-    static let currentVersion = 5
+    /// 6: Tacks (1.19.1), written only by projects that have some.
+    static let currentVersion = 6
     /// LF Studios Project. New projects, Creative Handoffs and recording
     /// folders write it (since 1.12.0; `.lfsp` from 1.9.0).
     static let fileExtension = "lfs"
@@ -68,10 +69,11 @@ struct VideoProjectDocument: Codable {
     static let firstVersionOpeningLayers = "1.14.0"
     static let firstVersionOpeningFormat4 = "1.15.0"
     static let firstVersionOpeningFormat5 = "1.18.0"
+    static let firstVersionOpeningFormat6 = "1.19.1"
 
     /// What README.txt says opens `project`.
     static func firstVersionOpening(_ project: VideoDemoProject) -> String {
-        project.needsFormat5 ? firstVersionOpeningFormat5 : project.needsFormat4 ? firstVersionOpeningFormat4 : project.needsLayerFormat ? firstVersionOpeningLayers : firstVersionOpeningFileExtension
+        project.needsFormat6 ? firstVersionOpeningFormat6 : project.needsFormat5 ? firstVersionOpeningFormat5 : project.needsFormat4 ? firstVersionOpeningFormat4 : project.needsLayerFormat ? firstVersionOpeningLayers : firstVersionOpeningFileExtension
     }
     static let manifestName = "project.json"
     static let mediaFolder = "Media"
@@ -151,7 +153,7 @@ struct VideoProjectDocument: Codable {
         // What only 1.14.0 and later can show goes under its own name.
         if project.needsFormat4, format == Self.format {
             self.format = Self.format4
-            self.version = max(version ?? 4, project.needsFormat5 ? 5 : 4)
+            self.version = max(version ?? 4, project.needsFormat6 ? 6 : project.needsFormat5 ? 5 : 4)
         } else {
             self.format = project.needsLayerFormat && format == Self.format ? Self.layersFormat : format
             self.version = project.needsLayerFormat ? max(version ?? 3, 3) : version ?? (mediaMode == .folder ? 2 : 1)
@@ -187,7 +189,7 @@ struct VideoProjectDocument: Codable {
         try c.encode(format, forKey: .format)
         try c.encode(version, forKey: .version)
         if format == Self.layersFormat { try c.encode(3, forKey: .requires) }
-        if format == Self.format4 { try c.encode(version >= 5 ? 5 : 4, forKey: .requires) }
+        if format == Self.format4 { try c.encode(min(max(version, 4), Self.currentVersion), forKey: .requires) }
         try c.encode(savedAt, forKey: .savedAt)
         try c.encodeIfPresent(appVersion, forKey: .appVersion)
         try c.encode(mediaMode, forKey: .mediaMode)

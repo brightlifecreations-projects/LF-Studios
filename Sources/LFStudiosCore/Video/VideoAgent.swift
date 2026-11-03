@@ -22,27 +22,85 @@ struct VideoAgentChange: Identifiable, Equatable {
 
 /// A note or a question from the agent, pinned to a moment of a clip: it
 /// follows the clip when it moves or is trimmed. The user answers or
-/// dismisses it; the agent reads the answer.
-struct VideoTack: Identifiable, Equatable {
-    enum Anchor: Equatable {
+/// dismisses it; the agent reads the answer. Saved in the project
+/// (1.19.1), outside ⌘Z: a note, not an edit.
+struct VideoTack: Identifiable, Equatable, Codable {
+    enum Anchor: Equatable, Codable {
         /// The recording's own second (main track): follows its clip.
         case source(Double)
         /// Seconds into an item on a track above.
         case layer(UUID, Double)
         /// A timeline second (nothing under it).
         case timeline(Double)
+
+        private enum CodingKeys: String, CodingKey { case on, time, item }
+
+        init(from decoder: Decoder) throws {
+            let c = try decoder.container(keyedBy: CodingKeys.self)
+            let time = try c.decode(Double.self, forKey: .time)
+            switch try c.decode(String.self, forKey: .on) {
+            case "source": self = .source(time)
+            case "layer": self = .layer(try c.decode(UUID.self, forKey: .item), time)
+            default: self = .timeline(time)
+            }
+        }
+
+        func encode(to encoder: Encoder) throws {
+            var c = encoder.container(keyedBy: CodingKeys.self)
+            switch self {
+            case .source(let time):
+                try c.encode("source", forKey: .on)
+                try c.encode(time, forKey: .time)
+            case .layer(let item, let time):
+                try c.encode("layer", forKey: .on)
+                try c.encode(item, forKey: .item)
+                try c.encode(time, forKey: .time)
+            case .timeline(let time):
+                try c.encode("timeline", forKey: .on)
+                try c.encode(time, forKey: .time)
+            }
+        }
     }
 
-    let id = UUID()
+    var id = UUID()
     var anchor: Anchor
     var text: String
     var isQuestion: Bool
     var answer: String?
     var dismissed = false
+
+    init(anchor: Anchor, text: String, isQuestion: Bool) {
+        self.anchor = anchor
+        self.text = text
+        self.isQuestion = isQuestion
+    }
+
+    private enum CodingKeys: String, CodingKey { case id, anchor, text, question, answer, dismissed }
+
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        id = try c.decode(UUID.self, forKey: .id)
+        anchor = try c.decode(Anchor.self, forKey: .anchor)
+        text = try c.decode(String.self, forKey: .text)
+        isQuestion = try c.decodeIfPresent(Bool.self, forKey: .question) ?? false
+        answer = try c.decodeIfPresent(String.self, forKey: .answer)
+        dismissed = try c.decodeIfPresent(Bool.self, forKey: .dismissed) ?? false
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var c = encoder.container(keyedBy: CodingKeys.self)
+        try c.encode(id, forKey: .id)
+        try c.encode(anchor, forKey: .anchor)
+        try c.encode(text, forKey: .text)
+        if isQuestion { try c.encode(true, forKey: .question) }
+        try c.encodeIfPresent(answer, forKey: .answer)
+        if dismissed { try c.encode(true, forKey: .dismissed) }
+    }
 }
 
 /// An agent's run on one project: what it changed since it began (its
-/// checkpoint), its feed, its Tacks, and whether the user took over.
+/// checkpoint), its feed, and whether the user took over. Its Tacks are
+/// the project's (`VideoDemoProject.tacks`).
 @MainActor
 final class VideoAgentRun: ObservableObject {
     /// The project as it was when the run began (Revert all goes back there).
@@ -52,7 +110,6 @@ final class VideoAgentRun: ObservableObject {
     /// What the agent says it's doing (begin_agent_session's goal).
     let goal: String
     @Published var changes: [VideoAgentChange] = []
-    @Published var tacks: [VideoTack] = []
     /// The user clicked or typed in the editor: the agent's next edit waits
     /// until Resume.
     @Published var paused = false
@@ -213,7 +270,8 @@ final class VideoAgentHub: ObservableObject {
     func revertAll(on model: VideoEditorModel) {
         guard let run = run(for: model) else { return }
         let checkpoint = run.checkpoint
-        model.mutate(label: "Revert Agent Changes") { $0 = checkpoint }
+        // Tacks are notes, not edits: they stay.
+        model.mutate(label: "Revert Agent Changes") { $0 = checkpoint.keepingTacks(of: $0) }
         model.endGesture()
         runs[ObjectIdentifier(model)] = nil
         model.showNotice(L("Reverted the agent's changes"), symbol: "arrow.uturn.backward.circle")
@@ -259,6 +317,15 @@ extension VideoEditorModel {
         return after
     }
 
+    /// Adds, answers or dismisses Tacks: saved with the project, never a
+    /// ⌘Z step (they're notes about the edit, not part of it).
+    func changeTacks(_ change: (inout [VideoTack]) -> Void) {
+        var tacks = project.tacks ?? []
+        change(&tacks)
+        guard tacks != (project.tacks ?? []) else { return }
+        project.tacks = tacks.isEmpty ? nil : tacks
+    }
+
     /// Where a tack is on the timeline now (nil: its clip is gone).
     func timelineTime(of tack: VideoTack) -> Double? {
         switch tack.anchor {
@@ -278,5 +345,15 @@ extension VideoEditorModel {
             return .source(sourceTime(forTimeline: time))
         }
         return .timeline(time)
+    }
+}
+
+extension VideoDemoProject {
+    /// This project with `current`'s Tacks: undo, redo and Revert all step
+    /// back through edits and leave the notes as they are.
+    func keepingTacks(of current: VideoDemoProject) -> VideoDemoProject {
+        var kept = self
+        kept.tacks = current.tacks
+        return kept
     }
 }
