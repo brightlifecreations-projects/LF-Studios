@@ -1555,6 +1555,19 @@ enum GuideContent {
                 related: ["ai-costs", "ai-add-key"]
             ),
             GuideEntry(
+                id: "ai-workspace", symbol: "building.2", title: L("Anthropic Workspace ID"),
+                summary: L("For a Claude key that works in every workspace of your organization: which workspace to use."),
+                location: L("Settings ▸ AI ▸ Anthropic ▸ Workspace ID."),
+                steps: [
+                    L("In the Claude Console, open Settings ▸ Workspaces and copy the workspace's ID (it starts with wrkspc_)."),
+                    L("Paste it in Settings ▸ AI ▸ Workspace ID."),
+                ],
+                tips: [L("Most keys belong to one workspace and need nothing here. If Anthropic asks which workspace to use, the Assistant says so.")],
+                showMe: .settings(.ai),
+                since: "1.21.0",
+                related: ["ai-key-anthropic", "ai-add-key"]
+            ),
+            GuideEntry(
                 id: "ai-costs", symbol: "creditcard", title: L("What it costs"),
                 summary: L("The provider bills your account for each request, by the tokens it reads and writes. LF Studios charges nothing."),
                 location: L("Under each answer in the Assistant panel."),
@@ -1919,16 +1932,163 @@ enum GuideContent {
                     L("Drag a clip by its name to move it. Click a clip and press ⌫ to delete it."),
                 ],
                 keys: [
-                    .fixed("⌘B", L("Split at the playhead")),
+                    .fixed("⌘B", L("Split at the skimmer, else the playhead")),
                     .fixed("Q  W", L("Delete left / right of the playhead")),
                     .fixed("⌫", L("Delete the selection")),
                 ],
                 tips: [L("Right-click a clip for Speed, Mute Clip, Move Earlier, and Move Later.")]
             ),
             GuideEntry(
+                id: "video-box-select", symbol: "rectangle.dashed", title: L("Select clips with a box"),
+                summary: L("Drag over empty space on the timeline to select every clip the box touches."),
+                location: L("Empty space on the timeline, between or around clips."),
+                steps: [
+                    L("Start dragging where there's no clip, and drag over the clips you want."),
+                    L("Hold ⇧ to add them to what's selected, or ⌘ to select or deselect each one."),
+                    L("Then move, delete, copy, or paste attributes onto them all at once."),
+                ],
+                keys: [.fixed(L("Drag empty space"), L("Select clips in a box (⇧ adds, ⌘ toggles)"))],
+                tips: [L("It selects the main track's clips and the clips on the tracks above it. A click on empty space still moves the playhead.")],
+                since: "1.21.0",
+                related: ["video-clips", "video-cut-part"]
+            ),
+            GuideEntry(
+                id: "video-gaps", symbol: "arrow.left.to.line", title: L("Delete gaps"),
+                summary: L("Close the empty space between clips on a track above the main track, or on a sound track you added."),
+                location: L("Right-click empty space on a track, or the Timeline menu."),
+                steps: [
+                    L("Right-click the empty space between two clips and choose Delete Gap. What comes after it moves back."),
+                    L("Or choose Timeline ▸ Delete Gaps After Playhead: on every track, what comes after the playhead closes up to it."),
+                ],
+                tips: [L("The main track never has gaps: deleting a clip there closes up by itself (unless the main track magnet is off). A locked track keeps its gaps.")],
+                since: "1.21.0",
+                related: ["video-tools"]
+            ),
+            GuideEntry(
+                id: "video-duplicate", symbol: "plus.square.on.square", title: L("Duplicate and copy clips"),
+                summary: L("Make a copy of a clip right after itself, or drag a copy where you want it."),
+                location: L("The Timeline menu, or the clips on the timeline."),
+                steps: [
+                    L("Select clips above the main track (or a sound, a zoom, or an annotation) and press ⌘D: the copy goes right after it, and what follows moves along."),
+                    L("Or hold ⌥ and drag a clip above the main track: the copy lands where you drop it, and the original stays."),
+                ],
+                keys: [.fixed("⌘D", L("Duplicate")), .fixed(L("⌥-drag"), L("Copy a clip above the main track"))],
+                tips: [L("The main track's clips are the recording itself, each moment once, so they aren't duplicated. To use a part twice, copy it to a track above with ⌘C and ⌘V.")],
+                since: "1.21.0",
+                related: ["video-clips"]
+            ),
+            GuideEntry(
+                id: "video-paste-attributes", symbol: "doc.on.clipboard", title: L("Paste attributes"),
+                summary: L("Give other clips the same look and settings as one you've finished."),
+                location: L("Timeline ▸ Paste Attributes… (⇧⌘V)."),
+                steps: [
+                    L("Select the finished clip and press ⌘C."),
+                    L("Select the clips to change (a box selects many at once)."),
+                    L("Press ⇧⌘V, tick what to paste — Effects, Filters, Adjust, Speed, Volume, Transform, Animation — and click Paste."),
+                ],
+                keys: [.fixed("⌘C", L("Copy")), .fixed("⇧⌘V", L("Paste Attributes…"))],
+                tips: [L("The main track's clips take Speed, Volume, and Transform (mirror and turn). It's one step: ⌘Z takes it all back.")],
+                since: "1.21.0",
+                related: ["video-box-select"]
+            ),
+            GuideEntry(
+                id: "video-trims", symbol: "arrow.left.and.right.square", title: L("Roll, slide, and the Trim tool"),
+                summary: L("Move a cut, or a whole clip, without leaving a gap or changing how long the video is."),
+                location: L("The cut between two clips, and the Trim tool (T) beside Select and Split."),
+                points: [
+                    L("Ripple (as before): drag a clip's end. Everything after it moves."),
+                    L("Roll: drag the cut between two clips that touch. One gets longer, the other shorter, by the same amount."),
+                    L("Slide (Trim tool): drag a clip. It keeps its frames and moves between its neighbours, which change to fit."),
+                    L("Slip (Trim tool): ⌥-drag a video above the main track to show a different part of it in the same place."),
+                    L("A label beside the pointer says which one a drag will do."),
+                ],
+                keys: [.fixed("T", L("Trim tool")), .fixed("A", L("Select tool"))],
+                tips: [L("On the main track, sliding uses parts of the recording that were cut out. Right after a split there's nothing to slide into, so a clip slides only where a part was removed.")],
+                since: "1.21.0",
+                related: ["video-clips", "video-tools"]
+            ),
+            GuideEntry(
+                id: "video-loop", symbol: "repeat", title: L("Loop playback"),
+                summary: L("Play the same part over and over while you work on it."),
+                location: L("The repeat button under the player, or Timeline ▸ Loop playback (⌘L)."),
+                points: [
+                    L("With In and Out marked (I and O), it loops that part."),
+                    L("Otherwise the selected clip, or else the whole video."),
+                ],
+                steps: [
+                    L("Turn on Loop playback (⌘L), then press Space."),
+                    L("Press ⌘L again to turn it off."),
+                ],
+                keys: [.fixed("⌘L", L("Loop playback"))],
+                tips: [L("It's off in every new editor window, and it never changes the video or the export.")],
+                since: "1.21.0",
+                related: ["video-tools"]
+            ),
+            GuideEntry(
+                id: "video-solo", symbol: "headphones", title: L("Solo a track"),
+                summary: L("Hear just one track (or a few) while you edit."),
+                location: L("The headphones button on a sound or video track's header."),
+                steps: [
+                    L("Click the headphones on a track. Only soloed tracks are heard."),
+                    L("Click more headphones to hear more tracks; click again to stop soloing."),
+                ],
+                tips: [L("Solo is for listening in the editor. The export always has every track, as their own Mute buttons say.")],
+                since: "1.21.0",
+                related: ["video-timeline", "video-rename-track"]
+            ),
+            GuideEntry(
+                id: "video-rename-track", symbol: "character.cursor.ibeam", title: L("Rename a track"),
+                summary: L("Give a track your own name, like Interview or B-roll."),
+                location: L("Double-click a track's name on the timeline."),
+                steps: [
+                    L("Double-click the name, type a new one, and press Return."),
+                    L("Esc keeps the old name. Clear the name to go back to the usual one."),
+                ],
+                tips: [L("The name is saved with the project. Projects with renamed or soloed tracks need LF Studios 1.21.0 or later.")],
+                since: "1.21.0",
+                related: ["video-timeline", "video-solo"]
+            ),
+            GuideEntry(
+                id: "video-meters", symbol: "chart.bar", title: L("Audio meters"),
+                summary: L("See how loud the video is while it plays, left and right."),
+                location: L("Next to the time, under the player."),
+                points: [
+                    L("Green is fine, yellow is loud, red is too loud and may sound distorted."),
+                    L("The thin line holds the loudest moment for a second."),
+                ],
+                tips: [L("They show what the player plays, solo and mute included.")],
+                since: "1.21.0",
+                related: ["video-solo"]
+            ),
+            GuideEntry(
+                id: "video-guides", symbol: "squareshape.split.3x3", title: L("Safe zones and grid"),
+                summary: L("Guides over the player to place things well. They never appear in the export."),
+                location: L("The grid button under the player."),
+                points: [
+                    L("Title safe and Action safe: keep text inside the inner box and action inside the outer one."),
+                    L("Rule of thirds and Centre lines, to line things up."),
+                    L("For 9:16 videos: TikTok, Instagram Reels, and YouTube Shorts shade where those apps put their buttons and captions (approximate: the apps change them)."),
+                ],
+                tips: [L("They're all off in every new editor window. Hide All Guides turns them off at once.")],
+                since: "1.21.0",
+                related: ["size-ratio"]
+            ),
+            GuideEntry(
+                id: "video-reveal", symbol: "magnifyingglass", title: L("Reveal in Library and Match Frame"),
+                summary: L("Find the file a clip comes from, or see the very frame it shows in its source."),
+                location: L("Timeline ▸ Reveal in Library (⇧F) and Match Frame."),
+                steps: [
+                    L("Select a clip (or put the playhead over one) and press ⇧F: Library ▸ Media opens with its file selected."),
+                    L("Choose Match Frame: the source opens at the same frame, to look around it."),
+                ],
+                keys: [.fixed("⇧F", L("Reveal in Library"))],
+                since: "1.21.0",
+                related: ["video-media"]
+            ),
+            GuideEntry(
                 id: "video-cut-part", symbol: "rectangle.badge.minus", title: L("Cut out a part"),
                 summary: L("Select any stretch of the video and remove it, even across several clips."),
-                location: L("Hold ⇧ and drag on the timeline."),
+                location: L("Hold ⇧ and drag across the clips, or along the ruler."),
                 steps: [
                     L("Hold ⇧ and drag across the part you don't want."),
                     L("Click Cut this part in the panel on the right."),
@@ -3521,6 +3681,10 @@ enum GuideContent {
             .fixed("⌘A", L("Select All")),
             .fixed("⌘B", L("Split at Skimmer or Playhead")),
             .fixed("⇧⌘B", L("Split All Tracks")),
+            .fixed("⌘D", L("Duplicate")),
+            .fixed("⇧⌘V", L("Paste Attributes…")),
+            .fixed("⌘L", L("Loop playback")),
+            .fixed("⇧F", L("Reveal in Library")),
             .fixed("⌫", L("Delete Selection")),
             .fixed("Q", L("Delete Left of Playhead")),
             .fixed("W", L("Delete Right of Playhead")),

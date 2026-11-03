@@ -95,12 +95,17 @@ struct VideoTrackState: Codable, Equatable {
     var collapsed = false
     /// A sound track's level before Mute (1.18.0), to bring it back.
     var restoreVolume: Double?
+    /// Solo (1.21.0): while any track is soloed only those are heard in
+    /// the editor; the export always has every track.
+    var solo = false
+    /// The name the user gave it (1.21.0; nil: the usual one).
+    var name: String?
 
     var isDefault: Bool { self == VideoTrackState() }
 
     init() {}
 
-    private enum CodingKeys: String, CodingKey { case hidden, muted, locked, collapsed, restoreVolume }
+    private enum CodingKeys: String, CodingKey { case hidden, muted, locked, collapsed, restoreVolume, solo, name }
 
     init(from decoder: Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
@@ -109,6 +114,21 @@ struct VideoTrackState: Codable, Equatable {
         locked = (try? c.decodeIfPresent(Bool.self, forKey: .locked)) ?? false
         collapsed = (try? c.decodeIfPresent(Bool.self, forKey: .collapsed)) ?? false
         restoreVolume = (try? c.decodeIfPresent(Double.self, forKey: .restoreVolume)).flatMap { $0 }
+        solo = (try? c.decodeIfPresent(Bool.self, forKey: .solo)) ?? false
+        name = (try? c.decodeIfPresent(String.self, forKey: .name)).flatMap { $0 }
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var c = encoder.container(keyedBy: CodingKeys.self)
+        // As before 1.21.0 (what Codable wrote)…
+        try c.encode(hidden, forKey: .hidden)
+        try c.encode(muted, forKey: .muted)
+        try c.encode(locked, forKey: .locked)
+        try c.encode(collapsed, forKey: .collapsed)
+        try c.encodeIfPresent(restoreVolume, forKey: .restoreVolume)
+        // …and the new ones only when used, so other projects save as before.
+        if solo { try c.encode(solo, forKey: .solo) }
+        try c.encodeIfPresent(name, forKey: .name)
     }
 }
 
@@ -219,8 +239,14 @@ extension VideoDemoProject {
 // MARK: - The editor's track headers
 
 extension VideoTimelineTrack {
-    /// The header's name.
+    /// The header's name: the user's own (1.21.0), else the usual one.
     func title(in project: VideoDemoProject) -> String {
+        if let own = project.trackStates[key]?.name, !own.isEmpty { return own }
+        return usualTitle(in: project)
+    }
+
+    /// The name a track has until it's renamed.
+    func usualTitle(in project: VideoDemoProject) -> String {
         switch self {
         case .zooms: return L("Zooms")
         // LF Studios layout (1.17.0): A roll, V2 · B roll, V3… (labels

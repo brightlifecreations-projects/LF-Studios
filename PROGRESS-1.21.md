@@ -8,19 +8,19 @@ plain "Loop" (that's the cursor's Inspector switch).
 - [x] A1–2 Recording bar: one row; the rows above it in the Area popover; Area shows the choice
 - [x] B3 Skimmer: zoom and ⌘B / ⇧⌘B at the skimmer, else the playhead (brought into view)
 - [x] B4 Vertical timeline scroll: headers with lanes, ruler fixed, smallest height reaches the last track
-- [ ] C5 Box selection (⇧ adds, ⌘ toggles)
-- [ ] C6 Delete gap / Delete gaps after playhead
-- [ ] C7 Duplicate clips (⌥-drag, ⌘D)
-- [ ] C8 Copy / paste attributes (sheet)
-- [ ] C9 Roll and slide trims, trim type at the pointer
-- [ ] C10 Loop playback (⌘L)
-- [ ] C11 Solo
-- [ ] C12 Rename tracks
-- [ ] C13 Audio meters
-- [ ] C14 Safe zones and grid
-- [ ] C15 Reveal in Library (⇧F), Match frame
-- [ ] D16 Anthropic Workspace ID
-- [ ] Guide pages, shortcuts page, 7 languages
+- [x] C5 Box selection (⇧ adds, ⌘ toggles)
+- [x] C6 Delete gap / Delete gaps after playhead
+- [x] C7 Duplicate clips (⌥-drag, ⌘D)
+- [x] C8 Copy / paste attributes (sheet)
+- [x] C9 Roll and slide trims, trim type at the pointer
+- [x] C10 Loop playback (⌘L)
+- [x] C11 Solo
+- [x] C12 Rename tracks
+- [x] C13 Audio meters
+- [x] C14 Safe zones and grid
+- [x] C15 Reveal in Library (⇧F), Match frame
+- [x] D16 Anthropic Workspace ID
+- [x] Guide pages, shortcuts page, 7 languages (6 languages translated by helpers in parallel: editor-basics.<lang>.json)
 - [ ] test-full, screenshots page, PR, CI, merge, rehearsal from 1.20.0, publish, cleanup
 
 ## Notes
@@ -29,3 +29,8 @@ plain "Loop" (that's the cursor's Inspector switch).
 - B3: done; test-quick: one miss in Project117SoundTests (loudness of the
   edited old project) while running in parallel; it passed twice alone on
   the same commit: load, not the change (nothing in B3 touches export).
+- B4: done; test-quick green.
+- C + D: one commit. Notes: main-track clips aren't duplicated; slide on
+  the main track needs cut-out parts of the recording (DECISIONS 8–10).
+  VideoEditorBasicsTests and VideoLongTimelineTests (playback timing, the
+  window's scroll) run alone (scripts/test-groups.sh).

@@ -2,8 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key> / %@</key>
+	<string> / %@</string>
 	<key> — %@ free there</key>
 	<string> — там вільно %@</string>
+	<key>%@ %@</key>
+	<string>%@ %@</string>
 	<key>%@ (%@)</key>
 	<string>%@ (%@)</string>
 	<key>%@ (My Style)</key>
@@ -58,6 +62,8 @@
 	<string>тривалість %@</string>
 	<key>%@ moved from “%@”, which has no key now</key>
 	<string>%1$@ перенесено з «%2$@» — ця команда тепер без клавіші</string>
+	<key>%@ no longer soloed</key>
+	<string>«%@» більше не соло</string>
 	<key>%@ of recording plays in %@.</key>
 	<string>%@ запису відтворюється за %@.</string>
 	<key>%@ on</key>
@@ -74,6 +80,8 @@
 	<string>через %@ с після запису</string>
 	<key>%@ s before the recording</key>
 	<string>за %@ с до запису</string>
+	<key>%@ soloed: only soloed tracks are heard</key>
+	<string>«%@» соло: чутно лише доріжки соло</string>
 	<key>%@ speed</key>
 	<string>швидкість %@</string>
 	<key>%@ transition</key>
@@ -82,6 +90,8 @@
 	<string>%@ вікно</string>
 	<key>%@ · %@ px</key>
 	<string>%@ · %@ px</string>
+	<key>%@ · %@ × %@</key>
+	<string>%@ · %@ × %@</string>
 	<key>%@ · %@ × %@ image</key>
 	<string>%@ · зображення %@ × %@</string>
 	<key>%@ · %lld fps</key>
@@ -94,6 +104,8 @@
 	<string>%@ · близько %@</string>
 	<key>%@ · on your clipboard — paste it anywhere</key>
 	<string>%@ · у буфері обміну — вставте будь-де</string>
+	<key>%@ × %@</key>
+	<string>%@ × %@</string>
 	<key>%@ × %@ doesn't fit on this display</key>
 	<string>%@ × %@ не вміщається на цьому екрані</string>
 	<key>%@ × %@ px</key>
@@ -112,6 +124,8 @@
 	<string>%@ — клацніть, щоб змінити</string>
 	<key>%@ — click to jump here, double-click to rename</key>
 	<string>%@ — клацніть, щоб перейти сюди, двічі клацніть, щоб перейменувати</string>
+	<key>%@ — double-click to rename</key>
+	<string>%@ — двічі клацніть, щоб перейменувати</string>
 	<key>%@ — it was cut like the edit, so it can't be lined up with the recording again</key>
 	<string>%@ — його обрізано так само, як у монтажі, тож його вже не вдасться вирівняти із записом</string>
 	<key>%@ — its lines don't match the captions</key>
@@ -124,6 +138,8 @@
 	<string>%@ → %@ — частина, яку ви виділили на шкалі часу з ⇧</string>
 	<key>%@, %@</key>
 	<string>%@, %@</string>
+	<key>%@, %@, %@</key>
+	<string>%@, %@, %@</string>
 	<key>%@, and %lld more</key>
 	<string>%@ і ще %lld</string>
 	<key>%@, as its own track</key>
@@ -172,6 +188,8 @@
 	<string>, від %@ до %@</string>
 	<key>, at %@</key>
 	<string>, на %@</string>
+	<key>0.00</key>
+	<string>0.00</string>
 	<key>0.1s earlier</key>
 	<string>На 0,1 с раніше</string>
 	<key>0.1s later</key>
@@ -182,6 +200,10 @@
 	<string>03 Audio: ваш мікрофон і звук Mac окремими файлами. 05 Captions: ваші субтитри, щойно ви їх створите.</string>
 	<key>07 Data: the pointer, clicks, and keys. And README.txt, which says what each file is.</key>
 	<string>07 Data: курсор, клацання й клавіші. А також README.txt, де сказано, що це за файли.</string>
+	<key>100</key>
+	<string>100</string>
+	<key>3:2</key>
+	<string>3:2</string>
 	<key>A 2-second “Made with LF Studios” outro on your background — your own outro card is in Style</key>
 	<string>Двосекундне завершення «Made with LF Studios» на вашому тлі — власна завершальна заставка є у вкладці «Стиль»</string>
 	<key>A 3D LUT from another app (.cube)</key>
@@ -236,6 +258,8 @@
 	<string>Тонка лінія, що відділяє темні записи від тла</string>
 	<key>A keyframe for position, size, rotation and opacity at the playhead</key>
 	<string>Ключовий кадр для позиції, розміру, повороту й непрозорості на покажчику відтворення</string>
+	<key>A label beside the pointer says which one a drag will do.</key>
+	<string>Підпис біля вказівника миші показує, що саме зробить перетягування.</string>
 	<key>A long chat sends more each time. New Chat starts small again.</key>
 	<string>Довгий чат щоразу надсилає більше. «Новий чат» починає з малого.</string>
 	<key>A magnifier over one spot at the playhead; the rest of the frame stays in view</key>
@@ -350,6 +374,8 @@
 	<string>Точне</string>
 	<key>Across</key>
 	<string>По горизонталі</string>
+	<key>Action safe</key>
+	<string>Безпечна зона дії</string>
 	<key>Actual size</key>
 	<string>Реальний розмір</string>
 	<key>Adapt to This Ratio</key>
@@ -688,6 +714,10 @@
 	<string>Інша програма може використовувати ті самі клавіші: виберіть інші.</string>
 	<key>Answer</key>
 	<string>Відповідь</string>
+	<key>Anthropic Workspace ID</key>
+	<string>ID робочої області Anthropic</string>
+	<key>Anthropic needs to know which workspace to use with this key. Add your Workspace ID in Settings ▸ AI (it starts with wrkspc_), then try again.</key>
+	<string>Anthropic має знати, яку робочу область використовувати з цим ключем. Додайте ID робочої області в «Параметри ▸ ШІ» (він починається з wrkspc_) і спробуйте ще раз.</string>
 	<key>Any color…</key>
 	<string>Будь-який колір…</string>
 	<key>Any other folder: Import Folder lists the videos and sound files. Choose which is the screen recording, which the camera, and which sound to add as tracks, and when each starts.</key>
@@ -802,8 +832,12 @@
 	<string>Угорі панелі «Субтитри» — для записів, зроблених із відкритими нотатками доповідача.</string>
 	<key>At the top, set Provider to the one you added. Until you do, the Assistant stays off.</key>
 	<string>Угорі виберіть у полі «Провайдер» доданого. Доти Асистент вимкнений.</string>
+	<key>Attributes pasted</key>
+	<string>Атрибути вставлено</string>
 	<key>Audio</key>
 	<string>Аудіо</string>
+	<key>Audio meters</key>
+	<string>Індикатори рівня</string>
 	<key>Audio only</key>
 	<string>Лише звук</string>
 	<key>Audio panel ▸ Added sound ▸ Add audio…, or drop sound files on the timeline.</key>
@@ -1352,6 +1386,8 @@
 	<string>По центру</string>
 	<key>Centre</key>
 	<string>По центру</string>
+	<key>Centre lines</key>
+	<string>Центральні лінії</string>
 	<key>Change Shortcuts in Settings</key>
 	<string>Змінити скорочення в параметрах</string>
 	<key>Change a zoom</key>
@@ -1448,6 +1484,8 @@
 	<string>Виберіть «Макет ▸ Розділений екран» і напрямок. Рамка стане частиною екрана, наприклад 8:9 для відео 16:9 поруч або 32:9 одне над одним, а перегляд камери заповнить частину камери.</string>
 	<key>Choose Location…</key>
 	<string>Вибрати місце…</string>
+	<key>Choose Match Frame: the source opens at the same frame, to look around it.</key>
+	<string>Виберіть «Відповідний кадр»: джерело відкриється на тому самому кадрі, щоб ви могли роздивитися, що довкола.</string>
 	<key>Choose My Style first: Presets ▸ Edit Presets ▸ Use as My Style (⇧⌘Y)</key>
 	<string>Спершу виберіть «Мій стиль»: Стилі ▸ Змінити стилі ▸ Використовувати як «Мій стиль» (⇧⌘Y)</string>
 	<key>Choose Off, 3, 5, or 10 seconds. Click the countdown to cancel it.</key>
@@ -1860,6 +1898,8 @@
 	<string>Клацніть його у відео</string>
 	<key>Click it.</key>
 	<string>Клацніть його.</string>
+	<key>Click more headphones to hear more tracks; click again to stop soloing.</key>
+	<string>Клацніть інші навушники, щоб чути більше доріжок; клацніть ще раз, щоб вимкнути соло.</string>
 	<key>Click or drag anywhere on the timeline to jump there.</key>
 	<string>Клацніть чи тягніть будь-де на шкалі часу, щоб перейти туди.</string>
 	<key>Click or press Esc to cancel</key>
@@ -1882,6 +1922,8 @@
 	<string>Натисніть кнопку кривої в заголовку доріжки. Під доріжкою відкриється смуга.</string>
 	<key>Click the field next to a command.</key>
 	<string>Клацніть поле поруч із командою.</string>
+	<key>Click the headphones on a track. Only soloed tracks are heard.</key>
+	<string>Клацніть навушники на доріжці. Чутно лише доріжки соло.</string>
 	<key>Click the microphone. After 3, 2, 1 the video plays, silent, while you talk.</key>
 	<string>Натисніть на мікрофон. Після 3, 2, 1 відео грає без звуку, поки ви говорите.</string>
 	<key>Click the notice that appears after Capture Text (“click for options”).</key>
@@ -1960,6 +2002,8 @@
 	<string>Закрити вікно</string>
 	<key>Close the Area options</key>
 	<string>Закрити параметри «Область»</string>
+	<key>Close the empty space between clips on a track above the main track, or on a sound track you added.</key>
+	<string>Приберіть порожнє місце між кліпами на доріжці над основною або на доданій звуковій доріжці.</string>
 	<key>Close the pin</key>
 	<string>Закрити закріплений знімок</string>
 	<key>Close the window when you're done. If you haven't saved, LF Studios asks first.</key>
@@ -2070,6 +2114,10 @@
 	<string>Скопіювати текст</string>
 	<key>Copy Text copies all of it again.</key>
 	<string>«Скопіювати текст» знову копіює весь текст.</string>
+	<key>Copy a clip above the main track</key>
+	<string>Скопіюйте кліп над основною доріжкою</string>
+	<key>Copy a clip first (⌘C), then select the clips to paste onto</key>
+	<string>Спершу скопіюйте кліп (⌘C), потім виберіть кліпи, у які вставити</string>
 	<key>Copy any text you can see on screen, even in pictures, videos, and apps that don't let you select it.</key>
 	<string>Копіюйте будь-який текст, який видно на екрані, навіть на зображеннях, у відео й у програмах, які не дають його виділити.</string>
 	<key>Copy as Table</key>
@@ -2368,6 +2416,8 @@
 	<string>«Власний…»: введіть будь-яку форму, як-от 3:2 чи 2.39:1.</string>
 	<key>Cut</key>
 	<string>Вирізати</string>
+	<key>Cut at %@</key>
+	<string>Склейка на %@</string>
 	<key>Cut filler words like um and uh</key>
 	<string>Вирізати слова-паразити на кшталт «е-е» та «м-м»</string>
 	<key>Cut filler words like “um” and “uh”, and long pauses, in one click each.</key>
@@ -2418,6 +2468,12 @@
 	<string>Видалити кліп</string>
 	<key>Delete Folder</key>
 	<string>Видалити папку</string>
+	<key>Delete Gap</key>
+	<string>Видалити проміжок</string>
+	<key>Delete Gap (%@)</key>
+	<string>Видалити проміжок (%@)</string>
+	<key>Delete Gaps After Playhead</key>
+	<string>Видалити проміжки після покажчика</string>
 	<key>Delete Left of Playhead</key>
 	<string>Видалити ліворуч від покажчика</string>
 	<key>Delete Marker</key>
@@ -2438,6 +2494,8 @@
 	<string>Видалити всі збережені знімки</string>
 	<key>Delete from Project</key>
 	<string>Видалити з проєкту</string>
+	<key>Delete gaps</key>
+	<string>Видалення проміжків</string>
 	<key>Delete left</key>
 	<string>Видалити ліворуч</string>
 	<key>Delete left / right of the playhead</key>
@@ -2566,6 +2624,8 @@
 	<string>Двічі натисніть на субтитр на таймлайні, щоб змінити текст. Return зберігає його, Esc лишає як було.</string>
 	<key>Double-click a marker to give it a name.</key>
 	<string>Двічі клацніть маркер, щоб дати йому назву.</string>
+	<key>Double-click a track's name on the timeline.</key>
+	<string>Двічі клацніть назву доріжки на шкалі часу.</string>
 	<key>Double-click any text to change it.</key>
 	<string>Двічі клацніть будь-який текст, щоб змінити його.</string>
 	<key>Double-click it to edit; drag it into another app to drop the picture there.</key>
@@ -2574,6 +2634,8 @@
 	<string>Двічі клацніть текст</string>
 	<key>Double-click text on the preview to change it. New ones keep the last color and size you used.</key>
 	<string>Двічі клацніть текст на перегляді, щоб змінити його. Нові елементи отримують останній колір і розмір, які ви використовували.</string>
+	<key>Double-click the name, type a new one, and press Return.</key>
+	<string>Двічі клацніть назву, введіть нову й натисніть Return.</string>
 	<key>Double-click to edit, or drag into another app. Command-C copies, Command-S saves, Escape dismisses.</key>
 	<string>Двічі клацніть, щоб редагувати, або перетягніть в іншу програму. Command-C копіює, Command-S зберігає, Escape закриває.</string>
 	<key>Down</key>
@@ -2602,6 +2664,8 @@
 	<string>Потягніть за край кліпу, щоб обрізати його, або натисніть Q чи W, щоб прибрати те, що ліворуч або праворуч від покажчика.</string>
 	<key>Drag a corner to resize it. The shape stays the same.</key>
 	<string>Тягніть кут, щоб змінити розмір. Форма лишається тією самою.</string>
+	<key>Drag a cut</key>
+	<string>Перетягування склейки</string>
 	<key>Drag a file onto the timeline or the player, or click the + on its thumbnail. A video goes at the end of the video; a picture or a sound starts at the playhead, or where you drop it on the timeline.</key>
 	<string>Перетягніть файл на таймлайн або в плеєр чи натисніть + на мініатюрі. Відео стає в кінець; картинка або звук — у позицію відтворення або туди, куди ви кинули їх на таймлайні.</string>
 	<key>Drag a frame. Drag inside it to move it, or drag its edges to resize it.</key>
@@ -2630,6 +2694,8 @@
 	<string>Перетягніть субтитри в будь-яке місце відео або перемістіть один субтитр окремо.</string>
 	<key>Drag edges or corners to resize  ·  Arrow keys nudge (⇧ ×10)  ·  Return captures  ·  Esc cancels</key>
 	<string>Тягніть краї чи кути, щоб змінити розмір  ·  Стрілки зсувають (⇧ ×10)  ·  Return — зняти  ·  Esc — скасувати</string>
+	<key>Drag empty space</key>
+	<string>Перетягування по порожньому місцю</string>
 	<key>Drag it into place, or pick a corner under Position.</key>
 	<string>Перетягніть його на місце або виберіть кут у розділі «Позиція».</string>
 	<key>Drag it on the preview to move it; drag a corner to resize. Its bar on the timeline sets when it shows.</key>
@@ -2658,6 +2724,8 @@
 	<string>Натомість виділити будь-яку область довільної форми</string>
 	<key>Drag over any part of the screen to capture it.</key>
 	<string>Перетягніть курсор по будь-якій частині екрана, щоб зняти її.</string>
+	<key>Drag over empty space on the timeline to select every clip the box touches.</key>
+	<string>Перетягніть по порожньому місцю на шкалі часу, щоб вибрати всі кліпи, яких торкається рамка.</string>
 	<key>Drag over the area you want, then let go.</key>
 	<string>Перетягніть курсор по потрібній області й відпустіть.</string>
 	<key>Drag over the area you want.</key>
@@ -2758,6 +2826,8 @@
 	<string>Перетягніть, щоб змінити розмір панелей. Подвійне клацання — скинути.</string>
 	<key>Drag to resize the timeline. Double-click for the usual size.</key>
 	<string>Перетягніть, щоб змінити розмір таймлайна. Подвійне клацання — звичний розмір.</string>
+	<key>Drag to roll this cut: the clips on both sides change, with no gap</key>
+	<string>Перетягніть, щоб перекотити склейку: кліпи з обох боків змінюються, без проміжку</string>
 	<key>Drag to select, then adjust  ·  Hold ⇧ as you let go to capture right away  ·  Esc cancels</key>
 	<string>Перетягніть, щоб вибрати, а потім налаштуйте  ·  Утримуйте ⇧, коли відпускаєте, щоб зняти одразу  ·  Esc — скасувати</string>
 	<key>Drag to turn it; hold ⇧ for steps of 15°</key>
@@ -2780,6 +2850,10 @@
 	<string>Якщо кинути на «Кліпи», відео стане на основну доріжку в цьому місці (картинка стане кліпом на 5 секунд).</string>
 	<key>Duplicate</key>
 	<string>Дублювати</string>
+	<key>Duplicate and copy clips</key>
+	<string>Дублювання й копіювання кліпів</string>
+	<key>Duplicate the selection right after itself</key>
+	<string>Дублювати вибране одразу після нього</string>
 	<key>Duplicate zoom or annotation</key>
 	<string>Дублювати наближення чи розмітку</string>
 	<key>Duplicated</key>
@@ -2894,6 +2968,8 @@
 	<string>Жаринний туман</string>
 	<key>Emerald</key>
 	<string>Смарагд</string>
+	<key>Empty space on the timeline, between or around clips.</key>
+	<string>Порожнє місце на шкалі часу, між кліпами чи довкола них.</string>
 	<key>Enable LF Studios in System Settings → Privacy &amp; Security → Screen &amp; System Audio Recording, then quit and reopen LF Studios so macOS applies the permission.</key>
 	<string>Відкрийте Системні параметри → Приватність і безпека → Записування системного звуку й екрана, увімкніть LF Studios, а потім завершіть і знову відкрийте LF Studios, щоб дозвіл набув чинності.</string>
 	<key>Enable LF Studios in System Settings, then relaunch so macOS applies it.</key>
@@ -2926,6 +3002,8 @@
 	<string>Esc</string>
 	<key>Esc and the arrow keys work after you click the frame's border or the bars.</key>
 	<string>Esc і клавіші зі стрілками діють після клацання межі рамки або панелей.</string>
+	<key>Esc keeps the old name. Clear the name to go back to the usual one.</key>
+	<string>Esc залишає стару назву. Зітріть назву, щоб повернути звичайну.</string>
 	<key>Esc or Done finishes</key>
 	<string>Esc або «Готово» — завершити</string>
 	<key>Estimated file size. Still screens take less.</key>
@@ -2954,6 +3032,8 @@
 	<string>Усі вирізання, наближення, розмітку, субтитри й зміни стилю в цьому відео буде вилучено — додані записи залишаться. Цю дію можна відмінити.</string>
 	<key>Every cut, zoom, annotation, caption, and style change on this video is removed. You can undo this.</key>
 	<string>Усі вирізання, наближення, розмітку, субтитри й зміни стилю в цьому відео буде вилучено. Цю дію можна відмінити.</string>
+	<key>Every effect and its strength</key>
+	<string>Усі ефекти та їхня сила</string>
 	<key>Every file starts at the same moment and is as long as the others: drop them all at 0:00 and they play in sync, the camera too.</key>
 	<string>Кожен файл починається в одну мить і такої ж довжини, як інші: покладіть усі на 0:00 — і вони йдуть синхронно, камера теж.</string>
 	<key>Every part of the video on its own track, top to bottom: Captions, Zooms, Video clips and their sound, Camera, Keys, Text &amp; annotations, Music, and each sound you added.</key>
@@ -3094,6 +3174,8 @@
 	<string>Експортувати…</string>
 	<key>Exposure</key>
 	<string>Експозиція</string>
+	<key>Exposure, colour and the rest of Adjust</key>
+	<string>Експозиція, колір та решта «Корекції»</string>
 	<key>Exposure, contrast, highlights, shadows, colour, HSL, curves and colour wheels, on a clip or over everything under it.</key>
 	<string>Експозиція, контраст, світлі ділянки, тіні, колір, HSL, криві й кольорові круги — на кліпі або поверх усього під ним.</string>
 	<key>Extra-fluid curves for slow, cinematic demos.</key>
@@ -3212,6 +3294,8 @@
 	<string>Пошук особистих даних чи відстеження обличчя триває довго</string>
 	<key>Find private info, above the preview in the video editor.</key>
 	<string>«Особисті дані» над переглядом у відеоредакторі.</string>
+	<key>Find the file a clip comes from, or see the very frame it shows in its source.</key>
+	<string>Знайдіть файл, з якого походить кліп, або подивіться той самий кадр у його джерелі.</string>
 	<key>Find the next one</key>
 	<string>Знайти наступне</string>
 	<key>Find the screenshot in Home ▸ Screenshots or in History.</key>
@@ -3322,12 +3406,16 @@
 	<string>Шрифти — ті, що є на кожному Mac, тож проєкт виглядає однаково на будь-якому Mac.</string>
 	<key>Fonts you added to LF Studios always go along. Fonts installed on this Mac (in Font Book) go only with Include fonts installed on this Mac turned on: check that the font's license lets you share it first. Without them, README.txt lists the fonts left out.</key>
 	<string>Шрифти, які ви додали в LF Studios, передаються завжди. Шрифти, встановлені на цьому Mac (у «Книзі шрифтів»), передаються лише з увімкненим «Додати шрифти, встановлені на цьому Mac»: спершу перевірте, чи ліцензія шрифту дозволяє ним ділитися. Без них README.txt перелічує шрифти, яких не додано.</string>
+	<key>For 9:16 videos: TikTok, Instagram Reels, and YouTube Shorts shade where those apps put their buttons and captions (approximate: the apps change them).</key>
+	<string>Для відео 9:16: TikTok, Instagram Reels і YouTube Shorts затінюють місця, де ці програми розміщують кнопки й підписи (приблизно: програми їх змінюють).</string>
 	<key>For Custom image…, choose a PNG, then click the spot in it that points.</key>
 	<string>Для «Власне зображення…» виберіть PNG, а тоді клацніть на ньому точку, яка вказує.</string>
 	<key>For Final Cut Pro, DaVinci Resolve, and Adobe Premiere Pro</key>
 	<string>Для Final Cut Pro, DaVinci Resolve і Adobe Premiere Pro</string>
 	<key>For Selection, ⇧-drag on the timeline first.</key>
 	<string>Для «Вибір» спершу виділіть частину на шкалі часу, перетягнувши з ⇧.</string>
+	<key>For a Claude key that works in every workspace of your organization: which workspace to use.</key>
+	<string>Для ключа Claude, що працює в усіх робочих областях вашої організації: яку з них використовувати.</string>
 	<key>For a GIF: choose GIF, then a Size and a Frame rate.</key>
 	<string>Для GIF: виберіть GIF, а тоді «Розмір» і «Частота кадрів».</string>
 	<key>For a click sound too, see Click sounds in the Audio panel.</key>
@@ -3456,6 +3544,10 @@
 	<string>Проміжок</string>
 	<key>Gap between the parts</key>
 	<string>Проміжок між частинами</string>
+	<key>Gap of %@ closed</key>
+	<string>Проміжок %@ закрито</string>
+	<key>Gaps after the playhead closed</key>
+	<string>Проміжки після покажчика закрито</string>
 	<key>Gemini keys start with AIza. Set up billing in Google AI Studio for more than its free limits.</key>
 	<string>Ключі Gemini починаються з AIza. Щоб вийти за безплатні ліміти, налаштуйте оплату в Google AI Studio.</string>
 	<key>General</key>
@@ -3480,10 +3572,14 @@
 	<string>Перші кроки</string>
 	<key>Ghost</key>
 	<string>Привид</string>
+	<key>Give a track your own name, like Interview or B-roll.</key>
+	<string>Дайте доріжці власну назву, наприклад «Інтерв’ю» чи «Перебивки».</string>
 	<key>Give another editor, or an app like Final Cut Pro, every part of your video as separate files.</key>
 	<string>Передайте іншому монтажеру чи програмі на кшталт Final Cut Pro кожну частину відео окремими файлами.</string>
 	<key>Give any timeline command your own key, or use Final Cut Pro or Premiere Pro keys.</key>
 	<string>Призначте будь-якій команді шкали часу власну клавішу або використовуйте клавіші Final Cut Pro чи Premiere Pro.</string>
+	<key>Give other clips the same look and settings as one you've finished.</key>
+	<string>Надайте іншим кліпам такий самий вигляд і параметри, як у вже готового.</string>
 	<key>Give the video space around it, rounded corners, and a shadow.</key>
 	<string>Додайте простір довкола відео, заокруглені кути й тінь.</string>
 	<key>Glacier</key>
@@ -3522,6 +3618,8 @@
 	<string>Графіт</string>
 	<key>Green</key>
 	<string>Зелений</string>
+	<key>Green is fine, yellow is loud, red is too loud and may sound distorted.</key>
+	<string>Зелений — добре, жовтий — гучно, червоний — надто гучно, звук може спотворюватися.</string>
 	<key>Group</key>
 	<string>Згрупувати</string>
 	<key>Group / ungroup</key>
@@ -3530,6 +3628,8 @@
 	<string>Згруповано: вони переміщуються й видаляються разом</string>
 	<key>Guide</key>
 	<string>Посібник</string>
+	<key>Guides over the player to place things well. They never appear in the export.</key>
+	<string>Напрямні поверх плеєра, щоб добре розміщувати елементи. В експорті їх ніколи немає.</string>
 	<key>H.264 plays everywhere. HEVC makes smaller files, but some browsers and Windows PCs can't play it.</key>
 	<string>H.264 відтворюється будь-де. HEVC дає менші файли, але деякі браузери й комп’ютери з Windows не можуть його відтворити.</string>
 	<key>HSL</key>
@@ -3564,6 +3664,8 @@
 	<string>Стан</string>
 	<key>Health shows whether everything is ready, and offers a Fix when something isn't.</key>
 	<string>«Стан» показує, чи все готово, і пропонує «Виправити», коли щось не так.</string>
+	<key>Hear just one track (or a few) while you edit.</key>
+	<string>Слухайте лише одну доріжку (чи кілька), поки редагуєте.</string>
 	<key>Heart</key>
 	<string>Серце</string>
 	<key>Heartbeat</key>
@@ -3588,6 +3690,8 @@
 	<string>Сховати</string>
 	<key>Hide %@</key>
 	<string>Сховати «%@»</string>
+	<key>Hide All Guides</key>
+	<string>Сховати всі напрямні</string>
 	<key>Hide Desktop Icons</key>
 	<string>Сховати значки робочого столу</string>
 	<key>Hide Icon</key>
@@ -3674,12 +3778,14 @@
 	<string>Утримуйте пробіл під час перетягування, щоб переміщати область, а не змінювати її розмір.</string>
 	<key>Hold as you let go to adjust first</key>
 	<string>Утримуйте, коли відпускаєте, щоб спершу підлаштувати</string>
+	<key>Hold ⇧ and drag across the clips, or along the ruler.</key>
+	<string>Утримуйте ⇧ і перетягніть через кліпи або вздовж лінійки.</string>
 	<key>Hold ⇧ and drag across the part you don't want.</key>
 	<string>Утримуйте ⇧ і перетягніть по непотрібній частині.</string>
-	<key>Hold ⇧ and drag on the timeline.</key>
-	<string>Утримуйте ⇧ і тягніть по шкалі часу.</string>
 	<key>Hold ⇧ as you let go to adjust the area before capturing. Then drag its edges, or use the arrow keys, and press Return.</key>
 	<string>Утримуйте ⇧, коли відпускаєте, щоб підлаштувати область перед знімком. Потім тягніть її краї або користуйтеся клавішами зі стрілками й натисніть Return.</string>
+	<key>Hold ⇧ to add them to what's selected, or ⌘ to select or deselect each one.</key>
+	<string>Утримуйте ⇧, щоб додати їх до вибраного, або ⌘, щоб вибрати чи зняти вибір із кожного.</string>
 	<key>Home</key>
 	<string>Головна</string>
 	<key>Home  End</key>
@@ -3712,6 +3818,8 @@
 	<string>Наведіть курсор на доріжку «Масштаб» і клацніть, щоб додати наближення, або натисніть Z на покажчику відтворення. Перетягуйте наближення, щоб перемістити; тягніть його краї, щоб змінити тривалість.</string>
 	<key>How do I…?</key>
 	<string>Як зробити…?</string>
+	<key>How fast it plays (the clip gets longer or shorter)</key>
+	<string>Як швидко відтворюється (кліп стає довшим чи коротшим)</string>
 	<key>How it mixes with what's under it: Screen lightens, Multiply darkens, Overlay adds contrast.</key>
 	<string>Як він змішується з тим, що під ним: «Екран» освітлює, «Множення» затемнює, «Перекриття» додає контрасту.</string>
 	<key>How long the loupe takes to grow in and fade out</key>
@@ -3820,6 +3928,8 @@
 	<string>Початок пізніше</string>
 	<key>In place of the recording's microphone — Enhance voice and Podcast mode clean it up</key>
 	<string>Замість мікрофона запису — «Покращити голос» і «Режим подкасту» очищують його</string>
+	<key>In the Claude Console, open Settings ▸ Workspaces and copy the workspace's ID (it starts with wrkspc_).</key>
+	<string>У Claude Console відкрийте Settings ▸ Workspaces і скопіюйте ID робочої області (він починається з wrkspc_).</string>
 	<key>In the LF Studios layout, Properties has At playhead on top (what plays now and what comes next; click one to select it) and four tabs: Clip, Effects, Captions and Video (Style, Cursor, Zoom, Camera, Audio).</key>
 	<string>У макеті LF Studios у «Властивостях» угорі блок «Зараз» (що йде зараз і що далі; клацніть, щоб вибрати) і чотири вкладки: «Кліп», «Ефекти», «Субтитри» і «Відео» (Стиль, Курсор, Масштаб, Камера, Аудіо).</string>
 	<key>In the LF Studios layout, the strip at the bottom says where ⌘B splits: at the skimmer or at the playhead.</key>
@@ -3908,6 +4018,8 @@
 	<string>У наступному відео клацніть «Застосувати мій стиль» (⇧⌘Y).</string>
 	<key>In, Out and Combo animations</key>
 	<string>Анімації «Початок», «Кінець» і «Комбо»</string>
+	<key>In, Out and Combo animations and keyframes</key>
+	<string>Анімації «Початок», «Кінець» і «Комбо» та ключові кадри</string>
 	<key>Include AI chat history</key>
 	<string>Додати історію чату з ШІ</string>
 	<key>Include a timeline for editing apps</key>
@@ -3994,6 +4106,8 @@
 	<string>Можливо, файл пошкоджено, він ще зберігається або має формат, який цей Mac не відтворює. Найкраще працюють відео MP4 і MOV.</string>
 	<key>It only has sound, or nothing at all. LF Studios edits screen recordings and other videos.</key>
 	<string>Він містить лише звук або взагалі нічого. LF Studios редагує записи екрана та інші відео.</string>
+	<key>It selects the main track's clips and the clips on the tracks above it. A click on empty space still moves the playhead.</key>
+	<string>Вона вибирає кліпи основної доріжки й кліпи на доріжках над нею. Клацання по порожньому місцю, як і раніше, переміщує покажчик.</string>
 	<key>It shows what it would remove and asks first.</key>
 	<string>Програма показує, що буде вилучено, і спершу запитує.</string>
 	<key>It snaps to the middle and to the safe edges, with guide lines.</key>
@@ -4016,6 +4130,8 @@
 	<string>Працює на вашому Mac за допомогою розпізнавання облич від Apple. Якщо обличчя якийсь час не видно, лишається останнє кадрування.</string>
 	<key>It's never applied by itself: only when you click it.</key>
 	<string>Він ніколи не застосовується сам — лише коли ви клацнете.</string>
+	<key>It's off in every new editor window, and it never changes the video or the export.</key>
+	<string>У кожному новому вікні редактора воно вимкнене й ніколи не змінює відео чи експорт.</string>
 	<key>It's saved separately from your voice, so you can set each one's volume in the editor. LF Studios' own sounds are left out.</key>
 	<string>Він зберігається окремо від вашого голосу, тож у редакторі гучність кожного можна задати окремо. Власні звуки LF Studios не записуються.</string>
 	<key>It's silent: nothing to normalize</key>
@@ -4328,6 +4444,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Без тла: відео з його заокругленими кутами й тінню та вирізана камера лежать на прозорості — їх можна накласти на будь-що</string>
 	<key>Left</key>
 	<string>Ліворуч</string>
+	<key>Left %lld dB, right %lld dB</key>
+	<string>Ліворуч %lld дБ, праворуч %lld дБ</string>
 	<key>Left out:</key>
 	<string>Не ввійшло:</string>
 	<key>Length</key>
@@ -4478,6 +4596,20 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Варіанти вигляду: «Природний», «Теплий», «Яскравий» чи «Кіно».</string>
 	<key>Loop</key>
 	<string>Зациклення</string>
+	<key>Loop playback</key>
+	<string>Відтворення по колу</string>
+	<key>Loop playback (⌘L): the In/Out range, the selected clip, or the whole video</key>
+	<string>Відтворення по колу (⌘L): діапазон від початку до кінця, вибраний кліп або все відео</string>
+	<key>Loop playback is on (⌘L)</key>
+	<string>Відтворення по колу ввімкнено (⌘L)</string>
+	<key>Loop playback off</key>
+	<string>Відтворення по колу вимкнено</string>
+	<key>Loop playback on: %@ to %@</key>
+	<string>Відтворення по колу ввімкнено: від %1$@ до %2$@</string>
+	<key>Loop playback on: the whole video</key>
+	<string>Відтворення по колу ввімкнено: усе відео</string>
+	<key>Loop playback: the In/Out range, the selected clip, or the whole video</key>
+	<string>Відтворення по колу: діапазон від початку до кінця, вибраний кліп або все відео</string>
 	<key>Loop to fill</key>
 	<string>Повторювати до кінця</string>
 	<key>Looping cursor</key>
@@ -4522,12 +4654,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Магніт вимкнено: видалений кліп лишає чорний проміжок</string>
 	<key>Main track magnet on: deleting a clip closes the gap</key>
 	<string>Магніт увімкнено: видалення кліпу закриває проміжок</string>
+	<key>Main-track clips are the recording itself. To use a part twice, copy it to a track above (⌘C, ⌘V).</key>
+	<string>Кліпи основної доріжки — це сам запис. Щоб використати частину двічі, скопіюйте її на доріжку вище (⌘C, ⌘V).</string>
 	<key>Make Full Zoom</key>
 	<string>Зробити наближенням кадру</string>
 	<key>Make Loupe</key>
 	<string>Зробити лупою</string>
 	<key>Make a clip come in, go out, or keep moving while it shows.</key>
 	<string>Нехай кліп з’являється, зникає або рухається, поки його видно.</string>
+	<key>Make a copy of a clip right after itself, or drag a copy where you want it.</key>
+	<string>Зробіть копію кліпу одразу після нього або перетягніть копію куди потрібно.</string>
 	<key>Make a key in Google AI Studio to use Gemini in the Assistant.</key>
 	<string>Створіть ключ у Google AI Studio, щоб користуватися Gemini в Асистенті.</string>
 	<key>Make a key on Anthropic's website to use Claude in the Assistant.</key>
@@ -4606,6 +4742,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Маска: %@</string>
 	<key>Mask: Linear, Mirror, Circle or Rectangle, with Feather and Invert. Its place and size take keyframes.</key>
 	<string>Маска: «Лінійно», «Віддзеркалити», «Коло» чи «Прямокутник», із «Розтушовуванням» та «Інвертувати». Її положення й розмір підтримують ключові кадри.</string>
+	<key>Match Frame</key>
+	<string>Відповідний кадр</string>
 	<key>Match the recording</key>
 	<string>Як у записі</string>
 	<key>Matte</key>
@@ -4718,6 +4856,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Сяйво моху</string>
 	<key>Most accurate, slowest</key>
 	<string>Найточніша, найповільніша</string>
+	<key>Most keys belong to one workspace and need nothing here. If Anthropic asks which workspace to use, the Assistant says so.</key>
+	<string>Більшість ключів належать до однієї робочої області, і тут нічого не потрібно. Якщо Anthropic запитає, яку робочу область використовувати, Асистент про це скаже.</string>
 	<key>Motion</key>
 	<string>Рух</string>
 	<key>Motion blur</key>
@@ -4740,6 +4880,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Перемістити пізніше</string>
 	<key>Move Up</key>
 	<string>Перемістити вгору</string>
+	<key>Move a cut, or a whole clip, without leaving a gap or changing how long the video is.</key>
+	<string>Переміщуйте склейку чи цілий кліп, не залишаючи проміжку й не змінюючи тривалості відео.</string>
 	<key>Move an annotation to a track</key>
 	<string>Перенести розмітку на доріжку</string>
 	<key>Move earlier</key>
@@ -4978,6 +5120,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Наступний ключовий кадр</string>
 	<key>Next to Claude Desktop, click Copy setup.</key>
 	<string>Біля Claude Desktop натисніть «Скопіювати налаштування».</string>
+	<key>Next to the time, under the player.</key>
+	<string>Поруч із часом, під плеєром.</string>
 	<key>Next to the video, LF Studios keeps the details the editor needs, on your Mac.</key>
 	<string>Поруч із відео LF Studios зберігає дані, потрібні редактору, — на вашому Mac.</string>
 	<key>Nice shot. You're all set.</key>
@@ -5036,6 +5180,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>У відео з камери обличчя не знайдено</string>
 	<key>No favourites yet: hover an item and click its star.</key>
 	<string>У вибраному поки порожньо: наведіть на елемент і клацніть його зірочку.</string>
+	<key>No gap here</key>
+	<string>Тут немає проміжку</string>
+	<key>No gaps after the playhead</key>
+	<string>Після покажчика немає проміжків</string>
 	<key>No idle moments found — nice and tight</key>
 	<string>Простоїв не знайдено — усе щільно</string>
 	<key>No location chosen</key>
@@ -5166,6 +5314,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Нічого не знайдено за «%@»</string>
 	<key>Nothing matches “%@”.</key>
 	<string>Ніщо не відповідає «%@».</string>
+	<key>Nothing of the recording is left on that side to slide into. Slide works where a part was cut out.</key>
+	<string>З того боку не лишилося запису, щоб посунути кліп. Ковзання працює там, де частину було вирізано.</string>
 	<key>Nothing private found</key>
 	<string>Особистих даних не знайдено</string>
 	<key>Nothing to clean up — everything belongs to recordings you still have</key>
@@ -5246,6 +5396,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>На доріжці субтитрів угорі таймлайна перетягніть субтитр, щоб посунути його, або його краї, щоб змінити початок і кінець.</string>
 	<key>On the edit's timeline</key>
 	<string>На шкалі часу монтажу</string>
+	<key>On the main track, sliding uses parts of the recording that were cut out. Right after a split there's nothing to slide into, so a clip slides only where a part was removed.</key>
+	<string>На основній доріжці ковзання використовує вирізані частини запису. Одразу після розділення ковзати нікуди, тож кліп ковзає лише там, де частину вилучено.</string>
 	<key>On the preview after capture, click Text, or right-click and choose Copy Text.</key>
 	<string>На перегляді після знімка клацніть «Текст» або клацніть правою кнопкою й виберіть «Скопіювати текст».</string>
 	<key>On the timeline's zoom lane, drag the zoom's edges to set how long it lasts.</key>
@@ -5278,6 +5430,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>На диску вільно лише %@ — цього може не вистачити. Звільніть місце або збережіть на інший диск.</string>
 	<key>Only apps on this Mac can connect, with a secret token. New token makes the old one stop working.</key>
 	<string>Під’єднатися можуть лише застосунки на цьому Mac із секретним токеном. «Новий токен» вимикає старий.</string>
+	<key>Only for a key that works in every workspace: which one to use. Leave it empty otherwise.</key>
+	<string>Лише для ключа, що працює в усіх робочих областях: яку з них використовувати. Інакше залиште порожнім.</string>
 	<key>Only for these, and never to send your work:</key>
 	<string>Лише для цього, і ніколи — щоб надіслати вашу роботу:</string>
 	<key>Only if you turned them on: shortcuts, typing positions and times, and your speaker notes.</key>
@@ -5422,6 +5576,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Необов’язково: введіть і свої слова для пошуку, наприклад ім’я клієнта.</string>
 	<key>Optional: type words to look for, and turn on Also scan the camera video.</key>
 	<string>Необов’язково: введіть слова для пошуку й увімкніть «Перевіряти й відео з камери».</string>
+	<key>Or choose Timeline ▸ Delete Gaps After Playhead: on every track, what comes after the playhead closes up to it.</key>
+	<string>Або виберіть «Шкала часу ▸ Видалити проміжки після покажчика»: на кожній доріжці все, що після покажчика, підтягується до нього.</string>
 	<key>Or drag it on the preview. Images stay put while the camera zooms.</key>
 	<string>Або перетягніть його в перегляді. Зображення лишаються на місці, поки камера наближається.</string>
 	<key>Or drag its bar on the timeline.</key>
@@ -5434,6 +5590,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Або перетягніть круглу ручку над картинкою</string>
 	<key>Or hold ⇧ and drag across the timeline to select a part, then click Cut this part.</key>
 	<string>Або утримуйте ⇧ і перетягніть по шкалі часу, щоб виділити частину, а тоді клацніть «Вирізати цю частину».</string>
+	<key>Or hold ⌥ and drag a clip above the main track: the copy lands where you drop it, and the original stays.</key>
+	<string>Або утримуйте ⌥ і перетягніть кліп над основною доріжкою: копія з’явиться там, де ви її відпустите, а оригінал залишиться.</string>
 	<key>Or try the Whisper engine instead.</key>
 	<string>Або спробуйте натомість рушій Whisper.</string>
 	<key>Or turn off Apple's screenshot shortcuts yourself: System Settings ▸ Keyboard ▸ Keyboard Shortcuts ▸ Screenshots.</key>
@@ -5454,6 +5612,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Початкова форма</string>
 	<key>Originals</key>
 	<string>Оригінали</string>
+	<key>Otherwise the selected clip, or else the whole video.</key>
+	<string>Інакше — вибраний кліп, а якщо його немає — усе відео.</string>
 	<key>Otherwise, LF Studios switches languages the next time it opens.</key>
 	<string>Інакше LF Studios змінить мову під час наступного відкриття.</string>
 	<key>Our own sound effects, free to use in anything you make. Hover to listen; drag one onto the timeline or click +.</key>
@@ -5502,8 +5662,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Пароль</string>
 	<key>Paste</key>
 	<string>Вставити</string>
+	<key>Paste Attributes</key>
+	<string>Вставити атрибути</string>
+	<key>Paste Attributes…</key>
+	<string>Вставити атрибути…</string>
 	<key>Paste a key that starts with %@</key>
 	<string>Вставте ключ, що починається з %@</string>
+	<key>Paste attributes</key>
+	<string>Вставлення атрибутів</string>
 	<key>Paste it anywhere with ⌘V.</key>
 	<string>Вставте його будь-де за допомогою ⌘V.</string>
 	<key>Paste it in LF Studios ▸ Settings ▸ AI ▸ Anthropic (Claude) and click Save.</key>
@@ -5512,6 +5678,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Вставте його в LF Studios ▸ Параметри ▸ ШІ ▸ Google Gemini і натисніть «Зберегти».</string>
 	<key>Paste it in LF Studios ▸ Settings ▸ AI ▸ OpenAI and click Save.</key>
 	<string>Вставте його в LF Studios ▸ Параметри ▸ ШІ ▸ OpenAI і натисніть «Зберегти».</string>
+	<key>Paste it in Settings ▸ AI ▸ Workspace ID.</key>
+	<string>Вставте його в «Параметри ▸ ШІ ▸ ID робочої області».</string>
 	<key>Paste it into Terminal and press Return.</key>
 	<string>Вставте в Термінал і натисніть Return.</string>
 	<key>Paste it into ~/.codex/config.toml and save.</key>
@@ -5638,6 +5806,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Пікселізована область</string>
 	<key>Place captions anywhere</key>
 	<string>Субтитри будь-де в кадрі</string>
+	<key>Place, size, turn, mirror, crop, opacity and blend</key>
+	<string>Положення, розмір, поворот, віддзеркалення, обрізання, непрозорість і накладання</string>
 	<key>Placement</key>
 	<string>Розташування</string>
 	<key>Plain</key>
@@ -5672,6 +5842,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Відтворити звідси</string>
 	<key>Play it with the words around it</key>
 	<string>Відтворити разом зі словами довкола</string>
+	<key>Play the same part over and over while you work on it.</key>
+	<string>Відтворюйте ту саму частину знову й знову, поки працюєте з нею.</string>
 	<key>Play the video and move the playhead (the line that shows where you are) to any moment.</key>
 	<string>Відтворюйте відео й переміщуйте покажчик відтворення (лінію, яка показує, де ви зараз) до будь-якого моменту.</string>
 	<key>Play “%@”</key>
@@ -5796,10 +5968,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Натисніть скорочення або виберіть «Зняти вікно».</string>
 	<key>Press the shortcut, or click Take screenshot.</key>
 	<string>Натисніть скорочення або клацніть «Зробити знімок екрана».</string>
+	<key>Press ⇧⌘V, tick what to paste — Effects, Filters, Adjust, Speed, Volume, Transform, Animation — and click Paste.</key>
+	<string>Натисніть ⇧⌘V, позначте, що вставити, — «Ефекти», «Фільтри», «Корекція», «Швидкість», «Гучність», «Трансформування», «Анімація» — і клацніть «Вставити».</string>
 	<key>Press ⌘C in the video editor, or choose Copy Current Frame in the commands (⌘K).</key>
 	<string>Натисніть ⌘C у відеоредакторі або виберіть «Скопіювати поточний кадр» у командах (⌘K).</string>
 	<key>Press ⌘K and type: a command's name, a file's, a clip's, words from a caption, or a marker's name.</key>
 	<string>Натисніть ⌘K і введіть: назву команди, файлу, кліпу, слова із субтитру або назву маркера.</string>
+	<key>Press ⌘L again to turn it off.</key>
+	<string>Натисніть ⌘L ще раз, щоб вимкнути.</string>
 	<key>Press ⌫ again on crossed-out words to bring them back.</key>
 	<string>Натисніть ⌫ ще раз на закреслених словах, щоб повернути їх.</string>
 	<key>Pressed at %@. Press ⌫ to hide it from the video — handy for a stray ⌘Tab.</key>
@@ -6692,6 +6868,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Перейменувати маркер…</string>
 	<key>Rename Preset</key>
 	<string>Перейменувати стиль</string>
+	<key>Rename Track</key>
+	<string>Перейменувати доріжку</string>
+	<key>Rename a track</key>
+	<string>Перейменування доріжки</string>
 	<key>Rename “%@”</key>
 	<string>Перейменувати «%@»</string>
 	<key>Rename…</key>
@@ -6818,6 +6998,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Показати</string>
 	<key>Reveal in Finder</key>
 	<string>Показати у Finder</string>
+	<key>Reveal in Library</key>
+	<string>Показати в Бібліотеці</string>
+	<key>Reveal in Library and Match Frame</key>
+	<string>«Показати в Бібліотеці» й «Відповідний кадр»</string>
 	<key>Reveal shows the file in Finder; Copy Path copies where it is.</key>
 	<string>«Показати» показує файл у Finder; «Скопіювати шлях» копіює його розташування.</string>
 	<key>Reverse</key>
@@ -6862,6 +7046,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Клацніть проєкт правою кнопкою на головній ▸ Видалити: він потрапить у Смітник.</string>
 	<key>Right-click a zoom on the timeline for quick changes.</key>
 	<string>Клацніть наближення на шкалі часу правою кнопкою для швидких змін.</string>
+	<key>Right-click empty space on a track, or the Timeline menu.</key>
+	<string>Клацніть правою кнопкою порожнє місце на доріжці або меню «Шкала часу».</string>
 	<key>Right-click for Open, Show in Finder, Creative Handoff…, or Delete (moves it to the Trash; for a recording's folder, the whole folder, after asking).</key>
 	<string>Клацніть правою кнопкою, щоб вибрати «Відкрити», «Показати у Finder», «Творче передавання…» або «Видалити» (переміщує в Смітник; для папки запису — усю папку, після запитання).</string>
 	<key>Right-click for Save As…, Pin to Screen, and Delete.</key>
@@ -6870,12 +7056,28 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Натисніть правою кнопкою й виберіть «Зв’язати звук», щоб повернути його під відео.</string>
 	<key>Right-click it for Copy, Save As…, Edit, Close Pin, or Close All Pins.</key>
 	<string>Клацніть правою кнопкою, щоб вибрати «Скопіювати», «Зберегти як…», «Редагувати», «Закрити» або «Закрити всі».</string>
+	<key>Right-click the empty space between two clips and choose Delete Gap. What comes after it moves back.</key>
+	<string>Клацніть правою кнопкою порожнє місце між двома кліпами й виберіть «Видалити проміжок». Усе, що далі, зсунеться назад.</string>
 	<key>Ring</key>
 	<string>Кільце</string>
 	<key>Ripple</key>
 	<string>Хвиля</string>
+	<key>Ripple (as before): drag a clip's end. Everything after it moves.</key>
+	<string>Каскад (як і раніше): перетягніть край кліпу. Усе, що після нього, зсувається.</string>
 	<key>Riser</key>
 	<string>Наростання</string>
+	<key>Roll</key>
+	<string>Перекат</string>
+	<key>Roll needs a clip after this one</key>
+	<string>Для перекату потрібен кліп після цього</string>
+	<key>Roll needs a clip right after this one</key>
+	<string>Для перекату потрібен кліп одразу після цього</string>
+	<key>Roll, slide, and the Trim tool</key>
+	<string>Перекат, ковзання й інструмент «Підрізати»</string>
+	<key>Roll: both clips change, no gap</key>
+	<string>Перекат: змінюються обидва кліпи, без проміжку</string>
+	<key>Roll: drag the cut between two clips that touch. One gets longer, the other shorter, by the same amount.</key>
+	<string>Перекат: перетягніть склейку між двома суміжними кліпами. Один стає довшим, інший — коротшим на стільки ж.</string>
 	<key>Rose Smoke</key>
 	<string>Рожевий дим</string>
 	<key>Rotate</key>
@@ -6898,10 +7100,18 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Заокруглення в тому ж меню: від гострих кутів до круглих.</string>
 	<key>Roundness: from sharp corners to a full circle.</key>
 	<string>«Заокруглення»: від гострих кутів до повного кола.</string>
+	<key>Rule of thirds</key>
+	<string>Правило третин</string>
+	<key>Rule of thirds and Centre lines, to line things up.</key>
+	<string>«Правило третин» і «Центральні лінії», щоб вирівнювати елементи.</string>
 	<key>S</key>
 	<string>S</string>
 	<key>STORY</key>
 	<string>ІСТОРІЯ</string>
+	<key>Safe zones and grid</key>
+	<string>Безпечні зони й сітка</string>
+	<key>Safe zones and grid (never in the export)</key>
+	<string>Безпечні зони й сітка (ніколи не в експорті)</string>
 	<key>Saturation</key>
 	<string>Насиченість</string>
 	<key>Save</key>
@@ -7134,6 +7344,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Див. також</string>
 	<key>See how a setting changes over time under a track, and drag its keyframes there.</key>
 	<string>Під доріжкою видно, як налаштування змінюється з часом, і там же можна перетягувати його ключові кадри.</string>
+	<key>See how loud the video is while it plays, left and right.</key>
+	<string>Бачте, наскільки гучне відео під час відтворення, ліворуч і праворуч.</string>
 	<key>See where a phone app's buttons and captions would cover your vertical video.</key>
 	<string>Подивіться, де кнопки й підписи програми на телефоні закриють ваше вертикальне відео.</string>
 	<key>Select</key>
@@ -7146,6 +7358,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Зняти вибір</string>
 	<key>Select a caption on the timeline to change when it starts and ends.</key>
 	<string>Виберіть субтитр на шкалі часу, щоб змінити, коли він починається й закінчується.</string>
+	<key>Select a clip (or put the playhead over one) and press ⇧F: Library ▸ Media opens with its file selected.</key>
+	<string>Виберіть кліп (або поставте на нього покажчик) і натисніть ⇧F: відкриється «Бібліотека ▸ Медіа» з вибраним його файлом.</string>
 	<key>Select a clip above the main track first</key>
 	<string>Спершу виберіть кліп над основною доріжкою</string>
 	<key>Select a clip above the main track to add a keyframe</key>
@@ -7156,6 +7370,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Виберіть кліп, щоб побачити «Вимкнути звук цього кліпу», «Поява» й «Зникнення». Або виділіть частину, перетягнувши з ⇧, і виберіть «Вимкнути звук цієї частини».</string>
 	<key>Select a clip on the timeline to mute it or fade it in and out.</key>
 	<string>Виберіть кліп на шкалі часу, щоб вимкнути його звук або додати плавну появу й зникнення.</string>
+	<key>Select a clip to duplicate</key>
+	<string>Виберіть кліп, щоб дублювати</string>
+	<key>Select a clip to find its file in the Library</key>
+	<string>Виберіть кліп, щоб знайти його файл у Бібліотеці</string>
+	<key>Select a clip to see its source</key>
+	<string>Виберіть кліп, щоб побачити його джерело</string>
 	<key>Select a clip, a zoom or an annotation to change it here.</key>
 	<string>Виберіть кліп, наближення чи позначку, щоб змінити їх тут.</string>
 	<key>Select a clip, or ⇧-drag a part, and choose its Speed in the panel on the right.</key>
@@ -7176,10 +7396,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Виділіть будь-який відрізок відео й приберіть його, навіть якщо він охоплює кілька кліпів.</string>
 	<key>Select area manually</key>
 	<string>Вибрати область вручну</string>
+	<key>Select clips above the main track (or a sound, a zoom, or an annotation) and press ⌘D: the copy goes right after it, and what follows moves along.</key>
+	<string>Виберіть кліпи над основною доріжкою (або звук, наближення чи розмітку) і натисніть ⌘D: копія стане одразу після них, а наступне зсунеться.</string>
 	<key>Select clips above the main track to make a compound clip</key>
 	<string>Виберіть кліпи над основною доріжкою, щоб створити складений кліп</string>
 	<key>Select clips above the main track, then press ⌥G.</key>
 	<string>Виберіть кліпи над основною доріжкою, а тоді натисніть ⌥G.</string>
+	<key>Select clips in a box (⇧ adds, ⌘ toggles)</key>
+	<string>Вибрати кліпи рамкою (⇧ — додати, ⌘ — перемкнути)</string>
+	<key>Select clips with a box</key>
+	<string>Вибір кліпів рамкою</string>
 	<key>Select left / right of the playhead</key>
 	<string>Вибрати ліворуч / праворуч від покажчика</string>
 	<key>Select left of playhead</key>
@@ -7200,8 +7426,18 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Виберіть кліп, щоб побачити ручки кривої (маленькі ромби біля точок). Перетягніть ручку вгору чи вниз, щоб вигнути криву; подвійне натискання повертає згладжування (1.19.0).</string>
 	<key>Select the clips (⇧-click to add more), then press ⌥G.</key>
 	<string>Виберіть кліпи (⇧-клацання додає ще), а тоді натисніть ⌥G.</string>
+	<key>Select the clips to change (a box selects many at once).</key>
+	<string>Виберіть кліпи, які змінити (рамка вибирає багато одразу).</string>
+	<key>Select the clips to paste onto</key>
+	<string>Виберіть кліпи, у які вставити</string>
+	<key>Select the finished clip and press ⌘C.</key>
+	<string>Виберіть готовий кліп і натисніть ⌘C.</string>
+	<key>Select tool</key>
+	<string>Інструмент «Вибір»</string>
 	<key>Select tool · split tool</key>
 	<string>Вибір · інструмент «Розділити»</string>
+	<key>Select tool · split tool · trim tool</key>
+	<string>Вибір · інструмент «Розділити» · інструмент «Підрізати»</string>
 	<key>Select two or more clips above the main track to group them (⇧-click)</key>
 	<string>Виберіть два кліпи або більше над основною доріжкою, щоб згрупувати (⇧-клацання)</string>
 	<key>Select which display to record fullscreen</key>
@@ -7272,6 +7508,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Встановлює гучність на рівні, якого очікують відеосайти (−16 LUFS)</string>
 	<key>Settings</key>
 	<string>Параметри</string>
+	<key>Settings ▸ AI ▸ Anthropic ▸ Workspace ID.</key>
+	<string>Параметри ▸ ШІ ▸ Anthropic ▸ ID робочої області.</string>
 	<key>Settings ▸ AI…</key>
 	<string>Параметри ▸ ШІ…</string>
 	<key>Settings ▸ Agent ▸ Save… gives the agent a guide to LF Studios' tools (for Claude Code, a skill).</key>
@@ -7500,16 +7738,26 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Небесна акварель</string>
 	<key>Slide</key>
 	<string>Зсув</string>
+	<key>Slide (Trim tool): drag a clip. It keeps its frames and moves between its neighbours, which change to fit.</key>
+	<string>Ковзання (інструмент «Підрізати»): перетягніть кліп. Він зберігає свої кадри й рухається між сусідами, які підлаштовуються.</string>
 	<key>Slide down</key>
 	<string>Зсув униз</string>
 	<key>Slide left</key>
 	<string>Зсув ліворуч</string>
+	<key>Slide needs a clip on each side</key>
+	<string>Для ковзання потрібен кліп з кожного боку</string>
 	<key>Slide right</key>
 	<string>Зсув праворуч</string>
 	<key>Slide up</key>
 	<string>Зсув угору</string>
+	<key>Slide · ⌥ Slip</key>
+	<string>Ковзання · ⌥ Зсув</string>
 	<key>Slides / iPad</key>
 	<string>Слайди / iPad</string>
+	<key>Slip</key>
+	<string>Зсув</string>
+	<key>Slip (Trim tool): ⌥-drag a video above the main track to show a different part of it in the same place.</key>
+	<string>Зсув (інструмент «Підрізати»): перетягніть із ⌥ відео над основною доріжкою, щоб показати іншу його частину на тому самому місці.</string>
 	<key>Slow</key>
 	<string>Повільно</string>
 	<key>Small</key>
@@ -7528,6 +7776,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Плавність</string>
 	<key>Social</key>
 	<string>Соцмережі</string>
+	<key>Social apps (9:16 videos only)</key>
+	<string>Соцмережі (лише відео 9:16)</string>
+	<key>Social apps (9:16)</key>
+	<string>Соцмережі (9:16)</string>
 	<key>Social feeds</key>
 	<string>Стрічки соцмереж</string>
 	<key>Soft</key>
@@ -7546,6 +7798,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Суцільний колір</string>
 	<key>Solid color</key>
 	<string>Суцільний колір</string>
+	<key>Solo</key>
+	<string>Соло</string>
+	<key>Solo %@</key>
+	<string>Соло «%@»</string>
+	<key>Solo a track</key>
+	<string>Соло доріжки</string>
+	<key>Solo is for listening in the editor. The export always has every track, as their own Mute buttons say.</key>
+	<string>Соло — лише для прослуховування в редакторі. В експорті завжди є всі доріжки, як задають їхні кнопки «Вимкнути звук».</string>
+	<key>Solo “%@”: hear only soloed tracks while editing (the export keeps every track)</key>
+	<string>Соло «%@»: під час редагування чутно лише доріжки соло (в експорті залишаються всі доріжки)</string>
 	<key>Some files couldn't be written — README.txt in the folder lists them</key>
 	<string>Деякі файли не вдалося записати — їх перелічено в README.txt у папці</string>
 	<key>Some files weren't added: LF Studios takes videos, pictures, and sound files</key>
@@ -7558,12 +7820,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Звук</string>
 	<key>Sound effects</key>
 	<string>Звукові ефекти</string>
+	<key>Sound levels while playing: green is fine, yellow is loud, red is too loud</key>
+	<string>Рівні звуку під час відтворення: зелений — добре, жовтий — гучно, червоний — надто гучно</string>
 	<key>Sound of %@</key>
 	<string>Звук: %@</string>
 	<key>Sound of clip %lld</key>
 	<string>Звук кліпу %lld</string>
 	<key>Sounds</key>
 	<string>Звуки</string>
+	<key>Source at %@</key>
+	<string>Джерело на %@</string>
 	<key>Space</key>
 	<string>Пробіл</string>
 	<key>Space Gray</key>
@@ -7712,6 +7978,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Почати заново з оригінального запису…</string>
 	<key>Start at the playhead</key>
 	<string>Почати на покажчику відтворення</string>
+	<key>Start dragging where there's no clip, and drag over the clips you want.</key>
+	<string>Почніть перетягувати там, де немає кліпу, і проведіть через потрібні кліпи.</string>
 	<key>Start here</key>
 	<string>Початок тут</string>
 	<key>Start over from the original recording?</key>
@@ -7784,6 +8052,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Зупинити запис (%@)</string>
 	<key>Stop recording, from any app</key>
 	<string>Зупинити запис із будь-якої програми</string>
+	<key>Stop soloing “%@”</key>
+	<string>Вимкнути соло «%@»</string>
 	<key>Stop, while LF Studios is the app in front</key>
 	<string>Зупинити, коли LF Studios — активна програма</string>
 	<key>Stopped after %lld steps. Ask again to go on.</key>
@@ -8052,6 +8322,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Меню «Мікрофон», коли мікрофон увімкнено.</string>
 	<key>The Proxy menu under the player.</key>
 	<string>Меню «Проксі» під плеєром.</string>
+	<key>The Timeline menu, or the clips on the timeline.</key>
+	<string>Меню «Шкала часу» або кліпи на шкалі часу.</string>
 	<key>The Undo and Redo buttons in the editor's toolbar.</key>
 	<string>Кнопки «Відмінити» й «Повторити» на панелі інструментів редактора.</string>
 	<key>The agent connection couldn't start: %@</key>
@@ -8112,6 +8384,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Курсор, наближення й клацання підлаштовуються під обрізання.</string>
 	<key>The curve button in a track's header, above the main track (LF Studios layout).</key>
 	<string>Кнопка кривої в заголовку доріжки над основною (макет LF Studios).</string>
+	<key>The cut between two clips, and the Trim tool (T) beside Select and Split.</key>
+	<string>Склейка між двома кліпами та інструмент «Підрізати» (T) поруч із «Вибір» і «Розділити».</string>
 	<key>The dice button picks one at random.</key>
 	<string>Кнопка з кубиком вибирає варіант навмання.</string>
 	<key>The editor has the Library on the left, the player in the middle, Properties on the right (Style, Cursor, Zoom, Camera, Captions, and Audio), and the timeline below.</key>
@@ -8128,6 +8402,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Експорт несподівано зупинився (%@). Спробуйте ще раз — якщо це повторюється, експортуйте з нижчою роздільністю або в H.264.</string>
 	<key>The export window warns you before a file won't fit.</key>
 	<string>Вікно експорту попередить, якщо файл не вміститься.</string>
+	<key>The filter and its strength</key>
+	<string>Фільтр і його сила</string>
 	<key>The first button in the recording bar.</key>
 	<string>Перша кнопка на панелі запису.</string>
 	<key>The first time, macOS asks to allow the microphone and the camera.</key>
@@ -8150,8 +8426,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Форма й розмір рамки, «Підігнати вікно під рамку…», а також «Вікно», «Весь екран» або «Вибрати область вручну».</string>
 	<key>The frame, the dimming, and the bars are never in the video. Nothing is recorded until you click Record.</key>
 	<string>Рамка, затемнення й панелі ніколи не потрапляють у відео. Нічого не записується, доки ви не клацнете «Записати».</string>
+	<key>The grid button under the player.</key>
+	<string>Кнопка сітки під плеєром.</string>
 	<key>The handoff is ready</key>
 	<string>Передавання готове</string>
+	<key>The headphones button on a sound or video track's header.</key>
+	<string>Кнопка навушників у заголовку звукової чи відеодоріжки.</string>
 	<key>The highest quality, and the only one that can keep transparency</key>
 	<string>Найвища якість — і єдиний формат, що зберігає прозорість</string>
 	<key>The key is kept only in your Mac's Keychain, never in projects, handoffs or settings files.</key>
@@ -8172,6 +8452,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Лупа тримається над курсором.</string>
 	<key>The magnifier shows the pixels under the pointer, with their color.</key>
 	<string>Лупа показує пікселі під курсором і їхній колір.</string>
+	<key>The main track never has gaps: deleting a clip there closes up by itself (unless the main track magnet is off). A locked track keeps its gaps.</key>
+	<string>На основній доріжці проміжків не буває: видалений кліп закривається сам (якщо не вимкнено магніт основної доріжки). Заблокована доріжка зберігає свої проміжки.</string>
+	<key>The main track's clips are the recording itself, each moment once, so they aren't duplicated. To use a part twice, copy it to a track above with ⌘C and ⌘V.</key>
+	<string>Кліпи основної доріжки — це сам запис, кожна мить лише раз, тож їх не дублюють. Щоб використати частину двічі, скопіюйте її на доріжку вище за допомогою ⌘C і ⌘V.</string>
+	<key>The main track's clips take Speed, Volume, and Transform (mirror and turn). It's one step: ⌘Z takes it all back.</key>
+	<string>Кліпи основної доріжки приймають «Швидкість», «Гучність» і «Трансформування» (віддзеркалення й поворот). Це один крок: ⌘Z відміняє все.</string>
 	<key>The markers are already at clip edges</key>
 	<string>Маркери вже стоять на межах кліпів</string>
 	<key>The menu at the top of the panel switches the provider and model. New Chat starts over.</key>
@@ -8202,6 +8488,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Музика стає тихішою, поки звучить мова на цій доріжці, як під вашим голосом</string>
 	<key>The name in the Library. The file keeps its own.</key>
 	<string>Назва в Бібліотеці. Файл зберігає свою.</string>
+	<key>The name is saved with the project. Projects with renamed or soloed tracks need LF Studios 1.21.0 or later.</key>
+	<string>Назва зберігається в проєкті. Для проєктів із перейменованими доріжками чи доріжками соло потрібна LF Studios 1.21.0 або новіша.</string>
 	<key>The notes never appear in a recording, a screenshot, or screen sharing.</key>
 	<string>Нотатки ніколи не потрапляють у запис, знімок чи демонстрацію екрана.</string>
 	<key>The notes you read from while recording, kept with the video.</key>
@@ -8278,6 +8566,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Червона лінія на таймлайні — момент, який показує плеєр. Її ручка розташована над лінійкою.</string>
 	<key>The red stop button in the bar while recording, or the red timer in the menu bar.</key>
 	<string>Червона кнопка зупинки на панелі під час запису або червоний таймер у смузі меню.</string>
+	<key>The repeat button under the player, or Timeline ▸ Loop playback (⌘L).</key>
+	<string>Кнопка повтору під плеєром або «Шкала часу ▸ Відтворення по колу» (⌘L).</string>
 	<key>The same transition on every cut between clips</key>
 	<string>Той самий перехід на кожній склейці між кліпами</string>
 	<key>The save panel did not return a destination. Please try saving again.</key>
@@ -8338,6 +8628,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Перемикачі лишаються такими, як ви їх залишили, на цьому Mac.</string>
 	<key>The text is now on the clipboard: paste it anywhere with ⌘V.</key>
 	<string>Текст тепер у буфері обміну: вставте його будь-де за допомогою ⌘V.</string>
+	<key>The thin line holds the loudest moment for a second.</key>
+	<string>Тонка лінія на секунду затримує найгучніший момент.</string>
 	<key>The timeline and its tracks</key>
 	<string>Таймлайн і його доріжки</string>
 	<key>The timeline at the bottom of the video editor.</key>
@@ -8400,6 +8692,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Коли щось вибрано, вгорі праворуч з’являється панель «Вибране».</string>
 	<key>The ⌘ and ? buttons in the editor's toolbar. In the LF Studios layout: Search in the top bar, and All keys at the right of the bottom strip.</key>
 	<string>Кнопки ⌘ і ? на панелі редактора. У макеті LF Studios: «Пошук» у верхній панелі та «Усі клавіші» праворуч у нижній смузі.</string>
+	<key>Then move, delete, copy, or paste attributes onto them all at once.</key>
+	<string>Потім переміщуйте, видаляйте, копіюйте їх або вставляйте в них атрибути — усе одразу.</string>
 	<key>There are no captions to translate yet. Transcribe or add captions first.</key>
 	<string>Ще немає субтитрів для перекладу. Спершу розшифруйте мовлення або додайте субтитри.</string>
 	<key>There isn't enough free space on this disk: this export needs about %@ and %@ is free. Free up some space (empty the Trash, delete old recordings) or export to another drive.</key>
@@ -8426,8 +8720,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Анімація йде за вашими словами й має однаковий вигляд і в перегляді, і в експорті.</string>
 	<key>They look through the whole video on your Mac, which takes longer for long or 4K videos.</key>
 	<string>Вони переглядають усе відео на вашому Mac, а для довгих відео чи відео 4K це довше.</string>
+	<key>They show what the player plays, solo and mute included.</key>
+	<string>Вони показують те, що відтворює плеєр, з урахуванням соло й вимкненого звуку.</string>
 	<key>They take about %@ on this Mac (ProRes 422 Proxy at half size). The editor plays them instead of the originals; exports always use the originals. Clean Up in Settings removes them.</key>
 	<string>Вони займуть близько %@ на цьому Mac (ProRes 422 Proxy у половинному розмірі). Редактор відтворює їх замість оригіналів; експорт завжди використовує оригінали. «Прибрати» в Параметрах вилучає їх.</string>
+	<key>They're all off in every new editor window. Hide All Guides turns them off at once.</key>
+	<string>У кожному новому вікні редактора всі вони вимкнені. «Сховати всі напрямні» вимикає їх одразу.</string>
 	<key>They're kept on this Mac only, never in a project or a Creative Handoff. Settings ▸ Clean Up removes them.</key>
 	<string>Вони зберігаються лише на цьому Mac, ніколи в проєкті чи «Творчому передаванні». Параметри ▸ Прибрати вилучає їх.</string>
 	<key>Thickness</key>
@@ -8536,6 +8834,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Масштаб шкали часу (зведення пальців або ⌘ і прокручування)</string>
 	<key>Timeline size</key>
 	<string>Розмір таймлайна</string>
+	<key>Timeline ▸ Paste Attributes… (⇧⌘V).</key>
+	<string>Шкала часу ▸ Вставити атрибути… (⇧⌘V).</string>
+	<key>Timeline ▸ Reveal in Library (⇧F) and Match Frame.</key>
+	<string>Шкала часу ▸ Показати в Бібліотеці (⇧F) і Відповідний кадр.</string>
 	<key>Timing</key>
 	<string>Час</string>
 	<key>Timing only: never which keys</key>
@@ -8550,6 +8852,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Поради</string>
 	<key>Title</key>
 	<string>Назва</string>
+	<key>Title safe</key>
+	<string>Безпечна зона титрів</string>
+	<key>Title safe and Action safe: keep text inside the inner box and action inside the outer one.</key>
+	<string>«Безпечна зона титрів» і «Безпечна зона дії»: тримайте текст у внутрішній рамці, а дію — у зовнішній.</string>
 	<key>Titles</key>
 	<string>Заголовки</string>
 	<key>To</key>
@@ -8616,6 +8922,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Висота доріжок</string>
 	<key>Track height (above the track names): Small, Medium, or Large. A window shorter than about 1000 points starts with Small tracks and a taller timeline, until you choose.</key>
 	<string>Висота доріжок (над їхніми назвами): Мала, Середня або Велика. Вікно, нижче приблизно за 1000 точок, починає з малих доріжок і вищого таймлайна, доки ви не виберете самі.</string>
+	<key>Track name</key>
+	<string>Назва доріжки</string>
 	<key>Track options</key>
 	<string>Параметри доріжки</string>
 	<key>Track where I type</key>
@@ -8660,6 +8968,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Розшифровка</string>
 	<key>Transcript and captions removed — ⌘Z to undo</key>
 	<string>Розшифровку й субтитри вилучено — ⌘Z, щоб відмінити</string>
+	<key>Transform</key>
+	<string>Трансформування</string>
 	<key>Transition in</key>
 	<string>Перехід на початку</string>
 	<key>Transitions</key>
@@ -8680,6 +8990,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Обрізати початок кліпу до покажчика (Q)</string>
 	<key>Trim the screenshot to just the part that matters.</key>
 	<string>Обріжте знімок до найважливішої частини.</string>
+	<key>Trim tool</key>
+	<string>Інструмент «Підрізати»</string>
+	<key>Trim tool: drag a clip to slide it, ⌥-drag a video above the main track to slip it, drag a cut to roll. A goes back to Select.</key>
+	<string>Інструмент «Підрізати»: перетягніть кліп для ковзання, відео над основною доріжкою з ⌥ — для зсуву, склейку — для перекату. A — назад до вибору.</string>
 	<key>Trim toolbars, the menu bar, or empty space off the edges of the recording.</key>
 	<string>Обріжте з країв запису панелі інструментів, смугу меню чи порожнє місце.</string>
 	<key>Trimmed to my edit</key>
@@ -8744,6 +9058,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Увімкніть «Вступна заставка» чи «Завершальна заставка».</string>
 	<key>Turn on Keep face centered. LF Studios looks for your face once, with progress and Cancel.</key>
 	<string>Увімкніть «Тримати обличчя в центрі». LF Studios один раз шукає ваше обличчя — з індикатором поступу й кнопкою «Скасувати».</string>
+	<key>Turn on Loop playback (⌘L), then press Space.</key>
+	<string>Увімкніть «Відтворення по колу» (⌘L), потім натисніть пробіл.</string>
 	<key>Turn on Lower under your voice in the music's settings first</key>
 	<string>Спершу ввімкніть «Стишувати під голос» у налаштуваннях музики</string>
 	<key>Turn on Microphone in the recording bar. macOS asks once: click Allow.</key>
@@ -9326,6 +9642,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Увімкнути звук перегляду (M)</string>
 	<key>Unmute “%@”</key>
 	<string>Увімкнути звук «%@»</string>
+	<key>Unsolo %@</key>
+	<string>Вимкнути соло «%@»</string>
 	<key>Untick All</key>
 	<string>Зняти всі позначки</string>
 	<key>Untick the ones to keep. ▶ plays each one with the words around it.</key>
@@ -9468,6 +9786,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>«Гучність ◆» ставить ключовий кадр гучності на покажчику відтворення.</string>
 	<key>Volume, and Lower under your voice.</key>
 	<string>«Гучність» і «Стишувати під голос».</string>
+	<key>Volume, mute and sound fades</key>
+	<string>Гучність, вимкнення звуку й плавна поява/згасання звуку</string>
 	<key>WOW!</key>
 	<string>ВАУ!</string>
 	<key>Wait for it…</key>
@@ -9646,6 +9966,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Шторка</string>
 	<key>With Camera on and Layout ▸ Split screen, the frame is the screen's part of the video, and the camera's part shows beside it.</key>
 	<string>З увімкненою камерою й «Макет ▸ Розділений екран» рамка — це частина екрана у відео, а частина камери показана поруч.</string>
+	<key>With In and Out marked (I and O), it loops that part.</key>
+	<string>Якщо позначено початок і кінець (I та O), повторюється ця частина.</string>
 	<key>With a clip above the main track selected, + puts an effect, filter or adjustment on that clip.</key>
 	<string>Коли вибрано кліп над основною доріжкою, + накладає на нього ефект, фільтр чи корекцію.</string>
 	<key>With a transcript, you can also cut by deleting words: Captions ▸ Edit by text.</key>
@@ -9668,6 +9990,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Найкраще працює, якщо під час запису було ввімкнено «Записувати моменти натискань». Для старіших записів LF Studios вгадує за екраном і повідомляє про це.</string>
 	<key>Works with Auto-zoom on clicks.</key>
 	<string>Працює з «Автонаближення за клацаннями».</string>
+	<key>Workspace ID</key>
+	<string>ID робочої області</string>
 	<key>Wow!</key>
 	<string>Вау!</string>
 	<key>Writable</key>
@@ -9852,8 +10176,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Наближення</string>
 	<key>Zooms &amp; annotations</key>
 	<string>Наближення й розмітка</string>
-	<key>Zooms and annotations can be duplicated</key>
-	<string>Дублювати можна лише наближення й розмітку</string>
 	<key>Zooms that follow the text cursor while you type</key>
 	<string>Наближення, що стежать за текстовим курсором під час набору</string>
 	<key>Zooms that follow your text cursor while you type, so viewers can read along.</key>
@@ -10002,6 +10324,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>до %@ ГБ/хв</string>
 	<key>up to %@ MB/min</key>
 	<string>до %@ МБ/хв</string>
+	<key>wrkspc_…</key>
+	<string>wrkspc_…</string>
 	<key>zoom around the skimmer</key>
 	<string>масштабувати навколо скімера</string>
 	<key>© 2026 Bright Life Creations</key>
@@ -10032,6 +10356,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>«%@» знайдено в %lld з %lld знімків</string>
 	<key>“%@” has no sound</key>
 	<string>У «%@» немає звуку</string>
+	<key>“%@” in the Library</key>
+	<string>«%@» у Бібліотеці</string>
 	<key>“%@” is a clip on its own track now</key>
 	<string>«%@» тепер кліп на окремій доріжці</string>
 	<key>“%@” is already there</key>
@@ -10060,8 +10386,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>«%@» збережено в новішій версії LF Studios. Оновіть LF Studios, щоб відкрити його.</string>
 	<key>“%@” — drag onto the timeline, or double-click to add it at the playhead</key>
 	<string>«%@» — перетягніть на шкалу часу або двічі клацніть, щоб додати на покажчику відтворення</string>
-	<key>“%@” — drag to move it in time or to another track, drag an end to trim, ⌥-drag a video to slip it</key>
-	<string>«%@» — перетягніть, щоб зсунути в часі чи на іншу доріжку, край — щоб обрізати, ⌥-перетягування зсуває вміст відео</string>
+	<key>“%@” — drag to move it in time or to another track, ⌥-drag to copy it, drag an end to trim. Trim tool (T): drag to slide it, ⌥-drag a video to slip it</key>
+	<string>«%@» — перетягніть, щоб пересунути в часі чи на іншу доріжку, з ⌥ — щоб скопіювати, тягніть край, щоб підрізати. Інструмент «Підрізати» (T): перетягніть для ковзання, відео з ⌥ — для зсуву</string>
 	<key>“%@” — drag to move, drag an edge to trim, click to change it in Audio</key>
 	<string>«%@» — перетягніть, щоб перемістити, тягніть край, щоб підрізати, клацніть, щоб змінити на панелі «Аудіо»</string>
 	<key>“Made with LF Studios” end card (2s)</key>
@@ -10072,8 +10398,12 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>«Простіше — краще»</string>
 	<key>“Skipping frames”: your Mac can't keep up. Try Balanced quality or 30 fps.</key>
 	<string>«Пропуск кадрів»: ваш Mac не встигає. Спробуйте якість «Збалансована» або 30 fps.</string>
+	<key>• %@</key>
+	<string>• %@</string>
 	<key>• Timeline pictures and waveforms — %@ (made again when a video opens)</key>
 	<string>• Мініатюри й хвилі шкали часу — %@ (створюються знову, коли відкривається відео)</string>
+	<key>›</key>
+	<string>›</string>
 	<key>⇧-drag</key>
 	<string>⇧-тягнути</string>
 	<key>⇧-drag on the timeline to select a part first.</key>

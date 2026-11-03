@@ -177,6 +177,9 @@ struct VideoMediaBinView: View {
             }
             .onTapGesture { selected = nil }
         }
+        // Reveal in Library (⇧F, 1.21.0): the file, selected and in view.
+        .onChange(of: model.revealedMediaPath) { path in reveal(path, in: all) }
+        .onAppear { reveal(model.revealedMediaPath, in: all) }
         .overlay(
             RoundedRectangle(cornerRadius: 8, style: .continuous)
                 .strokeBorder(Color.accentColor, lineWidth: 2)
@@ -327,6 +330,15 @@ struct VideoMediaBinView: View {
     }
 
     // MARK: Tiles and rows
+
+    private func reveal(_ path: String?, in all: [VideoMediaEntry]) {
+        guard let path, let entry = all.first(where: { $0.path == path }) else { return }
+        query = ""
+        onlyFavourites = false
+        folder = entry.folder
+        selected = entry.key
+        model.revealedMediaPath = nil
+    }
 
     /// A file's key among the favourites (kept for every project).
     static func payload(_ entry: VideoMediaEntry) -> VideoLibraryPayload {

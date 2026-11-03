@@ -70,6 +70,9 @@ enum VideoAIError: Error, Equatable, LocalizedError {
     case rateLimited(retryAfter: Double?)
     case overloaded(retryAfter: Double?)
     case modelUnavailable(String)
+    /// An Anthropic key that works in every workspace: the request has to
+    /// say which one (Settings ▸ AI ▸ Workspace ID, 1.21.0).
+    case needsWorkspace
     case timedOut
     case offline
     case provider(String)
@@ -82,6 +85,7 @@ enum VideoAIError: Error, Equatable, LocalizedError {
         case .rateLimited: return L("The provider is limiting how fast you can send requests. Wait a minute, then try again.")
         case .overloaded: return L("The provider is busy right now. Try again in a moment.")
         case .modelUnavailable(let model): return L("The model “\(model)” isn't available with this key. Choose another one.")
+        case .needsWorkspace: return L("Anthropic needs to know which workspace to use with this key. Add your Workspace ID in Settings ▸ AI (it starts with wrkspc_), then try again.")
         case .timedOut: return L("The provider didn't answer in time. Try again.")
         case .offline: return L("LF Studios couldn't reach the provider. Check your internet connection.")
         case .provider(let message): return L("The provider said: \(message)")
@@ -150,6 +154,9 @@ enum VideoAIHTTP {
         case .anthropic:
             request.setValue(key, forHTTPHeaderField: "x-api-key")
             request.setValue(anthropicVersion, forHTTPHeaderField: "anthropic-version")
+            // A key for every workspace says which one (1.21.0).
+            let workspace = Settings.videoAIAnthropicWorkspaceID.trimmingCharacters(in: .whitespacesAndNewlines)
+            if !workspace.isEmpty { request.setValue(workspace, forHTTPHeaderField: "anthropic-workspace-id") }
         case .openAI:
             request.setValue("Bearer \(key)", forHTTPHeaderField: "Authorization")
         case .gemini:
@@ -219,6 +226,8 @@ enum VideoAIHTTP {
         let code = (detail?["type"]?.string ?? "") + " " + (detail?["code"]?.string ?? "") + " " + (detail?["status"]?.string ?? "")
         let after = retryAfter(response)
         let lower = message.lowercased()
+        // Anthropic asking which workspace (a key for every workspace).
+        if provider == .anthropic, [400, 403].contains(status), lower.contains("workspace") { return .needsWorkspace }
         switch status {
         case 401: return .badKey
         case 402: return .noCredit

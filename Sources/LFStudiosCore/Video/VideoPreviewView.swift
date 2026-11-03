@@ -287,6 +287,10 @@ struct VideoStageView: View {
                         VideoPhoneOverlayView(layout: layout, size: fitted)
                             .clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
                     }
+                    // Safe zones and grid (1.21.0): over the preview only.
+                    if !model.playerGuides.isEmpty {
+                        VideoPlayerGuidesView(guides: model.playerGuides, size: fitted, vertical: model.isVertical)
+                    }
                 }
             }
             .frame(width: max(proxy.size.width, fitted.width), height: max(proxy.size.height, fitted.height))

@@ -665,7 +665,7 @@ extension VideoEditorModel {
                 if media.externalAudio[url.path] == nil, let file = await VideoAudioFile.load(url) { media.externalAudio[url.path] = file }
             }
         }
-        if let moved = playback.apply(segments: segments, audio: project.audio, keepSourceTime: sourceTime(forTimeline: clock.time), extras: editExtras), !isPlaying {
+        if let moved = playback.apply(segments: segments, audio: playbackAudio, keepSourceTime: sourceTime(forTimeline: clock.time), extras: editExtras), !isPlaying {
             clock.time = moved
         }
     }

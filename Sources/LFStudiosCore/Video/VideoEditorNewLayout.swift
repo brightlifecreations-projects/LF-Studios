@@ -11,7 +11,7 @@ struct VideoToolRail: View {
     @ObservedObject var model: VideoEditorModel
 
     static let tools: [[VideoEditCommand]] = [
-        [.selectTool, .splitTool],
+        [.selectTool, .splitTool, .trimTool],
         [.split, .deleteLeft, .deleteRight, .group],
         [.zoomCut, .addKeyframe, .addMarker],
         [.recordVoiceover],
@@ -38,7 +38,7 @@ struct VideoToolRail: View {
     }
 
     private func button(_ command: VideoEditCommand) -> some View {
-        let on = (command == .selectTool && model.timelineTool == .select) || (command == .splitTool && model.timelineTool == .split)
+        let on = (command == .selectTool && model.timelineTool == .select) || (command == .splitTool && model.timelineTool == .split) || (command == .trimTool && model.timelineTool == .trim)
             || (command == .recordVoiceover && model.isOn(command))
         return Button {
             model.perform(command)

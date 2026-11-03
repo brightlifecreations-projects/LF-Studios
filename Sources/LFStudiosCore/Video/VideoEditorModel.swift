@@ -276,6 +276,8 @@ final class VideoEditorModel: ObservableObject {
             if skimming != isSkimming { isSkimming = skimming }
         }
     }
+    /// The pointer's height over the lanes (which track it's on).
+    var timelinePointerY: CGFloat?
     /// The skimmer is showing (redraws only when it comes or goes).
     @Published private(set) var isSkimming = false
     /// 1.21.0, the skimmer (Final Cut Pro's word for the preview axis line):
@@ -290,6 +292,21 @@ final class VideoEditorModel: ObservableObject {
     var editTime: Double { skimmerTime ?? clock.time }
     /// Items above the main track copied with ⌘C.
     var clipboardLayerItems: [VideoLayerItem] = []
+    // 1.21.0 (VideoEditorBasics.swift).
+    /// Loop playback (⌘L): off in every editor window to start with.
+    @Published var loopsPlayback = false
+    /// The clip ⌘C copied, for Paste Attributes (⇧⌘V).
+    var copiedAttributes: VideoCopiedAttributes?
+    @Published var isPasteAttributesPresented = false
+    /// Match Frame: the clip's source, shown at a frame.
+    @Published var sourceViewer: VideoSourceFrame?
+    /// Reveal in Library: the file to select in Library ▸ Media.
+    @Published var revealedMediaPath: String?
+    /// Safe zones and grid on the player (never in the export): off in
+    /// every editor window to start with.
+    @Published var playerGuides: Set<VideoPlayerGuide> = []
+    /// The player's sound levels while it plays.
+    let meters = VideoAudioMeters()
     /// Recording a voiceover (VideoVoiceover.swift).
     @Published var voiceover: VideoVoiceoverSession?
     /// Making a reversed clip or a freeze frame (VideoGeneratedMedia.swift).
@@ -397,7 +414,7 @@ final class VideoEditorModel: ObservableObject {
     @Published private(set) var trimPeekSourceTime: Double?
     /// While trimming, the timeline keeps its scale so the edge stays under
     /// the pointer instead of the whole strip re-fitting mid-drag.
-    @Published private(set) var layoutDurationLock: Double? {
+    @Published var layoutDurationLock: Double? {
         didSet { refreshTimeline() }
     }
     /// Crop mode: the preview shows the whole recording with a crop frame.
@@ -610,6 +627,7 @@ final class VideoEditorModel: ObservableObject {
         }
         self.project = project
         plan = VideoRenderPlan(project: project, sourceDuration: 0, artwork: artwork, pointPixelScale: recording?.pointPixelScale, cursorTrack: nil, camera: .identity)
+        playback.meterStorage = meters.storage
 
         playback.onTick = { [weak self] time in
             guard let self else { return }
@@ -620,11 +638,14 @@ final class VideoEditorModel: ObservableObject {
             guard self.isPlaying || self.previewAxisTime == nil else { return }
             if self.clock.time != time { self.clock.time = time }
             if self.isPlaying { self.previewRenderer.invalidate() }
+            self.loopIfNeeded(at: time)
         }
         playback.onPlayingChanged = { [weak self] playing in
             guard let self else { return }
             self.isPlaying = playing
             if !playing { self.shuttleRate = 1 }
+            if playing { self.meters.start() } else { self.meters.stop() }
+            if !playing { self.loopIfNeeded(at: self.clock.time, stopped: true) }
             self.updatePreviewQuality()
             self.previewRenderer.invalidate()
         }
@@ -701,7 +722,7 @@ final class VideoEditorModel: ObservableObject {
                 handoffWhenReady = false
                 showCreativeHandoff()
             }
-            playback.apply(segments: segments, audio: project.audio, keepSourceTime: nil, extras: editExtras)
+            playback.apply(segments: segments, audio: playbackAudio, keepSourceTime: nil, extras: editExtras)
             playback.seek(to: 0, fast: false)
             saveDraftNow()
             if restoredDraft {
@@ -788,7 +809,7 @@ final class VideoEditorModel: ObservableObject {
                 let keepSource = VideoDemoProject.sourceTime(forTimelineTime: clock.time, segments: oldSegments.isEmpty ? segments : oldSegments)
                 // The playhead follows that moment to its new place on the
                 // timeline (paused, the player won't report the move).
-                if let moved = playback.apply(segments: segments, audio: project.audio, keepSourceTime: keepSource, extras: editExtras), !isPlaying {
+                if let moved = playback.apply(segments: segments, audio: playbackAudio, keepSourceTime: keepSource, extras: editExtras), !isPlaying {
                     clock.time = moved
                 }
             }
@@ -1222,6 +1243,7 @@ final class VideoEditorModel: ObservableObject {
             playback.pause()
         } else {
             if case .zoom = selection, isAimingZoom { selection = .none }
+            loopStartIfNeeded()
             playback.play()
         }
     }
@@ -1463,7 +1485,7 @@ final class VideoEditorModel: ObservableObject {
         layoutDurationLock = nil
         if holdsPlayerRebuild {
             holdsPlayerRebuild = false
-            playback.apply(segments: segments, audio: project.audio, keepSourceTime: nil, extras: editExtras)
+            playback.apply(segments: segments, audio: playbackAudio, keepSourceTime: nil, extras: editExtras)
         }
         if let segment = segments.first(where: { $0.id == id }) {
             seek(to: leading ? segment.timelineStart : max(segment.timelineEnd - 0.02, segment.timelineStart))

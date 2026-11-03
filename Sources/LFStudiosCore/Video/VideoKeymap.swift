@@ -100,6 +100,7 @@ struct VideoKeymap: Equatable, Codable {
         .markIn: "I", .markOut: "O", .addText: "⌥T", .addArrow: "⌥A", .addHighlight: "⌥H", .addBlur: "⌥B",
         .addKeyframe: "⌥K", .previousKeyframe: "⌥[", .nextKeyframe: "⌥]", .addTextClip: "⌥⇧T",
         .makeCompound: "⌥G", .breakApart: "⌥⇧G", .zoomCut: "⌥Z",
+        .duplicate: "⌘D", .pasteAttributes: "⇧⌘V", .toggleLoopPlayback: "⌘L", .revealInLibrary: "⇧F", .trimTool: "T",
     ]
 
     /// Each preset changes only the keys of commands LF Studios has.
@@ -172,7 +173,7 @@ struct VideoKeymap: Equatable, Codable {
     static let takeovers: [(VideoKeyBinding, String)] = [
         (VideoKeyBinding(key: "j"), L("Play backwards")), (VideoKeyBinding(key: "k"), L("Pause")), (VideoKeyBinding(key: "l"), L("Play faster")),
         (VideoKeyBinding(key: "z"), L("Add zoom at playhead")), (VideoKeyBinding(key: "m"), L("Mute")), (VideoKeyBinding(key: "c"), L("Split at playhead")),
-        (VideoKeyBinding(key: "d", modifiers: .command), L("Duplicate")), (VideoKeyBinding(key: "f", modifiers: .command), L("Find in the transcript")),
+        (VideoKeyBinding(key: "f", modifiers: .command), L("Find in the transcript")),
         (VideoKeyBinding(key: "y", modifiers: [.command, .shift]), L("Apply my style")),
     ] + (1...5).map { (VideoKeyBinding(key: "\($0)"), L("Zoom level")) }
 

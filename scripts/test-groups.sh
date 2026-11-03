@@ -27,7 +27,7 @@
 #   VideoAIAssistantTests, VideoAIKeysTests — the AI provider, model and
 #   frames switches are shared settings, and they swap the key store.
 SNAPSHOTS='SnapshotTests'
-SERIAL='VideoLibraryFavouritesTests|VideoKeymapSettingsTests|RecordingEngineIntegrationTests|EditorMemoryValidationTests|VideoTimelineInteractionTests|VideoEditorLifecycleTests|VideoEditorDiscoverabilityTests|VideoInspectorLayoutTests|VideoPerformanceTests|VideoLongProjectPerformanceTests|VideoLongTakeTests|RecordingFrameTests|VideoDockTests|VideoFloatingPanelTests|VideoAgentTests|VideoAIAssistantTests|VideoAIKeysTests'
+SERIAL='VideoLibraryFavouritesTests|VideoKeymapSettingsTests|RecordingEngineIntegrationTests|EditorMemoryValidationTests|VideoTimelineInteractionTests|VideoEditorLifecycleTests|VideoEditorDiscoverabilityTests|VideoInspectorLayoutTests|VideoPerformanceTests|VideoLongProjectPerformanceTests|VideoLongTakeTests|RecordingFrameTests|VideoDockTests|VideoFloatingPanelTests|VideoAgentTests|VideoAIAssistantTests|VideoAIKeysTests|VideoEditorBasicsTests|VideoLongTimelineTests'
 
 # Each test process keeps its drafts and presets in a folder of its own
 # in here (VideoTestStorage.swift); start each run with it empty.

@@ -348,6 +348,16 @@ extension VideoEditorRootView {
                     .transition(.opacity)
                     .accessibilityAddTraits(.isModal)
             }
+            if model.isPasteAttributesPresented {
+                VideoModalCard(close: { model.isPasteAttributesPresented = false }) { VideoPasteAttributesSheet(model: model) }
+                    .transition(.opacity)
+                    .accessibilityAddTraits(.isModal)
+            }
+            if let frame = model.sourceViewer {
+                VideoModalCard(close: { model.sourceViewer = nil }) { VideoSourceViewer(model: model, frame: frame) }
+                    .transition(.opacity)
+                    .accessibilityAddTraits(.isModal)
+            }
             if !model.isReady {
                 loadingOverlay
                     .accessibilityAddTraits(.isModal)
@@ -794,17 +804,19 @@ extension VideoEditorModel {
             if [36, 76, 48, 49, 123, 124, 125, 126].contains(code) { return false }
             return modifiers.isEmpty || isUndoKey
         }
-        if isCommandPalettePresented || isShortcutsPresented || isProjectSettingsPresented || fillerReview != nil {
+        if isCommandPalettePresented || isShortcutsPresented || isProjectSettingsPresented || fillerReview != nil || isPasteAttributesPresented || sourceViewer != nil {
             if code == 53 {
                 isCommandPalettePresented = false
                 isShortcutsPresented = false
                 isProjectSettingsPresented = false
+                isPasteAttributesPresented = false
+                sourceViewer = nil
                 fillerPreview?.cancel()
                 fillerReview = nil
                 return true
             }
             // Return presses Done (or Remove); Tab and Space reach the ticks.
-            if isProjectSettingsPresented || fillerReview != nil, [36, 76, 48, 49, 123, 124, 125, 126].contains(code) { return false }
+            if isProjectSettingsPresented || fillerReview != nil || isPasteAttributesPresented || sourceViewer != nil, [36, 76, 48, 49, 123, 124, 125, 126].contains(code) { return false }
             return isUndoKey
         }
 
@@ -842,15 +854,6 @@ extension VideoEditorModel {
             withAnimation(.easeOut(duration: 0.15)) { isExportPresented = true }
             return true
         case ([.command], "f"): findInTranscript(); return true
-        case ([.command], "d"):
-            if let id = selectedZoomID {
-                duplicateZoom(id)
-            } else if case .overlay(let id) = selection {
-                duplicateOverlay(id)
-            } else if selection != .none {
-                showNotice(L("Zooms and annotations can be duplicated"), symbol: "plus.square.on.square")
-            }
-            return true
         case ([.command], "="), ([.command], "+"): zoomTimeline(by: 1.4); return true
         case ([.command], "-"): zoomTimeline(by: 1 / 1.4); return true
         default: break
@@ -1235,10 +1238,10 @@ struct VideoShortcutsSheet: View {
     /// keep their symbols; only the ones with words are translated.
     static var groups: [(String, [(String, String)])] {
         [
-            (L("Playback"), [(L("Space"), L("Play / pause")), ("J  K  L", L("Back · pause · faster")), ("← →", L("Previous / next frame")), ("⇧← ⇧→", L("Jump one second")), ("⌘← ⌘→", L("Start / end")), (L("Home  End"), L("Start / end")), ("M", L("Mute the preview (or the selected clip)"))]),
-            (L("Editing"), [("⌘B  C", L("Split at the skimmer, else the playhead")), ("⇧⌘B", L("Split all tracks at the skimmer, else the playhead")), ("A  B", L("Select tool · split tool")), ("Q  W", L("Delete left / right of the playhead")), (L("⇧-drag"), L("Select a range to cut")), (L("⇧/⌘-click"), L("Select several items")), ("I  O", L("Mark in / out")), ("[  ]", L("Select left / right of the playhead")), ("V", L("Turn a clip on or off")), ("⌫", L("Delete selection")), ("⌘C  ⌘V", L("Copy / paste clips")), ("⌘G  ⇧⌘G", L("Group / ungroup")), ("⌥G  ⌥⇧G", L("Make compound clip / break apart")), ("⌥← ⌥→", L("Select previous / next item")), ("⌘Z  ⇧⌘Z", L("Undo / redo"))]),
+            (L("Playback"), [(L("Space"), L("Play / pause")), ("J  K  L", L("Back · pause · faster")), ("← →", L("Previous / next frame")), ("⇧← ⇧→", L("Jump one second")), ("⌘← ⌘→", L("Start / end")), (L("Home  End"), L("Start / end")), ("M", L("Mute the preview (or the selected clip)")), ("⌘L", L("Loop playback: the In/Out range, the selected clip, or the whole video"))]),
+            (L("Editing"), [("⌘B  C", L("Split at the skimmer, else the playhead")), ("⇧⌘B", L("Split all tracks at the skimmer, else the playhead")), ("A  B  T", L("Select tool · split tool · trim tool")), ("⌘D", L("Duplicate the selection right after itself")), (L("⌥-drag"), L("Copy a clip above the main track")), (L("Drag a cut"), L("Roll: both clips change, no gap")), ("⇧⌘V", L("Paste attributes")), ("⇧F", L("Reveal in Library")), (L("Drag empty space"), L("Select clips in a box (⇧ adds, ⌘ toggles)")), ("Q  W", L("Delete left / right of the playhead")), (L("⇧-drag"), L("Select a range to cut")), (L("⇧/⌘-click"), L("Select several items")), ("I  O", L("Mark in / out")), ("[  ]", L("Select left / right of the playhead")), ("V", L("Turn a clip on or off")), ("⌫", L("Delete selection")), ("⌘C  ⌘V", L("Copy / paste clips")), ("⌘G  ⇧⌘G", L("Group / ungroup")), ("⌥G  ⌥⇧G", L("Make compound clip / break apart")), ("⌥← ⌥→", L("Select previous / next item")), ("⌘Z  ⇧⌘Z", L("Undo / redo"))]),
             (L("Keyframes"), [("⌥K", L("Add keyframe")), ("⌥[  ⌥]", L("Previous / next keyframe"))]),
-            (L("Zooms & annotations"), [("Z", L("Add zoom at playhead")), ("1 – 5", L("Zoom level (zoom selected)")), ("⌘D", L("Duplicate zoom or annotation")), ("⌥T  ⌥H  ⌥A  ⌥B", L("Text · highlight · arrow · blur")), ("⌥⇧T", L("Text clip")), ("⌥Z", L("Zoom cut")), (L("Double-click"), L("Type in a text annotation"))]),
+            (L("Zooms & annotations"), [("Z", L("Add zoom at playhead")), ("1 – 5", L("Zoom level (zoom selected)")), ("⌥T  ⌥H  ⌥A  ⌥B", L("Text · highlight · arrow · blur")), ("⌥⇧T", L("Text clip")), ("⌥Z", L("Zoom cut")), (L("Double-click"), L("Type in a text annotation"))]),
             (L("Timeline"), [("=  −", L("Show more / less detail")), ("⌘=  ⌘−", L("Show more / less detail")), ("⇧Z", L("Fit the whole video")), (L("⌘ scroll"), L("Zoom the timeline")), (L("Pointer over the timeline"), L("Zoom and ⌘B keep to the skimmer, else the playhead")), ("P", L("Main track magnet")), ("N", L("Auto snapping")), ("`", L("Linkage")), ("S", L("Preview axis")), ("⇧⌘A", L("Extract audio"))]),
             (L("General"), [("⌘E", L("Export")), ("⇧⌘Y", L("Apply my style")), ("⌘K", L("All commands")), ("⌘C", L("Copy current frame (nothing selected)")), ("⌘F", L("Find in the transcript")), ("?", L("This list")), (L("Esc"), L("Deselect / close"))]),
         ]
