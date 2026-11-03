@@ -15,7 +15,7 @@ import Foundation
 @MainActor
 enum GuideContent {
     /// Pages from these versions get a New badge and fill What's new.
-    nonisolated static let newVersions: [String] = ["1.19.1", "1.19.0", "1.18.0", "1.17.0", "1.16.0", "1.15.0", "1.14.0", "1.13.0", "1.12.0", "1.11.1", "1.11.0", "1.10.0", "1.9.0", "1.8.0", "1.7.0"]
+    nonisolated static let newVersions: [String] = ["1.20.0", "1.19.1", "1.19.0", "1.18.0", "1.17.0", "1.16.0", "1.15.0", "1.14.0", "1.13.0", "1.12.0", "1.11.1", "1.11.0", "1.10.0", "1.9.0", "1.8.0", "1.7.0"]
 
     static func chapters() -> [GuideChapter] {
         let features = featureCategories()
@@ -451,6 +451,7 @@ enum GuideContent {
             GuideCategory(id: "privacy-features", title: L("Privacy"), symbol: "eye.slash", entries: privacyFeatures()),
             GuideCategory(id: "export", title: L("Export"), symbol: "square.and.arrow.up", entries: exportFeatures()),
             GuideCategory(id: "projects", title: L("Projects"), symbol: "folder", entries: projectFeatures()),
+            GuideCategory(id: "ai-assistant", title: L("AI Assistant"), symbol: "bubble.left.and.text.bubble.right", entries: assistantFeatures()),
             GuideCategory(id: "ai-agents", title: L("AI agents"), symbol: "wand.and.sparkles", entries: agentFeatures()),
             GuideCategory(id: "settings", title: L("Settings"), symbol: "gearshape", entries: settingsFeatures()),
         ].filter { !$0.entries.isEmpty }
@@ -1424,6 +1425,137 @@ enum GuideContent {
             ),
         ]
     }
+    // MARK: AI Assistant (1.20.0)
+
+    static func assistantFeatures() -> [GuideEntry] {
+        [
+            GuideEntry(
+                id: "ai-assistant", symbol: "bubble.left.and.text.bubble.right", title: L("Edit with the Assistant"),
+                summary: L("Ask for an edit in plain words, and an AI makes it with the editor's own tools while you watch. It uses your own API key from Claude, OpenAI or Gemini."),
+                location: L("In the video editor: Layout ▸ Assistant Panel."),
+                steps: [
+                    L("Add a key and choose a provider first (see Add your API key)."),
+                    L("In the editor, choose Layout ▸ Assistant Panel."),
+                    L("Type what you want, for example: Cut the long pauses and add captions. Press Return."),
+                    L("Watch the answer come in. What it changes is listed under the chat as it goes."),
+                    L("When it's done, click Keep, or Revert All to go back to how the video was before the request."),
+                ],
+                tips: [
+                    L("Each request is one step back: Revert All undoes all of it at once, and ⌘Z brings it back."),
+                    L("Click or type in the editor while it works and it pauses. Click Resume to let it go on."),
+                    L("Stop ends the request at once; what it changed so far waits for Keep or Revert All."),
+                    L("It can run Auto captions, Remove Ums, Shorten Pauses and Apply My Style, and fill in the Export window. You always click Export yourself."),
+                    L("The menu at the top of the panel switches the provider and model. New Chat starts over."),
+                    L("The chat is saved with the project. A project with a chat opens in LF Studios 1.20.0 or later."),
+                ],
+                showMe: .settings(.ai),
+                since: "1.20.0",
+                related: ["ai-add-key", "ai-sent", "ai-costs", "agent-review"]
+            ),
+            GuideEntry(
+                id: "ai-add-key", symbol: "key", title: L("Add your API key"),
+                summary: L("The Assistant needs a key from Claude, OpenAI or Gemini. It stays in your Mac's Keychain."),
+                location: L("LF Studios ▸ Settings ▸ AI."),
+                steps: [
+                    L("Open LF Studios ▸ Settings ▸ AI."),
+                    L("Under the provider, paste your key into Paste key and click Save."),
+                    L("Click Test Key. It says the key works and loads the provider's models."),
+                    L("Choose a Model, or keep the one LF Studios chose."),
+                    L("At the top, set Provider to the one you added. Until you do, the Assistant stays off."),
+                ],
+                tips: [
+                    L("After saving, Settings shows only the key's last 4 characters."),
+                    L("The key is kept only in your Mac's Keychain, never in projects, handoffs or settings files."),
+                    L("Remove Key deletes it from the Keychain."),
+                ],
+                showMe: .settings(.ai),
+                since: "1.20.0",
+                related: ["ai-key-anthropic", "ai-key-openai", "ai-key-gemini", "ai-assistant"]
+            ),
+            GuideEntry(
+                id: "ai-key-anthropic", symbol: "key.horizontal", title: L("Get a Claude API key"),
+                summary: L("Make a key on Anthropic's website to use Claude in the Assistant."),
+                location: L("console.anthropic.com, then LF Studios ▸ Settings ▸ AI ▸ Anthropic (Claude)."),
+                steps: [
+                    L("Open console.anthropic.com and sign in or make an account (Settings ▸ AI ▸ Open Website takes you there)."),
+                    L("Add credit under Billing."),
+                    L("Under API Keys, click Create Key, name it LF Studios, and copy it."),
+                    L("Paste it in LF Studios ▸ Settings ▸ AI ▸ Anthropic (Claude) and click Save."),
+                ],
+                tips: [L("Claude keys start with sk-ant-.")],
+                showMe: .settings(.ai),
+                since: "1.20.0",
+                related: ["ai-add-key", "ai-costs"]
+            ),
+            GuideEntry(
+                id: "ai-key-openai", symbol: "key.horizontal", title: L("Get an OpenAI API key"),
+                summary: L("Make a key on OpenAI's website to use its models in the Assistant."),
+                location: L("platform.openai.com, then LF Studios ▸ Settings ▸ AI ▸ OpenAI."),
+                steps: [
+                    L("Open platform.openai.com and sign in or make an account (Settings ▸ AI ▸ Open Website takes you there)."),
+                    L("Add credit under Billing."),
+                    L("Under API keys, click Create new secret key, name it LF Studios, and copy it."),
+                    L("Paste it in LF Studios ▸ Settings ▸ AI ▸ OpenAI and click Save."),
+                ],
+                tips: [L("OpenAI keys start with sk-. A ChatGPT subscription doesn't include API credit.")],
+                showMe: .settings(.ai),
+                since: "1.20.0",
+                related: ["ai-add-key", "ai-costs"]
+            ),
+            GuideEntry(
+                id: "ai-key-gemini", symbol: "key.horizontal", title: L("Get a Gemini API key"),
+                summary: L("Make a key in Google AI Studio to use Gemini in the Assistant."),
+                location: L("aistudio.google.com, then LF Studios ▸ Settings ▸ AI ▸ Google Gemini."),
+                steps: [
+                    L("Open aistudio.google.com and sign in with your Google account (Settings ▸ AI ▸ Open Website takes you there)."),
+                    L("Click Get API key, then Create API key, and copy it."),
+                    L("Paste it in LF Studios ▸ Settings ▸ AI ▸ Google Gemini and click Save."),
+                ],
+                tips: [L("Gemini keys start with AIza. Set up billing in Google AI Studio for more than its free limits.")],
+                showMe: .settings(.ai),
+                since: "1.20.0",
+                related: ["ai-add-key", "ai-costs"]
+            ),
+            GuideEntry(
+                id: "ai-sent", symbol: "arrow.up.message", title: L("What the Assistant sends"),
+                summary: L("Only what it needs for your request goes to the provider you chose, straight from this Mac."),
+                location: L("LF Studios ▸ Settings ▸ AI ▸ Send video frames to the AI."),
+                points: [
+                    L("Your message, and the chat so far."),
+                    L("What it reads to do the job: the timeline (clips, times, tracks), the transcript and the captions, and the markers and keyframes."),
+                    L("Frames of the video, only when Send video frames to the AI is on (it's off at first)."),
+                    L("Never your API keys to anyone but their own provider, and never your recordings' files."),
+                ],
+                tips: [
+                    L("Nothing goes through LF Studios' own servers: there are none."),
+                    L("Each provider handles your data under its own terms."),
+                    L("Creative Handoff leaves the chat out unless you turn on Include AI chat history."),
+                ],
+                showMe: .settings(.ai),
+                since: "1.20.0",
+                related: ["ai-costs", "ai-add-key"]
+            ),
+            GuideEntry(
+                id: "ai-costs", symbol: "creditcard", title: L("What it costs"),
+                summary: L("The provider bills your account for each request, by the tokens it reads and writes. LF Studios charges nothing."),
+                location: L("Under each answer in the Assistant panel."),
+                points: [
+                    L("Under each answer: the tokens it used, in and out, for all its steps."),
+                    L("Under the chat: the tokens the whole chat has used."),
+                ],
+                tips: [
+                    L("Each provider's website lists its prices per million tokens; bigger models cost more."),
+                    L("A long chat sends more each time. New Chat starts small again."),
+                    L("Sending frames costs more than text."),
+                    L("Out of credit or sending too fast? The Assistant says so; add credit or wait a minute."),
+                ],
+                showMe: .settings(.ai),
+                since: "1.20.0",
+                related: ["ai-sent", "ai-assistant"]
+            ),
+        ]
+    }
+
     // MARK: AI agents (1.19.0)
 
     static func agentFeatures() -> [GuideEntry] {
@@ -1477,6 +1609,7 @@ enum GuideContent {
                 tips: [
                     L("After Revert All, ⌘Z brings the changes back."),
                     L("The Agent panel moves and floats like the others; its × hides it."),
+                    L("The Assistant works the same way: each request's changes wait under the chat for Keep or Revert All."),
                 ],
                 since: "1.19.0",
                 related: ["agent-tacks", "agent-limits"]

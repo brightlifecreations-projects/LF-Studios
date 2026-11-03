@@ -364,7 +364,6 @@ private struct VideoAssistantChat: View {
                     Button(L("Send")) { send() }
                         .buttonStyle(VideoSecondaryButtonStyle())
                         .disabled(draft.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
-                        .keyboardShortcut(.return, modifiers: .command)
                 }
             }
             let usage = assistant.history.usage

@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.20.0]
+
+### Added
+- **The Assistant: an AI that edits with you, with your own API key.** Add a key for Claude, OpenAI or Gemini in **Settings ▸ AI**, choose the provider, then open **Layout ▸ Assistant Panel** and ask for an edit in plain words ("Cut the long pauses and add captions").
+  - It edits with the editor's own tools, and you watch every change. Each request is one step: when it's done, click **Keep**, or **Revert All** to go back to how the video was before it. ⌘Z still works step by step.
+  - Click or type in the editor and it pauses until you click **Resume**. **Stop** ends a request at once.
+  - It can run **Auto captions**, **Remove Ums**, **Shorten Pauses** and **Apply My Style**, and fill in the **Export** window for you. You always click Export yourself.
+  - Answers stream in, with the tokens each one used and the chat's total. Choose the provider and model at the top of the panel; **New Chat** starts over.
+  - Clear messages for a wrong key, no credit, or a provider that's busy or limiting requests; it never retries over and over.
+- **Settings ▸ AI:** paste a key, **Test Key**, **Remove Key**, a link to get one, and a menu of the provider's current models (only chat models that can edit). Keys are kept only in your Mac's Keychain; Settings shows just their last 4 characters.
+- **Send video frames to the AI** (off at first): when it's off, only the timeline, the transcript and the captions are sent.
+- **Creative Handoff ▸ Include AI chat history** (off at first).
+- Guide pages: Edit with the Assistant, Add your API key, getting a key from Claude, OpenAI and Gemini, What the Assistant sends, and What it costs.
+- AI agents connected over MCP get the same new tools: auto captions, remove ums, shorten pauses, apply My Style, and prepare an export.
+
+### Compatibility
+- A project with an AI chat needs 1.20.0 or later; older versions say it needs a newer version. Projects without a chat are saved as before, and every project exports exactly as in 1.19.1.
+- Requests go straight from this Mac to the provider you chose; nothing goes through an LF Studios server.
+
 ## [1.19.1] - 2026-11-03
 
 ### Changed
