@@ -217,8 +217,12 @@ extension VideoDemoProject {
         timelineClips.contains { $0.needsFormat5 } || layerTracks.contains { $0.items.contains { $0.needsFormat5 } }
     }
 
+    /// Tacks (1.19.1): only 1.19.1 and later keep them, so older versions
+    /// say they need a newer one instead of dropping them on the next save.
+    var needsFormat6: Bool { tacks?.isEmpty == false }
+
     var needsFormat4: Bool {
-        needsFormat5 || layerTracks.contains { $0.items.contains { $0.needsFormat4 } } || timelineClips.contains { $0.needsFormat4 }
+        needsFormat5 || needsFormat6 || layerTracks.contains { $0.items.contains { $0.needsFormat4 } } || timelineClips.contains { $0.needsFormat4 }
             || audioTracks.contains { $0.volumeKeys != nil || $0.beats != nil || $0.ducksMusic == true } || music?.beats != nil || usesNewTransitions || compounds != nil || cover != nil || projectSettings != nil
     }
 

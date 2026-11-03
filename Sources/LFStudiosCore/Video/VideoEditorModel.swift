@@ -710,6 +710,15 @@ final class VideoEditorModel: ObservableObject {
     // MARK: Project changes
 
     private func projectDidChange(from old: VideoDemoProject) {
+        // Only Tacks (1.19.1): saved, nothing to play differently.
+        if old.tacks != project.tacks {
+            var untacked = project
+            untacked.tacks = old.tacks
+            if untacked == old {
+                if isReady { scheduleAutosave() }
+                return
+            }
+        }
         // Only the media bin (a name, a folder, an import): nothing to
         // play differently, just saved.
         if old.mediaBin != project.mediaBin {
@@ -781,7 +790,7 @@ final class VideoEditorModel: ObservableObject {
         undoStack = Array(undoStack.prefix(depth))
         redoStack.removeAll()
         lastCoalesceKey = nil
-        project = snapshot
+        project = snapshot.keepingTacks(of: project)
         canUndo = !undoStack.isEmpty
         canRedo = false
     }
@@ -1004,7 +1013,7 @@ final class VideoEditorModel: ObservableObject {
         guard let step = undoStack.popLast() else { return }
         redoStack.append(UndoStep(project: project, label: step.label))
         lastCoalesceKey = nil
-        project = step.project
+        project = step.project.keepingTacks(of: project)
         validateSelection()
         canUndo = !undoStack.isEmpty
         canRedo = true
@@ -1015,7 +1024,7 @@ final class VideoEditorModel: ObservableObject {
         guard let step = redoStack.popLast() else { return }
         undoStack.append(UndoStep(project: project, label: step.label))
         lastCoalesceKey = nil
-        project = step.project
+        project = step.project.keepingTacks(of: project)
         validateSelection()
         canUndo = true
         canRedo = !redoStack.isEmpty

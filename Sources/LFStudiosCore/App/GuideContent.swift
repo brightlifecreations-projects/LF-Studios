@@ -1487,13 +1487,17 @@ enum GuideContent {
                 location: L("Orange pins on the timeline's ruler, and the Agent panel."),
                 points: [
                     L("A Tack stays with its moment: when the clip moves or is trimmed, it moves along."),
+                    L("Tacks are saved with the project: close it and open it again, and they're still there, answers too."),
                     L("Click a pin to go there."),
                 ],
                 steps: [
                     L("To answer a question, type in its Answer field in the Agent panel and click Send. The agent reads your answer."),
                     L("Click Dismiss to put a Tack away."),
                 ],
-                since: "1.19.0",
+                tips: [
+                    L("A project with Tacks opens in LF Studios 1.19.1 or later."),
+                ],
+                since: "1.19.1",
                 related: ["agent-review"]
             ),
         ]

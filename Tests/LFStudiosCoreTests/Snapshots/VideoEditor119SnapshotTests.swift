@@ -119,7 +119,7 @@ final class VideoEditor119SnapshotTests: XCTestCase {
         let hub = VideoAgentHub.shared
         let run = try XCTUnwrap(hub.run(for: model))
         XCTAssertGreaterThanOrEqual(run.changes.count, 4)
-        XCTAssertEqual(run.tacks.count, 2)
+        XCTAssertEqual(model.project.tacks?.count, 2)
         XCTAssertTrue(VideoEditorPanelStore.shared.showsAgentPanel)
         let size = CGSize(width: 1680, height: 1050)
         try await forEachEditorStyle { style in

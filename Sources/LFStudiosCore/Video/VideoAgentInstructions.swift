@@ -70,7 +70,8 @@ enum VideoAgentInstructions {
     - If the user clicks or types in the editor, your next edit is refused
       until they click Resume. Keep reading, and leave a Tack if you need them.
     - `add_tack` pins a note or a question (`question: true`) to a moment; it
-      follows its clip. `list_tacks` shows the user's answers.
+      follows its clip. Tacks are saved with the project, so `list_tacks`
+      also shows ones left in earlier sessions, with the user's answers.
 
     ## Good habits
     - Make one change at a time and check it (`get_timeline`, `get_frame`).

@@ -201,6 +201,19 @@ struct VideoAgentPanel: View {
         Group {
             if let run = hub.run(for: model) {
                 VideoAgentRunView(model: model, run: run)
+            } else if model.project.tacks?.contains(where: { !$0.dismissed }) == true {
+                // Tacks from an earlier session, saved with the project.
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(hub.isEnabled ? L("No agent is editing this project.") : L("AI agents are off: Settings ▸ Agent."))
+                            .font(.system(size: 11.5))
+                            .foregroundStyle(VideoEditorTheme.textSecondary)
+                            .padding(.horizontal, 12)
+                            .padding(.top, 10)
+                        VideoAgentTacksList(model: model)
+                    }
+                    .padding(.bottom, 8)
+                }
             } else {
                 VStack(spacing: 10) {
                     Image(systemName: "sparkles")
@@ -226,7 +239,6 @@ struct VideoAgentPanel: View {
 private struct VideoAgentRunView: View {
     @ObservedObject var model: VideoEditorModel
     @ObservedObject var run: VideoAgentRun
-    @State private var answers: [UUID: String] = [:]
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -254,15 +266,7 @@ private struct VideoAgentRunView: View {
             ScrollViewReader { scroller in
                 ScrollView {
                     LazyVStack(alignment: .leading, spacing: 2) {
-                        let open = run.tacks.filter { !$0.dismissed }
-                        if !open.isEmpty {
-                            Text(L("Tacks"))
-                                .font(.system(size: 10, weight: .bold))
-                                .foregroundStyle(VideoEditorTheme.textTertiary)
-                                .padding(.horizontal, 12)
-                                .padding(.top, 8)
-                            ForEach(open) { tack in tackRow(tack) }
-                        }
+                        VideoAgentTacksList(model: model)
                         Text(L("Changes"))
                             .font(.system(size: 10, weight: .bold))
                             .foregroundStyle(VideoEditorTheme.textTertiary)
@@ -325,6 +329,25 @@ private struct VideoAgentRunView: View {
             }
         }
     }
+}
+
+/// The project's open Tacks (saved with it, 1.19.1): answer a question,
+/// dismiss one, click its time to go there.
+struct VideoAgentTacksList: View {
+    @ObservedObject var model: VideoEditorModel
+    @State private var answers: [UUID: String] = [:]
+
+    var body: some View {
+        let open = (model.project.tacks ?? []).filter { !$0.dismissed }
+        if !open.isEmpty {
+            Text(L("Tacks"))
+                .font(.system(size: 10, weight: .bold))
+                .foregroundStyle(VideoEditorTheme.textTertiary)
+                .padding(.horizontal, 12)
+                .padding(.top, 8)
+            ForEach(open) { tack in tackRow(tack) }
+        }
+    }
 
     private func tackRow(_ tack: VideoTack) -> some View {
         VStack(alignment: .leading, spacing: 6) {
@@ -378,8 +401,10 @@ private struct VideoAgentRunView: View {
     }
 
     private func set(_ tack: VideoTack, _ change: (inout VideoTack) -> Void) {
-        guard let i = run.tacks.firstIndex(where: { $0.id == tack.id }) else { return }
-        change(&run.tacks[i])
+        model.changeTacks { tacks in
+            guard let i = tacks.firstIndex(where: { $0.id == tack.id }) else { return }
+            change(&tacks[i])
+        }
     }
 }
 
@@ -392,8 +417,11 @@ struct VideoAgentTimelineMarks: View {
     let x: (Double) -> CGFloat
 
     var body: some View {
-        if let run = hub.run(for: model) {
-            VideoAgentRunMarks(model: model, run: run, x: { x($0) - offsets.x })
+        ZStack(alignment: .topLeading) {
+            if let run = hub.run(for: model) {
+                VideoAgentRunMarks(model: model, run: run, x: { x($0) - offsets.x })
+            }
+            VideoAgentTackPins(model: model, x: { x($0) - offsets.x })
         }
     }
 }
@@ -414,7 +442,18 @@ private struct VideoAgentRunMarks: View {
                         .allowsHitTesting(false)
                 }
             }
-            ForEach(run.tacks.filter { !$0.dismissed }) { tack in
+        }
+    }
+}
+
+/// The project's open Tacks, as pins on the ruler (click: go there).
+private struct VideoAgentTackPins: View {
+    @ObservedObject var model: VideoEditorModel
+    let x: (Double) -> CGFloat
+
+    var body: some View {
+        ZStack(alignment: .topLeading) {
+            ForEach((model.project.tacks ?? []).filter { !$0.dismissed }) { tack in
                 if let time = model.timelineTime(of: tack) {
                     Button { model.seek(to: time) } label: {
                         Image(systemName: tack.isQuestion ? "questionmark.bubble.fill" : "pin.fill")
