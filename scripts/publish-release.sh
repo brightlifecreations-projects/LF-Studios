@@ -200,7 +200,7 @@ echo "  (and $REPO_URL/releases/tag/${TAG})"
 # MARK: Clean up
 
 # The release's own files, now on GitHub: the zip, feed and notes, the
-# universal app and each architecture's release build. The next rehearsal
+# universal app and each architecture's release build and intermediates. The next rehearsal
 # downloads the published release, so nothing here is needed again. The
 # shared compile cache stays (tests and the next build reuse it). Only
 # after a successful publish: a failed one leaves them to look at.
@@ -210,5 +210,7 @@ rm -rf "$DIST" "$ROOT/.build/universal" "$ROOT/.build/app.noindex"
 case "$RELEASE_PRODUCTS" in
     "$ROOT"/.build/*) rm -rf "$RELEASE_PRODUCTS" ;;
 esac
+# Its release-only intermediates (both architectures).
+rm -rf "$ROOT/.build/out/Intermediates.noindex/LFStudios.build/Release"
 FREED_AFTER="$(df -k "$ROOT" | awk 'NR==2 { print $4 }')"
 echo "▶ Cleaned up the release's build files ($(( (FREED_AFTER - FREED_BEFORE) / 1024 )) MB)"
