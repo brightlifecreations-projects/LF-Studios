@@ -175,11 +175,31 @@ struct AISettingsView: View {
                         .disabled((settings.typed[provider] ?? "").trimmingCharacters(in: .whitespaces).isEmpty)
                 }
             }
+            if provider == .anthropic {
+                PreferenceDivider()
+                AgentSettingsRow(L("Workspace ID"), detail: L("Only for a key that works in every workspace: which one to use. Leave it empty otherwise.")) {
+                    VideoAIWorkspaceField()
+                }
+            }
             PreferenceDivider()
             AgentSettingsRow(L("Get a key"), detail: L("Make one on the provider's website; it bills your account there.")) {
                 Button(L("Open Website")) { NSWorkspace.shared.open(provider.keyPage) }
             }
         }
+    }
+}
+
+/// Settings ▸ AI ▸ Anthropic ▸ Workspace ID (1.21.0).
+private struct VideoAIWorkspaceField: View {
+    @State private var text = Settings.videoAIAnthropicWorkspaceID
+
+    var body: some View {
+        TextField(L("wrkspc_…"), text: $text)
+            .textFieldStyle(.roundedBorder)
+            .font(.system(size: 12, design: .monospaced))
+            .frame(width: 210)
+            .onChange(of: text) { Settings.videoAIAnthropicWorkspaceID = $0 }
+            .accessibilityLabel(L("Anthropic Workspace ID"))
     }
 }
 

@@ -222,7 +222,7 @@ final class VideoEditorLocalizedSnapshotTests: XCTestCase {
         let model = try await VideoEditorTestModel.make(in: directory)
         for language in L10n.translations {
             L10n.use(language)
-            let english = Set(["Export…", "Split at Playhead", "Keyboard Shortcuts", "Go to Start", "Show Recording in Finder"])
+            let english = Set(["Export…", "Split at Skimmer or Playhead", "Keyboard Shortcuts", "Go to Start", "Show Recording in Finder"])
             let titles = VideoCommandPalette(model: model).commands.map(\.title)
             XCTAssertTrue(english.isDisjoint(with: titles), "\(language): \(english.intersection(titles))")
             let shared = Dictionary(grouping: titles, by: { $0 }).filter { $0.value.count > 1 }.keys.sorted()

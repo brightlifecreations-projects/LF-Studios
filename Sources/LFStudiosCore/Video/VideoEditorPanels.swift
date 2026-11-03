@@ -416,7 +416,13 @@ struct VideoPlayerBar: View {
                     .foregroundStyle(VideoEditorTheme.textTertiary)
             }
             .fixedSize()
+            // Live levels while it plays (1.21.0).
+            VideoAudioMeterToggle(model: model)
             Spacer(minLength: 6)
+            barButton("repeat", help: model.loopsPlayback ? L("Loop playback is on (⌘L)") : L("Loop playback (⌘L): the In/Out range, the selected clip, or the whole video"), on: model.loopsPlayback) { model.perform(.toggleLoopPlayback) } // l10n-ignore: a symbol name
+                .accessibilityLabel(L("Loop playback"))
+                .accessibilityValue(model.loopsPlayback ? L("On") : L("Off"))
+            VideoPlayerGuidesMenu(model: model)
             VideoProxyMenu(model: model)
             VideoAspectMenu(model: model)
             Menu {
@@ -450,10 +456,11 @@ struct VideoPlayerBar: View {
         .frame(height: 40)
     }
 
-    private func barButton(_ symbol: String, help: String, prominent: Bool = false, action: @escaping () -> Void) -> some View {
+    private func barButton(_ symbol: String, help: String, prominent: Bool = false, on: Bool = false, action: @escaping () -> Void) -> some View {
         Button(action: action) {
             Image(systemName: symbol)
                 .font(.system(size: prominent ? 13 : 11.5, weight: .bold))
+                .foregroundStyle(on ? Color.accentColor : Color.primary)
                 .frame(width: prominent ? 34 : 26, height: 28)
         }
         .buttonStyle(VideoToolButtonStyle(prominent: prominent))

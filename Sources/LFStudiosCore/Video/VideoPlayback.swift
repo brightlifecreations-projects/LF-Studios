@@ -16,6 +16,18 @@ final class VideoDemoPlaybackClock: ObservableObject {
 /// scrubbing stays fluid on long recordings.
 @MainActor
 final class VideoPlaybackController: NSObject {
+    /// The audio meters' levels (1.21.0), measured as it plays.
+    private(set) var meterStorage: VideoAudioMeterTap.Storage?
+    /// The item's mix without the meters' tap.
+    private var plainMix: AVAudioMix?
+
+    /// The meters on (a storage) or off (nil). A tap makes Play start a
+    /// moment later, so it's there only while the meters are on.
+    func setMeterStorage(_ storage: VideoAudioMeterTap.Storage?) {
+        meterStorage = storage
+        guard let item = player.currentItem, let edit else { return }
+        item.audioMix = VideoAudioMeterTap.metered(plainMix, composition: edit.composition, storage: storage)
+    }
     /// What the player item is built from. Sound settings (volume, mutes,
     /// fades) are NOT part of it — those only swap the audio mix.
     struct EditStructure: Equatable {
@@ -181,7 +193,8 @@ final class VideoPlaybackController: NSObject {
         if next == structure, let edit, let item = player.currentItem {
             if nextMix != mixKey {
                 mixKey = nextMix
-                item.audioMix = VideoCompositionBuilder.audioMix(for: edit, segments: segments, audio: audio, extras: extras)
+                plainMix = VideoCompositionBuilder.audioMix(for: edit, segments: segments, audio: audio, extras: extras)
+                item.audioMix = VideoAudioMeterTap.metered(plainMix, composition: edit.composition, storage: meterStorage)
             }
             return nil
         }
@@ -195,7 +208,9 @@ final class VideoPlaybackController: NSObject {
 
         let wasPlaying = isPlaying
         let item = AVPlayerItem(asset: built.composition)
-        item.audioMix = built.audioMix
+        // The meters listen to the player only; the export never has a tap.
+        plainMix = built.audioMix
+        item.audioMix = VideoAudioMeterTap.metered(built.audioMix, composition: built.composition, storage: meterStorage)
         if let videoComposition = VideoCameraComposition.videoComposition(for: built, frameRate: max(source.frameRate, 30), store: cameraStore, layerStore: layerStore) {
             cameraStore.removeAll()
             layerStore.removeAll()

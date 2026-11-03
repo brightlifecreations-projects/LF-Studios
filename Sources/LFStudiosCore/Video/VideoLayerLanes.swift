@@ -43,6 +43,13 @@ struct VideoLayerLane: View, Equatable {
                         .allowsHitTesting(!outside)
                 }
             }
+            // Roll (1.21.0): a cut between two clips that touch.
+            ForEach(Array(zip(track.items, track.items.dropFirst())), id: \.0.id) { pair in
+                if abs(pair.0.end - pair.1.at) < 0.002, pair.0.group == nil || pair.0.group != pair.1.group, openCompound == nil {
+                    VideoRollHandle(model: model, hover: hover, clip: pair.0.id, cut: pair.0.end, pointsPerSecond: geometry.pointsPerSecond, height: VideoTimelineMetrics.layerLaneHeight)
+                        .offset(x: geometry.x(pair.0.end) - VideoRollHandle.width / 2)
+                }
+            }
         }
         .frame(width: geometry.width, height: VideoTimelineMetrics.layerLaneHeight, alignment: .topLeading)
     }
@@ -87,6 +94,10 @@ private struct VideoLayerBlock: View {
     @State private var trim: (leading: Bool, width: CGFloat)?
     @State private var snapper: VideoTimelineSnapper?
     @State private var slipping = false
+    /// ⌥-drag with the Select tool: a copy lands where it's dropped
+    /// (1.21.0). With the Trim tool a drag slides it instead.
+    @State private var copying = false
+    @State private var slideOrigin: Double?
     @State private var thumbnail: NSImage?
 
     private typealias M = VideoTimelineMetrics
@@ -159,12 +170,16 @@ private struct VideoLayerBlock: View {
         .onTapGesture { model.click(.layer(item.id)) }
         .simultaneousGesture(TapGesture(count: 2).onEnded { if isCompound { model.perform(.openCompound) } })
         .gesture(moveGesture)
+        .onHover { inside in
+            guard model.timelineTool == .trim, !isCompound else { hover.setTrim(nil); return }
+            hover.setTrim(inside ? (item.isVideo ? .slideOrSlip : .slide) : nil)
+        }
         .task(id: item.path) {
             if let sticker = item.sticker.flatMap(VideoSticker.init(rawValue:)) { thumbnail = VideoStickerPreview.image(sticker); return }
             guard item.hasFile else { return }
             thumbnail = await VideoMediaThumbnails.shared.image(item.path, kind: item.kind, frame: nil)
         }
-        .help(L("“\(item.name)” — drag to move it in time or to another track, drag an end to trim, ⌥-drag a video to slip it"))
+        .help(L("“\(item.name)” — drag to move it in time or to another track, ⌥-drag to copy it, drag an end to trim. Trim tool (T): drag to slide it, ⌥-drag a video to slip it"))
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(model.accessibilityDescription(of: .layer(item.id)))
         .accessibilityAddTraits(isSelected ? [.isButton, .isSelected] : .isButton)
@@ -176,9 +191,19 @@ private struct VideoLayerBlock: View {
             .onChanged { value in
                 if snapper == nil {
                     snapper = VideoTimelineSnapper(targets: model.snapTargets(excluding: [item.id]), pointsPerSecond: geometry.pointsPerSecond)
-                    slipping = !isCompound && item.isVideo && NSEvent.modifierFlags.contains(.option)
+                    let option = NSEvent.modifierFlags.contains(.option)
+                    let trimming = model.timelineTool == .trim && !isCompound
+                    slipping = trimming && item.isVideo && option
+                    copying = !trimming && option && !isCompound
+                    if trimming, !slipping { slideOrigin = item.at }
                     hover.setDragging(true)
                     if !model.isSelected(.layer(item.id)) { model.selection = .layer(item.id) }
+                }
+                if let slideOrigin {
+                    // Slide: between its neighbours; ones that touch give way.
+                    let now = model.project.layerItem(item.id)?.at ?? item.at
+                    model.slide(clip: item.id, by: slideOrigin + Double(value.translation.width / geometry.pointsPerSecond) - now, coalesce: true)
+                    return
                 }
                 if slipping {
                     move = CGSize(width: value.translation.width, height: 0)
@@ -199,15 +224,26 @@ private struct VideoLayerBlock: View {
                     move = .zero
                     snapper = nil
                     slipping = false
+                    copying = false
+                    slideOrigin = nil
                     hover.setDragging(false)
                 }
                 if slipping {
                     model.endGesture()
                     return
                 }
+                if slideOrigin != nil {
+                    model.endRollOrSlide()
+                    return
+                }
                 let start = item.at + Double(move.width / geometry.pointsPerSecond)
                 let target = isCompound ? (track: trackIndex, newTrack: false) : Self.target(fromTrack: trackIndex, rowTops: rowTops, dy: value.translation.height)
                 if abs(start - item.at) < 0.0005, target.track == trackIndex, !target.newTrack { return }
+                if copying {
+                    model.copyLayerItems(model.groupMates(of: item.id), by: start - item.at, fromTrack: trackIndex, toTrack: target.track, newTrack: target.newTrack)
+                    model.endGesture()
+                    return
+                }
                 model.moveLayerItem(item.id, to: start, track: target.track, newTrack: target.newTrack)
                 model.endGesture()
             }
@@ -235,6 +271,7 @@ private struct VideoLayerBlock: View {
             .frame(width: 7)
             .onHover { inside in
                 if inside { NSCursor.resizeLeftRight.push() } else { NSCursor.pop() }
+                hover.setTrim(inside ? .ripple : nil)
             }
             .gesture(
                 DragGesture(minimumDistance: 1)

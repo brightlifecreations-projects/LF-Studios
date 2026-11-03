@@ -516,6 +516,20 @@ enum Settings {
         set { defaults.set(newValue, forKey: "videoAISendsFrames") }
     }
 
+    /// The editor's audio meters (1.21.0): off until turned on.
+    static var videoPlayerMeters: Bool {
+        get { defaults.bool(forKey: "videoPlayerMeters") }
+        set { defaults.set(newValue, forKey: "videoPlayerMeters") }
+    }
+
+    /// Settings ▸ AI ▸ Anthropic ▸ Workspace ID (1.21.0): sent as
+    /// `anthropic-workspace-id` when set, for a key that works in every
+    /// workspace. An ID, not a secret ("" for none).
+    static var videoAIAnthropicWorkspaceID: String {
+        get { defaults.string(forKey: "videoAIAnthropicWorkspaceID") ?? "" }
+        set { defaults.set(newValue, forKey: "videoAIAnthropicWorkspaceID") }
+    }
+
     /// The one-time "drag a panel's top edge" tip was closed (1.19.0), or
     /// a panel was moved.
     static var videoPanelTipSeen: Bool {

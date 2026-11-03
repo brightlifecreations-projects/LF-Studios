@@ -2,8 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key> / %@</key>
+	<string> / %@</string>
 	<key> — %@ free there</key>
 	<string> — %@ libres à cet endroit</string>
+	<key>%@ %@</key>
+	<string>%@ %@</string>
 	<key>%@ (%@)</key>
 	<string>%@ (%@)</string>
 	<key>%@ (My Style)</key>
@@ -58,6 +62,8 @@
 	<string>durée %@</string>
 	<key>%@ moved from “%@”, which has no key now</key>
 	<string>%1$@ déplacé depuis « %2$@ », qui n’a plus de raccourci</string>
+	<key>%@ no longer soloed</key>
+	<string>%@ n’est plus en solo</string>
 	<key>%@ of recording plays in %@.</key>
 	<string>%@ d’enregistrement lus en %@.</string>
 	<key>%@ on</key>
@@ -74,6 +80,8 @@
 	<string>%@ s après l’enregistrement</string>
 	<key>%@ s before the recording</key>
 	<string>%@ s avant l’enregistrement</string>
+	<key>%@ soloed: only soloed tracks are heard</key>
+	<string>%@ en solo : seules les pistes en solo sont entendues</string>
 	<key>%@ speed</key>
 	<string>vitesse %@</string>
 	<key>%@ transition</key>
@@ -82,6 +90,8 @@
 	<string>%@ fenêtre</string>
 	<key>%@ · %@ px</key>
 	<string>%@ · %@ px</string>
+	<key>%@ · %@ × %@</key>
+	<string>%@ · %@ × %@</string>
 	<key>%@ · %@ × %@ image</key>
 	<string>%@ · image %@ × %@</string>
 	<key>%@ · %lld fps</key>
@@ -94,6 +104,8 @@
 	<string>%@ · environ %@</string>
 	<key>%@ · on your clipboard — paste it anywhere</key>
 	<string>%@ · dans le presse-papiers — collez-le où vous voulez</string>
+	<key>%@ × %@</key>
+	<string>%@ × %@</string>
 	<key>%@ × %@ doesn't fit on this display</key>
 	<string>%@ × %@ ne tient pas sur cet écran</string>
 	<key>%@ × %@ px</key>
@@ -112,6 +124,8 @@
 	<string>%@ — cliquez pour changer</string>
 	<key>%@ — click to jump here, double-click to rename</key>
 	<string>%@ — cliquez pour y aller, double-cliquez pour renommer</string>
+	<key>%@ — double-click to rename</key>
+	<string>%@ — double-cliquez pour renommer</string>
 	<key>%@ — it was cut like the edit, so it can't be lined up with the recording again</key>
 	<string>%@ — il a été coupé comme le montage, il ne peut donc plus être aligné sur l’enregistrement</string>
 	<key>%@ — its lines don't match the captions</key>
@@ -124,6 +138,8 @@
 	<string>%@ → %@ — la partie sélectionnée avec ⇧ dans la timeline</string>
 	<key>%@, %@</key>
 	<string>%@, %@</string>
+	<key>%@, %@, %@</key>
+	<string>%@, %@, %@</string>
 	<key>%@, as its own track</key>
 	<string>%@, sur sa propre piste</string>
 	<key>%@: %@</key>
@@ -138,6 +154,8 @@
 	<string>%@–%@ uniquement</string>
 	<key>%lld changes</key>
 	<string>%lld modifications</string>
+	<key>%lld clips selected</key>
+	<string>%lld clips sélectionnés</string>
 	<key>%lld files, about %@</key>
 	<string>%1$lld fichiers, environ %2$@</string>
 	<key>%lld markers</key>
@@ -168,6 +186,8 @@
 	<string>, de %@ à %@</string>
 	<key>, at %@</key>
 	<string>, à %@</string>
+	<key>0.00</key>
+	<string>0,00</string>
 	<key>0.1s earlier</key>
 	<string>0,1 s plus tôt</string>
 	<key>0.1s later</key>
@@ -178,6 +198,10 @@
 	<string>03 Audio : votre micro et le son du Mac dans des fichiers séparés. 05 Captions : vos sous-titres, une fois créés.</string>
 	<key>07 Data: the pointer, clicks, and keys. And README.txt, which says what each file is.</key>
 	<string>07 Data : le pointeur, les clics et les touches. Et README.txt, qui décrit chaque fichier.</string>
+	<key>100</key>
+	<string>100</string>
+	<key>3:2</key>
+	<string>3:2</string>
 	<key>A 2-second “Made with LF Studios” outro on your background — your own outro card is in Style</key>
 	<string>Un outro « Made with LF Studios » de 2 secondes sur votre arrière-plan — votre propre carton de fin se trouve dans Style</string>
 	<key>A 3D LUT from another app (.cube)</key>
@@ -220,8 +244,8 @@
 	<string>Un dossier contenant un projet LF Studios ouvre ce projet, exactement tel qu’il a été enregistré.</string>
 	<key>A frame</key>
 	<string>Une image de la vidéo</string>
-	<key>A frame appears in the middle of the screen. Choose its shape above the recording bar, like 16:9.</key>
-	<string>Un cadre apparaît au milieu de l’écran. Choisissez sa forme au-dessus de la barre d’enregistrement, comme 16:9.</string>
+	<key>A frame appears in the middle of the screen. Click Area in the recording bar to choose its shape, like 16:9.</key>
+	<string>Un cadre apparaît au milieu de l’écran. Cliquez sur Zone dans la barre d’enregistrement pour choisir sa forme, comme 16:9.</string>
 	<key>A frame of an exact shape and size, so your video comes out ready for YouTube, Reels, or Instagram.</key>
 	<string>Un cadre d’une forme et d’une taille exactes, pour que votre vidéo soit prête pour YouTube, Reels ou Instagram.</string>
 	<key>A frame: the one at the playhead (Use the playhead picks again).</key>
@@ -232,6 +256,8 @@
 	<string>Un filet fin détache les enregistrements sombres de l’arrière-plan</string>
 	<key>A keyframe for position, size, rotation and opacity at the playhead</key>
 	<string>Une image clé pour la position, la taille, la rotation et l’opacité à la tête de lecture</string>
+	<key>A label beside the pointer says which one a drag will do.</key>
+	<string>Une étiquette à côté du pointeur indique ce que fera le glissement.</string>
 	<key>A long chat sends more each time. New Chat starts small again.</key>
 	<string>Un long chat envoie davantage à chaque fois. Nouveau chat repart de zéro.</string>
 	<key>A magnifier over one spot at the playhead; the rest of the frame stays in view</key>
@@ -346,6 +372,8 @@
 	<string>Précise</string>
 	<key>Across</key>
 	<string>Horizontale</string>
+	<key>Action safe</key>
+	<string>Zone d’action</string>
 	<key>Actual size</key>
 	<string>Taille réelle</string>
 	<key>Adapt to This Ratio</key>
@@ -686,6 +714,10 @@
 	<string>Une autre app utilise peut-être les mêmes touches : choisissez-en d’autres.</string>
 	<key>Answer</key>
 	<string>Réponse</string>
+	<key>Anthropic Workspace ID</key>
+	<string>ID d’espace de travail Anthropic</string>
+	<key>Anthropic needs to know which workspace to use with this key. Add your Workspace ID in Settings ▸ AI (it starts with wrkspc_), then try again.</key>
+	<string>Anthropic doit savoir quel espace de travail utiliser avec cette clé. Ajoutez votre ID d’espace de travail dans Réglages ▸ IA (il commence par wrkspc_), puis réessayez.</string>
 	<key>Any color…</key>
 	<string>Toute couleur…</string>
 	<key>Any other folder: Import Folder lists the videos and sound files. Choose which is the screen recording, which the camera, and which sound to add as tracks, and when each starts.</key>
@@ -758,6 +790,8 @@
 	<string>Marbre aqua</string>
 	<key>Area</key>
 	<string>Zone</string>
+	<key>Area in the recording bar, after Home ▸ New recording.</key>
+	<string>Zone dans la barre d’enregistrement, après Accueil ▸ Nouvel enregistrement.</string>
 	<key>Arrange what you'll show inside the frame: it fills the screen's part exactly, without stretching or black bars.</key>
 	<string>Disposez ce que vous allez montrer dans le cadre : il remplit exactement la partie écran, sans étirement ni bandes noires.</string>
 	<key>Arrow</key>
@@ -798,8 +832,14 @@
 	<string>En haut du panneau Sous-titres, pour les enregistrements faits avec les Notes de l’orateur ouvertes.</string>
 	<key>At the top, set Provider to the one you added. Until you do, the Assistant stays off.</key>
 	<string>En haut, réglez Fournisseur sur celui que vous avez ajouté. D’ici là, l’Assistant reste désactivé.</string>
+	<key>Attributes pasted</key>
+	<string>Attributs collés</string>
+	<key>Attributes pasted onto %lld clips</key>
+	<string>Attributs collés sur %lld clips</string>
 	<key>Audio</key>
 	<string>Audio</string>
+	<key>Audio meters</key>
+	<string>Indicateurs de niveau</string>
 	<key>Audio only</key>
 	<string>Audio seul</string>
 	<key>Audio panel ▸ Added sound ▸ Add audio…, or drop sound files on the timeline.</key>
@@ -926,12 +966,12 @@
 	<string>Avant d’enregistrer, activez Micro dans la barre d’enregistrement et vérifiez que son indicateur de niveau bouge quand vous parlez.</string>
 	<key>Before recording, turn on Track where I type.</key>
 	<string>Avant l’enregistrement, activez Suivre où je tape.</string>
-	<key>Before recording: Select size above the recording bar, with Camera on. In the editor: drag the camera on the preview.</key>
-	<string>Avant l’enregistrement : Choisir la taille au-dessus de la barre d’enregistrement, avec Caméra activée. Dans l’éditeur : faites glisser la caméra dans l’aperçu.</string>
-	<key>Before recording: turn on Camera, then Camera shape above the recording bar. In the editor: Camera panel ▸ Camera ▸ Camera shape.</key>
-	<string>Avant l’enregistrement : activez Caméra, puis Forme de la caméra au-dessus de la barre d’enregistrement. Dans l’éditeur : panneau Caméra ▸ Caméra ▸ Forme de la caméra.</string>
-	<key>Before recording: turn on Camera, then Layout ▸ Split screen above the recording bar. In the editor: Camera panel ▸ Layout.</key>
-	<string>Avant l’enregistrement : activez Caméra, puis Disposition ▸ Écran partagé au-dessus de la barre d’enregistrement. Dans l’éditeur : panneau Caméra ▸ Disposition.</string>
+	<key>Before recording: turn on Camera, then Area in the recording bar ▸ Camera shape. In the editor: Camera panel ▸ Camera ▸ Camera shape.</key>
+	<string>Avant d’enregistrer : activez Caméra, puis Zone dans la barre d’enregistrement ▸ Forme de la caméra. Dans l’éditeur : panneau Caméra ▸ Caméra ▸ Forme de la caméra.</string>
+	<key>Before recording: turn on Camera, then Area in the recording bar ▸ Layout ▸ Split screen. In the editor: Camera panel ▸ Layout.</key>
+	<string>Avant d’enregistrer : activez Caméra, puis Zone dans la barre d’enregistrement ▸ Disposition ▸ Écran partagé. Dans l’éditeur : panneau Caméra ▸ Disposition.</string>
+	<key>Before recording: with Camera on, Area in the recording bar ▸ Select size. In the editor: drag the camera on the preview.</key>
+	<string>Avant d’enregistrer : avec Caméra activée, Zone dans la barre d’enregistrement ▸ Choisir la taille. Dans l’éditeur : faites glisser la caméra dans l’aperçu.</string>
 	<key>Begins scrolling when the recording starts</key>
 	<string>Commence à défiler au début de l’enregistrement</string>
 	<key>Behavior</key>
@@ -1138,6 +1178,8 @@
 	<string>Aperçu de la caméra</string>
 	<key>Camera shape</key>
 	<string>Forme de la caméra</string>
+	<key>Camera shape, Select size, and Layout, with Camera on.</key>
+	<string>Forme de la caméra, Choisir la taille et Disposition, quand Caméra est activée.</string>
 	<key>Camera shape: Circle, Rounded rectangle, Square, Landscape, Portrait, 4:3, 3:4, Free, or Cutout (just you, without the background).</key>
 	<string>Forme de la caméra : Cercle, Rectangle arrondi, Carré, Paysage, Portrait, 4:3, 3:4, Libre ou Détouré (vous seul, sans l’arrière-plan).</string>
 	<key>Camera shape: how the camera looks in the video. The preview shows it.</key>
@@ -1346,6 +1388,8 @@
 	<string>Centrer</string>
 	<key>Centre</key>
 	<string>Centrer</string>
+	<key>Centre lines</key>
+	<string>Lignes centrales</string>
 	<key>Change Shortcuts in Settings</key>
 	<string>Modifier les raccourcis dans Réglages</string>
 	<key>Change a zoom</key>
@@ -1370,6 +1414,8 @@
 	<string>Modifier les touches de la timeline, ou utiliser celles de Final Cut Pro ou de Premiere Pro</string>
 	<key>Change the volume over time, fade sound in and out, even out loudness, and find the beat.</key>
 	<string>Faites varier le volume dans le temps, ajoutez des fondus au son, égalisez le volume sonore et trouvez le rythme.</string>
+	<key>Change what you need. Everything works as before.</key>
+	<string>Modifiez ce dont vous avez besoin. Tout fonctionne comme avant.</string>
 	<key>Changed your mind? Click the yellow marker on the timeline to bring a cut part back.</key>
 	<string>Vous avez changé d’avis ? Cliquez sur le repère jaune de la timeline pour récupérer un passage coupé.</string>
 	<key>Changes</key>
@@ -1440,6 +1486,8 @@
 	<string>Choisissez Disposition ▸ Écran partagé, et une Direction. Le cadre devient la partie écran, par exemple 8:9 pour une vidéo 16:9 côte à côte, ou 32:9 superposée, et l’aperçu de la caméra remplit la partie caméra.</string>
 	<key>Choose Location…</key>
 	<string>Choisir l’emplacement…</string>
+	<key>Choose Match Frame: the source opens at the same frame, to look around it.</key>
+	<string>Choisissez Image correspondante : la source s’ouvre à la même image, pour voir autour.</string>
 	<key>Choose My Style first: Presets ▸ Edit Presets ▸ Use as My Style (⇧⌘Y)</key>
 	<string>Choisissez d’abord Mon style : Préréglages ▸ Modifier les préréglages ▸ Utiliser comme Mon style (⇧⌘Y)</string>
 	<key>Choose Off, 3, 5, or 10 seconds. Click the countdown to cancel it.</key>
@@ -1554,8 +1602,8 @@
 	<string>Choisissez où placer le dossier de transmission — n’importe quel dossier ou disque</string>
 	<key>Choose window</key>
 	<string>Choisir une fenêtre</string>
-	<key>Choose your microphone in the menu above the bar.</key>
-	<string>Choisissez votre micro dans le menu au-dessus de la barre.</string>
+	<key>Choose your microphone under Area ▸ Microphone.</key>
+	<string>Choisissez votre micro dans Zone ▸ Micro.</string>
 	<key>Choose your options in the recording bar.</key>
 	<string>Choisissez vos options dans la barre d’enregistrement.</string>
 	<key>Choose...</key>
@@ -1668,6 +1716,10 @@
 	<string>Cliquez sur Appliquer à tous les sous-titres. ⌘Z les remet tous comme avant.</string>
 	<key>Click Apply, or press Return.</key>
 	<string>Cliquez sur Appliquer, ou appuyez sur Retour.</string>
+	<key>Click Area in the recording bar, open Window size and choose a size.</key>
+	<string>Cliquez sur Zone dans la barre d’enregistrement, ouvrez Taille de la fenêtre et choisissez une taille.</string>
+	<key>Click Area in the recording bar.</key>
+	<string>Cliquez sur Zone dans la barre d’enregistrement.</string>
 	<key>Click Back above the timeline, or press Esc, to return to the whole video.</key>
 	<string>Cliquez sur Retour au-dessus de la timeline, ou appuyez sur Échap, pour revenir à toute la vidéo.</string>
 	<key>Click Background.</key>
@@ -1740,14 +1792,14 @@
 	<string>Cliquez sur Conserver pour les garder, ou sur Tout annuler pour revenir au projet tel qu’il était avant.</string>
 	<key>Click Marker on the timeline's toolbar. Markers added while recording are there too.</key>
 	<string>Cliquez sur Marqueur dans la barre d’outils de la timeline. Les marqueurs ajoutés pendant l’enregistrement y sont aussi.</string>
-	<key>Click Microphone in the recording bar. A menu above the bar picks which microphone.</key>
-	<string>Cliquez sur Micro dans la barre d’enregistrement. Un menu au-dessus de la barre permet de choisir le micro.</string>
+	<key>Click Microphone in the recording bar. Area ▸ Microphone picks which microphone.</key>
+	<string>Cliquez sur Micro dans la barre d’enregistrement. Zone ▸ Micro permet de choisir le micro.</string>
 	<key>Click New recording in Home.</key>
 	<string>Cliquez sur Nouvel enregistrement dans l’accueil.</string>
-	<key>Click New recording in Home. A frame appears: choose a shape above the recording bar, like 16:9, and drag the frame's border to what you want to record.</key>
-	<string>Cliquez sur Nouvel enregistrement dans l’accueil. Un cadre apparaît : choisissez une forme au-dessus de la barre d’enregistrement, comme 16:9, et faites glisser le bord du cadre sur ce que vous voulez enregistrer.</string>
-	<key>Click New recording in Home. Choose a shape for the frame (16:9 for YouTube, 9:16 for Reels) and drag its border into place. For a window or the whole screen, click Window or Full screen above the recording bar.</key>
-	<string>Cliquez sur Nouvel enregistrement dans l’accueil. Choisissez une forme pour le cadre (16:9 pour YouTube, 9:16 pour Reels) et faites glisser son bord pour le placer. Pour une fenêtre ou tout l’écran, cliquez sur Fenêtre ou Plein écran au-dessus de la barre d’enregistrement.</string>
+	<key>Click New recording in Home. A frame appears: click Area in the recording bar to choose a shape, like 16:9, and drag the frame's border to what you want to record.</key>
+	<string>Cliquez sur Nouvel enregistrement dans l’Accueil. Un cadre apparaît : cliquez sur Zone dans la barre d’enregistrement pour choisir une forme, comme 16:9, puis faites glisser le bord du cadre sur ce que vous voulez enregistrer.</string>
+	<key>Click New recording in Home. Click Area in the recording bar, choose a shape for the frame (16:9 for YouTube, 9:16 for Reels), and drag its border into place. For a window or the whole screen, click Window or Full screen under Area.</key>
+	<string>Cliquez sur Nouvel enregistrement dans l’Accueil. Cliquez sur Zone dans la barre d’enregistrement, choisissez une forme pour le cadre (16:9 pour YouTube, 9:16 pour Reels) et faites glisser son bord en place. Pour une fenêtre ou tout l’écran, cliquez sur Fenêtre ou Plein écran sous Zone.</string>
 	<key>Click Open System Settings below.</key>
 	<string>Cliquez sur Ouvrir Réglages Système ci-dessous.</string>
 	<key>Click Phone overlay above the preview to see what a phone app would cover.</key>
@@ -1840,12 +1892,16 @@
 	<string>Effets de clic</string>
 	<key>Click for Project Settings. Double-click to show the recording in Finder.</key>
 	<string>Cliquez pour les réglages du projet. Double-cliquez pour afficher l’enregistrement dans le Finder.</string>
+	<key>Click for the area, size, microphone and camera options</key>
+	<string>Cliquez pour la zone, la taille, le micro et la caméra</string>
 	<key>Click it in Home to open the screenshot editor: add arrows, text, blur, and more, then click Copy or Save.</key>
 	<string>Cliquez dessus dans l’accueil pour ouvrir l’éditeur de captures : ajoutez des flèches, du texte, du flou et plus encore, puis cliquez sur Copier ou Enregistrer.</string>
 	<key>Click it on the video</key>
 	<string>Cliquer dessus dans la vidéo</string>
 	<key>Click it.</key>
 	<string>Cliquez dessus.</string>
+	<key>Click more headphones to hear more tracks; click again to stop soloing.</key>
+	<string>Cliquez sur d’autres casques pour entendre plus de pistes ; cliquez à nouveau pour arrêter le solo.</string>
 	<key>Click or drag anywhere on the timeline to jump there.</key>
 	<string>Cliquez ou faites glisser n’importe où sur la timeline pour y aller.</string>
 	<key>Click or press Esc to cancel</key>
@@ -1868,6 +1924,12 @@
 	<string>Cliquez sur le bouton de courbe dans l’en-tête de la piste. Une bande s’ouvre sous la piste.</string>
 	<key>Click the field next to a command.</key>
 	<string>Cliquez sur le champ à côté d’une commande.</string>
+	<key>Click the headphones on a track. Only soloed tracks are heard.</key>
+	<string>Cliquez sur le casque d’une piste. Seules les pistes en solo sont entendues.</string>
+	<key>Click the levels button to show the meters, and play the video.</key>
+	<string>Cliquez sur le bouton des niveaux pour afficher les indicateurs, puis lisez la vidéo.</string>
+	<key>Click the meters to hide them again.</key>
+	<string>Cliquez sur les indicateurs pour les masquer à nouveau.</string>
 	<key>Click the microphone. After 3, 2, 1 the video plays, silent, while you talk.</key>
 	<string>Cliquez sur le micro. Après 3, 2, 1, la vidéo défile sans son pendant que vous parlez.</string>
 	<key>Click the notice that appears after Capture Text (“click for options”).</key>
@@ -1944,6 +2006,10 @@
 	<string>Fermer</string>
 	<key>Close Window</key>
 	<string>Fermer la fenêtre</string>
+	<key>Close the Area options</key>
+	<string>Fermer les options de Zone</string>
+	<key>Close the empty space between clips on a track above the main track, or on a sound track you added.</key>
+	<string>Refermez l’espace vide entre les clips d’une piste au-dessus de la piste principale, ou d’une piste son que vous avez ajoutée.</string>
 	<key>Close the pin</key>
 	<string>Fermer la capture épinglée</string>
 	<key>Close the window when you're done. If you haven't saved, LF Studios asks first.</key>
@@ -2026,6 +2092,8 @@
 	<string>Refroidir</string>
 	<key>Copied</key>
 	<string>Copié</string>
+	<key>Copied %lld clips</key>
+	<string>%lld clips copiés</string>
 	<key>Copied %lld clips — ⌘V pastes them at the playhead</key>
 	<string>%lld clips copiés — ⌘V les colle à la tête de lecture</string>
 	<key>Copied to clipboard</key>
@@ -2054,6 +2122,10 @@
 	<string>Copier le texte</string>
 	<key>Copy Text copies all of it again.</key>
 	<string>Copier le texte copie de nouveau tout le texte.</string>
+	<key>Copy a clip above the main track</key>
+	<string>Copiez un clip au-dessus de la piste principale</string>
+	<key>Copy a clip first (⌘C), then select the clips to paste onto</key>
+	<string>Copiez d’abord un clip (⌘C), puis sélectionnez les clips sur lesquels coller</string>
 	<key>Copy any text you can see on screen, even in pictures, videos, and apps that don't let you select it.</key>
 	<string>Copiez tout texte visible à l’écran, même dans des images, des vidéos et des apps qui ne permettent pas de le sélectionner.</string>
 	<key>Copy as Table</key>
@@ -2352,6 +2424,8 @@
 	<string>Personnaliser… : saisissez n’importe quelle forme, comme 3:2 ou 2.39:1.</string>
 	<key>Cut</key>
 	<string>Couper</string>
+	<key>Cut at %@</key>
+	<string>Coupe à %@</string>
 	<key>Cut filler words like um and uh</key>
 	<string>Couper les mots de remplissage comme « euh » et « hum »</string>
 	<key>Cut filler words like “um” and “uh”, and long pauses, in one click each.</key>
@@ -2402,6 +2476,12 @@
 	<string>Supprimer le clip</string>
 	<key>Delete Folder</key>
 	<string>Supprimer le dossier</string>
+	<key>Delete Gap</key>
+	<string>Supprimer l’espace</string>
+	<key>Delete Gap (%@)</key>
+	<string>Supprimer l’espace (%@)</string>
+	<key>Delete Gaps After Playhead</key>
+	<string>Supprimer les espaces après la tête de lecture</string>
 	<key>Delete Left of Playhead</key>
 	<string>Supprimer à gauche de la tête de lecture</string>
 	<key>Delete Marker</key>
@@ -2422,6 +2502,8 @@
 	<string>Supprimer toutes les captures enregistrées</string>
 	<key>Delete from Project</key>
 	<string>Supprimer du projet</string>
+	<key>Delete gaps</key>
+	<string>Supprimer les espaces</string>
 	<key>Delete left</key>
 	<string>Supprimer à gauche</string>
 	<key>Delete left / right of the playhead</key>
@@ -2550,6 +2632,8 @@
 	<string>Double-cliquez sur un sous-titre dans la timeline pour modifier ses mots. Appuyez sur Retour pour les garder ou sur Échap pour les laisser tels quels.</string>
 	<key>Double-click a marker to give it a name.</key>
 	<string>Double-cliquez sur un marqueur pour lui donner un nom.</string>
+	<key>Double-click a track's name on the timeline.</key>
+	<string>Double-cliquez sur le nom d’une piste dans la timeline.</string>
 	<key>Double-click any text to change it.</key>
 	<string>Double-cliquez sur un texte pour le modifier.</string>
 	<key>Double-click it to edit; drag it into another app to drop the picture there.</key>
@@ -2558,6 +2642,8 @@
 	<string>Double-cliquer sur un texte</string>
 	<key>Double-click text on the preview to change it. New ones keep the last color and size you used.</key>
 	<string>Double-cliquez sur un texte dans l’aperçu pour le modifier. Les nouveaux gardent la dernière couleur et la dernière taille utilisées.</string>
+	<key>Double-click the name, type a new one, and press Return.</key>
+	<string>Double-cliquez sur le nom, saisissez-en un nouveau et appuyez sur Retour.</string>
 	<key>Double-click to edit, or drag into another app. Command-C copies, Command-S saves, Escape dismisses.</key>
 	<string>Double-cliquez pour modifier, ou faites glisser vers une autre app. Commande + C copie, Commande + S enregistre, Échap ferme.</string>
 	<key>Down</key>
@@ -2586,6 +2672,8 @@
 	<string>Faites glisser le bord d’un clip pour le raccourcir, ou appuyez sur Q ou W pour couper ce qui est à gauche ou à droite de la tête de lecture.</string>
 	<key>Drag a corner to resize it. The shape stays the same.</key>
 	<string>Faites glisser un coin pour le redimensionner. La forme reste la même.</string>
+	<key>Drag a cut</key>
+	<string>Faire glisser une coupe</string>
 	<key>Drag a file onto the timeline or the player, or click the + on its thumbnail. A video goes at the end of the video; a picture or a sound starts at the playhead, or where you drop it on the timeline.</key>
 	<string>Faites glisser un fichier sur la timeline ou le lecteur, ou cliquez sur le + de sa vignette. Une vidéo va à la fin ; une image ou un son commence à la tête de lecture, ou là où vous le déposez sur la timeline.</string>
 	<key>Drag a frame. Drag inside it to move it, or drag its edges to resize it.</key>
@@ -2614,6 +2702,8 @@
 	<string>Faites glisser les sous-titres à n’importe quel endroit de la vidéo, ou déplacez un seul sous-titre.</string>
 	<key>Drag edges or corners to resize  ·  Arrow keys nudge (⇧ ×10)  ·  Return captures  ·  Esc cancels</key>
 	<string>Redimensionnez par les bords ou les coins  ·  Flèches pour déplacer (⇧ ×10)  ·  Retour pour capturer  ·  Échap pour annuler</string>
+	<key>Drag empty space</key>
+	<string>Faire glisser sur un espace vide</string>
 	<key>Drag it into place, or pick a corner under Position.</key>
 	<string>Faites-la glisser à sa place, ou choisissez un coin sous Position.</string>
 	<key>Drag it on the preview to move it; drag a corner to resize. Its bar on the timeline sets when it shows.</key>
@@ -2642,6 +2732,8 @@
 	<string>Tracer plutôt une zone libre, de n’importe quelle forme</string>
 	<key>Drag over any part of the screen to capture it.</key>
 	<string>Faites glisser sur n’importe quelle partie de l’écran pour la capturer.</string>
+	<key>Drag over empty space on the timeline to select every clip the box touches.</key>
+	<string>Faites glisser sur un espace vide de la timeline pour sélectionner tous les clips touchés par le cadre.</string>
 	<key>Drag over the area you want, then let go.</key>
 	<string>Faites glisser sur la zone voulue, puis relâchez.</string>
 	<key>Drag over the area you want.</key>
@@ -2720,8 +2812,6 @@
 	<string>Faites glisser pour modifier la fin de ce clip</string>
 	<key>Drag to change where this clip starts</key>
 	<string>Faites glisser pour modifier le début de ce clip</string>
-	<key>Drag to move the bars</key>
-	<string>Faire glisser pour déplacer les barres</string>
 	<key>Drag to move the compound clip; drag a corner to size it</key>
 	<string>Faites glisser pour déplacer le clip composé ; faites glisser un coin pour le redimensionner</string>
 	<key>Drag to move the playhead</key>
@@ -2744,6 +2834,8 @@
 	<string>Faites glisser pour redimensionner les panneaux. Double-cliquez pour réinitialiser.</string>
 	<key>Drag to resize the timeline. Double-click for the usual size.</key>
 	<string>Faites glisser pour redimensionner la timeline. Double-cliquez pour la taille habituelle.</string>
+	<key>Drag to roll this cut: the clips on both sides change, with no gap</key>
+	<string>Faites glisser pour un roulement de cette coupe : les clips des deux côtés changent, sans espace</string>
 	<key>Drag to select, then adjust  ·  Hold ⇧ as you let go to capture right away  ·  Esc cancels</key>
 	<string>Faites glisser pour sélectionner, puis ajustez  ·  Maintenez ⇧ en relâchant pour capturer aussitôt  ·  Échap pour annuler</string>
 	<key>Drag to turn it; hold ⇧ for steps of 15°</key>
@@ -2766,10 +2858,16 @@
 	<string>Déposée sur Clips vidéo, une vidéo rejoint la piste principale à cet endroit (une image devient un clip de 5 secondes).</string>
 	<key>Duplicate</key>
 	<string>Dupliquer</string>
+	<key>Duplicate and copy clips</key>
+	<string>Dupliquer et copier des clips</string>
+	<key>Duplicate the selection right after itself</key>
+	<string>Dupliquer la sélection juste après elle-même</string>
 	<key>Duplicate zoom or annotation</key>
 	<string>Dupliquer un zoom ou une annotation</string>
 	<key>Duplicated</key>
 	<string>Dupliqué</string>
+	<key>Duplicated %lld clips</key>
+	<string>%lld clips dupliqués</string>
 	<key>Duration</key>
 	<string>Durée</string>
 	<key>During a zoom, the view moves with your pointer, so what you point at stays in the picture. The preview says “Camera follows your cursor” while it does.</key>
@@ -2880,6 +2978,8 @@
 	<string>Brume de braise</string>
 	<key>Emerald</key>
 	<string>Émeraude</string>
+	<key>Empty space on the timeline, between or around clips.</key>
+	<string>Un espace vide de la timeline, entre les clips ou autour.</string>
 	<key>Enable LF Studios in System Settings → Privacy &amp; Security → Screen &amp; System Audio Recording, then quit and reopen LF Studios so macOS applies the permission.</key>
 	<string>Activez LF Studios dans Réglages Système → Confidentialité et sécurité → Enregistrement de l’écran et des sons du système, puis quittez et rouvrez LF Studios pour que macOS applique l’autorisation.</string>
 	<key>Enable LF Studios in System Settings, then relaunch so macOS applies it.</key>
@@ -2912,6 +3012,8 @@
 	<string>Échap</string>
 	<key>Esc and the arrow keys work after you click the frame's border or the bars.</key>
 	<string>Échap et les touches fléchées fonctionnent après avoir cliqué sur le bord du cadre ou sur les barres.</string>
+	<key>Esc keeps the old name. Clear the name to go back to the usual one.</key>
+	<string>Échap garde l’ancien nom. Effacez le nom pour revenir au nom habituel.</string>
 	<key>Esc or Done finishes</key>
 	<string>Échap ou « Terminé » pour finir</string>
 	<key>Estimated file size. Still screens take less.</key>
@@ -2940,6 +3042,8 @@
 	<string>Toutes les coupes, les zooms, les annotations, les sous-titres et les modifications de style de cette vidéo sont supprimés — les enregistrements ajoutés sont conservés. Vous pouvez annuler cette action.</string>
 	<key>Every cut, zoom, annotation, caption, and style change on this video is removed. You can undo this.</key>
 	<string>Toutes les coupes, les zooms, les annotations, les sous-titres et les modifications de style de cette vidéo sont supprimés. Vous pouvez annuler cette action.</string>
+	<key>Every effect and its strength</key>
+	<string>Chaque effet et son intensité</string>
 	<key>Every file starts at the same moment and is as long as the others: drop them all at 0:00 and they play in sync, the camera too.</key>
 	<string>Chaque fichier commence au même instant et dure autant que les autres : placez-les tous à 0:00 et ils sont synchronisés, la caméra aussi.</string>
 	<key>Every part of the video on its own track, top to bottom: Captions, Zooms, Video clips and their sound, Camera, Keys, Text &amp; annotations, Music, and each sound you added.</key>
@@ -3080,6 +3184,8 @@
 	<string>Exporter…</string>
 	<key>Exposure</key>
 	<string>Exposition</string>
+	<key>Exposure, colour and the rest of Adjust</key>
+	<string>Exposition, couleur et le reste des Ajustements</string>
 	<key>Exposure, contrast, highlights, shadows, colour, HSL, curves and colour wheels, on a clip or over everything under it.</key>
 	<string>Exposition, contraste, hautes lumières, ombres, couleur, TSL, courbes et roues chromatiques, sur un clip ou sur tout ce qui est en dessous.</string>
 	<key>Extra-fluid curves for slow, cinematic demos.</key>
@@ -3198,6 +3304,8 @@
 	<string>Infos privées ou le suivi du visage prend du temps</string>
 	<key>Find private info, above the preview in the video editor.</key>
 	<string>Infos privées, au-dessus de l’aperçu dans l’éditeur vidéo.</string>
+	<key>Find the file a clip comes from, or see the very frame it shows in its source.</key>
+	<string>Retrouvez le fichier d’où vient un clip, ou voyez l’image exacte qu’il montre dans sa source.</string>
 	<key>Find the next one</key>
 	<string>Trouver le suivant</string>
 	<key>Find the screenshot in Home ▸ Screenshots or in History.</key>
@@ -3308,12 +3416,16 @@
 	<string>Les polices sont celles fournies avec chaque Mac : un projet a donc le même aspect sur n’importe quel Mac.</string>
 	<key>Fonts you added to LF Studios always go along. Fonts installed on this Mac (in Font Book) go only with Include fonts installed on this Mac turned on: check that the font's license lets you share it first. Without them, README.txt lists the fonts left out.</key>
 	<string>Les polices que vous avez ajoutées à LF Studios sont toujours incluses. Les polices installées sur ce Mac (dans Livre des polices) ne le sont qu’avec Inclure les polices installées sur ce Mac activé : vérifiez d’abord que la licence de la police vous permet de la partager. Sinon, README.txt liste les polices laissées de côté.</string>
+	<key>For 9:16 videos: TikTok, Instagram Reels, and YouTube Shorts shade where those apps put their buttons and captions (approximate: the apps change them).</key>
+	<string>Pour les vidéos 9:16 : TikTok, Instagram Reels et YouTube Shorts grisent l’endroit où ces apps placent leurs boutons et légendes (approximatif : les apps les changent).</string>
 	<key>For Custom image…, choose a PNG, then click the spot in it that points.</key>
 	<string>Pour Image personnalisée…, choisissez un PNG, puis cliquez sur le point de l’image qui sert de pointe.</string>
 	<key>For Final Cut Pro, DaVinci Resolve, and Adobe Premiere Pro</key>
 	<string>Pour Final Cut Pro, DaVinci Resolve et Adobe Premiere Pro</string>
 	<key>For Selection, ⇧-drag on the timeline first.</key>
 	<string>Pour Sélection, sélectionnez d’abord un passage sur la timeline en faisant glisser avec ⇧.</string>
+	<key>For a Claude key that works in every workspace of your organization: which workspace to use.</key>
+	<string>Pour une clé Claude valable dans tous les espaces de travail de votre organisation : l’espace de travail à utiliser.</string>
 	<key>For a GIF: choose GIF, then a Size and a Frame rate.</key>
 	<string>Pour un GIF : choisissez GIF, puis une Taille et une Fréquence d’images.</string>
 	<key>For a click sound too, see Click sounds in the Audio panel.</key>
@@ -3394,6 +3506,8 @@
 	<string>Les arrêts sur image et les clips inversés sont des vidéos que LF Studios crée. Quand plus rien n’en utilise une, elle est supprimée au prochain enregistrement du projet.</string>
 	<key>From sharp corners to a circle</key>
 	<string>Des coins droits jusqu’au cercle</string>
+	<key>From the copied clip onto %lld selected. Tick what to paste.</key>
+	<string>Du clip copié vers %lld clips sélectionnés. Cochez ce qu’il faut coller.</string>
 	<key>From your Mac</key>
 	<string>De votre Mac</string>
 	<key>Full</key>
@@ -3442,6 +3556,10 @@
 	<string>Espace</string>
 	<key>Gap between the parts</key>
 	<string>Espace entre les parties</string>
+	<key>Gap of %@ closed</key>
+	<string>Espace de %@ refermé</string>
+	<key>Gaps after the playhead closed</key>
+	<string>Espaces après la tête de lecture refermés</string>
 	<key>Gemini keys start with AIza. Set up billing in Google AI Studio for more than its free limits.</key>
 	<string>Les clés Gemini commencent par AIza. Configurez la facturation dans Google AI Studio pour dépasser ses limites gratuites.</string>
 	<key>General</key>
@@ -3466,10 +3584,14 @@
 	<string>Premiers pas</string>
 	<key>Ghost</key>
 	<string>Fantôme</string>
+	<key>Give a track your own name, like Interview or B-roll.</key>
+	<string>Donnez votre propre nom à une piste, comme Interview ou Plans de coupe.</string>
 	<key>Give another editor, or an app like Final Cut Pro, every part of your video as separate files.</key>
 	<string>Donnez à un autre monteur, ou à une app comme Final Cut Pro, chaque élément de votre vidéo en fichiers séparés.</string>
 	<key>Give any timeline command your own key, or use Final Cut Pro or Premiere Pro keys.</key>
 	<string>Attribuez votre propre touche à n’importe quelle commande de la timeline, ou utilisez les touches de Final Cut Pro ou de Premiere Pro.</string>
+	<key>Give other clips the same look and settings as one you've finished.</key>
+	<string>Donnez à d’autres clips le même look et les mêmes réglages qu’un clip terminé.</string>
 	<key>Give the video space around it, rounded corners, and a shadow.</key>
 	<string>Donnez de l’espace autour de la vidéo, des coins arrondis et une ombre.</string>
 	<key>Glacier</key>
@@ -3508,6 +3630,8 @@
 	<string>Graphite</string>
 	<key>Green</key>
 	<string>Vert</string>
+	<key>Green is fine, yellow is loud, red is too loud and may sound distorted.</key>
+	<string>Vert : c’est bon ; jaune : c’est fort ; rouge : trop fort, le son peut saturer.</string>
 	<key>Group</key>
 	<string>Grouper</string>
 	<key>Group / ungroup</key>
@@ -3516,6 +3640,8 @@
 	<string>Groupés : ils se déplacent et se suppriment ensemble</string>
 	<key>Guide</key>
 	<string>Guide</string>
+	<key>Guides over the player to place things well. They never appear in the export.</key>
+	<string>Des repères sur le lecteur pour bien placer les éléments. Ils n’apparaissent jamais dans l’export.</string>
 	<key>H.264 plays everywhere. HEVC makes smaller files, but some browsers and Windows PCs can't play it.</key>
 	<string>H.264 se lit partout. HEVC produit des fichiers plus petits, mais certains navigateurs et PC Windows ne peuvent pas le lire.</string>
 	<key>HSL</key>
@@ -3550,6 +3676,8 @@
 	<string>État</string>
 	<key>Health shows whether everything is ready, and offers a Fix when something isn't.</key>
 	<string>État indique si tout est prêt, et propose Corriger quand quelque chose ne l’est pas.</string>
+	<key>Hear just one track (or a few) while you edit.</key>
+	<string>N’entendez qu’une piste (ou quelques-unes) pendant le montage.</string>
 	<key>Heart</key>
 	<string>Cœur</string>
 	<key>Heartbeat</key>
@@ -3574,6 +3702,8 @@
 	<string>Masquer</string>
 	<key>Hide %@</key>
 	<string>Masquer %@</string>
+	<key>Hide All Guides</key>
+	<string>Masquer tous les repères</string>
 	<key>Hide Desktop Icons</key>
 	<string>Masquer les icônes du bureau</string>
 	<key>Hide Icon</key>
@@ -3660,12 +3790,14 @@
 	<string>Maintenez Espace en faisant glisser pour déplacer la zone au lieu de la redimensionner.</string>
 	<key>Hold as you let go to adjust first</key>
 	<string>Maintenir en relâchant pour ajuster d’abord</string>
+	<key>Hold ⇧ and drag across the clips, or along the ruler.</key>
+	<string>Maintenez ⇧ et faites glisser sur les clips, ou le long de la règle.</string>
 	<key>Hold ⇧ and drag across the part you don't want.</key>
 	<string>Maintenez ⇧ et faites glisser sur le passage dont vous ne voulez pas.</string>
-	<key>Hold ⇧ and drag on the timeline.</key>
-	<string>Maintenez ⇧ et faites glisser sur la timeline.</string>
 	<key>Hold ⇧ as you let go to adjust the area before capturing. Then drag its edges, or use the arrow keys, and press Return.</key>
 	<string>Maintenez ⇧ en relâchant pour ajuster la zone avant la capture. Faites ensuite glisser ses bords, ou utilisez les touches fléchées, puis appuyez sur Retour.</string>
+	<key>Hold ⇧ to add them to what's selected, or ⌘ to select or deselect each one.</key>
+	<string>Maintenez ⇧ pour les ajouter à la sélection, ou ⌘ pour sélectionner ou désélectionner chacun.</string>
 	<key>Home</key>
 	<string>Accueil</string>
 	<key>Home  End</key>
@@ -3698,6 +3830,8 @@
 	<string>Survolez la piste de zoom et cliquez pour ajouter un zoom, ou appuyez sur Z à la tête de lecture. Faites glisser un zoom pour le déplacer ; faites glisser ses bords pour modifier sa durée.</string>
 	<key>How do I…?</key>
 	<string>Comment faire… ?</string>
+	<key>How fast it plays (the clip gets longer or shorter)</key>
+	<string>Sa vitesse de lecture (le clip s’allonge ou se raccourcit)</string>
 	<key>How it mixes with what's under it: Screen lightens, Multiply darkens, Overlay adds contrast.</key>
 	<string>Sa façon de se mélanger avec ce qui est en dessous : Superposition éclaircit, Produit assombrit, Incrustation ajoute du contraste.</string>
 	<key>How long the loupe takes to grow in and fade out</key>
@@ -3806,8 +3940,12 @@
 	<string>Entrée plus tard</string>
 	<key>In place of the recording's microphone — Enhance voice and Podcast mode clean it up</key>
 	<string>À la place du micro de l’enregistrement — Améliorer la voix et Mode podcast le nettoient</string>
+	<key>In the Claude Console, open Settings ▸ Workspaces and copy the workspace's ID (it starts with wrkspc_).</key>
+	<string>Dans la Claude Console, ouvrez Settings ▸ Workspaces et copiez l’ID de l’espace de travail (il commence par wrkspc_).</string>
 	<key>In the LF Studios layout, Properties has At playhead on top (what plays now and what comes next; click one to select it) and four tabs: Clip, Effects, Captions and Video (Style, Cursor, Zoom, Camera, Audio).</key>
 	<string>Dans la disposition LF Studios, Propriétés affiche En cours en haut (ce qui joue maintenant et ce qui suit ; cliquez pour le sélectionner) et quatre onglets : Clip, Effets, Sous-titres et Vidéo (Style, Pointeur, Zoom, Caméra, Audio).</string>
+	<key>In the LF Studios layout, the strip at the bottom says where ⌘B splits: at the skimmer or at the playhead.</key>
+	<string>Dans la disposition LF Studios, la bande du bas indique où ⌘B scinde : au skimmer ou à la tête de lecture.</string>
 	<key>In the LF Studios layout: Properties ▸ Captions ▸ Transcript.</key>
 	<string>Dans la disposition LF Studios : Propriétés ▸ Sous-titres ▸ Transcription.</string>
 	<key>In the LF Studios layout: Properties ▸ Video ▸ Audio.</key>
@@ -3858,12 +3996,10 @@
 	<string>Dans la barre d’enregistrement, cliquez sur Notes de l’orateur.</string>
 	<key>In the recording bar, turn on Microphone (and Camera, if you like), then click Record or press Return.</key>
 	<string>Dans la barre d’enregistrement, activez Micro (et Caméra si vous le souhaitez), puis cliquez sur Enregistrer ou appuyez sur Retour.</string>
-	<key>In the recording bar, turn on Microphone. To pick a different microphone, use the menu that appears above the bar.</key>
-	<string>Dans la barre d’enregistrement, activez Micro. Pour choisir un autre micro, utilisez le menu qui apparaît au-dessus de la barre.</string>
+	<key>In the recording bar, turn on Microphone. To pick a different microphone, click Area and use the Microphone menu.</key>
+	<string>Dans la barre d’enregistrement, activez Micro. Pour choisir un autre micro, cliquez sur Zone et utilisez le menu Micro.</string>
 	<key>In the recording bar, which appears after you choose what to record.</key>
 	<string>Dans la barre d’enregistrement, qui apparaît après avoir choisi ce que vous enregistrez.</string>
-	<key>In the row above the recording bar, open Window size and choose a size.</key>
-	<string>Dans la rangée au-dessus de la barre d’enregistrement, ouvrez Taille de la fenêtre et choisissez une taille.</string>
 	<key>In the screenshot editor, click Background in the toolbar.</key>
 	<string>Dans l’éditeur de captures, cliquez sur Arrière-plan dans la barre d’outils.</string>
 	<key>In the video</key>
@@ -3894,6 +4030,8 @@
 	<string>Dans votre prochaine vidéo, cliquez sur Appliquer mon style (⇧⌘Y).</string>
 	<key>In, Out and Combo animations</key>
 	<string>Animations d’entrée, de sortie et combo</string>
+	<key>In, Out and Combo animations and keyframes</key>
+	<string>Animations Entrée, Sortie et Combo, et images clés</string>
 	<key>Include AI chat history</key>
 	<string>Inclure l’historique du chat IA</string>
 	<key>Include a timeline for editing apps</key>
@@ -3980,6 +4118,8 @@
 	<string>Le fichier est peut-être endommagé, encore en cours d’enregistrement, ou dans un format que ce Mac ne peut pas lire. Les vidéos MP4 et MOV fonctionnent le mieux.</string>
 	<key>It only has sound, or nothing at all. LF Studios edits screen recordings and other videos.</key>
 	<string>Le fichier ne contient que du son, ou rien du tout. LF Studios modifie les enregistrements de l’écran et les autres vidéos.</string>
+	<key>It selects the main track's clips and the clips on the tracks above it. A click on empty space still moves the playhead.</key>
+	<string>Il sélectionne les clips de la piste principale et ceux des pistes au-dessus. Un clic sur un espace vide déplace toujours la tête de lecture.</string>
 	<key>It shows what it would remove and asks first.</key>
 	<string>Il montre ce qu’il supprimerait et vous demande d’abord.</string>
 	<key>It snaps to the middle and to the safe edges, with guide lines.</key>
@@ -4002,6 +4142,8 @@
 	<string>Cela fonctionne sur votre Mac avec la détection des visages d’Apple. Si votre visage n’est pas trouvé pendant un moment, le dernier cadrage est conservé.</string>
 	<key>It's never applied by itself: only when you click it.</key>
 	<string>Il ne s’applique jamais tout seul : seulement quand vous cliquez dessus.</string>
+	<key>It's off in every new editor window, and it never changes the video or the export.</key>
+	<string>Elle est désactivée dans chaque nouvelle fenêtre de l’éditeur, et ne modifie jamais la vidéo ni l’export.</string>
 	<key>It's saved separately from your voice, so you can set each one's volume in the editor. LF Studios' own sounds are left out.</key>
 	<string>Il est enregistré à part de votre voix, pour que vous puissiez régler le volume de chacun dans l’éditeur. Les sons de LF Studios lui-même sont exclus.</string>
 	<key>It's silent: nothing to normalize</key>
@@ -4314,6 +4456,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Retire l’arrière-plan : la vidéo, ses coins arrondis et son ombre, et une caméra détourée reposent sur de la transparence, prêtes à être posées sur n’importe quoi</string>
 	<key>Left</key>
 	<string>Gauche</string>
+	<key>Left %lld dB, right %lld dB</key>
+	<string>Gauche %lld dB, droite %lld dB</string>
 	<key>Left out:</key>
 	<string>Non inclus :</string>
 	<key>Length</key>
@@ -4464,6 +4608,20 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Rendus : Naturel, Chaud, Lumineux ou Cinéma.</string>
 	<key>Loop</key>
 	<string>Boucle</string>
+	<key>Loop playback</key>
+	<string>Lecture en boucle</string>
+	<key>Loop playback (⌘L): the In/Out range, the selected clip, or the whole video</key>
+	<string>Lecture en boucle (⌘L) : la plage Entrée/Sortie, le clip sélectionné ou toute la vidéo</string>
+	<key>Loop playback is on (⌘L)</key>
+	<string>La lecture en boucle est activée (⌘L)</string>
+	<key>Loop playback off</key>
+	<string>Lecture en boucle désactivée</string>
+	<key>Loop playback on: %@ to %@</key>
+	<string>Lecture en boucle activée : de %@ à %@</string>
+	<key>Loop playback on: the whole video</key>
+	<string>Lecture en boucle activée : toute la vidéo</string>
+	<key>Loop playback: the In/Out range, the selected clip, or the whole video</key>
+	<string>Lecture en boucle : la plage Entrée/Sortie, le clip sélectionné ou toute la vidéo</string>
 	<key>Loop to fill</key>
 	<string>Boucler pour remplir</string>
 	<key>Looping cursor</key>
@@ -4508,12 +4666,16 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Aimant désactivé : supprimer un clip laisse un espace noir</string>
 	<key>Main track magnet on: deleting a clip closes the gap</key>
 	<string>Aimant activé : supprimer un clip referme l’espace</string>
+	<key>Main-track clips are the recording itself. To use a part twice, copy it to a track above (⌘C, ⌘V).</key>
+	<string>Les clips de la piste principale sont l’enregistrement lui-même. Pour utiliser un passage deux fois, copiez-le sur une piste au-dessus (⌘C, ⌘V).</string>
 	<key>Make Full Zoom</key>
 	<string>Passer en zoom plein</string>
 	<key>Make Loupe</key>
 	<string>Passer en loupe</string>
 	<key>Make a clip come in, go out, or keep moving while it shows.</key>
 	<string>Faites entrer ou sortir un clip, ou faites-le bouger tant qu’il est affiché.</string>
+	<key>Make a copy of a clip right after itself, or drag a copy where you want it.</key>
+	<string>Faites une copie d’un clip juste après lui-même, ou faites glisser une copie où vous voulez.</string>
 	<key>Make a key in Google AI Studio to use Gemini in the Assistant.</key>
 	<string>Créez une clé dans Google AI Studio pour utiliser Gemini dans l’Assistant.</string>
 	<key>Make a key on Anthropic's website to use Claude in the Assistant.</key>
@@ -4592,6 +4754,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Masque : %@</string>
 	<key>Mask: Linear, Mirror, Circle or Rectangle, with Feather and Invert. Its place and size take keyframes.</key>
 	<string>Masque : Linéaire, Miroir, Cercle ou Rectangle, avec Adoucissement et Inverser. Sa position et sa taille acceptent des images clés.</string>
+	<key>Match Frame</key>
+	<string>Image correspondante</string>
 	<key>Match the recording</key>
 	<string>Comme l’enregistrement</string>
 	<key>Matte</key>
@@ -4704,6 +4868,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Lueur de mousse</string>
 	<key>Most accurate, slowest</key>
 	<string>Le plus précis, le plus lent</string>
+	<key>Most keys belong to one workspace and need nothing here. If Anthropic asks which workspace to use, the Assistant says so.</key>
+	<string>La plupart des clés appartiennent à un seul espace de travail et ne demandent rien ici. Si Anthropic demande quel espace de travail utiliser, l’Assistant vous le dit.</string>
 	<key>Motion</key>
 	<string>Mouvement</string>
 	<key>Motion blur</key>
@@ -4726,6 +4892,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Déplacer plus tard</string>
 	<key>Move Up</key>
 	<string>Monter</string>
+	<key>Move a cut, or a whole clip, without leaving a gap or changing how long the video is.</key>
+	<string>Déplacez une coupe, ou un clip entier, sans laisser d’espace ni changer la durée de la vidéo.</string>
 	<key>Move an annotation to a track</key>
 	<string>Déplacer une annotation vers une piste</string>
 	<key>Move earlier</key>
@@ -5022,6 +5190,10 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Aucun visage trouvé dans la vidéo de la caméra</string>
 	<key>No favourites yet: hover an item and click its star.</key>
 	<string>Aucun favori pour l’instant : survolez un élément et cliquez sur son étoile.</string>
+	<key>No gap here</key>
+	<string>Aucun espace ici</string>
+	<key>No gaps after the playhead</key>
+	<string>Aucun espace après la tête de lecture</string>
 	<key>No idle moments found — nice and tight</key>
 	<string>Aucun temps mort — bien rythmé</string>
 	<key>No location chosen</key>
@@ -5152,12 +5324,16 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Aucun résultat pour « %@ »</string>
 	<key>Nothing matches “%@”.</key>
 	<string>Aucun résultat pour « %@ ».</string>
+	<key>Nothing of the recording is left on that side to slide into. Slide works where a part was cut out.</key>
+	<string>Il ne reste rien de l’enregistrement de ce côté pour le glissement. Le glissement fonctionne là où un passage a été retiré.</string>
 	<key>Nothing private found</key>
 	<string>Aucune info privée trouvée</string>
 	<key>Nothing to clean up — everything belongs to recordings you still have</key>
 	<string>Rien à nettoyer — tout appartient à des enregistrements que vous avez encore</string>
 	<key>Nothing to split at the playhead</key>
 	<string>Rien à scinder à la tête de lecture</string>
+	<key>Nothing to split at the skimmer</key>
+	<string>Rien à scinder au skimmer</string>
 	<key>Nothing was recorded</key>
 	<string>Rien n’a été enregistré</string>
 	<key>Nothing was recorded — the screen didn't send any picture. Try again.</key>
@@ -5230,6 +5406,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Sur la piste Sous-titres en haut de la timeline, faites glisser un sous-titre pour le déplacer, ou ses bords pour changer son début et sa fin.</string>
 	<key>On the edit's timeline</key>
 	<string>Sur la timeline du montage</string>
+	<key>On the main track, sliding uses parts of the recording that were cut out. Right after a split there's nothing to slide into, so a clip slides only where a part was removed.</key>
+	<string>Sur la piste principale, le glissement utilise des passages retirés de l’enregistrement. Juste après une scission, il n’y a rien à utiliser : un clip ne glisse que là où un passage a été retiré.</string>
 	<key>On the preview after capture, click Text, or right-click and choose Copy Text.</key>
 	<string>Sur l’aperçu après la capture, cliquez sur Texte, ou faites un clic droit et choisissez Copier le texte.</string>
 	<key>On the timeline's zoom lane, drag the zoom's edges to set how long it lasts.</key>
@@ -5262,6 +5440,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Seulement %@ libres sur votre disque — cela risque de ne pas suffire. Libérez de l’espace ou enregistrez sur un autre disque.</string>
 	<key>Only apps on this Mac can connect, with a secret token. New token makes the old one stop working.</key>
 	<string>Seules les apps de ce Mac peuvent se connecter, avec un jeton secret. Nouveau jeton rend l’ancien inutilisable.</string>
+	<key>Only for a key that works in every workspace: which one to use. Leave it empty otherwise.</key>
+	<string>Uniquement pour une clé valable dans tous les espaces de travail : celui à utiliser. Sinon, laissez vide.</string>
 	<key>Only for these, and never to send your work:</key>
 	<string>Seulement pour ceci, et jamais pour envoyer votre travail :</string>
 	<key>Only if you turned them on: shortcuts, typing positions and times, and your speaker notes.</key>
@@ -5406,6 +5586,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Facultatif : saisissez aussi des mots à rechercher, comme le nom d’un client.</string>
 	<key>Optional: type words to look for, and turn on Also scan the camera video.</key>
 	<string>Facultatif : saisissez des mots à rechercher, et activez Analyser aussi la vidéo de la caméra.</string>
+	<key>Or choose Timeline ▸ Delete Gaps After Playhead: on every track, what comes after the playhead closes up to it.</key>
+	<string>Ou choisissez Timeline ▸ Supprimer les espaces après la tête de lecture : sur chaque piste, ce qui suit la tête de lecture se resserre jusqu’à elle.</string>
 	<key>Or drag it on the preview. Images stay put while the camera zooms.</key>
 	<string>Ou faites-la glisser dans l’aperçu. Les images restent en place pendant les zooms.</string>
 	<key>Or drag its bar on the timeline.</key>
@@ -5418,6 +5600,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Ou faites glisser le bouton rond au-dessus de l’image</string>
 	<key>Or hold ⇧ and drag across the timeline to select a part, then click Cut this part.</key>
 	<string>Ou maintenez ⇧ et faites glisser sur la timeline pour sélectionner un passage, puis cliquez sur Couper ce passage.</string>
+	<key>Or hold ⌥ and drag a clip above the main track: the copy lands where you drop it, and the original stays.</key>
+	<string>Ou maintenez ⌥ et faites glisser un clip au-dessus de la piste principale : la copie arrive là où vous la déposez, et l’original reste.</string>
 	<key>Or try the Whisper engine instead.</key>
 	<string>Ou essayez plutôt le moteur Whisper.</string>
 	<key>Or turn off Apple's screenshot shortcuts yourself: System Settings ▸ Keyboard ▸ Keyboard Shortcuts ▸ Screenshots.</key>
@@ -5438,6 +5622,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Forme d’origine</string>
 	<key>Originals</key>
 	<string>Originaux</string>
+	<key>Otherwise the selected clip, or else the whole video.</key>
+	<string>Sinon le clip sélectionné, ou à défaut toute la vidéo.</string>
 	<key>Otherwise, LF Studios switches languages the next time it opens.</key>
 	<string>Sinon, LF Studios changera de langue à sa prochaine ouverture.</string>
 	<key>Our own sound effects, free to use in anything you make. Hover to listen; drag one onto the timeline or click +.</key>
@@ -5466,6 +5652,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Carton de fin, de %@ à %@</string>
 	<key>Over everything: drag a filter onto the timeline (a filter clip).</key>
 	<string>Sur tout : faites glisser un filtre sur la timeline (un clip de filtre).</string>
+	<key>Over the timeline, with Preview axis (S) on.</key>
+	<string>Sur la timeline, avec l’Axe d’aperçu (S) activé.</string>
 	<key>Overlay</key>
 	<string>Incrustation</string>
 	<key>Overlay position</key>
@@ -5484,8 +5672,14 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Mot de passe</string>
 	<key>Paste</key>
 	<string>Coller</string>
+	<key>Paste Attributes</key>
+	<string>Coller les attributs</string>
+	<key>Paste Attributes…</key>
+	<string>Coller les attributs…</string>
 	<key>Paste a key that starts with %@</key>
 	<string>Collez une clé commençant par %@</string>
+	<key>Paste attributes</key>
+	<string>Coller les attributs</string>
 	<key>Paste it anywhere with ⌘V.</key>
 	<string>Collez-le où vous voulez avec ⌘V.</string>
 	<key>Paste it in LF Studios ▸ Settings ▸ AI ▸ Anthropic (Claude) and click Save.</key>
@@ -5494,6 +5688,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Collez-la dans LF Studios ▸ Réglages ▸ IA ▸ Google Gemini et cliquez sur Enregistrer.</string>
 	<key>Paste it in LF Studios ▸ Settings ▸ AI ▸ OpenAI and click Save.</key>
 	<string>Collez-la dans LF Studios ▸ Réglages ▸ IA ▸ OpenAI et cliquez sur Enregistrer.</string>
+	<key>Paste it in Settings ▸ AI ▸ Workspace ID.</key>
+	<string>Collez-le dans Réglages ▸ IA ▸ ID d’espace de travail.</string>
 	<key>Paste it into Terminal and press Return.</key>
 	<string>Collez-le dans Terminal et appuyez sur Retour.</string>
 	<key>Paste it into ~/.codex/config.toml and save.</key>
@@ -5580,8 +5776,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Choisissez-en un dans Bibliothèque ▸ Effets pendant que ce clip est sélectionné.</string>
 	<key>Pick the Select tool (V) and click a mark to change it, or set things before you draw.</key>
 	<string>Choisissez l’outil Sélection (V) et cliquez sur une annotation pour la modifier, ou réglez tout avant de dessiner.</string>
-	<key>Pick the right microphone in the menu above the bar.</key>
-	<string>Choisissez le bon micro dans le menu au-dessus de la barre.</string>
+	<key>Pick the right microphone under Area ▸ Microphone in the recording bar.</key>
+	<string>Choisissez le bon micro dans Zone ▸ Micro de la barre d’enregistrement.</string>
 	<key>Picked up where you left off</key>
 	<string>Reprise là où vous en étiez</string>
 	<key>Picture</key>
@@ -5620,6 +5816,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Zone pixélisée</string>
 	<key>Place captions anywhere</key>
 	<string>Placer les sous-titres n’importe où</string>
+	<key>Place, size, turn, mirror, crop, opacity and blend</key>
+	<string>Position, taille, rotation, miroir, rognage, opacité et fusion</string>
 	<key>Placement</key>
 	<string>Placement</string>
 	<key>Plain</key>
@@ -5654,6 +5852,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Lire à partir d’ici</string>
 	<key>Play it with the words around it</key>
 	<string>Le lire avec les mots qui l’entourent</string>
+	<key>Play the same part over and over while you work on it.</key>
+	<string>Lisez le même passage en boucle pendant que vous y travaillez.</string>
 	<key>Play the video and move the playhead (the line that shows where you are) to any moment.</key>
 	<string>Lisez la vidéo et placez la tête de lecture (la ligne qui montre où vous êtes) à n’importe quel moment.</string>
 	<key>Play “%@”</key>
@@ -5706,6 +5906,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Montrez et encadrez : flèches, rectangles, ellipses, lignes et dessin à main levée.</string>
 	<key>Point things out</key>
 	<string>Signaler</string>
+	<key>Pointer over the timeline</key>
+	<string>Pointeur sur la timeline</string>
 	<key>Polar Dawn</key>
 	<string>Aube polaire</string>
 	<key>Pop</key>
@@ -5758,6 +5960,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Appuyez sur %@, ou ouvrez le menu LF Studios dans la barre des menus et choisissez Capturer une fenêtre.</string>
 	<key>Press ? in the editor to see this list there.</key>
 	<string>Appuyez sur ? dans l’éditeur pour y voir cette liste.</string>
+	<key>Press Esc or click outside to close it.</key>
+	<string>Appuyez sur Échap ou cliquez à côté pour la fermer.</string>
 	<key>Press Esc to close it.</key>
 	<string>Appuyez sur Esc pour la fermer.</string>
 	<key>Press Space to play and pause.</key>
@@ -5774,10 +5978,14 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Appuyez sur le raccourci, ou choisissez Capturer une fenêtre.</string>
 	<key>Press the shortcut, or click Take screenshot.</key>
 	<string>Appuyez sur le raccourci, ou cliquez sur Faire une capture d’écran.</string>
+	<key>Press ⇧⌘V, tick what to paste — Effects, Filters, Adjust, Speed, Volume, Transform, Animation — and click Paste.</key>
+	<string>Appuyez sur ⇧⌘V, cochez ce qu’il faut coller — Effets, Filtres, Ajustements, Vitesse, Volume, Transformation, Animation — et cliquez sur Coller.</string>
 	<key>Press ⌘C in the video editor, or choose Copy Current Frame in the commands (⌘K).</key>
 	<string>Appuyez sur ⌘C dans l’éditeur vidéo, ou choisissez Copier l’image actuelle dans les commandes (⌘K).</string>
 	<key>Press ⌘K and type: a command's name, a file's, a clip's, words from a caption, or a marker's name.</key>
 	<string>Appuyez sur ⌘K et tapez : le nom d’une commande, d’un fichier, d’un clip, des mots d’un sous-titre ou le nom d’un marqueur.</string>
+	<key>Press ⌘L again to turn it off.</key>
+	<string>Appuyez à nouveau sur ⌘L pour la désactiver.</string>
 	<key>Press ⌫ again on crossed-out words to bring them back.</key>
 	<string>Appuyez de nouveau sur ⌫ sur des mots barrés pour les récupérer.</string>
 	<key>Pressed at %@. Press ⌫ to hide it from the video — handy for a stray ⌘Tab.</key>
@@ -6232,6 +6440,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Rétablir le repli de la piste</string>
 	<key>Redo Compound Clip</key>
 	<string>Rétablir le clip composé</string>
+	<key>Redo Copy Clip</key>
+	<string>Rétablir la copie du clip</string>
 	<key>Redo Cover</key>
 	<string>Rétablir la couverture</string>
 	<key>Redo Crop</key>
@@ -6268,6 +6478,10 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Rétablir la suppression des clips</string>
 	<key>Redo Delete Folder</key>
 	<string>Rétablir la suppression du dossier</string>
+	<key>Redo Delete Gap</key>
+	<string>Rétablir la suppression de l’espace</string>
+	<key>Redo Delete Gaps</key>
+	<string>Rétablir la suppression des espaces</string>
 	<key>Redo Delete Highlight</key>
 	<string>Rétablir la suppression du surlignage</string>
 	<key>Redo Delete Image</key>
@@ -6288,6 +6502,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Rétablir la détection des battements</string>
 	<key>Redo Duck Music</key>
 	<string>Rétablir Baisser la musique</string>
+	<key>Redo Duplicate</key>
+	<string>Rétablir la duplication</string>
 	<key>Redo Edit Caption</key>
 	<string>Rétablir la modification du sous-titre</string>
 	<key>Redo Edit Text</key>
@@ -6400,6 +6616,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Rétablir la normalisation du volume sonore</string>
 	<key>Redo Paste</key>
 	<string>Rétablir le collage</string>
+	<key>Redo Paste Attributes</key>
+	<string>Rétablir le collage des attributs</string>
 	<key>Redo Podcast Mode Off</key>
 	<string>Rétablir la désactivation du mode podcast</string>
 	<key>Redo Podcast Mode On</key>
@@ -6440,6 +6658,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Rétablir le changement de nom du marqueur</string>
 	<key>Redo Rename Media</key>
 	<string>Rétablir le changement de nom du média</string>
+	<key>Redo Rename Track</key>
+	<string>Rétablir le changement de nom de la piste</string>
 	<key>Redo Reorder Effects</key>
 	<string>Rétablir Réordonner les effets</string>
 	<key>Redo Replace Camera Video</key>
@@ -6468,6 +6688,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Rétablir l’inversion</string>
 	<key>Redo Revert Agent Changes</key>
 	<string>Rétablir l’annulation des modifications de l’agent</string>
+	<key>Redo Roll</key>
+	<string>Rétablir le roulement</string>
 	<key>Redo Rotate</key>
 	<string>Rétablir la rotation</string>
 	<key>Redo Shortcut Style</key>
@@ -6480,8 +6702,12 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Rétablir le raccourcissement des pauses</string>
 	<key>Redo Show Track</key>
 	<string>Rétablir l’affichage de la piste</string>
+	<key>Redo Slide</key>
+	<string>Rétablir le glissement</string>
 	<key>Redo Slip Clip</key>
 	<string>Rétablir le défilement du clip</string>
+	<key>Redo Solo</key>
+	<string>Rétablir le solo</string>
 	<key>Redo Sound Change</key>
 	<string>Rétablir la modification du son</string>
 	<key>Redo Speed</key>
@@ -6556,6 +6782,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Rétablir le rétablissement du son de la piste</string>
 	<key>Redo Unmute Video</key>
 	<string>Rétablir le rétablissement du son de la vidéo</string>
+	<key>Redo Unsolo</key>
+	<string>Rétablir l’annulation du solo</string>
 	<key>Redo Zoom Change</key>
 	<string>Rétablir la modification du zoom</string>
 	<key>Redo Zoom Cut</key>
@@ -6670,6 +6898,10 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Renommer le marqueur…</string>
 	<key>Rename Preset</key>
 	<string>Renommer le préréglage</string>
+	<key>Rename Track</key>
+	<string>Renommer la piste</string>
+	<key>Rename a track</key>
+	<string>Renommer une piste</string>
 	<key>Rename “%@”</key>
 	<string>Renommer « %@ »</string>
 	<key>Rename…</key>
@@ -6796,6 +7028,10 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Afficher</string>
 	<key>Reveal in Finder</key>
 	<string>Afficher dans le Finder</string>
+	<key>Reveal in Library</key>
+	<string>Afficher dans la Bibliothèque</string>
+	<key>Reveal in Library and Match Frame</key>
+	<string>Afficher dans la Bibliothèque et Image correspondante</string>
 	<key>Reveal shows the file in Finder; Copy Path copies where it is.</key>
 	<string>Afficher montre le fichier dans le Finder ; Copier le chemin copie son emplacement.</string>
 	<key>Reverse</key>
@@ -6840,6 +7076,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Clic droit sur un projet dans l’accueil ▸ Supprimer : il va dans la corbeille.</string>
 	<key>Right-click a zoom on the timeline for quick changes.</key>
 	<string>Faites un clic droit sur un zoom dans la timeline pour des modifications rapides.</string>
+	<key>Right-click empty space on a track, or the Timeline menu.</key>
+	<string>Clic droit sur un espace vide d’une piste, ou le menu Timeline.</string>
 	<key>Right-click for Open, Show in Finder, Creative Handoff…, or Delete (moves it to the Trash; for a recording's folder, the whole folder, after asking).</key>
 	<string>Clic droit pour Ouvrir, Afficher dans le Finder, Transmission créative… ou Supprimer (place l’élément dans la corbeille ; pour le dossier d’un enregistrement, le dossier entier, après confirmation).</string>
 	<key>Right-click for Save As…, Pin to Screen, and Delete.</key>
@@ -6848,12 +7086,28 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Faites un clic droit dessus et choisissez Lier l’audio pour le remettre sous sa vidéo.</string>
 	<key>Right-click it for Copy, Save As…, Edit, Close Pin, or Close All Pins.</key>
 	<string>Clic droit dessus pour Copier, Enregistrer sous…, Modifier, Fermer ou Tout fermer.</string>
+	<key>Right-click the empty space between two clips and choose Delete Gap. What comes after it moves back.</key>
+	<string>Cliquez droit sur l’espace vide entre deux clips et choisissez Supprimer l’espace. Ce qui suit recule.</string>
 	<key>Ring</key>
 	<string>Anneau</string>
 	<key>Ripple</key>
 	<string>Onde</string>
+	<key>Ripple (as before): drag a clip's end. Everything after it moves.</key>
+	<string>Propagation (comme avant) : faites glisser l’extrémité d’un clip. Tout ce qui suit se déplace.</string>
 	<key>Riser</key>
 	<string>Montée</string>
+	<key>Roll</key>
+	<string>Roulement</string>
+	<key>Roll needs a clip after this one</key>
+	<string>Le roulement nécessite un clip après celui-ci</string>
+	<key>Roll needs a clip right after this one</key>
+	<string>Le roulement nécessite un clip juste après celui-ci</string>
+	<key>Roll, slide, and the Trim tool</key>
+	<string>Roulement, glissement et l’outil Raccord</string>
+	<key>Roll: both clips change, no gap</key>
+	<string>Roulement : les deux clips changent, sans espace</string>
+	<key>Roll: drag the cut between two clips that touch. One gets longer, the other shorter, by the same amount.</key>
+	<string>Roulement : faites glisser la coupe entre deux clips qui se touchent. L’un s’allonge, l’autre se raccourcit d’autant.</string>
 	<key>Rose Smoke</key>
 	<string>Fumée rose</string>
 	<key>Rotate</key>
@@ -6876,10 +7130,18 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Arrondi, dans le même menu : des coins vifs à l’arrondi.</string>
 	<key>Roundness: from sharp corners to a full circle.</key>
 	<string>Arrondi : des coins nets jusqu’au cercle complet.</string>
+	<key>Rule of thirds</key>
+	<string>Règle des tiers</string>
+	<key>Rule of thirds and Centre lines, to line things up.</key>
+	<string>Règle des tiers et Lignes centrales, pour aligner les éléments.</string>
 	<key>S</key>
 	<string>S</string>
 	<key>STORY</key>
 	<string>STORY</string>
+	<key>Safe zones and grid</key>
+	<string>Zones sûres et grille</string>
+	<key>Safe zones and grid (never in the export)</key>
+	<string>Zones sûres et grille (jamais dans l’export)</string>
 	<key>Saturation</key>
 	<string>Saturation</string>
 	<key>Save</key>
@@ -7060,8 +7322,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Faites défiler vers le bas pour capturer</string>
 	<key>Scroll down to capture more</key>
 	<string>Continuez à défiler vers le bas</string>
-	<key>Scroll up and down when the tracks don't all fit; the ruler and the track names stay put.</key>
-	<string>Faites défiler vers le haut et le bas quand toutes les pistes ne tiennent pas ; la règle et les noms des pistes restent en place.</string>
+	<key>Scroll to see every track</key>
+	<string>Faites défiler pour voir toutes les pistes</string>
 	<key>Scrolled too fast — scroll back up a little</key>
 	<string>Trop rapide — remontez un peu</string>
 	<key>Scrolling</key>
@@ -7112,6 +7374,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Voir aussi</string>
 	<key>See how a setting changes over time under a track, and drag its keyframes there.</key>
 	<string>Voyez sous une piste comment un réglage évolue dans le temps, et faites-y glisser ses images clés.</string>
+	<key>See how loud the video is while it plays, left and right.</key>
+	<string>Voyez le volume de la vidéo pendant la lecture, à gauche et à droite.</string>
 	<key>See where a phone app's buttons and captions would cover your vertical video.</key>
 	<string>Voyez ce que les boutons et les légendes d’une app mobile recouvriraient sur votre vidéo verticale.</string>
 	<key>Select</key>
@@ -7124,6 +7388,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Ne rien sélectionner</string>
 	<key>Select a caption on the timeline to change when it starts and ends.</key>
 	<string>Sélectionnez un sous-titre sur la timeline pour changer son début et sa fin.</string>
+	<key>Select a clip (or put the playhead over one) and press ⇧F: Library ▸ Media opens with its file selected.</key>
+	<string>Sélectionnez un clip (ou placez la tête de lecture dessus) et appuyez sur ⇧F : Bibliothèque ▸ Médias s’ouvre avec son fichier sélectionné.</string>
 	<key>Select a clip above the main track first</key>
 	<string>Sélectionnez d’abord un clip au-dessus de la piste principale</string>
 	<key>Select a clip above the main track to add a keyframe</key>
@@ -7134,6 +7400,12 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Sélectionnez un clip pour Couper le son de ce clip, Fondu d’entrée et Fondu de sortie. Ou sélectionnez un passage avec ⇧ en faisant glisser et choisissez Couper le son de ce passage.</string>
 	<key>Select a clip on the timeline to mute it or fade it in and out.</key>
 	<string>Sélectionnez un clip dans la timeline pour couper son son ou lui appliquer un fondu.</string>
+	<key>Select a clip to duplicate</key>
+	<string>Sélectionnez un clip à dupliquer</string>
+	<key>Select a clip to find its file in the Library</key>
+	<string>Sélectionnez un clip pour retrouver son fichier dans la Bibliothèque</string>
+	<key>Select a clip to see its source</key>
+	<string>Sélectionnez un clip pour voir sa source</string>
 	<key>Select a clip, a zoom or an annotation to change it here.</key>
 	<string>Sélectionnez un clip, un zoom ou une annotation pour le modifier ici.</string>
 	<key>Select a clip, or ⇧-drag a part, and choose its Speed in the panel on the right.</key>
@@ -7154,10 +7426,16 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Sélectionnez n’importe quel passage de la vidéo et supprimez-le, même s’il s’étend sur plusieurs clips.</string>
 	<key>Select area manually</key>
 	<string>Sélectionner une zone manuellement</string>
+	<key>Select clips above the main track (or a sound, a zoom, or an annotation) and press ⌘D: the copy goes right after it, and what follows moves along.</key>
+	<string>Sélectionnez des clips au-dessus de la piste principale (ou un son, un zoom ou une annotation) et appuyez sur ⌘D : la copie se place juste après, et ce qui suit se décale.</string>
 	<key>Select clips above the main track to make a compound clip</key>
 	<string>Sélectionnez des clips au-dessus de la piste principale pour créer un clip composé</string>
 	<key>Select clips above the main track, then press ⌥G.</key>
 	<string>Sélectionnez des clips au-dessus de la piste principale, puis appuyez sur ⌥G.</string>
+	<key>Select clips in a box (⇧ adds, ⌘ toggles)</key>
+	<string>Sélectionner des clips dans un cadre (⇧ ajoute, ⌘ inverse)</string>
+	<key>Select clips with a box</key>
+	<string>Sélectionner des clips avec un cadre</string>
 	<key>Select left / right of the playhead</key>
 	<string>Sélectionner à gauche / à droite de la tête de lecture</string>
 	<key>Select left of playhead</key>
@@ -7178,8 +7456,18 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Sélectionnez le clip pour voir ses poignées de courbe (petits losanges à côté de chaque point). Faites-en glisser une vers le haut ou le bas pour courber la ligne ; double-cliquez pour revenir à l’accélération (1.19.0).</string>
 	<key>Select the clips (⇧-click to add more), then press ⌥G.</key>
 	<string>Sélectionnez les clips (⇧-clic pour en ajouter), puis appuyez sur ⌥G.</string>
+	<key>Select the clips to change (a box selects many at once).</key>
+	<string>Sélectionnez les clips à modifier (un cadre en sélectionne plusieurs à la fois).</string>
+	<key>Select the clips to paste onto</key>
+	<string>Sélectionnez les clips sur lesquels coller</string>
+	<key>Select the finished clip and press ⌘C.</key>
+	<string>Sélectionnez le clip terminé et appuyez sur ⌘C.</string>
+	<key>Select tool</key>
+	<string>Outil Sélection</string>
 	<key>Select tool · split tool</key>
 	<string>Sélection · outil Scinder</string>
+	<key>Select tool · split tool · trim tool</key>
+	<string>Sélection · outil Scinder · outil Raccord</string>
 	<key>Select two or more clips above the main track to group them (⇧-click)</key>
 	<string>Sélectionnez deux clips ou plus au-dessus de la piste principale pour les grouper (⇧-clic)</string>
 	<key>Select which display to record fullscreen</key>
@@ -7250,6 +7538,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Règle le volume pour qu’il soit aussi fort que l’attendent les sites vidéo (−16 LUFS)</string>
 	<key>Settings</key>
 	<string>Réglages</string>
+	<key>Settings ▸ AI ▸ Anthropic ▸ Workspace ID.</key>
+	<string>Réglages ▸ IA ▸ Anthropic ▸ ID d’espace de travail.</string>
 	<key>Settings ▸ AI…</key>
 	<string>Réglages ▸ IA…</string>
 	<key>Settings ▸ Agent ▸ Save… gives the agent a guide to LF Studios' tools (for Claude Code, a skill).</key>
@@ -7410,6 +7700,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Afficher ou masquer vos notes — elles n’apparaissent jamais dans l’enregistrement</string>
 	<key>Show shortcuts</key>
 	<string>Afficher les raccourcis</string>
+	<key>Show the audio meters</key>
+	<string>Afficher les indicateurs de niveau</string>
 	<key>Show the camera full screen, side by side with the screen, or hide it, for any part of the video.</key>
 	<string>Affichez la caméra en plein écran, côte à côte avec l’écran, ou masquez-la, pour n’importe quelle partie de la vidéo.</string>
 	<key>Show the keyboard shortcuts you pressed, like ⌘C, as keys on the video.</key>
@@ -7478,16 +7770,26 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Lavis de ciel</string>
 	<key>Slide</key>
 	<string>Glisser</string>
+	<key>Slide (Trim tool): drag a clip. It keeps its frames and moves between its neighbours, which change to fit.</key>
+	<string>Glissement (outil Raccord) : faites glisser un clip. Il garde ses images et se déplace entre ses voisins, qui s’adaptent.</string>
 	<key>Slide down</key>
 	<string>Glisser vers le bas</string>
 	<key>Slide left</key>
 	<string>Glisser vers la gauche</string>
+	<key>Slide needs a clip on each side</key>
+	<string>Le glissement nécessite un clip de chaque côté</string>
 	<key>Slide right</key>
 	<string>Glisser vers la droite</string>
 	<key>Slide up</key>
 	<string>Glisser vers le haut</string>
+	<key>Slide · ⌥ Slip</key>
+	<string>Glissement · ⌥ Défilement</string>
 	<key>Slides / iPad</key>
 	<string>Présentations / iPad</string>
+	<key>Slip</key>
+	<string>Défilement</string>
+	<key>Slip (Trim tool): ⌥-drag a video above the main track to show a different part of it in the same place.</key>
+	<string>Défilement (outil Raccord) : ⌥-glissez une vidéo au-dessus de la piste principale pour en montrer une autre partie au même endroit.</string>
 	<key>Slow</key>
 	<string>Lent</string>
 	<key>Small</key>
@@ -7506,6 +7808,10 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Fluidité</string>
 	<key>Social</key>
 	<string>Réseaux sociaux</string>
+	<key>Social apps (9:16 videos only)</key>
+	<string>Apps sociales (vidéos 9:16 uniquement)</string>
+	<key>Social apps (9:16)</key>
+	<string>Apps sociales (9:16)</string>
 	<key>Social feeds</key>
 	<string>Fils des réseaux sociaux</string>
 	<key>Soft</key>
@@ -7524,6 +7830,16 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Couleur unie</string>
 	<key>Solid color</key>
 	<string>Couleur unie</string>
+	<key>Solo</key>
+	<string>Solo</string>
+	<key>Solo %@</key>
+	<string>Mettre %@ en solo</string>
+	<key>Solo a track</key>
+	<string>Mettre une piste en solo</string>
+	<key>Solo is for listening in the editor. The export always has every track, as their own Mute buttons say.</key>
+	<string>Le solo sert à écouter dans l’éditeur. L’export contient toujours toutes les pistes, selon leurs propres boutons Couper le son.</string>
+	<key>Solo “%@”: hear only soloed tracks while editing (the export keeps every track)</key>
+	<string>Mettre « %@ » en solo : n’entendre que les pistes en solo pendant le montage (l’export garde toutes les pistes)</string>
 	<key>Some files couldn't be written — README.txt in the folder lists them</key>
 	<string>Certains fichiers n’ont pas pu être écrits — README.txt dans le dossier les liste</string>
 	<key>Some files weren't added: LF Studios takes videos, pictures, and sound files</key>
@@ -7536,12 +7852,18 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Son</string>
 	<key>Sound effects</key>
 	<string>Effets sonores</string>
+	<key>Sound levels while playing: green is fine, yellow is loud, red is too loud</key>
+	<string>Niveaux sonores pendant la lecture : vert c’est bon, jaune c’est fort, rouge c’est trop fort</string>
+	<key>Sound levels while playing: green is fine, yellow is loud, red is too loud. Click to hide them.</key>
+	<string>Niveaux sonores pendant la lecture : vert, c’est bien ; jaune, c’est fort ; rouge, c’est trop fort. Cliquez pour les masquer.</string>
 	<key>Sound of %@</key>
 	<string>Son de %@</string>
 	<key>Sound of clip %lld</key>
 	<string>Son du clip %lld</string>
 	<key>Sounds</key>
 	<string>Sons</string>
+	<key>Source at %@</key>
+	<string>Source à %@</string>
 	<key>Space</key>
 	<string>Espace</string>
 	<key>Space Gray</key>
@@ -7608,18 +7930,28 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Scinder toutes les pistes</string>
 	<key>Split all tracks</key>
 	<string>Scinder toutes les pistes</string>
+	<key>Split all tracks at the skimmer, else the playhead</key>
+	<string>Scinder toutes les pistes au skimmer, sinon à la tête de lecture</string>
 	<key>Split at Markers</key>
 	<string>Scinder aux marqueurs</string>
 	<key>Split at Markers splits the clips at every marker.</key>
 	<string>Scinder aux marqueurs scinde les clips à chaque marqueur.</string>
 	<key>Split at Playhead</key>
 	<string>Scinder à la tête de lecture</string>
+	<key>Split at Skimmer or Playhead</key>
+	<string>Scinder au skimmer ou à la tête de lecture</string>
 	<key>Split at playhead</key>
 	<string>Scinder à la tête de lecture</string>
+	<key>Split at skimmer</key>
+	<string>Scinder au skimmer</string>
 	<key>Split at the playhead</key>
 	<string>Scinder à la tête de lecture</string>
+	<key>Split at the skimmer, else the playhead</key>
+	<string>Scinder au skimmer, sinon à la tête de lecture</string>
 	<key>Split every track at the playhead</key>
 	<string>Toutes les pistes scindées à la tête de lecture</string>
+	<key>Split every track at the skimmer</key>
+	<string>Toutes les pistes scindées au skimmer</string>
 	<key>Split screen</key>
 	<string>Écran partagé</string>
 	<key>Split screen divider</key>
@@ -7680,6 +8012,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Recommencer à partir de l’enregistrement d’origine…</string>
 	<key>Start at the playhead</key>
 	<string>Commencer à la tête de lecture</string>
+	<key>Start dragging where there's no clip, and drag over the clips you want.</key>
+	<string>Commencez à faire glisser là où il n’y a pas de clip, et passez sur les clips voulus.</string>
 	<key>Start here</key>
 	<string>Commencer ici</string>
 	<key>Start over from the original recording?</key>
@@ -7752,6 +8086,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Arrêter l’enregistrement (%@)</string>
 	<key>Stop recording, from any app</key>
 	<string>Arrêter l’enregistrement, depuis n’importe quelle app</string>
+	<key>Stop soloing “%@”</key>
+	<string>Retirer « %@ » du solo</string>
 	<key>Stop, while LF Studios is the app in front</key>
 	<string>Arrêter, quand LF Studios est au premier plan</string>
 	<key>Stopped after %lld steps. Ask again to go on.</key>
@@ -7976,6 +8312,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Le panneau Agent (Disposition ▸ Panneau Agent). Il s’ouvre quand un agent commence.</string>
 	<key>The Agent panel moves and floats like the others; its × hides it.</key>
 	<string>Le panneau Agent se déplace et flotte comme les autres ; son × le masque.</string>
+	<key>The Area button</key>
+	<string>Le bouton Zone</string>
 	<key>The Assistant is editing. Click or type in the editor to take over.</key>
 	<string>L’Assistant modifie la vidéo. Cliquez ou tapez dans l’éditeur pour reprendre la main.</string>
 	<key>The Assistant needs a key from Claude, OpenAI or Gemini. It stays in your Mac's Keychain.</key>
@@ -8014,8 +8352,12 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>La Bibliothèque</string>
 	<key>The Library's Media and Audio tabs, at the top left of the video editor. File ▸ Import Media… (⌘I).</key>
 	<string>Les onglets Médias et Audio de la Bibliothèque, en haut à gauche de l’éditeur vidéo. Fichier ▸ Importer des médias… (⌘I).</string>
+	<key>The Microphone menu, with Microphone on.</key>
+	<string>Le menu Micro, quand Micro est activé.</string>
 	<key>The Proxy menu under the player.</key>
 	<string>Le menu Proxy sous le lecteur.</string>
+	<key>The Timeline menu, or the clips on the timeline.</key>
+	<string>Le menu Timeline, ou les clips de la timeline.</string>
 	<key>The Undo and Redo buttons in the editor's toolbar.</key>
 	<string>Les boutons Annuler et Rétablir dans la barre d’outils de l’éditeur.</string>
 	<key>The agent connection couldn't start: %@</key>
@@ -8076,6 +8418,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Le pointeur, les zooms et les clics suivent le recadrage.</string>
 	<key>The curve button in a track's header, above the main track (LF Studios layout).</key>
 	<string>Le bouton de courbe dans l’en-tête d’une piste au-dessus de la piste principale (disposition LF Studios).</string>
+	<key>The cut between two clips, and the Trim tool (T) beside Select and Split.</key>
+	<string>La coupe entre deux clips, et l’outil Raccord (T) à côté de Sélection et Scinder.</string>
 	<key>The dice button picks one at random.</key>
 	<string>Le bouton dé en choisit un au hasard.</string>
 	<key>The editor has the Library on the left, the player in the middle, Properties on the right (Style, Cursor, Zoom, Camera, Captions, and Audio), and the timeline below.</key>
@@ -8092,6 +8436,10 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>L’exportation s’est arrêtée de façon inattendue (%@). Réessayez — si le problème persiste, exportez à une résolution plus basse ou en H.264.</string>
 	<key>The export window warns you before a file won't fit.</key>
 	<string>La fenêtre d’export vous prévient avant qu’un fichier ne tienne plus.</string>
+	<key>The filter and its strength</key>
+	<string>Le filtre et son intensité</string>
+	<key>The first button in the recording bar.</key>
+	<string>Le premier bouton de la barre d’enregistrement.</string>
 	<key>The first time, macOS asks to allow the microphone and the camera.</key>
 	<string>La première fois, macOS demande l’autorisation d’utiliser le micro et la caméra.</string>
 	<key>The first time, macOS asks to allow the microphone.</key>
@@ -8108,10 +8456,16 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>L’image à %@</string>
 	<key>The frame bar</key>
 	<string>La barre du cadre</string>
+	<key>The frame's shape and size, Fit a window to the frame…, and Window, Full screen, or Select area manually.</key>
+	<string>La forme et la taille du cadre, Ajuster une fenêtre au cadre…, et Fenêtre, Plein écran ou Sélectionner une zone manuellement.</string>
 	<key>The frame, the dimming, and the bars are never in the video. Nothing is recorded until you click Record.</key>
 	<string>Le cadre, l’assombrissement et les barres n’apparaissent jamais dans la vidéo. Rien n’est enregistré tant que vous ne cliquez pas sur Enregistrer.</string>
+	<key>The grid button under the player.</key>
+	<string>Le bouton de grille sous le lecteur.</string>
 	<key>The handoff is ready</key>
 	<string>La transmission est prête</string>
+	<key>The headphones button on a sound or video track's header.</key>
+	<string>Le bouton casque dans l’en-tête d’une piste son ou vidéo.</string>
 	<key>The highest quality, and the only one that can keep transparency</key>
 	<string>La meilleure qualité, et la seule qui peut garder la transparence</string>
 	<key>The key is kept only in your Mac's Keychain, never in projects, handoffs or settings files.</key>
@@ -8122,14 +8476,24 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>La clé fonctionne : %lld modèles</string>
 	<key>The label under it says how wide the camera is and where it goes in the video. The editor opens with exactly that.</key>
 	<string>L’étiquette en dessous indique la largeur de la caméra et sa place dans la vidéo. L’éditeur s’ouvre exactement ainsi.</string>
+	<key>The levels button next to the time, under the player.</key>
+	<string>Le bouton des niveaux à côté du temps, sous le lecteur.</string>
 	<key>The line runs down through every track, so you can see what's under it.</key>
 	<string>La ligne traverse toutes les pistes : vous voyez ce qui se trouve dessous.</string>
+	<key>The line that follows the pointer over the timeline. Zooming keeps the moment under it in place, and ⌘B splits there.</key>
+	<string>La ligne qui suit le pointeur sur la timeline. Le zoom garde en place l’instant qui se trouve dessous, et ⌘B scinde à cet endroit.</string>
 	<key>The loupe stays over the text cursor.</key>
 	<string>La loupe reste sur le curseur de texte.</string>
 	<key>The loupe stays over your cursor.</key>
 	<string>La loupe reste sur votre pointeur.</string>
 	<key>The magnifier shows the pixels under the pointer, with their color.</key>
 	<string>La loupe montre les pixels sous le pointeur, avec leur couleur.</string>
+	<key>The main track never has gaps: deleting a clip there closes up by itself (unless the main track magnet is off). A locked track keeps its gaps.</key>
+	<string>La piste principale n’a jamais d’espaces : y supprimer un clip referme l’espace tout seul (sauf si l’aimant de la piste principale est désactivé). Une piste verrouillée garde ses espaces.</string>
+	<key>The main track's clips are the recording itself, each moment once, so they aren't duplicated. To use a part twice, copy it to a track above with ⌘C and ⌘V.</key>
+	<string>Les clips de la piste principale sont l’enregistrement lui-même, chaque moment une seule fois : ils ne sont donc pas dupliqués. Pour utiliser un passage deux fois, copiez-le sur une piste au-dessus avec ⌘C et ⌘V.</string>
+	<key>The main track's clips take Speed, Volume, and Transform (mirror and turn). It's one step: ⌘Z takes it all back.</key>
+	<string>Les clips de la piste principale reçoivent Vitesse, Volume et Transformation (miroir et rotation). C’est une seule étape : ⌘Z annule tout.</string>
 	<key>The markers are already at clip edges</key>
 	<string>Les marqueurs sont déjà aux bords des clips</string>
 	<key>The menu at the top of the panel switches the provider and model. New Chat starts over.</key>
@@ -8160,6 +8524,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>La musique baisse pendant que cette piste parle, comme sous votre voix</string>
 	<key>The name in the Library. The file keeps its own.</key>
 	<string>Le nom dans la Bibliothèque. Le fichier garde le sien.</string>
+	<key>The name is saved with the project. Projects with renamed or soloed tracks need LF Studios 1.21.0 or later.</key>
+	<string>Le nom est enregistré avec le projet. Les projets avec des pistes renommées ou en solo nécessitent LF Studios 1.21.0 ou ultérieur.</string>
 	<key>The notes never appear in a recording, a screenshot, or screen sharing.</key>
 	<string>Les notes n’apparaissent jamais dans un enregistrement, une capture ou un partage d’écran.</string>
 	<key>The notes you read from while recording, kept with the video.</key>
@@ -8214,6 +8580,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Réponse du fournisseur : %@</string>
 	<key>The recording bar</key>
 	<string>La barre d’enregistrement</string>
+	<key>The recording bar is one row. Area shows what you're recording, like Area · 1920 × 1080, Full screen, or Window · Safari, and holds the rest of the options.</key>
+	<string>La barre d’enregistrement tient sur une ligne. Zone indique ce que vous enregistrez, comme Zone · 1920 × 1080, Plein écran ou Fenêtre · Safari, et contient les autres options.</string>
 	<key>The recording bar, the camera bubble preview, Speaker notes, the countdown, and notices.</key>
 	<string>La barre d’enregistrement, l’aperçu de la bulle de caméra, les Notes de l’orateur, le compte à rebours et les messages.</string>
 	<key>The recording couldn't be finished — saved the first %@.</key>
@@ -8234,6 +8602,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>La ligne rouge de la timeline est le moment affiché par le lecteur. Sa poignée se trouve en haut de la règle.</string>
 	<key>The red stop button in the bar while recording, or the red timer in the menu bar.</key>
 	<string>Le bouton d’arrêt rouge dans la barre pendant l’enregistrement, ou le minuteur rouge dans la barre des menus.</string>
+	<key>The repeat button under the player, or Timeline ▸ Loop playback (⌘L).</key>
+	<string>Le bouton de répétition sous le lecteur, ou Timeline ▸ Lecture en boucle (⌘L).</string>
 	<key>The same transition on every cut between clips</key>
 	<string>La même transition sur chaque coupe entre les clips</string>
 	<key>The save panel did not return a destination. Please try saving again.</key>
@@ -8268,6 +8638,10 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>La taille de l’enregistrement, en pixels.</string>
 	<key>The size shows while you drag.</key>
 	<string>La taille s’affiche pendant que vous faites glisser.</string>
+	<key>The skimmer</key>
+	<string>Le skimmer</string>
+	<key>The slider and the zoom buttons are away from the timeline, so they zoom around the playhead.</key>
+	<string>Le curseur et les boutons de zoom sont hors de la timeline : ils zooment autour de la tête de lecture.</string>
 	<key>The song is shorter than the video</key>
 	<string>Le morceau est plus court que la vidéo</string>
 	<key>The song's file is gone — choose it again with Replace.</key>
@@ -8286,12 +8660,12 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Les réglages du son (sélectionnez un fichier son, la musique, ou une vidéo au-dessus de la piste principale).</string>
 	<key>The speaker on the sound track's name mutes it. Volume is in Properties ▸ Audio; a clip's fades and Mute Clip work on its sound.</key>
 	<string>Le haut-parleur à côté du nom de la piste son la coupe. Le volume est dans Propriétés ▸ Audio ; les fondus d’un clip et Couper le son du clip s’appliquent à son son.</string>
-	<key>The strip above the recording bar, after Home ▸ New recording.</key>
-	<string>La bande au-dessus de la barre d’enregistrement, après Accueil ▸ Nouvel enregistrement.</string>
 	<key>The switches stay as you leave them, on this Mac.</key>
 	<string>Les interrupteurs restent comme vous les laissez, sur ce Mac.</string>
 	<key>The text is now on the clipboard: paste it anywhere with ⌘V.</key>
 	<string>Le texte est maintenant dans le presse-papiers : collez-le où vous voulez avec ⌘V.</string>
+	<key>The thin line holds the loudest moment for a second.</key>
+	<string>La ligne fine garde le moment le plus fort pendant une seconde.</string>
 	<key>The timeline and its tracks</key>
 	<string>La timeline et ses pistes</string>
 	<key>The timeline at the bottom of the video editor.</key>
@@ -8354,6 +8728,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Le panneau « Sélection » apparaît en haut à droite quand un élément est sélectionné.</string>
 	<key>The ⌘ and ? buttons in the editor's toolbar. In the LF Studios layout: Search in the top bar, and All keys at the right of the bottom strip.</key>
 	<string>Les boutons ⌘ et ? dans la barre d’outils de l’éditeur. Dans la disposition LF Studios : Rechercher dans la barre du haut, et Tous les raccourcis à droite de la barre du bas.</string>
+	<key>Then move, delete, copy, or paste attributes onto them all at once.</key>
+	<string>Puis déplacez-les, supprimez-les, copiez-les ou collez-leur des attributs, tous à la fois.</string>
 	<key>There are no captions to translate yet. Transcribe or add captions first.</key>
 	<string>Il n’y a pas encore de sous-titres à traduire. Transcrivez ou ajoutez d’abord des sous-titres.</string>
 	<key>There isn't enough free space on this disk: this export needs about %@ and %@ is free. Free up some space (empty the Trash, delete old recordings) or export to another drive.</key>
@@ -8380,8 +8756,12 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Elles suivent vos paroles, et sont identiques dans l’aperçu et dans l’export.</string>
 	<key>They look through the whole video on your Mac, which takes longer for long or 4K videos.</key>
 	<string>Ils parcourent toute la vidéo sur votre Mac, ce qui prend plus longtemps pour les vidéos longues ou en 4K.</string>
+	<key>They show what the player plays, solo and mute included. They're off to start with: while they're on, Play takes a moment longer to start.</key>
+	<string>Ils montrent ce que joue le lecteur, solo et silence compris. Ils sont désactivés au départ : quand ils sont activés, la lecture met un instant de plus à démarrer.</string>
 	<key>They take about %@ on this Mac (ProRes 422 Proxy at half size). The editor plays them instead of the originals; exports always use the originals. Clean Up in Settings removes them.</key>
 	<string>Ils occupent environ %@ sur ce Mac (ProRes 422 Proxy en demi-taille). L’éditeur les lit à la place des originaux ; les exportations utilisent toujours les originaux. Nettoyer, dans Réglages, les supprime.</string>
+	<key>They're all off in every new editor window. Hide All Guides turns them off at once.</key>
+	<string>Ils sont tous désactivés dans chaque nouvelle fenêtre de l’éditeur. Masquer tous les repères les désactive d’un coup.</string>
 	<key>They're kept on this Mac only, never in a project or a Creative Handoff. Settings ▸ Clean Up removes them.</key>
 	<string>Ils sont conservés sur ce Mac uniquement, jamais dans un projet ni une Transmission créative. Réglages ▸ Nettoyer les supprime.</string>
 	<key>Thickness</key>
@@ -8490,6 +8870,10 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Échelle de la timeline (pincer ou ⌘-défiler)</string>
 	<key>Timeline size</key>
 	<string>Taille de la timeline</string>
+	<key>Timeline ▸ Paste Attributes… (⇧⌘V).</key>
+	<string>Timeline ▸ Coller les attributs… (⇧⌘V).</string>
+	<key>Timeline ▸ Reveal in Library (⇧F) and Match Frame.</key>
+	<string>Timeline ▸ Afficher dans la Bibliothèque (⇧F) et Image correspondante.</string>
 	<key>Timing</key>
 	<string>Minutage</string>
 	<key>Timing only: never which keys</key>
@@ -8504,6 +8888,10 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Astuces</string>
 	<key>Title</key>
 	<string>Titre</string>
+	<key>Title safe</key>
+	<string>Zone de titre</string>
+	<key>Title safe and Action safe: keep text inside the inner box and action inside the outer one.</key>
+	<string>Zone de titre et Zone d’action : gardez le texte dans le cadre intérieur et l’action dans le cadre extérieur.</string>
 	<key>Titles</key>
 	<string>Titres</string>
 	<key>To</key>
@@ -8524,8 +8912,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Pour changer l’ampleur et la durée du zoom, cliquez sur ⌄ à côté du bouton : Échelle et Durée.</string>
 	<key>To cut a mistake, move the playhead to it, press ⌘B to split, click the bad part, and press ⌫.</key>
 	<string>Pour couper une erreur, placez-y la tête de lecture, appuyez sur ⌘B pour scinder, cliquez sur la mauvaise partie et appuyez sur ⌫.</string>
-	<key>To drag out any area yourself, click Select area manually above the recording bar.</key>
-	<string>Pour tracer vous-même une zone libre, cliquez sur Sélectionner une zone manuellement au-dessus de la barre d’enregistrement.</string>
+	<key>To drag out any area yourself, click Area in the recording bar, then Select area manually.</key>
+	<string>Pour tracer vous-même une zone libre, cliquez sur Zone dans la barre d’enregistrement, puis sur Sélectionner une zone manuellement.</string>
 	<key>To get the preview out of the way, drag it outside the frame: the label says “Not in video”, and the editor puts the camera in its usual corner.</key>
 	<string>Pour écarter l’aperçu, faites-le glisser hors du cadre : l’étiquette indique « Pas dans la vidéo », et l’éditeur place la caméra dans son coin habituel.</string>
 	<key>To hide one, click it on the timeline and press ⌫.</key>
@@ -8570,6 +8958,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Hauteur des pistes</string>
 	<key>Track height (above the track names): Small, Medium, or Large. A window shorter than about 1000 points starts with Small tracks and a taller timeline, until you choose.</key>
 	<string>Hauteur des pistes (au-dessus des noms) : Petite, Moyenne ou Grande. Une fenêtre de moins de 1000 points de haut environ commence avec de petites pistes et une timeline plus haute, jusqu’à ce que vous choisissiez.</string>
+	<key>Track name</key>
+	<string>Nom de la piste</string>
 	<key>Track options</key>
 	<string>Options de la piste</string>
 	<key>Track where I type</key>
@@ -8614,6 +9004,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Transcription</string>
 	<key>Transcript and captions removed — ⌘Z to undo</key>
 	<string>Transcription et sous-titres supprimés — ⌘Z pour annuler</string>
+	<key>Transform</key>
+	<string>Transformation</string>
 	<key>Transition in</key>
 	<string>Transition d’entrée</string>
 	<key>Transitions</key>
@@ -8634,6 +9026,10 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Ramener le début du clip à la tête de lecture (Q)</string>
 	<key>Trim the screenshot to just the part that matters.</key>
 	<string>Rognez la capture pour ne garder que l’essentiel.</string>
+	<key>Trim tool</key>
+	<string>Outil Raccord</string>
+	<key>Trim tool: drag a clip to slide it, ⌥-drag a video above the main track to slip it, drag a cut to roll. A goes back to Select.</key>
+	<string>Outil Raccord : faites glisser un clip pour un glissement, ⌥-glissez une vidéo au-dessus de la piste principale pour un défilement, faites glisser une coupe pour un roulement. A revient à Sélection.</string>
 	<key>Trim toolbars, the menu bar, or empty space off the edges of the recording.</key>
 	<string>Retirez des bords de l’enregistrement les barres d’outils, la barre des menus ou l’espace vide.</string>
 	<key>Trimmed to my edit</key>
@@ -8692,12 +9088,14 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Activez Caméra dans la barre d’enregistrement. macOS le demande une fois : cliquez sur Autoriser.</string>
 	<key>Turn on Camera. A bubble with your face appears; it's recorded separately, so you can move and restyle it later.</key>
 	<string>Activez Caméra. Une bulle avec votre visage apparaît ; elle est enregistrée à part, vous pourrez donc la déplacer et changer son style plus tard.</string>
-	<key>Turn on Camera. A preview of your camera appears, in the Camera shape chosen above the bar.</key>
-	<string>Activez Caméra. Un aperçu de votre caméra apparaît, dans la Forme de la caméra choisie au-dessus de la barre.</string>
+	<key>Turn on Camera. A preview of your camera appears, in the Camera shape chosen under Area.</key>
+	<string>Activez Caméra. Un aperçu de votre caméra apparaît, dans la Forme de la caméra choisie sous Zone.</string>
 	<key>Turn on Intro card or Outro card.</key>
 	<string>Activez Carton d’intro ou Carton de fin.</string>
 	<key>Turn on Keep face centered. LF Studios looks for your face once, with progress and Cancel.</key>
 	<string>Activez Garder le visage centré. LF Studios recherche votre visage une fois, avec une barre de progression et Annuler.</string>
+	<key>Turn on Loop playback (⌘L), then press Space.</key>
+	<string>Activez Lecture en boucle (⌘L), puis appuyez sur Espace.</string>
 	<key>Turn on Lower under your voice in the music's settings first</key>
 	<string>Activez d’abord Baisser sous votre voix dans les réglages de la musique</string>
 	<key>Turn on Microphone in the recording bar. macOS asks once: click Allow.</key>
@@ -8710,6 +9108,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Activez la caméra dans la barre d’enregistrement avant d’enregistrer : votre visage apparaîtra ici dans une bulle que vous pourrez placer, redimensionner et personnaliser.</string>
 	<key>Turn on the microphone or system audio before recording to capture sound.</key>
 	<string>Activez le micro ou le son de l’ordinateur avant l’enregistrement pour capturer le son.</string>
+	<key>Turn on the microphone or the camera for their options.</key>
+	<string>Activez le micro ou la caméra pour voir leurs options.</string>
 	<key>Turn shaky mouse moves into calm, smooth glides.</key>
 	<string>Transformez les mouvements de souris saccadés en glissements calmes et fluides.</string>
 	<key>Turn text with the round knob above it; hold ⇧ for steps of 15°.</key>
@@ -8918,6 +9318,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Annuler le repli de la piste</string>
 	<key>Undo Compound Clip</key>
 	<string>Annuler le clip composé</string>
+	<key>Undo Copy Clip</key>
+	<string>Annuler la copie du clip</string>
 	<key>Undo Cover</key>
 	<string>Annuler la couverture</string>
 	<key>Undo Crop</key>
@@ -8954,6 +9356,10 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Annuler la suppression des clips</string>
 	<key>Undo Delete Folder</key>
 	<string>Annuler la suppression du dossier</string>
+	<key>Undo Delete Gap</key>
+	<string>Annuler la suppression de l’espace</string>
+	<key>Undo Delete Gaps</key>
+	<string>Annuler la suppression des espaces</string>
 	<key>Undo Delete Highlight</key>
 	<string>Annuler la suppression du surlignage</string>
 	<key>Undo Delete Image</key>
@@ -8974,6 +9380,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Annuler la détection des battements</string>
 	<key>Undo Duck Music</key>
 	<string>Annuler Baisser la musique</string>
+	<key>Undo Duplicate</key>
+	<string>Annuler la duplication</string>
 	<key>Undo Edit Caption</key>
 	<string>Annuler la modification du sous-titre</string>
 	<key>Undo Edit Text</key>
@@ -9086,6 +9494,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Annuler la normalisation du volume sonore</string>
 	<key>Undo Paste</key>
 	<string>Annuler le collage</string>
+	<key>Undo Paste Attributes</key>
+	<string>Annuler le collage des attributs</string>
 	<key>Undo Podcast Mode Off</key>
 	<string>Annuler la désactivation du mode podcast</string>
 	<key>Undo Podcast Mode On</key>
@@ -9126,6 +9536,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Annuler le changement de nom du marqueur</string>
 	<key>Undo Rename Media</key>
 	<string>Annuler le changement de nom du média</string>
+	<key>Undo Rename Track</key>
+	<string>Annuler le changement de nom de la piste</string>
 	<key>Undo Reorder Effects</key>
 	<string>Annuler Réordonner les effets</string>
 	<key>Undo Replace Camera Video</key>
@@ -9154,6 +9566,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Annuler l’inversion</string>
 	<key>Undo Revert Agent Changes</key>
 	<string>Annuler l’annulation des modifications de l’agent</string>
+	<key>Undo Roll</key>
+	<string>Annuler le roulement</string>
 	<key>Undo Rotate</key>
 	<string>Annuler la rotation</string>
 	<key>Undo Shortcut Style</key>
@@ -9166,8 +9580,12 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Annuler le raccourcissement des pauses</string>
 	<key>Undo Show Track</key>
 	<string>Annuler l’affichage de la piste</string>
+	<key>Undo Slide</key>
+	<string>Annuler le glissement</string>
 	<key>Undo Slip Clip</key>
 	<string>Annuler le défilement du clip</string>
+	<key>Undo Solo</key>
+	<string>Annuler le solo</string>
 	<key>Undo Sound Change</key>
 	<string>Annuler la modification du son</string>
 	<key>Undo Speed</key>
@@ -9242,6 +9660,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Annuler le rétablissement du son de la piste</string>
 	<key>Undo Unmute Video</key>
 	<string>Annuler le rétablissement du son de la vidéo</string>
+	<key>Undo Unsolo</key>
+	<string>Annuler l’annulation du solo</string>
 	<key>Undo Zoom Change</key>
 	<string>Annuler la modification du zoom</string>
 	<key>Undo Zoom Cut</key>
@@ -9278,6 +9698,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Réactiver le son de l’aperçu (M)</string>
 	<key>Unmute “%@”</key>
 	<string>Rétablir le son de « %@ »</string>
+	<key>Unsolo %@</key>
+	<string>Retirer %@ du solo</string>
 	<key>Untick All</key>
 	<string>Tout décocher</string>
 	<key>Untick the ones to keep. ▶ plays each one with the words around it.</key>
@@ -9420,6 +9842,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Volume ◆ place une image clé de volume à la tête de lecture.</string>
 	<key>Volume, and Lower under your voice.</key>
 	<string>Volume, et Baisser sous votre voix.</string>
+	<key>Volume, mute and sound fades</key>
+	<string>Volume, son coupé et fondus sonores</string>
 	<key>WOW!</key>
 	<string>WAOUH !</string>
 	<key>Wait for it…</key>
@@ -9502,12 +9926,14 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Quand un agent a fini, voyez ce qu’il a changé et gardez-le, ou revenez au projet d’avant.</string>
 	<key>When it's done, click Keep, or Revert All to go back to how the video was before the request.</key>
 	<string>Quand il a terminé, cliquez sur Garder, ou sur Tout annuler pour revenir à la vidéo d’avant la demande.</string>
-	<key>When recording a window: the Window size menu in the row above the recording bar.</key>
-	<string>Pour l’enregistrement d’une fenêtre : le menu Taille de la fenêtre, dans la rangée au-dessus de la barre d’enregistrement.</string>
+	<key>When recording a window: Area in the recording bar ▸ Window size.</key>
+	<string>Pour enregistrer une fenêtre : Zone dans la barre d’enregistrement ▸ Taille de la fenêtre.</string>
 	<key>When the agent is done, its changes are marked on the timeline in orange.</key>
 	<string>Quand l’agent a fini, ses modifications sont marquées en orange sur la timeline.</string>
 	<key>When the text has links, email addresses, or a table, LF Studios offers more ways to use it.</key>
 	<string>Quand le texte contient des liens, des adresses e-mail ou un tableau, LF Studios propose d’autres façons de l’utiliser.</string>
+	<key>When the tracks don't all fit, scroll up and down over the tracks or their names, or drag the scroll bar on the right. The ruler stays put; each name moves with its track.</key>
+	<string>Quand toutes les pistes ne tiennent pas, faites défiler vers le haut ou le bas sur les pistes ou leurs noms, ou faites glisser la barre de défilement à droite. La règle reste en place ; chaque nom suit sa piste.</string>
 	<key>When they're ready, Edit with Proxies turns on.</key>
 	<string>Quand ils sont prêts, Monter avec les proxys s’active.</string>
 	<key>When you export, keep Burn captions into the video on, or save a subtitles file.</key>
@@ -9584,6 +10010,10 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Fenêtre fermée</string>
 	<key>Window size</key>
 	<string>Taille de la fenêtre</string>
+	<key>Window size, when recording a window.</key>
+	<string>Taille de la fenêtre, quand vous enregistrez une fenêtre.</string>
+	<key>Window · %@</key>
+	<string>Fenêtre · %@</string>
 	<key>Window, Full screen, and Select area manually: record another way instead.</key>
 	<string>Fenêtre, Plein écran et Sélectionner une zone manuellement : enregistrer autrement.</string>
 	<key>Windows in front of it don't get in the way: only the window you click is captured.</key>
@@ -9592,6 +10022,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Balayage</string>
 	<key>With Camera on and Layout ▸ Split screen, the frame is the screen's part of the video, and the camera's part shows beside it.</key>
 	<string>Avec Caméra activée et Disposition ▸ Écran partagé, le cadre est la partie écran de la vidéo, et la partie caméra s’affiche à côté.</string>
+	<key>With In and Out marked (I and O), it loops that part.</key>
+	<string>Avec une entrée et une sortie marquées (I et O), elle boucle ce passage.</string>
 	<key>With a clip above the main track selected, + puts an effect, filter or adjustment on that clip.</key>
 	<string>Avec un clip au-dessus de la piste principale sélectionné, + applique un effet, un filtre ou un ajustement à ce clip.</string>
 	<key>With a transcript, you can also cut by deleting words: Captions ▸ Edit by text.</key>
@@ -9600,6 +10032,10 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Avec plusieurs écrans, cliquez sur Enregistrer à côté de celui que vous voulez.</string>
 	<key>With the LF Studios project, the folder opens the whole edit again. Clips cut to your edit need the untouched recordings alongside.</key>
 	<string>Avec le projet LF Studios, le dossier rouvre tout le montage. Les clips coupés selon votre montage ont besoin des enregistrements intacts à côté.</string>
+	<key>With the pointer away from the timeline, or Preview axis off, zooming and splitting use the red playhead. If the playhead is out of view, zooming brings it to the middle.</key>
+	<string>Avec le pointeur hors de la timeline, ou l’Axe d’aperçu désactivé, le zoom et la scission utilisent la tête de lecture rouge. Si elle n’est pas visible, le zoom l’amène au milieu.</string>
+	<key>With the pointer over the timeline, pinch, ⌘-scroll, and ⌘+ or ⌘− keep the skimmer's moment where it is on screen.</key>
+	<string>Avec le pointeur sur la timeline, le pincement, ⌘-défilement, et ⌘+ ou ⌘− gardent l’instant du skimmer à sa place à l’écran.</string>
 	<key>Wobble</key>
 	<string>Ondulation</string>
 	<key>Word box</key>
@@ -9610,6 +10046,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Fonctionne mieux avec Enregistrer quand des touches sont pressées activé pendant l’enregistrement. Pour les anciens enregistrements, LF Studios devine d’après l’écran et vous le signale.</string>
 	<key>Works with Auto-zoom on clicks.</key>
 	<string>Fonctionne avec Zoom auto sur les clics.</string>
+	<key>Workspace ID</key>
+	<string>ID d’espace de travail</string>
 	<key>Wow!</key>
 	<string>Waouh !</string>
 	<key>Writable</key>
@@ -9734,6 +10172,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Zoom %@</string>
 	<key>Zoom Level</key>
 	<string>Niveau de zoom</string>
+	<key>Zoom and ⌘B keep to the skimmer, else the playhead</key>
+	<string>Le zoom et ⌘B suivent le skimmer, sinon la tête de lecture</string>
 	<key>Zoom cut</key>
 	<string>Coupe zoom</string>
 	<key>Zoom cut (⌥Z) punches in here at a cut. Or click ◆, move the playhead and change the zoom.</key>
@@ -9746,8 +10186,6 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Zoom avant</string>
 	<key>Zoom in / out</key>
 	<string>Zoom avant / arrière</string>
-	<key>Zoom in at the pointer</key>
-	<string>Zoomer sur le pointeur</string>
 	<key>Zoom in on part of the video so details are easy to see.</key>
 	<string>Zoomez sur une partie de la vidéo pour que les détails soient faciles à voir.</string>
 	<key>Zoom in so viewers can see the details.</key>
@@ -9782,6 +10220,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Zoom supprimé — ⌘Z pour annuler</string>
 	<key>Zoom the player</key>
 	<string>Zoomer le lecteur</string>
+	<key>Zoom the timeline</key>
+	<string>Zoomer dans la timeline</string>
 	<key>Zoom to %@ (key %@)</key>
 	<string>Zoomer à %@ (touche %@)</string>
 	<key>Zoom to fit</key>
@@ -9792,8 +10232,6 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Zooms</string>
 	<key>Zooms &amp; annotations</key>
 	<string>Zooms et annotations</string>
-	<key>Zooms and annotations can be duplicated</key>
-	<string>Seuls les zooms et les annotations peuvent être dupliqués</string>
 	<key>Zooms that follow the text cursor while you type</key>
 	<string>Des zooms qui suivent le curseur de texte pendant la saisie</string>
 	<key>Zooms that follow your text cursor while you type, so viewers can read along.</key>
@@ -9912,8 +10350,8 @@ Vous pouvez réactiver les raccourcis d’Apple à tout moment dans Réglages Sy
 	<string>le sélectionner</string>
 	<key>so good</key>
 	<string>trop bien</string>
-	<key>split at the playhead</key>
-	<string>scinder à la tête de lecture</string>
+	<key>split at the skimmer or the playhead</key>
+	<string>scinder au skimmer ou à la tête de lecture</string>
 	<key>step through the timeline</key>
 	<string>parcourir la timeline</string>
 	<key>sys+mic</key>
@@ -9942,8 +10380,10 @@ Vous pouvez réactiver les raccourcis d’Apple à tout moment dans Réglages Sy
 	<string>jusqu’à %@ Go/min</string>
 	<key>up to %@ MB/min</key>
 	<string>jusqu’à %@ Mo/min</string>
-	<key>zoom the timeline</key>
-	<string>zoomer dans la timeline</string>
+	<key>wrkspc_…</key>
+	<string>wrkspc_…</string>
+	<key>zoom around the skimmer</key>
+	<string>zoomer autour du skimmer</string>
 	<key>© 2026 Bright Life Creations</key>
 	<string>© 2026 Bright Life Creations</string>
 	<key>© 2026 Shotnix Contributors</key>
@@ -9972,6 +10412,8 @@ Vous pouvez réactiver les raccourcis d’Apple à tout moment dans Réglages Sy
 	<string>« %1$@ » trouvé dans %2$lld sur %3$lld captures</string>
 	<key>“%@” has no sound</key>
 	<string>« %@ » n’a pas de son</string>
+	<key>“%@” in the Library</key>
+	<string>« %@ » dans la Bibliothèque</string>
 	<key>“%@” is a clip on its own track now</key>
 	<string>« %@ » est maintenant un clip sur sa propre piste</string>
 	<key>“%@” is already there</key>
@@ -10000,8 +10442,8 @@ Vous pouvez réactiver les raccourcis d’Apple à tout moment dans Réglages Sy
 	<string>« %@ » a été enregistré par une version plus récente de LF Studios. Mettez LF Studios à jour pour l’ouvrir.</string>
 	<key>“%@” — drag onto the timeline, or double-click to add it at the playhead</key>
 	<string>« %@ » — faites-le glisser sur la timeline, ou double-cliquez pour l’ajouter à la tête de lecture</string>
-	<key>“%@” — drag to move it in time or to another track, drag an end to trim, ⌥-drag a video to slip it</key>
-	<string>« %@ » — faites glisser pour le déplacer dans le temps ou vers une autre piste, un bord pour le raccourcir, ⌥-glisser fait défiler une vidéo</string>
+	<key>“%@” — drag to move it in time or to another track, ⌥-drag to copy it, drag an end to trim. Trim tool (T): drag to slide it, ⌥-drag a video to slip it</key>
+	<string>« %@ » — faites glisser pour le déplacer dans le temps ou vers une autre piste, ⌥-glissez pour le copier, faites glisser une extrémité pour le raccourcir. Outil Raccord (T) : faites glisser pour un glissement, ⌥-glissez une vidéo pour un défilement</string>
 	<key>“%@” — drag to move, drag an edge to trim, click to change it in Audio</key>
 	<string>« %@ » — faites glisser pour déplacer, faites glisser un bord pour ajuster, cliquez pour modifier dans Audio</string>
 	<key>“Made with LF Studios” end card (2s)</key>
@@ -10012,8 +10454,12 @@ Vous pouvez réactiver les raccourcis d’Apple à tout moment dans Réglages Sy
 	<string>« Simple, c’est mieux »</string>
 	<key>“Skipping frames”: your Mac can't keep up. Try Balanced quality or 30 fps.</key>
 	<string>« Images sautées » : votre Mac n’arrive pas à suivre. Essayez la qualité Équilibrée ou 30 fps.</string>
+	<key>• %@</key>
+	<string>• %@</string>
 	<key>• Timeline pictures and waveforms — %@ (made again when a video opens)</key>
 	<string>• Images et formes d’onde de la timeline — %@ (recréées à l’ouverture d’une vidéo)</string>
+	<key>›</key>
+	<string>›</string>
 	<key>⇧-drag</key>
 	<string>⇧-glisser</string>
 	<key>⇧-drag on the timeline to select a part first.</key>
@@ -10040,6 +10486,8 @@ Vous pouvez réactiver les raccourcis d’Apple à tout moment dans Réglages Sy
 	<string>⌘-clic ou ⇧-clic pour en sélectionner plusieurs ; les touches fléchées déplacent la sélection.</string>
 	<key>⌘-scroll</key>
 	<string>⌘-défiler</string>
+	<key>⌘B and ⇧⌘B split at the skimmer. The playhead stays where it is.</key>
+	<string>⌘B et ⇧⌘B scindent au skimmer. La tête de lecture reste où elle est.</string>
 	<key>⌥-drag</key>
 	<string>Glisser avec ⌥</string>
 	<key>⌥T still adds a text note pinned over the video, as before.</key>

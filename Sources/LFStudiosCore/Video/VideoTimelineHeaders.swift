@@ -16,6 +16,58 @@ final class VideoTimelineScrollOffsets: ObservableObject {
     }
 }
 
+/// The lanes' scroll bar up and down (1.21.0): it shows whenever the
+/// tracks don't all fit, so a short timeline says there's more below. Drag
+/// it, scroll anywhere over the lanes or the track headers, or click above
+/// or below the thumb for a page.
+struct VideoTimelineVerticalScrollbar: View {
+    @ObservedObject var offsets: VideoTimelineScrollOffsets
+    let contentHeight: CGFloat
+    let viewportHeight: CGFloat
+    let scroller: VideoTimelineScroller
+    @State private var dragStart: CGFloat?
+    /// How many show now (tests).
+    static var shown = 0
+
+    private var range: CGFloat { max(contentHeight - viewportHeight, 1) }
+    private var thumb: CGFloat { min(max(viewportHeight * viewportHeight / max(contentHeight, 1), 24), viewportHeight) }
+    private var travel: CGFloat { max(viewportHeight - thumb - 4, 1) }
+
+    var body: some View {
+        let top = 2 + travel * min(max(offsets.y / range, 0), 1)
+        ZStack(alignment: .top) {
+            Color.clear
+                .contentShape(Rectangle())
+                .onTapGesture(coordinateSpace: .local) { location in
+                    scroller.scroll(toY: offsets.y + (location.y < top ? -viewportHeight : viewportHeight))
+                }
+            Capsule()
+                .fill(VideoEditorTheme.textTertiary.opacity(0.75))
+                .frame(width: 6, height: thumb)
+                .offset(y: top)
+                .gesture(
+                    DragGesture(minimumDistance: 0)
+                        .onChanged { value in
+                            if dragStart == nil { dragStart = offsets.y }
+                            scroller.scroll(toY: (dragStart ?? 0) + value.translation.height * range / travel)
+                        }
+                        .onEnded { _ in dragStart = nil }
+                )
+        }
+        .frame(width: 12, height: viewportHeight, alignment: .top)
+        .background(VideoEditorTheme.panel.opacity(0.55))
+        .help(L("Scroll to see every track"))
+        .accessibilityElement()
+        .accessibilityLabel(L("Tracks"))
+        .accessibilityValue(VideoEditorFormat.percent(Double(min(max(offsets.y / range, 0), 1))))
+        .accessibilityAdjustableAction { direction in
+            scroller.scroll(toY: offsets.y + (direction == .increment ? 40 : -40))
+        }
+        .onAppear { Self.shown += 1 }
+        .onDisappear { Self.shown -= 1 }
+    }
+}
+
 /// The ruler strip, moved with the lanes.
 struct VideoTimelineRulerStrip<Content: View>: View {
     @ObservedObject var offsets: VideoTimelineScrollOffsets
@@ -96,6 +148,9 @@ struct VideoTimelineTrackHeaders: View {
 struct VideoTrackHeader: View {
     @ObservedObject var model: VideoEditorModel
     let row: VideoTimelineRowLayout.Row
+    /// Renaming (double-click the name, 1.21.0).
+    @State private var draft: String?
+    @FocusState private var nameFocused: Bool
 
     private var curveOpen: Bool {
         guard VideoEditorStyle.current.isNew, case .layer(let id) = row.track, row.showsContent else { return false }
@@ -128,12 +183,25 @@ struct VideoTrackHeader: View {
                 .font(.system(size: 10.5, weight: .semibold))
                 .foregroundStyle(VideoEditorTheme.textSecondary)
                 .frame(width: 16)
-            Text(title)
-                .font(.system(size: 11, weight: .semibold))
-                .foregroundStyle(row.isEmpty ? VideoEditorTheme.textTertiary : VideoEditorTheme.textPrimary)
-                .lineLimit(1)
-                .truncationMode(.tail)
-                .help(title)
+            if let current = draft {
+                TextField(track.usualTitle(in: model.project), text: Binding(get: { current }, set: { draft = $0 }))
+                    .textFieldStyle(.plain)
+                    .font(.system(size: 11, weight: .semibold))
+                    .focused($nameFocused)
+                    .onSubmit { commitName() }
+                    .onExitCommand { draft = nil }
+                    .onChange(of: nameFocused) { focused in if !focused { commitName() } }
+                    .accessibilityLabel(L("Track name"))
+            } else {
+                Text(title)
+                    .font(.system(size: 11, weight: .semibold))
+                    .foregroundStyle(row.isEmpty ? VideoEditorTheme.textTertiary : VideoEditorTheme.textPrimary)
+                    .lineLimit(1)
+                    .truncationMode(.tail)
+                    .help(L("\(title) — double-click to rename"))
+                    .onTapGesture(count: 2) { startRenaming() }
+                    .accessibilityAction(named: L("Rename Track")) { startRenaming() }
+            }
             Spacer(minLength: 2)
             // LF Studios layout: the keyframe curve lane under this track.
             if VideoEditorStyle.current.isNew, case .layer(let id) = track, row.showsContent {
@@ -145,6 +213,11 @@ struct VideoTrackHeader: View {
                 headerButton(state.hidden ? "eye.slash" : "eye", on: state.hidden,
                              help: state.hidden ? L("Show “\(title)” in the video") : L("Hide “\(title)” in the preview and the export"),
                              label: state.hidden ? L("Show \(title)") : L("Hide \(title)")) { model.toggleTrackHidden(track) }
+            }
+            if track.canSolo {
+                headerButton("headphones", on: state.solo, // l10n-ignore: a symbol name
+                             help: state.solo ? L("Stop soloing “\(title)”") : L("Solo “\(title)”: hear only soloed tracks while editing (the export keeps every track)"),
+                             label: state.solo ? L("Unsolo \(title)") : L("Solo \(title)")) { model.perform(.basics(.solo(track))) }
             }
             if track.canMute {
                 headerButton(state.muted ? "speaker.slash" : "speaker.wave.2", on: state.muted,
@@ -171,6 +244,19 @@ struct VideoTrackHeader: View {
         .background(VideoEditorTheme.ink.opacity(row.isEmpty ? 0.015 : 0.03))
         .accessibilityElement(children: .contain)
         .accessibilityLabel(title)
+    }
+
+    private func startRenaming() {
+        draft = model.project.trackStates[row.track.key]?.name ?? row.track.title(in: model.project)
+        DispatchQueue.main.async { nameFocused = true }
+    }
+
+    private func commitName() {
+        guard let name = draft else { return }
+        draft = nil
+        // The usual name typed back in: just the usual name again.
+        let usual = row.track.usualTitle(in: model.project)
+        model.perform(.basics(.renameTrack(row.track, name == usual ? "" : name)))
     }
 
     private func headerButton(_ symbol: String, on: Bool, help: String, label: String, action: @escaping () -> Void) -> some View {

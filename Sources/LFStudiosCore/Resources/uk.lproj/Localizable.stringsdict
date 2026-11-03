@@ -242,6 +242,26 @@
 			<string>%lld кліпу</string>
 		</dict>
 	</dict>
+	<key>%lld clips selected</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>few</key>
+			<string>Вибрано %lld кліпи</string>
+			<key>many</key>
+			<string>Вибрано %lld кліпів</string>
+			<key>one</key>
+			<string>Вибрано %lld кліп</string>
+			<key>other</key>
+			<string>Вибрано %lld кліпа</string>
+		</dict>
+	</dict>
 	<key>%lld cuts here (%@ removed) — click to restore some or all</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -702,6 +722,26 @@
 			<string>Усі знімки буде переміщено в кошик LF Studios і остаточно видалено через %lld дня.</string>
 		</dict>
 	</dict>
+	<key>Attributes pasted onto %lld clips</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>few</key>
+			<string>Атрибути вставлено в %lld кліпи</string>
+			<key>many</key>
+			<string>Атрибути вставлено в %lld кліпів</string>
+			<key>one</key>
+			<string>Атрибути вставлено в %lld кліп</string>
+			<key>other</key>
+			<string>Атрибути вставлено в %lld кліпа</string>
+		</dict>
+	</dict>
 	<key>Auto zoom — %lld zooms</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -780,6 +820,26 @@
 			<string>Субтитри готові — %lld рядок</string>
 			<key>other</key>
 			<string>Субтитри готові — %lld рядка</string>
+		</dict>
+	</dict>
+	<key>Copied %lld clips</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>few</key>
+			<string>Скопійовано %lld кліпи</string>
+			<key>many</key>
+			<string>Скопійовано %lld кліпів</string>
+			<key>one</key>
+			<string>Скопійовано %lld кліп</string>
+			<key>other</key>
+			<string>Скопійовано %lld кліпа</string>
 		</dict>
 	</dict>
 	<key>Create proxies for %lld videos?</key>
@@ -862,6 +922,26 @@
 			<string>Видалені знімки з кошика історії та файли, яких не використовує жоден знімок, буде вилучено назавжди, а разом із ними — %lld знімка понад обмеження історії. Решта історії залишиться.</string>
 		</dict>
 	</dict>
+	<key>Duplicated %lld clips</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>few</key>
+			<string>Продубльовано %lld кліпи</string>
+			<key>many</key>
+			<string>Продубльовано %lld кліпів</string>
+			<key>one</key>
+			<string>Продубльовано %lld кліп</string>
+			<key>other</key>
+			<string>Продубльовано %lld кліпа</string>
+		</dict>
+	</dict>
 	<key>Exported %lld presets</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -920,6 +1000,26 @@
 			<string>Звільнено %1$@ (%2$lld файл)</string>
 			<key>other</key>
 			<string>Звільнено %1$@ (%2$lld файлу)</string>
+		</dict>
+	</dict>
+	<key>From the copied clip onto %lld selected. Tick what to paste.</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>few</key>
+			<string>Зі скопійованого кліпу в %lld вибрані. Позначте, що вставити.</string>
+			<key>many</key>
+			<string>Зі скопійованого кліпу в %lld вибраних. Позначте, що вставити.</string>
+			<key>one</key>
+			<string>Зі скопійованого кліпу у %lld вибраний. Позначте, що вставити.</string>
+			<key>other</key>
+			<string>Зі скопійованого кліпу в %lld вибраного. Позначте, що вставити.</string>
 		</dict>
 	</dict>
 	<key>History uses %@ (%lld captures)</key>

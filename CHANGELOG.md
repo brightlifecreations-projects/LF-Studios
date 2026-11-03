@@ -1,5 +1,32 @@
 # Changelog
 
+## [1.21.0]
+
+### Added
+- **Select clips with a box:** drag over empty space on the timeline to select every clip the box touches. Hold ⇧ to add to what's selected, ⌘ to select or deselect each one.
+- **Delete gaps:** right-click the empty space between clips on a track above the main track (or a sound track you added) ▸ **Delete Gap**, or **Timeline ▸ Delete Gaps After Playhead**.
+- **Duplicate:** ⌘D puts a copy of the selection right after itself; ⌥-drag a clip above the main track to drop a copy where you want it. (The main track's clips are the recording itself, so they aren't duplicated; copy a part to a track above instead.)
+- **Paste Attributes… (⇧⌘V):** copy a clip with ⌘C, select others, and tick what to give them: Effects, Filters, Adjust, Speed, Volume, Transform or Animation.
+- **Roll and slide:** drag the cut between two clips to roll it (both change, no gap). The new **Trim tool (T)** slides a clip between its neighbours, and ⌥-drag slips a video above the main track (this was ⌥-drag before; ⌥-drag now copies). A label at the pointer says Ripple, Roll, Slide or Slip.
+- **Loop playback (⌘L):** plays the In/Out range, else the selected clip, else the whole video, over and over.
+- **Solo:** the headphones on a track's header; while any track is soloed, only those are heard in the editor. The export always has every track.
+- **Rename tracks:** double-click a track's name.
+- **Audio meters:** the levels button next to the time under the player shows left and right levels while it plays (off to start with), green, yellow and red, with the loudest moment held for a second.
+- **Safe zones and grid:** a menu under the player with Title safe, Action safe, Rule of thirds, Centre lines, and for 9:16 videos the areas TikTok, Instagram Reels and YouTube Shorts cover with their buttons. Over the player only, never in the export.
+- **Reveal in Library (⇧F)** selects a clip's file in Library ▸ Media; **Match Frame** opens the clip's source at the same frame.
+- **Settings ▸ AI ▸ Anthropic ▸ Workspace ID**, for a Claude key that works in every workspace (sent as `anthropic-workspace-id`). When Anthropic asks which workspace to use, the Assistant says how to fix it.
+- The AI Assistant and AI agents connected over MCP can do all of these edits too (each is one ⌘Z step).
+- Guide pages for each of them, and the keyboard shortcuts page lists the new keys.
+
+### Changed
+- **The recording bar is one row.** Everything that sat in the two rows above it (the frame's shapes and size, Fit a window to the frame, Window, Full screen, Select area manually, Window size, the microphone menu, and the camera's shape, size and layout) is now under **Area**, the first button in the bar. It shows what you're recording, like *Area · 960 × 1080*, *Full screen* or *Window · Safari*. Esc or a click outside closes it.
+- **The skimmer.** With the pointer over the timeline (and Preview axis on), zooming keeps the moment under the pointer in place, and **⌘B** and **⇧⌘B** split there. Away from the timeline, both use the playhead, and zooming brings a playhead that's out of view to the middle.
+- **A short timeline scrolls up and down** to every track (Camera, Keys, Music…), over the tracks or their names, with a scroll bar that shows whenever they don't all fit. The ruler stays put; each name moves with its track. Both layouts, docked or floating.
+- **⇧-drag** on empty timeline space now adds clips to the selection; to mark a part to cut, ⇧-drag across the clips or along the ruler.
+
+### Compatibility
+- A project with a soloed or renamed track needs 1.21.0 or later; older versions say it needs a newer version. Other projects are saved as before, and every project exports exactly as in 1.20.0: Solo, Loop playback, the meters and the guides never change the export.
+
 ## [1.20.0] - 2026-11-03
 
 ### Added

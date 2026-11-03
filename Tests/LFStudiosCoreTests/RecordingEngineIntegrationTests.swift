@@ -664,8 +664,7 @@ final class RecordingEngineIntegrationTests: XCTestCase {
         capture.recordingFinishedHandler = { finished = $0.url }
         await capture.startAreaRecording()
         let setup = try XCTUnwrap(capture.frameSetupForTesting, "New recording shows the frame bar")
-        XCTAssertTrue(setup.strip.isVisible)
-        XCTAssertTrue(setup.bar.childWindows?.contains(setup.strip) == true, "the strip moves with the bar")
+        XCTAssertNotNil(setup.bar.frameStripModel, "the frame's controls are in the Area popover")
         XCTAssertFalse(setup.frame.windows.isEmpty)
         XCTAssertTrue(RecordingStopHotkey.isRegistered, "⌃⌘Esc cancels the frame from any app")
 
@@ -674,7 +673,7 @@ final class RecordingEngineIntegrationTests: XCTestCase {
         frame.setRatio(RecordingFrameRatio(1, 1))
         frame.setPixels(RecordingFrameGeometry.Pixels(width: Int(400 * scale), height: Int(400 * scale)))
         frame.move(to: CGPoint(x: frame.screen.frame.midX - 200, y: frame.screen.frame.midY - 200), snapping: false)
-        let block = setup.bar.visibleBarFrame.union(setup.strip.frame)
+        let block = setup.bar.visibleBarFrame
         XCTAssertFalse(block.intersects(frame.rect), "the bars keep clear of the frame")
         let green = greenWindow(around: frame.rect)
         defer { green.orderOut(nil) }
@@ -685,7 +684,6 @@ final class RecordingEngineIntegrationTests: XCTestCase {
         let returnKey = try XCTUnwrap(NSEvent.keyEvent(with: .keyDown, location: .zero, modifierFlags: [], timestamp: 0, windowNumber: 0, context: nil, characters: "\r", charactersIgnoringModifiers: "\r", isARepeat: false, keyCode: 36))
         XCTAssertTrue(frame.handleKey(returnKey))
         XCTAssertTrue(frame.windows.isEmpty, "the frame is gone before recording starts")
-        XCTAssertFalse(setup.strip.isVisible)
         XCTAssertFalse(setup.bar.isVisible)
         XCTAssertNil(capture.frameSetupForTesting)
 

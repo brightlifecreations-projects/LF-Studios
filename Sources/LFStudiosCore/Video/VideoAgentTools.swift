@@ -168,7 +168,77 @@ enum VideoAgentTools {
         return id
     }
 
-    static var all: [VideoAgentTool] { readTools + sessionTools + commandTools + parameterTools + wholeVideoTools + tackTools }
+    static var all: [VideoAgentTool] { readTools + sessionTools + commandTools + parameterTools + basicsTools + wholeVideoTools + tackTools }
+
+    /// A track by what get_timeline calls it: "main", "music", or a track
+    /// id (a track above the main track, or an added sound).
+    private static func track(_ model: VideoEditorModel, _ args: VideoAgentJSON) throws -> VideoTimelineTrack {
+        guard let raw = args["track"]?.string else { throw VideoAgentToolError.forAgent("track is needed: main, music, or a track id from get_timeline") }
+        switch raw.lowercased() {
+        case "main": return .clips
+        case "music": return .music
+        default: break
+        }
+        guard let id = UUID(uuidString: raw) else { throw VideoAgentToolError.forAgent("track is main, music, or a track id from get_timeline: \(raw)") }
+        if model.project.layerTracks.contains(where: { $0.id == id }) { return .layer(id) }
+        if model.project.audioTracks.contains(where: { $0.id == id }) { return .sound(id) }
+        throw VideoAgentToolError.forAgent("No track with id \(raw)")
+    }
+
+    // MARK: 1.21.0's editor basics
+
+    static var basicsTools: [VideoAgentTool] {
+        let track = text("main, music, or a track id from get_timeline (a track above the main track, or an added sound).")
+        return [
+            VideoAgentTool(name: "delete_gap", description: "Close the empty stretch at `time` on a track above the main track or an added sound track: what comes after it moves back.", properties: ["track": track, "time": number("A moment inside the gap (timeline seconds).")], required: ["track", "time"]) { model, args, dryRun in
+                let which = try self.track(model, args)
+                guard let time = args["time"]?.double else { throw VideoAgentToolError.forAgent("time is needed") }
+                return try edit(model, .object([:]), dryRun: dryRun, tool: "delete_gap") { model.perform(.basics(.deleteGap(track: which, time: time))) }
+            },
+            VideoAgentTool(name: "paste_attributes", description: "Copy attributes from one clip onto others (like Paste Attributes): effects, filters, adjust, speed, volume, transform, animation. Main-track clips take only speed, volume and transform.", properties: [
+                "from_id": text("The clip or item to copy from (get_timeline)."),
+                "to_ids": .object(["type": .string("array"), "items": .object(["type": .string("string")]), "description": .string("The clips or items to paste onto.")]),
+                "attributes": .object(["type": .string("array"), "items": .object(["type": .string("string"), "enum": .array(VideoClipAttribute.allCases.map { .string($0.rawValue) })]), "description": .string("What to paste.")]),
+            ], required: ["from_id", "to_ids", "attributes"]) { model, args, dryRun in
+                guard let from = try uuid(args, "from_id") else { throw VideoAgentToolError.forAgent("from_id is needed") }
+                let targets = try (args["to_ids"]?.array ?? []).map { value -> VideoEditorModel.Selection in
+                    guard let raw = value.string, let id = UUID(uuidString: raw) else { throw VideoAgentToolError.forAgent("to_ids are ids from get_timeline") }
+                    if model.project.layerItem(id) != nil { return .layer(id) }
+                    if model.project.timelineClips.contains(where: { $0.id == id }) { return .clip(id) }
+                    throw VideoAgentToolError.forAgent("No clip with id \(raw)")
+                }
+                let attributes = Set((args["attributes"]?.array ?? []).compactMap { $0.string.flatMap(VideoClipAttribute.init(rawValue:)) })
+                guard !targets.isEmpty, !attributes.isEmpty else { throw VideoAgentToolError.forAgent("to_ids and attributes are needed") }
+                if let item = model.project.layerItem(from) {
+                    model.copiedAttributes = VideoCopiedAttributes(layer: item)
+                } else if let clip = model.project.timelineClips.first(where: { $0.id == from }) {
+                    model.copiedAttributes = VideoCopiedAttributes(clip: clip)
+                } else {
+                    throw VideoAgentToolError.forAgent("No clip with id \(from.uuidString)")
+                }
+                model.selection = targets[0]
+                model.extraSelection = Array(targets.dropFirst())
+                return try edit(model, .object([:]), dryRun: dryRun, tool: "paste_attributes") { model.perform(.basics(.pasteAttributes(attributes))) }
+            },
+            VideoAgentTool(name: "roll_cut", description: "Roll the cut at the end of a clip by `by` seconds (+ later, − earlier): this clip and the next one both change; the video keeps its length. Main track, or two touching clips above it.", properties: ["clip_id": text("The clip before the cut (get_timeline)."), "by": number("Seconds.")], required: ["clip_id", "by"]) { model, args, dryRun in
+                guard let id = try uuid(args, "clip_id"), let by = args["by"]?.double else { throw VideoAgentToolError.forAgent("clip_id and by are needed") }
+                return try edit(model, .object([:]), dryRun: dryRun, tool: "roll_cut") { model.perform(.basics(.roll(clip: id, by: by))) }
+            },
+            VideoAgentTool(name: "slide_clip", description: "Slide a clip by `by` seconds between its neighbours: it keeps its frames; the clip before gets longer and the one after shorter (or the other way).", properties: ["clip_id": text("The clip (get_timeline)."), "by": number("Seconds (+ later, − earlier).")], required: ["clip_id", "by"]) { model, args, dryRun in
+                guard let id = try uuid(args, "clip_id"), let by = args["by"]?.double else { throw VideoAgentToolError.forAgent("clip_id and by are needed") }
+                return try edit(model, .object([:]), dryRun: dryRun, tool: "slide_clip") { model.perform(.basics(.slide(clip: id, by: by))) }
+            },
+            VideoAgentTool(name: "solo_track", description: "Solo a track on or off: while any track is soloed only soloed tracks are heard in the editor. The export always has every track.", properties: ["track": track], required: ["track"]) { model, args, dryRun in
+                let which = try self.track(model, args)
+                return try edit(model, .object([:]), dryRun: dryRun, tool: "solo_track") { model.perform(.basics(.solo(which))) }
+            },
+            VideoAgentTool(name: "rename_track", description: "Give a track its own name (an empty name goes back to the usual one).", properties: ["track": track, "name": text("The name.")], required: ["track", "name"]) { model, args, dryRun in
+                let which = try self.track(model, args)
+                let name = args["name"]?.string ?? ""
+                return try edit(model, .object([:]), dryRun: dryRun, tool: "rename_track") { model.perform(.basics(.renameTrack(which, name))) }
+            },
+        ]
+    }
 
     // MARK: Read
 
@@ -425,6 +495,7 @@ enum VideoAgentTools {
         .split, .splitAllTracks, .deleteLeft, .deleteRight, .delete, .addMarker, .freezeFrame, .reverse, .mirror, .rotate,
         .toggleEnabled, .group, .ungroup, .extractAudio, .markIn, .markOut, .addText, .addArrow, .addHighlight, .addBlur,
         .addKeyframe, .addTextClip, .makeCompound, .breakApart, .zoomCut,
+        .duplicate, .deleteGapsAfterPlayhead, .toggleLoopPlayback, .revealInLibrary, .matchFrame,
     ]
 
     static func toolName(_ command: VideoEditCommand) -> String {

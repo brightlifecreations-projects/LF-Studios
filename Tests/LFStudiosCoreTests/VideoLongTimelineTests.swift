@@ -94,6 +94,118 @@ final class VideoLongTimelineTests: XCTestCase {
         }
     }
 
+    /// 1.21.0: with the pointer over the timeline (the skimmer), zooming
+    /// keeps the skimmer's moment where it is on screen. Away from the
+    /// timeline, or with the preview axis off, the playhead; a playhead out
+    /// of view is brought into the middle.
+    func testZoomKeepsTheSkimmerMomentFixed() async throws {
+        let previewAxis = Settings.videoTimelinePreviewAxis
+        defer { Settings.videoTimelinePreviewAxis = previewAxis }
+        try await forEachEditorStyle { _ in
+            Settings.videoTimelinePreviewAxis = true
+            let model = try await T.make(in: directory, T.Options(seconds: 10, pointer: false))
+            model.seek(to: 7)
+            await mount(model)
+            let scroll = try horizontalScrollView()
+            model.zoomTimeline(by: 4)
+            await T.settle(0.3)
+            // The skimmer at 6.2 s, wherever it is on screen now.
+            model.timelinePointerTime = 6.2
+            let before = 18 + 6.2 * 400 - scroll.contentView.bounds.minX
+            for factor in [2.0, 1.5, 1 / 3.0] {
+                model.zoomTimeline(by: factor)
+                await T.settle(0.3)
+                let perSecond = 1000 * model.timelineZoom / 10
+                let after = 18 + 6.2 * perSecond - scroll.contentView.bounds.minX
+                XCTAssertEqual(after, before, accuracy: 2, "×\(factor): the skimmer's moment stays under it")
+            }
+
+            // The pointer leaves: the playhead stays put instead.
+            model.timelinePointerTime = nil
+            let playheadBefore = 18 + 7 * 1000 * model.timelineZoom / 10 - scroll.contentView.bounds.minX
+            model.zoomTimeline(by: 2)
+            await T.settle(0.3)
+            let playheadAfter = 18 + 7 * 1000 * model.timelineZoom / 10 - scroll.contentView.bounds.minX
+            XCTAssertEqual(playheadAfter, playheadBefore, accuracy: 2, "the playhead stays put")
+
+            // The preview axis off: the pointer over the timeline doesn't count.
+            Settings.videoTimelinePreviewAxis = false
+            model.timelinePointerTime = 2
+            let offBefore = 18 + 7 * 1000 * model.timelineZoom / 10 - scroll.contentView.bounds.minX
+            model.zoomTimeline(by: 1.4)
+            await T.settle(0.3)
+            let offAfter = 18 + 7 * 1000 * model.timelineZoom / 10 - scroll.contentView.bounds.minX
+            XCTAssertEqual(offAfter, offBefore, accuracy: 2, "preview axis off: the playhead")
+            model.timelinePointerTime = nil
+
+            // The playhead out of view: zooming brings it into the middle.
+            scroll.contentView.scroll(to: .zero)
+            scroll.reflectScrolledClipView(scroll.contentView)
+            XCTAssertGreaterThan(18 + 7 * 1000 * model.timelineZoom / 10, scroll.contentView.bounds.maxX, "off to the right")
+            model.zoomTimeline(by: 1.2)
+            await T.settle(0.3)
+            let shown = 18 + 7 * 1000 * model.timelineZoom / 10 - scroll.contentView.bounds.minX
+            XCTAssertEqual(shown, scroll.contentView.bounds.width / 2, accuracy: 2, "in the middle of the timeline")
+        }
+    }
+
+    /// 1.21.0: at the timeline panel's smallest height (150 pt, docked or
+    /// floating: the same view), every track can be reached by scrolling.
+    /// The ruler stays put, the headers move with their lanes, scrolling
+    /// over the headers works too, and a scroll bar shows.
+    func testVerticalScrollReachesTheLastTrackAtTheSmallestHeight() async throws {
+        try await forEachEditorStyle { style in
+            var options = T.Options(seconds: 10, audio: true, pointer: true)
+            options.keystrokes = [VideoKeystrokeEvent(time: 1, keys: ["⌘", "S"]), VideoKeystrokeEvent(time: 4, keys: ["⌘", "C"])]
+            let model = try await T.make(in: directory, options)
+            model.mutate { $0.captions = [VideoCaptionLine(start: 1, end: 3, text: "Hello")] }
+            let picture = directory.appendingPathComponent("p.png")
+            try VideoInspection.writePNG(to: picture, size: CGSize(width: 160, height: 90), color: .green)
+            _ = await model.addLayerItem(from: picture, at: 2)
+            let window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: Self.size.width, height: 150), styleMask: [.borderless], backing: .buffered, defer: false)
+            window.contentView = Host(rootView: AnyView(VideoTimelineView(model: model).frame(width: Self.size.width, height: 150)))
+            window.setFrameOrigin(NSPoint(x: 40, y: 200))
+            window.orderFrontRegardless()
+            self.window = window
+            await T.settle(0.4)
+
+            func all(_ view: NSView) -> [NSScrollView] {
+                ((view as? NSScrollView).map { [$0] } ?? []) + view.subviews.flatMap { all($0) }
+            }
+            let root = try XCTUnwrap(window.contentView)
+            let outer = try XCTUnwrap(all(root).first { ($0.documentView?.frame.height ?? 0) > $0.contentView.bounds.height + 20 }, "\(style): the tracks are taller than the panel")
+            let document = try XCTUnwrap(outer.documentView)
+            let tracks = VideoTimelineRowLayout(project: model.project, hasCamera: model.hasWebcamFootage, curves: [], sound: model.timelineSoundRows)
+            XCTAssertGreaterThanOrEqual(tracks.rows.count, 6, "\(style): \(tracks.rows.map(\.track.key))")
+            XCTAssertGreaterThanOrEqual(document.frame.height + 0.5, tracks.height, "\(style): every track is in the scrolling area")
+
+            // A scroll bar shows (the system's only shows while scrolling).
+            XCTAssertGreaterThan(VideoTimelineVerticalScrollbar.shown, 0, "\(style): the tracks' scroll bar shows")
+
+            // Scrolling over the track headers moves the lanes down.
+            let header = NSPoint(x: VideoTimelineMetrics.headerWidth / 2, y: 30)
+            let wheel = try XCTUnwrap(CGEvent(scrollWheelEvent2Source: nil, units: .pixel, wheelCount: 1, wheel1: -400, wheel2: 0, wheel3: 0))
+            let event = try XCTUnwrap(NSEvent(cgEvent: wheel))
+            let scroller = try XCTUnwrap(VideoTimelineScroller.latest)
+            XCTAssertTrue(scroller.handleScroll(event, in: window, at: header), "\(style): a scroll over the headers is used")
+            XCTAssertFalse(scroller.handleScroll(event, in: window, at: NSPoint(x: VideoTimelineMetrics.headerWidth + 200, y: 30)), "\(style): over the lanes they scroll themselves")
+            await T.settle(0.3)
+            let visible = outer.contentView.bounds
+            let fromTop = document.isFlipped ? visible.minY : document.frame.height - visible.maxY
+            XCTAssertGreaterThan(fromTop, 20, "\(style): the wheel over the headers scrolled")
+            // To the bottom: the last track is on screen.
+            let last = try XCTUnwrap(tracks.rows.last)
+            outer.contentView.scroll(to: NSPoint(x: 0, y: document.isFlipped ? document.frame.height : 0))
+            outer.reflectScrolledClipView(outer.contentView)
+            await T.settle(0.3)
+            let bottom = outer.contentView.bounds
+            let bottomFromTop = document.isFlipped ? bottom.minY : document.frame.height - bottom.maxY
+            XCTAssertLessThanOrEqual(last.top + last.height, bottomFromTop + bottom.height + 1, "\(style): the last track (\(last.track.key)) can be reached")
+            window.orderOut(nil)
+            self.window = nil
+        }
+    }
+
     func testPlaybackPagesAlongUntilYouScroll() async throws {
         // Both layouts (1.17.0).
         try await forEachEditorStyle { _ in

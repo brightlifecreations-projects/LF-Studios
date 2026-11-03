@@ -103,6 +103,7 @@ struct VideoTimelineToolbar: View {
                 HStack(spacing: 2) {
                     command(.selectTool)
                     command(.splitTool)
+                    command(.trimTool)
                 }
                 .padding(2)
                 .background(RoundedRectangle(cornerRadius: 8, style: .continuous).fill(VideoEditorTheme.ink.opacity(0.05)))
@@ -224,6 +225,8 @@ struct VideoTimelineSurface: View {
 
     /// Held, not observed: hovering redraws only the hover layer.
     @State private var hover = VideoTimelineHover()
+    /// A box dragged over empty space (1.21.0).
+    @State private var box = VideoTimelineBox()
     @State private var zoomDrag: (id: UUID, start: Double, end: Double)?
     @State private var overlayDrag: (id: UUID, start: Double, end: Double, layer: Int)?
     /// Where the dragged object was when the drag began. SwiftUI hands each
@@ -324,13 +327,20 @@ struct VideoTimelineSurface: View {
                 rulerStrip
                     .frame(height: M.rulerHeight)
                 Rectangle().fill(VideoEditorTheme.hairline).frame(height: 1)
-                // Up and down outside, across inside (as before 1.11.0).
-                ScrollView(.vertical, showsIndicators: height > lanesViewport.height + 0.5) {
+                // Up and down outside, across inside (as before 1.11.0). The
+                // tracks that don't fit get a scroll bar that always shows
+                // (1.21.0; the system's shows only while scrolling).
+                ScrollView(.vertical, showsIndicators: false) {
                     VStack(spacing: 0) {
                         ScrollView(.horizontal, showsIndicators: model.timelineZoom > 1.01) {
                             lanes(rows: rows, height: height)
                         }
                         .frame(height: height)
+                    }
+                }
+                .overlay(alignment: .topTrailing) {
+                    if height > lanesViewport.height + 0.5 {
+                        VideoTimelineVerticalScrollbar(offsets: offsets, contentHeight: height, viewportHeight: lanesViewport.height, scroller: scroller)
                     }
                 }
             }
@@ -344,6 +354,7 @@ struct VideoTimelineSurface: View {
             }
         }
         .onAppear {
+            VideoTimelineBox.latest = box
             scroller.pointsPerSecond = pointsPerSecond
             scroller.offsets = offsets
             model.timelineViewportWidth = max(lanesViewport.width - M.inset * 2, 100)
@@ -404,10 +415,12 @@ struct VideoTimelineSurface: View {
                 .onDrop(of: [.fileURL, .plainText], delegate: VideoMediaDrop(model: model) { location in
                     (max(geometry.time(location.x), 0), Self.dropTarget(atY: location.y, rows: rows, project: model.project))
                 })
-            // Scrub anywhere that isn't an object.
+            // Empty space (1.21.0): a click moves the playhead, a drag
+            // selects the clips in a box, a right-click closes gaps.
             Color.clear
                 .contentShape(Rectangle())
-                .gesture(scrubGesture)
+                .gesture(emptySpaceGesture)
+                .contextMenu { emptySpaceMenu }
             VideoTimelineRowBackgrounds(rows: rows, width: contentWidth + M.inset * 2, locked: Set(rows.rows.filter { model.project.isTrackLocked($0.track) }.map(\.track)))
 
             trackLook(.zooms) { zoomTrack }
@@ -544,6 +557,7 @@ struct VideoTimelineSurface: View {
             VideoTimelinePlayhead(clock: model.clock, x: { x($0) }, height: height, showsKnob: false)
             // The split tool (B): a click splits what's under it there.
             VideoSplitToolLayer(model: model, rows: rows, time: { time($0) })
+            VideoTimelineBoxView(box: box)
             VideoTimelinePlayheadFollower(clock: model.clock, model: model, scroller: scroller, x: { x($0) })
         }
         .frame(width: contentWidth + M.inset * 2, height: height, alignment: .topLeading)
@@ -552,11 +566,15 @@ struct VideoTimelineSurface: View {
             switch phase {
             case .active(let location):
                 hover.update(time: time(location.x), overZoomTrack: location.y >= zoomTop && location.y <= zoomTop + M.zoomTrackHeight)
+                model.timelinePointerTime = time(location.x)
+                model.timelinePointerY = location.y
                 scroller.pointerIsOver(true)
                 // The preview axis (S): the player shows what's under the pointer.
                 if !hover.dragging { model.previewAxis(at: time(location.x)) }
             case .ended:
                 hover.update(time: nil, overZoomTrack: false)
+                model.timelinePointerTime = nil
+                model.timelinePointerY = nil
                 scroller.pointerIsOver(false)
                 model.previewAxis(at: nil)
             }
@@ -565,12 +583,52 @@ struct VideoTimelineSurface: View {
             MagnificationGesture()
                 .onChanged { value in
                     if pinchBase == nil { pinchBase = model.timelineZoom }
-                    // Pinching zooms around the pointer.
-                    if let time = hover.time { model.pendingZoomAnchor = (time, x(time) - scroller.visible.minX) }
+                    // Pinching zooms around the skimmer, else the playhead.
                     model.timelineZoom = min(max((pinchBase ?? 1) * value, 1), model.maxTimelineZoom)
                 }
                 .onEnded { _ in pinchBase = nil }
         )
+    }
+
+    /// A drag over empty space selects what the box touches (⇧ adds, ⌘
+    /// toggles); a click moves the playhead there, as before.
+    private var emptySpaceGesture: some Gesture {
+        DragGesture(minimumDistance: 0)
+            .onChanged { value in
+                let moved = hypot(value.translation.width, value.translation.height) > 4
+                guard box.rect != nil || moved else { return }
+                if box.rect == nil {
+                    model.pause()
+                    hover.setDragging(true)
+                }
+                box.rect = CGRect(x: min(value.startLocation.x, value.location.x), y: min(value.startLocation.y, value.location.y),
+                                  width: abs(value.translation.width), height: abs(value.translation.height))
+            }
+            .onEnded { value in
+                if let rect = box.rect {
+                    let tracks = Set(rows.rows.filter { $0.top < rect.maxY && $0.top + $0.height > rect.minY }.map(\.track))
+                    model.boxSelect(model.clips(from: time(rect.minX), to: time(rect.maxX), on: tracks), mode: .fromModifiers)
+                    box.rect = nil
+                    hover.setDragging(false)
+                } else {
+                    if model.selection != .none, !isRangeSelection, !VideoEditorModel.extendsSelection { model.selection = .none }
+                    model.seek(to: time(value.location.x), fast: false)
+                }
+            }
+    }
+
+    /// Right-click on empty space: close the gap there, or every gap
+    /// after the playhead.
+    @ViewBuilder
+    private var emptySpaceMenu: some View {
+        let at = model.timelinePointerTime ?? model.clock.time
+        let track = model.timelinePointerY.flatMap { y in rows.rows.first { y >= $0.top && y < $0.top + $0.height + VideoTimelineRowLayout.separator }?.track }
+        let gap = track.flatMap { model.gap(on: $0, at: at) }
+        Button(gap.map { L("Delete Gap (\(VideoEditorModel.format($0.length)))") } ?? L("Delete Gap")) {
+            if let gap { model.perform(.basics(.deleteGap(track: gap.track, time: at))) }
+        }
+        .disabled(gap == nil)
+        Button(L("Delete Gaps After Playhead")) { model.perform(.deleteGapsAfterPlayhead) }
     }
 
     private var scrubGesture: some Gesture {
@@ -882,6 +940,11 @@ struct VideoTimelineSurface: View {
                 .equatable()
                 .offset(x: x(segment.timelineStart) + 1)
             }
+            // Roll (1.21.0): drag a cut; the clips on both sides change.
+            ForEach(Array(model.segments.dropLast().enumerated()), id: \.element.id) { _, segment in
+                VideoRollHandle(model: model, hover: hover, clip: segment.id, cut: segment.timelineEnd, pointsPerSecond: pointsPerSecond, height: M.clipTrackHeight)
+                    .offset(x: x(segment.timelineEnd) - VideoRollHandle.width / 2)
+            }
 
             if case .range(let range) = model.selection {
                 RoundedRectangle(cornerRadius: 8, style: .continuous)
@@ -1187,7 +1250,10 @@ struct VideoTimelineClipView: View, Equatable {
             }
         }
         .contentShape(Rectangle())
-        .onHover { hovered = $0 }
+        .onHover { inside in
+            hovered = inside
+            hover.setTrim(inside && model.timelineTool == .trim ? .slide : nil)
+        }
         .gesture(scrubGesture)
         .contextMenu { clipMenu }
         .accessibilityElement(children: .ignore)
@@ -1241,11 +1307,25 @@ struct VideoTimelineClipView: View, Equatable {
         min(max(segment.timelineStart + Double(localX / pointsPerSecond), 0), model.timelineDuration)
     }
 
+    @State private var slideOrigin: Double?
+
     /// Drag scrubs; ⇧-drag marks a range to delete; a click selects (⇧- or
-    /// ⌘-click adds the clip to the selection, or takes it out).
+    /// ⌘-click adds the clip to the selection, or takes it out). With the
+    /// Trim tool (1.21.0), a drag slides the clip between its neighbours.
     private var scrubGesture: some Gesture {
         DragGesture(minimumDistance: 0)
             .onChanged { value in
+                if slideOrigin != nil || (model.timelineTool == .trim && abs(value.translation.width) > 2) {
+                    if slideOrigin == nil {
+                        slideOrigin = segment.timelineStart
+                        model.pause()
+                        model.selectClip(segment.id)
+                    }
+                    let current = model.segments.first { $0.id == segment.id }?.timelineStart ?? segment.timelineStart
+                    let target = (slideOrigin ?? 0) + Double(value.translation.width / pointsPerSecond)
+                    model.slide(clip: segment.id, by: target - current, coalesce: true)
+                    return
+                }
                 let time = timelineTime(value.location.x)
                 if NSEvent.modifierFlags.contains(.shift) || rangeAnchor != nil {
                     // Not a range until it moves: a ⇧-click picks the clip.
@@ -1259,6 +1339,11 @@ struct VideoTimelineClipView: View, Equatable {
                 }
             }
             .onEnded { value in
+                if slideOrigin != nil {
+                    slideOrigin = nil
+                    model.endRollOrSlide()
+                    return
+                }
                 if rangeAnchor == nil {
                     if abs(value.translation.width) < 3, VideoEditorModel.extendsSelection {
                         model.toggleSelection(.clip(segment.id))
@@ -1285,7 +1370,10 @@ struct VideoTimelineClipView: View, Equatable {
         }
         .frame(width: 14, height: M.clipTrackHeight)
         .contentShape(Rectangle())
-        .onHover { inside in (inside ? NSCursor.resizeLeftRight : NSCursor.arrow).set() }
+        .onHover { inside in
+            (inside ? NSCursor.resizeLeftRight : NSCursor.arrow).set()
+            hover.setTrim(inside ? .ripple : nil)
+        }
         .highPriorityGesture(
             // Global space: the trailing handle moves with the pointer.
             DragGesture(minimumDistance: 0, coordinateSpace: .global)
@@ -1540,5 +1628,61 @@ private struct PlayheadKnob: Shape {
         path.addQuadCurve(to: CGPoint(x: rect.minX + r, y: rect.minY), control: CGPoint(x: rect.minX, y: rect.minY))
         path.closeSubpath()
         return path
+    }
+}
+
+// MARK: - Roll (1.21.0)
+
+/// Over a cut between two clips that touch: dragging it moves the cut,
+/// changing both clips and nothing else (the video keeps its length).
+struct VideoRollHandle: View {
+    static let width: CGFloat = 10
+    let model: VideoEditorModel
+    let hover: VideoTimelineHover
+    /// The clip before the cut.
+    let clip: UUID
+    let cut: Double
+    let pointsPerSecond: CGFloat
+    let height: CGFloat
+    @State private var origin: Double?
+
+    private func currentCut() -> Double? {
+        if let item = model.project.layerItem(clip) { return item.end }
+        return model.segments.first { $0.id == clip }?.timelineEnd
+    }
+
+    var body: some View {
+        Rectangle()
+            .fill(Color.yellow.opacity(origin == nil ? 0.001 : 0.9))
+            .frame(width: origin == nil ? Self.width : 2, height: height)
+            .frame(width: Self.width, height: height)
+            .contentShape(Rectangle())
+            .onHover { inside in
+                (inside ? NSCursor.resizeLeftRight : NSCursor.arrow).set()
+                hover.setTrim(inside ? .roll : nil)
+            }
+            .highPriorityGesture(
+                DragGesture(minimumDistance: 1, coordinateSpace: .global)
+                    .onChanged { value in
+                        if origin == nil {
+                            origin = cut
+                            model.pause()
+                        }
+                        guard let origin, let now = currentCut() else { return }
+                        let target = origin + Double(value.translation.width / pointsPerSecond)
+                        model.roll(clip: clip, by: target - now, coalesce: true)
+                    }
+                    .onEnded { _ in
+                        origin = nil
+                        model.endRollOrSlide()
+                    }
+            )
+            .help(L("Drag to roll this cut: the clips on both sides change, with no gap"))
+            .accessibilityElement()
+            .accessibilityLabel(L("Cut at \(VideoEditorModel.timecode(cut))"))
+            .accessibilityAdjustableAction { direction in
+                model.roll(clip: clip, by: direction == .increment ? 1.0 / 30 : -1.0 / 30)
+                model.endRollOrSlide()
+            }
     }
 }

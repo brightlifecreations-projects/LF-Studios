@@ -58,7 +58,8 @@ struct VideoProjectDocument: Codable {
     /// version.
     /// 6: Tacks (1.19.1), written only by projects that have some.
     /// 7: an AI chat (1.20.0), the same way.
-    static let currentVersion = 7
+    /// 8: a soloed or renamed track (1.21.0), the same way.
+    static let currentVersion = 8
     /// LF Studios Project. New projects, Creative Handoffs and recording
     /// folders write it (since 1.12.0; `.lfsp` from 1.9.0).
     static let fileExtension = "lfs"
@@ -72,10 +73,11 @@ struct VideoProjectDocument: Codable {
     static let firstVersionOpeningFormat5 = "1.18.0"
     static let firstVersionOpeningFormat6 = "1.19.1"
     static let firstVersionOpeningFormat7 = "1.20.0"
+    static let firstVersionOpeningFormat8 = "1.21.0"
 
     /// What README.txt says opens `project`.
     static func firstVersionOpening(_ project: VideoDemoProject) -> String {
-        project.needsFormat7 ? firstVersionOpeningFormat7 : project.needsFormat6 ? firstVersionOpeningFormat6 : project.needsFormat5 ? firstVersionOpeningFormat5 : project.needsFormat4 ? firstVersionOpeningFormat4 : project.needsLayerFormat ? firstVersionOpeningLayers : firstVersionOpeningFileExtension
+        project.needsFormat8 ? firstVersionOpeningFormat8 : project.needsFormat7 ? firstVersionOpeningFormat7 : project.needsFormat6 ? firstVersionOpeningFormat6 : project.needsFormat5 ? firstVersionOpeningFormat5 : project.needsFormat4 ? firstVersionOpeningFormat4 : project.needsLayerFormat ? firstVersionOpeningLayers : firstVersionOpeningFileExtension
     }
     static let manifestName = "project.json"
     static let mediaFolder = "Media"
@@ -155,7 +157,7 @@ struct VideoProjectDocument: Codable {
         // What only 1.14.0 and later can show goes under its own name.
         if project.needsFormat4, format == Self.format {
             self.format = Self.format4
-            self.version = max(version ?? 4, project.needsFormat7 ? 7 : project.needsFormat6 ? 6 : project.needsFormat5 ? 5 : 4)
+            self.version = max(version ?? 4, project.needsFormat8 ? 8 : project.needsFormat7 ? 7 : project.needsFormat6 ? 6 : project.needsFormat5 ? 5 : 4)
         } else {
             self.format = project.needsLayerFormat && format == Self.format ? Self.layersFormat : format
             self.version = project.needsLayerFormat ? max(version ?? 3, 3) : version ?? (mediaMode == .folder ? 2 : 1)

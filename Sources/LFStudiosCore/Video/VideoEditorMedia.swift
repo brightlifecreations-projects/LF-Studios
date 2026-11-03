@@ -170,7 +170,13 @@ final class VideoEditorMedia {
 
 extension VideoEditorModel {
     /// Everything the player's edit carries besides the cuts.
+    /// The project as heard in the editor: soloed tracks only, while some
+    /// are (1.21.0). The export uses the project itself.
+    var listeningProject: VideoDemoProject { project.forListening(sound: timelineSoundRows) }
+    var playbackAudio: VideoAudioSettings { listeningProject.audio }
+
     var editExtras: VideoEditExtras {
+        let project = listeningProject
         var extras = VideoEditExtras()
         extras.tail = project.timelineTail
         extras.layout = project.hasAppendedSources ? media.layout : nil
@@ -307,7 +313,7 @@ extension VideoEditorModel {
     /// Re-applies the edit to the player (music, clicks, recordings loaded).
     func refreshPlayback() {
         guard isReady else { return }
-        if let moved = playback.apply(segments: segments, audio: project.audio, keepSourceTime: sourceTime(forTimeline: clock.time), extras: editExtras), !isPlaying {
+        if let moved = playback.apply(segments: segments, audio: playbackAudio, keepSourceTime: sourceTime(forTimeline: clock.time), extras: editExtras), !isPlaying {
             clock.time = moved
         }
         previewRenderer.invalidate()

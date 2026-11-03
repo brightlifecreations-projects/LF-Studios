@@ -796,55 +796,10 @@ final class RecordingFrameStripModel: ObservableObject {
     }
 }
 
-/// The strip above the recording bar: the frame's ratio and size, fitting
-/// a window to it, and the other ways to record.
-@MainActor
-final class RecordingFrameStripWindow: NSPanel {
-    static let height: CGFloat = 80
-    static let gap: CGFloat = 6
-
-    let model: RecordingFrameStripModel
-    /// Esc, arrows and Return when the strip has focus.
-    var keyHandler: ((NSEvent) -> Bool)?
-
-    init(model: RecordingFrameStripModel, width: CGFloat) {
-        self.model = model
-        super.init(contentRect: NSRect(x: 0, y: 0, width: width, height: Self.height), styleMask: [.borderless, .nonactivatingPanel], backing: .buffered, defer: false)
-        appearance = AppAppearance.overlay
-        isOpaque = false
-        backgroundColor = .clear
-        hasShadow = true
-        hidesOnDeactivate = false
-        isReleasedWhenClosed = false
-        becomesKeyOnlyIfNeeded = false
-        level = .floating
-        collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary, .stationary, .ignoresCycle]
-        sharingType = .none
-        let hosting = NSHostingView(rootView: RecordingFrameStripView(model: model))
-        hosting.frame = NSRect(x: 0, y: 0, width: width, height: Self.height)
-        hosting.autoresizingMask = [.width, .height]
-        let container = RecordingFrameStripContainer(frame: hosting.frame)
-        container.addSubview(hosting)
-        contentView = container
-        setAccessibilityLabel(L("Frame"))
-    }
-
-    override var canBecomeKey: Bool { true }
-    override var canBecomeMain: Bool { false }
-
-    override func keyDown(with event: NSEvent) {
-        if keyHandler?(event) != true { super.keyDown(with: event) }
-    }
-}
-
-/// Dragging the strip's background drags the recording bar it sits on.
-private final class RecordingFrameStripContainer: NSView {
-    override func mouseDown(with event: NSEvent) {
-        if let parent = window?.parent { parent.performDrag(with: event) } else { super.mouseDown(with: event) }
-    }
-}
-
-private struct RecordingFrameStripView: View {
+/// The top of the recording bar's Area popover (1.21.0; a strip above the
+/// bar before): the frame's ratio and size, fitting a window to it, and the
+/// other ways to record.
+struct RecordingFrameStripView: View {
     @ObservedObject var model: RecordingFrameStripModel
     @State private var showsCustom = false
     @State private var customText = ""
@@ -853,11 +808,6 @@ private struct RecordingFrameStripView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack(spacing: 4) {
-                Image(systemName: "line.3.horizontal")
-                    .font(.system(size: 11, weight: .semibold))
-                    .foregroundStyle(.white.opacity(0.4))
-                    .frame(width: 18)
-                    .help(L("Drag to move the bars"))
                 ForEach(RecordingFrameRatio.presets, id: \.label) { preset in
                     ratioButton(preset.label, selected: model.ratio == preset.ratio) {
                         model.chooseRatio(preset.ratio)
@@ -877,7 +827,6 @@ private struct RecordingFrameStripView: View {
                 sizeMenu
             }
             HStack(spacing: 6) {
-                Spacer().frame(width: 18)
                 actionButton(L("Fit a window to the frame…"), symbol: "macwindow.badge.plus", action: model.fitWindow)
                     .help(L("Resizes a window of another app to exactly the frame, so it fills the recording"))
                 Spacer(minLength: 8)
@@ -889,14 +838,7 @@ private struct RecordingFrameStripView: View {
                     .help(L("Drag out any area instead, of any shape"))
             }
         }
-        .padding(.horizontal, 10)
-        .padding(.vertical, 9)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-        .background(
-            RoundedRectangle(cornerRadius: 14, style: .continuous)
-                .fill(Color(nsColor: NSColor(white: 0.1, alpha: 0.92)))
-                .overlay(RoundedRectangle(cornerRadius: 14, style: .continuous).strokeBorder(.white.opacity(0.08)))
-        )
         .environment(\.colorScheme, .dark)
     }
 

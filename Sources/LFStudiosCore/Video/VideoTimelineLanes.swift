@@ -11,6 +11,12 @@ final class VideoTimelineHover: ObservableObject {
     @Published private(set) var dragging = false
     /// Where a dragged edge snapped (a guide line shows it).
     @Published private(set) var snapTime: Double?
+    /// What dragging under the pointer does (1.21.0): shown beside it.
+    @Published private(set) var trimKind: VideoTrimKind?
+
+    func setTrim(_ kind: VideoTrimKind?) {
+        if trimKind != kind { trimKind = kind }
+    }
 
     func update(time: Double?, overZoomTrack: Bool) {
         if self.time != time { self.time = time }
@@ -24,6 +30,30 @@ final class VideoTimelineHover: ObservableObject {
 
     func setSnap(_ time: Double?) {
         if snapTime != time { snapTime = time }
+    }
+}
+
+/// A box being dragged over empty space (1.21.0).
+@MainActor
+final class VideoTimelineBox: ObservableObject {
+    @Published var rect: CGRect?
+    /// The timeline last shown (screenshots).
+    static weak var latest: VideoTimelineBox?
+}
+
+struct VideoTimelineBoxView: View {
+    @ObservedObject var box: VideoTimelineBox
+
+    var body: some View {
+        if let rect = box.rect {
+            Rectangle()
+                .fill(Color.accentColor.opacity(0.12))
+                .overlay(Rectangle().strokeBorder(Color.accentColor.opacity(0.9), lineWidth: 1))
+                .frame(width: max(rect.width, 1), height: max(rect.height, 1))
+                .offset(x: rect.minX, y: rect.minY)
+                .allowsHitTesting(false)
+                .accessibilityHidden(true)
+        }
     }
 }
 
@@ -122,6 +152,17 @@ struct VideoTimelineHoverLayer: View {
             if let time = hover.time, !hover.dragging {
                 if hover.overZoomTrack { zoomGhost(at: time) }
                 ghostPlayhead(time)
+            }
+            if let time = hover.time, let kind = hover.trimKind {
+                // Ripple, Roll, Slide or Slip, beside the pointer.
+                Text(kind.title)
+                    .font(.system(size: 10, weight: .bold))
+                    .foregroundStyle(.black)
+                    .padding(.horizontal, 6)
+                    .frame(height: 17)
+                    .background(Capsule().fill(Color.yellow))
+                    .fixedSize()
+                    .offset(x: geometry.x(time) + 10, y: 22)
             }
             if hover.dragging, let snap = hover.snapTime {
                 // A dragged edge landed on something.

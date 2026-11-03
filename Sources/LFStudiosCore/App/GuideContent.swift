@@ -15,7 +15,7 @@ import Foundation
 @MainActor
 enum GuideContent {
     /// Pages from these versions get a New badge and fill What's new.
-    nonisolated static let newVersions: [String] = ["1.20.0", "1.19.1", "1.19.0", "1.18.0", "1.17.0", "1.16.0", "1.15.0", "1.14.0", "1.13.0", "1.12.0", "1.11.1", "1.11.0", "1.10.0", "1.9.0", "1.8.0", "1.7.0"]
+    nonisolated static let newVersions: [String] = ["1.21.0", "1.20.0", "1.19.1", "1.19.0", "1.18.0", "1.17.0", "1.16.0", "1.15.0", "1.14.0", "1.13.0", "1.12.0", "1.11.1", "1.11.0", "1.10.0", "1.9.0", "1.8.0", "1.7.0"]
 
     static func chapters() -> [GuideChapter] {
         let features = featureCategories()
@@ -150,7 +150,7 @@ enum GuideContent {
                 id: "first-recording", symbol: "record.circle", title: L("Your first recording, edit, and export"),
                 summary: L("Record a short demo, tidy it up, and save it as a video."),
                 steps: [
-                    L("Click New recording in Home. A frame appears: choose a shape above the recording bar, like 16:9, and drag the frame's border to what you want to record."),
+                    L("Click New recording in Home. A frame appears: click Area in the recording bar to choose a shape, like 16:9, and drag the frame's border to what you want to record."),
                     L("In the recording bar, turn on Microphone (and Camera, if you like), then click Record or press Return."),
                     L("Do your demo. When you're done, click the red stop button or press ⌃⌘Esc."),
                     L("Click Edit Video in the “Recording saved” panel. The video editor opens."),
@@ -223,8 +223,8 @@ enum GuideContent {
                 id: "howto-record", symbol: "person.wave.2", title: L("Record my screen with my voice and camera"),
                 summary: L("Record a demo with your voice and your face in a bubble."),
                 steps: [
-                    L("Click New recording in Home. Choose a shape for the frame (16:9 for YouTube, 9:16 for Reels) and drag its border into place. For a window or the whole screen, click Window or Full screen above the recording bar."),
-                    L("In the recording bar, turn on Microphone. To pick a different microphone, use the menu that appears above the bar."),
+                    L("Click New recording in Home. Click Area in the recording bar, choose a shape for the frame (16:9 for YouTube, 9:16 for Reels), and drag its border into place. For a window or the whole screen, click Window or Full screen under Area."),
+                    L("In the recording bar, turn on Microphone. To pick a different microphone, click Area and use the Microphone menu."),
                     L("Turn on Camera. A bubble with your face appears; it's recorded separately, so you can move and restyle it later."),
                     L("Click Record, or press Return."),
                     L("When you're done, click the red stop button or press ⌃⌘Esc."),
@@ -371,7 +371,7 @@ enum GuideContent {
                 summary: L("Make your recording exactly 1920 × 1080 (or another size) without guessing."),
                 steps: [
                     L("Open the LF Studios menu in the menu bar and choose Record Window, then pick the window."),
-                    L("In the row above the recording bar, open Window size and choose a size."),
+                    L("Click Area in the recording bar, open Window size and choose a size."),
                     L("LF Studios resizes and centers the window. Click Record."),
                     L("Afterwards, click Restore size to put the window back."),
                 ],
@@ -1125,14 +1125,14 @@ enum GuideContent {
                 summary: L("Record just part of the screen, in the exact shape and size you choose."),
                 location: L("Home ▸ New recording, or the LF Studios menu in the menu bar ▸ Record Area."),
                 steps: [
-                    L("A frame appears in the middle of the screen. Choose its shape above the recording bar, like 16:9."),
+                    L("A frame appears in the middle of the screen. Click Area in the recording bar to choose its shape, like 16:9."),
                     L("Drag the frame's border to move it, or a corner to make it bigger or smaller."),
                     L("Choose your options in the recording bar."),
                     L("Click Record, or press Return."),
                 ],
                 keys: [.global(.recordArea), .fixed("↩", L("Start recording")), .fixed("Esc", L("Cancel"))],
                 tips: [
-                    L("To drag out any area yourself, click Select area manually above the recording bar."),
+                    L("To drag out any area yourself, click Area in the recording bar, then Select area manually."),
                     L("A thin outline shows what's being recorded. It never appears in the video."),
                 ],
                 since: "1.8.0",
@@ -1141,7 +1141,7 @@ enum GuideContent {
             GuideEntry(
                 id: "rec-frame", symbol: "aspectratio", title: L("The frame bar"),
                 summary: L("A frame of an exact shape and size, so your video comes out ready for YouTube, Reels, or Instagram."),
-                location: L("The strip above the recording bar, after Home ▸ New recording."),
+                location: L("Area in the recording bar, after Home ▸ New recording."),
                 points: [
                     L("Shapes: 16:9 for YouTube, 9:16 for Reels, TikTok, and Shorts, 1:1 for square posts, 4:5 for the Instagram feed, 4:3 for slides and iPad, 16:10 for a Mac screen, 21:9 for a cinematic look. Point at one to see what it's for."),
                     L("Custom…: type any shape, like 3:2 or 2.39:1."),
@@ -1226,10 +1226,10 @@ enum GuideContent {
             GuideEntry(
                 id: "rec-mic", symbol: "mic", title: L("Microphone"),
                 summary: L("Record your voice."),
-                location: L("Click Microphone in the recording bar. A menu above the bar picks which microphone."),
+                location: L("Click Microphone in the recording bar. Area ▸ Microphone picks which microphone."),
                 steps: [
                     L("Turn on Microphone."),
-                    L("Choose your microphone in the menu above the bar."),
+                    L("Choose your microphone under Area ▸ Microphone."),
                     L("Speak and watch the level meter move."),
                 ],
                 tips: [
@@ -1244,7 +1244,7 @@ enum GuideContent {
                 summary: L("Show yourself in a bubble while you record."),
                 location: L("Click Camera in the recording bar. Choose the camera in ⋯ More recording options."),
                 steps: [
-                    L("Turn on Camera. A preview of your camera appears, in the Camera shape chosen above the bar."),
+                    L("Turn on Camera. A preview of your camera appears, in the Camera shape chosen under Area."),
                     L("Drag the preview where you want the camera in the video: what it covers of the recording frame is where the camera goes."),
                     L("Record as usual. The video opens in the editor with the camera there, in that shape and size."),
                 ],
@@ -1314,9 +1314,28 @@ enum GuideContent {
                 showMe: .settings(.recording)
             ),
             GuideEntry(
+                id: "rec-area-button", symbol: "rectangle.dashed", title: L("The Area button"),
+                summary: L("The recording bar is one row. Area shows what you're recording, like Area · 1920 × 1080, Full screen, or Window · Safari, and holds the rest of the options."),
+                location: L("The first button in the recording bar."),
+                points: [
+                    L("The frame's shape and size, Fit a window to the frame…, and Window, Full screen, or Select area manually."),
+                    L("Window size, when recording a window."),
+                    L("The Microphone menu, with Microphone on."),
+                    L("Camera shape, Select size, and Layout, with Camera on."),
+                ],
+                steps: [
+                    L("Click Area in the recording bar."),
+                    L("Change what you need. Everything works as before."),
+                    L("Press Esc or click outside to close it."),
+                ],
+                keys: [.fixed("Esc", L("Close the Area options"))],
+                since: "1.21.0",
+                related: ["rec-frame", "rec-window-size"]
+            ),
+            GuideEntry(
                 id: "rec-window-size", symbol: "aspectratio", title: L("Window size"),
                 summary: L("Resize a window so the recording comes out at an exact size, like 1920 × 1080."),
-                location: L("When recording a window: the Window size menu in the row above the recording bar."),
+                location: L("When recording a window: Area in the recording bar ▸ Window size."),
                 steps: [
                     L("Choose a size, or Custom Size… for your own."),
                     L("LF Studios resizes the window and centers it."),
@@ -1536,6 +1555,19 @@ enum GuideContent {
                 related: ["ai-costs", "ai-add-key"]
             ),
             GuideEntry(
+                id: "ai-workspace", symbol: "building.2", title: L("Anthropic Workspace ID"),
+                summary: L("For a Claude key that works in every workspace of your organization: which workspace to use."),
+                location: L("Settings ▸ AI ▸ Anthropic ▸ Workspace ID."),
+                steps: [
+                    L("In the Claude Console, open Settings ▸ Workspaces and copy the workspace's ID (it starts with wrkspc_)."),
+                    L("Paste it in Settings ▸ AI ▸ Workspace ID."),
+                ],
+                tips: [L("Most keys belong to one workspace and need nothing here. If Anthropic asks which workspace to use, the Assistant says so.")],
+                showMe: .settings(.ai),
+                since: "1.21.0",
+                related: ["ai-key-anthropic", "ai-add-key"]
+            ),
+            GuideEntry(
                 id: "ai-costs", symbol: "creditcard", title: L("What it costs"),
                 summary: L("The provider bills your account for each request, by the tokens it reads and writes. LF Studios charges nothing."),
                 location: L("Under each answer in the Assistant panel."),
@@ -1747,6 +1779,26 @@ enum GuideContent {
                 related: ["video-tools", "video-timeline", "video-media"]
             ),
             GuideEntry(
+                id: "video-skimmer", symbol: "line.diagonal", title: L("The skimmer"),
+                summary: L("The line that follows the pointer over the timeline. Zooming keeps the moment under it in place, and ⌘B splits there."),
+                location: L("Over the timeline, with Preview axis (S) on."),
+                points: [
+                    L("With the pointer over the timeline, pinch, ⌘-scroll, and ⌘+ or ⌘− keep the skimmer's moment where it is on screen."),
+                    L("⌘B and ⇧⌘B split at the skimmer. The playhead stays where it is."),
+                    L("With the pointer away from the timeline, or Preview axis off, zooming and splitting use the red playhead. If the playhead is out of view, zooming brings it to the middle."),
+                    L("The slider and the zoom buttons are away from the timeline, so they zoom around the playhead."),
+                    L("In the LF Studios layout, the strip at the bottom says where ⌘B splits: at the skimmer or at the playhead."),
+                ],
+                keys: [
+                    .fixed("⌘B", L("Split at the skimmer, else the playhead")),
+                    .fixed("⇧⌘B", L("Split all tracks at the skimmer, else the playhead")),
+                    .fixed("⌘+  ⌘−", L("Show more / less detail")),
+                    .fixed("S", L("Preview axis")),
+                ],
+                since: "1.21.0",
+                related: ["video-tools", "video-timeline"]
+            ),
+            GuideEntry(
                 id: "video-tools", symbol: "scissors", title: L("The timeline's tools"),
                 summary: L("The buttons above the timeline, with the keys CapCut uses: split, trim, freeze, reverse, mirror, rotate, and the timeline's switches."),
                 location: L("The bar above the timeline. Hover a button for its name and key."),
@@ -1762,8 +1814,8 @@ enum GuideContent {
                 ],
                 keys: [
                     .fixed("A  B", L("Select tool · split tool")),
-                    .fixed("⌘B", L("Split at the playhead")),
-                    .fixed("⇧⌘B", L("Split all tracks")),
+                    .fixed("⌘B", L("Split at the skimmer, else the playhead")),
+                    .fixed("⇧⌘B", L("Split all tracks at the skimmer, else the playhead")),
                     .fixed("Q  W", L("Delete left / right of the playhead")),
                     .fixed("I  O", L("Mark in / out")),
                     .fixed("[  ]", L("Select left / right of the playhead")),
@@ -1827,7 +1879,7 @@ enum GuideContent {
                     L("A track with nothing on it is a thin row that says how to add something. The arrow next to a name folds a track away."),
                 ],
                 steps: [
-                    L("Scroll up and down when the tracks don't all fit; the ruler and the track names stay put."),
+                    L("When the tracks don't all fit, scroll up and down over the tracks or their names, or drag the scroll bar on the right. The ruler stays put; each name moves with its track."),
                     L("Pinch, ⌘-scroll, ⌘+ and ⌘−, or the slider on the right, to see more or less of the video."),
                 ],
                 tips: [L("Hiding or muting a track never deletes anything: turn it back on, and it's all there.")],
@@ -1880,16 +1932,167 @@ enum GuideContent {
                     L("Drag a clip by its name to move it. Click a clip and press ⌫ to delete it."),
                 ],
                 keys: [
-                    .fixed("⌘B", L("Split at the playhead")),
+                    .fixed("⌘B", L("Split at the skimmer, else the playhead")),
                     .fixed("Q  W", L("Delete left / right of the playhead")),
                     .fixed("⌫", L("Delete the selection")),
                 ],
                 tips: [L("Right-click a clip for Speed, Mute Clip, Move Earlier, and Move Later.")]
             ),
             GuideEntry(
+                id: "video-box-select", symbol: "rectangle.dashed", title: L("Select clips with a box"),
+                summary: L("Drag over empty space on the timeline to select every clip the box touches."),
+                location: L("Empty space on the timeline, between or around clips."),
+                steps: [
+                    L("Start dragging where there's no clip, and drag over the clips you want."),
+                    L("Hold ⇧ to add them to what's selected, or ⌘ to select or deselect each one."),
+                    L("Then move, delete, copy, or paste attributes onto them all at once."),
+                ],
+                keys: [.fixed(L("Drag empty space"), L("Select clips in a box (⇧ adds, ⌘ toggles)"))],
+                tips: [L("It selects the main track's clips and the clips on the tracks above it. A click on empty space still moves the playhead.")],
+                since: "1.21.0",
+                related: ["video-clips", "video-cut-part"]
+            ),
+            GuideEntry(
+                id: "video-gaps", symbol: "arrow.left.to.line", title: L("Delete gaps"),
+                summary: L("Close the empty space between clips on a track above the main track, or on a sound track you added."),
+                location: L("Right-click empty space on a track, or the Timeline menu."),
+                steps: [
+                    L("Right-click the empty space between two clips and choose Delete Gap. What comes after it moves back."),
+                    L("Or choose Timeline ▸ Delete Gaps After Playhead: on every track, what comes after the playhead closes up to it."),
+                ],
+                tips: [L("The main track never has gaps: deleting a clip there closes up by itself (unless the main track magnet is off). A locked track keeps its gaps.")],
+                since: "1.21.0",
+                related: ["video-tools"]
+            ),
+            GuideEntry(
+                id: "video-duplicate", symbol: "plus.square.on.square", title: L("Duplicate and copy clips"),
+                summary: L("Make a copy of a clip right after itself, or drag a copy where you want it."),
+                location: L("The Timeline menu, or the clips on the timeline."),
+                steps: [
+                    L("Select clips above the main track (or a sound, a zoom, or an annotation) and press ⌘D: the copy goes right after it, and what follows moves along."),
+                    L("Or hold ⌥ and drag a clip above the main track: the copy lands where you drop it, and the original stays."),
+                ],
+                keys: [.fixed("⌘D", L("Duplicate")), .fixed(L("⌥-drag"), L("Copy a clip above the main track"))],
+                tips: [L("The main track's clips are the recording itself, each moment once, so they aren't duplicated. To use a part twice, copy it to a track above with ⌘C and ⌘V.")],
+                since: "1.21.0",
+                related: ["video-clips"]
+            ),
+            GuideEntry(
+                id: "video-paste-attributes", symbol: "doc.on.clipboard", title: L("Paste attributes"),
+                summary: L("Give other clips the same look and settings as one you've finished."),
+                location: L("Timeline ▸ Paste Attributes… (⇧⌘V)."),
+                steps: [
+                    L("Select the finished clip and press ⌘C."),
+                    L("Select the clips to change (a box selects many at once)."),
+                    L("Press ⇧⌘V, tick what to paste — Effects, Filters, Adjust, Speed, Volume, Transform, Animation — and click Paste."),
+                ],
+                keys: [.fixed("⌘C", L("Copy")), .fixed("⇧⌘V", L("Paste Attributes…"))],
+                tips: [L("The main track's clips take Speed, Volume, and Transform (mirror and turn). It's one step: ⌘Z takes it all back.")],
+                since: "1.21.0",
+                related: ["video-box-select"]
+            ),
+            GuideEntry(
+                id: "video-trims", symbol: "arrow.left.and.right.square", title: L("Roll, slide, and the Trim tool"),
+                summary: L("Move a cut, or a whole clip, without leaving a gap or changing how long the video is."),
+                location: L("The cut between two clips, and the Trim tool (T) beside Select and Split."),
+                points: [
+                    L("Ripple (as before): drag a clip's end. Everything after it moves."),
+                    L("Roll: drag the cut between two clips that touch. One gets longer, the other shorter, by the same amount."),
+                    L("Slide (Trim tool): drag a clip. It keeps its frames and moves between its neighbours, which change to fit."),
+                    L("Slip (Trim tool): ⌥-drag a video above the main track to show a different part of it in the same place."),
+                    L("A label beside the pointer says which one a drag will do."),
+                ],
+                keys: [.fixed("T", L("Trim tool")), .fixed("A", L("Select tool"))],
+                tips: [L("On the main track, sliding uses parts of the recording that were cut out. Right after a split there's nothing to slide into, so a clip slides only where a part was removed.")],
+                since: "1.21.0",
+                related: ["video-clips", "video-tools"]
+            ),
+            GuideEntry(
+                id: "video-loop", symbol: "repeat", title: L("Loop playback"),
+                summary: L("Play the same part over and over while you work on it."),
+                location: L("The repeat button under the player, or Timeline ▸ Loop playback (⌘L)."),
+                points: [
+                    L("With In and Out marked (I and O), it loops that part."),
+                    L("Otherwise the selected clip, or else the whole video."),
+                ],
+                steps: [
+                    L("Turn on Loop playback (⌘L), then press Space."),
+                    L("Press ⌘L again to turn it off."),
+                ],
+                keys: [.fixed("⌘L", L("Loop playback"))],
+                tips: [L("It's off in every new editor window, and it never changes the video or the export.")],
+                since: "1.21.0",
+                related: ["video-tools"]
+            ),
+            GuideEntry(
+                id: "video-solo", symbol: "headphones", title: L("Solo a track"),
+                summary: L("Hear just one track (or a few) while you edit."),
+                location: L("The headphones button on a sound or video track's header."),
+                steps: [
+                    L("Click the headphones on a track. Only soloed tracks are heard."),
+                    L("Click more headphones to hear more tracks; click again to stop soloing."),
+                ],
+                tips: [L("Solo is for listening in the editor. The export always has every track, as their own Mute buttons say.")],
+                since: "1.21.0",
+                related: ["video-timeline", "video-rename-track"]
+            ),
+            GuideEntry(
+                id: "video-rename-track", symbol: "character.cursor.ibeam", title: L("Rename a track"),
+                summary: L("Give a track your own name, like Interview or B-roll."),
+                location: L("Double-click a track's name on the timeline."),
+                steps: [
+                    L("Double-click the name, type a new one, and press Return."),
+                    L("Esc keeps the old name. Clear the name to go back to the usual one."),
+                ],
+                tips: [L("The name is saved with the project. Projects with renamed or soloed tracks need LF Studios 1.21.0 or later.")],
+                since: "1.21.0",
+                related: ["video-timeline", "video-solo"]
+            ),
+            GuideEntry(
+                id: "video-meters", symbol: "chart.bar", title: L("Audio meters"),
+                summary: L("See how loud the video is while it plays, left and right."),
+                location: L("The levels button next to the time, under the player."),
+                points: [
+                    L("Green is fine, yellow is loud, red is too loud and may sound distorted."),
+                    L("The thin line holds the loudest moment for a second."),
+                ],
+                steps: [
+                    L("Click the levels button to show the meters, and play the video."),
+                    L("Click the meters to hide them again."),
+                ],
+                tips: [L("They show what the player plays, solo and mute included. They're off to start with: while they're on, Play takes a moment longer to start.")],
+                since: "1.21.0",
+                related: ["video-solo"]
+            ),
+            GuideEntry(
+                id: "video-guides", symbol: "squareshape.split.3x3", title: L("Safe zones and grid"),
+                summary: L("Guides over the player to place things well. They never appear in the export."),
+                location: L("The grid button under the player."),
+                points: [
+                    L("Title safe and Action safe: keep text inside the inner box and action inside the outer one."),
+                    L("Rule of thirds and Centre lines, to line things up."),
+                    L("For 9:16 videos: TikTok, Instagram Reels, and YouTube Shorts shade where those apps put their buttons and captions (approximate: the apps change them)."),
+                ],
+                tips: [L("They're all off in every new editor window. Hide All Guides turns them off at once.")],
+                since: "1.21.0",
+                related: ["size-ratio"]
+            ),
+            GuideEntry(
+                id: "video-reveal", symbol: "magnifyingglass", title: L("Reveal in Library and Match Frame"),
+                summary: L("Find the file a clip comes from, or see the very frame it shows in its source."),
+                location: L("Timeline ▸ Reveal in Library (⇧F) and Match Frame."),
+                steps: [
+                    L("Select a clip (or put the playhead over one) and press ⇧F: Library ▸ Media opens with its file selected."),
+                    L("Choose Match Frame: the source opens at the same frame, to look around it."),
+                ],
+                keys: [.fixed("⇧F", L("Reveal in Library"))],
+                since: "1.21.0",
+                related: ["video-media"]
+            ),
+            GuideEntry(
                 id: "video-cut-part", symbol: "rectangle.badge.minus", title: L("Cut out a part"),
                 summary: L("Select any stretch of the video and remove it, even across several clips."),
-                location: L("Hold ⇧ and drag on the timeline."),
+                location: L("Hold ⇧ and drag across the clips, or along the ruler."),
                 steps: [
                     L("Hold ⇧ and drag across the part you don't want."),
                     L("Click Cut this part in the panel on the right."),
@@ -2284,7 +2487,7 @@ enum GuideContent {
             GuideEntry(
                 id: "camera-shape", symbol: "rectangle.on.rectangle", title: L("Camera shape"),
                 summary: L("Choose the camera's shape and ratio before you record, and change it any time in the editor."),
-                location: L("Before recording: turn on Camera, then Camera shape above the recording bar. In the editor: Camera panel ▸ Camera ▸ Camera shape."),
+                location: L("Before recording: turn on Camera, then Area in the recording bar ▸ Camera shape. In the editor: Camera panel ▸ Camera ▸ Camera shape."),
                 points: [
                     L("Circle, Rounded rectangle, Square (1:1), Landscape (16:9), Portrait (9:16), 4:3, 3:4, or Free (any width and height)."),
                     L("Roundness, in the same menu: from sharp corners to round."),
@@ -2305,7 +2508,7 @@ enum GuideContent {
             GuideEntry(
                 id: "camera-size", symbol: "arrow.up.left.and.arrow.down.right", title: L("Select size"),
                 summary: L("Resize and place the camera by dragging, before you record and in the editor."),
-                location: L("Before recording: Select size above the recording bar, with Camera on. In the editor: drag the camera on the preview."),
+                location: L("Before recording: with Camera on, Area in the recording bar ▸ Select size. In the editor: drag the camera on the preview."),
                 steps: [
                     L("Click Select size. Handles appear on the camera preview."),
                     L("Drag an edge or a corner to resize it, the middle to move it."),
@@ -2322,7 +2525,7 @@ enum GuideContent {
             GuideEntry(
                 id: "camera-split", symbol: "rectangle.split.2x1", title: L("Split screen"),
                 summary: L("The screen and your camera each fill one part of the video: side by side, or one above the other."),
-                location: L("Before recording: turn on Camera, then Layout ▸ Split screen above the recording bar. In the editor: Camera panel ▸ Layout."),
+                location: L("Before recording: turn on Camera, then Area in the recording bar ▸ Layout ▸ Split screen. In the editor: Camera panel ▸ Layout."),
                 points: [
                     L("Direction: Side by side (left and right) or Stacked (top and bottom), on a video of any shape. Until you choose, landscape videos go side by side and square and vertical ones stacked."),
                     L("Camera side, Split size (from 30/70 to 70/30, 50/50 to start), and Gap, with the video's background in between."),
@@ -3240,7 +3443,7 @@ enum GuideContent {
                 summary: L("The microphone was off, muted, or not allowed."),
                 steps: [
                     L("Before recording, turn on Microphone in the recording bar and check that its level meter moves when you speak."),
-                    L("Pick the right microphone in the menu above the bar."),
+                    L("Pick the right microphone under Area ▸ Microphone in the recording bar."),
                     L("Make sure LF Studios is allowed under Microphone in System Settings. It appears there only after it has asked once, and there's no + button: turn on Microphone in the recording bar and click Allow."),
                     L("No question appeared? Open Terminal, run tccutil reset Microphone com.lfstudios.app, then quit and reopen LF Studios and try again."),
                     L("For your Mac's own sound, turn on System audio too."),
@@ -3480,8 +3683,12 @@ enum GuideContent {
             .fixed("⌘C", L("Copy")),
             .fixed("⌘V", L("Paste")),
             .fixed("⌘A", L("Select All")),
-            .fixed("⌘B", L("Split at Playhead")),
+            .fixed("⌘B", L("Split at Skimmer or Playhead")),
             .fixed("⇧⌘B", L("Split All Tracks")),
+            .fixed("⌘D", L("Duplicate")),
+            .fixed("⇧⌘V", L("Paste Attributes…")),
+            .fixed("⌘L", L("Loop playback")),
+            .fixed("⇧F", L("Reveal in Library")),
             .fixed("⌫", L("Delete Selection")),
             .fixed("Q", L("Delete Left of Playhead")),
             .fixed("W", L("Delete Right of Playhead")),

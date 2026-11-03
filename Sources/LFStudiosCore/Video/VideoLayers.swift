@@ -222,7 +222,10 @@ extension VideoDemoProject {
     var needsFormat6: Bool { tacks?.isEmpty == false || needsFormat7 }
 
     /// An AI chat (1.20.0): only 1.20.0 and later keep it.
-    var needsFormat7: Bool { aiChat?.messages.isEmpty == false }
+    var needsFormat7: Bool { aiChat?.messages.isEmpty == false || needsFormat8 }
+
+    /// A soloed or renamed track (1.21.0): only 1.21.0 and later keep it.
+    var needsFormat8: Bool { trackStates.values.contains { $0.solo || $0.name != nil } }
 
     var needsFormat4: Bool {
         needsFormat5 || needsFormat6 || layerTracks.contains { $0.items.contains { $0.needsFormat4 } } || timelineClips.contains { $0.needsFormat4 }

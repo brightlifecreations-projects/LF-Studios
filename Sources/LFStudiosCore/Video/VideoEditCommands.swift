@@ -81,6 +81,20 @@ enum VideoEditCommand: Equatable, CaseIterable, Identifiable {
     case audio(VideoAudioEdit)
     /// A main-track clip's zoom keyframes.
     case zoom(VideoClipZoomEdit)
+    // 1.21.0 (VideoEditorBasics.swift)
+    /// ⌘D: the selection again, right after itself.
+    case duplicate
+    case deleteGapsAfterPlayhead
+    /// ⇧⌘V: the sheet to paste what ⌘C copied onto the selected clips.
+    case pasteAttributes
+    /// ⌘L: Loop playback.
+    case toggleLoopPlayback
+    /// ⇧F: the selected clip's file in the Library.
+    case revealInLibrary
+    case matchFrame
+    /// T: the Trim tool (slide, slip, roll, ripple).
+    case trimTool
+    case basics(VideoBasicsEdit)
 
     /// The commands without values (keys, menus, the command palette).
     static let allCases: [VideoEditCommand] = [
@@ -89,6 +103,7 @@ enum VideoEditCommand: Equatable, CaseIterable, Identifiable {
         .togglePreviewAxis, .zoomToFit, .toggleEnabled, .group, .ungroup, .extractAudio, .selectLeft, .selectRight,
         .copy, .paste, .markIn, .markOut, .addText, .addArrow, .addHighlight, .addBlur, .addKeyframe, .previousKeyframe, .nextKeyframe,
         .addTextClip, .makeCompound, .breakApart, .zoomCut, .showProjectSettings, .reviewFillers, .openCompound, .closeCompound,
+        .duplicate, .deleteGapsAfterPlayhead, .pasteAttributes, .toggleLoopPlayback, .revealInLibrary, .matchFrame, .trimTool,
     ]
 
     /// A stable name (menus keep it; a future MCP connection can send it).
@@ -97,6 +112,7 @@ enum VideoEditCommand: Equatable, CaseIterable, Identifiable {
         if case .clip(let edit) = self { return "clip." + edit.name }
         if case .audio(let edit) = self { return "audio." + edit.name }
         if case .zoom(let edit) = self { return "zoom." + edit.name }
+        if case .basics(let edit) = self { return "basics." + edit.name }
         if case .removeFillers(let ids) = self { return "removeFillers." + ids.map(String.init).joined(separator: ",") }
         if case .setCaptionText(let id, let text) = self { return "setCaptionText.\(id).\(text.count)" }
         if case .restyleCaptions(let t, let size, let position) = self { return "restyleCaptions.\(t ?? "-").\(size.rawValue).\(position.rawValue)" }
@@ -166,6 +182,14 @@ enum VideoEditCommand: Equatable, CaseIterable, Identifiable {
         case .clip(let edit): return edit.title
         case .audio(let edit): return edit.title
         case .zoom(let edit): return edit.title
+        case .duplicate: return L("Duplicate")
+        case .deleteGapsAfterPlayhead: return L("Delete Gaps After Playhead")
+        case .pasteAttributes: return L("Paste Attributes…")
+        case .toggleLoopPlayback: return L("Loop playback")
+        case .revealInLibrary: return L("Reveal in Library")
+        case .matchFrame: return L("Match Frame")
+        case .trimTool: return L("Trim tool")
+        case .basics(let edit): return edit.title
         }
     }
 
@@ -219,6 +243,14 @@ enum VideoEditCommand: Equatable, CaseIterable, Identifiable {
         case .openCompound: return "square.stack.3d.down.right"
         case .closeCompound: return "chevron.left"
         case .edit, .clip, .audio, .zoom: return "slider.horizontal.3"
+        case .duplicate: return "plus.square.on.square"
+        case .deleteGapsAfterPlayhead: return "arrow.left.to.line"
+        case .pasteAttributes: return "doc.on.clipboard"
+        case .toggleLoopPlayback: return "repeat"
+        case .revealInLibrary: return "magnifyingglass"
+        case .matchFrame: return "film.stack"
+        case .trimTool: return "arrow.left.and.right.square"
+        case .basics: return "slider.horizontal.3"
         }
     }
 
@@ -271,6 +303,12 @@ enum VideoEditCommand: Equatable, CaseIterable, Identifiable {
         case .makeCompound: return "⌥G"
         case .breakApart: return "⌥⇧G"
         case .zoomCut: return "⌥Z"
+        case .duplicate: return "⌘D"
+        case .pasteAttributes: return "⇧⌘V"
+        case .toggleLoopPlayback: return "⌘L"
+        case .revealInLibrary: return "⇧F"
+        case .trimTool: return "T"
+        case .deleteGapsAfterPlayhead, .matchFrame, .basics: return ""
         case .addMarker, .freezeFrame, .reverse, .mirror, .rotate, .crop, .recordVoiceover, .edit, .clip, .audio, .zoom, .showProjectSettings, .projectSettings, .reviewFillers, .removeFillers, .openCompound, .closeCompound, .setCaptionText, .restyleCaptions: return ""
         }
     }
@@ -289,6 +327,8 @@ enum VideoEditCommand: Equatable, CaseIterable, Identifiable {
 enum VideoTimelineTool: Equatable {
     case select
     case split
+    /// Slide, slip and roll (1.21.0).
+    case trim
 }
 
 extension VideoEditorModel {
@@ -309,9 +349,9 @@ extension VideoEditorModel {
             guard canRedo else { return false }
             redo()
         case .split:
-            return splitSelectedOrMain(at: clock.time)
+            return splitSelectedOrMain(at: editTime)
         case .splitAllTracks:
-            return splitAllTracks(at: clock.time)
+            return splitAllTracks(at: editTime)
         case .deleteLeft:
             return deleteSide(leading: true)
         case .deleteRight:
@@ -369,6 +409,7 @@ extension VideoEditorModel {
         case .selectRight:
             return selectAcross(left: false)
         case .copy:
+            rememberAttributes()
             if !copySelection() { copyCurrentFrame() }
         case .paste:
             return pasteClips()
@@ -429,8 +470,37 @@ extension VideoEditorModel {
             return closeCompound()
         case .zoom(let edit):
             return perform(edit)
+        case .duplicate:
+            return duplicateSelection()
+        case .deleteGapsAfterPlayhead:
+            return deleteGapsAfterPlayhead()
+        case .pasteAttributes:
+            return showPasteAttributes()
+        case .toggleLoopPlayback:
+            toggleLoopPlayback()
+        case .revealInLibrary:
+            return revealInLibrary()
+        case .matchFrame:
+            return matchFrame()
+        case .trimTool:
+            timelineTool = timelineTool == .trim ? .select : .trim
+            if timelineTool == .trim { showNotice(L("Trim tool: drag a clip to slide it, ⌥-drag a video above the main track to slip it, drag a cut to roll. A goes back to Select."), symbol: "arrow.left.and.right.square") }
+        case .basics(let edit):
+            return perform(edit)
         }
         return true
+    }
+
+    /// The 1.21.0 edits with values.
+    func perform(_ edit: VideoBasicsEdit) -> Bool {
+        switch edit {
+        case .deleteGap(let track, let time): return deleteGap(on: track, at: time)
+        case .pasteAttributes(let attributes): return pasteAttributes(attributes)
+        case .roll(let id, let delta): return roll(clip: id, by: delta)
+        case .slide(let id, let delta): return slide(clip: id, by: delta)
+        case .solo(let track): return toggleSolo(track)
+        case .renameTrack(let track, let name): return renameTrack(track, to: name)
+        }
     }
 
     /// Whether a switch (P, N, ~, S) is on.
@@ -442,6 +512,8 @@ extension VideoEditorModel {
         case .togglePreviewAxis: return Settings.videoTimelinePreviewAxis
         case .selectTool: return timelineTool == .select
         case .splitTool: return timelineTool == .split
+        case .trimTool: return timelineTool == .trim
+        case .toggleLoopPlayback: return loopsPlayback
         case .recordVoiceover: return voiceover != nil
         default: return false
         }
@@ -459,8 +531,9 @@ extension VideoEditorModel {
         if let item = selectedLayerItem, item.isShowing(at: time) {
             return splitLayerItem(item.id, at: time) != nil
         }
-        if selectedAudioPiece != nil {
-            splitAtPlayhead()
+        if let piece = selectedAudioPiece {
+            if refuseLocked(.sound(piece.track)) { return false }
+            splitAudioTrack(piece.track, at: time)
             return true
         }
         return splitMain(at: time)
@@ -496,12 +569,12 @@ extension VideoEditorModel {
             if project.audioTracks != before { steps += 1 }
         }
         guard steps > 0 else {
-            showNotice(L("Nothing to split at the playhead"), symbol: "scissors")
+            showNotice(skimmerTime != nil ? L("Nothing to split at the skimmer") : L("Nothing to split at the playhead"), symbol: "scissors")
             return false
         }
         for _ in 1..<steps { joinLastUndoSteps(label: "Split") }
         selection = .none
-        showNotice(L("Split every track at the playhead"), symbol: "scissors")
+        showNotice(skimmerTime != nil ? L("Split every track at the skimmer") : L("Split every track at the playhead"), symbol: "scissors")
         return true
     }
 

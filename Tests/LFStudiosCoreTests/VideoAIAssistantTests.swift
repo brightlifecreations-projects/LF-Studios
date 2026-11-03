@@ -297,6 +297,35 @@ final class VideoAIAssistantTests: XCTestCase {
         VideoAIAssistant.forget(model)
     }
 
+    // MARK: Anthropic Workspace ID (1.21.0)
+
+    /// Settings ▸ AI ▸ Workspace ID goes out as anthropic-workspace-id
+    /// (Anthropic only), and Anthropic asking for one says how to fix it.
+    func testTheAnthropicWorkspaceID() async throws {
+        Settings.videoAIAnthropicWorkspaceID = ""
+        server.script(textReply(.anthropic, "Hi."))
+        _ = try await VideoAIClient.send(request(.anthropic)) { _ in }
+        XCTAssertNil(server.requests.last?.header("anthropic-workspace-id"), "nothing set: not sent")
+
+        Settings.videoAIAnthropicWorkspaceID = " wrkspc_01TEST "
+        server.script(textReply(.anthropic, "Hi."))
+        _ = try await VideoAIClient.send(request(.anthropic)) { _ in }
+        XCTAssertEqual(server.requests.last?.header("anthropic-workspace-id"), "wrkspc_01TEST")
+        server.script(textReply(.openAI, "Hi."))
+        _ = try await VideoAIClient.send(request(.openAI)) { _ in }
+        XCTAssertNil(server.requests.last?.header("anthropic-workspace-id"), "only Anthropic gets it")
+
+        Settings.videoAIAnthropicWorkspaceID = ""
+        server.script(.json(.object(["type": .string("error"), "error": .object(["type": .string("invalid_request_error"), "message": .string("This key can be used in more than one workspace: set the anthropic-workspace-id header.")])]), status: 400))
+        do {
+            _ = try await VideoAIClient.send(request(.anthropic)) { _ in }
+            XCTFail("refused")
+        } catch {
+            XCTAssertEqual(error as? VideoAIError, .needsWorkspace)
+            XCTAssertTrue(error.localizedDescription.contains("Settings ▸ AI"), error.localizedDescription)
+        }
+    }
+
     // MARK: Errors, timeouts, Stop
 
     func testErrorsAreClearAndNeverRetriedEndlessly() async throws {
