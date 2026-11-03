@@ -719,9 +719,16 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @objc func timelineCommand(_ sender: NSMenuItem) {
-        guard let raw = sender.representedObject as? String, let command = VideoEditCommand(rawValue: raw),
-              let model = VideoDemoEditorWindowController.keyModel, !model.hasOverlayOpen else { return }
+        guard let raw = sender.representedObject as? String, let command = VideoEditCommand(rawValue: raw) else { return }
+        if command == .pasteAttributes, Self.pasteIntoText(in: NSApp.keyWindow) { return }
+        guard let model = VideoDemoEditorWindowController.keyModel, !model.hasOverlayOpen else { return }
         model.perform(command)
+    }
+    /// Typing in a caption or any text field: ⇧⌘V pastes there, like ⌘V.
+    static func pasteIntoText(in window: NSWindow?) -> Bool {
+        guard let text = window?.firstResponder as? NSText, text.isEditable else { return false }
+        text.paste(nil)
+        return true
     }
     @objc func timelineDeleteSelection(_ sender: Any?) { VideoDemoEditorWindowController.deleteActiveSelection() }
     @objc func timelineTrimIn(_ sender: Any?) { VideoDemoEditorWindowController.trimActiveInToPlayhead() }

@@ -168,10 +168,33 @@ final class VideoEditorBasicsTests: XCTestCase {
         await oneStep(model) { _ = model.perform(.deleteGapsAfterPlayhead) }
         XCTAssertEqual([at(model, ids[0]), at(model, ids[1]), at(model, ids[2])], [0, 1, 1.5], "the one under the playhead stays; the next closes up")
         XCTAssertFalse(model.perform(.deleteGapsAfterPlayhead), "none left")
+        // Nothing to close, but the items are out of order: still no ⌘Z step.
+        model.mutate { $0.layerTracks[0].items.reverse() }
+        let depth = model.undoDepth
+        XCTAssertFalse(model.perform(.deleteGapsAfterPlayhead))
+        XCTAssertEqual(model.undoDepth, depth, "no empty ⌘Z step")
         // A locked track keeps its gaps.
         model.undo()
         model.toggleTrackLocked(track)
         XCTAssertFalse(model.deleteGap(on: track, at: 2))
+    }
+
+    /// ⇧⌘V while typing in a text field pastes the text there; Paste
+    /// Attributes doesn't open.
+    func testShiftCommandVPastesWhileTyping() async throws {
+        let field = NSTextField(string: "")
+        let window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 300, height: 80), styleMask: [.titled], backing: .buffered, defer: false)
+        window.contentView?.addSubview(field)
+        field.frame = NSRect(x: 10, y: 10, width: 200, height: 24)
+        window.makeKeyAndOrderFront(nil)
+        defer { window.orderOut(nil) }
+        XCTAssertTrue(window.makeFirstResponder(field))
+        NSPasteboard.general.clearContents()
+        NSPasteboard.general.setString("Hello", forType: .string)
+        XCTAssertTrue(AppDelegate.pasteIntoText(in: window), "the text field takes ⇧⌘V")
+        XCTAssertEqual(field.currentEditor()?.string, "Hello", "the text field got the paste, not Paste Attributes")
+        window.makeFirstResponder(nil)
+        XCTAssertFalse(AppDelegate.pasteIntoText(in: window), "no text field: Paste Attributes")
     }
 
     // MARK: Duplicate
@@ -323,6 +346,24 @@ final class VideoEditorBasicsTests: XCTestCase {
         model.pause()
         XCTAssertTrue(times.allSatisfy { $0 >= 0.45 && $0 <= 1.25 }, "it stays in the range: \(times)")
         XCTAssertGreaterThan(times.max() ?? 0, 1.0, "and gets to its end")
+    }
+
+    /// Pausing in the range's last 0.1 s pauses; only playing to the
+    /// video's end starts the range again.
+    func testPausingAtTheEndOfTheLoopPauses() async throws {
+        let model = try await makeModel()
+        model.perform(.toggleLoopPlayback)
+        model.seek(to: model.timelineDuration - 0.05)
+        try await Task.sleep(nanoseconds: 200_000_000)
+        let time = model.clock.time
+        model.playback.onPlayingChanged?(false) // Space, 0.05 s before the end
+        try await Task.sleep(nanoseconds: 300_000_000)
+        XCTAssertFalse(model.isPlaying, "it stays paused")
+        XCTAssertEqual(model.clock.time, time, accuracy: 0.001, "where it was")
+
+        model.playback.onPlayedToEnd?()
+        XCTAssertEqual(model.clock.time, 0, accuracy: 0.05, "the video's end: the range again")
+        model.pause()
     }
 
     // MARK: Solo and track names

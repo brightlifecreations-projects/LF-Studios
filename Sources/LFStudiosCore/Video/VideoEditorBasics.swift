@@ -180,6 +180,8 @@ extension VideoEditorModel {
         let time = clock.time
         var closed = 0.0
         mutate(label: "Delete Gaps") { project in
+            let before = project
+            defer { if closed <= 0.0005 { project = before } } // only sorting changed: no ⌘Z step
             for index in project.layerTracks.indices where !project.isTrackLocked(.layer(project.layerTracks[index].id)) {
                 project.layerTracks[index].sort()
                 var cursor = time
@@ -309,11 +311,7 @@ extension VideoEditorModel {
                 copy.group = nil
                 copy.at = max(item.at + delta, 0)
                 made.append(copy.id)
-                if track == from, newTrack {
-                    project.insertLayerItem(copy, place: .newTrack(to))
-                } else {
-                    project.insertLayerItem(copy, place: .track(track == from ? to : track))
-                }
+                project.insertLayerItem(copy, place: track != from ? .track(track) : newTrack ? .newTrack(to) : .track(to))
             }
         }
         selection = made.first.map { .layer($0) } ?? .none
@@ -728,21 +726,23 @@ extension VideoEditorModel {
         showNotice(loopsPlayback ? (whole ? L("Loop playback on: the whole video") : L("Loop playback on: \(VideoEditorModel.timecode(range.lowerBound)) to \(VideoEditorModel.timecode(range.upperBound))")) : L("Loop playback off"), symbol: "repeat")
     }
 
-    /// Called as it plays (and when it stops at the end): back to the
-    /// start of the range.
-    func loopIfNeeded(at time: Double, stopped: Bool = false) {
+    /// Called as it plays: back to the start of the range.
+    func loopIfNeeded(at time: Double) {
         guard loopsPlayback else { return }
         let range = loopRange
         guard range.upperBound - range.lowerBound > 0.05 else { return }
-        if stopped {
-            // The player stopped at the video's end: start the range again.
-            guard time >= range.upperBound - 0.1 else { return }
-            seek(to: range.lowerBound)
-            playback.play()
-            return
-        }
         guard isPlaying, time >= range.upperBound - 0.01 else { return }
         seek(to: range.lowerBound)
+    }
+
+    /// The player reached the video's end by itself (a range that ends
+    /// there): start the range again. A pause never gets here.
+    func loopAtVideoEnd() {
+        guard loopsPlayback else { return }
+        let range = loopRange
+        guard range.upperBound - range.lowerBound > 0.05 else { return }
+        seek(to: range.lowerBound)
+        playback.play()
     }
 
     /// Starting to play with Loop playback on, outside its range: from the

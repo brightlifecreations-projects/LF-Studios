@@ -26,6 +26,7 @@
 #   shared settings, and it serves on this Mac.
 #   VideoAIAssistantTests, VideoAIKeysTests — the AI provider, model and
 #   frames switches are shared settings, and they swap the key store.
+#   VideoEditorBasicsTests — uses the clipboard and plays in real time.
 SNAPSHOTS='SnapshotTests'
 SERIAL='VideoLibraryFavouritesTests|VideoKeymapSettingsTests|RecordingEngineIntegrationTests|EditorMemoryValidationTests|VideoTimelineInteractionTests|VideoEditorLifecycleTests|VideoEditorDiscoverabilityTests|VideoInspectorLayoutTests|VideoPerformanceTests|VideoLongProjectPerformanceTests|VideoLongTakeTests|RecordingFrameTests|VideoDockTests|VideoFloatingPanelTests|VideoAgentTests|VideoAIAssistantTests|VideoAIKeysTests|VideoEditorBasicsTests|VideoLongTimelineTests'
 
