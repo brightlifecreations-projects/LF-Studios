@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.19.1]
+
+### Fixed
+- A video on a track above the main track faded from full to nearly silent across its length. It now keeps its level to its end, with its fades and volume keyframes as you set them.
+
+### Compatibility
+- Projects with a video on a track above the main track now sound different from 1.18.0 and 1.19.0 there: the video's sound stays at its level instead of fading out. That's the fix, not a new setting. Every other project exports the same picture and sound as before.
+
 ## [1.19.0] - 2026-11-02
 
 ### Added

@@ -370,11 +370,33 @@ struct VideoLayerInput {
             let silent = audio.muted || trackMuted || item.muted
             func level(_ volume: Double) -> Float { silent ? 0 : Float(min(max(volume, 0), 2) * audio.volume) }
             let keys = item.keys?.keys(.volume) ?? []
+            // Fades at its ends (volume keys, when it has them, do the
+            // shaping instead: ramps can't overlap).
+            let fadeIn = keys.isEmpty ? min(item.soundFadeIn ?? 0, item.length / 2) : 0
+            let fadeOut = keys.isEmpty ? min(item.soundFadeOut ?? 0, item.length / 2) : 0
+            // A level is held with a ramp up to just short of where it
+            // changes (1.19.1): a lone level point blends into the next one,
+            // so the sound faded out across the item, as the main track's
+            // clips did before 1.18.0.
+            func hold(_ volume: Float, from start: Double, to end: Double) {
+                let start = max(start, 0), end = end - 0.000_5
+                guard end - start > 0.001 else { return }
+                params.setVolumeRamp(fromStartVolume: volume, toEndVolume: volume,
+                                     timeRange: CMTimeRange(start: VideoCompositionBuilder.time(start), end: VideoCompositionBuilder.time(end)))
+            }
             if keys.isEmpty {
                 params.setVolume(level(item.volume), at: VideoCompositionBuilder.time(max(item.at, 0)))
+                hold(level(item.volume), from: item.at + (fadeIn > 0.01 ? fadeIn : 0), to: item.end - (fadeOut > 0.01 ? fadeOut : 0))
             } else {
-                // Volume keyframes: ramps between them, eased in steps.
+                // Volume keyframes: ramps between them, eased in steps; held
+                // before the first and after the last.
                 params.setVolume(level(item.value(.volume, at: item.at)), at: VideoCompositionBuilder.time(max(item.at, 0)))
+                if let first = keys.first, first.time > 0 {
+                    hold(level(item.value(.volume, at: item.at)), from: item.at, to: item.at + min(first.time, item.length))
+                }
+                if let last = keys.last, last.time < item.length {
+                    hold(level(item.value(.volume, at: item.at + last.time)), from: item.at + max(last.time, 0), to: item.end)
+                }
                 let steps = 8
                 for (a, b) in zip(keys, keys.dropFirst()) {
                     for step in 0..<steps {
@@ -387,10 +409,6 @@ struct VideoLayerInput {
                     }
                 }
             }
-            // Fades at its ends (volume keys, when it has them, do the
-            // shaping instead: ramps can't overlap).
-            let fadeIn = keys.isEmpty ? min(item.soundFadeIn ?? 0, item.length / 2) : 0
-            let fadeOut = keys.isEmpty ? min(item.soundFadeOut ?? 0, item.length / 2) : 0
             if fadeIn > 0.01, item.at >= 0 {
                 params.setVolumeRamp(fromStartVolume: 0, toEndVolume: level(item.value(.volume, at: item.at + fadeIn)),
                                      timeRange: CMTimeRange(start: VideoCompositionBuilder.time(item.at), duration: VideoCompositionBuilder.time(fadeIn)))
