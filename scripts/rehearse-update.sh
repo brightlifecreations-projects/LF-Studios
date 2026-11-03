@@ -83,10 +83,19 @@ PID=""
 for _ in $(seq 1 30); do PID="$(running_pid)"; [ -n "$PID" ] && break; sleep 1; done
 [ -n "$PID" ] || fail "LF Studios $OLD_VERSION didn't open"
 sleep 4
-osascript -e "tell application \"System Events\" to set frontmost of (first process whose unix id is $PID) to true" \
-          -e "delay 0.5" \
-          -e "tell application \"System Events\" to click menu item \"Check for Updates…\" of menu 1 of menu bar item 2 of menu bar 1 of (first process whose unix id is $PID)" >/dev/null \
-    || fail "couldn't click LF Studios → Check for Updates…"
+# Its menu bar can take longer to appear (a busy Mac, a first launch from a
+# new folder): try for up to 30 s.
+CLICKED=false
+for _ in $(seq 1 30); do
+    if osascript -e "tell application \"System Events\" to set frontmost of (first process whose unix id is $PID) to true" \
+                 -e "delay 0.5" \
+                 -e "tell application \"System Events\" to click menu item \"Check for Updates…\" of menu 1 of menu bar item 2 of menu bar 1 of (first process whose unix id is $PID)" >/dev/null 2>&1; then
+        CLICKED=true
+        break
+    fi
+    sleep 1
+done
+$CLICKED || fail "couldn't click LF Studios → Check for Updates…"
 
 FOUND=false
 for _ in $(seq 1 30); do
