@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.21.0]
+## [1.21.0] - 2026-11-03
 
 ### Added
 - **Select clips with a box:** drag over empty space on the timeline to select every clip the box touches. Hold ⇧ to add to what's selected, ⌘ to select or deselect each one.
