@@ -4,10 +4,10 @@
 - [x] 1. Loop playback: a pause in the loop's last 0.1 s pauses (restart only on the player's played-to-end)
 - [x] 2. Delete Gaps After Playhead: no empty ⌘Z step (test: items out of order, no gap)
 - [x] 3. ⌥-drag copy: leftover if/else folded into one call
-- [ ] 4. Old-project sound export test: real cause found and fixed
+- [~] 4. Old-project sound export test: real cause found (see Notes); the fix moves to a later update
 - [x] 5. ⇧⌘V while typing pastes into the text field (AppDelegate.pasteIntoText)
 - [x] 6. graphify-out/ in .gitignore
-- [ ] CHANGELOG [1.21.1]
+- [x] CHANGELOG [1.21.1]
 - [ ] test-quick, test-full, CI, merge
 - [ ] Publish 1.21.1 (rehearsal from 1.21.0; ≥10 GB free)
 
@@ -22,3 +22,10 @@
 - [ ] /graphify . again; REPORT-1.22.md and chat report
 
 ## Notes
+- Project117 sound (item 4): Apple's AVAssetReaderAudioMixOutput sometimes renders ~0.1–0.17 s of
+  near-silence right after a sped-up clip (the "edited" project, 2× clip then a 1× clip, at 0.8–1.0 s).
+  Measured: 1 in ~10 exports, busy or not; also with no audio mix, with .timeDomain pitch, and with a
+  reader of its own for the sound. So it's a real (rare) dropout in exports, not a loose test.
+  A sped-up clip's sound on its own composition track: 0 dropouts in 42, but the join still varies and
+  differs from 1.17.0's reference at 0.6–0.8 s, so old projects would export differently. Not solid
+  for a fix release; the probe test is kept in the scratchpad (probe117/Probe117Tests.swift).
