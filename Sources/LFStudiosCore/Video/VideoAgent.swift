@@ -240,15 +240,26 @@ final class VideoAgentHub: ObservableObject {
 
     func run(for model: VideoEditorModel) -> VideoAgentRun? { runs[ObjectIdentifier(model)] }
 
+    /// `byAssistant`: the built-in Assistant (1.20.0) shows the run in its
+    /// own panel.
     @discardableResult
-    func begin(on model: VideoEditorModel, goal: String) -> VideoAgentRun {
+    func begin(on model: VideoEditorModel, goal: String, byAssistant: Bool = false) -> VideoAgentRun {
         if let run = run(for: model), !run.reviewing { return run }
         let run = VideoAgentRun(project: model.project, undoDepth: model.undoDepth, goal: goal)
         runs[ObjectIdentifier(model)] = run
-        // Its feed and Keep / Revert all, where the user can see them.
-        VideoEditorPanelStore.shared.showAgentPanel()
-        model.showNotice(L("An AI agent is editing. Click or type in the editor to take over."), symbol: "sparkles")
+        if byAssistant {
+            model.showNotice(L("The Assistant is editing. Click or type in the editor to take over."), symbol: "sparkles")
+        } else {
+            // Its feed and Keep / Revert all, where the user can see them.
+            VideoEditorPanelStore.shared.showAgentPanel()
+            model.showNotice(L("An AI agent is editing. Click or type in the editor to take over."), symbol: "sparkles")
+        }
         return run
+    }
+
+    /// A run that changed nothing: gone, with nothing to review.
+    func drop(on model: VideoEditorModel) {
+        runs[ObjectIdentifier(model)] = nil
     }
 
     /// The agent's done: the user sees what changed and chooses.
@@ -271,7 +282,7 @@ final class VideoAgentHub: ObservableObject {
         guard let run = run(for: model) else { return }
         let checkpoint = run.checkpoint
         // Tacks are notes, not edits: they stay.
-        model.mutate(label: "Revert Agent Changes") { $0 = checkpoint.keepingTacks(of: $0) }
+        model.mutate(label: "Revert Agent Changes") { $0 = checkpoint.keepingNotes(of: $0) }
         model.endGesture()
         runs[ObjectIdentifier(model)] = nil
         model.showNotice(L("Reverted the agent's changes"), symbol: "arrow.uturn.backward.circle")
@@ -280,6 +291,9 @@ final class VideoAgentHub: ObservableObject {
     /// The user clicked or typed in the editor while an agent works.
     func userTookOver(_ model: VideoEditorModel) {
         guard let run = run(for: model), !run.reviewing, !run.paused else { return }
+        // Typing to the Assistant, or clicking in its panel, isn't taking
+        // over the edit (1.20.0).
+        guard !VideoAIAssistant.isUserInPanel(of: model) else { return }
         run.paused = true
     }
 
@@ -349,11 +363,13 @@ extension VideoEditorModel {
 }
 
 extension VideoDemoProject {
-    /// This project with `current`'s Tacks: undo, redo and Revert all step
-    /// back through edits and leave the notes as they are.
-    func keepingTacks(of current: VideoDemoProject) -> VideoDemoProject {
+    /// This project with `current`'s notes, its Tacks and AI chat (1.20.0):
+    /// undo, redo and Revert all step back through edits and leave the
+    /// notes as they are.
+    func keepingNotes(of current: VideoDemoProject) -> VideoDemoProject {
         var kept = self
         kept.tacks = current.tacks
+        kept.aiChat = current.aiChat
         return kept
     }
 }

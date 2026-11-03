@@ -476,6 +476,8 @@
 	<string>在播放头处添加缩放</string>
 	<key>Add a zoom at the playhead (Z)</key>
 	<string>在播放头处添加缩放（Z）</string>
+	<key>Add an API key in Settings ▸ AI first.</key>
+	<string>请先在“设置 ▸ AI”中添加 API 密钥。</string>
 	<key>Add another recording or video after this one — LF Studios recordings keep their pointer, clicks, and shortcuts.</key>
 	<string>在此录制内容之后添加另一个录制内容或视频 — LF Studios 录制内容会保留指针、点按和快捷键。</string>
 	<key>Add another recording to the end of this one, to make one video.</key>
@@ -726,6 +728,8 @@
 	<string>标注文字</string>
 	<key>Annotation tools</key>
 	<string>标注工具</string>
+	<key>Another AI agent is editing this project. Wait until it's done, then ask again.</key>
+	<string>另一个 AI 智能体正在编辑此项目。请等它完成后再提出请求。</string>
 	<key>Another app may use the same keys: choose different ones.</key>
 	<string>另一个应用可能使用了相同的按键：请换用其他按键。</string>
 	<key>Answer</key>
@@ -2864,6 +2868,8 @@
 	<string>“可编辑指针”会单独记录指针，以便编辑器平滑指针、调整其大小，并在缩放时保持清晰 — 视频编辑器会在导出时将指针加回（原始录制文件中不含指针）。“显示快捷键”只记录含 ⌘、⌃ 和 ⌥ 的组合键（以及 Esc 键和功能键），以便编辑器将其显示为按键 — 普通输入绝不会被记录；macOS 会请求辅助功能权限。默认使用“高”质量；“最高”保留更多细节，但文件更大。按下“录制”后，倒计时会给你片刻准备时间；按 Esc 键可取消。在任何 App 中按 %@ 都能停止录制 — 单独按 Esc 键仍会传给你正在录制的 App。</string>
 	<key>Editing</key>
 	<string>编辑</string>
+	<key>Editing…</key>
+	<string>正在编辑…</string>
 	<key>Editor tips</key>
 	<string>编辑器提示</string>
 	<key>Effect</key>
@@ -3904,6 +3910,8 @@
 	<string>在下一个视频中，点按“应用我的风格”（⇧⌘Y）。</string>
 	<key>In, Out and Combo animations</key>
 	<string>入场、出场和组合动画</string>
+	<key>Include AI chat history</key>
+	<string>包含 AI 聊天记录</string>
 	<key>Include a timeline for editing apps</key>
 	<string>附带剪辑软件用的时间线</string>
 	<key>Include aspect ratio (%@)</key>
@@ -4182,6 +4190,8 @@
 %@</key>
 	<string>LF Studios 无法将文件写入：
 %@</string>
+	<key>LF Studios couldn't reach the provider. Check your internet connection.</key>
+	<string>LF Studios 无法连接到服务商。请检查网络连接。</string>
 	<key>LF Studios doesn't find updates</key>
 	<string>LF Studios 找不到更新</string>
 	<key>LF Studios doesn't have Screen Recording permission yet.</key>
@@ -4458,6 +4468,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>锁定“%@”：其中的内容都无法更改</string>
 	<key>Look</key>
 	<string>外观</string>
+	<key>Looking at the project…</key>
+	<string>正在查看项目…</string>
 	<key>Looking for your face in the camera video. This happens once; the result is kept.</key>
 	<string>正在摄像头视频中寻找面部。只需进行一次，结果会被保留。</string>
 	<key>Looking through the video…</key>
@@ -5496,6 +5508,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>暂停视频，然后在预览上拖移字幕。</string>
 	<key>Paused</key>
 	<string>已暂停</string>
+	<key>Paused: click Resume to go on</key>
+	<string>已暂停：点按“继续”以继续</string>
 	<key>Paused: you took over</key>
 	<string>已暂停：你已接管</string>
 	<key>Pauses longer than a second become short ones, except where you're clicking, typing, or moving the pointer. ⌘Z undoes either one.</key>
@@ -7726,8 +7740,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>在任何应用中停止录制</string>
 	<key>Stop, while LF Studios is the app in front</key>
 	<string>在 LF Studios 位于最前面时停止</string>
+	<key>Stopped after %lld steps. Ask again to go on.</key>
+	<string>已在 %lld 步后停止。再次提出请求以继续。</string>
 	<key>Stopped making proxies</key>
 	<string>已停止创建代理</string>
+	<key>Stopped.</key>
+	<string>已停止。</string>
 	<key>Storage</key>
 	<string>存储空间</string>
 	<key>Strength</key>
@@ -7934,12 +7952,18 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>该视频为空</string>
 	<key>That window closed before recording could start.</key>
 	<string>窗口在录制开始前已关闭。</string>
+	<key>The API key was refused. Check it in Settings ▸ AI, or make a new one.</key>
+	<string>API 密钥被拒绝。请在“设置 ▸ AI”中检查，或创建新的密钥。</string>
 	<key>The Agent panel (Layout ▸ Agent Panel). It opens when an agent starts.</key>
 	<string>代理面板（布局 ▸ 代理面板）。代理开始工作时它会打开。</string>
 	<key>The Agent panel moves and floats like the others; its × hides it.</key>
 	<string>代理面板可像其他面板一样移动和浮动；点按它的 × 即可隐藏。</string>
+	<key>The Assistant is editing. Click or type in the editor to take over.</key>
+	<string>助理正在编辑。在编辑器中点按或输入即可接手。</string>
 	<key>The Home window</key>
 	<string>“主页”窗口</string>
+	<key>The Keychain couldn't save the key: %@</key>
+	<string>钥匙串无法存储密钥：%@</string>
 	<key>The LF Studios menu (Command Center)</key>
 	<string>LF Studios 菜单（命令中心）</string>
 	<key>The LF Studios menu in the menu bar ▸ Capture All Displays. It's there only while more than one screen is connected.</key>
@@ -7974,6 +7998,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>编辑器工具栏中的“撤销”和“重做”按钮。</string>
 	<key>The agent connection couldn't start: %@</key>
 	<string>代理连接无法启动：%@</string>
+	<key>The answer was too long and was cut off.</key>
+	<string>回答过长，已被截断。</string>
 	<key>The aspect ratio menu under the player.</key>
 	<string>播放器下方的宽高比菜单。</string>
 	<key>The bar above the timeline. Hover a button for its name and key.</key>
@@ -8090,8 +8116,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>麦克风已停止工作。录制将继续，但不含麦克风声音。</string>
 	<key>The microphone was off, muted, or not allowed.</key>
 	<string>麦克风处于关闭或静音状态，或者未获得允许。</string>
+	<key>The model declined this request.</key>
+	<string>模型拒绝了此请求。</string>
 	<key>The model downloads once from Hugging Face. After that, Whisper works offline, and your recording is never uploaded.</key>
 	<string>模型只需从 Hugging Face 下载一次。之后 Whisper 可离线使用，你的录制内容绝不会被上传。</string>
+	<key>The model “%@” isn't available with this key. Choose another one.</key>
+	<string>此密钥无法使用模型“%@”。请选择其他模型。</string>
 	<key>The music</key>
 	<string>音乐</string>
 	<key>The music gets quieter while this track speaks, as it does under your voice</key>
@@ -8140,6 +8170,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>项目文件（名称.lfs）会让一切按你离开时的样子重新打开。LF Studios 会在你编辑时随时更新它。</string>
 	<key>The project open in the front editor window.</key>
 	<string>最前面编辑器窗口中打开的项目。</string>
+	<key>The provider didn't answer in time. Try again.</key>
+	<string>服务商未及时响应。请重试。</string>
+	<key>The provider is busy right now. Try again in a moment.</key>
+	<string>服务商当前繁忙。请稍后重试。</string>
+	<key>The provider is limiting how fast you can send requests. Wait a minute, then try again.</key>
+	<string>服务商正在限制你的请求频率。请等待一分钟后重试。</string>
+	<key>The provider said: %@</key>
+	<string>服务商返回：%@</string>
 	<key>The recording bar</key>
 	<string>录制栏</string>
 	<key>The recording bar, the camera bubble preview, Speaker notes, the countdown, and notices.</key>
@@ -8356,6 +8394,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>这会用新的%2$@文字稿替换全部 %1$lld 行字幕，包括你编辑或输入过的行。</string>
 	<key>This sound file is gone — add it again.</key>
 	<string>此声音文件已不存在 — 请重新添加。</string>
+	<key>This video has no AI chat</key>
+	<string>此视频没有 AI 聊天</string>
 	<key>This video has no camera bubble</key>
 	<string>此视频没有摄像头气泡</string>
 	<key>This video has no camera footage to hide</key>
@@ -9556,8 +9596,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>你的 Mac 内存不足。请关闭一些 App 或选择更低的分辨率，然后重新导出。</string>
 	<key>Your ShotStyle settings were moved to LF Studios</key>
 	<string>你的 ShotStyle 设置已移至 LF Studios</string>
+	<key>Your account with this provider is out of credit. Add credit on its website, then try again.</key>
+	<string>你在此服务商的账户余额不足。请在其网站充值后重试。</string>
 	<key>Your camera is recorded as its own layer: a live bubble shows while you record (it never appears in the screen capture), and the editor lets you move, resize, and restyle it — or hide it — afterwards.</key>
 	<string>摄像头画面会录制为单独的图层：录制时会显示实时气泡（它不会出现在屏幕录制中），之后你可以在编辑器中移动它、调整大小和更改样式，也可以将其隐藏。</string>
+	<key>Your chat with the Assistant, in the LF Studios project</key>
+	<string>你与助理的聊天，保存在 LF Studios 项目中</string>
 	<key>Your choices are remembered for next time, and match Settings ▸ Recording.</key>
 	<string>你的选择会被记住，供下次使用，并与“设置 ▸ 录制”保持一致。</string>
 	<key>Your disk filled up — saved the first %@.</key>
@@ -9822,6 +9866,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>文字、高亮、箭头、模糊</string>
 	<key>the camera</key>
 	<string>摄像头</string>
+	<key>the request failed</key>
+	<string>请求失败</string>
 	<key>the video</key>
 	<string>视频</string>
 	<key>this recording</key>

@@ -710,11 +710,10 @@ final class VideoEditorModel: ObservableObject {
     // MARK: Project changes
 
     private func projectDidChange(from old: VideoDemoProject) {
-        // Only Tacks (1.19.1): saved, nothing to play differently.
-        if old.tacks != project.tacks {
-            var untacked = project
-            untacked.tacks = old.tacks
-            if untacked == old {
+        // Only Tacks (1.19.1) or the AI chat (1.20.0): saved, nothing to
+        // play differently.
+        if old.tacks != project.tacks || old.aiChat != project.aiChat {
+            if project.keepingNotes(of: old) == old {
                 if isReady { scheduleAutosave() }
                 return
             }
@@ -790,7 +789,7 @@ final class VideoEditorModel: ObservableObject {
         undoStack = Array(undoStack.prefix(depth))
         redoStack.removeAll()
         lastCoalesceKey = nil
-        project = snapshot.keepingTacks(of: project)
+        project = snapshot.keepingNotes(of: project)
         canUndo = !undoStack.isEmpty
         canRedo = false
     }
@@ -1013,7 +1012,7 @@ final class VideoEditorModel: ObservableObject {
         guard let step = undoStack.popLast() else { return }
         redoStack.append(UndoStep(project: project, label: step.label))
         lastCoalesceKey = nil
-        project = step.project.keepingTacks(of: project)
+        project = step.project.keepingNotes(of: project)
         validateSelection()
         canUndo = !undoStack.isEmpty
         canRedo = true
@@ -1024,7 +1023,7 @@ final class VideoEditorModel: ObservableObject {
         guard let step = redoStack.popLast() else { return }
         undoStack.append(UndoStep(project: project, label: step.label))
         lastCoalesceKey = nil
-        project = step.project.keepingTacks(of: project)
+        project = step.project.keepingNotes(of: project)
         validateSelection()
         canUndo = true
         canRedo = !redoStack.isEmpty

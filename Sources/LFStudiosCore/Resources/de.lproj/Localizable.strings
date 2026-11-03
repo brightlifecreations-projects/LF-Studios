@@ -414,6 +414,8 @@
 	<string>Zoom an der Abspielposition hinzufügen</string>
 	<key>Add a zoom at the playhead (Z)</key>
 	<string>Zoom an der Abspielposition hinzufügen (Z)</string>
+	<key>Add an API key in Settings ▸ AI first.</key>
+	<string>Füge zuerst in Einstellungen ▸ KI einen API-Schlüssel hinzu.</string>
 	<key>Add another recording or video after this one — LF Studios recordings keep their pointer, clicks, and shortcuts.</key>
 	<string>Füge nach dieser Aufnahme eine weitere Aufnahme oder ein Video hinzu – LF-Studios-Aufnahmen behalten ihren Zeiger, ihre Klicks und Kurzbefehle.</string>
 	<key>Add another recording to the end of this one, to make one video.</key>
@@ -660,6 +662,8 @@
 	<string>Beschriftungstext</string>
 	<key>Annotation tools</key>
 	<string>Beschriftungswerkzeuge</string>
+	<key>Another AI agent is editing this project. Wait until it's done, then ask again.</key>
+	<string>Ein anderer KI-Agent bearbeitet dieses Projekt. Warte, bis er fertig ist, und frag dann noch einmal.</string>
 	<key>Another app may use the same keys: choose different ones.</key>
 	<string>Eine andere App nutzt vielleicht dieselben Tasten: Wähle andere.</string>
 	<key>Answer</key>
@@ -2782,6 +2786,8 @@
 	<string>„Bearbeitbarer Zeiger“ zeichnet den Zeiger separat auf, damit der Editor ihn glätten, skalieren und beim Zoomen scharf halten kann – der Video-Editor fügt ihn beim Exportieren wieder ein (die Rohdatei der Aufnahme enthält keinen Zeiger). „Tastaturkurzbefehle anzeigen“ zeichnet nur Kombinationen mit ⌘, ⌃ und ⌥ auf (dazu Esc und die F-Tasten), damit der Editor sie als Tasten zeigen kann – normales Tippen wird nie aufgezeichnet; macOS fragt nach Zugriff auf die Bedienungshilfen. „Hoch“ ist die Standardqualität; „Maximal“ bewahrt mehr Details, erzeugt aber größere Dateien. Der Countdown gibt dir nach dem Start einen Moment Zeit; Esc bricht ihn ab. Stoppe eine Aufzeichnung aus jeder App mit %@ – ein einfaches Esc bleibt bei der App, die du aufzeichnest.</string>
 	<key>Editing</key>
 	<string>Bearbeiten</string>
+	<key>Editing…</key>
+	<string>Bearbeitet …</string>
 	<key>Editor tips</key>
 	<string>Tipps im Editor</string>
 	<key>Effect</key>
@@ -3808,6 +3814,8 @@
 	<string>Klicke in deinem nächsten Video auf „Meinen Stil anwenden“ (⇧⌘Y).</string>
 	<key>In, Out and Combo animations</key>
 	<string>Animationen: Eingang, Ausgang und Kombi</string>
+	<key>Include AI chat history</key>
+	<string>KI-Chatverlauf einschließen</string>
 	<key>Include a timeline for editing apps</key>
 	<string>Timeline für Schnittprogramme beilegen</string>
 	<key>Include aspect ratio (%@)</key>
@@ -4074,6 +4082,8 @@
 %@</key>
 	<string>LF Studios konnte die Datei nicht hier sichern:
 %@</string>
+	<key>LF Studios couldn't reach the provider. Check your internet connection.</key>
+	<string>LF Studios konnte den Anbieter nicht erreichen. Prüfe deine Internetverbindung.</string>
 	<key>LF Studios doesn't find updates</key>
 	<string>LF Studios findet keine Updates</string>
 	<key>LF Studios doesn't have Screen Recording permission yet.</key>
@@ -4348,6 +4358,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>„%@“ sperren: Nichts darauf lässt sich ändern</string>
 	<key>Look</key>
 	<string>Aussehen</string>
+	<key>Looking at the project…</key>
+	<string>Sieht sich das Projekt an …</string>
 	<key>Looking for your face in the camera video. This happens once; the result is kept.</key>
 	<string>Dein Gesicht wird im Kameravideo gesucht. Das geschieht einmal; das Ergebnis wird gespeichert.</string>
 	<key>Looking through the video…</key>
@@ -5386,6 +5398,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Halte das Video an und zieh den Untertitel in der Vorschau.</string>
 	<key>Paused</key>
 	<string>Pausiert</string>
+	<key>Paused: click Resume to go on</key>
+	<string>Pausiert: Klicke auf „Fortsetzen“, um weiterzumachen</string>
 	<key>Paused: you took over</key>
 	<string>Pausiert: du hast übernommen</string>
 	<key>Pauses longer than a second become short ones, except where you're clicking, typing, or moving the pointer. ⌘Z undoes either one.</key>
@@ -7578,8 +7592,12 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Aufzeichnung stoppen, aus jeder App</string>
 	<key>Stop, while LF Studios is the app in front</key>
 	<string>Stoppen, wenn LF Studios die App im Vordergrund ist</string>
+	<key>Stopped after %lld steps. Ask again to go on.</key>
+	<string>Nach %lld Schritten angehalten. Frag noch einmal, um weiterzumachen.</string>
 	<key>Stopped making proxies</key>
 	<string>Proxy-Erstellung gestoppt</string>
+	<key>Stopped.</key>
+	<string>Angehalten.</string>
 	<key>Storage</key>
 	<string>Speicher</string>
 	<key>Strength</key>
@@ -7786,12 +7804,18 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Dieses Video ist leer</string>
 	<key>That window closed before recording could start.</key>
 	<string>Das Fenster wurde geschlossen, bevor die Aufzeichnung beginnen konnte.</string>
+	<key>The API key was refused. Check it in Settings ▸ AI, or make a new one.</key>
+	<string>Der API-Schlüssel wurde abgelehnt. Prüfe ihn in Einstellungen ▸ KI oder erstelle einen neuen.</string>
 	<key>The Agent panel (Layout ▸ Agent Panel). It opens when an agent starts.</key>
 	<string>Das Agent-Panel (Layout ▸ Agent-Panel). Es öffnet sich, wenn ein Agent beginnt.</string>
 	<key>The Agent panel moves and floats like the others; its × hides it.</key>
 	<string>Das Agent-Panel lässt sich wie die anderen verschieben und lösen; sein × blendet es aus.</string>
+	<key>The Assistant is editing. Click or type in the editor to take over.</key>
+	<string>Der Assistent bearbeitet. Klicke oder tippe im Editor, um zu übernehmen.</string>
 	<key>The Home window</key>
 	<string>Das Startfenster</string>
+	<key>The Keychain couldn't save the key: %@</key>
+	<string>Der Schlüsselbund konnte den Schlüssel nicht sichern: %@</string>
 	<key>The LF Studios menu (Command Center)</key>
 	<string>Das LF-Studios-Menü (Kommandozentrale)</string>
 	<key>The LF Studios menu in the menu bar ▸ Capture All Displays. It's there only while more than one screen is connected.</key>
@@ -7826,6 +7850,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Die Knöpfe „Widerrufen“ und „Wiederholen“ in der Symbolleiste des Editors.</string>
 	<key>The agent connection couldn't start: %@</key>
 	<string>Die Agent-Verbindung konnte nicht starten: %@</string>
+	<key>The answer was too long and was cut off.</key>
+	<string>Die Antwort war zu lang und wurde abgeschnitten.</string>
 	<key>The aspect ratio menu under the player.</key>
 	<string>Das Menü für das Seitenverhältnis unter dem Player.</string>
 	<key>The bar above the timeline. Hover a button for its name and key.</key>
@@ -7942,8 +7968,12 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Das Mikrofon funktioniert nicht mehr. Die Aufzeichnung läuft ohne Mikrofon weiter.</string>
 	<key>The microphone was off, muted, or not allowed.</key>
 	<string>Das Mikrofon war aus, stumm oder nicht erlaubt.</string>
+	<key>The model declined this request.</key>
+	<string>Das Modell hat diese Anfrage abgelehnt.</string>
 	<key>The model downloads once from Hugging Face. After that, Whisper works offline, and your recording is never uploaded.</key>
 	<string>Das Modell wird einmal von Hugging Face geladen. Danach funktioniert Whisper offline, und deine Aufnahme wird nie hochgeladen.</string>
+	<key>The model “%@” isn't available with this key. Choose another one.</key>
+	<string>Das Modell „%@“ ist mit diesem Schlüssel nicht verfügbar. Wähle ein anderes.</string>
 	<key>The music</key>
 	<string>Die Musik</string>
 	<key>The music gets quieter while this track speaks, as it does under your voice</key>
@@ -7992,6 +8022,14 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Die Projektdatei (Name.lfs) öffnet alles wieder, genau so, wie du es verlassen hast. LF Studios hält sie beim Bearbeiten aktuell.</string>
 	<key>The project open in the front editor window.</key>
 	<string>Das Projekt im vordersten Editorfenster.</string>
+	<key>The provider didn't answer in time. Try again.</key>
+	<string>Der Anbieter hat nicht rechtzeitig geantwortet. Versuch es noch einmal.</string>
+	<key>The provider is busy right now. Try again in a moment.</key>
+	<string>Der Anbieter ist gerade ausgelastet. Versuch es gleich noch einmal.</string>
+	<key>The provider is limiting how fast you can send requests. Wait a minute, then try again.</key>
+	<string>Der Anbieter begrenzt, wie schnell du Anfragen senden kannst. Warte eine Minute und versuch es dann noch einmal.</string>
+	<key>The provider said: %@</key>
+	<string>Der Anbieter meldet: %@</string>
 	<key>The recording bar</key>
 	<string>Die Aufzeichnungsleiste</string>
 	<key>The recording bar, the camera bubble preview, Speaker notes, the countdown, and notices.</key>
@@ -8206,6 +8244,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Diese Aufnahme enthält nur den Pfeil</string>
 	<key>This sound file is gone — add it again.</key>
 	<string>Diese Tondatei ist weg – füge sie erneut hinzu.</string>
+	<key>This video has no AI chat</key>
+	<string>Dieses Video hat keinen KI-Chat</string>
 	<key>This video has no camera bubble</key>
 	<string>Dieses Video hat keine Kamerablase</string>
 	<key>This video has no camera footage to hide</key>
@@ -9400,8 +9440,12 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Dein Mac hat zu wenig Arbeitsspeicher. Schließe einige Apps oder wähle eine niedrigere Auflösung und exportiere erneut.</string>
 	<key>Your ShotStyle settings were moved to LF Studios</key>
 	<string>Deine ShotStyle-Einstellungen wurden in LF Studios übernommen</string>
+	<key>Your account with this provider is out of credit. Add credit on its website, then try again.</key>
+	<string>Dein Konto bei diesem Anbieter hat kein Guthaben mehr. Lade auf seiner Website Guthaben auf und versuch es dann noch einmal.</string>
 	<key>Your camera is recorded as its own layer: a live bubble shows while you record (it never appears in the screen capture), and the editor lets you move, resize, and restyle it — or hide it — afterwards.</key>
 	<string>Deine Kamera wird als eigene Ebene aufgezeichnet: Während der Aufzeichnung siehst du eine Live-Blase (sie erscheint nie in der Bildschirmaufnahme), und im Editor kannst du sie danach verschieben, skalieren und neu gestalten – oder ausblenden.</string>
+	<key>Your chat with the Assistant, in the LF Studios project</key>
+	<string>Dein Chat mit dem Assistenten, im LF Studios-Projekt</string>
 	<key>Your choices are remembered for next time, and match Settings ▸ Recording.</key>
 	<string>Deine Auswahl wird fürs nächste Mal gespeichert und entspricht Einstellungen ▸ Aufzeichnung.</string>
 	<key>Your disk filled up — saved the first %@.</key>
@@ -9662,6 +9706,8 @@ Du kannst Apples Kurzbefehle jederzeit unter „Systemeinstellungen“ → „Ta
 	<string>Text, Markierung, Pfeil, Weichzeichnen</string>
 	<key>the camera</key>
 	<string>die Kamera</string>
+	<key>the request failed</key>
+	<string>die Anfrage ist fehlgeschlagen</string>
 	<key>the video</key>
 	<string>das Video</string>
 	<key>this recording</key>

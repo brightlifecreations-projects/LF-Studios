@@ -412,6 +412,8 @@
 	<string>Додати наближення на покажчику відтворення</string>
 	<key>Add a zoom at the playhead (Z)</key>
 	<string>Додати наближення на покажчику відтворення (Z)</string>
+	<key>Add an API key in Settings ▸ AI first.</key>
+	<string>Спершу додайте ключ API в «Налаштування ▸ ШІ».</string>
 	<key>Add another recording or video after this one — LF Studios recordings keep their pointer, clicks, and shortcuts.</key>
 	<string>Додайте після цього ще один запис чи відео — записи LF Studios зберігають свій курсор, клацання й скорочення.</string>
 	<key>Add another recording to the end of this one, to make one video.</key>
@@ -656,6 +658,8 @@
 	<string>Текст розмітки</string>
 	<key>Annotation tools</key>
 	<string>Інструменти розмітки</string>
+	<key>Another AI agent is editing this project. Wait until it's done, then ask again.</key>
+	<string>Цей проєкт уже редагує інший ШІ-агент. Дочекайтеся, поки він закінчить, і попросіть знову.</string>
 	<key>Another app may use the same keys: choose different ones.</key>
 	<string>Інша програма може використовувати ті самі клавіші: виберіть інші.</string>
 	<key>Answer</key>
@@ -2778,6 +2782,8 @@
 	<string>«Редагований курсор» записує курсор окремо, щоб редактор міг згладжувати його, змінювати розмір і зберігати чіткість під час наближення, — відеоредактор додає його назад під час експорту (у самому файлі запису курсора немає). «Показувати клавіатурні скорочення» записує лише комбінації з ⌘, ⌃ і ⌥ (а також Esc і функціональні клавіші), щоб редактор міг показати їх як клавіші, — звичайне введення тексту ніколи не записується; macOS запитає дозвіл у розділі «Доступність». Типова якість — «Висока»; «Максимальна» зберігає більше деталей, але створює більші файли. Зворотний відлік дає вам мить після натискання «Записати»; Esc скасовує його. Зупинити запис із будь-якої програми можна за допомогою %@ — звичайна клавіша Esc і далі діє у програмі, яку ви записуєте.</string>
 	<key>Editing</key>
 	<string>Монтаж</string>
+	<key>Editing…</key>
+	<string>Редагує…</string>
 	<key>Editor tips</key>
 	<string>Поради в редакторі</string>
 	<key>Effect</key>
@@ -3804,6 +3810,8 @@
 	<string>У наступному відео клацніть «Застосувати мій стиль» (⇧⌘Y).</string>
 	<key>In, Out and Combo animations</key>
 	<string>Анімації «Початок», «Кінець» і «Комбо»</string>
+	<key>Include AI chat history</key>
+	<string>Додати історію чату з ШІ</string>
 	<key>Include a timeline for editing apps</key>
 	<string>Додати таймлайн для програм монтажу</string>
 	<key>Include aspect ratio (%@)</key>
@@ -4070,6 +4078,8 @@
 %@</key>
 	<string>LF Studios не вдалося записати файл сюди:
 %@</string>
+	<key>LF Studios couldn't reach the provider. Check your internet connection.</key>
+	<string>LF Studios не вдалося зв’язатися з провайдером. Перевірте підключення до інтернету.</string>
 	<key>LF Studios doesn't find updates</key>
 	<string>LF Studios не знаходить оновлень</string>
 	<key>LF Studios doesn't have Screen Recording permission yet.</key>
@@ -4344,6 +4354,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Заблокувати «%@»: на ній нічого не можна змінити</string>
 	<key>Look</key>
 	<string>Вигляд</string>
+	<key>Looking at the project…</key>
+	<string>Вивчає проєкт…</string>
 	<key>Looking for your face in the camera video. This happens once; the result is kept.</key>
 	<string>Пошук обличчя у відео з камери. Це робиться один раз; результат зберігається.</string>
 	<key>Looking through the video…</key>
@@ -5382,6 +5394,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Призупиніть відео й перетягніть субтитр на перегляді.</string>
 	<key>Paused</key>
 	<string>Призупинено</string>
+	<key>Paused: click Resume to go on</key>
+	<string>Пауза: натисніть «Продовжити», щоб продовжити</string>
 	<key>Paused: you took over</key>
 	<string>Пауза: ви перехопили керування</string>
 	<key>Pauses longer than a second become short ones, except where you're clicking, typing, or moving the pointer. ⌘Z undoes either one.</key>
@@ -7574,8 +7588,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Зупинити запис із будь-якої програми</string>
 	<key>Stop, while LF Studios is the app in front</key>
 	<string>Зупинити, коли LF Studios — активна програма</string>
+	<key>Stopped after %lld steps. Ask again to go on.</key>
+	<string>Зупинено після %lld кроків. Попросіть знову, щоб продовжити.</string>
 	<key>Stopped making proxies</key>
 	<string>Створення проксі припинено</string>
+	<key>Stopped.</key>
+	<string>Зупинено.</string>
 	<key>Storage</key>
 	<string>Сховище</string>
 	<key>Strength</key>
@@ -7782,12 +7800,18 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Це відео порожнє</string>
 	<key>That window closed before recording could start.</key>
 	<string>Вікно закрилося до початку запису.</string>
+	<key>The API key was refused. Check it in Settings ▸ AI, or make a new one.</key>
+	<string>Ключ API відхилено. Перевірте його в «Налаштування ▸ ШІ» або створіть новий.</string>
 	<key>The Agent panel (Layout ▸ Agent Panel). It opens when an agent starts.</key>
 	<string>Панель «Агент» (Макет ▸ Панель «Агент»). Вона відкривається, коли агент починає роботу.</string>
 	<key>The Agent panel moves and floats like the others; its × hides it.</key>
 	<string>Панель «Агент» переміщується й відкривається окремо, як інші; її × ховає її.</string>
+	<key>The Assistant is editing. Click or type in the editor to take over.</key>
+	<string>Асистент редагує. Клацніть або почніть друкувати в редакторі, щоб перехопити керування.</string>
 	<key>The Home window</key>
 	<string>Вікно «Головна»</string>
+	<key>The Keychain couldn't save the key: %@</key>
+	<string>Зв’язці ключів не вдалося зберегти ключ: %@</string>
 	<key>The LF Studios menu (Command Center)</key>
 	<string>Меню LF Studios (командний центр)</string>
 	<key>The LF Studios menu in the menu bar ▸ Capture All Displays. It's there only while more than one screen is connected.</key>
@@ -7822,6 +7846,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Кнопки «Відмінити» й «Повторити» на панелі інструментів редактора.</string>
 	<key>The agent connection couldn't start: %@</key>
 	<string>Не вдалося запустити підключення агентів: %@</string>
+	<key>The answer was too long and was cut off.</key>
+	<string>Відповідь була задовгою й обірвалася.</string>
 	<key>The aspect ratio menu under the player.</key>
 	<string>Меню формату під плеєром.</string>
 	<key>The bar above the timeline. Hover a button for its name and key.</key>
@@ -7938,8 +7964,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Мікрофон перестав працювати. Запис триває без нього.</string>
 	<key>The microphone was off, muted, or not allowed.</key>
 	<string>Мікрофон був вимкнений, приглушений або не мав дозволу.</string>
+	<key>The model declined this request.</key>
+	<string>Модель відхилила цей запит.</string>
 	<key>The model downloads once from Hugging Face. After that, Whisper works offline, and your recording is never uploaded.</key>
 	<string>Модель один раз завантажується з Hugging Face. Після цього Whisper працює без інтернету, а ваш запис ніколи не вивантажується.</string>
+	<key>The model “%@” isn't available with this key. Choose another one.</key>
+	<string>Модель «%@» недоступна з цим ключем. Виберіть іншу.</string>
 	<key>The music</key>
 	<string>Музика</string>
 	<key>The music gets quieter while this track speaks, as it does under your voice</key>
@@ -7988,6 +8018,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Файл проєкту (Назва.lfs) знову відкриває все саме так, як ви залишили. LF Studios оновлює його, поки ви редагуєте.</string>
 	<key>The project open in the front editor window.</key>
 	<string>Проєкт, відкритий у передньому вікні редактора.</string>
+	<key>The provider didn't answer in time. Try again.</key>
+	<string>Провайдер не відповів вчасно. Спробуйте ще раз.</string>
+	<key>The provider is busy right now. Try again in a moment.</key>
+	<string>Провайдер зараз перевантажений. Спробуйте трохи згодом.</string>
+	<key>The provider is limiting how fast you can send requests. Wait a minute, then try again.</key>
+	<string>Провайдер обмежує частоту запитів. Зачекайте хвилину й спробуйте знову.</string>
+	<key>The provider said: %@</key>
+	<string>Відповідь провайдера: %@</string>
 	<key>The recording bar</key>
 	<string>Панель запису</string>
 	<key>The recording bar, the camera bubble preview, Speaker notes, the countdown, and notices.</key>
@@ -8202,6 +8240,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>У цьому записі є лише стрілка</string>
 	<key>This sound file is gone — add it again.</key>
 	<string>Цього звукового файлу більше немає — додайте його знову.</string>
+	<key>This video has no AI chat</key>
+	<string>У цього відео немає чату з ШІ</string>
 	<key>This video has no camera bubble</key>
 	<string>У цьому відео немає бульбашки камери</string>
 	<key>This video has no camera footage to hide</key>
@@ -9396,8 +9436,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>На вашому Mac бракує пам’яті. Закрийте кілька програм або виберіть нижчу роздільність, а потім експортуйте ще раз.</string>
 	<key>Your ShotStyle settings were moved to LF Studios</key>
 	<string>Налаштування ShotStyle перенесено в LF Studios</string>
+	<key>Your account with this provider is out of credit. Add credit on its website, then try again.</key>
+	<string>На вашому рахунку в цього провайдера закінчилися кошти. Поповніть його на сайті провайдера й спробуйте знову.</string>
 	<key>Your camera is recorded as its own layer: a live bubble shows while you record (it never appears in the screen capture), and the editor lets you move, resize, and restyle it — or hide it — afterwards.</key>
 	<string>Камера записується окремим шаром: під час запису видно живу бульбашку (вона ніколи не потрапляє в запис екрана), а потім у редакторі її можна перемістити, змінити розмір і стиль — або сховати.</string>
+	<key>Your chat with the Assistant, in the LF Studios project</key>
+	<string>Ваш чат з Асистентом — у проєкті LF Studios</string>
 	<key>Your choices are remembered for next time, and match Settings ▸ Recording.</key>
 	<string>Ваш вибір запам’ятовується до наступного разу й збігається з Параметри ▸ Запис.</string>
 	<key>Your disk filled up — saved the first %@.</key>
@@ -9658,6 +9702,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>текст, виділення, стрілка, розмиття</string>
 	<key>the camera</key>
 	<string>камера</string>
+	<key>the request failed</key>
+	<string>запит не виконано</string>
 	<key>the video</key>
 	<string>відео</string>
 	<key>this recording</key>

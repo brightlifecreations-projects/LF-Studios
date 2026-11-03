@@ -476,6 +476,8 @@
 	<string>再生ヘッドの位置にズームを追加</string>
 	<key>Add a zoom at the playhead (Z)</key>
 	<string>再生ヘッドの位置にズームを追加（Z）</string>
+	<key>Add an API key in Settings ▸ AI first.</key>
+	<string>まず「設定」▸「AI」で API キーを追加してください。</string>
 	<key>Add another recording or video after this one — LF Studios recordings keep their pointer, clicks, and shortcuts.</key>
 	<string>このビデオの後ろに別の収録やビデオを追加できます。LF Studiosで収録したビデオは、ポインタ、クリック、ショートカットを保持します。</string>
 	<key>Add another recording to the end of this one, to make one video.</key>
@@ -726,6 +728,8 @@
 	<string>注釈のテキスト</string>
 	<key>Annotation tools</key>
 	<string>注釈ツール</string>
+	<key>Another AI agent is editing this project. Wait until it's done, then ask again.</key>
+	<string>別の AI エージェントがこのプロジェクトを編集中です。終わるまで待ってから、もう一度依頼してください。</string>
 	<key>Another app may use the same keys: choose different ones.</key>
 	<string>ほかのアプリが同じキーを使っている場合があります。別のキーを選んでください。</string>
 	<key>Answer</key>
@@ -2864,6 +2868,8 @@
 	<string>“編集可能なポインタ”では、ポインタが別に記録されるため、エディタでポインタの動きを滑らかにしたり、サイズを変えたり、ズームしてもくっきり表示したりできます。ポインタは書き出し時にビデオエディタで合成されます（収録したままのファイルにはポインタは入っていません）。“キーボードショートカットを表示”では、⌘、⌃、⌥を使った組み合わせ（およびEscキーとファンクションキー）だけが記録され、エディタでキーとして表示できます。通常の入力が記録されることはありません。macOSからアクセシビリティへのアクセスを求められます。品質のデフォルトは“高”です。“最高”では細部がより保たれますが、ファイルサイズが大きくなります。カウントダウンがあると、“収録”を押してから開始までに少し時間ができます。Escキーでキャンセルできます。収録はどのアプリからでも%@で停止できます。Escキーだけを押した場合は、収録中のアプリに送られます。</string>
 	<key>Editing</key>
 	<string>編集</string>
+	<key>Editing…</key>
+	<string>編集中…</string>
 	<key>Editor tips</key>
 	<string>エディタのヒント</string>
 	<key>Effect</key>
@@ -3904,6 +3910,8 @@
 	<string>次のビデオで“マイスタイルを適用”（⇧⌘Y）をクリックします。</string>
 	<key>In, Out and Combo animations</key>
 	<string>イン、アウト、コンボのアニメーション</string>
+	<key>Include AI chat history</key>
+	<string>AI チャットの履歴を含める</string>
 	<key>Include a timeline for editing apps</key>
 	<string>編集アプリ用のタイムラインを含める</string>
 	<key>Include aspect ratio (%@)</key>
@@ -4182,6 +4190,8 @@
 %@</key>
 	<string>LF Studiosは次の場所にファイルを書き込めませんでした:
 %@</string>
+	<key>LF Studios couldn't reach the provider. Check your internet connection.</key>
+	<string>LF Studios がプロバイダに接続できませんでした。インターネット接続を確認してください。</string>
 	<key>LF Studios doesn't find updates</key>
 	<string>LF Studiosでアップデートが見つからない</string>
 	<key>LF Studios doesn't have Screen Recording permission yet.</key>
@@ -4458,6 +4468,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>“%@”をロック: その上のものは変更できなくなります</string>
 	<key>Look</key>
 	<string>スタイル</string>
+	<key>Looking at the project…</key>
+	<string>プロジェクトを確認中…</string>
 	<key>Looking for your face in the camera video. This happens once; the result is kept.</key>
 	<string>カメラ映像から顔を探しています。一度だけ行い、結果は保存されます。</string>
 	<key>Looking through the video…</key>
@@ -5496,6 +5508,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ビデオを一時停止して、プレビュー上の字幕をドラッグします。</string>
 	<key>Paused</key>
 	<string>一時停止中</string>
+	<key>Paused: click Resume to go on</key>
+	<string>一時停止中：続けるには「再開」をクリック</string>
 	<key>Paused: you took over</key>
 	<string>一時停止：あなたが交代しました</string>
 	<key>Pauses longer than a second become short ones, except where you're clicking, typing, or moving the pointer. ⌘Z undoes either one.</key>
@@ -7726,8 +7740,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>収録を停止（どのアプリからでも）</string>
 	<key>Stop, while LF Studios is the app in front</key>
 	<string>停止（LF Studiosが最前面にあるとき）</string>
+	<key>Stopped after %lld steps. Ask again to go on.</key>
+	<string>%lld ステップで停止しました。続けるにはもう一度依頼してください。</string>
 	<key>Stopped making proxies</key>
 	<string>プロキシの作成を停止しました</string>
+	<key>Stopped.</key>
+	<string>停止しました。</string>
 	<key>Storage</key>
 	<string>ストレージ</string>
 	<key>Strength</key>
@@ -7934,12 +7952,18 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>そのビデオは空です</string>
 	<key>That window closed before recording could start.</key>
 	<string>収録を開始する前にウインドウが閉じられました。</string>
+	<key>The API key was refused. Check it in Settings ▸ AI, or make a new one.</key>
+	<string>API キーが拒否されました。「設定」▸「AI」で確認するか、新しいキーを作成してください。</string>
 	<key>The Agent panel (Layout ▸ Agent Panel). It opens when an agent starts.</key>
 	<string>エージェントパネル（レイアウト ▸ エージェントパネル）。エージェントが始めると開きます。</string>
 	<key>The Agent panel moves and floats like the others; its × hides it.</key>
 	<string>エージェントパネルも他と同じく移動・フローティングでき、×で隠せます。</string>
+	<key>The Assistant is editing. Click or type in the editor to take over.</key>
+	<string>アシスタントが編集中です。エディタでクリックまたは入力すると引き継げます。</string>
 	<key>The Home window</key>
 	<string>ホームウインドウ</string>
+	<key>The Keychain couldn't save the key: %@</key>
+	<string>キーチェーンにキーを保存できませんでした：%@</string>
 	<key>The LF Studios menu (Command Center)</key>
 	<string>LF Studiosメニュー（コマンドセンター）</string>
 	<key>The LF Studios menu in the menu bar ▸ Capture All Displays. It's there only while more than one screen is connected.</key>
@@ -7974,6 +7998,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>エディタのツールバーにある“取り消す”ボタンと“やり直す”ボタン。</string>
 	<key>The agent connection couldn't start: %@</key>
 	<string>エージェント接続を開始できませんでした：%@</string>
+	<key>The answer was too long and was cut off.</key>
+	<string>回答が長すぎて途中で切れました。</string>
 	<key>The aspect ratio menu under the player.</key>
 	<string>プレーヤーの下のアスペクト比メニュー。</string>
 	<key>The bar above the timeline. Hover a button for its name and key.</key>
@@ -8090,8 +8116,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>マイクが動作しなくなりました。マイクなしで収録を続けます。</string>
 	<key>The microphone was off, muted, or not allowed.</key>
 	<string>マイクがオフ、消音、または許可されていませんでした。</string>
+	<key>The model declined this request.</key>
+	<string>モデルがこの依頼を断りました。</string>
 	<key>The model downloads once from Hugging Face. After that, Whisper works offline, and your recording is never uploaded.</key>
 	<string>モデルはHugging Faceから一度だけダウンロードされます。そのあとはWhisperはオフラインで動作し、収録がアップロードされることはありません。</string>
+	<key>The model “%@” isn't available with this key. Choose another one.</key>
+	<string>モデル「%@」はこのキーでは使えません。別のモデルを選んでください。</string>
 	<key>The music</key>
 	<string>音楽</string>
 	<key>The music gets quieter while this track speaks, as it does under your voice</key>
@@ -8140,6 +8170,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>プロジェクトファイル（名前.lfs）を開くと、すべてが最後の状態のとおりに開きます。編集すると、LF Studiosが随時更新します。</string>
 	<key>The project open in the front editor window.</key>
 	<string>最前面のエディタウインドウで開いているプロジェクト。</string>
+	<key>The provider didn't answer in time. Try again.</key>
+	<string>プロバイダが時間内に応答しませんでした。もう一度お試しください。</string>
+	<key>The provider is busy right now. Try again in a moment.</key>
+	<string>プロバイダが混み合っています。少し待ってからもう一度お試しください。</string>
+	<key>The provider is limiting how fast you can send requests. Wait a minute, then try again.</key>
+	<string>プロバイダがリクエストの送信頻度を制限しています。1 分ほど待ってからもう一度お試しください。</string>
+	<key>The provider said: %@</key>
+	<string>プロバイダからのメッセージ：%@</string>
 	<key>The recording bar</key>
 	<string>収録バー</string>
 	<key>The recording bar, the camera bubble preview, Speaker notes, the countdown, and notices.</key>
@@ -8356,6 +8394,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>字幕%1$lld行すべて（編集や入力をした行も含む）が、%2$@の新しい文字起こしに置き換えられます。</string>
 	<key>This sound file is gone — add it again.</key>
 	<string>このサウンドファイルが見つかりません。もう一度追加してください。</string>
+	<key>This video has no AI chat</key>
+	<string>このビデオには AI チャットがありません</string>
 	<key>This video has no camera bubble</key>
 	<string>このビデオにはカメラのワイプがありません</string>
 	<key>This video has no camera footage to hide</key>
@@ -9556,8 +9596,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Macのメモリが不足しました。いくつかのアプリを終了するか、低い解像度を選択してから、もう一度書き出してください。</string>
 	<key>Your ShotStyle settings were moved to LF Studios</key>
 	<string>ShotStyleの設定をLF Studiosに移行しました</string>
+	<key>Your account with this provider is out of credit. Add credit on its website, then try again.</key>
+	<string>このプロバイダのアカウントのクレジットが不足しています。プロバイダのウェブサイトでクレジットを追加してから、もう一度お試しください。</string>
 	<key>Your camera is recorded as its own layer: a live bubble shows while you record (it never appears in the screen capture), and the editor lets you move, resize, and restyle it — or hide it — afterwards.</key>
 	<string>カメラは独立したレイヤーとして収録されます。収録中はライブのワイプが表示され（画面の収録には写りません）、あとからエディタで移動、サイズ変更、スタイル変更、または非表示にできます。</string>
+	<key>Your chat with the Assistant, in the LF Studios project</key>
+	<string>アシスタントとのチャット（LF Studios プロジェクト内）</string>
 	<key>Your choices are remembered for next time, and match Settings ▸ Recording.</key>
 	<string>選んだ内容は次回のために記憶され、“設定”＞“収録”とも連動します。</string>
 	<key>Your disk filled up — saved the first %@.</key>
@@ -9822,6 +9866,8 @@ Appleのショートカットは、“システム設定”＞“キーボード
 	<string>テキスト、ハイライト、矢印、ぼかし</string>
 	<key>the camera</key>
 	<string>カメラ</string>
+	<key>the request failed</key>
+	<string>リクエストが失敗しました</string>
 	<key>the video</key>
 	<string>ビデオ</string>
 	<key>this recording</key>

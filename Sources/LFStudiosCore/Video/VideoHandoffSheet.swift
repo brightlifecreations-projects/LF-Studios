@@ -99,7 +99,7 @@ extension VideoEditorModel {
     func handoffPlan(options: VideoHandoffOptions, location: URL?) async -> (VideoHandoffPlan, VideoHandoffInput) {
         let input = await VideoHandoffInput.gather(
             name: handoffName, project: project, recording: recording,
-            appendedMetadata: media.appendedMetadata.compactMapValues { $0 }, exportSettings: exportSettings
+            appendedMetadata: media.appendedMetadata.compactMapValues { $0 }, exportSettings: exportSettings, includesAIChat: options.includeAIChat
         )
         let name = VideoHandoffPlanner.folderName(project: handoffName) { name in
             location.map { FileManager.default.fileExists(atPath: $0.appendingPathComponent(name).path) } ?? false
@@ -191,6 +191,13 @@ struct VideoHandoffSheet: View {
                 detail: L("With the LF Studios project, the folder opens the whole edit again. Clips cut to your edit need the untouched recordings alongside."),
                 isOn: $options.includeOriginals
             )
+            let hasChat = model.project.aiChat?.messages.isEmpty == false
+            VideoToggleRow(
+                title: L("Include AI chat history"),
+                detail: hasChat ? L("Your chat with the Assistant, in the LF Studios project") : L("This video has no AI chat"),
+                isOn: Binding(get: { hasChat && options.includeAIChat }, set: { options.includeAIChat = $0 })
+            )
+            .disabled(!hasChat)
             VideoToggleRow(
                 title: L("Include fonts installed on this Mac"),
                 detail: L("Fonts added to LF Studios always go along. Check that a font's license lets you share it before sending."),

@@ -108,8 +108,8 @@ final class VideoAgentProtocol {
 
     /// Runs a tool on the front project: read tools at once; edits only in
     /// a run the user hasn't taken over, recorded in the feed.
-    func call(_ tool: VideoAgentTool, _ args: VideoAgentJSON) async -> VideoAgentToolResult {
-        guard let model = target(), model.isReady else {
+    func call(_ tool: VideoAgentTool, _ args: VideoAgentJSON, on project: VideoEditorModel? = nil) async -> VideoAgentToolResult {
+        guard let model = project ?? target(), model.isReady else {
             return .error("No project is open in LF Studios. Ask the user to open one.")
         }
         let hub = VideoAgentHub.shared
@@ -168,7 +168,7 @@ enum VideoAgentTools {
         return id
     }
 
-    static var all: [VideoAgentTool] { readTools + sessionTools + commandTools + parameterTools + tackTools }
+    static var all: [VideoAgentTool] { readTools + sessionTools + commandTools + parameterTools + wholeVideoTools + tackTools }
 
     // MARK: Read
 
@@ -513,6 +513,93 @@ enum VideoAgentTools {
                 VideoAgentHub.shared.record(VideoAgentChange(date: Date(), title: title, tool: "place_media", time: time, selection: nil, refused: !changed), on: model)
                 guard changed else { return .error(refusal(model)) }
                 return VideoAgentToolResult(json: .object(["ok": .bool(true), "description": .string(title)]))
+            },
+        ]
+    }
+
+    // MARK: The whole video (1.20.0)
+
+    /// The editor's own one-click commands, and filling in the Export
+    /// window (never exporting: the user clicks Export).
+    static var wholeVideoTools: [VideoAgentTool] {
+        [
+            VideoAgentTool(name: "auto_captions", description: "Transcribe the narration on this Mac and lay it out as captions (the editor's Auto Captions). Takes a while on long videos; it answers when the captions are in.", properties: [:]) { model, _, dryRun in
+                guard model.hasAudio else { throw VideoAgentToolError.forAgent("This video has no sound to transcribe.") }
+                if dryRun {
+                    return VideoAgentToolResult(json: .object(["ok": .bool(true), "dry_run": .bool(true), "would_change": .bool(true),
+                                                               "description": .string(model.project.captions.isEmpty ? "Adds captions from the narration." : "Replaces the \(model.project.captions.count) captions with new ones from the narration.")]))
+                }
+                let before = model.project
+                model.generateCaptions()
+                // Until it's done (Stop cancels the wait, not the transcription).
+                while model.captionTask != nil {
+                    try await Task.sleep(nanoseconds: 300_000_000)
+                }
+                if let error = model.captionJob?.error { throw VideoAgentToolError.forAgent("Auto captions stopped: \(error)") }
+                let changed = model.project != before
+                let title = changed ? VideoEditDescription.describe(from: before, to: model.project) : "Auto Captions"
+                VideoAgentHub.shared.record(VideoAgentChange(date: Date(), title: title, tool: "auto_captions", time: 0, selection: nil, refused: !changed), on: model)
+                return VideoAgentToolResult(json: .object(["ok": .bool(true), "changed": .bool(changed), "captions": .number(Double(model.project.captions.count)), "undo": .string(model.undoLabel ?? "")]))
+            },
+            VideoAgentTool(name: "remove_ums", description: "Cut every filler word (um, uh) out of the video (the editor's Remove Ums). Needs a transcript: run auto_captions first.", properties: [:]) { model, args, dryRun in
+                guard model.hasTranscript else { throw VideoAgentToolError.forAgent("There's no transcript yet: run auto_captions first.") }
+                return try edit(model, args, dryRun: dryRun, tool: "remove_ums") {
+                    guard model.fillerCount > 0 else { return false }
+                    model.removeFillers()
+                    return true
+                }
+            },
+            VideoAgentTool(name: "shorten_pauses", description: "Shorten every long pause in the video (the editor's Shorten Pauses).", properties: [:]) { model, args, dryRun in
+                try edit(model, args, dryRun: dryRun, tool: "shorten_pauses") {
+                    guard !model.pauseRanges.isEmpty else { return false }
+                    model.shortenPauses()
+                    return true
+                }
+            },
+            VideoAgentTool(name: "apply_my_style", description: "Apply the user's My Style preset to the video (background, frame, cursor, zoom, captions, keys and camera bubble).", properties: [:]) { model, args, dryRun in
+                guard model.myStyle != nil else { throw VideoAgentToolError.forAgent("The user hasn't chosen a My Style yet (Presets ▸ Edit Presets ▸ Use as My Style).") }
+                return try edit(model, args, dryRun: dryRun, tool: "apply_my_style") {
+                    model.applyMyStyle()
+                    return true
+                }
+            },
+            VideoAgentTool(name: "prepare_export", description: "Fill in the Export window and open it. It doesn't export: the user checks it and clicks Export. Leave out what the user didn't ask for.", properties: [
+                "preset": text("Quality: web (smallest), social (the usual) or studio (most detail).", choices: VideoExportSettings.Quality.allCases.map(\.rawValue)),
+                "resolution": .object(["type": .string("integer"), "description": .string("Height in pixels."), "enum": .array(VideoExportSettings.Resolution.allCases.map { .number(Double($0.rawValue)) })]),
+                "format": text("The file format.", choices: VideoExportSettings.Format.allCases.map(\.rawValue)),
+                "fps": .object(["type": .string("integer"), "description": .string("Frames per second."), "enum": .array([24, 25, 30, 50, 60].map { .number(Double($0)) })]),
+                "file_name": text("The file's name, without its extension."),
+            ], readOnly: true) { model, args, _ in
+                var settings = model.exportSettings
+                if let raw = args["preset"]?.string {
+                    guard let quality = VideoExportSettings.Quality(rawValue: raw) else { throw VideoAgentToolError.forAgent("preset is web, social or studio") }
+                    settings.quality = quality
+                }
+                if let height = args["resolution"]?.double {
+                    guard let resolution = VideoExportSettings.Resolution(rawValue: Int(height)) else { throw VideoAgentToolError.forAgent("resolution is 720, 1080, 1440 or 2160") }
+                    settings.resolution = resolution
+                }
+                if let raw = args["format"]?.string {
+                    guard let format = VideoExportSettings.Format(rawValue: raw) else { throw VideoAgentToolError.forAgent("format is one of \(VideoExportSettings.Format.allCases.map(\.rawValue).joined(separator: ", "))") }
+                    settings.format = format
+                }
+                if let fps = args["fps"]?.double {
+                    guard [24, 25, 30, 50, 60].contains(Int(fps)) else { throw VideoAgentToolError.forAgent("fps is 24, 25, 30, 50 or 60") }
+                    settings.fps = Int(fps)
+                }
+                // Opening the window first: it fills in the project's own
+                // settings, then these go on top.
+                model.isExportPresented = true
+                model.exportSettings = settings
+                if let name = args["file_name"]?.string?.trimmingCharacters(in: .whitespacesAndNewlines), !name.isEmpty {
+                    model.exportName = (name as NSString).deletingPathExtension.isEmpty ? name : (name as NSString).deletingPathExtension
+                }
+                return VideoAgentToolResult(json: .object([
+                    "ok": .bool(true), "opened": .bool(true), "exported": .bool(false),
+                    "preset": .string(model.exportSettings.quality.rawValue), "resolution": .number(Double(model.exportSettings.resolution.rawValue)),
+                    "format": .string(model.exportSettings.format.rawValue), "fps": .number(Double(model.exportSettings.fps)), "file_name": .string(model.exportName),
+                    "note": .string("The Export window is open with these settings. The user clicks Export to save the file."),
+                ]))
             },
         ]
     }
