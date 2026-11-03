@@ -21,7 +21,7 @@ plain "Loop" (that's the cursor's Inspector switch).
 - [x] C15 Reveal in Library (⇧F), Match frame
 - [x] D16 Anthropic Workspace ID
 - [x] Guide pages, shortcuts page, 7 languages (6 languages translated by helpers in parallel: editor-basics.<lang>.json)
-- [ ] test-full, screenshots page, PR, CI, merge, rehearsal from 1.20.0, publish, cleanup
+- [x] test-full (green on run 3, 1170 s), screenshots page, PR #15, CI green, merged, rehearsal 1.20.0 → 1.21.0 passed, published v1.21.0, cleanup 792 MB
 
 ## Notes
 - A: done (commit "Recording bar: one row…"); test-quick: GuideTests found a
