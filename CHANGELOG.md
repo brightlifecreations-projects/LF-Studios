@@ -11,7 +11,7 @@
 - **Loop playback (⌘L):** plays the In/Out range, else the selected clip, else the whole video, over and over.
 - **Solo:** the headphones on a track's header; while any track is soloed, only those are heard in the editor. The export always has every track.
 - **Rename tracks:** double-click a track's name.
-- **Audio meters:** left and right levels next to the time under the player, green, yellow and red, with the loudest moment held for a second.
+- **Audio meters:** the levels button next to the time under the player shows left and right levels while it plays (off to start with), green, yellow and red, with the loudest moment held for a second.
 - **Safe zones and grid:** a menu under the player with Title safe, Action safe, Rule of thirds, Centre lines, and for 9:16 videos the areas TikTok, Instagram Reels and YouTube Shorts cover with their buttons. Over the player only, never in the export.
 - **Reveal in Library (⇧F)** selects a clip's file in Library ▸ Media; **Match Frame** opens the clip's source at the same frame.
 - **Settings ▸ AI ▸ Anthropic ▸ Workspace ID**, for a Claude key that works in every workspace (sent as `anthropic-workspace-id`). When Anthropic asks which workspace to use, the Assistant says how to fix it.

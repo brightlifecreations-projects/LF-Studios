@@ -2051,12 +2051,16 @@ enum GuideContent {
             GuideEntry(
                 id: "video-meters", symbol: "chart.bar", title: L("Audio meters"),
                 summary: L("See how loud the video is while it plays, left and right."),
-                location: L("Next to the time, under the player."),
+                location: L("The levels button next to the time, under the player."),
                 points: [
                     L("Green is fine, yellow is loud, red is too loud and may sound distorted."),
                     L("The thin line holds the loudest moment for a second."),
                 ],
-                tips: [L("They show what the player plays, solo and mute included.")],
+                steps: [
+                    L("Click the levels button to show the meters, and play the video."),
+                    L("Click the meters to hide them again."),
+                ],
+                tips: [L("They show what the player plays, solo and mute included. They're off to start with: while they're on, Play takes a moment longer to start.")],
                 since: "1.21.0",
                 related: ["video-solo"]
             ),

@@ -307,6 +307,16 @@ final class VideoEditorModel: ObservableObject {
     @Published var playerGuides: Set<VideoPlayerGuide> = []
     /// The player's sound levels while it plays.
     let meters = VideoAudioMeters()
+    /// The audio meters (the levels button under the player): off to start
+    /// with; listening makes Play start a moment later.
+    @Published var showsMeters = Settings.videoPlayerMeters {
+        didSet {
+            guard showsMeters != oldValue else { return }
+            Settings.videoPlayerMeters = showsMeters
+            playback.setMeterStorage(showsMeters ? meters.storage : nil)
+            if !showsMeters { meters.stop() } else if isPlaying { meters.start() }
+        }
+    }
     /// Recording a voiceover (VideoVoiceover.swift).
     @Published var voiceover: VideoVoiceoverSession?
     /// Making a reversed clip or a freeze frame (VideoGeneratedMedia.swift).
@@ -627,7 +637,7 @@ final class VideoEditorModel: ObservableObject {
         }
         self.project = project
         plan = VideoRenderPlan(project: project, sourceDuration: 0, artwork: artwork, pointPixelScale: recording?.pointPixelScale, cursorTrack: nil, camera: .identity)
-        playback.meterStorage = meters.storage
+        if showsMeters { playback.setMeterStorage(meters.storage) }
 
         playback.onTick = { [weak self] time in
             guard let self else { return }
@@ -644,7 +654,7 @@ final class VideoEditorModel: ObservableObject {
             guard let self else { return }
             self.isPlaying = playing
             if !playing { self.shuttleRate = 1 }
-            if playing { self.meters.start() } else { self.meters.stop() }
+            if playing, self.showsMeters { self.meters.start() } else { self.meters.stop() }
             if !playing { self.loopIfNeeded(at: self.clock.time, stopped: true) }
             self.updatePreviewQuality()
             self.previewRenderer.invalidate()

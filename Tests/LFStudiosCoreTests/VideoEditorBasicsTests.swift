@@ -377,6 +377,10 @@ final class VideoEditorBasicsTests: XCTestCase {
         XCTAssertEqual(VideoAudioMeters.zone(at: VideoAudioMeters.position(forAmplitude: 0.9)), .red, "-1 dB")
 
         let model = try await makeModel()
+        XCTAssertFalse(model.showsMeters, "off to start with (listening makes Play start a moment later)")
+        XCTAssertNil(model.playback.meterStorage)
+        model.showsMeters = true
+        XCTAssertNotNil(model.playback.meterStorage)
         model.seek(to: 0.3)
         model.togglePlay()
         var loudest = 0.0
@@ -389,6 +393,8 @@ final class VideoEditorBasicsTests: XCTestCase {
         for _ in 0..<20 where model.isPlaying { try await Task.sleep(nanoseconds: 50_000_000) }
         try await Task.sleep(nanoseconds: 100_000_000)
         XCTAssertEqual(model.meters.left, 0, "back to nothing when it stops")
+        model.showsMeters = false
+        XCTAssertNil(model.playback.meterStorage, "off: no tap on the player")
     }
 
     // MARK: Safe zones

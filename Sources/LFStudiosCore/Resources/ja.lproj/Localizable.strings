@@ -2006,6 +2006,10 @@
 	<string>コマンドの横のフィールドをクリックします。</string>
 	<key>Click the headphones on a track. Only soloed tracks are heard.</key>
 	<string>トラックのヘッドフォンをクリックします。ソロにしたトラックだけが聞こえます。</string>
+	<key>Click the levels button to show the meters, and play the video.</key>
+	<string>レベルボタンをクリックしてメーターを表示し、ビデオを再生します。</string>
+	<key>Click the meters to hide them again.</key>
+	<string>メーターをクリックすると再び隠れます。</string>
 	<key>Click the microphone. After 3, 2, 1 the video plays, silent, while you talk.</key>
 	<string>マイクをクリックします。3、2、1 のあとビデオが無音で再生されるので、話してください。</string>
 	<key>Click the notice that appears after Capture Text (“click for options”).</key>
@@ -5244,8 +5248,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>次のキーフレーム</string>
 	<key>Next to Claude Desktop, click Copy setup.</key>
 	<string>Claude Desktopの横の「設定をコピー」をクリックします。</string>
-	<key>Next to the time, under the player.</key>
-	<string>プレーヤーの下、時間表示の横。</string>
 	<key>Next to the video, LF Studios keeps the details the editor needs, on your Mac.</key>
 	<string>LF Studiosは、エディタに必要な情報をビデオと一緒にMac上に保存します。</string>
 	<key>Nice shot. You're all set.</key>
@@ -7844,6 +7846,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>スピーカーノートを表示/非表示。ノートが収録に映ることはありません</string>
 	<key>Show shortcuts</key>
 	<string>ショートカットを表示</string>
+	<key>Show the audio meters</key>
+	<string>音量レベルメーターを表示</string>
 	<key>Show the camera full screen, side by side with the screen, or hide it, for any part of the video.</key>
 	<string>ビデオの好きな部分で、カメラを全面に表示したり、画面と横並びにしたり、隠したりします。</string>
 	<key>Show the keyboard shortcuts you pressed, like ⌘C, as keys on the video.</key>
@@ -7996,6 +8000,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>効果音</string>
 	<key>Sound levels while playing: green is fine, yellow is loud, red is too loud</key>
 	<string>再生中の音量レベル: 緑は適正、黄は大きめ、赤は大きすぎ</string>
+	<key>Sound levels while playing: green is fine, yellow is loud, red is too loud. Click to hide them.</key>
+	<string>再生中の音量レベル：緑は適正、黄は大きめ、赤は大きすぎです。クリックすると隠れます。</string>
 	<key>Sound of %@</key>
 	<string>%@ のサウンド</string>
 	<key>Sound of clip %lld</key>
@@ -8624,6 +8630,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>キーは有効です：%lld 個のモデル</string>
 	<key>The label under it says how wide the camera is and where it goes in the video. The editor opens with exactly that.</key>
 	<string>下のラベルに、カメラの幅とビデオ内での位置が表示されます。エディタはそのとおりに開きます。</string>
+	<key>The levels button next to the time, under the player.</key>
+	<string>プレーヤーの下、時間の横にあるレベルボタン。</string>
 	<key>The line runs down through every track, so you can see what's under it.</key>
 	<string>線はすべてのトラックを貫くので、その下にあるものがわかります。</string>
 	<key>The line that follows the pointer over the timeline. Zooming keeps the moment under it in place, and ⌘B splits there.</key>
@@ -8902,8 +8910,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>話した言葉に合わせて動き、プレビューと書き出したビデオで同じように見えます。</string>
 	<key>They look through the whole video on your Mac, which takes longer for long or 4K videos.</key>
 	<string>Mac上でビデオ全体を調べるので、長いビデオや4Kのビデオでは時間がかかります。</string>
-	<key>They show what the player plays, solo and mute included.</key>
-	<string>ソロと消音も含めて、プレーヤーで再生される音を表示します。</string>
+	<key>They show what the player plays, solo and mute included. They're off to start with: while they're on, Play takes a moment longer to start.</key>
+	<string>ソロや消音も含め、プレーヤーで再生される音を表示します。最初はオフです。オンの間は再生の開始が少し遅くなります。</string>
 	<key>They take about %@ on this Mac (ProRes 422 Proxy at half size). The editor plays them instead of the originals; exports always use the originals. Clean Up in Settings removes them.</key>
 	<string>このMac上で約%@を使用します（半分のサイズのProRes 422 Proxy）。エディタではオリジナルの代わりにプロキシを再生しますが、書き出しには常にオリジナルを使います。“設定”の“クリーンアップ”で削除できます。</string>
 	<key>They're all off in every new editor window. Hide All Guides turns them off at once.</key>

@@ -2006,6 +2006,10 @@
 	<string>点按命令旁边的栏。</string>
 	<key>Click the headphones on a track. Only soloed tracks are heard.</key>
 	<string>点按轨道上的耳机。只能听到独奏的轨道。</string>
+	<key>Click the levels button to show the meters, and play the video.</key>
+	<string>点按电平按钮显示电平表，然后播放视频。</string>
+	<key>Click the meters to hide them again.</key>
+	<string>点按电平表即可再次隐藏。</string>
 	<key>Click the microphone. After 3, 2, 1 the video plays, silent, while you talk.</key>
 	<string>点按麦克风。倒数 3、2、1 后，视频会静音播放，你可以边看边说。</string>
 	<key>Click the notice that appears after Capture Text (“click for options”).</key>
@@ -5244,8 +5248,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>下一个关键帧</string>
 	<key>Next to Claude Desktop, click Copy setup.</key>
 	<string>在 Claude Desktop 旁边，点按“拷贝设置”。</string>
-	<key>Next to the time, under the player.</key>
-	<string>在播放器下方的时间旁边。</string>
 	<key>Next to the video, LF Studios keeps the details the editor needs, on your Mac.</key>
 	<string>LF Studios 会在你的 Mac 上、视频旁边保存编辑器所需的信息。</string>
 	<key>Nice shot. You're all set.</key>
@@ -7844,6 +7846,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>显示或隐藏演讲者备注 — 它们绝不会出现在录制中</string>
 	<key>Show shortcuts</key>
 	<string>显示快捷键</string>
+	<key>Show the audio meters</key>
+	<string>显示音频电平表</string>
 	<key>Show the camera full screen, side by side with the screen, or hide it, for any part of the video.</key>
 	<string>在视频的任意部分，让摄像头全屏显示、与屏幕并排显示，或将其隐藏。</string>
 	<key>Show the keyboard shortcuts you pressed, like ⌘C, as keys on the video.</key>
@@ -7996,6 +8000,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>音效</string>
 	<key>Sound levels while playing: green is fine, yellow is loud, red is too loud</key>
 	<string>播放时的音量电平：绿色正常，黄色较响，红色过响</string>
+	<key>Sound levels while playing: green is fine, yellow is loud, red is too loud. Click to hide them.</key>
+	<string>播放时的音量电平：绿色正常，黄色偏响，红色过响。点按即可隐藏。</string>
 	<key>Sound of %@</key>
 	<string>%@ 的声音</string>
 	<key>Sound of clip %lld</key>
@@ -8624,6 +8630,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>密钥有效：%lld 个模型</string>
 	<key>The label under it says how wide the camera is and where it goes in the video. The editor opens with exactly that.</key>
 	<string>下方的标签会说明摄像头的宽度以及它在视频中的位置。编辑器打开时正是这样。</string>
+	<key>The levels button next to the time, under the player.</key>
+	<string>播放器下方时间旁边的电平按钮。</string>
 	<key>The line runs down through every track, so you can see what's under it.</key>
 	<string>这条线贯穿所有轨道，方便你看到它下面的内容。</string>
 	<key>The line that follows the pointer over the timeline. Zooming keeps the moment under it in place, and ⌘B splits there.</key>
@@ -8902,8 +8910,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>动画会跟随你说的话，在预览和导出的视频中看起来完全一样。</string>
 	<key>They look through the whole video on your Mac, which takes longer for long or 4K videos.</key>
 	<string>它们会在你的 Mac 上检查整个视频，视频较长或是 4K 视频时需要更久。</string>
-	<key>They show what the player plays, solo and mute included.</key>
-	<string>它们显示播放器所播放的内容，包括独奏和静音。</string>
+	<key>They show what the player plays, solo and mute included. They're off to start with: while they're on, Play takes a moment longer to start.</key>
+	<string>它们显示播放器播放的声音，包括独奏和静音。一开始是关闭的：打开时，开始播放会稍慢一点。</string>
 	<key>They take about %@ on this Mac (ProRes 422 Proxy at half size). The editor plays them instead of the originals; exports always use the originals. Clean Up in Settings removes them.</key>
 	<string>它们在这台 Mac 上大约占用 %@（半尺寸的 ProRes 422 Proxy）。编辑器会播放代理而非原始文件；导出始终使用原始文件。“设置”中的“清理”可将其移除。</string>
 	<key>They're all off in every new editor window. Hide All Guides turns them off at once.</key>

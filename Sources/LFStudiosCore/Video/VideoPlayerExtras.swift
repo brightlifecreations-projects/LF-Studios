@@ -351,6 +351,31 @@ struct VideoAudioMeterView: View {
     }
 }
 
+/// The levels button: off, a small button; on, the meters (click them to
+/// turn them off).
+struct VideoAudioMeterToggle: View {
+    @ObservedObject var model: VideoEditorModel
+
+    var body: some View {
+        Button {
+            model.showsMeters.toggle()
+        } label: {
+            if model.showsMeters {
+                VideoAudioMeterView(meters: model.meters)
+            } else {
+                Image(systemName: "chart.bar.xaxis")
+                    .font(.system(size: 11.5, weight: .bold))
+                    .foregroundStyle(VideoEditorTheme.textSecondary)
+                    .frame(width: 26, height: 28)
+            }
+        }
+        .buttonStyle(.plain)
+        .help(model.showsMeters ? L("Sound levels while playing: green is fine, yellow is loud, red is too loud. Click to hide them.") : L("Show the audio meters"))
+        .accessibilityLabel(L("Audio meters"))
+        .accessibilityValue(model.showsMeters ? L("On") : L("Off"))
+    }
+}
+
 // MARK: - Match Frame: the source at a frame
 
 struct VideoSourceViewer: View {

@@ -34,3 +34,8 @@ plain "Loop" (that's the cursor's Inspector switch).
   the main track needs cut-out parts of the recording (DECISIONS 8–10).
   VideoEditorBasicsTests and VideoLongTimelineTests (playback timing, the
   window's scroll) run alone (scripts/test-groups.sh).
+- test-full #1: two misses, Project117SoundTests (passes alone, same
+  numbers as during B3, before any audio change) and VideoEditorModelTests'
+  playback start. The second was real: the meters' tap made Play start
+  0.1–0.15 s later (measured). Fixed by making the meters a switch, off to
+  start with (DECISIONS 19).

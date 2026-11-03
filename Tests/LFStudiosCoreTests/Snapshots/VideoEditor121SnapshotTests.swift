@@ -114,6 +114,7 @@ final class VideoEditor121SnapshotTests: XCTestCase {
     func testTheEditorIn121() async throws {
         let model = try await demo()
         model.playerGuides = [.titleSafe, .actionSafe, .thirds]
+        model.showsMeters = true
         model.meters.show(left: 0.78, right: 0.72, leftPeak: 0.86, rightPeak: 0.83)
         model.loopsPlayback = true
         // Two pictures and the second half of the main track, selected by a box.

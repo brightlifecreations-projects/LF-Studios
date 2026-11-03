@@ -1926,6 +1926,10 @@
 	<string>Cliquez sur le champ à côté d’une commande.</string>
 	<key>Click the headphones on a track. Only soloed tracks are heard.</key>
 	<string>Cliquez sur le casque d’une piste. Seules les pistes en solo sont entendues.</string>
+	<key>Click the levels button to show the meters, and play the video.</key>
+	<string>Cliquez sur le bouton des niveaux pour afficher les indicateurs, puis lisez la vidéo.</string>
+	<key>Click the meters to hide them again.</key>
+	<string>Cliquez sur les indicateurs pour les masquer à nouveau.</string>
 	<key>Click the microphone. After 3, 2, 1 the video plays, silent, while you talk.</key>
 	<string>Cliquez sur le micro. Après 3, 2, 1, la vidéo défile sans son pendant que vous parlez.</string>
 	<key>Click the notice that appears after Capture Text (“click for options”).</key>
@@ -5128,8 +5132,6 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Image clé suivante</string>
 	<key>Next to Claude Desktop, click Copy setup.</key>
 	<string>À côté de Claude Desktop, cliquez sur Copier la configuration.</string>
-	<key>Next to the time, under the player.</key>
-	<string>À côté du temps, sous le lecteur.</string>
 	<key>Next to the video, LF Studios keeps the details the editor needs, on your Mac.</key>
 	<string>À côté de la vidéo, LF Studios conserve les détails dont l’éditeur a besoin, sur votre Mac.</string>
 	<key>Nice shot. You're all set.</key>
@@ -7698,6 +7700,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Afficher ou masquer vos notes — elles n’apparaissent jamais dans l’enregistrement</string>
 	<key>Show shortcuts</key>
 	<string>Afficher les raccourcis</string>
+	<key>Show the audio meters</key>
+	<string>Afficher les indicateurs de niveau</string>
 	<key>Show the camera full screen, side by side with the screen, or hide it, for any part of the video.</key>
 	<string>Affichez la caméra en plein écran, côte à côte avec l’écran, ou masquez-la, pour n’importe quelle partie de la vidéo.</string>
 	<key>Show the keyboard shortcuts you pressed, like ⌘C, as keys on the video.</key>
@@ -7850,6 +7854,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Effets sonores</string>
 	<key>Sound levels while playing: green is fine, yellow is loud, red is too loud</key>
 	<string>Niveaux sonores pendant la lecture : vert c’est bon, jaune c’est fort, rouge c’est trop fort</string>
+	<key>Sound levels while playing: green is fine, yellow is loud, red is too loud. Click to hide them.</key>
+	<string>Niveaux sonores pendant la lecture : vert, c’est bien ; jaune, c’est fort ; rouge, c’est trop fort. Cliquez pour les masquer.</string>
 	<key>Sound of %@</key>
 	<string>Son de %@</string>
 	<key>Sound of clip %lld</key>
@@ -8470,6 +8476,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>La clé fonctionne : %lld modèles</string>
 	<key>The label under it says how wide the camera is and where it goes in the video. The editor opens with exactly that.</key>
 	<string>L’étiquette en dessous indique la largeur de la caméra et sa place dans la vidéo. L’éditeur s’ouvre exactement ainsi.</string>
+	<key>The levels button next to the time, under the player.</key>
+	<string>Le bouton des niveaux à côté du temps, sous le lecteur.</string>
 	<key>The line runs down through every track, so you can see what's under it.</key>
 	<string>La ligne traverse toutes les pistes : vous voyez ce qui se trouve dessous.</string>
 	<key>The line that follows the pointer over the timeline. Zooming keeps the moment under it in place, and ⌘B splits there.</key>
@@ -8748,8 +8756,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Elles suivent vos paroles, et sont identiques dans l’aperçu et dans l’export.</string>
 	<key>They look through the whole video on your Mac, which takes longer for long or 4K videos.</key>
 	<string>Ils parcourent toute la vidéo sur votre Mac, ce qui prend plus longtemps pour les vidéos longues ou en 4K.</string>
-	<key>They show what the player plays, solo and mute included.</key>
-	<string>Ils montrent ce que le lecteur joue, solo et son coupé compris.</string>
+	<key>They show what the player plays, solo and mute included. They're off to start with: while they're on, Play takes a moment longer to start.</key>
+	<string>Ils montrent ce que joue le lecteur, solo et silence compris. Ils sont désactivés au départ : quand ils sont activés, la lecture met un instant de plus à démarrer.</string>
 	<key>They take about %@ on this Mac (ProRes 422 Proxy at half size). The editor plays them instead of the originals; exports always use the originals. Clean Up in Settings removes them.</key>
 	<string>Ils occupent environ %@ sur ce Mac (ProRes 422 Proxy en demi-taille). L’éditeur les lit à la place des originaux ; les exportations utilisent toujours les originaux. Nettoyer, dans Réglages, les supprime.</string>
 	<key>They're all off in every new editor window. Hide All Guides turns them off at once.</key>

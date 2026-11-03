@@ -72,3 +72,10 @@ rebuilt.
     only to Anthropic, only when set. Anthropic's exact wording when it
     needs one isn't documented here, so a 400/403 from Anthropic that
     mentions a workspace becomes the clear message.
+19. **The meters are a switch, off to start with.** Any listening tap on
+    the player (before or after its effects) made Play start 0.1–0.15 s
+    later, every time (measured); adding the tap only once playback was
+    under way stalled it instead. So the levels button under the player
+    turns them on, and only then is there a tap. Playback is exactly as
+    before for anyone who doesn't. The Guide says Play starts a moment
+    later while they're on.

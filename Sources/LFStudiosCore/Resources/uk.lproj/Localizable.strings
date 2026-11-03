@@ -1924,6 +1924,10 @@
 	<string>Клацніть поле поруч із командою.</string>
 	<key>Click the headphones on a track. Only soloed tracks are heard.</key>
 	<string>Клацніть навушники на доріжці. Чутно лише доріжки соло.</string>
+	<key>Click the levels button to show the meters, and play the video.</key>
+	<string>Клацніть кнопку рівнів, щоб показати індикатори, і запустіть відео.</string>
+	<key>Click the meters to hide them again.</key>
+	<string>Клацніть індикатори, щоб знову їх сховати.</string>
 	<key>Click the microphone. After 3, 2, 1 the video plays, silent, while you talk.</key>
 	<string>Натисніть на мікрофон. Після 3, 2, 1 відео грає без звуку, поки ви говорите.</string>
 	<key>Click the notice that appears after Capture Text (“click for options”).</key>
@@ -5120,8 +5124,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Наступний ключовий кадр</string>
 	<key>Next to Claude Desktop, click Copy setup.</key>
 	<string>Біля Claude Desktop натисніть «Скопіювати налаштування».</string>
-	<key>Next to the time, under the player.</key>
-	<string>Поруч із часом, під плеєром.</string>
 	<key>Next to the video, LF Studios keeps the details the editor needs, on your Mac.</key>
 	<string>Поруч із відео LF Studios зберігає дані, потрібні редактору, — на вашому Mac.</string>
 	<key>Nice shot. You're all set.</key>
@@ -7690,6 +7692,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Показати або сховати нотатки доповідача — вони ніколи не потрапляють у запис</string>
 	<key>Show shortcuts</key>
 	<string>Показувати скорочення</string>
+	<key>Show the audio meters</key>
+	<string>Показати індикатори рівня</string>
 	<key>Show the camera full screen, side by side with the screen, or hide it, for any part of the video.</key>
 	<string>Покажіть камеру на весь кадр, поруч з екраном або сховайте її на будь-якій частині відео.</string>
 	<key>Show the keyboard shortcuts you pressed, like ⌘C, as keys on the video.</key>
@@ -7842,6 +7846,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Звукові ефекти</string>
 	<key>Sound levels while playing: green is fine, yellow is loud, red is too loud</key>
 	<string>Рівні звуку під час відтворення: зелений — добре, жовтий — гучно, червоний — надто гучно</string>
+	<key>Sound levels while playing: green is fine, yellow is loud, red is too loud. Click to hide them.</key>
+	<string>Рівні звуку під час відтворення: зелений — нормально, жовтий — гучно, червоний — надто гучно. Клацніть, щоб сховати.</string>
 	<key>Sound of %@</key>
 	<string>Звук: %@</string>
 	<key>Sound of clip %lld</key>
@@ -8462,6 +8468,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Ключ працює: моделей — %lld</string>
 	<key>The label under it says how wide the camera is and where it goes in the video. The editor opens with exactly that.</key>
 	<string>Підпис під нею показує ширину камери та її місце у відео. Редактор відкриється саме так.</string>
+	<key>The levels button next to the time, under the player.</key>
+	<string>Кнопка рівнів поруч із часом під плеєром.</string>
 	<key>The line runs down through every track, so you can see what's under it.</key>
 	<string>Лінія проходить крізь усі доріжки, тож видно, що під нею.</string>
 	<key>The line that follows the pointer over the timeline. Zooming keeps the moment under it in place, and ⌘B splits there.</key>
@@ -8740,8 +8748,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Анімація йде за вашими словами й має однаковий вигляд і в перегляді, і в експорті.</string>
 	<key>They look through the whole video on your Mac, which takes longer for long or 4K videos.</key>
 	<string>Вони переглядають усе відео на вашому Mac, а для довгих відео чи відео 4K це довше.</string>
-	<key>They show what the player plays, solo and mute included.</key>
-	<string>Вони показують те, що відтворює плеєр, з урахуванням соло й вимкненого звуку.</string>
+	<key>They show what the player plays, solo and mute included. They're off to start with: while they're on, Play takes a moment longer to start.</key>
+	<string>Вони показують те, що відтворює плеєр, з урахуванням соло й вимкнення звуку. Спочатку вони вимкнені: поки вони ввімкнені, відтворення починається трохи пізніше.</string>
 	<key>They take about %@ on this Mac (ProRes 422 Proxy at half size). The editor plays them instead of the originals; exports always use the originals. Clean Up in Settings removes them.</key>
 	<string>Вони займуть близько %@ на цьому Mac (ProRes 422 Proxy у половинному розмірі). Редактор відтворює їх замість оригіналів; експорт завжди використовує оригінали. «Прибрати» в Параметрах вилучає їх.</string>
 	<key>They're all off in every new editor window. Hide All Guides turns them off at once.</key>
