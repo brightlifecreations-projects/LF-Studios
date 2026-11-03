@@ -215,7 +215,7 @@ struct VideoTrackHeader: View {
                              label: state.hidden ? L("Show \(title)") : L("Hide \(title)")) { model.toggleTrackHidden(track) }
             }
             if track.canSolo {
-                headerButton("headphones", on: state.solo,
+                headerButton("headphones", on: state.solo, // l10n-ignore: a symbol name
                              help: state.solo ? L("Stop soloing “\(title)”") : L("Solo “\(title)”: hear only soloed tracks while editing (the export keeps every track)"),
                              label: state.solo ? L("Unsolo \(title)") : L("Solo \(title)")) { model.perform(.basics(.solo(track))) }
             }

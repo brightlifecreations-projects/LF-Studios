@@ -419,7 +419,7 @@ struct VideoPlayerBar: View {
             // Live levels while it plays (1.21.0).
             VideoAudioMeterView(meters: model.meters)
             Spacer(minLength: 6)
-            barButton("repeat", help: model.loopsPlayback ? L("Loop playback is on (⌘L)") : L("Loop playback (⌘L): the In/Out range, the selected clip, or the whole video"), on: model.loopsPlayback) { model.perform(.toggleLoopPlayback) }
+            barButton("repeat", help: model.loopsPlayback ? L("Loop playback is on (⌘L)") : L("Loop playback (⌘L): the In/Out range, the selected clip, or the whole video"), on: model.loopsPlayback) { model.perform(.toggleLoopPlayback) } // l10n-ignore: a symbol name
                 .accessibilityLabel(L("Loop playback"))
                 .accessibilityValue(model.loopsPlayback ? L("On") : L("Off"))
             VideoPlayerGuidesMenu(model: model)
