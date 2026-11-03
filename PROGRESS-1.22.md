@@ -8,8 +8,8 @@
 - [x] 5. ⇧⌘V while typing pastes into the text field (AppDelegate.pasteIntoText)
 - [x] 6. graphify-out/ in .gitignore
 - [x] CHANGELOG [1.21.1]
-- [ ] test-quick, test-full, CI, merge
-- [ ] Publish 1.21.1 (rehearsal from 1.21.0; ≥10 GB free)
+- [x] test-quick, test-full, CI, merge (PR #16; screen tests needed Blip's floating window closed)
+- [x] Published 1.21.1: https://github.com/brightlifecreations-projects/LF-Studios-Releases/releases/tag/v1.21.1 (rehearsal 1.21.0→1.21.1 passed, 792 MB cleaned, 31 GB free)
 
 ## 1.22.0 — branch `cleanup` (from main after 1.21.1)
 - [ ] Before numbers: /graphify ., /ponytail-audit, largest files, VideoEditorModel lines + links
