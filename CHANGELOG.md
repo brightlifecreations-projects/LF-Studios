@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.19.1]
+## [1.19.1] - 2026-11-03
 
 ### Changed
 - **Tacks are saved with the project:** close it and open it again, and an agent's notes and questions are still there, with your answers, even when no agent is connected. Answering or dismissing one isn't a ⌘Z step, and Revert all keeps them.
