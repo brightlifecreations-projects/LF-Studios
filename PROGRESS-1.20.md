@@ -22,4 +22,5 @@
       until it was quiet before test-full.
 - [x] test-full: green on the first run (1441 s).
 - [x] Screenshots page: https://claude.ai/artifact/CUyN7rwQWT36L6W4NXez4a
-- [ ] PR, CI, merge, rehearsal from 1.19.1, publish.
+- [x] PR #14, CI green, merged; rehearsal 1.19.1 → 1.20.0 passed; published
+      (v1.20.0); the release script cleaned up 779 MB. Report: REPORT-1.20.md.
