@@ -129,12 +129,14 @@ final class Reference1211Tests: XCTestCase {
     // MARK: Saved projects
 
     /// The manifest as ⌘S writes it, with what changes on every run (the
-    /// date, new ids, file bookmarks) put in a fixed form.
+    /// date, new ids, file bookmarks, the test media's size) put in a fixed form.
     private func savedBytes(_ model: VideoEditorModel, _ name: String) throws -> String {
         let package = directory.appendingPathComponent("\(name).lfs", isDirectory: true)
         try VideoProjectPackage.save(model.projectContents, to: package, mode: .included, appVersion: "reference")
         var text = String(decoding: try Data(contentsOf: VideoProjectPackage.manifestURL(package)), as: UTF8.self)
         text = text.replacingOccurrences(of: #""(savedAt|createdAt|modified)" : [-0-9.e+]+"#, with: "\"$1\" : 0", options: .regularExpression)
+        // The test's recording is made afresh each run; a busy Mac encodes it a few bytes different.
+        text = text.replacingOccurrences(of: #""size" : [0-9]+"#, with: "\"size\" : 0", options: .regularExpression)
         // A macOS file bookmark holds the temporary folder and the file's disk id.
         text = text.replacingOccurrences(of: #""bookmark" : "[^"]*""#, with: "\"bookmark\" : \"…\"", options: .regularExpression)
         // Ids: numbered in the order they first appear.
