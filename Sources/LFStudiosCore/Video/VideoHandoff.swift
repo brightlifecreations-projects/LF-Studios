@@ -41,8 +41,11 @@ struct VideoHandoffOptions: Codable, Equatable {
     /// Fonts installed on this Mac (Font Book) as well as those added to LF
     /// Studios. Off: a font's license may not allow sharing it.
     var includeInstalledFonts = false
+    /// The Assistant's chat in the handoff's LF Studios project (1.20.0).
+    /// Off: a chat is private until chosen. Tacks always go along.
+    var includeAIChat = false
 
-    init(clips: Clips = .trimmed, lineUp: Bool = true, includeFinal: Bool = true, includeTimeline: Bool = true, quality: Quality = .proRes422HQ, includeSpeakerNotes: Bool = false, includeOriginals: Bool = true, includeInstalledFonts: Bool = false) {
+    init(clips: Clips = .trimmed, lineUp: Bool = true, includeFinal: Bool = true, includeTimeline: Bool = true, quality: Quality = .proRes422HQ, includeSpeakerNotes: Bool = false, includeOriginals: Bool = true, includeInstalledFonts: Bool = false, includeAIChat: Bool = false) {
         self.clips = clips
         self.lineUp = lineUp
         self.includeFinal = includeFinal
@@ -51,9 +54,10 @@ struct VideoHandoffOptions: Codable, Equatable {
         self.includeSpeakerNotes = includeSpeakerNotes
         self.includeOriginals = includeOriginals
         self.includeInstalledFonts = includeInstalledFonts
+        self.includeAIChat = includeAIChat
     }
 
-    private enum CodingKeys: String, CodingKey { case clips, lineUp, includeFinal, includeTimeline, quality, includeSpeakerNotes, includeOriginals, includeInstalledFonts }
+    private enum CodingKeys: String, CodingKey { case clips, lineUp, includeFinal, includeTimeline, quality, includeSpeakerNotes, includeOriginals, includeInstalledFonts, includeAIChat }
 
     /// Options saved before a field existed still load.
     init(from decoder: Decoder) throws {
@@ -67,6 +71,7 @@ struct VideoHandoffOptions: Codable, Equatable {
         includeSpeakerNotes = (try? c.decodeIfPresent(Bool.self, forKey: .includeSpeakerNotes)) ?? d.includeSpeakerNotes
         includeOriginals = (try? c.decodeIfPresent(Bool.self, forKey: .includeOriginals)) ?? d.includeOriginals
         includeInstalledFonts = (try? c.decodeIfPresent(Bool.self, forKey: .includeInstalledFonts)) ?? d.includeInstalledFonts
+        includeAIChat = (try? c.decodeIfPresent(Bool.self, forKey: .includeAIChat)) ?? d.includeAIChat
     }
 
     static let key = "creativeHandoffOptions"
@@ -153,7 +158,8 @@ struct VideoHandoffInput {
 
 extension VideoHandoffInput {
     /// The project's recordings and camera footage, looked up on disk.
-    static func gather(name: String, project: VideoDemoProject, recording: VideoDemoRecordingMetadata?, appendedMetadata: [UUID: VideoDemoRecordingMetadata], exportSettings: VideoExportSettings) async -> VideoHandoffInput {
+    /// `includesAIChat`: the Assistant's chat goes along (off by default).
+    static func gather(name: String, project: VideoDemoProject, recording: VideoDemoRecordingMetadata?, appendedMetadata: [UUID: VideoDemoRecordingMetadata], exportSettings: VideoExportSettings, includesAIChat: Bool = false) async -> VideoHandoffInput {
         let cutout = project.webcam.visible && (project.webcam.shape == .cutout || project.webcam.backdrop == .remove)
         var sources = project.sources
         if sources.isEmpty {
@@ -191,7 +197,8 @@ extension VideoHandoffInput {
         }
         // This Mac's cleaned-up voices and face tracking, named so they go along.
         let primaryKinds = zip(sources, recordings).first { $0.0.isPrimary }?.1.audioKinds ?? []
-        let carried = VideoProjectCaches.carrying(project, recordedCamera: recording?.webcam, primaryKinds: primaryKinds)
+        var carried = VideoProjectCaches.carrying(project, recordedCamera: recording?.webcam, primaryKinds: primaryKinds)
+        if !includesAIChat { carried.aiChat = nil }
         return VideoHandoffInput(name: name, project: carried, recordings: recordings, exportSettings: exportSettings, recording: recording)
     }
 }

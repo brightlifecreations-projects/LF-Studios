@@ -22,6 +22,8 @@
 	<string>%@ (⇧⌘Z)</string>
 	<key>%@ (⌘Z)</key>
 	<string>%@ (⌘Z)</string>
+	<key>%@ API key</key>
+	<string>Ключ API %@</string>
 	<key>%@ It's in “%@” and opens as before.</key>
 	<string>%@ Запис лежить у «%@» і відкривається, як і раніше.</string>
 	<key>%@ Loupe</key>
@@ -44,6 +46,8 @@
 	<string>%@ весь екран</string>
 	<key>%@ has its own version now</key>
 	<string>%@ тепер має власну версію</string>
+	<key>%@ in · %@ out tokens</key>
+	<string>%@ на вході · %@ на виході (токени)</string>
 	<key>%@ is too much for this Mac and would be very slow or fail. Try %@ instead.</key>
 	<string>%@ надто важка для цього Mac: буде дуже повільно або не вийде. Спробуйте %@.</string>
 	<key>%@ isn't supported for captions on this Mac. Pick another language.</key>
@@ -232,6 +236,8 @@
 	<string>Тонка лінія, що відділяє темні записи від тла</string>
 	<key>A keyframe for position, size, rotation and opacity at the playhead</key>
 	<string>Ключовий кадр для позиції, розміру, повороту й непрозорості на покажчику відтворення</string>
+	<key>A long chat sends more each time. New Chat starts small again.</key>
+	<string>Довгий чат щоразу надсилає більше. «Новий чат» починає з малого.</string>
 	<key>A magnifier over one spot at the playhead; the rest of the frame stays in view</key>
 	<string>Лупа над одним місцем біля курсора відтворення; решта кадру лишається видимою</string>
 	<key>A magnifier over one spot; the rest of the frame stays in view.</key>
@@ -308,6 +314,10 @@
 	<string>Вікно такого розміру більше за екран. Найбільший розмір тієї ж форми, що вміщається, — %@ × %@.</string>
 	<key>A yellow marker shows where something was cut. Click it to bring the part back.</key>
 	<string>Жовта позначка показує, де щось вирізано. Клацніть її, щоб повернути частину.</string>
+	<key>AI</key>
+	<string>ШІ</string>
+	<key>AI Assistant</key>
+	<string>ШІ-асистент</string>
 	<key>AI agent</key>
 	<string>ШІ-агент</string>
 	<key>AI agent connected</key>
@@ -316,6 +326,8 @@
 	<string>ШІ-агенти</string>
 	<key>AI agents are off: Settings ▸ Agent.</key>
 	<string>ШІ-агентів вимкнено: Параметри ▸ Агент.</string>
+	<key>API key</key>
+	<string>Ключ API</string>
 	<key>About</key>
 	<string>Про програму</string>
 	<key>About %lld min left</key>
@@ -392,6 +404,10 @@
 	<string>Додати відео з камери телефона</string>
 	<key>Add a caption at the playhead</key>
 	<string>Додати субтитр на покажчику відтворення</string>
+	<key>Add a key and choose a provider first (see Add your API key).</key>
+	<string>Спершу додайте ключ і виберіть провайдера (див. «Додайте ключ API»).</string>
+	<key>Add a key below, then choose its provider.</key>
+	<string>Додайте ключ нижче, потім виберіть його провайдера.</string>
 	<key>Add a keyframe at the playhead: %@</key>
 	<string>Додати ключовий кадр на покажчику відтворення: %@</string>
 	<key>Add a marker</key>
@@ -412,6 +428,10 @@
 	<string>Додати наближення на покажчику відтворення</string>
 	<key>Add a zoom at the playhead (Z)</key>
 	<string>Додати наближення на покажчику відтворення (Z)</string>
+	<key>Add an API key for Claude, OpenAI or Gemini in Settings ▸ AI, then choose its provider.</key>
+	<string>Додайте ключ API для Claude, OpenAI або Gemini в «Параметри ▸ ШІ», потім виберіть його провайдера.</string>
+	<key>Add an API key in Settings ▸ AI first.</key>
+	<string>Спершу додайте ключ API в «Параметри ▸ ШІ».</string>
 	<key>Add another recording or video after this one — LF Studios recordings keep their pointer, clicks, and shortcuts.</key>
 	<string>Додайте після цього ще один запис чи відео — записи LF Studios зберігають свій курсор, клацання й скорочення.</string>
 	<key>Add another recording to the end of this one, to make one video.</key>
@@ -442,6 +462,8 @@
 	<string>Додати розділи з маркерів</string>
 	<key>Add chapters from markers puts chapters in MP4 and ProRes files.</key>
 	<string>«Додати розділи з маркерів» додає розділи у файли MP4 і ProRes.</string>
+	<key>Add credit under Billing.</key>
+	<string>Поповніть баланс у розділі Billing.</string>
 	<key>Add effects from Library ▸ Effects.</key>
 	<string>Ефекти додаються з «Бібліотека ▸ Ефекти».</string>
 	<key>Add highlight at the playhead (⌥H)</key>
@@ -484,6 +506,8 @@
 	<string>Додати у вибране</string>
 	<key>Add typing zooms</key>
 	<string>Наблизити набір тексту</string>
+	<key>Add your API key</key>
+	<string>Додайте ключ API</string>
 	<key>Add zoom at playhead</key>
 	<string>Додати наближення на покажчику відтворення</string>
 	<key>Add zooms</key>
@@ -542,6 +566,8 @@
 	<string>Після запису</string>
 	<key>After recording, click Restore size to put it back.</key>
 	<string>Після запису клацніть «Повернути розмір», щоб повернути все як було.</string>
+	<key>After saving, Settings shows only the key's last 4 characters.</key>
+	<string>Після збереження в параметрах видно лише останні 4 символи ключа.</string>
 	<key>After you stop, LF Studios asks where to save the recording, then puts everything from it in one new folder: the video, the camera, the sound, and the project that opens it all.</key>
 	<string>Коли ви зупините запис, LF Studios запитає, куди його зберегти, а тоді покладе все з нього в одну нову папку: відео, камеру, звук і проєкт, який усе це відкриває.</string>
 	<key>Afterwards, click Restore size to put the window back.</key>
@@ -656,6 +682,8 @@
 	<string>Текст розмітки</string>
 	<key>Annotation tools</key>
 	<string>Інструменти розмітки</string>
+	<key>Another AI agent is editing this project. Wait until it's done, then ask again.</key>
+	<string>Цей проєкт уже редагує інший ШІ-агент. Дочекайтеся, поки він закінчить, і попросіть знову.</string>
 	<key>Another app may use the same keys: choose different ones.</key>
 	<string>Інша програма може використовувати ті самі клавіші: виберіть інші.</string>
 	<key>Answer</key>
@@ -746,6 +774,12 @@
 	<string>Як кліп вона також отримує ключові кадри, анімації, ефекти й фільтри.</string>
 	<key>As an effect clip: drag an effect onto the timeline. It changes the main track and the tracks under it while it plays.</key>
 	<string>Як кліп ефекту: перетягніть ефект на шкалу часу. Він змінює основну доріжку й доріжки під ним, поки відтворюється.</string>
+	<key>Ask for an edit in plain words, and an AI makes it with the editor's own tools while you watch. It uses your own API key from Claude, OpenAI or Gemini.</key>
+	<string>Попросіть про правку простими словами, і ШІ зробить її інструментами редактора у вас на очах. Він працює за вашим ключем API від Claude, OpenAI або Gemini.</string>
+	<key>Ask for an edit: “Cut the long pauses”, “Add captions and fix the typos”, “Mark where the settings open”.</key>
+	<string>Попросіть відредагувати: «Прибери довгі паузи», «Додай субтитри й виправ помилки», «Познач, де відкриваються налаштування».</string>
+	<key>Ask the Assistant to edit…</key>
+	<string>Попросіть Асистента щось змінити…</string>
 	<key>Ask where to save after each recording</key>
 	<string>Запитувати, куди зберегти, після кожного запису</string>
 	<key>Aspect Ratio %@ — %@</key>
@@ -754,10 +788,18 @@
 	<string>Співвідношення сторін</string>
 	<key>Aspect ratio menu ▸ Fill the Frame, Follow the Cursor.</key>
 	<string>Меню формату ▸ Заповнити кадр і стежити за курсором.</string>
+	<key>Assistant</key>
+	<string>Асистент</string>
+	<key>Assistant Panel</key>
+	<string>Панель «Асистент»</string>
+	<key>Assistant editing</key>
+	<string>Асистент редагує</string>
 	<key>At playhead</key>
 	<string>На покажчику</string>
 	<key>At the top of the Captions panel, for recordings made with Speaker notes open.</key>
 	<string>Угорі панелі «Субтитри» — для записів, зроблених із відкритими нотатками доповідача.</string>
+	<key>At the top, set Provider to the one you added. Until you do, the Assistant stays off.</key>
+	<string>Угорі виберіть у полі «Провайдер» доданого. Доти Асистент вимкнений.</string>
 	<key>Audio</key>
 	<string>Аудіо</string>
 	<key>Audio only</key>
@@ -830,6 +872,8 @@
 	<string>Назад</string>
 	<key>Back to how the project was before the agent started (⌘Z brings the changes back)</key>
 	<string>Повернути проєкт до вигляду перед роботою агента (⌘Z поверне зміни)</string>
+	<key>Back to how the project was before this request (⌘Z brings the changes back)</key>
+	<string>Повернути проєкт до стану перед цим запитом (⌘Z поверне зміни)</string>
 	<key>Back to the LF Studios look</key>
 	<string>Відновлено стиль LF Studios</string>
 	<key>Back to the original recording — ⌘Z to undo</key>
@@ -1346,6 +1390,8 @@
 	<string>Розділи текстом («0:00 Початок») для опису на YouTube</string>
 	<key>Chapters copied — paste them into the video's description</key>
 	<string>Розділи скопійовано — вставте їх в опис відео</string>
+	<key>Chat with an AI that edits this video with you, using your own API key. Requests go straight from this Mac to the provider.</key>
+	<string>Спілкуйтеся з ШІ, який редагує відео разом з вами, за вашим власним ключем API. Запити йдуть напряму з цього Mac до провайдера.</string>
 	<key>Check</key>
 	<string>Перевірити</string>
 	<key>Check Settings ▸ General ▸ Show menu bar icon.</key>
@@ -1414,6 +1460,8 @@
 	<string>Виберіть Whisper, а тоді «Модель».</string>
 	<key>Choose a .ttf or .otf font. LF Studios keeps its own copy, so it keeps working if the file is deleted.</key>
 	<string>Виберіть шрифт .ttf або .otf. LF Studios збереже власну копію, тож шрифт працюватиме, навіть якщо файл видалити.</string>
+	<key>Choose a Model, or keep the one LF Studios chose.</key>
+	<string>Виберіть модель або залиште ту, що вибрала LF Studios.</string>
 	<key>Choose a PNG to use as the pointer, then click where it points</key>
 	<string>Виберіть PNG для курсора, потім клацніть там, куди він вказує</string>
 	<key>Choose a Size, a font, and Top or Bottom. Or drag the keys on the preview.</key>
@@ -1434,6 +1482,8 @@
 	<string>Виберіть мову й клацніть «Перекласти».</string>
 	<key>Choose a logo, watermark, or screenshot to place on the video</key>
 	<string>Виберіть логотип, водяний знак чи знімок екрана, щоб розмістити на відео</string>
+	<key>Choose a model</key>
+	<string>Виберіть модель</string>
 	<key>Choose a picture.</key>
 	<string>Виберіть зображення.</string>
 	<key>Choose a project, a folder, or a video</key>
@@ -1540,6 +1590,8 @@
 	<string>Класичний</string>
 	<key>Claude Code, Cursor and Codex have their own Copy setup buttons.</key>
 	<string>Claude Code, Cursor і Codex мають власні кнопки «Скопіювати налаштування».</string>
+	<key>Claude keys start with sk-ant-.</key>
+	<string>Ключі Claude починаються з sk-ant-.</string>
 	<key>Claude ▸ Settings ▸ Developer ▸ Edit Config: paste it into claude_desktop_config.json, save, and restart Claude.</key>
 	<string>Claude ▸ Параметри ▸ Розробник ▸ Змінити конфігурацію: вставте в claude_desktop_config.json, збережіть і перезапустіть Claude.</string>
 	<key>Clay</key>
@@ -1678,6 +1730,8 @@
 	<string>Клацніть «Знайти особисті дані». Тим часом можна монтувати далі.</string>
 	<key>Click Find Private Info. You can keep editing while it looks.</key>
 	<string>Клацніть «Знайти особисті дані». Поки триває пошук, можна монтувати далі.</string>
+	<key>Click Get API key, then Create API key, and copy it.</key>
+	<string>Натисніть Get API key, потім Create API key і скопіюйте ключ.</string>
 	<key>Click Hide camera during silences. Hide blocks appear on the Camera lane.</key>
 	<string>Клацніть «Ховати камеру в паузах». На доріжці «Камера» з’являться блоки приховування.</string>
 	<key>Click Image above the preview.</key>
@@ -1728,6 +1782,10 @@
 	<string>Клацніть «Системний звук» на панелі запису або Параметри ▸ Запис ▸ Аудіо ▸ Записувати системний звук.</string>
 	<key>Click Take screenshot in Home.</key>
 	<string>Клацніть «Зробити знімок екрана» на головній.</string>
+	<key>Click Test Key to load the models.</key>
+	<string>Натисніть «Перевірити ключ», щоб завантажити моделі.</string>
+	<key>Click Test Key. It says the key works and loads the provider's models.</key>
+	<string>Натисніть «Перевірити ключ»: він повідомить, що ключ працює, і завантажить моделі провайдера.</string>
 	<key>Click Transcribe with Whisper.</key>
 	<string>Клацніть «Розшифрувати з Whisper».</string>
 	<key>Click Transcribe. Keep editing while it listens.</key>
@@ -1794,6 +1852,8 @@
 	<string>Клацніть чи тягніть будь-де на шкалі часу, щоб перейти туди.</string>
 	<key>Click or press Esc to cancel</key>
 	<string>Клацніть або натисніть Esc, щоб скасувати</string>
+	<key>Click or type in the editor while it works and it pauses. Click Resume to let it go on.</key>
+	<string>Клацніть або почніть друкувати в редакторі, поки він працює, — він стане на паузу. Натисніть «Продовжити», щоб він продовжив.</string>
 	<key>Click or type in the editor while it works and it pauses: its next change waits until you click Resume in the Agent panel.</key>
 	<string>Натисніть або почніть друкувати в редакторі під час його роботи, і він стане на паузу: наступна зміна чекатиме, доки ви не натиснете «Продовжити» на панелі «Агент».</string>
 	<key>Click play, press Space, or tick Start with recording.</key>
@@ -2186,6 +2246,8 @@
 	<string>Створити проксі…</string>
 	<key>Creative Handoff</key>
 	<string>Творче передавання</string>
+	<key>Creative Handoff leaves the chat out unless you turn on Include AI chat history.</key>
+	<string>Творче передавання не додає чат, доки ви не ввімкнете «Додати історію чату з ШІ».</string>
 	<key>Creative Handoff's README.txt says where each part goes, in pixels, for your editing app.</key>
 	<string>README.txt Творчого передавання вказує в пікселях, де розміщена кожна частина, — для вашої програми монтажу.</string>
 	<key>Creative Handoff…</key>
@@ -2720,10 +2782,18 @@
 	<string>Кожен файл — окрема доріжка: перетягуйте її на таймлайні, обрізайте краї, діліть ⌘B. MP3, WAV, M4A, AAC, AIFF, FLAC або CAF — або киньте файли на таймлайн.</string>
 	<key>Each panel's header. In the usual layout, move the pointer to the very top edge of a panel and its header appears.</key>
 	<string>Заголовок кожної панелі. У звичайному макеті наведіть вказівник на самий верхній край панелі, і заголовок з’явиться.</string>
+	<key>Each provider handles your data under its own terms.</key>
+	<string>Кожен провайдер обробляє ваші дані за своїми умовами.</string>
+	<key>Each provider's website lists its prices per million tokens; bigger models cost more.</key>
+	<string>На сайті кожного провайдера вказано ціни за мільйон токенів; більші моделі коштують дорожче.</string>
 	<key>Each recording in its own folder</key>
 	<string>Кожен запис в окремій папці</string>
 	<key>Each recording keeps its own pointer, clicks, and shortcuts. Reorder them here; cut and trim them on the timeline like any clip.</key>
 	<string>Кожен запис зберігає свій курсор, клацання й скорочення. Змінюйте їх порядок тут; вирізайте й підрізайте їх на шкалі часу, як будь-який кліп.</string>
+	<key>Each request is billed to your account by the provider; the Assistant shows the tokens each reply used. Keys are kept only in your Mac's Keychain.</key>
+	<string>Кожен запит оплачується з вашого рахунку в провайдера; Асистент показує, скільки токенів пішло на кожну відповідь. Ключі зберігаються лише у зв’язці ключів вашого Mac.</string>
+	<key>Each request is one step back: Revert All undoes all of it at once, and ⌘Z brings it back.</key>
+	<string>Кожен запит — один крок: «Скасувати все» скасовує його цілком, а ⌘Z повертає.</string>
 	<key>Each shape keeps its own version: switch back and forth without losing anything. Cuts, words, and styles stay shared.</key>
 	<string>Кожен формат має власну версію: перемикайтеся туди й назад, нічого не втрачаючи. Вирізання, слова й стилі спільні.</string>
 	<key>Each track has its own Hide, Mute and Lock in its header.</key>
@@ -2766,6 +2836,8 @@
 	<string>Редагувати вибраний знімок</string>
 	<key>Edit with Proxies</key>
 	<string>Монтувати з проксі</string>
+	<key>Edit with the Assistant</key>
+	<string>Редагування з Асистентом</string>
 	<key>Edit your video like a document: delete words, and that part of the video goes.</key>
 	<string>Монтуйте відео як документ: видаліть слова — і ця частина відео зникне.</string>
 	<key>Editable Cursor</key>
@@ -2778,6 +2850,8 @@
 	<string>«Редагований курсор» записує курсор окремо, щоб редактор міг згладжувати його, змінювати розмір і зберігати чіткість під час наближення, — відеоредактор додає його назад під час експорту (у самому файлі запису курсора немає). «Показувати клавіатурні скорочення» записує лише комбінації з ⌘, ⌃ і ⌥ (а також Esc і функціональні клавіші), щоб редактор міг показати їх як клавіші, — звичайне введення тексту ніколи не записується; macOS запитає дозвіл у розділі «Доступність». Типова якість — «Висока»; «Максимальна» зберігає більше деталей, але створює більші файли. Зворотний відлік дає вам мить після натискання «Записати»; Esc скасовує його. Зупинити запис із будь-якої програми можна за допомогою %@ — звичайна клавіша Esc і далі діє у програмі, яку ви записуєте.</string>
 	<key>Editing</key>
 	<string>Монтаж</string>
+	<key>Editing…</key>
+	<string>Редагує…</string>
 	<key>Editor tips</key>
 	<string>Поради в редакторі</string>
 	<key>Effect</key>
@@ -3288,6 +3362,8 @@
 	<string>Частота кадрів</string>
 	<key>Frame: padding, corners &amp; shadow</key>
 	<string>Рамка: відступ, кути й тінь</string>
+	<key>Frames of the video, only when Send video frames to the AI is on (it's off at first).</key>
+	<string>Кадри відео — лише якщо ввімкнено «Надсилати кадри відео ШІ» (спочатку вимкнено).</string>
 	<key>Framing</key>
 	<string>Кадрування</string>
 	<key>Framing: Follow cursor follows the pointer; Aim by hand lets you drag the frame on the preview; Follow typing follows your typing.</key>
@@ -3368,8 +3444,18 @@
 	<string>Проміжок</string>
 	<key>Gap between the parts</key>
 	<string>Проміжок між частинами</string>
+	<key>Gemini keys start with AIza. Set up billing in Google AI Studio for more than its free limits.</key>
+	<string>Ключі Gemini починаються з AIza. Щоб вийти за безплатні ліміти, налаштуйте оплату в Google AI Studio.</string>
 	<key>General</key>
 	<string>Загальні</string>
+	<key>Get a Claude API key</key>
+	<string>Отримайте ключ API Claude</string>
+	<key>Get a Gemini API key</key>
+	<string>Отримайте ключ API Gemini</string>
+	<key>Get a key</key>
+	<string>Отримати ключ</string>
+	<key>Get an OpenAI API key</key>
+	<string>Отримайте ключ API OpenAI</string>
 	<key>Get the area exactly right: a magnifier, the size as you drag, and keys to fine-tune.</key>
 	<string>Виберіть область точно: лупа, розмір під час перетягування й клавіші для точного налаштування.</string>
 	<key>Get things ready while the countdown runs.</key>
@@ -3506,6 +3592,8 @@
 	<string>Приховати особисті дані</string>
 	<key>Hide the Agent panel</key>
 	<string>Сховати панель «Агент»</string>
+	<key>Hide the Assistant panel</key>
+	<string>Сховати панель «Асистент»</string>
 	<key>Hide the Menu Bar Icon?</key>
 	<string>Сховати значок у смузі меню?</string>
 	<key>Hide the camera whenever you're not talking, and bring it back when you speak.</key>
@@ -3738,6 +3826,8 @@
 	<string>На панелі «Стиль» відкрийте «Стилі» й виберіть «Зберегти як стиль…».</string>
 	<key>In the editor, check that Mute video is off in the Audio panel, and that the preview isn't muted (press M).</key>
 	<string>У редакторі перевірте, що на панелі «Аудіо» вимкнено «Вимкнути звук відео», а звук перегляду не вимкнено (натисніть M).</string>
+	<key>In the editor, choose Layout ▸ Assistant Panel.</key>
+	<string>У редакторі виберіть «Макет ▸ Панель «Асистент»».</string>
 	<key>In the editor, click Add typing zooms.</key>
 	<string>У редакторі клацніть «Наблизити набір тексту».</string>
 	<key>In the editor, drag the divider on the video to change the split. Zooms happen inside the screen's part; captions go over the whole video.</key>
@@ -3800,10 +3890,14 @@
 	<string>У відеоредакторі відкрийте меню формату на панелі інструментів і виберіть 9:16 — Reels, TikTok, Shorts.</string>
 	<key>In the video editor: File ▸ Save Project (⌘S) or Save Project As… (⇧⌘S).</key>
 	<string>У відеоредакторі: Файл ▸ Зберегти проєкт (⌘S) або Зберегти проєкт як… (⇧⌘S).</string>
+	<key>In the video editor: Layout ▸ Assistant Panel.</key>
+	<string>У відеоредакторі: «Макет ▸ Панель «Асистент»».</string>
 	<key>In your next video, click Apply my style (⇧⌘Y).</key>
 	<string>У наступному відео клацніть «Застосувати мій стиль» (⇧⌘Y).</string>
 	<key>In, Out and Combo animations</key>
 	<string>Анімації «Початок», «Кінець» і «Комбо»</string>
+	<key>Include AI chat history</key>
+	<string>Додати історію чату з ШІ</string>
 	<key>Include a timeline for editing apps</key>
 	<string>Додати таймлайн для програм монтажу</string>
 	<key>Include aspect ratio (%@)</key>
@@ -3872,6 +3966,8 @@
 	<string>Він також зникне з відео. Файл лишиться на місці, а ⌘Z усе поверне.</string>
 	<key>It can read the timeline, the transcript, the captions, the markers and the keyframes, and look at frames.</key>
 	<string>Він може читати таймлайн, розшифровку, субтитри, маркери та ключові кадри й переглядати кадри.</string>
+	<key>It can run Auto captions, Remove Ums, Shorten Pauses and Apply My Style, and fill in the Export window. You always click Export yourself.</key>
+	<string>Він уміє запускати «Автосубтитри», «Вилучити слова-паразити», «Скоротити паузи» й «Застосувати мій стиль», а також заповнювати вікно експорту. «Експорт» завжди натискаєте ви.</string>
 	<key>It can split, trim, delete, add markers, titles and keyframes, fix captions, remove ums, and place files that are already in the project or its folder.</key>
 	<string>Він може розрізати, обрізати, видаляти, додавати маркери, титри та ключові кадри, виправляти субтитри, прибирати «еее» і розміщувати файли, які вже є в проєкті чи його папці.</string>
 	<key>It can't export, record sound or video, use the clipboard, or open files from anywhere else. Locked tracks stay as they are.</key>
@@ -3988,6 +4084,8 @@
 	<string>Зберігати висоту тону</string>
 	<key>Keep the agent's changes (each still undoes with ⌘Z)</key>
 	<string>Залишити зміни агента (кожну й далі можна скасувати ⌘Z)</string>
+	<key>Keep the changes (each still undoes with ⌘Z)</key>
+	<string>Залишити зміни (кожну досі можна скасувати ⌘Z)</string>
 	<key>Keep the current style</key>
 	<string>Залишити поточний стиль</string>
 	<key>Keeps just the person, found on this Mac</key>
@@ -4000,6 +4098,8 @@
 	<string>Зарезервовано для «%@»</string>
 	<key>Kept the agent's changes</key>
 	<string>Зміни агента залишено</string>
+	<key>Key ending in %@</key>
+	<string>Ключ, що закінчується на %@</string>
 	<key>Key for %@: %@</key>
 	<string>Клавіша для «%1$@»: %2$@</string>
 	<key>Key or password</key>
@@ -4070,6 +4170,8 @@
 %@</key>
 	<string>LF Studios не вдалося записати файл сюди:
 %@</string>
+	<key>LF Studios couldn't reach the provider. Check your internet connection.</key>
+	<string>LF Studios не вдалося зв’язатися з провайдером. Перевірте підключення до інтернету.</string>
 	<key>LF Studios doesn't find updates</key>
 	<string>LF Studios не знаходить оновлень</string>
 	<key>LF Studios doesn't have Screen Recording permission yet.</key>
@@ -4146,6 +4248,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>LF Studios — Історія знімків</string>
 	<key>LF Studios ▸ Check for Updates…, and Settings ▸ General ▸ Updates ▸ Check for updates automatically.</key>
 	<string>LF Studios ▸ Перевірити оновлення… і Параметри ▸ Загальні ▸ Оновлення ▸ Перевіряти оновлення автоматично.</string>
+	<key>LF Studios ▸ Settings ▸ AI ▸ Send video frames to the AI.</key>
+	<string>LF Studios ▸ Параметри ▸ ШІ ▸ Надсилати кадри відео ШІ.</string>
+	<key>LF Studios ▸ Settings ▸ AI.</key>
+	<string>LF Studios ▸ Параметри ▸ ШІ.</string>
 	<key>LF Studios ▸ Settings ▸ Agent.</key>
 	<string>LF Studios ▸ Параметри ▸ Агент.</string>
 	<key>LF Studios' own floating windows stay out of your screen recordings and screenshots.</key>
@@ -4334,6 +4440,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Слухання…</string>
 	<key>Listens on this Mac — nothing is uploaded</key>
 	<string>Слухає на цьому Mac — нічого не вивантажується</string>
+	<key>Load the provider's current models</key>
+	<string>Завантажити поточні моделі провайдера</string>
 	<key>Loaded:</key>
 	<string>Завантажено:</string>
 	<key>Locate…</key>
@@ -4344,6 +4452,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Заблокувати «%@»: на ній нічого не можна змінити</string>
 	<key>Look</key>
 	<string>Вигляд</string>
+	<key>Looking at the project…</key>
+	<string>Вивчає проєкт…</string>
 	<key>Looking for your face in the camera video. This happens once; the result is kept.</key>
 	<string>Пошук обличчя у відео з камери. Це робиться один раз; результат зберігається.</string>
 	<key>Looking through the video…</key>
@@ -4406,6 +4516,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Зробити лупою</string>
 	<key>Make a clip come in, go out, or keep moving while it shows.</key>
 	<string>Нехай кліп з’являється, зникає або рухається, поки його видно.</string>
+	<key>Make a key in Google AI Studio to use Gemini in the Assistant.</key>
+	<string>Створіть ключ у Google AI Studio, щоб користуватися Gemini в Асистенті.</string>
+	<key>Make a key on Anthropic's website to use Claude in the Assistant.</key>
+	<string>Створіть ключ на сайті Anthropic, щоб користуватися Claude в Асистенті.</string>
+	<key>Make a key on OpenAI's website to use its models in the Assistant.</key>
+	<string>Створіть ключ на сайті OpenAI, щоб користуватися його моделями в Асистенті.</string>
 	<key>Make a vertical video for Reels or TikTok</key>
 	<string>Зробити вертикальне відео для Reels чи TikTok</string>
 	<key>Make captions again</key>
@@ -4418,6 +4534,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Полегшити: %@, %@ fps</string>
 	<key>Make my videos look the same every time</key>
 	<string>Щоб мої відео щоразу мали однаковий вигляд</string>
+	<key>Make one on the provider's website; it bills your account there.</key>
+	<string>Створіть його на сайті провайдера; оплата — з вашого рахунку там.</string>
 	<key>Make several clips above the main track into one: moved, sized, turned and faded together.</key>
 	<string>Об’єднайте кілька кліпів над основною доріжкою в один: їх переміщують, масштабують, повертають і згасають разом.</string>
 	<key>Make sure LF Studios is allowed under Microphone in System Settings. It appears there only after it has asked once, and there's no + button: turn on Microphone in the recording bar and click Allow.</key>
@@ -4510,6 +4628,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Повідомлення</string>
 	<key>Message QR found</key>
 	<string>Знайдено QR-код із повідомленням</string>
+	<key>Message to the Assistant</key>
+	<string>Повідомлення Асистенту</string>
 	<key>Mic disconnected</key>
 	<string>Немає мікрофона</string>
 	<key>Mic stopped</key>
@@ -4804,8 +4924,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Чого ніколи немає у ваших записах</string>
 	<key>Never switch to the text beam or the hand</key>
 	<string>Ніколи не перемикати на текстовий курсор чи руку</string>
+	<key>Never your API keys to anyone but their own provider, and never your recordings' files.</key>
+	<string>Ключі API — ніколи нікому, крім їхнього провайдера, і ніколи — файли ваших записів.</string>
 	<key>New</key>
 	<string>Нове</string>
+	<key>New Chat</key>
+	<string>Новий чат</string>
 	<key>New Folder</key>
 	<string>Нова папка</string>
 	<key>New Folder…</key>
@@ -5012,6 +5136,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>На покажчику нічого немає</string>
 	<key>Nothing changed yet.</key>
 	<string>Поки нічого не змінено.</string>
+	<key>Nothing goes through LF Studios' own servers: there are none.</key>
+	<string>Нічого не проходить через сервери LF Studios: їх немає.</string>
 	<key>Nothing here yet</key>
 	<string>Тут поки порожньо</string>
 	<key>Nothing in the Guide matches your search. Try a shorter word, like “zoom” or “camera”.</key>
@@ -5078,6 +5204,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Вимкнений, він лишається на таймлайні, але не видно й не чути (V)</string>
 	<key>Off: faster sounds higher, slower lower. The sound is silent faster than 32× or slower than 1/32×.</key>
 	<string>Вимкнено: швидше звучить вище, повільніше — нижче. Звук вимикається при швидкості понад 32× або менше 1/32×.</string>
+	<key>Off: only the timeline, the transcript and the captions are sent. On: the AI can also look at frames of the video.</key>
+	<string>Вимк.: надсилаються лише таймлайн, розшифровка й субтитри. Увімк.: ШІ може також переглядати кадри відео.</string>
 	<key>Offset</key>
 	<string>Зсув</string>
 	<key>Older</key>
@@ -5146,6 +5274,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Зберігаються лише скорочення з ⌘ чи ⌃ (і кілька клавіш, як-от Esc), але ніколи звичайний набір тексту.</string>
 	<key>Only text and picture annotations can move to a track</key>
 	<string>На доріжку можна перенести лише текстову розмітку й зображення</string>
+	<key>Only what it needs for your request goes to the provider you chose, straight from this Mac.</key>
+	<string>Провайдерові, якого ви вибрали, напряму з цього Mac надсилається лише те, що потрібно для запиту.</string>
 	<key>Opacity</key>
 	<string>Непрозорість</string>
 	<key>Open</key>
@@ -5166,6 +5296,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Відкрийте історію з меню LF Studios, клацніть знімок правою кнопкою й виберіть «Закріпити на екрані».</string>
 	<key>Open Keyboard Settings</key>
 	<string>Відкрити параметри клавіатури</string>
+	<key>Open LF Studios ▸ Settings ▸ AI.</key>
+	<string>Відкрийте LF Studios ▸ Параметри ▸ ШІ.</string>
 	<key>Open LF Studios ▸ Settings ▸ Agent and turn on Allow AI agents to edit.</key>
 	<string>Відкрийте LF Studios ▸ Параметри ▸ Агент і ввімкніть «Дозволити ШІ-агентам редагувати».</string>
 	<key>Open Link</key>
@@ -5196,6 +5328,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Відкрийте Timeline.fcpxml у Final Cut Pro чи DaVinci Resolve або “Timeline (Premiere).xml” у Premiere Pro.</string>
 	<key>Open Video Editor</key>
 	<string>Відкрити відеоредактор</string>
+	<key>Open Website</key>
+	<string>Відкрити сайт</string>
 	<key>Open a folder of files as one project: a recording's folder, a Creative Handoff, or any folder with videos in it.</key>
 	<string>Відкрийте папку з файлами як один проєкт: папку запису, «Творче передавання» або будь-яку папку з відео.</string>
 	<key>Open a project</key>
@@ -5216,16 +5350,24 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Відкрийте знімок, щоб розмітити його, а тоді скопіюйте чи збережіть результат.</string>
 	<key>Open a whole folder</key>
 	<string>Відкрити цілу папку</string>
+	<key>Open aistudio.google.com and sign in with your Google account (Settings ▸ AI ▸ Open Website takes you there).</key>
+	<string>Відкрийте aistudio.google.com і ввійдіть з обліковим записом Google (туди веде «Параметри ▸ ШІ ▸ Відкрити сайт»).</string>
 	<key>Open and close</key>
 	<string>Поява й зникнення</string>
 	<key>Open at login</key>
 	<string>Відкривати під час входу</string>
 	<key>Open compound clip</key>
 	<string>Відкрити складений кліп</string>
+	<key>Open console.anthropic.com and sign in or make an account (Settings ▸ AI ▸ Open Website takes you there).</key>
+	<string>Відкрийте console.anthropic.com і ввійдіть або створіть обліковий запис (туди веде «Параметри ▸ ШІ ▸ Відкрити сайт»).</string>
 	<key>Open in annotation editor</key>
 	<string>Відкрити в редакторі знімків</string>
 	<key>Open or copy each link and email address.</key>
 	<string>Відкрийте чи скопіюйте кожне посилання й адресу ел. пошти.</string>
+	<key>Open platform.openai.com and sign in or make an account (Settings ▸ AI ▸ Open Website takes you there).</key>
+	<string>Відкрийте platform.openai.com і ввійдіть або створіть обліковий запис (туди веде «Параметри ▸ ШІ ▸ Відкрити сайт»).</string>
+	<key>Open the Assistant from Layout ▸ Assistant Panel.</key>
+	<string>Відкрийте Асистента через «Макет ▸ Панель «Асистент»».</string>
 	<key>Open the LF Studios menu and, under Health, click Fix next to Apple Shortcuts.</key>
 	<string>Відкрийте меню LF Studios і в розділі «Стан» клацніть «Виправити» поруч зі «Скорочення Apple».</string>
 	<key>Open the LF Studios menu in the menu bar and choose Capture Text.</key>
@@ -5240,6 +5382,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Відкривати відеоредактор після запису.</string>
 	<key>Open video…</key>
 	<string>Відкрити відео…</string>
+	<key>OpenAI keys start with sk-. A ChatGPT subscription doesn't include API credit.</key>
+	<string>Ключі OpenAI починаються з sk-. Передплата ChatGPT не включає коштів для API.</string>
 	<key>Opened on another Mac, the project looks and sounds the same: the cleaned-up voice, Keep face centered, the pointer's own picture, and a macOS wallpaper background travel in the folder.</key>
 	<string>На іншому Mac проєкт виглядає й звучить так само: очищений голос, «Тримати обличчя в центрі», власне зображення курсора й тло зі шпалер macOS передаються в папці.</string>
 	<key>Opened “%@”</key>
@@ -5306,6 +5450,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Кінець раніше</string>
 	<key>Out later</key>
 	<string>Кінець пізніше</string>
+	<key>Out of credit or sending too fast? The Assistant says so; add credit or wait a minute.</key>
+	<string>Закінчилися кошти або запити йдуть надто часто? Асистент про це скаже; поповніть баланс або зачекайте хвилину.</string>
 	<key>Outline</key>
 	<string>Контур</string>
 	<key>Outlined</key>
@@ -5340,12 +5486,22 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Пароль</string>
 	<key>Paste</key>
 	<string>Вставити</string>
+	<key>Paste a key that starts with %@</key>
+	<string>Вставте ключ, що починається з %@</string>
 	<key>Paste it anywhere with ⌘V.</key>
 	<string>Вставте його будь-де за допомогою ⌘V.</string>
+	<key>Paste it in LF Studios ▸ Settings ▸ AI ▸ Anthropic (Claude) and click Save.</key>
+	<string>Вставте його в LF Studios ▸ Параметри ▸ ШІ ▸ Anthropic (Claude) і натисніть «Зберегти».</string>
+	<key>Paste it in LF Studios ▸ Settings ▸ AI ▸ Google Gemini and click Save.</key>
+	<string>Вставте його в LF Studios ▸ Параметри ▸ ШІ ▸ Google Gemini і натисніть «Зберегти».</string>
+	<key>Paste it in LF Studios ▸ Settings ▸ AI ▸ OpenAI and click Save.</key>
+	<string>Вставте його в LF Studios ▸ Параметри ▸ ШІ ▸ OpenAI і натисніть «Зберегти».</string>
 	<key>Paste it into Terminal and press Return.</key>
 	<string>Вставте в Термінал і натисніть Return.</string>
 	<key>Paste it into ~/.codex/config.toml and save.</key>
 	<string>Вставте в ~/.codex/config.toml і збережіть.</string>
+	<key>Paste key</key>
+	<string>Вставте ключ</string>
 	<key>Paste or type your notes here. They stay out of every recording.</key>
 	<string>Вставте або введіть нотатки тут. Вони не потрапляють у жоден запис.</string>
 	<key>Paste or type your notes, then click Read.</key>
@@ -5382,6 +5538,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Призупиніть відео й перетягніть субтитр на перегляді.</string>
 	<key>Paused</key>
 	<string>Призупинено</string>
+	<key>Paused: click Resume to go on</key>
+	<string>Пауза: натисніть «Продовжити», щоб продовжити</string>
 	<key>Paused: you took over</key>
 	<string>Пауза: ви перехопили керування</string>
 	<key>Pauses longer than a second become short ones, except where you're clicking, typing, or moving the pointer. ⌘Z undoes either one.</key>
@@ -5704,6 +5862,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Властивості ▸ Відстеження, коли вибрано кліп над основною доріжкою.</string>
 	<key>Properties: Show, Opacity, Size, Rotation, Mirror, Rotate 90°, Fit, Fill, Crop, and for videos Volume and Speed.</key>
 	<string>Властивості: Показ, Непрозорість, Розмір, Поворот, Віддзеркалити, Повернути на 90°, Вписати, Заповнити, Обрізання, а у відео — Гучність і Швидкість.</string>
+	<key>Provider</key>
+	<string>Провайдер</string>
+	<key>Provider and model</key>
+	<string>Провайдер і модель</string>
 	<key>Proxies</key>
 	<string>Проксі</string>
 	<key>Proxies ready — the editor plays them; exports use the originals</key>
@@ -6410,6 +6572,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Reels, TikTok, Shorts</string>
 	<key>Reframes zooms, moves the camera bubble, and keeps captions in the safe area for %@. This ratio then keeps its own version.</key>
 	<string>Перебудовує зуми, пересуває бульбашку камери й тримає субтитри в безпечній зоні для %@. Далі цей формат матиме власну версію.</string>
+	<key>Refresh</key>
+	<string>Оновити</string>
 	<key>Regular</key>
 	<string>Звичайний</string>
 	<key>Releasing the mouse takes the shot. Hold ⇧ as you release to adjust the selection first — drag its edges, nudge it with the arrow keys, then press Return.</key>
@@ -6432,6 +6596,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Вилучити всі наближення</string>
 	<key>Remove Intro Card</key>
 	<string>Вилучити вступну заставку</string>
+	<key>Remove Key</key>
+	<string>Видалити ключ</string>
+	<key>Remove Key deletes it from the Keychain.</key>
+	<string>«Видалити ключ» видаляє його зі зв’язки ключів.</string>
 	<key>Remove Music</key>
 	<string>Вилучити музику</string>
 	<key>Remove None</key>
@@ -6792,6 +6960,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Збережено новішою версією LF Studios — деякі налаштування можуть не відображатися</string>
 	<key>Saved capture</key>
 	<string>Збережений знімок</string>
+	<key>Saved in the Keychain</key>
+	<string>Збережено у зв’язці ключів</string>
 	<key>Saved preset “%@”</key>
 	<string>Стиль «%@» збережено</string>
 	<key>Saved to %@: %@</key>
@@ -7038,6 +7208,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Надіслати</string>
 	<key>Send everything to a video editor</key>
 	<string>Передати все у відеоредактор</string>
+	<key>Send video frames to the AI</key>
+	<string>Надсилати кадри відео ШІ</string>
+	<key>Sending frames costs more than text.</key>
+	<string>Надсилання кадрів коштує дорожче за текст.</string>
 	<key>Sepia</key>
 	<string>Сепія</string>
 	<key>Set Length at the top of the tab first, or later in the clip's Transition in.</key>
@@ -7078,6 +7252,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Встановлює гучність на рівні, якого очікують відеосайти (−16 LUFS)</string>
 	<key>Settings</key>
 	<string>Параметри</string>
+	<key>Settings ▸ AI…</key>
+	<string>Параметри ▸ ШІ…</string>
 	<key>Settings ▸ Agent ▸ Save… gives the agent a guide to LF Studios' tools (for Claude Code, a skill).</key>
 	<string>Параметри ▸ Агент ▸ Зберегти… дає агентові посібник з інструментів LF Studios (для Claude Code — навичка).</string>
 	<key>Settings ▸ General ▸ After Capture.</key>
@@ -7510,6 +7686,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Початок тут</string>
 	<key>Start over from the original recording?</key>
 	<string>Почати заново з оригінального запису?</string>
+	<key>Start over: this chat is removed from the project</key>
+	<string>Почати знову: цей чат видаляється з проєкту</string>
 	<key>Start recording</key>
 	<string>Почати запис</string>
 	<key>Start scrolling (Space)</key>
@@ -7562,10 +7740,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Більше не використовувати як «Мій стиль»</string>
 	<key>Stop and Close</key>
 	<string>Зупинити й закрити</string>
+	<key>Stop ends the request at once; what it changed so far waits for Keep or Revert All.</key>
+	<string>«Стоп» одразу завершує запит; зроблені зміни чекають «Залишити» або «Скасувати все».</string>
 	<key>Stop following</key>
 	<string>Припинити відстеження</string>
 	<key>Stop following takes it off; a box over something with clear edges follows best.</key>
 	<string>«Припинити відстеження» вимикає його; найкраще відстежується рамка над чимось із чіткими краями.</string>
+	<key>Stop now: what it changed so far waits for Keep or Revert All</key>
+	<string>Зупинити зараз: зроблені зміни чекають «Залишити» або «Скасувати все»</string>
 	<key>Stop recording</key>
 	<string>Зупинити запис</string>
 	<key>Stop recording (%@)</key>
@@ -7574,8 +7756,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Зупинити запис із будь-якої програми</string>
 	<key>Stop, while LF Studios is the app in front</key>
 	<string>Зупинити, коли LF Studios — активна програма</string>
+	<key>Stopped after %lld steps. Ask again to go on.</key>
+	<string>Зупинено після %lld кроків. Попросіть знову, щоб продовжити.</string>
 	<key>Stopped making proxies</key>
 	<string>Створення проксі припинено</string>
+	<key>Stopped.</key>
+	<string>Зупинено.</string>
 	<key>Storage</key>
 	<string>Сховище</string>
 	<key>Strength</key>
@@ -7712,6 +7898,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Температура</string>
 	<key>Template</key>
 	<string>Шаблон</string>
+	<key>Test Key</key>
+	<string>Перевірити ключ</string>
+	<key>Testing…</key>
+	<string>Перевірка…</string>
 	<key>Text</key>
 	<string>Текст</string>
 	<key>Text &amp; annotations</key>
@@ -7782,12 +7972,22 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Це відео порожнє</string>
 	<key>That window closed before recording could start.</key>
 	<string>Вікно закрилося до початку запису.</string>
+	<key>The API key was refused. Check it in Settings ▸ AI, or make a new one.</key>
+	<string>Ключ API відхилено. Перевірте його в «Параметри ▸ ШІ» або створіть новий.</string>
 	<key>The Agent panel (Layout ▸ Agent Panel). It opens when an agent starts.</key>
 	<string>Панель «Агент» (Макет ▸ Панель «Агент»). Вона відкривається, коли агент починає роботу.</string>
 	<key>The Agent panel moves and floats like the others; its × hides it.</key>
 	<string>Панель «Агент» переміщується й відкривається окремо, як інші; її × ховає її.</string>
+	<key>The Assistant is editing. Click or type in the editor to take over.</key>
+	<string>Асистент редагує. Клацніть або почніть друкувати в редакторі, щоб перехопити керування.</string>
+	<key>The Assistant needs a key from Claude, OpenAI or Gemini. It stays in your Mac's Keychain.</key>
+	<string>Асистентові потрібен ключ Claude, OpenAI або Gemini. Він зберігається у зв’язці ключів вашого Mac.</string>
+	<key>The Assistant works the same way: each request's changes wait under the chat for Keep or Revert All.</key>
+	<string>Асистент працює так само: зміни кожного запиту чекають під чатом «Залишити» або «Скасувати все».</string>
 	<key>The Home window</key>
 	<string>Вікно «Головна»</string>
+	<key>The Keychain couldn't save the key: %@</key>
+	<string>Зв’язці ключів не вдалося зберегти ключ: %@</string>
 	<key>The LF Studios menu (Command Center)</key>
 	<string>Меню LF Studios (командний центр)</string>
 	<key>The LF Studios menu in the menu bar ▸ Capture All Displays. It's there only while more than one screen is connected.</key>
@@ -7822,6 +8022,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Кнопки «Відмінити» й «Повторити» на панелі інструментів редактора.</string>
 	<key>The agent connection couldn't start: %@</key>
 	<string>Не вдалося запустити підключення агентів: %@</string>
+	<key>The answer was too long and was cut off.</key>
+	<string>Відповідь була задовгою й обірвалася.</string>
 	<key>The aspect ratio menu under the player.</key>
 	<string>Меню формату під плеєром.</string>
 	<key>The bar above the timeline. Hover a button for its name and key.</key>
@@ -7864,6 +8066,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Камера — на %@ пізніше за екран</string>
 	<key>The cards use the same background as your video. Pick their font with the font menu.</key>
 	<string>Заставки мають те саме тло, що й ваше відео. Шрифт для них вибирається в меню шрифтів.</string>
+	<key>The chat is saved with the project. A project with a chat opens in LF Studios 1.20.0 or later.</key>
+	<string>Чат зберігається разом із проєктом. Проєкт із чатом відкривається в LF Studios 1.20.0 або новішій.</string>
 	<key>The clips lane on the timeline, and the Timeline menu.</key>
 	<string>Доріжка кліпів на шкалі часу й меню «Шкала часу».</string>
 	<key>The cover couldn't be added: %@</key>
@@ -7912,6 +8116,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Передавання готове</string>
 	<key>The highest quality, and the only one that can keep transparency</key>
 	<string>Найвища якість — і єдиний формат, що зберігає прозорість</string>
+	<key>The key is kept only in your Mac's Keychain, never in projects, handoffs or settings files.</key>
+	<string>Ключ зберігається лише у зв’язці ключів вашого Mac — ніколи в проєктах, передаваннях чи файлах параметрів.</string>
+	<key>The key works, but it has no chat models.</key>
+	<string>Ключ працює, але чат-моделей для нього немає.</string>
+	<key>The key works: %lld models</key>
+	<string>Ключ працює: моделей — %lld</string>
 	<key>The label under it says how wide the camera is and where it goes in the video. The editor opens with exactly that.</key>
 	<string>Підпис під нею показує ширину камери та її місце у відео. Редактор відкриється саме так.</string>
 	<key>The line runs down through every track, so you can see what's under it.</key>
@@ -7924,6 +8134,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Лупа показує пікселі під курсором і їхній колір.</string>
 	<key>The markers are already at clip edges</key>
 	<string>Маркери вже стоять на межах кліпів</string>
+	<key>The menu at the top of the panel switches the provider and model. New Chat starts over.</key>
+	<string>Меню вгорі панелі перемикає провайдера й модель. «Новий чат» починає знову.</string>
 	<key>The menu bar icon is LF Studios' main entry point. While it is hidden, open LF Studios again from Finder, Launchpad, or Spotlight to bring these Preferences back.</key>
 	<string>Значок у смузі меню — основний вхід до LF Studios. Поки його сховано, відкрийте LF Studios знову з Finder, Launchpad або Spotlight, щоб повернутися до цих параметрів.</string>
 	<key>The menu bar icon is missing</key>
@@ -7938,8 +8150,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Мікрофон перестав працювати. Запис триває без нього.</string>
 	<key>The microphone was off, muted, or not allowed.</key>
 	<string>Мікрофон був вимкнений, приглушений або не мав дозволу.</string>
+	<key>The model declined this request.</key>
+	<string>Модель відхилила цей запит.</string>
 	<key>The model downloads once from Hugging Face. After that, Whisper works offline, and your recording is never uploaded.</key>
 	<string>Модель один раз завантажується з Hugging Face. Після цього Whisper працює без інтернету, а ваш запис ніколи не вивантажується.</string>
+	<key>The model “%@” isn't available with this key. Choose another one.</key>
+	<string>Модель «%@» недоступна з цим ключем. Виберіть іншу.</string>
 	<key>The music</key>
 	<string>Музика</string>
 	<key>The music gets quieter while this track speaks, as it does under your voice</key>
@@ -7988,6 +8204,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Файл проєкту (Назва.lfs) знову відкриває все саме так, як ви залишили. LF Studios оновлює його, поки ви редагуєте.</string>
 	<key>The project open in the front editor window.</key>
 	<string>Проєкт, відкритий у передньому вікні редактора.</string>
+	<key>The provider bills your account for each request, by the tokens it reads and writes. LF Studios charges nothing.</key>
+	<string>Провайдер списує плату за кожен запит з вашого рахунку за прочитаними й написаними токенами. LF Studios нічого не бере.</string>
+	<key>The provider didn't answer in time. Try again.</key>
+	<string>Провайдер не відповів вчасно. Спробуйте ще раз.</string>
+	<key>The provider is busy right now. Try again in a moment.</key>
+	<string>Провайдер зараз перевантажений. Спробуйте трохи згодом.</string>
+	<key>The provider is limiting how fast you can send requests. Wait a minute, then try again.</key>
+	<string>Провайдер обмежує частоту запитів. Зачекайте хвилину й спробуйте знову.</string>
+	<key>The provider said: %@</key>
+	<string>Відповідь провайдера: %@</string>
 	<key>The recording bar</key>
 	<string>Панель запису</string>
 	<key>The recording bar, the camera bubble preview, Speaker notes, the countdown, and notices.</key>
@@ -8164,6 +8390,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Товщина</string>
 	<key>Thin</key>
 	<string>Тонкий</string>
+	<key>Thinking…</key>
+	<string>Думає…</string>
 	<key>This GIF is too long for its size — it would need about %@ of memory. Pick a smaller size or fewer frames per second, export part of the video, or choose MP4.</key>
 	<string>Цей GIF задовгий для такого розміру — потрібно приблизно %@ пам’яті. Виберіть менший розмір або менше кадрів на секунду, експортуйте частину відео чи виберіть MP4.</string>
 	<key>This Guide</key>
@@ -8178,6 +8406,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Цього тижня</string>
 	<key>This app</key>
 	<string>Цей застосунок</string>
+	<key>This chat: %@ in · %@ out tokens</key>
+	<string>Цей чат: %@ на вході · %@ на виході (токени)</string>
 	<key>This list</key>
 	<string>Цей список</string>
 	<key>This part is cut from the video</key>
@@ -8202,6 +8432,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>У цьому записі є лише стрілка</string>
 	<key>This sound file is gone — add it again.</key>
 	<string>Цього звукового файлу більше немає — додайте його знову.</string>
+	<key>This video has no AI chat</key>
+	<string>У цього відео немає чату з ШІ</string>
 	<key>This video has no camera bubble</key>
 	<string>У цьому відео немає бульбашки камери</string>
 	<key>This video has no camera footage to hide</key>
@@ -8512,6 +8744,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Введіть текст у Властивості ▸ Текст і виберіть там його вигляд або клацніть стиль.</string>
 	<key>Type in a text annotation</key>
 	<string>Вводити текст у текстовий елемент</string>
+	<key>Type what you want, for example: Cut the long pauses and add captions. Press Return.</key>
+	<string>Напишіть, що потрібно, наприклад: Прибери довгі паузи й додай субтитри. Натисніть Return.</string>
 	<key>Typewriter</key>
 	<string>Друкарська машинка</string>
 	<key>Typing</key>
@@ -8528,12 +8762,24 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Нестиснений 24-бітний звук, як люблять Logic Pro і GarageBand</string>
 	<key>Uncompressed 24-bit sound, for editing in an audio app</key>
 	<string>Нестиснений 24-бітний звук для монтажу в аудіозастосунку</string>
+	<key>Under API Keys, click Create Key, name it LF Studios, and copy it.</key>
+	<string>У розділі API Keys натисніть Create Key, назвіть ключ LF Studios і скопіюйте його.</string>
+	<key>Under API keys, click Create new secret key, name it LF Studios, and copy it.</key>
+	<string>У розділі API keys натисніть Create new secret key, назвіть ключ LF Studios і скопіюйте його.</string>
 	<key>Under Languages, choose a language and click Translate.</key>
 	<string>У розділі «Мови» виберіть мову й клацніть «Перекласти».</string>
 	<key>Under Music, click Add Music… and choose a song.</key>
 	<string>У розділі «Музика» клацніть «Додати музику…» й виберіть трек.</string>
 	<key>Under Restyle all captions, choose a style, a size and Top or Bottom.</key>
 	<string>У розділі «Стиль усіх субтитрів» виберіть стиль, розмір і «Угорі» чи «Унизу».</string>
+	<key>Under each answer in the Assistant panel.</key>
+	<string>Під кожною відповіддю в панелі «Асистент».</string>
+	<key>Under each answer: the tokens it used, in and out, for all its steps.</key>
+	<string>Під кожною відповіддю: скільки токенів пішло на всі її кроки, на вході й на виході.</string>
+	<key>Under the chat: the tokens the whole chat has used.</key>
+	<string>Під чатом: скільки токенів пішло на весь чат.</string>
+	<key>Under the provider, paste your key into Paste key and click Save.</key>
+	<string>У розділі провайдера вставте ключ у поле «Вставте ключ» і натисніть «Зберегти».</string>
 	<key>Under the video preview. Hide them with ×; bring them back from the shortcuts list (?).</key>
 	<string>Під переглядом відео. Сховайте їх кнопкою ×; повернути їх можна зі списку скорочень (?).</string>
 	<key>Under the video track is its sound, on a track of its own. A recording's microphone and the Mac's sound each get one.</key>
@@ -9204,6 +9450,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Теплота</string>
 	<key>Warning</key>
 	<string>Попередження</string>
+	<key>Watch the answer come in. What it changes is listed under the chat as it goes.</key>
+	<string>Стежте, як надходить відповідь. Її зміни по ходу з’являються під чатом.</string>
 	<key>Watch the changes come in, in the Agent panel. Click one to go to it.</key>
 	<string>Стежте за змінами на панелі «Агент». Натисніть будь-яку, щоб перейти до неї.</string>
 	<key>Watch the result, then change or delete any zoom.</key>
@@ -9230,6 +9478,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Що агент може і чого не може</string>
 	<key>What is each file in “%@”?</key>
 	<string>Що за файли в «%@»?</string>
+	<key>What it costs</key>
+	<string>Скільки це коштує</string>
+	<key>What it reads to do the job: the timeline (clips, times, tracks), the transcript and the captions, and the markers and keyframes.</key>
+	<string>Що він читає для роботи: таймлайн (кліпи, час, доріжки), розшифровку й субтитри, маркери й ключові кадри.</string>
+	<key>What the Assistant sends</key>
+	<string>Що надсилає Асистент</string>
 	<key>What the clip follows: drag it over the thing that moves</key>
 	<string>За чим стежить кліп: перетягніть рамку на рухомий об’єкт</string>
 	<key>What was playing on your Mac</key>
@@ -9248,6 +9502,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Якщо клавіша вже зайнята, LF Studios покаже, яка команда її втратить.</string>
 	<key>When an agent finishes, see what it changed and keep it, or go back to how the project was.</key>
 	<string>Коли агент закінчить, перегляньте його зміни й залиште їх або поверніть проєкт до попереднього вигляду.</string>
+	<key>When it's done, click Keep, or Revert All to go back to how the video was before the request.</key>
+	<string>Коли він закінчить, натисніть «Залишити» або «Скасувати все», щоб повернути відео до стану перед запитом.</string>
 	<key>When recording a window: the Window size menu in the row above the recording bar.</key>
 	<string>Під час запису вікна: меню «Розмір вікна» в рядку над панеллю запису.</string>
 	<key>When the agent is done, its changes are marked on the timeline in orange.</key>
@@ -9396,8 +9652,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>На вашому Mac бракує пам’яті. Закрийте кілька програм або виберіть нижчу роздільність, а потім експортуйте ще раз.</string>
 	<key>Your ShotStyle settings were moved to LF Studios</key>
 	<string>Налаштування ShotStyle перенесено в LF Studios</string>
+	<key>Your account with this provider is out of credit. Add credit on its website, then try again.</key>
+	<string>На вашому рахунку в цього провайдера закінчилися кошти. Поповніть його на сайті провайдера й спробуйте знову.</string>
 	<key>Your camera is recorded as its own layer: a live bubble shows while you record (it never appears in the screen capture), and the editor lets you move, resize, and restyle it — or hide it — afterwards.</key>
 	<string>Камера записується окремим шаром: під час запису видно живу бульбашку (вона ніколи не потрапляє в запис екрана), а потім у редакторі її можна перемістити, змінити розмір і стиль — або сховати.</string>
+	<key>Your chat with the Assistant, in the LF Studios project</key>
+	<string>Ваш чат з Асистентом — у проєкті LF Studios</string>
 	<key>Your choices are remembered for next time, and match Settings ▸ Recording.</key>
 	<string>Ваш вибір запам’ятовується до наступного разу й збігається з Параметри ▸ Запис.</string>
 	<key>Your disk filled up — saved the first %@.</key>
@@ -9426,6 +9686,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Ваша розмітка лишається редагованою. «Скинути» знову показує весь знімок, а ⌘Z відміняє обрізання.</string>
 	<key>Your media in the Library</key>
 	<string>Ваші медіафайли в Бібліотеці</string>
+	<key>Your message, and the chat so far.</key>
+	<string>Ваше повідомлення й увесь чат до нього.</string>
 	<key>Your microphone</key>
 	<string>Ваш мікрофон</string>
 	<key>Your narration can become captions — then cut the video by editing its words.</key>
@@ -9550,6 +9812,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>додати наближення</string>
 	<key>aim or resize it</key>
 	<string>навести чи змінити розмір</string>
+	<key>aistudio.google.com, then LF Studios ▸ Settings ▸ AI ▸ Google Gemini.</key>
+	<string>aistudio.google.com, потім LF Studios ▸ Параметри ▸ ШІ ▸ Google Gemini.</string>
 	<key>all shortcuts</key>
 	<string>усі скорочення</string>
 	<key>bottom</key>
@@ -9566,6 +9830,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>у центрі</string>
 	<key>chapters</key>
 	<string>розділи</string>
+	<key>console.anthropic.com, then LF Studios ▸ Settings ▸ AI ▸ Anthropic (Claude).</key>
+	<string>console.anthropic.com, потім LF Studios ▸ Параметри ▸ ШІ ▸ Anthropic (Claude).</string>
 	<key>cut by editing words</key>
 	<string>монтаж редагуванням слів</string>
 	<key>delete left / right of the playhead</key>
@@ -9632,6 +9898,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>не завантажено</string>
 	<key>outro card</key>
 	<string>завершальна заставка</string>
+	<key>platform.openai.com, then LF Studios ▸ Settings ▸ AI ▸ OpenAI.</key>
+	<string>platform.openai.com, потім LF Studios ▸ Параметри ▸ ШІ ▸ OpenAI.</string>
 	<key>play</key>
 	<string>відтворити</string>
 	<key>pointer</key>
@@ -9658,6 +9926,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>текст, виділення, стрілка, розмиття</string>
 	<key>the camera</key>
 	<string>камера</string>
+	<key>the request failed</key>
+	<string>запит не виконано</string>
 	<key>the video</key>
 	<string>відео</string>
 	<key>this recording</key>

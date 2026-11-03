@@ -22,6 +22,8 @@
 	<string>%@（⇧⌘Z）</string>
 	<key>%@ (⌘Z)</key>
 	<string>%@（⌘Z）</string>
+	<key>%@ API key</key>
+	<string>%@ API 密钥</string>
 	<key>%@ It's in “%@” and opens as before.</key>
 	<string>%@ 它在“%@”中，可以像以前一样打开。</string>
 	<key>%@ Loupe</key>
@@ -44,6 +46,8 @@
 	<string>%@ 全屏</string>
 	<key>%@ has its own version now</key>
 	<string>%@ 现在有了自己的版本</string>
+	<key>%@ in · %@ out tokens</key>
+	<string>输入 %@ · 输出 %@ 个 token</string>
 	<key>%@ is too much for this Mac and would be very slow or fail. Try %@ instead.</key>
 	<string>%@ 对这台 Mac 来说太重，会非常慢或失败。请改用 %@。</string>
 	<key>%@ isn't supported for captions on this Mac. Pick another language.</key>
@@ -296,6 +300,8 @@
 	<string>一条细线，将深色录制内容与背景分开</string>
 	<key>A keyframe for position, size, rotation and opacity at the playhead</key>
 	<string>在播放头处为位置、大小、旋转和不透明度添加关键帧</string>
+	<key>A long chat sends more each time. New Chat starts small again.</key>
+	<string>聊天越长，每次发送的内容越多。“新聊天”可从头开始。</string>
 	<key>A magnifier over one spot at the playhead; the rest of the frame stays in view</key>
 	<string>在播放头处放大一个位置；画面其余部分保持可见</string>
 	<key>A magnifier over one spot; the rest of the frame stays in view.</key>
@@ -372,6 +378,10 @@
 	<string>这么大的窗口会超出屏幕。能放下的同比例最大尺寸是 %@ × %@。</string>
 	<key>A yellow marker shows where something was cut. Click it to bring the part back.</key>
 	<string>黄色标记显示剪掉内容的位置。点按它即可恢复那一段。</string>
+	<key>AI</key>
+	<string>AI</string>
+	<key>AI Assistant</key>
+	<string>AI 助理</string>
 	<key>AI agent</key>
 	<string>AI 代理</string>
 	<key>AI agent connected</key>
@@ -380,6 +390,8 @@
 	<string>AI 代理</string>
 	<key>AI agents are off: Settings ▸ Agent.</key>
 	<string>AI 代理已关闭：设置 ▸ 代理。</string>
+	<key>API key</key>
+	<string>API 密钥</string>
 	<key>About</key>
 	<string>关于</string>
 	<key>About %lld min left</key>
@@ -456,6 +468,10 @@
 	<string>添加手机拍摄的摄像头视频</string>
 	<key>Add a caption at the playhead</key>
 	<string>在播放头处添加字幕</string>
+	<key>Add a key and choose a provider first (see Add your API key).</key>
+	<string>先添加密钥并选择服务商（参见“添加你的 API 密钥”）。</string>
+	<key>Add a key below, then choose its provider.</key>
+	<string>在下方添加密钥，然后选择对应的服务商。</string>
 	<key>Add a keyframe at the playhead: %@</key>
 	<string>在播放头处添加关键帧：%@</string>
 	<key>Add a marker</key>
@@ -476,6 +492,10 @@
 	<string>在播放头处添加缩放</string>
 	<key>Add a zoom at the playhead (Z)</key>
 	<string>在播放头处添加缩放（Z）</string>
+	<key>Add an API key for Claude, OpenAI or Gemini in Settings ▸ AI, then choose its provider.</key>
+	<string>在“设置 ▸ AI”中添加 Claude、OpenAI 或 Gemini 的 API 密钥，然后选择对应的服务商。</string>
+	<key>Add an API key in Settings ▸ AI first.</key>
+	<string>请先在“设置 ▸ AI”中添加 API 密钥。</string>
 	<key>Add another recording or video after this one — LF Studios recordings keep their pointer, clicks, and shortcuts.</key>
 	<string>在此录制内容之后添加另一个录制内容或视频 — LF Studios 录制内容会保留指针、点按和快捷键。</string>
 	<key>Add another recording to the end of this one, to make one video.</key>
@@ -506,6 +526,8 @@
 	<string>根据标记添加章节</string>
 	<key>Add chapters from markers puts chapters in MP4 and ProRes files.</key>
 	<string>“根据标记添加章节”会在 MP4 和 ProRes 文件中加入章节。</string>
+	<key>Add credit under Billing.</key>
+	<string>在 Billing 中充值。</string>
 	<key>Add effects from Library ▸ Effects.</key>
 	<string>从“素材库 ▸ 特效”添加特效。</string>
 	<key>Add highlight at the playhead (⌥H)</key>
@@ -548,6 +570,8 @@
 	<string>添加到收藏</string>
 	<key>Add typing zooms</key>
 	<string>添加打字缩放</string>
+	<key>Add your API key</key>
+	<string>添加你的 API 密钥</string>
 	<key>Add zoom at playhead</key>
 	<string>在播放头处添加缩放</string>
 	<key>Add zooms</key>
@@ -610,6 +634,8 @@
 	<string>录制之后</string>
 	<key>After recording, click Restore size to put it back.</key>
 	<string>录制结束后，点按“恢复大小”让窗口恢复原样。</string>
+	<key>After saving, Settings shows only the key's last 4 characters.</key>
+	<string>存储后，设置中只显示密钥的最后 4 个字符。</string>
 	<key>After you stop, LF Studios asks where to save the recording, then puts everything from it in one new folder: the video, the camera, the sound, and the project that opens it all.</key>
 	<string>停止录制后，LF Studios 会询问录制内容的存储位置，然后把所有内容放进一个新文件夹：视频、摄像头画面、声音，以及能打开这一切的项目。</string>
 	<key>Afterwards, click Restore size to put the window back.</key>
@@ -726,6 +752,8 @@
 	<string>标注文字</string>
 	<key>Annotation tools</key>
 	<string>标注工具</string>
+	<key>Another AI agent is editing this project. Wait until it's done, then ask again.</key>
+	<string>另一个 AI 代理正在编辑此项目。请等它完成后再提出请求。</string>
 	<key>Another app may use the same keys: choose different ones.</key>
 	<string>另一个应用可能使用了相同的按键：请换用其他按键。</string>
 	<key>Answer</key>
@@ -816,6 +844,12 @@
 	<string>作为片段，它也能使用关键帧、动画、特效和滤镜。</string>
 	<key>As an effect clip: drag an effect onto the timeline. It changes the main track and the tracks under it while it plays.</key>
 	<string>作为特效片段：将特效拖到时间线上。它播放时会改变主轨道以及它下方的轨道。</string>
+	<key>Ask for an edit in plain words, and an AI makes it with the editor's own tools while you watch. It uses your own API key from Claude, OpenAI or Gemini.</key>
+	<string>用平常的话提出编辑要求，AI 会当着你的面用编辑器自带的工具完成。它使用你自己的 Claude、OpenAI 或 Gemini API 密钥。</string>
+	<key>Ask for an edit: “Cut the long pauses”, “Add captions and fix the typos”, “Mark where the settings open”.</key>
+	<string>提出编辑请求：“剪掉较长的停顿”、“添加字幕并修正错字”、“标记打开设置的位置”。</string>
+	<key>Ask the Assistant to edit…</key>
+	<string>让助理进行编辑…</string>
 	<key>Ask where to save after each recording</key>
 	<string>每次录制后询问存储位置</string>
 	<key>Aspect Ratio %@ — %@</key>
@@ -824,10 +858,18 @@
 	<string>宽高比</string>
 	<key>Aspect ratio menu ▸ Fill the Frame, Follow the Cursor.</key>
 	<string>宽高比菜单 ▸ 填满画面并跟随指针。</string>
+	<key>Assistant</key>
+	<string>助理</string>
+	<key>Assistant Panel</key>
+	<string>助理面板</string>
+	<key>Assistant editing</key>
+	<string>助理正在编辑</string>
 	<key>At playhead</key>
 	<string>设为播放头</string>
 	<key>At the top of the Captions panel, for recordings made with Speaker notes open.</key>
 	<string>对于打开“演讲者备注”时录制的内容，备注位于“字幕”面板的顶部。</string>
+	<key>At the top, set Provider to the one you added. Until you do, the Assistant stays off.</key>
+	<string>在顶部的“服务商”中选择你添加的那个。在此之前，助理保持关闭。</string>
 	<key>Audio</key>
 	<string>音频</string>
 	<key>Audio only</key>
@@ -902,6 +944,8 @@
 	<string>返回</string>
 	<key>Back to how the project was before the agent started (⌘Z brings the changes back)</key>
 	<string>回到代理开始之前的项目（⌘Z 可恢复更改）</string>
+	<key>Back to how the project was before this request (⌘Z brings the changes back)</key>
+	<string>恢复到此请求之前的项目（⌘Z 可找回更改）</string>
 	<key>Back to the LF Studios look</key>
 	<string>已恢复为 LF Studios 风格</string>
 	<key>Back to the original recording — ⌘Z to undo</key>
@@ -1424,6 +1468,8 @@
 	<string>章节文本（“0:00 开始”），用于 YouTube 视频说明</string>
 	<key>Chapters copied — paste them into the video's description</key>
 	<string>已拷贝章节 — 请粘贴到视频说明中</string>
+	<key>Chat with an AI that edits this video with you, using your own API key. Requests go straight from this Mac to the provider.</key>
+	<string>与 AI 聊天，让它使用你自己的 API 密钥和你一起编辑视频。请求从这台 Mac 直接发送给服务商。</string>
 	<key>Check</key>
 	<string>检查</string>
 	<key>Check Settings ▸ General ▸ Show menu bar icon.</key>
@@ -1492,6 +1538,8 @@
 	<string>选择 Whisper，然后选择一个“模型”。</string>
 	<key>Choose a .ttf or .otf font. LF Studios keeps its own copy, so it keeps working if the file is deleted.</key>
 	<string>选择 .ttf 或 .otf 字体。LF Studios 会保留自己的副本，因此即使文件被删除也能继续使用。</string>
+	<key>Choose a Model, or keep the one LF Studios chose.</key>
+	<string>选择一个模型，或保留 LF Studios 选好的模型。</string>
 	<key>Choose a PNG to use as the pointer, then click where it points</key>
 	<string>选择一个 PNG 作为指针，然后点按它所指的位置</string>
 	<key>Choose a Size, a font, and Top or Bottom. Or drag the keys on the preview.</key>
@@ -1512,6 +1560,8 @@
 	<string>选择一种语言，然后点按“翻译”。</string>
 	<key>Choose a logo, watermark, or screenshot to place on the video</key>
 	<string>选择要放在视频上的标志、水印或截屏</string>
+	<key>Choose a model</key>
+	<string>选择模型</string>
 	<key>Choose a picture.</key>
 	<string>选择一张图片。</string>
 	<key>Choose a project, a folder, or a video</key>
@@ -1618,6 +1668,8 @@
 	<string>经典</string>
 	<key>Claude Code, Cursor and Codex have their own Copy setup buttons.</key>
 	<string>Claude Code、Cursor 和 Codex 都有各自的“拷贝设置”按钮。</string>
+	<key>Claude keys start with sk-ant-.</key>
+	<string>Claude 密钥以 sk-ant- 开头。</string>
 	<key>Claude ▸ Settings ▸ Developer ▸ Edit Config: paste it into claude_desktop_config.json, save, and restart Claude.</key>
 	<string>Claude ▸ 设置 ▸ 开发者 ▸ 编辑配置：粘贴到 claude_desktop_config.json，存储并重新启动 Claude。</string>
 	<key>Clay</key>
@@ -1756,6 +1808,8 @@
 	<string>点按“查找隐私信息”。在此期间你可以继续编辑。</string>
 	<key>Click Find Private Info. You can keep editing while it looks.</key>
 	<string>点按“查找隐私信息”。查找期间你可以继续编辑。</string>
+	<key>Click Get API key, then Create API key, and copy it.</key>
+	<string>点按 Get API key，再点按 Create API key，然后拷贝密钥。</string>
 	<key>Click Hide camera during silences. Hide blocks appear on the Camera lane.</key>
 	<string>点按“静默时隐藏摄像头”。摄像头轨道上会出现隐藏块。</string>
 	<key>Click Image above the preview.</key>
@@ -1806,6 +1860,10 @@
 	<string>点按录制栏中的“电脑声音”，或前往“设置 ▸ 录制 ▸ 音频 ▸ 录制电脑声音”。</string>
 	<key>Click Take screenshot in Home.</key>
 	<string>点按“主页”中的“截屏”。</string>
+	<key>Click Test Key to load the models.</key>
+	<string>点按“测试密钥”以载入模型。</string>
+	<key>Click Test Key. It says the key works and loads the provider's models.</key>
+	<string>点按“测试密钥”。它会确认密钥有效，并载入服务商的模型。</string>
 	<key>Click Transcribe with Whisper.</key>
 	<string>点按“用 Whisper 转写”。</string>
 	<key>Click Transcribe. Keep editing while it listens.</key>
@@ -1872,6 +1930,8 @@
 	<string>在时间线上任意位置点按或拖移，即可跳到那里。</string>
 	<key>Click or press Esc to cancel</key>
 	<string>点按或按下 Esc 键以取消</string>
+	<key>Click or type in the editor while it works and it pauses. Click Resume to let it go on.</key>
+	<string>它工作时在编辑器中点按或输入，它就会暂停。点按“继续”让它继续。</string>
 	<key>Click or type in the editor while it works and it pauses: its next change waits until you click Resume in the Agent panel.</key>
 	<string>在它工作时于编辑器中点按或键入，它就会暂停：下一项更改会等到你在代理面板中点按“继续”。</string>
 	<key>Click play, press Space, or tick Start with recording.</key>
@@ -2266,6 +2326,8 @@
 	<string>要为 %lld 个视频创建代理吗？</string>
 	<key>Creative Handoff</key>
 	<string>创意交付</string>
+	<key>Creative Handoff leaves the chat out unless you turn on Include AI chat history.</key>
+	<string>除非你打开“包含 AI 聊天记录”，否则创意交付不会包含聊天。</string>
 	<key>Creative Handoff's README.txt says where each part goes, in pixels, for your editing app.</key>
 	<string>创意交付中的 README.txt 会以像素说明每个部分的位置，方便你在剪辑应用中使用。</string>
 	<key>Creative Handoff…</key>
@@ -2806,10 +2868,18 @@
 	<string>每个文件都是一条独立轨道：在时间线上拖移、修剪两端、按 ⌘B 分割。支持 MP3、WAV、M4A、AAC、AIFF、FLAC 或 CAF，也可以直接把文件拖到时间线上。</string>
 	<key>Each panel's header. In the usual layout, move the pointer to the very top edge of a panel and its header appears.</key>
 	<string>每个面板的标题栏。在常规布局中，将指针移到面板的最上边缘，标题栏就会出现。</string>
+	<key>Each provider handles your data under its own terms.</key>
+	<string>各服务商按自己的条款处理你的数据。</string>
+	<key>Each provider's website lists its prices per million tokens; bigger models cost more.</key>
+	<string>各服务商网站都列出每百万 token 的价格；模型越大越贵。</string>
 	<key>Each recording in its own folder</key>
 	<string>每段录制内容都有自己的文件夹</string>
 	<key>Each recording keeps its own pointer, clicks, and shortcuts. Reorder them here; cut and trim them on the timeline like any clip.</key>
 	<string>每个录制内容都保留自己的指针、点按和快捷键。在这里调整顺序；像其他片段一样在时间线上剪切和修剪。</string>
+	<key>Each request is billed to your account by the provider; the Assistant shows the tokens each reply used. Keys are kept only in your Mac's Keychain.</key>
+	<string>每次请求都由服务商向你的账户计费；助理会显示每条回复使用的 token 数。密钥只保存在你 Mac 的钥匙串中。</string>
+	<key>Each request is one step back: Revert All undoes all of it at once, and ⌘Z brings it back.</key>
+	<string>每个请求都是一步：“全部还原”一次撤销全部，⌘Z 可找回。</string>
 	<key>Each shape keeps its own version: switch back and forth without losing anything. Cuts, words, and styles stay shared.</key>
 	<string>每种比例都保留自己的版本：来回切换也不会丢失任何内容。剪辑、文字和样式在各版本之间共用。</string>
 	<key>Each track has its own Hide, Mute and Lock in its header.</key>
@@ -2852,6 +2922,8 @@
 	<string>编辑所选截屏</string>
 	<key>Edit with Proxies</key>
 	<string>使用代理剪辑</string>
+	<key>Edit with the Assistant</key>
+	<string>用助理编辑</string>
 	<key>Edit your video like a document: delete words, and that part of the video goes.</key>
 	<string>像编辑文稿一样编辑视频：删掉文字，视频中对应的部分也会随之删除。</string>
 	<key>Editable Cursor</key>
@@ -2864,6 +2936,8 @@
 	<string>“可编辑指针”会单独记录指针，以便编辑器平滑指针、调整其大小，并在缩放时保持清晰 — 视频编辑器会在导出时将指针加回（原始录制文件中不含指针）。“显示快捷键”只记录含 ⌘、⌃ 和 ⌥ 的组合键（以及 Esc 键和功能键），以便编辑器将其显示为按键 — 普通输入绝不会被记录；macOS 会请求辅助功能权限。默认使用“高”质量；“最高”保留更多细节，但文件更大。按下“录制”后，倒计时会给你片刻准备时间；按 Esc 键可取消。在任何 App 中按 %@ 都能停止录制 — 单独按 Esc 键仍会传给你正在录制的 App。</string>
 	<key>Editing</key>
 	<string>编辑</string>
+	<key>Editing…</key>
+	<string>正在编辑…</string>
 	<key>Editor tips</key>
 	<string>编辑器提示</string>
 	<key>Effect</key>
@@ -3378,6 +3452,8 @@
 	<string>帧速率</string>
 	<key>Frame: padding, corners &amp; shadow</key>
 	<string>边框：边距、圆角和阴影</string>
+	<key>Frames of the video, only when Send video frames to the AI is on (it's off at first).</key>
+	<string>视频画面，仅当“将视频画面发送给 AI”打开时（默认关闭）。</string>
 	<key>Framing</key>
 	<string>取景</string>
 	<key>Framing: Follow cursor follows the pointer; Aim by hand lets you drag the frame on the preview; Follow typing follows your typing.</key>
@@ -3460,8 +3536,18 @@
 	<string>间距</string>
 	<key>Gap between the parts</key>
 	<string>两部分之间的间距</string>
+	<key>Gemini keys start with AIza. Set up billing in Google AI Studio for more than its free limits.</key>
+	<string>Gemini 密钥以 AIza 开头。要超出免费额度，请在 Google AI Studio 中设置结算。</string>
 	<key>General</key>
 	<string>通用</string>
+	<key>Get a Claude API key</key>
+	<string>获取 Claude API 密钥</string>
+	<key>Get a Gemini API key</key>
+	<string>获取 Gemini API 密钥</string>
+	<key>Get a key</key>
+	<string>获取密钥</string>
+	<key>Get an OpenAI API key</key>
+	<string>获取 OpenAI API 密钥</string>
 	<key>Get the area exactly right: a magnifier, the size as you drag, and keys to fine-tune.</key>
 	<string>精确选择区域：放大镜、拖移时显示的尺寸，以及用于微调的按键。</string>
 	<key>Get things ready while the countdown runs.</key>
@@ -3598,6 +3684,8 @@
 	<string>隐藏隐私信息</string>
 	<key>Hide the Agent panel</key>
 	<string>隐藏代理面板</string>
+	<key>Hide the Assistant panel</key>
+	<string>隐藏助理面板</string>
 	<key>Hide the Menu Bar Icon?</key>
 	<string>要隐藏菜单栏图标吗？</string>
 	<key>Hide the camera whenever you're not talking, and bring it back when you speak.</key>
@@ -3838,6 +3926,8 @@
 	<string>在“样式”面板中打开“预设”，选择“存储为预设…”。</string>
 	<key>In the editor, check that Mute video is off in the Audio panel, and that the preview isn't muted (press M).</key>
 	<string>在编辑器中，确认“音频”面板中的“视频静音”已关闭，并且预览没有被静音（按 M 键）。</string>
+	<key>In the editor, choose Layout ▸ Assistant Panel.</key>
+	<string>在编辑器中选取“布局 ▸ 助理面板”。</string>
 	<key>In the editor, click Add typing zooms.</key>
 	<string>在编辑器中，点按“添加打字缩放”。</string>
 	<key>In the editor, drag the divider on the video to change the split. Zooms happen inside the screen's part; captions go over the whole video.</key>
@@ -3900,10 +3990,14 @@
 	<string>在视频编辑器中，打开工具栏中的宽高比菜单，选择“9:16 — Reels、TikTok、Shorts”。</string>
 	<key>In the video editor: File ▸ Save Project (⌘S) or Save Project As… (⇧⌘S).</key>
 	<string>在视频编辑器中：“文件 ▸ 存储项目”（⌘S）或“项目存储为…”（⇧⌘S）。</string>
+	<key>In the video editor: Layout ▸ Assistant Panel.</key>
+	<string>视频编辑器中：“布局 ▸ 助理面板”。</string>
 	<key>In your next video, click Apply my style (⇧⌘Y).</key>
 	<string>在下一个视频中，点按“应用我的风格”（⇧⌘Y）。</string>
 	<key>In, Out and Combo animations</key>
 	<string>入场、出场和组合动画</string>
+	<key>Include AI chat history</key>
+	<string>包含 AI 聊天记录</string>
 	<key>Include a timeline for editing apps</key>
 	<string>附带剪辑软件用的时间线</string>
 	<key>Include aspect ratio (%@)</key>
@@ -3972,6 +4066,8 @@
 	<string>它也会从视频中移除。文件保留在原处，按 ⌘Z 可恢复。</string>
 	<key>It can read the timeline, the transcript, the captions, the markers and the keyframes, and look at frames.</key>
 	<string>它可以读取时间线、转写文本、字幕、标记和关键帧，并查看画面。</string>
+	<key>It can run Auto captions, Remove Ums, Shorten Pauses and Apply My Style, and fill in the Export window. You always click Export yourself.</key>
+	<string>它可以运行“自动字幕”“移除语气词”“缩短停顿”和“应用我的风格”，并填写导出窗口。点按“导出”的始终是你。</string>
 	<key>It can split, trim, delete, add markers, titles and keyframes, fix captions, remove ums, and place files that are already in the project or its folder.</key>
 	<string>它可以分割、修剪、删除，添加标记、标题和关键帧，修正字幕，去除“嗯”，并放置项目或其文件夹中已有的文件。</string>
 	<key>It can't export, record sound or video, use the clipboard, or open files from anywhere else. Locked tracks stay as they are.</key>
@@ -4088,6 +4184,8 @@
 	<string>保持音调</string>
 	<key>Keep the agent's changes (each still undoes with ⌘Z)</key>
 	<string>保留代理的更改（每项仍可用 ⌘Z 撤销）</string>
+	<key>Keep the changes (each still undoes with ⌘Z)</key>
+	<string>保留更改（每项仍可用 ⌘Z 撤销）</string>
 	<key>Keep the current style</key>
 	<string>保留当前样式</string>
 	<key>Keeping 30 days removes %lld older captures from History now. This can't be undone.</key>
@@ -4112,6 +4210,8 @@
 	<string>已保留给“%@”</string>
 	<key>Kept the agent's changes</key>
 	<string>已保留代理的更改</string>
+	<key>Key ending in %@</key>
+	<string>以 %@ 结尾的密钥</string>
 	<key>Key for %@: %@</key>
 	<string>“%@”的快捷键：%@</string>
 	<key>Key or password</key>
@@ -4182,6 +4282,8 @@
 %@</key>
 	<string>LF Studios 无法将文件写入：
 %@</string>
+	<key>LF Studios couldn't reach the provider. Check your internet connection.</key>
+	<string>LF Studios 无法连接到服务商。请检查网络连接。</string>
 	<key>LF Studios doesn't find updates</key>
 	<string>LF Studios 找不到更新</string>
 	<key>LF Studios doesn't have Screen Recording permission yet.</key>
@@ -4258,6 +4360,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>LF Studios – 截屏历史记录</string>
 	<key>LF Studios ▸ Check for Updates…, and Settings ▸ General ▸ Updates ▸ Check for updates automatically.</key>
 	<string>“LF Studios ▸ 检查更新…”，以及“设置 ▸ 通用 ▸ 更新 ▸ 自动检查更新”。</string>
+	<key>LF Studios ▸ Settings ▸ AI ▸ Send video frames to the AI.</key>
+	<string>LF Studios ▸ 设置 ▸ AI ▸ 将视频画面发送给 AI。</string>
+	<key>LF Studios ▸ Settings ▸ AI.</key>
+	<string>LF Studios ▸ 设置 ▸ AI。</string>
 	<key>LF Studios ▸ Settings ▸ Agent.</key>
 	<string>LF Studios ▸ 设置 ▸ 代理。</string>
 	<key>LF Studios' own floating windows stay out of your screen recordings and screenshots.</key>
@@ -4448,6 +4554,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>正在聆听…</string>
 	<key>Listens on this Mac — nothing is uploaded</key>
 	<string>在这台 Mac 上识别 — 不会上传任何内容</string>
+	<key>Load the provider's current models</key>
+	<string>载入服务商当前的模型</string>
 	<key>Loaded:</key>
 	<string>已载入：</string>
 	<key>Locate…</key>
@@ -4458,6 +4566,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>锁定“%@”：其中的内容都无法更改</string>
 	<key>Look</key>
 	<string>外观</string>
+	<key>Looking at the project…</key>
+	<string>正在查看项目…</string>
 	<key>Looking for your face in the camera video. This happens once; the result is kept.</key>
 	<string>正在摄像头视频中寻找面部。只需进行一次，结果会被保留。</string>
 	<key>Looking through the video…</key>
@@ -4520,6 +4630,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>改为放大镜</string>
 	<key>Make a clip come in, go out, or keep moving while it shows.</key>
 	<string>让片段入场、出场，或在显示期间持续运动。</string>
+	<key>Make a key in Google AI Studio to use Gemini in the Assistant.</key>
+	<string>在 Google AI Studio 中创建密钥，即可在助理中使用 Gemini。</string>
+	<key>Make a key on Anthropic's website to use Claude in the Assistant.</key>
+	<string>在 Anthropic 网站上创建密钥，即可在助理中使用 Claude。</string>
+	<key>Make a key on OpenAI's website to use its models in the Assistant.</key>
+	<string>在 OpenAI 网站上创建密钥，即可在助理中使用其模型。</string>
 	<key>Make a vertical video for Reels or TikTok</key>
 	<string>为 Reels 或 TikTok 制作竖屏视频</string>
 	<key>Make captions again</key>
@@ -4532,6 +4648,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>减轻体积：%@，%@ fps</string>
 	<key>Make my videos look the same every time</key>
 	<string>让每个视频的风格都保持一致</string>
+	<key>Make one on the provider's website; it bills your account there.</key>
+	<string>在服务商网站上创建；费用从你在那里的账户扣除。</string>
 	<key>Make several clips above the main track into one: moved, sized, turned and faded together.</key>
 	<string>将主轨道上方的多个片段合为一个：一起移动、调整大小、旋转和淡化。</string>
 	<key>Make sure LF Studios is allowed under Microphone in System Settings. It appears there only after it has asked once, and there's no + button: turn on Microphone in the recording bar and click Allow.</key>
@@ -4624,6 +4742,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>信息</string>
 	<key>Message QR found</key>
 	<string>找到信息二维码</string>
+	<key>Message to the Assistant</key>
+	<string>发给助理的消息</string>
 	<key>Mic disconnected</key>
 	<string>麦克风已断开</string>
 	<key>Mic stopped</key>
@@ -4918,8 +5038,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>绝不会出现在录制内容中的东西</string>
 	<key>Never switch to the text beam or the hand</key>
 	<string>从不切换为文本光标或手形</string>
+	<key>Never your API keys to anyone but their own provider, and never your recordings' files.</key>
+	<string>你的 API 密钥只会发给它所属的服务商，录制文件则从不发送。</string>
 	<key>New</key>
 	<string>新</string>
+	<key>New Chat</key>
+	<string>新聊天</string>
 	<key>New Folder</key>
 	<string>新建文件夹</string>
 	<key>New Folder…</key>
@@ -5126,6 +5250,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>播放头处没有内容</string>
 	<key>Nothing changed yet.</key>
 	<string>尚无更改。</string>
+	<key>Nothing goes through LF Studios' own servers: there are none.</key>
+	<string>不会经过 LF Studios 的服务器：根本没有这样的服务器。</string>
 	<key>Nothing here yet</key>
 	<string>这里还没有内容</string>
 	<key>Nothing in the Guide matches your search. Try a shorter word, like “zoom” or “camera”.</key>
@@ -5192,6 +5318,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>关闭后它仍在时间线上，但看不到也听不到（V）</string>
 	<key>Off: faster sounds higher, slower lower. The sound is silent faster than 32× or slower than 1/32×.</key>
 	<string>关闭：加快时声音变高，减慢时变低。快于 32× 或慢于 1/32× 时没有声音。</string>
+	<key>Off: only the timeline, the transcript and the captions are sent. On: the AI can also look at frames of the video.</key>
+	<string>关：只发送时间线、转写文本和字幕。开：AI 还可以查看视频画面。</string>
 	<key>Offset</key>
 	<string>偏移</string>
 	<key>Older</key>
@@ -5260,6 +5388,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>只会存储带 ⌘ 或 ⌃ 的快捷键（以及 Esc 等少数按键），绝不会存储普通打字。</string>
 	<key>Only text and picture annotations can move to a track</key>
 	<string>只有文字和图片标注可以移到轨道</string>
+	<key>Only what it needs for your request goes to the provider you chose, straight from this Mac.</key>
+	<string>只有完成请求所需的内容会从这台 Mac 直接发送给你选择的服务商。</string>
 	<key>Opacity</key>
 	<string>不透明度</string>
 	<key>Open</key>
@@ -5280,6 +5410,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>从 LF Studios 菜单打开“历史记录”，右键点按一张截屏，然后选择“贴到屏幕”。</string>
 	<key>Open Keyboard Settings</key>
 	<string>打开键盘设置</string>
+	<key>Open LF Studios ▸ Settings ▸ AI.</key>
+	<string>打开 LF Studios ▸ 设置 ▸ AI。</string>
 	<key>Open LF Studios ▸ Settings ▸ Agent and turn on Allow AI agents to edit.</key>
 	<string>打开 LF Studios ▸ 设置 ▸ 代理，然后打开“允许 AI 代理编辑”。</string>
 	<key>Open Link</key>
@@ -5310,6 +5442,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>在 Final Cut Pro 或 DaVinci Resolve 中打开 Timeline.fcpxml，或在 Premiere Pro 中打开“Timeline (Premiere).xml”。</string>
 	<key>Open Video Editor</key>
 	<string>打开视频编辑器</string>
+	<key>Open Website</key>
+	<string>打开网站</string>
 	<key>Open a folder of files as one project: a recording's folder, a Creative Handoff, or any folder with videos in it.</key>
 	<string>把一个文件夹中的文件作为一个项目打开：录制内容的文件夹、创意交付，或任何包含视频的文件夹。</string>
 	<key>Open a project</key>
@@ -5330,16 +5464,24 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>打开截屏进行标注，然后拷贝或存储结果。</string>
 	<key>Open a whole folder</key>
 	<string>打开整个文件夹</string>
+	<key>Open aistudio.google.com and sign in with your Google account (Settings ▸ AI ▸ Open Website takes you there).</key>
+	<string>打开 aistudio.google.com 并用你的 Google 账户登录（“设置 ▸ AI ▸ 打开网站”可直达）。</string>
 	<key>Open and close</key>
 	<string>展开和收起</string>
 	<key>Open at login</key>
 	<string>登录时打开</string>
 	<key>Open compound clip</key>
 	<string>打开复合片段</string>
+	<key>Open console.anthropic.com and sign in or make an account (Settings ▸ AI ▸ Open Website takes you there).</key>
+	<string>打开 console.anthropic.com 并登录或创建账户（“设置 ▸ AI ▸ 打开网站”可直达）。</string>
 	<key>Open in annotation editor</key>
 	<string>在截屏编辑器中打开</string>
 	<key>Open or copy each link and email address.</key>
 	<string>打开或拷贝每个链接和电子邮件地址。</string>
+	<key>Open platform.openai.com and sign in or make an account (Settings ▸ AI ▸ Open Website takes you there).</key>
+	<string>打开 platform.openai.com 并登录或创建账户（“设置 ▸ AI ▸ 打开网站”可直达）。</string>
+	<key>Open the Assistant from Layout ▸ Assistant Panel.</key>
+	<string>从“布局 ▸ 助理面板”打开助理。</string>
 	<key>Open the LF Studios menu and, under Health, click Fix next to Apple Shortcuts.</key>
 	<string>打开 LF Studios 菜单，在“状态”下点按“Apple 快捷键”旁边的“修复”。</string>
 	<key>Open the LF Studios menu in the menu bar and choose Capture Text.</key>
@@ -5354,6 +5496,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>录制后打开视频编辑器。</string>
 	<key>Open video…</key>
 	<string>打开视频…</string>
+	<key>OpenAI keys start with sk-. A ChatGPT subscription doesn't include API credit.</key>
+	<string>OpenAI 密钥以 sk- 开头。ChatGPT 订阅不包含 API 额度。</string>
 	<key>Opened on another Mac, the project looks and sounds the same: the cleaned-up voice, Keep face centered, the pointer's own picture, and a macOS wallpaper background travel in the folder.</key>
 	<string>在另一台 Mac 上打开时，项目的画面和声音都一样：清理后的人声、“保持面部居中”、指针自己的图片以及 macOS 墙纸背景都会随文件夹一起带上。</string>
 	<key>Opened “%@”</key>
@@ -5420,6 +5564,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>出点提前</string>
 	<key>Out later</key>
 	<string>出点延后</string>
+	<key>Out of credit or sending too fast? The Assistant says so; add credit or wait a minute.</key>
+	<string>余额不足或发送太快？助理会告诉你；请充值或等待一分钟。</string>
 	<key>Outline</key>
 	<string>描边</string>
 	<key>Outlined</key>
@@ -5454,12 +5600,22 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>密码</string>
 	<key>Paste</key>
 	<string>粘贴</string>
+	<key>Paste a key that starts with %@</key>
+	<string>粘贴以 %@ 开头的密钥</string>
 	<key>Paste it anywhere with ⌘V.</key>
 	<string>用 ⌘V 粘贴到任何地方。</string>
+	<key>Paste it in LF Studios ▸ Settings ▸ AI ▸ Anthropic (Claude) and click Save.</key>
+	<string>将其粘贴到 LF Studios ▸ 设置 ▸ AI ▸ Anthropic (Claude) 中，然后点按“存储”。</string>
+	<key>Paste it in LF Studios ▸ Settings ▸ AI ▸ Google Gemini and click Save.</key>
+	<string>将其粘贴到 LF Studios ▸ 设置 ▸ AI ▸ Google Gemini 中，然后点按“存储”。</string>
+	<key>Paste it in LF Studios ▸ Settings ▸ AI ▸ OpenAI and click Save.</key>
+	<string>将其粘贴到 LF Studios ▸ 设置 ▸ AI ▸ OpenAI 中，然后点按“存储”。</string>
 	<key>Paste it into Terminal and press Return.</key>
 	<string>粘贴到“终端”中并按下 Return 键。</string>
 	<key>Paste it into ~/.codex/config.toml and save.</key>
 	<string>粘贴到 ~/.codex/config.toml 并存储。</string>
+	<key>Paste key</key>
+	<string>粘贴密钥</string>
 	<key>Paste or type your notes here. They stay out of every recording.</key>
 	<string>在此粘贴或输入备注。它们不会出现在任何录制中。</string>
 	<key>Paste or type your notes, then click Read.</key>
@@ -5496,6 +5652,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>暂停视频，然后在预览上拖移字幕。</string>
 	<key>Paused</key>
 	<string>已暂停</string>
+	<key>Paused: click Resume to go on</key>
+	<string>已暂停：点按“继续”以继续</string>
 	<key>Paused: you took over</key>
 	<string>已暂停：你已接管</string>
 	<key>Pauses longer than a second become short ones, except where you're clicking, typing, or moving the pointer. ⌘Z undoes either one.</key>
@@ -5820,6 +5978,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>属性 ▸ 跟踪，需选中主轨道上方的片段。</string>
 	<key>Properties: Show, Opacity, Size, Rotation, Mirror, Rotate 90°, Fit, Fill, Crop, and for videos Volume and Speed.</key>
 	<string>属性：显示、不透明度、大小、旋转、镜像、旋转 90°、适合、填充、裁剪，视频还有音量和速度。</string>
+	<key>Provider</key>
+	<string>服务商</string>
+	<key>Provider and model</key>
+	<string>服务商和模型</string>
 	<key>Proxies</key>
 	<string>代理</string>
 	<key>Proxies ready — the editor plays them; exports use the originals</key>
@@ -6532,6 +6694,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>Reels、TikTok、Shorts</string>
 	<key>Reframes zooms, moves the camera bubble, and keeps captions in the safe area for %@. This ratio then keeps its own version.</key>
 	<string>为 %@ 重新取景缩放、移动摄像头气泡，并让字幕保持在安全区内。此后该比例会保留自己的版本。</string>
+	<key>Refresh</key>
+	<string>刷新</string>
 	<key>Regular</key>
 	<string>常规</string>
 	<key>Releasing the mouse takes the shot. Hold ⇧ as you release to adjust the selection first — drag its edges, nudge it with the arrow keys, then press Return.</key>
@@ -6556,6 +6720,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>移除所有缩放</string>
 	<key>Remove Intro Card</key>
 	<string>移除片头卡</string>
+	<key>Remove Key</key>
+	<string>移除密钥</string>
+	<key>Remove Key deletes it from the Keychain.</key>
+	<string>“移除密钥”会将其从钥匙串中删除。</string>
 	<key>Remove Music</key>
 	<string>移除音乐</string>
 	<key>Remove None</key>
@@ -6928,6 +7096,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>由较新版本的 LF Studios 存储，某些设置可能不会显示</string>
 	<key>Saved capture</key>
 	<string>已存储的截屏</string>
+	<key>Saved in the Keychain</key>
+	<string>已存储在钥匙串中</string>
 	<key>Saved preset “%@”</key>
 	<string>已存储预设“%@”</string>
 	<key>Saved to %@: %@</key>
@@ -7178,6 +7348,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>发送</string>
 	<key>Send everything to a video editor</key>
 	<string>把所有素材交给其他剪辑软件</string>
+	<key>Send video frames to the AI</key>
+	<string>将视频画面发送给 AI</string>
+	<key>Sending frames costs more than text.</key>
+	<string>发送画面比发送文本更贵。</string>
 	<key>Sepia</key>
 	<string>棕褐色</string>
 	<key>Set Length at the top of the tab first, or later in the clip's Transition in.</key>
@@ -7218,6 +7392,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>调整音量，使其达到视频网站期望的响度（−16 LUFS）</string>
 	<key>Settings</key>
 	<string>设置</string>
+	<key>Settings ▸ AI…</key>
+	<string>设置 ▸ AI…</string>
 	<key>Settings ▸ Agent ▸ Save… gives the agent a guide to LF Studios' tools (for Claude Code, a skill).</key>
 	<string>“设置 ▸ 代理 ▸ 存储…”可为代理提供 LF Studios 工具指南（对 Claude Code 而言是一项技能）。</string>
 	<key>Settings ▸ General ▸ After Capture.</key>
@@ -7662,6 +7838,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>从这里开始</string>
 	<key>Start over from the original recording?</key>
 	<string>要从原始录制内容重新开始吗？</string>
+	<key>Start over: this chat is removed from the project</key>
+	<string>重新开始：此聊天将从项目中移除</string>
 	<key>Start recording</key>
 	<string>开始录制</string>
 	<key>Start scrolling (Space)</key>
@@ -7714,10 +7892,14 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>不再用作我的风格</string>
 	<key>Stop and Close</key>
 	<string>停止并关闭</string>
+	<key>Stop ends the request at once; what it changed so far waits for Keep or Revert All.</key>
+	<string>“停止”会立即结束请求；已做的更改将等待“保留”或“全部还原”。</string>
 	<key>Stop following</key>
 	<string>停止跟踪</string>
 	<key>Stop following takes it off; a box over something with clear edges follows best.</key>
 	<string>“停止跟踪”可将其移除；框住边缘清晰的物体时跟踪效果最好。</string>
+	<key>Stop now: what it changed so far waits for Keep or Revert All</key>
+	<string>立即停止：已做的更改将等待“保留”或“全部还原”</string>
 	<key>Stop recording</key>
 	<string>停止录制</string>
 	<key>Stop recording (%@)</key>
@@ -7726,8 +7908,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>在任何应用中停止录制</string>
 	<key>Stop, while LF Studios is the app in front</key>
 	<string>在 LF Studios 位于最前面时停止</string>
+	<key>Stopped after %lld steps. Ask again to go on.</key>
+	<string>已在 %lld 步后停止。再次提出请求以继续。</string>
 	<key>Stopped making proxies</key>
 	<string>已停止创建代理</string>
+	<key>Stopped.</key>
+	<string>已停止。</string>
 	<key>Storage</key>
 	<string>存储空间</string>
 	<key>Strength</key>
@@ -7864,6 +8050,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>色温</string>
 	<key>Template</key>
 	<string>模板</string>
+	<key>Test Key</key>
+	<string>测试密钥</string>
+	<key>Testing…</key>
+	<string>正在测试…</string>
 	<key>Text</key>
 	<string>文字</string>
 	<key>Text &amp; annotations</key>
@@ -7934,12 +8124,22 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>该视频为空</string>
 	<key>That window closed before recording could start.</key>
 	<string>窗口在录制开始前已关闭。</string>
+	<key>The API key was refused. Check it in Settings ▸ AI, or make a new one.</key>
+	<string>API 密钥被拒绝。请在“设置 ▸ AI”中检查，或创建新的密钥。</string>
 	<key>The Agent panel (Layout ▸ Agent Panel). It opens when an agent starts.</key>
 	<string>代理面板（布局 ▸ 代理面板）。代理开始工作时它会打开。</string>
 	<key>The Agent panel moves and floats like the others; its × hides it.</key>
 	<string>代理面板可像其他面板一样移动和浮动；点按它的 × 即可隐藏。</string>
+	<key>The Assistant is editing. Click or type in the editor to take over.</key>
+	<string>助理正在编辑。在编辑器中点按或输入即可接手。</string>
+	<key>The Assistant needs a key from Claude, OpenAI or Gemini. It stays in your Mac's Keychain.</key>
+	<string>助理需要 Claude、OpenAI 或 Gemini 的密钥。它保存在你 Mac 的钥匙串中。</string>
+	<key>The Assistant works the same way: each request's changes wait under the chat for Keep or Revert All.</key>
+	<string>助理也是如此：每个请求的更改都在聊天下方等待“保留”或“全部还原”。</string>
 	<key>The Home window</key>
 	<string>“主页”窗口</string>
+	<key>The Keychain couldn't save the key: %@</key>
+	<string>钥匙串无法存储密钥：%@</string>
 	<key>The LF Studios menu (Command Center)</key>
 	<string>LF Studios 菜单（命令中心）</string>
 	<key>The LF Studios menu in the menu bar ▸ Capture All Displays. It's there only while more than one screen is connected.</key>
@@ -7974,6 +8174,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>编辑器工具栏中的“撤销”和“重做”按钮。</string>
 	<key>The agent connection couldn't start: %@</key>
 	<string>代理连接无法启动：%@</string>
+	<key>The answer was too long and was cut off.</key>
+	<string>回答过长，已被截断。</string>
 	<key>The aspect ratio menu under the player.</key>
 	<string>播放器下方的宽高比菜单。</string>
 	<key>The bar above the timeline. Hover a button for its name and key.</key>
@@ -8016,6 +8218,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>摄像头画面，晚于屏幕 %@</string>
 	<key>The cards use the same background as your video. Pick their font with the font menu.</key>
 	<string>卡片使用与视频相同的背景。用字体菜单选择它们的字体。</string>
+	<key>The chat is saved with the project. A project with a chat opens in LF Studios 1.20.0 or later.</key>
+	<string>聊天会随项目一起存储。含有聊天的项目需在 LF Studios 1.20.0 或更高版本中打开。</string>
 	<key>The clips lane on the timeline, and the Timeline menu.</key>
 	<string>时间线上的片段轨道，以及“时间线”菜单。</string>
 	<key>The cover couldn't be added: %@</key>
@@ -8064,6 +8268,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>交付已就绪</string>
 	<key>The highest quality, and the only one that can keep transparency</key>
 	<string>最高画质，也是唯一能保留透明度的格式</string>
+	<key>The key is kept only in your Mac's Keychain, never in projects, handoffs or settings files.</key>
+	<string>密钥只保存在你 Mac 的钥匙串中，从不写入项目、交付或设置文件。</string>
+	<key>The key works, but it has no chat models.</key>
+	<string>密钥有效，但没有可用的聊天模型。</string>
+	<key>The key works: %lld models</key>
+	<string>密钥有效：%lld 个模型</string>
 	<key>The label under it says how wide the camera is and where it goes in the video. The editor opens with exactly that.</key>
 	<string>下方的标签会说明摄像头的宽度以及它在视频中的位置。编辑器打开时正是这样。</string>
 	<key>The line runs down through every track, so you can see what's under it.</key>
@@ -8076,6 +8286,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>放大镜会显示指针下方的像素及其颜色。</string>
 	<key>The markers are already at clip edges</key>
 	<string>标记已经位于片段边缘</string>
+	<key>The menu at the top of the panel switches the provider and model. New Chat starts over.</key>
+	<string>面板顶部的菜单可切换服务商和模型。“新聊天”可重新开始。</string>
 	<key>The menu bar icon is LF Studios' main entry point. While it is hidden, open LF Studios again from Finder, Launchpad, or Spotlight to bring these Preferences back.</key>
 	<string>菜单栏图标是 LF Studios 的主要入口。隐藏后，可从“访达”、“启动台”或“聚焦”再次打开 LF Studios 来重新显示这些设置。</string>
 	<key>The menu bar icon is missing</key>
@@ -8090,8 +8302,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>麦克风已停止工作。录制将继续，但不含麦克风声音。</string>
 	<key>The microphone was off, muted, or not allowed.</key>
 	<string>麦克风处于关闭或静音状态，或者未获得允许。</string>
+	<key>The model declined this request.</key>
+	<string>模型拒绝了此请求。</string>
 	<key>The model downloads once from Hugging Face. After that, Whisper works offline, and your recording is never uploaded.</key>
 	<string>模型只需从 Hugging Face 下载一次。之后 Whisper 可离线使用，你的录制内容绝不会被上传。</string>
+	<key>The model “%@” isn't available with this key. Choose another one.</key>
+	<string>此密钥无法使用模型“%@”。请选择其他模型。</string>
 	<key>The music</key>
 	<string>音乐</string>
 	<key>The music gets quieter while this track speaks, as it does under your voice</key>
@@ -8140,6 +8356,16 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>项目文件（名称.lfs）会让一切按你离开时的样子重新打开。LF Studios 会在你编辑时随时更新它。</string>
 	<key>The project open in the front editor window.</key>
 	<string>最前面编辑器窗口中打开的项目。</string>
+	<key>The provider bills your account for each request, by the tokens it reads and writes. LF Studios charges nothing.</key>
+	<string>服务商按读取和生成的 token 数向你的账户收取每次请求的费用。LF Studios 不收取任何费用。</string>
+	<key>The provider didn't answer in time. Try again.</key>
+	<string>服务商未及时响应。请重试。</string>
+	<key>The provider is busy right now. Try again in a moment.</key>
+	<string>服务商当前繁忙。请稍后重试。</string>
+	<key>The provider is limiting how fast you can send requests. Wait a minute, then try again.</key>
+	<string>服务商正在限制你的请求频率。请等待一分钟后重试。</string>
+	<key>The provider said: %@</key>
+	<string>服务商返回：%@</string>
 	<key>The recording bar</key>
 	<string>录制栏</string>
 	<key>The recording bar, the camera bubble preview, Speaker notes, the countdown, and notices.</key>
@@ -8316,6 +8542,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>粗细</string>
 	<key>Thin</key>
 	<string>细</string>
+	<key>Thinking…</key>
+	<string>正在思考…</string>
 	<key>This GIF is too long for its size — it would need about %@ of memory. Pick a smaller size or fewer frames per second, export part of the video, or choose MP4.</key>
 	<string>这个 GIF 相对其尺寸过长 — 大约需要 %@ 内存。请选择更小的尺寸或更低的帧率、导出视频的一部分，或选择 MP4。</string>
 	<key>This Guide</key>
@@ -8330,6 +8558,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>本周</string>
 	<key>This app</key>
 	<string>此应用</string>
+	<key>This chat: %@ in · %@ out tokens</key>
+	<string>此聊天：输入 %@ · 输出 %@ 个 token</string>
 	<key>This list</key>
 	<string>此列表</string>
 	<key>This part is cut from the video</key>
@@ -8356,6 +8586,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>这会用新的%2$@文字稿替换全部 %1$lld 行字幕，包括你编辑或输入过的行。</string>
 	<key>This sound file is gone — add it again.</key>
 	<string>此声音文件已不存在 — 请重新添加。</string>
+	<key>This video has no AI chat</key>
+	<string>此视频没有 AI 聊天</string>
 	<key>This video has no camera bubble</key>
 	<string>此视频没有摄像头气泡</string>
 	<key>This video has no camera footage to hide</key>
@@ -8666,6 +8898,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>在“属性 ▸ 文字”中输入，并在那里选择外观，或点按一种“样式”。</string>
 	<key>Type in a text annotation</key>
 	<string>在文字标注中输入</string>
+	<key>Type what you want, for example: Cut the long pauses and add captions. Press Return.</key>
+	<string>输入你想要的，例如：剪掉较长的停顿并添加字幕。按 Return 键。</string>
 	<key>Typewriter</key>
 	<string>打字机</string>
 	<key>Typing</key>
@@ -8682,12 +8916,24 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>未压缩的 24 位声音，适合 Logic Pro 和 GarageBand</string>
 	<key>Uncompressed 24-bit sound, for editing in an audio app</key>
 	<string>未压缩的 24 位声音，用于在音频应用中编辑</string>
+	<key>Under API Keys, click Create Key, name it LF Studios, and copy it.</key>
+	<string>在 API Keys 下点按 Create Key，将其命名为 LF Studios，然后拷贝。</string>
+	<key>Under API keys, click Create new secret key, name it LF Studios, and copy it.</key>
+	<string>在 API keys 下点按 Create new secret key，将其命名为 LF Studios，然后拷贝。</string>
 	<key>Under Languages, choose a language and click Translate.</key>
 	<string>在“语言”下选择一种语言，然后点按“翻译”。</string>
 	<key>Under Music, click Add Music… and choose a song.</key>
 	<string>在“音乐”下点按“添加音乐…”，然后选择一首歌曲。</string>
 	<key>Under Restyle all captions, choose a style, a size and Top or Bottom.</key>
 	<string>在“更换所有字幕样式”下，选择样式、大小以及顶部或底部。</string>
+	<key>Under each answer in the Assistant panel.</key>
+	<string>助理面板中每条回答的下方。</string>
+	<key>Under each answer: the tokens it used, in and out, for all its steps.</key>
+	<string>每条回答下方：其所有步骤使用的输入和输出 token 数。</string>
+	<key>Under the chat: the tokens the whole chat has used.</key>
+	<string>聊天下方：整个聊天使用的 token 数。</string>
+	<key>Under the provider, paste your key into Paste key and click Save.</key>
+	<string>在服务商下方，将密钥粘贴到“粘贴密钥”中，然后点按“存储”。</string>
 	<key>Under the video preview. Hide them with ×; bring them back from the shortcuts list (?).</key>
 	<string>在视频预览下方。点按 × 可隐藏；可从快捷键列表（?）中重新显示。</string>
 	<key>Under the video track is its sound, on a track of its own. A recording's microphone and the Mac's sound each get one.</key>
@@ -9362,6 +9608,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>色温</string>
 	<key>Warning</key>
 	<string>警告</string>
+	<key>Watch the answer come in. What it changes is listed under the chat as it goes.</key>
+	<string>看着回答逐渐出现。它所做的更改会随时列在聊天下方。</string>
 	<key>Watch the changes come in, in the Agent panel. Click one to go to it.</key>
 	<string>在代理面板中查看陆续到来的更改。点按任一项即可前往。</string>
 	<key>Watch the result, then change or delete any zoom.</key>
@@ -9388,6 +9636,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>代理能做什么、不能做什么</string>
 	<key>What is each file in “%@”?</key>
 	<string>“%@”中的每个文件分别是什么？</string>
+	<key>What it costs</key>
+	<string>费用说明</string>
+	<key>What it reads to do the job: the timeline (clips, times, tracks), the transcript and the captions, and the markers and keyframes.</key>
+	<string>为完成任务而读取的内容：时间线（片段、时间、轨道）、转写文本和字幕，以及标记和关键帧。</string>
+	<key>What the Assistant sends</key>
+	<string>助理会发送什么</string>
 	<key>What the clip follows: drag it over the thing that moves</key>
 	<string>片段跟踪的对象：将它拖到移动的物体上</string>
 	<key>What was playing on your Mac</key>
@@ -9406,6 +9660,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>当某个快捷键已被占用时，LF Studios 会告诉你哪个命令将失去它。</string>
 	<key>When an agent finishes, see what it changed and keep it, or go back to how the project was.</key>
 	<string>代理完成后，查看它的更改并保留，或回到项目原来的样子。</string>
+	<key>When it's done, click Keep, or Revert All to go back to how the video was before the request.</key>
+	<string>完成后，点按“保留”，或点按“全部还原”回到请求之前的视频。</string>
 	<key>When recording a window: the Window size menu in the row above the recording bar.</key>
 	<string>录制窗口时：录制栏上方那一行中的“窗口大小”菜单。</string>
 	<key>When the agent is done, its changes are marked on the timeline in orange.</key>
@@ -9556,8 +9812,12 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>你的 Mac 内存不足。请关闭一些 App 或选择更低的分辨率，然后重新导出。</string>
 	<key>Your ShotStyle settings were moved to LF Studios</key>
 	<string>你的 ShotStyle 设置已移至 LF Studios</string>
+	<key>Your account with this provider is out of credit. Add credit on its website, then try again.</key>
+	<string>你在此服务商的账户余额不足。请在其网站充值后重试。</string>
 	<key>Your camera is recorded as its own layer: a live bubble shows while you record (it never appears in the screen capture), and the editor lets you move, resize, and restyle it — or hide it — afterwards.</key>
 	<string>摄像头画面会录制为单独的图层：录制时会显示实时气泡（它不会出现在屏幕录制中），之后你可以在编辑器中移动它、调整大小和更改样式，也可以将其隐藏。</string>
+	<key>Your chat with the Assistant, in the LF Studios project</key>
+	<string>你与助理的聊天，保存在 LF Studios 项目中</string>
 	<key>Your choices are remembered for next time, and match Settings ▸ Recording.</key>
 	<string>你的选择会被记住，供下次使用，并与“设置 ▸ 录制”保持一致。</string>
 	<key>Your disk filled up — saved the first %@.</key>
@@ -9590,6 +9850,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>你的标注仍然可以编辑。“重置”会重新显示整张截屏，⌘Z 可撤销裁剪。</string>
 	<key>Your media in the Library</key>
 	<string>素材库中的媒体</string>
+	<key>Your message, and the chat so far.</key>
+	<string>你的消息，以及目前为止的聊天。</string>
 	<key>Your microphone</key>
 	<string>你的麦克风</string>
 	<key>Your narration can become captions — then cut the video by editing its words.</key>
@@ -9714,6 +9976,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>添加缩放</string>
 	<key>aim or resize it</key>
 	<string>对准或调整大小</string>
+	<key>aistudio.google.com, then LF Studios ▸ Settings ▸ AI ▸ Google Gemini.</key>
+	<string>aistudio.google.com，然后是 LF Studios ▸ 设置 ▸ AI ▸ Google Gemini。</string>
 	<key>all shortcuts</key>
 	<string>所有快捷键</string>
 	<key>bottom</key>
@@ -9730,6 +9994,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>中间</string>
 	<key>chapters</key>
 	<string>章节</string>
+	<key>console.anthropic.com, then LF Studios ▸ Settings ▸ AI ▸ Anthropic (Claude).</key>
+	<string>console.anthropic.com，然后是 LF Studios ▸ 设置 ▸ AI ▸ Anthropic (Claude)。</string>
 	<key>cut by editing words</key>
 	<string>通过编辑文字剪辑</string>
 	<key>delete left / right of the playhead</key>
@@ -9796,6 +10062,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>未下载</string>
 	<key>outro card</key>
 	<string>片尾卡</string>
+	<key>platform.openai.com, then LF Studios ▸ Settings ▸ AI ▸ OpenAI.</key>
+	<string>platform.openai.com，然后是 LF Studios ▸ 设置 ▸ AI ▸ OpenAI。</string>
 	<key>play</key>
 	<string>播放</string>
 	<key>pointer</key>
@@ -9822,6 +10090,8 @@ You can re-enable Apple's shortcuts anytime in System Settings → Keyboard → 
 	<string>文字、高亮、箭头、模糊</string>
 	<key>the camera</key>
 	<string>摄像头</string>
+	<key>the request failed</key>
+	<string>请求失败</string>
 	<key>the video</key>
 	<string>视频</string>
 	<key>this recording</key>

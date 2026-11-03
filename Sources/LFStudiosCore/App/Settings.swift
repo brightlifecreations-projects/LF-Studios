@@ -480,6 +480,42 @@ enum Settings {
         set { defaults.set(newValue, forKey: "videoAgentPort") }
     }
 
+    /// Settings ▸ AI (1.20.0). The keys themselves are only in the Keychain
+    /// (VideoAIKeys); nothing here is secret.
+    /// The provider the Assistant uses (nil: none chosen, the Assistant is off).
+    static var videoAIProvider: VideoAIProvider? {
+        get { defaults.string(forKey: "videoAIProvider").flatMap(VideoAIProvider.init(rawValue:)) }
+        set { defaults.set(newValue?.rawValue, forKey: "videoAIProvider") }
+    }
+
+    /// The model chosen for each provider.
+    static func videoAIModel(for provider: VideoAIProvider) -> String? {
+        (defaults.dictionary(forKey: "videoAIModels") as? [String: String])?[provider.rawValue]
+    }
+
+    static func setVideoAIModel(_ model: String?, for provider: VideoAIProvider) {
+        var models = (defaults.dictionary(forKey: "videoAIModels") as? [String: String]) ?? [:]
+        models[provider.rawValue] = model
+        defaults.set(models, forKey: "videoAIModels")
+    }
+
+    /// Each provider's model list, as last fetched (refreshable).
+    static func videoAIModelList(for provider: VideoAIProvider) -> [VideoAIModel] {
+        guard let data = defaults.data(forKey: "videoAIModelList.\(provider.rawValue)") else { return [] }
+        return (try? JSONDecoder().decode([VideoAIModel].self, from: data)) ?? []
+    }
+
+    static func setVideoAIModelList(_ models: [VideoAIModel], for provider: VideoAIProvider) {
+        defaults.set(try? JSONEncoder().encode(models), forKey: "videoAIModelList.\(provider.rawValue)")
+    }
+
+    /// Send video frames to the AI (off: only timeline data, transcript and
+    /// captions are sent).
+    static var videoAISendsFrames: Bool {
+        get { defaults.bool(forKey: "videoAISendsFrames") }
+        set { defaults.set(newValue, forKey: "videoAISendsFrames") }
+    }
+
     /// The one-time "drag a panel's top edge" tip was closed (1.19.0), or
     /// a panel was moved.
     static var videoPanelTipSeen: Bool {

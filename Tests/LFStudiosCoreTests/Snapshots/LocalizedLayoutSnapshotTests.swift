@@ -140,16 +140,16 @@ final class LocalizedLayoutSnapshotTests: XCTestCase {
     // MARK: Settings, menu, welcome window
 
     func testSettingsTabsKeepTheirDesignWidthUnlessATitleNeedsMore() {
-        // The window's default width leaves 522 pt for the six tabs (1.19.0).
+        // The window's default width leaves 582 pt for the seven tabs (1.20.0).
         L10n.use("en")
-        XCTAssertEqual(PreferencesTabStrip.tabWidth(fitting: 522), 74, "English looks exactly as designed")
+        XCTAssertEqual(PreferencesTabStrip.tabWidth(fitting: 582), 74, "English looks exactly as designed")
         L10n.use("zh-Hans")
-        XCTAssertEqual(PreferencesTabStrip.tabWidth(fitting: 522), 74)
+        XCTAssertEqual(PreferencesTabStrip.tabWidth(fitting: 582), 74)
         L10n.use("de")
-        XCTAssertGreaterThan(PreferencesTabStrip.tabWidth(fitting: 522), 74, "„Bildschirmfotos“ gets more room")
+        XCTAssertGreaterThan(PreferencesTabStrip.tabWidth(fitting: 582), 74, "„Bildschirmfotos“ gets more room")
         XCTAssertEqual(PreferencesTabStrip.tabWidth(fitting: 402), 74, "never wider than the narrowest window allows")
         L10n.use("ru")
-        XCTAssertGreaterThan(PreferencesTabStrip.tabWidth(fitting: 522), 74, "«Снимки экрана» gets more room")
+        XCTAssertGreaterThan(PreferencesTabStrip.tabWidth(fitting: 582), 74, "«Снимки экрана» gets more room")
     }
 
     func testHistoryCardButtonsFitEveryLanguage() {

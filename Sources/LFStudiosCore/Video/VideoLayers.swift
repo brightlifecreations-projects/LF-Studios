@@ -219,7 +219,10 @@ extension VideoDemoProject {
 
     /// Tacks (1.19.1): only 1.19.1 and later keep them, so older versions
     /// say they need a newer one instead of dropping them on the next save.
-    var needsFormat6: Bool { tacks?.isEmpty == false }
+    var needsFormat6: Bool { tacks?.isEmpty == false || needsFormat7 }
+
+    /// An AI chat (1.20.0): only 1.20.0 and later keep it.
+    var needsFormat7: Bool { aiChat?.messages.isEmpty == false }
 
     var needsFormat4: Bool {
         needsFormat5 || needsFormat6 || layerTracks.contains { $0.items.contains { $0.needsFormat4 } } || timelineClips.contains { $0.needsFormat4 }

@@ -22,6 +22,8 @@
 	<string>%@ (⇧⌘Z)</string>
 	<key>%@ (⌘Z)</key>
 	<string>%@ (⌘Z)</string>
+	<key>%@ API key</key>
+	<string>API-Schlüssel für %@</string>
 	<key>%@ It's in “%@” and opens as before.</key>
 	<string>%@ Die Aufnahme liegt in „%@“ und öffnet sich wie bisher.</string>
 	<key>%@ Loupe</key>
@@ -44,6 +46,8 @@
 	<string>%@ Vollbild</string>
 	<key>%@ has its own version now</key>
 	<string>%@ hat jetzt eine eigene Fassung</string>
+	<key>%@ in · %@ out tokens</key>
+	<string>%@ rein · %@ raus (Tokens)</string>
 	<key>%@ is too much for this Mac and would be very slow or fail. Try %@ instead.</key>
 	<string>%@ ist zu viel für diesen Mac und wäre sehr langsam oder würde scheitern. Versuch stattdessen %@.</string>
 	<key>%@ isn't supported for captions on this Mac. Pick another language.</key>
@@ -234,6 +238,8 @@
 	<string>Eine feine Linie hebt dunkle Aufnahmen vom Hintergrund ab</string>
 	<key>A keyframe for position, size, rotation and opacity at the playhead</key>
 	<string>Ein Keyframe für Position, Größe, Drehung und Deckkraft an der Abspielposition</string>
+	<key>A long chat sends more each time. New Chat starts small again.</key>
+	<string>Ein langer Chat sendet jedes Mal mehr. „Neuer Chat“ fängt wieder klein an.</string>
 	<key>A magnifier over one spot at the playhead; the rest of the frame stays in view</key>
 	<string>Eine Lupe über einer Stelle an der Abspielposition; der Rest des Bilds bleibt sichtbar</string>
 	<key>A magnifier over one spot; the rest of the frame stays in view.</key>
@@ -310,6 +316,10 @@
 	<string>Ein so großes Fenster wäre größer als der Bildschirm. Die größte passende Größe mit derselben Form ist %@ × %@.</string>
 	<key>A yellow marker shows where something was cut. Click it to bring the part back.</key>
 	<string>Eine gelbe Markierung zeigt, wo etwas herausgeschnitten wurde. Klicke darauf, um den Teil zurückzuholen.</string>
+	<key>AI</key>
+	<string>KI</string>
+	<key>AI Assistant</key>
+	<string>KI-Assistent</string>
 	<key>AI agent</key>
 	<string>KI-Agent</string>
 	<key>AI agent connected</key>
@@ -318,6 +328,8 @@
 	<string>KI-Agenten</string>
 	<key>AI agents are off: Settings ▸ Agent.</key>
 	<string>KI-Agenten sind aus: Einstellungen ▸ Agent.</string>
+	<key>API key</key>
+	<string>API-Schlüssel</string>
 	<key>About</key>
 	<string>Info</string>
 	<key>About %lld min left</key>
@@ -394,6 +406,10 @@
 	<string>Kameravideo vom Handy hinzufügen</string>
 	<key>Add a caption at the playhead</key>
 	<string>Untertitel an der Abspielposition hinzufügen</string>
+	<key>Add a key and choose a provider first (see Add your API key).</key>
+	<string>Füge zuerst einen Schlüssel hinzu und wähle einen Anbieter (siehe „API-Schlüssel hinzufügen“).</string>
+	<key>Add a key below, then choose its provider.</key>
+	<string>Füge unten einen Schlüssel hinzu und wähle dann seinen Anbieter.</string>
 	<key>Add a keyframe at the playhead: %@</key>
 	<string>Keyframe an der Abspielposition hinzufügen: %@</string>
 	<key>Add a marker</key>
@@ -414,6 +430,10 @@
 	<string>Zoom an der Abspielposition hinzufügen</string>
 	<key>Add a zoom at the playhead (Z)</key>
 	<string>Zoom an der Abspielposition hinzufügen (Z)</string>
+	<key>Add an API key for Claude, OpenAI or Gemini in Settings ▸ AI, then choose its provider.</key>
+	<string>Füge in Einstellungen ▸ KI einen API-Schlüssel für Claude, OpenAI oder Gemini hinzu und wähle dann seinen Anbieter.</string>
+	<key>Add an API key in Settings ▸ AI first.</key>
+	<string>Füge zuerst in Einstellungen ▸ KI einen API-Schlüssel hinzu.</string>
 	<key>Add another recording or video after this one — LF Studios recordings keep their pointer, clicks, and shortcuts.</key>
 	<string>Füge nach dieser Aufnahme eine weitere Aufnahme oder ein Video hinzu – LF-Studios-Aufnahmen behalten ihren Zeiger, ihre Klicks und Kurzbefehle.</string>
 	<key>Add another recording to the end of this one, to make one video.</key>
@@ -444,6 +464,8 @@
 	<string>Kapitel aus Markern hinzufügen</string>
 	<key>Add chapters from markers puts chapters in MP4 and ProRes files.</key>
 	<string>„Kapitel aus Markern hinzufügen“ setzt Kapitel in MP4- und ProRes-Dateien.</string>
+	<key>Add credit under Billing.</key>
+	<string>Lade unter „Billing“ Guthaben auf.</string>
 	<key>Add effects from Library ▸ Effects.</key>
 	<string>Effekte fügst du über Bibliothek ▸ Effekte hinzu.</string>
 	<key>Add highlight at the playhead (⌥H)</key>
@@ -486,6 +508,8 @@
 	<string>Zu Favoriten hinzufügen</string>
 	<key>Add typing zooms</key>
 	<string>Zooms aufs Tippen hinzufügen</string>
+	<key>Add your API key</key>
+	<string>API-Schlüssel hinzufügen</string>
 	<key>Add zoom at playhead</key>
 	<string>Zoom an der Abspielposition hinzufügen</string>
 	<key>Add zooms</key>
@@ -544,6 +568,8 @@
 	<string>Nach der Aufnahme</string>
 	<key>After recording, click Restore size to put it back.</key>
 	<string>Klicke nach der Aufnahme auf „Größe wiederherstellen“, um sie zurückzusetzen.</string>
+	<key>After saving, Settings shows only the key's last 4 characters.</key>
+	<string>Nach dem Sichern zeigen die Einstellungen nur die letzten 4 Zeichen des Schlüssels.</string>
 	<key>After you stop, LF Studios asks where to save the recording, then puts everything from it in one new folder: the video, the camera, the sound, and the project that opens it all.</key>
 	<string>Wenn du stoppst, fragt LF Studios, wo die Aufnahme gesichert werden soll, und legt dann alles davon in einen neuen Ordner: das Video, die Kamera, den Ton und das Projekt, das alles wieder öffnet.</string>
 	<key>Afterwards, click Restore size to put the window back.</key>
@@ -660,6 +686,8 @@
 	<string>Beschriftungstext</string>
 	<key>Annotation tools</key>
 	<string>Beschriftungswerkzeuge</string>
+	<key>Another AI agent is editing this project. Wait until it's done, then ask again.</key>
+	<string>Ein anderer KI-Agent bearbeitet dieses Projekt. Warte, bis er fertig ist, und frag dann noch einmal.</string>
 	<key>Another app may use the same keys: choose different ones.</key>
 	<string>Eine andere App nutzt vielleicht dieselben Tasten: Wähle andere.</string>
 	<key>Answer</key>
@@ -750,6 +778,12 @@
 	<string>Als Clip bekommt er auch Keyframes, Animationen, Effekte und Filter.</string>
 	<key>As an effect clip: drag an effect onto the timeline. It changes the main track and the tracks under it while it plays.</key>
 	<string>Als Effektclip: Zieh einen Effekt auf die Zeitleiste. Er ändert die Hauptspur und die Spuren darunter, solange er läuft.</string>
+	<key>Ask for an edit in plain words, and an AI makes it with the editor's own tools while you watch. It uses your own API key from Claude, OpenAI or Gemini.</key>
+	<string>Bitte in einfachen Worten um eine Bearbeitung, und eine KI erledigt sie mit den Werkzeugen des Editors, während du zusiehst. Sie nutzt deinen eigenen API-Schlüssel von Claude, OpenAI oder Gemini.</string>
+	<key>Ask for an edit: “Cut the long pauses”, “Add captions and fix the typos”, “Mark where the settings open”.</key>
+	<string>Bitte um eine Bearbeitung: „Kürze die langen Pausen“, „Füge Untertitel hinzu und korrigiere die Tippfehler“, „Markiere, wo sich die Einstellungen öffnen“.</string>
+	<key>Ask the Assistant to edit…</key>
+	<string>Bitte den Assistenten um eine Bearbeitung …</string>
 	<key>Ask where to save after each recording</key>
 	<string>Nach jeder Aufzeichnung fragen, wo gesichert wird</string>
 	<key>Aspect Ratio %@ — %@</key>
@@ -758,10 +792,18 @@
 	<string>Seitenverhältnis</string>
 	<key>Aspect ratio menu ▸ Fill the Frame, Follow the Cursor.</key>
 	<string>Menü für das Seitenverhältnis ▸ Bild füllen und dem Zeiger folgen.</string>
+	<key>Assistant</key>
+	<string>Assistent</string>
+	<key>Assistant Panel</key>
+	<string>Assistent-Panel</string>
+	<key>Assistant editing</key>
+	<string>Assistent bearbeitet</string>
 	<key>At playhead</key>
 	<string>Auf Abspielposition</string>
 	<key>At the top of the Captions panel, for recordings made with Speaker notes open.</key>
 	<string>Oben im Panel „Untertitel“, bei Aufnahmen, die mit geöffneten Sprechernotizen entstanden sind.</string>
+	<key>At the top, set Provider to the one you added. Until you do, the Assistant stays off.</key>
+	<string>Stelle oben bei „Anbieter“ den hinzugefügten ein. Bis dahin bleibt der Assistent aus.</string>
 	<key>Audio</key>
 	<string>Audio</string>
 	<key>Audio only</key>
@@ -834,6 +876,8 @@
 	<string>Zurück</string>
 	<key>Back to how the project was before the agent started (⌘Z brings the changes back)</key>
 	<string>Zurück zum Projekt vor dem Agenten (⌘Z holt die Änderungen zurück)</string>
+	<key>Back to how the project was before this request (⌘Z brings the changes back)</key>
+	<string>Zurück zum Projekt vor dieser Anfrage (⌘Z holt die Änderungen zurück)</string>
 	<key>Back to the LF Studios look</key>
 	<string>Zurück zum LF-Studios-Stil</string>
 	<key>Back to the original recording — ⌘Z to undo</key>
@@ -1350,6 +1394,8 @@
 	<string>Kapitel als Text („0:00 Start“) für eine YouTube-Beschreibung</string>
 	<key>Chapters copied — paste them into the video's description</key>
 	<string>Kapitel kopiert – füge sie in die Beschreibung des Videos ein</string>
+	<key>Chat with an AI that edits this video with you, using your own API key. Requests go straight from this Mac to the provider.</key>
+	<string>Chatte mit einer KI, die dieses Video mit dir bearbeitet – mit deinem eigenen API-Schlüssel. Anfragen gehen direkt von diesem Mac an den Anbieter.</string>
 	<key>Check</key>
 	<string>Prüfen</string>
 	<key>Check Settings ▸ General ▸ Show menu bar icon.</key>
@@ -1418,6 +1464,8 @@
 	<string>Wähle Whisper und dann ein Modell.</string>
 	<key>Choose a .ttf or .otf font. LF Studios keeps its own copy, so it keeps working if the file is deleted.</key>
 	<string>Wähle eine .ttf- oder .otf-Schrift. LF Studios behält eine eigene Kopie, damit sie auch funktioniert, wenn die Datei gelöscht wird.</string>
+	<key>Choose a Model, or keep the one LF Studios chose.</key>
+	<string>Wähle ein Modell oder behalte das, das LF Studios gewählt hat.</string>
 	<key>Choose a PNG to use as the pointer, then click where it points</key>
 	<string>Wähle ein PNG als Zeiger und klicke dann auf die Stelle, auf die er zeigt</string>
 	<key>Choose a Size, a font, and Top or Bottom. Or drag the keys on the preview.</key>
@@ -1438,6 +1486,8 @@
 	<string>Wähle eine Sprache und klicke auf „Übersetzen“.</string>
 	<key>Choose a logo, watermark, or screenshot to place on the video</key>
 	<string>Wähle ein Logo, ein Wasserzeichen oder ein Bildschirmfoto für das Video</string>
+	<key>Choose a model</key>
+	<string>Modell wählen</string>
 	<key>Choose a picture.</key>
 	<string>Wähle ein Bild.</string>
 	<key>Choose a project, a folder, or a video</key>
@@ -1544,6 +1594,8 @@
 	<string>Klassisch</string>
 	<key>Claude Code, Cursor and Codex have their own Copy setup buttons.</key>
 	<string>Claude Code, Cursor und Codex haben eigene Tasten „Einrichtung kopieren“.</string>
+	<key>Claude keys start with sk-ant-.</key>
+	<string>Claude-Schlüssel beginnen mit sk-ant-.</string>
 	<key>Claude ▸ Settings ▸ Developer ▸ Edit Config: paste it into claude_desktop_config.json, save, and restart Claude.</key>
 	<string>Claude ▸ Einstellungen ▸ Entwickler ▸ Konfiguration bearbeiten: in claude_desktop_config.json einfügen, sichern und Claude neu starten.</string>
 	<key>Clay</key>
@@ -1682,6 +1734,8 @@
 	<string>Klicke auf „Private Infos finden“. Du kannst währenddessen weiter bearbeiten.</string>
 	<key>Click Find Private Info. You can keep editing while it looks.</key>
 	<string>Klicke auf „Private Infos finden“. Du kannst weiter bearbeiten, während gesucht wird.</string>
+	<key>Click Get API key, then Create API key, and copy it.</key>
+	<string>Klicke auf „Get API key“, dann auf „Create API key“, und kopiere ihn.</string>
 	<key>Click Hide camera during silences. Hide blocks appear on the Camera lane.</key>
 	<string>Klicke auf „Kamera in Sprechpausen ausblenden“. Auf der Kameraspur erscheinen Ausblende-Blöcke.</string>
 	<key>Click Image above the preview.</key>
@@ -1732,6 +1786,10 @@
 	<string>Klicke in der Aufzeichnungsleiste auf „Systemton“, oder Einstellungen ▸ Aufzeichnung ▸ Audio ▸ Systemton aufzeichnen.</string>
 	<key>Click Take screenshot in Home.</key>
 	<string>Klicke im Startfenster auf „Bildschirmfoto aufnehmen“.</string>
+	<key>Click Test Key to load the models.</key>
+	<string>Klicke auf „Schlüssel testen“, um die Modelle zu laden.</string>
+	<key>Click Test Key. It says the key works and loads the provider's models.</key>
+	<string>Klicke auf „Schlüssel testen“. Es meldet, dass der Schlüssel funktioniert, und lädt die Modelle des Anbieters.</string>
 	<key>Click Transcribe with Whisper.</key>
 	<string>Klicke auf „Mit Whisper transkribieren“.</string>
 	<key>Click Transcribe. Keep editing while it listens.</key>
@@ -1798,6 +1856,8 @@
 	<string>Klicke oder zieh irgendwo auf der Zeitleiste, um dorthin zu springen.</string>
 	<key>Click or press Esc to cancel</key>
 	<string>Zum Abbrechen klicken oder Esc drücken</string>
+	<key>Click or type in the editor while it works and it pauses. Click Resume to let it go on.</key>
+	<string>Klicke oder tippe im Editor, während er arbeitet, und er pausiert. Klicke auf „Fortsetzen“, damit er weitermacht.</string>
 	<key>Click or type in the editor while it works and it pauses: its next change waits until you click Resume in the Agent panel.</key>
 	<string>Klicke oder tippe im Editor, während er arbeitet, und er pausiert: Seine nächste Änderung wartet, bis du im Agent-Panel auf „Fortsetzen“ klickst.</string>
 	<key>Click play, press Space, or tick Start with recording.</key>
@@ -2190,6 +2250,8 @@
 	<string>Proxys erstellen …</string>
 	<key>Creative Handoff</key>
 	<string>Kreative Übergabe</string>
+	<key>Creative Handoff leaves the chat out unless you turn on Include AI chat history.</key>
+	<string>Die Kreative Übergabe lässt den Chat weg, außer du schaltest „KI-Chatverlauf einschließen“ ein.</string>
 	<key>Creative Handoff's README.txt says where each part goes, in pixels, for your editing app.</key>
 	<string>Die README.txt der Kreativen Übergabe nennt für deine Schnitt-App in Pixeln, wohin jeder Teil gehört.</string>
 	<key>Creative Handoff…</key>
@@ -2724,10 +2786,18 @@
 	<string>Jede Datei ist eine eigene Spur: zieh sie auf der Timeline, kürze die Enden, teile sie mit ⌘B. MP3, WAV, M4A, AAC, AIFF, FLAC oder CAF – oder leg Dateien auf der Timeline ab.</string>
 	<key>Each panel's header. In the usual layout, move the pointer to the very top edge of a panel and its header appears.</key>
 	<string>Der Kopf jedes Panels. Im üblichen Layout erscheint er, wenn du den Zeiger an den obersten Rand eines Panels bewegst.</string>
+	<key>Each provider handles your data under its own terms.</key>
+	<string>Jeder Anbieter behandelt deine Daten nach seinen eigenen Bedingungen.</string>
+	<key>Each provider's website lists its prices per million tokens; bigger models cost more.</key>
+	<string>Die Website jedes Anbieters nennt seine Preise pro Million Tokens; größere Modelle kosten mehr.</string>
 	<key>Each recording in its own folder</key>
 	<string>Jede Aufnahme in einem eigenen Ordner</string>
 	<key>Each recording keeps its own pointer, clicks, and shortcuts. Reorder them here; cut and trim them on the timeline like any clip.</key>
 	<string>Jede Aufnahme behält ihren eigenen Zeiger, ihre Klicks und Kurzbefehle. Ändere hier die Reihenfolge; schneide und kürze sie auf der Zeitleiste wie jeden Clip.</string>
+	<key>Each request is billed to your account by the provider; the Assistant shows the tokens each reply used. Keys are kept only in your Mac's Keychain.</key>
+	<string>Jede Anfrage stellt dir der Anbieter in Rechnung; der Assistent zeigt die Tokens jeder Antwort. Schlüssel liegen nur im Schlüsselbund deines Mac.</string>
+	<key>Each request is one step back: Revert All undoes all of it at once, and ⌘Z brings it back.</key>
+	<string>Jede Anfrage ist ein Schritt zurück: „Alles zurücknehmen“ macht alles auf einmal rückgängig, und ⌘Z holt es zurück.</string>
 	<key>Each shape keeps its own version: switch back and forth without losing anything. Cuts, words, and styles stay shared.</key>
 	<string>Jede Form behält ihre eigene Version: Wechsle hin und her, ohne etwas zu verlieren. Schnitte, Wörter und Stile bleiben gemeinsam.</string>
 	<key>Each track has its own Hide, Mute and Lock in its header.</key>
@@ -2770,6 +2840,8 @@
 	<string>Ausgewähltes Bildschirmfoto bearbeiten</string>
 	<key>Edit with Proxies</key>
 	<string>Mit Proxys bearbeiten</string>
+	<key>Edit with the Assistant</key>
+	<string>Mit dem Assistenten bearbeiten</string>
 	<key>Edit your video like a document: delete words, and that part of the video goes.</key>
 	<string>Bearbeite dein Video wie ein Dokument: Lösch Wörter, und dieser Teil des Videos verschwindet.</string>
 	<key>Editable Cursor</key>
@@ -2782,6 +2854,8 @@
 	<string>„Bearbeitbarer Zeiger“ zeichnet den Zeiger separat auf, damit der Editor ihn glätten, skalieren und beim Zoomen scharf halten kann – der Video-Editor fügt ihn beim Exportieren wieder ein (die Rohdatei der Aufnahme enthält keinen Zeiger). „Tastaturkurzbefehle anzeigen“ zeichnet nur Kombinationen mit ⌘, ⌃ und ⌥ auf (dazu Esc und die F-Tasten), damit der Editor sie als Tasten zeigen kann – normales Tippen wird nie aufgezeichnet; macOS fragt nach Zugriff auf die Bedienungshilfen. „Hoch“ ist die Standardqualität; „Maximal“ bewahrt mehr Details, erzeugt aber größere Dateien. Der Countdown gibt dir nach dem Start einen Moment Zeit; Esc bricht ihn ab. Stoppe eine Aufzeichnung aus jeder App mit %@ – ein einfaches Esc bleibt bei der App, die du aufzeichnest.</string>
 	<key>Editing</key>
 	<string>Bearbeiten</string>
+	<key>Editing…</key>
+	<string>Bearbeitet …</string>
 	<key>Editor tips</key>
 	<string>Tipps im Editor</string>
 	<key>Effect</key>
@@ -3292,6 +3366,8 @@
 	<string>Bildrate</string>
 	<key>Frame: padding, corners &amp; shadow</key>
 	<string>Rahmen: Rand, Ecken &amp; Schatten</string>
+	<key>Frames of the video, only when Send video frames to the AI is on (it's off at first).</key>
+	<string>Bilder aus dem Video, nur wenn „Videobilder an die KI senden“ an ist (anfangs aus).</string>
 	<key>Framing</key>
 	<string>Bildausschnitt</string>
 	<key>Framing: Follow cursor follows the pointer; Aim by hand lets you drag the frame on the preview; Follow typing follows your typing.</key>
@@ -3372,8 +3448,18 @@
 	<string>Abstand</string>
 	<key>Gap between the parts</key>
 	<string>Abstand zwischen den Teilen</string>
+	<key>Gemini keys start with AIza. Set up billing in Google AI Studio for more than its free limits.</key>
+	<string>Gemini-Schlüssel beginnen mit AIza. Richte in Google AI Studio die Abrechnung ein, um über die kostenlosen Limits hinauszugehen.</string>
 	<key>General</key>
 	<string>Allgemein</string>
+	<key>Get a Claude API key</key>
+	<string>Claude-API-Schlüssel besorgen</string>
+	<key>Get a Gemini API key</key>
+	<string>Gemini-API-Schlüssel besorgen</string>
+	<key>Get a key</key>
+	<string>Schlüssel besorgen</string>
+	<key>Get an OpenAI API key</key>
+	<string>OpenAI-API-Schlüssel besorgen</string>
 	<key>Get the area exactly right: a magnifier, the size as you drag, and keys to fine-tune.</key>
 	<string>Triff den Bereich genau: mit Lupe, Größenanzeige beim Ziehen und Tasten zum Feinjustieren.</string>
 	<key>Get things ready while the countdown runs.</key>
@@ -3510,6 +3596,8 @@
 	<string>Private Infos verbergen</string>
 	<key>Hide the Agent panel</key>
 	<string>Agent-Panel ausblenden</string>
+	<key>Hide the Assistant panel</key>
+	<string>Assistent-Panel ausblenden</string>
 	<key>Hide the Menu Bar Icon?</key>
 	<string>Symbol in der Menüleiste ausblenden?</string>
 	<key>Hide the camera whenever you're not talking, and bring it back when you speak.</key>
@@ -3742,6 +3830,8 @@
 	<string>Öffne im Panel „Stil“ die Voreinstellungen und wähle „Als Voreinstellung sichern …“.</string>
 	<key>In the editor, check that Mute video is off in the Audio panel, and that the preview isn't muted (press M).</key>
 	<string>Prüf im Editor, ob „Video stummschalten“ im Panel „Audio“ aus ist und die Vorschau nicht stummgeschaltet ist (drück M).</string>
+	<key>In the editor, choose Layout ▸ Assistant Panel.</key>
+	<string>Wähle im Editor Layout ▸ Assistent-Panel.</string>
 	<key>In the editor, click Add typing zooms.</key>
 	<string>Klicke im Editor auf „Zooms aufs Tippen hinzufügen“.</string>
 	<key>In the editor, drag the divider on the video to change the split. Zooms happen inside the screen's part; captions go over the whole video.</key>
@@ -3804,10 +3894,14 @@
 	<string>Öffne im Video-Editor das Menü für das Seitenverhältnis in der Symbolleiste und wähle „9:16 – Reels, TikTok, Shorts“.</string>
 	<key>In the video editor: File ▸ Save Project (⌘S) or Save Project As… (⇧⌘S).</key>
 	<string>Im Video-Editor: Ablage ▸ Projekt sichern (⌘S) oder Projekt sichern unter … (⇧⌘S).</string>
+	<key>In the video editor: Layout ▸ Assistant Panel.</key>
+	<string>Im Video-Editor: Layout ▸ Assistent-Panel.</string>
 	<key>In your next video, click Apply my style (⇧⌘Y).</key>
 	<string>Klicke in deinem nächsten Video auf „Meinen Stil anwenden“ (⇧⌘Y).</string>
 	<key>In, Out and Combo animations</key>
 	<string>Animationen: Eingang, Ausgang und Kombi</string>
+	<key>Include AI chat history</key>
+	<string>KI-Chatverlauf einschließen</string>
 	<key>Include a timeline for editing apps</key>
 	<string>Timeline für Schnittprogramme beilegen</string>
 	<key>Include aspect ratio (%@)</key>
@@ -3876,6 +3970,8 @@
 	<string>Es wird auch aus dem Video entfernt. Die Datei bleibt, wo sie ist, und ⌘Z holt es zurück.</string>
 	<key>It can read the timeline, the transcript, the captions, the markers and the keyframes, and look at frames.</key>
 	<string>Er kann Timeline, Transkript, Untertitel, Marker und Keyframes lesen und Bilder ansehen.</string>
+	<key>It can run Auto captions, Remove Ums, Shorten Pauses and Apply My Style, and fill in the Export window. You always click Export yourself.</key>
+	<string>Er kann „Automatische Untertitel“, „Füllwörter entfernen“, „Pausen kürzen“ und „Meinen Stil anwenden“ ausführen und das Exportfenster ausfüllen. Auf „Exportieren“ klickst immer du.</string>
 	<key>It can split, trim, delete, add markers, titles and keyframes, fix captions, remove ums, and place files that are already in the project or its folder.</key>
 	<string>Er kann teilen, kürzen, löschen, Marker, Titel und Keyframes hinzufügen, Untertitel korrigieren, Ähs entfernen und Dateien platzieren, die schon im Projekt oder seinem Ordner sind.</string>
 	<key>It can't export, record sound or video, use the clipboard, or open files from anywhere else. Locked tracks stay as they are.</key>
@@ -3992,6 +4088,8 @@
 	<string>Tonhöhe beibehalten</string>
 	<key>Keep the agent's changes (each still undoes with ⌘Z)</key>
 	<string>Die Änderungen des Agenten behalten (jede lässt sich weiter mit ⌘Z widerrufen)</string>
+	<key>Keep the changes (each still undoes with ⌘Z)</key>
+	<string>Änderungen behalten (jede lässt sich weiter mit ⌘Z widerrufen)</string>
 	<key>Keep the current style</key>
 	<string>Aktuellen Stil behalten</string>
 	<key>Keeps just the person, found on this Mac</key>
@@ -4004,6 +4102,8 @@
 	<string>Behalten für %@</string>
 	<key>Kept the agent's changes</key>
 	<string>Änderungen des Agenten behalten</string>
+	<key>Key ending in %@</key>
+	<string>Schlüssel endet auf %@</string>
 	<key>Key for %@: %@</key>
 	<string>Taste für %@: %@</string>
 	<key>Key or password</key>
@@ -4074,6 +4174,8 @@
 %@</key>
 	<string>LF Studios konnte die Datei nicht hier sichern:
 %@</string>
+	<key>LF Studios couldn't reach the provider. Check your internet connection.</key>
+	<string>LF Studios konnte den Anbieter nicht erreichen. Prüfe deine Internetverbindung.</string>
 	<key>LF Studios doesn't find updates</key>
 	<string>LF Studios findet keine Updates</string>
 	<key>LF Studios doesn't have Screen Recording permission yet.</key>
@@ -4150,6 +4252,10 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>LF Studios – Verlauf</string>
 	<key>LF Studios ▸ Check for Updates…, and Settings ▸ General ▸ Updates ▸ Check for updates automatically.</key>
 	<string>LF Studios ▸ Nach Updates suchen …, und Einstellungen ▸ Allgemein ▸ Updates ▸ Automatisch nach Updates suchen.</string>
+	<key>LF Studios ▸ Settings ▸ AI ▸ Send video frames to the AI.</key>
+	<string>LF Studios ▸ Einstellungen ▸ KI ▸ Videobilder an die KI senden.</string>
+	<key>LF Studios ▸ Settings ▸ AI.</key>
+	<string>LF Studios ▸ Einstellungen ▸ KI.</string>
 	<key>LF Studios ▸ Settings ▸ Agent.</key>
 	<string>LF Studios ▸ Einstellungen ▸ Agent.</string>
 	<key>LF Studios' own floating windows stay out of your screen recordings and screenshots.</key>
@@ -4338,6 +4444,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Hört zu …</string>
 	<key>Listens on this Mac — nothing is uploaded</key>
 	<string>Hört auf diesem Mac zu – nichts wird hochgeladen</string>
+	<key>Load the provider's current models</key>
+	<string>Aktuelle Modelle des Anbieters laden</string>
 	<key>Loaded:</key>
 	<string>Geladen:</string>
 	<key>Locate…</key>
@@ -4348,6 +4456,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>„%@“ sperren: Nichts darauf lässt sich ändern</string>
 	<key>Look</key>
 	<string>Aussehen</string>
+	<key>Looking at the project…</key>
+	<string>Sieht sich das Projekt an …</string>
 	<key>Looking for your face in the camera video. This happens once; the result is kept.</key>
 	<string>Dein Gesicht wird im Kameravideo gesucht. Das geschieht einmal; das Ergebnis wird gespeichert.</string>
 	<key>Looking through the video…</key>
@@ -4410,6 +4520,12 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>In Lupe umwandeln</string>
 	<key>Make a clip come in, go out, or keep moving while it shows.</key>
 	<string>Lass einen Clip hereinkommen, hinausgehen oder in Bewegung bleiben, solange er zu sehen ist.</string>
+	<key>Make a key in Google AI Studio to use Gemini in the Assistant.</key>
+	<string>Erstelle in Google AI Studio einen Schlüssel, um Gemini im Assistenten zu nutzen.</string>
+	<key>Make a key on Anthropic's website to use Claude in the Assistant.</key>
+	<string>Erstelle auf der Website von Anthropic einen Schlüssel, um Claude im Assistenten zu nutzen.</string>
+	<key>Make a key on OpenAI's website to use its models in the Assistant.</key>
+	<string>Erstelle auf der Website von OpenAI einen Schlüssel, um seine Modelle im Assistenten zu nutzen.</string>
 	<key>Make a vertical video for Reels or TikTok</key>
 	<string>Hochformat-Video für Reels oder TikTok</string>
 	<key>Make captions again</key>
@@ -4422,6 +4538,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Sparsamer machen: %@, %@ fps</string>
 	<key>Make my videos look the same every time</key>
 	<string>Meine Videos jedes Mal gleich aussehen lassen</string>
+	<key>Make one on the provider's website; it bills your account there.</key>
+	<string>Erstelle einen auf der Website des Anbieters; abgerechnet wird über dein Konto dort.</string>
 	<key>Make several clips above the main track into one: moved, sized, turned and faded together.</key>
 	<string>Mach mehrere Clips über der Hauptspur zu einem: zusammen bewegt, skaliert, gedreht und ausgeblendet.</string>
 	<key>Make sure LF Studios is allowed under Microphone in System Settings. It appears there only after it has asked once, and there's no + button: turn on Microphone in the recording bar and click Allow.</key>
@@ -4514,6 +4632,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Nachricht</string>
 	<key>Message QR found</key>
 	<string>QR-Code mit Nachricht gefunden</string>
+	<key>Message to the Assistant</key>
+	<string>Nachricht an den Assistenten</string>
 	<key>Mic disconnected</key>
 	<string>Mikro getrennt</string>
 	<key>Mic stopped</key>
@@ -4808,8 +4928,12 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Nie in deinen Aufnahmen</string>
 	<key>Never switch to the text beam or the hand</key>
 	<string>Nie zum Textcursor oder zur Hand wechseln</string>
+	<key>Never your API keys to anyone but their own provider, and never your recordings' files.</key>
+	<string>Deine API-Schlüssel nie an jemand anderen als ihren Anbieter, und nie die Dateien deiner Aufnahmen.</string>
 	<key>New</key>
 	<string>Neu</string>
+	<key>New Chat</key>
+	<string>Neuer Chat</string>
 	<key>New Folder</key>
 	<string>Neuer Ordner</string>
 	<key>New Folder…</key>
@@ -5016,6 +5140,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Nichts an der Abspielposition</string>
 	<key>Nothing changed yet.</key>
 	<string>Noch nichts geändert.</string>
+	<key>Nothing goes through LF Studios' own servers: there are none.</key>
+	<string>Nichts läuft über Server von LF Studios: Es gibt keine.</string>
 	<key>Nothing here yet</key>
 	<string>Hier ist noch nichts</string>
 	<key>Nothing in the Guide matches your search. Try a shorter word, like “zoom” or “camera”.</key>
@@ -5082,6 +5208,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Aus bleibt es auf der Timeline, ist aber weder zu sehen noch zu hören (V)</string>
 	<key>Off: faster sounds higher, slower lower. The sound is silent faster than 32× or slower than 1/32×.</key>
 	<string>Aus: Schneller klingt höher, langsamer tiefer. Schneller als 32× oder langsamer als 1/32× ist der Ton stumm.</string>
+	<key>Off: only the timeline, the transcript and the captions are sent. On: the AI can also look at frames of the video.</key>
+	<string>Aus: Nur die Timeline, das Transkript und die Untertitel werden gesendet. Ein: Die KI kann sich auch Bilder aus dem Video ansehen.</string>
 	<key>Offset</key>
 	<string>Versatz</string>
 	<key>Older</key>
@@ -5150,6 +5278,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Nur Kurzbefehle mit ⌘ oder ⌃ (und ein paar Tasten wie Esc) werden gesichert, nie normales Tippen.</string>
 	<key>Only text and picture annotations can move to a track</key>
 	<string>Nur Text- und Bildanmerkungen können auf eine Spur</string>
+	<key>Only what it needs for your request goes to the provider you chose, straight from this Mac.</key>
+	<string>Nur was für deine Anfrage nötig ist, geht direkt von diesem Mac an den gewählten Anbieter.</string>
 	<key>Opacity</key>
 	<string>Deckkraft</string>
 	<key>Open</key>
@@ -5170,6 +5300,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Öffne den Verlauf über das LF-Studios-Menü, klicke mit der rechten Maustaste auf ein Bildschirmfoto und wähle „Auf dem Bildschirm anheften“.</string>
 	<key>Open Keyboard Settings</key>
 	<string>Tastatureinstellungen öffnen</string>
+	<key>Open LF Studios ▸ Settings ▸ AI.</key>
+	<string>Öffne LF Studios ▸ Einstellungen ▸ KI.</string>
 	<key>Open LF Studios ▸ Settings ▸ Agent and turn on Allow AI agents to edit.</key>
 	<string>Öffne LF Studios ▸ Einstellungen ▸ Agent und schalte „KI-Agenten das Bearbeiten erlauben“ ein.</string>
 	<key>Open Link</key>
@@ -5200,6 +5332,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Öffne Timeline.fcpxml in Final Cut Pro oder DaVinci Resolve, oder „Timeline (Premiere).xml“ in Premiere Pro.</string>
 	<key>Open Video Editor</key>
 	<string>Video-Editor öffnen</string>
+	<key>Open Website</key>
+	<string>Website öffnen</string>
 	<key>Open a folder of files as one project: a recording's folder, a Creative Handoff, or any folder with videos in it.</key>
 	<string>Öffne einen Ordner mit Dateien als ein Projekt: den Ordner einer Aufnahme, eine Kreative Übergabe oder jeden Ordner mit Videos darin.</string>
 	<key>Open a project</key>
@@ -5220,16 +5354,24 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Öffne ein Bildschirmfoto zum Beschriften und kopiere oder sichere dann das Ergebnis.</string>
 	<key>Open a whole folder</key>
 	<string>Einen ganzen Ordner öffnen</string>
+	<key>Open aistudio.google.com and sign in with your Google account (Settings ▸ AI ▸ Open Website takes you there).</key>
+	<string>Öffne aistudio.google.com und melde dich mit deinem Google-Konto an (Einstellungen ▸ KI ▸ Website öffnen bringt dich hin).</string>
 	<key>Open and close</key>
 	<string>Öffnen und schließen</string>
 	<key>Open at login</key>
 	<string>Bei der Anmeldung öffnen</string>
 	<key>Open compound clip</key>
 	<string>Zusammengesetzten Clip öffnen</string>
+	<key>Open console.anthropic.com and sign in or make an account (Settings ▸ AI ▸ Open Website takes you there).</key>
+	<string>Öffne console.anthropic.com und melde dich an oder erstelle ein Konto (Einstellungen ▸ KI ▸ Website öffnen bringt dich hin).</string>
 	<key>Open in annotation editor</key>
 	<string>Im Bildschirmfoto-Editor öffnen</string>
 	<key>Open or copy each link and email address.</key>
 	<string>Öffne oder kopiere jeden Link und jede E-Mail-Adresse.</string>
+	<key>Open platform.openai.com and sign in or make an account (Settings ▸ AI ▸ Open Website takes you there).</key>
+	<string>Öffne platform.openai.com und melde dich an oder erstelle ein Konto (Einstellungen ▸ KI ▸ Website öffnen bringt dich hin).</string>
+	<key>Open the Assistant from Layout ▸ Assistant Panel.</key>
+	<string>Öffne den Assistenten über Layout ▸ Assistent-Panel.</string>
 	<key>Open the LF Studios menu and, under Health, click Fix next to Apple Shortcuts.</key>
 	<string>Öffne das LF-Studios-Menü und klicke unter „Status“ neben „Apple-Kurzbefehle“ auf „Beheben“.</string>
 	<key>Open the LF Studios menu in the menu bar and choose Capture Text.</key>
@@ -5244,6 +5386,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Nach der Aufnahme den Video-Editor öffnen.</string>
 	<key>Open video…</key>
 	<string>Video öffnen …</string>
+	<key>OpenAI keys start with sk-. A ChatGPT subscription doesn't include API credit.</key>
+	<string>OpenAI-Schlüssel beginnen mit sk-. Ein ChatGPT-Abo enthält kein API-Guthaben.</string>
 	<key>Opened on another Mac, the project looks and sounds the same: the cleaned-up voice, Keep face centered, the pointer's own picture, and a macOS wallpaper background travel in the folder.</key>
 	<string>Auf einem anderen Mac geöffnet, sieht und klingt das Projekt genauso: Die bereinigte Stimme, „Gesicht zentriert halten“, das eigene Bild des Zeigers und ein macOS-Hintergrundbild als Hintergrund reisen im Ordner mit.</string>
 	<key>Opened “%@”</key>
@@ -5310,6 +5454,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Ende früher</string>
 	<key>Out later</key>
 	<string>Ende später</string>
+	<key>Out of credit or sending too fast? The Assistant says so; add credit or wait a minute.</key>
+	<string>Kein Guthaben mehr oder zu schnell gesendet? Der Assistent sagt es; lade Guthaben auf oder warte eine Minute.</string>
 	<key>Outline</key>
 	<string>Kontur</string>
 	<key>Outlined</key>
@@ -5344,12 +5490,22 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Passwort</string>
 	<key>Paste</key>
 	<string>Einsetzen</string>
+	<key>Paste a key that starts with %@</key>
+	<string>Füge einen Schlüssel ein, der mit %@ beginnt</string>
 	<key>Paste it anywhere with ⌘V.</key>
 	<string>Füge ihn mit ⌘V überall ein.</string>
+	<key>Paste it in LF Studios ▸ Settings ▸ AI ▸ Anthropic (Claude) and click Save.</key>
+	<string>Füge ihn in LF Studios ▸ Einstellungen ▸ KI ▸ Anthropic (Claude) ein und klicke auf „Sichern“.</string>
+	<key>Paste it in LF Studios ▸ Settings ▸ AI ▸ Google Gemini and click Save.</key>
+	<string>Füge ihn in LF Studios ▸ Einstellungen ▸ KI ▸ Google Gemini ein und klicke auf „Sichern“.</string>
+	<key>Paste it in LF Studios ▸ Settings ▸ AI ▸ OpenAI and click Save.</key>
+	<string>Füge ihn in LF Studios ▸ Einstellungen ▸ KI ▸ OpenAI ein und klicke auf „Sichern“.</string>
 	<key>Paste it into Terminal and press Return.</key>
 	<string>In Terminal einfügen und Return drücken.</string>
 	<key>Paste it into ~/.codex/config.toml and save.</key>
 	<string>In ~/.codex/config.toml einfügen und sichern.</string>
+	<key>Paste key</key>
+	<string>Schlüssel einfügen</string>
 	<key>Paste or type your notes here. They stay out of every recording.</key>
 	<string>Füge deine Notizen hier ein oder tippe sie. Sie erscheinen in keiner Aufnahme.</string>
 	<key>Paste or type your notes, then click Read.</key>
@@ -5386,6 +5542,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Halte das Video an und zieh den Untertitel in der Vorschau.</string>
 	<key>Paused</key>
 	<string>Pausiert</string>
+	<key>Paused: click Resume to go on</key>
+	<string>Pausiert: Klicke auf „Fortsetzen“, um weiterzumachen</string>
 	<key>Paused: you took over</key>
 	<string>Pausiert: du hast übernommen</string>
 	<key>Pauses longer than a second become short ones, except where you're clicking, typing, or moving the pointer. ⌘Z undoes either one.</key>
@@ -5708,6 +5866,10 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Eigenschaften ▸ Verfolgung, wenn ein Clip über der Hauptspur ausgewählt ist.</string>
 	<key>Properties: Show, Opacity, Size, Rotation, Mirror, Rotate 90°, Fit, Fill, Crop, and for videos Volume and Speed.</key>
 	<string>Eigenschaften: Anzeigen, Deckkraft, Größe, Drehung, Spiegeln, 90° drehen, Einpassen, Füllen, Beschneiden und bei Videos Lautstärke und Tempo.</string>
+	<key>Provider</key>
+	<string>Anbieter</string>
+	<key>Provider and model</key>
+	<string>Anbieter und Modell</string>
 	<key>Proxies</key>
 	<string>Proxys</string>
 	<key>Proxies ready — the editor plays them; exports use the originals</key>
@@ -6414,6 +6576,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Reels, TikTok, Shorts</string>
 	<key>Reframes zooms, moves the camera bubble, and keeps captions in the safe area for %@. This ratio then keeps its own version.</key>
 	<string>Richtet Zooms neu aus, verschiebt die Kamerablase und hält Untertitel im sicheren Bereich für %@. Dieses Format behält dann seine eigene Fassung.</string>
+	<key>Refresh</key>
+	<string>Aktualisieren</string>
 	<key>Regular</key>
 	<string>Normal</string>
 	<key>Releasing the mouse takes the shot. Hold ⇧ as you release to adjust the selection first — drag its edges, nudge it with the arrow keys, then press Return.</key>
@@ -6436,6 +6600,10 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Alle Zooms entfernen</string>
 	<key>Remove Intro Card</key>
 	<string>Intro-Karte entfernen</string>
+	<key>Remove Key</key>
+	<string>Schlüssel entfernen</string>
+	<key>Remove Key deletes it from the Keychain.</key>
+	<string>„Schlüssel entfernen“ löscht ihn aus dem Schlüsselbund.</string>
 	<key>Remove Music</key>
 	<string>Musik entfernen</string>
 	<key>Remove None</key>
@@ -6796,6 +6964,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Von einer neueren LF-Studios-Version gesichert – manche Einstellungen werden eventuell nicht angezeigt</string>
 	<key>Saved capture</key>
 	<string>Gesichertes Bildschirmfoto</string>
+	<key>Saved in the Keychain</key>
+	<string>Im Schlüsselbund gesichert</string>
 	<key>Saved preset “%@”</key>
 	<string>Voreinstellung „%@“ gesichert</string>
 	<key>Saved to %@: %@</key>
@@ -7042,6 +7212,10 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Senden</string>
 	<key>Send everything to a video editor</key>
 	<string>Alles an einen Video-Editor übergeben</string>
+	<key>Send video frames to the AI</key>
+	<string>Videobilder an die KI senden</string>
+	<key>Sending frames costs more than text.</key>
+	<string>Bilder zu senden kostet mehr als Text.</string>
 	<key>Sepia</key>
 	<string>Sepia</string>
 	<key>Set Length at the top of the tab first, or later in the clip's Transition in.</key>
@@ -7082,6 +7256,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Stellt die Lautstärke so ein, dass es so laut ist, wie Videoportale es erwarten (−16 LUFS)</string>
 	<key>Settings</key>
 	<string>Einstellungen</string>
+	<key>Settings ▸ AI…</key>
+	<string>Einstellungen ▸ KI …</string>
 	<key>Settings ▸ Agent ▸ Save… gives the agent a guide to LF Studios' tools (for Claude Code, a skill).</key>
 	<string>Einstellungen ▸ Agent ▸ Sichern … gibt dem Agenten eine Anleitung zu den Werkzeugen von LF Studios (für Claude Code ein Skill).</string>
 	<key>Settings ▸ General ▸ After Capture.</key>
@@ -7514,6 +7690,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Hier beginnen</string>
 	<key>Start over from the original recording?</key>
 	<string>Mit der Originalaufnahme neu beginnen?</string>
+	<key>Start over: this chat is removed from the project</key>
+	<string>Neu beginnen: Dieser Chat wird aus dem Projekt entfernt</string>
 	<key>Start recording</key>
 	<string>Aufzeichnung starten</string>
 	<key>Start scrolling (Space)</key>
@@ -7566,10 +7744,14 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Nicht mehr als „Mein Stil“ verwenden</string>
 	<key>Stop and Close</key>
 	<string>Stoppen und schließen</string>
+	<key>Stop ends the request at once; what it changed so far waits for Keep or Revert All.</key>
+	<string>„Stopp“ beendet die Anfrage sofort; bisherige Änderungen warten auf „Behalten“ oder „Alles zurücknehmen“.</string>
 	<key>Stop following</key>
 	<string>Nicht mehr folgen</string>
 	<key>Stop following takes it off; a box over something with clear edges follows best.</key>
 	<string>„Nicht mehr folgen“ entfernt es; ein Rahmen über etwas mit klaren Kanten folgt am besten.</string>
+	<key>Stop now: what it changed so far waits for Keep or Revert All</key>
+	<string>Jetzt anhalten: Bisherige Änderungen warten auf „Behalten“ oder „Alles zurücknehmen“</string>
 	<key>Stop recording</key>
 	<string>Aufzeichnung stoppen</string>
 	<key>Stop recording (%@)</key>
@@ -7578,8 +7760,12 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Aufzeichnung stoppen, aus jeder App</string>
 	<key>Stop, while LF Studios is the app in front</key>
 	<string>Stoppen, wenn LF Studios die App im Vordergrund ist</string>
+	<key>Stopped after %lld steps. Ask again to go on.</key>
+	<string>Nach %lld Schritten angehalten. Frag noch einmal, um weiterzumachen.</string>
 	<key>Stopped making proxies</key>
 	<string>Proxy-Erstellung gestoppt</string>
+	<key>Stopped.</key>
+	<string>Angehalten.</string>
 	<key>Storage</key>
 	<string>Speicher</string>
 	<key>Strength</key>
@@ -7716,6 +7902,10 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Temperatur</string>
 	<key>Template</key>
 	<string>Vorlage</string>
+	<key>Test Key</key>
+	<string>Schlüssel testen</string>
+	<key>Testing…</key>
+	<string>Wird getestet …</string>
 	<key>Text</key>
 	<string>Text</string>
 	<key>Text &amp; annotations</key>
@@ -7786,12 +7976,22 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Dieses Video ist leer</string>
 	<key>That window closed before recording could start.</key>
 	<string>Das Fenster wurde geschlossen, bevor die Aufzeichnung beginnen konnte.</string>
+	<key>The API key was refused. Check it in Settings ▸ AI, or make a new one.</key>
+	<string>Der API-Schlüssel wurde abgelehnt. Prüfe ihn in Einstellungen ▸ KI oder erstelle einen neuen.</string>
 	<key>The Agent panel (Layout ▸ Agent Panel). It opens when an agent starts.</key>
 	<string>Das Agent-Panel (Layout ▸ Agent-Panel). Es öffnet sich, wenn ein Agent beginnt.</string>
 	<key>The Agent panel moves and floats like the others; its × hides it.</key>
 	<string>Das Agent-Panel lässt sich wie die anderen verschieben und lösen; sein × blendet es aus.</string>
+	<key>The Assistant is editing. Click or type in the editor to take over.</key>
+	<string>Der Assistent bearbeitet. Klicke oder tippe im Editor, um zu übernehmen.</string>
+	<key>The Assistant needs a key from Claude, OpenAI or Gemini. It stays in your Mac's Keychain.</key>
+	<string>Der Assistent braucht einen Schlüssel von Claude, OpenAI oder Gemini. Er bleibt im Schlüsselbund deines Mac.</string>
+	<key>The Assistant works the same way: each request's changes wait under the chat for Keep or Revert All.</key>
+	<string>Der Assistent arbeitet genauso: Die Änderungen jeder Anfrage warten unter dem Chat auf „Behalten“ oder „Alles zurücknehmen“.</string>
 	<key>The Home window</key>
 	<string>Das Startfenster</string>
+	<key>The Keychain couldn't save the key: %@</key>
+	<string>Der Schlüsselbund konnte den Schlüssel nicht sichern: %@</string>
 	<key>The LF Studios menu (Command Center)</key>
 	<string>Das LF-Studios-Menü (Kommandozentrale)</string>
 	<key>The LF Studios menu in the menu bar ▸ Capture All Displays. It's there only while more than one screen is connected.</key>
@@ -7826,6 +8026,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Die Knöpfe „Widerrufen“ und „Wiederholen“ in der Symbolleiste des Editors.</string>
 	<key>The agent connection couldn't start: %@</key>
 	<string>Die Agent-Verbindung konnte nicht starten: %@</string>
+	<key>The answer was too long and was cut off.</key>
+	<string>Die Antwort war zu lang und wurde abgeschnitten.</string>
 	<key>The aspect ratio menu under the player.</key>
 	<string>Das Menü für das Seitenverhältnis unter dem Player.</string>
 	<key>The bar above the timeline. Hover a button for its name and key.</key>
@@ -7868,6 +8070,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Die Kamera, %@ nach dem Bildschirm</string>
 	<key>The cards use the same background as your video. Pick their font with the font menu.</key>
 	<string>Die Karten haben denselben Hintergrund wie dein Video. Ihre Schrift wählst du im Schriftmenü.</string>
+	<key>The chat is saved with the project. A project with a chat opens in LF Studios 1.20.0 or later.</key>
+	<string>Der Chat wird mit dem Projekt gesichert. Ein Projekt mit Chat öffnet sich in LF Studios 1.20.0 oder neuer.</string>
 	<key>The clips lane on the timeline, and the Timeline menu.</key>
 	<string>Die Clipspur auf der Zeitleiste und das Menü „Zeitleiste“.</string>
 	<key>The cover couldn't be added: %@</key>
@@ -7916,6 +8120,12 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Die Übergabe ist fertig</string>
 	<key>The highest quality, and the only one that can keep transparency</key>
 	<string>Die höchste Qualität und die einzige, die Transparenz behalten kann</string>
+	<key>The key is kept only in your Mac's Keychain, never in projects, handoffs or settings files.</key>
+	<string>Der Schlüssel liegt nur im Schlüsselbund deines Mac, nie in Projekten, Übergaben oder Einstellungsdateien.</string>
+	<key>The key works, but it has no chat models.</key>
+	<string>Der Schlüssel funktioniert, hat aber keine Chat-Modelle.</string>
+	<key>The key works: %lld models</key>
+	<string>Der Schlüssel funktioniert: %lld Modelle</string>
 	<key>The label under it says how wide the camera is and where it goes in the video. The editor opens with exactly that.</key>
 	<string>Die Beschriftung darunter zeigt, wie breit die Kamera ist und wo sie im Video sitzt. Der Editor öffnet sich genau so.</string>
 	<key>The line runs down through every track, so you can see what's under it.</key>
@@ -7928,6 +8138,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Die Lupe zeigt die Pixel unter dem Zeiger, samt ihrer Farbe.</string>
 	<key>The markers are already at clip edges</key>
 	<string>Die Marker liegen schon an Clipgrenzen</string>
+	<key>The menu at the top of the panel switches the provider and model. New Chat starts over.</key>
+	<string>Das Menü oben im Panel wechselt Anbieter und Modell. „Neuer Chat“ fängt von vorn an.</string>
 	<key>The menu bar icon is LF Studios' main entry point. While it is hidden, open LF Studios again from Finder, Launchpad, or Spotlight to bring these Preferences back.</key>
 	<string>Über das Symbol in der Menüleiste erreichst du LF Studios. Solange es ausgeblendet ist, öffne LF Studios erneut über den Finder, das Launchpad oder Spotlight, um diese Einstellungen wieder aufzurufen.</string>
 	<key>The menu bar icon is missing</key>
@@ -7942,8 +8154,12 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Das Mikrofon funktioniert nicht mehr. Die Aufzeichnung läuft ohne Mikrofon weiter.</string>
 	<key>The microphone was off, muted, or not allowed.</key>
 	<string>Das Mikrofon war aus, stumm oder nicht erlaubt.</string>
+	<key>The model declined this request.</key>
+	<string>Das Modell hat diese Anfrage abgelehnt.</string>
 	<key>The model downloads once from Hugging Face. After that, Whisper works offline, and your recording is never uploaded.</key>
 	<string>Das Modell wird einmal von Hugging Face geladen. Danach funktioniert Whisper offline, und deine Aufnahme wird nie hochgeladen.</string>
+	<key>The model “%@” isn't available with this key. Choose another one.</key>
+	<string>Das Modell „%@“ ist mit diesem Schlüssel nicht verfügbar. Wähle ein anderes.</string>
 	<key>The music</key>
 	<string>Die Musik</string>
 	<key>The music gets quieter while this track speaks, as it does under your voice</key>
@@ -7992,6 +8208,16 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Die Projektdatei (Name.lfs) öffnet alles wieder, genau so, wie du es verlassen hast. LF Studios hält sie beim Bearbeiten aktuell.</string>
 	<key>The project open in the front editor window.</key>
 	<string>Das Projekt im vordersten Editorfenster.</string>
+	<key>The provider bills your account for each request, by the tokens it reads and writes. LF Studios charges nothing.</key>
+	<string>Der Anbieter stellt deinem Konto jede Anfrage nach gelesenen und geschriebenen Tokens in Rechnung. LF Studios berechnet nichts.</string>
+	<key>The provider didn't answer in time. Try again.</key>
+	<string>Der Anbieter hat nicht rechtzeitig geantwortet. Versuch es noch einmal.</string>
+	<key>The provider is busy right now. Try again in a moment.</key>
+	<string>Der Anbieter ist gerade ausgelastet. Versuch es gleich noch einmal.</string>
+	<key>The provider is limiting how fast you can send requests. Wait a minute, then try again.</key>
+	<string>Der Anbieter begrenzt, wie schnell du Anfragen senden kannst. Warte eine Minute und versuch es dann noch einmal.</string>
+	<key>The provider said: %@</key>
+	<string>Der Anbieter meldet: %@</string>
 	<key>The recording bar</key>
 	<string>Die Aufzeichnungsleiste</string>
 	<key>The recording bar, the camera bubble preview, Speaker notes, the countdown, and notices.</key>
@@ -8168,6 +8394,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Stärke</string>
 	<key>Thin</key>
 	<string>Dünn</string>
+	<key>Thinking…</key>
+	<string>Denkt nach …</string>
 	<key>This GIF is too long for its size — it would need about %@ of memory. Pick a smaller size or fewer frames per second, export part of the video, or choose MP4.</key>
 	<string>Dieses GIF ist für seine Größe zu lang – es bräuchte etwa %@ Arbeitsspeicher. Wähle eine kleinere Größe oder weniger Bilder pro Sekunde, exportiere einen Teil des Videos oder wähle MP4.</string>
 	<key>This Guide</key>
@@ -8182,6 +8410,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Diese Woche</string>
 	<key>This app</key>
 	<string>Diese App</string>
+	<key>This chat: %@ in · %@ out tokens</key>
+	<string>Dieser Chat: %@ rein · %@ raus (Tokens)</string>
 	<key>This list</key>
 	<string>Diese Liste</string>
 	<key>This part is cut from the video</key>
@@ -8206,6 +8436,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Diese Aufnahme enthält nur den Pfeil</string>
 	<key>This sound file is gone — add it again.</key>
 	<string>Diese Tondatei ist weg – füge sie erneut hinzu.</string>
+	<key>This video has no AI chat</key>
+	<string>Dieses Video hat keinen KI-Chat</string>
 	<key>This video has no camera bubble</key>
 	<string>Dieses Video hat keine Kamerablase</string>
 	<key>This video has no camera footage to hide</key>
@@ -8516,6 +8748,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Tippe unter Eigenschaften ▸ Text, und wähle dort das Aussehen oder klicke auf einen Stil.</string>
 	<key>Type in a text annotation</key>
 	<string>In einer Textbeschriftung tippen</string>
+	<key>Type what you want, for example: Cut the long pauses and add captions. Press Return.</key>
+	<string>Tippe, was du möchtest, zum Beispiel: Kürze die langen Pausen und füge Untertitel hinzu. Drücke den Zeilenschalter.</string>
 	<key>Typewriter</key>
 	<string>Schreibmaschine</string>
 	<key>Typing</key>
@@ -8532,12 +8766,24 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Unkomprimierter 24-Bit-Ton, wie Logic Pro und GarageBand ihn mögen</string>
 	<key>Uncompressed 24-bit sound, for editing in an audio app</key>
 	<string>Unkomprimierter 24-Bit-Ton zum Bearbeiten in einer Audio-App</string>
+	<key>Under API Keys, click Create Key, name it LF Studios, and copy it.</key>
+	<string>Klicke unter „API Keys“ auf „Create Key“, nenne ihn LF Studios und kopiere ihn.</string>
+	<key>Under API keys, click Create new secret key, name it LF Studios, and copy it.</key>
+	<string>Klicke unter „API keys“ auf „Create new secret key“, nenne ihn LF Studios und kopiere ihn.</string>
 	<key>Under Languages, choose a language and click Translate.</key>
 	<string>Wähle unter „Sprachen“ eine Sprache und klicke auf „Übersetzen“.</string>
 	<key>Under Music, click Add Music… and choose a song.</key>
 	<string>Klicke unter „Musik“ auf „Musik hinzufügen …“ und wähle einen Song.</string>
 	<key>Under Restyle all captions, choose a style, a size and Top or Bottom.</key>
 	<string>Wähle unter „Alle Untertitel neu gestalten“ einen Stil, eine Größe und Oben oder Unten.</string>
+	<key>Under each answer in the Assistant panel.</key>
+	<string>Unter jeder Antwort im Assistent-Panel.</string>
+	<key>Under each answer: the tokens it used, in and out, for all its steps.</key>
+	<string>Unter jeder Antwort: die Tokens, die sie für alle Schritte verbraucht hat, rein und raus.</string>
+	<key>Under the chat: the tokens the whole chat has used.</key>
+	<string>Unter dem Chat: die Tokens, die der ganze Chat verbraucht hat.</string>
+	<key>Under the provider, paste your key into Paste key and click Save.</key>
+	<string>Füge deinen Schlüssel beim Anbieter in „Schlüssel einfügen“ ein und klicke auf „Sichern“.</string>
 	<key>Under the video preview. Hide them with ×; bring them back from the shortcuts list (?).</key>
 	<string>Unter der Videovorschau. Blende sie mit × aus; über die Kurzbefehlsliste (?) holst du sie zurück.</string>
 	<key>Under the video track is its sound, on a track of its own. A recording's microphone and the Mac's sound each get one.</key>
@@ -9208,6 +9454,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Wärme</string>
 	<key>Warning</key>
 	<string>Warnung</string>
+	<key>Watch the answer come in. What it changes is listed under the chat as it goes.</key>
+	<string>Sieh zu, wie die Antwort eintrifft. Was er ändert, steht dabei unter dem Chat.</string>
 	<key>Watch the changes come in, in the Agent panel. Click one to go to it.</key>
 	<string>Sieh im Agent-Panel, wie die Änderungen hereinkommen. Klicke auf eine, um dorthin zu gehen.</string>
 	<key>Watch the result, then change or delete any zoom.</key>
@@ -9234,6 +9482,12 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Was ein Agent kann und nicht kann</string>
 	<key>What is each file in “%@”?</key>
 	<string>Was ist jede Datei in „%@“?</string>
+	<key>What it costs</key>
+	<string>Was es kostet</string>
+	<key>What it reads to do the job: the timeline (clips, times, tracks), the transcript and the captions, and the markers and keyframes.</key>
+	<string>Was er für die Aufgabe liest: die Timeline (Clips, Zeiten, Spuren), das Transkript und die Untertitel sowie die Markierungen und Keyframes.</string>
+	<key>What the Assistant sends</key>
+	<string>Was der Assistent sendet</string>
 	<key>What the clip follows: drag it over the thing that moves</key>
 	<string>Dem folgt der Clip: Zieh ihn über das, was sich bewegt</string>
 	<key>What was playing on your Mac</key>
@@ -9252,6 +9506,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Ist eine Taste schon belegt, sagt LF Studios, welcher Befehl sie verliert.</string>
 	<key>When an agent finishes, see what it changed and keep it, or go back to how the project was.</key>
 	<string>Wenn ein Agent fertig ist, siehst du seine Änderungen und behältst sie oder kehrst zum vorherigen Projekt zurück.</string>
+	<key>When it's done, click Keep, or Revert All to go back to how the video was before the request.</key>
+	<string>Wenn er fertig ist, klicke auf „Behalten“ oder auf „Alles zurücknehmen“, um zum Video vor der Anfrage zurückzukehren.</string>
 	<key>When recording a window: the Window size menu in the row above the recording bar.</key>
 	<string>Beim Aufzeichnen eines Fensters: das Menü „Fenstergröße“ in der Zeile über der Aufzeichnungsleiste.</string>
 	<key>When the agent is done, its changes are marked on the timeline in orange.</key>
@@ -9400,8 +9656,12 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Dein Mac hat zu wenig Arbeitsspeicher. Schließe einige Apps oder wähle eine niedrigere Auflösung und exportiere erneut.</string>
 	<key>Your ShotStyle settings were moved to LF Studios</key>
 	<string>Deine ShotStyle-Einstellungen wurden in LF Studios übernommen</string>
+	<key>Your account with this provider is out of credit. Add credit on its website, then try again.</key>
+	<string>Dein Konto bei diesem Anbieter hat kein Guthaben mehr. Lade auf seiner Website Guthaben auf und versuch es dann noch einmal.</string>
 	<key>Your camera is recorded as its own layer: a live bubble shows while you record (it never appears in the screen capture), and the editor lets you move, resize, and restyle it — or hide it — afterwards.</key>
 	<string>Deine Kamera wird als eigene Ebene aufgezeichnet: Während der Aufzeichnung siehst du eine Live-Blase (sie erscheint nie in der Bildschirmaufnahme), und im Editor kannst du sie danach verschieben, skalieren und neu gestalten – oder ausblenden.</string>
+	<key>Your chat with the Assistant, in the LF Studios project</key>
+	<string>Dein Chat mit dem Assistenten, im LF Studios-Projekt</string>
 	<key>Your choices are remembered for next time, and match Settings ▸ Recording.</key>
 	<string>Deine Auswahl wird fürs nächste Mal gespeichert und entspricht Einstellungen ▸ Aufzeichnung.</string>
 	<key>Your disk filled up — saved the first %@.</key>
@@ -9430,6 +9690,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Deine Beschriftungen bleiben bearbeitbar. „Zurücksetzen“ zeigt wieder das ganze Bildschirmfoto, und ⌘Z widerruft das Beschneiden.</string>
 	<key>Your media in the Library</key>
 	<string>Deine Medien in der Bibliothek</string>
+	<key>Your message, and the chat so far.</key>
+	<string>Deine Nachricht und der bisherige Chat.</string>
 	<key>Your microphone</key>
 	<string>Dein Mikrofon</string>
 	<key>Your narration can become captions — then cut the video by editing its words.</key>
@@ -9554,6 +9816,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Zoom hinzufügen</string>
 	<key>aim or resize it</key>
 	<string>ausrichten oder Größe ändern</string>
+	<key>aistudio.google.com, then LF Studios ▸ Settings ▸ AI ▸ Google Gemini.</key>
+	<string>aistudio.google.com, dann LF Studios ▸ Einstellungen ▸ KI ▸ Google Gemini.</string>
 	<key>all shortcuts</key>
 	<string>alle Kurzbefehle</string>
 	<key>bottom</key>
@@ -9570,6 +9834,8 @@ Aktiviere sie unter „Systemeinstellungen“ → „Datenschutz &amp; Sicherhei
 	<string>Mitte</string>
 	<key>chapters</key>
 	<string>Kapitel</string>
+	<key>console.anthropic.com, then LF Studios ▸ Settings ▸ AI ▸ Anthropic (Claude).</key>
+	<string>console.anthropic.com, dann LF Studios ▸ Einstellungen ▸ KI ▸ Anthropic (Claude).</string>
 	<key>cut by editing words</key>
 	<string>per Text schneiden</string>
 	<key>delete left / right of the playhead</key>
@@ -9636,6 +9902,8 @@ Du kannst Apples Kurzbefehle jederzeit unter „Systemeinstellungen“ → „Ta
 	<string>nicht geladen</string>
 	<key>outro card</key>
 	<string>Outro-Karte</string>
+	<key>platform.openai.com, then LF Studios ▸ Settings ▸ AI ▸ OpenAI.</key>
+	<string>platform.openai.com, dann LF Studios ▸ Einstellungen ▸ KI ▸ OpenAI.</string>
 	<key>play</key>
 	<string>abspielen</string>
 	<key>pointer</key>
@@ -9662,6 +9930,8 @@ Du kannst Apples Kurzbefehle jederzeit unter „Systemeinstellungen“ → „Ta
 	<string>Text, Markierung, Pfeil, Weichzeichnen</string>
 	<key>the camera</key>
 	<string>die Kamera</string>
+	<key>the request failed</key>
+	<string>die Anfrage ist fehlgeschlagen</string>
 	<key>the video</key>
 	<string>das Video</string>
 	<key>this recording</key>

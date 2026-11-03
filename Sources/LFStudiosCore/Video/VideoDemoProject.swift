@@ -967,6 +967,9 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
     /// An agent's notes and questions pinned to moments (1.19.1;
     /// VideoAgent.swift). nil or empty: none, written as before.
     var tacks: [VideoTack]?
+    /// The Assistant's chat about this project (1.20.0; VideoAIAssistant.swift).
+    /// nil or empty: none, written as before.
+    var aiChat: VideoAIChatHistory?
 
     var sourceURL: URL { URL(fileURLWithPath: sourcePath) }
     var sourceSize: CGSize { CGSize(width: sourceWidth, height: sourceHeight) }
@@ -1523,7 +1526,7 @@ extension VideoDemoProject {
         case webcam, cameraLayouts, importedCamera, splitVideoAspect, customAspect, trackStates, autoZoom, reframe, captions, transcriptLanguage, captionStyle, keystrokes, keystrokeStyle, crop
         case cards, music, audioTracks, clickSounds, transitions, captionTracks, sources, imageOverlayEffects, markers
         case textCursor, keyPresses, loupeStyle, faceTracking, carriedVoices, speakerNotes
-        case ratioVersions, ratioShared, ratioBase, previousRatio, reframeFollowsZooms, mediaBin, layerTracks, compounds, cover, projectSettings, tacks
+        case ratioVersions, ratioShared, ratioBase, previousRatio, reframeFollowsZooms, mediaBin, layerTracks, compounds, cover, projectSettings, tacks, aiChat
         // Legacy (v1) keys
         case backgroundPreset, customBackgroundPath, stageInset, shadowStrength, zoomKeyframes
         case showCursorOverlay, enlargeCursor, showClickRipple, smoothCursor, cursorScale, clickSpotlight, cursorMotionBlur
@@ -1588,6 +1591,7 @@ extension VideoDemoProject {
         cover = (try? container.decodeIfPresent(VideoCover.self, forKey: .cover)).flatMap { $0 }
         projectSettings = (try? container.decodeIfPresent(VideoProjectSettings.self, forKey: .projectSettings)).flatMap { $0 }
         tacks = (try? container.decodeIfPresent([VideoTack].self, forKey: .tacks)).flatMap { $0 }
+        aiChat = (try? container.decodeIfPresent(VideoAIChatHistory.self, forKey: .aiChat)).flatMap { $0 }
 
         let storedVersion = try container.decodeIfPresent(Int.self, forKey: .version) ?? 1
         if storedVersion >= 2 {
@@ -1687,6 +1691,7 @@ extension VideoDemoProject {
         if let cover { try container.encode(cover, forKey: .cover) }
         if let projectSettings { try container.encode(projectSettings, forKey: .projectSettings) }
         if let tacks, !tacks.isEmpty { try container.encode(tacks, forKey: .tacks) }
+        if let aiChat, !aiChat.messages.isEmpty { try container.encode(aiChat, forKey: .aiChat) }
         try container.encode(cursorSamples, forKey: .cursorSamples)
         try container.encode(clickEvents, forKey: .clickEvents)
         try container.encode(nativeCursorVisible, forKey: .nativeCursorVisible)

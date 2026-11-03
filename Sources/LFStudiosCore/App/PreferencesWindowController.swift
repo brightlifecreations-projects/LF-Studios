@@ -11,6 +11,8 @@ enum PreferencesTab: Int, CaseIterable {
     case recording = 3
     /// AI agents (1.19.0).
     case agent = 5
+    /// The built-in Assistant's providers and keys (1.20.0).
+    case ai = 6
     case about = 4
 
     var title: String {
@@ -20,6 +22,7 @@ enum PreferencesTab: Int, CaseIterable {
         case .screenshots: return L("Screenshots")
         case .recording: return L("Recording")
         case .agent: return L("Agent")
+        case .ai: return L("AI")
         case .about: return L("About")
         }
     }
@@ -31,6 +34,7 @@ enum PreferencesTab: Int, CaseIterable {
         case .screenshots: return "camera"
         case .recording: return "record.circle"
         case .agent: return "sparkles"
+        case .ai: return "bubble.left.and.text.bubble.right"
         case .about: return "info.circle"
         }
     }
@@ -59,7 +63,7 @@ final class PreferencesWindowController: NSWindowController, NSWindowDelegate {
         window.isOpaque = false
         window.isMovableByWindowBackground = true
         // Six tabs since Agent (1.19.0): wide enough for each at its design width.
-        window.setContentSize(NSSize(width: 640, height: 620))
+        window.setContentSize(NSSize(width: 700, height: 620))
         window.minSize = NSSize(width: 520, height: 520)
         window.center()
         window.isReleasedWhenClosed = false
@@ -113,6 +117,8 @@ struct PreferencesRootView: View {
                         RecordingSettingsView()
                     case .agent:
                         AgentSettingsView()
+                    case .ai:
+                        AISettingsView()
                     case .about:
                         AboutSettingsView()
                     }
@@ -120,7 +126,7 @@ struct PreferencesRootView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
-        .frame(minWidth: 520, idealWidth: 640, minHeight: 520, idealHeight: 620)
+        .frame(minWidth: 520, idealWidth: 700, minHeight: 520, idealHeight: 620)
     }
 }
 

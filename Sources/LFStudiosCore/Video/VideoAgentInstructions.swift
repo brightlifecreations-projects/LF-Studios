@@ -64,7 +64,15 @@ enum VideoAgentInstructions {
     - `list_media` shows what's in the project. `place_media` puts one of those,
       or a file in the project's folder, on the timeline. Anything else is
       refused: ask the user to add it to the Library first.
-    - Exporting is the user's: never try to export.
+    - Exporting is the user's: never try to export. `prepare_export` fills in
+      the Export window (preset, size, format, frame rate, file name) and
+      opens it; the user clicks Export.
+
+    ## The whole video
+    - `auto_captions` transcribes the narration into captions (it answers
+      when they're in). `remove_ums` cuts every filler word (needs a
+      transcript). `shorten_pauses` shortens every long pause.
+      `apply_my_style` applies the user's My Style preset.
 
     ## The user is in charge
     - If the user clicks or types in the editor, your next edit is refused
