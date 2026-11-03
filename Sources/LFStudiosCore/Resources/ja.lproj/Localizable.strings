@@ -288,8 +288,8 @@
 	<string>LF Studiosのプロジェクトが入ったフォルダは、そのプロジェクトが保存したときのとおりに開きます。</string>
 	<key>A frame</key>
 	<string>フレーム</string>
-	<key>A frame appears in the middle of the screen. Choose its shape above the recording bar, like 16:9.</key>
-	<string>画面の中央に枠が表示されます。収録バーの上で、16:9などの形を選びます。</string>
+	<key>A frame appears in the middle of the screen. Click Area in the recording bar to choose its shape, like 16:9.</key>
+	<string>画面の中央に枠が表示されます。収録バーの“範囲”をクリックして、16:9 などの形を選びます。</string>
 	<key>A frame of an exact shape and size, so your video comes out ready for YouTube, Reels, or Instagram.</key>
 	<string>正確な形とサイズの枠です。YouTube、Reels、Instagramにそのまま使えるビデオになります。</string>
 	<key>A frame: the one at the playhead (Use the playhead picks again).</key>
@@ -830,6 +830,8 @@
 	<string>アクアマーブル</string>
 	<key>Area</key>
 	<string>範囲</string>
+	<key>Area in the recording bar, after Home ▸ New recording.</key>
+	<string>ホーム ▸ 新規収録のあと、収録バーの“範囲”。</string>
 	<key>Arrange what you'll show inside the frame: it fills the screen's part exactly, without stretching or black bars.</key>
 	<string>見せたいものを枠の中に並べます。画面部分にぴったり収まり、引き伸ばしや黒帯はありません。</string>
 	<key>Arrow</key>
@@ -1000,12 +1002,12 @@
 	<string>収録する前に、収録バーで“マイク”をオンにし、話したときにレベルメーターが動くことを確認します。</string>
 	<key>Before recording, turn on Track where I type.</key>
 	<string>収録する前に、“入力場所を追跡”をオンにします。</string>
-	<key>Before recording: Select size above the recording bar, with Camera on. In the editor: drag the camera on the preview.</key>
-	<string>収録前: “カメラ”をオンにして、収録バーの上の“サイズを選択”を使います。エディタでは: プレビュー上でカメラをドラッグします。</string>
-	<key>Before recording: turn on Camera, then Camera shape above the recording bar. In the editor: Camera panel ▸ Camera ▸ Camera shape.</key>
-	<string>収録前: “カメラ”をオンにして、収録バーの上の“カメラの形”を使います。エディタでは: “カメラ”パネル＞“カメラ”＞“カメラの形”。</string>
-	<key>Before recording: turn on Camera, then Layout ▸ Split screen above the recording bar. In the editor: Camera panel ▸ Layout.</key>
-	<string>収録前: “カメラ”をオンにして、収録バーの上の“レイアウト”＞“分割画面”を選びます。エディタでは: “カメラ”パネル＞“レイアウト”。</string>
+	<key>Before recording: turn on Camera, then Area in the recording bar ▸ Camera shape. In the editor: Camera panel ▸ Camera ▸ Camera shape.</key>
+	<string>収録前：“カメラ”をオンにして、収録バーの“範囲” ▸ “カメラの形”。エディタでは：カメラパネル ▸ カメラ ▸ カメラの形。</string>
+	<key>Before recording: turn on Camera, then Area in the recording bar ▸ Layout ▸ Split screen. In the editor: Camera panel ▸ Layout.</key>
+	<string>収録前：“カメラ”をオンにして、収録バーの“範囲” ▸ “レイアウト” ▸ “分割画面”。エディタでは：カメラパネル ▸ レイアウト。</string>
+	<key>Before recording: with Camera on, Area in the recording bar ▸ Select size. In the editor: drag the camera on the preview.</key>
+	<string>収録前：“カメラ”をオンにして、収録バーの“範囲” ▸ “サイズを選択”。エディタでは：プレビューでカメラをドラッグします。</string>
 	<key>Begins scrolling when the recording starts</key>
 	<string>収録の開始と同時にスクロールを始めます</string>
 	<key>Behavior</key>
@@ -1216,6 +1218,8 @@
 	<string>カメラのプレビュー</string>
 	<key>Camera shape</key>
 	<string>カメラの形</string>
+	<key>Camera shape, Select size, and Layout, with Camera on.</key>
+	<string>“カメラ”がオンのときは“カメラの形”“サイズを選択”“レイアウト”。</string>
 	<key>Camera shape: Circle, Rounded rectangle, Square, Landscape, Portrait, 4:3, 3:4, Free, or Cutout (just you, without the background).</key>
 	<string>カメラの形: 円形、角丸長方形、正方形、横長、縦長、4:3、3:4、自由形式、切り抜き（背景なしで自分だけ）。</string>
 	<key>Camera shape: how the camera looks in the video. The preview shows it.</key>
@@ -1450,6 +1454,8 @@
 	<string>タイムラインのキーを変更するか、Final Cut ProやPremiere Proのキーを使用</string>
 	<key>Change the volume over time, fade sound in and out, even out loudness, and find the beat.</key>
 	<string>時間に沿って音量を変えたり、サウンドをフェードイン/フェードアウトしたり、音量を均一にしたり、ビートを見つけたりします。</string>
+	<key>Change what you need. Everything works as before.</key>
+	<string>必要な設定を変えます。どれも以前と同じように使えます。</string>
 	<key>Changed your mind? Click the yellow marker on the timeline to bring a cut part back.</key>
 	<string>気が変わったら、タイムライン上の黄色いマーカーをクリックすると、カットした部分を元に戻せます。</string>
 	<key>Changes</key>
@@ -1634,8 +1640,8 @@
 	<string>受け渡し用フォルダの保存先を選択 — どのフォルダやドライブでも構いません</string>
 	<key>Choose window</key>
 	<string>ウインドウを選択</string>
-	<key>Choose your microphone in the menu above the bar.</key>
-	<string>バーの上のメニューでマイクを選びます。</string>
+	<key>Choose your microphone under Area ▸ Microphone.</key>
+	<string>“範囲” ▸ “マイク”で使うマイクを選びます。</string>
 	<key>Choose your options in the recording bar.</key>
 	<string>収録バーでオプションを選びます。</string>
 	<key>Choose...</key>
@@ -1748,6 +1754,10 @@
 	<string>“すべての字幕に適用”をクリックします。⌘Zですべて元に戻ります。</string>
 	<key>Click Apply, or press Return.</key>
 	<string>“適用”をクリックするか、Returnキーを押します。</string>
+	<key>Click Area in the recording bar, open Window size and choose a size.</key>
+	<string>収録バーの“範囲”をクリックし、“ウインドウのサイズ”を開いてサイズを選びます。</string>
+	<key>Click Area in the recording bar.</key>
+	<string>収録バーの“範囲”をクリックします。</string>
 	<key>Click Back above the timeline, or press Esc, to return to the whole video.</key>
 	<string>タイムラインの上の“戻る”をクリックするか、escキーを押すと、ビデオ全体に戻ります。</string>
 	<key>Click Background.</key>
@@ -1820,14 +1830,14 @@
 	<string>「保持」で残すか、「すべて元に戻す」で開始前のプロジェクトに戻します。</string>
 	<key>Click Marker on the timeline's toolbar. Markers added while recording are there too.</key>
 	<string>タイムラインのツールバーで“マーカー”をクリックします。収録中に追加したマーカーもここに表示されます。</string>
-	<key>Click Microphone in the recording bar. A menu above the bar picks which microphone.</key>
-	<string>収録バーの“マイク”をクリックします。使うマイクは、バーの上のメニューで選びます。</string>
+	<key>Click Microphone in the recording bar. Area ▸ Microphone picks which microphone.</key>
+	<string>収録バーの“マイク”をクリックします。使うマイクは“範囲” ▸ “マイク”で選びます。</string>
 	<key>Click New recording in Home.</key>
 	<string>ホームで“新規収録”をクリックします。</string>
-	<key>Click New recording in Home. A frame appears: choose a shape above the recording bar, like 16:9, and drag the frame's border to what you want to record.</key>
-	<string>ホームで“新規収録”をクリックします。枠が表示されたら、収録バーの上で16:9などの形を選び、枠の縁をドラッグして収録したいものに合わせます。</string>
-	<key>Click New recording in Home. Choose a shape for the frame (16:9 for YouTube, 9:16 for Reels) and drag its border into place. For a window or the whole screen, click Window or Full screen above the recording bar.</key>
-	<string>ホームで“新規収録”をクリックします。枠の形を選び（YouTubeなら16:9、Reelsなら9:16）、縁をドラッグして位置を合わせます。ウインドウや画面全体を収録するには、収録バーの上で“ウインドウ”または“画面全体”をクリックします。</string>
+	<key>Click New recording in Home. A frame appears: click Area in the recording bar to choose a shape, like 16:9, and drag the frame's border to what you want to record.</key>
+	<string>ホームで“新規収録”をクリックします。枠が表示されたら、収録バーの“範囲”をクリックして 16:9 などの形を選び、枠の縁を収録したいものに合わせてドラッグします。</string>
+	<key>Click New recording in Home. Click Area in the recording bar, choose a shape for the frame (16:9 for YouTube, 9:16 for Reels), and drag its border into place. For a window or the whole screen, click Window or Full screen under Area.</key>
+	<string>ホームで“新規収録”をクリックします。収録バーの“範囲”をクリックして枠の形（YouTube なら 16:9、リールなら 9:16）を選び、枠の縁をドラッグして位置を合わせます。ウインドウや画面全体を収録するときは、“範囲”の中の“ウインドウ”か“画面全体”をクリックします。</string>
 	<key>Click Open System Settings below.</key>
 	<string>下の“システム設定を開く”をクリックします。</string>
 	<key>Click Phone overlay above the preview to see what a phone app would cover.</key>
@@ -1920,6 +1930,8 @@
 	<string>クリックの効果</string>
 	<key>Click for Project Settings. Double-click to show the recording in Finder.</key>
 	<string>クリックでプロジェクト設定。ダブルクリックで収録をFinderに表示します。</string>
+	<key>Click for the area, size, microphone and camera options</key>
+	<string>クリックすると範囲、サイズ、マイク、カメラを設定できます</string>
 	<key>Click it in Home to open the screenshot editor: add arrows, text, blur, and more, then click Copy or Save.</key>
 	<string>ホームでクリックするとスクリーンショットエディタが開きます。矢印、テキスト、ぼかしなどを追加して、“コピー”または“保存”をクリックします。</string>
 	<key>Click it on the video</key>
@@ -2024,6 +2036,8 @@
 	<string>閉じる</string>
 	<key>Close Window</key>
 	<string>ウインドウを閉じる</string>
+	<key>Close the Area options</key>
+	<string>“範囲”の設定を閉じる</string>
 	<key>Close the pin</key>
 	<string>固定を閉じる</string>
 	<key>Close the window when you're done. If you haven't saved, LF Studios asks first.</key>
@@ -2808,8 +2822,6 @@
 	<string>ドラッグしてこのクリップの終了位置を変更</string>
 	<key>Drag to change where this clip starts</key>
 	<string>ドラッグしてこのクリップの開始位置を変更</string>
-	<key>Drag to move the bars</key>
-	<string>ドラッグしてバーを移動</string>
 	<key>Drag to move the compound clip; drag a corner to size it</key>
 	<string>ドラッグで複合クリップを移動、角をドラッグでサイズを変更</string>
 	<key>Drag to move the playhead</key>
@@ -3960,12 +3972,10 @@
 	<string>収録バーで“スピーカーノート”をクリックします。</string>
 	<key>In the recording bar, turn on Microphone (and Camera, if you like), then click Record or press Return.</key>
 	<string>収録バーで“マイク”（必要なら“カメラ”も）をオンにして、“収録”をクリックするかReturnキーを押します。</string>
-	<key>In the recording bar, turn on Microphone. To pick a different microphone, use the menu that appears above the bar.</key>
-	<string>収録バーで“マイク”をオンにします。別のマイクを選ぶには、バーの上に表示されるメニューを使います。</string>
+	<key>In the recording bar, turn on Microphone. To pick a different microphone, click Area and use the Microphone menu.</key>
+	<string>収録バーで“マイク”をオンにします。別のマイクを使うときは、“範囲”をクリックして“マイク”メニューで選びます。</string>
 	<key>In the recording bar, which appears after you choose what to record.</key>
 	<string>収録バー（収録するものを選ぶと表示されます）。</string>
-	<key>In the row above the recording bar, open Window size and choose a size.</key>
-	<string>収録バーの上の列で、“ウインドウのサイズ”を開いてサイズを選びます。</string>
 	<key>In the screenshot editor, click Background in the toolbar.</key>
 	<string>スクリーンショットエディタで、ツールバーの“背景”をクリックします。</string>
 	<key>In the video</key>
@@ -5696,8 +5706,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>このクリップを選択した状態で、“ライブラリ”＞“エフェクト”から選びます。</string>
 	<key>Pick the Select tool (V) and click a mark to change it, or set things before you draw.</key>
 	<string>“選択”ツール（V）を選んで注釈をクリックすると変更できます。描く前に設定しておくこともできます。</string>
-	<key>Pick the right microphone in the menu above the bar.</key>
-	<string>バーの上のメニューで、正しいマイクを選びます。</string>
+	<key>Pick the right microphone under Area ▸ Microphone in the recording bar.</key>
+	<string>収録バーの“範囲” ▸ “マイク”で正しいマイクを選びます。</string>
 	<key>Picked up where you left off</key>
 	<string>前回の続きから再開しました</string>
 	<key>Picture</key>
@@ -5876,6 +5886,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>%@を押すか、メニューバーのLF Studiosメニューを開いて“ウインドウを取り込む”を選択します。</string>
 	<key>Press ? in the editor to see this list there.</key>
 	<string>エディタで?キーを押すと、この一覧がエディタに表示されます。</string>
+	<key>Press Esc or click outside to close it.</key>
+	<string>Esc キーを押すか外側をクリックすると閉じます。</string>
 	<key>Press Esc to close it.</key>
 	<string>閉じるにはEscキーを押します。</string>
 	<key>Press Space to play and pause.</key>
@@ -8130,6 +8142,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>エージェントパネル（レイアウト ▸ エージェントパネル）。エージェントが始めると開きます。</string>
 	<key>The Agent panel moves and floats like the others; its × hides it.</key>
 	<string>エージェントパネルも他と同じく移動・フローティングでき、×で隠せます。</string>
+	<key>The Area button</key>
+	<string>“範囲”ボタン</string>
 	<key>The Assistant is editing. Click or type in the editor to take over.</key>
 	<string>アシスタントが編集中です。エディタでクリックまたは入力すると引き継げます。</string>
 	<key>The Assistant needs a key from Claude, OpenAI or Gemini. It stays in your Mac's Keychain.</key>
@@ -8168,6 +8182,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ライブラリ</string>
 	<key>The Library's Media and Audio tabs, at the top left of the video editor. File ▸ Import Media… (⌘I).</key>
 	<string>ビデオエディタ左上のライブラリの“メディア”と“オーディオ”タブ。“ファイル”＞“メディアを読み込む…”（⌘I）。</string>
+	<key>The Microphone menu, with Microphone on.</key>
+	<string>“マイク”がオンのときは“マイク”メニュー。</string>
 	<key>The Proxy menu under the player.</key>
 	<string>プレーヤーの下の“プロキシ”メニュー。</string>
 	<key>The Undo and Redo buttons in the editor's toolbar.</key>
@@ -8246,6 +8262,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>書き出しが予期せず停止しました（%@）。もう一度お試しください。問題が続く場合は、低い解像度またはH.264で書き出してください。</string>
 	<key>The export window warns you before a file won't fit.</key>
 	<string>ファイルが収まらない場合は、書き出しウインドウが事前に警告します。</string>
+	<key>The first button in the recording bar.</key>
+	<string>収録バーのいちばん左のボタン。</string>
 	<key>The first time, macOS asks to allow the microphone and the camera.</key>
 	<string>初回は、macOSがマイクとカメラの許可を確認します。</string>
 	<key>The first time, macOS asks to allow the microphone.</key>
@@ -8262,6 +8280,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>%@の位置のフレーム</string>
 	<key>The frame bar</key>
 	<string>枠のバー</string>
+	<key>The frame's shape and size, Fit a window to the frame…, and Window, Full screen, or Select area manually.</key>
+	<string>枠の形とサイズ、“ウインドウを枠に合わせる…”、“ウインドウ”“画面全体”“範囲を手動で選択”。</string>
 	<key>The frame, the dimming, and the bars are never in the video. Nothing is recorded until you click Record.</key>
 	<string>枠、暗くなった部分、バーはビデオに写りません。“収録”をクリックするまで何も収録されません。</string>
 	<key>The handoff is ready</key>
@@ -8368,6 +8388,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>プロバイダからのメッセージ：%@</string>
 	<key>The recording bar</key>
 	<string>収録バー</string>
+	<key>The recording bar is one row. Area shows what you're recording, like Area · 1920 × 1080, Full screen, or Window · Safari, and holds the rest of the options.</key>
+	<string>収録バーは 1 行です。“範囲”には収録する対象（範囲 · 1920 × 1080、画面全体、ウインドウ · Safari など）が表示され、ほかの設定もここにまとまっています。</string>
 	<key>The recording bar, the camera bubble preview, Speaker notes, the countdown, and notices.</key>
 	<string>収録バー、カメラのワイプのプレビュー、スピーカーノート、カウントダウン、通知。</string>
 	<key>The recording couldn't be finished — saved the first %@.</key>
@@ -8440,8 +8462,6 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>サウンドの設定（サウンドファイル、音楽、またはメイントラックの上のビデオを選択します）。</string>
 	<key>The speaker on the sound track's name mutes it. Volume is in Properties ▸ Audio; a clip's fades and Mute Clip work on its sound.</key>
 	<string>サウンドトラック名のスピーカーでミュートできます。音量は「プロパティ」▸「オーディオ」にあります。クリップのフェードと「クリップをミュート」はそのサウンドに効きます。</string>
-	<key>The strip above the recording bar, after Home ▸ New recording.</key>
-	<string>ホーム＞“新規収録”のあと、収録バーの上に表示される列。</string>
 	<key>The switches stay as you leave them, on this Mac.</key>
 	<string>スイッチはこのMacで最後の状態のまま保たれます。</string>
 	<key>The text is now on the clipboard: paste it anywhere with ⌘V.</key>
@@ -8680,8 +8700,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ズームの大きさと長さを変えるには、ボタンの横の⌄をクリックします：拡大率と長さ。</string>
 	<key>To cut a mistake, move the playhead to it, press ⌘B to split, click the bad part, and press ⌫.</key>
 	<string>ミスをカットするには、再生ヘッドをそこに移動し、⌘Bで分割し、不要な部分をクリックして⌫を押します。</string>
-	<key>To drag out any area yourself, click Select area manually above the recording bar.</key>
-	<string>範囲を自分でドラッグして選ぶには、収録バーの上の“範囲を手動で選択”をクリックします。</string>
+	<key>To drag out any area yourself, click Area in the recording bar, then Select area manually.</key>
+	<string>範囲を自分でドラッグして選ぶには、収録バーの“範囲”をクリックしてから“範囲を手動で選択”をクリックします。</string>
 	<key>To get the preview out of the way, drag it outside the frame: the label says “Not in video”, and the editor puts the camera in its usual corner.</key>
 	<string>プレビューを邪魔にならない所へ動かすには、枠の外へドラッグします。ラベルに“ビデオ外”と表示され、エディタはカメラをいつもの隅に置きます。</string>
 	<key>To hide one, click it on the timeline and press ⌫.</key>
@@ -8848,8 +8868,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>収録バーで“カメラ”をオンにします。macOSが一度だけ確認するので、“許可”をクリックします。</string>
 	<key>Turn on Camera. A bubble with your face appears; it's recorded separately, so you can move and restyle it later.</key>
 	<string>“カメラ”をオンにします。顔が映ったワイプが表示されます。ワイプは別に収録されるので、あとから移動したりスタイルを変えたりできます。</string>
-	<key>Turn on Camera. A preview of your camera appears, in the Camera shape chosen above the bar.</key>
-	<string>“カメラ”をオンにします。バーの上で選んだ“カメラの形”でカメラのプレビューが表示されます。</string>
+	<key>Turn on Camera. A preview of your camera appears, in the Camera shape chosen under Area.</key>
+	<string>“カメラ”をオンにします。“範囲”で選んだカメラの形で、カメラのプレビューが表示されます。</string>
 	<key>Turn on Intro card or Outro card.</key>
 	<string>“オープニングカード”または“エンディングカード”をオンにします。</string>
 	<key>Turn on Keep face centered. LF Studios looks for your face once, with progress and Cancel.</key>
@@ -8866,6 +8886,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>収録する前に収録バーでカメラをオンにすると、ここに顔がワイプとして表示されます。ワイプの位置、サイズ、スタイルは自由に変更できます。</string>
 	<key>Turn on the microphone or system audio before recording to capture sound.</key>
 	<string>サウンドを収録するには、収録する前にマイクまたはシステムオーディオをオンにしてください。</string>
+	<key>Turn on the microphone or the camera for their options.</key>
+	<string>マイクやカメラをオンにすると、その設定が表示されます。</string>
 	<key>Turn shaky mouse moves into calm, smooth glides.</key>
 	<string>ぶれたマウスの動きを、落ち着いた滑らかな動きにします。</string>
 	<key>Turn text with the round knob above it; hold ⇧ for steps of 15°.</key>
@@ -9662,8 +9684,8 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>エージェントが終わったら、変更を確認して保持するか、元のプロジェクトに戻します。</string>
 	<key>When it's done, click Keep, or Revert All to go back to how the video was before the request.</key>
 	<string>終わったら「続ける」をクリックするか、「すべて元に戻す」で依頼前のビデオに戻します。</string>
-	<key>When recording a window: the Window size menu in the row above the recording bar.</key>
-	<string>ウインドウを収録する場合: 収録バーの上の列にある“ウインドウのサイズ”メニュー。</string>
+	<key>When recording a window: Area in the recording bar ▸ Window size.</key>
+	<string>ウインドウを収録するとき：収録バーの“範囲” ▸ “ウインドウのサイズ”。</string>
 	<key>When the agent is done, its changes are marked on the timeline in orange.</key>
 	<string>エージェントが終わると、変更箇所がタイムライン上にオレンジ色で示されます。</string>
 	<key>When the text has links, email addresses, or a table, LF Studios offers more ways to use it.</key>
@@ -9744,6 +9766,10 @@ Please enable it in System Settings → Privacy &amp; Security → Screen &amp; 
 	<string>ウインドウが閉じた</string>
 	<key>Window size</key>
 	<string>ウインドウのサイズ</string>
+	<key>Window size, when recording a window.</key>
+	<string>ウインドウを収録するときは“ウインドウのサイズ”。</string>
+	<key>Window · %@</key>
+	<string>ウインドウ · %@</string>
 	<key>Window, Full screen, and Select area manually: record another way instead.</key>
 	<string>“ウインドウ”、“画面全体”、“範囲を手動で選択”: 別の方法で収録します。</string>
 	<key>Windows in front of it don't get in the way: only the window you click is captured.</key>

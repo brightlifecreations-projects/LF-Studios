@@ -99,6 +99,60 @@ final class RecordingBarTests: XCTestCase {
         XCTAssertTrue(labels.contains { $0.hasPrefix("up to ") && $0.hasSuffix("MB/min") }, "\(labels)")
     }
 
+    // MARK: One row, the rest in the Area popover (1.21.0)
+
+    private func controls(in view: NSView) -> [String] {
+        RecordingUITestSupport.allSubviews(of: view).compactMap { ($0 as? NSControl)?.accessibilityLabel() }
+    }
+
+    /// Before Record, the bar is one row: the frame's shape and size, the
+    /// other ways to record, Window size, the microphone menu and the
+    /// camera's shape, size and layout all open from the Area button.
+    func testTheBarIsOneRowWithEverythingInTheAreaPopover() throws {
+        Settings.recordingMicrophone = true
+        Settings.recordingCamera = true
+        let bar = try makeBar(target: .window)
+        defer { bar.closeControls() }
+        let screen = try XCTUnwrap(NSScreen.main)
+        bar.setFrameOrigin(NSPoint(x: screen.visibleFrame.midX - bar.frame.width / 2, y: screen.visibleFrame.minY + 40))
+        bar.frameStripModel = RecordingFrameStripModel(ratio: .standard, pixels: .init(width: 1920, height: 1080), sizeChoices: [])
+        XCTAssertEqual(bar.visibleBarFrame.height, 56, "one row, with the microphone and the camera on")
+        let onBar = controls(in: try XCTUnwrap(bar.contentView))
+        for label in ["Camera shape", "Layout", "Window size"] {
+            XCTAssertFalse(onBar.contains(label), "\(label) isn't on the bar: \(onBar)")
+        }
+        XCTAssertEqual(onBar.filter { $0 == "Microphone" }.count, 1, "only the microphone switch: \(onBar)")
+        XCTAssertFalse(bar.areaPopover.isShown)
+
+        bar.showAreaPopover()
+        XCTAssertTrue(bar.areaPopover.isShown)
+        XCTAssertEqual(bar.areaPopoverSections, ["frame", "windowSize", "microphone", "camera"])
+        let content = try XCTUnwrap(bar.areaPopover.contentViewController?.view)
+        let inPopover = controls(in: content)
+        for label in ["Microphone", "Camera shape", "Layout", "Window size"] {
+            XCTAssertTrue(inPopover.contains(label), "\(label) is in the popover: \(inPopover)")
+        }
+        XCTAssertTrue(RecordingUITestSupport.allSubviews(of: content).contains { $0 is NSHostingView<RecordingFrameStripView> }, "the frame's shapes, size and other ways to record")
+        RecordingUITestSupport.spinRunLoop(0.5)
+        try RecordingUITestSupport.writeSnapshot(of: try XCTUnwrap(content.window), name: "area-popover")
+
+        // Esc closes the popover, not the bar.
+        let esc = try XCTUnwrap(NSEvent.keyEvent(with: .keyDown, location: .zero, modifierFlags: [], timestamp: 0, windowNumber: bar.windowNumber, context: nil, characters: "\u{1b}", charactersIgnoringModifiers: "\u{1b}", isARepeat: false, keyCode: 53))
+        NSApp.sendEvent(esc)
+        RecordingUITestSupport.spinRunLoop(0.1)
+        XCTAssertFalse(bar.areaPopover.isShown, "Esc closes the popover")
+        XCTAssertTrue(bar.isVisible, "and only the popover")
+    }
+
+    /// The bar says what's being recorded.
+    func testTheAreaButtonShowsTheChoice() throws {
+        let full = try makeBar(target: .fullscreen)
+        defer { full.closeControls() }
+        let fullLabels = RecordingUITestSupport.allSubviews(of: try XCTUnwrap(full.contentView)).compactMap { ($0 as? NSTextField)?.stringValue }
+        XCTAssertTrue(fullLabels.contains("Full screen"), "\(fullLabels)")
+        XCTAssertEqual(try XCTUnwrap(RecordingUITestSupport.button(labelled: "Full screen", in: full)).toolTip?.contains("Click for the area"), true)
+    }
+
     func testOptionsAreReachable() throws {
         let bar = try makeBar()
         defer { bar.closeControls() }

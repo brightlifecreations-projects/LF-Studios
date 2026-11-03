@@ -4,6 +4,7 @@ import CoreImage
 import CoreMedia
 import QuartzCore
 import ScreenCaptureKit
+import SwiftUI
 import AudioToolbox
 import os.log
 
@@ -44,9 +45,7 @@ final class CaptureEngine {
     private var recordingScreenChooserWindow: RecordingScreenChooserWindow?
     private var recordingWindowChooserWindow: RecordingWindowChooserWindow?
     private var recordingFrame: RecordingFrameController?
-    private var recordingFrameStrip: RecordingFrameStripWindow?
     private var frameFitChooser: RecordingWindowChooserWindow?
-    private var frameStripObserver: NSObjectProtocol?
     private var recordingCountdownWindow: CountdownWindow?
     private var recordingSelectionActive = false
     private let recordingEngine = RecordingEngine()
@@ -645,8 +644,6 @@ final class CaptureEngine {
             recordingControlsWindow = window
             window.show()
             frame.show()
-            recordingFrameStrip?.orderFront(nil)
-            layoutFrameStrip()
             CapturePerformance.mark("Recording frame", since: started)
             return
         }
@@ -674,11 +671,10 @@ final class CaptureEngine {
 
     private func attachFrame(_ frame: RecordingFrameController, to bar: RecordingControlsWindow) {
         bar.avoidsCaptureRect = true
-        bar.reservedAbove = RecordingFrameStripWindow.height + RecordingFrameStripWindow.gap
+        // 1.21.0: the frame's shape, size and the other ways to record are
+        // in the bar's Area popover, not a strip above the bar.
         let model = RecordingFrameStripModel(ratio: frame.ratio, pixels: frame.pixels, sizeChoices: frame.sizeChoices)
-        let strip = RecordingFrameStripWindow(model: model, width: bar.barWidth)
-        recordingFrameStrip = strip
-        bar.addChildWindow(strip, ordered: .above)
+        bar.frameStripModel = model
 
         frame.changeHandler = { [weak self, weak bar, weak frame, weak model] rect, screen in
             guard let self, let bar, let frame, let model else { return }
@@ -691,7 +687,6 @@ final class CaptureEngine {
             if model.pixels != frame.pixels { model.pixels = frame.pixels }
             let choices = frame.sizeChoices
             if model.sizeChoices != choices { model.sizeChoices = choices }
-            self.layoutFrameStrip()
         }
         // Layout ▸ Split screen (or the camera on or off) reshapes the frame.
         bar.cameraLayoutChanged = { [weak frame] in
@@ -704,7 +699,6 @@ final class CaptureEngine {
         frame.cancelHandler = { [weak bar] in bar?.closeControls() }
         frame.recordHandler = { [weak bar] in bar?.record() }
         bar.frameKeyHandler = { [weak frame] event in frame?.handleKey(event) ?? false }
-        strip.keyHandler = { [weak frame] event in frame?.handleKey(event) ?? false }
 
         model.chooseRatio = { [weak frame] ratio in frame?.setRatio(ratio) }
         model.chooseSize = { [weak frame] pixels in frame?.setPixels(pixels) }
@@ -715,38 +709,21 @@ final class CaptureEngine {
         model.recordWindow = { [weak self] in self?.switchFromFrame { await $0.startWindowRecording() } }
         model.recordFullScreen = { [weak self] in self?.switchFromFrame { await $0.startFullscreenRecording() } }
         model.selectManually = { [weak self] in self?.switchFromFrame { await $0.startManualAreaRecording() } }
-        frameStripObserver = NotificationCenter.default.addObserver(forName: NSWindow.didResizeNotification, object: bar, queue: .main) { [weak self] _ in
-            MainActor.assumeIsolated { self?.layoutFrameStrip() }
-        }
     }
 
     /// Tests: the frame bar's parts while it shows.
-    var frameSetupForTesting: (frame: RecordingFrameController, bar: RecordingControlsWindow, strip: RecordingFrameStripWindow)? {
-        guard let recordingFrame, let recordingControlsWindow, let recordingFrameStrip else { return nil }
-        return (recordingFrame, recordingControlsWindow, recordingFrameStrip)
+    var frameSetupForTesting: (frame: RecordingFrameController, bar: RecordingControlsWindow)? {
+        guard let recordingFrame, let recordingControlsWindow else { return nil }
+        return (recordingFrame, recordingControlsWindow)
     }
 
     var isRecordingForTesting: Bool { recordingEngine.elapsedSeconds != nil }
 
-    /// The strip sits right on top of the recording bar and moves with it.
-    private func layoutFrameStrip() {
-        guard let strip = recordingFrameStrip, let bar = recordingControlsWindow else { return }
-        let barFrame = bar.visibleBarFrame
-        strip.setFrame(NSRect(x: barFrame.minX, y: barFrame.maxY + RecordingFrameStripWindow.gap, width: barFrame.width, height: RecordingFrameStripWindow.height), display: true)
-    }
-
     private func closeRecordingFrame() {
-        if let frameStripObserver { NotificationCenter.default.removeObserver(frameStripObserver) }
-        frameStripObserver = nil
         recordingFrame?.close()
         recordingFrame = nil
         frameFitChooser?.closeChooser()
         frameFitChooser = nil
-        if let strip = recordingFrameStrip {
-            strip.parent?.removeChildWindow(strip)
-            strip.orderOut(nil)
-        }
-        recordingFrameStrip = nil
     }
 
     /// Window, Full screen or Select area manually from the strip: this
@@ -2228,7 +2205,6 @@ final class RecordingControlsWindow: NSWindow {
 
     private static var openWindows: [RecordingControlsWindow] = []
     private static let barHeight: CGFloat = 56
-    private static let expandedHeight: CGFloat = 92
     private static let panelWidth: CGFloat = 854
     private static let chromeInset: CGFloat = 8
     private static let qualityWidth: CGFloat = 72
@@ -2251,10 +2227,18 @@ final class RecordingControlsWindow: NSWindow {
     let barWidth: CGFloat
     private var captureRect: CGRect
     private var targetScreen: NSScreen
-    /// Recording a frame (RecordingFrame.swift): the bar keeps clear of it,
-    /// with `reservedAbove` points for the frame strip on top of the bar.
+    /// Recording a frame (RecordingFrame.swift): the bar keeps clear of it.
     var avoidsCaptureRect = false
-    var reservedAbove: CGFloat = 0
+    /// Recording a frame: its shape, size and the other ways to record,
+    /// shown in the Area popover.
+    var frameStripModel: RecordingFrameStripModel?
+    /// 1.21.0: one row. The Area button opens everything that used to sit
+    /// above it: the frame's shape and size, the other ways to record,
+    /// Window size, the microphone menu and the camera's shape, size and
+    /// layout.
+    let areaPopover = NSPopover()
+    private let areaButton = NSButton(title: "", target: nil, action: nil)
+    private let windowSizeContainer = NSView()
     /// Dragged somewhere by hand: it stays there when the frame moves.
     private(set) var movedByUser = false
     /// Where the bar last put itself: any other place is the user's drag.
@@ -2321,7 +2305,7 @@ final class RecordingControlsWindow: NSWindow {
         self.barWidth = Self.panelWidth + Self.qualityExtra
 
         super.init(
-            contentRect: NSRect(x: 0, y: 0, width: barWidth + Self.chromeInset * 2, height: Self.windowHeight(upperRow: Settings.recordingMicrophone || target == .window || Settings.recordingCamera)),
+            contentRect: NSRect(x: 0, y: 0, width: barWidth + Self.chromeInset * 2, height: Self.barHeight + Self.chromeInset * 2),
             styleMask: [.borderless],
             backing: .buffered,
             defer: false
@@ -2424,14 +2408,13 @@ final class RecordingControlsWindow: NSWindow {
         root.layer?.contentsScale = screenScale
         contentView = root
 
-        microphoneContainer.frame = NSRect(x: Self.chromeInset + 158, y: Self.chromeInset + 62, width: 352, height: 30)
+        microphoneContainer.frame = NSRect(x: 0, y: 0, width: 352, height: 30)
         microphoneContainer.wantsLayer = true
         microphoneContainer.layer?.cornerRadius = 12
         microphoneContainer.layer?.cornerCurve = .continuous
         microphoneContainer.layer?.backgroundColor = NSColor(calibratedWhite: 0.105, alpha: 0.98).cgColor
         microphoneContainer.layer?.borderWidth = 1
         microphoneContainer.layer?.borderColor = NSColor.white.withAlphaComponent(0.13).cgColor
-        root.addSubview(microphoneContainer)
 
         microphonePopup.frame = NSRect(x: 12, y: 2, width: 328, height: 26)
         microphonePopup.bezelStyle = .shadowlessSquare
@@ -2442,8 +2425,8 @@ final class RecordingControlsWindow: NSWindow {
         microphonePopup.setAccessibilityLabel(L("Microphone"))
         microphoneContainer.addSubview(microphonePopup)
 
-        if target == .window { buildWindowSizeRow(in: root) }
-        buildCameraRow(in: root)
+        if target == .window { buildWindowSizeRow() }
+        buildCameraRow()
 
         let bar = RecordingRoundedRectView(
             frame: NSRect(x: Self.chromeInset, y: Self.chromeInset, width: barWidth, height: Self.barHeight),
@@ -2468,12 +2451,25 @@ final class RecordingControlsWindow: NSWindow {
         let pixels = outputPixelSize
         let pixelWidth = String(pixels.width), pixelHeight = String(pixels.height)
         let pointWidth = String(Int(captureRect.width)), pointHeight = String(Int(captureRect.height))
-        let sourcePill = pillLabel(L("\(target.title) · \(pixelWidth) × \(pixelHeight)"), symbol: target.symbol)
+        let sourcePill = pillLabel(sourceTitle(pixelWidth: pixelWidth, pixelHeight: pixelHeight), symbol: target.symbol)
         sourcePill.frame = NSRect(x: 32, y: 9, width: 190, height: 38)
-        sourcePill.toolTip = L("Records \(pixelWidth) × \(pixelHeight) pixels (\(pointWidth) × \(pointHeight) points)")
         bar.addSubview(sourcePill)
         sourcePillView = sourcePill
         sourcePillText = sourcePill.subviews.compactMap { $0 as? NSTextField }.first
+        // The whole pill is the Area button.
+        areaButton.frame = sourcePill.frame
+        areaButton.isBordered = false
+        areaButton.isTransparent = true
+        areaButton.title = ""
+        areaButton.target = self
+        areaButton.action = #selector(areaTapped)
+        areaButton.toolTip = L("Records \(pixelWidth) × \(pixelHeight) pixels (\(pointWidth) × \(pointHeight) points)") + "\n" + L("Click for the area, size, microphone and camera options")
+        areaButton.setAccessibilityLabel(sourcePillText?.stringValue)
+        areaButton.setAccessibilityHelp(L("Click for the area, size, microphone and camera options"))
+        bar.addSubview(areaButton)
+        areaPopover.behavior = .transient
+        areaPopover.animates = false
+        areaPopover.appearance = AppAppearance.overlay
 
         let audioGroup = segmentContainer(frame: NSRect(x: 234, y: 8, width: 314, height: 40))
         bar.addSubview(audioGroup)
@@ -2615,7 +2611,6 @@ final class RecordingControlsWindow: NSWindow {
     }
 
     private func updateMicrophoneVisibility(startMonitor: Bool = true) {
-        microphoneContainer.isHidden = !Settings.recordingMicrophone
         microphoneLevelMeter.isHidden = !Settings.recordingMicrophone || !hasMicrophone
         if Settings.recordingMicrophone {
             if startMonitor {
@@ -2627,7 +2622,7 @@ final class RecordingControlsWindow: NSWindow {
             stopMicrophoneMonitor()
             microphoneLevelMeter.setLevel(0)
         }
-        resizeForMicrophoneState()
+        refreshAreaPopover()
     }
 
     private func scheduleDeferredMicrophoneMonitor() {
@@ -2726,23 +2721,100 @@ final class RecordingControlsWindow: NSWindow {
         }
     }
 
-    private func resizeForMicrophoneState() {
-        let newHeight = Self.windowHeight(upperRow: showsUpperRow)
-        guard abs(frame.height - newHeight) > 0.5 else { return }
-        let oldFrame = frame
-        let newFrame = NSRect(x: oldFrame.minX, y: oldFrame.maxY - newHeight, width: oldFrame.width, height: newHeight)
-        if placedOrigin != nil, !movedByUser { placedOrigin = newFrame.origin }
-        setFrame(newFrame, display: true)
-        if avoidsCaptureRect, !movedByUser || visibleBlock.intersects(captureRect) { positionPanel() }
+    /// The bar's label: "Area · 960 × 1080", "Full screen", "Window · Safari".
+    private func sourceTitle(pixelWidth: String, pixelHeight: String) -> String {
+        switch target {
+        case .area:
+            return L("\(target.title) · \(pixelWidth) × \(pixelHeight)")
+        case .fullscreen:
+            return L("Full screen")
+        case .window:
+            if let app = selectedWindow?.owningApplication?.applicationName, !app.isEmpty { return L("Window · \(app)") }
+            return L("Window")
+        }
     }
 
-    private static func windowHeight(upperRow: Bool) -> CGFloat {
-        (upperRow ? expandedHeight : barHeight) + chromeInset * 2
+    // MARK: The Area popover
+
+    @objc private func areaTapped() {
+        if areaPopover.isShown {
+            areaPopover.performClose(nil)
+        } else {
+            showAreaPopover()
+        }
     }
 
-    /// The row above the bar: the microphone menu, and Window size in
-    /// Window mode.
-    private var showsUpperRow: Bool { Settings.recordingMicrophone || target == .window || Settings.recordingCamera }
+    /// Opens the Area popover over the Area button.
+    func showAreaPopover() {
+        let controller = NSViewController()
+        controller.view = areaPopoverContent()
+        areaPopover.contentViewController = controller
+        areaPopover.contentSize = controller.view.frame.size
+        guard let anchor = areaButton.superview else { return }
+        areaPopover.show(relativeTo: areaButton.frame, of: anchor, preferredEdge: .maxY)
+        // Never in a recording or a screenshot of the screen.
+        controller.view.window?.sharingType = .none
+    }
+
+    /// What the Area popover holds, from what applies now.
+    var areaPopoverSections: [String] {
+        var sections: [String] = []
+        if frameStripModel != nil { sections.append("frame") }
+        if target == .window { sections.append("windowSize") }
+        if Settings.recordingMicrophone { sections.append("microphone") }
+        if Settings.recordingCamera { sections.append("camera") }
+        return sections
+    }
+
+    private func areaPopoverContent() -> NSView {
+        let width: CGFloat = 600
+        let padding: CGFloat = 14
+        var rows: [(title: String?, view: NSView, height: CGFloat)] = []
+        for section in areaPopoverSections {
+            switch section {
+            case "frame":
+                if let frameStripModel { rows.append((nil, NSHostingView(rootView: RecordingFrameStripView(model: frameStripModel)), 64)) }
+            case "windowSize": rows.append((L("Window size"), windowSizeContainer, 30))
+            case "microphone": rows.append((L("Microphone"), microphoneContainer, 30))
+            case "camera": rows.append((L("Camera"), cameraContainer, 30))
+            default: break
+            }
+        }
+        if rows.isEmpty {
+            let note = label(L("Turn on the microphone or the camera for their options."), size: 12, weight: .regular, color: NSColor.white.withAlphaComponent(0.7))
+            rows.append((nil, note, 18))
+        }
+        let height = rows.reduce(padding * 2) { $0 + $1.height } + CGFloat(rows.count - 1) * 10
+        let root = NSView(frame: NSRect(x: 0, y: 0, width: width, height: height))
+        // The bar's own dark look, on any desktop.
+        root.wantsLayer = true
+        root.layer?.backgroundColor = NSColor(calibratedWhite: 0.07, alpha: 1).cgColor
+        var y = height - padding
+        for row in rows {
+            y -= row.height
+            row.view.removeFromSuperview()
+            if let title = row.title {
+                let field = label(title, size: 11.5, weight: .semibold, color: NSColor.white.withAlphaComponent(0.6))
+                field.frame = NSRect(x: padding, y: y + 7, width: 110, height: 16)
+                field.lineBreakMode = .byTruncatingTail
+                root.addSubview(field)
+                row.view.frame = NSRect(x: padding + 116, y: y, width: min(row.view.frame.width, width - padding * 2 - 116), height: row.height)
+            } else {
+                row.view.frame = NSRect(x: padding, y: y, width: width - padding * 2, height: row.height)
+            }
+            root.addSubview(row.view)
+            y -= 10
+        }
+        return root
+    }
+
+    /// The microphone or camera was switched on or off: an open popover
+    /// shows what applies now.
+    private func refreshAreaPopover() {
+        guard areaPopover.isShown, let controller = areaPopover.contentViewController else { return }
+        controller.view = areaPopoverContent()
+        areaPopover.contentSize = controller.view.frame.size
+    }
 
     @discardableResult
     private func selectItem(in popup: NSPopUpButton, representedObject: String) -> Bool {
@@ -2775,9 +2847,15 @@ final class RecordingControlsWindow: NSWindow {
         view.addSubview(icon)
 
         let textField = label(text, size: 11, weight: .bold, color: NSColor.white.withAlphaComponent(0.86))
-        textField.frame = NSRect(x: 36, y: 11, width: 150, height: 16)
+        textField.frame = NSRect(x: 36, y: 11, width: 134, height: 16)
         textField.lineBreakMode = .byTruncatingTail
         view.addSubview(textField)
+        // It opens the Area popover (1.21.0).
+        let chevron = NSImageView(frame: NSRect(x: 172, y: 13, width: 10, height: 12))
+        chevron.image = NSImage(systemSymbolName: "chevron.up", accessibilityDescription: nil)
+        chevron.symbolConfiguration = .init(pointSize: 9, weight: .bold)
+        chevron.contentTintColor = .white.withAlphaComponent(0.55)
+        view.addSubview(chevron)
         return view
     }
 
@@ -2822,18 +2900,16 @@ final class RecordingControlsWindow: NSWindow {
         let pixels = outputPixelSize
         let pixelWidth = String(pixels.width), pixelHeight = String(pixels.height)
         let pointWidth = String(Int(rect.width)), pointHeight = String(Int(rect.height))
-        sourcePillText?.stringValue = L("\(target.title) · \(pixelWidth) × \(pixelHeight)")
-        sourcePillView?.toolTip = L("Records \(pixelWidth) × \(pixelHeight) pixels (\(pointWidth) × \(pointHeight) points)")
+        sourcePillText?.stringValue = sourceTitle(pixelWidth: pixelWidth, pixelHeight: pixelHeight)
+        areaButton.toolTip = L("Records \(pixelWidth) × \(pixelHeight) pixels (\(pointWidth) × \(pointHeight) points)") + "\n" + L("Click for the area, size, microphone and camera options")
+        areaButton.setAccessibilityLabel(sourcePillText?.stringValue)
         updateSizeEstimate()
         // Dragged by hand, it stays put unless the frame comes under it.
         if !movedByUser || visibleBlock.intersects(rect.insetBy(dx: -6, dy: -6)) { positionPanel() }
     }
 
-    /// The bar with the frame strip on top of it.
-    private var visibleBlock: CGRect {
-        let bar = visibleBarFrame
-        return CGRect(x: bar.minX, y: bar.minY, width: bar.width, height: bar.height + reservedAbove)
-    }
+    /// The bar as it shows.
+    private var visibleBlock: CGRect { visibleBarFrame }
 
     /// Record, as if its button was clicked (Return in the frame).
     func record() {
@@ -2845,11 +2921,11 @@ final class RecordingControlsWindow: NSWindow {
 
     private func positionPanel() {
         let visible = targetScreen.visibleFrame
-        let visibleHeight = showsUpperRow ? Self.expandedHeight : Self.barHeight
+        let visibleHeight = Self.barHeight
         if avoidsCaptureRect {
-            // Below the frame, else above it (the strip on top), else in
-            // the corner farthest from it: never over the frame.
-            let block = visibleHeight + reservedAbove
+            // Below the frame, else above it, else in the corner farthest
+            // from it: never over the frame.
+            let block = visibleHeight
             let x = max(visible.minX + 16, min(captureRect.midX - barWidth / 2, visible.maxX - barWidth - 16))
             var y: CGFloat
             if captureRect.minY - 14 - block >= visible.minY + 8 {
@@ -2882,6 +2958,11 @@ final class RecordingControlsWindow: NSWindow {
     private func installKeyMonitor() {
         keyMonitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { [weak self] event in
             guard let self, self.isVisible else { return event }
+            // Esc closes an open Area popover first.
+            if self.areaPopover.isShown, event.keyCode == 53 {
+                self.areaPopover.performClose(nil)
+                return nil
+            }
             if let frameKeyHandler = self.frameKeyHandler {
                 // Only from the bar itself; the strip and the frame's
                 // handles pass their keys on their own.
@@ -2908,6 +2989,7 @@ final class RecordingControlsWindow: NSWindow {
             NSEvent.removeMonitor(keyMonitor)
             self.keyMonitor = nil
         }
+        if areaPopover.isShown { areaPopover.close() }
         orderOut(nil)
         stopWaitingForAccessibility()
         CameraCapture.shared.interruptionHandler = nil
@@ -2966,16 +3048,14 @@ final class RecordingControlsWindow: NSWindow {
 
     // MARK: Camera shape and size
 
-    private func buildCameraRow(in root: NSView) {
-        let x = Self.chromeInset + 518
-        cameraContainer.frame = NSRect(x: x, y: Self.chromeInset + 62, width: barWidth + Self.chromeInset - x, height: 30)
+    private func buildCameraRow() {
+        cameraContainer.frame = NSRect(x: 0, y: 0, width: 344, height: 30)
         cameraContainer.wantsLayer = true
         cameraContainer.layer?.cornerRadius = 12
         cameraContainer.layer?.cornerCurve = .continuous
         cameraContainer.layer?.backgroundColor = NSColor(calibratedWhite: 0.105, alpha: 0.98).cgColor
         cameraContainer.layer?.borderWidth = 1
         cameraContainer.layer?.borderColor = NSColor.white.withAlphaComponent(0.13).cgColor
-        root.addSubview(cameraContainer)
 
         cameraShapeButton.frame = NSRect(x: 6, y: 2, width: 118, height: 26)
         cameraShapeButton.bezelStyle = .shadowlessSquare
@@ -3131,7 +3211,6 @@ final class RecordingControlsWindow: NSWindow {
     /// Shown with the camera on; its menu built from what's chosen now.
     private func updateCameraRow() {
         let on = Settings.recordingCamera
-        cameraContainer.isHidden = !on
         if !on {
             selectSizeButton.state = .off
             CameraCapture.shared.showsSizeHandles = false
@@ -3139,7 +3218,7 @@ final class RecordingControlsWindow: NSWindow {
         rebuildCameraShapeMenu()
         rebuildCameraLayoutMenu()
         updateSelectSize()
-        resizeForMicrophoneState()
+        refreshAreaPopover()
         cameraLayoutChanged?()
     }
 
@@ -3201,15 +3280,15 @@ final class RecordingControlsWindow: NSWindow {
         CameraCapture.shared.showsSizeHandles = selectSizeButton.state == .on
     }
 
-    private func buildWindowSizeRow(in root: NSView) {
-        let container = NSView(frame: NSRect(x: Self.chromeInset, y: Self.chromeInset + 62, width: 150, height: 30))
+    private func buildWindowSizeRow() {
+        let container = windowSizeContainer
+        container.frame = NSRect(x: 0, y: 0, width: 150, height: 30)
         container.wantsLayer = true
         container.layer?.cornerRadius = 12
         container.layer?.cornerCurve = .continuous
         container.layer?.backgroundColor = NSColor(calibratedWhite: 0.105, alpha: 0.98).cgColor
         container.layer?.borderWidth = 1
         container.layer?.borderColor = NSColor.white.withAlphaComponent(0.13).cgColor
-        root.addSubview(container)
 
         windowSizeButton.frame = NSRect(x: 8, y: 2, width: 110, height: 26)
         windowSizeButton.bezelStyle = .shadowlessSquare

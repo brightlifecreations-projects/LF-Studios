@@ -1,4 +1,5 @@
 import AppKit
+import SwiftUI
 import XCTest
 @testable import LFStudiosCore
 
@@ -420,7 +421,6 @@ final class RecordingFrameTests: XCTestCase {
         let rect = RecordingFrameGeometry.centered(RecordingFrameGeometry.pixels(.standard, shortSide: 720), screenFrame: screen.frame, scale: screen.backingScaleFactor)
         let bar = RecordingControlsWindow(rect: rect, screen: screen, target: .area, selectedWindow: nil, startHandler: { _, _, _ in }, closeHandler: {})
         bar.avoidsCaptureRect = true
-        bar.reservedAbove = RecordingFrameStripWindow.height + RecordingFrameStripWindow.gap
         bars.append(bar)
         bar.show()
         bar.updateCaptureRect(rect, on: screen)
@@ -437,7 +437,7 @@ final class RecordingFrameTests: XCTestCase {
                 let points = CGSize(width: CGFloat(size.width) / scale, height: CGFloat(size.height) / scale)
                 let rect = RecordingFrameGeometry.rect(size, origin: CGPoint(x: spot.x - points.width / 2, y: spot.y - points.height / 2), screenFrame: screen.frame, scale: scale)
                 bar.updateCaptureRect(rect, on: screen)
-                let block = bar.visibleBarFrame.union(bar.visibleBarFrame.offsetBy(dx: 0, dy: bar.reservedAbove))
+                let block = bar.visibleBarFrame
                 // When there's room above or below, the bar and strip use it.
                 let room = rect.minY - visible.minY >= block.height + 22 || visible.maxY - rect.maxY >= block.height + 22
                 if room {
@@ -457,7 +457,7 @@ final class RecordingFrameTests: XCTestCase {
         XCTAssertFalse(bar.movedByUser)
         let visible = screen.visibleFrame
         // The user drags it to the top-left corner.
-        bar.setFrameOrigin(NSPoint(x: visible.minX + 20, y: visible.maxY - bar.frame.height - bar.reservedAbove - 20))
+        bar.setFrameOrigin(NSPoint(x: visible.minX + 20, y: visible.maxY - bar.frame.height - 20))
         RecordingUITestSupport.spinRunLoop(0.1)
         XCTAssertTrue(bar.movedByUser)
         let dragged = bar.frame.origin
@@ -470,7 +470,7 @@ final class RecordingFrameTests: XCTestCase {
         // The frame comes under it: it moves out of the way.
         let underBar = RecordingFrameGeometry.rect(size, origin: CGPoint(x: bar.visibleBarFrame.minX, y: bar.visibleBarFrame.minY - 40), screenFrame: screen.frame, scale: scale)
         bar.updateCaptureRect(underBar, on: screen)
-        let block = bar.visibleBarFrame.union(bar.visibleBarFrame.offsetBy(dx: 0, dy: bar.reservedAbove))
+        let block = bar.visibleBarFrame
         XCTAssertFalse(block.intersects(underBar))
     }
 
@@ -479,23 +479,21 @@ final class RecordingFrameTests: XCTestCase {
         let model = RecordingFrameStripModel(ratio: frame.ratio, pixels: frame.pixels, sizeChoices: frame.sizeChoices)
         model.chooseRatio = { frame.setRatio($0) }
         model.chooseSize = { frame.setPixels($0) }
-        let strip = RecordingFrameStripWindow(model: model, width: 900)
-        windows.append(strip)
-        XCTAssertEqual(strip.sharingType, .none)
-        XCTAssertTrue(strip.canBecomeKey)
         model.chooseRatio(RecordingFrameRatio(4, 5))
         XCTAssertEqual(frame.ratio, RecordingFrameRatio(4, 5))
         XCTAssertEqual(frame.pixels, Pixels(width: 720, height: 900))
         model.chooseSize(Pixels(width: 1080, height: 1350))
         XCTAssertEqual(frame.pixels, Pixels(width: 1080, height: 1350))
-        strip.setFrameOrigin(RecordingUITestSupport.offscreen)
-        strip.orderFrontRegardless()
+        // 1.21.0: the controls sit in the bar's Area popover.
+        let window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 572, height: 64), styleMask: [.borderless], backing: .buffered, defer: false)
+        window.appearance = AppAppearance.overlay
+        window.backgroundColor = NSColor(white: 0.12, alpha: 1)
+        window.contentView = NSHostingView(rootView: RecordingFrameStripView(model: model).padding(0))
+        windows.append(window)
+        window.setFrameOrigin(RecordingUITestSupport.offscreen)
+        window.orderFrontRegardless()
         RecordingUITestSupport.spinRunLoop(0.2)
-        try RecordingUITestSupport.writeSnapshot(of: strip, name: "frame-strip")
-        var keys = 0
-        strip.keyHandler = { _ in keys += 1; return true }
-        strip.keyDown(with: try XCTUnwrap(RecordingUITestSupport.keyDown("\u{1b}", keyCode: 53, in: strip)))
-        XCTAssertEqual(keys, 1, "Esc and the arrows work after clicking the strip")
+        try RecordingUITestSupport.writeSnapshot(of: window, name: "frame-strip")
     }
 
     // MARK: Split screen (1.10.0)

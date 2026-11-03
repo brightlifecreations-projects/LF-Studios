@@ -150,7 +150,7 @@ enum GuideContent {
                 id: "first-recording", symbol: "record.circle", title: L("Your first recording, edit, and export"),
                 summary: L("Record a short demo, tidy it up, and save it as a video."),
                 steps: [
-                    L("Click New recording in Home. A frame appears: choose a shape above the recording bar, like 16:9, and drag the frame's border to what you want to record."),
+                    L("Click New recording in Home. A frame appears: click Area in the recording bar to choose a shape, like 16:9, and drag the frame's border to what you want to record."),
                     L("In the recording bar, turn on Microphone (and Camera, if you like), then click Record or press Return."),
                     L("Do your demo. When you're done, click the red stop button or press ⌃⌘Esc."),
                     L("Click Edit Video in the “Recording saved” panel. The video editor opens."),
@@ -223,8 +223,8 @@ enum GuideContent {
                 id: "howto-record", symbol: "person.wave.2", title: L("Record my screen with my voice and camera"),
                 summary: L("Record a demo with your voice and your face in a bubble."),
                 steps: [
-                    L("Click New recording in Home. Choose a shape for the frame (16:9 for YouTube, 9:16 for Reels) and drag its border into place. For a window or the whole screen, click Window or Full screen above the recording bar."),
-                    L("In the recording bar, turn on Microphone. To pick a different microphone, use the menu that appears above the bar."),
+                    L("Click New recording in Home. Click Area in the recording bar, choose a shape for the frame (16:9 for YouTube, 9:16 for Reels), and drag its border into place. For a window or the whole screen, click Window or Full screen under Area."),
+                    L("In the recording bar, turn on Microphone. To pick a different microphone, click Area and use the Microphone menu."),
                     L("Turn on Camera. A bubble with your face appears; it's recorded separately, so you can move and restyle it later."),
                     L("Click Record, or press Return."),
                     L("When you're done, click the red stop button or press ⌃⌘Esc."),
@@ -371,7 +371,7 @@ enum GuideContent {
                 summary: L("Make your recording exactly 1920 × 1080 (or another size) without guessing."),
                 steps: [
                     L("Open the LF Studios menu in the menu bar and choose Record Window, then pick the window."),
-                    L("In the row above the recording bar, open Window size and choose a size."),
+                    L("Click Area in the recording bar, open Window size and choose a size."),
                     L("LF Studios resizes and centers the window. Click Record."),
                     L("Afterwards, click Restore size to put the window back."),
                 ],
@@ -1125,14 +1125,14 @@ enum GuideContent {
                 summary: L("Record just part of the screen, in the exact shape and size you choose."),
                 location: L("Home ▸ New recording, or the LF Studios menu in the menu bar ▸ Record Area."),
                 steps: [
-                    L("A frame appears in the middle of the screen. Choose its shape above the recording bar, like 16:9."),
+                    L("A frame appears in the middle of the screen. Click Area in the recording bar to choose its shape, like 16:9."),
                     L("Drag the frame's border to move it, or a corner to make it bigger or smaller."),
                     L("Choose your options in the recording bar."),
                     L("Click Record, or press Return."),
                 ],
                 keys: [.global(.recordArea), .fixed("↩", L("Start recording")), .fixed("Esc", L("Cancel"))],
                 tips: [
-                    L("To drag out any area yourself, click Select area manually above the recording bar."),
+                    L("To drag out any area yourself, click Area in the recording bar, then Select area manually."),
                     L("A thin outline shows what's being recorded. It never appears in the video."),
                 ],
                 since: "1.8.0",
@@ -1141,7 +1141,7 @@ enum GuideContent {
             GuideEntry(
                 id: "rec-frame", symbol: "aspectratio", title: L("The frame bar"),
                 summary: L("A frame of an exact shape and size, so your video comes out ready for YouTube, Reels, or Instagram."),
-                location: L("The strip above the recording bar, after Home ▸ New recording."),
+                location: L("Area in the recording bar, after Home ▸ New recording."),
                 points: [
                     L("Shapes: 16:9 for YouTube, 9:16 for Reels, TikTok, and Shorts, 1:1 for square posts, 4:5 for the Instagram feed, 4:3 for slides and iPad, 16:10 for a Mac screen, 21:9 for a cinematic look. Point at one to see what it's for."),
                     L("Custom…: type any shape, like 3:2 or 2.39:1."),
@@ -1226,10 +1226,10 @@ enum GuideContent {
             GuideEntry(
                 id: "rec-mic", symbol: "mic", title: L("Microphone"),
                 summary: L("Record your voice."),
-                location: L("Click Microphone in the recording bar. A menu above the bar picks which microphone."),
+                location: L("Click Microphone in the recording bar. Area ▸ Microphone picks which microphone."),
                 steps: [
                     L("Turn on Microphone."),
-                    L("Choose your microphone in the menu above the bar."),
+                    L("Choose your microphone under Area ▸ Microphone."),
                     L("Speak and watch the level meter move."),
                 ],
                 tips: [
@@ -1244,7 +1244,7 @@ enum GuideContent {
                 summary: L("Show yourself in a bubble while you record."),
                 location: L("Click Camera in the recording bar. Choose the camera in ⋯ More recording options."),
                 steps: [
-                    L("Turn on Camera. A preview of your camera appears, in the Camera shape chosen above the bar."),
+                    L("Turn on Camera. A preview of your camera appears, in the Camera shape chosen under Area."),
                     L("Drag the preview where you want the camera in the video: what it covers of the recording frame is where the camera goes."),
                     L("Record as usual. The video opens in the editor with the camera there, in that shape and size."),
                 ],
@@ -1314,9 +1314,28 @@ enum GuideContent {
                 showMe: .settings(.recording)
             ),
             GuideEntry(
+                id: "rec-area", symbol: "rectangle.dashed", title: L("The Area button"),
+                summary: L("The recording bar is one row. Area shows what you're recording, like Area · 1920 × 1080, Full screen, or Window · Safari, and holds the rest of the options."),
+                location: L("The first button in the recording bar."),
+                points: [
+                    L("The frame's shape and size, Fit a window to the frame…, and Window, Full screen, or Select area manually."),
+                    L("Window size, when recording a window."),
+                    L("The Microphone menu, with Microphone on."),
+                    L("Camera shape, Select size, and Layout, with Camera on."),
+                ],
+                steps: [
+                    L("Click Area in the recording bar."),
+                    L("Change what you need. Everything works as before."),
+                    L("Press Esc or click outside to close it."),
+                ],
+                keys: [.fixed("Esc", L("Close the Area options"))],
+                since: "1.21.0",
+                related: ["rec-frame", "rec-window-size"]
+            ),
+            GuideEntry(
                 id: "rec-window-size", symbol: "aspectratio", title: L("Window size"),
                 summary: L("Resize a window so the recording comes out at an exact size, like 1920 × 1080."),
-                location: L("When recording a window: the Window size menu in the row above the recording bar."),
+                location: L("When recording a window: Area in the recording bar ▸ Window size."),
                 steps: [
                     L("Choose a size, or Custom Size… for your own."),
                     L("LF Studios resizes the window and centers it."),
@@ -2284,7 +2303,7 @@ enum GuideContent {
             GuideEntry(
                 id: "camera-shape", symbol: "rectangle.on.rectangle", title: L("Camera shape"),
                 summary: L("Choose the camera's shape and ratio before you record, and change it any time in the editor."),
-                location: L("Before recording: turn on Camera, then Camera shape above the recording bar. In the editor: Camera panel ▸ Camera ▸ Camera shape."),
+                location: L("Before recording: turn on Camera, then Area in the recording bar ▸ Camera shape. In the editor: Camera panel ▸ Camera ▸ Camera shape."),
                 points: [
                     L("Circle, Rounded rectangle, Square (1:1), Landscape (16:9), Portrait (9:16), 4:3, 3:4, or Free (any width and height)."),
                     L("Roundness, in the same menu: from sharp corners to round."),
@@ -2305,7 +2324,7 @@ enum GuideContent {
             GuideEntry(
                 id: "camera-size", symbol: "arrow.up.left.and.arrow.down.right", title: L("Select size"),
                 summary: L("Resize and place the camera by dragging, before you record and in the editor."),
-                location: L("Before recording: Select size above the recording bar, with Camera on. In the editor: drag the camera on the preview."),
+                location: L("Before recording: with Camera on, Area in the recording bar ▸ Select size. In the editor: drag the camera on the preview."),
                 steps: [
                     L("Click Select size. Handles appear on the camera preview."),
                     L("Drag an edge or a corner to resize it, the middle to move it."),
@@ -2322,7 +2341,7 @@ enum GuideContent {
             GuideEntry(
                 id: "camera-split", symbol: "rectangle.split.2x1", title: L("Split screen"),
                 summary: L("The screen and your camera each fill one part of the video: side by side, or one above the other."),
-                location: L("Before recording: turn on Camera, then Layout ▸ Split screen above the recording bar. In the editor: Camera panel ▸ Layout."),
+                location: L("Before recording: turn on Camera, then Area in the recording bar ▸ Layout ▸ Split screen. In the editor: Camera panel ▸ Layout."),
                 points: [
                     L("Direction: Side by side (left and right) or Stacked (top and bottom), on a video of any shape. Until you choose, landscape videos go side by side and square and vertical ones stacked."),
                     L("Camera side, Split size (from 30/70 to 70/30, 50/50 to start), and Gap, with the video's background in between."),
@@ -3240,7 +3259,7 @@ enum GuideContent {
                 summary: L("The microphone was off, muted, or not allowed."),
                 steps: [
                     L("Before recording, turn on Microphone in the recording bar and check that its level meter moves when you speak."),
-                    L("Pick the right microphone in the menu above the bar."),
+                    L("Pick the right microphone under Area ▸ Microphone in the recording bar."),
                     L("Make sure LF Studios is allowed under Microphone in System Settings. It appears there only after it has asked once, and there's no + button: turn on Microphone in the recording bar and click Allow."),
                     L("No question appeared? Open Terminal, run tccutil reset Microphone com.lfstudios.app, then quit and reopen LF Studios and try again."),
                     L("For your Mac's own sound, turn on System audio too."),

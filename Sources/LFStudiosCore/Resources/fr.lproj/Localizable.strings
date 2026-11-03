@@ -220,8 +220,8 @@
 	<string>Un dossier contenant un projet LF Studios ouvre ce projet, exactement tel qu’il a été enregistré.</string>
 	<key>A frame</key>
 	<string>Une image de la vidéo</string>
-	<key>A frame appears in the middle of the screen. Choose its shape above the recording bar, like 16:9.</key>
-	<string>Un cadre apparaît au milieu de l’écran. Choisissez sa forme au-dessus de la barre d’enregistrement, comme 16:9.</string>
+	<key>A frame appears in the middle of the screen. Click Area in the recording bar to choose its shape, like 16:9.</key>
+	<string>Un cadre apparaît au milieu de l’écran. Cliquez sur Zone dans la barre d’enregistrement pour choisir sa forme, comme 16:9.</string>
 	<key>A frame of an exact shape and size, so your video comes out ready for YouTube, Reels, or Instagram.</key>
 	<string>Un cadre d’une forme et d’une taille exactes, pour que votre vidéo soit prête pour YouTube, Reels ou Instagram.</string>
 	<key>A frame: the one at the playhead (Use the playhead picks again).</key>
@@ -758,6 +758,8 @@
 	<string>Marbre aqua</string>
 	<key>Area</key>
 	<string>Zone</string>
+	<key>Area in the recording bar, after Home ▸ New recording.</key>
+	<string>Zone dans la barre d’enregistrement, après Accueil ▸ Nouvel enregistrement.</string>
 	<key>Arrange what you'll show inside the frame: it fills the screen's part exactly, without stretching or black bars.</key>
 	<string>Disposez ce que vous allez montrer dans le cadre : il remplit exactement la partie écran, sans étirement ni bandes noires.</string>
 	<key>Arrow</key>
@@ -926,12 +928,12 @@
 	<string>Avant d’enregistrer, activez Micro dans la barre d’enregistrement et vérifiez que son indicateur de niveau bouge quand vous parlez.</string>
 	<key>Before recording, turn on Track where I type.</key>
 	<string>Avant l’enregistrement, activez Suivre où je tape.</string>
-	<key>Before recording: Select size above the recording bar, with Camera on. In the editor: drag the camera on the preview.</key>
-	<string>Avant l’enregistrement : Choisir la taille au-dessus de la barre d’enregistrement, avec Caméra activée. Dans l’éditeur : faites glisser la caméra dans l’aperçu.</string>
-	<key>Before recording: turn on Camera, then Camera shape above the recording bar. In the editor: Camera panel ▸ Camera ▸ Camera shape.</key>
-	<string>Avant l’enregistrement : activez Caméra, puis Forme de la caméra au-dessus de la barre d’enregistrement. Dans l’éditeur : panneau Caméra ▸ Caméra ▸ Forme de la caméra.</string>
-	<key>Before recording: turn on Camera, then Layout ▸ Split screen above the recording bar. In the editor: Camera panel ▸ Layout.</key>
-	<string>Avant l’enregistrement : activez Caméra, puis Disposition ▸ Écran partagé au-dessus de la barre d’enregistrement. Dans l’éditeur : panneau Caméra ▸ Disposition.</string>
+	<key>Before recording: turn on Camera, then Area in the recording bar ▸ Camera shape. In the editor: Camera panel ▸ Camera ▸ Camera shape.</key>
+	<string>Avant d’enregistrer : activez Caméra, puis Zone dans la barre d’enregistrement ▸ Forme de la caméra. Dans l’éditeur : panneau Caméra ▸ Caméra ▸ Forme de la caméra.</string>
+	<key>Before recording: turn on Camera, then Area in the recording bar ▸ Layout ▸ Split screen. In the editor: Camera panel ▸ Layout.</key>
+	<string>Avant d’enregistrer : activez Caméra, puis Zone dans la barre d’enregistrement ▸ Disposition ▸ Écran partagé. Dans l’éditeur : panneau Caméra ▸ Disposition.</string>
+	<key>Before recording: with Camera on, Area in the recording bar ▸ Select size. In the editor: drag the camera on the preview.</key>
+	<string>Avant d’enregistrer : avec Caméra activée, Zone dans la barre d’enregistrement ▸ Choisir la taille. Dans l’éditeur : faites glisser la caméra dans l’aperçu.</string>
 	<key>Begins scrolling when the recording starts</key>
 	<string>Commence à défiler au début de l’enregistrement</string>
 	<key>Behavior</key>
@@ -1138,6 +1140,8 @@
 	<string>Aperçu de la caméra</string>
 	<key>Camera shape</key>
 	<string>Forme de la caméra</string>
+	<key>Camera shape, Select size, and Layout, with Camera on.</key>
+	<string>Forme de la caméra, Choisir la taille et Disposition, quand Caméra est activée.</string>
 	<key>Camera shape: Circle, Rounded rectangle, Square, Landscape, Portrait, 4:3, 3:4, Free, or Cutout (just you, without the background).</key>
 	<string>Forme de la caméra : Cercle, Rectangle arrondi, Carré, Paysage, Portrait, 4:3, 3:4, Libre ou Détouré (vous seul, sans l’arrière-plan).</string>
 	<key>Camera shape: how the camera looks in the video. The preview shows it.</key>
@@ -1370,6 +1374,8 @@
 	<string>Modifier les touches de la timeline, ou utiliser celles de Final Cut Pro ou de Premiere Pro</string>
 	<key>Change the volume over time, fade sound in and out, even out loudness, and find the beat.</key>
 	<string>Faites varier le volume dans le temps, ajoutez des fondus au son, égalisez le volume sonore et trouvez le rythme.</string>
+	<key>Change what you need. Everything works as before.</key>
+	<string>Modifiez ce dont vous avez besoin. Tout fonctionne comme avant.</string>
 	<key>Changed your mind? Click the yellow marker on the timeline to bring a cut part back.</key>
 	<string>Vous avez changé d’avis ? Cliquez sur le repère jaune de la timeline pour récupérer un passage coupé.</string>
 	<key>Changes</key>
@@ -1554,8 +1560,8 @@
 	<string>Choisissez où placer le dossier de transmission — n’importe quel dossier ou disque</string>
 	<key>Choose window</key>
 	<string>Choisir une fenêtre</string>
-	<key>Choose your microphone in the menu above the bar.</key>
-	<string>Choisissez votre micro dans le menu au-dessus de la barre.</string>
+	<key>Choose your microphone under Area ▸ Microphone.</key>
+	<string>Choisissez votre micro dans Zone ▸ Micro.</string>
 	<key>Choose your options in the recording bar.</key>
 	<string>Choisissez vos options dans la barre d’enregistrement.</string>
 	<key>Choose...</key>
@@ -1668,6 +1674,10 @@
 	<string>Cliquez sur Appliquer à tous les sous-titres. ⌘Z les remet tous comme avant.</string>
 	<key>Click Apply, or press Return.</key>
 	<string>Cliquez sur Appliquer, ou appuyez sur Retour.</string>
+	<key>Click Area in the recording bar, open Window size and choose a size.</key>
+	<string>Cliquez sur Zone dans la barre d’enregistrement, ouvrez Taille de la fenêtre et choisissez une taille.</string>
+	<key>Click Area in the recording bar.</key>
+	<string>Cliquez sur Zone dans la barre d’enregistrement.</string>
 	<key>Click Back above the timeline, or press Esc, to return to the whole video.</key>
 	<string>Cliquez sur Retour au-dessus de la timeline, ou appuyez sur Échap, pour revenir à toute la vidéo.</string>
 	<key>Click Background.</key>
@@ -1740,14 +1750,14 @@
 	<string>Cliquez sur Conserver pour les garder, ou sur Tout annuler pour revenir au projet tel qu’il était avant.</string>
 	<key>Click Marker on the timeline's toolbar. Markers added while recording are there too.</key>
 	<string>Cliquez sur Marqueur dans la barre d’outils de la timeline. Les marqueurs ajoutés pendant l’enregistrement y sont aussi.</string>
-	<key>Click Microphone in the recording bar. A menu above the bar picks which microphone.</key>
-	<string>Cliquez sur Micro dans la barre d’enregistrement. Un menu au-dessus de la barre permet de choisir le micro.</string>
+	<key>Click Microphone in the recording bar. Area ▸ Microphone picks which microphone.</key>
+	<string>Cliquez sur Micro dans la barre d’enregistrement. Zone ▸ Micro permet de choisir le micro.</string>
 	<key>Click New recording in Home.</key>
 	<string>Cliquez sur Nouvel enregistrement dans l’accueil.</string>
-	<key>Click New recording in Home. A frame appears: choose a shape above the recording bar, like 16:9, and drag the frame's border to what you want to record.</key>
-	<string>Cliquez sur Nouvel enregistrement dans l’accueil. Un cadre apparaît : choisissez une forme au-dessus de la barre d’enregistrement, comme 16:9, et faites glisser le bord du cadre sur ce que vous voulez enregistrer.</string>
-	<key>Click New recording in Home. Choose a shape for the frame (16:9 for YouTube, 9:16 for Reels) and drag its border into place. For a window or the whole screen, click Window or Full screen above the recording bar.</key>
-	<string>Cliquez sur Nouvel enregistrement dans l’accueil. Choisissez une forme pour le cadre (16:9 pour YouTube, 9:16 pour Reels) et faites glisser son bord pour le placer. Pour une fenêtre ou tout l’écran, cliquez sur Fenêtre ou Plein écran au-dessus de la barre d’enregistrement.</string>
+	<key>Click New recording in Home. A frame appears: click Area in the recording bar to choose a shape, like 16:9, and drag the frame's border to what you want to record.</key>
+	<string>Cliquez sur Nouvel enregistrement dans l’Accueil. Un cadre apparaît : cliquez sur Zone dans la barre d’enregistrement pour choisir une forme, comme 16:9, puis faites glisser le bord du cadre sur ce que vous voulez enregistrer.</string>
+	<key>Click New recording in Home. Click Area in the recording bar, choose a shape for the frame (16:9 for YouTube, 9:16 for Reels), and drag its border into place. For a window or the whole screen, click Window or Full screen under Area.</key>
+	<string>Cliquez sur Nouvel enregistrement dans l’Accueil. Cliquez sur Zone dans la barre d’enregistrement, choisissez une forme pour le cadre (16:9 pour YouTube, 9:16 pour Reels) et faites glisser son bord en place. Pour une fenêtre ou tout l’écran, cliquez sur Fenêtre ou Plein écran sous Zone.</string>
 	<key>Click Open System Settings below.</key>
 	<string>Cliquez sur Ouvrir Réglages Système ci-dessous.</string>
 	<key>Click Phone overlay above the preview to see what a phone app would cover.</key>
@@ -1840,6 +1850,8 @@
 	<string>Effets de clic</string>
 	<key>Click for Project Settings. Double-click to show the recording in Finder.</key>
 	<string>Cliquez pour les réglages du projet. Double-cliquez pour afficher l’enregistrement dans le Finder.</string>
+	<key>Click for the area, size, microphone and camera options</key>
+	<string>Cliquez pour la zone, la taille, le micro et la caméra</string>
 	<key>Click it in Home to open the screenshot editor: add arrows, text, blur, and more, then click Copy or Save.</key>
 	<string>Cliquez dessus dans l’accueil pour ouvrir l’éditeur de captures : ajoutez des flèches, du texte, du flou et plus encore, puis cliquez sur Copier ou Enregistrer.</string>
 	<key>Click it on the video</key>
@@ -1944,6 +1956,8 @@
 	<string>Fermer</string>
 	<key>Close Window</key>
 	<string>Fermer la fenêtre</string>
+	<key>Close the Area options</key>
+	<string>Fermer les options de Zone</string>
 	<key>Close the pin</key>
 	<string>Fermer la capture épinglée</string>
 	<key>Close the window when you're done. If you haven't saved, LF Studios asks first.</key>
@@ -2720,8 +2734,6 @@
 	<string>Faites glisser pour modifier la fin de ce clip</string>
 	<key>Drag to change where this clip starts</key>
 	<string>Faites glisser pour modifier le début de ce clip</string>
-	<key>Drag to move the bars</key>
-	<string>Faire glisser pour déplacer les barres</string>
 	<key>Drag to move the compound clip; drag a corner to size it</key>
 	<string>Faites glisser pour déplacer le clip composé ; faites glisser un coin pour le redimensionner</string>
 	<key>Drag to move the playhead</key>
@@ -3858,12 +3870,10 @@
 	<string>Dans la barre d’enregistrement, cliquez sur Notes de l’orateur.</string>
 	<key>In the recording bar, turn on Microphone (and Camera, if you like), then click Record or press Return.</key>
 	<string>Dans la barre d’enregistrement, activez Micro (et Caméra si vous le souhaitez), puis cliquez sur Enregistrer ou appuyez sur Retour.</string>
-	<key>In the recording bar, turn on Microphone. To pick a different microphone, use the menu that appears above the bar.</key>
-	<string>Dans la barre d’enregistrement, activez Micro. Pour choisir un autre micro, utilisez le menu qui apparaît au-dessus de la barre.</string>
+	<key>In the recording bar, turn on Microphone. To pick a different microphone, click Area and use the Microphone menu.</key>
+	<string>Dans la barre d’enregistrement, activez Micro. Pour choisir un autre micro, cliquez sur Zone et utilisez le menu Micro.</string>
 	<key>In the recording bar, which appears after you choose what to record.</key>
 	<string>Dans la barre d’enregistrement, qui apparaît après avoir choisi ce que vous enregistrez.</string>
-	<key>In the row above the recording bar, open Window size and choose a size.</key>
-	<string>Dans la rangée au-dessus de la barre d’enregistrement, ouvrez Taille de la fenêtre et choisissez une taille.</string>
 	<key>In the screenshot editor, click Background in the toolbar.</key>
 	<string>Dans l’éditeur de captures, cliquez sur Arrière-plan dans la barre d’outils.</string>
 	<key>In the video</key>
@@ -5580,8 +5590,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Choisissez-en un dans Bibliothèque ▸ Effets pendant que ce clip est sélectionné.</string>
 	<key>Pick the Select tool (V) and click a mark to change it, or set things before you draw.</key>
 	<string>Choisissez l’outil Sélection (V) et cliquez sur une annotation pour la modifier, ou réglez tout avant de dessiner.</string>
-	<key>Pick the right microphone in the menu above the bar.</key>
-	<string>Choisissez le bon micro dans le menu au-dessus de la barre.</string>
+	<key>Pick the right microphone under Area ▸ Microphone in the recording bar.</key>
+	<string>Choisissez le bon micro dans Zone ▸ Micro de la barre d’enregistrement.</string>
 	<key>Picked up where you left off</key>
 	<string>Reprise là où vous en étiez</string>
 	<key>Picture</key>
@@ -5758,6 +5768,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Appuyez sur %@, ou ouvrez le menu LF Studios dans la barre des menus et choisissez Capturer une fenêtre.</string>
 	<key>Press ? in the editor to see this list there.</key>
 	<string>Appuyez sur ? dans l’éditeur pour y voir cette liste.</string>
+	<key>Press Esc or click outside to close it.</key>
+	<string>Appuyez sur Échap ou cliquez à côté pour la fermer.</string>
 	<key>Press Esc to close it.</key>
 	<string>Appuyez sur Esc pour la fermer.</string>
 	<key>Press Space to play and pause.</key>
@@ -7976,6 +7988,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Le panneau Agent (Disposition ▸ Panneau Agent). Il s’ouvre quand un agent commence.</string>
 	<key>The Agent panel moves and floats like the others; its × hides it.</key>
 	<string>Le panneau Agent se déplace et flotte comme les autres ; son × le masque.</string>
+	<key>The Area button</key>
+	<string>Le bouton Zone</string>
 	<key>The Assistant is editing. Click or type in the editor to take over.</key>
 	<string>L’Assistant modifie la vidéo. Cliquez ou tapez dans l’éditeur pour reprendre la main.</string>
 	<key>The Assistant needs a key from Claude, OpenAI or Gemini. It stays in your Mac's Keychain.</key>
@@ -8014,6 +8028,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>La Bibliothèque</string>
 	<key>The Library's Media and Audio tabs, at the top left of the video editor. File ▸ Import Media… (⌘I).</key>
 	<string>Les onglets Médias et Audio de la Bibliothèque, en haut à gauche de l’éditeur vidéo. Fichier ▸ Importer des médias… (⌘I).</string>
+	<key>The Microphone menu, with Microphone on.</key>
+	<string>Le menu Micro, quand Micro est activé.</string>
 	<key>The Proxy menu under the player.</key>
 	<string>Le menu Proxy sous le lecteur.</string>
 	<key>The Undo and Redo buttons in the editor's toolbar.</key>
@@ -8092,6 +8108,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>L’exportation s’est arrêtée de façon inattendue (%@). Réessayez — si le problème persiste, exportez à une résolution plus basse ou en H.264.</string>
 	<key>The export window warns you before a file won't fit.</key>
 	<string>La fenêtre d’export vous prévient avant qu’un fichier ne tienne plus.</string>
+	<key>The first button in the recording bar.</key>
+	<string>Le premier bouton de la barre d’enregistrement.</string>
 	<key>The first time, macOS asks to allow the microphone and the camera.</key>
 	<string>La première fois, macOS demande l’autorisation d’utiliser le micro et la caméra.</string>
 	<key>The first time, macOS asks to allow the microphone.</key>
@@ -8108,6 +8126,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>L’image à %@</string>
 	<key>The frame bar</key>
 	<string>La barre du cadre</string>
+	<key>The frame's shape and size, Fit a window to the frame…, and Window, Full screen, or Select area manually.</key>
+	<string>La forme et la taille du cadre, Ajuster une fenêtre au cadre…, et Fenêtre, Plein écran ou Sélectionner une zone manuellement.</string>
 	<key>The frame, the dimming, and the bars are never in the video. Nothing is recorded until you click Record.</key>
 	<string>Le cadre, l’assombrissement et les barres n’apparaissent jamais dans la vidéo. Rien n’est enregistré tant que vous ne cliquez pas sur Enregistrer.</string>
 	<key>The handoff is ready</key>
@@ -8214,6 +8234,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Réponse du fournisseur : %@</string>
 	<key>The recording bar</key>
 	<string>La barre d’enregistrement</string>
+	<key>The recording bar is one row. Area shows what you're recording, like Area · 1920 × 1080, Full screen, or Window · Safari, and holds the rest of the options.</key>
+	<string>La barre d’enregistrement tient sur une ligne. Zone indique ce que vous enregistrez, comme Zone · 1920 × 1080, Plein écran ou Fenêtre · Safari, et contient les autres options.</string>
 	<key>The recording bar, the camera bubble preview, Speaker notes, the countdown, and notices.</key>
 	<string>La barre d’enregistrement, l’aperçu de la bulle de caméra, les Notes de l’orateur, le compte à rebours et les messages.</string>
 	<key>The recording couldn't be finished — saved the first %@.</key>
@@ -8286,8 +8308,6 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Les réglages du son (sélectionnez un fichier son, la musique, ou une vidéo au-dessus de la piste principale).</string>
 	<key>The speaker on the sound track's name mutes it. Volume is in Properties ▸ Audio; a clip's fades and Mute Clip work on its sound.</key>
 	<string>Le haut-parleur à côté du nom de la piste son la coupe. Le volume est dans Propriétés ▸ Audio ; les fondus d’un clip et Couper le son du clip s’appliquent à son son.</string>
-	<key>The strip above the recording bar, after Home ▸ New recording.</key>
-	<string>La bande au-dessus de la barre d’enregistrement, après Accueil ▸ Nouvel enregistrement.</string>
 	<key>The switches stay as you leave them, on this Mac.</key>
 	<string>Les interrupteurs restent comme vous les laissez, sur ce Mac.</string>
 	<key>The text is now on the clipboard: paste it anywhere with ⌘V.</key>
@@ -8524,8 +8544,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Pour changer l’ampleur et la durée du zoom, cliquez sur ⌄ à côté du bouton : Échelle et Durée.</string>
 	<key>To cut a mistake, move the playhead to it, press ⌘B to split, click the bad part, and press ⌫.</key>
 	<string>Pour couper une erreur, placez-y la tête de lecture, appuyez sur ⌘B pour scinder, cliquez sur la mauvaise partie et appuyez sur ⌫.</string>
-	<key>To drag out any area yourself, click Select area manually above the recording bar.</key>
-	<string>Pour tracer vous-même une zone libre, cliquez sur Sélectionner une zone manuellement au-dessus de la barre d’enregistrement.</string>
+	<key>To drag out any area yourself, click Area in the recording bar, then Select area manually.</key>
+	<string>Pour tracer vous-même une zone libre, cliquez sur Zone dans la barre d’enregistrement, puis sur Sélectionner une zone manuellement.</string>
 	<key>To get the preview out of the way, drag it outside the frame: the label says “Not in video”, and the editor puts the camera in its usual corner.</key>
 	<string>Pour écarter l’aperçu, faites-le glisser hors du cadre : l’étiquette indique « Pas dans la vidéo », et l’éditeur place la caméra dans son coin habituel.</string>
 	<key>To hide one, click it on the timeline and press ⌫.</key>
@@ -8692,8 +8712,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Activez Caméra dans la barre d’enregistrement. macOS le demande une fois : cliquez sur Autoriser.</string>
 	<key>Turn on Camera. A bubble with your face appears; it's recorded separately, so you can move and restyle it later.</key>
 	<string>Activez Caméra. Une bulle avec votre visage apparaît ; elle est enregistrée à part, vous pourrez donc la déplacer et changer son style plus tard.</string>
-	<key>Turn on Camera. A preview of your camera appears, in the Camera shape chosen above the bar.</key>
-	<string>Activez Caméra. Un aperçu de votre caméra apparaît, dans la Forme de la caméra choisie au-dessus de la barre.</string>
+	<key>Turn on Camera. A preview of your camera appears, in the Camera shape chosen under Area.</key>
+	<string>Activez Caméra. Un aperçu de votre caméra apparaît, dans la Forme de la caméra choisie sous Zone.</string>
 	<key>Turn on Intro card or Outro card.</key>
 	<string>Activez Carton d’intro ou Carton de fin.</string>
 	<key>Turn on Keep face centered. LF Studios looks for your face once, with progress and Cancel.</key>
@@ -8710,6 +8730,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Activez la caméra dans la barre d’enregistrement avant d’enregistrer : votre visage apparaîtra ici dans une bulle que vous pourrez placer, redimensionner et personnaliser.</string>
 	<key>Turn on the microphone or system audio before recording to capture sound.</key>
 	<string>Activez le micro ou le son de l’ordinateur avant l’enregistrement pour capturer le son.</string>
+	<key>Turn on the microphone or the camera for their options.</key>
+	<string>Activez le micro ou la caméra pour voir leurs options.</string>
 	<key>Turn shaky mouse moves into calm, smooth glides.</key>
 	<string>Transformez les mouvements de souris saccadés en glissements calmes et fluides.</string>
 	<key>Turn text with the round knob above it; hold ⇧ for steps of 15°.</key>
@@ -9502,8 +9524,8 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Quand un agent a fini, voyez ce qu’il a changé et gardez-le, ou revenez au projet d’avant.</string>
 	<key>When it's done, click Keep, or Revert All to go back to how the video was before the request.</key>
 	<string>Quand il a terminé, cliquez sur Garder, ou sur Tout annuler pour revenir à la vidéo d’avant la demande.</string>
-	<key>When recording a window: the Window size menu in the row above the recording bar.</key>
-	<string>Pour l’enregistrement d’une fenêtre : le menu Taille de la fenêtre, dans la rangée au-dessus de la barre d’enregistrement.</string>
+	<key>When recording a window: Area in the recording bar ▸ Window size.</key>
+	<string>Pour enregistrer une fenêtre : Zone dans la barre d’enregistrement ▸ Taille de la fenêtre.</string>
 	<key>When the agent is done, its changes are marked on the timeline in orange.</key>
 	<string>Quand l’agent a fini, ses modifications sont marquées en orange sur la timeline.</string>
 	<key>When the text has links, email addresses, or a table, LF Studios offers more ways to use it.</key>
@@ -9584,6 +9606,10 @@ Activez-la dans Réglages Système → Confidentialité et sécurité → Enregi
 	<string>Fenêtre fermée</string>
 	<key>Window size</key>
 	<string>Taille de la fenêtre</string>
+	<key>Window size, when recording a window.</key>
+	<string>Taille de la fenêtre, quand vous enregistrez une fenêtre.</string>
+	<key>Window · %@</key>
+	<string>Fenêtre · %@</string>
 	<key>Window, Full screen, and Select area manually: record another way instead.</key>
 	<string>Fenêtre, Plein écran et Sélectionner une zone manuellement : enregistrer autrement.</string>
 	<key>Windows in front of it don't get in the way: only the window you click is captured.</key>
