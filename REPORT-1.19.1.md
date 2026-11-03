@@ -69,3 +69,13 @@ Branch `fix-1.19.1` → main. The owner's two decisions from DECISIONS-1.19.md.
   1.19.0, publishes, and now deletes its own build files after (including
   the release-only intermediates, added after this run showed where they
   go).
+
+## Published (2026-11-03)
+- With 45 GB free, the first run's rehearsal failed before publishing: the
+  old app's menu bar wasn't there yet 4 s after it opened ("Invalid index").
+  rehearse-update.sh now tries the click for up to 30 s (d0aeca3).
+- Second run: "✓ 1.19.0 updated itself to 1.19.1 through Check for Updates
+  and opened again", then published:
+  https://github.com/brightlifecreations-projects/LF-Studios-Releases/releases/tag/v1.19.1
+  The public feed offers 1.19.1.
+- The script cleaned up its build files (769 MB); 40 GB free afterwards.
