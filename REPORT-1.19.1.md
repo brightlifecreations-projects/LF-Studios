@@ -47,3 +47,25 @@ Branch `fix-1.19.1` → main. The owner's two decisions from DECISIONS-1.19.md.
   back to the old format without them), add_tack while taken over.
 - test-quick after each code commit: green. test-full: green on the first
   run (1382 s).
+- CI green on PR #13; merged.
+
+## Not published: disk space
+- The publish was stopped by the 6 GB rule. After test-full and the merge,
+  free space was 8.4 GB (from 18 GB); I deleted the repo's index and
+  localization build folders (→ 10 GB) and ran publish-release.sh under a
+  watcher. During the Intel half of the universal build it fell to 5 GB,
+  so the watcher stopped it **before the rehearsal and before anything was
+  published**. No v1.19.1 release exists; the feed still offers 1.19.0.
+- What the script had already done: committed and pushed "LF Studios
+  1.19.1" to main (Info.plist version, CHANGELOG dated 2026-11-03). That's
+  fine to leave: running it again finds nothing to commit and goes on.
+- The partial release files were deleted. Free space is now 5.6 GB; the
+  repo's own build files are about 2 GB. The rest went outside the repo
+  (another project's temp folder, /private/tmp/claude-501/-Users-aman-
+  srt-generator-update, alone is 3 GB). I didn't touch anything outside
+  the repo.
+- To publish: free some space (about 10 GB free is comfortable), then
+  `bash scripts/publish-release.sh 1.19.1` on main. It rehearses from
+  1.19.0, publishes, and now deletes its own build files after (including
+  the release-only intermediates, added after this run showed where they
+  go).
