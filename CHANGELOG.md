@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.21.1]
+## [1.21.1] - 2026-11-03
 
 ### Fixed
 - **Loop playback:** pausing in the last moment of the loop now pauses, instead of starting the loop again.
