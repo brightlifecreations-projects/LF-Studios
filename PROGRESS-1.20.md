@@ -16,5 +16,10 @@
       your API key, a page per provider's key, What the Assistant sends, What
       it costs), the 1.20.0 CHANGELOG, the new tools in the MCP instructions,
       7 languages.
-- [ ] test-full, screenshots page, PR, CI, merge, rehearsal from 1.19.1,
-      publish.
+- [x] test-quick for commits 3–4: one speed limit missed (trim step 31 ms
+      against 30). main (1.19.1) missed it too at that moment (32–38 ms):
+      another app (SRT Generator) was using about four CPU cores. Waited
+      until it was quiet before test-full.
+- [x] test-full: green on the first run (1441 s).
+- [x] Screenshots page: https://claude.ai/artifact/CUyN7rwQWT36L6W4NXez4a
+- [ ] PR, CI, merge, rehearsal from 1.19.1, publish.
