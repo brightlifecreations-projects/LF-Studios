@@ -149,6 +149,63 @@ final class VideoLongTimelineTests: XCTestCase {
         }
     }
 
+    /// 1.21.0: at the timeline panel's smallest height (150 pt, docked or
+    /// floating: the same view), every track can be reached by scrolling.
+    /// The ruler stays put, the headers move with their lanes, scrolling
+    /// over the headers works too, and a scroll bar shows.
+    func testVerticalScrollReachesTheLastTrackAtTheSmallestHeight() async throws {
+        try await forEachEditorStyle { style in
+            var options = T.Options(seconds: 10, audio: true, pointer: true)
+            options.keystrokes = [VideoKeystrokeEvent(time: 1, keys: ["⌘", "S"]), VideoKeystrokeEvent(time: 4, keys: ["⌘", "C"])]
+            let model = try await T.make(in: directory, options)
+            model.mutate { $0.captions = [VideoCaptionLine(start: 1, end: 3, text: "Hello")] }
+            let picture = directory.appendingPathComponent("p.png")
+            try VideoInspection.writePNG(to: picture, size: CGSize(width: 160, height: 90), color: .green)
+            _ = await model.addLayerItem(from: picture, at: 2)
+            let window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: Self.size.width, height: 150), styleMask: [.borderless], backing: .buffered, defer: false)
+            window.contentView = Host(rootView: AnyView(VideoTimelineView(model: model).frame(width: Self.size.width, height: 150)))
+            window.setFrameOrigin(NSPoint(x: 40, y: 200))
+            window.orderFrontRegardless()
+            self.window = window
+            await T.settle(0.4)
+
+            func all(_ view: NSView) -> [NSScrollView] {
+                ((view as? NSScrollView).map { [$0] } ?? []) + view.subviews.flatMap { all($0) }
+            }
+            let root = try XCTUnwrap(window.contentView)
+            let outer = try XCTUnwrap(all(root).first { ($0.documentView?.frame.height ?? 0) > $0.contentView.bounds.height + 20 }, "\(style): the tracks are taller than the panel")
+            let document = try XCTUnwrap(outer.documentView)
+            let tracks = VideoTimelineRowLayout(project: model.project, hasCamera: model.hasWebcamFootage, curves: [], sound: model.timelineSoundRows)
+            XCTAssertGreaterThanOrEqual(tracks.rows.count, 6, "\(style): \(tracks.rows.map(\.track.key))")
+            XCTAssertGreaterThanOrEqual(document.frame.height + 0.5, tracks.height, "\(style): every track is in the scrolling area")
+
+            // A scroll bar shows (the system's only shows while scrolling).
+            XCTAssertGreaterThan(VideoTimelineVerticalScrollbar.shown, 0, "\(style): the tracks' scroll bar shows")
+
+            // Scrolling over the track headers moves the lanes down.
+            let header = NSPoint(x: VideoTimelineMetrics.headerWidth / 2, y: 30)
+            let wheel = try XCTUnwrap(CGEvent(scrollWheelEvent2Source: nil, units: .pixel, wheelCount: 1, wheel1: -400, wheel2: 0, wheel3: 0))
+            let event = try XCTUnwrap(NSEvent(cgEvent: wheel))
+            let scroller = try XCTUnwrap(VideoTimelineScroller.latest)
+            XCTAssertTrue(scroller.handleScroll(event, in: window, at: header), "\(style): a scroll over the headers is used")
+            XCTAssertFalse(scroller.handleScroll(event, in: window, at: NSPoint(x: VideoTimelineMetrics.headerWidth + 200, y: 30)), "\(style): over the lanes they scroll themselves")
+            await T.settle(0.3)
+            let visible = outer.contentView.bounds
+            let fromTop = document.isFlipped ? visible.minY : document.frame.height - visible.maxY
+            XCTAssertGreaterThan(fromTop, 20, "\(style): the wheel over the headers scrolled")
+            // To the bottom: the last track is on screen.
+            let last = try XCTUnwrap(tracks.rows.last)
+            outer.contentView.scroll(to: NSPoint(x: 0, y: document.isFlipped ? document.frame.height : 0))
+            outer.reflectScrolledClipView(outer.contentView)
+            await T.settle(0.3)
+            let bottom = outer.contentView.bounds
+            let bottomFromTop = document.isFlipped ? bottom.minY : document.frame.height - bottom.maxY
+            XCTAssertLessThanOrEqual(last.top + last.height, bottomFromTop + bottom.height + 1, "\(style): the last track (\(last.track.key)) can be reached")
+            window.orderOut(nil)
+            self.window = nil
+        }
+    }
+
     func testPlaybackPagesAlongUntilYouScroll() async throws {
         // Both layouts (1.17.0).
         try await forEachEditorStyle { _ in

@@ -324,13 +324,20 @@ struct VideoTimelineSurface: View {
                 rulerStrip
                     .frame(height: M.rulerHeight)
                 Rectangle().fill(VideoEditorTheme.hairline).frame(height: 1)
-                // Up and down outside, across inside (as before 1.11.0).
-                ScrollView(.vertical, showsIndicators: height > lanesViewport.height + 0.5) {
+                // Up and down outside, across inside (as before 1.11.0). The
+                // tracks that don't fit get a scroll bar that always shows
+                // (1.21.0; the system's shows only while scrolling).
+                ScrollView(.vertical, showsIndicators: false) {
                     VStack(spacing: 0) {
                         ScrollView(.horizontal, showsIndicators: model.timelineZoom > 1.01) {
                             lanes(rows: rows, height: height)
                         }
                         .frame(height: height)
+                    }
+                }
+                .overlay(alignment: .topTrailing) {
+                    if height > lanesViewport.height + 0.5 {
+                        VideoTimelineVerticalScrollbar(offsets: offsets, contentHeight: height, viewportHeight: lanesViewport.height, scroller: scroller)
                     }
                 }
             }

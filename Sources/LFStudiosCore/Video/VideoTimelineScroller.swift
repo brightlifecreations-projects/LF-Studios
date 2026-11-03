@@ -55,6 +55,7 @@ final class VideoTimelineScroller {
         }
         publishOffsets()
         installScrollZoom()
+        Self.latest = self
     }
 
     private func publishOffsets() {
@@ -81,16 +82,47 @@ final class VideoTimelineScroller {
         scrollMonitor = NSEvent.addLocalMonitorForEvents(matching: .scrollWheel) { [weak self] incoming in
             nonisolated(unsafe) let event = incoming
             let handled: Bool = MainActor.assumeIsolated {
-                guard let self, let model = self.model, let scrollView = self.scrollView,
-                      event.modifierFlags.contains(.command), event.window === scrollView.window else { return false }
-                let delta = event.scrollingDeltaY != 0 ? event.scrollingDeltaY : event.scrollingDeltaX
-                let factor = pow(1.01, Double(delta) * (event.hasPreciseScrollingDeltas ? 1 : 6))
-                // Around the skimmer when it shows, else the playhead (anchor).
-                model.zoomTimeline(by: factor)
-                return true
+                guard let self, let window = event.window else { return false }
+                return self.handleScroll(event, in: window, at: event.locationInWindow)
             }
             return handled ? nil : incoming
         }
+    }
+
+    /// The timeline last shown (tests).
+    static weak var latest: VideoTimelineScroller?
+
+    /// A scroll in this editor's window: ⌘ zooms around the skimmer, else
+    /// the playhead; over the track headers it moves the lanes up and down
+    /// (1.21.0; the headers follow them). Returns whether it was used.
+    func handleScroll(_ event: NSEvent, in window: NSWindow, at point: NSPoint) -> Bool {
+        guard let model, let scrollView, window === scrollView.window else { return false }
+        if event.modifierFlags.contains(.command) {
+            let delta = event.scrollingDeltaY != 0 ? event.scrollingDeltaY : event.scrollingDeltaX
+            model.zoomTimeline(by: pow(1.01, Double(delta) * (event.hasPreciseScrollingDeltas ? 1 : 6)))
+            return true
+        }
+        guard let outer = scrollView.enclosingScrollView, headerColumn(of: outer).contains(point) else { return false }
+        outer.scrollWheel(with: event)
+        return true
+    }
+
+    /// The track headers' column, left of the lanes (window coordinates).
+    private func headerColumn(of outer: NSScrollView) -> CGRect {
+        let lanes = outer.convert(outer.bounds, to: nil)
+        let width = VideoTimelineMetrics.headerWidth
+        return CGRect(x: lanes.minX - width - 1, y: lanes.minY, width: width, height: lanes.height)
+    }
+
+    /// Scrolls the lanes (and the headers with them) to `y` points from
+    /// the top.
+    func scroll(toY y: CGFloat) {
+        guard let outer = scrollView?.enclosingScrollView, let document = outer.documentView else { return }
+        let visible = outer.contentView.bounds
+        let maxY = max(document.frame.height - visible.height, 0)
+        let fromTop = min(max(y, 0), maxY)
+        outer.contentView.scroll(to: NSPoint(x: visible.minX, y: document.isFlipped ? fromTop : maxY - fromTop))
+        outer.reflectScrolledClipView(outer.contentView)
     }
 
     /// Current points per second and inset, set by the timeline on layout.

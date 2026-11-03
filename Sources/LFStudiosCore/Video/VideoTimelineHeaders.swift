@@ -16,6 +16,58 @@ final class VideoTimelineScrollOffsets: ObservableObject {
     }
 }
 
+/// The lanes' scroll bar up and down (1.21.0): it shows whenever the
+/// tracks don't all fit, so a short timeline says there's more below. Drag
+/// it, scroll anywhere over the lanes or the track headers, or click above
+/// or below the thumb for a page.
+struct VideoTimelineVerticalScrollbar: View {
+    @ObservedObject var offsets: VideoTimelineScrollOffsets
+    let contentHeight: CGFloat
+    let viewportHeight: CGFloat
+    let scroller: VideoTimelineScroller
+    @State private var dragStart: CGFloat?
+    /// How many show now (tests).
+    static var shown = 0
+
+    private var range: CGFloat { max(contentHeight - viewportHeight, 1) }
+    private var thumb: CGFloat { min(max(viewportHeight * viewportHeight / max(contentHeight, 1), 24), viewportHeight) }
+    private var travel: CGFloat { max(viewportHeight - thumb - 4, 1) }
+
+    var body: some View {
+        let top = 2 + travel * min(max(offsets.y / range, 0), 1)
+        ZStack(alignment: .top) {
+            Color.clear
+                .contentShape(Rectangle())
+                .onTapGesture(coordinateSpace: .local) { location in
+                    scroller.scroll(toY: offsets.y + (location.y < top ? -viewportHeight : viewportHeight))
+                }
+            Capsule()
+                .fill(VideoEditorTheme.textTertiary.opacity(0.75))
+                .frame(width: 6, height: thumb)
+                .offset(y: top)
+                .gesture(
+                    DragGesture(minimumDistance: 0)
+                        .onChanged { value in
+                            if dragStart == nil { dragStart = offsets.y }
+                            scroller.scroll(toY: (dragStart ?? 0) + value.translation.height * range / travel)
+                        }
+                        .onEnded { _ in dragStart = nil }
+                )
+        }
+        .frame(width: 12, height: viewportHeight, alignment: .top)
+        .background(VideoEditorTheme.panel.opacity(0.55))
+        .help(L("Scroll to see every track"))
+        .accessibilityElement()
+        .accessibilityLabel(L("Tracks"))
+        .accessibilityValue(VideoEditorFormat.percent(Double(min(max(offsets.y / range, 0), 1))))
+        .accessibilityAdjustableAction { direction in
+            scroller.scroll(toY: offsets.y + (direction == .increment ? 40 : -40))
+        }
+        .onAppear { Self.shown += 1 }
+        .onDisappear { Self.shown -= 1 }
+    }
+}
+
 /// The ruler strip, moved with the lanes.
 struct VideoTimelineRulerStrip<Content: View>: View {
     @ObservedObject var offsets: VideoTimelineScrollOffsets

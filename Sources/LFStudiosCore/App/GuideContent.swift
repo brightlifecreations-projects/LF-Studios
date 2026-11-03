@@ -1866,7 +1866,7 @@ enum GuideContent {
                     L("A track with nothing on it is a thin row that says how to add something. The arrow next to a name folds a track away."),
                 ],
                 steps: [
-                    L("Scroll up and down when the tracks don't all fit; the ruler and the track names stay put."),
+                    L("When the tracks don't all fit, scroll up and down over the tracks or their names, or drag the scroll bar on the right. The ruler stays put; each name moves with its track."),
                     L("Pinch, ⌘-scroll, ⌘+ and ⌘−, or the slider on the right, to see more or less of the video."),
                 ],
                 tips: [L("Hiding or muting a track never deletes anything: turn it back on, and it's all there.")],
