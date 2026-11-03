@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.20.0]
+## [1.20.0] - 2026-11-03
 
 ### Added
 - **The Assistant: an AI that edits with you, with your own API key.** Add a key for Claude, OpenAI or Gemini in **Settings ▸ AI**, choose the provider, then open **Layout ▸ Assistant Panel** and ask for an edit in plain words ("Cut the long pauses and add captions").
