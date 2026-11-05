@@ -238,7 +238,10 @@ enum VideoTestSupport {
             }
             guard let pool = adaptor.pixelBufferPool else { throw NSError(domain: "test", code: 2) }
             var buffer: CVPixelBuffer?
-            CVPixelBufferPoolCreatePixelBuffer(nil, pool, &buffer)
+            // A busy Mac: the pool's buffers come back as the writer takes frames.
+            for _ in 0..<500 where CVPixelBufferPoolCreatePixelBuffer(nil, pool, &buffer) != kCVReturnSuccess {
+                try await Task.sleep(nanoseconds: 2_000_000)
+            }
             guard let buffer else { throw NSError(domain: "test", code: 3) }
             CVPixelBufferLockBaseAddress(buffer, [])
             let context = CGContext(
