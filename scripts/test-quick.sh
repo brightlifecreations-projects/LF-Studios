@@ -11,10 +11,10 @@ source scripts/test-groups.sh
 
 total=$SECONDS
 clear_test_storage
-step "Build" swift build --build-tests
+step "Build" swift build --build-tests ${LF_BUILD_JOBS:+-j "$LF_BUILD_JOBS"}
 if [ "$FAILED" -eq 0 ]; then
-    step "Tests in parallel (no screenshots)" swift test --skip-build --parallel --skip "$SNAPSHOTS|$SERIAL"
-    step "Tests that run alone" swift test --skip-build --filter "$SERIAL"
+    step "Tests in parallel (no screenshots)" guarded swift test --skip-build --parallel --num-workers "$WORKERS" --skip "$SNAPSHOTS|$SERIAL"
+    step "Tests that run alone" run_serial "$SERIAL"
 fi
 echo
 if [ "$FAILED" -eq 0 ]; then
@@ -22,4 +22,5 @@ if [ "$FAILED" -eq 0 ]; then
 else
     echo "✗ Some tests failed ($((SECONDS - total)) s) — see above"
 fi
+cleanup_tests
 exit "$FAILED"
