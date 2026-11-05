@@ -13,7 +13,6 @@ struct RecordingFrameRatio: Codable, Equatable, Hashable {
     }
 
     var text: String { "\(width):\(height)" } // l10n-ignore: a ratio, the same in every language
-    var isPortrait: Bool { height > width }
 
     struct Preset {
         let ratio: RecordingFrameRatio
@@ -586,9 +585,6 @@ final class RecordingFrameDimWindow: NSPanel {
         dimView.label = label
         dimView.needsDisplay = true
     }
-
-    /// The camera's part as drawn, for tests (nil: not split).
-    var drawnCameraPart: CGRect? { dimView.camera }
 
     /// The frame's place as drawn, for tests (in the window's own points).
     var drawnFrame: CGRect { dimView.hole }

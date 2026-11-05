@@ -52,15 +52,6 @@ enum VideoBackground: Codable, Equatable, Hashable {
     /// A macOS desktop picture on this Mac.
     case systemWallpaper(String)
 
-    var imageURL: URL? {
-        switch self {
-        case .image(let path), .systemWallpaper(let path):
-            return path.isEmpty ? nil : URL(fileURLWithPath: path)
-        default:
-            return nil
-        }
-    }
-
     /// Rough brightness, for choosing contrasting chrome.
     var approximateLuminance: Double {
         switch self {

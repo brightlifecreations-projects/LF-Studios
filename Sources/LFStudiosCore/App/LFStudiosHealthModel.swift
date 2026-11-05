@@ -15,13 +15,6 @@ enum LFStudiosHealthState: String {
     case warning
     case issue
     case info
-
-    var isHealthy: Bool {
-        switch self {
-        case .ok, .info: return true
-        case .warning, .issue: return false
-        }
-    }
 }
 
 struct LFStudiosHealthRow: Identifiable, Equatable {

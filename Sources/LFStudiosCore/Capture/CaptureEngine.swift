@@ -50,7 +50,6 @@ final class CaptureEngine {
     private var recordingSelectionActive = false
     private let recordingEngine = RecordingEngine()
 
-    var recordingActive: Bool { recordingEngine.active }
     var recordingIsSaving: Bool { recordingEngine.isSaving }
     var recordingIsPaused: Bool { recordingEngine.isPaused }
     var recordingStopEnabled: Bool { recordingEngine.elapsedSeconds != nil || recordingSetupActive }

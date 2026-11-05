@@ -700,11 +700,6 @@ extension VideoEditorModel {
 // MARK: - Camera layouts
 
 extension VideoEditorModel {
-    var selectedCameraLayoutID: UUID? {
-        if case .cameraLayout(let id) = selection { return id }
-        return nil
-    }
-
     /// Timeline stretches of the camera layouts (for the lane).
     var cameraLayoutSpans: [(region: VideoCameraLayoutRegion, start: Double, end: Double)] {
         project.cameraLayouts.compactMap { region in

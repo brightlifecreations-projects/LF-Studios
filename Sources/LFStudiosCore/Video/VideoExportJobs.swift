@@ -295,7 +295,6 @@ final class VideoExportQueue: ObservableObject {
         let range: VideoExportRange
         let destination: URL
         let toClipboard: Bool
-        let queuedAt = Date()
         @Published fileprivate(set) var state: State = .queued
         @Published fileprivate(set) var startedAt: Date?
         /// Share sheet / completion notes ("Exported without Enhance voice").

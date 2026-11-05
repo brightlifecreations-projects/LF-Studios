@@ -97,37 +97,4 @@ struct VideoLibraryPanel: View {
         }
         .background(VideoEditorTheme.panel)
     }
-
-    // MARK: Pointers to where these live today
-}
-
-/// A short note on where a feature lives, with buttons that go there.
-struct VideoLibraryPointer: View {
-    let text: String
-    let actions: [(String, String, () -> Void)]
-
-    var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 12) {
-                Text(text)
-                    .font(.system(size: 11.5))
-                    .foregroundStyle(VideoEditorTheme.textSecondary)
-                    .fixedSize(horizontal: false, vertical: true)
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: 84), spacing: 8)], spacing: 8) {
-                    ForEach(Array(actions.enumerated()), id: \.offset) { _, action in
-                        Button(action: action.2) {
-                            VStack(spacing: 5) {
-                                Image(systemName: action.1).font(.system(size: 15, weight: .semibold))
-                                Text(action.0).font(.system(size: 11, weight: .semibold)).lineLimit(2).multilineTextAlignment(.center)
-                            }
-                            .frame(maxWidth: .infinity)
-                            .frame(height: 62)
-                        }
-                        .buttonStyle(VideoSecondaryButtonStyle())
-                    }
-                }
-            }
-            .padding(12)
-        }
-    }
 }

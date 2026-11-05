@@ -535,10 +535,6 @@ final class HistoryPanelController: NSObject {
 
     // MARK: - Reload
 
-    func reloadAfterDelete() {
-        reload()
-    }
-
     private var reloadScheduled = false
 
     /// Coalesces bursts of change notifications (undoing Clear All restores

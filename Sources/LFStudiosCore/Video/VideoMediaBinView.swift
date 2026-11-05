@@ -76,7 +76,6 @@ final class VideoMediaThumbnails {
     private var durations: [String: Double] = [:]
 
     func cached(_ path: String, frame: Int?) -> NSImage? { images.object(forKey: Self.key(path, frame)) }
-    func knownDuration(_ path: String) -> Double? { durations[path] }
 
     /// `frame` nil: the cover; 0…9: along the video.
     func image(_ path: String, kind: VideoMediaKind, frame: Int?) async -> NSImage? {

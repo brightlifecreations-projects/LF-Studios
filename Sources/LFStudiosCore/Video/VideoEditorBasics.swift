@@ -789,10 +789,6 @@ extension VideoDemoProject {
         return project
     }
 
-    /// The name shown on a track's header: its own, else the usual one.
-    func trackName(_ track: VideoTimelineTrack) -> String? {
-        trackStates[track.key]?.name
-    }
 }
 
 extension VideoEditorModel {
