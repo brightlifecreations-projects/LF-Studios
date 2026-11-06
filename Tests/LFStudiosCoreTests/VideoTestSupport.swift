@@ -239,7 +239,9 @@ enum VideoTestSupport {
             guard let pool = adaptor.pixelBufferPool else { throw NSError(domain: "test", code: 2) }
             var buffer: CVPixelBuffer?
             // A busy Mac: the pool's buffers come back as the writer takes frames.
-            for _ in 0..<500 where CVPixelBufferPoolCreatePixelBuffer(nil, pool, &buffer) != kCVReturnSuccess {
+            // Stop at the first buffer: each extra call leaks one (5 MB at 1440×900).
+            for _ in 0..<500 {
+                if CVPixelBufferPoolCreatePixelBuffer(nil, pool, &buffer) == kCVReturnSuccess { break }
                 try await Task.sleep(nanoseconds: 2_000_000)
             }
             guard let buffer else { throw NSError(domain: "test", code: 3) }
