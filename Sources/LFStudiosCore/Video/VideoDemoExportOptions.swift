@@ -268,7 +268,13 @@ struct VideoExportSettings: Equatable {
         }
         let short = CGFloat(resolution.rawValue)
         let scale = short / min(canvas.width, canvas.height)
-        return CGSize(width: even(canvas.width * scale), height: even(canvas.height * scale))
+        let size = CGSize(width: even(canvas.width * scale), height: even(canvas.height * scale))
+        // H.264 stops at 4096 a side (level 5.2): a wide 4K video shrinks to fit.
+        if format == .mp4, codec == .h264, !RecordingVideoFormat.fitsH264(width: Int(size.width), height: Int(size.height), fps: fps) {
+            let fitted = RecordingVideoFormat.scaledToFitH264(width: Int(size.width), height: Int(size.height), fps: fps)
+            return CGSize(width: fitted.width, height: fitted.height)
+        }
+        return size
     }
 
     var bitRate: BitRate {

@@ -279,6 +279,39 @@ final class VideoAIAssistantTests: XCTestCase {
         }
     }
 
+    /// Hard limits (AGENT-TOOLS.md) for each provider: a model asking for
+    /// a forbidden tool, or a file outside the project, is refused, and
+    /// nothing in the project or on disk changes.
+    func testForbiddenToolCallsAreRefusedForEveryProvider() async throws {
+        let outside = directory.appendingPathComponent("outside", isDirectory: true)
+        try FileManager.default.createDirectory(at: outside, withIntermediateDirectories: true)
+        let picture = outside.appendingPathComponent("picture.png")
+        try VideoInspection.writePNG(to: picture, size: CGSize(width: 64, height: 36), color: .systemGreen)
+        func disk() -> [String] {
+            (FileManager.default.enumerator(atPath: directory.path)?.allObjects as? [String] ?? []).sorted()
+        }
+        for provider in VideoAIProvider.allCases {
+            try configure(provider)
+            let model = try await makeModel()
+            let project = model.project
+            let files = disk()
+            let assistant = VideoAIAssistant.of(model)
+            for (name, arguments, says) in [("export_video", #"{"path": "/tmp/out.mp4"}"#, "no tool called"),
+                                            ("place_media", #"{"path": "\#(picture.path)", "time": 1}"#, "Refused")] {
+                let before = server.requests.count
+                server.script(toolReply(provider, name: name, arguments: arguments), textReply(provider, "Done."))
+                assistant.send("Do it")
+                try await waitUntilDone(assistant)
+                let second = try XCTUnwrap(server.requests.dropFirst(before + 1).first?.json, "\(provider): the tool's answer went back")
+                XCTAssertTrue(second.text.contains(says), "\(provider) \(name): refused")
+            }
+            XCTAssertEqual(model.project.timelineClips, project.timelineClips, "\(provider): nothing placed")
+            XCTAssertEqual(model.project.layerTracks, project.layerTracks, "\(provider): nothing placed")
+            XCTAssertEqual(disk(), files, "\(provider): nothing on disk changed")
+            VideoAIAssistant.forget(model)
+        }
+    }
+
     func testANewRequestKeepsTheLastOnesChanges() async throws {
         try configure(.anthropic)
         let model = try await makeModel()

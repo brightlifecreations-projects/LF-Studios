@@ -270,28 +270,69 @@ final class HomeModel: ObservableObject {
         }
     }
 
+    /// What reload reads from disk, found off the main thread.
+    private struct DiskScan: Sendable {
+        var folders: [(project: URL, date: Date)] = []
+        var recordings: [(url: URL, date: Date)] = []
+        var projectFiles: [(url: URL, date: Date)] = []
+    }
+
+    private var scanning = false
+    private var scanAgain = false
+
+    /// Lists every project again. Folders are read in the background (a slow
+    /// network or iCloud folder must not freeze Home); a reload asked for
+    /// while one runs starts once it ends, so the newest state wins.
     func reload() {
+        Task { await reloadNow() }
+    }
+
+    func reloadNow() async {
+        guard !scanning else { scanAgain = true; return }
+        scanning = true
+        defer { scanning = false }
+        repeat {
+            scanAgain = false
+            let scan = await Task.detached(priority: .userInitiated) { Self.scanDisk() }.value
+            apply(scan)
+        } while scanAgain
+    }
+
+    /// Tests: called where the disk scan starts.
+    nonisolated(unsafe) static var diskScanWillStart: (() -> Void)?
+
+    nonisolated private static func scanDisk() -> DiskScan {
+        diskScanWillStart?()
         // Recordings in folders of their own: wherever they were saved, and
         // any in the folders Home looks in.
         let scanned = Array(Set([Settings.recordingFolder, Settings.autoSaveLocation, Settings.defaultAutoSaveLocation]))
             .map { URL(fileURLWithPath: $0, isDirectory: true) }
         let folderProjects = VideoRecordingFolders.projects(scanning: scanned)
         let inFolders = Set(folderProjects.map(\.path))
-        let folders = folderProjects.map { project in
+        var scan = DiskScan()
+        scan.folders = folderProjects.map { ($0, modificationDate(of: VideoProjectPackage.manifestURL($0))) }
+        scan.recordings = Settings.recordingURLs.filter { VideoRecordingFolder.project(ofVideo: $0) == nil }.map { ($0, modificationDate(of: $0)) }
+        scan.projectFiles = VideoProjectRecents.load().filter { !inFolders.contains($0.standardizedFileURL.path) }
+            .map { ($0, modificationDate(of: VideoProjectPackage.manifestURL($0))) }
+        return scan
+    }
+
+    private func apply(_ scan: DiskScan) {
+        let folders = scan.folders.map { project, date in
             HomeProject(
                 id: "folder:" + project.path,
                 kind: .recordingFolder(project),
                 name: project.deletingLastPathComponent().lastPathComponent,
-                date: Self.modificationDate(of: VideoProjectPackage.manifestURL(project)),
+                date: date,
                 searchText: project.deletingLastPathComponent().lastPathComponent
             )
         }
-        let recordings = Settings.recordingURLs.filter { VideoRecordingFolder.project(ofVideo: $0) == nil }.map { url in
+        let recordings = scan.recordings.map { url, date in
             HomeProject(
                 id: url.path,
                 kind: .recording(url),
                 name: url.deletingPathExtension().lastPathComponent,
-                date: Self.modificationDate(of: url),
+                date: date,
                 searchText: url.deletingPathExtension().lastPathComponent
             )
         }
@@ -305,12 +346,12 @@ final class HomeModel: ObservableObject {
                 searchText: [name, item.ocrText ?? ""].joined(separator: " ")
             )
         }
-        let projectFiles = VideoProjectRecents.load().filter { !inFolders.contains($0.standardizedFileURL.path) }.map { url in
+        let projectFiles = scan.projectFiles.map { url, date in
             HomeProject(
                 id: "project:" + url.standardizedFileURL.path,
                 kind: .projectFile(url),
                 name: url.deletingPathExtension().lastPathComponent,
-                date: Self.modificationDate(of: VideoProjectPackage.manifestURL(url)),
+                date: date,
                 searchText: url.deletingPathExtension().lastPathComponent
             )
         }
@@ -500,7 +541,7 @@ final class HomeModel: ObservableObject {
         (try? url.resourceValues(forKeys: [.fileSizeKey]).fileSize).map(Int64.init)
     }
 
-    private static func modificationDate(of url: URL) -> Date {
+    nonisolated private static func modificationDate(of url: URL) -> Date {
         (try? url.resourceValues(forKeys: [.contentModificationDateKey]).contentModificationDate) ?? .distantPast
     }
 }

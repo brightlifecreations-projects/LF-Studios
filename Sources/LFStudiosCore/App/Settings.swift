@@ -6,7 +6,18 @@ enum Settings {
     static var defaults = UserDefaults.standard
     private static let autoSaveLocationKey = "autoSaveLocation"
 
+    /// In tests, a throwaway folder: Home and the recordings list scan the
+    /// default save location, and a test reading the real Desktop waits on a
+    /// privacy prompt nobody answers.
+    private static let testDesktop: String? = {
+        guard NSClassFromString("XCTestCase") != nil else { return nil }
+        let folder = FileManager.default.temporaryDirectory.appendingPathComponent("lfstudios-test-desktop-\(ProcessInfo.processInfo.processIdentifier)", isDirectory: true)
+        try? FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
+        return folder.path
+    }()
+
     static var defaultAutoSaveLocation: String {
+        if let testDesktop { return testDesktop }
         if let desktop = FileManager.default.urls(for: .desktopDirectory, in: .userDomainMask).first {
             return desktop.path
         }

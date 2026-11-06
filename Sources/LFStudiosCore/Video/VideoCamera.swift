@@ -281,7 +281,12 @@ final class VideoCameraTrack: @unchecked Sendable {
         /// pan, so its easing isn't compounded sample over sample.
         var panOrigin: (from: Double, to: Double, point: CGPoint)?
 
+        /// Between zooms nothing moves (the arrays start at 1 and the
+        /// centre), so the loop jumps to the next zoom: a long video with a
+        /// zoom being dragged stays quick.
+        var resumeAt = 0
         for index in 0..<count {
+            if index < resumeAt { continue }
             let t = min(Double(index) * dt, timelineDuration)
             while groupIndex < groups.count && t > (groups[groupIndex].last?.end ?? 0) {
                 groupIndex += 1
@@ -298,6 +303,7 @@ final class VideoCameraTrack: @unchecked Sendable {
                 scales[index] = 1
                 xs[index] = 0.5
                 ys[index] = 0.5
+                resumeAt = groupIndex < groups.count ? max(index + 1, Int(((groups[groupIndex].first?.start ?? 0) / dt).rounded(.down))) : count
                 continue
             }
             let group = groups[groupIndex]

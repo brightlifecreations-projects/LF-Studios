@@ -142,7 +142,7 @@ struct AgentSettingsView: View {
                         }
                     }
                 }
-                Text(L("An agent can read the open project and edit it with the editor's own commands, each one ⌘Z step. It can't export, record, or open files outside the project and its folder. You see every change in the Agent panel and choose Keep or Revert all at the end."))
+                Text(L("An agent can read the open project and edit it with the editor's own commands, each one ⌘Z step. It can't export, record, delete, open or import files: it works only with what's already in the project. You see every change in the Agent panel and choose Keep or Revert all at the end."))
                     .font(.system(size: 11.5))
                     .foregroundStyle(LFStudiosTheme.ink.opacity(0.55))
                     .fixedSize(horizontal: false, vertical: true)

@@ -37,7 +37,7 @@ extension VideoEditorModel {
         let name = exportName.trimmingCharacters(in: .whitespaces).isEmpty ? exportBaseName : exportName.trimmingCharacters(in: .whitespaces)
         try? FileManager.default.createDirectory(at: exportFolder, withIntermediateDirectories: true)
         let wanted = exportFolder.appendingPathComponent("\(name).\(settings.fileExtension)")
-        guard FileManager.default.fileExists(atPath: wanted.path) else { return wanted }
+        guard Self.taken(wanted) else { return wanted }
         switch ask(wanted) {
         case .alertFirstButtonReturn: return wanted
         case .alertSecondButtonReturn: return Self.unique(wanted)
@@ -49,11 +49,18 @@ extension VideoEditorModel {
         let base = url.deletingPathExtension().lastPathComponent, ext = url.pathExtension, folder = url.deletingLastPathComponent()
         var number = 2
         var candidate = url
-        while FileManager.default.fileExists(atPath: candidate.path) {
+        while taken(candidate) {
             candidate = folder.appendingPathComponent("\(base) \(number).\(ext)")
             number += 1
         }
         return candidate
+    }
+
+    /// On disk, or the name an export still running will write (it writes a
+    /// hidden partial file until it's done): two exports never share a name.
+    static func taken(_ url: URL, running: [URL]? = nil) -> Bool {
+        let running = running ?? VideoExportQueue.shared.jobs.filter { !$0.isDone }.map(\.destination)
+        return FileManager.default.fileExists(atPath: url.path) || running.contains(url)
     }
 
     static func askReplace(_ url: URL) -> NSApplication.ModalResponse {

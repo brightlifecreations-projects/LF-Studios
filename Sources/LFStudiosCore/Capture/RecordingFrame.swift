@@ -13,7 +13,6 @@ struct RecordingFrameRatio: Codable, Equatable, Hashable {
     }
 
     var text: String { "\(width):\(height)" } // l10n-ignore: a ratio, the same in every language
-    var isPortrait: Bool { height > width }
 
     struct Preset {
         let ratio: RecordingFrameRatio
@@ -454,9 +453,11 @@ final class RecordingFrameController {
     /// smaller if it has to, and that display's dimming takes over.
     func moveToScreen(_ newScreen: NSScreen, center: CGPoint) {
         guard newScreen != screen else { return }
+        // The size in pixels, read at the display it was on.
+        let kept = pixels
         screen = newScreen
-        let size = RecordingFrameGeometry.fits(pixels, in: available)
-            ? pixels
+        let size = RecordingFrameGeometry.fits(kept, in: available)
+            ? kept
             : RecordingFrameGeometry.pixels(ratio, steps: RecordingFrameGeometry.largestSteps(ratio, in: available))
         let width = CGFloat(size.width) / scale
         let height = CGFloat(size.height) / scale
@@ -586,9 +587,6 @@ final class RecordingFrameDimWindow: NSPanel {
         dimView.label = label
         dimView.needsDisplay = true
     }
-
-    /// The camera's part as drawn, for tests (nil: not split).
-    var drawnCameraPart: CGRect? { dimView.camera }
 
     /// The frame's place as drawn, for tests (in the window's own points).
     var drawnFrame: CGRect { dimView.hole }

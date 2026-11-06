@@ -250,7 +250,6 @@ final class VideoDemoRecordingMetadataRecorder {
     private var cursorShapeEvents: [VideoCursorShapeEvent] = []
     private var lastShapeProbe: CFTimeInterval = 0
     private var lastSampledPoint: CGPoint?
-    private var shapeFingerprintCache: [ObjectIdentifier: String] = [:]
 
     init(videoURL: URL, captureRect: CGRect, sourcePixelSize: CGSize, fps: Int, nativeCursorVisible: Bool, renderCursor: Bool, recordsKeystrokes: Bool = false, tracksTyping: Bool = false, recordsKeyTiming: Bool = false) {
         self.videoURL = videoURL

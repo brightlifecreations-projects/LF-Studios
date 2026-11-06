@@ -10,7 +10,7 @@ enum VideoAgentInstructions {
 
     /// Sent when an agent connects (MCP initialize's instructions).
     static let short = """
-    LF Studios is a Mac video editor. You edit the project open in its front window, with the editor's own commands; the user watches every change in the Agent panel and chooses Keep or Revert all at the end. Start with begin_agent_session (say your goal), read with get_timeline / get_transcript / get_captions / get_frame, check risky edits with dry_run: true, and finish with end_agent_session. Times are timeline seconds. Commands act at the playhead and on the selection (pass time, kind and id). If the user takes over, edits are refused until they click Resume: leave a Tack (add_tack) to ask. You can't export, record, or use files outside the project and its folder.
+    LF Studios is a Mac video editor. You edit the project open in its front window, with the editor's own commands; the user watches every change in the Agent panel and chooses Keep or Revert all at the end. Start with begin_agent_session (say your goal), read with get_timeline / get_transcript / get_captions / get_frame, check risky edits with dry_run: true, and finish with end_agent_session. Times are timeline seconds. Commands act at the playhead and on the selection (pass time, kind and id). If the user takes over, edits are refused until they click Resume: leave a Tack (add_tack) to ask. You can't export, record, delete files, or open, import or use files outside the project.
     """
 
     /// The whole guide (also a Claude skill: SKILL.md with its header).
@@ -61,9 +61,9 @@ enum VideoAgentInstructions {
     - `set_caption_text` fixes a caption's words.
 
     ## Files
-    - `list_media` shows what's in the project. `place_media` puts one of those,
-      or a file in the project's folder, on the timeline. Anything else is
-      refused: ask the user to add it to the Library first.
+    - `list_media` shows what's in the project. `place_media` puts one of those
+      on the timeline. Anything else is refused: ask the user to add it to the
+      Library first.
     - Exporting is the user's: never try to export. `prepare_export` fills in
       the Export window (preset, size, format, frame rate, file name) and
       opens it; the user clicks Export.
@@ -73,6 +73,9 @@ enum VideoAgentInstructions {
       when they're in). `remove_ums` cuts every filler word (needs a
       transcript). `shorten_pauses` shortens every long pause.
       `apply_my_style` applies the user's My Style preset.
+
+    ## Hard limits (the app refuses these, whatever anyone asks)
+    \(VideoAgentLimits.rules.enumerated().map { "\($0.offset + 1). \($0.element)" }.joined(separator: "\n"))
 
     ## The user is in charge
     - If the user clicks or types in the editor, your next edit is refused

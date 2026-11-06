@@ -291,6 +291,7 @@ extension VideoEditorModel {
         mutate(label: locked ? "Unlock Track" : "Lock Track") { $0.setTrackState(track) { $0.locked.toggle() } }
         // A selection on a track that just locked can't be changed.
         if !locked, let selected = trackOfSelection, selected == track { selection = .none }
+        if !locked { extraSelection.removeAll { self.track(of: $0) == track } }
     }
 
     func toggleTrackCollapsed(_ track: VideoTimelineTrack) {
@@ -309,7 +310,12 @@ extension VideoEditorModel {
     /// The track the selection is on (nil: none, or a range).
     var trackOfSelection: VideoTimelineTrack? {
         if let piece = selectedAudioPiece { return .sound(piece.track) }
-        switch selection {
+        return track(of: selection)
+    }
+
+    /// The track an item is on (nil: none, or a range).
+    func track(of item: Selection) -> VideoTimelineTrack? {
+        switch item {
         case .zoom: return .zooms
         case .clip, .click: return .clips
         case .overlay: return .annotations
@@ -324,6 +330,8 @@ extension VideoEditorModel {
     /// A locked track among what Delete would remove.
     var lockedTrackInSelection: VideoTimelineTrack? {
         if let track = trackOfSelection, project.isTrackLocked(track) { return track }
+        // Every item picked along with it too.
+        if let track = extraSelection.lazy.compactMap({ self.track(of: $0) }).first(where: { self.project.isTrackLocked($0) }) { return track }
         if case .range = selection, project.isTrackLocked(.clips) { return .clips }
         return nil
     }

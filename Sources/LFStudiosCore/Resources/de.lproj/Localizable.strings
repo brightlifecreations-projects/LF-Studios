@@ -690,8 +690,8 @@
 	<string>Ein Anpassungsclip ändert alles darunter, solange er läuft: Zieh an seinen Enden, um festzulegen, wann.</string>
 	<key>An adjustment clip changes everything under it while it plays: set it up in Properties ▸ Adjust (exposure, HSL, curves, colour wheels) and Filter.</key>
 	<string>Ein Anpassungsclip ändert alles darunter, solange er läuft: Richte ihn unter Eigenschaften ▸ Anpassen (Belichtung, HSL, Kurven, Farbräder) und Filter ein.</string>
-	<key>An agent can read the open project and edit it with the editor's own commands, each one ⌘Z step. It can't export, record, or open files outside the project and its folder. You see every change in the Agent panel and choose Keep or Revert all at the end.</key>
-	<string>Ein Agent kann das geöffnete Projekt lesen und es mit den Befehlen des Editors bearbeiten, jeder ein ⌘Z-Schritt. Er kann nicht exportieren, aufnehmen oder Dateien außerhalb des Projekts und seines Ordners öffnen. Du siehst jede Änderung im Agent-Panel und wählst am Ende „Behalten“ oder „Alles zurücknehmen“.</string>
+	<key>An agent can read the open project and edit it with the editor's own commands, each one ⌘Z step. It can't export, record, delete, open or import files: it works only with what's already in the project. You see every change in the Agent panel and choose Keep or Revert all at the end.</key>
+	<string>Ein Agent kann das geöffnete Projekt lesen und es mit den Befehlen des Editors bearbeiten, jeder ein ⌘Z-Schritt. Er kann nicht exportieren, aufnehmen, Dateien löschen, öffnen oder importieren: Er arbeitet nur mit dem, was schon im Projekt ist. Du siehst jede Änderung im Agent-Panel und wählst am Ende „Behalten“ oder „Alles zurücknehmen“.</string>
 	<key>An agent edits with the editor's own commands, and you stay in charge.</key>
 	<string>Ein Agent bearbeitet mit den Befehlen des Editors, und du behältst die Kontrolle.</string>
 	<key>An older Creative Handoff is put back together from its files: the screen, the cuts, the camera at its place, captions, markers, and the pointer. A summary says what came back.</key>
@@ -3648,6 +3648,8 @@
 	<string>Anleitung</string>
 	<key>Guides over the player to place things well. They never appear in the export.</key>
 	<string>Hilfslinien über dem Player, um Dinge gut zu platzieren. Sie erscheinen nie im Export.</string>
+	<key>H.264 goes up to 4096 pixels a side: a very wide video at 4K is made a little smaller to fit. HEVC keeps the full size.</key>
+	<string>H.264 reicht bis 4096 Pixel pro Seite: Ein sehr breites Video in 4K wird etwas verkleinert, damit es passt. HEVC behält die volle Größe.</string>
 	<key>H.264 plays everywhere. HEVC makes smaller files, but some browsers and Windows PCs can't play it.</key>
 	<string>H.264 läuft überall. HEVC macht kleinere Dateien, aber manche Browser und Windows-PCs können es nicht abspielen.</string>
 	<key>HSL</key>
@@ -4110,10 +4112,10 @@
 	<string>Er kann Timeline, Transkript, Untertitel, Marker und Keyframes lesen und Bilder ansehen.</string>
 	<key>It can run Auto captions, Remove Ums, Shorten Pauses and Apply My Style, and fill in the Export window. You always click Export yourself.</key>
 	<string>Er kann „Automatische Untertitel“, „Füllwörter entfernen“, „Pausen kürzen“ und „Meinen Stil anwenden“ ausführen und das Exportfenster ausfüllen. Auf „Exportieren“ klickst immer du.</string>
-	<key>It can split, trim, delete, add markers, titles and keyframes, fix captions, remove ums, and place files that are already in the project or its folder.</key>
-	<string>Er kann teilen, kürzen, löschen, Marker, Titel und Keyframes hinzufügen, Untertitel korrigieren, Ähs entfernen und Dateien platzieren, die schon im Projekt oder seinem Ordner sind.</string>
-	<key>It can't export, record sound or video, use the clipboard, or open files from anywhere else. Locked tracks stay as they are.</key>
-	<string>Er kann nicht exportieren, Ton oder Video aufnehmen, die Zwischenablage nutzen oder Dateien von anderswo öffnen. Gesperrte Spuren bleiben, wie sie sind.</string>
+	<key>It can split, trim, delete, add markers, titles and keyframes, fix captions, remove ums, and place files that are already in the project.</key>
+	<string>Er kann teilen, kürzen, löschen, Marker, Titel und Keyframes hinzufügen, Untertitel korrigieren, Ähs entfernen und Dateien platzieren, die schon im Projekt sind.</string>
+	<key>It can't see your API keys or change Settings, record anything, delete files or projects, export, use the clipboard, or open or import files. The Assistant has the same limits. Locked tracks stay as they are.</key>
+	<string>Er kann deine API-Schlüssel nicht sehen und keine Einstellungen ändern, nichts aufnehmen, keine Dateien oder Projekte löschen, nicht exportieren, nicht die Zwischenablage nutzen und keine Dateien öffnen oder importieren. Für den Assistenten gelten dieselben Grenzen. Gesperrte Spuren bleiben, wie sie sind.</string>
 	<key>It checks the free space first, and shows how much the originals add. Cancel removes the half-made folder.</key>
 	<string>Zuerst wird der freie Speicherplatz geprüft und angezeigt, wie viel die Originale ausmachen. „Abbrechen“ entfernt den halb fertigen Ordner.</string>
 	<key>It happens by itself. The bar while recording shows a short note, and a notice explains it.</key>

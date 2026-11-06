@@ -138,10 +138,4 @@ enum LFStudiosColors {
         }
     }
 
-    static let labelPillBackground = NSColor(name: "labelPill") { appearance in
-        switch appearance.bestMatch(from: [.aqua, .darkAqua]) {
-        case .darkAqua: return NSColor.black.withAlphaComponent(0.75)
-        default:        return NSColor.black.withAlphaComponent(0.65)
-        }
-    }
 }

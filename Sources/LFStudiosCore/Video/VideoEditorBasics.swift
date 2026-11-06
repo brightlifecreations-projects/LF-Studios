@@ -73,6 +73,8 @@ extension VideoEditorModel {
     func clips(from start: Double, to end: Double, on tracks: Set<VideoTimelineTrack>) -> [Selection] {
         let low = min(start, end), high = max(start, end)
         var found: [Selection] = []
+        // Locked tracks' items can't be changed, so a box doesn't pick them.
+        let tracks = tracks.filter { !project.isTrackLocked($0) }
         if tracks.contains(.clips) {
             for segment in segments where segment.timelineStart < high && segment.timelineEnd > low {
                 found.append(.clip(segment.id))
@@ -789,10 +791,6 @@ extension VideoDemoProject {
         return project
     }
 
-    /// The name shown on a track's header: its own, else the usual one.
-    func trackName(_ track: VideoTimelineTrack) -> String? {
-        trackStates[track.key]?.name
-    }
 }
 
 extension VideoEditorModel {

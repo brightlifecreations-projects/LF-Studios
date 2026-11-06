@@ -24,7 +24,7 @@ final class Project114PixelTests: XCTestCase {
 
     /// The recordings (OldProjectPixelTests' screen and camera) and a
     /// picture and a video for the tracks above the main track.
-    private func media() async throws -> (screen: URL, camera: URL, logo: URL, clip: URL) {
+    func media() async throws -> (screen: URL, camera: URL, logo: URL, clip: URL) {
         try FileManager.default.createDirectory(at: Self.fixtures, withIntermediateDirectories: true)
         let screen = Self.oldMedia.appendingPathComponent("screen.mp4"), camera = Self.oldMedia.appendingPathComponent("camera.mp4"), logo = Self.oldMedia.appendingPathComponent("logo.png")
         guard FileManager.default.fileExists(atPath: screen.path) else { throw XCTSkip("Fixtures/OldProjects is missing") }
@@ -37,7 +37,7 @@ final class Project114PixelTests: XCTestCase {
     }
 
     /// Each kind of 1.14.0 project, and the moments compared.
-    private func projects(_ media: (screen: URL, camera: URL, logo: URL, clip: URL)) -> [(name: String, project: VideoDemoProject, recording: VideoDemoRecordingMetadata?, camera: Bool, times: [Double])] {
+    func projects(_ media: (screen: URL, camera: URL, logo: URL, clip: URL)) -> [(name: String, project: VideoDemoProject, recording: VideoDemoRecordingMetadata?, camera: Bool, times: [Double])] {
         let size = CGSize(width: 960, height: 600)
         func base() -> VideoDemoProject { VideoDemoProject.make(sourceURL: media.screen, duration: 4, sourceSize: size) }
 

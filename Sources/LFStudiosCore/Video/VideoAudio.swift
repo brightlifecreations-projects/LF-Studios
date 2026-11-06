@@ -330,7 +330,6 @@ final class VideoLoudnessMeter {
     private let channels: Int
     private let sampleRate: Double
     private var filters: [KWeighting]
-    private var blockSums: [Double] = []
     private var current: [Double]
     private var currentCount = 0
     private let hop: Int

@@ -93,7 +93,7 @@ final class VideoTimelineSnapshotTests: XCTestCase {
         let window = NSWindow(contentRect: host.frame, styleMask: [.borderless], backing: .buffered, defer: false)
         window.appearance = NSAppearance(named: look)
         window.contentView = host
-        windows.append(window)
+        defer { if let sheet = window.attachedSheet { window.endSheet(sheet) }; window.orderOut(nil); window.contentView = nil } // one editor alive at a time
         host.layoutSubtreeIfNeeded()
         try await Task.sleep(nanoseconds: 700_000_000)
         host.layoutSubtreeIfNeeded()

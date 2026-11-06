@@ -64,6 +64,8 @@ extension VideoEditorModel {
     func moveLayerItem(_ id: UUID, to time: Double, track: Int, newTrack: Bool = false, coalesce: Bool = false) {
         guard let item = project.layerItem(id), let from = project.layerTrackIndex(of: id) else { return }
         if refuseLockedLayer(from) { return }
+        // Nor onto a locked track (the drag began on an unlocked one).
+        if !newTrack, track != from, refuseLockedLayer(track) { return }
         let moving = groupMates(of: id)
         let delta = max(time, 0) - item.at
         mutate(coalesce: coalesce ? "layer-move-\(id)" : nil, label: "Move Clip") { project in
@@ -254,7 +256,8 @@ extension VideoDemoProject {
                 layerTracks.append(VideoLayerTrack(items: [item]))
             }
         case .track(let index):
-            if layerTracks.indices.contains(index), layerTracks[index].isFree(from: item.at, length: item.length) {
+            // A locked track takes nothing new: a new track goes above it, as when it's full.
+            if layerTracks.indices.contains(index), layerTracks[index].isFree(from: item.at, length: item.length), !isTrackLocked(.layer(layerTracks[index].id)) {
                 layerTracks[index].items.append(item)
                 layerTracks[index].sort()
             } else {

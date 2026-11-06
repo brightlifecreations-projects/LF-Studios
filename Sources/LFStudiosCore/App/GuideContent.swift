@@ -15,7 +15,7 @@ import Foundation
 @MainActor
 enum GuideContent {
     /// Pages from these versions get a New badge and fill What's new.
-    nonisolated static let newVersions: [String] = ["1.21.1", "1.21.0", "1.20.0", "1.19.1", "1.19.0", "1.18.0", "1.17.0", "1.16.0", "1.15.0", "1.14.0", "1.13.0", "1.12.0", "1.11.1", "1.11.0", "1.10.0", "1.9.0", "1.8.0", "1.7.0"]
+    nonisolated static let newVersions: [String] = ["1.23.0", "1.21.1", "1.21.0", "1.20.0", "1.19.1", "1.19.0", "1.18.0", "1.17.0", "1.16.0", "1.15.0", "1.14.0", "1.13.0", "1.12.0", "1.11.1", "1.11.0", "1.10.0", "1.9.0", "1.8.0", "1.7.0"]
 
     static func chapters() -> [GuideChapter] {
         let features = featureCategories()
@@ -1618,8 +1618,8 @@ enum GuideContent {
                 location: L("The project open in the front editor window."),
                 points: [
                     L("It can read the timeline, the transcript, the captions, the markers and the keyframes, and look at frames."),
-                    L("It can split, trim, delete, add markers, titles and keyframes, fix captions, remove ums, and place files that are already in the project or its folder."),
-                    L("It can't export, record sound or video, use the clipboard, or open files from anywhere else. Locked tracks stay as they are."),
+                    L("It can split, trim, delete, add markers, titles and keyframes, fix captions, remove ums, and place files that are already in the project."),
+                    L("It can't see your API keys or change Settings, record anything, delete files or projects, export, use the clipboard, or open or import files. The Assistant has the same limits. Locked tracks stay as they are."),
                     L("Every change it makes is one ⌘Z step, like yours."),
                 ],
                 tips: [
@@ -3056,6 +3056,7 @@ enum GuideContent {
                 keys: [.fixed("⌘E", L("Export"))],
                 tips: [
                     L("H.264 plays everywhere. HEVC makes smaller files, but some browsers and Windows PCs can't play it."),
+                    L("H.264 goes up to 4096 pixels a side: a very wide video at 4K is made a little smaller to fit. HEVC keeps the full size."),
                     L("The size estimate tells you how big the file will be, and warns when the disk is too full."),
                     L("When a file with that name is there already, choose Replace or Keep Both."),
                 ],

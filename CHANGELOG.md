@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.23.0]
+
+### Changed
+- **AI agents and the Assistant have hard limits, enforced by the app whatever anyone asks:** they never see or reveal your API keys, tokens or Workspace ID, and never change AI settings or their own permissions; they never record (screen, camera, microphone, screenshots, voiceover); they never delete a project, a recording folder or any file; and they never export, open or import anything. They work only inside the project you have open, with media already in it (removing clips from the timeline is fine: it's one ⌘Z step). The Assistant can still fill in the Export window; only you click Export.
+- **Home stays responsive** with recordings on a slow network or iCloud folder: it reads the folders in the background instead of freezing each time it's clicked.
+- **Long projects are smoother:** dragging a zoom block on a 10-minute video is about a third quicker per frame, and zooming the timeline draws only the part of the ruler on screen.
+- **Exporting H.264 at 4K** a very wide video (21:9 or an ultrawide screen) makes it a little smaller to fit H.264's 4096-pixel limit, instead of failing. HEVC keeps the full size.
+
+### Fixed
+- **One drag is one ⌘Z step,** even when you rest mid-drag for a moment before letting go.
+- **Locked tracks stay as they are:** a Library item dropped on a locked track above the main track, an item dragged onto one, a box selection or Select Left/Right, a range on a locked main track (Cut this part, speed, mute), and caption edits in the side panel no longer change a locked track.
+- **Captions:** Start at the playhead can move a caption past its own end; clearing a caption's text to type new words keeps its word timings (the word highlight and cutting by text keep working); the Text field never writes one caption's text into another when you pick a different one.
+- **Exporting twice with the same name** while the first export is still running asks Replace or Keep Both, instead of silently replacing the first file.
+- **Recording:** dragging the frame to another display keeps its size in pixels (1080p stays 1080p on a non-Retina display); after a Window size choice, the recording bar no longer comes back once you press Record or Esc.
+- Dropping a file the editor can't use (a PDF, a folder) says so, instead of doing nothing.
+
+### Compatibility
+- Projects are saved exactly as in 1.21.1 and open in 1.21.1; every project exports as before (except wide H.264 4K, above).
+
 ## [1.21.1] - 2026-11-03
 
 ### Fixed

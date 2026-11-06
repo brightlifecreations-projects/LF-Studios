@@ -1,0 +1,12 @@
+# Next run (paste into the next session)
+
+- Branch `cleanup` holds the 1.22 clean-up plus the 1.23 work; nothing of 1.22/1.23 is published.
+- Old-project sound: Apple's audio mix renders ~0.1–0.17 s of near-silence after a sped-up clip in ~1 export in 10 (PROGRESS-1.22.md Notes). A fix changes old exports; needs its own release note.
+- `git stash@{0}`: offscreen screenshot helpers (unproven against the 1.21.1 pictures). Try one class at a time under the kill-switch; drop if pictures change.
+- Timeline zoom on a 10-minute project still draws in ~28 ms (debug build; 60 fps needs 16.7): SwiftUI lays out every clip, caption and zoom block, on screen or not. Draw only the visible window (VideoTimelineScrollOffsets already knows it), as the ruler now does. PERFORMANCE-1.23.md.
+- Agent tools missing (editor commands with no agent tool, none of them forbidden by the hard limits): crop, add a zoom block (only zoom_cut), restyle captions and caption timing (only set_caption_text), project settings (canvas size, aspect), copy/paste of items, filters/adjust, cursor and background style, track lock/hide (only solo_track), previous/next keyframe, open/close compound. Each needs the tool, a test in VideoAgentTests, and AGENT-TOOLS.md regenerated (LF_AGENT_DOCS_RECORD=1).
+- VideoEditor115SnapshotTests takes 5.5 min alone (it used to stall ~17 min; now passes) and GuideSnapshotTests 15 s: both back in test-full. If VideoEditor115 stalls again, sample it during the stall (the stack under `_renderLayerInContext`).
+- Flaky under load, pass alone: VideoLongTimelineTests.testZoomKeepsTheSkimmerMomentFixed (waits 0.3 s for scrolling to settle); Reference1211SnapshotTests editor-capcut pictures once differed by 172–317 pixels (limit ~65). Wait on the scroll position instead of a fixed time; find what in the CapCut editor picture moves.
+- After a 1080p60 export the process keeps ~650 MB of caches for a while (no growth across exports; 4 small exports stay at 60 MB). Check whether CIContext/AVAssetWriter caches can be dropped when an export ends.
+- Hand checks for this release's fixes without a test: C4 (pick another caption while typing in the inspector's Text field), R1 (drag the 1080p recording frame to a non-Retina display), R2 (Window size preset, then Record or Esc at once).
+- A 6 s 1080p60 export briefly reaches 1.4–1.7 GB (top's MEM, GPU surfaces included) on a busy Mac, 0.65 GB on a calm one; the speed test now runs at 720p60. Find what the export pipeline holds at its peak (frames in flight, IOSurface pools) and cap it.

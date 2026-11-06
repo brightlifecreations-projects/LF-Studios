@@ -178,19 +178,6 @@ enum VideoDemoOverlayEffectKind: String, Codable, CaseIterable, Identifiable {
         }
     }
 
-    /// The English name undo steps are labeled with ("Add Arrow"): an
-    /// identifier, never shown as is (VideoEditHistory.swift words it).
-    var undoName: String {
-        switch self {
-        case .text: return "Text"
-        case .arrow: return "Arrow"
-        case .highlight: return "Highlight"
-        case .blur: return "Blur"
-        case .spotlight: return "Spotlight"
-        case .image: return "Image"
-        }
-    }
-
     var icon: String {
         switch self {
         case .text: return "textformat"
@@ -817,12 +804,6 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
             return CGSize(width: 1080, height: Self.even(1080 / ratio))
         }
 
-        func previewAspectRatio(sourceSize: CGSize) -> CGFloat {
-            let size = canvasSize(sourceSize: sourceSize)
-            guard size.height > 0 else { return 16 / 9 }
-            return size.width / size.height
-        }
-
         static func even(_ value: CGFloat) -> CGFloat {
             let rounded = max(2, Int(value.rounded()))
             return CGFloat(rounded.isMultiple(of: 2) ? rounded : rounded + 1)
@@ -831,7 +812,6 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
 
     static let minimumClipDuration = 0.1
     static let paddingRange: ClosedRange<Double> = 0...0.3
-    static let cornerRadiusRange: ClosedRange<Double> = 0...80
 
     var version: Int
     var id: UUID
@@ -1307,12 +1287,6 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
         return true
     }
 
-    func overlayEffectsActive(at sourceTime: Double) -> [VideoDemoOverlayEffect] {
-        overlayEffects.filter { effect in
-            sourceTime >= effect.time && sourceTime <= effect.time + max(effect.duration, 0.1)
-        }
-    }
-
     /// Makes effect layers consistent: each effect keeps its chosen layer
     /// unless it overlaps an earlier effect on that layer (then it takes the
     /// next free one), and empty layers are compacted away. Returns the
@@ -1344,21 +1318,6 @@ struct VideoDemoProject: Codable, Equatable, Identifiable {
             updated.layer = remap[effect.layer] ?? 0
             return updated
         }
-    }
-
-    mutating func setSingleTrim(start: Double, end: Double, totalDuration: Double) {
-        let total = max(totalDuration, 0)
-        guard total > 0 else {
-            trimStart = 0
-            trimEnd = 0
-            timelineClips = []
-            return
-        }
-
-        let safeStart = min(max(start, 0), max(total - Self.minimumClipDuration, 0))
-        let safeEnd = min(max(end, safeStart + Self.minimumClipDuration), total)
-        timelineClips = [VideoDemoTimelineClip(sourceStart: safeStart, sourceEnd: safeEnd)]
-        syncTrimToTimeline(totalDuration: total)
     }
 
     mutating func syncTrimToTimeline(totalDuration: Double) {

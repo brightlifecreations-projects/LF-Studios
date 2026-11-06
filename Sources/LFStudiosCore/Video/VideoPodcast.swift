@@ -6,9 +6,6 @@ import Foundation
 /// "Podcast mode": a voice chain for spoken audio, each step its own
 /// switch. Off (nil) until its button is pressed.
 struct VideoPodcastSettings: Codable, Equatable {
-    /// The podcast standard: −16 LUFS for stereo.
-    static let targetLoudness = -16.0
-
     /// Apple's voice isolation plus a gate that quiets the room between words.
     var noiseRemoval = true
     /// Tames harsh "s" and "sh" sounds.

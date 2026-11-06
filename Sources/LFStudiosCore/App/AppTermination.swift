@@ -65,12 +65,6 @@ enum AppTermination {
         pending.forEach { $0() }
     }
 
-    /// For `applicationShouldTerminate`: quit now, or finish the running work first.
-    static func terminateReply(for app: NSApplication) -> NSApplication.TerminateReply {
-        guard confirmQuit() else { return .terminateCancel }
-        return finishThenQuit(app)
-    }
-
     /// Asks first when quitting would cut work short; true to go ahead.
     static func confirmQuit() -> Bool {
         guard isBusy, asksBeforeQuit else { return true }

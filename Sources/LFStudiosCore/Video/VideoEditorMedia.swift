@@ -512,14 +512,6 @@ struct VideoTimelineExtrasSignature: Equatable {
 }
 
 enum VideoMusicDucking {
-    /// Speech from every recording (each in its own seconds) → timeline
-    /// stretches still heard: cut and muted clips drop out, and a muted or
-    /// silent voice ducks nothing.
-    static func voiceOnTimeline(project: VideoDemoProject, primaryKinds: [VideoAudioKind], speech: [String: [ClosedRange<Double>]], segments: [VideoDemoTimelineSegment]) -> [ClosedRange<Double>] {
-        guard project.music?.ducking == true else { return [] }
-        return speechOnTimeline(project: project, primaryKinds: primaryKinds, speech: speech, segments: segments)
-    }
-
     /// What the music ducks under: the voice (`speechOnTimeline`), plus the
     /// sound tracks set to "Music ducks under this" ("track:<id>" in
     /// `speech`, in their files' seconds). Nothing when ducking is off.
