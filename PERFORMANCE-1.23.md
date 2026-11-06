@@ -18,3 +18,19 @@ included; swap from `vm.swapusage`).
 | Writing a 1440×900 fake recording | ~2.5 GB leaked per frame | TestMediaMemoryTests: < 100 MB for 10 frames |
 
 Cause: the test helper's retry loop (DECISIONS-1.23.md 7), not the app.
+
+## Editor: 10-minute 1080p project (60 cuts, 60 captions, 20 zooms)
+
+Audit123Tests.testATenMinuteProjectStaysQuick, debug build (tests), alone, 3 runs each; a frame is
+the change plus layout and drawing of the whole editor window.
+
+| Step | Before | After | How |
+|---|---|---|---|
+| Drag a zoom block, one frame | median 20.2 ms, worst 21.7 | **median 13.8 ms, worst 15.8** | The camera path walked all 36,000 samples of the 10 minutes on every change; it now jumps over the gaps between zooms (same samples, bit for bit: VideoDemoProjectTests.testCameraPathIsUnchangedByTheGapSkip). The change itself went 10.7 → 5.9 ms. |
+| Timeline zoom step, one frame | median 32–33 ms, worst 46–52 | median 28.5 ms, worst 43.5–44.5 | The ruler drew every tick and label of the whole video (thousands zoomed in); now only the part on screen. Clip lengths looked the text language up (bundle + Locale) on every call; now once. |
+| Open / cut / ⌘Z | 8 ms / 0.8 ms / 1.1 ms | unchanged | — |
+
+How it was found: `sample` of the test process while the step ran alone (600–800 steps), app frames
+ranked by inclusive samples: `VideoCameraTrack.build` 38 % of a drag; `VideoTimelineClipView.body`
+16 % and `VideoTimelineRuler` 13 % of a zoom step. What's left of a zoom step is SwiftUI laying out
+all 60 clips, captions and zoom blocks, on screen or not (NEXT-RUN.md). A release build is faster.

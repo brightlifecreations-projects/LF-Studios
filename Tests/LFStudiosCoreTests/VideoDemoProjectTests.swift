@@ -228,6 +228,32 @@ final class VideoDemoProjectTests: XCTestCase {
         XCTAssertEqual(track.state(at: 6.05).scale, 1, accuracy: 0.001, "fully out by the block's end")
     }
 
+    /// The camera path skips the gaps between zooms (1.23.0, a long video
+    /// stayed slow while a zoom was dragged): every sample must stay exactly
+    /// what the full walk gave — gaps, chains, pointer follow, a fast clip.
+    func testCameraPathIsUnchangedByTheGapSkip() {
+        var project = project()
+        project.timelineClips = [VideoDemoTimelineClip(sourceStart: 0, sourceEnd: 4), VideoDemoTimelineClip(sourceStart: 4, sourceEnd: 10, speed: 2)]
+        let segments = project.timelineSegments(totalDuration: 10)
+        let regions = [
+            VideoZoomRegion(start: 0.5, end: 1.5, scale: 2, followsCursor: false, focusX: 0.2, focusY: 0.3),
+            VideoZoomRegion(start: 2.2, end: 3.4, scale: 1.5, followsCursor: true),
+            VideoZoomRegion(start: 3.9, end: 5, scale: 3, followsCursor: false, focusX: 0.8, focusY: 0.7),
+            VideoZoomRegion(start: 8, end: 9.5, scale: 2, followsCursor: true),
+        ]
+        let pointer: (Double) -> CGPoint? = { t in CGPoint(x: 0.5 + 0.4 * sin(t), y: 0.5 + 0.3 * cos(t * 1.7)) }
+        let duration = segments.last?.timelineEnd ?? 0
+        let track = VideoCameraTrack.build(regions: regions, segments: segments, timelineDuration: duration, speed: .smooth, stage: CGRect(x: 0.05, y: 0.1, width: 0.9, height: 0.8), cursor: pointer)
+        var hash: UInt64 = 14_695_981_039_346_656_037
+        for index in 0...Int(duration * VideoCameraTrack.sampleRate) {
+            let state = track.state(at: Double(index) / VideoCameraTrack.sampleRate)
+            for value in [state.scale, state.centerX, state.centerY] {
+                hash = (hash ^ value.bitPattern) &* 1_099_511_628_211
+            }
+        }
+        XCTAssertEqual(hash, 18_198_832_849_840_135_139, "the same path the full walk gave (1.21.1)")
+    }
+
     func testCloseRegionsChainIntoAPan() {
         let project = project()
         let segments = project.timelineSegments(totalDuration: 10)

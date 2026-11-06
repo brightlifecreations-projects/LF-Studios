@@ -23,16 +23,22 @@ extension VideoEditorModel {
     /// A number with the decimal mark of the language the text is in
     /// (English "4.2" on any Mac, German and French "4,2").
     private static func decimal(_ value: Double, digits: Int) -> String {
-        value.formatted(.number.precision(.fractionLength(digits)).grouping(.never).locale(Locale(identifier: textLanguage)))
+        value.formatted(.number.precision(.fractionLength(digits)).grouping(.never).locale(textLocale))
     }
 
     /// The language L(…) shows ("en", "de", "zh-hans"): the one tests
     /// picked (an .lproj folder), else the one macOS chose for LF Studios.
-    private static var textLanguage: String {
+    /// Looked up once per bundle (tests switch it): every clip on the
+    /// timeline formats its length on each zoom step.
+    private static var textLocale: Locale {
         let bundle = L10n.bundle
-        if bundle.bundleURL.pathExtension == "lproj" { return bundle.bundleURL.deletingPathExtension().lastPathComponent }
-        return bundle.preferredLocalizations.first ?? "en"
+        if let cached = localeCache, cached.bundle === bundle { return cached.locale }
+        let language = bundle.bundleURL.pathExtension == "lproj" ? bundle.bundleURL.deletingPathExtension().lastPathComponent : bundle.preferredLocalizations.first ?? "en"
+        localeCache = (bundle, Locale(identifier: language))
+        return Locale(identifier: language)
     }
+
+    nonisolated(unsafe) private static var localeCache: (bundle: Bundle, locale: Locale)?
 
     /// "35%" (a slider's level) — "35 %" where the language spaces it.
     static func formatPercent(_ fraction: Double) -> String {

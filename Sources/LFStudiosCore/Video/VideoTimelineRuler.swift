@@ -7,14 +7,23 @@ struct VideoTimelineRuler: View {
     let duration: Double
     let pointsPerSecond: CGFloat
     let inset: CGFloat
+    /// The part on screen (x across the whole ruler): ticks off it aren't
+    /// drawn, so a zoomed-in long video doesn't draw thousands per frame.
+    var visible: ClosedRange<CGFloat>?
 
     var body: some View {
         Canvas { context, size in
             let steps: [Double] = [0.1, 0.2, 0.5, 1, 2, 5, 10, 15, 30, 60, 120, 300, 600]
             let major = steps.first { CGFloat($0) * pointsPerSecond >= 72 } ?? 600
             let minor = major / (major >= 1 && major.truncatingRemainder(dividingBy: 5) == 0 ? 5 : 4)
-            var t = 0.0
-            while t <= duration + 0.0001 {
+            // From a label's width before the edge: its text reaches in.
+            let first = visible.map { max(Int((Double($0.lowerBound - inset - 60) / Double(pointsPerSecond) / minor).rounded(.down)), 0) } ?? 0
+            let last = visible.map { Double($0.upperBound - inset) / Double(pointsPerSecond) + major } ?? .infinity
+            var index = first
+            while true {
+                let t = Double(index) * minor
+                guard t <= duration + 0.0001, t <= last else { break }
+                index += 1
                 let x = inset + CGFloat(t) * pointsPerSecond
                 let isMajor = abs((t / major).rounded() * major - t) < 0.0001
                 let height: CGFloat = isMajor ? 8 : 4
@@ -30,7 +39,6 @@ struct VideoTimelineRuler: View {
                         context.draw(label, at: CGPoint(x: labelX, y: size.height - 16), anchor: .leading)
                     }
                 }
-                t += minor
             }
         }
     }

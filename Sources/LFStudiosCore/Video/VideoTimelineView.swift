@@ -254,7 +254,8 @@ struct VideoTimelineSurface: View {
                 Color.clear
                     .contentShape(Rectangle())
                     .gesture(scrubGesture)
-                VideoTimelineRuler(duration: duration, pointsPerSecond: pointsPerSecond, inset: M.inset)
+                VideoTimelineRuler(duration: duration, pointsPerSecond: pointsPerSecond, inset: M.inset,
+                                   visible: offsets.x...(offsets.x + viewport.width - M.headerWidth - 1))
                     .frame(width: contentWidth + M.inset * 2, height: M.rulerHeight)
                     .allowsHitTesting(false)
                 if !model.project.markers.isEmpty {

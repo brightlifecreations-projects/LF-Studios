@@ -242,10 +242,31 @@ final class Audit123Tests: XCTestCase {
         }
         model.endGesture()
         let worst = { (values: [Double]) in (values.max() ?? 0) * 1000 }
-        print(String(format: "AUDIT-PERF 10-minute: open %.0f ms, split %.1f ms, undo/redo %.1f ms, zoom frame worst %.1f ms, drag frame worst %.1f ms",
-                     open * 1000, split * 1000, undo * 1000, worst(frames), worst(drag)))
+        let median = { (values: [Double]) in values.sorted()[values.count / 2] * 1000 }
+        print(String(format: "AUDIT-PERF 10-minute: open %.0f ms, split %.1f ms, undo/redo %.1f ms, zoom frame median %.1f worst %.1f ms, drag frame median %.1f worst %.1f ms",
+                     open * 1000, split * 1000, undo * 1000, median(frames), worst(frames), median(drag), worst(drag)))
         XCTAssertLessThan(open, 5, "opens in under 5 s")
         XCTAssertLessThan(split, 0.1, "a cut takes under 100 ms")
         XCTAssertLessThan(undo, 0.1)
+    }
+
+    /// AUDIT A2: Home reads recording folders off the main thread, so a slow
+    /// network or iCloud folder doesn't freeze the window each time it's clicked.
+    func testHomeReadsFoldersOffTheMainThread() async throws {
+        let storage = directory.appendingPathComponent("history", isDirectory: true)
+        let model = HomeModel(historyManager: HistoryManager(storageDir: storage), actions: HomeActions(newRecording: {}, takeScreenshot: {}, scrollCapture: {}, openVideo: {}))
+        let scanned = expectation(description: "scanned")
+        nonisolated(unsafe) var onMain = true
+        HomeModel.diskScanWillStart = {
+            onMain = Thread.isMainThread
+            Thread.sleep(forTimeInterval: 0.5) // a slow folder
+            scanned.fulfill()
+        }
+        let start = Date()
+        model.reload()
+        XCTAssertLessThan(Date().timeIntervalSince(start), 0.1, "reload returns before the folders are read")
+        await fulfillment(of: [scanned], timeout: 5)
+        HomeModel.diskScanWillStart = nil
+        XCTAssertFalse(onMain)
     }
 }
