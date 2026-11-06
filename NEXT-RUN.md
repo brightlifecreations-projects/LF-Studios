@@ -1,6 +1,7 @@
 # Next run (paste into the next session)
 
-- Branch `cleanup` holds the 1.22 clean-up plus the 1.23 work; nothing of 1.22/1.23 is published.
+- **Finish 1.23.0 first:** System Settings → Privacy & Security → Accessibility → turn on Terminal (the update rehearsal clicks Check for Updates in 1.21.1). Then on main: `bash scripts/publish-release.sh 1.23.0`. Everything else is done: test-full passed on the release code (6 Nov 17:41), CI passed, PR #17 merged, and the version commit `LF Studios 1.23.0` is on main. Nothing is published yet; users still get 1.21.1.
+- After publishing: hand checks C4, R1, R2 (below).
 - Old-project sound: Apple's audio mix renders ~0.1–0.17 s of near-silence after a sped-up clip in ~1 export in 10 (PROGRESS-1.22.md Notes). A fix changes old exports; needs its own release note.
 - `git stash@{0}`: offscreen screenshot helpers (unproven against the 1.21.1 pictures). Try one class at a time under the kill-switch; drop if pictures change.
 - Timeline zoom on a 10-minute project still draws in ~28 ms (debug build; 60 fps needs 16.7): SwiftUI lays out every clip, caption and zoom block, on screen or not. Draw only the visible window (VideoTimelineScrollOffsets already knows it), as the ruler now does. PERFORMANCE-1.23.md.
