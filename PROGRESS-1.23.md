@@ -1,4 +1,4 @@
-# Progress: 1.23.0 (one release; 10-hour run restarted 2026-11-05 22:27, ends 08:27)
+# Progress: 1.23.0 (one release; run restarted 2026-11-05 22:27; Mac slept 05:56; 8-hour run from 6 Nov 12:24, ends 20:24)
 
 1.21.1 was already published (3 Nov) before this plan; 1.22.0 is not published on its own:
 its work (`cleanup`) merges into main and ships in 1.23.0.
@@ -15,17 +15,25 @@ Rules: DECISIONS-1.23.md (gentle tests, load guard, memory kill-switch). Left ov
 - [x] Found on the way: a test reading the real Desktop hung 44 min on a privacy prompt (Desktop isolated in tests); VideoEditor115 slow (NEXT-RUN.md)
 - [x] Stashed offscreen snapshot work: not used (unproven; NEXT-RUN.md)
 - [x] PERFORMANCE-1.23.md before/after, AUDIT-1.23.md A0–A2 (01:30)
-- [ ] commit after test-quick
+- [x] committed (27cdff1…adf3b34)
 
 ## 1. Finish 1.22 code
 - [x] 1.21.1 fixes: shipped in 1.21.1; the sound dropout is in NEXT-RUN.md
 - [x] Test scripts gentle; feature inspectors split; 18 unused items deleted (committed locally, 5 Nov)
-- [ ] test-quick on the whole branch, push
+- [x] pushed; draft PR #17 (6 Nov 12:27) so CI runs
 
 ## 2. Audit: AUDIT-1.23.md
+- [x] Command × selection sweep, save/reopen, drag with a rest, 10-minute project (A3–A6)
+- [ ] Most-used features: timeline drags/trims/splits, recording + Area popover, captions, export, inspector, Library drag-and-drop
 ## 3. Fixes, worst first, each with a test
+- [x] A5 one press = one ⌘Z step
+- [x] A2 Home reads folders in the background (6 Nov 12:30)
 ## 4. Performance quick wins: PERFORMANCE-1.23.md
+- [x] A6 zoom-block drag 20 → 14 ms; timeline zoom 32 → 28.5 ms median (12:36); the rest in NEXT-RUN.md
 ## 5. Agent hard limits with tests
+- [x] Four limits in the shared tool layer (MCP and the Assistant), tests per limit and per mock provider, AGENT-TOOLS.md from code, Guide page, Skill text
+- [x] All agent tests pass with the screen unlocked (6 Nov 12:26)
+- [ ] Missing agent tools listed in NEXT-RUN.md
 ## 6. test-full, CI, merge, rehearsal, publish 1.23.0
 
 ## Log
@@ -33,3 +41,6 @@ Rules: DECISIONS-1.23.md (gentle tests, load guard, memory kill-switch). Left ov
 - 5 Nov 09:52–10:02 cause found and fixed (kill-switch caught it at 7.8 GB)
 - 5 Nov 22:27 restart
 - 6 Nov 01:30 crash part done (1 h over: slow screenshot classes); test-quick on the branch
+- 6 Nov 02:00–05:41 audit A3–A6, A5 fixed, agent hard limits; screen locked from ~03:00 (playback, scroll and recording tests can't pass locked)
+- 6 Nov 05:56 the Mac slept; run stopped
+- 6 Nov 12:24 restart (caffeinate, unlocked): agent tests pass; pushed, PR #17; A2 and A6 fixed (12:36)

@@ -3,17 +3,19 @@ import CoreImage
 import XCTest
 @testable import LFStudiosCore
 
-/// Budget checks: the preview must render a Retina recording well inside a
-/// 60Hz frame, and export must beat real time.
-final class VideoPerformanceTests: XCTestCase {
+/// The preview must render well inside a 60Hz frame. A class of its own:
+/// each class runs in its own process, and with the export's caches it
+/// passed the 1.5 GB test memory limit (DECISIONS-1.23.md 15).
+final class VideoPreviewPerformanceTests: XCTestCase {
     override class func setUp() {
         super.setUp()
         VideoTestStorage.isolate()
     }
 
     func testPreviewFrameRenderBudget() throws {
-        let source = CIImage(cgImage: VideoTestSupport.fakeScreen(size: CGSize(width: 2880, height: 1800), progress: 0.5, typed: "Acme"))
-        var project = VideoDemoProject.make(sourceURL: URL(fileURLWithPath: "/tmp/perf.mp4"), duration: 10, sourceSize: CGSize(width: 2880, height: 1800))
+        // 1080p test media (the Mac's rule); still drawn into a Retina-size preview area.
+        let source = CIImage(cgImage: VideoTestSupport.fakeScreen(size: CGSize(width: 1920, height: 1080), progress: 0.5, typed: "Acme"))
+        var project = VideoDemoProject.make(sourceURL: URL(fileURLWithPath: "/tmp/perf.mp4"), duration: 10, sourceSize: CGSize(width: 1920, height: 1080))
         project.apply(style: .factory)
         let (samples, clicks) = VideoTestSupport.scriptedPointer(duration: 10)
         project.cursorSamples = samples
@@ -43,14 +45,23 @@ final class VideoPerformanceTests: XCTestCase {
         print(String(format: "PERF: preview frame %.2f ms (%.0f fps)", perFrame, 1000 / perFrame))
         XCTAssertLessThan(perFrame, 16, "must fit a 60Hz frame with room to spare")
     }
+}
+
+/// Export must beat real time.
+final class VideoPerformanceTests: XCTestCase {
+    override class func setUp() {
+        super.setUp()
+        VideoTestStorage.isolate()
+    }
 
     func testExportBeatsRealTime() async throws {
         let directory = FileManager.default.temporaryDirectory.appendingPathComponent("lfstudios-perf-\(UUID().uuidString)", isDirectory: true)
         try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
         defer { try? FileManager.default.removeItem(at: directory) }
         let url = directory.appendingPathComponent("src.mp4")
-        try await VideoTestSupport.writeFakeRecording(to: url, size: CGSize(width: 2880, height: 1800), seconds: 6, fps: 60)
-        var project = VideoDemoProject.make(sourceURL: url, duration: 6, sourceSize: CGSize(width: 2880, height: 1800))
+        // 1080p test media: a Retina-size fake recording held ~1.7 GB (DECISIONS-1.23.md 15).
+        try await VideoTestSupport.writeFakeRecording(to: url, size: CGSize(width: 1920, height: 1080), seconds: 6, fps: 60)
+        var project = VideoDemoProject.make(sourceURL: url, duration: 6, sourceSize: CGSize(width: 1920, height: 1080))
         project.apply(style: .factory)
         let (samples, clicks) = VideoTestSupport.scriptedPointer(duration: 6)
         project.cursorSamples = samples

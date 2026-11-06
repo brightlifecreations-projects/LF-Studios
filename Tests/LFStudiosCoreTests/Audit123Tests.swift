@@ -269,4 +269,116 @@ final class Audit123Tests: XCTestCase {
         HomeModel.diskScanWillStart = nil
         XCTAssertFalse(onMain)
     }
+
+    /// Captions (audit C1–C3): Start at the playhead moves a line past its
+    /// own end; clearing a line on the way to new words keeps the voice's
+    /// word timings; a locked Captions track can't be changed from the inspector.
+    func testCaptionEditsFromTheInspector() async throws {
+        let model = try await richModel()
+        let first = try XCTUnwrap(model.project.captions.first)   // 0.5–2 s, "Hello there"
+        // Start at the playhead, past the line's end and past the next line (4 s).
+        model.setCaptionTiming(first.id, start: 5, end: max(first.end, 5.5))
+        model.endGesture()
+        let moved = try XCTUnwrap(model.project.captions.first { $0.id == first.id })
+        XCTAssertEqual(moved.start, 5, accuracy: 0.001)
+        XCTAssertEqual(moved.end, 5.5, accuracy: 0.001)
+        XCTAssertEqual(model.project.captions.map(\.start), model.project.captions.map(\.start).sorted(), "the Lines list stays in order")
+
+        // Word timings through ⌘A, Delete, typing.
+        model.mutate { project in
+            let index = project.captions.firstIndex { $0.id == first.id }!
+            project.captions[index].text = "Hello there"
+            project.captions[index].words = [VideoCaptionWord(text: "Hello", start: 5, end: 5.2), VideoCaptionWord(text: "there", start: 5.2, end: 5.5)]
+        }
+        model.endGesture()
+        for text in ["", "H", "Hello", "Hello world"] { model.updateCaption(first.id, text: text) }
+        model.endGesture()
+        let retyped = try XCTUnwrap(model.project.captions.first { $0.id == first.id })
+        XCTAssertEqual(retyped.words.map(\.text), ["Hello", "world"])
+        XCTAssertEqual(retyped.words.first?.start ?? 0, 5, accuracy: 0.001, "the kept word keeps the voice's time")
+
+        // Locked: text, timing and delete are refused.
+        model.toggleTrackLocked(.captions)
+        let locked = model.project
+        model.updateCaption(first.id, text: "Changed")
+        model.setCaptionTiming(first.id, start: 1)
+        model.deleteCaption(first.id)
+        XCTAssertEqual(model.project, locked)
+    }
+
+    /// Timeline (audit T1–T5): nothing lands on, moves onto, or is cut from a
+    /// locked track by any route; files it can't take are said, not dropped silently.
+    func testLockedTracksStayAsTheyAreHoweverTheyAreReached() async throws {
+        let model = try await richModel()
+        let picture = try XCTUnwrap(model.project.layerTracks.first?.items.first)
+        // A second track above, with its own picture.
+        var other = picture
+        other.id = UUID()
+        other.at = 5
+        model.mutate { $0.insertLayerItem(other, place: .newTrack(1)) }
+        model.endGesture()
+        XCTAssertEqual(model.project.layerTracks.count, 2)
+        let lockedID = model.project.layerTracks[0].id
+        model.toggleTrackLocked(.layer(lockedID))
+
+        // T1: a Library item aimed at the locked track goes on a new one.
+        var sticker = picture
+        sticker.id = UUID()
+        sticker.at = 6
+        model.mutate { $0.insertLayerItem(sticker, place: .track(0)) }
+        model.endGesture()
+        XCTAssertEqual(model.project.layerTracks.first { $0.id == lockedID }?.items.map(\.id), [picture.id])
+
+        // T2: dragged from the free track onto the locked one: refused.
+        var before = model.project
+        let lockedIndex = try XCTUnwrap(model.project.layerTracks.firstIndex { $0.id == lockedID })
+        model.moveLayerItem(other.id, to: 7, track: lockedIndex)
+        XCTAssertEqual(model.project, before)
+
+        // T3: a box over every track and Select Left/Right skip the locked
+        // one's items; one picked anyway makes ⌫ refuse.
+        let everything = Set([VideoTimelineTrack.clips] + model.project.layerTracks.map { .layer($0.id) })
+        XCTAssertFalse(model.clips(from: 0, to: 10, on: everything).contains(.layer(picture.id)))
+        model.seek(to: 0)
+        XCTAssertTrue(model.selectAcross(left: false))
+        XCTAssertFalse(model.selectedItems.contains(.layer(picture.id)))
+        model.selection = .layer(other.id)
+        model.extraSelection = [.layer(picture.id)]
+        XCTAssertEqual(model.lockedTrackInSelection, .layer(lockedID))
+
+        // T4: a range on the locked main track: cut, speed and mute refused.
+        model.selection = .none
+        model.toggleTrackLocked(.clips)
+        before = model.project
+        let range = VideoDemoTimelineRange(start: 1, end: 2)
+        model.deleteRange(range)
+        model.setRangeSpeed(range, 2)
+        model.toggleRangeMute(range)
+        XCTAssertEqual(model.project, before)
+
+        // T5: a PDF dropped on the timeline is said.
+        let pdf = directory.appendingPathComponent("notes.pdf")
+        try Data("%PDF-1.4".utf8).write(to: pdf)
+        model.notice = nil
+        await model.placeMedia([pdf], at: 0)
+        XCTAssertEqual(model.notice?.message, L("Some files weren't added: LF Studios takes videos, pictures, and sound files"))
+    }
+
+    /// Export (audit E1, E2): a name an export still running will write
+    /// counts as taken; H.264 at 4K of a wide video fits H.264's 4096 limit.
+    func testExportNamesAndWide4KH264() {
+        let url = directory.appendingPathComponent("Demo (edited).mp4")
+        XCTAssertFalse(VideoEditorModel.taken(url, running: []))
+        XCTAssertTrue(VideoEditorModel.taken(url, running: [url]))
+        var settings = VideoExportSettings()
+        settings.format = .mp4
+        settings.codec = .h264
+        settings.resolution = .p2160
+        let wide = settings.outputSize(canvas: CGSize(width: 2520, height: 1080))   // 21:9
+        XCTAssertLessThanOrEqual(wide.width, 4096)
+        XCTAssertTrue(RecordingVideoFormat.fitsH264(width: Int(wide.width), height: Int(wide.height), fps: settings.fps))
+        XCTAssertEqual(settings.outputSize(canvas: CGSize(width: 1920, height: 1080)), CGSize(width: 3840, height: 2160), "16:9 4K unchanged")
+        settings.codec = .hevc
+        XCTAssertEqual(settings.outputSize(canvas: CGSize(width: 2520, height: 1080)).height, 2160, "HEVC keeps the full size")
+    }
 }

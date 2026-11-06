@@ -28,7 +28,7 @@
 #   frames switches are shared settings, and they swap the key store.
 #   VideoEditorBasicsTests — uses the clipboard and plays in real time.
 SNAPSHOTS='SnapshotTests'
-SERIAL='VideoLibraryFavouritesTests|VideoKeymapSettingsTests|RecordingEngineIntegrationTests|EditorMemoryValidationTests|VideoTimelineInteractionTests|VideoEditorLifecycleTests|VideoEditorDiscoverabilityTests|VideoInspectorLayoutTests|VideoPerformanceTests|VideoLongProjectPerformanceTests|VideoLongTakeTests|RecordingFrameTests|VideoDockTests|VideoFloatingPanelTests|VideoAgentTests|VideoAIAssistantTests|VideoAIKeysTests|VideoEditorBasicsTests|VideoLongTimelineTests'
+SERIAL='VideoLibraryFavouritesTests|VideoKeymapSettingsTests|RecordingEngineIntegrationTests|EditorMemoryValidationTests|VideoTimelineInteractionTests|VideoEditorLifecycleTests|VideoEditorDiscoverabilityTests|VideoInspectorLayoutTests|VideoPerformanceTests|VideoPreviewPerformanceTests|VideoLongProjectPerformanceTests|VideoLongTakeTests|RecordingFrameTests|VideoDockTests|VideoFloatingPanelTests|VideoAgentTests|VideoAIAssistantTests|VideoAIKeysTests|VideoEditorBasicsTests|VideoLongTimelineTests'
 
 # Tests that put real windows on screen or record it: they run one class at
 # a time too (with SERIAL), so WindowServer never has several test processes
