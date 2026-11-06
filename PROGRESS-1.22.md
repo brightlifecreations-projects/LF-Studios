@@ -14,8 +14,8 @@
 ## 1.22.0 — branch `cleanup` (from main after 1.21.1)
 - [x] Before numbers: /graphify (Sources, code only, as before), audit done (see Notes)
 - [x] Reference copies of 1.21.1 in Tests/LFStudiosCoreTests/Fixtures/Reference-1.21.1 (3.4 MB): Reference1211Tests + Reference1211SnapshotTests
-- [ ] Split VideoEditorModel (extensions by job, one commit each, test-quick after each)
-- [ ] Split the large inspector/panel views
+- [x] Split VideoEditorModel: +Zooms +Overlays +Style +Clips +Transport +Undo +Saving +Formatting (2569 → 1109; thumbnails stay)
+- [~] Split views: inspector ✓, editor view ✓, timeline view ✓, feature inspectors (camera/captions/script) in progress
 - [ ] Delete proven-unused code
 - [ ] CHANGELOG [1.22.0] "Faster, cleaner internals; nothing changes for you"
 - [ ] test-full, CI, merge, publish (rehearsal from 1.21.1)
