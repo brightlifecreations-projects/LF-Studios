@@ -485,6 +485,8 @@ final class VideoEditorModel: ObservableObject {
     var redoStack: [UndoStep] = []
     var lastCoalesceKey: String?
     var lastMutation = Date.distantPast
+    /// The mouse press the last edit came from (`VideoEditorModel.mouseStroke`).
+    var lastMutationStroke: Int?
     var autosaveWork: DispatchWorkItem?
     /// The last write of a recording's folder (one at a time, in order).
     var recordingFolderWrite: Task<Void, Never>?

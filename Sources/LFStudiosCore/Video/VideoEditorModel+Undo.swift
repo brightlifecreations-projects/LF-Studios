@@ -32,7 +32,11 @@ extension VideoEditorModel {
             next.followMainTrack(from: project, oldTotal: sourceDuration, newTotal: next.sourceAxisDuration ?? sourceDuration, magnet: Settings.videoTimelineMagnet)
         }
         let now = Date()
-        if key == nil || key != lastCoalesceKey || now.timeIntervalSince(lastMutation) > 1.5 {
+        // One press of the mouse is one step however long the hand rests
+        // mid-drag; apart from that, 1.5 s apart starts a new step.
+        let stroke = Self.mouseStroke()
+        let sameStroke = stroke != nil && stroke == lastMutationStroke
+        if key == nil || key != lastCoalesceKey || (now.timeIntervalSince(lastMutation) > 1.5 && !sameStroke) {
             undoStack.append(UndoStep(project: project, label: label ?? pendingUndoLabel ?? VideoEditDescription.describe(from: project, to: next)))
             pendingUndoLabel = nil
             if undoStack.count > 300 { undoStack.removeFirst() }
@@ -40,9 +44,18 @@ extension VideoEditorModel {
         }
         lastCoalesceKey = key
         lastMutation = now
+        lastMutationStroke = stroke
         project = next
         canUndo = !undoStack.isEmpty
         canRedo = false
+    }
+
+    /// The mouse press the current event belongs to: AppKit gives a press's
+    /// down, drags and up the same event number. Nil outside a drag.
+    nonisolated(unsafe) static var mouseStroke: () -> Int? = {
+        guard let event = NSApp?.currentEvent,
+              [.leftMouseDown, .leftMouseDragged, .rightMouseDragged, .otherMouseDragged].contains(event.type) else { return nil }
+        return event.eventNumber
     }
 
     /// Ends a coalesced gesture so the next edit starts a new undo step.
