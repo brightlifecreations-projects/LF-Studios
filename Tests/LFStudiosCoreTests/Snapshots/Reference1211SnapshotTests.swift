@@ -108,7 +108,7 @@ final class Reference1211SnapshotTests: XCTestCase {
         window.appearance = NSAppearance(named: look)
         window.contentView = host
         window.orderFrontRegardless()
-        windows.append(window)
+        defer { if let sheet = window.attachedSheet { window.endSheet(sheet) }; window.orderOut(nil); window.contentView = nil } // one editor alive at a time
         host.layoutSubtreeIfNeeded()
         try await Task.sleep(nanoseconds: UInt64(wait * 1_000_000_000))
         host.layoutSubtreeIfNeeded()
@@ -134,15 +134,27 @@ final class Reference1211SnapshotTests: XCTestCase {
         model.endGesture()
         model.selection = .none
         model.seek(to: 3)
+        // The tips bar shows the next page in each new editor, so it depends
+        // on how many opened before: pinned to the pages 1.21.1 drew (the
+        // CapCut layout shows it under the preview: page 0 dark, 3 light).
+        let tipPages = ["capcut-dark": 0, "capcut-light": 3]
         try await forEachEditorStyle { style in
             let tag = style == .lfStudios ? "new" : "capcut"
             for (lookName, look) in looks {
+                Settings.videoEditorTipPage = tipPages["\(tag)-\(lookName)"] ?? 0
                 try await render(VideoEditorRootView(model: model), size: CGSize(width: 1440, height: 900), look: look, name: "editor-\(tag)-\(lookName)", wait: 1.2)
             }
         }
     }
 
     func testSettingsLooksAsIn1211() async throws {
+        // Recording ▸ Storage counts the clipboard exports folder, shared
+        // with every other run: a fixed 270 KB, as 1.21.1's picture shows.
+        let exports = directory.appendingPathComponent("Exports", isDirectory: true)
+        try FileManager.default.createDirectory(at: exports, withIntermediateDirectories: true)
+        try Data(count: 270_000).write(to: exports.appendingPathComponent("export.mp4"))
+        VideoDataCleanup.clipboardExportsOverride = exports
+        defer { VideoDataCleanup.clipboardExportsOverride = nil }
         try await forEachEditorStyle { style in
             let tag = style == .lfStudios ? "new" : "capcut"
             for tab in PreferencesTab.allCases {
