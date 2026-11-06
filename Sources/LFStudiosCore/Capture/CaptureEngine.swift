@@ -648,8 +648,8 @@ final class CaptureEngine {
         }
         if let selectedWindow {
             // Window size: the bar again, for the window as it is now.
-            window.windowResized = { [weak self] frame in
-                Task { @MainActor [weak self] in
+            window.windowResized = { [weak self, weak window] frame in
+                Task { @MainActor [weak self, weak window] in
                     // The window list catches up a moment after a resize.
                     try? await Task.sleep(nanoseconds: 150_000_000)
                     let content = try? await SCShareableContent.excludingDesktopWindows(false, onScreenWindowsOnly: true)
@@ -657,7 +657,9 @@ final class CaptureEngine {
                     let display = NSScreen.screens.max { a, b in
                         a.frame.intersection(frame).width * a.frame.intersection(frame).height < b.frame.intersection(frame).width * b.frame.intersection(frame).height
                     } ?? screen
-                    self?.showRecordingControls(rect: frame, on: display, target: .window, selectedWindow: fresh)
+                    // Record or Esc came first: that bar is gone, and stays gone.
+                    guard let self, let window, self.recordingControlsWindow === window else { return }
+                    self.showRecordingControls(rect: frame, on: display, target: .window, selectedWindow: fresh)
                 }
             }
         }

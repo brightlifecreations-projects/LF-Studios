@@ -453,9 +453,11 @@ final class RecordingFrameController {
     /// smaller if it has to, and that display's dimming takes over.
     func moveToScreen(_ newScreen: NSScreen, center: CGPoint) {
         guard newScreen != screen else { return }
+        // The size in pixels, read at the display it was on.
+        let kept = pixels
         screen = newScreen
-        let size = RecordingFrameGeometry.fits(pixels, in: available)
-            ? pixels
+        let size = RecordingFrameGeometry.fits(kept, in: available)
+            ? kept
             : RecordingFrameGeometry.pixels(ratio, steps: RecordingFrameGeometry.largestSteps(ratio, in: available))
         let width = CGFloat(size.width) / scale
         let height = CGFloat(size.height) / scale

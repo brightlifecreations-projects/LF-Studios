@@ -3056,6 +3056,7 @@ enum GuideContent {
                 keys: [.fixed("⌘E", L("Export"))],
                 tips: [
                     L("H.264 plays everywhere. HEVC makes smaller files, but some browsers and Windows PCs can't play it."),
+                    L("H.264 goes up to 4096 pixels a side: a very wide video at 4K is made a little smaller to fit. HEVC keeps the full size."),
                     L("The size estimate tells you how big the file will be, and warns when the disk is too full."),
                     L("When a file with that name is there already, choose Replace or Keep Both."),
                 ],
