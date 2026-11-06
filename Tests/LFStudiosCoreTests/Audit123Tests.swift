@@ -98,6 +98,13 @@ final class Audit123Tests: XCTestCase {
                 model.perform(command)
                 model.endGesture()
                 try? await Task.sleep(nanoseconds: 20_000_000)
+                // Extract Audio works in the background: wait for it to land
+                // (one ⌘Z step), so it isn't counted with the next selection.
+                if Self.name(command) == "extractAudio" {
+                    for _ in 0..<500 where model.undoStack.isEmpty || model.isExtractingAudio {
+                        try? await Task.sleep(nanoseconds: 20_000_000)
+                    }
+                }
                 let after = model.project
                 let steps = model.undoStack.count
                 let what = "\(Self.name(command)) with \(label) selected"
