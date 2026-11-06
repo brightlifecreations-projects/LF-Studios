@@ -56,3 +56,5 @@ Rules: DECISIONS-1.23.md (gentle tests, load guard, memory kill-switch). Left ov
 - 6 Nov 14:15 Settings pictures pinned; slow screenshot classes tried alone
 - 6 Nov 17:41 test-full passed; 17:43 PR #17 merged; publishing
 - 6 Nov 17:45–17:52 publish: build and feed OK, rehearsal refused (Accessibility for Terminal); nothing published
+
+- 6 Nov: 1.23.0 published after the rehearsal from 1.21.1 passed: https://github.com/brightlifecreations-projects/LF-Studios-Releases/releases/tag/v1.23.0

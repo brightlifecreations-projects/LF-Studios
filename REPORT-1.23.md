@@ -1,8 +1,9 @@
 # Report: 1.23.0 run (5–6 Nov 2026)
 
 ## Result
-- **Not published yet.** Everything passed: test-full on the release code (every class, screenshots included, 0 failures), CI, PR #17 merged, build, signing and update feed. Then the update rehearsal stopped: Terminal isn't allowed under Accessibility, which the rehearsal needs to click Check for Updates. Nothing was published, and users still get 1.21.1.
-- To finish: System Settings → Privacy & Security → Accessibility → Terminal on. Then on main run `bash scripts/publish-release.sh 1.23.0`.
+- **Published: 1.23.0** (6 Nov 2026): https://github.com/brightlifecreations-projects/LF-Studios-Releases/releases/tag/v1.23.0 (record copy: https://github.com/brightlifecreations-projects/LF-Studios/releases/tag/v1.23.0).
+- Every check passed first: test-full on the release code (every class, screenshots included, 0 failures), CI, PR #17 merged, then the update rehearsal: 1.21.1 updated itself to 1.23.0 through Check for Updates and opened again. The live update feed offers 1.23.0, and the release's build files were cleaned up (797 MB).
+- The first publish try stopped at the rehearsal because Terminal lacked Accessibility. Nothing went out then; it passed once the owner turned that on.
 
 ## What crashed the Mac (fixed, proven)
 - A test helper leaked 499 pixel buffers a frame. The editor screenshot test reached 7.8 GB in 2 s, swap filled, and WindowServer stopped answering, which caused the kernel panics. The app wasn't the cause.
