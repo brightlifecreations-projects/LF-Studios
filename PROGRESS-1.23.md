@@ -39,8 +39,10 @@ Rules: DECISIONS-1.23.md (gentle tests, load guard, memory kill-switch). Left ov
 ## 6. test-full, CI, merge, rehearsal, publish 1.23.0
 - [x] CHANGELOG 1.23.0, Guide newVersions, 7 languages
 - [x] test-full 1 (13:09–14:08, without GuideSnapshotTests and VideoEditor115SnapshotTests): only the 1.21.1 Settings pictures (save folder, date, Agent text: pinned and re-recorded) and a stale GuideTests build failed; both pass now
-- [ ] the two slow screenshot classes alone
-- [ ] test-full 2 on the final code, CI, merge, rehearsal, publish
+- [x] the two slow screenshot classes alone: Guide 15 s, VideoEditor115 5.5 min (no stall): back in test-full
+- [x] test-full on 579f08d: all tests passed (16:03–17:41; two earlier runs stopped: the owner's app filled swap, then the 1080p export test's peak)
+- [x] CI passed; PR #17 merged (ac5bcff, the same tree)
+- [ ] publish 1.23.0 (rehearsal from 1.21.1)
 
 ## Log
 - 4 Nov 23:37 first start; 23:44 panic (the leaking helper)
@@ -52,3 +54,4 @@ Rules: DECISIONS-1.23.md (gentle tests, load guard, memory kill-switch). Left ov
 - 6 Nov 12:24 restart (caffeinate, unlocked): agent tests pass; pushed, PR #17; A2 and A6 fixed (12:36)
 - 6 Nov 13:09 test-full 1; owner's apps (CapCut 2.2 GB) put memory at warning twice, the guard paused
 - 6 Nov 14:15 Settings pictures pinned; slow screenshot classes tried alone
+- 6 Nov 17:41 test-full passed; 17:43 PR #17 merged; publishing
