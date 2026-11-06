@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.23.0]
+## [1.23.0] - 2026-11-06
 
 ### Changed
 - **AI agents and the Assistant have hard limits, enforced by the app whatever anyone asks:** they never see or reveal your API keys, tokens or Workspace ID, and never change AI settings or their own permissions; they never record (screen, camera, microphone, screenshots, voiceover); they never delete a project, a recording folder or any file; and they never export, open or import anything. They work only inside the project you have open, with media already in it (removing clips from the timeline is fine: it's one ⌘Z step). The Assistant can still fill in the Export window; only you click Export.
