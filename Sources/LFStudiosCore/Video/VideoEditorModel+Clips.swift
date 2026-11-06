@@ -62,6 +62,7 @@ extension VideoEditorModel {
     }
 
     func deleteRange(_ range: VideoDemoTimelineRange) {
+        if refuseLocked(.clips) { return }
         let normalized = range.normalized
         var next: UUID?
         mutate(label: "Cut") { project in
@@ -92,6 +93,7 @@ extension VideoEditorModel {
     /// Changes just the selected part (speed, sound): its clips split at the
     /// range's edges, and the range follows the same material afterwards.
     func applyToRange(_ range: VideoDemoTimelineRange, label: String, _ change: (inout VideoDemoTimelineClip) -> Void) {
+        if refuseLocked(.clips) { return }
         let pieces = sourcePieces(of: range)
         guard !pieces.isEmpty else { return }
         mutate(label: label) { project in

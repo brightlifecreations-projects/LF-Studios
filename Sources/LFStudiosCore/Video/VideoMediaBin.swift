@@ -278,6 +278,10 @@ extension VideoEditorModel {
     /// another.
     func placeMedia(_ urls: [URL], at time: Double?, target: DropTarget = .anywhere) async {
         var at = time ?? clock.time
+        // Files it can't take (a PDF, a folder) are said, not dropped silently.
+        if urls.contains(where: { VideoMediaKind.of($0) == nil }) {
+            showNotice(L("Some files weren't added: LF Studios takes videos, pictures, and sound files"), symbol: "exclamationmark.triangle.fill", duration: 4)
+        }
         for url in urls {
             guard let kind = VideoMediaKind.of(url) else { continue }
             let item = importMedia([url]).first

@@ -689,6 +689,7 @@ extension VideoEditorModel {
         for (_, item) in project.layerItems where left ? item.end <= time + 0.001 : item.at >= time - 0.001 {
             items.append(.layer(item.id))
         }
+        items.removeAll { track(of: $0).map(project.isTrackLocked) ?? false }
         guard let first = items.first else { return false }
         selection = first
         extraSelection = Array(items.dropFirst())
