@@ -287,7 +287,7 @@ final class VideoAIAssistant: ObservableObject {
         - Commands act at the playhead and on the selection: seek and select first, or pass time, kind and id.
         - auto_captions, remove_ums, shorten_pauses and apply_my_style run the app's own commands on the whole video.
         - You can't export. prepare_export fills in the Export window and opens it; the user clicks Export.
-        - You can only place files already in the project or its folder. Locked tracks can't be changed.
+        - You can only place files already in the project (list_media). Locked tracks can't be changed.
         - If you need the user to decide something, ask in your answer, or leave a Tack (add_tack) at the moment it's about.
         - \(frames ? "get_frame shows you a frame of the video." : "You can't see the video's frames: work from the timeline, the transcript and the captions.")
         - When you're done, answer briefly: what you changed and where. Use the user's language.

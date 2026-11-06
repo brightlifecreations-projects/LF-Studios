@@ -55,6 +55,70 @@ enum VideoAgentToolError: Error {
     case forAgent(String)
 }
 
+/// The four hard limits, for MCP agents and the built-in Assistant alike
+/// (AGENT-TOOLS.md). No tool does any of these; this is the wall behind that,
+/// in `VideoAgentProtocol.call`, which every tool call passes: a tool whose
+/// name offers one is refused, and so is any file argument that isn't media
+/// already in the open project. Nothing an agent sends or reads (an argument,
+/// a project, a transcript, a caption) can switch it off.
+enum VideoAgentLimits {
+    static let rules = [
+        "Never read, list, export or reveal API keys, tokens or the Workspace ID, and never change AI or agent settings or your own permissions.",
+        "Never record anything: no screen recording, camera, microphone, screenshots or voiceover.",
+        "Never delete a project, a recording folder or any file on disk. Removing clips from the timeline is fine: it's undoable.",
+        "Never export anything and never open or import a file: work only inside the open project, with media already in it. prepare_export only fills in the Export window; the user clicks Export.",
+    ]
+
+    /// Words a tool's name may not carry (split at "_").
+    static let forbiddenWords: Set<String> = [
+        "export", "record", "recording", "screenshot", "screen", "capture", "camera", "microphone", "mic", "voiceover",
+        "open", "import", "file", "files", "folder", "disk", "trash",
+        "key", "keys", "token", "tokens", "workspace", "secret", "password", "setting", "settings", "permission", "permissions",
+    ]
+    /// Pairs that may not stand side by side ("delete_project").
+    static let forbiddenPairs: Set<String> = ["delete project", "remove project", "delete recording", "remove recording"]
+    /// Fills in the Export window only: it never exports.
+    static let exceptions: Set<String> = ["prepare_export"]
+
+    static func allows(tool name: String) -> Bool {
+        if exceptions.contains(name) { return true }
+        let words = name.lowercased().split(separator: "_").map(String.init)
+        if words.contains(where: forbiddenWords.contains) { return false }
+        return !zip(words, words.dropFirst()).contains { forbiddenPairs.contains("\($0) \($1)") }
+    }
+
+    /// Arguments that name a file or a place on disk.
+    static func isFileArgument(_ key: String) -> Bool {
+        let key = key.lowercased()
+        return ["path", "file", "url", "folder", "directory", "destination", "output"].contains(key)
+            || ["_path", "_url", "_folder", "_directory"].contains { key.hasSuffix($0) }
+    }
+
+    /// Why this call is refused, or nil.
+    @MainActor
+    static func refusal(_ tool: String, _ args: VideoAgentJSON, on model: VideoEditorModel) -> String? {
+        guard allows(tool: tool) else {
+            return "Refused: agents can't do that. They never touch keys or settings, record, delete files, export, or open or import files."
+        }
+        guard case .object(let fields) = args else { return nil }
+        for (key, value) in fields where isFileArgument(key) {
+            guard let path = value.string, model.agentMayPlace(URL(fileURLWithPath: path)) else {
+                let name = value.string.map { URL(fileURLWithPath: $0).lastPathComponent } ?? key
+                return "Refused: \(name) isn't in this project. Agents only use media already in it (list_media); they never open, import or write other files."
+            }
+        }
+        return nil
+    }
+
+    /// A file name with no folders in it, or nil when nothing is left.
+    static func fileName(_ raw: String) -> String? {
+        let name = raw.replacingOccurrences(of: "\\", with: "/").split(separator: "/").last.map(String.init)?
+            .replacingOccurrences(of: ":", with: " ")
+            .trimmingCharacters(in: CharacterSet.whitespacesAndNewlines.union(CharacterSet(charactersIn: ".")))
+        return name?.isEmpty == false ? name : nil
+    }
+}
+
 /// JSON-RPC for MCP: initialize, tools/list, tools/call, ping.
 @MainActor
 final class VideoAgentProtocol {
@@ -64,7 +128,7 @@ final class VideoAgentProtocol {
     /// The project the agent works on: the front editor (nil: none open).
     var target: () -> VideoEditorModel? = { VideoDemoEditorWindowController.agentModel }
 
-    lazy var tools: [VideoAgentTool] = VideoAgentTools.all
+    lazy var tools: [VideoAgentTool] = VideoAgentTools.all.filter { VideoAgentLimits.allows(tool: $0.name) }
 
     func answer(_ message: VideoAgentJSON, session: String?) async -> VideoAgentJSON? {
         // A batch: each answered.
@@ -111,6 +175,10 @@ final class VideoAgentProtocol {
     func call(_ tool: VideoAgentTool, _ args: VideoAgentJSON, on project: VideoEditorModel? = nil) async -> VideoAgentToolResult {
         guard let model = project ?? target(), model.isReady else {
             return .error("No project is open in LF Studios. Ask the user to open one.")
+        }
+        if let refusal = VideoAgentLimits.refusal(tool.name, args, on: model) {
+            VideoAgentHub.shared.record(VideoAgentChange(date: Date(), title: refusal, tool: tool.name, time: model.clock.time, selection: nil, refused: true), on: model)
+            return .error(refusal)
         }
         let hub = VideoAgentHub.shared
         let dryRun = args["dry_run"]?.bool ?? false
@@ -259,7 +327,7 @@ enum VideoAgentTools {
             VideoAgentTool(name: "get_timeline", description: "Every track top to bottom with what's on it, in timeline seconds: captions, zooms, tracks above the main track (items, their sound and whether it's linked), the main track's clips (source range, speed, muted, linked or unlinked sound), added sound and music, and which tracks are locked or hidden.", properties: [:], readOnly: true) { model, _, _ in
                 VideoAgentToolResult(json: timelineJSON(model))
             },
-            VideoAgentTool(name: "list_media", description: "The project's media (Library): recordings, camera, music, sounds, pictures and imported files, with their paths. Only these, or files in the project's folder, can be placed.", properties: [:], readOnly: true) { model, _, _ in
+            VideoAgentTool(name: "list_media", description: "The project's media (Library): recordings, camera, music, sounds, pictures and imported files, with their paths. Only these can be placed.", properties: [:], readOnly: true) { model, _, _ in
                 let entries = model.project.mediaEntries(camera: model.webcamRecordingForAgent)
                 return VideoAgentToolResult(json: .object(["media": .array(entries.map { entry in
                     .object(["name": .string(entry.name), "path": .string(entry.path), "kind": .string(entry.kind.rawValue), "in_video": .bool(entry.isInVideo), "missing": .bool(entry.isMissing), "duration": entry.duration.map { round($0) } ?? .null])
@@ -568,11 +636,11 @@ enum VideoAgentTools {
                 guard let id = try uuid(args, "item_id") else { throw VideoAgentToolError.forAgent("item_id is needed") }
                 return try edit(model, .object(["kind": .string("item"), "id": .string(id.uuidString)]), dryRun: dryRun, tool: "set_sound_fades") { model.perform(.edit(.setSoundFades(args["fade_in"]?.double ?? 0, args["fade_out"]?.double ?? 0))) }
             },
-            VideoAgentTool(name: "place_media", description: "Put a file on the timeline at a time: only files already in the project (list_media) or in its folder. Anything else is refused.", properties: ["path": text("A path from list_media, or a file in the project's folder."), "time": number("Timeline seconds."), "where": text("On the main track's end, or a track above.", choices: ["above", "main"])], required: ["path"]) { model, args, dryRun in
+            VideoAgentTool(name: "place_media", description: "Put a file on the timeline at a time: only media already in the project (list_media). Anything else is refused.", properties: ["path": text("A path from list_media."), "time": number("Timeline seconds."), "where": text("On the main track's end, or a track above.", choices: ["above", "main"])], required: ["path"]) { model, args, dryRun in
                 guard let path = args["path"]?.string else { throw VideoAgentToolError.forAgent("path is needed") }
                 let url = URL(fileURLWithPath: path).standardizedFileURL.resolvingSymlinksInPath()
                 guard model.agentMayPlace(url) else {
-                    throw VideoAgentToolError.forAgent("Refused: \(url.lastPathComponent) isn't in this project or its folder. Ask the user to add it to the Library first.")
+                    throw VideoAgentToolError.forAgent("Refused: \(url.lastPathComponent) isn't in this project. Ask the user to add it to the Library first.")
                 }
                 guard FileManager.default.fileExists(atPath: url.path), VideoMediaKind.of(url) != nil else { throw VideoAgentToolError.forAgent("That file isn't there, or isn't a video, picture or sound.") }
                 let time = args["time"]?.double ?? model.clock.time
@@ -662,7 +730,8 @@ enum VideoAgentTools {
                 // settings, then these go on top.
                 model.isExportPresented = true
                 model.exportSettings = settings
-                if let name = args["file_name"]?.string?.trimmingCharacters(in: .whitespacesAndNewlines), !name.isEmpty {
+                // A name only, never a place: "../../x" or "/tmp/x" becomes "x".
+                if let raw = args["file_name"]?.string, let name = VideoAgentLimits.fileName(raw) {
                     model.exportName = (name as NSString).deletingPathExtension.isEmpty ? name : (name as NSString).deletingPathExtension
                 }
                 return VideoAgentToolResult(json: .object([
@@ -717,13 +786,13 @@ extension VideoEditorModel {
         return nil
     }
 
-    /// Imports by an agent: files already in the project, or in its folder.
+    /// What an agent may place: media already in the project, nothing else
+    /// (hard limit 4: agents never import or open a file).
     func agentMayPlace(_ url: URL) -> Bool {
         let path = url.standardizedFileURL.resolvingSymlinksInPath().path
-        let known = project.mediaEntries(camera: webcamRecordingForAgent).map { URL(fileURLWithPath: $0.path).standardizedFileURL.resolvingSymlinksInPath().path }
-        if known.contains(path) { return true }
-        guard let folder = agentProjectFolder?.path else { return false }
-        return path.hasPrefix(folder.hasSuffix("/") ? folder : folder + "/")
+        return project.mediaEntries(camera: webcamRecordingForAgent).contains {
+            URL(fileURLWithPath: $0.path).standardizedFileURL.resolvingSymlinksInPath().path == path
+        }
     }
 
     /// The frame at `time` as it exports (no camera), as a PNG 640 wide.

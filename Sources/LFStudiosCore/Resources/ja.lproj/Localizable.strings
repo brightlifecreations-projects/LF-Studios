@@ -756,8 +756,8 @@
 	<string>調整クリップは、再生中にその下にあるものすべてを変更します。端をドラッグしてタイミングを設定します。</string>
 	<key>An adjustment clip changes everything under it while it plays: set it up in Properties ▸ Adjust (exposure, HSL, curves, colour wheels) and Filter.</key>
 	<string>調整クリップは、再生中にその下にあるものすべてを変更します。“プロパティ”＞“調整”（露出、HSL、カーブ、カラーホイール）と“フィルタ”で設定します。</string>
-	<key>An agent can read the open project and edit it with the editor's own commands, each one ⌘Z step. It can't export, record, or open files outside the project and its folder. You see every change in the Agent panel and choose Keep or Revert all at the end.</key>
-	<string>エージェントは開いているプロジェクトを読み取り、エディタのコマンドで編集できます（それぞれ⌘Zで1ステップ）。書き出し、収録、プロジェクトとそのフォルダ外のファイルを開くことはできません。すべての変更は「エージェント」パネルに表示され、最後に「保持」か「すべて元に戻す」を選びます。</string>
+	<key>An agent can read the open project and edit it with the editor's own commands, each one ⌘Z step. It can't export, record, delete, open or import files: it works only with what's already in the project. You see every change in the Agent panel and choose Keep or Revert all at the end.</key>
+	<string>エージェントは開いているプロジェクトを読み取り、エディタのコマンドで編集できます（それぞれ⌘Zで1ステップ）。書き出し、収録、ファイルの削除・オープン・読み込みはできず、プロジェクトにすでにあるものだけを使います。すべての変更は「エージェント」パネルに表示され、最後に「保持」か「すべて元に戻す」を選びます。</string>
 	<key>An agent edits with the editor's own commands, and you stay in charge.</key>
 	<string>エージェントはエディタのコマンドで編集し、主導権はあなたにあります。</string>
 	<key>An older Creative Handoff is put back together from its files: the screen, the cuts, the camera at its place, captions, markers, and the pointer. A summary says what came back.</key>
@@ -4206,10 +4206,10 @@
 	<string>タイムライン、文字起こし、字幕、マーカー、キーフレームを読み、フレームを見ることができます。</string>
 	<key>It can run Auto captions, Remove Ums, Shorten Pauses and Apply My Style, and fill in the Export window. You always click Export yourself.</key>
 	<string>「自動字幕」「フィラーを削除」「無音部分を短縮」「マイスタイルを適用」を実行し、書き出しウインドウを入力できます。「書き出す」をクリックするのは常にあなたです。</string>
-	<key>It can split, trim, delete, add markers, titles and keyframes, fix captions, remove ums, and place files that are already in the project or its folder.</key>
-	<string>分割、トリム、削除、マーカー・タイトル・キーフレームの追加、字幕の修正、つなぎ言葉の削除、プロジェクトやそのフォルダにあるファイルの配置ができます。</string>
-	<key>It can't export, record sound or video, use the clipboard, or open files from anywhere else. Locked tracks stay as they are.</key>
-	<string>書き出し、音声やビデオの収録、クリップボードの使用、他の場所のファイルを開くことはできません。ロックされたトラックはそのままです。</string>
+	<key>It can split, trim, delete, add markers, titles and keyframes, fix captions, remove ums, and place files that are already in the project.</key>
+	<string>分割、トリム、削除、マーカー・タイトル・キーフレームの追加、字幕の修正、つなぎ言葉の削除、プロジェクトにすでにあるファイルの配置ができます。</string>
+	<key>It can't see your API keys or change Settings, record anything, delete files or projects, export, use the clipboard, or open or import files. The Assistant has the same limits. Locked tracks stay as they are.</key>
+	<string>APIキーを見ること、設定の変更、あらゆる収録、ファイルやプロジェクトの削除、書き出し、クリップボードの使用、ファイルを開くことや読み込むことはできません。アシスタントにも同じ制限があります。ロックされたトラックはそのままです。</string>
 	<key>It checks the free space first, and shows how much the originals add. Cancel removes the half-made folder.</key>
 	<string>最初に空き容量を確認し、オリジナルでどれだけ増えるかを表示します。“キャンセル”を押すと、作成途中のフォルダは削除されます。</string>
 	<key>It happens by itself. The bar while recording shows a short note, and a notice explains it.</key>

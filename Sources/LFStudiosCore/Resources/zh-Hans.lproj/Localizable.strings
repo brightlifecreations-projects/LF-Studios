@@ -756,8 +756,8 @@
 	<string>调节片段播放时会改变其下方的所有内容：拖移它的两端来设定时间。</string>
 	<key>An adjustment clip changes everything under it while it plays: set it up in Properties ▸ Adjust (exposure, HSL, curves, colour wheels) and Filter.</key>
 	<string>调节片段播放时会改变其下方的所有内容：在“属性 ▸ 调节”（曝光、HSL、曲线、色轮）和“滤镜”中设置。</string>
-	<key>An agent can read the open project and edit it with the editor's own commands, each one ⌘Z step. It can't export, record, or open files outside the project and its folder. You see every change in the Agent panel and choose Keep or Revert all at the end.</key>
-	<string>代理可以读取打开的项目，并使用编辑器自己的命令编辑它，每条命令一步 ⌘Z。它不能导出、录制，也不能打开项目及其文件夹之外的文件。你可以在“代理”面板中看到每项更改，并在最后选择“保留”或“全部还原”。</string>
+	<key>An agent can read the open project and edit it with the editor's own commands, each one ⌘Z step. It can't export, record, delete, open or import files: it works only with what's already in the project. You see every change in the Agent panel and choose Keep or Revert all at the end.</key>
+	<string>代理可以读取打开的项目，并使用编辑器自己的命令编辑它，每条命令一步 ⌘Z。它不能导出、录制、删除、打开或导入文件：它只使用项目中已有的内容。你可以在“代理”面板中看到每项更改，并在最后选择“保留”或“全部还原”。</string>
 	<key>An agent edits with the editor's own commands, and you stay in charge.</key>
 	<string>代理使用编辑器自己的命令进行编辑，而你始终掌控全局。</string>
 	<key>An older Creative Handoff is put back together from its files: the screen, the cuts, the camera at its place, captions, markers, and the pointer. A summary says what came back.</key>
@@ -4206,10 +4206,10 @@
 	<string>它可以读取时间线、转写文本、字幕、标记和关键帧，并查看画面。</string>
 	<key>It can run Auto captions, Remove Ums, Shorten Pauses and Apply My Style, and fill in the Export window. You always click Export yourself.</key>
 	<string>它可以运行“自动字幕”“移除语气词”“缩短停顿”和“应用我的风格”，并填写导出窗口。点按“导出”的始终是你。</string>
-	<key>It can split, trim, delete, add markers, titles and keyframes, fix captions, remove ums, and place files that are already in the project or its folder.</key>
-	<string>它可以分割、修剪、删除，添加标记、标题和关键帧，修正字幕，去除“嗯”，并放置项目或其文件夹中已有的文件。</string>
-	<key>It can't export, record sound or video, use the clipboard, or open files from anywhere else. Locked tracks stay as they are.</key>
-	<string>它不能导出、录制声音或视频、使用剪贴板，也不能打开其他位置的文件。锁定的轨道保持不变。</string>
+	<key>It can split, trim, delete, add markers, titles and keyframes, fix captions, remove ums, and place files that are already in the project.</key>
+	<string>它可以分割、修剪、删除，添加标记、标题和关键帧，修正字幕，去除“嗯”，并放置项目中已有的文件。</string>
+	<key>It can't see your API keys or change Settings, record anything, delete files or projects, export, use the clipboard, or open or import files. The Assistant has the same limits. Locked tracks stay as they are.</key>
+	<string>它看不到你的 API 密钥，也不能更改设置、录制任何内容、删除文件或项目、导出、使用剪贴板，或打开、导入文件。助理也有同样的限制。锁定的轨道保持不变。</string>
 	<key>It checks the free space first, and shows how much the originals add. Cancel removes the half-made folder.</key>
 	<string>它会先检查可用空间，并显示原始文件会增加多少大小。“取消”会删除做了一半的文件夹。</string>
 	<key>It happens by itself. The bar while recording shows a short note, and a notice explains it.</key>

@@ -684,8 +684,8 @@
 	<string>Корректирующий клип меняет все, что под ним, пока он идет: перетягивайте его края, чтобы задать, когда.</string>
 	<key>An adjustment clip changes everything under it while it plays: set it up in Properties ▸ Adjust (exposure, HSL, curves, colour wheels) and Filter.</key>
 	<string>Корректирующий клип меняет все, что под ним, пока он идет: настройте его в Свойства ▸ Коррекция (экспозиция, HSL, кривые, цветовые круги) и Фильтр.</string>
-	<key>An agent can read the open project and edit it with the editor's own commands, each one ⌘Z step. It can't export, record, or open files outside the project and its folder. You see every change in the Agent panel and choose Keep or Revert all at the end.</key>
-	<string>Агент может читать открытый проект и править его командами редактора, каждая — один шаг ⌘Z. Он не может экспортировать, записывать или открывать файлы вне проекта и его папки. Каждое изменение видно на панели «Агент», а в конце вы выбираете «Оставить» или «Отменить всё».</string>
+	<key>An agent can read the open project and edit it with the editor's own commands, each one ⌘Z step. It can't export, record, delete, open or import files: it works only with what's already in the project. You see every change in the Agent panel and choose Keep or Revert all at the end.</key>
+	<string>Агент может читать открытый проект и править его командами редактора, каждая — один шаг ⌘Z. Он не может экспортировать, записывать, удалять, открывать или импортировать файлы: он работает только с тем, что уже есть в проекте. Каждое изменение видно на панели «Агент», а в конце вы выбираете «Оставить» или «Отменить всё».</string>
 	<key>An agent edits with the editor's own commands, and you stay in charge.</key>
 	<string>Агент правит командами редактора, а управление остаётся за вами.</string>
 	<key>An older Creative Handoff is put back together from its files: the screen, the cuts, the camera at its place, captions, markers, and the pointer. A summary says what came back.</key>
@@ -4104,10 +4104,10 @@
 	<string>Он может читать таймлайн, расшифровку, субтитры, маркеры и ключевые кадры и смотреть кадры.</string>
 	<key>It can run Auto captions, Remove Ums, Shorten Pauses and Apply My Style, and fill in the Export window. You always click Export yourself.</key>
 	<string>Он умеет запускать «Автосубтитры», «Удалить слова-паразиты», «Сократить паузы» и «Применить мой стиль», а также заполнять окно экспорта. «Экспорт» всегда нажимаете вы.</string>
-	<key>It can split, trim, delete, add markers, titles and keyframes, fix captions, remove ums, and place files that are already in the project or its folder.</key>
-	<string>Он может разрезать, обрезать, удалять, добавлять маркеры, титры и ключевые кадры, исправлять субтитры, убирать «эээ» и размещать файлы, которые уже есть в проекте или его папке.</string>
-	<key>It can't export, record sound or video, use the clipboard, or open files from anywhere else. Locked tracks stay as they are.</key>
-	<string>Он не может экспортировать, записывать звук или видео, пользоваться буфером обмена или открывать файлы из других мест. Заблокированные дорожки не меняются.</string>
+	<key>It can split, trim, delete, add markers, titles and keyframes, fix captions, remove ums, and place files that are already in the project.</key>
+	<string>Он может разрезать, обрезать, удалять, добавлять маркеры, титры и ключевые кадры, исправлять субтитры, убирать «эээ» и размещать файлы, которые уже есть в проекте.</string>
+	<key>It can't see your API keys or change Settings, record anything, delete files or projects, export, use the clipboard, or open or import files. The Assistant has the same limits. Locked tracks stay as they are.</key>
+	<string>Он не видит ваши API-ключи и не меняет настройки, ничего не записывает, не удаляет файлы и проекты, не экспортирует, не пользуется буфером обмена и не открывает и не импортирует файлы. У Ассистента те же ограничения. Заблокированные дорожки не меняются.</string>
 	<key>It checks the free space first, and shows how much the originals add. Cancel removes the half-made folder.</key>
 	<string>Сначала проверяется свободное место и показывается, сколько займут оригиналы. «Отменить» удаляет недоделанную папку.</string>
 	<key>It happens by itself. The bar while recording shows a short note, and a notice explains it.</key>

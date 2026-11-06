@@ -1618,8 +1618,8 @@ enum GuideContent {
                 location: L("The project open in the front editor window."),
                 points: [
                     L("It can read the timeline, the transcript, the captions, the markers and the keyframes, and look at frames."),
-                    L("It can split, trim, delete, add markers, titles and keyframes, fix captions, remove ums, and place files that are already in the project or its folder."),
-                    L("It can't export, record sound or video, use the clipboard, or open files from anywhere else. Locked tracks stay as they are."),
+                    L("It can split, trim, delete, add markers, titles and keyframes, fix captions, remove ums, and place files that are already in the project."),
+                    L("It can't see your API keys or change Settings, record anything, delete files or projects, export, use the clipboard, or open or import files. The Assistant has the same limits. Locked tracks stay as they are."),
                     L("Every change it makes is one ⌘Z step, like yours."),
                 ],
                 tips: [
