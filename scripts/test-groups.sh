@@ -37,8 +37,16 @@ UI='Audit123Tests|VideoAgentLimitsTests|VideoTranscriptTests|CaptureLocalization
 SERIAL="$SERIAL|$UI"
 # Every screenshot class, for test-full.sh: each runs alone under the
 # memory kill-switch (they draw big editor windows).
+# LF_SKIP_SNAPSHOTS='ClassA|ClassB' leaves those out (said loudly): for a
+# class that stalls on this Mac, run alone afterwards or noted for later.
 snapshot_classes() {
-    grep -ho 'class [A-Za-z0-9]*SnapshotTests' Tests/LFStudiosCoreTests/Snapshots/*.swift | awk '{print $2}' | sort -u | paste -sd'|' -
+    local all
+    all=$(grep -ho 'class [A-Za-z0-9]*SnapshotTests' Tests/LFStudiosCoreTests/Snapshots/*.swift | awk '{print $2}' | sort -u)
+    if [ -n "${LF_SKIP_SNAPSHOTS:-}" ]; then
+        echo "⚠ Screenshot classes left out (LF_SKIP_SNAPSHOTS): $LF_SKIP_SNAPSHOTS" >&2
+        all=$(echo "$all" | grep -Evx "$LF_SKIP_SNAPSHOTS")
+    fi
+    echo "$all" | paste -sd'|' -
 }
 
 # At most this many test processes at once (LF_TEST_WORKERS overrides):
