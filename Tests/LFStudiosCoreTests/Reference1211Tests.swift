@@ -62,8 +62,11 @@ final class Reference1211Tests: XCTestCase {
     }
 
     /// The most a 64 × 36 frame thumbnail's pixel may differ (of 255): the
-    /// export's own noise between runs of the same code.
-    static let frameTolerance = 4
+    /// export's own noise between runs of the same code. The hardware H.264
+    /// encoder gave up to 9 in 1 export of 5 (6 Nov 2026: a dark fade-in
+    /// frame; the rest of that export 2–4); anything that moved or changed
+    /// colour differs by far more.
+    static let frameTolerance = 12
 
     /// A frame at 64 × 36, RGBA: small enough to keep, fine enough to see
     /// anything that moved, changed colour, or appeared.
