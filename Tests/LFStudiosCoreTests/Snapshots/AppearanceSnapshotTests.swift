@@ -182,8 +182,7 @@ final class AppearanceSnapshotTests: XCTestCase {
 
     func testRenderHomeInBothLooks() async throws {
         let model = HomeModel(historyManager: try history(), actions: HomeActions(newRecording: {}, takeScreenshot: {}, scrollCapture: {}, openVideo: {}))
-        model.reload()
-        try? await Task.sleep(nanoseconds: 300_000_000)
+        await model.reloadNow()
         for section in HomeSection.allCases {
             model.section = section
             try await render(HomeRootView(model: model), size: CGSize(width: 1120, height: 740), name: "home-\(section.rawValue)")
