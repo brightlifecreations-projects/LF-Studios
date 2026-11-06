@@ -203,11 +203,15 @@ extension VideoEditorModel {
     }
 
     func updateCaption(_ id: UUID, text: String) {
+        if refuseLocked(.captions) { return }
         mutate(coalesce: "caption-text-\(id)") { project in
             guard let index = project.captions.firstIndex(where: { $0.id == id }),
                   project.captions[index].text != text else { return }
             let line = project.captions[index]
             project.captions[index].text = text
+            // Cleared on the way to new words (⌘A, Delete, type): the voice's
+            // word timings stay for what's typed next.
+            guard !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return }
             project.captions[index].words = Self.retimedWords(for: text, previous: line.words, start: line.start, end: line.end)
         }
     }
@@ -290,12 +294,21 @@ extension VideoEditorModel {
     }
 
     func setCaptionTiming(_ id: UUID, start: Double? = nil, end: Double? = nil) {
+        if refuseLocked(.captions) { return }
         mutate(coalesce: "caption-time-\(id)") { project in
             guard let index = project.captions.firstIndex(where: { $0.id == id }) else { return }
             var line = project.captions[index]
-            if let start { line.start = min(max(start, 0), line.end - 0.2) }
-            if let end { line.end = max(min(end, sourceDuration), line.start + 0.2) }
+            if let start, let end {
+                // Both (Start at the playhead): the new end first, so the
+                // line can move past its old end.
+                line.end = max(min(end, sourceDuration), 0.2)
+                line.start = min(max(start, 0), line.end - 0.2)
+            } else {
+                if let start { line.start = min(max(start, 0), line.end - 0.2) }
+                if let end { line.end = max(min(end, sourceDuration), line.start + 0.2) }
+            }
             project.captions[index] = line
+            project.captions.sort { $0.start < $1.start }
         }
     }
 
@@ -322,6 +335,7 @@ extension VideoEditorModel {
     }
 
     func deleteCaption(_ id: UUID) {
+        if refuseLocked(.captions) { return }
         mutate { $0.captions.removeAll { $0.id == id } }
         if selection == .caption(id) { selection = .none }
         showNotice(L("Caption removed"), symbol: "trash")

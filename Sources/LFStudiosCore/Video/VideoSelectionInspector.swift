@@ -314,6 +314,8 @@ struct VideoSelectionInspector: View {
                 .overlay(RoundedRectangle(cornerRadius: 8, style: .continuous).strokeBorder(VideoEditorTheme.cardStroke, lineWidth: 1))
                 .focused($textFocused)
                 .onSubmit { model.endGesture() }
+                // A new field per caption: a focused one would write into the next one picked.
+                .id(line.id)
         }
         VideoInspectorSection(L("Timing")) {
             timingRow(L("Starts"), time: line.start) { model.setCaptionTiming(line.id, start: $0) }
@@ -524,6 +526,7 @@ struct VideoSelectionInspector: View {
                     .overlay(RoundedRectangle(cornerRadius: 7, style: .continuous).strokeBorder(VideoEditorTheme.cardStroke, lineWidth: 1))
                     .focused($textFocused)
                     .onChange(of: model.textEditRequest) { _ in textFocused = true }
+                    .id(overlay.id)
                 // The size of the letters, apart from the box's width.
                 VideoSliderRow(
                     title: L("Size"),
