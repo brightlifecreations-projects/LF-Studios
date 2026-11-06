@@ -155,6 +155,19 @@ final class Reference1211SnapshotTests: XCTestCase {
         try Data(count: 270_000).write(to: exports.appendingPathComponent("export.mp4"))
         VideoDataCleanup.clipboardExportsOverride = exports
         defer { VideoDataCleanup.clipboardExportsOverride = nil }
+        // The same folders and file-name date on any Mac, any day (tests
+        // never use the real Desktop).
+        let folder = URL(fileURLWithPath: "/tmp/LF Studios Reference", isDirectory: true)
+        try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
+        let saved = (Settings.autoSaveLocation, Settings.recordingFolder)
+        Settings.autoSaveLocation = folder.path
+        Settings.recordingFolder = folder.path
+        ScreenshotsSettingsView.previewDate = Date(timeIntervalSince1970: 1_793_700_000)
+        defer {
+            Settings.autoSaveLocation = saved.0
+            Settings.recordingFolder = saved.1
+            ScreenshotsSettingsView.previewDate = nil
+        }
         try await forEachEditorStyle { style in
             let tag = style == .lfStudios ? "new" : "capcut"
             for tab in PreferencesTab.allCases {

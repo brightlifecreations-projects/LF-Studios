@@ -776,8 +776,11 @@ struct ScreenshotsSettingsView: View {
     private var filenamePreview: String {
         let trimmed = filenameTemplate.trimmingCharacters(in: .whitespaces)
         let template = trimmed.isEmpty ? Settings.defaultFilenameTemplate : filenameTemplate
-        return "\(ImageExporter.renderFilenameTemplate(template)).\(screenshotFormat)"
+        return "\(ImageExporter.renderFilenameTemplate(template, date: Self.previewDate ?? Date())).\(screenshotFormat)"
     }
+
+    /// Tests: the preview's date, so a picture of it is the same any day.
+    nonisolated(unsafe) static var previewDate: Date?
 
     var body: some View {
         PreferencesPane {
