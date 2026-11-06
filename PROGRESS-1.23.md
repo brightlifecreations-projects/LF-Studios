@@ -24,17 +24,23 @@ Rules: DECISIONS-1.23.md (gentle tests, load guard, memory kill-switch). Left ov
 
 ## 2. Audit: AUDIT-1.23.md
 - [x] Command × selection sweep, save/reopen, drag with a rest, 10-minute project (A3–A6)
-- [ ] Most-used features: timeline drags/trims/splits, recording + Area popover, captions, export, inspector, Library drag-and-drop
+- [x] Most-used features: timeline drags/trims/splits, recording + Area popover, captions, export, inspector, Library drag-and-drop (code read by area, 13 findings C1–R2, 13:00)
 ## 3. Fixes, worst first, each with a test
 - [x] A5 one press = one ⌘Z step
 - [x] A2 Home reads folders in the background (6 Nov 12:30)
+- [x] C1–C4, T1–T5, E1–E2, R1–R2 fixed; tests for all but C4, R1, R2 (hand checks) (13:05)
+- [x] Performance tests on 1080p media; the export flake measured (encoder noise, tolerance 12)
 ## 4. Performance quick wins: PERFORMANCE-1.23.md
 - [x] A6 zoom-block drag 20 → 14 ms; timeline zoom 32 → 28.5 ms median (12:36); the rest in NEXT-RUN.md
 ## 5. Agent hard limits with tests
 - [x] Four limits in the shared tool layer (MCP and the Assistant), tests per limit and per mock provider, AGENT-TOOLS.md from code, Guide page, Skill text
 - [x] All agent tests pass with the screen unlocked (6 Nov 12:26)
-- [ ] Missing agent tools listed in NEXT-RUN.md
+- [x] Missing agent tools listed in NEXT-RUN.md
 ## 6. test-full, CI, merge, rehearsal, publish 1.23.0
+- [x] CHANGELOG 1.23.0, Guide newVersions, 7 languages
+- [x] test-full 1 (13:09–14:08, without GuideSnapshotTests and VideoEditor115SnapshotTests): only the 1.21.1 Settings pictures (save folder, date, Agent text: pinned and re-recorded) and a stale GuideTests build failed; both pass now
+- [ ] the two slow screenshot classes alone
+- [ ] test-full 2 on the final code, CI, merge, rehearsal, publish
 
 ## Log
 - 4 Nov 23:37 first start; 23:44 panic (the leaking helper)
@@ -44,3 +50,5 @@ Rules: DECISIONS-1.23.md (gentle tests, load guard, memory kill-switch). Left ov
 - 6 Nov 02:00–05:41 audit A3–A6, A5 fixed, agent hard limits; screen locked from ~03:00 (playback, scroll and recording tests can't pass locked)
 - 6 Nov 05:56 the Mac slept; run stopped
 - 6 Nov 12:24 restart (caffeinate, unlocked): agent tests pass; pushed, PR #17; A2 and A6 fixed (12:36)
+- 6 Nov 13:09 test-full 1; owner's apps (CapCut 2.2 GB) put memory at warning twice, the guard paused
+- 6 Nov 14:15 Settings pictures pinned; slow screenshot classes tried alone
