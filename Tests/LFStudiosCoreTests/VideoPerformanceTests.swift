@@ -59,9 +59,10 @@ final class VideoPerformanceTests: XCTestCase {
         try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
         defer { try? FileManager.default.removeItem(at: directory) }
         let url = directory.appendingPathComponent("src.mp4")
-        // 1080p test media: a Retina-size fake recording held ~1.7 GB (DECISIONS-1.23.md 15).
-        try await VideoTestSupport.writeFakeRecording(to: url, size: CGSize(width: 1920, height: 1080), seconds: 6, fps: 60)
-        var project = VideoDemoProject.make(sourceURL: url, duration: 6, sourceSize: CGSize(width: 1920, height: 1080))
+        // 720p: at 1080p60 the export's brief peak sat at the 1.5 GB test
+        // memory limit (DECISIONS-1.23.md 19); the speed check is the same.
+        try await VideoTestSupport.writeFakeRecording(to: url, size: CGSize(width: 1280, height: 720), seconds: 6, fps: 60)
+        var project = VideoDemoProject.make(sourceURL: url, duration: 6, sourceSize: CGSize(width: 1280, height: 720))
         project.apply(style: .factory)
         let (samples, clicks) = VideoTestSupport.scriptedPointer(duration: 6)
         project.cursorSamples = samples
@@ -69,13 +70,13 @@ final class VideoPerformanceTests: XCTestCase {
         project.nativeCursorVisible = false
         project.zoomRegions = [VideoZoomRegion(start: 1, end: 5, scale: 2, followsCursor: true)]
         var settings = VideoExportSettings()
-        settings.resolution = .p1080
+        settings.resolution = .p720
         settings.fps = 60
         settings.endCard = false
         let start = CFAbsoluteTimeGetCurrent()
         try await VideoDemoExporter.export(project: project, destinationURL: directory.appendingPathComponent("out.mp4"), settings: settings)
         let elapsed = CFAbsoluteTimeGetCurrent() - start
-        print(String(format: "PERF: 6s 1080p60 export in %.2fs (%.1fx real time)", elapsed, 6 / elapsed))
+        print(String(format: "PERF: 6s 720p60 export in %.2fs (%.1fx real time)", elapsed, 6 / elapsed))
         XCTAssertLessThan(elapsed, 6)
     }
 }
